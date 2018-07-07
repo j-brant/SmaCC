@@ -195,9 +195,7 @@ SmaCCParser class >> setEncoding: aString on: aStream [
 
 	| encoding |
 	encoding := aString ifNil: [ self defaultEncoding ifNil: [ 'utf-8' ] ].
-	(aStream respondsTo: #encoding:)
-		ifTrue: [ aStream encoding: encoding ]
-		ifFalse: [ aStream converter: (TextConverter newForEncoding: encoding) ]
+	aStream encoding: encoding
 ]
 
 { #category : #encoding }

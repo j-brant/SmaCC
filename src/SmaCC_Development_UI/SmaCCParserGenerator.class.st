@@ -44,7 +44,7 @@ SmaCCParserGenerator class >> menuCommandOn: aBuilder [
 	<worldMenu>
 	(aBuilder item: #'SmaCC Parser Generator')
 		parent: #Tools;
-		order: 0.55;
+		order: 490.1;
 		action: [ self open ]
 ]
 
@@ -177,7 +177,7 @@ SmaCCParserGenerator >> displayError: aString at: position [
 
 { #category : #initialization }
 SmaCCParserGenerator >> fileMenu [
-	^ MenuModel new
+	^ MenuPresenter new
 		addGroup: [ :group | 
 			group
 				addItem: [ :item | 
@@ -230,7 +230,7 @@ SmaCCParserGenerator >> initialize [
 
 { #category : #initialization }
 SmaCCParserGenerator >> initializeMenubar [
-	menu := MenuModel new
+	menu := MenuPresenter new
 		addGroup: [ :group | 
 			group
 				addItem: [ :item | 
@@ -249,7 +249,7 @@ SmaCCParserGenerator >> initializeMenubar [
 
 { #category : #initialization }
 SmaCCParserGenerator >> initializeTabModel [
-	tabModel := self instantiate: SmaCCTabManagerModel.
+	tabModel := self instantiate: SmaCCTabManagerPresenter.
 	tabModel
 		addTab: self definitionTab;
 		addTab: self messagesTab;
@@ -335,7 +335,7 @@ SmaCCParserGenerator >> messagesTab [
 
 { #category : #initialization }
 SmaCCParserGenerator >> optionsMenu [
-	^ MenuModel new
+	^ MenuPresenter new
 		addGroup: [ :group | 
 			group
 				addItem: [ :item | 
@@ -622,7 +622,7 @@ SmaCCParserGenerator >> viewItemSetsClicked [
 
 { #category : #initialization }
 SmaCCParserGenerator >> viewMenu [
-	^ MenuModel new
+	^ MenuPresenter new
 		addGroup: [ :group | 
 			group
 				addItem: [ :item | 

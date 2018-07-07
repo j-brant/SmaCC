@@ -14,7 +14,7 @@ SmaCCTransformationToolkit class >> menuCommandOn: aBuilder [
 	<worldMenu>
 	(aBuilder item: #'SmaCC Transformation Toolkit')
 		parent: #Tools;
-		order: 0.56;
+		order: 490.2;
 		action: [ self open ].
 	aBuilder withSeparatorAfter
 ]
