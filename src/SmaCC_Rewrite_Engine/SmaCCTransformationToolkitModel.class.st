@@ -123,7 +123,11 @@ SmaCCTransformationToolkitModel >> isModified: aBoolean [
 SmaCCTransformationToolkitModel >> loadFile: aString [
 	aString asFileReference
 		readStreamDo: [ :stream | 
-			Compiler evaluate: stream contents for: self logged: false.
+			self class compiler
+				source: stream contents;
+				logged: false;
+				receiver: self;
+				evaluate.
 			self isModified: false ]
 ]
 

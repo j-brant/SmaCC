@@ -131,15 +131,6 @@ SmaCCGrammarCreator >> formFeedString [
 ]
 
 { #category : #private }
-SmaCCGrammarCreator >> generateImplicitToken: aSmaCCToken [
-	| node |
-	node := SmaCCGrammar implicitToken: aSmaCCToken value.
-	node isNil
-		ifTrue: [ self reportErrorMessage: 'Token not specified' on: aSmaCCToken ].
-	^ node
-]
-
-{ #category : #private }
 SmaCCGrammarCreator >> generateRHS: aCollection [
 	| rhs |
 	rhs := grammar newRHS.
@@ -246,6 +237,16 @@ SmaCCGrammarCreator >> parseCharacterBlock: aToken [
 	invert
 		ifTrue: [ node := SmaCCNotRENode on: node ].
 	^ node
+]
+
+{ #category : #private }
+SmaCCGrammarCreator >> regexNodeFor: aTokenRegex [
+	| token name |
+	token := aTokenRegex name.
+	name := token value.
+	^ grammar scannerDefinition
+		tokenNamed: name
+		ifAbsentPut: [ (SmaCCGrammar implicitToken: name) ifNil: [ self reportErrorMessage: 'Token not specified' on: token ] ]
 ]
 
 { #category : #private }
@@ -524,7 +525,7 @@ SmaCCGrammarCreator >> visitSuperclassDirective: aSuperclassDirective [
 
 { #category : #visiting }
 SmaCCGrammarCreator >> visitTokenRegex: aTokenRegex [
-	^ (grammar scannerDefinition tokenNamed: aTokenRegex name value ifAbsentPut: [ self generateImplicitToken: aTokenRegex name ]) copy
+	^ SmaCCReferenceRENode creationBlock: [ self regexNodeFor: aTokenRegex ]
 ]
 
 { #category : #visiting }

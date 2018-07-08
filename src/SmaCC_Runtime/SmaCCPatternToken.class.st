@@ -64,7 +64,11 @@ SmaCCPatternToken >> buildStructure [
 	code := value copyFrom: index + 1 to: (value lastIndexOf: $}) - 1.
 	source := 'self ' , code.
 	RBParser parseExpression: source onError: [ :s :p | self error: 'Invalid pattern expression' ].
-	Compiler evaluate: source for: self logged: false
+	self class compiler
+		source: source;
+		logged: false;
+		receiver: self;
+		evaluate
 ]
 
 { #category : #matching }
