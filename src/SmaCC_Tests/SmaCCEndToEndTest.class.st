@@ -1453,6 +1453,21 @@ SmaCCEndToEndTest >> testOptionalVariableType [
 ]
 
 { #category : #tests }
+SmaCCEndToEndTest >> testOutOfOrderTokens [
+	| parserCompiler result |
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator defaultCategory: self class category.
+	parserCompiler
+		buildDefinition:
+			'<a> : a <c>;
+			<b> : b;
+			<c> : <b> c;
+			Start ::= <a> {''1''};'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+	result := self parserClass parse: 'abc'.
+	self assert: result source = 'abc'
+]
+
+{ #category : #tests }
 SmaCCEndToEndTest >> testOverlappingTokens [
 	| parserCompiler result |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
