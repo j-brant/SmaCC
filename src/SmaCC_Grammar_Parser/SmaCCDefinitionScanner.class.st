@@ -64,12 +64,12 @@ SmaCCDefinitionScanner >> directiveId [
 
 { #category : #generated }
 SmaCCDefinitionScanner >> emptySymbolTokenId [
-	^ 87
+	^ 88
 ]
 
 { #category : #generated }
 SmaCCDefinitionScanner >> errorTokenId [
-	^ 88
+	^ 89
 ]
 
 { #category : #'initialize-release' }

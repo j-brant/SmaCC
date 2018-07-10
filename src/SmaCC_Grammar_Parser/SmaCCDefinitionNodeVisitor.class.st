@@ -55,6 +55,11 @@ SmaCCDefinitionNodeVisitor >> visitDirective: aDirective [
 ]
 
 { #category : #generated }
+SmaCCDefinitionNodeVisitor >> visitError: anError [
+	^ self visitDefinition: anError
+]
+
+{ #category : #generated }
 SmaCCDefinitionNodeVisitor >> visitErrorSymbol: anErrorSymbol [
 	^ self visitSymbol: anErrorSymbol
 ]
