@@ -85,14 +85,18 @@ SmaCCRewriteServerWorker >> processRequest: aString [
 
 { #category : #running }
 SmaCCRewriteServerWorker >> processRequests [
-	[ 
-	[ 
-	| bytes |
+	[ [ | bytes |
 	bytes := self readBytes.
-	self processRequest: bytes asString ] repeat ]
+	[ self processRequest: bytes asString ]
+		on: Halt
+		do: [ :ex | 
+			ex
+				resignalAs:
+					(Error new
+						messageText: ex messageText;
+						yourself) ] ] repeat ]
 		on: Error
-		do:
-			[ :ex | 
+		do: [ :ex | 
 			((Smalltalk options select: [ :each | '-/' includes: each first ])
 				collect: [ :each | each copyFrom: 2 to: each size ])
 				do: [ :each | 
