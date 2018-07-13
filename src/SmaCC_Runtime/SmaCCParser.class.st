@@ -177,6 +177,16 @@ SmaCCParser class >> parseStream: aStream startingAt: anInteger onError: aBlock 
 		do: (self errorBlock: aBlock)
 ]
 
+{ #category : #parsing }
+SmaCCParser class >> parseWithErrors: aString [
+	^ [ self parse: aString ]
+		on: SmaCCParserError
+		do: [ :ex | 
+			ex isResumable
+				ifTrue: [ ex resume ]
+				ifFalse: [ ex signal ] ]
+]
+
 { #category : #caching }
 SmaCCParser class >> resetCaches [
 	"self withAllSubclasses do: [:each | each resetCaches]"
@@ -307,13 +317,14 @@ SmaCCParser >> binarySearchIn: aRow for: aSymbolIndex size: step [
 
 { #category : #'error handling' }
 SmaCCParser >> checkForErrors [
-	"If we have an error correction installed, we might have handled the errors. If we did, we don't 
-	want to return the result, so we raise a final exception that can't be proceeded."
+	"If we have an error correction installed, we might have handled the errors. If we did, we may not 
+	want to return the result. Raise an error with the location of the initial error. If we want the result,
+	we can resume the exception."
 
 	errorToken isNil
 		ifTrue: [ ^ self ].
 	currentToken := errorToken.
-	self reportErrorMessage: 'Token not expected'
+	self reportErrorMessage: 'Token not expected' resumable: true
 ]
 
 { #category : #private }
@@ -400,7 +411,8 @@ SmaCCParser >> findErrorHandlerIfNoneUseErrorNumber: anInteger [
 					self reportError: anInteger ] ].
 	index - 1 timesRepeat: [ self dismissStackTopForErrorRecovery ].
 	stateStack addLast: (handlerStates at: index).
-	nodeStack addLast: startingErrorToken
+	nodeStack addLast: startingErrorToken.
+	currentToken := nil
 ]
 
 { #category : #private }
@@ -578,7 +590,13 @@ SmaCCParser >> reportError: anInteger [
 
 { #category : #'error handling' }
 SmaCCParser >> reportErrorMessage: aString [
+	self reportErrorMessage: aString resumable: false
+]
+
+{ #category : #'error handling' }
+SmaCCParser >> reportErrorMessage: aString resumable: aBoolean [
 	SmaCCParserError new
+		isResumable: aBoolean;
 		messageText: aString;
 		tag: self;
 		signal

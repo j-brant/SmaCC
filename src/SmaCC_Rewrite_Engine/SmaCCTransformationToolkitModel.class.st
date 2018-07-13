@@ -336,6 +336,7 @@ SmaCCTransformationToolkitModel >> serverRunOn: aCollection [
 		yourself.
 	(serverStream := SocketStream on: socket) binary.
 	[ serverStream
+		noTimeout;
 		nextPut: $1 asInteger;
 		nextPut: (request size bitAnd: 255);
 		nextPut: (request size >> 8 bitAnd: 255);
