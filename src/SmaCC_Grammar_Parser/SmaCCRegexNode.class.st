@@ -2,8 +2,8 @@ Class {
 	#name : #SmaCCRegexNode,
 	#superclass : #SmaCCDefinitionNode,
 	#instVars : [
-		'leftParens',
-		'rightParens'
+		'leftParen',
+		'rightParen'
 	],
 	#category : #'SmaCC_Grammar_Parser'
 }
@@ -14,33 +14,26 @@ SmaCCRegexNode >> acceptVisitor: aDefinitionVisitor [
 ]
 
 { #category : #generated }
-SmaCCRegexNode >> compositeTokenVariables [
-	^ #(#leftParens #rightParens)
-]
-
-{ #category : #'generated-initialize-release' }
-SmaCCRegexNode >> initialize [
-	super initialize.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
+SmaCCRegexNode >> leftParen [
+	^ leftParen
 ]
 
 { #category : #generated }
-SmaCCRegexNode >> leftParens [
-	^ leftParens
+SmaCCRegexNode >> leftParen: aSmaCCToken [
+	leftParen := aSmaCCToken
 ]
 
 { #category : #generated }
-SmaCCRegexNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
+SmaCCRegexNode >> rightParen [
+	^ rightParen
 ]
 
 { #category : #generated }
-SmaCCRegexNode >> rightParens [
-	^ rightParens
+SmaCCRegexNode >> rightParen: aSmaCCToken [
+	rightParen := aSmaCCToken
 ]
 
 { #category : #generated }
-SmaCCRegexNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
+SmaCCRegexNode >> tokenVariables [
+	^ #(#leftParen #rightParen)
 ]

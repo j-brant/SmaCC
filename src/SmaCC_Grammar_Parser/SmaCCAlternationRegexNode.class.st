@@ -59,5 +59,5 @@ SmaCCAlternationRegexNode >> right: aSmaCCRegexNode [
 
 { #category : #generated }
 SmaCCAlternationRegexNode >> tokenVariables [
-	^ #(#barToken)
+	^ #(#barToken #leftParen #rightParen)
 ]

@@ -2,8 +2,7 @@ Class {
 	#name : #SmaCCConcatenationRegexNode,
 	#superclass : #SmaCCRegexNode,
 	#instVars : [
-		'left',
-		'right'
+		'items'
 	],
 	#category : #'SmaCC_Grammar_Parser'
 }
@@ -14,34 +13,24 @@ SmaCCConcatenationRegexNode >> acceptVisitor: aDefinitionVisitor [
 ]
 
 { #category : #generated }
-SmaCCConcatenationRegexNode >> left [
-	^ left
+SmaCCConcatenationRegexNode >> compositeNodeVariables [
+	^ #(#items)
+]
+
+{ #category : #'generated-initialize-release' }
+SmaCCConcatenationRegexNode >> initialize [
+	super initialize.
+	items := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-SmaCCConcatenationRegexNode >> left: aSmaCCRegexNode [
-	self left notNil
-		ifTrue: [ self left parent: nil ].
-	left := aSmaCCRegexNode.
-	self left notNil
-		ifTrue: [ self left parent: self ]
+SmaCCConcatenationRegexNode >> items [
+	^ items
 ]
 
 { #category : #generated }
-SmaCCConcatenationRegexNode >> nodeVariables [
-	^ #(#left #right)
-]
-
-{ #category : #generated }
-SmaCCConcatenationRegexNode >> right [
-	^ right
-]
-
-{ #category : #generated }
-SmaCCConcatenationRegexNode >> right: aSmaCCRegexNode [
-	self right notNil
-		ifTrue: [ self right parent: nil ].
-	right := aSmaCCRegexNode.
-	self right notNil
-		ifTrue: [ self right parent: self ]
+SmaCCConcatenationRegexNode >> items: anOrderedCollection [
+	self setParents: self items to: nil.
+	items := anOrderedCollection.
+	self setParents: self items to: self
 ]

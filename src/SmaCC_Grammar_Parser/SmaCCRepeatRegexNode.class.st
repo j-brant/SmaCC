@@ -44,5 +44,5 @@ SmaCCRepeatRegexNode >> regex: aSmaCCRegexNode [
 
 { #category : #generated }
 SmaCCRepeatRegexNode >> tokenVariables [
-	^ #(#count)
+	^ #(#count #leftParen #rightParen)
 ]

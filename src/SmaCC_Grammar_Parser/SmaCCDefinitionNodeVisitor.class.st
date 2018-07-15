@@ -95,11 +95,6 @@ SmaCCDefinitionNodeVisitor >> visitKeywordSymbol: aKeywordSymbol [
 ]
 
 { #category : #generated }
-SmaCCDefinitionNodeVisitor >> visitNameRegex: aNameRegex [
-	^ self visitRegex: aNameRegex
-]
-
-{ #category : #generated }
 SmaCCDefinitionNodeVisitor >> visitNodeNameDirective: aNodeNameDirective [
 	^ self visitDirective: aNodeNameDirective
 ]
