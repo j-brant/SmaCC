@@ -95,6 +95,12 @@ SmaCCParser class >> gtExampleSmaCCParser [
 ]
 
 { #category : #'*SmaCC_Debugging_Support' }
+SmaCCParser class >> gtGraphInspectorViewIn: composite [
+	<gtInspectorPresentationOrder: 14>
+	self new gtGraphInspectorViewIn: composite
+]
+
+{ #category : #'*SmaCC_Debugging_Support' }
 SmaCCParser >> gtGraphInspectorViewIn: composite [
 	<gtInspectorPresentationOrder: 20>
 	((Smalltalk includesKey: #RTView) not
@@ -103,12 +109,6 @@ SmaCCParser >> gtGraphInspectorViewIn: composite [
 	composite roassal2
 		title: 'Graph';
 		initializeView: [ self roassalView ]
-]
-
-{ #category : #'*SmaCC_Debugging_Support' }
-SmaCCParser class >> gtGraphInspectorViewIn: composite [
-	<gtInspectorPresentationOrder: 14>
-	self new gtGraphInspectorViewIn: composite
 ]
 
 { #category : #'*SmaCC_Debugging_Support' }

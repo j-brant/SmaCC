@@ -76,7 +76,7 @@ SmaCCEdge >> hash [
 
 { #category : #testing }
 SmaCCEdge >> includes: anObject [
-	^ transitionObjects includes: anObject
+	^ transitionObjects notNil and: [ transitionObjects includes: anObject ]
 ]
 
 { #category : #testing }
