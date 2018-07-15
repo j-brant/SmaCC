@@ -9,7 +9,7 @@ Class {
 
 { #category : #'generated-accessing' }
 SmaCCDefinitionParser class >> cacheId [
-	^'2018-07-14T17:22:37.343056-05:00'
+	^'2018-07-15T07:09:42.166673-05:00'
 ]
 
 { #category : #generated }
@@ -121,18 +121,6 @@ scanner <anycharacter>
 	;
 parser <error>
 	: error
-	;
-parser <optionalLeft>
-	: \[
-	;
-parser <optionalRight>
-	: \] 
-	;
-parser <repeatLeft> 
-	: \<\% 
-	;
-parser <repeatRight> 
-	: \%\> 
 	;
 parser <classLeft> 
 	: \{\{ 
@@ -316,8 +304,12 @@ Symbol
 	: <symbolname> 
 	;
 Regex
-	: Regex 'left' ""|"" 'barToken' Regex 'right' {{AlternationRegex}}
-	| RegexTerm 'item' + {{ConcatenationRegex}}
+	: ConcatenationRegex
+	| ConcatenationRegex 'item'  (""|"" 'barToken' ConcatenationRegex 'item')+ {{AlternationRegex}}
+	;
+ConcatenationRegex
+	: RegexTerm
+	| RegexTerm 'item' RegexTerm 'item' + {{ConcatenationRegex}}
 	;
 RegexTerm
 	: <character> 'char' {{CharacterRegex}}
@@ -394,6 +386,15 @@ SmaCCDefinitionParser >> reduceActionForAttributesLine1: nodes [
 	result leftParen: (nodes at: 3).
 	result addTokens: (nodes at: 4) to: result names.
 	result rightParen: (nodes at: 5).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SmaCCDefinitionParser >> reduceActionForConcatenationRegex2: nodes [
+	| result |
+	result := SmaCCConcatenationRegexNode new.
+	result addNode: (nodes at: 1) to: result items.
+	result addNodes: (nodes at: 2) to: result items.
 	^ result
 ]
 
@@ -550,20 +551,12 @@ SmaCCDefinitionParser >> reduceActionForProductionRule1: nodes [
 ]
 
 { #category : #'generated-reduction actions' }
-SmaCCDefinitionParser >> reduceActionForRegex1: nodes [
-	| result |
-	result := SmaCCAlternationRegexNode new.
-	result left: (nodes at: 1).
-	result barToken: (nodes at: 2).
-	result right: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
 SmaCCDefinitionParser >> reduceActionForRegex2: nodes [
 	| result |
-	result := SmaCCConcatenationRegexNode new.
-	result addNodes: (nodes at: 1) to: result items.
+	result := SmaCCAlternationRegexNode new.
+	result addNode: (nodes at: 1) to: result items.
+	result addTokens: ((nodes at: 2) at: 1) to: result barTokens.
+	result addNodes: ((nodes at: 2) at: 2) to: result items.
 	^ result
 ]
 
@@ -598,8 +591,8 @@ SmaCCDefinitionParser >> reduceActionForRegexTerm2: nodes [
 SmaCCDefinitionParser >> reduceActionForRegexTerm5: nodes [
 	| result |
 	result := nodes at: 2.
-	result leftParen: (nodes at: 1).
-	result rightParen: (nodes at: 3).
+	result addFirstToken: (nodes at: 1) to: result leftParens.
+	result addToken: (nodes at: 3) to: result rightParens.
 	^ result
 ]
 
@@ -766,13 +759,42 @@ SmaCCDefinitionParser >> reduceActionForTerms1: nodes [
 	^ result
 ]
 
+{ #category : #'generated-reduction actions' }
+SmaCCDefinitionParser >> reduceActionFor______barToken__ConcatenationRegex__item__1: nodes [
+	| result |
+	result := Array new: 2.
+	result at: 1 put: (nodes at: 1).
+	result at: 2 put: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SmaCCDefinitionParser >> reduceActionFor______barToken__ConcatenationRegex__item___1: nodes [
+	| result |
+	result := Array new: 2.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	self add: ((nodes at: 1) at: 1) to: (result at: 1).
+	self add: ((nodes at: 1) at: 2) to: (result at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SmaCCDefinitionParser >> reduceActionFor______barToken__ConcatenationRegex__item___2: nodes [
+	| result |
+	result := nodes at: 1.
+	self add: ((nodes at: 2) at: 1) to: (result at: 1).
+	self add: ((nodes at: 2) at: 2) to: (result at: 2).
+	^ result
+]
+
 { #category : #generated }
 SmaCCDefinitionParser >> reduceTable [
 ^#(
 	#(74 0 #reduceActionForStartRegex1:) 
 	#(48 0 #reduceActionForStartDirective1:) 
 	#(76 1 #liftFirstValue:) 
-	#(81 0 #reduceActionForStartProduction1:) 
+	#(84 0 #reduceActionForStartProduction1:) 
 	#(42 1 #reduceActionForFile1:) 
 	#(43 1 #reduceActionForRules1:) 
 	#(44 1 #reduceActionForRule4:) 
@@ -782,24 +804,24 @@ SmaCCDefinitionParser >> reduceTable [
 	#(49 0 #reduceActionForEndDirective1:) 
 	#(73 2 #reduceActionForRegexRule2:) 
 	#(45 2 #reduceActionForError1:) 
-	#(85 0 #reduceActionForTerms1:) 
+	#(88 0 #reduceActionForTerms1:) 
 	#(51 0 #reduceActionForTerms1:) 
 	#(68 1 #reduceActionForGLR1:) 
 	#(71 1 #reduceActionForGLR1:) 
 	#(72 1 #reduceActionForGLR1:) 
 	#(47 1 #liftFirstValue:) 
-	#(82 0 #reduceActionForEndDirective1:) 
-	#(83 1 #reduceActionForParserRules2:) 
-	#(84 1 #reduceActionForParserRule1:) 
+	#(85 0 #reduceActionForEndDirective1:) 
+	#(86 1 #reduceActionForParserRules2:) 
+	#(87 1 #reduceActionForParserRule1:) 
 	#(50 2 #reduceActionForScopesLine1:) 
 	#(52 2 #reduceActionForScopesLine1:) 
 	#(53 2 #reduceActionForRootClassLine1:) 
 	#(58 2 #reduceActionForRootClassLine1:) 
 	#(59 2 #reduceActionForRootClassLine1:) 
-	#(88 1 #reduceActionForTerm2:) 
-	#(88 1 #reduceActionForTerm3:) 
-	#(88 1 #reduceActionForTerm1:) 
-	#(88 1 #reduceActionForTerm4:) 
+	#(91 1 #reduceActionForTerm2:) 
+	#(91 1 #reduceActionForTerm3:) 
+	#(91 1 #reduceActionForTerm1:) 
+	#(91 1 #reduceActionForTerm4:) 
 	#(60 2 #reduceActionForLeftLine1:) 
 	#(63 1 #reduceActionForRules1:) 
 	#(61 2 #reduceActionForLeftLine1:) 
@@ -808,16 +830,16 @@ SmaCCDefinitionParser >> reduceTable [
 	#(64 2 #reduceActionForIdMethodLine1:) 
 	#(67 1 #reduceActionForRules1:) 
 	#(66 2 #reduceActionForStartLine1:) 
-	#(79 1 #reduceActionForRegexTerm7:) 
-	#(79 1 #reduceActionForRegexTerm2:) 
-	#(79 1 #reduceActionForRegexTerm6:) 
+	#(82 1 #reduceActionForRegexTerm7:) 
+	#(82 1 #reduceActionForRegexTerm2:) 
+	#(82 1 #reduceActionForRegexTerm6:) 
 	#(75 0 #reduceActionForEndDirective1:) 
-	#(77 1 #reduceActionForRegex2:) 
-	#(78 1 #reduceActionForRules1:) 
-	#(84 2 #reduceActionForParserRule2:) 
-	#(85 2 #reduceActionForRules2:) 
-	#(86 1 #liftFirstValue:) 
-	#(87 1 #liftFirstValue:) 
+	#(77 1 #liftFirstValue:) 
+	#(80 1 #liftFirstValue:) 
+	#(87 2 #reduceActionForParserRule2:) 
+	#(88 2 #reduceActionForRules2:) 
+	#(89 1 #liftFirstValue:) 
+	#(90 1 #liftFirstValue:) 
 	#(51 2 #reduceActionForRules2:) 
 	#(57 0 #reduceActionForTerms1:) 
 	#(56 0 #reduceActionForTerms1:) 
@@ -827,19 +849,24 @@ SmaCCDefinitionParser >> reduceTable [
 	#(46 5 #reduceActionForDirectiveLine1:) 
 	#(70 1 #reduceActionForRules1:) 
 	#(69 3 #reduceActionForIgnoredVariables1:) 
-	#(78 2 #reduceActionForRules2:) 
-	#(79 2 #reduceActionForRegexTerm8:) 
-	#(83 3 #reduceActionForParserRules1:) 
-	#(80 6 #reduceActionForProductionRule1:) 
-	#(84 3 #reduceActionForParserRule4:) 
-	#(86 2 #reduceActionForSpecialTerm4:) 
-	#(87 2 #reduceActionForNamedTerm2:) 
+	#(79 1 #reduceActionFor______barToken__ConcatenationRegex__item___1:) 
+	#(77 2 #reduceActionForRegex2:) 
+	#(82 2 #reduceActionForRegexTerm8:) 
+	#(80 2 #reduceActionForConcatenationRegex2:) 
+	#(81 1 #reduceActionForRules1:) 
+	#(86 3 #reduceActionForParserRules1:) 
+	#(83 6 #reduceActionForProductionRule1:) 
+	#(87 3 #reduceActionForParserRule4:) 
+	#(89 2 #reduceActionForSpecialTerm4:) 
+	#(90 2 #reduceActionForNamedTerm2:) 
 	#(70 2 #reduceActionForRules2:) 
-	#(79 3 #reduceActionForRegexTerm5:) 
-	#(77 3 #reduceActionForRegex1:) 
+	#(82 3 #reduceActionForRegexTerm5:) 
 	#(73 6 #reduceActionForRegexRule1:) 
-	#(86 3 #reduceActionForSpecialTerm5:) 
-	#(84 4 #reduceActionForParserRule3:) 
+	#(78 2 #reduceActionFor______barToken__ConcatenationRegex__item__1:) 
+	#(79 2 #reduceActionFor______barToken__ConcatenationRegex__item___2:) 
+	#(81 2 #reduceActionForRules2:) 
+	#(89 3 #reduceActionForSpecialTerm5:) 
+	#(87 4 #reduceActionForParserRule3:) 
 	#(54 5 #reduceActionForSuperclassLine1:) 
 	#(57 2 #reduceActionForRules2:) 
 	#(55 5 #reduceActionForAttributesLine1:) 
@@ -849,38 +876,38 @@ SmaCCDefinitionParser >> reduceTable [
 
 { #category : #generated }
 SmaCCDefinitionParser >> symbolNames [
-	^ #('"("' '")"' '"*"' '"+"' '"?"' '"|"' '<scopes>' '<excludes>' '<root>' '<hierarchy>' '<attributes>' '<prefix>' '<suffix>' '<left>' '<right>' '<nonassoc>' '<id>' '<start>' '<glr>' '<ignorecase>' '<ignorevariables>' '<annotate_tokens>' '<whitespace>' '<tokenname>' '<symbolname>' '<keyword>' '<comment>' '<code>' '<variablename>' '<production>' '<directive>' '<semicolon>' '<backslashcharacter>' '<characterblock>' '<repeat>' '<character>' '<anycharacter>' '<error>' '<classLeft>' '<classRight>' 'B e g i n' 'File' 'Rules' 'Rule' 'Error' 'DirectiveLine' 'Directive' 'StartDirective' 'EndDirective' 'ScopesLine' 'Scopes' 'ExcludeScopesLine' 'RootClassLine' 'SuperclassLine' 'AttributesLine' 'IvarList' 'ClassList' 'PrefixLine' 'SuffixLine' 'LeftLine' 'RightLine' 'NonAssociativeLine' 'TokenList' 'IdMethodLine' 'IdTokens' 'StartLine' 'StartingTokens' 'GLR' 'IgnoredVariables' 'IgnoredVariableList' 'IgnoreCase' 'AnnotateTokens' 'RegexRule' 'StartRegex' 'EndRegex' 'Symbol' 'Regex' 'RegexTerm ''item'' +' 'RegexTerm' 'ProductionRule' 'StartProduction' 'EndProduction' 'ParserRules' 'ParserRule' 'Terms' 'SpecialTerm' 'NamedTerm' 'Term' 'E O F' 'error')
+	^ #('"("' '")"' '"*"' '"+"' '"?"' '"|"' '<scopes>' '<excludes>' '<root>' '<hierarchy>' '<attributes>' '<prefix>' '<suffix>' '<left>' '<right>' '<nonassoc>' '<id>' '<start>' '<glr>' '<ignorecase>' '<ignorevariables>' '<annotate_tokens>' '<whitespace>' '<tokenname>' '<symbolname>' '<keyword>' '<comment>' '<code>' '<variablename>' '<production>' '<directive>' '<semicolon>' '<backslashcharacter>' '<characterblock>' '<repeat>' '<character>' '<anycharacter>' '<error>' '<classLeft>' '<classRight>' 'B e g i n' 'File' 'Rules' 'Rule' 'Error' 'DirectiveLine' 'Directive' 'StartDirective' 'EndDirective' 'ScopesLine' 'Scopes' 'ExcludeScopesLine' 'RootClassLine' 'SuperclassLine' 'AttributesLine' 'IvarList' 'ClassList' 'PrefixLine' 'SuffixLine' 'LeftLine' 'RightLine' 'NonAssociativeLine' 'TokenList' 'IdMethodLine' 'IdTokens' 'StartLine' 'StartingTokens' 'GLR' 'IgnoredVariables' 'IgnoredVariableList' 'IgnoreCase' 'AnnotateTokens' 'RegexRule' 'StartRegex' 'EndRegex' 'Symbol' 'Regex' '("|" ''barToken'' ConcatenationRegex ''item'')' '("|" ''barToken'' ConcatenationRegex ''item'')+' 'ConcatenationRegex' 'RegexTerm ''item'' +' 'RegexTerm' 'ProductionRule' 'StartProduction' 'EndProduction' 'ParserRules' 'ParserRule' 'Terms' 'SpecialTerm' 'NamedTerm' 'Term' 'E O F' 'error')
 ]
 
 { #category : #generated }
 SmaCCDefinitionParser >> symbolTypes [
-	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCGrammarDefinitionNode #SmaCCGrammarDefinitionNode #OrderedCollection #SmaCCDefinitionNode #SmaCCErrorNode #SmaCCDirectiveNode #SmaCCDirectiveNode nil nil #SmaCCScopeDirectiveNode #OrderedCollection #SmaCCScopeDirectiveNode #SmaCCNodeNameDirectiveNode #SmaCCSuperclassDirectiveNode #SmaCCAttributeDirectiveNode #OrderedCollection #OrderedCollection #SmaCCNodeNameDirectiveNode #SmaCCNodeNameDirectiveNode #SmaCCAssociativeDirectiveNode #SmaCCAssociativeDirectiveNode #SmaCCAssociativeDirectiveNode #OrderedCollection #SmaCCIdDirectiveNode #OrderedCollection #SmaCCStartDirectiveNode #OrderedCollection #SmaCCFlagDirectiveNode #SmaCCIgnoreVariableDirectiveNode #OrderedCollection #SmaCCFlagDirectiveNode #SmaCCFlagDirectiveNode #SmaCCTokenRuleNode nil nil #SmaCCToken #SmaCCRegexNode #OrderedCollection #SmaCCRegexNode #SmaCCProductionRuleNode nil nil #OrderedCollection #SmaCCProductionExpressionNode #OrderedCollection #SmaCCDefinitionNode #SmaCCSymbolNode #SmaCCSymbolNode #SmaCCToken #SmaCCToken)
+	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCGrammarDefinitionNode #SmaCCGrammarDefinitionNode #OrderedCollection #SmaCCDefinitionNode #SmaCCErrorNode #SmaCCDirectiveNode #SmaCCDirectiveNode nil nil #SmaCCScopeDirectiveNode #OrderedCollection #SmaCCScopeDirectiveNode #SmaCCNodeNameDirectiveNode #SmaCCSuperclassDirectiveNode #SmaCCAttributeDirectiveNode #OrderedCollection #OrderedCollection #SmaCCNodeNameDirectiveNode #SmaCCNodeNameDirectiveNode #SmaCCAssociativeDirectiveNode #SmaCCAssociativeDirectiveNode #SmaCCAssociativeDirectiveNode #OrderedCollection #SmaCCIdDirectiveNode #OrderedCollection #SmaCCStartDirectiveNode #OrderedCollection #SmaCCFlagDirectiveNode #SmaCCIgnoreVariableDirectiveNode #OrderedCollection #SmaCCFlagDirectiveNode #SmaCCFlagDirectiveNode #SmaCCTokenRuleNode nil nil #SmaCCToken #SmaCCRegexNode #OrderedCollection #OrderedCollection #SmaCCRegexNode #OrderedCollection #SmaCCRegexNode #SmaCCProductionRuleNode nil nil #OrderedCollection #SmaCCProductionExpressionNode #OrderedCollection #SmaCCDefinitionNode #SmaCCSymbolNode #SmaCCSymbolNode #SmaCCToken #SmaCCToken)
 ]
 
 { #category : #generated }
 SmaCCDefinitionParser >> transitionTable [
 ^#(
-#[1 0 6 0 24 0 9 0 25 0 10 0 31 0 13 0 42 0 17 0 43 0 21 0 44 0 25 0 45 0 21 0 46 0 33 0 48 0 21 0 73 0 41 0 74 0 45 0 76 0 21 0 80 0 53 0 90] 
-#[1 0 14 0 24 0 14 0 25 0 18 0 30 0 57 0 81] 
-#[0 0 0 0 89] 
-#[1 0 6 0 24 0 9 0 25 0 10 0 31 0 61 0 44 0 25 0 45 0 61 0 46 0 33 0 48 0 61 0 73 0 41 0 74 0 45 0 76 0 61 0 80 0 22 0 89 0 53 0 90] 
-#[0 0 26 0 24 0 25 0 31 0 89 0 90] 
-#[0 0 30 0 24 0 25 0 31 0 89 0 90] 
-#[0 0 34 0 24 0 25 0 31 0 89 0 90] 
+#[1 0 6 0 24 0 9 0 25 0 10 0 31 0 13 0 42 0 17 0 43 0 21 0 44 0 25 0 45 0 21 0 46 0 33 0 48 0 21 0 73 0 41 0 74 0 45 0 76 0 21 0 83 0 53 0 93] 
+#[1 0 14 0 24 0 14 0 25 0 18 0 30 0 57 0 84] 
+#[0 0 0 0 92] 
+#[1 0 6 0 24 0 9 0 25 0 10 0 31 0 61 0 44 0 25 0 45 0 61 0 46 0 33 0 48 0 61 0 73 0 41 0 74 0 45 0 76 0 61 0 83 0 22 0 92 0 53 0 93] 
+#[0 0 26 0 24 0 25 0 31 0 92 0 93] 
+#[0 0 30 0 24 0 25 0 31 0 92 0 93] 
+#[0 0 34 0 24 0 25 0 31 0 92 0 93] 
 #[0 0 65 0 31] 
-#[0 0 34 0 24 0 25 0 31 0 89 0 90] 
+#[0 0 34 0 24 0 25 0 31 0 92 0 93] 
 #[0 0 69 0 24] 
 #[1 0 6 0 24 0 45 0 25 0 77 0 73 0 41 0 74 0 45 0 76] 
-#[0 0 34 0 24 0 25 0 31 0 89 0 90] 
-#[1 0 38 0 24 0 38 0 25 0 38 0 31 0 81 0 32 0 38 0 89 0 38 0 90] 
+#[0 0 34 0 24 0 25 0 31 0 92 0 93] 
+#[1 0 38 0 24 0 38 0 25 0 38 0 31 0 81 0 32 0 38 0 92 0 38 0 93] 
 #[0 0 85 0 30] 
-#[0 0 42 0 24 0 25 0 31 0 89 0 90] 
+#[0 0 42 0 24 0 25 0 31 0 92 0 93] 
 #[1 0 89 0 7 0 93 0 8 0 97 0 9 0 101 0 10 0 105 0 11 0 109 0 12 0 113 0 13 0 117 0 14 0 121 0 15 0 125 0 16 0 129 0 17 0 133 0 18 0 137 0 19 0 141 0 20 0 46 0 21 0 145 0 22 0 149 0 47 0 153 0 49 0 149 0 50 0 149 0 52 0 149 0 53 0 149 0 54 0 149 0 55 0 149 0 58 0 149 0 59 0 149 0 60 0 149 0 61 0 149 0 62 0 149 0 64 0 149 0 66 0 149 0 68 0 149 0 69 0 149 0 71 0 149 0 72] 
 #[0 0 221 0 30] 
 #[0 0 14 0 24 0 25 0 32] 
-#[0 0 50 0 24 0 25 0 31 0 89 0 90] 
-#[0 0 54 0 24 0 25 0 31 0 89 0 90] 
-#[1 0 58 0 1 0 58 0 6 0 58 0 24 0 58 0 25 0 58 0 26 0 58 0 28 0 58 0 32 0 58 0 38 0 58 0 39 0 225 0 83 0 229 0 84 0 233 0 85] 
+#[0 0 50 0 24 0 25 0 31 0 92 0 93] 
+#[0 0 54 0 24 0 25 0 31 0 92 0 93] 
+#[1 0 58 0 1 0 58 0 6 0 58 0 24 0 58 0 25 0 58 0 26 0 58 0 28 0 58 0 32 0 58 0 38 0 58 0 39 0 225 0 86 0 229 0 87 0 233 0 88] 
 #[1 0 62 0 25 0 62 0 32 0 237 0 51] 
 #[1 0 62 0 25 0 62 0 32 0 241 0 51] 
 #[0 0 245 0 25] 
@@ -888,9 +915,9 @@ SmaCCDefinitionParser >> transitionTable [
 #[0 0 253 0 25] 
 #[0 1 1 0 25] 
 #[0 1 5 0 25] 
-#[1 1 9 0 24 1 13 0 25 1 17 0 26 1 21 0 38 1 25 0 63 1 29 0 88] 
-#[1 1 9 0 24 1 13 0 25 1 17 0 26 1 21 0 38 1 33 0 63 1 29 0 88] 
-#[1 1 9 0 24 1 13 0 25 1 17 0 26 1 21 0 38 1 37 0 63 1 29 0 88] 
+#[1 1 9 0 24 1 13 0 25 1 17 0 26 1 21 0 38 1 25 0 63 1 29 0 91] 
+#[1 1 9 0 24 1 13 0 25 1 17 0 26 1 21 0 38 1 33 0 63 1 29 0 91] 
+#[1 1 9 0 24 1 13 0 25 1 17 0 26 1 21 0 38 1 37 0 63 1 29 0 91] 
 #[1 1 41 0 24 1 45 0 65] 
 #[1 1 49 0 25 1 53 0 67] 
 #[0 0 66 0 32] 
@@ -914,10 +941,10 @@ SmaCCDefinitionParser >> transitionTable [
 #[0 0 78 0 32] 
 #[0 0 78 0 32] 
 #[0 0 78 0 32] 
-#[1 1 65 0 1 1 69 0 24 1 73 0 31 1 77 0 33 1 81 0 34 1 85 0 36 1 89 0 37 1 93 0 77 1 97 0 78 1 101 0 79] 
-#[1 1 105 0 6 0 82 0 32 1 109 0 82] 
+#[1 1 65 0 1 1 69 0 24 1 73 0 31 1 77 0 33 1 81 0 34 1 85 0 36 1 89 0 37 1 93 0 77 1 97 0 80 1 101 0 82] 
+#[1 1 105 0 6 0 82 0 32 1 109 0 85] 
 #[0 0 86 0 2 0 6 0 32] 
-#[1 1 113 0 1 0 90 0 2 0 90 0 6 1 9 0 24 1 13 0 25 1 17 0 26 1 117 0 28 0 90 0 32 1 21 0 38 1 121 0 39 1 125 0 86 1 125 0 87 1 133 0 88] 
+#[1 1 113 0 1 0 90 0 2 0 90 0 6 1 9 0 24 1 13 0 25 1 17 0 26 1 117 0 28 0 90 0 32 1 21 0 38 1 121 0 39 1 125 0 89 1 125 0 90 1 133 0 91] 
 #[1 1 137 0 25 0 94 0 32 1 137 0 76] 
 #[1 1 137 0 25 0 98 0 32 1 137 0 76] 
 #[0 0 102 0 32] 
@@ -929,72 +956,77 @@ SmaCCDefinitionParser >> transitionTable [
 #[0 0 118 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 25 0 26 0 28 0 29 0 32 0 38 0 39] 
 #[0 0 122 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 25 0 26 0 28 0 29 0 32 0 38 0 39] 
 #[0 0 126 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 25 0 26 0 28 0 29 0 32 0 38 0 39] 
-#[1 1 9 0 24 1 13 0 25 1 17 0 26 0 130 0 32 1 21 0 38 1 149 0 88] 
+#[1 1 9 0 24 1 13 0 25 1 17 0 26 0 130 0 32 1 21 0 38 1 149 0 91] 
 #[0 0 134 0 24 0 25 0 26 0 32 0 38] 
-#[1 1 9 0 24 1 13 0 25 1 17 0 26 0 138 0 32 1 21 0 38 1 149 0 88] 
-#[1 1 9 0 24 1 13 0 25 1 17 0 26 0 142 0 32 1 21 0 38 1 149 0 88] 
+#[1 1 9 0 24 1 13 0 25 1 17 0 26 0 138 0 32 1 21 0 38 1 149 0 91] 
+#[1 1 9 0 24 1 13 0 25 1 17 0 26 0 142 0 32 1 21 0 38 1 149 0 91] 
 #[0 0 146 0 24 0 32] 
 #[1 1 153 0 24 0 150 0 32] 
 #[0 0 154 0 25 0 32] 
 #[1 1 157 0 25 0 158 0 32] 
 #[0 1 161 0 32] 
 #[1 1 165 0 25 1 169 0 70] 
-#[1 1 65 0 1 1 69 0 24 1 73 0 31 1 77 0 33 1 81 0 34 1 85 0 36 1 89 0 37 1 173 0 77 1 97 0 78 1 101 0 79] 
+#[1 1 65 0 1 1 69 0 24 1 73 0 31 1 77 0 33 1 81 0 34 1 85 0 36 1 89 0 37 1 173 0 77 1 97 0 80 1 101 0 82] 
 #[0 0 162 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 31 0 32 0 33 0 34 0 35 0 36 0 37] 
 #[0 0 166 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 31 0 32 0 33 0 34 0 35 0 36 0 37] 
 #[0 0 166 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 31 0 32 0 33 0 34 0 35 0 36 0 37] 
 #[0 0 170 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 31 0 32 0 33 0 34 0 35 0 36 0 37] 
 #[0 0 166 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 31 0 32 0 33 0 34 0 35 0 36 0 37] 
 #[0 0 166 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 31 0 32 0 33 0 34 0 35 0 36 0 37] 
-#[1 1 177 0 6 0 174 0 32 1 181 0 75] 
-#[1 1 65 0 1 0 178 0 2 0 178 0 6 1 69 0 24 1 73 0 31 0 178 0 32 1 77 0 33 1 81 0 34 1 85 0 36 1 89 0 37 1 185 0 79] 
-#[1 0 182 0 1 0 182 0 2 1 189 0 3 1 193 0 4 1 197 0 5 0 182 0 6 0 182 0 24 0 182 0 31 0 182 0 32 0 182 0 33 0 182 0 34 1 201 0 35 0 182 0 36 0 182 0 37] 
-#[1 0 58 0 1 0 58 0 2 0 58 0 6 0 58 0 24 0 58 0 25 0 58 0 26 0 58 0 28 0 58 0 32 0 58 0 38 0 58 0 39 1 205 0 84 0 233 0 85] 
-#[0 1 209 0 32] 
-#[1 0 58 0 1 0 58 0 2 0 58 0 6 0 58 0 24 0 58 0 25 0 58 0 26 0 58 0 28 0 58 0 38 0 58 0 39 1 213 0 83 0 229 0 84 0 233 0 85] 
+#[1 0 174 0 32 1 177 0 75] 
+#[1 0 178 0 2 1 181 0 6 0 178 0 32 1 185 0 78 1 189 0 79] 
+#[1 1 65 0 1 0 182 0 2 1 193 0 3 1 197 0 4 1 201 0 5 0 182 0 6 1 69 0 24 1 73 0 31 0 182 0 32 1 77 0 33 1 81 0 34 1 205 0 35 1 85 0 36 1 89 0 37 1 209 0 81 1 213 0 82] 
+#[1 0 58 0 1 0 58 0 2 0 58 0 6 0 58 0 24 0 58 0 25 0 58 0 26 0 58 0 28 0 58 0 32 0 58 0 38 0 58 0 39 1 217 0 87 0 233 0 88] 
+#[0 1 221 0 32] 
+#[1 0 58 0 1 0 58 0 2 0 58 0 6 0 58 0 24 0 58 0 25 0 58 0 26 0 58 0 28 0 58 0 38 0 58 0 39 1 225 0 86 0 229 0 87 0 233 0 88] 
 #[0 0 186 0 2 0 6 0 32] 
-#[1 1 217 0 25 1 221 0 40] 
-#[1 0 190 0 1 0 190 0 2 1 225 0 3 1 229 0 4 1 233 0 5 0 190 0 6 0 190 0 24 0 190 0 25 0 190 0 26 0 190 0 28 0 190 0 32 0 190 0 38 0 190 0 39] 
+#[1 1 229 0 25 1 233 0 40] 
+#[1 0 190 0 1 0 190 0 2 1 237 0 3 1 241 0 4 1 245 0 5 0 190 0 6 0 190 0 24 0 190 0 25 0 190 0 26 0 190 0 28 0 190 0 32 0 190 0 38 0 190 0 39] 
 #[0 0 194 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 25 0 26 0 28 0 32 0 38 0 39] 
-#[1 0 198 0 1 0 198 0 2 0 198 0 3 0 198 0 4 0 198 0 5 0 198 0 6 0 198 0 24 0 198 0 25 0 198 0 26 0 198 0 28 1 237 0 29 0 198 0 32 0 198 0 38 0 198 0 39] 
+#[1 0 198 0 1 0 198 0 2 0 198 0 3 0 198 0 4 0 198 0 5 0 198 0 6 0 198 0 24 0 198 0 25 0 198 0 26 0 198 0 28 1 249 0 29 0 198 0 32 0 198 0 38 0 198 0 39] 
 #[0 0 202 0 25 0 32] 
-#[1 0 206 0 2 0 206 0 25 1 241 0 57] 
-#[1 0 210 0 2 0 210 0 25 1 245 0 56] 
+#[1 0 206 0 2 0 206 0 25 1 253 0 57] 
+#[1 0 210 0 2 0 210 0 25 2 1 0 56] 
 #[0 0 214 0 24 0 25 0 26 0 32 0 38] 
 #[0 0 218 0 24 0 32] 
 #[0 0 222 0 25 0 32] 
-#[0 0 226 0 24 0 25 0 31 0 89 0 90] 
+#[0 0 226 0 24 0 25 0 31 0 92 0 93] 
 #[0 0 230 0 25 0 32] 
-#[1 1 249 0 25 0 234 0 32] 
-#[1 1 253 0 2 1 177 0 6] 
-#[1 1 65 0 1 1 69 0 24 1 73 0 31 1 77 0 33 1 81 0 34 1 85 0 36 1 89 0 37 2 1 0 77 1 97 0 78 1 101 0 79] 
-#[0 2 5 0 32] 
-#[1 0 238 0 1 0 238 0 2 1 189 0 3 1 193 0 4 1 197 0 5 0 238 0 6 0 238 0 24 0 238 0 31 0 238 0 32 0 238 0 33 0 238 0 34 1 201 0 35 0 238 0 36 0 238 0 37] 
-#[0 0 242 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 31 0 32 0 33 0 34 0 35 0 36 0 37] 
-#[0 0 242 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 31 0 32 0 33 0 34 0 35 0 36 0 37] 
-#[0 0 242 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 31 0 32 0 33 0 34 0 35 0 36 0 37] 
-#[0 0 242 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 31 0 32 0 33 0 34 0 35 0 36 0 37] 
-#[0 0 246 0 2 0 6 0 32] 
-#[0 0 250 0 24 0 25 0 31 0 89 0 90] 
-#[1 2 9 0 2 1 105 0 6] 
-#[0 2 13 0 40] 
-#[0 0 254 0 2 0 6 0 32] 
-#[0 1 2 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 25 0 26 0 28 0 32 0 38 0 39] 
-#[0 1 2 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 25 0 26 0 28 0 32 0 38 0 39] 
-#[0 1 2 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 25 0 26 0 28 0 32 0 38 0 39] 
-#[0 1 6 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 25 0 26 0 28 0 32 0 38 0 39] 
-#[1 2 17 0 2 2 21 0 25] 
-#[1 2 25 0 2 2 29 0 25] 
-#[0 1 10 0 25 0 32] 
-#[0 1 14 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 31 0 32 0 33 0 34 0 35 0 36 0 37] 
-#[0 1 18 0 2 0 6 0 32] 
-#[0 1 22 0 24 0 25 0 31 0 89 0 90] 
-#[0 1 26 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 25 0 26 0 28 0 32 0 38 0 39] 
-#[0 1 30 0 2 0 6 0 32] 
-#[0 1 34 0 32] 
-#[0 1 38 0 2 0 25] 
-#[0 1 42 0 32] 
-#[0 1 46 0 2 0 25]
+#[1 2 5 0 25 0 234 0 32] 
+#[0 2 9 0 2] 
+#[0 2 13 0 32] 
+#[1 1 65 0 1 1 69 0 24 1 73 0 31 1 77 0 33 1 81 0 34 1 85 0 36 1 89 0 37 2 17 0 80 1 101 0 82] 
+#[0 0 238 0 2 0 6 0 32] 
+#[1 0 242 0 2 1 181 0 6 0 242 0 32 2 21 0 78] 
+#[0 0 246 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 31 0 32 0 33 0 34 0 35 0 36 0 37] 
+#[0 0 246 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 31 0 32 0 33 0 34 0 35 0 36 0 37] 
+#[0 0 246 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 31 0 32 0 33 0 34 0 35 0 36 0 37] 
+#[0 0 246 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 31 0 32 0 33 0 34 0 35 0 36 0 37] 
+#[1 1 65 0 1 0 250 0 2 0 250 0 6 1 69 0 24 1 73 0 31 0 250 0 32 1 77 0 33 1 81 0 34 1 85 0 36 1 89 0 37 2 25 0 82] 
+#[1 0 254 0 1 0 254 0 2 1 193 0 3 1 197 0 4 1 201 0 5 0 254 0 6 0 254 0 24 0 254 0 31 0 254 0 32 0 254 0 33 0 254 0 34 1 205 0 35 0 254 0 36 0 254 0 37] 
+#[0 1 2 0 2 0 6 0 32] 
+#[0 1 6 0 24 0 25 0 31 0 92 0 93] 
+#[1 2 29 0 2 1 105 0 6] 
+#[0 2 33 0 40] 
+#[0 1 10 0 2 0 6 0 32] 
+#[0 1 14 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 25 0 26 0 28 0 32 0 38 0 39] 
+#[0 1 14 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 25 0 26 0 28 0 32 0 38 0 39] 
+#[0 1 14 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 25 0 26 0 28 0 32 0 38 0 39] 
+#[0 1 18 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 25 0 26 0 28 0 32 0 38 0 39] 
+#[1 2 37 0 2 2 41 0 25] 
+#[1 2 45 0 2 2 49 0 25] 
+#[0 1 22 0 25 0 32] 
+#[0 1 26 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 31 0 32 0 33 0 34 0 35 0 36 0 37] 
+#[0 1 30 0 24 0 25 0 31 0 92 0 93] 
+#[0 1 34 0 2 0 6 0 32] 
+#[0 1 38 0 2 0 6 0 32] 
+#[1 1 42 0 1 1 42 0 2 1 193 0 3 1 197 0 4 1 201 0 5 1 42 0 6 1 42 0 24 1 42 0 31 1 42 0 32 1 42 0 33 1 42 0 34 1 205 0 35 1 42 0 36 1 42 0 37] 
+#[0 1 46 0 1 0 2 0 3 0 4 0 5 0 6 0 24 0 25 0 26 0 28 0 32 0 38 0 39] 
+#[0 1 50 0 2 0 6 0 32] 
+#[0 1 54 0 32] 
+#[0 1 58 0 2 0 25] 
+#[0 1 62 0 32] 
+#[0 1 66 0 2 0 25]
 	).
 ]
 

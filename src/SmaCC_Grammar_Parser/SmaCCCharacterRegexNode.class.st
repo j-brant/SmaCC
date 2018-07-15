@@ -24,5 +24,5 @@ SmaCCCharacterRegexNode >> char: aSmaCCToken [
 
 { #category : #generated }
 SmaCCCharacterRegexNode >> tokenVariables [
-	^ #(#char #leftParen #rightParen)
+	^ #(#char)
 ]

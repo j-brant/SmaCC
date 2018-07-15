@@ -2,5 +2,5 @@ Extension { #name : #SmaCCAlternationRegexNode }
 
 { #category : #'*SmaCC_Development' }
 SmaCCAlternationRegexNode >> asRegularExpression [
-	^ self left regularExpression | self right regularExpression
+	^ SmaCCOrRENode nodes: (self items collect: [ :each | each regularExpression ])
 ]

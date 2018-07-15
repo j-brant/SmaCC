@@ -24,5 +24,5 @@ SmaCCTokenRegexNode >> name: aSmaCCToken [
 
 { #category : #generated }
 SmaCCTokenRegexNode >> tokenVariables [
-	^ #(#name #leftParen #rightParen)
+	^ #(#name)
 ]
