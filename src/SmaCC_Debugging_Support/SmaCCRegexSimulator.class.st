@@ -12,7 +12,7 @@ Class {
 { #category : #examples }
 SmaCCRegexSimulator class >> example [
 	<gtExample>
-	^ self new on: SmaCCDefinitionParser definitionAST tokenName: '<name>'
+	^ self on: SmaCCDefinitionParser definitionAST tokenName: '<name>'
 ]
 
 { #category : #examples }
