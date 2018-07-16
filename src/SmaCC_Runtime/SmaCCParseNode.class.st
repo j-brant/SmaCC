@@ -178,6 +178,16 @@ SmaCCParseNode >> allNodesOfType: aClass do: nodeBlock [
 ]
 
 { #category : #accessing }
+SmaCCParseNode >> allParents [
+	| parents |
+	parent isNil
+		ifTrue: [ ^ #() ].
+	parents := OrderedCollection with: parent.
+	[ parents last parent notNil ] whileTrue: [ parents addLast: parents last parent ].
+	^ parents
+]
+
+{ #category : #accessing }
 SmaCCParseNode >> allTokens [
 	| tokens |
 	tokens := OrderedCollection new.
