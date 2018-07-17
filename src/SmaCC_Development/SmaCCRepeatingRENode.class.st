@@ -49,17 +49,15 @@ SmaCCRepeatingRENode class >> finiteInfinity [
 { #category : #private }
 SmaCCRepeatingRENode >> asNFAStartingWith: aSmaCCNode [
 	| endNode start |
-	start := self addStateTransitionsTo: aSmaCCNode.
+	start := SmaCCNode new.
+	(self addStateTransitionsTo: aSmaCCNode) addEdgeTo: start.
 	endNode := SmaCCNode new.
 	endNode action: action.
-	minimumMatches
-		timesRepeat: [ start := node asNFAStartingWith: start ].
+	minimumMatches timesRepeat: [ start := node asNFAStartingWith: start ].
 	start addEdgeTo: endNode.
 	maximumMatches < self class finiteInfinity
-		ifTrue:
-			[ maximumMatches - minimumMatches
-				timesRepeat:
-					[ start := node asNFAStartingWith: start.
+		ifTrue: [ maximumMatches - minimumMatches
+				timesRepeat: [ start := node asNFAStartingWith: start.
 					start addEdgeTo: endNode ] ]
 		ifFalse: [ (node asNFAStartingWith: start) addEdgeTo: start ].
 	^ endNode
