@@ -37,13 +37,13 @@ SmaCCRegexSimulator >> buildErrorNFA [
 ]
 
 { #category : #private }
-SmaCCRegexSimulator >> expandEpsilonTransitions: aCollection [
+SmaCCRegexSimulator >> expandEpsilonAndSymbolTransitions: aCollection [
 	| todo |
 	todo := OrderedCollection withAll: aCollection.
 	[ todo notEmpty ]
 		whileTrue: [ todo removeFirst transitions
 				do: [ :each | 
-					each isEpsilonTransition
+					(each isEpsilonTransition or: [ each isCharacterTransition not ])
 						ifTrue: [ (aCollection includes: each to)
 								ifFalse: [ aCollection add: each to.
 									todo add: each to ] ] ] ].
@@ -66,7 +66,7 @@ SmaCCRegexSimulator >> matchedNodesFrom: stateCollection [
 { #category : #running }
 SmaCCRegexSimulator >> matchesOn: aString do: aBlock [
 	| states |
-	states := self expandEpsilonTransitions: (IdentitySet with: nfa).
+	states := self expandEpsilonAndSymbolTransitions: (IdentitySet with: nfa).
 	aBlock value: 0 value: (self matchedNodesFrom: states).
 	1 to: aString size do: [ :i | 
 		states := self moveFrom: states on: (aString at: i).
@@ -85,7 +85,7 @@ SmaCCRegexSimulator >> moveFrom: stateCollection on: aCharacter [
 				do: [ :edge | 
 					(edge includes: aCharacter)
 						ifTrue: [ newStates add: edge to ] ] ].
-	^ self expandEpsilonTransitions: newStates
+	^ self expandEpsilonAndSymbolTransitions: newStates
 ]
 
 { #category : #'initialize-release' }
