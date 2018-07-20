@@ -341,14 +341,27 @@ SmaCCParser >> currentToken [
 
 { #category : #'error handling' }
 SmaCCParser >> dismissErrorToken [
+	| token |
+	token := currentToken.
 	currentToken := nil.
-	self getNextToken
+	self getNextToken.
+	^ token
 ]
 
 { #category : #'error handling' }
 SmaCCParser >> dismissStackTopForErrorRecovery [
 	stateStack removeLast.
 	^ nodeStack removeLast
+]
+
+{ #category : #'error handling' }
+SmaCCParser >> dismissStackTopForErrorRecovery: anInteger [
+	| stackContents |
+	stackContents := Array new: anInteger.
+	anInteger to: 1 by: -1 do: [ :i | 
+		stateStack removeLast.
+		stackContents at: i put: nodeStack removeLast ].
+	^ stackContents
 ]
 
 { #category : #accessing }
@@ -390,31 +403,33 @@ SmaCCParser >> errorTokenId [
 
 { #category : #'error handling' }
 SmaCCParser >> findErrorHandlerIfNoneUseErrorNumber: anInteger [
-	| handlerStates index startingErrorToken |
+	| handlerStates index startingErrorToken stackContents dismissedTokens |
+	dismissedTokens := OrderedCollection new.
 	handlerStates := self errorHandlerStates reverse.
 	startingErrorToken := currentToken.
 	[ index := (1 to: handlerStates size)
-		detect:
-			[ :each | 
+		detect: [ :each | 
 			| state newStack |
 			state := handlerStates at: each.
 			state ~= 0
-				and:
-					[ newStack := stateStack copyFrom: 1 to: handlerStates size - each + 1.
+				and: [ newStack := stateStack copyFrom: 1 to: handlerStates size - each + 1.
 					newStack addLast: state.
 					self willShift: newStack ] ]
 		ifNone: [ nil ].
 	index isNil ]
-		whileTrue:
-			[ self dismissErrorToken.
+		whileTrue: [ dismissedTokens add: self dismissErrorToken.
 			self isEOFToken
-				ifTrue:
-					[ currentToken := startingErrorToken.
+				ifTrue: [ currentToken := startingErrorToken.
 					self reportError: anInteger ] ].
-	index - 1 timesRepeat: [ self dismissStackTopForErrorRecovery ].
+	stackContents := self dismissStackTopForErrorRecovery: index - 1.
 	stateStack addLast: (handlerStates at: index).
-	nodeStack addLast: startingErrorToken.
-	currentToken := nil
+	nodeStack
+		addLast:
+			(SmaCCError new
+				stackContents: stackContents;
+				dismissedTokens: dismissedTokens;
+				errorToken: startingErrorToken;
+				yourself)
 ]
 
 { #category : #private }

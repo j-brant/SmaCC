@@ -1437,8 +1437,7 @@ SmaCCEndToEndTest >> testOptionalComponent [
 { #category : #public }
 SmaCCEndToEndTest >> testOptionalVariableType [
 	| compiler |
-	(compiler := SmaCCGrammarCompiler new) codeGenerator
-		defaultCategory: self class category.
+	(compiler := SmaCCGrammarCompiler new) codeGenerator defaultCategory: self class category.
 	compiler
 		buildDefinition:
 			'<whitespace> : \s+; 
@@ -1447,9 +1446,7 @@ SmaCCEndToEndTest >> testOptionalVariableType [
 			Comma : "," ''comma'' |  ;'.
 	compiler compileInto: 'TestScanner' andParser: 'TestParser'.
 	self
-		assert:
-			self parserClass basicNew symbolTypes asSet asSortedCollection asArray
-				= #(#FooANode #SmaCCToken)
+		assert: self parserClass basicNew symbolTypes asSet asSortedCollection asArray = #(#FooANode #SmaCCError #SmaCCToken)
 ]
 
 { #category : #tests }
@@ -2394,5 +2391,5 @@ SmaCCEndToEndTest >> testVariableCollectionType [
 	self
 		assert:
 			self parserClass basicNew symbolTypes asSet asSortedCollection asArray
-				= #(#FooANode #OrderedCollection #SmaCCToken)
+				= #(#FooANode #OrderedCollection #SmaCCError #SmaCCToken)
 ]

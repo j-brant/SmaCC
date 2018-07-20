@@ -50,13 +50,13 @@ SmaCCDefinitionNodeVisitor >> visitDefinition: aDefinition [
 ]
 
 { #category : #generated }
-SmaCCDefinitionNodeVisitor >> visitDirective: aDirective [
-	^ self visitDefinition: aDirective
+SmaCCDefinitionNodeVisitor >> visitDefinitionError: aDefinitionError [
+	^ self visitDefinition: aDefinitionError
 ]
 
 { #category : #generated }
-SmaCCDefinitionNodeVisitor >> visitError: anError [
-	^ self visitDefinition: anError
+SmaCCDefinitionNodeVisitor >> visitDirective: aDirective [
+	^ self visitDefinition: aDirective
 ]
 
 { #category : #generated }

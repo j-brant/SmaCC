@@ -32,6 +32,11 @@ SmaCCParseNodeVisitor >> acceptNodes: aCollection [
 ]
 
 { #category : #visiting }
+SmaCCParseNodeVisitor >> visitSmaCCError: aSmaCCError [
+	^ self visitSmaCCParseNode: aSmaCCError
+]
+
+{ #category : #visiting }
 SmaCCParseNodeVisitor >> visitSmaCCParseNode: aSmaCCParseNode [
 	self acceptNodes: aSmaCCParseNode sortedChildren.
 	^ aSmaCCParseNode
