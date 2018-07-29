@@ -38,11 +38,6 @@ SmaCCGrammarCreator >> addItems: aCollection to: rhs [
 								to: each variableNameToken value size - 1) ] ]
 ]
 
-{ #category : #'private-strings' }
-SmaCCGrammarCreator >> allCharacters [
-	^ SmaCCGrammar allCharacters
-]
-
 { #category : #private }
 SmaCCGrammarCreator >> buildItemsFrom: aCollection [
 	^ aCollection
@@ -54,28 +49,6 @@ SmaCCGrammarCreator >> buildItemsFrom: aCollection [
 					item alternativesDo: [ :each | items addAll: (self combineItems: (self buildItemsFrom: each)) ] ]
 				ifFalse: [ items add: (Array with: item) ].
 			items ]
-]
-
-{ #category : #'private-strings' }
-SmaCCGrammarCreator >> carriageReturnString [
-	^ SmaCCCharacterSet with: (Character value: 13)
-]
-
-{ #category : #private }
-SmaCCGrammarCreator >> charactersFor: aStream in: aToken [
-	| characters char endCharacters |
-	aStream atEnd
-		ifTrue: [ self reportCharacterBlockErrorForToken: aToken ].
-	char := aStream next.
-	characters := char == $\
-		ifTrue: [ (self nodeFor: aStream) characters ]
-		ifFalse: [ OrderedCollection with: char ].
-	(characters size = 1 and: [ aStream peekFor: $- ])
-		ifFalse: [ ^ characters ].
-	endCharacters := self charactersFor: aStream in: aToken.
-	endCharacters size > 1
-		ifTrue: [ self reportCharacterBlockErrorForToken: aToken ].
-	^ (characters first asInteger to: endCharacters first asInteger) collect: [ :each | Character value: each ]
 ]
 
 { #category : #private }
@@ -125,11 +98,6 @@ SmaCCGrammarCreator >> createDefaultClassesForSymbol: aString [
 	defaultClasses := OrderedCollection new
 ]
 
-{ #category : #'private-strings' }
-SmaCCGrammarCreator >> formFeedString [
-	^ SmaCCCharacterSet with: (Character value: 12)
-]
-
 { #category : #private }
 SmaCCGrammarCreator >> generateRHS: aCollection [
 	| rhs |
@@ -141,24 +109,6 @@ SmaCCGrammarCreator >> generateRHS: aCollection [
 { #category : #'initialize-release' }
 SmaCCGrammarCreator >> grammar: aSmaCCGrammar [
 	grammar := aSmaCCGrammar
-]
-
-{ #category : #'private-strings' }
-SmaCCGrammarCreator >> hexStringFrom: aStream [
-	^ SmaCCCharacterSet with: (Character value: (self hexValueFrom: aStream))
-]
-
-{ #category : #'private-strings' }
-SmaCCGrammarCreator >> hexValueFrom: aStream [
-	| char value count |
-	count := value := 0.
-	[ aStream atEnd not
-		and: [ count < 4
-				and: [ char := aStream peek.
-					(char between: $0 and: $9) or: [ (char between: $A and: $F) or: [ char between: $a and: $f ] ] ] ] ]
-		whileTrue: [ count := count + 1.
-			value := value * 16 + aStream next digitValue ].
-	^ value
 ]
 
 { #category : #'initialize-release' }
@@ -185,86 +135,12 @@ SmaCCGrammarCreator >> isWhitespace: each [
 	^ self whitespaceValues includes: each asInteger
 ]
 
-{ #category : #'private-strings' }
-SmaCCGrammarCreator >> newlineString [
-	^ SmaCCCharacterSet with: (Character value: 10)
-]
-
-{ #category : #private }
-SmaCCGrammarCreator >> nodeFor: aStream [
-	| block char |
-	block := nil.
-	char := aStream next.
-	char == $f
-		ifTrue: [ ^ SmaCCCharacterRENode characters: self formFeedString ].
-	char == $n
-		ifTrue: [ ^ SmaCCCharacterRENode characters: self newlineString ].
-	char == $r
-		ifTrue: [ ^ SmaCCCharacterRENode characters: self carriageReturnString ].
-	char == $t
-		ifTrue: [ ^ SmaCCCharacterRENode characters: self tabString ].
-	char == $v
-		ifTrue: [ ^ SmaCCCharacterRENode characters: self verticalTabString ].
-	char == $c
-		ifTrue: [ ^ SmaCCCharacterRENode characters: (SmaCCCharacterSet with: (Character value: aStream next asInteger - $A asInteger)) ].
-	char == $x
-		ifTrue: [ ^ SmaCCCharacterRENode characters: (self hexStringFrom: aStream) ].
-	char == $d
-		ifTrue: [ block := [ :each | self isDigit: each ] ].
-	char == $D
-		ifTrue: [ block := [ :each | (self isDigit: each) not ] ].
-	char == $s
-		ifTrue: [ block := [ :each | self isWhitespace: each ] ].
-	char == $S
-		ifTrue: [ block := [ :each | (self isWhitespace: each) not ] ].
-	char == $w
-		ifTrue: [ block := [ :each | self isLetterOrDigit: each ] ].
-	char == $W
-		ifTrue: [ block := [ :each | (self isLetterOrDigit: each) not ] ].
-	block isNil
-		ifTrue: [ ^ SmaCCCharacterRENode characters: (SmaCCCharacterSet with: char) ].
-	^ SmaCCCharacterRENode characters: (self allCharacters select: block)
-]
-
-{ #category : #private }
-SmaCCGrammarCreator >> parseCharacterBlock: aToken [
-	| characters aStream invert node |
-	aStream := ReadStream on: (aToken value copyFrom: 2 to: aToken value size - 1).
-	characters := OrderedCollection new.
-	invert := aStream peekFor: $^.
-	[ aStream atEnd ] whileFalse: [ characters addAll: (self charactersFor: aStream in: aToken) ].
-	node := SmaCCCharacterRENode characters: (SmaCCCharacterSet withAll: characters).
-	invert
-		ifTrue: [ node := SmaCCNotRENode on: node ].
-	^ node
-]
-
-{ #category : #private }
-SmaCCGrammarCreator >> regexNodeFor: aTokenRegex [
-	| token name |
-	token := aTokenRegex name.
-	name := token value.
-	^ grammar scannerDefinition
-		tokenNamed: name
-		ifAbsentPut: [ (SmaCCGrammar implicitToken: name) ifNil: [ self reportErrorMessage: 'Token not specified' on: token ] ]
-]
-
-{ #category : #private }
-SmaCCGrammarCreator >> reportCharacterBlockErrorForToken: aToken [
-	self reportErrorMessage: 'Invalid character block' on: aToken
-]
-
 { #category : #private }
 SmaCCGrammarCreator >> reportErrorMessage: aString on: aSmaCCToken [
 	SmaCCParserError new
 		messageText: aString;
 		tag: aSmaCCToken;
 		signal
-]
-
-{ #category : #'private-strings' }
-SmaCCGrammarCreator >> tabString [
-	^ SmaCCCharacterSet withAll: '	'
 ]
 
 { #category : #private }
@@ -277,16 +153,6 @@ SmaCCGrammarCreator >> verifyCodeToken: codeToken for: aSmaCCRHS [
 			[ :string :position | self reportErrorMessage: string on: (SmaCCToken value: (code copyFrom: position to: position) start: codeToken startPosition + position ids: #()) ].
 	aSmaCCRHS reduceActionSource: code.
 	^ aSmaCCRHS
-]
-
-{ #category : #'private-strings' }
-SmaCCGrammarCreator >> verticalTabString [
-	^ SmaCCCharacterSet with: (Character value: 11)
-]
-
-{ #category : #visiting }
-SmaCCGrammarCreator >> visitAlternationRegex: anAlternationRegex [
-	^ (self acceptNode: anAlternationRegex left) | (self acceptNode: anAlternationRegex right)
 ]
 
 { #category : #visiting }
@@ -313,22 +179,6 @@ SmaCCGrammarCreator >> visitAttributeDirective: anAttributeDirective [
 ]
 
 { #category : #visiting }
-SmaCCGrammarCreator >> visitCharacterBlockRegex: aCharacterBlockRegex [
-	^ self parseCharacterBlock: aCharacterBlockRegex block value
-]
-
-{ #category : #visiting }
-SmaCCGrammarCreator >> visitCharacterRegex: aCharacterRegex [
-	| char |
-	char := aCharacterRegex char value.
-	char = '.'
-		ifTrue: [ ^ SmaCCCharacterRENode characters: self allCharacters ].
-	char first = $\
-		ifTrue: [ ^ self nodeFor: (ReadStream on: (char copyFrom: 2 to: char size)) ].
-	^ SmaCCCharacterRENode characters: (SmaCCCharacterSet withAll: char)
-]
-
-{ #category : #visiting }
 SmaCCGrammarCreator >> visitClassProductionExpression: aClassProductionExpression [
 	| items |
 	items := super visitClassProductionExpression: aClassProductionExpression.
@@ -349,12 +199,7 @@ SmaCCGrammarCreator >> visitCodeProductionExpression: aCodeProdutionExpression [
 ]
 
 { #category : #visiting }
-SmaCCGrammarCreator >> visitConcatenationRegex: aConcatenationRegex [
-	^ (self acceptNode: aConcatenationRegex left) , (self acceptNode: aConcatenationRegex right)
-]
-
-{ #category : #visiting }
-SmaCCGrammarCreator >> visitError: anError [
+SmaCCGrammarCreator >> visitDefinitionError: anError [
 	"We shouldn't get here, but in case someone is passing an AST with errors, signal an error."
 
 	self error: 'There was a parse error'
@@ -408,12 +253,6 @@ SmaCCGrammarCreator >> visitIgnoreVariableDirective: anIgnoreVariableDirective [
 { #category : #visiting }
 SmaCCGrammarCreator >> visitKeywordSymbol: aKeywordSymbol [
 	^ grammar keywordTerminalNamed: aKeywordSymbol name value
-]
-
-{ #category : #visiting }
-SmaCCGrammarCreator >> visitNameRegex: aNameRegex [
-	^ SmaCCSequenceRENode
-		nodes: (aNameRegex name value asOrderedCollection collect: [ :each | SmaCCCharacterRENode characters: (SmaCCCharacterSet with: each) ])
 ]
 
 { #category : #visiting }
@@ -480,34 +319,6 @@ SmaCCGrammarCreator >> visitProductionSymbol: aProductionSymbol [
 ]
 
 { #category : #visiting }
-SmaCCGrammarCreator >> visitRepeatRegex: aRepeatRegex [
-	| regex count |
-	regex := self acceptNode: aRepeatRegex regex.
-	count := aRepeatRegex count value.
-	count = '*'
-		ifTrue: [ ^ regex repeat ].
-	count = '+'
-		ifTrue: [ ^ regex repeatForAtLeast: 1 ].
-	count = '?'
-		ifTrue: [ ^ regex repeatFor: 0 to: 1 ].
-	count first = ${
-		ifTrue: [ | readStream start stop |
-			readStream := ReadStream on: (count copyFrom: 2 to: count size - 1).
-			start := readStream upTo: $,.
-			stop := readStream upToEnd.
-			^ regex
-				repeatFor:
-					(start isEmpty
-						ifTrue: [ 0 ]
-						ifFalse: [ start asNumber ])
-				to:
-					(stop isEmpty
-						ifTrue: [ 1 bitShift: 31 ]
-						ifFalse: [ stop asNumber ]) ].
-	self reportErrorMessage: 'Unknown repeat count' on: aRepeatRegex count
-]
-
-{ #category : #visiting }
 SmaCCGrammarCreator >> visitScopeDirective: aScopeDirective [
 	| type |
 	type := aScopeDirective typeToken value.
@@ -531,22 +342,15 @@ SmaCCGrammarCreator >> visitSuperclassDirective: aSuperclassDirective [
 ]
 
 { #category : #visiting }
-SmaCCGrammarCreator >> visitTokenRegex: aTokenRegex [
-	^ SmaCCReferenceRENode creationBlock: [ self regexNodeFor: aTokenRegex ]
-]
-
-{ #category : #visiting }
 SmaCCGrammarCreator >> visitTokenRule: aTokenRule [
 	| symbol regex |
-	regex := self acceptNode: aTokenRule regex.
-	regex position: aTokenRule name startPosition.
+	regex := aTokenRule regularExpression.
+	regex states isEmpty
+		ifTrue: [ regex addStates: grammar scannerDefinition nonExcludeStates ].
 	grammar scannerDefinition addToken: regex withName: aTokenRule name value.
 	symbol := grammar findSymbolNamed: aTokenRule name value ifAbsent: [ nil ].
 	symbol notNil
 		ifTrue: [ symbol regularExpression: regex ].
-	aTokenRule states do: [ :each | regex addState: each value asSymbol ].
-	regex states isEmpty
-		ifTrue: [ regex addStates: grammar scannerDefinition nonExcludeStates ].
 	^ regex
 ]
 
@@ -563,9 +367,4 @@ SmaCCGrammarCreator >> visitTokenSymbol: aTokenSymbol [
 						ifTrue: [ node addStates: grammar scannerDefinition nonExcludeStates.
 							symbol regularExpression: node ] ].
 			symbol ]
-]
-
-{ #category : #'private-strings' }
-SmaCCGrammarCreator >> whitespaceValues [
-	^ #[9 10 11 12 13 32]
 ]

@@ -2,9 +2,8 @@ Class {
 	#name : #SmaCCAlternationRegexNode,
 	#superclass : #SmaCCRegexNode,
 	#instVars : [
-		'left',
-		'barToken',
-		'right'
+		'items',
+		'barTokens'
 	],
 	#category : #'SmaCC_Grammar_Parser'
 }
@@ -15,49 +14,40 @@ SmaCCAlternationRegexNode >> acceptVisitor: aDefinitionVisitor [
 ]
 
 { #category : #generated }
-SmaCCAlternationRegexNode >> barToken [
-	^ barToken
+SmaCCAlternationRegexNode >> barTokens [
+	^ barTokens
 ]
 
 { #category : #generated }
-SmaCCAlternationRegexNode >> barToken: aSmaCCToken [
-	barToken := aSmaCCToken
+SmaCCAlternationRegexNode >> barTokens: anOrderedCollection [
+	barTokens := anOrderedCollection
 ]
 
 { #category : #generated }
-SmaCCAlternationRegexNode >> left [
-	^ left
+SmaCCAlternationRegexNode >> compositeNodeVariables [
+	^ #(#items)
 ]
 
 { #category : #generated }
-SmaCCAlternationRegexNode >> left: aSmaCCRegexNode [
-	self left notNil
-		ifTrue: [ self left parent: nil ].
-	left := aSmaCCRegexNode.
-	self left notNil
-		ifTrue: [ self left parent: self ]
+SmaCCAlternationRegexNode >> compositeTokenVariables [
+	^ #(#barTokens #leftParens #rightParens)
+]
+
+{ #category : #'generated-initialize-release' }
+SmaCCAlternationRegexNode >> initialize [
+	super initialize.
+	items := OrderedCollection new: 2.
+	barTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-SmaCCAlternationRegexNode >> nodeVariables [
-	^ #(#left #right)
+SmaCCAlternationRegexNode >> items [
+	^ items
 ]
 
 { #category : #generated }
-SmaCCAlternationRegexNode >> right [
-	^ right
-]
-
-{ #category : #generated }
-SmaCCAlternationRegexNode >> right: aSmaCCRegexNode [
-	self right notNil
-		ifTrue: [ self right parent: nil ].
-	right := aSmaCCRegexNode.
-	self right notNil
-		ifTrue: [ self right parent: self ]
-]
-
-{ #category : #generated }
-SmaCCAlternationRegexNode >> tokenVariables [
-	^ #(#barToken)
+SmaCCAlternationRegexNode >> items: anOrderedCollection [
+	self setParents: self items to: nil.
+	items := anOrderedCollection.
+	self setParents: self items to: self
 ]

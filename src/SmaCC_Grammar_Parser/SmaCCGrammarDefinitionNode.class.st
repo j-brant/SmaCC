@@ -34,3 +34,13 @@ SmaCCGrammarDefinitionNode >> rules: anOrderedCollection [
 	rules := anOrderedCollection.
 	self setParents: self rules to: self
 ]
+
+{ #category : #acccessing }
+SmaCCGrammarDefinitionNode >> tokenNamed: aString [
+	^ self tokenRules detect: [ :each | each name value = aString ] ifNone: [ nil ]
+]
+
+{ #category : #acccessing }
+SmaCCGrammarDefinitionNode >> tokenRules [
+	^ rules select: [ :each | each isKindOf: SmaCCTokenRuleNode ]
+]

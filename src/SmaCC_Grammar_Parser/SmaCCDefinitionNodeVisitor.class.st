@@ -50,13 +50,13 @@ SmaCCDefinitionNodeVisitor >> visitDefinition: aDefinition [
 ]
 
 { #category : #generated }
-SmaCCDefinitionNodeVisitor >> visitDirective: aDirective [
-	^ self visitDefinition: aDirective
+SmaCCDefinitionNodeVisitor >> visitDefinitionError: aDefinitionError [
+	^ self visitDefinition: aDefinitionError
 ]
 
 { #category : #generated }
-SmaCCDefinitionNodeVisitor >> visitError: anError [
-	^ self visitDefinition: anError
+SmaCCDefinitionNodeVisitor >> visitDirective: aDirective [
+	^ self visitDefinition: aDirective
 ]
 
 { #category : #generated }
@@ -92,11 +92,6 @@ SmaCCDefinitionNodeVisitor >> visitIgnoreVariableDirective: anIgnoreVariableDire
 { #category : #generated }
 SmaCCDefinitionNodeVisitor >> visitKeywordSymbol: aKeywordSymbol [
 	^ self visitSymbol: aKeywordSymbol
-]
-
-{ #category : #generated }
-SmaCCDefinitionNodeVisitor >> visitNameRegex: aNameRegex [
-	^ self visitRegex: aNameRegex
 ]
 
 { #category : #generated }

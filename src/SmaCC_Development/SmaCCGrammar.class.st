@@ -294,7 +294,9 @@ SmaCCGrammar >> emptySymbols [
 { #category : #accessing }
 SmaCCGrammar >> errorSymbol [
 	^ errorSymbol
-		ifNil: [ errorSymbol := self newTerminalSymbolNamed: 'error' ]
+		ifNil: [ errorSymbol := (SmaCCErrorTerminalSymbol name: 'error')
+				grammar: self;
+				yourself ]
 ]
 
 { #category : #private }
