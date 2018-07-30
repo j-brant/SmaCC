@@ -199,7 +199,7 @@ SmaCCGrammarCreator >> visitCodeProductionExpression: aCodeProdutionExpression [
 ]
 
 { #category : #visiting }
-SmaCCGrammarCreator >> visitError: anError [
+SmaCCGrammarCreator >> visitDefinitionError: anError [
 	"We shouldn't get here, but in case someone is passing an AST with errors, signal an error."
 
 	self error: 'There was a parse error'

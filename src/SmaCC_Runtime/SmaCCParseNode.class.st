@@ -241,6 +241,28 @@ SmaCCParseNode >> attributes [
 	^ attributes ifNil: [ attributes := IdentityDictionary new ]
 ]
 
+{ #category : #private }
+SmaCCParseNode >> calculateStartPosition [
+	"Hackish way to get the minimum for all nodes. You might want to override to get a better implementation."
+
+	| doBlock min |
+	min := SmallInteger maxVal.
+	doBlock := [ :each | each startPosition ifNotNil: [ :pos | min := min min: pos ] ].
+	self nodesDo: doBlock andTokensDo: doBlock.
+	^ min
+]
+
+{ #category : #private }
+SmaCCParseNode >> calculateStopPosition [
+	"Hackish way to get the maximum for all nodes. You might want to override to get a better implementation."
+
+	| doBlock max |
+	max := 0.
+	doBlock := [ :each | each stopPosition ifNotNil: [ :pos | max := max max: pos ] ].
+	self nodesDo: doBlock andTokensDo: doBlock.
+	^ max
+]
+
 { #category : #accessing }
 SmaCCParseNode >> children [
 	| result |
@@ -787,30 +809,12 @@ SmaCCParseNode >> source [
 
 { #category : #accessing }
 SmaCCParseNode >> startPosition [
-	"Hackish way to get the minimum for all nodes. You might want to override to get a better implementation."
-
-	^ self
-		attributeNamed: #startPosition
-		ifAbsentPut:
-			[ | min doBlock |
-			min := SmallInteger maxVal.
-			doBlock := [ :each | each startPosition ifNotNil: [ :pos | min := min min: pos ] ].
-			self nodesDo: doBlock andTokensDo: doBlock.
-			min ]
+	^ self attributeNamed: #startPosition ifAbsentPut: [ self calculateStartPosition ]
 ]
 
 { #category : #accessing }
 SmaCCParseNode >> stopPosition [
-	"Hackish way to get the maximum for all nodes. You might want to override to get a better implementation."
-
-	^ self
-		attributeNamed: #stopPosition
-		ifAbsentPut:
-			[ | max doBlock |
-			max := 0.
-			doBlock := [ :each | each stopPosition ifNotNil: [ :pos | max := max max: pos ] ].
-			self nodesDo: doBlock andTokensDo: doBlock.
-			max ]
+	^ self attributeNamed: #stopPosition ifAbsentPut: [ self calculateStopPosition ]
 ]
 
 { #category : #variables }
