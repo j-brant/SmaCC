@@ -45,7 +45,10 @@ BaselineOfSmaCC >> baseline: spec [
 	spec
 		for: #pharo
 		do: [ spec
-				package: 'SmaCC_Debugging_Support' with: [ spec requires: 'SmaCC_Runtime' ];
+				package: 'SmaCC_Debugging_Support'
+					with: [ spec
+						requires: 'SmaCC_Development';
+						requires: 'SmaCC_Runtime' ];
 				package: 'SmaCC_Development'
 					with: [ spec
 						requires: 'SmaCC_GLR_Runtime';

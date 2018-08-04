@@ -103,5 +103,5 @@ SmaCCRegexSimulator >> tokenName: aString [
 			actionMap add: each.
 			each regularExpression ifNotNil: [ :re | re action: actionMap size ] ].
 	nfa := regex asNFA ]
-		ensure: [ grammar withAllNodesDo: [ :each | each clearRegularExpression ] ]
+		ensure: [ grammar withAllNodesDo: [ :each | each removeAttributeNamed: #regularExpression ] ]
 ]
