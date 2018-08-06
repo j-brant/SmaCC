@@ -17,10 +17,25 @@ SmaCCGrammarDefinitionNode >> compositeNodeVariables [
 	^ #(#rules)
 ]
 
+{ #category : #acccessing }
+SmaCCGrammarDefinitionNode >> definitionNamed: aString [
+	^ (self tokenNamed: aString) ifNil: [ self productionNamed: aString ]
+]
+
 { #category : #'generated-initialize-release' }
 SmaCCGrammarDefinitionNode >> initialize [
 	super initialize.
 	rules := OrderedCollection new: 2.
+]
+
+{ #category : #acccessing }
+SmaCCGrammarDefinitionNode >> productionNamed: aString [
+	^ self productionRules detect: [ :each | each name value = aString ] ifNone: [ nil ]
+]
+
+{ #category : #acccessing }
+SmaCCGrammarDefinitionNode >> productionRules [
+	^ rules select: [ :each | each isKindOf: SmaCCProductionRuleNode ]
 ]
 
 { #category : #generated }
