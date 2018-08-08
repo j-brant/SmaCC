@@ -45,14 +45,14 @@ BaselineOfSmaCC >> baseline: spec [
 	spec
 		for: #pharo
 		do: [ spec
-				package: 'SmaCC_Debugging_Support'
-					with: [ spec
-						requires: 'SmaCC_Development';
-						requires: 'SmaCC_Runtime' ];
 				package: 'SmaCC_Development'
 					with: [ spec
 						requires: 'SmaCC_GLR_Runtime';
 						requires: 'SmaCC_Grammar_Parser' ];
+				package: 'SmaCC_Debugging_Support'
+					with: [ spec
+						requires: 'SmaCC_Development';
+						requires: 'SmaCC_Runtime' ];
 				package: 'SmaCC_Development_UI' with: [ spec requires: 'SmaCC_Development' ];
 				package: 'SmaCC_Parse_Tree_Comparison' with: [ spec requires: 'SmaCC_Runtime' ];
 				package: 'SmaCC_Rewrite_Engine_Command_Line' with: [ spec requires: 'SmaCC_Rewrite_Engine' ];
