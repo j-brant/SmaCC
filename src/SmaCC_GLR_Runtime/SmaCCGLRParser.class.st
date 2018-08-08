@@ -237,11 +237,14 @@ SmaCCGLRParser >> isAmbiguous: action [
 
 { #category : #private }
 SmaCCGLRParser >> killState [
-	states removeAt: (states identityIndexOf: currentState ifAbsent: [ ^ self ]).
-	states isEmpty
-		ifTrue: [ self handleError: 0 ].
+	| index |
+	index := states identityIndexOf: currentState ifAbsent: [ ^ self ].
+	states size = 1
+		ifTrue: [ ^ self handleError: 0 ].
+	states removeAt: index.
 	(states size = 1 and: [ parseAll not ])
-		ifTrue: [ states first runDeferredActionsFor: self ]
+		ifTrue: [ states first runDeferredActionsFor: self ].
+	^ false
 ]
 
 { #category : #private }
@@ -294,7 +297,7 @@ SmaCCGLRParser >> performParsingLoop [
 
 { #category : #private }
 SmaCCGLRParser >> performParsingStep [
-	| actions action |
+	| actions action isAccept |
 	currentState isAccepted
 		ifTrue: [ ^ self ].
 	self restoreState: currentState.
@@ -304,14 +307,15 @@ SmaCCGLRParser >> performParsingStep [
 		ifTrue: [ ^ self splitForPatternToken ].
 	[ actions := self actionsForCurrentToken.
 	actions isEmpty
-		ifTrue: [ self killState.
-			currentToken := nil.
-			^ self ].
-	2 to: actions size do: [ :i | self splitWithAction: (actions at: i) ].
-	action := actions first.
-	action = self acceptAction
-		or: [ self performAction: action.
-			currentToken isNil ] ] whileFalse.
+		ifTrue: [ isAccept := false.
+			self killState
+				ifFalse: [ ^ currentToken := nil ] ]
+		ifFalse: [ 2 to: actions size do: [ :i | self splitWithAction: (actions at: i) ].
+			action := actions first.
+			isAccept := action = self acceptAction.
+			isAccept
+				ifFalse: [ self performAction: action ] ].
+	isAccept or: [ currentToken isNil ] ] whileFalse.
 	action = self acceptAction
 		ifTrue: [ currentState markAccepted ]
 ]

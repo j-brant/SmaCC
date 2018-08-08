@@ -410,15 +410,12 @@ SmaCCParser >> findErrorHandlerIfNoneUseErrorNumber: anInteger [
 			| state newStack |
 			state := handlerStates at: each.
 			state ~= 0
-				and: [ newStack := stateStack copyFrom: 1 to: handlerStates size - each + 1.
-					newStack addLast: state.
-					self willShift: newStack ] ]
+				and: [ self isEOFToken
+						or: [ newStack := stateStack copyFrom: 1 to: handlerStates size - each + 1.
+							newStack addLast: state.
+							self willShift: newStack ] ] ]
 		ifNone: [ nil ].
-	index isNil ]
-		whileTrue: [ dismissedTokens add: self dismissErrorToken.
-			self isEOFToken
-				ifTrue: [ currentToken := startingErrorToken.
-					self reportError: anInteger ] ].
+	index isNil ] whileTrue: [ dismissedTokens add: self dismissErrorToken ].
 	stackContents := self dismissStackTopForErrorRecovery: index - 1.
 	stateStack addLast: (handlerStates at: index).
 	nodeStack
@@ -427,7 +424,8 @@ SmaCCParser >> findErrorHandlerIfNoneUseErrorNumber: anInteger [
 				stackContents: stackContents;
 				dismissedTokens: dismissedTokens;
 				errorToken: startingErrorToken;
-				yourself)
+				yourself).
+	^ true
 ]
 
 { #category : #private }
@@ -442,7 +440,7 @@ SmaCCParser >> handleError: anInteger [
 		ifTrue: [ errorToken := currentToken ].
 	(self isEOFToken or: [ self hasErrorHandler not ])
 		ifTrue: [ self reportError: anInteger ].
-	self findErrorHandlerIfNoneUseErrorNumber: anInteger
+	^ self findErrorHandlerIfNoneUseErrorNumber: anInteger
 ]
 
 { #category : #'error handling' }

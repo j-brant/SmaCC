@@ -404,6 +404,13 @@ SmaCCParseNode >> hasDescendant: aSmaCCNode [
 	^ aSmaCCNode isDescendantFrom: self
 ]
 
+{ #category : #testing }
+SmaCCParseNode >> hasParentOfType: aSmaCCParseNodeClass [
+	(parent isKindOf: aSmaCCParseNodeClass)
+		ifTrue: [ ^ true ].
+	^ parent notNil and: [ parent hasParentOfType: aSmaCCParseNodeClass ]
+]
+
 { #category : #comparing }
 SmaCCParseNode >> hash [
 	^ self variableSelectors
