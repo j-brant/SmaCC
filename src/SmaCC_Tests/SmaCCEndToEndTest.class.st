@@ -670,7 +670,27 @@ SmaCCEndToEndTest >> testEmptyAlternative [
 	self assert: node component isNil
 ]
 
-{ #category : #tests }
+{ #category : #'tests-error' }
+SmaCCEndToEndTest >> testErrorRecovery [
+	| parserCompiler |
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator defaultCategory: self class category.
+	parserCompiler
+		buildDefinition:
+			'<whitespace> : \s+ ;
+                        <integer> : \d+;
+                        Start : Items {''1''};
+                        Items : { 0 }
+                                | Items Integer { ''1'' + ''2'' }
+                                | Items error { ''1'' negated };
+                        Integer : <integer> { ''1'' value asInteger };
+                        '.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+	self assert: (self parserClass parseWithErrors: '1 2 3') = 6.
+	self assert: (self parserClass parseWithErrors: '1 2 a') = -3.
+	self assert: (self parserClass parseWithErrors: 'a 1 2') = 3
+]
+
+{ #category : #'tests-error' }
 SmaCCEndToEndTest >> testErrorToken [
 	| parserCompiler countingBlock |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -825,6 +845,27 @@ SmaCCEndToEndTest >> testGLRHierarchy [
 			All: <_all>;'.
 	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
 	self assert: self parserClass superclass name asString = 'FooParser'
+]
+
+{ #category : #'tests-error' }
+SmaCCEndToEndTest >> testGlrErrorRecovery [
+	| parserCompiler |
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator defaultCategory: self class category.
+	parserCompiler
+		buildDefinition:
+			'%glr;
+			<whitespace> : \s+ ;
+                        <integer> : \d+;
+                        Start : Items {''1''};
+                        Items : { 0 }
+                                | Items Integer { ''1'' + ''2'' }
+                                | Items error { ''1'' negated };
+                        Integer : <integer> { ''1'' value asInteger };
+                        '.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+	self assert: (self parserClass parseWithErrors: '1 2 3') = 6.
+	self assert: (self parserClass parseWithErrors: '1 2 a') = -3.
+	self assert: (self parserClass parseWithErrors: 'a 1 2') = 3
 ]
 
 { #category : #tests }
@@ -1008,7 +1049,7 @@ SmaCCEndToEndTest >> testKeywordsWithStates [
 	self parserClass parse: 'word'
 ]
 
-{ #category : #tests }
+{ #category : #'tests-error' }
 SmaCCEndToEndTest >> testLALRErrorHandler [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
