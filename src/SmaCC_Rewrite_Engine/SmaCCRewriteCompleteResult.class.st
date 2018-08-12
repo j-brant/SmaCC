@@ -47,7 +47,7 @@ SmaCCRewriteCompleteResult >> smaccStringClass [
 
 { #category : #accessing }
 SmaCCRewriteCompleteResult >> transformedString [
-	^ transformedString
+	^ transformedString ifNil: [ super transformedString ]
 ]
 
 { #category : #accessing }

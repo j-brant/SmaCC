@@ -187,6 +187,16 @@ SmaCCParser class >> parseWithErrors: aString [
 				ifFalse: [ ex signal ] ]
 ]
 
+{ #category : #parsing }
+SmaCCParser class >> parseWithErrors: aString startingAt: anInteger [
+	^ [ self parse: aString startingAt: anInteger ]
+		on: SmaCCParserError
+		do: [ :ex | 
+			ex isResumable
+				ifTrue: [ ex resume ]
+				ifFalse: [ ex signal ] ]
+]
+
 { #category : #caching }
 SmaCCParser class >> resetCaches [
 	"self withAllSubclasses do: [:each | each resetCaches]"

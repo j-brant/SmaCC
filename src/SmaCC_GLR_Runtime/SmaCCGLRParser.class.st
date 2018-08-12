@@ -291,7 +291,6 @@ SmaCCGLRParser >> performParsingLoop [
 		currentToken := nil.
 		self restoreState: (states at: i).
 		self getNextToken.
-		errorToken := nil.
 		self performParsingStep ].
 	self mergeStates.
 	states anySatisfy: [ :each | each isAccepted not ] ] whileTrue.
