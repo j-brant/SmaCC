@@ -15,7 +15,8 @@ Class {
 		'equalToken',
 		'initializer',
 		'equalGreaterThanToken',
-		'expression'
+		'expression',
+		'semicolon'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -186,6 +187,16 @@ CSPropertyDeclarationNode >> rightBraceToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+CSPropertyDeclarationNode >> semicolon [
+	^ semicolon
+]
+
+{ #category : #generated }
+CSPropertyDeclarationNode >> semicolon: aSmaCCToken [
+	semicolon := aSmaCCToken
+]
+
+{ #category : #generated }
 CSPropertyDeclarationNode >> setAccessor [
 	^ setAccessor
 ]
@@ -201,7 +212,7 @@ CSPropertyDeclarationNode >> setAccessor: aCSSetAccessorDeclarationNode [
 
 { #category : #generated }
 CSPropertyDeclarationNode >> tokenVariables [
-	^ #(#name #periodToken #leftBraceToken #rightBraceToken #equalToken #equalGreaterThanToken)
+	^ #(#name #periodToken #leftBraceToken #rightBraceToken #equalToken #equalGreaterThanToken #semicolon)
 ]
 
 { #category : #generated }
