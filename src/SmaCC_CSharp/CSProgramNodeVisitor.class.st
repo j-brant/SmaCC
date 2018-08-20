@@ -90,6 +90,11 @@ CSProgramNodeVisitor >> visitBlockStatement: aBlockStatement [
 ]
 
 { #category : #generated }
+CSProgramNodeVisitor >> visitBooleanLiteralExpression: aBooleanLiteralExpression [
+	^ self visitLiteralExpression: aBooleanLiteralExpression
+]
+
+{ #category : #generated }
 CSProgramNodeVisitor >> visitBreakStatement: aBreakStatement [
 	^ self visitStatement: aBreakStatement
 ]
@@ -102,6 +107,11 @@ CSProgramNodeVisitor >> visitCastExpression: aCastExpression [
 { #category : #generated }
 CSProgramNodeVisitor >> visitCatchClause: aCatchClause [
 	^ self visitProgram: aCatchClause
+]
+
+{ #category : #generated }
+CSProgramNodeVisitor >> visitCharacterLiteralExpression: aCharacterLiteralExpression [
+	^ self visitLiteralExpression: aCharacterLiteralExpression
 ]
 
 { #category : #generated }
@@ -325,6 +335,11 @@ CSProgramNodeVisitor >> visitIndexerDeclaration: anIndexerDeclaration [
 ]
 
 { #category : #generated }
+CSProgramNodeVisitor >> visitIntegerLiteralExpression: anIntegerLiteralExpression [
+	^ self visitLiteralExpression: anIntegerLiteralExpression
+]
+
+{ #category : #generated }
 CSProgramNodeVisitor >> visitInterfaceDeclaration: anInterfaceDeclaration [
 	^ self visitDeclaration: anInterfaceDeclaration
 ]
@@ -476,6 +491,11 @@ CSProgramNodeVisitor >> visitNullConditionalMemberAccess: aNullConditionalMember
 ]
 
 { #category : #generated }
+CSProgramNodeVisitor >> visitNullLiteralExpression: aNullLiteralExpression [
+	^ self visitLiteralExpression: aNullLiteralExpression
+]
+
+{ #category : #generated }
 CSProgramNodeVisitor >> visitNullableType: aNullableType [
 	^ self visitType: aNullableType
 ]
@@ -556,6 +576,11 @@ CSProgramNodeVisitor >> visitRankSpecifier: aRankSpecifier [
 ]
 
 { #category : #generated }
+CSProgramNodeVisitor >> visitRealLiteralExpression: aRealLiteralExpression [
+	^ self visitLiteralExpression: aRealLiteralExpression
+]
+
+{ #category : #generated }
 CSProgramNodeVisitor >> visitRemoveAccessorDeclaration: aRemoveAccessorDeclaration [
 	^ self visitProgram: aRemoveAccessorDeclaration
 ]
@@ -603,6 +628,11 @@ CSProgramNodeVisitor >> visitStatementList: aStatementList [
 { #category : #generated }
 CSProgramNodeVisitor >> visitStaticConstructorDeclaration: aStaticConstructorDeclaration [
 	^ self visitDeclaration: aStaticConstructorDeclaration
+]
+
+{ #category : #generated }
+CSProgramNodeVisitor >> visitStringLiteralExpression: aStringLiteralExpression [
+	^ self visitLiteralExpression: aStringLiteralExpression
 ]
 
 { #category : #generated }

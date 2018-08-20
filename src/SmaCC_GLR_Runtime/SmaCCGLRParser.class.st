@@ -110,6 +110,14 @@ SmaCCGLRParser >> actionsForCurrentToken [
 	^ actions
 ]
 
+{ #category : #'error handling' }
+SmaCCGLRParser >> actionsForState: stateIndex and: aSymbolIndex [
+	| actions |
+	actions := OrderedCollection new.
+	self addActionsForState: stateIndex symbol: aSymbolIndex to: actions.
+	^ actions
+]
+
 { #category : #private }
 SmaCCGLRParser >> addAction: action to: anOrderedCollection [
 	(anOrderedCollection includes: action)
@@ -283,7 +291,6 @@ SmaCCGLRParser >> performParsingLoop [
 		currentToken := nil.
 		self restoreState: (states at: i).
 		self getNextToken.
-		errorToken := nil.
 		self performParsingStep ].
 	self mergeStates.
 	states anySatisfy: [ :each | each isAccepted not ] ] whileTrue.

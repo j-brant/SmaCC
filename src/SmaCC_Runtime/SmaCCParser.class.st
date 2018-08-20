@@ -187,6 +187,16 @@ SmaCCParser class >> parseWithErrors: aString [
 				ifFalse: [ ex signal ] ]
 ]
 
+{ #category : #parsing }
+SmaCCParser class >> parseWithErrors: aString startingAt: anInteger [
+	^ [ self parse: aString startingAt: anInteger ]
+		on: SmaCCParserError
+		do: [ :ex | 
+			ex isResumable
+				ifTrue: [ ex resume ]
+				ifFalse: [ ex signal ] ]
+]
+
 { #category : #caching }
 SmaCCParser class >> resetCaches [
 	"self withAllSubclasses do: [:each | each resetCaches]"
@@ -259,6 +269,11 @@ SmaCCParser >> actionForState: stateIndex and: aSymbolIndex [
 { #category : #private }
 SmaCCParser >> actionMask [
 	^ 2r11
+]
+
+{ #category : #'error handling' }
+SmaCCParser >> actionsForState: stateIndex and: aSymbolIndex [
+	^ Array with: (self actionForState: stateIndex and: aSymbolIndex)
 ]
 
 { #category : #private }
@@ -347,12 +362,6 @@ SmaCCParser >> dismissErrorToken [
 ]
 
 { #category : #'error handling' }
-SmaCCParser >> dismissStackTopForErrorRecovery [
-	stateStack removeLast.
-	^ nodeStack removeLast
-]
-
-{ #category : #'error handling' }
 SmaCCParser >> dismissStackTopForErrorRecovery: anInteger [
 	| stackContents |
 	stackContents := Array new: anInteger.
@@ -375,11 +384,11 @@ SmaCCParser >> errorAction [
 { #category : #'error handling' }
 SmaCCParser >> errorHandlerStates [
 	^ stateStack
-		collect:
-			[ :each | 
-			| action |
-			action := self actionForState: each and: self errorTokenId.
-			(action bitAnd: self actionMask) = 1
+		collect: [ :each | 
+			| actions action |
+			actions := self actionsForState: each and: self errorTokenId.
+			action := actions detect: [ :act | (act bitAnd: self actionMask) = self shiftAction ] ifNone: [ 0 ].
+			(action bitAnd: self actionMask) = self shiftAction
 				ifTrue: [ action bitShift: -2 ]
 				ifFalse: [ 0 ] ]
 ]
@@ -438,6 +447,7 @@ SmaCCParser >> getNextToken [
 SmaCCParser >> handleError: anInteger [
 	errorToken isNil
 		ifTrue: [ errorToken := currentToken ].
+	self performErrorReductions.
 	(self isEOFToken or: [ self hasErrorHandler not ])
 		ifTrue: [ self reportError: anInteger ].
 	^ self findErrorHandlerIfNoneUseErrorNumber: anInteger
@@ -506,6 +516,14 @@ SmaCCParser >> performAction: action [
 			[ actionType == self reduceAction
 				ifTrue: [ self reduce: value ]
 				ifFalse: [ self handleError: value ] ]
+]
+
+{ #category : #'error handling' }
+SmaCCParser >> performErrorReductions [
+	| action actions |
+	[ actions := self actionsForState: stateStack last and: self errorTokenId.
+	action := actions detect: [ :each | (each bitAnd: self actionMask) = self reduceAction ] ifNone: [ 0 ].
+	(action bitAnd: self actionMask) == self reduceAction ] whileTrue: [ self reduce: (action bitShift: -2) ]
 ]
 
 { #category : #private }
