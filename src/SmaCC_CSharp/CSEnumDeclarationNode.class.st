@@ -7,7 +7,7 @@ Class {
 		'enumToken',
 		'name',
 		'colonToken',
-		'type',
+		'typeToken',
 		'leftBrace',
 		'declarations',
 		'commas',
@@ -164,17 +164,17 @@ CSEnumDeclarationNode >> semicolon: aSmaCCToken [
 
 { #category : #generated }
 CSEnumDeclarationNode >> tokenVariables [
-	^ #(#enumToken #name #colonToken #type #leftBrace #rightBrace #semicolon #equal)
+	^ #(#enumToken #name #colonToken #typeToken #leftBrace #rightBrace #semicolon #equal)
 ]
 
 { #category : #generated }
-CSEnumDeclarationNode >> type [
-	^ type
+CSEnumDeclarationNode >> typeToken [
+	^ typeToken
 ]
 
 { #category : #generated }
-CSEnumDeclarationNode >> type: aSmaCCToken [
-	type := aSmaCCToken
+CSEnumDeclarationNode >> typeToken: aSmaCCToken [
+	typeToken := aSmaCCToken
 ]
 
 { #category : #generated }
