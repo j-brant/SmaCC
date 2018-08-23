@@ -9,7 +9,7 @@ Class {
 
 { #category : #'generated-accessing' }
 CSharpParser class >> cacheId [
-	^'2018-08-19T12:32:51.951269-05:00'
+	^'2018-08-22T16:11:54.791037-05:00'
 ]
 
 { #category : #generated }
@@ -1935,7 +1935,7 @@ _enum_base
 	| enum_base
 	;
 enum_base
-	: "":"" integral_type 'type'
+	: "":"" integral_type 'typeToken'
 	;
 enum_body
 	: ""{"" 'leftBrace' _enum_member_declarations <rightBrace> 'rightBrace'
@@ -2394,7 +2394,7 @@ CSharpParser >> ambiguousTransitions [
 #[ 0 230 0 234] 
 #[ 1 118 1 122 1 126 1 130] 
 #[ 1 142 7 129] 
-#[ 0 46 0 58 0 62 1 130] 
+#[ 0 46 0 58 0 62 1 126] 
 #[ 1 142 1 146 7 165] 
 #[ 1 146 7 169] 
 #[ 1 142 1 146] 
@@ -2473,7 +2473,7 @@ CSharpParser >> ambiguousTransitions [
 #[ 2 2 6 113] 
 #[ 2 2 6 117] 
 #[ 0 181 8 190] 
-#[ 0 178 0 186] 
+#[ 0 178 0 194] 
 #[ 1 146 23 161] 
 #[ 1 186 1 190 1 194 1 198 1 202 2 230 2 234 2 238 2 242 2 250 3 2 3 6 10 54] 
 #[ 1 186 1 190 1 194 1 198 1 202 2 230 2 234 2 238 2 242 3 2 3 6 10 54] 
@@ -2526,15 +2526,6 @@ CSharpParser >> reduceActionFor_exception_specifier1: nodes [
 ]
 
 { #category : #'generated-reduction actions' }
-CSharpParser >> reduceActionFor_explicit_anonymous_function_paramenter_list1: nodes [
-	| result |
-	result := Array new: 2.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
 CSharpParser >> reduceActionFor_extern_alias_directives1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
@@ -2552,6 +2543,15 @@ CSharpParser >> reduceActionFor_extern_alias_directives2: nodes [
 CSharpParser >> reduceActionFor_generic_dimension_specifier1: nodes [
 	| result |
 	result := Array new: 3.
+	result at: 2 put: (OrderedCollection new: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+CSharpParser >> reduceActionFor_implicit_anonymous_function_parameter_list1: nodes [
+	| result |
+	result := Array new: 2.
+	result at: 1 put: (OrderedCollection new: 2).
 	result at: 2 put: (OrderedCollection new: 2).
 	^ result
 ]
@@ -3372,7 +3372,7 @@ CSharpParser >> reduceActionForenum_declaration1: nodes [
 	result enumToken: (nodes at: 3).
 	result name: (nodes at: 4).
 	result colonToken: ((nodes at: 5) at: 1).
-	result type: ((nodes at: 5) at: 2).
+	result typeToken: ((nodes at: 5) at: 2).
 	result leftBrace: ((nodes at: 6) at: 1).
 	result addNodes: ((nodes at: 6) at: 2) to: result declarations.
 	result addTokens: ((nodes at: 6) at: 3) to: result commas.
@@ -5927,11 +5927,11 @@ CSharpParser >> reduceTable [
 	#(582 1 #reduceActionForliteral6:) 
 	#(194 1 #liftFirstValue:) 
 	#(241 1 #reduceActionForqualified_alias_member_expression1:) 
-	#(208 1 #liftFirstValue:) 
-	#(216 1 #liftFirstValue:) 
 	#(207 1 #liftFirstValue:) 
 	#(205 1 #liftFirstValue:) 
 	#(198 1 #liftFirstValue:) 
+	#(216 1 #liftFirstValue:) 
+	#(208 1 #liftFirstValue:) 
 	#(193 1 #liftFirstValue:) 
 	#(593 1 #liftFirstValue:) 
 	#(204 1 #liftFirstValue:) 
@@ -5953,8 +5953,8 @@ CSharpParser >> reduceTable [
 	#(374 1 #liftFirstValue:) 
 	#(386 1 #liftFirstValue:) 
 	#(582 1 #reduceActionForliteral1:) 
-	#(309 0 #reduceActionFor_explicit_anonymous_function_paramenter_list1:) 
-	#(315 0 #reduceActionFor_explicit_anonymous_function_paramenter_list1:) 
+	#(315 0 #reduceActionFor_implicit_anonymous_function_parameter_list1:) 
+	#(309 0 #reduceActionFor_implicit_anonymous_function_parameter_list1:) 
 	#(312 0 #nil) 
 	#(195 0 #nil) 
 	#(317 1 #liftFirstValue:) 
@@ -5978,8 +5978,8 @@ CSharpParser >> reduceTable [
 	#(428 1 #liftFirstValue:) 
 	#(482 0 #reduceActionFor_extern_alias_directives1:) 
 	#(436 0 #reduceActionFor_extern_alias_directives1:) 
-	#(460 0 #reduceActionFor_extern_alias_directives1:) 
 	#(444 0 #reduceActionFor_extern_alias_directives1:) 
+	#(460 0 #reduceActionFor_extern_alias_directives1:) 
 	#(430 0 #reduceActionFor_extern_alias_directives1:) 
 	#(475 0 #reduceActionFor_extern_alias_directives1:) 
 	#(590 0 #nil) 
@@ -6022,7 +6022,7 @@ CSharpParser >> reduceTable [
 	#(307 1 #liftFirstValue:) 
 	#(378 0 #nil) 
 	#(214 0 #reduceActionFor_extern_alias_directives1:) 
-	#(267 0 #reduceActionFor_explicit_anonymous_function_paramenter_list1:) 
+	#(267 0 #reduceActionFor_implicit_anonymous_function_parameter_list1:) 
 	#(265 2 #reduceActionForanonymous_object_creation_expression1:) 
 	#(341 1 #liftFirstValue:) 
 	#(401 2 #reduceActionForunchecked_statement1:) 
@@ -6036,7 +6036,7 @@ CSharpParser >> reduceTable [
 	#(209 2 #reduceActionForarray_type1:) 
 	#(212 1 #reduceActionForextern_alias_directives1:) 
 	#(224 0 #reduceActionFor_attribute_target_specifier1:) 
-	#(221 0 #reduceActionFor_explicit_anonymous_function_paramenter_list1:) 
+	#(221 0 #reduceActionFor_implicit_anonymous_function_parameter_list1:) 
 	#(249 2 #reduceActionForpost_increment_expression1:) 
 	#(250 2 #reduceActionForpost_increment_expression1:) 
 	#(283 2 #reduceActionFornull_conditional_expression1:) 
@@ -6134,10 +6134,10 @@ CSharpParser >> reduceTable [
 	#(269 1 #reduceActionFormember_declarator2:) 
 	#(267 1 #reduceActionFor_extern_alias_directives2:) 
 	#(268 1 #reduceActionForinterpolated_regular_string1:) 
-	#(255 0 #reduceActionFor_explicit_anonymous_function_paramenter_list1:) 
+	#(255 0 #reduceActionFor_implicit_anonymous_function_parameter_list1:) 
 	#(251 3 #reduceActionForobject_creation_expression2:) 
 	#(253 1 #liftFirstValue:) 
-	#(520 0 #reduceActionFor_explicit_anonymous_function_paramenter_list1:) 
+	#(520 0 #reduceActionFor_implicit_anonymous_function_parameter_list1:) 
 	#(263 3 #reduceActionForarray_creation_expression2:) 
 	#(263 3 #reduceActionForarray_creation_expression3:) 
 	#(390 3 #reduceActionForreturn_statement1:) 
@@ -6208,7 +6208,7 @@ CSharpParser >> reduceTable [
 	#(188 1 #reduceActionForextern_alias_directives1:) 
 	#(560 2 #reduceActionForextern_alias_directives2:) 
 	#(567 4 #reduceActionForattribute_section1:) 
-	#(576 0 #reduceActionFor_explicit_anonymous_function_paramenter_list1:) 
+	#(576 0 #reduceActionFor_implicit_anonymous_function_parameter_list1:) 
 	#(572 2 #reduceActionForattribute1:) 
 	#(574 1 #reduceActionFor_extern_alias_directives2:) 
 	#(176 3 #reduceActionForqualified_identifier2:) 
@@ -6281,7 +6281,7 @@ CSharpParser >> reduceTable [
 	#(496 1 #reduceActionFormethod_body3:) 
 	#(496 1 #reduceActionFormethod_body1:) 
 	#(487 4 #reduceActionForoperator_declaration1:) 
-	#(450 0 #reduceActionFor_explicit_anonymous_function_paramenter_list1:) 
+	#(450 0 #reduceActionFor_implicit_anonymous_function_parameter_list1:) 
 	#(504 1 #reduceActionForordering_direction2:) 
 	#(504 1 #reduceActionForordering_direction1:) 
 	#(497 4 #reduceActionForconstructor_declaration1:) 
@@ -6364,7 +6364,7 @@ CSharpParser >> reduceTable [
 	#(531 0 #reduceActionFor_struct_interfaces1:) 
 	#(526 1 #liftFirstValue:) 
 	#(546 2 #reduceActionForattribute_target_specifier1:) 
-	#(551 0 #reduceActionFor_explicit_anonymous_function_paramenter_list1:) 
+	#(551 0 #reduceActionFor_implicit_anonymous_function_parameter_list1:) 
 	#(602 1 #reduceActionForordering_direction2:) 
 	#(601 3 #reduceActionForfixed_pointer_declarator1:) 
 	#(599 6 #reduceActionForfixed_statement1:) 
@@ -6684,11 +6684,11 @@ CSharpParser >> transitionTable [
 #[1 0 202 0 10 0 206 0 35 0 210 0 37 0 214 0 157] 
 #[0 0 218 0 2 0 5 0 6 0 8 0 9 0 10 0 15 0 23 0 25 0 26 0 29 0 31 0 33 0 35 0 36 0 37 0 38 0 39 0 41 0 44 0 45 0 49 0 51 0 52 0 55 0 57 0 58 0 60 0 62 0 63 0 65 0 67 0 68 0 69 0 71 0 75 0 76 0 79 0 82 0 86 0 87 0 88 0 89 0 90 0 91 0 92 0 94 0 99 0 100 0 101 0 102 0 103 0 105 0 108 0 109 0 111 0 112 0 113 0 117 0 118 0 119 0 121 0 124 0 125 0 126 0 128 0 134 0 135 0 137 0 138 0 141 0 142 0 143 0 145 0 148 0 149 0 151 0 152 0 153 0 155 0 157 0 163 0 164 0 167 0 168 2 100] 
 #[0 0 222 0 2 0 5 0 6 0 8 0 9 0 10 0 15 0 23 0 25 0 26 0 29 0 31 0 33 0 35 0 36 0 37 0 38 0 39 0 41 0 44 0 45 0 49 0 51 0 52 0 55 0 57 0 58 0 60 0 62 0 63 0 65 0 67 0 68 0 69 0 71 0 75 0 76 0 79 0 82 0 86 0 87 0 88 0 89 0 90 0 91 0 92 0 94 0 99 0 100 0 101 0 102 0 103 0 105 0 108 0 109 0 111 0 112 0 113 0 117 0 118 0 119 0 121 0 124 0 125 0 126 0 128 0 134 0 135 0 137 0 138 0 141 0 142 0 143 0 145 0 148 0 149 0 151 0 152 0 153 0 155 0 157 0 163 0 164 0 167 0 168 2 100] 
-#[0 0 194 0 2 0 5 0 6 0 8 0 9 0 10 0 15 0 23 0 25 0 26 0 29 0 31 0 33 0 35 0 36 0 37 0 38 0 39 0 41 0 44 0 45 0 49 0 51 0 52 0 55 0 57 0 58 0 60 0 62 0 63 0 65 0 67 0 68 0 69 0 71 0 75 0 76 0 79 0 82 0 86 0 87 0 88 0 89 0 90 0 91 0 92 0 94 0 99 0 100 0 101 0 102 0 103 0 105 0 108 0 109 0 111 0 112 0 113 0 117 0 118 0 119 0 121 0 124 0 125 0 126 0 128 0 134 0 135 0 137 0 138 0 141 0 142 0 143 0 145 0 148 0 149 0 151 0 152 0 153 0 155 0 157 0 163 0 164 0 167 0 168 2 100] 
+#[0 0 186 0 2 0 5 0 6 0 8 0 9 0 10 0 15 0 23 0 25 0 26 0 29 0 31 0 33 0 35 0 36 0 37 0 38 0 39 0 41 0 44 0 45 0 49 0 51 0 52 0 55 0 57 0 58 0 60 0 62 0 63 0 65 0 67 0 68 0 69 0 71 0 75 0 76 0 79 0 82 0 86 0 87 0 88 0 89 0 90 0 91 0 92 0 94 0 99 0 100 0 101 0 102 0 103 0 105 0 108 0 109 0 111 0 112 0 113 0 117 0 118 0 119 0 121 0 124 0 125 0 126 0 128 0 134 0 135 0 137 0 138 0 141 0 142 0 143 0 145 0 148 0 149 0 151 0 152 0 153 0 155 0 157 0 163 0 164 0 167 0 168 2 100] 
 #[0 0 82 0 2 0 5 0 6 0 8 0 9 0 10 0 15 0 23 0 25 0 26 0 29 0 31 0 33 0 35 0 36 0 37 0 38 0 39 0 41 0 44 0 45 0 49 0 51 0 52 0 55 0 57 0 58 0 60 0 62 0 63 0 65 0 67 0 68 0 69 0 71 0 75 0 76 0 79 0 82 0 86 0 87 0 88 0 89 0 90 0 91 0 92 0 94 0 99 0 100 0 101 0 102 0 103 0 105 0 108 0 109 0 111 0 112 0 113 0 117 0 118 0 119 0 121 0 124 0 125 0 126 0 128 0 134 0 135 0 137 0 138 0 141 0 142 0 143 0 145 0 148 0 149 0 151 0 152 0 153 0 155 0 157 0 163 0 164 0 167 0 168 2 100] 
 #[0 0 94 0 2 0 5 0 6 0 8 0 9 0 10 0 15 0 23 0 25 0 26 0 29 0 31 0 33 0 35 0 36 0 37 0 38 0 39 0 41 0 44 0 45 0 49 0 51 0 52 0 55 0 57 0 58 0 60 0 62 0 63 0 65 0 67 0 68 0 69 0 71 0 75 0 76 0 79 0 82 0 86 0 87 0 88 0 89 0 90 0 91 0 92 0 94 0 99 0 100 0 101 0 102 0 103 0 105 0 108 0 109 0 111 0 112 0 113 0 117 0 118 0 119 0 121 0 124 0 125 0 126 0 128 0 134 0 135 0 137 0 138 0 141 0 142 0 143 0 145 0 148 0 149 0 151 0 152 0 153 0 155 0 157 0 163 0 164 0 167 0 168 2 100] 
 #[0 0 94 0 2 0 5 0 6 0 8 0 9 0 10 0 15 0 23 0 25 0 26 0 29 0 31 0 33 0 35 0 36 0 37 0 38 0 39 0 41 0 44 0 45 0 49 0 51 0 52 0 55 0 57 0 58 0 60 0 62 0 63 0 65 0 67 0 68 0 69 0 71 0 75 0 76 0 79 0 82 0 86 0 87 0 88 0 89 0 90 0 91 0 92 0 94 0 99 0 100 0 101 0 102 0 103 0 105 0 108 0 109 0 111 0 112 0 113 0 117 0 118 0 119 0 121 0 124 0 125 0 126 0 128 0 134 0 135 0 137 0 138 0 141 0 142 0 143 0 145 0 148 0 149 0 151 0 152 0 153 0 155 0 157 0 163 0 164 0 167 0 168 2 100] 
-#[0 0 194 0 2 0 5 0 6 0 8 0 9 0 10 0 15 0 23 0 25 0 26 0 29 0 31 0 33 0 35 0 36 0 37 0 38 0 39 0 41 0 44 0 45 0 49 0 51 0 52 0 55 0 57 0 58 0 60 0 62 0 63 0 65 0 67 0 68 0 69 0 71 0 75 0 76 0 79 0 82 0 86 0 87 0 88 0 89 0 90 0 91 0 92 0 94 0 99 0 100 0 101 0 102 0 103 0 105 0 108 0 109 0 111 0 112 0 113 0 117 0 118 0 119 0 121 0 124 0 125 0 126 0 128 0 134 0 135 0 137 0 138 0 141 0 142 0 143 0 145 0 148 0 149 0 151 0 152 0 153 0 155 0 157 0 163 0 164 0 167 0 168 2 100] 
+#[0 0 186 0 2 0 5 0 6 0 8 0 9 0 10 0 15 0 23 0 25 0 26 0 29 0 31 0 33 0 35 0 36 0 37 0 38 0 39 0 41 0 44 0 45 0 49 0 51 0 52 0 55 0 57 0 58 0 60 0 62 0 63 0 65 0 67 0 68 0 69 0 71 0 75 0 76 0 79 0 82 0 86 0 87 0 88 0 89 0 90 0 91 0 92 0 94 0 99 0 100 0 101 0 102 0 103 0 105 0 108 0 109 0 111 0 112 0 113 0 117 0 118 0 119 0 121 0 124 0 125 0 126 0 128 0 134 0 135 0 137 0 138 0 141 0 142 0 143 0 145 0 148 0 149 0 151 0 152 0 153 0 155 0 157 0 163 0 164 0 167 0 168 2 100] 
 #[0 6 17 0 35] 
 #[0 0 222 0 2 0 5 0 6 0 8 0 9 0 10 0 15 0 23 0 25 0 26 0 29 0 31 0 33 0 35 0 36 0 37 0 38 0 39 0 41 0 44 0 45 0 49 0 51 0 52 0 55 0 57 0 58 0 60 0 62 0 63 0 65 0 67 0 68 0 69 0 71 0 75 0 76 0 79 0 82 0 86 0 87 0 88 0 89 0 90 0 91 0 92 0 94 0 99 0 100 0 101 0 102 0 103 0 105 0 108 0 109 0 111 0 112 0 113 0 117 0 118 0 119 0 121 0 124 0 125 0 126 0 128 0 134 0 135 0 137 0 138 0 141 0 142 0 143 0 145 0 148 0 149 0 151 0 152 0 153 0 155 0 157 0 163 0 164 0 167 0 168 2 100] 
 #[0 0 218 0 2 0 5 0 6 0 8 0 9 0 10 0 15 0 23 0 25 0 26 0 29 0 31 0 33 0 35 0 36 0 37 0 38 0 39 0 41 0 44 0 45 0 49 0 51 0 52 0 55 0 57 0 58 0 60 0 62 0 63 0 65 0 67 0 68 0 69 0 71 0 75 0 76 0 79 0 82 0 86 0 87 0 88 0 89 0 90 0 91 0 92 0 94 0 99 0 100 0 101 0 102 0 103 0 105 0 108 0 109 0 111 0 112 0 113 0 117 0 118 0 119 0 121 0 124 0 125 0 126 0 128 0 134 0 135 0 137 0 138 0 141 0 142 0 143 0 145 0 148 0 149 0 151 0 152 0 153 0 155 0 157 0 163 0 164 0 167 0 168 2 100] 
@@ -6928,7 +6928,7 @@ CSharpParser >> transitionTable [
 #[1 0 202 0 10 0 206 0 35 0 210 0 37 9 41 0 157 9 45 1 105 9 49 1 106] 
 #[0 2 30 0 1 0 5 0 8 0 10 0 12 0 13 0 16 0 17 0 25 0 47 0 48 0 49 0 50 0 52 0 53 0 55 0 56 0 58 0 59 0 60 0 61 0 62 0 64 0 65 0 66 0 72 0 75 0 76 0 77 0 78 0 81 0 83 0 86 0 93 0 94 0 97 0 99 0 100 0 116 0 117 0 121 0 122 0 125 0 127 0 128 0 129 0 130 0 131 0 133 0 134 0 135 0 136 0 137 0 138 0 139 0 140 0 142 0 146 0 147 0 148 0 152 0 155 0 157 0 158 0 159 0 160 0 161 0 162 0 165 0 166 0 169 0 170 2 100] 
 #[1 5 13 0 49 1 145 0 52 1 145 0 55 1 145 0 60 1 145 0 65 1 145 0 76 1 145 0 86 1 145 0 94 5 45 0 100 1 145 0 117 1 145 0 121 5 57 0 125 1 145 0 134 1 145 0 135 1 145 0 138 1 65 0 142 5 73 0 157 1 125 0 191 1 121 0 193 1 125 0 194 9 53 0 196 9 53 0 197 9 53 0 198 9 53 0 199 1 145 0 200 1 145 0 201 1 145 0 202 9 53 0 203 1 161 0 204 9 53 0 205 9 53 0 206 9 53 0 207 9 53 0 208 9 53 0 209 1 185 0 210 9 53 0 216 9 53 1 157 9 53 2 80 2 229 2 81 3 1 2 99] 
-#[1 1 26 0 9 1 34 0 49 1 34 0 52 1 34 0 55 1 34 0 60 1 34 0 65 1 34 0 76 1 34 0 86 1 34 0 94 1 34 0 100 6 181 0 104 6 181 0 114 1 34 0 117 1 34 0 121 1 34 0 125 1 34 0 134 1 34 0 135 1 34 0 138 1 34 0 142 1 34 0 157 6 169 1 53 6 173 1 54 6 177 1 55 6 181 1 56 6 181 1 57] 
+#[1 1 30 0 9 1 34 0 49 1 34 0 52 1 34 0 55 1 34 0 60 1 34 0 65 1 34 0 76 1 34 0 86 1 34 0 94 1 34 0 100 6 181 0 104 6 181 0 114 1 34 0 117 1 34 0 121 1 34 0 125 1 34 0 134 1 34 0 135 1 34 0 138 1 34 0 142 1 34 0 157 6 169 1 53 6 173 1 54 6 177 1 55 6 181 1 56 6 181 1 57] 
 #[1 1 77 0 148 9 57 1 92] 
 #[0 2 34 0 148] 
 #[0 9 61 0 146] 
@@ -7575,7 +7575,7 @@ CSharpParser >> transitionTable [
 #[0 6 34 0 15 0 25] 
 #[1 15 117 0 157 1 125 0 191 15 125 0 193 1 125 0 194 15 125 0 208 17 101 1 192] 
 #[1 6 38 0 8 0 134 0 20 5 253 0 24 1 107 0 26 6 38 0 32 6 38 0 148 9 37 0 217 9 37 0 238] 
-#[0 0 178 0 15 0 20 0 25 0 32 0 145 0 148] 
+#[0 0 194 0 15 0 20 0 25 0 32 0 145 0 148] 
 #[0 17 105 0 20] 
 #[1 17 109 0 32 17 113 0 148 17 117 1 207] 
 #[1 0 202 0 10 0 206 0 35 0 210 0 37 17 121 0 157 1 125 0 191 15 125 0 193 1 125 0 194 15 125 0 208 17 125 1 183 15 109 1 184 17 129 1 192] 
