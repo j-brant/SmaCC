@@ -161,12 +161,17 @@ SmaCCParseNode >> allNodesDo: nodeBlock [
 
 { #category : #iterating }
 SmaCCParseNode >> allNodesDo: nodeBlock andTokensDo: tokenBlock [
+	self allNodesDo: nodeBlock andTokensDo: tokenBlock includeErrors: false
+]
+
+{ #category : #iterating }
+SmaCCParseNode >> allNodesDo: nodeBlock andTokensDo: tokenBlock includeErrors: aBoolean [
 	self
-		nodesDo:
-			[ :each | 
+		nodesDo: [ :each | 
 			nodeBlock value: each.
-			each allNodesDo: nodeBlock andTokensDo: tokenBlock ]
+			each allNodesDo: nodeBlock andTokensDo: tokenBlock includeErrors: aBoolean ]
 		andTokensDo: tokenBlock
+		includeErrors: aBoolean
 ]
 
 { #category : #iterating }
@@ -207,6 +212,19 @@ SmaCCParseNode >> allTokensInto: aCollection [
 			(self perform: each)
 				ifNotNil: [ :tokens | aCollection addAll: tokens ] ].
 	self nodesDo: [ :each | each allTokensInto: aCollection ]
+]
+
+{ #category : #tokens }
+SmaCCParseNode >> allTokensMatching: aSmaCCToken [
+	| tokens |
+	tokens := OrderedCollection new.
+	self
+		allNodesDo: [ :each |  ]
+		andTokensDo: [ :each | 
+			each = aSmaCCToken
+				ifTrue: [ tokens add: each ] ]
+		includeErrors: true.
+	^ tokens
 ]
 
 { #category : #variables }
@@ -616,18 +634,21 @@ SmaCCParseNode >> nodesDo: nodeBlock [
 
 { #category : #iterating }
 SmaCCParseNode >> nodesDo: nodeBlock andTokensDo: tokenBlock [
+	self nodesDo: nodeBlock andTokensDo: tokenBlock includeErrors: false
+]
+
+{ #category : #iterating }
+SmaCCParseNode >> nodesDo: nodeBlock andTokensDo: tokenBlock includeErrors: aBoolean [
 	| block |
 	nodeBlock notNil
-		ifTrue:
-			[ block := [ :each | (self perform: each) ifNotNil: nodeBlock ].
+		ifTrue: [ block := [ :each | (self perform: each) ifNotNil: nodeBlock ].
 			self nodeVariables do: block.
 			self ignoredNodeVariables do: block.
 			block := [ :each | (self perform: each) ifNotNil: [ :nodes | nodes do: nodeBlock ] ].
 			self compositeNodeVariables do: block.
 			self ignoredCompositeNodeVariables do: block ].
 	tokenBlock notNil
-		ifTrue:
-			[ block := [ :each | (self perform: each) ifNotNil: tokenBlock ].
+		ifTrue: [ block := [ :each | (self perform: each) ifNotNil: tokenBlock ].
 			self tokenVariables do: block.
 			self ignoredTokenVariables do: block.
 			block := [ :each | (self perform: each) ifNotNil: [ :nodes | nodes do: tokenBlock ] ].
@@ -643,8 +664,7 @@ SmaCCParseNode >> nodesDo: nodeBlock andTokensDo: tokenBlock [
 	(each isKindOf: Collection)
 		ifTrue: [ each do: block ] ].
 	self otherVariables do: [ :sel | block value: (self perform: sel) ].
-	self ignoredOtherVariables
-		do: [ :sel | block value: (self perform: sel) ]
+	self ignoredOtherVariables do: [ :sel | block value: (self perform: sel) ]
 ]
 
 { #category : #variables }
@@ -843,8 +863,13 @@ SmaCCParseNode >> withAllNodesDo: nodeBlock [
 
 { #category : #iterating }
 SmaCCParseNode >> withAllNodesDo: nodeBlock andTokensDo: tokenBlock [
+	self withAllNodesDo: nodeBlock andTokensDo: tokenBlock includesErrors: false
+]
+
+{ #category : #iterating }
+SmaCCParseNode >> withAllNodesDo: nodeBlock andTokensDo: tokenBlock includesErrors: aBoolean [
 	nodeBlock value: self.
-	self allNodesDo: nodeBlock andTokensDo: tokenBlock
+	self allNodesDo: nodeBlock andTokensDo: tokenBlock includeErrors: aBoolean
 ]
 
 { #category : #iterating }

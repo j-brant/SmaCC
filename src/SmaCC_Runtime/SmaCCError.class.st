@@ -76,6 +76,19 @@ SmaCCError >> nodesAndTokensIn: anObject do: aBlock [
 				ifTrue: [ aBlock value: anObject ] ]
 ]
 
+{ #category : #iterating }
+SmaCCError >> nodesDo: nodeBlock andTokensDo: tokenBlock includeErrors: aBoolean [
+	super nodesDo: nodeBlock andTokensDo: tokenBlock includeErrors: aBoolean.
+	aBoolean
+		ifFalse: [ ^ self ].
+	self
+		errorComponentsDo: [ :each | 
+			(nodeBlock notNil and: [ each isKindOf: SmaCCNode ])
+				ifTrue: [ nodeBlock value: each ].
+			(tokenBlock notNil and: [ each isKindOf: SmaCCToken ])
+				ifTrue: [ tokenBlock value: each ] ]
+]
+
 { #category : #accessing }
 SmaCCError >> stackContents [
 	^ stackContents
