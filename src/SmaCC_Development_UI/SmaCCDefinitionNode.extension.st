@@ -68,6 +68,11 @@ SmaCCDefinitionNode >> lookupRule: aString [
 ]
 
 { #category : #'*SmaCC_Development_UI' }
+SmaCCDefinitionNode >> matches: aString [
+	^ (self source asLowercase indexOfSubCollection: aString asLowercase) > 0
+]
+
+{ #category : #'*SmaCC_Development_UI' }
 SmaCCDefinitionNode >> rule [
 	^ self
 		lookupNode: [ :node | (node isKindOf: SmaCCProductionRuleNode) or: [ node isKindOf: SmaCCTokenRuleNode ] ]
@@ -95,7 +100,7 @@ SmaCCDefinitionNode >> scannerClass [
 
 { #category : #'*SmaCC_Development_UI' }
 SmaCCDefinitionNode >> tags [
-	^ Array new
+	^ #()
 ]
 
 { #category : #'*SmaCC_Development_UI' }
