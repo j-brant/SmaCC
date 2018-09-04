@@ -1,18 +1,6 @@
 Extension { #name : #SmaCCDefinitionNode }
 
 { #category : #'*SmaCC_Development_UI' }
-SmaCCDefinitionNode >> allReferencesTo: aString [
-	| refs |
-	refs := OrderedCollection new.
-	self topParent
-		allNodesDo: [ :each | 
-			(((each isKindOf: SmaCCSymbolNode) or: [ each isKindOf: SmaCCTokenRegexNode ])
-				and: [ each name value = aString ])
-				ifTrue: [ refs add: each ] ].
-	^ refs
-]
-
-{ #category : #'*SmaCC_Development_UI' }
 SmaCCDefinitionNode >> buildInterfaceIn: presentation [
 	presentation text
 		title: 'Definition';
@@ -58,37 +46,6 @@ SmaCCDefinitionNode >> buildVariableNameInterfaceFor: aString in: presentation [
 ]
 
 { #category : #'*SmaCC_Development_UI' }
-SmaCCDefinitionNode >> lookupRule: aString [
-	self topParent rules
-		do: [ :each | 
-			((each isKindOf: SmaCCProductionRuleNode) or: [ each isKindOf: SmaCCTokenRuleNode ])
-				ifTrue: [ each name value = aString
-						ifTrue: [ ^ each ] ] ].
-	^ nil
-]
-
-{ #category : #'*SmaCC_Development_UI' }
-SmaCCDefinitionNode >> rule [
-	^ self
-		lookupNode: [ :node | (node isKindOf: SmaCCProductionRuleNode) or: [ node isKindOf: SmaCCTokenRuleNode ] ]
-]
-
-{ #category : #'*SmaCC_Development_UI' }
-SmaCCDefinitionNode >> ruleReferences [
-	^ #()
-]
-
-{ #category : #'*SmaCC_Development_UI' }
-SmaCCDefinitionNode >> ruleReferencesTo: aString [
-	| rules |
-	rules := Set new.
-	(self allReferencesTo: aString)
-		do: [ :ref | ref rule ifNotNil: [ :rule | rules add: rule ] ].
-	^ rules
-		asSortedCollection: [ :a :b | a startPosition < b startPosition ]
-]
-
-{ #category : #'*SmaCC_Development_UI' }
 SmaCCDefinitionNode >> scannerClass [
 	^ self topParent attributeNamed: #scannerClass ifAbsent: [ SmaCCScanner ]
 ]
@@ -100,15 +57,4 @@ SmaCCDefinitionNode >> tags [
 
 { #category : #'*SmaCC_Development_UI' }
 SmaCCDefinitionNode >> updateSource: aSmaCCString [
-]
-
-{ #category : #'*SmaCC_Development_UI' }
-SmaCCDefinitionNode >> uses [
-	| rules |
-	rules := Set new.
-	self
-		allNodesDo: [ :each | 
-			((each isKindOf: SmaCCSymbolNode) or: [ each isKindOf: SmaCCTokenRegexNode ])
-				ifTrue: [ (self lookupRule: each name value) ifNotNil: [ :rule | rules add: rule ] ] ].
-	^ rules asSortedCollection: [ :a :b | a startPosition < b startPosition ]
 ]

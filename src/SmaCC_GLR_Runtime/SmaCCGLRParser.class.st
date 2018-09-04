@@ -105,7 +105,10 @@ SmaCCGLRParser >> actionsForCurrentToken [
 	actions := OrderedCollection new: 1.
 	self tryAllTokens
 		ifTrue: [ currentToken ids
-				do: [ :each | self addActionsFor: each to: actions ] ]
+				do: [ :each | 
+					self addActionsFor: each to: actions.
+					(actions notEmpty and: [ self useAllTokenIds not ])
+						ifTrue: [ ^ actions ] ] ]
 		ifFalse: [ self addActionsFor: currentToken ids first to: actions ].
 	^ actions
 ]
@@ -522,4 +525,9 @@ SmaCCGLRParser >> statesThatShift [
 					self addActionsForState: each symbol: i to: actions.
 					actions
 						anySatisfy: [ :action | (action bitAnd: self actionMask) = self shiftAction ] ] ]
+]
+
+{ #category : #testing }
+SmaCCGLRParser >> useAllTokenIds [
+	^ true
 ]

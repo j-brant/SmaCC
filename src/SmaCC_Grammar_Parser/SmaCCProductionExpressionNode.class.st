@@ -33,6 +33,11 @@ SmaCCProductionExpressionNode >> initialize [
 	terms := OrderedCollection new: 2.
 ]
 
+{ #category : #testing }
+SmaCCProductionExpressionNode >> isEmptyExpression [
+	^ self terms isEmpty
+]
+
 { #category : #generated }
 SmaCCProductionExpressionNode >> terms [
 	^ terms
