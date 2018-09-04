@@ -51,10 +51,10 @@ SmaCCProductionRuleNode >> tags [
 						ifFalse: [ noClass := true ] ] ].
 	tags := OrderedCollection new.
 	hasClass
-		ifTrue: [ tags add: 'C' ].
+		ifTrue: [ tags add: 'AST' ].
 	code
-		ifTrue: [ tags add: 'E' ].
+		ifTrue: [ tags add: 'Expression' ].
 	noClass
-		ifTrue: [ tags add: 'U' ].
+		ifTrue: [ tags add: 'Default' ].
 	^ tags asArray
 ]

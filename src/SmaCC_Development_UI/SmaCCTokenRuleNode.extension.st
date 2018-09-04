@@ -45,6 +45,6 @@ SmaCCTokenRuleNode >> selector [
 { #category : #'*SmaCC_Development_UI' }
 SmaCCTokenRuleNode >> tags [
 	^ self isMethod
-		ifTrue: [ #('#') ]
+		ifTrue: [ #('Method') ]
 		ifFalse: [ #() ]
 ]
