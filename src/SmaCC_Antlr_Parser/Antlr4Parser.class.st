@@ -631,6 +631,11 @@ identifier
    ;"
 ]
 
+{ #category : #'file types' }
+Antlr4Parser class >> fileExtension [
+	^ '.g4'
+]
+
 { #category : #'generated-accessing' }
 Antlr4Parser class >> scannerClass [
 	^Antlr4Scanner
