@@ -357,7 +357,13 @@ SmaCCParserGenerator >> optionsMenu [
 					item
 						autoRefresh: true;
 						name: 'Allow Unicode Characters';
-						action: [ self useUnicode ] ] ];
+						action: [ self useUnicode ] ];
+				addItem: [ :item | 
+					menuItems at: #optimizeTransitionTable put: item.
+					item
+						autoRefresh: true;
+						name: 'Optimize Transition Table';
+						action: [ self toggleOptimizeTransitionTable ] ] ];
 		addGroup: [ :group | 
 			group
 				addItem: [ :item | 
@@ -535,6 +541,12 @@ SmaCCParserGenerator >> title [
 ]
 
 { #category : #actions }
+SmaCCParserGenerator >> toggleOptimizeTransitionTable [
+	SmaCCGrammarCompiler toggleOptimizeTransitionTable.
+	self updateOptionsMenu
+]
+
+{ #category : #actions }
 SmaCCParserGenerator >> type [
 	^ type
 ]
@@ -584,6 +596,7 @@ SmaCCParserGenerator >> updateOptionsMenu [
 						ifTrue: [ '' ]
 						ifFalse: [ ' (' , parserClassName , ')' ]) , '...'.
 	self updateMenuItem: #useUnicode checked: self isUnicode.
+	self updateMenuItem: #optimizeTransitionTable checked: SmaCCGrammarCompiler optimizeTransitionTable.
 	self updateMenuItem: #setLALR1 checked: self isLALR1.
 	self updateMenuItem: #setLR1 checked: self isLR1
 ]

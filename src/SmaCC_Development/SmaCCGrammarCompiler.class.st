@@ -12,8 +12,26 @@ Class {
 		'codeGenerator',
 		'reduceTable'
 	],
+	#classVars : [
+		'OptimizeTransitionTable'
+	],
 	#category : #'SmaCC_Development'
 }
+
+{ #category : #accessing }
+SmaCCGrammarCompiler class >> optimizeTransitionTable [
+	^ OptimizeTransitionTable ifNil: [ true ]
+]
+
+{ #category : #accessing }
+SmaCCGrammarCompiler class >> optimizeTransitionTable: aBoolean [
+	OptimizeTransitionTable := aBoolean
+]
+
+{ #category : #accessing }
+SmaCCGrammarCompiler class >> toggleOptimizeTransitionTable [
+	self optimizeTransitionTable: self optimizeTransitionTable not
+]
 
 { #category : #'action table' }
 SmaCCGrammarCompiler >> actionForState: anInteger on: aSmaCCSymbol [
@@ -174,7 +192,9 @@ SmaCCGrammarCompiler >> createItemSets [
 SmaCCGrammarCompiler >> createTransitionTable [
 	| table optimizedTable |
 	table := (1 to: itemSets size) collect: [ :index | scannerCompiler symbols collect: [ :each | self actionForState: index on: each ] ].
-	optimizedTable := self optimizeTransitionTable: table.
+	optimizedTable := self class optimizeTransitionTable
+		ifTrue: [ self optimizeTransitionTable: table ]
+		ifFalse: [ table ].
 	actions := self compressTable: optimizedTable
 ]
 
