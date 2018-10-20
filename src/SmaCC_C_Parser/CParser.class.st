@@ -6,7 +6,7 @@ Class {
 
 { #category : #'generated-accessing' }
 CParser class >> cacheId [
-	^'2018-03-19T12:39:33.636522-05:00'
+	^'2018-10-19T22:02:48.689276-05:00'
 ]
 
 { #category : #generated }
@@ -425,36 +425,8 @@ CParser class >> fileExtensionType [
 	^ 'C files'
 ]
 
-{ #category : #'generated-accessing' }
-CParser class >> scannerClass [
-	^CScanner
-]
-
 { #category : #generated }
-CParser class >> startingStateFortranslationUnit [
-	^ 1
-]
-
-{ #category : #scanning }
-CParser >> addTypeName: aString [
-	scanner addTypeName: aString
-]
-
-{ #category : #'generated-reduction actions' }
-CParser >> reduceActionForenum_specifier3: nodes [
-	self addTypeName: (nodes at: 2) value.
-	^ self reduceFor: nodes
-]
-
-{ #category : #'generated-reduction actions' }
-CParser >> reduceActionForinit_declaration1: nodes [
-	(nodes at: 1) first value = 'typedef'
-		ifTrue: [ 1 to: (nodes at: 2) size by: 2 do: [ :i | self addTypeName: ((nodes at: 2) at: i) value ] ].
-	^ self reduceFor: nodes
-]
-
-{ #category : #generated }
-CParser >> reduceTable [
+CParser class >> reduceTable [
 ^#(
 	#(127 1 #reduceFor:) 
 	#(112 1 #reduceFor:) 
@@ -588,13 +560,23 @@ CParser >> reduceTable [
 	).
 ]
 
+{ #category : #'generated-accessing' }
+CParser class >> scannerClass [
+	^CScanner
+]
+
 { #category : #generated }
-CParser >> symbolNames [
+CParser class >> startingStateFortranslationUnit [
+	^ 1
+]
+
+{ #category : #generated }
+CParser class >> symbolNames [
 	^ #('"!"' '"!="' '"%"' '"%="' '"&"' '"&&"' '"&="' '"("' '")"' '"*"' '"*="' '"+"' '"++"' '"+="' '","' '"-"' '"--"' '"-="' '"->"' '"."' '"/"' '"/="' '":"' '";"' '"<"' '"<<"' '"<<="' '"<="' '"="' '"=="' '">"' '">="' '">>"' '">>="' '"?"' '"^"' '"^="' '"auto"' '"break"' '"case"' '"char"' '"const"' '"continue"' '"default"' '"do"' '"double"' '"else"' '"enum"' '"extern"' '"float"' '"for"' '"goto"' '"if"' '"int"' '"long"' '"register"' '"return"' '"short"' '"signed"' '"sizeof"' '"static"' '"struct"' '"switch"' '"typedef"' '"union"' '"unsigned"' '"void"' '"volatile"' '"while"' '"|"' '"|="' '"||"' '"~"' '<ELLIPSIS>' '<comment>' '<IDENTIFIER>' '<CONSTANT>' '<STRING_LITERAL>' '<LEFT_BLOCK>' '<RIGHT_BLOCK>' '<LEFT_BRACE>' '<RIGHT_BRACE>' '<whitespace>' 'B e g i n' 'translationUnit' 'primary_expression' 'postfix_expression' 'argument_expression_list' 'unary_expression' 'unary_operator' 'cast_expression' 'multiplicative_expression' 'additive_expression' 'shift_expression' 'relational_expression' 'equality_expression' 'and_expression' 'exclusive_or_expression' 'inclusive_or_expression' 'logical_and_expression' 'logical_or_expression' 'conditional_expression' 'assignment_expression' 'assignment_operator' 'expression' 'constant_expression' 'declaration' 'init_declaration' 'declaration_specifiers' 'init_declarator_list' 'init_declarator' 'storage_class_specifier' 'type_specifier' 'struct_or_union_specifier' 'struct_or_union' 'struct_declaration_list' 'struct_declaration' 'specifier_qualifier_list' 'struct_declarator_list' 'struct_declarator' 'enum_specifier' 'enumerator_list' 'enumerator' 'type_qualifier' 'declarator' 'direct_declarator' 'pointer' 'type_qualifier_list' 'parameter_type_list' 'parameter_list' 'parameter_declaration' 'identifier_list' 'type_name' 'abstract_declarator' 'direct_abstract_declarator' 'initializer' 'initializer_list' 'statement' 'labeled_statement' 'compound_statement' 'declaration_list' 'statement_list' 'expression_statement' 'selection_statement' 'iteration_statement' 'jump_statement' 'external_declaration' 'function_definition' '<TypeName>' 'E O F' 'error')
 ]
 
 { #category : #generated }
-CParser >> transitionTable [
+CParser class >> transitionTable [
 ^#(
 #[1 0 9 0 8 0 13 0 10 0 17 0 38 0 21 0 41 0 25 0 42 0 29 0 46 0 33 0 48 0 37 0 49 0 41 0 50 0 45 0 54 0 49 0 55 0 53 0 56 0 57 0 58 0 61 0 59 0 65 0 61 0 69 0 62 0 73 0 64 0 77 0 65 0 81 0 66 0 85 0 67 0 89 0 68 0 93 0 76 0 97 0 85 0 101 0 107 0 105 0 108 0 109 0 109 0 113 0 112 0 117 0 113 0 121 0 114 0 125 0 115 0 129 0 121 0 133 0 124 0 137 0 125 0 141 0 126 0 145 0 127 0 149 0 147 0 153 0 148 0 157 0 149] 
 #[1 0 9 0 8 0 13 0 10 0 93 0 76 0 161 0 125 0 141 0 126 0 145 0 127] 
@@ -947,4 +929,22 @@ CParser >> transitionTable [
 #[0 2 2 0 1 0 5 0 8 0 10 0 12 0 13 0 16 0 17 0 24 0 39 0 40 0 43 0 44 0 45 0 47 0 51 0 52 0 53 0 57 0 60 0 63 0 69 0 73 0 76 0 77 0 78 0 81 0 82] 
 #[0 2 6 0 1 0 5 0 8 0 10 0 12 0 13 0 16 0 17 0 24 0 39 0 40 0 43 0 44 0 45 0 47 0 51 0 52 0 53 0 57 0 60 0 63 0 69 0 73 0 76 0 77 0 78 0 81 0 82]
 	).
+]
+
+{ #category : #scanning }
+CParser >> addTypeName: aString [
+	scanner addTypeName: aString
+]
+
+{ #category : #'generated-reduction actions' }
+CParser >> reduceActionForenum_specifier3: nodes [
+	self addTypeName: (nodes at: 2) value.
+	^ self reduceFor: nodes
+]
+
+{ #category : #'generated-reduction actions' }
+CParser >> reduceActionForinit_declaration1: nodes [
+	(nodes at: 1) first value = 'typedef'
+		ifTrue: [ 1 to: (nodes at: 2) size by: 2 do: [ :i | self addTypeName: ((nodes at: 2) at: i) value ] ].
+	^ self reduceFor: nodes
 ]

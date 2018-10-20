@@ -197,6 +197,11 @@ SmaCCParser class >> parseWithErrors: aString startingAt: anInteger [
 				ifFalse: [ ex signal ] ]
 ]
 
+{ #category : #accessing }
+SmaCCParser class >> reduceTable [
+	^ self subclassResponsibility
+]
+
 { #category : #caching }
 SmaCCParser class >> resetCaches [
 	"self withAllSubclasses do: [:each | each resetCaches]"
@@ -223,6 +228,21 @@ SmaCCParser class >> setEncoding: aString on: aStream [
 { #category : #encoding }
 SmaCCParser class >> setEncodingOn: aStream [
 	self setEncoding: nil on: aStream
+]
+
+{ #category : #accessing }
+SmaCCParser class >> symbolNames [
+	^ #()
+]
+
+{ #category : #accessing }
+SmaCCParser class >> symbolTypes [
+	^ #()
+]
+
+{ #category : #accessing }
+SmaCCParser class >> transitionTable [
+	^ self subclassResponsibility
 ]
 
 { #category : #private }
@@ -609,7 +629,7 @@ SmaCCParser >> reduceFor: aCollection [
 
 { #category : #accessing }
 SmaCCParser >> reduceTable [
-	^ self subclassResponsibility
+	^ self class reduceTable
 ]
 
 { #category : #'error handling' }
@@ -690,17 +710,17 @@ SmaCCParser >> stringValue: anOrderedCollection [
 
 { #category : #accessing }
 SmaCCParser >> symbolNames [
-	^ #()
+	^ self class symbolNames
 ]
 
 { #category : #accessing }
 SmaCCParser >> symbolTypes [
-	^ #()
+	^ self class symbolTypes
 ]
 
 { #category : #accessing }
 SmaCCParser >> transitionTable [
-	^ self subclassResponsibility
+	^ self class transitionTable
 ]
 
 { #category : #testing }

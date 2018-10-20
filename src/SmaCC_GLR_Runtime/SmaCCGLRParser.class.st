@@ -32,6 +32,11 @@ Class {
 }
 
 { #category : #accessing }
+SmaCCGLRParser class >> ambiguousTransitions [
+	^ #()
+]
+
+{ #category : #accessing }
 SmaCCGLRParser class >> cachedTrees [
 	^ cachedTrees ifNil: [ cachedTrees := Dictionary new ]
 ]
@@ -158,7 +163,7 @@ SmaCCGLRParser >> alwaysPerformReduceAction [
 
 { #category : #private }
 SmaCCGLRParser >> ambiguousTransitions [
-	^ #()
+	^ self class ambiguousTransitions
 ]
 
 { #category : #private }

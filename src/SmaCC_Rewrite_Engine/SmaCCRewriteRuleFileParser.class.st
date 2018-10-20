@@ -9,7 +9,7 @@ Class {
 
 { #category : #'generated-accessing' }
 SmaCCRewriteRuleFileParser class >> cacheId [
-	^'2018-03-19T12:41:11.603329-05:00'
+	^'2018-10-20T09:21:24.775203-05:00'
 ]
 
 { #category : #generated }
@@ -114,6 +114,39 @@ SmaCCRewriteRuleFileParser class >> parseFile: aString [
 				yourself ]
 ]
 
+{ #category : #generated }
+SmaCCRewriteRuleFileParser class >> reduceTable [
+^#(
+	#(20 0 #reduceActionForRules1:) 
+	#(24 0 #nil) 
+	#(19 1 #liftFirstValue:) 
+	#(24 1 #reduceActionForComment2:) 
+	#(20 2 #reduceActionForRules3:) 
+	#(20 2 #reduceActionForRules4:) 
+	#(20 2 #reduceActionForRules2:) 
+	#(32 0 #reduceActionForStartStringExpression1:) 
+	#(26 0 #reduceActionForVariableList1:) 
+	#(28 1 #reduceActionForMatch3:) 
+	#(33 0 #reduceActionForStartSmalltalkExpression1:) 
+	#(23 2 #reduceActionForRule2:) 
+	#(23 2 #reduceActionForRule3:) 
+	#(28 1 #reduceActionForMatch1:) 
+	#(22 3 #reduceActionForImport1:) 
+	#(21 3 #reduceActionForParserClass1:) 
+	#(28 2 #reduceActionForMatch2:) 
+	#(28 2 #reduceActionForMatch4:) 
+	#(25 3 #liftSecondValue:) 
+	#(26 2 #reduceActionForVariableList2:) 
+	#(30 1 #reduceActionForTransformation1:) 
+	#(23 4 #reduceActionForRule1:) 
+	#(30 1 #reduceActionForTransformation2:) 
+	#(29 3 #liftFirstValue:) 
+	#(27 2 #reduceActionForVariable2:) 
+	#(27 2 #reduceActionForVariable1:) 
+	#(31 3 #liftFirstValue:)
+	).
+]
+
 { #category : #'generated-accessing' }
 SmaCCRewriteRuleFileParser class >> scannerClass [
 	^SmaCCRewriteRuleFileScanner
@@ -122,6 +155,56 @@ SmaCCRewriteRuleFileParser class >> scannerClass [
 { #category : #generated }
 SmaCCRewriteRuleFileParser class >> startingStateForFile [
 	^ 1
+]
+
+{ #category : #generated }
+SmaCCRewriteRuleFileParser class >> symbolNames [
+	^ #('"("' '")"' '"+"' '"-"' '"->"' '":"' '"<<<"' '">>>"' '"Import"' '"Parser"' '"["' '"]"' '<name>' '<string>' '<cmt>' '<method>' '<whitespace>' 'B e g i n' 'File' 'Rules' 'ParserClass' 'Import' 'Rule' 'Comment' 'Variables' 'VariableList' 'Variable' 'Match' 'StringExpression' 'Transformation' 'Block' 'StartStringExpression' 'StartSmalltalkExpression' 'E O F' 'error')
+]
+
+{ #category : #generated }
+SmaCCRewriteRuleFileParser class >> transitionTable [
+^#(
+#[1 0 6 0 1 0 6 0 8 0 6 0 9 0 6 0 10 0 6 0 13 0 6 0 15 0 6 0 16 0 9 0 19 0 13 0 20 0 6 0 34] 
+#[0 0 0 0 34] 
+#[1 0 10 0 1 0 10 0 8 0 17 0 9 0 21 0 10 0 10 0 13 0 25 0 15 0 10 0 16 0 29 0 21 0 33 0 22 0 37 0 23 0 41 0 24 0 14 0 34] 
+#[0 0 45 0 6] 
+#[0 0 49 0 6] 
+#[0 0 18 0 1 0 8 0 13 0 16] 
+#[0 0 22 0 1 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
+#[0 0 26 0 1 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
+#[0 0 30 0 1 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
+#[1 0 53 0 1 0 34 0 8 0 57 0 13 0 61 0 16 0 65 0 25 0 69 0 28 0 73 0 29 0 77 0 32] 
+#[0 0 81 0 14] 
+#[0 0 85 0 13] 
+#[1 0 38 0 2 0 38 0 3 0 38 0 4 0 89 0 26] 
+#[1 0 42 0 5 0 34 0 8 0 46 0 11 0 93 0 29 0 97 0 31 0 77 0 32 0 101 0 33] 
+#[0 0 50 0 1 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
+#[0 0 54 0 1 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
+#[0 0 105 0 5] 
+#[0 0 58 0 5] 
+#[0 0 109 0 8] 
+#[0 0 62 0 1 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
+#[0 0 66 0 1 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
+#[1 0 113 0 2 0 117 0 3 0 121 0 4 0 125 0 27] 
+#[0 0 70 0 5] 
+#[0 0 74 0 5] 
+#[0 0 129 0 11] 
+#[1 0 34 0 8 0 46 0 11 0 133 0 29 0 137 0 30 0 141 0 31 0 77 0 32 0 101 0 33] 
+#[0 0 145 0 7] 
+#[0 0 78 0 1 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
+#[0 0 149 0 13] 
+#[0 0 153 0 13] 
+#[0 0 82 0 2 0 3 0 4] 
+#[0 0 157 0 12] 
+#[0 0 86 0 1 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
+#[0 0 90 0 1 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
+#[0 0 94 0 1 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
+#[0 0 98 0 1 0 5 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
+#[0 0 102 0 2 0 3 0 4] 
+#[0 0 106 0 2 0 3 0 4] 
+#[0 0 110 0 1 0 5 0 8 0 9 0 10 0 13 0 15 0 16 0 34]
+	).
 ]
 
 { #category : #private }
@@ -286,39 +369,6 @@ SmaCCRewriteRuleFileParser >> reduceActionForVariableList2: nodes [
 		yourself
 ]
 
-{ #category : #generated }
-SmaCCRewriteRuleFileParser >> reduceTable [
-^#(
-	#(20 0 #reduceActionForRules1:) 
-	#(24 0 #nil) 
-	#(19 1 #liftFirstValue:) 
-	#(24 1 #reduceActionForComment2:) 
-	#(20 2 #reduceActionForRules3:) 
-	#(20 2 #reduceActionForRules4:) 
-	#(20 2 #reduceActionForRules2:) 
-	#(32 0 #reduceActionForStartStringExpression1:) 
-	#(26 0 #reduceActionForVariableList1:) 
-	#(28 1 #reduceActionForMatch3:) 
-	#(33 0 #reduceActionForStartSmalltalkExpression1:) 
-	#(23 2 #reduceActionForRule2:) 
-	#(23 2 #reduceActionForRule3:) 
-	#(28 1 #reduceActionForMatch1:) 
-	#(22 3 #reduceActionForImport1:) 
-	#(21 3 #reduceActionForParserClass1:) 
-	#(28 2 #reduceActionForMatch2:) 
-	#(28 2 #reduceActionForMatch4:) 
-	#(25 3 #liftSecondValue:) 
-	#(26 2 #reduceActionForVariableList2:) 
-	#(30 1 #reduceActionForTransformation1:) 
-	#(23 4 #reduceActionForRule1:) 
-	#(30 1 #reduceActionForTransformation2:) 
-	#(29 3 #liftFirstValue:) 
-	#(27 2 #reduceActionForVariable2:) 
-	#(27 2 #reduceActionForVariable1:) 
-	#(31 3 #liftFirstValue:)
-	).
-]
-
 { #category : #private }
 SmaCCRewriteRuleFileParser >> scanSmalltalkExpression [
 	^ scanner scanSmalltalkExpression
@@ -327,56 +377,6 @@ SmaCCRewriteRuleFileParser >> scanSmalltalkExpression [
 { #category : #private }
 SmaCCRewriteRuleFileParser >> scanStringExpression [
 	^ scanner scanStringExpression
-]
-
-{ #category : #generated }
-SmaCCRewriteRuleFileParser >> symbolNames [
-	^ #('"("' '")"' '"+"' '"-"' '"->"' '":"' '"<<<"' '">>>"' '"Import"' '"Parser"' '"["' '"]"' '<name>' '<string>' '<cmt>' '<method>' '<whitespace>' 'B e g i n' 'File' 'Rules' 'ParserClass' 'Import' 'Rule' 'Comment' 'Variables' 'VariableList' 'Variable' 'Match' 'StringExpression' 'Transformation' 'Block' 'StartStringExpression' 'StartSmalltalkExpression' 'E O F' 'error')
-]
-
-{ #category : #generated }
-SmaCCRewriteRuleFileParser >> transitionTable [
-^#(
-#[1 0 6 0 1 0 6 0 8 0 6 0 9 0 6 0 10 0 6 0 13 0 6 0 15 0 6 0 16 0 9 0 19 0 13 0 20 0 6 0 34] 
-#[0 0 0 0 34] 
-#[1 0 10 0 1 0 10 0 8 0 17 0 9 0 21 0 10 0 10 0 13 0 25 0 15 0 10 0 16 0 29 0 21 0 33 0 22 0 37 0 23 0 41 0 24 0 14 0 34] 
-#[0 0 45 0 6] 
-#[0 0 49 0 6] 
-#[0 0 18 0 1 0 8 0 13 0 16] 
-#[0 0 22 0 1 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
-#[0 0 26 0 1 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
-#[0 0 30 0 1 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
-#[1 0 53 0 1 0 34 0 8 0 57 0 13 0 61 0 16 0 65 0 25 0 69 0 28 0 73 0 29 0 77 0 32] 
-#[0 0 81 0 14] 
-#[0 0 85 0 13] 
-#[1 0 38 0 2 0 38 0 3 0 38 0 4 0 89 0 26] 
-#[1 0 42 0 5 0 34 0 8 0 46 0 11 0 93 0 29 0 97 0 31 0 77 0 32 0 101 0 33] 
-#[0 0 50 0 1 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
-#[0 0 54 0 1 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
-#[0 0 105 0 5] 
-#[0 0 58 0 5] 
-#[0 0 109 0 8] 
-#[0 0 62 0 1 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
-#[0 0 66 0 1 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
-#[1 0 113 0 2 0 117 0 3 0 121 0 4 0 125 0 27] 
-#[0 0 70 0 5] 
-#[0 0 74 0 5] 
-#[0 0 129 0 11] 
-#[1 0 34 0 8 0 46 0 11 0 133 0 29 0 137 0 30 0 141 0 31 0 77 0 32 0 101 0 33] 
-#[0 0 145 0 7] 
-#[0 0 78 0 1 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
-#[0 0 149 0 13] 
-#[0 0 153 0 13] 
-#[0 0 82 0 2 0 3 0 4] 
-#[0 0 157 0 12] 
-#[0 0 86 0 1 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
-#[0 0 90 0 1 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
-#[0 0 94 0 1 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
-#[0 0 98 0 1 0 5 0 8 0 9 0 10 0 13 0 15 0 16 0 34] 
-#[0 0 102 0 2 0 3 0 4] 
-#[0 0 106 0 2 0 3 0 4] 
-#[0 0 110 0 1 0 5 0 8 0 9 0 10 0 13 0 15 0 16 0 34]
-	).
 ]
 
 { #category : #private }

@@ -60,12 +60,12 @@ Antlr4ParserRuleSpecNode >> colon: aSmaCCToken [
 
 { #category : #generated }
 Antlr4ParserRuleSpecNode >> compositeNodeVariables [
-	^ #(#prequels #optionses #elements #handlers)
+	^ #(#prequels #elements #optionses #handlers)
 ]
 
 { #category : #generated }
 Antlr4ParserRuleSpecNode >> compositeTokenVariables [
-	^ #(#modifiers #nameTokens #leftBrackets #argActionBlocks #rightBrackets #pounds #bars)
+	^ #(#nameTokens #pounds #bars #leftBrackets #argActionBlocks #rightBrackets #modifiers)
 ]
 
 { #category : #generated }
@@ -109,17 +109,17 @@ Antlr4ParserRuleSpecNode >> handlers: anOrderedCollection [
 { #category : #'generated-initialize-release' }
 Antlr4ParserRuleSpecNode >> initialize [
 	super initialize.
-	modifiers := OrderedCollection new: 2.
 	nameTokens := OrderedCollection new: 2.
-	leftBrackets := OrderedCollection new: 2.
-	argActionBlocks := OrderedCollection new: 2.
-	rightBrackets := OrderedCollection new: 2.
 	prequels := OrderedCollection new: 2.
-	optionses := OrderedCollection new: 2.
 	elements := OrderedCollection new: 2.
+	optionses := OrderedCollection new: 2.
 	pounds := OrderedCollection new: 2.
 	bars := OrderedCollection new: 2.
 	handlers := OrderedCollection new: 2.
+	leftBrackets := OrderedCollection new: 2.
+	argActionBlocks := OrderedCollection new: 2.
+	rightBrackets := OrderedCollection new: 2.
+	modifiers := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -168,7 +168,7 @@ Antlr4ParserRuleSpecNode >> nameTokens: anOrderedCollection [
 
 { #category : #generated }
 Antlr4ParserRuleSpecNode >> nodeVariables [
-	^ #(#throws #locals #finally)
+	^ #(#locals #finally #throws)
 ]
 
 { #category : #generated }
@@ -251,5 +251,5 @@ Antlr4ParserRuleSpecNode >> throws: anAntlr4ThrowsSpecNode [
 
 { #category : #generated }
 Antlr4ParserRuleSpecNode >> tokenVariables [
-	^ #(#returnsToken #colon #semicolon)
+	^ #(#colon #semicolon #returnsToken)
 ]
