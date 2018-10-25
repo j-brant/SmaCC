@@ -31,8 +31,29 @@ SmaCCRewriteEngineCommandLineHandler >> finished: aSmaCCRewriteResult [
 	doneCount := doneCount + 1.
 	(aSmaCCRewriteResult isError or: [ aSmaCCRewriteResult isWarning ])
 		ifTrue: [ failingFiles := failingFiles + 1.
+			self stderr nextPutAll: aSmaCCRewriteResult filename.
+			aSmaCCRewriteResult startLine notNil
+				ifTrue: [ self stderr
+						nextPut: $[;
+						print: aSmaCCRewriteResult startLine.
+					aSmaCCRewriteResult startColumn notNil
+						ifTrue: [ self stderr
+								nextPut: $:;
+								print: aSmaCCRewriteResult startColumn ].
+					self stderr nextPut: $] ]
+				ifFalse: [ aSmaCCRewriteResult interval notNil
+						ifTrue: [ self stderr
+								nextPut: $[;
+								print: aSmaCCRewriteResult interval first;
+								nextPut: $-;
+								print: aSmaCCRewriteResult interval last;
+								nextPut: $] ] ].
+			aSmaCCRewriteResult transformation notNil
+				ifTrue: [ self stderr
+						nextPut: $(;
+						nextPutAll: aSmaCCRewriteResult transformation;
+						nextPut: $) ].
 			self stderr
-				nextPutAll: aSmaCCRewriteResult filename;
 				nextPutAll: ': ';
 				nextPutAll: aSmaCCRewriteResult errorString;
 				nextPutAll: String crlf ].
