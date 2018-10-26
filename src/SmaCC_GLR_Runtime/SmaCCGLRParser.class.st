@@ -470,8 +470,9 @@ SmaCCGLRParser >> splitForPatternToken [
 						or:
 							[ each notNil
 								and:
-									[ (self class environment at: each ifAbsent: [ Object ])
-										includesBehavior: nodeClass ] ])
+									[ ((self class environment at: each ifAbsent: [ Object ])
+includesBehavior: nodeClass) or: [ nodeClass includesBehavior: (self
+class environment at: each ifAbsent: [ self class ]) ] ] ])
 						ifTrue:
 							[ self addActionsFor: i to: actions.
 							actions
