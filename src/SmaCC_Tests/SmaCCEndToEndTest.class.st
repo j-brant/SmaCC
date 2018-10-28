@@ -288,6 +288,41 @@ SmaCCEndToEndTest >> testAutoAnnotateTokens [
 	self assert: node rightParenToken value = ')'
 ]
 
+{ #category : #'tests-error' }
+SmaCCEndToEndTest >> testAutomaticErrorNodes [
+	| compiler node |
+	(compiler := SmaCCGrammarCompiler new) codeGenerator defaultCategory: self class category.
+	compiler
+		buildDefinition:
+			'<whitespace> : \s+; 
+			%root FooNode;
+			P : A ''a'' B ''b'' C ''c'' {{FooRootNode}} ;
+			A : "a" ''token'' {{FooTokenNode}} ;
+			B : "b" ''token'' {{FooTokenNode}} ;
+			C : "c" ''token'' {{FooTokenNode}} ; '.
+	compiler compileInto: 'TestScanner' andParser: 'TestParser'.
+	node := self parserClass parse: 'abc'.
+	self assert: node a token value = 'a'.
+	self assert: node b token value = 'b'.
+	self assert: node c token value = 'c'.
+	node := self parserClass parseWithErrors: 'ac'.
+	self assert: node a token value = 'a'.
+	self assert: node b class = SmaCCError.
+	self assert: node c token value = 'c'.
+	node := self parserClass parseWithErrors: 'ab'.
+	self assert: node a token value = 'a'.
+	self assert: node b token value = 'b'.
+	self assert: node c class = SmaCCError.
+	node := self parserClass parseWithErrors: 'bc'.
+	self assert: node a class = SmaCCError.
+	self assert: node b token value = 'b'.
+	self assert: node c token value = 'c'.
+	node := self parserClass parseWithErrors: 'axbc'.
+	self assert: node a class = SmaCCError.
+	self assert: node b token value = 'b'.
+	self assert: node c token value = 'c'
+]
+
 { #category : #tests }
 SmaCCEndToEndTest >> testBadCharacterBlock [
 	| parserCompiler |
@@ -690,7 +725,7 @@ SmaCCEndToEndTest >> testErrorRecovery [
 	self assert: (self parserClass parseWithErrors: 'a 1 2') = 3
 ]
 
-{ #category : #'tests-error' }
+{ #category : #tests }
 SmaCCEndToEndTest >> testErrorToken [
 	| parserCompiler countingBlock |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -703,7 +738,7 @@ SmaCCEndToEndTest >> testErrorToken [
 	countingBlock := [ :string | 
 	| count |
 	count := 0.
-	[ [ self parserClass parse: string ]
+	[ [ self parserClass parseWithErrors: string ]
 		on: Notification
 		do:
 			[ :ex | 
@@ -1324,17 +1359,17 @@ SmaCCEndToEndTest >> testNamedSubComponent [
 	self assert: node sub sub sub sub isNil
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : #tests }
 SmaCCEndToEndTest >> testNextToken [
-	| compiler token |
-	(compiler := SmaCCGrammarCompiler new) codeGenerator
-		defaultCategory: self class category.
+	| compiler tokens |
+	(compiler := SmaCCGrammarCompiler new) codeGenerator defaultCategory: self class category.
 	compiler
 		buildDefinition:
 			'<next> : next; <whitespace> : \s+; 
 			Next : <next>; '.
 	compiler compileInto: 'TestScanner' andParser: 'TestParser'.
-	token := self parserClass parse: ' next '
+	tokens := self parserClass parse: ' next '.
+	self assert: tokens first value = 'next'
 ]
 
 { #category : #'tests-parse tree creation' }

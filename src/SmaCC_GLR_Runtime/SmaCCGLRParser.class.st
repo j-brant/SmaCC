@@ -32,11 +32,6 @@ Class {
 }
 
 { #category : #accessing }
-SmaCCGLRParser class >> ambiguousTransitions [
-	^ #()
-]
-
-{ #category : #accessing }
 SmaCCGLRParser class >> cachedTrees [
 	^ cachedTrees ifNil: [ cachedTrees := Dictionary new ]
 ]
@@ -162,11 +157,6 @@ SmaCCGLRParser >> alwaysPerformReduceAction [
 ]
 
 { #category : #private }
-SmaCCGLRParser >> ambiguousTransitions [
-	^ self class ambiguousTransitions
-]
-
-{ #category : #private }
 SmaCCGLRParser >> ambiguousTransitionsAt: anIndex into: anOrderedCollection [
 	| ambiguousTransitions |
 	ambiguousTransitions := self ambiguousTransitions at: anIndex.
@@ -254,7 +244,7 @@ SmaCCGLRParser >> isAmbiguous: action [
 { #category : #private }
 SmaCCGLRParser >> killState [
 	| index |
-	index := states identityIndexOf: currentState ifAbsent: [ ^ self ].
+	index := states identityIndexOf: currentState ifAbsent: [ ^ false ].
 	states size = 1
 		ifTrue: [ ^ self handleError: 0 ].
 	states removeAt: index.

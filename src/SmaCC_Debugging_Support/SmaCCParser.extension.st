@@ -1,29 +1,6 @@
 Extension { #name : #SmaCCParser }
 
 { #category : #'*SmaCC_Debugging_Support' }
-SmaCCParser >> actionsAndSymbolsForState: stateIndex do: aBlock [
-	| action bytes |
-	bytes := self transitionTable at: stateIndex.
-	(bytes at: 1) = 0
-		ifTrue: [ action := ((bytes at: 2) bitShift: 8) + (bytes at: 3).
-			4 to: bytes size by: 2 do: [ :i | aBlock value: action value: ((bytes at: i) bitShift: 8) + (bytes at: i + 1) ] ]
-		ifFalse: [ 2 to: bytes size by: 4 do:
-				[ :i | aBlock value: ((bytes at: i) bitShift: 8) + (bytes at: i + 1) value: ((bytes at: i + 2) bitShift: 8) + (bytes at: i + 3) ] ]
-]
-
-{ #category : #'*SmaCC_Debugging_Support' }
-SmaCCParser >> allActionsAndSymbolsForState: stateIndex do: aBlock [
-	self
-		actionsAndSymbolsForState: stateIndex
-		do: [ :action :symbol | 
-			| row |
-			(action bitAnd: self actionMask) = 2r11
-				ifTrue: [ row := self ambiguousTransitions at: (action bitShift: -2).
-					1 to: row size by: 2 do: [ :i | aBlock value: ((row at: i) bitShift: 8) + (row at: i + 1) value: symbol ] ]
-				ifFalse: [ aBlock value: action value: symbol ] ]
-]
-
-{ #category : #'*SmaCC_Debugging_Support' }
 SmaCCParser class >> filesWithParserErrorsIn: aDirectory [
 	^ (self sourceFilesIn: aDirectory)
 		select: [ :each | 
