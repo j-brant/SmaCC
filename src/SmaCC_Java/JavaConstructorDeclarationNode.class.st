@@ -1,6 +1,6 @@
 Class {
 	#name : #JavaConstructorDeclarationNode,
-	#superclass : #JavaProgramNode,
+	#superclass : #JavaDeclarationNode,
 	#instVars : [
 		'modifiers',
 		'typeParameters',
