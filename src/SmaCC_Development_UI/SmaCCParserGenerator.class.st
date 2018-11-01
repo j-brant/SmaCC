@@ -161,7 +161,7 @@ SmaCCParserGenerator >> definitionTab [
 	^ self newTab
 		closeable: false;
 		label: 'Definition';
-		model: definitionModel;
+		presenter: definitionModel;
 		yourself
 ]
 
@@ -298,7 +298,7 @@ SmaCCParserGenerator >> itemSetsTab [
 	^ self newTab
 		closeable: false;
 		label: 'Item Sets';
-		model: itemSetsModel;
+		presenter: itemSetsModel;
 		yourself
 ]
 
@@ -329,7 +329,7 @@ SmaCCParserGenerator >> messagesTab [
 	^ self newTab
 		closeable: false;
 		label: 'Messages';
-		model: messagesModel;
+		presenter: messagesModel;
 		yourself
 ]
 
@@ -487,7 +487,7 @@ SmaCCParserGenerator >> symbolsTab [
 	^ self newTab
 		closeable: false;
 		label: 'Symbols';
-		model: symbolsModel;
+		presenter: symbolsModel;
 		yourself
 ]
 
@@ -516,7 +516,7 @@ SmaCCParserGenerator >> testTab [
 	^ self newTab
 		closeable: false;
 		label: 'Test';
-		model: testModel;
+		presenter: testModel;
 		yourself
 ]
 
