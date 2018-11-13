@@ -52,7 +52,7 @@ Antlr4BlockNode >> colon: aSmaCCToken [
 
 { #category : #generated }
 Antlr4BlockNode >> compositeNodeVariables [
-	^ #(#optionses #actions #elements)
+	^ #(#elements #optionses #actions)
 ]
 
 { #category : #generated }
@@ -75,10 +75,10 @@ Antlr4BlockNode >> elements: anOrderedCollection [
 { #category : #'generated-initialize-release' }
 Antlr4BlockNode >> initialize [
 	super initialize.
-	optionses := OrderedCollection new: 2.
-	actions := OrderedCollection new: 2.
 	elements := OrderedCollection new: 2.
+	optionses := OrderedCollection new: 2.
 	bars := OrderedCollection new: 2.
+	actions := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -115,5 +115,5 @@ Antlr4BlockNode >> rightParen: aSmaCCToken [
 
 { #category : #generated }
 Antlr4BlockNode >> tokenVariables [
-	^ #(#leftParen #colon #rightParen)
+	^ #(#leftParen #rightParen #colon)
 ]

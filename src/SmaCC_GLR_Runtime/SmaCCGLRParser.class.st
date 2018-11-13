@@ -157,11 +157,6 @@ SmaCCGLRParser >> alwaysPerformReduceAction [
 ]
 
 { #category : #private }
-SmaCCGLRParser >> ambiguousTransitions [
-	^ #()
-]
-
-{ #category : #private }
 SmaCCGLRParser >> ambiguousTransitionsAt: anIndex into: anOrderedCollection [
 	| ambiguousTransitions |
 	ambiguousTransitions := self ambiguousTransitions at: anIndex.
@@ -249,7 +244,7 @@ SmaCCGLRParser >> isAmbiguous: action [
 { #category : #private }
 SmaCCGLRParser >> killState [
 	| index |
-	index := states identityIndexOf: currentState ifAbsent: [ ^ self ].
+	index := states identityIndexOf: currentState ifAbsent: [ ^ false ].
 	states size = 1
 		ifTrue: [ ^ self handleError: 0 ].
 	states removeAt: index.
@@ -465,8 +460,9 @@ SmaCCGLRParser >> splitForPatternToken [
 						or:
 							[ each notNil
 								and:
-									[ (self class environment at: each ifAbsent: [ Object ])
-										includesBehavior: nodeClass ] ])
+									[ ((self class environment at: each ifAbsent: [ Object ])
+includesBehavior: nodeClass) or: [ nodeClass includesBehavior: (self
+class environment at: each ifAbsent: [ self class ]) ] ] ])
 						ifTrue:
 							[ self addActionsFor: i to: actions.
 							actions

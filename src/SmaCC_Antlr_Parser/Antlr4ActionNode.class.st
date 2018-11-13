@@ -77,5 +77,5 @@ Antlr4ActionNode >> scopeName: aSmaCCToken [
 
 { #category : #generated }
 Antlr4ActionNode >> tokenVariables [
-	^ #(#atToken #scopeName #colonColon #nameToken)
+	^ #(#atToken #nameToken #scopeName #colonColon)
 ]

@@ -4,9 +4,99 @@ Class {
 	#category : #'SmaCC_Swift'
 }
 
+{ #category : #generated }
+SwiftParser class >> ambiguousTransitions [
+^#(
+#[ 0 6 0 109] 
+#[ 0 42 1 241] 
+#[ 0 17 0 50] 
+#[ 0 6 2 37] 
+#[ 0 6 1 213] 
+#[ 0 9 0 58] 
+#[ 0 13 0 58] 
+#[ 0 17 0 58] 
+#[ 0 25 0 58] 
+#[ 0 29 0 58] 
+#[ 0 33 0 58] 
+#[ 0 37 0 58] 
+#[ 0 41 0 58] 
+#[ 0 45 0 58] 
+#[ 0 58 0 85] 
+#[ 0 58 0 89] 
+#[ 0 58 0 105] 
+#[ 0 58 1 213] 
+#[ 0 58 0 113] 
+#[ 0 58 0 117] 
+#[ 0 58 0 121] 
+#[ 0 58 0 125] 
+#[ 0 62 2 149] 
+#[ 0 62 2 153] 
+#[ 0 66 2 189] 
+#[ 0 66 2 193] 
+#[ 0 66 2 197] 
+#[ 0 150 3 97] 
+#[ 0 150 3 105] 
+#[ 0 150 3 113] 
+#[ 0 13 0 154] 
+#[ 0 154 3 145] 
+#[ 0 154 3 149] 
+#[ 0 154 3 153] 
+#[ 0 154 0 178] 
+#[ 0 154 3 157] 
+#[ 0 182 3 173] 
+#[ 0 182 0 186] 
+#[ 0 222 3 241] 
+#[ 0 14 1 2] 
+#[ 0 22 1 6] 
+#[ 0 70 1 10] 
+#[ 0 70 0 250 1 10] 
+#[ 0 250 2 221] 
+#[ 1 22 4 149] 
+#[ 0 6 1 90] 
+#[ 0 13 1 114] 
+#[ 1 114 3 145] 
+#[ 1 114 3 149] 
+#[ 1 114 3 153] 
+#[ 0 178 1 114] 
+#[ 1 114 3 157] 
+#[ 1 10 1 142] 
+#[ 1 194 3 97] 
+#[ 1 194 3 105] 
+#[ 1 194 3 113] 
+#[ 1 218 1 222] 
+#[ 2 38 6 165] 
+#[ 0 70 0 250] 
+#[ 1 10 3 229] 
+#[ 0 202 1 54] 
+#[ 0 202 1 50 1 54] 
+#[ 0 6 4 237] 
+#[ 2 58 6 221] 
+#[ 2 66 4 141] 
+#[ 2 70 4 141] 
+#[ 1 154 5 121] 
+#[ 2 178 6 221] 
+#[ 2 210 6 221] 
+#[ 2 210 6 225] 
+#[ 2 214 6 221] 
+#[ 2 214 6 225] 
+#[ 3 162 3 166] 
+#[ 3 198 6 221] 
+#[ 3 210 8 129] 
+#[ 3 222 3 226] 
+#[ 4 74 6 221] 
+#[ 4 74 6 225] 
+#[ 4 94 9 109] 
+#[ 4 158 6 213] 
+#[ 4 158 6 217] 
+#[ 4 158 6 221] 
+#[ 4 158 6 225] 
+#[ 4 174 6 221]
+	).
+]
+
 { #category : #'generated-accessing' }
 SwiftParser class >> cacheId [
-	^'2018-03-19T12:41:29.991139-05:00'
+	^'2018-10-20T09:20:44.298167-05:00'
 ]
 
 { #category : #generated }
@@ -1204,8518 +1294,8 @@ _union_style_enum_members
 	;"
 ]
 
-{ #category : #'generated-accessing' }
-SwiftParser class >> scannerClass [
-	^SwiftScanner
-]
-
 { #category : #generated }
-SwiftParser class >> startingStateForfile [
-	^ 1
-]
-
-{ #category : #generated }
-SwiftParser >> ambiguousTransitions [
-^#(
-#[ 0 6 0 109] 
-#[ 0 42 1 241] 
-#[ 0 17 0 50] 
-#[ 0 6 2 37] 
-#[ 0 6 1 213] 
-#[ 0 9 0 58] 
-#[ 0 13 0 58] 
-#[ 0 17 0 58] 
-#[ 0 25 0 58] 
-#[ 0 29 0 58] 
-#[ 0 33 0 58] 
-#[ 0 37 0 58] 
-#[ 0 41 0 58] 
-#[ 0 45 0 58] 
-#[ 0 58 0 85] 
-#[ 0 58 0 89] 
-#[ 0 58 0 105] 
-#[ 0 58 1 213] 
-#[ 0 58 0 113] 
-#[ 0 58 0 117] 
-#[ 0 58 0 121] 
-#[ 0 58 0 125] 
-#[ 0 62 2 149] 
-#[ 0 62 2 153] 
-#[ 0 66 2 189] 
-#[ 0 66 2 193] 
-#[ 0 66 2 197] 
-#[ 0 150 3 97] 
-#[ 0 150 3 105] 
-#[ 0 150 3 113] 
-#[ 0 13 0 154] 
-#[ 0 154 3 145] 
-#[ 0 154 3 149] 
-#[ 0 154 3 153] 
-#[ 0 154 0 178] 
-#[ 0 154 3 157] 
-#[ 0 182 3 173] 
-#[ 0 182 0 186] 
-#[ 0 222 3 241] 
-#[ 0 14 1 2] 
-#[ 0 22 1 6] 
-#[ 0 70 1 10] 
-#[ 0 70 0 250 1 10] 
-#[ 0 250 2 221] 
-#[ 1 22 4 149] 
-#[ 0 6 1 90] 
-#[ 0 13 1 114] 
-#[ 1 114 3 145] 
-#[ 1 114 3 149] 
-#[ 1 114 3 153] 
-#[ 0 178 1 114] 
-#[ 1 114 3 157] 
-#[ 1 10 1 142] 
-#[ 1 194 3 97] 
-#[ 1 194 3 105] 
-#[ 1 194 3 113] 
-#[ 1 218 1 222] 
-#[ 2 38 6 165] 
-#[ 0 70 0 250] 
-#[ 1 10 3 229] 
-#[ 0 202 1 54] 
-#[ 0 202 1 50 1 54] 
-#[ 0 6 4 237] 
-#[ 2 58 6 221] 
-#[ 2 66 4 141] 
-#[ 2 70 4 141] 
-#[ 1 154 5 121] 
-#[ 2 178 6 221] 
-#[ 2 210 6 221] 
-#[ 2 210 6 225] 
-#[ 2 214 6 221] 
-#[ 2 214 6 225] 
-#[ 3 162 3 166] 
-#[ 3 198 6 221] 
-#[ 3 210 8 129] 
-#[ 3 222 3 226] 
-#[ 4 74 6 221] 
-#[ 4 74 6 225] 
-#[ 4 94 9 109] 
-#[ 4 158 6 213] 
-#[ 4 158 6 217] 
-#[ 4 158 6 221] 
-#[ 4 158 6 225] 
-#[ 4 174 6 221]
-	).
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_array_literal_items1: nodes [
-	| result |
-	result := Array new: 2.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_associativity_clause1: nodes [
-	| result |
-	result := Array new: 4.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_attribute_argument_clause1: nodes [
-	| result |
-	result := Array new: 11.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_attributes1: nodes [
-	| result |
-	result := Array new: 12.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_closure_signature1: nodes [
-	| result |
-	result := Array new: 33.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_expression_element_list1: nodes [
-	| result |
-	result := Array new: 4.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_generic_argument_clause1: nodes [
-	| result |
-	result := Array new: 3.
-	result at: 2 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_generic_parameter_clause1: nodes [
-	| result |
-	result := Array new: 9.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_import_kind1: nodes [
-	| result |
-	result := Array new: 7.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_infix_operator_attributes1: nodes [
-	| result |
-	result := Array new: 6.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_initializer1: nodes [
-	| result |
-	result := Array new: 2.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_protocol_identifier_list2: nodes [
-	| result |
-	result := Array new: 5.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_requirement_clause1: nodes [
-	| result |
-	result := Array new: 9.
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_setter_clause1: nodes [
-	| result |
-	result := Array new: 14.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_setter_keyword_clause1: nodes [
-	| result |
-	result := Array new: 13.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_setter_name1: nodes [
-	| result |
-	result := Array new: 3.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_statements1: nodes [
-	| result |
-	result := OrderedCollection new: 2.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_statements2: nodes [
-	| result |
-	result := nodes at: 1.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_switch_cases1: nodes [
-	| result |
-	result := Array new: 34.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	result at: 30 put: (OrderedCollection new: 2).
-	result at: 31 put: (OrderedCollection new: 2).
-	result at: 32 put: (OrderedCollection new: 2).
-	result at: 33 put: (OrderedCollection new: 2).
-	result at: 34 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_switch_cases2: nodes [
-	| result |
-	result := Array new: 34.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	result at: 30 put: (OrderedCollection new: 2).
-	result at: 31 put: (OrderedCollection new: 2).
-	result at: 32 put: (OrderedCollection new: 2).
-	result at: 33 put: (OrderedCollection new: 2).
-	result at: 34 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
-	self addAll: ((nodes at: 1) at: 13) to: (result at: 13).
-	self addAll: ((nodes at: 1) at: 14) to: (result at: 14).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 15).
-	self addAll: ((nodes at: 1) at: 16) to: (result at: 16).
-	self addAll: ((nodes at: 1) at: 17) to: (result at: 17).
-	self addAll: ((nodes at: 1) at: 18) to: (result at: 24).
-	self addAll: ((nodes at: 1) at: 19) to: (result at: 18).
-	self addAll: ((nodes at: 1) at: 20) to: (result at: 19).
-	self addAll: ((nodes at: 1) at: 21) to: (result at: 20).
-	self addAll: ((nodes at: 1) at: 22) to: (result at: 21).
-	self addAll: ((nodes at: 1) at: 23) to: (result at: 22).
-	self addAll: ((nodes at: 1) at: 24) to: (result at: 23).
-	self addAll: ((nodes at: 1) at: 25) to: (result at: 25).
-	self addAll: ((nodes at: 1) at: 26) to: (result at: 29).
-	self addAll: ((nodes at: 1) at: 27) to: (result at: 30).
-	self addAll: ((nodes at: 1) at: 28) to: (result at: 31).
-	self addAll: ((nodes at: 1) at: 29) to: (result at: 32).
-	self addAll: ((nodes at: 1) at: 30) to: (result at: 33).
-	self addAll: ((nodes at: 1) at: 31) to: (result at: 34).
-	self addAll: ((nodes at: 1) at: 32) to: (result at: 26).
-	self addAll: ((nodes at: 1) at: 33) to: (result at: 27).
-	self addAll: ((nodes at: 1) at: 34) to: (result at: 28).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_tuple_pattern_element_list1: nodes [
-	| result |
-	result := Array new: 29.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_tuple_pattern_element_list2: nodes [
-	| result |
-	result := Array new: 29.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 24).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 25).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 26).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 27).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 28).
-	self addAll: ((nodes at: 1) at: 13) to: (result at: 29).
-	self addAll: ((nodes at: 1) at: 14) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 16) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 17) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 18) to: (result at: 12).
-	self addAll: ((nodes at: 1) at: 19) to: (result at: 13).
-	self addAll: ((nodes at: 1) at: 20) to: (result at: 14).
-	self addAll: ((nodes at: 1) at: 21) to: (result at: 15).
-	self addAll: ((nodes at: 1) at: 22) to: (result at: 16).
-	self addAll: ((nodes at: 1) at: 23) to: (result at: 18).
-	self addAll: ((nodes at: 1) at: 24) to: (result at: 17).
-	self addAll: ((nodes at: 1) at: 25) to: (result at: 19).
-	self addAll: ((nodes at: 1) at: 26) to: (result at: 20).
-	self addAll: ((nodes at: 1) at: 27) to: (result at: 21).
-	self addAll: ((nodes at: 1) at: 28) to: (result at: 22).
-	self addAll: ((nodes at: 1) at: 29) to: (result at: 23).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_type_annotation1: nodes [
-	| result |
-	result := Array new: 24.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_type_inheritance_clause1: nodes [
-	| result |
-	result := Array new: 6.
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_typealias_assignment1: nodes [
-	| result |
-	result := Array new: 25.
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_union_style_enum_members1: nodes [
-	| result |
-	result := Array new: 57.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	result at: 30 put: (OrderedCollection new: 2).
-	result at: 31 put: (OrderedCollection new: 2).
-	result at: 32 put: (OrderedCollection new: 2).
-	result at: 33 put: (OrderedCollection new: 2).
-	result at: 34 put: (OrderedCollection new: 2).
-	result at: 35 put: (OrderedCollection new: 2).
-	result at: 36 put: (OrderedCollection new: 2).
-	result at: 37 put: (OrderedCollection new: 2).
-	result at: 38 put: (OrderedCollection new: 2).
-	result at: 39 put: (OrderedCollection new: 2).
-	result at: 40 put: (OrderedCollection new: 2).
-	result at: 41 put: (OrderedCollection new: 2).
-	result at: 42 put: (OrderedCollection new: 2).
-	result at: 43 put: (OrderedCollection new: 2).
-	result at: 44 put: (OrderedCollection new: 2).
-	result at: 45 put: (OrderedCollection new: 2).
-	result at: 46 put: (OrderedCollection new: 2).
-	result at: 47 put: (OrderedCollection new: 2).
-	result at: 48 put: (OrderedCollection new: 2).
-	result at: 49 put: (OrderedCollection new: 2).
-	result at: 50 put: (OrderedCollection new: 2).
-	result at: 51 put: (OrderedCollection new: 2).
-	result at: 52 put: (OrderedCollection new: 2).
-	result at: 53 put: (OrderedCollection new: 2).
-	result at: 54 put: (OrderedCollection new: 2).
-	result at: 55 put: (OrderedCollection new: 2).
-	result at: 56 put: (OrderedCollection new: 2).
-	result at: 57 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_union_style_enum_members2: nodes [
-	| result |
-	result := Array new: 57.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	result at: 30 put: (OrderedCollection new: 2).
-	result at: 31 put: (OrderedCollection new: 2).
-	result at: 32 put: (OrderedCollection new: 2).
-	result at: 33 put: (OrderedCollection new: 2).
-	result at: 34 put: (OrderedCollection new: 2).
-	result at: 35 put: (OrderedCollection new: 2).
-	result at: 36 put: (OrderedCollection new: 2).
-	result at: 37 put: (OrderedCollection new: 2).
-	result at: 38 put: (OrderedCollection new: 2).
-	result at: 39 put: (OrderedCollection new: 2).
-	result at: 40 put: (OrderedCollection new: 2).
-	result at: 41 put: (OrderedCollection new: 2).
-	result at: 42 put: (OrderedCollection new: 2).
-	result at: 43 put: (OrderedCollection new: 2).
-	result at: 44 put: (OrderedCollection new: 2).
-	result at: 45 put: (OrderedCollection new: 2).
-	result at: 46 put: (OrderedCollection new: 2).
-	result at: 47 put: (OrderedCollection new: 2).
-	result at: 48 put: (OrderedCollection new: 2).
-	result at: 49 put: (OrderedCollection new: 2).
-	result at: 50 put: (OrderedCollection new: 2).
-	result at: 51 put: (OrderedCollection new: 2).
-	result at: 52 put: (OrderedCollection new: 2).
-	result at: 53 put: (OrderedCollection new: 2).
-	result at: 54 put: (OrderedCollection new: 2).
-	result at: 55 put: (OrderedCollection new: 2).
-	result at: 56 put: (OrderedCollection new: 2).
-	result at: 57 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 27).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 28).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 38).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 41).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 55).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 56).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 57).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 13).
-	self addAll: ((nodes at: 1) at: 13) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 14) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 16) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 17) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 18) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 19) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 20) to: (result at: 12).
-	self addAll: ((nodes at: 1) at: 21) to: (result at: 14).
-	self addAll: ((nodes at: 1) at: 22) to: (result at: 15).
-	self addAll: ((nodes at: 1) at: 23) to: (result at: 16).
-	self addAll: ((nodes at: 1) at: 24) to: (result at: 17).
-	self addAll: ((nodes at: 1) at: 25) to: (result at: 18).
-	self addAll: ((nodes at: 1) at: 26) to: (result at: 19).
-	self addAll: ((nodes at: 1) at: 27) to: (result at: 20).
-	self addAll: ((nodes at: 1) at: 28) to: (result at: 21).
-	self addAll: ((nodes at: 1) at: 29) to: (result at: 22).
-	self addAll: ((nodes at: 1) at: 30) to: (result at: 23).
-	self addAll: ((nodes at: 1) at: 31) to: (result at: 24).
-	self addAll: ((nodes at: 1) at: 32) to: (result at: 25).
-	self addAll: ((nodes at: 1) at: 33) to: (result at: 26).
-	self addAll: ((nodes at: 1) at: 34) to: (result at: 29).
-	self addAll: ((nodes at: 1) at: 35) to: (result at: 30).
-	self addAll: ((nodes at: 1) at: 36) to: (result at: 31).
-	self addAll: ((nodes at: 1) at: 37) to: (result at: 32).
-	self addAll: ((nodes at: 1) at: 38) to: (result at: 33).
-	self addAll: ((nodes at: 1) at: 39) to: (result at: 34).
-	self addAll: ((nodes at: 1) at: 40) to: (result at: 36).
-	self addAll: ((nodes at: 1) at: 41) to: (result at: 35).
-	self addAll: ((nodes at: 1) at: 42) to: (result at: 37).
-	self addAll: ((nodes at: 1) at: 43) to: (result at: 39).
-	self addAll: ((nodes at: 1) at: 44) to: (result at: 40).
-	self addAll: ((nodes at: 1) at: 45) to: (result at: 42).
-	self addAll: ((nodes at: 1) at: 46) to: (result at: 43).
-	self addAll: ((nodes at: 1) at: 47) to: (result at: 44).
-	self addAll: ((nodes at: 1) at: 48) to: (result at: 45).
-	self addAll: ((nodes at: 1) at: 49) to: (result at: 46).
-	self addAll: ((nodes at: 1) at: 50) to: (result at: 47).
-	self addAll: ((nodes at: 1) at: 51) to: (result at: 53).
-	self addAll: ((nodes at: 1) at: 52) to: (result at: 54).
-	self addAll: ((nodes at: 1) at: 53) to: (result at: 48).
-	self addAll: ((nodes at: 1) at: 54) to: (result at: 49).
-	self addAll: ((nodes at: 1) at: 55) to: (result at: 50).
-	self addAll: ((nodes at: 1) at: 56) to: (result at: 51).
-	self addAll: ((nodes at: 1) at: 57) to: (result at: 52).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForarray_literal1: nodes [
-	| result |
-	result := Array new: 4.
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 1 put: (nodes at: 1).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
-	result at: 4 put: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForarray_literal_items1: nodes [
-	| result |
-	result := Array new: 2.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 1).
-	self add: (nodes at: 2) to: (result at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForarray_literal_items2: nodes [
-	| result |
-	result := nodes at: 3.
-	self addFirst: (nodes at: 1) to: (result at: 1).
-	self addFirst: (nodes at: 2) to: (result at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForarray_type1: nodes [
-	| result |
-	result := SwiftArrayTypeNode new.
-	result addToken: (nodes at: 1) to: result leftBracketTokens.
-	result addToken: (nodes at: 3) to: result rightBracketTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForas_pattern1: nodes [
-	| result |
-	result := nodes at: 1.
-	self add: (nodes at: 2) to: (result at: 29).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForassociativity_clause1: nodes [
-	| result |
-	result := Array new: 4.
-	result at: 1 put: (nodes at: 1).
-	result at: 2 put: ((nodes at: 2) at: 1).
-	result at: 3 put: ((nodes at: 2) at: 2).
-	result at: 4 put: ((nodes at: 2) at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForattribute1: nodes [
-	| result |
-	result := Array new: 12.
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 1 put: (nodes at: 1).
-	self add: (nodes at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 3) at: 1) to: (result at: 3).
-	self addAll: ((nodes at: 3) at: 2) to: (result at: 4).
-	self addAll: ((nodes at: 3) at: 3) to: (result at: 5).
-	self addAll: ((nodes at: 3) at: 4) to: (result at: 6).
-	self addAll: ((nodes at: 3) at: 5) to: (result at: 7).
-	self addAll: ((nodes at: 3) at: 6) to: (result at: 8).
-	self addAll: ((nodes at: 3) at: 7) to: (result at: 2).
-	self addAll: ((nodes at: 3) at: 8) to: (result at: 9).
-	self addAll: ((nodes at: 3) at: 9) to: (result at: 10).
-	self addAll: ((nodes at: 3) at: 10) to: (result at: 11).
-	self addAll: ((nodes at: 3) at: 11) to: (result at: 12).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForattribute_argument_clause1: nodes [
-	| result |
-	result := nodes at: 2.
-	self addFirst: (nodes at: 1) to: (result at: 1).
-	self add: (nodes at: 3) to: (result at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForattributes1: nodes [
-	| result |
-	result := Array new: 12.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	self add: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForattributes2: nodes [
-	| result |
-	result := nodes at: 1.
-	self add: ((nodes at: 2) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForbalanced_token2: nodes [
-	| result |
-	result := nodes at: 2.
-	self addFirst: (nodes at: 1) to: (result at: 3).
-	self add: (nodes at: 3) to: (result at: 4).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForbalanced_token3: nodes [
-	| result |
-	result := nodes at: 2.
-	self addFirst: (nodes at: 1) to: (result at: 5).
-	self add: (nodes at: 3) to: (result at: 6).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForbalanced_token4: nodes [
-	| result |
-	result := Array new: 11.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 7).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForbalanced_token5: nodes [
-	| result |
-	result := Array new: 11.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	self add: ((nodes at: 1) at: 1) to: (result at: 8).
-	self add: ((nodes at: 1) at: 2) to: (result at: 9).
-	self add: ((nodes at: 1) at: 3) to: (result at: 10).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForbalanced_token6: nodes [
-	| result |
-	result := Array new: 11.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 11).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForbalanced_tokens2: nodes [
-	| result |
-	result := nodes at: 2.
-	self addAllFirst: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAllFirst: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAllFirst: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAllFirst: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAllFirst: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAllFirst: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAllFirst: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAllFirst: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAllFirst: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAllFirst: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAllFirst: ((nodes at: 1) at: 11) to: (result at: 11).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForbinary_expression1: nodes [
-	| result |
-	result := SwiftBinaryOperatorNode new.
-	result addToken: (nodes at: 1) to: result operatorTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForbinary_expression2: nodes [
-	| result |
-	result := SwiftAssignmentOperatorNode new.
-	result addToken: (nodes at: 1) to: result equalTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForbinary_expression3: nodes [
-	| result |
-	result := SwiftCondionalOperatorNode new.
-	result addToken: ((nodes at: 1) at: 1) to: result questionMarkTokens.
-	result trueExpression: ((nodes at: 1) at: 2).
-	result addToken: ((nodes at: 1) at: 3) to: result colonTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForbinary_expression4: nodes [
-	| result |
-	result := SwiftTypeCastOperatorNode new.
-	result _isToken: ((nodes at: 1) at: 1).
-	result type: ((nodes at: 1) at: 2).
-	result asToken: ((nodes at: 1) at: 3).
-	result questionMarkToken: ((nodes at: 1) at: 4).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForbreak_statement1: nodes [
-	| result |
-	result := SwiftBreakStatementNode new.
-	result breakToken: (nodes at: 1).
-	result name: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForcapture_list1: nodes [
-	| result |
-	result := Array new: 7.
-	result at: 1 put: (nodes at: 1).
-	result at: 2 put: ((nodes at: 2) at: 1).
-	result at: 3 put: ((nodes at: 2) at: 2).
-	result at: 4 put: ((nodes at: 2) at: 3).
-	result at: 5 put: ((nodes at: 2) at: 4).
-	result at: 6 put: (nodes at: 3).
-	result at: 7 put: (nodes at: 4).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForcapture_specifier1: nodes [
-	| result |
-	result := Array new: 4.
-	result at: 1 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForcapture_specifier2: nodes [
-	| result |
-	result := Array new: 4.
-	result at: 2 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForcapture_specifier3: nodes [
-	| result |
-	result := Array new: 4.
-	result at: 3 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForcapture_specifier4: nodes [
-	| result |
-	result := Array new: 4.
-	result at: 4 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForcase_item_list1: nodes [
-	| result |
-	result := Array new: 30.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	result at: 30 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
-	self addAll: ((nodes at: 1) at: 13) to: (result at: 13).
-	self addAll: ((nodes at: 1) at: 14) to: (result at: 14).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 15).
-	self addAll: ((nodes at: 1) at: 16) to: (result at: 16).
-	self addAll: ((nodes at: 1) at: 17) to: (result at: 17).
-	self addAll: ((nodes at: 1) at: 18) to: (result at: 18).
-	self addAll: ((nodes at: 1) at: 19) to: (result at: 19).
-	self addAll: ((nodes at: 1) at: 20) to: (result at: 20).
-	self addAll: ((nodes at: 1) at: 21) to: (result at: 21).
-	self addAll: ((nodes at: 1) at: 22) to: (result at: 22).
-	self addAll: ((nodes at: 1) at: 23) to: (result at: 23).
-	self addAll: ((nodes at: 1) at: 24) to: (result at: 24).
-	self addAll: ((nodes at: 1) at: 25) to: (result at: 25).
-	self addAll: ((nodes at: 1) at: 26) to: (result at: 26).
-	self addAll: ((nodes at: 1) at: 27) to: (result at: 27).
-	self addAll: ((nodes at: 1) at: 28) to: (result at: 28).
-	self addAll: ((nodes at: 1) at: 29) to: (result at: 29).
-	self add: ((nodes at: 2) at: 1) to: (result at: 30).
-	self add: ((nodes at: 2) at: 2) to: (result at: 27).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForcase_item_list2: nodes [
-	| result |
-	result := nodes at: 1.
-	self add: (nodes at: 2) to: (result at: 22).
-	self addAll: ((nodes at: 3) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 3) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 3) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 3) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 3) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 3) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 3) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 3) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 3) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 3) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 3) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 3) at: 12) to: (result at: 12).
-	self addAll: ((nodes at: 3) at: 13) to: (result at: 13).
-	self addAll: ((nodes at: 3) at: 14) to: (result at: 14).
-	self addAll: ((nodes at: 3) at: 15) to: (result at: 15).
-	self addAll: ((nodes at: 3) at: 16) to: (result at: 16).
-	self addAll: ((nodes at: 3) at: 17) to: (result at: 17).
-	self addAll: ((nodes at: 3) at: 18) to: (result at: 18).
-	self addAll: ((nodes at: 3) at: 19) to: (result at: 19).
-	self addAll: ((nodes at: 3) at: 20) to: (result at: 20).
-	self addAll: ((nodes at: 3) at: 21) to: (result at: 21).
-	self addAll: ((nodes at: 3) at: 22) to: (result at: 22).
-	self addAll: ((nodes at: 3) at: 23) to: (result at: 23).
-	self addAll: ((nodes at: 3) at: 24) to: (result at: 24).
-	self addAll: ((nodes at: 3) at: 25) to: (result at: 25).
-	self addAll: ((nodes at: 3) at: 26) to: (result at: 26).
-	self addAll: ((nodes at: 3) at: 27) to: (result at: 27).
-	self addAll: ((nodes at: 3) at: 28) to: (result at: 28).
-	self addAll: ((nodes at: 3) at: 29) to: (result at: 29).
-	self add: ((nodes at: 4) at: 1) to: (result at: 30).
-	self add: ((nodes at: 4) at: 2) to: (result at: 27).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForcase_label1: nodes [
-	| result |
-	result := Array new: 31.
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	result at: 30 put: (OrderedCollection new: 2).
-	result at: 31 put: (OrderedCollection new: 2).
-	result at: 1 put: (nodes at: 1).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 7).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 8) to: (result at: 26).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 27).
-	self addAll: ((nodes at: 2) at: 10) to: (result at: 28).
-	self addAll: ((nodes at: 2) at: 11) to: (result at: 29).
-	self addAll: ((nodes at: 2) at: 12) to: (result at: 30).
-	self addAll: ((nodes at: 2) at: 13) to: (result at: 31).
-	self addAll: ((nodes at: 2) at: 14) to: (result at: 9).
-	self addAll: ((nodes at: 2) at: 15) to: (result at: 10).
-	self addAll: ((nodes at: 2) at: 16) to: (result at: 11).
-	self addAll: ((nodes at: 2) at: 17) to: (result at: 12).
-	self addAll: ((nodes at: 2) at: 18) to: (result at: 13).
-	self addAll: ((nodes at: 2) at: 19) to: (result at: 14).
-	self addAll: ((nodes at: 2) at: 20) to: (result at: 15).
-	self addAll: ((nodes at: 2) at: 21) to: (result at: 16).
-	self addAll: ((nodes at: 2) at: 22) to: (result at: 17).
-	self addAll: ((nodes at: 2) at: 23) to: (result at: 19).
-	self addAll: ((nodes at: 2) at: 24) to: (result at: 18).
-	self addAll: ((nodes at: 2) at: 25) to: (result at: 20).
-	self addAll: ((nodes at: 2) at: 26) to: (result at: 21).
-	self addAll: ((nodes at: 2) at: 27) to: (result at: 22).
-	self addAll: ((nodes at: 2) at: 28) to: (result at: 23).
-	self addAll: ((nodes at: 2) at: 29) to: (result at: 24).
-	self addAll: ((nodes at: 2) at: 30) to: (result at: 25).
-	self add: (nodes at: 3) to: (result at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForclass_declaration1: nodes [
-	| result |
-	result := SwiftClassDeclarationNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
-	result classToken: (nodes at: 2).
-	result addToken: (nodes at: 3) to: result identifierTokens.
-	result addTokens: ((nodes at: 4) at: 1) to: result lessThanTokens.
-	result addTokens: ((nodes at: 4) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 4) at: 3) to: result colonTokens.
-	result addTokens: ((nodes at: 4) at: 4) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 4) at: 5) to: result commaTokens.
-	result addTokens: ((nodes at: 4) at: 6) to: result periodTokens.
-	result addTokens: ((nodes at: 4) at: 7) to: result protocolTokens.
-	result whereToken: ((nodes at: 4) at: 8).
-	result addTokens: ((nodes at: 4) at: 9) to: result equalEqualTokens.
-	result addToken: ((nodes at: 5) at: 1) to: result colonTokens.
-	result addTokens: ((nodes at: 5) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 5) at: 3) to: result lessThanTokens.
-	result addTokens: ((nodes at: 5) at: 4) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 5) at: 5) to: result periodTokens.
-	result addTokens: ((nodes at: 5) at: 6) to: result commaTokens.
-	result addToken: ((nodes at: 6) at: 1) to: result leftBraceTokens.
-	result addNodes: ((nodes at: 6) at: 2) to: result declarations.
-	result addToken: ((nodes at: 6) at: 3) to: result rightBraceTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForclosure_expression1: nodes [
-	| result |
-	result := SwiftClosureExpressionNode new.
-	result addToken: (nodes at: 1) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 2) at: 1) to: result leftParenTokens.
-	result addTokens: ((nodes at: 2) at: 2) to: result rightParenTokens.
-	result addTokens: ((nodes at: 2) at: 3) to: result inoutTokens.
-	result addTokens: ((nodes at: 2) at: 4) to: result letTokens.
-	result addTokens: ((nodes at: 2) at: 5) to: result _Tokens.
-	result addTokens: ((nodes at: 2) at: 6) to: result identifierTokens.
-	result addTokens: ((nodes at: 2) at: 7) to: result colonTokens.
-	result addTokens: ((nodes at: 2) at: 8) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 2) at: 9) to: result rightBracketTokens.
-	result
-		addTokens: ((nodes at: 2) at: 10)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 11) to: result periodTokens.
-	result
-		addTokens: ((nodes at: 2) at: 12)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 2) at: 13) to: result bangTokens.
-	result addTokens: ((nodes at: 2) at: 14) to: result protocolTokens.
-	result addTokens: ((nodes at: 2) at: 15) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 16) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 17) to: result typeTokens.
-	result addTokens: ((nodes at: 2) at: 18) to: result commaTokens.
-	result
-		addTokens: ((nodes at: 2) at: 19)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 2) at: 20) to: result equalTokens.
-	result addObjects: ((nodes at: 2) at: 21) to: result expressions.
-	result addTokens: ((nodes at: 2) at: 22) to: result varTokens.
-	result addTokens: ((nodes at: 2) at: 23) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 2) at: 24) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 2) at: 25)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 2) at: 26)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 2) at: 27)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 2) at: 28) to: result operatorTokens.
-	result inToken: ((nodes at: 2) at: 29).
-	result weakToken: ((nodes at: 2) at: 30).
-	result unownedToken: ((nodes at: 2) at: 31).
-	result unownedLeftParensafeRightParenToken: ((nodes at: 2) at: 32).
-	result unownedLeftParenunsafeRightParenToken: ((nodes at: 2) at: 33).
-	result addNodes: (nodes at: 3) to: result statements.
-	result addToken: (nodes at: 4) to: result rightBraceTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForclosure_signature1: nodes [
-	| result |
-	result := Array new: 33.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
-	self addAll: ((nodes at: 1) at: 13) to: (result at: 13).
-	self addAll: ((nodes at: 1) at: 14) to: (result at: 14).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 15).
-	self addAll: ((nodes at: 1) at: 16) to: (result at: 16).
-	self addAll: ((nodes at: 1) at: 17) to: (result at: 17).
-	self addAll: ((nodes at: 1) at: 18) to: (result at: 18).
-	self addAll: ((nodes at: 1) at: 19) to: (result at: 19).
-	self addAll: ((nodes at: 1) at: 20) to: (result at: 20).
-	self addAll: ((nodes at: 1) at: 21) to: (result at: 21).
-	self addAll: ((nodes at: 1) at: 22) to: (result at: 22).
-	self addAll: ((nodes at: 1) at: 23) to: (result at: 23).
-	self addAll: ((nodes at: 1) at: 24) to: (result at: 24).
-	self addAll: ((nodes at: 1) at: 25) to: (result at: 25).
-	self addAll: ((nodes at: 1) at: 26) to: (result at: 26).
-	self addAll: ((nodes at: 1) at: 27) to: (result at: 27).
-	self addAll: ((nodes at: 1) at: 28) to: (result at: 28).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 10).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 9).
-	self addAll: ((nodes at: 2) at: 8) to: (result at: 23).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 24).
-	self addAll: ((nodes at: 2) at: 10) to: (result at: 25).
-	self addAll: ((nodes at: 2) at: 11) to: (result at: 26).
-	self addAll: ((nodes at: 2) at: 12) to: (result at: 27).
-	self addAll: ((nodes at: 2) at: 13) to: (result at: 28).
-	self addAll: ((nodes at: 2) at: 14) to: (result at: 7).
-	self addAll: ((nodes at: 2) at: 15) to: (result at: 11).
-	self addAll: ((nodes at: 2) at: 16) to: (result at: 12).
-	self addAll: ((nodes at: 2) at: 17) to: (result at: 13).
-	self addAll: ((nodes at: 2) at: 18) to: (result at: 14).
-	self addAll: ((nodes at: 2) at: 19) to: (result at: 15).
-	self addAll: ((nodes at: 2) at: 20) to: (result at: 16).
-	self addAll: ((nodes at: 2) at: 21) to: (result at: 17).
-	self addAll: ((nodes at: 2) at: 22) to: (result at: 18).
-	self addAll: ((nodes at: 2) at: 23) to: (result at: 19).
-	self addAll: ((nodes at: 2) at: 24) to: (result at: 3).
-	result at: 29 put: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForclosure_signature2: nodes [
-	| result |
-	result := Array new: 33.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 18).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 10).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 9).
-	self addAll: ((nodes at: 2) at: 8) to: (result at: 23).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 24).
-	self addAll: ((nodes at: 2) at: 10) to: (result at: 25).
-	self addAll: ((nodes at: 2) at: 11) to: (result at: 26).
-	self addAll: ((nodes at: 2) at: 12) to: (result at: 27).
-	self addAll: ((nodes at: 2) at: 13) to: (result at: 28).
-	self addAll: ((nodes at: 2) at: 14) to: (result at: 7).
-	self addAll: ((nodes at: 2) at: 15) to: (result at: 11).
-	self addAll: ((nodes at: 2) at: 16) to: (result at: 12).
-	self addAll: ((nodes at: 2) at: 17) to: (result at: 13).
-	self addAll: ((nodes at: 2) at: 18) to: (result at: 14).
-	self addAll: ((nodes at: 2) at: 19) to: (result at: 15).
-	self addAll: ((nodes at: 2) at: 20) to: (result at: 16).
-	self addAll: ((nodes at: 2) at: 21) to: (result at: 17).
-	self addAll: ((nodes at: 2) at: 22) to: (result at: 18).
-	self addAll: ((nodes at: 2) at: 23) to: (result at: 19).
-	self addAll: ((nodes at: 2) at: 24) to: (result at: 3).
-	result at: 29 put: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForclosure_signature3: nodes [
-	| result |
-	result := Array new: 33.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	self add: ((nodes at: 1) at: 1) to: (result at: 8).
-	result at: 30 put: ((nodes at: 1) at: 2).
-	result at: 31 put: ((nodes at: 1) at: 3).
-	result at: 32 put: ((nodes at: 1) at: 4).
-	result at: 33 put: ((nodes at: 1) at: 5).
-	self add: ((nodes at: 1) at: 6) to: (result at: 21).
-	self add: ((nodes at: 1) at: 7) to: (result at: 9).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
-	self addAll: ((nodes at: 2) at: 13) to: (result at: 13).
-	self addAll: ((nodes at: 2) at: 14) to: (result at: 14).
-	self addAll: ((nodes at: 2) at: 15) to: (result at: 15).
-	self addAll: ((nodes at: 2) at: 16) to: (result at: 16).
-	self addAll: ((nodes at: 2) at: 17) to: (result at: 17).
-	self addAll: ((nodes at: 2) at: 18) to: (result at: 18).
-	self addAll: ((nodes at: 2) at: 19) to: (result at: 19).
-	self addAll: ((nodes at: 2) at: 20) to: (result at: 20).
-	self addAll: ((nodes at: 2) at: 21) to: (result at: 21).
-	self addAll: ((nodes at: 2) at: 22) to: (result at: 22).
-	self addAll: ((nodes at: 2) at: 23) to: (result at: 23).
-	self addAll: ((nodes at: 2) at: 24) to: (result at: 24).
-	self addAll: ((nodes at: 2) at: 25) to: (result at: 25).
-	self addAll: ((nodes at: 2) at: 26) to: (result at: 26).
-	self addAll: ((nodes at: 2) at: 27) to: (result at: 27).
-	self addAll: ((nodes at: 2) at: 28) to: (result at: 28).
-	self addAll: ((nodes at: 3) at: 1) to: (result at: 10).
-	self addAll: ((nodes at: 3) at: 2) to: (result at: 5).
-	self addAll: ((nodes at: 3) at: 3) to: (result at: 6).
-	self addAll: ((nodes at: 3) at: 4) to: (result at: 1).
-	self addAll: ((nodes at: 3) at: 5) to: (result at: 2).
-	self addAll: ((nodes at: 3) at: 6) to: (result at: 8).
-	self addAll: ((nodes at: 3) at: 7) to: (result at: 9).
-	self addAll: ((nodes at: 3) at: 8) to: (result at: 23).
-	self addAll: ((nodes at: 3) at: 9) to: (result at: 24).
-	self addAll: ((nodes at: 3) at: 10) to: (result at: 25).
-	self addAll: ((nodes at: 3) at: 11) to: (result at: 26).
-	self addAll: ((nodes at: 3) at: 12) to: (result at: 27).
-	self addAll: ((nodes at: 3) at: 13) to: (result at: 28).
-	self addAll: ((nodes at: 3) at: 14) to: (result at: 7).
-	self addAll: ((nodes at: 3) at: 15) to: (result at: 11).
-	self addAll: ((nodes at: 3) at: 16) to: (result at: 12).
-	self addAll: ((nodes at: 3) at: 17) to: (result at: 13).
-	self addAll: ((nodes at: 3) at: 18) to: (result at: 14).
-	self addAll: ((nodes at: 3) at: 19) to: (result at: 15).
-	self addAll: ((nodes at: 3) at: 20) to: (result at: 16).
-	self addAll: ((nodes at: 3) at: 21) to: (result at: 17).
-	self addAll: ((nodes at: 3) at: 22) to: (result at: 18).
-	self addAll: ((nodes at: 3) at: 23) to: (result at: 19).
-	self addAll: ((nodes at: 3) at: 24) to: (result at: 3).
-	result at: 29 put: (nodes at: 4).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForclosure_signature4: nodes [
-	| result |
-	result := Array new: 33.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	self add: ((nodes at: 1) at: 1) to: (result at: 8).
-	result at: 30 put: ((nodes at: 1) at: 2).
-	result at: 31 put: ((nodes at: 1) at: 3).
-	result at: 32 put: ((nodes at: 1) at: 4).
-	result at: 33 put: ((nodes at: 1) at: 5).
-	self add: ((nodes at: 1) at: 6) to: (result at: 21).
-	self add: ((nodes at: 1) at: 7) to: (result at: 9).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 18).
-	self addAll: ((nodes at: 3) at: 1) to: (result at: 10).
-	self addAll: ((nodes at: 3) at: 2) to: (result at: 5).
-	self addAll: ((nodes at: 3) at: 3) to: (result at: 6).
-	self addAll: ((nodes at: 3) at: 4) to: (result at: 1).
-	self addAll: ((nodes at: 3) at: 5) to: (result at: 2).
-	self addAll: ((nodes at: 3) at: 6) to: (result at: 8).
-	self addAll: ((nodes at: 3) at: 7) to: (result at: 9).
-	self addAll: ((nodes at: 3) at: 8) to: (result at: 23).
-	self addAll: ((nodes at: 3) at: 9) to: (result at: 24).
-	self addAll: ((nodes at: 3) at: 10) to: (result at: 25).
-	self addAll: ((nodes at: 3) at: 11) to: (result at: 26).
-	self addAll: ((nodes at: 3) at: 12) to: (result at: 27).
-	self addAll: ((nodes at: 3) at: 13) to: (result at: 28).
-	self addAll: ((nodes at: 3) at: 14) to: (result at: 7).
-	self addAll: ((nodes at: 3) at: 15) to: (result at: 11).
-	self addAll: ((nodes at: 3) at: 16) to: (result at: 12).
-	self addAll: ((nodes at: 3) at: 17) to: (result at: 13).
-	self addAll: ((nodes at: 3) at: 18) to: (result at: 14).
-	self addAll: ((nodes at: 3) at: 19) to: (result at: 15).
-	self addAll: ((nodes at: 3) at: 20) to: (result at: 16).
-	self addAll: ((nodes at: 3) at: 21) to: (result at: 17).
-	self addAll: ((nodes at: 3) at: 22) to: (result at: 18).
-	self addAll: ((nodes at: 3) at: 23) to: (result at: 19).
-	self addAll: ((nodes at: 3) at: 24) to: (result at: 3).
-	result at: 29 put: (nodes at: 4).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForclosure_signature5: nodes [
-	| result |
-	result := Array new: 33.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	self add: ((nodes at: 1) at: 1) to: (result at: 8).
-	result at: 30 put: ((nodes at: 1) at: 2).
-	result at: 31 put: ((nodes at: 1) at: 3).
-	result at: 32 put: ((nodes at: 1) at: 4).
-	result at: 33 put: ((nodes at: 1) at: 5).
-	self add: ((nodes at: 1) at: 6) to: (result at: 21).
-	self add: ((nodes at: 1) at: 7) to: (result at: 9).
-	result at: 29 put: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForcode_block1: nodes [
-	| result |
-	result := SwiftBlockNode new.
-	result leftBraceToken: (nodes at: 1).
-	result addNodes: (nodes at: 2) to: result statements.
-	result rightBraceToken: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForconformance_requirement1: nodes [
-	| result |
-	result := Array new: 7.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForconstant_declaration1: nodes [
-	| result |
-	result := SwiftConstantDeclarationNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
-	result addTokens: ((nodes at: 2) at: 1) to: result classTokens.
-	result addTokens: ((nodes at: 2) at: 2) to: result mutatingTokens.
-	result addTokens: ((nodes at: 2) at: 3) to: result nonmutatingTokens.
-	result addTokens: ((nodes at: 2) at: 4) to: result overrideTokens.
-	result addTokens: ((nodes at: 2) at: 5) to: result staticTokens.
-	result addTokens: ((nodes at: 2) at: 6) to: result unownedTokens.
-	result
-		addTokens: ((nodes at: 2) at: 7)
-		to: result unownedLeftParensafeRightParenTokens.
-	result
-		addTokens: ((nodes at: 2) at: 8)
-		to: result unownedLeftParenunsafeRightParenTokens.
-	result addTokens: ((nodes at: 2) at: 9) to: result weakTokens.
-	result letToken: (nodes at: 3).
-	result addNodes: ((nodes at: 4) at: 1) to: result inializers.
-	result addTokens: ((nodes at: 4) at: 2) to: result commaTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForcontinue_statement1: nodes [
-	| result |
-	result := SwiftContinueStatementNode new.
-	result continueToken: (nodes at: 1).
-	result name: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFordeclaration_specifier1: nodes [
-	| result |
-	result := Array new: 9.
-	result at: 1 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFordeclaration_specifier2: nodes [
-	| result |
-	result := Array new: 9.
-	result at: 2 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFordeclaration_specifier3: nodes [
-	| result |
-	result := Array new: 9.
-	result at: 3 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFordeclaration_specifier4: nodes [
-	| result |
-	result := Array new: 9.
-	result at: 4 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFordeclaration_specifier5: nodes [
-	| result |
-	result := Array new: 9.
-	result at: 5 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFordeclaration_specifier6: nodes [
-	| result |
-	result := Array new: 9.
-	result at: 6 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFordeclaration_specifier7: nodes [
-	| result |
-	result := Array new: 9.
-	result at: 7 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFordeclaration_specifier8: nodes [
-	| result |
-	result := Array new: 9.
-	result at: 8 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFordeclaration_specifier9: nodes [
-	| result |
-	result := Array new: 9.
-	result at: 9 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFordeclaration_specifiers1: nodes [
-	| result |
-	result := Array new: 9.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFordeclaration_specifiers2: nodes [
-	| result |
-	result := nodes at: 1.
-	self add: ((nodes at: 2) at: 1) to: (result at: 1).
-	self add: ((nodes at: 2) at: 2) to: (result at: 2).
-	self add: ((nodes at: 2) at: 3) to: (result at: 3).
-	self add: ((nodes at: 2) at: 4) to: (result at: 4).
-	self add: ((nodes at: 2) at: 5) to: (result at: 5).
-	self add: ((nodes at: 2) at: 6) to: (result at: 6).
-	self add: ((nodes at: 2) at: 7) to: (result at: 7).
-	self add: ((nodes at: 2) at: 8) to: (result at: 8).
-	self add: ((nodes at: 2) at: 9) to: (result at: 9).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFordeinitializer_declaration1: nodes [
-	| result |
-	result := SwiftDeinitializerDeclarationNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
-	result deinitToken: (nodes at: 2).
-	result block: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFordictionary_literal1: nodes [
-	| result |
-	result := Array new: 6.
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 1 put: (nodes at: 1).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 5).
-	result at: 6 put: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFordictionary_literal2: nodes [
-	| result |
-	result := Array new: 6.
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 1 put: (nodes at: 1).
-	self add: (nodes at: 2) to: (result at: 3).
-	result at: 6 put: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFordictionary_literal_item1: nodes [
-	| result |
-	result := Array new: 3.
-	result at: 1 put: (nodes at: 1).
-	result at: 2 put: (nodes at: 2).
-	result at: 3 put: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFordictionary_literal_items1: nodes [
-	| result |
-	result := Array new: 4.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	self add: ((nodes at: 1) at: 1) to: (result at: 1).
-	self add: ((nodes at: 1) at: 2) to: (result at: 2).
-	self add: ((nodes at: 1) at: 3) to: (result at: 3).
-	self add: (nodes at: 2) to: (result at: 4).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFordictionary_literal_items2: nodes [
-	| result |
-	result := nodes at: 3.
-	self addFirst: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addFirst: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addFirst: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addFirst: (nodes at: 2) to: (result at: 4).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFordictionary_type1: nodes [
-	| result |
-	result := SwiftDictionaryTypeNode new.
-	result addToken: (nodes at: 1) to: result leftBracketTokens.
-	result addToken: (nodes at: 3) to: result colonTokens.
-	result addToken: (nodes at: 5) to: result rightBracketTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFordo_while_statement1: nodes [
-	| result |
-	result := SwiftDoWhileStatementNode new.
-	result doToken: (nodes at: 1).
-	result block: (nodes at: 2).
-	result whileToken: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFordynamic_type_expression1: nodes [
-	| result |
-	result := SwiftDynamicTypeExpressionNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result lessThanTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result commaTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result greaterThanTokens.
-	result
-		addTokens: ((nodes at: 1) at: 5)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 6)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 7)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result leftBracketTokens.
-	result addObjects: ((nodes at: 1) at: 9) to: result expressions.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result rightBracketTokens.
-	result addObjects: ((nodes at: 1) at: 11) to: result keyExpressions.
-	result addTokens: ((nodes at: 1) at: 12) to: result colonTokens.
-	result addObjects: ((nodes at: 1) at: 13) to: result valueExpressions.
-	result __FILE__Token: ((nodes at: 1) at: 14).
-	result __LINE__Token: ((nodes at: 1) at: 15).
-	result __COLUMN__Token: ((nodes at: 1) at: 16).
-	result __FUNCTION__Token: ((nodes at: 1) at: 17).
-	result addTokens: ((nodes at: 1) at: 18) to: result selfTokens.
-	result addTokens: ((nodes at: 1) at: 19) to: result periodTokens.
-	result addTokens: ((nodes at: 1) at: 20) to: result initTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 22) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 23) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 24) to: result inoutTokens.
-	result addTokens: ((nodes at: 1) at: 25) to: result letTokens.
-	result addTokens: ((nodes at: 1) at: 26) to: result _Tokens.
-	result
-		addTokens: ((nodes at: 1) at: 27)
-		to: result minusGreaterThanTokens.
-	result
-		addTokens: ((nodes at: 1) at: 28)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 1) at: 29) to: result bangTokens.
-	result addTokens: ((nodes at: 1) at: 30) to: result protocolTokens.
-	result addTokens: ((nodes at: 1) at: 31) to: result typeTokens.
-	result
-		addTokens: ((nodes at: 1) at: 32)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 1) at: 33) to: result equalTokens.
-	result addTokens: ((nodes at: 1) at: 34) to: result varTokens.
-	result addTokens: ((nodes at: 1) at: 35) to: result rightBraceTokens.
-	result addTokens: ((nodes at: 1) at: 36) to: result operatorTokens.
-	result inToken: ((nodes at: 1) at: 37).
-	result weakToken: ((nodes at: 1) at: 38).
-	result unownedToken: ((nodes at: 1) at: 39).
-	result unownedLeftParensafeRightParenToken: ((nodes at: 1) at: 40).
-	result unownedLeftParenunsafeRightParenToken: ((nodes at: 1) at: 41).
-	result addNodes: ((nodes at: 1) at: 42) to: result statements.
-	result addTokens: ((nodes at: 1) at: 43) to: result dynamicTypeTokens.
-	result addToken: (nodes at: 2) to: result periodTokens.
-	result addToken: (nodes at: 3) to: result dynamicTypeTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForenum_case_pattern1: nodes [
-	| result |
-	result := Array new: 29.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	self add: (nodes at: 2) to: (result at: 5).
-	self add: (nodes at: 3) to: (result at: 1).
-	self addAll: ((nodes at: 4) at: 1) to: (result at: 6).
-	self addAll: ((nodes at: 4) at: 2) to: (result at: 7).
-	self addAll: ((nodes at: 4) at: 3) to: (result at: 8).
-	self addAll: ((nodes at: 4) at: 4) to: (result at: 1).
-	self addAll: ((nodes at: 4) at: 5) to: (result at: 9).
-	self addAll: ((nodes at: 4) at: 6) to: (result at: 10).
-	self addAll: ((nodes at: 4) at: 7) to: (result at: 11).
-	self addAll: ((nodes at: 4) at: 8) to: (result at: 12).
-	self addAll: ((nodes at: 4) at: 9) to: (result at: 5).
-	self addAll: ((nodes at: 4) at: 10) to: (result at: 13).
-	self addAll: ((nodes at: 4) at: 11) to: (result at: 14).
-	self addAll: ((nodes at: 4) at: 12) to: (result at: 15).
-	self addAll: ((nodes at: 4) at: 13) to: (result at: 2).
-	self addAll: ((nodes at: 4) at: 14) to: (result at: 3).
-	self addAll: ((nodes at: 4) at: 15) to: (result at: 16).
-	self addAll: ((nodes at: 4) at: 16) to: (result at: 4).
-	self addAll: ((nodes at: 4) at: 17) to: (result at: 17).
-	self addAll: ((nodes at: 4) at: 18) to: (result at: 18).
-	self addAll: ((nodes at: 4) at: 19) to: (result at: 19).
-	self addAll: ((nodes at: 4) at: 20) to: (result at: 20).
-	self addAll: ((nodes at: 4) at: 21) to: (result at: 21).
-	self addAll: ((nodes at: 4) at: 22) to: (result at: 22).
-	self addAll: ((nodes at: 4) at: 23) to: (result at: 23).
-	self addAll: ((nodes at: 4) at: 24) to: (result at: 24).
-	self addAll: ((nodes at: 4) at: 25) to: (result at: 25).
-	self addAll: ((nodes at: 4) at: 26) to: (result at: 26).
-	self addAll: ((nodes at: 4) at: 27) to: (result at: 27).
-	self addAll: ((nodes at: 4) at: 28) to: (result at: 28).
-	self addAll: ((nodes at: 4) at: 29) to: (result at: 29).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForenum_declaration1: nodes [
-	| result |
-	result := SwiftEnumDeclarationNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
-	result addTokens: ((nodes at: 2) at: 1) to: result identifierTokens.
-	result addTokens: ((nodes at: 2) at: 2) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 3) to: result colonTokens.
-	result addTokens: ((nodes at: 2) at: 4) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 5) to: result commaTokens.
-	result addTokens: ((nodes at: 2) at: 6) to: result periodTokens.
-	result addTokens: ((nodes at: 2) at: 7) to: result protocolTokens.
-	result addTokens: ((nodes at: 2) at: 8) to: result whereTokens.
-	result addTokens: ((nodes at: 2) at: 9) to: result equalEqualTokens.
-	result addTokens: ((nodes at: 2) at: 10) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 2) at: 11) to: result _Tokens.
-	result addTokens: ((nodes at: 2) at: 12) to: result leftParenTokens.
-	result addTokens: ((nodes at: 2) at: 13) to: result rightParenTokens.
-	result addTokens: ((nodes at: 2) at: 14) to: result importTokens.
-	result addTokens: ((nodes at: 2) at: 15) to: result typealiasTokens.
-	result addTokens: ((nodes at: 2) at: 16) to: result structTokens.
-	result addTokens: ((nodes at: 2) at: 17) to: result classTokens.
-	result addTokens: ((nodes at: 2) at: 18) to: result enumTokens.
-	result addTokens: ((nodes at: 2) at: 19) to: result varTokens.
-	result addTokens: ((nodes at: 2) at: 20) to: result funcTokens.
-	result addTokens: ((nodes at: 2) at: 21) to: result operatorTokens.
-	result addTokens: ((nodes at: 2) at: 22) to: result mutatingTokens.
-	result addTokens: ((nodes at: 2) at: 23) to: result nonmutatingTokens.
-	result addTokens: ((nodes at: 2) at: 24) to: result overrideTokens.
-	result addTokens: ((nodes at: 2) at: 25) to: result staticTokens.
-	result addTokens: ((nodes at: 2) at: 26) to: result unownedTokens.
-	result
-		addTokens: ((nodes at: 2) at: 27)
-		to: result unownedLeftParensafeRightParenTokens.
-	result
-		addTokens: ((nodes at: 2) at: 28)
-		to: result unownedLeftParenunsafeRightParenTokens.
-	result addTokens: ((nodes at: 2) at: 29) to: result weakTokens.
-	result addTokens: ((nodes at: 2) at: 30) to: result letTokens.
-	result addNodes: ((nodes at: 2) at: 31) to: result inializers.
-	result addTokens: ((nodes at: 2) at: 32) to: result leftBracketTokens.
-	result
-		addTokens: ((nodes at: 2) at: 33)
-		to: result rightBracketTokens.
-	result
-		addTokens: ((nodes at: 2) at: 34)
-		to: result minusGreaterThanTokens.
-	result
-		addTokens: ((nodes at: 2) at: 35)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 2) at: 36) to: result bangTokens.
-	result addTokens: ((nodes at: 2) at: 37) to: result typeTokens.
-	result
-		addTokens: ((nodes at: 2) at: 38)
-		to: result periodPeriodPeriodTokens.
-	result addNodes: ((nodes at: 2) at: 39) to: result blocks.
-	result addTokens: ((nodes at: 2) at: 40) to: result getTokens.
-	result addTokens: ((nodes at: 2) at: 41) to: result setTokens.
-	result addTokens: ((nodes at: 2) at: 42) to: result rightBraceTokens.
-	result addTokens: ((nodes at: 2) at: 43) to: result equalTokens.
-	result addObjects: ((nodes at: 2) at: 44) to: result expressions.
-	result addTokens: ((nodes at: 2) at: 45) to: result willSetTokens.
-	result addTokens: ((nodes at: 2) at: 46) to: result didSetTokens.
-	result addTokens: ((nodes at: 2) at: 47) to: result inoutTokens.
-	result addTokens: ((nodes at: 2) at: 48) to: result initTokens.
-	result addTokens: ((nodes at: 2) at: 49) to: result deinitTokens.
-	result addTokens: ((nodes at: 2) at: 50) to: result extensionTokens.
-	result addTokens: ((nodes at: 2) at: 51) to: result subscriptTokens.
-	result addTokens: ((nodes at: 2) at: 52) to: result caseTokens.
-	result addNodes: ((nodes at: 2) at: 53) to: result declarations.
-	result addTokens: ((nodes at: 2) at: 54) to: result convenienceTokens.
-	result
-		addTokens: ((nodes at: 2) at: 55)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 2) at: 56)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 2) at: 57)
-		to: result full_string_literalTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForenum_declaration2: nodes [
-	| result |
-	result := SwiftEnumDeclarationNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
-	result addTokens: ((nodes at: 2) at: 1) to: result identifierTokens.
-	result addTokens: ((nodes at: 2) at: 2) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 3) to: result colonTokens.
-	result addTokens: ((nodes at: 2) at: 4) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 5) to: result commaTokens.
-	result addTokens: ((nodes at: 2) at: 6) to: result periodTokens.
-	result addTokens: ((nodes at: 2) at: 7) to: result protocolTokens.
-	result addTokens: ((nodes at: 2) at: 8) to: result whereTokens.
-	result addTokens: ((nodes at: 2) at: 9) to: result equalEqualTokens.
-	result addTokens: ((nodes at: 2) at: 10) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 2) at: 11) to: result _Tokens.
-	result addTokens: ((nodes at: 2) at: 12) to: result leftParenTokens.
-	result addTokens: ((nodes at: 2) at: 13) to: result rightParenTokens.
-	result addTokens: ((nodes at: 2) at: 14) to: result importTokens.
-	result addTokens: ((nodes at: 2) at: 15) to: result typealiasTokens.
-	result addTokens: ((nodes at: 2) at: 16) to: result structTokens.
-	result addTokens: ((nodes at: 2) at: 17) to: result classTokens.
-	result addTokens: ((nodes at: 2) at: 18) to: result enumTokens.
-	result addTokens: ((nodes at: 2) at: 19) to: result varTokens.
-	result addTokens: ((nodes at: 2) at: 20) to: result funcTokens.
-	result addTokens: ((nodes at: 2) at: 21) to: result operatorTokens.
-	result addTokens: ((nodes at: 2) at: 22) to: result mutatingTokens.
-	result addTokens: ((nodes at: 2) at: 23) to: result nonmutatingTokens.
-	result addTokens: ((nodes at: 2) at: 24) to: result overrideTokens.
-	result addTokens: ((nodes at: 2) at: 25) to: result staticTokens.
-	result addTokens: ((nodes at: 2) at: 26) to: result unownedTokens.
-	result
-		addTokens: ((nodes at: 2) at: 27)
-		to: result unownedLeftParensafeRightParenTokens.
-	result
-		addTokens: ((nodes at: 2) at: 28)
-		to: result unownedLeftParenunsafeRightParenTokens.
-	result addTokens: ((nodes at: 2) at: 29) to: result weakTokens.
-	result addTokens: ((nodes at: 2) at: 30) to: result letTokens.
-	result addNodes: ((nodes at: 2) at: 31) to: result inializers.
-	result addTokens: ((nodes at: 2) at: 32) to: result leftBracketTokens.
-	result
-		addTokens: ((nodes at: 2) at: 33)
-		to: result rightBracketTokens.
-	result
-		addTokens: ((nodes at: 2) at: 34)
-		to: result minusGreaterThanTokens.
-	result
-		addTokens: ((nodes at: 2) at: 35)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 2) at: 36) to: result bangTokens.
-	result addTokens: ((nodes at: 2) at: 37) to: result typeTokens.
-	result addNodes: ((nodes at: 2) at: 38) to: result blocks.
-	result addTokens: ((nodes at: 2) at: 39) to: result getTokens.
-	result addTokens: ((nodes at: 2) at: 40) to: result setTokens.
-	result addTokens: ((nodes at: 2) at: 41) to: result rightBraceTokens.
-	result addTokens: ((nodes at: 2) at: 42) to: result equalTokens.
-	result addObjects: ((nodes at: 2) at: 43) to: result expressions.
-	result addTokens: ((nodes at: 2) at: 44) to: result willSetTokens.
-	result addTokens: ((nodes at: 2) at: 45) to: result didSetTokens.
-	result
-		addTokens: ((nodes at: 2) at: 46)
-		to: result periodPeriodPeriodTokens.
-	result addNodes: ((nodes at: 2) at: 47) to: result declarations.
-	result addTokens: ((nodes at: 2) at: 48) to: result convenienceTokens.
-	result addTokens: ((nodes at: 2) at: 49) to: result initTokens.
-	result addTokens: ((nodes at: 2) at: 50) to: result inoutTokens.
-	result addTokens: ((nodes at: 2) at: 51) to: result deinitTokens.
-	result addTokens: ((nodes at: 2) at: 52) to: result extensionTokens.
-	result addTokens: ((nodes at: 2) at: 53) to: result subscriptTokens.
-	result addTokens: ((nodes at: 2) at: 54) to: result caseTokens.
-	result
-		addTokens: ((nodes at: 2) at: 55)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 2) at: 56)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 2) at: 57)
-		to: result full_string_literalTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForexplicit_member_expression1: nodes [
-	| result |
-	result := SwiftExplicitMemberExpressionNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result lessThanTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result commaTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result greaterThanTokens.
-	result
-		addTokens: ((nodes at: 1) at: 5)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 6)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 7)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result leftBracketTokens.
-	result addObjects: ((nodes at: 1) at: 9) to: result expressions.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result rightBracketTokens.
-	result addObjects: ((nodes at: 1) at: 11) to: result keyExpressions.
-	result addTokens: ((nodes at: 1) at: 12) to: result colonTokens.
-	result addObjects: ((nodes at: 1) at: 13) to: result valueExpressions.
-	result __FILE__Token: ((nodes at: 1) at: 14).
-	result __LINE__Token: ((nodes at: 1) at: 15).
-	result __COLUMN__Token: ((nodes at: 1) at: 16).
-	result __FUNCTION__Token: ((nodes at: 1) at: 17).
-	result addTokens: ((nodes at: 1) at: 18) to: result selfTokens.
-	result addTokens: ((nodes at: 1) at: 19) to: result periodTokens.
-	result addTokens: ((nodes at: 1) at: 20) to: result initTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 22) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 23) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 24) to: result inoutTokens.
-	result addTokens: ((nodes at: 1) at: 25) to: result letTokens.
-	result addTokens: ((nodes at: 1) at: 26) to: result _Tokens.
-	result
-		addTokens: ((nodes at: 1) at: 27)
-		to: result minusGreaterThanTokens.
-	result
-		addTokens: ((nodes at: 1) at: 28)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 1) at: 29) to: result bangTokens.
-	result addTokens: ((nodes at: 1) at: 30) to: result protocolTokens.
-	result addTokens: ((nodes at: 1) at: 31) to: result typeTokens.
-	result
-		addTokens: ((nodes at: 1) at: 32)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 1) at: 33) to: result equalTokens.
-	result addTokens: ((nodes at: 1) at: 34) to: result varTokens.
-	result addTokens: ((nodes at: 1) at: 35) to: result rightBraceTokens.
-	result addTokens: ((nodes at: 1) at: 36) to: result operatorTokens.
-	result inToken: ((nodes at: 1) at: 37).
-	result weakToken: ((nodes at: 1) at: 38).
-	result unownedToken: ((nodes at: 1) at: 39).
-	result unownedLeftParensafeRightParenToken: ((nodes at: 1) at: 40).
-	result unownedLeftParenunsafeRightParenToken: ((nodes at: 1) at: 41).
-	result addNodes: ((nodes at: 1) at: 42) to: result statements.
-	result addTokens: ((nodes at: 1) at: 43) to: result dynamicTypeTokens.
-	result addToken: (nodes at: 2) to: result periodTokens.
-	result addToken: (nodes at: 3) to: result integer_literalTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForexplicit_member_expression2: nodes [
-	| result |
-	result := SwiftExplicitMemberExpressionNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result lessThanTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result commaTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result greaterThanTokens.
-	result
-		addTokens: ((nodes at: 1) at: 5)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 6)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 7)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result leftBracketTokens.
-	result addObjects: ((nodes at: 1) at: 9) to: result expressions.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result rightBracketTokens.
-	result addObjects: ((nodes at: 1) at: 11) to: result keyExpressions.
-	result addTokens: ((nodes at: 1) at: 12) to: result colonTokens.
-	result addObjects: ((nodes at: 1) at: 13) to: result valueExpressions.
-	result __FILE__Token: ((nodes at: 1) at: 14).
-	result __LINE__Token: ((nodes at: 1) at: 15).
-	result __COLUMN__Token: ((nodes at: 1) at: 16).
-	result __FUNCTION__Token: ((nodes at: 1) at: 17).
-	result addTokens: ((nodes at: 1) at: 18) to: result selfTokens.
-	result addTokens: ((nodes at: 1) at: 19) to: result periodTokens.
-	result addTokens: ((nodes at: 1) at: 20) to: result initTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 22) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 23) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 24) to: result inoutTokens.
-	result addTokens: ((nodes at: 1) at: 25) to: result letTokens.
-	result addTokens: ((nodes at: 1) at: 26) to: result _Tokens.
-	result
-		addTokens: ((nodes at: 1) at: 27)
-		to: result minusGreaterThanTokens.
-	result
-		addTokens: ((nodes at: 1) at: 28)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 1) at: 29) to: result bangTokens.
-	result addTokens: ((nodes at: 1) at: 30) to: result protocolTokens.
-	result addTokens: ((nodes at: 1) at: 31) to: result typeTokens.
-	result
-		addTokens: ((nodes at: 1) at: 32)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 1) at: 33) to: result equalTokens.
-	result addTokens: ((nodes at: 1) at: 34) to: result varTokens.
-	result addTokens: ((nodes at: 1) at: 35) to: result rightBraceTokens.
-	result addTokens: ((nodes at: 1) at: 36) to: result operatorTokens.
-	result inToken: ((nodes at: 1) at: 37).
-	result weakToken: ((nodes at: 1) at: 38).
-	result unownedToken: ((nodes at: 1) at: 39).
-	result unownedLeftParensafeRightParenToken: ((nodes at: 1) at: 40).
-	result unownedLeftParenunsafeRightParenToken: ((nodes at: 1) at: 41).
-	result addNodes: ((nodes at: 1) at: 42) to: result statements.
-	result addTokens: ((nodes at: 1) at: 43) to: result dynamicTypeTokens.
-	result addToken: (nodes at: 2) to: result periodTokens.
-	result addToken: (nodes at: 3) to: result identifierTokens.
-	result addToken: ((nodes at: 4) at: 1) to: result lessThanTokens.
-	result addTokens: ((nodes at: 4) at: 2) to: result commaTokens.
-	result addToken: ((nodes at: 4) at: 3) to: result greaterThanTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForexpression2: nodes [
-	| result |
-	result := SwiftBinaryExpressionNode new.
-	result addNodes: (nodes at: 2) to: result operators.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForexpression_element2: nodes [
-	| result |
-	result := SwiftNamedExpressionNode new.
-	result identifierToken: (nodes at: 1).
-	result colonToken: (nodes at: 2).
-	result expression: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForexpression_element_list2: nodes [
-	| result |
-	result := nodes at: 1.
-	self add: (nodes at: 2) to: (result at: 4).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForexpression_list2: nodes [
-	| result |
-	result := nodes at: 1.
-	self add: (nodes at: 2) to: (result at: 2).
-	self add: (nodes at: 3) to: (result at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForextension_body1: nodes [
-	| result |
-	result := Array new: 3.
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 1 put: (nodes at: 1).
-	self addAll: (nodes at: 2) to: (result at: 2).
-	result at: 3 put: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForextension_declaration1: nodes [
-	| result |
-	result := SwiftExtensionDeclarationNode new.
-	result extensionToken: (nodes at: 1).
-	result colonToken: ((nodes at: 3) at: 1).
-	result addTokens: ((nodes at: 3) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 3) at: 3) to: result lessThanTokens.
-	result addTokens: ((nodes at: 3) at: 4) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 5) to: result periodTokens.
-	result addTokens: ((nodes at: 3) at: 6) to: result commaTokens.
-	result leftBraceToken: ((nodes at: 4) at: 1).
-	result addNodes: ((nodes at: 4) at: 2) to: result declarations.
-	result rightBraceToken: ((nodes at: 4) at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForfallthrough_statement1: nodes [
-	| result |
-	result := SwiftFallThroughStatementNode new.
-	result fallthroughToken: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForfile1: nodes [
-	| result |
-	result := SwiftFileNode new.
-	result addNodes: (nodes at: 1) to: result statements.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForfor_in_statement1: nodes [
-	| result |
-	result := SwiftForInStatementNode new.
-	result forToken: (nodes at: 1).
-	result addTokens: ((nodes at: 2) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 2) at: 2) to: result colonTokens.
-	result addTokens: ((nodes at: 2) at: 3) to: result identifierTokens.
-	result addTokens: ((nodes at: 2) at: 4) to: result leftParenTokens.
-	result addTokens: ((nodes at: 2) at: 5) to: result rightParenTokens.
-	result addTokens: ((nodes at: 2) at: 6) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 2) at: 7) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 2) at: 8) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 2) at: 9) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 2) at: 10)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 2) at: 11)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 2) at: 12)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 2) at: 13) to: result operatorTokens.
-	result
-		addTokens: ((nodes at: 2) at: 14)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 15) to: result periodTokens.
-	result
-		addTokens: ((nodes at: 2) at: 16)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 2) at: 17) to: result bangTokens.
-	result addTokens: ((nodes at: 2) at: 18) to: result protocolTokens.
-	result addTokens: ((nodes at: 2) at: 19) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 20) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 21) to: result typeTokens.
-	result addTokens: ((nodes at: 2) at: 22) to: result commaTokens.
-	result
-		addTokens: ((nodes at: 2) at: 23)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 2) at: 24) to: result inoutTokens.
-	result addTokens: ((nodes at: 2) at: 25) to: result varTokens.
-	result addTokens: ((nodes at: 2) at: 26) to: result letTokens.
-	result addObjects: ((nodes at: 2) at: 27) to: result expressions.
-	result addTokens: ((nodes at: 2) at: 28) to: result isTokens.
-	result addTokens: ((nodes at: 2) at: 29) to: result asTokens.
-	result inToken: (nodes at: 3).
-	result addObject: (nodes at: 4) to: result expressions.
-	result block: (nodes at: 5).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForfor_init1: nodes [
-	| result |
-	result := Array new: 2.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForfor_statement1: nodes [
-	| result |
-	result := SwiftForStatementNode new.
-	result forToken: (nodes at: 1).
-	result addObjects: ((nodes at: 2) at: 1) to: result expressions.
-	result addTokens: ((nodes at: 2) at: 2) to: result commaTokens.
-	result semicolonToken: (nodes at: 3).
-	result testExpression: (nodes at: 4).
-	result semicolonToken: (nodes at: 5).
-	result incrementExpression: (nodes at: 6).
-	result block: (nodes at: 7).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForfor_statement2: nodes [
-	| result |
-	result := SwiftForStatementNode new.
-	result forToken: (nodes at: 1).
-	result leftParenToken: (nodes at: 2).
-	result addObjects: ((nodes at: 3) at: 1) to: result expressions.
-	result addTokens: ((nodes at: 3) at: 2) to: result commaTokens.
-	result semicolonToken: (nodes at: 4).
-	result testExpression: (nodes at: 5).
-	result semicolonToken: (nodes at: 6).
-	result incrementExpression: (nodes at: 7).
-	result rightParenToken: (nodes at: 8).
-	result block: (nodes at: 9).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForforced_value_expression1: nodes [
-	| result |
-	result := SwiftForcedValueExpressionNode new.
-	result expression: (nodes at: 1).
-	result bangToken: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForfunction_call_expression1: nodes [
-	| result |
-	result := SwiftFunctionCallExpressionNode new.
-	result addObject: (nodes at: 1) to: result expressions.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForfunction_declaration1: nodes [
-	| result |
-	result := SwiftFunctionDeclarationNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
-	result addTokens: ((nodes at: 1) at: 13) to: result classTokens.
-	result addTokens: ((nodes at: 1) at: 14) to: result mutatingTokens.
-	result addTokens: ((nodes at: 1) at: 15) to: result nonmutatingTokens.
-	result addTokens: ((nodes at: 1) at: 16) to: result overrideTokens.
-	result addTokens: ((nodes at: 1) at: 17) to: result staticTokens.
-	result addTokens: ((nodes at: 1) at: 18) to: result unownedTokens.
-	result
-		addTokens: ((nodes at: 1) at: 19)
-		to: result unownedLeftParensafeRightParenTokens.
-	result
-		addTokens: ((nodes at: 1) at: 20)
-		to: result unownedLeftParenunsafeRightParenTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result weakTokens.
-	result funcToken: ((nodes at: 1) at: 22).
-	result addToken: ((nodes at: 2) at: 1) to: result identifierTokens.
-	result addToken: ((nodes at: 2) at: 2) to: result operatorTokens.
-	result addTokens: ((nodes at: 3) at: 1) to: result lessThanTokens.
-	result addTokens: ((nodes at: 3) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 3) at: 3) to: result colonTokens.
-	result addTokens: ((nodes at: 3) at: 4) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 5) to: result commaTokens.
-	result addTokens: ((nodes at: 3) at: 6) to: result periodTokens.
-	result addTokens: ((nodes at: 3) at: 7) to: result protocolTokens.
-	result whereToken: ((nodes at: 3) at: 8).
-	result addTokens: ((nodes at: 3) at: 9) to: result equalEqualTokens.
-	result addTokens: ((nodes at: 4) at: 1) to: result leftParenTokens.
-	result addTokens: ((nodes at: 4) at: 2) to: result rightParenTokens.
-	result addTokens: ((nodes at: 4) at: 3) to: result commaTokens.
-	result
-		addTokens: ((nodes at: 4) at: 4)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 4) at: 5) to: result varTokens.
-	result addTokens: ((nodes at: 4) at: 6) to: result inoutTokens.
-	result addTokens: ((nodes at: 4) at: 7) to: result letTokens.
-	result addTokens: ((nodes at: 4) at: 8) to: result _Tokens.
-	result addTokens: ((nodes at: 4) at: 9) to: result identifierTokens.
-	result addTokens: ((nodes at: 4) at: 10) to: result colonTokens.
-	result addTokens: ((nodes at: 4) at: 11) to: result equalTokens.
-	result addObjects: ((nodes at: 4) at: 12) to: result expressions.
-	result addTokens: ((nodes at: 4) at: 13) to: result leftBracketTokens.
-	result
-		addTokens: ((nodes at: 4) at: 14)
-		to: result rightBracketTokens.
-	result
-		addTokens: ((nodes at: 4) at: 15)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 4) at: 16) to: result periodTokens.
-	result
-		addTokens: ((nodes at: 4) at: 17)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 4) at: 18) to: result bangTokens.
-	result addTokens: ((nodes at: 4) at: 19) to: result protocolTokens.
-	result addTokens: ((nodes at: 4) at: 20) to: result lessThanTokens.
-	result addTokens: ((nodes at: 4) at: 21) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 4) at: 22) to: result typeTokens.
-	result addTokens: ((nodes at: 4) at: 23) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 4) at: 24) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 4) at: 25)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 4) at: 26)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 4) at: 27)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 4) at: 28) to: result operatorTokens.
-	result block: (nodes at: 5).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForfunction_head1: nodes [
-	| result |
-	result := Array new: 22.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 13).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 14).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 15).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 16).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 17).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 18).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 19).
-	self addAll: ((nodes at: 2) at: 8) to: (result at: 20).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 21).
-	result at: 22 put: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForfunction_name1: nodes [
-	| result |
-	result := Array new: 2.
-	result at: 1 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForfunction_name2: nodes [
-	| result |
-	result := Array new: 2.
-	result at: 2 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForfunction_signature1: nodes [
-	| result |
-	result := nodes at: 1.
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 15).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 9).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 13).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 14).
-	self addAll: ((nodes at: 2) at: 8) to: (result at: 23).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 24).
-	self addAll: ((nodes at: 2) at: 10) to: (result at: 25).
-	self addAll: ((nodes at: 2) at: 11) to: (result at: 26).
-	self addAll: ((nodes at: 2) at: 12) to: (result at: 27).
-	self addAll: ((nodes at: 2) at: 13) to: (result at: 28).
-	self addAll: ((nodes at: 2) at: 14) to: (result at: 10).
-	self addAll: ((nodes at: 2) at: 15) to: (result at: 16).
-	self addAll: ((nodes at: 2) at: 16) to: (result at: 17).
-	self addAll: ((nodes at: 2) at: 17) to: (result at: 18).
-	self addAll: ((nodes at: 2) at: 18) to: (result at: 19).
-	self addAll: ((nodes at: 2) at: 19) to: (result at: 20).
-	self addAll: ((nodes at: 2) at: 20) to: (result at: 21).
-	self addAll: ((nodes at: 2) at: 21) to: (result at: 22).
-	self addAll: ((nodes at: 2) at: 22) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 23) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 24) to: (result at: 6).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForfunction_type1: nodes [
-	| result |
-	result := SwiftFunctionTypeNode new.
-	result addToken: (nodes at: 2) to: result minusGreaterThanTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForgeneric_argument_clause1: nodes [
-	| result |
-	result := Array new: 3.
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 1 put: (nodes at: 1).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
-	result at: 3 put: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForgeneric_argument_list1: nodes [
-	| result |
-	result := Array new: 1.
-	result at: 1 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForgeneric_argument_list2: nodes [
-	| result |
-	result := nodes at: 1.
-	self add: (nodes at: 2) to: (result at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForgeneric_parameter1: nodes [
-	| result |
-	result := Array new: 7.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForgeneric_parameter2: nodes [
-	| result |
-	result := Array new: 7.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 1).
-	result at: 2 put: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForgeneric_parameter_clause1: nodes [
-	| result |
-	result := Array new: 9.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 7).
-	result at: 8 put: ((nodes at: 3) at: 1).
-	self addAll: ((nodes at: 3) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 3) at: 3) to: (result at: 1).
-	self addAll: ((nodes at: 3) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 3) at: 5) to: (result at: 6).
-	self addAll: ((nodes at: 3) at: 6) to: (result at: 3).
-	self addAll: ((nodes at: 3) at: 7) to: (result at: 5).
-	self addAll: ((nodes at: 3) at: 8) to: (result at: 7).
-	self addAll: ((nodes at: 3) at: 9) to: (result at: 9).
-	self add: (nodes at: 4) to: (result at: 4).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForgeneric_parameter_list1: nodes [
-	| result |
-	result := Array new: 7.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self add: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self add: ((nodes at: 1) at: 7) to: (result at: 7).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForgeneric_parameter_list2: nodes [
-	| result |
-	result := nodes at: 1.
-	self add: (nodes at: 2) to: (result at: 5).
-	self addAll: ((nodes at: 3) at: 1) to: (result at: 1).
-	self add: ((nodes at: 3) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 3) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 3) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 3) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 3) at: 6) to: (result at: 6).
-	self add: ((nodes at: 3) at: 7) to: (result at: 7).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForgetter_keyword_clause1: nodes [
-	| result |
-	result := Array new: 13.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
-	result at: 13 put: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForgetter_setter_block1: nodes [
-	| result |
-	result := Array new: 15.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 7).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
-	result at: 13 put: ((nodes at: 2) at: 13).
-	self add: ((nodes at: 2) at: 14) to: (result at: 14).
-	self addAll: ((nodes at: 3) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 3) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 3) at: 3) to: (result at: 4).
-	self addAll: ((nodes at: 3) at: 4) to: (result at: 5).
-	self addAll: ((nodes at: 3) at: 5) to: (result at: 6).
-	self addAll: ((nodes at: 3) at: 6) to: (result at: 7).
-	self addAll: ((nodes at: 3) at: 7) to: (result at: 1).
-	self addAll: ((nodes at: 3) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 3) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 3) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 3) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 3) at: 12) to: (result at: 12).
-	result at: 15 put: ((nodes at: 3) at: 13).
-	self add: ((nodes at: 3) at: 14) to: (result at: 14).
-	self add: (nodes at: 4) to: (result at: 8).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForgetter_setter_block2: nodes [
-	| result |
-	result := Array new: 15.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 7).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
-	result at: 15 put: ((nodes at: 2) at: 13).
-	self add: ((nodes at: 2) at: 14) to: (result at: 14).
-	self addAll: ((nodes at: 3) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 3) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 3) at: 3) to: (result at: 4).
-	self addAll: ((nodes at: 3) at: 4) to: (result at: 5).
-	self addAll: ((nodes at: 3) at: 5) to: (result at: 6).
-	self addAll: ((nodes at: 3) at: 6) to: (result at: 7).
-	self addAll: ((nodes at: 3) at: 7) to: (result at: 1).
-	self addAll: ((nodes at: 3) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 3) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 3) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 3) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 3) at: 12) to: (result at: 12).
-	result at: 13 put: ((nodes at: 3) at: 13).
-	self add: ((nodes at: 3) at: 14) to: (result at: 14).
-	self add: (nodes at: 4) to: (result at: 8).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForgetter_setter_keyword_block1: nodes [
-	| result |
-	result := Array new: 14.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 7).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
-	result at: 13 put: ((nodes at: 2) at: 13).
-	self addAll: ((nodes at: 3) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 3) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 3) at: 3) to: (result at: 4).
-	self addAll: ((nodes at: 3) at: 4) to: (result at: 5).
-	self addAll: ((nodes at: 3) at: 5) to: (result at: 6).
-	self addAll: ((nodes at: 3) at: 6) to: (result at: 7).
-	self addAll: ((nodes at: 3) at: 7) to: (result at: 1).
-	self addAll: ((nodes at: 3) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 3) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 3) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 3) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 3) at: 12) to: (result at: 12).
-	result at: 14 put: ((nodes at: 3) at: 13).
-	self add: (nodes at: 4) to: (result at: 8).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForgetter_setter_keyword_block2: nodes [
-	| result |
-	result := Array new: 14.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 7).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
-	result at: 14 put: ((nodes at: 2) at: 13).
-	self addAll: ((nodes at: 3) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 3) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 3) at: 3) to: (result at: 4).
-	self addAll: ((nodes at: 3) at: 4) to: (result at: 5).
-	self addAll: ((nodes at: 3) at: 5) to: (result at: 6).
-	self addAll: ((nodes at: 3) at: 6) to: (result at: 7).
-	self addAll: ((nodes at: 3) at: 7) to: (result at: 1).
-	self addAll: ((nodes at: 3) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 3) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 3) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 3) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 3) at: 12) to: (result at: 12).
-	result at: 13 put: ((nodes at: 3) at: 13).
-	self add: (nodes at: 4) to: (result at: 8).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForif_statement1: nodes [
-	| result |
-	result := SwiftIfStatementNode new.
-	result ifToken: (nodes at: 1).
-	result expression: (nodes at: 2).
-	result then: (nodes at: 3).
-	result elseToken: ((nodes at: 4) at: 1).
-	result else: ((nodes at: 4) at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForimplicit_member_expression1: nodes [
-	| result |
-	result := SwiftImplicitMemberExpressionNode new.
-	result periodToken: (nodes at: 1).
-	result identifierToken: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForimplicitly_unwrapped_optional_type1: nodes [
-	| result |
-	result := SwiftImplicitlyUnwrappedOptionalTypeNode new.
-	result addToken: (nodes at: 2) to: result bangTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForimport_declaration1: nodes [
-	| result |
-	result := SwiftImportDeclarationNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
-	result importToken: (nodes at: 2).
-	result typealiasToken: ((nodes at: 3) at: 1).
-	result structToken: ((nodes at: 3) at: 2).
-	result classToken: ((nodes at: 3) at: 3).
-	result enumToken: ((nodes at: 3) at: 4).
-	result protocolToken: ((nodes at: 3) at: 5).
-	result varToken: ((nodes at: 3) at: 6).
-	result funcToken: ((nodes at: 3) at: 7).
-	result addTokens: ((nodes at: 4) at: 1) to: result identifierTokens.
-	result addTokens: ((nodes at: 4) at: 2) to: result operatorTokens.
-	result addTokens: ((nodes at: 4) at: 3) to: result periodTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForimport_kind1: nodes [
-	| result |
-	result := Array new: 7.
-	result at: 1 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForimport_kind2: nodes [
-	| result |
-	result := Array new: 7.
-	result at: 2 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForimport_kind3: nodes [
-	| result |
-	result := Array new: 7.
-	result at: 3 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForimport_kind4: nodes [
-	| result |
-	result := Array new: 7.
-	result at: 4 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForimport_kind5: nodes [
-	| result |
-	result := Array new: 7.
-	result at: 5 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForimport_kind6: nodes [
-	| result |
-	result := Array new: 7.
-	result at: 6 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForimport_kind7: nodes [
-	| result |
-	result := Array new: 7.
-	result at: 7 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForimport_path1: nodes [
-	| result |
-	result := Array new: 3.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	self add: ((nodes at: 1) at: 1) to: (result at: 1).
-	self add: ((nodes at: 1) at: 2) to: (result at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForimport_path2: nodes [
-	| result |
-	result := nodes at: 1.
-	self add: (nodes at: 2) to: (result at: 3).
-	self add: ((nodes at: 3) at: 1) to: (result at: 1).
-	self add: ((nodes at: 3) at: 2) to: (result at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForin_out_expression1: nodes [
-	| result |
-	result := SwiftInOutExpressionNode new.
-	result andToken: (nodes at: 1).
-	result identifierToken: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForinfix_operator_attributes1: nodes [
-	| result |
-	result := Array new: 6.
-	result at: 1 put: ((nodes at: 1) at: 1).
-	result at: 2 put: ((nodes at: 1) at: 2).
-	result at: 3 put: ((nodes at: 2) at: 1).
-	result at: 4 put: ((nodes at: 2) at: 2).
-	result at: 5 put: ((nodes at: 2) at: 3).
-	result at: 6 put: ((nodes at: 2) at: 4).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForinfix_operator_declaration1: nodes [
-	| result |
-	result := SwiftInfixOperatorDeclarationNode new.
-	result addToken: (nodes at: 1) to: result operatorTokens.
-	result infixToken: (nodes at: 2).
-	result addToken: (nodes at: 3) to: result operatorTokens.
-	result leftBraceToken: (nodes at: 4).
-	result precedenceToken: ((nodes at: 5) at: 1).
-	result integer_literalToken: ((nodes at: 5) at: 2).
-	result associativityToken: ((nodes at: 5) at: 3).
-	result leftToken: ((nodes at: 5) at: 4).
-	result rightToken: ((nodes at: 5) at: 5).
-	result noneToken: ((nodes at: 5) at: 6).
-	result rightBraceToken: (nodes at: 6).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForinitializer_declaration1: nodes [
-	| result |
-	result := SwiftInitializerDeclarationNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
-	result convenienceToken: ((nodes at: 1) at: 13).
-	result initToken: ((nodes at: 1) at: 14).
-	result addTokens: ((nodes at: 2) at: 1) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 2) at: 3) to: result colonTokens.
-	result addTokens: ((nodes at: 2) at: 4) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 5) to: result commaTokens.
-	result addTokens: ((nodes at: 2) at: 6) to: result periodTokens.
-	result addTokens: ((nodes at: 2) at: 7) to: result protocolTokens.
-	result whereToken: ((nodes at: 2) at: 8).
-	result addTokens: ((nodes at: 2) at: 9) to: result equalEqualTokens.
-	result addTokens: ((nodes at: 3) at: 1) to: result leftParenTokens.
-	result addTokens: ((nodes at: 3) at: 2) to: result rightParenTokens.
-	result addTokens: ((nodes at: 3) at: 3) to: result inoutTokens.
-	result addTokens: ((nodes at: 3) at: 4) to: result letTokens.
-	result addTokens: ((nodes at: 3) at: 5) to: result _Tokens.
-	result addTokens: ((nodes at: 3) at: 6) to: result identifierTokens.
-	result addTokens: ((nodes at: 3) at: 7) to: result colonTokens.
-	result addTokens: ((nodes at: 3) at: 8) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 3) at: 9) to: result rightBracketTokens.
-	result
-		addTokens: ((nodes at: 3) at: 10)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 11) to: result periodTokens.
-	result
-		addTokens: ((nodes at: 3) at: 12)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 3) at: 13) to: result bangTokens.
-	result addTokens: ((nodes at: 3) at: 14) to: result protocolTokens.
-	result addTokens: ((nodes at: 3) at: 15) to: result lessThanTokens.
-	result addTokens: ((nodes at: 3) at: 16) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 17) to: result typeTokens.
-	result addTokens: ((nodes at: 3) at: 18) to: result commaTokens.
-	result
-		addTokens: ((nodes at: 3) at: 19)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 3) at: 20) to: result equalTokens.
-	result addObjects: ((nodes at: 3) at: 21) to: result expressions.
-	result addTokens: ((nodes at: 3) at: 22) to: result varTokens.
-	result addTokens: ((nodes at: 3) at: 23) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 3) at: 24) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 3) at: 25)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 3) at: 26)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 3) at: 27)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 3) at: 28) to: result operatorTokens.
-	result block: (nodes at: 4).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForinitializer_expression1: nodes [
-	| result |
-	result := SwiftInitializerExpressionNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result lessThanTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result commaTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result greaterThanTokens.
-	result
-		addTokens: ((nodes at: 1) at: 5)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 6)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 7)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result leftBracketTokens.
-	result addObjects: ((nodes at: 1) at: 9) to: result expressions.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result rightBracketTokens.
-	result addObjects: ((nodes at: 1) at: 11) to: result keyExpressions.
-	result addTokens: ((nodes at: 1) at: 12) to: result colonTokens.
-	result addObjects: ((nodes at: 1) at: 13) to: result valueExpressions.
-	result __FILE__Token: ((nodes at: 1) at: 14).
-	result __LINE__Token: ((nodes at: 1) at: 15).
-	result __COLUMN__Token: ((nodes at: 1) at: 16).
-	result __FUNCTION__Token: ((nodes at: 1) at: 17).
-	result addTokens: ((nodes at: 1) at: 18) to: result selfTokens.
-	result addTokens: ((nodes at: 1) at: 19) to: result periodTokens.
-	result addTokens: ((nodes at: 1) at: 20) to: result initTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 22) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 23) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 24) to: result inoutTokens.
-	result addTokens: ((nodes at: 1) at: 25) to: result letTokens.
-	result addTokens: ((nodes at: 1) at: 26) to: result _Tokens.
-	result
-		addTokens: ((nodes at: 1) at: 27)
-		to: result minusGreaterThanTokens.
-	result
-		addTokens: ((nodes at: 1) at: 28)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 1) at: 29) to: result bangTokens.
-	result addTokens: ((nodes at: 1) at: 30) to: result protocolTokens.
-	result addTokens: ((nodes at: 1) at: 31) to: result typeTokens.
-	result
-		addTokens: ((nodes at: 1) at: 32)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 1) at: 33) to: result equalTokens.
-	result addTokens: ((nodes at: 1) at: 34) to: result varTokens.
-	result addTokens: ((nodes at: 1) at: 35) to: result rightBraceTokens.
-	result addTokens: ((nodes at: 1) at: 36) to: result operatorTokens.
-	result inToken: ((nodes at: 1) at: 37).
-	result weakToken: ((nodes at: 1) at: 38).
-	result unownedToken: ((nodes at: 1) at: 39).
-	result unownedLeftParensafeRightParenToken: ((nodes at: 1) at: 40).
-	result unownedLeftParenunsafeRightParenToken: ((nodes at: 1) at: 41).
-	result addNodes: ((nodes at: 1) at: 42) to: result statements.
-	result addTokens: ((nodes at: 1) at: 43) to: result dynamicTypeTokens.
-	result addToken: (nodes at: 2) to: result periodTokens.
-	result addToken: (nodes at: 3) to: result initTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForinitializer_head1: nodes [
-	| result |
-	result := Array new: 14.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
-	result at: 13 put: (nodes at: 2).
-	result at: 14 put: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForis_pattern1: nodes [
-	| result |
-	result := Array new: 25.
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 1 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForlabeled_statement1: nodes [
-	| result |
-	result := SwiftLabeledStatementNode new.
-	result name: ((nodes at: 1) at: 1).
-	result colonToken: ((nodes at: 1) at: 2).
-	result statement: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForliteral1: nodes [
-	| result |
-	result := Array new: 3.
-	result at: 1 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForliteral2: nodes [
-	| result |
-	result := Array new: 3.
-	result at: 2 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForliteral3: nodes [
-	| result |
-	result := Array new: 3.
-	result at: 3 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForliteral_expression1: nodes [
-	| result |
-	result := SwiftLiteralExpressionNode new.
-	result integer_literalToken: ((nodes at: 1) at: 1).
-	result floating_point_literalToken: ((nodes at: 1) at: 2).
-	result full_string_literalToken: ((nodes at: 1) at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForliteral_expression2: nodes [
-	| result |
-	result := SwiftLiteralExpressionNode new.
-	result leftBracketToken: ((nodes at: 1) at: 1).
-	result addObjects: ((nodes at: 1) at: 2) to: result expressions.
-	result addTokens: ((nodes at: 1) at: 3) to: result commaTokens.
-	result rightBracketToken: ((nodes at: 1) at: 4).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForliteral_expression3: nodes [
-	| result |
-	result := SwiftLiteralExpressionNode new.
-	result leftBracketToken: ((nodes at: 1) at: 1).
-	result addObjects: ((nodes at: 1) at: 2) to: result keyExpressions.
-	result addTokens: ((nodes at: 1) at: 3) to: result colonTokens.
-	result addObjects: ((nodes at: 1) at: 4) to: result valueExpressions.
-	result addTokens: ((nodes at: 1) at: 5) to: result commaTokens.
-	result rightBracketToken: ((nodes at: 1) at: 6).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForliteral_expression4: nodes [
-	| result |
-	result := SwiftLiteralExpressionNode new.
-	result __FILE__Token: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForliteral_expression5: nodes [
-	| result |
-	result := SwiftLiteralExpressionNode new.
-	result __LINE__Token: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForliteral_expression6: nodes [
-	| result |
-	result := SwiftLiteralExpressionNode new.
-	result __COLUMN__Token: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForliteral_expression7: nodes [
-	| result |
-	result := SwiftLiteralExpressionNode new.
-	result __FUNCTION__Token: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFormetatype_type1: nodes [
-	| result |
-	result := SwiftMetatypeTypeNode new.
-	result addToken: (nodes at: 2) to: result periodTokens.
-	result addToken: (nodes at: 3) to: result typeTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFormetatype_type2: nodes [
-	| result |
-	result := SwiftMetatypeTypeNode new.
-	result addToken: (nodes at: 2) to: result periodTokens.
-	result addToken: (nodes at: 3) to: result protocolTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForoptional_chaining_expression1: nodes [
-	| result |
-	result := SwiftOptionalChainingExpressionNode new.
-	result expression: (nodes at: 1).
-	result questionMarkToken: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForoptional_type1: nodes [
-	| result |
-	result := SwiftOptionalTypeNode new.
-	result addToken: (nodes at: 2) to: result questionMarkTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForparameter1: nodes [
-	| result |
-	result := Array new: 28.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 1).
-	result at: 2 put: (nodes at: 2).
-	self add: (nodes at: 3) to: (result at: 3).
-	self add: ((nodes at: 4) at: 1) to: (result at: 4).
-	self add: ((nodes at: 4) at: 2) to: (result at: 3).
-	self add: ((nodes at: 5) at: 1) to: (result at: 4).
-	self add: ((nodes at: 5) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 6) at: 1) to: (result at: 5).
-	self addAll: ((nodes at: 6) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 6) at: 3) to: (result at: 4).
-	self addAll: ((nodes at: 6) at: 4) to: (result at: 6).
-	self addAll: ((nodes at: 6) at: 5) to: (result at: 7).
-	self addAll: ((nodes at: 6) at: 6) to: (result at: 8).
-	self addAll: ((nodes at: 6) at: 7) to: (result at: 9).
-	self addAll: ((nodes at: 6) at: 8) to: (result at: 10).
-	self addAll: ((nodes at: 6) at: 9) to: (result at: 11).
-	self addAll: ((nodes at: 6) at: 10) to: (result at: 12).
-	self addAll: ((nodes at: 6) at: 11) to: (result at: 13).
-	self addAll: ((nodes at: 6) at: 12) to: (result at: 14).
-	self addAll: ((nodes at: 6) at: 13) to: (result at: 15).
-	self addAll: ((nodes at: 6) at: 14) to: (result at: 16).
-	self addAll: ((nodes at: 6) at: 15) to: (result at: 17).
-	self addAll: ((nodes at: 6) at: 16) to: (result at: 18).
-	self addAll: ((nodes at: 6) at: 17) to: (result at: 19).
-	self addAll: ((nodes at: 6) at: 18) to: (result at: 20).
-	self addAll: ((nodes at: 6) at: 19) to: (result at: 21).
-	self addAll: ((nodes at: 6) at: 20) to: (result at: 22).
-	self addAll: ((nodes at: 6) at: 21) to: (result at: 23).
-	self addAll: ((nodes at: 6) at: 22) to: (result at: 24).
-	self addAll: ((nodes at: 6) at: 23) to: (result at: 25).
-	self addAll: ((nodes at: 6) at: 24) to: (result at: 1).
-	result at: 26 put: ((nodes at: 7) at: 1).
-	result at: 27 put: ((nodes at: 7) at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForparameter2: nodes [
-	| result |
-	result := Array new: 28.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 1).
-	result at: 28 put: (nodes at: 2).
-	self add: (nodes at: 3) to: (result at: 3).
-	self add: ((nodes at: 4) at: 1) to: (result at: 4).
-	self add: ((nodes at: 4) at: 2) to: (result at: 3).
-	self add: ((nodes at: 5) at: 1) to: (result at: 4).
-	self add: ((nodes at: 5) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 6) at: 1) to: (result at: 5).
-	self addAll: ((nodes at: 6) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 6) at: 3) to: (result at: 4).
-	self addAll: ((nodes at: 6) at: 4) to: (result at: 6).
-	self addAll: ((nodes at: 6) at: 5) to: (result at: 7).
-	self addAll: ((nodes at: 6) at: 6) to: (result at: 8).
-	self addAll: ((nodes at: 6) at: 7) to: (result at: 9).
-	self addAll: ((nodes at: 6) at: 8) to: (result at: 10).
-	self addAll: ((nodes at: 6) at: 9) to: (result at: 11).
-	self addAll: ((nodes at: 6) at: 10) to: (result at: 12).
-	self addAll: ((nodes at: 6) at: 11) to: (result at: 13).
-	self addAll: ((nodes at: 6) at: 12) to: (result at: 14).
-	self addAll: ((nodes at: 6) at: 13) to: (result at: 15).
-	self addAll: ((nodes at: 6) at: 14) to: (result at: 16).
-	self addAll: ((nodes at: 6) at: 15) to: (result at: 17).
-	self addAll: ((nodes at: 6) at: 16) to: (result at: 18).
-	self addAll: ((nodes at: 6) at: 17) to: (result at: 19).
-	self addAll: ((nodes at: 6) at: 18) to: (result at: 20).
-	self addAll: ((nodes at: 6) at: 19) to: (result at: 21).
-	self addAll: ((nodes at: 6) at: 20) to: (result at: 22).
-	self addAll: ((nodes at: 6) at: 21) to: (result at: 23).
-	self addAll: ((nodes at: 6) at: 22) to: (result at: 24).
-	self addAll: ((nodes at: 6) at: 23) to: (result at: 25).
-	self addAll: ((nodes at: 6) at: 24) to: (result at: 1).
-	result at: 26 put: ((nodes at: 7) at: 1).
-	result at: 27 put: ((nodes at: 7) at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForparameter3: nodes [
-	| result |
-	result := Array new: 28.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 12).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 13).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 14).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 15).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForparameter_clause1: nodes [
-	| result |
-	result := Array new: 28.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 1).
-	self add: (nodes at: 2) to: (result at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForparameter_clause2: nodes [
-	| result |
-	result := Array new: 28.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 7).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
-	self addAll: ((nodes at: 2) at: 13) to: (result at: 13).
-	self addAll: ((nodes at: 2) at: 14) to: (result at: 14).
-	self addAll: ((nodes at: 2) at: 15) to: (result at: 15).
-	self addAll: ((nodes at: 2) at: 16) to: (result at: 16).
-	self addAll: ((nodes at: 2) at: 17) to: (result at: 17).
-	self addAll: ((nodes at: 2) at: 18) to: (result at: 18).
-	self addAll: ((nodes at: 2) at: 19) to: (result at: 19).
-	self addAll: ((nodes at: 2) at: 20) to: (result at: 20).
-	self addAll: ((nodes at: 2) at: 21) to: (result at: 21).
-	self addAll: ((nodes at: 2) at: 22) to: (result at: 22).
-	self addAll: ((nodes at: 2) at: 23) to: (result at: 23).
-	self addAll: ((nodes at: 2) at: 24) to: (result at: 24).
-	self addAll: ((nodes at: 2) at: 25) to: (result at: 25).
-	self addAll: ((nodes at: 2) at: 26) to: (result at: 26).
-	self addAll: ((nodes at: 2) at: 27) to: (result at: 27).
-	self addAll: ((nodes at: 2) at: 28) to: (result at: 28).
-	self add: (nodes at: 3) to: (result at: 19).
-	self add: (nodes at: 4) to: (result at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForparameter_clauses1: nodes [
-	| result |
-	result := Array new: 28.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForparameter_clauses2: nodes [
-	| result |
-	result := nodes at: 1.
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 7).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 9).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 10).
-	self addAll: ((nodes at: 2) at: 8) to: (result at: 13).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 14).
-	self addAll: ((nodes at: 2) at: 10) to: (result at: 15).
-	self addAll: ((nodes at: 2) at: 11) to: (result at: 16).
-	self addAll: ((nodes at: 2) at: 12) to: (result at: 17).
-	self addAll: ((nodes at: 2) at: 13) to: (result at: 18).
-	self addAll: ((nodes at: 2) at: 14) to: (result at: 19).
-	self addAll: ((nodes at: 2) at: 15) to: (result at: 20).
-	self addAll: ((nodes at: 2) at: 16) to: (result at: 21).
-	self addAll: ((nodes at: 2) at: 17) to: (result at: 22).
-	self addAll: ((nodes at: 2) at: 18) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 19) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 20) to: (result at: 11).
-	self addAll: ((nodes at: 2) at: 21) to: (result at: 12).
-	self addAll: ((nodes at: 2) at: 22) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 23) to: (result at: 23).
-	self addAll: ((nodes at: 2) at: 24) to: (result at: 24).
-	self addAll: ((nodes at: 2) at: 25) to: (result at: 25).
-	self addAll: ((nodes at: 2) at: 26) to: (result at: 26).
-	self addAll: ((nodes at: 2) at: 27) to: (result at: 27).
-	self addAll: ((nodes at: 2) at: 28) to: (result at: 28).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForparameter_list1: nodes [
-	| result |
-	result := Array new: 28.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self add: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 23).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 24).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 25).
-	self addAll: ((nodes at: 1) at: 13) to: (result at: 26).
-	self addAll: ((nodes at: 1) at: 14) to: (result at: 27).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 28).
-	self addAll: ((nodes at: 1) at: 16) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 17) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 18) to: (result at: 12).
-	self addAll: ((nodes at: 1) at: 19) to: (result at: 13).
-	self addAll: ((nodes at: 1) at: 20) to: (result at: 14).
-	self addAll: ((nodes at: 1) at: 21) to: (result at: 15).
-	self addAll: ((nodes at: 1) at: 22) to: (result at: 16).
-	self addAll: ((nodes at: 1) at: 23) to: (result at: 17).
-	self addAll: ((nodes at: 1) at: 24) to: (result at: 18).
-	self addAll: ((nodes at: 1) at: 25) to: (result at: 19).
-	self add: ((nodes at: 1) at: 26) to: (result at: 20).
-	self add: ((nodes at: 1) at: 27) to: (result at: 21).
-	self add: ((nodes at: 1) at: 28) to: (result at: 22).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForparameter_list2: nodes [
-	| result |
-	result := nodes at: 1.
-	self add: (nodes at: 2) to: (result at: 18).
-	self addAll: ((nodes at: 3) at: 1) to: (result at: 1).
-	self add: ((nodes at: 3) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 3) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 3) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 3) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 3) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 3) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 3) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 3) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 3) at: 10) to: (result at: 23).
-	self addAll: ((nodes at: 3) at: 11) to: (result at: 24).
-	self addAll: ((nodes at: 3) at: 12) to: (result at: 25).
-	self addAll: ((nodes at: 3) at: 13) to: (result at: 26).
-	self addAll: ((nodes at: 3) at: 14) to: (result at: 27).
-	self addAll: ((nodes at: 3) at: 15) to: (result at: 28).
-	self addAll: ((nodes at: 3) at: 16) to: (result at: 10).
-	self addAll: ((nodes at: 3) at: 17) to: (result at: 11).
-	self addAll: ((nodes at: 3) at: 18) to: (result at: 12).
-	self addAll: ((nodes at: 3) at: 19) to: (result at: 13).
-	self addAll: ((nodes at: 3) at: 20) to: (result at: 14).
-	self addAll: ((nodes at: 3) at: 21) to: (result at: 15).
-	self addAll: ((nodes at: 3) at: 22) to: (result at: 16).
-	self addAll: ((nodes at: 3) at: 23) to: (result at: 17).
-	self addAll: ((nodes at: 3) at: 24) to: (result at: 18).
-	self addAll: ((nodes at: 3) at: 25) to: (result at: 19).
-	self add: ((nodes at: 3) at: 26) to: (result at: 20).
-	self add: ((nodes at: 3) at: 27) to: (result at: 21).
-	self add: ((nodes at: 3) at: 28) to: (result at: 22).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForparenthesized_expression1: nodes [
-	| result |
-	result := SwiftParenthesizedExpressionNode new.
-	result leftParenToken: (nodes at: 1).
-	result addObjects: ((nodes at: 2) at: 1) to: result expressions.
-	result addTokens: ((nodes at: 2) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 2) at: 3) to: result colonTokens.
-	result addTokens: ((nodes at: 2) at: 4) to: result commaTokens.
-	result rightParenToken: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForpattern1: nodes [
-	| result |
-	result := Array new: 29.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
-	self addAll: ((nodes at: 2) at: 13) to: (result at: 13).
-	self addAll: ((nodes at: 2) at: 14) to: (result at: 14).
-	self addAll: ((nodes at: 2) at: 15) to: (result at: 15).
-	self addAll: ((nodes at: 2) at: 16) to: (result at: 16).
-	self addAll: ((nodes at: 2) at: 17) to: (result at: 17).
-	self addAll: ((nodes at: 2) at: 18) to: (result at: 18).
-	self addAll: ((nodes at: 2) at: 19) to: (result at: 19).
-	self addAll: ((nodes at: 2) at: 20) to: (result at: 20).
-	self addAll: ((nodes at: 2) at: 21) to: (result at: 21).
-	self addAll: ((nodes at: 2) at: 22) to: (result at: 22).
-	self addAll: ((nodes at: 2) at: 23) to: (result at: 23).
-	self addAll: ((nodes at: 2) at: 24) to: (result at: 24).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForpattern2: nodes [
-	| result |
-	result := Array new: 29.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
-	self addAll: ((nodes at: 2) at: 13) to: (result at: 13).
-	self addAll: ((nodes at: 2) at: 14) to: (result at: 14).
-	self addAll: ((nodes at: 2) at: 15) to: (result at: 15).
-	self addAll: ((nodes at: 2) at: 16) to: (result at: 16).
-	self addAll: ((nodes at: 2) at: 17) to: (result at: 17).
-	self addAll: ((nodes at: 2) at: 18) to: (result at: 18).
-	self addAll: ((nodes at: 2) at: 19) to: (result at: 19).
-	self addAll: ((nodes at: 2) at: 20) to: (result at: 20).
-	self addAll: ((nodes at: 2) at: 21) to: (result at: 21).
-	self addAll: ((nodes at: 2) at: 22) to: (result at: 22).
-	self addAll: ((nodes at: 2) at: 23) to: (result at: 23).
-	self addAll: ((nodes at: 2) at: 24) to: (result at: 24).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForpattern3: nodes [
-	| result |
-	result := Array new: 29.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 25).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 13) to: (result at: 12).
-	self addAll: ((nodes at: 1) at: 14) to: (result at: 13).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 14).
-	self addAll: ((nodes at: 1) at: 16) to: (result at: 15).
-	self addAll: ((nodes at: 1) at: 17) to: (result at: 16).
-	self addAll: ((nodes at: 1) at: 18) to: (result at: 17).
-	self addAll: ((nodes at: 1) at: 19) to: (result at: 18).
-	self addAll: ((nodes at: 1) at: 20) to: (result at: 19).
-	self addAll: ((nodes at: 1) at: 21) to: (result at: 20).
-	self addAll: ((nodes at: 1) at: 22) to: (result at: 21).
-	self addAll: ((nodes at: 1) at: 23) to: (result at: 22).
-	self addAll: ((nodes at: 1) at: 24) to: (result at: 23).
-	self addAll: ((nodes at: 1) at: 25) to: (result at: 24).
-	self addAll: ((nodes at: 1) at: 26) to: (result at: 26).
-	self addAll: ((nodes at: 1) at: 27) to: (result at: 27).
-	self addAll: ((nodes at: 1) at: 28) to: (result at: 28).
-	self addAll: ((nodes at: 1) at: 29) to: (result at: 29).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForpattern4: nodes [
-	| result |
-	result := Array new: 29.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 14).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 15).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 16).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 17).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 18).
-	self addAll: ((nodes at: 1) at: 13) to: (result at: 19).
-	self addAll: ((nodes at: 1) at: 14) to: (result at: 20).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 21).
-	self addAll: ((nodes at: 1) at: 16) to: (result at: 22).
-	self addAll: ((nodes at: 1) at: 17) to: (result at: 24).
-	self addAll: ((nodes at: 1) at: 18) to: (result at: 23).
-	self addAll: ((nodes at: 1) at: 19) to: (result at: 25).
-	self addAll: ((nodes at: 1) at: 20) to: (result at: 26).
-	self addAll: ((nodes at: 1) at: 21) to: (result at: 27).
-	self addAll: ((nodes at: 1) at: 22) to: (result at: 28).
-	self addAll: ((nodes at: 1) at: 23) to: (result at: 29).
-	self addAll: ((nodes at: 1) at: 24) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 25) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 26) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 27) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 28) to: (result at: 12).
-	self addAll: ((nodes at: 1) at: 29) to: (result at: 13).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
-	self addAll: ((nodes at: 2) at: 13) to: (result at: 13).
-	self addAll: ((nodes at: 2) at: 14) to: (result at: 14).
-	self addAll: ((nodes at: 2) at: 15) to: (result at: 15).
-	self addAll: ((nodes at: 2) at: 16) to: (result at: 16).
-	self addAll: ((nodes at: 2) at: 17) to: (result at: 17).
-	self addAll: ((nodes at: 2) at: 18) to: (result at: 18).
-	self addAll: ((nodes at: 2) at: 19) to: (result at: 19).
-	self addAll: ((nodes at: 2) at: 20) to: (result at: 20).
-	self addAll: ((nodes at: 2) at: 21) to: (result at: 21).
-	self addAll: ((nodes at: 2) at: 22) to: (result at: 22).
-	self addAll: ((nodes at: 2) at: 23) to: (result at: 23).
-	self addAll: ((nodes at: 2) at: 24) to: (result at: 24).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForpattern5: nodes [
-	| result |
-	result := Array new: 29.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 19).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 20).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 22).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 15).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 14).
-	self addAll: ((nodes at: 1) at: 13) to: (result at: 16).
-	self addAll: ((nodes at: 1) at: 14) to: (result at: 17).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 18).
-	self addAll: ((nodes at: 1) at: 16) to: (result at: 21).
-	self addAll: ((nodes at: 1) at: 17) to: (result at: 24).
-	self addAll: ((nodes at: 1) at: 18) to: (result at: 23).
-	self addAll: ((nodes at: 1) at: 19) to: (result at: 25).
-	self addAll: ((nodes at: 1) at: 20) to: (result at: 26).
-	self addAll: ((nodes at: 1) at: 21) to: (result at: 27).
-	self addAll: ((nodes at: 1) at: 22) to: (result at: 28).
-	self addAll: ((nodes at: 1) at: 23) to: (result at: 29).
-	self addAll: ((nodes at: 1) at: 24) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 25) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 26) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 27) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 28) to: (result at: 12).
-	self addAll: ((nodes at: 1) at: 29) to: (result at: 13).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForpattern6: nodes [
-	| result |
-	result := Array new: 29.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 28).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 14).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 15).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 16).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 17).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 18).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 19).
-	self addAll: ((nodes at: 1) at: 13) to: (result at: 20).
-	self addAll: ((nodes at: 1) at: 14) to: (result at: 21).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 16) to: (result at: 22).
-	self addAll: ((nodes at: 1) at: 17) to: (result at: 23).
-	self addAll: ((nodes at: 1) at: 18) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 19) to: (result at: 24).
-	self addAll: ((nodes at: 1) at: 20) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 21) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 22) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 23) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 24) to: (result at: 12).
-	self addAll: ((nodes at: 1) at: 25) to: (result at: 13).
-	self addAll: ((nodes at: 1) at: 26) to: (result at: 25).
-	self addAll: ((nodes at: 1) at: 27) to: (result at: 26).
-	self addAll: ((nodes at: 1) at: 28) to: (result at: 27).
-	self addAll: ((nodes at: 1) at: 29) to: (result at: 29).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForpattern7: nodes [
-	| result |
-	result := Array new: 29.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 27).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForpattern_initializer1: nodes [
-	| result |
-	result := SwiftPatternInitializerNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result colonTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 9) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 12)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 13) to: result operatorTokens.
-	result
-		addTokens: ((nodes at: 1) at: 14)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 1) at: 15) to: result periodTokens.
-	result
-		addTokens: ((nodes at: 1) at: 16)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 1) at: 17) to: result bangTokens.
-	result addTokens: ((nodes at: 1) at: 18) to: result protocolTokens.
-	result addTokens: ((nodes at: 1) at: 19) to: result lessThanTokens.
-	result addTokens: ((nodes at: 1) at: 20) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result typeTokens.
-	result addTokens: ((nodes at: 1) at: 22) to: result commaTokens.
-	result
-		addTokens: ((nodes at: 1) at: 23)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 1) at: 24) to: result inoutTokens.
-	result addTokens: ((nodes at: 1) at: 25) to: result varTokens.
-	result addTokens: ((nodes at: 1) at: 26) to: result letTokens.
-	result addObjects: ((nodes at: 1) at: 27) to: result expressions.
-	result addTokens: ((nodes at: 1) at: 28) to: result isTokens.
-	result addTokens: ((nodes at: 1) at: 29) to: result asTokens.
-	result equalToken: ((nodes at: 2) at: 1).
-	result addObject: ((nodes at: 2) at: 2) to: result expressions.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForpostfix_expression1: nodes [
-	| result |
-	result := Array new: 43.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	result at: 30 put: (OrderedCollection new: 2).
-	result at: 31 put: (OrderedCollection new: 2).
-	result at: 32 put: (OrderedCollection new: 2).
-	result at: 33 put: (OrderedCollection new: 2).
-	result at: 34 put: (OrderedCollection new: 2).
-	result at: 35 put: (OrderedCollection new: 2).
-	result at: 36 put: (OrderedCollection new: 2).
-	result at: 42 put: (OrderedCollection new: 2).
-	result at: 43 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForpostfix_expression2: nodes [
-	| result |
-	result := nodes at: 1.
-	self add: (nodes at: 2) to: (result at: 36).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForpostfix_operator_declaration1: nodes [
-	| result |
-	result := SwiftPostfixOperatorDeclarationNode new.
-	result addToken: (nodes at: 1) to: result operatorTokens.
-	result postfixToken: (nodes at: 2).
-	result addToken: (nodes at: 3) to: result operatorTokens.
-	result leftBraceToken: (nodes at: 4).
-	result rightBraceToken: (nodes at: 5).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForpostfix_self_expression1: nodes [
-	| result |
-	result := SwiftPostfixSelfExpressionNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result lessThanTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result commaTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result greaterThanTokens.
-	result
-		addTokens: ((nodes at: 1) at: 5)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 6)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 7)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result leftBracketTokens.
-	result addObjects: ((nodes at: 1) at: 9) to: result expressions.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result rightBracketTokens.
-	result addObjects: ((nodes at: 1) at: 11) to: result keyExpressions.
-	result addTokens: ((nodes at: 1) at: 12) to: result colonTokens.
-	result addObjects: ((nodes at: 1) at: 13) to: result valueExpressions.
-	result __FILE__Token: ((nodes at: 1) at: 14).
-	result __LINE__Token: ((nodes at: 1) at: 15).
-	result __COLUMN__Token: ((nodes at: 1) at: 16).
-	result __FUNCTION__Token: ((nodes at: 1) at: 17).
-	result addTokens: ((nodes at: 1) at: 18) to: result selfTokens.
-	result addTokens: ((nodes at: 1) at: 19) to: result periodTokens.
-	result addTokens: ((nodes at: 1) at: 20) to: result initTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 22) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 23) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 24) to: result inoutTokens.
-	result addTokens: ((nodes at: 1) at: 25) to: result letTokens.
-	result addTokens: ((nodes at: 1) at: 26) to: result _Tokens.
-	result
-		addTokens: ((nodes at: 1) at: 27)
-		to: result minusGreaterThanTokens.
-	result
-		addTokens: ((nodes at: 1) at: 28)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 1) at: 29) to: result bangTokens.
-	result addTokens: ((nodes at: 1) at: 30) to: result protocolTokens.
-	result addTokens: ((nodes at: 1) at: 31) to: result typeTokens.
-	result
-		addTokens: ((nodes at: 1) at: 32)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 1) at: 33) to: result equalTokens.
-	result addTokens: ((nodes at: 1) at: 34) to: result varTokens.
-	result addTokens: ((nodes at: 1) at: 35) to: result rightBraceTokens.
-	result addTokens: ((nodes at: 1) at: 36) to: result operatorTokens.
-	result inToken: ((nodes at: 1) at: 37).
-	result weakToken: ((nodes at: 1) at: 38).
-	result unownedToken: ((nodes at: 1) at: 39).
-	result unownedLeftParensafeRightParenToken: ((nodes at: 1) at: 40).
-	result unownedLeftParenunsafeRightParenToken: ((nodes at: 1) at: 41).
-	result addNodes: ((nodes at: 1) at: 42) to: result statements.
-	result addTokens: ((nodes at: 1) at: 43) to: result dynamicTypeTokens.
-	result addToken: (nodes at: 2) to: result periodTokens.
-	result addToken: (nodes at: 3) to: result selfTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForprefix_expression2: nodes [
-	| result |
-	result := SwiftPrefixExpressionNode new.
-	result addToken: (nodes at: 1) to: result operatorTokens.
-	result addTokens: ((nodes at: 2) at: 1) to: result identifierTokens.
-	result addTokens: ((nodes at: 2) at: 2) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 3) to: result commaTokens.
-	result addTokens: ((nodes at: 2) at: 4) to: result greaterThanTokens.
-	result
-		addTokens: ((nodes at: 2) at: 5)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 2) at: 6)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 2) at: 7)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 2) at: 8) to: result leftBracketTokens.
-	result addObjects: ((nodes at: 2) at: 9) to: result expressions.
-	result
-		addTokens: ((nodes at: 2) at: 10)
-		to: result rightBracketTokens.
-	result addObjects: ((nodes at: 2) at: 11) to: result keyExpressions.
-	result addTokens: ((nodes at: 2) at: 12) to: result colonTokens.
-	result addObjects: ((nodes at: 2) at: 13) to: result valueExpressions.
-	result __FILE__Token: ((nodes at: 2) at: 14).
-	result __LINE__Token: ((nodes at: 2) at: 15).
-	result __COLUMN__Token: ((nodes at: 2) at: 16).
-	result __FUNCTION__Token: ((nodes at: 2) at: 17).
-	result addTokens: ((nodes at: 2) at: 18) to: result selfTokens.
-	result addTokens: ((nodes at: 2) at: 19) to: result periodTokens.
-	result addTokens: ((nodes at: 2) at: 20) to: result initTokens.
-	result addTokens: ((nodes at: 2) at: 21) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 2) at: 22) to: result leftParenTokens.
-	result addTokens: ((nodes at: 2) at: 23) to: result rightParenTokens.
-	result addTokens: ((nodes at: 2) at: 24) to: result inoutTokens.
-	result addTokens: ((nodes at: 2) at: 25) to: result letTokens.
-	result addTokens: ((nodes at: 2) at: 26) to: result _Tokens.
-	result
-		addTokens: ((nodes at: 2) at: 27)
-		to: result minusGreaterThanTokens.
-	result
-		addTokens: ((nodes at: 2) at: 28)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 2) at: 29) to: result bangTokens.
-	result addTokens: ((nodes at: 2) at: 30) to: result protocolTokens.
-	result addTokens: ((nodes at: 2) at: 31) to: result typeTokens.
-	result
-		addTokens: ((nodes at: 2) at: 32)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 2) at: 33) to: result equalTokens.
-	result addTokens: ((nodes at: 2) at: 34) to: result varTokens.
-	result addTokens: ((nodes at: 2) at: 35) to: result rightBraceTokens.
-	result addTokens: ((nodes at: 2) at: 36) to: result operatorTokens.
-	result inToken: ((nodes at: 2) at: 37).
-	result weakToken: ((nodes at: 2) at: 38).
-	result unownedToken: ((nodes at: 2) at: 39).
-	result unownedLeftParensafeRightParenToken: ((nodes at: 2) at: 40).
-	result unownedLeftParenunsafeRightParenToken: ((nodes at: 2) at: 41).
-	result addNodes: ((nodes at: 2) at: 42) to: result statements.
-	result addTokens: ((nodes at: 2) at: 43) to: result dynamicTypeTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForprefix_operator_declaration1: nodes [
-	| result |
-	result := SwiftPrefixOperatorDeclarationNode new.
-	result addToken: (nodes at: 1) to: result operatorTokens.
-	result prefixToken: (nodes at: 2).
-	result addToken: (nodes at: 3) to: result operatorTokens.
-	result leftBraceToken: (nodes at: 4).
-	result rightBraceToken: (nodes at: 5).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForprimary_expression1: nodes [
-	| result |
-	result := SwiftPrimaryExpressionNode new.
-	result identifierToken: (nodes at: 1).
-	result lessThanToken: ((nodes at: 2) at: 1).
-	result addTokens: ((nodes at: 2) at: 2) to: result commaTokens.
-	result greaterThanToken: ((nodes at: 2) at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForprotocol_association_type_declaration1: nodes [
-	| result |
-	result := SwiftProtocolAssociationTypeDeclarationNode new.
-	result typealiasToken: ((nodes at: 1) at: 1).
-	result addToken: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addToken: ((nodes at: 2) at: 1) to: result colonTokens.
-	result addTokens: ((nodes at: 2) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 2) at: 3) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 4) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 5) to: result periodTokens.
-	result addTokens: ((nodes at: 2) at: 6) to: result commaTokens.
-	result equalToken: ((nodes at: 3) at: 1).
-	result addTokens: ((nodes at: 3) at: 2) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 3) at: 3) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 3) at: 4) to: result colonTokens.
-	result
-		addTokens: ((nodes at: 3) at: 5)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 6) to: result periodTokens.
-	result addTokens: ((nodes at: 3) at: 7) to: result leftParenTokens.
-	result addTokens: ((nodes at: 3) at: 8) to: result rightParenTokens.
-	result addTokens: ((nodes at: 3) at: 9) to: result questionMarkTokens.
-	result addTokens: ((nodes at: 3) at: 10) to: result bangTokens.
-	result addTokens: ((nodes at: 3) at: 11) to: result protocolTokens.
-	result addTokens: ((nodes at: 3) at: 12) to: result lessThanTokens.
-	result addTokens: ((nodes at: 3) at: 13) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 14) to: result typeTokens.
-	result addTokens: ((nodes at: 3) at: 15) to: result identifierTokens.
-	result addTokens: ((nodes at: 3) at: 16) to: result commaTokens.
-	result
-		addTokens: ((nodes at: 3) at: 17)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 3) at: 18) to: result _Tokens.
-	result addTokens: ((nodes at: 3) at: 19) to: result inoutTokens.
-	result addTokens: ((nodes at: 3) at: 20) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 3) at: 21) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 3) at: 22)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 3) at: 23)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 3) at: 24)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 3) at: 25) to: result operatorTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForprotocol_composition_type1: nodes [
-	| result |
-	result := SwiftProtocolCompositionTypeNode new.
-	result protocolToken: (nodes at: 1).
-	result addToken: (nodes at: 2) to: result lessThanTokens.
-	result addTokens: ((nodes at: 3) at: 1) to: result periodTokens.
-	result addTokens: ((nodes at: 3) at: 2) to: result commaTokens.
-	result addTokens: ((nodes at: 3) at: 3) to: result identifierTokens.
-	result addTokens: ((nodes at: 3) at: 4) to: result lessThanTokens.
-	result addTokens: ((nodes at: 3) at: 5) to: result greaterThanTokens.
-	result addToken: (nodes at: 4) to: result greaterThanTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForprotocol_declaration1: nodes [
-	| result |
-	result := SwiftProtocolDeclarationNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
-	result protocolToken: (nodes at: 2).
-	result addToken: (nodes at: 3) to: result identifierTokens.
-	result colonToken: ((nodes at: 4) at: 1).
-	result addTokens: ((nodes at: 4) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 4) at: 3) to: result lessThanTokens.
-	result addTokens: ((nodes at: 4) at: 4) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 4) at: 5) to: result periodTokens.
-	result addTokens: ((nodes at: 4) at: 6) to: result commaTokens.
-	result addToken: ((nodes at: 5) at: 1) to: result leftBraceTokens.
-	result addNodes: ((nodes at: 5) at: 2) to: result declarations.
-	result addToken: ((nodes at: 5) at: 3) to: result rightBraceTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForprotocol_initializer_declaration1: nodes [
-	| result |
-	result := SwiftProtocolInitializerDeclarationNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
-	result convenienceToken: ((nodes at: 1) at: 13).
-	result initToken: ((nodes at: 1) at: 14).
-	result addTokens: ((nodes at: 2) at: 1) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 2) at: 3) to: result colonTokens.
-	result addTokens: ((nodes at: 2) at: 4) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 5) to: result commaTokens.
-	result addTokens: ((nodes at: 2) at: 6) to: result periodTokens.
-	result addTokens: ((nodes at: 2) at: 7) to: result protocolTokens.
-	result whereToken: ((nodes at: 2) at: 8).
-	result addTokens: ((nodes at: 2) at: 9) to: result equalEqualTokens.
-	result addTokens: ((nodes at: 3) at: 1) to: result leftParenTokens.
-	result addTokens: ((nodes at: 3) at: 2) to: result rightParenTokens.
-	result addTokens: ((nodes at: 3) at: 3) to: result inoutTokens.
-	result addTokens: ((nodes at: 3) at: 4) to: result letTokens.
-	result addTokens: ((nodes at: 3) at: 5) to: result _Tokens.
-	result addTokens: ((nodes at: 3) at: 6) to: result identifierTokens.
-	result addTokens: ((nodes at: 3) at: 7) to: result colonTokens.
-	result addTokens: ((nodes at: 3) at: 8) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 3) at: 9) to: result rightBracketTokens.
-	result
-		addTokens: ((nodes at: 3) at: 10)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 11) to: result periodTokens.
-	result
-		addTokens: ((nodes at: 3) at: 12)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 3) at: 13) to: result bangTokens.
-	result addTokens: ((nodes at: 3) at: 14) to: result protocolTokens.
-	result addTokens: ((nodes at: 3) at: 15) to: result lessThanTokens.
-	result addTokens: ((nodes at: 3) at: 16) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 17) to: result typeTokens.
-	result addTokens: ((nodes at: 3) at: 18) to: result commaTokens.
-	result
-		addTokens: ((nodes at: 3) at: 19)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 3) at: 20) to: result equalTokens.
-	result addObjects: ((nodes at: 3) at: 21) to: result expressions.
-	result addTokens: ((nodes at: 3) at: 22) to: result varTokens.
-	result addTokens: ((nodes at: 3) at: 23) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 3) at: 24) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 3) at: 25)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 3) at: 26)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 3) at: 27)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 3) at: 28) to: result operatorTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForprotocol_method_declaration1: nodes [
-	| result |
-	result := SwiftProtocolMethodDeclarationNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
-	result addTokens: ((nodes at: 1) at: 13) to: result classTokens.
-	result addTokens: ((nodes at: 1) at: 14) to: result mutatingTokens.
-	result addTokens: ((nodes at: 1) at: 15) to: result nonmutatingTokens.
-	result addTokens: ((nodes at: 1) at: 16) to: result overrideTokens.
-	result addTokens: ((nodes at: 1) at: 17) to: result staticTokens.
-	result addTokens: ((nodes at: 1) at: 18) to: result unownedTokens.
-	result
-		addTokens: ((nodes at: 1) at: 19)
-		to: result unownedLeftParensafeRightParenTokens.
-	result
-		addTokens: ((nodes at: 1) at: 20)
-		to: result unownedLeftParenunsafeRightParenTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result weakTokens.
-	result funcToken: ((nodes at: 1) at: 22).
-	result addToken: ((nodes at: 2) at: 1) to: result identifierTokens.
-	result addToken: ((nodes at: 2) at: 2) to: result operatorTokens.
-	result addTokens: ((nodes at: 3) at: 1) to: result lessThanTokens.
-	result addTokens: ((nodes at: 3) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 3) at: 3) to: result colonTokens.
-	result addTokens: ((nodes at: 3) at: 4) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 5) to: result commaTokens.
-	result addTokens: ((nodes at: 3) at: 6) to: result periodTokens.
-	result addTokens: ((nodes at: 3) at: 7) to: result protocolTokens.
-	result whereToken: ((nodes at: 3) at: 8).
-	result addTokens: ((nodes at: 3) at: 9) to: result equalEqualTokens.
-	result addTokens: ((nodes at: 4) at: 1) to: result leftParenTokens.
-	result addTokens: ((nodes at: 4) at: 2) to: result rightParenTokens.
-	result addTokens: ((nodes at: 4) at: 3) to: result commaTokens.
-	result
-		addTokens: ((nodes at: 4) at: 4)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 4) at: 5) to: result varTokens.
-	result addTokens: ((nodes at: 4) at: 6) to: result inoutTokens.
-	result addTokens: ((nodes at: 4) at: 7) to: result letTokens.
-	result addTokens: ((nodes at: 4) at: 8) to: result _Tokens.
-	result addTokens: ((nodes at: 4) at: 9) to: result identifierTokens.
-	result addTokens: ((nodes at: 4) at: 10) to: result colonTokens.
-	result addTokens: ((nodes at: 4) at: 11) to: result equalTokens.
-	result addObjects: ((nodes at: 4) at: 12) to: result expressions.
-	result addTokens: ((nodes at: 4) at: 13) to: result leftBracketTokens.
-	result
-		addTokens: ((nodes at: 4) at: 14)
-		to: result rightBracketTokens.
-	result
-		addTokens: ((nodes at: 4) at: 15)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 4) at: 16) to: result periodTokens.
-	result
-		addTokens: ((nodes at: 4) at: 17)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 4) at: 18) to: result bangTokens.
-	result addTokens: ((nodes at: 4) at: 19) to: result protocolTokens.
-	result addTokens: ((nodes at: 4) at: 20) to: result lessThanTokens.
-	result addTokens: ((nodes at: 4) at: 21) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 4) at: 22) to: result typeTokens.
-	result addTokens: ((nodes at: 4) at: 23) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 4) at: 24) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 4) at: 25)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 4) at: 26)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 4) at: 27)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 4) at: 28) to: result operatorTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForprotocol_property_declaration1: nodes [
-	| result |
-	result := SwiftProtocolPropertyDeclarationNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
-	result addTokens: ((nodes at: 1) at: 13) to: result classTokens.
-	result addTokens: ((nodes at: 1) at: 14) to: result mutatingTokens.
-	result addTokens: ((nodes at: 1) at: 15) to: result nonmutatingTokens.
-	result addTokens: ((nodes at: 1) at: 16) to: result overrideTokens.
-	result addTokens: ((nodes at: 1) at: 17) to: result staticTokens.
-	result addTokens: ((nodes at: 1) at: 18) to: result unownedTokens.
-	result
-		addTokens: ((nodes at: 1) at: 19)
-		to: result unownedLeftParensafeRightParenTokens.
-	result
-		addTokens: ((nodes at: 1) at: 20)
-		to: result unownedLeftParenunsafeRightParenTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result weakTokens.
-	result varToken: ((nodes at: 1) at: 22).
-	result addToken: (nodes at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 3) at: 1) to: result colonTokens.
-	result addTokens: ((nodes at: 3) at: 2) to: result _Tokens.
-	result addTokens: ((nodes at: 3) at: 3) to: result identifierTokens.
-	result addTokens: ((nodes at: 3) at: 4) to: result leftParenTokens.
-	result addTokens: ((nodes at: 3) at: 5) to: result rightParenTokens.
-	result addTokens: ((nodes at: 3) at: 6) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 3) at: 7) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 3) at: 8) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 3) at: 9) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 3) at: 10)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 3) at: 11)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 3) at: 12)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 3) at: 13) to: result operatorTokens.
-	result
-		addTokens: ((nodes at: 3) at: 14)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 15) to: result periodTokens.
-	result
-		addTokens: ((nodes at: 3) at: 16)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 3) at: 17) to: result bangTokens.
-	result addTokens: ((nodes at: 3) at: 18) to: result protocolTokens.
-	result addTokens: ((nodes at: 3) at: 19) to: result lessThanTokens.
-	result addTokens: ((nodes at: 3) at: 20) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 21) to: result typeTokens.
-	result addTokens: ((nodes at: 3) at: 22) to: result commaTokens.
-	result
-		addTokens: ((nodes at: 3) at: 23)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 3) at: 24) to: result inoutTokens.
-	result addTokens: ((nodes at: 4) at: 1) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 4) at: 2) to: result _Tokens.
-	result addTokens: ((nodes at: 4) at: 3) to: result identifierTokens.
-	result addTokens: ((nodes at: 4) at: 4) to: result leftParenTokens.
-	result addTokens: ((nodes at: 4) at: 5) to: result rightParenTokens.
-	result addTokens: ((nodes at: 4) at: 6) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 4) at: 7) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 4) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 4) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 4) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 4) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 4) at: 12) to: result operatorTokens.
-	result getToken: ((nodes at: 4) at: 13).
-	result setToken: ((nodes at: 4) at: 14).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForprotocol_subscript_declaration1: nodes [
-	| result |
-	result := SwiftProtocolSubscriptDeclarationNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
-	result subscriptToken: ((nodes at: 1) at: 13).
-	result addTokens: ((nodes at: 1) at: 14) to: result inoutTokens.
-	result addTokens: ((nodes at: 1) at: 15) to: result letTokens.
-	result addTokens: ((nodes at: 1) at: 16) to: result colonTokens.
-	result
-		addTokens: ((nodes at: 1) at: 17)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 1) at: 18) to: result periodTokens.
-	result
-		addTokens: ((nodes at: 1) at: 19)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 1) at: 20) to: result bangTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result protocolTokens.
-	result addTokens: ((nodes at: 1) at: 22) to: result lessThanTokens.
-	result addTokens: ((nodes at: 1) at: 23) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 1) at: 24) to: result typeTokens.
-	result addTokens: ((nodes at: 1) at: 25) to: result commaTokens.
-	result addTokens: ((nodes at: 1) at: 26) to: result equalTokens.
-	result addObjects: ((nodes at: 1) at: 27) to: result expressions.
-	result addTokens: ((nodes at: 1) at: 28) to: result varTokens.
-	result
-		addTokens: ((nodes at: 1) at: 29)
-		to: result periodPeriodPeriodTokens.
-	result
-		addTokens: ((nodes at: 2) at: 1)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 2) to: result _Tokens.
-	result addTokens: ((nodes at: 2) at: 3) to: result identifierTokens.
-	result addTokens: ((nodes at: 2) at: 4) to: result leftParenTokens.
-	result addTokens: ((nodes at: 2) at: 5) to: result rightParenTokens.
-	result addTokens: ((nodes at: 2) at: 6) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 2) at: 7) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 2) at: 8) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 2) at: 9) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 2) at: 10)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 2) at: 11)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 2) at: 12)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 2) at: 13) to: result operatorTokens.
-	result addTokens: ((nodes at: 2) at: 14) to: result colonTokens.
-	result addTokens: ((nodes at: 2) at: 15) to: result periodTokens.
-	result
-		addTokens: ((nodes at: 2) at: 16)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 2) at: 17) to: result bangTokens.
-	result addTokens: ((nodes at: 2) at: 18) to: result protocolTokens.
-	result addTokens: ((nodes at: 2) at: 19) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 20) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 21) to: result typeTokens.
-	result addTokens: ((nodes at: 2) at: 22) to: result commaTokens.
-	result
-		addTokens: ((nodes at: 2) at: 23)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 2) at: 24) to: result inoutTokens.
-	result addTokens: ((nodes at: 3) at: 1) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 3) at: 2) to: result _Tokens.
-	result addTokens: ((nodes at: 3) at: 3) to: result identifierTokens.
-	result addTokens: ((nodes at: 3) at: 4) to: result leftParenTokens.
-	result addTokens: ((nodes at: 3) at: 5) to: result rightParenTokens.
-	result addTokens: ((nodes at: 3) at: 6) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 3) at: 7) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 3) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 3) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 3) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 3) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 3) at: 12) to: result operatorTokens.
-	result getToken: ((nodes at: 3) at: 13).
-	result setToken: ((nodes at: 3) at: 14).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForraw_value_style_enum1: nodes [
-	| result |
-	result := Array new: 57.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	result at: 30 put: (OrderedCollection new: 2).
-	result at: 31 put: (OrderedCollection new: 2).
-	result at: 32 put: (OrderedCollection new: 2).
-	result at: 33 put: (OrderedCollection new: 2).
-	result at: 34 put: (OrderedCollection new: 2).
-	result at: 35 put: (OrderedCollection new: 2).
-	result at: 36 put: (OrderedCollection new: 2).
-	result at: 37 put: (OrderedCollection new: 2).
-	result at: 38 put: (OrderedCollection new: 2).
-	result at: 39 put: (OrderedCollection new: 2).
-	result at: 40 put: (OrderedCollection new: 2).
-	result at: 41 put: (OrderedCollection new: 2).
-	result at: 42 put: (OrderedCollection new: 2).
-	result at: 43 put: (OrderedCollection new: 2).
-	result at: 44 put: (OrderedCollection new: 2).
-	result at: 45 put: (OrderedCollection new: 2).
-	result at: 46 put: (OrderedCollection new: 2).
-	result at: 47 put: (OrderedCollection new: 2).
-	result at: 48 put: (OrderedCollection new: 2).
-	result at: 49 put: (OrderedCollection new: 2).
-	result at: 50 put: (OrderedCollection new: 2).
-	result at: 51 put: (OrderedCollection new: 2).
-	result at: 52 put: (OrderedCollection new: 2).
-	result at: 53 put: (OrderedCollection new: 2).
-	result at: 54 put: (OrderedCollection new: 2).
-	result at: 55 put: (OrderedCollection new: 2).
-	result at: 56 put: (OrderedCollection new: 2).
-	result at: 57 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 7).
-	self add: ((nodes at: 2) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
-	self add: (nodes at: 3) to: (result at: 3).
-	self add: (nodes at: 5) to: (result at: 10).
-	self addAll: ((nodes at: 6) at: 1) to: (result at: 11).
-	self addAll: ((nodes at: 6) at: 2) to: (result at: 1).
-	self addAll: ((nodes at: 6) at: 3) to: (result at: 12).
-	self addAll: ((nodes at: 6) at: 4) to: (result at: 13).
-	self addAll: ((nodes at: 6) at: 5) to: (result at: 14).
-	self addAll: ((nodes at: 6) at: 6) to: (result at: 15).
-	self addAll: ((nodes at: 6) at: 7) to: (result at: 16).
-	self addAll: ((nodes at: 6) at: 8) to: (result at: 17).
-	self addAll: ((nodes at: 6) at: 9) to: (result at: 18).
-	self addAll: ((nodes at: 6) at: 10) to: (result at: 7).
-	self addAll: ((nodes at: 6) at: 11) to: (result at: 19).
-	self addAll: ((nodes at: 6) at: 12) to: (result at: 20).
-	self addAll: ((nodes at: 6) at: 13) to: (result at: 21).
-	self addAll: ((nodes at: 6) at: 14) to: (result at: 6).
-	self addAll: ((nodes at: 6) at: 15) to: (result at: 22).
-	self addAll: ((nodes at: 6) at: 16) to: (result at: 23).
-	self addAll: ((nodes at: 6) at: 17) to: (result at: 24).
-	self addAll: ((nodes at: 6) at: 18) to: (result at: 25).
-	self addAll: ((nodes at: 6) at: 19) to: (result at: 26).
-	self addAll: ((nodes at: 6) at: 20) to: (result at: 27).
-	self addAll: ((nodes at: 6) at: 21) to: (result at: 28).
-	self addAll: ((nodes at: 6) at: 22) to: (result at: 29).
-	self addAll: ((nodes at: 6) at: 23) to: (result at: 30).
-	self addAll: ((nodes at: 6) at: 24) to: (result at: 31).
-	self addAll: ((nodes at: 6) at: 25) to: (result at: 5).
-	self addAll: ((nodes at: 6) at: 26) to: (result at: 3).
-	self addAll: ((nodes at: 6) at: 27) to: (result at: 32).
-	self addAll: ((nodes at: 6) at: 28) to: (result at: 33).
-	self addAll: ((nodes at: 6) at: 29) to: (result at: 34).
-	self addAll: ((nodes at: 6) at: 30) to: (result at: 35).
-	self addAll: ((nodes at: 6) at: 31) to: (result at: 36).
-	self addAll: ((nodes at: 6) at: 32) to: (result at: 2).
-	self addAll: ((nodes at: 6) at: 33) to: (result at: 4).
-	self addAll: ((nodes at: 6) at: 34) to: (result at: 37).
-	self addAll: ((nodes at: 6) at: 35) to: (result at: 50).
-	self addAll: ((nodes at: 6) at: 36) to: (result at: 46).
-	self addAll: ((nodes at: 6) at: 37) to: (result at: 38).
-	self addAll: ((nodes at: 6) at: 38) to: (result at: 10).
-	self addAll: ((nodes at: 6) at: 39) to: (result at: 39).
-	self addAll: ((nodes at: 6) at: 40) to: (result at: 40).
-	self addAll: ((nodes at: 6) at: 41) to: (result at: 41).
-	self addAll: ((nodes at: 6) at: 42) to: (result at: 42).
-	self addAll: ((nodes at: 6) at: 43) to: (result at: 43).
-	self addAll: ((nodes at: 6) at: 44) to: (result at: 44).
-	self addAll: ((nodes at: 6) at: 45) to: (result at: 45).
-	self addAll: ((nodes at: 6) at: 46) to: (result at: 8).
-	self addAll: ((nodes at: 6) at: 47) to: (result at: 9).
-	self addAll: ((nodes at: 6) at: 48) to: (result at: 49).
-	self addAll: ((nodes at: 6) at: 49) to: (result at: 51).
-	self addAll: ((nodes at: 6) at: 50) to: (result at: 52).
-	self addAll: ((nodes at: 6) at: 51) to: (result at: 53).
-	self addAll: ((nodes at: 6) at: 52) to: (result at: 54).
-	self addAll: ((nodes at: 6) at: 53) to: (result at: 47).
-	self addAll: ((nodes at: 6) at: 54) to: (result at: 48).
-	self addAll: ((nodes at: 6) at: 55) to: (result at: 55).
-	self addAll: ((nodes at: 6) at: 56) to: (result at: 56).
-	self addAll: ((nodes at: 6) at: 57) to: (result at: 57).
-	self add: (nodes at: 7) to: (result at: 41).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForraw_value_style_enum_case1: nodes [
-	| result |
-	result := Array new: 5.
-	result at: 1 put: (nodes at: 1).
-	result at: 2 put: ((nodes at: 2) at: 1).
-	result at: 3 put: ((nodes at: 2) at: 2).
-	result at: 4 put: ((nodes at: 2) at: 3).
-	result at: 5 put: ((nodes at: 2) at: 4).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForraw_value_style_enum_case_clause1: nodes [
-	| result |
-	result := Array new: 15.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
-	result at: 13 put: (nodes at: 2).
-	self addAll: ((nodes at: 3) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 3) at: 2) to: (result at: 14).
-	self addAll: ((nodes at: 3) at: 3) to: (result at: 9).
-	self addAll: ((nodes at: 3) at: 4) to: (result at: 10).
-	self addAll: ((nodes at: 3) at: 5) to: (result at: 11).
-	self addAll: ((nodes at: 3) at: 6) to: (result at: 15).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForraw_value_style_enum_case_list1: nodes [
-	| result |
-	result := Array new: 6.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	self add: ((nodes at: 1) at: 1) to: (result at: 1).
-	self add: ((nodes at: 1) at: 2) to: (result at: 2).
-	self add: ((nodes at: 1) at: 3) to: (result at: 3).
-	self add: ((nodes at: 1) at: 4) to: (result at: 4).
-	self add: ((nodes at: 1) at: 5) to: (result at: 5).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForraw_value_style_enum_case_list2: nodes [
-	| result |
-	result := nodes at: 1.
-	self add: (nodes at: 2) to: (result at: 6).
-	self add: ((nodes at: 3) at: 1) to: (result at: 1).
-	self add: ((nodes at: 3) at: 2) to: (result at: 2).
-	self add: ((nodes at: 3) at: 3) to: (result at: 3).
-	self add: ((nodes at: 3) at: 4) to: (result at: 4).
-	self add: ((nodes at: 3) at: 5) to: (result at: 5).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForraw_value_style_enum_member2: nodes [
-	| result |
-	result := Array new: 57.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	result at: 30 put: (OrderedCollection new: 2).
-	result at: 31 put: (OrderedCollection new: 2).
-	result at: 32 put: (OrderedCollection new: 2).
-	result at: 33 put: (OrderedCollection new: 2).
-	result at: 34 put: (OrderedCollection new: 2).
-	result at: 35 put: (OrderedCollection new: 2).
-	result at: 36 put: (OrderedCollection new: 2).
-	result at: 37 put: (OrderedCollection new: 2).
-	result at: 38 put: (OrderedCollection new: 2).
-	result at: 39 put: (OrderedCollection new: 2).
-	result at: 40 put: (OrderedCollection new: 2).
-	result at: 41 put: (OrderedCollection new: 2).
-	result at: 42 put: (OrderedCollection new: 2).
-	result at: 43 put: (OrderedCollection new: 2).
-	result at: 44 put: (OrderedCollection new: 2).
-	result at: 45 put: (OrderedCollection new: 2).
-	result at: 46 put: (OrderedCollection new: 2).
-	result at: 47 put: (OrderedCollection new: 2).
-	result at: 48 put: (OrderedCollection new: 2).
-	result at: 49 put: (OrderedCollection new: 2).
-	result at: 50 put: (OrderedCollection new: 2).
-	result at: 51 put: (OrderedCollection new: 2).
-	result at: 52 put: (OrderedCollection new: 2).
-	result at: 53 put: (OrderedCollection new: 2).
-	result at: 54 put: (OrderedCollection new: 2).
-	result at: 55 put: (OrderedCollection new: 2).
-	result at: 56 put: (OrderedCollection new: 2).
-	result at: 57 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
-	self add: ((nodes at: 1) at: 13) to: (result at: 57).
-	self addAll: ((nodes at: 1) at: 14) to: (result at: 45).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 32).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForrequirement1: nodes [
-	| result |
-	result := Array new: 8.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 4).
-	result at: 5 put: ((nodes at: 1) at: 6).
-	result at: 7 put: ((nodes at: 1) at: 7).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForrequirement2: nodes [
-	| result |
-	result := Array new: 8.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 4).
-	result at: 8 put: ((nodes at: 1) at: 6).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForrequirement_clause1: nodes [
-	| result |
-	result := Array new: 9.
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 1 put: (nodes at: 1).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 7).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 8) to: (result at: 9).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForrequirement_list1: nodes [
-	| result |
-	result := Array new: 8.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self add: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self add: ((nodes at: 1) at: 7) to: (result at: 7).
-	self add: ((nodes at: 1) at: 8) to: (result at: 8).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForrequirement_list2: nodes [
-	| result |
-	result := nodes at: 1.
-	self add: (nodes at: 2) to: (result at: 6).
-	self addAll: ((nodes at: 3) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 3) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 3) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 3) at: 4) to: (result at: 4).
-	self add: ((nodes at: 3) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 3) at: 6) to: (result at: 6).
-	self add: ((nodes at: 3) at: 7) to: (result at: 7).
-	self add: ((nodes at: 3) at: 8) to: (result at: 8).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForreturn_statement1: nodes [
-	| result |
-	result := SwiftReturnStatementNode new.
-	result returnToken: (nodes at: 1).
-	result expression: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForsame_type_requirement1: nodes [
-	| result |
-	result := Array new: 6.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForself_expression1: nodes [
-	| result |
-	result := SwiftSelfExpressionNode new.
-	result selfToken: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForself_expression2: nodes [
-	| result |
-	result := SwiftSelfExpressionNode new.
-	result selfToken: (nodes at: 1).
-	result periodToken: (nodes at: 2).
-	result identifierToken: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForself_expression3: nodes [
-	| result |
-	result := SwiftSelfExpressionNode new.
-	result selfToken: (nodes at: 1).
-	result leftBracketToken: (nodes at: 2).
-	result expression: (nodes at: 3).
-	result rightBracketToken: (nodes at: 4).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForself_expression4: nodes [
-	| result |
-	result := SwiftSelfExpressionNode new.
-	result selfToken: (nodes at: 1).
-	result periodToken: (nodes at: 2).
-	result initToken: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForsetter_clause1: nodes [
-	| result |
-	result := Array new: 14.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
-	result at: 13 put: (nodes at: 2).
-	self add: ((nodes at: 3) at: 1) to: (result at: 3).
-	self add: ((nodes at: 3) at: 2) to: (result at: 2).
-	self add: ((nodes at: 3) at: 3) to: (result at: 4).
-	result at: 14 put: (nodes at: 4).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForstatement1: nodes [
-	| result |
-	result := SwiftExpressionStatementNode new.
-	result expression: (nodes at: 1).
-	result semicolonToken: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForstatement2: nodes [
-	| result |
-	result := SwiftDeclarationStatementNode new.
-	result declaration: (nodes at: 1).
-	result semicolonToken: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForstatement3: nodes [
-	| result |
-	result := nodes at: 1.
-	result semicolonToken: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForstatements1: nodes [
-	| result |
-	result := OrderedCollection new: 2.
-	self add: (nodes at: 1) to: result.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForstatements2: nodes [
-	| result |
-	result := nodes at: 1.
-	self add: (nodes at: 2) to: result.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForstruct_declaration1: nodes [
-	| result |
-	result := SwiftStructDeclarationNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
-	result structToken: (nodes at: 2).
-	result addToken: (nodes at: 3) to: result identifierTokens.
-	result addTokens: ((nodes at: 4) at: 1) to: result lessThanTokens.
-	result addTokens: ((nodes at: 4) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 4) at: 3) to: result colonTokens.
-	result addTokens: ((nodes at: 4) at: 4) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 4) at: 5) to: result commaTokens.
-	result addTokens: ((nodes at: 4) at: 6) to: result periodTokens.
-	result addTokens: ((nodes at: 4) at: 7) to: result protocolTokens.
-	result whereToken: ((nodes at: 4) at: 8).
-	result addTokens: ((nodes at: 4) at: 9) to: result equalEqualTokens.
-	result addToken: ((nodes at: 5) at: 1) to: result colonTokens.
-	result addTokens: ((nodes at: 5) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 5) at: 3) to: result lessThanTokens.
-	result addTokens: ((nodes at: 5) at: 4) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 5) at: 5) to: result periodTokens.
-	result addTokens: ((nodes at: 5) at: 6) to: result commaTokens.
-	result addToken: ((nodes at: 6) at: 1) to: result leftBraceTokens.
-	result addNodes: ((nodes at: 6) at: 2) to: result declarations.
-	result addToken: ((nodes at: 6) at: 3) to: result rightBraceTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForsubscript_declaration1: nodes [
-	| result |
-	result := SwiftSubscriptDeclarationNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
-	result subscriptToken: ((nodes at: 1) at: 13).
-	result addTokens: ((nodes at: 1) at: 14) to: result inoutTokens.
-	result addTokens: ((nodes at: 1) at: 15) to: result letTokens.
-	result addTokens: ((nodes at: 1) at: 16) to: result colonTokens.
-	result
-		addTokens: ((nodes at: 1) at: 17)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 1) at: 18) to: result periodTokens.
-	result
-		addTokens: ((nodes at: 1) at: 19)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 1) at: 20) to: result bangTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result protocolTokens.
-	result addTokens: ((nodes at: 1) at: 22) to: result lessThanTokens.
-	result addTokens: ((nodes at: 1) at: 23) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 1) at: 24) to: result typeTokens.
-	result addTokens: ((nodes at: 1) at: 25) to: result commaTokens.
-	result addTokens: ((nodes at: 1) at: 26) to: result equalTokens.
-	result addObjects: ((nodes at: 1) at: 27) to: result expressions.
-	result addTokens: ((nodes at: 1) at: 28) to: result varTokens.
-	result
-		addTokens: ((nodes at: 1) at: 29)
-		to: result periodPeriodPeriodTokens.
-	result
-		addTokens: ((nodes at: 2) at: 1)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 2) to: result _Tokens.
-	result addTokens: ((nodes at: 2) at: 3) to: result identifierTokens.
-	result addTokens: ((nodes at: 2) at: 4) to: result leftParenTokens.
-	result addTokens: ((nodes at: 2) at: 5) to: result rightParenTokens.
-	result addTokens: ((nodes at: 2) at: 6) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 2) at: 7) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 2) at: 8) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 2) at: 9) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 2) at: 10)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 2) at: 11)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 2) at: 12)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 2) at: 13) to: result operatorTokens.
-	result addTokens: ((nodes at: 2) at: 14) to: result colonTokens.
-	result addTokens: ((nodes at: 2) at: 15) to: result periodTokens.
-	result
-		addTokens: ((nodes at: 2) at: 16)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 2) at: 17) to: result bangTokens.
-	result addTokens: ((nodes at: 2) at: 18) to: result protocolTokens.
-	result addTokens: ((nodes at: 2) at: 19) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 20) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 21) to: result typeTokens.
-	result addTokens: ((nodes at: 2) at: 22) to: result commaTokens.
-	result
-		addTokens: ((nodes at: 2) at: 23)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 2) at: 24) to: result inoutTokens.
-	result addNode: (nodes at: 3) to: result blocks.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForsubscript_declaration2: nodes [
-	| result |
-	result := SwiftSubscriptDeclarationNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
-	result subscriptToken: ((nodes at: 1) at: 13).
-	result addTokens: ((nodes at: 1) at: 14) to: result inoutTokens.
-	result addTokens: ((nodes at: 1) at: 15) to: result letTokens.
-	result addTokens: ((nodes at: 1) at: 16) to: result colonTokens.
-	result
-		addTokens: ((nodes at: 1) at: 17)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 1) at: 18) to: result periodTokens.
-	result
-		addTokens: ((nodes at: 1) at: 19)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 1) at: 20) to: result bangTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result protocolTokens.
-	result addTokens: ((nodes at: 1) at: 22) to: result lessThanTokens.
-	result addTokens: ((nodes at: 1) at: 23) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 1) at: 24) to: result typeTokens.
-	result addTokens: ((nodes at: 1) at: 25) to: result commaTokens.
-	result addTokens: ((nodes at: 1) at: 26) to: result equalTokens.
-	result addObjects: ((nodes at: 1) at: 27) to: result expressions.
-	result addTokens: ((nodes at: 1) at: 28) to: result varTokens.
-	result
-		addTokens: ((nodes at: 1) at: 29)
-		to: result periodPeriodPeriodTokens.
-	result
-		addTokens: ((nodes at: 2) at: 1)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 2) to: result _Tokens.
-	result addTokens: ((nodes at: 2) at: 3) to: result identifierTokens.
-	result addTokens: ((nodes at: 2) at: 4) to: result leftParenTokens.
-	result addTokens: ((nodes at: 2) at: 5) to: result rightParenTokens.
-	result addTokens: ((nodes at: 2) at: 6) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 2) at: 7) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 2) at: 8) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 2) at: 9) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 2) at: 10)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 2) at: 11)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 2) at: 12)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 2) at: 13) to: result operatorTokens.
-	result addTokens: ((nodes at: 2) at: 14) to: result colonTokens.
-	result addTokens: ((nodes at: 2) at: 15) to: result periodTokens.
-	result
-		addTokens: ((nodes at: 2) at: 16)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 2) at: 17) to: result bangTokens.
-	result addTokens: ((nodes at: 2) at: 18) to: result protocolTokens.
-	result addTokens: ((nodes at: 2) at: 19) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 20) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 21) to: result typeTokens.
-	result addTokens: ((nodes at: 2) at: 22) to: result commaTokens.
-	result
-		addTokens: ((nodes at: 2) at: 23)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 2) at: 24) to: result inoutTokens.
-	result addTokens: ((nodes at: 3) at: 1) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 3) at: 2) to: result _Tokens.
-	result addTokens: ((nodes at: 3) at: 3) to: result identifierTokens.
-	result addTokens: ((nodes at: 3) at: 4) to: result leftParenTokens.
-	result addTokens: ((nodes at: 3) at: 5) to: result rightParenTokens.
-	result addTokens: ((nodes at: 3) at: 6) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 3) at: 7) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 3) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 3) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 3) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 3) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 3) at: 12) to: result operatorTokens.
-	result getToken: ((nodes at: 3) at: 13).
-	result addNodes: ((nodes at: 3) at: 14) to: result blocks.
-	result setToken: ((nodes at: 3) at: 15).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForsubscript_declaration3: nodes [
-	| result |
-	result := SwiftSubscriptDeclarationNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
-	result subscriptToken: ((nodes at: 1) at: 13).
-	result addTokens: ((nodes at: 1) at: 14) to: result inoutTokens.
-	result addTokens: ((nodes at: 1) at: 15) to: result letTokens.
-	result addTokens: ((nodes at: 1) at: 16) to: result colonTokens.
-	result
-		addTokens: ((nodes at: 1) at: 17)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 1) at: 18) to: result periodTokens.
-	result
-		addTokens: ((nodes at: 1) at: 19)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 1) at: 20) to: result bangTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result protocolTokens.
-	result addTokens: ((nodes at: 1) at: 22) to: result lessThanTokens.
-	result addTokens: ((nodes at: 1) at: 23) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 1) at: 24) to: result typeTokens.
-	result addTokens: ((nodes at: 1) at: 25) to: result commaTokens.
-	result addTokens: ((nodes at: 1) at: 26) to: result equalTokens.
-	result addObjects: ((nodes at: 1) at: 27) to: result expressions.
-	result addTokens: ((nodes at: 1) at: 28) to: result varTokens.
-	result
-		addTokens: ((nodes at: 1) at: 29)
-		to: result periodPeriodPeriodTokens.
-	result
-		addTokens: ((nodes at: 2) at: 1)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 2) to: result _Tokens.
-	result addTokens: ((nodes at: 2) at: 3) to: result identifierTokens.
-	result addTokens: ((nodes at: 2) at: 4) to: result leftParenTokens.
-	result addTokens: ((nodes at: 2) at: 5) to: result rightParenTokens.
-	result addTokens: ((nodes at: 2) at: 6) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 2) at: 7) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 2) at: 8) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 2) at: 9) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 2) at: 10)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 2) at: 11)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 2) at: 12)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 2) at: 13) to: result operatorTokens.
-	result addTokens: ((nodes at: 2) at: 14) to: result colonTokens.
-	result addTokens: ((nodes at: 2) at: 15) to: result periodTokens.
-	result
-		addTokens: ((nodes at: 2) at: 16)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 2) at: 17) to: result bangTokens.
-	result addTokens: ((nodes at: 2) at: 18) to: result protocolTokens.
-	result addTokens: ((nodes at: 2) at: 19) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 20) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 21) to: result typeTokens.
-	result addTokens: ((nodes at: 2) at: 22) to: result commaTokens.
-	result
-		addTokens: ((nodes at: 2) at: 23)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 2) at: 24) to: result inoutTokens.
-	result addTokens: ((nodes at: 3) at: 1) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 3) at: 2) to: result _Tokens.
-	result addTokens: ((nodes at: 3) at: 3) to: result identifierTokens.
-	result addTokens: ((nodes at: 3) at: 4) to: result leftParenTokens.
-	result addTokens: ((nodes at: 3) at: 5) to: result rightParenTokens.
-	result addTokens: ((nodes at: 3) at: 6) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 3) at: 7) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 3) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 3) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 3) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 3) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 3) at: 12) to: result operatorTokens.
-	result getToken: ((nodes at: 3) at: 13).
-	result setToken: ((nodes at: 3) at: 14).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForsubscript_expression1: nodes [
-	| result |
-	result := SwiftSubscriptExpressionNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result lessThanTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result commaTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result greaterThanTokens.
-	result
-		addTokens: ((nodes at: 1) at: 5)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 6)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 7)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result leftBracketTokens.
-	result addObjects: ((nodes at: 1) at: 9) to: result expressions.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result rightBracketTokens.
-	result addObjects: ((nodes at: 1) at: 11) to: result keyExpressions.
-	result addTokens: ((nodes at: 1) at: 12) to: result colonTokens.
-	result addObjects: ((nodes at: 1) at: 13) to: result valueExpressions.
-	result __FILE__Token: ((nodes at: 1) at: 14).
-	result __LINE__Token: ((nodes at: 1) at: 15).
-	result __COLUMN__Token: ((nodes at: 1) at: 16).
-	result __FUNCTION__Token: ((nodes at: 1) at: 17).
-	result addTokens: ((nodes at: 1) at: 18) to: result selfTokens.
-	result addTokens: ((nodes at: 1) at: 19) to: result periodTokens.
-	result addTokens: ((nodes at: 1) at: 20) to: result initTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 22) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 23) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 24) to: result inoutTokens.
-	result addTokens: ((nodes at: 1) at: 25) to: result letTokens.
-	result addTokens: ((nodes at: 1) at: 26) to: result _Tokens.
-	result
-		addTokens: ((nodes at: 1) at: 27)
-		to: result minusGreaterThanTokens.
-	result
-		addTokens: ((nodes at: 1) at: 28)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 1) at: 29) to: result bangTokens.
-	result addTokens: ((nodes at: 1) at: 30) to: result protocolTokens.
-	result addTokens: ((nodes at: 1) at: 31) to: result typeTokens.
-	result
-		addTokens: ((nodes at: 1) at: 32)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 1) at: 33) to: result equalTokens.
-	result addTokens: ((nodes at: 1) at: 34) to: result varTokens.
-	result addTokens: ((nodes at: 1) at: 35) to: result rightBraceTokens.
-	result addTokens: ((nodes at: 1) at: 36) to: result operatorTokens.
-	result inToken: ((nodes at: 1) at: 37).
-	result weakToken: ((nodes at: 1) at: 38).
-	result unownedToken: ((nodes at: 1) at: 39).
-	result unownedLeftParensafeRightParenToken: ((nodes at: 1) at: 40).
-	result unownedLeftParenunsafeRightParenToken: ((nodes at: 1) at: 41).
-	result addNodes: ((nodes at: 1) at: 42) to: result statements.
-	result addTokens: ((nodes at: 1) at: 43) to: result dynamicTypeTokens.
-	result addToken: (nodes at: 2) to: result leftBracketTokens.
-	result addObjects: ((nodes at: 3) at: 1) to: result expressions.
-	result addTokens: ((nodes at: 3) at: 2) to: result commaTokens.
-	result addToken: (nodes at: 4) to: result rightBracketTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForsubscript_head1: nodes [
-	| result |
-	result := Array new: 29.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
-	result at: 13 put: (nodes at: 2).
-	self addAll: ((nodes at: 3) at: 1) to: (result at: 3).
-	self addAll: ((nodes at: 3) at: 2) to: (result at: 4).
-	self addAll: ((nodes at: 3) at: 3) to: (result at: 14).
-	self addAll: ((nodes at: 3) at: 4) to: (result at: 15).
-	self addAll: ((nodes at: 3) at: 5) to: (result at: 1).
-	self addAll: ((nodes at: 3) at: 6) to: (result at: 2).
-	self addAll: ((nodes at: 3) at: 7) to: (result at: 16).
-	self addAll: ((nodes at: 3) at: 8) to: (result at: 5).
-	self addAll: ((nodes at: 3) at: 9) to: (result at: 6).
-	self addAll: ((nodes at: 3) at: 10) to: (result at: 17).
-	self addAll: ((nodes at: 3) at: 11) to: (result at: 18).
-	self addAll: ((nodes at: 3) at: 12) to: (result at: 19).
-	self addAll: ((nodes at: 3) at: 13) to: (result at: 20).
-	self addAll: ((nodes at: 3) at: 14) to: (result at: 21).
-	self addAll: ((nodes at: 3) at: 15) to: (result at: 22).
-	self addAll: ((nodes at: 3) at: 16) to: (result at: 23).
-	self addAll: ((nodes at: 3) at: 17) to: (result at: 24).
-	self addAll: ((nodes at: 3) at: 18) to: (result at: 25).
-	self addAll: ((nodes at: 3) at: 19) to: (result at: 29).
-	self addAll: ((nodes at: 3) at: 20) to: (result at: 26).
-	self addAll: ((nodes at: 3) at: 21) to: (result at: 27).
-	self addAll: ((nodes at: 3) at: 22) to: (result at: 28).
-	self addAll: ((nodes at: 3) at: 23) to: (result at: 7).
-	self addAll: ((nodes at: 3) at: 24) to: (result at: 8).
-	self addAll: ((nodes at: 3) at: 25) to: (result at: 9).
-	self addAll: ((nodes at: 3) at: 26) to: (result at: 10).
-	self addAll: ((nodes at: 3) at: 27) to: (result at: 11).
-	self addAll: ((nodes at: 3) at: 28) to: (result at: 12).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForsubscript_result1: nodes [
-	| result |
-	result := Array new: 24.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 7).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 8) to: (result at: 9).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 10).
-	self addAll: ((nodes at: 2) at: 10) to: (result at: 11).
-	self addAll: ((nodes at: 2) at: 11) to: (result at: 12).
-	self addAll: ((nodes at: 2) at: 12) to: (result at: 13).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForsuperclass_initializer_expression1: nodes [
-	| result |
-	result := SwiftSuperclassInitializerExpressionNode new.
-	result superToken: (nodes at: 1).
-	result periodToken: (nodes at: 2).
-	result initToken: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForsuperclass_method_expression1: nodes [
-	| result |
-	result := SwiftSuperclassMethodExpressionNode new.
-	result superToken: (nodes at: 1).
-	result periodToken: (nodes at: 2).
-	result identifierToken: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForsuperclass_subscript_expression1: nodes [
-	| result |
-	result := SwiftSuperclassSubscriptExpressionNode new.
-	result superToken: (nodes at: 1).
-	result leftBracketToken: (nodes at: 2).
-	result expression: (nodes at: 3).
-	result rightBracketToken: (nodes at: 4).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForswitch_case1: nodes [
-	| result |
-	result := Array new: 34.
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	result at: 30 put: (OrderedCollection new: 2).
-	result at: 31 put: (OrderedCollection new: 2).
-	result at: 32 put: (OrderedCollection new: 2).
-	result at: 1 put: ((nodes at: 1) at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
-	self addAll: ((nodes at: 1) at: 13) to: (result at: 13).
-	self addAll: ((nodes at: 1) at: 14) to: (result at: 14).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 15).
-	self addAll: ((nodes at: 1) at: 16) to: (result at: 16).
-	self addAll: ((nodes at: 1) at: 17) to: (result at: 17).
-	self addAll: ((nodes at: 1) at: 18) to: (result at: 18).
-	self addAll: ((nodes at: 1) at: 19) to: (result at: 19).
-	self addAll: ((nodes at: 1) at: 20) to: (result at: 20).
-	self addAll: ((nodes at: 1) at: 21) to: (result at: 21).
-	self addAll: ((nodes at: 1) at: 22) to: (result at: 22).
-	self addAll: ((nodes at: 1) at: 23) to: (result at: 23).
-	self addAll: ((nodes at: 1) at: 24) to: (result at: 24).
-	self addAll: ((nodes at: 1) at: 25) to: (result at: 25).
-	self addAll: ((nodes at: 1) at: 26) to: (result at: 26).
-	self addAll: ((nodes at: 1) at: 27) to: (result at: 27).
-	self addAll: ((nodes at: 1) at: 28) to: (result at: 28).
-	self addAll: ((nodes at: 1) at: 29) to: (result at: 29).
-	self addAll: ((nodes at: 1) at: 30) to: (result at: 30).
-	self addAll: ((nodes at: 1) at: 31) to: (result at: 31).
-	self addAll: (nodes at: 2) to: (result at: 32).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForswitch_case2: nodes [
-	| result |
-	result := Array new: 34.
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	result at: 30 put: (OrderedCollection new: 2).
-	result at: 31 put: (OrderedCollection new: 2).
-	result at: 32 put: (OrderedCollection new: 2).
-	result at: 1 put: ((nodes at: 1) at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
-	self addAll: ((nodes at: 1) at: 13) to: (result at: 13).
-	self addAll: ((nodes at: 1) at: 14) to: (result at: 14).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 15).
-	self addAll: ((nodes at: 1) at: 16) to: (result at: 16).
-	self addAll: ((nodes at: 1) at: 17) to: (result at: 17).
-	self addAll: ((nodes at: 1) at: 18) to: (result at: 18).
-	self addAll: ((nodes at: 1) at: 19) to: (result at: 19).
-	self addAll: ((nodes at: 1) at: 20) to: (result at: 20).
-	self addAll: ((nodes at: 1) at: 21) to: (result at: 21).
-	self addAll: ((nodes at: 1) at: 22) to: (result at: 22).
-	self addAll: ((nodes at: 1) at: 23) to: (result at: 23).
-	self addAll: ((nodes at: 1) at: 24) to: (result at: 24).
-	self addAll: ((nodes at: 1) at: 25) to: (result at: 25).
-	self addAll: ((nodes at: 1) at: 26) to: (result at: 26).
-	self addAll: ((nodes at: 1) at: 27) to: (result at: 27).
-	self addAll: ((nodes at: 1) at: 28) to: (result at: 28).
-	self addAll: ((nodes at: 1) at: 29) to: (result at: 29).
-	self addAll: ((nodes at: 1) at: 30) to: (result at: 30).
-	self addAll: ((nodes at: 1) at: 31) to: (result at: 31).
-	result at: 33 put: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForswitch_case3: nodes [
-	| result |
-	result := Array new: 34.
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	result at: 30 put: (OrderedCollection new: 2).
-	result at: 31 put: (OrderedCollection new: 2).
-	result at: 32 put: (OrderedCollection new: 2).
-	result at: 34 put: ((nodes at: 1) at: 1).
-	self add: ((nodes at: 1) at: 2) to: (result at: 3).
-	self addAll: (nodes at: 2) to: (result at: 32).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForswitch_case4: nodes [
-	| result |
-	result := Array new: 34.
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	result at: 30 put: (OrderedCollection new: 2).
-	result at: 31 put: (OrderedCollection new: 2).
-	result at: 32 put: (OrderedCollection new: 2).
-	result at: 34 put: ((nodes at: 1) at: 1).
-	self add: ((nodes at: 1) at: 2) to: (result at: 3).
-	result at: 33 put: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForswitch_cases1: nodes [
-	| result |
-	result := Array new: 34.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	result at: 30 put: (OrderedCollection new: 2).
-	result at: 31 put: (OrderedCollection new: 2).
-	result at: 32 put: (OrderedCollection new: 2).
-	result at: 33 put: (OrderedCollection new: 2).
-	result at: 34 put: (OrderedCollection new: 2).
-	self add: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
-	self addAll: ((nodes at: 1) at: 13) to: (result at: 13).
-	self addAll: ((nodes at: 1) at: 14) to: (result at: 14).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 15).
-	self addAll: ((nodes at: 1) at: 16) to: (result at: 16).
-	self addAll: ((nodes at: 1) at: 17) to: (result at: 17).
-	self addAll: ((nodes at: 1) at: 18) to: (result at: 18).
-	self addAll: ((nodes at: 1) at: 19) to: (result at: 19).
-	self addAll: ((nodes at: 1) at: 20) to: (result at: 20).
-	self addAll: ((nodes at: 1) at: 21) to: (result at: 21).
-	self addAll: ((nodes at: 1) at: 22) to: (result at: 22).
-	self addAll: ((nodes at: 1) at: 23) to: (result at: 23).
-	self addAll: ((nodes at: 1) at: 24) to: (result at: 24).
-	self addAll: ((nodes at: 1) at: 25) to: (result at: 25).
-	self addAll: ((nodes at: 1) at: 26) to: (result at: 26).
-	self addAll: ((nodes at: 1) at: 27) to: (result at: 27).
-	self addAll: ((nodes at: 1) at: 28) to: (result at: 28).
-	self addAll: ((nodes at: 1) at: 29) to: (result at: 29).
-	self addAll: ((nodes at: 1) at: 30) to: (result at: 30).
-	self addAll: ((nodes at: 1) at: 31) to: (result at: 31).
-	self addAll: ((nodes at: 1) at: 32) to: (result at: 32).
-	self add: ((nodes at: 1) at: 33) to: (result at: 33).
-	self add: ((nodes at: 1) at: 34) to: (result at: 34).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForswitch_cases2: nodes [
-	| result |
-	result := nodes at: 1.
-	self add: ((nodes at: 2) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
-	self addAll: ((nodes at: 2) at: 13) to: (result at: 13).
-	self addAll: ((nodes at: 2) at: 14) to: (result at: 14).
-	self addAll: ((nodes at: 2) at: 15) to: (result at: 15).
-	self addAll: ((nodes at: 2) at: 16) to: (result at: 16).
-	self addAll: ((nodes at: 2) at: 17) to: (result at: 17).
-	self addAll: ((nodes at: 2) at: 18) to: (result at: 18).
-	self addAll: ((nodes at: 2) at: 19) to: (result at: 19).
-	self addAll: ((nodes at: 2) at: 20) to: (result at: 20).
-	self addAll: ((nodes at: 2) at: 21) to: (result at: 21).
-	self addAll: ((nodes at: 2) at: 22) to: (result at: 22).
-	self addAll: ((nodes at: 2) at: 23) to: (result at: 23).
-	self addAll: ((nodes at: 2) at: 24) to: (result at: 24).
-	self addAll: ((nodes at: 2) at: 25) to: (result at: 25).
-	self addAll: ((nodes at: 2) at: 26) to: (result at: 26).
-	self addAll: ((nodes at: 2) at: 27) to: (result at: 27).
-	self addAll: ((nodes at: 2) at: 28) to: (result at: 28).
-	self addAll: ((nodes at: 2) at: 29) to: (result at: 29).
-	self addAll: ((nodes at: 2) at: 30) to: (result at: 30).
-	self addAll: ((nodes at: 2) at: 31) to: (result at: 31).
-	self addAll: ((nodes at: 2) at: 32) to: (result at: 32).
-	self add: ((nodes at: 2) at: 33) to: (result at: 33).
-	self add: ((nodes at: 2) at: 34) to: (result at: 34).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForswitch_statement1: nodes [
-	| result |
-	result := SwiftSwitchStatementNode new.
-	result switchToken: (nodes at: 1).
-	result addObject: (nodes at: 2) to: result expressions.
-	result addToken: (nodes at: 3) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 4) at: 1) to: result caseTokens.
-	result addTokens: ((nodes at: 4) at: 2) to: result _Tokens.
-	result addTokens: ((nodes at: 4) at: 3) to: result colonTokens.
-	result addTokens: ((nodes at: 4) at: 4) to: result identifierTokens.
-	result addTokens: ((nodes at: 4) at: 5) to: result leftParenTokens.
-	result addTokens: ((nodes at: 4) at: 6) to: result rightParenTokens.
-	result addTokens: ((nodes at: 4) at: 7) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 4) at: 8) to: result rightBracketTokens.
-	result
-		addTokens: ((nodes at: 4) at: 9)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 4) at: 10) to: result periodTokens.
-	result
-		addTokens: ((nodes at: 4) at: 11)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 4) at: 12) to: result bangTokens.
-	result addTokens: ((nodes at: 4) at: 13) to: result protocolTokens.
-	result addTokens: ((nodes at: 4) at: 14) to: result lessThanTokens.
-	result addTokens: ((nodes at: 4) at: 15) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 4) at: 16) to: result typeTokens.
-	result addTokens: ((nodes at: 4) at: 17) to: result commaTokens.
-	result
-		addTokens: ((nodes at: 4) at: 18)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 4) at: 19) to: result varTokens.
-	result addTokens: ((nodes at: 4) at: 20) to: result letTokens.
-	result addObjects: ((nodes at: 4) at: 21) to: result expressions.
-	result addTokens: ((nodes at: 4) at: 22) to: result isTokens.
-	result addTokens: ((nodes at: 4) at: 23) to: result asTokens.
-	result addTokens: ((nodes at: 4) at: 24) to: result inoutTokens.
-	result addTokens: ((nodes at: 4) at: 25) to: result whereTokens.
-	result addNodes: ((nodes at: 4) at: 26) to: result statements.
-	result addTokens: ((nodes at: 4) at: 27) to: result semicolonToken.
-	result addTokens: ((nodes at: 4) at: 28) to: result defaultTokens.
-	result addTokens: ((nodes at: 4) at: 29) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 4) at: 30) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 4) at: 31)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 4) at: 32)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 4) at: 33)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 4) at: 34) to: result operatorTokens.
-	result addToken: (nodes at: 5) to: result rightBraceTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFortuple_pattern1: nodes [
-	| result |
-	result := Array new: 29.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
-	self addAll: ((nodes at: 2) at: 13) to: (result at: 13).
-	self addAll: ((nodes at: 2) at: 14) to: (result at: 14).
-	self addAll: ((nodes at: 2) at: 15) to: (result at: 15).
-	self addAll: ((nodes at: 2) at: 16) to: (result at: 16).
-	self addAll: ((nodes at: 2) at: 17) to: (result at: 17).
-	self addAll: ((nodes at: 2) at: 18) to: (result at: 18).
-	self addAll: ((nodes at: 2) at: 19) to: (result at: 19).
-	self addAll: ((nodes at: 2) at: 20) to: (result at: 20).
-	self addAll: ((nodes at: 2) at: 21) to: (result at: 21).
-	self addAll: ((nodes at: 2) at: 22) to: (result at: 22).
-	self addAll: ((nodes at: 2) at: 23) to: (result at: 23).
-	self addAll: ((nodes at: 2) at: 24) to: (result at: 24).
-	self addAll: ((nodes at: 2) at: 25) to: (result at: 25).
-	self addAll: ((nodes at: 2) at: 26) to: (result at: 26).
-	self addAll: ((nodes at: 2) at: 27) to: (result at: 27).
-	self addAll: ((nodes at: 2) at: 28) to: (result at: 28).
-	self addAll: ((nodes at: 2) at: 29) to: (result at: 29).
-	self add: (nodes at: 3) to: (result at: 5).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFortuple_pattern_element_list2: nodes [
-	| result |
-	result := nodes at: 3.
-	self addAllFirst: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAllFirst: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAllFirst: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAllFirst: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAllFirst: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAllFirst: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAllFirst: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAllFirst: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAllFirst: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAllFirst: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAllFirst: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAllFirst: ((nodes at: 1) at: 12) to: (result at: 12).
-	self addAllFirst: ((nodes at: 1) at: 13) to: (result at: 13).
-	self addAllFirst: ((nodes at: 1) at: 14) to: (result at: 14).
-	self addAllFirst: ((nodes at: 1) at: 15) to: (result at: 15).
-	self addAllFirst: ((nodes at: 1) at: 16) to: (result at: 16).
-	self addAllFirst: ((nodes at: 1) at: 17) to: (result at: 17).
-	self addAllFirst: ((nodes at: 1) at: 18) to: (result at: 18).
-	self addAllFirst: ((nodes at: 1) at: 19) to: (result at: 19).
-	self addAllFirst: ((nodes at: 1) at: 20) to: (result at: 20).
-	self addAllFirst: ((nodes at: 1) at: 21) to: (result at: 21).
-	self addAllFirst: ((nodes at: 1) at: 22) to: (result at: 22).
-	self addAllFirst: ((nodes at: 1) at: 23) to: (result at: 23).
-	self addAllFirst: ((nodes at: 1) at: 24) to: (result at: 24).
-	self addAllFirst: ((nodes at: 1) at: 25) to: (result at: 25).
-	self addAllFirst: ((nodes at: 1) at: 26) to: (result at: 26).
-	self addAllFirst: ((nodes at: 1) at: 27) to: (result at: 27).
-	self addAllFirst: ((nodes at: 1) at: 28) to: (result at: 28).
-	self addAllFirst: ((nodes at: 1) at: 29) to: (result at: 29).
-	self addFirst: (nodes at: 2) to: (result at: 22).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFortuple_type1: nodes [
-	| result |
-	result := SwiftTupleTypeNode new.
-	result addToken: (nodes at: 1) to: result leftParenTokens.
-	result addTokens: ((nodes at: 2) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 2) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 2) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 2) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 2) at: 5) to: result inoutTokens.
-	result addTokens: ((nodes at: 2) at: 6) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 2) at: 7) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 2) at: 8) to: result colonTokens.
-	result
-		addTokens: ((nodes at: 2) at: 9)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 10) to: result periodTokens.
-	result
-		addTokens: ((nodes at: 2) at: 11)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 2) at: 12) to: result bangTokens.
-	result addTokens: ((nodes at: 2) at: 13) to: result protocolTokens.
-	result addTokens: ((nodes at: 2) at: 14) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 15) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 16) to: result typeTokens.
-	result addTokens: ((nodes at: 2) at: 17) to: result commaTokens.
-	result
-		addTokens: ((nodes at: 2) at: 18)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 2) at: 19) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 2) at: 20) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 2) at: 21)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 2) at: 22)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 2) at: 23)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 2) at: 24) to: result operatorTokens.
-	result addToken: (nodes at: 3) to: result rightParenTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFortuple_type_body1: nodes [
-	| result |
-	result := Array new: 24.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 19).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 20).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 21).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 22).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 23).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 24).
-	self addAll: ((nodes at: 1) at: 13) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 14) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 16) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 17) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 18) to: (result at: 12).
-	self addAll: ((nodes at: 1) at: 19) to: (result at: 13).
-	self addAll: ((nodes at: 1) at: 20) to: (result at: 14).
-	self addAll: ((nodes at: 1) at: 21) to: (result at: 15).
-	self addAll: ((nodes at: 1) at: 22) to: (result at: 16).
-	self addAll: ((nodes at: 1) at: 23) to: (result at: 17).
-	self addAll: ((nodes at: 1) at: 24) to: (result at: 18).
-	self add: (nodes at: 2) to: (result at: 18).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFortuple_type_element1: nodes [
-	| result |
-	result := Array new: 24.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
-	self add: (nodes at: 2) to: (result at: 13).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFortuple_type_element2: nodes [
-	| result |
-	result := Array new: 24.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 13).
-	self add: (nodes at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 3) at: 1) to: (result at: 14).
-	self addAll: ((nodes at: 3) at: 2) to: (result at: 1).
-	self addAll: ((nodes at: 3) at: 3) to: (result at: 2).
-	self addAll: ((nodes at: 3) at: 4) to: (result at: 3).
-	self addAll: ((nodes at: 3) at: 5) to: (result at: 4).
-	self addAll: ((nodes at: 3) at: 6) to: (result at: 5).
-	self addAll: ((nodes at: 3) at: 7) to: (result at: 6).
-	self addAll: ((nodes at: 3) at: 8) to: (result at: 7).
-	self addAll: ((nodes at: 3) at: 9) to: (result at: 8).
-	self addAll: ((nodes at: 3) at: 10) to: (result at: 9).
-	self addAll: ((nodes at: 3) at: 11) to: (result at: 10).
-	self addAll: ((nodes at: 3) at: 12) to: (result at: 11).
-	self addAll: ((nodes at: 3) at: 13) to: (result at: 12).
-	self addAll: ((nodes at: 3) at: 14) to: (result at: 15).
-	self addAll: ((nodes at: 3) at: 15) to: (result at: 16).
-	self addAll: ((nodes at: 3) at: 16) to: (result at: 17).
-	self addAll: ((nodes at: 3) at: 17) to: (result at: 18).
-	self addAll: ((nodes at: 3) at: 18) to: (result at: 19).
-	self addAll: ((nodes at: 3) at: 19) to: (result at: 20).
-	self addAll: ((nodes at: 3) at: 20) to: (result at: 21).
-	self addAll: ((nodes at: 3) at: 21) to: (result at: 22).
-	self addAll: ((nodes at: 3) at: 22) to: (result at: 23).
-	self addAll: ((nodes at: 3) at: 23) to: (result at: 24).
-	self addAll: ((nodes at: 3) at: 24) to: (result at: 13).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFortuple_type_element_list2: nodes [
-	| result |
-	result := nodes at: 3.
-	self addAllFirst: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAllFirst: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAllFirst: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAllFirst: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAllFirst: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAllFirst: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAllFirst: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAllFirst: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAllFirst: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAllFirst: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAllFirst: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAllFirst: ((nodes at: 1) at: 12) to: (result at: 12).
-	self addAllFirst: ((nodes at: 1) at: 13) to: (result at: 13).
-	self addAllFirst: ((nodes at: 1) at: 14) to: (result at: 14).
-	self addAllFirst: ((nodes at: 1) at: 15) to: (result at: 15).
-	self addAllFirst: ((nodes at: 1) at: 16) to: (result at: 16).
-	self addAllFirst: ((nodes at: 1) at: 17) to: (result at: 17).
-	self addAllFirst: ((nodes at: 1) at: 18) to: (result at: 18).
-	self addAllFirst: ((nodes at: 1) at: 19) to: (result at: 19).
-	self addAllFirst: ((nodes at: 1) at: 20) to: (result at: 20).
-	self addAllFirst: ((nodes at: 1) at: 21) to: (result at: 21).
-	self addAllFirst: ((nodes at: 1) at: 22) to: (result at: 22).
-	self addAllFirst: ((nodes at: 1) at: 23) to: (result at: 23).
-	self addAllFirst: ((nodes at: 1) at: 24) to: (result at: 24).
-	self addFirst: (nodes at: 2) to: (result at: 23).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFortype_casting_operator1: nodes [
-	| result |
-	result := Array new: 4.
-	result at: 1 put: (nodes at: 1).
-	result at: 2 put: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFortype_casting_operator2: nodes [
-	| result |
-	result := Array new: 4.
-	result at: 3 put: (nodes at: 1).
-	result at: 2 put: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFortype_casting_operator3: nodes [
-	| result |
-	result := Array new: 4.
-	result at: 3 put: (nodes at: 1).
-	result at: 4 put: (nodes at: 2).
-	result at: 2 put: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFortype_casting_pattern1: nodes [
-	| result |
-	result := Array new: 29.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	self add: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
-	self addAll: ((nodes at: 1) at: 13) to: (result at: 13).
-	self addAll: ((nodes at: 1) at: 14) to: (result at: 14).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 15).
-	self addAll: ((nodes at: 1) at: 16) to: (result at: 16).
-	self addAll: ((nodes at: 1) at: 17) to: (result at: 17).
-	self addAll: ((nodes at: 1) at: 18) to: (result at: 18).
-	self addAll: ((nodes at: 1) at: 19) to: (result at: 19).
-	self addAll: ((nodes at: 1) at: 20) to: (result at: 20).
-	self addAll: ((nodes at: 1) at: 21) to: (result at: 21).
-	self addAll: ((nodes at: 1) at: 22) to: (result at: 22).
-	self addAll: ((nodes at: 1) at: 23) to: (result at: 23).
-	self addAll: ((nodes at: 1) at: 24) to: (result at: 24).
-	self addAll: ((nodes at: 1) at: 25) to: (result at: 25).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFortype_casting_pattern2: nodes [
-	| result |
-	result := Array new: 29.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 18).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 15).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 20).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 21).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 22).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 23).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 24).
-	self addAll: ((nodes at: 1) at: 13) to: (result at: 25).
-	self addAll: ((nodes at: 1) at: 14) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 16) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 17) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 18) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 19) to: (result at: 12).
-	self addAll: ((nodes at: 1) at: 20) to: (result at: 13).
-	self addAll: ((nodes at: 1) at: 21) to: (result at: 14).
-	self addAll: ((nodes at: 1) at: 22) to: (result at: 16).
-	self addAll: ((nodes at: 1) at: 23) to: (result at: 17).
-	self addAll: ((nodes at: 1) at: 24) to: (result at: 19).
-	self addAll: ((nodes at: 1) at: 25) to: (result at: 26).
-	self addAll: ((nodes at: 1) at: 26) to: (result at: 27).
-	self addAll: ((nodes at: 1) at: 27) to: (result at: 28).
-	self addAll: ((nodes at: 1) at: 28) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 29) to: (result at: 29).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFortype_identifier1: nodes [
-	| result |
-	result := SwiftTypeIdentifierNode new.
-	result addToken: (nodes at: 1) to: result identifierTokens.
-	result addToken: ((nodes at: 2) at: 1) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 2) to: result commaTokens.
-	result addToken: ((nodes at: 2) at: 3) to: result greaterThanTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFortype_identifier2: nodes [
-	| result |
-	result := nodes at: 4.
-	result addFirstToken: (nodes at: 1) to: result identifierTokens.
-	result addFirstToken: ((nodes at: 2) at: 1) to: result lessThanTokens.
-	result addFirstTokens: ((nodes at: 2) at: 2) to: result commaTokens.
-	result
-		addFirstToken: ((nodes at: 2) at: 3)
-		to: result greaterThanTokens.
-	result addFirstToken: (nodes at: 3) to: result periodTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFortype_inheritance_clause1: nodes [
-	| result |
-	result := Array new: 6.
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 1 put: (nodes at: 1).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFortype_inheritance_list1: nodes [
-	| result |
-	result := Array new: 5.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFortype_inheritance_list2: nodes [
-	| result |
-	result := nodes at: 1.
-	self add: (nodes at: 2) to: (result at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFortypealias_declaration1: nodes [
-	| result |
-	result := SwiftTypealiasDeclarationNode new.
-	result typealiasToken: ((nodes at: 1) at: 1).
-	result addToken: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result equalToken: ((nodes at: 2) at: 1).
-	result addTokens: ((nodes at: 2) at: 2) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 2) at: 3) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 2) at: 4) to: result colonTokens.
-	result
-		addTokens: ((nodes at: 2) at: 5)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 6) to: result periodTokens.
-	result addTokens: ((nodes at: 2) at: 7) to: result leftParenTokens.
-	result addTokens: ((nodes at: 2) at: 8) to: result rightParenTokens.
-	result addTokens: ((nodes at: 2) at: 9) to: result questionMarkTokens.
-	result addTokens: ((nodes at: 2) at: 10) to: result bangTokens.
-	result addTokens: ((nodes at: 2) at: 11) to: result protocolTokens.
-	result addTokens: ((nodes at: 2) at: 12) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 13) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 14) to: result typeTokens.
-	result addTokens: ((nodes at: 2) at: 15) to: result identifierTokens.
-	result addTokens: ((nodes at: 2) at: 16) to: result commaTokens.
-	result
-		addTokens: ((nodes at: 2) at: 17)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 2) at: 18) to: result _Tokens.
-	result addTokens: ((nodes at: 2) at: 19) to: result inoutTokens.
-	result addTokens: ((nodes at: 2) at: 20) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 2) at: 21) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 2) at: 22)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 2) at: 23)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 2) at: 24)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 2) at: 25) to: result operatorTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFortypealias_head1: nodes [
-	| result |
-	result := Array new: 2.
-	result at: 1 put: (nodes at: 1).
-	result at: 2 put: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForunion_style_enum1: nodes [
-	| result |
-	result := Array new: 57.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	result at: 30 put: (OrderedCollection new: 2).
-	result at: 31 put: (OrderedCollection new: 2).
-	result at: 32 put: (OrderedCollection new: 2).
-	result at: 33 put: (OrderedCollection new: 2).
-	result at: 34 put: (OrderedCollection new: 2).
-	result at: 35 put: (OrderedCollection new: 2).
-	result at: 36 put: (OrderedCollection new: 2).
-	result at: 37 put: (OrderedCollection new: 2).
-	result at: 38 put: (OrderedCollection new: 2).
-	result at: 39 put: (OrderedCollection new: 2).
-	result at: 40 put: (OrderedCollection new: 2).
-	result at: 41 put: (OrderedCollection new: 2).
-	result at: 42 put: (OrderedCollection new: 2).
-	result at: 43 put: (OrderedCollection new: 2).
-	result at: 44 put: (OrderedCollection new: 2).
-	result at: 45 put: (OrderedCollection new: 2).
-	result at: 46 put: (OrderedCollection new: 2).
-	result at: 47 put: (OrderedCollection new: 2).
-	result at: 48 put: (OrderedCollection new: 2).
-	result at: 49 put: (OrderedCollection new: 2).
-	result at: 50 put: (OrderedCollection new: 2).
-	result at: 51 put: (OrderedCollection new: 2).
-	result at: 52 put: (OrderedCollection new: 2).
-	result at: 53 put: (OrderedCollection new: 2).
-	result at: 54 put: (OrderedCollection new: 2).
-	result at: 55 put: (OrderedCollection new: 2).
-	result at: 56 put: (OrderedCollection new: 2).
-	result at: 57 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 7).
-	self add: ((nodes at: 2) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
-	self add: (nodes at: 3) to: (result at: 10).
-	self addAll: ((nodes at: 4) at: 1) to: (result at: 11).
-	self addAll: ((nodes at: 4) at: 2) to: (result at: 1).
-	self addAll: ((nodes at: 4) at: 3) to: (result at: 12).
-	self addAll: ((nodes at: 4) at: 4) to: (result at: 13).
-	self addAll: ((nodes at: 4) at: 5) to: (result at: 14).
-	self addAll: ((nodes at: 4) at: 6) to: (result at: 15).
-	self addAll: ((nodes at: 4) at: 7) to: (result at: 16).
-	self addAll: ((nodes at: 4) at: 8) to: (result at: 17).
-	self addAll: ((nodes at: 4) at: 9) to: (result at: 18).
-	self addAll: ((nodes at: 4) at: 10) to: (result at: 7).
-	self addAll: ((nodes at: 4) at: 11) to: (result at: 19).
-	self addAll: ((nodes at: 4) at: 12) to: (result at: 20).
-	self addAll: ((nodes at: 4) at: 13) to: (result at: 21).
-	self addAll: ((nodes at: 4) at: 14) to: (result at: 6).
-	self addAll: ((nodes at: 4) at: 15) to: (result at: 22).
-	self addAll: ((nodes at: 4) at: 16) to: (result at: 23).
-	self addAll: ((nodes at: 4) at: 17) to: (result at: 24).
-	self addAll: ((nodes at: 4) at: 18) to: (result at: 25).
-	self addAll: ((nodes at: 4) at: 19) to: (result at: 26).
-	self addAll: ((nodes at: 4) at: 20) to: (result at: 27).
-	self addAll: ((nodes at: 4) at: 21) to: (result at: 28).
-	self addAll: ((nodes at: 4) at: 22) to: (result at: 29).
-	self addAll: ((nodes at: 4) at: 23) to: (result at: 30).
-	self addAll: ((nodes at: 4) at: 24) to: (result at: 31).
-	self addAll: ((nodes at: 4) at: 25) to: (result at: 5).
-	self addAll: ((nodes at: 4) at: 26) to: (result at: 3).
-	self addAll: ((nodes at: 4) at: 27) to: (result at: 32).
-	self addAll: ((nodes at: 4) at: 28) to: (result at: 33).
-	self addAll: ((nodes at: 4) at: 29) to: (result at: 34).
-	self addAll: ((nodes at: 4) at: 30) to: (result at: 35).
-	self addAll: ((nodes at: 4) at: 31) to: (result at: 36).
-	self addAll: ((nodes at: 4) at: 32) to: (result at: 2).
-	self addAll: ((nodes at: 4) at: 33) to: (result at: 4).
-	self addAll: ((nodes at: 4) at: 34) to: (result at: 37).
-	self addAll: ((nodes at: 4) at: 35) to: (result at: 47).
-	self addAll: ((nodes at: 4) at: 36) to: (result at: 38).
-	self addAll: ((nodes at: 4) at: 37) to: (result at: 39).
-	self addAll: ((nodes at: 4) at: 38) to: (result at: 10).
-	self addAll: ((nodes at: 4) at: 39) to: (result at: 40).
-	self addAll: ((nodes at: 4) at: 40) to: (result at: 41).
-	self addAll: ((nodes at: 4) at: 41) to: (result at: 42).
-	self addAll: ((nodes at: 4) at: 42) to: (result at: 43).
-	self addAll: ((nodes at: 4) at: 43) to: (result at: 44).
-	self addAll: ((nodes at: 4) at: 44) to: (result at: 45).
-	self addAll: ((nodes at: 4) at: 45) to: (result at: 46).
-	self addAll: ((nodes at: 4) at: 46) to: (result at: 8).
-	self addAll: ((nodes at: 4) at: 47) to: (result at: 9).
-	self addAll: ((nodes at: 4) at: 48) to: (result at: 48).
-	self addAll: ((nodes at: 4) at: 49) to: (result at: 49).
-	self addAll: ((nodes at: 4) at: 50) to: (result at: 50).
-	self addAll: ((nodes at: 4) at: 51) to: (result at: 51).
-	self addAll: ((nodes at: 4) at: 52) to: (result at: 52).
-	self addAll: ((nodes at: 4) at: 53) to: (result at: 53).
-	self addAll: ((nodes at: 4) at: 54) to: (result at: 54).
-	self addAll: ((nodes at: 4) at: 55) to: (result at: 55).
-	self addAll: ((nodes at: 4) at: 56) to: (result at: 56).
-	self addAll: ((nodes at: 4) at: 57) to: (result at: 57).
-	self add: (nodes at: 5) to: (result at: 42).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForunion_style_enum_case1: nodes [
-	| result |
-	result := Array new: 24.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForunion_style_enum_case_clause1: nodes [
-	| result |
-	result := Array new: 25.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
-	result at: 13 put: (nodes at: 2).
-	self addAll: ((nodes at: 3) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 3) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 3) at: 3) to: (result at: 1).
-	self addAll: ((nodes at: 3) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 3) at: 5) to: (result at: 16).
-	self addAll: ((nodes at: 3) at: 6) to: (result at: 5).
-	self addAll: ((nodes at: 3) at: 7) to: (result at: 6).
-	self addAll: ((nodes at: 3) at: 8) to: (result at: 14).
-	self addAll: ((nodes at: 3) at: 9) to: (result at: 17).
-	self addAll: ((nodes at: 3) at: 10) to: (result at: 18).
-	self addAll: ((nodes at: 3) at: 11) to: (result at: 19).
-	self addAll: ((nodes at: 3) at: 12) to: (result at: 20).
-	self addAll: ((nodes at: 3) at: 13) to: (result at: 21).
-	self addAll: ((nodes at: 3) at: 14) to: (result at: 22).
-	self addAll: ((nodes at: 3) at: 15) to: (result at: 23).
-	self addAll: ((nodes at: 3) at: 16) to: (result at: 24).
-	self addAll: ((nodes at: 3) at: 17) to: (result at: 15).
-	self addAll: ((nodes at: 3) at: 18) to: (result at: 25).
-	self addAll: ((nodes at: 3) at: 19) to: (result at: 7).
-	self addAll: ((nodes at: 3) at: 20) to: (result at: 8).
-	self addAll: ((nodes at: 3) at: 21) to: (result at: 9).
-	self addAll: ((nodes at: 3) at: 22) to: (result at: 10).
-	self addAll: ((nodes at: 3) at: 23) to: (result at: 11).
-	self addAll: ((nodes at: 3) at: 24) to: (result at: 12).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForunion_style_enum_case_list2: nodes [
-	| result |
-	result := nodes at: 3.
-	self addAllFirst: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAllFirst: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAllFirst: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAllFirst: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAllFirst: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAllFirst: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAllFirst: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAllFirst: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAllFirst: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAllFirst: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAllFirst: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAllFirst: ((nodes at: 1) at: 12) to: (result at: 12).
-	self addAllFirst: ((nodes at: 1) at: 13) to: (result at: 13).
-	self addAllFirst: ((nodes at: 1) at: 14) to: (result at: 14).
-	self addAllFirst: ((nodes at: 1) at: 15) to: (result at: 15).
-	self addAllFirst: ((nodes at: 1) at: 16) to: (result at: 16).
-	self addAllFirst: ((nodes at: 1) at: 17) to: (result at: 17).
-	self addAllFirst: ((nodes at: 1) at: 18) to: (result at: 18).
-	self addAllFirst: ((nodes at: 1) at: 19) to: (result at: 19).
-	self addAllFirst: ((nodes at: 1) at: 20) to: (result at: 20).
-	self addAllFirst: ((nodes at: 1) at: 21) to: (result at: 21).
-	self addAllFirst: ((nodes at: 1) at: 22) to: (result at: 22).
-	self addAllFirst: ((nodes at: 1) at: 23) to: (result at: 23).
-	self addAllFirst: ((nodes at: 1) at: 24) to: (result at: 24).
-	self addFirst: (nodes at: 2) to: (result at: 17).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForunion_style_enum_member2: nodes [
-	| result |
-	result := Array new: 57.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	result at: 30 put: (OrderedCollection new: 2).
-	result at: 31 put: (OrderedCollection new: 2).
-	result at: 32 put: (OrderedCollection new: 2).
-	result at: 33 put: (OrderedCollection new: 2).
-	result at: 34 put: (OrderedCollection new: 2).
-	result at: 35 put: (OrderedCollection new: 2).
-	result at: 36 put: (OrderedCollection new: 2).
-	result at: 37 put: (OrderedCollection new: 2).
-	result at: 38 put: (OrderedCollection new: 2).
-	result at: 39 put: (OrderedCollection new: 2).
-	result at: 40 put: (OrderedCollection new: 2).
-	result at: 41 put: (OrderedCollection new: 2).
-	result at: 42 put: (OrderedCollection new: 2).
-	result at: 43 put: (OrderedCollection new: 2).
-	result at: 44 put: (OrderedCollection new: 2).
-	result at: 45 put: (OrderedCollection new: 2).
-	result at: 46 put: (OrderedCollection new: 2).
-	result at: 47 put: (OrderedCollection new: 2).
-	result at: 48 put: (OrderedCollection new: 2).
-	result at: 49 put: (OrderedCollection new: 2).
-	result at: 50 put: (OrderedCollection new: 2).
-	result at: 51 put: (OrderedCollection new: 2).
-	result at: 52 put: (OrderedCollection new: 2).
-	result at: 53 put: (OrderedCollection new: 2).
-	result at: 54 put: (OrderedCollection new: 2).
-	result at: 55 put: (OrderedCollection new: 2).
-	result at: 56 put: (OrderedCollection new: 2).
-	result at: 57 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
-	self add: ((nodes at: 1) at: 13) to: (result at: 57).
-	self addAll: ((nodes at: 1) at: 14) to: (result at: 33).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 32).
-	self addAll: ((nodes at: 1) at: 16) to: (result at: 41).
-	self addAll: ((nodes at: 1) at: 17) to: (result at: 34).
-	self addAll: ((nodes at: 1) at: 18) to: (result at: 21).
-	self addAll: ((nodes at: 1) at: 19) to: (result at: 35).
-	self addAll: ((nodes at: 1) at: 20) to: (result at: 36).
-	self addAll: ((nodes at: 1) at: 21) to: (result at: 18).
-	self addAll: ((nodes at: 1) at: 22) to: (result at: 37).
-	self addAll: ((nodes at: 1) at: 23) to: (result at: 38).
-	self addAll: ((nodes at: 1) at: 24) to: (result at: 39).
-	self addAll: ((nodes at: 1) at: 25) to: (result at: 40).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForunion_style_enum_members2: nodes [
-	| result |
-	result := nodes at: 2.
-	self addAllFirst: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAllFirst: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAllFirst: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAllFirst: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAllFirst: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAllFirst: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAllFirst: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAllFirst: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAllFirst: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAllFirst: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAllFirst: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAllFirst: ((nodes at: 1) at: 12) to: (result at: 12).
-	self addAllFirst: ((nodes at: 1) at: 13) to: (result at: 13).
-	self addAllFirst: ((nodes at: 1) at: 14) to: (result at: 14).
-	self addAllFirst: ((nodes at: 1) at: 15) to: (result at: 15).
-	self addAllFirst: ((nodes at: 1) at: 16) to: (result at: 16).
-	self addAllFirst: ((nodes at: 1) at: 17) to: (result at: 17).
-	self addAllFirst: ((nodes at: 1) at: 18) to: (result at: 18).
-	self addAllFirst: ((nodes at: 1) at: 19) to: (result at: 19).
-	self addAllFirst: ((nodes at: 1) at: 20) to: (result at: 20).
-	self addAllFirst: ((nodes at: 1) at: 21) to: (result at: 21).
-	self addAllFirst: ((nodes at: 1) at: 22) to: (result at: 22).
-	self addAllFirst: ((nodes at: 1) at: 23) to: (result at: 23).
-	self addAllFirst: ((nodes at: 1) at: 24) to: (result at: 24).
-	self addAllFirst: ((nodes at: 1) at: 25) to: (result at: 25).
-	self addAllFirst: ((nodes at: 1) at: 26) to: (result at: 26).
-	self addAllFirst: ((nodes at: 1) at: 27) to: (result at: 27).
-	self addAllFirst: ((nodes at: 1) at: 28) to: (result at: 28).
-	self addAllFirst: ((nodes at: 1) at: 29) to: (result at: 29).
-	self addAllFirst: ((nodes at: 1) at: 30) to: (result at: 30).
-	self addAllFirst: ((nodes at: 1) at: 31) to: (result at: 31).
-	self addAllFirst: ((nodes at: 1) at: 32) to: (result at: 32).
-	self addAllFirst: ((nodes at: 1) at: 33) to: (result at: 33).
-	self addAllFirst: ((nodes at: 1) at: 34) to: (result at: 34).
-	self addAllFirst: ((nodes at: 1) at: 35) to: (result at: 35).
-	self addAllFirst: ((nodes at: 1) at: 36) to: (result at: 36).
-	self addAllFirst: ((nodes at: 1) at: 37) to: (result at: 37).
-	self addAllFirst: ((nodes at: 1) at: 38) to: (result at: 38).
-	self addAllFirst: ((nodes at: 1) at: 39) to: (result at: 39).
-	self addAllFirst: ((nodes at: 1) at: 40) to: (result at: 40).
-	self addAllFirst: ((nodes at: 1) at: 41) to: (result at: 41).
-	self addAllFirst: ((nodes at: 1) at: 42) to: (result at: 42).
-	self addAllFirst: ((nodes at: 1) at: 43) to: (result at: 43).
-	self addAllFirst: ((nodes at: 1) at: 44) to: (result at: 44).
-	self addAllFirst: ((nodes at: 1) at: 45) to: (result at: 45).
-	self addAllFirst: ((nodes at: 1) at: 46) to: (result at: 46).
-	self addAllFirst: ((nodes at: 1) at: 47) to: (result at: 47).
-	self addAllFirst: ((nodes at: 1) at: 48) to: (result at: 48).
-	self addAllFirst: ((nodes at: 1) at: 49) to: (result at: 49).
-	self addAllFirst: ((nodes at: 1) at: 50) to: (result at: 50).
-	self addAllFirst: ((nodes at: 1) at: 51) to: (result at: 51).
-	self addAllFirst: ((nodes at: 1) at: 52) to: (result at: 52).
-	self addAllFirst: ((nodes at: 1) at: 53) to: (result at: 53).
-	self addAllFirst: ((nodes at: 1) at: 54) to: (result at: 54).
-	self addAllFirst: ((nodes at: 1) at: 55) to: (result at: 55).
-	self addAllFirst: ((nodes at: 1) at: 56) to: (result at: 56).
-	self addAllFirst: ((nodes at: 1) at: 57) to: (result at: 57).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForvalue_binding_pattern1: nodes [
-	| result |
-	result := Array new: 29.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 7).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 8) to: (result at: 9).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 10).
-	self addAll: ((nodes at: 2) at: 10) to: (result at: 11).
-	self addAll: ((nodes at: 2) at: 11) to: (result at: 12).
-	self addAll: ((nodes at: 2) at: 12) to: (result at: 13).
-	self addAll: ((nodes at: 2) at: 13) to: (result at: 14).
-	self addAll: ((nodes at: 2) at: 14) to: (result at: 15).
-	self addAll: ((nodes at: 2) at: 15) to: (result at: 16).
-	self addAll: ((nodes at: 2) at: 16) to: (result at: 17).
-	self addAll: ((nodes at: 2) at: 17) to: (result at: 18).
-	self addAll: ((nodes at: 2) at: 18) to: (result at: 19).
-	self addAll: ((nodes at: 2) at: 19) to: (result at: 20).
-	self addAll: ((nodes at: 2) at: 20) to: (result at: 21).
-	self addAll: ((nodes at: 2) at: 21) to: (result at: 22).
-	self addAll: ((nodes at: 2) at: 22) to: (result at: 23).
-	self addAll: ((nodes at: 2) at: 23) to: (result at: 24).
-	self addAll: ((nodes at: 2) at: 24) to: (result at: 25).
-	self addAll: ((nodes at: 2) at: 25) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 26) to: (result at: 26).
-	self addAll: ((nodes at: 2) at: 27) to: (result at: 27).
-	self addAll: ((nodes at: 2) at: 28) to: (result at: 28).
-	self addAll: ((nodes at: 2) at: 29) to: (result at: 29).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForvalue_binding_pattern2: nodes [
-	| result |
-	result := Array new: 29.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 26).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 7).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 8) to: (result at: 9).
-	self addAll: ((nodes at: 2) at: 9) to: (result at: 10).
-	self addAll: ((nodes at: 2) at: 10) to: (result at: 11).
-	self addAll: ((nodes at: 2) at: 11) to: (result at: 12).
-	self addAll: ((nodes at: 2) at: 12) to: (result at: 13).
-	self addAll: ((nodes at: 2) at: 13) to: (result at: 14).
-	self addAll: ((nodes at: 2) at: 14) to: (result at: 15).
-	self addAll: ((nodes at: 2) at: 15) to: (result at: 16).
-	self addAll: ((nodes at: 2) at: 16) to: (result at: 17).
-	self addAll: ((nodes at: 2) at: 17) to: (result at: 18).
-	self addAll: ((nodes at: 2) at: 18) to: (result at: 19).
-	self addAll: ((nodes at: 2) at: 19) to: (result at: 20).
-	self addAll: ((nodes at: 2) at: 20) to: (result at: 21).
-	self addAll: ((nodes at: 2) at: 21) to: (result at: 22).
-	self addAll: ((nodes at: 2) at: 22) to: (result at: 23).
-	self addAll: ((nodes at: 2) at: 23) to: (result at: 24).
-	self addAll: ((nodes at: 2) at: 24) to: (result at: 25).
-	self addAll: ((nodes at: 2) at: 25) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 26) to: (result at: 26).
-	self addAll: ((nodes at: 2) at: 27) to: (result at: 27).
-	self addAll: ((nodes at: 2) at: 28) to: (result at: 28).
-	self addAll: ((nodes at: 2) at: 29) to: (result at: 29).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForvariable_declaration1: nodes [
-	| result |
-	result := SwiftVariableDeclarationNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
-	result addTokens: ((nodes at: 1) at: 13) to: result classTokens.
-	result addTokens: ((nodes at: 1) at: 14) to: result mutatingTokens.
-	result addTokens: ((nodes at: 1) at: 15) to: result nonmutatingTokens.
-	result addTokens: ((nodes at: 1) at: 16) to: result overrideTokens.
-	result addTokens: ((nodes at: 1) at: 17) to: result staticTokens.
-	result addTokens: ((nodes at: 1) at: 18) to: result unownedTokens.
-	result
-		addTokens: ((nodes at: 1) at: 19)
-		to: result unownedLeftParensafeRightParenTokens.
-	result
-		addTokens: ((nodes at: 1) at: 20)
-		to: result unownedLeftParenunsafeRightParenTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result weakTokens.
-	result varToken: ((nodes at: 1) at: 22).
-	result addNodes: ((nodes at: 2) at: 1) to: result inializers.
-	result addTokens: ((nodes at: 2) at: 2) to: result commaTokens.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForvariable_declaration2: nodes [
-	| result |
-	result := SwiftVariableDeclarationNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
-	result addTokens: ((nodes at: 1) at: 13) to: result classTokens.
-	result addTokens: ((nodes at: 1) at: 14) to: result mutatingTokens.
-	result addTokens: ((nodes at: 1) at: 15) to: result nonmutatingTokens.
-	result addTokens: ((nodes at: 1) at: 16) to: result overrideTokens.
-	result addTokens: ((nodes at: 1) at: 17) to: result staticTokens.
-	result addTokens: ((nodes at: 1) at: 18) to: result unownedTokens.
-	result
-		addTokens: ((nodes at: 1) at: 19)
-		to: result unownedLeftParensafeRightParenTokens.
-	result
-		addTokens: ((nodes at: 1) at: 20)
-		to: result unownedLeftParenunsafeRightParenTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result weakTokens.
-	result varToken: ((nodes at: 1) at: 22).
-	result addToken: (nodes at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 3) at: 1) to: result colonTokens.
-	result addTokens: ((nodes at: 3) at: 2) to: result _Tokens.
-	result addTokens: ((nodes at: 3) at: 3) to: result identifierTokens.
-	result addTokens: ((nodes at: 3) at: 4) to: result leftParenTokens.
-	result addTokens: ((nodes at: 3) at: 5) to: result rightParenTokens.
-	result addTokens: ((nodes at: 3) at: 6) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 3) at: 7) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 3) at: 8) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 3) at: 9) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 3) at: 10)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 3) at: 11)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 3) at: 12)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 3) at: 13) to: result operatorTokens.
-	result
-		addTokens: ((nodes at: 3) at: 14)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 15) to: result periodTokens.
-	result
-		addTokens: ((nodes at: 3) at: 16)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 3) at: 17) to: result bangTokens.
-	result addTokens: ((nodes at: 3) at: 18) to: result protocolTokens.
-	result addTokens: ((nodes at: 3) at: 19) to: result lessThanTokens.
-	result addTokens: ((nodes at: 3) at: 20) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 21) to: result typeTokens.
-	result addTokens: ((nodes at: 3) at: 22) to: result commaTokens.
-	result
-		addTokens: ((nodes at: 3) at: 23)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 3) at: 24) to: result inoutTokens.
-	result addNode: (nodes at: 4) to: result blocks.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForvariable_declaration3: nodes [
-	| result |
-	result := SwiftVariableDeclarationNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
-	result addTokens: ((nodes at: 1) at: 13) to: result classTokens.
-	result addTokens: ((nodes at: 1) at: 14) to: result mutatingTokens.
-	result addTokens: ((nodes at: 1) at: 15) to: result nonmutatingTokens.
-	result addTokens: ((nodes at: 1) at: 16) to: result overrideTokens.
-	result addTokens: ((nodes at: 1) at: 17) to: result staticTokens.
-	result addTokens: ((nodes at: 1) at: 18) to: result unownedTokens.
-	result
-		addTokens: ((nodes at: 1) at: 19)
-		to: result unownedLeftParensafeRightParenTokens.
-	result
-		addTokens: ((nodes at: 1) at: 20)
-		to: result unownedLeftParenunsafeRightParenTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result weakTokens.
-	result varToken: ((nodes at: 1) at: 22).
-	result addToken: (nodes at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 3) at: 1) to: result colonTokens.
-	result addTokens: ((nodes at: 3) at: 2) to: result _Tokens.
-	result addTokens: ((nodes at: 3) at: 3) to: result identifierTokens.
-	result addTokens: ((nodes at: 3) at: 4) to: result leftParenTokens.
-	result addTokens: ((nodes at: 3) at: 5) to: result rightParenTokens.
-	result addTokens: ((nodes at: 3) at: 6) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 3) at: 7) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 3) at: 8) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 3) at: 9) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 3) at: 10)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 3) at: 11)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 3) at: 12)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 3) at: 13) to: result operatorTokens.
-	result
-		addTokens: ((nodes at: 3) at: 14)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 15) to: result periodTokens.
-	result
-		addTokens: ((nodes at: 3) at: 16)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 3) at: 17) to: result bangTokens.
-	result addTokens: ((nodes at: 3) at: 18) to: result protocolTokens.
-	result addTokens: ((nodes at: 3) at: 19) to: result lessThanTokens.
-	result addTokens: ((nodes at: 3) at: 20) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 21) to: result typeTokens.
-	result addTokens: ((nodes at: 3) at: 22) to: result commaTokens.
-	result
-		addTokens: ((nodes at: 3) at: 23)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 3) at: 24) to: result inoutTokens.
-	result addTokens: ((nodes at: 4) at: 1) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 4) at: 2) to: result _Tokens.
-	result addTokens: ((nodes at: 4) at: 3) to: result identifierTokens.
-	result addTokens: ((nodes at: 4) at: 4) to: result leftParenTokens.
-	result addTokens: ((nodes at: 4) at: 5) to: result rightParenTokens.
-	result addTokens: ((nodes at: 4) at: 6) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 4) at: 7) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 4) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 4) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 4) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 4) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 4) at: 12) to: result operatorTokens.
-	result getToken: ((nodes at: 4) at: 13).
-	result addNodes: ((nodes at: 4) at: 14) to: result blocks.
-	result setToken: ((nodes at: 4) at: 15).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForvariable_declaration4: nodes [
-	| result |
-	result := SwiftVariableDeclarationNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
-	result addTokens: ((nodes at: 1) at: 13) to: result classTokens.
-	result addTokens: ((nodes at: 1) at: 14) to: result mutatingTokens.
-	result addTokens: ((nodes at: 1) at: 15) to: result nonmutatingTokens.
-	result addTokens: ((nodes at: 1) at: 16) to: result overrideTokens.
-	result addTokens: ((nodes at: 1) at: 17) to: result staticTokens.
-	result addTokens: ((nodes at: 1) at: 18) to: result unownedTokens.
-	result
-		addTokens: ((nodes at: 1) at: 19)
-		to: result unownedLeftParensafeRightParenTokens.
-	result
-		addTokens: ((nodes at: 1) at: 20)
-		to: result unownedLeftParenunsafeRightParenTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result weakTokens.
-	result varToken: ((nodes at: 1) at: 22).
-	result addToken: (nodes at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 3) at: 1) to: result colonTokens.
-	result addTokens: ((nodes at: 3) at: 2) to: result _Tokens.
-	result addTokens: ((nodes at: 3) at: 3) to: result identifierTokens.
-	result addTokens: ((nodes at: 3) at: 4) to: result leftParenTokens.
-	result addTokens: ((nodes at: 3) at: 5) to: result rightParenTokens.
-	result addTokens: ((nodes at: 3) at: 6) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 3) at: 7) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 3) at: 8) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 3) at: 9) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 3) at: 10)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 3) at: 11)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 3) at: 12)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 3) at: 13) to: result operatorTokens.
-	result
-		addTokens: ((nodes at: 3) at: 14)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 15) to: result periodTokens.
-	result
-		addTokens: ((nodes at: 3) at: 16)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 3) at: 17) to: result bangTokens.
-	result addTokens: ((nodes at: 3) at: 18) to: result protocolTokens.
-	result addTokens: ((nodes at: 3) at: 19) to: result lessThanTokens.
-	result addTokens: ((nodes at: 3) at: 20) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 21) to: result typeTokens.
-	result addTokens: ((nodes at: 3) at: 22) to: result commaTokens.
-	result
-		addTokens: ((nodes at: 3) at: 23)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 3) at: 24) to: result inoutTokens.
-	result addTokens: ((nodes at: 4) at: 1) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 4) at: 2) to: result _Tokens.
-	result addTokens: ((nodes at: 4) at: 3) to: result identifierTokens.
-	result addTokens: ((nodes at: 4) at: 4) to: result leftParenTokens.
-	result addTokens: ((nodes at: 4) at: 5) to: result rightParenTokens.
-	result addTokens: ((nodes at: 4) at: 6) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 4) at: 7) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 4) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 4) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 4) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 4) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 4) at: 12) to: result operatorTokens.
-	result getToken: ((nodes at: 4) at: 13).
-	result setToken: ((nodes at: 4) at: 14).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForvariable_declaration5: nodes [
-	| result |
-	result := SwiftVariableDeclarationNode new.
-	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
-	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
-	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
-	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 1) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 1) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
-	result addTokens: ((nodes at: 1) at: 13) to: result classTokens.
-	result addTokens: ((nodes at: 1) at: 14) to: result mutatingTokens.
-	result addTokens: ((nodes at: 1) at: 15) to: result nonmutatingTokens.
-	result addTokens: ((nodes at: 1) at: 16) to: result overrideTokens.
-	result addTokens: ((nodes at: 1) at: 17) to: result staticTokens.
-	result addTokens: ((nodes at: 1) at: 18) to: result unownedTokens.
-	result
-		addTokens: ((nodes at: 1) at: 19)
-		to: result unownedLeftParensafeRightParenTokens.
-	result
-		addTokens: ((nodes at: 1) at: 20)
-		to: result unownedLeftParenunsafeRightParenTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result weakTokens.
-	result varToken: ((nodes at: 1) at: 22).
-	result addToken: (nodes at: 2) to: result identifierTokens.
-	result addTokens: ((nodes at: 3) at: 1) to: result colonTokens.
-	result addTokens: ((nodes at: 3) at: 2) to: result _Tokens.
-	result addTokens: ((nodes at: 3) at: 3) to: result identifierTokens.
-	result addTokens: ((nodes at: 3) at: 4) to: result leftParenTokens.
-	result addTokens: ((nodes at: 3) at: 5) to: result rightParenTokens.
-	result addTokens: ((nodes at: 3) at: 6) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 3) at: 7) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 3) at: 8) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 3) at: 9) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 3) at: 10)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 3) at: 11)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 3) at: 12)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 3) at: 13) to: result operatorTokens.
-	result
-		addTokens: ((nodes at: 3) at: 14)
-		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 15) to: result periodTokens.
-	result
-		addTokens: ((nodes at: 3) at: 16)
-		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 3) at: 17) to: result bangTokens.
-	result addTokens: ((nodes at: 3) at: 18) to: result protocolTokens.
-	result addTokens: ((nodes at: 3) at: 19) to: result lessThanTokens.
-	result addTokens: ((nodes at: 3) at: 20) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 21) to: result typeTokens.
-	result addTokens: ((nodes at: 3) at: 22) to: result commaTokens.
-	result
-		addTokens: ((nodes at: 3) at: 23)
-		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 3) at: 24) to: result inoutTokens.
-	result equalToken: ((nodes at: 4) at: 1).
-	result expression: ((nodes at: 4) at: 2).
-	result addTokens: ((nodes at: 5) at: 1) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 5) at: 2) to: result _Tokens.
-	result addTokens: ((nodes at: 5) at: 3) to: result identifierTokens.
-	result addTokens: ((nodes at: 5) at: 4) to: result leftParenTokens.
-	result addTokens: ((nodes at: 5) at: 5) to: result rightParenTokens.
-	result addTokens: ((nodes at: 5) at: 6) to: result leftBracketTokens.
-	result addTokens: ((nodes at: 5) at: 7) to: result rightBracketTokens.
-	result addTokens: ((nodes at: 5) at: 8) to: result rightBraceTokens.
-	result
-		addTokens: ((nodes at: 5) at: 9)
-		to: result integer_literalTokens.
-	result
-		addTokens: ((nodes at: 5) at: 10)
-		to: result floating_point_literalTokens.
-	result
-		addTokens: ((nodes at: 5) at: 11)
-		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 5) at: 12) to: result operatorTokens.
-	result willSetToken: ((nodes at: 5) at: 13).
-	result addNodes: ((nodes at: 5) at: 14) to: result blocks.
-	result didSetToken: ((nodes at: 5) at: 15).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForwhile_statement1: nodes [
-	| result |
-	result := SwiftWhileStatementNode new.
-	result whileToken: (nodes at: 1).
-	result expression: (nodes at: 2).
-	result block: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionForwildcard_expression1: nodes [
-	| result |
-	result := SwiftWildcardExpressionNode new.
-	result _Token: (nodes at: 1).
-	^ result
-]
-
-{ #category : #generated }
-SwiftParser >> reduceTable [
+SwiftParser class >> reduceTable [
 ^#(
 	#(315 0 #reduceActionFor_attributes1:) 
 	#(354 0 #reduceActionFor_statements1:) 
@@ -9855,7 +1435,7 @@ SwiftParser >> reduceTable [
 	#(363 1 #reduceActionFor_statements2:) 
 	#(294 2 #reduceActionFortype_identifier1:) 
 	#(239 1 #reduceActionFor_statements2:) 
-	#(357 1 #reduceActionFor_tuple_pattern_element_list2:) 
+	#(357 1 #reduceActionFor_statements2:) 
 	#(238 1 #reduceActionFor_statements2:) 
 	#(359 0 #reduceActionFor_type_annotation1:) 
 	#(242 2 #reduceActionForis_pattern1:) 
@@ -10009,7 +1589,7 @@ SwiftParser >> reduceTable [
 	#(296 3 #reduceActionFortuple_type1:) 
 	#(302 3 #reduceActionForarray_type1:) 
 	#(308 1 #liftFirstValue:) 
-	#(345 1 #reduceActionFor_protocol_identifier_list2:) 
+	#(345 1 #reduceActionFor_statements2:) 
 	#(307 1 #reduceActionFortype_inheritance_list1:) 
 	#(301 3 #reduceActionForfunction_type1:) 
 	#(309 3 #reduceActionFormetatype_type2:) 
@@ -10101,7 +1681,7 @@ SwiftParser >> reduceTable [
 	#(185 2 #reduceActionForunion_style_enum_members2:) 
 	#(184 5 #reduceActionForunion_style_enum1:) 
 	#(303 5 #reduceActionFordictionary_type1:) 
-	#(307 3 #reduceActionForexpression_element_list2:) 
+	#(307 3 #reduceActionFortype_inheritance_list2:) 
 	#(102 7 #reduceActionForfor_statement1:) 
 	#(232 1 #reduceActionForliteral1:) 
 	#(232 1 #reduceActionForliteral3:) 
@@ -10153,7 +1733,7 @@ SwiftParser >> reduceTable [
 	#(347 0 #reduceActionFor_associativity_clause1:) 
 	#(195 3 #reduceActionForraw_value_style_enum_case_clause1:) 
 	#(196 1 #reduceActionForraw_value_style_enum_case_list1:) 
-	#(188 3 #reduceActionForunion_style_enum_case_list2:) 
+	#(188 3 #reduceActionFortuple_type_element_list2:) 
 	#(182 2 #reduceActionFortypealias_head1:) 
 	#(347 1 #reduceActionFor_statements2:) 
 	#(197 2 #reduceActionForraw_value_style_enum_case1:) 
@@ -10162,18 +1742,28 @@ SwiftParser >> reduceTable [
 	).
 ]
 
+{ #category : #'generated-accessing' }
+SwiftParser class >> scannerClass [
+	^SwiftScanner
+]
+
 { #category : #generated }
-SwiftParser >> symbolNames [
+SwiftParser class >> startingStateForfile [
+	^ 1
+]
+
+{ #category : #generated }
+SwiftParser class >> symbolNames [
 	^ #('"!"' '"#"' '"&"' '"("' '")"' '","' '"->"' '"."' '"..."' '":"' '";"' '"<"' '"="' '"=="' '">"' '"?"' '"@"' '"Protocol"' '"Type"' '"["' '"]"' '"_"' '"__COLUMN__"' '"__FILE__"' '"__FUNCTION__"' '"__LINE__"' '"as"' '"associativity"' '"break"' '"case"' '"class"' '"continue"' '"convenience"' '"default"' '"deinit"' '"didSet"' '"do"' '"dynamicType"' '"else"' '"enum"' '"extension"' '"fallthrough"' '"for"' '"func"' '"get"' '"if"' '"import"' '"in"' '"infix"' '"init"' '"inout"' '"is"' '"left"' '"let"' '"mutating"' '"none"' '"nonmutating"' '"operator"' '"override"' '"postfix"' '"precedence"' '"prefix"' '"protocol"' '"return"' '"right"' '"self"' '"set"' '"static"' '"struct"' '"subscript"' '"super"' '"switch"' '"typealias"' '"unowned"' '"unowned(safe)"' '"unowned(unsafe)"' '"var"' '"weak"' '"where"' '"while"' '"willSet"' '"{"' '"}"' '<whitespace>' '<comment>' '<identifier>' '<integer_literal>' '<floating_point_literal>' '<full_string_literal>' '<operator>' 'B e g i n' 'file' 'identifier_list' 'string_literal' 'literal' 'binary_operator' 'prefix_operator' 'postfix_operator' 'statement' 'statements' 'loop_statement' 'for_statement' 'for_init' 'for_in_statement' 'while_statement' 'while_condition' 'do_while_statement' 'branch_statement' 'if_statement' 'if_condition' 'else_clause' 'switch_statement' 'switch_cases' 'switch_case' 'case_label' 'case_item_list' 'default_label' 'guard_clause' 'guard_expression' 'labeled_statement' 'statement_label' 'label_name' 'control_transfer_statement' 'break_statement' 'continue_statement' 'fallthrough_statement' 'return_statement' 'generic_parameter_clause' 'generic_parameter_list' 'generic_parameter' 'requirement_clause' 'requirement_list' 'requirement' 'conformance_requirement' 'same_type_requirement' 'generic_argument_clause' 'generic_argument_list' 'generic_argument' 'declaration' 'declarations' 'declaration_specifiers' 'declaration_specifier' 'top_level_declaration' 'code_block' 'import_declaration' 'import_kind' 'import_path' 'import_path_identifier' 'constant_declaration' 'pattern_initializer_list' 'pattern_initializer' 'initializer' 'variable_declaration' 'variable_declaration_head' 'variable_name' 'getter_setter_block' 'getter_clause' 'setter_clause' 'setter_name' 'getter_setter_keyword_block' 'getter_keyword_clause' 'setter_keyword_clause' 'willSet_didSet_block' 'willSet_clause' 'didSet_clause' 'typealias_declaration' 'typealias_head' 'typealias_name' 'typealias_assignment' 'function_declaration' 'function_head' 'function_name' 'function_signature' 'function_result' 'function_body' 'parameter_clauses' 'parameter_clause' 'parameter_list' 'parameter' 'parameter_name' 'local_parameter_name' 'default_argument_clause' 'enum_declaration' 'union_style_enum' 'union_style_enum_members' 'union_style_enum_member' 'union_style_enum_case_clause' 'union_style_enum_case_list' 'union_style_enum_case' 'enum_name' 'enum_case_name' 'raw_value_style_enum' 'raw_value_style_enum_members' 'raw_value_style_enum_member' 'raw_value_style_enum_case_clause' 'raw_value_style_enum_case_list' 'raw_value_style_enum_case' 'raw_value_assignment' 'struct_declaration' 'struct_name' 'struct_body' 'class_declaration' 'class_name' 'class_body' 'protocol_declaration' 'protocol_name' 'protocol_body' 'protocol_member_declaration' 'protocol_member_declarations' 'protocol_property_declaration' 'protocol_method_declaration' 'protocol_initializer_declaration' 'protocol_subscript_declaration' 'protocol_association_type_declaration' 'initializer_declaration' 'initializer_head' 'initializer_body' 'deinitializer_declaration' 'extension_declaration' 'extension_body' 'subscript_declaration' 'subscript_head' 'subscript_result' 'operator_declaration' 'prefix_operator_declaration' 'postfix_operator_declaration' 'infix_operator_declaration' 'infix_operator_attributes' 'precedence_clause' 'precedence_level' 'associativity_clause' 'associativity' 'pattern' 'wildcard_pattern' 'identifier_pattern' 'value_binding_pattern' 'tuple_pattern' 'tuple_pattern_element_list' 'tuple_pattern_element' 'enum_case_pattern' 'type_casting_pattern' 'is_pattern' 'as_pattern' 'expression_pattern' 'attribute' 'attribute_name' 'attribute_argument_clause' 'attributes' 'balanced_tokens' 'balanced_token' 'expression' 'expression_list' 'prefix_expression' 'in_out_expression' 'binary_expression' 'binary_expressions' 'assignment_operator' 'conditional_operator' 'type_casting_operator' 'primary_expression' 'literal_expression' 'array_literal' 'array_literal_items' 'array_literal_item' 'dictionary_literal' 'dictionary_literal_items' 'dictionary_literal_item' 'self_expression' 'superclass_expression' 'superclass_method_expression' 'superclass_subscript_expression' 'superclass_initializer_expression' 'closure_expression' 'closure_signature' 'capture_list' 'capture_specifier' 'implicit_member_expression' 'parenthesized_expression' 'expression_element_list' 'expression_element' 'wildcard_expression' 'postfix_expression' 'function_call_expression' 'trailing_closure' 'initializer_expression' 'explicit_member_expression' 'postfix_self_expression' 'dynamic_type_expression' 'subscript_expression' 'forced_value_expression' 'optional_chaining_expression' 'type' 'type_annotation' 'type_identifier' 'type_name' 'tuple_type' 'tuple_type_body' 'tuple_type_element_list' 'tuple_type_element' 'element_name' 'function_type' 'array_type' 'dictionary_type' 'optional_type' 'implicitly_unwrapped_optional_type' 'protocol_composition_type' 'protocol_identifier_list' 'protocol_identifier' 'metatype_type' 'type_inheritance_clause' 'type_inheritance_list' '_array_literal_items' '_associativity_clause' '_attribute_argument_clause' '_attributes' '_balanced_tokens' '_binary_expressions' '_closure_signature' '_comma' '_convenience' '_declaration_specifiers' '_declarations' '_default_argument_clause' '_didSet_clause' '_ellipsis' '_else_clause' '_expression' '_expression_element_list' '_generic_argument_clause' '_generic_parameter_clause' '_guard_clause' '_for_init' '_function_result' '_hash' '_import_kind' '_infix_operator_attributes' '_initializer' '_inout' '_label_name' '_let' '_local_parameter_name' '_parenthesized_expression' '_precedence_clause' '_prefix_operator' '_protocol_identifier_list' '_protocol_member_declarations' '_raw_value_assignment' '_raw_value_style_enum_members' '_requirement_clause' '_semicolon' '_setter_clause' '_setter_keyword_clause' '_setter_name' '_statements' '_switch_cases' '_tuple_pattern' '_tuple_pattern_element_list' '_tuple_type' '_tuple_type_body' '_typealias_assignment' '_type_annotation' '_type_identifier' '_type_inheritance_clause' '_union_style_enum_members' 'E O F' 'error')
 ]
 
 { #category : #generated }
-SwiftParser >> symbolTypes [
-	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SwiftFileNode #SwiftFileNode #OrderedCollection #SmaCCToken #OrderedCollection #SmaCCToken #SmaCCToken #SmaCCToken #SwiftStatementNode #OrderedCollection #SwiftLoopStatementNode #SwiftForStatementNode #OrderedCollection #SwiftForInStatementNode #SwiftWhileStatementNode #Object #SwiftDoWhileStatementNode #SwiftBranchStatementNode #SwiftIfStatementNode #Object #OrderedCollection #SwiftSwitchStatementNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #Object #SwiftLabeledStatementNode #OrderedCollection #SmaCCToken #SwiftControlTransferStatementNode #SwiftBreakStatementNode #SwiftContinueStatementNode #SwiftFallThroughStatementNode #SwiftReturnStatementNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SwiftParseNode #SwiftParseNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SwiftBlockNode #SwiftImportDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #SwiftConstantDeclarationNode #OrderedCollection #SwiftPatternInitializerNode #OrderedCollection #SwiftVariableDeclarationNode #OrderedCollection #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SwiftTypealiasDeclarationNode #OrderedCollection #SmaCCToken #OrderedCollection #SwiftFunctionDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SwiftBlockNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SwiftEnumDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SwiftStructDeclarationNode #SmaCCToken #OrderedCollection #SwiftClassDeclarationNode #SmaCCToken #OrderedCollection #SwiftProtocolDeclarationNode #SmaCCToken #OrderedCollection #SwiftParseNode #OrderedCollection #SwiftProtocolPropertyDeclarationNode #SwiftProtocolMethodDeclarationNode #SwiftProtocolInitializerDeclarationNode #SwiftProtocolSubscriptDeclarationNode #SwiftProtocolAssociationTypeDeclarationNode #SwiftInitializerDeclarationNode #OrderedCollection #SwiftBlockNode #SwiftDeinitializerDeclarationNode #SwiftExtensionDeclarationNode #OrderedCollection #SwiftSubscriptDeclarationNode #OrderedCollection #OrderedCollection #SwiftParseNode #SwiftPrefixOperatorDeclarationNode #SwiftPostfixOperatorDeclarationNode #SwiftInfixOperatorDeclarationNode #OrderedCollection #OrderedCollection #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #Object #OrderedCollection #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #Object #OrderedCollection #Object #SwiftInOutExpressionNode #SwiftParseNode #OrderedCollection #SmaCCToken #OrderedCollection #OrderedCollection #SwiftParseNode #SwiftLiteralExpressionNode #OrderedCollection #OrderedCollection #Object #OrderedCollection #OrderedCollection #OrderedCollection #SwiftSelfExpressionNode #SwiftParseNode #SwiftSuperclassMethodExpressionNode #SwiftSuperclassSubscriptExpressionNode #SwiftSuperclassInitializerExpressionNode #SwiftClosureExpressionNode #OrderedCollection #OrderedCollection #OrderedCollection #SwiftImplicitMemberExpressionNode #SwiftParenthesizedExpressionNode #OrderedCollection #Object #SwiftWildcardExpressionNode #OrderedCollection #SwiftFunctionCallExpressionNode #SwiftClosureExpressionNode #SwiftInitializerExpressionNode #SwiftExplicitMemberExpressionNode #SwiftPostfixSelfExpressionNode #SwiftDynamicTypeExpressionNode #SwiftSubscriptExpressionNode #SwiftForcedValueExpressionNode #SwiftOptionalChainingExpressionNode #SwiftParseNode #OrderedCollection #SwiftTypeIdentifierNode #SmaCCToken #SwiftTupleTypeNode #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #SwiftFunctionTypeNode #SwiftArrayTypeNode #SwiftDictionaryTypeNode #SwiftOptionalTypeNode #SwiftImplicitlyUnwrappedOptionalTypeNode #SwiftProtocolCompositionTypeNode #OrderedCollection #SwiftTypeIdentifierNode #SwiftMetatypeTypeNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #OrderedCollection #Object #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #SmaCCToken #SmaCCToken #OrderedCollection #SwiftParenthesizedExpressionNode #OrderedCollection #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SwiftTupleTypeNode #OrderedCollection #OrderedCollection #OrderedCollection #SwiftTypeIdentifierNode #OrderedCollection #OrderedCollection #SmaCCToken #SmaCCToken)
+SwiftParser class >> symbolTypes [
+	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SwiftFileNode #SwiftFileNode #OrderedCollection #SmaCCToken #OrderedCollection #SmaCCToken #SmaCCToken #SmaCCToken #SwiftStatementNode #OrderedCollection #SwiftLoopStatementNode #SwiftForStatementNode #OrderedCollection #SwiftForInStatementNode #SwiftWhileStatementNode #Object #SwiftDoWhileStatementNode #SwiftBranchStatementNode #SwiftIfStatementNode #Object #OrderedCollection #SwiftSwitchStatementNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #Object #SwiftLabeledStatementNode #OrderedCollection #SmaCCToken #SwiftControlTransferStatementNode #SwiftBreakStatementNode #SwiftContinueStatementNode #SwiftFallThroughStatementNode #SwiftReturnStatementNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SwiftParseNode #SwiftParseNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SwiftBlockNode #SwiftImportDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #SwiftConstantDeclarationNode #OrderedCollection #SwiftPatternInitializerNode #OrderedCollection #SwiftVariableDeclarationNode #OrderedCollection #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SwiftTypealiasDeclarationNode #OrderedCollection #SmaCCToken #OrderedCollection #SwiftFunctionDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SwiftBlockNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SwiftEnumDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SwiftStructDeclarationNode #SmaCCToken #OrderedCollection #SwiftClassDeclarationNode #SmaCCToken #OrderedCollection #SwiftProtocolDeclarationNode #SmaCCToken #OrderedCollection #SwiftParseNode #OrderedCollection #SwiftProtocolPropertyDeclarationNode #SwiftProtocolMethodDeclarationNode #SwiftProtocolInitializerDeclarationNode #SwiftProtocolSubscriptDeclarationNode #SwiftProtocolAssociationTypeDeclarationNode #SwiftInitializerDeclarationNode #OrderedCollection #SwiftBlockNode #SwiftDeinitializerDeclarationNode #SwiftExtensionDeclarationNode #OrderedCollection #SwiftSubscriptDeclarationNode #OrderedCollection #OrderedCollection #SwiftParseNode #SwiftPrefixOperatorDeclarationNode #SwiftPostfixOperatorDeclarationNode #SwiftInfixOperatorDeclarationNode #OrderedCollection #OrderedCollection #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #Object #OrderedCollection #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #Object #OrderedCollection #Object #SwiftInOutExpressionNode #SwiftParseNode #OrderedCollection #SmaCCToken #OrderedCollection #OrderedCollection #SwiftParseNode #SwiftLiteralExpressionNode #OrderedCollection #OrderedCollection #Object #OrderedCollection #OrderedCollection #OrderedCollection #SwiftSelfExpressionNode #SwiftParseNode #SwiftSuperclassMethodExpressionNode #SwiftSuperclassSubscriptExpressionNode #SwiftSuperclassInitializerExpressionNode #SwiftClosureExpressionNode #OrderedCollection #OrderedCollection #OrderedCollection #SwiftImplicitMemberExpressionNode #SwiftParenthesizedExpressionNode #OrderedCollection #Object #SwiftWildcardExpressionNode #OrderedCollection #SwiftFunctionCallExpressionNode #SwiftClosureExpressionNode #SwiftInitializerExpressionNode #SwiftExplicitMemberExpressionNode #SwiftPostfixSelfExpressionNode #SwiftDynamicTypeExpressionNode #SwiftSubscriptExpressionNode #SwiftForcedValueExpressionNode #SwiftOptionalChainingExpressionNode #SwiftParseNode #OrderedCollection #SwiftTypeIdentifierNode #SmaCCToken #SwiftTupleTypeNode #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #SwiftFunctionTypeNode #SwiftArrayTypeNode #SwiftDictionaryTypeNode #SwiftOptionalTypeNode #SwiftImplicitlyUnwrappedOptionalTypeNode #SwiftProtocolCompositionTypeNode #OrderedCollection #SwiftTypeIdentifierNode #SwiftMetatypeTypeNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #OrderedCollection #Object #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #SmaCCToken #SmaCCToken #OrderedCollection #SwiftParenthesizedExpressionNode #OrderedCollection #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SwiftTupleTypeNode #OrderedCollection #OrderedCollection #OrderedCollection #SwiftTypeIdentifierNode #OrderedCollection #OrderedCollection #SmaCCToken #SmaCCError)
 ]
 
 { #category : #generated }
-SwiftParser >> transitionTable [
+SwiftParser class >> transitionTable [
 ^#(
 #[1 0 9 0 3 0 13 0 4 0 17 0 8 0 21 0 17 0 25 0 20 0 29 0 22 0 33 0 23 0 37 0 24 0 41 0 25 0 45 0 26 0 49 0 29 0 6 0 31 0 53 0 32 0 6 0 33 0 6 0 35 0 57 0 37 0 61 0 41 0 65 0 42 0 69 0 43 0 6 0 44 0 73 0 46 0 6 0 47 0 6 0 50 0 6 0 54 0 6 0 55 0 6 0 57 0 77 0 58 0 6 0 59 0 6 0 63 0 81 0 64 0 85 0 66 0 6 0 68 0 6 0 69 0 6 0 70 0 89 0 71 0 93 0 72 0 97 0 73 0 6 0 74 0 6 0 75 0 6 0 76 0 6 0 77 0 6 0 78 0 101 0 80 0 105 0 82 0 7 0 86 0 113 0 87 0 117 0 88 0 133 0 89 0 141 0 90 0 129 0 92 0 133 0 94 0 137 0 95 0 141 0 97 0 145 0 99 0 149 0 100 0 153 0 101 0 153 0 102 0 153 0 104 0 153 0 105 0 153 0 107 0 173 0 108 0 173 0 109 0 173 0 112 0 185 0 120 0 189 0 121 0 193 0 122 0 197 0 123 0 197 0 124 0 197 0 125 0 197 0 126 0 197 0 127 0 217 0 139 0 221 0 143 0 217 0 145 0 217 0 149 0 217 0 153 0 237 0 154 0 217 0 166 0 245 0 167 0 217 0 170 0 253 0 171 0 217 0 183 0 217 0 199 0 217 0 202 0 217 0 205 0 217 0 215 1 21 0 216 0 217 0 218 0 217 0 219 0 217 0 221 1 37 0 222 0 217 0 224 0 217 0 225 0 217 0 226 0 217 0 227 1 57 0 245 1 61 0 248 1 65 0 251 1 69 0 253 1 69 0 254 1 77 1 4 1 77 1 5 1 85 1 6 1 89 1 9 1 77 1 12 1 77 1 13 1 77 1 14 1 77 1 15 1 77 1 16 1 77 1 17 1 77 1 21 1 77 1 22 1 77 1 25 1 129 1 26 1 133 1 27 1 137 1 29 1 141 1 30 1 145 1 31 1 149 1 32 1 153 1 33 1 157 1 34 1 161 1 35 1 165 1 59 1 169 1 98 0 10 1 109] 
 #[0 1 173 0 86] 
@@ -10953,4 +2543,8252 @@ SwiftParser >> transitionTable [
 #[0 6 230 0 6 0 17 0 30 0 31 0 33 0 35 0 41 0 44 0 47 0 50 0 54 0 55 0 57 0 58 0 59 0 63 0 68 0 69 0 70 0 73 0 74 0 75 0 76 0 77 0 78 0 83 0 86] 
 #[0 6 234 0 6 0 17 0 30 0 31 0 33 0 35 0 41 0 44 0 47 0 50 0 54 0 55 0 57 0 58 0 59 0 63 0 68 0 69 0 70 0 73 0 74 0 75 0 76 0 77 0 78 0 83 0 86]
 	).
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_array_literal_items1: nodes [
+	| result |
+	result := Array new: 2.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_associativity_clause1: nodes [
+	| result |
+	result := Array new: 4.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_attribute_argument_clause1: nodes [
+	| result |
+	result := Array new: 11.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_attributes1: nodes [
+	| result |
+	result := Array new: 12.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_closure_signature1: nodes [
+	| result |
+	result := Array new: 33.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_expression_element_list1: nodes [
+	| result |
+	result := Array new: 4.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_generic_argument_clause1: nodes [
+	| result |
+	result := Array new: 3.
+	result at: 2 put: (OrderedCollection new: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_generic_parameter_clause1: nodes [
+	| result |
+	result := Array new: 9.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_import_kind1: nodes [
+	| result |
+	result := Array new: 7.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_infix_operator_attributes1: nodes [
+	| result |
+	result := Array new: 6.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_initializer1: nodes [
+	| result |
+	result := Array new: 2.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_requirement_clause1: nodes [
+	| result |
+	result := Array new: 9.
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_setter_clause1: nodes [
+	| result |
+	result := Array new: 14.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_setter_keyword_clause1: nodes [
+	| result |
+	result := Array new: 13.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_setter_name1: nodes [
+	| result |
+	result := Array new: 3.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_statements1: nodes [
+	| result |
+	result := OrderedCollection new: 2.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_statements2: nodes [
+	| result |
+	result := nodes at: 1.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_switch_cases1: nodes [
+	| result |
+	result := Array new: 34.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	result at: 30 put: (OrderedCollection new: 2).
+	result at: 31 put: (OrderedCollection new: 2).
+	result at: 32 put: (OrderedCollection new: 2).
+	result at: 33 put: (OrderedCollection new: 2).
+	result at: 34 put: (OrderedCollection new: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_switch_cases2: nodes [
+	| result |
+	result := Array new: 34.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	result at: 30 put: (OrderedCollection new: 2).
+	result at: 31 put: (OrderedCollection new: 2).
+	result at: 32 put: (OrderedCollection new: 2).
+	result at: 33 put: (OrderedCollection new: 2).
+	result at: 34 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 29).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 30).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 31).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 32).
+	self addAll: ((nodes at: 1) at: 13) to: (result at: 33).
+	self addAll: ((nodes at: 1) at: 14) to: (result at: 34).
+	self addAll: ((nodes at: 1) at: 15) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 16) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 17) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 18) to: (result at: 12).
+	self addAll: ((nodes at: 1) at: 19) to: (result at: 13).
+	self addAll: ((nodes at: 1) at: 20) to: (result at: 14).
+	self addAll: ((nodes at: 1) at: 21) to: (result at: 15).
+	self addAll: ((nodes at: 1) at: 22) to: (result at: 16).
+	self addAll: ((nodes at: 1) at: 23) to: (result at: 17).
+	self addAll: ((nodes at: 1) at: 24) to: (result at: 18).
+	self addAll: ((nodes at: 1) at: 25) to: (result at: 24).
+	self addAll: ((nodes at: 1) at: 26) to: (result at: 19).
+	self addAll: ((nodes at: 1) at: 27) to: (result at: 20).
+	self addAll: ((nodes at: 1) at: 28) to: (result at: 21).
+	self addAll: ((nodes at: 1) at: 29) to: (result at: 22).
+	self addAll: ((nodes at: 1) at: 30) to: (result at: 23).
+	self addAll: ((nodes at: 1) at: 31) to: (result at: 25).
+	self addAll: ((nodes at: 1) at: 32) to: (result at: 26).
+	self addAll: ((nodes at: 1) at: 33) to: (result at: 27).
+	self addAll: ((nodes at: 1) at: 34) to: (result at: 28).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_tuple_pattern_element_list1: nodes [
+	| result |
+	result := Array new: 29.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_type_annotation1: nodes [
+	| result |
+	result := Array new: 24.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_type_inheritance_clause1: nodes [
+	| result |
+	result := Array new: 6.
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_typealias_assignment1: nodes [
+	| result |
+	result := Array new: 25.
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_union_style_enum_members1: nodes [
+	| result |
+	result := Array new: 57.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	result at: 30 put: (OrderedCollection new: 2).
+	result at: 31 put: (OrderedCollection new: 2).
+	result at: 32 put: (OrderedCollection new: 2).
+	result at: 33 put: (OrderedCollection new: 2).
+	result at: 34 put: (OrderedCollection new: 2).
+	result at: 35 put: (OrderedCollection new: 2).
+	result at: 36 put: (OrderedCollection new: 2).
+	result at: 37 put: (OrderedCollection new: 2).
+	result at: 38 put: (OrderedCollection new: 2).
+	result at: 39 put: (OrderedCollection new: 2).
+	result at: 40 put: (OrderedCollection new: 2).
+	result at: 41 put: (OrderedCollection new: 2).
+	result at: 42 put: (OrderedCollection new: 2).
+	result at: 43 put: (OrderedCollection new: 2).
+	result at: 44 put: (OrderedCollection new: 2).
+	result at: 45 put: (OrderedCollection new: 2).
+	result at: 46 put: (OrderedCollection new: 2).
+	result at: 47 put: (OrderedCollection new: 2).
+	result at: 48 put: (OrderedCollection new: 2).
+	result at: 49 put: (OrderedCollection new: 2).
+	result at: 50 put: (OrderedCollection new: 2).
+	result at: 51 put: (OrderedCollection new: 2).
+	result at: 52 put: (OrderedCollection new: 2).
+	result at: 53 put: (OrderedCollection new: 2).
+	result at: 54 put: (OrderedCollection new: 2).
+	result at: 55 put: (OrderedCollection new: 2).
+	result at: 56 put: (OrderedCollection new: 2).
+	result at: 57 put: (OrderedCollection new: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFor_union_style_enum_members2: nodes [
+	| result |
+	result := Array new: 57.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	result at: 30 put: (OrderedCollection new: 2).
+	result at: 31 put: (OrderedCollection new: 2).
+	result at: 32 put: (OrderedCollection new: 2).
+	result at: 33 put: (OrderedCollection new: 2).
+	result at: 34 put: (OrderedCollection new: 2).
+	result at: 35 put: (OrderedCollection new: 2).
+	result at: 36 put: (OrderedCollection new: 2).
+	result at: 37 put: (OrderedCollection new: 2).
+	result at: 38 put: (OrderedCollection new: 2).
+	result at: 39 put: (OrderedCollection new: 2).
+	result at: 40 put: (OrderedCollection new: 2).
+	result at: 41 put: (OrderedCollection new: 2).
+	result at: 42 put: (OrderedCollection new: 2).
+	result at: 43 put: (OrderedCollection new: 2).
+	result at: 44 put: (OrderedCollection new: 2).
+	result at: 45 put: (OrderedCollection new: 2).
+	result at: 46 put: (OrderedCollection new: 2).
+	result at: 47 put: (OrderedCollection new: 2).
+	result at: 48 put: (OrderedCollection new: 2).
+	result at: 49 put: (OrderedCollection new: 2).
+	result at: 50 put: (OrderedCollection new: 2).
+	result at: 51 put: (OrderedCollection new: 2).
+	result at: 52 put: (OrderedCollection new: 2).
+	result at: 53 put: (OrderedCollection new: 2).
+	result at: 54 put: (OrderedCollection new: 2).
+	result at: 55 put: (OrderedCollection new: 2).
+	result at: 56 put: (OrderedCollection new: 2).
+	result at: 57 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 27).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 28).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 37).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 40).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 55).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 56).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 57).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 13).
+	self addAll: ((nodes at: 1) at: 13) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 14) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 15) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 16) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 17) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 18) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 19) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 20) to: (result at: 12).
+	self addAll: ((nodes at: 1) at: 21) to: (result at: 14).
+	self addAll: ((nodes at: 1) at: 22) to: (result at: 15).
+	self addAll: ((nodes at: 1) at: 23) to: (result at: 16).
+	self addAll: ((nodes at: 1) at: 24) to: (result at: 17).
+	self addAll: ((nodes at: 1) at: 25) to: (result at: 18).
+	self addAll: ((nodes at: 1) at: 26) to: (result at: 19).
+	self addAll: ((nodes at: 1) at: 27) to: (result at: 20).
+	self addAll: ((nodes at: 1) at: 28) to: (result at: 21).
+	self addAll: ((nodes at: 1) at: 29) to: (result at: 22).
+	self addAll: ((nodes at: 1) at: 30) to: (result at: 23).
+	self addAll: ((nodes at: 1) at: 31) to: (result at: 24).
+	self addAll: ((nodes at: 1) at: 32) to: (result at: 25).
+	self addAll: ((nodes at: 1) at: 33) to: (result at: 26).
+	self addAll: ((nodes at: 1) at: 34) to: (result at: 29).
+	self addAll: ((nodes at: 1) at: 35) to: (result at: 30).
+	self addAll: ((nodes at: 1) at: 36) to: (result at: 31).
+	self addAll: ((nodes at: 1) at: 37) to: (result at: 32).
+	self addAll: ((nodes at: 1) at: 38) to: (result at: 33).
+	self addAll: ((nodes at: 1) at: 39) to: (result at: 34).
+	self addAll: ((nodes at: 1) at: 40) to: (result at: 35).
+	self addAll: ((nodes at: 1) at: 41) to: (result at: 47).
+	self addAll: ((nodes at: 1) at: 42) to: (result at: 36).
+	self addAll: ((nodes at: 1) at: 43) to: (result at: 38).
+	self addAll: ((nodes at: 1) at: 44) to: (result at: 39).
+	self addAll: ((nodes at: 1) at: 45) to: (result at: 41).
+	self addAll: ((nodes at: 1) at: 46) to: (result at: 42).
+	self addAll: ((nodes at: 1) at: 47) to: (result at: 43).
+	self addAll: ((nodes at: 1) at: 48) to: (result at: 44).
+	self addAll: ((nodes at: 1) at: 49) to: (result at: 45).
+	self addAll: ((nodes at: 1) at: 50) to: (result at: 46).
+	self addAll: ((nodes at: 1) at: 51) to: (result at: 53).
+	self addAll: ((nodes at: 1) at: 52) to: (result at: 54).
+	self addAll: ((nodes at: 1) at: 53) to: (result at: 48).
+	self addAll: ((nodes at: 1) at: 54) to: (result at: 49).
+	self addAll: ((nodes at: 1) at: 55) to: (result at: 50).
+	self addAll: ((nodes at: 1) at: 56) to: (result at: 51).
+	self addAll: ((nodes at: 1) at: 57) to: (result at: 52).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForarray_literal1: nodes [
+	| result |
+	result := Array new: 4.
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 1 put: (nodes at: 1).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
+	result at: 4 put: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForarray_literal_items1: nodes [
+	| result |
+	result := Array new: 2.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 1).
+	self add: (nodes at: 2) to: (result at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForarray_literal_items2: nodes [
+	| result |
+	result := nodes at: 3.
+	self addFirst: (nodes at: 1) to: (result at: 1).
+	self addFirst: (nodes at: 2) to: (result at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForarray_type1: nodes [
+	| result |
+	result := SwiftArrayTypeNode new.
+	result addToken: (nodes at: 1) to: result leftBracketTokens.
+	result addToken: (nodes at: 3) to: result rightBracketTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForas_pattern1: nodes [
+	| result |
+	result := nodes at: 1.
+	self add: (nodes at: 2) to: (result at: 29).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForassociativity_clause1: nodes [
+	| result |
+	result := Array new: 4.
+	result at: 1 put: (nodes at: 1).
+	result at: 2 put: ((nodes at: 2) at: 1).
+	result at: 3 put: ((nodes at: 2) at: 2).
+	result at: 4 put: ((nodes at: 2) at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForattribute1: nodes [
+	| result |
+	result := Array new: 12.
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 1 put: (nodes at: 1).
+	self add: (nodes at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 3) at: 1) to: (result at: 3).
+	self addAll: ((nodes at: 3) at: 2) to: (result at: 4).
+	self addAll: ((nodes at: 3) at: 3) to: (result at: 5).
+	self addAll: ((nodes at: 3) at: 4) to: (result at: 6).
+	self addAll: ((nodes at: 3) at: 5) to: (result at: 7).
+	self addAll: ((nodes at: 3) at: 6) to: (result at: 8).
+	self addAll: ((nodes at: 3) at: 7) to: (result at: 2).
+	self addAll: ((nodes at: 3) at: 8) to: (result at: 9).
+	self addAll: ((nodes at: 3) at: 9) to: (result at: 10).
+	self addAll: ((nodes at: 3) at: 10) to: (result at: 11).
+	self addAll: ((nodes at: 3) at: 11) to: (result at: 12).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForattribute_argument_clause1: nodes [
+	| result |
+	result := nodes at: 2.
+	self addFirst: (nodes at: 1) to: (result at: 1).
+	self add: (nodes at: 3) to: (result at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForattributes1: nodes [
+	| result |
+	result := Array new: 12.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	self add: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForattributes2: nodes [
+	| result |
+	result := nodes at: 1.
+	self add: ((nodes at: 2) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForbalanced_token2: nodes [
+	| result |
+	result := nodes at: 2.
+	self addFirst: (nodes at: 1) to: (result at: 3).
+	self add: (nodes at: 3) to: (result at: 4).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForbalanced_token3: nodes [
+	| result |
+	result := nodes at: 2.
+	self addFirst: (nodes at: 1) to: (result at: 5).
+	self add: (nodes at: 3) to: (result at: 6).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForbalanced_token4: nodes [
+	| result |
+	result := Array new: 11.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 7).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForbalanced_token5: nodes [
+	| result |
+	result := Array new: 11.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	self add: ((nodes at: 1) at: 1) to: (result at: 8).
+	self add: ((nodes at: 1) at: 2) to: (result at: 9).
+	self add: ((nodes at: 1) at: 3) to: (result at: 10).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForbalanced_token6: nodes [
+	| result |
+	result := Array new: 11.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 11).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForbalanced_tokens2: nodes [
+	| result |
+	result := nodes at: 2.
+	self addAllFirst: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAllFirst: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAllFirst: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAllFirst: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAllFirst: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAllFirst: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAllFirst: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAllFirst: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAllFirst: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAllFirst: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAllFirst: ((nodes at: 1) at: 11) to: (result at: 11).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForbinary_expression1: nodes [
+	| result |
+	result := SwiftBinaryOperatorNode new.
+	result addToken: (nodes at: 1) to: result operatorTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForbinary_expression2: nodes [
+	| result |
+	result := SwiftAssignmentOperatorNode new.
+	result addToken: (nodes at: 1) to: result equalTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForbinary_expression3: nodes [
+	| result |
+	result := SwiftCondionalOperatorNode new.
+	result addToken: ((nodes at: 1) at: 1) to: result questionMarkTokens.
+	result trueExpression: ((nodes at: 1) at: 2).
+	result addToken: ((nodes at: 1) at: 3) to: result colonTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForbinary_expression4: nodes [
+	| result |
+	result := SwiftTypeCastOperatorNode new.
+	result _isToken: ((nodes at: 1) at: 1).
+	result type: ((nodes at: 1) at: 2).
+	result asToken: ((nodes at: 1) at: 3).
+	result questionMarkToken: ((nodes at: 1) at: 4).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForbreak_statement1: nodes [
+	| result |
+	result := SwiftBreakStatementNode new.
+	result breakToken: (nodes at: 1).
+	result name: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForcapture_list1: nodes [
+	| result |
+	result := Array new: 7.
+	result at: 1 put: (nodes at: 1).
+	result at: 2 put: ((nodes at: 2) at: 1).
+	result at: 3 put: ((nodes at: 2) at: 2).
+	result at: 4 put: ((nodes at: 2) at: 3).
+	result at: 5 put: ((nodes at: 2) at: 4).
+	result at: 6 put: (nodes at: 3).
+	result at: 7 put: (nodes at: 4).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForcapture_specifier1: nodes [
+	| result |
+	result := Array new: 4.
+	result at: 1 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForcapture_specifier2: nodes [
+	| result |
+	result := Array new: 4.
+	result at: 2 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForcapture_specifier3: nodes [
+	| result |
+	result := Array new: 4.
+	result at: 3 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForcapture_specifier4: nodes [
+	| result |
+	result := Array new: 4.
+	result at: 4 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForcase_item_list1: nodes [
+	| result |
+	result := Array new: 30.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	result at: 30 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
+	self addAll: ((nodes at: 1) at: 13) to: (result at: 13).
+	self addAll: ((nodes at: 1) at: 14) to: (result at: 14).
+	self addAll: ((nodes at: 1) at: 15) to: (result at: 15).
+	self addAll: ((nodes at: 1) at: 16) to: (result at: 16).
+	self addAll: ((nodes at: 1) at: 17) to: (result at: 17).
+	self addAll: ((nodes at: 1) at: 18) to: (result at: 18).
+	self addAll: ((nodes at: 1) at: 19) to: (result at: 19).
+	self addAll: ((nodes at: 1) at: 20) to: (result at: 20).
+	self addAll: ((nodes at: 1) at: 21) to: (result at: 21).
+	self addAll: ((nodes at: 1) at: 22) to: (result at: 22).
+	self addAll: ((nodes at: 1) at: 23) to: (result at: 23).
+	self addAll: ((nodes at: 1) at: 24) to: (result at: 24).
+	self addAll: ((nodes at: 1) at: 25) to: (result at: 25).
+	self addAll: ((nodes at: 1) at: 26) to: (result at: 26).
+	self addAll: ((nodes at: 1) at: 27) to: (result at: 27).
+	self addAll: ((nodes at: 1) at: 28) to: (result at: 28).
+	self addAll: ((nodes at: 1) at: 29) to: (result at: 29).
+	self add: ((nodes at: 2) at: 1) to: (result at: 30).
+	self add: ((nodes at: 2) at: 2) to: (result at: 27).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForcase_item_list2: nodes [
+	| result |
+	result := nodes at: 1.
+	self add: (nodes at: 2) to: (result at: 22).
+	self addAll: ((nodes at: 3) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 3) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 3) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 3) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 3) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 3) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 3) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 3) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 3) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 3) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 3) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 3) at: 12) to: (result at: 12).
+	self addAll: ((nodes at: 3) at: 13) to: (result at: 13).
+	self addAll: ((nodes at: 3) at: 14) to: (result at: 14).
+	self addAll: ((nodes at: 3) at: 15) to: (result at: 15).
+	self addAll: ((nodes at: 3) at: 16) to: (result at: 16).
+	self addAll: ((nodes at: 3) at: 17) to: (result at: 17).
+	self addAll: ((nodes at: 3) at: 18) to: (result at: 18).
+	self addAll: ((nodes at: 3) at: 19) to: (result at: 19).
+	self addAll: ((nodes at: 3) at: 20) to: (result at: 20).
+	self addAll: ((nodes at: 3) at: 21) to: (result at: 21).
+	self addAll: ((nodes at: 3) at: 22) to: (result at: 22).
+	self addAll: ((nodes at: 3) at: 23) to: (result at: 23).
+	self addAll: ((nodes at: 3) at: 24) to: (result at: 24).
+	self addAll: ((nodes at: 3) at: 25) to: (result at: 25).
+	self addAll: ((nodes at: 3) at: 26) to: (result at: 26).
+	self addAll: ((nodes at: 3) at: 27) to: (result at: 27).
+	self addAll: ((nodes at: 3) at: 28) to: (result at: 28).
+	self addAll: ((nodes at: 3) at: 29) to: (result at: 29).
+	self add: ((nodes at: 4) at: 1) to: (result at: 30).
+	self add: ((nodes at: 4) at: 2) to: (result at: 27).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForcase_label1: nodes [
+	| result |
+	result := Array new: 31.
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	result at: 30 put: (OrderedCollection new: 2).
+	result at: 31 put: (OrderedCollection new: 2).
+	result at: 1 put: (nodes at: 1).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 7).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 8) to: (result at: 9).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 10).
+	self addAll: ((nodes at: 2) at: 10) to: (result at: 11).
+	self addAll: ((nodes at: 2) at: 11) to: (result at: 12).
+	self addAll: ((nodes at: 2) at: 12) to: (result at: 13).
+	self addAll: ((nodes at: 2) at: 13) to: (result at: 14).
+	self addAll: ((nodes at: 2) at: 14) to: (result at: 15).
+	self addAll: ((nodes at: 2) at: 15) to: (result at: 16).
+	self addAll: ((nodes at: 2) at: 16) to: (result at: 17).
+	self addAll: ((nodes at: 2) at: 17) to: (result at: 18).
+	self addAll: ((nodes at: 2) at: 18) to: (result at: 19).
+	self addAll: ((nodes at: 2) at: 19) to: (result at: 20).
+	self addAll: ((nodes at: 2) at: 20) to: (result at: 21).
+	self addAll: ((nodes at: 2) at: 21) to: (result at: 22).
+	self addAll: ((nodes at: 2) at: 22) to: (result at: 23).
+	self addAll: ((nodes at: 2) at: 23) to: (result at: 24).
+	self addAll: ((nodes at: 2) at: 24) to: (result at: 25).
+	self addAll: ((nodes at: 2) at: 25) to: (result at: 26).
+	self addAll: ((nodes at: 2) at: 26) to: (result at: 27).
+	self addAll: ((nodes at: 2) at: 27) to: (result at: 28).
+	self addAll: ((nodes at: 2) at: 28) to: (result at: 29).
+	self addAll: ((nodes at: 2) at: 29) to: (result at: 30).
+	self addAll: ((nodes at: 2) at: 30) to: (result at: 31).
+	self add: (nodes at: 3) to: (result at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForclass_declaration1: nodes [
+	| result |
+	result := SwiftClassDeclarationNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
+	result classToken: (nodes at: 2).
+	result addToken: (nodes at: 3) to: result identifierTokens.
+	result addTokens: ((nodes at: 4) at: 1) to: result lessThanTokens.
+	result addTokens: ((nodes at: 4) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 4) at: 3) to: result colonTokens.
+	result addTokens: ((nodes at: 4) at: 4) to: result commaTokens.
+	result addTokens: ((nodes at: 4) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 4) at: 6) to: result periodTokens.
+	result addTokens: ((nodes at: 4) at: 7) to: result protocolTokens.
+	result whereToken: ((nodes at: 4) at: 8).
+	result addTokens: ((nodes at: 4) at: 9) to: result equalEqualTokens.
+	result addToken: ((nodes at: 5) at: 1) to: result colonTokens.
+	result addTokens: ((nodes at: 5) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 5) at: 3) to: result lessThanTokens.
+	result addTokens: ((nodes at: 5) at: 4) to: result commaTokens.
+	result addTokens: ((nodes at: 5) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 5) at: 6) to: result periodTokens.
+	result addToken: ((nodes at: 6) at: 1) to: result leftBraceTokens.
+	result addNodes: ((nodes at: 6) at: 2) to: result declarations.
+	result addToken: ((nodes at: 6) at: 3) to: result rightBraceTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForclosure_expression1: nodes [
+	| result |
+	result := SwiftClosureExpressionNode new.
+	result addToken: (nodes at: 1) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 2) at: 1) to: result leftParenTokens.
+	result addTokens: ((nodes at: 2) at: 2) to: result rightParenTokens.
+	result addTokens: ((nodes at: 2) at: 3) to: result inoutTokens.
+	result addTokens: ((nodes at: 2) at: 4) to: result letTokens.
+	result addTokens: ((nodes at: 2) at: 5) to: result _Tokens.
+	result addTokens: ((nodes at: 2) at: 6) to: result identifierTokens.
+	result addTokens: ((nodes at: 2) at: 7) to: result colonTokens.
+	result addTokens: ((nodes at: 2) at: 8) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 2) at: 9) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 2) at: 10) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 2) at: 11) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 2) at: 12)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 2) at: 13)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 2) at: 14)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 2) at: 15) to: result operatorTokens.
+	result
+		addTokens: ((nodes at: 2) at: 16)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 17) to: result periodTokens.
+	result
+		addTokens: ((nodes at: 2) at: 18)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 2) at: 19) to: result bangTokens.
+	result addTokens: ((nodes at: 2) at: 20) to: result protocolTokens.
+	result addTokens: ((nodes at: 2) at: 21) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 22) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 23) to: result typeTokens.
+	result addTokens: ((nodes at: 2) at: 24) to: result commaTokens.
+	result
+		addTokens: ((nodes at: 2) at: 25)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 2) at: 26) to: result equalTokens.
+	result addObjects: ((nodes at: 2) at: 27) to: result expressions.
+	result addTokens: ((nodes at: 2) at: 28) to: result varTokens.
+	result inToken: ((nodes at: 2) at: 29).
+	result weakToken: ((nodes at: 2) at: 30).
+	result unownedToken: ((nodes at: 2) at: 31).
+	result unownedLeftParensafeRightParenToken: ((nodes at: 2) at: 32).
+	result unownedLeftParenunsafeRightParenToken: ((nodes at: 2) at: 33).
+	result addNodes: (nodes at: 3) to: result statements.
+	result addToken: (nodes at: 4) to: result rightBraceTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForclosure_signature1: nodes [
+	| result |
+	result := Array new: 33.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
+	self addAll: ((nodes at: 1) at: 13) to: (result at: 13).
+	self addAll: ((nodes at: 1) at: 14) to: (result at: 14).
+	self addAll: ((nodes at: 1) at: 15) to: (result at: 15).
+	self addAll: ((nodes at: 1) at: 16) to: (result at: 16).
+	self addAll: ((nodes at: 1) at: 17) to: (result at: 17).
+	self addAll: ((nodes at: 1) at: 18) to: (result at: 18).
+	self addAll: ((nodes at: 1) at: 19) to: (result at: 19).
+	self addAll: ((nodes at: 1) at: 20) to: (result at: 20).
+	self addAll: ((nodes at: 1) at: 21) to: (result at: 21).
+	self addAll: ((nodes at: 1) at: 22) to: (result at: 22).
+	self addAll: ((nodes at: 1) at: 23) to: (result at: 23).
+	self addAll: ((nodes at: 1) at: 24) to: (result at: 24).
+	self addAll: ((nodes at: 1) at: 25) to: (result at: 25).
+	self addAll: ((nodes at: 1) at: 26) to: (result at: 26).
+	self addAll: ((nodes at: 1) at: 27) to: (result at: 27).
+	self addAll: ((nodes at: 1) at: 28) to: (result at: 28).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 16).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 9).
+	self addAll: ((nodes at: 2) at: 8) to: (result at: 10).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 11).
+	self addAll: ((nodes at: 2) at: 10) to: (result at: 12).
+	self addAll: ((nodes at: 2) at: 11) to: (result at: 13).
+	self addAll: ((nodes at: 2) at: 12) to: (result at: 14).
+	self addAll: ((nodes at: 2) at: 13) to: (result at: 15).
+	self addAll: ((nodes at: 2) at: 14) to: (result at: 7).
+	self addAll: ((nodes at: 2) at: 15) to: (result at: 17).
+	self addAll: ((nodes at: 2) at: 16) to: (result at: 18).
+	self addAll: ((nodes at: 2) at: 17) to: (result at: 19).
+	self addAll: ((nodes at: 2) at: 18) to: (result at: 20).
+	self addAll: ((nodes at: 2) at: 19) to: (result at: 21).
+	self addAll: ((nodes at: 2) at: 20) to: (result at: 22).
+	self addAll: ((nodes at: 2) at: 21) to: (result at: 23).
+	self addAll: ((nodes at: 2) at: 22) to: (result at: 24).
+	self addAll: ((nodes at: 2) at: 23) to: (result at: 25).
+	self addAll: ((nodes at: 2) at: 24) to: (result at: 3).
+	result at: 29 put: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForclosure_signature2: nodes [
+	| result |
+	result := Array new: 33.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 24).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 16).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 9).
+	self addAll: ((nodes at: 2) at: 8) to: (result at: 10).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 11).
+	self addAll: ((nodes at: 2) at: 10) to: (result at: 12).
+	self addAll: ((nodes at: 2) at: 11) to: (result at: 13).
+	self addAll: ((nodes at: 2) at: 12) to: (result at: 14).
+	self addAll: ((nodes at: 2) at: 13) to: (result at: 15).
+	self addAll: ((nodes at: 2) at: 14) to: (result at: 7).
+	self addAll: ((nodes at: 2) at: 15) to: (result at: 17).
+	self addAll: ((nodes at: 2) at: 16) to: (result at: 18).
+	self addAll: ((nodes at: 2) at: 17) to: (result at: 19).
+	self addAll: ((nodes at: 2) at: 18) to: (result at: 20).
+	self addAll: ((nodes at: 2) at: 19) to: (result at: 21).
+	self addAll: ((nodes at: 2) at: 20) to: (result at: 22).
+	self addAll: ((nodes at: 2) at: 21) to: (result at: 23).
+	self addAll: ((nodes at: 2) at: 22) to: (result at: 24).
+	self addAll: ((nodes at: 2) at: 23) to: (result at: 25).
+	self addAll: ((nodes at: 2) at: 24) to: (result at: 3).
+	result at: 29 put: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForclosure_signature3: nodes [
+	| result |
+	result := Array new: 33.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	self add: ((nodes at: 1) at: 1) to: (result at: 8).
+	result at: 30 put: ((nodes at: 1) at: 2).
+	result at: 31 put: ((nodes at: 1) at: 3).
+	result at: 32 put: ((nodes at: 1) at: 4).
+	result at: 33 put: ((nodes at: 1) at: 5).
+	self add: ((nodes at: 1) at: 6) to: (result at: 27).
+	self add: ((nodes at: 1) at: 7) to: (result at: 9).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
+	self addAll: ((nodes at: 2) at: 13) to: (result at: 13).
+	self addAll: ((nodes at: 2) at: 14) to: (result at: 14).
+	self addAll: ((nodes at: 2) at: 15) to: (result at: 15).
+	self addAll: ((nodes at: 2) at: 16) to: (result at: 16).
+	self addAll: ((nodes at: 2) at: 17) to: (result at: 17).
+	self addAll: ((nodes at: 2) at: 18) to: (result at: 18).
+	self addAll: ((nodes at: 2) at: 19) to: (result at: 19).
+	self addAll: ((nodes at: 2) at: 20) to: (result at: 20).
+	self addAll: ((nodes at: 2) at: 21) to: (result at: 21).
+	self addAll: ((nodes at: 2) at: 22) to: (result at: 22).
+	self addAll: ((nodes at: 2) at: 23) to: (result at: 23).
+	self addAll: ((nodes at: 2) at: 24) to: (result at: 24).
+	self addAll: ((nodes at: 2) at: 25) to: (result at: 25).
+	self addAll: ((nodes at: 2) at: 26) to: (result at: 26).
+	self addAll: ((nodes at: 2) at: 27) to: (result at: 27).
+	self addAll: ((nodes at: 2) at: 28) to: (result at: 28).
+	self addAll: ((nodes at: 3) at: 1) to: (result at: 16).
+	self addAll: ((nodes at: 3) at: 2) to: (result at: 5).
+	self addAll: ((nodes at: 3) at: 3) to: (result at: 6).
+	self addAll: ((nodes at: 3) at: 4) to: (result at: 1).
+	self addAll: ((nodes at: 3) at: 5) to: (result at: 2).
+	self addAll: ((nodes at: 3) at: 6) to: (result at: 8).
+	self addAll: ((nodes at: 3) at: 7) to: (result at: 9).
+	self addAll: ((nodes at: 3) at: 8) to: (result at: 10).
+	self addAll: ((nodes at: 3) at: 9) to: (result at: 11).
+	self addAll: ((nodes at: 3) at: 10) to: (result at: 12).
+	self addAll: ((nodes at: 3) at: 11) to: (result at: 13).
+	self addAll: ((nodes at: 3) at: 12) to: (result at: 14).
+	self addAll: ((nodes at: 3) at: 13) to: (result at: 15).
+	self addAll: ((nodes at: 3) at: 14) to: (result at: 7).
+	self addAll: ((nodes at: 3) at: 15) to: (result at: 17).
+	self addAll: ((nodes at: 3) at: 16) to: (result at: 18).
+	self addAll: ((nodes at: 3) at: 17) to: (result at: 19).
+	self addAll: ((nodes at: 3) at: 18) to: (result at: 20).
+	self addAll: ((nodes at: 3) at: 19) to: (result at: 21).
+	self addAll: ((nodes at: 3) at: 20) to: (result at: 22).
+	self addAll: ((nodes at: 3) at: 21) to: (result at: 23).
+	self addAll: ((nodes at: 3) at: 22) to: (result at: 24).
+	self addAll: ((nodes at: 3) at: 23) to: (result at: 25).
+	self addAll: ((nodes at: 3) at: 24) to: (result at: 3).
+	result at: 29 put: (nodes at: 4).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForclosure_signature4: nodes [
+	| result |
+	result := Array new: 33.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	self add: ((nodes at: 1) at: 1) to: (result at: 8).
+	result at: 30 put: ((nodes at: 1) at: 2).
+	result at: 31 put: ((nodes at: 1) at: 3).
+	result at: 32 put: ((nodes at: 1) at: 4).
+	result at: 33 put: ((nodes at: 1) at: 5).
+	self add: ((nodes at: 1) at: 6) to: (result at: 27).
+	self add: ((nodes at: 1) at: 7) to: (result at: 9).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 24).
+	self addAll: ((nodes at: 3) at: 1) to: (result at: 16).
+	self addAll: ((nodes at: 3) at: 2) to: (result at: 5).
+	self addAll: ((nodes at: 3) at: 3) to: (result at: 6).
+	self addAll: ((nodes at: 3) at: 4) to: (result at: 1).
+	self addAll: ((nodes at: 3) at: 5) to: (result at: 2).
+	self addAll: ((nodes at: 3) at: 6) to: (result at: 8).
+	self addAll: ((nodes at: 3) at: 7) to: (result at: 9).
+	self addAll: ((nodes at: 3) at: 8) to: (result at: 10).
+	self addAll: ((nodes at: 3) at: 9) to: (result at: 11).
+	self addAll: ((nodes at: 3) at: 10) to: (result at: 12).
+	self addAll: ((nodes at: 3) at: 11) to: (result at: 13).
+	self addAll: ((nodes at: 3) at: 12) to: (result at: 14).
+	self addAll: ((nodes at: 3) at: 13) to: (result at: 15).
+	self addAll: ((nodes at: 3) at: 14) to: (result at: 7).
+	self addAll: ((nodes at: 3) at: 15) to: (result at: 17).
+	self addAll: ((nodes at: 3) at: 16) to: (result at: 18).
+	self addAll: ((nodes at: 3) at: 17) to: (result at: 19).
+	self addAll: ((nodes at: 3) at: 18) to: (result at: 20).
+	self addAll: ((nodes at: 3) at: 19) to: (result at: 21).
+	self addAll: ((nodes at: 3) at: 20) to: (result at: 22).
+	self addAll: ((nodes at: 3) at: 21) to: (result at: 23).
+	self addAll: ((nodes at: 3) at: 22) to: (result at: 24).
+	self addAll: ((nodes at: 3) at: 23) to: (result at: 25).
+	self addAll: ((nodes at: 3) at: 24) to: (result at: 3).
+	result at: 29 put: (nodes at: 4).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForclosure_signature5: nodes [
+	| result |
+	result := Array new: 33.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	self add: ((nodes at: 1) at: 1) to: (result at: 8).
+	result at: 30 put: ((nodes at: 1) at: 2).
+	result at: 31 put: ((nodes at: 1) at: 3).
+	result at: 32 put: ((nodes at: 1) at: 4).
+	result at: 33 put: ((nodes at: 1) at: 5).
+	self add: ((nodes at: 1) at: 6) to: (result at: 27).
+	self add: ((nodes at: 1) at: 7) to: (result at: 9).
+	result at: 29 put: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForcode_block1: nodes [
+	| result |
+	result := SwiftBlockNode new.
+	result leftBraceToken: (nodes at: 1).
+	result addNodes: (nodes at: 2) to: result statements.
+	result rightBraceToken: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForconformance_requirement1: nodes [
+	| result |
+	result := Array new: 7.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForconstant_declaration1: nodes [
+	| result |
+	result := SwiftConstantDeclarationNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
+	result addTokens: ((nodes at: 2) at: 1) to: result classTokens.
+	result addTokens: ((nodes at: 2) at: 2) to: result mutatingTokens.
+	result addTokens: ((nodes at: 2) at: 3) to: result nonmutatingTokens.
+	result addTokens: ((nodes at: 2) at: 4) to: result overrideTokens.
+	result addTokens: ((nodes at: 2) at: 5) to: result staticTokens.
+	result addTokens: ((nodes at: 2) at: 6) to: result unownedTokens.
+	result
+		addTokens: ((nodes at: 2) at: 7)
+		to: result unownedLeftParensafeRightParenTokens.
+	result
+		addTokens: ((nodes at: 2) at: 8)
+		to: result unownedLeftParenunsafeRightParenTokens.
+	result addTokens: ((nodes at: 2) at: 9) to: result weakTokens.
+	result letToken: (nodes at: 3).
+	result addNodes: ((nodes at: 4) at: 1) to: result inializers.
+	result addTokens: ((nodes at: 4) at: 2) to: result commaTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForcontinue_statement1: nodes [
+	| result |
+	result := SwiftContinueStatementNode new.
+	result continueToken: (nodes at: 1).
+	result name: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFordeclaration_specifier1: nodes [
+	| result |
+	result := Array new: 9.
+	result at: 1 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFordeclaration_specifier2: nodes [
+	| result |
+	result := Array new: 9.
+	result at: 2 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFordeclaration_specifier3: nodes [
+	| result |
+	result := Array new: 9.
+	result at: 3 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFordeclaration_specifier4: nodes [
+	| result |
+	result := Array new: 9.
+	result at: 4 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFordeclaration_specifier5: nodes [
+	| result |
+	result := Array new: 9.
+	result at: 5 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFordeclaration_specifier6: nodes [
+	| result |
+	result := Array new: 9.
+	result at: 6 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFordeclaration_specifier7: nodes [
+	| result |
+	result := Array new: 9.
+	result at: 7 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFordeclaration_specifier8: nodes [
+	| result |
+	result := Array new: 9.
+	result at: 8 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFordeclaration_specifier9: nodes [
+	| result |
+	result := Array new: 9.
+	result at: 9 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFordeclaration_specifiers1: nodes [
+	| result |
+	result := Array new: 9.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFordeclaration_specifiers2: nodes [
+	| result |
+	result := nodes at: 1.
+	self add: ((nodes at: 2) at: 1) to: (result at: 1).
+	self add: ((nodes at: 2) at: 2) to: (result at: 2).
+	self add: ((nodes at: 2) at: 3) to: (result at: 3).
+	self add: ((nodes at: 2) at: 4) to: (result at: 4).
+	self add: ((nodes at: 2) at: 5) to: (result at: 5).
+	self add: ((nodes at: 2) at: 6) to: (result at: 6).
+	self add: ((nodes at: 2) at: 7) to: (result at: 7).
+	self add: ((nodes at: 2) at: 8) to: (result at: 8).
+	self add: ((nodes at: 2) at: 9) to: (result at: 9).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFordeinitializer_declaration1: nodes [
+	| result |
+	result := SwiftDeinitializerDeclarationNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
+	result deinitToken: (nodes at: 2).
+	result block: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFordictionary_literal1: nodes [
+	| result |
+	result := Array new: 6.
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 1 put: (nodes at: 1).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 5).
+	result at: 6 put: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFordictionary_literal2: nodes [
+	| result |
+	result := Array new: 6.
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 1 put: (nodes at: 1).
+	self add: (nodes at: 2) to: (result at: 3).
+	result at: 6 put: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFordictionary_literal_item1: nodes [
+	| result |
+	result := Array new: 3.
+	result at: 1 put: (nodes at: 1).
+	result at: 2 put: (nodes at: 2).
+	result at: 3 put: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFordictionary_literal_items1: nodes [
+	| result |
+	result := Array new: 4.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	self add: ((nodes at: 1) at: 1) to: (result at: 1).
+	self add: ((nodes at: 1) at: 2) to: (result at: 2).
+	self add: ((nodes at: 1) at: 3) to: (result at: 3).
+	self add: (nodes at: 2) to: (result at: 4).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFordictionary_literal_items2: nodes [
+	| result |
+	result := nodes at: 3.
+	self addFirst: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addFirst: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addFirst: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addFirst: (nodes at: 2) to: (result at: 4).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFordictionary_type1: nodes [
+	| result |
+	result := SwiftDictionaryTypeNode new.
+	result addToken: (nodes at: 1) to: result leftBracketTokens.
+	result addToken: (nodes at: 3) to: result colonTokens.
+	result addToken: (nodes at: 5) to: result rightBracketTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFordo_while_statement1: nodes [
+	| result |
+	result := SwiftDoWhileStatementNode new.
+	result doToken: (nodes at: 1).
+	result block: (nodes at: 2).
+	result whileToken: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFordynamic_type_expression1: nodes [
+	| result |
+	result := SwiftDynamicTypeExpressionNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result lessThanTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result commaTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result greaterThanTokens.
+	result
+		addTokens: ((nodes at: 1) at: 5)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 6)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 7)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result leftBracketTokens.
+	result addObjects: ((nodes at: 1) at: 9) to: result expressions.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result rightBracketTokens.
+	result addObjects: ((nodes at: 1) at: 11) to: result keyExpressions.
+	result addTokens: ((nodes at: 1) at: 12) to: result colonTokens.
+	result addObjects: ((nodes at: 1) at: 13) to: result valueExpressions.
+	result __FILE__Token: ((nodes at: 1) at: 14).
+	result __LINE__Token: ((nodes at: 1) at: 15).
+	result __COLUMN__Token: ((nodes at: 1) at: 16).
+	result __FUNCTION__Token: ((nodes at: 1) at: 17).
+	result addTokens: ((nodes at: 1) at: 18) to: result selfTokens.
+	result addTokens: ((nodes at: 1) at: 19) to: result periodTokens.
+	result addTokens: ((nodes at: 1) at: 20) to: result initTokens.
+	result addTokens: ((nodes at: 1) at: 21) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 22) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 23) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 24) to: result inoutTokens.
+	result addTokens: ((nodes at: 1) at: 25) to: result letTokens.
+	result addTokens: ((nodes at: 1) at: 26) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 27) to: result rightBraceTokens.
+	result addTokens: ((nodes at: 1) at: 28) to: result operatorTokens.
+	result
+		addTokens: ((nodes at: 1) at: 29)
+		to: result minusGreaterThanTokens.
+	result
+		addTokens: ((nodes at: 1) at: 30)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 1) at: 31) to: result bangTokens.
+	result addTokens: ((nodes at: 1) at: 32) to: result protocolTokens.
+	result addTokens: ((nodes at: 1) at: 33) to: result typeTokens.
+	result
+		addTokens: ((nodes at: 1) at: 34)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 1) at: 35) to: result equalTokens.
+	result addTokens: ((nodes at: 1) at: 36) to: result varTokens.
+	result inToken: ((nodes at: 1) at: 37).
+	result weakToken: ((nodes at: 1) at: 38).
+	result unownedToken: ((nodes at: 1) at: 39).
+	result unownedLeftParensafeRightParenToken: ((nodes at: 1) at: 40).
+	result unownedLeftParenunsafeRightParenToken: ((nodes at: 1) at: 41).
+	result addNodes: ((nodes at: 1) at: 42) to: result statements.
+	result addTokens: ((nodes at: 1) at: 43) to: result dynamicTypeTokens.
+	result addToken: (nodes at: 2) to: result periodTokens.
+	result addToken: (nodes at: 3) to: result dynamicTypeTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForenum_case_pattern1: nodes [
+	| result |
+	result := Array new: 29.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	self add: (nodes at: 2) to: (result at: 5).
+	self add: (nodes at: 3) to: (result at: 1).
+	self addAll: ((nodes at: 4) at: 1) to: (result at: 6).
+	self addAll: ((nodes at: 4) at: 2) to: (result at: 7).
+	self addAll: ((nodes at: 4) at: 3) to: (result at: 8).
+	self addAll: ((nodes at: 4) at: 4) to: (result at: 1).
+	self addAll: ((nodes at: 4) at: 5) to: (result at: 9).
+	self addAll: ((nodes at: 4) at: 6) to: (result at: 10).
+	self addAll: ((nodes at: 4) at: 7) to: (result at: 11).
+	self addAll: ((nodes at: 4) at: 8) to: (result at: 12).
+	self addAll: ((nodes at: 4) at: 9) to: (result at: 13).
+	self addAll: ((nodes at: 4) at: 10) to: (result at: 14).
+	self addAll: ((nodes at: 4) at: 11) to: (result at: 15).
+	self addAll: ((nodes at: 4) at: 12) to: (result at: 16).
+	self addAll: ((nodes at: 4) at: 13) to: (result at: 17).
+	self addAll: ((nodes at: 4) at: 14) to: (result at: 18).
+	self addAll: ((nodes at: 4) at: 15) to: (result at: 5).
+	self addAll: ((nodes at: 4) at: 16) to: (result at: 19).
+	self addAll: ((nodes at: 4) at: 17) to: (result at: 20).
+	self addAll: ((nodes at: 4) at: 18) to: (result at: 21).
+	self addAll: ((nodes at: 4) at: 19) to: (result at: 2).
+	self addAll: ((nodes at: 4) at: 20) to: (result at: 4).
+	self addAll: ((nodes at: 4) at: 21) to: (result at: 22).
+	self addAll: ((nodes at: 4) at: 22) to: (result at: 3).
+	self addAll: ((nodes at: 4) at: 23) to: (result at: 23).
+	self addAll: ((nodes at: 4) at: 24) to: (result at: 24).
+	self addAll: ((nodes at: 4) at: 25) to: (result at: 25).
+	self addAll: ((nodes at: 4) at: 26) to: (result at: 26).
+	self addAll: ((nodes at: 4) at: 27) to: (result at: 27).
+	self addAll: ((nodes at: 4) at: 28) to: (result at: 28).
+	self addAll: ((nodes at: 4) at: 29) to: (result at: 29).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForenum_declaration1: nodes [
+	| result |
+	result := SwiftEnumDeclarationNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
+	result addTokens: ((nodes at: 2) at: 1) to: result identifierTokens.
+	result addTokens: ((nodes at: 2) at: 2) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 3) to: result colonTokens.
+	result addTokens: ((nodes at: 2) at: 4) to: result commaTokens.
+	result addTokens: ((nodes at: 2) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 6) to: result periodTokens.
+	result addTokens: ((nodes at: 2) at: 7) to: result protocolTokens.
+	result addTokens: ((nodes at: 2) at: 8) to: result whereTokens.
+	result addTokens: ((nodes at: 2) at: 9) to: result equalEqualTokens.
+	result addTokens: ((nodes at: 2) at: 10) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 2) at: 11) to: result _Tokens.
+	result addTokens: ((nodes at: 2) at: 12) to: result leftParenTokens.
+	result addTokens: ((nodes at: 2) at: 13) to: result rightParenTokens.
+	result addTokens: ((nodes at: 2) at: 14) to: result importTokens.
+	result addTokens: ((nodes at: 2) at: 15) to: result typealiasTokens.
+	result addTokens: ((nodes at: 2) at: 16) to: result structTokens.
+	result addTokens: ((nodes at: 2) at: 17) to: result classTokens.
+	result addTokens: ((nodes at: 2) at: 18) to: result enumTokens.
+	result addTokens: ((nodes at: 2) at: 19) to: result varTokens.
+	result addTokens: ((nodes at: 2) at: 20) to: result funcTokens.
+	result addTokens: ((nodes at: 2) at: 21) to: result operatorTokens.
+	result addTokens: ((nodes at: 2) at: 22) to: result mutatingTokens.
+	result addTokens: ((nodes at: 2) at: 23) to: result nonmutatingTokens.
+	result addTokens: ((nodes at: 2) at: 24) to: result overrideTokens.
+	result addTokens: ((nodes at: 2) at: 25) to: result staticTokens.
+	result addTokens: ((nodes at: 2) at: 26) to: result unownedTokens.
+	result
+		addTokens: ((nodes at: 2) at: 27)
+		to: result unownedLeftParensafeRightParenTokens.
+	result
+		addTokens: ((nodes at: 2) at: 28)
+		to: result unownedLeftParenunsafeRightParenTokens.
+	result addTokens: ((nodes at: 2) at: 29) to: result weakTokens.
+	result addTokens: ((nodes at: 2) at: 30) to: result letTokens.
+	result addNodes: ((nodes at: 2) at: 31) to: result inializers.
+	result addTokens: ((nodes at: 2) at: 32) to: result leftBracketTokens.
+	result
+		addTokens: ((nodes at: 2) at: 33)
+		to: result rightBracketTokens.
+	result
+		addTokens: ((nodes at: 2) at: 34)
+		to: result minusGreaterThanTokens.
+	result
+		addTokens: ((nodes at: 2) at: 35)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 2) at: 36) to: result bangTokens.
+	result addTokens: ((nodes at: 2) at: 37) to: result typeTokens.
+	result
+		addTokens: ((nodes at: 2) at: 38)
+		to: result periodPeriodPeriodTokens.
+	result addNodes: ((nodes at: 2) at: 39) to: result blocks.
+	result addTokens: ((nodes at: 2) at: 40) to: result getTokens.
+	result addTokens: ((nodes at: 2) at: 41) to: result setTokens.
+	result addTokens: ((nodes at: 2) at: 42) to: result rightBraceTokens.
+	result addTokens: ((nodes at: 2) at: 43) to: result equalTokens.
+	result addObjects: ((nodes at: 2) at: 44) to: result expressions.
+	result addTokens: ((nodes at: 2) at: 45) to: result willSetTokens.
+	result addTokens: ((nodes at: 2) at: 46) to: result didSetTokens.
+	result addTokens: ((nodes at: 2) at: 47) to: result inoutTokens.
+	result addTokens: ((nodes at: 2) at: 48) to: result initTokens.
+	result addTokens: ((nodes at: 2) at: 49) to: result deinitTokens.
+	result addTokens: ((nodes at: 2) at: 50) to: result extensionTokens.
+	result addTokens: ((nodes at: 2) at: 51) to: result subscriptTokens.
+	result addTokens: ((nodes at: 2) at: 52) to: result caseTokens.
+	result addNodes: ((nodes at: 2) at: 53) to: result declarations.
+	result addTokens: ((nodes at: 2) at: 54) to: result convenienceTokens.
+	result
+		addTokens: ((nodes at: 2) at: 55)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 2) at: 56)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 2) at: 57)
+		to: result full_string_literalTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForenum_declaration2: nodes [
+	| result |
+	result := SwiftEnumDeclarationNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
+	result addTokens: ((nodes at: 2) at: 1) to: result identifierTokens.
+	result addTokens: ((nodes at: 2) at: 2) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 3) to: result colonTokens.
+	result addTokens: ((nodes at: 2) at: 4) to: result commaTokens.
+	result addTokens: ((nodes at: 2) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 6) to: result periodTokens.
+	result addTokens: ((nodes at: 2) at: 7) to: result protocolTokens.
+	result addTokens: ((nodes at: 2) at: 8) to: result whereTokens.
+	result addTokens: ((nodes at: 2) at: 9) to: result equalEqualTokens.
+	result addTokens: ((nodes at: 2) at: 10) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 2) at: 11) to: result _Tokens.
+	result addTokens: ((nodes at: 2) at: 12) to: result leftParenTokens.
+	result addTokens: ((nodes at: 2) at: 13) to: result rightParenTokens.
+	result addTokens: ((nodes at: 2) at: 14) to: result importTokens.
+	result addTokens: ((nodes at: 2) at: 15) to: result typealiasTokens.
+	result addTokens: ((nodes at: 2) at: 16) to: result structTokens.
+	result addTokens: ((nodes at: 2) at: 17) to: result classTokens.
+	result addTokens: ((nodes at: 2) at: 18) to: result enumTokens.
+	result addTokens: ((nodes at: 2) at: 19) to: result varTokens.
+	result addTokens: ((nodes at: 2) at: 20) to: result funcTokens.
+	result addTokens: ((nodes at: 2) at: 21) to: result operatorTokens.
+	result addTokens: ((nodes at: 2) at: 22) to: result mutatingTokens.
+	result addTokens: ((nodes at: 2) at: 23) to: result nonmutatingTokens.
+	result addTokens: ((nodes at: 2) at: 24) to: result overrideTokens.
+	result addTokens: ((nodes at: 2) at: 25) to: result staticTokens.
+	result addTokens: ((nodes at: 2) at: 26) to: result unownedTokens.
+	result
+		addTokens: ((nodes at: 2) at: 27)
+		to: result unownedLeftParensafeRightParenTokens.
+	result
+		addTokens: ((nodes at: 2) at: 28)
+		to: result unownedLeftParenunsafeRightParenTokens.
+	result addTokens: ((nodes at: 2) at: 29) to: result weakTokens.
+	result addTokens: ((nodes at: 2) at: 30) to: result letTokens.
+	result addNodes: ((nodes at: 2) at: 31) to: result inializers.
+	result addTokens: ((nodes at: 2) at: 32) to: result leftBracketTokens.
+	result
+		addTokens: ((nodes at: 2) at: 33)
+		to: result rightBracketTokens.
+	result
+		addTokens: ((nodes at: 2) at: 34)
+		to: result minusGreaterThanTokens.
+	result
+		addTokens: ((nodes at: 2) at: 35)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 2) at: 36) to: result bangTokens.
+	result addTokens: ((nodes at: 2) at: 37) to: result typeTokens.
+	result addNodes: ((nodes at: 2) at: 38) to: result blocks.
+	result addTokens: ((nodes at: 2) at: 39) to: result getTokens.
+	result addTokens: ((nodes at: 2) at: 40) to: result setTokens.
+	result addTokens: ((nodes at: 2) at: 41) to: result rightBraceTokens.
+	result addTokens: ((nodes at: 2) at: 42) to: result equalTokens.
+	result addObjects: ((nodes at: 2) at: 43) to: result expressions.
+	result addTokens: ((nodes at: 2) at: 44) to: result willSetTokens.
+	result addTokens: ((nodes at: 2) at: 45) to: result didSetTokens.
+	result
+		addTokens: ((nodes at: 2) at: 46)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 2) at: 47) to: result inoutTokens.
+	result addNodes: ((nodes at: 2) at: 48) to: result declarations.
+	result addTokens: ((nodes at: 2) at: 49) to: result convenienceTokens.
+	result addTokens: ((nodes at: 2) at: 50) to: result initTokens.
+	result addTokens: ((nodes at: 2) at: 51) to: result deinitTokens.
+	result addTokens: ((nodes at: 2) at: 52) to: result extensionTokens.
+	result addTokens: ((nodes at: 2) at: 53) to: result subscriptTokens.
+	result addTokens: ((nodes at: 2) at: 54) to: result caseTokens.
+	result
+		addTokens: ((nodes at: 2) at: 55)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 2) at: 56)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 2) at: 57)
+		to: result full_string_literalTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForexplicit_member_expression1: nodes [
+	| result |
+	result := SwiftExplicitMemberExpressionNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result lessThanTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result commaTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result greaterThanTokens.
+	result
+		addTokens: ((nodes at: 1) at: 5)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 6)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 7)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result leftBracketTokens.
+	result addObjects: ((nodes at: 1) at: 9) to: result expressions.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result rightBracketTokens.
+	result addObjects: ((nodes at: 1) at: 11) to: result keyExpressions.
+	result addTokens: ((nodes at: 1) at: 12) to: result colonTokens.
+	result addObjects: ((nodes at: 1) at: 13) to: result valueExpressions.
+	result __FILE__Token: ((nodes at: 1) at: 14).
+	result __LINE__Token: ((nodes at: 1) at: 15).
+	result __COLUMN__Token: ((nodes at: 1) at: 16).
+	result __FUNCTION__Token: ((nodes at: 1) at: 17).
+	result addTokens: ((nodes at: 1) at: 18) to: result selfTokens.
+	result addTokens: ((nodes at: 1) at: 19) to: result periodTokens.
+	result addTokens: ((nodes at: 1) at: 20) to: result initTokens.
+	result addTokens: ((nodes at: 1) at: 21) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 22) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 23) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 24) to: result inoutTokens.
+	result addTokens: ((nodes at: 1) at: 25) to: result letTokens.
+	result addTokens: ((nodes at: 1) at: 26) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 27) to: result rightBraceTokens.
+	result addTokens: ((nodes at: 1) at: 28) to: result operatorTokens.
+	result
+		addTokens: ((nodes at: 1) at: 29)
+		to: result minusGreaterThanTokens.
+	result
+		addTokens: ((nodes at: 1) at: 30)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 1) at: 31) to: result bangTokens.
+	result addTokens: ((nodes at: 1) at: 32) to: result protocolTokens.
+	result addTokens: ((nodes at: 1) at: 33) to: result typeTokens.
+	result
+		addTokens: ((nodes at: 1) at: 34)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 1) at: 35) to: result equalTokens.
+	result addTokens: ((nodes at: 1) at: 36) to: result varTokens.
+	result inToken: ((nodes at: 1) at: 37).
+	result weakToken: ((nodes at: 1) at: 38).
+	result unownedToken: ((nodes at: 1) at: 39).
+	result unownedLeftParensafeRightParenToken: ((nodes at: 1) at: 40).
+	result unownedLeftParenunsafeRightParenToken: ((nodes at: 1) at: 41).
+	result addNodes: ((nodes at: 1) at: 42) to: result statements.
+	result addTokens: ((nodes at: 1) at: 43) to: result dynamicTypeTokens.
+	result addToken: (nodes at: 2) to: result periodTokens.
+	result addToken: (nodes at: 3) to: result integer_literalTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForexplicit_member_expression2: nodes [
+	| result |
+	result := SwiftExplicitMemberExpressionNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result lessThanTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result commaTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result greaterThanTokens.
+	result
+		addTokens: ((nodes at: 1) at: 5)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 6)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 7)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result leftBracketTokens.
+	result addObjects: ((nodes at: 1) at: 9) to: result expressions.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result rightBracketTokens.
+	result addObjects: ((nodes at: 1) at: 11) to: result keyExpressions.
+	result addTokens: ((nodes at: 1) at: 12) to: result colonTokens.
+	result addObjects: ((nodes at: 1) at: 13) to: result valueExpressions.
+	result __FILE__Token: ((nodes at: 1) at: 14).
+	result __LINE__Token: ((nodes at: 1) at: 15).
+	result __COLUMN__Token: ((nodes at: 1) at: 16).
+	result __FUNCTION__Token: ((nodes at: 1) at: 17).
+	result addTokens: ((nodes at: 1) at: 18) to: result selfTokens.
+	result addTokens: ((nodes at: 1) at: 19) to: result periodTokens.
+	result addTokens: ((nodes at: 1) at: 20) to: result initTokens.
+	result addTokens: ((nodes at: 1) at: 21) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 22) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 23) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 24) to: result inoutTokens.
+	result addTokens: ((nodes at: 1) at: 25) to: result letTokens.
+	result addTokens: ((nodes at: 1) at: 26) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 27) to: result rightBraceTokens.
+	result addTokens: ((nodes at: 1) at: 28) to: result operatorTokens.
+	result
+		addTokens: ((nodes at: 1) at: 29)
+		to: result minusGreaterThanTokens.
+	result
+		addTokens: ((nodes at: 1) at: 30)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 1) at: 31) to: result bangTokens.
+	result addTokens: ((nodes at: 1) at: 32) to: result protocolTokens.
+	result addTokens: ((nodes at: 1) at: 33) to: result typeTokens.
+	result
+		addTokens: ((nodes at: 1) at: 34)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 1) at: 35) to: result equalTokens.
+	result addTokens: ((nodes at: 1) at: 36) to: result varTokens.
+	result inToken: ((nodes at: 1) at: 37).
+	result weakToken: ((nodes at: 1) at: 38).
+	result unownedToken: ((nodes at: 1) at: 39).
+	result unownedLeftParensafeRightParenToken: ((nodes at: 1) at: 40).
+	result unownedLeftParenunsafeRightParenToken: ((nodes at: 1) at: 41).
+	result addNodes: ((nodes at: 1) at: 42) to: result statements.
+	result addTokens: ((nodes at: 1) at: 43) to: result dynamicTypeTokens.
+	result addToken: (nodes at: 2) to: result periodTokens.
+	result addToken: (nodes at: 3) to: result identifierTokens.
+	result addToken: ((nodes at: 4) at: 1) to: result lessThanTokens.
+	result addTokens: ((nodes at: 4) at: 2) to: result commaTokens.
+	result addToken: ((nodes at: 4) at: 3) to: result greaterThanTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForexpression2: nodes [
+	| result |
+	result := SwiftBinaryExpressionNode new.
+	result addNodes: (nodes at: 2) to: result operators.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForexpression_element2: nodes [
+	| result |
+	result := SwiftNamedExpressionNode new.
+	result identifierToken: (nodes at: 1).
+	result colonToken: (nodes at: 2).
+	result expression: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForexpression_element_list2: nodes [
+	| result |
+	result := nodes at: 1.
+	self add: (nodes at: 2) to: (result at: 4).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForexpression_list2: nodes [
+	| result |
+	result := nodes at: 1.
+	self add: (nodes at: 2) to: (result at: 2).
+	self add: (nodes at: 3) to: (result at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForextension_body1: nodes [
+	| result |
+	result := Array new: 3.
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 1 put: (nodes at: 1).
+	self addAll: (nodes at: 2) to: (result at: 2).
+	result at: 3 put: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForextension_declaration1: nodes [
+	| result |
+	result := SwiftExtensionDeclarationNode new.
+	result extensionToken: (nodes at: 1).
+	result colonToken: ((nodes at: 3) at: 1).
+	result addTokens: ((nodes at: 3) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 3) at: 3) to: result lessThanTokens.
+	result addTokens: ((nodes at: 3) at: 4) to: result commaTokens.
+	result addTokens: ((nodes at: 3) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 6) to: result periodTokens.
+	result leftBraceToken: ((nodes at: 4) at: 1).
+	result addNodes: ((nodes at: 4) at: 2) to: result declarations.
+	result rightBraceToken: ((nodes at: 4) at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForfallthrough_statement1: nodes [
+	| result |
+	result := SwiftFallThroughStatementNode new.
+	result fallthroughToken: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForfile1: nodes [
+	| result |
+	result := SwiftFileNode new.
+	result addNodes: (nodes at: 1) to: result statements.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForfor_in_statement1: nodes [
+	| result |
+	result := SwiftForInStatementNode new.
+	result forToken: (nodes at: 1).
+	result addTokens: ((nodes at: 2) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 2) at: 2) to: result colonTokens.
+	result addTokens: ((nodes at: 2) at: 3) to: result identifierTokens.
+	result addTokens: ((nodes at: 2) at: 4) to: result leftParenTokens.
+	result addTokens: ((nodes at: 2) at: 5) to: result rightParenTokens.
+	result addTokens: ((nodes at: 2) at: 6) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 2) at: 7) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 2) at: 8) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 2) at: 9) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 2) at: 10)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 2) at: 11)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 2) at: 12)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 2) at: 13) to: result operatorTokens.
+	result
+		addTokens: ((nodes at: 2) at: 14)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 15) to: result periodTokens.
+	result
+		addTokens: ((nodes at: 2) at: 16)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 2) at: 17) to: result bangTokens.
+	result addTokens: ((nodes at: 2) at: 18) to: result protocolTokens.
+	result addTokens: ((nodes at: 2) at: 19) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 20) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 21) to: result typeTokens.
+	result addTokens: ((nodes at: 2) at: 22) to: result commaTokens.
+	result
+		addTokens: ((nodes at: 2) at: 23)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 2) at: 24) to: result inoutTokens.
+	result addTokens: ((nodes at: 2) at: 25) to: result varTokens.
+	result addTokens: ((nodes at: 2) at: 26) to: result letTokens.
+	result addObjects: ((nodes at: 2) at: 27) to: result expressions.
+	result addTokens: ((nodes at: 2) at: 28) to: result isTokens.
+	result addTokens: ((nodes at: 2) at: 29) to: result asTokens.
+	result inToken: (nodes at: 3).
+	result addObject: (nodes at: 4) to: result expressions.
+	result block: (nodes at: 5).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForfor_init1: nodes [
+	| result |
+	result := Array new: 2.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForfor_statement1: nodes [
+	| result |
+	result := SwiftForStatementNode new.
+	result forToken: (nodes at: 1).
+	result addObjects: ((nodes at: 2) at: 1) to: result expressions.
+	result addTokens: ((nodes at: 2) at: 2) to: result commaTokens.
+	result semicolonToken: (nodes at: 3).
+	result testExpression: (nodes at: 4).
+	result semicolonToken: (nodes at: 5).
+	result incrementExpression: (nodes at: 6).
+	result block: (nodes at: 7).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForfor_statement2: nodes [
+	| result |
+	result := SwiftForStatementNode new.
+	result forToken: (nodes at: 1).
+	result leftParenToken: (nodes at: 2).
+	result addObjects: ((nodes at: 3) at: 1) to: result expressions.
+	result addTokens: ((nodes at: 3) at: 2) to: result commaTokens.
+	result semicolonToken: (nodes at: 4).
+	result testExpression: (nodes at: 5).
+	result semicolonToken: (nodes at: 6).
+	result incrementExpression: (nodes at: 7).
+	result rightParenToken: (nodes at: 8).
+	result block: (nodes at: 9).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForforced_value_expression1: nodes [
+	| result |
+	result := SwiftForcedValueExpressionNode new.
+	result expression: (nodes at: 1).
+	result bangToken: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForfunction_call_expression1: nodes [
+	| result |
+	result := SwiftFunctionCallExpressionNode new.
+	result addObject: (nodes at: 1) to: result expressions.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForfunction_declaration1: nodes [
+	| result |
+	result := SwiftFunctionDeclarationNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
+	result addTokens: ((nodes at: 1) at: 13) to: result classTokens.
+	result addTokens: ((nodes at: 1) at: 14) to: result mutatingTokens.
+	result addTokens: ((nodes at: 1) at: 15) to: result nonmutatingTokens.
+	result addTokens: ((nodes at: 1) at: 16) to: result overrideTokens.
+	result addTokens: ((nodes at: 1) at: 17) to: result staticTokens.
+	result addTokens: ((nodes at: 1) at: 18) to: result unownedTokens.
+	result
+		addTokens: ((nodes at: 1) at: 19)
+		to: result unownedLeftParensafeRightParenTokens.
+	result
+		addTokens: ((nodes at: 1) at: 20)
+		to: result unownedLeftParenunsafeRightParenTokens.
+	result addTokens: ((nodes at: 1) at: 21) to: result weakTokens.
+	result funcToken: ((nodes at: 1) at: 22).
+	result addToken: ((nodes at: 2) at: 1) to: result identifierTokens.
+	result addToken: ((nodes at: 2) at: 2) to: result operatorTokens.
+	result addTokens: ((nodes at: 3) at: 1) to: result lessThanTokens.
+	result addTokens: ((nodes at: 3) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 3) at: 3) to: result colonTokens.
+	result addTokens: ((nodes at: 3) at: 4) to: result commaTokens.
+	result addTokens: ((nodes at: 3) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 6) to: result periodTokens.
+	result addTokens: ((nodes at: 3) at: 7) to: result protocolTokens.
+	result whereToken: ((nodes at: 3) at: 8).
+	result addTokens: ((nodes at: 3) at: 9) to: result equalEqualTokens.
+	result addTokens: ((nodes at: 4) at: 1) to: result leftParenTokens.
+	result addTokens: ((nodes at: 4) at: 2) to: result rightParenTokens.
+	result addTokens: ((nodes at: 4) at: 3) to: result commaTokens.
+	result addTokens: ((nodes at: 4) at: 4) to: result varTokens.
+	result
+		addTokens: ((nodes at: 4) at: 5)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 4) at: 6) to: result inoutTokens.
+	result addTokens: ((nodes at: 4) at: 7) to: result letTokens.
+	result addTokens: ((nodes at: 4) at: 8) to: result _Tokens.
+	result addTokens: ((nodes at: 4) at: 9) to: result identifierTokens.
+	result addTokens: ((nodes at: 4) at: 10) to: result colonTokens.
+	result addTokens: ((nodes at: 4) at: 11) to: result equalTokens.
+	result addObjects: ((nodes at: 4) at: 12) to: result expressions.
+	result addTokens: ((nodes at: 4) at: 13) to: result leftBracketTokens.
+	result
+		addTokens: ((nodes at: 4) at: 14)
+		to: result rightBracketTokens.
+	result
+		addTokens: ((nodes at: 4) at: 15)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 4) at: 16) to: result periodTokens.
+	result
+		addTokens: ((nodes at: 4) at: 17)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 4) at: 18) to: result bangTokens.
+	result addTokens: ((nodes at: 4) at: 19) to: result protocolTokens.
+	result addTokens: ((nodes at: 4) at: 20) to: result lessThanTokens.
+	result addTokens: ((nodes at: 4) at: 21) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 4) at: 22) to: result typeTokens.
+	result addTokens: ((nodes at: 4) at: 23) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 4) at: 24) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 4) at: 25)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 4) at: 26)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 4) at: 27)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 4) at: 28) to: result operatorTokens.
+	result block: (nodes at: 5).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForfunction_head1: nodes [
+	| result |
+	result := Array new: 22.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 13).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 14).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 15).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 16).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 17).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 18).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 19).
+	self addAll: ((nodes at: 2) at: 8) to: (result at: 20).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 21).
+	result at: 22 put: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForfunction_name1: nodes [
+	| result |
+	result := Array new: 2.
+	result at: 1 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForfunction_name2: nodes [
+	| result |
+	result := Array new: 2.
+	result at: 2 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForfunction_signature1: nodes [
+	| result |
+	result := nodes at: 1.
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 15).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 9).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 13).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 14).
+	self addAll: ((nodes at: 2) at: 8) to: (result at: 23).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 24).
+	self addAll: ((nodes at: 2) at: 10) to: (result at: 25).
+	self addAll: ((nodes at: 2) at: 11) to: (result at: 26).
+	self addAll: ((nodes at: 2) at: 12) to: (result at: 27).
+	self addAll: ((nodes at: 2) at: 13) to: (result at: 28).
+	self addAll: ((nodes at: 2) at: 14) to: (result at: 10).
+	self addAll: ((nodes at: 2) at: 15) to: (result at: 16).
+	self addAll: ((nodes at: 2) at: 16) to: (result at: 17).
+	self addAll: ((nodes at: 2) at: 17) to: (result at: 18).
+	self addAll: ((nodes at: 2) at: 18) to: (result at: 19).
+	self addAll: ((nodes at: 2) at: 19) to: (result at: 20).
+	self addAll: ((nodes at: 2) at: 20) to: (result at: 21).
+	self addAll: ((nodes at: 2) at: 21) to: (result at: 22).
+	self addAll: ((nodes at: 2) at: 22) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 23) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 24) to: (result at: 6).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForfunction_type1: nodes [
+	| result |
+	result := SwiftFunctionTypeNode new.
+	result addToken: (nodes at: 2) to: result minusGreaterThanTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForgeneric_argument_clause1: nodes [
+	| result |
+	result := Array new: 3.
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 1 put: (nodes at: 1).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
+	result at: 3 put: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForgeneric_argument_list1: nodes [
+	| result |
+	result := Array new: 1.
+	result at: 1 put: (OrderedCollection new: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForgeneric_argument_list2: nodes [
+	| result |
+	result := nodes at: 1.
+	self add: (nodes at: 2) to: (result at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForgeneric_parameter1: nodes [
+	| result |
+	result := Array new: 7.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForgeneric_parameter2: nodes [
+	| result |
+	result := Array new: 7.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 1).
+	result at: 2 put: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForgeneric_parameter_clause1: nodes [
+	| result |
+	result := Array new: 9.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 7).
+	result at: 8 put: ((nodes at: 3) at: 1).
+	self addAll: ((nodes at: 3) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 3) at: 3) to: (result at: 1).
+	self addAll: ((nodes at: 3) at: 4) to: (result at: 5).
+	self addAll: ((nodes at: 3) at: 5) to: (result at: 6).
+	self addAll: ((nodes at: 3) at: 6) to: (result at: 3).
+	self addAll: ((nodes at: 3) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 3) at: 8) to: (result at: 4).
+	self addAll: ((nodes at: 3) at: 9) to: (result at: 9).
+	self add: (nodes at: 4) to: (result at: 5).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForgeneric_parameter_list1: nodes [
+	| result |
+	result := Array new: 7.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
+	self add: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
+	self add: ((nodes at: 1) at: 7) to: (result at: 7).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForgeneric_parameter_list2: nodes [
+	| result |
+	result := nodes at: 1.
+	self add: (nodes at: 2) to: (result at: 4).
+	self addAll: ((nodes at: 3) at: 1) to: (result at: 1).
+	self add: ((nodes at: 3) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 3) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 3) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 3) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 3) at: 6) to: (result at: 6).
+	self add: ((nodes at: 3) at: 7) to: (result at: 7).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForgetter_keyword_clause1: nodes [
+	| result |
+	result := Array new: 13.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
+	result at: 13 put: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForgetter_setter_block1: nodes [
+	| result |
+	result := Array new: 15.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 7).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
+	result at: 13 put: ((nodes at: 2) at: 13).
+	self add: ((nodes at: 2) at: 14) to: (result at: 14).
+	self addAll: ((nodes at: 3) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 3) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 3) at: 3) to: (result at: 4).
+	self addAll: ((nodes at: 3) at: 4) to: (result at: 5).
+	self addAll: ((nodes at: 3) at: 5) to: (result at: 6).
+	self addAll: ((nodes at: 3) at: 6) to: (result at: 7).
+	self addAll: ((nodes at: 3) at: 7) to: (result at: 1).
+	self addAll: ((nodes at: 3) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 3) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 3) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 3) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 3) at: 12) to: (result at: 12).
+	result at: 15 put: ((nodes at: 3) at: 13).
+	self add: ((nodes at: 3) at: 14) to: (result at: 14).
+	self add: (nodes at: 4) to: (result at: 8).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForgetter_setter_block2: nodes [
+	| result |
+	result := Array new: 15.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 7).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
+	result at: 15 put: ((nodes at: 2) at: 13).
+	self add: ((nodes at: 2) at: 14) to: (result at: 14).
+	self addAll: ((nodes at: 3) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 3) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 3) at: 3) to: (result at: 4).
+	self addAll: ((nodes at: 3) at: 4) to: (result at: 5).
+	self addAll: ((nodes at: 3) at: 5) to: (result at: 6).
+	self addAll: ((nodes at: 3) at: 6) to: (result at: 7).
+	self addAll: ((nodes at: 3) at: 7) to: (result at: 1).
+	self addAll: ((nodes at: 3) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 3) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 3) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 3) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 3) at: 12) to: (result at: 12).
+	result at: 13 put: ((nodes at: 3) at: 13).
+	self add: ((nodes at: 3) at: 14) to: (result at: 14).
+	self add: (nodes at: 4) to: (result at: 8).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForgetter_setter_keyword_block1: nodes [
+	| result |
+	result := Array new: 14.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 7).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
+	result at: 13 put: ((nodes at: 2) at: 13).
+	self addAll: ((nodes at: 3) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 3) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 3) at: 3) to: (result at: 4).
+	self addAll: ((nodes at: 3) at: 4) to: (result at: 5).
+	self addAll: ((nodes at: 3) at: 5) to: (result at: 6).
+	self addAll: ((nodes at: 3) at: 6) to: (result at: 7).
+	self addAll: ((nodes at: 3) at: 7) to: (result at: 1).
+	self addAll: ((nodes at: 3) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 3) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 3) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 3) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 3) at: 12) to: (result at: 12).
+	result at: 14 put: ((nodes at: 3) at: 13).
+	self add: (nodes at: 4) to: (result at: 8).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForgetter_setter_keyword_block2: nodes [
+	| result |
+	result := Array new: 14.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 7).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
+	result at: 14 put: ((nodes at: 2) at: 13).
+	self addAll: ((nodes at: 3) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 3) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 3) at: 3) to: (result at: 4).
+	self addAll: ((nodes at: 3) at: 4) to: (result at: 5).
+	self addAll: ((nodes at: 3) at: 5) to: (result at: 6).
+	self addAll: ((nodes at: 3) at: 6) to: (result at: 7).
+	self addAll: ((nodes at: 3) at: 7) to: (result at: 1).
+	self addAll: ((nodes at: 3) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 3) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 3) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 3) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 3) at: 12) to: (result at: 12).
+	result at: 13 put: ((nodes at: 3) at: 13).
+	self add: (nodes at: 4) to: (result at: 8).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForif_statement1: nodes [
+	| result |
+	result := SwiftIfStatementNode new.
+	result ifToken: (nodes at: 1).
+	result expression: (nodes at: 2).
+	result then: (nodes at: 3).
+	result elseToken: ((nodes at: 4) at: 1).
+	result else: ((nodes at: 4) at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForimplicit_member_expression1: nodes [
+	| result |
+	result := SwiftImplicitMemberExpressionNode new.
+	result periodToken: (nodes at: 1).
+	result identifierToken: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForimplicitly_unwrapped_optional_type1: nodes [
+	| result |
+	result := SwiftImplicitlyUnwrappedOptionalTypeNode new.
+	result addToken: (nodes at: 2) to: result bangTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForimport_declaration1: nodes [
+	| result |
+	result := SwiftImportDeclarationNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
+	result importToken: (nodes at: 2).
+	result typealiasToken: ((nodes at: 3) at: 1).
+	result structToken: ((nodes at: 3) at: 2).
+	result classToken: ((nodes at: 3) at: 3).
+	result enumToken: ((nodes at: 3) at: 4).
+	result protocolToken: ((nodes at: 3) at: 5).
+	result varToken: ((nodes at: 3) at: 6).
+	result funcToken: ((nodes at: 3) at: 7).
+	result addTokens: ((nodes at: 4) at: 1) to: result identifierTokens.
+	result addTokens: ((nodes at: 4) at: 2) to: result operatorTokens.
+	result addTokens: ((nodes at: 4) at: 3) to: result periodTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForimport_kind1: nodes [
+	| result |
+	result := Array new: 7.
+	result at: 1 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForimport_kind2: nodes [
+	| result |
+	result := Array new: 7.
+	result at: 2 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForimport_kind3: nodes [
+	| result |
+	result := Array new: 7.
+	result at: 3 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForimport_kind4: nodes [
+	| result |
+	result := Array new: 7.
+	result at: 4 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForimport_kind5: nodes [
+	| result |
+	result := Array new: 7.
+	result at: 5 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForimport_kind6: nodes [
+	| result |
+	result := Array new: 7.
+	result at: 6 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForimport_kind7: nodes [
+	| result |
+	result := Array new: 7.
+	result at: 7 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForimport_path1: nodes [
+	| result |
+	result := Array new: 3.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	self add: ((nodes at: 1) at: 1) to: (result at: 1).
+	self add: ((nodes at: 1) at: 2) to: (result at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForimport_path2: nodes [
+	| result |
+	result := nodes at: 1.
+	self add: (nodes at: 2) to: (result at: 3).
+	self add: ((nodes at: 3) at: 1) to: (result at: 1).
+	self add: ((nodes at: 3) at: 2) to: (result at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForin_out_expression1: nodes [
+	| result |
+	result := SwiftInOutExpressionNode new.
+	result andToken: (nodes at: 1).
+	result identifierToken: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForinfix_operator_attributes1: nodes [
+	| result |
+	result := Array new: 6.
+	result at: 1 put: ((nodes at: 1) at: 1).
+	result at: 2 put: ((nodes at: 1) at: 2).
+	result at: 3 put: ((nodes at: 2) at: 1).
+	result at: 4 put: ((nodes at: 2) at: 2).
+	result at: 5 put: ((nodes at: 2) at: 3).
+	result at: 6 put: ((nodes at: 2) at: 4).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForinfix_operator_declaration1: nodes [
+	| result |
+	result := SwiftInfixOperatorDeclarationNode new.
+	result addToken: (nodes at: 1) to: result operatorTokens.
+	result infixToken: (nodes at: 2).
+	result addToken: (nodes at: 3) to: result operatorTokens.
+	result leftBraceToken: (nodes at: 4).
+	result precedenceToken: ((nodes at: 5) at: 1).
+	result integer_literalToken: ((nodes at: 5) at: 2).
+	result associativityToken: ((nodes at: 5) at: 3).
+	result leftToken: ((nodes at: 5) at: 4).
+	result rightToken: ((nodes at: 5) at: 5).
+	result noneToken: ((nodes at: 5) at: 6).
+	result rightBraceToken: (nodes at: 6).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForinitializer_declaration1: nodes [
+	| result |
+	result := SwiftInitializerDeclarationNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
+	result convenienceToken: ((nodes at: 1) at: 13).
+	result initToken: ((nodes at: 1) at: 14).
+	result addTokens: ((nodes at: 2) at: 1) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 2) at: 3) to: result colonTokens.
+	result addTokens: ((nodes at: 2) at: 4) to: result commaTokens.
+	result addTokens: ((nodes at: 2) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 6) to: result periodTokens.
+	result addTokens: ((nodes at: 2) at: 7) to: result protocolTokens.
+	result whereToken: ((nodes at: 2) at: 8).
+	result addTokens: ((nodes at: 2) at: 9) to: result equalEqualTokens.
+	result addTokens: ((nodes at: 3) at: 1) to: result leftParenTokens.
+	result addTokens: ((nodes at: 3) at: 2) to: result rightParenTokens.
+	result addTokens: ((nodes at: 3) at: 3) to: result inoutTokens.
+	result addTokens: ((nodes at: 3) at: 4) to: result letTokens.
+	result addTokens: ((nodes at: 3) at: 5) to: result _Tokens.
+	result addTokens: ((nodes at: 3) at: 6) to: result identifierTokens.
+	result addTokens: ((nodes at: 3) at: 7) to: result colonTokens.
+	result addTokens: ((nodes at: 3) at: 8) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 3) at: 9) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 3) at: 10) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 3) at: 11) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 3) at: 12)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 3) at: 13)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 3) at: 14)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 3) at: 15) to: result operatorTokens.
+	result
+		addTokens: ((nodes at: 3) at: 16)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 17) to: result periodTokens.
+	result
+		addTokens: ((nodes at: 3) at: 18)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 3) at: 19) to: result bangTokens.
+	result addTokens: ((nodes at: 3) at: 20) to: result protocolTokens.
+	result addTokens: ((nodes at: 3) at: 21) to: result lessThanTokens.
+	result addTokens: ((nodes at: 3) at: 22) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 23) to: result typeTokens.
+	result addTokens: ((nodes at: 3) at: 24) to: result commaTokens.
+	result
+		addTokens: ((nodes at: 3) at: 25)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 3) at: 26) to: result equalTokens.
+	result addObjects: ((nodes at: 3) at: 27) to: result expressions.
+	result addTokens: ((nodes at: 3) at: 28) to: result varTokens.
+	result block: (nodes at: 4).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForinitializer_expression1: nodes [
+	| result |
+	result := SwiftInitializerExpressionNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result lessThanTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result commaTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result greaterThanTokens.
+	result
+		addTokens: ((nodes at: 1) at: 5)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 6)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 7)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result leftBracketTokens.
+	result addObjects: ((nodes at: 1) at: 9) to: result expressions.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result rightBracketTokens.
+	result addObjects: ((nodes at: 1) at: 11) to: result keyExpressions.
+	result addTokens: ((nodes at: 1) at: 12) to: result colonTokens.
+	result addObjects: ((nodes at: 1) at: 13) to: result valueExpressions.
+	result __FILE__Token: ((nodes at: 1) at: 14).
+	result __LINE__Token: ((nodes at: 1) at: 15).
+	result __COLUMN__Token: ((nodes at: 1) at: 16).
+	result __FUNCTION__Token: ((nodes at: 1) at: 17).
+	result addTokens: ((nodes at: 1) at: 18) to: result selfTokens.
+	result addTokens: ((nodes at: 1) at: 19) to: result periodTokens.
+	result addTokens: ((nodes at: 1) at: 20) to: result initTokens.
+	result addTokens: ((nodes at: 1) at: 21) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 22) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 23) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 24) to: result inoutTokens.
+	result addTokens: ((nodes at: 1) at: 25) to: result letTokens.
+	result addTokens: ((nodes at: 1) at: 26) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 27) to: result rightBraceTokens.
+	result addTokens: ((nodes at: 1) at: 28) to: result operatorTokens.
+	result
+		addTokens: ((nodes at: 1) at: 29)
+		to: result minusGreaterThanTokens.
+	result
+		addTokens: ((nodes at: 1) at: 30)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 1) at: 31) to: result bangTokens.
+	result addTokens: ((nodes at: 1) at: 32) to: result protocolTokens.
+	result addTokens: ((nodes at: 1) at: 33) to: result typeTokens.
+	result
+		addTokens: ((nodes at: 1) at: 34)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 1) at: 35) to: result equalTokens.
+	result addTokens: ((nodes at: 1) at: 36) to: result varTokens.
+	result inToken: ((nodes at: 1) at: 37).
+	result weakToken: ((nodes at: 1) at: 38).
+	result unownedToken: ((nodes at: 1) at: 39).
+	result unownedLeftParensafeRightParenToken: ((nodes at: 1) at: 40).
+	result unownedLeftParenunsafeRightParenToken: ((nodes at: 1) at: 41).
+	result addNodes: ((nodes at: 1) at: 42) to: result statements.
+	result addTokens: ((nodes at: 1) at: 43) to: result dynamicTypeTokens.
+	result addToken: (nodes at: 2) to: result periodTokens.
+	result addToken: (nodes at: 3) to: result initTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForinitializer_head1: nodes [
+	| result |
+	result := Array new: 14.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
+	result at: 13 put: (nodes at: 2).
+	result at: 14 put: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForis_pattern1: nodes [
+	| result |
+	result := Array new: 25.
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 1 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForlabeled_statement1: nodes [
+	| result |
+	result := SwiftLabeledStatementNode new.
+	result name: ((nodes at: 1) at: 1).
+	result colonToken: ((nodes at: 1) at: 2).
+	result statement: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForliteral1: nodes [
+	| result |
+	result := Array new: 3.
+	result at: 1 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForliteral2: nodes [
+	| result |
+	result := Array new: 3.
+	result at: 2 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForliteral3: nodes [
+	| result |
+	result := Array new: 3.
+	result at: 3 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForliteral_expression1: nodes [
+	| result |
+	result := SwiftLiteralExpressionNode new.
+	result integer_literalToken: ((nodes at: 1) at: 1).
+	result floating_point_literalToken: ((nodes at: 1) at: 2).
+	result full_string_literalToken: ((nodes at: 1) at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForliteral_expression2: nodes [
+	| result |
+	result := SwiftLiteralExpressionNode new.
+	result leftBracketToken: ((nodes at: 1) at: 1).
+	result addObjects: ((nodes at: 1) at: 2) to: result expressions.
+	result addTokens: ((nodes at: 1) at: 3) to: result commaTokens.
+	result rightBracketToken: ((nodes at: 1) at: 4).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForliteral_expression3: nodes [
+	| result |
+	result := SwiftLiteralExpressionNode new.
+	result leftBracketToken: ((nodes at: 1) at: 1).
+	result addObjects: ((nodes at: 1) at: 2) to: result keyExpressions.
+	result addTokens: ((nodes at: 1) at: 3) to: result colonTokens.
+	result addObjects: ((nodes at: 1) at: 4) to: result valueExpressions.
+	result addTokens: ((nodes at: 1) at: 5) to: result commaTokens.
+	result rightBracketToken: ((nodes at: 1) at: 6).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForliteral_expression4: nodes [
+	| result |
+	result := SwiftLiteralExpressionNode new.
+	result __FILE__Token: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForliteral_expression5: nodes [
+	| result |
+	result := SwiftLiteralExpressionNode new.
+	result __LINE__Token: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForliteral_expression6: nodes [
+	| result |
+	result := SwiftLiteralExpressionNode new.
+	result __COLUMN__Token: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForliteral_expression7: nodes [
+	| result |
+	result := SwiftLiteralExpressionNode new.
+	result __FUNCTION__Token: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFormetatype_type1: nodes [
+	| result |
+	result := SwiftMetatypeTypeNode new.
+	result addToken: (nodes at: 2) to: result periodTokens.
+	result addToken: (nodes at: 3) to: result typeTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFormetatype_type2: nodes [
+	| result |
+	result := SwiftMetatypeTypeNode new.
+	result addToken: (nodes at: 2) to: result periodTokens.
+	result addToken: (nodes at: 3) to: result protocolTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForoptional_chaining_expression1: nodes [
+	| result |
+	result := SwiftOptionalChainingExpressionNode new.
+	result expression: (nodes at: 1).
+	result questionMarkToken: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForoptional_type1: nodes [
+	| result |
+	result := SwiftOptionalTypeNode new.
+	result addToken: (nodes at: 2) to: result questionMarkTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForparameter1: nodes [
+	| result |
+	result := Array new: 28.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 1).
+	result at: 2 put: (nodes at: 2).
+	self add: (nodes at: 3) to: (result at: 3).
+	self add: ((nodes at: 4) at: 1) to: (result at: 4).
+	self add: ((nodes at: 4) at: 2) to: (result at: 3).
+	self add: ((nodes at: 5) at: 1) to: (result at: 4).
+	self add: ((nodes at: 5) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 6) at: 1) to: (result at: 5).
+	self addAll: ((nodes at: 6) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 6) at: 3) to: (result at: 4).
+	self addAll: ((nodes at: 6) at: 4) to: (result at: 6).
+	self addAll: ((nodes at: 6) at: 5) to: (result at: 7).
+	self addAll: ((nodes at: 6) at: 6) to: (result at: 8).
+	self addAll: ((nodes at: 6) at: 7) to: (result at: 9).
+	self addAll: ((nodes at: 6) at: 8) to: (result at: 10).
+	self addAll: ((nodes at: 6) at: 9) to: (result at: 11).
+	self addAll: ((nodes at: 6) at: 10) to: (result at: 12).
+	self addAll: ((nodes at: 6) at: 11) to: (result at: 13).
+	self addAll: ((nodes at: 6) at: 12) to: (result at: 14).
+	self addAll: ((nodes at: 6) at: 13) to: (result at: 15).
+	self addAll: ((nodes at: 6) at: 14) to: (result at: 16).
+	self addAll: ((nodes at: 6) at: 15) to: (result at: 17).
+	self addAll: ((nodes at: 6) at: 16) to: (result at: 18).
+	self addAll: ((nodes at: 6) at: 17) to: (result at: 19).
+	self addAll: ((nodes at: 6) at: 18) to: (result at: 20).
+	self addAll: ((nodes at: 6) at: 19) to: (result at: 21).
+	self addAll: ((nodes at: 6) at: 20) to: (result at: 22).
+	self addAll: ((nodes at: 6) at: 21) to: (result at: 23).
+	self addAll: ((nodes at: 6) at: 22) to: (result at: 24).
+	self addAll: ((nodes at: 6) at: 23) to: (result at: 25).
+	self addAll: ((nodes at: 6) at: 24) to: (result at: 1).
+	result at: 26 put: ((nodes at: 7) at: 1).
+	result at: 27 put: ((nodes at: 7) at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForparameter2: nodes [
+	| result |
+	result := Array new: 28.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 1).
+	result at: 28 put: (nodes at: 2).
+	self add: (nodes at: 3) to: (result at: 3).
+	self add: ((nodes at: 4) at: 1) to: (result at: 4).
+	self add: ((nodes at: 4) at: 2) to: (result at: 3).
+	self add: ((nodes at: 5) at: 1) to: (result at: 4).
+	self add: ((nodes at: 5) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 6) at: 1) to: (result at: 5).
+	self addAll: ((nodes at: 6) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 6) at: 3) to: (result at: 4).
+	self addAll: ((nodes at: 6) at: 4) to: (result at: 6).
+	self addAll: ((nodes at: 6) at: 5) to: (result at: 7).
+	self addAll: ((nodes at: 6) at: 6) to: (result at: 8).
+	self addAll: ((nodes at: 6) at: 7) to: (result at: 9).
+	self addAll: ((nodes at: 6) at: 8) to: (result at: 10).
+	self addAll: ((nodes at: 6) at: 9) to: (result at: 11).
+	self addAll: ((nodes at: 6) at: 10) to: (result at: 12).
+	self addAll: ((nodes at: 6) at: 11) to: (result at: 13).
+	self addAll: ((nodes at: 6) at: 12) to: (result at: 14).
+	self addAll: ((nodes at: 6) at: 13) to: (result at: 15).
+	self addAll: ((nodes at: 6) at: 14) to: (result at: 16).
+	self addAll: ((nodes at: 6) at: 15) to: (result at: 17).
+	self addAll: ((nodes at: 6) at: 16) to: (result at: 18).
+	self addAll: ((nodes at: 6) at: 17) to: (result at: 19).
+	self addAll: ((nodes at: 6) at: 18) to: (result at: 20).
+	self addAll: ((nodes at: 6) at: 19) to: (result at: 21).
+	self addAll: ((nodes at: 6) at: 20) to: (result at: 22).
+	self addAll: ((nodes at: 6) at: 21) to: (result at: 23).
+	self addAll: ((nodes at: 6) at: 22) to: (result at: 24).
+	self addAll: ((nodes at: 6) at: 23) to: (result at: 25).
+	self addAll: ((nodes at: 6) at: 24) to: (result at: 1).
+	result at: 26 put: ((nodes at: 7) at: 1).
+	result at: 27 put: ((nodes at: 7) at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForparameter3: nodes [
+	| result |
+	result := Array new: 28.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 12).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 13).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 14).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 15).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForparameter_clause1: nodes [
+	| result |
+	result := Array new: 28.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 1).
+	self add: (nodes at: 2) to: (result at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForparameter_clause2: nodes [
+	| result |
+	result := Array new: 28.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 7).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
+	self addAll: ((nodes at: 2) at: 13) to: (result at: 13).
+	self addAll: ((nodes at: 2) at: 14) to: (result at: 14).
+	self addAll: ((nodes at: 2) at: 15) to: (result at: 15).
+	self addAll: ((nodes at: 2) at: 16) to: (result at: 16).
+	self addAll: ((nodes at: 2) at: 17) to: (result at: 17).
+	self addAll: ((nodes at: 2) at: 18) to: (result at: 18).
+	self addAll: ((nodes at: 2) at: 19) to: (result at: 19).
+	self addAll: ((nodes at: 2) at: 20) to: (result at: 20).
+	self addAll: ((nodes at: 2) at: 21) to: (result at: 21).
+	self addAll: ((nodes at: 2) at: 22) to: (result at: 22).
+	self addAll: ((nodes at: 2) at: 23) to: (result at: 23).
+	self addAll: ((nodes at: 2) at: 24) to: (result at: 24).
+	self addAll: ((nodes at: 2) at: 25) to: (result at: 25).
+	self addAll: ((nodes at: 2) at: 26) to: (result at: 26).
+	self addAll: ((nodes at: 2) at: 27) to: (result at: 27).
+	self addAll: ((nodes at: 2) at: 28) to: (result at: 28).
+	self add: (nodes at: 3) to: (result at: 25).
+	self add: (nodes at: 4) to: (result at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForparameter_clauses1: nodes [
+	| result |
+	result := Array new: 28.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForparameter_clauses2: nodes [
+	| result |
+	result := nodes at: 1.
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 7).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 9).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 10).
+	self addAll: ((nodes at: 2) at: 8) to: (result at: 13).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 14).
+	self addAll: ((nodes at: 2) at: 10) to: (result at: 23).
+	self addAll: ((nodes at: 2) at: 11) to: (result at: 24).
+	self addAll: ((nodes at: 2) at: 12) to: (result at: 25).
+	self addAll: ((nodes at: 2) at: 13) to: (result at: 26).
+	self addAll: ((nodes at: 2) at: 14) to: (result at: 27).
+	self addAll: ((nodes at: 2) at: 15) to: (result at: 28).
+	self addAll: ((nodes at: 2) at: 16) to: (result at: 15).
+	self addAll: ((nodes at: 2) at: 17) to: (result at: 16).
+	self addAll: ((nodes at: 2) at: 18) to: (result at: 17).
+	self addAll: ((nodes at: 2) at: 19) to: (result at: 18).
+	self addAll: ((nodes at: 2) at: 20) to: (result at: 19).
+	self addAll: ((nodes at: 2) at: 21) to: (result at: 20).
+	self addAll: ((nodes at: 2) at: 22) to: (result at: 21).
+	self addAll: ((nodes at: 2) at: 23) to: (result at: 22).
+	self addAll: ((nodes at: 2) at: 24) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 25) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 26) to: (result at: 11).
+	self addAll: ((nodes at: 2) at: 27) to: (result at: 12).
+	self addAll: ((nodes at: 2) at: 28) to: (result at: 4).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForparameter_list1: nodes [
+	| result |
+	result := Array new: 28.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
+	self add: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
+	self addAll: ((nodes at: 1) at: 13) to: (result at: 13).
+	self addAll: ((nodes at: 1) at: 14) to: (result at: 14).
+	self addAll: ((nodes at: 1) at: 15) to: (result at: 15).
+	self addAll: ((nodes at: 1) at: 16) to: (result at: 16).
+	self addAll: ((nodes at: 1) at: 17) to: (result at: 17).
+	self addAll: ((nodes at: 1) at: 18) to: (result at: 18).
+	self addAll: ((nodes at: 1) at: 19) to: (result at: 19).
+	self addAll: ((nodes at: 1) at: 20) to: (result at: 20).
+	self addAll: ((nodes at: 1) at: 21) to: (result at: 21).
+	self addAll: ((nodes at: 1) at: 22) to: (result at: 22).
+	self addAll: ((nodes at: 1) at: 23) to: (result at: 23).
+	self addAll: ((nodes at: 1) at: 24) to: (result at: 24).
+	self addAll: ((nodes at: 1) at: 25) to: (result at: 25).
+	self add: ((nodes at: 1) at: 26) to: (result at: 26).
+	self add: ((nodes at: 1) at: 27) to: (result at: 27).
+	self add: ((nodes at: 1) at: 28) to: (result at: 28).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForparameter_list2: nodes [
+	| result |
+	result := nodes at: 1.
+	self add: (nodes at: 2) to: (result at: 24).
+	self addAll: ((nodes at: 3) at: 1) to: (result at: 1).
+	self add: ((nodes at: 3) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 3) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 3) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 3) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 3) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 3) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 3) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 3) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 3) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 3) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 3) at: 12) to: (result at: 12).
+	self addAll: ((nodes at: 3) at: 13) to: (result at: 13).
+	self addAll: ((nodes at: 3) at: 14) to: (result at: 14).
+	self addAll: ((nodes at: 3) at: 15) to: (result at: 15).
+	self addAll: ((nodes at: 3) at: 16) to: (result at: 16).
+	self addAll: ((nodes at: 3) at: 17) to: (result at: 17).
+	self addAll: ((nodes at: 3) at: 18) to: (result at: 18).
+	self addAll: ((nodes at: 3) at: 19) to: (result at: 19).
+	self addAll: ((nodes at: 3) at: 20) to: (result at: 20).
+	self addAll: ((nodes at: 3) at: 21) to: (result at: 21).
+	self addAll: ((nodes at: 3) at: 22) to: (result at: 22).
+	self addAll: ((nodes at: 3) at: 23) to: (result at: 23).
+	self addAll: ((nodes at: 3) at: 24) to: (result at: 24).
+	self addAll: ((nodes at: 3) at: 25) to: (result at: 25).
+	self add: ((nodes at: 3) at: 26) to: (result at: 26).
+	self add: ((nodes at: 3) at: 27) to: (result at: 27).
+	self add: ((nodes at: 3) at: 28) to: (result at: 28).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForparenthesized_expression1: nodes [
+	| result |
+	result := SwiftParenthesizedExpressionNode new.
+	result leftParenToken: (nodes at: 1).
+	result addObjects: ((nodes at: 2) at: 1) to: result expressions.
+	result addTokens: ((nodes at: 2) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 2) at: 3) to: result colonTokens.
+	result addTokens: ((nodes at: 2) at: 4) to: result commaTokens.
+	result rightParenToken: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForpattern1: nodes [
+	| result |
+	result := Array new: 29.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
+	self addAll: ((nodes at: 2) at: 13) to: (result at: 13).
+	self addAll: ((nodes at: 2) at: 14) to: (result at: 14).
+	self addAll: ((nodes at: 2) at: 15) to: (result at: 15).
+	self addAll: ((nodes at: 2) at: 16) to: (result at: 16).
+	self addAll: ((nodes at: 2) at: 17) to: (result at: 17).
+	self addAll: ((nodes at: 2) at: 18) to: (result at: 18).
+	self addAll: ((nodes at: 2) at: 19) to: (result at: 19).
+	self addAll: ((nodes at: 2) at: 20) to: (result at: 20).
+	self addAll: ((nodes at: 2) at: 21) to: (result at: 21).
+	self addAll: ((nodes at: 2) at: 22) to: (result at: 22).
+	self addAll: ((nodes at: 2) at: 23) to: (result at: 23).
+	self addAll: ((nodes at: 2) at: 24) to: (result at: 24).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForpattern2: nodes [
+	| result |
+	result := Array new: 29.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
+	self addAll: ((nodes at: 2) at: 13) to: (result at: 13).
+	self addAll: ((nodes at: 2) at: 14) to: (result at: 14).
+	self addAll: ((nodes at: 2) at: 15) to: (result at: 15).
+	self addAll: ((nodes at: 2) at: 16) to: (result at: 16).
+	self addAll: ((nodes at: 2) at: 17) to: (result at: 17).
+	self addAll: ((nodes at: 2) at: 18) to: (result at: 18).
+	self addAll: ((nodes at: 2) at: 19) to: (result at: 19).
+	self addAll: ((nodes at: 2) at: 20) to: (result at: 20).
+	self addAll: ((nodes at: 2) at: 21) to: (result at: 21).
+	self addAll: ((nodes at: 2) at: 22) to: (result at: 22).
+	self addAll: ((nodes at: 2) at: 23) to: (result at: 23).
+	self addAll: ((nodes at: 2) at: 24) to: (result at: 24).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForpattern3: nodes [
+	| result |
+	result := Array new: 29.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 25).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 13) to: (result at: 12).
+	self addAll: ((nodes at: 1) at: 14) to: (result at: 13).
+	self addAll: ((nodes at: 1) at: 15) to: (result at: 14).
+	self addAll: ((nodes at: 1) at: 16) to: (result at: 15).
+	self addAll: ((nodes at: 1) at: 17) to: (result at: 16).
+	self addAll: ((nodes at: 1) at: 18) to: (result at: 17).
+	self addAll: ((nodes at: 1) at: 19) to: (result at: 18).
+	self addAll: ((nodes at: 1) at: 20) to: (result at: 19).
+	self addAll: ((nodes at: 1) at: 21) to: (result at: 20).
+	self addAll: ((nodes at: 1) at: 22) to: (result at: 21).
+	self addAll: ((nodes at: 1) at: 23) to: (result at: 22).
+	self addAll: ((nodes at: 1) at: 24) to: (result at: 23).
+	self addAll: ((nodes at: 1) at: 25) to: (result at: 24).
+	self addAll: ((nodes at: 1) at: 26) to: (result at: 26).
+	self addAll: ((nodes at: 1) at: 27) to: (result at: 27).
+	self addAll: ((nodes at: 1) at: 28) to: (result at: 28).
+	self addAll: ((nodes at: 1) at: 29) to: (result at: 29).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForpattern4: nodes [
+	| result |
+	result := Array new: 29.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
+	self addAll: ((nodes at: 1) at: 13) to: (result at: 13).
+	self addAll: ((nodes at: 1) at: 14) to: (result at: 14).
+	self addAll: ((nodes at: 1) at: 15) to: (result at: 15).
+	self addAll: ((nodes at: 1) at: 16) to: (result at: 16).
+	self addAll: ((nodes at: 1) at: 17) to: (result at: 17).
+	self addAll: ((nodes at: 1) at: 18) to: (result at: 18).
+	self addAll: ((nodes at: 1) at: 19) to: (result at: 19).
+	self addAll: ((nodes at: 1) at: 20) to: (result at: 20).
+	self addAll: ((nodes at: 1) at: 21) to: (result at: 21).
+	self addAll: ((nodes at: 1) at: 22) to: (result at: 22).
+	self addAll: ((nodes at: 1) at: 23) to: (result at: 23).
+	self addAll: ((nodes at: 1) at: 24) to: (result at: 24).
+	self addAll: ((nodes at: 1) at: 25) to: (result at: 25).
+	self addAll: ((nodes at: 1) at: 26) to: (result at: 26).
+	self addAll: ((nodes at: 1) at: 27) to: (result at: 27).
+	self addAll: ((nodes at: 1) at: 28) to: (result at: 28).
+	self addAll: ((nodes at: 1) at: 29) to: (result at: 29).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
+	self addAll: ((nodes at: 2) at: 13) to: (result at: 13).
+	self addAll: ((nodes at: 2) at: 14) to: (result at: 14).
+	self addAll: ((nodes at: 2) at: 15) to: (result at: 15).
+	self addAll: ((nodes at: 2) at: 16) to: (result at: 16).
+	self addAll: ((nodes at: 2) at: 17) to: (result at: 17).
+	self addAll: ((nodes at: 2) at: 18) to: (result at: 18).
+	self addAll: ((nodes at: 2) at: 19) to: (result at: 19).
+	self addAll: ((nodes at: 2) at: 20) to: (result at: 20).
+	self addAll: ((nodes at: 2) at: 21) to: (result at: 21).
+	self addAll: ((nodes at: 2) at: 22) to: (result at: 22).
+	self addAll: ((nodes at: 2) at: 23) to: (result at: 23).
+	self addAll: ((nodes at: 2) at: 24) to: (result at: 24).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForpattern5: nodes [
+	| result |
+	result := Array new: 29.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 19).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 22).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 20).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 15).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 13) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 14) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 15) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 16) to: (result at: 12).
+	self addAll: ((nodes at: 1) at: 17) to: (result at: 13).
+	self addAll: ((nodes at: 1) at: 18) to: (result at: 14).
+	self addAll: ((nodes at: 1) at: 19) to: (result at: 16).
+	self addAll: ((nodes at: 1) at: 20) to: (result at: 17).
+	self addAll: ((nodes at: 1) at: 21) to: (result at: 18).
+	self addAll: ((nodes at: 1) at: 22) to: (result at: 21).
+	self addAll: ((nodes at: 1) at: 23) to: (result at: 23).
+	self addAll: ((nodes at: 1) at: 24) to: (result at: 24).
+	self addAll: ((nodes at: 1) at: 25) to: (result at: 25).
+	self addAll: ((nodes at: 1) at: 26) to: (result at: 26).
+	self addAll: ((nodes at: 1) at: 27) to: (result at: 27).
+	self addAll: ((nodes at: 1) at: 28) to: (result at: 28).
+	self addAll: ((nodes at: 1) at: 29) to: (result at: 29).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForpattern6: nodes [
+	| result |
+	result := Array new: 29.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 28).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 14).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 15).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 16).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 17).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 18).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 19).
+	self addAll: ((nodes at: 1) at: 13) to: (result at: 20).
+	self addAll: ((nodes at: 1) at: 14) to: (result at: 21).
+	self addAll: ((nodes at: 1) at: 15) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 16) to: (result at: 22).
+	self addAll: ((nodes at: 1) at: 17) to: (result at: 23).
+	self addAll: ((nodes at: 1) at: 18) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 19) to: (result at: 24).
+	self addAll: ((nodes at: 1) at: 20) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 21) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 22) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 23) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 24) to: (result at: 12).
+	self addAll: ((nodes at: 1) at: 25) to: (result at: 13).
+	self addAll: ((nodes at: 1) at: 26) to: (result at: 25).
+	self addAll: ((nodes at: 1) at: 27) to: (result at: 26).
+	self addAll: ((nodes at: 1) at: 28) to: (result at: 27).
+	self addAll: ((nodes at: 1) at: 29) to: (result at: 29).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForpattern7: nodes [
+	| result |
+	result := Array new: 29.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 27).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForpattern_initializer1: nodes [
+	| result |
+	result := SwiftPatternInitializerNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result colonTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 9) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 12)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 13) to: result operatorTokens.
+	result
+		addTokens: ((nodes at: 1) at: 14)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 1) at: 15) to: result periodTokens.
+	result
+		addTokens: ((nodes at: 1) at: 16)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 1) at: 17) to: result bangTokens.
+	result addTokens: ((nodes at: 1) at: 18) to: result protocolTokens.
+	result addTokens: ((nodes at: 1) at: 19) to: result lessThanTokens.
+	result addTokens: ((nodes at: 1) at: 20) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 1) at: 21) to: result typeTokens.
+	result addTokens: ((nodes at: 1) at: 22) to: result commaTokens.
+	result
+		addTokens: ((nodes at: 1) at: 23)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 1) at: 24) to: result inoutTokens.
+	result addTokens: ((nodes at: 1) at: 25) to: result varTokens.
+	result addTokens: ((nodes at: 1) at: 26) to: result letTokens.
+	result addObjects: ((nodes at: 1) at: 27) to: result expressions.
+	result addTokens: ((nodes at: 1) at: 28) to: result isTokens.
+	result addTokens: ((nodes at: 1) at: 29) to: result asTokens.
+	result equalToken: ((nodes at: 2) at: 1).
+	result addObject: ((nodes at: 2) at: 2) to: result expressions.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForpostfix_expression1: nodes [
+	| result |
+	result := Array new: 43.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	result at: 30 put: (OrderedCollection new: 2).
+	result at: 31 put: (OrderedCollection new: 2).
+	result at: 32 put: (OrderedCollection new: 2).
+	result at: 33 put: (OrderedCollection new: 2).
+	result at: 34 put: (OrderedCollection new: 2).
+	result at: 35 put: (OrderedCollection new: 2).
+	result at: 36 put: (OrderedCollection new: 2).
+	result at: 42 put: (OrderedCollection new: 2).
+	result at: 43 put: (OrderedCollection new: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForpostfix_expression2: nodes [
+	| result |
+	result := nodes at: 1.
+	self add: (nodes at: 2) to: (result at: 28).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForpostfix_operator_declaration1: nodes [
+	| result |
+	result := SwiftPostfixOperatorDeclarationNode new.
+	result addToken: (nodes at: 1) to: result operatorTokens.
+	result postfixToken: (nodes at: 2).
+	result addToken: (nodes at: 3) to: result operatorTokens.
+	result leftBraceToken: (nodes at: 4).
+	result rightBraceToken: (nodes at: 5).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForpostfix_self_expression1: nodes [
+	| result |
+	result := SwiftPostfixSelfExpressionNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result lessThanTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result commaTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result greaterThanTokens.
+	result
+		addTokens: ((nodes at: 1) at: 5)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 6)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 7)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result leftBracketTokens.
+	result addObjects: ((nodes at: 1) at: 9) to: result expressions.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result rightBracketTokens.
+	result addObjects: ((nodes at: 1) at: 11) to: result keyExpressions.
+	result addTokens: ((nodes at: 1) at: 12) to: result colonTokens.
+	result addObjects: ((nodes at: 1) at: 13) to: result valueExpressions.
+	result __FILE__Token: ((nodes at: 1) at: 14).
+	result __LINE__Token: ((nodes at: 1) at: 15).
+	result __COLUMN__Token: ((nodes at: 1) at: 16).
+	result __FUNCTION__Token: ((nodes at: 1) at: 17).
+	result addTokens: ((nodes at: 1) at: 18) to: result selfTokens.
+	result addTokens: ((nodes at: 1) at: 19) to: result periodTokens.
+	result addTokens: ((nodes at: 1) at: 20) to: result initTokens.
+	result addTokens: ((nodes at: 1) at: 21) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 22) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 23) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 24) to: result inoutTokens.
+	result addTokens: ((nodes at: 1) at: 25) to: result letTokens.
+	result addTokens: ((nodes at: 1) at: 26) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 27) to: result rightBraceTokens.
+	result addTokens: ((nodes at: 1) at: 28) to: result operatorTokens.
+	result
+		addTokens: ((nodes at: 1) at: 29)
+		to: result minusGreaterThanTokens.
+	result
+		addTokens: ((nodes at: 1) at: 30)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 1) at: 31) to: result bangTokens.
+	result addTokens: ((nodes at: 1) at: 32) to: result protocolTokens.
+	result addTokens: ((nodes at: 1) at: 33) to: result typeTokens.
+	result
+		addTokens: ((nodes at: 1) at: 34)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 1) at: 35) to: result equalTokens.
+	result addTokens: ((nodes at: 1) at: 36) to: result varTokens.
+	result inToken: ((nodes at: 1) at: 37).
+	result weakToken: ((nodes at: 1) at: 38).
+	result unownedToken: ((nodes at: 1) at: 39).
+	result unownedLeftParensafeRightParenToken: ((nodes at: 1) at: 40).
+	result unownedLeftParenunsafeRightParenToken: ((nodes at: 1) at: 41).
+	result addNodes: ((nodes at: 1) at: 42) to: result statements.
+	result addTokens: ((nodes at: 1) at: 43) to: result dynamicTypeTokens.
+	result addToken: (nodes at: 2) to: result periodTokens.
+	result addToken: (nodes at: 3) to: result selfTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForprefix_expression2: nodes [
+	| result |
+	result := SwiftPrefixExpressionNode new.
+	result addToken: (nodes at: 1) to: result operatorTokens.
+	result addTokens: ((nodes at: 2) at: 1) to: result identifierTokens.
+	result addTokens: ((nodes at: 2) at: 2) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 3) to: result commaTokens.
+	result addTokens: ((nodes at: 2) at: 4) to: result greaterThanTokens.
+	result
+		addTokens: ((nodes at: 2) at: 5)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 2) at: 6)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 2) at: 7)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 2) at: 8) to: result leftBracketTokens.
+	result addObjects: ((nodes at: 2) at: 9) to: result expressions.
+	result
+		addTokens: ((nodes at: 2) at: 10)
+		to: result rightBracketTokens.
+	result addObjects: ((nodes at: 2) at: 11) to: result keyExpressions.
+	result addTokens: ((nodes at: 2) at: 12) to: result colonTokens.
+	result addObjects: ((nodes at: 2) at: 13) to: result valueExpressions.
+	result __FILE__Token: ((nodes at: 2) at: 14).
+	result __LINE__Token: ((nodes at: 2) at: 15).
+	result __COLUMN__Token: ((nodes at: 2) at: 16).
+	result __FUNCTION__Token: ((nodes at: 2) at: 17).
+	result addTokens: ((nodes at: 2) at: 18) to: result selfTokens.
+	result addTokens: ((nodes at: 2) at: 19) to: result periodTokens.
+	result addTokens: ((nodes at: 2) at: 20) to: result initTokens.
+	result addTokens: ((nodes at: 2) at: 21) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 2) at: 22) to: result leftParenTokens.
+	result addTokens: ((nodes at: 2) at: 23) to: result rightParenTokens.
+	result addTokens: ((nodes at: 2) at: 24) to: result inoutTokens.
+	result addTokens: ((nodes at: 2) at: 25) to: result letTokens.
+	result addTokens: ((nodes at: 2) at: 26) to: result _Tokens.
+	result addTokens: ((nodes at: 2) at: 27) to: result rightBraceTokens.
+	result addTokens: ((nodes at: 2) at: 28) to: result operatorTokens.
+	result
+		addTokens: ((nodes at: 2) at: 29)
+		to: result minusGreaterThanTokens.
+	result
+		addTokens: ((nodes at: 2) at: 30)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 2) at: 31) to: result bangTokens.
+	result addTokens: ((nodes at: 2) at: 32) to: result protocolTokens.
+	result addTokens: ((nodes at: 2) at: 33) to: result typeTokens.
+	result
+		addTokens: ((nodes at: 2) at: 34)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 2) at: 35) to: result equalTokens.
+	result addTokens: ((nodes at: 2) at: 36) to: result varTokens.
+	result inToken: ((nodes at: 2) at: 37).
+	result weakToken: ((nodes at: 2) at: 38).
+	result unownedToken: ((nodes at: 2) at: 39).
+	result unownedLeftParensafeRightParenToken: ((nodes at: 2) at: 40).
+	result unownedLeftParenunsafeRightParenToken: ((nodes at: 2) at: 41).
+	result addNodes: ((nodes at: 2) at: 42) to: result statements.
+	result addTokens: ((nodes at: 2) at: 43) to: result dynamicTypeTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForprefix_operator_declaration1: nodes [
+	| result |
+	result := SwiftPrefixOperatorDeclarationNode new.
+	result addToken: (nodes at: 1) to: result operatorTokens.
+	result prefixToken: (nodes at: 2).
+	result addToken: (nodes at: 3) to: result operatorTokens.
+	result leftBraceToken: (nodes at: 4).
+	result rightBraceToken: (nodes at: 5).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForprimary_expression1: nodes [
+	| result |
+	result := SwiftPrimaryExpressionNode new.
+	result identifierToken: (nodes at: 1).
+	result lessThanToken: ((nodes at: 2) at: 1).
+	result addTokens: ((nodes at: 2) at: 2) to: result commaTokens.
+	result greaterThanToken: ((nodes at: 2) at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForprotocol_association_type_declaration1: nodes [
+	| result |
+	result := SwiftProtocolAssociationTypeDeclarationNode new.
+	result typealiasToken: ((nodes at: 1) at: 1).
+	result addToken: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addToken: ((nodes at: 2) at: 1) to: result colonTokens.
+	result addTokens: ((nodes at: 2) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 2) at: 3) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 4) to: result commaTokens.
+	result addTokens: ((nodes at: 2) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 6) to: result periodTokens.
+	result equalToken: ((nodes at: 3) at: 1).
+	result addTokens: ((nodes at: 3) at: 2) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 3) at: 3) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 3) at: 4) to: result colonTokens.
+	result
+		addTokens: ((nodes at: 3) at: 5)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 6) to: result periodTokens.
+	result addTokens: ((nodes at: 3) at: 7) to: result leftParenTokens.
+	result addTokens: ((nodes at: 3) at: 8) to: result rightParenTokens.
+	result addTokens: ((nodes at: 3) at: 9) to: result questionMarkTokens.
+	result addTokens: ((nodes at: 3) at: 10) to: result bangTokens.
+	result addTokens: ((nodes at: 3) at: 11) to: result protocolTokens.
+	result addTokens: ((nodes at: 3) at: 12) to: result lessThanTokens.
+	result addTokens: ((nodes at: 3) at: 13) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 14) to: result typeTokens.
+	result addTokens: ((nodes at: 3) at: 15) to: result identifierTokens.
+	result addTokens: ((nodes at: 3) at: 16) to: result commaTokens.
+	result
+		addTokens: ((nodes at: 3) at: 17)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 3) at: 18) to: result _Tokens.
+	result addTokens: ((nodes at: 3) at: 19) to: result inoutTokens.
+	result addTokens: ((nodes at: 3) at: 20) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 3) at: 21) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 3) at: 22)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 3) at: 23)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 3) at: 24)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 3) at: 25) to: result operatorTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForprotocol_composition_type1: nodes [
+	| result |
+	result := SwiftProtocolCompositionTypeNode new.
+	result protocolToken: (nodes at: 1).
+	result addToken: (nodes at: 2) to: result lessThanTokens.
+	result addTokens: ((nodes at: 3) at: 1) to: result identifierTokens.
+	result addTokens: ((nodes at: 3) at: 2) to: result lessThanTokens.
+	result addTokens: ((nodes at: 3) at: 3) to: result commaTokens.
+	result addTokens: ((nodes at: 3) at: 4) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 5) to: result periodTokens.
+	result addToken: (nodes at: 4) to: result greaterThanTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForprotocol_declaration1: nodes [
+	| result |
+	result := SwiftProtocolDeclarationNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
+	result protocolToken: (nodes at: 2).
+	result addToken: (nodes at: 3) to: result identifierTokens.
+	result colonToken: ((nodes at: 4) at: 1).
+	result addTokens: ((nodes at: 4) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 4) at: 3) to: result lessThanTokens.
+	result addTokens: ((nodes at: 4) at: 4) to: result commaTokens.
+	result addTokens: ((nodes at: 4) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 4) at: 6) to: result periodTokens.
+	result addToken: ((nodes at: 5) at: 1) to: result leftBraceTokens.
+	result addNodes: ((nodes at: 5) at: 2) to: result declarations.
+	result addToken: ((nodes at: 5) at: 3) to: result rightBraceTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForprotocol_initializer_declaration1: nodes [
+	| result |
+	result := SwiftProtocolInitializerDeclarationNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
+	result convenienceToken: ((nodes at: 1) at: 13).
+	result initToken: ((nodes at: 1) at: 14).
+	result addTokens: ((nodes at: 2) at: 1) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 2) at: 3) to: result colonTokens.
+	result addTokens: ((nodes at: 2) at: 4) to: result commaTokens.
+	result addTokens: ((nodes at: 2) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 6) to: result periodTokens.
+	result addTokens: ((nodes at: 2) at: 7) to: result protocolTokens.
+	result whereToken: ((nodes at: 2) at: 8).
+	result addTokens: ((nodes at: 2) at: 9) to: result equalEqualTokens.
+	result addTokens: ((nodes at: 3) at: 1) to: result leftParenTokens.
+	result addTokens: ((nodes at: 3) at: 2) to: result rightParenTokens.
+	result addTokens: ((nodes at: 3) at: 3) to: result inoutTokens.
+	result addTokens: ((nodes at: 3) at: 4) to: result letTokens.
+	result addTokens: ((nodes at: 3) at: 5) to: result _Tokens.
+	result addTokens: ((nodes at: 3) at: 6) to: result identifierTokens.
+	result addTokens: ((nodes at: 3) at: 7) to: result colonTokens.
+	result addTokens: ((nodes at: 3) at: 8) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 3) at: 9) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 3) at: 10) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 3) at: 11) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 3) at: 12)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 3) at: 13)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 3) at: 14)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 3) at: 15) to: result operatorTokens.
+	result
+		addTokens: ((nodes at: 3) at: 16)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 17) to: result periodTokens.
+	result
+		addTokens: ((nodes at: 3) at: 18)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 3) at: 19) to: result bangTokens.
+	result addTokens: ((nodes at: 3) at: 20) to: result protocolTokens.
+	result addTokens: ((nodes at: 3) at: 21) to: result lessThanTokens.
+	result addTokens: ((nodes at: 3) at: 22) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 23) to: result typeTokens.
+	result addTokens: ((nodes at: 3) at: 24) to: result commaTokens.
+	result
+		addTokens: ((nodes at: 3) at: 25)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 3) at: 26) to: result equalTokens.
+	result addObjects: ((nodes at: 3) at: 27) to: result expressions.
+	result addTokens: ((nodes at: 3) at: 28) to: result varTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForprotocol_method_declaration1: nodes [
+	| result |
+	result := SwiftProtocolMethodDeclarationNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
+	result addTokens: ((nodes at: 1) at: 13) to: result classTokens.
+	result addTokens: ((nodes at: 1) at: 14) to: result mutatingTokens.
+	result addTokens: ((nodes at: 1) at: 15) to: result nonmutatingTokens.
+	result addTokens: ((nodes at: 1) at: 16) to: result overrideTokens.
+	result addTokens: ((nodes at: 1) at: 17) to: result staticTokens.
+	result addTokens: ((nodes at: 1) at: 18) to: result unownedTokens.
+	result
+		addTokens: ((nodes at: 1) at: 19)
+		to: result unownedLeftParensafeRightParenTokens.
+	result
+		addTokens: ((nodes at: 1) at: 20)
+		to: result unownedLeftParenunsafeRightParenTokens.
+	result addTokens: ((nodes at: 1) at: 21) to: result weakTokens.
+	result funcToken: ((nodes at: 1) at: 22).
+	result addToken: ((nodes at: 2) at: 1) to: result identifierTokens.
+	result addToken: ((nodes at: 2) at: 2) to: result operatorTokens.
+	result addTokens: ((nodes at: 3) at: 1) to: result lessThanTokens.
+	result addTokens: ((nodes at: 3) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 3) at: 3) to: result colonTokens.
+	result addTokens: ((nodes at: 3) at: 4) to: result commaTokens.
+	result addTokens: ((nodes at: 3) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 6) to: result periodTokens.
+	result addTokens: ((nodes at: 3) at: 7) to: result protocolTokens.
+	result whereToken: ((nodes at: 3) at: 8).
+	result addTokens: ((nodes at: 3) at: 9) to: result equalEqualTokens.
+	result addTokens: ((nodes at: 4) at: 1) to: result leftParenTokens.
+	result addTokens: ((nodes at: 4) at: 2) to: result rightParenTokens.
+	result addTokens: ((nodes at: 4) at: 3) to: result commaTokens.
+	result addTokens: ((nodes at: 4) at: 4) to: result varTokens.
+	result
+		addTokens: ((nodes at: 4) at: 5)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 4) at: 6) to: result inoutTokens.
+	result addTokens: ((nodes at: 4) at: 7) to: result letTokens.
+	result addTokens: ((nodes at: 4) at: 8) to: result _Tokens.
+	result addTokens: ((nodes at: 4) at: 9) to: result identifierTokens.
+	result addTokens: ((nodes at: 4) at: 10) to: result colonTokens.
+	result addTokens: ((nodes at: 4) at: 11) to: result equalTokens.
+	result addObjects: ((nodes at: 4) at: 12) to: result expressions.
+	result addTokens: ((nodes at: 4) at: 13) to: result leftBracketTokens.
+	result
+		addTokens: ((nodes at: 4) at: 14)
+		to: result rightBracketTokens.
+	result
+		addTokens: ((nodes at: 4) at: 15)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 4) at: 16) to: result periodTokens.
+	result
+		addTokens: ((nodes at: 4) at: 17)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 4) at: 18) to: result bangTokens.
+	result addTokens: ((nodes at: 4) at: 19) to: result protocolTokens.
+	result addTokens: ((nodes at: 4) at: 20) to: result lessThanTokens.
+	result addTokens: ((nodes at: 4) at: 21) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 4) at: 22) to: result typeTokens.
+	result addTokens: ((nodes at: 4) at: 23) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 4) at: 24) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 4) at: 25)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 4) at: 26)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 4) at: 27)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 4) at: 28) to: result operatorTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForprotocol_property_declaration1: nodes [
+	| result |
+	result := SwiftProtocolPropertyDeclarationNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
+	result addTokens: ((nodes at: 1) at: 13) to: result classTokens.
+	result addTokens: ((nodes at: 1) at: 14) to: result mutatingTokens.
+	result addTokens: ((nodes at: 1) at: 15) to: result nonmutatingTokens.
+	result addTokens: ((nodes at: 1) at: 16) to: result overrideTokens.
+	result addTokens: ((nodes at: 1) at: 17) to: result staticTokens.
+	result addTokens: ((nodes at: 1) at: 18) to: result unownedTokens.
+	result
+		addTokens: ((nodes at: 1) at: 19)
+		to: result unownedLeftParensafeRightParenTokens.
+	result
+		addTokens: ((nodes at: 1) at: 20)
+		to: result unownedLeftParenunsafeRightParenTokens.
+	result addTokens: ((nodes at: 1) at: 21) to: result weakTokens.
+	result varToken: ((nodes at: 1) at: 22).
+	result addToken: (nodes at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 3) at: 1) to: result colonTokens.
+	result addTokens: ((nodes at: 3) at: 2) to: result _Tokens.
+	result addTokens: ((nodes at: 3) at: 3) to: result identifierTokens.
+	result addTokens: ((nodes at: 3) at: 4) to: result leftParenTokens.
+	result addTokens: ((nodes at: 3) at: 5) to: result rightParenTokens.
+	result addTokens: ((nodes at: 3) at: 6) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 3) at: 7) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 3) at: 8) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 3) at: 9) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 3) at: 10)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 3) at: 11)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 3) at: 12)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 3) at: 13) to: result operatorTokens.
+	result
+		addTokens: ((nodes at: 3) at: 14)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 15) to: result periodTokens.
+	result
+		addTokens: ((nodes at: 3) at: 16)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 3) at: 17) to: result bangTokens.
+	result addTokens: ((nodes at: 3) at: 18) to: result protocolTokens.
+	result addTokens: ((nodes at: 3) at: 19) to: result lessThanTokens.
+	result addTokens: ((nodes at: 3) at: 20) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 21) to: result typeTokens.
+	result addTokens: ((nodes at: 3) at: 22) to: result commaTokens.
+	result
+		addTokens: ((nodes at: 3) at: 23)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 3) at: 24) to: result inoutTokens.
+	result addTokens: ((nodes at: 4) at: 1) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 4) at: 2) to: result _Tokens.
+	result addTokens: ((nodes at: 4) at: 3) to: result identifierTokens.
+	result addTokens: ((nodes at: 4) at: 4) to: result leftParenTokens.
+	result addTokens: ((nodes at: 4) at: 5) to: result rightParenTokens.
+	result addTokens: ((nodes at: 4) at: 6) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 4) at: 7) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 4) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 4) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 4) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 4) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 4) at: 12) to: result operatorTokens.
+	result getToken: ((nodes at: 4) at: 13).
+	result setToken: ((nodes at: 4) at: 14).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForprotocol_subscript_declaration1: nodes [
+	| result |
+	result := SwiftProtocolSubscriptDeclarationNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
+	result subscriptToken: ((nodes at: 1) at: 13).
+	result addTokens: ((nodes at: 1) at: 14) to: result inoutTokens.
+	result addTokens: ((nodes at: 1) at: 15) to: result letTokens.
+	result addTokens: ((nodes at: 1) at: 16) to: result colonTokens.
+	result
+		addTokens: ((nodes at: 1) at: 17)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 1) at: 18) to: result lessThanTokens.
+	result addTokens: ((nodes at: 1) at: 19) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 1) at: 20) to: result periodTokens.
+	result
+		addTokens: ((nodes at: 1) at: 21)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 1) at: 22) to: result bangTokens.
+	result addTokens: ((nodes at: 1) at: 23) to: result protocolTokens.
+	result addTokens: ((nodes at: 1) at: 24) to: result commaTokens.
+	result addTokens: ((nodes at: 1) at: 25) to: result typeTokens.
+	result addTokens: ((nodes at: 1) at: 26) to: result equalTokens.
+	result addObjects: ((nodes at: 1) at: 27) to: result expressions.
+	result addTokens: ((nodes at: 1) at: 28) to: result varTokens.
+	result
+		addTokens: ((nodes at: 1) at: 29)
+		to: result periodPeriodPeriodTokens.
+	result
+		addTokens: ((nodes at: 2) at: 1)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 2) to: result _Tokens.
+	result addTokens: ((nodes at: 2) at: 3) to: result identifierTokens.
+	result addTokens: ((nodes at: 2) at: 4) to: result leftParenTokens.
+	result addTokens: ((nodes at: 2) at: 5) to: result rightParenTokens.
+	result addTokens: ((nodes at: 2) at: 6) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 2) at: 7) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 2) at: 8) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 2) at: 9) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 2) at: 10)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 2) at: 11)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 2) at: 12)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 2) at: 13) to: result operatorTokens.
+	result addTokens: ((nodes at: 2) at: 14) to: result colonTokens.
+	result addTokens: ((nodes at: 2) at: 15) to: result periodTokens.
+	result
+		addTokens: ((nodes at: 2) at: 16)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 2) at: 17) to: result bangTokens.
+	result addTokens: ((nodes at: 2) at: 18) to: result protocolTokens.
+	result addTokens: ((nodes at: 2) at: 19) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 20) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 21) to: result typeTokens.
+	result addTokens: ((nodes at: 2) at: 22) to: result commaTokens.
+	result
+		addTokens: ((nodes at: 2) at: 23)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 2) at: 24) to: result inoutTokens.
+	result addTokens: ((nodes at: 3) at: 1) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 3) at: 2) to: result _Tokens.
+	result addTokens: ((nodes at: 3) at: 3) to: result identifierTokens.
+	result addTokens: ((nodes at: 3) at: 4) to: result leftParenTokens.
+	result addTokens: ((nodes at: 3) at: 5) to: result rightParenTokens.
+	result addTokens: ((nodes at: 3) at: 6) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 3) at: 7) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 3) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 3) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 3) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 3) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 3) at: 12) to: result operatorTokens.
+	result getToken: ((nodes at: 3) at: 13).
+	result setToken: ((nodes at: 3) at: 14).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForraw_value_style_enum1: nodes [
+	| result |
+	result := Array new: 57.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	result at: 30 put: (OrderedCollection new: 2).
+	result at: 31 put: (OrderedCollection new: 2).
+	result at: 32 put: (OrderedCollection new: 2).
+	result at: 33 put: (OrderedCollection new: 2).
+	result at: 34 put: (OrderedCollection new: 2).
+	result at: 35 put: (OrderedCollection new: 2).
+	result at: 36 put: (OrderedCollection new: 2).
+	result at: 37 put: (OrderedCollection new: 2).
+	result at: 38 put: (OrderedCollection new: 2).
+	result at: 39 put: (OrderedCollection new: 2).
+	result at: 40 put: (OrderedCollection new: 2).
+	result at: 41 put: (OrderedCollection new: 2).
+	result at: 42 put: (OrderedCollection new: 2).
+	result at: 43 put: (OrderedCollection new: 2).
+	result at: 44 put: (OrderedCollection new: 2).
+	result at: 45 put: (OrderedCollection new: 2).
+	result at: 46 put: (OrderedCollection new: 2).
+	result at: 47 put: (OrderedCollection new: 2).
+	result at: 48 put: (OrderedCollection new: 2).
+	result at: 49 put: (OrderedCollection new: 2).
+	result at: 50 put: (OrderedCollection new: 2).
+	result at: 51 put: (OrderedCollection new: 2).
+	result at: 52 put: (OrderedCollection new: 2).
+	result at: 53 put: (OrderedCollection new: 2).
+	result at: 54 put: (OrderedCollection new: 2).
+	result at: 55 put: (OrderedCollection new: 2).
+	result at: 56 put: (OrderedCollection new: 2).
+	result at: 57 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 7).
+	self add: ((nodes at: 2) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
+	self add: (nodes at: 3) to: (result at: 3).
+	self add: (nodes at: 5) to: (result at: 10).
+	self addAll: ((nodes at: 6) at: 1) to: (result at: 11).
+	self addAll: ((nodes at: 6) at: 2) to: (result at: 1).
+	self addAll: ((nodes at: 6) at: 3) to: (result at: 12).
+	self addAll: ((nodes at: 6) at: 4) to: (result at: 13).
+	self addAll: ((nodes at: 6) at: 5) to: (result at: 14).
+	self addAll: ((nodes at: 6) at: 6) to: (result at: 15).
+	self addAll: ((nodes at: 6) at: 7) to: (result at: 16).
+	self addAll: ((nodes at: 6) at: 8) to: (result at: 17).
+	self addAll: ((nodes at: 6) at: 9) to: (result at: 18).
+	self addAll: ((nodes at: 6) at: 10) to: (result at: 7).
+	self addAll: ((nodes at: 6) at: 11) to: (result at: 19).
+	self addAll: ((nodes at: 6) at: 12) to: (result at: 20).
+	self addAll: ((nodes at: 6) at: 13) to: (result at: 21).
+	self addAll: ((nodes at: 6) at: 14) to: (result at: 6).
+	self addAll: ((nodes at: 6) at: 15) to: (result at: 22).
+	self addAll: ((nodes at: 6) at: 16) to: (result at: 23).
+	self addAll: ((nodes at: 6) at: 17) to: (result at: 24).
+	self addAll: ((nodes at: 6) at: 18) to: (result at: 25).
+	self addAll: ((nodes at: 6) at: 19) to: (result at: 26).
+	self addAll: ((nodes at: 6) at: 20) to: (result at: 27).
+	self addAll: ((nodes at: 6) at: 21) to: (result at: 28).
+	self addAll: ((nodes at: 6) at: 22) to: (result at: 29).
+	self addAll: ((nodes at: 6) at: 23) to: (result at: 30).
+	self addAll: ((nodes at: 6) at: 24) to: (result at: 31).
+	self addAll: ((nodes at: 6) at: 25) to: (result at: 4).
+	self addAll: ((nodes at: 6) at: 26) to: (result at: 3).
+	self addAll: ((nodes at: 6) at: 27) to: (result at: 32).
+	self addAll: ((nodes at: 6) at: 28) to: (result at: 33).
+	self addAll: ((nodes at: 6) at: 29) to: (result at: 34).
+	self addAll: ((nodes at: 6) at: 30) to: (result at: 35).
+	self addAll: ((nodes at: 6) at: 31) to: (result at: 36).
+	self addAll: ((nodes at: 6) at: 32) to: (result at: 2).
+	self addAll: ((nodes at: 6) at: 33) to: (result at: 5).
+	self addAll: ((nodes at: 6) at: 34) to: (result at: 37).
+	self addAll: ((nodes at: 6) at: 35) to: (result at: 46).
+	self addAll: ((nodes at: 6) at: 36) to: (result at: 38).
+	self addAll: ((nodes at: 6) at: 37) to: (result at: 10).
+	self addAll: ((nodes at: 6) at: 38) to: (result at: 39).
+	self addAll: ((nodes at: 6) at: 39) to: (result at: 40).
+	self addAll: ((nodes at: 6) at: 40) to: (result at: 41).
+	self addAll: ((nodes at: 6) at: 41) to: (result at: 42).
+	self addAll: ((nodes at: 6) at: 42) to: (result at: 43).
+	self addAll: ((nodes at: 6) at: 43) to: (result at: 44).
+	self addAll: ((nodes at: 6) at: 44) to: (result at: 45).
+	self addAll: ((nodes at: 6) at: 45) to: (result at: 8).
+	self addAll: ((nodes at: 6) at: 46) to: (result at: 9).
+	self addAll: ((nodes at: 6) at: 47) to: (result at: 47).
+	self addAll: ((nodes at: 6) at: 48) to: (result at: 50).
+	self addAll: ((nodes at: 6) at: 49) to: (result at: 51).
+	self addAll: ((nodes at: 6) at: 50) to: (result at: 52).
+	self addAll: ((nodes at: 6) at: 51) to: (result at: 53).
+	self addAll: ((nodes at: 6) at: 52) to: (result at: 54).
+	self addAll: ((nodes at: 6) at: 53) to: (result at: 48).
+	self addAll: ((nodes at: 6) at: 54) to: (result at: 49).
+	self addAll: ((nodes at: 6) at: 55) to: (result at: 55).
+	self addAll: ((nodes at: 6) at: 56) to: (result at: 56).
+	self addAll: ((nodes at: 6) at: 57) to: (result at: 57).
+	self add: (nodes at: 7) to: (result at: 41).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForraw_value_style_enum_case1: nodes [
+	| result |
+	result := Array new: 5.
+	result at: 1 put: (nodes at: 1).
+	result at: 2 put: ((nodes at: 2) at: 1).
+	result at: 3 put: ((nodes at: 2) at: 2).
+	result at: 4 put: ((nodes at: 2) at: 3).
+	result at: 5 put: ((nodes at: 2) at: 4).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForraw_value_style_enum_case_clause1: nodes [
+	| result |
+	result := Array new: 15.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
+	result at: 13 put: (nodes at: 2).
+	self addAll: ((nodes at: 3) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 3) at: 2) to: (result at: 14).
+	self addAll: ((nodes at: 3) at: 3) to: (result at: 9).
+	self addAll: ((nodes at: 3) at: 4) to: (result at: 10).
+	self addAll: ((nodes at: 3) at: 5) to: (result at: 11).
+	self addAll: ((nodes at: 3) at: 6) to: (result at: 15).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForraw_value_style_enum_case_list1: nodes [
+	| result |
+	result := Array new: 6.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	self add: ((nodes at: 1) at: 1) to: (result at: 1).
+	self add: ((nodes at: 1) at: 2) to: (result at: 2).
+	self add: ((nodes at: 1) at: 3) to: (result at: 3).
+	self add: ((nodes at: 1) at: 4) to: (result at: 4).
+	self add: ((nodes at: 1) at: 5) to: (result at: 5).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForraw_value_style_enum_case_list2: nodes [
+	| result |
+	result := nodes at: 1.
+	self add: (nodes at: 2) to: (result at: 6).
+	self add: ((nodes at: 3) at: 1) to: (result at: 1).
+	self add: ((nodes at: 3) at: 2) to: (result at: 2).
+	self add: ((nodes at: 3) at: 3) to: (result at: 3).
+	self add: ((nodes at: 3) at: 4) to: (result at: 4).
+	self add: ((nodes at: 3) at: 5) to: (result at: 5).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForraw_value_style_enum_member2: nodes [
+	| result |
+	result := Array new: 57.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	result at: 30 put: (OrderedCollection new: 2).
+	result at: 31 put: (OrderedCollection new: 2).
+	result at: 32 put: (OrderedCollection new: 2).
+	result at: 33 put: (OrderedCollection new: 2).
+	result at: 34 put: (OrderedCollection new: 2).
+	result at: 35 put: (OrderedCollection new: 2).
+	result at: 36 put: (OrderedCollection new: 2).
+	result at: 37 put: (OrderedCollection new: 2).
+	result at: 38 put: (OrderedCollection new: 2).
+	result at: 39 put: (OrderedCollection new: 2).
+	result at: 40 put: (OrderedCollection new: 2).
+	result at: 41 put: (OrderedCollection new: 2).
+	result at: 42 put: (OrderedCollection new: 2).
+	result at: 43 put: (OrderedCollection new: 2).
+	result at: 44 put: (OrderedCollection new: 2).
+	result at: 45 put: (OrderedCollection new: 2).
+	result at: 46 put: (OrderedCollection new: 2).
+	result at: 47 put: (OrderedCollection new: 2).
+	result at: 48 put: (OrderedCollection new: 2).
+	result at: 49 put: (OrderedCollection new: 2).
+	result at: 50 put: (OrderedCollection new: 2).
+	result at: 51 put: (OrderedCollection new: 2).
+	result at: 52 put: (OrderedCollection new: 2).
+	result at: 53 put: (OrderedCollection new: 2).
+	result at: 54 put: (OrderedCollection new: 2).
+	result at: 55 put: (OrderedCollection new: 2).
+	result at: 56 put: (OrderedCollection new: 2).
+	result at: 57 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
+	self add: ((nodes at: 1) at: 13) to: (result at: 57).
+	self addAll: ((nodes at: 1) at: 14) to: (result at: 45).
+	self addAll: ((nodes at: 1) at: 15) to: (result at: 32).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForrequirement1: nodes [
+	| result |
+	result := Array new: 8.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	result at: 6 put: ((nodes at: 1) at: 6).
+	result at: 7 put: ((nodes at: 1) at: 7).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForrequirement2: nodes [
+	| result |
+	result := Array new: 8.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	result at: 8 put: ((nodes at: 1) at: 6).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForrequirement_clause1: nodes [
+	| result |
+	result := Array new: 9.
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 1 put: (nodes at: 1).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 2) at: 8) to: (result at: 9).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForrequirement_list1: nodes [
+	| result |
+	result := Array new: 8.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	self add: ((nodes at: 1) at: 6) to: (result at: 6).
+	self add: ((nodes at: 1) at: 7) to: (result at: 7).
+	self add: ((nodes at: 1) at: 8) to: (result at: 8).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForrequirement_list2: nodes [
+	| result |
+	result := nodes at: 1.
+	self add: (nodes at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 3) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 3) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 3) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 3) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 3) at: 5) to: (result at: 5).
+	self add: ((nodes at: 3) at: 6) to: (result at: 6).
+	self add: ((nodes at: 3) at: 7) to: (result at: 7).
+	self add: ((nodes at: 3) at: 8) to: (result at: 8).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForreturn_statement1: nodes [
+	| result |
+	result := SwiftReturnStatementNode new.
+	result returnToken: (nodes at: 1).
+	result expression: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForsame_type_requirement1: nodes [
+	| result |
+	result := Array new: 6.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForself_expression1: nodes [
+	| result |
+	result := SwiftSelfExpressionNode new.
+	result selfToken: (nodes at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForself_expression2: nodes [
+	| result |
+	result := SwiftSelfExpressionNode new.
+	result selfToken: (nodes at: 1).
+	result periodToken: (nodes at: 2).
+	result identifierToken: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForself_expression3: nodes [
+	| result |
+	result := SwiftSelfExpressionNode new.
+	result selfToken: (nodes at: 1).
+	result leftBracketToken: (nodes at: 2).
+	result expression: (nodes at: 3).
+	result rightBracketToken: (nodes at: 4).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForself_expression4: nodes [
+	| result |
+	result := SwiftSelfExpressionNode new.
+	result selfToken: (nodes at: 1).
+	result periodToken: (nodes at: 2).
+	result initToken: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForsetter_clause1: nodes [
+	| result |
+	result := Array new: 14.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
+	result at: 13 put: (nodes at: 2).
+	self add: ((nodes at: 3) at: 1) to: (result at: 3).
+	self add: ((nodes at: 3) at: 2) to: (result at: 2).
+	self add: ((nodes at: 3) at: 3) to: (result at: 4).
+	result at: 14 put: (nodes at: 4).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForstatement1: nodes [
+	| result |
+	result := SwiftExpressionStatementNode new.
+	result expression: (nodes at: 1).
+	result semicolonToken: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForstatement2: nodes [
+	| result |
+	result := SwiftDeclarationStatementNode new.
+	result declaration: (nodes at: 1).
+	result semicolonToken: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForstatement3: nodes [
+	| result |
+	result := nodes at: 1.
+	result semicolonToken: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForstatements1: nodes [
+	| result |
+	result := OrderedCollection new: 2.
+	self add: (nodes at: 1) to: result.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForstatements2: nodes [
+	| result |
+	result := nodes at: 1.
+	self add: (nodes at: 2) to: result.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForstruct_declaration1: nodes [
+	| result |
+	result := SwiftStructDeclarationNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
+	result structToken: (nodes at: 2).
+	result addToken: (nodes at: 3) to: result identifierTokens.
+	result addTokens: ((nodes at: 4) at: 1) to: result lessThanTokens.
+	result addTokens: ((nodes at: 4) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 4) at: 3) to: result colonTokens.
+	result addTokens: ((nodes at: 4) at: 4) to: result commaTokens.
+	result addTokens: ((nodes at: 4) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 4) at: 6) to: result periodTokens.
+	result addTokens: ((nodes at: 4) at: 7) to: result protocolTokens.
+	result whereToken: ((nodes at: 4) at: 8).
+	result addTokens: ((nodes at: 4) at: 9) to: result equalEqualTokens.
+	result addToken: ((nodes at: 5) at: 1) to: result colonTokens.
+	result addTokens: ((nodes at: 5) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 5) at: 3) to: result lessThanTokens.
+	result addTokens: ((nodes at: 5) at: 4) to: result commaTokens.
+	result addTokens: ((nodes at: 5) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 5) at: 6) to: result periodTokens.
+	result addToken: ((nodes at: 6) at: 1) to: result leftBraceTokens.
+	result addNodes: ((nodes at: 6) at: 2) to: result declarations.
+	result addToken: ((nodes at: 6) at: 3) to: result rightBraceTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForsubscript_declaration1: nodes [
+	| result |
+	result := SwiftSubscriptDeclarationNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
+	result subscriptToken: ((nodes at: 1) at: 13).
+	result addTokens: ((nodes at: 1) at: 14) to: result inoutTokens.
+	result addTokens: ((nodes at: 1) at: 15) to: result letTokens.
+	result addTokens: ((nodes at: 1) at: 16) to: result colonTokens.
+	result
+		addTokens: ((nodes at: 1) at: 17)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 1) at: 18) to: result lessThanTokens.
+	result addTokens: ((nodes at: 1) at: 19) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 1) at: 20) to: result periodTokens.
+	result
+		addTokens: ((nodes at: 1) at: 21)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 1) at: 22) to: result bangTokens.
+	result addTokens: ((nodes at: 1) at: 23) to: result protocolTokens.
+	result addTokens: ((nodes at: 1) at: 24) to: result commaTokens.
+	result addTokens: ((nodes at: 1) at: 25) to: result typeTokens.
+	result addTokens: ((nodes at: 1) at: 26) to: result equalTokens.
+	result addObjects: ((nodes at: 1) at: 27) to: result expressions.
+	result addTokens: ((nodes at: 1) at: 28) to: result varTokens.
+	result
+		addTokens: ((nodes at: 1) at: 29)
+		to: result periodPeriodPeriodTokens.
+	result
+		addTokens: ((nodes at: 2) at: 1)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 2) to: result _Tokens.
+	result addTokens: ((nodes at: 2) at: 3) to: result identifierTokens.
+	result addTokens: ((nodes at: 2) at: 4) to: result leftParenTokens.
+	result addTokens: ((nodes at: 2) at: 5) to: result rightParenTokens.
+	result addTokens: ((nodes at: 2) at: 6) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 2) at: 7) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 2) at: 8) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 2) at: 9) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 2) at: 10)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 2) at: 11)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 2) at: 12)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 2) at: 13) to: result operatorTokens.
+	result addTokens: ((nodes at: 2) at: 14) to: result colonTokens.
+	result addTokens: ((nodes at: 2) at: 15) to: result periodTokens.
+	result
+		addTokens: ((nodes at: 2) at: 16)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 2) at: 17) to: result bangTokens.
+	result addTokens: ((nodes at: 2) at: 18) to: result protocolTokens.
+	result addTokens: ((nodes at: 2) at: 19) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 20) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 21) to: result typeTokens.
+	result addTokens: ((nodes at: 2) at: 22) to: result commaTokens.
+	result
+		addTokens: ((nodes at: 2) at: 23)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 2) at: 24) to: result inoutTokens.
+	result addNode: (nodes at: 3) to: result blocks.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForsubscript_declaration2: nodes [
+	| result |
+	result := SwiftSubscriptDeclarationNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
+	result subscriptToken: ((nodes at: 1) at: 13).
+	result addTokens: ((nodes at: 1) at: 14) to: result inoutTokens.
+	result addTokens: ((nodes at: 1) at: 15) to: result letTokens.
+	result addTokens: ((nodes at: 1) at: 16) to: result colonTokens.
+	result
+		addTokens: ((nodes at: 1) at: 17)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 1) at: 18) to: result lessThanTokens.
+	result addTokens: ((nodes at: 1) at: 19) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 1) at: 20) to: result periodTokens.
+	result
+		addTokens: ((nodes at: 1) at: 21)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 1) at: 22) to: result bangTokens.
+	result addTokens: ((nodes at: 1) at: 23) to: result protocolTokens.
+	result addTokens: ((nodes at: 1) at: 24) to: result commaTokens.
+	result addTokens: ((nodes at: 1) at: 25) to: result typeTokens.
+	result addTokens: ((nodes at: 1) at: 26) to: result equalTokens.
+	result addObjects: ((nodes at: 1) at: 27) to: result expressions.
+	result addTokens: ((nodes at: 1) at: 28) to: result varTokens.
+	result
+		addTokens: ((nodes at: 1) at: 29)
+		to: result periodPeriodPeriodTokens.
+	result
+		addTokens: ((nodes at: 2) at: 1)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 2) to: result _Tokens.
+	result addTokens: ((nodes at: 2) at: 3) to: result identifierTokens.
+	result addTokens: ((nodes at: 2) at: 4) to: result leftParenTokens.
+	result addTokens: ((nodes at: 2) at: 5) to: result rightParenTokens.
+	result addTokens: ((nodes at: 2) at: 6) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 2) at: 7) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 2) at: 8) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 2) at: 9) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 2) at: 10)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 2) at: 11)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 2) at: 12)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 2) at: 13) to: result operatorTokens.
+	result addTokens: ((nodes at: 2) at: 14) to: result colonTokens.
+	result addTokens: ((nodes at: 2) at: 15) to: result periodTokens.
+	result
+		addTokens: ((nodes at: 2) at: 16)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 2) at: 17) to: result bangTokens.
+	result addTokens: ((nodes at: 2) at: 18) to: result protocolTokens.
+	result addTokens: ((nodes at: 2) at: 19) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 20) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 21) to: result typeTokens.
+	result addTokens: ((nodes at: 2) at: 22) to: result commaTokens.
+	result
+		addTokens: ((nodes at: 2) at: 23)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 2) at: 24) to: result inoutTokens.
+	result addTokens: ((nodes at: 3) at: 1) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 3) at: 2) to: result _Tokens.
+	result addTokens: ((nodes at: 3) at: 3) to: result identifierTokens.
+	result addTokens: ((nodes at: 3) at: 4) to: result leftParenTokens.
+	result addTokens: ((nodes at: 3) at: 5) to: result rightParenTokens.
+	result addTokens: ((nodes at: 3) at: 6) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 3) at: 7) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 3) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 3) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 3) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 3) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 3) at: 12) to: result operatorTokens.
+	result getToken: ((nodes at: 3) at: 13).
+	result addNodes: ((nodes at: 3) at: 14) to: result blocks.
+	result setToken: ((nodes at: 3) at: 15).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForsubscript_declaration3: nodes [
+	| result |
+	result := SwiftSubscriptDeclarationNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
+	result subscriptToken: ((nodes at: 1) at: 13).
+	result addTokens: ((nodes at: 1) at: 14) to: result inoutTokens.
+	result addTokens: ((nodes at: 1) at: 15) to: result letTokens.
+	result addTokens: ((nodes at: 1) at: 16) to: result colonTokens.
+	result
+		addTokens: ((nodes at: 1) at: 17)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 1) at: 18) to: result lessThanTokens.
+	result addTokens: ((nodes at: 1) at: 19) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 1) at: 20) to: result periodTokens.
+	result
+		addTokens: ((nodes at: 1) at: 21)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 1) at: 22) to: result bangTokens.
+	result addTokens: ((nodes at: 1) at: 23) to: result protocolTokens.
+	result addTokens: ((nodes at: 1) at: 24) to: result commaTokens.
+	result addTokens: ((nodes at: 1) at: 25) to: result typeTokens.
+	result addTokens: ((nodes at: 1) at: 26) to: result equalTokens.
+	result addObjects: ((nodes at: 1) at: 27) to: result expressions.
+	result addTokens: ((nodes at: 1) at: 28) to: result varTokens.
+	result
+		addTokens: ((nodes at: 1) at: 29)
+		to: result periodPeriodPeriodTokens.
+	result
+		addTokens: ((nodes at: 2) at: 1)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 2) to: result _Tokens.
+	result addTokens: ((nodes at: 2) at: 3) to: result identifierTokens.
+	result addTokens: ((nodes at: 2) at: 4) to: result leftParenTokens.
+	result addTokens: ((nodes at: 2) at: 5) to: result rightParenTokens.
+	result addTokens: ((nodes at: 2) at: 6) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 2) at: 7) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 2) at: 8) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 2) at: 9) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 2) at: 10)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 2) at: 11)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 2) at: 12)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 2) at: 13) to: result operatorTokens.
+	result addTokens: ((nodes at: 2) at: 14) to: result colonTokens.
+	result addTokens: ((nodes at: 2) at: 15) to: result periodTokens.
+	result
+		addTokens: ((nodes at: 2) at: 16)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 2) at: 17) to: result bangTokens.
+	result addTokens: ((nodes at: 2) at: 18) to: result protocolTokens.
+	result addTokens: ((nodes at: 2) at: 19) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 20) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 21) to: result typeTokens.
+	result addTokens: ((nodes at: 2) at: 22) to: result commaTokens.
+	result
+		addTokens: ((nodes at: 2) at: 23)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 2) at: 24) to: result inoutTokens.
+	result addTokens: ((nodes at: 3) at: 1) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 3) at: 2) to: result _Tokens.
+	result addTokens: ((nodes at: 3) at: 3) to: result identifierTokens.
+	result addTokens: ((nodes at: 3) at: 4) to: result leftParenTokens.
+	result addTokens: ((nodes at: 3) at: 5) to: result rightParenTokens.
+	result addTokens: ((nodes at: 3) at: 6) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 3) at: 7) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 3) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 3) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 3) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 3) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 3) at: 12) to: result operatorTokens.
+	result getToken: ((nodes at: 3) at: 13).
+	result setToken: ((nodes at: 3) at: 14).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForsubscript_expression1: nodes [
+	| result |
+	result := SwiftSubscriptExpressionNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result lessThanTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result commaTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result greaterThanTokens.
+	result
+		addTokens: ((nodes at: 1) at: 5)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 6)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 7)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result leftBracketTokens.
+	result addObjects: ((nodes at: 1) at: 9) to: result expressions.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result rightBracketTokens.
+	result addObjects: ((nodes at: 1) at: 11) to: result keyExpressions.
+	result addTokens: ((nodes at: 1) at: 12) to: result colonTokens.
+	result addObjects: ((nodes at: 1) at: 13) to: result valueExpressions.
+	result __FILE__Token: ((nodes at: 1) at: 14).
+	result __LINE__Token: ((nodes at: 1) at: 15).
+	result __COLUMN__Token: ((nodes at: 1) at: 16).
+	result __FUNCTION__Token: ((nodes at: 1) at: 17).
+	result addTokens: ((nodes at: 1) at: 18) to: result selfTokens.
+	result addTokens: ((nodes at: 1) at: 19) to: result periodTokens.
+	result addTokens: ((nodes at: 1) at: 20) to: result initTokens.
+	result addTokens: ((nodes at: 1) at: 21) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 22) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 23) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 24) to: result inoutTokens.
+	result addTokens: ((nodes at: 1) at: 25) to: result letTokens.
+	result addTokens: ((nodes at: 1) at: 26) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 27) to: result rightBraceTokens.
+	result addTokens: ((nodes at: 1) at: 28) to: result operatorTokens.
+	result
+		addTokens: ((nodes at: 1) at: 29)
+		to: result minusGreaterThanTokens.
+	result
+		addTokens: ((nodes at: 1) at: 30)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 1) at: 31) to: result bangTokens.
+	result addTokens: ((nodes at: 1) at: 32) to: result protocolTokens.
+	result addTokens: ((nodes at: 1) at: 33) to: result typeTokens.
+	result
+		addTokens: ((nodes at: 1) at: 34)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 1) at: 35) to: result equalTokens.
+	result addTokens: ((nodes at: 1) at: 36) to: result varTokens.
+	result inToken: ((nodes at: 1) at: 37).
+	result weakToken: ((nodes at: 1) at: 38).
+	result unownedToken: ((nodes at: 1) at: 39).
+	result unownedLeftParensafeRightParenToken: ((nodes at: 1) at: 40).
+	result unownedLeftParenunsafeRightParenToken: ((nodes at: 1) at: 41).
+	result addNodes: ((nodes at: 1) at: 42) to: result statements.
+	result addTokens: ((nodes at: 1) at: 43) to: result dynamicTypeTokens.
+	result addToken: (nodes at: 2) to: result leftBracketTokens.
+	result addObjects: ((nodes at: 3) at: 1) to: result expressions.
+	result addTokens: ((nodes at: 3) at: 2) to: result commaTokens.
+	result addToken: (nodes at: 4) to: result rightBracketTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForsubscript_head1: nodes [
+	| result |
+	result := Array new: 29.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
+	result at: 13 put: (nodes at: 2).
+	self addAll: ((nodes at: 3) at: 1) to: (result at: 3).
+	self addAll: ((nodes at: 3) at: 2) to: (result at: 4).
+	self addAll: ((nodes at: 3) at: 3) to: (result at: 14).
+	self addAll: ((nodes at: 3) at: 4) to: (result at: 15).
+	self addAll: ((nodes at: 3) at: 5) to: (result at: 1).
+	self addAll: ((nodes at: 3) at: 6) to: (result at: 2).
+	self addAll: ((nodes at: 3) at: 7) to: (result at: 16).
+	self addAll: ((nodes at: 3) at: 8) to: (result at: 5).
+	self addAll: ((nodes at: 3) at: 9) to: (result at: 6).
+	self addAll: ((nodes at: 3) at: 10) to: (result at: 7).
+	self addAll: ((nodes at: 3) at: 11) to: (result at: 8).
+	self addAll: ((nodes at: 3) at: 12) to: (result at: 9).
+	self addAll: ((nodes at: 3) at: 13) to: (result at: 10).
+	self addAll: ((nodes at: 3) at: 14) to: (result at: 11).
+	self addAll: ((nodes at: 3) at: 15) to: (result at: 12).
+	self addAll: ((nodes at: 3) at: 16) to: (result at: 17).
+	self addAll: ((nodes at: 3) at: 17) to: (result at: 20).
+	self addAll: ((nodes at: 3) at: 18) to: (result at: 21).
+	self addAll: ((nodes at: 3) at: 19) to: (result at: 22).
+	self addAll: ((nodes at: 3) at: 20) to: (result at: 23).
+	self addAll: ((nodes at: 3) at: 21) to: (result at: 18).
+	self addAll: ((nodes at: 3) at: 22) to: (result at: 19).
+	self addAll: ((nodes at: 3) at: 23) to: (result at: 25).
+	self addAll: ((nodes at: 3) at: 24) to: (result at: 24).
+	self addAll: ((nodes at: 3) at: 25) to: (result at: 29).
+	self addAll: ((nodes at: 3) at: 26) to: (result at: 26).
+	self addAll: ((nodes at: 3) at: 27) to: (result at: 27).
+	self addAll: ((nodes at: 3) at: 28) to: (result at: 28).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForsubscript_result1: nodes [
+	| result |
+	result := Array new: 24.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 7).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 8) to: (result at: 9).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 10).
+	self addAll: ((nodes at: 2) at: 10) to: (result at: 11).
+	self addAll: ((nodes at: 2) at: 11) to: (result at: 12).
+	self addAll: ((nodes at: 2) at: 12) to: (result at: 13).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForsuperclass_initializer_expression1: nodes [
+	| result |
+	result := SwiftSuperclassInitializerExpressionNode new.
+	result superToken: (nodes at: 1).
+	result periodToken: (nodes at: 2).
+	result initToken: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForsuperclass_method_expression1: nodes [
+	| result |
+	result := SwiftSuperclassMethodExpressionNode new.
+	result superToken: (nodes at: 1).
+	result periodToken: (nodes at: 2).
+	result identifierToken: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForsuperclass_subscript_expression1: nodes [
+	| result |
+	result := SwiftSuperclassSubscriptExpressionNode new.
+	result superToken: (nodes at: 1).
+	result leftBracketToken: (nodes at: 2).
+	result expression: (nodes at: 3).
+	result rightBracketToken: (nodes at: 4).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForswitch_case1: nodes [
+	| result |
+	result := Array new: 34.
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	result at: 30 put: (OrderedCollection new: 2).
+	result at: 31 put: (OrderedCollection new: 2).
+	result at: 32 put: (OrderedCollection new: 2).
+	result at: 1 put: ((nodes at: 1) at: 1).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
+	self addAll: ((nodes at: 1) at: 13) to: (result at: 13).
+	self addAll: ((nodes at: 1) at: 14) to: (result at: 14).
+	self addAll: ((nodes at: 1) at: 15) to: (result at: 15).
+	self addAll: ((nodes at: 1) at: 16) to: (result at: 16).
+	self addAll: ((nodes at: 1) at: 17) to: (result at: 17).
+	self addAll: ((nodes at: 1) at: 18) to: (result at: 18).
+	self addAll: ((nodes at: 1) at: 19) to: (result at: 19).
+	self addAll: ((nodes at: 1) at: 20) to: (result at: 20).
+	self addAll: ((nodes at: 1) at: 21) to: (result at: 21).
+	self addAll: ((nodes at: 1) at: 22) to: (result at: 22).
+	self addAll: ((nodes at: 1) at: 23) to: (result at: 23).
+	self addAll: ((nodes at: 1) at: 24) to: (result at: 24).
+	self addAll: ((nodes at: 1) at: 25) to: (result at: 25).
+	self addAll: ((nodes at: 1) at: 26) to: (result at: 26).
+	self addAll: ((nodes at: 1) at: 27) to: (result at: 27).
+	self addAll: ((nodes at: 1) at: 28) to: (result at: 28).
+	self addAll: ((nodes at: 1) at: 29) to: (result at: 29).
+	self addAll: ((nodes at: 1) at: 30) to: (result at: 30).
+	self addAll: ((nodes at: 1) at: 31) to: (result at: 31).
+	self addAll: (nodes at: 2) to: (result at: 32).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForswitch_case2: nodes [
+	| result |
+	result := Array new: 34.
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	result at: 30 put: (OrderedCollection new: 2).
+	result at: 31 put: (OrderedCollection new: 2).
+	result at: 32 put: (OrderedCollection new: 2).
+	result at: 1 put: ((nodes at: 1) at: 1).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
+	self addAll: ((nodes at: 1) at: 13) to: (result at: 13).
+	self addAll: ((nodes at: 1) at: 14) to: (result at: 14).
+	self addAll: ((nodes at: 1) at: 15) to: (result at: 15).
+	self addAll: ((nodes at: 1) at: 16) to: (result at: 16).
+	self addAll: ((nodes at: 1) at: 17) to: (result at: 17).
+	self addAll: ((nodes at: 1) at: 18) to: (result at: 18).
+	self addAll: ((nodes at: 1) at: 19) to: (result at: 19).
+	self addAll: ((nodes at: 1) at: 20) to: (result at: 20).
+	self addAll: ((nodes at: 1) at: 21) to: (result at: 21).
+	self addAll: ((nodes at: 1) at: 22) to: (result at: 22).
+	self addAll: ((nodes at: 1) at: 23) to: (result at: 23).
+	self addAll: ((nodes at: 1) at: 24) to: (result at: 24).
+	self addAll: ((nodes at: 1) at: 25) to: (result at: 25).
+	self addAll: ((nodes at: 1) at: 26) to: (result at: 26).
+	self addAll: ((nodes at: 1) at: 27) to: (result at: 27).
+	self addAll: ((nodes at: 1) at: 28) to: (result at: 28).
+	self addAll: ((nodes at: 1) at: 29) to: (result at: 29).
+	self addAll: ((nodes at: 1) at: 30) to: (result at: 30).
+	self addAll: ((nodes at: 1) at: 31) to: (result at: 31).
+	result at: 33 put: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForswitch_case3: nodes [
+	| result |
+	result := Array new: 34.
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	result at: 30 put: (OrderedCollection new: 2).
+	result at: 31 put: (OrderedCollection new: 2).
+	result at: 32 put: (OrderedCollection new: 2).
+	result at: 34 put: ((nodes at: 1) at: 1).
+	self add: ((nodes at: 1) at: 2) to: (result at: 3).
+	self addAll: (nodes at: 2) to: (result at: 32).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForswitch_case4: nodes [
+	| result |
+	result := Array new: 34.
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	result at: 30 put: (OrderedCollection new: 2).
+	result at: 31 put: (OrderedCollection new: 2).
+	result at: 32 put: (OrderedCollection new: 2).
+	result at: 34 put: ((nodes at: 1) at: 1).
+	self add: ((nodes at: 1) at: 2) to: (result at: 3).
+	result at: 33 put: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForswitch_cases1: nodes [
+	| result |
+	result := Array new: 34.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	result at: 30 put: (OrderedCollection new: 2).
+	result at: 31 put: (OrderedCollection new: 2).
+	result at: 32 put: (OrderedCollection new: 2).
+	result at: 33 put: (OrderedCollection new: 2).
+	result at: 34 put: (OrderedCollection new: 2).
+	self add: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
+	self addAll: ((nodes at: 1) at: 13) to: (result at: 13).
+	self addAll: ((nodes at: 1) at: 14) to: (result at: 14).
+	self addAll: ((nodes at: 1) at: 15) to: (result at: 15).
+	self addAll: ((nodes at: 1) at: 16) to: (result at: 16).
+	self addAll: ((nodes at: 1) at: 17) to: (result at: 17).
+	self addAll: ((nodes at: 1) at: 18) to: (result at: 18).
+	self addAll: ((nodes at: 1) at: 19) to: (result at: 19).
+	self addAll: ((nodes at: 1) at: 20) to: (result at: 20).
+	self addAll: ((nodes at: 1) at: 21) to: (result at: 21).
+	self addAll: ((nodes at: 1) at: 22) to: (result at: 22).
+	self addAll: ((nodes at: 1) at: 23) to: (result at: 23).
+	self addAll: ((nodes at: 1) at: 24) to: (result at: 24).
+	self addAll: ((nodes at: 1) at: 25) to: (result at: 25).
+	self addAll: ((nodes at: 1) at: 26) to: (result at: 26).
+	self addAll: ((nodes at: 1) at: 27) to: (result at: 27).
+	self addAll: ((nodes at: 1) at: 28) to: (result at: 28).
+	self addAll: ((nodes at: 1) at: 29) to: (result at: 29).
+	self addAll: ((nodes at: 1) at: 30) to: (result at: 30).
+	self addAll: ((nodes at: 1) at: 31) to: (result at: 31).
+	self addAll: ((nodes at: 1) at: 32) to: (result at: 32).
+	self add: ((nodes at: 1) at: 33) to: (result at: 33).
+	self add: ((nodes at: 1) at: 34) to: (result at: 34).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForswitch_cases2: nodes [
+	| result |
+	result := nodes at: 1.
+	self add: ((nodes at: 2) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
+	self addAll: ((nodes at: 2) at: 13) to: (result at: 13).
+	self addAll: ((nodes at: 2) at: 14) to: (result at: 14).
+	self addAll: ((nodes at: 2) at: 15) to: (result at: 15).
+	self addAll: ((nodes at: 2) at: 16) to: (result at: 16).
+	self addAll: ((nodes at: 2) at: 17) to: (result at: 17).
+	self addAll: ((nodes at: 2) at: 18) to: (result at: 18).
+	self addAll: ((nodes at: 2) at: 19) to: (result at: 19).
+	self addAll: ((nodes at: 2) at: 20) to: (result at: 20).
+	self addAll: ((nodes at: 2) at: 21) to: (result at: 21).
+	self addAll: ((nodes at: 2) at: 22) to: (result at: 22).
+	self addAll: ((nodes at: 2) at: 23) to: (result at: 23).
+	self addAll: ((nodes at: 2) at: 24) to: (result at: 24).
+	self addAll: ((nodes at: 2) at: 25) to: (result at: 25).
+	self addAll: ((nodes at: 2) at: 26) to: (result at: 26).
+	self addAll: ((nodes at: 2) at: 27) to: (result at: 27).
+	self addAll: ((nodes at: 2) at: 28) to: (result at: 28).
+	self addAll: ((nodes at: 2) at: 29) to: (result at: 29).
+	self addAll: ((nodes at: 2) at: 30) to: (result at: 30).
+	self addAll: ((nodes at: 2) at: 31) to: (result at: 31).
+	self addAll: ((nodes at: 2) at: 32) to: (result at: 32).
+	self add: ((nodes at: 2) at: 33) to: (result at: 33).
+	self add: ((nodes at: 2) at: 34) to: (result at: 34).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForswitch_statement1: nodes [
+	| result |
+	result := SwiftSwitchStatementNode new.
+	result switchToken: (nodes at: 1).
+	result addObject: (nodes at: 2) to: result expressions.
+	result addToken: (nodes at: 3) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 4) at: 1) to: result caseTokens.
+	result addTokens: ((nodes at: 4) at: 2) to: result _Tokens.
+	result addTokens: ((nodes at: 4) at: 3) to: result colonTokens.
+	result addTokens: ((nodes at: 4) at: 4) to: result identifierTokens.
+	result addTokens: ((nodes at: 4) at: 5) to: result leftParenTokens.
+	result addTokens: ((nodes at: 4) at: 6) to: result rightParenTokens.
+	result addTokens: ((nodes at: 4) at: 7) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 4) at: 8) to: result rightBracketTokens.
+	result
+		addTokens: ((nodes at: 4) at: 9)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 4) at: 10) to: result periodTokens.
+	result
+		addTokens: ((nodes at: 4) at: 11)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 4) at: 12) to: result bangTokens.
+	result addTokens: ((nodes at: 4) at: 13) to: result protocolTokens.
+	result addTokens: ((nodes at: 4) at: 14) to: result lessThanTokens.
+	result addTokens: ((nodes at: 4) at: 15) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 4) at: 16) to: result typeTokens.
+	result addTokens: ((nodes at: 4) at: 17) to: result commaTokens.
+	result
+		addTokens: ((nodes at: 4) at: 18)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 4) at: 19) to: result varTokens.
+	result addTokens: ((nodes at: 4) at: 20) to: result letTokens.
+	result addObjects: ((nodes at: 4) at: 21) to: result expressions.
+	result addTokens: ((nodes at: 4) at: 22) to: result isTokens.
+	result addTokens: ((nodes at: 4) at: 23) to: result asTokens.
+	result addTokens: ((nodes at: 4) at: 24) to: result inoutTokens.
+	result addTokens: ((nodes at: 4) at: 25) to: result whereTokens.
+	result addNodes: ((nodes at: 4) at: 26) to: result statements.
+	result addTokens: ((nodes at: 4) at: 27) to: result semicolonToken.
+	result addTokens: ((nodes at: 4) at: 28) to: result defaultTokens.
+	result addTokens: ((nodes at: 4) at: 29) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 4) at: 30) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 4) at: 31)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 4) at: 32)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 4) at: 33)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 4) at: 34) to: result operatorTokens.
+	result addToken: (nodes at: 5) to: result rightBraceTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFortuple_pattern1: nodes [
+	| result |
+	result := Array new: 29.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 2) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 2) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 2) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 2) at: 12) to: (result at: 12).
+	self addAll: ((nodes at: 2) at: 13) to: (result at: 13).
+	self addAll: ((nodes at: 2) at: 14) to: (result at: 14).
+	self addAll: ((nodes at: 2) at: 15) to: (result at: 15).
+	self addAll: ((nodes at: 2) at: 16) to: (result at: 16).
+	self addAll: ((nodes at: 2) at: 17) to: (result at: 17).
+	self addAll: ((nodes at: 2) at: 18) to: (result at: 18).
+	self addAll: ((nodes at: 2) at: 19) to: (result at: 19).
+	self addAll: ((nodes at: 2) at: 20) to: (result at: 20).
+	self addAll: ((nodes at: 2) at: 21) to: (result at: 21).
+	self addAll: ((nodes at: 2) at: 22) to: (result at: 22).
+	self addAll: ((nodes at: 2) at: 23) to: (result at: 23).
+	self addAll: ((nodes at: 2) at: 24) to: (result at: 24).
+	self addAll: ((nodes at: 2) at: 25) to: (result at: 25).
+	self addAll: ((nodes at: 2) at: 26) to: (result at: 26).
+	self addAll: ((nodes at: 2) at: 27) to: (result at: 27).
+	self addAll: ((nodes at: 2) at: 28) to: (result at: 28).
+	self addAll: ((nodes at: 2) at: 29) to: (result at: 29).
+	self add: (nodes at: 3) to: (result at: 5).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFortuple_pattern_element_list2: nodes [
+	| result |
+	result := nodes at: 3.
+	self addAllFirst: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAllFirst: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAllFirst: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAllFirst: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAllFirst: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAllFirst: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAllFirst: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAllFirst: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAllFirst: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAllFirst: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAllFirst: ((nodes at: 1) at: 11) to: (result at: 11).
+	self addAllFirst: ((nodes at: 1) at: 12) to: (result at: 12).
+	self addAllFirst: ((nodes at: 1) at: 13) to: (result at: 13).
+	self addAllFirst: ((nodes at: 1) at: 14) to: (result at: 14).
+	self addAllFirst: ((nodes at: 1) at: 15) to: (result at: 15).
+	self addAllFirst: ((nodes at: 1) at: 16) to: (result at: 16).
+	self addAllFirst: ((nodes at: 1) at: 17) to: (result at: 17).
+	self addAllFirst: ((nodes at: 1) at: 18) to: (result at: 18).
+	self addAllFirst: ((nodes at: 1) at: 19) to: (result at: 19).
+	self addAllFirst: ((nodes at: 1) at: 20) to: (result at: 20).
+	self addAllFirst: ((nodes at: 1) at: 21) to: (result at: 21).
+	self addAllFirst: ((nodes at: 1) at: 22) to: (result at: 22).
+	self addAllFirst: ((nodes at: 1) at: 23) to: (result at: 23).
+	self addAllFirst: ((nodes at: 1) at: 24) to: (result at: 24).
+	self addAllFirst: ((nodes at: 1) at: 25) to: (result at: 25).
+	self addAllFirst: ((nodes at: 1) at: 26) to: (result at: 26).
+	self addAllFirst: ((nodes at: 1) at: 27) to: (result at: 27).
+	self addAllFirst: ((nodes at: 1) at: 28) to: (result at: 28).
+	self addAllFirst: ((nodes at: 1) at: 29) to: (result at: 29).
+	self addFirst: (nodes at: 2) to: (result at: 22).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFortuple_type1: nodes [
+	| result |
+	result := SwiftTupleTypeNode new.
+	result addToken: (nodes at: 1) to: result leftParenTokens.
+	result addTokens: ((nodes at: 2) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 2) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 2) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 2) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 2) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 2) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 2) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 2) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 2) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 2) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 2) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 2) at: 12) to: result operatorTokens.
+	result addTokens: ((nodes at: 2) at: 13) to: result inoutTokens.
+	result addTokens: ((nodes at: 2) at: 14) to: result colonTokens.
+	result
+		addTokens: ((nodes at: 2) at: 15)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 16) to: result periodTokens.
+	result
+		addTokens: ((nodes at: 2) at: 17)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 2) at: 18) to: result bangTokens.
+	result addTokens: ((nodes at: 2) at: 19) to: result protocolTokens.
+	result addTokens: ((nodes at: 2) at: 20) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 21) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 22) to: result typeTokens.
+	result addTokens: ((nodes at: 2) at: 23) to: result commaTokens.
+	result
+		addTokens: ((nodes at: 2) at: 24)
+		to: result periodPeriodPeriodTokens.
+	result addToken: (nodes at: 3) to: result rightParenTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFortuple_type_body1: nodes [
+	| result |
+	result := nodes at: 1.
+	self add: (nodes at: 2) to: (result at: 24).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFortuple_type_element1: nodes [
+	| result |
+	result := Array new: 24.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
+	self add: (nodes at: 2) to: (result at: 13).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFortuple_type_element2: nodes [
+	| result |
+	result := Array new: 24.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 13).
+	self add: (nodes at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 3) at: 1) to: (result at: 14).
+	self addAll: ((nodes at: 3) at: 2) to: (result at: 1).
+	self addAll: ((nodes at: 3) at: 3) to: (result at: 2).
+	self addAll: ((nodes at: 3) at: 4) to: (result at: 3).
+	self addAll: ((nodes at: 3) at: 5) to: (result at: 4).
+	self addAll: ((nodes at: 3) at: 6) to: (result at: 5).
+	self addAll: ((nodes at: 3) at: 7) to: (result at: 6).
+	self addAll: ((nodes at: 3) at: 8) to: (result at: 7).
+	self addAll: ((nodes at: 3) at: 9) to: (result at: 8).
+	self addAll: ((nodes at: 3) at: 10) to: (result at: 9).
+	self addAll: ((nodes at: 3) at: 11) to: (result at: 10).
+	self addAll: ((nodes at: 3) at: 12) to: (result at: 11).
+	self addAll: ((nodes at: 3) at: 13) to: (result at: 12).
+	self addAll: ((nodes at: 3) at: 14) to: (result at: 15).
+	self addAll: ((nodes at: 3) at: 15) to: (result at: 16).
+	self addAll: ((nodes at: 3) at: 16) to: (result at: 17).
+	self addAll: ((nodes at: 3) at: 17) to: (result at: 18).
+	self addAll: ((nodes at: 3) at: 18) to: (result at: 19).
+	self addAll: ((nodes at: 3) at: 19) to: (result at: 20).
+	self addAll: ((nodes at: 3) at: 20) to: (result at: 21).
+	self addAll: ((nodes at: 3) at: 21) to: (result at: 22).
+	self addAll: ((nodes at: 3) at: 22) to: (result at: 23).
+	self addAll: ((nodes at: 3) at: 23) to: (result at: 24).
+	self addAll: ((nodes at: 3) at: 24) to: (result at: 13).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFortuple_type_element_list2: nodes [
+	| result |
+	result := nodes at: 3.
+	self addAllFirst: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAllFirst: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAllFirst: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAllFirst: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAllFirst: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAllFirst: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAllFirst: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAllFirst: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAllFirst: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAllFirst: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAllFirst: ((nodes at: 1) at: 11) to: (result at: 11).
+	self addAllFirst: ((nodes at: 1) at: 12) to: (result at: 12).
+	self addAllFirst: ((nodes at: 1) at: 13) to: (result at: 13).
+	self addAllFirst: ((nodes at: 1) at: 14) to: (result at: 14).
+	self addAllFirst: ((nodes at: 1) at: 15) to: (result at: 15).
+	self addAllFirst: ((nodes at: 1) at: 16) to: (result at: 16).
+	self addAllFirst: ((nodes at: 1) at: 17) to: (result at: 17).
+	self addAllFirst: ((nodes at: 1) at: 18) to: (result at: 18).
+	self addAllFirst: ((nodes at: 1) at: 19) to: (result at: 19).
+	self addAllFirst: ((nodes at: 1) at: 20) to: (result at: 20).
+	self addAllFirst: ((nodes at: 1) at: 21) to: (result at: 21).
+	self addAllFirst: ((nodes at: 1) at: 22) to: (result at: 22).
+	self addAllFirst: ((nodes at: 1) at: 23) to: (result at: 23).
+	self addAllFirst: ((nodes at: 1) at: 24) to: (result at: 24).
+	self addFirst: (nodes at: 2) to: (result at: 23).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFortype_casting_operator1: nodes [
+	| result |
+	result := Array new: 4.
+	result at: 1 put: (nodes at: 1).
+	result at: 2 put: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFortype_casting_operator2: nodes [
+	| result |
+	result := Array new: 4.
+	result at: 3 put: (nodes at: 1).
+	result at: 2 put: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFortype_casting_operator3: nodes [
+	| result |
+	result := Array new: 4.
+	result at: 3 put: (nodes at: 1).
+	result at: 4 put: (nodes at: 2).
+	result at: 2 put: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFortype_casting_pattern1: nodes [
+	| result |
+	result := Array new: 29.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	self add: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
+	self addAll: ((nodes at: 1) at: 13) to: (result at: 13).
+	self addAll: ((nodes at: 1) at: 14) to: (result at: 14).
+	self addAll: ((nodes at: 1) at: 15) to: (result at: 15).
+	self addAll: ((nodes at: 1) at: 16) to: (result at: 16).
+	self addAll: ((nodes at: 1) at: 17) to: (result at: 17).
+	self addAll: ((nodes at: 1) at: 18) to: (result at: 18).
+	self addAll: ((nodes at: 1) at: 19) to: (result at: 19).
+	self addAll: ((nodes at: 1) at: 20) to: (result at: 20).
+	self addAll: ((nodes at: 1) at: 21) to: (result at: 21).
+	self addAll: ((nodes at: 1) at: 22) to: (result at: 22).
+	self addAll: ((nodes at: 1) at: 23) to: (result at: 23).
+	self addAll: ((nodes at: 1) at: 24) to: (result at: 24).
+	self addAll: ((nodes at: 1) at: 25) to: (result at: 25).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFortype_casting_pattern2: nodes [
+	| result |
+	result := Array new: 29.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 18).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 15).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 20).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 21).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 22).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 23).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 24).
+	self addAll: ((nodes at: 1) at: 13) to: (result at: 25).
+	self addAll: ((nodes at: 1) at: 14) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 15) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 16) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 17) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 18) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 19) to: (result at: 12).
+	self addAll: ((nodes at: 1) at: 20) to: (result at: 13).
+	self addAll: ((nodes at: 1) at: 21) to: (result at: 14).
+	self addAll: ((nodes at: 1) at: 22) to: (result at: 16).
+	self addAll: ((nodes at: 1) at: 23) to: (result at: 17).
+	self addAll: ((nodes at: 1) at: 24) to: (result at: 19).
+	self addAll: ((nodes at: 1) at: 25) to: (result at: 26).
+	self addAll: ((nodes at: 1) at: 26) to: (result at: 27).
+	self addAll: ((nodes at: 1) at: 27) to: (result at: 28).
+	self addAll: ((nodes at: 1) at: 28) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 29) to: (result at: 29).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFortype_identifier1: nodes [
+	| result |
+	result := SwiftTypeIdentifierNode new.
+	result addToken: (nodes at: 1) to: result identifierTokens.
+	result addToken: ((nodes at: 2) at: 1) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 2) to: result commaTokens.
+	result addToken: ((nodes at: 2) at: 3) to: result greaterThanTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFortype_identifier2: nodes [
+	| result |
+	result := nodes at: 4.
+	result addFirstToken: (nodes at: 1) to: result identifierTokens.
+	result addFirstToken: ((nodes at: 2) at: 1) to: result lessThanTokens.
+	result addFirstTokens: ((nodes at: 2) at: 2) to: result commaTokens.
+	result
+		addFirstToken: ((nodes at: 2) at: 3)
+		to: result greaterThanTokens.
+	result addFirstToken: (nodes at: 3) to: result periodTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFortype_inheritance_clause1: nodes [
+	| result |
+	result := Array new: 6.
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 1 put: (nodes at: 1).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 6).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFortype_inheritance_list1: nodes [
+	| result |
+	result := Array new: 5.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFortype_inheritance_list2: nodes [
+	| result |
+	result := nodes at: 1.
+	self add: (nodes at: 2) to: (result at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFortypealias_declaration1: nodes [
+	| result |
+	result := SwiftTypealiasDeclarationNode new.
+	result typealiasToken: ((nodes at: 1) at: 1).
+	result addToken: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result equalToken: ((nodes at: 2) at: 1).
+	result addTokens: ((nodes at: 2) at: 2) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 2) at: 3) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 2) at: 4) to: result colonTokens.
+	result
+		addTokens: ((nodes at: 2) at: 5)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 6) to: result periodTokens.
+	result addTokens: ((nodes at: 2) at: 7) to: result leftParenTokens.
+	result addTokens: ((nodes at: 2) at: 8) to: result rightParenTokens.
+	result addTokens: ((nodes at: 2) at: 9) to: result questionMarkTokens.
+	result addTokens: ((nodes at: 2) at: 10) to: result bangTokens.
+	result addTokens: ((nodes at: 2) at: 11) to: result protocolTokens.
+	result addTokens: ((nodes at: 2) at: 12) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 13) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 14) to: result typeTokens.
+	result addTokens: ((nodes at: 2) at: 15) to: result identifierTokens.
+	result addTokens: ((nodes at: 2) at: 16) to: result commaTokens.
+	result
+		addTokens: ((nodes at: 2) at: 17)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 2) at: 18) to: result _Tokens.
+	result addTokens: ((nodes at: 2) at: 19) to: result inoutTokens.
+	result addTokens: ((nodes at: 2) at: 20) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 2) at: 21) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 2) at: 22)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 2) at: 23)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 2) at: 24)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 2) at: 25) to: result operatorTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionFortypealias_head1: nodes [
+	| result |
+	result := Array new: 2.
+	result at: 1 put: (nodes at: 1).
+	result at: 2 put: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForunion_style_enum1: nodes [
+	| result |
+	result := Array new: 57.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	result at: 30 put: (OrderedCollection new: 2).
+	result at: 31 put: (OrderedCollection new: 2).
+	result at: 32 put: (OrderedCollection new: 2).
+	result at: 33 put: (OrderedCollection new: 2).
+	result at: 34 put: (OrderedCollection new: 2).
+	result at: 35 put: (OrderedCollection new: 2).
+	result at: 36 put: (OrderedCollection new: 2).
+	result at: 37 put: (OrderedCollection new: 2).
+	result at: 38 put: (OrderedCollection new: 2).
+	result at: 39 put: (OrderedCollection new: 2).
+	result at: 40 put: (OrderedCollection new: 2).
+	result at: 41 put: (OrderedCollection new: 2).
+	result at: 42 put: (OrderedCollection new: 2).
+	result at: 43 put: (OrderedCollection new: 2).
+	result at: 44 put: (OrderedCollection new: 2).
+	result at: 45 put: (OrderedCollection new: 2).
+	result at: 46 put: (OrderedCollection new: 2).
+	result at: 47 put: (OrderedCollection new: 2).
+	result at: 48 put: (OrderedCollection new: 2).
+	result at: 49 put: (OrderedCollection new: 2).
+	result at: 50 put: (OrderedCollection new: 2).
+	result at: 51 put: (OrderedCollection new: 2).
+	result at: 52 put: (OrderedCollection new: 2).
+	result at: 53 put: (OrderedCollection new: 2).
+	result at: 54 put: (OrderedCollection new: 2).
+	result at: 55 put: (OrderedCollection new: 2).
+	result at: 56 put: (OrderedCollection new: 2).
+	result at: 57 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 7).
+	self add: ((nodes at: 2) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 9).
+	self add: (nodes at: 3) to: (result at: 10).
+	self addAll: ((nodes at: 4) at: 1) to: (result at: 11).
+	self addAll: ((nodes at: 4) at: 2) to: (result at: 1).
+	self addAll: ((nodes at: 4) at: 3) to: (result at: 12).
+	self addAll: ((nodes at: 4) at: 4) to: (result at: 13).
+	self addAll: ((nodes at: 4) at: 5) to: (result at: 14).
+	self addAll: ((nodes at: 4) at: 6) to: (result at: 15).
+	self addAll: ((nodes at: 4) at: 7) to: (result at: 16).
+	self addAll: ((nodes at: 4) at: 8) to: (result at: 17).
+	self addAll: ((nodes at: 4) at: 9) to: (result at: 18).
+	self addAll: ((nodes at: 4) at: 10) to: (result at: 7).
+	self addAll: ((nodes at: 4) at: 11) to: (result at: 19).
+	self addAll: ((nodes at: 4) at: 12) to: (result at: 20).
+	self addAll: ((nodes at: 4) at: 13) to: (result at: 21).
+	self addAll: ((nodes at: 4) at: 14) to: (result at: 6).
+	self addAll: ((nodes at: 4) at: 15) to: (result at: 22).
+	self addAll: ((nodes at: 4) at: 16) to: (result at: 23).
+	self addAll: ((nodes at: 4) at: 17) to: (result at: 24).
+	self addAll: ((nodes at: 4) at: 18) to: (result at: 25).
+	self addAll: ((nodes at: 4) at: 19) to: (result at: 26).
+	self addAll: ((nodes at: 4) at: 20) to: (result at: 27).
+	self addAll: ((nodes at: 4) at: 21) to: (result at: 28).
+	self addAll: ((nodes at: 4) at: 22) to: (result at: 29).
+	self addAll: ((nodes at: 4) at: 23) to: (result at: 30).
+	self addAll: ((nodes at: 4) at: 24) to: (result at: 31).
+	self addAll: ((nodes at: 4) at: 25) to: (result at: 4).
+	self addAll: ((nodes at: 4) at: 26) to: (result at: 3).
+	self addAll: ((nodes at: 4) at: 27) to: (result at: 32).
+	self addAll: ((nodes at: 4) at: 28) to: (result at: 33).
+	self addAll: ((nodes at: 4) at: 29) to: (result at: 34).
+	self addAll: ((nodes at: 4) at: 30) to: (result at: 35).
+	self addAll: ((nodes at: 4) at: 31) to: (result at: 36).
+	self addAll: ((nodes at: 4) at: 32) to: (result at: 2).
+	self addAll: ((nodes at: 4) at: 33) to: (result at: 5).
+	self addAll: ((nodes at: 4) at: 34) to: (result at: 37).
+	self addAll: ((nodes at: 4) at: 35) to: (result at: 38).
+	self addAll: ((nodes at: 4) at: 36) to: (result at: 39).
+	self addAll: ((nodes at: 4) at: 37) to: (result at: 10).
+	self addAll: ((nodes at: 4) at: 38) to: (result at: 40).
+	self addAll: ((nodes at: 4) at: 39) to: (result at: 41).
+	self addAll: ((nodes at: 4) at: 40) to: (result at: 42).
+	self addAll: ((nodes at: 4) at: 41) to: (result at: 43).
+	self addAll: ((nodes at: 4) at: 42) to: (result at: 44).
+	self addAll: ((nodes at: 4) at: 43) to: (result at: 45).
+	self addAll: ((nodes at: 4) at: 44) to: (result at: 46).
+	self addAll: ((nodes at: 4) at: 45) to: (result at: 8).
+	self addAll: ((nodes at: 4) at: 46) to: (result at: 9).
+	self addAll: ((nodes at: 4) at: 47) to: (result at: 47).
+	self addAll: ((nodes at: 4) at: 48) to: (result at: 48).
+	self addAll: ((nodes at: 4) at: 49) to: (result at: 49).
+	self addAll: ((nodes at: 4) at: 50) to: (result at: 50).
+	self addAll: ((nodes at: 4) at: 51) to: (result at: 51).
+	self addAll: ((nodes at: 4) at: 52) to: (result at: 52).
+	self addAll: ((nodes at: 4) at: 53) to: (result at: 53).
+	self addAll: ((nodes at: 4) at: 54) to: (result at: 54).
+	self addAll: ((nodes at: 4) at: 55) to: (result at: 55).
+	self addAll: ((nodes at: 4) at: 56) to: (result at: 56).
+	self addAll: ((nodes at: 4) at: 57) to: (result at: 57).
+	self add: (nodes at: 5) to: (result at: 42).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForunion_style_enum_case1: nodes [
+	| result |
+	result := Array new: 24.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 1).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForunion_style_enum_case_clause1: nodes [
+	| result |
+	result := Array new: 25.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
+	result at: 13 put: (nodes at: 2).
+	self addAll: ((nodes at: 3) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 3) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 3) at: 3) to: (result at: 1).
+	self addAll: ((nodes at: 3) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 3) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 3) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 3) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 3) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 3) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 3) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 3) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 3) at: 12) to: (result at: 12).
+	self addAll: ((nodes at: 3) at: 13) to: (result at: 14).
+	self addAll: ((nodes at: 3) at: 14) to: (result at: 15).
+	self addAll: ((nodes at: 3) at: 15) to: (result at: 16).
+	self addAll: ((nodes at: 3) at: 16) to: (result at: 19).
+	self addAll: ((nodes at: 3) at: 17) to: (result at: 20).
+	self addAll: ((nodes at: 3) at: 18) to: (result at: 21).
+	self addAll: ((nodes at: 3) at: 19) to: (result at: 22).
+	self addAll: ((nodes at: 3) at: 20) to: (result at: 17).
+	self addAll: ((nodes at: 3) at: 21) to: (result at: 18).
+	self addAll: ((nodes at: 3) at: 22) to: (result at: 24).
+	self addAll: ((nodes at: 3) at: 23) to: (result at: 23).
+	self addAll: ((nodes at: 3) at: 24) to: (result at: 25).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForunion_style_enum_member2: nodes [
+	| result |
+	result := Array new: 57.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	result at: 30 put: (OrderedCollection new: 2).
+	result at: 31 put: (OrderedCollection new: 2).
+	result at: 32 put: (OrderedCollection new: 2).
+	result at: 33 put: (OrderedCollection new: 2).
+	result at: 34 put: (OrderedCollection new: 2).
+	result at: 35 put: (OrderedCollection new: 2).
+	result at: 36 put: (OrderedCollection new: 2).
+	result at: 37 put: (OrderedCollection new: 2).
+	result at: 38 put: (OrderedCollection new: 2).
+	result at: 39 put: (OrderedCollection new: 2).
+	result at: 40 put: (OrderedCollection new: 2).
+	result at: 41 put: (OrderedCollection new: 2).
+	result at: 42 put: (OrderedCollection new: 2).
+	result at: 43 put: (OrderedCollection new: 2).
+	result at: 44 put: (OrderedCollection new: 2).
+	result at: 45 put: (OrderedCollection new: 2).
+	result at: 46 put: (OrderedCollection new: 2).
+	result at: 47 put: (OrderedCollection new: 2).
+	result at: 48 put: (OrderedCollection new: 2).
+	result at: 49 put: (OrderedCollection new: 2).
+	result at: 50 put: (OrderedCollection new: 2).
+	result at: 51 put: (OrderedCollection new: 2).
+	result at: 52 put: (OrderedCollection new: 2).
+	result at: 53 put: (OrderedCollection new: 2).
+	result at: 54 put: (OrderedCollection new: 2).
+	result at: 55 put: (OrderedCollection new: 2).
+	result at: 56 put: (OrderedCollection new: 2).
+	result at: 57 put: (OrderedCollection new: 2).
+	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
+	self add: ((nodes at: 1) at: 13) to: (result at: 57).
+	self addAll: ((nodes at: 1) at: 14) to: (result at: 41).
+	self addAll: ((nodes at: 1) at: 15) to: (result at: 33).
+	self addAll: ((nodes at: 1) at: 16) to: (result at: 34).
+	self addAll: ((nodes at: 1) at: 17) to: (result at: 37).
+	self addAll: ((nodes at: 1) at: 18) to: (result at: 38).
+	self addAll: ((nodes at: 1) at: 19) to: (result at: 21).
+	self addAll: ((nodes at: 1) at: 20) to: (result at: 35).
+	self addAll: ((nodes at: 1) at: 21) to: (result at: 36).
+	self addAll: ((nodes at: 1) at: 22) to: (result at: 18).
+	self addAll: ((nodes at: 1) at: 23) to: (result at: 32).
+	self addAll: ((nodes at: 1) at: 24) to: (result at: 39).
+	self addAll: ((nodes at: 1) at: 25) to: (result at: 40).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForunion_style_enum_members2: nodes [
+	| result |
+	result := nodes at: 2.
+	self addAllFirst: ((nodes at: 1) at: 1) to: (result at: 1).
+	self addAllFirst: ((nodes at: 1) at: 2) to: (result at: 2).
+	self addAllFirst: ((nodes at: 1) at: 3) to: (result at: 3).
+	self addAllFirst: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAllFirst: ((nodes at: 1) at: 5) to: (result at: 5).
+	self addAllFirst: ((nodes at: 1) at: 6) to: (result at: 6).
+	self addAllFirst: ((nodes at: 1) at: 7) to: (result at: 7).
+	self addAllFirst: ((nodes at: 1) at: 8) to: (result at: 8).
+	self addAllFirst: ((nodes at: 1) at: 9) to: (result at: 9).
+	self addAllFirst: ((nodes at: 1) at: 10) to: (result at: 10).
+	self addAllFirst: ((nodes at: 1) at: 11) to: (result at: 11).
+	self addAllFirst: ((nodes at: 1) at: 12) to: (result at: 12).
+	self addAllFirst: ((nodes at: 1) at: 13) to: (result at: 13).
+	self addAllFirst: ((nodes at: 1) at: 14) to: (result at: 14).
+	self addAllFirst: ((nodes at: 1) at: 15) to: (result at: 15).
+	self addAllFirst: ((nodes at: 1) at: 16) to: (result at: 16).
+	self addAllFirst: ((nodes at: 1) at: 17) to: (result at: 17).
+	self addAllFirst: ((nodes at: 1) at: 18) to: (result at: 18).
+	self addAllFirst: ((nodes at: 1) at: 19) to: (result at: 19).
+	self addAllFirst: ((nodes at: 1) at: 20) to: (result at: 20).
+	self addAllFirst: ((nodes at: 1) at: 21) to: (result at: 21).
+	self addAllFirst: ((nodes at: 1) at: 22) to: (result at: 22).
+	self addAllFirst: ((nodes at: 1) at: 23) to: (result at: 23).
+	self addAllFirst: ((nodes at: 1) at: 24) to: (result at: 24).
+	self addAllFirst: ((nodes at: 1) at: 25) to: (result at: 25).
+	self addAllFirst: ((nodes at: 1) at: 26) to: (result at: 26).
+	self addAllFirst: ((nodes at: 1) at: 27) to: (result at: 27).
+	self addAllFirst: ((nodes at: 1) at: 28) to: (result at: 28).
+	self addAllFirst: ((nodes at: 1) at: 29) to: (result at: 29).
+	self addAllFirst: ((nodes at: 1) at: 30) to: (result at: 30).
+	self addAllFirst: ((nodes at: 1) at: 31) to: (result at: 31).
+	self addAllFirst: ((nodes at: 1) at: 32) to: (result at: 32).
+	self addAllFirst: ((nodes at: 1) at: 33) to: (result at: 33).
+	self addAllFirst: ((nodes at: 1) at: 34) to: (result at: 34).
+	self addAllFirst: ((nodes at: 1) at: 35) to: (result at: 35).
+	self addAllFirst: ((nodes at: 1) at: 36) to: (result at: 36).
+	self addAllFirst: ((nodes at: 1) at: 37) to: (result at: 37).
+	self addAllFirst: ((nodes at: 1) at: 38) to: (result at: 38).
+	self addAllFirst: ((nodes at: 1) at: 39) to: (result at: 39).
+	self addAllFirst: ((nodes at: 1) at: 40) to: (result at: 40).
+	self addAllFirst: ((nodes at: 1) at: 41) to: (result at: 41).
+	self addAllFirst: ((nodes at: 1) at: 42) to: (result at: 42).
+	self addAllFirst: ((nodes at: 1) at: 43) to: (result at: 43).
+	self addAllFirst: ((nodes at: 1) at: 44) to: (result at: 44).
+	self addAllFirst: ((nodes at: 1) at: 45) to: (result at: 45).
+	self addAllFirst: ((nodes at: 1) at: 46) to: (result at: 46).
+	self addAllFirst: ((nodes at: 1) at: 47) to: (result at: 47).
+	self addAllFirst: ((nodes at: 1) at: 48) to: (result at: 48).
+	self addAllFirst: ((nodes at: 1) at: 49) to: (result at: 49).
+	self addAllFirst: ((nodes at: 1) at: 50) to: (result at: 50).
+	self addAllFirst: ((nodes at: 1) at: 51) to: (result at: 51).
+	self addAllFirst: ((nodes at: 1) at: 52) to: (result at: 52).
+	self addAllFirst: ((nodes at: 1) at: 53) to: (result at: 53).
+	self addAllFirst: ((nodes at: 1) at: 54) to: (result at: 54).
+	self addAllFirst: ((nodes at: 1) at: 55) to: (result at: 55).
+	self addAllFirst: ((nodes at: 1) at: 56) to: (result at: 56).
+	self addAllFirst: ((nodes at: 1) at: 57) to: (result at: 57).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForvalue_binding_pattern1: nodes [
+	| result |
+	result := Array new: 29.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 7).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 8) to: (result at: 9).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 10).
+	self addAll: ((nodes at: 2) at: 10) to: (result at: 11).
+	self addAll: ((nodes at: 2) at: 11) to: (result at: 12).
+	self addAll: ((nodes at: 2) at: 12) to: (result at: 13).
+	self addAll: ((nodes at: 2) at: 13) to: (result at: 14).
+	self addAll: ((nodes at: 2) at: 14) to: (result at: 15).
+	self addAll: ((nodes at: 2) at: 15) to: (result at: 16).
+	self addAll: ((nodes at: 2) at: 16) to: (result at: 17).
+	self addAll: ((nodes at: 2) at: 17) to: (result at: 18).
+	self addAll: ((nodes at: 2) at: 18) to: (result at: 19).
+	self addAll: ((nodes at: 2) at: 19) to: (result at: 20).
+	self addAll: ((nodes at: 2) at: 20) to: (result at: 21).
+	self addAll: ((nodes at: 2) at: 21) to: (result at: 22).
+	self addAll: ((nodes at: 2) at: 22) to: (result at: 23).
+	self addAll: ((nodes at: 2) at: 23) to: (result at: 24).
+	self addAll: ((nodes at: 2) at: 24) to: (result at: 25).
+	self addAll: ((nodes at: 2) at: 25) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 26) to: (result at: 26).
+	self addAll: ((nodes at: 2) at: 27) to: (result at: 27).
+	self addAll: ((nodes at: 2) at: 28) to: (result at: 28).
+	self addAll: ((nodes at: 2) at: 29) to: (result at: 29).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForvalue_binding_pattern2: nodes [
+	| result |
+	result := Array new: 29.
+	result at: 1 put: (OrderedCollection new: 2).
+	result at: 2 put: (OrderedCollection new: 2).
+	result at: 3 put: (OrderedCollection new: 2).
+	result at: 4 put: (OrderedCollection new: 2).
+	result at: 5 put: (OrderedCollection new: 2).
+	result at: 6 put: (OrderedCollection new: 2).
+	result at: 7 put: (OrderedCollection new: 2).
+	result at: 8 put: (OrderedCollection new: 2).
+	result at: 9 put: (OrderedCollection new: 2).
+	result at: 10 put: (OrderedCollection new: 2).
+	result at: 11 put: (OrderedCollection new: 2).
+	result at: 12 put: (OrderedCollection new: 2).
+	result at: 13 put: (OrderedCollection new: 2).
+	result at: 14 put: (OrderedCollection new: 2).
+	result at: 15 put: (OrderedCollection new: 2).
+	result at: 16 put: (OrderedCollection new: 2).
+	result at: 17 put: (OrderedCollection new: 2).
+	result at: 18 put: (OrderedCollection new: 2).
+	result at: 19 put: (OrderedCollection new: 2).
+	result at: 20 put: (OrderedCollection new: 2).
+	result at: 21 put: (OrderedCollection new: 2).
+	result at: 22 put: (OrderedCollection new: 2).
+	result at: 23 put: (OrderedCollection new: 2).
+	result at: 24 put: (OrderedCollection new: 2).
+	result at: 25 put: (OrderedCollection new: 2).
+	result at: 26 put: (OrderedCollection new: 2).
+	result at: 27 put: (OrderedCollection new: 2).
+	result at: 28 put: (OrderedCollection new: 2).
+	result at: 29 put: (OrderedCollection new: 2).
+	self add: (nodes at: 1) to: (result at: 26).
+	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 7).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 8).
+	self addAll: ((nodes at: 2) at: 8) to: (result at: 9).
+	self addAll: ((nodes at: 2) at: 9) to: (result at: 10).
+	self addAll: ((nodes at: 2) at: 10) to: (result at: 11).
+	self addAll: ((nodes at: 2) at: 11) to: (result at: 12).
+	self addAll: ((nodes at: 2) at: 12) to: (result at: 13).
+	self addAll: ((nodes at: 2) at: 13) to: (result at: 14).
+	self addAll: ((nodes at: 2) at: 14) to: (result at: 15).
+	self addAll: ((nodes at: 2) at: 15) to: (result at: 16).
+	self addAll: ((nodes at: 2) at: 16) to: (result at: 17).
+	self addAll: ((nodes at: 2) at: 17) to: (result at: 18).
+	self addAll: ((nodes at: 2) at: 18) to: (result at: 19).
+	self addAll: ((nodes at: 2) at: 19) to: (result at: 20).
+	self addAll: ((nodes at: 2) at: 20) to: (result at: 21).
+	self addAll: ((nodes at: 2) at: 21) to: (result at: 22).
+	self addAll: ((nodes at: 2) at: 22) to: (result at: 23).
+	self addAll: ((nodes at: 2) at: 23) to: (result at: 24).
+	self addAll: ((nodes at: 2) at: 24) to: (result at: 25).
+	self addAll: ((nodes at: 2) at: 25) to: (result at: 1).
+	self addAll: ((nodes at: 2) at: 26) to: (result at: 26).
+	self addAll: ((nodes at: 2) at: 27) to: (result at: 27).
+	self addAll: ((nodes at: 2) at: 28) to: (result at: 28).
+	self addAll: ((nodes at: 2) at: 29) to: (result at: 29).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForvariable_declaration1: nodes [
+	| result |
+	result := SwiftVariableDeclarationNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
+	result addTokens: ((nodes at: 1) at: 13) to: result classTokens.
+	result addTokens: ((nodes at: 1) at: 14) to: result mutatingTokens.
+	result addTokens: ((nodes at: 1) at: 15) to: result nonmutatingTokens.
+	result addTokens: ((nodes at: 1) at: 16) to: result overrideTokens.
+	result addTokens: ((nodes at: 1) at: 17) to: result staticTokens.
+	result addTokens: ((nodes at: 1) at: 18) to: result unownedTokens.
+	result
+		addTokens: ((nodes at: 1) at: 19)
+		to: result unownedLeftParensafeRightParenTokens.
+	result
+		addTokens: ((nodes at: 1) at: 20)
+		to: result unownedLeftParenunsafeRightParenTokens.
+	result addTokens: ((nodes at: 1) at: 21) to: result weakTokens.
+	result varToken: ((nodes at: 1) at: 22).
+	result addNodes: ((nodes at: 2) at: 1) to: result inializers.
+	result addTokens: ((nodes at: 2) at: 2) to: result commaTokens.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForvariable_declaration2: nodes [
+	| result |
+	result := SwiftVariableDeclarationNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
+	result addTokens: ((nodes at: 1) at: 13) to: result classTokens.
+	result addTokens: ((nodes at: 1) at: 14) to: result mutatingTokens.
+	result addTokens: ((nodes at: 1) at: 15) to: result nonmutatingTokens.
+	result addTokens: ((nodes at: 1) at: 16) to: result overrideTokens.
+	result addTokens: ((nodes at: 1) at: 17) to: result staticTokens.
+	result addTokens: ((nodes at: 1) at: 18) to: result unownedTokens.
+	result
+		addTokens: ((nodes at: 1) at: 19)
+		to: result unownedLeftParensafeRightParenTokens.
+	result
+		addTokens: ((nodes at: 1) at: 20)
+		to: result unownedLeftParenunsafeRightParenTokens.
+	result addTokens: ((nodes at: 1) at: 21) to: result weakTokens.
+	result varToken: ((nodes at: 1) at: 22).
+	result addToken: (nodes at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 3) at: 1) to: result colonTokens.
+	result addTokens: ((nodes at: 3) at: 2) to: result _Tokens.
+	result addTokens: ((nodes at: 3) at: 3) to: result identifierTokens.
+	result addTokens: ((nodes at: 3) at: 4) to: result leftParenTokens.
+	result addTokens: ((nodes at: 3) at: 5) to: result rightParenTokens.
+	result addTokens: ((nodes at: 3) at: 6) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 3) at: 7) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 3) at: 8) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 3) at: 9) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 3) at: 10)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 3) at: 11)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 3) at: 12)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 3) at: 13) to: result operatorTokens.
+	result
+		addTokens: ((nodes at: 3) at: 14)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 15) to: result periodTokens.
+	result
+		addTokens: ((nodes at: 3) at: 16)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 3) at: 17) to: result bangTokens.
+	result addTokens: ((nodes at: 3) at: 18) to: result protocolTokens.
+	result addTokens: ((nodes at: 3) at: 19) to: result lessThanTokens.
+	result addTokens: ((nodes at: 3) at: 20) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 21) to: result typeTokens.
+	result addTokens: ((nodes at: 3) at: 22) to: result commaTokens.
+	result
+		addTokens: ((nodes at: 3) at: 23)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 3) at: 24) to: result inoutTokens.
+	result addNode: (nodes at: 4) to: result blocks.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForvariable_declaration3: nodes [
+	| result |
+	result := SwiftVariableDeclarationNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
+	result addTokens: ((nodes at: 1) at: 13) to: result classTokens.
+	result addTokens: ((nodes at: 1) at: 14) to: result mutatingTokens.
+	result addTokens: ((nodes at: 1) at: 15) to: result nonmutatingTokens.
+	result addTokens: ((nodes at: 1) at: 16) to: result overrideTokens.
+	result addTokens: ((nodes at: 1) at: 17) to: result staticTokens.
+	result addTokens: ((nodes at: 1) at: 18) to: result unownedTokens.
+	result
+		addTokens: ((nodes at: 1) at: 19)
+		to: result unownedLeftParensafeRightParenTokens.
+	result
+		addTokens: ((nodes at: 1) at: 20)
+		to: result unownedLeftParenunsafeRightParenTokens.
+	result addTokens: ((nodes at: 1) at: 21) to: result weakTokens.
+	result varToken: ((nodes at: 1) at: 22).
+	result addToken: (nodes at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 3) at: 1) to: result colonTokens.
+	result addTokens: ((nodes at: 3) at: 2) to: result _Tokens.
+	result addTokens: ((nodes at: 3) at: 3) to: result identifierTokens.
+	result addTokens: ((nodes at: 3) at: 4) to: result leftParenTokens.
+	result addTokens: ((nodes at: 3) at: 5) to: result rightParenTokens.
+	result addTokens: ((nodes at: 3) at: 6) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 3) at: 7) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 3) at: 8) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 3) at: 9) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 3) at: 10)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 3) at: 11)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 3) at: 12)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 3) at: 13) to: result operatorTokens.
+	result
+		addTokens: ((nodes at: 3) at: 14)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 15) to: result periodTokens.
+	result
+		addTokens: ((nodes at: 3) at: 16)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 3) at: 17) to: result bangTokens.
+	result addTokens: ((nodes at: 3) at: 18) to: result protocolTokens.
+	result addTokens: ((nodes at: 3) at: 19) to: result lessThanTokens.
+	result addTokens: ((nodes at: 3) at: 20) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 21) to: result typeTokens.
+	result addTokens: ((nodes at: 3) at: 22) to: result commaTokens.
+	result
+		addTokens: ((nodes at: 3) at: 23)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 3) at: 24) to: result inoutTokens.
+	result addTokens: ((nodes at: 4) at: 1) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 4) at: 2) to: result _Tokens.
+	result addTokens: ((nodes at: 4) at: 3) to: result identifierTokens.
+	result addTokens: ((nodes at: 4) at: 4) to: result leftParenTokens.
+	result addTokens: ((nodes at: 4) at: 5) to: result rightParenTokens.
+	result addTokens: ((nodes at: 4) at: 6) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 4) at: 7) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 4) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 4) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 4) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 4) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 4) at: 12) to: result operatorTokens.
+	result getToken: ((nodes at: 4) at: 13).
+	result addNodes: ((nodes at: 4) at: 14) to: result blocks.
+	result setToken: ((nodes at: 4) at: 15).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForvariable_declaration4: nodes [
+	| result |
+	result := SwiftVariableDeclarationNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
+	result addTokens: ((nodes at: 1) at: 13) to: result classTokens.
+	result addTokens: ((nodes at: 1) at: 14) to: result mutatingTokens.
+	result addTokens: ((nodes at: 1) at: 15) to: result nonmutatingTokens.
+	result addTokens: ((nodes at: 1) at: 16) to: result overrideTokens.
+	result addTokens: ((nodes at: 1) at: 17) to: result staticTokens.
+	result addTokens: ((nodes at: 1) at: 18) to: result unownedTokens.
+	result
+		addTokens: ((nodes at: 1) at: 19)
+		to: result unownedLeftParensafeRightParenTokens.
+	result
+		addTokens: ((nodes at: 1) at: 20)
+		to: result unownedLeftParenunsafeRightParenTokens.
+	result addTokens: ((nodes at: 1) at: 21) to: result weakTokens.
+	result varToken: ((nodes at: 1) at: 22).
+	result addToken: (nodes at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 3) at: 1) to: result colonTokens.
+	result addTokens: ((nodes at: 3) at: 2) to: result _Tokens.
+	result addTokens: ((nodes at: 3) at: 3) to: result identifierTokens.
+	result addTokens: ((nodes at: 3) at: 4) to: result leftParenTokens.
+	result addTokens: ((nodes at: 3) at: 5) to: result rightParenTokens.
+	result addTokens: ((nodes at: 3) at: 6) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 3) at: 7) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 3) at: 8) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 3) at: 9) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 3) at: 10)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 3) at: 11)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 3) at: 12)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 3) at: 13) to: result operatorTokens.
+	result
+		addTokens: ((nodes at: 3) at: 14)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 15) to: result periodTokens.
+	result
+		addTokens: ((nodes at: 3) at: 16)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 3) at: 17) to: result bangTokens.
+	result addTokens: ((nodes at: 3) at: 18) to: result protocolTokens.
+	result addTokens: ((nodes at: 3) at: 19) to: result lessThanTokens.
+	result addTokens: ((nodes at: 3) at: 20) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 21) to: result typeTokens.
+	result addTokens: ((nodes at: 3) at: 22) to: result commaTokens.
+	result
+		addTokens: ((nodes at: 3) at: 23)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 3) at: 24) to: result inoutTokens.
+	result addTokens: ((nodes at: 4) at: 1) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 4) at: 2) to: result _Tokens.
+	result addTokens: ((nodes at: 4) at: 3) to: result identifierTokens.
+	result addTokens: ((nodes at: 4) at: 4) to: result leftParenTokens.
+	result addTokens: ((nodes at: 4) at: 5) to: result rightParenTokens.
+	result addTokens: ((nodes at: 4) at: 6) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 4) at: 7) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 4) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 4) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 4) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 4) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 4) at: 12) to: result operatorTokens.
+	result getToken: ((nodes at: 4) at: 13).
+	result setToken: ((nodes at: 4) at: 14).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForvariable_declaration5: nodes [
+	| result |
+	result := SwiftVariableDeclarationNode new.
+	result addTokens: ((nodes at: 1) at: 1) to: result _Tokens.
+	result addTokens: ((nodes at: 1) at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 1) at: 3) to: result leftParenTokens.
+	result addTokens: ((nodes at: 1) at: 4) to: result rightParenTokens.
+	result addTokens: ((nodes at: 1) at: 5) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 1) at: 6) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 1) at: 7) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 1) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 1) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 1) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 1) at: 12) to: result operatorTokens.
+	result addTokens: ((nodes at: 1) at: 13) to: result classTokens.
+	result addTokens: ((nodes at: 1) at: 14) to: result mutatingTokens.
+	result addTokens: ((nodes at: 1) at: 15) to: result nonmutatingTokens.
+	result addTokens: ((nodes at: 1) at: 16) to: result overrideTokens.
+	result addTokens: ((nodes at: 1) at: 17) to: result staticTokens.
+	result addTokens: ((nodes at: 1) at: 18) to: result unownedTokens.
+	result
+		addTokens: ((nodes at: 1) at: 19)
+		to: result unownedLeftParensafeRightParenTokens.
+	result
+		addTokens: ((nodes at: 1) at: 20)
+		to: result unownedLeftParenunsafeRightParenTokens.
+	result addTokens: ((nodes at: 1) at: 21) to: result weakTokens.
+	result varToken: ((nodes at: 1) at: 22).
+	result addToken: (nodes at: 2) to: result identifierTokens.
+	result addTokens: ((nodes at: 3) at: 1) to: result colonTokens.
+	result addTokens: ((nodes at: 3) at: 2) to: result _Tokens.
+	result addTokens: ((nodes at: 3) at: 3) to: result identifierTokens.
+	result addTokens: ((nodes at: 3) at: 4) to: result leftParenTokens.
+	result addTokens: ((nodes at: 3) at: 5) to: result rightParenTokens.
+	result addTokens: ((nodes at: 3) at: 6) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 3) at: 7) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 3) at: 8) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 3) at: 9) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 3) at: 10)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 3) at: 11)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 3) at: 12)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 3) at: 13) to: result operatorTokens.
+	result
+		addTokens: ((nodes at: 3) at: 14)
+		to: result minusGreaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 15) to: result periodTokens.
+	result
+		addTokens: ((nodes at: 3) at: 16)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 3) at: 17) to: result bangTokens.
+	result addTokens: ((nodes at: 3) at: 18) to: result protocolTokens.
+	result addTokens: ((nodes at: 3) at: 19) to: result lessThanTokens.
+	result addTokens: ((nodes at: 3) at: 20) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 21) to: result typeTokens.
+	result addTokens: ((nodes at: 3) at: 22) to: result commaTokens.
+	result
+		addTokens: ((nodes at: 3) at: 23)
+		to: result periodPeriodPeriodTokens.
+	result addTokens: ((nodes at: 3) at: 24) to: result inoutTokens.
+	result equalToken: ((nodes at: 4) at: 1).
+	result expression: ((nodes at: 4) at: 2).
+	result addTokens: ((nodes at: 5) at: 1) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 5) at: 2) to: result _Tokens.
+	result addTokens: ((nodes at: 5) at: 3) to: result identifierTokens.
+	result addTokens: ((nodes at: 5) at: 4) to: result leftParenTokens.
+	result addTokens: ((nodes at: 5) at: 5) to: result rightParenTokens.
+	result addTokens: ((nodes at: 5) at: 6) to: result leftBracketTokens.
+	result addTokens: ((nodes at: 5) at: 7) to: result rightBracketTokens.
+	result addTokens: ((nodes at: 5) at: 8) to: result rightBraceTokens.
+	result
+		addTokens: ((nodes at: 5) at: 9)
+		to: result integer_literalTokens.
+	result
+		addTokens: ((nodes at: 5) at: 10)
+		to: result floating_point_literalTokens.
+	result
+		addTokens: ((nodes at: 5) at: 11)
+		to: result full_string_literalTokens.
+	result addTokens: ((nodes at: 5) at: 12) to: result operatorTokens.
+	result willSetToken: ((nodes at: 5) at: 13).
+	result addNodes: ((nodes at: 5) at: 14) to: result blocks.
+	result didSetToken: ((nodes at: 5) at: 15).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForwhile_statement1: nodes [
+	| result |
+	result := SwiftWhileStatementNode new.
+	result whileToken: (nodes at: 1).
+	result expression: (nodes at: 2).
+	result block: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+SwiftParser >> reduceActionForwildcard_expression1: nodes [
+	| result |
+	result := SwiftWildcardExpressionNode new.
+	result _Token: (nodes at: 1).
+	^ result
 ]

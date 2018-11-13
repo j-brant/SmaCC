@@ -118,7 +118,7 @@ SwiftFunctionDeclarationNode >> commaTokens: anOrderedCollection [
 
 { #category : #generated }
 SwiftFunctionDeclarationNode >> compositeTokenVariables [
-	^ #(#_Tokens #identifierTokens #leftParenTokens #rightParenTokens #leftBracketTokens #rightBracketTokens #leftBraceTokens #rightBraceTokens #integer_literalTokens #floating_point_literalTokens #full_string_literalTokens #operatorTokens #classTokens #mutatingTokens #nonmutatingTokens #overrideTokens #staticTokens #unownedTokens #unownedLeftParensafeRightParenTokens #unownedLeftParenunsafeRightParenTokens #weakTokens #lessThanTokens #colonTokens #greaterThanTokens #commaTokens #periodTokens #protocolTokens #equalEqualTokens #periodPeriodPeriodTokens #varTokens #inoutTokens #letTokens #equalTokens #minusGreaterThanTokens #questionMarkTokens #bangTokens #typeTokens)
+	^ #(#_Tokens #identifierTokens #leftParenTokens #rightParenTokens #leftBracketTokens #rightBracketTokens #leftBraceTokens #rightBraceTokens #integer_literalTokens #floating_point_literalTokens #full_string_literalTokens #operatorTokens #classTokens #mutatingTokens #nonmutatingTokens #overrideTokens #staticTokens #unownedTokens #unownedLeftParensafeRightParenTokens #unownedLeftParenunsafeRightParenTokens #weakTokens #lessThanTokens #colonTokens #commaTokens #greaterThanTokens #periodTokens #protocolTokens #equalEqualTokens #varTokens #periodPeriodPeriodTokens #inoutTokens #letTokens #equalTokens #minusGreaterThanTokens #questionMarkTokens #bangTokens #typeTokens)
 ]
 
 { #category : #generated }
@@ -227,13 +227,13 @@ SwiftFunctionDeclarationNode >> initialize [
 	weakTokens := OrderedCollection new: 2.
 	lessThanTokens := OrderedCollection new: 2.
 	colonTokens := OrderedCollection new: 2.
-	greaterThanTokens := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
+	greaterThanTokens := OrderedCollection new: 2.
 	periodTokens := OrderedCollection new: 2.
 	protocolTokens := OrderedCollection new: 2.
 	equalEqualTokens := OrderedCollection new: 2.
-	periodPeriodPeriodTokens := OrderedCollection new: 2.
 	varTokens := OrderedCollection new: 2.
+	periodPeriodPeriodTokens := OrderedCollection new: 2.
 	inoutTokens := OrderedCollection new: 2.
 	letTokens := OrderedCollection new: 2.
 	equalTokens := OrderedCollection new: 2.

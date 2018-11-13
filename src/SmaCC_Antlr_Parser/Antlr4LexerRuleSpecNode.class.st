@@ -98,5 +98,5 @@ Antlr4LexerRuleSpecNode >> semicolon: aSmaCCToken [
 
 { #category : #generated }
 Antlr4LexerRuleSpecNode >> tokenVariables [
-	^ #(#modifier #nameToken #colon #semicolon)
+	^ #(#nameToken #colon #semicolon #modifier)
 ]

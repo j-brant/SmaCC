@@ -506,7 +506,7 @@ SmaCCSmalltalkCodeGenerator >> compileSymbolTypes: anArray [
 		nextPutLine: (self method: 'symbolTypes' type: self arrayType);
 		nextPutStatement: (self return: anArray storeString);
 		endMethod;
-		compileMethodIn: self parserClass
+		compileMethodIn: self parserClass theMetaClass
 ]
 
 { #category : #'compiling-nodes' }

@@ -52,6 +52,18 @@ SmaCCError >> dismissedTokens: tokenCollection [
 	dismissedTokens := tokenCollection
 ]
 
+{ #category : #errors }
+SmaCCError >> doesNotUnderstand: aMessage [
+	"Hack to handle reduce action steps that add parens (or other items) to pulled up nodes. 
+	Probably should validate that we are inside a reduce action."
+
+	aMessage arguments isEmpty
+		ifTrue: [ ^ (self attributeNamed: #nodeProperties ifAbsentPut: [ Dictionary new ])
+				at: aMessage selector
+				ifAbsentPut: [ OrderedCollection new ] ].
+	super doesNotUnderstand: aMessage
+]
+
 { #category : #private }
 SmaCCError >> errorComponentsDo: aBlock [
 	self nodesAndTokensIn: stackContents do: aBlock.

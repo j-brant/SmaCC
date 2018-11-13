@@ -356,7 +356,7 @@ SmaCCCodeGenerator >> compileAmbiguousTransitions [
 				type: self unsignedShortArrayArray);
 		nextPutStatement: (self return: stream contents);
 		endMethod;
-		compileMethodWithoutFormattingIn: parserClass
+		compileMethodWithoutFormattingIn: parserClass theMetaClass
 ]
 
 { #category : #'compiling-parser' }
@@ -566,7 +566,7 @@ SmaCCCodeGenerator >> compileReductionTable: reductionTable [
 		nextPutLine: (self method: 'reduceTable' type: self reduceActionArrayType);
 		nextPutStatement: (self return: stream contents);
 		endMethod;
-		compileMethodWithoutFormattingIn: parserClass
+		compileMethodWithoutFormattingIn: parserClass theMetaClass
 ]
 
 { #category : #compiling }
@@ -611,7 +611,7 @@ SmaCCCodeGenerator >> compileSymbolNames: anArray [
 		nextPutLine: (self method: 'symbolNames' type: self arrayType);
 		nextPutStatement: (self return: anArray storeString);
 		endMethod;
-		compileMethodIn: self parserClass
+		compileMethodIn: self parserClass theMetaClass
 ]
 
 { #category : #'compiling-parser' }
@@ -663,7 +663,7 @@ SmaCCCodeGenerator >> compileTransitionTable: transitionTable [
 		nextPutLine: (self method: 'transitionTable' type: self unsignedShortArrayArray);
 		nextPutStatement: (self return: stream contents);
 		endMethod;
-		compileMethodWithoutFormattingIn: parserClass.
+		compileMethodWithoutFormattingIn: parserClass theMetaClass.
 	self compileAmbiguousTransitions
 ]
 

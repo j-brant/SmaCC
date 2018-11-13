@@ -73,12 +73,12 @@ Antlr4Scanner >> canParse: aString [
 
 { #category : #generated }
 Antlr4Scanner >> emptySymbolTokenId [
-	^ 178
+	^ 151
 ]
 
 { #category : #generated }
 Antlr4Scanner >> errorTokenId [
-	^ 179
+	^ 152
 ]
 
 { #category : #generated }

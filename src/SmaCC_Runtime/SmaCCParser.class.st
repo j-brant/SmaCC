@@ -23,7 +23,8 @@ Class {
 		'currentToken',
 		'errorToken',
 		'stateStack',
-		'nodeStack'
+		'nodeStack',
+		'errorHandler'
 	],
 	#classInstVars : [
 		'cacheId',
@@ -31,6 +32,11 @@ Class {
 	],
 	#category : #'SmaCC_Runtime'
 }
+
+{ #category : #accessing }
+SmaCCParser class >> ambiguousTransitions [
+	^ #()
+]
 
 { #category : #caching }
 SmaCCParser class >> cacheId [
@@ -179,7 +185,19 @@ SmaCCParser class >> parseStream: aStream startingAt: anInteger onError: aBlock 
 
 { #category : #parsing }
 SmaCCParser class >> parseWithErrors: aString [
-	^ [ self parse: aString ]
+	^ self parseWithErrors: aString startingAt: self defaultStartingState
+]
+
+{ #category : #parsing }
+SmaCCParser class >> parseWithErrors: aString startingAt: anInteger [
+	^ [ | parser value |
+	parser := self on: (ReadStream on: aString).
+	parser setStartingState: anInteger.
+	parser createDefaultErrorHandlers.
+	value := parser parse.
+	(value isKindOf: SmaCCParseNode)
+		ifTrue: [ value completeSource: aString ].
+	^ value ]
 		on: SmaCCParserError
 		do: [ :ex | 
 			ex isResumable
@@ -187,14 +205,9 @@ SmaCCParser class >> parseWithErrors: aString [
 				ifFalse: [ ex signal ] ]
 ]
 
-{ #category : #parsing }
-SmaCCParser class >> parseWithErrors: aString startingAt: anInteger [
-	^ [ self parse: aString startingAt: anInteger ]
-		on: SmaCCParserError
-		do: [ :ex | 
-			ex isResumable
-				ifTrue: [ ex resume ]
-				ifFalse: [ ex signal ] ]
+{ #category : #accessing }
+SmaCCParser class >> reduceTable [
+	^ self subclassResponsibility
 ]
 
 { #category : #caching }
@@ -223,17 +236,32 @@ SmaCCParser class >> setEncodingOn: aStream [
 	self setEncoding: nil on: aStream
 ]
 
-{ #category : #private }
+{ #category : #accessing }
+SmaCCParser class >> symbolNames [
+	^ #()
+]
+
+{ #category : #accessing }
+SmaCCParser class >> symbolTypes [
+	^ #()
+]
+
+{ #category : #accessing }
+SmaCCParser class >> transitionTable [
+	^ self subclassResponsibility
+]
+
+{ #category : #'private-actions' }
 SmaCCParser >> acceptAction [
 	^ 0
 ]
 
-{ #category : #private }
+{ #category : #'private-actions' }
 SmaCCParser >> actionFor: aSymbolIndex [
 	^ self actionForState: self currentState and: aSymbolIndex
 ]
 
-{ #category : #private }
+{ #category : #'private-actions' }
 SmaCCParser >> actionForCurrentToken [
 	self tryAllTokens
 		ifTrue:
@@ -248,7 +276,7 @@ SmaCCParser >> actionForCurrentToken [
 		ifFalse: [ ^ self actionFor: currentToken ids first ]
 ]
 
-{ #category : #private }
+{ #category : #'private-actions' }
 SmaCCParser >> actionForState: stateIndex and: aSymbolIndex [
 	| index row |
 	row := self transitionTable at: stateIndex.
@@ -266,9 +294,20 @@ SmaCCParser >> actionForState: stateIndex and: aSymbolIndex [
 						+ (row at: index - 1) ] ]
 ]
 
-{ #category : #private }
+{ #category : #'private-actions' }
 SmaCCParser >> actionMask [
 	^ 2r11
+]
+
+{ #category : #'private-actions' }
+SmaCCParser >> actionsAndSymbolsForState: stateIndex do: aBlock [
+	| action bytes |
+	bytes := self transitionTable at: stateIndex.
+	(bytes at: 1) = 0
+		ifTrue: [ action := ((bytes at: 2) bitShift: 8) + (bytes at: 3).
+			4 to: bytes size by: 2 do: [ :i | aBlock value: action value: ((bytes at: i) bitShift: 8) + (bytes at: i + 1) ] ]
+		ifFalse: [ 2 to: bytes size by: 4 do:
+				[ :i | aBlock value: ((bytes at: i) bitShift: 8) + (bytes at: i + 1) value: ((bytes at: i + 2) bitShift: 8) + (bytes at: i + 3) ] ]
 ]
 
 { #category : #'error handling' }
@@ -276,14 +315,14 @@ SmaCCParser >> actionsForState: stateIndex and: aSymbolIndex [
 	^ Array with: (self actionForState: stateIndex and: aSymbolIndex)
 ]
 
-{ #category : #private }
+{ #category : #'private-ast' }
 SmaCCParser >> add: anObject to: aCollection [
 	anObject isNil
 		ifTrue: [ ^ self ].
 	aCollection add: anObject
 ]
 
-{ #category : #private }
+{ #category : #'private-ast' }
 SmaCCParser >> addAll: origCollection to: aCollection [
 	origCollection isNil
 		ifTrue: [ ^ self ].
@@ -293,16 +332,33 @@ SmaCCParser >> addAll: origCollection to: aCollection [
 				ifTrue: [ aCollection add: each ] ]
 ]
 
-{ #category : #private }
+{ #category : #'private-ast' }
 SmaCCParser >> addAllFirst: origCollection to: aCollection [
 	origCollection isNil ifTrue: [^self].
 	origCollection reverseDo: [:each | each notNil ifTrue: [aCollection addFirst: each]]
 ]
 
-{ #category : #private }
+{ #category : #'private-ast' }
 SmaCCParser >> addFirst: anObject to: aCollection [
 	anObject isNil ifTrue: [^self].
 	aCollection addFirst: anObject
+]
+
+{ #category : #'private-actions' }
+SmaCCParser >> allActionsAndSymbolsForState: stateIndex do: aBlock [
+	self
+		actionsAndSymbolsForState: stateIndex
+		do: [ :action :symbol | 
+			| row |
+			(action bitAnd: self actionMask) = 2r11
+				ifTrue: [ row := self ambiguousTransitions at: (action bitShift: -2).
+					1 to: row size by: 2 do: [ :i | aBlock value: ((row at: i) bitShift: 8) + (row at: i + 1) value: symbol ] ]
+				ifFalse: [ aBlock value: action value: symbol ] ]
+]
+
+{ #category : #private }
+SmaCCParser >> ambiguousTransitions [
+	^ self class ambiguousTransitions
 ]
 
 { #category : #private }
@@ -342,6 +398,14 @@ SmaCCParser >> checkForErrors [
 	self reportErrorMessage: 'Token not expected' resumable: true
 ]
 
+{ #category : #'initialize-release' }
+SmaCCParser >> createDefaultErrorHandlers [
+	(self hasStateThatShifts: self errorTokenId)
+		ifTrue: [ errorHandler := SmaCCSpecificErrorNodeHandler on: self ]
+		ifFalse: [ self hasNodeTypes
+				ifTrue: [ errorHandler := SmaCCDefaultErrorNodeHandler on: self ] ]
+]
+
 { #category : #private }
 SmaCCParser >> currentState [
 	^ stateStack last
@@ -376,21 +440,21 @@ SmaCCParser >> emptySymbolTokenId [
 	^ scanner emptySymbolTokenId
 ]
 
-{ #category : #private }
+{ #category : #'private-actions' }
 SmaCCParser >> errorAction [
 	^ 3
 ]
 
 { #category : #'error handling' }
-SmaCCParser >> errorHandlerStates [
-	^ stateStack
-		collect: [ :each | 
-			| actions action |
-			actions := self actionsForState: each and: self errorTokenId.
-			action := actions detect: [ :act | (act bitAnd: self actionMask) = self shiftAction ] ifNone: [ 0 ].
-			(action bitAnd: self actionMask) = self shiftAction
-				ifTrue: [ action bitShift: -2 ]
-				ifFalse: [ 0 ] ]
+SmaCCParser >> errorSymbolShiftActionsForState: stateIndex [
+	| action actions |
+	actions := self actionsForState: stateIndex and: self errorTokenId.
+	action := actions
+		detect: [ :act | (act bitAnd: self actionMask) = self shiftAction ]
+		ifNone: [ 0 ].
+	^ (action bitAnd: self actionMask) = self shiftAction
+		ifTrue: [ action bitShift: -2 ]
+		ifFalse: [ 0 ]
 ]
 
 { #category : #accessing }
@@ -403,38 +467,16 @@ SmaCCParser >> errorToken [
 	^ errorToken
 ]
 
+{ #category : #'error handling' }
+SmaCCParser >> errorToken: aSmaCCToken [
+	errorToken notNil
+		ifTrue: [ ^ self ].
+	errorToken := aSmaCCToken
+]
+
 { #category : #accessing }
 SmaCCParser >> errorTokenId [
 	^ scanner errorTokenId
-]
-
-{ #category : #'error handling' }
-SmaCCParser >> findErrorHandlerIfNoneUseErrorNumber: anInteger [
-	| handlerStates index startingErrorToken stackContents dismissedTokens |
-	dismissedTokens := OrderedCollection new.
-	handlerStates := self errorHandlerStates reverse.
-	startingErrorToken := currentToken.
-	[ index := (1 to: handlerStates size)
-		detect: [ :each | 
-			| state newStack |
-			state := handlerStates at: each.
-			state ~= 0
-				and: [ self isEOFToken
-						or: [ newStack := stateStack copyFrom: 1 to: handlerStates size - each + 1.
-							newStack addLast: state.
-							self willShift: newStack ] ] ]
-		ifNone: [ nil ].
-	index isNil ] whileTrue: [ dismissedTokens add: self dismissErrorToken ].
-	stackContents := self dismissStackTopForErrorRecovery: index - 1.
-	stateStack addLast: (handlerStates at: index).
-	nodeStack
-		addLast:
-			(SmaCCError new
-				stackContents: stackContents;
-				dismissedTokens: dismissedTokens;
-				errorToken: startingErrorToken;
-				yourself).
-	^ true
 ]
 
 { #category : #private }
@@ -445,28 +487,37 @@ SmaCCParser >> getNextToken [
 
 { #category : #'error handling' }
 SmaCCParser >> handleError: anInteger [
-	errorToken isNil
-		ifTrue: [ errorToken := currentToken ].
-	self performErrorReductions.
-	(self isEOFToken or: [ self hasErrorHandler not ])
-		ifTrue: [ self reportError: anInteger ].
-	^ self findErrorHandlerIfNoneUseErrorNumber: anInteger
+	^ errorHandler handleError: anInteger
 ]
 
-{ #category : #'error handling' }
-SmaCCParser >> hasErrorHandler [
-	^ self errorHandlerStates anySatisfy: [ :each | each ~~ 0 ]
+{ #category : #testing }
+SmaCCParser >> hasNodeTypes [
+	^ self symbolTypes anySatisfy: [ :each | self isNodeType: each ]
+]
+
+{ #category : #testing }
+SmaCCParser >> hasStateThatShifts: symbolIndex [
+	1 to: self transitionTable size do: [ :i | 
+		((self actionsForState: i and: symbolIndex) anySatisfy: [ :action | (action bitAnd: self actionMask) = self shiftAction ])
+			ifTrue: [ ^ true ] ].
+	^ false
 ]
 
 { #category : #'initialize-release' }
 SmaCCParser >> initialize [
 	super initialize.
-	nodeStack := OrderedCollection new
+	nodeStack := OrderedCollection new.
+	errorHandler := SmaCCNoErrorHandler on: self
 ]
 
 { #category : #testing }
 SmaCCParser >> isEOFToken [
 	^ currentToken ids first = self emptySymbolTokenId
+]
+
+{ #category : #testing }
+SmaCCParser >> isNodeType: aSymbol [
+	^ (Smalltalk at: aSymbol ifAbsent: [ Object ]) includesBehavior: SmaCCParseNode
 ]
 
 { #category : #'standard reduction rules' }
@@ -505,7 +556,7 @@ SmaCCParser >> parse [
 	^ result
 ]
 
-{ #category : #private }
+{ #category : #'private-actions' }
 SmaCCParser >> performAction: action [
 	| value actionType |
 	actionType := action bitAnd: self actionMask.
@@ -516,14 +567,6 @@ SmaCCParser >> performAction: action [
 			[ actionType == self reduceAction
 				ifTrue: [ self reduce: value ]
 				ifFalse: [ self handleError: value ] ]
-]
-
-{ #category : #'error handling' }
-SmaCCParser >> performErrorReductions [
-	| action actions |
-	[ actions := self actionsForState: stateStack last and: self errorTokenId.
-	action := actions detect: [ :each | (each bitAnd: self actionMask) = self reduceAction ] ifNone: [ 0 ].
-	(action bitAnd: self actionMask) == self reduceAction ] whileTrue: [ self reduce: (action bitShift: -2) ]
 ]
 
 { #category : #private }
@@ -560,7 +603,7 @@ SmaCCParser >> position: anInteger [
 	scanner setPosition: anInteger
 ]
 
-{ #category : #private }
+{ #category : #'private-actions' }
 SmaCCParser >> reduce: anInteger [
 	| reduceEntry items size |
 	reduceEntry := self reduceTable at: anInteger.
@@ -575,12 +618,12 @@ SmaCCParser >> reduce: anInteger [
 		addLast: ((self actionFor: (reduceEntry at: 1)) bitShift: -2)
 ]
 
-{ #category : #private }
+{ #category : #'private-actions' }
 SmaCCParser >> reduceAction [
 	^ 2r10
 ]
 
-{ #category : #private }
+{ #category : #'private-actions' }
 SmaCCParser >> reduceFor: aCollection [
 	| newCollection item |
 	(aCollection allSatisfy: [ :each | each class ~~ OrderedCollection ])
@@ -607,7 +650,7 @@ SmaCCParser >> reduceFor: aCollection [
 
 { #category : #accessing }
 SmaCCParser >> reduceTable [
-	^ self subclassResponsibility
+	^ self class reduceTable
 ]
 
 { #category : #'error handling' }
@@ -664,14 +707,14 @@ SmaCCParser >> setStartingState: startingState [
 	stateStack := OrderedCollection with: startingState
 ]
 
-{ #category : #private }
+{ #category : #'private-actions' }
 SmaCCParser >> shift: stateIndex [
 	stateStack addLast: stateIndex.
 	nodeStack addLast: currentToken.
 	currentToken := nil
 ]
 
-{ #category : #private }
+{ #category : #'private-actions' }
 SmaCCParser >> shiftAction [
 	^ 2r01
 ]
@@ -688,17 +731,17 @@ SmaCCParser >> stringValue: anOrderedCollection [
 
 { #category : #accessing }
 SmaCCParser >> symbolNames [
-	^ #()
+	^ self class symbolNames
 ]
 
 { #category : #accessing }
 SmaCCParser >> symbolTypes [
-	^ #()
+	^ self class symbolTypes
 ]
 
 { #category : #accessing }
 SmaCCParser >> transitionTable [
-	^ self subclassResponsibility
+	^ self class transitionTable
 ]
 
 { #category : #testing }
@@ -707,24 +750,33 @@ SmaCCParser >> tryAllTokens [
 ]
 
 { #category : #'error handling' }
+SmaCCParser >> willAccept: potentialStateStack [
+	| action compoundAction reduceEntry size |
+	compoundAction := self actionForState: potentialStateStack last and: self emptySymbolTokenId.
+	action := compoundAction bitAnd: self actionMask.
+	action == self acceptAction
+		ifTrue: [ ^ true ].
+	action == self reduceAction
+		ifTrue: [ reduceEntry := self reduceTable at: (compoundAction bitShift: -2).
+			size := reduceEntry at: 2.
+			size timesRepeat: [ potentialStateStack removeLast ].
+			potentialStateStack add: ((self actionForState: potentialStateStack last and: (reduceEntry at: 1)) bitShift: -2).
+			^ self willAccept: potentialStateStack ].
+	^ false
+]
+
+{ #category : #'error handling' }
 SmaCCParser >> willShift: potentialStateStack [
 	| action compoundAction reduceEntry size |
-	compoundAction := self
-		actionForState: potentialStateStack last
-		and: currentToken ids first.
+	compoundAction := self actionForState: potentialStateStack last and: currentToken ids first.
 	action := compoundAction bitAnd: self actionMask.
 	action == self shiftAction
 		ifTrue: [ ^ true ].
 	action == self reduceAction
-		ifTrue:
-			[ reduceEntry := self reduceTable at: (compoundAction bitShift: -2).
+		ifTrue: [ reduceEntry := self reduceTable at: (compoundAction bitShift: -2).
 			size := reduceEntry at: 2.
 			size timesRepeat: [ potentialStateStack removeLast ].
-			potentialStateStack
-				add:
-					((self
-						actionForState: potentialStateStack last
-						and: (reduceEntry at: 1)) bitShift: -2).
+			potentialStateStack add: ((self actionForState: potentialStateStack last and: (reduceEntry at: 1)) bitShift: -2).
 			^ self willShift: potentialStateStack ].
 	^ false
 ]
