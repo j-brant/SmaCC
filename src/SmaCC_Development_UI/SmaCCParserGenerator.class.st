@@ -10,7 +10,6 @@ Class {
 		'testModel',
 		'parserClassName',
 		'scannerClassName',
-		'type',
 		'allowUnicode',
 		'codeGeneratorType',
 		'savedDefinition',
@@ -78,7 +77,7 @@ SmaCCParserGenerator >> codeGeneratorClasses [
 
 { #category : #actions }
 SmaCCParserGenerator >> compile [
-	^ self compile: type
+	^self compile: #LALR1
 ]
 
 { #category : #private }
@@ -217,7 +216,6 @@ SmaCCParserGenerator >> findParserClass [
 { #category : #initialization }
 SmaCCParserGenerator >> initialize [
 	allowUnicode := false.
-	type := #LALR1.
 	parserClassName := ''.
 	scannerClassName := ''.
 	codeGeneratorType := #Smalltalk.
@@ -264,16 +262,6 @@ SmaCCParserGenerator >> initializeWidgets [
 	self initializeMenubar.
 	self updateOptionsMenu.
 	self updateViewMenu
-]
-
-{ #category : #testing }
-SmaCCParserGenerator >> isLALR1 [
-	^ type = #LALR1
-]
-
-{ #category : #testing }
-SmaCCParserGenerator >> isLR1 [
-	^ type = #LR1
 ]
 
 { #category : #private }
@@ -363,21 +351,7 @@ SmaCCParserGenerator >> optionsMenu [
 					item
 						autoRefresh: true;
 						name: 'Optimize Transition Table';
-						action: [ self toggleOptimizeTransitionTable ] ] ];
-		addGroup: [ :group | 
-			group
-				addItem: [ :item | 
-					menuItems at: #setLALR1 put: item.
-					item
-						autoRefresh: true;
-						name: 'LALR(1)';
-						action: [ self setLALR1 ] ];
-				addItem: [ :item | 
-					menuItems at: #setLR1 put: item.
-					item
-						autoRefresh: true;
-						name: 'LR(1)';
-						action: [ self setLR1 ] ] ]
+						action: [ self toggleOptimizeTransitionTable ] ] ]
 ]
 
 { #category : #actions }
@@ -444,18 +418,6 @@ SmaCCParserGenerator >> scannerClassName: aString [
 { #category : #actions }
 SmaCCParserGenerator >> setCodeGenerator: aSymbol [
 	codeGeneratorType := aSymbol
-]
-
-{ #category : #actions }
-SmaCCParserGenerator >> setLALR1 [
-	type := #LALR1.
-	self updateOptionsMenu
-]
-
-{ #category : #actions }
-SmaCCParserGenerator >> setLR1 [
-	type := #LR1.
-	self updateOptionsMenu
 ]
 
 { #category : #actions }
@@ -546,11 +508,6 @@ SmaCCParserGenerator >> toggleOptimizeTransitionTable [
 	self updateOptionsMenu
 ]
 
-{ #category : #actions }
-SmaCCParserGenerator >> type [
-	^ type
-]
-
 { #category : #private }
 SmaCCParserGenerator >> updateDefinitionFor: parserClass [
 	| scannerClass |
@@ -596,9 +553,7 @@ SmaCCParserGenerator >> updateOptionsMenu [
 						ifTrue: [ '' ]
 						ifFalse: [ ' (' , parserClassName , ')' ]) , '...'.
 	self updateMenuItem: #useUnicode checked: self isUnicode.
-	self updateMenuItem: #optimizeTransitionTable checked: SmaCCGrammarCompiler optimizeTransitionTable.
-	self updateMenuItem: #setLALR1 checked: self isLALR1.
-	self updateMenuItem: #setLR1 checked: self isLR1
+	self updateMenuItem: #optimizeTransitionTable checked: SmaCCGrammarCompiler optimizeTransitionTable
 ]
 
 { #category : #private }
