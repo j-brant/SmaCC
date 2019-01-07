@@ -91,7 +91,7 @@ JavaProgramNodeVisitor >> visitByteType: aByteType [
 
 { #category : #generated }
 JavaProgramNodeVisitor >> visitCastExpression: aCastExpression [
-	^ self visitExpression: aCastExpression
+	^ self visitUnaryExpression: aCastExpression
 ]
 
 { #category : #generated }
@@ -376,22 +376,22 @@ JavaProgramNodeVisitor >> visitParameter: aParameter [
 
 { #category : #generated }
 JavaProgramNodeVisitor >> visitPostDecrementExpression: aPostDecrementExpression [
-	^ self visitExpression: aPostDecrementExpression
+	^ self visitUnaryExpression: aPostDecrementExpression
 ]
 
 { #category : #generated }
 JavaProgramNodeVisitor >> visitPostIncrementExpression: aPostIncrementExpression [
-	^ self visitExpression: aPostIncrementExpression
+	^ self visitUnaryExpression: aPostIncrementExpression
 ]
 
 { #category : #generated }
 JavaProgramNodeVisitor >> visitPreDecrementExpression: aPreDecrementExpression [
-	^ self visitExpression: aPreDecrementExpression
+	^ self visitUnaryExpression: aPreDecrementExpression
 ]
 
 { #category : #generated }
 JavaProgramNodeVisitor >> visitPreIncrementExpression: aPreIncrementExpression [
-	^ self visitExpression: aPreIncrementExpression
+	^ self visitUnaryExpression: aPreIncrementExpression
 ]
 
 { #category : #generated }
@@ -537,22 +537,27 @@ JavaProgramNodeVisitor >> visitTypeParameters: aTypeParameters [
 
 { #category : #generated }
 JavaProgramNodeVisitor >> visitUnaryAddition: anUnaryAddition [
-	^ self visitExpression: anUnaryAddition
+	^ self visitUnaryExpression: anUnaryAddition
 ]
 
 { #category : #generated }
 JavaProgramNodeVisitor >> visitUnaryBitInvert: anUnaryBitInvert [
-	^ self visitExpression: anUnaryBitInvert
+	^ self visitUnaryExpression: anUnaryBitInvert
+]
+
+{ #category : #generated }
+JavaProgramNodeVisitor >> visitUnaryExpression: anUnaryExpression [
+	^ self visitExpression: anUnaryExpression
 ]
 
 { #category : #generated }
 JavaProgramNodeVisitor >> visitUnaryNot: anUnaryNot [
-	^ self visitExpression: anUnaryNot
+	^ self visitUnaryExpression: anUnaryNot
 ]
 
 { #category : #generated }
 JavaProgramNodeVisitor >> visitUnarySubtraction: anUnarySubtraction [
-	^ self visitExpression: anUnarySubtraction
+	^ self visitUnaryExpression: anUnarySubtraction
 ]
 
 { #category : #generated }

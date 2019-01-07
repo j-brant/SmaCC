@@ -111,7 +111,7 @@ JavaParser class >> ambiguousTransitions [
 
 { #category : #'generated-accessing' }
 JavaParser class >> cacheId [
-	^'2019-01-03T14:29:24.969773-06:00'
+	^'2019-01-07T07:19:14.490127-06:00'
 ]
 
 { #category : #generated }
@@ -137,9 +137,7 @@ JavaParser class >> definitionComment [
 					ExpressionStatement IfStatement SwitchStatement WhileStatement DoWhileStatement
 					ForStatement ForEachStatement BreakStatement ContinueStatement ReturnStatement ThrowStatement
 					SynchronizedStatement TryStatement AssertStatement);
-%hierarchy Expression (PostIncrementExpression PostDecrementExpression UnaryAddition UnarySubtraction
-					PreIncrementExpression PreDecrementExpression UnaryBitInvert UnaryNot
-					CastExpression BinaryExpression ConditionalExpression Assignment 
+%hierarchy Expression (UnaryExpression BinaryExpression ConditionalExpression Assignment 
 					ClassProperty FieldAccess MethodInvocation ArrayAccess
 					New Literal Name NewArray LambdaExpression MethodReference);
 %hierarchy Name (QualifiedName) ;
@@ -153,6 +151,9 @@ JavaParser class >> definitionComment [
 						LocalVariableDeclaration MethodDeclaration 
 						PackageDeclaration SingleTypeImportDeclaration 
 						VariableDeclaration );
+%hierarchy UnaryExpression (CastExpression PostDecrementExpression PostIncrementExpression
+						PreDecrementExpression PreIncrementExpression UnaryAddition
+						UnaryBitInvert UnaryNot UnarySubtraction);
 
 <GREATER_THAN>
 	: >
