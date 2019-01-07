@@ -120,8 +120,8 @@ JavaProgramNodeVisitor >> visitClassDeclaration: aClassDeclaration [
 ]
 
 { #category : #generated }
-JavaProgramNodeVisitor >> visitClassProperty: aClassProperty [
-	^ self visitExpression: aClassProperty
+JavaProgramNodeVisitor >> visitClassExpression: aClassExpression [
+	^ self visitExpression: aClassExpression
 ]
 
 { #category : #generated }
@@ -357,6 +357,11 @@ JavaProgramNodeVisitor >> visitNewClass: aNewClass [
 { #category : #generated }
 JavaProgramNodeVisitor >> visitNull: aNull [
 	^ self visitLiteral: aNull
+]
+
+{ #category : #generated }
+JavaProgramNodeVisitor >> visitOuterThis: anOuterThis [
+	^ self visitExpression: anOuterThis
 ]
 
 { #category : #generated }
