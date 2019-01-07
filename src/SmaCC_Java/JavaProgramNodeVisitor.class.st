@@ -416,7 +416,7 @@ JavaProgramNodeVisitor >> visitQualifiedName: aQualifiedName [
 
 { #category : #generated }
 JavaProgramNodeVisitor >> visitQualifiedTypeName: aQualifiedTypeName [
-	^ self visitProgram: aQualifiedTypeName
+	^ self visitTypeName: aQualifiedTypeName
 ]
 
 { #category : #generated }
