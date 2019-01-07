@@ -135,11 +135,6 @@ JavaProgramNodeVisitor >> visitConditionalExpression: aConditionalExpression [
 ]
 
 { #category : #generated }
-JavaProgramNodeVisitor >> visitConstructorBody: aConstructorBody [
-	^ self visitProgram: aConstructorBody
-]
-
-{ #category : #generated }
 JavaProgramNodeVisitor >> visitConstructorDeclaration: aConstructorDeclaration [
 	^ self visitDeclaration: aConstructorDeclaration
 ]
@@ -456,7 +451,7 @@ JavaProgramNodeVisitor >> visitStringLiteral: aStringLiteral [
 
 { #category : #generated }
 JavaProgramNodeVisitor >> visitSuperConstructorInvocation: aSuperConstructorInvocation [
-	^ self visitProgram: aSuperConstructorInvocation
+	^ self visitStatement: aSuperConstructorInvocation
 ]
 
 { #category : #generated }
@@ -486,7 +481,7 @@ JavaProgramNodeVisitor >> visitSynchronizedStatement: aSynchronizedStatement [
 
 { #category : #generated }
 JavaProgramNodeVisitor >> visitThisConstructorInvocation: aThisConstructorInvocation [
-	^ self visitProgram: aThisConstructorInvocation
+	^ self visitStatement: aThisConstructorInvocation
 ]
 
 { #category : #generated }
