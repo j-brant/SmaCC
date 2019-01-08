@@ -275,8 +275,8 @@ JavaProgramNodeVisitor >> visitIntegerLiteral: anIntegerLiteral [
 ]
 
 { #category : #generated }
-JavaProgramNodeVisitor >> visitInterface: anInterface [
-	^ self visitProgram: anInterface
+JavaProgramNodeVisitor >> visitInterfaceDeclaration: anInterfaceDeclaration [
+	^ self visitDeclaration: anInterfaceDeclaration
 ]
 
 { #category : #generated }
