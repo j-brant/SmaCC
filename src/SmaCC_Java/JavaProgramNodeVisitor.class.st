@@ -265,6 +265,11 @@ JavaProgramNodeVisitor >> visitInitializedVariableDeclaration: anInitializedVari
 ]
 
 { #category : #generated }
+JavaProgramNodeVisitor >> visitInitializer: anInitializer [
+	^ self visitProgram: anInitializer
+]
+
+{ #category : #generated }
 JavaProgramNodeVisitor >> visitIntType: anIntType [
 	^ self visitPrimitiveType: anIntType
 ]
@@ -446,7 +451,7 @@ JavaProgramNodeVisitor >> visitStatementExpressionList: aStatementExpressionList
 
 { #category : #generated }
 JavaProgramNodeVisitor >> visitStaticInitializer: aStaticInitializer [
-	^ self visitProgram: aStaticInitializer
+	^ self visitInitializer: aStaticInitializer
 ]
 
 { #category : #generated }
