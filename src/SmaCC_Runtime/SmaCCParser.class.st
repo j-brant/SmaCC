@@ -239,6 +239,14 @@ SmaCCParser class >> setEncodingOn: aStream [
 ]
 
 { #category : #accessing }
+SmaCCParser class >> startingStateNames [
+	^ ((self class allSelectors
+		select: [ :each | each beginsWith: 'startingStateFor' ])
+		collect: [ :each | each asString copyFrom: 17 to: each size ])
+		asSortedCollection
+]
+
+{ #category : #accessing }
 SmaCCParser class >> symbolNames [
 	^ #()
 ]
