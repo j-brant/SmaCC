@@ -1350,6 +1350,32 @@ SmaCCEndToEndTest >> testMultipleTypes [
 	self assert: node commas size = 3
 ]
 
+{ #category : #tests }
+SmaCCEndToEndTest >> testNFAtoDFAConversion [
+	| parserCompiler |
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	parserCompiler
+		buildDefinition:
+			'<Characterliteral>
+				: <Cchar>+
+				;
+			<Cchar>
+				: [^\''\\\r\n]
+				| <Hexadecimalescapesequence>
+				;
+			<Hexadecimalescapesequence>
+				: \\x [0-9a-fA-F]+
+				;
+			<Userdefinedcharacterliteral>
+				: <Characterliteral> 
+				;
+			Start : <Characterliteral> { true } | <Userdefinedcharacterliteral> {false};'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+	self assert: (self parserClass parse: 'abcde\xffee3sdas').
+	self should: [ self parserClass parse: '''' ] raise: SmaCCParserError
+]
+
 { #category : #'tests-parse tree creation' }
 SmaCCEndToEndTest >> testName [
 	| compiler node |
