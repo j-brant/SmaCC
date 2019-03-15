@@ -22,7 +22,22 @@ SmaCCDefinitionNode >> allReferencesTo: aString [
 ]
 
 { #category : #testing }
+SmaCCDefinitionNode >> isDirective [
+	^ false
+]
+
+{ #category : #testing }
 SmaCCDefinitionNode >> isGroup [
+	^ false
+]
+
+{ #category : #testing }
+SmaCCDefinitionNode >> isProductionRule [
+	^ false
+]
+
+{ #category : #testing }
+SmaCCDefinitionNode >> isTokenRule [
 	^ false
 ]
 
