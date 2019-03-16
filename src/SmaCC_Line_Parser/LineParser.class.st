@@ -61,7 +61,7 @@ LineParser class >> symbolNames [
 
 { #category : #generated }
 LineParser class >> symbolTypes [
-	^ #(#SmaCCToken #SmaCCToken #FileNode #FileNode #OrderedCollection #SmaCCToken #SmaCCToken #SmaCCError)
+	^ #(#SmaCCToken #SmaCCToken #FileNode #FileNode #OrderedCollection #SmaCCToken #SmaCCToken #SmaCCErrorNode)
 ]
 
 { #category : #generated }

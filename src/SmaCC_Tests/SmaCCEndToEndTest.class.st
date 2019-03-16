@@ -307,18 +307,18 @@ SmaCCEndToEndTest >> testAutomaticErrorNodes [
 	self assert: node c token value = 'c'.
 	node := self parserClass parseWithErrors: 'ac'.
 	self assert: node a token value = 'a'.
-	self assert: node b class = SmaCCError.
+	self assert: node b class = SmaCCErrorNode.
 	self assert: node c token value = 'c'.
 	node := self parserClass parseWithErrors: 'ab'.
 	self assert: node a token value = 'a'.
 	self assert: node b token value = 'b'.
-	self assert: node c class = SmaCCError.
+	self assert: node c class = SmaCCErrorNode.
 	node := self parserClass parseWithErrors: 'bc'.
-	self assert: node a class = SmaCCError.
+	self assert: node a class = SmaCCErrorNode.
 	self assert: node b token value = 'b'.
 	self assert: node c token value = 'c'.
 	node := self parserClass parseWithErrors: 'axbc'.
-	self assert: node a class = SmaCCError.
+	self assert: node a class = SmaCCErrorNode.
 	self assert: node b token value = 'b'.
 	self assert: node c token value = 'c'
 ]
@@ -1585,7 +1585,7 @@ SmaCCEndToEndTest >> testOptionalVariableType [
 			Comma : "," ''comma'' |  ;'.
 	compiler compileInto: 'TestScanner' andParser: 'TestParser'.
 	self
-		assert: self parserClass basicNew symbolTypes asSet asSortedCollection asArray = #(#FooANode #SmaCCError #SmaCCToken)
+		assert: self parserClass basicNew symbolTypes asSet asSortedCollection asArray = #(#FooANode #SmaCCErrorNode #SmaCCToken)
 ]
 
 { #category : #tests }
@@ -2530,5 +2530,5 @@ SmaCCEndToEndTest >> testVariableCollectionType [
 	self
 		assert:
 			self parserClass basicNew symbolTypes asSet asSortedCollection asArray
-				= #(#FooANode #OrderedCollection #SmaCCError #SmaCCToken)
+				= #(#FooANode #OrderedCollection #SmaCCErrorNode #SmaCCToken)
 ]

@@ -6,5 +6,5 @@ Class {
 
 { #category : #accessing }
 SmaCCErrorTerminalSymbol >> modelTypes: anIdentitySet [
-	^ Set with: (self model classFor: SmaCCError)
+	^ Set with: (self model classFor: SmaCCErrorNode)
 ]

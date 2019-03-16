@@ -102,7 +102,7 @@ JSONParser class >> symbolNames [
 
 { #category : #generated }
 JSONParser class >> symbolTypes [
-	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #JSONParseNode #JSONParseNode #JSONObjectNode #OrderedCollection #JSONMemberNode #JSONArrayNode #OrderedCollection #SmaCCToken #SmaCCError)
+	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #JSONParseNode #JSONParseNode #JSONObjectNode #OrderedCollection #JSONMemberNode #JSONArrayNode #OrderedCollection #SmaCCToken #SmaCCErrorNode)
 ]
 
 { #category : #generated }

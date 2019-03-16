@@ -76,7 +76,7 @@ SmaCCRewriteTestParser class >> symbolNames [
 
 { #category : #generated }
 SmaCCRewriteTestParser class >> symbolTypes [
-	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCRewriteTestExpressionNode #SmaCCRewriteTestExpressionNode #SmaCCToken #SmaCCError)
+	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCRewriteTestExpressionNode #SmaCCRewriteTestExpressionNode #SmaCCToken #SmaCCErrorNode)
 ]
 
 { #category : #generated }

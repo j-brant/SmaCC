@@ -147,7 +147,7 @@ CSVParser class >> symbolNames [
 
 { #category : #generated }
 CSVParser class >> symbolTypes [
-	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #CSVFileNode #CSVFileNode #OrderedCollection #CSVLineNode #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCError)
+	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #CSVFileNode #CSVFileNode #OrderedCollection #CSVLineNode #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCErrorNode)
 ]
 
 { #category : #generated }

@@ -133,7 +133,7 @@ SmaCCReplaceExpressionParser class >> symbolNames [
 
 { #category : #generated }
 SmaCCReplaceExpressionParser class >> symbolTypes [
-	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCCompositeReplaceExpression #SmaCCCompositeReplaceExpression #OrderedCollection #SmaCCReplaceExpression #SmaCCStringReplaceExpression #SmaCCNodeReplaceExpression nil nil #SmaCCCodeReplaceExpression nil #OrderedCollection #OrderedCollection #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCError)
+	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCCompositeReplaceExpression #SmaCCCompositeReplaceExpression #OrderedCollection #SmaCCReplaceExpression #SmaCCStringReplaceExpression #SmaCCNodeReplaceExpression nil nil #SmaCCCodeReplaceExpression nil #OrderedCollection #OrderedCollection #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCErrorNode)
 ]
 
 { #category : #generated }
