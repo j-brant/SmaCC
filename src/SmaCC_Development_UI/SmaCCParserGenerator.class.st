@@ -16,7 +16,8 @@ Class {
 		'menu',
 		'viewItemSets',
 		'viewSymbols',
-		'menuItems'
+		'menuItems',
+		'packageName'
 	],
 	#classVars : [
 		'ShowPrecedenceConflicts'
@@ -86,6 +87,11 @@ SmaCCParserGenerator >> compile: aSymbol [
 	| grammar stream oldCharacterSize parserCompiler messages |
 	(self scannerClassName isEmpty or: [ self parserClassName isEmpty ])
 		ifTrue: [ ^ UIManager default alert: 'Both classes are not specified' ].
+	((Smalltalk includesKey: self parserClassName)
+		or: [ packageName notNil ])
+		ifFalse: [ self setPackage.
+			packageName isNil
+				ifTrue: [ ^ self ] ].
 	messages := OrderedCollection new.
 	Cursor wait
 		showWhile: [ oldCharacterSize := SmaCCGrammar maximumCharacterValue.
@@ -99,7 +105,9 @@ SmaCCParserGenerator >> compile: aSymbol [
 			parserCompiler := self compiler.
 			parserCompiler
 				codeGenerator: self codeGeneratorClass new;
-				buildDefinition: self definition;
+				buildDefinition: self definition.
+			parserCompiler codeGenerator defaultCategory: packageName.
+			parserCompiler
 				scannerClass: self scannerClassName;
 				parserClass: self parserClassName.
 			grammar := parserCompiler grammar.
@@ -113,8 +121,12 @@ SmaCCParserGenerator >> compile: aSymbol [
 				ifTrue: [ itemSetsModel text: parserCompiler itemSetsComment ] ]
 				on: SmaCCCompilationNotification
 				do: [ :ex | 
-					(ShowPrecedenceConflicts or: [ ('*precedence*' match: ex messageText) not ])
-						ifTrue: [ messages add: ex messageText , (String with: Character cr with: Character cr) , ex tag ].
+					(ShowPrecedenceConflicts
+						or: [ ('*precedence*' match: ex messageText) not ])
+						ifTrue: [ messages
+								add:
+									ex messageText , (String with: Character cr with: Character cr)
+										, ex tag ].
 					ex pass ].
 			messages asSortedCollection
 				do: [ :each | 
@@ -338,7 +350,13 @@ SmaCCParserGenerator >> optionsMenu [
 					item
 						autoRefresh: true;
 						name: 'Parser Class...';
-						action: [ self setParserClass ] ] ];
+						action: [ self setParserClass ] ];
+				addItem: [ :item | 
+					menuItems at: #setPackage put: item.
+					item
+						autoRefresh: true;
+						name: 'Set Package...';
+						action: [ self setPackage ] ] ];
 		addGroup: [ :group | 
 			group
 				addItem: [ :item | 
@@ -419,6 +437,17 @@ SmaCCParserGenerator >> scannerClassName: aString [
 { #category : #actions }
 SmaCCParserGenerator >> setCodeGenerator: aSymbol [
 	codeGeneratorType := aSymbol
+]
+
+{ #category : #actions }
+SmaCCParserGenerator >> setPackage [
+	| name |
+	name := UIManager default
+		enterOrRequestFrom: RPackage organizer packageNames asSortedCollection
+		title: 'Select package:'.
+	(name isNil or: [ name isEmpty ])
+		ifTrue: [ ^ self ].
+	packageName := name
 ]
 
 { #category : #actions }
