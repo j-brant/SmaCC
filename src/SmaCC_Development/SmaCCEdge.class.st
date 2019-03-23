@@ -18,7 +18,7 @@ Class {
 		'toNode',
 		'transitionObjects'
 	],
-	#category : #'SmaCC_Development'
+	#category : #'SmaCC_Development-DFA/NFA'
 }
 
 { #category : #'instance creation' }

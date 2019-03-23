@@ -7,7 +7,7 @@ Class {
 		'data',
 		'normalized'
 	],
-	#category : #'SmaCC_Development'
+	#category : #'SmaCC_Development-Collections'
 }
 
 { #category : #'instance creation' }

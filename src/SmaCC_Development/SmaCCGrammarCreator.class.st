@@ -9,7 +9,7 @@ Class {
 	#classVars : [
 		'MaxExpansions'
 	],
-	#category : #'SmaCC_Development'
+	#category : #'SmaCC_Development-Model'
 }
 
 { #category : #building }

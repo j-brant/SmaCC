@@ -7,7 +7,7 @@ Class {
 		'followers',
 		'itemSet'
 	],
-	#category : #'SmaCC_Development'
+	#category : #'SmaCC_Development-Item Sets'
 }
 
 { #category : #'instance creation' }

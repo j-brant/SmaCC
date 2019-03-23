@@ -12,7 +12,7 @@ Class {
 	#instVars : [
 		'source'
 	],
-	#category : #'SmaCC_Development'
+	#category : #'SmaCC_Development-Compilation Model'
 }
 
 { #category : #'instance creation' }

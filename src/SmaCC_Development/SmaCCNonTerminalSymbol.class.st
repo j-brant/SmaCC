@@ -5,7 +5,7 @@ Class {
 		'productions',
 		'position'
 	],
-	#category : #'SmaCC_Development'
+	#category : #'SmaCC_Development-Model'
 }
 
 { #category : #accessing }

@@ -5,7 +5,7 @@ Class {
 		'grammar',
 		'codeGenerator'
 	],
-	#category : #'SmaCC_Development'
+	#category : #'SmaCC_Development-Compiler'
 }
 
 { #category : #'regular expression construction' }

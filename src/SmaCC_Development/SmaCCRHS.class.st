@@ -8,7 +8,7 @@ Class {
 		'nodeClassDefinition',
 		'productionSymbol'
 	],
-	#category : #'SmaCC_Development'
+	#category : #'SmaCC_Development-Model'
 }
 
 { #category : #comparing }
