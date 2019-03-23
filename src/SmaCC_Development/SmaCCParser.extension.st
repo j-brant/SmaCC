@@ -1,6 +1,15 @@
 Extension { #name : #SmaCCParser }
 
 { #category : #'*SmaCC_Development' }
+SmaCCParser class >> compileGrammar: aString [
+	(aString isNil or: [ aString isEmpty ])
+		ifTrue: [ ^ self ].
+	SmaCCGrammarCompiler new
+		buildDefinition: aString;
+		compileInto: self scannerClass andParser: self
+]
+
+{ #category : #'*SmaCC_Development' }
 SmaCCParser class >> definitionAST [
 	^ [ SmaCCDefinitionParser parse: self definitionString ]
 		on: SmaCCParserError
@@ -22,6 +31,15 @@ SmaCCParser class >> definitionString [
 				ifTrue:
 					[ source := (self removeCommentedPartOf: (scannerClass class sourceCodeAt: #scannerDefinitionComment)) , '\' withCRs , source ] ].
 	^ source
+]
+
+{ #category : #'*SmaCC_Development' }
+SmaCCParser class >> recompileAll [
+	"self recompileAll"
+
+	self withAllSubclasses
+		do: [ :each | each compileGrammar: each definitionString ]
+		displayingProgress: [ :each | 'Compiling ' , each instanceSide name ]
 ]
 
 { #category : #'*SmaCC_Development' }
