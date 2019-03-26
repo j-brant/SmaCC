@@ -7,7 +7,7 @@ Class {
 { #category : #'generated-initialization' }
 CPPScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
-	#(#(129 'alignas' 54) #(129 'alignof' 55) #(129 'and' 44) #(129 'asm' 56) #(129 'auto' 57) #(129 'bool' 58) #(129 'break' 59) #(129 'case' 60) #(129 'catch' 61) #(129 'char' 62) #(129 'char16_t' 63) #(129 'char32_t' 64) #(129 'class' 65) #(129 'const' 66) #(129 'const_cast' 68) #(129 'constexpr' 67) #(129 'continue' 69) #(129 'decltype' 70) #(129 'default' 71) #(129 'delete' 72) #(129 'do' 73) #(129 'double' 74) #(129 'dynamic_cast' 75) #(129 'else' 76) #(129 'enum' 77) #(129 'explicit' 78) #(129 'extern' 79) #(129 'false' 80) #(129 'final' 81) #(129 'float' 82) #(129 'for' 83) #(129 'friend' 84) #(129 'goto' 85) #(129 'if' 86) #(129 'inline' 87) #(129 'int' 88) #(129 'long' 89) #(129 'mutable' 90) #(129 'namespace' 91) #(129 'new' 92) #(129 'noexcept' 93) #(129 'not' 45) #(129 'nullptr' 94) #(129 'operator' 95) #(129 'or' 46) #(129 'override' 96) #(129 'private' 97) #(129 'protected' 98) #(129 'public' 99) #(129 'register' 100) #(129 'reinterpret_cast' 101) #(129 'return' 102) #(129 'short' 103) #(129 'signed' 104) #(129 'sizeof' 105) #(129 'static' 106) #(129 'static_assert' 107) #(129 'static_cast' 108) #(129 'struct' 109) #(129 'switch' 110) #(129 'template' 111) #(129 'this' 112) #(129 'thread_local' 113) #(129 'throw' 114) #(129 'true' 115) #(129 'try' 116) #(129 'typedef' 117) #(129 'typeid' 118) #(129 'typename' 119) #(129 'union' 120) #(129 'unsigned' 121) #(129 'using' 122) #(129 'virtual' 123) #(129 'void' 124) #(129 'volatile' 125) #(129 'wchar_t' 126) #(129 'while' 127))
+	#(#(129 'alignas' 50) #(129 'alignof' 51) #(129 'and' 40) #(129 'asm' 52) #(129 'auto' 53) #(129 'bool' 54) #(129 'break' 55) #(129 'case' 56) #(129 'catch' 57) #(129 'char' 58) #(129 'char16_t' 59) #(129 'char32_t' 60) #(129 'class' 61) #(129 'const' 62) #(129 'const_cast' 64) #(129 'constexpr' 63) #(129 'continue' 65) #(129 'decltype' 66) #(129 'default' 67) #(129 'delete' 68) #(129 'do' 69) #(129 'double' 70) #(129 'dynamic_cast' 71) #(129 'else' 72) #(129 'enum' 73) #(129 'explicit' 74) #(129 'extern' 75) #(129 'false' 76) #(129 'final' 77) #(129 'float' 78) #(129 'for' 79) #(129 'friend' 80) #(129 'goto' 81) #(129 'if' 82) #(129 'inline' 83) #(129 'int' 84) #(129 'long' 85) #(129 'mutable' 86) #(129 'namespace' 87) #(129 'new' 88) #(129 'noexcept' 89) #(129 'not' 41) #(129 'nullptr' 90) #(129 'operator' 91) #(129 'or' 42) #(129 'override' 92) #(129 'private' 93) #(129 'protected' 94) #(129 'public' 95) #(129 'register' 96) #(129 'reinterpret_cast' 97) #(129 'return' 98) #(129 'short' 99) #(129 'signed' 100) #(129 'sizeof' 101) #(129 'static' 102) #(129 'static_assert' 103) #(129 'static_cast' 104) #(129 'struct' 105) #(129 'switch' 106) #(129 'template' 107) #(129 'this' 108) #(129 'thread_local' 109) #(129 'throw' 110) #(129 'true' 111) #(129 'try' 112) #(129 'typedef' 113) #(129 'typeid' 114) #(129 'typename' 115) #(129 'union' 116) #(129 'unsigned' 117) #(129 'using' 118) #(129 'virtual' 119) #(129 'void' 120) #(129 'volatile' 121) #(129 'wchar_t' 122) #(129 'while' 123))
 		do: [ :each | 
 			(keywordMap at: each first ifAbsentPut: [ Dictionary new ])
 				at: (each at: 2)
@@ -22,12 +22,12 @@ CPPScanner >> directive [
 
 { #category : #generated }
 CPPScanner >> emptySymbolTokenId [
-	^ 339
+	^ 342
 ]
 
 { #category : #generated }
 CPPScanner >> errorTokenId [
-	^ 340
+	^ 343
 ]
 
 { #category : #generated }
@@ -1319,7 +1319,7 @@ CPPScanner >> scan7 [
 
 { #category : #generated }
 CPPScanner >> scan8 [
-	[ self recordMatch: #(53).
+	[ self recordMatch: #(49).
 	self step.
 	currentCharacter == $\
 		ifTrue: [ ^ self scan9 ].
@@ -1336,7 +1336,7 @@ CPPScanner >> scan9 [
 	currentCharacter == Character lf
 		ifTrue: [ ^ self scan8 ].
 	currentCharacter == Character cr
-		ifTrue: [ self recordMatch: #(53).
+		ifTrue: [ self recordMatch: #(49).
 			self step.
 			currentCharacter == $\
 				ifTrue: [ ^ self scan9 ].
@@ -1378,12 +1378,12 @@ CPPScanner >> scanForTokenX1 [
 
 { #category : #generated }
 CPPScanner >> scanForTokenX10 [
-	self recordMatch: #(48).
+	self recordMatch: #(44).
 	self step.
 	currentCharacter == $=
-		ifTrue: [ ^ self recordAndReportMatch: #(49) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(45) ].
 	currentCharacter == $|
-		ifTrue: [ ^ self recordAndReportMatch: #(50) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(46) ].
 	^ self reportLastMatch
 ]
 
@@ -1411,19 +1411,19 @@ CPPScanner >> scanForTokenX12 [
 
 { #category : #generated }
 CPPScanner >> scanForTokenX13 [
-	self recordMatch: #(42).
+	self recordMatch: #(38).
 	self step.
 	currentCharacter == $=
-		ifTrue: [ ^ self recordAndReportMatch: #(43) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(39) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 CPPScanner >> scanForTokenX14 [
-	self recordMatch: #(33 128).
+	self recordMatch: #(31 124).
 	self step.
 	currentCharacter == $=
-		ifTrue: [ ^ self recordAndReportMatch: #(34) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(32) ].
 	^ self reportLastMatch
 ]
 
@@ -1640,15 +1640,15 @@ CPPScanner >> scanForTokenX20 [
 		ifTrue:
 			[ ^ self scanForTokenX8 ].
 	currentCharacter == $?
-		ifTrue: [ ^ self recordAndReportMatch: #(39) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(35) ].
 	currentCharacter == $R
 		ifTrue: [ ^ self scan50 ].
 	currentCharacter == $[
-		ifTrue: [ ^ self recordAndReportMatch: #(40) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(36) ].
 	currentCharacter == $\
 		ifTrue: [ ^ self scan48 ].
 	currentCharacter == $]
-		ifTrue: [ ^ self recordAndReportMatch: #(41) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(37) ].
 	currentCharacter == $^
 		ifTrue:
 			[ ^ self scanForTokenX13 ].
@@ -1656,14 +1656,14 @@ CPPScanner >> scanForTokenX20 [
 		ifTrue:
 			[ ^ self scanForTokenX2 ].
 	currentCharacter == ${
-		ifTrue: [ ^ self recordAndReportMatch: #(47) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(43) ].
 	currentCharacter == $|
 		ifTrue:
 			[ ^ self scanForTokenX10 ].
 	currentCharacter == $}
-		ifTrue: [ ^ self recordAndReportMatch: #(51) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(47) ].
 	currentCharacter == $~
-		ifTrue: [ ^ self recordAndReportMatch: #(52) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(48) ].
 	^ self scanForTokenX19
 ]
 
@@ -1787,15 +1787,15 @@ CPPScanner >> scanForTokenX7 [
 
 { #category : #generated }
 CPPScanner >> scanForTokenX8 [
-	self recordMatch: #(35).
+	self recordMatch: #(33).
 	self step.
 	currentCharacter == $=
-		ifTrue: [ ^ self recordAndReportMatch: #(36) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(34) ].
 	currentCharacter == $>
-		ifTrue: [ self recordMatch: #(37).
+		ifTrue: [ self recordMatch: #(126).
 			self step.
 			currentCharacter == $=
-				ifTrue: [ ^ self recordAndReportMatch: #(38) ] ].
+				ifTrue: [ ^ self recordAndReportMatch: #(128) ] ].
 	^ self reportLastMatch
 ]
 
@@ -1804,17 +1804,17 @@ CPPScanner >> scanForTokenX9 [
 	self recordMatch: #(29).
 	self step.
 	currentCharacter == $<
-		ifTrue: [ self recordMatch: #(30).
+		ifTrue: [ self recordMatch: #(125).
 			self step.
 			currentCharacter == $=
-				ifTrue: [ ^ self recordAndReportMatch: #(31) ].
+				ifTrue: [ ^ self recordAndReportMatch: #(127) ].
 			^ self reportLastMatch ].
 	currentCharacter == $=
-		ifTrue: [ ^ self recordAndReportMatch: #(32) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(30) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 CPPScanner >> tokenActions [
-	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #directive nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace #comment)
+	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #directive nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace #comment)
 ]
