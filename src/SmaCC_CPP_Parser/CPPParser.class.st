@@ -35,7 +35,7 @@ CPPParser class >> ambiguousTransitions [
 #[ 0 66 0 78] 
 #[ 0 58 0 62 0 66 0 70 0 74 0 198] 
 #[ 0 78 0 198] 
-#[ 0 70 5 241] 
+#[ 0 74 5 241] 
 #[ 0 206 6 1] 
 #[ 0 206 6 5] 
 #[ 0 58 0 62 0 66 0 78] 
@@ -65,7 +65,7 @@ CPPParser class >> ambiguousTransitions [
 #[ 0 118 10 77] 
 #[ 1 198 6 161] 
 #[ 0 78 1 198] 
-#[ 0 70 10 173] 
+#[ 0 74 10 173] 
 #[ 0 37 1 222] 
 #[ 0 45 1 222] 
 #[ 0 9 1 226] 
@@ -83,12 +83,12 @@ CPPParser class >> ambiguousTransitions [
 #[ 0 66 2 62] 
 #[ 0 10 1 90] 
 #[ 0 37 1 90] 
-#[ 0 22 2 82] 
+#[ 0 18 2 82] 
 #[ 2 86 2 90] 
 #[ 0 82 1 102] 
 #[ 1 194 2 50] 
 #[ 0 37 1 62] 
-#[ 0 18 2 126] 
+#[ 0 22 2 126] 
 #[ 0 54 0 58 0 62 0 66 12 149] 
 #[ 0 37 0 54 0 58 0 62 0 66] 
 #[ 0 45 0 54 0 58 0 62 0 66] 
@@ -159,7 +159,7 @@ CPPParser class >> ambiguousTransitions [
 
 { #category : #'generated-accessing' }
 CPPParser class >> cacheId [
-	^'2019-03-26T13:35:39.436619-05:00'
+	^'2019-03-26T18:50:11.9604-05:00'
 ]
 
 { #category : #generated }
@@ -194,15 +194,15 @@ CPPParser class >> definitionComment [
 
 
 translationunit
-   : declarationseq? 
+   : declarationseq? {{TranslationUnit}} 
    ;
 /*Expressions*/
 
 
 primaryexpression
-   : literal
-   | <This>
-   | ""("" expression "")""
+   : literal 'value' {{Literal}}
+   | <This> 'thisToken' {{ThisExpression}}
+   | ""("" 'leftParen' expression "")"" 'rightParen' {{Expression}}
    | idexpression
    | lambdaexpression
    ;
@@ -223,7 +223,7 @@ unqualifiedid
    ;
 
 qualifiedid
-   : nestednamespecifier <Template>? unqualifiedid
+   : nestednamespecifier <Template> 'templateToken'? unqualifiedid
    ;
 
 nestednamespecifier
@@ -232,21 +232,21 @@ nestednamespecifier
    | namespacename ""::""
    | decltypespecifier ""::""
    | nestednamespecifier <Identifier> ""::""
-   | nestednamespecifier <Template>? simpletemplateid ""::""
+   | nestednamespecifier <Template> 'templateToken'? simpletemplateid ""::""
    ;
 
 lambdaexpression
-   : lambdaintroducer lambdadeclarator? compoundstatement
+   : lambdaintroducer lambdadeclarator? compoundstatement {{LambdaExpression}}
    ;
 
 lambdaintroducer
-   : ""["" lambdacapture? ""]""
+   : ""["" 'leftBracket' lambdacapture? ""]"" 'rightBracket'
    ;
 
 lambdacapture
    : capturedefault
    | capturelist
-   | capturedefault "","" capturelist
+   | capturedefault "","" 'comma' capturelist
    ;
 
 capturedefault
@@ -256,7 +256,7 @@ capturedefault
 
 capturelist
    : capture ""...""?
-   | capturelist "","" capture ""...""?
+   | capturelist "","" 'comma' capture ""...""?
    ;
 
 capture
@@ -267,7 +267,7 @@ capture
 simplecapture
    : <Identifier>
    | ""&"" <Identifier>
-   | <This>
+   | <This> 'thisToken'
    ;
 
 initcapture
@@ -276,30 +276,30 @@ initcapture
    ;
 
 lambdadeclarator
-   : ""("" parameterdeclarationclause "")"" <Mutable>? exceptionspecification? attributespecifierseq? trailingreturntype?
+   : ""("" 'leftParen' parameterdeclarationclause "")"" 'rightParen' <Mutable> 'mutableToken'? exceptionspecification? attributespecifierseq? trailingreturntype?
    ;
 
 postfixexpression
    : primaryexpression
-   | postfixexpression ""["" expression ""]""
-   | postfixexpression ""["" bracedinitlist ""]""
-   | postfixexpression ""("" expressionlist? "")""
-   | simpletypespecifier ""("" expressionlist? "")""
-   | typenamespecifier ""("" expressionlist? "")""
+   | postfixexpression ""["" 'leftBracket' expression ""]"" 'rightBracket'
+   | postfixexpression ""["" 'leftBracket' bracedinitlist ""]"" 'rightBracket'
+   | postfixexpression ""("" 'leftParen' expressionlist? "")"" 'rightParen'
+   | simpletypespecifier ""("" 'leftParen' expressionlist? "")"" 'rightParen'
+   | typenamespecifier ""("" 'leftParen' expressionlist? "")"" 'rightParen'
    | simpletypespecifier bracedinitlist
    | typenamespecifier bracedinitlist
-   | postfixexpression ""."" <Template>? idexpression
-   | postfixexpression ""->"" <Template>? idexpression
+   | postfixexpression ""."" <Template> 'templateToken'? idexpression
+   | postfixexpression ""->"" <Template> 'templateToken'? idexpression
    | postfixexpression ""."" pseudodestructorname
    | postfixexpression ""->"" pseudodestructorname
-   | postfixexpression ""++""
-   | postfixexpression ""--""
-   | <Dynamic_cast> ""<"" thetypeid "">"" ""("" expression "")""
-   | <Static_cast> ""<"" thetypeid "">"" ""("" expression "")""
-   | <Reinterpret_cast> ""<"" thetypeid "">"" ""("" expression "")""
-   | <Const_cast> ""<"" thetypeid "">"" ""("" expression "")""
-   | typeidofthetypeid ""("" expression "")""
-   | typeidofthetypeid ""("" thetypeid "")""
+   | postfixexpression ""++"" 'operator' {{PostfixExpression}}
+   | postfixexpression ""--"" 'operator' {{PostfixExpression}}
+   | <Dynamic_cast> 'dynamic_castToken' ""<"" thetypeid "">"" ""("" 'leftParen' expression "")"" 'rightParen'
+   | <Static_cast> 'static_castToken' ""<"" thetypeid "">"" ""("" 'leftParen' expression "")"" 'rightParen'
+   | <Reinterpret_cast> 'reinterpret_castToken' ""<"" thetypeid "">"" ""("" 'leftParen' expression "")"" 'rightParen'
+   | <Const_cast> 'const_castToken' ""<"" thetypeid "">"" ""("" 'leftParen' expression "")"" 'rightParen'
+   | typeidofthetypeid ""("" 'leftParen' expression "")"" 'rightParen'
+   | typeidofthetypeid ""("" 'leftParen' thetypeid "")"" 'rightParen'
    ;
 /*
 add a middle layer to eliminate duplicated function declarations
@@ -307,11 +307,11 @@ add a middle layer to eliminate duplicated function declarations
 
 
 typeidofexpr
-   : <Typeid_>
+   : <Typeid_> 'typeidToken'
    ;
 
 typeidofthetypeid
-   : <Typeid_>
+   : <Typeid_> 'typeidToken'
    ;
 
 expressionlist
@@ -320,20 +320,20 @@ expressionlist
 
 pseudodestructorname
    : nestednamespecifier? thetypename ""::"" ""~"" thetypename
-   | nestednamespecifier <Template> simpletemplateid ""::"" ""~"" thetypename
+   | nestednamespecifier <Template> 'templateToken' simpletemplateid ""::"" ""~"" thetypename
    | nestednamespecifier? ""~"" thetypename
    | ""~"" decltypespecifier
    ;
 
 unaryexpression
    : postfixexpression
-   | ""++"" castexpression
-   | ""--"" castexpression
-   | unaryoperator castexpression
-   | <Sizeof> unaryexpression
-   | <Sizeof> ""("" thetypeid "")""
-   | <Sizeof> ""..."" ""("" <Identifier> "")""
-   | <Alignof> ""("" thetypeid "")""
+   | ""++"" 'operator' castexpression {{PrefixExpression}}
+   | ""--"" 'operator' castexpression {{PrefixExpression}}
+   | unaryoperator 'operator' castexpression
+   | <Sizeof> 'sizeofToken' unaryexpression {{PrefixExpression}}
+   | <Sizeof> 'sizeofToken' ""("" 'leftParen' thetypeid "")"" 'rightParen'
+   | <Sizeof> 'sizeofToken' ""..."" ""("" 'leftParen' <Identifier> "")"" 'rightParen'
+   | <Alignof> 'alignofToken' ""("" 'leftParen' thetypeid "")"" 'rightParen'
    | noexceptexpression
    | newexpression
    | deleteexpression
@@ -351,12 +351,12 @@ unaryoperator
    ;
 
 newexpression
-   : ""::""? <New> newplacement? newtypeid newinitializer?
-   | ""::""? <New> newplacement? ""("" thetypeid "")"" newinitializer?
+   : ""::""? <New> 'newToken' newplacement? newtypeid newinitializer? {{NewExpression}}
+   | ""::""? <New> 'newToken' newplacement? ""("" 'leftParen' thetypeid "")"" 'rightParen' newinitializer? {{NewExpression}}
    ;
 
 newplacement
-   : ""("" expressionlist "")""
+   : ""("" 'leftParen' expressionlist "")"" 'rightParen'
    ;
 
 newtypeid
@@ -369,27 +369,27 @@ newdeclarator
    ;
 
 noptrnewdeclarator
-   : ""["" expression ""]"" attributespecifierseq?
-   | noptrnewdeclarator ""["" constantexpression ""]"" attributespecifierseq?
+   : ""["" 'leftBracket' expression ""]"" 'rightBracket' attributespecifierseq?
+   | noptrnewdeclarator ""["" 'leftBracket' constantexpression ""]"" 'rightBracket' attributespecifierseq?
    ;
 
 newinitializer
-   : ""("" expressionlist? "")""
+   : ""("" 'leftParen' expressionlist? "")"" 'rightParen'
    | bracedinitlist
    ;
 
 deleteexpression
-   : ""::""? <Delete> castexpression
-   | ""::""? <Delete> ""["" ""]"" castexpression
+   : ""::""? <Delete> 'deleteToken' castexpression {{DeleteExpression}}
+   | ""::""? <Delete> 'deleteToken' ""["" 'leftBracket' ""]"" 'rightBracket' castexpression {{DeleteExpression}}
    ;
 
 noexceptexpression
-   : <Noexcept> ""("" expression "")""
+   : <Noexcept> 'noexceptToken' ""("" 'leftParen' expression "")"" 'rightParen' {{NoexceptExpression}}
    ;
 
 castexpression
    : unaryexpression
-   | ""("" thetypeid "")"" castexpression
+   | ""("" 'leftParen' thetypeid "")"" 'rightParen' castexpression {{CastExpression}}
    ;
 
 pmexpression
@@ -400,20 +400,20 @@ pmexpression
 
 multiplicativeexpression
    : pmexpression
-   | multiplicativeexpression ""*"" pmexpression
-   | multiplicativeexpression ""/"" pmexpression
-   | multiplicativeexpression ""%"" pmexpression
+   | multiplicativeexpression ""*"" 'operator' pmexpression {{BinaryExpression}}
+   | multiplicativeexpression ""/"" 'operator' pmexpression {{BinaryExpression}}
+   | multiplicativeexpression ""%"" 'operator' pmexpression {{BinaryExpression}}
    ;
 
 additiveexpression
    : multiplicativeexpression
-   | additiveexpression ""+"" multiplicativeexpression
-   | additiveexpression ""-"" multiplicativeexpression
+   | additiveexpression ""+"" 'operator' multiplicativeexpression {{BinaryExpression}}
+   | additiveexpression ""-"" 'operator' multiplicativeexpression {{BinaryExpression}}
    ;
 
 shiftexpression
    : additiveexpression
-   | shiftexpression shiftoperator additiveexpression
+   | shiftexpression  shiftoperator 'operator' additiveexpression {{BinaryExpression}}
    ;
 
 shiftoperator
@@ -423,53 +423,53 @@ shiftoperator
 
 relationalexpression
    : shiftexpression
-   | relationalexpression ""<"" shiftexpression
-   | relationalexpression "">"" shiftexpression
-   | relationalexpression ""<="" shiftexpression
-   | relationalexpression "">="" shiftexpression
+   | relationalexpression ""<"" 'operator' shiftexpression  {{BinaryExpression}}
+   | relationalexpression "">"" 'operator' shiftexpression  {{BinaryExpression}}
+   | relationalexpression ""<="" 'operator' shiftexpression  {{BinaryExpression}}
+   | relationalexpression "">="" 'operator' shiftexpression  {{BinaryExpression}}
    ;
 
 equalityexpression
    : relationalexpression
-   | equalityexpression ""=="" relationalexpression
-   | equalityexpression ""!="" relationalexpression
+   | equalityexpression ""=="" 'operator' relationalexpression {{BinaryExpression}}
+   | equalityexpression ""!="" relationalexpression {{BinaryExpression}}
    ;
 
 andexpression
    : equalityexpression
-   | andexpression ""&"" equalityexpression
+   | andexpression ""&"" 'operator' equalityexpression {{BinaryExpression}}
    ;
 
 exclusiveorexpression
    : andexpression
-   | exclusiveorexpression ""^"" andexpression
+   | exclusiveorexpression ""^"" 'operator' andexpression {{BinaryExpression}}
    ;
 
 inclusiveorexpression
    : exclusiveorexpression
-   | inclusiveorexpression ""|"" exclusiveorexpression
+   | inclusiveorexpression ""|"" 'operator' exclusiveorexpression {{BinaryExpression}}
    ;
 
 logicalandexpression
    : inclusiveorexpression
-   | logicalandexpression ""&&"" inclusiveorexpression
-   | logicalandexpression ""and"" inclusiveorexpression
+   | logicalandexpression ""&&"" 'operator' inclusiveorexpression {{BinaryExpression}}
+   | logicalandexpression ""and"" 'operator' inclusiveorexpression {{BinaryExpression}}
    ;
 
 logicalorexpression
    : logicalandexpression
-   | logicalorexpression ""||"" logicalandexpression
-   | logicalorexpression ""or"" logicalandexpression
+   | logicalorexpression ""||"" 'operator' logicalandexpression {{BinaryExpression}}
+   | logicalorexpression ""or"" 'operator' logicalandexpression {{BinaryExpression}}
    ;
 
 conditionalexpression
    : logicalorexpression
-   | logicalorexpression ""?"" expression "":"" assignmentexpression
+   | logicalorexpression ""?"" 'questionMark' expression "":"" 'colon' assignmentexpression {{ConditionalExpression}}
    ;
 
 assignmentexpression
    : conditionalexpression
-   | logicalorexpression assignmentoperator initializerclause
+   | logicalorexpression assignmentoperator 'operator' initializerclause {{AssignmentExpression}}
    | throwexpression
    ;
 
@@ -489,7 +489,7 @@ assignmentoperator
 
 expression
    : assignmentexpression
-   | expression "","" assignmentexpression
+   | expression "","" 'comma' assignmentexpression
    ;
 
 constantexpression
@@ -500,8 +500,8 @@ constantexpression
 
 statement
    : labeledstatement
-   | attributespecifierseq? expressionstatement
-   | attributespecifierseq? compoundstatement
+   | attributespecifierseq? expressionstatement {{}}
+   | attributespecifierseq? compoundstatement {{}}
    | attributespecifierseq? selectionstatement
    | attributespecifierseq? iterationstatement
    | attributespecifierseq? jumpstatement
@@ -510,28 +510,28 @@ statement
    ;
 
 labeledstatement
-   : attributespecifierseq? <Identifier> "":"" statement
-   | attributespecifierseq? <Case> constantexpression "":"" statement
-   | attributespecifierseq? <Default> "":"" statement
+   : attributespecifierseq? <Identifier> "":"" statement 'statement' {{LabeledStatement}}
+   | attributespecifierseq? <Case> 'caseToken' constantexpression "":"" statement 'statement' {{CaseLabeledStatement}}
+   | attributespecifierseq? <Default> 'defaultToken' "":"" statement 'statement' {{DefaultLabeledStatement}}
    ;
 
 expressionstatement
-   : expression? "";""
+   : expression? "";"" 'semicolon' {{ExpressionStatement}}
    ;
 
 compoundstatement
-   : ""{"" statementseq? ""}""
+   : ""{"" 'leftBrace' statementseq? ""}"" 'rightBrace' {{BlockStatement}}
    ;
 
 statementseq
-   : statement
-   | statementseq statement
+   : statement 'statement'
+   | statementseq statement 'statement'
    ;
 
 selectionstatement
-   : <If> ""("" condition "")"" statement
-   | <If> ""("" condition "")"" statement <Else> statement
-   | <Switch> ""("" condition "")"" statement
+   : <If> 'ifToken' ""("" 'leftParen' condition "")"" 'rightParen' statement 'statement' {{IfStatement}}
+   | <If> 'ifToken' ""("" 'leftParen' condition "")"" 'rightParen' statement 'thenStatement' <Else> 'elseToken' statement 'elseStatement' {{IfStatement}}
+   | <Switch> 'switchToken' ""("" 'leftParen' condition "")"" 'rightParen' statement 'statement' {{SwitchStatement}}
    ;
 
 condition
@@ -541,10 +541,10 @@ condition
    ;
 
 iterationstatement
-   : <While> ""("" condition "")"" statement
-   | <Do> statement <While> ""("" expression "")"" "";""
-   | <For> ""("" forinitstatement condition? "";"" expression? "")"" statement
-   | <For> ""("" forrangedeclaration "":"" forrangeinitializer "")"" statement
+   : <While> 'whileToken' ""("" 'leftParen' condition "")"" 'rightParen' statement 'statement' {{WhileStatement}}
+   | <Do> 'doToken' statement 'statement' <While> 'whileToken' ""("" 'leftParen' expression "")"" 'rightParen' "";"" 'semicolon' {{DoWhileStatement}}
+   | <For> 'forToken' ""("" 'leftParen' forinitstatement condition? "";"" 'semicolon' expression? "")"" 'rightParen' statement 'statement' {{ForStatement}}
+   | <For> 'forToken' ""("" 'leftParen' forrangedeclaration "":"" forrangeinitializer "")"" 'rightParen' statement 'statement' {{RangeForStatement}}
    ;
 
 forinitstatement
@@ -562,11 +562,11 @@ forrangeinitializer
    ;
 
 jumpstatement
-   : <Break> "";""
-   | <Continue> "";""
-   | <Return> expression? "";""
-   | <Return> bracedinitlist "";""
-   | <Goto> <Identifier> "";""
+   : <Break> 'breakToken' "";"" 'semicolon' {{BreakStatement}}
+   | <Continue> 'continueToken' "";"" 'semicolon' {{ContinueStatement}}
+   | <Return> 'returnToken' expression? "";"" 'semicolon' {{ReturnStatement}}
+   | <Return> 'returnToken' bracedinitlist "";"" 'semicolon' {{ReturnStatement}}
+   | <Goto> 'gotoToken' <Identifier> "";"" 'semicolon' {{GotoStatement}}
    ;
 
 declarationstatement
@@ -604,33 +604,33 @@ blockdeclaration
    ;
 
 aliasdeclaration
-   : <Using> <Identifier> attributespecifierseq? ""="" thetypeid "";""
+   : <Using> 'usingToken' <Identifier> attributespecifierseq? ""="" thetypeid "";"" 'semicolon'
    ;
 
 simpledeclaration
-   : declspecifierseq? initdeclaratorlist? "";""
-   | attributespecifierseq declspecifierseq? initdeclaratorlist "";""
+   : declspecifierseq? initdeclaratorlist? "";"" 'semicolon'
+   | attributespecifierseq declspecifierseq? initdeclaratorlist "";"" 'semicolon'
    ;
 
 static_assertdeclaration
-   : <Static_assert> ""("" constantexpression "","" <Stringliteral> "")"" "";""
+   : <Static_assert> 'static_assertToken' ""("" 'leftParen' constantexpression "","" 'comma' <Stringliteral> "")"" 'rightParen' "";"" 'semicolon'
    ;
 
 emptydeclaration
-   : "";""
+   : "";"" 'semicolon'
    ;
 
 attributedeclaration
-   : attributespecifierseq "";""
+   : attributespecifierseq "";"" 'semicolon'
    ;
 
 declspecifier
    : storageclassspecifier
    | typespecifier
    | functionspecifier
-   | <Friend>
-   | <Typedef>
-   | <Constexpr>
+   | <Friend> 'friendToken'
+   | <Typedef> 'typedefToken'
+   | <Constexpr> 'constexprToken'
    ;
 
 declspecifierseq
@@ -639,17 +639,17 @@ declspecifierseq
    ;
 
 storageclassspecifier
-   : <Register>
-   | <Static>
-   | <Thread_local>
-   | <Extern>
-   | <Mutable>
+   : <Register> 'registerToken'
+   | <Static> 'staticToken'
+   | <Thread_local> 'thread_localToken'
+   | <Extern> 'externToken'
+   | <Mutable> 'mutableToken'
    ;
 
 functionspecifier
-   : <Inline>
-   | <Virtual>
-   | <Explicit>
+   : <Inline> 'inlineToken'
+   | <Virtual> 'virtualToken'
+   | <Explicit> 'explicitToken'
    ;
 
 typedefname
@@ -681,21 +681,21 @@ trailingtypespecifierseq
 
 simpletypespecifier
    : nestednamespecifier? thetypename
-   | nestednamespecifier <Template> simpletemplateid
-   | <Char>
-   | <Char16>
-   | <Char32>
-   | <Wchar>
-   | <Bool>
-   | <Short>
-   | <Int>
-   | <Long>
-   | <Signed>
-   | <Unsigned>
-   | <Float>
-   | <Double>
-   | <Void>
-   | <Auto>
+   | nestednamespecifier <Template> 'templateToken' simpletemplateid
+   | <Char> 'name'
+   | <Char16> 'name'
+   | <Char32> 'name'
+   | <Wchar> 'name'
+   | <Bool> 'name'
+   | <Short> 'name'
+   | <Int> 'name'
+   | <Long> 'name'
+   | <Signed> 'signedToken'
+   | <Unsigned> 'unsignedToken'
+   | <Float> 'name'
+   | <Double> 'name'
+   | <Void> 'name'
+   | <Auto> 'autoToken'
    | decltypespecifier
    ;
 
@@ -707,15 +707,15 @@ thetypename
    ;
 
 decltypespecifier
-   : <Decltype> ""("" expression "")""
-   | <Decltype> ""("" <Auto> "")""
+   : <Decltype> 'decltypeToken' ""("" 'leftParen' expression "")"" 'rightParen'
+   | <Decltype> 'decltypeToken' ""("" 'leftParen' <Auto> 'autoToken' "")"" 'rightParen'
    ;
 
 elaboratedtypespecifier
    : classkey attributespecifierseq? nestednamespecifier? <Identifier>
    | classkey simpletemplateid
-   | classkey nestednamespecifier <Template>? simpletemplateid
-   | <Enum> nestednamespecifier? <Identifier>
+   | classkey nestednamespecifier <Template> 'templateToken'? simpletemplateid
+   | <Enum> 'enumToken' nestednamespecifier? <Identifier>
    ;
 
 enumname
@@ -723,8 +723,8 @@ enumname
    ;
 
 enumspecifier
-   : enumhead ""{"" enumeratorlist? ""}""
-   | enumhead ""{"" enumeratorlist "","" ""}""
+   : enumhead ""{"" 'leftBrace' enumeratorlist? ""}"" 'rightBrace'
+   | enumhead ""{"" 'leftBrace' enumeratorlist "","" 'comma' ""}"" 'rightBrace'
    ;
 
 enumhead
@@ -733,13 +733,13 @@ enumhead
    ;
 
 opaqueenumdeclaration
-   : enumkey attributespecifierseq? <Identifier> enumbase? "";""
+   : enumkey attributespecifierseq? <Identifier> enumbase? "";"" 'semicolon'
    ;
 
 enumkey
-   : <Enum>
-   | <Enum> <Class>
-   | <Enum> <Struct>
+   : <Enum> 'enumToken'
+   | <Enum> 'enumToken' <Class> 'classToken'
+   | <Enum> 'enumToken' <Struct> 'structToken'
    ;
 
 enumbase
@@ -748,7 +748,7 @@ enumbase
 
 enumeratorlist
    : enumeratordefinition
-   | enumeratorlist "","" enumeratordefinition
+   | enumeratorlist "","" 'comma' enumeratordefinition
    ;
 
 enumeratordefinition
@@ -780,15 +780,15 @@ namednamespacedefinition
    ;
 
 originalnamespacedefinition
-   : <Inline>? <Namespace> <Identifier> ""{"" namespacebody ""}""
+   : <Inline> 'inlineToken'? <Namespace> 'namespaceToken' <Identifier> ""{"" 'leftBrace' namespacebody ""}"" 'rightBrace'
    ;
 
 extensionnamespacedefinition
-   : <Inline>? <Namespace> originalnamespacename ""{"" namespacebody ""}""
+   : <Inline> 'inlineToken'? <Namespace> 'namespaceToken' originalnamespacename ""{"" 'leftBrace' namespacebody ""}"" 'rightBrace'
    ;
 
 unnamednamespacedefinition
-   : <Inline>? <Namespace> ""{"" namespacebody ""}""
+   : <Inline> 'inlineToken'? <Namespace> 'namespaceToken' ""{"" 'leftBrace' namespacebody ""}"" 'rightBrace'
    ;
 
 namespacebody
@@ -800,7 +800,7 @@ namespacealias
    ;
 
 namespacealiasdefinition
-   : <Namespace> <Identifier> ""="" qualifiednamespacespecifier "";""
+   : <Namespace> 'namespaceToken' <Identifier> ""="" qualifiednamespacespecifier "";"" 'semicolon'
    ;
 
 qualifiednamespacespecifier
@@ -808,43 +808,43 @@ qualifiednamespacespecifier
    ;
 
 usingdeclaration
-   : <Using> <Typename_>? nestednamespecifier unqualifiedid "";""
-   | <Using> ""::"" unqualifiedid "";""
+   : <Using> 'usingToken' <Typename_> 'typenameToken'? nestednamespecifier unqualifiedid "";"" 'semicolon'
+   | <Using> 'usingToken' ""::"" unqualifiedid "";"" 'semicolon'
    ;
 
 usingdirective
-   : attributespecifierseq? <Using> <Namespace> nestednamespecifier? namespacename "";""
+   : attributespecifierseq? <Using> 'usingToken' <Namespace> 'namespaceToken' nestednamespecifier? namespacename "";"" 'semicolon'
    ;
 
 asmdefinition
-   : <Asm> ""("" <Stringliteral> "")"" "";""
+   : <Asm> 'asmToken' ""("" 'leftParen' <Stringliteral> "")"" 'rightParen' "";"" 'semicolon'
    ;
 
 linkagespecification
-   : <Extern> <Stringliteral> ""{"" declarationseq? ""}""
-   | <Extern> <Stringliteral> declaration
+   : <Extern> 'externToken' <Stringliteral> ""{"" 'leftBrace' declarationseq? ""}"" 'rightBrace'
+   | <Extern> 'externToken' <Stringliteral> declaration
    ;
 
 attributespecifierseq
-   : attributespecifier
-   | attributespecifierseq attributespecifier
+   : attributespecifier 'specifier'
+   | attributespecifierseq attributespecifier 'specifier'
    ;
 
 attributespecifier
-   : ""["" ""["" attributelist ""]"" ""]""
+   : ""["" 'leftBracket' ""["" 'leftBracket' attributelist ""]"" 'rightBracket' ""]"" 'rightBracket' {{AttributeSpecifier}}
    | alignmentspecifier
    ;
 
 alignmentspecifier
-   : <Alignas> ""("" thetypeid ""...""? "")""
-   | <Alignas> ""("" constantexpression ""...""? "")""
+   : <Alignas> 'alignasToken' ""("" 'leftParen' thetypeid ""...""? "")"" 'rightParen' {{AlignmentSpecifier}}
+   | <Alignas> 'alignasToken' ""("" 'leftParen' constantexpression ""...""? "")"" 'rightParen' {{AlignmentSpecifier}}
    ;
 
 attributelist
    : attribute?
-   | attributelist "","" attribute?
+   | attributelist "","" 'comma' attribute?
    | attribute ""...""
-   | attributelist "","" attribute ""...""
+   | attributelist "","" 'comma' attribute ""...""
    ;
 
 attribute
@@ -865,7 +865,7 @@ attributenamespace
    ;
 
 attributeargumentclause
-   : ""("" balancedtokenseq "")""
+   : ""("" 'leftParen' balancedtokenseq "")"" 'rightParen'
    ;
 
 balancedtokenseq
@@ -874,16 +874,16 @@ balancedtokenseq
    ;
 
 balancedtoken
-   : ""("" balancedtokenseq "")""
-   | ""["" balancedtokenseq ""]""
-   | ""{"" balancedtokenseq ""}""
+   : ""("" 'leftParen' balancedtokenseq "")"" 'rightParen'
+   | ""["" 'leftBracket' balancedtokenseq ""]"" 'rightBracket'
+   | ""{"" 'leftBrace' balancedtokenseq ""}"" 'rightBrace'
    ;
 /*Declarators*/
 
 
 initdeclaratorlist
    : initdeclarator
-   | initdeclaratorlist "","" initdeclarator
+   | initdeclaratorlist "","" 'comma' initdeclarator
    ;
 
 initdeclarator
@@ -903,12 +903,12 @@ ptrdeclarator
 noptrdeclarator
    : declaratorid attributespecifierseq?
    | noptrdeclarator parametersandqualifiers
-   | noptrdeclarator ""["" constantexpression? ""]"" attributespecifierseq?
-   | ""("" ptrdeclarator "")""
+   | noptrdeclarator ""["" 'leftBracket' constantexpression? ""]"" 'rightBracket' attributespecifierseq?
+   | ""("" 'leftParen' ptrdeclarator "")"" 'rightParen'
    ;
 
 parametersandqualifiers
-   : ""("" parameterdeclarationclause "")"" cvqualifierseq? refqualifier? exceptionspecification? attributespecifierseq?
+   : ""("" 'leftParen' parameterdeclarationclause "")"" 'rightParen' cvqualifierseq? refqualifier? exceptionspecification? attributespecifierseq?
    ;
 
 trailingreturntype
@@ -927,8 +927,8 @@ cvqualifierseq
    ;
 
 cvqualifier
-   : <Const>
-   | <Volatile>
+   : <Const> 'constToken'
+   | <Volatile> 'volatileToken'
    ;
 
 refqualifier
@@ -958,9 +958,9 @@ ptrabstractdeclarator
 noptrabstractdeclarator
    : noptrabstractdeclarator parametersandqualifiers
    | parametersandqualifiers
-   | noptrabstractdeclarator ""["" constantexpression? ""]"" attributespecifierseq?
-   | ""["" constantexpression? ""]"" attributespecifierseq?
-   | ""("" ptrabstractdeclarator "")""
+   | noptrabstractdeclarator ""["" 'leftBracket' constantexpression? ""]"" 'rightBracket' attributespecifierseq?
+   | ""["" 'leftBracket' constantexpression? ""]"" 'rightBracket' attributespecifierseq?
+   | ""("" 'leftParen' ptrabstractdeclarator "")"" 'rightParen'
    ;
 
 abstractpackdeclarator
@@ -970,18 +970,18 @@ abstractpackdeclarator
 
 noptrabstractpackdeclarator
    : noptrabstractpackdeclarator parametersandqualifiers
-   | noptrabstractpackdeclarator ""["" constantexpression? ""]"" attributespecifierseq?
+   | noptrabstractpackdeclarator ""["" 'leftBracket' constantexpression? ""]"" 'rightBracket' attributespecifierseq?
    | ""...""
    ;
 
 parameterdeclarationclause
    : parameterdeclarationlist? ""...""?
-   | parameterdeclarationlist "","" ""...""
+   | parameterdeclarationlist "","" 'comma' ""...""
    ;
 
 parameterdeclarationlist
    : parameterdeclaration
-   | parameterdeclarationlist "","" parameterdeclaration
+   | parameterdeclarationlist "","" 'comma' parameterdeclaration
    ;
 
 parameterdeclaration
@@ -998,13 +998,13 @@ functiondefinition
 functionbody
    : ctorinitializer? compoundstatement
    | functiontryblock
-   | ""="" <Default> "";""
-   | ""="" <Delete> "";""
+   | ""="" <Default> 'defaultToken' "";"" 'semicolon'
+   | ""="" <Delete> 'deleteToken' "";"" 'semicolon'
    ;
 
 initializer
    : braceorequalinitializer
-   | ""("" expressionlist "")""
+   | ""("" 'leftParen' expressionlist "")"" 'rightParen'
    ;
 
 braceorequalinitializer
@@ -1019,12 +1019,12 @@ initializerclause
 
 initializerlist
    : initializerclause ""...""?
-   | initializerlist "","" initializerclause ""...""?
+   | initializerlist "","" 'comma' initializerclause ""...""?
    ;
 
 bracedinitlist
-   : ""{"" initializerlist "",""? ""}""
-   | ""{"" ""}""
+   : ""{"" 'leftBrace' initializerlist "","" 'comma'? ""}"" 'rightBrace'
+   | ""{"" 'leftBrace' ""}"" 'rightBrace'
    ;
 /*Classes*/
 
@@ -1035,7 +1035,7 @@ classname
    ;
 
 classspecifier
-   : classhead ""{"" memberspecification? ""}""
+   : classhead ""{"" 'leftBrace' memberspecification? ""}"" 'rightBrace'
    ;
 
 classhead
@@ -1048,13 +1048,13 @@ classheadname
    ;
 
 classvirtspecifier
-   : <Final>
+   : <Final> 'finalToken'
    ;
 
 classkey
-   : <Class>
-   | <Struct>
-   | <Union>
+   : <Class> 'classToken'
+   | <Struct> 'structToken'
+   | <Union> 'unionToken'
    ;
 
 memberspecification
@@ -1063,7 +1063,7 @@ memberspecification
    ;
 
 memberdeclaration
-   : attributespecifierseq? declspecifierseq? memberdeclaratorlist? "";""
+   : attributespecifierseq? declspecifierseq? memberdeclaratorlist? "";"" 'semicolon'
    | functiondefinition
    | usingdeclaration
    | static_assertdeclaration
@@ -1074,7 +1074,7 @@ memberdeclaration
 
 memberdeclaratorlist
    : memberdeclarator
-   | memberdeclaratorlist "","" memberdeclarator
+   | memberdeclaratorlist "","" 'comma' memberdeclarator
    ;
 
 memberdeclarator
@@ -1089,8 +1089,8 @@ virtspecifierseq
    ;
 
 virtspecifier
-   : <Override>
-   | <Final>
+   : <Override> 'overrideToken'
+   | <Final> 'finalToken'
    ;
 /*
 purespecifier:
@@ -1112,13 +1112,13 @@ baseclause
 
 basespecifierlist
    : basespecifier ""...""?
-   | basespecifierlist "","" basespecifier ""...""?
+   | basespecifierlist "","" 'comma' basespecifier ""...""?
    ;
 
 basespecifier
    : attributespecifierseq? basetypespecifier
-   | attributespecifierseq? <Virtual> accessspecifier? basetypespecifier
-   | attributespecifierseq? accessspecifier <Virtual>? basetypespecifier
+   | attributespecifierseq? <Virtual> 'virtualToken' accessspecifier? basetypespecifier
+   | attributespecifierseq? accessspecifier <Virtual> 'virtualToken'? basetypespecifier
    ;
 
 classordecltype
@@ -1131,15 +1131,15 @@ basetypespecifier
    ;
 
 accessspecifier
-   : <Private>
-   | <Protected>
-   | <Public>
+   : <Private> 'privateToken'
+   | <Protected> 'protectedToken'
+   | <Public> 'publicToken'
    ;
 /*Special member functions*/
 
 
 conversionfunctionid
-   : <Operator> conversiontypeid
+   : <Operator> 'operatorToken' conversiontypeid
    ;
 
 conversiontypeid
@@ -1156,11 +1156,11 @@ ctorinitializer
 
 meminitializerlist
    : meminitializer ""...""?
-   | meminitializer ""...""? "","" meminitializerlist
+   | meminitializer ""...""? "","" 'comma' meminitializerlist
    ;
 
 meminitializer
-   : meminitializerid ""("" expressionlist? "")""
+   : meminitializerid ""("" 'leftParen' expressionlist? "")"" 'rightParen'
    | meminitializerid bracedinitlist
    ;
 
@@ -1172,23 +1172,23 @@ meminitializerid
 
 
 operatorfunctionid
-   : <Operator> theoperator
+   : <Operator> 'operatorToken' theoperator 'name'
    ;
 
 literaloperatorid
-   : <Operator> <Stringliteral> <Identifier>
-   | <Operator> <Userdefinedstringliteral>
+   : <Operator> 'operatorToken' <Stringliteral> <Identifier>
+   | <Operator> 'operatorToken' <Userdefinedstringliteral>
    ;
 /*Templates*/
 
 
 templatedeclaration
-   : <Template> ""<"" templateparameterlist "">"" declaration
+   : <Template> 'templateToken' ""<"" templateparameterlist "">"" declaration
    ;
 
 templateparameterlist
    : templateparameter
-   | templateparameterlist "","" templateparameter
+   | templateparameterlist "","" 'comma' templateparameter
    ;
 
 templateparameter
@@ -1197,12 +1197,12 @@ templateparameter
    ;
 
 typeparameter
-   : <Class> ""...""? <Identifier>?
-   | <Class> <Identifier>? ""="" thetypeid
-   | <Typename_> ""...""? <Identifier>?
-   | <Typename_> <Identifier>? ""="" thetypeid
-   | <Template> ""<"" templateparameterlist "">"" <Class> ""...""? <Identifier>?
-   | <Template> ""<"" templateparameterlist "">"" <Class> <Identifier>? ""="" idexpression
+   : <Class> 'classToken' ""...""? <Identifier>?
+   | <Class> 'classToken' <Identifier>? ""="" thetypeid
+   | <Typename_> 'typenameToken' ""...""? <Identifier>?
+   | <Typename_> 'typenameToken' <Identifier>? ""="" thetypeid
+   | <Template> 'templateToken' ""<"" templateparameterlist "">"" <Class> 'classToken' ""...""? <Identifier>?
+   | <Template> 'templateToken' ""<"" templateparameterlist "">"" <Class> 'classToken' <Identifier>? ""="" idexpression
    ;
 
 simpletemplateid
@@ -1221,7 +1221,7 @@ templatename
 
 templateargumentlist
    : templateargument ""...""?
-   | templateargumentlist "","" templateargument ""...""?
+   | templateargumentlist "","" 'comma' templateargument ""...""?
    ;
 
 templateargument
@@ -1231,26 +1231,26 @@ templateargument
    ;
 
 typenamespecifier
-   : <Typename_> nestednamespecifier <Identifier>
-   | <Typename_> nestednamespecifier <Template>? simpletemplateid
+   : <Typename_> 'typenameToken' nestednamespecifier <Identifier>
+   | <Typename_> 'typenameToken' nestednamespecifier <Template> 'templateToken'? simpletemplateid
    ;
 
 explicitinstantiation
-   : <Extern>? <Template> declaration
+   : <Extern> 'externToken'? <Template> 'templateToken' declaration
    ;
 
 explicitspecialization
-   : <Template> ""<"" "">"" declaration
+   : <Template> 'templateToken' ""<"" "">"" declaration
    ;
 /*Exception handling*/
 
 
 tryblock
-   : <Try> compoundstatement handlerseq
+   : <Try> 'tryToken' compoundstatement handlerseq
    ;
 
 functiontryblock
-   : <Try> ctorinitializer? compoundstatement handlerseq
+   : <Try> 'tryToken' ctorinitializer? compoundstatement handlerseq
    ;
 
 handlerseq
@@ -1258,7 +1258,7 @@ handlerseq
    ;
 
 handler
-   : <Catch> ""("" exceptiondeclaration "")"" compoundstatement
+   : <Catch> 'catchToken' ""("" 'leftParen' exceptiondeclaration "")"" 'rightParen' compoundstatement
    ;
 
 exceptiondeclaration
@@ -1268,7 +1268,7 @@ exceptiondeclaration
    ;
 
 throwexpression
-   : <Throw> assignmentexpression?
+   : <Throw> 'throwToken' assignmentexpression? {{ThrowExpression}}
    ;
 
 exceptionspecification
@@ -1277,17 +1277,17 @@ exceptionspecification
    ;
 
 dynamicexceptionspecification
-   : <Throw> ""("" typeidlist? "")""
+   : <Throw> 'throwToken' ""("" 'leftParen' typeidlist? "")"" 'rightParen'
    ;
 
 typeidlist
    : thetypeid ""...""?
-   | typeidlist "","" thetypeid ""...""?
+   | typeidlist "","" 'comma' thetypeid ""...""?
    ;
 
 noexceptspecification
-   : <Noexcept> ""("" constantexpression "")""
-   | <Noexcept>
+   : <Noexcept> 'noexceptToken' ""("" 'leftParen' constantexpression "")"" 'rightParen'
+   | <Noexcept> 'noexceptToken'
    ;
 /*Preprocessing directives*/
 <directive>
@@ -1618,10 +1618,10 @@ noexceptspecification
    ;
 
 theoperator
-   : <New>
-   | <Delete>
-   | <New> ""["" ""]""
-   | <Delete> ""["" ""]""
+   : <New> 'newToken'
+   | <Delete> 'deleteToken'
+   | <New> 'newToken' ""["" 'leftBracket' ""]"" 'rightBracket'
+   | <Delete> 'deleteToken' ""["" 'leftBracket' ""]"" 'rightBracket'
    | ""+""
    | ""-""
    | ""*""
@@ -1658,11 +1658,11 @@ theoperator
    | ""or""
    | ""++""
    | ""--""
-   | "",""
+   | "","" 'comma'
    | ""->*""
    | ""->""
-   | ""("" "")""
-   | ""["" ""]""
+   | ""("" 'leftParen' "")"" 'rightParen'
+   | ""["" 'leftBracket' ""]"" 'rightBracket'
    ;
 /*Lexer*/
 
@@ -1704,7 +1704,7 @@ literal
    | <Characterliteral>
    | <Floatingliteral>
    | <Stringliteral>
-   | booleanliteral
+   | booleanliteral 
    | pointerliteral
    | userdefinedliteral
    ;
@@ -1861,12 +1861,12 @@ literal
    ;
 
 booleanliteral
-   : <False>
-   | <True>
+   : <False> 'value'
+   | <True> 'value'
    ;
 
 pointerliteral
-   : <Nullptr>
+   : <Nullptr> 
    ;
 
 userdefinedliteral
@@ -1926,8 +1926,8 @@ CPPParser class >> reduceTable [
 	#(142 0 #reduceFor:) 
 	#(266 1 #reduceFor:) 
 	#(147 1 #reduceFor:) 
-	#(209 1 #reduceFor:) 
 	#(207 1 #reduceFor:) 
+	#(209 1 #reduceFor:) 
 	#(220 1 #reduceFor:) 
 	#(292 1 #reduceFor:) 
 	#(268 1 #reduceFor:) 
@@ -1939,8 +1939,8 @@ CPPParser class >> reduceTable [
 	#(224 1 #reduceFor:) 
 	#(215 1 #reduceFor:) 
 	#(287 1 #reduceFor:) 
-	#(234 1 #reduceFor:) 
 	#(241 1 #reduceFor:) 
+	#(234 1 #reduceFor:) 
 	#(321 1 #reduceFor:) 
 	#(270 1 #reduceFor:) 
 	#(144 1 #reduceFor:) 
