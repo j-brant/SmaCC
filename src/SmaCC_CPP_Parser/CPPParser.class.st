@@ -83,12 +83,12 @@ CPPParser class >> ambiguousTransitions [
 #[ 0 66 2 62] 
 #[ 0 10 1 90] 
 #[ 0 37 1 90] 
-#[ 0 18 2 82] 
+#[ 0 22 2 82] 
 #[ 2 86 2 90] 
 #[ 0 82 1 102] 
 #[ 1 194 2 50] 
 #[ 0 37 1 62] 
-#[ 0 22 2 126] 
+#[ 0 18 2 126] 
 #[ 0 54 0 58 0 62 0 66 12 149] 
 #[ 0 37 0 54 0 58 0 62 0 66] 
 #[ 0 45 0 54 0 58 0 62 0 66] 
@@ -159,7 +159,7 @@ CPPParser class >> ambiguousTransitions [
 
 { #category : #'generated-accessing' }
 CPPParser class >> cacheId [
-	^'2019-03-26T18:50:11.9604-05:00'
+	^'2019-03-27T13:41:50.117355-05:00'
 ]
 
 { #category : #generated }
@@ -213,7 +213,7 @@ idexpression
    ;
 
 unqualifiedid
-   : <Identifier>
+   : <Identifier> {{Variable}}
    | operatorfunctionid
    | conversionfunctionid
    | literaloperatorid
@@ -236,7 +236,7 @@ nestednamespecifier
    ;
 
 lambdaexpression
-   : lambdaintroducer lambdadeclarator? compoundstatement {{LambdaExpression}}
+   : lambdaintroducer lambdadeclarator? compoundstatement 'statement' {{LambdaExpression}}
    ;
 
 lambdaintroducer
@@ -276,24 +276,24 @@ initcapture
    ;
 
 lambdadeclarator
-   : ""("" 'leftParen' parameterdeclarationclause "")"" 'rightParen' <Mutable> 'mutableToken'? exceptionspecification? attributespecifierseq? trailingreturntype?
+   : ""("" 'leftParen' parameterdeclarationclause "")"" 'rightParen' <Mutable> 'mutableToken'? exceptionspecification 'exceptionSpecification'? attributespecifierseq? trailingreturntype?
    ;
 
 postfixexpression
    : primaryexpression
-   | postfixexpression ""["" 'leftBracket' expression ""]"" 'rightBracket'
-   | postfixexpression ""["" 'leftBracket' bracedinitlist ""]"" 'rightBracket'
-   | postfixexpression ""("" 'leftParen' expressionlist? "")"" 'rightParen'
+   | postfixexpression 'expression' ""["" 'leftBracket' expression ""]"" 'rightBracket'
+   | postfixexpression 'expression' ""["" 'leftBracket' bracedinitlist ""]"" 'rightBracket'
+   | postfixexpression 'expression' ""("" 'leftParen' expressionlist? "")"" 'rightParen'
    | simpletypespecifier ""("" 'leftParen' expressionlist? "")"" 'rightParen'
    | typenamespecifier ""("" 'leftParen' expressionlist? "")"" 'rightParen'
    | simpletypespecifier bracedinitlist
    | typenamespecifier bracedinitlist
-   | postfixexpression ""."" <Template> 'templateToken'? idexpression
-   | postfixexpression ""->"" <Template> 'templateToken'? idexpression
-   | postfixexpression ""."" pseudodestructorname
-   | postfixexpression ""->"" pseudodestructorname
-   | postfixexpression ""++"" 'operator' {{PostfixExpression}}
-   | postfixexpression ""--"" 'operator' {{PostfixExpression}}
+   | postfixexpression 'expression' ""."" <Template> 'templateToken'? idexpression
+   | postfixexpression 'expression' ""->"" <Template> 'templateToken'? idexpression
+   | postfixexpression 'expression' ""."" pseudodestructorname
+   | postfixexpression 'expression' ""->"" pseudodestructorname
+   | postfixexpression 'expression' ""++"" 'operator' {{PostfixExpression}}
+   | postfixexpression 'expression' ""--"" 'operator' {{PostfixExpression}}
    | <Dynamic_cast> 'dynamic_castToken' ""<"" thetypeid "">"" ""("" 'leftParen' expression "")"" 'rightParen'
    | <Static_cast> 'static_castToken' ""<"" thetypeid "">"" ""("" 'leftParen' expression "")"" 'rightParen'
    | <Reinterpret_cast> 'reinterpret_castToken' ""<"" thetypeid "">"" ""("" 'leftParen' expression "")"" 'rightParen'
@@ -327,13 +327,13 @@ pseudodestructorname
 
 unaryexpression
    : postfixexpression
-   | ""++"" 'operator' castexpression {{PrefixExpression}}
-   | ""--"" 'operator' castexpression {{PrefixExpression}}
-   | unaryoperator 'operator' castexpression
-   | <Sizeof> 'sizeofToken' unaryexpression {{PrefixExpression}}
-   | <Sizeof> 'sizeofToken' ""("" 'leftParen' thetypeid "")"" 'rightParen'
-   | <Sizeof> 'sizeofToken' ""..."" ""("" 'leftParen' <Identifier> "")"" 'rightParen'
-   | <Alignof> 'alignofToken' ""("" 'leftParen' thetypeid "")"" 'rightParen'
+   | ""++"" 'operator' castexpression 'expression' {{PrefixExpression}}
+   | ""--"" 'operator' castexpression 'expression' {{PrefixExpression}}
+   | unaryoperator 'operator' castexpression 'expression' {{PrefixExpression}}
+   | <Sizeof> 'sizeofToken' unaryexpression 'expression' {{PrefixExpression}}
+   | <Sizeof> 'sizeofToken' ""("" 'leftParen' thetypeid "")"" 'rightParen' {{SizeofExpression}}
+   | <Sizeof> 'sizeofToken' ""..."" ""("" 'leftParen' <Identifier> "")"" 'rightParen' {{SizeofExpression}}
+   | <Alignof> 'alignofToken' ""("" 'leftParen' thetypeid "")"" 'rightParen' {{AlignofExpression}}
    | noexceptexpression
    | newexpression
    | deleteexpression
@@ -379,8 +379,8 @@ newinitializer
    ;
 
 deleteexpression
-   : ""::""? <Delete> 'deleteToken' castexpression {{DeleteExpression}}
-   | ""::""? <Delete> 'deleteToken' ""["" 'leftBracket' ""]"" 'rightBracket' castexpression {{DeleteExpression}}
+   : ""::""? <Delete> 'deleteToken' castexpression 'expression' {{DeleteExpression}}
+   | ""::""? <Delete> 'deleteToken' ""["" 'leftBracket' ""]"" 'rightBracket' castexpression 'expression' {{DeleteExpression}}
    ;
 
 noexceptexpression
@@ -389,31 +389,31 @@ noexceptexpression
 
 castexpression
    : unaryexpression
-   | ""("" 'leftParen' thetypeid "")"" 'rightParen' castexpression {{CastExpression}}
+   | ""("" 'leftParen' thetypeid "")"" 'rightParen' castexpression 'expression' {{CastExpression}}
    ;
 
 pmexpression
    : castexpression
-   | pmexpression "".*"" castexpression
-   | pmexpression ""->*"" castexpression
+   | pmexpression 'left' "".*"" 'operator' castexpression 'right' {{BinaryExpression}}
+   | pmexpression 'left' ""->*"" 'operator' castexpression 'right' {{BinaryExpression}}
    ;
 
 multiplicativeexpression
    : pmexpression
-   | multiplicativeexpression ""*"" 'operator' pmexpression {{BinaryExpression}}
-   | multiplicativeexpression ""/"" 'operator' pmexpression {{BinaryExpression}}
-   | multiplicativeexpression ""%"" 'operator' pmexpression {{BinaryExpression}}
+   | multiplicativeexpression 'left' ""*"" 'operator' pmexpression 'right' {{BinaryExpression}}
+   | multiplicativeexpression 'left' ""/"" 'operator' pmexpression 'right' {{BinaryExpression}}
+   | multiplicativeexpression 'left' ""%"" 'operator' pmexpression 'right' {{BinaryExpression}}
    ;
 
 additiveexpression
    : multiplicativeexpression
-   | additiveexpression ""+"" 'operator' multiplicativeexpression {{BinaryExpression}}
-   | additiveexpression ""-"" 'operator' multiplicativeexpression {{BinaryExpression}}
+   | additiveexpression 'left' ""+"" 'operator' multiplicativeexpression 'right' {{BinaryExpression}}
+   | additiveexpression 'left' ""-"" 'operator' multiplicativeexpression 'right' {{BinaryExpression}}
    ;
 
 shiftexpression
    : additiveexpression
-   | shiftexpression  shiftoperator 'operator' additiveexpression {{BinaryExpression}}
+   | shiftexpression 'left'  shiftoperator 'operator' additiveexpression 'right' {{BinaryExpression}}
    ;
 
 shiftoperator
@@ -423,53 +423,53 @@ shiftoperator
 
 relationalexpression
    : shiftexpression
-   | relationalexpression ""<"" 'operator' shiftexpression  {{BinaryExpression}}
-   | relationalexpression "">"" 'operator' shiftexpression  {{BinaryExpression}}
-   | relationalexpression ""<="" 'operator' shiftexpression  {{BinaryExpression}}
-   | relationalexpression "">="" 'operator' shiftexpression  {{BinaryExpression}}
+   | relationalexpression 'left' ""<"" 'operator' shiftexpression 'right'  {{BinaryExpression}}
+   | relationalexpression 'left' "">"" 'operator' shiftexpression 'right'  {{BinaryExpression}}
+   | relationalexpression 'left' ""<="" 'operator' shiftexpression 'right'  {{BinaryExpression}}
+   | relationalexpression 'left' "">="" 'operator' shiftexpression 'right'  {{BinaryExpression}}
    ;
 
 equalityexpression
    : relationalexpression
-   | equalityexpression ""=="" 'operator' relationalexpression {{BinaryExpression}}
-   | equalityexpression ""!="" relationalexpression {{BinaryExpression}}
+   | equalityexpression 'left' ""=="" 'operator' relationalexpression 'right' {{BinaryExpression}}
+   | equalityexpression 'left' ""!="" relationalexpression 'right' {{BinaryExpression}}
    ;
 
 andexpression
    : equalityexpression
-   | andexpression ""&"" 'operator' equalityexpression {{BinaryExpression}}
+   | andexpression 'left' ""&"" 'operator' equalityexpression 'right' {{BinaryExpression}}
    ;
 
 exclusiveorexpression
    : andexpression
-   | exclusiveorexpression ""^"" 'operator' andexpression {{BinaryExpression}}
+   | exclusiveorexpression 'left' ""^"" 'operator' andexpression 'left' {{BinaryExpression}}
    ;
 
 inclusiveorexpression
    : exclusiveorexpression
-   | inclusiveorexpression ""|"" 'operator' exclusiveorexpression {{BinaryExpression}}
+   | inclusiveorexpression 'left' ""|"" 'operator' exclusiveorexpression 'right' {{BinaryExpression}}
    ;
 
 logicalandexpression
    : inclusiveorexpression
-   | logicalandexpression ""&&"" 'operator' inclusiveorexpression {{BinaryExpression}}
-   | logicalandexpression ""and"" 'operator' inclusiveorexpression {{BinaryExpression}}
+   | logicalandexpression 'left' ""&&"" 'operator' inclusiveorexpression 'right' {{BinaryExpression}}
+   | logicalandexpression 'left' ""and"" 'operator' inclusiveorexpression 'right' {{BinaryExpression}}
    ;
 
 logicalorexpression
    : logicalandexpression
-   | logicalorexpression ""||"" 'operator' logicalandexpression {{BinaryExpression}}
-   | logicalorexpression ""or"" 'operator' logicalandexpression {{BinaryExpression}}
+   | logicalorexpression 'left' ""||"" 'operator' logicalandexpression 'right' {{BinaryExpression}}
+   | logicalorexpression 'left' ""or"" 'operator' logicalandexpression 'right' {{BinaryExpression}}
    ;
 
 conditionalexpression
    : logicalorexpression
-   | logicalorexpression ""?"" 'questionMark' expression "":"" 'colon' assignmentexpression {{ConditionalExpression}}
+   | logicalorexpression 'booleanExpression' ""?"" 'questionMark' expression 'trueExpression' "":"" 'colon' assignmentexpression 'falseExpression' {{ConditionalExpression}}
    ;
 
 assignmentexpression
    : conditionalexpression
-   | logicalorexpression assignmentoperator 'operator' initializerclause {{AssignmentExpression}}
+   | logicalorexpression 'lhs' assignmentoperator 'operator' initializerclause {{AssignmentExpression}}
    | throwexpression
    ;
 
@@ -489,7 +489,7 @@ assignmentoperator
 
 expression
    : assignmentexpression
-   | expression "","" 'comma' assignmentexpression
+   | expression "","" 'comma' assignmentexpression 'right' {{CommaExpression}}
    ;
 
 constantexpression
@@ -520,7 +520,7 @@ expressionstatement
    ;
 
 compoundstatement
-   : ""{"" 'leftBrace' statementseq? ""}"" 'rightBrace' {{BlockStatement}}
+   : ""{"" 'leftBrace' statementseq? ""}"" 'rightBrace' {{CompoundStatement}}
    ;
 
 statementseq
@@ -908,7 +908,7 @@ noptrdeclarator
    ;
 
 parametersandqualifiers
-   : ""("" 'leftParen' parameterdeclarationclause "")"" 'rightParen' cvqualifierseq? refqualifier? exceptionspecification? attributespecifierseq?
+   : ""("" 'leftParen' parameterdeclarationclause "")"" 'rightParen' cvqualifierseq? refqualifier? exceptionspecification 'exceptionSpecification'? attributespecifierseq?
    ;
 
 trailingreturntype
@@ -996,7 +996,7 @@ functiondefinition
    ;
 
 functionbody
-   : ctorinitializer? compoundstatement
+   : ctorinitializer? compoundstatement 'statement'
    | functiontryblock
    | ""="" <Default> 'defaultToken' "";"" 'semicolon'
    | ""="" <Delete> 'deleteToken' "";"" 'semicolon'
@@ -1246,19 +1246,19 @@ explicitspecialization
 
 
 tryblock
-   : <Try> 'tryToken' compoundstatement handlerseq
+   : <Try> 'tryToken' compoundstatement 'statement' handlerseq {{TryStatement}}
    ;
 
 functiontryblock
-   : <Try> 'tryToken' ctorinitializer? compoundstatement handlerseq
+   : <Try> 'tryToken' ctorinitializer? compoundstatement 'statement' handlerseq {{TryStatement}}
    ;
 
 handlerseq
-   : handler handlerseq?
+   : handler 'handler' handlerseq?
    ;
 
 handler
-   : <Catch> 'catchToken' ""("" 'leftParen' exceptiondeclaration "")"" 'rightParen' compoundstatement
+   : <Catch> 'catchToken' ""("" 'leftParen' exceptiondeclaration "")"" 'rightParen' compoundstatement 'statement' {{CatchHandler}}
    ;
 
 exceptiondeclaration
@@ -1268,7 +1268,7 @@ exceptiondeclaration
    ;
 
 throwexpression
-   : <Throw> 'throwToken' assignmentexpression? {{ThrowExpression}}
+   : <Throw> 'throwToken' assignmentexpression 'expression'? {{ThrowExpression}}
    ;
 
 exceptionspecification
@@ -1277,7 +1277,7 @@ exceptionspecification
    ;
 
 dynamicexceptionspecification
-   : <Throw> 'throwToken' ""("" 'leftParen' typeidlist? "")"" 'rightParen'
+   : <Throw> 'throwToken' ""("" 'leftParen' typeidlist? "")"" 'rightParen' {{DynamicExceptionSpecification}}
    ;
 
 typeidlist
@@ -1286,8 +1286,8 @@ typeidlist
    ;
 
 noexceptspecification
-   : <Noexcept> 'noexceptToken' ""("" 'leftParen' constantexpression "")"" 'rightParen'
-   | <Noexcept> 'noexceptToken'
+   : <Noexcept> 'noexceptToken' ""("" 'leftParen' constantexpression "")"" 'rightParen' {{NoExceptionSpecificiation}}
+   | <Noexcept> 'noexceptToken' {{NoExceptionSpecificiation}}
    ;
 /*Preprocessing directives*/
 <directive>
@@ -1926,8 +1926,8 @@ CPPParser class >> reduceTable [
 	#(142 0 #reduceFor:) 
 	#(266 1 #reduceFor:) 
 	#(147 1 #reduceFor:) 
-	#(207 1 #reduceFor:) 
 	#(209 1 #reduceFor:) 
+	#(207 1 #reduceFor:) 
 	#(220 1 #reduceFor:) 
 	#(292 1 #reduceFor:) 
 	#(268 1 #reduceFor:) 
@@ -1936,8 +1936,8 @@ CPPParser class >> reduceTable [
 	#(214 1 #reduceFor:) 
 	#(213 1 #reduceFor:) 
 	#(145 1 #reduceFor:) 
-	#(224 1 #reduceFor:) 
 	#(215 1 #reduceFor:) 
+	#(224 1 #reduceFor:) 
 	#(287 1 #reduceFor:) 
 	#(241 1 #reduceFor:) 
 	#(234 1 #reduceFor:) 
