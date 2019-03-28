@@ -223,7 +223,7 @@ SmaCCNode >> hasSimpleLoop [
 
 { #category : #comparing }
 SmaCCNode >> hash [
-	^ id bitShift: 4
+	^ id hashMultiply
 ]
 
 { #category : #accessing }

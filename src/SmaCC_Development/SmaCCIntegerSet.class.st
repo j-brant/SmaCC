@@ -368,7 +368,7 @@ SmaCCIntegerSet >> hasMore: aCollection after: index [
 { #category : #comparing }
 SmaCCIntegerSet >> hash [
 	self normalize.
-	^ data hash bitXor: self size hash
+	^ data hash hashMultiply bitXor: self size hash
 ]
 
 { #category : #testing }

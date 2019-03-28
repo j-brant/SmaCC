@@ -6,7 +6,7 @@ Class {
 		'nfa',
 		'actionMap'
 	],
-	#category : #'SmaCC_Debugging_Support'
+	#category : #'SmaCC_Debugging_Support-Simulation'
 }
 
 { #category : #examples }

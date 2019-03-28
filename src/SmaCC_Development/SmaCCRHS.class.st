@@ -165,7 +165,7 @@ SmaCCRHS >> hasReduceAction [
 
 { #category : #comparing }
 SmaCCRHS >> hash [
-	^ self class hash bitXor: (collection hash bitShift: 14)
+	^ self class hash hashMultiply bitXor: collection hash
 ]
 
 { #category : #variables }

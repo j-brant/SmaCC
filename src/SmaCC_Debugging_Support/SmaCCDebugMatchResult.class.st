@@ -8,7 +8,7 @@ Class {
 		'children',
 		'parent'
 	],
-	#category : #'SmaCC_Debugging_Support'
+	#category : #'SmaCC_Debugging_Support-Pattern Matching'
 }
 
 { #category : #examples }

@@ -24,7 +24,7 @@ SmaCCSymbolTableIndex >> = anObject [
 
 { #category : #comparing }
 SmaCCSymbolTableIndex >> hash [
-	^ (index bitShift: 14) + symbol hash
+	^ index hashMultiply bitXor: symbol hash
 ]
 
 { #category : #accessing }

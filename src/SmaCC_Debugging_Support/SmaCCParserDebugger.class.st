@@ -7,7 +7,7 @@ Class {
 	#classInstVars : [
 		'availableAutomatically'
 	],
-	#category : #'SmaCC_Debugging_Support'
+	#category : #'SmaCC_Debugging_Support-Debugger'
 }
 
 { #category : #accessing }
