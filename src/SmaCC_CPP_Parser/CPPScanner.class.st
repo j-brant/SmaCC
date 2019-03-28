@@ -22,12 +22,12 @@ CPPScanner >> directive [
 
 { #category : #generated }
 CPPScanner >> emptySymbolTokenId [
-	^ 342
+	^ 338
 ]
 
 { #category : #generated }
 CPPScanner >> errorTokenId [
-	^ 343
+	^ 339
 ]
 
 { #category : #generated }
