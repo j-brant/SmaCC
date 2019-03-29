@@ -113,7 +113,7 @@ SmaCCScannerSimulator >> scanForToken [
 	| currentStates |
 	currentStates := IdentitySet with: nfa.
 	[ self expandStates: currentStates.
-	currentStates notEmpty ]
+	currentStates notEmpty and: [ stream atEnd not ] ]
 		whileTrue: [ self step.
 			currentStates := self moveFrom: currentStates ].
 	^ self reportLastMatch: currentStates isEmpty

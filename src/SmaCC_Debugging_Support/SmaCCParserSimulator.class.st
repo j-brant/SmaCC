@@ -215,7 +215,9 @@ SmaCCParserSimulator >> pushObject: anObject andState: anInteger [
 ]
 
 { #category : #private }
-SmaCCParserSimulator >> resetParserStates [
+SmaCCParserSimulator >> resetParser [
+	lastState := nil.
+	currentToken := nil.
 	parserStates := OrderedCollection
 		with:
 			(currentParserState := SmaCCParserState
@@ -252,16 +254,16 @@ SmaCCParserSimulator >> signalErrorFrom: aSmaCCToken [
 
 { #category : #parsing }
 SmaCCParserSimulator >> simulateParse: aString [
+	"Returns all possible interpretations of the parse"
+
 	scannerSimulator on: aString readStream.
-	self resetParserStates.
+	self resetParser.
 	[ parserStates size to: 1 by: -1 do: [ :i | 
 		self restoreState: (parserStates at: i).
 		self getNextToken.
 		self processToken ].
 	self isAccepted ] whileFalse.
-	^ parserStates size = 1
-		ifTrue: [ parserStates first nodeStack first ]
-		ifFalse: [ parserStates collect: [ :each | each nodeStack first ] ]
+	^ parserStates collect: [ :each | each nodeStack first ]
 ]
 
 { #category : #private }
