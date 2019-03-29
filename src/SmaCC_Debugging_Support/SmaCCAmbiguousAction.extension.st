@@ -7,6 +7,7 @@ SmaCCAmbiguousAction >> simulateOn: aParserSimulator token: aSmaCCToken [
 	2 to: actions size do: [ :i | 
 		aParserSimulator duplicateState.
 		(actions at: i) simulateOn: aParserSimulator token: aSmaCCToken.
+		aParserSimulator processToken.
 		aParserSimulator restoreState: currentState andToken: aSmaCCToken ].
 	actions first simulateOn: aParserSimulator token: aSmaCCToken
 ]
