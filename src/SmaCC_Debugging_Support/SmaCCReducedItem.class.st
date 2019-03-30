@@ -56,3 +56,23 @@ SmaCCReducedItem >> rhs [
 SmaCCReducedItem >> rhs: anObject [
 	rhs := anObject
 ]
+
+{ #category : #accessing }
+SmaCCReducedItem >> sourceInterval [
+	^ self startPosition
+		ifNil: [ nil ]
+		ifNotNil: [ :pos | pos to: self stopPosition ]
+]
+
+{ #category : #accessing }
+SmaCCReducedItem >> startPosition [
+	items do: [ :each | each startPosition ifNotNil: [ :int | ^ int ] ].
+	^ nil
+]
+
+{ #category : #accessing }
+SmaCCReducedItem >> stopPosition [
+	items
+		reverseDo: [ :each | each stopPosition ifNotNil: [ :int | ^ int ] ].
+	^ nil
+]
