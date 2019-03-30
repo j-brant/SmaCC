@@ -6,6 +6,8 @@ Class {
 
 { #category : #testing }
 SmaCCParserSimulationError >> isInputIncomplete [
+	self token isSyntaxError
+		ifTrue: [ ^ false ].
 	^ (self simulator symbolForId: self token ids first) name = 'E O F'
 ]
 

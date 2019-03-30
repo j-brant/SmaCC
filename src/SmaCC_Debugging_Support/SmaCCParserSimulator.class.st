@@ -79,7 +79,7 @@ SmaCCParserSimulator class >> csharpInvalidToken [
 	[ simulator simulateParse: 'if (''' ]
 		on: SmaCCParserSimulationError
 		do: [ :ex | 
-			self assert: ex token ids first = 0.
+			self assert: ex token isSyntaxError.
 			^ ex ].
 	self error: 'Shouldn''t get here'
 ]
@@ -192,7 +192,7 @@ SmaCCParserSimulator >> processToken [
 				do: [ :id | 
 					id > 0
 						ifTrue: [ self moveOn: (self symbolForId: id) from: state ] ].
-			currentToken ids first = 0
+			currentToken isSyntaxError
 				ifTrue: [ action := SmaCCRejectAction new ]
 				ifFalse: [ symbol := grammar symbols at: currentToken ids first.
 					itemSet := itemSets at: state.

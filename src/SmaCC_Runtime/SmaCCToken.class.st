@@ -77,6 +77,11 @@ SmaCCToken >> isPattern [
 	^ false
 ]
 
+{ #category : #testing }
+SmaCCToken >> isSyntaxError [
+	^ self ids first = 0
+]
+
 { #category : #matching }
 SmaCCToken >> match: anObject inContext: aDictionary [
 	^ self = anObject
