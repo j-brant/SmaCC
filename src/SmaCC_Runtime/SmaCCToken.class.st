@@ -102,8 +102,18 @@ SmaCCToken >> printOn: aStream [
 ]
 
 { #category : #accessing }
+SmaCCToken >> size [
+	^ self stopPosition - self startPosition + 1
+]
+
+{ #category : #accessing }
 SmaCCToken >> source [
 	^ value
+]
+
+{ #category : #accessing }
+SmaCCToken >> sourceInterval [
+	^ self startPosition to: self stopPosition
 ]
 
 { #category : #accessing }

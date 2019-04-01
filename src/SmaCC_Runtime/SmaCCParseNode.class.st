@@ -828,6 +828,11 @@ SmaCCParseNode >> source [
 ]
 
 { #category : #accessing }
+SmaCCParseNode >> sourceInterval [
+	^ self startPosition to: self stopPosition
+]
+
+{ #category : #accessing }
 SmaCCParseNode >> startPosition [
 	^ self attributeNamed: #startPosition ifAbsentPut: [ self calculateStartPosition ]
 ]
