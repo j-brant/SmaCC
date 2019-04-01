@@ -32,7 +32,7 @@ CPPParser class >> ambiguousTransitions [
 #[ 0 54 0 66] 
 #[ 0 54 0 58 0 62 0 186] 
 #[ 0 66 0 186] 
-#[ 0 58 5 225] 
+#[ 0 62 5 225] 
 #[ 0 194 5 241] 
 #[ 0 194 5 245] 
 #[ 0 29 0 202] 
@@ -60,7 +60,7 @@ CPPParser class >> ambiguousTransitions [
 #[ 0 102 10 57] 
 #[ 1 186 6 145] 
 #[ 0 66 1 186] 
-#[ 0 58 10 153] 
+#[ 0 62 10 153] 
 #[ 0 37 1 210] 
 #[ 0 45 1 210] 
 #[ 0 9 1 214] 
@@ -153,7 +153,7 @@ CPPParser class >> ambiguousTransitions [
 
 { #category : #'generated-accessing' }
 CPPParser class >> cacheId [
-	^'2019-03-28T12:01:25.700981-05:00'
+	^'2019-04-01T13:11:09.222963-05:00'
 ]
 
 { #category : #generated }
@@ -201,6 +201,7 @@ CPPParser class >> definitionComment [
         ConditionalExpression
         ConversionExpression
         DeleteExpression
+        IdentifierExpression
         LambdaExpression
         Literal
         MemberExpression
@@ -250,22 +251,22 @@ primaryexpression
    ;
 
 idexpression
-   : unqualifiedid
-   | qualifiedid
+   : unqualifiedid {{IdentfierExpression}}
+   | qualifiedid {{IdentifierExpression}}
    ;
 
 unqualifiedid
-   : <Identifier> {{Variable}}
+   : <Identifier> {{Identifier}}
    | operatorfunctionid
    | conversionfunctionid
    | literaloperatorid
-   | ""~"" classname
-   | ""~"" decltypespecifier
+   | ""~"" classname {{DestructorIdentifier}}
+   | ""~"" decltypespecifier {{DestructorIdentifier}}
    | templateid
    ;
 
 qualifiedid
-   : nestednamespecifier <Template> 'templateToken'? unqualifiedid
+   : nestednamespecifier <Template> 'templateToken'? unqualifiedid {{QualifiedIdentifier}}
    ;
 
 nestednamespecifier
@@ -313,7 +314,7 @@ simplecapture
    ;
 
 initcapture
-   : <Identifier> 'name' initializer {{InitializedCapture}}
+   : <Identifier> 'name' initializer 'initializer' {{InitializedCapture}}
    | ""&"" 'ampToken' <Identifier> 'name' initializer 'initializer' {{InitializedCapture}}
    ;
 
@@ -330,10 +331,10 @@ postfixexpression
    | typenamespecifier ""("" 'leftParen' expressionlist? "")"" 'rightParen' {{CallExpression}}
    | simpletypespecifier bracedinitlist
    | typenamespecifier bracedinitlist
-   | postfixexpression 'expression' ""."" <Template> 'templateToken'? idexpression {{MemberExpression}}
-   | postfixexpression 'expression' ""->"" <Template> 'templateToken'? idexpression {{MemberExpression}}
-   | postfixexpression 'expression' ""."" pseudodestructorname {{MemberExpression}}
-   | postfixexpression 'expression' ""->"" pseudodestructorname {{MemberExpression}}
+   | postfixexpression 'expression' ""."" 'operator' <Template> 'templateToken'? idexpression {{MemberExpression}}
+   | postfixexpression 'expression' ""->"" 'operator' <Template> 'templateToken'? idexpression {{MemberExpression}}
+   | postfixexpression 'expression' ""."" 'operator' pseudodestructorname {{MemberExpression}}
+   | postfixexpression 'expression' ""->"" 'operator' pseudodestructorname {{MemberExpression}}
    | postfixexpression 'expression' ""++"" 'operator' {{PostfixExpression}}
    | postfixexpression 'expression' ""--"" 'operator' {{PostfixExpression}}
    | <Dynamic_cast> 'castToken' ""<"" 'ltToken' thetypeid "">"" 'gtToken' ""("" 'leftParen' expression "")"" 'rightParen' {{ConversionExpression}}
@@ -786,8 +787,8 @@ enumeratorlist
    ;
 
 enumeratordefinition
-   : enumerator
-   | enumerator ""="" constantexpression
+   : enumerator {{EnumeratorDefinition}}
+   | enumerator ""="" constantexpression {{EnumeratorDefinition}}
    ;
 
 enumerator
@@ -921,7 +922,7 @@ initdeclaratorlist
    ;
 
 initdeclarator
-   : declarator initializer?
+   : declarator initializer 'initializer'?
    ;
 
 declarator
@@ -1038,11 +1039,11 @@ functionbody
 
 initializer
    : braceorequalinitializer
-   | ""("" 'leftParen' expressionlist "")"" 'rightParen'
+   | ""("" 'leftParen' expressionlist "")"" 'rightParen' {{ExpressionListInitializer}}
    ;
 
 braceorequalinitializer
-   : ""="" initializerclause
+   : ""="" initializerclause {{EqualInitializer}}
    | bracedinitlist
    ;
 
@@ -1057,8 +1058,8 @@ initializerlist
    ;
 
 bracedinitlist
-   : ""{"" 'leftBrace' initializerlist "","" 'comma'? ""}"" 'rightBrace'
-   | ""{"" 'leftBrace' ""}"" 'rightBrace'
+   : ""{"" 'leftBrace' initializerlist "","" 'comma'? ""}"" 'rightBrace' {{BracedListInitializer}}
+   | ""{"" 'leftBrace' ""}"" 'rightBrace' {{BracedListInitializer}}
    ;
 /*Classes*/
 
@@ -1963,8 +1964,8 @@ CPPParser class >> reduceTable [
 	#(211 1 #reduceFor:) 
 	#(145 1 #reduceFor:) 
 	#(283 1 #reduceFor:) 
-	#(230 1 #reduceFor:) 
 	#(237 1 #reduceFor:) 
+	#(230 1 #reduceFor:) 
 	#(317 1 #reduceFor:) 
 	#(266 1 #reduceFor:) 
 	#(144 1 #reduceFor:) 
