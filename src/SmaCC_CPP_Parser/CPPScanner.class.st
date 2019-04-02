@@ -22,12 +22,12 @@ CPPScanner >> directive [
 
 { #category : #generated }
 CPPScanner >> emptySymbolTokenId [
-	^ 338
+	^ 339
 ]
 
 { #category : #generated }
 CPPScanner >> errorTokenId [
-	^ 339
+	^ 340
 ]
 
 { #category : #generated }
@@ -1117,9 +1117,18 @@ CPPScanner >> scan50 [
 			currentCharacter == $(
 				ifTrue: [ [ self step.
 					currentCharacter == $)
-						ifTrue: [ ^ self scan51 ].
+						ifTrue: [ [ self step.
+							currentCharacter == $"
+								ifTrue: [ ^ self scan2 ].
+							currentCharacter <= $!
+								or: [ (currentCharacter between: $# and: $')
+										or: [ currentCharacter >= $* ] ] ] whileTrue.
+							^ self reportLastMatch ].
 					true ] whileTrue ].
-			true ] whileTrue ].
+			currentCharacter <= $!
+				or: [ (currentCharacter between: $# and: $')
+						or: [ currentCharacter >= $* ] ] ] whileTrue.
+			^ self reportLastMatch ].
 	currentCharacter == $\
 		ifTrue: [ ^ self scan48 ].
 	((currentCharacter between: $0 and: $9)
@@ -1127,109 +1136,6 @@ CPPScanner >> scan50 [
 				or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
 		ifTrue: [ ^ self scan47 ].
 	^ self reportLastMatch
-]
-
-{ #category : #generated }
-CPPScanner >> scan51 [
-	[ self step.
-	currentCharacter == $"
-		ifTrue: [ ^ self scan52 ].
-	true ] whileTrue
-]
-
-{ #category : #generated }
-CPPScanner >> scan52 [
-	[ self recordMatch: #(134).
-	self step.
-	currentCharacter == $" ] whileTrue.
-	currentCharacter == $\
-		ifTrue: [ ^ self scan54 ].
-	((currentCharacter between: $A and: $Z)
-		or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ])
-		ifTrue: [ ^ self scan53 ].
-	^ self scan51
-]
-
-{ #category : #generated }
-CPPScanner >> scan53 [
-	[ self recordMatch: #(137).
-	self step.
-	currentCharacter == $"
-		ifTrue: [ ^ self scan52 ].
-	currentCharacter == $\
-		ifTrue: [ ^ self scan54 ].
-	(currentCharacter between: $0 and: $9)
-		or: [ (currentCharacter between: $A and: $Z)
-				or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ] ]
-		whileTrue.
-	^ self scan51
-]
-
-{ #category : #generated }
-CPPScanner >> scan54 [
-	self step.
-	currentCharacter == $"
-		ifTrue: [ ^ self scan52 ].
-	currentCharacter == $U
-		ifTrue: [ self step.
-			currentCharacter == $"
-				ifTrue: [ ^ self scan52 ].
-			(currentCharacter isDigit
-				or: [ (currentCharacter between: $A and: $F)
-						or: [ currentCharacter between: $a and: $f ] ])
-				ifTrue: [ self step.
-					currentCharacter == $"
-						ifTrue: [ ^ self scan52 ].
-					(currentCharacter isDigit
-						or: [ (currentCharacter between: $A and: $F)
-								or: [ currentCharacter between: $a and: $f ] ])
-						ifTrue: [ self step.
-							currentCharacter == $"
-								ifTrue: [ ^ self scan52 ].
-							(currentCharacter isDigit
-								or: [ (currentCharacter between: $A and: $F)
-										or: [ currentCharacter between: $a and: $f ] ])
-								ifTrue: [ self step.
-									currentCharacter == $"
-										ifTrue: [ ^ self scan52 ].
-									(currentCharacter isDigit
-										or: [ (currentCharacter between: $A and: $F)
-												or: [ currentCharacter between: $a and: $f ] ])
-										ifTrue: [ ^ self scan55 ] ] ] ].
-			^ self scan51 ].
-	currentCharacter == $u
-		ifTrue: [ ^ self scan55 ].
-	^ self scan51
-]
-
-{ #category : #generated }
-CPPScanner >> scan55 [
-	self step.
-	currentCharacter == $"
-		ifTrue: [ ^ self scan52 ].
-	(currentCharacter isDigit
-		or: [ (currentCharacter between: $A and: $F)
-				or: [ currentCharacter between: $a and: $f ] ])
-		ifTrue: [ self step.
-			currentCharacter == $"
-				ifTrue: [ ^ self scan52 ].
-			(currentCharacter isDigit
-				or: [ (currentCharacter between: $A and: $F)
-						or: [ currentCharacter between: $a and: $f ] ])
-				ifTrue: [ self step.
-					currentCharacter == $"
-						ifTrue: [ ^ self scan52 ].
-					(currentCharacter isDigit
-						or: [ (currentCharacter between: $A and: $F)
-								or: [ currentCharacter between: $a and: $f ] ])
-						ifTrue: [ self step.
-							currentCharacter == $"
-								ifTrue: [ ^ self scan52 ].
-							(currentCharacter isDigit
-								or: [ (currentCharacter between: $A and: $F)
-										or: [ currentCharacter between: $a and: $f ] ])
-								ifTrue: [ ^ self scan53 ] ] ] ].
-	^ self scan51
 ]
 
 { #category : #generated }
