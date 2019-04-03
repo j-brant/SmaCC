@@ -6,10 +6,9 @@ Class {
 		'classToken',
 		'structToken',
 		'colon',
-		'baseType',
-		'name',
 		'specifiers',
-		'namespace',
+		'name',
+		'nameSpecifier',
 		'leftBrace',
 		'rightBrace',
 		'definitions',
@@ -21,16 +20,6 @@ Class {
 { #category : #generated }
 CPPEnumSpecifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEnumSpecifier: self
-]
-
-{ #category : #generated }
-CPPEnumSpecifierNode >> baseType [
-	^ baseType
-]
-
-{ #category : #generated }
-CPPEnumSpecifierNode >> baseType: anOrderedCollection [
-	baseType := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -124,27 +113,22 @@ CPPEnumSpecifierNode >> name: aSmaCCToken [
 ]
 
 { #category : #generated }
-CPPEnumSpecifierNode >> namespace [
-	^ namespace
+CPPEnumSpecifierNode >> nameSpecifier [
+	^ nameSpecifier
 ]
 
 { #category : #generated }
-CPPEnumSpecifierNode >> namespace: aCPPNestedNameSpecifierNode [
-	self namespace notNil
-		ifTrue: [ self namespace parent: nil ].
-	namespace := aCPPNestedNameSpecifierNode.
-	self namespace notNil
-		ifTrue: [ self namespace parent: self ]
+CPPEnumSpecifierNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
+	self nameSpecifier notNil
+		ifTrue: [ self nameSpecifier parent: nil ].
+	nameSpecifier := aCPPNestedNameSpecifierNode.
+	self nameSpecifier notNil
+		ifTrue: [ self nameSpecifier parent: self ]
 ]
 
 { #category : #generated }
 CPPEnumSpecifierNode >> nodeVariables [
-	^ #(#namespace)
-]
-
-{ #category : #generated }
-CPPEnumSpecifierNode >> otherVariables [
-	^ #(#baseType)
+	^ #(#nameSpecifier)
 ]
 
 { #category : #generated }

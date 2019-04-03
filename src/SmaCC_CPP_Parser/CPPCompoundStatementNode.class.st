@@ -14,6 +14,11 @@ CPPCompoundStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCompoundStatement: self
 ]
 
+{ #category : #generated }
+CPPCompoundStatementNode >> compositeNodeVariables [
+	^ #(#statements #specifiers)
+]
+
 { #category : #'generated-initialize-release' }
 CPPCompoundStatementNode >> initialize [
 	super initialize.
@@ -28,11 +33,6 @@ CPPCompoundStatementNode >> leftBrace [
 { #category : #generated }
 CPPCompoundStatementNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
-]
-
-{ #category : #generated }
-CPPCompoundStatementNode >> otherVariables [
-	^ #(#statements)
 ]
 
 { #category : #generated }
@@ -52,7 +52,9 @@ CPPCompoundStatementNode >> statements [
 
 { #category : #generated }
 CPPCompoundStatementNode >> statements: anOrderedCollection [
-	statements := anOrderedCollection
+	self setParents: self statements to: nil.
+	statements := anOrderedCollection.
+	self setParents: self statements to: self
 ]
 
 { #category : #generated }

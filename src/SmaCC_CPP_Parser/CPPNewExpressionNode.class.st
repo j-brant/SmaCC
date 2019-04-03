@@ -92,12 +92,7 @@ CPPNewExpressionNode >> newToken: aSmaCCToken [
 
 { #category : #generated }
 CPPNewExpressionNode >> nodeVariables [
-	^ #(#initializer)
-]
-
-{ #category : #generated }
-CPPNewExpressionNode >> otherVariables [
-	^ #(#type)
+	^ #(#type #initializer)
 ]
 
 { #category : #generated }
@@ -111,8 +106,12 @@ CPPNewExpressionNode >> type [
 ]
 
 { #category : #generated }
-CPPNewExpressionNode >> type: anObject [
-	type := anObject
+CPPNewExpressionNode >> type: aCPPProgramNode [
+	self type notNil
+		ifTrue: [ self type parent: nil ].
+	type := aCPPProgramNode.
+	self type notNil
+		ifTrue: [ self type parent: self ]
 ]
 
 { #category : #generated }

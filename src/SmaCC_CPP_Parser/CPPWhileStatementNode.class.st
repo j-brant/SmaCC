@@ -22,8 +22,12 @@ CPPWhileStatementNode >> condition [
 ]
 
 { #category : #generated }
-CPPWhileStatementNode >> condition: anObject [
-	condition := anObject
+CPPWhileStatementNode >> condition: aCPPProgramNode [
+	self condition notNil
+		ifTrue: [ self condition parent: nil ].
+	condition := aCPPProgramNode.
+	self condition notNil
+		ifTrue: [ self condition parent: self ]
 ]
 
 { #category : #generated }
@@ -37,7 +41,7 @@ CPPWhileStatementNode >> leftParen: aSmaCCToken [
 ]
 
 { #category : #generated }
-CPPWhileStatementNode >> otherVariables [
+CPPWhileStatementNode >> nodeVariables [
 	^ #(#condition #statement)
 ]
 
@@ -57,8 +61,12 @@ CPPWhileStatementNode >> statement [
 ]
 
 { #category : #generated }
-CPPWhileStatementNode >> statement: anObject [
-	statement := anObject
+CPPWhileStatementNode >> statement: aCPPProgramNode [
+	self statement notNil
+		ifTrue: [ self statement parent: nil ].
+	statement := aCPPProgramNode.
+	self statement notNil
+		ifTrue: [ self statement parent: self ]
 ]
 
 { #category : #generated }

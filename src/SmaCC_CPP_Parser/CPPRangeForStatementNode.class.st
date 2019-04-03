@@ -5,6 +5,7 @@ Class {
 		'forToken',
 		'leftParen',
 		'declaration',
+		'colon',
 		'initializer',
 		'rightParen',
 		'statement'
@@ -15,6 +16,16 @@ Class {
 { #category : #generated }
 CPPRangeForStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitRangeForStatement: self
+]
+
+{ #category : #generated }
+CPPRangeForStatementNode >> colon [
+	^ colon
+]
+
+{ #category : #generated }
+CPPRangeForStatementNode >> colon: aSmaCCToken [
+	colon := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -67,12 +78,7 @@ CPPRangeForStatementNode >> leftParen: aSmaCCToken [
 
 { #category : #generated }
 CPPRangeForStatementNode >> nodeVariables [
-	^ #(#declaration #initializer)
-]
-
-{ #category : #generated }
-CPPRangeForStatementNode >> otherVariables [
-	^ #(#statement)
+	^ #(#declaration #initializer #statement)
 ]
 
 { #category : #generated }
@@ -91,11 +97,15 @@ CPPRangeForStatementNode >> statement [
 ]
 
 { #category : #generated }
-CPPRangeForStatementNode >> statement: anObject [
-	statement := anObject
+CPPRangeForStatementNode >> statement: aCPPProgramNode [
+	self statement notNil
+		ifTrue: [ self statement parent: nil ].
+	statement := aCPPProgramNode.
+	self statement notNil
+		ifTrue: [ self statement parent: self ]
 ]
 
 { #category : #generated }
 CPPRangeForStatementNode >> tokenVariables [
-	^ #(#forToken #leftParen #rightParen)
+	^ #(#forToken #leftParen #colon #rightParen)
 ]

@@ -4,11 +4,7 @@ Class {
 	#instVars : [
 		'lhs',
 		'operator',
-		'leftBrace',
-		'values',
-		'ellipsises',
-		'commas',
-		'rightBrace'
+		'initializer'
 	],
 	#category : #'SmaCC_CPP_Parser'
 }
@@ -19,51 +15,17 @@ CPPAssignmentExpressionNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-CPPAssignmentExpressionNode >> commas [
-	^ commas
+CPPAssignmentExpressionNode >> initializer [
+	^ initializer
 ]
 
 { #category : #generated }
-CPPAssignmentExpressionNode >> commas: anOrderedCollection [
-	commas := anOrderedCollection
-]
-
-{ #category : #generated }
-CPPAssignmentExpressionNode >> compositeNodeVariables [
-	^ #(#values)
-]
-
-{ #category : #generated }
-CPPAssignmentExpressionNode >> compositeTokenVariables [
-	^ #(#ellipsises #commas #leftParens #rightParens)
-]
-
-{ #category : #generated }
-CPPAssignmentExpressionNode >> ellipsises [
-	^ ellipsises
-]
-
-{ #category : #generated }
-CPPAssignmentExpressionNode >> ellipsises: anOrderedCollection [
-	ellipsises := anOrderedCollection
-]
-
-{ #category : #'generated-initialize-release' }
-CPPAssignmentExpressionNode >> initialize [
-	super initialize.
-	values := OrderedCollection new: 2.
-	ellipsises := OrderedCollection new: 2.
-	commas := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-CPPAssignmentExpressionNode >> leftBrace [
-	^ leftBrace
-]
-
-{ #category : #generated }
-CPPAssignmentExpressionNode >> leftBrace: aSmaCCToken [
-	leftBrace := aSmaCCToken
+CPPAssignmentExpressionNode >> initializer: aCPPProgramNode [
+	self initializer notNil
+		ifTrue: [ self initializer parent: nil ].
+	initializer := aCPPProgramNode.
+	self initializer notNil
+		ifTrue: [ self initializer parent: self ]
 ]
 
 { #category : #generated }
@@ -82,7 +44,7 @@ CPPAssignmentExpressionNode >> lhs: aCPPExpressionNode [
 
 { #category : #generated }
 CPPAssignmentExpressionNode >> nodeVariables [
-	^ #(#lhs)
+	^ #(#lhs #initializer)
 ]
 
 { #category : #generated }
@@ -96,28 +58,6 @@ CPPAssignmentExpressionNode >> operator: aSmaCCToken [
 ]
 
 { #category : #generated }
-CPPAssignmentExpressionNode >> rightBrace [
-	^ rightBrace
-]
-
-{ #category : #generated }
-CPPAssignmentExpressionNode >> rightBrace: aSmaCCToken [
-	rightBrace := aSmaCCToken
-]
-
-{ #category : #generated }
 CPPAssignmentExpressionNode >> tokenVariables [
-	^ #(#operator #leftBrace #rightBrace)
-]
-
-{ #category : #generated }
-CPPAssignmentExpressionNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-CPPAssignmentExpressionNode >> values: anOrderedCollection [
-	self setParents: self values to: nil.
-	values := anOrderedCollection.
-	self setParents: self values to: self
+	^ #(#operator)
 ]

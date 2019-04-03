@@ -2,14 +2,10 @@ Class {
 	#name : #CPPPointerOperatorNode,
 	#superclass : #CPPProgramNode,
 	#instVars : [
-		'constTokens',
-		'volatileTokens',
+		'operator',
+		'cvQualifiers',
 		'specifiers',
-		'colonColons',
-		'type',
-		'names',
-		'templateIdentifiers',
-		'templateTokens'
+		'nameSpecifier'
 	],
 	#category : #'SmaCC_CPP_Parser'
 }
@@ -20,60 +16,56 @@ CPPPointerOperatorNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-CPPPointerOperatorNode >> colonColons [
-	^ colonColons
-]
-
-{ #category : #generated }
-CPPPointerOperatorNode >> colonColons: anOrderedCollection [
-	colonColons := anOrderedCollection
-]
-
-{ #category : #generated }
 CPPPointerOperatorNode >> compositeNodeVariables [
-	^ #(#specifiers #templateIdentifiers)
+	^ #(#cvQualifiers #specifiers)
 ]
 
 { #category : #generated }
-CPPPointerOperatorNode >> compositeTokenVariables [
-	^ #(#constTokens #volatileTokens #colonColons #names #templateTokens)
+CPPPointerOperatorNode >> cvQualifiers [
+	^ cvQualifiers
 ]
 
 { #category : #generated }
-CPPPointerOperatorNode >> constTokens [
-	^ constTokens
-]
-
-{ #category : #generated }
-CPPPointerOperatorNode >> constTokens: anOrderedCollection [
-	constTokens := anOrderedCollection
+CPPPointerOperatorNode >> cvQualifiers: anOrderedCollection [
+	self setParents: self cvQualifiers to: nil.
+	cvQualifiers := anOrderedCollection.
+	self setParents: self cvQualifiers to: self
 ]
 
 { #category : #'generated-initialize-release' }
 CPPPointerOperatorNode >> initialize [
 	super initialize.
-	constTokens := OrderedCollection new: 2.
-	volatileTokens := OrderedCollection new: 2.
+	cvQualifiers := OrderedCollection new: 2.
 	specifiers := OrderedCollection new: 2.
-	colonColons := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	templateIdentifiers := OrderedCollection new: 2.
-	templateTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-CPPPointerOperatorNode >> names [
-	^ names
+CPPPointerOperatorNode >> nameSpecifier [
+	^ nameSpecifier
 ]
 
 { #category : #generated }
-CPPPointerOperatorNode >> names: anOrderedCollection [
-	names := anOrderedCollection
+CPPPointerOperatorNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
+	self nameSpecifier notNil
+		ifTrue: [ self nameSpecifier parent: nil ].
+	nameSpecifier := aCPPNestedNameSpecifierNode.
+	self nameSpecifier notNil
+		ifTrue: [ self nameSpecifier parent: self ]
 ]
 
 { #category : #generated }
-CPPPointerOperatorNode >> otherVariables [
-	^ #(#type)
+CPPPointerOperatorNode >> nodeVariables [
+	^ #(#nameSpecifier)
+]
+
+{ #category : #generated }
+CPPPointerOperatorNode >> operator [
+	^ operator
+]
+
+{ #category : #generated }
+CPPPointerOperatorNode >> operator: aSmaCCToken [
+	operator := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -89,43 +81,6 @@ CPPPointerOperatorNode >> specifiers: anOrderedCollection [
 ]
 
 { #category : #generated }
-CPPPointerOperatorNode >> templateIdentifiers [
-	^ templateIdentifiers
-]
-
-{ #category : #generated }
-CPPPointerOperatorNode >> templateIdentifiers: anOrderedCollection [
-	self setParents: self templateIdentifiers to: nil.
-	templateIdentifiers := anOrderedCollection.
-	self setParents: self templateIdentifiers to: self
-]
-
-{ #category : #generated }
-CPPPointerOperatorNode >> templateTokens [
-	^ templateTokens
-]
-
-{ #category : #generated }
-CPPPointerOperatorNode >> templateTokens: anOrderedCollection [
-	templateTokens := anOrderedCollection
-]
-
-{ #category : #generated }
-CPPPointerOperatorNode >> type [
-	^ type
-]
-
-{ #category : #generated }
-CPPPointerOperatorNode >> type: anObject [
-	type := anObject
-]
-
-{ #category : #generated }
-CPPPointerOperatorNode >> volatileTokens [
-	^ volatileTokens
-]
-
-{ #category : #generated }
-CPPPointerOperatorNode >> volatileTokens: anOrderedCollection [
-	volatileTokens := anOrderedCollection
+CPPPointerOperatorNode >> tokenVariables [
+	^ #(#operator)
 ]

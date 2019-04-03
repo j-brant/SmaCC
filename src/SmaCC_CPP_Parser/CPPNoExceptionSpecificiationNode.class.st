@@ -3,8 +3,9 @@ Class {
 	#superclass : #CPPProgramNode,
 	#instVars : [
 		'noexceptToken',
-		'leftParens',
-		'rightParens'
+		'leftParen',
+		'expression',
+		'rightParen'
 	],
 	#category : #'SmaCC_CPP_Parser'
 }
@@ -15,25 +16,32 @@ CPPNoExceptionSpecificiationNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-CPPNoExceptionSpecificiationNode >> compositeTokenVariables [
-	^ #(#leftParens #rightParens)
-]
-
-{ #category : #'generated-initialize-release' }
-CPPNoExceptionSpecificiationNode >> initialize [
-	super initialize.
-	leftParens := OrderedCollection new: 2.
-	rightParens := OrderedCollection new: 2.
+CPPNoExceptionSpecificiationNode >> expression [
+	^ expression
 ]
 
 { #category : #generated }
-CPPNoExceptionSpecificiationNode >> leftParens [
-	^ leftParens
+CPPNoExceptionSpecificiationNode >> expression: aCPPExpressionNode [
+	self expression notNil
+		ifTrue: [ self expression parent: nil ].
+	expression := aCPPExpressionNode.
+	self expression notNil
+		ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
-CPPNoExceptionSpecificiationNode >> leftParens: anOrderedCollection [
-	leftParens := anOrderedCollection
+CPPNoExceptionSpecificiationNode >> leftParen [
+	^ leftParen
+]
+
+{ #category : #generated }
+CPPNoExceptionSpecificiationNode >> leftParen: aSmaCCToken [
+	leftParen := aSmaCCToken
+]
+
+{ #category : #generated }
+CPPNoExceptionSpecificiationNode >> nodeVariables [
+	^ #(#expression)
 ]
 
 { #category : #generated }
@@ -47,16 +55,16 @@ CPPNoExceptionSpecificiationNode >> noexceptToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-CPPNoExceptionSpecificiationNode >> rightParens [
-	^ rightParens
+CPPNoExceptionSpecificiationNode >> rightParen [
+	^ rightParen
 ]
 
 { #category : #generated }
-CPPNoExceptionSpecificiationNode >> rightParens: anOrderedCollection [
-	rightParens := anOrderedCollection
+CPPNoExceptionSpecificiationNode >> rightParen: aSmaCCToken [
+	rightParen := aSmaCCToken
 ]
 
 { #category : #generated }
 CPPNoExceptionSpecificiationNode >> tokenVariables [
-	^ #(#noexceptToken)
+	^ #(#noexceptToken #leftParen #rightParen)
 ]

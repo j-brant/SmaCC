@@ -13,22 +13,24 @@ CPPTranslationUnitNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
+CPPTranslationUnitNode >> compositeNodeVariables [
+	^ #(#declarations)
+]
+
+{ #category : #generated }
 CPPTranslationUnitNode >> declarations [
 	^ declarations
 ]
 
 { #category : #generated }
 CPPTranslationUnitNode >> declarations: anOrderedCollection [
-	declarations := anOrderedCollection
+	self setParents: self declarations to: nil.
+	declarations := anOrderedCollection.
+	self setParents: self declarations to: self
 ]
 
 { #category : #'generated-initialize-release' }
 CPPTranslationUnitNode >> initialize [
 	super initialize.
 	declarations := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-CPPTranslationUnitNode >> otherVariables [
-	^ #(#declarations)
 ]

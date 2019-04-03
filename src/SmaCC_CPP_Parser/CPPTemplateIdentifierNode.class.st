@@ -2,6 +2,7 @@ Class {
 	#name : #CPPTemplateIdentifierNode,
 	#superclass : #CPPProgramNode,
 	#instVars : [
+		'name',
 		'ltToken',
 		'gtToken',
 		'arguments',
@@ -87,6 +88,16 @@ CPPTemplateIdentifierNode >> ltToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+CPPTemplateIdentifierNode >> name [
+	^ name
+]
+
+{ #category : #generated }
+CPPTemplateIdentifierNode >> name: aSmaCCToken [
+	name := aSmaCCToken
+]
+
+{ #category : #generated }
 CPPTemplateIdentifierNode >> tokenVariables [
-	^ #(#ltToken #gtToken)
+	^ #(#name #ltToken #gtToken)
 ]

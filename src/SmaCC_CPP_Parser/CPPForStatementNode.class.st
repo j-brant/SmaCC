@@ -25,8 +25,12 @@ CPPForStatementNode >> condition [
 ]
 
 { #category : #generated }
-CPPForStatementNode >> condition: anObject [
-	condition := anObject
+CPPForStatementNode >> condition: aCPPProgramNode [
+	self condition notNil
+		ifTrue: [ self condition parent: nil ].
+	condition := aCPPProgramNode.
+	self condition notNil
+		ifTrue: [ self condition parent: self ]
 ]
 
 { #category : #generated }
@@ -45,8 +49,12 @@ CPPForStatementNode >> initializerStatement [
 ]
 
 { #category : #generated }
-CPPForStatementNode >> initializerStatement: anObject [
-	initializerStatement := anObject
+CPPForStatementNode >> initializerStatement: aCPPProgramNode [
+	self initializerStatement notNil
+		ifTrue: [ self initializerStatement parent: nil ].
+	initializerStatement := aCPPProgramNode.
+	self initializerStatement notNil
+		ifTrue: [ self initializerStatement parent: self ]
 ]
 
 { #category : #generated }
@@ -61,12 +69,7 @@ CPPForStatementNode >> leftParen: aSmaCCToken [
 
 { #category : #generated }
 CPPForStatementNode >> nodeVariables [
-	^ #(#updateExpression)
-]
-
-{ #category : #generated }
-CPPForStatementNode >> otherVariables [
-	^ #(#initializerStatement #statement #condition)
+	^ #(#initializerStatement #statement #updateExpression #condition)
 ]
 
 { #category : #generated }
@@ -95,8 +98,12 @@ CPPForStatementNode >> statement [
 ]
 
 { #category : #generated }
-CPPForStatementNode >> statement: anObject [
-	statement := anObject
+CPPForStatementNode >> statement: aCPPProgramNode [
+	self statement notNil
+		ifTrue: [ self statement parent: nil ].
+	statement := aCPPProgramNode.
+	self statement notNil
+		ifTrue: [ self statement parent: self ]
 ]
 
 { #category : #generated }

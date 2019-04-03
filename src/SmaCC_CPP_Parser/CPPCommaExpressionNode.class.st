@@ -2,8 +2,9 @@ Class {
 	#name : #CPPCommaExpressionNode,
 	#superclass : #CPPExpressionNode,
 	#instVars : [
-		'commas',
-		'rights'
+		'left',
+		'comma',
+		'right'
 	],
 	#category : #'SmaCC_CPP_Parser'
 }
@@ -14,40 +15,49 @@ CPPCommaExpressionNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-CPPCommaExpressionNode >> commas [
-	^ commas
+CPPCommaExpressionNode >> comma [
+	^ comma
 ]
 
 { #category : #generated }
-CPPCommaExpressionNode >> commas: anOrderedCollection [
-	commas := anOrderedCollection
+CPPCommaExpressionNode >> comma: aSmaCCToken [
+	comma := aSmaCCToken
 ]
 
 { #category : #generated }
-CPPCommaExpressionNode >> compositeNodeVariables [
-	^ #(#rights)
+CPPCommaExpressionNode >> left [
+	^ left
 ]
 
 { #category : #generated }
-CPPCommaExpressionNode >> compositeTokenVariables [
-	^ #(#commas #leftParens #rightParens)
-]
-
-{ #category : #'generated-initialize-release' }
-CPPCommaExpressionNode >> initialize [
-	super initialize.
-	commas := OrderedCollection new: 2.
-	rights := OrderedCollection new: 2.
+CPPCommaExpressionNode >> left: aCPPExpressionNode [
+	self left notNil
+		ifTrue: [ self left parent: nil ].
+	left := aCPPExpressionNode.
+	self left notNil
+		ifTrue: [ self left parent: self ]
 ]
 
 { #category : #generated }
-CPPCommaExpressionNode >> rights [
-	^ rights
+CPPCommaExpressionNode >> nodeVariables [
+	^ #(#left #right)
 ]
 
 { #category : #generated }
-CPPCommaExpressionNode >> rights: anOrderedCollection [
-	self setParents: self rights to: nil.
-	rights := anOrderedCollection.
-	self setParents: self rights to: self
+CPPCommaExpressionNode >> right [
+	^ right
+]
+
+{ #category : #generated }
+CPPCommaExpressionNode >> right: aCPPExpressionNode [
+	self right notNil
+		ifTrue: [ self right parent: nil ].
+	right := aCPPExpressionNode.
+	self right notNil
+		ifTrue: [ self right parent: self ]
+]
+
+{ #category : #generated }
+CPPCommaExpressionNode >> tokenVariables [
+	^ #(#comma)
 ]

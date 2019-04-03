@@ -6,7 +6,7 @@ Class {
 		'structToken',
 		'unionToken',
 		'name',
-		'namespaceSpecifier',
+		'nameSpecifier',
 		'specifiers',
 		'templateIdentifier',
 		'templateToken',
@@ -62,22 +62,22 @@ CPPElaboratedTypeSpecifierNode >> name: aSmaCCToken [
 ]
 
 { #category : #generated }
-CPPElaboratedTypeSpecifierNode >> namespaceSpecifier [
-	^ namespaceSpecifier
+CPPElaboratedTypeSpecifierNode >> nameSpecifier [
+	^ nameSpecifier
 ]
 
 { #category : #generated }
-CPPElaboratedTypeSpecifierNode >> namespaceSpecifier: aCPPNestedNameSpecifierNode [
-	self namespaceSpecifier notNil
-		ifTrue: [ self namespaceSpecifier parent: nil ].
-	namespaceSpecifier := aCPPNestedNameSpecifierNode.
-	self namespaceSpecifier notNil
-		ifTrue: [ self namespaceSpecifier parent: self ]
+CPPElaboratedTypeSpecifierNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
+	self nameSpecifier notNil
+		ifTrue: [ self nameSpecifier parent: nil ].
+	nameSpecifier := aCPPNestedNameSpecifierNode.
+	self nameSpecifier notNil
+		ifTrue: [ self nameSpecifier parent: self ]
 ]
 
 { #category : #generated }
 CPPElaboratedTypeSpecifierNode >> nodeVariables [
-	^ #(#namespaceSpecifier #templateIdentifier)
+	^ #(#nameSpecifier #templateIdentifier)
 ]
 
 { #category : #generated }

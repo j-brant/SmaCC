@@ -3,6 +3,7 @@ Class {
 	#superclass : #CPPStatementNode,
 	#instVars : [
 		'label',
+		'colon',
 		'statement'
 	],
 	#category : #'SmaCC_CPP_Parser'
@@ -11,6 +12,16 @@ Class {
 { #category : #generated }
 CPPLabeledStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLabeledStatement: self
+]
+
+{ #category : #generated }
+CPPLabeledStatementNode >> colon [
+	^ colon
+]
+
+{ #category : #generated }
+CPPLabeledStatementNode >> colon: aSmaCCToken [
+	colon := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -24,7 +35,7 @@ CPPLabeledStatementNode >> label: aSmaCCToken [
 ]
 
 { #category : #generated }
-CPPLabeledStatementNode >> otherVariables [
+CPPLabeledStatementNode >> nodeVariables [
 	^ #(#statement)
 ]
 
@@ -34,11 +45,15 @@ CPPLabeledStatementNode >> statement [
 ]
 
 { #category : #generated }
-CPPLabeledStatementNode >> statement: anObject [
-	statement := anObject
+CPPLabeledStatementNode >> statement: aCPPProgramNode [
+	self statement notNil
+		ifTrue: [ self statement parent: nil ].
+	statement := aCPPProgramNode.
+	self statement notNil
+		ifTrue: [ self statement parent: self ]
 ]
 
 { #category : #generated }
 CPPLabeledStatementNode >> tokenVariables [
-	^ #(#label)
+	^ #(#label #colon)
 ]

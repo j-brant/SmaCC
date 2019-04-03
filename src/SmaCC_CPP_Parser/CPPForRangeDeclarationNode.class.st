@@ -14,13 +14,22 @@ CPPForRangeDeclarationNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
+CPPForRangeDeclarationNode >> compositeNodeVariables [
+	^ #(#specifiers)
+]
+
+{ #category : #generated }
 CPPForRangeDeclarationNode >> declarator [
 	^ declarator
 ]
 
 { #category : #generated }
-CPPForRangeDeclarationNode >> declarator: anOrderedCollection [
-	declarator := anOrderedCollection
+CPPForRangeDeclarationNode >> declarator: aCPPDeclaratorNode [
+	self declarator notNil
+		ifTrue: [ self declarator parent: nil ].
+	declarator := aCPPDeclaratorNode.
+	self declarator notNil
+		ifTrue: [ self declarator parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -30,8 +39,8 @@ CPPForRangeDeclarationNode >> initialize [
 ]
 
 { #category : #generated }
-CPPForRangeDeclarationNode >> otherVariables [
-	^ #(#specifiers #declarator)
+CPPForRangeDeclarationNode >> nodeVariables [
+	^ #(#declarator)
 ]
 
 { #category : #generated }
@@ -41,5 +50,7 @@ CPPForRangeDeclarationNode >> specifiers [
 
 { #category : #generated }
 CPPForRangeDeclarationNode >> specifiers: anOrderedCollection [
-	specifiers := anOrderedCollection
+	self setParents: self specifiers to: nil.
+	specifiers := anOrderedCollection.
+	self setParents: self specifiers to: self
 ]

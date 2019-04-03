@@ -8,7 +8,6 @@ Class {
 		'name',
 		'semicolon',
 		'colon',
-		'baseType',
 		'specifiers'
 	],
 	#category : #'SmaCC_CPP_Parser'
@@ -17,16 +16,6 @@ Class {
 { #category : #generated }
 CPPOpaqueEnumDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitOpaqueEnumDeclaration: self
-]
-
-{ #category : #generated }
-CPPOpaqueEnumDeclarationNode >> baseType [
-	^ baseType
-]
-
-{ #category : #generated }
-CPPOpaqueEnumDeclarationNode >> baseType: anOrderedCollection [
-	baseType := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -78,11 +67,6 @@ CPPOpaqueEnumDeclarationNode >> name [
 { #category : #generated }
 CPPOpaqueEnumDeclarationNode >> name: aSmaCCToken [
 	name := aSmaCCToken
-]
-
-{ #category : #generated }
-CPPOpaqueEnumDeclarationNode >> otherVariables [
-	^ #(#baseType)
 ]
 
 { #category : #generated }

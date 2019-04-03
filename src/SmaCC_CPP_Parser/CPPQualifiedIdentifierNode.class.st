@@ -2,11 +2,9 @@ Class {
 	#name : #CPPQualifiedIdentifierNode,
 	#superclass : #CPPProgramNode,
 	#instVars : [
-		'colonColons',
-		'type',
-		'names',
-		'templateIdentifiers',
-		'templateTokens'
+		'nameSpecifier',
+		'templateIdentifier',
+		'templateToken'
 	],
 	#category : #'SmaCC_CPP_Parser'
 }
@@ -17,77 +15,49 @@ CPPQualifiedIdentifierNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-CPPQualifiedIdentifierNode >> colonColons [
-	^ colonColons
+CPPQualifiedIdentifierNode >> nameSpecifier [
+	^ nameSpecifier
 ]
 
 { #category : #generated }
-CPPQualifiedIdentifierNode >> colonColons: anOrderedCollection [
-	colonColons := anOrderedCollection
+CPPQualifiedIdentifierNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
+	self nameSpecifier notNil
+		ifTrue: [ self nameSpecifier parent: nil ].
+	nameSpecifier := aCPPNestedNameSpecifierNode.
+	self nameSpecifier notNil
+		ifTrue: [ self nameSpecifier parent: self ]
 ]
 
 { #category : #generated }
-CPPQualifiedIdentifierNode >> compositeNodeVariables [
-	^ #(#templateIdentifiers)
+CPPQualifiedIdentifierNode >> nodeVariables [
+	^ #(#nameSpecifier #templateIdentifier)
 ]
 
 { #category : #generated }
-CPPQualifiedIdentifierNode >> compositeTokenVariables [
-	^ #(#colonColons #names #templateTokens)
-]
-
-{ #category : #'generated-initialize-release' }
-CPPQualifiedIdentifierNode >> initialize [
-	super initialize.
-	colonColons := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	templateIdentifiers := OrderedCollection new: 2.
-	templateTokens := OrderedCollection new: 2.
+CPPQualifiedIdentifierNode >> templateIdentifier [
+	^ templateIdentifier
 ]
 
 { #category : #generated }
-CPPQualifiedIdentifierNode >> names [
-	^ names
+CPPQualifiedIdentifierNode >> templateIdentifier: aCPPProgramNode [
+	self templateIdentifier notNil
+		ifTrue: [ self templateIdentifier parent: nil ].
+	templateIdentifier := aCPPProgramNode.
+	self templateIdentifier notNil
+		ifTrue: [ self templateIdentifier parent: self ]
 ]
 
 { #category : #generated }
-CPPQualifiedIdentifierNode >> names: anOrderedCollection [
-	names := anOrderedCollection
+CPPQualifiedIdentifierNode >> templateToken [
+	^ templateToken
 ]
 
 { #category : #generated }
-CPPQualifiedIdentifierNode >> otherVariables [
-	^ #(#type)
+CPPQualifiedIdentifierNode >> templateToken: aSmaCCToken [
+	templateToken := aSmaCCToken
 ]
 
 { #category : #generated }
-CPPQualifiedIdentifierNode >> templateIdentifiers [
-	^ templateIdentifiers
-]
-
-{ #category : #generated }
-CPPQualifiedIdentifierNode >> templateIdentifiers: anOrderedCollection [
-	self setParents: self templateIdentifiers to: nil.
-	templateIdentifiers := anOrderedCollection.
-	self setParents: self templateIdentifiers to: self
-]
-
-{ #category : #generated }
-CPPQualifiedIdentifierNode >> templateTokens [
-	^ templateTokens
-]
-
-{ #category : #generated }
-CPPQualifiedIdentifierNode >> templateTokens: anOrderedCollection [
-	templateTokens := anOrderedCollection
-]
-
-{ #category : #generated }
-CPPQualifiedIdentifierNode >> type [
-	^ type
-]
-
-{ #category : #generated }
-CPPQualifiedIdentifierNode >> type: anObject [
-	type := anObject
+CPPQualifiedIdentifierNode >> tokenVariables [
+	^ #(#templateToken)
 ]

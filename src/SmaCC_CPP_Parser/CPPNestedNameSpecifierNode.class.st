@@ -2,11 +2,12 @@ Class {
 	#name : #CPPNestedNameSpecifierNode,
 	#superclass : #CPPProgramNode,
 	#instVars : [
-		'colonColons',
+		'colonColon',
 		'type',
-		'names',
-		'templateIdentifiers',
-		'templateTokens'
+		'nameSpecifier',
+		'name',
+		'templateIdentifier',
+		'templateToken'
 	],
 	#category : #'SmaCC_CPP_Parser'
 }
@@ -17,69 +18,71 @@ CPPNestedNameSpecifierNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-CPPNestedNameSpecifierNode >> colonColons [
-	^ colonColons
+CPPNestedNameSpecifierNode >> colonColon [
+	^ colonColon
 ]
 
 { #category : #generated }
-CPPNestedNameSpecifierNode >> colonColons: anOrderedCollection [
-	colonColons := anOrderedCollection
+CPPNestedNameSpecifierNode >> colonColon: aSmaCCToken [
+	colonColon := aSmaCCToken
 ]
 
 { #category : #generated }
-CPPNestedNameSpecifierNode >> compositeNodeVariables [
-	^ #(#templateIdentifiers)
+CPPNestedNameSpecifierNode >> name [
+	^ name
 ]
 
 { #category : #generated }
-CPPNestedNameSpecifierNode >> compositeTokenVariables [
-	^ #(#colonColons #names #templateTokens)
-]
-
-{ #category : #'generated-initialize-release' }
-CPPNestedNameSpecifierNode >> initialize [
-	super initialize.
-	colonColons := OrderedCollection new: 2.
-	names := OrderedCollection new: 2.
-	templateIdentifiers := OrderedCollection new: 2.
-	templateTokens := OrderedCollection new: 2.
+CPPNestedNameSpecifierNode >> name: aSmaCCToken [
+	name := aSmaCCToken
 ]
 
 { #category : #generated }
-CPPNestedNameSpecifierNode >> names [
-	^ names
+CPPNestedNameSpecifierNode >> nameSpecifier [
+	^ nameSpecifier
 ]
 
 { #category : #generated }
-CPPNestedNameSpecifierNode >> names: anOrderedCollection [
-	names := anOrderedCollection
+CPPNestedNameSpecifierNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
+	self nameSpecifier notNil
+		ifTrue: [ self nameSpecifier parent: nil ].
+	nameSpecifier := aCPPNestedNameSpecifierNode.
+	self nameSpecifier notNil
+		ifTrue: [ self nameSpecifier parent: self ]
 ]
 
 { #category : #generated }
-CPPNestedNameSpecifierNode >> otherVariables [
-	^ #(#type)
+CPPNestedNameSpecifierNode >> nodeVariables [
+	^ #(#type #nameSpecifier #templateIdentifier)
 ]
 
 { #category : #generated }
-CPPNestedNameSpecifierNode >> templateIdentifiers [
-	^ templateIdentifiers
+CPPNestedNameSpecifierNode >> templateIdentifier [
+	^ templateIdentifier
 ]
 
 { #category : #generated }
-CPPNestedNameSpecifierNode >> templateIdentifiers: anOrderedCollection [
-	self setParents: self templateIdentifiers to: nil.
-	templateIdentifiers := anOrderedCollection.
-	self setParents: self templateIdentifiers to: self
+CPPNestedNameSpecifierNode >> templateIdentifier: aCPPTemplateIdentifierNode [
+	self templateIdentifier notNil
+		ifTrue: [ self templateIdentifier parent: nil ].
+	templateIdentifier := aCPPTemplateIdentifierNode.
+	self templateIdentifier notNil
+		ifTrue: [ self templateIdentifier parent: self ]
 ]
 
 { #category : #generated }
-CPPNestedNameSpecifierNode >> templateTokens [
-	^ templateTokens
+CPPNestedNameSpecifierNode >> templateToken [
+	^ templateToken
 ]
 
 { #category : #generated }
-CPPNestedNameSpecifierNode >> templateTokens: anOrderedCollection [
-	templateTokens := anOrderedCollection
+CPPNestedNameSpecifierNode >> templateToken: aSmaCCToken [
+	templateToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CPPNestedNameSpecifierNode >> tokenVariables [
+	^ #(#colonColon #name #templateToken)
 ]
 
 { #category : #generated }
@@ -88,6 +91,10 @@ CPPNestedNameSpecifierNode >> type [
 ]
 
 { #category : #generated }
-CPPNestedNameSpecifierNode >> type: anObject [
-	type := anObject
+CPPNestedNameSpecifierNode >> type: aCPPProgramNode [
+	self type notNil
+		ifTrue: [ self type parent: nil ].
+	type := aCPPProgramNode.
+	self type notNil
+		ifTrue: [ self type parent: self ]
 ]

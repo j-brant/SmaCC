@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'caseToken',
 		'expression',
+		'colon',
 		'statement'
 	],
 	#category : #'SmaCC_CPP_Parser'
@@ -25,6 +26,16 @@ CPPCaseLabeledStatementNode >> caseToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+CPPCaseLabeledStatementNode >> colon [
+	^ colon
+]
+
+{ #category : #generated }
+CPPCaseLabeledStatementNode >> colon: aSmaCCToken [
+	colon := aSmaCCToken
+]
+
+{ #category : #generated }
 CPPCaseLabeledStatementNode >> expression [
 	^ expression
 ]
@@ -40,12 +51,7 @@ CPPCaseLabeledStatementNode >> expression: aCPPExpressionNode [
 
 { #category : #generated }
 CPPCaseLabeledStatementNode >> nodeVariables [
-	^ #(#expression)
-]
-
-{ #category : #generated }
-CPPCaseLabeledStatementNode >> otherVariables [
-	^ #(#statement)
+	^ #(#expression #statement)
 ]
 
 { #category : #generated }
@@ -54,11 +60,15 @@ CPPCaseLabeledStatementNode >> statement [
 ]
 
 { #category : #generated }
-CPPCaseLabeledStatementNode >> statement: anObject [
-	statement := anObject
+CPPCaseLabeledStatementNode >> statement: aCPPProgramNode [
+	self statement notNil
+		ifTrue: [ self statement parent: nil ].
+	statement := aCPPProgramNode.
+	self statement notNil
+		ifTrue: [ self statement parent: self ]
 ]
 
 { #category : #generated }
 CPPCaseLabeledStatementNode >> tokenVariables [
-	^ #(#caseToken)
+	^ #(#caseToken #colon)
 ]

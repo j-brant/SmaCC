@@ -2,6 +2,7 @@ Class {
 	#name : #CPPDestructorIdentifierNode,
 	#superclass : #CPPProgramNode,
 	#instVars : [
+		'tilde',
 		'name'
 	],
 	#category : #'SmaCC_CPP_Parser'
@@ -29,4 +30,19 @@ CPPDestructorIdentifierNode >> name: aCPPProgramNode [
 { #category : #generated }
 CPPDestructorIdentifierNode >> nodeVariables [
 	^ #(#name)
+]
+
+{ #category : #generated }
+CPPDestructorIdentifierNode >> tilde [
+	^ tilde
+]
+
+{ #category : #generated }
+CPPDestructorIdentifierNode >> tilde: aSmaCCToken [
+	tilde := aSmaCCToken
+]
+
+{ #category : #generated }
+CPPDestructorIdentifierNode >> tokenVariables [
+	^ #(#tilde)
 ]

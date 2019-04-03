@@ -5,6 +5,21 @@ Class {
 }
 
 { #category : #generated }
+CPPProgramNodeVisitor >> visitAbstractDeclarator: anAbstractDeclarator [
+	^ self visitProgram: anAbstractDeclarator
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitAbstractPackDeclarator: anAbstractPackDeclarator [
+	^ self visitProgram: anAbstractPackDeclarator
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitAliasDeclaration: anAliasDeclaration [
+	^ self visitProgram: anAliasDeclaration
+]
+
+{ #category : #generated }
 CPPProgramNodeVisitor >> visitAlignmentSpecifier: anAlignmentSpecifier [
 	^ self visitProgram: anAlignmentSpecifier
 ]
@@ -15,8 +30,18 @@ CPPProgramNodeVisitor >> visitAlignofExpression: anAlignofExpression [
 ]
 
 { #category : #generated }
+CPPProgramNodeVisitor >> visitAsmDefinition: anAsmDefinition [
+	^ self visitProgram: anAsmDefinition
+]
+
+{ #category : #generated }
 CPPProgramNodeVisitor >> visitAssignmentExpression: anAssignmentExpression [
 	^ self visitExpression: anAssignmentExpression
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitAttributeDeclaration: anAttributeDeclaration [
+	^ self visitProgram: anAttributeDeclaration
 ]
 
 { #category : #generated }
@@ -27,6 +52,11 @@ CPPProgramNodeVisitor >> visitAttributeSpecifier: anAttributeSpecifier [
 { #category : #generated }
 CPPProgramNodeVisitor >> visitAutoType: anAutoType [
 	^ self visitType: anAutoType
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitBaseSpecifier: aBaseSpecifier [
+	^ self visitProgram: aBaseSpecifier
 ]
 
 { #category : #generated }
@@ -52,6 +82,11 @@ CPPProgramNodeVisitor >> visitBracedListInitializer: aBracedListInitializer [
 { #category : #generated }
 CPPProgramNodeVisitor >> visitBreakStatement: aBreakStatement [
 	^ self visitStatement: aBreakStatement
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitCVQualifier: aCVQualifier [
+	^ self visitProgram: aCVQualifier
 ]
 
 { #category : #generated }
@@ -105,6 +140,11 @@ CPPProgramNodeVisitor >> visitCompoundStatement: aCompoundStatement [
 ]
 
 { #category : #generated }
+CPPProgramNodeVisitor >> visitCondition: aCondition [
+	^ self visitProgram: aCondition
+]
+
+{ #category : #generated }
 CPPProgramNodeVisitor >> visitConditionalExpression: aConditionalExpression [
 	^ self visitExpression: aConditionalExpression
 ]
@@ -112,6 +152,11 @@ CPPProgramNodeVisitor >> visitConditionalExpression: aConditionalExpression [
 { #category : #generated }
 CPPProgramNodeVisitor >> visitContinueStatement: aContinueStatement [
 	^ self visitStatement: aContinueStatement
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitConversionDeclarator: aConversionDeclarator [
+	^ self visitProgram: aConversionDeclarator
 ]
 
 { #category : #generated }
@@ -127,6 +172,16 @@ CPPProgramNodeVisitor >> visitConversionFunctionIdentifier: aConversionFunctionI
 { #category : #generated }
 CPPProgramNodeVisitor >> visitCtorInitializer: aCtorInitializer [
 	^ self visitProgram: aCtorInitializer
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitDeclSpecifier: aDeclSpecifier [
+	^ self visitProgram: aDeclSpecifier
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitDeclarator: aDeclarator [
+	^ self visitProgram: aDeclarator
 ]
 
 { #category : #generated }
@@ -185,6 +240,16 @@ CPPProgramNodeVisitor >> visitExceptionDeclaration: anExceptionDeclaration [
 ]
 
 { #category : #generated }
+CPPProgramNodeVisitor >> visitExplicitInstantiation: anExplicitInstantiation [
+	^ self visitProgram: anExplicitInstantiation
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitExplicitSpecialization: anExplicitSpecialization [
+	^ self visitProgram: anExplicitSpecialization
+]
+
+{ #category : #generated }
 CPPProgramNodeVisitor >> visitExpression: anExpression [
 	^ self visitProgram: anExpression
 ]
@@ -200,6 +265,11 @@ CPPProgramNodeVisitor >> visitExpressionStatement: anExpressionStatement [
 ]
 
 { #category : #generated }
+CPPProgramNodeVisitor >> visitExtensionNamespaceDefinition: anExtensionNamespaceDefinition [
+	^ self visitProgram: anExtensionNamespaceDefinition
+]
+
+{ #category : #generated }
 CPPProgramNodeVisitor >> visitForRangeDeclaration: aForRangeDeclaration [
 	^ self visitProgram: aForRangeDeclaration
 ]
@@ -207,6 +277,11 @@ CPPProgramNodeVisitor >> visitForRangeDeclaration: aForRangeDeclaration [
 { #category : #generated }
 CPPProgramNodeVisitor >> visitForStatement: aForStatement [
 	^ self visitStatement: aForStatement
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitFunctionDefinition: aFunctionDefinition [
+	^ self visitProgram: aFunctionDefinition
 ]
 
 { #category : #generated }
@@ -230,6 +305,11 @@ CPPProgramNodeVisitor >> visitIfStatement: anIfStatement [
 ]
 
 { #category : #generated }
+CPPProgramNodeVisitor >> visitInitDeclarator: anInitDeclarator [
+	^ self visitProgram: anInitDeclarator
+]
+
+{ #category : #generated }
 CPPProgramNodeVisitor >> visitInitializedCapture: anInitializedCapture [
 	^ self visitCapture: anInitializedCapture
 ]
@@ -242,6 +322,11 @@ CPPProgramNodeVisitor >> visitLabeledStatement: aLabeledStatement [
 { #category : #generated }
 CPPProgramNodeVisitor >> visitLambdaExpression: aLambdaExpression [
 	^ self visitExpression: aLambdaExpression
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitLinkageSpecification: aLinkageSpecification [
+	^ self visitProgram: aLinkageSpecification
 ]
 
 { #category : #generated }
@@ -260,13 +345,33 @@ CPPProgramNodeVisitor >> visitMemInitializer: aMemInitializer [
 ]
 
 { #category : #generated }
+CPPProgramNodeVisitor >> visitMemberDeclaration: aMemberDeclaration [
+	^ self visitProgram: aMemberDeclaration
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitMemberDeclarator: aMemberDeclarator [
+	^ self visitProgram: aMemberDeclarator
+]
+
+{ #category : #generated }
 CPPProgramNodeVisitor >> visitMemberExpression: aMemberExpression [
 	^ self visitExpression: aMemberExpression
 ]
 
 { #category : #generated }
+CPPProgramNodeVisitor >> visitNamespaceAliasDefinition: aNamespaceAliasDefinition [
+	^ self visitProgram: aNamespaceAliasDefinition
+]
+
+{ #category : #generated }
 CPPProgramNodeVisitor >> visitNestedNameSpecifier: aNestedNameSpecifier [
 	^ self visitProgram: aNestedNameSpecifier
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitNewDeclarator: aNewDeclarator [
+	^ self visitProgram: aNewDeclarator
 ]
 
 { #category : #generated }
@@ -277,6 +382,11 @@ CPPProgramNodeVisitor >> visitNewExpression: aNewExpression [
 { #category : #generated }
 CPPProgramNodeVisitor >> visitNewInitializer: aNewInitializer [
 	^ self visitProgram: aNewInitializer
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitNewTypeIdentifier: aNewTypeIdentifier [
+	^ self visitProgram: aNewTypeIdentifier
 ]
 
 { #category : #generated }
@@ -310,6 +420,16 @@ CPPProgramNodeVisitor >> visitOperatorFunctionTemplateIdentifier: anOperatorFunc
 ]
 
 { #category : #generated }
+CPPProgramNodeVisitor >> visitOriginalNamespaceDefinition: anOriginalNamespaceDefinition [
+	^ self visitProgram: anOriginalNamespaceDefinition
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitParameterDeclaration: aParameterDeclaration [
+	^ self visitProgram: aParameterDeclaration
+]
+
+{ #category : #generated }
 CPPProgramNodeVisitor >> visitPointerLiteral: aPointerLiteral [
 	^ self visitLiteral: aPointerLiteral
 ]
@@ -340,6 +460,16 @@ CPPProgramNodeVisitor >> visitProgram: aProgram [
 ]
 
 { #category : #generated }
+CPPProgramNodeVisitor >> visitPseudoDestructorName: aPseudoDestructorName [
+	^ self visitProgram: aPseudoDestructorName
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitPtrAbstractDeclarator: aPtrAbstractDeclarator [
+	^ self visitProgram: aPtrAbstractDeclarator
+]
+
+{ #category : #generated }
 CPPProgramNodeVisitor >> visitQualifiedIdentifier: aQualifiedIdentifier [
 	^ self visitProgram: aQualifiedIdentifier
 ]
@@ -355,6 +485,11 @@ CPPProgramNodeVisitor >> visitReturnStatement: aReturnStatement [
 ]
 
 { #category : #generated }
+CPPProgramNodeVisitor >> visitSimpleDeclaration: aSimpleDeclaration [
+	^ self visitProgram: aSimpleDeclaration
+]
+
+{ #category : #generated }
 CPPProgramNodeVisitor >> visitSizeofExpression: aSizeofExpression [
 	^ self visitExpression: aSizeofExpression
 ]
@@ -362,6 +497,11 @@ CPPProgramNodeVisitor >> visitSizeofExpression: aSizeofExpression [
 { #category : #generated }
 CPPProgramNodeVisitor >> visitStatement: aStatement [
 	^ self visitProgram: aStatement
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitStaticAssertDeclaration: aStaticAssertDeclaration [
+	^ self visitProgram: aStaticAssertDeclaration
 ]
 
 { #category : #generated }
@@ -377,6 +517,11 @@ CPPProgramNodeVisitor >> visitSubscriptExpression: aSubscriptExpression [
 { #category : #generated }
 CPPProgramNodeVisitor >> visitSwitchStatement: aSwitchStatement [
 	^ self visitStatement: aSwitchStatement
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitTemplateDeclaration: aTemplateDeclaration [
+	^ self visitProgram: aTemplateDeclaration
 ]
 
 { #category : #generated }
@@ -425,13 +570,33 @@ CPPProgramNodeVisitor >> visitTypeNameSpecifier: aTypeNameSpecifier [
 ]
 
 { #category : #generated }
+CPPProgramNodeVisitor >> visitTypeParameter: aTypeParameter [
+	^ self visitProgram: aTypeParameter
+]
+
+{ #category : #generated }
 CPPProgramNodeVisitor >> visitTypeidExpression: aTypeidExpression [
 	^ self visitExpression: aTypeidExpression
 ]
 
 { #category : #generated }
+CPPProgramNodeVisitor >> visitUnnamedNamespaceDefinition: anUnnamedNamespaceDefinition [
+	^ self visitProgram: anUnnamedNamespaceDefinition
+]
+
+{ #category : #generated }
 CPPProgramNodeVisitor >> visitUserDefinedLiteral: anUserDefinedLiteral [
 	^ self visitLiteral: anUserDefinedLiteral
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitUsingDeclaration: anUsingDeclaration [
+	^ self visitProgram: anUsingDeclaration
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitUsingDirective: anUsingDirective [
+	^ self visitProgram: anUsingDirective
 ]
 
 { #category : #generated }

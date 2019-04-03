@@ -2,7 +2,8 @@ Class {
 	#name : #CPPClassTypeNode,
 	#superclass : #CPPTypeNode,
 	#instVars : [
-		'namespaceSpecifier'
+		'name',
+		'nameSpecifier'
 	],
 	#category : #'SmaCC_CPP_Parser'
 }
@@ -13,20 +14,34 @@ CPPClassTypeNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-CPPClassTypeNode >> namespaceSpecifier [
-	^ namespaceSpecifier
+CPPClassTypeNode >> name [
+	^ name
 ]
 
 { #category : #generated }
-CPPClassTypeNode >> namespaceSpecifier: aCPPNestedNameSpecifierNode [
-	self namespaceSpecifier notNil
-		ifTrue: [ self namespaceSpecifier parent: nil ].
-	namespaceSpecifier := aCPPNestedNameSpecifierNode.
-	self namespaceSpecifier notNil
-		ifTrue: [ self namespaceSpecifier parent: self ]
+CPPClassTypeNode >> name: aCPPProgramNode [
+	self name notNil
+		ifTrue: [ self name parent: nil ].
+	name := aCPPProgramNode.
+	self name notNil
+		ifTrue: [ self name parent: self ]
+]
+
+{ #category : #generated }
+CPPClassTypeNode >> nameSpecifier [
+	^ nameSpecifier
+]
+
+{ #category : #generated }
+CPPClassTypeNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
+	self nameSpecifier notNil
+		ifTrue: [ self nameSpecifier parent: nil ].
+	nameSpecifier := aCPPNestedNameSpecifierNode.
+	self nameSpecifier notNil
+		ifTrue: [ self nameSpecifier parent: self ]
 ]
 
 { #category : #generated }
 CPPClassTypeNode >> nodeVariables [
-	^ #(#namespaceSpecifier)
+	^ #(#name #nameSpecifier)
 ]

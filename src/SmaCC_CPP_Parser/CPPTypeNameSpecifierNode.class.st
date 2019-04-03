@@ -3,7 +3,7 @@ Class {
 	#superclass : #CPPProgramNode,
 	#instVars : [
 		'typenameToken',
-		'namespaceSpecifier',
+		'nameSpecifier',
 		'name',
 		'templateIdentifier',
 		'templateToken'
@@ -27,22 +27,22 @@ CPPTypeNameSpecifierNode >> name: aSmaCCToken [
 ]
 
 { #category : #generated }
-CPPTypeNameSpecifierNode >> namespaceSpecifier [
-	^ namespaceSpecifier
+CPPTypeNameSpecifierNode >> nameSpecifier [
+	^ nameSpecifier
 ]
 
 { #category : #generated }
-CPPTypeNameSpecifierNode >> namespaceSpecifier: aCPPNestedNameSpecifierNode [
-	self namespaceSpecifier notNil
-		ifTrue: [ self namespaceSpecifier parent: nil ].
-	namespaceSpecifier := aCPPNestedNameSpecifierNode.
-	self namespaceSpecifier notNil
-		ifTrue: [ self namespaceSpecifier parent: self ]
+CPPTypeNameSpecifierNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
+	self nameSpecifier notNil
+		ifTrue: [ self nameSpecifier parent: nil ].
+	nameSpecifier := aCPPNestedNameSpecifierNode.
+	self nameSpecifier notNil
+		ifTrue: [ self nameSpecifier parent: self ]
 ]
 
 { #category : #generated }
 CPPTypeNameSpecifierNode >> nodeVariables [
-	^ #(#namespaceSpecifier #templateIdentifier)
+	^ #(#nameSpecifier #templateIdentifier)
 ]
 
 { #category : #generated }

@@ -25,8 +25,12 @@ CPPIfStatementNode >> condition [
 ]
 
 { #category : #generated }
-CPPIfStatementNode >> condition: anObject [
-	condition := anObject
+CPPIfStatementNode >> condition: aCPPProgramNode [
+	self condition notNil
+		ifTrue: [ self condition parent: nil ].
+	condition := aCPPProgramNode.
+	self condition notNil
+		ifTrue: [ self condition parent: self ]
 ]
 
 { #category : #generated }
@@ -35,8 +39,12 @@ CPPIfStatementNode >> elseStatement [
 ]
 
 { #category : #generated }
-CPPIfStatementNode >> elseStatement: anObject [
-	elseStatement := anObject
+CPPIfStatementNode >> elseStatement: aCPPProgramNode [
+	self elseStatement notNil
+		ifTrue: [ self elseStatement parent: nil ].
+	elseStatement := aCPPProgramNode.
+	self elseStatement notNil
+		ifTrue: [ self elseStatement parent: self ]
 ]
 
 { #category : #generated }
@@ -70,7 +78,7 @@ CPPIfStatementNode >> leftParen: aSmaCCToken [
 ]
 
 { #category : #generated }
-CPPIfStatementNode >> otherVariables [
+CPPIfStatementNode >> nodeVariables [
 	^ #(#condition #statement #thenStatement #elseStatement)
 ]
 
@@ -90,8 +98,12 @@ CPPIfStatementNode >> statement [
 ]
 
 { #category : #generated }
-CPPIfStatementNode >> statement: anObject [
-	statement := anObject
+CPPIfStatementNode >> statement: aCPPProgramNode [
+	self statement notNil
+		ifTrue: [ self statement parent: nil ].
+	statement := aCPPProgramNode.
+	self statement notNil
+		ifTrue: [ self statement parent: self ]
 ]
 
 { #category : #generated }
@@ -100,8 +112,12 @@ CPPIfStatementNode >> thenStatement [
 ]
 
 { #category : #generated }
-CPPIfStatementNode >> thenStatement: anObject [
-	thenStatement := anObject
+CPPIfStatementNode >> thenStatement: aCPPProgramNode [
+	self thenStatement notNil
+		ifTrue: [ self thenStatement parent: nil ].
+	thenStatement := aCPPProgramNode.
+	self thenStatement notNil
+		ifTrue: [ self thenStatement parent: self ]
 ]
 
 { #category : #generated }

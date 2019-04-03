@@ -22,8 +22,12 @@ CPPSwitchStatementNode >> condition [
 ]
 
 { #category : #generated }
-CPPSwitchStatementNode >> condition: anObject [
-	condition := anObject
+CPPSwitchStatementNode >> condition: aCPPProgramNode [
+	self condition notNil
+		ifTrue: [ self condition parent: nil ].
+	condition := aCPPProgramNode.
+	self condition notNil
+		ifTrue: [ self condition parent: self ]
 ]
 
 { #category : #generated }
@@ -37,7 +41,7 @@ CPPSwitchStatementNode >> leftParen: aSmaCCToken [
 ]
 
 { #category : #generated }
-CPPSwitchStatementNode >> otherVariables [
+CPPSwitchStatementNode >> nodeVariables [
 	^ #(#condition #statement)
 ]
 
@@ -57,8 +61,12 @@ CPPSwitchStatementNode >> statement [
 ]
 
 { #category : #generated }
-CPPSwitchStatementNode >> statement: anObject [
-	statement := anObject
+CPPSwitchStatementNode >> statement: aCPPProgramNode [
+	self statement notNil
+		ifTrue: [ self statement parent: nil ].
+	statement := aCPPProgramNode.
+	self statement notNil
+		ifTrue: [ self statement parent: self ]
 ]
 
 { #category : #generated }

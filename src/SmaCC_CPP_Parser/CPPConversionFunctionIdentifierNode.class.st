@@ -3,7 +3,8 @@ Class {
 	#superclass : #CPPProgramNode,
 	#instVars : [
 		'operatorToken',
-		'type'
+		'specifiers',
+		'declarator'
 	],
 	#category : #'SmaCC_CPP_Parser'
 }
@@ -11,6 +12,36 @@ Class {
 { #category : #generated }
 CPPConversionFunctionIdentifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitConversionFunctionIdentifier: self
+]
+
+{ #category : #generated }
+CPPConversionFunctionIdentifierNode >> compositeNodeVariables [
+	^ #(#specifiers)
+]
+
+{ #category : #generated }
+CPPConversionFunctionIdentifierNode >> declarator [
+	^ declarator
+]
+
+{ #category : #generated }
+CPPConversionFunctionIdentifierNode >> declarator: aCPPConversionDeclaratorNode [
+	self declarator notNil
+		ifTrue: [ self declarator parent: nil ].
+	declarator := aCPPConversionDeclaratorNode.
+	self declarator notNil
+		ifTrue: [ self declarator parent: self ]
+]
+
+{ #category : #'generated-initialize-release' }
+CPPConversionFunctionIdentifierNode >> initialize [
+	super initialize.
+	specifiers := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+CPPConversionFunctionIdentifierNode >> nodeVariables [
+	^ #(#declarator)
 ]
 
 { #category : #generated }
@@ -24,21 +55,18 @@ CPPConversionFunctionIdentifierNode >> operatorToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-CPPConversionFunctionIdentifierNode >> otherVariables [
-	^ #(#type)
+CPPConversionFunctionIdentifierNode >> specifiers [
+	^ specifiers
+]
+
+{ #category : #generated }
+CPPConversionFunctionIdentifierNode >> specifiers: anOrderedCollection [
+	self setParents: self specifiers to: nil.
+	specifiers := anOrderedCollection.
+	self setParents: self specifiers to: self
 ]
 
 { #category : #generated }
 CPPConversionFunctionIdentifierNode >> tokenVariables [
 	^ #(#operatorToken)
-]
-
-{ #category : #generated }
-CPPConversionFunctionIdentifierNode >> type [
-	^ type
-]
-
-{ #category : #generated }
-CPPConversionFunctionIdentifierNode >> type: anOrderedCollection [
-	type := anOrderedCollection
 ]

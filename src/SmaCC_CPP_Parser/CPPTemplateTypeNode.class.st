@@ -2,9 +2,9 @@ Class {
 	#name : #CPPTemplateTypeNode,
 	#superclass : #CPPTypeNode,
 	#instVars : [
-		'namespaceSpecifier',
+		'nameSpecifier',
 		'templateToken',
-		'template'
+		'templateIdentifier'
 	],
 	#category : #'SmaCC_CPP_Parser'
 }
@@ -15,36 +15,36 @@ CPPTemplateTypeNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-CPPTemplateTypeNode >> namespaceSpecifier [
-	^ namespaceSpecifier
+CPPTemplateTypeNode >> nameSpecifier [
+	^ nameSpecifier
 ]
 
 { #category : #generated }
-CPPTemplateTypeNode >> namespaceSpecifier: aCPPNestedNameSpecifierNode [
-	self namespaceSpecifier notNil
-		ifTrue: [ self namespaceSpecifier parent: nil ].
-	namespaceSpecifier := aCPPNestedNameSpecifierNode.
-	self namespaceSpecifier notNil
-		ifTrue: [ self namespaceSpecifier parent: self ]
+CPPTemplateTypeNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
+	self nameSpecifier notNil
+		ifTrue: [ self nameSpecifier parent: nil ].
+	nameSpecifier := aCPPNestedNameSpecifierNode.
+	self nameSpecifier notNil
+		ifTrue: [ self nameSpecifier parent: self ]
 ]
 
 { #category : #generated }
 CPPTemplateTypeNode >> nodeVariables [
-	^ #(#namespaceSpecifier #template)
+	^ #(#nameSpecifier #templateIdentifier)
 ]
 
 { #category : #generated }
-CPPTemplateTypeNode >> template [
-	^ template
+CPPTemplateTypeNode >> templateIdentifier [
+	^ templateIdentifier
 ]
 
 { #category : #generated }
-CPPTemplateTypeNode >> template: aCPPTemplateIdentifierNode [
-	self template notNil
-		ifTrue: [ self template parent: nil ].
-	template := aCPPTemplateIdentifierNode.
-	self template notNil
-		ifTrue: [ self template parent: self ]
+CPPTemplateTypeNode >> templateIdentifier: aCPPTemplateIdentifierNode [
+	self templateIdentifier notNil
+		ifTrue: [ self templateIdentifier parent: nil ].
+	templateIdentifier := aCPPTemplateIdentifierNode.
+	self templateIdentifier notNil
+		ifTrue: [ self templateIdentifier parent: self ]
 ]
 
 { #category : #generated }

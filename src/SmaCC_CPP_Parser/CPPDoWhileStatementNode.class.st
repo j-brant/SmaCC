@@ -54,12 +54,7 @@ CPPDoWhileStatementNode >> leftParen: aSmaCCToken [
 
 { #category : #generated }
 CPPDoWhileStatementNode >> nodeVariables [
-	^ #(#condition)
-]
-
-{ #category : #generated }
-CPPDoWhileStatementNode >> otherVariables [
-	^ #(#statement)
+	^ #(#statement #condition)
 ]
 
 { #category : #generated }
@@ -88,8 +83,12 @@ CPPDoWhileStatementNode >> statement [
 ]
 
 { #category : #generated }
-CPPDoWhileStatementNode >> statement: anObject [
-	statement := anObject
+CPPDoWhileStatementNode >> statement: aCPPProgramNode [
+	self statement notNil
+		ifTrue: [ self statement parent: nil ].
+	statement := aCPPProgramNode.
+	self statement notNil
+		ifTrue: [ self statement parent: self ]
 ]
 
 { #category : #generated }
