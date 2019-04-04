@@ -22,7 +22,7 @@ SmaCCParserSimulator class >> csharpIfStatement [
 	simulator := SmaCCParserSimulator
 		on: #CSharpParser asClass definitionString.
 	simulator setupFor: 'if_statement'.
-	result := simulator simulateParse: 'if (a == 2) return 4;'.
+	result := (simulator simulateParse: 'if (a == 2) return 4;') first.
 	self assert: result rhs productionSymbol name = 'if_statement'.
 	self assert: result items first source = 'if'.
 	self assert: result items second source = '('.
@@ -84,6 +84,20 @@ SmaCCParserSimulator class >> csharpInvalidToken [
 	self error: 'Shouldn''t get here'
 ]
 
+{ #category : #examples }
+SmaCCParserSimulator class >> javaAmbiguousActions [
+	<gtExample>
+	| simulator items |
+	(Smalltalk includesKey: #JavaParser)
+		ifFalse: [ ^ nil ].
+	simulator := SmaCCParserSimulator
+		on: #JavaParser asClass definitionString.
+	simulator setupFor: 'expression'.
+	items := simulator simulateParse: 'a(b)'.
+	self assert: items size = 1.
+	^ items first
+]
+
 { #category : #'instance creation' }
 SmaCCParserSimulator class >> on: aString [
 	^ self new
@@ -127,7 +141,7 @@ SmaCCParserSimulator >> duplicateState [
 		add:
 			(currentParserState := SmaCCParserState
 				stateStack: currentParserState stateStack copy
-				nodeStack: currentParserState nodeStack
+				nodeStack: currentParserState nodeStack copy
 				scannerState: currentParserState scannerState copy)
 ]
 
@@ -157,7 +171,8 @@ SmaCCParserSimulator >> killStateFrom: aSmaCCToken [
 	index := parserStates identityIndexOf: currentParserState.
 	parserStates size > 1
 		ifTrue: [ parserStates removeAt: index.
-			currentParserState := parserStates at: (index max: 1) ]
+			currentParserState := parserStates
+				at: (index min: parserStates size) ]
 		ifFalse: [ self signalErrorFrom: aSmaCCToken ]
 ]
 
