@@ -40,6 +40,16 @@ CPPProgramNodeVisitor >> visitAssignmentExpression: anAssignmentExpression [
 ]
 
 { #category : #generated }
+CPPProgramNodeVisitor >> visitAttribute: anAttribute [
+	^ self visitProgram: anAttribute
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitAttributeArgumentClause: anAttributeArgumentClause [
+	^ self visitProgram: anAttributeArgumentClause
+]
+
+{ #category : #generated }
 CPPProgramNodeVisitor >> visitAttributeDeclaration: anAttributeDeclaration [
 	^ self visitProgram: anAttributeDeclaration
 ]
@@ -127,6 +137,11 @@ CPPProgramNodeVisitor >> visitClassSpecifier: aClassSpecifier [
 { #category : #generated }
 CPPProgramNodeVisitor >> visitClassType: aClassType [
 	^ self visitType: aClassType
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitClassTypeParameter: aClassTypeParameter [
+	^ self visitProgram: aClassTypeParameter
 ]
 
 { #category : #generated }
@@ -535,6 +550,11 @@ CPPProgramNodeVisitor >> visitTemplateType: aTemplateType [
 ]
 
 { #category : #generated }
+CPPProgramNodeVisitor >> visitTemplateTypeParameter: aTemplateTypeParameter [
+	^ self visitProgram: aTemplateTypeParameter
+]
+
+{ #category : #generated }
 CPPProgramNodeVisitor >> visitThisExpression: aThisExpression [
 	^ self visitExpression: aThisExpression
 ]
@@ -570,13 +590,13 @@ CPPProgramNodeVisitor >> visitTypeNameSpecifier: aTypeNameSpecifier [
 ]
 
 { #category : #generated }
-CPPProgramNodeVisitor >> visitTypeParameter: aTypeParameter [
-	^ self visitProgram: aTypeParameter
+CPPProgramNodeVisitor >> visitTypeidExpression: aTypeidExpression [
+	^ self visitExpression: aTypeidExpression
 ]
 
 { #category : #generated }
-CPPProgramNodeVisitor >> visitTypeidExpression: aTypeidExpression [
-	^ self visitExpression: aTypeidExpression
+CPPProgramNodeVisitor >> visitTypenameTypeParameter: aTypenameTypeParameter [
+	^ self visitProgram: aTypenameTypeParameter
 ]
 
 { #category : #generated }

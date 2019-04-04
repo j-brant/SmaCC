@@ -6,7 +6,6 @@ Class {
 		'leftParen',
 		'condition',
 		'rightParen',
-		'statement',
 		'thenStatement',
 		'elseToken',
 		'elseStatement'
@@ -79,7 +78,7 @@ CPPIfStatementNode >> leftParen: aSmaCCToken [
 
 { #category : #generated }
 CPPIfStatementNode >> nodeVariables [
-	^ #(#condition #statement #thenStatement #elseStatement)
+	^ #(#condition #thenStatement #elseStatement)
 ]
 
 { #category : #generated }
@@ -90,20 +89,6 @@ CPPIfStatementNode >> rightParen [
 { #category : #generated }
 CPPIfStatementNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
-]
-
-{ #category : #generated }
-CPPIfStatementNode >> statement [
-	^ statement
-]
-
-{ #category : #generated }
-CPPIfStatementNode >> statement: aCPPProgramNode [
-	self statement notNil
-		ifTrue: [ self statement parent: nil ].
-	statement := aCPPProgramNode.
-	self statement notNil
-		ifTrue: [ self statement parent: self ]
 ]
 
 { #category : #generated }

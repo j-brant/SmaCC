@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'declarator',
 		'equalToken',
-		'zero',
+		'value',
 		'virtualSpecifierTokens',
 		'initializer',
 		'colon',
@@ -96,7 +96,7 @@ CPPMemberDeclaratorNode >> name: aSmaCCToken [
 
 { #category : #generated }
 CPPMemberDeclaratorNode >> nodeVariables [
-	^ #(#declarator #initializer)
+	^ #(#declarator #value #initializer)
 ]
 
 { #category : #generated }
@@ -113,7 +113,21 @@ CPPMemberDeclaratorNode >> specifiers: anOrderedCollection [
 
 { #category : #generated }
 CPPMemberDeclaratorNode >> tokenVariables [
-	^ #(#equalToken #zero #colon #name)
+	^ #(#equalToken #colon #name)
+]
+
+{ #category : #generated }
+CPPMemberDeclaratorNode >> value [
+	^ value
+]
+
+{ #category : #generated }
+CPPMemberDeclaratorNode >> value: aCPPNumericLiteralNode [
+	self value notNil
+		ifTrue: [ self value parent: nil ].
+	value := aCPPNumericLiteralNode.
+	self value notNil
+		ifTrue: [ self value parent: self ]
 ]
 
 { #category : #generated }
@@ -124,14 +138,4 @@ CPPMemberDeclaratorNode >> virtualSpecifierTokens [
 { #category : #generated }
 CPPMemberDeclaratorNode >> virtualSpecifierTokens: anOrderedCollection [
 	virtualSpecifierTokens := anOrderedCollection
-]
-
-{ #category : #generated }
-CPPMemberDeclaratorNode >> zero [
-	^ zero
-]
-
-{ #category : #generated }
-CPPMemberDeclaratorNode >> zero: aSmaCCToken [
-	zero := aSmaCCToken
 ]

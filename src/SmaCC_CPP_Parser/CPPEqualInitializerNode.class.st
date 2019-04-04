@@ -3,7 +3,8 @@ Class {
 	#superclass : #CPPProgramNode,
 	#instVars : [
 		'equal',
-		'value'
+		'value',
+		'equalToken'
 	],
 	#category : #'SmaCC_CPP_Parser'
 }
@@ -24,13 +25,23 @@ CPPEqualInitializerNode >> equal: aSmaCCToken [
 ]
 
 { #category : #generated }
+CPPEqualInitializerNode >> equalToken [
+	^ equalToken
+]
+
+{ #category : #generated }
+CPPEqualInitializerNode >> equalToken: aSmaCCToken [
+	equalToken := aSmaCCToken
+]
+
+{ #category : #generated }
 CPPEqualInitializerNode >> nodeVariables [
 	^ #(#value)
 ]
 
 { #category : #generated }
 CPPEqualInitializerNode >> tokenVariables [
-	^ #(#equal)
+	^ #(#equal #equalToken)
 ]
 
 { #category : #generated }

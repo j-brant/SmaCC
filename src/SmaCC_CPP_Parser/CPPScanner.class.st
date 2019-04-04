@@ -7,7 +7,7 @@ Class {
 { #category : #'generated-initialization' }
 CPPScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
-	#(#(129 'alignas' 50) #(129 'alignof' 51) #(129 'and' 40) #(129 'asm' 52) #(129 'auto' 53) #(129 'bool' 54) #(129 'break' 55) #(129 'case' 56) #(129 'catch' 57) #(129 'char' 58) #(129 'char16_t' 59) #(129 'char32_t' 60) #(129 'class' 61) #(129 'const' 62) #(129 'const_cast' 64) #(129 'constexpr' 63) #(129 'continue' 65) #(129 'decltype' 66) #(129 'default' 67) #(129 'delete' 68) #(129 'do' 69) #(129 'double' 70) #(129 'dynamic_cast' 71) #(129 'else' 72) #(129 'enum' 73) #(129 'explicit' 74) #(129 'extern' 75) #(129 'false' 76) #(129 'final' 77) #(129 'float' 78) #(129 'for' 79) #(129 'friend' 80) #(129 'goto' 81) #(129 'if' 82) #(129 'inline' 83) #(129 'int' 84) #(129 'long' 85) #(129 'mutable' 86) #(129 'namespace' 87) #(129 'new' 88) #(129 'noexcept' 89) #(129 'not' 41) #(129 'nullptr' 90) #(129 'operator' 91) #(129 'or' 42) #(129 'override' 92) #(129 'private' 93) #(129 'protected' 94) #(129 'public' 95) #(129 'register' 96) #(129 'reinterpret_cast' 97) #(129 'return' 98) #(129 'short' 99) #(129 'signed' 100) #(129 'sizeof' 101) #(129 'static' 102) #(129 'static_assert' 103) #(129 'static_cast' 104) #(129 'struct' 105) #(129 'switch' 106) #(129 'template' 107) #(129 'this' 108) #(129 'thread_local' 109) #(129 'throw' 110) #(129 'true' 111) #(129 'try' 112) #(129 'typedef' 113) #(129 'typeid' 114) #(129 'typename' 115) #(129 'union' 116) #(129 'unsigned' 117) #(129 'using' 118) #(129 'virtual' 119) #(129 'void' 120) #(129 'volatile' 121) #(129 'wchar_t' 122) #(129 'while' 123))
+	#(#(128 'alignas' 50) #(128 'alignof' 51) #(128 'and' 40) #(128 'asm' 52) #(128 'auto' 53) #(128 'bool' 54) #(128 'break' 55) #(128 'case' 56) #(128 'catch' 57) #(128 'char' 58) #(128 'char16_t' 59) #(128 'char32_t' 60) #(128 'class' 61) #(128 'const' 62) #(128 'const_cast' 64) #(128 'constexpr' 63) #(128 'continue' 65) #(128 'decltype' 66) #(128 'default' 67) #(128 'delete' 68) #(128 'do' 69) #(128 'double' 70) #(128 'dynamic_cast' 71) #(128 'else' 72) #(128 'enum' 73) #(128 'explicit' 74) #(128 'extern' 75) #(128 'false' 76) #(128 'final' 77) #(128 'float' 78) #(128 'for' 79) #(128 'friend' 80) #(128 'goto' 81) #(128 'if' 82) #(128 'inline' 83) #(128 'int' 84) #(128 'long' 85) #(128 'mutable' 86) #(128 'namespace' 87) #(128 'new' 88) #(128 'noexcept' 89) #(128 'not' 41) #(128 'nullptr' 90) #(128 'operator' 91) #(128 'or' 42) #(128 'override' 92) #(128 'private' 93) #(128 'protected' 94) #(128 'public' 95) #(128 'register' 96) #(128 'reinterpret_cast' 97) #(128 'return' 98) #(128 'short' 99) #(128 'signed' 100) #(128 'sizeof' 101) #(128 'static' 102) #(128 'static_assert' 103) #(128 'static_cast' 104) #(128 'struct' 105) #(128 'switch' 106) #(128 'template' 107) #(128 'this' 108) #(128 'thread_local' 109) #(128 'throw' 110) #(128 'true' 111) #(128 'try' 112) #(128 'typedef' 113) #(128 'typeid' 114) #(128 'typename' 115) #(128 'union' 116) #(128 'unsigned' 117) #(128 'using' 118) #(128 'virtual' 119) #(128 'void' 120) #(128 'volatile' 121) #(128 'wchar_t' 122) #(128 'while' 123))
 		do: [ :each | 
 			(keywordMap at: each first ifAbsentPut: [ Dictionary new ])
 				at: (each at: 2)
@@ -76,7 +76,7 @@ CPPScanner >> scan11 [
 
 { #category : #generated }
 CPPScanner >> scan12 [
-	self recordMatch: #(132).
+	self recordMatch: #(131).
 	self step.
 	currentCharacter == $\
 		ifTrue: [ ^ self scan14 ].
@@ -88,7 +88,7 @@ CPPScanner >> scan12 [
 
 { #category : #generated }
 CPPScanner >> scan13 [
-	[ self recordMatch: #(138).
+	[ self recordMatch: #(137).
 	self step.
 	currentCharacter == $\
 		ifTrue: [ ^ self scan14 ].
@@ -235,7 +235,7 @@ CPPScanner >> scan17 [
 
 { #category : #generated }
 CPPScanner >> scan18 [
-	[ self recordMatch: #(133).
+	[ self recordMatch: #(132).
 	self step.
 	currentCharacter == $'
 		ifTrue:
@@ -273,7 +273,7 @@ CPPScanner >> scan18X2 [
 
 { #category : #generated }
 CPPScanner >> scan19 [
-	[ self recordMatch: #(136).
+	[ self recordMatch: #(135).
 	self step.
 	currentCharacter == $\
 		ifTrue: [ ^ self scan20 ].
@@ -286,7 +286,7 @@ CPPScanner >> scan19 [
 
 { #category : #generated }
 CPPScanner >> scan2 [
-	self recordMatch: #(134).
+	self recordMatch: #(133).
 	self step.
 	currentCharacter == $\
 		ifTrue: [ ^ self scan4 ].
@@ -347,7 +347,7 @@ CPPScanner >> scan21 [
 
 { #category : #generated }
 CPPScanner >> scan22 [
-	self recordMatch: #(136).
+	self recordMatch: #(135).
 	self step.
 	currentCharacter == $\
 		ifTrue: [ ^ self scan20 ].
@@ -364,7 +364,7 @@ CPPScanner >> scan22 [
 
 { #category : #generated }
 CPPScanner >> scan22X1 [
-	[ self recordMatch: #(133 136).
+	[ self recordMatch: #(132 135).
 	self step.
 	currentCharacter == $'
 		ifTrue: [ ^ self scan23 ].
@@ -399,7 +399,7 @@ CPPScanner >> scan23 [
 
 { #category : #generated }
 CPPScanner >> scan24 [
-	[ self recordMatch: #(133).
+	[ self recordMatch: #(132).
 	self step.
 	currentCharacter == $'
 		ifTrue: [ ^ self scan23 ].
@@ -426,7 +426,7 @@ CPPScanner >> scan24X1 [
 
 { #category : #generated }
 CPPScanner >> scan25 [
-	self recordMatch: #(133 136).
+	self recordMatch: #(132 135).
 	self step.
 	currentCharacter == $\
 		ifTrue: [ ^ self scan20 ].
@@ -444,7 +444,7 @@ CPPScanner >> scan26 [
 		ifTrue: [ [ self step.
 			currentCharacter == $* ] whileTrue.
 			currentCharacter == $/
-				ifTrue: [ ^ self recordAndReportMatch: #(140) ].
+				ifTrue: [ ^ self recordAndReportMatch: #(139) ].
 			^ self scan26 ].
 	true ] whileTrue
 ]
@@ -461,7 +461,7 @@ CPPScanner >> scan27 [
 
 { #category : #generated }
 CPPScanner >> scan28 [
-	[ self recordMatch: #(130 131).
+	[ self recordMatch: #(129 130).
 	self step.
 	currentCharacter == $'
 		ifTrue: [ ^ self scan27 ].
@@ -500,7 +500,7 @@ CPPScanner >> scan28X1 [
 
 { #category : #generated }
 CPPScanner >> scan29 [
-	self recordMatch: #(133).
+	self recordMatch: #(132).
 	^ self scan29X1
 ]
 
@@ -528,7 +528,7 @@ CPPScanner >> scan29X1 [
 
 { #category : #generated }
 CPPScanner >> scan3 [
-	[ self recordMatch: #(137).
+	[ self recordMatch: #(136).
 	self step.
 	currentCharacter == $\
 		ifTrue: [ ^ self scan4 ].
@@ -561,7 +561,7 @@ CPPScanner >> scan30 [
 
 { #category : #generated }
 CPPScanner >> scan31 [
-	[ self recordMatch: #(135).
+	[ self recordMatch: #(134).
 	self step.
 	currentCharacter == $\
 		ifTrue: [ ^ self scan32 ].
@@ -623,7 +623,7 @@ CPPScanner >> scan33 [
 
 { #category : #generated }
 CPPScanner >> scan34 [
-	self recordMatch: #(135).
+	self recordMatch: #(134).
 	self step.
 	currentCharacter == $\
 		ifTrue: [ ^ self scan32 ].
@@ -640,7 +640,7 @@ CPPScanner >> scan34 [
 
 { #category : #generated }
 CPPScanner >> scan34X1 [
-	[ self recordMatch: #(133 135).
+	[ self recordMatch: #(132 134).
 	self step.
 	currentCharacter == $'
 		ifTrue: [ ^ self scan23 ].
@@ -652,7 +652,7 @@ CPPScanner >> scan34X1 [
 
 { #category : #generated }
 CPPScanner >> scan34X1X1 [
-	self recordMatch: #(133 135 136).
+	self recordMatch: #(132 134 135).
 	self step.
 	currentCharacter == $\
 		ifTrue: [ ^ self scan36 ].
@@ -681,7 +681,7 @@ CPPScanner >> scan34X1X2 [
 
 { #category : #generated }
 CPPScanner >> scan35 [
-	[ self recordMatch: #(135 136).
+	[ self recordMatch: #(134 135).
 	self step.
 	currentCharacter == $\
 		ifTrue: [ ^ self scan36 ].
@@ -743,7 +743,7 @@ CPPScanner >> scan37 [
 
 { #category : #generated }
 CPPScanner >> scan38 [
-	self recordMatch: #(130 135).
+	self recordMatch: #(129 134).
 	self step.
 	currentCharacter == $L
 		ifTrue: [ ^ self scan39 ].
@@ -764,7 +764,7 @@ CPPScanner >> scan38 [
 
 { #category : #generated }
 CPPScanner >> scan39 [
-	self recordMatch: #(130 135).
+	self recordMatch: #(129 134).
 	self step.
 	currentCharacter == $\
 		ifTrue: [ ^ self scan32 ].
@@ -809,7 +809,7 @@ CPPScanner >> scan4 [
 
 { #category : #generated }
 CPPScanner >> scan40 [
-	self recordMatch: #(130 135).
+	self recordMatch: #(129 134).
 	self step.
 	currentCharacter == $\
 		ifTrue: [ ^ self scan32 ].
@@ -822,10 +822,10 @@ CPPScanner >> scan40 [
 
 { #category : #generated }
 CPPScanner >> scan41 [
-	self recordMatch: #(130 135).
+	self recordMatch: #(129 134).
 	self step.
 	currentCharacter == $L
-		ifTrue: [ self recordMatch: #(130 135).
+		ifTrue: [ self recordMatch: #(129 134).
 			self step.
 			currentCharacter == $L
 				ifTrue: [ ^ self scan40 ].
@@ -840,7 +840,7 @@ CPPScanner >> scan41 [
 	currentCharacter == $\
 		ifTrue: [ ^ self scan32 ].
 	currentCharacter == $l
-		ifTrue: [ self recordMatch: #(130 135).
+		ifTrue: [ self recordMatch: #(129 134).
 			self step.
 			currentCharacter == $\
 				ifTrue: [ ^ self scan32 ].
@@ -865,7 +865,7 @@ CPPScanner >> scan41 [
 
 { #category : #generated }
 CPPScanner >> scan42 [
-	self recordMatch: #(130 135).
+	self recordMatch: #(129 134).
 	self step.
 	currentCharacter == $\
 		ifTrue: [ ^ self scan32 ].
@@ -888,7 +888,7 @@ CPPScanner >> scan42 [
 CPPScanner >> scan43 [
 	self step.
 	(currentCharacter between: $0 and: $1)
-		ifTrue: [ [ self recordMatch: #(130).
+		ifTrue: [ [ self recordMatch: #(129).
 			self step.
 			currentCharacter == $'
 				ifTrue: [ ^ self scan43 ].
@@ -914,7 +914,7 @@ CPPScanner >> scan43 [
 
 { #category : #generated }
 CPPScanner >> scan44 [
-	[ self recordMatch: #(130 135).
+	[ self recordMatch: #(129 134).
 	self step.
 	currentCharacter == $'
 		ifTrue: [ ^ self scan45 ].
@@ -951,7 +951,7 @@ CPPScanner >> scan45 [
 	(currentCharacter isDigit
 		or: [ (currentCharacter between: $A and: $F)
 				or: [ currentCharacter between: $a and: $f ] ])
-		ifTrue: [ [ self recordMatch: #(130).
+		ifTrue: [ [ self recordMatch: #(129).
 			self step.
 			currentCharacter == $'
 				ifTrue: [ ^ self scan45 ].
@@ -980,7 +980,7 @@ CPPScanner >> scan45 [
 
 { #category : #generated }
 CPPScanner >> scan46 [
-	[ self recordMatch: #(130).
+	[ self recordMatch: #(129).
 	self step.
 	currentCharacter == $'
 		ifTrue:
@@ -1026,7 +1026,7 @@ CPPScanner >> scan46X2 [
 
 { #category : #generated }
 CPPScanner >> scan47 [
-	[ self recordMatch: #(129).
+	[ self recordMatch: #(128).
 	self step.
 	currentCharacter == $\
 		ifTrue: [ ^ self scan48 ].
@@ -1110,7 +1110,7 @@ CPPScanner >> scan5 [
 
 { #category : #generated }
 CPPScanner >> scan50 [
-	self recordMatch: #(129).
+	self recordMatch: #(128).
 	self step.
 	currentCharacter == $"
 		ifTrue: [ [ self step.
@@ -1278,7 +1278,7 @@ CPPScanner >> scanForToken [
 
 { #category : #generated }
 CPPScanner >> scanForTokenX1 [
-	self recordMatch: #(130 131).
+	self recordMatch: #(129 130).
 	^ self scanForTokenX1X4
 ]
 
@@ -1326,7 +1326,7 @@ CPPScanner >> scanForTokenX13 [
 
 { #category : #generated }
 CPPScanner >> scanForTokenX14 [
-	self recordMatch: #(31 124).
+	self recordMatch: #(31).
 	self step.
 	currentCharacter == $=
 		ifTrue: [ ^ self recordAndReportMatch: #(32) ].
@@ -1394,7 +1394,7 @@ CPPScanner >> scanForTokenX19 [
 
 { #category : #generated }
 CPPScanner >> scanForTokenX1X1 [
-	self recordMatch: #(135).
+	self recordMatch: #(134).
 	self step.
 	currentCharacter == $\
 		ifTrue: [ ^ self scan32 ].
@@ -1410,7 +1410,7 @@ CPPScanner >> scanForTokenX1X1 [
 
 { #category : #generated }
 CPPScanner >> scanForTokenX1X1X1 [
-	[ self recordMatch: #(130 135).
+	[ self recordMatch: #(129 134).
 	self step.
 	currentCharacter == $'
 		ifTrue: [ ^ self scan43 ].
@@ -1442,7 +1442,7 @@ CPPScanner >> scanForTokenX1X1X1X1 [
 
 { #category : #generated }
 CPPScanner >> scanForTokenX1X2 [
-	self recordMatch: #(135).
+	self recordMatch: #(134).
 	self step.
 	currentCharacter == $\
 		ifTrue: [ ^ self scan32 ].
@@ -1506,14 +1506,14 @@ CPPScanner >> scanForTokenX1X4 [
 
 { #category : #generated }
 CPPScanner >> scanForTokenX2 [
-	self recordMatch: #(129).
+	self recordMatch: #(128).
 	self step.
 	currentCharacter == $"
 		ifTrue: [ ^ self scan1 ].
 	currentCharacter == $'
 		ifTrue: [ ^ self scan10 ].
 	currentCharacter == $8
-		ifTrue: [ self recordMatch: #(129).
+		ifTrue: [ self recordMatch: #(128).
 			self step.
 			currentCharacter == $"
 				ifTrue: [ ^ self scan1 ].
@@ -1613,7 +1613,7 @@ CPPScanner >> scanForTokenX21 [
 
 { #category : #generated }
 CPPScanner >> scanForTokenX3 [
-	self recordMatch: #(129).
+	self recordMatch: #(128).
 	self step.
 	currentCharacter == $"
 		ifTrue: [ ^ self scan1 ].
@@ -1638,7 +1638,7 @@ CPPScanner >> scanForTokenX4 [
 	currentCharacter == $*
 		ifTrue: [ ^ self scan26 ].
 	currentCharacter == $/
-		ifTrue: [ [ self recordMatch: #(140).
+		ifTrue: [ [ self recordMatch: #(139).
 			self step.
 			currentCharacter <= Character tab
 				or: [ (currentCharacter between: Character pageUp and: Character newPage)
@@ -1683,7 +1683,7 @@ CPPScanner >> scanForTokenX6 [
 
 { #category : #generated }
 CPPScanner >> scanForTokenX7 [
-	[ self recordMatch: #(139).
+	[ self recordMatch: #(138).
 	self step.
 	(currentCharacter between: Character tab and: Character lf)
 		or: [ currentCharacter == Character cr
@@ -1698,10 +1698,10 @@ CPPScanner >> scanForTokenX8 [
 	currentCharacter == $=
 		ifTrue: [ ^ self recordAndReportMatch: #(34) ].
 	currentCharacter == $>
-		ifTrue: [ self recordMatch: #(126).
+		ifTrue: [ self recordMatch: #(125).
 			self step.
 			currentCharacter == $=
-				ifTrue: [ ^ self recordAndReportMatch: #(128) ] ].
+				ifTrue: [ ^ self recordAndReportMatch: #(127) ] ].
 	^ self reportLastMatch
 ]
 
@@ -1710,10 +1710,10 @@ CPPScanner >> scanForTokenX9 [
 	self recordMatch: #(29).
 	self step.
 	currentCharacter == $<
-		ifTrue: [ self recordMatch: #(125).
+		ifTrue: [ self recordMatch: #(124).
 			self step.
 			currentCharacter == $=
-				ifTrue: [ ^ self recordAndReportMatch: #(127) ].
+				ifTrue: [ ^ self recordAndReportMatch: #(126) ].
 			^ self reportLastMatch ].
 	currentCharacter == $=
 		ifTrue: [ ^ self recordAndReportMatch: #(30) ].
@@ -1722,5 +1722,5 @@ CPPScanner >> scanForTokenX9 [
 
 { #category : #generated }
 CPPScanner >> tokenActions [
-	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #directive nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace #comment)
+	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #directive nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace #comment)
 ]
