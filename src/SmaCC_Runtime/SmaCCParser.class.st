@@ -145,10 +145,17 @@ SmaCCParser class >> parseFile: aString [
 
 { #category : #parsing }
 SmaCCParser class >> parseFile: aString encoding: encodingString [
-	^ aString asFileReference
+	| encoding fileRef |
+	fileRef := aString asFileReference.
+	encoding := encodingString
+		ifNil: [ [ fileRef
+				binaryReadStreamDo: [ :in | (ZnCharacterEncoder detectEncoding: in upToEnd) identifier ] ]
+				on: ZnCharacterEncodingError
+				do: [ nil ] ].
+	^ fileRef
 		readStreamDo: [ :stream | 
 			| contents |
-			self setEncoding: encodingString on: stream.
+			self setEncoding: encoding on: stream.
 			contents := stream contents.
 			(self parse: contents startingAt: self defaultStartingState)
 				ifNotNil: [ :each | 
@@ -443,6 +450,11 @@ SmaCCParser >> dismissStackTopForErrorRecovery: anInteger [
 		stateStack removeLast.
 		stackContents at: i put: nodeStack removeLast ].
 	^ stackContents
+]
+
+{ #category : #private }
+SmaCCParser >> dismissToken [
+	currentToken := nil
 ]
 
 { #category : #accessing }

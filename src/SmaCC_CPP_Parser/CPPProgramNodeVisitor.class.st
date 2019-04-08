@@ -1,7 +1,7 @@
 Class {
 	#name : #CPPProgramNodeVisitor,
 	#superclass : #SmaCCParseNodeVisitor,
-	#category : #'SmaCC_CPP_Parser'
+	#category : #'SmaCC_CPP_Parser-C++ Visitors'
 }
 
 { #category : #generated }

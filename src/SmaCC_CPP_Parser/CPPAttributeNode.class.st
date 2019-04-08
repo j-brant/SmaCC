@@ -7,7 +7,7 @@ Class {
 		'colonColon',
 		'argumentClause'
 	],
-	#category : #'SmaCC_CPP_Parser'
+	#category : #'SmaCC_CPP_Parser-C++ AST'
 }
 
 { #category : #generated }
