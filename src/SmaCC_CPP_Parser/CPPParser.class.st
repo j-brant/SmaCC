@@ -177,7 +177,7 @@ CPPParser class >> ambiguousTransitions [
 
 { #category : #'generated-accessing' }
 CPPParser class >> cacheId [
-	^'2019-04-11T13:10:56.230014-05:00'
+	^'2019-04-11T15:52:56.678387-05:00'
 ]
 
 { #category : #generated }
@@ -1364,7 +1364,7 @@ noexceptspecification
    ;
 /*Preprocessing directives*/
 <directive>
-	: \# ([^\\\r\n]* (\\(\r\n?|\n))?)*
+	: \# ([^\r\n]* (\\(\r\n?|\n))?)*
 ;
 /*Lexer*/
 
@@ -1929,6 +1929,7 @@ literal
    : [^\""\\\r\n]
    | <Escapesequence>
    | <Universalcharactername>
+   | \\(\r\n?|\n)
    ;
 
 <Rawstring>

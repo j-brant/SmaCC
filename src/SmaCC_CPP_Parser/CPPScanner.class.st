@@ -1161,6 +1161,9 @@ CPPScanner >> scan51 [
 { #category : #generated }
 CPPScanner >> scan6 [
 	self step.
+	currentCharacter == Character cr
+		ifTrue:
+			[ ^ self scan6X2 ].
 	currentCharacter == $U
 		ifTrue: [ self step.
 			(currentCharacter isDigit
@@ -1185,12 +1188,13 @@ CPPScanner >> scan6 [
 	currentCharacter == $x
 		ifTrue:
 			[ ^ self scan6X1 ].
-	(('"''' includes: currentCharacter)
-		or: [ (currentCharacter between: $0 and: $7)
-				or: [ ('?\' includes: currentCharacter)
-						or: [ (currentCharacter between: $a and: $b)
-								or:
-									[ 'fnrtv' includes: currentCharacter ] ] ] ])
+	(currentCharacter == Character lf
+		or: [ ('"''' includes: currentCharacter)
+				or: [ (currentCharacter between: $0 and: $7)
+						or: [ ('?\' includes: currentCharacter)
+								or: [ (currentCharacter between: $a and: $b)
+										or:
+											[ 'fnrtv' includes: currentCharacter ] ] ] ] ])
 		ifTrue: [ ^ self scan1 ].
 	^ self reportLastMatch
 ]
@@ -1218,6 +1222,21 @@ CPPScanner >> scan6X1 [
 														or: [ (currentCharacter between: $] and: $`)
 																or: [ currentCharacter >= $g ] ] ] ] ] ] ])
 				ifTrue: [ ^ self scan1 ] ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+CPPScanner >> scan6X2 [
+	self step.
+	currentCharacter == $"
+		ifTrue: [ ^ self scan2 ].
+	currentCharacter == $\
+		ifTrue: [ ^ self scan6 ].
+	(currentCharacter <= Character newPage
+		or: [ (currentCharacter between: (Character value: 14) and: $!)
+				or: [ (currentCharacter between: $# and: $[)
+						or: [ currentCharacter >= $] ] ] ])
+		ifTrue: [ ^ self scan1 ].
 	^ self reportLastMatch
 ]
 
@@ -1258,9 +1277,8 @@ CPPScanner >> scan8 [
 
 { #category : #generated }
 CPPScanner >> scan9 [
+	[ self recordMatch: #(48).
 	self step.
-	currentCharacter == Character lf
-		ifTrue: [ ^ self scan8 ].
 	currentCharacter == Character cr
 		ifTrue: [ self recordMatch: #(48).
 			self step.
@@ -1269,8 +1287,10 @@ CPPScanner >> scan9 [
 			(currentCharacter <= Character newPage
 				or: [ (currentCharacter between: (Character value: 14) and: $[)
 						or: [ currentCharacter >= $] ] ])
-				ifTrue: [ ^ self scan8 ] ].
-	^ self reportLastMatch
+				ifTrue: [ ^ self scan8 ].
+			^ self reportLastMatch ].
+	currentCharacter == $\ ] whileTrue.
+	^ self scan8
 ]
 
 { #category : #generated }
