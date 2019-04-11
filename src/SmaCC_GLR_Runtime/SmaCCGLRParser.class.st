@@ -281,6 +281,25 @@ SmaCCGLRParser >> parseAll: aBoolean [
 ]
 
 { #category : #private }
+SmaCCGLRParser >> parseCurrentToken [
+	| actions action isAccept |
+	[ actions := self actionsForCurrentToken.
+	actions isEmpty
+		ifTrue: [ isAccept := false.
+			self killState
+				ifFalse: [ ^ currentToken := nil ] ]
+		ifFalse:
+			[ 2 to: actions size do: [ :i | self splitWithAction: (actions at: i) ].
+			action := actions first.
+			isAccept := action = self acceptAction.
+			isAccept
+				ifFalse: [ self performAction: action ] ].
+	isAccept or: [ currentToken isNil ] ] whileFalse.
+	action = self acceptAction
+		ifTrue: [ currentState markAccepted ]
+]
+
+{ #category : #private }
 SmaCCGLRParser >> performParsingLoop [
 	| result |
 	self setStartingStatesIfNone.
@@ -302,7 +321,6 @@ SmaCCGLRParser >> performParsingLoop [
 
 { #category : #private }
 SmaCCGLRParser >> performParsingStep [
-	| actions action isAccept |
 	currentState isAccepted
 		ifTrue: [ ^ self ].
 	self restoreState: currentState.
@@ -310,19 +328,7 @@ SmaCCGLRParser >> performParsingStep [
 		ifTrue: [ ^ self processEOFToken ].
 	currentToken isPattern
 		ifTrue: [ ^ self splitForPatternToken ].
-	[ actions := self actionsForCurrentToken.
-	actions isEmpty
-		ifTrue: [ isAccept := false.
-			self killState
-				ifFalse: [ ^ currentToken := nil ] ]
-		ifFalse: [ 2 to: actions size do: [ :i | self splitWithAction: (actions at: i) ].
-			action := actions first.
-			isAccept := action = self acceptAction.
-			isAccept
-				ifFalse: [ self performAction: action ] ].
-	isAccept or: [ currentToken isNil ] ] whileFalse.
-	action = self acceptAction
-		ifTrue: [ currentState markAccepted ]
+	self parseCurrentToken
 ]
 
 { #category : #private }

@@ -3,8 +3,7 @@ Class {
 	#superclass : #CPPProgramNode,
 	#instVars : [
 		'declarator',
-		'equalToken',
-		'value',
+		'pureSpecifier',
 		'virtualSpecifierTokens',
 		'initializer',
 		'colon',
@@ -53,16 +52,6 @@ CPPMemberDeclaratorNode >> declarator: aCPPDeclaratorNode [
 		ifTrue: [ self declarator parent: self ]
 ]
 
-{ #category : #generated }
-CPPMemberDeclaratorNode >> equalToken [
-	^ equalToken
-]
-
-{ #category : #generated }
-CPPMemberDeclaratorNode >> equalToken: aSmaCCToken [
-	equalToken := aSmaCCToken
-]
-
 { #category : #'generated-initialize-release' }
 CPPMemberDeclaratorNode >> initialize [
 	super initialize.
@@ -96,7 +85,21 @@ CPPMemberDeclaratorNode >> name: aSmaCCToken [
 
 { #category : #generated }
 CPPMemberDeclaratorNode >> nodeVariables [
-	^ #(#declarator #value #initializer)
+	^ #(#declarator #pureSpecifier #initializer)
+]
+
+{ #category : #generated }
+CPPMemberDeclaratorNode >> pureSpecifier [
+	^ pureSpecifier
+]
+
+{ #category : #generated }
+CPPMemberDeclaratorNode >> pureSpecifier: aCPPEqualInitializerNode [
+	self pureSpecifier notNil
+		ifTrue: [ self pureSpecifier parent: nil ].
+	pureSpecifier := aCPPEqualInitializerNode.
+	self pureSpecifier notNil
+		ifTrue: [ self pureSpecifier parent: self ]
 ]
 
 { #category : #generated }
@@ -113,21 +116,7 @@ CPPMemberDeclaratorNode >> specifiers: anOrderedCollection [
 
 { #category : #generated }
 CPPMemberDeclaratorNode >> tokenVariables [
-	^ #(#equalToken #colon #name)
-]
-
-{ #category : #generated }
-CPPMemberDeclaratorNode >> value [
-	^ value
-]
-
-{ #category : #generated }
-CPPMemberDeclaratorNode >> value: aCPPNumericLiteralNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
-	value := aCPPNumericLiteralNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+	^ #(#colon #name)
 ]
 
 { #category : #generated }
