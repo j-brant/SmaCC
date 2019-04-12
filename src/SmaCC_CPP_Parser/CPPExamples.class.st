@@ -5,22 +5,38 @@ Class {
 }
 
 { #category : #'file system' }
-CPPExamples >> addForeachFileTo: aFileSystem [
-	aFileSystem / self foreachFilename
-		writeStreamDo: [ :stream | stream nextPutAll: self foreachSource ]
-]
-
-{ #category : #'file system' }
-CPPExamples >> addStandaloneFileTo: aFileSystem [
-	aFileSystem / self standaloneFilename
+CPPExamples >> addFile: aString to: aFileSystem [
+	aFileSystem / (self perform: (aString , 'Filename') asSymbol)
 		writeStreamDo:
-			[ :stream | stream nextPutAll: self standaloneFileSource ]
+			[ :stream | stream nextPutAll: (self perform: (aString , 'FileSource') asSymbol) ]
 ]
 
-{ #category : #'file system' }
-CPPExamples >> addTestMacroFileTo: aFileSystem [
-	aFileSystem / self testMacroFilename
-		writeStreamDo: [ :stream | stream nextPutAll: self testMacroFileSource ]
+{ #category : #private }
+CPPExamples >> defineFileSource [
+	^ '#define VAR j
+int main() {
+		int VAR = 0;
+		return VAR;
+}'
+]
+
+{ #category : #private }
+CPPExamples >> defineFilename [
+	^ 'define.cpp'
+]
+
+{ #category : #private }
+CPPExamples >> defineFunctionFileSource [
+	^ '#define FOO(a,b,c) printf(#a,b##c)
+int main() {
+		int test = 0;
+		FOO(%d,te,st);
+}'
+]
+
+{ #category : #private }
+CPPExamples >> defineFunctionFilename [
+	^ 'defineFunction.cpp'
 ]
 
 { #category : #'file system' }
@@ -28,10 +44,19 @@ CPPExamples >> fileSystem [
 	<gtExample>
 	| fileSystem |
 	fileSystem := FileSystem memory.
-	self addStandaloneFileTo: fileSystem.
-	self addTestMacroFileTo: fileSystem.
-	self addForeachFileTo: fileSystem.
+	(fileSystem / 'sub') ensureCreateDirectory.
+	#('standalone' 'testMacro' 'foreach' 'including' 'included' 'missingInclude' 'subdirectoryIncluding' 'subdirectoryIncluded' 'define' 'defineFunction')
+		do: [ :each | self addFile: each to: fileSystem ].
 	^ fileSystem
+]
+
+{ #category : #private }
+CPPExamples >> foreachFileSource [
+	^ 'int main() {
+	foreach(Foo bar,someCollection) {
+		baz(bar);
+	}
+}'
 ]
 
 { #category : #private }
@@ -40,12 +65,38 @@ CPPExamples >> foreachFilename [
 ]
 
 { #category : #private }
-CPPExamples >> foreachSource [
+CPPExamples >> includedFileSource [
 	^ 'int main() {
-	foreach(Foo bar,someCollection) {
-		baz(bar);
-	}
+	return 1;
 }'
+]
+
+{ #category : #private }
+CPPExamples >> includedFilename [
+	^ 'included.h'
+]
+
+{ #category : #private }
+CPPExamples >> includingFileSource [
+	^ '//before
+#include "included.h"
+//after'
+]
+
+{ #category : #private }
+CPPExamples >> includingFilename [
+	^ 'including.cpp'
+]
+
+{ #category : #private }
+CPPExamples >> missingIncludeFileSource [
+	^ '#include "missing.h"
+int main() { return 2; }'
+]
+
+{ #category : #private }
+CPPExamples >> missingIncludeFilename [
+	^ 'missingInclude.cpp'
 ]
 
 { #category : #preprocessing }
@@ -63,7 +114,35 @@ CPPExamples >> preprocessConcatenationFile [
 	self
 		assert:
 			source
-				= (self foreachSource copyReplaceAll: 'foreach' with: 'eachfor').
+				= (self foreachFileSource copyReplaceAll: 'foreach' with: 'eachfor').
+	^ source
+]
+
+{ #category : #preprocessing }
+CPPExamples >> preprocessDefine [
+	<gtExample>
+	| fileSystem fileRef preprocessor source |
+	fileSystem := self fileSystem.
+	fileRef := fileSystem / self defineFilename.
+	preprocessor := CPPPreprocessor new.
+	preprocessor processDefines: true.
+	preprocessor processFile: fileRef.
+	source := preprocessor sourceString.
+	self assert: source = self replacedDefineSource.
+	^ source
+]
+
+{ #category : #preprocessing }
+CPPExamples >> preprocessDefineFunction [
+	<gtExample>
+	| fileSystem fileRef preprocessor source |
+	fileSystem := self fileSystem.
+	fileRef := fileSystem / self defineFunctionFilename.
+	preprocessor := CPPPreprocessor new.
+	preprocessor processDefines: true.
+	preprocessor processFile: fileRef.
+	source := preprocessor sourceString.
+	self assert: source = self replacedDefineFunctionSource.
 	^ source
 ]
 
@@ -78,7 +157,7 @@ CPPExamples >> preprocessForeachFile [
 		addMacro:
 			(CPPPreprocessorFunctionMacro
 				replacement: 'for(a : b)'
-				arguments: #('a' 'b'))
+				parameters: #('a' 'b'))
 		named: 'foreach'.
 	preprocessor processFile: fileRef.
 	source := preprocessor sourceString.
@@ -97,11 +176,64 @@ CPPExamples >> preprocessFunctionTestMacroFile [
 		addMacro:
 			(CPPPreprocessorFunctionMacro
 				replacement: 'zzz(b,a)'
-				arguments: #('a' 'b'))
+				parameters: #('a' 'b'))
 		named: 'foo'.
 	preprocessor processFile: fileRef.
 	source := preprocessor sourceString.
 	self assert: source = self replacedTestMacroFileSource.
+	^ source
+]
+
+{ #category : #preprocessing }
+CPPExamples >> preprocessIncludeNext [
+	<gtExample>
+	| fileSystem fileRef preprocessor source |
+	fileSystem := self fileSystem.
+	fileRef := fileSystem / self subdirectoryIncludingFilename.
+	preprocessor := CPPPreprocessor new.
+	preprocessor processIncludes: true.
+	preprocessor includePath: {(fileRef / '/')}.
+	preprocessor processFile: fileRef.
+	source := preprocessor sourceString.
+	self
+		assert:
+			source
+				=
+					('//before1' , String cr , self includedFileSource , String cr
+						, '//after1').
+	^ source
+]
+
+{ #category : #preprocessing }
+CPPExamples >> preprocessIncludesFile [
+	<gtExample>
+	| fileSystem fileRef preprocessor source |
+	fileSystem := self fileSystem.
+	fileRef := fileSystem / self includingFilename.
+	preprocessor := CPPPreprocessor new.
+	preprocessor processIncludes: true.
+	preprocessor processFile: fileRef.
+	source := preprocessor sourceString.
+	self
+		assert:
+			source
+				=
+					('//before' , String cr , self includedFileSource , String cr
+						, '//after').
+	^ source
+]
+
+{ #category : #preprocessing }
+CPPExamples >> preprocessMissingIncludeFile [
+	<gtExample>
+	| fileSystem fileRef preprocessor source |
+	fileSystem := self fileSystem.
+	fileRef := fileSystem / self missingIncludeFilename.
+	preprocessor := CPPPreprocessor new.
+	preprocessor processIncludes: true.
+	preprocessor processFile: fileRef.
+	source := preprocessor sourceString.
+	self assert: source = self missingIncludeFileSource.
 	^ source
 ]
 
@@ -129,7 +261,7 @@ CPPExamples >> preprocessStringifyTestMacroFile [
 		addMacro:
 			(CPPPreprocessorFunctionMacro
 				replacement: 'zzz(#a,#b)'
-				arguments: #('a' 'b'))
+				parameters: #('a' 'b'))
 		named: 'foo'.
 	preprocessor processFile: fileRef.
 	source := preprocessor sourceString.
@@ -152,6 +284,24 @@ CPPExamples >> preprocessTestMacroFile [
 	self
 		assert: source = (self testMacroFileSource copyReplaceAll: 'foo' with: 'zzz').
 	^ source
+]
+
+{ #category : #private }
+CPPExamples >> replacedDefineFunctionSource [
+	^ '
+int main() {
+		int test = 0;
+		 printf("%d",test);
+}'
+]
+
+{ #category : #private }
+CPPExamples >> replacedDefineSource [
+	^ '
+int main() {
+		int  j = 0;
+		return  j;
+}'
 ]
 
 { #category : #private }
@@ -187,6 +337,28 @@ CPPExamples >> stringifiedTestMacroFileSource [
 	^ 'int main() {
 	return zzz("(bar() + baz())","3");
 }'
+]
+
+{ #category : #private }
+CPPExamples >> subdirectoryIncludedFileSource [
+	^ '//before1
+#include_next "included.h"
+//after1'
+]
+
+{ #category : #private }
+CPPExamples >> subdirectoryIncludedFilename [
+	^ 'sub/included.h'
+]
+
+{ #category : #private }
+CPPExamples >> subdirectoryIncludingFileSource [
+	^ '#include "included.h"'
+]
+
+{ #category : #private }
+CPPExamples >> subdirectoryIncludingFilename [
+	^ 'sub/including.cpp'
 ]
 
 { #category : #private }

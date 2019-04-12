@@ -8,7 +8,14 @@ Class {
 }
 
 { #category : #'instance creation' }
-CPPPreprocessorFunctionMacro class >> replacement: aString arguments: args [
+CPPPreprocessorFunctionMacro class >> replacement: aString interval: anInterval parameters: args [
+	^ (self replacement: aString interval: anInterval)
+		arguments: args;
+		yourself
+]
+
+{ #category : #'instance creation' }
+CPPPreprocessorFunctionMacro class >> replacement: aString parameters: args [
 	^ (self replacement: aString)
 		arguments: args;
 		yourself
