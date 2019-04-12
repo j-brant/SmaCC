@@ -23,6 +23,14 @@ SmaCCErrorNode >> acceptVisitor: aSmaCCParseNodeVisitor [
 ]
 
 { #category : #private }
+SmaCCErrorNode >> assignParents: anObject [
+	(anObject isKindOf: SmaCCParseNode)
+		ifTrue: [ anObject parent: self ].
+	(anObject isKindOf: Collection)
+		ifTrue: [ anObject do: [ :each | self assignParents: each ] ]
+]
+
+{ #category : #private }
 SmaCCErrorNode >> calculateStartPosition [
 	| min |
 	min := SmallInteger maxVal.
@@ -108,5 +116,6 @@ SmaCCErrorNode >> stackContents [
 
 { #category : #accessing }
 SmaCCErrorNode >> stackContents: aCollection [
-	stackContents := aCollection
+	stackContents := aCollection.
+	self assignParents: aCollection
 ]

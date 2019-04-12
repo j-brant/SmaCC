@@ -141,6 +141,15 @@ CPPPreprocessor >> processToken: aToken using: aParser [
 		ifPresent: [ :macro | self expandMacro: macro from: aToken using: aParser ]
 ]
 
+{ #category : #macros }
+CPPPreprocessor >> removeMacro: aString around: aBlock [
+	| original |
+	original := self macroNamed: aString.
+	self addMacro: nil named: aString.
+	aBlock
+		ensure: [ self addMacro: original named: aString ]
+]
+
 { #category : #processing }
 CPPPreprocessor >> sourceFor: aFilename [
 	| encoding fileRef |
