@@ -196,12 +196,10 @@ SmaCCSmalltalkCodeGenerator >> addVariable: aSmaCCVariableDefinition forDefiniti
 SmaCCSmalltalkCodeGenerator >> basicCompileSourceFor: aSmaCCReduceAction [
 	| parseTree rewriter methodName existing |
 	parseTree := RBParser
-		parseExpression: aSmaCCReduceAction rhs reduceAction source.
+		parseExpression: aSmaCCReduceAction rhs reduceCode source.
 	(parseTree isLiteralNode
-		and:
-			[ parseTree value isSymbol
-				and:
-					[ parseTree value numArgs <= 1
+		and: [ parseTree value isSymbol
+				and: [ parseTree value numArgs <= 1
 						and: [ self parserClass definesMethod: parseTree value ] ] ])
 		ifTrue: [ ^ parseTree value ].
 	rewriter := self parseTreeRewriterFor: aSmaCCReduceAction rhs.
@@ -213,8 +211,8 @@ SmaCCSmalltalkCodeGenerator >> basicCompileSourceFor: aSmaCCReduceAction [
 			(aSmaCCReduceAction symbol positionOf: aSmaCCReduceAction rhs)
 				printString , ':') asSymbol.
 	parseTree isSequence
-		ifFalse: [ parseTree := RBSequenceNode
-				statements: (Array with: parseTree) ].
+		ifFalse:
+			[ parseTree := RBSequenceNode statements: (Array with: parseTree) ].
 	parseTree := RBMethodNode
 		selector: methodName
 		arguments: (Array with: (RBVariableNode named: 'nodes'))
@@ -918,8 +916,7 @@ SmaCCSmalltalkCodeGenerator >> parserParseTreeFor: aSelector [
 
 { #category : #'code generation templates' }
 SmaCCSmalltalkCodeGenerator >> reduceAction: anArray [
-	^ '#(' , anArray first storeString , ' '
-		, (anArray at: 2) storeString , ' ' , anArray last storeString , ')'
+	^ anArray storeString
 ]
 
 { #category : #compiling }

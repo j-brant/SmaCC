@@ -991,6 +991,28 @@ SmaCCEndToEndTest >> testIgnoreCaseWithMultipleKeywordCases [
 ]
 
 { #category : #tests }
+SmaCCEndToEndTest >> testImmediateExecution [
+	| parserCompiler notification |
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	parserCompiler
+		buildDefinition:
+			'<int> : \d+; <whitespace>: \s+;
+			%glr;
+			Test : A <int> <int> { ''1'' } | B <int> {self error: ''Should not occur''};
+			A : { true };
+			B : [ Notification signal: ''B'' ];
+			'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+	[ self assert: (self parserClass parse: '1 2') ]
+		on: Notification
+		do: [ :ex | 
+			notification := ex messageText.
+			ex resume ].
+	self assert: notification = 'B'
+]
+
+{ #category : #tests }
 SmaCCEndToEndTest >> testImplicitParserTokens [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1707,6 +1729,24 @@ SmaCCEndToEndTest >> testPlus [
 	self assert: node numbers size = 6.
 	self assert: node commas size = 5.
 	self should: [self parserClass parse: '1'] raise: SmaCCParserError
+]
+
+{ #category : #tests }
+SmaCCEndToEndTest >> testPreferredReduction [
+	| parserCompiler |
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	parserCompiler
+		buildDefinition:
+			'%glr;
+			Test : {1} | Test A {''1'' * ''2''} | Test B {''1'' * ''2''};
+			A : "a" {1};
+			B : "a" {2};
+			'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+	self
+		assert: (self parserClass parse: (String new: 100 withAll: $a))
+		equals: 1
 ]
 
 { #category : #'tests-parse tree creation' }

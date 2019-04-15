@@ -258,7 +258,7 @@ SmaCCParserDebugger >> parserStack [
 	items := OrderedCollection new.
 	1 to: states size - 1 do: [ :i | items addFirst: (Array with: (self symbolForTransitionFrom: (states at: i) to: (states at: i + 1)) with: (nodes at: i)) ].
 	context := self session context
-		findContextSuchThat: [ :each | (each receiver isKindOf: SmaCCParser) and: [ each selector = #performReduceMethod:with: ] ].
+		findContextSuchThat: [ :each | (each receiver isKindOf: SmaCCParser) and: [ each selector = #performReduceEntry:with: ] ].
 	context notNil
 		ifTrue: [ items add: #('' '').
 			reduceContext := context findContextSuchThat: [ :each | (each receiver isKindOf: SmaCCParser) and: [ each selector = #reduce: ] ].

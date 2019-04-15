@@ -149,9 +149,16 @@ SmaCCGrammarCreator >> verifyCodeToken: codeToken for: aSmaCCRHS [
 	code := codeToken value copyFrom: 2 to: codeToken value size - 1.
 	RBParser
 		parseExpression: code
-		onError:
-			[ :string :position | self reportErrorMessage: string on: (SmaCCToken value: (code copyFrom: position to: position) start: codeToken startPosition + position ids: #()) ].
-	aSmaCCRHS reduceActionSource: code.
+		onError: [ :string :position | 
+			self
+				reportErrorMessage: string
+				on:
+					(SmaCCToken
+						value: (code copyFrom: position to: position)
+						start: codeToken startPosition + position
+						ids: #()) ].
+	aSmaCCRHS reduceCodeSource: code.
+	aSmaCCRHS reduceCode isImmediate: codeToken value first = $[.
 	^ aSmaCCRHS
 ]
 
