@@ -6,7 +6,7 @@ Class {
 
 { #category : #'generated-accessing' }
 JSONParser class >> cacheId [
-	^'2019-04-15T17:35:00.693391-05:00'
+	^'2019-04-17T19:57:42.313184-05:00'
 ]
 
 { #category : #generated }
@@ -18,6 +18,8 @@ JSONParser class >> definitionComment [
 %hierarchy Literal (String Number Boolean Null);
 
 %ignore_variables comma;
+
+%unicode;
 
 <hex>
 	: [0-9a-fA-F]
@@ -68,22 +70,22 @@ JSONParser class >> fileExtension [
 { #category : #generated }
 JSONParser class >> reduceTable [
 ^#(
-	#(14 1 #reduceActionForvalue6: 326662 false ) 
-	#(14 1 #reduceActionForvalue7: 326663 false ) 
-	#(14 1 #reduceActionForvalue6: 326661 false ) 
-	#(14 1 #reduceActionForvalue4: 326660 false ) 
-	#(14 1 #reduceActionForvalue3: 326659 false ) 
-	#(14 1 #liftFirstValue: 326657 false ) 
-	#(14 1 #liftFirstValue: 326658 false ) 
-	#(18 2 #reduceActionForarray1: 702465 false ) 
-	#(19 1 #reduceActionForelements2: 768002 false ) 
-	#(15 2 #reduceActionForobject1: 508929 false ) 
-	#(16 1 #reduceActionForelements2: 570370 false ) 
-	#(18 3 #reduceActionForarray2: 702466 false ) 
-	#(15 3 #reduceActionForobject2: 508930 false ) 
-	#(19 3 #reduceActionForelements1: 768001 false ) 
-	#(17 3 #reduceActionFormember1: 641025 false ) 
-	#(16 3 #reduceActionForelements1: 570369 false )
+	#(14 1 #reduceActionForvalue6: 337926 false ) 
+	#(14 1 #reduceActionForvalue7: 337927 false ) 
+	#(14 1 #reduceActionForvalue6: 337925 false ) 
+	#(14 1 #reduceActionForvalue4: 337924 false ) 
+	#(14 1 #reduceActionForvalue3: 337923 false ) 
+	#(14 1 #liftFirstValue: 337921 false ) 
+	#(14 1 #liftFirstValue: 337922 false ) 
+	#(18 2 #reduceActionForarray1: 713729 false ) 
+	#(19 1 #reduceActionForelements2: 779266 false ) 
+	#(15 2 #reduceActionForobject1: 520193 false ) 
+	#(16 1 #reduceActionForelements2: 581634 false ) 
+	#(18 3 #reduceActionForarray2: 713730 false ) 
+	#(15 3 #reduceActionForobject2: 520194 false ) 
+	#(19 3 #reduceActionForelements1: 779265 false ) 
+	#(17 3 #reduceActionFormember1: 652289 false ) 
+	#(16 3 #reduceActionForelements1: 581633 false )
 	).
 ]
 

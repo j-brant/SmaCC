@@ -10,7 +10,6 @@ Class {
 		'testModel',
 		'parserClassName',
 		'scannerClassName',
-		'allowUnicode',
 		'codeGeneratorType',
 		'savedDefinition',
 		'menu',
@@ -95,12 +94,7 @@ SmaCCParserGenerator >> compile: aSymbol [
 	messages := OrderedCollection new.
 	Cursor wait
 		showWhile: [ oldCharacterSize := SmaCCGrammar maximumCharacterValue.
-			[ SmaCCGrammar
-				maximumCharacterValue:
-					(allowUnicode
-						ifTrue: [ 16rE01EF ]
-						ifFalse: [ 255 ]).
-			self verifyParser
+			[ self verifyParser
 				ifFalse: [ ^ self ].
 			parserCompiler := self compiler.
 			parserCompiler
@@ -228,7 +222,6 @@ SmaCCParserGenerator >> findParserClass [
 
 { #category : #initialization }
 SmaCCParserGenerator >> initialize [
-	allowUnicode := false.
 	parserClassName := ''.
 	scannerClassName := ''.
 	codeGeneratorType := #Smalltalk.
@@ -280,11 +273,6 @@ SmaCCParserGenerator >> initializeWidgets [
 { #category : #private }
 SmaCCParserGenerator >> isModified [
 	^ savedDefinition ~= self definition
-]
-
-{ #category : #testing }
-SmaCCParserGenerator >> isUnicode [
-	^ allowUnicode
 ]
 
 { #category : #private }
@@ -359,12 +347,6 @@ SmaCCParserGenerator >> optionsMenu [
 						action: [ self setPackage ] ] ];
 		addGroup: [ :group | 
 			group
-				addItem: [ :item | 
-					menuItems at: #useUnicode put: item.
-					item
-						autoRefresh: true;
-						name: 'Allow Unicode Characters';
-						action: [ self useUnicode ] ];
 				addItem: [ :item | 
 					menuItems at: #optimizeTransitionTable put: item.
 					item
@@ -582,20 +564,15 @@ SmaCCParserGenerator >> updateOptionsMenu [
 					(parserClassName isEmpty
 						ifTrue: [ '' ]
 						ifFalse: [ ' (' , parserClassName , ')' ]) , '...'.
-	self updateMenuItem: #useUnicode checked: self isUnicode.
-	self updateMenuItem: #optimizeTransitionTable checked: SmaCCGrammarCompiler optimizeTransitionTable
+	self
+		updateMenuItem: #optimizeTransitionTable
+		checked: SmaCCGrammarCompiler optimizeTransitionTable
 ]
 
 { #category : #private }
 SmaCCParserGenerator >> updateViewMenu [
 	self updateMenuItem: #viewSymbolsClicked checked: viewSymbols.
 	self updateMenuItem: #viewItemSetsClicked checked: viewItemSets
-]
-
-{ #category : #actions }
-SmaCCParserGenerator >> useUnicode [
-	allowUnicode := allowUnicode not.
-	self updateOptionsMenu
 ]
 
 { #category : #private }

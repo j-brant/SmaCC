@@ -1075,16 +1075,15 @@ SmaCCEndToEndTest >> testInvertedCharactersBlock [
 
 { #category : #tests }
 SmaCCEndToEndTest >> testKeywords [
-	| parserCompiler size |
+	| parserCompiler size definition |
+	definition := '%ignorecase;
+			Start ::= "Foo" "bar";'.
 	size := SmaCCGrammar maximumCharacterValue.
 	self supportsUnicodeStrings
-		ifTrue: [ SmaCCGrammar maximumCharacterValue: (2 raisedTo: 16) - 1 ].
+		ifTrue: [ definition := '%unicode; ' , definition ].
 	[ (parserCompiler := SmaCCGrammarCompiler new) codeGenerator
 		defaultCategory: self class category.
-	parserCompiler
-		buildDefinition:
-			'%ignorecase;
-			Start ::= "Foo" "bar";'.
+	parserCompiler buildDefinition: definition.
 	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
 	self parserClass parse: 'FoObAr' ]
 		ensure: [ SmaCCGrammar maximumCharacterValue: size ]
@@ -2340,12 +2339,12 @@ SmaCCEndToEndTest >> testSpecialCharacters [
 		on: Error
 		do: [ :ex | ^ self ].	"Unicode characters not supported"
 	maxValue := SmaCCGrammar maximumCharacterValue.
-	SmaCCGrammar maximumCharacterValue: 65535.
 	[ (parserCompiler := SmaCCGrammarCompiler new) codeGenerator
 		defaultCategory: self class category.
 	parserCompiler
 		buildDefinition:
-			'%ignorecase;
+			'%unicode;
+			%ignorecase;
 			<name> : \x3g \x20 \xFF \xFF1 \xFF00 \cC;
 			begin ::= <name> {true};'.
 	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
