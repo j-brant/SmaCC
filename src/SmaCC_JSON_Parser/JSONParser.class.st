@@ -6,7 +6,7 @@ Class {
 
 { #category : #'generated-accessing' }
 JSONParser class >> cacheId [
-	^'2019-04-17T19:57:42.313184-05:00'
+	^'2019-04-22T07:07:38.619472-05:00'
 ]
 
 { #category : #generated }
@@ -28,7 +28,7 @@ JSONParser class >> definitionComment [
 	: \-? (\d | [1-9]\d+) (\.\d+)? ([eE][\+\-]?\d+)?
 	;
 <string>
-	: \"" ([^\x00-\x1F\""\\]|(\\([\""\\\/bnft]|(u<hex>{4,4}))))* \""
+	: \"" ([^\x00-\x1F\""\\]|(\\([\""\\\/bnrt]|(u<hex>{4,4}))))* \""
 	;
 <whitespace>
 	: [\x09\x0a\x0d\x20]+
