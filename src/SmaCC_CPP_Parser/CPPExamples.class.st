@@ -220,7 +220,7 @@ CPPExamples >> preprocessIncludesFile [
 				=
 					('//before' , String cr , self includedFileSource , String cr
 						, '//after').
-	^ source
+	^ preprocessor preprocessedFile
 ]
 
 { #category : #preprocessing }

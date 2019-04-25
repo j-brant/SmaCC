@@ -3,8 +3,7 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'macros',
-		'files',
-		'source',
+		'preprocessedFile',
 		'stack',
 		'includePath',
 		'processIncludes',
@@ -22,14 +21,12 @@ CPPPreprocessor >> addMacro: aMacro named: aString [
 
 { #category : #private }
 CPPPreprocessor >> appendTo: anInteger [
-	| interval last |
+	| last |
 	last := stack last.
-	interval := SmaCCStringInterval
+	preprocessedFile
+		append: last last
 		from: last first
 		to: (last second min: anInteger)
-		string: last last.
-	interval id: (self intervalIdFor: last last).
-	source appendInterval: interval
 ]
 
 { #category : #'private-actions' }
@@ -49,10 +46,8 @@ CPPPreprocessor >> convertInteger: aString [
 CPPPreprocessor >> currentDirectory [
 	stack
 		reverseDo: [ :each | 
-			files
-				do: [ :assoc | 
-					assoc value == each last
-						ifTrue: [ ^ assoc key parent ] ] ].
+			(preprocessedFile directoryForSource: each last)
+				ifNotNil: [ :dir | ^ dir ] ].
 	^ '.' asFileReference
 ]
 
@@ -172,22 +167,12 @@ CPPPreprocessor >> includePath: aCollection [
 { #category : #'initialize-release' }
 CPPPreprocessor >> initialize [
 	super initialize.
-	files := OrderedCollection new.
+	preprocessedFile := CPPPreprocessedFile new.
 	macros := Dictionary new.
-	source := SmaCCString new.
 	stack := OrderedCollection new.
 	processDefines := false.
 	processIncludes := false.
 	includePath := #()
-]
-
-{ #category : #private }
-CPPPreprocessor >> intervalIdFor: aString [
-	1 to: files size do: [ :i | 
-		(files at: i) value == aString
-			ifTrue: [ ^ i ] ].
-	files add: files size printString -> aString.
-	^ files size
 ]
 
 { #category : #'private-actions' }
@@ -215,6 +200,11 @@ CPPPreprocessor >> macroNamed: aString [
 ]
 
 { #category : #accessing }
+CPPPreprocessor >> preprocessedFile [
+	^ preprocessedFile
+]
+
+{ #category : #accessing }
 CPPPreprocessor >> processDefines [
 	^ processDefines
 ]
@@ -227,8 +217,7 @@ CPPPreprocessor >> processDefines: aBoolean [
 { #category : #processing }
 CPPPreprocessor >> processFile: aFilename [
 	| code |
-	code := self sourceFor: aFilename.
-	files add: aFilename asFileReference -> code.
+	code := preprocessedFile loadFile: aFilename.
 	stack add: (Array with: 1 with: code size with: code).
 	CPPPreprocessorParser process: code using: self
 ]
@@ -275,28 +264,14 @@ CPPPreprocessor >> skipTo: anInteger [
 	stack last at: 1 put: anInteger
 ]
 
-{ #category : #processing }
-CPPPreprocessor >> sourceFor: aFilename [
-	| encoding fileRef |
-	fileRef := aFilename asFileReference.
-	encoding := [ fileRef
-		binaryReadStreamDo: [ :in | (ZnCharacterEncoder detectEncoding: in upToEnd) identifier ] ]
-		on: ZnCharacterEncodingError
-		do: [ :ex | ex return: 'utf-8' ].
-	^ fileRef
-		readStreamDo: [ :stream | 
-			SmaCCParser setEncoding: encoding on: stream.
-			stream contents ]
-]
-
 { #category : #accessing }
 CPPPreprocessor >> sourceString [
-	^ source asString
+	^ preprocessedFile sourceString
 ]
 
 { #category : #'private-actions' }
 CPPPreprocessor >> stringify: nameToken hash: aToken [
-	| macro string interval |
+	| macro string |
 	macro := self macroNamed: nameToken value.
 	macro isNil
 		ifTrue: [ ^ self ].
@@ -309,12 +284,7 @@ CPPPreprocessor >> stringify: nameToken hash: aToken [
 				to: macro interval last) copyReplaceAll: '"' with: '\"')
 				copyReplaceAll: String cr
 				with: '\r') copyReplaceAll: String lf with: '\n') , '"'.
-	interval := SmaCCStringInterval
-		from: 1
-		to: string size
-		string: string.
-	interval id: (self intervalIdFor: string).
-	source appendInterval: interval
+	preprocessedFile append: string from: 1 to: string size
 ]
 
 { #category : #'private-actions' }
