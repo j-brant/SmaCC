@@ -19,7 +19,16 @@ Class {
 
 { #category : #private }
 SmaCCDeferredChoice class >> isStack: firstStack preferredOver: secondStack [
-	^ (self priorityOf: firstStack) < (self priorityOf: secondStack)
+	| firstPriority secondPriority |
+	firstStack isEmpty
+		ifTrue: [ ^ true ].
+	firstPriority := self priorityOf: firstStack.
+	secondPriority := self priorityOf: secondStack.
+	firstPriority = secondPriority
+		ifTrue: [ ^ self
+				isStack: (self subItemsIn: firstStack withPriority: firstPriority)
+				preferredOver: (self subItemsIn: secondStack withPriority: secondPriority) ].
+	^ firstPriority < secondPriority
 ]
 
 { #category : #accessing }
@@ -64,6 +73,18 @@ SmaCCDeferredChoice class >> priorityOf: aCollection [
 			(each isKindOf: SmaCCDeferredReduceAction)
 				ifTrue: [ sum min: each priority ]
 				ifFalse: [ sum ] ]
+]
+
+{ #category : #private }
+SmaCCDeferredChoice class >> subItemsIn: aCollection withPriority: anInteger [
+	| result |
+	result := OrderedCollection new.
+	aCollection
+		do: [ :each | 
+			((each isKindOf: SmaCCDeferredReduceAction)
+				and: [ each priority = anInteger ])
+				ifTrue: [ result addAll: each arguments ] ].
+	^ result
 ]
 
 { #category : #accessing }
