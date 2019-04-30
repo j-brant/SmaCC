@@ -53,6 +53,16 @@ CPPPreprocessedFile >> loadFile: aFilename [
 ]
 
 { #category : #accessing }
+CPPPreprocessedFile >> originalSource [
+	^ files first value
+]
+
+{ #category : #accessing }
+CPPPreprocessedFile >> smaccString [
+	^ source
+]
+
+{ #category : #accessing }
 CPPPreprocessedFile >> sourceFor: aFilename [
 	| encoding fileRef |
 	fileRef := aFilename asFileReference.
