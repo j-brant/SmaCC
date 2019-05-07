@@ -199,6 +199,14 @@ CPPPreprocessor >> macroNamed: aString [
 	^ macros at: aString ifAbsent: [  ]
 ]
 
+{ #category : #copying }
+CPPPreprocessor >> postCopy [
+	super postCopy.
+	preprocessedFile := CPPPreprocessedFile new.
+	macros := macros copy.
+	stack := OrderedCollection new
+]
+
 { #category : #accessing }
 CPPPreprocessor >> preprocessedFile [
 	^ preprocessedFile
