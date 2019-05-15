@@ -4136,6 +4136,16 @@ CPPParser class >> transitionTable [
 	).
 ]
 
+{ #category : #accessing }
+CPPParser >> parse [
+	| node |
+	node := super parse.
+	node
+		attributeNamed: #preprocessorDirectives
+		put: scanner preprocessorDirectives.
+	^ node
+]
+
 { #category : #private }
 CPPParser >> parseCurrentToken [
 	| token position actions |

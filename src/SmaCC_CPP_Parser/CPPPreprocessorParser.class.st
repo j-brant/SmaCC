@@ -27,7 +27,7 @@ CPPPreprocessorParser class >> ambiguousTransitions [
 
 { #category : #'generated-accessing' }
 CPPPreprocessorParser class >> cacheId [
-	^'2019-04-29T15:43:22.41666-05:00'
+	^'2019-05-15T17:11:32.842457-05:00'
 ]
 
 { #category : #generated }
@@ -513,7 +513,7 @@ Values
 Value
     : Token 'token' {preprocessor processToken: token first using: self. token first}
     | <hash> 'hash' <Identifier> 'name' {preprocessor stringify: name hash: hash. nil}
-    | Value 'a' <hashHash> Token 'b' {preprocessor concatenate: a with: b first using: self}
+    | Value 'a' <hashHash> Token 'b' {preprocessor concatenate: a with: b first using: self. b first}
     | <eol> {nil}
     ;
 
@@ -626,13 +626,13 @@ CPPPreprocessorParser class >> process: aString using: aCPPPreprocessor [
 { #category : #generated }
 CPPPreprocessorParser class >> reduceTable [
 ^#(
-	#(94 0 #reduceFor: 9473025 false ) 
+	#(94 0 #reduceFor: 9482241 false ) 
 	#(78 0 #reduceActionForFile1: 5480449 false ) 
 	#(92 0 #reduceFor: 9129985 false ) 
 	#(81 1 #reduceFor: 5656577 false ) 
-	#(97 0 #reduceActionForSwitchToDefine1: 10499073 true ) 
-	#(98 0 #reduceActionForSwitchToError1: 10554369 true ) 
-	#(96 0 #reduceActionForSwitchToFilename1: 10439681 true ) 
+	#(97 0 #reduceActionForSwitchToDefine1: 10508289 true ) 
+	#(98 0 #reduceActionForSwitchToError1: 10563585 true ) 
+	#(96 0 #reduceActionForSwitchToFilename1: 10448897 true ) 
 	#(78 1 #reduceActionForFile1: 5480450 false ) 
 	#(79 1 #reduceFor: 5555201 false ) 
 	#(80 1 #reduceFor: 5614594 false ) 
@@ -640,59 +640,59 @@ CPPPreprocessorParser class >> reduceTable [
 	#(80 1 #reduceFor: 5614593 false ) 
 	#(79 1 #reduceFor: 5555202 false ) 
 	#(91 1 #reduceActionForFile1: 9081857 false ) 
-	#(95 1 #reduceFor: 9574406 false ) 
-	#(95 1 #reduceFor: 9574407 false ) 
-	#(95 1 #reduceFor: 9574408 false ) 
-	#(95 1 #reduceFor: 9574409 false ) 
-	#(95 1 #reduceFor: 9574410 false ) 
-	#(95 1 #reduceFor: 9574411 false ) 
-	#(95 1 #reduceFor: 9574412 false ) 
-	#(95 1 #reduceFor: 9574413 false ) 
-	#(95 1 #reduceFor: 9574414 false ) 
-	#(95 1 #reduceFor: 9574415 false ) 
-	#(95 1 #reduceFor: 9574416 false ) 
-	#(95 1 #reduceFor: 9574417 false ) 
-	#(95 1 #reduceFor: 9574418 false ) 
-	#(95 1 #reduceFor: 9574419 false ) 
-	#(95 1 #reduceFor: 9574420 false ) 
-	#(95 1 #reduceFor: 9574421 false ) 
-	#(95 1 #reduceFor: 9574422 false ) 
-	#(95 1 #reduceFor: 9574423 false ) 
-	#(95 1 #reduceFor: 9574424 false ) 
-	#(95 1 #reduceFor: 9574425 false ) 
-	#(95 1 #reduceFor: 9574426 false ) 
-	#(95 1 #reduceFor: 9574427 false ) 
-	#(95 1 #reduceFor: 9574428 false ) 
-	#(95 1 #reduceFor: 9574429 false ) 
-	#(95 1 #reduceFor: 9574430 false ) 
-	#(95 1 #reduceFor: 9574431 false ) 
-	#(95 1 #reduceFor: 9574432 false ) 
-	#(95 1 #reduceFor: 9574433 false ) 
-	#(95 1 #reduceFor: 9574434 false ) 
-	#(95 1 #reduceFor: 9574435 false ) 
-	#(95 1 #reduceFor: 9574436 false ) 
-	#(95 1 #reduceFor: 9574437 false ) 
-	#(95 1 #reduceFor: 9574438 false ) 
-	#(95 1 #reduceFor: 9574439 false ) 
-	#(95 1 #reduceFor: 9574440 false ) 
-	#(95 1 #reduceFor: 9574441 false ) 
-	#(95 1 #reduceFor: 9574442 false ) 
-	#(95 1 #reduceFor: 9574443 false ) 
-	#(95 1 #reduceFor: 9574444 false ) 
-	#(95 1 #reduceFor: 9574445 false ) 
-	#(95 1 #reduceFor: 9574446 false ) 
-	#(95 1 #reduceFor: 9574447 false ) 
-	#(95 1 #reduceFor: 9574448 false ) 
-	#(95 1 #reduceFor: 9574449 false ) 
-	#(95 1 #reduceFor: 9574450 false ) 
-	#(95 1 #reduceFor: 9574451 false ) 
-	#(95 1 #reduceFor: 9574452 false ) 
-	#(95 1 #reduceFor: 9574401 false ) 
-	#(95 1 #reduceFor: 9574402 false ) 
-	#(95 1 #reduceFor: 9574403 false ) 
-	#(95 1 #reduceFor: 9574404 false ) 
-	#(95 1 #reduceFor: 9574405 false ) 
-	#(94 2 #reduceActionForTokens2: 9473026 false ) 
+	#(95 1 #reduceFor: 9583622 false ) 
+	#(95 1 #reduceFor: 9583623 false ) 
+	#(95 1 #reduceFor: 9583624 false ) 
+	#(95 1 #reduceFor: 9583625 false ) 
+	#(95 1 #reduceFor: 9583626 false ) 
+	#(95 1 #reduceFor: 9583627 false ) 
+	#(95 1 #reduceFor: 9583628 false ) 
+	#(95 1 #reduceFor: 9583629 false ) 
+	#(95 1 #reduceFor: 9583630 false ) 
+	#(95 1 #reduceFor: 9583631 false ) 
+	#(95 1 #reduceFor: 9583632 false ) 
+	#(95 1 #reduceFor: 9583633 false ) 
+	#(95 1 #reduceFor: 9583634 false ) 
+	#(95 1 #reduceFor: 9583635 false ) 
+	#(95 1 #reduceFor: 9583636 false ) 
+	#(95 1 #reduceFor: 9583637 false ) 
+	#(95 1 #reduceFor: 9583638 false ) 
+	#(95 1 #reduceFor: 9583639 false ) 
+	#(95 1 #reduceFor: 9583640 false ) 
+	#(95 1 #reduceFor: 9583641 false ) 
+	#(95 1 #reduceFor: 9583642 false ) 
+	#(95 1 #reduceFor: 9583643 false ) 
+	#(95 1 #reduceFor: 9583644 false ) 
+	#(95 1 #reduceFor: 9583645 false ) 
+	#(95 1 #reduceFor: 9583646 false ) 
+	#(95 1 #reduceFor: 9583647 false ) 
+	#(95 1 #reduceFor: 9583648 false ) 
+	#(95 1 #reduceFor: 9583649 false ) 
+	#(95 1 #reduceFor: 9583650 false ) 
+	#(95 1 #reduceFor: 9583651 false ) 
+	#(95 1 #reduceFor: 9583652 false ) 
+	#(95 1 #reduceFor: 9583653 false ) 
+	#(95 1 #reduceFor: 9583654 false ) 
+	#(95 1 #reduceFor: 9583655 false ) 
+	#(95 1 #reduceFor: 9583656 false ) 
+	#(95 1 #reduceFor: 9583657 false ) 
+	#(95 1 #reduceFor: 9583658 false ) 
+	#(95 1 #reduceFor: 9583659 false ) 
+	#(95 1 #reduceFor: 9583660 false ) 
+	#(95 1 #reduceFor: 9583661 false ) 
+	#(95 1 #reduceFor: 9583662 false ) 
+	#(95 1 #reduceFor: 9583663 false ) 
+	#(95 1 #reduceFor: 9583664 false ) 
+	#(95 1 #reduceFor: 9583665 false ) 
+	#(95 1 #reduceFor: 9583666 false ) 
+	#(95 1 #reduceFor: 9583667 false ) 
+	#(95 1 #reduceFor: 9583668 false ) 
+	#(95 1 #reduceFor: 9583617 false ) 
+	#(95 1 #reduceFor: 9583618 false ) 
+	#(95 1 #reduceFor: 9583619 false ) 
+	#(95 1 #reduceFor: 9583620 false ) 
+	#(95 1 #reduceFor: 9583621 false ) 
+	#(94 2 #reduceActionForTokens2: 9482242 false ) 
 	#(93 1 #nil 9168900 false ) 
 	#(92 2 #reduceFor: 9129986 false ) 
 	#(93 1 #reduceActionForValue1: 9168897 false ) 
@@ -701,8 +701,8 @@ CPPPreprocessorParser class >> reduceTable [
 	#(81 3 #reduceFor: 5656585 false ) 
 	#(81 3 #reduceFor: 5656588 false ) 
 	#(81 3 #reduceActionForDirective3: 5656579 false ) 
-	#(100 0 #reduceActionForSwitchToDefault1: 10660865 true ) 
-	#(99 0 #reduceActionForSwitchToMacro1: 10607617 true ) 
+	#(100 0 #reduceActionForSwitchToDefault1: 10670081 true ) 
+	#(99 0 #reduceActionForSwitchToMacro1: 10616833 true ) 
 	#(79 3 #reduceFor: 5555203 false ) 
 	#(93 2 #reduceActionForValue2: 9168898 false ) 
 	#(85 2 #reduceActionForExpression3: 6489091 false ) 
@@ -1147,10 +1147,11 @@ CPPPreprocessorParser >> reduceActionForValue2: nodes [
 
 { #category : #'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForValue3: nodes [
-	^ preprocessor
+	preprocessor
 		concatenate: (nodes at: 1)
 		with: (nodes at: 3) first
-		using: self
+		using: self.
+	^ (nodes at: 3) first
 ]
 
 { #category : #testing }

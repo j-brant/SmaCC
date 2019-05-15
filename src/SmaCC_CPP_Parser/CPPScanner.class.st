@@ -1,6 +1,9 @@
 Class {
 	#name : #CPPScanner,
 	#superclass : #SmaCCScanner,
+	#instVars : [
+		'preprocessorDirectives'
+	],
 	#category : #'SmaCC_CPP_Parser-C++ Parser'
 }
 
@@ -22,6 +25,7 @@ CPPScanner >> RightShiftId [
 
 { #category : #private }
 CPPScanner >> directive [
+	preprocessorDirectives add: (Array with: start + 1 with: matchEnd).
 	^ self whitespace
 ]
 
@@ -40,9 +44,20 @@ CPPScanner >> gtId [
 	^ 124
 ]
 
+{ #category : #'initialize-release' }
+CPPScanner >> initialize [
+	super initialize.
+	preprocessorDirectives := OrderedCollection new
+]
+
 { #category : #private }
 CPPScanner >> lineContinuation [
 	^ self whitespace
+]
+
+{ #category : #accessing }
+CPPScanner >> preprocessorDirectives [
+	^ preprocessorDirectives
 ]
 
 { #category : #generated }
