@@ -241,14 +241,14 @@ CPPPreprocessor >> processIncludes: aBoolean [
 ]
 
 { #category : #processing }
-CPPPreprocessor >> processSource: aString inInterval: anInterval [
+CPPPreprocessor >> processSource: aString inInterval: anInterval isMacro: aBoolean [
 	stack
 		add: (Array with: anInterval first with: anInterval last with: aString).
 	CPPPreprocessorParser
 		process: aString
 		interval: anInterval
 		using: self
-		isMacro: true
+		isMacro: aBoolean
 ]
 
 { #category : #'private-actions' }

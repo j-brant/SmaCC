@@ -38,7 +38,10 @@ CPPPreprocessorMacro >> interval: anInterval [
 CPPPreprocessorMacro >> process: aToken on: aPreprocessor using: aParser [
 	aPreprocessor
 		removeMacro: aToken source
-		around: [ aPreprocessor processSource: source inInterval: interval ].
+		around: [ aPreprocessor
+				processSource: source
+				inInterval: interval
+				isMacro: true ].
 	^ aToken stopPosition + 1
 ]
 

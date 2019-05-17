@@ -89,7 +89,10 @@ CPPPreprocessorFunctionMacro >> process: aToken on: aPreprocessor using: aParser
 		do: [ :name :each | aPreprocessor addMacro: each named: name ].
 	aPreprocessor
 		removeMacro: aToken source
-		around: [ aPreprocessor processSource: source inInterval: interval ].
+		around: [ aPreprocessor
+				processSource: source
+				inInterval: interval
+				isMacro: true ].
 	arguments
 		with: originalMacros
 		do: [ :name :macro | aPreprocessor addMacro: macro named: name ].
