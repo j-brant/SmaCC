@@ -2,11 +2,11 @@ Class {
 	#name : #CPPBinaryExpressionNode,
 	#superclass : #CPPExpressionNode,
 	#instVars : [
-		'lefts',
+		'left',
 		'operator',
 		'right'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : #'SmaCC_CPP_Parser-C++ Parser'
 }
 
 { #category : #generated }
@@ -15,31 +15,22 @@ CPPBinaryExpressionNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-CPPBinaryExpressionNode >> compositeNodeVariables [
-	^ #(#lefts)
-]
-
-{ #category : #'generated-initialize-release' }
-CPPBinaryExpressionNode >> initialize [
-	super initialize.
-	lefts := OrderedCollection new: 2.
+CPPBinaryExpressionNode >> left [
+	^ left
 ]
 
 { #category : #generated }
-CPPBinaryExpressionNode >> lefts [
-	^ lefts
-]
-
-{ #category : #generated }
-CPPBinaryExpressionNode >> lefts: anOrderedCollection [
-	self setParents: self lefts to: nil.
-	lefts := anOrderedCollection.
-	self setParents: self lefts to: self
+CPPBinaryExpressionNode >> left: aCPPExpressionNode [
+	self left notNil
+		ifTrue: [ self left parent: nil ].
+	left := aCPPExpressionNode.
+	self left notNil
+		ifTrue: [ self left parent: self ]
 ]
 
 { #category : #generated }
 CPPBinaryExpressionNode >> nodeVariables [
-	^ #(#right)
+	^ #(#left #right)
 ]
 
 { #category : #generated }
