@@ -517,6 +517,11 @@ SmaCCParseNode >> isDescendantFrom: aSmaCCNode [
 ]
 
 { #category : #testing }
+SmaCCParseNode >> isErrorNode [
+	^ false
+]
+
+{ #category : #testing }
 SmaCCParseNode >> isListMatch [
 	^ false
 ]

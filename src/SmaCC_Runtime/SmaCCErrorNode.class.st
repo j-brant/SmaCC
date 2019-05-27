@@ -88,6 +88,11 @@ SmaCCErrorNode >> errorToken: smaccToken [
 	errorToken := smaccToken
 ]
 
+{ #category : #testing }
+SmaCCErrorNode >> isErrorNode [
+	^ true
+]
+
 { #category : #private }
 SmaCCErrorNode >> nodesAndTokensIn: anObject do: aBlock [
 	anObject isCollection
