@@ -31,12 +31,12 @@ CPPScanner >> directive [
 
 { #category : #generated }
 CPPScanner >> emptySymbolTokenId [
-	^ 339
+	^ 340
 ]
 
 { #category : #generated }
 CPPScanner >> errorTokenId [
-	^ 340
+	^ 341
 ]
 
 { #category : #generated }
@@ -1174,6 +1174,18 @@ CPPScanner >> scan51 [
 ]
 
 { #category : #generated }
+CPPScanner >> scan52 [
+	[ self step.
+	currentCharacter == $`
+		ifTrue: [ self recordMatch: #(141).
+			self step.
+			currentCharacter == $`
+				ifTrue: [ ^ self scan52 ].
+			^ self reportLastMatch ].
+	true ] whileTrue
+]
+
+{ #category : #generated }
 CPPScanner >> scan6 [
 	self step.
 	currentCharacter == Character cr
@@ -1328,6 +1340,8 @@ CPPScanner >> scanForToken [
 		ifTrue: [ ^ self scan10 ].
 	currentCharacter == $(
 		ifTrue: [ ^ self recordAndReportMatch: #(8) ].
+	currentCharacter == $)
+		ifTrue: [ ^ self recordAndReportMatch: #(9) ].
 	^ self scanForTokenX22
 ]
 
@@ -1612,9 +1626,6 @@ CPPScanner >> scanForTokenX20 [
 
 { #category : #generated }
 CPPScanner >> scanForTokenX21 [
-	currentCharacter == $>
-		ifTrue:
-			[ ^ self scanForTokenX9 ].
 	currentCharacter == $?
 		ifTrue: [ ^ self recordAndReportMatch: #(34) ].
 	currentCharacter == $R
@@ -1629,6 +1640,8 @@ CPPScanner >> scanForTokenX21 [
 	currentCharacter == $^
 		ifTrue:
 			[ ^ self scanForTokenX14 ].
+	currentCharacter == $`
+		ifTrue: [ ^ self scan52 ].
 	currentCharacter == $u
 		ifTrue:
 			[ ^ self scanForTokenX2 ].
@@ -1646,8 +1659,6 @@ CPPScanner >> scanForTokenX21 [
 
 { #category : #generated }
 CPPScanner >> scanForTokenX22 [
-	currentCharacter == $)
-		ifTrue: [ ^ self recordAndReportMatch: #(9) ].
 	currentCharacter == $*
 		ifTrue:
 			[ ^ self scanForTokenX17 ].
@@ -1679,6 +1690,9 @@ CPPScanner >> scanForTokenX22 [
 	currentCharacter == $=
 		ifTrue:
 			[ ^ self scanForTokenX15 ].
+	currentCharacter == $>
+		ifTrue:
+			[ ^ self scanForTokenX9 ].
 	^ self scanForTokenX21
 ]
 
@@ -1796,5 +1810,5 @@ CPPScanner >> scanForTokenX9 [
 
 { #category : #generated }
 CPPScanner >> tokenActions [
-	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #directive nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace #comment #lineContinuation)
+	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #directive nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace #comment #lineContinuation #patternToken)
 ]
