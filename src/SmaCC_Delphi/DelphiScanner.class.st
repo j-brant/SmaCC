@@ -34,7 +34,7 @@ DelphiScanner class >> definedItems: aCollection [
 { #category : #'generated-initialization' }
 DelphiScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
-	#(#(135 'ABSOLUTE' 18) #(135 'ABSTRACT' 19) #(135 'AND' 20) #(135 'ARRAY' 21) #(135 'AS' 22) #(135 'ASM' 23) #(135 'ASSEMBLER' 24) #(135 'AT' 130) #(135 'BEGIN' 25) #(135 'CASE' 26) #(135 'CDECL' 27) #(135 'CLASS' 28) #(135 'CONST' 29) #(135 'CONSTRUCTOR' 30) #(135 'DEFAULT' 31) #(135 'DEPRECATED' 32) #(135 'DESTRUCTOR' 33) #(135 'DISPID' 34) #(135 'DISPINTERFACE' 35) #(135 'DIV' 36) #(135 'DO' 37) #(135 'DOWNTO' 38) #(135 'DYNAMIC' 39) #(135 'ELSE' 40) #(135 'END' 41) #(135 'EXCEPT' 42) #(135 'EXPORT' 43) #(135 'EXPORTS' 44) #(135 'EXTERNAL' 45) #(135 'FAR' 46) #(135 'FILE' 47) #(135 'FINAL' 48) #(135 'FINALIZATION' 49) #(135 'FINALLY' 50) #(135 'FOR' 51) #(135 'FORWARD' 52) #(135 'FUNCTION' 53) #(135 'GOTO' 54) #(135 'HELPER' 55) #(135 'IF' 56) #(135 'IMPLEMENTATION' 57) #(135 'IMPLEMENTS' 58) #(135 'IN' 59) #(135 'INDEX' 60) #(135 'INHERITED' 61) #(135 'INITIALIZATION' 62) #(135 'INLINE' 63) #(135 'INTERFACE' 64) #(135 'IS' 65) #(135 'LABEL' 66) #(135 'LIBRARY' 67) #(135 'LOCAL' 68) #(135 'MEM' 69) #(135 'MEMW' 70) #(135 'MESSAGE' 71) #(135 'MOD' 72) #(135 'NAME' 73) #(135 'NEAR' 74) #(135 'NODEFAULT' 75) #(135 'NOT' 76) #(135 'OBJECT' 77) #(135 'OF' 78) #(135 'ON' 79) #(135 'OPERATOR' 80) #(135 'OR' 81) #(135 'OUT' 82) #(135 'OVERLOAD' 83) #(135 'OVERRIDE' 84) #(135 'PACKED' 85) #(135 'PASCAL' 86) #(135 'PLATFORM' 87) #(135 'PRIVATE' 88) #(135 'PROCEDURE' 89) #(135 'PROGRAM' 90) #(135 'PROPERTY' 91) #(135 'PROTECTED' 92) #(135 'PUBLIC' 93) #(135 'PUBLISHED' 94) #(135 'RAISE' 95) #(135 'READ' 96) #(135 'READONLY' 97) #(135 'RECORD' 98) #(135 'REGISTER' 99) #(135 'REINTRODUCE' 100) #(135 'REPEAT' 101) #(135 'RESOURCESTRING' 102) #(135 'SAFECALL' 103) #(135 'SEALED' 104) #(135 'SET' 105) #(135 'SHL' 106) #(135 'SHR' 107) #(135 'STATIC' 108) #(135 'STDCALL' 109) #(135 'STORED' 110) #(135 'STRICT' 111) #(135 'THEN' 112) #(135 'THREADVAR' 113) #(135 'TO' 114) #(135 'TRY' 115) #(135 'TYPE' 116) #(135 'UNIT' 117) #(135 'UNSAFE' 118) #(135 'UNTIL' 119) #(135 'USES' 120) #(135 'VAR' 121) #(135 'VIRTUAL' 122) #(135 'WHILE' 123) #(135 'WITH' 124) #(135 'WRITE' 125) #(135 'WRITEONLY' 126) #(135 'XOR' 127) #(136 'ABSOLUTE' 18) #(136 'ABSTRACT' 19) #(136 'AND' 20) #(136 'ARRAY' 21) #(136 'AS' 22) #(136 'ASM' 23) #(136 'ASSEMBLER' 24) #(136 'AT' 130) #(136 'BEGIN' 25) #(136 'CASE' 26) #(136 'CDECL' 27) #(136 'CLASS' 28) #(136 'CONST' 29) #(136 'CONSTRUCTOR' 30) #(136 'DEFAULT' 31) #(136 'DEPRECATED' 32) #(136 'DESTRUCTOR' 33) #(136 'DISPID' 34) #(136 'DISPINTERFACE' 35) #(136 'DIV' 36) #(136 'DO' 37) #(136 'DOWNTO' 38) #(136 'DYNAMIC' 39) #(136 'ELSE' 40) #(136 'END' 41) #(136 'EXCEPT' 42) #(136 'EXPORT' 43) #(136 'EXPORTS' 44) #(136 'EXTERNAL' 45) #(136 'FAR' 46) #(136 'FILE' 47) #(136 'FINAL' 48) #(136 'FINALIZATION' 49) #(136 'FINALLY' 50) #(136 'FOR' 51) #(136 'FORWARD' 52) #(136 'FUNCTION' 53) #(136 'GOTO' 54) #(136 'HELPER' 55) #(136 'IF' 56) #(136 'IMPLEMENTATION' 57) #(136 'IMPLEMENTS' 58) #(136 'IN' 59) #(136 'INDEX' 60) #(136 'INHERITED' 61) #(136 'INITIALIZATION' 62) #(136 'INLINE' 63) #(136 'INTERFACE' 64) #(136 'IS' 65) #(136 'LABEL' 66) #(136 'LIBRARY' 67) #(136 'LOCAL' 68) #(136 'MEM' 69) #(136 'MEMW' 70) #(136 'MESSAGE' 71) #(136 'MOD' 72) #(136 'NAME' 73) #(136 'NEAR' 74) #(136 'NODEFAULT' 75) #(136 'NOT' 76) #(136 'OBJECT' 77) #(136 'OF' 78) #(136 'ON' 79) #(136 'OPERATOR' 80) #(136 'OR' 81) #(136 'OUT' 82) #(136 'OVERLOAD' 83) #(136 'OVERRIDE' 84) #(136 'PACKED' 85) #(136 'PASCAL' 86) #(136 'PLATFORM' 87) #(136 'PRIVATE' 88) #(136 'PROCEDURE' 89) #(136 'PROGRAM' 90) #(136 'PROPERTY' 91) #(136 'PROTECTED' 92) #(136 'PUBLIC' 93) #(136 'PUBLISHED' 94) #(136 'RAISE' 95) #(136 'READ' 96) #(136 'READONLY' 97) #(136 'RECORD' 98) #(136 'REGISTER' 99) #(136 'REINTRODUCE' 100) #(136 'REPEAT' 101) #(136 'RESOURCESTRING' 102) #(136 'SAFECALL' 103) #(136 'SEALED' 104) #(136 'SET' 105) #(136 'SHL' 106) #(136 'SHR' 107) #(136 'STATIC' 108) #(136 'STDCALL' 109) #(136 'STORED' 110) #(136 'STRICT' 111) #(136 'THEN' 112) #(136 'THREADVAR' 113) #(136 'TO' 114) #(136 'TRY' 115) #(136 'TYPE' 116) #(136 'UNIT' 117) #(136 'UNSAFE' 118) #(136 'UNTIL' 119) #(136 'USES' 120) #(136 'VAR' 121) #(136 'VIRTUAL' 122) #(136 'WHILE' 123) #(136 'WITH' 124) #(136 'WRITE' 125) #(136 'WRITEONLY' 126) #(136 'XOR' 127))
+	#(#(135 '&OPERATOR' 1) #(135 'ABSOLUTE' 18) #(135 'ABSTRACT' 19) #(135 'AND' 20) #(135 'ARRAY' 21) #(135 'AS' 22) #(135 'ASM' 23) #(135 'ASSEMBLER' 24) #(135 'AT' 130) #(135 'BEGIN' 25) #(135 'CASE' 26) #(135 'CDECL' 27) #(135 'CLASS' 28) #(135 'CONST' 29) #(135 'CONSTRUCTOR' 30) #(135 'DEFAULT' 31) #(135 'DEPRECATED' 32) #(135 'DESTRUCTOR' 33) #(135 'DISPID' 34) #(135 'DISPINTERFACE' 35) #(135 'DIV' 36) #(135 'DO' 37) #(135 'DOWNTO' 38) #(135 'DYNAMIC' 39) #(135 'ELSE' 40) #(135 'END' 41) #(135 'EXCEPT' 42) #(135 'EXPORT' 43) #(135 'EXPORTS' 44) #(135 'EXTERNAL' 45) #(135 'FAR' 46) #(135 'FILE' 47) #(135 'FINAL' 48) #(135 'FINALIZATION' 49) #(135 'FINALLY' 50) #(135 'FOR' 51) #(135 'FORWARD' 52) #(135 'FUNCTION' 53) #(135 'GOTO' 54) #(135 'HELPER' 55) #(135 'IF' 56) #(135 'IMPLEMENTATION' 57) #(135 'IMPLEMENTS' 58) #(135 'IN' 59) #(135 'INDEX' 60) #(135 'INHERITED' 61) #(135 'INITIALIZATION' 62) #(135 'INLINE' 63) #(135 'INTERFACE' 64) #(135 'IS' 65) #(135 'LABEL' 66) #(135 'LIBRARY' 67) #(135 'LOCAL' 68) #(135 'MEM' 69) #(135 'MEMW' 70) #(135 'MESSAGE' 71) #(135 'MOD' 72) #(135 'NAME' 73) #(135 'NEAR' 74) #(135 'NODEFAULT' 75) #(135 'NOT' 76) #(135 'OBJECT' 77) #(135 'OF' 78) #(135 'ON' 79) #(135 'OPERATOR' 80) #(135 'OR' 81) #(135 'OUT' 82) #(135 'OVERLOAD' 83) #(135 'OVERRIDE' 84) #(135 'PACKED' 85) #(135 'PASCAL' 86) #(135 'PLATFORM' 87) #(135 'PRIVATE' 88) #(135 'PROCEDURE' 89) #(135 'PROGRAM' 90) #(135 'PROPERTY' 91) #(135 'PROTECTED' 92) #(135 'PUBLIC' 93) #(135 'PUBLISHED' 94) #(135 'RAISE' 95) #(135 'READ' 96) #(135 'READONLY' 97) #(135 'RECORD' 98) #(135 'REGISTER' 99) #(135 'REINTRODUCE' 100) #(135 'REPEAT' 101) #(135 'RESOURCESTRING' 102) #(135 'SAFECALL' 103) #(135 'SEALED' 104) #(135 'SET' 105) #(135 'SHL' 106) #(135 'SHR' 107) #(135 'STATIC' 108) #(135 'STDCALL' 109) #(135 'STORED' 110) #(135 'STRICT' 111) #(135 'THEN' 112) #(135 'THREADVAR' 113) #(135 'TO' 114) #(135 'TRY' 115) #(135 'TYPE' 116) #(135 'UNIT' 117) #(135 'UNSAFE' 118) #(135 'UNTIL' 119) #(135 'USES' 120) #(135 'VAR' 121) #(135 'VIRTUAL' 122) #(135 'WHILE' 123) #(135 'WITH' 124) #(135 'WRITE' 125) #(135 'WRITEONLY' 126) #(135 'XOR' 127) #(136 '&OPERATOR' 1) #(136 'ABSOLUTE' 18) #(136 'ABSTRACT' 19) #(136 'AND' 20) #(136 'ARRAY' 21) #(136 'AS' 22) #(136 'ASM' 23) #(136 'ASSEMBLER' 24) #(136 'AT' 130) #(136 'BEGIN' 25) #(136 'CASE' 26) #(136 'CDECL' 27) #(136 'CLASS' 28) #(136 'CONST' 29) #(136 'CONSTRUCTOR' 30) #(136 'DEFAULT' 31) #(136 'DEPRECATED' 32) #(136 'DESTRUCTOR' 33) #(136 'DISPID' 34) #(136 'DISPINTERFACE' 35) #(136 'DIV' 36) #(136 'DO' 37) #(136 'DOWNTO' 38) #(136 'DYNAMIC' 39) #(136 'ELSE' 40) #(136 'END' 41) #(136 'EXCEPT' 42) #(136 'EXPORT' 43) #(136 'EXPORTS' 44) #(136 'EXTERNAL' 45) #(136 'FAR' 46) #(136 'FILE' 47) #(136 'FINAL' 48) #(136 'FINALIZATION' 49) #(136 'FINALLY' 50) #(136 'FOR' 51) #(136 'FORWARD' 52) #(136 'FUNCTION' 53) #(136 'GOTO' 54) #(136 'HELPER' 55) #(136 'IF' 56) #(136 'IMPLEMENTATION' 57) #(136 'IMPLEMENTS' 58) #(136 'IN' 59) #(136 'INDEX' 60) #(136 'INHERITED' 61) #(136 'INITIALIZATION' 62) #(136 'INLINE' 63) #(136 'INTERFACE' 64) #(136 'IS' 65) #(136 'LABEL' 66) #(136 'LIBRARY' 67) #(136 'LOCAL' 68) #(136 'MEM' 69) #(136 'MEMW' 70) #(136 'MESSAGE' 71) #(136 'MOD' 72) #(136 'NAME' 73) #(136 'NEAR' 74) #(136 'NODEFAULT' 75) #(136 'NOT' 76) #(136 'OBJECT' 77) #(136 'OF' 78) #(136 'ON' 79) #(136 'OPERATOR' 80) #(136 'OR' 81) #(136 'OUT' 82) #(136 'OVERLOAD' 83) #(136 'OVERRIDE' 84) #(136 'PACKED' 85) #(136 'PASCAL' 86) #(136 'PLATFORM' 87) #(136 'PRIVATE' 88) #(136 'PROCEDURE' 89) #(136 'PROGRAM' 90) #(136 'PROPERTY' 91) #(136 'PROTECTED' 92) #(136 'PUBLIC' 93) #(136 'PUBLISHED' 94) #(136 'RAISE' 95) #(136 'READ' 96) #(136 'READONLY' 97) #(136 'RECORD' 98) #(136 'REGISTER' 99) #(136 'REINTRODUCE' 100) #(136 'REPEAT' 101) #(136 'RESOURCESTRING' 102) #(136 'SAFECALL' 103) #(136 'SEALED' 104) #(136 'SET' 105) #(136 'SHL' 106) #(136 'SHR' 107) #(136 'STATIC' 108) #(136 'STDCALL' 109) #(136 'STORED' 110) #(136 'STRICT' 111) #(136 'THEN' 112) #(136 'THREADVAR' 113) #(136 'TO' 114) #(136 'TRY' 115) #(136 'TYPE' 116) #(136 'UNIT' 117) #(136 'UNSAFE' 118) #(136 'UNTIL' 119) #(136 'USES' 120) #(136 'VAR' 121) #(136 'VIRTUAL' 122) #(136 'WHILE' 123) #(136 'WITH' 124) #(136 'WRITE' 125) #(136 'WRITEONLY' 126) #(136 'XOR' 127))
 		do: [ :each | 
 			(keywordMap at: each first ifAbsentPut: [ Dictionary new ])
 				at: (each at: 2)
@@ -101,7 +101,7 @@ DelphiScanner >> constantIdentifierId [
 
 { #category : #generated }
 DelphiScanner >> controlCharacterId [
-	^ 367
+	^ 370
 ]
 
 { #category : #accessing }
@@ -116,12 +116,12 @@ DelphiScanner >> definedItems: aCollection [
 
 { #category : #generated }
 DelphiScanner >> emptySymbolTokenId [
-	^ 368
+	^ 371
 ]
 
 { #category : #generated }
 DelphiScanner >> errorTokenId [
-	^ 369
+	^ 372
 ]
 
 { #category : #generated }
@@ -501,7 +501,7 @@ DelphiScanner >> scanForToken [
 		ifTrue: [ ^ self scan8 ].
 	currentCharacter == $&
 		ifTrue:
-			[ ^ self scanForTokenX6 ].
+			[ ^ self scanForTokenX8 ].
 	currentCharacter == $'
 		ifTrue: [ ^ self scan2 ].
 	currentCharacter == $(
@@ -596,7 +596,7 @@ DelphiScanner >> scanForTokenX14 [
 			[ ^ self scanForTokenX4 ].
 	currentCharacter == $.
 		ifTrue:
-			[ ^ self scanForTokenX8 ].
+			[ ^ self scanForTokenX7 ].
 	currentCharacter == $/
 		ifTrue:
 			[ ^ self scanForTokenX2 ].
@@ -607,7 +607,7 @@ DelphiScanner >> scanForTokenX14 [
 		ifTrue: [ ^ self recordAndReportMatch: #(133) ].
 	currentCharacter == $<
 		ifTrue:
-			[ ^ self scanForTokenX7 ].
+			[ ^ self scanForTokenX6 ].
 	currentCharacter == $=
 		ifTrue: [ ^ self recordAndReportMatch: #(14) ].
 	currentCharacter == $>
@@ -672,28 +672,6 @@ DelphiScanner >> scanForTokenX5 [
 
 { #category : #generated }
 DelphiScanner >> scanForTokenX6 [
-	self step.
-	('Oo' includes: currentCharacter)
-		ifTrue: [ self step.
-			('Pp' includes: currentCharacter)
-				ifTrue: [ self step.
-					('Ee' includes: currentCharacter)
-						ifTrue: [ self step.
-							('Rr' includes: currentCharacter)
-								ifTrue: [ self step.
-									('Aa' includes: currentCharacter)
-										ifTrue: [ self step.
-											('Tt' includes: currentCharacter)
-												ifTrue: [ self step.
-													('Oo' includes: currentCharacter)
-														ifTrue: [ self step.
-															('Rr' includes: currentCharacter)
-																ifTrue: [ ^ self recordAndReportMatch: #(1) ] ] ] ] ] ] ] ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-DelphiScanner >> scanForTokenX7 [
 	self recordMatch: #(11).
 	self step.
 	currentCharacter == $=
@@ -704,13 +682,24 @@ DelphiScanner >> scanForTokenX7 [
 ]
 
 { #category : #generated }
-DelphiScanner >> scanForTokenX8 [
+DelphiScanner >> scanForTokenX7 [
 	self recordMatch: #(6).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self recordAndReportMatch: #(7) ].
 	currentCharacter isDigit
 		ifTrue: [ ^ self scan11 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+DelphiScanner >> scanForTokenX8 [
+	self step.
+	(currentCharacter isLetter or: [ currentCharacter == $_ ])
+		ifTrue: [ [ self recordMatch: #(135 136).
+			self step.
+			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ]
+				whileTrue ].
 	^ self reportLastMatch
 ]
 

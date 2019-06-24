@@ -210,6 +210,11 @@ DelphiProgramNodeVisitor >> visitExceptElse: anExceptElse [
 ]
 
 { #category : #generated }
+DelphiProgramNodeVisitor >> visitExportsDefinition: anExportsDefinition [
+	^ self visitProgram: anExportsDefinition
+]
+
+{ #category : #generated }
 DelphiProgramNodeVisitor >> visitExpression: anExpression [
 	^ self visitStatement: anExpression
 ]
@@ -598,6 +603,11 @@ DelphiProgramNodeVisitor >> visitRangeType: aRangeType [
 { #category : #generated }
 DelphiProgramNodeVisitor >> visitRecordExpression: aRecordExpression [
 	^ self visitExpression: aRecordExpression
+]
+
+{ #category : #generated }
+DelphiProgramNodeVisitor >> visitRecordHelperType: aRecordHelperType [
+	^ self visitType: aRecordHelperType
 ]
 
 { #category : #generated }

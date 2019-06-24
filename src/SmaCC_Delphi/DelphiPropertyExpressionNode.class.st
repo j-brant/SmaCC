@@ -20,10 +20,10 @@ DelphiPropertyExpressionNode >> expression [
 ]
 
 { #category : #generated }
-DelphiPropertyExpressionNode >> expression: aDelphiExpressionNode [
+DelphiPropertyExpressionNode >> expression: aDelphiProgramNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
-	expression := aDelphiExpressionNode.
+	expression := aDelphiProgramNode.
 	self expression notNil
 		ifTrue: [ self expression parent: self ]
 ]

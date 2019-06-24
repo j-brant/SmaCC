@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'constructorToken',
 		'arguments',
-		'semicolons'
+		'semicolons',
+		'classToken'
 	],
 	#category : #'SmaCC_Delphi'
 }
@@ -24,6 +25,16 @@ DelphiConstructorHeaderNode >> arguments: anOrderedCollection [
 	self setParents: self arguments to: nil.
 	arguments := anOrderedCollection.
 	self setParents: self arguments to: self
+]
+
+{ #category : #generated }
+DelphiConstructorHeaderNode >> classToken [
+	^ classToken
+]
+
+{ #category : #generated }
+DelphiConstructorHeaderNode >> classToken: aSmaCCToken [
+	classToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -65,5 +76,5 @@ DelphiConstructorHeaderNode >> semicolons: anOrderedCollection [
 
 { #category : #generated }
 DelphiConstructorHeaderNode >> tokenVariables [
-	^ #(#constructorToken #left #right)
+	^ #(#constructorToken #classToken #left #right)
 ]

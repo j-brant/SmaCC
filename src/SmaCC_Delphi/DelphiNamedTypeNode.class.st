@@ -23,10 +23,10 @@ DelphiNamedTypeNode >> typeExpression [
 ]
 
 { #category : #generated }
-DelphiNamedTypeNode >> typeExpression: aDelphiExpressionNode [
+DelphiNamedTypeNode >> typeExpression: aDelphiProgramNode [
 	self typeExpression notNil
 		ifTrue: [ self typeExpression parent: nil ].
-	typeExpression := aDelphiExpressionNode.
+	typeExpression := aDelphiProgramNode.
 	self typeExpression notNil
 		ifTrue: [ self typeExpression parent: self ]
 ]
