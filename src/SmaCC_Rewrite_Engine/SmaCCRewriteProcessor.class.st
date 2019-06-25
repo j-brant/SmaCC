@@ -276,11 +276,11 @@ SmaCCRewriteProcessor >> sourceFor: aString [
 		on: Error
 		do: [ :ex | 
 			| encoding |
-			encoding := [ aString asFileReference
+			encoding := [ fileRef
 				binaryReadStreamDo: [ :in | (ZnCharacterEncoder detectEncoding: in upToEnd) identifier ] ]
 				on: ZnCharacterEncodingError
 				do: [ nil ].
-			aString asFileReference
+			fileRef
 				readStreamDo: [ :stream | 
 					SmaCCParser setEncoding: encoding on: stream.
 					stream contents ] ]

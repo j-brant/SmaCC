@@ -461,6 +461,11 @@ DelphiProgramNodeVisitor >> visitOnDo: anOnDo [
 ]
 
 { #category : #generated }
+DelphiProgramNodeVisitor >> visitPackageFile: aPackageFile [
+	^ self visitProgram: aPackageFile
+]
+
+{ #category : #generated }
 DelphiProgramNodeVisitor >> visitPlusExpression: aPlusExpression [
 	^ self visitExpression: aPlusExpression
 ]
