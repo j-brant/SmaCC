@@ -1321,6 +1321,46 @@ DelphiParser class >> fileExtensionType [
 	^ 'Delphi files'
 ]
 
+{ #category : #parsing }
+DelphiParser class >> parseFile: aString [
+	| contents ast |
+	contents := [ aString asFileReference contents ]
+		on: Error
+		do: [ :ex | 
+			| encoding |
+			encoding := [ aString asFileReference
+				binaryReadStreamDo: [ :in | (ZnCharacterEncoder detectEncoding: in upToEnd) identifier ] ]
+				on: ZnCharacterEncodingError
+				do: [ nil ].
+			aString asFileReference
+				readStreamDo: [ :stream | 
+					SmaCCParser setEncoding: encoding on: stream.
+					stream contents ] ].
+	ast := self parse: contents.
+	ast filename: aString.
+	^ ast
+]
+
+{ #category : #parsing }
+DelphiParser class >> parseFileWithErrors: aString [
+	| contents ast |
+	contents := [ aString asFileReference contents ]
+		on: Error
+		do: [ :ex | 
+			| encoding |
+			encoding := [ aString asFileReference
+				binaryReadStreamDo: [ :in | (ZnCharacterEncoder detectEncoding: in upToEnd) identifier ] ]
+				on: ZnCharacterEncodingError
+				do: [ nil ].
+			aString asFileReference
+				readStreamDo: [ :stream | 
+					SmaCCParser setEncoding: encoding on: stream.
+					stream contents ] ].
+	ast := self parseWithErrors: contents.
+	ast filename: aString.
+	^ ast
+]
+
 { #category : #generated }
 DelphiParser class >> reduceTable [
 ^#(

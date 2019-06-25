@@ -270,14 +270,20 @@ SmaCCRewriteProcessor >> saveOutput: aString in: aFilename [
 
 { #category : #accessing }
 SmaCCRewriteProcessor >> sourceFor: aString [
-	^ aString asFileReference
-		readStreamDo: [ :stream | 
-			([ #[239 187 191] allSatisfy: [ :each | stream peekFor: (Character value: each) ] ]
-				on: Error
-				do: [ :ex | ex return: false ])
-				ifFalse: [ stream position: 0 ].	"HACK to handle BOM streams"
-			parserClass setEncodingOn: stream.
-			stream upToEnd ]
+	| fileRef |
+	fileRef := aString asFileReference.
+	^ [ fileRef contents ]
+		on: Error
+		do: [ :ex | 
+			| encoding |
+			encoding := [ aString asFileReference
+				binaryReadStreamDo: [ :in | (ZnCharacterEncoder detectEncoding: in upToEnd) identifier ] ]
+				on: ZnCharacterEncodingError
+				do: [ nil ].
+			aString asFileReference
+				readStreamDo: [ :stream | 
+					SmaCCParser setEncoding: encoding on: stream.
+					stream contents ] ]
 ]
 
 { #category : #accessing }
