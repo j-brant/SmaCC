@@ -152,10 +152,12 @@ SmaCCTransformationToolkitModel >> localRunOn: aCollection [
 
 { #category : #'actions-rewrites' }
 SmaCCTransformationToolkitModel >> openRewriteFile: filename [
-	^ filename asFileReference exists
-		ifTrue: [ SmaCCRewriteRuleFileParser parseFile: filename ]
+	| fileRef |
+	fileRef := filename asFileReference.
+	^ fileRef exists
+		ifTrue: [ SmaCCRewriteRuleFileParser parseFile: fileRef pathString ]
 		ifFalse: [ SmaCCRewriteFile new
-				filename: filename;
+				filename: fileRef pathString;
 				yourself ]
 ]
 
