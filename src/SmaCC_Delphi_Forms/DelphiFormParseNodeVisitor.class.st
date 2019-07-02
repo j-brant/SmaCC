@@ -20,6 +20,11 @@ DelphiFormParseNodeVisitor >> visitByteArray: aByteArray [
 ]
 
 { #category : #generated }
+DelphiFormParseNodeVisitor >> visitBytes: aBytes [
+	^ self visitLiteral: aBytes
+]
+
+{ #category : #generated }
 DelphiFormParseNodeVisitor >> visitCombinedString: aCombinedString [
 	^ self visitParse: aCombinedString
 ]
