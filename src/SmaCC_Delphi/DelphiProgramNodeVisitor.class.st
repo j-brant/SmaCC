@@ -15,6 +15,11 @@ DelphiProgramNodeVisitor >> visitAddressExpression: anAddressExpression [
 ]
 
 { #category : #generated }
+DelphiProgramNodeVisitor >> visitAnonymousFunctionDefinition: anAnonymousFunctionDefinition [
+	^ self visitExpression: anAnonymousFunctionDefinition
+]
+
+{ #category : #generated }
 DelphiProgramNodeVisitor >> visitAnonymousFunctionType: anAnonymousFunctionType [
 	^ self visitAnonymousMethodType: anAnonymousFunctionType
 ]
@@ -22,6 +27,11 @@ DelphiProgramNodeVisitor >> visitAnonymousFunctionType: anAnonymousFunctionType 
 { #category : #generated }
 DelphiProgramNodeVisitor >> visitAnonymousMethodType: anAnonymousMethodType [
 	^ self visitType: anAnonymousMethodType
+]
+
+{ #category : #generated }
+DelphiProgramNodeVisitor >> visitAnonymousProcedureDefinition: anAnonymousProcedureDefinition [
+	^ self visitExpression: anAnonymousProcedureDefinition
 ]
 
 { #category : #generated }

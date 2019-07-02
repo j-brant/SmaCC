@@ -3,10 +3,10 @@ Class {
 	#superclass : #DelphiMethodHeaderNode,
 	#instVars : [
 		'functionToken',
-		'colon',
-		'type',
+		'arguments',
 		'semicolons',
-		'arguments'
+		'colon',
+		'type'
 	],
 	#category : #'SmaCC_Delphi'
 }
@@ -61,8 +61,8 @@ DelphiFunctionHeaderNode >> ignoredCompositeTokenVariables [
 { #category : #'generated-initialize-release' }
 DelphiFunctionHeaderNode >> initialize [
 	super initialize.
-	semicolons := OrderedCollection new: 2.
 	arguments := OrderedCollection new: 2.
+	semicolons := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
