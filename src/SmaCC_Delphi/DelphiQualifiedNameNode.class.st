@@ -81,8 +81,17 @@ DelphiQualifiedNameNode >> namespace [
 ]
 
 { #category : #generated }
-DelphiQualifiedNameNode >> namespace: aSmaCCToken [
-	namespace := aSmaCCToken
+DelphiQualifiedNameNode >> namespace: aDelphiQualifiedNameNode [
+	self namespace notNil
+		ifTrue: [ self namespace parent: nil ].
+	namespace := aDelphiQualifiedNameNode.
+	self namespace notNil
+		ifTrue: [ self namespace parent: self ]
+]
+
+{ #category : #generated }
+DelphiQualifiedNameNode >> nodeVariables [
+	^ #(#namespace)
 ]
 
 { #category : #generated }
@@ -107,5 +116,5 @@ DelphiQualifiedNameNode >> right: aSmaCCToken [
 
 { #category : #generated }
 DelphiQualifiedNameNode >> tokenVariables [
-	^ #(#name #left #right #namespace #period)
+	^ #(#name #left #right #period)
 ]
