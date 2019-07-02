@@ -325,6 +325,12 @@ DelphiProgramNodeVisitor >> visitInitializationSection: anInitializationSection 
 ]
 
 { #category : #generated }
+DelphiProgramNodeVisitor >> visitInstantiatedGenericPropertyExpression: anInstantiatedGenericPropertyExpression [
+	^ self
+		visitPropertyExpression: anInstantiatedGenericPropertyExpression
+]
+
+{ #category : #generated }
 DelphiProgramNodeVisitor >> visitInstantiatedGenericType: anInstantiatedGenericType [
 	^ self visitType: anInstantiatedGenericType
 ]
