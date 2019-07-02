@@ -8,7 +8,9 @@ Class {
 		'right',
 		'ofToken',
 		'objectToken',
-		'modifiers'
+		'modifiers',
+		'referenceToken',
+		'toToken'
 	],
 	#category : #'SmaCC_Delphi'
 }
@@ -91,6 +93,16 @@ DelphiAnonymousMethodTypeNode >> ofToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+DelphiAnonymousMethodTypeNode >> referenceToken [
+	^ referenceToken
+]
+
+{ #category : #generated }
+DelphiAnonymousMethodTypeNode >> referenceToken: aSmaCCToken [
+	referenceToken := aSmaCCToken
+]
+
+{ #category : #generated }
 DelphiAnonymousMethodTypeNode >> right [
 	^ right
 ]
@@ -111,6 +123,16 @@ DelphiAnonymousMethodTypeNode >> semicolons: anOrderedCollection [
 ]
 
 { #category : #generated }
+DelphiAnonymousMethodTypeNode >> toToken [
+	^ toToken
+]
+
+{ #category : #generated }
+DelphiAnonymousMethodTypeNode >> toToken: aSmaCCToken [
+	toToken := aSmaCCToken
+]
+
+{ #category : #generated }
 DelphiAnonymousMethodTypeNode >> tokenVariables [
-	^ #(#left #right #ofToken #objectToken)
+	^ #(#left #right #ofToken #objectToken #referenceToken #toToken)
 ]

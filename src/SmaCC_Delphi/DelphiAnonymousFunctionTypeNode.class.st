@@ -41,7 +41,7 @@ DelphiAnonymousFunctionTypeNode >> nodeVariables [
 
 { #category : #generated }
 DelphiAnonymousFunctionTypeNode >> tokenVariables [
-	^ #(#functionToken #colon #left #right #ofToken #objectToken)
+	^ #(#functionToken #colon #left #right #ofToken #objectToken #referenceToken #toToken)
 ]
 
 { #category : #generated }

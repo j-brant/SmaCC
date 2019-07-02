@@ -24,5 +24,5 @@ DelphiAnonymousProcedureTypeNode >> procedureToken: aSmaCCToken [
 
 { #category : #generated }
 DelphiAnonymousProcedureTypeNode >> tokenVariables [
-	^ #(#procedureToken #left #right #ofToken #objectToken)
+	^ #(#procedureToken #left #right #ofToken #objectToken #referenceToken #toToken)
 ]
