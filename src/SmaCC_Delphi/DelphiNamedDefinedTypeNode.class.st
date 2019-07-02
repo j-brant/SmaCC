@@ -10,7 +10,8 @@ Class {
 		'equalToken',
 		'type',
 		'modifier',
-		'semicolon'
+		'semicolon',
+		'attribute'
 	],
 	#category : #'SmaCC_Delphi'
 }
@@ -18,6 +19,20 @@ Class {
 { #category : #generated }
 DelphiNamedDefinedTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNamedDefinedType: self
+]
+
+{ #category : #generated }
+DelphiNamedDefinedTypeNode >> attribute [
+	^ attribute
+]
+
+{ #category : #generated }
+DelphiNamedDefinedTypeNode >> attribute: aDelphiAttributeNode [
+	self attribute notNil
+		ifTrue: [ self attribute parent: nil ].
+	attribute := aDelphiAttributeNode.
+	self attribute notNil
+		ifTrue: [ self attribute parent: self ]
 ]
 
 { #category : #generated }
@@ -104,7 +119,7 @@ DelphiNamedDefinedTypeNode >> name: aSmaCCToken [
 
 { #category : #generated }
 DelphiNamedDefinedTypeNode >> nodeVariables [
-	^ #(#type)
+	^ #(#type #attribute)
 ]
 
 { #category : #generated }

@@ -1,5 +1,5 @@
 Class {
-	#name : #DelphiMethodAttributeNode,
+	#name : #DelphiAttributeNode,
 	#superclass : #DelphiProgramNode,
 	#instVars : [
 		'left',
@@ -10,17 +10,17 @@ Class {
 }
 
 { #category : #generated }
-DelphiMethodAttributeNode >> acceptVisitor: aProgramVisitor [
-	^ aProgramVisitor visitMethodAttribute: self
+DelphiAttributeNode >> acceptVisitor: aProgramVisitor [
+	^ aProgramVisitor visitAttribute: self
 ]
 
 { #category : #generated }
-DelphiMethodAttributeNode >> expression [
+DelphiAttributeNode >> expression [
 	^ expression
 ]
 
 { #category : #generated }
-DelphiMethodAttributeNode >> expression: aDelphiExpressionNode [
+DelphiAttributeNode >> expression: aDelphiExpressionNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
 	expression := aDelphiExpressionNode.
@@ -29,31 +29,31 @@ DelphiMethodAttributeNode >> expression: aDelphiExpressionNode [
 ]
 
 { #category : #generated }
-DelphiMethodAttributeNode >> left [
+DelphiAttributeNode >> left [
 	^ left
 ]
 
 { #category : #generated }
-DelphiMethodAttributeNode >> left: aSmaCCToken [
+DelphiAttributeNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
 { #category : #generated }
-DelphiMethodAttributeNode >> nodeVariables [
+DelphiAttributeNode >> nodeVariables [
 	^ #(#expression)
 ]
 
 { #category : #generated }
-DelphiMethodAttributeNode >> right [
+DelphiAttributeNode >> right [
 	^ right
 ]
 
 { #category : #generated }
-DelphiMethodAttributeNode >> right: aSmaCCToken [
+DelphiAttributeNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
 { #category : #generated }
-DelphiMethodAttributeNode >> tokenVariables [
+DelphiAttributeNode >> tokenVariables [
 	^ #(#left #right)
 ]

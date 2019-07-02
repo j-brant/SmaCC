@@ -22,10 +22,10 @@ DelphiMethodHeaderNode >> attribute [
 ]
 
 { #category : #generated }
-DelphiMethodHeaderNode >> attribute: aDelphiMethodAttributeNode [
+DelphiMethodHeaderNode >> attribute: aDelphiAttributeNode [
 	self attribute notNil
 		ifTrue: [ self attribute parent: nil ].
-	attribute := aDelphiMethodAttributeNode.
+	attribute := aDelphiAttributeNode.
 	self attribute notNil
 		ifTrue: [ self attribute parent: self ]
 ]

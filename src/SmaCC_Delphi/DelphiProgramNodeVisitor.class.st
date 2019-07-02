@@ -55,6 +55,11 @@ DelphiProgramNodeVisitor >> visitAssignmentExpression: anAssignmentExpression [
 ]
 
 { #category : #generated }
+DelphiProgramNodeVisitor >> visitAttribute: anAttribute [
+	^ self visitProgram: anAttribute
+]
+
+{ #category : #generated }
 DelphiProgramNodeVisitor >> visitBinaryExpression: aBinaryExpression [
 	^ self visitExpression: aBinaryExpression
 ]
@@ -383,11 +388,6 @@ DelphiProgramNodeVisitor >> visitMessageMethodModifier: aMessageMethodModifier [
 { #category : #generated }
 DelphiProgramNodeVisitor >> visitMetaclassType: aMetaclassType [
 	^ self visitType: aMetaclassType
-]
-
-{ #category : #generated }
-DelphiProgramNodeVisitor >> visitMethodAttribute: aMethodAttribute [
-	^ self visitProgram: aMethodAttribute
 ]
 
 { #category : #generated }
