@@ -83,11 +83,13 @@ SmaCCRewriteEngineCommandLineHandler >> run: aSmaCCTransformationToolkitModel [
 			self exitSuccess ].
 	doneSemaphore := Semaphore new.
 	aSmaCCTransformationToolkitModel addDependent: self.
-	aSmaCCTransformationToolkitModel perform: self runType with: aSmaCCTransformationToolkitModel files.
+	aSmaCCTransformationToolkitModel
+		perform: self runType
+		with: aSmaCCTransformationToolkitModel files.
 	doneSemaphore wait.
 	self shouldTerminateServer
 		ifTrue: [ aSmaCCTransformationToolkitModel terminateServer ].
-	^ (Exit status: failingFiles) signal
+	^ (Exit status: (failingFiles min: 255)) signal
 ]
 
 { #category : #activation }
