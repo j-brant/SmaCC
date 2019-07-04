@@ -46,7 +46,7 @@ DelphiNamedDefinedTypeNode >> commas: anOrderedCollection [
 ]
 
 { #category : #generated }
-DelphiNamedDefinedTypeNode >> compositeTokenVariables [
+DelphiNamedDefinedTypeNode >> compositeNodeVariables [
 	^ #(#genericTypeArguments)
 ]
 
@@ -67,7 +67,9 @@ DelphiNamedDefinedTypeNode >> genericTypeArguments [
 
 { #category : #generated }
 DelphiNamedDefinedTypeNode >> genericTypeArguments: anOrderedCollection [
-	genericTypeArguments := anOrderedCollection
+	self setParents: self genericTypeArguments to: nil.
+	genericTypeArguments := anOrderedCollection.
+	self setParents: self genericTypeArguments to: self
 ]
 
 { #category : #generated }

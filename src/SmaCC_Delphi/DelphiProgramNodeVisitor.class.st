@@ -697,6 +697,11 @@ DelphiProgramNodeVisitor >> visitType: aType [
 ]
 
 { #category : #generated }
+DelphiProgramNodeVisitor >> visitTypeArgument: aTypeArgument [
+	^ self visitProgram: aTypeArgument
+]
+
+{ #category : #generated }
 DelphiProgramNodeVisitor >> visitTypeType: aTypeType [
 	^ self visitProgram: aTypeType
 ]

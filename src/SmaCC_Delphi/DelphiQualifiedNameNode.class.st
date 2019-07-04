@@ -29,7 +29,7 @@ DelphiQualifiedNameNode >> commas: anOrderedCollection [
 ]
 
 { #category : #generated }
-DelphiQualifiedNameNode >> compositeTokenVariables [
+DelphiQualifiedNameNode >> compositeNodeVariables [
 	^ #(#genericTypeArguments)
 ]
 
@@ -40,7 +40,9 @@ DelphiQualifiedNameNode >> genericTypeArguments [
 
 { #category : #generated }
 DelphiQualifiedNameNode >> genericTypeArguments: anOrderedCollection [
-	genericTypeArguments := anOrderedCollection
+	self setParents: self genericTypeArguments to: nil.
+	genericTypeArguments := anOrderedCollection.
+	self setParents: self genericTypeArguments to: self
 ]
 
 { #category : #generated }
