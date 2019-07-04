@@ -101,7 +101,7 @@ DelphiScanner >> constantIdentifierId [
 
 { #category : #generated }
 DelphiScanner >> controlCharacterId [
-	^ 385
+	^ 384
 ]
 
 { #category : #accessing }
@@ -116,12 +116,12 @@ DelphiScanner >> definedItems: aCollection [
 
 { #category : #generated }
 DelphiScanner >> emptySymbolTokenId [
-	^ 386
+	^ 385
 ]
 
 { #category : #generated }
 DelphiScanner >> errorTokenId [
-	^ 387
+	^ 386
 ]
 
 { #category : #generated }

@@ -372,11 +372,6 @@ DelphiProgramNodeVisitor >> visitLabeledStatement: aLabeledStatement [
 ]
 
 { #category : #generated }
-DelphiProgramNodeVisitor >> visitLibraryExport: aLibraryExport [
-	^ self visitProgram: aLibraryExport
-]
-
-{ #category : #generated }
 DelphiProgramNodeVisitor >> visitLibraryFile: aLibraryFile [
 	^ self visitProgram: aLibraryFile
 ]
