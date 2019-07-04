@@ -12,7 +12,7 @@ SmaCCSendRuleDebugAction class >> gtActionFor: aDebugger [
 
 { #category : #accessing }
 SmaCCSendRuleDebugAction >> defaultKeymap [
-	^ $i meta
+	^ $O meta
 ]
 
 { #category : #accessing }

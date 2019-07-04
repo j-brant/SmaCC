@@ -12,7 +12,7 @@ SmaCCStepToLocationAction class >> gtActionFor: aDebugger [
 
 { #category : #accessing }
 SmaCCStepToLocationAction >> defaultKeymap [
-	^ $c meta
+	^ $r meta
 ]
 
 { #category : #accessing }
