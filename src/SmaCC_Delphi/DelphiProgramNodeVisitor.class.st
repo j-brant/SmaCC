@@ -190,6 +190,11 @@ DelphiProgramNodeVisitor >> visitDefinedTypeList: aDefinedTypeList [
 ]
 
 { #category : #generated }
+DelphiProgramNodeVisitor >> visitDeprecatedMethodModifier: aDeprecatedMethodModifier [
+	^ self visitMethodModifier: aDeprecatedMethodModifier
+]
+
+{ #category : #generated }
 DelphiProgramNodeVisitor >> visitDestructorDefinition: aDestructorDefinition [
 	^ self visitMethodDefinition: aDestructorDefinition
 ]
