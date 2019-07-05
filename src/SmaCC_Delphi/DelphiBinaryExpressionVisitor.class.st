@@ -44,19 +44,43 @@ DelphiBinaryExpressionVisitor >> precedenceOf: aString [
 	^ nil
 ]
 
+{ #category : #private }
+DelphiBinaryExpressionVisitor >> replaceNode: current with: pulledUp [
+	1 to: pulledUp parent class instSize do: [ :i | 
+		| var index |
+		var := pulledUp parent instVarAt: i.
+		var == current
+			ifTrue: [ pulledUp parent instVarAt: i put: pulledUp ].
+		(var isKindOf: SequenceableCollection)
+			ifTrue: [ index := var identityIndexOf: current.
+				index > 0
+					ifTrue: [ var at: index put: pulledUp ] ] ]
+]
+
+{ #category : #private }
+DelphiBinaryExpressionVisitor >> replaceNode: oldNode with: newNode in: aParentNode [
+	1 to: aParentNode class instSize do: [ :i | 
+		| var index |
+		var := aParentNode instVarAt: i.
+		var == oldNode
+			ifTrue: [ aParentNode instVarAt: i put: newNode ].
+		(var isKindOf: SequenceableCollection)
+			ifTrue: [ index := var identityIndexOf: oldNode.
+				index > 0
+					ifTrue: [ var at: index put: newNode ] ] ]
+]
+
 { #category : #visiting }
 DelphiBinaryExpressionVisitor >> visitBinaryExpression: aBinaryExpression [
-	| pulledUp temp parent current |
+	| current |
 	current := aBinaryExpression.
 	[ (current rightExpression isKindOf: DelphiBinaryExpressionNode)
-		and:
-			[ current rightExpression leftParens isEmpty
-				and:
-					[ self
+		and: [ current rightExpression leftParens isEmpty
+				and: [ self
 						isPrecedenceOf: current operator value
 						higherThan: current rightExpression operator value ] ] ]
-		whileTrue:
-			[ parent := current parent.
+		whileTrue: [ | pulledUp temp parent |
+			parent := current parent.
 			pulledUp := current rightExpression.
 			temp := pulledUp leftExpression.
 			pulledUp leftExpression: current.
@@ -70,21 +94,23 @@ DelphiBinaryExpressionVisitor >> visitBinaryExpression: aBinaryExpression [
 			pulledUp leftExpression rightParens: temp.
 			pulledUp removePositions.
 			pulledUp leftExpression removePositions.
-			1 to: pulledUp parent class instSize do:
-				[ :i | 
-				| var index |
-				var := pulledUp parent instVarAt: i.
-				var == current
-					ifTrue: [ pulledUp parent instVarAt: i put: pulledUp ].
-				(var isKindOf: SequenceableCollection)
-					ifTrue:
-						[ index := var identityIndexOf: current.
-						index > 0
-							ifTrue: [ var at: index put: pulledUp ] ] ].
+			self replaceNode: current with: pulledUp in: pulledUp parent.
 			pulledUp removeAttributeNamed: #startPosition.
 			current removeAttributeNamed: #stopPosition.
 			current := pulledUp ].
 	self acceptNode: current leftExpression.
 	self acceptNode: current rightExpression.
+	((current leftExpression isKindOf: DelphiAssignmentExpressionNode)
+		and: [ current leftExpression leftParens isEmpty ])
+		ifTrue: [ | assignment |
+			assignment := current leftExpression.
+			self replaceNode: current with: assignment in: current parent.
+			current leftExpression: assignment value.
+			assignment parent: current parent.
+			assignment value: current.
+			current leftExpression parent: current.
+			current := assignment.
+			current removeAttributeNamed: #stopPosition.
+			current value removeAttributeNamed: #startPosition ].
 	^ current
 ]
