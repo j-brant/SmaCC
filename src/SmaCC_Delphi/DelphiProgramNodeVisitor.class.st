@@ -330,20 +330,13 @@ DelphiProgramNodeVisitor >> visitInitializationSection: anInitializationSection 
 ]
 
 { #category : #generated }
-DelphiProgramNodeVisitor >> visitInstantiatedGenericPropertyExpression: anInstantiatedGenericPropertyExpression [
-	^ self
-		visitPropertyExpression: anInstantiatedGenericPropertyExpression
+DelphiProgramNodeVisitor >> visitInstantiatedGenericExpression: anInstantiatedGenericExpression [
+	^ self visitExpression: anInstantiatedGenericExpression
 ]
 
 { #category : #generated }
 DelphiProgramNodeVisitor >> visitInstantiatedGenericType: anInstantiatedGenericType [
 	^ self visitType: anInstantiatedGenericType
-]
-
-{ #category : #generated }
-DelphiProgramNodeVisitor >> visitInstantiatedGenericVariableExpression: anInstantiatedGenericVariableExpression [
-	^ self
-		visitVariableExpression: anInstantiatedGenericVariableExpression
 ]
 
 { #category : #generated }
