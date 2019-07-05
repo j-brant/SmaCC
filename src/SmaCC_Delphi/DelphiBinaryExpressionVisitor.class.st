@@ -45,19 +45,6 @@ DelphiBinaryExpressionVisitor >> precedenceOf: aString [
 ]
 
 { #category : #private }
-DelphiBinaryExpressionVisitor >> replaceNode: current with: pulledUp [
-	1 to: pulledUp parent class instSize do: [ :i | 
-		| var index |
-		var := pulledUp parent instVarAt: i.
-		var == current
-			ifTrue: [ pulledUp parent instVarAt: i put: pulledUp ].
-		(var isKindOf: SequenceableCollection)
-			ifTrue: [ index := var identityIndexOf: current.
-				index > 0
-					ifTrue: [ var at: index put: pulledUp ] ] ]
-]
-
-{ #category : #private }
 DelphiBinaryExpressionVisitor >> replaceNode: oldNode with: newNode in: aParentNode [
 	1 to: aParentNode class instSize do: [ :i | 
 		| var index |
