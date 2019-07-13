@@ -1,6 +1,6 @@
 Class {
 	#name : #DelphiProgramFileNode,
-	#superclass : #DelphiProgramNode,
+	#superclass : #DelphiCompilationFileNode,
 	#instVars : [
 		'programToken',
 		'programName',
@@ -11,8 +11,7 @@ Class {
 		'inTokens',
 		'filenames',
 		'commas',
-		'main',
-		'period'
+		'main'
 	],
 	#category : #'SmaCC_Delphi'
 }
@@ -116,16 +115,6 @@ DelphiProgramFileNode >> moduleNames: anOrderedCollection [
 { #category : #generated }
 DelphiProgramFileNode >> nodeVariables [
 	^ #(#programName #main)
-]
-
-{ #category : #generated }
-DelphiProgramFileNode >> period [
-	^ period
-]
-
-{ #category : #generated }
-DelphiProgramFileNode >> period: aSmaCCToken [
-	period := aSmaCCToken
 ]
 
 { #category : #generated }

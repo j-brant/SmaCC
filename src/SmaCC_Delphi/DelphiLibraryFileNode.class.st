@@ -1,6 +1,6 @@
 Class {
 	#name : #DelphiLibraryFileNode,
-	#superclass : #DelphiProgramNode,
+	#superclass : #DelphiCompilationFileNode,
 	#instVars : [
 		'libraryToken',
 		'libraryName',
@@ -12,8 +12,7 @@ Class {
 		'filenames',
 		'commas',
 		'exports',
-		'main',
-		'period'
+		'main'
 	],
 	#category : #'SmaCC_Delphi'
 }
@@ -154,16 +153,6 @@ DelphiLibraryFileNode >> moduleNames: anOrderedCollection [
 { #category : #generated }
 DelphiLibraryFileNode >> nodeVariables [
 	^ #(#libraryName #main)
-]
-
-{ #category : #generated }
-DelphiLibraryFileNode >> period [
-	^ period
-]
-
-{ #category : #generated }
-DelphiLibraryFileNode >> period: aSmaCCToken [
-	period := aSmaCCToken
 ]
 
 { #category : #generated }

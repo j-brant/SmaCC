@@ -155,6 +155,11 @@ DelphiProgramNodeVisitor >> visitCodeSection: aCodeSection [
 ]
 
 { #category : #generated }
+DelphiProgramNodeVisitor >> visitCompilationFile: aCompilationFile [
+	^ self visitProgram: aCompilationFile
+]
+
+{ #category : #generated }
 DelphiProgramNodeVisitor >> visitConstantArrayExpression: aConstantArrayExpression [
 	^ self visitExpression: aConstantArrayExpression
 ]
@@ -371,7 +376,7 @@ DelphiProgramNodeVisitor >> visitLabeledStatement: aLabeledStatement [
 
 { #category : #generated }
 DelphiProgramNodeVisitor >> visitLibraryFile: aLibraryFile [
-	^ self visitProgram: aLibraryFile
+	^ self visitCompilationFile: aLibraryFile
 ]
 
 { #category : #generated }
@@ -471,7 +476,7 @@ DelphiProgramNodeVisitor >> visitOnDo: anOnDo [
 
 { #category : #generated }
 DelphiProgramNodeVisitor >> visitPackageFile: aPackageFile [
-	^ self visitProgram: aPackageFile
+	^ self visitCompilationFile: aPackageFile
 ]
 
 { #category : #generated }
@@ -511,7 +516,7 @@ DelphiProgramNodeVisitor >> visitProgram: aProgram [
 
 { #category : #generated }
 DelphiProgramNodeVisitor >> visitProgramFile: aProgramFile [
-	^ self visitProgram: aProgramFile
+	^ self visitCompilationFile: aProgramFile
 ]
 
 { #category : #generated }
@@ -701,7 +706,7 @@ DelphiProgramNodeVisitor >> visitTypeType: aTypeType [
 
 { #category : #generated }
 DelphiProgramNodeVisitor >> visitUnitFile: anUnitFile [
-	^ self visitProgram: anUnitFile
+	^ self visitCompilationFile: anUnitFile
 ]
 
 { #category : #generated }

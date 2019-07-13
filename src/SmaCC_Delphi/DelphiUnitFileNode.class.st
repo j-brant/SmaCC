@@ -1,6 +1,6 @@
 Class {
 	#name : #DelphiUnitFileNode,
-	#superclass : #DelphiProgramNode,
+	#superclass : #DelphiCompilationFileNode,
 	#instVars : [
 		'unitToken',
 		'unitName',
@@ -10,8 +10,7 @@ Class {
 		'implementationSection',
 		'initializationSection',
 		'finalizationSection',
-		'endToken',
-		'period'
+		'endToken'
 	],
 	#category : #'SmaCC_Delphi'
 }
@@ -105,16 +104,6 @@ DelphiUnitFileNode >> modifier: aSmaCCToken [
 { #category : #generated }
 DelphiUnitFileNode >> nodeVariables [
 	^ #(#unitName #interfaceSection #implementationSection #initializationSection #finalizationSection)
-]
-
-{ #category : #generated }
-DelphiUnitFileNode >> period [
-	^ period
-]
-
-{ #category : #generated }
-DelphiUnitFileNode >> period: aSmaCCToken [
-	period := aSmaCCToken
 ]
 
 { #category : #generated }

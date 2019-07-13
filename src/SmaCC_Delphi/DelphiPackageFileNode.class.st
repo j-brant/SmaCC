@@ -1,6 +1,6 @@
 Class {
 	#name : #DelphiPackageFileNode,
-	#superclass : #DelphiProgramNode,
+	#superclass : #DelphiCompilationFileNode,
 	#instVars : [
 		'packageToken',
 		'packageName',
@@ -12,8 +12,7 @@ Class {
 		'moduleNames',
 		'inTokens',
 		'filenames',
-		'endToken',
-		'period'
+		'endToken'
 	],
 	#category : #'SmaCC_Delphi'
 }
@@ -138,16 +137,6 @@ DelphiPackageFileNode >> packageToken [
 { #category : #generated }
 DelphiPackageFileNode >> packageToken: aSmaCCToken [
 	packageToken := aSmaCCToken
-]
-
-{ #category : #generated }
-DelphiPackageFileNode >> period [
-	^ period
-]
-
-{ #category : #generated }
-DelphiPackageFileNode >> period: aSmaCCToken [
-	period := aSmaCCToken
 ]
 
 { #category : #generated }
