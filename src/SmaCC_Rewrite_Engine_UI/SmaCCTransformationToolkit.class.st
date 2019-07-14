@@ -72,6 +72,31 @@ SmaCCTransformationToolkit >> addFiles: aCollection [
 	self updateModel
 ]
 
+{ #category : #building }
+SmaCCTransformationToolkit >> addPreviewMenuActionsTo: composite [
+	| pragmaMethods symbol parser |
+	parser := self model inputParserClass.
+	parser isNil
+		ifTrue: [ ^ self ].
+	symbol := #smaccTransformationToolkitMenu:for:parser:.
+	pragmaMethods := self methodsWithPragma: symbol.
+	pragmaMethods
+		do: [ :each | 
+			each pragmas
+				do: [ :pragma | 
+					(pragma keyword = symbol
+						and: [ pragma arguments second = #previewInput
+								and: [ parser
+										includesBehavior: (Smalltalk at: pragma arguments third ifAbsent: [ self class ]) ] ])
+						ifTrue: [ composite
+								selectionAct: [ :text | 
+									each methodClass instanceSide
+										perform: each selector
+										with: text
+										with: self ]
+								entitled: pragma arguments first ] ] ]
+]
+
 { #category : #private }
 SmaCCTransformationToolkit >> addResult: aResult [
 	self fileResults add: aResult
@@ -164,7 +189,8 @@ SmaCCTransformationToolkit >> buildPreviewTab [
 	| resultPresenter sourcePresentation targetPresentation |
 	self dynamic
 		title: 'Preview';
-		updateOn: ValueChanged from: [ self previewResultHolder instVarNamed: 'announcer' ];
+		updateOn: ValueChanged
+			from: [ self previewResultHolder instVarNamed: 'announcer' ];
 		display: [ | presentation |
 			presentation := GLMCompositePresentation new.
 			(resultPresenter := presentation tabulator)
@@ -180,10 +206,14 @@ SmaCCTransformationToolkit >> buildPreviewTab [
 				transformed: [ :each | each value ];
 				andShow: [ :presenter | 
 					(presenter custom: (sourcePresentation := SmaCCTextPresentation new))
-						title: [ :result | result filename ifNil: [ 'Input' ] ifNotNil: [ :name | name asFileReference basename ] ];
+						title: [ :result | 
+							result filename
+								ifNil: [ 'Input' ]
+								ifNotNil: [ :name | name asFileReference basename ] ];
 						wrapped: false;
 						withLineNumbers: true;
-						display: [ :result | result inputSource ifNil: [ '' ] ] ].
+						display: [ :result | result inputSource ifNil: [ '' ] ].
+					self addPreviewMenuActionsTo: sourcePresentation ].
 			resultPresenter transmit
 				to: #output;
 				transformed: [ :each | each value ];
@@ -196,7 +226,10 @@ SmaCCTransformationToolkit >> buildPreviewTab [
 								initialize: [ :text | 
 									(each interval notNil and: [ each outputSource notNil ])
 										ifTrue: [ text selectionInterval: each interval ] ];
-								title: [ :result | result outputFilename ifNil: [ 'Output' ] ifNotNil: [ :name | name asFileReference basename ] ];
+								title: [ :result | 
+									result outputFilename
+										ifNil: [ 'Output' ]
+										ifNotNil: [ :name | name asFileReference basename ] ];
 								display: [ :result | 
 									| text |
 									text := (result outputSource ifNil: [ '' ]) asText.
@@ -239,7 +272,11 @@ SmaCCTransformationToolkit >> buildPreviewTab [
 			resultPresenter transmit
 				from: #rewrites port: #selection;
 				to: #rewriteSelection;
-				transformed: [ :sel | self updateInput: sourcePresentation target: targetPresentation using: sel ].
+				transformed: [ :sel | 
+					self
+						updateInput: sourcePresentation
+						target: targetPresentation
+						using: sel ].
 			presentation startOn: self previewResultHolder.
 			presentation ]
 ]
@@ -369,6 +406,19 @@ SmaCCTransformationToolkit >> loadRewrites [
 		ifTrue: [ ^ self ].
 	self model loadRewriteFile: file.
 	self updateModel
+]
+
+{ #category : #building }
+SmaCCTransformationToolkit >> methodsWithPragma: aSymbol [
+	| methods |
+	methods := OrderedCollection new.
+	Smalltalk
+		allClassesAndTraitsDo: [ :each | 
+			each classSide
+				methodsDo: [ :method | 
+					(method hasPragmaNamed: aSymbol)
+						ifTrue: [ methods add: method ] ] ].
+	^ methods
 ]
 
 { #category : #accessing }
