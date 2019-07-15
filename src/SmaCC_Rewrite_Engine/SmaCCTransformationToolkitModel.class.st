@@ -11,7 +11,8 @@ Class {
 		'server',
 		'runOnServer',
 		'createSubdirectories',
-		'commonParentDirectory'
+		'commonParentDirectory',
+		'lineEnding'
 	],
 	#category : #'SmaCC_Rewrite_Engine'
 }
@@ -119,6 +120,16 @@ SmaCCTransformationToolkitModel >> isModified: aBoolean [
 	modified := aBoolean
 ]
 
+{ #category : #accessing }
+SmaCCTransformationToolkitModel >> lineEnding [
+	^ lineEnding
+]
+
+{ #category : #accessing }
+SmaCCTransformationToolkitModel >> lineEnding: aSymbol [
+	lineEnding := aSymbol
+]
+
 { #category : #actions }
 SmaCCTransformationToolkitModel >> loadFile: aString [
 	aString asFileReference
@@ -147,6 +158,7 @@ SmaCCTransformationToolkitModel >> localRunOn: aCollection [
 		files: aCollection;
 		outputDirectory: self outputDirectory;
 		baseDirectory: self commonParentDirectory;
+		lineEnding: self lineEnding;
 		processAllNotifying: [ :each | self changed: #resultAdded with: each ]
 ]
 
@@ -312,19 +324,19 @@ SmaCCTransformationToolkitModel >> serverRunOn: aCollection [
 	baseString := 'INPUTPARSER=' , self inputParserClass name
 		, ';REWRITEFILE=' , self rewrites filename.
 	self outputDirectory notEmpty
-		ifTrue:
-			[ baseString := baseString , ';OUTPUTDIRECTORY='
+		ifTrue: [ baseString := baseString , ';OUTPUTDIRECTORY='
 				, self outputDirectory ].
 	baseString := baseString , ';BASEDIRECTORY='
 		, self commonParentDirectory.
 	self validationParserClass notNil
-		ifTrue:
-			[ baseString := baseString , ';OUTPUTPARSER='
+		ifTrue: [ baseString := baseString , ';OUTPUTPARSER='
 				, self validationParserClass name ].
+	self lineEnding notNil
+		ifTrue:
+			[ baseString := baseString , ';LINEENDING=' , self lineEnding asString ].
 	stream := WriteStream on: String new.
 	aCollection
-		do:
-			[ :each | 
+		do: [ :each | 
 			stream
 				nextPutAll: baseString;
 				nextPutAll: ';FILE=';
@@ -332,8 +344,7 @@ SmaCCTransformationToolkitModel >> serverRunOn: aCollection [
 				nextPut: (Character value: 0) ].
 	request := stream contents.
 	socket := Socket newTCP
-		connectTo:
-			(NetNameResolver addressForName: self serverName)
+		connectTo: (NetNameResolver addressForName: self serverName)
 			port: self serverPort;
 		yourself.
 	(serverStream := SocketStream on: socket) binary.
@@ -347,8 +358,7 @@ SmaCCTransformationToolkitModel >> serverRunOn: aCollection [
 		nextPutAll: request asByteArray;
 		flush.
 	aCollection size
-		timesRepeat:
-			[ self
+		timesRepeat: [ self
 				changed: #resultAdded
 				with:
 					(SmaCCRewriteResult

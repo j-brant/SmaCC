@@ -9,7 +9,8 @@ Class {
 		'files',
 		'validationParserClass',
 		'rewriteEngine',
-		'baseDirectory'
+		'baseDirectory',
+		'lineEnding'
 	],
 	#classVars : [
 		'Debug'
@@ -89,6 +90,16 @@ SmaCCRewriteProcessor >> inputFilenames [
 		allChildrenMatching: '*' , self extension)
 		do: [ :each | names add: each path ].
 	^ names
+]
+
+{ #category : #accessing }
+SmaCCRewriteProcessor >> lineEnding [
+	^ lineEnding
+]
+
+{ #category : #accessing }
+SmaCCRewriteProcessor >> lineEnding: aSymbol [
+	lineEnding := aSymbol
 ]
 
 { #category : #accessing }
@@ -265,7 +276,18 @@ SmaCCRewriteProcessor >> saveOutput: aString in: aFilename [
 			tries := tries + 1 ].
 	aFilename asFileReference
 		ensureDelete;
-		writeStreamDo: [ :stream | stream nextPutAll: aString ]
+		writeStreamDo: [ :str | 
+			| stream |
+			stream := str.
+			self lineEnding notNil
+				ifTrue: [ stream := ZnNewLineWriterStream on: str.
+					self lineEnding = #crLf
+						ifTrue: [ stream forCrLf ].
+					self lineEnding = #lf
+						ifTrue: [ stream forLf ].
+					self lineEnding = #cr
+						ifTrue: [ stream forCr ] ].
+			stream nextPutAll: aString ]
 ]
 
 { #category : #accessing }

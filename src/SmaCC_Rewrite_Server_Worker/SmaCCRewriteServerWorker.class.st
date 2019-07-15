@@ -52,12 +52,11 @@ SmaCCRewriteServerWorker >> localizeFilename: aString [
 
 { #category : #running }
 SmaCCRewriteServerWorker >> processRequest: aString [
-	| file outputDirectory rewrites inputParser outputParser result resultBytes baseDirectory |
+	| file outputDirectory rewrites inputParser outputParser result resultBytes baseDirectory lineEnding |
 	aString
 		splitFirstOn: $;
 		andThen: $=
-		do:
-			[ :type :value | 
+		do: [ :type :value | 
 			type = 'FILE'
 				ifTrue: [ file := self localizeFilename: value ].
 			type = 'OUTPUTDIRECTORY'
@@ -65,12 +64,13 @@ SmaCCRewriteServerWorker >> processRequest: aString [
 			type = 'BASEDIRECTORY'
 				ifTrue: [ baseDirectory := self localizeFilename: value ].
 			type = 'REWRITEFILE'
-				ifTrue:
-					[ rewrites := self loadRewrites: (self localizeFilename: value) ].
+				ifTrue: [ rewrites := self loadRewrites: (self localizeFilename: value) ].
 			type = 'INPUTPARSER'
 				ifTrue: [ inputParser := self classNamed: value ].
 			type = 'OUTPUTPARSER'
-				ifTrue: [ outputParser := self classNamed: value ] ].
+				ifTrue: [ outputParser := self classNamed: value ].
+			type = 'LINEENDING'
+				ifTrue: [ lineEnding := value asSymbol ] ].
 	result := SmaCCRewriteResult new.
 	SmaCCRewriteProcessor new
 		rules: rewrites;
@@ -78,6 +78,7 @@ SmaCCRewriteServerWorker >> processRequest: aString [
 		validationParserClass: outputParser;
 		outputDirectory: outputDirectory;
 		baseDirectory: baseDirectory;
+		lineEnding: lineEnding;
 		processFile: file usingResult: result.
 	resultBytes := result asSocketString asByteArray.
 	self writeBytes: resultBytes
