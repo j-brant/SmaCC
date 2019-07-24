@@ -18,17 +18,34 @@ Class {
 }
 
 { #category : #private }
+SmaCCDeferredChoice class >> compare: firstCollection to: secondCollection [
+	| index first second |
+	first := firstCollection.
+	second := secondCollection.
+	[ first := self sortItems: first.
+	second := self sortItems: second.
+	index := 1.
+	[ index <= first size and: [ index <= second size ] ]
+		whileTrue: [ (first at: index) priority = (second at: index) priority
+				ifTrue: [ index := index + 1 ]
+				ifFalse: [ ^ (first at: index) priority - (second at: index) priority ] ].
+	first := self subItemsIn: first.
+	second := self subItemsIn: second.
+	first notEmpty and: [ second notEmpty ] ] whileTrue.
+	^ 0
+]
+
+{ #category : #private }
+SmaCCDeferredChoice class >> deferredItemsIn: aCollection [
+	^ aCollection
+		select: [ :each | each isKindOf: SmaCCDeferredReduceAction ]
+]
+
+{ #category : #private }
 SmaCCDeferredChoice class >> isStack: firstStack preferredOver: secondStack [
-	| firstPriority secondPriority |
-	firstStack isEmpty
-		ifTrue: [ ^ true ].
-	firstPriority := self priorityOf: firstStack.
-	secondPriority := self priorityOf: secondStack.
-	firstPriority = secondPriority
-		ifTrue: [ ^ self
-				isStack: (self subItemsIn: firstStack withPriority: firstPriority)
-				preferredOver: (self subItemsIn: secondStack withPriority: secondPriority) ].
-	^ firstPriority < secondPriority
+	^ (self
+		compare: (self deferredItemsIn: firstStack)
+		to: (self deferredItemsIn: secondStack)) <= 0
 ]
 
 { #category : #accessing }
@@ -66,25 +83,18 @@ SmaCCDeferredChoice class >> mergeStacks: stacksCollection [
 ]
 
 { #category : #private }
-SmaCCDeferredChoice class >> priorityOf: aCollection [
-	^ aCollection
-		inject: SmallInteger maxVal
-		into: [ :sum :each | 
-			(each isKindOf: SmaCCDeferredReduceAction)
-				ifTrue: [ sum min: each priority ]
-				ifFalse: [ sum ] ]
+SmaCCDeferredChoice class >> sortItems: aCollection [
+	^ aCollection asSortedCollection: [ :a :b | a priority < b priority ]
 ]
 
 { #category : #private }
-SmaCCDeferredChoice class >> subItemsIn: aCollection withPriority: anInteger [
-	| result |
-	result := OrderedCollection new.
-	aCollection
-		do: [ :each | 
-			((each isKindOf: SmaCCDeferredReduceAction)
-				and: [ each priority = anInteger ])
-				ifTrue: [ result addAll: each arguments ] ].
-	^ result
+SmaCCDeferredChoice class >> subItemsIn: aCollection [
+	^ aCollection
+		inject: OrderedCollection new
+		into: [ :sum :each | 
+			sum
+				addAll: (self deferredItemsIn: each arguments);
+				yourself ]
 ]
 
 { #category : #accessing }
