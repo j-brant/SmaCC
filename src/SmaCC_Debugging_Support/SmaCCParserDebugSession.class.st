@@ -89,6 +89,18 @@ SmaCCParserDebugSession >> isActive [
 	^ rootContext notNil and: [ rootContext isDead not and: [ rootContext ~= self process suspendedContext or: [ rootContext willReturn not ] ] ]
 ]
 
+{ #category : #testing }
+SmaCCParserDebugSession >> isScanning [
+	^ self isScanning: self context
+]
+
+{ #category : #testing }
+SmaCCParserDebugSession >> isScanning: aContext [
+	^ (aContext
+		findContextSuchThat: [ :each | each receiver isKindOf: SmaCCScanner ])
+		notNil
+]
+
 { #category : #accessing }
 SmaCCParserDebugSession >> parser [
 	^ self rootContext ifNotNil: [ :context | context receiver ]
@@ -200,7 +212,7 @@ SmaCCParserDebugSession >> scannerProperties [
 		ifNil: [ '' ]
 		ifNotNil: [ :stream | stream contents ].
 	items add: (Array with: 'Scope' with: scanner scope).
-	(self interruptedContext receiver isKindOf: SmaCCScanner)
+	self isScanning
 		ifTrue: [ items
 				add: (Array with: 'Current Character' with: scanner currentCharacter);
 				add: (Array with: 'Start Index' with: scanner debugStart).
@@ -224,8 +236,7 @@ SmaCCParserDebugSession >> scannerProperties [
 												do: [ :each | stream nextPutAll: (self parser symbolNameFor: each) ]
 												separatedBy: [ stream space ].
 											stream contents ])) ] ]
-		ifFalse:
-			[ items add: (Array with: 'Position' with: scanner position) ].
+		ifFalse: [ items add: (Array with: 'Position' with: scanner position) ].
 	^ items
 ]
 

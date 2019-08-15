@@ -12,8 +12,19 @@ SmaCCScannerStepToAction >> executeAction [
 	self
 		stepUntil: [ :context | 
 			scanner stream position >= toIndex
-				and:
-					[ (context findContextSuchThat: [ :each | (each receiver isKindOf: SmaCCScanner) and: [ each selector = #step ] ]) isNil ] ]
+				and: [ self session isScanning: context ] ].
+	self stepOutOfStepMethod
+]
+
+{ #category : #actions }
+SmaCCScannerStepToAction >> stepOutOfStepMethod [
+	| stepContext |
+	stepContext := self session context
+		findContextSuchThat:
+			[ :each | (each receiver isKindOf: SmaCCScanner) and: [ each selector = #step ] ].
+	stepContext isNil
+		ifTrue: [ ^ self ].
+	self stepUntil: [ :context | false ] context: stepContext
 ]
 
 { #category : #accessing }
