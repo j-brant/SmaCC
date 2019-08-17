@@ -1,6 +1,9 @@
 Class {
 	#name : #SmaCCDebuggingAction,
 	#superclass : #DebugAction,
+	#classInstVars : [
+		'icon'
+	],
 	#category : #'SmaCC_Debugging_Support-Debugger'
 }
 
