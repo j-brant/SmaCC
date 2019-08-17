@@ -249,7 +249,7 @@ SmaCCParserDebugSession >> symbolForTransitionFrom: fromState to: toState [
 
 { #category : #accessing }
 SmaCCParserDebugSession >> tokenIntervalFor: anObject [
-	(anObject isKindOf: OrderedCollection)
+	(anObject isKindOf: SequenceableCollection)
 		ifTrue: [ | interval |
 			anObject
 				do: [ :each | 
@@ -277,5 +277,9 @@ SmaCCParserDebugSession >> tokenIntervalFor: anObject [
 							end := end max: each stopPosition ] ].
 			start <= end
 				ifTrue: [ ^ start to: end ] ].
+	(anObject isKindOf: SmaCCDeferredReduceAction)
+		ifTrue: [ ^ self tokenIntervalFor: anObject arguments ].
+	(anObject isKindOf: SmaCCDeferredChoice)
+		ifTrue: [ ^ self tokenIntervalFor: anObject possibleItems first ].
 	^ nil
 ]
