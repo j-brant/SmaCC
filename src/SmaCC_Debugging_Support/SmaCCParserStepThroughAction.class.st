@@ -4,10 +4,17 @@ Class {
 	#category : #'SmaCC_Debugging_Support-Debugger'
 }
 
+{ #category : #accessing }
+SmaCCParserStepThroughAction class >> defaultIcon [
+	^ (Smalltalk at: #BrGlamorousIcons ifAbsent: [  ])
+		ifNil: [ GLMUIThemeExtraIcons glamorousOver ]
+		ifNotNil: [ :cls | cls over ]
+]
+
 { #category : #registration }
 SmaCCParserStepThroughAction class >> gtActionFor: aDebugger [
 	<gtSmaCCDebuggingParserAction>
-	^ (self forDebugger: aDebugger) icon: GLMUIThemeExtraIcons glamorousInto
+	^ self forDebugger: aDebugger
 ]
 
 { #category : #accessing }

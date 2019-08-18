@@ -83,35 +83,10 @@ CPPPreprocessedFile >> sourceString [
 
 { #category : #accessing }
 CPPPreprocessedFile >> startPositionFor: anInteger [
-	| current lastGoodIndex |
-	lastGoodIndex := 1.
-	current := 1.
-	source
-		intervalsDo: [ :each | 
-			(anInteger between: current and: current + each size - 1)
-				ifTrue: [ ^ each id = 1
-						ifTrue: [ each start + (anInteger - current) ]
-						ifFalse: [ lastGoodIndex ] ].
-			current := current + each size.
-			each id = 1
-				ifTrue: [ lastGoodIndex := each stop + 1 ] ].
-	^ lastGoodIndex
+	^ source originalStartPositionFor: anInteger
 ]
 
 { #category : #accessing }
 CPPPreprocessedFile >> stopPositionFor: anInteger [
-	| current haltOnNext |
-	haltOnNext := false.
-	current := 1.
-	source
-		intervalsDo: [ :each | 
-			haltOnNext
-				ifTrue: [ each id = 1
-						ifTrue: [ ^ each start - 1 ] ]
-				ifFalse: [ (anInteger between: current and: current + each size - 1)
-						ifTrue: [ each id = 1
-								ifTrue: [ ^ each start + (anInteger - current) ]
-								ifFalse: [ haltOnNext := true ] ] ].
-			current := current + each size ].
-	^ self originalSource size
+	^ source originalStopPositionFor: anInteger
 ]

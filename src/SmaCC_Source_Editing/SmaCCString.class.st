@@ -94,6 +94,15 @@ SmaCCString >> addPrefix: aString [
 	^ self insert: aString at: self startIndex
 ]
 
+{ #category : #private }
+SmaCCString >> allIntervalsDo: aBlock [
+	| current |
+	current := firstSentinel next.
+	[ current isSentinel ]
+		whileFalse: [ aBlock value: current.
+			current := current next ]
+]
+
 { #category : #actions }
 SmaCCString >> annotationRangesFor: aSmaCCAnnotation [
 	| ranges startIndex current |
@@ -510,6 +519,20 @@ SmaCCString >> newIntervalFor: aString [
 ]
 
 { #category : #accessing }
+SmaCCString >> newPositionFor: anInteger [
+	| position |
+	position := 1.
+	self
+		allIntervalsDo: [ :each | 
+			(each containsIndex: anInteger)
+				ifTrue: [ ^ each isRemoved
+						ifTrue: [ position ]
+						ifFalse: [ position + (anInteger - each start) ] ].
+			position := position + each size ].
+	^ position
+]
+
+{ #category : #accessing }
 SmaCCString >> nextIndex: anIndex [
 	| interval newIndex |
 	interval := self intervalContaining: anIndex.
@@ -544,6 +567,45 @@ SmaCCString >> on: aString [
 	currentId := 1.
 	firstSentinel next: firstInterval.
 	firstInterval next: lastSentinel
+]
+
+{ #category : #accessing }
+SmaCCString >> originalStartPositionFor: anInteger [
+	| current lastGoodIndex |
+	lastGoodIndex := 1.
+	current := 1.
+	self
+		intervalsDo: [ :each | 
+			(anInteger between: current and: current + each size - 1)
+				ifTrue: [ ^ each id = 1
+						ifTrue: [ each start + (anInteger - current) ]
+						ifFalse: [ lastGoodIndex ] ].
+			current := current + each size.
+			each id = 1
+				ifTrue: [ lastGoodIndex := each stop + 1 ] ].
+	^ lastGoodIndex
+]
+
+{ #category : #accessing }
+SmaCCString >> originalStopPositionFor: anInteger [
+	| current haltOnNext |
+	haltOnNext := false.
+	current := 1.
+	self
+		intervalsDo: [ :each | 
+			haltOnNext
+				ifTrue: [ each id = 1
+						ifTrue: [ ^ each start - 1 ] ]
+				ifFalse: [ (anInteger between: current and: current + each size - 1)
+						ifTrue: [ each id = 1
+								ifTrue: [ ^ each start + (anInteger - current) ]
+								ifFalse: [ haltOnNext := true ] ] ].
+			current := current + each size ].
+	self
+		allIntervalsDo: [ :each | 
+			each id = 1
+				ifTrue: [ ^ each string size ] ].
+	^ 0
 ]
 
 { #category : #accessing }

@@ -153,6 +153,11 @@ SmaCCScanner >> currentCharacter [
 ]
 
 { #category : #private }
+SmaCCScanner >> debugEnd [
+	^ matchEnd
+]
+
+{ #category : #private }
 SmaCCScanner >> debugStart [
 	^ start
 ]
