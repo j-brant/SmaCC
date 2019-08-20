@@ -51,7 +51,7 @@ DelphiClassOperatorHeaderNode >> colon: aSmaCCToken [
 
 { #category : #generated }
 DelphiClassOperatorHeaderNode >> compositeNodeVariables [
-	^ #(#arguments #modifiers)
+	^ #(#arguments #annotations #modifiers)
 ]
 
 { #category : #generated }
@@ -68,7 +68,7 @@ DelphiClassOperatorHeaderNode >> initialize [
 
 { #category : #generated }
 DelphiClassOperatorHeaderNode >> nodeVariables [
-	^ #(#type #attribute #qualifiedName)
+	^ #(#type #qualifiedName)
 ]
 
 { #category : #generated }

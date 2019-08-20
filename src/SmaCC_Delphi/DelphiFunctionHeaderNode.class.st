@@ -40,7 +40,7 @@ DelphiFunctionHeaderNode >> colon: aSmaCCToken [
 
 { #category : #generated }
 DelphiFunctionHeaderNode >> compositeNodeVariables [
-	^ #(#arguments #modifiers)
+	^ #(#arguments #annotations #modifiers)
 ]
 
 { #category : #generated }
@@ -61,13 +61,13 @@ DelphiFunctionHeaderNode >> ignoredCompositeTokenVariables [
 { #category : #'generated-initialize-release' }
 DelphiFunctionHeaderNode >> initialize [
 	super initialize.
-	arguments := OrderedCollection new: 2.
 	semicolons := OrderedCollection new: 2.
+	arguments := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
 DelphiFunctionHeaderNode >> nodeVariables [
-	^ #(#type #attribute #qualifiedName)
+	^ #(#type #qualifiedName)
 ]
 
 { #category : #generated }

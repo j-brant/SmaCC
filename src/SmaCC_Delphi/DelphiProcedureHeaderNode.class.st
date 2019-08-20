@@ -28,7 +28,7 @@ DelphiProcedureHeaderNode >> arguments: anOrderedCollection [
 
 { #category : #generated }
 DelphiProcedureHeaderNode >> compositeNodeVariables [
-	^ #(#arguments #modifiers)
+	^ #(#arguments #annotations #modifiers)
 ]
 
 { #category : #generated }

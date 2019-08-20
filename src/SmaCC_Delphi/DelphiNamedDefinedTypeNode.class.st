@@ -11,7 +11,7 @@ Class {
 		'type',
 		'modifier',
 		'semicolon',
-		'attribute'
+		'annotations'
 	],
 	#category : #'SmaCC_Delphi'
 }
@@ -22,17 +22,15 @@ DelphiNamedDefinedTypeNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-DelphiNamedDefinedTypeNode >> attribute [
-	^ attribute
+DelphiNamedDefinedTypeNode >> annotations [
+	^ annotations
 ]
 
 { #category : #generated }
-DelphiNamedDefinedTypeNode >> attribute: aDelphiAttributeNode [
-	self attribute notNil
-		ifTrue: [ self attribute parent: nil ].
-	attribute := aDelphiAttributeNode.
-	self attribute notNil
-		ifTrue: [ self attribute parent: self ]
+DelphiNamedDefinedTypeNode >> annotations: anOrderedCollection [
+	self setParents: self annotations to: nil.
+	annotations := anOrderedCollection.
+	self setParents: self annotations to: self
 ]
 
 { #category : #generated }
@@ -47,7 +45,7 @@ DelphiNamedDefinedTypeNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 DelphiNamedDefinedTypeNode >> compositeNodeVariables [
-	^ #(#genericTypeArguments)
+	^ #(#genericTypeArguments #annotations)
 ]
 
 { #category : #generated }
@@ -87,6 +85,7 @@ DelphiNamedDefinedTypeNode >> initialize [
 	super initialize.
 	genericTypeArguments := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
+	annotations := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -121,7 +120,7 @@ DelphiNamedDefinedTypeNode >> name: aSmaCCToken [
 
 { #category : #generated }
 DelphiNamedDefinedTypeNode >> nodeVariables [
-	^ #(#type #attribute)
+	^ #(#type)
 ]
 
 { #category : #generated }

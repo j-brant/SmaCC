@@ -2,7 +2,7 @@ Class {
 	#name : #DelphiMethodHeaderNode,
 	#superclass : #DelphiProgramNode,
 	#instVars : [
-		'attribute',
+		'annotations',
 		'qualifiedName',
 		'left',
 		'right',
@@ -17,27 +17,26 @@ DelphiMethodHeaderNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-DelphiMethodHeaderNode >> attribute [
-	^ attribute
+DelphiMethodHeaderNode >> annotations [
+	^ annotations
 ]
 
 { #category : #generated }
-DelphiMethodHeaderNode >> attribute: aDelphiAttributeNode [
-	self attribute notNil
-		ifTrue: [ self attribute parent: nil ].
-	attribute := aDelphiAttributeNode.
-	self attribute notNil
-		ifTrue: [ self attribute parent: self ]
+DelphiMethodHeaderNode >> annotations: anOrderedCollection [
+	self setParents: self annotations to: nil.
+	annotations := anOrderedCollection.
+	self setParents: self annotations to: self
 ]
 
 { #category : #generated }
 DelphiMethodHeaderNode >> compositeNodeVariables [
-	^ #(#modifiers)
+	^ #(#annotations #modifiers)
 ]
 
 { #category : #'generated-initialize-release' }
 DelphiMethodHeaderNode >> initialize [
 	super initialize.
+	annotations := OrderedCollection new: 2.
 	modifiers := OrderedCollection new: 2.
 ]
 
@@ -65,7 +64,7 @@ DelphiMethodHeaderNode >> modifiers: anOrderedCollection [
 
 { #category : #generated }
 DelphiMethodHeaderNode >> nodeVariables [
-	^ #(#attribute #qualifiedName)
+	^ #(#qualifiedName)
 ]
 
 { #category : #generated }
