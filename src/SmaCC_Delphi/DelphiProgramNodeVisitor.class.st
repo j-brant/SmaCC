@@ -280,6 +280,11 @@ DelphiProgramNodeVisitor >> visitForStatement: aForStatement [
 ]
 
 { #category : #generated }
+DelphiProgramNodeVisitor >> visitForVariable: aForVariable [
+	^ self visitProgram: aForVariable
+]
+
+{ #category : #generated }
 DelphiProgramNodeVisitor >> visitFormattedMethodArgument: aFormattedMethodArgument [
 	^ self visitProgram: aFormattedMethodArgument
 ]

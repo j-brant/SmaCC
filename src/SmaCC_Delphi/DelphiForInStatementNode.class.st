@@ -91,10 +91,10 @@ DelphiForInStatementNode >> variable [
 ]
 
 { #category : #generated }
-DelphiForInStatementNode >> variable: aDelphiVariableExpressionNode [
+DelphiForInStatementNode >> variable: aDelphiProgramNode [
 	self variable notNil
 		ifTrue: [ self variable parent: nil ].
-	variable := aDelphiVariableExpressionNode.
+	variable := aDelphiProgramNode.
 	self variable notNil
 		ifTrue: [ self variable parent: self ]
 ]
