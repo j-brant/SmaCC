@@ -735,6 +735,11 @@ DelphiProgramNodeVisitor >> visitVariableExpression: aVariableExpression [
 ]
 
 { #category : #generated }
+DelphiProgramNodeVisitor >> visitVariableStatement: aVariableStatement [
+	^ self visitStatement: aVariableStatement
+]
+
+{ #category : #generated }
 DelphiProgramNodeVisitor >> visitVariantType: aVariantType [
 	^ self visitProgram: aVariantType
 ]
