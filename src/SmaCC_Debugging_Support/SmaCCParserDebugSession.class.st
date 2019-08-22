@@ -90,15 +90,29 @@ SmaCCParserDebugSession >> isActive [
 ]
 
 { #category : #testing }
+SmaCCParserDebugSession >> isInsideReductionAction [
+	self context
+		findContextSuchThat: [ :each | 
+			((each receiver isKindOf: SmaCCParser)
+				and: [ each selector beginsWith: 'reduceActionFor' ])
+				ifTrue: [ ^ true ].
+			each == rootContext ].
+	^ false
+]
+
+{ #category : #testing }
 SmaCCParserDebugSession >> isScanning [
 	^ self isScanning: self context
 ]
 
 { #category : #testing }
 SmaCCParserDebugSession >> isScanning: aContext [
-	^ (aContext
-		findContextSuchThat: [ :each | each receiver isKindOf: SmaCCScanner ])
-		notNil
+	aContext
+		findContextSuchThat: [ :each | 
+			(each receiver isKindOf: SmaCCScanner)
+				ifTrue: [ ^ true ].
+			each == rootContext ].
+	^ false
 ]
 
 { #category : #accessing }
