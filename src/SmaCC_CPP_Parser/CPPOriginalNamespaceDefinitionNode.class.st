@@ -3,7 +3,8 @@ Class {
 	#superclass : #CPPProgramNode,
 	#instVars : [
 		'namespaceToken',
-		'name',
+		'names',
+		'colonColons',
 		'leftBrace',
 		'declarations',
 		'rightBrace',
@@ -18,8 +19,23 @@ CPPOriginalNamespaceDefinitionNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
+CPPOriginalNamespaceDefinitionNode >> colonColons [
+	^ colonColons
+]
+
+{ #category : #generated }
+CPPOriginalNamespaceDefinitionNode >> colonColons: anOrderedCollection [
+	colonColons := anOrderedCollection
+]
+
+{ #category : #generated }
 CPPOriginalNamespaceDefinitionNode >> compositeNodeVariables [
 	^ #(#declarations)
+]
+
+{ #category : #generated }
+CPPOriginalNamespaceDefinitionNode >> compositeTokenVariables [
+	^ #(#names #colonColons)
 ]
 
 { #category : #generated }
@@ -37,6 +53,8 @@ CPPOriginalNamespaceDefinitionNode >> declarations: anOrderedCollection [
 { #category : #'generated-initialize-release' }
 CPPOriginalNamespaceDefinitionNode >> initialize [
 	super initialize.
+	names := OrderedCollection new: 2.
+	colonColons := OrderedCollection new: 2.
 	declarations := OrderedCollection new: 2.
 ]
 
@@ -61,13 +79,13 @@ CPPOriginalNamespaceDefinitionNode >> leftBrace: aSmaCCToken [
 ]
 
 { #category : #generated }
-CPPOriginalNamespaceDefinitionNode >> name [
-	^ name
+CPPOriginalNamespaceDefinitionNode >> names [
+	^ names
 ]
 
 { #category : #generated }
-CPPOriginalNamespaceDefinitionNode >> name: aSmaCCToken [
-	name := aSmaCCToken
+CPPOriginalNamespaceDefinitionNode >> names: anOrderedCollection [
+	names := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -92,5 +110,5 @@ CPPOriginalNamespaceDefinitionNode >> rightBrace: aSmaCCToken [
 
 { #category : #generated }
 CPPOriginalNamespaceDefinitionNode >> tokenVariables [
-	^ #(#namespaceToken #name #leftBrace #rightBrace #inlineToken)
+	^ #(#namespaceToken #leftBrace #rightBrace #inlineToken)
 ]

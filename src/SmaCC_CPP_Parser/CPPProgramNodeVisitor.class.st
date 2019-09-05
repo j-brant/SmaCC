@@ -280,11 +280,6 @@ CPPProgramNodeVisitor >> visitExpressionStatement: anExpressionStatement [
 ]
 
 { #category : #generated }
-CPPProgramNodeVisitor >> visitExtensionNamespaceDefinition: anExtensionNamespaceDefinition [
-	^ self visitProgram: anExtensionNamespaceDefinition
-]
-
-{ #category : #generated }
 CPPProgramNodeVisitor >> visitForRangeDeclaration: aForRangeDeclaration [
 	^ self visitProgram: aForRangeDeclaration
 ]
