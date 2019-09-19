@@ -578,6 +578,19 @@ SmaCCParser >> parse [
 	^ result
 ]
 
+{ #category : #private }
+SmaCCParser >> peekNextToken [
+	| token position lookahead |
+	token := currentToken.
+	currentToken := nil.
+	position := scanner position.
+	self getNextToken.
+	lookahead := currentToken.
+	self position: position.
+	currentToken := token.
+	^ lookahead
+]
+
 { #category : #'private-actions' }
 SmaCCParser >> performAction: action [
 	| value actionType |
