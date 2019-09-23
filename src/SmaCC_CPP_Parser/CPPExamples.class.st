@@ -288,15 +288,12 @@ CPPExamples >> preprocessIfDef [
 { #category : #preprocessing }
 CPPExamples >> preprocessIfElseIf [
 	<gtExample>
-	| fileSystem fileRef preprocessor source |
+	| fileSystem fileRef preprocessor |
 	fileSystem := self fileSystem.
 	fileRef := fileSystem / self ifElseIfFilename.
 	preprocessor := CPPPreprocessor new.
 	preprocessor processFile: fileRef.
-	source := preprocessor sourceString.
-	self assert: (source includes: $1).
-	self assert: (source includes: $2).
-	self assert: (source includes: $3).
+	self assert: preprocessor sourceString equals: fileRef contents.
 	preprocessor := CPPPreprocessor new.
 	preprocessor processDefines: true.
 	preprocessor

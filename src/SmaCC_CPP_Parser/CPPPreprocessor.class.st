@@ -281,10 +281,10 @@ CPPPreprocessor >> processDefines: aBoolean [
 
 { #category : #'private-actions-if' }
 CPPPreprocessor >> processElse: nodes [
-	self appendTo: nodes first startPosition - 1.
-	self skipTo: nodes last stopPosition + 1.
 	ifStack last first isNil
 		ifTrue: [ ^ self ].
+	self appendTo: nodes first startPosition - 1.
+	self skipTo: nodes last stopPosition + 1.
 	ifStack last
 		at: 2
 		put: (ifStack last first or: [ ifStack last last ]) not.
@@ -294,10 +294,10 @@ CPPPreprocessor >> processElse: nodes [
 { #category : #'private-actions-if' }
 CPPPreprocessor >> processElseIf: nodes [
 	| value |
-	self appendTo: nodes first startPosition - 1.
-	self skipTo: nodes last stopPosition + 1.
 	ifStack last first isNil
 		ifTrue: [ ^ self ].
+	self appendTo: nodes first startPosition - 1.
+	self skipTo: nodes last stopPosition + 1.
 	ifStack last first
 		ifTrue: [ ^ ifStack last at: 2 put: false ].
 	value := self isTrue: (nodes at: 3).
@@ -311,6 +311,8 @@ CPPPreprocessor >> processElseIf: nodes [
 
 { #category : #'private-actions-if' }
 CPPPreprocessor >> processEndIf: nodes [
+	ifStack last first isNil
+		ifTrue: [ ^ ifStack removeLast ].
 	self appendTo: nodes third startPosition - 1.
 	self skipTo: nodes last stopPosition + 1.
 	ifStack removeLast
