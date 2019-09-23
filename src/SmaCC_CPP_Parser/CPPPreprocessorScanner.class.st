@@ -17,12 +17,12 @@ CPPPreprocessorScanner class >> initializeKeywordMap [
 
 { #category : #generated }
 CPPPreprocessorScanner >> emptySymbolTokenId [
-	^ 101
+	^ 104
 ]
 
 { #category : #generated }
 CPPPreprocessorScanner >> errorTokenId [
-	^ 102
+	^ 105
 ]
 
 { #category : #private }

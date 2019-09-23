@@ -7,7 +7,9 @@ Class {
 		'stack',
 		'includePath',
 		'processIncludes',
-		'processDefines'
+		'processDefines',
+		'undefined',
+		'ifStack'
 	],
 	#category : #'SmaCC_CPP_Parser-Preprocessor'
 }
@@ -22,6 +24,8 @@ CPPPreprocessor >> addMacro: aMacro named: aString [
 { #category : #private }
 CPPPreprocessor >> appendTo: anInteger [
 	| last |
+	self ignored
+		ifTrue: [ ^ self ].
 	last := stack last.
 	preprocessedFile
 		append: last last
@@ -40,6 +44,9 @@ CPPPreprocessor >> concatenate: left with: right using: aParser [
 
 { #category : #'private-actions' }
 CPPPreprocessor >> convertInteger: aString [
+	^ [ aString asInteger ]
+		on: Error
+		do: [ :ex | ex return ]
 ]
 
 { #category : #private }
@@ -60,6 +67,7 @@ CPPPreprocessor >> currentFileSource [
 CPPPreprocessor >> define: aNameToken as: contentsToken hash: hashToken [
 	processDefines
 		ifFalse: [ ^ self ].
+	undefined remove: aNameToken source ifAbsent: [  ].
 	self appendTo: hashToken startPosition - 1.
 	self
 		addMacro:
@@ -74,11 +82,13 @@ CPPPreprocessor >> define: aNameToken as: contentsToken hash: hashToken [
 
 { #category : #'private-actions' }
 CPPPreprocessor >> defineFunction: aNameToken parameters: parmTokens as: contentsToken hash: hashToken right: rParenToken [
-	| parmNames |
+	| parmNames name |
 	processDefines
 		ifFalse: [ ^ self ].
 	self appendTo: hashToken startPosition - 1.
 	parmNames := parmTokens collect: #source.
+	name := aNameToken source allButLast.
+	undefined remove: name ifAbsent: [  ].
 	self
 		addMacro:
 			(contentsToken isNil
@@ -87,12 +97,15 @@ CPPPreprocessor >> defineFunction: aNameToken parameters: parmTokens as: content
 						replacement: self currentFileSource
 						interval: contentsToken sourceInterval
 						parameters: parmNames ])
-		named: aNameToken source allButLast.
+		named: name.
 	self skipTo: (contentsToken ifNil: [ rParenToken ]) stopPosition + 1
 ]
 
 { #category : #'private-actions' }
 CPPPreprocessor >> evaluate: aString with: arguments [
+	"Not implemented yet"
+
+	^ nil
 ]
 
 { #category : #'private-actions' }
@@ -129,6 +142,29 @@ CPPPreprocessor >> findIncludeFile: aString next: aBoolean [
 CPPPreprocessor >> finish [
 	self appendTo: SmallInteger maxVal.
 	stack removeLast
+]
+
+{ #category : #'private-actions' }
+CPPPreprocessor >> if: a and: b [
+	((self isTrue: a) = true and: [ (self isTrue: b) = true ])
+		ifTrue: [ ^ true ].
+	(a isNil or: [ b isNil ])
+		ifTrue: [ ^ nil ].
+	^ false
+]
+
+{ #category : #'private-actions' }
+CPPPreprocessor >> if: a or: b [
+	((self isTrue: a) = true or: [ (self isTrue: b) = true ])
+		ifTrue: [ ^ true ].
+	(a isNil or: [ b isNil ])
+		ifTrue: [ ^ nil ].
+	^ false
+]
+
+{ #category : #private }
+CPPPreprocessor >> ignored [
+	^ ifStack notEmpty and: [ ifStack last last = false ]
 ]
 
 { #category : #'private-actions' }
@@ -172,26 +208,47 @@ CPPPreprocessor >> initialize [
 	stack := OrderedCollection new.
 	processDefines := false.
 	processIncludes := false.
-	includePath := #()
+	includePath := #().
+	undefined := Set new.
+	ifStack := OrderedCollection new
 ]
 
 { #category : #'private-actions' }
 CPPPreprocessor >> is: a equalTo: b [
-	^ false
+	a isNil
+		ifTrue: [ ^ nil ].
+	b isNil
+		ifTrue: [ ^ nil ].
+	^ a = b
 ]
 
 { #category : #'private-actions' }
 CPPPreprocessor >> is: a lessThan: b [
-	^ false
+	^ [ a < b ]
+		on: Error
+		do: [ :ex | ex return ]
 ]
 
 { #category : #'private-actions' }
 CPPPreprocessor >> isDefined: aString [
+	processDefines
+		ifFalse: [ (undefined includes: aString)
+				ifTrue: [ ^ false ].
+			^ (macros includesKey: aString)
+				ifTrue: [ true ]
+				ifFalse: [ nil ] ].
+	^ macros includesKey: aString
 ]
 
 { #category : #'private-actions' }
 CPPPreprocessor >> isTrue: aValue [
-	^ false
+	aValue isNil
+		ifTrue: [ ^ nil ].
+	aValue = false
+		ifTrue: [ ^ false ].
+	aValue isNumber
+		ifTrue: [ ^ aValue isZero not ].
+	^ true
 ]
 
 { #category : #macros }
@@ -222,12 +279,76 @@ CPPPreprocessor >> processDefines: aBoolean [
 	processDefines := aBoolean
 ]
 
+{ #category : #'private-actions-if' }
+CPPPreprocessor >> processElse: nodes [
+	self appendTo: nodes first startPosition - 1.
+	self skipTo: nodes last stopPosition + 1.
+	ifStack last first isNil
+		ifTrue: [ ^ self ].
+	ifStack last
+		at: 2
+		put: (ifStack last first or: [ ifStack last last ]) not.
+	ifStack last at: 1 put: true
+]
+
+{ #category : #'private-actions-if' }
+CPPPreprocessor >> processElseIf: nodes [
+	| value |
+	self appendTo: nodes first startPosition - 1.
+	self skipTo: nodes last stopPosition + 1.
+	ifStack last first isNil
+		ifTrue: [ ^ self ].
+	ifStack last first
+		ifTrue: [ ^ ifStack last at: 2 put: false ].
+	value := self isTrue: (nodes at: 3).
+	value isNil
+		ifTrue: [ ^ ifStack last
+				at: 1 put: nil;
+				at: 2 put: nil ].
+	ifStack last at: 2 put: value.
+	ifStack last at: 1 put: value
+]
+
+{ #category : #'private-actions-if' }
+CPPPreprocessor >> processEndIf: nodes [
+	self appendTo: nodes third startPosition - 1.
+	self skipTo: nodes last stopPosition + 1.
+	ifStack removeLast
+]
+
 { #category : #processing }
 CPPPreprocessor >> processFile: aFilename [
 	| code |
 	code := preprocessedFile loadFile: aFilename.
 	stack add: (Array with: 1 with: code size with: code).
 	CPPPreprocessorParser process: code using: self
+]
+
+{ #category : #'private-actions-if' }
+CPPPreprocessor >> processIf: nodes [
+	| value |
+	self ignored
+		ifTrue: [ ^ ifStack add: (Array with: true with: false) ].
+	value := self isTrue: (nodes at: 3).
+	value isNil
+		ifTrue: [ ^ ifStack add: (Array with: nil with: nil) ].
+	self appendTo: nodes first startPosition - 1.
+	self skipTo: nodes last stopPosition + 1.
+	ifStack add: (Array with: value with: value)
+]
+
+{ #category : #'private-actions-if' }
+CPPPreprocessor >> processIfDef: nodes [
+	nodes at: 3 put: (self isDefined: (nodes at: 3) source).
+	self processIf: nodes
+]
+
+{ #category : #'private-actions-if' }
+CPPPreprocessor >> processIfNDef: nodes [
+	nodes
+		at: 3
+		put: ((self isDefined: (nodes at: 3) source) ifNotNil: [ :b | b not ]).
+	self processIf: nodes
 ]
 
 { #category : #accessing }
@@ -297,8 +418,15 @@ CPPPreprocessor >> stringify: nameToken hash: aToken [
 
 { #category : #'private-actions' }
 CPPPreprocessor >> undefine: aString [
+	processDefines
+		ifFalse: [ ^ self ].
+	macros removeKey: aString ifAbsent: [  ].
+	undefined add: aString
 ]
 
 { #category : #'private-actions' }
 CPPPreprocessor >> valueOf: aString [
+	"Not implemented yet"
+
+	^ nil
 ]

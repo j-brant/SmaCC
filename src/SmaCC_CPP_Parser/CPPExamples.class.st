@@ -45,7 +45,7 @@ CPPExamples >> fileSystem [
 	| fileSystem |
 	fileSystem := FileSystem memory.
 	(fileSystem / 'sub') ensureCreateDirectory.
-	#('standalone' 'testMacro' 'foreach' 'including' 'included' 'missingInclude' 'subdirectoryIncluding' 'subdirectoryIncluded' 'define' 'defineFunction')
+	#('standalone' 'testMacro' 'foreach' 'including' 'included' 'missingInclude' 'subdirectoryIncluding' 'subdirectoryIncluded' 'define' 'defineFunction' 'if0Else' 'ifDef' 'ifElseIf')
 		do: [ :each | self addFile: each to: fileSystem ].
 	^ fileSystem
 ]
@@ -62,6 +62,77 @@ CPPExamples >> foreachFileSource [
 { #category : #private }
 CPPExamples >> foreachFilename [
 	^ 'foreach.cpp'
+]
+
+{ #category : #private }
+CPPExamples >> if0ElseFileSource [
+	^ '
+#if 0
+int main() {
+	foreach(Foo bar,someCollection) {
+		baz(bar);
+	}
+}
+#else
+int main() {}
+#endif'
+]
+
+{ #category : #private }
+CPPExamples >> if0ElseFilename [
+	^ 'if0Else.c'
+]
+
+{ #category : #private }
+CPPExamples >> ifDefFileSource [
+	^ '#ifdef A
+#ifdef B
+1
+#else
+2
+#endif
+#else
+#ifdef B
+3
+#else
+4
+#endif
+#endif
++
+#ifndef A
+#ifndef B
+1
+#else
+2
+#endif
+#else
+#ifndef B
+3
+#else
+4
+#endif
+#endif'
+]
+
+{ #category : #private }
+CPPExamples >> ifDefFilename [
+	^ 'ifdef.c'
+]
+
+{ #category : #private }
+CPPExamples >> ifElseIfFileSource [
+	^ '#if defined A
+1
+#elif defined B
+2
+#else
+3
+#endif'
+]
+
+{ #category : #private }
+CPPExamples >> ifElseIfFilename [
+	^ 'ifElseIf.c'
 ]
 
 { #category : #private }
@@ -182,6 +253,72 @@ CPPExamples >> preprocessFunctionTestMacroFile [
 	source := preprocessor sourceString.
 	self assert: source = self replacedTestMacroFileSource.
 	^ source
+]
+
+{ #category : #preprocessing }
+CPPExamples >> preprocessIf0Else [
+	<gtExample>
+	| fileSystem fileRef preprocessor source |
+	fileSystem := self fileSystem.
+	fileRef := fileSystem / self if0ElseFilename.
+	preprocessor := CPPPreprocessor new.
+	preprocessor processFile: fileRef.
+	source := preprocessor sourceString.
+	self assert: source equals: self replacedIf0ElseFileSource.
+	^ source
+]
+
+{ #category : #preprocessing }
+CPPExamples >> preprocessIfDef [
+	<gtExample>
+	| fileSystem fileRef preprocessor source |
+	fileSystem := self fileSystem.
+	fileRef := fileSystem / self ifDefFilename.
+	preprocessor := CPPPreprocessor new.
+	preprocessor processDefines: true.
+	preprocessor
+		addMacro: (CPPPreprocessorMacro replacement: '1')
+		named: 'A'.
+	preprocessor processFile: fileRef.
+	source := preprocessor sourceString.
+	self assert: source equals: self replacedIfDefSource.
+	^ source
+]
+
+{ #category : #preprocessing }
+CPPExamples >> preprocessIfElseIf [
+	<gtExample>
+	| fileSystem fileRef preprocessor source |
+	fileSystem := self fileSystem.
+	fileRef := fileSystem / self ifElseIfFilename.
+	preprocessor := CPPPreprocessor new.
+	preprocessor processFile: fileRef.
+	source := preprocessor sourceString.
+	self assert: (source includes: $1).
+	self assert: (source includes: $2).
+	self assert: (source includes: $3).
+	preprocessor := CPPPreprocessor new.
+	preprocessor processDefines: true.
+	preprocessor
+		addMacro: (CPPPreprocessorMacro replacement: '1')
+		named: 'A'.
+	preprocessor
+		addMacro: (CPPPreprocessorMacro replacement: '1')
+		named: 'B'.
+	preprocessor processFile: fileRef.
+	self assert: preprocessor sourceString trim equals: '1'.
+	preprocessor := CPPPreprocessor new.
+	preprocessor processDefines: true.
+	preprocessor
+		addMacro: (CPPPreprocessorMacro replacement: '1')
+		named: 'B'.
+	preprocessor processFile: fileRef.
+	self assert: preprocessor sourceString trim equals: '2'.
+	preprocessor := CPPPreprocessor new.
+	preprocessor processDefines: true.
+	preprocessor processFile: fileRef.
+	self assert: preprocessor sourceString trim equals: '3'.
+	^ preprocessor
 ]
 
 { #category : #preprocessing }
@@ -311,6 +448,24 @@ CPPExamples >> replacedForeachSource [
 		baz(bar);
 	}
 }'
+]
+
+{ #category : #private }
+CPPExamples >> replacedIf0ElseFileSource [
+	^ '
+int main() {}
+'
+]
+
+{ #category : #private }
+CPPExamples >> replacedIfDefSource [
+	^ '2
+
+
++
+3
+
+'
 ]
 
 { #category : #private }
