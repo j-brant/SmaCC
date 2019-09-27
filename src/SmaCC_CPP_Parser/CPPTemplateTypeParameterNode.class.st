@@ -1,19 +1,15 @@
 Class {
 	#name : #CPPTemplateTypeParameterNode,
-	#superclass : #CPPProgramNode,
+	#superclass : #CPPTypeParameterNode,
 	#instVars : [
 		'templateToken',
 		'ltToken',
 		'parameters',
 		'commas',
 		'gtToken',
-		'classToken',
-		'name',
-		'ellipsis',
-		'equal',
-		'id'
+		'classToken'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : #'SmaCC_CPP_Parser-C++ Parser'
 }
 
 { #category : #generated }
@@ -52,26 +48,6 @@ CPPTemplateTypeParameterNode >> compositeTokenVariables [
 ]
 
 { #category : #generated }
-CPPTemplateTypeParameterNode >> ellipsis [
-	^ ellipsis
-]
-
-{ #category : #generated }
-CPPTemplateTypeParameterNode >> ellipsis: aSmaCCToken [
-	ellipsis := aSmaCCToken
-]
-
-{ #category : #generated }
-CPPTemplateTypeParameterNode >> equal [
-	^ equal
-]
-
-{ #category : #generated }
-CPPTemplateTypeParameterNode >> equal: aSmaCCToken [
-	equal := aSmaCCToken
-]
-
-{ #category : #generated }
 CPPTemplateTypeParameterNode >> gtToken [
 	^ gtToken
 ]
@@ -79,20 +55,6 @@ CPPTemplateTypeParameterNode >> gtToken [
 { #category : #generated }
 CPPTemplateTypeParameterNode >> gtToken: aSmaCCToken [
 	gtToken := aSmaCCToken
-]
-
-{ #category : #generated }
-CPPTemplateTypeParameterNode >> id [
-	^ id
-]
-
-{ #category : #generated }
-CPPTemplateTypeParameterNode >> id: aCPPIdentifierExpressionNode [
-	self id notNil
-		ifTrue: [ self id parent: nil ].
-	id := aCPPIdentifierExpressionNode.
-	self id notNil
-		ifTrue: [ self id parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -110,21 +72,6 @@ CPPTemplateTypeParameterNode >> ltToken [
 { #category : #generated }
 CPPTemplateTypeParameterNode >> ltToken: aSmaCCToken [
 	ltToken := aSmaCCToken
-]
-
-{ #category : #generated }
-CPPTemplateTypeParameterNode >> name [
-	^ name
-]
-
-{ #category : #generated }
-CPPTemplateTypeParameterNode >> name: aSmaCCToken [
-	name := aSmaCCToken
-]
-
-{ #category : #generated }
-CPPTemplateTypeParameterNode >> nodeVariables [
-	^ #(#id)
 ]
 
 { #category : #generated }

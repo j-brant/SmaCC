@@ -1,14 +1,10 @@
 Class {
 	#name : #CPPClassTypeParameterNode,
-	#superclass : #CPPProgramNode,
+	#superclass : #CPPTypeParameterNode,
 	#instVars : [
-		'classToken',
-		'name',
-		'ellipsis',
-		'equal',
-		'type'
+		'classToken'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : #'SmaCC_CPP_Parser-C++ Parser'
 }
 
 { #category : #generated }
@@ -27,55 +23,6 @@ CPPClassTypeParameterNode >> classToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-CPPClassTypeParameterNode >> ellipsis [
-	^ ellipsis
-]
-
-{ #category : #generated }
-CPPClassTypeParameterNode >> ellipsis: aSmaCCToken [
-	ellipsis := aSmaCCToken
-]
-
-{ #category : #generated }
-CPPClassTypeParameterNode >> equal [
-	^ equal
-]
-
-{ #category : #generated }
-CPPClassTypeParameterNode >> equal: aSmaCCToken [
-	equal := aSmaCCToken
-]
-
-{ #category : #generated }
-CPPClassTypeParameterNode >> name [
-	^ name
-]
-
-{ #category : #generated }
-CPPClassTypeParameterNode >> name: aSmaCCToken [
-	name := aSmaCCToken
-]
-
-{ #category : #generated }
-CPPClassTypeParameterNode >> nodeVariables [
-	^ #(#type)
-]
-
-{ #category : #generated }
 CPPClassTypeParameterNode >> tokenVariables [
 	^ #(#classToken #name #ellipsis #equal)
-]
-
-{ #category : #generated }
-CPPClassTypeParameterNode >> type [
-	^ type
-]
-
-{ #category : #generated }
-CPPClassTypeParameterNode >> type: aCPPTypeIdentifierNode [
-	self type notNil
-		ifTrue: [ self type parent: nil ].
-	type := aCPPTypeIdentifierNode.
-	self type notNil
-		ifTrue: [ self type parent: self ]
 ]

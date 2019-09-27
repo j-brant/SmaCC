@@ -141,7 +141,7 @@ CPPProgramNodeVisitor >> visitClassType: aClassType [
 
 { #category : #generated }
 CPPProgramNodeVisitor >> visitClassTypeParameter: aClassTypeParameter [
-	^ self visitProgram: aClassTypeParameter
+	^ self visitTypeParameter: aClassTypeParameter
 ]
 
 { #category : #generated }
@@ -546,7 +546,7 @@ CPPProgramNodeVisitor >> visitTemplateType: aTemplateType [
 
 { #category : #generated }
 CPPProgramNodeVisitor >> visitTemplateTypeParameter: aTemplateTypeParameter [
-	^ self visitProgram: aTemplateTypeParameter
+	^ self visitTypeParameter: aTemplateTypeParameter
 ]
 
 { #category : #generated }
@@ -585,13 +585,18 @@ CPPProgramNodeVisitor >> visitTypeNameSpecifier: aTypeNameSpecifier [
 ]
 
 { #category : #generated }
+CPPProgramNodeVisitor >> visitTypeParameter: aTypeParameter [
+	^ self visitProgram: aTypeParameter
+]
+
+{ #category : #generated }
 CPPProgramNodeVisitor >> visitTypeidExpression: aTypeidExpression [
 	^ self visitExpression: aTypeidExpression
 ]
 
 { #category : #generated }
 CPPProgramNodeVisitor >> visitTypenameTypeParameter: aTypenameTypeParameter [
-	^ self visitProgram: aTypenameTypeParameter
+	^ self visitTypeParameter: aTypenameTypeParameter
 ]
 
 { #category : #generated }
