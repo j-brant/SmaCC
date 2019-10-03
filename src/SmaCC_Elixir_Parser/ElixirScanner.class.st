@@ -1,6 +1,9 @@
 Class {
 	#name : #ElixirScanner,
 	#superclass : #SmaCCScanner,
+	#instVars : [
+		'lastWasEol'
+	],
 	#category : #'SmaCC_Elixir_Parser'
 }
 
@@ -17,22 +20,22 @@ ElixirScanner class >> initializeKeywordMap [
 
 { #category : #generated }
 ElixirScanner >> block_identifierId [
-	^ 143
-]
-
-{ #category : #generated }
-ElixirScanner >> bracket_identifierId [
 	^ 144
 ]
 
 { #category : #generated }
-ElixirScanner >> do_identifierId [
+ElixirScanner >> bracket_identifierId [
 	^ 145
 ]
 
 { #category : #generated }
-ElixirScanner >> dot_call_opId [
+ElixirScanner >> do_identifierId [
 	^ 146
+]
+
+{ #category : #generated }
+ElixirScanner >> dot_call_opId [
+	^ 147
 ]
 
 { #category : #generated }
@@ -42,7 +45,13 @@ ElixirScanner >> dot_opId [
 
 { #category : #generated }
 ElixirScanner >> emptySymbolTokenId [
-	^ 149
+	^ 150
+]
+
+{ #category : #private }
+ElixirScanner >> eol [
+	lastWasEol := true.
+	^ self whitespace
 ]
 
 { #category : #generated }
@@ -52,7 +61,7 @@ ElixirScanner >> eolId [
 
 { #category : #generated }
 ElixirScanner >> errorTokenId [
-	^ 150
+	^ 151
 ]
 
 { #category : #generated }
@@ -65,19 +74,35 @@ ElixirScanner >> kw_identifierId [
 	^ 53
 ]
 
+{ #category : #accessing }
+ElixirScanner >> lastWasEol [
+	^ lastWasEol
+]
+
+{ #category : #accessing }
+ElixirScanner >> lastWasEol: anObject [
+	lastWasEol := anObject
+]
+
 { #category : #generated }
 ElixirScanner >> map_opId [
 	^ 27
 ]
 
+{ #category : #accessing }
+ElixirScanner >> next [
+	lastWasEol := false.
+	^ super next
+]
+
 { #category : #generated }
 ElixirScanner >> op_identifierId [
-	^ 147
+	^ 148
 ]
 
 { #category : #generated }
 ElixirScanner >> paren_identifierId [
-	^ 148
+	^ 149
 ]
 
 { #category : #generated }
@@ -744,14 +769,7 @@ ElixirScanner >> scan35 [
 			^ self reportLastMatch ].
 	currentCharacter == $x
 		ifTrue: [ ^ self scan36 ].
-	(('0\' includes: currentCharacter)
-		or: [ (currentCharacter between: $a and: $b)
-				or: [ (currentCharacter between: $d and: $f)
-						or: [ currentCharacter == $n
-								or: [ (currentCharacter between: $r and: $t)
-										or: [ currentCharacter == $v ] ] ] ] ])
-		ifTrue: [ ^ self scan34 ].
-	^ self reportLastMatch
+	^ self scan34
 ]
 
 { #category : #generated }
@@ -788,14 +806,7 @@ ElixirScanner >> scan37 [
 					^ self reportLastMatch ].
 			currentCharacter == $x
 				ifTrue: [ ^ self scan38 ].
-			(('0\' includes: currentCharacter)
-				or: [ (currentCharacter between: $a and: $b)
-						or: [ (currentCharacter between: $d and: $f)
-								or: [ currentCharacter == $n
-										or: [ (currentCharacter between: $r and: $t)
-												or: [ currentCharacter == $v ] ] ] ] ])
-				ifTrue: [ ^ self scan37 ].
-			^ self reportLastMatch ].
+			^ self scan37 ].
 	true ] whileTrue
 ]
 
@@ -833,14 +844,7 @@ ElixirScanner >> scan39 [
 					^ self reportLastMatch ].
 			currentCharacter == $x
 				ifTrue: [ ^ self scan40 ].
-			(('0\' includes: currentCharacter)
-				or: [ (currentCharacter between: $a and: $b)
-						or: [ (currentCharacter between: $d and: $f)
-								or: [ currentCharacter == $n
-										or: [ (currentCharacter between: $r and: $t)
-												or: [ currentCharacter == $v ] ] ] ] ])
-				ifTrue: [ ^ self scan39 ].
-			^ self reportLastMatch ].
+			^ self scan39 ].
 	true ] whileTrue
 ]
 
@@ -884,14 +888,7 @@ ElixirScanner >> scan41 [
 					^ self reportLastMatch ].
 			currentCharacter == $x
 				ifTrue: [ ^ self scan42 ].
-			(('0\' includes: currentCharacter)
-				or: [ (currentCharacter between: $a and: $b)
-						or: [ (currentCharacter between: $d and: $f)
-								or: [ currentCharacter == $n
-										or: [ (currentCharacter between: $r and: $t)
-												or: [ currentCharacter == $v ] ] ] ] ])
-				ifTrue: [ ^ self scan41 ].
-			^ self reportLastMatch ].
+			^ self scan41 ].
 	true ] whileTrue
 ]
 
@@ -929,14 +926,7 @@ ElixirScanner >> scan43 [
 					^ self reportLastMatch ].
 			currentCharacter == $x
 				ifTrue: [ ^ self scan44 ].
-			(('0\' includes: currentCharacter)
-				or: [ (currentCharacter between: $a and: $b)
-						or: [ (currentCharacter between: $d and: $f)
-								or: [ currentCharacter == $n
-										or: [ (currentCharacter between: $r and: $t)
-												or: [ currentCharacter == $v ] ] ] ] ])
-				ifTrue: [ ^ self scan43 ].
-			^ self reportLastMatch ].
+			^ self scan43 ].
 	true ] whileTrue
 ]
 
@@ -972,14 +962,7 @@ ElixirScanner >> scan45 [
 					^ self reportLastMatch ].
 			currentCharacter == $x
 				ifTrue: [ ^ self scan46 ].
-			(('0\' includes: currentCharacter)
-				or: [ (currentCharacter between: $a and: $b)
-						or: [ (currentCharacter between: $d and: $f)
-								or: [ currentCharacter == $n
-										or: [ (currentCharacter between: $r and: $t)
-												or: [ currentCharacter == $v ] ] ] ] ])
-				ifTrue: [ ^ self scan45 ].
-			^ self reportLastMatch ].
+			^ self scan45 ].
 	currentCharacter == $]
 		ifTrue: [ ^ self scan29 ].
 	true ] whileTrue
@@ -1017,14 +1000,7 @@ ElixirScanner >> scan47 [
 					^ self reportLastMatch ].
 			currentCharacter == $x
 				ifTrue: [ ^ self scan48 ].
-			(('0\' includes: currentCharacter)
-				or: [ (currentCharacter between: $a and: $b)
-						or: [ (currentCharacter between: $d and: $f)
-								or: [ currentCharacter == $n
-										or: [ (currentCharacter between: $r and: $t)
-												or: [ currentCharacter == $v ] ] ] ] ])
-				ifTrue: [ ^ self scan47 ].
-			^ self reportLastMatch ].
+			^ self scan47 ].
 	currentCharacter == $}
 		ifTrue: [ ^ self scan29 ].
 	true ] whileTrue
@@ -1062,14 +1038,7 @@ ElixirScanner >> scan49 [
 					^ self reportLastMatch ].
 			currentCharacter == $x
 				ifTrue: [ ^ self scan50 ].
-			(('0\' includes: currentCharacter)
-				or: [ (currentCharacter between: $a and: $b)
-						or: [ (currentCharacter between: $d and: $f)
-								or: [ currentCharacter == $n
-										or: [ (currentCharacter between: $r and: $t)
-												or: [ currentCharacter == $v ] ] ] ] ])
-				ifTrue: [ ^ self scan49 ].
-			^ self reportLastMatch ].
+			^ self scan49 ].
 	currentCharacter == $|
 		ifTrue: [ ^ self scan29 ].
 	true ] whileTrue
@@ -1432,7 +1401,7 @@ ElixirScanner >> scanForTokenX23 [
 { #category : #generated }
 ElixirScanner >> scanForTokenX24 [
 	currentCharacter == $;
-		ifTrue: [ ^ self recordAndReportMatch: #(4) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(4 55) ].
 	currentCharacter == $<
 		ifTrue:
 			[ ^ self scanForTokenX3 ].
@@ -1622,11 +1591,16 @@ ElixirScanner >> scanForTokenX9 [
 ]
 
 { #category : #generated }
+ElixirScanner >> semicolonId [
+	^ 55
+]
+
+{ #category : #generated }
 ElixirScanner >> struct_opId [
 	^ 26
 ]
 
 { #category : #generated }
 ElixirScanner >> tokenActions [
-	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace #comment)
+	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace #comment #eol)
 ]
