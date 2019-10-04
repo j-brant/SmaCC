@@ -20,22 +20,22 @@ ElixirScanner class >> initializeKeywordMap [
 
 { #category : #generated }
 ElixirScanner >> block_identifierId [
-	^ 144
-]
-
-{ #category : #generated }
-ElixirScanner >> bracket_identifierId [
-	^ 145
-]
-
-{ #category : #generated }
-ElixirScanner >> do_identifierId [
 	^ 146
 ]
 
 { #category : #generated }
-ElixirScanner >> dot_call_opId [
+ElixirScanner >> bracket_identifierId [
 	^ 147
+]
+
+{ #category : #generated }
+ElixirScanner >> do_identifierId [
+	^ 148
+]
+
+{ #category : #generated }
+ElixirScanner >> dot_call_opId [
+	^ 149
 ]
 
 { #category : #generated }
@@ -45,7 +45,7 @@ ElixirScanner >> dot_opId [
 
 { #category : #generated }
 ElixirScanner >> emptySymbolTokenId [
-	^ 150
+	^ 152
 ]
 
 { #category : #private }
@@ -61,7 +61,7 @@ ElixirScanner >> eolId [
 
 { #category : #generated }
 ElixirScanner >> errorTokenId [
-	^ 151
+	^ 153
 ]
 
 { #category : #generated }
@@ -97,12 +97,12 @@ ElixirScanner >> next [
 
 { #category : #generated }
 ElixirScanner >> op_identifierId [
-	^ 148
+	^ 150
 ]
 
 { #category : #generated }
 ElixirScanner >> paren_identifierId [
-	^ 149
+	^ 151
 ]
 
 { #category : #generated }
@@ -1151,6 +1151,9 @@ ElixirScanner >> scanForToken [
 			[ ^ self scanForTokenX19 ].
 	currentCharacter == $"
 		ifTrue: [ ^ self scan2 ].
+	currentCharacter == $#
+		ifTrue:
+			[ ^ self scanForTokenX8 ].
 	^ self scanForTokenX25
 ]
 
@@ -1362,14 +1365,13 @@ ElixirScanner >> scanForTokenX21 [
 { #category : #generated }
 ElixirScanner >> scanForTokenX22 [
 	self step.
+	currentCharacter == $\
+		ifTrue: [ self step ].
 	^ self recordAndReportMatch: #(48)
 ]
 
 { #category : #generated }
 ElixirScanner >> scanForTokenX23 [
-	currentCharacter == $n
-		ifTrue:
-			[ ^ self scanForTokenX2 ].
 	currentCharacter == $o
 		ifTrue:
 			[ ^ self scanForTokenX5 ].
@@ -1388,11 +1390,11 @@ ElixirScanner >> scanForTokenX23 [
 		or: [ currentCharacter == Character space ])
 		ifTrue:
 			[ ^ self scanForTokenX14 ].
-	currentCharacter isSpecial
+	('*/' includes: currentCharacter)
 		ifTrue: [ ^ self recordAndReportMatch: #(44) ].
 	currentCharacter isUppercase
 		ifTrue:
-			[ ^ self scanForTokenX8 ].
+			[ ^ self scanForTokenX7 ].
 	(currentCharacter isLowercase or: [ currentCharacter == $_ ])
 		ifTrue: [ ^ self scan26 ].
 	^ self reportLastMatch
@@ -1400,8 +1402,6 @@ ElixirScanner >> scanForTokenX23 [
 
 { #category : #generated }
 ElixirScanner >> scanForTokenX24 [
-	currentCharacter == $;
-		ifTrue: [ ^ self recordAndReportMatch: #(4 55) ].
 	currentCharacter == $<
 		ifTrue:
 			[ ^ self scanForTokenX3 ].
@@ -1432,14 +1432,14 @@ ElixirScanner >> scanForTokenX24 [
 	currentCharacter == $i
 		ifTrue:
 			[ ^ self scanForTokenX6 ].
+	currentCharacter == $n
+		ifTrue:
+			[ ^ self scanForTokenX2 ].
 	^ self scanForTokenX23
 ]
 
 { #category : #generated }
 ElixirScanner >> scanForTokenX25 [
-	currentCharacter == $#
-		ifTrue:
-			[ ^ self scanForTokenX7 ].
 	currentCharacter == $%
 		ifTrue:
 			[ ^ self scanForTokenX13 ].
@@ -1468,6 +1468,8 @@ ElixirScanner >> scanForTokenX25 [
 			[ ^ self scanForTokenX1 ].
 	currentCharacter == $:
 		ifTrue: [ ^ self scan20 ].
+	currentCharacter == $;
+		ifTrue: [ ^ self recordAndReportMatch: #(4 55) ].
 	^ self scanForTokenX24
 ]
 
@@ -1558,22 +1560,28 @@ ElixirScanner >> scanForTokenX6 [
 
 { #category : #generated }
 ElixirScanner >> scanForTokenX7 [
-	[ self recordMatch: #(24).
+	[ self recordMatch: #(54).
 	self step.
-	currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
+	currentCharacter == $:
+		ifTrue: [ ^ self recordAndReportMatch: #(53) ].
+	('!?' includes: currentCharacter)
+		ifTrue: [ self recordMatch: #(54).
+			self step.
+			currentCharacter == $:
+				ifTrue: [ ^ self recordAndReportMatch: #(53) ].
+			^ self reportLastMatch ].
+	currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ]
+		whileTrue.
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 ElixirScanner >> scanForTokenX8 [
-	[ self recordMatch: #(54).
+	[ self recordMatch: #(24).
 	self step.
-	('!?' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(54) ].
-	currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ]
-		whileTrue.
+	currentCharacter <= Character tab
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
 	^ self reportLastMatch
 ]
 
