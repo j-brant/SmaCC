@@ -19,6 +19,11 @@ ElixirScanner class >> initializeKeywordMap [
 ]
 
 { #category : #generated }
+ElixirScanner >> aliasId [
+	^ 54
+]
+
+{ #category : #generated }
 ElixirScanner >> block_identifierId [
 	^ 146
 ]
@@ -67,6 +72,20 @@ ElixirScanner >> errorTokenId [
 { #category : #generated }
 ElixirScanner >> identifierId [
 	^ 52
+]
+
+{ #category : #private }
+ElixirScanner >> kw_identifier [
+	| string |
+	string := outputStream contents.
+	stream peek == $:
+		ifTrue: [ stream position: stream position - 1.
+			matchActions := string first isUppercase
+				ifTrue: [ {self aliasId} ]
+				ifFalse: [ string first = $"
+						ifTrue: [ {self stringId} ]
+						ifFalse: [ {self identifierId} ] ] ].
+	^ self createTokenFor: string
 ]
 
 { #category : #generated }
@@ -297,17 +316,11 @@ ElixirScanner >> scan20X1 [
 			('<~' includes: currentCharacter)
 				ifTrue: [ ^ self recordAndReportMatch: #(18) ].
 			^ self reportLastMatch ].
-	currentCharacter == $>
-		ifTrue: [ self step.
-			currentCharacter =
-				(Character value: 6)
-				ifTrue: [ ^ self recordAndReportMatch: #(18) ].
-			^ self reportLastMatch ].
 	currentCharacter == $|
 		ifTrue: [ ^ self scan23 ].
 	currentCharacter == $~
 		ifTrue: [ ^ self scan24 ].
-	('-=' includes: currentCharacter)
+	(currentCharacter == $- or: [ currentCharacter between: $= and: $> ])
 		ifTrue: [ ^ self recordAndReportMatch: #(18) ].
 	^ self reportLastMatch
 ]
@@ -1604,11 +1617,16 @@ ElixirScanner >> semicolonId [
 ]
 
 { #category : #generated }
+ElixirScanner >> stringId [
+	^ 19
+]
+
+{ #category : #generated }
 ElixirScanner >> struct_opId [
 	^ 26
 ]
 
 { #category : #generated }
 ElixirScanner >> tokenActions [
-	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace #comment #eol)
+	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace #comment #eol nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #kw_identifier)
 ]
