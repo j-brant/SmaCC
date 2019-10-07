@@ -44,7 +44,8 @@ BaselineOfSmaCC >> baseline: spec [
 				group: 'C#' with: #('SmaCC_CSharp');
 				group: 'Delphi' with: #('SmaCC_Delphi' 'SmaCC_Delphi_Forms');
 				group: 'Java' with: #('SmaCC_Java');
-				group: 'Javascript' with: #('SmaCC_Javascript_Parser') ].
+				group: 'Javascript' with: #('SmaCC_Javascript_Parser');
+				group: 'withSource' with: #('SmaCC_Source_Editing')].
 	spec
 		for: #pharo
 		do: [ spec
