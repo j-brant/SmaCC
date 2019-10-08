@@ -130,7 +130,7 @@ SmaCCParserDebugSession >> parserStack [
 		items
 			addFirst:
 				(Array
-					with: (self symbolForTransitionFrom: (states at: i) to: (states at: i + 1))
+					with: (self parser symbolForTransitionFrom: (states at: i) to: (states at: i + 1))
 					with: (nodes at: i)) ].
 	context := self context
 		findContextSuchThat: [ :each | 
@@ -252,13 +252,6 @@ SmaCCParserDebugSession >> scannerProperties [
 											stream contents ])) ] ]
 		ifFalse: [ items add: (Array with: 'Position' with: scanner position) ].
 	^ items
-]
-
-{ #category : #accessing }
-SmaCCParserDebugSession >> symbolForTransitionFrom: fromState to: toState [
-	| id |
-	id := self parser symbolIdForTransitionFrom: fromState to: toState.
-	^ self parser symbolNameFor: id
 ]
 
 { #category : #accessing }
