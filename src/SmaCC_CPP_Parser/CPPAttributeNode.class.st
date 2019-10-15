@@ -5,7 +5,11 @@ Class {
 		'name',
 		'namespace',
 		'colonColon',
-		'argumentClause'
+		'left',
+		'balancedTokens',
+		'right',
+		'arguments',
+		'commas'
 	],
 	#category : #'SmaCC_CPP_Parser-C++ AST'
 }
@@ -16,17 +20,27 @@ CPPAttributeNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-CPPAttributeNode >> argumentClause [
-	^ argumentClause
+CPPAttributeNode >> arguments [
+	^ arguments
 ]
 
 { #category : #generated }
-CPPAttributeNode >> argumentClause: aCPPAttributeArgumentClauseNode [
-	self argumentClause notNil
-		ifTrue: [ self argumentClause parent: nil ].
-	argumentClause := aCPPAttributeArgumentClauseNode.
-	self argumentClause notNil
-		ifTrue: [ self argumentClause parent: self ]
+CPPAttributeNode >> arguments: anOrderedCollection [
+	self setParents: self arguments to: nil.
+	arguments := anOrderedCollection.
+	self setParents: self arguments to: self
+]
+
+{ #category : #generated }
+CPPAttributeNode >> balancedTokens [
+	^ balancedTokens
+]
+
+{ #category : #generated }
+CPPAttributeNode >> balancedTokens: anOrderedCollection [
+	self setParents: self balancedTokens to: nil.
+	balancedTokens := anOrderedCollection.
+	self setParents: self balancedTokens to: self
 ]
 
 { #category : #generated }
@@ -37,6 +51,44 @@ CPPAttributeNode >> colonColon [
 { #category : #generated }
 CPPAttributeNode >> colonColon: aSmaCCToken [
 	colonColon := aSmaCCToken
+]
+
+{ #category : #generated }
+CPPAttributeNode >> commas [
+	^ commas
+]
+
+{ #category : #generated }
+CPPAttributeNode >> commas: anOrderedCollection [
+	commas := anOrderedCollection
+]
+
+{ #category : #generated }
+CPPAttributeNode >> compositeNodeVariables [
+	^ #(#balancedTokens #arguments)
+]
+
+{ #category : #generated }
+CPPAttributeNode >> compositeTokenVariables [
+	^ #(#commas)
+]
+
+{ #category : #'generated-initialize-release' }
+CPPAttributeNode >> initialize [
+	super initialize.
+	balancedTokens := OrderedCollection new: 2.
+	arguments := OrderedCollection new: 2.
+	commas := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+CPPAttributeNode >> left [
+	^ left
+]
+
+{ #category : #generated }
+CPPAttributeNode >> left: aSmaCCToken [
+	left := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -60,11 +112,16 @@ CPPAttributeNode >> namespace: aSmaCCToken [
 ]
 
 { #category : #generated }
-CPPAttributeNode >> nodeVariables [
-	^ #(#argumentClause)
+CPPAttributeNode >> right [
+	^ right
+]
+
+{ #category : #generated }
+CPPAttributeNode >> right: aSmaCCToken [
+	right := aSmaCCToken
 ]
 
 { #category : #generated }
 CPPAttributeNode >> tokenVariables [
-	^ #(#name #namespace #colonColon)
+	^ #(#name #namespace #colonColon #left #right)
 ]
