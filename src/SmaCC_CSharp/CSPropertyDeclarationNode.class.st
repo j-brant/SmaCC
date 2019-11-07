@@ -212,7 +212,7 @@ CSPropertyDeclarationNode >> setAccessor: aCSSetAccessorDeclarationNode [
 
 { #category : #generated }
 CSPropertyDeclarationNode >> tokenVariables [
-	^ #(#name #periodToken #leftBraceToken #rightBraceToken #equalToken #equalGreaterThanToken #semicolon)
+	^ #(#name #periodToken #leftBraceToken #rightBraceToken #equalToken #semicolon #equalGreaterThanToken)
 ]
 
 { #category : #generated }
