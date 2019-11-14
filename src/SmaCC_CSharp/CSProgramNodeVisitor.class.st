@@ -516,6 +516,11 @@ CSProgramNodeVisitor >> visitOperatorDeclaration: anOperatorDeclaration [
 ]
 
 { #category : #generated }
+CSProgramNodeVisitor >> visitOutVariableDeclarationExpression: anOutVariableDeclarationExpression [
+	^ self visitExpression: anOutVariableDeclarationExpression
+]
+
+{ #category : #generated }
 CSProgramNodeVisitor >> visitPointerElementAccess: aPointerElementAccess [
 	^ self visitExpression: aPointerElementAccess
 ]
