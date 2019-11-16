@@ -224,6 +224,13 @@ SmaCCParser class >> sourceFilesIn: aDirectory [
 ]
 
 { #category : #'*SmaCC_Debugging_Support' }
+SmaCCParser >> symbolForTransitionFrom: fromState to: toState [
+	| id |
+	id := self symbolIdForTransitionFrom: fromState to: toState.
+	^ self symbolNameFor: id
+]
+
+{ #category : #'*SmaCC_Debugging_Support' }
 SmaCCParser >> symbolIdForTransitionFrom: fromState to: toState [
 	| toValue |
 	toValue := (toState bitShift: 2) bitOr: self shiftAction.

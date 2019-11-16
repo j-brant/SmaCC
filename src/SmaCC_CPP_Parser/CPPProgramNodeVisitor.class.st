@@ -45,11 +45,6 @@ CPPProgramNodeVisitor >> visitAttribute: anAttribute [
 ]
 
 { #category : #generated }
-CPPProgramNodeVisitor >> visitAttributeArgumentClause: anAttributeArgumentClause [
-	^ self visitProgram: anAttributeArgumentClause
-]
-
-{ #category : #generated }
 CPPProgramNodeVisitor >> visitAttributeDeclaration: anAttributeDeclaration [
 	^ self visitProgram: anAttributeDeclaration
 ]
@@ -62,6 +57,11 @@ CPPProgramNodeVisitor >> visitAttributeSpecifier: anAttributeSpecifier [
 { #category : #generated }
 CPPProgramNodeVisitor >> visitAutoType: anAutoType [
 	^ self visitType: anAutoType
+]
+
+{ #category : #generated }
+CPPProgramNodeVisitor >> visitBalancedToken: aBalancedToken [
+	^ self visitProgram: aBalancedToken
 ]
 
 { #category : #generated }
@@ -617,11 +617,6 @@ CPPProgramNodeVisitor >> visitUsingDeclaration: anUsingDeclaration [
 { #category : #generated }
 CPPProgramNodeVisitor >> visitUsingDirective: anUsingDirective [
 	^ self visitProgram: anUsingDirective
-]
-
-{ #category : #generated }
-CPPProgramNodeVisitor >> visitVariable: aVariable [
-	^ self visitExpression: aVariable
 ]
 
 { #category : #generated }

@@ -1,5 +1,5 @@
 Class {
-	#name : #CPPAttributeArgumentClauseNode,
+	#name : #CPPBalancedTokenNode,
 	#superclass : #CPPProgramNode,
 	#instVars : [
 		'left',
@@ -10,54 +10,54 @@ Class {
 }
 
 { #category : #generated }
-CPPAttributeArgumentClauseNode >> acceptVisitor: aProgramVisitor [
-	^ aProgramVisitor visitAttributeArgumentClause: self
+CPPBalancedTokenNode >> acceptVisitor: aProgramVisitor [
+	^ aProgramVisitor visitBalancedToken: self
 ]
 
 { #category : #generated }
-CPPAttributeArgumentClauseNode >> balancedTokens [
+CPPBalancedTokenNode >> balancedTokens [
 	^ balancedTokens
 ]
 
 { #category : #generated }
-CPPAttributeArgumentClauseNode >> balancedTokens: anOrderedCollection [
+CPPBalancedTokenNode >> balancedTokens: anOrderedCollection [
 	self setParents: self balancedTokens to: nil.
 	balancedTokens := anOrderedCollection.
 	self setParents: self balancedTokens to: self
 ]
 
 { #category : #generated }
-CPPAttributeArgumentClauseNode >> compositeNodeVariables [
+CPPBalancedTokenNode >> compositeNodeVariables [
 	^ #(#balancedTokens)
 ]
 
 { #category : #'generated-initialize-release' }
-CPPAttributeArgumentClauseNode >> initialize [
+CPPBalancedTokenNode >> initialize [
 	super initialize.
 	balancedTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-CPPAttributeArgumentClauseNode >> left [
+CPPBalancedTokenNode >> left [
 	^ left
 ]
 
 { #category : #generated }
-CPPAttributeArgumentClauseNode >> left: aSmaCCToken [
+CPPBalancedTokenNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
 { #category : #generated }
-CPPAttributeArgumentClauseNode >> right [
+CPPBalancedTokenNode >> right [
 	^ right
 ]
 
 { #category : #generated }
-CPPAttributeArgumentClauseNode >> right: aSmaCCToken [
+CPPBalancedTokenNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
 { #category : #generated }
-CPPAttributeArgumentClauseNode >> tokenVariables [
+CPPBalancedTokenNode >> tokenVariables [
 	^ #(#left #right)
 ]
