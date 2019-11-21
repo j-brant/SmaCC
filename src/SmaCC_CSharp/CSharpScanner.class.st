@@ -1,6 +1,9 @@
 Class {
 	#name : #CSharpScanner,
 	#superclass : #SmaCCScanner,
+	#instVars : [
+		'preprocessorDirectives'
+	],
 	#category : #'SmaCC_CSharp'
 }
 
@@ -22,12 +25,12 @@ CSharpScanner >> IdentifierId [
 
 { #category : #generated }
 CSharpScanner >> emptySymbolTokenId [
-	^ 613
+	^ 614
 ]
 
 { #category : #generated }
 CSharpScanner >> errorTokenId [
-	^ 614
+	^ 615
 ]
 
 { #category : #generated }
@@ -38,6 +41,23 @@ CSharpScanner >> gtId [
 { #category : #generated }
 CSharpScanner >> gtgtId [
 	^ 154
+]
+
+{ #category : #'initialize-release' }
+CSharpScanner >> initialize [
+	super initialize.
+	preprocessorDirectives := Set new
+]
+
+{ #category : #scanning }
+CSharpScanner >> preprocessorDirective [
+	preprocessorDirectives add: (Array with: start + 1 with: matchEnd).
+	^ self whitespace
+]
+
+{ #category : #accessing }
+CSharpScanner >> preprocessorDirectives [
+	^ preprocessorDirectives
 ]
 
 { #category : #generated }
@@ -395,7 +415,7 @@ CSharpScanner >> scan1X3 [
 
 { #category : #generated }
 CSharpScanner >> scan1X4 [
-	[ self recordMatch: #(171).
+	[ self recordMatch: #(172).
 	self step.
 	currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
@@ -555,7 +575,7 @@ CSharpScanner >> scan27 [
 CSharpScanner >> scan28 [
 	[ self step.
 	currentCharacter == $`
-		ifTrue: [ self recordMatch: #(172).
+		ifTrue: [ self recordMatch: #(173).
 			self step.
 			currentCharacter == $`
 				ifTrue: [ ^ self scan28 ].
@@ -1008,5 +1028,5 @@ CSharpScanner >> scanForTokenX2X3 [
 
 { #category : #generated }
 CSharpScanner >> tokenActions [
-	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #comment nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace #patternToken)
+	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #comment nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace #preprocessorDirective #patternToken)
 ]
