@@ -220,9 +220,13 @@ DelphiScanner >> processIfMacro: comment [
 		ifFalse: [ (comment copyFrom: index + 1 to: comment size - 1) trim ].
 	bad := #().
 	('DEFINED(*)' match: name)
-		ifTrue:
-			[ bad := self undefinedItems.
+		ifTrue: [ bad := self undefinedItems.
 			name := name copyFrom: 9 to: name size - 1 ].
+	(self parseOpt
+		and: [ #('RELEASE' 'DEBUG') includes: name asUppercase ])
+		ifTrue: [ optDepths add: ifDefCount.
+			optComments add: (Array with: start + 1 with: matchEnd).
+			^ super comment ].
 	(command sameAs: 'IFDEF')
 		ifTrue: [ bad := self undefinedItems ].
 	(command sameAs: 'IFNDEF')
@@ -231,8 +235,7 @@ DelphiScanner >> processIfMacro: comment [
 		ifTrue: [ ^ self skipUntilEndDef ].
 	(self parseOpt
 		and: [ (command sameAs: 'IFOPT') and: [ name sameAs: 'C+' ] ])
-		ifTrue:
-			[ optDepths add: ifDefCount.
+		ifTrue: [ optDepths add: ifDefCount.
 			optComments add: (Array with: start + 1 with: matchEnd) ].
 	^ super comment
 ]
