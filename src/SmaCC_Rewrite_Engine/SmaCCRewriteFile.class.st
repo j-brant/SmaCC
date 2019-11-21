@@ -230,7 +230,10 @@ SmaCCRewriteFile >> rewrites: aCollection [
 SmaCCRewriteFile >> save [
 	filename asFileReference
 		ensureDelete;
-		writeStreamDo: [ :stream | 
+		writeStreamDo: [ :str | 
+			| stream |
+			stream := ZnNewLineWriterStream on: str.
+			stream forPlatformLineEnding.
 			parserClass notNil
 				ifTrue: [ stream
 						nextPutAll: 'Parser: ';
