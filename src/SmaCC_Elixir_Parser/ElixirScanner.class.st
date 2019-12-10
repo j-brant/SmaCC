@@ -33,6 +33,14 @@ ElixirScanner >> bracket_identifierId [
 	^ 147
 ]
 
+{ #category : #accessing }
+ElixirScanner >> currentState [
+	| state |
+	state := super currentState.
+	state attributeNamed: #lastWasEol put: self lastWasEol.
+	^ state
+]
+
 { #category : #generated }
 ElixirScanner >> do_identifierId [
 	^ 148
@@ -122,6 +130,12 @@ ElixirScanner >> op_identifierId [
 { #category : #generated }
 ElixirScanner >> paren_identifierId [
 	^ 151
+]
+
+{ #category : #accessing }
+ElixirScanner >> restoreState: aSmaCCScannerState [
+	super restoreState: aSmaCCScannerState.
+	self lastWasEol: (aSmaCCScannerState attributeNamed: #lastWasEol)
 ]
 
 { #category : #generated }

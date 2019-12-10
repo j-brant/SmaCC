@@ -10,7 +10,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'position',
-		'scope'
+		'scope',
+		'attributes'
 	],
 	#category : #'SmaCC_GLR_Runtime'
 }
@@ -28,6 +29,16 @@ SmaCCScannerState >> = anObject [
 	^ self class = anObject class and: [ self position = anObject position and: [ self scope = anObject scope ] ]
 ]
 
+{ #category : #accessing }
+SmaCCScannerState >> attributeNamed: aSymbol [
+	^attributes ifNil: [ nil ] ifNotNil: [ attributes at: aSymbol ]
+]
+
+{ #category : #accessing }
+SmaCCScannerState >> attributeNamed: aSymbol put: aValue [
+	(attributes ifNil: [ attributes := Dictionary new ]) at: aSymbol put: aValue
+]
+
 { #category : #comparing }
 SmaCCScannerState >> hash [
 	^ position hash hashMultiply bitXor: scope hash
@@ -41,6 +52,13 @@ SmaCCScannerState >> position [
 { #category : #accessing }
 SmaCCScannerState >> position: anInteger [
 	position := anInteger
+]
+
+{ #category : #copying }
+SmaCCScannerState >> postCopy [
+	super postCopy.
+	attributes notNil
+		ifTrue: [ attributes := attributes copy ]
 ]
 
 { #category : #accessing }
