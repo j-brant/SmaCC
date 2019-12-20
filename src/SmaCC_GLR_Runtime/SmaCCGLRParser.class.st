@@ -25,6 +25,9 @@ Class {
 		'lastState',
 		'nextScannerState'
 	],
+	#classVars : [
+		'maxParallelParses'
+	],
 	#classInstVars : [
 		'cachedTrees'
 	],
@@ -34,6 +37,17 @@ Class {
 { #category : #accessing }
 SmaCCGLRParser class >> cachedTrees [
 	^ cachedTrees ifNil: [ cachedTrees := Dictionary new ]
+]
+
+{ #category : #accessing }
+SmaCCGLRParser class >> maxParallelParses [
+	^ maxParallelParses
+		ifNil: [ maxParallelParses := SmallInteger maxVal ]
+]
+
+{ #category : #accessing }
+SmaCCGLRParser class >> maxParallelParses: anInteger [
+	maxParallelParses := anInteger
 ]
 
 { #category : #parsing }
@@ -185,6 +199,7 @@ SmaCCGLRParser >> currentGLRState [
 { #category : #private }
 SmaCCGLRParser >> duplicateState [
 	| state |
+	states size >= self class maxParallelParses ifTrue: [ SmaCCTooAmbiguousNotification signal ].
 	parseAll ifTrue: [nodeStack := nodeStack collect: [:each | self copyStackObject: each]] ifFalse: [nodeStack := nodeStack copy].
 	stateStack := stateStack copy.
 	state := currentState copy.
@@ -303,18 +318,19 @@ SmaCCGLRParser >> parseCurrentToken [
 SmaCCGLRParser >> performParsingLoop [
 	| result |
 	self setStartingStatesIfNone.
-	[ states size to: 1 by: -1 do:
-		[ :i | 
+	[ [ states size to: 1 by: -1 do: [ :i | 
 		currentToken := nil.
 		self restoreState: (states at: i).
 		self getNextToken.
-		self performParsingStep ].
+		self performParsingStep ] ]
+		on: SmaCCTooAmbiguousNotification
+		do: [ :ex | self trimParallelParses ].
 	self mergeStates.
 	states anySatisfy: [ :each | each isAccepted not ] ] whileTrue.
 	self checkForErrors.
 	result := parseAll
-		ifTrue: [ states
-				collect: [ :each | self fixObject: each nodeStack first ] ]
+		ifTrue:
+			[ states collect: [ :each | self fixObject: each nodeStack first ] ]
 		ifFalse: [ self fixObject: states first nodeStack first ].
 	nodeStack := OrderedCollection with: result
 ]
@@ -524,6 +540,15 @@ SmaCCGLRParser >> statesThatShift [
 					self addActionsForState: each symbol: i to: actions.
 					actions
 						anySatisfy: [ :action | (action bitAnd: self actionMask) = self shiftAction ] ] ]
+]
+
+{ #category : #private }
+SmaCCGLRParser >> trimParallelParses [
+	"Since we don't implement the whole GLR algorithm, for highly ambiguous grammars we can have exponential parses. When we grow too large, we indiscriminately delete some."
+
+	| newCount |
+	newCount := (self class maxParallelParses bitShift: -2) max: 1.
+	states := states copyFrom: 1 to: newCount
 ]
 
 { #category : #testing }
