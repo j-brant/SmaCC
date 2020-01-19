@@ -73,7 +73,7 @@ CPPPreprocessedFile >> sourceFor: aFilename [
 	^ fileRef
 		readStreamDo: [ :stream | 
 			SmaCCParser setEncoding: encoding on: stream.
-			stream contents copyReplaceAll: String crlf with: String cr ]
+			stream contents ]
 ]
 
 { #category : #accessing }
