@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'leftBrace',
 		'rightBrace',
+		'restProperty',
 		'properties',
 		'commas'
 	],
@@ -58,6 +59,11 @@ JSObjectBindingPatternNode >> leftBrace: aSmaCCToken [
 ]
 
 { #category : #generated }
+JSObjectBindingPatternNode >> nodeVariables [
+	^ #(#restProperty)
+]
+
+{ #category : #generated }
 JSObjectBindingPatternNode >> properties [
 	^ properties
 ]
@@ -67,6 +73,20 @@ JSObjectBindingPatternNode >> properties: anOrderedCollection [
 	self setParents: self properties to: nil.
 	properties := anOrderedCollection.
 	self setParents: self properties to: self
+]
+
+{ #category : #generated }
+JSObjectBindingPatternNode >> restProperty [
+	^ restProperty
+]
+
+{ #category : #generated }
+JSObjectBindingPatternNode >> restProperty: aJSBindingRestPropertyNode [
+	self restProperty notNil
+		ifTrue: [ self restProperty parent: nil ].
+	restProperty := aJSBindingRestPropertyNode.
+	self restProperty notNil
+		ifTrue: [ self restProperty parent: self ]
 ]
 
 { #category : #generated }

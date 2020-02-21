@@ -9,7 +9,8 @@ Class {
 		'expression',
 		'right',
 		'statement',
-		'varToken'
+		'varToken',
+		'awaitToken'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
@@ -17,6 +18,16 @@ Class {
 { #category : #generated }
 JSForOfStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitForOfStatement: self
+]
+
+{ #category : #generated }
+JSForOfStatementNode >> awaitToken [
+	^ awaitToken
+]
+
+{ #category : #generated }
+JSForOfStatementNode >> awaitToken: aSmaCCToken [
+	awaitToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -99,7 +110,7 @@ JSForOfStatementNode >> statement: aJSStatementNode [
 
 { #category : #generated }
 JSForOfStatementNode >> tokenVariables [
-	^ #(#forToken #ofToken #varToken)
+	^ #(#forToken #ofToken #varToken #awaitToken)
 ]
 
 { #category : #generated }

@@ -25,6 +25,37 @@ JSProgramNodeVisitor >> visitAssignmentExpression: anAssignmentExpression [
 ]
 
 { #category : #generated }
+JSProgramNodeVisitor >> visitAsyncArrowFunction: anAsyncArrowFunction [
+	^ self visitArrowFunction: anAsyncArrowFunction
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitAsyncFunction: anAsyncFunction [
+	^ self visitFunction: anAsyncFunction
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitAsyncGeneratorFunction: anAsyncGeneratorFunction [
+	^ self visitGeneratorFunction: anAsyncGeneratorFunction
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitAsyncGeneratorMethodDefinition: anAsyncGeneratorMethodDefinition [
+	^ self
+		visitGeneratorMethodDefinition: anAsyncGeneratorMethodDefinition
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitAsyncMethodDefinition: anAsyncMethodDefinition [
+	^ self visitMethodDefinition: anAsyncMethodDefinition
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitAwaitExpression: anAwaitExpression [
+	^ self visitExpression: anAwaitExpression
+]
+
+{ #category : #generated }
 JSProgramNodeVisitor >> visitBinaryExpression: aBinaryExpression [
 	^ self visitExpression: aBinaryExpression
 ]
@@ -32,6 +63,11 @@ JSProgramNodeVisitor >> visitBinaryExpression: aBinaryExpression [
 { #category : #generated }
 JSProgramNodeVisitor >> visitBindingProperty: aBindingProperty [
 	^ self visitProgram: aBindingProperty
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitBindingRestProperty: aBindingRestProperty [
+	^ self visitProgram: aBindingRestProperty
 ]
 
 { #category : #generated }
@@ -82,6 +118,11 @@ JSProgramNodeVisitor >> visitConditionalExpression: aConditionalExpression [
 { #category : #generated }
 JSProgramNodeVisitor >> visitContinueStatement: aContinueStatement [
 	^ self visitStatement: aContinueStatement
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitCopyProperty: aCopyProperty [
+	^ self visitProgram: aCopyProperty
 ]
 
 { #category : #generated }
@@ -162,6 +203,11 @@ JSProgramNodeVisitor >> visitGetMethodDefinition: aGetMethodDefinition [
 { #category : #generated }
 JSProgramNodeVisitor >> visitIfStatement: anIfStatement [
 	^ self visitStatement: anIfStatement
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitImportCallExpression: anImportCallExpression [
+	^ self visitExpression: anImportCallExpression
 ]
 
 { #category : #generated }
@@ -252,6 +298,36 @@ JSProgramNodeVisitor >> visitObjectBindingPattern: anObjectBindingPattern [
 { #category : #generated }
 JSProgramNodeVisitor >> visitObjectLiteral: anObjectLiteral [
 	^ self visitExpression: anObjectLiteral
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitOptional: anOptional [
+	^ self visitProgram: anOptional
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitOptionalArguments: anOptionalArguments [
+	^ self visitOptional: anOptionalArguments
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitOptionalExpression: anOptionalExpression [
+	^ self visitExpression: anOptionalExpression
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitOptionalIndexed: anOptionalIndexed [
+	^ self visitOptional: anOptionalIndexed
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitOptionalName: anOptionalName [
+	^ self visitOptional: anOptionalName
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitOptionalTemplate: anOptionalTemplate [
+	^ self visitOptional: anOptionalTemplate
 ]
 
 { #category : #generated }

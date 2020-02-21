@@ -4,10 +4,9 @@ Class {
 	#instVars : [
 		'parameters',
 		'left',
+		'restParameter',
 		'commas',
 		'right',
-		'ellipsis',
-		'varParameter',
 		'arrow',
 		'statements',
 		'leftBracket',
@@ -44,16 +43,6 @@ JSArrowFunctionNode >> commas: anOrderedCollection [
 { #category : #generated }
 JSArrowFunctionNode >> compositeNodeVariables [
 	^ #(#parameters #statements)
-]
-
-{ #category : #generated }
-JSArrowFunctionNode >> ellipsis [
-	^ ellipsis
-]
-
-{ #category : #generated }
-JSArrowFunctionNode >> ellipsis: aSmaCCToken [
-	ellipsis := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -96,7 +85,7 @@ JSArrowFunctionNode >> leftBracket: aSmaCCToken [
 
 { #category : #generated }
 JSArrowFunctionNode >> nodeVariables [
-	^ #(#varParameter)
+	^ #(#restParameter)
 ]
 
 { #category : #generated }
@@ -109,6 +98,20 @@ JSArrowFunctionNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
+]
+
+{ #category : #generated }
+JSArrowFunctionNode >> restParameter [
+	^ restParameter
+]
+
+{ #category : #generated }
+JSArrowFunctionNode >> restParameter: aJSRestVariableDeclarationNode [
+	self restParameter notNil
+		ifTrue: [ self restParameter parent: nil ].
+	restParameter := aJSRestVariableDeclarationNode.
+	self restParameter notNil
+		ifTrue: [ self restParameter parent: self ]
 ]
 
 { #category : #generated }
@@ -145,19 +148,5 @@ JSArrowFunctionNode >> statements: anOrderedCollection [
 
 { #category : #generated }
 JSArrowFunctionNode >> tokenVariables [
-	^ #(#ellipsis #arrow)
-]
-
-{ #category : #generated }
-JSArrowFunctionNode >> varParameter [
-	^ varParameter
-]
-
-{ #category : #generated }
-JSArrowFunctionNode >> varParameter: aJSProgramNode [
-	self varParameter notNil
-		ifTrue: [ self varParameter parent: nil ].
-	varParameter := aJSProgramNode.
-	self varParameter notNil
-		ifTrue: [ self varParameter parent: self ]
+	^ #(#arrow)
 ]

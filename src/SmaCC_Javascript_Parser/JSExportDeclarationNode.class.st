@@ -4,13 +4,15 @@ Class {
 	#instVars : [
 		'exportToken',
 		'star',
-		'fromToken',
-		'from',
-		'semicolon',
+		'asToken',
+		'name',
 		'leftBrace',
 		'rightBrace',
 		'specifiers',
 		'commas',
+		'fromToken',
+		'from',
+		'semicolon',
 		'statement',
 		'declaration',
 		'defaultToken'
@@ -21,6 +23,16 @@ Class {
 { #category : #generated }
 JSExportDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExportDeclaration: self
+]
+
+{ #category : #generated }
+JSExportDeclarationNode >> asToken [
+	^ asToken
+]
+
+{ #category : #generated }
+JSExportDeclarationNode >> asToken: aSmaCCToken [
+	asToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -99,7 +111,7 @@ JSExportDeclarationNode >> ignoredCompositeTokenVariables [
 
 { #category : #generated }
 JSExportDeclarationNode >> ignoredTokenVariables [
-	^ #(#semicolon #leftBrace #rightBrace)
+	^ #(#leftBrace #rightBrace #semicolon)
 ]
 
 { #category : #'generated-initialize-release' }
@@ -117,6 +129,16 @@ JSExportDeclarationNode >> leftBrace [
 { #category : #generated }
 JSExportDeclarationNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
+]
+
+{ #category : #generated }
+JSExportDeclarationNode >> name [
+	^ name
+]
+
+{ #category : #generated }
+JSExportDeclarationNode >> name: aSmaCCToken [
+	name := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -182,5 +204,5 @@ JSExportDeclarationNode >> statement: aJSProgramNode [
 
 { #category : #generated }
 JSExportDeclarationNode >> tokenVariables [
-	^ #(#exportToken #star #fromToken #from #defaultToken)
+	^ #(#exportToken #star #asToken #name #fromToken #from #defaultToken)
 ]

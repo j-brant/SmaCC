@@ -7,7 +7,7 @@ Class {
 { #category : #'generated-initialization' }
 JSScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
-	#(#(97 'as' #(49 #(#default))) #(97 'break' #(50 #(#default))) #(97 'case' #(51 #(#default))) #(97 'catch' #(52 #(#default))) #(97 'class' #(53 #(#default))) #(97 'const' #(54 #(#default))) #(97 'continue' #(55 #(#default))) #(97 'debugger' #(56 #(#default))) #(97 'default' #(57 #(#default))) #(97 'delete' #(58 #(#default))) #(97 'do' #(59 #(#default))) #(97 'else' #(60 #(#default))) #(97 'export' #(61 #(#default))) #(97 'extends' #(62 #(#default))) #(97 'false' #(63 #(#default))) #(97 'finally' #(64 #(#default))) #(97 'for' #(65 #(#default))) #(97 'from' #(66 #(#default))) #(97 'function' #(67 #(#default))) #(97 'get' #(68 #(#default))) #(97 'if' #(69 #(#default))) #(97 'import' #(70 #(#default))) #(97 'in' #(71 #(#default))) #(97 'instanceof' #(72 #(#default))) #(97 'let' #(73 #(#default))) #(97 'new' #(74 #(#default))) #(97 'null' #(75 #(#default))) #(97 'of' #(76 #(#default))) #(97 'return' #(77 #(#default))) #(97 'set' #(78 #(#default))) #(97 'static' #(79 #(#default))) #(97 'super' #(80 #(#default))) #(97 'switch' #(81 #(#default))) #(97 'target' #(82 #(#default))) #(97 'this' #(83 #(#default))) #(97 'throw' #(84 #(#default))) #(97 'true' #(85 #(#default))) #(97 'try' #(86 #(#default))) #(97 'typeof' #(87 #(#default))) #(97 'var' #(88 #(#default))) #(97 'void' #(89 #(#default))) #(97 'while' #(90 #(#default))) #(97 'with' #(91 #(#default))) #(97 'yield' #(92 #(#default))) #(98 'as' #(49 #(#default))) #(98 'break' #(50 #(#default))) #(98 'case' #(51 #(#default))) #(98 'catch' #(52 #(#default))) #(98 'class' #(53 #(#default))) #(98 'const' #(54 #(#default))) #(98 'continue' #(55 #(#default))) #(98 'debugger' #(56 #(#default))) #(98 'default' #(57 #(#default))) #(98 'delete' #(58 #(#default))) #(98 'do' #(59 #(#default))) #(98 'else' #(60 #(#default))) #(98 'export' #(61 #(#default))) #(98 'extends' #(62 #(#default))) #(98 'false' #(63 #(#default))) #(98 'finally' #(64 #(#default))) #(98 'for' #(65 #(#default))) #(98 'from' #(66 #(#default))) #(98 'function' #(67 #(#default))) #(98 'get' #(68 #(#default))) #(98 'if' #(69 #(#default))) #(98 'import' #(70 #(#default))) #(98 'in' #(71 #(#default))) #(98 'instanceof' #(72 #(#default))) #(98 'let' #(73 #(#default))) #(98 'new' #(74 #(#default))) #(98 'null' #(75 #(#default))) #(98 'of' #(76 #(#default))) #(98 'return' #(77 #(#default))) #(98 'set' #(78 #(#default))) #(98 'static' #(79 #(#default))) #(98 'super' #(80 #(#default))) #(98 'switch' #(81 #(#default))) #(98 'target' #(82 #(#default))) #(98 'this' #(83 #(#default))) #(98 'throw' #(84 #(#default))) #(98 'true' #(85 #(#default))) #(98 'try' #(86 #(#default))) #(98 'typeof' #(87 #(#default))) #(98 'var' #(88 #(#default))) #(98 'void' #(89 #(#default))) #(98 'while' #(90 #(#default))) #(98 'with' #(91 #(#default))) #(98 'yield' #(92 #(#default))))
+	#(#(100 'as' #(50 #(#default))) #(100 'async' #(51 #(#default))) #(100 'await' #(52 #(#default))) #(100 'break' #(53 #(#default))) #(100 'case' #(54 #(#default))) #(100 'catch' #(55 #(#default))) #(100 'class' #(56 #(#default))) #(100 'const' #(57 #(#default))) #(100 'continue' #(58 #(#default))) #(100 'debugger' #(59 #(#default))) #(100 'default' #(60 #(#default))) #(100 'delete' #(61 #(#default))) #(100 'do' #(62 #(#default))) #(100 'else' #(63 #(#default))) #(100 'export' #(64 #(#default))) #(100 'extends' #(65 #(#default))) #(100 'false' #(66 #(#default))) #(100 'finally' #(67 #(#default))) #(100 'for' #(68 #(#default))) #(100 'from' #(69 #(#default))) #(100 'function' #(70 #(#default))) #(100 'get' #(71 #(#default))) #(100 'if' #(72 #(#default))) #(100 'import' #(73 #(#default))) #(100 'in' #(74 #(#default))) #(100 'instanceof' #(75 #(#default))) #(100 'let' #(76 #(#default))) #(100 'new' #(77 #(#default))) #(100 'null' #(78 #(#default))) #(100 'of' #(79 #(#default))) #(100 'return' #(80 #(#default))) #(100 'set' #(81 #(#default))) #(100 'static' #(82 #(#default))) #(100 'super' #(83 #(#default))) #(100 'switch' #(84 #(#default))) #(100 'target' #(85 #(#default))) #(100 'this' #(86 #(#default))) #(100 'throw' #(87 #(#default))) #(100 'true' #(88 #(#default))) #(100 'try' #(89 #(#default))) #(100 'typeof' #(90 #(#default))) #(100 'var' #(91 #(#default))) #(100 'void' #(92 #(#default))) #(100 'while' #(93 #(#default))) #(100 'with' #(94 #(#default))) #(100 'yield' #(95 #(#default))) #(101 'as' #(50 #(#default))) #(101 'async' #(51 #(#default))) #(101 'await' #(52 #(#default))) #(101 'break' #(53 #(#default))) #(101 'case' #(54 #(#default))) #(101 'catch' #(55 #(#default))) #(101 'class' #(56 #(#default))) #(101 'const' #(57 #(#default))) #(101 'continue' #(58 #(#default))) #(101 'debugger' #(59 #(#default))) #(101 'default' #(60 #(#default))) #(101 'delete' #(61 #(#default))) #(101 'do' #(62 #(#default))) #(101 'else' #(63 #(#default))) #(101 'export' #(64 #(#default))) #(101 'extends' #(65 #(#default))) #(101 'false' #(66 #(#default))) #(101 'finally' #(67 #(#default))) #(101 'for' #(68 #(#default))) #(101 'from' #(69 #(#default))) #(101 'function' #(70 #(#default))) #(101 'get' #(71 #(#default))) #(101 'if' #(72 #(#default))) #(101 'import' #(73 #(#default))) #(101 'in' #(74 #(#default))) #(101 'instanceof' #(75 #(#default))) #(101 'let' #(76 #(#default))) #(101 'new' #(77 #(#default))) #(101 'null' #(78 #(#default))) #(101 'of' #(79 #(#default))) #(101 'return' #(80 #(#default))) #(101 'set' #(81 #(#default))) #(101 'static' #(82 #(#default))) #(101 'super' #(83 #(#default))) #(101 'switch' #(84 #(#default))) #(101 'target' #(85 #(#default))) #(101 'this' #(86 #(#default))) #(101 'throw' #(87 #(#default))) #(101 'true' #(88 #(#default))) #(101 'try' #(89 #(#default))) #(101 'typeof' #(90 #(#default))) #(101 'var' #(91 #(#default))) #(101 'void' #(92 #(#default))) #(101 'while' #(93 #(#default))) #(101 'with' #(94 #(#default))) #(101 'yield' #(95 #(#default))))
 		do: [ :each | 
 			(keywordMap at: each first ifAbsentPut: [ Dictionary new ])
 				at: (each at: 2)
@@ -17,12 +17,12 @@ JSScanner class >> initializeKeywordMap [
 
 { #category : #generated }
 JSScanner >> emptySymbolTokenId [
-	^ 305
+	^ 324
 ]
 
 { #category : #generated }
 JSScanner >> errorTokenId [
-	^ 306
+	^ 325
 ]
 
 { #category : #testing }
@@ -41,17 +41,17 @@ JSScanner >> hasNewlineBetween: startIndex and: endIndex [
 
 { #category : #generated }
 JSScanner >> identifierId [
-	^ 97
+	^ 100
 ]
 
 { #category : #generated }
 JSScanner >> identifierNameId [
-	^ 98
+	^ 101
 ]
 
 { #category : #generated }
 JSScanner >> jsxLTId [
-	^ 108
+	^ 111
 ]
 
 { #category : #generated }
@@ -61,7 +61,7 @@ JSScanner >> ltId [
 
 { #category : #generated }
 JSScanner >> regular_expressionId [
-	^ 102
+	^ 105
 ]
 
 { #category : #generated }
@@ -79,7 +79,7 @@ JSScanner >> scan1 [
 		ifTrue: [ ^ self scan2 ].
 	currentCharacter == $%
 		ifTrue:
-			[ ^ self scan1X15 ].
+			[ ^ self scan1X16 ].
 	currentCharacter == $&
 		ifTrue:
 			[ ^ self scan1X12 ].
@@ -96,16 +96,16 @@ JSScanner >> scan1 [
 		ifTrue:
 			[ ^ self scan1X10 ].
 	currentCharacter == $,
-		ifTrue: [ ^ self recordAndReportMatch: #(94) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(97) ].
 	currentCharacter == $-
 		ifTrue:
 			[ ^ self scan1X9 ].
-	^ self scan1X17
+	^ self scan1X18
 ]
 
 { #category : #generated }
 JSScanner >> scan10 [
-	[ self recordMatch: #(101).
+	[ self recordMatch: #(104).
 	self step.
 	currentCharacter isDigit ] whileTrue.
 	('Ee' includes: currentCharacter)
@@ -117,14 +117,14 @@ JSScanner >> scan10 [
 JSScanner >> scan11 [
 	self step.
 	currentCharacter isDigit
-		ifTrue: [ [ self recordMatch: #(101).
+		ifTrue: [ [ self recordMatch: #(104).
 			self step.
 			currentCharacter isDigit ] whileTrue.
 			^ self reportLastMatch ].
 	('+-' includes: currentCharacter)
 		ifTrue: [ self step.
 			currentCharacter isDigit
-				ifTrue: [ [ self recordMatch: #(101).
+				ifTrue: [ [ self recordMatch: #(104).
 					self step.
 					currentCharacter isDigit ] whileTrue ] ].
 	^ self reportLastMatch
@@ -149,7 +149,7 @@ JSScanner >> scan12 [
 
 { #category : #generated }
 JSScanner >> scan13 [
-	self recordMatch: #(102).
+	self recordMatch: #(105).
 	self step.
 	currentCharacter == $\
 		ifTrue: [ ^ self scan15 ].
@@ -160,7 +160,7 @@ JSScanner >> scan13 [
 
 { #category : #generated }
 JSScanner >> scan14 [
-	[ self recordMatch: #(102).
+	[ self recordMatch: #(105).
 	self step.
 	currentCharacter == $\
 		ifTrue: [ ^ self scan15 ].
@@ -225,14 +225,14 @@ JSScanner >> scan18 [
 		ifTrue: [ [ self step.
 			currentCharacter == $* ] whileTrue.
 			currentCharacter == $/
-				ifTrue: [ ^ self recordAndReportMatch: #(96) ].
+				ifTrue: [ ^ self recordAndReportMatch: #(99) ].
 			^ self scan18 ].
 	true ] whileTrue
 ]
 
 { #category : #generated }
 JSScanner >> scan19 [
-	[ self recordMatch: #(101).
+	[ self recordMatch: #(104).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan10 ].
@@ -286,19 +286,19 @@ JSScanner >> scan1X12 [
 
 { #category : #generated }
 JSScanner >> scan1X13 [
-	self recordMatch: #(46).
+	self recordMatch: #(47).
 	self step.
 	currentCharacter == $=
-		ifTrue: [ self recordMatch: #(47).
+		ifTrue: [ self recordMatch: #(48).
 			self step.
 			currentCharacter == $=
-				ifTrue: [ ^ self recordAndReportMatch: #(48) ] ].
+				ifTrue: [ ^ self recordAndReportMatch: #(49) ] ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 JSScanner >> scan1X14 [
-	self recordMatch: #(45).
+	self recordMatch: #(46).
 	self step.
 	currentCharacter == $=
 		ifTrue: [ ^ self recordAndReportMatch: #(30) ].
@@ -307,7 +307,16 @@ JSScanner >> scan1X14 [
 
 { #category : #generated }
 JSScanner >> scan1X15 [
-	self recordMatch: #(42).
+	self recordMatch: #(41).
+	self step.
+	currentCharacter == $.
+		ifTrue: [ ^ self recordAndReportMatch: #(42) ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+JSScanner >> scan1X16 [
+	self recordMatch: #(43).
 	self step.
 	currentCharacter == $=
 		ifTrue: [ ^ self recordAndReportMatch: #(28) ].
@@ -315,7 +324,7 @@ JSScanner >> scan1X15 [
 ]
 
 { #category : #generated }
-JSScanner >> scan1X16 [
+JSScanner >> scan1X17 [
 	currentCharacter == $^
 		ifTrue:
 			[ ^ self scan1X14 ].
@@ -344,7 +353,7 @@ JSScanner >> scan1X16 [
 ]
 
 { #category : #generated }
-JSScanner >> scan1X17 [
+JSScanner >> scan1X18 [
 	currentCharacter == $.
 		ifTrue:
 			[ ^ self scan1X8 ].
@@ -355,7 +364,7 @@ JSScanner >> scan1X17 [
 		ifTrue:
 			[ ^ self scan1X2 ].
 	currentCharacter == $:
-		ifTrue: [ ^ self recordAndReportMatch: #(95) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(98) ].
 	currentCharacter == $;
 		ifTrue: [ ^ self recordAndReportMatch: #(7) ].
 	currentCharacter == $<
@@ -368,14 +377,15 @@ JSScanner >> scan1X17 [
 		ifTrue:
 			[ ^ self scan1X3 ].
 	currentCharacter == $?
-		ifTrue: [ ^ self recordAndReportMatch: #(41) ].
+		ifTrue:
+			[ ^ self scan1X15 ].
 	currentCharacter == $[
 		ifTrue: [ ^ self recordAndReportMatch: #(5) ].
 	currentCharacter == $\
 		ifTrue: [ ^ self scan6 ].
 	currentCharacter == $]
 		ifTrue: [ ^ self recordAndReportMatch: #(6) ].
-	^ self scan1X16
+	^ self scan1X17
 ]
 
 { #category : #generated }
@@ -399,7 +409,7 @@ JSScanner >> scan1X1X1 [
 
 { #category : #generated }
 JSScanner >> scan1X1X2 [
-	[ self recordMatch: #(96).
+	[ self recordMatch: #(99).
 	self step.
 	currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
@@ -432,7 +442,7 @@ JSScanner >> scan1X1X3 [
 
 { #category : #generated }
 JSScanner >> scan1X2 [
-	self recordMatch: #(101).
+	self recordMatch: #(104).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan10 ].
@@ -441,7 +451,7 @@ JSScanner >> scan1X2 [
 	('Bb' includes: currentCharacter)
 		ifTrue: [ self step.
 			(currentCharacter between: $0 and: $1)
-				ifTrue: [ [ self recordMatch: #(101).
+				ifTrue: [ [ self recordMatch: #(104).
 					self step.
 					currentCharacter between: $0 and: $1 ] whileTrue ].
 			^ self reportLastMatch ].
@@ -450,7 +460,7 @@ JSScanner >> scan1X2 [
 	('Oo' includes: currentCharacter)
 		ifTrue: [ self step.
 			(currentCharacter between: $0 and: $7)
-				ifTrue: [ [ self recordMatch: #(101).
+				ifTrue: [ [ self recordMatch: #(104).
 					self step.
 					currentCharacter between: $0 and: $7 ] whileTrue ].
 			^ self reportLastMatch ].
@@ -459,7 +469,7 @@ JSScanner >> scan1X2 [
 			(currentCharacter isDigit
 				or: [ (currentCharacter between: $A and: $F)
 						or: [ currentCharacter between: $a and: $f ] ])
-				ifTrue: [ [ self recordMatch: #(101).
+				ifTrue: [ [ self recordMatch: #(104).
 					self step.
 					currentCharacter isDigit
 						or: [ (currentCharacter between: $A and: $F)
@@ -518,7 +528,7 @@ JSScanner >> scan1X5 [
 
 { #category : #generated }
 JSScanner >> scan1X6 [
-	[ self recordMatch: #(99).
+	[ self recordMatch: #(102).
 	self step.
 	currentCharacter isSeparator
 		or: [ currentCharacter = (Character value: 160)
@@ -529,12 +539,12 @@ JSScanner >> scan1X6 [
 
 { #category : #generated }
 JSScanner >> scan1X7 [
-	self recordMatch: #(43).
+	self recordMatch: #(44).
 	self step.
 	currentCharacter == $=
 		ifTrue: [ ^ self recordAndReportMatch: #(31) ].
 	currentCharacter == $|
-		ifTrue: [ ^ self recordAndReportMatch: #(44) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(45) ].
 	^ self reportLastMatch
 ]
 
@@ -545,7 +555,7 @@ JSScanner >> scan1X8 [
 	currentCharacter == $.
 		ifTrue: [ self step.
 			currentCharacter == $.
-				ifTrue: [ ^ self recordAndReportMatch: #(93) ].
+				ifTrue: [ ^ self recordAndReportMatch: #(96) ].
 			^ self reportLastMatch ].
 	currentCharacter isDigit
 		ifTrue: [ ^ self scan10 ].
@@ -590,12 +600,12 @@ JSScanner >> scan20 [
 			currentCharacter == $\
 				ifTrue: [ ^ self scan26 ].
 			currentCharacter == $`
-				ifTrue: [ ^ self recordAndReportMatch: #(104) ].
+				ifTrue: [ ^ self recordAndReportMatch: #(107) ].
 			^ self scan24 ].
 	currentCharacter == $\
 		ifTrue: [ ^ self scan23 ].
 	currentCharacter == $`
-		ifTrue: [ ^ self recordAndReportMatch: #(104) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(107) ].
 	^ self scan21
 ]
 
@@ -607,7 +617,7 @@ JSScanner >> scan21 [
 	currentCharacter == $\
 		ifTrue: [ ^ self scan23 ].
 	currentCharacter == $`
-		ifTrue: [ ^ self recordAndReportMatch: #(104) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(107) ].
 	true ] whileTrue
 ]
 
@@ -615,9 +625,9 @@ JSScanner >> scan21 [
 JSScanner >> scan22 [
 	self step.
 	currentCharacter == $`
-		ifTrue: [ ^ self recordAndReportMatch: #(104) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(107) ].
 	currentCharacter == ${
-		ifTrue: [ ^ self recordAndReportMatch: #(105) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(108) ].
 	^ self scan21
 ]
 
@@ -639,7 +649,7 @@ JSScanner >> scan24 [
 	currentCharacter == $\
 		ifTrue: [ ^ self scan26 ].
 	currentCharacter == $`
-		ifTrue: [ ^ self recordAndReportMatch: #(103 104) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(106 107) ].
 	true ] whileTrue
 ]
 
@@ -647,12 +657,12 @@ JSScanner >> scan24 [
 JSScanner >> scan25 [
 	self step.
 	currentCharacter == $`
-		ifTrue: [ ^ self recordAndReportMatch: #(103 104) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(106 107) ].
 	currentCharacter == ${
-		ifTrue: [ self recordMatch: #(105).
+		ifTrue: [ self recordMatch: #(108).
 			self step.
 			currentCharacter == $`
-				ifTrue: [ ^ self recordAndReportMatch: #(103) ].
+				ifTrue: [ ^ self recordAndReportMatch: #(106) ].
 			^ self scan27 ].
 	^ self scan24
 ]
@@ -661,14 +671,14 @@ JSScanner >> scan25 [
 JSScanner >> scan26 [
 	self step.
 	currentCharacter == $`
-		ifTrue: [ self recordMatch: #(103).
+		ifTrue: [ self recordMatch: #(106).
 			self step.
 			currentCharacter == $$
 				ifTrue: [ ^ self scan22 ].
 			currentCharacter == $\
 				ifTrue: [ ^ self scan23 ].
 			currentCharacter == $`
-				ifTrue: [ ^ self recordAndReportMatch: #(104) ].
+				ifTrue: [ ^ self recordAndReportMatch: #(107) ].
 			^ self scan21 ].
 	(currentCharacter == Character lf
 		or: [ currentCharacter == Character cr ])
@@ -680,13 +690,13 @@ JSScanner >> scan26 [
 JSScanner >> scan27 [
 	[ self step.
 	currentCharacter == $`
-		ifTrue: [ ^ self recordAndReportMatch: #(103) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(106) ].
 	true ] whileTrue
 ]
 
 { #category : #generated }
 JSScanner >> scan28 [
-	[ self recordMatch: #(109).
+	[ self recordMatch: #(112).
 	self step.
 	currentCharacter == $\
 		ifTrue: [ ^ self scan29 ].
@@ -722,7 +732,7 @@ JSScanner >> scan29 [
 
 { #category : #generated }
 JSScanner >> scan3 [
-	self recordMatch: #(100).
+	self recordMatch: #(103).
 	self step.
 	currentCharacter == $"
 		ifTrue: [ ^ self scan2 ].
@@ -735,9 +745,9 @@ JSScanner >> scan30 [
 	currentCharacter == $$
 		ifTrue: [ self step.
 			currentCharacter == $`
-				ifTrue: [ ^ self recordAndReportMatch: #(107) ].
+				ifTrue: [ ^ self recordAndReportMatch: #(110) ].
 			currentCharacter == ${
-				ifTrue: [ ^ self recordAndReportMatch: #(106) ].
+				ifTrue: [ ^ self recordAndReportMatch: #(109) ].
 			^ self scan30 ].
 	currentCharacter == $\
 		ifTrue: [ self step.
@@ -747,7 +757,7 @@ JSScanner >> scan30 [
 				ifTrue: [ ^ self scan30 ].
 			^ self reportLastMatch ].
 	currentCharacter == $`
-		ifTrue: [ ^ self recordAndReportMatch: #(107) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(110) ].
 	true ] whileTrue
 ]
 
@@ -771,7 +781,7 @@ JSScanner >> scan4 [
 
 { #category : #generated }
 JSScanner >> scan5 [
-	[ self recordMatch: #(97 98).
+	[ self recordMatch: #(100 101).
 	self step.
 	currentCharacter == $\
 		ifTrue: [ ^ self scan6 ].
@@ -821,7 +831,7 @@ JSScanner >> scan7 [
 
 { #category : #generated }
 JSScanner >> scan8 [
-	self recordMatch: #(100).
+	self recordMatch: #(103).
 	self step.
 	currentCharacter == $'
 		ifTrue: [ ^ self scan7 ].
@@ -882,7 +892,7 @@ JSScanner >> scanForTokenX1 [
 
 { #category : #generated }
 JSScanner >> scanForTokenX1X1 [
-	[ self recordMatch: #(99).
+	[ self recordMatch: #(102).
 	self step.
 	currentCharacter isSeparator
 		or: [ currentCharacter = (Character value: 160)
@@ -896,7 +906,7 @@ JSScanner >> scanForTokenX1X2 [
 	currentCharacter == $/
 		ifTrue: [ ^ self recordAndReportMatch: #(8) ].
 	currentCharacter == $<
-		ifTrue: [ ^ self recordAndReportMatch: #(108) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(111) ].
 	currentCharacter == $=
 		ifTrue: [ ^ self recordAndReportMatch: #(22) ].
 	currentCharacter == $>
@@ -922,7 +932,7 @@ JSScanner >> scanForTokenX1X2 [
 JSScanner >> scanForTokenX2 [
 	self step.
 	currentCharacter == $<
-		ifTrue: [ ^ self recordAndReportMatch: #(10 108) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(10 111) ].
 	currentCharacter == $>
 		ifTrue: [ ^ self recordAndReportMatch: #(13) ].
 	currentCharacter == ${
@@ -930,7 +940,7 @@ JSScanner >> scanForTokenX2 [
 	currentCharacter == $}
 		ifTrue: [ ^ self recordAndReportMatch: #(4) ].
 	true
-		ifTrue: [ [ self recordMatch: #(110).
+		ifTrue: [ [ self recordMatch: #(113).
 			self step.
 			currentCharacter <= $;
 				or: [ currentCharacter == $=
@@ -974,5 +984,5 @@ JSScanner >> slashId [
 
 { #category : #generated }
 JSScanner >> tokenActions [
-	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #comment nil nil #whitespace nil nil nil #patternToken)
+	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #comment nil nil #whitespace nil nil nil #patternToken)
 ]
