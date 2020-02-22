@@ -17,12 +17,12 @@ JSScanner class >> initializeKeywordMap [
 
 { #category : #generated }
 JSScanner >> emptySymbolTokenId [
-	^ 324
+	^ 325
 ]
 
 { #category : #generated }
 JSScanner >> errorTokenId [
-	^ 325
+	^ 326
 ]
 
 { #category : #testing }
@@ -57,6 +57,16 @@ JSScanner >> jsxLTId [
 { #category : #generated }
 JSScanner >> ltId [
 	^ 10
+]
+
+{ #category : #generated }
+JSScanner >> questionDotId [
+	^ 42
+]
+
+{ #category : #generated }
+JSScanner >> questionId [
+	^ 41
 ]
 
 { #category : #generated }

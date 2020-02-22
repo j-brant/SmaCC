@@ -2,6 +2,7 @@ Class {
 	#name : #JSOptionalNameNode,
 	#superclass : #JSOptionalNode,
 	#instVars : [
+		'periodToken',
 		'name'
 	],
 	#category : #'SmaCC_Javascript_Parser'
@@ -23,6 +24,16 @@ JSOptionalNameNode >> name: aSmaCCToken [
 ]
 
 { #category : #generated }
+JSOptionalNameNode >> periodToken [
+	^ periodToken
+]
+
+{ #category : #generated }
+JSOptionalNameNode >> periodToken: aSmaCCToken [
+	periodToken := aSmaCCToken
+]
+
+{ #category : #generated }
 JSOptionalNameNode >> tokenVariables [
-	^ #(#name)
+	^ #(#periodToken #name)
 ]

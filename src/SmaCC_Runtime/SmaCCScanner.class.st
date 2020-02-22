@@ -240,6 +240,11 @@ SmaCCScanner >> patternToken [
 ]
 
 { #category : #accessing }
+SmaCCScanner >> peekCharacter [
+	^ stream peek
+]
+
+{ #category : #accessing }
 SmaCCScanner >> position [
 	^ stream position
 ]
