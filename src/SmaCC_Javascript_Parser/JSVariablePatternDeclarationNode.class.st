@@ -4,7 +4,9 @@ Class {
 	#instVars : [
 		'pattern',
 		'equalToken',
-		'value'
+		'value',
+		'colonToken',
+		'type'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
@@ -12,6 +14,16 @@ Class {
 { #category : #generated }
 JSVariablePatternDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitVariablePatternDeclaration: self
+]
+
+{ #category : #generated }
+JSVariablePatternDeclarationNode >> colonToken [
+	^ colonToken
+]
+
+{ #category : #generated }
+JSVariablePatternDeclarationNode >> colonToken: aSmaCCToken [
+	colonToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -25,8 +37,13 @@ JSVariablePatternDeclarationNode >> equalToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+JSVariablePatternDeclarationNode >> ignoredTokenVariables [
+	^ #(#colonToken)
+]
+
+{ #category : #generated }
 JSVariablePatternDeclarationNode >> nodeVariables [
-	^ #(#pattern #value)
+	^ #(#pattern #value #type)
 ]
 
 { #category : #generated }
@@ -46,6 +63,20 @@ JSVariablePatternDeclarationNode >> pattern: aJSProgramNode [
 { #category : #generated }
 JSVariablePatternDeclarationNode >> tokenVariables [
 	^ #(#equalToken)
+]
+
+{ #category : #generated }
+JSVariablePatternDeclarationNode >> type [
+	^ type
+]
+
+{ #category : #generated }
+JSVariablePatternDeclarationNode >> type: aJSTypeNode [
+	self type notNil
+		ifTrue: [ self type parent: nil ].
+	type := aJSTypeNode.
+	self type notNil
+		ifTrue: [ self type parent: self ]
 ]
 
 { #category : #generated }

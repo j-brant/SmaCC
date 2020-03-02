@@ -7,6 +7,9 @@ Class {
 		'restParameter',
 		'commas',
 		'right',
+		'colonToken',
+		'type',
+		'typeParameters',
 		'arrow',
 		'statements',
 		'leftBracket',
@@ -31,6 +34,16 @@ JSArrowFunctionNode >> arrow: aSmaCCToken [
 ]
 
 { #category : #generated }
+JSArrowFunctionNode >> colonToken [
+	^ colonToken
+]
+
+{ #category : #generated }
+JSArrowFunctionNode >> colonToken: aSmaCCToken [
+	colonToken := aSmaCCToken
+]
+
+{ #category : #generated }
 JSArrowFunctionNode >> commas [
 	^ commas
 ]
@@ -52,7 +65,7 @@ JSArrowFunctionNode >> ignoredCompositeTokenVariables [
 
 { #category : #generated }
 JSArrowFunctionNode >> ignoredTokenVariables [
-	^ #(#left #right #leftBracket #rightBracket)
+	^ #(#left #right #colonToken #leftBracket #rightBracket)
 ]
 
 { #category : #'generated-initialize-release' }
@@ -85,7 +98,7 @@ JSArrowFunctionNode >> leftBracket: aSmaCCToken [
 
 { #category : #generated }
 JSArrowFunctionNode >> nodeVariables [
-	^ #(#restParameter)
+	^ #(#restParameter #type #typeParameters)
 ]
 
 { #category : #generated }
@@ -149,4 +162,32 @@ JSArrowFunctionNode >> statements: anOrderedCollection [
 { #category : #generated }
 JSArrowFunctionNode >> tokenVariables [
 	^ #(#arrow)
+]
+
+{ #category : #generated }
+JSArrowFunctionNode >> type [
+	^ type
+]
+
+{ #category : #generated }
+JSArrowFunctionNode >> type: aJSTypeNode [
+	self type notNil
+		ifTrue: [ self type parent: nil ].
+	type := aJSTypeNode.
+	self type notNil
+		ifTrue: [ self type parent: self ]
+]
+
+{ #category : #generated }
+JSArrowFunctionNode >> typeParameters [
+	^ typeParameters
+]
+
+{ #category : #generated }
+JSArrowFunctionNode >> typeParameters: aJSTypeParametersNode [
+	self typeParameters notNil
+		ifTrue: [ self typeParameters parent: nil ].
+	typeParameters := aJSTypeParametersNode.
+	self typeParameters notNil
+		ifTrue: [ self typeParameters parent: self ]
 ]

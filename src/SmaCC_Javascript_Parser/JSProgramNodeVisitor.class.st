@@ -5,6 +5,56 @@ Class {
 }
 
 { #category : #generated }
+JSProgramNodeVisitor >> visitAmbientBinding: anAmbientBinding [
+	^ self visitProgram: anAmbientBinding
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitAmbientClassDeclaration: anAmbientClassDeclaration [
+	^ self visitProgram: anAmbientClassDeclaration
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitAmbientConstructorDeclaration: anAmbientConstructorDeclaration [
+	^ self visitProgram: anAmbientConstructorDeclaration
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitAmbientDeclaration: anAmbientDeclaration [
+	^ self visitProgram: anAmbientDeclaration
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitAmbientFunctionDeclaration: anAmbientFunctionDeclaration [
+	^ self visitProgram: anAmbientFunctionDeclaration
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitAmbientModuleDeclaration: anAmbientModuleDeclaration [
+	^ self visitProgram: anAmbientModuleDeclaration
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitAmbientNamespaceDeclaration: anAmbientNamespaceDeclaration [
+	^ self visitProgram: anAmbientNamespaceDeclaration
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitAmbientNamespaceElement: anAmbientNamespaceElement [
+	^ self visitProgram: anAmbientNamespaceElement
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitAmbientPropertyMemberDeclaration: anAmbientPropertyMemberDeclaration [
+	^ self visitProgram: anAmbientPropertyMemberDeclaration
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitAmbientVariableDeclaration: anAmbientVariableDeclaration [
+	^ self visitProgram: anAmbientVariableDeclaration
+]
+
+{ #category : #generated }
 JSProgramNodeVisitor >> visitArrayBindingPattern: anArrayBindingPattern [
 	^ self visitProgram: anArrayBindingPattern
 ]
@@ -12,6 +62,11 @@ JSProgramNodeVisitor >> visitArrayBindingPattern: anArrayBindingPattern [
 { #category : #generated }
 JSProgramNodeVisitor >> visitArrayLiteral: anArrayLiteral [
 	^ self visitExpression: anArrayLiteral
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitArrayType: anArrayType [
+	^ self visitType: anArrayType
 ]
 
 { #category : #generated }
@@ -91,8 +146,18 @@ JSProgramNodeVisitor >> visitCallExpression: aCallExpression [
 ]
 
 { #category : #generated }
+JSProgramNodeVisitor >> visitCallSignature: aCallSignature [
+	^ self visitProgram: aCallSignature
+]
+
+{ #category : #generated }
 JSProgramNodeVisitor >> visitCaseClause: aCaseClause [
 	^ self visitProgram: aCaseClause
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitCastExpression: aCastExpression [
+	^ self visitExpression: aCastExpression
 ]
 
 { #category : #generated }
@@ -113,6 +178,21 @@ JSProgramNodeVisitor >> visitComputedPropertyName: aComputedPropertyName [
 { #category : #generated }
 JSProgramNodeVisitor >> visitConditionalExpression: aConditionalExpression [
 	^ self visitExpression: aConditionalExpression
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitConstructSignature: aConstructSignature [
+	^ self visitProgram: aConstructSignature
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitConstructorDeclaration: aConstructorDeclaration [
+	^ self visitProgram: aConstructorDeclaration
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitConstructorType: aConstructorType [
+	^ self visitType: aConstructorType
 ]
 
 { #category : #generated }
@@ -141,13 +221,63 @@ JSProgramNodeVisitor >> visitDoWhileStatement: aDoWhileStatement [
 ]
 
 { #category : #generated }
+JSProgramNodeVisitor >> visitEmptyFunction: anEmptyFunction [
+	^ self visitProgram: anEmptyFunction
+]
+
+{ #category : #generated }
 JSProgramNodeVisitor >> visitEmptyStatement: anEmptyStatement [
 	^ self visitStatement: anEmptyStatement
 ]
 
 { #category : #generated }
+JSProgramNodeVisitor >> visitEnumDeclaration: anEnumDeclaration [
+	^ self visitProgram: anEnumDeclaration
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitEnumMember: anEnumMember [
+	^ self visitProgram: anEnumMember
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitExportAssignment: anExportAssignment [
+	^ self visitProgram: anExportAssignment
+]
+
+{ #category : #generated }
 JSProgramNodeVisitor >> visitExportDeclaration: anExportDeclaration [
 	^ self visitProgram: anExportDeclaration
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitExportDeclarationElement: anExportDeclarationElement [
+	^ self visitProgram: anExportDeclarationElement
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitExportDefaultDeclarationElement: anExportDefaultDeclarationElement [
+	^ self visitProgram: anExportDefaultDeclarationElement
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitExportDefaultImplementationElement: anExportDefaultImplementationElement [
+	^ self visitProgram: anExportDefaultImplementationElement
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitExportImplementationElement: anExportImplementationElement [
+	^ self visitProgram: anExportImplementationElement
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitExportListDeclaration: anExportListDeclaration [
+	^ self visitProgram: anExportListDeclaration
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitExportNamespaceElement: anExportNamespaceElement [
+	^ self visitProgram: anExportNamespaceElement
 ]
 
 { #category : #generated }
@@ -186,6 +316,11 @@ JSProgramNodeVisitor >> visitFunction: aFunction [
 ]
 
 { #category : #generated }
+JSProgramNodeVisitor >> visitFunctionType: aFunctionType [
+	^ self visitType: aFunctionType
+]
+
+{ #category : #generated }
 JSProgramNodeVisitor >> visitGeneratorFunction: aGeneratorFunction [
 	^ self visitFunction: aGeneratorFunction
 ]
@@ -206,6 +341,11 @@ JSProgramNodeVisitor >> visitIfStatement: anIfStatement [
 ]
 
 { #category : #generated }
+JSProgramNodeVisitor >> visitImportAliasDeclaration: anImportAliasDeclaration [
+	^ self visitProgram: anImportAliasDeclaration
+]
+
+{ #category : #generated }
 JSProgramNodeVisitor >> visitImportCallExpression: anImportCallExpression [
 	^ self visitExpression: anImportCallExpression
 ]
@@ -216,13 +356,38 @@ JSProgramNodeVisitor >> visitImportDeclaration: anImportDeclaration [
 ]
 
 { #category : #generated }
+JSProgramNodeVisitor >> visitImportRequireDeclaration: anImportRequireDeclaration [
+	^ self visitProgram: anImportRequireDeclaration
+]
+
+{ #category : #generated }
 JSProgramNodeVisitor >> visitImportSpecifier: anImportSpecifier [
 	^ self visitProgram: anImportSpecifier
 ]
 
 { #category : #generated }
+JSProgramNodeVisitor >> visitIndexMemberDeclaration: anIndexMemberDeclaration [
+	^ self visitProgram: anIndexMemberDeclaration
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitIndexSignature: anIndexSignature [
+	^ self visitProgram: anIndexSignature
+]
+
+{ #category : #generated }
 JSProgramNodeVisitor >> visitIndexedPropertyExpression: anIndexedPropertyExpression [
 	^ self visitExpression: anIndexedPropertyExpression
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitInterfaceDeclaration: anInterfaceDeclaration [
+	^ self visitProgram: anInterfaceDeclaration
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitIntersectionType: anIntersectionType [
+	^ self visitType: anIntersectionType
 ]
 
 { #category : #generated }
@@ -241,8 +406,28 @@ JSProgramNodeVisitor >> visitLiteral: aLiteral [
 ]
 
 { #category : #generated }
+JSProgramNodeVisitor >> visitMemberAccessorDeclaration: aMemberAccessorDeclaration [
+	^ self visitProgram: aMemberAccessorDeclaration
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitMemberFunctionDeclaration: aMemberFunctionDeclaration [
+	^ self visitProgram: aMemberFunctionDeclaration
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitMemberVariableDeclaration: aMemberVariableDeclaration [
+	^ self visitProgram: aMemberVariableDeclaration
+]
+
+{ #category : #generated }
 JSProgramNodeVisitor >> visitMethodDefinition: aMethodDefinition [
 	^ self visitProgram: aMethodDefinition
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitMethodSignature: aMethodSignature [
+	^ self visitProgram: aMethodSignature
 ]
 
 { #category : #generated }
@@ -268,6 +453,11 @@ JSProgramNodeVisitor >> visitNamedImports: aNamedImports [
 { #category : #generated }
 JSProgramNodeVisitor >> visitNamedPropertyExpression: aNamedPropertyExpression [
 	^ self visitExpression: aNamedPropertyExpression
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitNamespaceDeclaration: aNamespaceDeclaration [
+	^ self visitProgram: aNamespaceDeclaration
 ]
 
 { #category : #generated }
@@ -298,6 +488,11 @@ JSProgramNodeVisitor >> visitObjectBindingPattern: anObjectBindingPattern [
 { #category : #generated }
 JSProgramNodeVisitor >> visitObjectLiteral: anObjectLiteral [
 	^ self visitExpression: anObjectLiteral
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitObjectType: anObjectType [
+	^ self visitType: anObjectType
 ]
 
 { #category : #generated }
@@ -348,6 +543,11 @@ JSProgramNodeVisitor >> visitProgram: aProgram [
 { #category : #generated }
 JSProgramNodeVisitor >> visitPropertyAssignment: aPropertyAssignment [
 	^ self visitProgram: aPropertyAssignment
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitPropertySignature: aPropertySignature [
+	^ self visitProgram: aPropertySignature
 ]
 
 { #category : #generated }
@@ -416,6 +616,11 @@ JSProgramNodeVisitor >> visitSwitchStatement: aSwitchStatement [
 ]
 
 { #category : #generated }
+JSProgramNodeVisitor >> visitTSSourceFile: aTSSourceFile [
+	^ self visitProgram: aTSSourceFile
+]
+
+{ #category : #generated }
 JSProgramNodeVisitor >> visitTaggedTemplateLiteral: aTaggedTemplateLiteral [
 	^ self visitExpression: aTaggedTemplateLiteral
 ]
@@ -431,6 +636,11 @@ JSProgramNodeVisitor >> visitThisExpression: aThisExpression [
 ]
 
 { #category : #generated }
+JSProgramNodeVisitor >> visitThisType: aThisType [
+	^ self visitType: aThisType
+]
+
+{ #category : #generated }
 JSProgramNodeVisitor >> visitThrowStatement: aThrowStatement [
 	^ self visitStatement: aThrowStatement
 ]
@@ -441,8 +651,68 @@ JSProgramNodeVisitor >> visitTryStatement: aTryStatement [
 ]
 
 { #category : #generated }
+JSProgramNodeVisitor >> visitTupleType: aTupleType [
+	^ self visitType: aTupleType
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitType: aType [
+	^ self visitProgram: aType
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitTypeAliasDeclaration: aTypeAliasDeclaration [
+	^ self visitProgram: aTypeAliasDeclaration
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitTypeArguments: aTypeArguments [
+	^ self visitProgram: aTypeArguments
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitTypeName: aTypeName [
+	^ self visitProgram: aTypeName
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitTypeParameter: aTypeParameter [
+	^ self visitProgram: aTypeParameter
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitTypeParameters: aTypeParameters [
+	^ self visitProgram: aTypeParameters
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitTypeQuery: aTypeQuery [
+	^ self visitType: aTypeQuery
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitTypeQueryExpression: aTypeQueryExpression [
+	^ self visitProgram: aTypeQueryExpression
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitTypeReference: aTypeReference [
+	^ self visitType: aTypeReference
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitTypedParameter: aTypedParameter [
+	^ self visitProgram: aTypedParameter
+]
+
+{ #category : #generated }
 JSProgramNodeVisitor >> visitUnaryExpression: anUnaryExpression [
 	^ self visitExpression: anUnaryExpression
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitUnionType: anUnionType [
+	^ self visitType: anUnionType
 ]
 
 { #category : #generated }
@@ -458,6 +728,11 @@ JSProgramNodeVisitor >> visitVariablePatternDeclaration: aVariablePatternDeclara
 { #category : #generated }
 JSProgramNodeVisitor >> visitVariableStatement: aVariableStatement [
 	^ self visitStatement: aVariableStatement
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitVoidType: aVoidType [
+	^ self visitType: aVoidType
 ]
 
 { #category : #generated }

@@ -10,7 +10,10 @@ Class {
 		'right',
 		'leftBrace',
 		'statements',
-		'rightBrace'
+		'rightBrace',
+		'colonToken',
+		'type',
+		'typeParameters'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
@@ -18,6 +21,16 @@ Class {
 { #category : #generated }
 JSMethodDefinitionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMethodDefinition: self
+]
+
+{ #category : #generated }
+JSMethodDefinitionNode >> colonToken [
+	^ colonToken
+]
+
+{ #category : #generated }
+JSMethodDefinitionNode >> colonToken: aSmaCCToken [
+	colonToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -42,7 +55,7 @@ JSMethodDefinitionNode >> ignoredCompositeTokenVariables [
 
 { #category : #generated }
 JSMethodDefinitionNode >> ignoredTokenVariables [
-	^ #(#left #right #leftBrace #rightBrace)
+	^ #(#left #right #leftBrace #rightBrace #colonToken)
 ]
 
 { #category : #'generated-initialize-release' }
@@ -89,7 +102,7 @@ JSMethodDefinitionNode >> name: aJSProgramNode [
 
 { #category : #generated }
 JSMethodDefinitionNode >> nodeVariables [
-	^ #(#name #restParameter)
+	^ #(#name #restParameter #type #typeParameters)
 ]
 
 { #category : #generated }
@@ -148,4 +161,32 @@ JSMethodDefinitionNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
+]
+
+{ #category : #generated }
+JSMethodDefinitionNode >> type [
+	^ type
+]
+
+{ #category : #generated }
+JSMethodDefinitionNode >> type: aJSTypeNode [
+	self type notNil
+		ifTrue: [ self type parent: nil ].
+	type := aJSTypeNode.
+	self type notNil
+		ifTrue: [ self type parent: self ]
+]
+
+{ #category : #generated }
+JSMethodDefinitionNode >> typeParameters [
+	^ typeParameters
+]
+
+{ #category : #generated }
+JSMethodDefinitionNode >> typeParameters: aJSTypeParametersNode [
+	self typeParameters notNil
+		ifTrue: [ self typeParameters parent: nil ].
+	typeParameters := aJSTypeParametersNode.
+	self typeParameters notNil
+		ifTrue: [ self typeParameters parent: self ]
 ]

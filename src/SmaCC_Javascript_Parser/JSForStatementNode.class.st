@@ -134,7 +134,7 @@ JSForStatementNode >> left: aSmaCCToken [
 
 { #category : #generated }
 JSForStatementNode >> nodeVariables [
-	^ #(#initialExpression #condition #iteratorExpression #statement #declaration)
+	^ #(#statement #iteratorExpression #condition #initialExpression #declaration)
 ]
 
 { #category : #generated }

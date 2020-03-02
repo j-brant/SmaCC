@@ -3,7 +3,6 @@ Class {
 	#superclass : #JSExpressionNode,
 	#instVars : [
 		'functionToken',
-		'name',
 		'left',
 		'restParameter',
 		'parameters',
@@ -11,7 +10,11 @@ Class {
 		'right',
 		'leftBrace',
 		'statements',
-		'rightBrace'
+		'rightBrace',
+		'name',
+		'colonToken',
+		'type',
+		'typeParameters'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
@@ -19,6 +22,16 @@ Class {
 { #category : #generated }
 JSFunctionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFunction: self
+]
+
+{ #category : #generated }
+JSFunctionNode >> colonToken [
+	^ colonToken
+]
+
+{ #category : #generated }
+JSFunctionNode >> colonToken: aSmaCCToken [
+	colonToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -53,7 +66,7 @@ JSFunctionNode >> ignoredCompositeTokenVariables [
 
 { #category : #generated }
 JSFunctionNode >> ignoredTokenVariables [
-	^ #(#left #right #leftBrace #rightBrace)
+	^ #(#left #right #leftBrace #rightBrace #colonToken)
 ]
 
 { #category : #'generated-initialize-release' }
@@ -100,7 +113,7 @@ JSFunctionNode >> name: aJSNameExpressionNode [
 
 { #category : #generated }
 JSFunctionNode >> nodeVariables [
-	^ #(#name #restParameter)
+	^ #(#restParameter #name #type #typeParameters)
 ]
 
 { #category : #generated }
@@ -164,4 +177,32 @@ JSFunctionNode >> statements: anOrderedCollection [
 { #category : #generated }
 JSFunctionNode >> tokenVariables [
 	^ #(#functionToken)
+]
+
+{ #category : #generated }
+JSFunctionNode >> type [
+	^ type
+]
+
+{ #category : #generated }
+JSFunctionNode >> type: aJSTypeNode [
+	self type notNil
+		ifTrue: [ self type parent: nil ].
+	type := aJSTypeNode.
+	self type notNil
+		ifTrue: [ self type parent: self ]
+]
+
+{ #category : #generated }
+JSFunctionNode >> typeParameters [
+	^ typeParameters
+]
+
+{ #category : #generated }
+JSFunctionNode >> typeParameters: aJSTypeParametersNode [
+	self typeParameters notNil
+		ifTrue: [ self typeParameters parent: nil ].
+	typeParameters := aJSTypeParametersNode.
+	self typeParameters notNil
+		ifTrue: [ self typeParameters parent: self ]
 ]

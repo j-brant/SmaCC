@@ -8,7 +8,8 @@ Class {
 		'arguments',
 		'ellipsises',
 		'varArguments',
-		'commas'
+		'commas',
+		'typeArguments'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
@@ -90,6 +91,11 @@ JSSuperCallExpressionNode >> left: aSmaCCToken [
 ]
 
 { #category : #generated }
+JSSuperCallExpressionNode >> nodeVariables [
+	^ #(#typeArguments)
+]
+
+{ #category : #generated }
 JSSuperCallExpressionNode >> right [
 	^ right
 ]
@@ -112,6 +118,20 @@ JSSuperCallExpressionNode >> superToken: aSmaCCToken [
 { #category : #generated }
 JSSuperCallExpressionNode >> tokenVariables [
 	^ #(#superToken)
+]
+
+{ #category : #generated }
+JSSuperCallExpressionNode >> typeArguments [
+	^ typeArguments
+]
+
+{ #category : #generated }
+JSSuperCallExpressionNode >> typeArguments: aJSTypeArgumentsNode [
+	self typeArguments notNil
+		ifTrue: [ self typeArguments parent: nil ].
+	typeArguments := aJSTypeArgumentsNode.
+	self typeArguments notNil
+		ifTrue: [ self typeArguments parent: self ]
 ]
 
 { #category : #generated }

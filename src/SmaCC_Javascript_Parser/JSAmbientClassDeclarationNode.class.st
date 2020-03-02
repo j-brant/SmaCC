@@ -1,119 +1,119 @@
 Class {
-	#name : #JSClassExpressionNode,
-	#superclass : #JSExpressionNode,
+	#name : #JSAmbientClassDeclarationNode,
+	#superclass : #JSProgramNode,
 	#instVars : [
 		'classToken',
-		'leftBrace',
-		'rightBrace',
-		'elements',
+		'name',
 		'extendsToken',
 		'superclass',
 		'implementsToken',
 		'types',
 		'commas',
-		'name',
+		'leftBrace',
+		'elements',
+		'rightBrace',
 		'typeParameters'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
 
 { #category : #generated }
-JSClassExpressionNode >> acceptVisitor: aProgramVisitor [
-	^ aProgramVisitor visitClassExpression: self
+JSAmbientClassDeclarationNode >> acceptVisitor: aProgramVisitor [
+	^ aProgramVisitor visitAmbientClassDeclaration: self
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> classToken [
+JSAmbientClassDeclarationNode >> classToken [
 	^ classToken
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> classToken: aSmaCCToken [
+JSAmbientClassDeclarationNode >> classToken: aSmaCCToken [
 	classToken := aSmaCCToken
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> commas [
+JSAmbientClassDeclarationNode >> commas [
 	^ commas
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> commas: anOrderedCollection [
+JSAmbientClassDeclarationNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> compositeNodeVariables [
-	^ #(#elements #types)
+JSAmbientClassDeclarationNode >> compositeNodeVariables [
+	^ #(#types #elements)
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> elements [
+JSAmbientClassDeclarationNode >> elements [
 	^ elements
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> elements: anOrderedCollection [
+JSAmbientClassDeclarationNode >> elements: anOrderedCollection [
 	self setParents: self elements to: nil.
 	elements := anOrderedCollection.
 	self setParents: self elements to: self
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> extendsToken [
+JSAmbientClassDeclarationNode >> extendsToken [
 	^ extendsToken
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> extendsToken: aSmaCCToken [
+JSAmbientClassDeclarationNode >> extendsToken: aSmaCCToken [
 	extendsToken := aSmaCCToken
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> ignoredCompositeTokenVariables [
-	^ #(#commas #leftParens #rightParens)
+JSAmbientClassDeclarationNode >> ignoredCompositeTokenVariables [
+	^ #(#commas)
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> ignoredTokenVariables [
+JSAmbientClassDeclarationNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> implementsToken [
+JSAmbientClassDeclarationNode >> implementsToken [
 	^ implementsToken
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> implementsToken: aSmaCCToken [
+JSAmbientClassDeclarationNode >> implementsToken: aSmaCCToken [
 	implementsToken := aSmaCCToken
 ]
 
 { #category : #'generated-initialize-release' }
-JSClassExpressionNode >> initialize [
+JSAmbientClassDeclarationNode >> initialize [
 	super initialize.
-	elements := OrderedCollection new: 2.
 	types := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
+	elements := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> leftBrace [
+JSAmbientClassDeclarationNode >> leftBrace [
 	^ leftBrace
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> leftBrace: aSmaCCToken [
+JSAmbientClassDeclarationNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> name [
+JSAmbientClassDeclarationNode >> name [
 	^ name
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> name: aJSNameExpressionNode [
+JSAmbientClassDeclarationNode >> name: aJSNameExpressionNode [
 	self name notNil
 		ifTrue: [ self name parent: nil ].
 	name := aJSNameExpressionNode.
@@ -122,27 +122,27 @@ JSClassExpressionNode >> name: aJSNameExpressionNode [
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> nodeVariables [
-	^ #(#superclass #name #typeParameters)
+JSAmbientClassDeclarationNode >> nodeVariables [
+	^ #(#name #superclass #typeParameters)
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> rightBrace [
+JSAmbientClassDeclarationNode >> rightBrace [
 	^ rightBrace
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> rightBrace: aSmaCCToken [
+JSAmbientClassDeclarationNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> superclass [
+JSAmbientClassDeclarationNode >> superclass [
 	^ superclass
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> superclass: aJSProgramNode [
+JSAmbientClassDeclarationNode >> superclass: aJSProgramNode [
 	self superclass notNil
 		ifTrue: [ self superclass parent: nil ].
 	superclass := aJSProgramNode.
@@ -151,17 +151,17 @@ JSClassExpressionNode >> superclass: aJSProgramNode [
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> tokenVariables [
+JSAmbientClassDeclarationNode >> tokenVariables [
 	^ #(#classToken #extendsToken #implementsToken)
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> typeParameters [
+JSAmbientClassDeclarationNode >> typeParameters [
 	^ typeParameters
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> typeParameters: aJSTypeParametersNode [
+JSAmbientClassDeclarationNode >> typeParameters: aJSTypeParametersNode [
 	self typeParameters notNil
 		ifTrue: [ self typeParameters parent: nil ].
 	typeParameters := aJSTypeParametersNode.
@@ -170,12 +170,12 @@ JSClassExpressionNode >> typeParameters: aJSTypeParametersNode [
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> types [
+JSAmbientClassDeclarationNode >> types [
 	^ types
 ]
 
 { #category : #generated }
-JSClassExpressionNode >> types: anOrderedCollection [
+JSAmbientClassDeclarationNode >> types: anOrderedCollection [
 	self setParents: self types to: nil.
 	types := anOrderedCollection.
 	self setParents: self types to: self

@@ -26,7 +26,7 @@ JSAsyncArrowFunctionNode >> asyncToken: aSmaCCToken [
 
 { #category : #generated }
 JSAsyncArrowFunctionNode >> ignoredTokenVariables [
-	^ #(#leftBrace #rightBrace #left #right #leftBracket #rightBracket)
+	^ #(#leftBrace #rightBrace #left #right #colonToken #leftBracket #rightBracket)
 ]
 
 { #category : #generated }
