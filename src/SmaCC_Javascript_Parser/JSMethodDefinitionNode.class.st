@@ -11,6 +11,7 @@ Class {
 		'leftBrace',
 		'statements',
 		'rightBrace',
+		'staticToken',
 		'colonToken',
 		'type',
 		'typeParameters'
@@ -161,6 +162,21 @@ JSMethodDefinitionNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
+]
+
+{ #category : #generated }
+JSMethodDefinitionNode >> staticToken [
+	^ staticToken
+]
+
+{ #category : #generated }
+JSMethodDefinitionNode >> staticToken: aSmaCCToken [
+	staticToken := aSmaCCToken
+]
+
+{ #category : #generated }
+JSMethodDefinitionNode >> tokenVariables [
+	^ #(#staticToken)
 ]
 
 { #category : #generated }

@@ -12,7 +12,9 @@ Class {
 		'statements',
 		'rightBrace',
 		'modifier',
-		'semicolon'
+		'semicolon',
+		'left',
+		'right'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
@@ -54,7 +56,7 @@ JSConstructorDeclarationNode >> ignoredCompositeTokenVariables [
 
 { #category : #generated }
 JSConstructorDeclarationNode >> ignoredTokenVariables [
-	^ #(#leftParen #rightParen #leftBrace #rightBrace #semicolon)
+	^ #(#leftParen #rightParen #leftBrace #rightBrace #semicolon #left #right)
 ]
 
 { #category : #'generated-initialize-release' }
@@ -63,6 +65,16 @@ JSConstructorDeclarationNode >> initialize [
 	parameters := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 	statements := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+JSConstructorDeclarationNode >> left [
+	^ left
+]
+
+{ #category : #generated }
+JSConstructorDeclarationNode >> left: aSmaCCToken [
+	left := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -124,6 +136,16 @@ JSConstructorDeclarationNode >> restParameter: aJSRestVariableDeclarationNode [
 	restParameter := aJSRestVariableDeclarationNode.
 	self restParameter notNil
 		ifTrue: [ self restParameter parent: self ]
+]
+
+{ #category : #generated }
+JSConstructorDeclarationNode >> right [
+	^ right
+]
+
+{ #category : #generated }
+JSConstructorDeclarationNode >> right: aSmaCCToken [
+	right := aSmaCCToken
 ]
 
 { #category : #generated }

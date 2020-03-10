@@ -1,8 +1,7 @@
 Class {
 	#name : #JSExportAssignmentNode,
-	#superclass : #JSProgramNode,
+	#superclass : #JSTSExportNode,
 	#instVars : [
-		'exportToken',
 		'equalToken',
 		'name',
 		'semicolon'
@@ -23,16 +22,6 @@ JSExportAssignmentNode >> equalToken [
 { #category : #generated }
 JSExportAssignmentNode >> equalToken: aSmaCCToken [
 	equalToken := aSmaCCToken
-]
-
-{ #category : #generated }
-JSExportAssignmentNode >> exportToken [
-	^ exportToken
-]
-
-{ #category : #generated }
-JSExportAssignmentNode >> exportToken: aSmaCCToken [
-	exportToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -71,5 +60,5 @@ JSExportAssignmentNode >> semicolon: aSmaCCToken [
 
 { #category : #generated }
 JSExportAssignmentNode >> tokenVariables [
-	^ #(#exportToken #equalToken)
+	^ #(#equalToken #exportToken)
 ]

@@ -4,7 +4,10 @@ Class {
 	#instVars : [
 		'name',
 		'signature',
-		'questionMarkToken'
+		'questionMarkToken',
+		'semicolon',
+		'staticToken',
+		'modifier'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
@@ -12,6 +15,21 @@ Class {
 { #category : #generated }
 JSMethodSignatureNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMethodSignature: self
+]
+
+{ #category : #generated }
+JSMethodSignatureNode >> ignoredTokenVariables [
+	^ #(#semicolon)
+]
+
+{ #category : #generated }
+JSMethodSignatureNode >> modifier [
+	^ modifier
+]
+
+{ #category : #generated }
+JSMethodSignatureNode >> modifier: aSmaCCToken [
+	modifier := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -44,6 +62,16 @@ JSMethodSignatureNode >> questionMarkToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+JSMethodSignatureNode >> semicolon [
+	^ semicolon
+]
+
+{ #category : #generated }
+JSMethodSignatureNode >> semicolon: aSmaCCToken [
+	semicolon := aSmaCCToken
+]
+
+{ #category : #generated }
 JSMethodSignatureNode >> signature [
 	^ signature
 ]
@@ -58,6 +86,16 @@ JSMethodSignatureNode >> signature: aJSCallSignatureNode [
 ]
 
 { #category : #generated }
+JSMethodSignatureNode >> staticToken [
+	^ staticToken
+]
+
+{ #category : #generated }
+JSMethodSignatureNode >> staticToken: aSmaCCToken [
+	staticToken := aSmaCCToken
+]
+
+{ #category : #generated }
 JSMethodSignatureNode >> tokenVariables [
-	^ #(#questionMarkToken)
+	^ #(#questionMarkToken #staticToken #modifier)
 ]

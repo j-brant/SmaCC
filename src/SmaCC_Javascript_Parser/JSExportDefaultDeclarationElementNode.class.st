@@ -1,8 +1,7 @@
 Class {
 	#name : #JSExportDefaultDeclarationElementNode,
-	#superclass : #JSProgramNode,
+	#superclass : #JSTSExportNode,
 	#instVars : [
-		'exportToken',
 		'defaultToken',
 		'declaration',
 		'semicolon'
@@ -40,16 +39,6 @@ JSExportDefaultDeclarationElementNode >> defaultToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-JSExportDefaultDeclarationElementNode >> exportToken [
-	^ exportToken
-]
-
-{ #category : #generated }
-JSExportDefaultDeclarationElementNode >> exportToken: aSmaCCToken [
-	exportToken := aSmaCCToken
-]
-
-{ #category : #generated }
 JSExportDefaultDeclarationElementNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
@@ -71,5 +60,5 @@ JSExportDefaultDeclarationElementNode >> semicolon: aSmaCCToken [
 
 { #category : #generated }
 JSExportDefaultDeclarationElementNode >> tokenVariables [
-	^ #(#exportToken #defaultToken)
+	^ #(#defaultToken #exportToken)
 ]

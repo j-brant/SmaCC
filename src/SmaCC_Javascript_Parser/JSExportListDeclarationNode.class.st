@@ -1,8 +1,7 @@
 Class {
 	#name : #JSExportListDeclarationNode,
-	#superclass : #JSProgramNode,
+	#superclass : #JSTSExportNode,
 	#instVars : [
-		'exportToken',
 		'star',
 		'fromToken',
 		'from',
@@ -33,16 +32,6 @@ JSExportListDeclarationNode >> commas: anOrderedCollection [
 { #category : #generated }
 JSExportListDeclarationNode >> compositeNodeVariables [
 	^ #(#specifiers)
-]
-
-{ #category : #generated }
-JSExportListDeclarationNode >> exportToken [
-	^ exportToken
-]
-
-{ #category : #generated }
-JSExportListDeclarationNode >> exportToken: aSmaCCToken [
-	exportToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -136,5 +125,5 @@ JSExportListDeclarationNode >> star: aSmaCCToken [
 
 { #category : #generated }
 JSExportListDeclarationNode >> tokenVariables [
-	^ #(#exportToken #star #fromToken #from)
+	^ #(#star #fromToken #from #exportToken)
 ]

@@ -1,8 +1,7 @@
 Class {
 	#name : #JSExportImplementationElementNode,
-	#superclass : #JSProgramNode,
+	#superclass : #JSTSExportNode,
 	#instVars : [
-		'exportToken',
 		'declaration'
 	],
 	#category : #'SmaCC_Javascript_Parser'
@@ -28,21 +27,6 @@ JSExportImplementationElementNode >> declaration: aJSProgramNode [
 ]
 
 { #category : #generated }
-JSExportImplementationElementNode >> exportToken [
-	^ exportToken
-]
-
-{ #category : #generated }
-JSExportImplementationElementNode >> exportToken: aSmaCCToken [
-	exportToken := aSmaCCToken
-]
-
-{ #category : #generated }
 JSExportImplementationElementNode >> nodeVariables [
 	^ #(#declaration)
-]
-
-{ #category : #generated }
-JSExportImplementationElementNode >> tokenVariables [
-	^ #(#exportToken)
 ]

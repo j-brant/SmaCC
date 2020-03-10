@@ -11,7 +11,7 @@ TypeScriptParser class >> defaultStartingState [
 
 { #category : #private }
 TypeScriptParser >> actionsForCurrentToken [
-	| tsActions token tsToken state |
+	| tsActions token tsToken state position |
 	(self isEOFToken
 		or:
 			[ currentToken value isEmpty or: [ currentToken startPosition isNil ] ])
@@ -35,5 +35,19 @@ TypeScriptParser >> actionsForCurrentToken [
 							self performParsingStep.
 							currentToken := token.
 							self restoreState: state ] ] ].
+	(currentToken value size > 1 and: [ currentToken value first = $> ])
+		ifTrue: [ token := currentToken.
+			position := scanner position.
+			tsActions := OrderedCollection new.
+			self addActionsFor: scanner gtId to: tsActions.
+			tsActions notEmpty
+				ifTrue: [ currentToken := currentToken class
+						value: '>'
+						start: currentToken startPosition
+						ids: (Array with: scanner gtId).
+					self position: currentToken startPosition.
+					tsActions do: [ :each | self splitWithAction: each ].
+					currentToken := token.
+					self position: position ] ].
 	^ super actionsForCurrentToken
 ]

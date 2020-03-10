@@ -1,8 +1,7 @@
 Class {
 	#name : #JSExportDeclarationNode,
-	#superclass : #JSProgramNode,
+	#superclass : #JSTSExportNode,
 	#instVars : [
-		'exportToken',
 		'star',
 		'asToken',
 		'name',
@@ -72,16 +71,6 @@ JSExportDeclarationNode >> defaultToken [
 { #category : #generated }
 JSExportDeclarationNode >> defaultToken: aSmaCCToken [
 	defaultToken := aSmaCCToken
-]
-
-{ #category : #generated }
-JSExportDeclarationNode >> exportToken [
-	^ exportToken
-]
-
-{ #category : #generated }
-JSExportDeclarationNode >> exportToken: aSmaCCToken [
-	exportToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -204,5 +193,5 @@ JSExportDeclarationNode >> statement: aJSProgramNode [
 
 { #category : #generated }
 JSExportDeclarationNode >> tokenVariables [
-	^ #(#exportToken #star #asToken #name #fromToken #from #defaultToken)
+	^ #(#star #asToken #name #fromToken #from #defaultToken #exportToken)
 ]
