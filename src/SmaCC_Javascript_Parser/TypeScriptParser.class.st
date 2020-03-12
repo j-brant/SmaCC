@@ -9,6 +9,16 @@ TypeScriptParser class >> defaultStartingState [
 	^ self startingStateForSourceFile
 ]
 
+{ #category : #'file types' }
+TypeScriptParser class >> fileExtension [
+	^ '.ts'
+]
+
+{ #category : #'file types' }
+TypeScriptParser class >> fileExtensionType [
+	^ 'TypeScript files'
+]
+
 { #category : #private }
 TypeScriptParser >> actionsForCurrentToken [
 	| tsActions token tsToken state position |

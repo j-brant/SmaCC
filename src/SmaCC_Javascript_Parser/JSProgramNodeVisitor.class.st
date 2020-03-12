@@ -35,6 +35,11 @@ JSProgramNodeVisitor >> visitArrowFunction: anArrowFunction [
 ]
 
 { #category : #generated }
+JSProgramNodeVisitor >> visitAsExpression: anAsExpression [
+	^ self visitExpression: anAsExpression
+]
+
+{ #category : #generated }
 JSProgramNodeVisitor >> visitAssignmentExpression: anAssignmentExpression [
 	^ self visitExpression: anAssignmentExpression
 ]
@@ -373,6 +378,11 @@ JSProgramNodeVisitor >> visitLexicalDeclaration: aLexicalDeclaration [
 { #category : #generated }
 JSProgramNodeVisitor >> visitLiteral: aLiteral [
 	^ self visitExpression: aLiteral
+]
+
+{ #category : #generated }
+JSProgramNodeVisitor >> visitLiteralType: aLiteralType [
+	^ self visitType: aLiteralType
 ]
 
 { #category : #generated }

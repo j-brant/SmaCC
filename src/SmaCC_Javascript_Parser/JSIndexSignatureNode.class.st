@@ -2,11 +2,11 @@ Class {
 	#name : #JSIndexSignatureNode,
 	#superclass : #JSProgramNode,
 	#instVars : [
-		'leftBrace',
+		'leftBracket',
 		'name',
 		'colonTokens',
 		'value',
-		'rightParen',
+		'rightBracket',
 		'type'
 	],
 	#category : #'SmaCC_Javascript_Parser'
@@ -34,7 +34,7 @@ JSIndexSignatureNode >> ignoredCompositeTokenVariables [
 
 { #category : #generated }
 JSIndexSignatureNode >> ignoredTokenVariables [
-	^ #(#leftBrace #rightParen)
+	^ #(#leftBracket #rightBracket)
 ]
 
 { #category : #'generated-initialize-release' }
@@ -44,13 +44,13 @@ JSIndexSignatureNode >> initialize [
 ]
 
 { #category : #generated }
-JSIndexSignatureNode >> leftBrace [
-	^ leftBrace
+JSIndexSignatureNode >> leftBracket [
+	^ leftBracket
 ]
 
 { #category : #generated }
-JSIndexSignatureNode >> leftBrace: aSmaCCToken [
-	leftBrace := aSmaCCToken
+JSIndexSignatureNode >> leftBracket: aSmaCCToken [
+	leftBracket := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -73,13 +73,13 @@ JSIndexSignatureNode >> nodeVariables [
 ]
 
 { #category : #generated }
-JSIndexSignatureNode >> rightParen [
-	^ rightParen
+JSIndexSignatureNode >> rightBracket [
+	^ rightBracket
 ]
 
 { #category : #generated }
-JSIndexSignatureNode >> rightParen: aSmaCCToken [
-	rightParen := aSmaCCToken
+JSIndexSignatureNode >> rightBracket: aSmaCCToken [
+	rightBracket := aSmaCCToken
 ]
 
 { #category : #generated }
