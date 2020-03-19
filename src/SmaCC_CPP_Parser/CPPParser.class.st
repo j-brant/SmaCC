@@ -4198,19 +4198,25 @@ CPPParser >> parse [
 CPPParser >> parseCurrentToken [
 	| token position actions |
 	(currentToken ids includes: scanner RightShiftId)
-		ifTrue: [ token := currentToken.
-			position := scanner position.
-			actions := OrderedCollection new.
-			self addActionsFor: scanner gtId to: actions.
-			actions notEmpty
+		ifTrue: [ (nodeStack includes: #templateArgs)
 				ifTrue: [ currentToken := currentToken class
 						value: '>'
 						start: currentToken startPosition
-						ids: (Array with: scanner gtId).
-					self position: currentToken startPosition.
-					actions do: [ :each | self splitWithAction: each ].
-					currentToken := token.
-					self position: position ] ].
+						ids: (Array with: scanner GTId).
+					self position: currentToken startPosition ]
+				ifFalse: [ token := currentToken.
+					position := scanner position.
+					actions := OrderedCollection new.
+					self addActionsFor: scanner gtId to: actions.
+					actions notEmpty
+						ifTrue: [ currentToken := currentToken class
+								value: '>'
+								start: currentToken startPosition
+								ids: (Array with: scanner gtId).
+							self position: currentToken startPosition.
+							actions do: [ :each | self splitWithAction: each ].
+							currentToken := token.
+							self position: position ] ] ].
 	super parseCurrentToken
 ]
 
