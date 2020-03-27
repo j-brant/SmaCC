@@ -12,7 +12,7 @@ Class {
 		'commas',
 		'rightParen',
 		'constraintClauses',
-		'semicolon'
+		'body'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -32,6 +32,20 @@ CSInterfaceMethodDeclarationNode >> _attributes: anOrderedCollection [
 { #category : #generated }
 CSInterfaceMethodDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitInterfaceMethodDeclaration: self
+]
+
+{ #category : #generated }
+CSInterfaceMethodDeclarationNode >> body [
+	^ body
+]
+
+{ #category : #generated }
+CSInterfaceMethodDeclarationNode >> body: aCSMethodBodyNode [
+	self body notNil
+		ifTrue: [ self body parent: nil ].
+	body := aCSMethodBodyNode.
+	self body notNil
+		ifTrue: [ self body parent: self ]
 ]
 
 { #category : #generated }
@@ -107,7 +121,7 @@ CSInterfaceMethodDeclarationNode >> name: aSmaCCToken [
 
 { #category : #generated }
 CSInterfaceMethodDeclarationNode >> nodeVariables [
-	^ #(#type #typeParameters)
+	^ #(#type #typeParameters #body)
 ]
 
 { #category : #generated }
@@ -133,18 +147,8 @@ CSInterfaceMethodDeclarationNode >> rightParen: aSmaCCToken [
 ]
 
 { #category : #generated }
-CSInterfaceMethodDeclarationNode >> semicolon [
-	^ semicolon
-]
-
-{ #category : #generated }
-CSInterfaceMethodDeclarationNode >> semicolon: aSmaCCToken [
-	semicolon := aSmaCCToken
-]
-
-{ #category : #generated }
 CSInterfaceMethodDeclarationNode >> tokenVariables [
-	^ #(#modifier #name #leftParen #rightParen #semicolon)
+	^ #(#modifier #name #leftParen #rightParen)
 ]
 
 { #category : #generated }
