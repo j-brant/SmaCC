@@ -17,12 +17,12 @@ JSScanner class >> initializeKeywordMap [
 
 { #category : #generated }
 JSScanner >> emptySymbolTokenId [
-	^ 454
+	^ 455
 ]
 
 { #category : #generated }
 JSScanner >> errorTokenId [
-	^ 455
+	^ 456
 ]
 
 { #category : #generated }
@@ -1006,5 +1006,5 @@ JSScanner >> tokenActions [
 
 { #category : #generated }
 JSScanner >> tsId [
-	^ 453
+	^ 454
 ]
