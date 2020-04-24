@@ -4981,8 +4981,20 @@ JSParser >> actionsForCurrentToken [
 						ids: (Array with: scanner slashId).
 					self position: currentToken startPosition ].
 			^ self actionsForCurrentToken ].
-	(actions isEmpty and:
-		[ self canInsertSemicolon ])
+	(actions isEmpty
+		and: [ nodeStack isEmpty
+				and: [ currentToken value = '#'
+						and: [ currentToken startPosition = 1 and: [ scanner stream peek = $! ] ] ] ])
+		ifTrue: [ "Handle the #!/program/to/run lines"
+			scanner stream
+				upToAny:
+					{Character cr.
+					Character lf}.
+			scanner comments add: (1 to: scanner position).
+			currentToken := nil.
+			self getNextToken.
+			^ self actionsForCurrentToken ].
+	(actions isEmpty and: [ self canInsertSemicolon ])
 		ifTrue: [ self addActionsFor: self scanner semicolonId to: actions.
 			actions notEmpty
 				ifTrue: [ currentState
