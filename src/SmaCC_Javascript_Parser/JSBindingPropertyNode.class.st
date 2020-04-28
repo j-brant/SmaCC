@@ -30,10 +30,10 @@ JSBindingPropertyNode >> element [
 ]
 
 { #category : #generated }
-JSBindingPropertyNode >> element: aJSVariableDeclarationNode [
+JSBindingPropertyNode >> element: aJSProgramNode [
 	self element notNil
 		ifTrue: [ self element parent: nil ].
-	element := aJSVariableDeclarationNode.
+	element := aJSProgramNode.
 	self element notNil
 		ifTrue: [ self element parent: self ]
 ]
