@@ -12,7 +12,8 @@ Class {
 	],
 	#classInstVars : [
 		'definedItems',
-		'undefinedItems'
+		'undefinedItems',
+		'optNames'
 	],
 	#category : #'SmaCC_Delphi'
 }
@@ -40,6 +41,11 @@ DelphiScanner class >> initializeKeywordMap [
 				at: (each at: 2)
 				put: each last ].
 	^ keywordMap
+]
+
+{ #category : #accessing }
+DelphiScanner class >> optNames [
+	^ optNames ifNil: [ optNames := #('RELEASE' 'DEBUG') asSet ]
 ]
 
 { #category : #accessing }
@@ -223,7 +229,7 @@ DelphiScanner >> processIfMacro: comment [
 		ifTrue: [ bad := self undefinedItems.
 			name := name copyFrom: 9 to: name size - 1 ].
 	(self parseOpt
-		and: [ #('RELEASE' 'DEBUG') includes: name asUppercase ])
+		and: [ self class optNames includes: name asUppercase ])
 		ifTrue: [ optDepths add: ifDefCount.
 			optComments add: (Array with: start + 1 with: matchEnd).
 			^ super comment ].
