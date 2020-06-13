@@ -316,21 +316,24 @@ SmaCCGLRParser >> parseCurrentToken [
 
 { #category : #private }
 SmaCCGLRParser >> performParsingLoop [
-	| result |
+	| result i |
 	self setStartingStatesIfNone.
-	[ [ states size to: 1 by: -1 do: [ :i | 
-		currentToken := nil.
-		self restoreState: (states at: i).
-		self getNextToken.
-		self performParsingStep ] ]
-		on: SmaCCTooAmbiguousNotification
-		do: [ :ex | self trimParallelParses ].
+	[ i := states size.
+	[ i > 0 ]
+		whileTrue: [ [ currentToken := nil.
+			self restoreState: (states at: i).
+			self getNextToken.
+			self performParsingStep ]
+				on: SmaCCTooAmbiguousNotification
+				do: [ :ex | 
+					self trimParallelParses.
+					i := i min: states size + 1 ].
+			i := i - 1 ].
 	self mergeStates.
 	states anySatisfy: [ :each | each isAccepted not ] ] whileTrue.
 	self checkForErrors.
 	result := parseAll
-		ifTrue:
-			[ states collect: [ :each | self fixObject: each nodeStack first ] ]
+		ifTrue: [ states collect: [ :each | self fixObject: each nodeStack first ] ]
 		ifFalse: [ self fixObject: states first nodeStack first ].
 	nodeStack := OrderedCollection with: result
 ]
