@@ -40,7 +40,7 @@ SmaCCParserDebugSession class >> maxSearchDepth: anInteger [
 
 { #category : #building }
 SmaCCParserDebugSession >> actionLabelFor: anInteger [
-	| type parser |
+	| type parser ambiguous |
 	parser := self parser.
 	type := anInteger bitAnd: parser actionMask.
 	type = parser acceptAction
@@ -49,7 +49,13 @@ SmaCCParserDebugSession >> actionLabelFor: anInteger [
 		ifTrue: [ ^ 'Shift' ].
 	type = parser reduceAction
 		ifTrue: [ ^ self reduceActionName: (anInteger bitShift: -2) ].
-	^ 'Multiple'
+	ambiguous := OrderedCollection new.
+	parser ambiguousTransitionsAt: (anInteger bitShift: -2) into: ambiguous.
+	^ String
+		streamContents: [ :stream | 
+			ambiguous
+				do: [ :each | stream nextPutAll: (self actionLabelFor: each) ]
+				separatedBy: [ stream nextPut: $, ] ]
 ]
 
 { #category : #private }

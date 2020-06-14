@@ -36,8 +36,8 @@ SmaCCStepToDebugger >> defaultOrder [
 
 { #category : #actions }
 SmaCCStepToDebugger >> executeAction [
-	self stepUntil: [ :context | self debuggerClass isParseContext: context ] context: self session process suspendedContext.
-	(self debuggerClass isParseContext: self interruptedContext)
+	self stepUntil: [ :context | SmaCCParserDebugSession isParseContext: context ] context: self session process suspendedContext.
+	(SmaCCParserDebugSession isParseContext: self interruptedContext)
 		ifTrue: [ self debugger debug: self interruptedContext using: self debuggerClass ]
 ]
 
