@@ -261,6 +261,14 @@ SmaCCGrammarCreator >> visitIgnoreVariableDirective: anIgnoreVariableDirective [
 ]
 
 { #category : #visiting }
+SmaCCGrammarCreator >> visitIgnoreVariableWarningDirective: anIgnoreVariableWarningDirective [
+	grammar
+		ignoredVariableWarnings:
+			(anIgnoreVariableWarningDirective symbols
+				collect: [ :each | each source ])
+]
+
+{ #category : #visiting }
 SmaCCGrammarCreator >> visitKeywordSymbol: aKeywordSymbol [
 	^ grammar keywordTerminalNamed: aKeywordSymbol name value
 ]

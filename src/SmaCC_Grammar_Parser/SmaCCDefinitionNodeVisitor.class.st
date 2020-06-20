@@ -90,6 +90,11 @@ SmaCCDefinitionNodeVisitor >> visitIgnoreVariableDirective: anIgnoreVariableDire
 ]
 
 { #category : #generated }
+SmaCCDefinitionNodeVisitor >> visitIgnoreVariableWarningDirective: anIgnoreVariableWarningDirective [
+	^ self visitDirective: anIgnoreVariableWarningDirective
+]
+
+{ #category : #generated }
 SmaCCDefinitionNodeVisitor >> visitKeywordSymbol: aKeywordSymbol [
 	^ self visitSymbol: aKeywordSymbol
 ]

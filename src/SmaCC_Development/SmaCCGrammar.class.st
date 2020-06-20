@@ -17,7 +17,8 @@ Class {
 		'annotateTokens',
 		'errorSymbol',
 		'emptySymbol',
-		'sentinelSymbol'
+		'sentinelSymbol',
+		'ignoredVariableWarnings'
 	],
 	#classVars : [
 		'IsExpressionMap',
@@ -347,6 +348,16 @@ SmaCCGrammar >> ignoreCase [
 { #category : #private }
 SmaCCGrammar >> ignoreCase: aBoolean [
 	ignoreCase := aBoolean
+]
+
+{ #category : #accessing }
+SmaCCGrammar >> ignoredVariableWarnings [
+	^ ignoredVariableWarnings ifNil: [ #() ]
+]
+
+{ #category : #accessing }
+SmaCCGrammar >> ignoredVariableWarnings: anObject [
+	ignoredVariableWarnings := anObject
 ]
 
 { #category : #private }

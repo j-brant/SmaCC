@@ -126,6 +126,9 @@ SmaCCRHS >> generateNamedVariableCollectionWarningFor: problemIndex [
 { #category : #'reduce actions' }
 SmaCCRHS >> generateUnnamedSymbolWarningFor: problemIndex [
 	| stream |
+	(self grammar ignoredVariableWarnings
+		includes: (self at: problemIndex) name)
+		ifTrue: [ ^ self ].
 	stream := WriteStream on: String new.
 	stream
 		nextPutAll:
@@ -134,8 +137,7 @@ SmaCCRHS >> generateUnnamedSymbolWarningFor: problemIndex [
 		cr;
 		nextPutAll: self productionSymbol name;
 		nextPutAll: ' : '.
-	1 to: self size do:
-		[ :i | 
+	1 to: self size do: [ :i | 
 		i == problemIndex
 			ifTrue: [ stream nextPutAll: '>>>' ].
 		stream nextPutAll: (self at: i) name.
