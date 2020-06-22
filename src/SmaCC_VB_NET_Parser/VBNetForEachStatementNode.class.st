@@ -10,8 +10,7 @@ Class {
 		'statements',
 		'nextToken',
 		'nexts',
-		'commas',
-		'statementSeparator'
+		'commas'
 	],
 	#category : #'SmaCC_VB_NET_Parser'
 }
@@ -121,16 +120,6 @@ VBNetForEachStatementNode >> nodeVariables [
 ]
 
 { #category : #generated }
-VBNetForEachStatementNode >> statementSeparator [
-	^ statementSeparator
-]
-
-{ #category : #generated }
-VBNetForEachStatementNode >> statementSeparator: aSmaCCToken [
-	statementSeparator := aSmaCCToken
-]
-
-{ #category : #generated }
 VBNetForEachStatementNode >> statements [
 	^ statements
 ]
@@ -144,7 +133,7 @@ VBNetForEachStatementNode >> statements: anOrderedCollection [
 
 { #category : #generated }
 VBNetForEachStatementNode >> tokenVariables [
-	^ #(#forToken #eachToken #inToken #nextToken #statementSeparator)
+	^ #(#forToken #eachToken #inToken #nextToken)
 ]
 
 { #category : #generated }

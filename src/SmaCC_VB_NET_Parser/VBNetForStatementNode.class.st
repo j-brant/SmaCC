@@ -13,8 +13,7 @@ Class {
 		'nexts',
 		'commas',
 		'stepToken',
-		'step',
-		'statementSeparator'
+		'step'
 	],
 	#category : #'SmaCC_VB_NET_Parser'
 }
@@ -114,16 +113,6 @@ VBNetForStatementNode >> nodeVariables [
 ]
 
 { #category : #generated }
-VBNetForStatementNode >> statementSeparator [
-	^ statementSeparator
-]
-
-{ #category : #generated }
-VBNetForStatementNode >> statementSeparator: aSmaCCToken [
-	statementSeparator := aSmaCCToken
-]
-
-{ #category : #generated }
 VBNetForStatementNode >> statements [
 	^ statements
 ]
@@ -185,7 +174,7 @@ VBNetForStatementNode >> toToken: aSmaCCToken [
 
 { #category : #generated }
 VBNetForStatementNode >> tokenVariables [
-	^ #(#forToken #equals #toToken #nextToken #stepToken #statementSeparator)
+	^ #(#forToken #equals #toToken #nextToken #stepToken)
 ]
 
 { #category : #generated }
