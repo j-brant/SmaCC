@@ -42,12 +42,12 @@ VBNetScanner >> LineTerminatorId [
 
 { #category : #generated }
 VBNetScanner >> emptySymbolTokenId [
-	^ 674
+	^ 672
 ]
 
 { #category : #generated }
 VBNetScanner >> errorTokenId [
-	^ 675
+	^ 673
 ]
 
 { #category : #'initialize-release' }
