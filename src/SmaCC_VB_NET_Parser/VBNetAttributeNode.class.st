@@ -63,8 +63,8 @@ VBNetAttributeNode >> compositeTokenVariables [
 { #category : #'generated-initialize-release' }
 VBNetAttributeNode >> initialize [
 	super initialize.
-	commas := OrderedCollection new: 2.
 	arguments := OrderedCollection new: 2.
+	commas := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

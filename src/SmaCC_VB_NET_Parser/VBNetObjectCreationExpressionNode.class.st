@@ -74,8 +74,8 @@ VBNetObjectCreationExpressionNode >> compositeTokenVariables [
 { #category : #'generated-initialize-release' }
 VBNetObjectCreationExpressionNode >> initialize [
 	super initialize.
-	commas := OrderedCollection new: 2.
 	arguments := OrderedCollection new: 2.
+	commas := OrderedCollection new: 2.
 	argumentNames := OrderedCollection new: 2.
 	colonEqualses := OrderedCollection new: 2.
 	namedArguments := OrderedCollection new: 2.
