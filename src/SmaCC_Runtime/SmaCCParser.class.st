@@ -162,7 +162,8 @@ SmaCCParser class >> parseFile: aString encoding: encodingString [
 					(each isKindOf: SmaCCParseNode)
 						ifTrue: [ stream position: 0.
 							each completeSource: contents.
-							each filename: aString ] ] ]
+							each filename: aString ].
+					each ] ]
 ]
 
 { #category : #parsing }
