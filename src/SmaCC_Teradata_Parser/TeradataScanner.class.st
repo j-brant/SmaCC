@@ -7,7 +7,7 @@ Class {
 { #category : #'generated-initialization' }
 TeradataScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
-	#(#(77 'ALL' 15) #(77 'AND' 16) #(77 'AS' 17) #(77 'BEGIN' 18) #(77 'BT' 19) #(77 'BY' 20) #(77 'CASE' 21) #(77 'CAST' 22) #(77 'CHECK' 23) #(77 'CHECKPOINT' 24) #(77 'CREATE' 25) #(77 'DATABASE' 26) #(77 'DELETE' 27) #(77 'DISTINCT' 28) #(77 'DISTINCTROW' 29) #(77 'DROP' 30) #(77 'ELSE' 31) #(77 'END' 32) #(77 'ET' 33) #(77 'EXECUTE' 34) #(77 'FOR' 35) #(77 'FORMAT' 36) #(77 'FROM' 37) #(77 'GROUP' 38) #(77 'HELP' 39) #(77 'IN' 40) #(77 'INNER' 41) #(77 'INSERT' 42) #(77 'INTERVAL' 43) #(77 'INTO' 44) #(77 'IS' 45) #(77 'JOIN' 46) #(77 'LEFT' 47) #(77 'LIKE' 48) #(77 'LOADING' 49) #(77 'LOCK' 50) #(77 'LOCKING' 51) #(77 'MACRO' 52) #(77 'NOT' 53) #(77 'NULL' 54) #(77 'ON' 55) #(77 'OR' 56) #(77 'ORDER' 57) #(77 'OUTER' 58) #(77 'RIGHT' 59) #(77 'ROLLBACK' 60) #(77 'SEL' 61) #(77 'SELECT' 62) #(77 'SESSION' 63) #(77 'SET' 64) #(77 'SUBSTRING' 65) #(77 'TABLE' 66) #(77 'THEN' 67) #(77 'UPDATE' 68) #(77 'USING' 69) #(77 'VALUES' 70) #(77 'WHEN' 71) #(77 'WHERE' 72) #(77 'WITH' 73) #(77 'WORK' 74) #(77 'WORKLOAD' 75))
+	#(#(112 'ALL' 15) #(112 'AND' 16) #(112 'AS' 17) #(112 'BEGIN' 18) #(112 'BETWEEN' 19) #(112 'BIGINT' 20) #(112 'BOTH' 21) #(112 'BT' 22) #(112 'BY' 23) #(112 'BYTEINT' 24) #(112 'CASE' 25) #(112 'CAST' 26) #(112 'CHAR' 27) #(112 'CHECK' 28) #(112 'CHECKPOINT' 29) #(112 'CLOB' 30) #(112 'CREATE' 31) #(112 'CROSS' 32) #(112 'DATABASE' 33) #(112 'DATE' 34) #(112 'DECIMAL' 35) #(112 'DEL' 36) #(112 'DELETE' 37) #(112 'DISTINCT' 38) #(112 'DISTINCTROW' 39) #(112 'DROP' 40) #(112 'ELSE' 41) #(112 'END' 42) #(112 'ESCAPE' 43) #(112 'ET' 44) #(112 'EXECUTE' 45) #(112 'EXTRACT' 46) #(112 'FLOAT' 47) #(112 'FOR' 48) #(112 'FORMAT' 49) #(112 'FROM' 50) #(112 'GROUP' 51) #(112 'HAVING' 52) #(112 'HELP' 53) #(112 'IN' 54) #(112 'INNER' 55) #(112 'INSERT' 56) #(112 'INTEGER' 57) #(112 'INTERVAL' 58) #(112 'INTO' 59) #(112 'IS' 60) #(112 'JOIN' 61) #(112 'LEADING' 62) #(112 'LEFT' 63) #(112 'LIKE' 64) #(112 'LOADING' 65) #(112 'LOCK' 66) #(112 'LOCKING' 67) #(112 'MACRO' 68) #(112 'MATCHED' 69) #(112 'MERGE' 70) #(112 'MOD' 71) #(112 'NOT' 72) #(112 'NULL' 73) #(112 'NUMBER' 74) #(112 'NUMERIC' 75) #(112 'ON' 76) #(112 'OR' 77) #(112 'ORDER' 78) #(112 'OUTER' 79) #(112 'OVER' 80) #(112 'PARTITION' 81) #(112 'QUALIFY' 82) #(112 'RANK' 83) #(112 'REAL' 84) #(112 'RECURSIVE' 85) #(112 'RIGHT' 86) #(112 'ROLLBACK' 87) #(112 'SEL' 88) #(112 'SELECT' 89) #(112 'SESSION' 90) #(112 'SET' 91) #(112 'SMALLINT' 92) #(112 'SUBSTRING' 93) #(112 'TABLE' 94) #(112 'THEN' 95) #(112 'TIME' 96) #(112 'TIMESTAMP' 97) #(112 'TOP' 98) #(112 'TRAILING' 99) #(112 'TRIM' 100) #(112 'UNION' 101) #(112 'UPDATE' 102) #(112 'USING' 103) #(112 'VALUES' 104) #(112 'VARCHAR' 105) #(112 'WHEN' 106) #(112 'WHERE' 107) #(112 'WITH' 108) #(112 'WORK' 109) #(112 'WORKLOAD' 110))
 		do: [ :each | 
 			(keywordMap at: each first ifAbsentPut: [ Dictionary new ])
 				at: (each at: 2)
@@ -17,12 +17,12 @@ TeradataScanner class >> initializeKeywordMap [
 
 { #category : #generated }
 TeradataScanner >> emptySymbolTokenId [
-	^ 129
+	^ 181
 ]
 
 { #category : #generated }
 TeradataScanner >> errorTokenId [
-	^ 130
+	^ 182
 ]
 
 { #category : #generated }
@@ -32,14 +32,30 @@ TeradataScanner >> keywordFor: aString [
 
 { #category : #generated }
 TeradataScanner >> scan1 [
-	[ self recordMatch: #(77).
+	[ self step.
+	currentCharacter == $"
+		ifTrue: [ self recordMatch: #(112).
+			self step.
+			currentCharacter == $"
+				ifTrue: [ ^ self scan1 ].
+			^ self reportLastMatch ].
+	currentCharacter <= Character tab
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ (currentCharacter between: (Character value: 14) and: $!)
+						or: [ currentCharacter >= $# ] ] ] ] whileTrue.
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+TeradataScanner >> scan2 [
+	[ self recordMatch: #(112).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ self step.
 			(currentCharacter == $$
 				or: [ (currentCharacter between: $A and: $Z)
 						or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
-				ifTrue: [ ^ self scan1 ].
+				ifTrue: [ ^ self scan2 ].
 			^ self reportLastMatch ].
 	currentCharacter == $$
 		or: [ (currentCharacter between: $0 and: $9)
@@ -50,52 +66,83 @@ TeradataScanner >> scan1 [
 ]
 
 { #category : #generated }
-TeradataScanner >> scan2 [
-	[ self step.
-	currentCharacter == $'
-		ifTrue: [ self recordMatch: #(79).
-			self step.
-			currentCharacter == $'
-				ifTrue: [ ^ self scan2 ].
-			^ self reportLastMatch ].
-	true ] whileTrue
-]
-
-{ #category : #generated }
 TeradataScanner >> scan3 [
 	[ self step.
-	currentCharacter == $*
-		ifTrue: [ [ self step.
-			currentCharacter == $* ] whileTrue.
-			currentCharacter == $/
-				ifTrue: [ ^ self recordAndReportMatch: #(82) ].
-			^ self scan3 ].
+	currentCharacter == $'
+		ifTrue: [ self recordMatch: #(114).
+			self step.
+			currentCharacter == $'
+				ifTrue: [ ^ self scan3 ].
+			^ self reportLastMatch ].
 	true ] whileTrue
 ]
 
 { #category : #generated }
 TeradataScanner >> scan4 [
 	self step.
-	(currentCharacter == $$
-		or: [ (currentCharacter between: $A and: $Z)
-				or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
-		ifTrue: [ [ self recordMatch: #(78).
+	('Cc' includes: currentCharacter)
+		ifTrue: [ self recordMatch: #(114).
 			self step.
-			currentCharacter == $.
-				ifTrue: [ ^ self scan4 ].
-			currentCharacter == $$
-				or: [ (currentCharacter between: $0 and: $9)
-						or: [ (currentCharacter between: $A and: $Z)
-								or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ] ] ]
-				whileTrue ].
+			('FVfv' includes: currentCharacter)
+				ifTrue: [ ^ self recordAndReportMatch: #(114) ] ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+TeradataScanner >> scan5 [
+	[ self step.
+	currentCharacter == $*
+		ifTrue: [ [ self step.
+			currentCharacter == $* ] whileTrue.
+			currentCharacter == $/
+				ifTrue: [ ^ self recordAndReportMatch: #(117) ].
+			^ self scan5 ].
+	true ] whileTrue
+]
+
+{ #category : #generated }
+TeradataScanner >> scan6 [
+	[ self step.
+	currentCharacter == $"
+		ifTrue: [ self recordMatch: #(113).
+			self step.
+			currentCharacter == $"
+				ifTrue: [ ^ self scan6 ].
+			^ self reportLastMatch ].
+	currentCharacter <= Character tab
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ (currentCharacter between: (Character value: 14) and: $!)
+						or: [ currentCharacter >= $# ] ] ] ] whileTrue.
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+TeradataScanner >> scan7 [
+	[ self recordMatch: #(113).
+	self step.
+	currentCharacter == $.
+		ifTrue: [ self step.
+			(currentCharacter == $$
+				or: [ (currentCharacter between: $A and: $Z)
+						or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
+				ifTrue: [ ^ self scan7 ].
+			^ self reportLastMatch ].
+	currentCharacter == $$
+		or: [ (currentCharacter between: $0 and: $9)
+				or: [ (currentCharacter between: $A and: $Z)
+						or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ] ] ]
+		whileTrue.
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 TeradataScanner >> scanForToken [
 	self step.
+	currentCharacter == $"
+		ifTrue: [ ^ self scan1 ].
 	currentCharacter == $'
-		ifTrue: [ ^ self scan2 ].
+		ifTrue:
+			[ ^ self scanForTokenX1 ].
 	currentCharacter == $(
 		ifTrue: [ ^ self recordAndReportMatch: #(1) ].
 	currentCharacter == $)
@@ -108,21 +155,75 @@ TeradataScanner >> scanForToken [
 		ifTrue: [ ^ self recordAndReportMatch: #(5) ].
 	currentCharacter == $-
 		ifTrue:
-			[ ^ self scanForTokenX1 ].
+			[ ^ self scanForTokenX2 ].
 	currentCharacter == $/
 		ifTrue:
-			[ ^ self scanForTokenX6 ].
+			[ ^ self scanForTokenX8 ].
 	currentCharacter == $:
-		ifTrue: [ ^ self scan4 ].
-	^ self scanForTokenX8
+		ifTrue:
+			[ ^ self scanForTokenX3 ].
+	^ self scanForTokenX10
 ]
 
 { #category : #generated }
 TeradataScanner >> scanForTokenX1 [
+	[ self step.
+	currentCharacter == $'
+		ifTrue: [ self recordMatch: #(114).
+			self step.
+			currentCharacter == $'
+				ifTrue: [ ^ self scan3 ].
+			('Xx' includes: currentCharacter)
+				ifTrue: [ ^ self scan4 ].
+			(currentCharacter isSeparator
+				or: [ currentCharacter == Character pageUp ])
+				ifTrue: [ [ self step.
+					('Xx' includes: currentCharacter)
+						ifTrue: [ ^ self scan4 ].
+					currentCharacter isSeparator
+						or: [ currentCharacter == Character pageUp ] ] whileTrue ].
+			^ self reportLastMatch ].
+	currentCharacter isDigit
+		or: [ (currentCharacter between: $A and: $F)
+				or: [ currentCharacter between: $a and: $f ] ] ] whileTrue.
+	^ self scan3
+]
+
+{ #category : #generated }
+TeradataScanner >> scanForTokenX10 [
+	currentCharacter == $;
+		ifTrue: [ ^ self recordAndReportMatch: #(8) ].
+	currentCharacter == $<
+		ifTrue:
+			[ ^ self scanForTokenX4 ].
+	currentCharacter == $=
+		ifTrue: [ ^ self recordAndReportMatch: #(12) ].
+	currentCharacter == $>
+		ifTrue:
+			[ ^ self scanForTokenX7 ].
+	currentCharacter == $|
+		ifTrue:
+			[ ^ self scanForTokenX9 ].
+	currentCharacter isDigit
+		ifTrue:
+			[ ^ self scanForTokenX6 ].
+	(currentCharacter isSeparator
+		or: [ currentCharacter == Character pageUp ])
+		ifTrue:
+			[ ^ self scanForTokenX5 ].
+	(currentCharacter == $$
+		or: [ (currentCharacter between: $A and: $Z)
+				or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
+		ifTrue: [ ^ self scan2 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+TeradataScanner >> scanForTokenX2 [
 	self recordMatch: #(6).
 	self step.
 	currentCharacter == $-
-		ifTrue: [ [ self recordMatch: #(82).
+		ifTrue: [ [ self recordMatch: #(117).
 			self step.
 			currentCharacter <= Character tab
 				or: [ (currentCharacter between: Character pageUp and: Character newPage)
@@ -131,7 +232,19 @@ TeradataScanner >> scanForTokenX1 [
 ]
 
 { #category : #generated }
-TeradataScanner >> scanForTokenX2 [
+TeradataScanner >> scanForTokenX3 [
+	self step.
+	currentCharacter == $"
+		ifTrue: [ ^ self scan6 ].
+	(currentCharacter == $$
+		or: [ (currentCharacter between: $A and: $Z)
+				or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
+		ifTrue: [ ^ self scan7 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+TeradataScanner >> scanForTokenX4 [
 	self recordMatch: #(9).
 	self step.
 	currentCharacter == $=
@@ -142,8 +255,8 @@ TeradataScanner >> scanForTokenX2 [
 ]
 
 { #category : #generated }
-TeradataScanner >> scanForTokenX3 [
-	[ self recordMatch: #(81).
+TeradataScanner >> scanForTokenX5 [
+	[ self recordMatch: #(116).
 	self step.
 	currentCharacter isSeparator
 		or: [ currentCharacter == Character pageUp ] ] whileTrue.
@@ -151,11 +264,11 @@ TeradataScanner >> scanForTokenX3 [
 ]
 
 { #category : #generated }
-TeradataScanner >> scanForTokenX4 [
-	[ self recordMatch: #(80).
+TeradataScanner >> scanForTokenX6 [
+	[ self recordMatch: #(115).
 	self step.
 	currentCharacter == $.
-		ifTrue: [ [ self recordMatch: #(80).
+		ifTrue: [ [ self recordMatch: #(115).
 			self step.
 			currentCharacter isDigit ] whileTrue.
 			^ self reportLastMatch ].
@@ -164,7 +277,7 @@ TeradataScanner >> scanForTokenX4 [
 ]
 
 { #category : #generated }
-TeradataScanner >> scanForTokenX5 [
+TeradataScanner >> scanForTokenX7 [
 	self recordMatch: #(13).
 	self step.
 	currentCharacter == $=
@@ -173,54 +286,25 @@ TeradataScanner >> scanForTokenX5 [
 ]
 
 { #category : #generated }
-TeradataScanner >> scanForTokenX6 [
+TeradataScanner >> scanForTokenX8 [
 	self recordMatch: #(7).
 	self step.
 	currentCharacter == $*
-		ifTrue: [ ^ self scan3 ].
+		ifTrue: [ ^ self scan5 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-TeradataScanner >> scanForTokenX7 [
+TeradataScanner >> scanForTokenX9 [
 	self step.
 	currentCharacter == $|
-		ifTrue: [ ^ self recordAndReportMatch: #(76) ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-TeradataScanner >> scanForTokenX8 [
-	currentCharacter == $;
-		ifTrue: [ ^ self recordAndReportMatch: #(8) ].
-	currentCharacter == $<
-		ifTrue:
-			[ ^ self scanForTokenX2 ].
-	currentCharacter == $=
-		ifTrue: [ ^ self recordAndReportMatch: #(12) ].
-	currentCharacter == $>
-		ifTrue:
-			[ ^ self scanForTokenX5 ].
-	currentCharacter == $|
-		ifTrue:
-			[ ^ self scanForTokenX7 ].
-	currentCharacter isDigit
-		ifTrue:
-			[ ^ self scanForTokenX4 ].
-	(currentCharacter isSeparator
-		or: [ currentCharacter == Character pageUp ])
-		ifTrue:
-			[ ^ self scanForTokenX3 ].
-	(currentCharacter == $$
-		or: [ (currentCharacter between: $A and: $Z)
-				or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
-		ifTrue: [ ^ self scan1 ].
+		ifTrue: [ ^ self recordAndReportMatch: #(111) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 TeradataScanner >> tokenActions [
-	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace #comment)
+	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace #comment)
 ]
 
 { #category : #generated }
