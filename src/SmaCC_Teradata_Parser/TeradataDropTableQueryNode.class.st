@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'dropToken',
 		'tableToken',
-		'tableName'
+		'table'
 	],
 	#category : #'SmaCC_Teradata_Parser'
 }
@@ -25,13 +25,22 @@ TeradataDropTableQueryNode >> dropToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-TeradataDropTableQueryNode >> tableName [
-	^ tableName
+TeradataDropTableQueryNode >> nodeVariables [
+	^ #(#table)
 ]
 
 { #category : #generated }
-TeradataDropTableQueryNode >> tableName: aSmaCCToken [
-	tableName := aSmaCCToken
+TeradataDropTableQueryNode >> table [
+	^ table
+]
+
+{ #category : #generated }
+TeradataDropTableQueryNode >> table: aTeradataTableNode [
+	self table notNil
+		ifTrue: [ self table parent: nil ].
+	table := aTeradataTableNode.
+	self table notNil
+		ifTrue: [ self table parent: self ]
 ]
 
 { #category : #generated }
@@ -46,5 +55,5 @@ TeradataDropTableQueryNode >> tableToken: aSmaCCToken [
 
 { #category : #generated }
 TeradataDropTableQueryNode >> tokenVariables [
-	^ #(#dropToken #tableToken #tableName)
+	^ #(#dropToken #tableToken)
 ]

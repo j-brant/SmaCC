@@ -87,18 +87,27 @@ TeradataBeginLoadingStatementNode >> loadingToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+TeradataBeginLoadingStatementNode >> nodeVariables [
+	^ #(#table)
+]
+
+{ #category : #generated }
 TeradataBeginLoadingStatementNode >> table [
 	^ table
 ]
 
 { #category : #generated }
-TeradataBeginLoadingStatementNode >> table: aSmaCCToken [
-	table := aSmaCCToken
+TeradataBeginLoadingStatementNode >> table: aTeradataTableNode [
+	self table notNil
+		ifTrue: [ self table parent: nil ].
+	table := aTeradataTableNode.
+	self table notNil
+		ifTrue: [ self table parent: self ]
 ]
 
 { #category : #generated }
 TeradataBeginLoadingStatementNode >> tokenVariables [
-	^ #(#beginToken #loadingToken #table #errorfilesToken #withToken #intervalToken)
+	^ #(#beginToken #loadingToken #errorfilesToken #withToken #intervalToken)
 ]
 
 { #category : #generated }

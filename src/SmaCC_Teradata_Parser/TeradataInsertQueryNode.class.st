@@ -3,7 +3,7 @@ Class {
 	#superclass : #TeradataProgramNode,
 	#instVars : [
 		'insertToken',
-		'tableName',
+		'table',
 		'valuesToken',
 		'leftParens',
 		'values',
@@ -81,7 +81,7 @@ TeradataInsertQueryNode >> leftParens: anOrderedCollection [
 
 { #category : #generated }
 TeradataInsertQueryNode >> nodeVariables [
-	^ #(#query)
+	^ #(#table #query)
 ]
 
 { #category : #generated }
@@ -109,18 +109,22 @@ TeradataInsertQueryNode >> rightParens: anOrderedCollection [
 ]
 
 { #category : #generated }
-TeradataInsertQueryNode >> tableName [
-	^ tableName
+TeradataInsertQueryNode >> table [
+	^ table
 ]
 
 { #category : #generated }
-TeradataInsertQueryNode >> tableName: aSmaCCToken [
-	tableName := aSmaCCToken
+TeradataInsertQueryNode >> table: aTeradataTableNode [
+	self table notNil
+		ifTrue: [ self table parent: nil ].
+	table := aTeradataTableNode.
+	self table notNil
+		ifTrue: [ self table parent: self ]
 ]
 
 { #category : #generated }
 TeradataInsertQueryNode >> tokenVariables [
-	^ #(#insertToken #tableName #valuesToken #intoToken)
+	^ #(#insertToken #valuesToken #intoToken)
 ]
 
 { #category : #generated }

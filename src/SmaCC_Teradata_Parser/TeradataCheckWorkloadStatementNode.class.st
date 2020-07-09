@@ -121,18 +121,27 @@ TeradataCheckWorkloadStatementNode >> loadingToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+TeradataCheckWorkloadStatementNode >> nodeVariables [
+	^ #(#table)
+]
+
+{ #category : #generated }
 TeradataCheckWorkloadStatementNode >> table [
 	^ table
 ]
 
 { #category : #generated }
-TeradataCheckWorkloadStatementNode >> table: aSmaCCToken [
-	table := aSmaCCToken
+TeradataCheckWorkloadStatementNode >> table: aTeradataTableNode [
+	self table notNil
+		ifTrue: [ self table parent: nil ].
+	table := aTeradataTableNode.
+	self table notNil
+		ifTrue: [ self table parent: self ]
 ]
 
 { #category : #generated }
 TeradataCheckWorkloadStatementNode >> tokenVariables [
-	^ #(#checkToken #workloadToken #forToken #beginToken #loadingToken #database #table #withToken #intervalToken #endToken)
+	^ #(#checkToken #workloadToken #forToken #beginToken #loadingToken #database #withToken #intervalToken #endToken)
 ]
 
 { #category : #generated }

@@ -3,8 +3,9 @@ Class {
 	#superclass : #TeradataProgramNode,
 	#instVars : [
 		'mergeToken',
-		'tables',
+		'mergeTable',
 		'usingToken',
+		'usingTable',
 		'onToken',
 		'condition',
 		'whenMerges',
@@ -20,7 +21,7 @@ TeradataMergeQueryNode >> acceptVisitor: aProgramVisitor [
 
 { #category : #generated }
 TeradataMergeQueryNode >> compositeNodeVariables [
-	^ #(#tables #whenMerges)
+	^ #(#whenMerges)
 ]
 
 { #category : #generated }
@@ -40,7 +41,6 @@ TeradataMergeQueryNode >> condition: aTeradataExpressionNode [
 { #category : #'generated-initialize-release' }
 TeradataMergeQueryNode >> initialize [
 	super initialize.
-	tables := OrderedCollection new: 2.
 	whenMerges := OrderedCollection new: 2.
 ]
 
@@ -55,6 +55,20 @@ TeradataMergeQueryNode >> intoToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+TeradataMergeQueryNode >> mergeTable [
+	^ mergeTable
+]
+
+{ #category : #generated }
+TeradataMergeQueryNode >> mergeTable: aTeradataProgramNode [
+	self mergeTable notNil
+		ifTrue: [ self mergeTable parent: nil ].
+	mergeTable := aTeradataProgramNode.
+	self mergeTable notNil
+		ifTrue: [ self mergeTable parent: self ]
+]
+
+{ #category : #generated }
 TeradataMergeQueryNode >> mergeToken [
 	^ mergeToken
 ]
@@ -66,7 +80,7 @@ TeradataMergeQueryNode >> mergeToken: aSmaCCToken [
 
 { #category : #generated }
 TeradataMergeQueryNode >> nodeVariables [
-	^ #(#condition)
+	^ #(#mergeTable #usingTable #condition)
 ]
 
 { #category : #generated }
@@ -80,20 +94,22 @@ TeradataMergeQueryNode >> onToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-TeradataMergeQueryNode >> tables [
-	^ tables
-]
-
-{ #category : #generated }
-TeradataMergeQueryNode >> tables: anOrderedCollection [
-	self setParents: self tables to: nil.
-	tables := anOrderedCollection.
-	self setParents: self tables to: self
-]
-
-{ #category : #generated }
 TeradataMergeQueryNode >> tokenVariables [
 	^ #(#mergeToken #usingToken #onToken #intoToken)
+]
+
+{ #category : #generated }
+TeradataMergeQueryNode >> usingTable [
+	^ usingTable
+]
+
+{ #category : #generated }
+TeradataMergeQueryNode >> usingTable: aTeradataProgramNode [
+	self usingTable notNil
+		ifTrue: [ self usingTable parent: nil ].
+	usingTable := aTeradataProgramNode.
+	self usingTable notNil
+		ifTrue: [ self usingTable parent: self ]
 ]
 
 { #category : #generated }

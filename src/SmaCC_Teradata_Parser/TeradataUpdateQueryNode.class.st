@@ -3,7 +3,7 @@ Class {
 	#superclass : #TeradataProgramNode,
 	#instVars : [
 		'updateToken',
-		'tableName',
+		'tables',
 		'setToken',
 		'setExpressions',
 		'commas',
@@ -11,8 +11,7 @@ Class {
 		'else',
 		'whereToken',
 		'where',
-		'fromToken',
-		'tables'
+		'fromToken'
 	],
 	#category : #'SmaCC_Teradata_Parser'
 }
@@ -34,7 +33,7 @@ TeradataUpdateQueryNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 TeradataUpdateQueryNode >> compositeNodeVariables [
-	^ #(#setExpressions #tables)
+	^ #(#tables #setExpressions)
 ]
 
 { #category : #generated }
@@ -79,9 +78,9 @@ TeradataUpdateQueryNode >> fromToken: aSmaCCToken [
 { #category : #'generated-initialize-release' }
 TeradataUpdateQueryNode >> initialize [
 	super initialize.
+	tables := OrderedCollection new: 2.
 	setExpressions := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
-	tables := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -112,16 +111,6 @@ TeradataUpdateQueryNode >> setToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-TeradataUpdateQueryNode >> tableName [
-	^ tableName
-]
-
-{ #category : #generated }
-TeradataUpdateQueryNode >> tableName: aSmaCCToken [
-	tableName := aSmaCCToken
-]
-
-{ #category : #generated }
 TeradataUpdateQueryNode >> tables [
 	^ tables
 ]
@@ -135,7 +124,7 @@ TeradataUpdateQueryNode >> tables: anOrderedCollection [
 
 { #category : #generated }
 TeradataUpdateQueryNode >> tokenVariables [
-	^ #(#updateToken #tableName #setToken #elseToken #whereToken #fromToken)
+	^ #(#updateToken #setToken #elseToken #whereToken #fromToken)
 ]
 
 { #category : #generated }
