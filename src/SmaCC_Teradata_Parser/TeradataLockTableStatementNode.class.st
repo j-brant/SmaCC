@@ -33,12 +33,8 @@ TeradataLockTableStatementNode >> lock [
 ]
 
 { #category : #generated }
-TeradataLockTableStatementNode >> lock: aTeradataIdentifierNameNode [
-	self lock notNil
-		ifTrue: [ self lock parent: nil ].
-	lock := aTeradataIdentifierNameNode.
-	self lock notNil
-		ifTrue: [ self lock parent: self ]
+TeradataLockTableStatementNode >> lock: aSmaCCToken [
+	lock := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -53,7 +49,7 @@ TeradataLockTableStatementNode >> lockToken: aSmaCCToken [
 
 { #category : #generated }
 TeradataLockTableStatementNode >> nodeVariables [
-	^ #(#table #lock #statement)
+	^ #(#table #statement)
 ]
 
 { #category : #generated }
@@ -96,5 +92,5 @@ TeradataLockTableStatementNode >> tableToken: aSmaCCToken [
 
 { #category : #generated }
 TeradataLockTableStatementNode >> tokenVariables [
-	^ #(#lockToken #forToken #tableToken)
+	^ #(#lockToken #forToken #lock #tableToken)
 ]

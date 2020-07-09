@@ -30,10 +30,10 @@ TeradataSetExpressionNode >> name [
 ]
 
 { #category : #generated }
-TeradataSetExpressionNode >> name: aTeradataIdentifierNameNode [
+TeradataSetExpressionNode >> name: aTeradataIdentifierExpressionNode [
 	self name notNil
 		ifTrue: [ self name parent: nil ].
-	name := aTeradataIdentifierNameNode.
+	name := aTeradataIdentifierExpressionNode.
 	self name notNil
 		ifTrue: [ self name parent: self ]
 ]
