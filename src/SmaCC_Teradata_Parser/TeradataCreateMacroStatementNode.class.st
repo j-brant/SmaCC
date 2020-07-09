@@ -98,8 +98,17 @@ TeradataCreateMacroStatementNode >> name [
 ]
 
 { #category : #generated }
-TeradataCreateMacroStatementNode >> name: aSmaCCToken [
-	name := aSmaCCToken
+TeradataCreateMacroStatementNode >> name: aTeradataIdentifierNameNode [
+	self name notNil
+		ifTrue: [ self name parent: nil ].
+	name := aTeradataIdentifierNameNode.
+	self name notNil
+		ifTrue: [ self name parent: self ]
+]
+
+{ #category : #generated }
+TeradataCreateMacroStatementNode >> nodeVariables [
+	^ #(#name)
 ]
 
 { #category : #generated }
@@ -148,5 +157,5 @@ TeradataCreateMacroStatementNode >> statements: anOrderedCollection [
 
 { #category : #generated }
 TeradataCreateMacroStatementNode >> tokenVariables [
-	^ #(#createToken #macroToken #name #asToken)
+	^ #(#createToken #macroToken #asToken)
 ]

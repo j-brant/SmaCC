@@ -76,13 +76,17 @@ TeradataRecursiveQueryNode >> name [
 ]
 
 { #category : #generated }
-TeradataRecursiveQueryNode >> name: aSmaCCToken [
-	name := aSmaCCToken
+TeradataRecursiveQueryNode >> name: aTeradataIdentifierNameNode [
+	self name notNil
+		ifTrue: [ self name parent: nil ].
+	name := aTeradataIdentifierNameNode.
+	self name notNil
+		ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
 TeradataRecursiveQueryNode >> nodeVariables [
-	^ #(#query #statement)
+	^ #(#name #query #statement)
 ]
 
 { #category : #generated }
@@ -135,7 +139,7 @@ TeradataRecursiveQueryNode >> statement: aTeradataProgramNode [
 
 { #category : #generated }
 TeradataRecursiveQueryNode >> tokenVariables [
-	^ #(#withToken #recursiveToken #name #asToken)
+	^ #(#withToken #recursiveToken #asToken)
 ]
 
 { #category : #generated }

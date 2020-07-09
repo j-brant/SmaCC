@@ -35,6 +35,11 @@ TeradataProgramNodeVisitor >> visitCaseExpression: aCaseExpression [
 ]
 
 { #category : #generated }
+TeradataProgramNodeVisitor >> visitCaseSpecificExpression: aCaseSpecificExpression [
+	^ self visitExpression: aCaseSpecificExpression
+]
+
+{ #category : #generated }
 TeradataProgramNodeVisitor >> visitCastExpression: aCastExpression [
 	^ self visitExpression: aCastExpression
 ]
@@ -132,6 +137,11 @@ TeradataProgramNodeVisitor >> visitHelpSessionStatement: aHelpSessionStatement [
 { #category : #generated }
 TeradataProgramNodeVisitor >> visitIdentifierExpression: anIdentifierExpression [
 	^ self visitExpression: anIdentifierExpression
+]
+
+{ #category : #generated }
+TeradataProgramNodeVisitor >> visitIdentifierName: anIdentifierName [
+	^ self visitProgram: anIdentifierName
 ]
 
 { #category : #generated }

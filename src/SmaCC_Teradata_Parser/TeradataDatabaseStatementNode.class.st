@@ -19,8 +19,12 @@ TeradataDatabaseStatementNode >> database [
 ]
 
 { #category : #generated }
-TeradataDatabaseStatementNode >> database: aSmaCCToken [
-	database := aSmaCCToken
+TeradataDatabaseStatementNode >> database: aTeradataIdentifierNameNode [
+	self database notNil
+		ifTrue: [ self database parent: nil ].
+	database := aTeradataIdentifierNameNode.
+	self database notNil
+		ifTrue: [ self database parent: self ]
 ]
 
 { #category : #generated }
@@ -34,6 +38,11 @@ TeradataDatabaseStatementNode >> databaseToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+TeradataDatabaseStatementNode >> nodeVariables [
+	^ #(#database)
+]
+
+{ #category : #generated }
 TeradataDatabaseStatementNode >> tokenVariables [
-	^ #(#databaseToken #database)
+	^ #(#databaseToken)
 ]

@@ -19,18 +19,17 @@ TeradataParameterNode >> name [
 ]
 
 { #category : #generated }
-TeradataParameterNode >> name: aSmaCCToken [
-	name := aSmaCCToken
+TeradataParameterNode >> name: aTeradataIdentifierNameNode [
+	self name notNil
+		ifTrue: [ self name parent: nil ].
+	name := aTeradataIdentifierNameNode.
+	self name notNil
+		ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
 TeradataParameterNode >> nodeVariables [
-	^ #(#type)
-]
-
-{ #category : #generated }
-TeradataParameterNode >> tokenVariables [
-	^ #(#name)
+	^ #(#name #type)
 ]
 
 { #category : #generated }

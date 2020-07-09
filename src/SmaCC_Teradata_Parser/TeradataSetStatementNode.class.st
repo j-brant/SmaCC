@@ -44,13 +44,17 @@ TeradataSetStatementNode >> name [
 ]
 
 { #category : #generated }
-TeradataSetStatementNode >> name: aSmaCCToken [
-	name := aSmaCCToken
+TeradataSetStatementNode >> name: aTeradataIdentifierNameNode [
+	self name notNil
+		ifTrue: [ self name parent: nil ].
+	name := aTeradataIdentifierNameNode.
+	self name notNil
+		ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
 TeradataSetStatementNode >> nodeVariables [
-	^ #(#value)
+	^ #(#name #value)
 ]
 
 { #category : #generated }
@@ -75,7 +79,7 @@ TeradataSetStatementNode >> setToken: aSmaCCToken [
 
 { #category : #generated }
 TeradataSetStatementNode >> tokenVariables [
-	^ #(#setToken #name #equals #updateToken #forToken #sessionToken)
+	^ #(#setToken #equals #updateToken #forToken #sessionToken)
 ]
 
 { #category : #generated }

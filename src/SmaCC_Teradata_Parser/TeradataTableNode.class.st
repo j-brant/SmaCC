@@ -2,7 +2,8 @@ Class {
 	#name : #TeradataTableNode,
 	#superclass : #TeradataProgramNode,
 	#instVars : [
-		'name',
+		'names',
+		'periods',
 		'alias',
 		'asToken'
 	],
@@ -35,16 +36,38 @@ TeradataTableNode >> asToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-TeradataTableNode >> name [
-	^ name
+TeradataTableNode >> compositeTokenVariables [
+	^ #(#names #periods)
+]
+
+{ #category : #'generated-initialize-release' }
+TeradataTableNode >> initialize [
+	super initialize.
+	names := OrderedCollection new: 2.
+	periods := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-TeradataTableNode >> name: aSmaCCToken [
-	name := aSmaCCToken
+TeradataTableNode >> names [
+	^ names
+]
+
+{ #category : #generated }
+TeradataTableNode >> names: anOrderedCollection [
+	names := anOrderedCollection
+]
+
+{ #category : #generated }
+TeradataTableNode >> periods [
+	^ periods
+]
+
+{ #category : #generated }
+TeradataTableNode >> periods: anOrderedCollection [
+	periods := anOrderedCollection
 ]
 
 { #category : #generated }
 TeradataTableNode >> tokenVariables [
-	^ #(#name #alias #asToken)
+	^ #(#alias #asToken)
 ]

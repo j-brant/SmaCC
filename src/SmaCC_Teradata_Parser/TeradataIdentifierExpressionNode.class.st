@@ -2,7 +2,8 @@ Class {
 	#name : #TeradataIdentifierExpressionNode,
 	#superclass : #TeradataExpressionNode,
 	#instVars : [
-		'name'
+		'names',
+		'periods'
 	],
 	#category : #'SmaCC_Teradata_Parser'
 }
@@ -13,16 +14,33 @@ TeradataIdentifierExpressionNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-TeradataIdentifierExpressionNode >> name [
-	^ name
+TeradataIdentifierExpressionNode >> compositeTokenVariables [
+	^ #(#names #periods #leftParens #rightParens)
+]
+
+{ #category : #'generated-initialize-release' }
+TeradataIdentifierExpressionNode >> initialize [
+	super initialize.
+	names := OrderedCollection new: 2.
+	periods := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-TeradataIdentifierExpressionNode >> name: aSmaCCToken [
-	name := aSmaCCToken
+TeradataIdentifierExpressionNode >> names [
+	^ names
 ]
 
 { #category : #generated }
-TeradataIdentifierExpressionNode >> tokenVariables [
-	^ #(#name)
+TeradataIdentifierExpressionNode >> names: anOrderedCollection [
+	names := anOrderedCollection
+]
+
+{ #category : #generated }
+TeradataIdentifierExpressionNode >> periods [
+	^ periods
+]
+
+{ #category : #generated }
+TeradataIdentifierExpressionNode >> periods: anOrderedCollection [
+	periods := anOrderedCollection
 ]

@@ -5,14 +5,7 @@ Class {
 		'checkToken',
 		'workloadToken',
 		'forToken',
-		'beginToken',
-		'loadingToken',
-		'database',
-		'table',
-		'values',
-		'commas',
-		'withToken',
-		'intervalToken',
+		'statement',
 		'endToken'
 	],
 	#category : #'SmaCC_Teradata_Parser'
@@ -24,16 +17,6 @@ TeradataCheckWorkloadStatementNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-TeradataCheckWorkloadStatementNode >> beginToken [
-	^ beginToken
-]
-
-{ #category : #generated }
-TeradataCheckWorkloadStatementNode >> beginToken: aSmaCCToken [
-	beginToken := aSmaCCToken
-]
-
-{ #category : #generated }
 TeradataCheckWorkloadStatementNode >> checkToken [
 	^ checkToken
 ]
@@ -41,36 +24,6 @@ TeradataCheckWorkloadStatementNode >> checkToken [
 { #category : #generated }
 TeradataCheckWorkloadStatementNode >> checkToken: aSmaCCToken [
 	checkToken := aSmaCCToken
-]
-
-{ #category : #generated }
-TeradataCheckWorkloadStatementNode >> commas [
-	^ commas
-]
-
-{ #category : #generated }
-TeradataCheckWorkloadStatementNode >> commas: anOrderedCollection [
-	commas := anOrderedCollection
-]
-
-{ #category : #generated }
-TeradataCheckWorkloadStatementNode >> compositeNodeVariables [
-	^ #(#values)
-]
-
-{ #category : #generated }
-TeradataCheckWorkloadStatementNode >> compositeTokenVariables [
-	^ #(#commas)
-]
-
-{ #category : #generated }
-TeradataCheckWorkloadStatementNode >> database [
-	^ database
-]
-
-{ #category : #generated }
-TeradataCheckWorkloadStatementNode >> database: aSmaCCToken [
-	database := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -93,77 +46,28 @@ TeradataCheckWorkloadStatementNode >> forToken: aSmaCCToken [
 	forToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
-TeradataCheckWorkloadStatementNode >> initialize [
-	super initialize.
-	values := OrderedCollection new: 2.
-	commas := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-TeradataCheckWorkloadStatementNode >> intervalToken [
-	^ intervalToken
-]
-
-{ #category : #generated }
-TeradataCheckWorkloadStatementNode >> intervalToken: aSmaCCToken [
-	intervalToken := aSmaCCToken
-]
-
-{ #category : #generated }
-TeradataCheckWorkloadStatementNode >> loadingToken [
-	^ loadingToken
-]
-
-{ #category : #generated }
-TeradataCheckWorkloadStatementNode >> loadingToken: aSmaCCToken [
-	loadingToken := aSmaCCToken
-]
-
 { #category : #generated }
 TeradataCheckWorkloadStatementNode >> nodeVariables [
-	^ #(#table)
+	^ #(#statement)
 ]
 
 { #category : #generated }
-TeradataCheckWorkloadStatementNode >> table [
-	^ table
+TeradataCheckWorkloadStatementNode >> statement [
+	^ statement
 ]
 
 { #category : #generated }
-TeradataCheckWorkloadStatementNode >> table: aTeradataTableNode [
-	self table notNil
-		ifTrue: [ self table parent: nil ].
-	table := aTeradataTableNode.
-	self table notNil
-		ifTrue: [ self table parent: self ]
+TeradataCheckWorkloadStatementNode >> statement: aTeradataProgramNode [
+	self statement notNil
+		ifTrue: [ self statement parent: nil ].
+	statement := aTeradataProgramNode.
+	self statement notNil
+		ifTrue: [ self statement parent: self ]
 ]
 
 { #category : #generated }
 TeradataCheckWorkloadStatementNode >> tokenVariables [
-	^ #(#checkToken #workloadToken #forToken #beginToken #loadingToken #database #withToken #intervalToken #endToken)
-]
-
-{ #category : #generated }
-TeradataCheckWorkloadStatementNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-TeradataCheckWorkloadStatementNode >> values: anOrderedCollection [
-	self setParents: self values to: nil.
-	values := anOrderedCollection.
-	self setParents: self values to: self
-]
-
-{ #category : #generated }
-TeradataCheckWorkloadStatementNode >> withToken [
-	^ withToken
-]
-
-{ #category : #generated }
-TeradataCheckWorkloadStatementNode >> withToken: aSmaCCToken [
-	withToken := aSmaCCToken
+	^ #(#checkToken #workloadToken #forToken #endToken)
 ]
 
 { #category : #generated }

@@ -30,18 +30,22 @@ TeradataSetExpressionNode >> name [
 ]
 
 { #category : #generated }
-TeradataSetExpressionNode >> name: aSmaCCToken [
-	name := aSmaCCToken
+TeradataSetExpressionNode >> name: aTeradataIdentifierNameNode [
+	self name notNil
+		ifTrue: [ self name parent: nil ].
+	name := aTeradataIdentifierNameNode.
+	self name notNil
+		ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
 TeradataSetExpressionNode >> nodeVariables [
-	^ #(#value)
+	^ #(#name #value)
 ]
 
 { #category : #generated }
 TeradataSetExpressionNode >> tokenVariables [
-	^ #(#name #equals)
+	^ #(#equals)
 ]
 
 { #category : #generated }
