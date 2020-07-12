@@ -119,7 +119,7 @@ TeradataSelectQueryNode >> into: aTeradataIntoExpressionNode [
 
 { #category : #generated }
 TeradataSelectQueryNode >> nodeVariables [
-	^ #(#into #partition #qualify #orderBy #group #having #where)
+	^ #(#into #partition #qualify #orderBy #having #group #where)
 ]
 
 { #category : #generated }
