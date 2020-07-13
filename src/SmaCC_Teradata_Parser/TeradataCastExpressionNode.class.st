@@ -5,9 +5,9 @@ Class {
 		'castToken',
 		'value',
 		'asToken',
-		'type',
 		'formatToken',
-		'format'
+		'format',
+		'type'
 	],
 	#category : #'SmaCC_Teradata_Parser'
 }

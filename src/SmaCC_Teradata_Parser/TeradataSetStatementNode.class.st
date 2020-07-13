@@ -79,7 +79,7 @@ TeradataSetStatementNode >> setToken: aSmaCCToken [
 
 { #category : #generated }
 TeradataSetStatementNode >> tokenVariables [
-	^ #(#setToken #equals #updateToken #forToken #sessionToken)
+	^ #(#setToken #equals #forToken #sessionToken #updateToken)
 ]
 
 { #category : #generated }
