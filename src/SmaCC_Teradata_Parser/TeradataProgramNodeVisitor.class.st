@@ -210,6 +210,11 @@ TeradataProgramNodeVisitor >> visitMergeQuery: aMergeQuery [
 ]
 
 { #category : #generated }
+TeradataProgramNodeVisitor >> visitMinusQuery: aMinusQuery [
+	^ self visitProgram: aMinusQuery
+]
+
+{ #category : #generated }
 TeradataProgramNodeVisitor >> visitNullExpression: aNullExpression [
 	^ self visitExpression: aNullExpression
 ]
@@ -330,6 +335,11 @@ TeradataProgramNodeVisitor >> visitUpdateQuery: anUpdateQuery [
 ]
 
 { #category : #generated }
+TeradataProgramNodeVisitor >> visitUsingColumn: anUsingColumn [
+	^ self visitProgram: anUsingColumn
+]
+
+{ #category : #generated }
 TeradataProgramNodeVisitor >> visitUsingStatement: anUsingStatement [
 	^ self visitProgram: anUsingStatement
 ]
@@ -357,4 +367,9 @@ TeradataProgramNodeVisitor >> visitWithQuery: aWithQuery [
 { #category : #generated }
 TeradataProgramNodeVisitor >> visitWithTableDefinition: aWithTableDefinition [
 	^ self visitProgram: aWithTableDefinition
+]
+
+{ #category : #generated }
+TeradataProgramNodeVisitor >> visitXmlAggExpression: aXmlAggExpression [
+	^ self visitExpression: aXmlAggExpression
 ]

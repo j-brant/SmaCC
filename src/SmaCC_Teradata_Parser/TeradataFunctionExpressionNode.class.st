@@ -40,8 +40,12 @@ TeradataFunctionExpressionNode >> function [
 ]
 
 { #category : #generated }
-TeradataFunctionExpressionNode >> function: aSmaCCToken [
-	function := aSmaCCToken
+TeradataFunctionExpressionNode >> function: aTeradataIdentifierNameNode [
+	self function notNil
+		ifTrue: [ self function parent: nil ].
+	function := aTeradataIdentifierNameNode.
+	self function notNil
+		ifTrue: [ self function parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -52,7 +56,7 @@ TeradataFunctionExpressionNode >> initialize [
 ]
 
 { #category : #generated }
-TeradataFunctionExpressionNode >> tokenVariables [
+TeradataFunctionExpressionNode >> nodeVariables [
 	^ #(#function)
 ]
 

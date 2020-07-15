@@ -3,6 +3,9 @@ Class {
 	#superclass : #TeradataProgramNode,
 	#instVars : [
 		'name',
+		'characterToken',
+		'setToken',
+		'encoding',
 		'leftParen',
 		'precision',
 		'rightParen',
@@ -18,6 +21,16 @@ TeradataTypeNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
+TeradataTypeNode >> characterToken [
+	^ characterToken
+]
+
+{ #category : #generated }
+TeradataTypeNode >> characterToken: aSmaCCToken [
+	characterToken := aSmaCCToken
+]
+
+{ #category : #generated }
 TeradataTypeNode >> comma [
 	^ comma
 ]
@@ -25,6 +38,16 @@ TeradataTypeNode >> comma [
 { #category : #generated }
 TeradataTypeNode >> comma: aSmaCCToken [
 	comma := aSmaCCToken
+]
+
+{ #category : #generated }
+TeradataTypeNode >> encoding [
+	^ encoding
+]
+
+{ #category : #generated }
+TeradataTypeNode >> encoding: aSmaCCToken [
+	encoding := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -78,6 +101,16 @@ TeradataTypeNode >> scale: aSmaCCToken [
 ]
 
 { #category : #generated }
+TeradataTypeNode >> setToken [
+	^ setToken
+]
+
+{ #category : #generated }
+TeradataTypeNode >> setToken: aSmaCCToken [
+	setToken := aSmaCCToken
+]
+
+{ #category : #generated }
 TeradataTypeNode >> tokenVariables [
-	^ #(#name #leftParen #precision #rightParen #comma #scale)
+	^ #(#name #characterToken #setToken #encoding #leftParen #precision #rightParen #comma #scale)
 ]

@@ -3,9 +3,11 @@ Class {
 	#superclass : #TeradataProgramNode,
 	#instVars : [
 		'usingToken',
-		'values',
+		'columns',
 		'commas',
-		'statement'
+		'statement',
+		'leftParen',
+		'rightParen'
 	],
 	#category : #'SmaCC_Teradata_Parser'
 }
@@ -13,6 +15,18 @@ Class {
 { #category : #generated }
 TeradataUsingStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUsingStatement: self
+]
+
+{ #category : #generated }
+TeradataUsingStatementNode >> columns [
+	^ columns
+]
+
+{ #category : #generated }
+TeradataUsingStatementNode >> columns: anOrderedCollection [
+	self setParents: self columns to: nil.
+	columns := anOrderedCollection.
+	self setParents: self columns to: self
 ]
 
 { #category : #generated }
@@ -27,7 +41,7 @@ TeradataUsingStatementNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 TeradataUsingStatementNode >> compositeNodeVariables [
-	^ #(#values)
+	^ #(#columns)
 ]
 
 { #category : #generated }
@@ -38,13 +52,33 @@ TeradataUsingStatementNode >> compositeTokenVariables [
 { #category : #'generated-initialize-release' }
 TeradataUsingStatementNode >> initialize [
 	super initialize.
-	values := OrderedCollection new: 2.
+	columns := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+TeradataUsingStatementNode >> leftParen [
+	^ leftParen
+]
+
+{ #category : #generated }
+TeradataUsingStatementNode >> leftParen: aSmaCCToken [
+	leftParen := aSmaCCToken
 ]
 
 { #category : #generated }
 TeradataUsingStatementNode >> nodeVariables [
 	^ #(#statement)
+]
+
+{ #category : #generated }
+TeradataUsingStatementNode >> rightParen [
+	^ rightParen
+]
+
+{ #category : #generated }
+TeradataUsingStatementNode >> rightParen: aSmaCCToken [
+	rightParen := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -63,7 +97,7 @@ TeradataUsingStatementNode >> statement: aTeradataProgramNode [
 
 { #category : #generated }
 TeradataUsingStatementNode >> tokenVariables [
-	^ #(#usingToken)
+	^ #(#usingToken #leftParen #rightParen)
 ]
 
 { #category : #generated }
@@ -74,16 +108,4 @@ TeradataUsingStatementNode >> usingToken [
 { #category : #generated }
 TeradataUsingStatementNode >> usingToken: aSmaCCToken [
 	usingToken := aSmaCCToken
-]
-
-{ #category : #generated }
-TeradataUsingStatementNode >> values [
-	^ values
-]
-
-{ #category : #generated }
-TeradataUsingStatementNode >> values: anOrderedCollection [
-	self setParents: self values to: nil.
-	values := anOrderedCollection.
-	self setParents: self values to: self
 ]
