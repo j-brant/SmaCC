@@ -3,12 +3,14 @@ Class {
 	#superclass : #TeradataProgramNode,
 	#instVars : [
 		'left',
-		'direction',
 		'joinToken',
 		'right',
 		'onToken',
 		'on',
-		'type'
+		'direction',
+		'type',
+		'leftParen',
+		'rightParen'
 	],
 	#category : #'SmaCC_Teradata_Parser'
 }
@@ -50,6 +52,16 @@ TeradataJoinTableNode >> left: aTeradataProgramNode [
 	left := aTeradataProgramNode.
 	self left notNil
 		ifTrue: [ self left parent: self ]
+]
+
+{ #category : #generated }
+TeradataJoinTableNode >> leftParen [
+	^ leftParen
+]
+
+{ #category : #generated }
+TeradataJoinTableNode >> leftParen: aSmaCCToken [
+	leftParen := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -96,8 +108,18 @@ TeradataJoinTableNode >> right: aTeradataProgramNode [
 ]
 
 { #category : #generated }
+TeradataJoinTableNode >> rightParen [
+	^ rightParen
+]
+
+{ #category : #generated }
+TeradataJoinTableNode >> rightParen: aSmaCCToken [
+	rightParen := aSmaCCToken
+]
+
+{ #category : #generated }
 TeradataJoinTableNode >> tokenVariables [
-	^ #(#direction #joinToken #onToken #type)
+	^ #(#joinToken #onToken #direction #type #leftParen #rightParen)
 ]
 
 { #category : #generated }

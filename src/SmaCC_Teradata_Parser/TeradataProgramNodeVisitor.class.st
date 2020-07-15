@@ -55,6 +55,16 @@ TeradataProgramNodeVisitor >> visitCheckpointStatement: aCheckpointStatement [
 ]
 
 { #category : #generated }
+TeradataProgramNodeVisitor >> visitConversionExpression: aConversionExpression [
+	^ self visitExpression: aConversionExpression
+]
+
+{ #category : #generated }
+TeradataProgramNodeVisitor >> visitCountExpression: aCountExpression [
+	^ self visitExpression: aCountExpression
+]
+
+{ #category : #generated }
 TeradataProgramNodeVisitor >> visitCreateMacroStatement: aCreateMacroStatement [
 	^ self visitProgram: aCreateMacroStatement
 ]
@@ -95,6 +105,11 @@ TeradataProgramNodeVisitor >> visitExecuteStatement: anExecuteStatement [
 ]
 
 { #category : #generated }
+TeradataProgramNodeVisitor >> visitExistsExpression: anExistsExpression [
+	^ self visitExpression: anExistsExpression
+]
+
+{ #category : #generated }
 TeradataProgramNodeVisitor >> visitExpression: anExpression [
 	^ self visitProgram: anExpression
 ]
@@ -107,11 +122,6 @@ TeradataProgramNodeVisitor >> visitExtractExpression: anExtractExpression [
 { #category : #generated }
 TeradataProgramNodeVisitor >> visitFile: aFile [
 	^ self visitProgram: aFile
-]
-
-{ #category : #generated }
-TeradataProgramNodeVisitor >> visitFormatExpression: aFormatExpression [
-	^ self visitExpression: aFormatExpression
 ]
 
 { #category : #generated }
@@ -240,11 +250,6 @@ TeradataProgramNodeVisitor >> visitQueryExpression: aQueryExpression [
 ]
 
 { #category : #generated }
-TeradataProgramNodeVisitor >> visitRecursiveQuery: aRecursiveQuery [
-	^ self visitProgram: aRecursiveQuery
-]
-
-{ #category : #generated }
 TeradataProgramNodeVisitor >> visitRollbackStatement: aRollbackStatement [
 	^ self visitProgram: aRollbackStatement
 ]
@@ -285,6 +290,21 @@ TeradataProgramNodeVisitor >> visitTable: aTable [
 ]
 
 { #category : #generated }
+TeradataProgramNodeVisitor >> visitTimestampExpression: aTimestampExpression [
+	^ self visitExpression: aTimestampExpression
+]
+
+{ #category : #generated }
+TeradataProgramNodeVisitor >> visitTitleExpression: aTitleExpression [
+	^ self visitExpression: aTitleExpression
+]
+
+{ #category : #generated }
+TeradataProgramNodeVisitor >> visitTranslateExpression: aTranslateExpression [
+	^ self visitExpression: aTranslateExpression
+]
+
+{ #category : #generated }
 TeradataProgramNodeVisitor >> visitTrimExpression: aTrimExpression [
 	^ self visitExpression: aTrimExpression
 ]
@@ -292,11 +312,6 @@ TeradataProgramNodeVisitor >> visitTrimExpression: aTrimExpression [
 { #category : #generated }
 TeradataProgramNodeVisitor >> visitType: aType [
 	^ self visitProgram: aType
-]
-
-{ #category : #generated }
-TeradataProgramNodeVisitor >> visitTypeExpression: aTypeExpression [
-	^ self visitExpression: aTypeExpression
 ]
 
 { #category : #generated }
@@ -332,4 +347,14 @@ TeradataProgramNodeVisitor >> visitWhenExpression: aWhenExpression [
 { #category : #generated }
 TeradataProgramNodeVisitor >> visitWhenMergeCondition: aWhenMergeCondition [
 	^ self visitProgram: aWhenMergeCondition
+]
+
+{ #category : #generated }
+TeradataProgramNodeVisitor >> visitWithQuery: aWithQuery [
+	^ self visitProgram: aWithQuery
+]
+
+{ #category : #generated }
+TeradataProgramNodeVisitor >> visitWithTableDefinition: aWithTableDefinition [
+	^ self visitProgram: aWithTableDefinition
 ]

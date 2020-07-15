@@ -9,12 +9,14 @@ Class {
 		'partition',
 		'qualify',
 		'orderBy',
-		'group',
 		'having',
+		'group',
 		'whereToken',
 		'where',
 		'fromToken',
 		'tables',
+		'forToken',
+		'cursorToken',
 		'topToken',
 		'top',
 		'distinctToken'
@@ -48,6 +50,16 @@ TeradataSelectQueryNode >> compositeTokenVariables [
 ]
 
 { #category : #generated }
+TeradataSelectQueryNode >> cursorToken [
+	^ cursorToken
+]
+
+{ #category : #generated }
+TeradataSelectQueryNode >> cursorToken: aSmaCCToken [
+	cursorToken := aSmaCCToken
+]
+
+{ #category : #generated }
 TeradataSelectQueryNode >> distinctToken [
 	^ distinctToken
 ]
@@ -55,6 +67,16 @@ TeradataSelectQueryNode >> distinctToken [
 { #category : #generated }
 TeradataSelectQueryNode >> distinctToken: aSmaCCToken [
 	distinctToken := aSmaCCToken
+]
+
+{ #category : #generated }
+TeradataSelectQueryNode >> forToken [
+	^ forToken
+]
+
+{ #category : #generated }
+TeradataSelectQueryNode >> forToken: aSmaCCToken [
+	forToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -188,7 +210,7 @@ TeradataSelectQueryNode >> tables: anOrderedCollection [
 
 { #category : #generated }
 TeradataSelectQueryNode >> tokenVariables [
-	^ #(#selectToken #whereToken #fromToken #topToken #top #distinctToken)
+	^ #(#selectToken #whereToken #fromToken #forToken #cursorToken #topToken #top #distinctToken)
 ]
 
 { #category : #generated }

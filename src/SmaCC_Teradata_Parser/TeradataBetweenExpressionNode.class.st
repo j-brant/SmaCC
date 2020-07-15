@@ -6,7 +6,8 @@ Class {
 		'betweenToken',
 		'first',
 		'andToken',
-		'last'
+		'last',
+		'notToken'
 	],
 	#category : #'SmaCC_Teradata_Parser'
 }
@@ -70,8 +71,18 @@ TeradataBetweenExpressionNode >> nodeVariables [
 ]
 
 { #category : #generated }
+TeradataBetweenExpressionNode >> notToken [
+	^ notToken
+]
+
+{ #category : #generated }
+TeradataBetweenExpressionNode >> notToken: aSmaCCToken [
+	notToken := aSmaCCToken
+]
+
+{ #category : #generated }
 TeradataBetweenExpressionNode >> tokenVariables [
-	^ #(#betweenToken #andToken)
+	^ #(#betweenToken #andToken #notToken)
 ]
 
 { #category : #generated }
