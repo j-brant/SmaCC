@@ -2754,3 +2754,13 @@ Antlr4Parser >> reduceActionFortokensSpec2: nodes [
 	result rightBrace: (nodes at: 4).
 	^ result
 ]
+
+{ #category : #testing }
+Antlr4Parser >> tryAllTokens [
+	^ true
+]
+
+{ #category : #testing }
+Antlr4Parser >> useAllTokenIds [
+	^ false
+]
