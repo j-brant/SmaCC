@@ -90,6 +90,11 @@ TeradataProgramNodeVisitor >> visitElseExpression: anElseExpression [
 ]
 
 { #category : #generated }
+TeradataProgramNodeVisitor >> visitEmptyGroupByExpression: anEmptyGroupByExpression [
+	^ self visitExpression: anEmptyGroupByExpression
+]
+
+{ #category : #generated }
 TeradataProgramNodeVisitor >> visitEndLoadingStatement: anEndLoadingStatement [
 	^ self visitProgram: anEndLoadingStatement
 ]
@@ -97,6 +102,11 @@ TeradataProgramNodeVisitor >> visitEndLoadingStatement: anEndLoadingStatement [
 { #category : #generated }
 TeradataProgramNodeVisitor >> visitEndTransactionStatement: anEndTransactionStatement [
 	^ self visitProgram: anEndTransactionStatement
+]
+
+{ #category : #generated }
+TeradataProgramNodeVisitor >> visitExceptQuery: anExceptQuery [
+	^ self visitProgram: anExceptQuery
 ]
 
 { #category : #generated }
@@ -155,6 +165,11 @@ TeradataProgramNodeVisitor >> visitIdentifierName: anIdentifierName [
 ]
 
 { #category : #generated }
+TeradataProgramNodeVisitor >> visitIgnoreNullsExpression: anIgnoreNullsExpression [
+	^ self visitExpression: anIgnoreNullsExpression
+]
+
+{ #category : #generated }
 TeradataProgramNodeVisitor >> visitInQueryExpression: anInQueryExpression [
 	^ self visitExpression: anInQueryExpression
 ]
@@ -167,6 +182,11 @@ TeradataProgramNodeVisitor >> visitInValueExpression: anInValueExpression [
 { #category : #generated }
 TeradataProgramNodeVisitor >> visitInsertQuery: anInsertQuery [
 	^ self visitProgram: anInsertQuery
+]
+
+{ #category : #generated }
+TeradataProgramNodeVisitor >> visitIntersectQuery: anIntersectQuery [
+	^ self visitProgram: anIntersectQuery
 ]
 
 { #category : #generated }
@@ -325,6 +345,11 @@ TeradataProgramNodeVisitor >> visitUnaryExpression: anUnaryExpression [
 ]
 
 { #category : #generated }
+TeradataProgramNodeVisitor >> visitUnicodeEscapeExpression: anUnicodeEscapeExpression [
+	^ self visitExpression: anUnicodeEscapeExpression
+]
+
+{ #category : #generated }
 TeradataProgramNodeVisitor >> visitUnionQuery: anUnionQuery [
 	^ self visitProgram: anUnionQuery
 ]
@@ -357,6 +382,11 @@ TeradataProgramNodeVisitor >> visitWhenExpression: aWhenExpression [
 { #category : #generated }
 TeradataProgramNodeVisitor >> visitWhenMergeCondition: aWhenMergeCondition [
 	^ self visitProgram: aWhenMergeCondition
+]
+
+{ #category : #generated }
+TeradataProgramNodeVisitor >> visitWhereExpression: aWhereExpression [
+	^ self visitProgram: aWhereExpression
 ]
 
 { #category : #generated }

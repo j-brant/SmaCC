@@ -8,7 +8,6 @@ Class {
 		'fromToken',
 		'tables',
 		'commas',
-		'whereToken',
 		'where'
 	],
 	#category : #'SmaCC_Teradata_Parser'
@@ -85,7 +84,7 @@ TeradataRollbackStatementNode >> tables: anOrderedCollection [
 
 { #category : #generated }
 TeradataRollbackStatementNode >> tokenVariables [
-	^ #(#rollbackToken #workToken #work #fromToken #whereToken)
+	^ #(#rollbackToken #workToken #work #fromToken)
 ]
 
 { #category : #generated }
@@ -94,22 +93,12 @@ TeradataRollbackStatementNode >> where [
 ]
 
 { #category : #generated }
-TeradataRollbackStatementNode >> where: aTeradataExpressionNode [
+TeradataRollbackStatementNode >> where: aTeradataWhereExpressionNode [
 	self where notNil
 		ifTrue: [ self where parent: nil ].
-	where := aTeradataExpressionNode.
+	where := aTeradataWhereExpressionNode.
 	self where notNil
 		ifTrue: [ self where parent: self ]
-]
-
-{ #category : #generated }
-TeradataRollbackStatementNode >> whereToken [
-	^ whereToken
-]
-
-{ #category : #generated }
-TeradataRollbackStatementNode >> whereToken: aSmaCCToken [
-	whereToken := aSmaCCToken
 ]
 
 { #category : #generated }

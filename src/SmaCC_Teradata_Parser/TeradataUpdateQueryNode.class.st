@@ -9,8 +9,9 @@ Class {
 		'commas',
 		'elseToken',
 		'else',
-		'whereToken',
 		'where',
+		'alias',
+		'asToken',
 		'fromToken'
 	],
 	#category : #'SmaCC_Teradata_Parser'
@@ -19,6 +20,26 @@ Class {
 { #category : #generated }
 TeradataUpdateQueryNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUpdateQuery: self
+]
+
+{ #category : #generated }
+TeradataUpdateQueryNode >> alias [
+	^ alias
+]
+
+{ #category : #generated }
+TeradataUpdateQueryNode >> alias: aSmaCCToken [
+	alias := aSmaCCToken
+]
+
+{ #category : #generated }
+TeradataUpdateQueryNode >> asToken [
+	^ asToken
+]
+
+{ #category : #generated }
+TeradataUpdateQueryNode >> asToken: aSmaCCToken [
+	asToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -124,7 +145,7 @@ TeradataUpdateQueryNode >> tables: anOrderedCollection [
 
 { #category : #generated }
 TeradataUpdateQueryNode >> tokenVariables [
-	^ #(#updateToken #setToken #elseToken #whereToken #fromToken)
+	^ #(#updateToken #setToken #elseToken #alias #asToken #fromToken)
 ]
 
 { #category : #generated }
@@ -143,20 +164,10 @@ TeradataUpdateQueryNode >> where [
 ]
 
 { #category : #generated }
-TeradataUpdateQueryNode >> where: aTeradataExpressionNode [
+TeradataUpdateQueryNode >> where: aTeradataWhereExpressionNode [
 	self where notNil
 		ifTrue: [ self where parent: nil ].
-	where := aTeradataExpressionNode.
+	where := aTeradataWhereExpressionNode.
 	self where notNil
 		ifTrue: [ self where parent: self ]
-]
-
-{ #category : #generated }
-TeradataUpdateQueryNode >> whereToken [
-	^ whereToken
-]
-
-{ #category : #generated }
-TeradataUpdateQueryNode >> whereToken: aSmaCCToken [
-	whereToken := aSmaCCToken
 ]

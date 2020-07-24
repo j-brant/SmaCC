@@ -4,7 +4,6 @@ Class {
 	#instVars : [
 		'_deleteToken',
 		'table',
-		'whereToken',
 		'where',
 		'allToken',
 		'fromToken'
@@ -68,7 +67,7 @@ TeradataDeleteQueryNode >> table: aTeradataProgramNode [
 
 { #category : #generated }
 TeradataDeleteQueryNode >> tokenVariables [
-	^ #(#_deleteToken #whereToken #allToken #fromToken)
+	^ #(#_deleteToken #allToken #fromToken)
 ]
 
 { #category : #generated }
@@ -77,20 +76,10 @@ TeradataDeleteQueryNode >> where [
 ]
 
 { #category : #generated }
-TeradataDeleteQueryNode >> where: aTeradataExpressionNode [
+TeradataDeleteQueryNode >> where: aTeradataWhereExpressionNode [
 	self where notNil
 		ifTrue: [ self where parent: nil ].
-	where := aTeradataExpressionNode.
+	where := aTeradataWhereExpressionNode.
 	self where notNil
 		ifTrue: [ self where parent: self ]
-]
-
-{ #category : #generated }
-TeradataDeleteQueryNode >> whereToken [
-	^ whereToken
-]
-
-{ #category : #generated }
-TeradataDeleteQueryNode >> whereToken: aSmaCCToken [
-	whereToken := aSmaCCToken
 ]

@@ -4,9 +4,9 @@ Class {
 	#instVars : [
 		'left',
 		'minusToken',
-		'leftParen',
+		'leftParens',
 		'right',
-		'rightParen',
+		'rightParens',
 		'orderBy'
 	],
 	#category : #'SmaCC_Teradata_Parser'
@@ -15,6 +15,18 @@ Class {
 { #category : #generated }
 TeradataMinusQueryNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMinusQuery: self
+]
+
+{ #category : #generated }
+TeradataMinusQueryNode >> compositeTokenVariables [
+	^ #(#leftParens #rightParens)
+]
+
+{ #category : #'generated-initialize-release' }
+TeradataMinusQueryNode >> initialize [
+	super initialize.
+	leftParens := OrderedCollection new: 2.
+	rightParens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -32,13 +44,13 @@ TeradataMinusQueryNode >> left: aTeradataProgramNode [
 ]
 
 { #category : #generated }
-TeradataMinusQueryNode >> leftParen [
-	^ leftParen
+TeradataMinusQueryNode >> leftParens [
+	^ leftParens
 ]
 
 { #category : #generated }
-TeradataMinusQueryNode >> leftParen: aSmaCCToken [
-	leftParen := aSmaCCToken
+TeradataMinusQueryNode >> leftParens: anOrderedCollection [
+	leftParens := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -85,16 +97,16 @@ TeradataMinusQueryNode >> right: aTeradataProgramNode [
 ]
 
 { #category : #generated }
-TeradataMinusQueryNode >> rightParen [
-	^ rightParen
+TeradataMinusQueryNode >> rightParens [
+	^ rightParens
 ]
 
 { #category : #generated }
-TeradataMinusQueryNode >> rightParen: aSmaCCToken [
-	rightParen := aSmaCCToken
+TeradataMinusQueryNode >> rightParens: anOrderedCollection [
+	rightParens := anOrderedCollection
 ]
 
 { #category : #generated }
 TeradataMinusQueryNode >> tokenVariables [
-	^ #(#minusToken #leftParen #rightParen)
+	^ #(#minusToken)
 ]

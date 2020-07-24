@@ -6,17 +6,17 @@ Class {
 		'values',
 		'commas',
 		'into',
-		'partition',
-		'qualify',
-		'orderBy',
-		'having',
-		'group',
-		'whereToken',
-		'where',
+		'wheres',
+		'groups',
+		'havings',
+		'partitions',
+		'qualifies',
+		'orderBies',
 		'fromToken',
 		'tables',
 		'forToken',
 		'cursorToken',
+		'count',
 		'topToken',
 		'top',
 		'distinctToken'
@@ -41,12 +41,22 @@ TeradataSelectQueryNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 TeradataSelectQueryNode >> compositeNodeVariables [
-	^ #(#values #tables)
+	^ #(#values #wheres #groups #havings #partitions #qualifies #orderBies #tables)
 ]
 
 { #category : #generated }
 TeradataSelectQueryNode >> compositeTokenVariables [
 	^ #(#commas)
+]
+
+{ #category : #generated }
+TeradataSelectQueryNode >> count [
+	^ count
+]
+
+{ #category : #generated }
+TeradataSelectQueryNode >> count: aSmaCCToken [
+	count := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -90,31 +100,27 @@ TeradataSelectQueryNode >> fromToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-TeradataSelectQueryNode >> group [
-	^ group
+TeradataSelectQueryNode >> groups [
+	^ groups
 ]
 
 { #category : #generated }
-TeradataSelectQueryNode >> group: aTeradataGroupByNode [
-	self group notNil
-		ifTrue: [ self group parent: nil ].
-	group := aTeradataGroupByNode.
-	self group notNil
-		ifTrue: [ self group parent: self ]
+TeradataSelectQueryNode >> groups: anOrderedCollection [
+	self setParents: self groups to: nil.
+	groups := anOrderedCollection.
+	self setParents: self groups to: self
 ]
 
 { #category : #generated }
-TeradataSelectQueryNode >> having [
-	^ having
+TeradataSelectQueryNode >> havings [
+	^ havings
 ]
 
 { #category : #generated }
-TeradataSelectQueryNode >> having: aTeradataHavingNode [
-	self having notNil
-		ifTrue: [ self having parent: nil ].
-	having := aTeradataHavingNode.
-	self having notNil
-		ifTrue: [ self having parent: self ]
+TeradataSelectQueryNode >> havings: anOrderedCollection [
+	self setParents: self havings to: nil.
+	havings := anOrderedCollection.
+	self setParents: self havings to: self
 ]
 
 { #category : #'generated-initialize-release' }
@@ -122,6 +128,12 @@ TeradataSelectQueryNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
+	wheres := OrderedCollection new: 2.
+	groups := OrderedCollection new: 2.
+	havings := OrderedCollection new: 2.
+	partitions := OrderedCollection new: 2.
+	qualifies := OrderedCollection new: 2.
+	orderBies := OrderedCollection new: 2.
 	tables := OrderedCollection new: 2.
 ]
 
@@ -141,49 +153,43 @@ TeradataSelectQueryNode >> into: aTeradataIntoExpressionNode [
 
 { #category : #generated }
 TeradataSelectQueryNode >> nodeVariables [
-	^ #(#into #partition #qualify #orderBy #having #group #where)
+	^ #(#into)
 ]
 
 { #category : #generated }
-TeradataSelectQueryNode >> orderBy [
-	^ orderBy
+TeradataSelectQueryNode >> orderBies [
+	^ orderBies
 ]
 
 { #category : #generated }
-TeradataSelectQueryNode >> orderBy: aTeradataOrderByExpressionNode [
-	self orderBy notNil
-		ifTrue: [ self orderBy parent: nil ].
-	orderBy := aTeradataOrderByExpressionNode.
-	self orderBy notNil
-		ifTrue: [ self orderBy parent: self ]
+TeradataSelectQueryNode >> orderBies: anOrderedCollection [
+	self setParents: self orderBies to: nil.
+	orderBies := anOrderedCollection.
+	self setParents: self orderBies to: self
 ]
 
 { #category : #generated }
-TeradataSelectQueryNode >> partition [
-	^ partition
+TeradataSelectQueryNode >> partitions [
+	^ partitions
 ]
 
 { #category : #generated }
-TeradataSelectQueryNode >> partition: aTeradataPartitionByExpressionNode [
-	self partition notNil
-		ifTrue: [ self partition parent: nil ].
-	partition := aTeradataPartitionByExpressionNode.
-	self partition notNil
-		ifTrue: [ self partition parent: self ]
+TeradataSelectQueryNode >> partitions: anOrderedCollection [
+	self setParents: self partitions to: nil.
+	partitions := anOrderedCollection.
+	self setParents: self partitions to: self
 ]
 
 { #category : #generated }
-TeradataSelectQueryNode >> qualify [
-	^ qualify
+TeradataSelectQueryNode >> qualifies [
+	^ qualifies
 ]
 
 { #category : #generated }
-TeradataSelectQueryNode >> qualify: aTeradataQualifyExpressionNode [
-	self qualify notNil
-		ifTrue: [ self qualify parent: nil ].
-	qualify := aTeradataQualifyExpressionNode.
-	self qualify notNil
-		ifTrue: [ self qualify parent: self ]
+TeradataSelectQueryNode >> qualifies: anOrderedCollection [
+	self setParents: self qualifies to: nil.
+	qualifies := anOrderedCollection.
+	self setParents: self qualifies to: self
 ]
 
 { #category : #generated }
@@ -210,7 +216,7 @@ TeradataSelectQueryNode >> tables: anOrderedCollection [
 
 { #category : #generated }
 TeradataSelectQueryNode >> tokenVariables [
-	^ #(#selectToken #whereToken #fromToken #forToken #cursorToken #topToken #top #distinctToken)
+	^ #(#selectToken #fromToken #forToken #cursorToken #count #topToken #top #distinctToken)
 ]
 
 { #category : #generated }
@@ -246,25 +252,13 @@ TeradataSelectQueryNode >> values: anOrderedCollection [
 ]
 
 { #category : #generated }
-TeradataSelectQueryNode >> where [
-	^ where
+TeradataSelectQueryNode >> wheres [
+	^ wheres
 ]
 
 { #category : #generated }
-TeradataSelectQueryNode >> where: aTeradataExpressionNode [
-	self where notNil
-		ifTrue: [ self where parent: nil ].
-	where := aTeradataExpressionNode.
-	self where notNil
-		ifTrue: [ self where parent: self ]
-]
-
-{ #category : #generated }
-TeradataSelectQueryNode >> whereToken [
-	^ whereToken
-]
-
-{ #category : #generated }
-TeradataSelectQueryNode >> whereToken: aSmaCCToken [
-	whereToken := aSmaCCToken
+TeradataSelectQueryNode >> wheres: anOrderedCollection [
+	self setParents: self wheres to: nil.
+	wheres := anOrderedCollection.
+	self setParents: self wheres to: self
 ]

@@ -2,7 +2,7 @@ Class {
 	#name : #TeradataTypeNode,
 	#superclass : #TeradataProgramNode,
 	#instVars : [
-		'name',
+		'names',
 		'characterToken',
 		'setToken',
 		'encoding',
@@ -41,6 +41,11 @@ TeradataTypeNode >> comma: aSmaCCToken [
 ]
 
 { #category : #generated }
+TeradataTypeNode >> compositeTokenVariables [
+	^ #(#names)
+]
+
+{ #category : #generated }
 TeradataTypeNode >> encoding [
 	^ encoding
 ]
@@ -48,6 +53,12 @@ TeradataTypeNode >> encoding [
 { #category : #generated }
 TeradataTypeNode >> encoding: aSmaCCToken [
 	encoding := aSmaCCToken
+]
+
+{ #category : #'generated-initialize-release' }
+TeradataTypeNode >> initialize [
+	super initialize.
+	names := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -61,13 +72,13 @@ TeradataTypeNode >> leftParen: aSmaCCToken [
 ]
 
 { #category : #generated }
-TeradataTypeNode >> name [
-	^ name
+TeradataTypeNode >> names [
+	^ names
 ]
 
 { #category : #generated }
-TeradataTypeNode >> name: aSmaCCToken [
-	name := aSmaCCToken
+TeradataTypeNode >> names: anOrderedCollection [
+	names := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -112,5 +123,5 @@ TeradataTypeNode >> setToken: aSmaCCToken [
 
 { #category : #generated }
 TeradataTypeNode >> tokenVariables [
-	^ #(#name #characterToken #setToken #encoding #leftParen #precision #rightParen #comma #scale)
+	^ #(#characterToken #setToken #encoding #leftParen #precision #rightParen #comma #scale)
 ]

@@ -1,52 +1,51 @@
 Class {
-	#name : #TeradataUnionQueryNode,
+	#name : #TeradataExceptQueryNode,
 	#superclass : #TeradataProgramNode,
 	#instVars : [
 		'left',
-		'unionToken',
+		'intersectToken',
 		'leftParens',
 		'right',
 		'rightParens',
-		'orderBy',
-		'allToken'
+		'orderBy'
 	],
 	#category : #'SmaCC_Teradata_Parser'
 }
 
 { #category : #generated }
-TeradataUnionQueryNode >> acceptVisitor: aProgramVisitor [
-	^ aProgramVisitor visitUnionQuery: self
+TeradataExceptQueryNode >> acceptVisitor: aProgramVisitor [
+	^ aProgramVisitor visitExceptQuery: self
 ]
 
 { #category : #generated }
-TeradataUnionQueryNode >> allToken [
-	^ allToken
-]
-
-{ #category : #generated }
-TeradataUnionQueryNode >> allToken: aSmaCCToken [
-	allToken := aSmaCCToken
-]
-
-{ #category : #generated }
-TeradataUnionQueryNode >> compositeTokenVariables [
+TeradataExceptQueryNode >> compositeTokenVariables [
 	^ #(#leftParens #rightParens)
 ]
 
 { #category : #'generated-initialize-release' }
-TeradataUnionQueryNode >> initialize [
+TeradataExceptQueryNode >> initialize [
 	super initialize.
 	leftParens := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-TeradataUnionQueryNode >> left [
+TeradataExceptQueryNode >> intersectToken [
+	^ intersectToken
+]
+
+{ #category : #generated }
+TeradataExceptQueryNode >> intersectToken: aSmaCCToken [
+	intersectToken := aSmaCCToken
+]
+
+{ #category : #generated }
+TeradataExceptQueryNode >> left [
 	^ left
 ]
 
 { #category : #generated }
-TeradataUnionQueryNode >> left: aTeradataProgramNode [
+TeradataExceptQueryNode >> left: aTeradataProgramNode [
 	self left notNil
 		ifTrue: [ self left parent: nil ].
 	left := aTeradataProgramNode.
@@ -55,27 +54,27 @@ TeradataUnionQueryNode >> left: aTeradataProgramNode [
 ]
 
 { #category : #generated }
-TeradataUnionQueryNode >> leftParens [
+TeradataExceptQueryNode >> leftParens [
 	^ leftParens
 ]
 
 { #category : #generated }
-TeradataUnionQueryNode >> leftParens: anOrderedCollection [
+TeradataExceptQueryNode >> leftParens: anOrderedCollection [
 	leftParens := anOrderedCollection
 ]
 
 { #category : #generated }
-TeradataUnionQueryNode >> nodeVariables [
+TeradataExceptQueryNode >> nodeVariables [
 	^ #(#left #right #orderBy)
 ]
 
 { #category : #generated }
-TeradataUnionQueryNode >> orderBy [
+TeradataExceptQueryNode >> orderBy [
 	^ orderBy
 ]
 
 { #category : #generated }
-TeradataUnionQueryNode >> orderBy: aTeradataOrderByExpressionNode [
+TeradataExceptQueryNode >> orderBy: aTeradataOrderByExpressionNode [
 	self orderBy notNil
 		ifTrue: [ self orderBy parent: nil ].
 	orderBy := aTeradataOrderByExpressionNode.
@@ -84,12 +83,12 @@ TeradataUnionQueryNode >> orderBy: aTeradataOrderByExpressionNode [
 ]
 
 { #category : #generated }
-TeradataUnionQueryNode >> right [
+TeradataExceptQueryNode >> right [
 	^ right
 ]
 
 { #category : #generated }
-TeradataUnionQueryNode >> right: aTeradataProgramNode [
+TeradataExceptQueryNode >> right: aTeradataProgramNode [
 	self right notNil
 		ifTrue: [ self right parent: nil ].
 	right := aTeradataProgramNode.
@@ -98,26 +97,16 @@ TeradataUnionQueryNode >> right: aTeradataProgramNode [
 ]
 
 { #category : #generated }
-TeradataUnionQueryNode >> rightParens [
+TeradataExceptQueryNode >> rightParens [
 	^ rightParens
 ]
 
 { #category : #generated }
-TeradataUnionQueryNode >> rightParens: anOrderedCollection [
+TeradataExceptQueryNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
 ]
 
 { #category : #generated }
-TeradataUnionQueryNode >> tokenVariables [
-	^ #(#unionToken #allToken)
-]
-
-{ #category : #generated }
-TeradataUnionQueryNode >> unionToken [
-	^ unionToken
-]
-
-{ #category : #generated }
-TeradataUnionQueryNode >> unionToken: aSmaCCToken [
-	unionToken := aSmaCCToken
+TeradataExceptQueryNode >> tokenVariables [
+	^ #(#intersectToken)
 ]
