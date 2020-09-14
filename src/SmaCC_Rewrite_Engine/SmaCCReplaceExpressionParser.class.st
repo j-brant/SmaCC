@@ -6,7 +6,7 @@ Class {
 
 { #category : #'generated-accessing' }
 SmaCCReplaceExpressionParser class >> cacheId [
-	^'2019-04-15T17:15:43.228108-05:00'
+	^'2020-09-14T14:32:26.531215-05:00'
 ]
 
 { #category : #generated }

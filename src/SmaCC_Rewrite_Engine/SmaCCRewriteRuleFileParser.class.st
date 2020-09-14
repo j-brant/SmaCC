@@ -9,7 +9,7 @@ Class {
 
 { #category : #'generated-accessing' }
 SmaCCRewriteRuleFileParser class >> cacheId [
-	^'2019-04-15T17:15:43.378181-05:00'
+	^'2020-09-14T14:32:34.912193-05:00'
 ]
 
 { #category : #generated }

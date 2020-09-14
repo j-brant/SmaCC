@@ -96,7 +96,7 @@ SwiftParser class >> ambiguousTransitions [
 
 { #category : #'generated-accessing' }
 SwiftParser class >> cacheId [
-	^'2019-04-15T17:16:18.538217-05:00'
+	^'2020-09-14T14:32:57.475175-05:00'
 ]
 
 { #category : #generated }
@@ -1600,7 +1600,7 @@ SwiftParser class >> reduceTable [
 	#(336 0 #reduceActionFor_infix_operator_attributes1: 22663169 false ) 
 	#(268 4 #reduceActionForself_expression3: 17643523 false ) 
 	#(271 4 #reduceActionForsuperclass_subscript_expression1: 17984513 false ) 
-	#(355 1 #reduceActionFor_switch_cases2: 23541762 false ) 
+	#(355 1 #reduceActionFor_statements2: 23541762 false ) 
 	#(113 1 #reduceActionForswitch_cases1: 4188161 false ) 
 	#(325 1 #liftFirstValue: 22210562 false ) 
 	#(179 2 #reduceActionForparameter3: 9723907 false ) 
@@ -1642,7 +1642,7 @@ SwiftParser class >> reduceTable [
 	#(296 3 #reduceActionFortuple_type1: 20554753 false ) 
 	#(302 3 #reduceActionForarray_type1: 20925441 false ) 
 	#(308 1 #liftFirstValue: 21292033 false ) 
-	#(345 1 #reduceActionFor_protocol_identifier_list2: 23047170 false ) 
+	#(345 1 #reduceActionFor_statements2: 23047170 false ) 
 	#(307 1 #reduceActionFortype_inheritance_list1: 21186561 false ) 
 	#(301 3 #reduceActionForfunction_type1: 20884481 false ) 
 	#(309 3 #reduceActionFormetatype_type2: 21335042 false ) 
@@ -1740,7 +1740,7 @@ SwiftParser class >> reduceTable [
 	#(185 2 #reduceActionForunion_style_enum_members2: 10306562 false ) 
 	#(184 5 #reduceActionForunion_style_enum1: 10211329 false ) 
 	#(303 5 #reduceActionFordictionary_type1: 20961281 false ) 
-	#(307 3 #reduceActionFortype_inheritance_list2: 21186562 false ) 
+	#(307 3 #reduceActionForexpression_element_list2: 21186562 false ) 
 	#(102 7 #reduceActionForfor_statement1: 3092481 false ) 
 	#(232 1 #reduceActionForliteral1: 14394369 false ) 
 	#(232 1 #reduceActionForliteral3: 14394371 false ) 
@@ -2749,23 +2749,6 @@ SwiftParser >> reduceActionFor_initializer1: nodes [
 ]
 
 { #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_protocol_identifier_list2: nodes [
-	| result |
-	result := Array new: 5.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 4).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
 SwiftParser >> reduceActionFor_requirement_clause1: nodes [
 	| result |
 	result := Array new: 9.
@@ -2881,81 +2864,6 @@ SwiftParser >> reduceActionFor_switch_cases1: nodes [
 ]
 
 { #category : #'generated-reduction actions' }
-SwiftParser >> reduceActionFor_switch_cases2: nodes [
-	| result |
-	result := Array new: 34.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 5 put: (OrderedCollection new: 2).
-	result at: 6 put: (OrderedCollection new: 2).
-	result at: 7 put: (OrderedCollection new: 2).
-	result at: 8 put: (OrderedCollection new: 2).
-	result at: 9 put: (OrderedCollection new: 2).
-	result at: 10 put: (OrderedCollection new: 2).
-	result at: 11 put: (OrderedCollection new: 2).
-	result at: 12 put: (OrderedCollection new: 2).
-	result at: 13 put: (OrderedCollection new: 2).
-	result at: 14 put: (OrderedCollection new: 2).
-	result at: 15 put: (OrderedCollection new: 2).
-	result at: 16 put: (OrderedCollection new: 2).
-	result at: 17 put: (OrderedCollection new: 2).
-	result at: 18 put: (OrderedCollection new: 2).
-	result at: 19 put: (OrderedCollection new: 2).
-	result at: 20 put: (OrderedCollection new: 2).
-	result at: 21 put: (OrderedCollection new: 2).
-	result at: 22 put: (OrderedCollection new: 2).
-	result at: 23 put: (OrderedCollection new: 2).
-	result at: 24 put: (OrderedCollection new: 2).
-	result at: 25 put: (OrderedCollection new: 2).
-	result at: 26 put: (OrderedCollection new: 2).
-	result at: 27 put: (OrderedCollection new: 2).
-	result at: 28 put: (OrderedCollection new: 2).
-	result at: 29 put: (OrderedCollection new: 2).
-	result at: 30 put: (OrderedCollection new: 2).
-	result at: 31 put: (OrderedCollection new: 2).
-	result at: 32 put: (OrderedCollection new: 2).
-	result at: 33 put: (OrderedCollection new: 2).
-	result at: 34 put: (OrderedCollection new: 2).
-	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 8).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
-	self addAll: ((nodes at: 1) at: 13) to: (result at: 13).
-	self addAll: ((nodes at: 1) at: 14) to: (result at: 14).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 15).
-	self addAll: ((nodes at: 1) at: 16) to: (result at: 16).
-	self addAll: ((nodes at: 1) at: 17) to: (result at: 17).
-	self addAll: ((nodes at: 1) at: 18) to: (result at: 24).
-	self addAll: ((nodes at: 1) at: 19) to: (result at: 18).
-	self addAll: ((nodes at: 1) at: 20) to: (result at: 19).
-	self addAll: ((nodes at: 1) at: 21) to: (result at: 20).
-	self addAll: ((nodes at: 1) at: 22) to: (result at: 21).
-	self addAll: ((nodes at: 1) at: 23) to: (result at: 22).
-	self addAll: ((nodes at: 1) at: 24) to: (result at: 23).
-	self addAll: ((nodes at: 1) at: 25) to: (result at: 25).
-	self addAll: ((nodes at: 1) at: 26) to: (result at: 29).
-	self addAll: ((nodes at: 1) at: 27) to: (result at: 30).
-	self addAll: ((nodes at: 1) at: 28) to: (result at: 31).
-	self addAll: ((nodes at: 1) at: 29) to: (result at: 32).
-	self addAll: ((nodes at: 1) at: 30) to: (result at: 33).
-	self addAll: ((nodes at: 1) at: 31) to: (result at: 34).
-	self addAll: ((nodes at: 1) at: 32) to: (result at: 26).
-	self addAll: ((nodes at: 1) at: 33) to: (result at: 27).
-	self addAll: ((nodes at: 1) at: 34) to: (result at: 28).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
 SwiftParser >> reduceActionFor_tuple_pattern_element_list1: nodes [
 	| result |
 	result := Array new: 29.
@@ -3046,8 +2954,8 @@ SwiftParser >> reduceActionFor_tuple_pattern_element_list2: nodes [
 	self addAll: ((nodes at: 1) at: 20) to: (result at: 14).
 	self addAll: ((nodes at: 1) at: 21) to: (result at: 15).
 	self addAll: ((nodes at: 1) at: 22) to: (result at: 16).
-	self addAll: ((nodes at: 1) at: 23) to: (result at: 18).
-	self addAll: ((nodes at: 1) at: 24) to: (result at: 17).
+	self addAll: ((nodes at: 1) at: 23) to: (result at: 17).
+	self addAll: ((nodes at: 1) at: 24) to: (result at: 18).
 	self addAll: ((nodes at: 1) at: 25) to: (result at: 19).
 	self addAll: ((nodes at: 1) at: 26) to: (result at: 20).
 	self addAll: ((nodes at: 1) at: 27) to: (result at: 21).
@@ -3294,8 +3202,8 @@ SwiftParser >> reduceActionFor_union_style_enum_members2: nodes [
 	self addAll: ((nodes at: 1) at: 37) to: (result at: 32).
 	self addAll: ((nodes at: 1) at: 38) to: (result at: 33).
 	self addAll: ((nodes at: 1) at: 39) to: (result at: 34).
-	self addAll: ((nodes at: 1) at: 40) to: (result at: 36).
-	self addAll: ((nodes at: 1) at: 41) to: (result at: 35).
+	self addAll: ((nodes at: 1) at: 40) to: (result at: 35).
+	self addAll: ((nodes at: 1) at: 41) to: (result at: 36).
 	self addAll: ((nodes at: 1) at: 42) to: (result at: 37).
 	self addAll: ((nodes at: 1) at: 43) to: (result at: 39).
 	self addAll: ((nodes at: 1) at: 44) to: (result at: 40).
@@ -3305,13 +3213,13 @@ SwiftParser >> reduceActionFor_union_style_enum_members2: nodes [
 	self addAll: ((nodes at: 1) at: 48) to: (result at: 45).
 	self addAll: ((nodes at: 1) at: 49) to: (result at: 46).
 	self addAll: ((nodes at: 1) at: 50) to: (result at: 47).
-	self addAll: ((nodes at: 1) at: 51) to: (result at: 48).
-	self addAll: ((nodes at: 1) at: 52) to: (result at: 49).
-	self addAll: ((nodes at: 1) at: 53) to: (result at: 50).
-	self addAll: ((nodes at: 1) at: 54) to: (result at: 51).
-	self addAll: ((nodes at: 1) at: 55) to: (result at: 52).
-	self addAll: ((nodes at: 1) at: 56) to: (result at: 53).
-	self addAll: ((nodes at: 1) at: 57) to: (result at: 54).
+	self addAll: ((nodes at: 1) at: 51) to: (result at: 53).
+	self addAll: ((nodes at: 1) at: 52) to: (result at: 54).
+	self addAll: ((nodes at: 1) at: 53) to: (result at: 48).
+	self addAll: ((nodes at: 1) at: 54) to: (result at: 49).
+	self addAll: ((nodes at: 1) at: 55) to: (result at: 50).
+	self addAll: ((nodes at: 1) at: 56) to: (result at: 51).
+	self addAll: ((nodes at: 1) at: 57) to: (result at: 52).
 	^ result
 ]
 
@@ -3817,8 +3725,8 @@ SwiftParser >> reduceActionForcase_label1: nodes [
 	self addAll: ((nodes at: 2) at: 20) to: (result at: 15).
 	self addAll: ((nodes at: 2) at: 21) to: (result at: 16).
 	self addAll: ((nodes at: 2) at: 22) to: (result at: 17).
-	self addAll: ((nodes at: 2) at: 23) to: (result at: 19).
-	self addAll: ((nodes at: 2) at: 24) to: (result at: 18).
+	self addAll: ((nodes at: 2) at: 23) to: (result at: 18).
+	self addAll: ((nodes at: 2) at: 24) to: (result at: 19).
 	self addAll: ((nodes at: 2) at: 25) to: (result at: 20).
 	self addAll: ((nodes at: 2) at: 26) to: (result at: 21).
 	self addAll: ((nodes at: 2) at: 27) to: (result at: 22).
@@ -3856,8 +3764,8 @@ SwiftParser >> reduceActionForclass_declaration1: nodes [
 	result addTokens: ((nodes at: 4) at: 1) to: result lessThanTokens.
 	result addTokens: ((nodes at: 4) at: 2) to: result identifierTokens.
 	result addTokens: ((nodes at: 4) at: 3) to: result colonTokens.
-	result addTokens: ((nodes at: 4) at: 4) to: result commaTokens.
-	result addTokens: ((nodes at: 4) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 4) at: 4) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 4) at: 5) to: result commaTokens.
 	result addTokens: ((nodes at: 4) at: 6) to: result periodTokens.
 	result addTokens: ((nodes at: 4) at: 7) to: result protocolTokens.
 	result whereToken: ((nodes at: 4) at: 8).
@@ -3865,9 +3773,9 @@ SwiftParser >> reduceActionForclass_declaration1: nodes [
 	result addToken: ((nodes at: 5) at: 1) to: result colonTokens.
 	result addTokens: ((nodes at: 5) at: 2) to: result identifierTokens.
 	result addTokens: ((nodes at: 5) at: 3) to: result lessThanTokens.
-	result addTokens: ((nodes at: 5) at: 4) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 5) at: 5) to: result periodTokens.
-	result addTokens: ((nodes at: 5) at: 6) to: result commaTokens.
+	result addTokens: ((nodes at: 5) at: 4) to: result commaTokens.
+	result addTokens: ((nodes at: 5) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 5) at: 6) to: result periodTokens.
 	result addToken: ((nodes at: 6) at: 1) to: result leftBraceTokens.
 	result addNodes: ((nodes at: 6) at: 2) to: result declarations.
 	result addToken: ((nodes at: 6) at: 3) to: result rightBraceTokens.
@@ -3891,14 +3799,14 @@ SwiftParser >> reduceActionForclosure_expression1: nodes [
 	result
 		addTokens: ((nodes at: 2) at: 10)
 		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 11) to: result periodTokens.
+	result addTokens: ((nodes at: 2) at: 11) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 12) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 13) to: result periodTokens.
 	result
-		addTokens: ((nodes at: 2) at: 12)
+		addTokens: ((nodes at: 2) at: 14)
 		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 2) at: 13) to: result bangTokens.
-	result addTokens: ((nodes at: 2) at: 14) to: result protocolTokens.
-	result addTokens: ((nodes at: 2) at: 15) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 16) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 15) to: result bangTokens.
+	result addTokens: ((nodes at: 2) at: 16) to: result protocolTokens.
 	result addTokens: ((nodes at: 2) at: 17) to: result typeTokens.
 	result addTokens: ((nodes at: 2) at: 18) to: result commaTokens.
 	result
@@ -4686,14 +4594,14 @@ SwiftParser >> reduceActionForenum_case_pattern1: nodes [
 	self addAll: ((nodes at: 4) at: 6) to: (result at: 10).
 	self addAll: ((nodes at: 4) at: 7) to: (result at: 11).
 	self addAll: ((nodes at: 4) at: 8) to: (result at: 12).
-	self addAll: ((nodes at: 4) at: 9) to: (result at: 5).
-	self addAll: ((nodes at: 4) at: 10) to: (result at: 13).
-	self addAll: ((nodes at: 4) at: 11) to: (result at: 14).
-	self addAll: ((nodes at: 4) at: 12) to: (result at: 15).
-	self addAll: ((nodes at: 4) at: 13) to: (result at: 2).
-	self addAll: ((nodes at: 4) at: 14) to: (result at: 4).
+	self addAll: ((nodes at: 4) at: 9) to: (result at: 2).
+	self addAll: ((nodes at: 4) at: 10) to: (result at: 3).
+	self addAll: ((nodes at: 4) at: 11) to: (result at: 5).
+	self addAll: ((nodes at: 4) at: 12) to: (result at: 13).
+	self addAll: ((nodes at: 4) at: 13) to: (result at: 14).
+	self addAll: ((nodes at: 4) at: 14) to: (result at: 15).
 	self addAll: ((nodes at: 4) at: 15) to: (result at: 16).
-	self addAll: ((nodes at: 4) at: 16) to: (result at: 3).
+	self addAll: ((nodes at: 4) at: 16) to: (result at: 4).
 	self addAll: ((nodes at: 4) at: 17) to: (result at: 17).
 	self addAll: ((nodes at: 4) at: 18) to: (result at: 18).
 	self addAll: ((nodes at: 4) at: 19) to: (result at: 19).
@@ -4735,8 +4643,8 @@ SwiftParser >> reduceActionForenum_declaration1: nodes [
 	result addTokens: ((nodes at: 2) at: 1) to: result identifierTokens.
 	result addTokens: ((nodes at: 2) at: 2) to: result lessThanTokens.
 	result addTokens: ((nodes at: 2) at: 3) to: result colonTokens.
-	result addTokens: ((nodes at: 2) at: 4) to: result commaTokens.
-	result addTokens: ((nodes at: 2) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 4) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 5) to: result commaTokens.
 	result addTokens: ((nodes at: 2) at: 6) to: result periodTokens.
 	result addTokens: ((nodes at: 2) at: 7) to: result protocolTokens.
 	result addTokens: ((nodes at: 2) at: 8) to: result whereTokens.
@@ -4779,25 +4687,25 @@ SwiftParser >> reduceActionForenum_declaration1: nodes [
 		to: result questionMarkTokens.
 	result addTokens: ((nodes at: 2) at: 36) to: result bangTokens.
 	result addTokens: ((nodes at: 2) at: 37) to: result typeTokens.
-	result addTokens: ((nodes at: 2) at: 38) to: result inoutTokens.
 	result
-		addTokens: ((nodes at: 2) at: 39)
+		addTokens: ((nodes at: 2) at: 38)
 		to: result periodPeriodPeriodTokens.
-	result addNodes: ((nodes at: 2) at: 40) to: result blocks.
-	result addTokens: ((nodes at: 2) at: 41) to: result getTokens.
-	result addTokens: ((nodes at: 2) at: 42) to: result setTokens.
-	result addTokens: ((nodes at: 2) at: 43) to: result rightBraceTokens.
-	result addTokens: ((nodes at: 2) at: 44) to: result equalTokens.
-	result addObjects: ((nodes at: 2) at: 45) to: result expressions.
-	result addTokens: ((nodes at: 2) at: 46) to: result willSetTokens.
-	result addTokens: ((nodes at: 2) at: 47) to: result didSetTokens.
-	result addNodes: ((nodes at: 2) at: 48) to: result declarations.
-	result addTokens: ((nodes at: 2) at: 49) to: result convenienceTokens.
-	result addTokens: ((nodes at: 2) at: 50) to: result initTokens.
-	result addTokens: ((nodes at: 2) at: 51) to: result deinitTokens.
-	result addTokens: ((nodes at: 2) at: 52) to: result extensionTokens.
-	result addTokens: ((nodes at: 2) at: 53) to: result subscriptTokens.
-	result addTokens: ((nodes at: 2) at: 54) to: result caseTokens.
+	result addNodes: ((nodes at: 2) at: 39) to: result blocks.
+	result addTokens: ((nodes at: 2) at: 40) to: result getTokens.
+	result addTokens: ((nodes at: 2) at: 41) to: result setTokens.
+	result addTokens: ((nodes at: 2) at: 42) to: result rightBraceTokens.
+	result addTokens: ((nodes at: 2) at: 43) to: result equalTokens.
+	result addObjects: ((nodes at: 2) at: 44) to: result expressions.
+	result addTokens: ((nodes at: 2) at: 45) to: result willSetTokens.
+	result addTokens: ((nodes at: 2) at: 46) to: result didSetTokens.
+	result addTokens: ((nodes at: 2) at: 47) to: result inoutTokens.
+	result addTokens: ((nodes at: 2) at: 48) to: result initTokens.
+	result addTokens: ((nodes at: 2) at: 49) to: result deinitTokens.
+	result addTokens: ((nodes at: 2) at: 50) to: result extensionTokens.
+	result addTokens: ((nodes at: 2) at: 51) to: result subscriptTokens.
+	result addTokens: ((nodes at: 2) at: 52) to: result caseTokens.
+	result addNodes: ((nodes at: 2) at: 53) to: result declarations.
+	result addTokens: ((nodes at: 2) at: 54) to: result convenienceTokens.
 	result
 		addTokens: ((nodes at: 2) at: 55)
 		to: result integer_literalTokens.
@@ -4835,8 +4743,8 @@ SwiftParser >> reduceActionForenum_declaration2: nodes [
 	result addTokens: ((nodes at: 2) at: 1) to: result identifierTokens.
 	result addTokens: ((nodes at: 2) at: 2) to: result lessThanTokens.
 	result addTokens: ((nodes at: 2) at: 3) to: result colonTokens.
-	result addTokens: ((nodes at: 2) at: 4) to: result commaTokens.
-	result addTokens: ((nodes at: 2) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 4) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 5) to: result commaTokens.
 	result addTokens: ((nodes at: 2) at: 6) to: result periodTokens.
 	result addTokens: ((nodes at: 2) at: 7) to: result protocolTokens.
 	result addTokens: ((nodes at: 2) at: 8) to: result whereTokens.
@@ -5099,9 +5007,9 @@ SwiftParser >> reduceActionForextension_declaration1: nodes [
 	result colonToken: ((nodes at: 3) at: 1).
 	result addTokens: ((nodes at: 3) at: 2) to: result identifierTokens.
 	result addTokens: ((nodes at: 3) at: 3) to: result lessThanTokens.
-	result addTokens: ((nodes at: 3) at: 4) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 5) to: result periodTokens.
-	result addTokens: ((nodes at: 3) at: 6) to: result commaTokens.
+	result addTokens: ((nodes at: 3) at: 4) to: result commaTokens.
+	result addTokens: ((nodes at: 3) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 6) to: result periodTokens.
 	result leftBraceToken: ((nodes at: 4) at: 1).
 	result addNodes: ((nodes at: 4) at: 2) to: result declarations.
 	result rightBraceToken: ((nodes at: 4) at: 3).
@@ -5151,14 +5059,14 @@ SwiftParser >> reduceActionForfor_in_statement1: nodes [
 	result
 		addTokens: ((nodes at: 2) at: 14)
 		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 15) to: result periodTokens.
+	result addTokens: ((nodes at: 2) at: 15) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 16) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 17) to: result periodTokens.
 	result
-		addTokens: ((nodes at: 2) at: 16)
+		addTokens: ((nodes at: 2) at: 18)
 		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 2) at: 17) to: result bangTokens.
-	result addTokens: ((nodes at: 2) at: 18) to: result protocolTokens.
-	result addTokens: ((nodes at: 2) at: 19) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 20) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 19) to: result bangTokens.
+	result addTokens: ((nodes at: 2) at: 20) to: result protocolTokens.
 	result addTokens: ((nodes at: 2) at: 21) to: result typeTokens.
 	result addTokens: ((nodes at: 2) at: 22) to: result commaTokens.
 	result
@@ -5276,8 +5184,8 @@ SwiftParser >> reduceActionForfunction_declaration1: nodes [
 	result addTokens: ((nodes at: 3) at: 1) to: result lessThanTokens.
 	result addTokens: ((nodes at: 3) at: 2) to: result identifierTokens.
 	result addTokens: ((nodes at: 3) at: 3) to: result colonTokens.
-	result addTokens: ((nodes at: 3) at: 4) to: result commaTokens.
-	result addTokens: ((nodes at: 3) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 4) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 5) to: result commaTokens.
 	result addTokens: ((nodes at: 3) at: 6) to: result periodTokens.
 	result addTokens: ((nodes at: 3) at: 7) to: result protocolTokens.
 	result whereToken: ((nodes at: 3) at: 8).
@@ -5303,14 +5211,14 @@ SwiftParser >> reduceActionForfunction_declaration1: nodes [
 	result
 		addTokens: ((nodes at: 4) at: 15)
 		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 4) at: 16) to: result periodTokens.
+	result addTokens: ((nodes at: 4) at: 16) to: result lessThanTokens.
+	result addTokens: ((nodes at: 4) at: 17) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 4) at: 18) to: result periodTokens.
 	result
-		addTokens: ((nodes at: 4) at: 17)
+		addTokens: ((nodes at: 4) at: 19)
 		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 4) at: 18) to: result bangTokens.
-	result addTokens: ((nodes at: 4) at: 19) to: result protocolTokens.
-	result addTokens: ((nodes at: 4) at: 20) to: result lessThanTokens.
-	result addTokens: ((nodes at: 4) at: 21) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 4) at: 20) to: result bangTokens.
+	result addTokens: ((nodes at: 4) at: 21) to: result protocolTokens.
 	result addTokens: ((nodes at: 4) at: 22) to: result typeTokens.
 	result addTokens: ((nodes at: 4) at: 23) to: result leftBraceTokens.
 	result addTokens: ((nodes at: 4) at: 24) to: result rightBraceTokens.
@@ -5510,13 +5418,13 @@ SwiftParser >> reduceActionForgeneric_parameter_clause1: nodes [
 	result at: 8 put: ((nodes at: 3) at: 1).
 	self addAll: ((nodes at: 3) at: 2) to: (result at: 2).
 	self addAll: ((nodes at: 3) at: 3) to: (result at: 1).
-	self addAll: ((nodes at: 3) at: 4) to: (result at: 5).
-	self addAll: ((nodes at: 3) at: 5) to: (result at: 6).
-	self addAll: ((nodes at: 3) at: 6) to: (result at: 3).
-	self addAll: ((nodes at: 3) at: 7) to: (result at: 7).
-	self addAll: ((nodes at: 3) at: 8) to: (result at: 4).
+	self addAll: ((nodes at: 3) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 3) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 3) at: 6) to: (result at: 6).
+	self addAll: ((nodes at: 3) at: 7) to: (result at: 3).
+	self addAll: ((nodes at: 3) at: 8) to: (result at: 7).
 	self addAll: ((nodes at: 3) at: 9) to: (result at: 9).
-	self add: (nodes at: 4) to: (result at: 5).
+	self add: (nodes at: 4) to: (result at: 4).
 	^ result
 ]
 
@@ -5545,7 +5453,7 @@ SwiftParser >> reduceActionForgeneric_parameter_list1: nodes [
 SwiftParser >> reduceActionForgeneric_parameter_list2: nodes [
 	| result |
 	result := nodes at: 1.
-	self add: (nodes at: 2) to: (result at: 4).
+	self add: (nodes at: 2) to: (result at: 5).
 	self addAll: ((nodes at: 3) at: 1) to: (result at: 1).
 	self add: ((nodes at: 3) at: 2) to: (result at: 2).
 	self addAll: ((nodes at: 3) at: 3) to: (result at: 3).
@@ -5992,8 +5900,8 @@ SwiftParser >> reduceActionForinitializer_declaration1: nodes [
 	result addTokens: ((nodes at: 2) at: 1) to: result lessThanTokens.
 	result addTokens: ((nodes at: 2) at: 2) to: result identifierTokens.
 	result addTokens: ((nodes at: 2) at: 3) to: result colonTokens.
-	result addTokens: ((nodes at: 2) at: 4) to: result commaTokens.
-	result addTokens: ((nodes at: 2) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 4) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 5) to: result commaTokens.
 	result addTokens: ((nodes at: 2) at: 6) to: result periodTokens.
 	result addTokens: ((nodes at: 2) at: 7) to: result protocolTokens.
 	result whereToken: ((nodes at: 2) at: 8).
@@ -6010,14 +5918,14 @@ SwiftParser >> reduceActionForinitializer_declaration1: nodes [
 	result
 		addTokens: ((nodes at: 3) at: 10)
 		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 11) to: result periodTokens.
+	result addTokens: ((nodes at: 3) at: 11) to: result lessThanTokens.
+	result addTokens: ((nodes at: 3) at: 12) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 13) to: result periodTokens.
 	result
-		addTokens: ((nodes at: 3) at: 12)
+		addTokens: ((nodes at: 3) at: 14)
 		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 3) at: 13) to: result bangTokens.
-	result addTokens: ((nodes at: 3) at: 14) to: result protocolTokens.
-	result addTokens: ((nodes at: 3) at: 15) to: result lessThanTokens.
-	result addTokens: ((nodes at: 3) at: 16) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 15) to: result bangTokens.
+	result addTokens: ((nodes at: 3) at: 16) to: result protocolTokens.
 	result addTokens: ((nodes at: 3) at: 17) to: result typeTokens.
 	result addTokens: ((nodes at: 3) at: 18) to: result commaTokens.
 	result
@@ -7000,8 +6908,8 @@ SwiftParser >> reduceActionForpattern4: nodes [
 	self addAll: ((nodes at: 1) at: 14) to: (result at: 20).
 	self addAll: ((nodes at: 1) at: 15) to: (result at: 21).
 	self addAll: ((nodes at: 1) at: 16) to: (result at: 22).
-	self addAll: ((nodes at: 1) at: 17) to: (result at: 24).
-	self addAll: ((nodes at: 1) at: 18) to: (result at: 23).
+	self addAll: ((nodes at: 1) at: 17) to: (result at: 23).
+	self addAll: ((nodes at: 1) at: 18) to: (result at: 24).
 	self addAll: ((nodes at: 1) at: 19) to: (result at: 25).
 	self addAll: ((nodes at: 1) at: 20) to: (result at: 26).
 	self addAll: ((nodes at: 1) at: 21) to: (result at: 27).
@@ -7074,10 +6982,10 @@ SwiftParser >> reduceActionForpattern5: nodes [
 	result at: 28 put: (OrderedCollection new: 2).
 	result at: 29 put: (OrderedCollection new: 2).
 	self addAll: ((nodes at: 1) at: 1) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 2) to: (result at: 19).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 22).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 20).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 15).
+	self addAll: ((nodes at: 1) at: 2) to: (result at: 15).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 16).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 22).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 17).
 	self addAll: ((nodes at: 1) at: 6) to: (result at: 4).
 	self addAll: ((nodes at: 1) at: 7) to: (result at: 1).
 	self addAll: ((nodes at: 1) at: 8) to: (result at: 2).
@@ -7085,12 +6993,12 @@ SwiftParser >> reduceActionForpattern5: nodes [
 	self addAll: ((nodes at: 1) at: 10) to: (result at: 6).
 	self addAll: ((nodes at: 1) at: 11) to: (result at: 7).
 	self addAll: ((nodes at: 1) at: 12) to: (result at: 14).
-	self addAll: ((nodes at: 1) at: 13) to: (result at: 16).
-	self addAll: ((nodes at: 1) at: 14) to: (result at: 17).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 18).
+	self addAll: ((nodes at: 1) at: 13) to: (result at: 18).
+	self addAll: ((nodes at: 1) at: 14) to: (result at: 19).
+	self addAll: ((nodes at: 1) at: 15) to: (result at: 20).
 	self addAll: ((nodes at: 1) at: 16) to: (result at: 21).
-	self addAll: ((nodes at: 1) at: 17) to: (result at: 24).
-	self addAll: ((nodes at: 1) at: 18) to: (result at: 23).
+	self addAll: ((nodes at: 1) at: 17) to: (result at: 23).
+	self addAll: ((nodes at: 1) at: 18) to: (result at: 24).
 	self addAll: ((nodes at: 1) at: 19) to: (result at: 25).
 	self addAll: ((nodes at: 1) at: 20) to: (result at: 26).
 	self addAll: ((nodes at: 1) at: 21) to: (result at: 27).
@@ -7143,16 +7051,16 @@ SwiftParser >> reduceActionForpattern6: nodes [
 	self addAll: ((nodes at: 1) at: 3) to: (result at: 7).
 	self addAll: ((nodes at: 1) at: 4) to: (result at: 2).
 	self addAll: ((nodes at: 1) at: 5) to: (result at: 14).
-	self addAll: ((nodes at: 1) at: 6) to: (result at: 15).
-	self addAll: ((nodes at: 1) at: 7) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 8) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 9) to: (result at: 16).
-	self addAll: ((nodes at: 1) at: 10) to: (result at: 17).
-	self addAll: ((nodes at: 1) at: 11) to: (result at: 18).
-	self addAll: ((nodes at: 1) at: 12) to: (result at: 19).
-	self addAll: ((nodes at: 1) at: 13) to: (result at: 20).
-	self addAll: ((nodes at: 1) at: 14) to: (result at: 21).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 6) to: (result at: 3).
+	self addAll: ((nodes at: 1) at: 7) to: (result at: 15).
+	self addAll: ((nodes at: 1) at: 8) to: (result at: 16).
+	self addAll: ((nodes at: 1) at: 9) to: (result at: 17).
+	self addAll: ((nodes at: 1) at: 10) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 11) to: (result at: 5).
+	self addAll: ((nodes at: 1) at: 12) to: (result at: 18).
+	self addAll: ((nodes at: 1) at: 13) to: (result at: 19).
+	self addAll: ((nodes at: 1) at: 14) to: (result at: 20).
+	self addAll: ((nodes at: 1) at: 15) to: (result at: 21).
 	self addAll: ((nodes at: 1) at: 16) to: (result at: 22).
 	self addAll: ((nodes at: 1) at: 17) to: (result at: 23).
 	self addAll: ((nodes at: 1) at: 18) to: (result at: 1).
@@ -7233,14 +7141,14 @@ SwiftParser >> reduceActionForpattern_initializer1: nodes [
 	result
 		addTokens: ((nodes at: 1) at: 14)
 		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 1) at: 15) to: result periodTokens.
+	result addTokens: ((nodes at: 1) at: 15) to: result lessThanTokens.
+	result addTokens: ((nodes at: 1) at: 16) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 1) at: 17) to: result periodTokens.
 	result
-		addTokens: ((nodes at: 1) at: 16)
+		addTokens: ((nodes at: 1) at: 18)
 		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 1) at: 17) to: result bangTokens.
-	result addTokens: ((nodes at: 1) at: 18) to: result protocolTokens.
-	result addTokens: ((nodes at: 1) at: 19) to: result lessThanTokens.
-	result addTokens: ((nodes at: 1) at: 20) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 1) at: 19) to: result bangTokens.
+	result addTokens: ((nodes at: 1) at: 20) to: result protocolTokens.
 	result addTokens: ((nodes at: 1) at: 21) to: result typeTokens.
 	result addTokens: ((nodes at: 1) at: 22) to: result commaTokens.
 	result
@@ -7481,9 +7389,9 @@ SwiftParser >> reduceActionForprotocol_association_type_declaration1: nodes [
 	result addToken: ((nodes at: 2) at: 1) to: result colonTokens.
 	result addTokens: ((nodes at: 2) at: 2) to: result identifierTokens.
 	result addTokens: ((nodes at: 2) at: 3) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 4) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 5) to: result periodTokens.
-	result addTokens: ((nodes at: 2) at: 6) to: result commaTokens.
+	result addTokens: ((nodes at: 2) at: 4) to: result commaTokens.
+	result addTokens: ((nodes at: 2) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 6) to: result periodTokens.
 	result equalToken: ((nodes at: 3) at: 1).
 	result addTokens: ((nodes at: 3) at: 2) to: result leftBracketTokens.
 	result addTokens: ((nodes at: 3) at: 3) to: result rightBracketTokens.
@@ -7491,16 +7399,18 @@ SwiftParser >> reduceActionForprotocol_association_type_declaration1: nodes [
 	result
 		addTokens: ((nodes at: 3) at: 5)
 		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 6) to: result periodTokens.
-	result addTokens: ((nodes at: 3) at: 7) to: result leftParenTokens.
-	result addTokens: ((nodes at: 3) at: 8) to: result rightParenTokens.
-	result addTokens: ((nodes at: 3) at: 9) to: result questionMarkTokens.
-	result addTokens: ((nodes at: 3) at: 10) to: result bangTokens.
-	result addTokens: ((nodes at: 3) at: 11) to: result protocolTokens.
-	result addTokens: ((nodes at: 3) at: 12) to: result lessThanTokens.
-	result addTokens: ((nodes at: 3) at: 13) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 14) to: result typeTokens.
-	result addTokens: ((nodes at: 3) at: 15) to: result identifierTokens.
+	result addTokens: ((nodes at: 3) at: 6) to: result identifierTokens.
+	result addTokens: ((nodes at: 3) at: 7) to: result lessThanTokens.
+	result addTokens: ((nodes at: 3) at: 8) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 9) to: result periodTokens.
+	result addTokens: ((nodes at: 3) at: 10) to: result leftParenTokens.
+	result addTokens: ((nodes at: 3) at: 11) to: result rightParenTokens.
+	result
+		addTokens: ((nodes at: 3) at: 12)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 3) at: 13) to: result bangTokens.
+	result addTokens: ((nodes at: 3) at: 14) to: result protocolTokens.
+	result addTokens: ((nodes at: 3) at: 15) to: result typeTokens.
 	result addTokens: ((nodes at: 3) at: 16) to: result commaTokens.
 	result
 		addTokens: ((nodes at: 3) at: 17)
@@ -7531,8 +7441,8 @@ SwiftParser >> reduceActionForprotocol_composition_type1: nodes [
 	result addTokens: ((nodes at: 3) at: 1) to: result identifierTokens.
 	result addTokens: ((nodes at: 3) at: 2) to: result lessThanTokens.
 	result addTokens: ((nodes at: 3) at: 3) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 4) to: result periodTokens.
-	result addTokens: ((nodes at: 3) at: 5) to: result commaTokens.
+	result addTokens: ((nodes at: 3) at: 4) to: result commaTokens.
+	result addTokens: ((nodes at: 3) at: 5) to: result periodTokens.
 	result addToken: (nodes at: 4) to: result greaterThanTokens.
 	^ result
 ]
@@ -7564,9 +7474,9 @@ SwiftParser >> reduceActionForprotocol_declaration1: nodes [
 	result colonToken: ((nodes at: 4) at: 1).
 	result addTokens: ((nodes at: 4) at: 2) to: result identifierTokens.
 	result addTokens: ((nodes at: 4) at: 3) to: result lessThanTokens.
-	result addTokens: ((nodes at: 4) at: 4) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 4) at: 5) to: result periodTokens.
-	result addTokens: ((nodes at: 4) at: 6) to: result commaTokens.
+	result addTokens: ((nodes at: 4) at: 4) to: result commaTokens.
+	result addTokens: ((nodes at: 4) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 4) at: 6) to: result periodTokens.
 	result addToken: ((nodes at: 5) at: 1) to: result leftBraceTokens.
 	result addNodes: ((nodes at: 5) at: 2) to: result declarations.
 	result addToken: ((nodes at: 5) at: 3) to: result rightBraceTokens.
@@ -7600,8 +7510,8 @@ SwiftParser >> reduceActionForprotocol_initializer_declaration1: nodes [
 	result addTokens: ((nodes at: 2) at: 1) to: result lessThanTokens.
 	result addTokens: ((nodes at: 2) at: 2) to: result identifierTokens.
 	result addTokens: ((nodes at: 2) at: 3) to: result colonTokens.
-	result addTokens: ((nodes at: 2) at: 4) to: result commaTokens.
-	result addTokens: ((nodes at: 2) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 4) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 5) to: result commaTokens.
 	result addTokens: ((nodes at: 2) at: 6) to: result periodTokens.
 	result addTokens: ((nodes at: 2) at: 7) to: result protocolTokens.
 	result whereToken: ((nodes at: 2) at: 8).
@@ -7618,14 +7528,14 @@ SwiftParser >> reduceActionForprotocol_initializer_declaration1: nodes [
 	result
 		addTokens: ((nodes at: 3) at: 10)
 		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 11) to: result periodTokens.
+	result addTokens: ((nodes at: 3) at: 11) to: result lessThanTokens.
+	result addTokens: ((nodes at: 3) at: 12) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 13) to: result periodTokens.
 	result
-		addTokens: ((nodes at: 3) at: 12)
+		addTokens: ((nodes at: 3) at: 14)
 		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 3) at: 13) to: result bangTokens.
-	result addTokens: ((nodes at: 3) at: 14) to: result protocolTokens.
-	result addTokens: ((nodes at: 3) at: 15) to: result lessThanTokens.
-	result addTokens: ((nodes at: 3) at: 16) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 15) to: result bangTokens.
+	result addTokens: ((nodes at: 3) at: 16) to: result protocolTokens.
 	result addTokens: ((nodes at: 3) at: 17) to: result typeTokens.
 	result addTokens: ((nodes at: 3) at: 18) to: result commaTokens.
 	result
@@ -7690,8 +7600,8 @@ SwiftParser >> reduceActionForprotocol_method_declaration1: nodes [
 	result addTokens: ((nodes at: 3) at: 1) to: result lessThanTokens.
 	result addTokens: ((nodes at: 3) at: 2) to: result identifierTokens.
 	result addTokens: ((nodes at: 3) at: 3) to: result colonTokens.
-	result addTokens: ((nodes at: 3) at: 4) to: result commaTokens.
-	result addTokens: ((nodes at: 3) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 4) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 5) to: result commaTokens.
 	result addTokens: ((nodes at: 3) at: 6) to: result periodTokens.
 	result addTokens: ((nodes at: 3) at: 7) to: result protocolTokens.
 	result whereToken: ((nodes at: 3) at: 8).
@@ -7717,14 +7627,14 @@ SwiftParser >> reduceActionForprotocol_method_declaration1: nodes [
 	result
 		addTokens: ((nodes at: 4) at: 15)
 		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 4) at: 16) to: result periodTokens.
+	result addTokens: ((nodes at: 4) at: 16) to: result lessThanTokens.
+	result addTokens: ((nodes at: 4) at: 17) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 4) at: 18) to: result periodTokens.
 	result
-		addTokens: ((nodes at: 4) at: 17)
+		addTokens: ((nodes at: 4) at: 19)
 		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 4) at: 18) to: result bangTokens.
-	result addTokens: ((nodes at: 4) at: 19) to: result protocolTokens.
-	result addTokens: ((nodes at: 4) at: 20) to: result lessThanTokens.
-	result addTokens: ((nodes at: 4) at: 21) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 4) at: 20) to: result bangTokens.
+	result addTokens: ((nodes at: 4) at: 21) to: result protocolTokens.
 	result addTokens: ((nodes at: 4) at: 22) to: result typeTokens.
 	result addTokens: ((nodes at: 4) at: 23) to: result leftBraceTokens.
 	result addTokens: ((nodes at: 4) at: 24) to: result rightBraceTokens.
@@ -7800,14 +7710,14 @@ SwiftParser >> reduceActionForprotocol_property_declaration1: nodes [
 	result
 		addTokens: ((nodes at: 3) at: 14)
 		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 15) to: result periodTokens.
+	result addTokens: ((nodes at: 3) at: 15) to: result lessThanTokens.
+	result addTokens: ((nodes at: 3) at: 16) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 17) to: result periodTokens.
 	result
-		addTokens: ((nodes at: 3) at: 16)
+		addTokens: ((nodes at: 3) at: 18)
 		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 3) at: 17) to: result bangTokens.
-	result addTokens: ((nodes at: 3) at: 18) to: result protocolTokens.
-	result addTokens: ((nodes at: 3) at: 19) to: result lessThanTokens.
-	result addTokens: ((nodes at: 3) at: 20) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 19) to: result bangTokens.
+	result addTokens: ((nodes at: 3) at: 20) to: result protocolTokens.
 	result addTokens: ((nodes at: 3) at: 21) to: result typeTokens.
 	result addTokens: ((nodes at: 3) at: 22) to: result commaTokens.
 	result
@@ -7866,14 +7776,14 @@ SwiftParser >> reduceActionForprotocol_subscript_declaration1: nodes [
 	result
 		addTokens: ((nodes at: 1) at: 17)
 		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 1) at: 18) to: result periodTokens.
+	result addTokens: ((nodes at: 1) at: 18) to: result lessThanTokens.
+	result addTokens: ((nodes at: 1) at: 19) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 1) at: 20) to: result periodTokens.
 	result
-		addTokens: ((nodes at: 1) at: 19)
+		addTokens: ((nodes at: 1) at: 21)
 		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 1) at: 20) to: result bangTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result protocolTokens.
-	result addTokens: ((nodes at: 1) at: 22) to: result lessThanTokens.
-	result addTokens: ((nodes at: 1) at: 23) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 1) at: 22) to: result bangTokens.
+	result addTokens: ((nodes at: 1) at: 23) to: result protocolTokens.
 	result addTokens: ((nodes at: 1) at: 24) to: result typeTokens.
 	result addTokens: ((nodes at: 1) at: 25) to: result commaTokens.
 	result addTokens: ((nodes at: 1) at: 26) to: result equalTokens.
@@ -7904,14 +7814,14 @@ SwiftParser >> reduceActionForprotocol_subscript_declaration1: nodes [
 		to: result full_string_literalTokens.
 	result addTokens: ((nodes at: 2) at: 13) to: result operatorTokens.
 	result addTokens: ((nodes at: 2) at: 14) to: result colonTokens.
-	result addTokens: ((nodes at: 2) at: 15) to: result periodTokens.
+	result addTokens: ((nodes at: 2) at: 15) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 16) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 17) to: result periodTokens.
 	result
-		addTokens: ((nodes at: 2) at: 16)
+		addTokens: ((nodes at: 2) at: 18)
 		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 2) at: 17) to: result bangTokens.
-	result addTokens: ((nodes at: 2) at: 18) to: result protocolTokens.
-	result addTokens: ((nodes at: 2) at: 19) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 20) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 19) to: result bangTokens.
+	result addTokens: ((nodes at: 2) at: 20) to: result protocolTokens.
 	result addTokens: ((nodes at: 2) at: 21) to: result typeTokens.
 	result addTokens: ((nodes at: 2) at: 22) to: result commaTokens.
 	result
@@ -8045,13 +7955,13 @@ SwiftParser >> reduceActionForraw_value_style_enum1: nodes [
 	self addAll: ((nodes at: 6) at: 29) to: (result at: 29).
 	self addAll: ((nodes at: 6) at: 30) to: (result at: 30).
 	self addAll: ((nodes at: 6) at: 31) to: (result at: 31).
-	self addAll: ((nodes at: 6) at: 32) to: (result at: 4).
+	self addAll: ((nodes at: 6) at: 32) to: (result at: 5).
 	self addAll: ((nodes at: 6) at: 33) to: (result at: 3).
 	self addAll: ((nodes at: 6) at: 34) to: (result at: 34).
-	self addAll: ((nodes at: 6) at: 35) to: (result at: 35).
-	self addAll: ((nodes at: 6) at: 36) to: (result at: 36).
-	self addAll: ((nodes at: 6) at: 37) to: (result at: 2).
-	self addAll: ((nodes at: 6) at: 38) to: (result at: 5).
+	self addAll: ((nodes at: 6) at: 35) to: (result at: 2).
+	self addAll: ((nodes at: 6) at: 36) to: (result at: 4).
+	self addAll: ((nodes at: 6) at: 37) to: (result at: 35).
+	self addAll: ((nodes at: 6) at: 38) to: (result at: 36).
 	self addAll: ((nodes at: 6) at: 39) to: (result at: 37).
 	self addAll: ((nodes at: 6) at: 40) to: (result at: 46).
 	self addAll: ((nodes at: 6) at: 41) to: (result at: 53).
@@ -8267,8 +8177,8 @@ SwiftParser >> reduceActionForrequirement2: nodes [
 	result at: 5 put: (OrderedCollection new: 2).
 	self addAll: ((nodes at: 1) at: 1) to: (result at: 1).
 	self addAll: ((nodes at: 1) at: 2) to: (result at: 2).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 3).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 4).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 3).
 	self addAll: ((nodes at: 1) at: 5) to: (result at: 5).
 	result at: 8 put: ((nodes at: 1) at: 6).
 	^ result
@@ -8289,11 +8199,11 @@ SwiftParser >> reduceActionForrequirement_clause1: nodes [
 	result at: 1 put: (nodes at: 1).
 	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
 	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 8).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
-	self addAll: ((nodes at: 2) at: 6) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 7) to: (result at: 7).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 6).
+	self addAll: ((nodes at: 2) at: 6) to: (result at: 7).
+	self addAll: ((nodes at: 2) at: 7) to: (result at: 8).
 	self addAll: ((nodes at: 2) at: 8) to: (result at: 9).
 	^ result
 ]
@@ -8325,7 +8235,7 @@ SwiftParser >> reduceActionForrequirement_list1: nodes [
 SwiftParser >> reduceActionForrequirement_list2: nodes [
 	| result |
 	result := nodes at: 1.
-	self add: (nodes at: 2) to: (result at: 3).
+	self add: (nodes at: 2) to: (result at: 4).
 	self addAll: ((nodes at: 3) at: 1) to: (result at: 1).
 	self addAll: ((nodes at: 3) at: 2) to: (result at: 2).
 	self addAll: ((nodes at: 3) at: 3) to: (result at: 3).
@@ -8503,8 +8413,8 @@ SwiftParser >> reduceActionForstruct_declaration1: nodes [
 	result addTokens: ((nodes at: 4) at: 1) to: result lessThanTokens.
 	result addTokens: ((nodes at: 4) at: 2) to: result identifierTokens.
 	result addTokens: ((nodes at: 4) at: 3) to: result colonTokens.
-	result addTokens: ((nodes at: 4) at: 4) to: result commaTokens.
-	result addTokens: ((nodes at: 4) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 4) at: 4) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 4) at: 5) to: result commaTokens.
 	result addTokens: ((nodes at: 4) at: 6) to: result periodTokens.
 	result addTokens: ((nodes at: 4) at: 7) to: result protocolTokens.
 	result whereToken: ((nodes at: 4) at: 8).
@@ -8512,9 +8422,9 @@ SwiftParser >> reduceActionForstruct_declaration1: nodes [
 	result addToken: ((nodes at: 5) at: 1) to: result colonTokens.
 	result addTokens: ((nodes at: 5) at: 2) to: result identifierTokens.
 	result addTokens: ((nodes at: 5) at: 3) to: result lessThanTokens.
-	result addTokens: ((nodes at: 5) at: 4) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 5) at: 5) to: result periodTokens.
-	result addTokens: ((nodes at: 5) at: 6) to: result commaTokens.
+	result addTokens: ((nodes at: 5) at: 4) to: result commaTokens.
+	result addTokens: ((nodes at: 5) at: 5) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 5) at: 6) to: result periodTokens.
 	result addToken: ((nodes at: 6) at: 1) to: result leftBraceTokens.
 	result addNodes: ((nodes at: 6) at: 2) to: result declarations.
 	result addToken: ((nodes at: 6) at: 3) to: result rightBraceTokens.
@@ -8550,14 +8460,14 @@ SwiftParser >> reduceActionForsubscript_declaration1: nodes [
 	result
 		addTokens: ((nodes at: 1) at: 17)
 		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 1) at: 18) to: result periodTokens.
+	result addTokens: ((nodes at: 1) at: 18) to: result lessThanTokens.
+	result addTokens: ((nodes at: 1) at: 19) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 1) at: 20) to: result periodTokens.
 	result
-		addTokens: ((nodes at: 1) at: 19)
+		addTokens: ((nodes at: 1) at: 21)
 		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 1) at: 20) to: result bangTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result protocolTokens.
-	result addTokens: ((nodes at: 1) at: 22) to: result lessThanTokens.
-	result addTokens: ((nodes at: 1) at: 23) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 1) at: 22) to: result bangTokens.
+	result addTokens: ((nodes at: 1) at: 23) to: result protocolTokens.
 	result addTokens: ((nodes at: 1) at: 24) to: result typeTokens.
 	result addTokens: ((nodes at: 1) at: 25) to: result commaTokens.
 	result addTokens: ((nodes at: 1) at: 26) to: result equalTokens.
@@ -8588,14 +8498,14 @@ SwiftParser >> reduceActionForsubscript_declaration1: nodes [
 		to: result full_string_literalTokens.
 	result addTokens: ((nodes at: 2) at: 13) to: result operatorTokens.
 	result addTokens: ((nodes at: 2) at: 14) to: result colonTokens.
-	result addTokens: ((nodes at: 2) at: 15) to: result periodTokens.
+	result addTokens: ((nodes at: 2) at: 15) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 16) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 17) to: result periodTokens.
 	result
-		addTokens: ((nodes at: 2) at: 16)
+		addTokens: ((nodes at: 2) at: 18)
 		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 2) at: 17) to: result bangTokens.
-	result addTokens: ((nodes at: 2) at: 18) to: result protocolTokens.
-	result addTokens: ((nodes at: 2) at: 19) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 20) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 19) to: result bangTokens.
+	result addTokens: ((nodes at: 2) at: 20) to: result protocolTokens.
 	result addTokens: ((nodes at: 2) at: 21) to: result typeTokens.
 	result addTokens: ((nodes at: 2) at: 22) to: result commaTokens.
 	result
@@ -8635,14 +8545,14 @@ SwiftParser >> reduceActionForsubscript_declaration2: nodes [
 	result
 		addTokens: ((nodes at: 1) at: 17)
 		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 1) at: 18) to: result periodTokens.
+	result addTokens: ((nodes at: 1) at: 18) to: result lessThanTokens.
+	result addTokens: ((nodes at: 1) at: 19) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 1) at: 20) to: result periodTokens.
 	result
-		addTokens: ((nodes at: 1) at: 19)
+		addTokens: ((nodes at: 1) at: 21)
 		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 1) at: 20) to: result bangTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result protocolTokens.
-	result addTokens: ((nodes at: 1) at: 22) to: result lessThanTokens.
-	result addTokens: ((nodes at: 1) at: 23) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 1) at: 22) to: result bangTokens.
+	result addTokens: ((nodes at: 1) at: 23) to: result protocolTokens.
 	result addTokens: ((nodes at: 1) at: 24) to: result typeTokens.
 	result addTokens: ((nodes at: 1) at: 25) to: result commaTokens.
 	result addTokens: ((nodes at: 1) at: 26) to: result equalTokens.
@@ -8673,14 +8583,14 @@ SwiftParser >> reduceActionForsubscript_declaration2: nodes [
 		to: result full_string_literalTokens.
 	result addTokens: ((nodes at: 2) at: 13) to: result operatorTokens.
 	result addTokens: ((nodes at: 2) at: 14) to: result colonTokens.
-	result addTokens: ((nodes at: 2) at: 15) to: result periodTokens.
+	result addTokens: ((nodes at: 2) at: 15) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 16) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 17) to: result periodTokens.
 	result
-		addTokens: ((nodes at: 2) at: 16)
+		addTokens: ((nodes at: 2) at: 18)
 		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 2) at: 17) to: result bangTokens.
-	result addTokens: ((nodes at: 2) at: 18) to: result protocolTokens.
-	result addTokens: ((nodes at: 2) at: 19) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 20) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 19) to: result bangTokens.
+	result addTokens: ((nodes at: 2) at: 20) to: result protocolTokens.
 	result addTokens: ((nodes at: 2) at: 21) to: result typeTokens.
 	result addTokens: ((nodes at: 2) at: 22) to: result commaTokens.
 	result
@@ -8740,14 +8650,14 @@ SwiftParser >> reduceActionForsubscript_declaration3: nodes [
 	result
 		addTokens: ((nodes at: 1) at: 17)
 		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 1) at: 18) to: result periodTokens.
+	result addTokens: ((nodes at: 1) at: 18) to: result lessThanTokens.
+	result addTokens: ((nodes at: 1) at: 19) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 1) at: 20) to: result periodTokens.
 	result
-		addTokens: ((nodes at: 1) at: 19)
+		addTokens: ((nodes at: 1) at: 21)
 		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 1) at: 20) to: result bangTokens.
-	result addTokens: ((nodes at: 1) at: 21) to: result protocolTokens.
-	result addTokens: ((nodes at: 1) at: 22) to: result lessThanTokens.
-	result addTokens: ((nodes at: 1) at: 23) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 1) at: 22) to: result bangTokens.
+	result addTokens: ((nodes at: 1) at: 23) to: result protocolTokens.
 	result addTokens: ((nodes at: 1) at: 24) to: result typeTokens.
 	result addTokens: ((nodes at: 1) at: 25) to: result commaTokens.
 	result addTokens: ((nodes at: 1) at: 26) to: result equalTokens.
@@ -8778,14 +8688,14 @@ SwiftParser >> reduceActionForsubscript_declaration3: nodes [
 		to: result full_string_literalTokens.
 	result addTokens: ((nodes at: 2) at: 13) to: result operatorTokens.
 	result addTokens: ((nodes at: 2) at: 14) to: result colonTokens.
-	result addTokens: ((nodes at: 2) at: 15) to: result periodTokens.
+	result addTokens: ((nodes at: 2) at: 15) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 16) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 17) to: result periodTokens.
 	result
-		addTokens: ((nodes at: 2) at: 16)
+		addTokens: ((nodes at: 2) at: 18)
 		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 2) at: 17) to: result bangTokens.
-	result addTokens: ((nodes at: 2) at: 18) to: result protocolTokens.
-	result addTokens: ((nodes at: 2) at: 19) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 20) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 19) to: result bangTokens.
+	result addTokens: ((nodes at: 2) at: 20) to: result protocolTokens.
 	result addTokens: ((nodes at: 2) at: 21) to: result typeTokens.
 	result addTokens: ((nodes at: 2) at: 22) to: result commaTokens.
 	result
@@ -9390,41 +9300,41 @@ SwiftParser >> reduceActionForswitch_statement1: nodes [
 	result
 		addTokens: ((nodes at: 4) at: 9)
 		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 4) at: 10) to: result periodTokens.
+	result addTokens: ((nodes at: 4) at: 10) to: result lessThanTokens.
+	result addTokens: ((nodes at: 4) at: 11) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 4) at: 12) to: result periodTokens.
 	result
-		addTokens: ((nodes at: 4) at: 11)
+		addTokens: ((nodes at: 4) at: 13)
 		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 4) at: 12) to: result bangTokens.
-	result addTokens: ((nodes at: 4) at: 13) to: result protocolTokens.
-	result addTokens: ((nodes at: 4) at: 14) to: result lessThanTokens.
-	result addTokens: ((nodes at: 4) at: 15) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 4) at: 14) to: result bangTokens.
+	result addTokens: ((nodes at: 4) at: 15) to: result protocolTokens.
 	result addTokens: ((nodes at: 4) at: 16) to: result typeTokens.
 	result addTokens: ((nodes at: 4) at: 17) to: result commaTokens.
 	result
 		addTokens: ((nodes at: 4) at: 18)
 		to: result periodPeriodPeriodTokens.
-	result addTokens: ((nodes at: 4) at: 19) to: result varTokens.
-	result addTokens: ((nodes at: 4) at: 20) to: result letTokens.
-	result addObjects: ((nodes at: 4) at: 21) to: result expressions.
-	result addTokens: ((nodes at: 4) at: 22) to: result isTokens.
-	result addTokens: ((nodes at: 4) at: 23) to: result asTokens.
-	result addTokens: ((nodes at: 4) at: 24) to: result inoutTokens.
+	result addTokens: ((nodes at: 4) at: 19) to: result inoutTokens.
+	result addTokens: ((nodes at: 4) at: 20) to: result varTokens.
+	result addTokens: ((nodes at: 4) at: 21) to: result letTokens.
+	result addObjects: ((nodes at: 4) at: 22) to: result expressions.
+	result addTokens: ((nodes at: 4) at: 23) to: result isTokens.
+	result addTokens: ((nodes at: 4) at: 24) to: result asTokens.
 	result addTokens: ((nodes at: 4) at: 25) to: result whereTokens.
-	result addNodes: ((nodes at: 4) at: 26) to: result statements.
-	result addTokens: ((nodes at: 4) at: 27) to: result semicolonToken.
-	result addTokens: ((nodes at: 4) at: 28) to: result defaultTokens.
-	result addTokens: ((nodes at: 4) at: 29) to: result leftBraceTokens.
-	result addTokens: ((nodes at: 4) at: 30) to: result rightBraceTokens.
+	result addTokens: ((nodes at: 4) at: 26) to: result leftBraceTokens.
+	result addTokens: ((nodes at: 4) at: 27) to: result rightBraceTokens.
 	result
-		addTokens: ((nodes at: 4) at: 31)
+		addTokens: ((nodes at: 4) at: 28)
 		to: result integer_literalTokens.
 	result
-		addTokens: ((nodes at: 4) at: 32)
+		addTokens: ((nodes at: 4) at: 29)
 		to: result floating_point_literalTokens.
 	result
-		addTokens: ((nodes at: 4) at: 33)
+		addTokens: ((nodes at: 4) at: 30)
 		to: result full_string_literalTokens.
-	result addTokens: ((nodes at: 4) at: 34) to: result operatorTokens.
+	result addTokens: ((nodes at: 4) at: 31) to: result operatorTokens.
+	result addNodes: ((nodes at: 4) at: 32) to: result statements.
+	result addTokens: ((nodes at: 4) at: 33) to: result semicolonToken.
+	result addTokens: ((nodes at: 4) at: 34) to: result defaultTokens.
 	result addToken: (nodes at: 5) to: result rightBraceTokens.
 	^ result
 ]
@@ -9549,14 +9459,14 @@ SwiftParser >> reduceActionFortuple_type1: nodes [
 	result
 		addTokens: ((nodes at: 2) at: 9)
 		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 10) to: result periodTokens.
+	result addTokens: ((nodes at: 2) at: 10) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 11) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 12) to: result periodTokens.
 	result
-		addTokens: ((nodes at: 2) at: 11)
+		addTokens: ((nodes at: 2) at: 13)
 		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 2) at: 12) to: result bangTokens.
-	result addTokens: ((nodes at: 2) at: 13) to: result protocolTokens.
-	result addTokens: ((nodes at: 2) at: 14) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 15) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 14) to: result bangTokens.
+	result addTokens: ((nodes at: 2) at: 15) to: result protocolTokens.
 	result addTokens: ((nodes at: 2) at: 16) to: result typeTokens.
 	result addTokens: ((nodes at: 2) at: 17) to: result commaTokens.
 	result
@@ -9891,9 +9801,9 @@ SwiftParser >> reduceActionFortype_casting_pattern2: nodes [
 	result at: 29 put: (OrderedCollection new: 2).
 	self addAll: ((nodes at: 1) at: 1) to: (result at: 18).
 	self addAll: ((nodes at: 1) at: 2) to: (result at: 4).
-	self addAll: ((nodes at: 1) at: 3) to: (result at: 15).
-	self addAll: ((nodes at: 1) at: 4) to: (result at: 7).
-	self addAll: ((nodes at: 1) at: 5) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 3) to: (result at: 6).
+	self addAll: ((nodes at: 1) at: 4) to: (result at: 10).
+	self addAll: ((nodes at: 1) at: 5) to: (result at: 11).
 	self addAll: ((nodes at: 1) at: 6) to: (result at: 2).
 	self addAll: ((nodes at: 1) at: 7) to: (result at: 3).
 	self addAll: ((nodes at: 1) at: 8) to: (result at: 20).
@@ -9903,13 +9813,13 @@ SwiftParser >> reduceActionFortype_casting_pattern2: nodes [
 	self addAll: ((nodes at: 1) at: 12) to: (result at: 24).
 	self addAll: ((nodes at: 1) at: 13) to: (result at: 25).
 	self addAll: ((nodes at: 1) at: 14) to: (result at: 5).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 6).
-	self addAll: ((nodes at: 1) at: 16) to: (result at: 9).
-	self addAll: ((nodes at: 1) at: 17) to: (result at: 10).
-	self addAll: ((nodes at: 1) at: 18) to: (result at: 11).
-	self addAll: ((nodes at: 1) at: 19) to: (result at: 12).
-	self addAll: ((nodes at: 1) at: 20) to: (result at: 13).
-	self addAll: ((nodes at: 1) at: 21) to: (result at: 14).
+	self addAll: ((nodes at: 1) at: 15) to: (result at: 7).
+	self addAll: ((nodes at: 1) at: 16) to: (result at: 8).
+	self addAll: ((nodes at: 1) at: 17) to: (result at: 9).
+	self addAll: ((nodes at: 1) at: 18) to: (result at: 12).
+	self addAll: ((nodes at: 1) at: 19) to: (result at: 13).
+	self addAll: ((nodes at: 1) at: 20) to: (result at: 14).
+	self addAll: ((nodes at: 1) at: 21) to: (result at: 15).
 	self addAll: ((nodes at: 1) at: 22) to: (result at: 16).
 	self addAll: ((nodes at: 1) at: 23) to: (result at: 17).
 	self addAll: ((nodes at: 1) at: 24) to: (result at: 19).
@@ -9958,9 +9868,9 @@ SwiftParser >> reduceActionFortype_inheritance_clause1: nodes [
 	result at: 1 put: (nodes at: 1).
 	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
 	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
-	self addAll: ((nodes at: 2) at: 3) to: (result at: 6).
-	self addAll: ((nodes at: 2) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 2) at: 5) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 3) to: (result at: 4).
+	self addAll: ((nodes at: 2) at: 4) to: (result at: 5).
+	self addAll: ((nodes at: 2) at: 5) to: (result at: 6).
 	^ result
 ]
 
@@ -9997,16 +9907,18 @@ SwiftParser >> reduceActionFortypealias_declaration1: nodes [
 	result
 		addTokens: ((nodes at: 2) at: 5)
 		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 6) to: result periodTokens.
-	result addTokens: ((nodes at: 2) at: 7) to: result leftParenTokens.
-	result addTokens: ((nodes at: 2) at: 8) to: result rightParenTokens.
-	result addTokens: ((nodes at: 2) at: 9) to: result questionMarkTokens.
-	result addTokens: ((nodes at: 2) at: 10) to: result bangTokens.
-	result addTokens: ((nodes at: 2) at: 11) to: result protocolTokens.
-	result addTokens: ((nodes at: 2) at: 12) to: result lessThanTokens.
-	result addTokens: ((nodes at: 2) at: 13) to: result greaterThanTokens.
-	result addTokens: ((nodes at: 2) at: 14) to: result typeTokens.
-	result addTokens: ((nodes at: 2) at: 15) to: result identifierTokens.
+	result addTokens: ((nodes at: 2) at: 6) to: result identifierTokens.
+	result addTokens: ((nodes at: 2) at: 7) to: result lessThanTokens.
+	result addTokens: ((nodes at: 2) at: 8) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 2) at: 9) to: result periodTokens.
+	result addTokens: ((nodes at: 2) at: 10) to: result leftParenTokens.
+	result addTokens: ((nodes at: 2) at: 11) to: result rightParenTokens.
+	result
+		addTokens: ((nodes at: 2) at: 12)
+		to: result questionMarkTokens.
+	result addTokens: ((nodes at: 2) at: 13) to: result bangTokens.
+	result addTokens: ((nodes at: 2) at: 14) to: result protocolTokens.
+	result addTokens: ((nodes at: 2) at: 15) to: result typeTokens.
 	result addTokens: ((nodes at: 2) at: 16) to: result commaTokens.
 	result
 		addTokens: ((nodes at: 2) at: 17)
@@ -10133,27 +10045,27 @@ SwiftParser >> reduceActionForunion_style_enum1: nodes [
 	self addAll: ((nodes at: 4) at: 22) to: (result at: 29).
 	self addAll: ((nodes at: 4) at: 23) to: (result at: 30).
 	self addAll: ((nodes at: 4) at: 24) to: (result at: 31).
-	self addAll: ((nodes at: 4) at: 25) to: (result at: 4).
+	self addAll: ((nodes at: 4) at: 25) to: (result at: 5).
 	self addAll: ((nodes at: 4) at: 26) to: (result at: 3).
 	self addAll: ((nodes at: 4) at: 27) to: (result at: 32).
 	self addAll: ((nodes at: 4) at: 28) to: (result at: 33).
 	self addAll: ((nodes at: 4) at: 29) to: (result at: 34).
-	self addAll: ((nodes at: 4) at: 30) to: (result at: 35).
-	self addAll: ((nodes at: 4) at: 31) to: (result at: 36).
-	self addAll: ((nodes at: 4) at: 32) to: (result at: 2).
-	self addAll: ((nodes at: 4) at: 33) to: (result at: 5).
+	self addAll: ((nodes at: 4) at: 30) to: (result at: 2).
+	self addAll: ((nodes at: 4) at: 31) to: (result at: 4).
+	self addAll: ((nodes at: 4) at: 32) to: (result at: 35).
+	self addAll: ((nodes at: 4) at: 33) to: (result at: 36).
 	self addAll: ((nodes at: 4) at: 34) to: (result at: 37).
 	self addAll: ((nodes at: 4) at: 35) to: (result at: 38).
-	self addAll: ((nodes at: 4) at: 36) to: (result at: 39).
-	self addAll: ((nodes at: 4) at: 37) to: (result at: 40).
+	self addAll: ((nodes at: 4) at: 36) to: (result at: 47).
+	self addAll: ((nodes at: 4) at: 37) to: (result at: 39).
 	self addAll: ((nodes at: 4) at: 38) to: (result at: 10).
-	self addAll: ((nodes at: 4) at: 39) to: (result at: 41).
-	self addAll: ((nodes at: 4) at: 40) to: (result at: 42).
-	self addAll: ((nodes at: 4) at: 41) to: (result at: 43).
-	self addAll: ((nodes at: 4) at: 42) to: (result at: 44).
-	self addAll: ((nodes at: 4) at: 43) to: (result at: 45).
-	self addAll: ((nodes at: 4) at: 44) to: (result at: 46).
-	self addAll: ((nodes at: 4) at: 45) to: (result at: 47).
+	self addAll: ((nodes at: 4) at: 39) to: (result at: 40).
+	self addAll: ((nodes at: 4) at: 40) to: (result at: 41).
+	self addAll: ((nodes at: 4) at: 41) to: (result at: 42).
+	self addAll: ((nodes at: 4) at: 42) to: (result at: 43).
+	self addAll: ((nodes at: 4) at: 43) to: (result at: 44).
+	self addAll: ((nodes at: 4) at: 44) to: (result at: 45).
+	self addAll: ((nodes at: 4) at: 45) to: (result at: 46).
 	self addAll: ((nodes at: 4) at: 46) to: (result at: 8).
 	self addAll: ((nodes at: 4) at: 47) to: (result at: 9).
 	self addAll: ((nodes at: 4) at: 48) to: (result at: 48).
@@ -10166,7 +10078,7 @@ SwiftParser >> reduceActionForunion_style_enum1: nodes [
 	self addAll: ((nodes at: 4) at: 55) to: (result at: 55).
 	self addAll: ((nodes at: 4) at: 56) to: (result at: 56).
 	self addAll: ((nodes at: 4) at: 57) to: (result at: 57).
-	self add: (nodes at: 5) to: (result at: 43).
+	self add: (nodes at: 5) to: (result at: 42).
 	^ result
 ]
 
@@ -10247,19 +10159,19 @@ SwiftParser >> reduceActionForunion_style_enum_case_clause1: nodes [
 	self addAll: ((nodes at: 3) at: 2) to: (result at: 3).
 	self addAll: ((nodes at: 3) at: 3) to: (result at: 1).
 	self addAll: ((nodes at: 3) at: 4) to: (result at: 4).
-	self addAll: ((nodes at: 3) at: 5) to: (result at: 14).
+	self addAll: ((nodes at: 3) at: 5) to: (result at: 16).
 	self addAll: ((nodes at: 3) at: 6) to: (result at: 5).
 	self addAll: ((nodes at: 3) at: 7) to: (result at: 6).
-	self addAll: ((nodes at: 3) at: 8) to: (result at: 15).
-	self addAll: ((nodes at: 3) at: 9) to: (result at: 16).
-	self addAll: ((nodes at: 3) at: 10) to: (result at: 17).
-	self addAll: ((nodes at: 3) at: 11) to: (result at: 18).
-	self addAll: ((nodes at: 3) at: 12) to: (result at: 19).
-	self addAll: ((nodes at: 3) at: 13) to: (result at: 20).
-	self addAll: ((nodes at: 3) at: 14) to: (result at: 21).
-	self addAll: ((nodes at: 3) at: 15) to: (result at: 22).
-	self addAll: ((nodes at: 3) at: 16) to: (result at: 23).
-	self addAll: ((nodes at: 3) at: 17) to: (result at: 24).
+	self addAll: ((nodes at: 3) at: 8) to: (result at: 14).
+	self addAll: ((nodes at: 3) at: 9) to: (result at: 17).
+	self addAll: ((nodes at: 3) at: 10) to: (result at: 18).
+	self addAll: ((nodes at: 3) at: 11) to: (result at: 19).
+	self addAll: ((nodes at: 3) at: 12) to: (result at: 20).
+	self addAll: ((nodes at: 3) at: 13) to: (result at: 21).
+	self addAll: ((nodes at: 3) at: 14) to: (result at: 22).
+	self addAll: ((nodes at: 3) at: 15) to: (result at: 23).
+	self addAll: ((nodes at: 3) at: 16) to: (result at: 24).
+	self addAll: ((nodes at: 3) at: 17) to: (result at: 15).
 	self addAll: ((nodes at: 3) at: 18) to: (result at: 25).
 	self addAll: ((nodes at: 3) at: 19) to: (result at: 7).
 	self addAll: ((nodes at: 3) at: 20) to: (result at: 8).
@@ -10376,17 +10288,17 @@ SwiftParser >> reduceActionForunion_style_enum_member2: nodes [
 	self addAll: ((nodes at: 1) at: 11) to: (result at: 11).
 	self addAll: ((nodes at: 1) at: 12) to: (result at: 12).
 	self add: ((nodes at: 1) at: 13) to: (result at: 57).
-	self addAll: ((nodes at: 1) at: 14) to: (result at: 41).
-	self addAll: ((nodes at: 1) at: 15) to: (result at: 33).
-	self addAll: ((nodes at: 1) at: 16) to: (result at: 34).
-	self addAll: ((nodes at: 1) at: 17) to: (result at: 21).
+	self addAll: ((nodes at: 1) at: 14) to: (result at: 33).
+	self addAll: ((nodes at: 1) at: 15) to: (result at: 32).
+	self addAll: ((nodes at: 1) at: 16) to: (result at: 41).
+	self addAll: ((nodes at: 1) at: 17) to: (result at: 34).
 	self addAll: ((nodes at: 1) at: 18) to: (result at: 35).
 	self addAll: ((nodes at: 1) at: 19) to: (result at: 36).
-	self addAll: ((nodes at: 1) at: 20) to: (result at: 18).
+	self addAll: ((nodes at: 1) at: 20) to: (result at: 21).
 	self addAll: ((nodes at: 1) at: 21) to: (result at: 37).
 	self addAll: ((nodes at: 1) at: 22) to: (result at: 38).
-	self addAll: ((nodes at: 1) at: 23) to: (result at: 39).
-	self addAll: ((nodes at: 1) at: 24) to: (result at: 32).
+	self addAll: ((nodes at: 1) at: 23) to: (result at: 18).
+	self addAll: ((nodes at: 1) at: 24) to: (result at: 39).
 	self addAll: ((nodes at: 1) at: 25) to: (result at: 40).
 	^ result
 ]
@@ -10687,14 +10599,14 @@ SwiftParser >> reduceActionForvariable_declaration2: nodes [
 	result
 		addTokens: ((nodes at: 3) at: 14)
 		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 15) to: result periodTokens.
+	result addTokens: ((nodes at: 3) at: 15) to: result lessThanTokens.
+	result addTokens: ((nodes at: 3) at: 16) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 17) to: result periodTokens.
 	result
-		addTokens: ((nodes at: 3) at: 16)
+		addTokens: ((nodes at: 3) at: 18)
 		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 3) at: 17) to: result bangTokens.
-	result addTokens: ((nodes at: 3) at: 18) to: result protocolTokens.
-	result addTokens: ((nodes at: 3) at: 19) to: result lessThanTokens.
-	result addTokens: ((nodes at: 3) at: 20) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 19) to: result bangTokens.
+	result addTokens: ((nodes at: 3) at: 20) to: result protocolTokens.
 	result addTokens: ((nodes at: 3) at: 21) to: result typeTokens.
 	result addTokens: ((nodes at: 3) at: 22) to: result commaTokens.
 	result
@@ -10764,14 +10676,14 @@ SwiftParser >> reduceActionForvariable_declaration3: nodes [
 	result
 		addTokens: ((nodes at: 3) at: 14)
 		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 15) to: result periodTokens.
+	result addTokens: ((nodes at: 3) at: 15) to: result lessThanTokens.
+	result addTokens: ((nodes at: 3) at: 16) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 17) to: result periodTokens.
 	result
-		addTokens: ((nodes at: 3) at: 16)
+		addTokens: ((nodes at: 3) at: 18)
 		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 3) at: 17) to: result bangTokens.
-	result addTokens: ((nodes at: 3) at: 18) to: result protocolTokens.
-	result addTokens: ((nodes at: 3) at: 19) to: result lessThanTokens.
-	result addTokens: ((nodes at: 3) at: 20) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 19) to: result bangTokens.
+	result addTokens: ((nodes at: 3) at: 20) to: result protocolTokens.
 	result addTokens: ((nodes at: 3) at: 21) to: result typeTokens.
 	result addTokens: ((nodes at: 3) at: 22) to: result commaTokens.
 	result
@@ -10861,14 +10773,14 @@ SwiftParser >> reduceActionForvariable_declaration4: nodes [
 	result
 		addTokens: ((nodes at: 3) at: 14)
 		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 15) to: result periodTokens.
+	result addTokens: ((nodes at: 3) at: 15) to: result lessThanTokens.
+	result addTokens: ((nodes at: 3) at: 16) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 17) to: result periodTokens.
 	result
-		addTokens: ((nodes at: 3) at: 16)
+		addTokens: ((nodes at: 3) at: 18)
 		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 3) at: 17) to: result bangTokens.
-	result addTokens: ((nodes at: 3) at: 18) to: result protocolTokens.
-	result addTokens: ((nodes at: 3) at: 19) to: result lessThanTokens.
-	result addTokens: ((nodes at: 3) at: 20) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 19) to: result bangTokens.
+	result addTokens: ((nodes at: 3) at: 20) to: result protocolTokens.
 	result addTokens: ((nodes at: 3) at: 21) to: result typeTokens.
 	result addTokens: ((nodes at: 3) at: 22) to: result commaTokens.
 	result
@@ -10957,14 +10869,14 @@ SwiftParser >> reduceActionForvariable_declaration5: nodes [
 	result
 		addTokens: ((nodes at: 3) at: 14)
 		to: result minusGreaterThanTokens.
-	result addTokens: ((nodes at: 3) at: 15) to: result periodTokens.
+	result addTokens: ((nodes at: 3) at: 15) to: result lessThanTokens.
+	result addTokens: ((nodes at: 3) at: 16) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 17) to: result periodTokens.
 	result
-		addTokens: ((nodes at: 3) at: 16)
+		addTokens: ((nodes at: 3) at: 18)
 		to: result questionMarkTokens.
-	result addTokens: ((nodes at: 3) at: 17) to: result bangTokens.
-	result addTokens: ((nodes at: 3) at: 18) to: result protocolTokens.
-	result addTokens: ((nodes at: 3) at: 19) to: result lessThanTokens.
-	result addTokens: ((nodes at: 3) at: 20) to: result greaterThanTokens.
+	result addTokens: ((nodes at: 3) at: 19) to: result bangTokens.
+	result addTokens: ((nodes at: 3) at: 20) to: result protocolTokens.
 	result addTokens: ((nodes at: 3) at: 21) to: result typeTokens.
 	result addTokens: ((nodes at: 3) at: 22) to: result commaTokens.
 	result

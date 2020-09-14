@@ -147,7 +147,7 @@ SwiftEnumDeclarationNode >> compositeNodeVariables [
 
 { #category : #generated }
 SwiftEnumDeclarationNode >> compositeTokenVariables [
-	^ #(#_Tokens #identifierTokens #leftParenTokens #rightParenTokens #leftBracketTokens #rightBracketTokens #leftBraceTokens #rightBraceTokens #integer_literalTokens #floating_point_literalTokens #full_string_literalTokens #operatorTokens #lessThanTokens #colonTokens #commaTokens #greaterThanTokens #periodTokens #protocolTokens #whereTokens #equalEqualTokens #importTokens #typealiasTokens #structTokens #classTokens #enumTokens #varTokens #funcTokens #mutatingTokens #nonmutatingTokens #overrideTokens #staticTokens #unownedTokens #unownedLeftParensafeRightParenTokens #unownedLeftParenunsafeRightParenTokens #weakTokens #letTokens #minusGreaterThanTokens #questionMarkTokens #bangTokens #typeTokens #getTokens #setTokens #equalTokens #willSetTokens #didSetTokens #periodPeriodPeriodTokens #convenienceTokens #initTokens #inoutTokens #deinitTokens #extensionTokens #subscriptTokens #caseTokens)
+	^ #(#_Tokens #identifierTokens #leftParenTokens #rightParenTokens #leftBracketTokens #rightBracketTokens #leftBraceTokens #rightBraceTokens #integer_literalTokens #floating_point_literalTokens #full_string_literalTokens #operatorTokens #lessThanTokens #colonTokens #greaterThanTokens #commaTokens #periodTokens #protocolTokens #whereTokens #equalEqualTokens #importTokens #typealiasTokens #structTokens #classTokens #enumTokens #varTokens #funcTokens #mutatingTokens #nonmutatingTokens #overrideTokens #staticTokens #unownedTokens #unownedLeftParensafeRightParenTokens #unownedLeftParenunsafeRightParenTokens #weakTokens #letTokens #minusGreaterThanTokens #questionMarkTokens #bangTokens #typeTokens #getTokens #setTokens #equalTokens #willSetTokens #didSetTokens #periodPeriodPeriodTokens #convenienceTokens #initTokens #inoutTokens #deinitTokens #extensionTokens #subscriptTokens #caseTokens)
 ]
 
 { #category : #generated }
@@ -351,8 +351,8 @@ SwiftEnumDeclarationNode >> initialize [
 	operatorTokens := OrderedCollection new: 2.
 	lessThanTokens := OrderedCollection new: 2.
 	colonTokens := OrderedCollection new: 2.
-	commaTokens := OrderedCollection new: 2.
 	greaterThanTokens := OrderedCollection new: 2.
+	commaTokens := OrderedCollection new: 2.
 	periodTokens := OrderedCollection new: 2.
 	protocolTokens := OrderedCollection new: 2.
 	whereTokens := OrderedCollection new: 2.

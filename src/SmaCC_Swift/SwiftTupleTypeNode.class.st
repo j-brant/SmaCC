@@ -77,7 +77,7 @@ SwiftTupleTypeNode >> commaTokens: anOrderedCollection [
 
 { #category : #generated }
 SwiftTupleTypeNode >> compositeTokenVariables [
-	^ #(#leftParenTokens #_Tokens #identifierTokens #rightParenTokens #inoutTokens #leftBracketTokens #rightBracketTokens #colonTokens #minusGreaterThanTokens #periodTokens #questionMarkTokens #bangTokens #protocolTokens #lessThanTokens #greaterThanTokens #typeTokens #commaTokens #periodPeriodPeriodTokens #leftBraceTokens #rightBraceTokens #integer_literalTokens #floating_point_literalTokens #full_string_literalTokens #operatorTokens)
+	^ #(#leftParenTokens #_Tokens #identifierTokens #rightParenTokens #inoutTokens #leftBracketTokens #rightBracketTokens #colonTokens #minusGreaterThanTokens #lessThanTokens #greaterThanTokens #periodTokens #questionMarkTokens #bangTokens #protocolTokens #typeTokens #commaTokens #periodPeriodPeriodTokens #leftBraceTokens #rightBraceTokens #integer_literalTokens #floating_point_literalTokens #full_string_literalTokens #operatorTokens)
 ]
 
 { #category : #generated }
@@ -132,12 +132,12 @@ SwiftTupleTypeNode >> initialize [
 	rightBracketTokens := OrderedCollection new: 2.
 	colonTokens := OrderedCollection new: 2.
 	minusGreaterThanTokens := OrderedCollection new: 2.
+	lessThanTokens := OrderedCollection new: 2.
+	greaterThanTokens := OrderedCollection new: 2.
 	periodTokens := OrderedCollection new: 2.
 	questionMarkTokens := OrderedCollection new: 2.
 	bangTokens := OrderedCollection new: 2.
 	protocolTokens := OrderedCollection new: 2.
-	lessThanTokens := OrderedCollection new: 2.
-	greaterThanTokens := OrderedCollection new: 2.
 	typeTokens := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 	periodPeriodPeriodTokens := OrderedCollection new: 2.

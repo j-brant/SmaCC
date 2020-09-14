@@ -102,7 +102,7 @@ SwiftSubscriptDeclarationNode >> compositeNodeVariables [
 
 { #category : #generated }
 SwiftSubscriptDeclarationNode >> compositeTokenVariables [
-	^ #(#_Tokens #identifierTokens #leftParenTokens #rightParenTokens #leftBracketTokens #rightBracketTokens #leftBraceTokens #rightBraceTokens #integer_literalTokens #floating_point_literalTokens #full_string_literalTokens #operatorTokens #inoutTokens #letTokens #colonTokens #minusGreaterThanTokens #periodTokens #questionMarkTokens #bangTokens #protocolTokens #lessThanTokens #greaterThanTokens #typeTokens #commaTokens #equalTokens #varTokens #periodPeriodPeriodTokens)
+	^ #(#_Tokens #identifierTokens #leftParenTokens #rightParenTokens #leftBracketTokens #rightBracketTokens #leftBraceTokens #rightBraceTokens #integer_literalTokens #floating_point_literalTokens #full_string_literalTokens #operatorTokens #inoutTokens #letTokens #colonTokens #minusGreaterThanTokens #lessThanTokens #greaterThanTokens #periodTokens #questionMarkTokens #bangTokens #protocolTokens #typeTokens #commaTokens #equalTokens #varTokens #periodPeriodPeriodTokens)
 ]
 
 { #category : #generated }
@@ -194,12 +194,12 @@ SwiftSubscriptDeclarationNode >> initialize [
 	letTokens := OrderedCollection new: 2.
 	colonTokens := OrderedCollection new: 2.
 	minusGreaterThanTokens := OrderedCollection new: 2.
+	lessThanTokens := OrderedCollection new: 2.
+	greaterThanTokens := OrderedCollection new: 2.
 	periodTokens := OrderedCollection new: 2.
 	questionMarkTokens := OrderedCollection new: 2.
 	bangTokens := OrderedCollection new: 2.
 	protocolTokens := OrderedCollection new: 2.
-	lessThanTokens := OrderedCollection new: 2.
-	greaterThanTokens := OrderedCollection new: 2.
 	typeTokens := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 	equalTokens := OrderedCollection new: 2.

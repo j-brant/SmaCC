@@ -79,7 +79,7 @@ SwiftTypealiasDeclarationNode >> commaTokens: anOrderedCollection [
 
 { #category : #generated }
 SwiftTypealiasDeclarationNode >> compositeTokenVariables [
-	^ #(#identifierTokens #leftBracketTokens #rightBracketTokens #colonTokens #minusGreaterThanTokens #periodTokens #leftParenTokens #rightParenTokens #questionMarkTokens #bangTokens #protocolTokens #lessThanTokens #greaterThanTokens #typeTokens #commaTokens #periodPeriodPeriodTokens #_Tokens #inoutTokens #leftBraceTokens #rightBraceTokens #integer_literalTokens #floating_point_literalTokens #full_string_literalTokens #operatorTokens)
+	^ #(#identifierTokens #leftBracketTokens #rightBracketTokens #colonTokens #minusGreaterThanTokens #lessThanTokens #greaterThanTokens #periodTokens #leftParenTokens #rightParenTokens #questionMarkTokens #bangTokens #protocolTokens #typeTokens #commaTokens #periodPeriodPeriodTokens #_Tokens #inoutTokens #leftBraceTokens #rightBraceTokens #integer_literalTokens #floating_point_literalTokens #full_string_literalTokens #operatorTokens)
 ]
 
 { #category : #generated }
@@ -140,14 +140,14 @@ SwiftTypealiasDeclarationNode >> initialize [
 	rightBracketTokens := OrderedCollection new: 2.
 	colonTokens := OrderedCollection new: 2.
 	minusGreaterThanTokens := OrderedCollection new: 2.
+	lessThanTokens := OrderedCollection new: 2.
+	greaterThanTokens := OrderedCollection new: 2.
 	periodTokens := OrderedCollection new: 2.
 	leftParenTokens := OrderedCollection new: 2.
 	rightParenTokens := OrderedCollection new: 2.
 	questionMarkTokens := OrderedCollection new: 2.
 	bangTokens := OrderedCollection new: 2.
 	protocolTokens := OrderedCollection new: 2.
-	lessThanTokens := OrderedCollection new: 2.
-	greaterThanTokens := OrderedCollection new: 2.
 	typeTokens := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 	periodPeriodPeriodTokens := OrderedCollection new: 2.

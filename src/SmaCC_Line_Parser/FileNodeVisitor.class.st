@@ -1,10 +1,7 @@
 Class {
 	#name : #FileNodeVisitor,
-	#superclass : #SmaCCParseNodeVisitor,
+	#superclass : #Object,
+	#traits : 'TFileNodeVisitor',
+	#classTraits : 'TFileNodeVisitor classTrait',
 	#category : #'SmaCC_Line_Parser'
 }
-
-{ #category : #generated }
-FileNodeVisitor >> visitFileNode: aFileNode [
-	^ self visitSmaCCParseNode: aFileNode
-]

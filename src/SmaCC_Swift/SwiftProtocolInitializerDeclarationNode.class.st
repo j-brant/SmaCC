@@ -85,7 +85,7 @@ SwiftProtocolInitializerDeclarationNode >> commaTokens: anOrderedCollection [
 
 { #category : #generated }
 SwiftProtocolInitializerDeclarationNode >> compositeTokenVariables [
-	^ #(#_Tokens #identifierTokens #leftParenTokens #rightParenTokens #leftBracketTokens #rightBracketTokens #leftBraceTokens #rightBraceTokens #integer_literalTokens #floating_point_literalTokens #full_string_literalTokens #operatorTokens #lessThanTokens #colonTokens #commaTokens #greaterThanTokens #periodTokens #protocolTokens #equalEqualTokens #inoutTokens #letTokens #minusGreaterThanTokens #questionMarkTokens #bangTokens #typeTokens #periodPeriodPeriodTokens #equalTokens #varTokens)
+	^ #(#_Tokens #identifierTokens #leftParenTokens #rightParenTokens #leftBracketTokens #rightBracketTokens #leftBraceTokens #rightBraceTokens #integer_literalTokens #floating_point_literalTokens #full_string_literalTokens #operatorTokens #lessThanTokens #colonTokens #greaterThanTokens #commaTokens #periodTokens #protocolTokens #equalEqualTokens #inoutTokens #letTokens #minusGreaterThanTokens #questionMarkTokens #bangTokens #typeTokens #equalTokens #varTokens #periodPeriodPeriodTokens)
 ]
 
 { #category : #generated }
@@ -195,8 +195,8 @@ SwiftProtocolInitializerDeclarationNode >> initialize [
 	operatorTokens := OrderedCollection new: 2.
 	lessThanTokens := OrderedCollection new: 2.
 	colonTokens := OrderedCollection new: 2.
-	commaTokens := OrderedCollection new: 2.
 	greaterThanTokens := OrderedCollection new: 2.
+	commaTokens := OrderedCollection new: 2.
 	periodTokens := OrderedCollection new: 2.
 	protocolTokens := OrderedCollection new: 2.
 	equalEqualTokens := OrderedCollection new: 2.
@@ -206,10 +206,10 @@ SwiftProtocolInitializerDeclarationNode >> initialize [
 	questionMarkTokens := OrderedCollection new: 2.
 	bangTokens := OrderedCollection new: 2.
 	typeTokens := OrderedCollection new: 2.
-	periodPeriodPeriodTokens := OrderedCollection new: 2.
 	equalTokens := OrderedCollection new: 2.
 	expressions := OrderedCollection new: 2.
 	varTokens := OrderedCollection new: 2.
+	periodPeriodPeriodTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

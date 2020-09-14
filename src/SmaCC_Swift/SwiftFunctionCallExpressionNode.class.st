@@ -92,7 +92,7 @@ SwiftFunctionCallExpressionNode >> compositeNodeVariables [
 
 { #category : #generated }
 SwiftFunctionCallExpressionNode >> compositeTokenVariables [
-	^ #(#leftParenTokens #identifierTokens #colonTokens #commaTokens #rightParenTokens #leftBraceTokens #inoutTokens #letTokens #_Tokens #leftBracketTokens #rightBracketTokens #minusGreaterThanTokens #periodTokens #questionMarkTokens #bangTokens #protocolTokens #lessThanTokens #greaterThanTokens #typeTokens #periodPeriodPeriodTokens #equalTokens #varTokens #rightBraceTokens #integer_literalTokens #floating_point_literalTokens #full_string_literalTokens #operatorTokens)
+	^ #(#leftParenTokens #identifierTokens #colonTokens #commaTokens #rightParenTokens #leftBraceTokens #inoutTokens #letTokens #_Tokens #leftBracketTokens #rightBracketTokens #minusGreaterThanTokens #lessThanTokens #greaterThanTokens #periodTokens #questionMarkTokens #bangTokens #protocolTokens #typeTokens #periodPeriodPeriodTokens #equalTokens #varTokens #rightBraceTokens #integer_literalTokens #floating_point_literalTokens #full_string_literalTokens #operatorTokens)
 ]
 
 { #category : #generated }
@@ -181,12 +181,12 @@ SwiftFunctionCallExpressionNode >> initialize [
 	leftBracketTokens := OrderedCollection new: 2.
 	rightBracketTokens := OrderedCollection new: 2.
 	minusGreaterThanTokens := OrderedCollection new: 2.
+	lessThanTokens := OrderedCollection new: 2.
+	greaterThanTokens := OrderedCollection new: 2.
 	periodTokens := OrderedCollection new: 2.
 	questionMarkTokens := OrderedCollection new: 2.
 	bangTokens := OrderedCollection new: 2.
 	protocolTokens := OrderedCollection new: 2.
-	lessThanTokens := OrderedCollection new: 2.
-	greaterThanTokens := OrderedCollection new: 2.
 	typeTokens := OrderedCollection new: 2.
 	periodPeriodPeriodTokens := OrderedCollection new: 2.
 	equalTokens := OrderedCollection new: 2.

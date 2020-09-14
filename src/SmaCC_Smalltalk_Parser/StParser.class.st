@@ -6,7 +6,7 @@ Class {
 
 { #category : #'generated-accessing' }
 StParser class >> cacheId [
-	^'2019-04-15T17:15:43.070416-05:00'
+	^'2020-09-14T14:32:48.304604-05:00'
 ]
 
 { #category : #generated }

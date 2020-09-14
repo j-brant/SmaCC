@@ -6,7 +6,7 @@ Class {
 
 { #category : #'generated-accessing' }
 SmaCCRewriteTestParser class >> cacheId [
-	^'2019-04-15T17:16:14.067598-05:00'
+	^'2020-09-14T14:32:42.685603-05:00'
 ]
 
 { #category : #generated }

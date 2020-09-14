@@ -6,7 +6,7 @@ Class {
 
 { #category : #'generated-accessing' }
 LineParser class >> cacheId [
-	^'2019-04-15T17:15:41.487428-05:00'
+	^'2020-09-14T14:32:06.26406-05:00'
 ]
 
 { #category : #generated }

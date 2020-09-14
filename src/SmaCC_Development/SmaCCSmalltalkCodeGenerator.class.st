@@ -617,6 +617,46 @@ SmaCCSmalltalkCodeGenerator >> defineClass: aString asSubclassOf: aBehavior [
 	^ model classNamed: aString asSymbol
 ]
 
+{ #category : #compiling }
+SmaCCSmalltalkCodeGenerator >> defineClass: aString asSubclassOf: aBehavior fromTraits: aCollection [
+	| current variables |
+	current := Smalltalk at: aString asSymbol ifAbsent: [ Object ].
+	variables := ''.
+	model
+		defineClass:
+			aBehavior name , ' subclass: #' , aString , ' uses: { '
+				,
+					(String
+						streamContents: [ :stream | 
+							aCollection
+								do: [ :each | stream nextPutAll: each ]
+								separatedBy: [ stream nextPutAll: '. ' ] ])
+				, ' } instanceVariableNames: ''' , variables
+				,
+					(''' classVariableNames: '''' poolDictionaries: '''' category: '''
+						, (defaultCategory ifNil: [ RPackage defaultPackageName ])
+						, ''' ').
+	^ model classNamed: aString asSymbol
+]
+
+{ #category : #compiling }
+SmaCCSmalltalkCodeGenerator >> defineTrait: aString fromTraits: aCollection [
+	model
+		smaccDefineTrait:
+			'Trait named: #' , aString , ' uses: { '
+				,
+					(String
+						streamContents: [ :stream | 
+							aCollection
+								do: [ :each | stream nextPutAll: each ]
+								separatedBy: [ stream nextPutAll: '. ' ] ])
+				,
+					('} package: '''
+						, (defaultCategory ifNil: [ RPackage defaultPackageName ])
+						, ''' ').
+	^ model classNamed: aString asSymbol
+]
+
 { #category : #'reduction table' }
 SmaCCSmalltalkCodeGenerator >> findExistingMethodFor: aRBMethodNode [
 	| potentialSelectors |

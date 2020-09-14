@@ -6,7 +6,7 @@ Class {
 
 { #category : #'generated-accessing' }
 Antlr4Parser class >> cacheId [
-	^'2019-04-15T17:15:55.288568-05:00'
+	^'2020-09-14T14:22:02.63296-05:00'
 ]
 
 { #category : #generated }

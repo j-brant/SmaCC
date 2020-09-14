@@ -416,7 +416,7 @@ SmaCCCodeGenerator >> compileGetterAndSetter: aSmaCCVariableDefinition forDefini
 		withName: variableName.
 	definer := aSmaCCNodeClassDefinition modelClass
 		whoDefinesMethod: aSmaCCVariableDefinition getterMethodName asSymbol.
-	(definer isNil or: [ definer = self objectClass ])
+	(definer isNil or: [ definer ~= aSmaCCNodeClassDefinition modelClass ])
 		ifTrue:
 			[ self
 				startPublicVirtualMethod;
@@ -770,6 +770,11 @@ SmaCCCodeGenerator >> defaultReductionSource [
 
 { #category : #'compiling-scanner' }
 SmaCCCodeGenerator >> defineClass: aString asSubclassOf: aSmaCCClass [
+	self subclassResponsibility
+]
+
+{ #category : #'compiling-scanner' }
+SmaCCCodeGenerator >> defineTrait: aString fromTraits: aCollection [
 	self subclassResponsibility
 ]
 

@@ -403,7 +403,7 @@ VBNetParser class >> ambiguousTransitions [
 
 { #category : #'generated-accessing' }
 VBNetParser class >> cacheId [
-	^'2020-06-23T15:54:55.11068-05:00'
+	^'2020-09-14T14:35:13.831126-05:00'
 ]
 
 { #category : #generated }
@@ -3730,8 +3730,8 @@ VBNetParser class >> reduceTable [
 	#(359 1 #liftFirstValue: 24179714 false ) 
 	#(341 1 #liftFirstValue: 22682626 false ) 
 	#(341 1 #liftFirstValue: 22682628 false ) 
-	#(370 1 #liftFirstValue: 26305537 false ) 
 	#(441 1 #liftFirstValue: 35005441 false ) 
+	#(370 1 #liftFirstValue: 26305537 false ) 
 	#(413 2 #reduceActionForOptionStatement__option__2: 31706114 false ) 
 	#(330 1 #liftFirstValue: 21238785 false ) 
 	#(329 2 #reduceActionForOptionStatement__option__2: 21020674 false ) 
@@ -5625,7 +5625,7 @@ VBNetParser class >> transitionTable [
 #[0 21 21 0 93] 
 #[1 21 45 0 36 21 45 0 41 21 33 0 100 21 37 0 184 21 45 0 197 21 45 1 123] 
 #[0 21 49 0 229] 
-#[1 2 147 0 40 2 147 0 78 2 147 0 81 2 147 0 98 9 182 0 100 2 147 0 120 2 147 0 132 2 147 0 137 2 147 0 141 2 147 0 142 2 147 0 154 2 147 0 155 2 147 0 156 2 147 0 158 2 147 0 160 9 186 0 161 2 147 0 162 2 147 0 163 2 147 0 166 2 147 0 173 2 147 0 174 9 182 0 184 2 147 0 203 2 147 0 205 2 147 0 206] 
+#[1 2 147 0 40 2 147 0 78 2 147 0 81 2 147 0 98 9 186 0 100 2 147 0 120 2 147 0 132 2 147 0 137 2 147 0 141 2 147 0 142 2 147 0 154 2 147 0 155 2 147 0 156 2 147 0 158 2 147 0 160 9 182 0 161 2 147 0 162 2 147 0 163 2 147 0 166 2 147 0 173 2 147 0 174 9 186 0 184 2 147 0 203 2 147 0 205 2 147 0 206] 
 #[0 21 53 0 229] 
 #[1 21 57 0 138 5 49 0 229] 
 #[1 21 61 0 106 21 65 0 108 21 69 0 215 21 73 1 95 21 77 1 116 21 81 1 133] 
