@@ -136,10 +136,20 @@ SmaCCCodeGenerator >> acceptStateEdge: aSmaCCStateEdge [
 { #category : #private }
 SmaCCCodeGenerator >> addParentAssignmentFor: aSmaCCVariableDefinition to: valueString [
 	aSmaCCVariableDefinition isBaseNodeType
-		ifFalse: [ ^ self ].
+		ifFalse: [ aSmaCCVariableDefinition isBaseTokenType
+				ifFalse: [ self
+						nextPutStatement:
+							(self
+								send: #setParent:to:
+								to: self receiverName
+								with:
+									(self
+										variableReference: aSmaCCVariableDefinition
+										in: self receiverName)
+								with: valueString) ].
+			^ self ].
 	aSmaCCVariableDefinition isCollection
-		ifTrue:
-			[ self
+		ifTrue: [ self
 				nextPutStatement:
 					(self
 						send: #setParents:to:
@@ -152,8 +162,7 @@ SmaCCCodeGenerator >> addParentAssignmentFor: aSmaCCVariableDefinition to: value
 										in: self receiverName)
 								to: self collectionType)
 						with: valueString) ]
-		ifFalse:
-			[ self
+		ifFalse: [ self
 				nextPutLine:
 					(self
 						notNilCheckFor:

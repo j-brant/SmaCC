@@ -811,6 +811,19 @@ SmaCCParseNode >> safePerform: aSymbol [
 ]
 
 { #category : #'collection handling' }
+SmaCCParseNode >> setParent: anObject to: parentNode [
+	(anObject isKindOf: SmaCCParseNode)
+		ifTrue: [ ^ (anObject parent == self or: [ anObject parent isNil ])
+				ifTrue: [ anObject parent: parentNode ] ].
+	(anObject isKindOf: OrderedCollection)
+		ifTrue: [ anObject
+				do: [ :each | 
+					((each isKindOf: SmaCCParseNode)
+						and: [ each parent == self or: [ each parent isNil ] ])
+						ifTrue: [ each parent: parentNode ] ] ]
+]
+
+{ #category : #'collection handling' }
 SmaCCParseNode >> setParents: aCollection to: anObject [
 	aCollection isNil
 		ifTrue: [ ^ self ].

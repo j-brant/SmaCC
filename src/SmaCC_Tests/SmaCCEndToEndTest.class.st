@@ -685,6 +685,57 @@ SmaCCEndToEndTest >> testDefaultClassNameWithUnderscore [
 	(self lookupType: #FooTestNodeVisitor) new acceptNode: node
 ]
 
+{ #category : #tests }
+SmaCCEndToEndTest >> testEmbeddedJS [
+	| parserCompiler node found |
+	(Smalltalk includesKey: #JSParser)
+		ifFalse: [ ^ self ].
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	parserCompiler
+		buildDefinition:
+			'%root Program;
+			%prefix Foo;
+			%suffix Node;
+			<text> : [^\{\}]+;
+			File : Items {{}};
+			Items
+				:
+				| Items Text ''item''
+				| Items JSCode ''item'';
+			Text : <text> ''value'' {{}} ;
+			JSCode : ParseJSCode ''ast'' "{" ''left'' "}" ''right'' {{JS}};
+			ParseJSCode : { JSParser parseEmbeddedStream: scanner stream };
+			'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+	node := self parserClass parse: 'Before {console.log("test");} After'.
+	found := false.
+	node
+		allNodesDo: [ :each | found := found or: [ each class name beginsWith: 'JS' ] ].
+	self assert: node items first source = 'Before '.
+	self assert: node items last source = ' After'.
+	self assert: found
+]
+
+{ #category : #tests }
+SmaCCEndToEndTest >> testEmbeddedParsing [
+	| parserCompiler stream |
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	parserCompiler
+		buildDefinition:
+			'%glr; 
+			A : "(" ")" {OrderedCollection with: ''1'' with: ''2''}
+				| "(" A ")" {''2'' addFirst: ''1''; addLast: ''3''; yourself};'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+	stream := '(())()}()' readStream.
+	self assert: (self parserClass parseEmbeddedStream: stream) size = 4.
+	self assert: (self parserClass parseEmbeddedStream: stream) size = 2.
+	self assert: stream next = $}.
+	self assert: (self parserClass parseEmbeddedStream: stream) size = 2.
+	self assert: stream atEnd
+]
+
 { #category : #'tests-parse tree creation' }
 SmaCCEndToEndTest >> testEmptyAlternative [
 	| compiler node |

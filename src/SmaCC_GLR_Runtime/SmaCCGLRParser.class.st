@@ -23,7 +23,8 @@ Class {
 		'tryAllStates',
 		'lastToken',
 		'lastState',
-		'nextScannerState'
+		'nextScannerState',
+		'parseAsEmbedded'
 	],
 	#classVars : [
 		'maxParallelParses'
@@ -89,6 +90,22 @@ SmaCCGLRParser class >> parseAndCacheAll: aString startingAt: anInteger [
 { #category : #parsing }
 SmaCCGLRParser class >> parseAndCacheAllPossibleStates: aString [
 	^ (self cachedTrees at: (Array with: aString with: nil) ifAbsentPut: [ self parseAllPossibleStates: aString ]) copy
+]
+
+{ #category : #parsing }
+SmaCCGLRParser class >> parseEmbeddedStream: aStream [
+	^ self
+		parseEmbeddedStream: aStream
+		startingAt: self defaultStartingState
+]
+
+{ #category : #parsing }
+SmaCCGLRParser class >> parseEmbeddedStream: aStream startingAt: anInteger [
+	| parser |
+	parser := self on: aStream.
+	parser setStartingState: anInteger.
+	parser enableEmbeddedParsing.
+	^ parser parse
 ]
 
 { #category : #accessing }
@@ -166,6 +183,15 @@ SmaCCGLRParser >> addActionsForState: state symbol: anInteger to: anOrderedColle
 ]
 
 { #category : #private }
+SmaCCGLRParser >> addEmbeddedActions [
+	| i |
+	i := states size.
+	[ i > 0 ]
+		whileTrue: [ self tryEmbededAcceptFor: (states at: i).
+			i := i - 1 ]
+]
+
+{ #category : #private }
 SmaCCGLRParser >> alwaysPerformReduceAction [
 	^ false
 ]
@@ -199,7 +225,7 @@ SmaCCGLRParser >> currentGLRState [
 { #category : #private }
 SmaCCGLRParser >> duplicateState [
 	| state |
-	states size >= self class maxParallelParses ifTrue: [ SmaCCTooAmbiguousNotification signal ].
+	(parseAsEmbedded not and: [states size >= self class maxParallelParses]) ifTrue: [ SmaCCTooAmbiguousNotification signal ].
 	parseAll ifTrue: [nodeStack := nodeStack collect: [:each | self copyStackObject: each]] ifFalse: [nodeStack := nodeStack copy].
 	stateStack := stateStack copy.
 	state := currentState copy.
@@ -209,6 +235,11 @@ SmaCCGLRParser >> duplicateState [
 	^state
 ]
 
+{ #category : #'initialize-release' }
+SmaCCGLRParser >> enableEmbeddedParsing [
+	parseAsEmbedded := true
+]
+
 { #category : #private }
 SmaCCGLRParser >> fixObject: anObject [
 	| result |
@@ -216,6 +247,18 @@ SmaCCGLRParser >> fixObject: anObject [
 	(result isKindOf: SmaCCParseNode)
 		ifTrue: [ result fixParentPointers ].
 	^ result
+]
+
+{ #category : #private }
+SmaCCGLRParser >> getAcceptedObject [
+	^ parseAsEmbedded
+		ifTrue: [ | state |
+			state := (states
+				asSortedCollection: [ :a :b | a scannerState position > b scannerState position ])
+				first.
+			self restoreState: state.
+			state nodeStack first ]
+		ifFalse: [ states first nodeStack first ]
 ]
 
 { #category : #private }
@@ -248,7 +291,8 @@ SmaCCGLRParser >> initialize [
 	super initialize.
 	states := OrderedCollection new.
 	parseAll := false.
-	tryAllStates := false
+	tryAllStates := false.
+	parseAsEmbedded := false
 ]
 
 { #category : #private }
@@ -320,21 +364,24 @@ SmaCCGLRParser >> performParsingLoop [
 	self setStartingStatesIfNone.
 	[ i := states size.
 	[ i > 0 ]
-		whileTrue: [ [ currentToken := nil.
-			self restoreState: (states at: i).
-			self getNextToken.
-			self performParsingStep ]
-				on: SmaCCTooAmbiguousNotification
-				do: [ :ex | 
-					self trimParallelParses.
-					i := i min: states size + 1 ].
+		whileTrue: [ (states at: i) isAccepted
+				ifFalse: [ [ currentToken := nil.
+					self restoreState: (states at: i).
+					self getNextToken.
+					self performParsingStep ]
+						on: SmaCCTooAmbiguousNotification
+						do: [ :ex | 
+							self trimParallelParses.
+							i := i min: states size + 1 ] ].
 			i := i - 1 ].
 	self mergeStates.
+	parseAsEmbedded
+		ifTrue: [ self addEmbeddedActions ].
 	states anySatisfy: [ :each | each isAccepted not ] ] whileTrue.
 	self checkForErrors.
 	result := parseAll
 		ifTrue: [ states collect: [ :each | self fixObject: each nodeStack first ] ]
-		ifFalse: [ self fixObject: states first nodeStack first ].
+		ifFalse: [ self fixObject: self getAcceptedObject ].
 	nodeStack := OrderedCollection with: result
 ]
 
@@ -552,6 +599,33 @@ SmaCCGLRParser >> trimParallelParses [
 	| newCount |
 	newCount := (self class maxParallelParses bitShift: -2) max: 1.
 	states := states copyFrom: 1 to: newCount
+]
+
+{ #category : #private }
+SmaCCGLRParser >> tryEmbededAcceptFor: state [
+	| actions newState |
+	state isAccepted
+		ifTrue: [ ^ self ].
+	actions := OrderedCollection new.
+	self
+		addActionsForState: state stateStack last
+		symbol: scanner eofTokenId first
+		to: actions.
+	(actions includes: self acceptAction)
+		ifTrue: [ ^ state markAccepted ].
+	actions
+		do: [ :action | 
+			self restoreState: state.
+			newState := currentState := self duplicateState.
+			currentToken := SmaCCToken
+				value: ''
+				start: currentState scannerState position
+				ids: scanner eofTokenId.
+			self performAction: action.
+			self tryEmbededAcceptFor: currentState.
+			newState isAccepted
+				ifFalse: [ currentState := newState.
+					self killState ] ]
 ]
 
 { #category : #testing }
