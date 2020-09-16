@@ -686,6 +686,63 @@ SmaCCEndToEndTest >> testDefaultClassNameWithUnderscore [
 ]
 
 { #category : #tests }
+SmaCCEndToEndTest >> testEmbeddedBacktracking [
+	| parserCompiler stream |
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	parserCompiler
+		buildDefinition:
+			'%glr; 
+			A : "(" ")" {OrderedCollection with: ''1'' with: ''2''}
+				| "(" ")" A {''3'' addFirst: ''1''; addLast: ''2''; yourself};'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+	stream := '()()(a' readStream.
+	self assert: (self parserClass parseEmbeddedStream: stream) size = 4.
+	self assert: stream upToEnd = '(a'
+]
+
+{ #category : #tests }
+SmaCCEndToEndTest >> testEmbeddedExample [
+	| parserCompiler node found |
+	(Smalltalk includesKey: #JSONParser)
+		ifFalse: [ ^ self ].
+	(Smalltalk includesKey: #JSParser)
+		ifFalse: [ ^ self ].
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	parserCompiler
+		buildDefinition:
+			'%root Program;
+			%prefix Foo;
+			%suffix Node;
+			%excludes name;
+			<text> : [^\{\}]+;
+			name <name> : [a-zA-Z]+;
+			name <colon> : \:;
+			name <whitespace> : \s+;
+			File : Items {{}};
+			Items
+				:
+				| Items Text ''item''
+				| Items Code ''item'';
+			Text : <text> ''value'' {{}} ;
+			Code : SwitchToName "{" ''left'' <name> ''parserName'' ParseCode ''ast'' <colon> SwitchToDefault "}" ''right'' {{JS}};
+			SwitchToName : [self scope: #name. nil];
+			SwitchToDefault : [self scope: #default. nil];
+			ParseCode : [(Smalltalk at: nodeStack last value asSymbol) parseEmbeddedStream: scanner stream];'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+	node := self parserClass
+		parse:
+			'JS: { JSParser : console.log("test"); } JSON: {JSONParser: {"array":[1, {"key":2}]}}'.
+	self assert: node items first source = 'JS: '.
+	self
+		assert: (node items second ast isKindOf: (Smalltalk at: #JSProgramNode)).
+	self assert: node items third source = ' JSON: '.
+	self
+		assert: (node items last ast isKindOf: (Smalltalk at: #JSONParseNode))
+]
+
+{ #category : #tests }
 SmaCCEndToEndTest >> testEmbeddedJS [
 	| parserCompiler node found |
 	(Smalltalk includesKey: #JSParser)
