@@ -1,12 +1,12 @@
 Class {
 	#name : #JSONParser,
-	#superclass : #SmaCCParser,
+	#superclass : #SmaCCGLRParser,
 	#category : #'SmaCC_JSON_Parser'
 }
 
 { #category : #'generated-accessing' }
 JSONParser class >> cacheId [
-	^'2020-09-14T14:25:26.033285-05:00'
+	^'2020-09-16T13:57:56.891175-05:00'
 ]
 
 { #category : #generated }
@@ -14,6 +14,8 @@ JSONParser class >> definitionComment [
 "%root Parse;
 %prefix JSON;
 %suffix Node;
+
+%glr;
 
 %hierarchy Literal (String Number Boolean Null);
 
@@ -70,22 +72,22 @@ JSONParser class >> fileExtension [
 { #category : #generated }
 JSONParser class >> reduceTable [
 ^#(
-	#(14 1 #reduceActionForvalue6: 337926 false ) 
-	#(14 1 #reduceActionForvalue7: 337927 false ) 
-	#(14 1 #reduceActionForvalue6: 337925 false ) 
-	#(14 1 #reduceActionForvalue4: 337924 false ) 
-	#(14 1 #reduceActionForvalue3: 337923 false ) 
-	#(14 1 #liftFirstValue: 337921 false ) 
-	#(14 1 #liftFirstValue: 337922 false ) 
-	#(18 2 #reduceActionForarray1: 713729 false ) 
-	#(19 1 #reduceActionForelements2: 779266 false ) 
-	#(15 2 #reduceActionForobject1: 520193 false ) 
-	#(16 1 #reduceActionForelements2: 581634 false ) 
-	#(18 3 #reduceActionForarray2: 713730 false ) 
-	#(15 3 #reduceActionForobject2: 520194 false ) 
-	#(19 3 #reduceActionForelements1: 779265 false ) 
-	#(17 3 #reduceActionFormember1: 652289 false ) 
-	#(16 3 #reduceActionForelements1: 581633 false )
+	#(14 1 #reduceActionForvalue6: 345094 false ) 
+	#(14 1 #reduceActionForvalue7: 345095 false ) 
+	#(14 1 #reduceActionForvalue6: 345093 false ) 
+	#(14 1 #reduceActionForvalue4: 345092 false ) 
+	#(14 1 #reduceActionForvalue3: 345091 false ) 
+	#(14 1 #liftFirstValue: 345089 false ) 
+	#(14 1 #liftFirstValue: 345090 false ) 
+	#(18 2 #reduceActionForarray1: 720897 false ) 
+	#(19 1 #reduceActionForelements2: 786434 false ) 
+	#(15 2 #reduceActionForobject1: 527361 false ) 
+	#(16 1 #reduceActionForelements2: 588802 false ) 
+	#(18 3 #reduceActionForarray2: 720898 false ) 
+	#(15 3 #reduceActionForobject2: 527362 false ) 
+	#(19 3 #reduceActionForelements1: 786433 false ) 
+	#(17 3 #reduceActionFormember1: 659457 false ) 
+	#(16 3 #reduceActionForelements1: 588801 false )
 	).
 ]
 
