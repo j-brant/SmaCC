@@ -20,7 +20,7 @@ BaselineOfSmaCC >> baseline: spec [
 				package: 'SmaCC_GLR_Runtime' with: [ spec requires: 'SmaCC_Runtime' ];
 				package: 'SmaCC_Generic_Smalltalk_Parser' with: [ spec requires: 'SmaCC_GLR_Runtime' ];
 				package: 'SmaCC_Grammar_Parser' with: [ spec requires: 'SmaCC_GLR_Runtime' ];
-				package: 'SmaCC_JSON_Parser' with: [ spec requires: 'SmaCC_Runtime' ];
+				package: 'SmaCC_JSON_Parser' with: [ spec requires: 'SmaCC_GLR_Runtime' ];
 				package: 'SmaCC_Java' with: [ spec requires: 'SmaCC_GLR_Runtime' ];
 				package: 'SmaCC_Javascript_Parser' with: [ spec requires: 'SmaCC_GLR_Runtime' ];
 				package: 'SmaCC_Line_Parser' with: [ spec requires: 'SmaCC_Runtime' ];
