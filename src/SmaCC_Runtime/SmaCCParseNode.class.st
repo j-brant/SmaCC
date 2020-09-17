@@ -57,6 +57,15 @@ SmaCCParseNode class >> variableIn: aSmaCCParseNode getter: aSymbol [
 	^ nil
 ]
 
+{ #category : #accessing }
+SmaCCParseNode class >> visitorTrait [
+	^ self == SmaCCParseNode
+		ifTrue: [ TSmaCCParseNodeVisitor ]
+		ifFalse: [ Smalltalk
+				at: ('T' , self name , 'Visitor') asSymbol
+				ifAbsent: [ superclass visitorTrait ] ]
+]
+
 { #category : #comparing }
 SmaCCParseNode >> = anObject [
 	^ self == anObject
