@@ -2,6 +2,7 @@ Class {
 	#name : #JSMemberFunctionDeclarationNode,
 	#superclass : #JSProgramNode,
 	#instVars : [
+		'decorators',
 		'name',
 		'signature',
 		'leftBrace',
@@ -21,7 +22,19 @@ JSMemberFunctionDeclarationNode >> acceptVisitor: aProgramVisitor [
 
 { #category : #generated }
 JSMemberFunctionDeclarationNode >> compositeNodeVariables [
-	^ #(#statements)
+	^ #(#decorators #statements)
+]
+
+{ #category : #generated }
+JSMemberFunctionDeclarationNode >> decorators [
+	^ decorators
+]
+
+{ #category : #generated }
+JSMemberFunctionDeclarationNode >> decorators: anOrderedCollection [
+	self setParents: self decorators to: nil.
+	decorators := anOrderedCollection.
+	self setParents: self decorators to: self
 ]
 
 { #category : #generated }
@@ -32,6 +45,7 @@ JSMemberFunctionDeclarationNode >> ignoredTokenVariables [
 { #category : #'generated-initialize-release' }
 JSMemberFunctionDeclarationNode >> initialize [
 	super initialize.
+	decorators := OrderedCollection new: 2.
 	statements := OrderedCollection new: 2.
 ]
 

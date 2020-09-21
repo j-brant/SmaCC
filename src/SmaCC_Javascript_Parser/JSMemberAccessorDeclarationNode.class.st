@@ -2,6 +2,7 @@ Class {
 	#name : #JSMemberAccessorDeclarationNode,
 	#superclass : #JSProgramNode,
 	#instVars : [
+		'decorators',
 		'accessor',
 		'staticToken',
 		'modifier'
@@ -26,6 +27,29 @@ JSMemberAccessorDeclarationNode >> accessor: aJSMethodDefinitionNode [
 	accessor := aJSMethodDefinitionNode.
 	self accessor notNil
 		ifTrue: [ self accessor parent: self ]
+]
+
+{ #category : #generated }
+JSMemberAccessorDeclarationNode >> compositeNodeVariables [
+	^ #(#decorators)
+]
+
+{ #category : #generated }
+JSMemberAccessorDeclarationNode >> decorators [
+	^ decorators
+]
+
+{ #category : #generated }
+JSMemberAccessorDeclarationNode >> decorators: anOrderedCollection [
+	self setParents: self decorators to: nil.
+	decorators := anOrderedCollection.
+	self setParents: self decorators to: self
+]
+
+{ #category : #'generated-initialize-release' }
+JSMemberAccessorDeclarationNode >> initialize [
+	super initialize.
+	decorators := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

@@ -3,9 +3,10 @@ Class {
 	#superclass : #JSProgramNode,
 	#instVars : [
 		'importToken',
-		'name',
+		'identifier',
 		'equalToken',
-		'value',
+		'names',
+		'periodTokens',
 		'semicolon'
 	],
 	#category : #'SmaCC_Javascript_Parser'
@@ -17,6 +18,16 @@ JSImportAliasDeclarationNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
+JSImportAliasDeclarationNode >> compositeNodeVariables [
+	^ #(#names)
+]
+
+{ #category : #generated }
+JSImportAliasDeclarationNode >> compositeTokenVariables [
+	^ #(#periodTokens)
+]
+
+{ #category : #generated }
 JSImportAliasDeclarationNode >> equalToken [
 	^ equalToken
 ]
@@ -24,6 +35,20 @@ JSImportAliasDeclarationNode >> equalToken [
 { #category : #generated }
 JSImportAliasDeclarationNode >> equalToken: aSmaCCToken [
 	equalToken := aSmaCCToken
+]
+
+{ #category : #generated }
+JSImportAliasDeclarationNode >> identifier [
+	^ identifier
+]
+
+{ #category : #generated }
+JSImportAliasDeclarationNode >> identifier: aJSNameExpressionNode [
+	self identifier notNil
+		ifTrue: [ self identifier parent: nil ].
+	identifier := aJSNameExpressionNode.
+	self identifier notNil
+		ifTrue: [ self identifier parent: self ]
 ]
 
 { #category : #generated }
@@ -41,28 +66,38 @@ JSImportAliasDeclarationNode >> importToken: aSmaCCToken [
 	importToken := aSmaCCToken
 ]
 
-{ #category : #generated }
-JSImportAliasDeclarationNode >> name [
-	^ name
+{ #category : #'generated-initialize-release' }
+JSImportAliasDeclarationNode >> initialize [
+	super initialize.
+	names := OrderedCollection new: 2.
+	periodTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-JSImportAliasDeclarationNode >> name: aJSNameExpressionNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
-	name := aJSNameExpressionNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+JSImportAliasDeclarationNode >> names [
+	^ names
+]
+
+{ #category : #generated }
+JSImportAliasDeclarationNode >> names: anOrderedCollection [
+	self setParents: self names to: nil.
+	names := anOrderedCollection.
+	self setParents: self names to: self
 ]
 
 { #category : #generated }
 JSImportAliasDeclarationNode >> nodeVariables [
-	^ #(#name)
+	^ #(#identifier)
 ]
 
 { #category : #generated }
-JSImportAliasDeclarationNode >> otherVariables [
-	^ #(#value)
+JSImportAliasDeclarationNode >> periodTokens [
+	^ periodTokens
+]
+
+{ #category : #generated }
+JSImportAliasDeclarationNode >> periodTokens: anOrderedCollection [
+	periodTokens := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -78,14 +113,4 @@ JSImportAliasDeclarationNode >> semicolon: aSmaCCToken [
 { #category : #generated }
 JSImportAliasDeclarationNode >> tokenVariables [
 	^ #(#importToken #equalToken)
-]
-
-{ #category : #generated }
-JSImportAliasDeclarationNode >> value [
-	^ value
-]
-
-{ #category : #generated }
-JSImportAliasDeclarationNode >> value: anOrderedCollection [
-	value := anOrderedCollection
 ]

@@ -12,10 +12,22 @@ Class {
 		'types',
 		'commas',
 		'name',
+		'abstract',
+		'decorators',
 		'typeParameters'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
+
+{ #category : #generated }
+JSClassExpressionNode >> abstract [
+	^ abstract
+]
+
+{ #category : #generated }
+JSClassExpressionNode >> abstract: aSmaCCToken [
+	abstract := aSmaCCToken
+]
 
 { #category : #generated }
 JSClassExpressionNode >> acceptVisitor: aProgramVisitor [
@@ -44,7 +56,19 @@ JSClassExpressionNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 JSClassExpressionNode >> compositeNodeVariables [
-	^ #(#elements #types)
+	^ #(#elements #types #decorators)
+]
+
+{ #category : #generated }
+JSClassExpressionNode >> decorators [
+	^ decorators
+]
+
+{ #category : #generated }
+JSClassExpressionNode >> decorators: anOrderedCollection [
+	self setParents: self decorators to: nil.
+	decorators := anOrderedCollection.
+	self setParents: self decorators to: self
 ]
 
 { #category : #generated }
@@ -95,6 +119,7 @@ JSClassExpressionNode >> initialize [
 	elements := OrderedCollection new: 2.
 	types := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
+	decorators := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -152,7 +177,7 @@ JSClassExpressionNode >> superclass: aJSProgramNode [
 
 { #category : #generated }
 JSClassExpressionNode >> tokenVariables [
-	^ #(#classToken #extendsToken #implementsToken)
+	^ #(#classToken #extendsToken #implementsToken #abstract)
 ]
 
 { #category : #generated }

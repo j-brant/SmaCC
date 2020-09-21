@@ -5,6 +5,7 @@ Class {
 		'variable',
 		'equalToken',
 		'value',
+		'decorators',
 		'colonToken',
 		'type',
 		'modifier',
@@ -30,6 +31,23 @@ JSVariableDeclarationNode >> colonToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+JSVariableDeclarationNode >> compositeNodeVariables [
+	^ #(#decorators)
+]
+
+{ #category : #generated }
+JSVariableDeclarationNode >> decorators [
+	^ decorators
+]
+
+{ #category : #generated }
+JSVariableDeclarationNode >> decorators: anOrderedCollection [
+	self setParents: self decorators to: nil.
+	decorators := anOrderedCollection.
+	self setParents: self decorators to: self
+]
+
+{ #category : #generated }
 JSVariableDeclarationNode >> equalToken [
 	^ equalToken
 ]
@@ -42,6 +60,12 @@ JSVariableDeclarationNode >> equalToken: aSmaCCToken [
 { #category : #generated }
 JSVariableDeclarationNode >> ignoredTokenVariables [
 	^ #(#colonToken)
+]
+
+{ #category : #'generated-initialize-release' }
+JSVariableDeclarationNode >> initialize [
+	super initialize.
+	decorators := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

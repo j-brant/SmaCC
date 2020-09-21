@@ -2,6 +2,7 @@ Class {
 	#name : #JSMemberVariableDeclarationNode,
 	#superclass : #JSProgramNode,
 	#instVars : [
+		'decorators',
 		'name',
 		'semicolon',
 		'equalToken',
@@ -30,6 +31,23 @@ JSMemberVariableDeclarationNode >> colonToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+JSMemberVariableDeclarationNode >> compositeNodeVariables [
+	^ #(#decorators)
+]
+
+{ #category : #generated }
+JSMemberVariableDeclarationNode >> decorators [
+	^ decorators
+]
+
+{ #category : #generated }
+JSMemberVariableDeclarationNode >> decorators: anOrderedCollection [
+	self setParents: self decorators to: nil.
+	decorators := anOrderedCollection.
+	self setParents: self decorators to: self
+]
+
+{ #category : #generated }
 JSMemberVariableDeclarationNode >> equalToken [
 	^ equalToken
 ]
@@ -42,6 +60,12 @@ JSMemberVariableDeclarationNode >> equalToken: aSmaCCToken [
 { #category : #generated }
 JSMemberVariableDeclarationNode >> ignoredTokenVariables [
 	^ #(#semicolon #colonToken)
+]
+
+{ #category : #'generated-initialize-release' }
+JSMemberVariableDeclarationNode >> initialize [
+	super initialize.
+	decorators := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

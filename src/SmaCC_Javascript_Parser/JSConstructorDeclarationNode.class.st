@@ -2,6 +2,7 @@ Class {
 	#name : #JSConstructorDeclarationNode,
 	#superclass : #JSProgramNode,
 	#instVars : [
+		'decorators',
 		'constructorToken',
 		'leftParen',
 		'restParameter',
@@ -36,7 +37,7 @@ JSConstructorDeclarationNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 JSConstructorDeclarationNode >> compositeNodeVariables [
-	^ #(#parameters #statements)
+	^ #(#decorators #parameters #statements)
 ]
 
 { #category : #generated }
@@ -47,6 +48,18 @@ JSConstructorDeclarationNode >> constructorToken [
 { #category : #generated }
 JSConstructorDeclarationNode >> constructorToken: aSmaCCToken [
 	constructorToken := aSmaCCToken
+]
+
+{ #category : #generated }
+JSConstructorDeclarationNode >> decorators [
+	^ decorators
+]
+
+{ #category : #generated }
+JSConstructorDeclarationNode >> decorators: anOrderedCollection [
+	self setParents: self decorators to: nil.
+	decorators := anOrderedCollection.
+	self setParents: self decorators to: self
 ]
 
 { #category : #generated }
@@ -62,6 +75,7 @@ JSConstructorDeclarationNode >> ignoredTokenVariables [
 { #category : #'generated-initialize-release' }
 JSConstructorDeclarationNode >> initialize [
 	super initialize.
+	decorators := OrderedCollection new: 2.
 	parameters := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 	statements := OrderedCollection new: 2.
