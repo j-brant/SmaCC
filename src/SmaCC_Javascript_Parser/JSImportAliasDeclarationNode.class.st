@@ -87,5 +87,7 @@ JSImportAliasDeclarationNode >> value [
 
 { #category : #generated }
 JSImportAliasDeclarationNode >> value: anOrderedCollection [
-	value := anOrderedCollection
+	self setParent: self value to: nil.
+	value := anOrderedCollection.
+	self setParent: self value to: self
 ]

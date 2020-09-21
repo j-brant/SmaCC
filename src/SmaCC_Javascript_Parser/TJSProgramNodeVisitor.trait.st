@@ -177,6 +177,11 @@ TJSProgramNodeVisitor >> visitDebuggerStatement: aDebuggerStatement [
 ]
 
 { #category : #generated }
+TJSProgramNodeVisitor >> visitDecoratorExpression: aDecoratorExpression [
+	^ self visitExpression: aDecoratorExpression
+]
+
+{ #category : #generated }
 TJSProgramNodeVisitor >> visitDefaultClause: aDefaultClause [
 	^ self visitProgram: aDefaultClause
 ]

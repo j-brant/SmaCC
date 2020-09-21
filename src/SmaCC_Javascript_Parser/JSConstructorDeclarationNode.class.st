@@ -12,6 +12,7 @@ Class {
 		'statements',
 		'rightBrace',
 		'modifier',
+		'decorator',
 		'semicolon',
 		'left',
 		'right'
@@ -47,6 +48,20 @@ JSConstructorDeclarationNode >> constructorToken [
 { #category : #generated }
 JSConstructorDeclarationNode >> constructorToken: aSmaCCToken [
 	constructorToken := aSmaCCToken
+]
+
+{ #category : #generated }
+JSConstructorDeclarationNode >> decorator [
+	^ decorator
+]
+
+{ #category : #generated }
+JSConstructorDeclarationNode >> decorator: aJSDecoratorExpressionNode [
+	self decorator notNil
+		ifTrue: [ self decorator parent: nil ].
+	decorator := aJSDecoratorExpressionNode.
+	self decorator notNil
+		ifTrue: [ self decorator parent: self ]
 ]
 
 { #category : #generated }
@@ -109,7 +124,7 @@ JSConstructorDeclarationNode >> modifier: aSmaCCToken [
 
 { #category : #generated }
 JSConstructorDeclarationNode >> nodeVariables [
-	^ #(#restParameter)
+	^ #(#restParameter #decorator)
 ]
 
 { #category : #generated }

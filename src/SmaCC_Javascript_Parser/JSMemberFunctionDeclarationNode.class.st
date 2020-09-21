@@ -9,6 +9,7 @@ Class {
 		'rightBrace',
 		'staticToken',
 		'modifier',
+		'decorator',
 		'semicolon'
 	],
 	#category : #'SmaCC_Javascript_Parser'
@@ -22,6 +23,20 @@ JSMemberFunctionDeclarationNode >> acceptVisitor: aProgramVisitor [
 { #category : #generated }
 JSMemberFunctionDeclarationNode >> compositeNodeVariables [
 	^ #(#statements)
+]
+
+{ #category : #generated }
+JSMemberFunctionDeclarationNode >> decorator [
+	^ decorator
+]
+
+{ #category : #generated }
+JSMemberFunctionDeclarationNode >> decorator: aJSDecoratorExpressionNode [
+	self decorator notNil
+		ifTrue: [ self decorator parent: nil ].
+	decorator := aJSDecoratorExpressionNode.
+	self decorator notNil
+		ifTrue: [ self decorator parent: self ]
 ]
 
 { #category : #generated }
@@ -71,7 +86,7 @@ JSMemberFunctionDeclarationNode >> name: aJSProgramNode [
 
 { #category : #generated }
 JSMemberFunctionDeclarationNode >> nodeVariables [
-	^ #(#name #signature)
+	^ #(#name #signature #decorator)
 ]
 
 { #category : #generated }

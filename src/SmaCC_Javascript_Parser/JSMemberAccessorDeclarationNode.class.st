@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'accessor',
 		'staticToken',
-		'modifier'
+		'modifier',
+		'decorator'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
@@ -29,6 +30,20 @@ JSMemberAccessorDeclarationNode >> accessor: aJSMethodDefinitionNode [
 ]
 
 { #category : #generated }
+JSMemberAccessorDeclarationNode >> decorator [
+	^ decorator
+]
+
+{ #category : #generated }
+JSMemberAccessorDeclarationNode >> decorator: aJSDecoratorExpressionNode [
+	self decorator notNil
+		ifTrue: [ self decorator parent: nil ].
+	decorator := aJSDecoratorExpressionNode.
+	self decorator notNil
+		ifTrue: [ self decorator parent: self ]
+]
+
+{ #category : #generated }
 JSMemberAccessorDeclarationNode >> modifier [
 	^ modifier
 ]
@@ -40,7 +55,7 @@ JSMemberAccessorDeclarationNode >> modifier: aSmaCCToken [
 
 { #category : #generated }
 JSMemberAccessorDeclarationNode >> nodeVariables [
-	^ #(#accessor)
+	^ #(#accessor #decorator)
 ]
 
 { #category : #generated }

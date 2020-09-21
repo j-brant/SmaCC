@@ -12,10 +12,21 @@ Class {
 		'types',
 		'commas',
 		'name',
+		'abstract',
 		'typeParameters'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
+
+{ #category : #generated }
+JSClassExpressionNode >> abstract [
+	^ abstract
+]
+
+{ #category : #generated }
+JSClassExpressionNode >> abstract: aSmaCCToken [
+	abstract := aSmaCCToken
+]
 
 { #category : #generated }
 JSClassExpressionNode >> acceptVisitor: aProgramVisitor [
@@ -152,7 +163,7 @@ JSClassExpressionNode >> superclass: aJSProgramNode [
 
 { #category : #generated }
 JSClassExpressionNode >> tokenVariables [
-	^ #(#classToken #extendsToken #implementsToken)
+	^ #(#classToken #extendsToken #implementsToken #abstract)
 ]
 
 { #category : #generated }

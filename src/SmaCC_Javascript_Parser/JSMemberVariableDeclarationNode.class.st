@@ -3,13 +3,14 @@ Class {
 	#superclass : #JSProgramNode,
 	#instVars : [
 		'name',
-		'semicolon',
 		'equalToken',
 		'value',
+		'semicolon',
 		'colonToken',
 		'type',
 		'staticToken',
-		'modifier'
+		'modifier',
+		'decorator'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
@@ -27,6 +28,20 @@ JSMemberVariableDeclarationNode >> colonToken [
 { #category : #generated }
 JSMemberVariableDeclarationNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
+]
+
+{ #category : #generated }
+JSMemberVariableDeclarationNode >> decorator [
+	^ decorator
+]
+
+{ #category : #generated }
+JSMemberVariableDeclarationNode >> decorator: aJSDecoratorExpressionNode [
+	self decorator notNil
+		ifTrue: [ self decorator parent: nil ].
+	decorator := aJSDecoratorExpressionNode.
+	self decorator notNil
+		ifTrue: [ self decorator parent: self ]
 ]
 
 { #category : #generated }
@@ -70,7 +85,7 @@ JSMemberVariableDeclarationNode >> name: aJSProgramNode [
 
 { #category : #generated }
 JSMemberVariableDeclarationNode >> nodeVariables [
-	^ #(#name #value #type)
+	^ #(#name #value #type #decorator)
 ]
 
 { #category : #generated }
