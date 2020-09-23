@@ -755,6 +755,23 @@ SmaCCParser >> shiftAction [
 	^ 2r01
 ]
 
+{ #category : #parsing }
+SmaCCParser >> spawnParser: aGLRParserClass [
+	^ self
+		spawnParser: aGLRParserClass
+		startingAt: aGLRParserClass defaultStartingState
+]
+
+{ #category : #parsing }
+SmaCCParser >> spawnParser: aGLRParserClass startingAt: anInteger [
+	| ast |
+	ast := aGLRParserClass
+		parseEmbeddedStream: scanner stream
+		startingAt: anInteger.
+	self position: scanner stream position.
+	^ ast
+]
+
 { #category : #private }
 SmaCCParser >> stateStack [
 	^ stateStack

@@ -111,7 +111,7 @@ SmaCCReduceCode >> returnedNodeIndexFor: parseTree [
 		ifFalse: [ ^ nil ].
 	parseTree isVariable
 		ifTrue: [ index := rhs indexOfVariable: parseTree name.
-			(index between: 1 and: rhs size)
+			(index notNil and: [ index between: 1 and: rhs size ])
 				ifTrue: [ ^ index ] ].
 	(parseTree isLiteralNode and: [ parseTree value isString ])
 		ifFalse: [ ^ nil ].

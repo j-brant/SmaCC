@@ -729,7 +729,7 @@ SmaCCEndToEndTest >> testEmbeddedExample [
 			Code : SwitchToName "{" ''left'' <name> ''parserName'' ParseCode ''ast'' <colon> SwitchToDefault "}" ''right'' {{JS}};
 			SwitchToName : [self scope: #name. nil];
 			SwitchToDefault : [self scope: #default. nil];
-			ParseCode : [(Smalltalk at: nodeStack last value asSymbol) parseEmbeddedStream: scanner stream];'.
+			ParseCode : [self spawnParser: (Smalltalk at: nodeStack last value asSymbol)];'.
 	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
 	node := self parserClass
 		parse:
@@ -762,7 +762,7 @@ SmaCCEndToEndTest >> testEmbeddedJS [
 				| Items JSCode ''item'';
 			Text : <text> ''value'' {{}} ;
 			JSCode : ParseJSCode ''ast'' "{" ''left'' "}" ''right'' {{JS}};
-			ParseJSCode : { JSParser parseEmbeddedStream: scanner stream };
+			ParseJSCode : { self spawnParser: JSParser };
 			'.
 	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
 	node := self parserClass parse: 'Before {console.log("test");} After'.
