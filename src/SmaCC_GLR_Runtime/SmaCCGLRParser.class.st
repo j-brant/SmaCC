@@ -508,6 +508,23 @@ SmaCCGLRParser >> setStartingStatesIfNone [
 			[ states add: self initialParserState ]
 ]
 
+{ #category : #parsing }
+SmaCCGLRParser >> spawnParser: aGLRParserClass startingAt: anInteger [
+	| position |
+	position := self position.
+	^ [ super spawnParser: aGLRParserClass startingAt: anInteger ]
+		on: SmaCCParserError
+		do: [ :ex | 
+			errorHandler handlesErrors
+				ifFalse: [ ex signal ].
+			self position: position.
+			SmaCCErrorNode new
+				stackContents: #();
+				dismissedTokens: #();
+				errorToken: (SmaCCToken value: '' start: position ids: #());
+				yourself ]
+]
+
 { #category : #private }
 SmaCCGLRParser >> splitForPatternToken [
 	| token patternNode performedActions nodeClass |

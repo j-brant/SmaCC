@@ -64,6 +64,11 @@ SmaCCErrorHandler >> handleError: anInteger [
 	self subclassResponsibility
 ]
 
+{ #category : #testing }
+SmaCCErrorHandler >> handlesErrors [
+	^ false
+]
+
 { #category : #'private-parser accessing' }
 SmaCCErrorHandler >> isEOFToken [
 	^ parser isEOFToken

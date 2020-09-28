@@ -101,6 +101,11 @@ SmaCCErrorNodeHandler >> handleError: anInteger [
 	^ self findErrorHandlerIfNoneUseErrorNumber: anInteger
 ]
 
+{ #category : #testing }
+SmaCCErrorNodeHandler >> handlesErrors [
+	^ true
+]
+
 { #category : #'private-error handling' }
 SmaCCErrorNodeHandler >> nodeErrorHandlerStates [
 	^ self stateStack collect: [ :each | self nodeShiftActionsFor: each ]
