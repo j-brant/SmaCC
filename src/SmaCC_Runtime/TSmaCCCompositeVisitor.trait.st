@@ -29,7 +29,18 @@ TSmaCCCompositeVisitor >> addVisitor: aSmaCCParseNodeVisitor [
 
 { #category : #private }
 TSmaCCCompositeVisitor >> doesVisitor: aVisitor support: aSmaCCParseNode [
-	^ aVisitor class allTraits includes: aSmaCCParseNode class visitorTrait
+	^ aVisitor class allTraits includes: aSmaCCParseNode visitorTrait
+]
+
+{ #category : #private }
+TSmaCCCompositeVisitor >> lookupErrorVisitorFor: aSmaCCParseNode [
+	| visitorTrait |
+	visitorTrait := aSmaCCParseNode visitorTrait.
+	visitorTrait ~= TSmaCCParseNodeVisitor
+		ifTrue: [ ^ visitors
+				detect: [ :each | self doesVisitor: each support: aSmaCCParseNode ]
+				ifNone: [ self ] ].
+	^ self
 ]
 
 { #category : #private }
@@ -38,11 +49,13 @@ TSmaCCCompositeVisitor >> lookupVisitorFor: aSmaCCParseNode [
 		ifTrue: [ ^ self missingVisitorFor: aSmaCCParseNode ].
 	visitorMap isNil
 		ifTrue: [ visitorMap := IdentityDictionary new ].
-	^ visitorMap
-		at: aSmaCCParseNode class
-		ifAbsentPut: [ visitors
-				detect: [ :each | self doesVisitor: each support: aSmaCCParseNode ]
-				ifNone: [ self missingVisitorFor: aSmaCCParseNode ] ]
+	^ aSmaCCParseNode isErrorNode
+		ifTrue: [ self lookupErrorVisitorFor: aSmaCCParseNode ]
+		ifFalse: [ visitorMap
+				at: aSmaCCParseNode class
+				ifAbsentPut: [ visitors
+						detect: [ :each | self doesVisitor: each support: aSmaCCParseNode ]
+						ifNone: [ self missingVisitorFor: aSmaCCParseNode ] ] ]
 ]
 
 { #category : #private }

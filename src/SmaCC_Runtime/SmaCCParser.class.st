@@ -708,7 +708,7 @@ SmaCCParser >> reportErrorMessage: aString resumable: aBoolean [
 	SmaCCParserError new
 		isResumable: aBoolean;
 		messageText: aString;
-		tag: self;
+		parser: self;
 		signal
 ]
 

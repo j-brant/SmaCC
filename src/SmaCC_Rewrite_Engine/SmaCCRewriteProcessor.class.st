@@ -157,7 +157,7 @@ SmaCCRewriteProcessor >> processFile: aString usingResult: aSmaCCRewriteResult [
 		on: SmaCCParserError
 		do: [ :ex | 
 			| parser token |
-			parser := ex tag.
+			parser := ex parser.
 			token := parser errorToken.
 			token notNil
 				ifTrue: [ aSmaCCRewriteResult
@@ -319,7 +319,7 @@ SmaCCRewriteProcessor >> validate: aString forResult: aSmaCCRewriteResult [
 		do:
 			[ :ex | 
 			| parser token |
-			parser := ex tag.
+			parser := ex parser.
 			token := parser errorToken.
 			token notNil
 				ifTrue:

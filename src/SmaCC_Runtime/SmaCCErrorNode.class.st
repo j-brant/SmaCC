@@ -12,7 +12,8 @@ Class {
 	#instVars : [
 		'stackContents',
 		'dismissedTokens',
-		'errorToken'
+		'errorToken',
+		'visitorTrait'
 	],
 	#category : #'SmaCC_Runtime'
 }
@@ -44,9 +45,12 @@ SmaCCErrorNode >> calculateStartPosition [
 SmaCCErrorNode >> calculateStopPosition [
 	| max |
 	max := 0.
-	self errorComponentsDo: [ :each | each stopPosition ifNotNil: [ :pos | max := max max: pos ] ].
+	self
+		errorComponentsDo: [ :each | each stopPosition ifNotNil: [ :pos | max := max max: pos ] ].
 	max = 0
-		ifTrue: [ max := errorToken startPosition ].
+		ifTrue: [ max := errorToken value isEmpty
+				ifTrue: [ errorToken startPosition - 1 ]
+				ifFalse: [ errorToken startPosition ] ].
 	^ max
 ]
 
@@ -123,4 +127,14 @@ SmaCCErrorNode >> stackContents [
 SmaCCErrorNode >> stackContents: aCollection [
 	stackContents := aCollection.
 	self assignParents: aCollection
+]
+
+{ #category : #accessing }
+SmaCCErrorNode >> visitorTrait [
+	^ visitorTrait ifNil: [ super visitorTrait ]
+]
+
+{ #category : #accessing }
+SmaCCErrorNode >> visitorTrait: aSmaCCParseNodeVisitorTrait [
+	visitorTrait := aSmaCCParseNodeVisitorTrait
 ]

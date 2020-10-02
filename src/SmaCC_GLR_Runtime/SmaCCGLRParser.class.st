@@ -276,6 +276,23 @@ SmaCCGLRParser >> getNextToken [
 	currentState scannerState: nextScannerState
 ]
 
+{ #category : #parsing }
+SmaCCGLRParser >> handleEmbeddedError: aSmaCCParserError [
+	| parser errorNode |
+	parser := aSmaCCParserError parser.
+	errorNode := SmaCCErrorNode new
+		stackContents: parser nodeStack copy;
+		dismissedTokens: #().
+	self position: parser currentToken startPosition - 1.
+	errorNode
+		errorToken:
+			(SmaCCToken
+				value: ''
+				start: parser currentToken startPosition
+				ids: #()).
+	^ errorNode
+]
+
 { #category : #private }
 SmaCCGLRParser >> initialParserState [
 	| state |
@@ -510,19 +527,12 @@ SmaCCGLRParser >> setStartingStatesIfNone [
 
 { #category : #parsing }
 SmaCCGLRParser >> spawnParser: aGLRParserClass startingAt: anInteger [
-	| position |
-	position := self position.
 	^ [ super spawnParser: aGLRParserClass startingAt: anInteger ]
 		on: SmaCCParserError
 		do: [ :ex | 
 			errorHandler handlesErrors
 				ifFalse: [ ex signal ].
-			self position: position.
-			SmaCCErrorNode new
-				stackContents: #();
-				dismissedTokens: #();
-				errorToken: (SmaCCToken value: '' start: position ids: #());
-				yourself ]
+			ex return: (self handleEmbeddedError: ex) ]
 ]
 
 { #category : #private }

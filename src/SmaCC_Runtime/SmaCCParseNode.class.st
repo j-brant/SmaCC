@@ -912,6 +912,11 @@ SmaCCParseNode >> variableSelectors [
 	^ #(#tokenVariables #compositeTokenVariables #nodeVariables #compositeNodeVariables #otherVariables)
 ]
 
+{ #category : #accessing }
+SmaCCParseNode >> visitorTrait [
+	^ self class visitorTrait
+]
+
 { #category : #iterating }
 SmaCCParseNode >> withAllNodesDo: nodeBlock [
 	nodeBlock value: self.

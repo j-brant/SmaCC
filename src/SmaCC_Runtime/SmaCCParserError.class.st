@@ -27,3 +27,13 @@ SmaCCParserError >> isResumable [
 SmaCCParserError >> isResumable: aBoolean [
 	isResumable := aBoolean
 ]
+
+{ #category : #accessing }
+SmaCCParserError >> parser [
+	^ self tag
+]
+
+{ #category : #accessing }
+SmaCCParserError >> parser: aSmaCCParser [
+	self tag: aSmaCCParser
+]
