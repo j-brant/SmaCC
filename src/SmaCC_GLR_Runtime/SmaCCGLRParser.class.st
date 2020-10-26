@@ -501,7 +501,8 @@ SmaCCGLRParser >> restoreState: aSmaCCParserState [
 { #category : #private }
 SmaCCGLRParser >> scope: aSymbol [
 	super scope: aSymbol.
-	currentState scannerState: scanner currentState
+	currentState notNil
+		ifTrue: [ currentState scannerState: scanner currentState ]
 ]
 
 { #category : #accessing }
