@@ -54,8 +54,9 @@ SmaCCGLRParser class >> maxParallelParses: anInteger [
 { #category : #parsing }
 SmaCCGLRParser class >> parseAll: aString startingAt: anInteger [
 	| parser results |
-	parser := self on: (ReadStream on: aString).
-	parser setStartingState: anInteger.
+	parser := self
+		createParserOnStream: (ReadStream on: aString)
+		startingAt: anInteger.
 	parser parseAll: true.
 	results := parser parse.
 	results
@@ -102,8 +103,7 @@ SmaCCGLRParser class >> parseEmbeddedStream: aStream [
 { #category : #parsing }
 SmaCCGLRParser class >> parseEmbeddedStream: aStream startingAt: anInteger [
 	| parser |
-	parser := self on: aStream.
-	parser setStartingState: anInteger.
+	parser := self createParserOnStream: aStream startingAt: anInteger.
 	parser enableEmbeddedParsing.
 	^ parser parse
 ]

@@ -51,6 +51,14 @@ SmaCCParser class >> checkCaches [
 			cacheId := self cacheId ]
 ]
 
+{ #category : #'instance creation' }
+SmaCCParser class >> createParserOnStream: aStream startingAt: anInteger [
+	| parser |
+	parser := self on: aStream.
+	parser setStartingState: anInteger.
+	^ parser
+]
+
 { #category : #accessing }
 SmaCCParser class >> defaultEncoding [
 	^ defaultEncoding
@@ -181,8 +189,7 @@ SmaCCParser class >> parseStream: aStream onError: aBlock [
 { #category : #parsing }
 SmaCCParser class >> parseStream: aStream startingAt: anInteger [
 	| parser |
-	parser := self on: aStream.
-	parser setStartingState: anInteger.
+	parser := self createParserOnStream: aStream startingAt: anInteger.
 	^ parser parse
 ]
 
@@ -201,8 +208,9 @@ SmaCCParser class >> parseWithErrors: aString [
 { #category : #parsing }
 SmaCCParser class >> parseWithErrors: aString startingAt: anInteger [
 	^ [ | parser value |
-	parser := self on: (ReadStream on: aString).
-	parser setStartingState: anInteger.
+	parser := self
+		createParserOnStream: (ReadStream on: aString)
+		startingAt: anInteger.
 	parser createDefaultErrorHandlers.
 	value := parser parse.
 	(value isKindOf: SmaCCParseNode)
