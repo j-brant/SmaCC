@@ -5,6 +5,8 @@ Class {
 		'annotations',
 		'qualifiedName',
 		'left',
+		'arguments',
+		'semicolons',
 		'right',
 		'modifiers'
 	],
@@ -29,14 +31,33 @@ DelphiMethodHeaderNode >> annotations: anOrderedCollection [
 ]
 
 { #category : #generated }
+DelphiMethodHeaderNode >> arguments [
+	^ arguments
+]
+
+{ #category : #generated }
+DelphiMethodHeaderNode >> arguments: anOrderedCollection [
+	self setParents: self arguments to: nil.
+	arguments := anOrderedCollection.
+	self setParents: self arguments to: self
+]
+
+{ #category : #generated }
 DelphiMethodHeaderNode >> compositeNodeVariables [
-	^ #(#annotations #modifiers)
+	^ #(#annotations #arguments #modifiers)
+]
+
+{ #category : #generated }
+DelphiMethodHeaderNode >> ignoredCompositeTokenVariables [
+	^ #(#semicolons)
 ]
 
 { #category : #'generated-initialize-release' }
 DelphiMethodHeaderNode >> initialize [
 	super initialize.
 	annotations := OrderedCollection new: 2.
+	arguments := OrderedCollection new: 2.
+	semicolons := OrderedCollection new: 2.
 	modifiers := OrderedCollection new: 2.
 ]
 
@@ -89,6 +110,16 @@ DelphiMethodHeaderNode >> right [
 { #category : #generated }
 DelphiMethodHeaderNode >> right: aSmaCCToken [
 	right := aSmaCCToken
+]
+
+{ #category : #generated }
+DelphiMethodHeaderNode >> semicolons [
+	^ semicolons
+]
+
+{ #category : #generated }
+DelphiMethodHeaderNode >> semicolons: anOrderedCollection [
+	semicolons := anOrderedCollection
 ]
 
 { #category : #generated }

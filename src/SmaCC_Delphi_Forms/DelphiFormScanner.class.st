@@ -114,7 +114,9 @@ DelphiFormScanner >> scan3 [
 	currentCharacter isDigit
 		ifTrue: [ [ self recordMatch: #(22).
 			self step.
-			currentCharacter isDigit ] whileTrue ].
+			currentCharacter isDigit ] whileTrue.
+			('Dd' includes: currentCharacter)
+				ifTrue: [ ^ self recordAndReportMatch: #(22) ] ].
 	('Ee' includes: currentCharacter)
 		ifTrue: [ ^ self scan4 ].
 	^ self reportLastMatch

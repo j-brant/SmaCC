@@ -4,8 +4,6 @@ Class {
 	#instVars : [
 		'classToken',
 		'operatorToken',
-		'arguments',
-		'semicolons',
 		'colon',
 		'type'
 	],
@@ -15,18 +13,6 @@ Class {
 { #category : #generated }
 DelphiClassOperatorHeaderNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitClassOperatorHeader: self
-]
-
-{ #category : #generated }
-DelphiClassOperatorHeaderNode >> arguments [
-	^ arguments
-]
-
-{ #category : #generated }
-DelphiClassOperatorHeaderNode >> arguments: anOrderedCollection [
-	self setParents: self arguments to: nil.
-	arguments := anOrderedCollection.
-	self setParents: self arguments to: self
 ]
 
 { #category : #generated }
@@ -50,23 +36,6 @@ DelphiClassOperatorHeaderNode >> colon: aSmaCCToken [
 ]
 
 { #category : #generated }
-DelphiClassOperatorHeaderNode >> compositeNodeVariables [
-	^ #(#arguments #annotations #modifiers)
-]
-
-{ #category : #generated }
-DelphiClassOperatorHeaderNode >> ignoredCompositeTokenVariables [
-	^ #(#semicolons)
-]
-
-{ #category : #'generated-initialize-release' }
-DelphiClassOperatorHeaderNode >> initialize [
-	super initialize.
-	semicolons := OrderedCollection new: 2.
-	arguments := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
 DelphiClassOperatorHeaderNode >> nodeVariables [
 	^ #(#type #qualifiedName)
 ]
@@ -79,16 +48,6 @@ DelphiClassOperatorHeaderNode >> operatorToken [
 { #category : #generated }
 DelphiClassOperatorHeaderNode >> operatorToken: aSmaCCToken [
 	operatorToken := aSmaCCToken
-]
-
-{ #category : #generated }
-DelphiClassOperatorHeaderNode >> semicolons [
-	^ semicolons
-]
-
-{ #category : #generated }
-DelphiClassOperatorHeaderNode >> semicolons: anOrderedCollection [
-	semicolons := anOrderedCollection
 ]
 
 { #category : #generated }

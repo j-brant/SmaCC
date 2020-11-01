@@ -6,7 +6,7 @@ Class {
 
 { #category : #'generated-accessing' }
 DelphiFormParser class >> cacheId [
-	^'2020-09-14T14:24:23.078725-05:00'
+	^'2020-10-31T20:37:58.950307-05:00'
 ]
 
 { #category : #generated }
@@ -38,7 +38,7 @@ DelphiFormParser class >> definitionComment [
 	: \-? <positive_integer>
 	;
 <float>
-	: <integer> (\. <positive_integer> | d | (\. <positive_integer>?)? e [\+\-]? <positive_integer>)
+	: <integer> (\. <positive_integer> d? | d | (\. <positive_integer>?)? e [\+\-]? <positive_integer>)
 	;
 <string>
 	: (\' [^\']* \' | (\#\d+))+
@@ -155,50 +155,50 @@ DelphiFormParser class >> fileExtensionType [
 { #category : #generated }
 DelphiFormParser class >> reduceTable [
 ^#(
-	#(30 1 #liftFirstValue: 882690 false ) 
-	#(30 1 #liftFirstValue: 882691 false ) 
-	#(30 1 #liftFirstValue: 882689 false ) 
-	#(28 1 #liftFirstValue: 620545 false ) 
-	#(49 1 #reduceActionForQualifiedName1: 2075649 false ) 
-	#(33 1 #liftFirstValue: 1051650 false ) 
-	#(33 1 #liftFirstValue: 1051649 false ) 
-	#(42 0 #reduceActionForValues1: 1715201 false ) 
-	#(47 0 #reduceActionForValues1: 1971201 false ) 
-	#(39 0 #reduceActionForSetItems_1: 1562625 false ) 
-	#(44 0 #reduceActionForValues1: 1817601 false ) 
-	#(45 1 #reduceActionForBoolean1: 1861633 false ) 
-	#(36 1 #reduceActionForNumber1: 1299457 false ) 
-	#(36 1 #reduceActionForNumber2: 1299458 false ) 
-	#(37 1 #reduceActionForString1: 1402881 false ) 
-	#(36 1 #reduceActionForNumber3: 1299459 false ) 
-	#(35 1 #liftFirstValue: 1173505 false ) 
-	#(35 1 #liftFirstValue: 1173506 false ) 
-	#(35 1 #liftFirstValue: 1173507 false ) 
-	#(35 1 #liftFirstValue: 1173509 false ) 
-	#(35 1 #liftFirstValue: 1173510 false ) 
-	#(35 1 #liftFirstValue: 1173511 false ) 
-	#(35 1 #liftFirstValue: 1173512 false ) 
-	#(35 1 #reduceActionForValue4: 1173508 false ) 
-	#(32 0 #reduceActionForValues1: 999425 false ) 
-	#(31 0 #reduceActionForIndex1: 936961 false ) 
-	#(40 1 #reduceActionForSetItems1: 1591297 false ) 
-	#(39 1 #reduceActionForSetItems_2: 1562626 false ) 
-	#(49 3 #reduceActionForQualifiedName2: 2075650 false ) 
-	#(34 3 #reduceActionForAssignment1: 1088513 false ) 
-	#(41 3 #reduceActionForArray1: 1661953 false ) 
-	#(42 2 #reduceActionForValues2: 1715202 false ) 
-	#(46 3 #reduceActionForObjectArray1: 1906689 false ) 
-	#(47 2 #reduceActionForValues2: 1971202 false ) 
-	#(38 3 #reduceActionForSet1: 1510401 false ) 
-	#(43 3 #reduceActionForByteArray1: 1754113 false ) 
-	#(44 2 #reduceActionForValues2: 1817602 false ) 
-	#(37 3 #reduceActionForString2: 1402882 false ) 
-	#(48 3 #reduceActionForItem1: 2007041 false ) 
-	#(32 2 #reduceActionForValues2: 999426 false ) 
-	#(40 3 #reduceActionForSetItems2: 1591298 false ) 
-	#(31 3 #reduceActionForIndex2: 936962 false ) 
-	#(29 5 #reduceActionForObject2: 638978 false ) 
-	#(29 7 #reduceActionForObject1: 638977 false )
+	#(30 1 #liftFirstValue: 885762 false ) 
+	#(30 1 #liftFirstValue: 885763 false ) 
+	#(30 1 #liftFirstValue: 885761 false ) 
+	#(28 1 #liftFirstValue: 623617 false ) 
+	#(49 1 #reduceActionForQualifiedName1: 2078721 false ) 
+	#(33 1 #liftFirstValue: 1054722 false ) 
+	#(33 1 #liftFirstValue: 1054721 false ) 
+	#(42 0 #reduceActionForValues1: 1718273 false ) 
+	#(47 0 #reduceActionForValues1: 1974273 false ) 
+	#(39 0 #reduceActionForSetItems_1: 1565697 false ) 
+	#(44 0 #reduceActionForValues1: 1820673 false ) 
+	#(45 1 #reduceActionForBoolean1: 1864705 false ) 
+	#(36 1 #reduceActionForNumber1: 1302529 false ) 
+	#(36 1 #reduceActionForNumber2: 1302530 false ) 
+	#(37 1 #reduceActionForString1: 1405953 false ) 
+	#(36 1 #reduceActionForNumber3: 1302531 false ) 
+	#(35 1 #liftFirstValue: 1176577 false ) 
+	#(35 1 #liftFirstValue: 1176578 false ) 
+	#(35 1 #liftFirstValue: 1176579 false ) 
+	#(35 1 #liftFirstValue: 1176581 false ) 
+	#(35 1 #liftFirstValue: 1176582 false ) 
+	#(35 1 #liftFirstValue: 1176583 false ) 
+	#(35 1 #liftFirstValue: 1176584 false ) 
+	#(35 1 #reduceActionForValue4: 1176580 false ) 
+	#(32 0 #reduceActionForValues1: 1002497 false ) 
+	#(31 0 #reduceActionForIndex1: 940033 false ) 
+	#(40 1 #reduceActionForSetItems1: 1594369 false ) 
+	#(39 1 #reduceActionForSetItems_2: 1565698 false ) 
+	#(49 3 #reduceActionForQualifiedName2: 2078722 false ) 
+	#(34 3 #reduceActionForAssignment1: 1091585 false ) 
+	#(41 3 #reduceActionForArray1: 1665025 false ) 
+	#(42 2 #reduceActionForValues2: 1718274 false ) 
+	#(46 3 #reduceActionForObjectArray1: 1909761 false ) 
+	#(47 2 #reduceActionForValues2: 1974274 false ) 
+	#(38 3 #reduceActionForSet1: 1513473 false ) 
+	#(43 3 #reduceActionForByteArray1: 1757185 false ) 
+	#(44 2 #reduceActionForValues2: 1820674 false ) 
+	#(37 3 #reduceActionForString2: 1405954 false ) 
+	#(48 3 #reduceActionForItem1: 2010113 false ) 
+	#(32 2 #reduceActionForValues2: 1002498 false ) 
+	#(40 3 #reduceActionForSetItems2: 1594370 false ) 
+	#(31 3 #reduceActionForIndex2: 940034 false ) 
+	#(29 5 #reduceActionForObject2: 642050 false ) 
+	#(29 7 #reduceActionForObject1: 642049 false )
 	).
 ]
 

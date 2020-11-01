@@ -3,8 +3,6 @@ Class {
 	#superclass : #DelphiMethodHeaderNode,
 	#instVars : [
 		'functionToken',
-		'arguments',
-		'semicolons',
 		'colon',
 		'type'
 	],
@@ -14,18 +12,6 @@ Class {
 { #category : #generated }
 DelphiFunctionHeaderNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFunctionHeader: self
-]
-
-{ #category : #generated }
-DelphiFunctionHeaderNode >> arguments [
-	^ arguments
-]
-
-{ #category : #generated }
-DelphiFunctionHeaderNode >> arguments: anOrderedCollection [
-	self setParents: self arguments to: nil.
-	arguments := anOrderedCollection.
-	self setParents: self arguments to: self
 ]
 
 { #category : #generated }
@@ -39,11 +25,6 @@ DelphiFunctionHeaderNode >> colon: aSmaCCToken [
 ]
 
 { #category : #generated }
-DelphiFunctionHeaderNode >> compositeNodeVariables [
-	^ #(#arguments #annotations #modifiers)
-]
-
-{ #category : #generated }
 DelphiFunctionHeaderNode >> functionToken [
 	^ functionToken
 ]
@@ -54,30 +35,8 @@ DelphiFunctionHeaderNode >> functionToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-DelphiFunctionHeaderNode >> ignoredCompositeTokenVariables [
-	^ #(#semicolons)
-]
-
-{ #category : #'generated-initialize-release' }
-DelphiFunctionHeaderNode >> initialize [
-	super initialize.
-	semicolons := OrderedCollection new: 2.
-	arguments := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
 DelphiFunctionHeaderNode >> nodeVariables [
 	^ #(#type #qualifiedName)
-]
-
-{ #category : #generated }
-DelphiFunctionHeaderNode >> semicolons [
-	^ semicolons
-]
-
-{ #category : #generated }
-DelphiFunctionHeaderNode >> semicolons: anOrderedCollection [
-	semicolons := anOrderedCollection
 ]
 
 { #category : #generated }

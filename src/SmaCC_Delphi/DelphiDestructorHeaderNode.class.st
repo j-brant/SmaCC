@@ -3,7 +3,6 @@ Class {
 	#superclass : #DelphiMethodHeaderNode,
 	#instVars : [
 		'destructorToken',
-		'semicolon',
 		'classToken'
 	],
 	#category : #'SmaCC_Delphi'
@@ -32,21 +31,6 @@ DelphiDestructorHeaderNode >> destructorToken [
 { #category : #generated }
 DelphiDestructorHeaderNode >> destructorToken: aSmaCCToken [
 	destructorToken := aSmaCCToken
-]
-
-{ #category : #generated }
-DelphiDestructorHeaderNode >> ignoredTokenVariables [
-	^ #(#semicolon)
-]
-
-{ #category : #generated }
-DelphiDestructorHeaderNode >> semicolon [
-	^ semicolon
-]
-
-{ #category : #generated }
-DelphiDestructorHeaderNode >> semicolon: aSmaCCToken [
-	semicolon := aSmaCCToken
 ]
 
 { #category : #generated }
