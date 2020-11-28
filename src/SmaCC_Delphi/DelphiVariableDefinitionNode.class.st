@@ -7,10 +7,25 @@ Class {
 		'colon',
 		'type',
 		'modifier',
+		'_deprecated',
 		'semicolon'
 	],
 	#category : #'SmaCC_Delphi'
 }
+
+{ #category : #generated }
+DelphiVariableDefinitionNode >> _deprecated [
+	^ _deprecated
+]
+
+{ #category : #generated }
+DelphiVariableDefinitionNode >> _deprecated: aDelphiDeprecatedModifierNode [
+	self _deprecated notNil
+		ifTrue: [ self _deprecated parent: nil ].
+	_deprecated := aDelphiDeprecatedModifierNode.
+	self _deprecated notNil
+		ifTrue: [ self _deprecated parent: self ]
+]
 
 { #category : #generated }
 DelphiVariableDefinitionNode >> acceptVisitor: aProgramVisitor [
@@ -81,7 +96,7 @@ DelphiVariableDefinitionNode >> names: anOrderedCollection [
 
 { #category : #generated }
 DelphiVariableDefinitionNode >> nodeVariables [
-	^ #(#type)
+	^ #(#type #_deprecated)
 ]
 
 { #category : #generated }

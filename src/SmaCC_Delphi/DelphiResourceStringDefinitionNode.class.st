@@ -5,25 +5,29 @@ Class {
 		'name',
 		'equalToken',
 		'value',
-		'deprecatedToken',
+		'_deprecated',
 		'semicolon'
 	],
 	#category : #'SmaCC_Delphi'
 }
 
 { #category : #generated }
+DelphiResourceStringDefinitionNode >> _deprecated [
+	^ _deprecated
+]
+
+{ #category : #generated }
+DelphiResourceStringDefinitionNode >> _deprecated: aDelphiDeprecatedModifierNode [
+	self _deprecated notNil
+		ifTrue: [ self _deprecated parent: nil ].
+	_deprecated := aDelphiDeprecatedModifierNode.
+	self _deprecated notNil
+		ifTrue: [ self _deprecated parent: self ]
+]
+
+{ #category : #generated }
 DelphiResourceStringDefinitionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitResourceStringDefinition: self
-]
-
-{ #category : #generated }
-DelphiResourceStringDefinitionNode >> deprecatedToken [
-	^ deprecatedToken
-]
-
-{ #category : #generated }
-DelphiResourceStringDefinitionNode >> deprecatedToken: aSmaCCToken [
-	deprecatedToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -53,7 +57,7 @@ DelphiResourceStringDefinitionNode >> name: aSmaCCToken [
 
 { #category : #generated }
 DelphiResourceStringDefinitionNode >> nodeVariables [
-	^ #(#value)
+	^ #(#value #_deprecated)
 ]
 
 { #category : #generated }
@@ -68,7 +72,7 @@ DelphiResourceStringDefinitionNode >> semicolon: aSmaCCToken [
 
 { #category : #generated }
 DelphiResourceStringDefinitionNode >> tokenVariables [
-	^ #(#name #equalToken #deprecatedToken)
+	^ #(#name #equalToken)
 ]
 
 { #category : #generated }

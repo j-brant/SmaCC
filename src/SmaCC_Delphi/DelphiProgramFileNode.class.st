@@ -5,6 +5,7 @@ Class {
 		'programToken',
 		'programName',
 		'modifier',
+		'_deprecated',
 		'semicolons',
 		'usesToken',
 		'moduleNames',
@@ -15,6 +16,20 @@ Class {
 	],
 	#category : #'SmaCC_Delphi'
 }
+
+{ #category : #generated }
+DelphiProgramFileNode >> _deprecated [
+	^ _deprecated
+]
+
+{ #category : #generated }
+DelphiProgramFileNode >> _deprecated: aDelphiDeprecatedModifierNode [
+	self _deprecated notNil
+		ifTrue: [ self _deprecated parent: nil ].
+	_deprecated := aDelphiDeprecatedModifierNode.
+	self _deprecated notNil
+		ifTrue: [ self _deprecated parent: self ]
+]
 
 { #category : #generated }
 DelphiProgramFileNode >> acceptVisitor: aProgramVisitor [
@@ -114,7 +129,7 @@ DelphiProgramFileNode >> moduleNames: anOrderedCollection [
 
 { #category : #generated }
 DelphiProgramFileNode >> nodeVariables [
-	^ #(#programName #main)
+	^ #(#programName #_deprecated #main)
 ]
 
 { #category : #generated }

@@ -5,6 +5,7 @@ Class {
 		'unitToken',
 		'unitName',
 		'modifier',
+		'_deprecated',
 		'semicolon',
 		'interfaceSection',
 		'implementationSection',
@@ -14,6 +15,20 @@ Class {
 	],
 	#category : #'SmaCC_Delphi'
 }
+
+{ #category : #generated }
+DelphiUnitFileNode >> _deprecated [
+	^ _deprecated
+]
+
+{ #category : #generated }
+DelphiUnitFileNode >> _deprecated: aDelphiDeprecatedModifierNode [
+	self _deprecated notNil
+		ifTrue: [ self _deprecated parent: nil ].
+	_deprecated := aDelphiDeprecatedModifierNode.
+	self _deprecated notNil
+		ifTrue: [ self _deprecated parent: self ]
+]
 
 { #category : #generated }
 DelphiUnitFileNode >> acceptVisitor: aProgramVisitor [
@@ -103,7 +118,7 @@ DelphiUnitFileNode >> modifier: aSmaCCToken [
 
 { #category : #generated }
 DelphiUnitFileNode >> nodeVariables [
-	^ #(#unitName #interfaceSection #implementationSection #initializationSection #finalizationSection)
+	^ #(#unitName #_deprecated #interfaceSection #implementationSection #initializationSection #finalizationSection)
 ]
 
 { #category : #generated }

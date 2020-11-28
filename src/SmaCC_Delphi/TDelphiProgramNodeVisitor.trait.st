@@ -201,6 +201,11 @@ TDelphiProgramNodeVisitor >> visitDeprecatedMethodModifier: aDeprecatedMethodMod
 ]
 
 { #category : #generated }
+TDelphiProgramNodeVisitor >> visitDeprecatedModifier: aDeprecatedModifier [
+	^ self visitProgram: aDeprecatedModifier
+]
+
+{ #category : #generated }
 TDelphiProgramNodeVisitor >> visitDestructorDefinition: aDestructorDefinition [
 	^ self visitMethodDefinition: aDestructorDefinition
 ]

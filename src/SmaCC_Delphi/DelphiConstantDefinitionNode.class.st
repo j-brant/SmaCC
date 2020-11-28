@@ -8,11 +8,25 @@ Class {
 		'equalToken',
 		'expression',
 		'modifier',
-		'deprecatedToken',
+		'_deprecated',
 		'semicolon'
 	],
 	#category : #'SmaCC_Delphi'
 }
+
+{ #category : #generated }
+DelphiConstantDefinitionNode >> _deprecated [
+	^ _deprecated
+]
+
+{ #category : #generated }
+DelphiConstantDefinitionNode >> _deprecated: aDelphiDeprecatedModifierNode [
+	self _deprecated notNil
+		ifTrue: [ self _deprecated parent: nil ].
+	_deprecated := aDelphiDeprecatedModifierNode.
+	self _deprecated notNil
+		ifTrue: [ self _deprecated parent: self ]
+]
 
 { #category : #generated }
 DelphiConstantDefinitionNode >> acceptVisitor: aProgramVisitor [
@@ -27,16 +41,6 @@ DelphiConstantDefinitionNode >> colon [
 { #category : #generated }
 DelphiConstantDefinitionNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
-]
-
-{ #category : #generated }
-DelphiConstantDefinitionNode >> deprecatedToken [
-	^ deprecatedToken
-]
-
-{ #category : #generated }
-DelphiConstantDefinitionNode >> deprecatedToken: aSmaCCToken [
-	deprecatedToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -90,7 +94,7 @@ DelphiConstantDefinitionNode >> name: aSmaCCToken [
 
 { #category : #generated }
 DelphiConstantDefinitionNode >> nodeVariables [
-	^ #(#type #expression)
+	^ #(#type #expression #_deprecated)
 ]
 
 { #category : #generated }
@@ -105,7 +109,7 @@ DelphiConstantDefinitionNode >> semicolon: aSmaCCToken [
 
 { #category : #generated }
 DelphiConstantDefinitionNode >> tokenVariables [
-	^ #(#name #colon #equalToken #modifier #deprecatedToken)
+	^ #(#name #colon #equalToken #modifier)
 ]
 
 { #category : #generated }

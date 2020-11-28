@@ -84,7 +84,7 @@ SmaCCTransformationToolkit >> addPreviewMenuActionsTo: composite [
 		do: [ :each | 
 			each pragmas
 				do: [ :pragma | 
-					(pragma keyword = symbol
+					(pragma selector = symbol
 						and: [ pragma arguments second = #previewInput
 								and: [ parser
 										includesBehavior: (Smalltalk at: pragma arguments third ifAbsent: [ self class ]) ] ])
