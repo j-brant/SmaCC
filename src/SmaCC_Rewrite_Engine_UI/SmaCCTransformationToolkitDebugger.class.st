@@ -36,7 +36,8 @@ SmaCCTransformationToolkitDebugger class >> register [
 
 { #category : #'tools registry' }
 SmaCCTransformationToolkitDebugger class >> registerToolsOn: aRegistry [
-	aRegistry registerDebugger: self withRank: 70
+	(aRegistry respondsTo: #registerDebugger:withRank:) ifTrue: [ 
+		aRegistry registerDebugger: self withRank: 70 ]
 ]
 
 { #category : #accessing }

@@ -4,9 +4,6 @@ Class {
 	#instVars : [
 		'isGLR'
 	],
-	#classInstVars : [
-		'availableAutomatically'
-	],
 	#category : #'SmaCC_Debugging_Support-Debugger'
 }
 
@@ -52,7 +49,8 @@ SmaCCParserDebugger class >> register [
 
 { #category : #'tools registry' }
 SmaCCParserDebugger class >> registerToolsOn: aRegistry [
-	aRegistry registerDebugger: self withRank: 60
+	(aRegistry respondsTo: #registerDebugger:withRank:) ifTrue: [ 
+		aRegistry registerDebugger: self withRank: 60 ]
 ]
 
 { #category : #accessing }
