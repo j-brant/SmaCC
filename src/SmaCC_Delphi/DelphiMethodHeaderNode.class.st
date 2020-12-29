@@ -44,7 +44,7 @@ DelphiMethodHeaderNode >> arguments: anOrderedCollection [
 
 { #category : #generated }
 DelphiMethodHeaderNode >> compositeNodeVariables [
-	^ #(#annotations #arguments #modifiers)
+	^ #(#annotations #modifiers #arguments)
 ]
 
 { #category : #generated }
@@ -56,9 +56,9 @@ DelphiMethodHeaderNode >> ignoredCompositeTokenVariables [
 DelphiMethodHeaderNode >> initialize [
 	super initialize.
 	annotations := OrderedCollection new: 2.
-	arguments := OrderedCollection new: 2.
 	semicolons := OrderedCollection new: 2.
 	modifiers := OrderedCollection new: 2.
+	arguments := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

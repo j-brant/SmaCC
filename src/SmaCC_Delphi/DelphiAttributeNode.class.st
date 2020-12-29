@@ -3,7 +3,8 @@ Class {
 	#superclass : #DelphiProgramNode,
 	#instVars : [
 		'left',
-		'expression',
+		'expressions',
+		'commas',
 		'right'
 	],
 	#category : #'SmaCC_Delphi'
@@ -15,17 +16,42 @@ DelphiAttributeNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-DelphiAttributeNode >> expression [
-	^ expression
+DelphiAttributeNode >> commas [
+	^ commas
 ]
 
 { #category : #generated }
-DelphiAttributeNode >> expression: aDelphiExpressionNode [
-	self expression notNil
-		ifTrue: [ self expression parent: nil ].
-	expression := aDelphiExpressionNode.
-	self expression notNil
-		ifTrue: [ self expression parent: self ]
+DelphiAttributeNode >> commas: anOrderedCollection [
+	commas := anOrderedCollection
+]
+
+{ #category : #generated }
+DelphiAttributeNode >> compositeNodeVariables [
+	^ #(#expressions)
+]
+
+{ #category : #generated }
+DelphiAttributeNode >> expressions [
+	^ expressions
+]
+
+{ #category : #generated }
+DelphiAttributeNode >> expressions: anOrderedCollection [
+	self setParents: self expressions to: nil.
+	expressions := anOrderedCollection.
+	self setParents: self expressions to: self
+]
+
+{ #category : #generated }
+DelphiAttributeNode >> ignoredCompositeTokenVariables [
+	^ #(#commas)
+]
+
+{ #category : #'generated-initialize-release' }
+DelphiAttributeNode >> initialize [
+	super initialize.
+	expressions := OrderedCollection new: 2.
+	commas := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -36,11 +62,6 @@ DelphiAttributeNode >> left [
 { #category : #generated }
 DelphiAttributeNode >> left: aSmaCCToken [
 	left := aSmaCCToken
-]
-
-{ #category : #generated }
-DelphiAttributeNode >> nodeVariables [
-	^ #(#expression)
 ]
 
 { #category : #generated }

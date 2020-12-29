@@ -4,7 +4,9 @@ Class {
 	#instVars : [
 		'interfaceToken',
 		'guid',
-		'components'
+		'components',
+		'accessToken',
+		'partial'
 	],
 	#category : #'SmaCC_Delphi'
 }
@@ -12,6 +14,16 @@ Class {
 { #category : #generated }
 DelphiInterfaceTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitInterfaceType: self
+]
+
+{ #category : #generated }
+DelphiInterfaceTypeNode >> accessToken [
+	^ accessToken
+]
+
+{ #category : #generated }
+DelphiInterfaceTypeNode >> accessToken: aSmaCCToken [
+	accessToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -67,6 +79,16 @@ DelphiInterfaceTypeNode >> nodeVariables [
 ]
 
 { #category : #generated }
+DelphiInterfaceTypeNode >> partial [
+	^ partial
+]
+
+{ #category : #generated }
+DelphiInterfaceTypeNode >> partial: aSmaCCToken [
+	partial := aSmaCCToken
+]
+
+{ #category : #generated }
 DelphiInterfaceTypeNode >> tokenVariables [
-	^ #(#interfaceToken #left #right #endToken)
+	^ #(#interfaceToken #accessToken #partial #left #right #endToken)
 ]

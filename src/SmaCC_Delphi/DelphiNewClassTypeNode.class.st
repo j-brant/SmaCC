@@ -3,7 +3,9 @@ Class {
 	#superclass : #DelphiClassTypeNode,
 	#instVars : [
 		'classToken',
-		'classAttributes'
+		'classAttributes',
+		'accessToken',
+		'partial'
 	],
 	#category : #'SmaCC_Delphi'
 }
@@ -11,6 +13,16 @@ Class {
 { #category : #generated }
 DelphiNewClassTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNewClassType: self
+]
+
+{ #category : #generated }
+DelphiNewClassTypeNode >> accessToken [
+	^ accessToken
+]
+
+{ #category : #generated }
+DelphiNewClassTypeNode >> accessToken: aSmaCCToken [
+	accessToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -45,6 +57,16 @@ DelphiNewClassTypeNode >> initialize [
 ]
 
 { #category : #generated }
+DelphiNewClassTypeNode >> partial [
+	^ partial
+]
+
+{ #category : #generated }
+DelphiNewClassTypeNode >> partial: aSmaCCToken [
+	partial := aSmaCCToken
+]
+
+{ #category : #generated }
 DelphiNewClassTypeNode >> tokenVariables [
-	^ #(#classToken #left #right #endToken)
+	^ #(#classToken #accessToken #partial #left #right #endToken)
 ]

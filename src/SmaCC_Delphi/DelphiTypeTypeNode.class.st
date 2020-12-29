@@ -3,7 +3,10 @@ Class {
 	#superclass : #DelphiProgramNode,
 	#instVars : [
 		'typeToken',
-		'typeName'
+		'typeName',
+		'leftParen',
+		'codePage',
+		'rightParen'
 	],
 	#category : #'SmaCC_Delphi'
 }
@@ -14,13 +17,48 @@ DelphiTypeTypeNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
+DelphiTypeTypeNode >> codePage [
+	^ codePage
+]
+
+{ #category : #generated }
+DelphiTypeTypeNode >> codePage: aSmaCCToken [
+	codePage := aSmaCCToken
+]
+
+{ #category : #generated }
+DelphiTypeTypeNode >> ignoredTokenVariables [
+	^ #(#leftParen #rightParen)
+]
+
+{ #category : #generated }
+DelphiTypeTypeNode >> leftParen [
+	^ leftParen
+]
+
+{ #category : #generated }
+DelphiTypeTypeNode >> leftParen: aSmaCCToken [
+	leftParen := aSmaCCToken
+]
+
+{ #category : #generated }
 DelphiTypeTypeNode >> nodeVariables [
 	^ #(#typeName)
 ]
 
 { #category : #generated }
+DelphiTypeTypeNode >> rightParen [
+	^ rightParen
+]
+
+{ #category : #generated }
+DelphiTypeTypeNode >> rightParen: aSmaCCToken [
+	rightParen := aSmaCCToken
+]
+
+{ #category : #generated }
 DelphiTypeTypeNode >> tokenVariables [
-	^ #(#typeToken)
+	^ #(#typeToken #codePage)
 ]
 
 { #category : #generated }
