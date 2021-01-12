@@ -24,10 +24,7 @@ BaselineOfSmaCC >> baseline: spec [
 				package: 'SmaCC_Java' with: [ spec requires: 'SmaCC_GLR_Runtime' ];
 				package: 'SmaCC_Javascript_Parser' with: [ spec requires: 'SmaCC_GLR_Runtime' ];
 				package: 'SmaCC_Line_Parser' with: [ spec requires: 'SmaCC_Runtime' ];
-				package: 'SmaCC_Rewrite_Engine'
-					with: [ spec
-						requires: 'SmaCC_Runtime';
-						requires: 'SmaCC_Source_Editing' ];
+				package: 'SmaCC_Rewrite_Engine' with: [ spec requires: #('SmaCC_Runtime' 'SmaCC_Source_Editing') ];
 				package: 'SmaCC_Rewrite_Engine_Tests' with: [ spec requires: 'SmaCC_Rewrite_Engine' ];
 				package: 'SmaCC_Runtime';
 				package: 'SmaCC_Smalltalk_Parser' with: [ spec requires: 'SmaCC_Runtime' ];
@@ -35,14 +32,8 @@ BaselineOfSmaCC >> baseline: spec [
 				package: 'SmaCC_Swift' with: [ spec requires: 'SmaCC_GLR_Runtime' ];
 				package: 'SmaCC_Teradata_Parser' with: [ spec requires: 'SmaCC_GLR_Runtime' ];
 				package: 'SmaCC_VB_NET_Parser' with: [ spec requires: 'SmaCC_GLR_Runtime' ];
-				package: 'SmaCC_Development'
-					with: [ spec
-						requires: 'SmaCC_GLR_Runtime';
-						requires: 'SmaCC_Grammar_Parser' ];
-				package: 'SmaCC_Debugging_Support'
-					with: [ spec
-						requires: 'SmaCC_Development';
-						requires: 'SmaCC_Runtime' ];
+				package: 'SmaCC_Development' with: [ spec requires: #('SmaCC_GLR_Runtime' 'SmaCC_Grammar_Parser') ];
+				package: 'SmaCC_Debugging_Support' with: [ spec requires: #('SmaCC_Development' 'SmaCC_Runtime') ];
 				package: 'SmaCC_Development_UI' with: [ spec requires: 'SmaCC_Development' ];
 				package: 'SmaCC_Parse_Tree_Comparison' with: [ spec requires: 'SmaCC_Runtime' ];
 				package: 'SmaCC_Rewrite_Engine_Command_Line' with: [ spec requires: 'SmaCC_Rewrite_Engine' ];
