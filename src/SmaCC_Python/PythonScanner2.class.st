@@ -902,12 +902,12 @@ PythonScanner2 >> scannerError [
 			lastLineStart = start
 				ifFalse: [ 
 					matchActions := Array with: self NEWLINEId.
-					self tokenStack add: (self createTokenFor: '<cr>').
+					self tokenStack add: (self createTokenFor: '').
 					lastLineStart := start ].
 			[ self indentStack last > 0 ]
 				whileTrue: [ 
 					matchActions := Array with: self DEDENTId.
-					self tokenStack add: (self createTokenFor: 'Dedent').
+					self tokenStack add: (self createTokenFor: '').
 					self indentStack removeLast ].
 			self tokenStack notEmpty
 				ifTrue: [ returnMatchBlock value: self tokenStack removeFirst ] ].
