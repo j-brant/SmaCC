@@ -58,46 +58,67 @@ DelphiBinaryExpressionVisitor >> replaceNode: oldNode with: newNode in: aParentN
 ]
 
 { #category : #visiting }
-DelphiBinaryExpressionVisitor >> visitBinaryExpression: aBinaryExpression [
-	| current |
-	current := aBinaryExpression.
-	[ (current rightExpression isKindOf: DelphiBinaryExpressionNode)
+DelphiBinaryExpressionVisitor >> rotate: current [
+	| pulledUp parent temp |
+	parent := current parent.
+	pulledUp := current rightExpression.
+	temp := pulledUp leftExpression.
+	pulledUp leftExpression: current.
+	current rightExpression: temp.
+	pulledUp parent: parent.
+	temp := pulledUp leftParens.
+	pulledUp leftParens: pulledUp leftExpression leftParens.
+	pulledUp leftExpression leftParens: temp.
+	temp := pulledUp rightParens.
+	pulledUp rightParens: pulledUp leftExpression rightParens.
+	pulledUp leftExpression rightParens: temp.
+	pulledUp removePositions.
+	pulledUp leftExpression removePositions.
+	self replaceNode: current with: pulledUp in: pulledUp parent.
+	pulledUp removeAttributeNamed: #startPosition.
+	current removeAttributeNamed: #stopPosition.
+	self visitBinaryExpression: current.
+	^ pulledUp
+]
+
+{ #category : #visiting }
+DelphiBinaryExpressionVisitor >> rotateAssignment: current [
+	| assignment |
+	assignment := current leftExpression.
+	self replaceNode: current with: assignment in: current parent.
+	current leftExpression: assignment value.
+	assignment parent: current parent.
+	assignment value: current.
+	current leftExpression parent: current.
+	assignment removeAttributeNamed: #stopPosition.
+	assignment value removeAttributeNamed: #startPosition.
+	^ assignment
+]
+
+{ #category : #visiting }
+DelphiBinaryExpressionVisitor >> shouldRotate: current [
+	^ (current rightExpression isKindOf: DelphiBinaryExpressionNode)
 		and: [ current rightExpression leftParens isEmpty
 				and: [ self
 						isPrecedenceOf: current operator value
-						higherThan: current rightExpression operator value ] ] ]
-		whileTrue: [ | pulledUp temp parent |
-			parent := current parent.
-			pulledUp := current rightExpression.
-			temp := pulledUp leftExpression.
-			pulledUp leftExpression: current.
-			current rightExpression: temp.
-			pulledUp parent: parent.
-			temp := pulledUp leftParens.
-			pulledUp leftParens: pulledUp leftExpression leftParens.
-			pulledUp leftExpression leftParens: temp.
-			temp := pulledUp rightParens.
-			pulledUp rightParens: pulledUp leftExpression rightParens.
-			pulledUp leftExpression rightParens: temp.
-			pulledUp removePositions.
-			pulledUp leftExpression removePositions.
-			self replaceNode: current with: pulledUp in: pulledUp parent.
-			pulledUp removeAttributeNamed: #startPosition.
-			current removeAttributeNamed: #stopPosition.
-			current := pulledUp ].
-	self acceptNode: current leftExpression.
-	self acceptNode: current rightExpression.
-	((current leftExpression isKindOf: DelphiAssignmentExpressionNode)
-		and: [ current leftExpression leftParens isEmpty ])
-		ifTrue: [ | assignment |
-			assignment := current leftExpression.
-			self replaceNode: current with: assignment in: current parent.
-			current leftExpression: assignment value.
-			assignment parent: current parent.
-			assignment value: current.
-			current leftExpression parent: current.
-			current := assignment.
-			current removeAttributeNamed: #stopPosition.
-			current value removeAttributeNamed: #startPosition ].
+						higherThan: current rightExpression operator value ] ]
+]
+
+{ #category : #visiting }
+DelphiBinaryExpressionVisitor >> shouldRotateAssignment: current [
+	^ (current leftExpression isKindOf: DelphiAssignmentExpressionNode)
+		and: [ current leftExpression leftParens isEmpty ]
+]
+
+{ #category : #visiting }
+DelphiBinaryExpressionVisitor >> visitBinaryExpression: aBinaryExpression [
+	| current |
+	self acceptNode: aBinaryExpression leftExpression.
+	self acceptNode: aBinaryExpression rightExpression.
+	current := aBinaryExpression.
+	[ self shouldRotate: current ]
+		whileTrue: [ current := self rotate: current ].
+	(self shouldRotateAssignment: current)
+		ifTrue: [ current := self rotateAssignment: current ].
 	^ current
 ]
