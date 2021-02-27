@@ -4,19 +4,30 @@ Class {
 	#category : #'SmaCC_Clojure'
 }
 
+{ #category : #'generated-initialization' }
+ClojureScanner class >> initializeKeywordMap [
+	keywordMap := Dictionary new.
+	#(#(29 'false' 16) #(29 'nil' 17) #(29 'true' 18))
+		do: [ :each | 
+			(keywordMap at: each first ifAbsentPut: [ Dictionary new ])
+				at: (each at: 2)
+				put: each last ].
+	^ keywordMap
+]
+
 { #category : #generated }
 ClojureScanner >> emptySymbolTokenId [
-	^ 54
+	^ 59
 ]
 
 { #category : #generated }
 ClojureScanner >> errorTokenId [
-	^ 55
+	^ 60
 ]
 
 { #category : #generated }
 ClojureScanner >> numberId [
-	^ 21
+	^ 24
 ]
 
 { #category : #private }
@@ -37,7 +48,7 @@ ClojureScanner >> radixInteger [
 
 { #category : #generated }
 ClojureScanner >> scan1 [
-	[ self recordMatch: #(26).
+	[ self recordMatch: #(29).
 	self step.
 	currentCharacter == $:
 		ifTrue: [ ^ self scan2 ].
@@ -56,7 +67,7 @@ ClojureScanner >> scan1 [
 
 { #category : #generated }
 ClojureScanner >> scan10 [
-	self recordMatch: #(21 26).
+	self recordMatch: #(24 29).
 	self step.
 	currentCharacter == $:
 		ifTrue: [ ^ self scan2 ].
@@ -73,7 +84,7 @@ ClojureScanner >> scan10 [
 
 { #category : #generated }
 ClojureScanner >> scan10X1 [
-	[ self recordMatch: #(21 26).
+	[ self recordMatch: #(24 29).
 	self step.
 	currentCharacter == $:
 		ifTrue: [ ^ self scan2 ].
@@ -102,7 +113,7 @@ ClojureScanner >> scan10X1X1 [
 
 { #category : #generated }
 ClojureScanner >> scan10X2 [
-	self recordMatch: #(26).
+	self recordMatch: #(29).
 	self step.
 	currentCharacter == $:
 		ifTrue: [ ^ self scan2 ].
@@ -125,7 +136,7 @@ ClojureScanner >> scan10X2 [
 
 { #category : #generated }
 ClojureScanner >> scan10X2X1 [
-	[ self recordMatch: #(21 26).
+	[ self recordMatch: #(24 29).
 	self step.
 	currentCharacter == $:
 		ifTrue: [ ^ self scan2 ].
@@ -172,7 +183,7 @@ ClojureScanner >> scan10X3 [
 
 { #category : #generated }
 ClojureScanner >> scan11 [
-	[ self recordMatch: #(21 26).
+	[ self recordMatch: #(24 29).
 	self step.
 	currentCharacter == $:
 		ifTrue: [ ^ self scan2 ].
@@ -200,7 +211,7 @@ ClojureScanner >> scan11X1 [
 
 { #category : #generated }
 ClojureScanner >> scan12 [
-	[ self recordMatch: #(26).
+	[ self recordMatch: #(29).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan6 ].
@@ -222,7 +233,7 @@ ClojureScanner >> scan12 [
 
 { #category : #generated }
 ClojureScanner >> scan13 [
-	self recordMatch: #(21 26).
+	self recordMatch: #(24 29).
 	self step.
 	currentCharacter == $/
 		ifTrue: [ ^ self scan9 ].
@@ -244,10 +255,10 @@ ClojureScanner >> scan13 [
 
 { #category : #generated }
 ClojureScanner >> scan14 [
-	[ self recordMatch: #(21).
+	[ self recordMatch: #(24).
 	self step.
 	currentCharacter == $M
-		ifTrue: [ ^ self recordAndReportMatch: #(21) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(24) ].
 	currentCharacter isDigit ] whileTrue.
 	('Ee' includes: currentCharacter)
 		ifTrue: [ self step.
@@ -260,10 +271,10 @@ ClojureScanner >> scan14 [
 
 { #category : #generated }
 ClojureScanner >> scan15 [
-	[ self recordMatch: #(21).
+	[ self recordMatch: #(24).
 	self step.
 	currentCharacter == $M
-		ifTrue: [ ^ self recordAndReportMatch: #(21) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(24) ].
 	currentCharacter isDigit ] whileTrue.
 	^ self reportLastMatch
 ]
@@ -282,36 +293,36 @@ ClojureScanner >> scan16 [
 
 { #category : #generated }
 ClojureScanner >> scan17 [
-	self recordMatch: #(21).
+	self recordMatch: #(24).
 	self step.
 	currentCharacter == $N
-		ifTrue: [ ^ self recordAndReportMatch: #(21) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(24) ].
 	currentCharacter == $x
 		ifTrue: [ self step.
 			(currentCharacter isDigit
 				or: [ currentCharacter between: $A and: $F ])
-				ifTrue: [ [ self recordMatch: #(21).
+				ifTrue: [ [ self recordMatch: #(24).
 					self step.
 					currentCharacter == $N
-						ifTrue: [ ^ self recordAndReportMatch: #(21) ].
+						ifTrue: [ ^ self recordAndReportMatch: #(24) ].
 					currentCharacter isDigit
 						or: [ currentCharacter between: $A and: $F ] ] whileTrue ].
 			^ self reportLastMatch ].
 	(currentCharacter between: $0 and: $7)
-		ifTrue: [ [ self recordMatch: #(21).
+		ifTrue: [ [ self recordMatch: #(24).
 			self step.
 			currentCharacter == $N
-				ifTrue: [ ^ self recordAndReportMatch: #(21) ].
+				ifTrue: [ ^ self recordAndReportMatch: #(24) ].
 			currentCharacter between: $0 and: $7 ] whileTrue ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 ClojureScanner >> scan18 [
-	[ self recordMatch: #(21).
+	[ self recordMatch: #(24).
 	self step.
 	currentCharacter == $N
-		ifTrue: [ ^ self recordAndReportMatch: #(21) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(24) ].
 	currentCharacter isDigit ] whileTrue.
 	^ self reportLastMatch
 ]
@@ -343,7 +354,7 @@ ClojureScanner >> scan2 [
 
 { #category : #generated }
 ClojureScanner >> scan20 [
-	self recordMatch: #(21).
+	self recordMatch: #(24).
 	self step.
 	currentCharacter == $/
 		ifTrue: [ ^ self scan16 ].
@@ -352,7 +363,7 @@ ClojureScanner >> scan20 [
 
 { #category : #generated }
 ClojureScanner >> scan21 [
-	self recordMatch: #(21).
+	self recordMatch: #(24).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan14 ].
@@ -361,7 +372,7 @@ ClojureScanner >> scan21 [
 	currentCharacter == $N
 		ifTrue: [ ^ self scan20 ].
 	currentCharacter == $r
-		ifTrue: [ ^ self recordAndReportMatch: #(20) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(23) ].
 	currentCharacter isDigit
 		ifTrue: [ ^ self scan22 ].
 	^ self reportLastMatch
@@ -369,7 +380,7 @@ ClojureScanner >> scan21 [
 
 { #category : #generated }
 ClojureScanner >> scan22 [
-	[ self recordMatch: #(21).
+	[ self recordMatch: #(24).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan14 ].
@@ -383,7 +394,7 @@ ClojureScanner >> scan22 [
 
 { #category : #generated }
 ClojureScanner >> scan23 [
-	[ self recordMatch: #(27).
+	[ self recordMatch: #(30).
 	self step.
 	currentCharacter == $:
 		ifTrue: [ self step.
@@ -413,7 +424,7 @@ ClojureScanner >> scan23 [
 
 { #category : #generated }
 ClojureScanner >> scan24 [
-	[ self recordMatch: #(27).
+	[ self recordMatch: #(30).
 	self step.
 	currentCharacter isDigit ] whileTrue.
 	(currentCharacter == $!
@@ -440,7 +451,7 @@ ClojureScanner >> scan25 [
 ClojureScanner >> scan26 [
 	self step.
 	currentCharacter == $e
-		ifTrue: [ ^ self recordAndReportMatch: #(23) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(26) ].
 	^ self reportLastMatch
 ]
 
@@ -448,7 +459,7 @@ ClojureScanner >> scan26 [
 ClojureScanner >> scan3 [
 	[ self step.
 	currentCharacter == $"
-		ifTrue: [ ^ self recordAndReportMatch: #(24) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(27) ].
 	currentCharacter == $\
 		ifTrue: [ self step.
 			^ self scan3 ].
@@ -457,7 +468,7 @@ ClojureScanner >> scan3 [
 
 { #category : #generated }
 ClojureScanner >> scan4 [
-	self recordMatch: #(26).
+	self recordMatch: #(29).
 	self step.
 	currentCharacter == $0
 		ifTrue: [ ^ self scan5 ].
@@ -481,7 +492,7 @@ ClojureScanner >> scan4 [
 
 { #category : #generated }
 ClojureScanner >> scan4X1 [
-	[ self recordMatch: #(21 26).
+	[ self recordMatch: #(24 29).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan6 ].
@@ -513,7 +524,7 @@ ClojureScanner >> scan4X1X1 [
 
 { #category : #generated }
 ClojureScanner >> scan5 [
-	self recordMatch: #(21 26).
+	self recordMatch: #(24 29).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan6 ].
@@ -531,7 +542,7 @@ ClojureScanner >> scan5 [
 
 { #category : #generated }
 ClojureScanner >> scan5X1 [
-	[ self recordMatch: #(21 26).
+	[ self recordMatch: #(24 29).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan6 ].
@@ -565,7 +576,7 @@ ClojureScanner >> scan5X1X1 [
 
 { #category : #generated }
 ClojureScanner >> scan5X2 [
-	self recordMatch: #(26).
+	self recordMatch: #(29).
 	self step.
 	currentCharacter == $:
 		ifTrue: [ ^ self scan2 ].
@@ -588,7 +599,7 @@ ClojureScanner >> scan5X2 [
 
 { #category : #generated }
 ClojureScanner >> scan5X2X1 [
-	[ self recordMatch: #(21 26).
+	[ self recordMatch: #(24 29).
 	self step.
 	currentCharacter == $/
 		ifTrue: [ ^ self scan9 ].
@@ -641,7 +652,7 @@ ClojureScanner >> scan5X3 [
 
 { #category : #generated }
 ClojureScanner >> scan6 [
-	[ self recordMatch: #(21 26).
+	[ self recordMatch: #(24 29).
 	self step.
 	currentCharacter == $:
 		ifTrue: [ ^ self scan2 ].
@@ -656,7 +667,7 @@ ClojureScanner >> scan6 [
 
 { #category : #generated }
 ClojureScanner >> scan6X1 [
-	self recordMatch: #(26).
+	self recordMatch: #(29).
 	self step.
 	currentCharacter == $:
 		ifTrue: [ ^ self scan2 ].
@@ -680,7 +691,7 @@ ClojureScanner >> scan6X1 [
 
 { #category : #generated }
 ClojureScanner >> scan6X1X1 [
-	self recordMatch: #(26).
+	self recordMatch: #(29).
 	self step.
 	currentCharacter == $:
 		ifTrue: [ ^ self scan2 ].
@@ -719,7 +730,7 @@ ClojureScanner >> scan6X2 [
 
 { #category : #generated }
 ClojureScanner >> scan7 [
-	[ self recordMatch: #(21 26).
+	[ self recordMatch: #(24 29).
 	self step.
 	currentCharacter == $:
 		ifTrue: [ ^ self scan2 ].
@@ -747,7 +758,7 @@ ClojureScanner >> scan7X1 [
 
 { #category : #generated }
 ClojureScanner >> scan8 [
-	self recordMatch: #(21 26).
+	self recordMatch: #(24 29).
 	self step.
 	currentCharacter == $:
 		ifTrue: [ ^ self scan2 ].
@@ -766,14 +777,14 @@ ClojureScanner >> scan8 [
 
 { #category : #generated }
 ClojureScanner >> scan9 [
-	self recordMatch: #(26).
+	self recordMatch: #(29).
 	self step.
 	^ self scan9X2
 ]
 
 { #category : #generated }
 ClojureScanner >> scan9X1 [
-	self recordMatch: #(26).
+	self recordMatch: #(29).
 	self step.
 	currentCharacter == $0
 		ifTrue: [ ^ self scan10 ].
@@ -833,7 +844,7 @@ ClojureScanner >> scanForToken [
 	currentCharacter == $)
 		ifTrue: [ ^ self recordAndReportMatch: #(10) ].
 	currentCharacter == $,
-		ifTrue: [ ^ self recordAndReportMatch: #(22) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(25) ].
 	currentCharacter == $0
 		ifTrue:
 			[ ^ self scanForTokenX4 ].
@@ -850,68 +861,68 @@ ClojureScanner >> scanForToken [
 ClojureScanner >> scanForTokenX1 [
 	self step.
 	currentCharacter == $b
-		ifTrue: [ self recordMatch: #(23).
+		ifTrue: [ self recordMatch: #(26).
 			self step.
 			currentCharacter == $a
 				ifTrue: [ (self scanForString: 'cksp')
 						ifTrue: [ ^ self scan25 ] ].
 			^ self reportLastMatch ].
 	currentCharacter == $f
-		ifTrue: [ self recordMatch: #(23).
+		ifTrue: [ self recordMatch: #(26).
 			self step.
 			currentCharacter == $o
 				ifTrue: [ (self scanForString: 'rmfeed')
-						ifTrue: [ ^ self recordAndReportMatch: #(23) ] ].
+						ifTrue: [ ^ self recordAndReportMatch: #(26) ] ].
 			^ self reportLastMatch ].
 	currentCharacter == $n
-		ifTrue: [ self recordMatch: #(23).
+		ifTrue: [ self recordMatch: #(26).
 			self step.
 			currentCharacter == $e
 				ifTrue: [ (self scanForString: 'wlin')
 						ifTrue: [ ^ self scan26 ] ].
 			^ self reportLastMatch ].
 	currentCharacter == $o
-		ifTrue: [ self recordMatch: #(23).
+		ifTrue: [ self recordMatch: #(26).
 			self step.
 			(currentCharacter between: $0 and: $7)
 				ifTrue: [ self step.
 					(currentCharacter between: $0 and: $7)
 						ifTrue: [ self step.
 							(currentCharacter between: $0 and: $7)
-								ifTrue: [ ^ self recordAndReportMatch: #(23) ] ] ].
+								ifTrue: [ ^ self recordAndReportMatch: #(26) ] ] ].
 			^ self reportLastMatch ].
 	currentCharacter == $r
-		ifTrue: [ self recordMatch: #(23).
+		ifTrue: [ self recordMatch: #(26).
 			self step.
 			currentCharacter == $e
 				ifTrue: [ (self scanForString: 'turn')
-						ifTrue: [ ^ self recordAndReportMatch: #(23) ] ].
+						ifTrue: [ ^ self recordAndReportMatch: #(26) ] ].
 			^ self reportLastMatch ].
 	currentCharacter == $s
-		ifTrue: [ self recordMatch: #(23).
+		ifTrue: [ self recordMatch: #(26).
 			self step.
 			currentCharacter == $p
 				ifTrue: [ ^ self scan25 ].
 			^ self reportLastMatch ].
 	currentCharacter == $t
-		ifTrue: [ self recordMatch: #(23).
+		ifTrue: [ self recordMatch: #(26).
 			self step.
 			currentCharacter == $a
 				ifTrue: [ self step.
 					currentCharacter == $b
-						ifTrue: [ ^ self recordAndReportMatch: #(23) ] ].
+						ifTrue: [ ^ self recordAndReportMatch: #(26) ] ].
 			^ self reportLastMatch ].
 	currentCharacter == $u
 		ifTrue: [ ^ self scanForTokenX1X1 ].
-	^ self recordAndReportMatch: #(23)
+	^ self recordAndReportMatch: #(26)
 ]
 
 { #category : #generated }
 ClojureScanner >> scanForTokenX10 [
-	self recordMatch: #(18).
+	self recordMatch: #(21).
 	self step.
 	currentCharacter == $@
-		ifTrue: [ ^ self recordAndReportMatch: #(19) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(22) ].
 	^ self reportLastMatch
 ]
 
@@ -963,9 +974,9 @@ ClojureScanner >> scanForTokenX12 [
 	currentCharacter == $`
 		ifTrue: [ ^ self recordAndReportMatch: #(15) ].
 	currentCharacter == ${
-		ifTrue: [ ^ self recordAndReportMatch: #(16) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(19) ].
 	currentCharacter == $}
-		ifTrue: [ ^ self recordAndReportMatch: #(17) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(20) ].
 	currentCharacter == $~
 		ifTrue:
 			[ ^ self scanForTokenX10 ].
@@ -974,7 +985,7 @@ ClojureScanner >> scanForTokenX12 [
 
 { #category : #generated }
 ClojureScanner >> scanForTokenX1X1 [
-	self recordMatch: #(23).
+	self recordMatch: #(26).
 	self step.
 	(currentCharacter isDigit
 		or: [ currentCharacter between: $A and: $F ])
@@ -987,7 +998,7 @@ ClojureScanner >> scanForTokenX1X1 [
 						ifTrue: [ self step.
 							(currentCharacter isDigit
 								or: [ currentCharacter between: $A and: $F ])
-								ifTrue: [ ^ self recordAndReportMatch: #(23) ] ] ] ].
+								ifTrue: [ ^ self recordAndReportMatch: #(26) ] ] ] ].
 	^ self reportLastMatch
 ]
 
@@ -1018,7 +1029,7 @@ ClojureScanner >> scanForTokenX3 [
 	currentCharacter == $"
 		ifTrue: [ [ self step.
 			currentCharacter == $"
-				ifTrue: [ ^ self recordAndReportMatch: #(25) ].
+				ifTrue: [ ^ self recordAndReportMatch: #(28) ].
 			true ] whileTrue ].
 	currentCharacter == $#
 		ifTrue: [ ^ self recordAndReportMatch: #(2) ].
@@ -1037,7 +1048,7 @@ ClojureScanner >> scanForTokenX3 [
 
 { #category : #generated }
 ClojureScanner >> scanForTokenX4 [
-	self recordMatch: #(21).
+	self recordMatch: #(24).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan14 ].
@@ -1049,7 +1060,7 @@ ClojureScanner >> scanForTokenX4 [
 		ifTrue: [ self step.
 			(currentCharacter isDigit
 				or: [ currentCharacter between: $A and: $F ])
-				ifTrue: [ [ self recordMatch: #(21).
+				ifTrue: [ [ self recordMatch: #(24).
 					self step.
 					currentCharacter == $/
 						ifTrue: [ ^ self scan16 ].
@@ -1061,7 +1072,7 @@ ClojureScanner >> scanForTokenX4 [
 	(currentCharacter between: $8 and: $9)
 		ifTrue: [ ^ self scan19 ].
 	currentCharacter isDigit
-		ifTrue: [ [ self recordMatch: #(21).
+		ifTrue: [ [ self recordMatch: #(24).
 			self step.
 			currentCharacter == $.
 				ifTrue: [ ^ self scan14 ].
@@ -1077,7 +1088,7 @@ ClojureScanner >> scanForTokenX4 [
 
 { #category : #generated }
 ClojureScanner >> scanForTokenX5 [
-	self recordMatch: #(21).
+	self recordMatch: #(24).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan14 ].
@@ -1086,7 +1097,7 @@ ClojureScanner >> scanForTokenX5 [
 	currentCharacter == $N
 		ifTrue: [ ^ self scan20 ].
 	currentCharacter == $r
-		ifTrue: [ ^ self recordAndReportMatch: #(20) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(23) ].
 	(currentCharacter between: $7 and: $9)
 		ifTrue: [ ^ self scan22 ].
 	currentCharacter isDigit
@@ -1096,7 +1107,7 @@ ClojureScanner >> scanForTokenX5 [
 
 { #category : #generated }
 ClojureScanner >> scanForTokenX6 [
-	self recordMatch: #(21).
+	self recordMatch: #(24).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan14 ].
@@ -1105,7 +1116,7 @@ ClojureScanner >> scanForTokenX6 [
 	currentCharacter == $N
 		ifTrue: [ ^ self scan20 ].
 	currentCharacter == $r
-		ifTrue: [ ^ self recordAndReportMatch: #(20) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(23) ].
 	currentCharacter isDigit
 		ifTrue: [ ^ self scan21 ].
 	^ self reportLastMatch
@@ -1113,7 +1124,7 @@ ClojureScanner >> scanForTokenX6 [
 
 { #category : #generated }
 ClojureScanner >> scanForTokenX7 [
-	[ self recordMatch: #(22).
+	[ self recordMatch: #(25).
 	self step.
 	currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
@@ -1123,7 +1134,7 @@ ClojureScanner >> scanForTokenX7 [
 
 { #category : #generated }
 ClojureScanner >> scanForTokenX8 [
-	self recordMatch: #(21).
+	self recordMatch: #(24).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan14 ].
@@ -1138,7 +1149,7 @@ ClojureScanner >> scanForTokenX8 [
 
 { #category : #generated }
 ClojureScanner >> scanForTokenX9 [
-	[ self recordMatch: #(28).
+	[ self recordMatch: #(31).
 	self step.
 	currentCharacter isSeparator
 		or: [ currentCharacter == Character pageUp ] ] whileTrue.
@@ -1147,5 +1158,5 @@ ClojureScanner >> scanForTokenX9 [
 
 { #category : #generated }
 ClojureScanner >> tokenActions [
-	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #radixInteger nil #comment nil nil nil nil nil #whitespace)
+	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #radixInteger nil #comment nil nil nil nil nil #whitespace)
 ]

@@ -13,6 +13,11 @@ ClojureUnquoteNode >> acceptVisitor: anExpressionVisitor [
 	^ anExpressionVisitor visitUnquote: self
 ]
 
+{ #category : #testing }
+ClojureUnquoteNode >> isQuoted [
+	^ self isSyntaxQuoted not
+]
+
 { #category : #generated }
 ClojureUnquoteNode >> nodeVariables [
 	^ #(#value)

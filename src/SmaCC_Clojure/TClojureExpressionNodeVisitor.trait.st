@@ -6,8 +6,13 @@ Trait {
 }
 
 { #category : #generated }
+TClojureExpressionNodeVisitor >> visitBoolean: aBoolean [
+	^ self visitLiteral: aBoolean
+]
+
+{ #category : #generated }
 TClojureExpressionNodeVisitor >> visitCharacter: aCharacter [
-	^ self visitExpression: aCharacter
+	^ self visitLiteral: aCharacter
 ]
 
 { #category : #generated }
@@ -46,6 +51,11 @@ TClojureExpressionNodeVisitor >> visitList: aList [
 ]
 
 { #category : #generated }
+TClojureExpressionNodeVisitor >> visitLiteral: aLiteral [
+	^ self visitExpression: aLiteral
+]
+
+{ #category : #generated }
 TClojureExpressionNodeVisitor >> visitMap: aMap [
 	^ self visitExpression: aMap
 ]
@@ -56,8 +66,13 @@ TClojureExpressionNodeVisitor >> visitMetadata: aMetadata [
 ]
 
 { #category : #generated }
+TClojureExpressionNodeVisitor >> visitNil: aNil [
+	^ self visitLiteral: aNil
+]
+
+{ #category : #generated }
 TClojureExpressionNodeVisitor >> visitNumber: aNumber [
-	^ self visitExpression: aNumber
+	^ self visitLiteral: aNumber
 ]
 
 { #category : #generated }
@@ -72,7 +87,7 @@ TClojureExpressionNodeVisitor >> visitQuote: aQuote [
 
 { #category : #generated }
 TClojureExpressionNodeVisitor >> visitRegularExpression: aRegularExpression [
-	^ self visitExpression: aRegularExpression
+	^ self visitLiteral: aRegularExpression
 ]
 
 { #category : #generated }
@@ -82,7 +97,7 @@ TClojureExpressionNodeVisitor >> visitSet: aSet [
 
 { #category : #generated }
 TClojureExpressionNodeVisitor >> visitString: aString [
-	^ self visitExpression: aString
+	^ self visitLiteral: aString
 ]
 
 { #category : #generated }

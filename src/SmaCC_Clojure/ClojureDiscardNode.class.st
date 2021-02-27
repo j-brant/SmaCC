@@ -23,6 +23,11 @@ ClojureDiscardNode >> discard: aSmaCCToken [
 	discard := aSmaCCToken
 ]
 
+{ #category : #testing }
+ClojureDiscardNode >> isDiscarded [
+	^ true
+]
+
 { #category : #generated }
 ClojureDiscardNode >> nodeVariables [
 	^ #(#value)

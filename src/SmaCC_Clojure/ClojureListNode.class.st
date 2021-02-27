@@ -47,6 +47,11 @@ ClojureListNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
+{ #category : #accessing }
+ClojureListNode >> listDepth [
+	^ 1 + parent listDepth
+]
+
 { #category : #generated }
 ClojureListNode >> rightParen [
 	^ rightParen

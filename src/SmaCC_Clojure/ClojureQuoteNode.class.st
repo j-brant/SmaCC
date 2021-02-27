@@ -13,6 +13,16 @@ ClojureQuoteNode >> acceptVisitor: anExpressionVisitor [
 	^ anExpressionVisitor visitQuote: self
 ]
 
+{ #category : #testing }
+ClojureQuoteNode >> isQuoted [
+	^ true
+]
+
+{ #category : #testing }
+ClojureQuoteNode >> isSyntaxQuoted [
+	^ quote source = '`'
+]
+
 { #category : #generated }
 ClojureQuoteNode >> nodeVariables [
 	^ #(#value)
