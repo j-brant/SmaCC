@@ -6,7 +6,7 @@ Class {
 
 { #category : #'generated-accessing' }
 JSONParser class >> cacheId [
-	^'2020-09-16T13:57:56.891175-05:00'
+	^'2021-02-27T19:25:13.946821-06:00'
 ]
 
 { #category : #generated }
@@ -30,7 +30,7 @@ JSONParser class >> definitionComment [
 	: \-? (\d | [1-9]\d+) (\.\d+)? ([eE][\+\-]?\d+)?
 	;
 <string>
-	: \"" ([^\x00-\x1F\""\\]|(\\([\""\\\/bnrt]|(u<hex>{4,4}))))* \""
+	: \"" ([^\x00-\x1F\""\\]|(\\([\""\\\/bfnrt]|(u<hex>{4,4}))))* \""
 	;
 <whitespace>
 	: [\x09\x0a\x0d\x20]+
@@ -72,22 +72,22 @@ JSONParser class >> fileExtension [
 { #category : #generated }
 JSONParser class >> reduceTable [
 ^#(
-	#(14 1 #reduceActionForvalue6: 345094 false ) 
-	#(14 1 #reduceActionForvalue7: 345095 false ) 
-	#(14 1 #reduceActionForvalue6: 345093 false ) 
-	#(14 1 #reduceActionForvalue4: 345092 false ) 
-	#(14 1 #reduceActionForvalue3: 345091 false ) 
-	#(14 1 #liftFirstValue: 345089 false ) 
-	#(14 1 #liftFirstValue: 345090 false ) 
-	#(18 2 #reduceActionForarray1: 720897 false ) 
-	#(19 1 #reduceActionForelements2: 786434 false ) 
-	#(15 2 #reduceActionForobject1: 527361 false ) 
-	#(16 1 #reduceActionForelements2: 588802 false ) 
-	#(18 3 #reduceActionForarray2: 720898 false ) 
-	#(15 3 #reduceActionForobject2: 527362 false ) 
-	#(19 3 #reduceActionForelements1: 786433 false ) 
-	#(17 3 #reduceActionFormember1: 659457 false ) 
-	#(16 3 #reduceActionForelements1: 588801 false )
+	#(14 1 #reduceActionForvalue6: 346118 false ) 
+	#(14 1 #reduceActionForvalue7: 346119 false ) 
+	#(14 1 #reduceActionForvalue6: 346117 false ) 
+	#(14 1 #reduceActionForvalue4: 346116 false ) 
+	#(14 1 #reduceActionForvalue3: 346115 false ) 
+	#(14 1 #liftFirstValue: 346113 false ) 
+	#(14 1 #liftFirstValue: 346114 false ) 
+	#(18 2 #reduceActionForarray1: 721921 false ) 
+	#(19 1 #reduceActionForelements2: 787458 false ) 
+	#(15 2 #reduceActionForobject1: 528385 false ) 
+	#(16 1 #reduceActionForelements2: 589826 false ) 
+	#(18 3 #reduceActionForarray2: 721922 false ) 
+	#(15 3 #reduceActionForobject2: 528386 false ) 
+	#(19 3 #reduceActionForelements1: 787457 false ) 
+	#(17 3 #reduceActionFormember1: 660481 false ) 
+	#(16 3 #reduceActionForelements1: 589825 false )
 	).
 ]
 

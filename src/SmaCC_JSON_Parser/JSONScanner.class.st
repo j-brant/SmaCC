@@ -40,7 +40,7 @@ JSONScanner >> scan1 [
 														or: [ currentCharacter between: $a and: $f ] ])
 												ifTrue: [ ^ self scan1 ] ] ] ].
 					^ self reportLastMatch ].
-			('"/\bnrt' includes: currentCharacter)
+			('"/\bfnrt' includes: currentCharacter)
 				ifTrue: [ ^ self scan1 ].
 			^ self reportLastMatch ].
 	(currentCharacter between: Character space and: $!)
