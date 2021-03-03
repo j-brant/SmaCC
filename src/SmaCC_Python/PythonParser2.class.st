@@ -621,6 +621,11 @@ PythonParser2 class >> eval: aString [
 	^self parse: aString startingAt: self startingStateForeval_input
 ]
 
+{ #category : #'file types' }
+PythonParser2 class >> fileExtension [
+	^ '.py'
+]
+
 { #category : #generated }
 PythonParser2 class >> reduceTable [
 ^#(
