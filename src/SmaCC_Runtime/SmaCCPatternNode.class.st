@@ -32,6 +32,23 @@ SmaCCPatternNode >> copyInContext: aDictionary [
 	^ (aDictionary at: self ifAbsent: [ nil ]) copy
 ]
 
+{ #category : #'reflective operations' }
+SmaCCPatternNode >> doesNotUnderstand: aMessage [
+	| sender |
+	sender := thisContext sender.
+	^ (aMessage arguments isEmpty
+		and: [ (sender receiver isKindOf: SmaCCParser)
+				and: [ sender method selector beginsWith: 'reduceActionFor' ] ])
+		ifTrue: [ "
+			Hack to work around adding parens around pattern nodes:
+				JavaParser parseAll: '(`pattern`)+1' startingAt: JavaParser startingStateForexpression
+			"
+			self
+				attributeNamed: aMessage selector
+				ifAbsentPut: [ OrderedCollection new ] ]
+		ifFalse: [ super doesNotUnderstand: aMessage ]
+]
+
 { #category : #comparing }
 SmaCCPatternNode >> hash [
 	^ self patternToken hash
