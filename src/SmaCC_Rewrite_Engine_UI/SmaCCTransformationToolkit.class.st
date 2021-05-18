@@ -68,8 +68,7 @@ SmaCCTransformationToolkit >> addFiles: aCollection [
 	| files |
 	files := Set withAll: self model files.
 	files addAll: aCollection.
-	self model files: files asSortedCollection asArray.
-	self updateModel
+	self model files: files asSortedCollection asArray
 ]
 
 { #category : #building }
@@ -628,10 +627,4 @@ SmaCCTransformationToolkit >> updateInput: sourcePresentation target: targetPres
 			(self result transformedString annotationRangesFor: selection) do: [ :each | targetPresentation addHighlight: (Color red alpha: 0.2) from: each first to: each last ] ].
 	sourcePresentation updateHighlightsAndScroll.
 	targetPresentation updateHighlightsAndScroll
-]
-
-{ #category : #actions }
-SmaCCTransformationToolkit >> updateModel [
-	"Hack to get things to update"
-	self model: self model
 ]
