@@ -5,7 +5,7 @@ SmaCCParser class >> gtDefinitionStringViewIn: composite [
 	<gtInspectorPresentationOrder: 11>
 	composite text
 		title: 'Source';
-		display: [ self definitionString ]
+		display: [ self parserDefinitionString ]
 ]
 
 { #category : #'*SmaCC_Development_UI' }

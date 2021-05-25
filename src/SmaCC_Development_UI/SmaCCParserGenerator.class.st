@@ -528,7 +528,7 @@ SmaCCParserGenerator >> updateDefinitionFor: parserClass [
 		do: [ :ex | ex return: nil ].
 	scannerClass notNil
 		ifTrue: [ self scannerClassName: scannerClass name ].
-	self definition: parserClass definitionString.
+	self definition: parserClass parserDefinitionString.
 	messagesModel text: ''.
 	symbolsModel text: ''.
 	itemSetsModel text: ''.

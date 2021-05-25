@@ -14,13 +14,13 @@ SmaCCParser class >> compileGrammar: aString [
 
 { #category : #'*SmaCC_Development' }
 SmaCCParser class >> definitionAST [
-	^ [ SmaCCDefinitionParser parse: self definitionString ]
+	^ [ SmaCCDefinitionParser parse: self parserDefinitionString ]
 		on: SmaCCParserError
 		do: [ :ex | ex return: nil ]
 ]
 
 { #category : #'*SmaCC_Development' }
-SmaCCParser class >> definitionString [
+SmaCCParser class >> parserDefinitionString [
 	| scannerClass source |
 	scannerClass := [ self scannerClass ]
 		on: Error
@@ -41,7 +41,7 @@ SmaCCParser class >> recompileAll [
 	"self recompileAll"
 
 	self withAllSubclasses
-		do: [ :each | each compileGrammar: each definitionString ]
+		do: [ :each | each compileGrammar: each parserDefinitionString ]
 		displayingProgress: [ :each | 'Compiling ' , each instanceSide name ]
 ]
 
