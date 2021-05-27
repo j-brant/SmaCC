@@ -6,7 +6,8 @@ Class {
 		'resultsList',
 		'previewResult',
 		'notebook',
-		'fileList'
+		'fileList',
+		'menuBar'
 	],
 	#category : #'SmaCC_Rewrite_Engine_UI'
 }
@@ -14,6 +15,7 @@ Class {
 { #category : #specs }
 SmaCCTransformationToolkit2 class >> defaultSpec [
 	^ SpBoxLayout newTopToBottom
+		add: #menuBar expand: false;
 		add: #notebook;
 		yourself
 ]
@@ -135,11 +137,73 @@ SmaCCTransformationToolkit2 >> buildConfigurationTab [
 ]
 
 { #category : #initialization }
+SmaCCTransformationToolkit2 >> buildEditMenu [
+
+	^SpMenuPresenter new
+		               addGroup: [ :group | 
+			               group addItem: [ :item | item name: 'Find'; shortcut: #find; action: [  ] ];
+				                  addItem: [ :item | item name: 'Replace'; shortcut: $h; action: [  ] ] ];
+		               addGroup: [ :group | 
+								group addItem: [ :item | item name: 'Format'; action: [  ] ] ]
+]
+
+{ #category : #initialization }
+SmaCCTransformationToolkit2 >> buildFileMenu [
+
+	^SpMenuPresenter new
+		               addGroup: [ :group | 
+			               group addItem: [ :item | item name: 'Load Configuration'; shortcut: #open; action: [ self loadConfiguration ] ];
+				                  addItem: [ :item | item name: 'Save Configuration'; shortcut: #save; action: [ self saveConfiguration ] ] ];
+		               addGroup: [ :group | 
+			               group addItem: [ :item | item name: 'Open Rewrites'; action: [  ] ];
+				                  addItem: [ :item | item name: 'Save Rewrites'; action: [  ] ] ];
+		               addGroup: [ :group | 
+			               group addItem: [ :item | item name: 'New Window'; action: [  ] ] ];
+		               addGroup: [ :group | group addItem: [ :item | item name: 'Exit'; shortcut: #close; action: [  ] ] ]
+]
+
+{ #category : #initialization }
+SmaCCTransformationToolkit2 >> buildTransformMenu [
+
+	^SpMenuPresenter new
+		               addGroup: [ :group | 
+			               group addItem: [ :item | item name: 'Input Parser...'; action: [  ] ];
+				                  addItem: [ :item | item name: 'Validation Parser...'; action: [  ] ] ];
+		               addGroup: [ :group | 
+			               group addItem: [ :item | item name: 'Set Server (localhost)'; action: [  ] ] ];
+		               addGroup: [ :group | 
+			               group addItem: [ :item | item name: 'User Server'; action: [  ] ] ];
+		               addGroup: [ :group | 
+								group addItem: [ :item | item name: 'Transform All'; shortcut: $R ctrl; action: [  ] ];
+										addItem: [ :item | item name: 'Transform Remaining'; action: [  ] ];
+										addItem: [ :item | item name: 'Transform Selected'; shortcut: $r ctrl; action: [  ] ];
+										addItem: [ :item | item name: 'Transform All With Errors Or Warnings'; action: [  ] ] ];
+							addGroup: [ :group | 
+			               group addItem: [ :item | item name: 'View Input File'; action: [  ] ] ];
+							addGroup: [ :group | 
+			               group addItem: [ :item | item name: 'Export Results...'; action: [  ] ] ];
+							addGroup: [ :group | 
+			               group addItem: [ :item | item name: 'Select all files from errors'; action: [  ] ] ]
+]
+
+{ #category : #initialization }
 SmaCCTransformationToolkit2 >> configurationPage [
 
 	^ SpNotebookPage
 		  title: 'Configuration'
 		  provider: [ self buildConfigurationTab ]
+]
+
+{ #category : #actions }
+SmaCCTransformationToolkit2 >> ensureRewriteFilename [
+
+	| name |
+	self model rewrites filename ifNil: [ 
+		name := self
+			        promptForSaveFile: 'Save Rewrites To'
+			        extensions: #( 'rw' ).
+		name isNil ifTrue: [ ^ self ].
+		self model rewrites filename: name ]
 ]
 
 { #category : #initialization }
@@ -150,13 +214,42 @@ SmaCCTransformationToolkit2 >> initialize [
 ]
 
 { #category : #initialization }
-SmaCCTransformationToolkit2 >> initializePresenters [
-	notebook := self newNotebook.
+SmaCCTransformationToolkit2 >> initializeMenu [
 
+	menuBar := self newMenuBar.
+	menuBar addGroup: [ :group | 
+		group
+			addItem: [ :item | 
+				item
+					name: 'File';
+					subMenu: self buildFileMenu ];
+			addItem: [ :item | 
+				item
+					name: 'Edit';
+					subMenu: self buildEditMenu ];
+			addItem: [ :item | 
+				item
+					name: 'Transform';
+					subMenu: self buildTransformMenu ] ]
+]
+
+{ #category : #initialization }
+SmaCCTransformationToolkit2 >> initializeNotebook [
+
+	notebook := self newNotebook.
 	notebook
 		addPage: self configurationPage;
 		addPage: self transformationPage;
 		addPage: self previewPage
+]
+
+{ #category : #initialization }
+SmaCCTransformationToolkit2 >> initializePresenters [
+
+	"Action"
+
+	self initializeMenu.
+	self initializeNotebook
 ]
 
 { #category : #initialization }
@@ -166,6 +259,19 @@ SmaCCTransformationToolkit2 >> initializeWindow: aSpWindowPresenter [
 
 	aSpWindowPresenter
 		title: 'SmaCC Transformation Toolkit'
+]
+
+{ #category : #actions }
+SmaCCTransformationToolkit2 >> loadConfiguration [
+
+	| file |
+	file := self
+		        promptForFile: 'Load Configuration File'
+		        extensions: #( 'rwc' ).
+	file ifNil: [ ^ self ].
+	self model: (SmaCCTransformationToolkitModel new loadFile: file).
+	self fileResults removeAll.
+	self result: SmaCCRewriteCompleteResult new
 ]
 
 { #category : #initialization }
@@ -188,6 +294,14 @@ SmaCCTransformationToolkit2 >> promptForFile: aTitle extensions: anArray [
 		path: FileSystem workingDirectory
 ]
 
+{ #category : #private }
+SmaCCTransformationToolkit2 >> promptForSaveFile: aTitle extensions: anArray [
+	^ UIManager default
+		chooseForSaveFileReference: aTitle
+		extensions: anArray
+		path: FileSystem workingDirectory
+]
+
 { #category : #actions }
 SmaCCTransformationToolkit2 >> removeFiles [
 	| files anArray |
@@ -200,6 +314,18 @@ SmaCCTransformationToolkit2 >> removeFiles [
 	files removeAllFoundIn: anArray.
 	self model files: files asSortedCollection.
 	self modelChanged 
+]
+
+{ #category : #actions }
+SmaCCTransformationToolkit2 >> saveConfiguration [
+
+	self ensureRewriteFilename.
+	filename ifNil: [ 
+		filename := self
+			            promptForSaveFile: 'Save Configuration To'
+			            extensions: #( 'rwc' ).
+		filename ifNil: [ ^ self ] ].
+	self model saveTo: filename
 ]
 
 { #category : #initialization }
