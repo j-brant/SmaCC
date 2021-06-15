@@ -7,7 +7,8 @@ Class {
 		'previewResult',
 		'notebook',
 		'fileList',
-		'menuBar'
+		'menuBar',
+		'ruleEditor'
 	],
 	#category : #'SmaCC_Rewrite_Engine_UI'
 }
@@ -22,41 +23,36 @@ SmaCCTransformationToolkit2 class >> defaultSpec [
 
 { #category : #actions }
 SmaCCTransformationToolkit2 >> addDirectory [
-
 	| dir names match stream todo |
-	dir := UITheme builder
-		       chooseDirectory: 'Add all files in directory'
-		       path: nil.
+	dir := UITheme builder chooseDirectory: 'Add all files in directory' path: nil.
 	dir ifNil: [ ^ self ].
 	names := Set new.
 	stream := WriteStream on: String new.
 	(self model inputParserClass ifNil: [ SmaCCParser ]) fileExtensions
-		do: [ :each | 
+		do:
+			[ :each | 
 			stream
 				nextPut: $*;
 				nextPutAll: each ]
 		separatedBy: [ stream nextPut: $; ].
 	match := stream contents.
 	todo := OrderedCollection with: dir.
-	[ todo notEmpty ] whileTrue: [ 
-		((dir := todo removeFirst) filesMatching: match) do: [ :each | 
-			names add: each fullName ].
-		todo addAll: dir directories ].
+	[ todo notEmpty ]
+		whileTrue:
+			[ ((dir := todo removeFirst) filesMatching: match) do: [ :each | names add: each fullName ].
+			todo addAll: dir directories ].
 	self addFiles: names
 ]
 
 { #category : #actions }
 SmaCCTransformationToolkit2 >> addFiles [
-
 	| name |
 	name := self
-		        promptForFile: 'Add file'
-		        extensions:
-			        ((self model inputParserClass ifNil: [ SmaCCParser ])
-				         fileExtensions collect: [ :each | 
-				         (each notEmpty and: [each first = $.])
-					         ifTrue: [ each copyFrom: 2 to: each size ]
-					         ifFalse: [ each ] ]).
+		promptForFile: 'Add file'
+		extensions:
+			((self model inputParserClass ifNil: [ SmaCCParser ]) fileExtensions
+				collect:
+					[ :each | (each notEmpty and: [ each first = $. ]) ifTrue: [ each copyFrom: 2 to: each size ] ifFalse: [ each ] ]).
 	name ifNil: [ ^ self ].
 	self addFiles: (Array with: name)
 ]
@@ -67,78 +63,74 @@ SmaCCTransformationToolkit2 >> addFiles: aCollection [
 	files := Set withAll: self model files.
 	files addAll: aCollection.
 	self model files: files asSortedCollection asArray.
-	self modelChanged 
+	self modelChanged
 ]
 
 { #category : #initialization }
 SmaCCTransformationToolkit2 >> buildConfigurationTab [
-
 	| presenter buttons topPane table |
 	presenter := SpPresenter new.
-	fileList := self newList
-		            beMultipleSelection;
-		            yourself.
+	fileList := (self newList)
+		beMultipleSelection;
+		yourself.
 	buttons := presenter newButtonBar.
-	topPane := SpBoxLayout newLeftToRight
-		           add: 'Files:' expand: false;
-		           add: fileList yourself;
-		           add: buttons expand: false;
-		           yourself.
-
-	buttons layout: (SpBoxLayout newTopToBottom
-			 add: (self newButton
-					  label: 'Add Dir';
-					  action: [ self addDirectory ];
-					  yourself)
-			 expand: false;
-			 add: (self newButton
-					  label: 'Add';
-					  action: [ self addFiles ];
-					  yourself)
-			 expand: false;
-			 add: (self newButton
-					  label: 'Remove';
-					  action: [ self removeFiles ])
-			 expand: false;
-			 add: (self newButton
-					  label: 'Preview';
-					  action: [ self openResults ])
-			 expand: false;
-			 add: (self newButton
-					  label: 'Run';
-					  action: [ self run ])
-			 expand: false;
-			 yourself).
+	topPane := (SpBoxLayout newLeftToRight)
+		add: 'Files:' expand: false;
+		add: fileList yourself;
+		add: buttons expand: false;
+		yourself.
+	buttons
+		layout:
+			((SpBoxLayout newTopToBottom)
+				add:
+						((self newButton)
+								label: 'Add Dir';
+								action: [ self addDirectory ];
+								yourself)
+					expand: false;
+				add:
+						((self newButton)
+								label: 'Add';
+								action: [ self addFiles ];
+								yourself)
+					expand: false;
+				add:
+						((self newButton)
+								label: 'Remove';
+								action: [ self removeFiles ])
+					expand: false;
+				add:
+						((self newButton)
+								label: 'Preview';
+								action: [ self openResults ])
+					expand: false;
+				add:
+						((self newButton)
+								label: 'Run';
+								action: [ self run ])
+					expand: false;
+				yourself).
 	table := self newTable.
 	table
-		addColumn: (SpStringTableColumn
-				 title: 'File'
-				 evaluated: [ :each | each filename ]);
-		addColumn: (SpStringTableColumn
-				 title: 'Error'
-				 evaluated: [ :each | each errorString ifNil: [ '' ] ]);
+		addColumn: (SpStringTableColumn title: 'File' evaluated: [ :each | each filename ]);
+		addColumn: (SpStringTableColumn title: 'Error' evaluated: [ :each | each errorString ifNil: [ '' ] ]);
 		addColumn:
-			(SpStringTableColumn title: 'Transformation' evaluated: [ :each | 
-					 each transformation
-						 ifNil: [ '' ]
-						 ifNotNil: [ :t | t displayString ] ]);
-		addColumn: (SpStringTableColumn
-				 title: 'Line'
-				 evaluated: [ :each | each startLine ifNil: [ '' ] ]);
-		addColumn: (SpStringTableColumn
-				 title: 'Column'
-				 evaluated: [ :each | each startColumn ifNil: [ '' ] ]).
-	presenter layout: (SpBoxLayout newTopToBottom
-			 add: topPane;
-			 add: table;
-			 yourself).
-
+				(SpStringTableColumn
+						title: 'Transformation'
+						evaluated: [ :each | each transformation ifNil: [ '' ] ifNotNil: [ :t | t displayString ] ]);
+		addColumn: (SpStringTableColumn title: 'Line' evaluated: [ :each | each startLine ifNil: [ '' ] ]);
+		addColumn: (SpStringTableColumn title: 'Column' evaluated: [ :each | each startColumn ifNil: [ '' ] ]).
+	presenter
+		layout:
+			((SpBoxLayout newTopToBottom)
+				add: topPane;
+				add: table;
+				yourself).
 	^ presenter
 ]
 
 { #category : #initialization }
 SmaCCTransformationToolkit2 >> buildEditMenu [
-
 	^SpMenuPresenter new
 		               addGroup: [ :group | 
 			               group addItem: [ :item | item name: 'Find'; shortcut: #find; action: [  ] ];
@@ -149,7 +141,6 @@ SmaCCTransformationToolkit2 >> buildEditMenu [
 
 { #category : #initialization }
 SmaCCTransformationToolkit2 >> buildFileMenu [
-
 	^SpMenuPresenter new
 		               addGroup: [ :group | 
 			               group addItem: [ :item | item name: 'Load Configuration'; shortcut: #open; action: [ self loadConfiguration ] ];
@@ -187,11 +178,17 @@ SmaCCTransformationToolkit2 >> buildTransformMenu [
 ]
 
 { #category : #initialization }
-SmaCCTransformationToolkit2 >> configurationPage [
+SmaCCTransformationToolkit2 >> buildTransformationTab [
+	ruleEditor := (SmaCCRewriteEditor2 new)
+		model: self model;
+		modelChanged;
+		yourself.
+	^ ruleEditor
+]
 
-	^ SpNotebookPage
-		  title: 'Configuration'
-		  provider: [ self buildConfigurationTab ]
+{ #category : #initialization }
+SmaCCTransformationToolkit2 >> configurationPage [
+	^ SpNotebookPage title: 'Configuration' provider: [ self buildConfigurationTab ]
 ]
 
 { #category : #actions }
@@ -204,6 +201,11 @@ SmaCCTransformationToolkit2 >> ensureRewriteFilename [
 			        extensions: #( 'rw' ).
 		name isNil ifTrue: [ ^ self ].
 		self model rewrites filename: name ]
+]
+
+{ #category : #private }
+SmaCCTransformationToolkit2 >> fileResults [
+	^ resultsList ifNil: [ resultsList := CollectionValueHolder value: OrderedCollection new ]
 ]
 
 { #category : #initialization }
@@ -245,9 +247,6 @@ SmaCCTransformationToolkit2 >> initializeNotebook [
 
 { #category : #initialization }
 SmaCCTransformationToolkit2 >> initializePresenters [
-
-	"Action"
-
 	self initializeMenu.
 	self initializeNotebook
 ]
@@ -270,13 +269,14 @@ SmaCCTransformationToolkit2 >> loadConfiguration [
 		        extensions: #( 'rwc' ).
 	file ifNil: [ ^ self ].
 	self model: (SmaCCTransformationToolkitModel new loadFile: file).
+	self modelChanged.
 	self fileResults removeAll.
 	self result: SmaCCRewriteCompleteResult new
 ]
 
 { #category : #initialization }
 SmaCCTransformationToolkit2 >> modelChanged [
-	fileList ifNotNil: [fileList items: self model files]
+	fileList ifNotNil: [ fileList items: self model files ]
 ]
 
 { #category : #initialization }
@@ -284,6 +284,11 @@ SmaCCTransformationToolkit2 >> previewPage [
 	^SpNotebookPage
 		 title: 'Preview'
 		 provider: [ self buildConfigurationTab ]
+]
+
+{ #category : #accessing }
+SmaCCTransformationToolkit2 >> previewResultHolder [
+	^ previewResult ifNil: [ previewResult := NewValueHolder value: SmaCCRewriteResult new ]
 ]
 
 { #category : #private }
@@ -306,34 +311,30 @@ SmaCCTransformationToolkit2 >> promptForSaveFile: aTitle extensions: anArray [
 SmaCCTransformationToolkit2 >> removeFiles [
 	| files anArray |
 	anArray := fileList selectedItems.
-	anArray isEmpty
-		ifTrue: [ ^ self ].
-	(self confirm: 'Do you want to remove the files?')
-		ifFalse: [ ^ self ].
+	anArray isEmpty ifTrue: [ ^ self ].
+	(self confirm: 'Do you want to remove the files?') ifFalse: [ ^ self ].
 	files := Set withAll: self model files.
 	files removeAllFoundIn: anArray.
 	self model files: files asSortedCollection.
-	self modelChanged 
+	self modelChanged
+]
+
+{ #category : #private }
+SmaCCTransformationToolkit2 >> result: aSmaCCRewriteResult [
+	self previewResultHolder value: aSmaCCRewriteResult
 ]
 
 { #category : #actions }
 SmaCCTransformationToolkit2 >> saveConfiguration [
-
 	self ensureRewriteFilename.
-	filename ifNil: [ 
-		filename := self
-			            promptForSaveFile: 'Save Configuration To'
-			            extensions: #( 'rwc' ).
-		filename ifNil: [ ^ self ] ].
+	filename
+		ifNil:
+			[ filename := self promptForSaveFile: 'Save Configuration To' extensions: #('rwc').
+			filename ifNil: [ ^ self ] ].
 	self model saveTo: filename
 ]
 
 { #category : #initialization }
 SmaCCTransformationToolkit2 >> transformationPage [
-	^SpNotebookPage
-		 title: 'Transformations'
-		 provider: [ 
-			 (self class environment at: #MessageBrowser) new
-				 messages: Object methods;
-				 yourself]
+	^ SpNotebookPage title: 'Transformation' provider: [ self buildTransformationTab ]
 ]
