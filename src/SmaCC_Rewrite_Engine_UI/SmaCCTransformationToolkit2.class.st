@@ -76,7 +76,7 @@ SmaCCTransformationToolkit2 >> buildConfigurationTab [
 	buttons := presenter newButtonBar.
 	topPane := (SpBoxLayout newLeftToRight)
 		add: 'Files:' expand: false;
-		add: fileList yourself;
+		add: fileList;
 		add: buttons expand: false;
 		yourself.
 	buttons
@@ -262,12 +262,14 @@ SmaCCTransformationToolkit2 >> initializeWindow: aSpWindowPresenter [
 
 { #category : #actions }
 SmaCCTransformationToolkit2 >> loadConfiguration [
-
 	| file |
-	file := self
-		        promptForFile: 'Load Configuration File'
-		        extensions: #( 'rwc' ).
+	file := self promptForFile: 'Load Configuration File' extensions: #('rwc').
 	file ifNil: [ ^ self ].
+	self loadConfigurationFrom: file
+]
+
+{ #category : #actions }
+SmaCCTransformationToolkit2 >> loadConfigurationFrom: file [
 	self model: (SmaCCTransformationToolkitModel new loadFile: file).
 	self modelChanged.
 	self fileResults removeAll.

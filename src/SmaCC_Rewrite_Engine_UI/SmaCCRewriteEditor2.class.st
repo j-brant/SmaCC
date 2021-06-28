@@ -10,7 +10,7 @@ Class {
 
 { #category : #specs }
 SmaCCRewriteEditor2 class >> defaultSpec [
-	^ (SpBoxLayout newLeftToRight)
+	^ (SpPanedLayout newLeftToRight)
 		add: #rewrites;
 		add: #rule;
 		yourself
@@ -22,7 +22,10 @@ SmaCCRewriteEditor2 >> initializePresenters [
 		display: [ :rewriteFile | rewriteFile displayString ];
 		children: [ :rewriteFile | rewriteFile rewrites ];
 		yourself.
-	rule := self newText
+	rule := (self newPresenter)
+		layout: SpBoxLayout newLeftToRight;
+		yourself.
+	rewrites transmitDo: [ :rewrite | rewrite ifNotNil: [ rewrite buildSpec2InterfaceIn: rule ] ]
 ]
 
 { #category : #initialization }
