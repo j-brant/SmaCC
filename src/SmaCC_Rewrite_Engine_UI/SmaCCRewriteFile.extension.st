@@ -30,6 +30,28 @@ SmaCCRewriteFile >> buildInterfaceIn: aPresentation [
 ]
 
 { #category : #'*SmaCC_Rewrite_Engine_UI' }
+SmaCCRewriteFile >> buildSpec2InterfaceIn: aPresentation [
+	| classes dropList |
+	classes := SmaCCParser allSubclasses asSortedCollection: [ :a :b | a name < b name ].
+	dropList := (aPresentation newDropList)
+		items: classes;
+		display: [ :class | class name ];
+		selectIndex: (classes indexOf: self parserClass);
+		whenSelectedItemChangedDo: [ :class | self parserClass ~= class ifTrue: [ self parserClass: class ] ] yourself.
+	aPresentation
+		layout:
+			((SpBoxLayout newVertical)
+				add:
+						((SpBoxLayout newHorizontal)
+								add: 'Parser:' expand: false;
+								add: dropList expand: false;
+								yourself)
+					expand: false;
+				add: SpBoxLayout newVertical;
+				yourself)
+]
+
+{ #category : #'*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewriteFile >> rewriteForMethod: aMethod [
 	rewrites do: [ :each | (each rewriteForMethod: aMethod) ifNotNil: [ :rewrite | ^ rewrite ] ].
 	^ nil
