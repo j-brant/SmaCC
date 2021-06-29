@@ -68,9 +68,7 @@ SmaCCRewritePropertyDefinition >> buildSpec2InterfaceIn: aPresentation [
 		add: 'Comment:' expand: false;
 		add: commentField;
 		yourself.
-	locallist := (aPresentation newList)
-		items: propertyNames asSortedCollection;
-		yourself.
+	locallist := aPresentation newList.
 	localsPane := (SpBoxLayout newVertical)
 		add:
 				((SpBoxLayout newHorizontal)
@@ -95,9 +93,7 @@ SmaCCRewritePropertyDefinition >> buildSpec2InterfaceIn: aPresentation [
 			expand: false;
 		add: locallist;
 		yourself.
-	globallist := (aPresentation newList)
-		items: globalValues keys asSortedCollection;
-		yourself.
+	globallist := aPresentation newList.
 	globalsPane := (SpBoxLayout newVertical)
 		add:
 				((SpBoxLayout newHorizontal)
@@ -129,9 +125,10 @@ SmaCCRewritePropertyDefinition >> buildSpec2InterfaceIn: aPresentation [
 				add: localsPane;
 				add: globalsPane;
 				yourself).
-				
 	self announcer when: #locals do: [ locallist items: propertyNames asSortedCollection ].
-	self announcer when: #globals do: [ globallist items: globalValues keys asSortedCollection ]
+	self announcer when: #globals do: [ globallist items: globalValues keys asSortedCollection ].
+	"Fill initial values"
+	#(locals globals) do: [ :each | self changed: each ]
 ]
 
 { #category : #'*SmaCC_Rewrite_Engine_UI' }
