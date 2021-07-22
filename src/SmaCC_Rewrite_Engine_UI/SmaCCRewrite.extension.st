@@ -87,6 +87,72 @@ SmaCCRewrite >> buildSearchIn: aPresentation [
 ]
 
 { #category : #'*SmaCC_Rewrite_Engine_UI' }
+SmaCCRewrite >> buildSpec2InterfaceIn: aPresentation [
+	| commentPane commentField searchPane replacePane |
+	commentField := (aPresentation newText)
+		text: self comment;
+		autoAccept: true;
+		whenTextChangedDo: [ :text | self comment: text asString ];
+		yourself.
+	commentPane := (SpBoxLayout newHorizontal)
+		add: 'Comment:' expand: false;
+		add: commentField;
+		yourself.
+	aPresentation
+		layout:
+			((SpBoxLayout newVertical)
+				add: commentPane expand: false;
+				yourself).
+	self buildSpec2SearchIn: aPresentation.
+	self buildSpec2ReplaceIn: aPresentation
+]
+
+{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+SmaCCRewrite >> buildSpec2ReplaceIn: aPresentation [
+		^SpBoxLayout newVertical 
+	"| browser types |
+	browser := aPresentation tabulator.
+	browser
+		row: #type size: 25;
+		row: #value.
+	types := self transformationTypes.
+	browser transmit
+		to: #type;
+		andShow: [ :presentation | 
+			presentation dropDownList
+				display: [ types ];
+				selectedIndex: (types indexOf: self transformation class type);
+				onChangeOfPort: #selection act: [ :list | self changedReplaceTo: list selection ] ].
+	browser transmit
+		to: #value;
+		andShow: [ :presentation | 
+			presentation dynamic
+				updateOn: #transformation from: [ self announcer ];
+				display: [ | composite |
+					composite := GLMCompositePresentation new.
+					transformation buildInterfaceIn: composite.
+					composite startOn: match.
+					composite ] ]"
+]
+
+{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+SmaCCRewrite >> buildSpec2SearchIn: aPresentation [
+	| types typeList searchPane |
+	types := self matchTypes.
+	typeList := (aPresentation newDropList)
+		items: types;
+		selectItem: self match class type;
+		whenSelectedItemChangedDo: [ :item | self changedSearchTo: item ];
+		yourself.
+	searchPane := aPresentation newPresenter.
+	(aPresentation layout)
+		add: typeList expand: false;
+		add: searchPane.
+	self announcer when: #match do: [ match buildSpec2InterfaceIn: searchPane ].
+	self changed: #match
+]
+
+{ #category : #'*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewrite >> changedReplaceTo: aSymbol [
 	| class rewrite |
 	class := SmaCCRewriteTransformation withAllSubclasses detect: [ :each | each type = aSymbol ].
