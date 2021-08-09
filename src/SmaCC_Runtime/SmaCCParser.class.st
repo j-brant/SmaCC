@@ -158,7 +158,7 @@ SmaCCParser class >> parseFile: aString encoding: encodingString [
 	encoding := encodingString
 		ifNil: [ [ fileRef
 				binaryReadStreamDo: [ :in | (ZnCharacterEncoder detectEncoding: in upToEnd) identifier ] ]
-				on: ZnCharacterEncodingError
+				on: Error
 				do: [ nil ] ].
 	^ fileRef
 		readStreamDo: [ :stream | 
