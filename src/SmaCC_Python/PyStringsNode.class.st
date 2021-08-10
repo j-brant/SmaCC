@@ -13,7 +13,7 @@ PyStringsNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-PyStringsNode >> compositeTokenVariables [
+PyStringsNode >> compositeNodeVariables [
 	^ #(#strings)
 ]
 
@@ -30,5 +30,7 @@ PyStringsNode >> strings [
 
 { #category : #generated }
 PyStringsNode >> strings: anOrderedCollection [
-	strings := anOrderedCollection
+	self setParents: self strings to: nil.
+	strings := anOrderedCollection.
+	self setParents: self strings to: self
 ]

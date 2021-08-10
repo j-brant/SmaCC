@@ -196,6 +196,11 @@ TPyRootNodeVisitor >> visitInitOpt: anInitOpt [
 ]
 
 { #category : #generated }
+TPyRootNodeVisitor >> visitInterpolatedString: anInterpolatedString [
+	^ self visitRoot: anInterpolatedString
+]
+
+{ #category : #generated }
 TPyRootNodeVisitor >> visitLShiftExpr: aLShiftExpr [
 	^ self visitRoot: aLShiftExpr
 ]
@@ -298,6 +303,11 @@ TPyRootNodeVisitor >> visitSingleInput: aSingleInput [
 { #category : #generated }
 TPyRootNodeVisitor >> visitSliceop: aSliceop [
 	^ self visitRoot: aSliceop
+]
+
+{ #category : #generated }
+TPyRootNodeVisitor >> visitString: aString [
+	^ self visitRoot: aString
 ]
 
 { #category : #generated }
