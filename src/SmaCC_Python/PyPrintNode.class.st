@@ -3,9 +3,8 @@ Class {
 	#superclass : #PyRootNode,
 	#instVars : [
 		'printToken',
-		'greaterThanGreaterThanToken',
-		'tests',
-		'commaTokens'
+		'testlist',
+		'greaterThanGreaterThanToken'
 	],
 	#category : #'SmaCC_Python'
 }
@@ -13,26 +12,6 @@ Class {
 { #category : #generated }
 PyPrintNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitPrint: self
-]
-
-{ #category : #generated }
-PyPrintNode >> commaTokens [
-	^ commaTokens
-]
-
-{ #category : #generated }
-PyPrintNode >> commaTokens: anOrderedCollection [
-	commaTokens := anOrderedCollection
-]
-
-{ #category : #generated }
-PyPrintNode >> compositeNodeVariables [
-	^ #(#tests)
-]
-
-{ #category : #generated }
-PyPrintNode >> compositeTokenVariables [
-	^ #(#commaTokens)
 ]
 
 { #category : #generated }
@@ -45,11 +24,9 @@ PyPrintNode >> greaterThanGreaterThanToken: aSmaCCToken [
 	greaterThanGreaterThanToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
-PyPrintNode >> initialize [
-	super initialize.
-	tests := OrderedCollection new: 2.
-	commaTokens := OrderedCollection new: 2.
+{ #category : #generated }
+PyPrintNode >> nodeVariables [
+	^ #(#testlist)
 ]
 
 { #category : #generated }
@@ -63,15 +40,17 @@ PyPrintNode >> printToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-PyPrintNode >> tests [
-	^ tests
+PyPrintNode >> testlist [
+	^ testlist
 ]
 
 { #category : #generated }
-PyPrintNode >> tests: anOrderedCollection [
-	self setParents: self tests to: nil.
-	tests := anOrderedCollection.
-	self setParents: self tests to: self
+PyPrintNode >> testlist: aPyRootNode [
+	self testlist notNil
+		ifTrue: [ self testlist parent: nil ].
+	testlist := aPyRootNode.
+	self testlist notNil
+		ifTrue: [ self testlist parent: self ]
 ]
 
 { #category : #generated }

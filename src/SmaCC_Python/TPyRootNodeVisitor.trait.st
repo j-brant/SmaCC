@@ -341,6 +341,11 @@ TPyRootNodeVisitor >> visitTestlist1: aTestlist1 [
 ]
 
 { #category : #generated }
+TPyRootNodeVisitor >> visitTestlist: aTestlist [
+	^ self visitRoot: aTestlist
+]
+
+{ #category : #generated }
 TPyRootNodeVisitor >> visitTestlistComp: aTestlistComp [
 	^ self visitRoot: aTestlistComp
 ]

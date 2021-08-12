@@ -2,10 +2,9 @@ Class {
 	#name : #PyExprStmtNode,
 	#superclass : #PyRootNode,
 	#instVars : [
+		'testlist',
 		'assigns',
-		'tos',
-		'tests',
-		'commaTokens'
+		'tos'
 	],
 	#category : #'SmaCC_Python'
 }
@@ -26,49 +25,39 @@ PyExprStmtNode >> assigns: anOrderedCollection [
 ]
 
 { #category : #generated }
-PyExprStmtNode >> commaTokens [
-	^ commaTokens
-]
-
-{ #category : #generated }
-PyExprStmtNode >> commaTokens: anOrderedCollection [
-	commaTokens := anOrderedCollection
-]
-
-{ #category : #generated }
 PyExprStmtNode >> compositeNodeVariables [
-	^ #(#tests)
+	^ #(#tos)
 ]
 
 { #category : #generated }
 PyExprStmtNode >> compositeTokenVariables [
-	^ #(#commaTokens #assigns)
+	^ #(#assigns)
 ]
 
 { #category : #'generated-initialize-release' }
 PyExprStmtNode >> initialize [
 	super initialize.
-	tests := OrderedCollection new: 2.
-	commaTokens := OrderedCollection new: 2.
 	assigns := OrderedCollection new: 2.
 	tos := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-PyExprStmtNode >> otherVariables [
-	^ #(#tos)
+PyExprStmtNode >> nodeVariables [
+	^ #(#testlist)
 ]
 
 { #category : #generated }
-PyExprStmtNode >> tests [
-	^ tests
+PyExprStmtNode >> testlist [
+	^ testlist
 ]
 
 { #category : #generated }
-PyExprStmtNode >> tests: anOrderedCollection [
-	self setParents: self tests to: nil.
-	tests := anOrderedCollection.
-	self setParents: self tests to: self
+PyExprStmtNode >> testlist: aPyRootNode [
+	self testlist notNil
+		ifTrue: [ self testlist parent: nil ].
+	testlist := aPyRootNode.
+	self testlist notNil
+		ifTrue: [ self testlist parent: self ]
 ]
 
 { #category : #generated }
@@ -78,7 +67,7 @@ PyExprStmtNode >> tos [
 
 { #category : #generated }
 PyExprStmtNode >> tos: anOrderedCollection [
-	self setParent: self tos to: nil.
+	self setParents: self tos to: nil.
 	tos := anOrderedCollection.
-	self setParent: self tos to: self
+	self setParents: self tos to: self
 ]

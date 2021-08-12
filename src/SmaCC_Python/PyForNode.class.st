@@ -3,16 +3,16 @@ Class {
 	#superclass : #PyRootNode,
 	#instVars : [
 		'forToken',
+		'exprs',
 		'commaTokens',
-		'tests',
+		'inToken',
+		'testlist',
+		'colonToken',
+		'statements',
 		'nEWLINEToken',
 		'iNDENTToken',
 		'dEDENTToken',
-		'exprs',
-		'inToken',
-		'else',
-		'statements',
-		'colonToken'
+		'else'
 	],
 	#category : #'SmaCC_Python'
 }
@@ -44,7 +44,7 @@ PyForNode >> commaTokens: anOrderedCollection [
 
 { #category : #generated }
 PyForNode >> compositeNodeVariables [
-	^ #(#exprs #tests #statements)
+	^ #(#exprs #statements)
 ]
 
 { #category : #generated }
@@ -123,7 +123,6 @@ PyForNode >> initialize [
 	super initialize.
 	exprs := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
-	tests := OrderedCollection new: 2.
 	statements := OrderedCollection new: 2.
 ]
 
@@ -139,7 +138,7 @@ PyForNode >> nEWLINEToken: aSmaCCToken [
 
 { #category : #generated }
 PyForNode >> nodeVariables [
-	^ #(#else)
+	^ #(#testlist #else)
 ]
 
 { #category : #generated }
@@ -155,15 +154,17 @@ PyForNode >> statements: anOrderedCollection [
 ]
 
 { #category : #generated }
-PyForNode >> tests [
-	^ tests
+PyForNode >> testlist [
+	^ testlist
 ]
 
 { #category : #generated }
-PyForNode >> tests: anOrderedCollection [
-	self setParents: self tests to: nil.
-	tests := anOrderedCollection.
-	self setParents: self tests to: self
+PyForNode >> testlist: aPyRootNode [
+	self testlist notNil
+		ifTrue: [ self testlist parent: nil ].
+	testlist := aPyRootNode.
+	self testlist notNil
+		ifTrue: [ self testlist parent: self ]
 ]
 
 { #category : #generated }

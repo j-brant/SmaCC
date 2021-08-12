@@ -5,14 +5,13 @@ Class {
 		'classToken',
 		'cname',
 		'colonToken',
-		'lparenToken',
-		'tests',
-		'rparenToken',
-		'commaTokens',
 		'statements',
 		'nEWLINEToken',
 		'iNDENTToken',
-		'dEDENTToken'
+		'dEDENTToken',
+		'lparenToken',
+		'testlist',
+		'rparenToken'
 	],
 	#category : #'SmaCC_Python'
 }
@@ -53,23 +52,8 @@ PyClassdefNode >> colonToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-PyClassdefNode >> commaTokens [
-	^ commaTokens
-]
-
-{ #category : #generated }
-PyClassdefNode >> commaTokens: anOrderedCollection [
-	commaTokens := anOrderedCollection
-]
-
-{ #category : #generated }
 PyClassdefNode >> compositeNodeVariables [
-	^ #(#statements #tests)
-]
-
-{ #category : #generated }
-PyClassdefNode >> compositeTokenVariables [
-	^ #(#commaTokens)
+	^ #(#statements)
 ]
 
 { #category : #generated }
@@ -96,8 +80,6 @@ PyClassdefNode >> iNDENTToken: aSmaCCToken [
 PyClassdefNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
-	tests := OrderedCollection new: 2.
-	commaTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -118,6 +100,11 @@ PyClassdefNode >> nEWLINEToken [
 { #category : #generated }
 PyClassdefNode >> nEWLINEToken: aSmaCCToken [
 	nEWLINEToken := aSmaCCToken
+]
+
+{ #category : #generated }
+PyClassdefNode >> nodeVariables [
+	^ #(#testlist)
 ]
 
 { #category : #generated }
@@ -143,15 +130,17 @@ PyClassdefNode >> statements: anOrderedCollection [
 ]
 
 { #category : #generated }
-PyClassdefNode >> tests [
-	^ tests
+PyClassdefNode >> testlist [
+	^ testlist
 ]
 
 { #category : #generated }
-PyClassdefNode >> tests: anOrderedCollection [
-	self setParents: self tests to: nil.
-	tests := anOrderedCollection.
-	self setParents: self tests to: self
+PyClassdefNode >> testlist: aPyRootNode [
+	self testlist notNil
+		ifTrue: [ self testlist parent: nil ].
+	testlist := aPyRootNode.
+	self testlist notNil
+		ifTrue: [ self testlist parent: self ]
 ]
 
 { #category : #generated }

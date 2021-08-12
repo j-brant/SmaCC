@@ -44,10 +44,12 @@ PyAtomNode >> list [
 ]
 
 { #category : #generated }
-PyAtomNode >> list: anObject [
-	self setParent: self list to: nil.
-	list := anObject.
-	self setParent: self list to: self
+PyAtomNode >> list: aPyRootNode [
+	self list notNil
+		ifTrue: [ self list parent: nil ].
+	list := aPyRootNode.
+	self list notNil
+		ifTrue: [ self list parent: self ]
 ]
 
 { #category : #generated }
@@ -61,7 +63,7 @@ PyAtomNode >> lparenToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-PyAtomNode >> otherVariables [
+PyAtomNode >> nodeVariables [
 	^ #(#list)
 ]
 
