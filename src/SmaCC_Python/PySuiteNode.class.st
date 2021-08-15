@@ -1,61 +1,61 @@
 Class {
-	#name : #PySuiteNode,
-	#superclass : #PyRootNode,
+	#name : 'PySuiteNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'nEWLINEToken',
 		'iNDENTToken',
 		'dEDENTToken',
 		'suite'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySuiteNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitSuite: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySuiteNode >> dEDENTToken [
 	^ dEDENTToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySuiteNode >> dEDENTToken: aSmaCCToken [
 	dEDENTToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySuiteNode >> iNDENTToken [
 	^ iNDENTToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySuiteNode >> iNDENTToken: aSmaCCToken [
 	iNDENTToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySuiteNode >> nEWLINEToken [
 	^ nEWLINEToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySuiteNode >> nEWLINEToken: aSmaCCToken [
 	nEWLINEToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySuiteNode >> nodeVariables [
 	^ #(#suite)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySuiteNode >> suite [
 	^ suite
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySuiteNode >> suite: aPyRootNode [
 	self suite notNil
 		ifTrue: [ self suite parent: nil ].
@@ -64,7 +64,7 @@ PySuiteNode >> suite: aPyRootNode [
 		ifTrue: [ self suite parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySuiteNode >> tokenVariables [
 	^ #(#nEWLINEToken #iNDENTToken #dEDENTToken)
 ]

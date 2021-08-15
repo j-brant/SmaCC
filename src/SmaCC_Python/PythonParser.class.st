@@ -1,16 +1,16 @@
 Class {
-	#name : #PythonParser2,
-	#superclass : #SmaCCParser,
-	#category : #'SmaCC_Python'
+	#name : 'PythonParser',
+	#superclass : 'SmaCCParser',
+	#category : 'SmaCC_Python'
 }
 
-{ #category : #'generated-accessing' }
-PythonParser2 class >> cacheId [
+{ #category : 'generated-accessing' }
+PythonParser class >> cacheId [
 	^'2021-08-12T17:42:20.739555-05:00'
 ]
 
-{ #category : #generated }
-PythonParser2 class >> definitionComment [
+{ #category : 'generated' }
+PythonParser class >> definitionComment [
 "# Python Grammar and Lexer extracted from Python2 documentation on 16/04/2014 (Python 2.7.6)
 # As seen from this grammar, the python doc and the implemented python scanner/parser diverge in several places
 # https://docs.python.org/2/reference/index.html
@@ -646,18 +646,18 @@ yield_expr:
 	;"
 ]
 
-{ #category : #accessing }
-PythonParser2 class >> eval: aString [
+{ #category : 'accessing' }
+PythonParser class >> eval: aString [
 	^self parse: aString startingAt: self startingStateForeval_input
 ]
 
-{ #category : #'file types' }
-PythonParser2 class >> fileExtension [
+{ #category : 'file types' }
+PythonParser class >> fileExtension [
 	^ '.py'
 ]
 
-{ #category : #generated }
-PythonParser2 class >> reduceTable [
+{ #category : 'generated' }
+PythonParser class >> reduceTable [
 ^#(
 	#(101 0 #reduceActionForfile_input1: 4539393 false ) 
 	#(195 0 #reduceActionForStartFStringSingle1: 12858369 true ) 
@@ -962,38 +962,38 @@ PythonParser2 class >> reduceTable [
 	).
 ]
 
-{ #category : #'generated-accessing' }
-PythonParser2 class >> scannerClass [
-	^PythonScanner2
+{ #category : 'generated-accessing' }
+PythonParser class >> scannerClass [
+	^PythonScanner
 ]
 
-{ #category : #generated }
-PythonParser2 class >> startingStateForeval_input [
+{ #category : 'generated' }
+PythonParser class >> startingStateForeval_input [
 	^ 3
 ]
 
-{ #category : #generated }
-PythonParser2 class >> startingStateForfile_input [
+{ #category : 'generated' }
+PythonParser class >> startingStateForfile_input [
 	^ 1
 ]
 
-{ #category : #generated }
-PythonParser2 class >> startingStateForsingle_input [
+{ #category : 'generated' }
+PythonParser class >> startingStateForsingle_input [
 	^ 2
 ]
 
-{ #category : #generated }
-PythonParser2 class >> symbolNames [
+{ #category : 'generated' }
+PythonParser class >> symbolNames [
 	^ #('"!="' '"%"' '"%="' '"&"' '"&="' '"*"' '"**"' '"**="' '"*="' '"+"' '"+="' '","' '"-"' '"-="' '"."' '"/"' '"//"' '"//="' '"/="' '":"' '";"' '"<"' '"<<"' '"<<="' '"<="' '"<>"' '"="' '"=="' '">"' '">="' '">>"' '">>="' '"@"' '"^"' '"^="' '"`"' '"and"' '"as"' '"assert"' '"break"' '"class"' '"continue"' '"def"' '"del"' '"elif"' '"else"' '"except"' '"exec"' '"finally"' '"for"' '"from"' '"global"' '"if"' '"import"' '"in"' '"is"' '"lambda"' '"not"' '"or"' '"pass"' '"print"' '"raise"' '"return"' '"try"' '"while"' '"with"' '"yield"' '"|"' '"|="' '"~"' '<name>' '<string>' '<fStringWhole>' '<fStringSingleStart>' '<fStringSingleMid>' '<fStringSingleEnd>' '<fStringDoubleStart>' '<fStringDoubleMid>' '<fStringDoubleEnd>' '<fLongStringSingleStart>' '<fLongStringSingleMid>' '<fLongStringSingleEnd>' '<fLongStringDoubleStart>' '<fLongStringDoubleMid>' '<fLongStringDoubleEnd>' '<number>' '<emptyLine>' '<blankLine>' '<indent>' '<noindent>' '<comment>' '<whitespace>' '<NEWLINE>' '<lparen>' '<rparen>' '<lbrack>' '<rbrack>' '<lcurly>' '<rcurly>' 'B e g i n' 'file_input' 'single_input' 'eval_input' 'newline_opts' 'decorator' 'paren_arglist_opt' 'arglist_opt' 'decorators' 'decorated' 'funcdef' 'parameters' 'varargslist_opt' 'varargslist' 'init_opt' 'fpdef' 'fplist' 'stmt' 'simple_stmt' 'semicolon_opt' 'expr_stmt' 'assign_after' 'yield_or_testlist' 'augassign' 'print_stmt' 'del_stmt' 'pass_stmt' 'flow_stmt' 'break_stmt' 'continue_stmt' 'return_stmt' 'yield_stmt' 'raise_stmt' 'import_stmt' 'import_name' 'import_from' 'dotopt_dotted_name' 'dots' 'import_names_star' 'import_as_name' 'dotted_as_name' 'import_as_names' 'import_as_names_in' 'dotted_as_names' 'dotted_name' 'global_stmt' 'namelist' 'exec_stmt' 'test_test_opt' 'assert_stmt' 'small_stmt' 'compound_stmt' 'if_stmt' 'elifs_opt' 'else_opt' 'while_stmt' 'for_stmt' 'try_stmt' 'finally_opt' 'except_list' 'with_stmt' 'with_items' 'with_item' 'except_clause' 'suite' 'stmts' 'testlist_safe' 'old_tests' 'old_test' 'old_lambdef' 'or_test' 'and_test' 'not_test' 'comparison' 'comp_op' 'expr' 'xor_expr' 'and_expr' 'shift_expr' 'arith_expr' 'term' 'factor' 'power' 'trailers_opt' 'atom' 'strings' 'string' '(<fStringSingleMid> ''part'' expr ''expression'')' '(<fStringSingleMid> ''part'' expr ''expression'')*' '(<fStringDoubleMid> ''part'' expr ''expression'')' '(<fStringDoubleMid> ''part'' expr ''expression'')*' '(<fLongStringSingleMid> ''part'' expr ''expression'')' '(<fLongStringSingleMid> ''part'' expr ''expression'')*' '(<fLongStringDoubleMid> ''part'' expr ''expression'')' '(<fLongStringDoubleMid> ''part'' expr ''expression'')*' 'StartFStringSingle' 'StartFStringDouble' 'StartFLongStringSingle' 'StartFLongStringDouble' 'listmaker' 'testlist_comp' 'lambdef' 'trailer' 'subscriptlist' 'subscript' 'test_opt' 'sliceop' 'exprlist' 'comma_opt' 'test' 'testlist' '("," test ''test'')' '("," test ''test'')+' 'testlist_opt' 'dictorsetmaker' 'more_tests' 'classdef' 'arglist' 'more_args' 'argument' 'list_iter' 'list_for' 'list_if' 'comp_iter' 'comp_for' 'comp_if' 'testlist1' 'yield_expr' '<DEDENT>' '<INDENT>' 'E O F' 'error')
 ]
 
-{ #category : #generated }
-PythonParser2 class >> symbolTypes [
+{ #category : 'generated' }
+PythonParser class >> symbolTypes [
 	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #PyFileInputNode #PyFileInputNode #PySingleInputNode #PyEvalInputNode #OrderedCollection #PyDecoratorNode #OrderedCollection #OrderedCollection #PyDecoratorsNode #PyDecoratedNode #PyFuncdefNode #PyVarArgListNode #PyVarArgListNode #OrderedCollection #PyInitOptNode #PyFpdefNode #OrderedCollection #PyRootNode #PySimpleStmtNode #SmaCCToken #PyExprStmtNode #OrderedCollection #PyRootNode #SmaCCToken #PyPrintNode #PyDelNode #PyPassNode #PyRootNode #PyBreakNode #PyContinueNode #PyReturnNode #PyYieldNode #PyRaiseNode #PyImportNode #PyImportNode #PyImportNode #PyDotoptDottedNameNode #PyDotsNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #PyDottedNameNode #PyGlobalNode #OrderedCollection #PyExecNode #PyTestTestOptNode #PyAssertNode #PyRootNode #PyRootNode #PyIfNode #PyElifNode #PyElseNode #PyWhileNode #PyForNode #PyTryNode #PyFinallyNode #OrderedCollection #PyWithNode #OrderedCollection #PyWithItemNode #PyExceptClauseNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #PyRootNode #PyLambdaNode #PyRootNode #PyRootNode #PyRootNode #PyRootNode #PyCompOpNode #PyRootNode #PyRootNode #PyRootNode #PyRootNode #PyRootNode #PyRootNode #PyRootNode #PyPowerNode #OrderedCollection #PyRootNode #PyStringsNode #PyRootNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #Object #Object #Object #Object #PyRootNode #PyRootNode #PyLambdaNode #PyTrailerNode #OrderedCollection #PySubscriptNode #PyRootNode #PySliceopNode #OrderedCollection #SmaCCToken #PyRootNode #PyRootNode #OrderedCollection #OrderedCollection #PyRootNode #PyRootNode #Object #PyClassdefNode #OrderedCollection #OrderedCollection #PyArgumentNode #PyRootNode #PyListForNode #PyListIfNode #PyRootNode #PyCompForNode #PyCompIfNode #PyRootNode #PyYieldNode #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCErrorNode)
 ]
 
-{ #category : #generated }
-PythonParser2 class >> transitionTable [
+{ #category : 'generated' }
+PythonParser class >> transitionTable [
 ^#(
 #[1 0 6 0 10 0 6 0 13 0 6 0 33 0 6 0 36 0 6 0 39 0 6 0 40 0 6 0 41 0 6 0 42 0 6 0 43 0 6 0 44 0 6 0 48 0 6 0 50 0 6 0 51 0 6 0 52 0 6 0 53 0 6 0 54 0 6 0 57 0 6 0 58 0 6 0 60 0 6 0 61 0 6 0 62 0 6 0 63 0 6 0 64 0 6 0 65 0 6 0 66 0 6 0 67 0 6 0 70 0 6 0 71 0 6 0 72 0 6 0 73 0 6 0 74 0 6 0 77 0 6 0 80 0 6 0 83 0 6 0 86 0 6 0 93 0 6 0 94 0 6 0 96 0 6 0 98 0 17 0 101 0 6 0 230] 
 #[1 0 21 0 10 0 25 0 13 0 29 0 33 0 33 0 36 0 37 0 39 0 41 0 40 0 45 0 41 0 49 0 42 0 53 0 43 0 57 0 44 0 61 0 48 0 65 0 50 0 69 0 51 0 73 0 52 0 77 0 53 0 81 0 54 0 85 0 57 0 89 0 58 0 93 0 60 0 97 0 61 0 101 0 62 0 105 0 63 0 109 0 64 0 113 0 65 0 117 0 66 0 121 0 67 0 125 0 70 0 129 0 71 0 133 0 72 0 137 0 73 0 10 0 74 0 14 0 77 0 18 0 80 0 22 0 83 0 141 0 86 0 145 0 93 0 149 0 94 0 153 0 96 0 157 0 98 0 161 0 102 0 165 0 105 0 169 0 108 0 253 0 109 0 253 0 110 0 181 0 118 0 249 0 120 0 249 0 124 0 249 0 125 0 249 0 126 0 249 0 127 0 249 0 128 0 249 0 129 0 249 0 130 0 249 0 131 0 249 0 132 0 249 0 133 0 249 0 134 0 249 0 135 0 249 0 145 0 249 0 147 0 249 0 149 0 249 0 150 0 253 0 151 0 253 0 152 0 253 0 155 0 253 0 156 0 253 0 157 0 253 0 160 1 21 0 170 1 25 0 171 1 29 0 172 1 29 0 173 1 37 0 175 1 41 0 176 1 45 0 177 1 49 0 178 1 53 0 179 1 57 0 180 1 61 0 181 1 61 0 182 1 69 0 184 1 69 0 185 1 77 0 186 1 81 0 195 1 85 0 196 1 89 0 197 1 93 0 198 1 101 0 201 1 101 0 209 1 105 0 210 0 253 0 216 1 113 0 227] 
@@ -1490,8 +1490,8 @@ PythonParser2 class >> transitionTable [
 	).
 ]
 
-{ #category : #private }
-PythonParser2 >> actionForCurrentToken [
+{ #category : 'private' }
+PythonParser >> actionForCurrentToken [
 	| action |
 	action := super actionForCurrentToken.
 	(action = self errorAction and: [ currentToken source = '}' ])
@@ -1517,32 +1517,32 @@ PythonParser2 >> actionForCurrentToken [
 	^ action
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForStartFLongStringDouble1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForStartFLongStringDouble1: nodes [
 	^ {#fLongStringDouble.
 	scanner lineJoiningStack}
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForStartFLongStringSingle1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForStartFLongStringSingle1: nodes [
 	^ {#fLongStringSingle.
 	scanner lineJoiningStack}
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForStartFStringDouble1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForStartFStringDouble1: nodes [
 	^ {#fStringDouble.
 	scanner lineJoiningStack}
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForStartFStringSingle1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForStartFStringSingle1: nodes [
 	^ {#fStringSingle.
 	scanner lineJoiningStack}
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFor_____test__test__1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFor_____test__test__1: nodes [
 	| result |
 	result := Array new: 2.
 	result at: 1 put: (nodes at: 1).
@@ -1550,8 +1550,8 @@ PythonParser2 >> reduceActionFor_____test__test__1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFor_____test__test___1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFor_____test__test___1: nodes [
 	| result |
 	result := Array new: 2.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -1561,8 +1561,8 @@ PythonParser2 >> reduceActionFor_____test__test___1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFor_____test__test___2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFor_____test__test___2: nodes [
 	| result |
 	result := nodes at: 1.
 	self add: ((nodes at: 2) at: 1) to: (result at: 1).
@@ -1570,8 +1570,8 @@ PythonParser2 >> reduceActionFor_____test__test___2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForand_expr2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForand_expr2: nodes [
 	| result |
 	result := PyAndExprNode new.
 	result one: (nodes at: 1).
@@ -1580,8 +1580,8 @@ PythonParser2 >> reduceActionForand_expr2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForand_test2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForand_test2: nodes [
 	| result |
 	result := PyAndNode new.
 	result one: (nodes at: 1).
@@ -1590,8 +1590,8 @@ PythonParser2 >> reduceActionForand_test2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForarglist2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForarglist2: nodes [
 	| result |
 	result := Array new: 4.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -1601,8 +1601,8 @@ PythonParser2 >> reduceActionForarglist2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForarglist3: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForarglist3: nodes [
 	| result |
 	result := Array new: 4.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -1615,8 +1615,8 @@ PythonParser2 >> reduceActionForarglist3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForarglist4: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForarglist4: nodes [
 	| result |
 	result := Array new: 4.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -1626,16 +1626,16 @@ PythonParser2 >> reduceActionForarglist4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForargument1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForargument1: nodes [
 	| result |
 	result := PyArgumentNode new.
 	result test: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForargument2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForargument2: nodes [
 	| result |
 	result := PyArgumentNode new.
 	result test: (nodes at: 1).
@@ -1643,8 +1643,8 @@ PythonParser2 >> reduceActionForargument2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForargument3: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForargument3: nodes [
 	| result |
 	result := PyArgumentNode new.
 	result test: (nodes at: 1).
@@ -1653,8 +1653,8 @@ PythonParser2 >> reduceActionForargument3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForarith_expr2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForarith_expr2: nodes [
 	| result |
 	result := PyPlusExprNode new.
 	result one: (nodes at: 1).
@@ -1663,8 +1663,8 @@ PythonParser2 >> reduceActionForarith_expr2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForarith_expr3: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForarith_expr3: nodes [
 	| result |
 	result := PyMinusExprNode new.
 	result one: (nodes at: 1).
@@ -1673,8 +1673,8 @@ PythonParser2 >> reduceActionForarith_expr3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForassert_stmt1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForassert_stmt1: nodes [
 	| result |
 	result := PyAssertNode new.
 	result assertToken: (nodes at: 1).
@@ -1682,8 +1682,8 @@ PythonParser2 >> reduceActionForassert_stmt1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForassign_after1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForassign_after1: nodes [
 	| result |
 	result := Array new: 2.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -1691,16 +1691,16 @@ PythonParser2 >> reduceActionForassign_after1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForatom10: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForatom10: nodes [
 	| result |
 	result := PyNumberNode new.
 	result numberToken: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForatom1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForatom1: nodes [
 	| result |
 	result := PyAtomNode new.
 	result lparenToken: (nodes at: 1).
@@ -1708,8 +1708,8 @@ PythonParser2 >> reduceActionForatom1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForatom3: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForatom3: nodes [
 	| result |
 	result := PyAtomNode new.
 	result lparenToken: (nodes at: 1).
@@ -1718,8 +1718,8 @@ PythonParser2 >> reduceActionForatom3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForatom4: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForatom4: nodes [
 	| result |
 	result := PyAtomNode new.
 	result lbrackToken: (nodes at: 1).
@@ -1727,8 +1727,8 @@ PythonParser2 >> reduceActionForatom4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForatom5: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForatom5: nodes [
 	| result |
 	result := PyAtomNode new.
 	result lbrackToken: (nodes at: 1).
@@ -1737,8 +1737,8 @@ PythonParser2 >> reduceActionForatom5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForatom6: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForatom6: nodes [
 	| result |
 	result := PyAtomNode new.
 	result lcurlyToken: (nodes at: 1).
@@ -1747,8 +1747,8 @@ PythonParser2 >> reduceActionForatom6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForatom7: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForatom7: nodes [
 	| result |
 	result := PyAtomNode new.
 	result lcurlyToken: (nodes at: 1).
@@ -1756,8 +1756,8 @@ PythonParser2 >> reduceActionForatom7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForatom8: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForatom8: nodes [
 	| result |
 	result := PyBackTickNode new.
 	result addToken: (nodes at: 1) to: result _Tokens.
@@ -1766,24 +1766,24 @@ PythonParser2 >> reduceActionForatom8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForatom9: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForatom9: nodes [
 	| result |
 	result := PySymbolNode new.
 	result nameToken: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForbreak_stmt1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForbreak_stmt1: nodes [
 	| result |
 	result := PyBreakNode new.
 	result breakToken: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForclassdef1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForclassdef1: nodes [
 	| result |
 	result := PyClassdefNode new.
 	result classToken: (nodes at: 1).
@@ -1796,8 +1796,8 @@ PythonParser2 >> reduceActionForclassdef1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForclassdef2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForclassdef2: nodes [
 	| result |
 	result := PyClassdefNode new.
 	result classToken: (nodes at: 1).
@@ -1813,8 +1813,8 @@ PythonParser2 >> reduceActionForclassdef2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForcomp_for1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForcomp_for1: nodes [
 	| result |
 	result := PyCompForNode new.
 	result forToken: (nodes at: 1).
@@ -1825,8 +1825,8 @@ PythonParser2 >> reduceActionForcomp_for1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForcomp_for2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForcomp_for2: nodes [
 	| result |
 	result := PyCompForNode new.
 	result forToken: (nodes at: 1).
@@ -1838,8 +1838,8 @@ PythonParser2 >> reduceActionForcomp_for2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForcomp_if1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForcomp_if1: nodes [
 	| result |
 	result := PyCompIfNode new.
 	result ifToken: (nodes at: 1).
@@ -1847,8 +1847,8 @@ PythonParser2 >> reduceActionForcomp_if1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForcomp_if2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForcomp_if2: nodes [
 	| result |
 	result := PyCompIfNode new.
 	result ifToken: (nodes at: 1).
@@ -1857,16 +1857,16 @@ PythonParser2 >> reduceActionForcomp_if2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForcomp_op10: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForcomp_op10: nodes [
 	| result |
 	result := PyCompOpNode new.
 	result _isToken: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForcomp_op11: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForcomp_op11: nodes [
 	| result |
 	result := PyCompOpNode new.
 	result _isToken: (nodes at: 1).
@@ -1874,72 +1874,72 @@ PythonParser2 >> reduceActionForcomp_op11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForcomp_op1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForcomp_op1: nodes [
 	| result |
 	result := PyCompOpNode new.
 	result lessThanToken: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForcomp_op2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForcomp_op2: nodes [
 	| result |
 	result := PyCompOpNode new.
 	result greaterThanToken: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForcomp_op3: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForcomp_op3: nodes [
 	| result |
 	result := PyCompOpNode new.
 	result equalEqualToken: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForcomp_op4: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForcomp_op4: nodes [
 	| result |
 	result := PyCompOpNode new.
 	result greaterThanEqualToken: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForcomp_op5: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForcomp_op5: nodes [
 	| result |
 	result := PyCompOpNode new.
 	result lessThanEqualToken: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForcomp_op6: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForcomp_op6: nodes [
 	| result |
 	result := PyCompOpNode new.
 	result lessThanGreaterThanToken: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForcomp_op7: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForcomp_op7: nodes [
 	| result |
 	result := PyCompOpNode new.
 	result bangEqualToken: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForcomp_op8: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForcomp_op8: nodes [
 	| result |
 	result := PyCompOpNode new.
 	result inToken: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForcomp_op9: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForcomp_op9: nodes [
 	| result |
 	result := PyCompOpNode new.
 	result notToken: (nodes at: 1).
@@ -1947,8 +1947,8 @@ PythonParser2 >> reduceActionForcomp_op9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForcomparison2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForcomparison2: nodes [
 	| result |
 	result := PyComparisonNode new.
 	result one: (nodes at: 1).
@@ -1957,16 +1957,16 @@ PythonParser2 >> reduceActionForcomparison2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForcontinue_stmt1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForcontinue_stmt1: nodes [
 	| result |
 	result := PyContinueNode new.
 	result continueToken: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFordecorated1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFordecorated1: nodes [
 	| result |
 	result := PyDecoratedNode new.
 	result decorators: (nodes at: 1).
@@ -1974,8 +1974,8 @@ PythonParser2 >> reduceActionFordecorated1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFordecorated2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFordecorated2: nodes [
 	| result |
 	result := PyDecoratedNode new.
 	result decorators: (nodes at: 1).
@@ -1983,8 +1983,8 @@ PythonParser2 >> reduceActionFordecorated2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFordecorator1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFordecorator1: nodes [
 	| result |
 	result := PyDecoratorNode new.
 	result _Token: (nodes at: 1).
@@ -1994,24 +1994,24 @@ PythonParser2 >> reduceActionFordecorator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFordecorators1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFordecorators1: nodes [
 	| result |
 	result := nodes at: 1.
 	result addNode: (nodes at: 2) to: result decorators.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFordecorators2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFordecorators2: nodes [
 	| result |
 	result := PyDecoratorsNode new.
 	result addNode: (nodes at: 1) to: result decorators.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFordel_stmt1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFordel_stmt1: nodes [
 	| result |
 	result := PyDelNode new.
 	result delToken: (nodes at: 1).
@@ -2020,8 +2020,8 @@ PythonParser2 >> reduceActionFordel_stmt1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFordictorsetmaker1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFordictorsetmaker1: nodes [
 	| result |
 	result := PyDictorsetmakerNode new.
 	result test: (nodes at: 1).
@@ -2031,8 +2031,8 @@ PythonParser2 >> reduceActionFordictorsetmaker1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFordictorsetmaker2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFordictorsetmaker2: nodes [
 	| result |
 	result := PyDictorsetmakerNode new.
 	result test: (nodes at: 1).
@@ -2042,8 +2042,8 @@ PythonParser2 >> reduceActionFordictorsetmaker2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFordictorsetmaker3: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFordictorsetmaker3: nodes [
 	| result |
 	result := PyDictorsetmakerNode new.
 	result test: (nodes at: 1).
@@ -2051,24 +2051,24 @@ PythonParser2 >> reduceActionFordictorsetmaker3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFordotopt_dotted_name1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFordotopt_dotted_name1: nodes [
 	| result |
 	result := PyDotoptDottedNameNode new.
 	result name: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFordotopt_dotted_name2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFordotopt_dotted_name2: nodes [
 	| result |
 	result := PyDotoptDottedNameNode new.
 	result dots: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFordotopt_dotted_name3: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFordotopt_dotted_name3: nodes [
 	| result |
 	result := PyDotoptDottedNameNode new.
 	result dots: (nodes at: 1).
@@ -2076,32 +2076,32 @@ PythonParser2 >> reduceActionFordotopt_dotted_name3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFordots1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFordots1: nodes [
 	| result |
 	result := nodes at: 1.
 	result addToken: (nodes at: 2) to: result periodTokens.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFordots2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFordots2: nodes [
 	| result |
 	result := PyDotsNode new.
 	result addToken: (nodes at: 1) to: result periodTokens.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFordotted_as_name1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFordotted_as_name1: nodes [
 	| result |
 	result := Array new: 3.
 	result at: 1 put: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFordotted_as_name2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFordotted_as_name2: nodes [
 	| result |
 	result := Array new: 3.
 	result at: 1 put: (nodes at: 1).
@@ -2110,8 +2110,8 @@ PythonParser2 >> reduceActionFordotted_as_name2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFordotted_as_names1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFordotted_as_names1: nodes [
 	| result |
 	result := nodes at: 1.
 	self add: (nodes at: 2) to: (result at: 1).
@@ -2121,8 +2121,8 @@ PythonParser2 >> reduceActionFordotted_as_names1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFordotted_as_names2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFordotted_as_names2: nodes [
 	| result |
 	result := Array new: 4.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -2135,8 +2135,8 @@ PythonParser2 >> reduceActionFordotted_as_names2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFordotted_name1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFordotted_name1: nodes [
 	| result |
 	result := nodes at: 1.
 	result addToken: (nodes at: 2) to: result periodTokens.
@@ -2144,16 +2144,16 @@ PythonParser2 >> reduceActionFordotted_name1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFordotted_name2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFordotted_name2: nodes [
 	| result |
 	result := PyDottedNameNode new.
 	result addToken: (nodes at: 1) to: result names.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForelifs_opt2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForelifs_opt2: nodes [
 	| result |
 	result := PyElifNode new.
 	result elifs_opt: (nodes at: 1).
@@ -2167,8 +2167,8 @@ PythonParser2 >> reduceActionForelifs_opt2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForelse_opt2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForelse_opt2: nodes [
 	| result |
 	result := PyElseNode new.
 	result elseToken: (nodes at: 1).
@@ -2180,8 +2180,8 @@ PythonParser2 >> reduceActionForelse_opt2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForeval_input1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForeval_input1: nodes [
 	| result |
 	result := PyEvalInputNode new.
 	result testlist: (nodes at: 1).
@@ -2189,16 +2189,16 @@ PythonParser2 >> reduceActionForeval_input1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForexcept_clause1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForexcept_clause1: nodes [
 	| result |
 	result := PyExceptClauseNode new.
 	result exceptToken: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForexcept_clause2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForexcept_clause2: nodes [
 	| result |
 	result := PyExceptClauseNode new.
 	result exceptToken: (nodes at: 1).
@@ -2206,8 +2206,8 @@ PythonParser2 >> reduceActionForexcept_clause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForexcept_clause3: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForexcept_clause3: nodes [
 	| result |
 	result := PyExceptClauseNode new.
 	result exceptToken: (nodes at: 1).
@@ -2217,8 +2217,8 @@ PythonParser2 >> reduceActionForexcept_clause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForexcept_clause4: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForexcept_clause4: nodes [
 	| result |
 	result := PyExceptClauseNode new.
 	result exceptToken: (nodes at: 1).
@@ -2228,8 +2228,8 @@ PythonParser2 >> reduceActionForexcept_clause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForexcept_list1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForexcept_list1: nodes [
 	| result |
 	result := nodes at: 1.
 	self add: (nodes at: 2) to: (result at: 1).
@@ -2241,8 +2241,8 @@ PythonParser2 >> reduceActionForexcept_list1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForexcept_list2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForexcept_list2: nodes [
 	| result |
 	result := Array new: 6.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -2260,8 +2260,8 @@ PythonParser2 >> reduceActionForexcept_list2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForexec_stmt1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForexec_stmt1: nodes [
 	| result |
 	result := PyExecNode new.
 	result execToken: (nodes at: 1).
@@ -2269,8 +2269,8 @@ PythonParser2 >> reduceActionForexec_stmt1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForexec_stmt2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForexec_stmt2: nodes [
 	| result |
 	result := PyExecNode new.
 	result execToken: (nodes at: 1).
@@ -2280,8 +2280,8 @@ PythonParser2 >> reduceActionForexec_stmt2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForexpr2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForexpr2: nodes [
 	| result |
 	result := PyVBarExprNode new.
 	result one: (nodes at: 1).
@@ -2290,8 +2290,8 @@ PythonParser2 >> reduceActionForexpr2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForexpr_stmt1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForexpr_stmt1: nodes [
 	| result |
 	result := PyExprStmtNode new.
 	result testlist: (nodes at: 1).
@@ -2300,8 +2300,8 @@ PythonParser2 >> reduceActionForexpr_stmt1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForexpr_stmt2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForexpr_stmt2: nodes [
 	| result |
 	result := PyExprStmtNode new.
 	result testlist: (nodes at: 1).
@@ -2310,8 +2310,8 @@ PythonParser2 >> reduceActionForexpr_stmt2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForexprlist1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForexprlist1: nodes [
 	| result |
 	result := nodes at: 3.
 	self addFirst: (nodes at: 1) to: (result at: 1).
@@ -2319,8 +2319,8 @@ PythonParser2 >> reduceActionForexprlist1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForexprlist2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForexprlist2: nodes [
 	| result |
 	result := Array new: 2.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -2330,8 +2330,8 @@ PythonParser2 >> reduceActionForexprlist2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForfactor2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForfactor2: nodes [
 	| result |
 	result := PyFactorNode new.
 	result plusToken: (nodes at: 1).
@@ -2339,8 +2339,8 @@ PythonParser2 >> reduceActionForfactor2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForfactor3: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForfactor3: nodes [
 	| result |
 	result := PyFactorNode new.
 	result minusToken: (nodes at: 1).
@@ -2348,8 +2348,8 @@ PythonParser2 >> reduceActionForfactor3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForfactor4: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForfactor4: nodes [
 	| result |
 	result := PyFactorNode new.
 	result tildeToken: (nodes at: 1).
@@ -2357,31 +2357,31 @@ PythonParser2 >> reduceActionForfactor4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForfile_input1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForfile_input1: nodes [
 	| result |
 	result := PyFileInputNode new.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForfile_input2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForfile_input2: nodes [
 	| result |
 	result := nodes at: 1.
 	result addToken: (nodes at: 2) to: result nEWLINETokens.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForfile_input3: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForfile_input3: nodes [
 	| result |
 	result := nodes at: 1.
 	result addNode: (nodes at: 2) to: result statements.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForfinally_opt2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForfinally_opt2: nodes [
 	| result |
 	result := PyFinallyNode new.
 	result finallyToken: (nodes at: 1).
@@ -2393,8 +2393,8 @@ PythonParser2 >> reduceActionForfinally_opt2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForfor_stmt1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForfor_stmt1: nodes [
 	| result |
 	result := PyForNode new.
 	result forToken: (nodes at: 1).
@@ -2411,16 +2411,16 @@ PythonParser2 >> reduceActionForfor_stmt1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForfpdef1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForfpdef1: nodes [
 	| result |
 	result := PyFpdefNode new.
 	result nameToken: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForfpdef2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForfpdef2: nodes [
 	| result |
 	result := PyFpdefNode new.
 	result lparenToken: (nodes at: 1).
@@ -2430,8 +2430,8 @@ PythonParser2 >> reduceActionForfpdef2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForfuncdef1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForfuncdef1: nodes [
 	| result |
 	result := PyFuncdefNode new.
 	result defToken: (nodes at: 1).
@@ -2445,8 +2445,8 @@ PythonParser2 >> reduceActionForfuncdef1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForglobal_stmt1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForglobal_stmt1: nodes [
 	| result |
 	result := PyGlobalNode new.
 	result globalToken: (nodes at: 1).
@@ -2455,8 +2455,8 @@ PythonParser2 >> reduceActionForglobal_stmt1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForif_stmt1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForif_stmt1: nodes [
 	| result |
 	result := PyIfNode new.
 	result ifToken: (nodes at: 1).
@@ -2471,16 +2471,16 @@ PythonParser2 >> reduceActionForif_stmt1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForimport_as_names1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForimport_as_names1: nodes [
 	| result |
 	result := nodes at: 1.
 	self add: (nodes at: 2) to: (result at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForimport_from1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForimport_from1: nodes [
 	| result |
 	result := PyImportNode new.
 	result fromToken: (nodes at: 1).
@@ -2496,8 +2496,8 @@ PythonParser2 >> reduceActionForimport_from1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForimport_name1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForimport_name1: nodes [
 	| result |
 	result := PyImportNode new.
 	result importToken: (nodes at: 1).
@@ -2508,8 +2508,8 @@ PythonParser2 >> reduceActionForimport_name1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForimport_names_star1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForimport_names_star1: nodes [
 	| result |
 	result := Array new: 7.
 	result at: 3 put: (OrderedCollection new: 2).
@@ -2520,8 +2520,8 @@ PythonParser2 >> reduceActionForimport_names_star1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForimport_names_star2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForimport_names_star2: nodes [
 	| result |
 	result := Array new: 7.
 	result at: 3 put: (OrderedCollection new: 2).
@@ -2537,8 +2537,8 @@ PythonParser2 >> reduceActionForimport_names_star2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForimport_names_star3: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForimport_names_star3: nodes [
 	| result |
 	result := Array new: 7.
 	result at: 3 put: (OrderedCollection new: 2).
@@ -2552,8 +2552,8 @@ PythonParser2 >> reduceActionForimport_names_star3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForinit_opt2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForinit_opt2: nodes [
 	| result |
 	result := PyInitOptNode new.
 	result equalToken: (nodes at: 1).
@@ -2561,8 +2561,8 @@ PythonParser2 >> reduceActionForinit_opt2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForlambdef1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForlambdef1: nodes [
 	| result |
 	result := PyLambdaNode new.
 	result lambdaToken: (nodes at: 1).
@@ -2572,8 +2572,8 @@ PythonParser2 >> reduceActionForlambdef1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForlist_for1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForlist_for1: nodes [
 	| result |
 	result := PyListForNode new.
 	result forToken: (nodes at: 1).
@@ -2585,8 +2585,8 @@ PythonParser2 >> reduceActionForlist_for1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForlist_for2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForlist_for2: nodes [
 	| result |
 	result := PyListForNode new.
 	result forToken: (nodes at: 1).
@@ -2599,8 +2599,8 @@ PythonParser2 >> reduceActionForlist_for2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForlist_if1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForlist_if1: nodes [
 	| result |
 	result := PyListIfNode new.
 	result ifToken: (nodes at: 1).
@@ -2608,8 +2608,8 @@ PythonParser2 >> reduceActionForlist_if1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForlist_if2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForlist_if2: nodes [
 	| result |
 	result := PyListIfNode new.
 	result ifToken: (nodes at: 1).
@@ -2618,8 +2618,8 @@ PythonParser2 >> reduceActionForlist_if2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForlistmaker1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForlistmaker1: nodes [
 	| result |
 	result := PyListmakerNode new.
 	result test: (nodes at: 1).
@@ -2627,8 +2627,8 @@ PythonParser2 >> reduceActionForlistmaker1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFormore_args1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFormore_args1: nodes [
 	| result |
 	result := Array new: 3.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -2636,8 +2636,8 @@ PythonParser2 >> reduceActionFormore_args1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFormore_args2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFormore_args2: nodes [
 	| result |
 	result := Array new: 3.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -2648,8 +2648,8 @@ PythonParser2 >> reduceActionFormore_args2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFormore_args3: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFormore_args3: nodes [
 	| result |
 	result := nodes at: 3.
 	self addFirst: (nodes at: 1) to: (result at: 1).
@@ -2657,8 +2657,8 @@ PythonParser2 >> reduceActionFormore_args3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFormore_tests2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFormore_tests2: nodes [
 	| result |
 	result := PyMoreTestsNode new.
 	result commaToken: (nodes at: 1).
@@ -2669,8 +2669,8 @@ PythonParser2 >> reduceActionFormore_tests2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFornamelist1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFornamelist1: nodes [
 	| result |
 	result := nodes at: 1.
 	self add: (nodes at: 2) to: (result at: 1).
@@ -2678,8 +2678,8 @@ PythonParser2 >> reduceActionFornamelist1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFornamelist2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFornamelist2: nodes [
 	| result |
 	result := Array new: 2.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -2688,8 +2688,8 @@ PythonParser2 >> reduceActionFornamelist2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFornot_test1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFornot_test1: nodes [
 	| result |
 	result := PyNotNode new.
 	result notToken: (nodes at: 1).
@@ -2697,8 +2697,8 @@ PythonParser2 >> reduceActionFornot_test1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForold_lambdef1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForold_lambdef1: nodes [
 	| result |
 	result := PyLambdaNode new.
 	result lambdaToken: (nodes at: 1).
@@ -2708,8 +2708,8 @@ PythonParser2 >> reduceActionForold_lambdef1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForor_test2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForor_test2: nodes [
 	| result |
 	result := PyOrNode new.
 	result one: (nodes at: 1).
@@ -2718,16 +2718,16 @@ PythonParser2 >> reduceActionForor_test2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForpass_stmt1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForpass_stmt1: nodes [
 	| result |
 	result := PyPassNode new.
 	result passToken: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForpower1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForpower1: nodes [
 	| result |
 	result := PyPowerNode new.
 	result atom: (nodes at: 1).
@@ -2735,8 +2735,8 @@ PythonParser2 >> reduceActionForpower1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForpower2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForpower2: nodes [
 	| result |
 	result := PyPowerNode new.
 	result atom: (nodes at: 1).
@@ -2746,8 +2746,8 @@ PythonParser2 >> reduceActionForpower2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForprint_stmt1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForprint_stmt1: nodes [
 	| result |
 	result := PyPrintNode new.
 	result printToken: (nodes at: 1).
@@ -2755,8 +2755,8 @@ PythonParser2 >> reduceActionForprint_stmt1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForprint_stmt2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForprint_stmt2: nodes [
 	| result |
 	result := PyPrintNode new.
 	result printToken: (nodes at: 1).
@@ -2765,16 +2765,16 @@ PythonParser2 >> reduceActionForprint_stmt2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForraise_stmt1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForraise_stmt1: nodes [
 	| result |
 	result := PyRaiseNode new.
 	result raiseToken: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForraise_stmt2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForraise_stmt2: nodes [
 	| result |
 	result := PyRaiseNode new.
 	result raiseToken: (nodes at: 1).
@@ -2782,8 +2782,8 @@ PythonParser2 >> reduceActionForraise_stmt2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForraise_stmt3: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForraise_stmt3: nodes [
 	| result |
 	result := PyRaiseNode new.
 	result raiseToken: (nodes at: 1).
@@ -2793,8 +2793,8 @@ PythonParser2 >> reduceActionForraise_stmt3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForraise_stmt4: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForraise_stmt4: nodes [
 	| result |
 	result := PyRaiseNode new.
 	result raiseToken: (nodes at: 1).
@@ -2806,8 +2806,8 @@ PythonParser2 >> reduceActionForraise_stmt4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForreturn_stmt1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForreturn_stmt1: nodes [
 	| result |
 	result := PyReturnNode new.
 	result returnToken: (nodes at: 1).
@@ -2815,8 +2815,8 @@ PythonParser2 >> reduceActionForreturn_stmt1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForshift_expr2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForshift_expr2: nodes [
 	| result |
 	result := PyLShiftExprNode new.
 	result one: (nodes at: 1).
@@ -2825,8 +2825,8 @@ PythonParser2 >> reduceActionForshift_expr2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForshift_expr3: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForshift_expr3: nodes [
 	| result |
 	result := PyRShiftExprNode new.
 	result one: (nodes at: 1).
@@ -2835,8 +2835,8 @@ PythonParser2 >> reduceActionForshift_expr3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForsimple_stmt1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForsimple_stmt1: nodes [
 	| result |
 	result := nodes at: 3.
 	result addFirstNode: (nodes at: 1) to: result stmts.
@@ -2844,8 +2844,8 @@ PythonParser2 >> reduceActionForsimple_stmt1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForsimple_stmt2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForsimple_stmt2: nodes [
 	| result |
 	result := PySimpleStmtNode new.
 	result addNode: (nodes at: 1) to: result stmts.
@@ -2854,24 +2854,24 @@ PythonParser2 >> reduceActionForsimple_stmt2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForsingle_input1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForsingle_input1: nodes [
 	| result |
 	result := PySingleInputNode new.
 	result nEWLINEToken: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForsingle_input2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForsingle_input2: nodes [
 	| result |
 	result := PySingleInputNode new.
 	result statement: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForsingle_input3: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForsingle_input3: nodes [
 	| result |
 	result := PySingleInputNode new.
 	result statement: (nodes at: 1).
@@ -2879,8 +2879,8 @@ PythonParser2 >> reduceActionForsingle_input3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForsliceop2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForsliceop2: nodes [
 	| result |
 	result := PySliceopNode new.
 	result colonToken: (nodes at: 1).
@@ -2888,24 +2888,24 @@ PythonParser2 >> reduceActionForsliceop2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForstmts2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForstmts2: nodes [
 	| result |
 	result := OrderedCollection new: 2.
 	self add: (nodes at: 1) to: result.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForstring1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForstring1: nodes [
 	| result |
 	result := PyStringNode new.
 	result value: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForstring3: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForstring3: nodes [
 	| result |
 	result := PyInterpolatedStringNode new.
 	result addToken: (nodes at: 2) to: result parts.
@@ -2916,24 +2916,24 @@ PythonParser2 >> reduceActionForstring3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForstrings1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForstrings1: nodes [
 	| result |
 	result := nodes at: 2.
 	result addFirstNode: (nodes at: 1) to: result strings.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForstrings2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForstrings2: nodes [
 	| result |
 	result := PyStringsNode new.
 	result addNode: (nodes at: 1) to: result strings.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForsubscript1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForsubscript1: nodes [
 	| result |
 	result := PySubscriptNode new.
 	result addToken: (nodes at: 1) to: result periodTokens.
@@ -2942,16 +2942,16 @@ PythonParser2 >> reduceActionForsubscript1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForsubscript2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForsubscript2: nodes [
 	| result |
 	result := PySubscriptNode new.
 	result test: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForsubscript3: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForsubscript3: nodes [
 	| result |
 	result := PySubscriptNode new.
 	result test: (nodes at: 1).
@@ -2961,8 +2961,8 @@ PythonParser2 >> reduceActionForsubscript3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForsuite1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForsuite1: nodes [
 	| result |
 	result := Array new: 4.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -2970,8 +2970,8 @@ PythonParser2 >> reduceActionForsuite1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForsuite2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForsuite2: nodes [
 	| result |
 	result := Array new: 4.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -2982,8 +2982,8 @@ PythonParser2 >> reduceActionForsuite2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForterm2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForterm2: nodes [
 	| result |
 	result := PyTermNode new.
 	result factor: (nodes at: 1).
@@ -2992,8 +2992,8 @@ PythonParser2 >> reduceActionForterm2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForterm3: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForterm3: nodes [
 	| result |
 	result := PyTermNode new.
 	result factor: (nodes at: 1).
@@ -3002,8 +3002,8 @@ PythonParser2 >> reduceActionForterm3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForterm4: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForterm4: nodes [
 	| result |
 	result := PyTermNode new.
 	result factor: (nodes at: 1).
@@ -3012,8 +3012,8 @@ PythonParser2 >> reduceActionForterm4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForterm5: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForterm5: nodes [
 	| result |
 	result := PyTermNode new.
 	result factor: (nodes at: 1).
@@ -3022,8 +3022,8 @@ PythonParser2 >> reduceActionForterm5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFortest2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFortest2: nodes [
 	| result |
 	result := PyIfTestNode new.
 	result or: (nodes at: 1).
@@ -3034,16 +3034,16 @@ PythonParser2 >> reduceActionFortest2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFortest_test_opt1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFortest_test_opt1: nodes [
 	| result |
 	result := PyTestTestOptNode new.
 	result test1: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFortest_test_opt2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFortest_test_opt2: nodes [
 	| result |
 	result := PyTestTestOptNode new.
 	result test1: (nodes at: 1).
@@ -3052,8 +3052,8 @@ PythonParser2 >> reduceActionFortest_test_opt2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFortestlist11: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFortestlist11: nodes [
 	| result |
 	result := PyTestlist1Node new.
 	result test: (nodes at: 1).
@@ -3062,8 +3062,8 @@ PythonParser2 >> reduceActionFortestlist11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFortestlist1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFortestlist1: nodes [
 	| result |
 	result := PyTestlistNode new.
 	result addNode: (nodes at: 1) to: result tests.
@@ -3073,8 +3073,8 @@ PythonParser2 >> reduceActionFortestlist1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFortestlist3: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFortestlist3: nodes [
 	| result |
 	result := PyTestlistNode new.
 	result addNode: (nodes at: 1) to: result tests.
@@ -3082,8 +3082,8 @@ PythonParser2 >> reduceActionFortestlist3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFortestlist_comp1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFortestlist_comp1: nodes [
 	| result |
 	result := PyTestlistCompNode new.
 	result test: (nodes at: 1).
@@ -3091,8 +3091,8 @@ PythonParser2 >> reduceActionFortestlist_comp1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFortestlist_safe1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFortestlist_safe1: nodes [
 	| result |
 	result := Array new: 2.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -3101,8 +3101,8 @@ PythonParser2 >> reduceActionFortestlist_safe1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFortestlist_safe2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFortestlist_safe2: nodes [
 	| result |
 	result := Array new: 2.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -3115,8 +3115,8 @@ PythonParser2 >> reduceActionFortestlist_safe2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFortrailer1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFortrailer1: nodes [
 	| result |
 	result := PyTrailerNode new.
 	result lparenToken: (nodes at: 1).
@@ -3124,8 +3124,8 @@ PythonParser2 >> reduceActionFortrailer1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFortrailer2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFortrailer2: nodes [
 	| result |
 	result := PyTrailerNode new.
 	result lparenToken: (nodes at: 1).
@@ -3137,8 +3137,8 @@ PythonParser2 >> reduceActionFortrailer2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFortrailer3: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFortrailer3: nodes [
 	| result |
 	result := PyTrailerNode new.
 	result lbrackToken: (nodes at: 1).
@@ -3148,8 +3148,8 @@ PythonParser2 >> reduceActionFortrailer3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFortrailer4: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFortrailer4: nodes [
 	| result |
 	result := PyTrailerNode new.
 	result periodToken: (nodes at: 1).
@@ -3157,23 +3157,23 @@ PythonParser2 >> reduceActionFortrailer4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFortrailers_opt1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFortrailers_opt1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFortrailers_opt2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFortrailers_opt2: nodes [
 	| result |
 	result := nodes at: 1.
 	self add: (nodes at: 2) to: result.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFortry_stmt1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFortry_stmt1: nodes [
 	| result |
 	result := PyTryNode new.
 	result tryToken: (nodes at: 1).
@@ -3193,8 +3193,8 @@ PythonParser2 >> reduceActionFortry_stmt1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionFortry_stmt2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionFortry_stmt2: nodes [
 	| result |
 	result := PyTryNode new.
 	result tryToken: (nodes at: 1).
@@ -3212,8 +3212,8 @@ PythonParser2 >> reduceActionFortry_stmt2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForvarargslist1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForvarargslist1: nodes [
 	| result |
 	result := nodes at: 4.
 	self addFirst: (nodes at: 1) to: (result at: 1).
@@ -3222,8 +3222,8 @@ PythonParser2 >> reduceActionForvarargslist1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForvarargslist2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForvarargslist2: nodes [
 	| result |
 	result := Array new: 7.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -3234,8 +3234,8 @@ PythonParser2 >> reduceActionForvarargslist2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForvarargslist3: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForvarargslist3: nodes [
 	| result |
 	result := Array new: 7.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -3249,8 +3249,8 @@ PythonParser2 >> reduceActionForvarargslist3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForvarargslist4: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForvarargslist4: nodes [
 	| result |
 	result := Array new: 7.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -3261,8 +3261,8 @@ PythonParser2 >> reduceActionForvarargslist4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForvarargslist5: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForvarargslist5: nodes [
 	| result |
 	result := Array new: 7.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -3274,8 +3274,8 @@ PythonParser2 >> reduceActionForvarargslist5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForvarargslist_opt2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForvarargslist_opt2: nodes [
 	| result |
 	result := PyVarArgListNode new.
 	result addNodes: ((nodes at: 1) at: 1) to: result args.
@@ -3288,8 +3288,8 @@ PythonParser2 >> reduceActionForvarargslist_opt2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForwhile_stmt1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForwhile_stmt1: nodes [
 	| result |
 	result := PyWhileNode new.
 	result whileToken: (nodes at: 1).
@@ -3303,16 +3303,16 @@ PythonParser2 >> reduceActionForwhile_stmt1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForwith_item1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForwith_item1: nodes [
 	| result |
 	result := PyWithItemNode new.
 	result test: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForwith_item2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForwith_item2: nodes [
 	| result |
 	result := PyWithItemNode new.
 	result test: (nodes at: 1).
@@ -3321,8 +3321,8 @@ PythonParser2 >> reduceActionForwith_item2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForwith_stmt1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForwith_stmt1: nodes [
 	| result |
 	result := PyWithNode new.
 	result withToken: (nodes at: 1).
@@ -3336,8 +3336,8 @@ PythonParser2 >> reduceActionForwith_stmt1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForxor_expr2: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForxor_expr2: nodes [
 	| result |
 	result := PyXorExprNode new.
 	result one: (nodes at: 1).
@@ -3346,8 +3346,8 @@ PythonParser2 >> reduceActionForxor_expr2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForyield_expr1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForyield_expr1: nodes [
 	| result |
 	result := PyYieldNode new.
 	result yieldToken: (nodes at: 1).
@@ -3355,8 +3355,8 @@ PythonParser2 >> reduceActionForyield_expr1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
-PythonParser2 >> reduceActionForyield_stmt1: nodes [
+{ #category : 'generated-reduction actions' }
+PythonParser >> reduceActionForyield_stmt1: nodes [
 	| result |
 	result := nodes at: 1.
 	^ result

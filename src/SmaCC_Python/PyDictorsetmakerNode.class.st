@@ -1,6 +1,6 @@
 Class {
-	#name : #PyDictorsetmakerNode,
-	#superclass : #PyRootNode,
+	#name : 'PyDictorsetmakerNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'test',
 		'colonToken',
@@ -8,30 +8,30 @@ Class {
 		'comp',
 		'more'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictorsetmakerNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitDictorsetmaker: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictorsetmakerNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictorsetmakerNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictorsetmakerNode >> comp [
 	^ comp
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictorsetmakerNode >> comp: aPyCompForNode [
 	self comp notNil
 		ifTrue: [ self comp parent: nil ].
@@ -40,39 +40,39 @@ PyDictorsetmakerNode >> comp: aPyCompForNode [
 		ifTrue: [ self comp parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictorsetmakerNode >> more [
 	^ more
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictorsetmakerNode >> more: anObject [
 	self setParent: self more to: nil.
 	more := anObject.
 	self setParent: self more to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictorsetmakerNode >> nodeVariables [
 	^ #(#test #test2 #comp)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictorsetmakerNode >> otherVariables [
 	^ #(#more)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictorsetmakerNode >> test [
 	^ test
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictorsetmakerNode >> test2 [
 	^ test2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictorsetmakerNode >> test2: aPyRootNode [
 	self test2 notNil
 		ifTrue: [ self test2 parent: nil ].
@@ -81,7 +81,7 @@ PyDictorsetmakerNode >> test2: aPyRootNode [
 		ifTrue: [ self test2 parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictorsetmakerNode >> test: aPyRootNode [
 	self test notNil
 		ifTrue: [ self test parent: nil ].
@@ -90,7 +90,7 @@ PyDictorsetmakerNode >> test: aPyRootNode [
 		ifTrue: [ self test parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictorsetmakerNode >> tokenVariables [
 	^ #(#colonToken)
 ]

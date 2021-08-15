@@ -1,6 +1,6 @@
 Class {
-	#name : #PyStatementNode,
-	#superclass : #PyRootNode,
+	#name : 'PyStatementNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'tests',
 		'commaTokens',
@@ -61,327 +61,327 @@ Class {
 		'simple',
 		'nEWLINEToken'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> andEqualToken [
 	^ andEqualToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> andEqualToken: aSmaCCToken [
 	andEqualToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> arg1 [
 	^ arg1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> arg1: anOrderedCollection [
 	arg1 := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> arg2 [
 	^ arg2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> arg2: anOrderedCollection [
 	arg2 := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> arg3 [
 	^ arg3
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> arg3: anOrderedCollection [
 	arg3 := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> args [
 	^ args
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> args: anOrderedCollection [
 	args := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> argumentses [
 	^ argumentses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> argumentses: anOrderedCollection [
 	argumentses := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> asTokens [
 	^ asTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> asTokens: anOrderedCollection [
 	asTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> assertToken [
 	^ assertToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> assertToken: aSmaCCToken [
 	assertToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> bodies [
 	^ bodies
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> bodies: anOrderedCollection [
 	bodies := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> breakToken [
 	^ breakToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> breakToken: aSmaCCToken [
 	breakToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> colonTokens [
 	^ colonTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> colonTokens: anOrderedCollection [
 	colonTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> compositeNodeVariables [
 	^ #(#ones #twos #ifs)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> compositeTokenVariables [
 	^ #(#commaTokens #equalTokens #yieldTokens #orTokens #asTokens #renames #nameTokens #ifTokens #elseTokens #lambdaTokens #colonTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> condition [
 	^ condition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> condition: anOrderedCollection [
 	condition := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> continueToken [
 	^ continueToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> continueToken: aSmaCCToken [
 	continueToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> delToken [
 	^ delToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> delToken: aSmaCCToken [
 	delToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> divideDivideEqualToken [
 	^ divideDivideEqualToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> divideDivideEqualToken: aSmaCCToken [
 	divideDivideEqualToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> divideEqualToken [
 	^ divideEqualToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> divideEqualToken: aSmaCCToken [
 	divideEqualToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> elseTokens [
 	^ elseTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> elseTokens: anOrderedCollection [
 	elseTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> elses [
 	^ elses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> elses: anOrderedCollection [
 	elses := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> equalTokens [
 	^ equalTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> equalTokens: anOrderedCollection [
 	equalTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> execToken [
 	^ execToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> execToken: aSmaCCToken [
 	execToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> from [
 	^ from
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> from: anObject [
 	from := anObject
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> fromToken [
 	^ fromToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> fromToken: aSmaCCToken [
 	fromToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> globalToken [
 	^ globalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> globalToken: aSmaCCToken [
 	globalToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> greaterThanGreaterThanEqualToken [
 	^ greaterThanGreaterThanEqualToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> greaterThanGreaterThanEqualToken: aSmaCCToken [
 	greaterThanGreaterThanEqualToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> greaterThanGreaterThanToken [
 	^ greaterThanGreaterThanToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> greaterThanGreaterThanToken: aSmaCCToken [
 	greaterThanGreaterThanToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> ifTokens [
 	^ ifTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> ifTokens: anOrderedCollection [
 	ifTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> ifs [
 	^ ifs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> ifs: anOrderedCollection [
 	self setParents: self ifs to: nil.
 	ifs := anOrderedCollection.
 	self setParents: self ifs to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> importToken [
 	^ importToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> importToken: aSmaCCToken [
 	importToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> inToken [
 	^ inToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> inToken: aSmaCCToken [
 	inToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyStatementNode >> initialize [
 	super initialize.
 	tests := OrderedCollection new: 2.
@@ -406,134 +406,134 @@ PyStatementNode >> initialize [
 	bodies := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> lambdaTokens [
 	^ lambdaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> lambdaTokens: anOrderedCollection [
 	lambdaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> lessThanLessThanEqualToken [
 	^ lessThanLessThanEqualToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> lessThanLessThanEqualToken: aSmaCCToken [
 	lessThanLessThanEqualToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> lparenToken [
 	^ lparenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> lparenToken: aSmaCCToken [
 	lparenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> minusEqualToken [
 	^ minusEqualToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> minusEqualToken: aSmaCCToken [
 	minusEqualToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> nEWLINEToken [
 	^ nEWLINEToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> nEWLINEToken: aSmaCCToken [
 	nEWLINEToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> nameTokens [
 	^ nameTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> nameTokens: anOrderedCollection [
 	nameTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> names [
 	^ names
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> names: anOrderedCollection [
 	names := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> ones [
 	^ ones
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> ones: anOrderedCollection [
 	self setParents: self ones to: nil.
 	ones := anOrderedCollection.
 	self setParents: self ones to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> orEqualToken [
 	^ orEqualToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> orEqualToken: aSmaCCToken [
 	orEqualToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> orTokens [
 	^ orTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> orTokens: anOrderedCollection [
 	orTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> otherVariables [
 	^ #(#tests #argumentses #trailers #args #arg1 #arg2 #arg3 #names #from #elses #bodies #condition #simple)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> passToken [
 	^ passToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> passToken: aSmaCCToken [
 	passToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> percentEqualToken [
 	^ percentEqualToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> percentEqualToken: aSmaCCToken [
 	percentEqualToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> pluralVariablesMap [
 	^ Dictionary new
 		at: 'test' put: 'tests';
@@ -559,169 +559,169 @@ PyStatementNode >> pluralVariablesMap [
 		yourself
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> plusEqualToken [
 	^ plusEqualToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> plusEqualToken: aSmaCCToken [
 	plusEqualToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> printToken [
 	^ printToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> printToken: aSmaCCToken [
 	printToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> raiseToken [
 	^ raiseToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> raiseToken: aSmaCCToken [
 	raiseToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> renames [
 	^ renames
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> renames: anOrderedCollection [
 	renames := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> returnToken [
 	^ returnToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> returnToken: aSmaCCToken [
 	returnToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> rparenToken [
 	^ rparenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> rparenToken: aSmaCCToken [
 	rparenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> semicolonToken [
 	^ semicolonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> semicolonToken: aSmaCCToken [
 	semicolonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> simple [
 	^ simple
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> simple: anOrderedCollection [
 	simple := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> tests [
 	^ tests
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> tests: anOrderedCollection [
 	tests := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> timesEqualToken [
 	^ timesEqualToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> timesEqualToken: aSmaCCToken [
 	timesEqualToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> timesTimesEqualToken [
 	^ timesTimesEqualToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> timesTimesEqualToken: aSmaCCToken [
 	timesTimesEqualToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> timesToken [
 	^ timesToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> timesToken: aSmaCCToken [
 	timesToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> tokenVariables [
 	^ #(#plusEqualToken #minusEqualToken #timesEqualToken #divideEqualToken #percentEqualToken #andEqualToken #orEqualToken #upArrowEqualToken #lessThanLessThanEqualToken #greaterThanGreaterThanEqualToken #timesTimesEqualToken #divideDivideEqualToken #printToken #greaterThanGreaterThanToken #delToken #passToken #breakToken #continueToken #returnToken #raiseToken #importToken #fromToken #timesToken #lparenToken #rparenToken #globalToken #execToken #inToken #assertToken #semicolonToken #nEWLINEToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> trailers [
 	^ trailers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> trailers: anOrderedCollection [
 	trailers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> twos [
 	^ twos
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> twos: anOrderedCollection [
 	self setParents: self twos to: nil.
 	twos := anOrderedCollection.
 	self setParents: self twos to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> upArrowEqualToken [
 	^ upArrowEqualToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> upArrowEqualToken: aSmaCCToken [
 	upArrowEqualToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> yieldTokens [
 	^ yieldTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> yieldTokens: anOrderedCollection [
 	yieldTokens := anOrderedCollection
 ]

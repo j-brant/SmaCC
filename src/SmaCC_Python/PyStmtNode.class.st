@@ -1,24 +1,24 @@
 Class {
-	#name : #PyStmtNode,
-	#superclass : #PyRootNode,
+	#name : 'PyStmtNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'simple',
 		'compound'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStmtNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitStmt: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStmtNode >> compound [
 	^ compound
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStmtNode >> compound: aPyRootNode [
 	self compound notNil
 		ifTrue: [ self compound parent: nil ].
@@ -27,17 +27,17 @@ PyStmtNode >> compound: aPyRootNode [
 		ifTrue: [ self compound parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStmtNode >> nodeVariables [
 	^ #(#simple #compound)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStmtNode >> simple [
 	^ simple
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStmtNode >> simple: aPySimpleStmtNode [
 	self simple notNil
 		ifTrue: [ self simple parent: nil ].

@@ -1,40 +1,40 @@
 Class {
-	#name : #PyMinusExprNode,
-	#superclass : #PyRootNode,
+	#name : 'PyMinusExprNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'one',
 		'minusToken',
 		'two'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMinusExprNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitMinusExpr: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMinusExprNode >> minusToken [
 	^ minusToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMinusExprNode >> minusToken: aSmaCCToken [
 	minusToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMinusExprNode >> nodeVariables [
 	^ #(#one #two)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMinusExprNode >> one [
 	^ one
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMinusExprNode >> one: aPyRootNode [
 	self one notNil
 		ifTrue: [ self one parent: nil ].
@@ -43,17 +43,17 @@ PyMinusExprNode >> one: aPyRootNode [
 		ifTrue: [ self one parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMinusExprNode >> tokenVariables [
 	^ #(#minusToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMinusExprNode >> two [
 	^ two
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMinusExprNode >> two: aPyRootNode [
 	self two notNil
 		ifTrue: [ self two parent: nil ].

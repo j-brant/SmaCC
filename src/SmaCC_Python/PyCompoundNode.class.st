@@ -1,6 +1,6 @@
 Class {
-	#name : #PyCompoundNode,
-	#superclass : #PyRootNode,
+	#name : 'PyCompoundNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'ifTokens',
 		'ifs',
@@ -80,270 +80,270 @@ Class {
 		'timesTimesTokens',
 		'nameTokens'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> _Tokens [
 	^ _Tokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> _Tokens: anOrderedCollection [
 	_Tokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitCompound: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> andEqualTokens [
 	^ andEqualTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> andEqualTokens: anOrderedCollection [
 	andEqualTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> arg1s [
 	^ arg1s
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> arg1s: anOrderedCollection [
 	arg1s := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> arg2s [
 	^ arg2s
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> arg2s: anOrderedCollection [
 	arg2s := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> arg3s [
 	^ arg3s
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> arg3s: anOrderedCollection [
 	arg3s := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> argses [
 	^ argses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> argses: anOrderedCollection [
 	argses := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> argumentses [
 	^ argumentses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> argumentses: anOrderedCollection [
 	argumentses := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> asTokens [
 	^ asTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> asTokens: anOrderedCollection [
 	asTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> assertTokens [
 	^ assertTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> assertTokens: anOrderedCollection [
 	assertTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> bodies [
 	^ bodies
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> bodies: anOrderedCollection [
 	bodies := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> breakTokens [
 	^ breakTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> breakTokens: anOrderedCollection [
 	breakTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> classToken [
 	^ classToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> classToken: aSmaCCToken [
 	classToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> cname [
 	^ cname
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> cname: aSmaCCToken [
 	cname := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> colonTokens [
 	^ colonTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> colonTokens: anOrderedCollection [
 	colonTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> compositeNodeVariables [
 	^ #(#ones #twos #statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> compositeTokenVariables [
 	^ #(#ifTokens #colonTokens #orTokens #elseTokens #lambdaTokens #commaTokens #equalTokens #yieldTokens #plusEqualTokens #minusEqualTokens #timesEqualTokens #divideEqualTokens #percentEqualTokens #andEqualTokens #orEqualTokens #upArrowEqualTokens #lessThanLessThanEqualTokens #greaterThanGreaterThanEqualTokens #timesTimesEqualTokens #divideDivideEqualTokens #printTokens #greaterThanGreaterThanTokens #delTokens #passTokens #breakTokens #continueTokens #returnTokens #raiseTokens #importTokens #asTokens #renames #fromTokens #timesTokens #lparenTokens #rparenTokens #globalTokens #nameTokens #execTokens #inTokens #assertTokens #semicolonTokens #nEWLINETokens #iNDENTTokens #dEDENTTokens #forTokens #exceptTokens #_Tokens #periodTokens #timesTimesTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> conditions [
 	^ conditions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> conditions: anOrderedCollection [
 	conditions := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> continueTokens [
 	^ continueTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> continueTokens: anOrderedCollection [
 	continueTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> dEDENTTokens [
 	^ dEDENTTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> dEDENTTokens: anOrderedCollection [
 	dEDENTTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> defToken [
 	^ defToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> defToken: aSmaCCToken [
 	defToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> delTokens [
 	^ delTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> delTokens: anOrderedCollection [
 	delTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> divideDivideEqualTokens [
 	^ divideDivideEqualTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> divideDivideEqualTokens: anOrderedCollection [
 	divideDivideEqualTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> divideEqualTokens [
 	^ divideEqualTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> divideEqualTokens: anOrderedCollection [
 	divideEqualTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> elseTokens [
 	^ elseTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> elseTokens: anOrderedCollection [
 	elseTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> elses [
 	^ elses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> elses: anOrderedCollection [
 	elses := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> elsif [
 	^ elsif
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> elsif: aPyRootNode [
 	self elsif notNil
 		ifTrue: [ self elsif parent: nil ].
@@ -352,167 +352,167 @@ PyCompoundNode >> elsif: aPyRootNode [
 		ifTrue: [ self elsif parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> equalTokens [
 	^ equalTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> equalTokens: anOrderedCollection [
 	equalTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> exceptTokens [
 	^ exceptTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> exceptTokens: anOrderedCollection [
 	exceptTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> execTokens [
 	^ execTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> execTokens: anOrderedCollection [
 	execTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> finallyToken [
 	^ finallyToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> finallyToken: aSmaCCToken [
 	finallyToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> fname [
 	^ fname
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> fname: aSmaCCToken [
 	fname := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> forTokens [
 	^ forTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> forTokens: anOrderedCollection [
 	forTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> fromTokens [
 	^ fromTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> fromTokens: anOrderedCollection [
 	fromTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> froms [
 	^ froms
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> froms: anOrderedCollection [
 	froms := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> globalTokens [
 	^ globalTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> globalTokens: anOrderedCollection [
 	globalTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> greaterThanGreaterThanEqualTokens [
 	^ greaterThanGreaterThanEqualTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> greaterThanGreaterThanEqualTokens: anOrderedCollection [
 	greaterThanGreaterThanEqualTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> greaterThanGreaterThanTokens [
 	^ greaterThanGreaterThanTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> greaterThanGreaterThanTokens: anOrderedCollection [
 	greaterThanGreaterThanTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> iNDENTTokens [
 	^ iNDENTTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> iNDENTTokens: anOrderedCollection [
 	iNDENTTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> ifTokens [
 	^ ifTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> ifTokens: anOrderedCollection [
 	ifTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> ifs [
 	^ ifs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> ifs: anOrderedCollection [
 	ifs := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> importTokens [
 	^ importTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> importTokens: anOrderedCollection [
 	importTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> inTokens [
 	^ inTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> inTokens: anOrderedCollection [
 	inTokens := anOrderedCollection
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyCompoundNode >> initialize [
 	super initialize.
 	ifTokens := OrderedCollection new: 2.
@@ -583,124 +583,124 @@ PyCompoundNode >> initialize [
 	timesTimesTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> lambdaTokens [
 	^ lambdaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> lambdaTokens: anOrderedCollection [
 	lambdaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> lessThanLessThanEqualTokens [
 	^ lessThanLessThanEqualTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> lessThanLessThanEqualTokens: anOrderedCollection [
 	lessThanLessThanEqualTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> lparenTokens [
 	^ lparenTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> lparenTokens: anOrderedCollection [
 	lparenTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> minusEqualTokens [
 	^ minusEqualTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> minusEqualTokens: anOrderedCollection [
 	minusEqualTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> nEWLINETokens [
 	^ nEWLINETokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> nEWLINETokens: anOrderedCollection [
 	nEWLINETokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> nameTokens [
 	^ nameTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> nameTokens: anOrderedCollection [
 	nameTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> names [
 	^ names
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> names: anOrderedCollection [
 	names := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> nodeVariables [
 	^ #(#elsif #parameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> ones [
 	^ ones
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> ones: anOrderedCollection [
 	self setParents: self ones to: nil.
 	ones := anOrderedCollection.
 	self setParents: self ones to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> orEqualTokens [
 	^ orEqualTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> orEqualTokens: anOrderedCollection [
 	orEqualTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> orTokens [
 	^ orTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> orTokens: anOrderedCollection [
 	orTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> otherVariables [
 	^ #(#ifs #then #elses #argumentses #bodies #tests #argses #arg1s #arg2s #arg3s #names #froms #conditions #simples #trailers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> parameters: aPyVarArgListNode [
 	self parameters notNil
 		ifTrue: [ self parameters parent: nil ].
@@ -709,37 +709,37 @@ PyCompoundNode >> parameters: aPyVarArgListNode [
 		ifTrue: [ self parameters parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> passTokens [
 	^ passTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> passTokens: anOrderedCollection [
 	passTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> percentEqualTokens [
 	^ percentEqualTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> percentEqualTokens: anOrderedCollection [
 	percentEqualTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> periodTokens [
 	^ periodTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> periodTokens: anOrderedCollection [
 	periodTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> pluralVariablesMap [
 	^ Dictionary new
 		at: 'ifToken' put: 'ifTokens';
@@ -811,231 +811,231 @@ PyCompoundNode >> pluralVariablesMap [
 		yourself
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> plusEqualTokens [
 	^ plusEqualTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> plusEqualTokens: anOrderedCollection [
 	plusEqualTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> printTokens [
 	^ printTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> printTokens: anOrderedCollection [
 	printTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> raiseTokens [
 	^ raiseTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> raiseTokens: anOrderedCollection [
 	raiseTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> renames [
 	^ renames
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> renames: anOrderedCollection [
 	renames := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> returnTokens [
 	^ returnTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> returnTokens: anOrderedCollection [
 	returnTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> rparenTokens [
 	^ rparenTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> rparenTokens: anOrderedCollection [
 	rparenTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> semicolonTokens [
 	^ semicolonTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> semicolonTokens: anOrderedCollection [
 	semicolonTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> simples [
 	^ simples
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> simples: anOrderedCollection [
 	simples := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> tests [
 	^ tests
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> tests: anOrderedCollection [
 	tests := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> then [
 	^ then
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> then: anOrderedCollection [
 	then := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> timesEqualTokens [
 	^ timesEqualTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> timesEqualTokens: anOrderedCollection [
 	timesEqualTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> timesTimesEqualTokens [
 	^ timesTimesEqualTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> timesTimesEqualTokens: anOrderedCollection [
 	timesTimesEqualTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> timesTimesTokens [
 	^ timesTimesTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> timesTimesTokens: anOrderedCollection [
 	timesTimesTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> timesTokens [
 	^ timesTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> timesTokens: anOrderedCollection [
 	timesTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> tokenVariables [
 	^ #(#whileToken #tryToken #finallyToken #withToken #defToken #fname #classToken #cname)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> trailers [
 	^ trailers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> trailers: anOrderedCollection [
 	trailers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> tryToken [
 	^ tryToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> tryToken: aSmaCCToken [
 	tryToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> twos [
 	^ twos
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> twos: anOrderedCollection [
 	self setParents: self twos to: nil.
 	twos := anOrderedCollection.
 	self setParents: self twos to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> upArrowEqualTokens [
 	^ upArrowEqualTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> upArrowEqualTokens: anOrderedCollection [
 	upArrowEqualTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> whileToken [
 	^ whileToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> whileToken: aSmaCCToken [
 	whileToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> withToken [
 	^ withToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> withToken: aSmaCCToken [
 	withToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> yieldTokens [
 	^ yieldTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyCompoundNode >> yieldTokens: anOrderedCollection [
 	yieldTokens := anOrderedCollection
 ]

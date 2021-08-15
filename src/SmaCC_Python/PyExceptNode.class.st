@@ -1,6 +1,6 @@
 Class {
-	#name : #PyExceptNode,
-	#superclass : #PyRootNode,
+	#name : 'PyExceptNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'colonTokens',
 		'nEWLINETokens',
@@ -14,121 +14,121 @@ Class {
 		'except2s',
 		'suites'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitExcept: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> anothers [
 	^ anothers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> anothers: anOrderedCollection [
 	self setParents: self anothers to: nil.
 	anothers := anOrderedCollection.
 	self setParents: self anothers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> asTokens [
 	^ asTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> asTokens: anOrderedCollection [
 	asTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> colonTokens [
 	^ colonTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> colonTokens: anOrderedCollection [
 	colonTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> compositeNodeVariables [
 	^ #(#suites #excepts #anothers #except2s)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> compositeTokenVariables [
 	^ #(#colonTokens #nEWLINETokens #iNDENTTokens #dEDENTTokens #exceptTokens #asTokens #commaTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> dEDENTTokens [
 	^ dEDENTTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> dEDENTTokens: anOrderedCollection [
 	dEDENTTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> except2s [
 	^ except2s
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> except2s: anOrderedCollection [
 	self setParents: self except2s to: nil.
 	except2s := anOrderedCollection.
 	self setParents: self except2s to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> exceptTokens [
 	^ exceptTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> exceptTokens: anOrderedCollection [
 	exceptTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> excepts [
 	^ excepts
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> excepts: anOrderedCollection [
 	self setParents: self excepts to: nil.
 	excepts := anOrderedCollection.
 	self setParents: self excepts to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> iNDENTTokens [
 	^ iNDENTTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> iNDENTTokens: anOrderedCollection [
 	iNDENTTokens := anOrderedCollection
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyExceptNode >> initialize [
 	super initialize.
 	colonTokens := OrderedCollection new: 2.
@@ -144,17 +144,17 @@ PyExceptNode >> initialize [
 	except2s := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> nEWLINETokens [
 	^ nEWLINETokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> nEWLINETokens: anOrderedCollection [
 	nEWLINETokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> pluralVariablesMap [
 	^ Dictionary new
 		at: 'colonToken' put: 'colonTokens';
@@ -171,12 +171,12 @@ PyExceptNode >> pluralVariablesMap [
 		yourself
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> suites [
 	^ suites
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExceptNode >> suites: anOrderedCollection [
 	self setParents: self suites to: nil.
 	suites := anOrderedCollection.

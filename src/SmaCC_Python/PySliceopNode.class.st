@@ -1,39 +1,39 @@
 Class {
-	#name : #PySliceopNode,
-	#superclass : #PyRootNode,
+	#name : 'PySliceopNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'colonToken',
 		'test'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySliceopNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitSliceop: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySliceopNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySliceopNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySliceopNode >> nodeVariables [
 	^ #(#test)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySliceopNode >> test [
 	^ test
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySliceopNode >> test: aPyRootNode [
 	self test notNil
 		ifTrue: [ self test parent: nil ].
@@ -42,7 +42,7 @@ PySliceopNode >> test: aPyRootNode [
 		ifTrue: [ self test parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySliceopNode >> tokenVariables [
 	^ #(#colonToken)
 ]

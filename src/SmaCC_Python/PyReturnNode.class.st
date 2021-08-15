@@ -1,39 +1,39 @@
 Class {
-	#name : #PyReturnNode,
-	#superclass : #PyRootNode,
+	#name : 'PyReturnNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'returnToken',
 		'testlist'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyReturnNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitReturn: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyReturnNode >> nodeVariables [
 	^ #(#testlist)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyReturnNode >> returnToken [
 	^ returnToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyReturnNode >> returnToken: aSmaCCToken [
 	returnToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyReturnNode >> testlist [
 	^ testlist
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyReturnNode >> testlist: aPyRootNode [
 	self testlist notNil
 		ifTrue: [ self testlist parent: nil ].
@@ -42,7 +42,7 @@ PyReturnNode >> testlist: aPyRootNode [
 		ifTrue: [ self testlist parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyReturnNode >> tokenVariables [
 	^ #(#returnToken)
 ]
