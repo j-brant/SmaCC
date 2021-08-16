@@ -1,14 +1,14 @@
 Trait {
-	#name : #TSmaCCComponentVisitor,
+	#name : 'TSmaCCComponentVisitor',
 	#instVars : [
 		'composite'
 	],
 	#traits : 'TSmaCCParseNodeVisitor',
 	#classTraits : 'TSmaCCParseNodeVisitor classTrait',
-	#category : #'SmaCC_Runtime'
+	#category : 'SmaCC_Runtime'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 TSmaCCComponentVisitor >> acceptNode: aSmaCCParseNode [
 	aSmaCCParseNode isNil
 		ifTrue: [ ^ nil ].
@@ -17,12 +17,12 @@ TSmaCCComponentVisitor >> acceptNode: aSmaCCParseNode [
 		ifFalse: [ aSmaCCParseNode acceptVisitor: self ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TSmaCCComponentVisitor >> composite [
 	^ composite
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TSmaCCComponentVisitor >> composite: aCompositeVisitor [
 	composite := aCompositeVisitor
 ]
