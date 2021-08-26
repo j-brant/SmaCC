@@ -1,28 +1,28 @@
 Class {
-	#name : #RubyRedoNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyRedoNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'redoToken'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRedoNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitRedo: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRedoNode >> redoToken [
 	^ redoToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRedoNode >> redoToken: aSmaCCToken [
 	redoToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRedoNode >> tokenVariables [
 	^ #(#redoToken)
 ]

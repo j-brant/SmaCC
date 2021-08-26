@@ -1,6 +1,6 @@
 Class {
-	#name : #RubyRescueNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyRescueNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'rescueToken',
 		'exception',
@@ -10,117 +10,113 @@ Class {
 		'thenToken',
 		'statements'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitRescue: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueNode >> compositeTokenVariables [
 	^ #(#semicolons #leftParens #rightParens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueNode >> exception [
 	^ exception
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueNode >> exception: aRubyExpressionNode [
-	self exception notNil
-		ifTrue: [ self exception parent: nil ].
+	self exception notNil ifTrue: [ self exception parent: nil ].
 	exception := aRubyExpressionNode.
-	self exception notNil
-		ifTrue: [ self exception parent: self ]
+	self exception notNil ifTrue: [ self exception parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyRescueNode >> initialize [
 	super initialize.
 	semicolons := OrderedCollection new: 2.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueNode >> nodeVariables [
 	^ #(#exception #variable)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueNode >> rescueToken [
 	^ rescueToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueNode >> rescueToken: aSmaCCToken [
 	rescueToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueNode >> semicolons [
 	^ semicolons
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueNode >> semicolons: anOrderedCollection [
 	semicolons := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueNode >> thenToken [
 	^ thenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueNode >> thenToken: aSmaCCToken [
 	thenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueNode >> tokenVariables [
 	^ #(#rescueToken #operator #thenToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueNode >> variable [
 	^ variable
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueNode >> variable: aRubyExpressionNode [
-	self variable notNil
-		ifTrue: [ self variable parent: nil ].
+	self variable notNil ifTrue: [ self variable parent: nil ].
 	variable := aRubyExpressionNode.
-	self variable notNil
-		ifTrue: [ self variable parent: self ]
+	self variable notNil ifTrue: [ self variable parent: self ]
 ]

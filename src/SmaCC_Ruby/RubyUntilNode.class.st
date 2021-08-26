@@ -1,6 +1,6 @@
 Class {
-	#name : #RubyUntilNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyUntilNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'untilToken',
 		'condition',
@@ -9,103 +9,101 @@ Class {
 		'statements',
 		'endToken'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUntil: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilNode >> compositeTokenVariables [
 	^ #(#semicolons #leftParens #rightParens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilNode >> condition [
 	^ condition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilNode >> condition: aRubyExpressionNode [
-	self condition notNil
-		ifTrue: [ self condition parent: nil ].
+	self condition notNil ifTrue: [ self condition parent: nil ].
 	condition := aRubyExpressionNode.
-	self condition notNil
-		ifTrue: [ self condition parent: self ]
+	self condition notNil ifTrue: [ self condition parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilNode >> doToken [
 	^ doToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilNode >> doToken: aSmaCCToken [
 	doToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilNode >> endToken [
 	^ endToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilNode >> endToken: aSmaCCToken [
 	endToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyUntilNode >> initialize [
 	super initialize.
 	semicolons := OrderedCollection new: 2.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilNode >> nodeVariables [
 	^ #(#condition)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilNode >> semicolons [
 	^ semicolons
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilNode >> semicolons: anOrderedCollection [
 	semicolons := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilNode >> tokenVariables [
 	^ #(#untilToken #doToken #endToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilNode >> untilToken [
 	^ untilToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilNode >> untilToken: aSmaCCToken [
 	untilToken := aSmaCCToken
 ]

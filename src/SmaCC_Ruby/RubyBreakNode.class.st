@@ -1,28 +1,28 @@
 Class {
-	#name : #RubyBreakNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyBreakNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'breakToken'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBreakNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBreak: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBreakNode >> breakToken [
 	^ breakToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBreakNode >> breakToken: aSmaCCToken [
 	breakToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBreakNode >> tokenVariables [
 	^ #(#breakToken)
 ]

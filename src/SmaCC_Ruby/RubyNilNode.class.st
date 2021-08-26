@@ -1,28 +1,28 @@
 Class {
-	#name : #RubyNilNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyNilNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'name'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyNilNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNil: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyNilNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyNilNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyNilNode >> tokenVariables [
 	^ #(#name)
 ]

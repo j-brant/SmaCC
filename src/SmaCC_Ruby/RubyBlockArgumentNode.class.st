@@ -1,48 +1,46 @@
 Class {
-	#name : #RubyBlockArgumentNode,
-	#superclass : #RubyProgramNode,
+	#name : 'RubyBlockArgumentNode',
+	#superclass : 'RubyProgramNode',
 	#instVars : [
 		'ampersand',
 		'value'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBlockArgumentNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBlockArgument: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBlockArgumentNode >> ampersand [
 	^ ampersand
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBlockArgumentNode >> ampersand: aSmaCCToken [
 	ampersand := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBlockArgumentNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBlockArgumentNode >> tokenVariables [
 	^ #(#ampersand)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBlockArgumentNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBlockArgumentNode >> value: aRubyExpressionNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
+	self value notNil ifTrue: [ self value parent: nil ].
 	value := aRubyExpressionNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+	self value notNil ifTrue: [ self value parent: self ]
 ]

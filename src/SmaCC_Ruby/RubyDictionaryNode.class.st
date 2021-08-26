@@ -1,6 +1,6 @@
 Class {
-	#name : #RubyDictionaryNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyDictionaryNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'leftBrace',
 		'args',
@@ -8,47 +8,47 @@ Class {
 		'rightBrace',
 		'values'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDictionaryNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDictionary: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDictionaryNode >> args [
 	^ args
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDictionaryNode >> args: anOrderedCollection [
 	self setParents: self args to: nil.
 	args := anOrderedCollection.
 	self setParents: self args to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDictionaryNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDictionaryNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDictionaryNode >> compositeNodeVariables [
 	^ #(#args #values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDictionaryNode >> compositeTokenVariables [
 	^ #(#commas #leftParens #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyDictionaryNode >> initialize [
 	super initialize.
 	args := OrderedCollection new: 2.
@@ -56,37 +56,37 @@ RubyDictionaryNode >> initialize [
 	values := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDictionaryNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDictionaryNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDictionaryNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDictionaryNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDictionaryNode >> tokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDictionaryNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDictionaryNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

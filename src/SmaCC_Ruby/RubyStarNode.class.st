@@ -1,48 +1,46 @@
 Class {
-	#name : #RubyStarNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyStarNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'star',
 		'value'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStarNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStar: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStarNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStarNode >> star [
 	^ star
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStarNode >> star: aSmaCCToken [
 	star := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStarNode >> tokenVariables [
 	^ #(#star)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStarNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStarNode >> value: aRubyExpressionNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
+	self value notNil ifTrue: [ self value parent: nil ].
 	value := aRubyExpressionNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+	self value notNil ifTrue: [ self value parent: self ]
 ]

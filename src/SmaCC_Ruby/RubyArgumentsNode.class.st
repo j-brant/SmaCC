@@ -1,28 +1,28 @@
 Class {
-	#name : #RubyArgumentsNode,
-	#superclass : #RubyProgramNode,
+	#name : 'RubyArgumentsNode',
+	#superclass : 'RubyProgramNode',
 	#instVars : [
 		'dots'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyArgumentsNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitArguments: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyArgumentsNode >> dots [
 	^ dots
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyArgumentsNode >> dots: aSmaCCToken [
 	dots := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyArgumentsNode >> tokenVariables [
 	^ #(#dots)
 ]

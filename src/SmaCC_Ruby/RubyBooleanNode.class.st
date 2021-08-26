@@ -1,28 +1,28 @@
 Class {
-	#name : #RubyBooleanNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyBooleanNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'value'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBooleanNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBoolean: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBooleanNode >> tokenVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBooleanNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBooleanNode >> value: aSmaCCToken [
 	value := aSmaCCToken
 ]

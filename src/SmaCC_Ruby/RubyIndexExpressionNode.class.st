@@ -1,6 +1,6 @@
 Class {
-	#name : #RubyIndexExpressionNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyIndexExpressionNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'values',
 		'leftBracket',
@@ -8,47 +8,47 @@ Class {
 		'args',
 		'rightBracket'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIndexExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIndexExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIndexExpressionNode >> args [
 	^ args
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIndexExpressionNode >> args: anOrderedCollection [
 	self setParents: self args to: nil.
 	args := anOrderedCollection.
 	self setParents: self args to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIndexExpressionNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIndexExpressionNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIndexExpressionNode >> compositeNodeVariables [
 	^ #(#values #args)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIndexExpressionNode >> compositeTokenVariables [
 	^ #(#commas #leftParens #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyIndexExpressionNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
@@ -56,37 +56,37 @@ RubyIndexExpressionNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIndexExpressionNode >> leftBracket [
 	^ leftBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIndexExpressionNode >> leftBracket: aSmaCCToken [
 	leftBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIndexExpressionNode >> rightBracket [
 	^ rightBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIndexExpressionNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIndexExpressionNode >> tokenVariables [
 	^ #(#leftBracket #rightBracket)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIndexExpressionNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIndexExpressionNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

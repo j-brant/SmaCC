@@ -1,6 +1,6 @@
 Class {
-	#name : #RubyConditionalExpressionNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyConditionalExpressionNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'condition',
 		'questionMark',
@@ -8,82 +8,76 @@ Class {
 		'colon',
 		'falseExpression'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyConditionalExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitConditionalExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyConditionalExpressionNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyConditionalExpressionNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyConditionalExpressionNode >> condition [
 	^ condition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyConditionalExpressionNode >> condition: aRubyExpressionNode [
-	self condition notNil
-		ifTrue: [ self condition parent: nil ].
+	self condition notNil ifTrue: [ self condition parent: nil ].
 	condition := aRubyExpressionNode.
-	self condition notNil
-		ifTrue: [ self condition parent: self ]
+	self condition notNil ifTrue: [ self condition parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyConditionalExpressionNode >> falseExpression [
 	^ falseExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyConditionalExpressionNode >> falseExpression: aRubyExpressionNode [
-	self falseExpression notNil
-		ifTrue: [ self falseExpression parent: nil ].
+	self falseExpression notNil ifTrue: [ self falseExpression parent: nil ].
 	falseExpression := aRubyExpressionNode.
-	self falseExpression notNil
-		ifTrue: [ self falseExpression parent: self ]
+	self falseExpression notNil ifTrue: [ self falseExpression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyConditionalExpressionNode >> nodeVariables [
 	^ #(#condition #trueExpression #falseExpression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyConditionalExpressionNode >> questionMark [
 	^ questionMark
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyConditionalExpressionNode >> questionMark: aSmaCCToken [
 	questionMark := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyConditionalExpressionNode >> tokenVariables [
 	^ #(#questionMark #colon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyConditionalExpressionNode >> trueExpression [
 	^ trueExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyConditionalExpressionNode >> trueExpression: aRubyExpressionNode [
-	self trueExpression notNil
-		ifTrue: [ self trueExpression parent: nil ].
+	self trueExpression notNil ifTrue: [ self trueExpression parent: nil ].
 	trueExpression := aRubyExpressionNode.
-	self trueExpression notNil
-		ifTrue: [ self trueExpression parent: self ]
+	self trueExpression notNil ifTrue: [ self trueExpression parent: self ]
 ]

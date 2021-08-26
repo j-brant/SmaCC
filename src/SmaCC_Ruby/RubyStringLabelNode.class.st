@@ -1,48 +1,46 @@
 Class {
-	#name : #RubyStringLabelNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyStringLabelNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'label',
 		'colon'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStringLabelNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStringLabel: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStringLabelNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStringLabelNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStringLabelNode >> label [
 	^ label
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStringLabelNode >> label: aRubyStringNode [
-	self label notNil
-		ifTrue: [ self label parent: nil ].
+	self label notNil ifTrue: [ self label parent: nil ].
 	label := aRubyStringNode.
-	self label notNil
-		ifTrue: [ self label parent: self ]
+	self label notNil ifTrue: [ self label parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStringLabelNode >> nodeVariables [
 	^ #(#label)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStringLabelNode >> tokenVariables [
 	^ #(#colon)
 ]

@@ -1,39 +1,39 @@
 Class {
-	#name : #RubySymbolNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubySymbolNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'colon',
 		'value'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubySymbolNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSymbol: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubySymbolNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubySymbolNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubySymbolNode >> tokenVariables [
 	^ #(#colon #value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubySymbolNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubySymbolNode >> value: aSmaCCToken [
 	value := aSmaCCToken
 ]

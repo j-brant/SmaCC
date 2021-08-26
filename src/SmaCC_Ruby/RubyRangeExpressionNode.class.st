@@ -1,63 +1,59 @@
 Class {
-	#name : #RubyRangeExpressionNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyRangeExpressionNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'first',
 		'operator',
 		'last'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRangeExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitRangeExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRangeExpressionNode >> first [
 	^ first
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRangeExpressionNode >> first: aRubyExpressionNode [
-	self first notNil
-		ifTrue: [ self first parent: nil ].
+	self first notNil ifTrue: [ self first parent: nil ].
 	first := aRubyExpressionNode.
-	self first notNil
-		ifTrue: [ self first parent: self ]
+	self first notNil ifTrue: [ self first parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRangeExpressionNode >> last [
 	^ last
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRangeExpressionNode >> last: aRubyExpressionNode [
-	self last notNil
-		ifTrue: [ self last parent: nil ].
+	self last notNil ifTrue: [ self last parent: nil ].
 	last := aRubyExpressionNode.
-	self last notNil
-		ifTrue: [ self last parent: self ]
+	self last notNil ifTrue: [ self last parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRangeExpressionNode >> nodeVariables [
 	^ #(#first #last)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRangeExpressionNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRangeExpressionNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRangeExpressionNode >> tokenVariables [
 	^ #(#operator)
 ]

@@ -1,51 +1,51 @@
 Class {
-	#name : #RubyMultipleVariableNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyMultipleVariableNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'variables',
 		'commas'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyMultipleVariableNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMultipleVariable: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyMultipleVariableNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyMultipleVariableNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyMultipleVariableNode >> compositeNodeVariables [
 	^ #(#variables)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyMultipleVariableNode >> compositeTokenVariables [
 	^ #(#commas #leftParens #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyMultipleVariableNode >> initialize [
 	super initialize.
 	variables := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyMultipleVariableNode >> variables [
 	^ variables
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyMultipleVariableNode >> variables: anOrderedCollection [
 	self setParents: self variables to: nil.
 	variables := anOrderedCollection.

@@ -1,48 +1,46 @@
 Class {
-	#name : #RubyUnaryExpressionNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyUnaryExpressionNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'operator',
 		'value'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnaryExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUnaryExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnaryExpressionNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnaryExpressionNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnaryExpressionNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnaryExpressionNode >> tokenVariables [
 	^ #(#operator)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnaryExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnaryExpressionNode >> value: aRubyExpressionNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
+	self value notNil ifTrue: [ self value parent: nil ].
 	value := aRubyExpressionNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+	self value notNil ifTrue: [ self value parent: self ]
 ]

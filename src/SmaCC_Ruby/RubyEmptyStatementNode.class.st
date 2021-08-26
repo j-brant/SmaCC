@@ -1,10 +1,10 @@
 Class {
-	#name : #RubyEmptyStatementNode,
-	#superclass : #RubyExpressionNode,
-	#category : #'SmaCC_Ruby'
+	#name : 'RubyEmptyStatementNode',
+	#superclass : 'RubyExpressionNode',
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEmptyStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEmptyStatement: self
 ]

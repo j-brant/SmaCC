@@ -1,6 +1,6 @@
 Class {
-	#name : #RubyLambdaNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyLambdaNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'arrow',
 		'commas',
@@ -14,91 +14,89 @@ Class {
 		'ensure',
 		'endToken'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLambda: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> args [
 	^ args
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> args: anOrderedCollection [
 	self setParents: self args to: nil.
 	args := anOrderedCollection.
 	self setParents: self args to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> arrow [
 	^ arrow
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> arrow: aSmaCCToken [
 	arrow := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> compositeNodeVariables [
 	^ #(#args #statements #rescues)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> compositeTokenVariables [
 	^ #(#commas #semicolons #leftParens #rightParens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> doToken [
 	^ doToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> doToken: aSmaCCToken [
 	doToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> endToken [
 	^ endToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> endToken: aSmaCCToken [
 	endToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> ensure [
 	^ ensure
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> ensure: aRubyEnsureNode [
-	self ensure notNil
-		ifTrue: [ self ensure parent: nil ].
+	self ensure notNil ifTrue: [ self ensure parent: nil ].
 	ensure := aRubyEnsureNode.
-	self ensure notNil
-		ifTrue: [ self ensure parent: self ]
+	self ensure notNil ifTrue: [ self ensure parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyLambdaNode >> initialize [
 	super initialize.
 	commas := OrderedCollection new: 2.
@@ -108,66 +106,66 @@ RubyLambdaNode >> initialize [
 	rescues := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> nodeVariables [
 	^ #(#ensure)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> rescues [
 	^ rescues
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> rescues: anOrderedCollection [
 	self setParents: self rescues to: nil.
 	rescues := anOrderedCollection.
 	self setParents: self rescues to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> semicolons [
 	^ semicolons
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> semicolons: anOrderedCollection [
 	semicolons := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyLambdaNode >> tokenVariables [
 	^ #(#arrow #leftBrace #rightBrace #doToken #endToken)
 ]

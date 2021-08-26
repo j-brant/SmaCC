@@ -1,7 +1,7 @@
 Class {
-	#name : #RubyProgramNodeVisitor,
-	#superclass : #Object,
+	#name : 'RubyProgramNodeVisitor',
+	#superclass : 'Object',
 	#traits : 'TRubyProgramNodeVisitor',
 	#classTraits : 'TRubyProgramNodeVisitor classTrait',
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }

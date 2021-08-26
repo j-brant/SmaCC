@@ -1,63 +1,59 @@
 Class {
-	#name : #RubyUntilModifierNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyUntilModifierNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'statement',
 		'untilToken',
 		'condition'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilModifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUntilModifier: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilModifierNode >> condition [
 	^ condition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilModifierNode >> condition: aRubyExpressionNode [
-	self condition notNil
-		ifTrue: [ self condition parent: nil ].
+	self condition notNil ifTrue: [ self condition parent: nil ].
 	condition := aRubyExpressionNode.
-	self condition notNil
-		ifTrue: [ self condition parent: self ]
+	self condition notNil ifTrue: [ self condition parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilModifierNode >> nodeVariables [
 	^ #(#statement #condition)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilModifierNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilModifierNode >> statement: aRubyProgramNode [
-	self statement notNil
-		ifTrue: [ self statement parent: nil ].
+	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aRubyProgramNode.
-	self statement notNil
-		ifTrue: [ self statement parent: self ]
+	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilModifierNode >> tokenVariables [
 	^ #(#untilToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilModifierNode >> untilToken [
 	^ untilToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUntilModifierNode >> untilToken: aSmaCCToken [
 	untilToken := aSmaCCToken
 ]

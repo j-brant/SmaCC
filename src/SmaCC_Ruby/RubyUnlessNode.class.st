@@ -1,6 +1,6 @@
 Class {
-	#name : #RubyUnlessNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyUnlessNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'unlessToken',
 		'condition',
@@ -10,117 +10,113 @@ Class {
 		'else',
 		'endToken'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnlessNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUnless: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnlessNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnlessNode >> compositeTokenVariables [
 	^ #(#semicolons #leftParens #rightParens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnlessNode >> condition [
 	^ condition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnlessNode >> condition: aRubyExpressionNode [
-	self condition notNil
-		ifTrue: [ self condition parent: nil ].
+	self condition notNil ifTrue: [ self condition parent: nil ].
 	condition := aRubyExpressionNode.
-	self condition notNil
-		ifTrue: [ self condition parent: self ]
+	self condition notNil ifTrue: [ self condition parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnlessNode >> else [
 	^ else
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnlessNode >> else: aRubyElseNode [
-	self else notNil
-		ifTrue: [ self else parent: nil ].
+	self else notNil ifTrue: [ self else parent: nil ].
 	else := aRubyElseNode.
-	self else notNil
-		ifTrue: [ self else parent: self ]
+	self else notNil ifTrue: [ self else parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnlessNode >> endToken [
 	^ endToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnlessNode >> endToken: aSmaCCToken [
 	endToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyUnlessNode >> initialize [
 	super initialize.
 	semicolons := OrderedCollection new: 2.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnlessNode >> nodeVariables [
 	^ #(#condition #else)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnlessNode >> semicolons [
 	^ semicolons
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnlessNode >> semicolons: anOrderedCollection [
 	semicolons := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnlessNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnlessNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnlessNode >> thenToken [
 	^ thenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnlessNode >> thenToken: aSmaCCToken [
 	thenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnlessNode >> tokenVariables [
 	^ #(#unlessToken #thenToken #endToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnlessNode >> unlessToken [
 	^ unlessToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyUnlessNode >> unlessToken: aSmaCCToken [
 	unlessToken := aSmaCCToken
 ]

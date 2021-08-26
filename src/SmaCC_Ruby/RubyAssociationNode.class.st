@@ -1,63 +1,59 @@
 Class {
-	#name : #RubyAssociationNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyAssociationNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'key',
 		'arrow',
 		'value'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyAssociationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAssociation: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyAssociationNode >> arrow [
 	^ arrow
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyAssociationNode >> arrow: aSmaCCToken [
 	arrow := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyAssociationNode >> key [
 	^ key
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyAssociationNode >> key: aRubyExpressionNode [
-	self key notNil
-		ifTrue: [ self key parent: nil ].
+	self key notNil ifTrue: [ self key parent: nil ].
 	key := aRubyExpressionNode.
-	self key notNil
-		ifTrue: [ self key parent: self ]
+	self key notNil ifTrue: [ self key parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyAssociationNode >> nodeVariables [
 	^ #(#key #value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyAssociationNode >> tokenVariables [
 	^ #(#arrow)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyAssociationNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyAssociationNode >> value: aRubyExpressionNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
+	self value notNil ifTrue: [ self value parent: nil ].
 	value := aRubyExpressionNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+	self value notNil ifTrue: [ self value parent: self ]
 ]

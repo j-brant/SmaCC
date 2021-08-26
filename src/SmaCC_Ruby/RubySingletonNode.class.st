@@ -1,10 +1,10 @@
 Class {
-	#name : #RubySingletonNode,
-	#superclass : #RubyExpressionNode,
-	#category : #'SmaCC_Ruby'
+	#name : 'RubySingletonNode',
+	#superclass : 'RubyExpressionNode',
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubySingletonNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSingleton: self
 ]

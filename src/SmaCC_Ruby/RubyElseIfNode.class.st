@@ -1,6 +1,6 @@
 Class {
-	#name : #RubyElseIfNode,
-	#superclass : #RubyProgramNode,
+	#name : 'RubyElseIfNode',
+	#superclass : 'RubyProgramNode',
 	#instVars : [
 		'elsifToken',
 		'condition',
@@ -8,93 +8,91 @@ Class {
 		'thenToken',
 		'statements'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyElseIfNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitElseIf: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyElseIfNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyElseIfNode >> compositeTokenVariables [
 	^ #(#semicolons)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyElseIfNode >> condition [
 	^ condition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyElseIfNode >> condition: aRubyExpressionNode [
-	self condition notNil
-		ifTrue: [ self condition parent: nil ].
+	self condition notNil ifTrue: [ self condition parent: nil ].
 	condition := aRubyExpressionNode.
-	self condition notNil
-		ifTrue: [ self condition parent: self ]
+	self condition notNil ifTrue: [ self condition parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyElseIfNode >> elsifToken [
 	^ elsifToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyElseIfNode >> elsifToken: aSmaCCToken [
 	elsifToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyElseIfNode >> initialize [
 	super initialize.
 	semicolons := OrderedCollection new: 2.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyElseIfNode >> nodeVariables [
 	^ #(#condition)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyElseIfNode >> semicolons [
 	^ semicolons
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyElseIfNode >> semicolons: anOrderedCollection [
 	semicolons := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyElseIfNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyElseIfNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyElseIfNode >> thenToken [
 	^ thenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyElseIfNode >> thenToken: aSmaCCToken [
 	thenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyElseIfNode >> tokenVariables [
 	^ #(#elsifToken #thenToken)
 ]

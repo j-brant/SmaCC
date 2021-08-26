@@ -1,6 +1,6 @@
 Class {
-	#name : #RubyCaseNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyCaseNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'caseToken',
 		'expression',
@@ -9,107 +9,103 @@ Class {
 		'else',
 		'endToken'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCase: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseNode >> caseToken [
 	^ caseToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseNode >> caseToken: aSmaCCToken [
 	caseToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseNode >> compositeNodeVariables [
 	^ #(#options)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseNode >> compositeTokenVariables [
 	^ #(#semicolons #leftParens #rightParens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseNode >> else [
 	^ else
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseNode >> else: aRubyElseNode [
-	self else notNil
-		ifTrue: [ self else parent: nil ].
+	self else notNil ifTrue: [ self else parent: nil ].
 	else := aRubyElseNode.
-	self else notNil
-		ifTrue: [ self else parent: self ]
+	self else notNil ifTrue: [ self else parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseNode >> endToken [
 	^ endToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseNode >> endToken: aSmaCCToken [
 	endToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseNode >> expression: aRubyExpressionNode [
-	self expression notNil
-		ifTrue: [ self expression parent: nil ].
+	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aRubyExpressionNode.
-	self expression notNil
-		ifTrue: [ self expression parent: self ]
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyCaseNode >> initialize [
 	super initialize.
 	semicolons := OrderedCollection new: 2.
 	options := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseNode >> nodeVariables [
 	^ #(#expression #else)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseNode >> options [
 	^ options
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseNode >> options: anOrderedCollection [
 	self setParents: self options to: nil.
 	options := anOrderedCollection.
 	self setParents: self options to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseNode >> semicolons [
 	^ semicolons
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseNode >> semicolons: anOrderedCollection [
 	semicolons := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseNode >> tokenVariables [
 	^ #(#caseToken #endToken)
 ]

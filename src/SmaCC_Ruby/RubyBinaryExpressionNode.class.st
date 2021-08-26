@@ -1,63 +1,59 @@
 Class {
-	#name : #RubyBinaryExpressionNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyBinaryExpressionNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'left',
 		'operator',
 		'right'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBinaryExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBinaryExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBinaryExpressionNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBinaryExpressionNode >> left: aRubyExpressionNode [
-	self left notNil
-		ifTrue: [ self left parent: nil ].
+	self left notNil ifTrue: [ self left parent: nil ].
 	left := aRubyExpressionNode.
-	self left notNil
-		ifTrue: [ self left parent: self ]
+	self left notNil ifTrue: [ self left parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBinaryExpressionNode >> nodeVariables [
 	^ #(#left #right)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBinaryExpressionNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBinaryExpressionNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBinaryExpressionNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBinaryExpressionNode >> right: aRubyExpressionNode [
-	self right notNil
-		ifTrue: [ self right parent: nil ].
+	self right notNil ifTrue: [ self right parent: nil ].
 	right := aRubyExpressionNode.
-	self right notNil
-		ifTrue: [ self right parent: self ]
+	self right notNil ifTrue: [ self right parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyBinaryExpressionNode >> tokenVariables [
 	^ #(#operator)
 ]

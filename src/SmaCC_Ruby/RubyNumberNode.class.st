@@ -1,28 +1,28 @@
 Class {
-	#name : #RubyNumberNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyNumberNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'value'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyNumberNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNumber: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyNumberNode >> tokenVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyNumberNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyNumberNode >> value: aSmaCCToken [
 	value := aSmaCCToken
 ]

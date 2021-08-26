@@ -1,51 +1,51 @@
 Class {
-	#name : #RubyFileNode,
-	#superclass : #RubyProgramNode,
+	#name : 'RubyFileNode',
+	#superclass : 'RubyProgramNode',
 	#instVars : [
 		'statements',
 		'semicolons'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyFileNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFile: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyFileNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyFileNode >> compositeTokenVariables [
 	^ #(#semicolons)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyFileNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
 	semicolons := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyFileNode >> semicolons [
 	^ semicolons
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyFileNode >> semicolons: anOrderedCollection [
 	semicolons := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyFileNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyFileNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.

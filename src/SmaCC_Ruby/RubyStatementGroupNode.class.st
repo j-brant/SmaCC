@@ -1,51 +1,51 @@
 Class {
-	#name : #RubyStatementGroupNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyStatementGroupNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'statements',
 		'semicolons'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStatementGroupNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStatementGroup: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStatementGroupNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStatementGroupNode >> compositeTokenVariables [
 	^ #(#semicolons #leftParens #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyStatementGroupNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
 	semicolons := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStatementGroupNode >> semicolons [
 	^ semicolons
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStatementGroupNode >> semicolons: anOrderedCollection [
 	semicolons := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStatementGroupNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStatementGroupNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.

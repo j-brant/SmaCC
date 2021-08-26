@@ -1,6 +1,6 @@
 Class {
-	#name : #RubyEndBlockNode,
-	#superclass : #RubyProgramNode,
+	#name : 'RubyEndBlockNode',
+	#superclass : 'RubyProgramNode',
 	#instVars : [
 		'endToken',
 		'leftBrace',
@@ -8,84 +8,84 @@ Class {
 		'semicolons',
 		'rightBrace'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEndBlockNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEndBlock: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEndBlockNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEndBlockNode >> compositeTokenVariables [
 	^ #(#semicolons)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEndBlockNode >> endToken [
 	^ endToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEndBlockNode >> endToken: aSmaCCToken [
 	endToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyEndBlockNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
 	semicolons := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEndBlockNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEndBlockNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEndBlockNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEndBlockNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEndBlockNode >> semicolons [
 	^ semicolons
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEndBlockNode >> semicolons: anOrderedCollection [
 	semicolons := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEndBlockNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEndBlockNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEndBlockNode >> tokenVariables [
 	^ #(#endToken #leftBrace #rightBrace)
 ]

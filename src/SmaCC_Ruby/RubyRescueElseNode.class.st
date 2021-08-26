@@ -1,69 +1,69 @@
 Class {
-	#name : #RubyRescueElseNode,
-	#superclass : #RubyProgramNode,
+	#name : 'RubyRescueElseNode',
+	#superclass : 'RubyProgramNode',
 	#instVars : [
 		'elseToken',
 		'statements',
 		'semicolons'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueElseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitRescueElse: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueElseNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueElseNode >> compositeTokenVariables [
 	^ #(#semicolons)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueElseNode >> elseToken [
 	^ elseToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueElseNode >> elseToken: aSmaCCToken [
 	elseToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyRescueElseNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
 	semicolons := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueElseNode >> semicolons [
 	^ semicolons
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueElseNode >> semicolons: anOrderedCollection [
 	semicolons := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueElseNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueElseNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRescueElseNode >> tokenVariables [
 	^ #(#elseToken)
 ]

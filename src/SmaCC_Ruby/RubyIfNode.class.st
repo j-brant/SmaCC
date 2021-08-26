@@ -1,6 +1,6 @@
 Class {
-	#name : #RubyIfNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyIfNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'ifToken',
 		'condition',
@@ -10,71 +10,69 @@ Class {
 		'elses',
 		'endToken'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIfNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIf: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIfNode >> compositeNodeVariables [
 	^ #(#statements #elses)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIfNode >> compositeTokenVariables [
 	^ #(#semicolons #leftParens #rightParens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIfNode >> condition [
 	^ condition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIfNode >> condition: aRubyExpressionNode [
-	self condition notNil
-		ifTrue: [ self condition parent: nil ].
+	self condition notNil ifTrue: [ self condition parent: nil ].
 	condition := aRubyExpressionNode.
-	self condition notNil
-		ifTrue: [ self condition parent: self ]
+	self condition notNil ifTrue: [ self condition parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIfNode >> elses [
 	^ elses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIfNode >> elses: anOrderedCollection [
 	self setParents: self elses to: nil.
 	elses := anOrderedCollection.
 	self setParents: self elses to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIfNode >> endToken [
 	^ endToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIfNode >> endToken: aSmaCCToken [
 	endToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIfNode >> ifToken [
 	^ ifToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIfNode >> ifToken: aSmaCCToken [
 	ifToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyIfNode >> initialize [
 	super initialize.
 	semicolons := OrderedCollection new: 2.
@@ -82,44 +80,44 @@ RubyIfNode >> initialize [
 	elses := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIfNode >> nodeVariables [
 	^ #(#condition)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIfNode >> semicolons [
 	^ semicolons
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIfNode >> semicolons: anOrderedCollection [
 	semicolons := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIfNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIfNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIfNode >> thenToken [
 	^ thenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIfNode >> thenToken: aSmaCCToken [
 	thenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyIfNode >> tokenVariables [
 	^ #(#ifToken #thenToken #endToken)
 ]

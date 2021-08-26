@@ -1,6 +1,6 @@
 Class {
-	#name : #RubyCaseInNode,
-	#superclass : #RubyProgramNode,
+	#name : 'RubyCaseInNode',
+	#superclass : 'RubyProgramNode',
 	#instVars : [
 		'inToken',
 		'value',
@@ -8,93 +8,91 @@ Class {
 		'thenToken',
 		'statements'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseInNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCaseIn: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseInNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseInNode >> compositeTokenVariables [
 	^ #(#semicolons)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseInNode >> inToken [
 	^ inToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseInNode >> inToken: aSmaCCToken [
 	inToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyCaseInNode >> initialize [
 	super initialize.
 	semicolons := OrderedCollection new: 2.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseInNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseInNode >> semicolons [
 	^ semicolons
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseInNode >> semicolons: anOrderedCollection [
 	semicolons := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseInNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseInNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseInNode >> thenToken [
 	^ thenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseInNode >> thenToken: aSmaCCToken [
 	thenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseInNode >> tokenVariables [
 	^ #(#inToken #thenToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseInNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCaseInNode >> value: aRubyExpressionNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
+	self value notNil ifTrue: [ self value parent: nil ].
 	value := aRubyExpressionNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+	self value notNil ifTrue: [ self value parent: self ]
 ]

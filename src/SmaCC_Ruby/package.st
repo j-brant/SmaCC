@@ -1,1 +1,1 @@
-Package { #name : #'SmaCC_Ruby' }
+Package { #name : 'SmaCC_Ruby' }

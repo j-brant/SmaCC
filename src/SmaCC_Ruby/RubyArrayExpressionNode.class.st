@@ -1,80 +1,80 @@
 Class {
-	#name : #RubyArrayExpressionNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyArrayExpressionNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'args',
 		'commas',
 		'left',
 		'right'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyArrayExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitArrayExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyArrayExpressionNode >> args [
 	^ args
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyArrayExpressionNode >> args: anOrderedCollection [
 	self setParents: self args to: nil.
 	args := anOrderedCollection.
 	self setParents: self args to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyArrayExpressionNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyArrayExpressionNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyArrayExpressionNode >> compositeNodeVariables [
 	^ #(#args)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyArrayExpressionNode >> compositeTokenVariables [
 	^ #(#commas #leftParens #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyArrayExpressionNode >> initialize [
 	super initialize.
 	args := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyArrayExpressionNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyArrayExpressionNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyArrayExpressionNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyArrayExpressionNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyArrayExpressionNode >> tokenVariables [
 	^ #(#left #right)
 ]

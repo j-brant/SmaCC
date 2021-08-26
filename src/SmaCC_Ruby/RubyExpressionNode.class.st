@@ -1,46 +1,46 @@
 Class {
-	#name : #RubyExpressionNode,
-	#superclass : #RubyProgramNode,
+	#name : 'RubyExpressionNode',
+	#superclass : 'RubyProgramNode',
 	#instVars : [
 		'leftParens',
 		'rightParens'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyExpressionNode >> compositeTokenVariables [
 	^ #(#leftParens #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyExpressionNode >> initialize [
 	super initialize.
 	leftParens := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyExpressionNode >> leftParens [
 	^ leftParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyExpressionNode >> leftParens: anOrderedCollection [
 	leftParens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyExpressionNode >> rightParens [
 	^ rightParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyExpressionNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
 ]

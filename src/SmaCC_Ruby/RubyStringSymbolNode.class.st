@@ -1,48 +1,46 @@
 Class {
-	#name : #RubyStringSymbolNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyStringSymbolNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'colon',
 		'name'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStringSymbolNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStringSymbol: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStringSymbolNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStringSymbolNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStringSymbolNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStringSymbolNode >> name: aRubyStringNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
+	self name notNil ifTrue: [ self name parent: nil ].
 	name := aRubyStringNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStringSymbolNode >> nodeVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyStringSymbolNode >> tokenVariables [
 	^ #(#colon)
 ]

@@ -1,69 +1,69 @@
 Class {
-	#name : #RubyYieldNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyYieldNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'yieldToken',
 		'args',
 		'commas'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyYieldNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitYield: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyYieldNode >> args [
 	^ args
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyYieldNode >> args: anOrderedCollection [
 	self setParents: self args to: nil.
 	args := anOrderedCollection.
 	self setParents: self args to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyYieldNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyYieldNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyYieldNode >> compositeNodeVariables [
 	^ #(#args)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyYieldNode >> compositeTokenVariables [
 	^ #(#commas #leftParens #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyYieldNode >> initialize [
 	super initialize.
 	args := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyYieldNode >> tokenVariables [
 	^ #(#yieldToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyYieldNode >> yieldToken [
 	^ yieldToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyYieldNode >> yieldToken: aSmaCCToken [
 	yieldToken := aSmaCCToken
 ]

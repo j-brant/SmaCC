@@ -1,6 +1,6 @@
 Class {
-	#name : #RubyClassNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyClassNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'classToken',
 		'name',
@@ -12,59 +12,57 @@ Class {
 		'ensure',
 		'endToken'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitClass: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> classToken [
 	^ classToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> classToken: aSmaCCToken [
 	classToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> compositeNodeVariables [
 	^ #(#statements #rescues)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> compositeTokenVariables [
 	^ #(#semicolons #leftParens #rightParens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> endToken [
 	^ endToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> endToken: aSmaCCToken [
 	endToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> ensure [
 	^ ensure
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> ensure: aRubyEnsureNode [
-	self ensure notNil
-		ifTrue: [ self ensure parent: nil ].
+	self ensure notNil ifTrue: [ self ensure parent: nil ].
 	ensure := aRubyEnsureNode.
-	self ensure notNil
-		ifTrue: [ self ensure parent: self ]
+	self ensure notNil ifTrue: [ self ensure parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyClassNode >> initialize [
 	super initialize.
 	semicolons := OrderedCollection new: 2.
@@ -72,84 +70,80 @@ RubyClassNode >> initialize [
 	rescues := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> name: aRubyExpressionNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
+	self name notNil ifTrue: [ self name parent: nil ].
 	name := aRubyExpressionNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> nodeVariables [
 	^ #(#name #superclass #ensure)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> rescues [
 	^ rescues
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> rescues: anOrderedCollection [
 	self setParents: self rescues to: nil.
 	rescues := anOrderedCollection.
 	self setParents: self rescues to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> semicolons [
 	^ semicolons
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> semicolons: anOrderedCollection [
 	semicolons := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> superclass [
 	^ superclass
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> superclass: aRubyExpressionNode [
-	self superclass notNil
-		ifTrue: [ self superclass parent: nil ].
+	self superclass notNil ifTrue: [ self superclass parent: nil ].
 	superclass := aRubyExpressionNode.
-	self superclass notNil
-		ifTrue: [ self superclass parent: self ]
+	self superclass notNil ifTrue: [ self superclass parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyClassNode >> tokenVariables [
 	^ #(#classToken #operator #endToken)
 ]

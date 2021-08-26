@@ -1,28 +1,28 @@
 Class {
-	#name : #RubyNextNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyNextNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'nextToken'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyNextNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNext: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyNextNode >> nextToken [
 	^ nextToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyNextNode >> nextToken: aSmaCCToken [
 	nextToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyNextNode >> tokenVariables [
 	^ #(#nextToken)
 ]

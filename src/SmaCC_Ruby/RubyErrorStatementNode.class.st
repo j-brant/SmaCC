@@ -1,47 +1,43 @@
 Class {
-	#name : #RubyErrorStatementNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyErrorStatementNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'_error',
 		'statement'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyErrorStatementNode >> _error [
 	^ _error
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyErrorStatementNode >> _error: aSmaCCErrorNode [
-	self _error notNil
-		ifTrue: [ self _error parent: nil ].
+	self _error notNil ifTrue: [ self _error parent: nil ].
 	_error := aSmaCCErrorNode.
-	self _error notNil
-		ifTrue: [ self _error parent: self ]
+	self _error notNil ifTrue: [ self _error parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyErrorStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitErrorStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyErrorStatementNode >> nodeVariables [
 	^ #(#_error #statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyErrorStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyErrorStatementNode >> statement: aRubyProgramNode [
-	self statement notNil
-		ifTrue: [ self statement parent: nil ].
+	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aRubyProgramNode.
-	self statement notNil
-		ifTrue: [ self statement parent: self ]
+	self statement notNil ifTrue: [ self statement parent: self ]
 ]

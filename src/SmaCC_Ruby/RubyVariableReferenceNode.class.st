@@ -1,39 +1,39 @@
 Class {
-	#name : #RubyVariableReferenceNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyVariableReferenceNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'operator',
 		'name'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyVariableReferenceNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitVariableReference: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyVariableReferenceNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyVariableReferenceNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyVariableReferenceNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyVariableReferenceNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyVariableReferenceNode >> tokenVariables [
 	^ #(#operator #name)
 ]

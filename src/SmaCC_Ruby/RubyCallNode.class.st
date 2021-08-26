@@ -1,6 +1,6 @@
 Class {
-	#name : #RubyCallNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyCallNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'receiver',
 		'operator',
@@ -10,61 +10,62 @@ Class {
 		'blocks',
 		'left',
 		'right',
+		'yieldToken',
 		'values'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCall: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> args [
 	^ args
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> args: anOrderedCollection [
 	self setParents: self args to: nil.
 	args := anOrderedCollection.
 	self setParents: self args to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> blocks [
 	^ blocks
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> blocks: anOrderedCollection [
 	self setParents: self blocks to: nil.
 	blocks := anOrderedCollection.
 	self setParents: self blocks to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> compositeNodeVariables [
 	^ #(#args #blocks #values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> compositeTokenVariables [
 	^ #(#commas #leftParens #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyCallNode >> initialize [
 	super initialize.
 	args := OrderedCollection new: 2.
@@ -73,78 +74,86 @@ RubyCallNode >> initialize [
 	values := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> nodeVariables [
 	^ #(#receiver)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> receiver [
 	^ receiver
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> receiver: aRubyExpressionNode [
-	self receiver notNil
-		ifTrue: [ self receiver parent: nil ].
+	self receiver notNil ifTrue: [ self receiver parent: nil ].
 	receiver := aRubyExpressionNode.
-	self receiver notNil
-		ifTrue: [ self receiver parent: self ]
+	self receiver notNil ifTrue: [ self receiver parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> tokenVariables [
-	^ #(#operator #name #left #right)
+	^ #(#operator #name #left #right #yieldToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyCallNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.
 	self setParents: self values to: self
+]
+
+{ #category : 'generated' }
+RubyCallNode >> yieldToken [
+	^ yieldToken
+]
+
+{ #category : 'generated' }
+RubyCallNode >> yieldToken: aSmaCCToken [
+	yieldToken := aSmaCCToken
 ]

@@ -1,69 +1,69 @@
 Class {
-	#name : #RubyEnsureNode,
-	#superclass : #RubyProgramNode,
+	#name : 'RubyEnsureNode',
+	#superclass : 'RubyProgramNode',
 	#instVars : [
 		'ensureToken',
 		'statements',
 		'semicolons'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEnsureNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEnsure: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEnsureNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEnsureNode >> compositeTokenVariables [
 	^ #(#semicolons)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEnsureNode >> ensureToken [
 	^ ensureToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEnsureNode >> ensureToken: aSmaCCToken [
 	ensureToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyEnsureNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
 	semicolons := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEnsureNode >> semicolons [
 	^ semicolons
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEnsureNode >> semicolons: anOrderedCollection [
 	semicolons := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEnsureNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEnsureNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyEnsureNode >> tokenVariables [
 	^ #(#ensureToken)
 ]

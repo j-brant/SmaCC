@@ -1,371 +1,371 @@
 Trait {
-	#name : #TRubyProgramNodeVisitor,
+	#name : 'TRubyProgramNodeVisitor',
 	#traits : 'TSmaCCParseNodeVisitor',
 	#classTraits : 'TSmaCCParseNodeVisitor classTrait',
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitAccessExpression: anAccessExpression [
 	^ self visitExpression: anAccessExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitAliasStatement: anAliasStatement [
 	^ self visitExpression: anAliasStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitArguments: anArguments [
 	^ self visitProgram: anArguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitArrayExpression: anArrayExpression [
 	^ self visitExpression: anArrayExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitAssignment: anAssignment [
 	^ self visitExpression: anAssignment
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitAssociation: anAssociation [
 	^ self visitExpression: anAssociation
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitBeginBlock: aBeginBlock [
 	^ self visitProgram: aBeginBlock
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitBinaryExpression: aBinaryExpression [
 	^ self visitExpression: aBinaryExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitBlock: aBlock [
 	^ self visitExpression: aBlock
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitBlockArgument: aBlockArgument [
 	^ self visitProgram: aBlockArgument
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitBoolean: aBoolean [
 	^ self visitExpression: aBoolean
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitBreak: aBreak [
 	^ self visitExpression: aBreak
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitCall: aCall [
 	^ self visitExpression: aCall
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitCase: aCase [
 	^ self visitExpression: aCase
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitCaseIn: aCaseIn [
 	^ self visitProgram: aCaseIn
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitCharacter: aCharacter [
 	^ self visitExpression: aCharacter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitClass: aClass [
 	^ self visitExpression: aClass
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitConditionalExpression: aConditionalExpression [
 	^ self visitExpression: aConditionalExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitDefineFunctionExpression: aDefineFunctionExpression [
 	^ self visitExpression: aDefineFunctionExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitDefined: aDefined [
 	^ self visitExpression: aDefined
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitDictionary: aDictionary [
 	^ self visitExpression: aDictionary
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitElse: anElse [
 	^ self visitProgram: anElse
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitElseIf: anElseIf [
 	^ self visitProgram: anElseIf
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitEmptyStatement: anEmptyStatement [
 	^ self visitExpression: anEmptyStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitEndBlock: anEndBlock [
 	^ self visitProgram: anEndBlock
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitEnsure: anEnsure [
 	^ self visitProgram: anEnsure
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitErrorStatement: anErrorStatement [
 	^ self visitExpression: anErrorStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitExpression: anExpression [
 	^ self visitProgram: anExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitFile: aFile [
 	^ self visitProgram: aFile
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitFor: aFor [
 	^ self visitExpression: aFor
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitIf: anIf [
 	^ self visitExpression: anIf
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitIfModifier: anIfModifier [
 	^ self visitExpression: anIfModifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitIndexExpression: anIndexExpression [
 	^ self visitExpression: anIndexExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitKeywordRestArgument: aKeywordRestArgument [
 	^ self visitProgram: aKeywordRestArgument
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitLabel: aLabel [
 	^ self visitExpression: aLabel
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitLambda: aLambda [
 	^ self visitExpression: aLambda
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitMethod: aMethod [
 	^ self visitExpression: aMethod
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitModule: aModule [
 	^ self visitExpression: aModule
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitMultipleVariable: aMultipleVariable [
 	^ self visitExpression: aMultipleVariable
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitNext: aNext [
 	^ self visitExpression: aNext
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitNil: aNil [
 	^ self visitExpression: aNil
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitNumber: aNumber [
 	^ self visitExpression: aNumber
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitProgram: aProgram [
 	^ self visitSmaCCParseNode: aProgram
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitRangeExpression: aRangeExpression [
 	^ self visitExpression: aRangeExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitRedo: aRedo [
 	^ self visitExpression: aRedo
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitRegex: aRegex [
 	^ self visitExpression: aRegex
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitRescue: aRescue [
 	^ self visitExpression: aRescue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitRescueElse: aRescueElse [
 	^ self visitProgram: aRescueElse
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitRescueModifier: aRescueModifier [
 	^ self visitExpression: aRescueModifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitRest: aRest [
 	^ self visitProgram: aRest
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitRestArgument: aRestArgument [
 	^ self visitProgram: aRestArgument
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitRetry: aRetry [
 	^ self visitExpression: aRetry
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitReturn: aReturn [
 	^ self visitExpression: aReturn
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitSelf: aSelf [
 	^ self visitExpression: aSelf
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitSingleton: aSingleton [
 	^ self visitExpression: aSingleton
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitStar: aStar [
 	^ self visitExpression: aStar
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitStatementGroup: aStatementGroup [
 	^ self visitExpression: aStatementGroup
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitString: aString [
 	^ self visitExpression: aString
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitStringLabel: aStringLabel [
 	^ self visitExpression: aStringLabel
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitStringSymbol: aStringSymbol [
 	^ self visitExpression: aStringSymbol
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitSymbol: aSymbol [
 	^ self visitExpression: aSymbol
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitUnaryExpression: anUnaryExpression [
 	^ self visitExpression: anUnaryExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitUndefStatement: anUndefStatement [
 	^ self visitExpression: anUndefStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitUnless: anUnless [
 	^ self visitExpression: anUnless
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitUnlessModifier: anUnlessModifier [
 	^ self visitExpression: anUnlessModifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitUntil: anUntil [
 	^ self visitExpression: anUntil
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitUntilModifier: anUntilModifier [
 	^ self visitExpression: anUntilModifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitVariable: aVariable [
 	^ self visitExpression: aVariable
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitVariableReference: aVariableReference [
 	^ self visitExpression: aVariableReference
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitWhen: aWhen [
 	^ self visitProgram: aWhen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitWhile: aWhile [
 	^ self visitExpression: aWhile
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitWhileModifier: aWhileModifier [
 	^ self visitExpression: aWhileModifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TRubyProgramNodeVisitor >> visitYield: aYield [
 	^ self visitExpression: aYield
 ]

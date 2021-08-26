@@ -1,59 +1,57 @@
 Class {
-	#name : #RubyAccessExpressionNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyAccessExpressionNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'value',
 		'operator',
 		'name'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyAccessExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAccessExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyAccessExpressionNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyAccessExpressionNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyAccessExpressionNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyAccessExpressionNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyAccessExpressionNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyAccessExpressionNode >> tokenVariables [
 	^ #(#operator #name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyAccessExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyAccessExpressionNode >> value: aRubyExpressionNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
+	self value notNil ifTrue: [ self value parent: nil ].
 	value := aRubyExpressionNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+	self value notNil ifTrue: [ self value parent: self ]
 ]

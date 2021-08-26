@@ -1,28 +1,28 @@
 Class {
-	#name : #RubyRetryNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyRetryNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'retryToken'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRetryNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitRetry: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRetryNode >> retryToken [
 	^ retryToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRetryNode >> retryToken: aSmaCCToken [
 	retryToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyRetryNode >> tokenVariables [
 	^ #(#retryToken)
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : #RubyDefineFunctionExpressionNode,
-	#superclass : #RubyExpressionNode,
+	#name : 'RubyDefineFunctionExpressionNode',
+	#superclass : 'RubyExpressionNode',
 	#instVars : [
 		'defToken',
 		'name',
@@ -9,103 +9,101 @@ Class {
 		'operator',
 		'value'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDefineFunctionExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDefineFunctionExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDefineFunctionExpressionNode >> args [
 	^ args
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDefineFunctionExpressionNode >> args: anOrderedCollection [
 	self setParents: self args to: nil.
 	args := anOrderedCollection.
 	self setParents: self args to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDefineFunctionExpressionNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDefineFunctionExpressionNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDefineFunctionExpressionNode >> compositeNodeVariables [
 	^ #(#args)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDefineFunctionExpressionNode >> compositeTokenVariables [
 	^ #(#commas #leftParens #rightParens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDefineFunctionExpressionNode >> defToken [
 	^ defToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDefineFunctionExpressionNode >> defToken: aSmaCCToken [
 	defToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyDefineFunctionExpressionNode >> initialize [
 	super initialize.
 	commas := OrderedCollection new: 2.
 	args := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDefineFunctionExpressionNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDefineFunctionExpressionNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDefineFunctionExpressionNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDefineFunctionExpressionNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDefineFunctionExpressionNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDefineFunctionExpressionNode >> tokenVariables [
 	^ #(#defToken #name #operator)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDefineFunctionExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyDefineFunctionExpressionNode >> value: aRubyExpressionNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
+	self value notNil ifTrue: [ self value parent: nil ].
 	value := aRubyExpressionNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+	self value notNil ifTrue: [ self value parent: self ]
 ]

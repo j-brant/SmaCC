@@ -1,6 +1,6 @@
 Class {
-	#name : #RubyWhenNode,
-	#superclass : #RubyProgramNode,
+	#name : 'RubyWhenNode',
+	#superclass : 'RubyProgramNode',
 	#instVars : [
 		'whenToken',
 		'values',
@@ -9,35 +9,35 @@ Class {
 		'thenToken',
 		'statements'
 	],
-	#category : #'SmaCC_Ruby'
+	#category : 'SmaCC_Ruby'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyWhenNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitWhen: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyWhenNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyWhenNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyWhenNode >> compositeNodeVariables [
 	^ #(#values #statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyWhenNode >> compositeTokenVariables [
 	^ #(#commas #semicolons)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RubyWhenNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
@@ -46,61 +46,61 @@ RubyWhenNode >> initialize [
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyWhenNode >> semicolons [
 	^ semicolons
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyWhenNode >> semicolons: anOrderedCollection [
 	semicolons := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyWhenNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyWhenNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyWhenNode >> thenToken [
 	^ thenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyWhenNode >> thenToken: aSmaCCToken [
 	thenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyWhenNode >> tokenVariables [
 	^ #(#whenToken #thenToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyWhenNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyWhenNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.
 	self setParents: self values to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyWhenNode >> whenToken [
 	^ whenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RubyWhenNode >> whenToken: aSmaCCToken [
 	whenToken := aSmaCCToken
 ]
