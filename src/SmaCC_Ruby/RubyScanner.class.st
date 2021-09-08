@@ -14,27 +14,27 @@ RubyScanner class >> initializeKeywordMap [
 
 { #category : 'generated' }
 RubyScanner >> AMPERId [
-	^ 336
-]
-
-{ #category : 'generated' }
-RubyScanner >> AREFId [
 	^ 337
 ]
 
 { #category : 'generated' }
-RubyScanner >> BDOT2Id [
+RubyScanner >> AREFId [
 	^ 338
 ]
 
 { #category : 'generated' }
-RubyScanner >> BDOT3Id [
+RubyScanner >> BDOT2Id [
 	^ 339
 ]
 
 { #category : 'generated' }
-RubyScanner >> CHARId [
+RubyScanner >> BDOT3Id [
 	^ 340
+]
+
+{ #category : 'generated' }
+RubyScanner >> CHARId [
+	^ 341
 ]
 
 { #category : 'generated' }
@@ -44,7 +44,7 @@ RubyScanner >> COLON2Id [
 
 { #category : 'generated' }
 RubyScanner >> COLON3Id [
-	^ 341
+	^ 342
 ]
 
 { #category : 'generated' }
@@ -59,12 +59,12 @@ RubyScanner >> DOT3Id [
 
 { #category : 'generated' }
 RubyScanner >> DSTARId [
-	^ 342
+	^ 343
 ]
 
 { #category : 'generated' }
 RubyScanner >> FIDId [
-	^ 343
+	^ 344
 ]
 
 { #category : 'generated' }
@@ -79,7 +79,7 @@ RubyScanner >> LABELId [
 
 { #category : 'generated' }
 RubyScanner >> LBRACE_ARGId [
-	^ 344
+	^ 345
 ]
 
 { #category : 'generated' }
@@ -119,7 +119,7 @@ RubyScanner >> POWId [
 
 { #category : 'generated' }
 RubyScanner >> STARId [
-	^ 345
+	^ 346
 ]
 
 { #category : 'generated' }
@@ -134,7 +134,7 @@ RubyScanner >> UMINUS_NUMId [
 
 { #category : 'generated' }
 RubyScanner >> UPLUSId [
-	^ 346
+	^ 347
 ]
 
 { #category : 'generated' }
@@ -173,7 +173,7 @@ RubyScanner >> createPercentToken [
 
 { #category : 'generated' }
 RubyScanner >> emptySymbolTokenId [
-	^ 353
+	^ 354
 ]
 
 { #category : 'private-scanning' }
@@ -187,7 +187,7 @@ RubyScanner >> endCharacterFor: aCharacter [
 
 { #category : 'generated' }
 RubyScanner >> errorTokenId [
-	^ 354
+	^ 355
 ]
 
 { #category : 'generated' }
@@ -197,32 +197,32 @@ RubyScanner >> fidId [
 
 { #category : 'generated' }
 RubyScanner >> hereDocId [
-	^ 347
-]
-
-{ #category : 'generated' }
-RubyScanner >> interpolatedHereDocEndId [
 	^ 348
 ]
 
 { #category : 'generated' }
-RubyScanner >> interpolatedHereDocPartId [
+RubyScanner >> interpolatedHereDocEndId [
 	^ 349
 ]
 
 { #category : 'generated' }
-RubyScanner >> interpolatedPercentStringEndId [
+RubyScanner >> interpolatedHereDocPartId [
 	^ 350
 ]
 
 { #category : 'generated' }
-RubyScanner >> interpolatedPercentStringMiddleId [
+RubyScanner >> interpolatedPercentStringEndId [
 	^ 351
 ]
 
 { #category : 'generated' }
-RubyScanner >> interpolatedPercentStringStartId [
+RubyScanner >> interpolatedPercentStringMiddleId [
 	^ 352
+]
+
+{ #category : 'generated' }
+RubyScanner >> interpolatedPercentStringStartId [
+	^ 353
 ]
 
 { #category : 'generated' }

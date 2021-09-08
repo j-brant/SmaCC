@@ -10,7 +10,6 @@ Class {
 		'blocks',
 		'left',
 		'right',
-		'yieldToken',
 		'values'
 	],
 	#category : 'SmaCC_Ruby'
@@ -133,7 +132,7 @@ RubyCallNode >> right: aSmaCCToken [
 
 { #category : 'generated' }
 RubyCallNode >> tokenVariables [
-	^ #(#operator #name #left #right #yieldToken)
+	^ #(#operator #name #left #right)
 ]
 
 { #category : 'generated' }
@@ -146,14 +145,4 @@ RubyCallNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.
 	self setParents: self values to: self
-]
-
-{ #category : 'generated' }
-RubyCallNode >> yieldToken [
-	^ yieldToken
-]
-
-{ #category : 'generated' }
-RubyCallNode >> yieldToken: aSmaCCToken [
-	yieldToken := aSmaCCToken
 ]
