@@ -41,11 +41,9 @@ JSTypedParameterNode >> type [
 
 { #category : #generated }
 JSTypedParameterNode >> type: aJSTypeNode [
-	self type notNil
-		ifTrue: [ self type parent: nil ].
+	self type notNil ifTrue: [ self type parent: nil ].
 	type := aJSTypeNode.
-	self type notNil
-		ifTrue: [ self type parent: self ]
+	self type notNil ifTrue: [ self type parent: self ]
 ]
 
 { #category : #generated }
@@ -55,9 +53,7 @@ JSTypedParameterNode >> variable [
 
 { #category : #generated }
 JSTypedParameterNode >> variable: aJSProgramNode [
-	self variable notNil
-		ifTrue: [ self variable parent: nil ].
+	self variable notNil ifTrue: [ self variable parent: nil ].
 	variable := aJSProgramNode.
-	self variable notNil
-		ifTrue: [ self variable parent: self ]
+	self variable notNil ifTrue: [ self variable parent: self ]
 ]

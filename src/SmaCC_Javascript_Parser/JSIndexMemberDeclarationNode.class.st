@@ -40,9 +40,7 @@ JSIndexMemberDeclarationNode >> signature [
 
 { #category : #generated }
 JSIndexMemberDeclarationNode >> signature: aJSIndexSignatureNode [
-	self signature notNil
-		ifTrue: [ self signature parent: nil ].
+	self signature notNil ifTrue: [ self signature parent: nil ].
 	signature := aJSIndexSignatureNode.
-	self signature notNil
-		ifTrue: [ self signature parent: self ]
+	self signature notNil ifTrue: [ self signature parent: self ]
 ]

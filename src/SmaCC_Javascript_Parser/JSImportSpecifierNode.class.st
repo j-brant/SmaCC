@@ -31,11 +31,9 @@ JSImportSpecifierNode >> binding [
 
 { #category : #generated }
 JSImportSpecifierNode >> binding: aJSNameExpressionNode [
-	self binding notNil
-		ifTrue: [ self binding parent: nil ].
+	self binding notNil ifTrue: [ self binding parent: nil ].
 	binding := aJSNameExpressionNode.
-	self binding notNil
-		ifTrue: [ self binding parent: self ]
+	self binding notNil ifTrue: [ self binding parent: self ]
 ]
 
 { #category : #generated }

@@ -31,11 +31,9 @@ JSBindingPropertyNode >> element [
 
 { #category : #generated }
 JSBindingPropertyNode >> element: aJSProgramNode [
-	self element notNil
-		ifTrue: [ self element parent: nil ].
+	self element notNil ifTrue: [ self element parent: nil ].
 	element := aJSProgramNode.
-	self element notNil
-		ifTrue: [ self element parent: self ]
+	self element notNil ifTrue: [ self element parent: self ]
 ]
 
 { #category : #generated }
@@ -50,11 +48,9 @@ JSBindingPropertyNode >> name [
 
 { #category : #generated }
 JSBindingPropertyNode >> name: aJSProgramNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
+	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSProgramNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }

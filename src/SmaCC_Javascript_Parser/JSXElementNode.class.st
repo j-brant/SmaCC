@@ -21,11 +21,9 @@ JSXElementNode >> closingElement [
 
 { #category : #generated }
 JSXElementNode >> closingElement: aJSXClosingElementNode [
-	self closingElement notNil
-		ifTrue: [ self closingElement parent: nil ].
+	self closingElement notNil ifTrue: [ self closingElement parent: nil ].
 	closingElement := aJSXClosingElementNode.
-	self closingElement notNil
-		ifTrue: [ self closingElement parent: self ]
+	self closingElement notNil ifTrue: [ self closingElement parent: self ]
 ]
 
 { #category : #generated }
@@ -63,9 +61,7 @@ JSXElementNode >> openingElement [
 
 { #category : #generated }
 JSXElementNode >> openingElement: aJSXOpeningElementNode [
-	self openingElement notNil
-		ifTrue: [ self openingElement parent: nil ].
+	self openingElement notNil ifTrue: [ self openingElement parent: nil ].
 	openingElement := aJSXOpeningElementNode.
-	self openingElement notNil
-		ifTrue: [ self openingElement parent: self ]
+	self openingElement notNil ifTrue: [ self openingElement parent: self ]
 ]

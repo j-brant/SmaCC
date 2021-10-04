@@ -61,11 +61,9 @@ JSImportRequireDeclarationNode >> name [
 
 { #category : #generated }
 JSImportRequireDeclarationNode >> name: aJSNameExpressionNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
+	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSNameExpressionNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }

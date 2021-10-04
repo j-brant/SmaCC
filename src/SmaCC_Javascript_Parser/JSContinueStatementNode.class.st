@@ -36,11 +36,9 @@ JSContinueStatementNode >> label [
 
 { #category : #generated }
 JSContinueStatementNode >> label: aJSNameExpressionNode [
-	self label notNil
-		ifTrue: [ self label parent: nil ].
+	self label notNil ifTrue: [ self label parent: nil ].
 	label := aJSNameExpressionNode.
-	self label notNil
-		ifTrue: [ self label parent: self ]
+	self label notNil ifTrue: [ self label parent: self ]
 ]
 
 { #category : #generated }

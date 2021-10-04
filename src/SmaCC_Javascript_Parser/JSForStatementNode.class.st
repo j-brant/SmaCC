@@ -45,11 +45,9 @@ JSForStatementNode >> condition [
 
 { #category : #generated }
 JSForStatementNode >> condition: aJSExpressionNode [
-	self condition notNil
-		ifTrue: [ self condition parent: nil ].
+	self condition notNil ifTrue: [ self condition parent: nil ].
 	condition := aJSExpressionNode.
-	self condition notNil
-		ifTrue: [ self condition parent: self ]
+	self condition notNil ifTrue: [ self condition parent: self ]
 ]
 
 { #category : #generated }
@@ -59,11 +57,9 @@ JSForStatementNode >> declaration [
 
 { #category : #generated }
 JSForStatementNode >> declaration: aJSLexicalDeclarationNode [
-	self declaration notNil
-		ifTrue: [ self declaration parent: nil ].
+	self declaration notNil ifTrue: [ self declaration parent: nil ].
 	declaration := aJSLexicalDeclarationNode.
-	self declaration notNil
-		ifTrue: [ self declaration parent: self ]
+	self declaration notNil ifTrue: [ self declaration parent: self ]
 ]
 
 { #category : #generated }
@@ -93,11 +89,9 @@ JSForStatementNode >> initialExpression [
 
 { #category : #generated }
 JSForStatementNode >> initialExpression: aJSExpressionNode [
-	self initialExpression notNil
-		ifTrue: [ self initialExpression parent: nil ].
+	self initialExpression notNil ifTrue: [ self initialExpression parent: nil ].
 	initialExpression := aJSExpressionNode.
-	self initialExpression notNil
-		ifTrue: [ self initialExpression parent: self ]
+	self initialExpression notNil ifTrue: [ self initialExpression parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -115,11 +109,9 @@ JSForStatementNode >> iteratorExpression [
 
 { #category : #generated }
 JSForStatementNode >> iteratorExpression: aJSExpressionNode [
-	self iteratorExpression notNil
-		ifTrue: [ self iteratorExpression parent: nil ].
+	self iteratorExpression notNil ifTrue: [ self iteratorExpression parent: nil ].
 	iteratorExpression := aJSExpressionNode.
-	self iteratorExpression notNil
-		ifTrue: [ self iteratorExpression parent: self ]
+	self iteratorExpression notNil ifTrue: [ self iteratorExpression parent: self ]
 ]
 
 { #category : #generated }
@@ -164,11 +156,9 @@ JSForStatementNode >> statement [
 
 { #category : #generated }
 JSForStatementNode >> statement: aJSStatementNode [
-	self statement notNil
-		ifTrue: [ self statement parent: nil ].
+	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aJSStatementNode.
-	self statement notNil
-		ifTrue: [ self statement parent: self ]
+	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
 { #category : #generated }

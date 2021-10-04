@@ -25,11 +25,9 @@ JSIfStatementNode >> elseStatement [
 
 { #category : #generated }
 JSIfStatementNode >> elseStatement: aJSStatementNode [
-	self elseStatement notNil
-		ifTrue: [ self elseStatement parent: nil ].
+	self elseStatement notNil ifTrue: [ self elseStatement parent: nil ].
 	elseStatement := aJSStatementNode.
-	self elseStatement notNil
-		ifTrue: [ self elseStatement parent: self ]
+	self elseStatement notNil ifTrue: [ self elseStatement parent: self ]
 ]
 
 { #category : #generated }
@@ -49,11 +47,9 @@ JSIfStatementNode >> expression [
 
 { #category : #generated }
 JSIfStatementNode >> expression: aJSExpressionNode [
-	self expression notNil
-		ifTrue: [ self expression parent: nil ].
+	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aJSExpressionNode.
-	self expression notNil
-		ifTrue: [ self expression parent: self ]
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
@@ -108,9 +104,7 @@ JSIfStatementNode >> trueStatement [
 
 { #category : #generated }
 JSIfStatementNode >> trueStatement: aJSStatementNode [
-	self trueStatement notNil
-		ifTrue: [ self trueStatement parent: nil ].
+	self trueStatement notNil ifTrue: [ self trueStatement parent: nil ].
 	trueStatement := aJSStatementNode.
-	self trueStatement notNil
-		ifTrue: [ self trueStatement parent: self ]
+	self trueStatement notNil ifTrue: [ self trueStatement parent: self ]
 ]

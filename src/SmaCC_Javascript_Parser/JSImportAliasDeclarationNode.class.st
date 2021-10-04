@@ -44,11 +44,9 @@ JSImportAliasDeclarationNode >> identifier [
 
 { #category : #generated }
 JSImportAliasDeclarationNode >> identifier: aJSNameExpressionNode [
-	self identifier notNil
-		ifTrue: [ self identifier parent: nil ].
+	self identifier notNil ifTrue: [ self identifier parent: nil ].
 	identifier := aJSNameExpressionNode.
-	self identifier notNil
-		ifTrue: [ self identifier parent: self ]
+	self identifier notNil ifTrue: [ self identifier parent: self ]
 ]
 
 { #category : #generated }

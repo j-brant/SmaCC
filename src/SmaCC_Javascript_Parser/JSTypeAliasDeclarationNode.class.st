@@ -39,11 +39,9 @@ JSTypeAliasDeclarationNode >> name [
 
 { #category : #generated }
 JSTypeAliasDeclarationNode >> name: aJSNameExpressionNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
+	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSNameExpressionNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
@@ -73,11 +71,9 @@ JSTypeAliasDeclarationNode >> type [
 
 { #category : #generated }
 JSTypeAliasDeclarationNode >> type: aJSTypeNode [
-	self type notNil
-		ifTrue: [ self type parent: nil ].
+	self type notNil ifTrue: [ self type parent: nil ].
 	type := aJSTypeNode.
-	self type notNil
-		ifTrue: [ self type parent: self ]
+	self type notNil ifTrue: [ self type parent: self ]
 ]
 
 { #category : #generated }
@@ -87,11 +83,9 @@ JSTypeAliasDeclarationNode >> typeParameters [
 
 { #category : #generated }
 JSTypeAliasDeclarationNode >> typeParameters: aJSTypeParametersNode [
-	self typeParameters notNil
-		ifTrue: [ self typeParameters parent: nil ].
+	self typeParameters notNil ifTrue: [ self typeParameters parent: nil ].
 	typeParameters := aJSTypeParametersNode.
-	self typeParameters notNil
-		ifTrue: [ self typeParameters parent: self ]
+	self typeParameters notNil ifTrue: [ self typeParameters parent: self ]
 ]
 
 { #category : #generated }

@@ -53,11 +53,9 @@ JSVariablePatternDeclarationNode >> pattern [
 
 { #category : #generated }
 JSVariablePatternDeclarationNode >> pattern: aJSProgramNode [
-	self pattern notNil
-		ifTrue: [ self pattern parent: nil ].
+	self pattern notNil ifTrue: [ self pattern parent: nil ].
 	pattern := aJSProgramNode.
-	self pattern notNil
-		ifTrue: [ self pattern parent: self ]
+	self pattern notNil ifTrue: [ self pattern parent: self ]
 ]
 
 { #category : #generated }
@@ -72,11 +70,9 @@ JSVariablePatternDeclarationNode >> type [
 
 { #category : #generated }
 JSVariablePatternDeclarationNode >> type: aJSTypeNode [
-	self type notNil
-		ifTrue: [ self type parent: nil ].
+	self type notNil ifTrue: [ self type parent: nil ].
 	type := aJSTypeNode.
-	self type notNil
-		ifTrue: [ self type parent: self ]
+	self type notNil ifTrue: [ self type parent: self ]
 ]
 
 { #category : #generated }
@@ -86,9 +82,7 @@ JSVariablePatternDeclarationNode >> value [
 
 { #category : #generated }
 JSVariablePatternDeclarationNode >> value: aJSExpressionNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
+	self value notNil ifTrue: [ self value parent: nil ].
 	value := aJSExpressionNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+	self value notNil ifTrue: [ self value parent: self ]
 ]

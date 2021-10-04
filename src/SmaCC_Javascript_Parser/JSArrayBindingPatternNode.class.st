@@ -82,11 +82,9 @@ JSArrayBindingPatternNode >> restElement [
 
 { #category : #generated }
 JSArrayBindingPatternNode >> restElement: aJSRestVariableDeclarationNode [
-	self restElement notNil
-		ifTrue: [ self restElement parent: nil ].
+	self restElement notNil ifTrue: [ self restElement parent: nil ].
 	restElement := aJSRestVariableDeclarationNode.
-	self restElement notNil
-		ifTrue: [ self restElement parent: self ]
+	self restElement notNil ifTrue: [ self restElement parent: self ]
 ]
 
 { #category : #generated }

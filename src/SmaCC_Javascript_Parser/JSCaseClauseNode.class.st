@@ -22,11 +22,9 @@ JSCaseClauseNode >> caseExpression [
 
 { #category : #generated }
 JSCaseClauseNode >> caseExpression: aJSExpressionNode [
-	self caseExpression notNil
-		ifTrue: [ self caseExpression parent: nil ].
+	self caseExpression notNil ifTrue: [ self caseExpression parent: nil ].
 	caseExpression := aJSExpressionNode.
-	self caseExpression notNil
-		ifTrue: [ self caseExpression parent: self ]
+	self caseExpression notNil ifTrue: [ self caseExpression parent: self ]
 ]
 
 { #category : #generated }

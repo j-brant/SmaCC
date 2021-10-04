@@ -82,11 +82,9 @@ JSObjectBindingPatternNode >> restProperty [
 
 { #category : #generated }
 JSObjectBindingPatternNode >> restProperty: aJSBindingRestPropertyNode [
-	self restProperty notNil
-		ifTrue: [ self restProperty parent: nil ].
+	self restProperty notNil ifTrue: [ self restProperty parent: nil ].
 	restProperty := aJSBindingRestPropertyNode.
-	self restProperty notNil
-		ifTrue: [ self restProperty parent: self ]
+	self restProperty notNil ifTrue: [ self restProperty parent: self ]
 ]
 
 { #category : #generated }

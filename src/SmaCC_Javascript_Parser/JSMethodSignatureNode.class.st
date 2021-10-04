@@ -39,11 +39,9 @@ JSMethodSignatureNode >> name [
 
 { #category : #generated }
 JSMethodSignatureNode >> name: aJSProgramNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
+	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSProgramNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
@@ -78,11 +76,9 @@ JSMethodSignatureNode >> signature [
 
 { #category : #generated }
 JSMethodSignatureNode >> signature: aJSCallSignatureNode [
-	self signature notNil
-		ifTrue: [ self signature parent: nil ].
+	self signature notNil ifTrue: [ self signature parent: nil ].
 	signature := aJSCallSignatureNode.
-	self signature notNil
-		ifTrue: [ self signature parent: self ]
+	self signature notNil ifTrue: [ self signature parent: self ]
 ]
 
 { #category : #generated }
