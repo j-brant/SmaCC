@@ -73,6 +73,25 @@ SmaCCRewriteTypeMatch >> buildInterfaceIn: aPresentation [
 ]
 
 { #category : #'*SmaCC_Rewrite_Engine_UI' }
+SmaCCRewriteTypeMatch >> buildSpec2InterfaceIn: aPresentation [
+	| classes dropList |
+	classes := SmaCCParseNode withAllSubclasses asSortedCollection: [ :a :b | a name < b name ].
+	dropList := (aPresentation newDropList)
+		items: classes;
+		display: [ :class | class name ];
+		selectIndex: (classes indexOf: self nodeClass);
+		whenSelectedItemChangedDo: [ :class | self nodeClass ~= class ifTrue: [ self nodeClass: class ] ] yourself.
+	(aPresentation layout)
+		add:
+				((SpBoxLayout newHorizontal)
+						add: 'Class:' expand: false;
+						add: dropList expand: false;
+						yourself)
+			expand: false;
+		yourself
+]
+
+{ #category : #'*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewriteTypeMatch >> source [
 	^ self code
 ]

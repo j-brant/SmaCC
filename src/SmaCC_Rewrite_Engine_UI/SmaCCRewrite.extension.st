@@ -88,7 +88,7 @@ SmaCCRewrite >> buildSearchIn: aPresentation [
 
 { #category : #'*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewrite >> buildSpec2InterfaceIn: aPresentation [
-	| commentPane commentField searchPane replacePane |
+	| commentPane commentField |
 	commentField := (aPresentation newText)
 		text: self comment;
 		autoAccept: true;
@@ -103,7 +103,7 @@ SmaCCRewrite >> buildSpec2InterfaceIn: aPresentation [
 			((SpBoxLayout newVertical)
 				add: commentPane expand: false;
 				yourself).
-	self buildSpec2SearchIn: aPresentation.
+"	self buildSpec2SearchIn: aPresentation."
 	self buildSpec2ReplaceIn: aPresentation
 ]
 
@@ -144,11 +144,15 @@ SmaCCRewrite >> buildSpec2SearchIn: aPresentation [
 		selectItem: self match class type;
 		whenSelectedItemChangedDo: [ :item | self changedSearchTo: item ];
 		yourself.
-	searchPane := aPresentation newPresenter.
-	(aPresentation layout)
-		add: typeList expand: false;
-		add: searchPane.
-	self announcer when: #match do: [ match buildSpec2InterfaceIn: searchPane ].
+	searchPane := aPresentation newPresenter
+		layout:
+			((SpBoxLayout newTopToBottom)
+				add: 'search';
+				yourself) yourself.
+"	(aPresentation layout)
+		add: typeList expand: false"";
+		add: searchPane".
+	self announcer when: #match do: [ match buildSpec2InterfaceIn: aPresentation ].
 	self changed: #match
 ]
 
