@@ -69,11 +69,9 @@ JSNewExpressionNode >> expression [
 
 { #category : #generated }
 JSNewExpressionNode >> expression: aJSExpressionNode [
-	self expression notNil
-		ifTrue: [ self expression parent: nil ].
+	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aJSExpressionNode.
-	self expression notNil
-		ifTrue: [ self expression parent: self ]
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
@@ -142,11 +140,9 @@ JSNewExpressionNode >> typeArguments [
 
 { #category : #generated }
 JSNewExpressionNode >> typeArguments: aJSTypeArgumentsNode [
-	self typeArguments notNil
-		ifTrue: [ self typeArguments parent: nil ].
+	self typeArguments notNil ifTrue: [ self typeArguments parent: nil ].
 	typeArguments := aJSTypeArgumentsNode.
-	self typeArguments notNil
-		ifTrue: [ self typeArguments parent: self ]
+	self typeArguments notNil ifTrue: [ self typeArguments parent: self ]
 ]
 
 { #category : #generated }

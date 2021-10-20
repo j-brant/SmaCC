@@ -56,11 +56,9 @@ JSExportDeclarationNode >> declaration [
 
 { #category : #generated }
 JSExportDeclarationNode >> declaration: aJSProgramNode [
-	self declaration notNil
-		ifTrue: [ self declaration parent: nil ].
+	self declaration notNil ifTrue: [ self declaration parent: nil ].
 	declaration := aJSProgramNode.
-	self declaration notNil
-		ifTrue: [ self declaration parent: self ]
+	self declaration notNil ifTrue: [ self declaration parent: self ]
 ]
 
 { #category : #generated }
@@ -184,11 +182,9 @@ JSExportDeclarationNode >> statement [
 
 { #category : #generated }
 JSExportDeclarationNode >> statement: aJSProgramNode [
-	self statement notNil
-		ifTrue: [ self statement parent: nil ].
+	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aJSProgramNode.
-	self statement notNil
-		ifTrue: [ self statement parent: self ]
+	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
 { #category : #generated }

@@ -2,6 +2,7 @@ Class {
 	#name : #JSExportDefaultImplementationElementNode,
 	#superclass : #JSTSExportNode,
 	#instVars : [
+		'decorators',
 		'defaultToken',
 		'declaration',
 		'semicolon'
@@ -15,17 +16,32 @@ JSExportDefaultImplementationElementNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
+JSExportDefaultImplementationElementNode >> compositeNodeVariables [
+	^ #(#decorators)
+]
+
+{ #category : #generated }
 JSExportDefaultImplementationElementNode >> declaration [
 	^ declaration
 ]
 
 { #category : #generated }
 JSExportDefaultImplementationElementNode >> declaration: aJSProgramNode [
-	self declaration notNil
-		ifTrue: [ self declaration parent: nil ].
+	self declaration notNil ifTrue: [ self declaration parent: nil ].
 	declaration := aJSProgramNode.
-	self declaration notNil
-		ifTrue: [ self declaration parent: self ]
+	self declaration notNil ifTrue: [ self declaration parent: self ]
+]
+
+{ #category : #generated }
+JSExportDefaultImplementationElementNode >> decorators [
+	^ decorators
+]
+
+{ #category : #generated }
+JSExportDefaultImplementationElementNode >> decorators: anOrderedCollection [
+	self setParents: self decorators to: nil.
+	decorators := anOrderedCollection.
+	self setParents: self decorators to: self
 ]
 
 { #category : #generated }
@@ -41,6 +57,12 @@ JSExportDefaultImplementationElementNode >> defaultToken: aSmaCCToken [
 { #category : #generated }
 JSExportDefaultImplementationElementNode >> ignoredTokenVariables [
 	^ #(#semicolon)
+]
+
+{ #category : #'generated-initialize-release' }
+JSExportDefaultImplementationElementNode >> initialize [
+	super initialize.
+	decorators := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

@@ -1,84 +1,73 @@
 Class {
-	#name : #PyExprStmtNode,
-	#superclass : #PyRootNode,
+	#name : 'PyExprStmtNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
+		'testlist',
 		'assigns',
-		'tos',
-		'tests',
-		'commaTokens'
+		'tos'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExprStmtNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitExprStmt: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExprStmtNode >> assigns [
 	^ assigns
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExprStmtNode >> assigns: anOrderedCollection [
 	assigns := anOrderedCollection
 ]
 
-{ #category : #generated }
-PyExprStmtNode >> commaTokens [
-	^ commaTokens
-]
-
-{ #category : #generated }
-PyExprStmtNode >> commaTokens: anOrderedCollection [
-	commaTokens := anOrderedCollection
-]
-
-{ #category : #generated }
+{ #category : 'generated' }
 PyExprStmtNode >> compositeNodeVariables [
-	^ #(#tests)
+	^ #(#tos)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExprStmtNode >> compositeTokenVariables [
-	^ #(#commaTokens #assigns)
+	^ #(#assigns)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyExprStmtNode >> initialize [
 	super initialize.
-	tests := OrderedCollection new: 2.
-	commaTokens := OrderedCollection new: 2.
 	assigns := OrderedCollection new: 2.
 	tos := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
-PyExprStmtNode >> otherVariables [
-	^ #(#tos)
+{ #category : 'generated' }
+PyExprStmtNode >> nodeVariables [
+	^ #(#testlist)
 ]
 
-{ #category : #generated }
-PyExprStmtNode >> tests [
-	^ tests
+{ #category : 'generated' }
+PyExprStmtNode >> testlist [
+	^ testlist
 ]
 
-{ #category : #generated }
-PyExprStmtNode >> tests: anOrderedCollection [
-	self setParents: self tests to: nil.
-	tests := anOrderedCollection.
-	self setParents: self tests to: self
+{ #category : 'generated' }
+PyExprStmtNode >> testlist: aPyRootNode [
+	self testlist notNil
+		ifTrue: [ self testlist parent: nil ].
+	testlist := aPyRootNode.
+	self testlist notNil
+		ifTrue: [ self testlist parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExprStmtNode >> tos [
 	^ tos
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyExprStmtNode >> tos: anOrderedCollection [
-	self setParent: self tos to: nil.
+	self setParents: self tos to: nil.
 	tos := anOrderedCollection.
-	self setParent: self tos to: self
+	self setParents: self tos to: self
 ]

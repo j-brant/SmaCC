@@ -62,8 +62,7 @@ TJSProgramNodeVisitor >> visitAsyncGeneratorFunction: anAsyncGeneratorFunction [
 
 { #category : #generated }
 TJSProgramNodeVisitor >> visitAsyncGeneratorMethodDefinition: anAsyncGeneratorMethodDefinition [
-	^ self
-		visitGeneratorMethodDefinition: anAsyncGeneratorMethodDefinition
+	^ self visitGeneratorMethodDefinition: anAsyncGeneratorMethodDefinition
 ]
 
 { #category : #generated }

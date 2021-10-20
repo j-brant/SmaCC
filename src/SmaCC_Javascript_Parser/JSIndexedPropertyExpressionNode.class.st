@@ -39,11 +39,9 @@ JSIndexedPropertyExpressionNode >> fieldExpression [
 
 { #category : #generated }
 JSIndexedPropertyExpressionNode >> fieldExpression: aJSExpressionNode [
-	self fieldExpression notNil
-		ifTrue: [ self fieldExpression parent: nil ].
+	self fieldExpression notNil ifTrue: [ self fieldExpression parent: nil ].
 	fieldExpression := aJSExpressionNode.
-	self fieldExpression notNil
-		ifTrue: [ self fieldExpression parent: self ]
+	self fieldExpression notNil ifTrue: [ self fieldExpression parent: self ]
 ]
 
 { #category : #generated }

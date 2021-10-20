@@ -1,69 +1,48 @@
 Class {
-	#name : #PyReturnNode,
-	#superclass : #PyRootNode,
+	#name : 'PyReturnNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'returnToken',
-		'tests',
-		'commaTokens'
+		'testlist'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyReturnNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitReturn: self
 ]
 
-{ #category : #generated }
-PyReturnNode >> commaTokens [
-	^ commaTokens
+{ #category : 'generated' }
+PyReturnNode >> nodeVariables [
+	^ #(#testlist)
 ]
 
-{ #category : #generated }
-PyReturnNode >> commaTokens: anOrderedCollection [
-	commaTokens := anOrderedCollection
-]
-
-{ #category : #generated }
-PyReturnNode >> compositeNodeVariables [
-	^ #(#tests)
-]
-
-{ #category : #generated }
-PyReturnNode >> compositeTokenVariables [
-	^ #(#commaTokens)
-]
-
-{ #category : #'generated-initialize-release' }
-PyReturnNode >> initialize [
-	super initialize.
-	tests := OrderedCollection new: 2.
-	commaTokens := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
+{ #category : 'generated' }
 PyReturnNode >> returnToken [
 	^ returnToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyReturnNode >> returnToken: aSmaCCToken [
 	returnToken := aSmaCCToken
 ]
 
-{ #category : #generated }
-PyReturnNode >> tests [
-	^ tests
+{ #category : 'generated' }
+PyReturnNode >> testlist [
+	^ testlist
 ]
 
-{ #category : #generated }
-PyReturnNode >> tests: anOrderedCollection [
-	self setParents: self tests to: nil.
-	tests := anOrderedCollection.
-	self setParents: self tests to: self
+{ #category : 'generated' }
+PyReturnNode >> testlist: aPyRootNode [
+	self testlist notNil
+		ifTrue: [ self testlist parent: nil ].
+	testlist := aPyRootNode.
+	self testlist notNil
+		ifTrue: [ self testlist parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyReturnNode >> tokenVariables [
 	^ #(#returnToken)
 ]

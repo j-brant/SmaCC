@@ -1,6 +1,6 @@
 Class {
-	#name : #PyMoreTestsNode,
-	#superclass : #PyRootNode,
+	#name : 'PyMoreTestsNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'commaToken',
 		'test',
@@ -8,67 +8,67 @@ Class {
 		'test2',
 		'more_tests'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMoreTestsNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitMoreTests: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMoreTestsNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMoreTestsNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMoreTestsNode >> commaToken [
 	^ commaToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMoreTestsNode >> commaToken: aSmaCCToken [
 	commaToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMoreTestsNode >> more_tests [
 	^ more_tests
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMoreTestsNode >> more_tests: anObject [
 	self setParent: self more_tests to: nil.
 	more_tests := anObject.
 	self setParent: self more_tests to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMoreTestsNode >> nodeVariables [
 	^ #(#test #test2)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMoreTestsNode >> otherVariables [
 	^ #(#more_tests)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMoreTestsNode >> test [
 	^ test
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMoreTestsNode >> test2 [
 	^ test2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMoreTestsNode >> test2: aPyRootNode [
 	self test2 notNil
 		ifTrue: [ self test2 parent: nil ].
@@ -77,7 +77,7 @@ PyMoreTestsNode >> test2: aPyRootNode [
 		ifTrue: [ self test2 parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMoreTestsNode >> test: aPyRootNode [
 	self test notNil
 		ifTrue: [ self test parent: nil ].
@@ -86,7 +86,7 @@ PyMoreTestsNode >> test: aPyRootNode [
 		ifTrue: [ self test parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMoreTestsNode >> tokenVariables [
 	^ #(#commaToken #colonToken)
 ]

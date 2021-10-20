@@ -115,6 +115,7 @@ SmaCCNodeCalculation >> compileVisitor [
 		fromTraits: {traitName}.
 	self codeGenerator removeOldMethodsFrom: class.
 	self codeGenerator removeOldMethodsFrom: class theMetaClass.
+	self codeGenerator removeOldMethodsFrom: trait.
 	(SmaCCVisitorClassDefinition forClassDefinitions: self sortedClasses)
 		grammar: grammar;
 		modelClass: trait;

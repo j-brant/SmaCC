@@ -1,34 +1,34 @@
 Class {
-	#name : #PyAssertNode,
-	#superclass : #PyRootNode,
+	#name : 'PyAssertNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'assertToken',
 		'condition'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssertNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitAssert: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssertNode >> assertToken [
 	^ assertToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssertNode >> assertToken: aSmaCCToken [
 	assertToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssertNode >> condition [
 	^ condition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssertNode >> condition: aPyTestTestOptNode [
 	self condition notNil
 		ifTrue: [ self condition parent: nil ].
@@ -37,12 +37,12 @@ PyAssertNode >> condition: aPyTestTestOptNode [
 		ifTrue: [ self condition parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssertNode >> nodeVariables [
 	^ #(#condition)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssertNode >> tokenVariables [
 	^ #(#assertToken)
 ]

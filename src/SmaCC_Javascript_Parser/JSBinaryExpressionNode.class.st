@@ -21,11 +21,9 @@ JSBinaryExpressionNode >> leftExpression [
 
 { #category : #generated }
 JSBinaryExpressionNode >> leftExpression: aJSExpressionNode [
-	self leftExpression notNil
-		ifTrue: [ self leftExpression parent: nil ].
+	self leftExpression notNil ifTrue: [ self leftExpression parent: nil ].
 	leftExpression := aJSExpressionNode.
-	self leftExpression notNil
-		ifTrue: [ self leftExpression parent: self ]
+	self leftExpression notNil ifTrue: [ self leftExpression parent: self ]
 ]
 
 { #category : #generated }
@@ -50,11 +48,9 @@ JSBinaryExpressionNode >> rightExpression [
 
 { #category : #generated }
 JSBinaryExpressionNode >> rightExpression: aJSExpressionNode [
-	self rightExpression notNil
-		ifTrue: [ self rightExpression parent: nil ].
+	self rightExpression notNil ifTrue: [ self rightExpression parent: nil ].
 	rightExpression := aJSExpressionNode.
-	self rightExpression notNil
-		ifTrue: [ self rightExpression parent: self ]
+	self rightExpression notNil ifTrue: [ self rightExpression parent: self ]
 ]
 
 { #category : #generated }

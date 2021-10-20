@@ -1,80 +1,59 @@
 Class {
-	#name : #PyPrintNode,
-	#superclass : #PyRootNode,
+	#name : 'PyPrintNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'printToken',
-		'greaterThanGreaterThanToken',
-		'tests',
-		'commaTokens'
+		'testlist',
+		'greaterThanGreaterThanToken'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyPrintNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitPrint: self
 ]
 
-{ #category : #generated }
-PyPrintNode >> commaTokens [
-	^ commaTokens
-]
-
-{ #category : #generated }
-PyPrintNode >> commaTokens: anOrderedCollection [
-	commaTokens := anOrderedCollection
-]
-
-{ #category : #generated }
-PyPrintNode >> compositeNodeVariables [
-	^ #(#tests)
-]
-
-{ #category : #generated }
-PyPrintNode >> compositeTokenVariables [
-	^ #(#commaTokens)
-]
-
-{ #category : #generated }
+{ #category : 'generated' }
 PyPrintNode >> greaterThanGreaterThanToken [
 	^ greaterThanGreaterThanToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyPrintNode >> greaterThanGreaterThanToken: aSmaCCToken [
 	greaterThanGreaterThanToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
-PyPrintNode >> initialize [
-	super initialize.
-	tests := OrderedCollection new: 2.
-	commaTokens := OrderedCollection new: 2.
+{ #category : 'generated' }
+PyPrintNode >> nodeVariables [
+	^ #(#testlist)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyPrintNode >> printToken [
 	^ printToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyPrintNode >> printToken: aSmaCCToken [
 	printToken := aSmaCCToken
 ]
 
-{ #category : #generated }
-PyPrintNode >> tests [
-	^ tests
+{ #category : 'generated' }
+PyPrintNode >> testlist [
+	^ testlist
 ]
 
-{ #category : #generated }
-PyPrintNode >> tests: anOrderedCollection [
-	self setParents: self tests to: nil.
-	tests := anOrderedCollection.
-	self setParents: self tests to: self
+{ #category : 'generated' }
+PyPrintNode >> testlist: aPyRootNode [
+	self testlist notNil
+		ifTrue: [ self testlist parent: nil ].
+	testlist := aPyRootNode.
+	self testlist notNil
+		ifTrue: [ self testlist parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyPrintNode >> tokenVariables [
 	^ #(#printToken #greaterThanGreaterThanToken)
 ]

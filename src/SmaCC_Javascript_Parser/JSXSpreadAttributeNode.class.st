@@ -21,11 +21,9 @@ JSXSpreadAttributeNode >> element [
 
 { #category : #generated }
 JSXSpreadAttributeNode >> element: aJSSpreadExpressionNode [
-	self element notNil
-		ifTrue: [ self element parent: nil ].
+	self element notNil ifTrue: [ self element parent: nil ].
 	element := aJSSpreadExpressionNode.
-	self element notNil
-		ifTrue: [ self element parent: self ]
+	self element notNil ifTrue: [ self element parent: self ]
 ]
 
 { #category : #generated }

@@ -20,11 +20,9 @@ JSTaggedTemplateLiteralNode >> expression [
 
 { #category : #generated }
 JSTaggedTemplateLiteralNode >> expression: aJSExpressionNode [
-	self expression notNil
-		ifTrue: [ self expression parent: nil ].
+	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aJSExpressionNode.
-	self expression notNil
-		ifTrue: [ self expression parent: self ]
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
@@ -39,9 +37,7 @@ JSTaggedTemplateLiteralNode >> template [
 
 { #category : #generated }
 JSTaggedTemplateLiteralNode >> template: aJSTemplateLiteralNode [
-	self template notNil
-		ifTrue: [ self template parent: nil ].
+	self template notNil ifTrue: [ self template parent: nil ].
 	template := aJSTemplateLiteralNode.
-	self template notNil
-		ifTrue: [ self template parent: self ]
+	self template notNil ifTrue: [ self template parent: self ]
 ]

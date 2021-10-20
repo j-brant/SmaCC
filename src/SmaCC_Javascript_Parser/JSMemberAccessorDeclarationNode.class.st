@@ -22,11 +22,9 @@ JSMemberAccessorDeclarationNode >> accessor [
 
 { #category : #generated }
 JSMemberAccessorDeclarationNode >> accessor: aJSMethodDefinitionNode [
-	self accessor notNil
-		ifTrue: [ self accessor parent: nil ].
+	self accessor notNil ifTrue: [ self accessor parent: nil ].
 	accessor := aJSMethodDefinitionNode.
-	self accessor notNil
-		ifTrue: [ self accessor parent: self ]
+	self accessor notNil ifTrue: [ self accessor parent: self ]
 ]
 
 { #category : #generated }

@@ -24,11 +24,9 @@ JSInterfaceDeclarationNode >> extends [
 
 { #category : #generated }
 JSInterfaceDeclarationNode >> extends: aJSTypeReferenceNode [
-	self extends notNil
-		ifTrue: [ self extends parent: nil ].
+	self extends notNil ifTrue: [ self extends parent: nil ].
 	extends := aJSTypeReferenceNode.
-	self extends notNil
-		ifTrue: [ self extends parent: self ]
+	self extends notNil ifTrue: [ self extends parent: self ]
 ]
 
 { #category : #generated }
@@ -58,11 +56,9 @@ JSInterfaceDeclarationNode >> name [
 
 { #category : #generated }
 JSInterfaceDeclarationNode >> name: aJSNameExpressionNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
+	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSNameExpressionNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
@@ -82,11 +78,9 @@ JSInterfaceDeclarationNode >> type [
 
 { #category : #generated }
 JSInterfaceDeclarationNode >> type: aJSObjectTypeNode [
-	self type notNil
-		ifTrue: [ self type parent: nil ].
+	self type notNil ifTrue: [ self type parent: nil ].
 	type := aJSObjectTypeNode.
-	self type notNil
-		ifTrue: [ self type parent: self ]
+	self type notNil ifTrue: [ self type parent: self ]
 ]
 
 { #category : #generated }
@@ -96,9 +90,7 @@ JSInterfaceDeclarationNode >> typeParameters [
 
 { #category : #generated }
 JSInterfaceDeclarationNode >> typeParameters: aJSTypeParametersNode [
-	self typeParameters notNil
-		ifTrue: [ self typeParameters parent: nil ].
+	self typeParameters notNil ifTrue: [ self typeParameters parent: nil ].
 	typeParameters := aJSTypeParametersNode.
-	self typeParameters notNil
-		ifTrue: [ self typeParameters parent: self ]
+	self typeParameters notNil ifTrue: [ self typeParameters parent: self ]
 ]

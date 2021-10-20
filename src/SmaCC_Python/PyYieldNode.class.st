@@ -1,69 +1,48 @@
 Class {
-	#name : #PyYieldNode,
-	#superclass : #PyRootNode,
+	#name : 'PyYieldNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'yieldToken',
-		'tests',
-		'commaTokens'
+		'testlist'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyYieldNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitYield: self
 ]
 
-{ #category : #generated }
-PyYieldNode >> commaTokens [
-	^ commaTokens
+{ #category : 'generated' }
+PyYieldNode >> nodeVariables [
+	^ #(#testlist)
 ]
 
-{ #category : #generated }
-PyYieldNode >> commaTokens: anOrderedCollection [
-	commaTokens := anOrderedCollection
+{ #category : 'generated' }
+PyYieldNode >> testlist [
+	^ testlist
 ]
 
-{ #category : #generated }
-PyYieldNode >> compositeNodeVariables [
-	^ #(#tests)
+{ #category : 'generated' }
+PyYieldNode >> testlist: aPyRootNode [
+	self testlist notNil
+		ifTrue: [ self testlist parent: nil ].
+	testlist := aPyRootNode.
+	self testlist notNil
+		ifTrue: [ self testlist parent: self ]
 ]
 
-{ #category : #generated }
-PyYieldNode >> compositeTokenVariables [
-	^ #(#commaTokens)
-]
-
-{ #category : #'generated-initialize-release' }
-PyYieldNode >> initialize [
-	super initialize.
-	tests := OrderedCollection new: 2.
-	commaTokens := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-PyYieldNode >> tests [
-	^ tests
-]
-
-{ #category : #generated }
-PyYieldNode >> tests: anOrderedCollection [
-	self setParents: self tests to: nil.
-	tests := anOrderedCollection.
-	self setParents: self tests to: self
-]
-
-{ #category : #generated }
+{ #category : 'generated' }
 PyYieldNode >> tokenVariables [
 	^ #(#yieldToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyYieldNode >> yieldToken [
 	^ yieldToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyYieldNode >> yieldToken: aSmaCCToken [
 	yieldToken := aSmaCCToken
 ]

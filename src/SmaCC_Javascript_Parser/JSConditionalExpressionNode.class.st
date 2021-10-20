@@ -33,11 +33,9 @@ JSConditionalExpressionNode >> condition [
 
 { #category : #generated }
 JSConditionalExpressionNode >> condition: aJSExpressionNode [
-	self condition notNil
-		ifTrue: [ self condition parent: nil ].
+	self condition notNil ifTrue: [ self condition parent: nil ].
 	condition := aJSExpressionNode.
-	self condition notNil
-		ifTrue: [ self condition parent: self ]
+	self condition notNil ifTrue: [ self condition parent: self ]
 ]
 
 { #category : #generated }
@@ -47,11 +45,9 @@ JSConditionalExpressionNode >> falseExpression [
 
 { #category : #generated }
 JSConditionalExpressionNode >> falseExpression: aJSExpressionNode [
-	self falseExpression notNil
-		ifTrue: [ self falseExpression parent: nil ].
+	self falseExpression notNil ifTrue: [ self falseExpression parent: nil ].
 	falseExpression := aJSExpressionNode.
-	self falseExpression notNil
-		ifTrue: [ self falseExpression parent: self ]
+	self falseExpression notNil ifTrue: [ self falseExpression parent: self ]
 ]
 
 { #category : #generated }
@@ -86,9 +82,7 @@ JSConditionalExpressionNode >> trueExpression [
 
 { #category : #generated }
 JSConditionalExpressionNode >> trueExpression: aJSExpressionNode [
-	self trueExpression notNil
-		ifTrue: [ self trueExpression parent: nil ].
+	self trueExpression notNil ifTrue: [ self trueExpression parent: nil ].
 	trueExpression := aJSExpressionNode.
-	self trueExpression notNil
-		ifTrue: [ self trueExpression parent: self ]
+	self trueExpression notNil ifTrue: [ self trueExpression parent: self ]
 ]

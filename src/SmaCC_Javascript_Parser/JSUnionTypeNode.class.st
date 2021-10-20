@@ -21,11 +21,9 @@ JSUnionTypeNode >> leftType [
 
 { #category : #generated }
 JSUnionTypeNode >> leftType: aJSTypeNode [
-	self leftType notNil
-		ifTrue: [ self leftType parent: nil ].
+	self leftType notNil ifTrue: [ self leftType parent: nil ].
 	leftType := aJSTypeNode.
-	self leftType notNil
-		ifTrue: [ self leftType parent: self ]
+	self leftType notNil ifTrue: [ self leftType parent: self ]
 ]
 
 { #category : #generated }
@@ -50,11 +48,9 @@ JSUnionTypeNode >> rightType [
 
 { #category : #generated }
 JSUnionTypeNode >> rightType: aJSTypeNode [
-	self rightType notNil
-		ifTrue: [ self rightType parent: nil ].
+	self rightType notNil ifTrue: [ self rightType parent: nil ].
 	rightType := aJSTypeNode.
-	self rightType notNil
-		ifTrue: [ self rightType parent: self ]
+	self rightType notNil ifTrue: [ self rightType parent: self ]
 ]
 
 { #category : #generated }

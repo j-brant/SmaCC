@@ -1,6 +1,6 @@
 Class {
-	#name : #PyIfStmtNode,
-	#superclass : #PyRootNode,
+	#name : 'PyIfStmtNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'ifToken',
 		'if',
@@ -9,30 +9,30 @@ Class {
 		'elsif',
 		'else'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyIfStmtNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitIfStmt: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyIfStmtNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyIfStmtNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyIfStmtNode >> else [
 	^ else
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyIfStmtNode >> else: aPyElseNode [
 	self else notNil
 		ifTrue: [ self else parent: nil ].
@@ -41,12 +41,12 @@ PyIfStmtNode >> else: aPyElseNode [
 		ifTrue: [ self else parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyIfStmtNode >> elsif [
 	^ elsif
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyIfStmtNode >> elsif: aPyRootNode [
 	self elsif notNil
 		ifTrue: [ self elsif parent: nil ].
@@ -55,47 +55,47 @@ PyIfStmtNode >> elsif: aPyRootNode [
 		ifTrue: [ self elsif parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyIfStmtNode >> if [
 	^ if
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyIfStmtNode >> if: anOrderedCollection [
 	if := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyIfStmtNode >> ifToken [
 	^ ifToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyIfStmtNode >> ifToken: aSmaCCToken [
 	ifToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyIfStmtNode >> nodeVariables [
 	^ #(#elsif #else)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyIfStmtNode >> otherVariables [
 	^ #(#if #then)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyIfStmtNode >> then [
 	^ then
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyIfStmtNode >> then: anOrderedCollection [
 	then := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyIfStmtNode >> tokenVariables [
 	^ #(#ifToken #colonToken)
 ]

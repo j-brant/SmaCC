@@ -24,9 +24,7 @@ JSOptionalTemplateNode >> template [
 
 { #category : #generated }
 JSOptionalTemplateNode >> template: aJSTemplateLiteralNode [
-	self template notNil
-		ifTrue: [ self template parent: nil ].
+	self template notNil ifTrue: [ self template parent: nil ].
 	template := aJSTemplateLiteralNode.
-	self template notNil
-		ifTrue: [ self template parent: self ]
+	self template notNil ifTrue: [ self template parent: self ]
 ]

@@ -85,11 +85,9 @@ JSVariableDeclarationNode >> name [
 
 { #category : #generated }
 JSVariableDeclarationNode >> name: aJSNameExpressionNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
+	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSNameExpressionNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
@@ -119,11 +117,9 @@ JSVariableDeclarationNode >> type [
 
 { #category : #generated }
 JSVariableDeclarationNode >> type: aJSTypeNode [
-	self type notNil
-		ifTrue: [ self type parent: nil ].
+	self type notNil ifTrue: [ self type parent: nil ].
 	type := aJSTypeNode.
-	self type notNil
-		ifTrue: [ self type parent: self ]
+	self type notNil ifTrue: [ self type parent: self ]
 ]
 
 { #category : #generated }
@@ -133,11 +129,9 @@ JSVariableDeclarationNode >> value [
 
 { #category : #generated }
 JSVariableDeclarationNode >> value: aJSExpressionNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
+	self value notNil ifTrue: [ self value parent: nil ].
 	value := aJSExpressionNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+	self value notNil ifTrue: [ self value parent: self ]
 ]
 
 { #category : #generated }
@@ -147,9 +141,7 @@ JSVariableDeclarationNode >> variable [
 
 { #category : #generated }
 JSVariableDeclarationNode >> variable: aJSProgramNode [
-	self variable notNil
-		ifTrue: [ self variable parent: nil ].
+	self variable notNil ifTrue: [ self variable parent: nil ].
 	variable := aJSProgramNode.
-	self variable notNil
-		ifTrue: [ self variable parent: self ]
+	self variable notNil ifTrue: [ self variable parent: self ]
 ]

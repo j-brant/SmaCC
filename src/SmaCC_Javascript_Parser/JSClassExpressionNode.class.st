@@ -139,11 +139,9 @@ JSClassExpressionNode >> name [
 
 { #category : #generated }
 JSClassExpressionNode >> name: aJSNameExpressionNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
+	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSNameExpressionNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
@@ -168,11 +166,9 @@ JSClassExpressionNode >> superclass [
 
 { #category : #generated }
 JSClassExpressionNode >> superclass: aJSProgramNode [
-	self superclass notNil
-		ifTrue: [ self superclass parent: nil ].
+	self superclass notNil ifTrue: [ self superclass parent: nil ].
 	superclass := aJSProgramNode.
-	self superclass notNil
-		ifTrue: [ self superclass parent: self ]
+	self superclass notNil ifTrue: [ self superclass parent: self ]
 ]
 
 { #category : #generated }
@@ -187,11 +183,9 @@ JSClassExpressionNode >> typeParameters [
 
 { #category : #generated }
 JSClassExpressionNode >> typeParameters: aJSTypeParametersNode [
-	self typeParameters notNil
-		ifTrue: [ self typeParameters parent: nil ].
+	self typeParameters notNil ifTrue: [ self typeParameters parent: nil ].
 	typeParameters := aJSTypeParametersNode.
-	self typeParameters notNil
-		ifTrue: [ self typeParameters parent: self ]
+	self typeParameters notNil ifTrue: [ self typeParameters parent: self ]
 ]
 
 { #category : #generated }

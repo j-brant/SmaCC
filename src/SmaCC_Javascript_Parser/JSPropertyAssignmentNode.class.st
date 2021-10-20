@@ -47,11 +47,9 @@ JSPropertyAssignmentNode >> name [
 
 { #category : #generated }
 JSPropertyAssignmentNode >> name: aJSProgramNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
+	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSProgramNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
@@ -71,9 +69,7 @@ JSPropertyAssignmentNode >> value [
 
 { #category : #generated }
 JSPropertyAssignmentNode >> value: aJSExpressionNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
+	self value notNil ifTrue: [ self value parent: nil ].
 	value := aJSExpressionNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+	self value notNil ifTrue: [ self value parent: self ]
 ]

@@ -31,11 +31,9 @@ JSNameSpaceImportNode >> import [
 
 { #category : #generated }
 JSNameSpaceImportNode >> import: aJSNameExpressionNode [
-	self import notNil
-		ifTrue: [ self import parent: nil ].
+	self import notNil ifTrue: [ self import parent: nil ].
 	import := aJSNameExpressionNode.
-	self import notNil
-		ifTrue: [ self import parent: self ]
+	self import notNil ifTrue: [ self import parent: self ]
 ]
 
 { #category : #generated }

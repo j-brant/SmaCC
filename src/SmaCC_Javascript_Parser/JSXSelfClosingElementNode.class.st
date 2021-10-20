@@ -66,11 +66,9 @@ JSXSelfClosingElementNode >> name [
 
 { #category : #generated }
 JSXSelfClosingElementNode >> name: aJSProgramNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
+	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSProgramNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }

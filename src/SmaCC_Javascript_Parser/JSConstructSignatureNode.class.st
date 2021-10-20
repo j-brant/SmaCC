@@ -106,11 +106,9 @@ JSConstructSignatureNode >> restParameter [
 
 { #category : #generated }
 JSConstructSignatureNode >> restParameter: aJSRestVariableDeclarationNode [
-	self restParameter notNil
-		ifTrue: [ self restParameter parent: nil ].
+	self restParameter notNil ifTrue: [ self restParameter parent: nil ].
 	restParameter := aJSRestVariableDeclarationNode.
-	self restParameter notNil
-		ifTrue: [ self restParameter parent: self ]
+	self restParameter notNil ifTrue: [ self restParameter parent: self ]
 ]
 
 { #category : #generated }
@@ -135,11 +133,9 @@ JSConstructSignatureNode >> type [
 
 { #category : #generated }
 JSConstructSignatureNode >> type: aJSTypeNode [
-	self type notNil
-		ifTrue: [ self type parent: nil ].
+	self type notNil ifTrue: [ self type parent: nil ].
 	type := aJSTypeNode.
-	self type notNil
-		ifTrue: [ self type parent: self ]
+	self type notNil ifTrue: [ self type parent: self ]
 ]
 
 { #category : #generated }
@@ -149,9 +145,7 @@ JSConstructSignatureNode >> typeParameters [
 
 { #category : #generated }
 JSConstructSignatureNode >> typeParameters: aJSTypeParametersNode [
-	self typeParameters notNil
-		ifTrue: [ self typeParameters parent: nil ].
+	self typeParameters notNil ifTrue: [ self typeParameters parent: nil ].
 	typeParameters := aJSTypeParametersNode.
-	self typeParameters notNil
-		ifTrue: [ self typeParameters parent: self ]
+	self typeParameters notNil ifTrue: [ self typeParameters parent: self ]
 ]

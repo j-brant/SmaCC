@@ -21,11 +21,9 @@ JSAssignmentExpressionNode >> lhs [
 
 { #category : #generated }
 JSAssignmentExpressionNode >> lhs: aJSExpressionNode [
-	self lhs notNil
-		ifTrue: [ self lhs parent: nil ].
+	self lhs notNil ifTrue: [ self lhs parent: nil ].
 	lhs := aJSExpressionNode.
-	self lhs notNil
-		ifTrue: [ self lhs parent: self ]
+	self lhs notNil ifTrue: [ self lhs parent: self ]
 ]
 
 { #category : #generated }
@@ -50,11 +48,9 @@ JSAssignmentExpressionNode >> rhs [
 
 { #category : #generated }
 JSAssignmentExpressionNode >> rhs: aJSExpressionNode [
-	self rhs notNil
-		ifTrue: [ self rhs parent: nil ].
+	self rhs notNil ifTrue: [ self rhs parent: nil ].
 	rhs := aJSExpressionNode.
-	self rhs notNil
-		ifTrue: [ self rhs parent: self ]
+	self rhs notNil ifTrue: [ self rhs parent: self ]
 ]
 
 { #category : #generated }

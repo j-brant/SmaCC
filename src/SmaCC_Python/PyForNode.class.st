@@ -1,73 +1,73 @@
 Class {
-	#name : #PyForNode,
-	#superclass : #PyRootNode,
+	#name : 'PyForNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'forToken',
+		'exprs',
 		'commaTokens',
-		'tests',
+		'inToken',
+		'testlist',
+		'colonToken',
+		'statements',
 		'nEWLINEToken',
 		'iNDENTToken',
 		'dEDENTToken',
-		'exprs',
-		'inToken',
-		'else',
-		'statements',
-		'colonToken'
+		'else'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitFor: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> compositeNodeVariables [
-	^ #(#exprs #tests #statements)
+	^ #(#exprs #statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> dEDENTToken [
 	^ dEDENTToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> dEDENTToken: aSmaCCToken [
 	dEDENTToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> else [
 	^ else
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> else: aPyElseNode [
 	self else notNil
 		ifTrue: [ self else parent: nil ].
@@ -76,97 +76,98 @@ PyForNode >> else: aPyElseNode [
 		ifTrue: [ self else parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> exprs [
 	^ exprs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> exprs: anOrderedCollection [
 	self setParents: self exprs to: nil.
 	exprs := anOrderedCollection.
 	self setParents: self exprs to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> forToken [
 	^ forToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> forToken: aSmaCCToken [
 	forToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> iNDENTToken [
 	^ iNDENTToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> iNDENTToken: aSmaCCToken [
 	iNDENTToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> inToken [
 	^ inToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> inToken: aSmaCCToken [
 	inToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyForNode >> initialize [
 	super initialize.
 	exprs := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
-	tests := OrderedCollection new: 2.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> nEWLINEToken [
 	^ nEWLINEToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> nEWLINEToken: aSmaCCToken [
 	nEWLINEToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> nodeVariables [
-	^ #(#else)
+	^ #(#testlist #else)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
-PyForNode >> tests [
-	^ tests
+{ #category : 'generated' }
+PyForNode >> testlist [
+	^ testlist
 ]
 
-{ #category : #generated }
-PyForNode >> tests: anOrderedCollection [
-	self setParents: self tests to: nil.
-	tests := anOrderedCollection.
-	self setParents: self tests to: self
+{ #category : 'generated' }
+PyForNode >> testlist: aPyRootNode [
+	self testlist notNil
+		ifTrue: [ self testlist parent: nil ].
+	testlist := aPyRootNode.
+	self testlist notNil
+		ifTrue: [ self testlist parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForNode >> tokenVariables [
 	^ #(#forToken #inToken #colonToken #nEWLINEToken #iNDENTToken #dEDENTToken)
 ]

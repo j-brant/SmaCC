@@ -20,11 +20,9 @@ JSAmbientDeclarationNode >> declaration [
 
 { #category : #generated }
 JSAmbientDeclarationNode >> declaration: aJSProgramNode [
-	self declaration notNil
-		ifTrue: [ self declaration parent: nil ].
+	self declaration notNil ifTrue: [ self declaration parent: nil ].
 	declaration := aJSProgramNode.
-	self declaration notNil
-		ifTrue: [ self declaration parent: self ]
+	self declaration notNil ifTrue: [ self declaration parent: self ]
 ]
 
 { #category : #generated }

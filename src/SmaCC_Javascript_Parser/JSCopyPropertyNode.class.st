@@ -35,11 +35,9 @@ JSCopyPropertyNode >> object [
 
 { #category : #generated }
 JSCopyPropertyNode >> object: aJSExpressionNode [
-	self object notNil
-		ifTrue: [ self object parent: nil ].
+	self object notNil ifTrue: [ self object parent: nil ].
 	object := aJSExpressionNode.
-	self object notNil
-		ifTrue: [ self object parent: self ]
+	self object notNil ifTrue: [ self object parent: self ]
 ]
 
 { #category : #generated }

@@ -127,11 +127,9 @@ JSSuperCallExpressionNode >> typeArguments [
 
 { #category : #generated }
 JSSuperCallExpressionNode >> typeArguments: aJSTypeArgumentsNode [
-	self typeArguments notNil
-		ifTrue: [ self typeArguments parent: nil ].
+	self typeArguments notNil ifTrue: [ self typeArguments parent: nil ].
 	typeArguments := aJSTypeArgumentsNode.
-	self typeArguments notNil
-		ifTrue: [ self typeArguments parent: self ]
+	self typeArguments notNil ifTrue: [ self typeArguments parent: self ]
 ]
 
 { #category : #generated }

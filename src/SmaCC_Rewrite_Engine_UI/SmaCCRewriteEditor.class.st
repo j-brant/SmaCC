@@ -12,11 +12,10 @@ SmaCCRewriteEditor >> addFileRuleTo: aRewriteFile [
 	| rewrite filename |
 	aRewriteFile isNil
 		ifTrue: [ ^ self ].
-	filename := UITheme current
-		fileSaveIn: UITheme builder
-		title: 'Enter rewrite rule file name'
+	filename := UIManager default
+		chooseForSaveFileReference: 'Enter rewrite rule file name'
 		extensions: #('rw')
-		path: nil.
+		path: FileSystem workingDirectory.
 	filename isNil
 		ifTrue: [ ^ self ].
 	rewrite := filename asFileReference exists

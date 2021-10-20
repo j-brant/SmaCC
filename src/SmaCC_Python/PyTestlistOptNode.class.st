@@ -1,28 +1,28 @@
 Class {
-	#name : #PyTestlistOptNode,
-	#superclass : #PyRootNode,
+	#name : 'PyTestlistOptNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'tests'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestlistOptNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitTestlistOpt: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestlistOptNode >> nodeVariables [
 	^ #(#tests)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestlistOptNode >> tests [
 	^ tests
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestlistOptNode >> tests: aPyTestlistNode [
 	self tests notNil
 		ifTrue: [ self tests parent: nil ].

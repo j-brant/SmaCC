@@ -1,34 +1,34 @@
 Class {
-	#name : #PyStatementsNode,
-	#superclass : #PyRootNode,
+	#name : 'PyStatementsNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'statements'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementsNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitStatements: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementsNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyStatementsNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementsNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementsNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.

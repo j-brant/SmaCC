@@ -23,11 +23,9 @@ JSWhileStatementNode >> expression [
 
 { #category : #generated }
 JSWhileStatementNode >> expression: aJSExpressionNode [
-	self expression notNil
-		ifTrue: [ self expression parent: nil ].
+	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aJSExpressionNode.
-	self expression notNil
-		ifTrue: [ self expression parent: self ]
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
@@ -67,11 +65,9 @@ JSWhileStatementNode >> statement [
 
 { #category : #generated }
 JSWhileStatementNode >> statement: aJSStatementNode [
-	self statement notNil
-		ifTrue: [ self statement parent: nil ].
+	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aJSStatementNode.
-	self statement notNil
-		ifTrue: [ self statement parent: self ]
+	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
 { #category : #generated }

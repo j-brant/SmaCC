@@ -20,7 +20,7 @@ SmaCCParserSimulator class >> csharpIfStatement [
 	(Smalltalk includesKey: #CSharpParser)
 		ifFalse: [ ^ nil ].
 	simulator := SmaCCParserSimulator
-		on: #CSharpParser asClass definitionString.
+		on: #CSharpParser asClass parserDefinitionString.
 	simulator setupFor: 'if_statement'.
 	result := (simulator simulateParse: 'if (a == 2) return 4;') first.
 	self assert: result rhs productionSymbol name = 'if_statement'.
@@ -39,7 +39,7 @@ SmaCCParserSimulator class >> csharpIncompleteIfStatement [
 	(Smalltalk includesKey: #CSharpParser)
 		ifFalse: [ ^ nil ].
 	simulator := SmaCCParserSimulator
-		on: #CSharpParser asClass definitionString.
+		on: #CSharpParser asClass parserDefinitionString.
 	simulator setupFor: 'if_statement'.
 	[ simulator simulateParse: 'if (a == 2' ]
 		on: SmaCCParserSimulationError
@@ -56,7 +56,7 @@ SmaCCParserSimulator class >> csharpInvalidInput [
 	(Smalltalk includesKey: #CSharpParser)
 		ifFalse: [ ^ nil ].
 	simulator := SmaCCParserSimulator
-		on: #CSharpParser asClass definitionString.
+		on: #CSharpParser asClass parserDefinitionString.
 	simulator setupFor: 'if_statement'.
 	[ simulator simulateParse: 'if (if = 3) return 3;' ]
 		on: SmaCCParserSimulationError
@@ -74,7 +74,7 @@ SmaCCParserSimulator class >> csharpInvalidToken [
 	(Smalltalk includesKey: #CSharpParser)
 		ifFalse: [ ^ nil ].
 	simulator := SmaCCParserSimulator
-		on: #CSharpParser asClass definitionString.
+		on: #CSharpParser asClass parserDefinitionString.
 	simulator setupFor: 'if_statement'.
 	[ simulator simulateParse: 'if (''' ]
 		on: SmaCCParserSimulationError
@@ -91,7 +91,7 @@ SmaCCParserSimulator class >> javaAmbiguousActions [
 	(Smalltalk includesKey: #JavaParser)
 		ifFalse: [ ^ nil ].
 	simulator := SmaCCParserSimulator
-		on: #JavaParser asClass definitionString.
+		on: #JavaParser asClass parserDefinitionString.
 	simulator setupFor: 'expression'.
 	items := simulator simulateParse: 'a(b)'.
 	self assert: items size = 1.

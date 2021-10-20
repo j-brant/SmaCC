@@ -1,6 +1,6 @@
 Class {
-	#name : #PyTestNode,
-	#superclass : #PyRootNode,
+	#name : 'PyTestNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'trailers',
 		'one',
@@ -11,20 +11,20 @@ Class {
 		'elseToken',
 		'else'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitTest: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestNode >> else [
 	^ else
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestNode >> else: aPyRootNode [
 	self else notNil
 		ifTrue: [ self else parent: nil ].
@@ -33,22 +33,22 @@ PyTestNode >> else: aPyRootNode [
 		ifTrue: [ self else parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestNode >> elseToken [
 	^ elseToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestNode >> elseToken: aSmaCCToken [
 	elseToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestNode >> if [
 	^ if
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestNode >> if: aPyRootNode [
 	self if notNil
 		ifTrue: [ self if parent: nil ].
@@ -57,33 +57,33 @@ PyTestNode >> if: aPyRootNode [
 		ifTrue: [ self if parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestNode >> ifToken [
 	^ ifToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestNode >> ifToken: aSmaCCToken [
 	ifToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyTestNode >> initialize [
 	super initialize.
 	trailers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestNode >> nodeVariables [
 	^ #(#one #two #if #else)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestNode >> one [
 	^ one
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestNode >> one: aPyRootNode [
 	self one notNil
 		ifTrue: [ self one parent: nil ].
@@ -92,49 +92,49 @@ PyTestNode >> one: aPyRootNode [
 		ifTrue: [ self one parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestNode >> orToken [
 	^ orToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestNode >> orToken: aSmaCCToken [
 	orToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestNode >> otherVariables [
 	^ #(#trailers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestNode >> pluralVariablesMap [
 	^ Dictionary new
 		at: 'trailer' put: 'trailers';
 		yourself
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestNode >> tokenVariables [
 	^ #(#orToken #ifToken #elseToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestNode >> trailers [
 	^ trailers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestNode >> trailers: anOrderedCollection [
 	trailers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestNode >> two [
 	^ two
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTestNode >> two: aPyRootNode [
 	self two notNil
 		ifTrue: [ self two parent: nil ].

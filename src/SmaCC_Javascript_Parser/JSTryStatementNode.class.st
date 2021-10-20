@@ -27,11 +27,9 @@ JSTryStatementNode >> catchBlock [
 
 { #category : #generated }
 JSTryStatementNode >> catchBlock: aJSBlockStatementNode [
-	self catchBlock notNil
-		ifTrue: [ self catchBlock parent: nil ].
+	self catchBlock notNil ifTrue: [ self catchBlock parent: nil ].
 	catchBlock := aJSBlockStatementNode.
-	self catchBlock notNil
-		ifTrue: [ self catchBlock parent: self ]
+	self catchBlock notNil ifTrue: [ self catchBlock parent: self ]
 ]
 
 { #category : #generated }
@@ -51,11 +49,9 @@ JSTryStatementNode >> exceptionType [
 
 { #category : #generated }
 JSTryStatementNode >> exceptionType: aJSProgramNode [
-	self exceptionType notNil
-		ifTrue: [ self exceptionType parent: nil ].
+	self exceptionType notNil ifTrue: [ self exceptionType parent: nil ].
 	exceptionType := aJSProgramNode.
-	self exceptionType notNil
-		ifTrue: [ self exceptionType parent: self ]
+	self exceptionType notNil ifTrue: [ self exceptionType parent: self ]
 ]
 
 { #category : #generated }
@@ -65,11 +61,9 @@ JSTryStatementNode >> finallyBlock [
 
 { #category : #generated }
 JSTryStatementNode >> finallyBlock: aJSBlockStatementNode [
-	self finallyBlock notNil
-		ifTrue: [ self finallyBlock parent: nil ].
+	self finallyBlock notNil ifTrue: [ self finallyBlock parent: nil ].
 	finallyBlock := aJSBlockStatementNode.
-	self finallyBlock notNil
-		ifTrue: [ self finallyBlock parent: self ]
+	self finallyBlock notNil ifTrue: [ self finallyBlock parent: self ]
 ]
 
 { #category : #generated }
@@ -124,11 +118,9 @@ JSTryStatementNode >> tryBlock [
 
 { #category : #generated }
 JSTryStatementNode >> tryBlock: aJSBlockStatementNode [
-	self tryBlock notNil
-		ifTrue: [ self tryBlock parent: nil ].
+	self tryBlock notNil ifTrue: [ self tryBlock parent: nil ].
 	tryBlock := aJSBlockStatementNode.
-	self tryBlock notNil
-		ifTrue: [ self tryBlock parent: self ]
+	self tryBlock notNil ifTrue: [ self tryBlock parent: self ]
 ]
 
 { #category : #generated }

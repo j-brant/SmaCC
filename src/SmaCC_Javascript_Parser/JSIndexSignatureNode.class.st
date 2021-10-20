@@ -60,11 +60,9 @@ JSIndexSignatureNode >> name [
 
 { #category : #generated }
 JSIndexSignatureNode >> name: aJSNameExpressionNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
+	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSNameExpressionNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
@@ -94,11 +92,9 @@ JSIndexSignatureNode >> type [
 
 { #category : #generated }
 JSIndexSignatureNode >> type: aJSTypeNode [
-	self type notNil
-		ifTrue: [ self type parent: nil ].
+	self type notNil ifTrue: [ self type parent: nil ].
 	type := aJSTypeNode.
-	self type notNil
-		ifTrue: [ self type parent: self ]
+	self type notNil ifTrue: [ self type parent: self ]
 ]
 
 { #category : #generated }

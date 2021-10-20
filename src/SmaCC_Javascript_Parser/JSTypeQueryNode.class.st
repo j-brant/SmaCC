@@ -20,11 +20,9 @@ JSTypeQueryNode >> expression [
 
 { #category : #generated }
 JSTypeQueryNode >> expression: aJSTypeQueryExpressionNode [
-	self expression notNil
-		ifTrue: [ self expression parent: nil ].
+	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aJSTypeQueryExpressionNode.
-	self expression notNil
-		ifTrue: [ self expression parent: self ]
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }

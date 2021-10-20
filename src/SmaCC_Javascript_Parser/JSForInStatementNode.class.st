@@ -26,11 +26,9 @@ JSForInStatementNode >> expression [
 
 { #category : #generated }
 JSForInStatementNode >> expression: aJSExpressionNode [
-	self expression notNil
-		ifTrue: [ self expression parent: nil ].
+	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aJSExpressionNode.
-	self expression notNil
-		ifTrue: [ self expression parent: self ]
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
@@ -90,11 +88,9 @@ JSForInStatementNode >> statement [
 
 { #category : #generated }
 JSForInStatementNode >> statement: aJSStatementNode [
-	self statement notNil
-		ifTrue: [ self statement parent: nil ].
+	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aJSStatementNode.
-	self statement notNil
-		ifTrue: [ self statement parent: self ]
+	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
 { #category : #generated }
@@ -119,9 +115,7 @@ JSForInStatementNode >> variable [
 
 { #category : #generated }
 JSForInStatementNode >> variable: aJSProgramNode [
-	self variable notNil
-		ifTrue: [ self variable parent: nil ].
+	self variable notNil ifTrue: [ self variable parent: nil ].
 	variable := aJSProgramNode.
-	self variable notNil
-		ifTrue: [ self variable parent: self ]
+	self variable notNil ifTrue: [ self variable parent: self ]
 ]

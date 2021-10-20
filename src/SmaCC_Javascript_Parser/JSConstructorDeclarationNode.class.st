@@ -145,11 +145,9 @@ JSConstructorDeclarationNode >> restParameter [
 
 { #category : #generated }
 JSConstructorDeclarationNode >> restParameter: aJSRestVariableDeclarationNode [
-	self restParameter notNil
-		ifTrue: [ self restParameter parent: nil ].
+	self restParameter notNil ifTrue: [ self restParameter parent: nil ].
 	restParameter := aJSRestVariableDeclarationNode.
-	self restParameter notNil
-		ifTrue: [ self restParameter parent: self ]
+	self restParameter notNil ifTrue: [ self restParameter parent: self ]
 ]
 
 { #category : #generated }

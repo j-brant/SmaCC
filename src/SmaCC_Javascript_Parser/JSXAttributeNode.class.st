@@ -31,11 +31,9 @@ JSXAttributeNode >> name [
 
 { #category : #generated }
 JSXAttributeNode >> name: aJSProgramNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
+	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSProgramNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
@@ -55,9 +53,7 @@ JSXAttributeNode >> value [
 
 { #category : #generated }
 JSXAttributeNode >> value: aJSExpressionNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
+	self value notNil ifTrue: [ self value parent: nil ].
 	value := aJSExpressionNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+	self value notNil ifTrue: [ self value parent: self ]
 ]
