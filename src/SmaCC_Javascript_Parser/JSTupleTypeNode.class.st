@@ -43,8 +43,8 @@ JSTupleTypeNode >> ignoredTokenVariables [
 { #category : #'generated-initialize-release' }
 JSTupleTypeNode >> initialize [
 	super initialize.
-	types := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
+	types := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
