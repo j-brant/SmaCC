@@ -238,7 +238,7 @@ SmaCCRewriteMatchContext >> debugMethod: aMethod message: aString [
 	[ process suspend.
 	process suspendedContext: newContext.
 	process restartTop.
-	process debug: newContext title: 'Debugging ' , aString full: true ] forkAt: process priority + 1
+	process debugWithTitle: 'Debugging ' , aString ] forkAt: process priority + 1
 ]
 
 { #category : #'source editing' }
