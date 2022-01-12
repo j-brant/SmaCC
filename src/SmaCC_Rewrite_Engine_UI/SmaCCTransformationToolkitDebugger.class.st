@@ -16,17 +16,12 @@ SmaCCTransformationToolkitDebugger class >> defaultTitle [
 
 { #category : #testing }
 SmaCCTransformationToolkitDebugger class >> handlesContext: aContext [
-	^ (aContext findContextSuchThat: [ :each | self isTransformationContext: each ]) notNil
+	^ SmaCCTransformationToolkitDebugSession handlesContext: aContext
 ]
 
 { #category : #'class initialization' }
 SmaCCTransformationToolkitDebugger class >> initialize [
 	self register
-]
-
-{ #category : #testing }
-SmaCCTransformationToolkitDebugger class >> isTransformationContext: each [
-	^ each selector = #rewriteTree: and: [ each receiver isKindOf: SmaCCRewriteEngine ]
 ]
 
 { #category : #'tools registry' }
