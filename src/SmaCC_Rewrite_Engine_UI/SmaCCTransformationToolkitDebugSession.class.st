@@ -26,7 +26,7 @@ SmaCCTransformationToolkitDebugSession class >> handlesContext: aContext [
 { #category : #accessing }
 SmaCCTransformationToolkitDebugSession class >> isRewriteContext: context [
 	^ (context receiver isKindOf: SmaCCRewriteMatchContext)
-		and: [ (SmaCCRewriteMatchContext methodDictionary at: context selector ifAbsent: [ nil ]) ~~ context method ]
+		and: [ (SmaCCRewriteMatchContext methodDictionary at: context selector ifAbsent: [ nil ]) ~~ context method method "Works in P8 & P9" ]
 ]
 
 { #category : #testing }
