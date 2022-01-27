@@ -24,11 +24,9 @@ TeradataSubstringExpressionNode >> for [
 
 { #category : #generated }
 TeradataSubstringExpressionNode >> for: aTeradataExpressionNode [
-	self for notNil
-		ifTrue: [ self for parent: nil ].
+	self for notNil ifTrue: [ self for parent: nil ].
 	for := aTeradataExpressionNode.
-	self for notNil
-		ifTrue: [ self for parent: self ]
+	self for notNil ifTrue: [ self for parent: self ]
 ]
 
 { #category : #generated }
@@ -48,11 +46,9 @@ TeradataSubstringExpressionNode >> from [
 
 { #category : #generated }
 TeradataSubstringExpressionNode >> from: aTeradataExpressionNode [
-	self from notNil
-		ifTrue: [ self from parent: nil ].
+	self from notNil ifTrue: [ self from parent: nil ].
 	from := aTeradataExpressionNode.
-	self from notNil
-		ifTrue: [ self from parent: self ]
+	self from notNil ifTrue: [ self from parent: self ]
 ]
 
 { #category : #generated }
@@ -92,9 +88,7 @@ TeradataSubstringExpressionNode >> value [
 
 { #category : #generated }
 TeradataSubstringExpressionNode >> value: aTeradataExpressionNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
+	self value notNil ifTrue: [ self value parent: nil ].
 	value := aTeradataExpressionNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+	self value notNil ifTrue: [ self value parent: self ]
 ]

@@ -46,11 +46,9 @@ TeradataExceptQueryNode >> left [
 
 { #category : #generated }
 TeradataExceptQueryNode >> left: aTeradataProgramNode [
-	self left notNil
-		ifTrue: [ self left parent: nil ].
+	self left notNil ifTrue: [ self left parent: nil ].
 	left := aTeradataProgramNode.
-	self left notNil
-		ifTrue: [ self left parent: self ]
+	self left notNil ifTrue: [ self left parent: self ]
 ]
 
 { #category : #generated }
@@ -75,11 +73,9 @@ TeradataExceptQueryNode >> orderBy [
 
 { #category : #generated }
 TeradataExceptQueryNode >> orderBy: aTeradataOrderByExpressionNode [
-	self orderBy notNil
-		ifTrue: [ self orderBy parent: nil ].
+	self orderBy notNil ifTrue: [ self orderBy parent: nil ].
 	orderBy := aTeradataOrderByExpressionNode.
-	self orderBy notNil
-		ifTrue: [ self orderBy parent: self ]
+	self orderBy notNil ifTrue: [ self orderBy parent: self ]
 ]
 
 { #category : #generated }
@@ -89,11 +85,9 @@ TeradataExceptQueryNode >> right [
 
 { #category : #generated }
 TeradataExceptQueryNode >> right: aTeradataProgramNode [
-	self right notNil
-		ifTrue: [ self right parent: nil ].
+	self right notNil ifTrue: [ self right parent: nil ].
 	right := aTeradataProgramNode.
-	self right notNil
-		ifTrue: [ self right parent: self ]
+	self right notNil ifTrue: [ self right parent: self ]
 ]
 
 { #category : #generated }

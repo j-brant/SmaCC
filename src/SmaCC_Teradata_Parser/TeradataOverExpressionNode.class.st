@@ -98,11 +98,9 @@ TeradataOverExpressionNode >> orderBy [
 
 { #category : #generated }
 TeradataOverExpressionNode >> orderBy: aTeradataOrderByExpressionNode [
-	self orderBy notNil
-		ifTrue: [ self orderBy parent: nil ].
+	self orderBy notNil ifTrue: [ self orderBy parent: nil ].
 	orderBy := aTeradataOrderByExpressionNode.
-	self orderBy notNil
-		ifTrue: [ self orderBy parent: self ]
+	self orderBy notNil ifTrue: [ self orderBy parent: self ]
 ]
 
 { #category : #generated }
@@ -122,11 +120,9 @@ TeradataOverExpressionNode >> partition [
 
 { #category : #generated }
 TeradataOverExpressionNode >> partition: aTeradataPartitionByExpressionNode [
-	self partition notNil
-		ifTrue: [ self partition parent: nil ].
+	self partition notNil ifTrue: [ self partition parent: nil ].
 	partition := aTeradataPartitionByExpressionNode.
-	self partition notNil
-		ifTrue: [ self partition parent: self ]
+	self partition notNil ifTrue: [ self partition parent: self ]
 ]
 
 { #category : #generated }
@@ -191,9 +187,7 @@ TeradataOverExpressionNode >> value [
 
 { #category : #generated }
 TeradataOverExpressionNode >> value: aTeradataExpressionNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
+	self value notNil ifTrue: [ self value parent: nil ].
 	value := aTeradataExpressionNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+	self value notNil ifTrue: [ self value parent: self ]
 ]

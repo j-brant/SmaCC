@@ -24,11 +24,9 @@ TeradataLikeExpressionNode >> escape [
 
 { #category : #generated }
 TeradataLikeExpressionNode >> escape: aTeradataExpressionNode [
-	self escape notNil
-		ifTrue: [ self escape parent: nil ].
+	self escape notNil ifTrue: [ self escape parent: nil ].
 	escape := aTeradataExpressionNode.
-	self escape notNil
-		ifTrue: [ self escape parent: self ]
+	self escape notNil ifTrue: [ self escape parent: self ]
 ]
 
 { #category : #generated }
@@ -48,11 +46,9 @@ TeradataLikeExpressionNode >> like [
 
 { #category : #generated }
 TeradataLikeExpressionNode >> like: aTeradataExpressionNode [
-	self like notNil
-		ifTrue: [ self like parent: nil ].
+	self like notNil ifTrue: [ self like parent: nil ].
 	like := aTeradataExpressionNode.
-	self like notNil
-		ifTrue: [ self like parent: self ]
+	self like notNil ifTrue: [ self like parent: self ]
 ]
 
 { #category : #generated }
@@ -92,9 +88,7 @@ TeradataLikeExpressionNode >> value [
 
 { #category : #generated }
 TeradataLikeExpressionNode >> value: aTeradataExpressionNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
+	self value notNil ifTrue: [ self value parent: nil ].
 	value := aTeradataExpressionNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+	self value notNil ifTrue: [ self value parent: self ]
 ]

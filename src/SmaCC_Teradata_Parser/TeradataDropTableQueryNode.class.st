@@ -36,11 +36,9 @@ TeradataDropTableQueryNode >> table [
 
 { #category : #generated }
 TeradataDropTableQueryNode >> table: aTeradataTableNode [
-	self table notNil
-		ifTrue: [ self table parent: nil ].
+	self table notNil ifTrue: [ self table parent: nil ].
 	table := aTeradataTableNode.
-	self table notNil
-		ifTrue: [ self table parent: self ]
+	self table notNil ifTrue: [ self table parent: self ]
 ]
 
 { #category : #generated }

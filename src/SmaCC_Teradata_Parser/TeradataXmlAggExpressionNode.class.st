@@ -26,11 +26,9 @@ TeradataXmlAggExpressionNode >> orderBy [
 
 { #category : #generated }
 TeradataXmlAggExpressionNode >> orderBy: aTeradataOrderByExpressionNode [
-	self orderBy notNil
-		ifTrue: [ self orderBy parent: nil ].
+	self orderBy notNil ifTrue: [ self orderBy parent: nil ].
 	orderBy := aTeradataOrderByExpressionNode.
-	self orderBy notNil
-		ifTrue: [ self orderBy parent: self ]
+	self orderBy notNil ifTrue: [ self orderBy parent: self ]
 ]
 
 { #category : #generated }
@@ -45,11 +43,9 @@ TeradataXmlAggExpressionNode >> value [
 
 { #category : #generated }
 TeradataXmlAggExpressionNode >> value: aTeradataExpressionNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
+	self value notNil ifTrue: [ self value parent: nil ].
 	value := aTeradataExpressionNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+	self value notNil ifTrue: [ self value parent: self ]
 ]
 
 { #category : #generated }

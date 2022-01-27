@@ -30,11 +30,9 @@ TeradataWhereExpressionNode >> where [
 
 { #category : #generated }
 TeradataWhereExpressionNode >> where: aTeradataExpressionNode [
-	self where notNil
-		ifTrue: [ self where parent: nil ].
+	self where notNil ifTrue: [ self where parent: nil ].
 	where := aTeradataExpressionNode.
-	self where notNil
-		ifTrue: [ self where parent: self ]
+	self where notNil ifTrue: [ self where parent: self ]
 ]
 
 { #category : #generated }

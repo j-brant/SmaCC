@@ -44,11 +44,9 @@ TeradataBetweenExpressionNode >> first [
 
 { #category : #generated }
 TeradataBetweenExpressionNode >> first: aTeradataExpressionNode [
-	self first notNil
-		ifTrue: [ self first parent: nil ].
+	self first notNil ifTrue: [ self first parent: nil ].
 	first := aTeradataExpressionNode.
-	self first notNil
-		ifTrue: [ self first parent: self ]
+	self first notNil ifTrue: [ self first parent: self ]
 ]
 
 { #category : #generated }
@@ -58,11 +56,9 @@ TeradataBetweenExpressionNode >> last [
 
 { #category : #generated }
 TeradataBetweenExpressionNode >> last: aTeradataExpressionNode [
-	self last notNil
-		ifTrue: [ self last parent: nil ].
+	self last notNil ifTrue: [ self last parent: nil ].
 	last := aTeradataExpressionNode.
-	self last notNil
-		ifTrue: [ self last parent: self ]
+	self last notNil ifTrue: [ self last parent: self ]
 ]
 
 { #category : #generated }
@@ -92,9 +88,7 @@ TeradataBetweenExpressionNode >> value [
 
 { #category : #generated }
 TeradataBetweenExpressionNode >> value: aTeradataExpressionNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
+	self value notNil ifTrue: [ self value parent: nil ].
 	value := aTeradataExpressionNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+	self value notNil ifTrue: [ self value parent: self ]
 ]

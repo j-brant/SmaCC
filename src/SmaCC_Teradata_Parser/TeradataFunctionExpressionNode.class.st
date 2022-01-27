@@ -41,11 +41,9 @@ TeradataFunctionExpressionNode >> function [
 
 { #category : #generated }
 TeradataFunctionExpressionNode >> function: aTeradataIdentifierNameNode [
-	self function notNil
-		ifTrue: [ self function parent: nil ].
+	self function notNil ifTrue: [ self function parent: nil ].
 	function := aTeradataIdentifierNameNode.
-	self function notNil
-		ifTrue: [ self function parent: self ]
+	self function notNil ifTrue: [ self function parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }

@@ -38,11 +38,9 @@ TeradataCaseExpressionNode >> else [
 
 { #category : #generated }
 TeradataCaseExpressionNode >> else: aTeradataElseExpressionNode [
-	self else notNil
-		ifTrue: [ self else parent: nil ].
+	self else notNil ifTrue: [ self else parent: nil ].
 	else := aTeradataElseExpressionNode.
-	self else notNil
-		ifTrue: [ self else parent: self ]
+	self else notNil ifTrue: [ self else parent: self ]
 ]
 
 { #category : #generated }
@@ -62,11 +60,9 @@ TeradataCaseExpressionNode >> expression [
 
 { #category : #generated }
 TeradataCaseExpressionNode >> expression: aTeradataExpressionNode [
-	self expression notNil
-		ifTrue: [ self expression parent: nil ].
+	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aTeradataExpressionNode.
-	self expression notNil
-		ifTrue: [ self expression parent: self ]
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }

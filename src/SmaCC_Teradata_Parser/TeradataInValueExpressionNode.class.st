@@ -75,11 +75,9 @@ TeradataInValueExpressionNode >> testValue [
 
 { #category : #generated }
 TeradataInValueExpressionNode >> testValue: aTeradataExpressionNode [
-	self testValue notNil
-		ifTrue: [ self testValue parent: nil ].
+	self testValue notNil ifTrue: [ self testValue parent: nil ].
 	testValue := aTeradataExpressionNode.
-	self testValue notNil
-		ifTrue: [ self testValue parent: self ]
+	self testValue notNil ifTrue: [ self testValue parent: self ]
 ]
 
 { #category : #generated }

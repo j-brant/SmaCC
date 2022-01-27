@@ -45,11 +45,9 @@ TeradataSetStatementNode >> name [
 
 { #category : #generated }
 TeradataSetStatementNode >> name: aTeradataIdentifierNameNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
+	self name notNil ifTrue: [ self name parent: nil ].
 	name := aTeradataIdentifierNameNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
@@ -99,9 +97,7 @@ TeradataSetStatementNode >> value [
 
 { #category : #generated }
 TeradataSetStatementNode >> value: aTeradataExpressionNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
+	self value notNil ifTrue: [ self value parent: nil ].
 	value := aTeradataExpressionNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+	self value notNil ifTrue: [ self value parent: self ]
 ]

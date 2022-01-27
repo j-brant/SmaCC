@@ -46,11 +46,9 @@ TeradataExistsExpressionNode >> query [
 
 { #category : #generated }
 TeradataExistsExpressionNode >> query: aTeradataProgramNode [
-	self query notNil
-		ifTrue: [ self query parent: nil ].
+	self query notNil ifTrue: [ self query parent: nil ].
 	query := aTeradataProgramNode.
-	self query notNil
-		ifTrue: [ self query parent: self ]
+	self query notNil ifTrue: [ self query parent: self ]
 ]
 
 { #category : #generated }

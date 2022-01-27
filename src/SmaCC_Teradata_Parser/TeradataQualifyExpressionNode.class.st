@@ -20,11 +20,9 @@ TeradataQualifyExpressionNode >> condition [
 
 { #category : #generated }
 TeradataQualifyExpressionNode >> condition: aTeradataExpressionNode [
-	self condition notNil
-		ifTrue: [ self condition parent: nil ].
+	self condition notNil ifTrue: [ self condition parent: nil ].
 	condition := aTeradataExpressionNode.
-	self condition notNil
-		ifTrue: [ self condition parent: self ]
+	self condition notNil ifTrue: [ self condition parent: self ]
 ]
 
 { #category : #generated }

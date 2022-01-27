@@ -47,11 +47,9 @@ TeradataUnionQueryNode >> left [
 
 { #category : #generated }
 TeradataUnionQueryNode >> left: aTeradataProgramNode [
-	self left notNil
-		ifTrue: [ self left parent: nil ].
+	self left notNil ifTrue: [ self left parent: nil ].
 	left := aTeradataProgramNode.
-	self left notNil
-		ifTrue: [ self left parent: self ]
+	self left notNil ifTrue: [ self left parent: self ]
 ]
 
 { #category : #generated }
@@ -76,11 +74,9 @@ TeradataUnionQueryNode >> orderBy [
 
 { #category : #generated }
 TeradataUnionQueryNode >> orderBy: aTeradataOrderByExpressionNode [
-	self orderBy notNil
-		ifTrue: [ self orderBy parent: nil ].
+	self orderBy notNil ifTrue: [ self orderBy parent: nil ].
 	orderBy := aTeradataOrderByExpressionNode.
-	self orderBy notNil
-		ifTrue: [ self orderBy parent: self ]
+	self orderBy notNil ifTrue: [ self orderBy parent: self ]
 ]
 
 { #category : #generated }
@@ -90,11 +86,9 @@ TeradataUnionQueryNode >> right [
 
 { #category : #generated }
 TeradataUnionQueryNode >> right: aTeradataProgramNode [
-	self right notNil
-		ifTrue: [ self right parent: nil ].
+	self right notNil ifTrue: [ self right parent: nil ].
 	right := aTeradataProgramNode.
-	self right notNil
-		ifTrue: [ self right parent: self ]
+	self right notNil ifTrue: [ self right parent: self ]
 ]
 
 { #category : #generated }

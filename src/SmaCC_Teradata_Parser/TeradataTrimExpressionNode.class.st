@@ -3,9 +3,10 @@ Class {
 	#superclass : #TeradataExpressionNode,
 	#instVars : [
 		'trimToken',
+		'value',
 		'positionToken',
 		'fromToken',
-		'value'
+		'character'
 	],
 	#category : #'SmaCC_Teradata_Parser'
 }
@@ -13,6 +14,16 @@ Class {
 { #category : #generated }
 TeradataTrimExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTrimExpression: self
+]
+
+{ #category : #generated }
+TeradataTrimExpressionNode >> character [
+	^ character
+]
+
+{ #category : #generated }
+TeradataTrimExpressionNode >> character: aSmaCCToken [
+	character := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -42,7 +53,7 @@ TeradataTrimExpressionNode >> positionToken: aSmaCCToken [
 
 { #category : #generated }
 TeradataTrimExpressionNode >> tokenVariables [
-	^ #(#trimToken #positionToken #fromToken)
+	^ #(#trimToken #positionToken #fromToken #character)
 ]
 
 { #category : #generated }
@@ -62,9 +73,7 @@ TeradataTrimExpressionNode >> value [
 
 { #category : #generated }
 TeradataTrimExpressionNode >> value: aTeradataExpressionNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
+	self value notNil ifTrue: [ self value parent: nil ].
 	value := aTeradataExpressionNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+	self value notNil ifTrue: [ self value parent: self ]
 ]

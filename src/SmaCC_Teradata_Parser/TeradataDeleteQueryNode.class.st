@@ -58,11 +58,9 @@ TeradataDeleteQueryNode >> table [
 
 { #category : #generated }
 TeradataDeleteQueryNode >> table: aTeradataProgramNode [
-	self table notNil
-		ifTrue: [ self table parent: nil ].
+	self table notNil ifTrue: [ self table parent: nil ].
 	table := aTeradataProgramNode.
-	self table notNil
-		ifTrue: [ self table parent: self ]
+	self table notNil ifTrue: [ self table parent: self ]
 ]
 
 { #category : #generated }
@@ -77,9 +75,7 @@ TeradataDeleteQueryNode >> where [
 
 { #category : #generated }
 TeradataDeleteQueryNode >> where: aTeradataWhereExpressionNode [
-	self where notNil
-		ifTrue: [ self where parent: nil ].
+	self where notNil ifTrue: [ self where parent: nil ].
 	where := aTeradataWhereExpressionNode.
-	self where notNil
-		ifTrue: [ self where parent: self ]
+	self where notNil ifTrue: [ self where parent: self ]
 ]

@@ -144,11 +144,9 @@ TeradataSelectQueryNode >> into [
 
 { #category : #generated }
 TeradataSelectQueryNode >> into: aTeradataIntoExpressionNode [
-	self into notNil
-		ifTrue: [ self into parent: nil ].
+	self into notNil ifTrue: [ self into parent: nil ].
 	into := aTeradataIntoExpressionNode.
-	self into notNil
-		ifTrue: [ self into parent: self ]
+	self into notNil ifTrue: [ self into parent: self ]
 ]
 
 { #category : #generated }

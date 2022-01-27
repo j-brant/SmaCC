@@ -20,11 +20,9 @@ TeradataDatabaseStatementNode >> database [
 
 { #category : #generated }
 TeradataDatabaseStatementNode >> database: aTeradataIdentifierNameNode [
-	self database notNil
-		ifTrue: [ self database parent: nil ].
+	self database notNil ifTrue: [ self database parent: nil ].
 	database := aTeradataIdentifierNameNode.
-	self database notNil
-		ifTrue: [ self database parent: self ]
+	self database notNil ifTrue: [ self database parent: self ]
 ]
 
 { #category : #generated }

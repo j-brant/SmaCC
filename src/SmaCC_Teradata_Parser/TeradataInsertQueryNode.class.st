@@ -91,11 +91,9 @@ TeradataInsertQueryNode >> query [
 
 { #category : #generated }
 TeradataInsertQueryNode >> query: aTeradataProgramNode [
-	self query notNil
-		ifTrue: [ self query parent: nil ].
+	self query notNil ifTrue: [ self query parent: nil ].
 	query := aTeradataProgramNode.
-	self query notNil
-		ifTrue: [ self query parent: self ]
+	self query notNil ifTrue: [ self query parent: self ]
 ]
 
 { #category : #generated }
@@ -115,11 +113,9 @@ TeradataInsertQueryNode >> table [
 
 { #category : #generated }
 TeradataInsertQueryNode >> table: aTeradataTableNode [
-	self table notNil
-		ifTrue: [ self table parent: nil ].
+	self table notNil ifTrue: [ self table parent: nil ].
 	table := aTeradataTableNode.
-	self table notNil
-		ifTrue: [ self table parent: self ]
+	self table notNil ifTrue: [ self table parent: self ]
 ]
 
 { #category : #generated }

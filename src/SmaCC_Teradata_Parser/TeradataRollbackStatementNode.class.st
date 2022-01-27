@@ -94,11 +94,9 @@ TeradataRollbackStatementNode >> where [
 
 { #category : #generated }
 TeradataRollbackStatementNode >> where: aTeradataWhereExpressionNode [
-	self where notNil
-		ifTrue: [ self where parent: nil ].
+	self where notNil ifTrue: [ self where parent: nil ].
 	where := aTeradataWhereExpressionNode.
-	self where notNil
-		ifTrue: [ self where parent: self ]
+	self where notNil ifTrue: [ self where parent: self ]
 ]
 
 { #category : #generated }

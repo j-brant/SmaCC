@@ -99,11 +99,9 @@ TeradataCreateMacroStatementNode >> name [
 
 { #category : #generated }
 TeradataCreateMacroStatementNode >> name: aTeradataIdentifierNameNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
+	self name notNil ifTrue: [ self name parent: nil ].
 	name := aTeradataIdentifierNameNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }

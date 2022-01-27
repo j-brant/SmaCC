@@ -59,11 +59,9 @@ TeradataLockTableStatementNode >> statement [
 
 { #category : #generated }
 TeradataLockTableStatementNode >> statement: aTeradataProgramNode [
-	self statement notNil
-		ifTrue: [ self statement parent: nil ].
+	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aTeradataProgramNode.
-	self statement notNil
-		ifTrue: [ self statement parent: self ]
+	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
 { #category : #generated }
@@ -73,11 +71,9 @@ TeradataLockTableStatementNode >> table [
 
 { #category : #generated }
 TeradataLockTableStatementNode >> table: aTeradataTableNode [
-	self table notNil
-		ifTrue: [ self table parent: nil ].
+	self table notNil ifTrue: [ self table parent: nil ].
 	table := aTeradataTableNode.
-	self table notNil
-		ifTrue: [ self table parent: self ]
+	self table notNil ifTrue: [ self table parent: self ]
 ]
 
 { #category : #generated }

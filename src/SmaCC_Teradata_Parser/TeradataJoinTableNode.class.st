@@ -47,11 +47,9 @@ TeradataJoinTableNode >> left [
 
 { #category : #generated }
 TeradataJoinTableNode >> left: aTeradataProgramNode [
-	self left notNil
-		ifTrue: [ self left parent: nil ].
+	self left notNil ifTrue: [ self left parent: nil ].
 	left := aTeradataProgramNode.
-	self left notNil
-		ifTrue: [ self left parent: self ]
+	self left notNil ifTrue: [ self left parent: self ]
 ]
 
 { #category : #generated }
@@ -76,11 +74,9 @@ TeradataJoinTableNode >> on [
 
 { #category : #generated }
 TeradataJoinTableNode >> on: aTeradataExpressionNode [
-	self on notNil
-		ifTrue: [ self on parent: nil ].
+	self on notNil ifTrue: [ self on parent: nil ].
 	on := aTeradataExpressionNode.
-	self on notNil
-		ifTrue: [ self on parent: self ]
+	self on notNil ifTrue: [ self on parent: self ]
 ]
 
 { #category : #generated }
@@ -100,11 +96,9 @@ TeradataJoinTableNode >> right [
 
 { #category : #generated }
 TeradataJoinTableNode >> right: aTeradataProgramNode [
-	self right notNil
-		ifTrue: [ self right parent: nil ].
+	self right notNil ifTrue: [ self right parent: nil ].
 	right := aTeradataProgramNode.
-	self right notNil
-		ifTrue: [ self right parent: self ]
+	self right notNil ifTrue: [ self right parent: self ]
 ]
 
 { #category : #generated }

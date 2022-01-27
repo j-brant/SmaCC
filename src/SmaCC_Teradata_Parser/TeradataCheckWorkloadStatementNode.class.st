@@ -58,11 +58,9 @@ TeradataCheckWorkloadStatementNode >> statement [
 
 { #category : #generated }
 TeradataCheckWorkloadStatementNode >> statement: aTeradataProgramNode [
-	self statement notNil
-		ifTrue: [ self statement parent: nil ].
+	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aTeradataProgramNode.
-	self statement notNil
-		ifTrue: [ self statement parent: self ]
+	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
 { #category : #generated }

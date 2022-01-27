@@ -74,11 +74,9 @@ TeradataWithTableDefinitionNode >> name [
 
 { #category : #generated }
 TeradataWithTableDefinitionNode >> name: aTeradataIdentifierNameNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
+	self name notNil ifTrue: [ self name parent: nil ].
 	name := aTeradataIdentifierNameNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
@@ -93,11 +91,9 @@ TeradataWithTableDefinitionNode >> query [
 
 { #category : #generated }
 TeradataWithTableDefinitionNode >> query: aTeradataProgramNode [
-	self query notNil
-		ifTrue: [ self query parent: nil ].
+	self query notNil ifTrue: [ self query parent: nil ].
 	query := aTeradataProgramNode.
-	self query notNil
-		ifTrue: [ self query parent: self ]
+	self query notNil ifTrue: [ self query parent: self ]
 ]
 
 { #category : #generated }

@@ -22,11 +22,9 @@ TeradataWhenExpressionNode >> condition [
 
 { #category : #generated }
 TeradataWhenExpressionNode >> condition: aTeradataExpressionNode [
-	self condition notNil
-		ifTrue: [ self condition parent: nil ].
+	self condition notNil ifTrue: [ self condition parent: nil ].
 	condition := aTeradataExpressionNode.
-	self condition notNil
-		ifTrue: [ self condition parent: self ]
+	self condition notNil ifTrue: [ self condition parent: self ]
 ]
 
 { #category : #generated }
@@ -56,11 +54,9 @@ TeradataWhenExpressionNode >> value [
 
 { #category : #generated }
 TeradataWhenExpressionNode >> value: aTeradataExpressionNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
+	self value notNil ifTrue: [ self value parent: nil ].
 	value := aTeradataExpressionNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+	self value notNil ifTrue: [ self value parent: self ]
 ]
 
 { #category : #generated }

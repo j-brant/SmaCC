@@ -31,11 +31,9 @@ TeradataMergeQueryNode >> condition [
 
 { #category : #generated }
 TeradataMergeQueryNode >> condition: aTeradataExpressionNode [
-	self condition notNil
-		ifTrue: [ self condition parent: nil ].
+	self condition notNil ifTrue: [ self condition parent: nil ].
 	condition := aTeradataExpressionNode.
-	self condition notNil
-		ifTrue: [ self condition parent: self ]
+	self condition notNil ifTrue: [ self condition parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -61,11 +59,9 @@ TeradataMergeQueryNode >> mergeTable [
 
 { #category : #generated }
 TeradataMergeQueryNode >> mergeTable: aTeradataProgramNode [
-	self mergeTable notNil
-		ifTrue: [ self mergeTable parent: nil ].
+	self mergeTable notNil ifTrue: [ self mergeTable parent: nil ].
 	mergeTable := aTeradataProgramNode.
-	self mergeTable notNil
-		ifTrue: [ self mergeTable parent: self ]
+	self mergeTable notNil ifTrue: [ self mergeTable parent: self ]
 ]
 
 { #category : #generated }
@@ -105,11 +101,9 @@ TeradataMergeQueryNode >> usingTable [
 
 { #category : #generated }
 TeradataMergeQueryNode >> usingTable: aTeradataProgramNode [
-	self usingTable notNil
-		ifTrue: [ self usingTable parent: nil ].
+	self usingTable notNil ifTrue: [ self usingTable parent: nil ].
 	usingTable := aTeradataProgramNode.
-	self usingTable notNil
-		ifTrue: [ self usingTable parent: self ]
+	self usingTable notNil ifTrue: [ self usingTable parent: self ]
 ]
 
 { #category : #generated }

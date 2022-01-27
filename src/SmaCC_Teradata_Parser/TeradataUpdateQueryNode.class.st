@@ -69,11 +69,9 @@ TeradataUpdateQueryNode >> else [
 
 { #category : #generated }
 TeradataUpdateQueryNode >> else: aTeradataProgramNode [
-	self else notNil
-		ifTrue: [ self else parent: nil ].
+	self else notNil ifTrue: [ self else parent: nil ].
 	else := aTeradataProgramNode.
-	self else notNil
-		ifTrue: [ self else parent: self ]
+	self else notNil ifTrue: [ self else parent: self ]
 ]
 
 { #category : #generated }
@@ -165,9 +163,7 @@ TeradataUpdateQueryNode >> where [
 
 { #category : #generated }
 TeradataUpdateQueryNode >> where: aTeradataWhereExpressionNode [
-	self where notNil
-		ifTrue: [ self where parent: nil ].
+	self where notNil ifTrue: [ self where parent: nil ].
 	where := aTeradataWhereExpressionNode.
-	self where notNil
-		ifTrue: [ self where parent: self ]
+	self where notNil ifTrue: [ self where parent: self ]
 ]

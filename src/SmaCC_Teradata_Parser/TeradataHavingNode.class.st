@@ -20,11 +20,9 @@ TeradataHavingNode >> condition [
 
 { #category : #generated }
 TeradataHavingNode >> condition: aTeradataExpressionNode [
-	self condition notNil
-		ifTrue: [ self condition parent: nil ].
+	self condition notNil ifTrue: [ self condition parent: nil ].
 	condition := aTeradataExpressionNode.
-	self condition notNil
-		ifTrue: [ self condition parent: self ]
+	self condition notNil ifTrue: [ self condition parent: self ]
 ]
 
 { #category : #generated }

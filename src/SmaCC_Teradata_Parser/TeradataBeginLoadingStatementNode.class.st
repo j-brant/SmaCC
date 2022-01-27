@@ -98,11 +98,9 @@ TeradataBeginLoadingStatementNode >> table [
 
 { #category : #generated }
 TeradataBeginLoadingStatementNode >> table: aTeradataTableNode [
-	self table notNil
-		ifTrue: [ self table parent: nil ].
+	self table notNil ifTrue: [ self table parent: nil ].
 	table := aTeradataTableNode.
-	self table notNil
-		ifTrue: [ self table parent: self ]
+	self table notNil ifTrue: [ self table parent: self ]
 ]
 
 { #category : #generated }
