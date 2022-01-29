@@ -167,9 +167,10 @@ SmaCCTransformationToolkitModel >> openRewriteFile: filename [
 	| fileRef |
 	fileRef := filename asFileReference.
 	^ fileRef exists
-		ifTrue: [ SmaCCRewriteRuleFileParser parseFile: fileRef pathString ]
-		ifFalse: [ SmaCCRewriteFile new
-				filename: fileRef pathString;
+		ifTrue: [ SmaCCRewriteRuleFileParser parseFile: fileRef ]
+		ifFalse:
+			[ (SmaCCRewriteFile new)
+				filename: fileRef;
 				yourself ]
 ]
 

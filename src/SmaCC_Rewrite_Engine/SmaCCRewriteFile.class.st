@@ -40,24 +40,18 @@ SmaCCRewriteFile >> clearLocalVariablesIn: aClass [
 
 { #category : #accessing }
 SmaCCRewriteFile >> currentFileTimestamp [
-	^ filename isNil
-		ifTrue: [ nil ]
-		ifFalse: [ filename asFileReference exists
-				ifTrue: [ filename asFileReference modificationTime ]
-				ifFalse: [ nil ] ]
+	^ filename ifNotNil: [ filename exists ifTrue: [ filename modificationTime ] ]
 ]
 
 { #category : #accessing }
 SmaCCRewriteFile >> directory [
-	^ filename asFileReference parent pathString
-		, FileSystem disk delimiter asString
+	^ filename parent
 ]
 
 { #category : #printing }
 SmaCCRewriteFile >> displayOn: aStream [
-	filename isNil
-		ifTrue: [ ^ aStream nextPutAll: '...new file...' ].
-	aStream nextPutAll: filename asFileReference basename
+	filename ifNil: [ ^ aStream nextPutAll: '...new file...' ].
+	aStream nextPutAll: filename basename
 ]
 
 { #category : #accessing }
@@ -72,7 +66,7 @@ SmaCCRewriteFile >> filename [
 
 { #category : #accessing }
 SmaCCRewriteFile >> filename: aString [
-	filename := aString.
+	filename := aString asFileReference.
 	timestamp := self currentFileTimestamp.
 	self changed: #filename
 ]
@@ -91,9 +85,8 @@ SmaCCRewriteFile >> hash [
 { #category : #accessing }
 SmaCCRewriteFile >> import: aString [
 	| name rewriteFile |
-	name := self directory , aString.
-	name asFileReference exists
-		ifFalse: [ name := aString ].
+	name := self directory / aString.
+	name exists ifFalse: [ name := aString asFileReference ].
 	rewriteFile := SmaCCRewriteRuleFileParser parseFile: name.
 	self addTransformation: rewriteFile
 ]
@@ -133,7 +126,7 @@ SmaCCRewriteFile >> listForClass: aClass into: aSmaCCRewriteLink [
 SmaCCRewriteFile >> localSaveOn: aStream [
 	aStream
 		nextPutAll: 'Import: ''';
-		nextPutAll: self relativeFilename;
+		nextPutAll: self relativeFilename pathString;
 		nextPut: $'
 ]
 
@@ -197,15 +190,8 @@ SmaCCRewriteFile >> postCopy [
 
 { #category : #accessing }
 SmaCCRewriteFile >> relativeFilename [
-	| parentDirectory |
-	parent isNil
-		ifTrue: [ ^ filename ].
-	parentDirectory := parent directory.
-	^ (filename beginsWith: parentDirectory)
-		ifTrue: [ filename
-				copyFrom: parentDirectory size + 1
-				to: filename size ]
-		ifFalse: [ filename ]
+	parent ifNil: [ ^ filename ].
+	^ filename relativeTo: parent directory
 ]
 
 { #category : #accessing }
@@ -228,7 +214,7 @@ SmaCCRewriteFile >> rewrites: aCollection [
 
 { #category : #saving }
 SmaCCRewriteFile >> save [
-	filename asFileReference
+	filename
 		ensureDelete;
 		writeStreamDo: [ :str | 
 			| stream |
