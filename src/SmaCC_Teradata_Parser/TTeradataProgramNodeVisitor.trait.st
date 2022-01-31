@@ -126,6 +126,11 @@ TTeradataProgramNodeVisitor >> visitExpression: anExpression [
 ]
 
 { #category : #generated }
+TTeradataProgramNodeVisitor >> visitExpressionList: anExpressionList [
+	^ self visitProgram: anExpressionList
+]
+
+{ #category : #generated }
 TTeradataProgramNodeVisitor >> visitExtractExpression: anExtractExpression [
 	^ self visitExpression: anExtractExpression
 ]
