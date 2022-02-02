@@ -79,72 +79,248 @@ RustScanner >> scan1 [
 
 { #category : #generated }
 RustScanner >> scan10 [
-	[ self step.
-	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(114) ].
-	currentCharacter == $\ ifTrue: [ ^ self scan11 ].
-	true ] whileTrue
+	self step.
+	currentCharacter == $3
+		ifTrue:
+			[ self step.
+			currentCharacter == $2 ifTrue: [ ^ self recordAndReportMatch: #(117) ].
+			^ self reportLastMatch ].
+	currentCharacter == $6
+		ifTrue:
+			[ self step.
+			currentCharacter == $4 ifTrue: [ ^ self recordAndReportMatch: #(117) ] ].
+	^ self reportLastMatch
 ]
 
 { #category : #generated }
 RustScanner >> scan11 [
+	self recordMatch: #(106).
+	self step.
+	currentCharacter == $" ifTrue: [ ^ self scan12 ].
+	currentCharacter == $'
+		ifTrue:
+			[ self step.
+			currentCharacter == $\
+				ifTrue:
+					[ self step.
+					currentCharacter == $'
+						ifTrue:
+							[ self recordMatch: #(113).
+							self step.
+							currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(113) ].
+							^ self reportLastMatch ].
+					currentCharacter == $x
+						ifTrue:
+							[ self step.
+							(currentCharacter isDigit or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
+								ifTrue:
+									[ self step.
+									(currentCharacter isDigit
+										or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
+										ifTrue: [ ^ self scan14 ] ].
+							^ self reportLastMatch ].
+					('"0\nrt' includes: currentCharacter) ifTrue: [ ^ self scan14 ].
+					^ self reportLastMatch ].
+			^ self scan14 ].
+	currentCharacter == $r
+		ifTrue:
+			[ self recordMatch: #(106).
+			self step.
+			currentCharacter == $"
+				ifTrue:
+					[ [ self step.
+					currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(115) ].
+					true ] whileTrue ].
+			currentCharacter == $#
+				ifTrue:
+					[ [ self step.
+					currentCharacter == $# ifTrue: [ ^ self recordAndReportMatch: #(115) ].
+					true ] whileTrue ] ].
+	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
+		ifTrue:
+			[ [ self recordMatch: #(106).
+			self step.
+			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+RustScanner >> scan12 [
+	[ self step.
+	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(114) ].
+	currentCharacter == $\ ifTrue: [ ^ self scan13 ].
+	true ] whileTrue
+]
+
+{ #category : #generated }
+RustScanner >> scan13 [
 	[ self step.
 	currentCharacter == $"
 		ifTrue:
 			[ self recordMatch: #(114).
 			self step.
 			currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(114) ].
-			currentCharacter == $\ ifTrue: [ ^ self scan11 ].
-			^ self scan10 ].
+			currentCharacter == $\ ifTrue: [ ^ self scan13 ].
+			^ self scan12 ].
 	currentCharacter == $\ ] whileTrue.
-	^ self scan10
+	^ self scan12
 ]
 
 { #category : #generated }
-RustScanner >> scan12 [
+RustScanner >> scan14 [
 	self step.
 	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(113) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-RustScanner >> scan13 [
+RustScanner >> scan15 [
 	[ self step.
 	currentCharacter == $# ifTrue: [ ^ self recordAndReportMatch: #(112) ].
 	true ] whileTrue
 ]
 
 { #category : #generated }
-RustScanner >> scan14 [
+RustScanner >> scan16 [
 	[ self recordMatch: #(107).
 	self step.
 	currentCharacter == $# ifTrue: [ ^ self recordAndReportMatch: #(112) ].
-	(currentCharacter between: $0 and: $9)
-		or: [ (currentCharacter between: $A and: $Z) or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ] ]
-		whileTrue.
-	^ self scan13
+	currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue.
+	^ self scan15
 ]
 
 { #category : #generated }
 RustScanner >> scan2 [
+	self step.
+	currentCharacter == $\ ifTrue: [ ^ self scan2X1 ].
+	currentCharacter == $_ ifTrue: [ ^ self scan2X2 ].
+	currentCharacter isLetter ifTrue: [ ^ self scan2X3 ].
+	^ self scan2X4
+]
+
+{ #category : #generated }
+RustScanner >> scan2X1 [
+	self step.
+	currentCharacter == $u
+		ifTrue:
+			[ self step.
+			currentCharacter == ${
+				ifTrue:
+					[ self step.
+					(currentCharacter isDigit or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
+						ifTrue:
+							[ self step.
+							currentCharacter == $} ifTrue: [ ^ self scan3 ].
+							(currentCharacter isDigit or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
+								ifTrue:
+									[ self step.
+									currentCharacter == $} ifTrue: [ ^ self scan3 ].
+									(currentCharacter isDigit
+										or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
+										ifTrue:
+											[ self step.
+											currentCharacter == $} ifTrue: [ ^ self scan3 ].
+											(currentCharacter isDigit
+												or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
+												ifTrue:
+													[ self step.
+													currentCharacter == $} ifTrue: [ ^ self scan3 ].
+													(currentCharacter isDigit
+														or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
+														ifTrue:
+															[ self step.
+															(currentCharacter isDigit
+																or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
+																ifTrue: [ self step ].
+															currentCharacter == $} ifTrue: [ ^ self scan3 ] ] ] ] ] ] ].
+			^ self reportLastMatch ].
+	currentCharacter == $x
+		ifTrue:
+			[ self step.
+			(currentCharacter between: $0 and: $7)
+				ifTrue:
+					[ self step.
+					(currentCharacter isDigit or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
+						ifTrue: [ ^ self scan3 ] ].
+			^ self reportLastMatch ].
+	('"''0\nrt' includes: currentCharacter) ifTrue: [ ^ self scan3 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+RustScanner >> scan2X2 [
+	self recordMatch: #(11).
+	self step.
+	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(110) ].
+	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
+		ifTrue:
+			[ [ self recordMatch: #(118).
+			self step.
+			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+RustScanner >> scan2X3 [
+	self recordMatch: #(118).
+	self step.
+	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(110) ].
+	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
+		ifTrue:
+			[ [ self recordMatch: #(118).
+			self step.
+			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+RustScanner >> scan2X4 [
+	(currentCharacter <= Character backspace
+		or:
+			[ (currentCharacter between: Character pageUp and: Character newPage)
+				or:
+					[ (currentCharacter between: (Character value: 14) and: $&)
+						or:
+							[ (currentCharacter between: $( and: $@)
+								or:
+									[ currentCharacter == $[
+										or:
+											[ (currentCharacter between: $] and: $^)
+												or:
+													[ currentCharacter == $`
+														or:
+															[ (currentCharacter between: ${ and: (Character value: 169))
+																or:
+																	[ (currentCharacter between: (Character value: 171) and: (Character value: 180))
+																		or:
+																			[ (currentCharacter between: (Character value: 182) and: (Character value: 185))
+																				or:
+																					[ (currentCharacter between: (Character value: 187) and: (Character value: 191)) or: [ '×÷' includes: currentCharacter ] ] ] ] ] ] ] ] ] ] ])
+		ifTrue: [ ^ self scan3 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+RustScanner >> scan3 [
 	self step.
 	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(110) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-RustScanner >> scan3 [
+RustScanner >> scan4 [
 	[ self step.
 	currentCharacter == $*
 		ifTrue:
 			[ [ self step.
 			currentCharacter == $* ] whileTrue.
 			currentCharacter == $/ ifTrue: [ ^ self recordAndReportMatch: #(108) ].
-			^ self scan3 ].
+			^ self scan4 ].
 	true ] whileTrue
 ]
 
 { #category : #generated }
-RustScanner >> scan4 [
+RustScanner >> scan5 [
 	self recordMatch: #(116).
 	self step.
 	currentCharacter == $b
@@ -155,7 +331,7 @@ RustScanner >> scan4 [
 				ifTrue:
 					[ [ self recordMatch: #(116).
 					self step.
-					('iu' includes: currentCharacter) ifTrue: [ ^ self scan6 ].
+					('iu' includes: currentCharacter) ifTrue: [ ^ self scan7 ].
 					(currentCharacter between: $0 and: $1) or: [ currentCharacter == $_ ] ] whileTrue ].
 			^ self reportLastMatch ].
 	currentCharacter == $o
@@ -166,7 +342,7 @@ RustScanner >> scan4 [
 				ifTrue:
 					[ [ self recordMatch: #(116).
 					self step.
-					('iu' includes: currentCharacter) ifTrue: [ ^ self scan6 ].
+					('iu' includes: currentCharacter) ifTrue: [ ^ self scan7 ].
 					(currentCharacter between: $0 and: $7) or: [ currentCharacter == $_ ] ] whileTrue ].
 			^ self reportLastMatch ].
 	currentCharacter == $x
@@ -177,28 +353,28 @@ RustScanner >> scan4 [
 				ifTrue:
 					[ [ self recordMatch: #(116).
 					self step.
-					('iu' includes: currentCharacter) ifTrue: [ ^ self scan6 ].
+					('iu' includes: currentCharacter) ifTrue: [ ^ self scan7 ].
 					currentCharacter isDigit
 						or:
 							[ (currentCharacter between: $A and: $F) or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $f ] ] ] ]
 						whileTrue ].
 			^ self reportLastMatch ].
-	('iu' includes: currentCharacter) ifTrue: [ ^ self scan6 ].
-	(currentCharacter isDigit or: [ currentCharacter == $_ ]) ifTrue: [ ^ self scan5 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-RustScanner >> scan5 [
-	[ self recordMatch: #(116).
-	self step.
-	('iu' includes: currentCharacter) ifTrue: [ ^ self scan6 ].
-	currentCharacter isDigit or: [ currentCharacter == $_ ] ] whileTrue.
+	('iu' includes: currentCharacter) ifTrue: [ ^ self scan7 ].
+	(currentCharacter isDigit or: [ currentCharacter == $_ ]) ifTrue: [ ^ self scan6 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 RustScanner >> scan6 [
+	[ self recordMatch: #(116).
+	self step.
+	('iu' includes: currentCharacter) ifTrue: [ ^ self scan7 ].
+	currentCharacter isDigit or: [ currentCharacter == $_ ] ] whileTrue.
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+RustScanner >> scan7 [
 	self step.
 	currentCharacter == $1
 		ifTrue:
@@ -226,93 +402,64 @@ RustScanner >> scan6 [
 ]
 
 { #category : #generated }
-RustScanner >> scan7 [
+RustScanner >> scan8 [
 	self step.
-	currentCharacter isDigit ifTrue: [ ^ self scan8 ].
+	currentCharacter isDigit ifTrue: [ ^ self scan9 ].
 	('+-_' includes: currentCharacter)
 		ifTrue:
 			[ [ self step.
 			currentCharacter == $_ ] whileTrue.
-			currentCharacter isDigit ifTrue: [ ^ self scan8 ] ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-RustScanner >> scan8 [
-	[ self recordMatch: #(117).
-	self step.
-	currentCharacter == $f ifTrue: [ ^ self scan9 ].
-	currentCharacter isDigit or: [ currentCharacter == $_ ] ] whileTrue.
+			currentCharacter isDigit ifTrue: [ ^ self scan9 ] ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 RustScanner >> scan9 [
+	[ self recordMatch: #(117).
 	self step.
-	currentCharacter == $3
-		ifTrue:
-			[ self step.
-			currentCharacter == $2 ifTrue: [ ^ self recordAndReportMatch: #(117) ].
-			^ self reportLastMatch ].
-	currentCharacter == $6
-		ifTrue:
-			[ self step.
-			currentCharacter == $4 ifTrue: [ ^ self recordAndReportMatch: #(117) ] ].
+	currentCharacter == $f ifTrue: [ ^ self scan10 ].
+	currentCharacter isDigit or: [ currentCharacter == $_ ] ] whileTrue.
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 RustScanner >> scanForToken [
 	self step.
-	currentCharacter == $! ifTrue: [ ^ self scanForTokenX22 ].
+	currentCharacter == $! ifTrue: [ ^ self scanForTokenX19 ].
 	currentCharacter == $" ifTrue: [ ^ self scan1 ].
 	currentCharacter == $# ifTrue: [ ^ self recordAndReportMatch: #(3) ].
-	^ self scanForTokenX25
+	currentCharacter == $$ ifTrue: [ ^ self scanForTokenX12 ].
+	currentCharacter == $% ifTrue: [ ^ self scanForTokenX18 ].
+	currentCharacter == $& ifTrue: [ ^ self scanForTokenX11 ].
+	currentCharacter == $' ifTrue: [ ^ self scan2 ].
+	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(13) ].
+	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(14) ].
+	currentCharacter == $* ifTrue: [ ^ self scanForTokenX17 ].
+	currentCharacter == $+ ifTrue: [ ^ self scanForTokenX16 ].
+	currentCharacter == $, ifTrue: [ ^ self recordAndReportMatch: #(19) ].
+	^ self scanForTokenX22
 ]
 
 { #category : #generated }
 RustScanner >> scanForTokenX1 [
+	self recordMatch: #(27).
 	self step.
-	currentCharacter == $\ ifTrue: [ ^ self scanForTokenX1X2 ].
-	^ self scanForTokenX1X4
+	currentCharacter == $* ifTrue: [ ^ self scan4 ].
+	currentCharacter == $/
+		ifTrue:
+			[ [ self recordMatch: #(108).
+			self step.
+			currentCharacter <= Character tab
+				or:
+					[ (currentCharacter between: Character pageUp and: Character newPage) or: [ currentCharacter >= (Character value: 14) ] ] ]
+				whileTrue.
+			^ self reportLastMatch ].
+	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(28) ].
+	^ self reportLastMatch
 ]
 
 { #category : #generated }
 RustScanner >> scanForTokenX10 [
-	self recordMatch: #(38).
-	self step.
-	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(39) ].
-	currentCharacter == $>
-		ifTrue:
-			[ self step.
-			currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(40) ] ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-RustScanner >> scanForTokenX11 [
-	self recordMatch: #(35).
-	self step.
-	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(36) ].
-	currentCharacter == $> ifTrue: [ ^ self recordAndReportMatch: #(37) ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-RustScanner >> scanForTokenX12 [
-	self recordMatch: #(32).
-	self step.
-	currentCharacter == $<
-		ifTrue:
-			[ self step.
-			currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(33) ].
-			^ self reportLastMatch ].
-	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(34) ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-RustScanner >> scanForTokenX13 [
 	self recordMatch: #(20).
 	self step.
 	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(21) ].
@@ -321,7 +468,7 @@ RustScanner >> scanForTokenX13 [
 ]
 
 { #category : #generated }
-RustScanner >> scanForTokenX14 [
+RustScanner >> scanForTokenX11 [
 	self recordMatch: #(8).
 	self step.
 	currentCharacter == $& ifTrue: [ ^ self recordAndReportMatch: #(9) ].
@@ -330,7 +477,7 @@ RustScanner >> scanForTokenX14 [
 ]
 
 { #category : #generated }
-RustScanner >> scanForTokenX15 [
+RustScanner >> scanForTokenX12 [
 	self recordMatch: #(4).
 	self step.
 	currentCharacter == $c ifTrue: [ (self scanForString: 'rate') ifTrue: [ ^ self recordAndReportMatch: #(5) ] ].
@@ -338,7 +485,7 @@ RustScanner >> scanForTokenX15 [
 ]
 
 { #category : #generated }
-RustScanner >> scanForTokenX16 [
+RustScanner >> scanForTokenX13 [
 	[ self recordMatch: #(109).
 	self step.
 	currentCharacter isSeparator or: [ currentCharacter == Character pageUp ] ] whileTrue.
@@ -346,7 +493,7 @@ RustScanner >> scanForTokenX16 [
 ]
 
 { #category : #generated }
-RustScanner >> scanForTokenX17 [
+RustScanner >> scanForTokenX14 [
 	self recordMatch: #(46).
 	self step.
 	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(47) ].
@@ -354,7 +501,7 @@ RustScanner >> scanForTokenX17 [
 ]
 
 { #category : #generated }
-RustScanner >> scanForTokenX18 [
+RustScanner >> scanForTokenX15 [
 	self recordMatch: #(29).
 	self step.
 	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(30) ].
@@ -362,7 +509,7 @@ RustScanner >> scanForTokenX18 [
 ]
 
 { #category : #generated }
-RustScanner >> scanForTokenX19 [
+RustScanner >> scanForTokenX16 [
 	self recordMatch: #(17).
 	self step.
 	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(18) ].
@@ -370,130 +517,7 @@ RustScanner >> scanForTokenX19 [
 ]
 
 { #category : #generated }
-RustScanner >> scanForTokenX1X1 [
-	self recordMatch: #(11).
-	self step.
-	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(110) ].
-	((currentCharacter between: $0 and: $9)
-		or: [ (currentCharacter between: $A and: $Z) or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
-		ifTrue:
-			[ [ self recordMatch: #(118).
-			self step.
-			(currentCharacter between: $0 and: $9)
-				or:
-					[ (currentCharacter between: $A and: $Z) or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ] ]
-				whileTrue ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-RustScanner >> scanForTokenX1X2 [
-	self step.
-	currentCharacter == $u
-		ifTrue:
-			[ self step.
-			currentCharacter == ${
-				ifTrue:
-					[ self step.
-					(currentCharacter isDigit or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-						ifTrue:
-							[ self step.
-							currentCharacter == $} ifTrue: [ ^ self scan2 ].
-							(currentCharacter isDigit or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-								ifTrue:
-									[ self step.
-									currentCharacter == $} ifTrue: [ ^ self scan2 ].
-									(currentCharacter isDigit
-										or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-										ifTrue:
-											[ self step.
-											currentCharacter == $} ifTrue: [ ^ self scan2 ].
-											(currentCharacter isDigit
-												or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-												ifTrue:
-													[ self step.
-													currentCharacter == $} ifTrue: [ ^ self scan2 ].
-													(currentCharacter isDigit
-														or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-														ifTrue:
-															[ self step.
-															(currentCharacter isDigit
-																or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-																ifTrue: [ self step ].
-															currentCharacter == $} ifTrue: [ ^ self scan2 ] ] ] ] ] ] ].
-			^ self reportLastMatch ].
-	currentCharacter == $x
-		ifTrue:
-			[ self step.
-			(currentCharacter between: $0 and: $7)
-				ifTrue:
-					[ self step.
-					(currentCharacter isDigit or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-						ifTrue: [ ^ self scan2 ] ].
-			^ self reportLastMatch ].
-	('"''0\nrt' includes: currentCharacter) ifTrue: [ ^ self scan2 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-RustScanner >> scanForTokenX1X3 [
-	self recordMatch: #(118).
-	self step.
-	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(110) ].
-	((currentCharacter between: $0 and: $9)
-		or: [ (currentCharacter between: $A and: $Z) or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
-		ifTrue:
-			[ [ self recordMatch: #(118).
-			self step.
-			(currentCharacter between: $0 and: $9)
-				or:
-					[ (currentCharacter between: $A and: $Z) or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ] ]
-				whileTrue ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-RustScanner >> scanForTokenX1X4 [
-	currentCharacter == $_ ifTrue: [ ^ self scanForTokenX1X1 ].
-	((currentCharacter between: $A and: $Z) or: [ currentCharacter between: $a and: $z ]) ifTrue: [ ^ self scanForTokenX1X3 ].
-	(currentCharacter <= Character backspace
-		or:
-			[ (currentCharacter between: Character pageUp and: Character newPage)
-				or:
-					[ (currentCharacter between: (Character value: 14) and: $&)
-						or:
-							[ (currentCharacter between: $( and: $@)
-								or:
-									[ currentCharacter == $[
-										or: [ (currentCharacter between: $] and: $^) or: [ currentCharacter == $` or: [ currentCharacter >= ${ ] ] ] ] ] ] ])
-		ifTrue: [ ^ self scan2 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-RustScanner >> scanForTokenX2 [
-	self recordMatch: #(106).
-	self step.
-	currentCharacter == $" ifTrue: [ ^ self scan10 ].
-	currentCharacter == $' ifTrue: [ ^ self scanForTokenX2X2 ].
-	currentCharacter == $r ifTrue: [ ^ self scanForTokenX2X1 ].
-	((currentCharacter between: $0 and: $9)
-		or:
-			[ (currentCharacter between: $A and: $Z)
-				or:
-					[ currentCharacter == $_ or: [ (currentCharacter between: $a and: $q) or: [ currentCharacter between: $s and: $z ] ] ] ])
-		ifTrue:
-			[ [ self recordMatch: #(106).
-			self step.
-			(currentCharacter between: $0 and: $9)
-				or:
-					[ (currentCharacter between: $A and: $Z) or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ] ]
-				whileTrue ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-RustScanner >> scanForTokenX20 [
+RustScanner >> scanForTokenX17 [
 	self recordMatch: #(15).
 	self step.
 	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(16) ].
@@ -501,7 +525,7 @@ RustScanner >> scanForTokenX20 [
 ]
 
 { #category : #generated }
-RustScanner >> scanForTokenX21 [
+RustScanner >> scanForTokenX18 [
 	self recordMatch: #(6).
 	self step.
 	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(7) ].
@@ -509,7 +533,7 @@ RustScanner >> scanForTokenX21 [
 ]
 
 { #category : #generated }
-RustScanner >> scanForTokenX22 [
+RustScanner >> scanForTokenX19 [
 	self recordMatch: #(1).
 	self step.
 	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(2) ].
@@ -517,108 +541,7 @@ RustScanner >> scanForTokenX22 [
 ]
 
 { #category : #generated }
-RustScanner >> scanForTokenX23 [
-	currentCharacter == $b ifTrue: [ ^ self scanForTokenX2 ].
-	currentCharacter == $r ifTrue: [ ^ self scanForTokenX3 ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(101) ].
-	currentCharacter == $| ifTrue: [ ^ self scanForTokenX9 ].
-	currentCharacter == $} ifTrue: [ ^ self recordAndReportMatch: #(105) ].
-	currentCharacter isDigit ifTrue: [ ^ self scan5 ].
-	(currentCharacter isSeparator or: [ currentCharacter == Character pageUp ]) ifTrue: [ ^ self scanForTokenX16 ].
-	((currentCharacter between: $A and: $Z)
-		or: [ currentCharacter == $a or: [ (currentCharacter between: $c and: $q) or: [ currentCharacter between: $s and: $z ] ] ])
-		ifTrue: [ self scanForTokenX7 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-RustScanner >> scanForTokenX24 [
-	currentCharacter == $0 ifTrue: [ ^ self scan4 ].
-	currentCharacter == $: ifTrue: [ ^ self scanForTokenX18 ].
-	currentCharacter == $; ifTrue: [ ^ self recordAndReportMatch: #(31) ].
-	currentCharacter == $< ifTrue: [ ^ self scanForTokenX12 ].
-	currentCharacter == $= ifTrue: [ ^ self scanForTokenX11 ].
-	currentCharacter == $> ifTrue: [ ^ self scanForTokenX10 ].
-	currentCharacter == $? ifTrue: [ ^ self scanForTokenX6 ].
-	currentCharacter == $@ ifTrue: [ ^ self recordAndReportMatch: #(42) ].
-	currentCharacter == $[ ifTrue: [ ^ self recordAndReportMatch: #(44) ].
-	currentCharacter == $] ifTrue: [ ^ self recordAndReportMatch: #(45) ].
-	currentCharacter == $^ ifTrue: [ ^ self scanForTokenX17 ].
-	currentCharacter == $_ ifTrue: [ ^ self scanForTokenX5 ].
-	^ self scanForTokenX23
-]
-
-{ #category : #generated }
-RustScanner >> scanForTokenX25 [
-	currentCharacter == $$ ifTrue: [ ^ self scanForTokenX15 ].
-	currentCharacter == $% ifTrue: [ ^ self scanForTokenX21 ].
-	currentCharacter == $& ifTrue: [ ^ self scanForTokenX14 ].
-	currentCharacter == $' ifTrue: [ ^ self scanForTokenX1 ].
-	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(13) ].
-	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(14) ].
-	currentCharacter == $* ifTrue: [ ^ self scanForTokenX20 ].
-	currentCharacter == $+ ifTrue: [ ^ self scanForTokenX19 ].
-	currentCharacter == $, ifTrue: [ ^ self recordAndReportMatch: #(19) ].
-	currentCharacter == $- ifTrue: [ ^ self scanForTokenX13 ].
-	currentCharacter == $. ifTrue: [ ^ self scanForTokenX8 ].
-	currentCharacter == $/ ifTrue: [ ^ self scanForTokenX4 ].
-	^ self scanForTokenX24
-]
-
-{ #category : #generated }
-RustScanner >> scanForTokenX2X1 [
-	self recordMatch: #(106).
-	self step.
-	currentCharacter == $"
-		ifTrue:
-			[ [ self step.
-			currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(115) ].
-			true ] whileTrue ].
-	currentCharacter == $#
-		ifTrue:
-			[ [ self step.
-			currentCharacter == $# ifTrue: [ ^ self recordAndReportMatch: #(115) ].
-			true ] whileTrue ].
-	((currentCharacter between: $0 and: $9)
-		or: [ (currentCharacter between: $A and: $Z) or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
-		ifTrue:
-			[ [ self recordMatch: #(106).
-			self step.
-			(currentCharacter between: $0 and: $9)
-				or:
-					[ (currentCharacter between: $A and: $Z) or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ] ]
-				whileTrue ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-RustScanner >> scanForTokenX2X2 [
-	self step.
-	currentCharacter == $\
-		ifTrue:
-			[ self step.
-			currentCharacter == $'
-				ifTrue:
-					[ self recordMatch: #(113).
-					self step.
-					currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(113) ].
-					^ self reportLastMatch ].
-			currentCharacter == $x
-				ifTrue:
-					[ self step.
-					(currentCharacter isDigit or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-						ifTrue:
-							[ self step.
-							(currentCharacter isDigit or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-								ifTrue: [ ^ self scan12 ] ].
-					^ self reportLastMatch ].
-			('"0\nrt' includes: currentCharacter) ifTrue: [ ^ self scan12 ].
-			^ self reportLastMatch ].
-	^ self scan12
-]
-
-{ #category : #generated }
-RustScanner >> scanForTokenX3 [
+RustScanner >> scanForTokenX2 [
 	self recordMatch: #(106).
 	self step.
 	currentCharacter == $"
@@ -634,61 +557,60 @@ RustScanner >> scanForTokenX3 [
 				ifTrue:
 					[ self step.
 					currentCharacter == $# ifTrue: [ ^ self recordAndReportMatch: #(112) ].
-					((currentCharacter between: $0 and: $9)
-						or:
-							[ (currentCharacter between: $A and: $Z) or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
-						ifTrue: [ ^ self scan14 ].
-					^ self scan13 ].
-			((currentCharacter between: $A and: $Z) or: [ currentCharacter between: $a and: $z ]) ifTrue: [ ^ self scan14 ].
-			^ self scan13 ].
-	((currentCharacter between: $0 and: $9)
-		or: [ (currentCharacter between: $A and: $Z) or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
+					(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ]) ifTrue: [ ^ self scan16 ].
+					^ self scan15 ].
+			currentCharacter isLetter ifTrue: [ ^ self scan16 ].
+			^ self scan15 ].
+	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
 		ifTrue:
 			[ [ self recordMatch: #(106).
 			self step.
-			(currentCharacter between: $0 and: $9)
-				or:
-					[ (currentCharacter between: $A and: $Z) or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ] ]
-				whileTrue ].
+			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-RustScanner >> scanForTokenX4 [
-	self recordMatch: #(27).
+RustScanner >> scanForTokenX20 [
+	[ self recordMatch: #(106).
 	self step.
-	currentCharacter == $* ifTrue: [ ^ self scan3 ].
-	currentCharacter == $/
-		ifTrue:
-			[ [ self recordMatch: #(108).
-			self step.
-			currentCharacter <= Character tab
-				or:
-					[ (currentCharacter between: Character pageUp and: Character newPage) or: [ currentCharacter >= (Character value: 14) ] ] ]
-				whileTrue.
-			^ self reportLastMatch ].
-	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(28) ].
+	currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue
+]
+
+{ #category : #generated }
+RustScanner >> scanForTokenX21 [
+	currentCharacter == $] ifTrue: [ ^ self recordAndReportMatch: #(45) ].
+	currentCharacter == $^ ifTrue: [ ^ self scanForTokenX14 ].
+	currentCharacter == $_ ifTrue: [ ^ self scanForTokenX6 ].
+	currentCharacter == $b ifTrue: [ ^ self scan11 ].
+	currentCharacter == $r ifTrue: [ ^ self scanForTokenX2 ].
+	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(101) ].
+	currentCharacter == $| ifTrue: [ ^ self scanForTokenX5 ].
+	currentCharacter == $} ifTrue: [ ^ self recordAndReportMatch: #(105) ].
+	currentCharacter isDigit ifTrue: [ ^ self scan6 ].
+	(currentCharacter isSeparator or: [ currentCharacter == Character pageUp ]) ifTrue: [ ^ self scanForTokenX13 ].
+	currentCharacter isLetter ifTrue: [ self scanForTokenX20 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-RustScanner >> scanForTokenX5 [
-	self recordMatch: #(48).
-	self step.
-	((currentCharacter between: $0 and: $9)
-		or: [ (currentCharacter between: $A and: $Z) or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
-		ifTrue:
-			[ [ self recordMatch: #(106).
-			self step.
-			(currentCharacter between: $0 and: $9)
-				or:
-					[ (currentCharacter between: $A and: $Z) or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ] ]
-				whileTrue ].
-	^ self reportLastMatch
+RustScanner >> scanForTokenX22 [
+	currentCharacter == $- ifTrue: [ ^ self scanForTokenX10 ].
+	currentCharacter == $. ifTrue: [ ^ self scanForTokenX4 ].
+	currentCharacter == $/ ifTrue: [ ^ self scanForTokenX1 ].
+	currentCharacter == $0 ifTrue: [ ^ self scan5 ].
+	currentCharacter == $: ifTrue: [ ^ self scanForTokenX15 ].
+	currentCharacter == $; ifTrue: [ ^ self recordAndReportMatch: #(31) ].
+	currentCharacter == $< ifTrue: [ ^ self scanForTokenX9 ].
+	currentCharacter == $= ifTrue: [ ^ self scanForTokenX8 ].
+	currentCharacter == $> ifTrue: [ ^ self scanForTokenX7 ].
+	currentCharacter == $? ifTrue: [ ^ self scanForTokenX3 ].
+	currentCharacter == $@ ifTrue: [ ^ self recordAndReportMatch: #(42) ].
+	currentCharacter == $[ ifTrue: [ ^ self recordAndReportMatch: #(44) ].
+	^ self scanForTokenX21
 ]
 
 { #category : #generated }
-RustScanner >> scanForTokenX6 [
+RustScanner >> scanForTokenX3 [
 	self recordMatch: #(41).
 	self step.
 	currentCharacter isDigit
@@ -703,27 +625,18 @@ RustScanner >> scanForTokenX6 [
 						ifTrue:
 							[ [ self recordMatch: #(117).
 							self step.
-							currentCharacter == $f ifTrue: [ ^ self scan9 ].
-							('Ee' includes: currentCharacter) ifTrue: [ ^ self scan7 ].
+							currentCharacter == $f ifTrue: [ ^ self scan10 ].
+							('Ee' includes: currentCharacter) ifTrue: [ ^ self scan8 ].
 							currentCharacter isDigit or: [ currentCharacter == $_ ] ] whileTrue ].
 					^ self reportLastMatch ].
-			currentCharacter == $f ifTrue: [ ^ self scan9 ].
-			('Ee' includes: currentCharacter) ifTrue: [ ^ self scan7 ].
+			currentCharacter == $f ifTrue: [ ^ self scan10 ].
+			('Ee' includes: currentCharacter) ifTrue: [ ^ self scan8 ].
 			currentCharacter isDigit or: [ currentCharacter == $_ ] ] whileTrue ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-RustScanner >> scanForTokenX7 [
-	[ self recordMatch: #(106).
-	self step.
-	(currentCharacter between: $0 and: $9)
-		or: [ (currentCharacter between: $A and: $Z) or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ] ]
-		whileTrue
-]
-
-{ #category : #generated }
-RustScanner >> scanForTokenX8 [
+RustScanner >> scanForTokenX4 [
 	self recordMatch: #(23).
 	self step.
 	currentCharacter == $.
@@ -736,11 +649,57 @@ RustScanner >> scanForTokenX8 [
 ]
 
 { #category : #generated }
-RustScanner >> scanForTokenX9 [
+RustScanner >> scanForTokenX5 [
 	self recordMatch: #(102).
 	self step.
 	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(103) ].
 	currentCharacter == $| ifTrue: [ ^ self recordAndReportMatch: #(104) ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+RustScanner >> scanForTokenX6 [
+	self recordMatch: #(48).
+	self step.
+	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
+		ifTrue:
+			[ [ self recordMatch: #(106).
+			self step.
+			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+RustScanner >> scanForTokenX7 [
+	self recordMatch: #(38).
+	self step.
+	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(39) ].
+	currentCharacter == $>
+		ifTrue:
+			[ self step.
+			currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(40) ] ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+RustScanner >> scanForTokenX8 [
+	self recordMatch: #(35).
+	self step.
+	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(36) ].
+	currentCharacter == $> ifTrue: [ ^ self recordAndReportMatch: #(37) ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+RustScanner >> scanForTokenX9 [
+	self recordMatch: #(32).
+	self step.
+	currentCharacter == $<
+		ifTrue:
+			[ self step.
+			currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(33) ].
+			^ self reportLastMatch ].
+	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(34) ].
 	^ self reportLastMatch
 ]
 
