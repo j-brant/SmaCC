@@ -249,7 +249,7 @@ SmaCCTransformationToolkitModel >> saveTo: filename [
 				cr;
 				tab;
 				nextPutAll: 'loadRewriteFile: ';
-				nextPutAll: self rewrites filename storeString;
+				nextPutAll: self rewrites filename pathString storeString;
 				nextPut: $;;
 				cr;
 				tab;
@@ -323,7 +323,7 @@ SmaCCTransformationToolkitModel >> serverPort [
 SmaCCTransformationToolkitModel >> serverRunOn: aCollection [
 	| baseString stream socket request serverStream |
 	baseString := 'INPUTPARSER=' , self inputParserClass name
-		, ';REWRITEFILE=' , self rewrites filename.
+		, ';REWRITEFILE=' , self rewrites filename pathString.
 	self outputDirectory notEmpty
 		ifTrue: [ baseString := baseString , ';OUTPUTDIRECTORY='
 				, self outputDirectory ].
