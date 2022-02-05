@@ -7,49 +7,59 @@ Class {
 { #category : #'generated-initialization' }
 RustScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
-	#(#(121 '''static' 12) #(109 'Self' 44) #(109 'abstract' 50) #(109 'as' 51) #(109 'async' 52) #(109 'auto' 53) #(109 'await' 54) #(109 'become' 55) #(109 'box' 56) #(109 'break' 57) #(109 'const' 58) #(109 'continue' 59) #(109 'crate' 60) #(109 'do' 61) #(109 'dyn' 62) #(109 'else' 63) #(109 'enum' 64) #(109 'extern' 65) #(109 'false' 66) #(109 'final' 67) #(109 'fn' 68) #(109 'for' 69) #(109 'if' 70) #(109 'impl' 71) #(109 'in' 72) #(109 'let' 73) #(109 'loop' 74) #(109 'macro' 75) #(109 'macro_rules' 76) #(109 'match' 77) #(109 'mod' 78) #(109 'move' 79) #(109 'mut' 80) #(109 'override' 81) #(109 'priv' 82) #(109 'pub' 83) #(109 'ref' 84) #(109 'return' 85) #(109 'self' 86) #(109 'static' 87) #(109 'struct' 88) #(109 'super' 89) #(109 'trait' 90) #(109 'true' 91) #(109 'try' 92) #(109 'type' 93) #(109 'typeof' 94) #(109 'union' 95) #(109 'unsafe' 96) #(109 'unsized' 97) #(109 'use' 98) #(109 'virtual' 99) #(109 'where' 100) #(109 'while' 101) #(109 'yield' 102))
+	#(#(123 '''static' 12) #(111 'Self' 44) #(111 'abstract' 50) #(111 'as' 51) #(111 'async' 52) #(111 'auto' 53) #(111 'await' 54) #(111 'become' 55) #(111 'box' 56) #(111 'break' 57) #(111 'const' 58) #(111 'continue' 59) #(111 'crate' 60) #(111 'do' 61) #(111 'dyn' 62) #(111 'else' 63) #(111 'enum' 64) #(111 'extern' 65) #(111 'false' 66) #(111 'final' 67) #(111 'fn' 68) #(111 'for' 69) #(111 'if' 70) #(111 'impl' 71) #(111 'in' 72) #(111 'let' 73) #(111 'loop' 74) #(111 'macro' 75) #(111 'macro_rules' 76) #(111 'match' 77) #(111 'mod' 78) #(111 'move' 79) #(111 'mut' 80) #(111 'override' 81) #(111 'priv' 82) #(111 'pub' 83) #(111 'ref' 84) #(111 'return' 85) #(111 'self' 86) #(111 'static' 87) #(111 'struct' 88) #(111 'super' 89) #(111 'trait' 90) #(111 'true' 91) #(111 'try' 92) #(111 'type' 93) #(111 'typeof' 94) #(111 'union' 95) #(111 'unsafe' 96) #(111 'unsized' 97) #(111 'use' 98) #(111 'virtual' 99) #(111 'where' 100) #(111 'while' 101) #(111 'yield' 102))
 		do: [ :each | (keywordMap at: each first ifAbsentPut: [ Dictionary new ]) at: (each at: 2) put: each last ].
 	^ keywordMap
 ]
 
 { #category : #generated }
 RustScanner >> FLOAT_LITERALId [
-	^ 120
-]
-
-{ #category : #generated }
-RustScanner >> INTEGER_LITERALId [
-	^ 119
-]
-
-{ #category : #generated }
-RustScanner >> ampId [
-	^ 124
-]
-
-{ #category : #generated }
-RustScanner >> emptySymbolTokenId [
-	^ 399
-]
-
-{ #category : #generated }
-RustScanner >> errorTokenId [
-	^ 400
-]
-
-{ #category : #generated }
-RustScanner >> gtId [
-	^ 123
-]
-
-{ #category : #generated }
-RustScanner >> ltId [
 	^ 122
 ]
 
 { #category : #generated }
+RustScanner >> INTEGER_LITERALId [
+	^ 121
+]
+
+{ #category : #generated }
+RustScanner >> ampId [
+	^ 126
+]
+
+{ #category : #generated }
+RustScanner >> emptySymbolTokenId [
+	^ 401
+]
+
+{ #category : #generated }
+RustScanner >> errorTokenId [
+	^ 402
+]
+
+{ #category : #generated }
+RustScanner >> gtId [
+	^ 125
+]
+
+{ #category : #generated }
+RustScanner >> lbracketId [
+	^ 110
+]
+
+{ #category : #generated }
+RustScanner >> lparenId [
+	^ 109
+]
+
+{ #category : #generated }
+RustScanner >> ltId [
+	^ 124
+]
+
+{ #category : #generated }
 RustScanner >> rawStringId [
-	^ 398
+	^ 400
 ]
 
 { #category : #scanning }
@@ -65,7 +75,7 @@ RustScanner >> rawStringStart [
 { #category : #generated }
 RustScanner >> scan1 [
 	[ self step.
-	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(114) ].
+	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(116) ].
 	currentCharacter == $\
 		ifTrue:
 			[ self step.
@@ -119,7 +129,7 @@ RustScanner >> scan1 [
 
 { #category : #generated }
 RustScanner >> scan10 [
-	[ self recordMatch: #(119).
+	[ self recordMatch: #(121).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan6 ].
 	currentCharacter == $f ifTrue: [ ^ self scan9 ].
@@ -138,28 +148,28 @@ RustScanner >> scan11 [
 			currentCharacter == $2
 				ifTrue:
 					[ self step.
-					currentCharacter == $8 ifTrue: [ ^ self recordAndReportMatch: #(119) ].
+					currentCharacter == $8 ifTrue: [ ^ self recordAndReportMatch: #(121) ].
 					^ self reportLastMatch ].
-			currentCharacter == $6 ifTrue: [ ^ self recordAndReportMatch: #(119) ].
+			currentCharacter == $6 ifTrue: [ ^ self recordAndReportMatch: #(121) ].
 			^ self reportLastMatch ].
 	currentCharacter == $3
 		ifTrue:
 			[ self step.
-			currentCharacter == $2 ifTrue: [ ^ self recordAndReportMatch: #(119) ].
+			currentCharacter == $2 ifTrue: [ ^ self recordAndReportMatch: #(121) ].
 			^ self reportLastMatch ].
 	currentCharacter == $6
 		ifTrue:
 			[ self step.
-			currentCharacter == $4 ifTrue: [ ^ self recordAndReportMatch: #(119) ].
+			currentCharacter == $4 ifTrue: [ ^ self recordAndReportMatch: #(121) ].
 			^ self reportLastMatch ].
-	currentCharacter == $8 ifTrue: [ ^ self recordAndReportMatch: #(119) ].
-	currentCharacter == $s ifTrue: [ (self scanForString: 'ize') ifTrue: [ ^ self recordAndReportMatch: #(119) ] ].
+	currentCharacter == $8 ifTrue: [ ^ self recordAndReportMatch: #(121) ].
+	currentCharacter == $s ifTrue: [ (self scanForString: 'ize') ifTrue: [ ^ self recordAndReportMatch: #(121) ] ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 RustScanner >> scan12 [
-	self recordMatch: #(109).
+	self recordMatch: #(111).
 	self step.
 	currentCharacter == $" ifTrue: [ ^ self scan13 ].
 	currentCharacter == $'
@@ -170,9 +180,9 @@ RustScanner >> scan12 [
 					[ self step.
 					currentCharacter == $'
 						ifTrue:
-							[ self recordMatch: #(117).
+							[ self recordMatch: #(119).
 							self step.
-							currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(117) ].
+							currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(119) ].
 							^ self reportLastMatch ].
 					currentCharacter == $x
 						ifTrue:
@@ -189,18 +199,18 @@ RustScanner >> scan12 [
 			^ self scan15 ].
 	currentCharacter == $r
 		ifTrue:
-			[ self recordMatch: #(109).
+			[ self recordMatch: #(111).
 			self step.
 			currentCharacter == $" ifTrue: [ ^ self scan16 ].
 			currentCharacter == $#
 				ifTrue:
-					[ [ self recordMatch: #(115).
+					[ [ self recordMatch: #(117).
 					self step.
 					currentCharacter == $# ] whileTrue.
 					^ self reportLastMatch ] ].
 	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
 		ifTrue:
-			[ [ self recordMatch: #(109).
+			[ [ self recordMatch: #(111).
 			self step.
 			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 	^ self reportLastMatch
@@ -209,7 +219,7 @@ RustScanner >> scan12 [
 { #category : #generated }
 RustScanner >> scan13 [
 	[ self step.
-	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(118) ].
+	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(120) ].
 	currentCharacter == $\ ifTrue: [ ^ self scan14 ].
 	true ] whileTrue
 ]
@@ -219,9 +229,9 @@ RustScanner >> scan14 [
 	[ self step.
 	currentCharacter == $"
 		ifTrue:
-			[ self recordMatch: #(118).
+			[ self recordMatch: #(120).
 			self step.
-			currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(118) ].
+			currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(120) ].
 			currentCharacter == $\ ifTrue: [ ^ self scan14 ].
 			^ self scan13 ].
 	currentCharacter == $\ ] whileTrue.
@@ -231,14 +241,14 @@ RustScanner >> scan14 [
 { #category : #generated }
 RustScanner >> scan15 [
 	self step.
-	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(117) ].
+	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(119) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 RustScanner >> scan16 [
 	[ self step.
-	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(116) ].
+	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(118) ].
 	true ] whileTrue
 ]
 
@@ -304,10 +314,10 @@ RustScanner >> scan2X1 [
 RustScanner >> scan2X2 [
 	self recordMatch: #(11).
 	self step.
-	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(113) ].
+	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(115) ].
 	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
 		ifTrue:
-			[ [ self recordMatch: #(121).
+			[ [ self recordMatch: #(123).
 			self step.
 			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 	^ self reportLastMatch
@@ -315,12 +325,12 @@ RustScanner >> scan2X2 [
 
 { #category : #generated }
 RustScanner >> scan2X3 [
-	self recordMatch: #(121).
+	self recordMatch: #(123).
 	self step.
-	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(113) ].
+	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(115) ].
 	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
 		ifTrue:
-			[ [ self recordMatch: #(121).
+			[ [ self recordMatch: #(123).
 			self step.
 			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 	^ self reportLastMatch
@@ -356,7 +366,7 @@ RustScanner >> scan2X4 [
 { #category : #generated }
 RustScanner >> scan3 [
 	self step.
-	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(113) ].
+	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(115) ].
 	^ self reportLastMatch
 ]
 
@@ -367,14 +377,14 @@ RustScanner >> scan4 [
 		ifTrue:
 			[ [ self step.
 			currentCharacter == $* ] whileTrue.
-			currentCharacter == $/ ifTrue: [ ^ self recordAndReportMatch: #(111) ].
+			currentCharacter == $/ ifTrue: [ ^ self recordAndReportMatch: #(113) ].
 			^ self scan4 ].
 	true ] whileTrue
 ]
 
 { #category : #generated }
 RustScanner >> scan5 [
-	self recordMatch: #(119).
+	self recordMatch: #(121).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan6 ].
 	currentCharacter == $b
@@ -383,7 +393,7 @@ RustScanner >> scan5 [
 			currentCharacter == $_ ] whileTrue.
 			(currentCharacter between: $0 and: $1)
 				ifTrue:
-					[ [ self recordMatch: #(119).
+					[ [ self recordMatch: #(121).
 					self step.
 					('iu' includes: currentCharacter) ifTrue: [ ^ self scan11 ].
 					(currentCharacter between: $0 and: $1) or: [ currentCharacter == $_ ] ] whileTrue ].
@@ -395,7 +405,7 @@ RustScanner >> scan5 [
 			currentCharacter == $_ ] whileTrue.
 			(currentCharacter between: $0 and: $7)
 				ifTrue:
-					[ [ self recordMatch: #(119).
+					[ [ self recordMatch: #(121).
 					self step.
 					('iu' includes: currentCharacter) ifTrue: [ ^ self scan11 ].
 					(currentCharacter between: $0 and: $7) or: [ currentCharacter == $_ ] ] whileTrue ].
@@ -406,7 +416,7 @@ RustScanner >> scan5 [
 			currentCharacter == $_ ] whileTrue.
 			(currentCharacter isDigit or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
 				ifTrue:
-					[ [ self recordMatch: #(119).
+					[ [ self recordMatch: #(121).
 					self step.
 					('iu' includes: currentCharacter) ifTrue: [ ^ self scan11 ].
 					currentCharacter isDigit
@@ -425,7 +435,7 @@ RustScanner >> scan6 [
 	self step.
 	currentCharacter isDigit
 		ifTrue:
-			[ [ self recordMatch: #(120).
+			[ [ self recordMatch: #(122).
 			self step.
 			currentCharacter == $f ifTrue: [ ^ self scan9 ].
 			('Ee' includes: currentCharacter) ifTrue: [ ^ self scan7 ].
@@ -447,7 +457,7 @@ RustScanner >> scan7 [
 
 { #category : #generated }
 RustScanner >> scan8 [
-	[ self recordMatch: #(120).
+	[ self recordMatch: #(122).
 	self step.
 	currentCharacter == $f ifTrue: [ ^ self scan9 ].
 	currentCharacter isDigit or: [ currentCharacter == $_ ] ] whileTrue.
@@ -460,12 +470,12 @@ RustScanner >> scan9 [
 	currentCharacter == $3
 		ifTrue:
 			[ self step.
-			currentCharacter == $2 ifTrue: [ ^ self recordAndReportMatch: #(120) ].
+			currentCharacter == $2 ifTrue: [ ^ self recordAndReportMatch: #(122) ].
 			^ self reportLastMatch ].
 	currentCharacter == $6
 		ifTrue:
 			[ self step.
-			currentCharacter == $4 ifTrue: [ ^ self recordAndReportMatch: #(120) ] ].
+			currentCharacter == $4 ifTrue: [ ^ self recordAndReportMatch: #(122) ] ].
 	^ self reportLastMatch
 ]
 
@@ -479,7 +489,7 @@ RustScanner >> scanForToken [
 	currentCharacter == $% ifTrue: [ ^ self scanForTokenX17 ].
 	currentCharacter == $& ifTrue: [ ^ self scanForTokenX10 ].
 	currentCharacter == $' ifTrue: [ ^ self scan2 ].
-	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(13) ].
+	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(13 109) ].
 	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(14) ].
 	currentCharacter == $* ifTrue: [ ^ self scanForTokenX16 ].
 	currentCharacter == $+ ifTrue: [ ^ self scanForTokenX15 ].
@@ -494,7 +504,7 @@ RustScanner >> scanForTokenX1 [
 	currentCharacter == $* ifTrue: [ ^ self scan4 ].
 	currentCharacter == $/
 		ifTrue:
-			[ [ self recordMatch: #(111).
+			[ [ self recordMatch: #(113).
 			self step.
 			currentCharacter <= Character tab
 				or:
@@ -507,7 +517,7 @@ RustScanner >> scanForTokenX1 [
 
 { #category : #generated }
 RustScanner >> scanForTokenX10 [
-	self recordMatch: #(8 124).
+	self recordMatch: #(8 126).
 	self step.
 	currentCharacter == $& ifTrue: [ ^ self recordAndReportMatch: #(9) ].
 	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(10) ].
@@ -524,7 +534,7 @@ RustScanner >> scanForTokenX11 [
 
 { #category : #generated }
 RustScanner >> scanForTokenX12 [
-	[ self recordMatch: #(112).
+	[ self recordMatch: #(114).
 	self step.
 	currentCharacter isSeparator or: [ currentCharacter == Character pageUp ] ] whileTrue.
 	^ self reportLastMatch
@@ -580,23 +590,23 @@ RustScanner >> scanForTokenX18 [
 
 { #category : #generated }
 RustScanner >> scanForTokenX19 [
-	[ self recordMatch: #(109).
+	[ self recordMatch: #(111).
 	self step.
 	currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue
 ]
 
 { #category : #generated }
 RustScanner >> scanForTokenX2 [
-	self recordMatch: #(109).
+	self recordMatch: #(111).
 	self step.
 	currentCharacter == $" ifTrue: [ ^ self scan16 ].
 	currentCharacter == $#
 		ifTrue:
-			[ self recordMatch: #(115).
+			[ self recordMatch: #(117).
 			self step.
 			currentCharacter == $#
 				ifTrue:
-					[ [ self recordMatch: #(115).
+					[ [ self recordMatch: #(117).
 					self step.
 					currentCharacter == $# ] whileTrue.
 					^ self reportLastMatch ].
@@ -605,19 +615,19 @@ RustScanner >> scanForTokenX2 [
 					[ self step.
 					(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
 						ifTrue:
-							[ [ self recordMatch: #(110).
+							[ [ self recordMatch: #(112).
 							self step.
 							currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 					^ self reportLastMatch ].
 			currentCharacter isLetter
 				ifTrue:
-					[ [ self recordMatch: #(110).
+					[ [ self recordMatch: #(112).
 					self step.
 					currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 			^ self reportLastMatch ].
 	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
 		ifTrue:
-			[ [ self recordMatch: #(109).
+			[ [ self recordMatch: #(111).
 			self step.
 			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 	^ self reportLastMatch
@@ -652,13 +662,13 @@ RustScanner >> scanForTokenX21 [
 	currentCharacter == $> ifTrue: [ ^ self scanForTokenX3 ].
 	currentCharacter == $? ifTrue: [ ^ self recordAndReportMatch: #(42) ].
 	currentCharacter == $@ ifTrue: [ ^ self recordAndReportMatch: #(43) ].
-	currentCharacter == $[ ifTrue: [ ^ self recordAndReportMatch: #(45) ].
+	currentCharacter == $[ ifTrue: [ ^ self recordAndReportMatch: #(45 110) ].
 	^ self scanForTokenX20
 ]
 
 { #category : #generated }
 RustScanner >> scanForTokenX3 [
-	self recordMatch: #(123).
+	self recordMatch: #(125).
 	self step.
 	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(38) ].
 	currentCharacter == $>
@@ -672,7 +682,7 @@ RustScanner >> scanForTokenX3 [
 
 { #category : #generated }
 RustScanner >> scanForTokenX4 [
-	self recordMatch: #(122).
+	self recordMatch: #(124).
 	self step.
 	currentCharacter == $<
 		ifTrue:
@@ -712,7 +722,7 @@ RustScanner >> scanForTokenX7 [
 	self step.
 	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
 		ifTrue:
-			[ [ self recordMatch: #(109).
+			[ [ self recordMatch: #(111).
 			self step.
 			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 	^ self reportLastMatch
@@ -738,5 +748,5 @@ RustScanner >> scanForTokenX9 [
 
 { #category : #generated }
 RustScanner >> tokenActions [
-	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #comment #whitespace nil nil #rawStringStart)
+	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #comment #whitespace nil nil #rawStringStart)
 ]
