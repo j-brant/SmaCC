@@ -81,6 +81,11 @@ TTeradataProgramNodeVisitor >> visitDeleteQuery: aDeleteQuery [
 ]
 
 { #category : #generated }
+TTeradataProgramNodeVisitor >> visitDistinctExpression: aDistinctExpression [
+	^ self visitExpression: aDistinctExpression
+]
+
+{ #category : #generated }
 TTeradataProgramNodeVisitor >> visitDropTableQuery: aDropTableQuery [
 	^ self visitProgram: aDropTableQuery
 ]

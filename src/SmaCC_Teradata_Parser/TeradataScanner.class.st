@@ -14,12 +14,12 @@ TeradataScanner class >> initializeKeywordMap [
 
 { #category : #generated }
 TeradataScanner >> emptySymbolTokenId [
-	^ 229
+	^ 230
 ]
 
 { #category : #generated }
 TeradataScanner >> errorTokenId [
-	^ 230
+	^ 231
 ]
 
 { #category : #generated }
