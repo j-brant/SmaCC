@@ -41,8 +41,18 @@ TTeradataProgramNodeVisitor >> visitCaseSpecificExpression: aCaseSpecificExpress
 ]
 
 { #category : #generated }
+TTeradataProgramNodeVisitor >> visitCaseSpecificOption: aCaseSpecificOption [
+	^ self visitProgram: aCaseSpecificOption
+]
+
+{ #category : #generated }
 TTeradataProgramNodeVisitor >> visitCastExpression: aCastExpression [
 	^ self visitExpression: aCastExpression
+]
+
+{ #category : #generated }
+TTeradataProgramNodeVisitor >> visitCharacterSetOption: aCharacterSetOption [
+	^ self visitProgram: aCharacterSetOption
 ]
 
 { #category : #generated }
@@ -53,6 +63,16 @@ TTeradataProgramNodeVisitor >> visitCheckWorkloadStatement: aCheckWorkloadStatem
 { #category : #generated }
 TTeradataProgramNodeVisitor >> visitCheckpointStatement: aCheckpointStatement [
 	^ self visitProgram: aCheckpointStatement
+]
+
+{ #category : #generated }
+TTeradataProgramNodeVisitor >> visitComment: aComment [
+	^ self visitProgram: aComment
+]
+
+{ #category : #generated }
+TTeradataProgramNodeVisitor >> visitCompressOption: aCompressOption [
+	^ self visitProgram: aCompressOption
 ]
 
 { #category : #generated }
@@ -68,6 +88,26 @@ TTeradataProgramNodeVisitor >> visitCountExpression: aCountExpression [
 { #category : #generated }
 TTeradataProgramNodeVisitor >> visitCreateMacroStatement: aCreateMacroStatement [
 	^ self visitProgram: aCreateMacroStatement
+]
+
+{ #category : #generated }
+TTeradataProgramNodeVisitor >> visitCreateTable: aCreateTable [
+	^ self visitProgram: aCreateTable
+]
+
+{ #category : #generated }
+TTeradataProgramNodeVisitor >> visitCreateTableColumn: aCreateTableColumn [
+	^ self visitProgram: aCreateTableColumn
+]
+
+{ #category : #generated }
+TTeradataProgramNodeVisitor >> visitCreateTableOption: aCreateTableOption [
+	^ self visitProgram: aCreateTableOption
+]
+
+{ #category : #generated }
+TTeradataProgramNodeVisitor >> visitCreateView: aCreateView [
+	^ self visitProgram: aCreateView
 ]
 
 { #category : #generated }
@@ -146,6 +186,11 @@ TTeradataProgramNodeVisitor >> visitFile: aFile [
 ]
 
 { #category : #generated }
+TTeradataProgramNodeVisitor >> visitFormatOption: aFormatOption [
+	^ self visitProgram: aFormatOption
+]
+
+{ #category : #generated }
 TTeradataProgramNodeVisitor >> visitFunctionExpression: aFunctionExpression [
 	^ self visitExpression: aFunctionExpression
 ]
@@ -188,6 +233,11 @@ TTeradataProgramNodeVisitor >> visitInQueryExpression: anInQueryExpression [
 { #category : #generated }
 TTeradataProgramNodeVisitor >> visitInValueExpression: anInValueExpression [
 	^ self visitExpression: anInValueExpression
+]
+
+{ #category : #generated }
+TTeradataProgramNodeVisitor >> visitIndex: anIndex [
+	^ self visitProgram: anIndex
 ]
 
 { #category : #generated }
@@ -243,6 +293,11 @@ TTeradataProgramNodeVisitor >> visitMergeQuery: aMergeQuery [
 { #category : #generated }
 TTeradataProgramNodeVisitor >> visitMinusQuery: aMinusQuery [
 	^ self visitProgram: aMinusQuery
+]
+
+{ #category : #generated }
+TTeradataProgramNodeVisitor >> visitNotNullOption: aNotNullOption [
+	^ self visitProgram: aNotNullOption
 ]
 
 { #category : #generated }

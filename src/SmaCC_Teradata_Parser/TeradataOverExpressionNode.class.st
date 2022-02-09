@@ -10,6 +10,7 @@ Class {
 		'precedingTokens',
 		'andToken',
 		'to',
+		'followingTokens',
 		'currentToToken',
 		'rowToToken',
 		'currentFromToken',
@@ -47,7 +48,7 @@ TeradataOverExpressionNode >> betweenToken: aSmaCCToken [
 
 { #category : #generated }
 TeradataOverExpressionNode >> compositeTokenVariables [
-	^ #(#precedingTokens #leftParens #rightParens)
+	^ #(#precedingTokens #followingTokens #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -71,6 +72,16 @@ TeradataOverExpressionNode >> currentToToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+TeradataOverExpressionNode >> followingTokens [
+	^ followingTokens
+]
+
+{ #category : #generated }
+TeradataOverExpressionNode >> followingTokens: anOrderedCollection [
+	followingTokens := anOrderedCollection
+]
+
+{ #category : #generated }
 TeradataOverExpressionNode >> from [
 	^ from
 ]
@@ -84,6 +95,7 @@ TeradataOverExpressionNode >> from: aSmaCCToken [
 TeradataOverExpressionNode >> initialize [
 	super initialize.
 	precedingTokens := OrderedCollection new: 2.
+	followingTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

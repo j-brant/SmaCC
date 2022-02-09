@@ -6,10 +6,21 @@ Class {
 		'inToken',
 		'values',
 		'commas',
-		'notToken'
+		'notToken',
+		'_isToken'
 	],
 	#category : #'SmaCC_Teradata_Parser'
 }
+
+{ #category : #generated }
+TeradataInValueExpressionNode >> _isToken [
+	^ _isToken
+]
+
+{ #category : #generated }
+TeradataInValueExpressionNode >> _isToken: aSmaCCToken [
+	_isToken := aSmaCCToken
+]
 
 { #category : #generated }
 TeradataInValueExpressionNode >> acceptVisitor: aProgramVisitor [
@@ -82,7 +93,7 @@ TeradataInValueExpressionNode >> testValue: aTeradataExpressionNode [
 
 { #category : #generated }
 TeradataInValueExpressionNode >> tokenVariables [
-	^ #(#inToken #notToken)
+	^ #(#inToken #notToken #_isToken)
 ]
 
 { #category : #generated }

@@ -3,9 +3,7 @@ Class {
 	#superclass : #TeradataProgramNode,
 	#instVars : [
 		'names',
-		'characterToken',
-		'setToken',
-		'encoding',
+		'options',
 		'leftParen',
 		'precision',
 		'rightParen',
@@ -21,16 +19,6 @@ TeradataTypeNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-TeradataTypeNode >> characterToken [
-	^ characterToken
-]
-
-{ #category : #generated }
-TeradataTypeNode >> characterToken: aSmaCCToken [
-	characterToken := aSmaCCToken
-]
-
-{ #category : #generated }
 TeradataTypeNode >> comma [
 	^ comma
 ]
@@ -41,24 +29,20 @@ TeradataTypeNode >> comma: aSmaCCToken [
 ]
 
 { #category : #generated }
+TeradataTypeNode >> compositeNodeVariables [
+	^ #(#options)
+]
+
+{ #category : #generated }
 TeradataTypeNode >> compositeTokenVariables [
 	^ #(#names)
-]
-
-{ #category : #generated }
-TeradataTypeNode >> encoding [
-	^ encoding
-]
-
-{ #category : #generated }
-TeradataTypeNode >> encoding: aSmaCCToken [
-	encoding := aSmaCCToken
 ]
 
 { #category : #'generated-initialize-release' }
 TeradataTypeNode >> initialize [
 	super initialize.
 	names := OrderedCollection new: 2.
+	options := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -79,6 +63,18 @@ TeradataTypeNode >> names [
 { #category : #generated }
 TeradataTypeNode >> names: anOrderedCollection [
 	names := anOrderedCollection
+]
+
+{ #category : #generated }
+TeradataTypeNode >> options [
+	^ options
+]
+
+{ #category : #generated }
+TeradataTypeNode >> options: anOrderedCollection [
+	self setParents: self options to: nil.
+	options := anOrderedCollection.
+	self setParents: self options to: self
 ]
 
 { #category : #generated }
@@ -112,16 +108,6 @@ TeradataTypeNode >> scale: aSmaCCToken [
 ]
 
 { #category : #generated }
-TeradataTypeNode >> setToken [
-	^ setToken
-]
-
-{ #category : #generated }
-TeradataTypeNode >> setToken: aSmaCCToken [
-	setToken := aSmaCCToken
-]
-
-{ #category : #generated }
 TeradataTypeNode >> tokenVariables [
-	^ #(#characterToken #setToken #encoding #leftParen #precision #rightParen #comma #scale)
+	^ #(#leftParen #precision #rightParen #comma #scale)
 ]

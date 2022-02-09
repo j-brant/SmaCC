@@ -7,7 +7,9 @@ Class {
 		'fromToken',
 		'from',
 		'forToken',
-		'for'
+		'for',
+		'commas',
+		'to'
 	],
 	#category : #'SmaCC_Teradata_Parser'
 }
@@ -15,6 +17,21 @@ Class {
 { #category : #generated }
 TeradataSubstringExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSubstringExpression: self
+]
+
+{ #category : #generated }
+TeradataSubstringExpressionNode >> commas [
+	^ commas
+]
+
+{ #category : #generated }
+TeradataSubstringExpressionNode >> commas: anOrderedCollection [
+	commas := anOrderedCollection
+]
+
+{ #category : #generated }
+TeradataSubstringExpressionNode >> compositeTokenVariables [
+	^ #(#commas #leftParens #rightParens)
 ]
 
 { #category : #generated }
@@ -61,9 +78,15 @@ TeradataSubstringExpressionNode >> fromToken: aSmaCCToken [
 	fromToken := aSmaCCToken
 ]
 
+{ #category : #'generated-initialize-release' }
+TeradataSubstringExpressionNode >> initialize [
+	super initialize.
+	commas := OrderedCollection new: 2.
+]
+
 { #category : #generated }
 TeradataSubstringExpressionNode >> nodeVariables [
-	^ #(#value #from #for)
+	^ #(#value #from #for #to)
 ]
 
 { #category : #generated }
@@ -74,6 +97,18 @@ TeradataSubstringExpressionNode >> substringToken [
 { #category : #generated }
 TeradataSubstringExpressionNode >> substringToken: aSmaCCToken [
 	substringToken := aSmaCCToken
+]
+
+{ #category : #generated }
+TeradataSubstringExpressionNode >> to [
+	^ to
+]
+
+{ #category : #generated }
+TeradataSubstringExpressionNode >> to: aTeradataExpressionNode [
+	self to notNil ifTrue: [ self to parent: nil ].
+	to := aTeradataExpressionNode.
+	self to notNil ifTrue: [ self to parent: self ]
 ]
 
 { #category : #generated }
