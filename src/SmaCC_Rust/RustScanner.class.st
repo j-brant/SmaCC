@@ -29,12 +29,12 @@ RustScanner >> ampId [
 
 { #category : #generated }
 RustScanner >> emptySymbolTokenId [
-	^ 406
+	^ 408
 ]
 
 { #category : #generated }
 RustScanner >> errorTokenId [
-	^ 407
+	^ 409
 ]
 
 { #category : #generated }
@@ -77,21 +77,19 @@ RustScanner >> next [
 { #category : #scanning }
 RustScanner >> potentialFloat [
 	| string |
-	^ stream peek = $.
+	stream peek = $.
 		ifTrue:
 			[ stream position: stream position - 1.
-			string := outputStream contents.
-			matchActions := {self INTEGER_LITERALId}.
-			self createTokenFor: string ]
-		ifFalse:
-			[ string := outputStream contents.
-			matchActions := {self FLOAT_LITERALId}.
-			self createTokenFor: string ]
+			outputStream position: outputStream position - 1.
+			matchActions := {self INTEGER_LITERALId} ]
+		ifFalse: [ matchActions := {self FLOAT_LITERALId} ].
+	string := outputStream contents.
+	^ self createTokenFor: string
 ]
 
 { #category : #generated }
 RustScanner >> rawStringId [
-	^ 405
+	^ 407
 ]
 
 { #category : #scanning }
@@ -340,7 +338,7 @@ RustScanner >> scan1X17 [
 	currentCharacter == $^ ifTrue: [ ^ self scan1X11 ].
 	currentCharacter == $_ ifTrue: [ ^ self scan17 ].
 	currentCharacter == $b ifTrue: [ ^ self scan18 ].
-	currentCharacter == $r ifTrue: [ ^ self scan24 ].
+	currentCharacter == $r ifTrue: [ ^ self scan25 ].
 	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(104) ].
 	currentCharacter == $| ifTrue: [ ^ self scan1X5 ].
 	currentCharacter == $} ifTrue: [ ^ self recordAndReportMatch: #(108) ].
@@ -551,12 +549,7 @@ RustScanner >> scan22 [
 	self recordMatch: #(112).
 	self step.
 	currentCharacter == $" ifTrue: [ ^ self scan23 ].
-	currentCharacter == $#
-		ifTrue:
-			[ [ self recordMatch: #(119).
-			self step.
-			currentCharacter == $# ] whileTrue.
-			^ self reportLastMatch ].
+	currentCharacter == $# ifTrue: [ ^ self scan24 ].
 	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ]) ifTrue: [ ^ self scan16 ].
 	^ self reportLastMatch
 ]
@@ -570,31 +563,34 @@ RustScanner >> scan23 [
 
 { #category : #generated }
 RustScanner >> scan24 [
-	self recordMatch: #(112).
-	self step.
-	currentCharacter == $" ifTrue: [ ^ self scan23 ].
-	currentCharacter == $# ifTrue: [ ^ self scan25 ].
-	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ]) ifTrue: [ ^ self scan16 ].
+	[ self step.
+	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(119) ].
+	currentCharacter == $# ] whileTrue.
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 RustScanner >> scan25 [
-	self recordMatch: #(119).
+	self recordMatch: #(112).
 	self step.
-	currentCharacter == $#
-		ifTrue:
-			[ [ self recordMatch: #(119).
-			self step.
-			currentCharacter == $# ] whileTrue.
-			^ self reportLastMatch ].
-	currentCharacter == $_ ifTrue: [ ^ self scan27 ].
-	currentCharacter isLetter ifTrue: [ ^ self scan26 ].
+	currentCharacter == $" ifTrue: [ ^ self scan23 ].
+	currentCharacter == $# ifTrue: [ ^ self scan26 ].
+	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ]) ifTrue: [ ^ self scan16 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 RustScanner >> scan26 [
+	self step.
+	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(119) ].
+	currentCharacter == $# ifTrue: [ ^ self scan24 ].
+	currentCharacter == $_ ifTrue: [ ^ self scan28 ].
+	currentCharacter isLetter ifTrue: [ ^ self scan27 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+RustScanner >> scan27 [
 	[ self recordMatch: #(113).
 	self step.
 	currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue.
@@ -602,14 +598,14 @@ RustScanner >> scan26 [
 ]
 
 { #category : #generated }
-RustScanner >> scan27 [
+RustScanner >> scan28 [
 	self step.
-	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ]) ifTrue: [ ^ self scan26 ].
+	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ]) ifTrue: [ ^ self scan27 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-RustScanner >> scan28 [
+RustScanner >> scan29 [
 	self step.
 	currentCharacter == $!
 		ifTrue:
@@ -1948,7 +1944,7 @@ RustScanner >> scanForToken [
 		ifTrue:
 			[ self step.
 			currentCharacter = (Character value: 65279) ifTrue: [ self step ].
-			currentCharacter == $# ifTrue: [ ^ self scan28 ].
+			currentCharacter == $# ifTrue: [ ^ self scan29 ].
 			^ self reportLastMatch ].
 	scope == #default ifTrue: [ ^ self scan1 ].
 	^ self reportLastMatch
