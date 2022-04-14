@@ -29,12 +29,12 @@ RustScanner >> ampId [
 
 { #category : #generated }
 RustScanner >> emptySymbolTokenId [
-	^ 410
+	^ 393
 ]
 
 { #category : #generated }
 RustScanner >> errorTokenId [
-	^ 411
+	^ 394
 ]
 
 { #category : #generated }
@@ -89,7 +89,7 @@ RustScanner >> potentialFloat [
 
 { #category : #generated }
 RustScanner >> rawStringId [
-	^ 409
+	^ 392
 ]
 
 { #category : #scanning }
