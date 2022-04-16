@@ -1,37 +1,28 @@
 Class {
 	#name : #SmaCCParserGenerator,
-	#superclass : #ComposableModel,
+	#superclass : #SpPresenter,
 	#instVars : [
-		'tabModel',
-		'definitionModel',
-		'messagesModel',
-		'symbolsModel',
-		'itemSetsModel',
-		'testModel',
 		'parserClassName',
 		'scannerClassName',
 		'codeGeneratorType',
 		'savedDefinition',
-		'menu',
-		'viewItemSets',
+		'packageName',
+		'notebook',
 		'viewSymbols',
+		'viewItemSets',
 		'menuItems',
-		'packageName'
+		'definitionText',
+		'messagesText',
+		'symbolsText',
+		'itemSetsText',
+		'testText',
+		'menu'
 	],
 	#classVars : [
 		'ShowPrecedenceConflicts'
 	],
 	#category : #'SmaCC_Development_UI'
 }
-
-{ #category : #specs }
-SmaCCParserGenerator class >> defaultSpec [
-	<spec>
-	^ SpecColumnLayout composed
-		add: #menu height: self toolbarHeight;
-		add: #tabs;
-		yourself
-]
 
 { #category : #'class initialization' }
 SmaCCParserGenerator class >> initialize [
@@ -41,18 +32,18 @@ SmaCCParserGenerator class >> initialize [
 { #category : #'world menu' }
 SmaCCParserGenerator class >> menuCommandOn: aBuilder [
 	<worldMenu>
+	
 	(aBuilder item: #'SmaCC Parser Generator')
-		parent: #Tools;
-		order: 490.1;
+		parent: #Browsing;
+		order: 100;
 		help: 'SmaCC Parser Generator Tool';
 		action: [ self open ]
 ]
 
 { #category : #'instance creation' }
 SmaCCParserGenerator class >> open [
-	^ self new
-		extent: 550 @ 450;
-		openWithSpec;
+	^ (self new)
+		open;
 		yourself
 ]
 
@@ -86,16 +77,15 @@ SmaCCParserGenerator >> compile: aSymbol [
 	| grammar stream oldCharacterSize parserCompiler messages |
 	(self scannerClassName isEmpty or: [ self parserClassName isEmpty ])
 		ifTrue: [ ^ UIManager default alert: 'Both classes are not specified' ].
-	((Smalltalk includesKey: self parserClassName)
-		or: [ packageName notNil ])
-		ifFalse: [ self setPackage.
-			packageName isNil
-				ifTrue: [ ^ self ] ].
+	((Smalltalk includesKey: self parserClassName) or: [ packageName notNil ])
+		ifFalse:
+			[ self setPackage.
+			packageName isNil ifTrue: [ ^ self ] ].
 	messages := OrderedCollection new.
 	Cursor wait
-		showWhile: [ oldCharacterSize := SmaCCGrammar maximumCharacterValue.
-			[ self verifyParser
-				ifFalse: [ ^ self ].
+		showWhile:
+			[ oldCharacterSize := SmaCCGrammar maximumCharacterValue.
+			[ self verifyParser ifFalse: [ ^ self ].
 			parserCompiler := self compiler.
 			parserCompiler
 				codeGenerator: self codeGeneratorClass new;
@@ -109,31 +99,25 @@ SmaCCParserGenerator >> compile: aSymbol [
 			stream := WriteStream on: String new.
 			[ parserCompiler createChanges.
 			parserCompiler codeGenerator compileChanges.
-			viewSymbols
-				ifTrue: [ symbolsModel text: parserCompiler symbolsComment ].
-			viewItemSets
-				ifTrue: [ itemSetsModel text: parserCompiler itemSetsComment ] ]
+			viewSymbols ifTrue: [ symbolsText text: parserCompiler symbolsComment ].
+			viewItemSets ifTrue: [ itemSetsText text: parserCompiler itemSetsComment ] ]
 				on: SmaCCCompilationNotification
-				do: [ :ex | 
-					(ShowPrecedenceConflicts
-						or: [ ('*precedence*' match: ex messageText) not ])
-						ifTrue: [ messages
-								add:
-									ex messageText , (String with: Character cr with: Character cr)
-										, ex tag ].
+				do:
+					[ :ex | 
+					(ShowPrecedenceConflicts or: [ ('*precedence*' match: ex messageText) not ])
+						ifTrue: [ messages add: ex messageText , (String with: Character cr with: Character cr) , ex tag ].
 					ex pass ].
 			messages asSortedCollection
-				do: [ :each | 
+				do:
+					[ :each | 
 					stream
 						nextPutAll: '-------------------------';
 						cr;
 						nextPutAll: each;
 						cr ].
-			messagesModel text: stream contents.
-			messagesModel text notEmpty
-				ifTrue: [ tabModel selectedTab: (tabModel tabs at: 2) ].
-			self markAsUnmodified ]
-				ensure: [ SmaCCGrammar maximumCharacterValue: oldCharacterSize ] ]
+			messagesText text: stream contents.
+			messagesText text notEmpty ifTrue: [ notebook selectPage: (notebook pages at: 2) ].
+			self markAsUnmodified ] ensure: [ SmaCCGrammar maximumCharacterValue: oldCharacterSize ] ]
 ]
 
 { #category : #private }
@@ -144,31 +128,34 @@ SmaCCParserGenerator >> compiler [
 { #category : #actions }
 SmaCCParserGenerator >> debugParse [
 	| process |
-	process := [ self parserClass parse: testModel text asString ] newProcess.
+	process := [ self parserClass parse: self testString ] newProcess.
 	[ (process suspendedContext receiver isKindOf: SmaCCParser) and: [ process suspendedContext selector = #parse ] ]
 		whileFalse: [ process step: process suspendedContext ].
 	process debug
 ]
 
+{ #category : #layout }
+SmaCCParserGenerator >> defaultLayout [
+	^ SpBoxLayout newTopToBottom
+		add: menu expand: false;
+		add: notebook;
+		yourself
+]
+
 { #category : #private }
 SmaCCParserGenerator >> definition [
-	^ definitionModel text asString
+	^ definitionText text asString
 ]
 
 { #category : #private }
 SmaCCParserGenerator >> definition: source [
-	definitionModel text: source
+	definitionText text: source
 ]
 
 { #category : #initialization }
-SmaCCParserGenerator >> definitionTab [
-	definitionModel := self instantiate: TextModel.
-	definitionModel autoAccept: true.
-	^ self newTab
-		closeable: false;
-		label: 'Definition';
-		presenter: definitionModel;
-		yourself
+SmaCCParserGenerator >> definitionPage [
+	definitionText := self newText.
+	^ SpNotebookPage title: 'Definition' provider: [ definitionText ]
 ]
 
 { #category : #private }
@@ -176,30 +163,34 @@ SmaCCParserGenerator >> displayError: aString at: position [
 	self textWidget
 		ifNotNil:
 			[ :each | 
-			each
-				text: (each text copyFrom: 1 to: position - 1) , aString , ' ->' , (each text copyFrom: position to: each text size).
-			each setSelection: (position to: position + aString size + 2) ]
+			each text: (each text copyFrom: 1 to: position - 1) , aString , ' ->' , (each text copyFrom: position to: each text size).
+			each selectionInterval: (position to: position + aString size + 2) ]
 ]
 
 { #category : #initialization }
 SmaCCParserGenerator >> fileMenu [
-	^ MenuPresenter new
-		addGroup: [ :group | 
-			group
-				addItem: [ :item | 
-					item
-						name: 'Open...';
-						action: [ self findParserClass ] ];
-				addItem: [ :item | 
-					item
-						name: 'Save';
-						action: [ self compile ] ] ];
-		addGroup: [ :group | 
-			group
-				addItem: [ :item | 
-					item
-						name: 'Exit';
-						action: [ self close ] ] ]
+	^ (self newMenu)
+		addGroup:
+				[ :group | 
+					group
+						addItem:
+								[ :item | 
+									item
+										name: 'Open...';
+										action: [ self findParserClass ] ];
+						addItem:
+								[ :item | 
+									item
+										name: 'Save';
+										action: [ self compile ] ] ];
+		addGroup:
+				[ :group | 
+					group
+						addItem:
+							[ :item | 
+							item
+								name: 'Exit';
+								action: [ self close ] ] ]
 ]
 
 { #category : #actions }
@@ -233,41 +224,47 @@ SmaCCParserGenerator >> initialize [
 ]
 
 { #category : #initialization }
-SmaCCParserGenerator >> initializeMenubar [
-	menu := MenuPresenter new
-		addGroup: [ :group | 
-			group
-				addItem: [ :item | 
-					item
-						name: 'File';
-						subMenu: self fileMenu ];
-				addItem: [ :item | 
-					item
-						name: 'Options';
-						subMenu: self optionsMenu ];
-				addItem: [ :item | 
-					item
-						name: 'View';
-						subMenu: self viewMenu ] ]
+SmaCCParserGenerator >> initializePresenters [
+	menu := (self newMenuBar)
+		addGroup:
+				[ :group | 
+					group
+						addItem:
+							[ :item | 
+							item
+								name: 'File';
+								subMenu: self fileMenu ] ];
+		addGroup:
+				[ :group | 
+					group
+						addItem:
+							[ :item | 
+							item
+								name: 'Options';
+								subMenu: self optionsMenu ] ];
+		addGroup:
+				[ :group | 
+					group
+						addItem:
+							[ :item | 
+							item
+								name: 'View';
+								subMenu: self viewMenu ] ].
+	notebook := self newNotebook.
+	notebook
+		addPage: self definitionPage;
+		addPage: self messagesPage;
+		addPage: self symbolsPage;
+		addPage: self itemSetsPage;
+		addPage: self testPage.
+	self updateViewMenu.
+	self updateOptionsMenu
 ]
 
 { #category : #initialization }
-SmaCCParserGenerator >> initializeTabModel [
-	tabModel := self instantiate: SmaCCTabManagerPresenter.
-	tabModel
-		addTab: self definitionTab;
-		addTab: self messagesTab;
-		addTab: self symbolsTab;
-		addTab: self itemSetsTab;
-		addTab: self testTab
-]
-
-{ #category : #initialization }
-SmaCCParserGenerator >> initializeWidgets [
-	self initializeTabModel.
-	self initializeMenubar.
-	self updateOptionsMenu.
-	self updateViewMenu
+SmaCCParserGenerator >> initializeWindow: aWindowPresenter [
+	super initializeWindow: aWindowPresenter.
+	aWindowPresenter initialExtent: 650 @ 500
 ]
 
 { #category : #private }
@@ -281,14 +278,10 @@ SmaCCParserGenerator >> isValidName: aString [
 ]
 
 { #category : #initialization }
-SmaCCParserGenerator >> itemSetsTab [
-	itemSetsModel := self instantiate: TextModel.
-	itemSetsModel disable.
-	^ self newTab
-		closeable: false;
-		label: 'Item Sets';
-		presenter: itemSetsModel;
-		yourself
+SmaCCParserGenerator >> itemSetsPage [
+	itemSetsText := self newText.
+	itemSetsText beNotEditable.
+	^ SpNotebookPage title: 'Item Sets' provider: [ itemSetsText ]
 ]
 
 { #category : #private }
@@ -312,47 +305,47 @@ SmaCCParserGenerator >> menuItemFor: aSymbol [
 ]
 
 { #category : #initialization }
-SmaCCParserGenerator >> messagesTab [
-	messagesModel := self instantiate: TextModel.
-	messagesModel disable.
-	^ self newTab
-		closeable: false;
-		label: 'Messages';
-		presenter: messagesModel;
-		yourself
+SmaCCParserGenerator >> messagesPage [
+	messagesText := self newText.
+	messagesText beNotEditable.
+	^ SpNotebookPage title: 'Messages' provider: [ messagesText ]
 ]
 
 { #category : #initialization }
 SmaCCParserGenerator >> optionsMenu [
-	^ MenuPresenter new
-		addGroup: [ :group | 
-			group
-				addItem: [ :item | 
-					menuItems at: #setScannerClass put: item.
-					item
+	^ (self newMenu)
+		addGroup:
+				[ :group | 
+					group
 						autoRefresh: true;
-						name: 'Scanner Class...';
-						action: [ self setScannerClass ] ];
-				addItem: [ :item | 
-					menuItems at: #setParserClass put: item.
-					item
+						addItem:
+								[ :item | 
+									menuItems at: #setScannerClass put: item.
+									item
+										name: 'Scanner Class...';
+										action: [ self setScannerClass ] ];
+						addItem:
+								[ :item | 
+									menuItems at: #setParserClass put: item.
+									item
+										name: 'Parser Class...';
+										action: [ self setParserClass ] ];
+						addItem:
+								[ :item | 
+									menuItems at: #setPackage put: item.
+									item
+										name: 'Set Package...';
+										action: [ self setPackage ] ] ];
+		addGroup:
+				[ :group | 
+					group
 						autoRefresh: true;
-						name: 'Parser Class...';
-						action: [ self setParserClass ] ];
-				addItem: [ :item | 
-					menuItems at: #setPackage put: item.
-					item
-						autoRefresh: true;
-						name: 'Set Package...';
-						action: [ self setPackage ] ] ];
-		addGroup: [ :group | 
-			group
-				addItem: [ :item | 
-					menuItems at: #optimizeTransitionTable put: item.
-					item
-						autoRefresh: true;
-						name: 'Optimize Transition Table';
-						action: [ self toggleOptimizeTransitionTable ] ] ]
+						addItem:
+								[ :item | 
+									menuItems at: #optimizeTransitionTable put: item.
+									item
+										name: 'Optimize Transition Table';
+										action: [ self toggleOptimizeTransitionTable ] ] ]
 ]
 
 { #category : #actions }
@@ -364,15 +357,14 @@ SmaCCParserGenerator >> parse [
 SmaCCParserGenerator >> parseAndEvaluate: aBlock [
 	| class |
 	class := self parserClass.
-	class isNil
-		ifTrue: [ ^ UIManager default alert: 'No parser defined' ].
+	class isNil ifTrue: [ ^ UIManager default alert: 'No parser defined' ].
 	aBlock
 		value:
 			(class
-				parse: testModel text asString
+				parse: self testString
 				onError:
 					[ :aString :position | 
-					tabModel selectedTab: tabModel tabs last.
+					notebook selectPage: notebook pages last.
 					self displayError: aString at: position.
 					^ self ])
 ]
@@ -456,56 +448,57 @@ SmaCCParserGenerator >> setScannerClass [
 
 { #category : #private }
 SmaCCParserGenerator >> switchToDefinition [
-	tabModel selectedTab label ~= 'Definition'
-		ifTrue: [ tabModel selectedTab: tabModel tabs first ]
+	notebook selectedPage title ~= 'Definition' ifTrue: [ notebook selectPage: notebook pages first ]
 ]
 
 { #category : #initialization }
-SmaCCParserGenerator >> symbolsTab [
-	symbolsModel := self instantiate: TextModel.
-	symbolsModel disable.
-	^ self newTab
-		closeable: false;
-		label: 'Symbols';
-		presenter: symbolsModel;
-		yourself
-]
-
-{ #category : #accessing }
-SmaCCParserGenerator >> tabs [
-	^ tabModel
+SmaCCParserGenerator >> symbolsPage [
+	symbolsText := self newText.
+	symbolsText beNotEditable.
+	^ SpNotebookPage title: 'Symbols' provider: [ symbolsText ]
 ]
 
 { #category : #initialization }
-SmaCCParserGenerator >> testMenu: aMenu [
-	^ aMenu
-		add: 'Find...' selector: #find;
-		addLine;
-		add: 'Evaluate' target: self selector: #parse;
-		add: 'Inspect...' target: self selector: #parseAndInspect;
-		add: 'Debug' target: self selector: #debugParse;
+SmaCCParserGenerator >> testMenu [
+	^ (self newMenu)
+		addGroup:
+				[ :group | 
+					group
+						addItem:
+								[ :item | 
+									item
+										name: 'Evaluate';
+										action: [ self parse ] ];
+						addItem:
+								[ :item | 
+									item
+										name: 'Inspect...';
+										action: [ self parseAndInspect ] ];
+						addItem:
+								[ :item | 
+									item
+										name: 'Debug';
+										action: [ self debugParse ] ] ];
 		yourself
 ]
 
 { #category : #initialization }
-SmaCCParserGenerator >> testTab [
-	testModel := self instantiate: TextModel.
-	testModel
-		autoAccept: true;
-		menuHolder: [ :mnu | self testMenu: mnu ].
-	^ self newTab
-		closeable: false;
-		label: 'Test';
-		presenter: testModel;
-		yourself
+SmaCCParserGenerator >> testPage [
+	testText := self newText.
+	testText withEditionContextMenu.
+	testText contextMenu: self testMenu.
+	^ SpNotebookPage title: 'Test' provider: [ testText ]
+]
+
+{ #category : #private }
+SmaCCParserGenerator >> testString [
+	^ testText text asString
 ]
 
 { #category : #private }
 SmaCCParserGenerator >> textWidget [
-	tabModel selectedTab == definitionModel owner
-		ifTrue: [ ^ definitionModel ].
-	tabModel selectedTab == testModel owner
-		ifTrue: [ ^ testModel ].
+	notebook selectedPage == notebook pages first ifTrue: [ ^ definitionText ].
+	notebook selectedPage == notebook pages last ifTrue: [ ^ testText ].
 	^ nil
 ]
 
@@ -523,15 +516,12 @@ SmaCCParserGenerator >> toggleOptimizeTransitionTable [
 { #category : #private }
 SmaCCParserGenerator >> updateDefinitionFor: parserClass [
 	| scannerClass |
-	scannerClass := [ parserClass scannerClass ]
-		on: Error
-		do: [ :ex | ex return: nil ].
-	scannerClass notNil
-		ifTrue: [ self scannerClassName: scannerClass name ].
+	scannerClass := [ parserClass scannerClass ] on: Error do: [ :ex | ex return: nil ].
+	scannerClass notNil ifTrue: [ self scannerClassName: scannerClass name ].
 	self definition: parserClass parserDefinitionString.
-	messagesModel text: ''.
-	symbolsModel text: ''.
-	itemSetsModel text: ''.
+	messagesText text: ''.
+	symbolsText text: ''.
+	itemSetsText text: ''.
 	self switchToDefinition
 ]
 
@@ -596,21 +586,23 @@ SmaCCParserGenerator >> viewItemSetsClicked [
 
 { #category : #initialization }
 SmaCCParserGenerator >> viewMenu [
-	^ MenuPresenter new
-		addGroup: [ :group | 
+	^ self newMenu
+		addGroup:
+			[ :group | 
 			group
-				addItem: [ :item | 
-					menuItems at: #viewSymbolsClicked put: item.
-					item
-						autoRefresh: true;
-						name: 'Symbols';
-						action: [ self viewSymbolsClicked ] ];
-				addItem: [ :item | 
-					menuItems at: #viewItemSetsClicked put: item.
-					item
-						autoRefresh: true;
-						name: 'Item Sets';
-						action: [ self viewItemSetsClicked ] ] ]
+				autoRefresh: true;
+				addItem:
+						[ :item | 
+							menuItems at: #viewSymbolsClicked put: item.
+							item
+								name: 'Symbols';
+								action: [ self viewSymbolsClicked ] ];
+				addItem:
+						[ :item | 
+							menuItems at: #viewItemSetsClicked put: item.
+							item
+								name: 'Item Sets';
+								action: [ self viewItemSetsClicked ] ] ]
 ]
 
 { #category : #actions }
