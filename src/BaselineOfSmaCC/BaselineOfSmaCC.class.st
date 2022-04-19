@@ -41,6 +41,7 @@ BaselineOfSmaCC >> baseline: spec [
 				package: 'SmaCC_Rewrite_Server_Worker' with: [ spec requires: 'SmaCC_Rewrite_Engine' ];
 				package: 'SmaCC_Ruby' with: [ spec requires: 'SmaCC_GLR_Runtime' ];
 				package: 'SmaCC_Runtime';
+				package: 'SmaCC_Rust' with: [ spec requires: 'SmaCC_GLR_Runtime' ];
 				package: 'SmaCC_Smalltalk_Parser' with: [ spec requires: 'SmaCC_Runtime' ];
 				package: 'SmaCC_Source_Editing';
 				package: 'SmaCC_Swift' with: [ spec requires: 'SmaCC_GLR_Runtime' ];
@@ -50,7 +51,7 @@ BaselineOfSmaCC >> baseline: spec [
 			spec
 				group: 'All'
 					with:
-					#('SmaCC_Antlr_Parser' 'SmaCC_CPP_Parser' 'SmaCC_CSV_Parser' 'SmaCC_CSharp' 'SmaCC_C_Parser' 'SmaCC_Clojure' 'SmaCC_DOT' 'SmaCC_Debugging_Support' 'SmaCC_Delphi' 'SmaCC_Delphi_Forms' 'SmaCC_Development' 'SmaCC_Development_UI' 'SmaCC_Elixir_Parser' 'SmaCC_Generic_Smalltalk_Parser' 'SmaCC_Grammar_Parser' 'SmaCC_JSON_Parser' 'SmaCC_Java' 'SmaCC_Javascript_Parser' 'SmaCC_Line_Parser' 'SmaCC_Parse_Tree_Comparison' 'SmaCC_Python_Tests' 'SmaCC_Rewrite_Engine_Command_Line' 'SmaCC_Rewrite_Engine_Tests' 'SmaCC_Rewrite_Engine_UI' 'SmaCC_Rewrite_Server' 'SmaCC_Rewrite_Server_Worker' 'SmaCC_Ruby' 'SmaCC_Smalltalk_Parser' 'SmaCC_Source_Editing' 'SmaCC_Teradata_Parser' 'SmaCC_Tests' 'SmaCC_VB_NET_Parser');
+					#('SmaCC_Antlr_Parser' 'SmaCC_CPP_Parser' 'SmaCC_CSV_Parser' 'SmaCC_CSharp' 'SmaCC_C_Parser' 'SmaCC_Clojure' 'SmaCC_DOT' 'SmaCC_Debugging_Support' 'SmaCC_Delphi' 'SmaCC_Delphi_Forms' 'SmaCC_Development' 'SmaCC_Development_UI' 'SmaCC_Elixir_Parser' 'SmaCC_Generic_Smalltalk_Parser' 'SmaCC_Grammar_Parser' 'SmaCC_JSON_Parser' 'SmaCC_Java' 'SmaCC_Javascript_Parser' 'SmaCC_Line_Parser' 'SmaCC_Parse_Tree_Comparison' 'SmaCC_Python_Tests' 'SmaCC_Rewrite_Engine_Command_Line' 'SmaCC_Rewrite_Engine_Tests' 'SmaCC_Rewrite_Engine_UI' 'SmaCC_Rewrite_Server' 'SmaCC_Rewrite_Server_Worker' 'SmaCC_Ruby' 'SmaCC_Rust' 'SmaCC_Smalltalk_Parser' 'SmaCC_Source_Editing' 'SmaCC_Teradata_Parser' 'SmaCC_Tests' 'SmaCC_VB_NET_Parser');
 				group: 'Runtime' with: #('SmaCC_Runtime');
 				group: 'GLR Runtime' with: #('SmaCC_GLR_Runtime');
 				group: 'Rewrites' with: #('SmaCC_Rewrite_Engine');
