@@ -6,9 +6,7 @@ Class {
 
 { #category : #accessing }
 SmaCCParserStepThroughAction class >> defaultIcon [
-	^ (Smalltalk at: #BrGlamorousIcons ifAbsent: [  ])
-		ifNil: [ GLMUIThemeExtraIcons glamorousOver ]
-		ifNotNil: [ :cls | cls over ]
+	^ (Smalltalk at: #BrGlamorousIcons ifAbsent: [  ]) ifNil: [ self iconNamed: #glamorousOver ] ifNotNil: [ :cls | cls over ]
 ]
 
 { #category : #registration }

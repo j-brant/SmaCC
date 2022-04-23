@@ -485,7 +485,7 @@ SmaCCParserGenerator >> testMenu [
 { #category : #initialization }
 SmaCCParserGenerator >> testPage [
 	testText := self newText.
-	testText withEditionContextMenu.
+	testText withoutEditionContextMenu.	"since it is broken"
 	testText contextMenu: self testMenu.
 	^ SpNotebookPage title: 'Test' provider: [ testText ]
 ]

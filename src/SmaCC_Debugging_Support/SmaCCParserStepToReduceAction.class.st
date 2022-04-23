@@ -6,9 +6,7 @@ Class {
 
 { #category : #accessing }
 SmaCCParserStepToReduceAction class >> defaultIcon [
-	^ (Smalltalk at: #BrGlamorousIcons ifAbsent: [  ])
-		ifNil: [ GLMUIThemeExtraIcons glamorousInto ]
-		ifNotNil: [ :cls | cls into ]
+	^ (Smalltalk at: #BrGlamorousIcons ifAbsent: [  ]) ifNil: [ self iconNamed: #glamorousInto ] ifNotNil: [ :cls | cls into ]
 ]
 
 { #category : #registration }

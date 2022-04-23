@@ -10,6 +10,15 @@ Class {
 	#category : #'SmaCC_Debugging_Support-Debugger'
 }
 
+{ #category : #'instance creation' }
+SmaCCParserDebugSession class >> from: aDebugSession [
+	| session |
+	(aDebugSession isKindOf: superclass) ifFalse: [ self error: 'Unknown debug session' ].
+	session := self basicNew.
+	1 to: superclass instSize do: [ :i | session instVarAt: i put: (aDebugSession instVarAt: i) ].
+	^ session
+]
+
 { #category : #testing }
 SmaCCParserDebugSession class >> handlesContext: aContext [
 	| max count |
@@ -30,7 +39,7 @@ SmaCCParserDebugSession class >> isParseContext: each [
 
 { #category : #private }
 SmaCCParserDebugSession class >> maxSearchDepth [
-	^ maxSearchDepth ifNil: [ 500 ]
+	^ maxSearchDepth ifNil: [ 50 ]
 ]
 
 { #category : #private }
