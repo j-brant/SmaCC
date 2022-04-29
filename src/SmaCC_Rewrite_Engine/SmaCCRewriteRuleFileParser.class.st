@@ -102,6 +102,15 @@ SmaCCRewriteRuleFileParser class >> fileExtensionType [
 ]
 
 { #category : #accessing }
+SmaCCRewriteRuleFileParser class >> parse: aString [
+	| fileSystem filename |
+	fileSystem := FileSystem memory.
+	filename := fileSystem / 'rewrites'.
+	filename writeStreamDo: [ :stream | stream nextPutAll: aString ].
+	^ self parseFile: filename
+]
+
+{ #category : #accessing }
 SmaCCRewriteRuleFileParser class >> parseFile: aString [
 	^ aString asFileReference
 		readStreamDo: [ :stream | 
