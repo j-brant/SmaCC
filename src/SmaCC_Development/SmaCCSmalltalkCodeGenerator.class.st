@@ -224,45 +224,43 @@ SmaCCSmalltalkCodeGenerator >> changes [
 ]
 
 { #category : #'compiling-scanner' }
-SmaCCSmalltalkCodeGenerator >> closestIsExpressionsFor: aSmaCCCharacterEdge seen: aCollection [
+SmaCCSmalltalkCodeGenerator >> closestIsExpressionsFor: charsCollection seen: aCollection [
 	| expressions |
 	expressions := OrderedCollection new.
 	self isExpressions
-		keysAndValuesDo: [ :string :selector | 
+		keysAndValuesDo:
+			[ :string :selector | 
 			| isInString |
 			isInString := false.
 			((string
-				allSatisfy: [ :each | 
-					(aSmaCCCharacterEdge transitionObjects includes: each)
-						ifTrue: [ isInString := true ]
-						ifFalse: [ aCollection includes: each ] ]) and: [ isInString ])
-				ifTrue: [ expressions add: selector ] ].
+				allSatisfy:
+					[ :each | (charsCollection includes: each) ifTrue: [ isInString := true ] ifFalse: [ aCollection includes: each ] ])
+				and: [ isInString ]) ifTrue: [ expressions add: selector ] ].
 	(expressions isEmpty
-		or: [ (self minMaxPairsFor: aSmaCCCharacterEdge without: expressions) size
-				> (self minMaxPairsFor: aSmaCCCharacterEdge without: #()) size ])
+		or:
+			[ (self minMaxPairsFor: charsCollection without: expressions) size > (self minMaxPairsFor: charsCollection without: #()) size ])
 		ifTrue: [ ^ #() ].
 	expressions size > 1
-		ifTrue: [ | strings newExpressions |
+		ifTrue:
+			[ | strings newExpressions |
 			strings := expressions
-				collect: [ :each | 
-					each
-						->
-							((self isExpressions keyAtValue: each)
-								select: [ :char | aSmaCCCharacterEdge transitionObjects includes: char ]) ].
+				collect: [ :each | each -> ((self isExpressions keyAtValue: each) select: [ :char | charsCollection includes: char ]) ].
 			strings := strings
-				asSortedCollection: [ :a :b | 
+				asSortedCollection:
+					[ :a :b | 
 					a value size > b value size
-						or: [ a value size = b value size
-								and: [ (self isExpressions keyAtValue: a key) size
-										< (self isExpressions keyAtValue: b key) size ] ] ].
+						or:
+							[ a value size = b value size
+								and: [ (self isExpressions keyAtValue: a key) size < (self isExpressions keyAtValue: b key) size ] ] ].
 			newExpressions := OrderedCollection with: strings first.
-			2 to: strings size do: [ :i | 
-				| left |
-				left := (strings at: i) value.
-				newExpressions
-					do: [ :each | left := left reject: [ :char | each value includes: char ] ].
-				left notEmpty
-					ifTrue: [ newExpressions add: (strings at: i) ] ].
+			2
+				to: strings size
+				do:
+					[ :i | 
+					| left |
+					left := (strings at: i) value.
+					newExpressions do: [ :each | left := left reject: [ :char | each value includes: char ] ].
+					left notEmpty ifTrue: [ newExpressions add: (strings at: i) ] ].
 			expressions := newExpressions collect: [ :each | each key ] ].
 	^ expressions
 ]
@@ -867,21 +865,33 @@ SmaCCSmalltalkCodeGenerator >> outputLessThanMatch: each on: stream [
 ]
 
 { #category : #'compiling-scanner' }
-SmaCCSmalltalkCodeGenerator >> outputMatchFor: aSmaCCCharacterEdge on: stream without: isSelectors [
-	| pairs |
-	pairs := self
-		minMaxPairsFor: aSmaCCCharacterEdge
-		without: isSelectors.
+SmaCCSmalltalkCodeGenerator >> outputMatchFor: aSmaCCCharacterEdge seen: aCollection on: stream [
+	| isSelectors pairs invertedSelectors invertedPairs invertedChars invertMatch |
+	isSelectors := self closestIsExpressionsFor: aSmaCCCharacterEdge transitionObjects seen: aCollection.
+	pairs := self minMaxPairsFor: aSmaCCCharacterEdge transitionObjects without: isSelectors.
+	invertMatch := false.
+	(SmaCCGrammar maximumCharacterValue > 255 and: [ isSelectors size + pairs size > 10 ])
+		ifTrue:
+			[ invertedChars := (SmaCCGrammar allCharacters)
+				smaccRemoveAll: aSmaCCCharacterEdge transitionObjects;
+				yourself.
+			invertedSelectors := self closestIsExpressionsFor: invertedChars seen: aCollection.
+			invertedPairs := self minMaxPairsFor: invertedChars without: invertedSelectors.
+			isSelectors size + pairs size > (invertedSelectors size + invertedPairs size)
+				ifTrue:
+					[ isSelectors := invertedSelectors.
+					pairs := invertedPairs.
+					invertMatch := true ] ].
+	invertMatch ifTrue: [ stream nextPut: $( ].
+	isSelectors do: [ :each | self outputIsSelector: each on: stream ] separatedBy: [ stream nextPutAll: ' or: [' ].
 	pairs isEmpty
-		ifTrue: [ stream next: isSelectors size - 1 put: $].
-			^ self ].
-	isSelectors notEmpty
-		ifTrue: [ stream nextPutAll: ' or: [' ].
-	pairs
-		do: [ :each | self outputMatchForTransition: each on: stream ]
-		separatedBy: [ stream nextPutAll: ' or: [' ].
-	stream next: pairs size - 1 put: $].
-	stream next: isSelectors size put: $]
+		ifTrue: [ stream next: isSelectors size - 1 put: $] ]
+		ifFalse:
+			[ isSelectors notEmpty ifTrue: [ stream nextPutAll: ' or: [' ].
+			pairs do: [ :each1 | self outputMatchForTransition: each1 on: stream ] separatedBy: [ stream nextPutAll: ' or: [' ].
+			stream next: pairs size - 1 put: $].
+			stream next: isSelectors size put: $] ].
+	invertMatch ifTrue: [ stream nextPutAll: ') not' ]
 ]
 
 { #category : #'compiling-scanner' }
@@ -1022,31 +1032,30 @@ SmaCCSmalltalkCodeGenerator >> removeUnnecessaryClassChanges [
 SmaCCSmalltalkCodeGenerator >> removeUnnecessaryMethodChanges [
 	| allChanges |
 	allChanges := self changes changes copy.
-	(allChanges
-		allSatisfy: [ :each | (each isKindOf: RBCompositeRefactoryChange) not ])
-		ifFalse: [ ^ self ].
+	(allChanges allSatisfy: [ :each | (each isKindOf: RBCompositeRefactoryChange) not ]) ifFalse: [ ^ self ].
 	allChanges
 		keysAndValuesDo:
 			[ :key :each | 
 			(each isKindOf: RBRemoveMethodChange)
 				ifTrue:
-					[ key + 1 to: allChanges size do:
-						[ :i | 
-						| other |
-						other := allChanges at: i.
-						[ ((other isKindOf: RBAddMethodChange)
-							and:
-								[ each selector = other selector
-									and:
-										[ each changeClassName = other changeClassName
-											and:
-												[ (other changeClass sourceCodeAt: other selector) asString
-													= other parseTree source asString ] ] ])
-							ifTrue: [ self
-									removeChange: each;
-									removeChange: other ] ]
-							on: Error
-							do: [ :ex | ex return ] ] ] ]
+					[ key + 1
+						to: allChanges size
+						do:
+							[ :i | 
+							| other |
+							other := allChanges at: i.
+							[ ((other isKindOf: RBAddMethodChange)
+								and:
+									[ each selector = other selector
+										and:
+											[ each changeClassName = other changeClassName
+												and:
+													[ (other changeClass sourceCodeAt: other selector) asString = other parseTree source asString
+														or: [ (RBParser parseMethod: (other changeClass sourceCodeAt: other selector) asString) = other parseTree ] ] ] ])
+								ifTrue:
+									[ self
+										removeChange: each;
+										removeChange: other ] ] on: Error do: [ :ex | ex return ] ] ] ]
 ]
 
 { #category : #'compiling-scanner' }
