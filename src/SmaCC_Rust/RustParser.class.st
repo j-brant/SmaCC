@@ -108,7 +108,7 @@ RustParser class >> ambiguousTransitions [
 
 { #category : #'generated-accessing' }
 RustParser class >> cacheId [
-	^'2022-04-15T15:19:28.530712-05:00'
+	^'2022-04-29T15:03:44.507305-05:00'
 ]
 
 { #category : #generated }

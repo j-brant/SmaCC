@@ -274,7 +274,7 @@ SmaCCCodeGenerator >> basicCompileSourceFor: aSmaCCReduceAction [
 ]
 
 { #category : #'compiling-scanner' }
-SmaCCCodeGenerator >> closestIsExpressionsFor: aSmaCCCharacterEdge seen: anObject [
+SmaCCCodeGenerator >> closestIsExpressionsFor: charsCollection seen: anObject [
 	self subclassResponsibility
 ]
 
@@ -921,9 +921,9 @@ SmaCCCodeGenerator >> methodNameMap: aSmaCCNode forMethods: methodNodes [
 ]
 
 { #category : #'compiling-scanner' }
-SmaCCCodeGenerator >> minMaxPairsFor: aSmaCCCharacterEdge without: isSelectors [
+SmaCCCodeGenerator >> minMaxPairsFor: charsCollection without: isSelectors [
 	| start last pairs charsLeft |
-	charsLeft := aSmaCCCharacterEdge transitionObjects.
+	charsLeft := charsCollection.
 	isSelectors notEmpty
 		ifTrue: [ charsLeft := charsLeft copy.
 			isSelectors do: [ :each | charsLeft smaccRemoveAll: (SmaCCGrammar isExpressionMap at: each) ] ].
@@ -1002,23 +1002,8 @@ SmaCCCodeGenerator >> outputIsSelector: isSelector on: stream [
 ]
 
 { #category : #'compiling-scanner' }
-SmaCCCodeGenerator >> outputMatchFor: aSmaCCCharacterEdge on: aStream without: aSelector [
-	self subclassResponsibility
-]
-
-{ #category : #'compiling-scanner' }
 SmaCCCodeGenerator >> outputMatchFor: aSmaCCCharacterEdge seen: aCollection on: stream [
-	| isSelectors |
-	isSelectors := self
-		closestIsExpressionsFor: aSmaCCCharacterEdge
-		seen: aCollection.
-	isSelectors
-		do: [ :each | self outputIsSelector: each on: stream ]
-		separatedBy: [ stream nextPutAll: ' or: [' ].
-	self
-		outputMatchFor: aSmaCCCharacterEdge
-		on: stream
-		without: isSelectors
+	self subclassResponsibility
 ]
 
 { #category : #private }
@@ -1292,8 +1277,8 @@ SmaCCCodeGenerator >> sortedTransitionsForNode: aSmaCCNode [
 					[ b isCharacterTransition not
 						or:
 							[ | aPairs bPairs |
-							aPairs := self minMaxPairsFor: a without: #().
-							bPairs := self minMaxPairsFor: b without: #().
+							aPairs := self minMaxPairsFor: a transitionObjects without: #().
+							bPairs := self minMaxPairsFor: b transitionObjects without: #().
 							aPairs size < bPairs size
 								or:
 									[ aPairs size = bPairs size
