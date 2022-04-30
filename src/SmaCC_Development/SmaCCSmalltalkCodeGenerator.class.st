@@ -238,8 +238,15 @@ SmaCCSmalltalkCodeGenerator >> closestIsExpressionsFor: charsCollection seen: aC
 				and: [ isInString ]) ifTrue: [ expressions add: selector ] ].
 	(expressions isEmpty
 		or:
-			[ (self minMaxPairsFor: charsCollection without: expressions) size > (self minMaxPairsFor: charsCollection without: #()) size ])
-		ifTrue: [ ^ #() ].
+			[ (self
+				minMaxPairsFor: charsCollection
+				without: expressions
+				seen: aCollection) size
+				>
+					(self
+						minMaxPairsFor: charsCollection
+						without: #()
+						seen: aCollection) size ]) ifTrue: [ ^ #() ].
 	expressions size > 1
 		ifTrue:
 			[ | strings newExpressions |
@@ -868,15 +875,21 @@ SmaCCSmalltalkCodeGenerator >> outputLessThanMatch: each on: stream [
 SmaCCSmalltalkCodeGenerator >> outputMatchFor: aSmaCCCharacterEdge seen: aCollection on: stream [
 	| isSelectors pairs invertedSelectors invertedPairs invertedChars invertMatch |
 	isSelectors := self closestIsExpressionsFor: aSmaCCCharacterEdge transitionObjects seen: aCollection.
-	pairs := self minMaxPairsFor: aSmaCCCharacterEdge transitionObjects without: isSelectors.
+	pairs := self
+		minMaxPairsFor: aSmaCCCharacterEdge transitionObjects
+		without: isSelectors
+		seen: aCollection.
 	invertMatch := false.
-	(SmaCCGrammar maximumCharacterValue > 255 and: [ isSelectors size + pairs size > 10 ])
+	(SmaCCGrammar maximumCharacterValue > 255 and: [ isSelectors size + pairs size > 3 ])
 		ifTrue:
 			[ invertedChars := (SmaCCGrammar allCharacters)
 				smaccRemoveAll: aSmaCCCharacterEdge transitionObjects;
 				yourself.
 			invertedSelectors := self closestIsExpressionsFor: invertedChars seen: aCollection.
-			invertedPairs := self minMaxPairsFor: invertedChars without: invertedSelectors.
+			invertedPairs := self
+				minMaxPairsFor: invertedChars
+				without: invertedSelectors
+				seen: aCollection.
 			isSelectors size + pairs size > (invertedSelectors size + invertedPairs size)
 				ifTrue:
 					[ isSelectors := invertedSelectors.
