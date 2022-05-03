@@ -1064,7 +1064,9 @@ SmaCCSmalltalkCodeGenerator >> removeUnnecessaryMethodChanges [
 											[ each changeClassName = other changeClassName
 												and:
 													[ (other changeClass sourceCodeAt: other selector) asString = other parseTree source asString
-														or: [ (RBParser parseMethod: (other changeClass sourceCodeAt: other selector) asString) = other parseTree ] ] ] ])
+														or:
+															[ (RBParser parseMethod: (other changeClass sourceCodeAt: other selector) asString) = other parseTree
+																and: [ other parseTree body statements notEmpty ] ] ] ] ])
 								ifTrue:
 									[ self
 										removeChange: each;
