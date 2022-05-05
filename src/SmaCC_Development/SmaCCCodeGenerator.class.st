@@ -922,22 +922,36 @@ SmaCCCodeGenerator >> methodNameMap: aSmaCCNode forMethods: methodNodes [
 
 { #category : #'compiling-scanner' }
 SmaCCCodeGenerator >> minMaxPairsFor: charsCollection without: isSelectors [
+	^ self
+		minMaxPairsFor: charsCollection
+		without: isSelectors
+		seen: SmaCCCharacterSet new
+]
+
+{ #category : #'compiling-scanner' }
+SmaCCCodeGenerator >> minMaxPairsFor: charsCollection without: isSelectors seen: seenCollection [
 	| start last pairs charsLeft |
 	charsLeft := charsCollection.
 	isSelectors notEmpty
-		ifTrue: [ charsLeft := charsLeft copy.
+		ifTrue:
+			[ charsLeft := charsLeft copy.
 			isSelectors do: [ :each | charsLeft smaccRemoveAll: (SmaCCGrammar isExpressionMap at: each) ] ].
 	pairs := OrderedCollection new.
-	charsLeft isEmpty
-		ifTrue: [ ^ pairs ].
+	charsLeft isEmpty ifTrue: [ ^ pairs ].
 	last := charsLeft first.
 	start := nil.
 	charsLeft
-		do: [ :each | 
+		do:
+			[ :each | 
 			last asInteger + 1 = each asInteger
-				ifFalse: [ start notNil
-						ifTrue: [ pairs add: (Array with: start with: last) ].
-					start := each ].
+				ifFalse:
+					[ start isNil
+						ifTrue: [ start := each ]
+						ifFalse:
+							[ ((last asInteger + 1 to: each asInteger - 1) allSatisfy: [ :i | seenCollection includes: (Character value: i) ])
+								ifFalse:
+									[ pairs add: (Array with: start with: last).
+									start := each ] ] ].
 			last := each ].
 	pairs add: (Array with: start with: last).
 	^ pairs
