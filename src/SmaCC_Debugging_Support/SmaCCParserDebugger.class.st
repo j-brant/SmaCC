@@ -12,7 +12,8 @@ Class {
 		'scannerPropertiesTable',
 		'session',
 		'toolbar',
-		'methodSource'
+		'methodSource',
+		'glrLabel'
 	],
 	#category : #'SmaCC_Debugging_Support-Debugger'
 }
@@ -60,14 +61,15 @@ SmaCCParserDebugger >> createSourceText [
 
 { #category : #initialization }
 SmaCCParserDebugger >> createToolBar [
-	| throughAction intoReduceAction nextTokenAction nextCharacterAction toCursorAction resumeAction |
+	| throughAction intoReduceAction nextTokenAction nextCharacterAction toCursorAction resumeAction buttons |
+	glrLabel := self newLabel.
 	throughAction := SmaCCParserStepThroughAction forDebugger: self.
 	intoReduceAction := SmaCCParserStepToReduceAction forDebugger: self.
 	nextTokenAction := SmaCCParserNextTokenAction forDebugger: self.
 	nextCharacterAction := SmaCCStepToNextCharacterAction forDebugger: self.
 	toCursorAction := SmaCCStepToCursorAction forDebugger: self.
 	resumeAction := ResumeDebugAction forDebugger: self.
-	toolbar := (self newToolbar)
+	buttons := (self newToolbar)
 		add:
 				((self newToolbarButton)
 						label: 'Through Action';
@@ -115,7 +117,16 @@ SmaCCParserDebugger >> createToolBar [
 						action:
 								[ StDebugger debugSession: session.
 									self close ]);
-		yourself
+		yourself.
+	self isGLR ifFalse: [ ^ toolbar := buttons ].
+	toolbar := self newPresenter
+		layout:
+			((SpBoxLayout newLeftToRight)
+				spacing: 5;
+				add: buttons;
+				addLast: glrLabel expand: false;
+				yourself).
+	self updateGLRStates
 ]
 
 { #category : #accessing }
@@ -136,6 +147,16 @@ SmaCCParserDebugger >> defaultLayout [
 		add: toolbar expand: false;
 		add: sourceText;
 		yourself
+]
+
+{ #category : #'private-updating' }
+SmaCCParserDebugger >> glrStateText [
+	| text index states |
+	states := self session glrParserStates.
+	index := states identityIndexOf: self session parser currentGLRState ifAbsent: [ 1 ].
+	text := ('GLR State: ' , index printString , ' of ' , states size printString) asText.
+	text allBold.
+	^ text
 ]
 
 { #category : #initialization }
@@ -261,8 +282,15 @@ SmaCCParserDebugger >> updateContext [
 SmaCCParserDebugger >> updateDisplay [
 	self updateParserStack.
 	self updateParserStates.
+	self updateGLRStates.
 	self updateScannerProperties.
 	self updateContext
+]
+
+{ #category : #'private-updating' }
+SmaCCParserDebugger >> updateGLRStates [
+	glrLabel isNil ifTrue: [ ^ self ].
+	glrLabel label: self glrStateText
 ]
 
 { #category : #'private-updating' }
