@@ -1,28 +1,28 @@
 Class {
-	#name : 'PyStringNode',
-	#superclass : 'PyRootNode',
+	#name : #PyStringNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'value'
 	],
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyStringNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitString: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyStringNode >> tokenVariables [
 	^ #(#value)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyStringNode >> value [
 	^ value
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyStringNode >> value: aSmaCCToken [
 	value := aSmaCCToken
 ]

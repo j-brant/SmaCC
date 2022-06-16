@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyInitOptNode',
-	#superclass : 'PyRootNode',
+	#name : #PyInitOptNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'equalToken',
 		'test'
@@ -8,32 +8,32 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyInitOptNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitInitOpt: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyInitOptNode >> equalToken [
 	^ equalToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyInitOptNode >> equalToken: aSmaCCToken [
 	equalToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyInitOptNode >> nodeVariables [
 	^ #(#test)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyInitOptNode >> test [
 	^ test
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyInitOptNode >> test: aPyRootNode [
 	self test notNil
 		ifTrue: [ self test parent: nil ].
@@ -42,7 +42,7 @@ PyInitOptNode >> test: aPyRootNode [
 		ifTrue: [ self test parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyInitOptNode >> tokenVariables [
 	^ #(#equalToken)
 ]

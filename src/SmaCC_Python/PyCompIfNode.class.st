@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyCompIfNode',
-	#superclass : 'PyRootNode',
+	#name : #PyCompIfNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'ifToken',
 		'condition',
@@ -9,17 +9,17 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompIfNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitCompIf: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompIfNode >> condition [
 	^ condition
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompIfNode >> condition: aPyRootNode [
 	self condition notNil
 		ifTrue: [ self condition parent: nil ].
@@ -28,22 +28,22 @@ PyCompIfNode >> condition: aPyRootNode [
 		ifTrue: [ self condition parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompIfNode >> ifToken [
 	^ ifToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompIfNode >> ifToken: aSmaCCToken [
 	ifToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompIfNode >> iter [
 	^ iter
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompIfNode >> iter: aPyRootNode [
 	self iter notNil
 		ifTrue: [ self iter parent: nil ].
@@ -52,12 +52,12 @@ PyCompIfNode >> iter: aPyRootNode [
 		ifTrue: [ self iter parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompIfNode >> nodeVariables [
 	^ #(#condition #iter)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompIfNode >> tokenVariables [
 	^ #(#ifToken)
 ]

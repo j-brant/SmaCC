@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyRShiftExprNode',
-	#superclass : 'PyRootNode',
+	#name : #PyRShiftExprNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'one',
 		'greaterThanGreaterThanToken',
@@ -9,32 +9,32 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyRShiftExprNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitRShiftExpr: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyRShiftExprNode >> greaterThanGreaterThanToken [
 	^ greaterThanGreaterThanToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyRShiftExprNode >> greaterThanGreaterThanToken: aSmaCCToken [
 	greaterThanGreaterThanToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyRShiftExprNode >> nodeVariables [
 	^ #(#one #two)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyRShiftExprNode >> one [
 	^ one
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyRShiftExprNode >> one: aPyRootNode [
 	self one notNil
 		ifTrue: [ self one parent: nil ].
@@ -43,17 +43,17 @@ PyRShiftExprNode >> one: aPyRootNode [
 		ifTrue: [ self one parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyRShiftExprNode >> tokenVariables [
 	^ #(#greaterThanGreaterThanToken)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyRShiftExprNode >> two [
 	^ two
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyRShiftExprNode >> two: aPyRootNode [
 	self two notNil
 		ifTrue: [ self two parent: nil ].

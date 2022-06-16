@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyDecoratedNode',
-	#superclass : 'PyRootNode',
+	#name : #PyDecoratedNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'decorators',
 		'classdef',
@@ -9,17 +9,17 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDecoratedNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitDecorated: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDecoratedNode >> classdef [
 	^ classdef
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDecoratedNode >> classdef: aPyClassdefNode [
 	self classdef notNil
 		ifTrue: [ self classdef parent: nil ].
@@ -28,12 +28,12 @@ PyDecoratedNode >> classdef: aPyClassdefNode [
 		ifTrue: [ self classdef parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDecoratedNode >> decorators [
 	^ decorators
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDecoratedNode >> decorators: aPyDecoratorsNode [
 	self decorators notNil
 		ifTrue: [ self decorators parent: nil ].
@@ -42,12 +42,12 @@ PyDecoratedNode >> decorators: aPyDecoratorsNode [
 		ifTrue: [ self decorators parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDecoratedNode >> funcdef [
 	^ funcdef
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDecoratedNode >> funcdef: aPyFuncdefNode [
 	self funcdef notNil
 		ifTrue: [ self funcdef parent: nil ].
@@ -56,7 +56,7 @@ PyDecoratedNode >> funcdef: aPyFuncdefNode [
 		ifTrue: [ self funcdef parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDecoratedNode >> nodeVariables [
 	^ #(#decorators #classdef #funcdef)
 ]

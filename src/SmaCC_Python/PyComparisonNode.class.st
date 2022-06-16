@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyComparisonNode',
-	#superclass : 'PyRootNode',
+	#name : #PyComparisonNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'one',
 		'op',
@@ -9,22 +9,22 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyComparisonNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitComparison: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyComparisonNode >> nodeVariables [
 	^ #(#one #op #two)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyComparisonNode >> one [
 	^ one
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyComparisonNode >> one: aPyRootNode [
 	self one notNil
 		ifTrue: [ self one parent: nil ].
@@ -33,12 +33,12 @@ PyComparisonNode >> one: aPyRootNode [
 		ifTrue: [ self one parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyComparisonNode >> op [
 	^ op
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyComparisonNode >> op: aPyCompOpNode [
 	self op notNil
 		ifTrue: [ self op parent: nil ].
@@ -47,12 +47,12 @@ PyComparisonNode >> op: aPyCompOpNode [
 		ifTrue: [ self op parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyComparisonNode >> two [
 	^ two
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyComparisonNode >> two: aPyRootNode [
 	self two notNil
 		ifTrue: [ self two parent: nil ].

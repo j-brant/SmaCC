@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyFactorNode',
-	#superclass : 'PyRootNode',
+	#name : #PyFactorNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'plusToken',
 		'factor',
@@ -10,17 +10,17 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFactorNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitFactor: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFactorNode >> factor [
 	^ factor
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFactorNode >> factor: aPyRootNode [
 	self factor notNil
 		ifTrue: [ self factor parent: nil ].
@@ -29,42 +29,42 @@ PyFactorNode >> factor: aPyRootNode [
 		ifTrue: [ self factor parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFactorNode >> minusToken [
 	^ minusToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFactorNode >> minusToken: aSmaCCToken [
 	minusToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFactorNode >> nodeVariables [
 	^ #(#factor)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFactorNode >> plusToken [
 	^ plusToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFactorNode >> plusToken: aSmaCCToken [
 	plusToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFactorNode >> tildeToken [
 	^ tildeToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFactorNode >> tildeToken: aSmaCCToken [
 	tildeToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFactorNode >> tokenVariables [
 	^ #(#plusToken #minusToken #tildeToken)
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyArgumentNode',
-	#superclass : 'PyRootNode',
+	#name : #PyArgumentNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'equalToken',
 		'test',
@@ -10,17 +10,17 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyArgumentNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitArgument: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyArgumentNode >> comp [
 	^ comp
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyArgumentNode >> comp: aPyCompForNode [
 	self comp notNil
 		ifTrue: [ self comp parent: nil ].
@@ -29,32 +29,32 @@ PyArgumentNode >> comp: aPyCompForNode [
 		ifTrue: [ self comp parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyArgumentNode >> equalToken [
 	^ equalToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyArgumentNode >> equalToken: aSmaCCToken [
 	equalToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyArgumentNode >> nodeVariables [
 	^ #(#test #comp #test2)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyArgumentNode >> test [
 	^ test
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyArgumentNode >> test2 [
 	^ test2
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyArgumentNode >> test2: aPyRootNode [
 	self test2 notNil
 		ifTrue: [ self test2 parent: nil ].
@@ -63,7 +63,7 @@ PyArgumentNode >> test2: aPyRootNode [
 		ifTrue: [ self test2 parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyArgumentNode >> test: aPyRootNode [
 	self test notNil
 		ifTrue: [ self test parent: nil ].
@@ -72,7 +72,7 @@ PyArgumentNode >> test: aPyRootNode [
 		ifTrue: [ self test parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyArgumentNode >> tokenVariables [
 	^ #(#equalToken)
 ]

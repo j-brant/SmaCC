@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyTryNode',
-	#superclass : 'PyRootNode',
+	#name : #PyTryNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'tryToken',
 		'colonTokens',
@@ -16,59 +16,59 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitTry: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> clauses [
 	^ clauses
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> clauses: anOrderedCollection [
 	self setParents: self clauses to: nil.
 	clauses := anOrderedCollection.
 	self setParents: self clauses to: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> colonTokens [
 	^ colonTokens
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> colonTokens: anOrderedCollection [
 	colonTokens := anOrderedCollection
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> compositeNodeVariables [
 	^ #(#statements #clauses)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> compositeTokenVariables [
 	^ #(#colonTokens #nEWLINETokens #iNDENTTokens #dEDENTTokens)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> dEDENTTokens [
 	^ dEDENTTokens
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> dEDENTTokens: anOrderedCollection [
 	dEDENTTokens := anOrderedCollection
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> else [
 	^ else
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> else: aPyElseNode [
 	self else notNil
 		ifTrue: [ self else parent: nil ].
@@ -77,12 +77,12 @@ PyTryNode >> else: aPyElseNode [
 		ifTrue: [ self else parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> finally [
 	^ finally
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> finally: aPyFinallyNode [
 	self finally notNil
 		ifTrue: [ self finally parent: nil ].
@@ -91,27 +91,27 @@ PyTryNode >> finally: aPyFinallyNode [
 		ifTrue: [ self finally parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> finallyToken [
 	^ finallyToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> finallyToken: aSmaCCToken [
 	finallyToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> iNDENTTokens [
 	^ iNDENTTokens
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> iNDENTTokens: anOrderedCollection [
 	iNDENTTokens := anOrderedCollection
 ]
 
-{ #category : 'generated-initialize-release' }
+{ #category : #'generated-initialize-release' }
 PyTryNode >> initialize [
 	super initialize.
 	colonTokens := OrderedCollection new: 2.
@@ -122,44 +122,44 @@ PyTryNode >> initialize [
 	clauses := OrderedCollection new: 2.
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> nEWLINETokens [
 	^ nEWLINETokens
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> nEWLINETokens: anOrderedCollection [
 	nEWLINETokens := anOrderedCollection
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> nodeVariables [
 	^ #(#else #finally)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> statements [
 	^ statements
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> tokenVariables [
 	^ #(#tryToken #finallyToken)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> tryToken [
 	^ tryToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTryNode >> tryToken: aSmaCCToken [
 	tryToken := aSmaCCToken
 ]

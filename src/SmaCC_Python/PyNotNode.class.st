@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyNotNode',
-	#superclass : 'PyRootNode',
+	#name : #PyNotNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'notToken',
 		'negated'
@@ -8,17 +8,17 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyNotNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitNot: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyNotNode >> negated [
 	^ negated
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyNotNode >> negated: aPyRootNode [
 	self negated notNil
 		ifTrue: [ self negated parent: nil ].
@@ -27,22 +27,22 @@ PyNotNode >> negated: aPyRootNode [
 		ifTrue: [ self negated parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyNotNode >> nodeVariables [
 	^ #(#negated)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyNotNode >> notToken [
 	^ notToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyNotNode >> notToken: aSmaCCToken [
 	notToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyNotNode >> tokenVariables [
 	^ #(#notToken)
 ]

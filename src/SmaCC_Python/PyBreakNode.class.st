@@ -1,28 +1,28 @@
 Class {
-	#name : 'PyBreakNode',
-	#superclass : 'PyRootNode',
+	#name : #PyBreakNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'breakToken'
 	],
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyBreakNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitBreak: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyBreakNode >> breakToken [
 	^ breakToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyBreakNode >> breakToken: aSmaCCToken [
 	breakToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyBreakNode >> tokenVariables [
 	^ #(#breakToken)
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyOrNode',
-	#superclass : 'PyRootNode',
+	#name : #PyOrNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'one',
 		'orToken',
@@ -9,22 +9,22 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyOrNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitOr: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyOrNode >> nodeVariables [
 	^ #(#one #two)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyOrNode >> one [
 	^ one
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyOrNode >> one: aPyRootNode [
 	self one notNil
 		ifTrue: [ self one parent: nil ].
@@ -33,27 +33,27 @@ PyOrNode >> one: aPyRootNode [
 		ifTrue: [ self one parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyOrNode >> orToken [
 	^ orToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyOrNode >> orToken: aSmaCCToken [
 	orToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyOrNode >> tokenVariables [
 	^ #(#orToken)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyOrNode >> two [
 	^ two
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyOrNode >> two: aPyRootNode [
 	self two notNil
 		ifTrue: [ self two parent: nil ].

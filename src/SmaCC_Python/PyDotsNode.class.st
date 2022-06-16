@@ -1,34 +1,34 @@
 Class {
-	#name : 'PyDotsNode',
-	#superclass : 'PyRootNode',
+	#name : #PyDotsNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'periodTokens'
 	],
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDotsNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitDots: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDotsNode >> compositeTokenVariables [
 	^ #(#periodTokens)
 ]
 
-{ #category : 'generated-initialize-release' }
+{ #category : #'generated-initialize-release' }
 PyDotsNode >> initialize [
 	super initialize.
 	periodTokens := OrderedCollection new: 2.
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDotsNode >> periodTokens [
 	^ periodTokens
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDotsNode >> periodTokens: anOrderedCollection [
 	periodTokens := anOrderedCollection
 ]

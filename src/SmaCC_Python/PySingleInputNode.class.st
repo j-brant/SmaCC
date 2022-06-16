@@ -1,6 +1,6 @@
 Class {
-	#name : 'PySingleInputNode',
-	#superclass : 'PyRootNode',
+	#name : #PySingleInputNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'nEWLINEToken',
 		'statement'
@@ -8,32 +8,32 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PySingleInputNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitSingleInput: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PySingleInputNode >> nEWLINEToken [
 	^ nEWLINEToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PySingleInputNode >> nEWLINEToken: aSmaCCToken [
 	nEWLINEToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PySingleInputNode >> nodeVariables [
 	^ #(#statement)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PySingleInputNode >> statement [
 	^ statement
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PySingleInputNode >> statement: aPyRootNode [
 	self statement notNil
 		ifTrue: [ self statement parent: nil ].
@@ -42,7 +42,7 @@ PySingleInputNode >> statement: aPyRootNode [
 		ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PySingleInputNode >> tokenVariables [
 	^ #(#nEWLINEToken)
 ]

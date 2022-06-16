@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyEvalInputNode',
-	#superclass : 'PyRootNode',
+	#name : #PyEvalInputNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'testlist',
 		'nEWLINETokens'
@@ -8,43 +8,43 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyEvalInputNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitEvalInput: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyEvalInputNode >> compositeTokenVariables [
 	^ #(#nEWLINETokens)
 ]
 
-{ #category : 'generated-initialize-release' }
+{ #category : #'generated-initialize-release' }
 PyEvalInputNode >> initialize [
 	super initialize.
 	nEWLINETokens := OrderedCollection new: 2.
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyEvalInputNode >> nEWLINETokens [
 	^ nEWLINETokens
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyEvalInputNode >> nEWLINETokens: anOrderedCollection [
 	nEWLINETokens := anOrderedCollection
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyEvalInputNode >> nodeVariables [
 	^ #(#testlist)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyEvalInputNode >> testlist [
 	^ testlist
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyEvalInputNode >> testlist: aPyRootNode [
 	self testlist notNil
 		ifTrue: [ self testlist parent: nil ].

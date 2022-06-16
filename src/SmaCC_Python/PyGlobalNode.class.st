@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyGlobalNode',
-	#superclass : 'PyRootNode',
+	#name : #PyGlobalNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'globalToken',
 		'commaTokens',
@@ -9,54 +9,54 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyGlobalNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitGlobal: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyGlobalNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyGlobalNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyGlobalNode >> compositeTokenVariables [
 	^ #(#commaTokens #nameTokens)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyGlobalNode >> globalToken [
 	^ globalToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyGlobalNode >> globalToken: aSmaCCToken [
 	globalToken := aSmaCCToken
 ]
 
-{ #category : 'generated-initialize-release' }
+{ #category : #'generated-initialize-release' }
 PyGlobalNode >> initialize [
 	super initialize.
 	commaTokens := OrderedCollection new: 2.
 	nameTokens := OrderedCollection new: 2.
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyGlobalNode >> nameTokens [
 	^ nameTokens
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyGlobalNode >> nameTokens: anOrderedCollection [
 	nameTokens := anOrderedCollection
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyGlobalNode >> tokenVariables [
 	^ #(#globalToken)
 ]
