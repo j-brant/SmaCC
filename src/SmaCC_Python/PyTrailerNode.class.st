@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyTrailerNode',
-	#superclass : 'PyRootNode',
+	#name : #PyTrailerNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'lparenToken',
 		'rparenToken',
@@ -17,44 +17,44 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitTrailer: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> arguments [
 	^ arguments
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> arguments: anOrderedCollection [
 	self setParents: self arguments to: nil.
 	arguments := anOrderedCollection.
 	self setParents: self arguments to: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> compositeNodeVariables [
 	^ #(#arguments #subscripts)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : 'generated-initialize-release' }
+{ #category : #'generated-initialize-release' }
 PyTrailerNode >> initialize [
 	super initialize.
 	arguments := OrderedCollection new: 2.
@@ -62,99 +62,99 @@ PyTrailerNode >> initialize [
 	subscripts := OrderedCollection new: 2.
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> lbrackToken [
 	^ lbrackToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> lbrackToken: aSmaCCToken [
 	lbrackToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> lparenToken [
 	^ lparenToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> lparenToken: aSmaCCToken [
 	lparenToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> nameToken [
 	^ nameToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> nameToken: aSmaCCToken [
 	nameToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> periodToken [
 	^ periodToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> periodToken: aSmaCCToken [
 	periodToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> rbrackToken [
 	^ rbrackToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> rbrackToken: aSmaCCToken [
 	rbrackToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> rparenToken [
 	^ rparenToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> rparenToken: aSmaCCToken [
 	rparenToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> subscripts [
 	^ subscripts
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> subscripts: anOrderedCollection [
 	self setParents: self subscripts to: nil.
 	subscripts := anOrderedCollection.
 	self setParents: self subscripts to: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> timesTimesToken [
 	^ timesTimesToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> timesTimesToken: aSmaCCToken [
 	timesTimesToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> timesToken [
 	^ timesToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> timesToken: aSmaCCToken [
 	timesToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTrailerNode >> tokenVariables [
 	^ #(#lparenToken #rparenToken #timesToken #timesTimesToken #lbrackToken #rbrackToken #periodToken #nameToken)
 ]

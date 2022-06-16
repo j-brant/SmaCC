@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyElseNode',
-	#superclass : 'PyRootNode',
+	#name : #PyElseNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'elseToken',
 		'colonToken',
@@ -12,85 +12,85 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyElseNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitElse: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyElseNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyElseNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyElseNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyElseNode >> dEDENTToken [
 	^ dEDENTToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyElseNode >> dEDENTToken: aSmaCCToken [
 	dEDENTToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyElseNode >> elseToken [
 	^ elseToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyElseNode >> elseToken: aSmaCCToken [
 	elseToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyElseNode >> iNDENTToken [
 	^ iNDENTToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyElseNode >> iNDENTToken: aSmaCCToken [
 	iNDENTToken := aSmaCCToken
 ]
 
-{ #category : 'generated-initialize-release' }
+{ #category : #'generated-initialize-release' }
 PyElseNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyElseNode >> nEWLINEToken [
 	^ nEWLINEToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyElseNode >> nEWLINEToken: aSmaCCToken [
 	nEWLINEToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyElseNode >> statements [
 	^ statements
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyElseNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyElseNode >> tokenVariables [
 	^ #(#elseToken #colonToken #nEWLINEToken #iNDENTToken #dEDENTToken)
 ]

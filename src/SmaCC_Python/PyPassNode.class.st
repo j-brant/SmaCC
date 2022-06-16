@@ -1,28 +1,28 @@
 Class {
-	#name : 'PyPassNode',
-	#superclass : 'PyRootNode',
+	#name : #PyPassNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'passToken'
 	],
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPassNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitPass: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPassNode >> passToken [
 	^ passToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPassNode >> passToken: aSmaCCToken [
 	passToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPassNode >> tokenVariables [
 	^ #(#passToken)
 ]

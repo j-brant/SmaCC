@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyDottedNameNode',
-	#superclass : 'PyRootNode',
+	#name : #PyDottedNameNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'periodTokens',
 		'names'
@@ -8,39 +8,39 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDottedNameNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitDottedName: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDottedNameNode >> compositeTokenVariables [
 	^ #(#periodTokens #names)
 ]
 
-{ #category : 'generated-initialize-release' }
+{ #category : #'generated-initialize-release' }
 PyDottedNameNode >> initialize [
 	super initialize.
 	periodTokens := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDottedNameNode >> names [
 	^ names
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDottedNameNode >> names: anOrderedCollection [
 	names := anOrderedCollection
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDottedNameNode >> periodTokens [
 	^ periodTokens
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDottedNameNode >> periodTokens: anOrderedCollection [
 	periodTokens := anOrderedCollection
 ]

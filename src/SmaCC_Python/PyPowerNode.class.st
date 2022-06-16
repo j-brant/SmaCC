@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyPowerNode',
-	#superclass : 'PyRootNode',
+	#name : #PyPowerNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'atom',
 		'trailers',
@@ -10,17 +10,17 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPowerNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitPower: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPowerNode >> atom [
 	^ atom
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPowerNode >> atom: aPyRootNode [
 	self atom notNil
 		ifTrue: [ self atom parent: nil ].
@@ -29,17 +29,17 @@ PyPowerNode >> atom: aPyRootNode [
 		ifTrue: [ self atom parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPowerNode >> compositeNodeVariables [
 	^ #(#trailers)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPowerNode >> factor [
 	^ factor
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPowerNode >> factor: aPyRootNode [
 	self factor notNil
 		ifTrue: [ self factor parent: nil ].
@@ -48,38 +48,38 @@ PyPowerNode >> factor: aPyRootNode [
 		ifTrue: [ self factor parent: self ]
 ]
 
-{ #category : 'generated-initialize-release' }
+{ #category : #'generated-initialize-release' }
 PyPowerNode >> initialize [
 	super initialize.
 	trailers := OrderedCollection new: 2.
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPowerNode >> nodeVariables [
 	^ #(#atom #factor)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPowerNode >> timesTimesToken [
 	^ timesTimesToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPowerNode >> timesTimesToken: aSmaCCToken [
 	timesTimesToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPowerNode >> tokenVariables [
 	^ #(#timesTimesToken)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPowerNode >> trailers [
 	^ trailers
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPowerNode >> trailers: anOrderedCollection [
 	self setParents: self trailers to: nil.
 	trailers := anOrderedCollection.

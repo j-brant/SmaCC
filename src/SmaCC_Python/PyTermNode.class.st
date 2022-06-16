@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyTermNode',
-	#superclass : 'PyRootNode',
+	#name : #PyTermNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'factor',
 		'timesToken',
@@ -12,37 +12,37 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTermNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitTerm: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTermNode >> divideDivideToken [
 	^ divideDivideToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTermNode >> divideDivideToken: aSmaCCToken [
 	divideDivideToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTermNode >> divideToken [
 	^ divideToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTermNode >> divideToken: aSmaCCToken [
 	divideToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTermNode >> factor [
 	^ factor
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTermNode >> factor: aPyRootNode [
 	self factor notNil
 		ifTrue: [ self factor parent: nil ].
@@ -51,27 +51,27 @@ PyTermNode >> factor: aPyRootNode [
 		ifTrue: [ self factor parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTermNode >> nodeVariables [
 	^ #(#factor #term)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTermNode >> percentToken [
 	^ percentToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTermNode >> percentToken: aSmaCCToken [
 	percentToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTermNode >> term [
 	^ term
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTermNode >> term: aPyRootNode [
 	self term notNil
 		ifTrue: [ self term parent: nil ].
@@ -80,17 +80,17 @@ PyTermNode >> term: aPyRootNode [
 		ifTrue: [ self term parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTermNode >> timesToken [
 	^ timesToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTermNode >> timesToken: aSmaCCToken [
 	timesToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTermNode >> tokenVariables [
 	^ #(#timesToken #divideToken #percentToken #divideDivideToken)
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyDotoptDottedNameNode',
-	#superclass : 'PyRootNode',
+	#name : #PyDotoptDottedNameNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'dots',
 		'name'
@@ -8,17 +8,17 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDotoptDottedNameNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitDotoptDottedName: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDotoptDottedNameNode >> dots [
 	^ dots
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDotoptDottedNameNode >> dots: aPyDotsNode [
 	self dots notNil
 		ifTrue: [ self dots parent: nil ].
@@ -27,12 +27,12 @@ PyDotoptDottedNameNode >> dots: aPyDotsNode [
 		ifTrue: [ self dots parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDotoptDottedNameNode >> name [
 	^ name
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDotoptDottedNameNode >> name: aPyDottedNameNode [
 	self name notNil
 		ifTrue: [ self name parent: nil ].
@@ -41,7 +41,7 @@ PyDotoptDottedNameNode >> name: aPyDottedNameNode [
 		ifTrue: [ self name parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDotoptDottedNameNode >> nodeVariables [
 	^ #(#name #dots)
 ]

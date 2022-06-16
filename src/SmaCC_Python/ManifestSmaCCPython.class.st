@@ -23,7 +23,7 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 "
 Class {
-	#name : 'ManifestSmaCCPython',
-	#superclass : 'PackageManifest',
+	#name : #ManifestSmaCCPython,
+	#superclass : #PackageManifest,
 	#category : 'SmaCC_Python-Manifest'
 }

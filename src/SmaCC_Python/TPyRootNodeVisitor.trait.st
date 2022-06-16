@@ -1,396 +1,396 @@
 Trait {
-	#name : 'TPyRootNodeVisitor',
+	#name : #TPyRootNodeVisitor,
 	#traits : 'TSmaCCParseNodeVisitor',
 	#classTraits : 'TSmaCCParseNodeVisitor classTrait',
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitAnd: anAnd [
 	^ self visitRoot: anAnd
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitAndExpr: anAndExpr [
 	^ self visitRoot: anAndExpr
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitArgument: anArgument [
 	^ self visitRoot: anArgument
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitAssert: anAssert [
 	^ self visitRoot: anAssert
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitAtom: anAtom [
 	^ self visitRoot: anAtom
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitBackTick: aBackTick [
 	^ self visitRoot: aBackTick
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitBreak: aBreak [
 	^ self visitRoot: aBreak
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitClassdef: aClassdef [
 	^ self visitRoot: aClassdef
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitCompFor: aCompFor [
 	^ self visitRoot: aCompFor
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitCompIf: aCompIf [
 	^ self visitRoot: aCompIf
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitCompOp: aCompOp [
 	^ self visitRoot: aCompOp
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitComparison: aComparison [
 	^ self visitRoot: aComparison
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitContinue: aContinue [
 	^ self visitRoot: aContinue
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitDecorated: aDecorated [
 	^ self visitRoot: aDecorated
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitDecorator: aDecorator [
 	^ self visitRoot: aDecorator
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitDecorators: aDecorators [
 	^ self visitRoot: aDecorators
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitDel: aDel [
 	^ self visitRoot: aDel
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitDictorsetmaker: aDictorsetmaker [
 	^ self visitRoot: aDictorsetmaker
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitDotoptDottedName: aDotoptDottedName [
 	^ self visitRoot: aDotoptDottedName
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitDots: aDots [
 	^ self visitRoot: aDots
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitDottedName: aDottedName [
 	^ self visitRoot: aDottedName
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitElif: anElif [
 	^ self visitRoot: anElif
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitElse: anElse [
 	^ self visitRoot: anElse
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitEvalInput: anEvalInput [
 	^ self visitRoot: anEvalInput
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitExceptClause: anExceptClause [
 	^ self visitRoot: anExceptClause
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitExec: anExec [
 	^ self visitRoot: anExec
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitExprStmt: anExprStmt [
 	^ self visitRoot: anExprStmt
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitFactor: aFactor [
 	^ self visitRoot: aFactor
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitFileInput: aFileInput [
 	^ self visitRoot: aFileInput
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitFinally: aFinally [
 	^ self visitRoot: aFinally
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitFor: aFor [
 	^ self visitRoot: aFor
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitFpdef: aFpdef [
 	^ self visitRoot: aFpdef
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitFuncdef: aFuncdef [
 	^ self visitRoot: aFuncdef
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitGlobal: aGlobal [
 	^ self visitRoot: aGlobal
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitIf: anIf [
 	^ self visitRoot: anIf
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitIfTest: anIfTest [
 	^ self visitRoot: anIfTest
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitImport: anImport [
 	^ self visitRoot: anImport
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitInitOpt: anInitOpt [
 	^ self visitRoot: anInitOpt
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitInterpolatedString: anInterpolatedString [
 	^ self visitRoot: anInterpolatedString
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitLShiftExpr: aLShiftExpr [
 	^ self visitRoot: aLShiftExpr
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitLambda: aLambda [
 	^ self visitRoot: aLambda
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitListFor: aListFor [
 	^ self visitRoot: aListFor
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitListIf: aListIf [
 	^ self visitRoot: aListIf
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitListmaker: aListmaker [
 	^ self visitRoot: aListmaker
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitMinusExpr: aMinusExpr [
 	^ self visitRoot: aMinusExpr
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitMoreTests: aMoreTests [
 	^ self visitRoot: aMoreTests
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitNot: aNot [
 	^ self visitRoot: aNot
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitNumber: aNumber [
 	^ self visitRoot: aNumber
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitOr: anOr [
 	^ self visitRoot: anOr
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitPass: aPass [
 	^ self visitRoot: aPass
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitPlusExpr: aPlusExpr [
 	^ self visitRoot: aPlusExpr
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitPower: aPower [
 	^ self visitRoot: aPower
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitPrint: aPrint [
 	^ self visitRoot: aPrint
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitRShiftExpr: aRShiftExpr [
 	^ self visitRoot: aRShiftExpr
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitRaise: aRaise [
 	^ self visitRoot: aRaise
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitReturn: aReturn [
 	^ self visitRoot: aReturn
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitRoot: aRoot [
 	^ self visitSmaCCParseNode: aRoot
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitSimpleStmt: aSimpleStmt [
 	^ self visitRoot: aSimpleStmt
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitSingleInput: aSingleInput [
 	^ self visitRoot: aSingleInput
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitSliceop: aSliceop [
 	^ self visitRoot: aSliceop
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitString: aString [
 	^ self visitRoot: aString
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitStrings: aStrings [
 	^ self visitRoot: aStrings
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitSubscript: aSubscript [
 	^ self visitRoot: aSubscript
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitSymbol: aSymbol [
 	^ self visitRoot: aSymbol
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitTerm: aTerm [
 	^ self visitRoot: aTerm
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitTestTestOpt: aTestTestOpt [
 	^ self visitRoot: aTestTestOpt
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitTestlist1: aTestlist1 [
 	^ self visitRoot: aTestlist1
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitTestlist: aTestlist [
 	^ self visitRoot: aTestlist
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitTestlistComp: aTestlistComp [
 	^ self visitRoot: aTestlistComp
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitTrailer: aTrailer [
 	^ self visitRoot: aTrailer
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitTry: aTry [
 	^ self visitRoot: aTry
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitVBarExpr: aVBarExpr [
 	^ self visitRoot: aVBarExpr
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitVarArgList: aVarArgList [
 	^ self visitRoot: aVarArgList
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitWhile: aWhile [
 	^ self visitRoot: aWhile
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitWith: aWith [
 	^ self visitRoot: aWith
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitWithItem: aWithItem [
 	^ self visitRoot: aWithItem
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitXorExpr: aXorExpr [
 	^ self visitRoot: aXorExpr
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 TPyRootNodeVisitor >> visitYield: aYield [
 	^ self visitRoot: aYield
 ]

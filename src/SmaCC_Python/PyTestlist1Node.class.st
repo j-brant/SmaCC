@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyTestlist1Node',
-	#superclass : 'PyRootNode',
+	#name : #PyTestlist1Node,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'tests',
 		'test',
@@ -9,32 +9,32 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTestlist1Node >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitTestlist1: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTestlist1Node >> commaToken [
 	^ commaToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTestlist1Node >> commaToken: aSmaCCToken [
 	commaToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTestlist1Node >> nodeVariables [
 	^ #(#test #tests)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTestlist1Node >> test [
 	^ test
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTestlist1Node >> test: aPyRootNode [
 	self test notNil
 		ifTrue: [ self test parent: nil ].
@@ -43,12 +43,12 @@ PyTestlist1Node >> test: aPyRootNode [
 		ifTrue: [ self test parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTestlist1Node >> tests [
 	^ tests
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTestlist1Node >> tests: aPyRootNode [
 	self tests notNil
 		ifTrue: [ self tests parent: nil ].
@@ -57,7 +57,7 @@ PyTestlist1Node >> tests: aPyRootNode [
 		ifTrue: [ self tests parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTestlist1Node >> tokenVariables [
 	^ #(#commaToken)
 ]

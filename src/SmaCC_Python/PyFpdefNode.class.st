@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyFpdefNode',
-	#superclass : 'PyRootNode',
+	#name : #PyFpdefNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'commaTokens',
 		'nameToken',
@@ -11,81 +11,81 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFpdefNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitFpdef: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFpdefNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFpdefNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFpdefNode >> compositeNodeVariables [
 	^ #(#fpdefs)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFpdefNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFpdefNode >> fpdefs [
 	^ fpdefs
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFpdefNode >> fpdefs: anOrderedCollection [
 	self setParents: self fpdefs to: nil.
 	fpdefs := anOrderedCollection.
 	self setParents: self fpdefs to: self
 ]
 
-{ #category : 'generated-initialize-release' }
+{ #category : #'generated-initialize-release' }
 PyFpdefNode >> initialize [
 	super initialize.
 	fpdefs := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFpdefNode >> lparenToken [
 	^ lparenToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFpdefNode >> lparenToken: aSmaCCToken [
 	lparenToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFpdefNode >> nameToken [
 	^ nameToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFpdefNode >> nameToken: aSmaCCToken [
 	nameToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFpdefNode >> rparenToken [
 	^ rparenToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFpdefNode >> rparenToken: aSmaCCToken [
 	rparenToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFpdefNode >> tokenVariables [
 	^ #(#nameToken #lparenToken #rparenToken)
 ]

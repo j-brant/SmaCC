@@ -1,34 +1,34 @@
 Class {
-	#name : 'PyStringsNode',
-	#superclass : 'PyRootNode',
+	#name : #PyStringsNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'strings'
 	],
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyStringsNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitStrings: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyStringsNode >> compositeNodeVariables [
 	^ #(#strings)
 ]
 
-{ #category : 'generated-initialize-release' }
+{ #category : #'generated-initialize-release' }
 PyStringsNode >> initialize [
 	super initialize.
 	strings := OrderedCollection new: 2.
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyStringsNode >> strings [
 	^ strings
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyStringsNode >> strings: anOrderedCollection [
 	self setParents: self strings to: nil.
 	strings := anOrderedCollection.

@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyFuncdefNode',
-	#superclass : 'PyRootNode',
+	#name : #PyFuncdefNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'defToken',
 		'fname',
@@ -14,93 +14,93 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFuncdefNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitFuncdef: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFuncdefNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFuncdefNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFuncdefNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFuncdefNode >> dEDENTToken [
 	^ dEDENTToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFuncdefNode >> dEDENTToken: aSmaCCToken [
 	dEDENTToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFuncdefNode >> defToken [
 	^ defToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFuncdefNode >> defToken: aSmaCCToken [
 	defToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFuncdefNode >> fname [
 	^ fname
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFuncdefNode >> fname: aSmaCCToken [
 	fname := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFuncdefNode >> iNDENTToken [
 	^ iNDENTToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFuncdefNode >> iNDENTToken: aSmaCCToken [
 	iNDENTToken := aSmaCCToken
 ]
 
-{ #category : 'generated-initialize-release' }
+{ #category : #'generated-initialize-release' }
 PyFuncdefNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFuncdefNode >> nEWLINEToken [
 	^ nEWLINEToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFuncdefNode >> nEWLINEToken: aSmaCCToken [
 	nEWLINEToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFuncdefNode >> nodeVariables [
 	^ #(#parameters)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFuncdefNode >> parameters [
 	^ parameters
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFuncdefNode >> parameters: aPyVarArgListNode [
 	self parameters notNil
 		ifTrue: [ self parameters parent: nil ].
@@ -109,19 +109,19 @@ PyFuncdefNode >> parameters: aPyVarArgListNode [
 		ifTrue: [ self parameters parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFuncdefNode >> statements [
 	^ statements
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFuncdefNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyFuncdefNode >> tokenVariables [
 	^ #(#defToken #fname #colonToken #nEWLINEToken #iNDENTToken #dEDENTToken)
 ]

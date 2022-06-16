@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyListmakerNode',
-	#superclass : 'PyRootNode',
+	#name : #PyListmakerNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'test',
 		'list_for'
@@ -8,17 +8,17 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyListmakerNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitListmaker: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyListmakerNode >> list_for [
 	^ list_for
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyListmakerNode >> list_for: aPyListForNode [
 	self list_for notNil
 		ifTrue: [ self list_for parent: nil ].
@@ -27,17 +27,17 @@ PyListmakerNode >> list_for: aPyListForNode [
 		ifTrue: [ self list_for parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyListmakerNode >> nodeVariables [
 	^ #(#test #list_for)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyListmakerNode >> test [
 	^ test
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyListmakerNode >> test: aPyRootNode [
 	self test notNil
 		ifTrue: [ self test parent: nil ].

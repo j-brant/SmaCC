@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyLambdaNode',
-	#superclass : 'PyRootNode',
+	#name : #PyLambdaNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'lambdaToken',
 		'args',
@@ -11,17 +11,17 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyLambdaNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitLambda: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyLambdaNode >> args [
 	^ args
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyLambdaNode >> args: aPyVarArgListNode [
 	self args notNil
 		ifTrue: [ self args parent: nil ].
@@ -30,12 +30,12 @@ PyLambdaNode >> args: aPyVarArgListNode [
 		ifTrue: [ self args parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyLambdaNode >> arguments [
 	^ arguments
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyLambdaNode >> arguments: aPyVarArgListNode [
 	self arguments notNil
 		ifTrue: [ self arguments parent: nil ].
@@ -44,12 +44,12 @@ PyLambdaNode >> arguments: aPyVarArgListNode [
 		ifTrue: [ self arguments parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyLambdaNode >> body [
 	^ body
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyLambdaNode >> body: aPyRootNode [
 	self body notNil
 		ifTrue: [ self body parent: nil ].
@@ -58,32 +58,32 @@ PyLambdaNode >> body: aPyRootNode [
 		ifTrue: [ self body parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyLambdaNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyLambdaNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyLambdaNode >> lambdaToken [
 	^ lambdaToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyLambdaNode >> lambdaToken: aSmaCCToken [
 	lambdaToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyLambdaNode >> nodeVariables [
 	^ #(#args #body #arguments)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyLambdaNode >> tokenVariables [
 	^ #(#lambdaToken #colonToken)
 ]

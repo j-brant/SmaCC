@@ -1,28 +1,28 @@
 Class {
-	#name : 'PySymbolNode',
-	#superclass : 'PyRootNode',
+	#name : #PySymbolNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'nameToken'
 	],
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PySymbolNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitSymbol: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PySymbolNode >> nameToken [
 	^ nameToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PySymbolNode >> nameToken: aSmaCCToken [
 	nameToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PySymbolNode >> tokenVariables [
 	^ #(#nameToken)
 ]

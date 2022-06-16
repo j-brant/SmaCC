@@ -1,10 +1,10 @@
 Class {
-	#name : 'PyRootNode',
-	#superclass : 'SmaCCParseNode',
+	#name : #PyRootNode,
+	#superclass : #SmaCCParseNode,
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyRootNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitRoot: self
 ]

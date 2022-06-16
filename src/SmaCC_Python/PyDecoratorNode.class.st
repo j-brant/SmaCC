@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyDecoratorNode',
-	#superclass : 'PyRootNode',
+	#name : #PyDecoratorNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'_Token',
 		'nEWLINEToken',
@@ -10,39 +10,39 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDecoratorNode >> _Token [
 	^ _Token
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDecoratorNode >> _Token: aSmaCCToken [
 	_Token := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDecoratorNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitDecorator: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDecoratorNode >> args [
 	^ args
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDecoratorNode >> args: anOrderedCollection [
 	self setParent: self args to: nil.
 	args := anOrderedCollection.
 	self setParent: self args to: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDecoratorNode >> dotted_name [
 	^ dotted_name
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDecoratorNode >> dotted_name: aPyDottedNameNode [
 	self dotted_name notNil
 		ifTrue: [ self dotted_name parent: nil ].
@@ -51,27 +51,27 @@ PyDecoratorNode >> dotted_name: aPyDottedNameNode [
 		ifTrue: [ self dotted_name parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDecoratorNode >> nEWLINEToken [
 	^ nEWLINEToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDecoratorNode >> nEWLINEToken: aSmaCCToken [
 	nEWLINEToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDecoratorNode >> nodeVariables [
 	^ #(#dotted_name)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDecoratorNode >> otherVariables [
 	^ #(#args)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyDecoratorNode >> tokenVariables [
 	^ #(#_Token #nEWLINEToken)
 ]

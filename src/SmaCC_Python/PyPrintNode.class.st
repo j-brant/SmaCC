@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyPrintNode',
-	#superclass : 'PyRootNode',
+	#name : #PyPrintNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'printToken',
 		'testlist',
@@ -9,42 +9,42 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPrintNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitPrint: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPrintNode >> greaterThanGreaterThanToken [
 	^ greaterThanGreaterThanToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPrintNode >> greaterThanGreaterThanToken: aSmaCCToken [
 	greaterThanGreaterThanToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPrintNode >> nodeVariables [
 	^ #(#testlist)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPrintNode >> printToken [
 	^ printToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPrintNode >> printToken: aSmaCCToken [
 	printToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPrintNode >> testlist [
 	^ testlist
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPrintNode >> testlist: aPyRootNode [
 	self testlist notNil
 		ifTrue: [ self testlist parent: nil ].
@@ -53,7 +53,7 @@ PyPrintNode >> testlist: aPyRootNode [
 		ifTrue: [ self testlist parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyPrintNode >> tokenVariables [
 	^ #(#printToken #greaterThanGreaterThanToken)
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyClassdefNode',
-	#superclass : 'PyRootNode',
+	#name : #PyClassdefNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'classToken',
 		'cname',
@@ -16,125 +16,125 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitClassdef: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> classToken [
 	^ classToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> classToken: aSmaCCToken [
 	classToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> cname [
 	^ cname
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> cname: aSmaCCToken [
 	cname := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> dEDENTToken [
 	^ dEDENTToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> dEDENTToken: aSmaCCToken [
 	dEDENTToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> iNDENTToken [
 	^ iNDENTToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> iNDENTToken: aSmaCCToken [
 	iNDENTToken := aSmaCCToken
 ]
 
-{ #category : 'generated-initialize-release' }
+{ #category : #'generated-initialize-release' }
 PyClassdefNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> lparenToken [
 	^ lparenToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> lparenToken: aSmaCCToken [
 	lparenToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> nEWLINEToken [
 	^ nEWLINEToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> nEWLINEToken: aSmaCCToken [
 	nEWLINEToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> nodeVariables [
 	^ #(#testlist)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> rparenToken [
 	^ rparenToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> rparenToken: aSmaCCToken [
 	rparenToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> statements [
 	^ statements
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> testlist [
 	^ testlist
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> testlist: aPyRootNode [
 	self testlist notNil
 		ifTrue: [ self testlist parent: nil ].
@@ -143,7 +143,7 @@ PyClassdefNode >> testlist: aPyRootNode [
 		ifTrue: [ self testlist parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyClassdefNode >> tokenVariables [
 	^ #(#classToken #cname #colonToken #nEWLINEToken #iNDENTToken #dEDENTToken #lparenToken #rparenToken)
 ]

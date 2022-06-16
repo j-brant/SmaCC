@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyWhileNode',
-	#superclass : 'PyRootNode',
+	#name : #PyWhileNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'whileToken',
 		'test',
@@ -14,42 +14,42 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyWhileNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitWhile: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyWhileNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyWhileNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyWhileNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyWhileNode >> dEDENTToken [
 	^ dEDENTToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyWhileNode >> dEDENTToken: aSmaCCToken [
 	dEDENTToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyWhileNode >> else [
 	^ else
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyWhileNode >> else: aPyElseNode [
 	self else notNil
 		ifTrue: [ self else parent: nil ].
@@ -58,55 +58,55 @@ PyWhileNode >> else: aPyElseNode [
 		ifTrue: [ self else parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyWhileNode >> iNDENTToken [
 	^ iNDENTToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyWhileNode >> iNDENTToken: aSmaCCToken [
 	iNDENTToken := aSmaCCToken
 ]
 
-{ #category : 'generated-initialize-release' }
+{ #category : #'generated-initialize-release' }
 PyWhileNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyWhileNode >> nEWLINEToken [
 	^ nEWLINEToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyWhileNode >> nEWLINEToken: aSmaCCToken [
 	nEWLINEToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyWhileNode >> nodeVariables [
 	^ #(#test #else)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyWhileNode >> statements [
 	^ statements
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyWhileNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyWhileNode >> test [
 	^ test
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyWhileNode >> test: aPyRootNode [
 	self test notNil
 		ifTrue: [ self test parent: nil ].
@@ -115,17 +115,17 @@ PyWhileNode >> test: aPyRootNode [
 		ifTrue: [ self test parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyWhileNode >> tokenVariables [
 	^ #(#whileToken #colonToken #nEWLINEToken #iNDENTToken #dEDENTToken)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyWhileNode >> whileToken [
 	^ whileToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyWhileNode >> whileToken: aSmaCCToken [
 	whileToken := aSmaCCToken
 ]

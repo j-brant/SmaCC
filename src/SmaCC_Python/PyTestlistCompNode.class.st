@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyTestlistCompNode',
-	#superclass : 'PyRootNode',
+	#name : #PyTestlistCompNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'test',
 		'comp_for'
@@ -8,17 +8,17 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTestlistCompNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitTestlistComp: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTestlistCompNode >> comp_for [
 	^ comp_for
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTestlistCompNode >> comp_for: aPyCompForNode [
 	self comp_for notNil
 		ifTrue: [ self comp_for parent: nil ].
@@ -27,17 +27,17 @@ PyTestlistCompNode >> comp_for: aPyCompForNode [
 		ifTrue: [ self comp_for parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTestlistCompNode >> nodeVariables [
 	^ #(#test #comp_for)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTestlistCompNode >> test [
 	^ test
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyTestlistCompNode >> test: aPyRootNode [
 	self test notNil
 		ifTrue: [ self test parent: nil ].

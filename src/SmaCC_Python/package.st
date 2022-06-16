@@ -1,1 +1,1 @@
-Package { #name : 'SmaCC_Python' }
+Package { #name : #'SmaCC_Python' }

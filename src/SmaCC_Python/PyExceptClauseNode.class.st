@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyExceptClauseNode',
-	#superclass : 'PyRootNode',
+	#name : #PyExceptClauseNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'exceptToken',
 		'except',
@@ -12,17 +12,17 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyExceptClauseNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitExceptClause: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyExceptClauseNode >> another [
 	^ another
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyExceptClauseNode >> another: aPyRootNode [
 	self another notNil
 		ifTrue: [ self another parent: nil ].
@@ -31,37 +31,37 @@ PyExceptClauseNode >> another: aPyRootNode [
 		ifTrue: [ self another parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyExceptClauseNode >> asToken [
 	^ asToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyExceptClauseNode >> asToken: aSmaCCToken [
 	asToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyExceptClauseNode >> commaToken [
 	^ commaToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyExceptClauseNode >> commaToken: aSmaCCToken [
 	commaToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyExceptClauseNode >> except [
 	^ except
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyExceptClauseNode >> except2 [
 	^ except2
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyExceptClauseNode >> except2: aPyRootNode [
 	self except2 notNil
 		ifTrue: [ self except2 parent: nil ].
@@ -70,7 +70,7 @@ PyExceptClauseNode >> except2: aPyRootNode [
 		ifTrue: [ self except2 parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyExceptClauseNode >> except: aPyRootNode [
 	self except notNil
 		ifTrue: [ self except parent: nil ].
@@ -79,22 +79,22 @@ PyExceptClauseNode >> except: aPyRootNode [
 		ifTrue: [ self except parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyExceptClauseNode >> exceptToken [
 	^ exceptToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyExceptClauseNode >> exceptToken: aSmaCCToken [
 	exceptToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyExceptClauseNode >> nodeVariables [
 	^ #(#except #another #except2)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyExceptClauseNode >> tokenVariables [
 	^ #(#exceptToken #asToken #commaToken)
 ]

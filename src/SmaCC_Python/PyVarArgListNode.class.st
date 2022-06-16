@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyVarArgListNode',
-	#superclass : 'PyRootNode',
+	#name : #PyVarArgListNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'args',
 		'inits',
@@ -13,44 +13,44 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVarArgListNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitVarArgList: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVarArgListNode >> args [
 	^ args
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVarArgListNode >> args: anOrderedCollection [
 	self setParents: self args to: nil.
 	args := anOrderedCollection.
 	self setParents: self args to: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVarArgListNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVarArgListNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVarArgListNode >> compositeNodeVariables [
 	^ #(#args #inits)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVarArgListNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : 'generated-initialize-release' }
+{ #category : #'generated-initialize-release' }
 PyVarArgListNode >> initialize [
 	super initialize.
 	args := OrderedCollection new: 2.
@@ -58,59 +58,59 @@ PyVarArgListNode >> initialize [
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVarArgListNode >> inits [
 	^ inits
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVarArgListNode >> inits: anOrderedCollection [
 	self setParents: self inits to: nil.
 	inits := anOrderedCollection.
 	self setParents: self inits to: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVarArgListNode >> sname [
 	^ sname
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVarArgListNode >> sname: aSmaCCToken [
 	sname := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVarArgListNode >> ssname [
 	^ ssname
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVarArgListNode >> ssname: aSmaCCToken [
 	ssname := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVarArgListNode >> timesTimesToken [
 	^ timesTimesToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVarArgListNode >> timesTimesToken: aSmaCCToken [
 	timesTimesToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVarArgListNode >> timesToken [
 	^ timesToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVarArgListNode >> timesToken: aSmaCCToken [
 	timesToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVarArgListNode >> tokenVariables [
 	^ #(#timesToken #sname #timesTimesToken #ssname)
 ]

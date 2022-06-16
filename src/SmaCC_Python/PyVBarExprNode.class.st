@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyVBarExprNode',
-	#superclass : 'PyRootNode',
+	#name : #PyVBarExprNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'one',
 		'orToken',
@@ -9,22 +9,22 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVBarExprNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitVBarExpr: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVBarExprNode >> nodeVariables [
 	^ #(#one #two)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVBarExprNode >> one [
 	^ one
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVBarExprNode >> one: aPyRootNode [
 	self one notNil
 		ifTrue: [ self one parent: nil ].
@@ -33,27 +33,27 @@ PyVBarExprNode >> one: aPyRootNode [
 		ifTrue: [ self one parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVBarExprNode >> orToken [
 	^ orToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVBarExprNode >> orToken: aSmaCCToken [
 	orToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVBarExprNode >> tokenVariables [
 	^ #(#orToken)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVBarExprNode >> two [
 	^ two
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyVBarExprNode >> two: aPyRootNode [
 	self two notNil
 		ifTrue: [ self two parent: nil ].

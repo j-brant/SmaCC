@@ -1,6 +1,6 @@
 Class {
-	#name : 'PyCompOpNode',
-	#superclass : 'PyRootNode',
+	#name : #PyCompOpNode,
+	#superclass : #PyRootNode,
 	#instVars : [
 		'lessThanToken',
 		'greaterThanToken',
@@ -16,112 +16,112 @@ Class {
 	#category : 'SmaCC_Python'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompOpNode >> _isToken [
 	^ _isToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompOpNode >> _isToken: aSmaCCToken [
 	_isToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompOpNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitCompOp: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompOpNode >> bangEqualToken [
 	^ bangEqualToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompOpNode >> bangEqualToken: aSmaCCToken [
 	bangEqualToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompOpNode >> equalEqualToken [
 	^ equalEqualToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompOpNode >> equalEqualToken: aSmaCCToken [
 	equalEqualToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompOpNode >> greaterThanEqualToken [
 	^ greaterThanEqualToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompOpNode >> greaterThanEqualToken: aSmaCCToken [
 	greaterThanEqualToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompOpNode >> greaterThanToken [
 	^ greaterThanToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompOpNode >> greaterThanToken: aSmaCCToken [
 	greaterThanToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompOpNode >> inToken [
 	^ inToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompOpNode >> inToken: aSmaCCToken [
 	inToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompOpNode >> lessThanEqualToken [
 	^ lessThanEqualToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompOpNode >> lessThanEqualToken: aSmaCCToken [
 	lessThanEqualToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompOpNode >> lessThanGreaterThanToken [
 	^ lessThanGreaterThanToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompOpNode >> lessThanGreaterThanToken: aSmaCCToken [
 	lessThanGreaterThanToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompOpNode >> lessThanToken [
 	^ lessThanToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompOpNode >> lessThanToken: aSmaCCToken [
 	lessThanToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompOpNode >> notToken [
 	^ notToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompOpNode >> notToken: aSmaCCToken [
 	notToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 PyCompOpNode >> tokenVariables [
 	^ #(#lessThanToken #greaterThanToken #equalEqualToken #greaterThanEqualToken #lessThanEqualToken #lessThanGreaterThanToken #bangEqualToken #inToken #notToken #_isToken)
 ]
