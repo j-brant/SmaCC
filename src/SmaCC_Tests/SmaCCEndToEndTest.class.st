@@ -703,7 +703,7 @@ SmaCCEndToEndTest >> testEmbeddedBacktracking [
 
 { #category : #tests }
 SmaCCEndToEndTest >> testEmbeddedExample [
-	| parserCompiler node found |
+	| parserCompiler node |
 	(Smalltalk includesKey: #JSONParser)
 		ifFalse: [ ^ self ].
 	(Smalltalk includesKey: #JSParser)
