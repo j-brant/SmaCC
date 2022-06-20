@@ -86,7 +86,7 @@ CSVParser class >> parseFileWithHeader: aFilename [
 		collect: [ :i | (headerLine at: i) ifNil: [ 'Column ' , i printString ] ].
 	1 to: lines size do:
 		[ :i | 
-		| line dict |
+		| dict |
 		dict := Dictionary new: headerNames size.
 		headerNames
 			with: (lines at: i)
