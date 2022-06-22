@@ -5085,7 +5085,7 @@ JSParser >> actionsForCurrentToken [
 			actions notEmpty
 				ifTrue: [ currentState
 						attributeNamed: #lastInsertedSemicolonPosition
-						put: scanner position.
+						put: self positionForInsertedSemicolon.
 					self position: currentToken startPosition - 1.
 					currentToken := currentToken class
 						value: ';'
@@ -5117,7 +5117,7 @@ JSParser >> actionsForCurrentToken [
 JSParser >> canInsertSemicolon [
 	| item |
 	((currentState attributeNamed: #lastInsertedSemicolonPosition)
-		ifNil: [ -1 ]) < scanner position
+		ifNil: [ -1 ]) < self positionForInsertedSemicolon
 		ifFalse: [ ^ false ].
 	nodeStack size > 1
 		ifFalse: [ ^ true ].
@@ -5147,7 +5147,7 @@ JSParser >> checkEOL [
 		on: Error
 		do: [ :ex | currentToken startPosition ].
 	(scanner hasNewlineBetween: position and: currentToken startPosition)
-		ifTrue: [ currentState attributeNamed: #lastInsertedSemicolonPosition put: scanner position.
+		ifTrue: [ currentState attributeNamed: #lastInsertedSemicolonPosition put: self positionForInsertedSemicolon.
 			self position: currentToken startPosition - 1.
 			currentToken := currentToken class value: ';' start: nil ids: (Array with: self scanner semicolonId) ]
 ]
@@ -5173,6 +5173,14 @@ JSParser >> isJSX [
 { #category : #private }
 JSParser >> keywords [
 	^ self class keywords
+]
+
+{ #category : #private }
+JSParser >> positionForInsertedSemicolon [
+	^ scanner position
+		+ ((currentToken ids at: 1 ifAbsent: [  ]) = scanner emptySymbolTokenId
+				ifTrue: [ 1 ]
+				ifFalse: [ 0 ])
 ]
 
 { #category : #'generated-reduction actions' }
