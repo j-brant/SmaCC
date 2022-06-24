@@ -518,9 +518,8 @@ SmaCCGLRParser >> setAllStartingStates [
 
 { #category : #private }
 SmaCCGLRParser >> setStartingStatesIfNone [
-	states isEmpty
-		ifTrue:
-			[ states add: self initialParserState ]
+	states isEmpty ifTrue: [ states add: self initialParserState ].
+	parseAsEmbedded ifTrue: [ self addEmbeddedActions ]
 ]
 
 { #category : #parsing }
