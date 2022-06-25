@@ -7,7 +7,8 @@ Class {
 { #category : #registration }
 SmaCCStepRuleDebugAction class >> gtActionFor: aDebugger [
 	<gtSmaCCTransformationStack>
-	^ (self forDebugger: aDebugger) icon: GLMUIThemeExtraIcons glamorousOver
+	
+	^ (self forDebugger: aDebugger) icon: (self iconNamed: #glamorousOver)
 ]
 
 { #category : #accessing }
@@ -25,7 +26,7 @@ SmaCCStepRuleDebugAction >> defaultOrder [
 	^ 100
 ]
 
-{ #category : #accessing }
+{ #category : #actions }
 SmaCCStepRuleDebugAction >> executeAction [
 	self session stepOver: self currentContext
 ]

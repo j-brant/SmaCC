@@ -7,7 +7,8 @@ Class {
 { #category : #registration }
 SmaCCStepToNextNodeAction class >> gtActionFor: aDebugger [
 	<gtSmaCCTransformationStack>
-	^ (self forDebugger: aDebugger) icon: GLMUIThemeExtraIcons glamorousThrough
+	
+	^ (self forDebugger: aDebugger) icon: (self iconNamed: #glamorousThrough)
 ]
 
 { #category : #accessing }
@@ -25,7 +26,7 @@ SmaCCStepToNextNodeAction >> defaultOrder [
 	^ 110
 ]
 
-{ #category : #accessing }
+{ #category : #actions }
 SmaCCStepToNextNodeAction >> executeAction [
 	| nodes |
 	nodes := (self session transformationStack collect: [ :each | each last receiver match ]) asSet.

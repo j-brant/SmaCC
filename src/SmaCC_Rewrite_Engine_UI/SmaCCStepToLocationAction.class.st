@@ -7,7 +7,8 @@ Class {
 { #category : #registration }
 SmaCCStepToLocationAction class >> gtActionFor: aDebugger [
 	<gtSmaCCTransformationInput>
-	^ (self forDebugger: aDebugger) icon: GLMUIThemeExtraIcons glamorousInto
+	
+	^ (self forDebugger: aDebugger) icon: (self iconNamed: #glamorousInto)
 ]
 
 { #category : #accessing }
@@ -25,7 +26,7 @@ SmaCCStepToLocationAction >> defaultOrder [
 	^ 100
 ]
 
-{ #category : #accessing }
+{ #category : #actions }
 SmaCCStepToLocationAction >> executeAction [
 	| first node interval nextNode |
 	first := true.

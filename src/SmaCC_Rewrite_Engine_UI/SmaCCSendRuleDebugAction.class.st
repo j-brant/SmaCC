@@ -7,7 +7,8 @@ Class {
 { #category : #registration }
 SmaCCSendRuleDebugAction class >> gtActionFor: aDebugger [
 	<gtSmaCCTransformationStack>
-	^ (self forDebugger: aDebugger) icon: GLMUIThemeExtraIcons glamorousInto
+	
+	^ (self forDebugger: aDebugger) icon: (self iconNamed: #glamorousInto)
 ]
 
 { #category : #accessing }
@@ -25,7 +26,7 @@ SmaCCSendRuleDebugAction >> defaultOrder [
 	^ 90
 ]
 
-{ #category : #accessing }
+{ #category : #actions }
 SmaCCSendRuleDebugAction >> executeAction [
 	| first |
 	first := true.

@@ -7,7 +7,8 @@ Class {
 { #category : #registration }
 SmaCCStepToNextRewriteAction class >> gtActionFor: aDebugger [
 	<gtSmaCCTransformationStack>
-	^ (self forDebugger: aDebugger) icon: GLMUIThemeExtraIcons glamorousThrough
+	
+	^ (self forDebugger: aDebugger) icon: (self iconNamed: #glamorousThrough)
 ]
 
 { #category : #accessing }
@@ -25,7 +26,7 @@ SmaCCStepToNextRewriteAction >> defaultOrder [
 	^ 120
 ]
 
-{ #category : #accessing }
+{ #category : #actions }
 SmaCCStepToNextRewriteAction >> executeAction [
 	| rewrites |
 	rewrites := (self session transformationStack collect: [ :each | self session rewriteForContext: each last ]) asSet.

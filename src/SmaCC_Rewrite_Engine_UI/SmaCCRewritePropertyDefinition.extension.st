@@ -17,43 +17,66 @@ SmaCCRewritePropertyDefinition >> addLocal [
 ]
 
 { #category : #'*SmaCC_Rewrite_Engine_UI' }
-SmaCCRewritePropertyDefinition >> buildInterfaceIn: aPresentation [
-	| tabulator |
-	(tabulator := aPresentation tabulator)
-		row: [ :row | 
-			row
-				column: #label size: 75;
-				column: #comment ]
-			size: 25;
-		row: #locals;
-		row: #globals.
-	tabulator transmit
-		to: #label;
-		andShow: [ :presentation | presentation label display: 'Comment:' ].
-	tabulator transmit
-		to: #comment;
-		andShow: [ :presentation | 
-			presentation text
-				display: self comment;
-				onChangeOfPort: #text act: [ :text | self comment: text text asString ] ].
-	tabulator transmit
-		to: #locals;
-		andShow: [ :presentation | 
-			presentation list
-				title: 'Locals';
-				updateOn: #locals from: [ self announcer ];
-				act: [ self addLocal ] icon: GLMUIThemeExtraIcons glamorousAdd entitled: 'Add';
-				act: [ :list | self removeLocal: list selection ] icon: GLMUIThemeExtraIcons glamorousRemove entitled: 'Remove';
-				display: [ propertyNames asSortedCollection ] ].
-	tabulator transmit
-		to: #globals;
-		andShow: [ :presentation | 
-			presentation list
-				title: 'Globals';
-				updateOn: #globals from: [ self announcer ];
-				act: [ self addGlobal ] icon: GLMUIThemeExtraIcons glamorousAdd entitled: 'Add';
-				act: [ :list | self removeGlobal: list selection ] icon: GLMUIThemeExtraIcons glamorousRemove entitled: 'Remove';
-				display: [ globalValues keys asSortedCollection ] ]
+SmaCCRewritePropertyDefinition >> buildPresenterLayout [
+	| layout notebook |
+	layout := SpBoxLayout newTopToBottom.
+	layout spacing: 5.
+	layout add: self commentPresenter expand: false.
+	notebook := SpNotebookPresenter new.
+	notebook addPage: (SpNotebookPage title: 'Locals' provider: [ self buildVariables: 'local' ]).
+	notebook addPage: (SpNotebookPage title: 'Globals' provider: [ self buildVariables: 'global' ]).
+	layout add: notebook.
+	^ layout
+]
+
+{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+SmaCCRewritePropertyDefinition >> buildVariables: aString [
+	| presenter vars toolbar selector |
+	selector := (aString , 's') asSymbol.
+	presenter := SpPresenter new.
+	vars := SpListPresenter new.
+	vars items: (self perform: selector).
+	toolbar := SpPresenter new.
+	toolbar
+		layout:
+			((SpBoxLayout newTopToBottom)
+				spacing: 5;
+				add:
+						((SpButtonPresenter new)
+								label: 'Add';
+								icon: (self iconNamed: #add);
+								help: 'Add variable';
+								action:
+										[ self perform: ('add' , aString capitalized) asSymbol.
+											vars items: (self perform: selector) ];
+								yourself)
+					expand: false;
+				add:
+						((SpButtonPresenter new)
+								label: 'Remove';
+								icon: (self iconNamed: #remove);
+								help: 'Remove variable';
+								action:
+										[ vars selectedItems do: [ :each | self perform: ('remove' , aString capitalized , ':') asSymbol with: each ].
+											vars items: (self perform: selector) ];
+								yourself)
+					expand: false).
+	presenter
+		layout:
+			((SpBoxLayout newLeftToRight)
+				add: vars;
+				add: toolbar expand: false).
+	^ presenter
+]
+
+{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+SmaCCRewritePropertyDefinition >> globals [
+	^ globalValues keys asSortedCollection
+]
+
+{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+SmaCCRewritePropertyDefinition >> locals [
+	^ propertyNames asSortedCollection
 ]
 
 { #category : #'*SmaCC_Rewrite_Engine_UI' }
