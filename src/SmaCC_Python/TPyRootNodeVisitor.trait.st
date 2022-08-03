@@ -2,7 +2,7 @@ Trait {
 	#name : #TPyRootNodeVisitor,
 	#traits : 'TSmaCCParseNodeVisitor',
 	#classTraits : 'TSmaCCParseNodeVisitor classTrait',
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
@@ -228,11 +228,6 @@ TPyRootNodeVisitor >> visitListmaker: aListmaker [
 { #category : #generated }
 TPyRootNodeVisitor >> visitMinusExpr: aMinusExpr [
 	^ self visitRoot: aMinusExpr
-]
-
-{ #category : #generated }
-TPyRootNodeVisitor >> visitMoreTests: aMoreTests [
-	^ self visitRoot: aMoreTests
 ]
 
 { #category : #generated }

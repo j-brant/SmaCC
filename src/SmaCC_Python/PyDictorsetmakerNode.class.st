@@ -2,13 +2,13 @@ Class {
 	#name : #PyDictorsetmakerNode,
 	#superclass : #PyRootNode,
 	#instVars : [
-		'test',
-		'colonToken',
-		'test2',
+		'objects',
+		'colonTokens',
+		'values',
 		'comp',
-		'more'
+		'commaTokens'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
@@ -17,13 +17,23 @@ PyDictorsetmakerNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-PyDictorsetmakerNode >> colonToken [
-	^ colonToken
+PyDictorsetmakerNode >> colonTokens [
+	^ colonTokens
 ]
 
 { #category : #generated }
-PyDictorsetmakerNode >> colonToken: aSmaCCToken [
-	colonToken := aSmaCCToken
+PyDictorsetmakerNode >> colonTokens: anOrderedCollection [
+	colonTokens := anOrderedCollection
+]
+
+{ #category : #generated }
+PyDictorsetmakerNode >> commaTokens [
+	^ commaTokens
+]
+
+{ #category : #generated }
+PyDictorsetmakerNode >> commaTokens: anOrderedCollection [
+	commaTokens := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -41,56 +51,49 @@ PyDictorsetmakerNode >> comp: aPyCompForNode [
 ]
 
 { #category : #generated }
-PyDictorsetmakerNode >> more [
-	^ more
+PyDictorsetmakerNode >> compositeNodeVariables [
+	^ #(#objects #values)
 ]
 
 { #category : #generated }
-PyDictorsetmakerNode >> more: anObject [
-	self setParent: self more to: nil.
-	more := anObject.
-	self setParent: self more to: self
+PyDictorsetmakerNode >> compositeTokenVariables [
+	^ #(#colonTokens #commaTokens)
+]
+
+{ #category : #'generated-initialize-release' }
+PyDictorsetmakerNode >> initialize [
+	super initialize.
+	objects := OrderedCollection new: 2.
+	colonTokens := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
+	commaTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
 PyDictorsetmakerNode >> nodeVariables [
-	^ #(#test #test2 #comp)
+	^ #(#comp)
 ]
 
 { #category : #generated }
-PyDictorsetmakerNode >> otherVariables [
-	^ #(#more)
+PyDictorsetmakerNode >> objects [
+	^ objects
 ]
 
 { #category : #generated }
-PyDictorsetmakerNode >> test [
-	^ test
+PyDictorsetmakerNode >> objects: anOrderedCollection [
+	self setParents: self objects to: nil.
+	objects := anOrderedCollection.
+	self setParents: self objects to: self
 ]
 
 { #category : #generated }
-PyDictorsetmakerNode >> test2 [
-	^ test2
+PyDictorsetmakerNode >> values [
+	^ values
 ]
 
 { #category : #generated }
-PyDictorsetmakerNode >> test2: aPyRootNode [
-	self test2 notNil
-		ifTrue: [ self test2 parent: nil ].
-	test2 := aPyRootNode.
-	self test2 notNil
-		ifTrue: [ self test2 parent: self ]
-]
-
-{ #category : #generated }
-PyDictorsetmakerNode >> test: aPyRootNode [
-	self test notNil
-		ifTrue: [ self test parent: nil ].
-	test := aPyRootNode.
-	self test notNil
-		ifTrue: [ self test parent: self ]
-]
-
-{ #category : #generated }
-PyDictorsetmakerNode >> tokenVariables [
-	^ #(#colonToken)
+PyDictorsetmakerNode >> values: anOrderedCollection [
+	self setParents: self values to: nil.
+	values := anOrderedCollection.
+	self setParents: self values to: self
 ]
