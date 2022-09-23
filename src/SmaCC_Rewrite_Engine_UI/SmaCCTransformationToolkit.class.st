@@ -16,7 +16,12 @@ Class {
 		'previewInputSourcePresenter',
 		'previewOutputSourcePresenter',
 		'transformationTreePresenter',
-		'transformationRulePresenter'
+		'transformationRulePresenter',
+		'progressDialog',
+		'progressCounts',
+		'createSubdirectories',
+		'runOnServer',
+		'optionsMenu'
 	],
 	#category : #'SmaCC_Rewrite_Engine_UI'
 }
@@ -71,7 +76,21 @@ SmaCCTransformationToolkit >> addFile [
 			((self model inputParserClass ifNil: [ SmaCCParser ]) fileExtensions
 				collect: [ :each | each first = $. ifTrue: [ each copyFrom: 2 to: each size ] ifFalse: [ each ] ]).
 	name ifNil: [ ^ self ].
-	self addFiles: (Array with: name asFileReference)
+	self addFiles: (Array with: name asFileReference pathString)
+]
+
+{ #category : #'transformation-actions' }
+SmaCCTransformationToolkit >> addFileRule [
+	| rewrite file |
+	file := UIManager default
+		chooseForSaveFileReference: 'Enter rewrite rule file name'
+		extensions: #('rw')
+		path: FileSystem workingDirectory.
+	file ifNil: [ ^ self ].
+	rewrite := file asFileReference exists
+		ifTrue: [ SmaCCRewriteRuleFileParser parseFile: file ]
+		ifFalse: [ SmaCCRewriteFile new filename: file ].
+	self addRewrite: rewrite
 ]
 
 { #category : #'configuration-actions' }
@@ -153,7 +172,44 @@ SmaCCTransformationToolkit >> configurationMenu [
 							item
 								name: 'Save';
 								iconName: #glamorousSave;
-								action: [ self saveConfiguration ] ] ]
+								action: [ self saveConfiguration ] ];
+				addItem:
+						[ :addItem | 
+							addItem
+								name: 'Options';
+								subMenu:
+										((optionsMenu := self newMenu)
+												addItem:
+														[ :item | 
+															item
+																name: 'Input Parser...';
+																action: [ self selectInputParser ] ];
+												addItem:
+														[ :item | 
+															item
+																name: 'Validation Parser...';
+																action: [ self selectValidationParser ] ];
+												addItem:
+														[ :item | 
+															item
+																name: 'Output Directory...';
+																action: [ self setOutputDirectory ] ];
+												addItem:
+														[ :item | 
+															(createSubdirectories := item)
+																name: 'Create Subdirectories';
+																action: [ self setCreateSubdirectories ] ];
+												addItem:
+														[ :item | 
+															item
+																name: 'Server...';
+																action: [ self setServer ] ];
+												addItem:
+														[ :item | 
+															(runOnServer := item)
+																name: 'Run on Server';
+																action: [ self setRunOnServer ] ]).
+							self updateMenuItems ] ]
 ]
 
 { #category : #'initialize-release' }
@@ -167,20 +223,32 @@ SmaCCTransformationToolkit >> configurationPresenter [
 		ifNil:
 			[ configurationPresenter := (self newPresenter)
 				layout:
-						((SpBoxLayout newTopToBottom)
-								spacing: 5;
-								add: self configurationMenu expand: false;
-								add: (self newLabel label: 'Files') expand: false;
+						((SpPanedLayout newTopToBottom)
 								add:
-										(self newPresenter
+										((self newPresenter)
 												layout:
-													((SpBoxLayout newLeftToRight)
-														spacing: 5;
-														add: self filesListPresenter;
-														addLast: self filesListButtons expand: false;
-														yourself));
-								add: (self newLabel label: 'Results') expand: false;
-								add: self resultsTablePresenter;
+														((SpBoxLayout newTopToBottom)
+																spacing: 5;
+																add: self configurationMenu expand: false;
+																add: (self newLabel label: 'Files') expand: false;
+																add:
+																		(self newPresenter
+																				layout:
+																					((SpBoxLayout newLeftToRight)
+																						spacing: 5;
+																						add: self filesListPresenter;
+																						addLast: self filesListButtons expand: false;
+																						yourself));
+																yourself);
+												yourself);
+								add:
+										((self newPresenter)
+												layout:
+														((SpBoxLayout newTopToBottom)
+																add: (self newLabel label: 'Results') expand: false;
+																add: self resultsTablePresenter;
+																yourself);
+												yourself);
 								yourself);
 				yourself ]
 ]
@@ -205,11 +273,8 @@ SmaCCTransformationToolkit >> debugRewrite: aSmaCCRewrite forNode: aClass at: an
 	| block |
 	aSmaCCRewrite ifNil: [ ^ self ].
 	block := [ :rewrite :node | 
-	| debug |
-	debug := rewrite == aSmaCCRewrite
-		and: [ node class == aClass and: [ node startPosition = anInterval first and: [ node stopPosition = anInterval last ] ] ].
-	debug ifTrue: [ self removeOverlay ].
-	debug ].
+	rewrite == aSmaCCRewrite
+		and: [ node class == aClass and: [ node startPosition = anInterval first and: [ node stopPosition = anInterval last ] ] ] ].
 	self debugUsingSeachBlock: block andTransformationBlock: block
 ]
 
@@ -255,6 +320,7 @@ SmaCCTransformationToolkit >> displayPreviewResult: aResult [
 	previewResult := aResult.
 	self previewInputSourcePresenter removeAll.
 	self previewOutputSourcePresenter removeAll.
+	aResult filename ifNil: [ ^ self ].
 	self
 		addPreviewSource: previewResult inputSource
 		named: self previewInputFilename
@@ -279,6 +345,16 @@ SmaCCTransformationToolkit >> displayPreviewResult: aResult [
 { #category : #'transformation-actions' }
 SmaCCTransformationToolkit >> displayRewrite: aRewrite [
 	self transformationRulePresenter layout: aRewrite buildPresenterLayout
+]
+
+{ #category : #'transformation-actions' }
+SmaCCTransformationToolkit >> ensureRewriteFilename [
+	| name |
+	self model rewrites filename isNil
+		ifTrue:
+			[ name := self promptForSaveFile: 'Save Rewrites To' extensions: #('rw').
+			name ifNil: [ ^ self ].
+			self model rewrites filename: name ]
 ]
 
 { #category : #'initialize-release' }
@@ -364,19 +440,23 @@ SmaCCTransformationToolkit >> gotoPreviewTab [
 
 { #category : #'preview-actions' }
 SmaCCTransformationToolkit >> gotoRewrite: aRewrite [
-	
+	notebook selectPage: self rewriteTab.
+	self selectAndScrollToRewrite: aRewrite
 ]
 
 { #category : #'configuration-actions' }
 SmaCCTransformationToolkit >> incrementPercent [
-	self subclassResponsibility
+	progressCounts at: 1 put: progressCounts first + 1.
+	progressDialog ifNotNil: [ progressDialog progressPercent: progressCounts first / progressCounts last * 100 ]
 ]
 
 { #category : #'initialize-release' }
 SmaCCTransformationToolkit >> initialize [
 	super initialize.
 	self model: SmaCCTransformationToolkitModel new.
-	results := OrderedCollection new
+	results := OrderedCollection new.
+	progressCounts := {0.
+		0}
 ]
 
 { #category : #'initialize-release' }
@@ -399,34 +479,30 @@ SmaCCTransformationToolkit >> inputSourcePresenter [
 	^ self previewInputSourcePresenter pages ifNotEmpty: [ :pages | pages first activePresenter ]
 ]
 
-{ #category : #'ui-preview' }
-SmaCCTransformationToolkit >> linePositionFor: anInteger in: aString [
-	| stream lineNumber |
-	stream := SmaCCLineNumberStream on: aString readStream.
-	stream position: anInteger.
-	lineNumber := stream lineNumber.
-	stream position: aString size.
-	^ (lineNumber - 1) / stream lineNumber
-]
-
 { #category : #'configuration-actions' }
 SmaCCTransformationToolkit >> loadConfiguration [
 	| file |
 	file := self promptForFile: 'Load Configuration File' extensions: #('rwc').
 	file ifNil: [ ^ self ].
-	self model: SmaCCTransformationToolkitModel new.
-	self model loadFile: file.
-	resultsTablePresenter items: #().
-	self result: SmaCCRewriteCompleteResult new
+	self loadConfiguration: file
 ]
 
 { #category : #'configuration-actions' }
 SmaCCTransformationToolkit >> loadConfiguration: aFileReference [
 	self model: SmaCCTransformationToolkitModel new.
 	self model loadFile: aFileReference.
+	filename := aFileReference.
 	results removeAll.
 	self updateResults.
 	self displayPreviewResult: SmaCCRewriteCompleteResult new
+]
+
+{ #category : #'transformation-actions' }
+SmaCCTransformationToolkit >> loadRewrites [
+	| file |
+	file := self promptForFile: 'Load Transformation File' extensions: #('rw').
+	file ifNil: [ ^ self ].
+	self model loadRewriteFile: file
 ]
 
 { #category : #'configuration-actions' }
@@ -594,6 +670,11 @@ SmaCCTransformationToolkit >> outputSourcePresenter [
 ]
 
 { #category : #'configuration-actions' }
+SmaCCTransformationToolkit >> parserClasses [
+	^ SmaCCParser allSubclasses asSortedCollection: [ :a :b | a name < b name ]
+]
+
+{ #category : #'configuration-actions' }
 SmaCCTransformationToolkit >> preview [
 	self openResultFor: self selectedFile
 ]
@@ -662,6 +743,26 @@ SmaCCTransformationToolkit >> previewResultsListPresenter [
 								title: 'Location'
 								evaluated: [ :each | each nodeInterval first printString , '-' , each nodeInterval last printString ]);
 				whenSelectedDo: [ :each | self updateEditorsForAnnotation: each ];
+				contextMenu:
+						((SpMenuPresenter new)
+								addItem:
+										[ :item | 
+											item
+												name: 'Goto rewrite';
+												action: [ previewResultsListPresenter selectedItem ifNotNil: [ :sel | self gotoRewrite: sel rewrite ] ] ];
+								addItem:
+										[ :item | 
+											item
+												name: 'Debug';
+												action:
+														[ previewResultsListPresenter selectedItem
+																ifNotNil:
+																	[ :sel | 
+																	self
+																		debugRewrite: sel rewrite
+																		forNode: sel nodeClass
+																		at: sel nodeInterval ] ] ];
+								yourself);
 				yourself ]
 ]
 
@@ -670,7 +771,7 @@ SmaCCTransformationToolkit >> previewTab [
 	^ notebook pageAt: 3
 ]
 
-{ #category : #'configuration-actions' }
+{ #category : #private }
 SmaCCTransformationToolkit >> promptForFile: aTitle extensions: anArray [
 	^ UIManager default
 		chooseExistingFileReference: aTitle
@@ -679,17 +780,20 @@ SmaCCTransformationToolkit >> promptForFile: aTitle extensions: anArray [
 		preview: nil
 ]
 
+{ #category : #private }
+SmaCCTransformationToolkit >> promptForSaveFile: aTitle extensions: anArray [
+	^ UIManager default
+		chooseForSaveFileReference: aTitle
+		extensions: anArray
+		path: FileSystem workingDirectory
+]
+
 { #category : #'configuration-actions' }
 SmaCCTransformationToolkit >> removeFiles [
 	| files |
 	files := self selectedFiles asSet.
 	model files: (model files reject: [ :each | files includes: each ]).
 	self updateFiles
-]
-
-{ #category : #todo }
-SmaCCTransformationToolkit >> result: aSmaCCRewriteResult [
-	
 ]
 
 { #category : #'initialize-release' }
@@ -712,23 +816,50 @@ SmaCCTransformationToolkit >> resultsTablePresenter [
 ]
 
 { #category : #'configuration-actions' }
+SmaCCTransformationToolkit >> rewriteTab [
+	^ notebook pageAt: 2
+]
+
+{ #category : #'configuration-actions' }
 SmaCCTransformationToolkit >> run [
-	self runOn: self selectedFiles
+	self runOn: (self selectedFiles collect: #asFileReference)
 ]
 
 { #category : #'configuration-actions' }
 SmaCCTransformationToolkit >> runAll [
-	self runOn: model files
+	self runOn: (model files collect: #asFileReference)
 ]
 
 { #category : #'configuration-actions' }
 SmaCCTransformationToolkit >> runOn: aCollection [
-	| process |
-	process := [ [ self model runOn: aCollection ] ensure: [  ] ] newProcess.
-	results := results removeAllSuchThat: [ :each | aCollection includes: each filename ].
+	| process window |
+	process := [ [ self model runOn: aCollection ]
+		ensure:
+			[ window ifNotNil: [ window close ].
+			progressDialog := nil ] ] newProcess.
+	results := results removeAllSuchThat: [ :each | aCollection includes: each filename asFileReference ].
 	self updateResults.
-	aCollection size > 1 ifTrue: [ self addPercentage: aCollection size forProcess: process ].
+	aCollection size > 1
+		ifTrue:
+			[ window := (progressDialog := SpProgressDialog new)
+				title: 'SmaCC';
+				label: 'Transforming ' , aCollection size printString , ' files';
+				progressPercent: 0;
+				openDialog.
+			progressCounts := {0.
+				aCollection size} ].
 	process resume
+]
+
+{ #category : #'configuration-actions' }
+SmaCCTransformationToolkit >> saveConfiguration [
+	| file |
+	file := UIManager default
+		chooseForSaveFileReference: 'Enter the file name'
+		extensions: #('rwc')
+		path: (filename ifNil: [ '' ] ifNotNil: [ filename pathString ]).
+	file ifNil: [ ^ self ].
+	self saveConfigurationTo: file asFileReference
 ]
 
 { #category : #'configuration-actions' }
@@ -737,10 +868,32 @@ SmaCCTransformationToolkit >> saveConfigurationTo: aFileReference [
 	filename := aFileReference
 ]
 
+{ #category : #'transformation-actions' }
+SmaCCTransformationToolkit >> saveRewrites [
+	self ensureRewriteFilename.
+	self model saveRewrites
+]
+
 { #category : #private }
 SmaCCTransformationToolkit >> selectAndScrollToRewrite: aRewrite [
-	"transformationsTree selectAndScrollTo: aRewrite."
+	transformationsTreePresenter selectItem: aRewrite.
 	self displayRewrite: aRewrite
+]
+
+{ #category : #'configuration-actions' }
+SmaCCTransformationToolkit >> selectInputParser [
+	| class |
+	class := UIManager default chooseDropList: 'Select input parser class' list: self parserClasses.
+	class ifNil: [ ^ self ].
+	self model inputParserClass: class
+]
+
+{ #category : #'configuration-actions' }
+SmaCCTransformationToolkit >> selectValidationParser [
+	| class |
+	class := UIManager default chooseDropList: 'Select validation parser class' list: self parserClasses.
+	class ifNil: [ ^ self ].
+	self model validationParserClass: class
 ]
 
 { #category : #private }
@@ -757,6 +910,37 @@ SmaCCTransformationToolkit >> selectedFiles [
 SmaCCTransformationToolkit >> selectedRewrite [
 	transformationsTreePresenter selectedItem ifNotNil: [ :value | ^ value ].
 	^ model rewrites
+]
+
+{ #category : #'configuration-actions' }
+SmaCCTransformationToolkit >> setCreateSubdirectories [
+	self model createSubdirectories: (UIManager default questionWithoutCancel: 'Create subdirectories')
+]
+
+{ #category : #'configuration-actions' }
+SmaCCTransformationToolkit >> setOutputDirectory [
+	| dir |
+	dir := UIManager default
+		chooseDirectory: 'Choose output directory'
+		path: (self model outputDirectory ifNil: [ '' ]) asFileReference.
+	dir ifNil: [ ^ self ].
+	self model outputDirectory: dir pathString
+]
+
+{ #category : #'configuration-actions' }
+SmaCCTransformationToolkit >> setRunOnServer [
+	self model runOnServer: (UIManager default questionWithoutCancel: 'Run on server')
+]
+
+{ #category : #'configuration-actions' }
+SmaCCTransformationToolkit >> setServer [
+	| server |
+	server := UIManager default
+		textEntry: 'Enter server name:'
+		title: 'Server'
+		entryText: self model server.
+	server ifNil: [ ^ self ].
+	self model server: server
 ]
 
 { #category : #accessing }
@@ -777,36 +961,37 @@ SmaCCTransformationToolkit >> transformationButtons [
 										yourself)
 							expand: false;
 						add:
-								((self newMenuButton)
+								((self newMenuBar)
 										help: 'Add';
-										menu:
-												((self newMenu)
+										addGroup:
+												[ :group | 
+													group
 														addItem:
-																[ :item | 
-																	item
-																		name: 'Rewrite';
-																		action: [ self addRewrite: SmaCCRewrite newInstance ];
-																		yourself ];
-														addItem:
-																[ :item | 
-																	item
-																		name: 'Method';
-																		action: [ self addRewrite: SmaCCRewriteMethodDefinition new ];
-																		yourself ];
-														addItem:
-																[ :item | 
-																	item
-																		name: 'Properties';
-																		action: [ self addRewrite: SmaCCRewritePropertyDefinition new ];
-																		yourself ];
-														addItem:
-																[ :item | 
-																	item
-																		name: 'File';
-																		action: [ self halt ];
-																		yourself ];
-														yourself);
-										yourself);
+															[ :addItem | 
+															addItem
+																name: 'Add';
+																subMenu:
+																		((self newMenu)
+																				addItem:
+																						[ :item | 
+																							item
+																								name: 'Rewrite';
+																								action: [ self addRewrite: SmaCCRewrite newInstance ] ];
+																				addItem:
+																						[ :item | 
+																							item
+																								name: 'Method';
+																								action: [ self addRewrite: SmaCCRewriteMethodDefinition new ] ];
+																				addItem:
+																						[ :item | 
+																							item
+																								name: 'Properties';
+																								action: [ self addRewrite: SmaCCRewritePropertyDefinition new ] ];
+																				addItem:
+																						[ :item | 
+																							item
+																								name: 'File';
+																								action: [ self addFileRule ] ]) ] ]);
 						add:
 								((self newButton)
 										icon: (self iconNamed: #remove);
@@ -817,13 +1002,13 @@ SmaCCTransformationToolkit >> transformationButtons [
 								((self newButton)
 										icon: (self iconNamed: #open);
 										help: 'Load transformations file';
-										action: [ self halt ];
+										action: [ self loadRewrites ];
 										yourself);
 						add:
 								((self newButton)
 										icon: (self iconNamed: #smallSave);
-										help: 'Add file';
-										action: [ self addFile ];
+										help: 'Save transformations file';
+										action: [ self saveRewrites ];
 										yourself);
 						yourself);
 		yourself
@@ -882,6 +1067,12 @@ SmaCCTransformationToolkit >> transformationsPresenter [
 				yourself ]
 ]
 
+{ #category : #updating }
+SmaCCTransformationToolkit >> update: anAspect with: anObject [
+	anAspect = #resultAdded ifTrue: [ self addResult: anObject ].
+	self updateMenuItems
+]
+
 { #category : #'transformation-actions' }
 SmaCCTransformationToolkit >> updateAndSelectRewrite: rewrite [
 	self updateRewrites.
@@ -905,7 +1096,9 @@ SmaCCTransformationToolkit >> updateEditorsForAnnotation: annotation [
 						addAttribute: TextEmphasis underlined
 						from: annotation nodeInterval first
 						to: annotation nodeInterval last.
-					presenter scrollValue: 0 @ (self linePositionFor: annotation nodeInterval first in: text asString) ].
+					presenter
+						scrollValue:
+							0 @ (((text asString lineNumberCorrespondingToIndex: annotation nodeInterval first) + 1) / text asString lineCount) ].
 			presenter adapter widget setText: text ].
 	self outputSourcePresenter
 		ifNotNil:
@@ -929,13 +1122,32 @@ SmaCCTransformationToolkit >> updateEditorsForAnnotation: annotation [
 								from: each first
 								to: each last ].
 					firstIndex < SmallInteger maxVal
-						ifTrue: [ presenter scrollValue: 0 @ (self linePositionFor: firstIndex in: text asString) ] ].
+						ifTrue:
+							[ presenter scrollValue: 0 @ (((text asString lineNumberCorrespondingToIndex: firstIndex) + 1) / text asString lineCount) ] ].
 			presenter adapter widget setText: text ]
 ]
 
 { #category : #private }
 SmaCCTransformationToolkit >> updateFiles [
 	filesListPresenter items: model files
+]
+
+{ #category : #private }
+SmaCCTransformationToolkit >> updateMenuItems [
+	| items |
+	optionsMenu ifNil: [ ^ self ].
+	items := optionsMenu defaultGroup menuItems.
+	items first name: 'Input Parser (' , (self model inputParserClass ifNil: [ '' ] ifNotNil: [ :cls | cls name ]) , ')...'.
+	(items at: 2)
+		name: 'Validation Parser (' , (self model validationParserClass ifNil: [ '' ] ifNotNil: [ :cls | cls name ]) , ')...'.
+	(items at: 3)
+		name:
+			'Output Directory (' , (self model outputDirectory ifNil: [ '' ] ifNotNil: [ :dir | dir asFileReference pathString ])
+				, ')...'.
+	(items at: 4)
+		name: 'Create Subdirectories (' , (self model createSubdirectories ifTrue: [ 'yes' ] ifFalse: [ 'no' ]) , ')...'.
+	(items at: 5) name: 'Server (' , (self model server ifNil: [ '' ]) , ')...'.
+	(items at: 6) name: 'Run on Server (' , (self model runOnServer ifTrue: [ 'yes' ] ifFalse: [ 'no' ]) , ')...'
 ]
 
 { #category : #'ui-preview' }
@@ -945,7 +1157,7 @@ SmaCCTransformationToolkit >> updatePreviewAnnotations: aCollection [
 
 { #category : #'configuration-actions' }
 SmaCCTransformationToolkit >> updateResults [
-	
+	self resultsTablePresenter items: results
 ]
 
 { #category : #'transformation-actions' }

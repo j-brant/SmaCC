@@ -10,6 +10,15 @@ Class {
 	#category : #'SmaCC_Rewrite_Engine_UI'
 }
 
+{ #category : #'instance creation' }
+SmaCCTransformationToolkitDebugSession class >> from: aDebugSession [
+	| session |
+	(aDebugSession isKindOf: superclass) ifFalse: [ self error: 'Unknown debug session' ].
+	session := self basicNew.
+	1 to: superclass instSize do: [ :i | session instVarAt: i put: (aDebugSession instVarAt: i) ].
+	^ session
+]
+
 { #category : #testing }
 SmaCCTransformationToolkitDebugSession class >> handlesContext: aContext [
 	| max count |
@@ -40,14 +49,49 @@ SmaCCTransformationToolkitDebugSession class >> maxSearchDepth [
 ]
 
 { #category : #accessing }
+SmaCCTransformationToolkitDebugSession >> codeObjectForContext: aContext andRewrite: aRewrite [
+	(aRewrite isKindOf: SmaCCRewriteMethodDefinition) ifTrue: [ ^ aRewrite ].
+	^ (self isTransformation: aContext andRewrite: aRewrite) ifTrue: [ aRewrite transformation ] ifFalse: [ aRewrite match ]
+]
+
+{ #category : #accessing }
 SmaCCTransformationToolkitDebugSession >> currentNode [
+	^ self currentRewriteContext ifNotNil: [ :each | each match ]
+]
+
+{ #category : #accessing }
+SmaCCTransformationToolkitDebugSession >> currentRewriteContext [
 	| context |
 	context := interruptedContext.
 	[ context isNil ]
-		whileFalse: [ (self isRewriteContext: context)
-				ifTrue: [ ^ context receiver match ].
+		whileFalse:
+			[ (self isRewriteContext: context) ifTrue: [ ^ context receiver ].
 			context := context sender ].
 	^ nil
+]
+
+{ #category : #private }
+SmaCCTransformationToolkitDebugSession >> equivalentNodeTo: aNode in: otherTree [
+	| equivParent nodeIndex equivNode |
+	aNode isMethod ifTrue: [ ^ otherTree ].
+	(aNode parent isReturn and: [ aNode parent parent parent isMethod ])
+		ifTrue:
+			[ equivNode := otherTree isSequence ifTrue: [ otherTree statements last ] ifFalse: [ otherTree ].
+			^ equivNode isReturn ifTrue: [ equivNode value ] ifFalse: [ equivNode ] ].
+	aNode parent isMethod ifTrue: [ otherTree isSequence ifTrue: [ ^ otherTree ] ifFalse: [ ^ otherTree parent ] ].
+	equivParent := self equivalentNodeTo: aNode parent in: otherTree.
+	equivParent ifNil: [ ^ nil ].
+	nodeIndex := aNode parent children identityIndexOf: aNode.
+	^ equivParent children at: nodeIndex ifAbsent: [ nil ]
+]
+
+{ #category : #private }
+SmaCCTransformationToolkitDebugSession >> intervalFromMethodNode: aNode inSource: aString [
+	| otherTree otherNode |
+	otherTree := RBParser parseExpression: aString onError: [ :msg :pos | ^ 1 to: 0 ].
+	otherNode := self equivalentNodeTo: aNode in: otherTree.
+	otherNode ifNil: [ ^ 1 to: 0 ].
+	^ otherNode start to: otherNode stop
 ]
 
 { #category : #testing }
@@ -58,6 +102,11 @@ SmaCCTransformationToolkitDebugSession >> isActive [
 { #category : #accessing }
 SmaCCTransformationToolkitDebugSession >> isRewriteContext: context [
 	^ self class isRewriteContext: context
+]
+
+{ #category : #accessing }
+SmaCCTransformationToolkitDebugSession >> isTransformation: aContext andRewrite: aRewrite [
+	^ aRewrite transformation method == aContext method
 ]
 
 { #category : #accessing }
@@ -89,6 +138,22 @@ SmaCCTransformationToolkitDebugSession >> rewriteNode [
 SmaCCTransformationToolkitDebugSession >> rootContext [
 	^ rootContext
 		ifNil: [ rootContext := interruptedContext findContextSuchThat: [ :each | self class isTransformationContext: each ] ]
+]
+
+{ #category : #accessing }
+SmaCCTransformationToolkitDebugSession >> sourceForContext: aContext andRewrite: aRewrite [
+	aContext ifNil: [ ^ '' ].
+	^ (self codeObjectForContext: aContext andRewrite: aRewrite) source
+]
+
+{ #category : #accessing }
+SmaCCTransformationToolkitDebugSession >> sourceSelectionIntervalForContext: aContext andRewrite: aRewrite [
+	| node |
+	aContext ifNil: [ ^ 1 to: 0 ].
+	node := aContext method sourceNodeForPC: aContext pc.
+	^ (aRewrite isKindOf: SmaCCRewriteMethodDefinition)
+		ifTrue: [ node sourceInterval ]
+		ifFalse: [ self intervalFromMethodNode: node inSource: (self sourceForContext: aContext andRewrite: aRewrite) ]
 ]
 
 { #category : #accessing }
