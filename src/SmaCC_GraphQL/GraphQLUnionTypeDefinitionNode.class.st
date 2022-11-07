@@ -1,14 +1,11 @@
 Class {
 	#name : #GraphQLUnionTypeDefinitionNode,
-	#superclass : #GraphQLProgramNode,
+	#superclass : #GraphQLTypeDefinitionNode,
 	#instVars : [
 		'unionToken',
-		'name',
 		'equalToken',
 		'types',
-		'barTokens',
-		'directives',
-		'description'
+		'barTokens'
 	],
 	#category : #'SmaCC_GraphQL'
 }
@@ -39,28 +36,6 @@ GraphQLUnionTypeDefinitionNode >> compositeTokenVariables [
 ]
 
 { #category : #generated }
-GraphQLUnionTypeDefinitionNode >> description [
-	^ description
-]
-
-{ #category : #generated }
-GraphQLUnionTypeDefinitionNode >> description: aSmaCCToken [
-	description := aSmaCCToken
-]
-
-{ #category : #generated }
-GraphQLUnionTypeDefinitionNode >> directives [
-	^ directives
-]
-
-{ #category : #generated }
-GraphQLUnionTypeDefinitionNode >> directives: anOrderedCollection [
-	self setParents: self directives to: nil.
-	directives := anOrderedCollection.
-	self setParents: self directives to: self
-]
-
-{ #category : #generated }
 GraphQLUnionTypeDefinitionNode >> equalToken [
 	^ equalToken
 ]
@@ -75,22 +50,11 @@ GraphQLUnionTypeDefinitionNode >> initialize [
 	super initialize.
 	types := OrderedCollection new: 2.
 	barTokens := OrderedCollection new: 2.
-	directives := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-GraphQLUnionTypeDefinitionNode >> name [
-	^ name
-]
-
-{ #category : #generated }
-GraphQLUnionTypeDefinitionNode >> name: aSmaCCToken [
-	name := aSmaCCToken
 ]
 
 { #category : #generated }
 GraphQLUnionTypeDefinitionNode >> tokenVariables [
-	^ #(#unionToken #name #equalToken #description)
+	^ #(#unionToken #equalToken #name #description)
 ]
 
 { #category : #generated }

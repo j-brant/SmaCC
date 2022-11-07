@@ -1,14 +1,11 @@
 Class {
 	#name : #GraphQLEnumTypeExtensionNode,
-	#superclass : #GraphQLProgramNode,
+	#superclass : #GraphQLTypeExtensionNode,
 	#instVars : [
-		'extendToken',
 		'enumToken',
-		'name',
 		'leftBrace',
 		'definitions',
-		'rightBrace',
-		'directives'
+		'rightBrace'
 	],
 	#category : #'SmaCC_GraphQL'
 }
@@ -36,18 +33,6 @@ GraphQLEnumTypeExtensionNode >> definitions: anOrderedCollection [
 ]
 
 { #category : #generated }
-GraphQLEnumTypeExtensionNode >> directives [
-	^ directives
-]
-
-{ #category : #generated }
-GraphQLEnumTypeExtensionNode >> directives: anOrderedCollection [
-	self setParents: self directives to: nil.
-	directives := anOrderedCollection.
-	self setParents: self directives to: self
-]
-
-{ #category : #generated }
 GraphQLEnumTypeExtensionNode >> enumToken [
 	^ enumToken
 ]
@@ -57,21 +42,10 @@ GraphQLEnumTypeExtensionNode >> enumToken: aSmaCCToken [
 	enumToken := aSmaCCToken
 ]
 
-{ #category : #generated }
-GraphQLEnumTypeExtensionNode >> extendToken [
-	^ extendToken
-]
-
-{ #category : #generated }
-GraphQLEnumTypeExtensionNode >> extendToken: aSmaCCToken [
-	extendToken := aSmaCCToken
-]
-
 { #category : #'generated-initialize-release' }
 GraphQLEnumTypeExtensionNode >> initialize [
 	super initialize.
 	definitions := OrderedCollection new: 2.
-	directives := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -82,16 +56,6 @@ GraphQLEnumTypeExtensionNode >> leftBrace [
 { #category : #generated }
 GraphQLEnumTypeExtensionNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
-]
-
-{ #category : #generated }
-GraphQLEnumTypeExtensionNode >> name [
-	^ name
-]
-
-{ #category : #generated }
-GraphQLEnumTypeExtensionNode >> name: aSmaCCToken [
-	name := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -106,5 +70,5 @@ GraphQLEnumTypeExtensionNode >> rightBrace: aSmaCCToken [
 
 { #category : #generated }
 GraphQLEnumTypeExtensionNode >> tokenVariables [
-	^ #(#extendToken #enumToken #name #leftBrace #rightBrace)
+	^ #(#enumToken #leftBrace #rightBrace #extendToken #name)
 ]

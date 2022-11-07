@@ -1,14 +1,11 @@
 Class {
 	#name : #GraphQLInterfaceTypeExtensionNode,
-	#superclass : #GraphQLProgramNode,
+	#superclass : #GraphQLTypeExtensionNode,
 	#instVars : [
-		'extendToken',
 		'interfaceToken',
-		'name',
 		'leftBrace',
 		'definitions',
 		'rightBrace',
-		'directives',
 		'implementsToken',
 		'types',
 		'ampTokens'
@@ -33,7 +30,7 @@ GraphQLInterfaceTypeExtensionNode >> ampTokens: anOrderedCollection [
 
 { #category : #generated }
 GraphQLInterfaceTypeExtensionNode >> compositeNodeVariables [
-	^ #(#definitions #directives #types)
+	^ #(#definitions #types #directives)
 ]
 
 { #category : #generated }
@@ -54,28 +51,6 @@ GraphQLInterfaceTypeExtensionNode >> definitions: anOrderedCollection [
 ]
 
 { #category : #generated }
-GraphQLInterfaceTypeExtensionNode >> directives [
-	^ directives
-]
-
-{ #category : #generated }
-GraphQLInterfaceTypeExtensionNode >> directives: anOrderedCollection [
-	self setParents: self directives to: nil.
-	directives := anOrderedCollection.
-	self setParents: self directives to: self
-]
-
-{ #category : #generated }
-GraphQLInterfaceTypeExtensionNode >> extendToken [
-	^ extendToken
-]
-
-{ #category : #generated }
-GraphQLInterfaceTypeExtensionNode >> extendToken: aSmaCCToken [
-	extendToken := aSmaCCToken
-]
-
-{ #category : #generated }
 GraphQLInterfaceTypeExtensionNode >> implementsToken [
 	^ implementsToken
 ]
@@ -89,7 +64,6 @@ GraphQLInterfaceTypeExtensionNode >> implementsToken: aSmaCCToken [
 GraphQLInterfaceTypeExtensionNode >> initialize [
 	super initialize.
 	definitions := OrderedCollection new: 2.
-	directives := OrderedCollection new: 2.
 	types := OrderedCollection new: 2.
 	ampTokens := OrderedCollection new: 2.
 ]
@@ -115,16 +89,6 @@ GraphQLInterfaceTypeExtensionNode >> leftBrace: aSmaCCToken [
 ]
 
 { #category : #generated }
-GraphQLInterfaceTypeExtensionNode >> name [
-	^ name
-]
-
-{ #category : #generated }
-GraphQLInterfaceTypeExtensionNode >> name: aSmaCCToken [
-	name := aSmaCCToken
-]
-
-{ #category : #generated }
 GraphQLInterfaceTypeExtensionNode >> rightBrace [
 	^ rightBrace
 ]
@@ -136,7 +100,7 @@ GraphQLInterfaceTypeExtensionNode >> rightBrace: aSmaCCToken [
 
 { #category : #generated }
 GraphQLInterfaceTypeExtensionNode >> tokenVariables [
-	^ #(#extendToken #interfaceToken #name #leftBrace #rightBrace #implementsToken)
+	^ #(#interfaceToken #leftBrace #rightBrace #implementsToken #extendToken #name)
 ]
 
 { #category : #generated }

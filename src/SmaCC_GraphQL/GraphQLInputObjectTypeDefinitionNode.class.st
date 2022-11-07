@@ -1,14 +1,11 @@
 Class {
 	#name : #GraphQLInputObjectTypeDefinitionNode,
-	#superclass : #GraphQLProgramNode,
+	#superclass : #GraphQLTypeDefinitionNode,
 	#instVars : [
 		'inputToken',
-		'name',
 		'leftBrace',
 		'definitions',
-		'rightBrace',
-		'directives',
-		'description'
+		'rightBrace'
 	],
 	#category : #'SmaCC_GraphQL'
 }
@@ -35,33 +32,10 @@ GraphQLInputObjectTypeDefinitionNode >> definitions: anOrderedCollection [
 	self setParents: self definitions to: self
 ]
 
-{ #category : #generated }
-GraphQLInputObjectTypeDefinitionNode >> description [
-	^ description
-]
-
-{ #category : #generated }
-GraphQLInputObjectTypeDefinitionNode >> description: aSmaCCToken [
-	description := aSmaCCToken
-]
-
-{ #category : #generated }
-GraphQLInputObjectTypeDefinitionNode >> directives [
-	^ directives
-]
-
-{ #category : #generated }
-GraphQLInputObjectTypeDefinitionNode >> directives: anOrderedCollection [
-	self setParents: self directives to: nil.
-	directives := anOrderedCollection.
-	self setParents: self directives to: self
-]
-
 { #category : #'generated-initialize-release' }
 GraphQLInputObjectTypeDefinitionNode >> initialize [
 	super initialize.
 	definitions := OrderedCollection new: 2.
-	directives := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -85,16 +59,6 @@ GraphQLInputObjectTypeDefinitionNode >> leftBrace: aSmaCCToken [
 ]
 
 { #category : #generated }
-GraphQLInputObjectTypeDefinitionNode >> name [
-	^ name
-]
-
-{ #category : #generated }
-GraphQLInputObjectTypeDefinitionNode >> name: aSmaCCToken [
-	name := aSmaCCToken
-]
-
-{ #category : #generated }
 GraphQLInputObjectTypeDefinitionNode >> rightBrace [
 	^ rightBrace
 ]
@@ -106,5 +70,5 @@ GraphQLInputObjectTypeDefinitionNode >> rightBrace: aSmaCCToken [
 
 { #category : #generated }
 GraphQLInputObjectTypeDefinitionNode >> tokenVariables [
-	^ #(#inputToken #name #leftBrace #rightBrace #description)
+	^ #(#inputToken #leftBrace #rightBrace #name #description)
 ]

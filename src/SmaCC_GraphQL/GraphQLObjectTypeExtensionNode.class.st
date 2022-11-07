@@ -1,14 +1,11 @@
 Class {
 	#name : #GraphQLObjectTypeExtensionNode,
-	#superclass : #GraphQLProgramNode,
+	#superclass : #GraphQLTypeExtensionNode,
 	#instVars : [
-		'extendToken',
 		'typeToken',
-		'name',
 		'leftBrace',
 		'definitions',
 		'rightBrace',
-		'directives',
 		'implementsToken',
 		'types',
 		'ampTokens'
@@ -33,7 +30,7 @@ GraphQLObjectTypeExtensionNode >> ampTokens: anOrderedCollection [
 
 { #category : #generated }
 GraphQLObjectTypeExtensionNode >> compositeNodeVariables [
-	^ #(#definitions #directives #types)
+	^ #(#definitions #types #directives)
 ]
 
 { #category : #generated }
@@ -54,28 +51,6 @@ GraphQLObjectTypeExtensionNode >> definitions: anOrderedCollection [
 ]
 
 { #category : #generated }
-GraphQLObjectTypeExtensionNode >> directives [
-	^ directives
-]
-
-{ #category : #generated }
-GraphQLObjectTypeExtensionNode >> directives: anOrderedCollection [
-	self setParents: self directives to: nil.
-	directives := anOrderedCollection.
-	self setParents: self directives to: self
-]
-
-{ #category : #generated }
-GraphQLObjectTypeExtensionNode >> extendToken [
-	^ extendToken
-]
-
-{ #category : #generated }
-GraphQLObjectTypeExtensionNode >> extendToken: aSmaCCToken [
-	extendToken := aSmaCCToken
-]
-
-{ #category : #generated }
 GraphQLObjectTypeExtensionNode >> implementsToken [
 	^ implementsToken
 ]
@@ -89,7 +64,6 @@ GraphQLObjectTypeExtensionNode >> implementsToken: aSmaCCToken [
 GraphQLObjectTypeExtensionNode >> initialize [
 	super initialize.
 	definitions := OrderedCollection new: 2.
-	directives := OrderedCollection new: 2.
 	types := OrderedCollection new: 2.
 	ampTokens := OrderedCollection new: 2.
 ]
@@ -105,16 +79,6 @@ GraphQLObjectTypeExtensionNode >> leftBrace: aSmaCCToken [
 ]
 
 { #category : #generated }
-GraphQLObjectTypeExtensionNode >> name [
-	^ name
-]
-
-{ #category : #generated }
-GraphQLObjectTypeExtensionNode >> name: aSmaCCToken [
-	name := aSmaCCToken
-]
-
-{ #category : #generated }
 GraphQLObjectTypeExtensionNode >> rightBrace [
 	^ rightBrace
 ]
@@ -126,7 +90,7 @@ GraphQLObjectTypeExtensionNode >> rightBrace: aSmaCCToken [
 
 { #category : #generated }
 GraphQLObjectTypeExtensionNode >> tokenVariables [
-	^ #(#extendToken #typeToken #name #leftBrace #rightBrace #implementsToken)
+	^ #(#typeToken #leftBrace #rightBrace #implementsToken #extendToken #name)
 ]
 
 { #category : #generated }

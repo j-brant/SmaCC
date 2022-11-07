@@ -27,12 +27,12 @@ TGraphQLProgramNodeVisitor >> visitDocument: aDocument [
 
 { #category : #generated }
 TGraphQLProgramNodeVisitor >> visitEnumTypeDefinition: anEnumTypeDefinition [
-	^ self visitProgram: anEnumTypeDefinition
+	^ self visitTypeDefinition: anEnumTypeDefinition
 ]
 
 { #category : #generated }
 TGraphQLProgramNodeVisitor >> visitEnumTypeExtension: anEnumTypeExtension [
-	^ self visitProgram: anEnumTypeExtension
+	^ self visitTypeExtension: anEnumTypeExtension
 ]
 
 { #category : #generated }
@@ -72,12 +72,12 @@ TGraphQLProgramNodeVisitor >> visitInlineFragment: anInlineFragment [
 
 { #category : #generated }
 TGraphQLProgramNodeVisitor >> visitInputObjectTypeDefinition: anInputObjectTypeDefinition [
-	^ self visitProgram: anInputObjectTypeDefinition
+	^ self visitTypeDefinition: anInputObjectTypeDefinition
 ]
 
 { #category : #generated }
 TGraphQLProgramNodeVisitor >> visitInputObjectTypeExtension: anInputObjectTypeExtension [
-	^ self visitProgram: anInputObjectTypeExtension
+	^ self visitTypeExtension: anInputObjectTypeExtension
 ]
 
 { #category : #generated }
@@ -87,12 +87,12 @@ TGraphQLProgramNodeVisitor >> visitInputValueDefinition: anInputValueDefinition 
 
 { #category : #generated }
 TGraphQLProgramNodeVisitor >> visitInterfaceTypeDefinition: anInterfaceTypeDefinition [
-	^ self visitProgram: anInterfaceTypeDefinition
+	^ self visitTypeDefinition: anInterfaceTypeDefinition
 ]
 
 { #category : #generated }
 TGraphQLProgramNodeVisitor >> visitInterfaceTypeExtension: anInterfaceTypeExtension [
-	^ self visitProgram: anInterfaceTypeExtension
+	^ self visitTypeExtension: anInterfaceTypeExtension
 ]
 
 { #category : #generated }
@@ -122,12 +122,12 @@ TGraphQLProgramNodeVisitor >> visitObjectField: anObjectField [
 
 { #category : #generated }
 TGraphQLProgramNodeVisitor >> visitObjectTypeDefinition: anObjectTypeDefinition [
-	^ self visitProgram: anObjectTypeDefinition
+	^ self visitTypeDefinition: anObjectTypeDefinition
 ]
 
 { #category : #generated }
 TGraphQLProgramNodeVisitor >> visitObjectTypeExtension: anObjectTypeExtension [
-	^ self visitProgram: anObjectTypeExtension
+	^ self visitTypeExtension: anObjectTypeExtension
 ]
 
 { #category : #generated }
@@ -147,12 +147,12 @@ TGraphQLProgramNodeVisitor >> visitProgram: aProgram [
 
 { #category : #generated }
 TGraphQLProgramNodeVisitor >> visitScalarTypeDefinition: aScalarTypeDefinition [
-	^ self visitProgram: aScalarTypeDefinition
+	^ self visitTypeDefinition: aScalarTypeDefinition
 ]
 
 { #category : #generated }
 TGraphQLProgramNodeVisitor >> visitScalarTypeExtension: aScalarTypeExtension [
-	^ self visitProgram: aScalarTypeExtension
+	^ self visitTypeExtension: aScalarTypeExtension
 ]
 
 { #category : #generated }
@@ -171,13 +171,23 @@ TGraphQLProgramNodeVisitor >> visitType: aType [
 ]
 
 { #category : #generated }
+TGraphQLProgramNodeVisitor >> visitTypeDefinition: aTypeDefinition [
+	^ self visitProgram: aTypeDefinition
+]
+
+{ #category : #generated }
+TGraphQLProgramNodeVisitor >> visitTypeExtension: aTypeExtension [
+	^ self visitProgram: aTypeExtension
+]
+
+{ #category : #generated }
 TGraphQLProgramNodeVisitor >> visitUnionTypeDefinition: anUnionTypeDefinition [
-	^ self visitProgram: anUnionTypeDefinition
+	^ self visitTypeDefinition: anUnionTypeDefinition
 ]
 
 { #category : #generated }
 TGraphQLProgramNodeVisitor >> visitUnionTypeExtension: anUnionTypeExtension [
-	^ self visitProgram: anUnionTypeExtension
+	^ self visitTypeExtension: anUnionTypeExtension
 ]
 
 { #category : #generated }
