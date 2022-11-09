@@ -4,36 +4,36 @@ SmaCCParserError is the exception raised when a parsing error occurs. The descri
 
 "
 Class {
-	#name : 'SmaCCParserError',
-	#superclass : 'Error',
+	#name : #SmaCCParserError,
+	#superclass : #Error,
 	#instVars : [
 		'isResumable'
 	],
 	#category : 'SmaCC_Runtime'
 }
 
-{ #category : 'initialize-release' }
+{ #category : #'initialize-release' }
 SmaCCParserError >> initialize [
 	super initialize.
 	isResumable := false
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCParserError >> isResumable [
 	^ isResumable
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParserError >> isResumable: aBoolean [
 	isResumable := aBoolean
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParserError >> parser [
 	^ self tag
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParserError >> parser: aSmaCCParser [
 	self tag: aSmaCCParser
 ]

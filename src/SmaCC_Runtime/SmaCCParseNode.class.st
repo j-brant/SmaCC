@@ -12,16 +12,16 @@ Instance Variables:
 
 "
 Class {
-	#name : 'SmaCCParseNode',
-	#superclass : 'Object',
+	#name : #SmaCCParseNode,
+	#superclass : #Object,
 	#instVars : [
 		'parent',
 		'attributes'
 	],
-	#category : 'SmaCC_Runtime'
+	#category : #'SmaCC_Runtime'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode class >> collectionVariableIn: aSmaCCParseNode collectionGetter: aSymbol variableGetter: varSymbol [
 	(aSmaCCParseNode respondsTo: aSymbol)
 		ifTrue: [ ^ aSmaCCParseNode perform: aSymbol ].
@@ -30,7 +30,7 @@ SmaCCParseNode class >> collectionVariableIn: aSmaCCParseNode collectionGetter: 
 	^ #()
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode class >> parserClass [
 	"Return the parser class that likely created this node"
 
@@ -50,14 +50,14 @@ SmaCCParseNode class >> parserClass [
 	^ nil
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode class >> variableIn: aSmaCCParseNode getter: aSymbol [
 	(aSmaCCParseNode respondsTo: aSymbol)
 		ifTrue: [ ^ aSmaCCParseNode perform: aSymbol ].
 	^ nil
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode class >> visitorTrait [
 	^ self == SmaCCParseNode
 		ifTrue: [ TSmaCCParseNodeVisitor ]
@@ -66,7 +66,7 @@ SmaCCParseNode class >> visitorTrait [
 				ifAbsent: [ superclass visitorTrait ] ]
 ]
 
-{ #category : 'comparing' }
+{ #category : #comparing }
 SmaCCParseNode >> = anObject [
 	^ self == anObject
 		or:
@@ -79,12 +79,12 @@ SmaCCParseNode >> = anObject [
 								allSatisfy: [ :each | (self perform: each) = (anObject perform: each) ] ] ] ]
 ]
 
-{ #category : 'visitor-double dispatching' }
+{ #category : #'visitor-double dispatching' }
 SmaCCParseNode >> acceptVisitor: aSmaCCParseNodeVisitor [
 	^ aSmaCCParseNodeVisitor visitSmaCCParseNode: self
 ]
 
-{ #category : 'collection handling' }
+{ #category : #'collection handling' }
 SmaCCParseNode >> addFirstNode: aSmaCCParseNode to: aCollection [
 	aSmaCCParseNode isNil
 		ifTrue: [ ^ self ].
@@ -92,7 +92,7 @@ SmaCCParseNode >> addFirstNode: aSmaCCParseNode to: aCollection [
 	aSmaCCParseNode parent: self
 ]
 
-{ #category : 'collection handling' }
+{ #category : #'collection handling' }
 SmaCCParseNode >> addFirstNodes: aSmaCCParseNodeCollection to: aCollection [
 	aSmaCCParseNodeCollection isNil
 		ifTrue: [ ^ self ].
@@ -100,7 +100,7 @@ SmaCCParseNode >> addFirstNodes: aSmaCCParseNodeCollection to: aCollection [
 		reverseDo: [ :each | self addFirstNode: each to: aCollection ]
 ]
 
-{ #category : 'collection handling' }
+{ #category : #'collection handling' }
 SmaCCParseNode >> addFirstObject: anObject to: aCollection [
 	anObject isNil
 		ifTrue: [ ^ self ].
@@ -109,7 +109,7 @@ SmaCCParseNode >> addFirstObject: anObject to: aCollection [
 		ifTrue: [ anObject parent: self ]
 ]
 
-{ #category : 'collection handling' }
+{ #category : #'collection handling' }
 SmaCCParseNode >> addFirstObjects: addCollection to: aCollection [
 	addCollection isNil
 		ifTrue: [ ^ self ].
@@ -117,21 +117,21 @@ SmaCCParseNode >> addFirstObjects: addCollection to: aCollection [
 		reverseDo: [ :each | self addFirstObject: each to: aCollection ]
 ]
 
-{ #category : 'collection handling' }
+{ #category : #'collection handling' }
 SmaCCParseNode >> addFirstToken: aSmaCCToken to: aCollection [
 	aSmaCCToken isNil
 		ifTrue: [ ^ self ].
 	aCollection addFirst: aSmaCCToken
 ]
 
-{ #category : 'collection handling' }
+{ #category : #'collection handling' }
 SmaCCParseNode >> addFirstTokens: aSmaCCTokenCollection to: aCollection [
 	aSmaCCTokenCollection isNil
 		ifTrue: [ ^ self ].
 	aCollection addAllFirst: aSmaCCTokenCollection
 ]
 
-{ #category : 'collection handling' }
+{ #category : #'collection handling' }
 SmaCCParseNode >> addNode: aSmaCCParseNode to: aCollection [
 	aSmaCCParseNode isNil
 		ifTrue: [ ^ self ].
@@ -139,7 +139,7 @@ SmaCCParseNode >> addNode: aSmaCCParseNode to: aCollection [
 	aSmaCCParseNode parent: self
 ]
 
-{ #category : 'collection handling' }
+{ #category : #'collection handling' }
 SmaCCParseNode >> addNodes: aSmaCCParseNodeCollection to: aCollection [
 	aSmaCCParseNodeCollection isNil
 		ifTrue: [ ^ self ].
@@ -147,7 +147,7 @@ SmaCCParseNode >> addNodes: aSmaCCParseNodeCollection to: aCollection [
 		do: [ :each | self addNode: each to: aCollection ]
 ]
 
-{ #category : 'collection handling' }
+{ #category : #'collection handling' }
 SmaCCParseNode >> addObject: anObject to: aCollection [
 	anObject isNil
 		ifTrue: [ ^ self ].
@@ -156,44 +156,44 @@ SmaCCParseNode >> addObject: anObject to: aCollection [
 		ifTrue: [ anObject parent: self ]
 ]
 
-{ #category : 'collection handling' }
+{ #category : #'collection handling' }
 SmaCCParseNode >> addObjects: addCollection to: aCollection [
 	addCollection isNil
 		ifTrue: [ ^ self ].
 	addCollection do: [ :each | self addObject: each to: aCollection ]
 ]
 
-{ #category : 'collection handling' }
+{ #category : #'collection handling' }
 SmaCCParseNode >> addToken: aSmaCCToken to: aCollection [
 	aSmaCCToken isNil
 		ifTrue: [ ^ self ].
 	aCollection add: aSmaCCToken
 ]
 
-{ #category : 'collection handling' }
+{ #category : #'collection handling' }
 SmaCCParseNode >> addTokens: aSmaCCTokenCollection to: aCollection [
 	aSmaCCTokenCollection isNil
 		ifTrue: [ ^ self ].
 	aCollection addAll: aSmaCCTokenCollection
 ]
 
-{ #category : 'iterating' }
+{ #category : #iterating }
 SmaCCParseNode >> allGettersDo: aBlock [
 	self allVariableSelectors
 		do: [ :sel | (self perform: sel) do: aBlock ]
 ]
 
-{ #category : 'iterating' }
+{ #category : #iterating }
 SmaCCParseNode >> allNodesDo: nodeBlock [
 	self allNodesDo: nodeBlock andTokensDo: nil
 ]
 
-{ #category : 'iterating' }
+{ #category : #iterating }
 SmaCCParseNode >> allNodesDo: nodeBlock andTokensDo: tokenBlock [
 	self allNodesDo: nodeBlock andTokensDo: tokenBlock includeErrors: false
 ]
 
-{ #category : 'iterating' }
+{ #category : #iterating }
 SmaCCParseNode >> allNodesDo: nodeBlock andTokensDo: tokenBlock includeErrors: aBoolean [
 	self
 		nodesDo: [ :each | 
@@ -203,7 +203,7 @@ SmaCCParseNode >> allNodesDo: nodeBlock andTokensDo: tokenBlock includeErrors: a
 		includeErrors: aBoolean
 ]
 
-{ #category : 'iterating' }
+{ #category : #iterating }
 SmaCCParseNode >> allNodesOfType: aClass do: nodeBlock [
 	self
 		allNodesDo: [ :each | 
@@ -211,7 +211,7 @@ SmaCCParseNode >> allNodesOfType: aClass do: nodeBlock [
 				ifTrue: [ nodeBlock value: each ] ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode >> allParents [
 	| parents |
 	parent isNil
@@ -221,7 +221,7 @@ SmaCCParseNode >> allParents [
 	^ parents
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode >> allTokens [
 	| tokens |
 	tokens := OrderedCollection new.
@@ -230,7 +230,7 @@ SmaCCParseNode >> allTokens [
 		asSortedCollection: [ :a :b | a startPosition < b startPosition ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode >> allTokensInto: aCollection [
 	self tokenVariables
 		do:
@@ -243,7 +243,7 @@ SmaCCParseNode >> allTokensInto: aCollection [
 	self nodesDo: [ :each | each allTokensInto: aCollection ]
 ]
 
-{ #category : 'tokens' }
+{ #category : #tokens }
 SmaCCParseNode >> allTokensMatching: aSmaCCToken [
 	| tokens |
 	tokens := OrderedCollection new.
@@ -256,39 +256,39 @@ SmaCCParseNode >> allTokensMatching: aSmaCCToken [
 	^ tokens
 ]
 
-{ #category : 'variables' }
+{ #category : #variables }
 SmaCCParseNode >> allVariableSelectors [
 	^ #(#tokenVariables #compositeTokenVariables #nodeVariables #compositeNodeVariables #otherVariables #ignoredTokenVariables #ignoredCompositeTokenVariables #ignoredNodeVariables #ignoredCompositeNodeVariables #ignoredOtherVariables)
 ]
 
-{ #category : 'accessing-attributes' }
+{ #category : #'accessing-attributes' }
 SmaCCParseNode >> attributeNamed: aSymbol [
 	attributes isNil
 		ifTrue: [ ^ nil ].
 	^ attributes at: aSymbol ifAbsent: [ nil ]
 ]
 
-{ #category : 'accessing-attributes' }
+{ #category : #'accessing-attributes' }
 SmaCCParseNode >> attributeNamed: aSymbol ifAbsent: aBlock [
 	^ self attributes at: aSymbol ifAbsent: aBlock
 ]
 
-{ #category : 'accessing-attributes' }
+{ #category : #'accessing-attributes' }
 SmaCCParseNode >> attributeNamed: aSymbol ifAbsentPut: aBlock [
 	^ self attributes at: aSymbol ifAbsentPut: aBlock
 ]
 
-{ #category : 'accessing-attributes' }
+{ #category : #'accessing-attributes' }
 SmaCCParseNode >> attributeNamed: aSymbol put: aValue [
 	^ self attributes at: aSymbol put: aValue
 ]
 
-{ #category : 'accessing-attributes' }
+{ #category : #'accessing-attributes' }
 SmaCCParseNode >> attributes [
 	^ attributes ifNil: [ attributes := IdentityDictionary new ]
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 SmaCCParseNode >> calculateStartPosition [
 	"Hackish way to get the minimum for all nodes. You might want to override to get a better implementation."
 
@@ -299,7 +299,7 @@ SmaCCParseNode >> calculateStartPosition [
 	^ min
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 SmaCCParseNode >> calculateStopPosition [
 	"Hackish way to get the maximum for all nodes. You might want to override to get a better implementation."
 
@@ -310,7 +310,7 @@ SmaCCParseNode >> calculateStopPosition [
 	^ max
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode >> children [
 	| result |
 	result := OrderedCollection new.
@@ -321,17 +321,17 @@ SmaCCParseNode >> children [
 	^ result
 ]
 
-{ #category : 'accessing-comments' }
+{ #category : #'accessing-comments' }
 SmaCCParseNode >> comments [
 	^ self attributeNamed: #comments
 ]
 
-{ #category : 'accessing-comments' }
+{ #category : #'accessing-comments' }
 SmaCCParseNode >> comments: anObject [
 	self attributeNamed: #comments put: anObject
 ]
 
-{ #category : 'accessing-comments' }
+{ #category : #'accessing-comments' }
 SmaCCParseNode >> commentsAfter [
 	"Return the comments after this node and before the next node."
 
@@ -348,7 +348,7 @@ SmaCCParseNode >> commentsAfter [
 					comments select: [ :each | each first > startIndex and: [ each last < stopIndex ] ] ] ]
 ]
 
-{ #category : 'accessing-comments' }
+{ #category : #'accessing-comments' }
 SmaCCParseNode >> commentsBefore [
 	"Return the comments before this node and after the previous node."
 
@@ -365,7 +365,7 @@ SmaCCParseNode >> commentsBefore [
 					comments select: [ :each | each first > startIndex and: [ each last < stopIndex ] ] ] ]
 ]
 
-{ #category : 'accessing-comments' }
+{ #category : #'accessing-comments' }
 SmaCCParseNode >> commentsInside [
 	"Return the comments inside the start/stop position for this node."
 
@@ -382,14 +382,14 @@ SmaCCParseNode >> commentsInside [
 					comments select: [ :each | each first > startIndex and: [ each last < stopIndex ] ] ] ]
 ]
 
-{ #category : 'source' }
+{ #category : #source }
 SmaCCParseNode >> completeSource [
 	^ parent isNil
 		ifTrue: [ self attributeNamed: #source ]
 		ifFalse: [ parent completeSource ]
 ]
 
-{ #category : 'source' }
+{ #category : #source }
 SmaCCParseNode >> completeSource: aString [
 	^ parent isNil
 		ifTrue:
@@ -399,22 +399,22 @@ SmaCCParseNode >> completeSource: aString [
 		ifFalse: [ parent completeSource: aString ]
 ]
 
-{ #category : 'variables' }
+{ #category : #variables }
 SmaCCParseNode >> compositeNodeVariables [
 	^ #()
 ]
 
-{ #category : 'variables' }
+{ #category : #variables }
 SmaCCParseNode >> compositeTokenVariables [
 	^ #()
 ]
 
-{ #category : 'variables' }
+{ #category : #variables }
 SmaCCParseNode >> compositeVariableSelectors [
 	^ #(#compositeTokenVariables #compositeNodeVariables #ignoredCompositeTokenVariables #ignoredCompositeNodeVariables)
 ]
 
-{ #category : 'variables' }
+{ #category : #variables }
 SmaCCParseNode >> compositeVariables [
 	^ self compositeVariableSelectors
 		inject: Set new
@@ -425,12 +425,12 @@ SmaCCParseNode >> compositeVariables [
 				yourself ]
 ]
 
-{ #category : 'matching' }
+{ #category : #matching }
 SmaCCParseNode >> convertToSetter: selector [
 	^ (selector , ':') asSymbol
 ]
 
-{ #category : 'matching' }
+{ #category : #matching }
 SmaCCParseNode >> copyInContext: aDictionary [
 	| copy |
 	copy := self copy.
@@ -465,31 +465,31 @@ SmaCCParseNode >> copyInContext: aDictionary [
 	^ copy
 ]
 
-{ #category : 'source' }
+{ #category : #source }
 SmaCCParseNode >> deleteSource [
 	self completeSource
 		deleteFrom: self startPosition
 		to: self stopPosition
 ]
 
-{ #category : 'source' }
+{ #category : #source }
 SmaCCParseNode >> deleteToken: aSmaCCToken [
 	self completeSource
 		deleteFrom: aSmaCCToken startPosition
 		to: aSmaCCToken stopPosition
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode >> filename [
 	^ self attributeNamed: #filename
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode >> filename: aString [
 	self attributeNamed: #filename put: aString
 ]
 
-{ #category : 'initialize-release' }
+{ #category : #'initialize-release' }
 SmaCCParseNode >> fixParentPointers [
 	self
 		nodesDo: [ :each | 
@@ -497,19 +497,19 @@ SmaCCParseNode >> fixParentPointers [
 			each fixParentPointers ]
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCParseNode >> hasDescendant: aSmaCCNode [
 	^ aSmaCCNode isDescendantFrom: self
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCParseNode >> hasParentOfType: aSmaCCParseNodeClass [
 	(parent isKindOf: aSmaCCParseNodeClass)
 		ifTrue: [ ^ true ].
 	^ parent notNil and: [ parent hasParentOfType: aSmaCCParseNodeClass ]
 ]
 
-{ #category : 'comparing' }
+{ #category : #comparing }
 SmaCCParseNode >> hash [
 	^ self variableSelectors
 		inject: self class hash
@@ -525,49 +525,49 @@ SmaCCParseNode >> hash [
 						bitXor: (newHash bitShift: -29) ] ]
 ]
 
-{ #category : 'variables' }
+{ #category : #variables }
 SmaCCParseNode >> ignoredCompositeNodeVariables [
 	^ #()
 ]
 
-{ #category : 'variables' }
+{ #category : #variables }
 SmaCCParseNode >> ignoredCompositeTokenVariables [
 	^ #()
 ]
 
-{ #category : 'variables' }
+{ #category : #variables }
 SmaCCParseNode >> ignoredNodeVariables [
 	^ #()
 ]
 
-{ #category : 'variables' }
+{ #category : #variables }
 SmaCCParseNode >> ignoredOtherVariables [
 	^ #()
 ]
 
-{ #category : 'variables' }
+{ #category : #variables }
 SmaCCParseNode >> ignoredTokenVariables [
 	^ #()
 ]
 
-{ #category : 'source' }
+{ #category : #source }
 SmaCCParseNode >> insertSourceAfter: aString [
 	self completeSource insert: aString at: self stopPosition + 1
 ]
 
-{ #category : 'source' }
+{ #category : #source }
 SmaCCParseNode >> insertSourceBefore: aString [
 	self completeSource insert: aString at: self startPosition
 ]
 
-{ #category : 'source' }
+{ #category : #source }
 SmaCCParseNode >> insertSourceBefore: beginString andAfter: endString [
 	self
 		insertSourceBefore: beginString;
 		insertSourceAfter: endString
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCParseNode >> isDescendantFrom: aSmaCCNode [
 	| current |
 	current := self.
@@ -576,17 +576,17 @@ SmaCCParseNode >> isDescendantFrom: aSmaCCNode [
 	^ current notNil
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCParseNode >> isErrorNode [
 	^ false
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCParseNode >> isListMatch [
 	^ false
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode >> lookupNode: aBlock [
 	| current |
 	current := self.
@@ -595,7 +595,7 @@ SmaCCParseNode >> lookupNode: aBlock [
 	^ current
 ]
 
-{ #category : 'matching' }
+{ #category : #matching }
 SmaCCParseNode >> match: aSmaCCParseNode inContext: aDictionary [
 	self class = aSmaCCParseNode class
 		ifFalse: [ ^ false ].
@@ -620,7 +620,7 @@ SmaCCParseNode >> match: aSmaCCParseNode inContext: aDictionary [
 		inContext: aDictionary
 ]
 
-{ #category : 'matching' }
+{ #category : #matching }
 SmaCCParseNode >> matchCollection: matchNodes index: matchIndex to: programNodes index: programIndex inContext: aDictionary [
 	| node currentIndex currentDictionary nodes |
 	matchNodes size < matchIndex
@@ -659,7 +659,7 @@ SmaCCParseNode >> matchCollection: matchNodes index: matchIndex to: programNodes
 		inContext: aDictionary
 ]
 
-{ #category : 'matching' }
+{ #category : #matching }
 SmaCCParseNode >> matchCollection: receiverCollection to: argumentCollection inContext: aDictionary [
 	^ self
 		matchCollection: receiverCollection
@@ -669,7 +669,7 @@ SmaCCParseNode >> matchCollection: receiverCollection to: argumentCollection inC
 		inContext: aDictionary
 ]
 
-{ #category : 'matching' }
+{ #category : #matching }
 SmaCCParseNode >> matchCollectionVariables: aCollection to: aSmaCCParseNode inContext: aDictionary [
 	^ aCollection
 		allSatisfy:
@@ -680,7 +680,7 @@ SmaCCParseNode >> matchCollectionVariables: aCollection to: aSmaCCParseNode inCo
 				inContext: aDictionary ]
 ]
 
-{ #category : 'matching' }
+{ #category : #matching }
 SmaCCParseNode >> matchVariables: aCollection to: aSmaCCParseNode inContext: aDictionary [
 	^ aCollection
 		allSatisfy:
@@ -693,7 +693,7 @@ SmaCCParseNode >> matchVariables: aCollection to: aSmaCCParseNode inContext: aDi
 				ifFalse: [ myValue match: otherValue inContext: aDictionary ] ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode >> nodeAfter [
 	| node stop |
 	stop := self stopPosition.
@@ -706,7 +706,22 @@ SmaCCParseNode >> nodeAfter [
 	^ node
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
+SmaCCParseNode >> nodeAt: anInteger [
+	"Return inner most node whose sourceInterval overlaps anInteger or self if no nodes do."
+
+	| node |
+	self
+		withAllNodesDo: [ :each | 
+			(each startPosition > 0
+				and: [ each startPosition <= anInteger and: [ each stopPosition >= anInteger ] ])
+				ifTrue: [ node := each ] ]
+		andTokensDo: [ :each |  ]
+		includesErrors: true.
+	^ node ifNil: [ self ]
+]
+
+{ #category : #accessing }
 SmaCCParseNode >> nodeBefore [
 	| node start |
 	start := self startPosition.
@@ -719,7 +734,7 @@ SmaCCParseNode >> nodeBefore [
 	^ node
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode >> nodeOfType: aSmaCCParseNodeClassOrCollection [
 	| isCollection |
 	isCollection := aSmaCCParseNodeClassOrCollection isKindOf: Collection.
@@ -733,22 +748,22 @@ SmaCCParseNode >> nodeOfType: aSmaCCParseNodeClassOrCollection [
 				ifFalse: [ each isKindOf: aSmaCCParseNodeClassOrCollection ] ]
 ]
 
-{ #category : 'variables' }
+{ #category : #variables }
 SmaCCParseNode >> nodeVariables [
 	^ #()
 ]
 
-{ #category : 'iterating' }
+{ #category : #iterating }
 SmaCCParseNode >> nodesDo: nodeBlock [
 	self nodesDo: nodeBlock andTokensDo: nil
 ]
 
-{ #category : 'iterating' }
+{ #category : #iterating }
 SmaCCParseNode >> nodesDo: nodeBlock andTokensDo: tokenBlock [
 	self nodesDo: nodeBlock andTokensDo: tokenBlock includeErrors: false
 ]
 
-{ #category : 'iterating' }
+{ #category : #iterating }
 SmaCCParseNode >> nodesDo: nodeBlock andTokensDo: tokenBlock includeErrors: aBoolean [
 	| block |
 	nodeBlock notNil
@@ -778,34 +793,34 @@ SmaCCParseNode >> nodesDo: nodeBlock andTokensDo: tokenBlock includeErrors: aBoo
 	self ignoredOtherVariables do: [ :sel | block value: (self perform: sel) ]
 ]
 
-{ #category : 'variables' }
+{ #category : #variables }
 SmaCCParseNode >> otherVariables [
 	^ #()
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode >> parent [
 	^ parent
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode >> parent: aSmaCCParseNode [
 	parent := aSmaCCParseNode
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode >> parentOfType: aSmaCCParseNodeClassOrCollection [
 	^ parent notNil
 		ifTrue: [ parent nodeOfType: aSmaCCParseNodeClassOrCollection ]
 		ifFalse: [ nil ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode >> parserClass [
 	^ self class parserClass
 ]
 
-{ #category : 'copying' }
+{ #category : #copying }
 SmaCCParseNode >> postCopy [
 	super postCopy.
 	self
@@ -819,7 +834,7 @@ SmaCCParseNode >> postCopy [
 						ifFalse: [ (self perform: each) copy ]) ]
 ]
 
-{ #category : 'printing' }
+{ #category : #printing }
 SmaCCParseNode >> printOn: aStream [
 	super printOn: aStream.
 	self topParent completeSource notNil ifTrue: [ 
@@ -829,20 +844,20 @@ SmaCCParseNode >> printOn: aStream [
 			nextPut: $) ]
 ]
 
-{ #category : 'accessing-attributes' }
+{ #category : #'accessing-attributes' }
 SmaCCParseNode >> removeAttributeNamed: aSymbol [
 	attributes isNil
 		ifTrue: [ ^ self ].
 	attributes removeKey: aSymbol ifAbsent: [  ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode >> removePositions [
 	self removeAttributeNamed: #startPosition.
 	self removeAttributeNamed: #stopPosition
 ]
 
-{ #category : 'replacing' }
+{ #category : #replacing }
 SmaCCParseNode >> replace: originalSmaCCParseNode with: newSmaCCParseNode [
 	SmaCCParseNode instSize + 1 to: self class instSize do:
 		[ :i | 
@@ -868,7 +883,7 @@ SmaCCParseNode >> replace: originalSmaCCParseNode with: newSmaCCParseNode [
 	newSmaCCParseNode parent: self
 ]
 
-{ #category : 'source' }
+{ #category : #source }
 SmaCCParseNode >> replaceToken: aSmaCCToken withSource: aString [
 	self completeSource
 		replaceFrom: aSmaCCToken startPosition
@@ -876,12 +891,12 @@ SmaCCParseNode >> replaceToken: aSmaCCToken withSource: aString [
 		with: aString
 ]
 
-{ #category : 'replacing' }
+{ #category : #replacing }
 SmaCCParseNode >> replaceWith: aSmaCCParseNode [
 	parent replace: self with: aSmaCCParseNode
 ]
 
-{ #category : 'source' }
+{ #category : #source }
 SmaCCParseNode >> replaceWithSource: aString [
 	^ self completeSource
 		replaceFrom: self startPosition
@@ -889,14 +904,14 @@ SmaCCParseNode >> replaceWithSource: aString [
 		with: aString
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 SmaCCParseNode >> safePerform: aSymbol [
 	^ (self respondsTo: aSymbol)
 		ifTrue: [ self perform: aSymbol ]
 		ifFalse: [ nil ]
 ]
 
-{ #category : 'collection handling' }
+{ #category : #'collection handling' }
 SmaCCParseNode >> setParent: anObject to: parentNode [
 	(anObject isKindOf: SmaCCParseNode)
 		ifTrue: [ ^ (anObject parent == self or: [ anObject parent isNil ])
@@ -909,19 +924,19 @@ SmaCCParseNode >> setParent: anObject to: parentNode [
 						ifTrue: [ each parent: parentNode ] ] ]
 ]
 
-{ #category : 'collection handling' }
+{ #category : #'collection handling' }
 SmaCCParseNode >> setParents: aCollection to: anObject [
 	aCollection isNil
 		ifTrue: [ ^ self ].
 	aCollection do: [ :each | each parent: anObject ]
 ]
 
-{ #category : 'variables' }
+{ #category : #variables }
 SmaCCParseNode >> singularVariableSelectors [
 	^ #(#tokenVariables #nodeVariables #ignoredTokenVariables #ignoredNodeVariables #otherVariables #ignoredOtherVariables)
 ]
 
-{ #category : 'variables' }
+{ #category : #variables }
 SmaCCParseNode >> singularVariables [
 	^ self singularVariableSelectors
 		inject: Set new
@@ -932,7 +947,7 @@ SmaCCParseNode >> singularVariables [
 				yourself ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode >> sortedChildren [
 	^ self children
 		asSortedCollection:
@@ -949,34 +964,34 @@ SmaCCParseNode >> sortedChildren [
 								ifFalse: [ startA class name < startB class name ] ] ] ]
 ]
 
-{ #category : 'source' }
+{ #category : #source }
 SmaCCParseNode >> source [
 	^ self completeSource
 		ifNotNil:
 			[ :value | (value copyFrom: self startPosition to: self stopPosition) asString ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode >> sourceInterval [
 	^ self startPosition to: self stopPosition
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode >> startPosition [
 	^ self attributeNamed: #startPosition ifAbsentPut: [ self calculateStartPosition ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode >> stopPosition [
 	^ self attributeNamed: #stopPosition ifAbsentPut: [ self calculateStopPosition ]
 ]
 
-{ #category : 'variables' }
+{ #category : #variables }
 SmaCCParseNode >> tokenVariables [
 	^ #()
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode >> topParent [
 	| current |
 	current := self.
@@ -984,34 +999,34 @@ SmaCCParseNode >> topParent [
 	^ current
 ]
 
-{ #category : 'variables' }
+{ #category : #variables }
 SmaCCParseNode >> variableSelectors [
 	^ #(#tokenVariables #compositeTokenVariables #nodeVariables #compositeNodeVariables #otherVariables)
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParseNode >> visitorTrait [
 	^ self class visitorTrait
 ]
 
-{ #category : 'iterating' }
+{ #category : #iterating }
 SmaCCParseNode >> withAllNodesDo: nodeBlock [
 	nodeBlock value: self.
 	self allNodesDo: nodeBlock
 ]
 
-{ #category : 'iterating' }
+{ #category : #iterating }
 SmaCCParseNode >> withAllNodesDo: nodeBlock andTokensDo: tokenBlock [
 	self withAllNodesDo: nodeBlock andTokensDo: tokenBlock includesErrors: false
 ]
 
-{ #category : 'iterating' }
+{ #category : #iterating }
 SmaCCParseNode >> withAllNodesDo: nodeBlock andTokensDo: tokenBlock includesErrors: aBoolean [
 	nodeBlock value: self.
 	self allNodesDo: nodeBlock andTokensDo: tokenBlock includeErrors: aBoolean
 ]
 
-{ #category : 'iterating' }
+{ #category : #iterating }
 SmaCCParseNode >> withAllNodesOfType: aClass do: nodeBlock [
 	(self isKindOf: aClass)
 		ifTrue: [ nodeBlock value: self ].

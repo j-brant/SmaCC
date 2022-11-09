@@ -1,9 +1,9 @@
 Trait {
-	#name : 'TSmaCCParseNodeVisitor',
+	#name : #TSmaCCParseNodeVisitor,
 	#category : 'SmaCC_Runtime'
 }
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 TSmaCCParseNodeVisitor >> accept: anObject [
 	(anObject isKindOf: SmaCCParseNode)
 		ifTrue: [ ^ self acceptNode: anObject ].
@@ -12,25 +12,25 @@ TSmaCCParseNodeVisitor >> accept: anObject [
 	^ anObject
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 TSmaCCParseNodeVisitor >> acceptNode: aSmaCCParseNode [
 	aSmaCCParseNode isNil
 		ifTrue: [ ^ nil ].
 	^ aSmaCCParseNode acceptVisitor: self
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 TSmaCCParseNodeVisitor >> acceptNodes: aCollection [
 	aCollection do: [ :each | self acceptNode: each ].
 	^ aCollection
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 TSmaCCParseNodeVisitor >> visitSmaCCError: aSmaCCError [
 	^ self visitSmaCCParseNode: aSmaCCError
 ]
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 TSmaCCParseNodeVisitor >> visitSmaCCParseNode: aSmaCCParseNode [
 	self acceptNodes: aSmaCCParseNode sortedChildren.
 	^ aSmaCCParseNode

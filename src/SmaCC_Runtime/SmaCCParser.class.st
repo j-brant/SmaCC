@@ -16,8 +16,8 @@ Instance Variables:
 
 "
 Class {
-	#name : 'SmaCCParser',
-	#superclass : 'Object',
+	#name : #SmaCCParser,
+	#superclass : #Object,
 	#instVars : [
 		'scanner',
 		'currentToken',
@@ -33,17 +33,17 @@ Class {
 	#category : 'SmaCC_Runtime'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser class >> ambiguousTransitions [
 	^ #()
 ]
 
-{ #category : 'caching' }
+{ #category : #caching }
 SmaCCParser class >> cacheId [
 	^ '?'
 ]
 
-{ #category : 'caching' }
+{ #category : #caching }
 SmaCCParser class >> checkCaches [
 	cacheId ~= self cacheId
 		ifTrue: [ self resetCaches.
@@ -51,7 +51,7 @@ SmaCCParser class >> checkCaches [
 			cacheId := self cacheId ]
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 SmaCCParser class >> createParserOnStream: aStream startingAt: anInteger [
 	| parser |
 	parser := self on: aStream.
@@ -59,7 +59,7 @@ SmaCCParser class >> createParserOnStream: aStream startingAt: anInteger [
 	^ parser
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser class >> defaultEncoding [
 	^ defaultEncoding
 		ifNil: [ self == SmaCCParser
@@ -67,17 +67,17 @@ SmaCCParser class >> defaultEncoding [
 				ifFalse: [ superclass defaultEncoding ] ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser class >> defaultEncoding: aString [
 	defaultEncoding := aString
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser class >> defaultStartingState [
 	^ 1
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser class >> errorBlock: aBlock [
 	^ [ :ex | 
 	| returnValue |
@@ -91,22 +91,22 @@ SmaCCParser class >> errorBlock: aBlock [
 	ex return: returnValue ]
 ]
 
-{ #category : 'file types' }
+{ #category : #'file types' }
 SmaCCParser class >> fileExtension [
 	^ ''
 ]
 
-{ #category : 'file types' }
+{ #category : #'file types' }
 SmaCCParser class >> fileExtensionType [
 	^ 'All files'
 ]
 
-{ #category : 'file types' }
+{ #category : #'file types' }
 SmaCCParser class >> fileExtensions [
 	^ Array with: self fileExtension
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 SmaCCParser class >> on: aStream [
 	| parser scanner |
 	self checkCaches.
@@ -116,19 +116,19 @@ SmaCCParser class >> on: aStream [
 	^ parser
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 SmaCCParser class >> parse: aString [
 	^ self parse: aString startingAt: self defaultStartingState
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 SmaCCParser class >> parse: aString onError: aBlock [
 	^ [ self parse: aString ]
 		on: SmaCCParserError
 		do: (self errorBlock: aBlock)
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 SmaCCParser class >> parse: aString startingAt: anInteger [
 	| value |
 	value := self
@@ -139,19 +139,19 @@ SmaCCParser class >> parse: aString startingAt: anInteger [
 	^ value
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 SmaCCParser class >> parse: aString startingAt: anInteger onError: aBlock [
 	^ [ self parse: aString startingAt: anInteger ]
 		on: SmaCCParserError
 		do: (self errorBlock: aBlock)
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 SmaCCParser class >> parseFile: aString [
 	^ self parseFile: aString encoding: self defaultEncoding
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 SmaCCParser class >> parseFile: aString encoding: encodingString [
 	| encoding fileRef |
 	fileRef := aString asFileReference.
@@ -174,38 +174,38 @@ SmaCCParser class >> parseFile: aString encoding: encodingString [
 					each ] ]
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 SmaCCParser class >> parseStream: aStream [
 	^ self parseStream: aStream startingAt: self defaultStartingState
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 SmaCCParser class >> parseStream: aStream onError: aBlock [
 	^ [ self parseStream: aStream ]
 		on: SmaCCParserError
 		do: (self errorBlock: aBlock)
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 SmaCCParser class >> parseStream: aStream startingAt: anInteger [
 	| parser |
 	parser := self createParserOnStream: aStream startingAt: anInteger.
 	^ parser parse
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 SmaCCParser class >> parseStream: aStream startingAt: anInteger onError: aBlock [
 	^ [ self parseStream: aStream startingAt: anInteger ]
 		on: SmaCCParserError
 		do: (self errorBlock: aBlock)
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 SmaCCParser class >> parseWithErrors: aString [
 	^ self parseWithErrors: aString startingAt: self defaultStartingState
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 SmaCCParser class >> parseWithErrors: aString startingAt: anInteger [
 	^ [ | parser value |
 	parser := self
@@ -223,24 +223,24 @@ SmaCCParser class >> parseWithErrors: aString startingAt: anInteger [
 				ifFalse: [ ex signal ] ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser class >> reduceTable [
 	^ self subclassResponsibility
 ]
 
-{ #category : 'caching' }
+{ #category : #caching }
 SmaCCParser class >> resetCaches [
 	"self withAllSubclasses do: [:each | each resetCaches]"
 
 	
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser class >> scannerClass [
 	^ self subclassResponsibility
 ]
 
-{ #category : 'encoding' }
+{ #category : #encoding }
 SmaCCParser class >> setEncoding: aString on: aStream [
 	"Handle Pharo 6/7 streaming differences"
 
@@ -249,12 +249,12 @@ SmaCCParser class >> setEncoding: aString on: aStream [
 	aStream encoding: encoding
 ]
 
-{ #category : 'encoding' }
+{ #category : #encoding }
 SmaCCParser class >> setEncodingOn: aStream [
 	self setEncoding: nil on: aStream
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser class >> startingStateNames [
 	^ ((self class allSelectors
 		select: [ :each | each beginsWith: 'startingStateFor' ])
@@ -262,32 +262,32 @@ SmaCCParser class >> startingStateNames [
 		asSortedCollection
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser class >> symbolNames [
 	^ #()
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser class >> symbolTypes [
 	^ #()
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser class >> transitionTable [
 	^ self subclassResponsibility
 ]
 
-{ #category : 'private-actions' }
+{ #category : #'private-actions' }
 SmaCCParser >> acceptAction [
 	^ 0
 ]
 
-{ #category : 'private-actions' }
+{ #category : #'private-actions' }
 SmaCCParser >> actionFor: aSymbolIndex [
 	^ self actionForState: self currentState and: aSymbolIndex
 ]
 
-{ #category : 'private-actions' }
+{ #category : #'private-actions' }
 SmaCCParser >> actionForCurrentToken [
 	self tryAllTokens
 		ifTrue:
@@ -302,7 +302,7 @@ SmaCCParser >> actionForCurrentToken [
 		ifFalse: [ ^ self actionFor: currentToken ids first ]
 ]
 
-{ #category : 'private-actions' }
+{ #category : #'private-actions' }
 SmaCCParser >> actionForState: stateIndex and: aSymbolIndex [
 	| index row |
 	row := self transitionTable at: stateIndex.
@@ -320,12 +320,12 @@ SmaCCParser >> actionForState: stateIndex and: aSymbolIndex [
 						+ (row at: index - 1) ] ]
 ]
 
-{ #category : 'private-actions' }
+{ #category : #'private-actions' }
 SmaCCParser >> actionMask [
 	^ 2r11
 ]
 
-{ #category : 'private-actions' }
+{ #category : #'private-actions' }
 SmaCCParser >> actionsAndSymbolsForState: stateIndex do: aBlock [
 	| action bytes |
 	bytes := self transitionTable at: stateIndex.
@@ -336,19 +336,19 @@ SmaCCParser >> actionsAndSymbolsForState: stateIndex do: aBlock [
 				[ :i | aBlock value: ((bytes at: i) bitShift: 8) + (bytes at: i + 1) value: ((bytes at: i + 2) bitShift: 8) + (bytes at: i + 3) ] ]
 ]
 
-{ #category : 'error handling' }
+{ #category : #'error handling' }
 SmaCCParser >> actionsForState: stateIndex and: aSymbolIndex [
 	^ Array with: (self actionForState: stateIndex and: aSymbolIndex)
 ]
 
-{ #category : 'private-ast' }
+{ #category : #'private-ast' }
 SmaCCParser >> add: anObject to: aCollection [
 	anObject isNil
 		ifTrue: [ ^ self ].
 	aCollection add: anObject
 ]
 
-{ #category : 'private-ast' }
+{ #category : #'private-ast' }
 SmaCCParser >> addAll: origCollection to: aCollection [
 	origCollection isNil
 		ifTrue: [ ^ self ].
@@ -358,19 +358,19 @@ SmaCCParser >> addAll: origCollection to: aCollection [
 				ifTrue: [ aCollection add: each ] ]
 ]
 
-{ #category : 'private-ast' }
+{ #category : #'private-ast' }
 SmaCCParser >> addAllFirst: origCollection to: aCollection [
 	origCollection isNil ifTrue: [^self].
 	origCollection reverseDo: [:each | each notNil ifTrue: [aCollection addFirst: each]]
 ]
 
-{ #category : 'private-ast' }
+{ #category : #'private-ast' }
 SmaCCParser >> addFirst: anObject to: aCollection [
 	anObject isNil ifTrue: [^self].
 	aCollection addFirst: anObject
 ]
 
-{ #category : 'private-actions' }
+{ #category : #'private-actions' }
 SmaCCParser >> allActionsAndSymbolsForState: stateIndex do: aBlock [
 	self
 		actionsAndSymbolsForState: stateIndex
@@ -382,12 +382,12 @@ SmaCCParser >> allActionsAndSymbolsForState: stateIndex do: aBlock [
 				ifFalse: [ aBlock value: action value: symbol ] ]
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 SmaCCParser >> ambiguousTransitions [
 	^ self class ambiguousTransitions
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 SmaCCParser >> binarySearchIn: aRow for: aSymbolIndex size: step [
 	| start mid length high low midItem stop |
 	high := aSymbolIndex bitShift: -8.
@@ -412,7 +412,7 @@ SmaCCParser >> binarySearchIn: aRow for: aSymbolIndex size: step [
 	^ 0
 ]
 
-{ #category : 'error handling' }
+{ #category : #'error handling' }
 SmaCCParser >> checkForErrors [
 	"If we have an error correction installed, we might have handled the errors. If we did, we may not 
 	want to return the result. Raise an error with the location of the initial error. If we want the result,
@@ -424,7 +424,7 @@ SmaCCParser >> checkForErrors [
 	self reportErrorMessage: 'Token not expected' resumable: true
 ]
 
-{ #category : 'initialize-release' }
+{ #category : #'initialize-release' }
 SmaCCParser >> createDefaultErrorHandlers [
 	(self hasStateThatShifts: self errorTokenId)
 		ifTrue: [ errorHandler := SmaCCSpecificErrorNodeHandler on: self ]
@@ -432,17 +432,17 @@ SmaCCParser >> createDefaultErrorHandlers [
 				ifTrue: [ errorHandler := SmaCCDefaultErrorNodeHandler on: self ] ]
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 SmaCCParser >> currentState [
 	^ stateStack last
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 SmaCCParser >> currentToken [
 	^ currentToken
 ]
 
-{ #category : 'error handling' }
+{ #category : #'error handling' }
 SmaCCParser >> dismissErrorToken [
 	| token |
 	token := currentToken.
@@ -451,7 +451,7 @@ SmaCCParser >> dismissErrorToken [
 	^ token
 ]
 
-{ #category : 'error handling' }
+{ #category : #'error handling' }
 SmaCCParser >> dismissStackTopForErrorRecovery: anInteger [
 	| stackContents |
 	stackContents := Array new: anInteger.
@@ -461,22 +461,22 @@ SmaCCParser >> dismissStackTopForErrorRecovery: anInteger [
 	^ stackContents
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 SmaCCParser >> dismissToken [
 	currentToken := nil
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser >> emptySymbolTokenId [
 	^ scanner emptySymbolTokenId
 ]
 
-{ #category : 'private-actions' }
+{ #category : #'private-actions' }
 SmaCCParser >> errorAction [
 	^ 3
 ]
 
-{ #category : 'error handling' }
+{ #category : #'error handling' }
 SmaCCParser >> errorSymbolShiftActionsForState: stateIndex [
 	| action actions |
 	actions := self actionsForState: stateIndex and: self errorTokenId.
@@ -488,45 +488,45 @@ SmaCCParser >> errorSymbolShiftActionsForState: stateIndex [
 		ifFalse: [ 0 ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser >> errorTable [
 	^ #()
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser >> errorToken [
 	^ errorToken
 ]
 
-{ #category : 'error handling' }
+{ #category : #'error handling' }
 SmaCCParser >> errorToken: aSmaCCToken [
 	errorToken notNil
 		ifTrue: [ ^ self ].
 	errorToken := aSmaCCToken
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser >> errorTokenId [
 	^ scanner errorTokenId
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 SmaCCParser >> getNextToken [
 	currentToken isNil
 		ifTrue: [ currentToken := scanner next ]
 ]
 
-{ #category : 'error handling' }
+{ #category : #'error handling' }
 SmaCCParser >> handleError: anInteger [
 	^ errorHandler handleError: anInteger
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCParser >> hasNodeTypes [
 	^ self symbolTypes anySatisfy: [ :each | self isNodeType: each ]
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCParser >> hasStateThatShifts: symbolIndex [
 	1 to: self transitionTable size do: [ :i | 
 		((self actionsForState: i and: symbolIndex) anySatisfy: [ :action | (action bitAnd: self actionMask) = self shiftAction ])
@@ -534,49 +534,49 @@ SmaCCParser >> hasStateThatShifts: symbolIndex [
 	^ false
 ]
 
-{ #category : 'initialize-release' }
+{ #category : #'initialize-release' }
 SmaCCParser >> initialize [
 	super initialize.
 	nodeStack := OrderedCollection new.
 	errorHandler := SmaCCNoErrorHandler on: self
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCParser >> isEOFToken [
 	^ currentToken ids first = self emptySymbolTokenId
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCParser >> isNodeType: aSymbol [
 	^ (Smalltalk at: aSymbol ifAbsent: [ Object ]) includesBehavior: SmaCCParseNode
 ]
 
-{ #category : 'standard reduction rules' }
+{ #category : #'standard reduction rules' }
 SmaCCParser >> liftFirstValue: aCollection [
 	^ aCollection at: 1
 ]
 
-{ #category : 'standard reduction rules' }
+{ #category : #'standard reduction rules' }
 SmaCCParser >> liftLastValue: aCollection [
 	^ aCollection last
 ]
 
-{ #category : 'standard reduction rules' }
+{ #category : #'standard reduction rules' }
 SmaCCParser >> liftSecondValue: aCollection [
 	^ aCollection at: 2
 ]
 
-{ #category : 'standard reduction rules' }
+{ #category : #'standard reduction rules' }
 SmaCCParser >> nil [
 	^ nil
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 SmaCCParser >> nodeStack [
 	^ nodeStack
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser >> parse [
 	| result |
 	self setDefaultStartingStateIfNone.
@@ -587,7 +587,7 @@ SmaCCParser >> parse [
 	^ result
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 SmaCCParser >> peekNextToken [
 	| token position lookahead |
 	token := currentToken.
@@ -600,7 +600,7 @@ SmaCCParser >> peekNextToken [
 	^ lookahead
 ]
 
-{ #category : 'private-actions' }
+{ #category : #'private-actions' }
 SmaCCParser >> performAction: action [
 	| value actionType |
 	actionType := action bitAnd: self actionMask.
@@ -613,7 +613,7 @@ SmaCCParser >> performAction: action [
 				ifFalse: [ self handleError: value ] ]
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 SmaCCParser >> performParsingLoop [
 	| action |
 	[ self getNextToken.
@@ -623,7 +623,7 @@ SmaCCParser >> performParsingLoop [
 	self checkForErrors
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 SmaCCParser >> performReduceEntry: entryArray with: items [
 	| symbol |
 	symbol := entryArray at: 3.
@@ -632,24 +632,24 @@ SmaCCParser >> performReduceEntry: entryArray with: items [
 		ifFalse: [ self perform: symbol ]
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 SmaCCParser >> popNodeStack [
 	^ nodeStack removeLast
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser >> position [
 	^ currentToken isNil
 		ifTrue: [ scanner position ]
 		ifFalse: [ currentToken startPosition ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser >> position: anInteger [
 	scanner setPosition: anInteger
 ]
 
-{ #category : 'private-actions' }
+{ #category : #'private-actions' }
 SmaCCParser >> reduce: anInteger [
 	| reduceEntry items size |
 	reduceEntry := self reduceTable at: anInteger.
@@ -662,12 +662,12 @@ SmaCCParser >> reduce: anInteger [
 		addLast: ((self actionFor: (reduceEntry at: 1)) bitShift: -2)
 ]
 
-{ #category : 'private-actions' }
+{ #category : #'private-actions' }
 SmaCCParser >> reduceAction [
 	^ 2r10
 ]
 
-{ #category : 'private-actions' }
+{ #category : #'private-actions' }
 SmaCCParser >> reduceFor: aCollection [
 	| newCollection item |
 	(aCollection allSatisfy: [ :each | each class ~~ OrderedCollection ])
@@ -692,12 +692,12 @@ SmaCCParser >> reduceFor: aCollection [
 	^ newCollection
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser >> reduceTable [
 	^ self class reduceTable
 ]
 
-{ #category : 'error handling' }
+{ #category : #'error handling' }
 SmaCCParser >> reportError: anInteger [
 	self
 		reportErrorMessage:
@@ -706,12 +706,12 @@ SmaCCParser >> reportError: anInteger [
 				ifFalse: [ self errorTable at: anInteger ])
 ]
 
-{ #category : 'error handling' }
+{ #category : #'error handling' }
 SmaCCParser >> reportErrorMessage: aString [
 	self reportErrorMessage: aString resumable: false
 ]
 
-{ #category : 'error handling' }
+{ #category : #'error handling' }
 SmaCCParser >> reportErrorMessage: aString resumable: aBoolean [
 	SmaCCParserError new
 		isResumable: aBoolean;
@@ -720,57 +720,57 @@ SmaCCParser >> reportErrorMessage: aString resumable: aBoolean [
 		signal
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser >> scanner [
 	^ scanner
 ]
 
-{ #category : 'initialize-release' }
+{ #category : #'initialize-release' }
 SmaCCParser >> scanner: aScanner [
 	scanner := aScanner
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser >> scope [
 	^ scanner scope
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser >> scope: aSymbol [
 	scanner scope: aSymbol
 ]
 
-{ #category : 'initialize-release' }
+{ #category : #'initialize-release' }
 SmaCCParser >> setDefaultStartingStateIfNone [
 	stateStack isNil
 		ifTrue: [ self setStartingState: self class defaultStartingState ]
 ]
 
-{ #category : 'initialize-release' }
+{ #category : #'initialize-release' }
 SmaCCParser >> setStartingState: startingState [
 	stateStack := OrderedCollection with: startingState
 ]
 
-{ #category : 'private-actions' }
+{ #category : #'private-actions' }
 SmaCCParser >> shift: stateIndex [
 	stateStack addLast: stateIndex.
 	nodeStack addLast: currentToken.
 	currentToken := nil
 ]
 
-{ #category : 'private-actions' }
+{ #category : #'private-actions' }
 SmaCCParser >> shiftAction [
 	^ 2r01
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 SmaCCParser >> spawnParser: aGLRParserClass [
 	^ self
 		spawnParser: aGLRParserClass
 		startingAt: aGLRParserClass defaultStartingState
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 SmaCCParser >> spawnParser: aGLRParserClass startingAt: anInteger [
 	| ast |
 	ast := aGLRParserClass
@@ -780,37 +780,37 @@ SmaCCParser >> spawnParser: aGLRParserClass startingAt: anInteger [
 	^ ast
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 SmaCCParser >> stateStack [
 	^ stateStack
 ]
 
-{ #category : 'standard reduction rules' }
+{ #category : #'standard reduction rules' }
 SmaCCParser >> stringValue: anOrderedCollection [
 	^ anOrderedCollection first value
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser >> symbolNames [
 	^ self class symbolNames
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser >> symbolTypes [
 	^ self class symbolTypes
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCParser >> transitionTable [
 	^ self class transitionTable
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCParser >> tryAllTokens [
 	^ false
 ]
 
-{ #category : 'error handling' }
+{ #category : #'error handling' }
 SmaCCParser >> willAccept: potentialStateStack [
 	| action compoundAction reduceEntry size |
 	compoundAction := self actionForState: potentialStateStack last and: self emptySymbolTokenId.
@@ -826,7 +826,7 @@ SmaCCParser >> willAccept: potentialStateStack [
 	^ false
 ]
 
-{ #category : 'error handling' }
+{ #category : #'error handling' }
 SmaCCParser >> willShift: potentialStateStack [
 	| action compoundAction reduceEntry size |
 	compoundAction := self actionForState: potentialStateStack last and: currentToken ids first.

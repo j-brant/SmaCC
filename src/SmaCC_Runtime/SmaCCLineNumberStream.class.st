@@ -9,8 +9,8 @@ Instance Variables:
 
 "
 Class {
-	#name : 'SmaCCLineNumberStream',
-	#superclass : 'Stream',
+	#name : #SmaCCLineNumberStream,
+	#superclass : #Stream,
 	#instVars : [
 		'sourceStream',
 		'previousWasCR',
@@ -20,39 +20,39 @@ Class {
 	#category : 'SmaCC_Runtime'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 SmaCCLineNumberStream class >> on: aReadStream [
 	^ self basicNew
 		on: aReadStream;
 		yourself
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCLineNumberStream >> atEnd [
 	^ sourceStream atEnd
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCLineNumberStream >> columnNumber [
 	^ self columnNumberFor: self position
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCLineNumberStream >> columnNumberFor: anInteger [
 	^ anInteger - (eolPositions at: (self lineNumberFor: anInteger)) + 1
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCLineNumberStream >> contents [
 	^ sourceStream contents
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 SmaCCLineNumberStream >> contentsSpecies [
 	^ sourceStream contentsSpecies
 ]
 
-{ #category : 'error handling' }
+{ #category : #'error handling' }
 SmaCCLineNumberStream >> doesNotUnderstand: aMessage [
 	^ [ sourceStream
 		perform: aMessage selector
@@ -60,27 +60,27 @@ SmaCCLineNumberStream >> doesNotUnderstand: aMessage [
 		ensure: [ self position: sourceStream position ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCLineNumberStream >> flush [
 	^ sourceStream flush
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCLineNumberStream >> isReadable [
 	^ sourceStream isReadable
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCLineNumberStream >> isWritable [
 	^ sourceStream isWritable
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCLineNumberStream >> lineNumber [
 	^ self lineNumberFor: self position
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCLineNumberStream >> lineNumberFor: anInteger [
 	| index start stop pos |
 	pos := anInteger.
@@ -97,7 +97,7 @@ SmaCCLineNumberStream >> lineNumberFor: anInteger [
 	^ start
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCLineNumberStream >> next [
 	| character streamPosition |
 	character := sourceStream next.
@@ -118,12 +118,12 @@ SmaCCLineNumberStream >> next [
 	^ character
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCLineNumberStream >> nextPut: anObject [
 	^ sourceStream nextPut: anObject
 ]
 
-{ #category : 'initialize-release' }
+{ #category : #'initialize-release' }
 SmaCCLineNumberStream >> on: aReadStream [
 	sourceStream := aReadStream.
 	eolPositions := OrderedCollection with: aReadStream position.
@@ -131,17 +131,17 @@ SmaCCLineNumberStream >> on: aReadStream [
 	previousWasCR := false
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCLineNumberStream >> peek [
 	^ sourceStream peek
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCLineNumberStream >> position [
 	^ sourceStream position
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCLineNumberStream >> position: anInteger [
 	anInteger > lastPosition
 		ifTrue:
@@ -151,7 +151,7 @@ SmaCCLineNumberStream >> position: anInteger [
 		ifFalse: [ sourceStream position: anInteger ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCLineNumberStream >> skip: anInteger [
 	^ self position: self position + anInteger
 ]

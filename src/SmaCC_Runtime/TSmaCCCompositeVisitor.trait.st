@@ -1,5 +1,5 @@
 Trait {
-	#name : 'TSmaCCCompositeVisitor',
+	#name : #TSmaCCCompositeVisitor,
 	#instVars : [
 		'visitors',
 		'visitorMap'
@@ -9,7 +9,7 @@ Trait {
 	#category : 'SmaCC_Runtime'
 }
 
-{ #category : 'visiting' }
+{ #category : #visiting }
 TSmaCCCompositeVisitor >> acceptNode: aSmaCCParseNode [
 	aSmaCCParseNode isNil
 		ifTrue: [ ^ nil ].
@@ -18,7 +18,7 @@ TSmaCCCompositeVisitor >> acceptNode: aSmaCCParseNode [
 		ifNotNil: [ :visitor | aSmaCCParseNode acceptVisitor: visitor ]
 ]
 
-{ #category : 'visitors' }
+{ #category : #visitors }
 TSmaCCCompositeVisitor >> addVisitor: aSmaCCParseNodeVisitor [
 	visitors isNil
 		ifTrue: [ visitors := OrderedCollection new ].
@@ -27,12 +27,12 @@ TSmaCCCompositeVisitor >> addVisitor: aSmaCCParseNodeVisitor [
 	visitorMap := nil
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 TSmaCCCompositeVisitor >> doesVisitor: aVisitor support: aSmaCCParseNode [
 	^ aVisitor class allTraits includes: aSmaCCParseNode visitorTrait
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 TSmaCCCompositeVisitor >> lookupErrorVisitorFor: aSmaCCParseNode [
 	| visitorTrait |
 	visitorTrait := aSmaCCParseNode visitorTrait.
@@ -43,7 +43,7 @@ TSmaCCCompositeVisitor >> lookupErrorVisitorFor: aSmaCCParseNode [
 	^ self
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 TSmaCCCompositeVisitor >> lookupVisitorFor: aSmaCCParseNode [
 	visitors isNil
 		ifTrue: [ ^ self missingVisitorFor: aSmaCCParseNode ].
@@ -58,13 +58,13 @@ TSmaCCCompositeVisitor >> lookupVisitorFor: aSmaCCParseNode [
 						ifNone: [ self missingVisitorFor: aSmaCCParseNode ] ] ]
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 TSmaCCCompositeVisitor >> missingVisitorFor: aSmaCCParseNode [
 	^ (self doesVisitor: self support: aSmaCCParseNode)
 		ifTrue: [ self ]
 ]
 
-{ #category : 'visitors' }
+{ #category : #visitors }
 TSmaCCCompositeVisitor >> removeVisitor: aSmaCCParseNodeVisitor [
 	visitors isNil
 		ifTrue: [ ^ self ].

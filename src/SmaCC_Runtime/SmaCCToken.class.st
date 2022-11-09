@@ -9,8 +9,8 @@ Instance Variables:
 
 "
 Class {
-	#name : 'SmaCCToken',
-	#superclass : 'Object',
+	#name : #SmaCCToken,
+	#superclass : #Object,
 	#instVars : [
 		'start',
 		'ids',
@@ -19,75 +19,75 @@ Class {
 	#category : 'SmaCC_Runtime'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 SmaCCToken class >> value: aString [
 	^ self value: aString start: 0 ids: #()
 ]
 
-{ #category : 'public' }
+{ #category : #public }
 SmaCCToken class >> value: aString start: anInteger id: anObject [
 	^ self value: aString start: anInteger ids: anObject
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 SmaCCToken class >> value: aString start: anInteger ids: aCollection [
 	^ self new
 		value: aString start: anInteger ids: aCollection;
 		yourself
 ]
 
-{ #category : 'comparing' }
+{ #category : #comparing }
 SmaCCToken >> = aSmaCCToken [
 	^ self class = aSmaCCToken class
 		and: [ self value = aSmaCCToken value ]
 ]
 
-{ #category : 'matching' }
+{ #category : #matching }
 SmaCCToken >> copyInContext: aDictionary [
 	^ self
 ]
 
-{ #category : 'comparing' }
+{ #category : #comparing }
 SmaCCToken >> hash [
 	^ self value hash
 ]
 
-{ #category : 'public' }
+{ #category : #public }
 SmaCCToken >> id [
 	^ ids
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCToken >> ids [
 	^ ids
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCToken >> ids: anArray [
 	ids := anArray
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCToken >> isListMatch [
 	^ false
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCToken >> isPattern [
 	^ false
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCToken >> isSyntaxError [
 	^ self ids first = 0
 ]
 
-{ #category : 'matching' }
+{ #category : #matching }
 SmaCCToken >> match: anObject inContext: aDictionary [
 	^ self = anObject
 ]
 
-{ #category : 'printing' }
+{ #category : #printing }
 SmaCCToken >> printOn: aStream [
 	aStream
 		nextPut: ${;
@@ -101,39 +101,39 @@ SmaCCToken >> printOn: aStream [
 		nextPutAll: ')}'
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCToken >> size [
 	^ self stopPosition - self startPosition + 1
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCToken >> source [
 	^ value
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCToken >> sourceInterval [
 	^ self startPosition to: self stopPosition
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCToken >> startPosition [
 	^ start
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCToken >> stopPosition [
 	start isNil
 		ifTrue: [ ^ nil ].
 	^ start + value size - 1
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCToken >> value [
 	^ value
 ]
 
-{ #category : 'initialize-release' }
+{ #category : #'initialize-release' }
 SmaCCToken >> value: aString start: startPositionInteger ids: aCollection [
 	value := aString.
 	start := startPositionInteger.

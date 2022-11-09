@@ -7,32 +7,32 @@ Instance Variables:
 
 "
 Class {
-	#name : 'SmaCCPatternNode',
-	#superclass : 'SmaCCParseNode',
+	#name : #SmaCCPatternNode,
+	#superclass : #SmaCCParseNode,
 	#instVars : [
 		'patternToken'
 	],
 	#category : 'SmaCC_Runtime'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 SmaCCPatternNode class >> onToken: aSmaCCPatternToken [
 	^ self new
 		patternToken: aSmaCCPatternToken;
 		yourself
 ]
 
-{ #category : 'comparing' }
+{ #category : #comparing }
 SmaCCPatternNode >> = anObject [
 	^ super = anObject and: [ self patternToken = anObject patternToken ]
 ]
 
-{ #category : 'matching' }
+{ #category : #matching }
 SmaCCPatternNode >> copyInContext: aDictionary [
 	^ (aDictionary at: self ifAbsent: [ nil ]) copy
 ]
 
-{ #category : 'reflective operations' }
+{ #category : #'reflective operations' }
 SmaCCPatternNode >> doesNotUnderstand: aMessage [
 	| sender |
 	sender := thisContext sender.
@@ -49,39 +49,39 @@ SmaCCPatternNode >> doesNotUnderstand: aMessage [
 		ifFalse: [ super doesNotUnderstand: aMessage ]
 ]
 
-{ #category : 'comparing' }
+{ #category : #comparing }
 SmaCCPatternNode >> hash [
 	^ self patternToken hash
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCPatternNode >> isListMatch [
 	^ patternToken isListMatch
 ]
 
-{ #category : 'matching' }
+{ #category : #matching }
 SmaCCPatternNode >> match: aSmaCCParseNode inContext: aDictionary [
 	^ (aDictionary at: self ifAbsentPut: [ aSmaCCParseNode ])
 		= aSmaCCParseNode
 		and: [ patternToken testBlock value: aSmaCCParseNode ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCPatternNode >> name [
 	^ patternToken name
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCPatternNode >> patternToken [
 	^ patternToken
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCPatternNode >> patternToken: anObject [
 	patternToken := anObject
 ]
 
-{ #category : 'variables' }
+{ #category : #variables }
 SmaCCPatternNode >> tokenVariables [
 	^ #(#patternToken)
 ]

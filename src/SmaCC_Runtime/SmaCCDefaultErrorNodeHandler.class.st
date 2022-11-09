@@ -1,15 +1,15 @@
 Class {
-	#name : 'SmaCCDefaultErrorNodeHandler',
-	#superclass : 'SmaCCErrorNodeHandler',
+	#name : #SmaCCDefaultErrorNodeHandler,
+	#superclass : #SmaCCErrorNodeHandler,
 	#category : 'SmaCC_Runtime'
 }
 
-{ #category : 'private-error handling' }
+{ #category : #'private-error handling' }
 SmaCCDefaultErrorNodeHandler >> errorShiftActionsForState: stateIndex [
 	^ self nodeShiftActionsFor: stateIndex
 ]
 
-{ #category : 'private-error handling' }
+{ #category : #'private-error handling' }
 SmaCCDefaultErrorNodeHandler >> performErrorReductions [
 	| onlyAction actions |
 	[ actions := Set new.

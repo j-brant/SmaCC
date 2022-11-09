@@ -1,20 +1,20 @@
 Class {
-	#name : 'SmaCCErrorNodeHandler',
-	#superclass : 'SmaCCErrorHandler',
+	#name : #SmaCCErrorNodeHandler,
+	#superclass : #SmaCCErrorHandler,
 	#category : 'SmaCC_Runtime'
 }
 
-{ #category : 'private-error handling' }
+{ #category : #'private-error handling' }
 SmaCCErrorNodeHandler >> errorHandlerStates [
 	^ self stateStack collect: [ :each | self errorShiftActionsForState: each ]
 ]
 
-{ #category : 'private-error handling' }
+{ #category : #'private-error handling' }
 SmaCCErrorNodeHandler >> errorShiftActionsForState: stateIndex [
 	^ self nodeShiftActionsFor: stateIndex
 ]
 
-{ #category : 'private-error handling' }
+{ #category : #'private-error handling' }
 SmaCCErrorNodeHandler >> errorSortValueFor: stateIndex [
 	| count hasCurrentTokenAction |
 	count := 0.
@@ -29,7 +29,7 @@ SmaCCErrorNodeHandler >> errorSortValueFor: stateIndex [
 		ifFalse: [ count ]
 ]
 
-{ #category : 'private-error handling' }
+{ #category : #'private-error handling' }
 SmaCCErrorNodeHandler >> findErrorHandlerIfNoneUseErrorNumber: anInteger [
 	| handlerStates index startingErrorToken stackContents dismissedTokens newState |
 	dismissedTokens := OrderedCollection new.
@@ -61,7 +61,7 @@ SmaCCErrorNodeHandler >> findErrorHandlerIfNoneUseErrorNumber: anInteger [
 	^ true
 ]
 
-{ #category : 'error handling' }
+{ #category : #'error handling' }
 SmaCCErrorNodeHandler >> finishErrorParse: errorToken dismissed: dismissedTokens [
 	| handlerStates |
 	handlerStates := self nodeErrorHandlerStates reverse.
@@ -69,7 +69,7 @@ SmaCCErrorNodeHandler >> finishErrorParse: errorToken dismissed: dismissedTokens
 		ifFalse: [ self reportError: 0 ]
 ]
 
-{ #category : 'error handling' }
+{ #category : #'error handling' }
 SmaCCErrorNodeHandler >> finishErrorParse: errorToken dismissed: dismissedTokens handlerStates: handlerStates [
 	| newStack stackContents |
 	1 to: handlerStates size do: [ :i | 
@@ -91,7 +91,7 @@ SmaCCErrorNodeHandler >> finishErrorParse: errorToken dismissed: dismissedTokens
 	^ false
 ]
 
-{ #category : 'error handling' }
+{ #category : #'error handling' }
 SmaCCErrorNodeHandler >> handleError: anInteger [
 	self markErrorToken.
 	self performErrorReductions.
@@ -101,17 +101,17 @@ SmaCCErrorNodeHandler >> handleError: anInteger [
 	^ self findErrorHandlerIfNoneUseErrorNumber: anInteger
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCErrorNodeHandler >> handlesErrors [
 	^ true
 ]
 
-{ #category : 'private-error handling' }
+{ #category : #'private-error handling' }
 SmaCCErrorNodeHandler >> nodeErrorHandlerStates [
 	^ self stateStack collect: [ :each | self nodeShiftActionsFor: each ]
 ]
 
-{ #category : 'private-error handling' }
+{ #category : #'private-error handling' }
 SmaCCErrorNodeHandler >> nodeShiftActionsFor: stateIndex [
 	| potentialNewStates |
 	potentialNewStates := Set new.
@@ -123,7 +123,7 @@ SmaCCErrorNodeHandler >> nodeShiftActionsFor: stateIndex [
 	^ potentialNewStates asSortedCollection: [ :a :b | (self errorSortValueFor: a) < (self errorSortValueFor: b) ]
 ]
 
-{ #category : 'private-error handling' }
+{ #category : #'private-error handling' }
 SmaCCErrorNodeHandler >> performErrorReductions [
 	self subclassResponsibility
 ]
