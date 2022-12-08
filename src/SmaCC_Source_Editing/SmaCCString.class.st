@@ -734,6 +734,18 @@ SmaCCString >> stringIndexFor: anIndex [
 	^ result
 ]
 
+{ #category : #editing }
+SmaCCString >> swapFrom: region1Start to: region1Stop with: region2Start to: region2Stop [
+	self
+		moveFrom: region1Start
+		to: region1Stop
+		after: region2Stop.
+	self
+		moveFrom: region2Start
+		to: region2Stop
+		after: region1Start - 1
+]
+
 { #category : #accessing }
 SmaCCString >> whitespaceAfterIndex: stopPosition [
 	| stopIndex |
