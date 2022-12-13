@@ -402,6 +402,7 @@ SmaCCCodeGenerator >> compileEmptySymbolTokenId: emptySymbolId [
 	self
 		compileTokenIdMethodNamed: 'emptySymbolToken'
 		withId: emptySymbolId
+		isOverridden: true
 ]
 
 { #category : #'compiling-nodes' }
@@ -411,7 +412,10 @@ SmaCCCodeGenerator >> compileEqualMethod: aSmaCCNodeClassDefinition [
 
 { #category : #'compiling-scanner' }
 SmaCCCodeGenerator >> compileErrorSymbolTokenId: errorTokenId [
-	self compileTokenIdMethodNamed: 'errorToken' withId: errorTokenId
+	self
+		compileTokenIdMethodNamed: 'errorToken'
+		withId: errorTokenId
+		isOverridden: true
 ]
 
 { #category : #'compiling-nodes' }
@@ -469,7 +473,7 @@ SmaCCCodeGenerator >> compileIgnoreCaseMethods [
 	self grammar ignoreCase
 		ifFalse: [ ^ self ].
 	self
-		startPublicOverrideMethod;
+		startProtectedOverrideMethod;
 		nextPutLine:
 			(self
 				method: #keywordFor:
@@ -540,7 +544,7 @@ SmaCCCodeGenerator >> compileNodeClassDefinition: aSmaCCClassDefinition [
 
 { #category : #compiling }
 SmaCCCodeGenerator >> compileOptimizedMethodIn: modelClass [
-	self subclassResponsibility
+	self compileMethodIn: modelClass
 ]
 
 { #category : #'compiling-scanner' }
@@ -645,9 +649,11 @@ SmaCCCodeGenerator >> compileSymbolTypes: anArray [
 ]
 
 { #category : #'compiling-scanner' }
-SmaCCCodeGenerator >> compileTokenIdMethodNamed: aString withId: symbolId [
+SmaCCCodeGenerator >> compileTokenIdMethodNamed: aString withId: symbolId isOverridden: aBoolean [
+	aBoolean
+		ifTrue: [ self startPublicOverrideMethod ]
+		ifFalse: [ self startPublicVirtualMethod ].
 	self
-		startPublicOverrideMethod;
 		nextPutLine: (self method: aString , 'Id' type: self unsignedShort);
 		nextPutStatement: (self return: symbolId printString);
 		endMethod;
@@ -1018,6 +1024,17 @@ SmaCCCodeGenerator >> outputIsSelector: isSelector on: stream [
 { #category : #'compiling-scanner' }
 SmaCCCodeGenerator >> outputMatchFor: aSmaCCCharacterEdge seen: aCollection on: stream [
 	self subclassResponsibility
+]
+
+{ #category : #'compiling-scanner' }
+SmaCCCodeGenerator >> outputMatchForTransition: each on: stream [
+	each first = each last
+		ifTrue: [ ^ self outputSingleCharacterMatch: each on: stream ].
+	each first = (Character value: 0)
+		ifTrue: [ ^ self outputLessThanMatch: each on: stream ].
+	each last = (Character value: SmaCCGrammar maximumCharacterValue)
+		ifTrue: [ ^ self outputGreaterThanMatch: each on: stream ].
+	self outputRangeMatch: each on: stream
 ]
 
 { #category : #private }
