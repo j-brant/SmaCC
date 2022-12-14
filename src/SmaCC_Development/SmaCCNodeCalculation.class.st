@@ -104,28 +104,19 @@ SmaCCNodeCalculation >> compileTypes [
 
 { #category : #private }
 SmaCCNodeCalculation >> compileVisitor [
-	| class trait traitName |
-	traitName := 'T' , grammar rootDefinition fullName , 'Visitor'.
-	trait := self codeGenerator
-		defineTrait: traitName
-		fromTraits: #('TSmaCCParseNodeVisitor').
-	class := self codeGenerator
-		defineClass: grammar rootDefinition fullName , 'Visitor'
-		asSubclassOf: (self codeGenerator model classFor: Object)
-		fromTraits: {traitName}.
-	self codeGenerator removeOldMethodsFrom: class.
-	self codeGenerator removeOldMethodsFrom: class theMetaClass.
-	self codeGenerator removeOldMethodsFrom: trait.
-	(SmaCCVisitorClassDefinition forClassDefinitions: self sortedClasses)
-		grammar: grammar;
-		modelClass: trait;
-		compileMethodsAndVariables
+	self codeGenerator compileVisitor: self
 ]
 
 { #category : #private }
 SmaCCNodeCalculation >> defineNodeClasses [
 	self sortedClasses
 		do: [ :each | self codeGenerator compileNodeClassDefinition: each ]
+]
+
+{ #category : #accessing }
+SmaCCNodeCalculation >> grammar [
+
+	^ grammar
 ]
 
 { #category : #private }

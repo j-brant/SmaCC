@@ -2,7 +2,7 @@ Class {
 	#name : #JSIndexedPropertyExpressionNode,
 	#superclass : #JSExpressionNode,
 	#instVars : [
-		'expressions',
+		'expression',
 		'leftBracket',
 		'fieldExpression',
 		'rightBracket'
@@ -16,20 +16,15 @@ JSIndexedPropertyExpressionNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-JSIndexedPropertyExpressionNode >> compositeNodeVariables [
-	^ #(#expressions)
+JSIndexedPropertyExpressionNode >> expression [
+	^ expression
 ]
 
 { #category : #generated }
-JSIndexedPropertyExpressionNode >> expressions [
-	^ expressions
-]
-
-{ #category : #generated }
-JSIndexedPropertyExpressionNode >> expressions: anOrderedCollection [
-	self setParents: self expressions to: nil.
-	expressions := anOrderedCollection.
-	self setParents: self expressions to: self
+JSIndexedPropertyExpressionNode >> expression: aJSExpressionNode [
+	self expression notNil ifTrue: [ self expression parent: nil ].
+	expression := aJSExpressionNode.
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
@@ -49,12 +44,6 @@ JSIndexedPropertyExpressionNode >> ignoredTokenVariables [
 	^ #(#leftBracket #rightBracket)
 ]
 
-{ #category : #'generated-initialize-release' }
-JSIndexedPropertyExpressionNode >> initialize [
-	super initialize.
-	expressions := OrderedCollection new: 2.
-]
-
 { #category : #generated }
 JSIndexedPropertyExpressionNode >> leftBracket [
 	^ leftBracket
@@ -67,7 +56,7 @@ JSIndexedPropertyExpressionNode >> leftBracket: aSmaCCToken [
 
 { #category : #generated }
 JSIndexedPropertyExpressionNode >> nodeVariables [
-	^ #(#fieldExpression)
+	^ #(#expression #fieldExpression)
 ]
 
 { #category : #generated }

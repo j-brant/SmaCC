@@ -321,26 +321,6 @@ SmaCCSmalltalkCodeGenerator >> compileChanges [
 		ifNotNil: [ :each | each initializeKeywordMap ]
 ]
 
-{ #category : #'compiling-nodes' }
-SmaCCSmalltalkCodeGenerator >> compileChildrenMethod: aSmaCCNodeClassDefinition [
-	
-]
-
-{ #category : #'compiling-nodes' }
-SmaCCSmalltalkCodeGenerator >> compileCopyInContextMethod: aSmaCCNodeClassDefinition [
-	
-]
-
-{ #category : #'compiling-nodes' }
-SmaCCSmalltalkCodeGenerator >> compileEqualMethod: aSmaCCNodeClassDefinition [
-	
-]
-
-{ #category : #'compiling-nodes' }
-SmaCCSmalltalkCodeGenerator >> compileHashMethod: aSmaCCNodeClassDefinition [
-	
-]
-
 { #category : #'compiling-scanner' }
 SmaCCSmalltalkCodeGenerator >> compileIgnoreCaseMethods [
 	super compileIgnoreCaseMethods.
@@ -419,11 +399,6 @@ SmaCCSmalltalkCodeGenerator >> compileKeywordInitializerUsing: keywordMapDiction
 		classified: #'generated-initialization'
 ]
 
-{ #category : #'compiling-nodes' }
-SmaCCSmalltalkCodeGenerator >> compileMatchInContextMethod: aSmaCCNodeClassDefinition [
-	
-]
-
 { #category : #compiling }
 SmaCCSmalltalkCodeGenerator >> compileMethodIn: modelClass [
 	modelClass compile: self formattedCode classified: #generated
@@ -444,11 +419,6 @@ SmaCCSmalltalkCodeGenerator >> compileOptimizedMethodIn: modelClass [
 	self rewriters
 		do: [ :each | [ each executeTree: tree ] whileTrue: [ tree := each tree ] ].
 	self compileScannerTree: tree into: modelClass
-]
-
-{ #category : #'compiling-nodes' }
-SmaCCSmalltalkCodeGenerator >> compilePostCopyMethod: aSmaCCNodeClassDefinition [
-	
 ]
 
 { #category : #'compiling-parser' }
@@ -560,6 +530,27 @@ SmaCCSmalltalkCodeGenerator >> compileVariablesMethods: aSmaCCNodeClassDefinitio
 			(allVariables
 				select: [ :each | each isBaseTokenType not and: [ each isBaseNodeType not ] ])
 			value: 'otherVariables'
+]
+
+{ #category : #private }
+SmaCCSmalltalkCodeGenerator >> compileVisitor: aSmaCCNodeCalculation [
+	| trait class traitName |
+	traitName := 'T' , aSmaCCNodeCalculation grammar rootDefinition fullName
+			, 'Visitor'.
+	trait := self defineTrait: traitName fromTraits: #('TSmaCCParseNodeVisitor').
+	class := self
+			defineClass: aSmaCCNodeCalculation grammar rootDefinition fullName
+					, 'Visitor'
+			asSubclassOf: (self model classFor: Object)
+			fromTraits: {traitName}.
+	self removeOldMethodsFrom: class.
+	self removeOldMethodsFrom: class theMetaClass.
+	self removeOldMethodsFrom: trait.
+	(SmaCCVisitorClassDefinition
+		forClassDefinitions: aSmaCCNodeCalculation sortedClasses)
+		grammar: aSmaCCNodeCalculation grammar;
+		modelClass: trait;
+		compileMethodsAndVariables
 ]
 
 { #category : #'compiling-scanner' }
@@ -1062,6 +1053,32 @@ SmaCCSmalltalkCodeGenerator >> removeUnnecessaryMethodChanges [
 										removeChange: other ] ] on: Error do: [ :ex | ex return ] ] ] ]
 ]
 
+{ #category : #'compiling-nodes' }
+SmaCCSmalltalkCodeGenerator >> returnedNodeIndexFor: aSmaCCReduceCode [
+	^ self
+		returnedNodeIndexForTree: (RBParser parseExpression: aSmaCCReduceCode source)
+		in: aSmaCCReduceCode
+]
+
+{ #category : #'compiling-nodes' }
+SmaCCSmalltalkCodeGenerator >> returnedNodeIndexForTree: parseTree in: aSmaCCReduceCode [
+	| index |
+	parseTree isCascade
+		ifTrue: [ ^ self returnedNodeIndexForTree: parseTree messages last in: aSmaCCReduceCode ].
+	(parseTree isMessage and: [ parseTree selector == #yourself ])
+		ifTrue: [ ^ self returnedNodeIndexForTree: parseTree receiver in: aSmaCCReduceCode ].
+	(parseTree isVariable or: [ parseTree isLiteralNode ]) ifFalse: [ ^ nil ].
+	parseTree isVariable
+		ifTrue: [ index := aSmaCCReduceCode rhs indexOfVariable: parseTree name.
+			(index notNil and: [ index between: 1 and: aSmaCCReduceCode rhs size ])
+				ifTrue: [ ^ index ] ].
+	(parseTree isLiteralNode and: [ parseTree value isString ]) ifFalse: [ ^ nil ].
+	(parseTree value allSatisfy: [ :each | each isDigit ])
+		ifTrue: [ index := Integer readFrom: (ReadStream on: parseTree value).
+			(index between: 1 and: aSmaCCReduceCode rhs size) ifTrue: [ ^ index ] ].
+	^ nil
+]
+
 { #category : #'compiling-scanner' }
 SmaCCSmalltalkCodeGenerator >> rewriters [
 	| rewriters |
@@ -1263,6 +1280,25 @@ SmaCCSmalltalkCodeGenerator >> superMessage: aString argument: firstArgumentStri
 { #category : #'code generation templates' }
 SmaCCSmalltalkCodeGenerator >> variableReference: aSmaCCVariableDefinition in: aString [
 	^ '(' , aString , ') ' , aSmaCCVariableDefinition getterMethodName
+]
+
+{ #category : #accessing }
+SmaCCSmalltalkCodeGenerator >> verifyCodeToken: codeToken for: aSmaCCRHS [
+	| code |
+	code := codeToken value copyFrom: 2 to: codeToken value size - 1.
+	RBParser
+		parseExpression: code
+		onError: [ :string :position | 
+			SmaCCParserError new
+				messageText: string;
+				tag: (SmaCCToken
+						value: (code copyFrom: position to: position)
+						start: codeToken startPosition + position
+						ids: #());
+				signal ].
+	aSmaCCRHS reduceCodeSource: code.
+	aSmaCCRHS reduceCode isImmediate: codeToken value first = $[.
+	^ aSmaCCRHS
 ]
 
 { #category : #'compiling-scanner' }

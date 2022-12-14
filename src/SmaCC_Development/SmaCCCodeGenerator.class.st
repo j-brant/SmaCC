@@ -344,26 +344,11 @@ SmaCCCodeGenerator >> compileAcceptVisitorMethod: aSmaCCNodeClassDefinition visi
 
 { #category : #'compiling-parser' }
 SmaCCCodeGenerator >> compileAmbiguousTransitions [
-	| stream |
-	ambiguousActions isEmpty
-		ifTrue: [ ^ self ].
-	stream := self outputStream.
-	stream nextPutAll: self newUnsignedShortArrayArray.
-	ambiguousActions
-		do:
-			[ :each | self writeTransitionTableEntry: each on: stream firstIsType: false ]
-		separatedBy: [ stream nextPutAll: self literalArraySeparator ].
-	stream
-		cr;
-		tab;
-		nextPutAll: self endLiteralArray.
+	ambiguousActions isEmpty ifTrue: [ ^ self ].
 	self
 		startPublicOverrideMethod;
-		nextPutLine:
-			(self
-				method: 'ambiguousTransitions'
-				type: self unsignedShortArrayArray);
-		nextPutStatement: (self return: stream contents);
+		nextPutLine: (self method: 'ambiguousTransitions' type: self unsignedShortArrayArray);
+		nextPutStatement: (self return: self initializerForAmbiguousTransitions);
 		endMethod;
 		compileMethodWithoutFormattingIn: parserClass theMetaClass
 ]
@@ -379,12 +364,10 @@ SmaCCCodeGenerator >> compileChanges [
 
 { #category : #'compiling-nodes' }
 SmaCCCodeGenerator >> compileChildrenMethod: aSmaCCNodeClassDefinition [
-	self subclassResponsibility
 ]
 
 { #category : #'compiling-nodes' }
 SmaCCCodeGenerator >> compileCopyInContextMethod: aSmaCCNodeClassDefinition [
-	self subclassResponsibility
 ]
 
 { #category : #compiling }
@@ -407,7 +390,6 @@ SmaCCCodeGenerator >> compileEmptySymbolTokenId: emptySymbolId [
 
 { #category : #'compiling-nodes' }
 SmaCCCodeGenerator >> compileEqualMethod: aSmaCCNodeClassDefinition [
-	self subclassResponsibility
 ]
 
 { #category : #'compiling-scanner' }
@@ -465,7 +447,6 @@ SmaCCCodeGenerator >> compileGetterAndSetter: aSmaCCVariableDefinition forDefini
 
 { #category : #'compiling-nodes' }
 SmaCCCodeGenerator >> compileHashMethod: aSmaCCNodeClassDefinition [
-	self subclassResponsibility
 ]
 
 { #category : #'compiling-scanner' }
@@ -497,7 +478,6 @@ SmaCCCodeGenerator >> compileKeywordInitializerUsing: keywordMapDictionary [
 
 { #category : #'compiling-nodes' }
 SmaCCCodeGenerator >> compileMatchInContextMethod: aSmaCCNodeClassDefinition [
-	self subclassResponsibility
 ]
 
 { #category : #'compiling-scanner' }
@@ -549,7 +529,6 @@ SmaCCCodeGenerator >> compileOptimizedMethodIn: modelClass [
 
 { #category : #'compiling-scanner' }
 SmaCCCodeGenerator >> compilePostCopyMethod: aSmaCCNodeClassDefinition [
-	self subclassResponsibility
 ]
 
 { #category : #'compiling-parser' }
@@ -559,25 +538,10 @@ SmaCCCodeGenerator >> compileReductionActions [
 
 { #category : #compiling }
 SmaCCCodeGenerator >> compileReductionTable: reductionTable [
-	| stream |
-	stream := self outputStream.
-	stream nextPutAll: self reduceActionLiteralStart.
-	reductionTable
-		do:
-			[ :each | 
-			stream
-				cr;
-				tab;
-				nextPutAll: (self reduceAction: each) ]
-		separatedBy: [ stream nextPutAll: self literalArraySeparator ].
-	stream
-		cr;
-		tab;
-		nextPutAll: self endLiteralArray.
 	self
 		startProtectedOverrideMethod;
 		nextPutLine: (self method: 'reduceTable' type: self reduceActionArrayType);
-		nextPutStatement: (self return: stream contents);
+		nextPutStatement: (self return: (self initializerForReductionTable: reductionTable));
 		endMethod;
 		compileMethodWithoutFormattingIn: parserClass theMetaClass
 ]
@@ -662,24 +626,12 @@ SmaCCCodeGenerator >> compileTokenIdMethodNamed: aString withId: symbolId isOver
 
 { #category : #'compiling-parser' }
 SmaCCCodeGenerator >> compileTransitionTable: transitionTable [
-	| stream |
-	stream := self outputStream.
-	stream nextPutAll: self newUnsignedShortArrayArray.
-	transitionTable
-		do:
-			[ :each | self writeTransitionTableEntry: each on: stream firstIsType: true ]
-		separatedBy: [ stream nextPutAll: self literalArraySeparator ].
-	stream
-		cr;
-		tab;
-		nextPutAll: self endLiteralArray.
 	self
 		startPublicOverrideMethod;
 		nextPutLine: (self method: 'transitionTable' type: self unsignedShortArrayArray);
-		nextPutStatement: (self return: stream contents);
+		nextPutStatement: (self return: (self initializerForTransitionTable: transitionTable));
 		endMethod;
-		compileMethodWithoutFormattingIn: parserClass theMetaClass.
-	self compileAmbiguousTransitions
+		compileMethodWithoutFormattingIn: parserClass theMetaClass
 ]
 
 { #category : #'compiling-nodes' }
@@ -716,6 +668,11 @@ SmaCCCodeGenerator >> compileVisitMethodFor: aSmaCCNodeClassDefinition visitor: 
 						with: tempName));
 		endMethod;
 		compileMethodIn: aSmaCCVisitorClassDefinition modelClass
+]
+
+{ #category : #'compiling-nodes' }
+SmaCCCodeGenerator >> compileVisitor: aSmaCCNodeCalculation [
+	self subclassResponsibility
 ]
 
 { #category : #'reduction table' }
@@ -877,6 +834,63 @@ SmaCCCodeGenerator >> initializeArrayContentsToNull: aSmaCCRHS [
 SmaCCCodeGenerator >> initializeResultForReduceAction: aSmaCCRHS [
 	^ self
 		newArrayOfSize: aSmaCCRHS productionSymbol variableDefinitions size
+]
+
+{ #category : #'compiling-parser' }
+SmaCCCodeGenerator >> initializerForAmbiguousTransitions [
+	| stream |
+	stream := self outputStream.
+	stream nextPutAll: self newUnsignedShortArrayArray.
+	ambiguousActions
+		do: [ :each | 
+			self
+				writeTransitionTableEntry: each
+				on: stream
+				firstIsType: false ]
+		separatedBy: [ stream nextPutAll: self literalArraySeparator ].
+	stream
+		cr;
+		tab;
+		nextPutAll: self endLiteralArray.
+	^ stream contents
+]
+
+{ #category : #compiling }
+SmaCCCodeGenerator >> initializerForReductionTable: reductionTable [
+	| stream |
+	stream := self outputStream.
+	stream nextPutAll: self reduceActionLiteralStart.
+	reductionTable
+		do: [ :each | 
+			stream
+				cr;
+				tab;
+				nextPutAll: (self reduceAction: each) ]
+		separatedBy: [ stream nextPutAll: self literalArraySeparator ].
+	stream
+		cr;
+		tab;
+		nextPutAll: self endLiteralArray.
+	^ stream contents
+]
+
+{ #category : #'compiling-parser' }
+SmaCCCodeGenerator >> initializerForTransitionTable: transitionTable [
+	| stream |
+	stream := self outputStream.
+	stream nextPutAll: self newUnsignedShortArrayArray.
+	transitionTable
+		do: [ :each | 
+			self
+				writeTransitionTableEntry: each
+				on: stream
+				firstIsType: true ]
+		separatedBy: [ stream nextPutAll: self literalArraySeparator ].
+	stream
+		cr;
+		tab;
+		nextPutAll: self endLiteralArray.
+	^ stream contents
 ]
 
 { #category : #private }
@@ -1211,6 +1225,11 @@ SmaCCCodeGenerator >> resetCodeStream [
 	codeStream := nil
 ]
 
+{ #category : #accessing }
+SmaCCCodeGenerator >> returnedNodeIndexFor: aSmaCCReduceCode [
+	self subclassResponsibility
+]
+
 { #category : #'compiling-scanner' }
 SmaCCCodeGenerator >> scannerActionFor: aString [
 	self subclassResponsibility
@@ -1457,6 +1476,11 @@ SmaCCCodeGenerator >> variableReference: aSmaCCVariableDefinition [
 
 { #category : #'code generation templates' }
 SmaCCCodeGenerator >> variableReference: aSmaCCVariableDefinition in: aString [
+	self subclassResponsibility
+]
+
+{ #category : #accessing }
+SmaCCCodeGenerator >> verifyCodeToken: codeToken for: aSmaCCRHS [
 	self subclassResponsibility
 ]
 
