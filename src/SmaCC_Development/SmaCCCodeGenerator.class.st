@@ -404,43 +404,34 @@ SmaCCCodeGenerator >> compileErrorSymbolTokenId: errorTokenId [
 SmaCCCodeGenerator >> compileGetterAndSetter: aSmaCCVariableDefinition forDefinition: aSmaCCNodeClassDefinition [
 	| type typeName variableName definer |
 	variableName := self
-		nonKeywordNameFor: aSmaCCVariableDefinition sourceVariableName.
+			nonKeywordNameFor: aSmaCCVariableDefinition sourceVariableName.
 	type := aSmaCCVariableDefinition type.
-	self
-		setGetterMethodNameTo: aSmaCCVariableDefinition
-		withName: variableName.
+	self setGetterMethodNameTo: aSmaCCVariableDefinition withName: variableName.
 	definer := aSmaCCNodeClassDefinition modelClass
-		whoDefinesMethod: aSmaCCVariableDefinition getterMethodName asSymbol.
+			whoDefinesMethod: aSmaCCVariableDefinition getterMethodName asSymbol.
 	(definer isNil or: [ definer ~= aSmaCCNodeClassDefinition modelClass ])
-		ifTrue:
-			[ self
-				startPublicVirtualMethod;
-				nextPutLine:
-					(self
-						method: aSmaCCVariableDefinition getterMethodName
-						type: type name);
+		ifTrue: [ self
+				startPublicVirtualGetter;
+				nextPutLine: (self method: aSmaCCVariableDefinition getterMethodName type: type name);
 				nextPutStatement: (self return: (self variableReference: aSmaCCVariableDefinition));
 				endMethod;
 				compileMethodIn: aSmaCCNodeClassDefinition modelClass ].
 	aSmaCCVariableDefinition setterMethodName: variableName , ':'.
 	definer := aSmaCCNodeClassDefinition modelClass
-		whoDefinesMethod: aSmaCCVariableDefinition setterMethodName asSymbol.
-	(definer isNil or: [ definer = self objectClass ])
-		ifFalse: [ ^ self ].
+			whoDefinesMethod: aSmaCCVariableDefinition setterMethodName asSymbol.
+	(definer isNil or: [ definer = self objectClass ]) ifFalse: [ ^ self ].
 	typeName := aSmaCCNodeClassDefinition temporaryNameFor: type name.
 	self
 		startPublicVirtualMethod;
-		nextPutLine:
-			(self
-				method: aSmaCCVariableDefinition setterMethodName
-				type: self voidType
+		nextPutLine: (self
+				setter: aSmaCCVariableDefinition setterMethodName
 				argumentName: typeName
 				argumentType: type name);
-		addParentAssignmentFor: aSmaCCVariableDefinition
-			to: self undefinedObject;
-		nextPutStatement: (self assignmentTo: variableName from: typeName);
-		addParentAssignmentFor: aSmaCCVariableDefinition
-			to: self receiverName;
+		addParentAssignmentFor: aSmaCCVariableDefinition to: self undefinedObject;
+		nextPutStatement: (self
+				assignmentTo: (self variableReference: aSmaCCVariableDefinition)
+				from: typeName);
+		addParentAssignmentFor: aSmaCCVariableDefinition to: self receiverName;
 		endMethod;
 		compileMethodIn: aSmaCCNodeClassDefinition modelClass
 ]
@@ -768,6 +759,11 @@ SmaCCCodeGenerator >> endIteratorString [
 { #category : #private }
 SmaCCCodeGenerator >> endMethod [
 	self codeStream nextPutAll: self endMethodString
+]
+
+{ #category : #'code generation templates' }
+SmaCCCodeGenerator >> getProperty: aVariable in: aString [
+	^ self send: aVariable getterMethodName to: aString
 ]
 
 { #category : #'compiling-parser' }
@@ -1271,6 +1267,23 @@ SmaCCCodeGenerator >> setGetterMethodNameTo: aSmaCCVariableDefinition withName: 
 		getterMethodName: (self methodNameFor: variableName)
 ]
 
+{ #category : #'code generation templates' }
+SmaCCCodeGenerator >> setProperty: aSmaCCVariableDefinition in: aString to: aValue [
+	^ self
+		send: aSmaCCVariableDefinition setterMethodName
+		to: aString
+		with: aValue
+]
+
+{ #category : #'code generation templates' }
+SmaCCCodeGenerator >> setter: aString argumentName: argumentNameString argumentType: argumentTypeString [
+	^ self
+		method: aString
+		type: self voidType
+		argumentName: argumentNameString
+		argumentType: argumentTypeString
+]
+
 { #category : #'reduction table' }
 SmaCCCodeGenerator >> singleVariableCollectionFor: reduceCode [
 	| variable recursionIndex |
@@ -1375,6 +1388,11 @@ SmaCCCodeGenerator >> startPublicOverrideMethod [
 	self codeStream
 		nextPutAll: self public;
 		nextPutAll: self override
+]
+
+{ #category : #private }
+SmaCCCodeGenerator >> startPublicVirtualGetter [
+	self startPublicVirtualMethod
 ]
 
 { #category : #private }
