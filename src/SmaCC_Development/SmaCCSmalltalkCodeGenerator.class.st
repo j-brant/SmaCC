@@ -459,7 +459,8 @@ SmaCCSmalltalkCodeGenerator >> compileSymbolTypes: anArray [
 	self
 		startPublicVirtualMethod;
 		nextPutLine: (self method: 'symbolTypes' type: self arrayType);
-		nextPutStatement: (self return: anArray storeString);
+		nextPutStatement: (self
+				return: (anArray collect: [ :each | each ifNotNil: [ each name ] ]) FstoreString);
 		endMethod;
 		compileMethodIn: self parserClass theMetaClass
 ]
