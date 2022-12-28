@@ -1184,16 +1184,6 @@ SmaCCSmalltalkCodeGenerator >> send: selectorString to: receiverString with: fir
 		, secondArgumentString , ')'
 ]
 
-{ #category : #'code generation templates' }
-SmaCCSmalltalkCodeGenerator >> send: selectorString to: receiverString with: firstArgumentString with: secondArgumentString with: thirdArgumentString [
-	| keywords |
-	keywords := selectorString asSymbol keywords.
-	^ '(' , receiverString , ') ' , keywords first , ' ('
-		, firstArgumentString , ') ' , (keywords at: 2) , ' ('
-		, secondArgumentString , ') ' , keywords last , ' ('
-		, thirdArgumentString , ')'
-]
-
 { #category : #'compiling-scanner' }
 SmaCCSmalltalkCodeGenerator >> splitIfTrueBranchFrom: aParseTree usingName: aSelector into: modelClass [
 	| blocks |

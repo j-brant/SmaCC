@@ -761,7 +761,7 @@ SmaCCCodeGenerator >> endMethod [
 ]
 
 { #category : #'code generation templates' }
-SmaCCCodeGenerator >> getProperty: aVariable in: aString [
+SmaCCCodeGenerator >> getCollectionProperty: aVariable in: aString canBeNil: aBoolean [
 	^ self send: aVariable getterMethodName to: aString
 ]
 
@@ -1252,11 +1252,6 @@ SmaCCCodeGenerator >> send: selectorString to: receiverString with: argumentStri
 
 { #category : #'code generation templates' }
 SmaCCCodeGenerator >> send: selectorString to: receiverString with: firstArgumentString with: secondArgumentString [
-	self subclassResponsibility
-]
-
-{ #category : #'code generation templates' }
-SmaCCCodeGenerator >> send: selectorString to: receiverString with: firstArgumentString with: secondArgumentString with: thirdArgumentString [
 	self subclassResponsibility
 ]
 

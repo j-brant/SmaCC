@@ -35,7 +35,10 @@ SmaCCReduceActionGenerator >> compileAddToVariable: aSmaCCVariableDefinition fro
 				send: selector
 				to: 'result'
 				with: argument
-				with: (generator getProperty: var in: 'result') ]
+				with: (generator
+						getCollectionProperty: var
+						in: 'result'
+						canBeNil: index > 0) ]
 		ifFalse: [ generator
 				setProperty: aSmaCCVariableDefinition
 				in: 'result'
