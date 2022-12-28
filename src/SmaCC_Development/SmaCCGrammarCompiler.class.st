@@ -305,7 +305,7 @@ SmaCCGrammarCompiler >> optimizedShiftFrom: row to: stateIndex inTable: anArray 
 	(action bitAnd: 2r11) = SmaCCReduceAction id
 		ifFalse: [ ^ nil ].
 	reduceEntry := reduceTable at: (action bitShift: -2).
-	(reduceEntry at: 3) = #liftFirstValue:
+	(reduceEntry at: 3) = (codeGenerator methodNameFor: #liftFirstValue:)
 		ifFalse: [ ^ nil ].
 	(reduceEntry at: 2) = 1
 		ifFalse: [ ^ nil ].
