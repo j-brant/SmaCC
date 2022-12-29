@@ -15,7 +15,7 @@ Class {
 		'errorToken',
 		'visitorTrait'
 	],
-	#category : 'SmaCC_Runtime'
+	#category : #'SmaCC_Runtime'
 }
 
 { #category : #'visitor-double dispatching' }
@@ -73,6 +73,10 @@ SmaCCErrorNode >> doesNotUnderstand: aMessage [
 		ifTrue: [ ^ (self attributeNamed: #nodeProperties ifAbsentPut: [ Dictionary new ])
 				at: aMessage selector
 				ifAbsentPut: [ OrderedCollection new ] ].
+	aMessage arguments size = 1
+		ifTrue: [ ^ (self attributeNamed: #nodeProperties ifAbsentPut: [ Dictionary new ])
+				at: aMessage selector allButLast
+				ifAbsentPut: [ aMessage arguments first ] ].
 	super doesNotUnderstand: aMessage
 ]
 

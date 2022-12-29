@@ -214,39 +214,30 @@ SmaCCCodeGenerator >> argumentIndex: anInteger subIndex: subIndex [
 { #category : #'compiling-scanner' }
 SmaCCCodeGenerator >> asStatement: methodMap forNode: aSmaCCNode lastNeedsReturn: aBoolean [
 	| transitions seen |
-	aSmaCCNode hasSimpleLoop
-		ifTrue: [ self nextPutLine: self startDoWhileLoop ].
+	aSmaCCNode hasSimpleLoop ifTrue: [ self nextPutLine: self startDoWhileLoop ].
 	self writeMatchingCodeFor: aSmaCCNode.
 	transitions := self sortedTransitionsForNode: aSmaCCNode.
 	seen := (transitions notEmpty
-		ifTrue: [ transitions first setClass ]
-		ifFalse: [ Set ]) new.
+			ifTrue: [ transitions first setClass ]
+			ifFalse: [ Set ]) new.
 	transitions
-		do:
-			[ :each | 
+		do: [ :each | 
 			each to = aSmaCCNode
-				ifTrue:
-					[ self
+				ifTrue: [ self
 						nextPutStatement: (self endDoWhileLoopWithClause: (each dispatchTo: self seen: seen)) ]
-				ifFalse:
-					[ self
+				ifFalse: [ self
 						nextPutLine: (self startIfWithClause: (each dispatchTo: self seen: seen)).
 					(methodMap at: each to ifAbsent: [ nil ])
-						ifNil:
-							[ self
+						ifNil: [ self
 								asStatement: methodMap
 								forNode: each to
 								lastNeedsReturn: each ~= transitions last ]
-						ifNotNil:
-							[ :methodCall | 
-							self
-								nextPutStatement: (self return: (self send: methodCall to: self receiverName)) ].
+						ifNotNil: [ :methodCall | self nextPutStatement: (self callScanMethod: methodCall) ].
 					self nextPutStatement: self endConditionalString ].
 			seen addAll: each transitionObjects ].
 	(aBoolean
 		and: [ aSmaCCNode transitions notEmpty or: [ aSmaCCNode action isNil ] ])
-		ifTrue:
-			[ self
+		ifTrue: [ self
 				nextPutStatement: (self return: (self send: #reportLastMatch to: self receiverName)) ]
 ]
 
@@ -271,6 +262,11 @@ SmaCCCodeGenerator >> assignVariable: variableName in: aSmaCCRHS at: key first: 
 { #category : #'reduction table' }
 SmaCCCodeGenerator >> basicCompileSourceFor: aSmaCCReduceAction [
 	self subclassResponsibility
+]
+
+{ #category : #'compiling-scanner' }
+SmaCCCodeGenerator >> callScanMethod: methodCall [
+	^ self return: (self send: methodCall to: self receiverName)
 ]
 
 { #category : #'compiling-scanner' }
