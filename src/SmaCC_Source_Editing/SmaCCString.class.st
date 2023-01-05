@@ -482,25 +482,23 @@ SmaCCString >> moveFrom: fromIndex to: toIndex location: newIndex before: aBoole
 	startInterval := startInterval splitAt: (self indexFor: fromIndex).
 	currentInterval := startInterval.
 	[ currentInterval containsIndex: toIndex ]
-		whileFalse:
-			[ currentInterval isSentinel
-				ifTrue: [ ^ self ].
-			(currentInterval containsIndex: newIndex)
-				ifTrue: [ ^ self ].
+		whileFalse: [ currentInterval isSentinel ifTrue: [ ^ self ].
+			(currentInterval containsIndex: newIndex) ifTrue: [ ^ self ].
 			currentInterval := currentInterval next ].
 	stopInterval := currentInterval.
 	(stopInterval containsIndex: newIndex)
-		ifTrue: [ newIndex < toIndex
-				ifTrue: [ ^ self ] ].
-	stopInterval := (stopInterval splitAt: (self indexFor: toIndex) + 1)
-		previous.
+		ifTrue: [ newIndex < toIndex ifTrue: [ ^ self ] ].
+	stopInterval := (stopInterval splitAt: (self indexFor: toIndex) + 1) previous.
 	newInterval := self intervalContaining: newIndex.
+
 	afterInterval := aBoolean
-		ifTrue: [ newInterval splitAt: (self indexFor: newIndex) ]
-		ifFalse:
-			[ (newInterval containsIndex: newIndex)
-				ifTrue: [ newInterval splitAt: (self indexFor: newIndex) + 1 ]
-				ifFalse: [ newInterval next ] ].
+			ifTrue: [ newInterval splitAt: (self indexFor: newIndex) ]
+			ifFalse: [ (self isIndex: (self nextIndex: newIndex) equalTo: fromIndex)
+					ifTrue: [ ^ self ].
+				(newInterval containsIndex: newIndex)
+					ifTrue: [ newInterval splitAt: (self indexFor: newIndex) + 1 ]
+					ifFalse: [ newInterval next ] ].
+
 	startInterval previous next: stopInterval next.
 	afterInterval previous next: startInterval.
 	stopInterval next: afterInterval
@@ -608,6 +606,34 @@ SmaCCString >> originalStopPositionFor: anInteger [
 	^ 0
 ]
 
+{ #category : #editing }
+SmaCCString >> prepend: aString [
+	| position newInterval str |
+	aString isEmpty
+		ifTrue: [ ^ self startIndex ].
+	str := (aString isKindOf: SmaCCString)
+		ifTrue: [ aString ]
+		ifFalse: [ SmaCCString on: aString ].
+	str
+		intervalsDo: [ :each | 
+			newInterval := self newIntervalFor: each string.
+			newInterval addAllAnnotations: each annotations.
+			newInterval start: each start.
+			newInterval stop: each stop.
+			position isNil
+				ifTrue: [ position := newInterval startIndex ].
+			self prependInterval: newInterval ].
+	^ self startIndex
+]
+
+{ #category : #editing }
+SmaCCString >> prependInterval: newInterval [
+	newInterval next: firstSentinel next.
+	newInterval previous: firstSentinel.
+	newInterval next previous: newInterval.
+	^ firstSentinel next: newInterval
+]
+
 { #category : #accessing }
 SmaCCString >> previousIndex: anIndex [
 	| interval newIndex |
@@ -646,6 +672,31 @@ SmaCCString >> rule [
 { #category : #accessing }
 SmaCCString >> rule: aSmaCCRewrite [
 	
+]
+
+{ #category : #accessing }
+SmaCCString >> safeAllIntervals [
+	"Produce a ordered collection of all nodes. Trying to make the order approximate to the desired list.
+	Mainly used for debugging linking issues in the list"
+
+	| nodes seen current tailNodes |
+	seen := IdentitySet new.
+	nodes := OrderedCollection new.
+	current := firstSentinel.
+	[ seen includes: current ]
+		whileFalse: [ seen add: current.
+			nodes add: current.
+			current := current next ].
+	current := lastSentinel.
+	tailNodes := OrderedCollection new.
+	[ seen includes: current ]
+		whileFalse: [ seen add: current.
+			tailNodes addFirst: current.
+			current := current previous ].
+	nodes addAll: tailNodes.
+	(cachedInterval notNil and: [ (seen includes: cachedInterval) not ])
+		ifTrue: [ nodes add: cachedInterval ].
+	^ nodes
 ]
 
 { #category : #private }
@@ -737,15 +788,20 @@ SmaCCString >> stringIndexFor: anIndex [
 { #category : #editing }
 SmaCCString >> swapFrom: region1Start to: region1Stop with: region2Start to: region2Stop [
 	| prevIndex |
-	prevIndex := (self previousIndex: region1Start).
+	prevIndex := self previousIndex: region1Start.
 	self
 		moveFrom: region1Start
 		to: region1Stop
 		after: region2Stop.
-	self
-		moveFrom: region2Start
-		to: region2Stop
-		after: prevIndex
+	prevIndex notNil
+		ifTrue: [ self
+				moveFrom: region2Start
+				to: region2Stop
+				after: prevIndex ]
+		ifFalse: [ self
+				moveFrom: region2Start
+				to: region2Stop
+				before: self startIndex ]
 ]
 
 { #category : #accessing }
