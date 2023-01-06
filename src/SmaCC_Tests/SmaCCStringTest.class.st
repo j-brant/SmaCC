@@ -258,3 +258,35 @@ SmaCCStringTest >> testReplaceInserted [
 	string replaceFrom: index to: index with: '3'.
 	self assert: string asString = '12345'
 ]
+
+{ #category : #tests }
+SmaCCStringTest >> testSwap [
+	| string |
+	string := SmaCCString on: '12345678'.
+	string
+		swapFrom: 3
+		to: 4
+		with: 6
+		to: 7.
+	self assert: string asString = '12675348'.
+	self assert: (string newPositionFor: 6) = 3.
+	self assert: (string newPositionFor: 3) = 6.
+
+	string := SmaCCString on: '12345678'.
+	string
+		swapFrom: 3
+		to: 4
+		with: 5
+		to: 6.
+	self assert: string asString = '12563478'.
+
+	string := SmaCCString on: '12345678'.
+	string
+		swapFrom: 1
+		to: 2
+		with: 5
+		to: 6.
+	self assert: string asString = '56341278'.
+	self assert: (string newPositionFor: 1) = 5.
+	self assert: (string newPositionFor: 5) = 1
+]
