@@ -4,6 +4,23 @@ Class {
 	#category : #'SmaCC_Tests'
 }
 
+{ #category : #accessing }
+SmaCCStringTest >> testAppend [
+	| string |
+	string := SmaCCString on: '0'.
+	1 to: 9 do: [ :i | string append: i printString ].
+	self assert: string asString equals: '0123456789'.
+
+	string := SmaCCString on: '0'.
+	1
+		to: 9
+		do: [ :i | 
+			string := (SmaCCString on: i printString)
+					append: string;
+					yourself ].
+	self assert: string asString equals: '9876543210'
+]
+
 { #category : #tests }
 SmaCCStringTest >> testCombiningDeletedIntervals [
 	| string intervalCount current |
@@ -248,6 +265,23 @@ SmaCCStringTest >> testNoEdits [
 	| string |
 	string := SmaCCString on: 'asdf'.
 	self assert: string asString = 'asdf'
+]
+
+{ #category : #accessing }
+SmaCCStringTest >> testPrepend [
+	| string |
+	string := SmaCCString on: '0'.
+	1 to: 9 do: [ :i | string prepend: i printString ].
+	self assert: string asString equals: '9876543210'.
+
+	string := SmaCCString new.
+	0
+		to: 9
+		do: [ :i | 
+			string := (SmaCCString on: i printString)
+					prepend: string;
+					yourself ].
+	self assert: string asString equals: '0123456789'
 ]
 
 { #category : #tests }

@@ -172,10 +172,8 @@ SmaCCString >> append: aString [
 
 { #category : #editing }
 SmaCCString >> appendInterval: newInterval [
-	newInterval previous: lastSentinel previous.
-	newInterval next: lastSentinel.
-	newInterval previous next: newInterval.
-	^ lastSentinel previous: newInterval
+	lastSentinel previous next: newInterval.
+	newInterval next: lastSentinel
 ]
 
 { #category : #accessing }
@@ -615,7 +613,7 @@ SmaCCString >> prepend: aString [
 		ifTrue: [ aString ]
 		ifFalse: [ SmaCCString on: aString ].
 	str
-		intervalsDo: [ :each | 
+		reverseIntervalsDo: [ :each | 
 			newInterval := self newIntervalFor: each string.
 			newInterval addAllAnnotations: each annotations.
 			newInterval start: each start.
@@ -629,9 +627,7 @@ SmaCCString >> prepend: aString [
 { #category : #editing }
 SmaCCString >> prependInterval: newInterval [
 	newInterval next: firstSentinel next.
-	newInterval previous: firstSentinel.
-	newInterval next previous: newInterval.
-	^ firstSentinel next: newInterval
+	firstSentinel next: newInterval
 ]
 
 { #category : #accessing }
@@ -662,6 +658,15 @@ SmaCCString >> replaceFrom: startIndex to: stopIndex with: aString [
 	newIndex := self insert: aString at: startIndex.
 	self deleteFrom: startIndex to: stopIndex.
 	^ newIndex
+]
+
+{ #category : #private }
+SmaCCString >> reverseIntervalsDo: aBlock [
+	| current |
+	current := lastSentinel previous.
+	[ current isSentinel ]
+		whileFalse: [ current isRemoved ifFalse: [ aBlock value: current ].
+			current := current previous ]
 ]
 
 { #category : #accessing }
