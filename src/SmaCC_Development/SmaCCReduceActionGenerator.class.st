@@ -20,33 +20,29 @@ SmaCCReduceActionGenerator class >> generate: aSmaCCRHS pullUp: anInteger on: aC
 { #category : #'reduction table' }
 SmaCCReduceActionGenerator >> compileAddToVariable: aSmaCCVariableDefinition from: argument collection: isCollection [
 	^ aSmaCCVariableDefinition isCollection
-		ifTrue:
-			[ | selector var |
+		ifTrue: [ | selector var |
 			var := rhs nodeType
-				variableDefinitionNamed: aSmaCCVariableDefinition variableName.
+					variableDefinitionNamed: aSmaCCVariableDefinition variableName.
 			selector := 'add'.
-			currentIndex < index
-				ifTrue: [ selector := selector , 'First' ].
+			currentIndex < index ifTrue: [ selector := selector , 'First' ].
 			selector := selector
-				,
-					(var isBaseNodeType
-						ifTrue: [ 'Node' ]
-						ifFalse: [ var isBaseTokenType
-								ifTrue: [ 'Token' ]
-								ifFalse: [ 'Object' ] ]).
-			isCollection
-				ifTrue: [ selector := selector , 's' ].
+					, (var isBaseNodeType
+							ifTrue: [ 'Node' ]
+							ifFalse: [ var isBaseTokenType ifTrue: [ 'Token' ] ifFalse: [ 'Object' ] ]).
+			isCollection ifTrue: [ selector := selector , 's' ].
 			selector := (selector , ':to:') asSymbol.
 			generator
 				send: selector
 				to: 'result'
 				with: argument
-				with: (generator send: var getterMethodName to: 'result') ]
-		ifFalse:
-			[ generator
-				send: aSmaCCVariableDefinition setterMethodName
-				to: 'result'
-				with: argument ]
+				with: (generator
+						getCollectionProperty: var
+						in: 'result'
+						canBeNil: index > 0) ]
+		ifFalse: [ generator
+				setProperty: aSmaCCVariableDefinition
+				in: 'result'
+				to: argument ]
 ]
 
 { #category : #'reduction table' }
@@ -109,38 +105,28 @@ SmaCCReduceActionGenerator >> pullUpChildren [
 { #category : #'reduction table' }
 SmaCCReduceActionGenerator >> pullUpVariable [
 	currentSymbol variableDefinitions
-		keysAndValuesDo:
-			[ :subIndex :var | 
+		keysAndValuesDo: [ :subIndex :var | 
 			generator
-				nextPutStatement:
-					(var isCollection
-						ifTrue:
-							[ self
+				nextPutStatement: (var isCollection
+						ifTrue: [ self
 								compileAddToVariable: var
-								from:
-									(generator
+								from: (generator
 										cast: (generator argumentIndex: currentIndex)
 										to: generator collectionType)
 								collection: true ]
-						ifFalse:
-							[ | nodesVariable |
-							nodesVariable := rhs nodeType
-								variableDefinitionNamed: var variableName.
+						ifFalse: [ | nodesVariable |
+							nodesVariable := rhs nodeType variableDefinitionNamed: var variableName.
 							nodesVariable isCollection
-								ifTrue:
-									[ self
+								ifTrue: [ self
 										compileAddToVariable: nodesVariable
-										from:
-											(generator
+										from: (generator
 												cast: (generator argumentIndex: currentIndex)
 												to: nodesVariable type name)
 										collection: false ]
-								ifFalse:
-									[ generator
-										send: nodesVariable setterMethodName
-										to: 'result'
-										with:
-											(generator
+								ifFalse: [ generator
+										setProperty: nodesVariable
+										in: 'result'
+										to: (generator
 												cast: (generator argumentIndex: currentIndex)
 												to: nodesVariable type name) ] ]) ]
 ]
@@ -148,34 +134,26 @@ SmaCCReduceActionGenerator >> pullUpVariable [
 { #category : #'reduction table' }
 SmaCCReduceActionGenerator >> pullUpVariableArray [
 	currentSymbol variableDefinitions
-		keysAndValuesDo:
-			[ :subIndex :var | 
+		keysAndValuesDo: [ :subIndex :var | 
 			generator
-				nextPutStatement:
-					(var isCollection
-						ifTrue:
-							[ | collectionType |
+				nextPutStatement: (var isCollection
+						ifTrue: [ | collectionType |
 							collectionType := generator collectionType.
 							self
 								compileAddToVariable: var
 								from: (self getSubIndex: subIndex ofType: collectionType)
 								collection: true ]
-						ifFalse:
-							[ | nodesVariable |
-							nodesVariable := rhs nodeType
-								variableDefinitionNamed: var variableName.
+						ifFalse: [ | nodesVariable |
+							nodesVariable := rhs nodeType variableDefinitionNamed: var variableName.
 							nodesVariable isCollection
-								ifTrue:
-									[ self
+								ifTrue: [ self
 										compileAddToVariable: nodesVariable
 										from: (self getSubIndex: subIndex ofType: nodesVariable type name)
 										collection: false ]
-								ifFalse:
-									[ generator
-										send: nodesVariable setterMethodName
-										to: 'result'
-										with:
-											(generator
+								ifFalse: [ generator
+										setProperty: nodesVariable
+										in: 'result'
+										to: (generator
 												cast: (generator argumentIndex: currentIndex subIndex: subIndex)
 												to: nodesVariable type name) ] ]) ]
 ]

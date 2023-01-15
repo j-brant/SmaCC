@@ -129,11 +129,11 @@ SmaCCScannerCompiler >> compileScanner [
 { #category : #'compiling-scanner' }
 SmaCCScannerCompiler >> compileTokenIdMethods [
 	(self symbols select: [ :each | each createIdMethod ])
-		do:
-			[ :each | 
+		do: [ :each | 
 			codeGenerator
 				compileTokenIdMethodNamed: each safeMethodName
-				withId: (self symbols indexOf: each) ]
+				withId: (self symbols indexOf: each)
+				isOverridden: false ]
 ]
 
 { #category : #'regular expression construction' }

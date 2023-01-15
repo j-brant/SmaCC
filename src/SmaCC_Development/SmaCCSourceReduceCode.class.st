@@ -78,7 +78,7 @@ SmaCCSourceReduceCode >> typesForTree: aRBProgramNode seen: aSet [
 						ifTrue: [ types addAll: (self typesForTree: each value seen: aSet) ] ].
 			^ types asArray ].
 	(aRBProgramNode isLiteralNode or: [ aRBProgramNode isVariable ])
-		ifTrue: [ (self returnedNodeIndexFor: aRBProgramNode)
+		ifTrue: [ (self codeGenerator returnedNodeIndexForTree: aRBProgramNode in: self)
 				ifNil: [ aRBProgramNode isLiteralNode
 						ifTrue: [ ^ Array with: (self model classFor: aRBProgramNode value class) ] ]
 				ifNotNil: [ :index | ^ self basicModelTypes: aSet forIndex: index ] ].
