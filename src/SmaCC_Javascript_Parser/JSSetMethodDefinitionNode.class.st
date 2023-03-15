@@ -24,5 +24,5 @@ JSSetMethodDefinitionNode >> setToken: aSmaCCToken [
 
 { #category : #generated }
 JSSetMethodDefinitionNode >> tokenVariables [
-	^ #(#setToken #staticToken)
+	^ #(#setToken #staticToken #questionMarkToken)
 ]

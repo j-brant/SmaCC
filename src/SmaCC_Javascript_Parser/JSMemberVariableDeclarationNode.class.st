@@ -4,11 +4,12 @@ Class {
 	#instVars : [
 		'decorators',
 		'name',
-		'semicolon',
 		'equalToken',
 		'value',
+		'semicolon',
 		'colonToken',
 		'type',
+		'questionMarkToken',
 		'staticToken',
 		'modifier'
 	],
@@ -96,6 +97,16 @@ JSMemberVariableDeclarationNode >> nodeVariables [
 ]
 
 { #category : #generated }
+JSMemberVariableDeclarationNode >> questionMarkToken [
+	^ questionMarkToken
+]
+
+{ #category : #generated }
+JSMemberVariableDeclarationNode >> questionMarkToken: aSmaCCToken [
+	questionMarkToken := aSmaCCToken
+]
+
+{ #category : #generated }
 JSMemberVariableDeclarationNode >> semicolon [
 	^ semicolon
 ]
@@ -117,7 +128,7 @@ JSMemberVariableDeclarationNode >> staticToken: aSmaCCToken [
 
 { #category : #generated }
 JSMemberVariableDeclarationNode >> tokenVariables [
-	^ #(#equalToken #staticToken #modifier)
+	^ #(#equalToken #questionMarkToken #staticToken #modifier)
 ]
 
 { #category : #generated }

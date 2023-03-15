@@ -5,7 +5,8 @@ Class {
 		'name',
 		'colonToken',
 		'type',
-		'questionMarkToken'
+		'questionMarkToken',
+		'readonlyToken'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
@@ -58,8 +59,18 @@ JSPropertySignatureNode >> questionMarkToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+JSPropertySignatureNode >> readonlyToken [
+	^ readonlyToken
+]
+
+{ #category : #generated }
+JSPropertySignatureNode >> readonlyToken: aSmaCCToken [
+	readonlyToken := aSmaCCToken
+]
+
+{ #category : #generated }
 JSPropertySignatureNode >> tokenVariables [
-	^ #(#questionMarkToken)
+	^ #(#questionMarkToken #readonlyToken)
 ]
 
 { #category : #generated }

@@ -361,6 +361,11 @@ TJSProgramNodeVisitor >> visitIndexSignature: anIndexSignature [
 ]
 
 { #category : #generated }
+TJSProgramNodeVisitor >> visitIndexedAccessType: anIndexedAccessType [
+	^ self visitType: anIndexedAccessType
+]
+
+{ #category : #generated }
 TJSProgramNodeVisitor >> visitIndexedPropertyExpression: anIndexedPropertyExpression [
 	^ self visitExpression: anIndexedPropertyExpression
 ]
