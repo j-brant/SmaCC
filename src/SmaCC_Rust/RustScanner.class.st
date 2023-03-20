@@ -29,12 +29,12 @@ RustScanner >> ampId [
 
 { #category : #generated }
 RustScanner >> emptySymbolTokenId [
-	^ 393
+	^ 394
 ]
 
 { #category : #generated }
 RustScanner >> errorTokenId [
-	^ 394
+	^ 395
 ]
 
 { #category : #generated }
@@ -89,7 +89,7 @@ RustScanner >> potentialFloat [
 
 { #category : #generated }
 RustScanner >> rawStringId [
-	^ 392
+	^ 393
 ]
 
 { #category : #scanning }
@@ -106,6 +106,7 @@ RustScanner >> rawStringStart [
 RustScanner >> scan1 [
 	self step.
 	currentCharacter == $! ifTrue: [ ^ self scan1X16 ].
+	currentCharacter == $" ifTrue: [ ^ self scan2 ].
 	^ self scan1X19
 ]
 
@@ -217,46 +218,47 @@ RustScanner >> scan17 [
 
 { #category : #generated }
 RustScanner >> scan18 [
-	self recordMatch: #(112).
-	self step.
-	currentCharacter == $" ifTrue: [ ^ self scan19 ].
-	currentCharacter == $'
-		ifTrue:
-			[ self step.
-			currentCharacter == $\
-				ifTrue:
-					[ self step.
-					currentCharacter == $'
-						ifTrue:
-							[ self recordMatch: #(121).
-							self step.
-							currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(121) ].
-							^ self reportLastMatch ].
-					currentCharacter == $x
-						ifTrue:
-							[ self step.
-							((currentCharacter between: $0 and: $9)
-								or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-								ifTrue:
-									[ self step.
-									((currentCharacter between: $0 and: $9)
-										or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-										ifTrue: [ ^ self scan21 ] ].
-							^ self reportLastMatch ].
-					('"0\nrt' includes: currentCharacter) ifTrue: [ ^ self scan21 ].
-					^ self reportLastMatch ].
-			^ self scan21 ].
-	currentCharacter == $r ifTrue: [ ^ self scan22 ].
-	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ]) ifTrue: [ ^ self scan16 ].
-	^ self reportLastMatch
+	[ self step.
+	currentCharacter == $`
+		ifTrue: [ self recordMatch: #(130).
+			self step.
+			currentCharacter == $` ifTrue: [ ^ self scan18 ].
+			^ self reportLastMatch ].
+	true ] whileTrue
 ]
 
 { #category : #generated }
 RustScanner >> scan19 [
-	[ self step.
-	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(122) ].
-	currentCharacter == $\ ifTrue: [ ^ self scan20 ].
-	true ] whileTrue
+	self recordMatch: #(112).
+	self step.
+	currentCharacter == $" ifTrue: [ ^ self scan20 ].
+	currentCharacter == $'
+		ifTrue: [ self step.
+			currentCharacter == $\
+				ifTrue: [ self step.
+					currentCharacter == $'
+						ifTrue: [ self recordMatch: #(121).
+							self step.
+							currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(121) ].
+							^ self reportLastMatch ].
+					currentCharacter == $x
+						ifTrue: [ self step.
+							((currentCharacter between: $0 and: $9)
+								or: [ (currentCharacter between: $A and: $F)
+										or: [ currentCharacter between: $a and: $f ] ])
+								ifTrue: [ self step.
+									((currentCharacter between: $0 and: $9)
+										or: [ (currentCharacter between: $A and: $F)
+												or: [ currentCharacter between: $a and: $f ] ])
+										ifTrue: [ ^ self scan22 ] ].
+							^ self reportLastMatch ].
+					('"0\nrt' includes: currentCharacter) ifTrue: [ ^ self scan22 ].
+					^ self reportLastMatch ].
+			^ self scan22 ].
+	currentCharacter == $r ifTrue: [ ^ self scan23 ].
+	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
+		ifTrue: [ ^ self scan16 ].
+	^ self reportLastMatch
 ]
 
 { #category : #generated }
@@ -335,22 +337,22 @@ RustScanner >> scan1X16 [
 
 { #category : #generated }
 RustScanner >> scan1X17 [
-	currentCharacter == $^ ifTrue: [ ^ self scan1X11 ].
 	currentCharacter == $_ ifTrue: [ ^ self scan17 ].
-	currentCharacter == $b ifTrue: [ ^ self scan18 ].
-	currentCharacter == $r ifTrue: [ ^ self scan25 ].
+	currentCharacter == $` ifTrue: [ ^ self scan18 ].
+	currentCharacter == $b ifTrue: [ ^ self scan19 ].
+	currentCharacter == $r ifTrue: [ ^ self scan26 ].
 	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(104) ].
 	currentCharacter == $| ifTrue: [ ^ self scan1X5 ].
 	currentCharacter == $} ifTrue: [ ^ self recordAndReportMatch: #(108) ].
 	(currentCharacter between: $1 and: $9) ifTrue: [ ^ self scan14 ].
-	(currentCharacter isSeparator or: [ currentCharacter == Character pageUp ]) ifTrue: [ ^ self scan1X10 ].
+	(currentCharacter isSeparator or: [ currentCharacter == Character pageUp ])
+		ifTrue: [ ^ self scan1X10 ].
 	currentCharacter isLetter ifTrue: [ ^ self scan16 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 RustScanner >> scan1X18 [
-	currentCharacter == $. ifTrue: [ ^ self scan1X4 ].
 	currentCharacter == $/ ifTrue: [ ^ self scan1X1 ].
 	currentCharacter == $0 ifTrue: [ ^ self scan9 ].
 	currentCharacter == $: ifTrue: [ ^ self scan1X12 ].
@@ -362,12 +364,12 @@ RustScanner >> scan1X18 [
 	currentCharacter == $@ ifTrue: [ ^ self recordAndReportMatch: #(43) ].
 	currentCharacter == $[ ifTrue: [ ^ self recordAndReportMatch: #(45 111) ].
 	currentCharacter == $] ifTrue: [ ^ self recordAndReportMatch: #(46) ].
+	currentCharacter == $^ ifTrue: [ ^ self scan1X11 ].
 	^ self scan1X17
 ]
 
 { #category : #generated }
 RustScanner >> scan1X19 [
-	currentCharacter == $" ifTrue: [ ^ self scan2 ].
 	currentCharacter == $# ifTrue: [ ^ self recordAndReportMatch: #(3) ].
 	currentCharacter == $$ ifTrue: [ ^ self scan1X9 ].
 	currentCharacter == $% ifTrue: [ ^ self scan1X15 ].
@@ -379,6 +381,7 @@ RustScanner >> scan1X19 [
 	currentCharacter == $+ ifTrue: [ ^ self scan1X13 ].
 	currentCharacter == $, ifTrue: [ ^ self recordAndReportMatch: #(19) ].
 	currentCharacter == $- ifTrue: [ ^ self scan1X7 ].
+	currentCharacter == $. ifTrue: [ ^ self scan1X4 ].
 	^ self scan1X18
 ]
 
@@ -526,43 +529,51 @@ RustScanner >> scan2 [
 { #category : #generated }
 RustScanner >> scan20 [
 	[ self step.
-	currentCharacter == $"
-		ifTrue:
-			[ self recordMatch: #(122).
-			self step.
-			currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(122) ].
-			currentCharacter == $\ ifTrue: [ ^ self scan20 ].
-			^ self scan19 ].
-	currentCharacter == $\ ] whileTrue.
-	^ self scan19
+	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(122) ].
+	currentCharacter == $\ ifTrue: [ ^ self scan21 ].
+	true ] whileTrue
 ]
 
 { #category : #generated }
 RustScanner >> scan21 [
+	[ self step.
+	currentCharacter == $"
+		ifTrue: [ self recordMatch: #(122).
+			self step.
+			currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(122) ].
+			currentCharacter == $\ ifTrue: [ ^ self scan21 ].
+			^ self scan20 ].
+	currentCharacter == $\ ] whileTrue.
+	^ self scan20
+]
+
+{ #category : #generated }
+RustScanner >> scan22 [
 	self step.
 	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(121) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-RustScanner >> scan22 [
+RustScanner >> scan23 [
 	self recordMatch: #(112).
 	self step.
-	currentCharacter == $" ifTrue: [ ^ self scan23 ].
-	currentCharacter == $# ifTrue: [ ^ self scan24 ].
-	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ]) ifTrue: [ ^ self scan16 ].
+	currentCharacter == $" ifTrue: [ ^ self scan24 ].
+	currentCharacter == $# ifTrue: [ ^ self scan25 ].
+	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
+		ifTrue: [ ^ self scan16 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-RustScanner >> scan23 [
+RustScanner >> scan24 [
 	[ self step.
 	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(120) ].
 	true ] whileTrue
 ]
 
 { #category : #generated }
-RustScanner >> scan24 [
+RustScanner >> scan25 [
 	[ self step.
 	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(119) ].
 	currentCharacter == $# ] whileTrue.
@@ -570,27 +581,28 @@ RustScanner >> scan24 [
 ]
 
 { #category : #generated }
-RustScanner >> scan25 [
+RustScanner >> scan26 [
 	self recordMatch: #(112).
 	self step.
-	currentCharacter == $" ifTrue: [ ^ self scan23 ].
-	currentCharacter == $# ifTrue: [ ^ self scan26 ].
-	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ]) ifTrue: [ ^ self scan16 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-RustScanner >> scan26 [
-	self step.
-	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(119) ].
-	currentCharacter == $# ifTrue: [ ^ self scan24 ].
-	currentCharacter == $_ ifTrue: [ ^ self scan28 ].
-	currentCharacter isLetter ifTrue: [ ^ self scan27 ].
+	currentCharacter == $" ifTrue: [ ^ self scan24 ].
+	currentCharacter == $# ifTrue: [ ^ self scan27 ].
+	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
+		ifTrue: [ ^ self scan16 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 RustScanner >> scan27 [
+	self step.
+	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(119) ].
+	currentCharacter == $# ifTrue: [ ^ self scan25 ].
+	currentCharacter == $_ ifTrue: [ ^ self scan29 ].
+	currentCharacter isLetter ifTrue: [ ^ self scan28 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+RustScanner >> scan28 [
 	[ self recordMatch: #(113).
 	self step.
 	currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue.
@@ -598,90 +610,87 @@ RustScanner >> scan27 [
 ]
 
 { #category : #generated }
-RustScanner >> scan28 [
-	self step.
-	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ]) ifTrue: [ ^ self scan27 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
 RustScanner >> scan29 [
 	self step.
-	currentCharacter == $!
-		ifTrue:
-			[ self step.
-			(currentCharacter <= Character tab
-				or:
-					[ (currentCharacter between: Character pageUp and: Character newPage)
-						or: [ (currentCharacter between: (Character value: 14) and: $Z) or: [ currentCharacter >= $\ ] ] ])
-				ifTrue:
-					[ [ self recordMatch: #(115).
-					self step.
-					currentCharacter <= Character tab
-						or:
-							[ (currentCharacter between: Character pageUp and: Character newPage) or: [ currentCharacter >= (Character value: 14) ] ] ]
-						whileTrue ] ].
+	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
+		ifTrue: [ ^ self scan28 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 RustScanner >> scan3 [
 	self step.
-	currentCharacter == $\
-		ifTrue:
-			[ self step.
-			currentCharacter == $u
-				ifTrue:
-					[ self step.
-					currentCharacter == ${
-						ifTrue:
-							[ self step.
-							((currentCharacter between: $0 and: $9)
-								or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-								ifTrue:
-									[ self step.
-									currentCharacter == $} ifTrue: [ ^ self scan4 ].
-									((currentCharacter between: $0 and: $9)
-										or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-										ifTrue:
-											[ self step.
-											currentCharacter == $} ifTrue: [ ^ self scan4 ].
-											((currentCharacter between: $0 and: $9)
-												or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-												ifTrue:
-													[ self step.
-													currentCharacter == $} ifTrue: [ ^ self scan4 ].
-													((currentCharacter between: $0 and: $9)
-														or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-														ifTrue:
-															[ self step.
-															currentCharacter == $} ifTrue: [ ^ self scan4 ].
-															((currentCharacter between: $0 and: $9)
-																or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-																ifTrue:
-																	[ self step.
-																	((currentCharacter between: $0 and: $9)
-																		or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-																		ifTrue: [ self step ].
-																	currentCharacter == $} ifTrue: [ ^ self scan4 ] ] ] ] ] ] ].
-					^ self reportLastMatch ].
-			currentCharacter == $x
-				ifTrue:
-					[ self step.
-					(currentCharacter between: $0 and: $7)
-						ifTrue:
-							[ self step.
-							((currentCharacter between: $0 and: $9)
-								or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ]) ifTrue: [ ^ self scan4 ] ].
-					^ self reportLastMatch ].
-			('"''0\nrt' includes: currentCharacter) ifTrue: [ ^ self scan4 ].
-			^ self reportLastMatch ].
+	currentCharacter == $\ ifTrue: [ ^ self scan3X1 ].
 	currentCharacter == $_ ifTrue: [ ^ self scan7 ].
 	currentCharacter isLetter ifTrue: [ ^ self scan5 ].
-	(currentCharacter isLetter
-		or:
-			[ (currentCharacter between: Character tab and: Character lf)
-				or: [ currentCharacter == Character cr or: [ '''\_' includes: currentCharacter ] ] ]) not ifTrue: [ ^ self scan4 ].
+	(currentCharacter <= Character backspace
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ (currentCharacter between: (Character value: 14) and: $&)
+						or: [ currentCharacter >= $( ] ] ]) ifTrue: [ ^ self scan4 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+RustScanner >> scan30 [
+	self step.
+	currentCharacter == $!
+		ifTrue: [ self step.
+			(currentCharacter == Character lf
+				or: [ currentCharacter == Character cr or: [ currentCharacter == $[ ] ]) not
+				ifTrue: [ [ self recordMatch: #(115).
+					self step.
+					currentCharacter <= Character tab
+						or: [ (currentCharacter between: Character pageUp and: Character newPage)
+								or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue ] ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+RustScanner >> scan3X1 [
+	self step.
+	currentCharacter == $u
+		ifTrue: [ self step.
+			currentCharacter == ${
+				ifTrue: [ self step.
+					((currentCharacter between: $0 and: $9)
+						or: [ (currentCharacter between: $A and: $F)
+								or: [ currentCharacter between: $a and: $f ] ])
+						ifTrue: [ self step.
+							currentCharacter == $} ifTrue: [ ^ self scan4 ].
+							((currentCharacter between: $0 and: $9)
+								or: [ (currentCharacter between: $A and: $F)
+										or: [ currentCharacter between: $a and: $f ] ])
+								ifTrue: [ self step.
+									currentCharacter == $} ifTrue: [ ^ self scan4 ].
+									((currentCharacter between: $0 and: $9)
+										or: [ (currentCharacter between: $A and: $F)
+												or: [ currentCharacter between: $a and: $f ] ])
+										ifTrue: [ self step.
+											currentCharacter == $} ifTrue: [ ^ self scan4 ].
+											((currentCharacter between: $0 and: $9)
+												or: [ (currentCharacter between: $A and: $F)
+														or: [ currentCharacter between: $a and: $f ] ])
+												ifTrue: [ self step.
+													currentCharacter == $} ifTrue: [ ^ self scan4 ].
+													((currentCharacter between: $0 and: $9)
+														or: [ (currentCharacter between: $A and: $F)
+																or: [ currentCharacter between: $a and: $f ] ])
+														ifTrue: [ self step.
+															((currentCharacter between: $0 and: $9)
+																or: [ (currentCharacter between: $A and: $F)
+																		or: [ currentCharacter between: $a and: $f ] ])
+																ifTrue: [ self step ].
+															currentCharacter == $} ifTrue: [ ^ self scan4 ] ] ] ] ] ] ].
+			^ self reportLastMatch ].
+	currentCharacter == $x
+		ifTrue: [ self step.
+			(currentCharacter between: $0 and: $7)
+				ifTrue: [ self step.
+					((currentCharacter between: $0 and: $9)
+						or: [ (currentCharacter between: $A and: $F)
+								or: [ currentCharacter between: $a and: $f ] ]) ifTrue: [ ^ self scan4 ] ].
+			^ self reportLastMatch ].
+	('"''0\nrt' includes: currentCharacter) ifTrue: [ ^ self scan4 ].
 	^ self reportLastMatch
 ]
 
@@ -782,10 +791,9 @@ RustScanner >> scan9 [
 { #category : #generated }
 RustScanner >> scanForToken [
 	scope == #shebang
-		ifTrue:
-			[ self step.
+		ifTrue: [ self step.
 			currentCharacter = (Character value: 65279) ifTrue: [ self step ].
-			currentCharacter == $# ifTrue: [ ^ self scan29 ].
+			currentCharacter == $# ifTrue: [ ^ self scan30 ].
 			^ self reportLastMatch ].
 	scope == #default ifTrue: [ ^ self scan1 ].
 	^ self reportLastMatch
@@ -793,5 +801,5 @@ RustScanner >> scanForToken [
 
 { #category : #generated }
 RustScanner >> tokenActions [
-	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #comment nil #whitespace nil nil #rawStringStart nil nil nil nil #potentialFloat)
+	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #comment nil #whitespace nil nil #rawStringStart nil nil nil nil #potentialFloat nil nil nil nil nil #patternToken)
 ]

@@ -38,6 +38,12 @@ SmaCCParser class >> ambiguousTransitions [
 	^ #()
 ]
 
+{ #category : #accessing }
+SmaCCParser class >> availableParsers [
+	^ self withAllSubclasses
+		select: [ :each | [ each scannerClass notNil ] on: Error do: [ :ex | ex return: false ] ]
+]
+
 { #category : #caching }
 SmaCCParser class >> cacheId [
 	^ '?'
