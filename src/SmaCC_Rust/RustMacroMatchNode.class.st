@@ -12,7 +12,8 @@ Class {
 		'fragment',
 		'leftParen',
 		'rightParen',
-		'op'
+		'op',
+		'token'
 	],
 	#category : #'SmaCC_Rust'
 }
@@ -101,15 +102,13 @@ RustMacroMatchNode >> name [
 ]
 
 { #category : #generated }
-RustMacroMatchNode >> name: anObject [
-	self setParent: self name to: nil.
-	name := anObject.
-	self setParent: self name to: self
+RustMacroMatchNode >> name: aSmaCCToken [
+	name := aSmaCCToken
 ]
 
 { #category : #generated }
 RustMacroMatchNode >> nodeVariables [
-	^ #(#value)
+	^ #(#value #token)
 ]
 
 { #category : #generated }
@@ -120,11 +119,6 @@ RustMacroMatchNode >> op [
 { #category : #generated }
 RustMacroMatchNode >> op: aSmaCCToken [
 	op := aSmaCCToken
-]
-
-{ #category : #generated }
-RustMacroMatchNode >> otherVariables [
-	^ #(#name)
 ]
 
 { #category : #generated }
@@ -148,8 +142,20 @@ RustMacroMatchNode >> rightParen: aSmaCCToken [
 ]
 
 { #category : #generated }
+RustMacroMatchNode >> token [
+	^ token
+]
+
+{ #category : #generated }
+RustMacroMatchNode >> token: aRustProgramNode [
+	self token notNil ifTrue: [ self token parent: nil ].
+	token := aRustProgramNode.
+	self token notNil ifTrue: [ self token parent: self ]
+]
+
+{ #category : #generated }
 RustMacroMatchNode >> tokenVariables [
-	^ #(#left #right #dollar #colon #fragment #leftParen #rightParen #op)
+	^ #(#left #right #dollar #name #colon #fragment #leftParen #rightParen #op)
 ]
 
 { #category : #generated }

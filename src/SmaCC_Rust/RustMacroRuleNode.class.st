@@ -35,7 +35,6 @@ RustMacroRuleNode >> compositeNodeVariables [
 RustMacroRuleNode >> initialize [
 	super initialize.
 	matches := OrderedCollection new: 2.
-	tokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -61,7 +60,7 @@ RustMacroRuleNode >> matches: anOrderedCollection [
 ]
 
 { #category : #generated }
-RustMacroRuleNode >> otherVariables [
+RustMacroRuleNode >> nodeVariables [
 	^ #(#tokens)
 ]
 
@@ -86,8 +85,8 @@ RustMacroRuleNode >> tokens [
 ]
 
 { #category : #generated }
-RustMacroRuleNode >> tokens: anOrderedCollection [
-	self setParent: self tokens to: nil.
-	tokens := anOrderedCollection.
-	self setParent: self tokens to: self
+RustMacroRuleNode >> tokens: aRustMacroTokenTreeNode [
+	self tokens notNil ifTrue: [ self tokens parent: nil ].
+	tokens := aRustMacroTokenTreeNode.
+	self tokens notNil ifTrue: [ self tokens parent: self ]
 ]

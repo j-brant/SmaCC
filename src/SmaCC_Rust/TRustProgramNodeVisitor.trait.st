@@ -296,6 +296,11 @@ TRustProgramNodeVisitor >> visitMacroToken: aMacroToken [
 ]
 
 { #category : #generated }
+TRustProgramNodeVisitor >> visitMacroTokenTree: aMacroTokenTree [
+	^ self visitProgram: aMacroTokenTree
+]
+
+{ #category : #generated }
 TRustProgramNodeVisitor >> visitMatchArm: aMatchArm [
 	^ self visitProgram: aMatchArm
 ]
