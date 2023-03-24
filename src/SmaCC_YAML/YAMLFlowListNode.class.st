@@ -3,8 +3,8 @@ Class {
 	#superclass : #YAMLListNode,
 	#instVars : [
 		'leftBracket',
-		'commas',
-		'rightBracket'
+		'rightBracket',
+		'commas'
 	],
 	#category : #'SmaCC_YAML'
 }

@@ -21,7 +21,7 @@ YAMLFileNode >> compositeNodeVariables [
 
 { #category : #generated }
 YAMLFileNode >> compositeTokenVariables [
-	^ #(#documentStarts #documentEnds)
+	^ #(#documentEnds #documentStarts)
 ]
 
 { #category : #generated }
@@ -60,6 +60,6 @@ YAMLFileNode >> documents: anOrderedCollection [
 YAMLFileNode >> initialize [
 	super initialize.
 	documents := OrderedCollection new: 2.
-	documentStarts := OrderedCollection new: 2.
 	documentEnds := OrderedCollection new: 2.
+	documentStarts := OrderedCollection new: 2.
 ]

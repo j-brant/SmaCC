@@ -6,6 +6,11 @@ Trait {
 }
 
 { #category : #generated }
+TYAMLParseNodeVisitor >> visitAlias: anAlias [
+	^ self visitParse: anAlias
+]
+
+{ #category : #generated }
 TYAMLParseNodeVisitor >> visitFile: aFile [
 	^ self visitParse: aFile
 ]
@@ -18,6 +23,11 @@ TYAMLParseNodeVisitor >> visitFlowList: aFlowList [
 { #category : #generated }
 TYAMLParseNodeVisitor >> visitFlowMappingList: aFlowMappingList [
 	^ self visitMappingList: aFlowMappingList
+]
+
+{ #category : #generated }
+TYAMLParseNodeVisitor >> visitKey: aKey [
+	^ self visitParse: aKey
 ]
 
 { #category : #generated }

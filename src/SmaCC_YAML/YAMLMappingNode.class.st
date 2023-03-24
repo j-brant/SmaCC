@@ -2,9 +2,10 @@ Class {
 	#name : #YAMLMappingNode,
 	#superclass : #YAMLParseNode,
 	#instVars : [
-		'key',
 		'colon',
-		'value'
+		'value',
+		'anchors',
+		'key'
 	],
 	#category : #'SmaCC_YAML'
 }
@@ -12,6 +13,16 @@ Class {
 { #category : #generated }
 YAMLMappingNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitMapping: self
+]
+
+{ #category : #generated }
+YAMLMappingNode >> anchors [
+	^ anchors
+]
+
+{ #category : #generated }
+YAMLMappingNode >> anchors: anOrderedCollection [
+	anchors := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -25,23 +36,36 @@ YAMLMappingNode >> colon: aSmaCCToken [
 ]
 
 { #category : #generated }
+YAMLMappingNode >> compositeTokenVariables [
+	^ #(#anchors)
+]
+
+{ #category : #'generated-initialize-release' }
+YAMLMappingNode >> initialize [
+	super initialize.
+	anchors := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
 YAMLMappingNode >> key [
 	^ key
 ]
 
 { #category : #generated }
-YAMLMappingNode >> key: aSmaCCToken [
-	key := aSmaCCToken
+YAMLMappingNode >> key: aYAMLParseNode [
+	self key notNil ifTrue: [ self key parent: nil ].
+	key := aYAMLParseNode.
+	self key notNil ifTrue: [ self key parent: self ]
 ]
 
 { #category : #generated }
 YAMLMappingNode >> nodeVariables [
-	^ #(#value)
+	^ #(#value #key)
 ]
 
 { #category : #generated }
 YAMLMappingNode >> tokenVariables [
-	^ #(#key #colon)
+	^ #(#colon)
 ]
 
 { #category : #generated }

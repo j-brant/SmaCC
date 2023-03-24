@@ -4,8 +4,7 @@ Class {
 	#instVars : [
 		'minus',
 		'value',
-		'anchor',
-		'alias'
+		'anchor'
 	],
 	#category : #'SmaCC_YAML'
 }
@@ -13,16 +12,6 @@ Class {
 { #category : #generated }
 YAMLListItemNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitListItem: self
-]
-
-{ #category : #generated }
-YAMLListItemNode >> alias [
-	^ alias
-]
-
-{ #category : #generated }
-YAMLListItemNode >> alias: aSmaCCToken [
-	alias := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -52,7 +41,7 @@ YAMLListItemNode >> nodeVariables [
 
 { #category : #generated }
 YAMLListItemNode >> tokenVariables [
-	^ #(#minus #anchor #alias)
+	^ #(#minus #anchor)
 ]
 
 { #category : #generated }
