@@ -22,7 +22,7 @@ YAMLScanner class >> initializeKeywordMap [
 
 { #category : #generated }
 YAMLScanner >> DEDENTId [
-	^ 84
+	^ 85
 ]
 
 { #category : #private }
@@ -32,7 +32,7 @@ YAMLScanner >> DOCUMENTEND1 [
 
 { #category : #generated }
 YAMLScanner >> DOCUMENTENDId [
-	^ 85
+	^ 86
 ]
 
 { #category : #private }
@@ -46,7 +46,7 @@ YAMLScanner >> DOCUMENTSTART1 [
 
 { #category : #generated }
 YAMLScanner >> DOCUMENTSTARTId [
-	^ 86
+	^ 87
 ]
 
 { #category : #private }
@@ -61,22 +61,22 @@ YAMLScanner >> DOUBLE_QUOTEId [
 
 { #category : #generated }
 YAMLScanner >> FINISH_LITERAL_STRINGId [
-	^ 87
-]
-
-{ #category : #generated }
-YAMLScanner >> INDENTId [
 	^ 88
 ]
 
 { #category : #generated }
-YAMLScanner >> NEWLINEId [
+YAMLScanner >> INDENTId [
 	^ 89
 ]
 
 { #category : #generated }
-YAMLScanner >> NEWLINE_STR_LITERALId [
+YAMLScanner >> NEWLINEId [
 	^ 90
+]
+
+{ #category : #generated }
+YAMLScanner >> NEWLINE_STR_LITERALId [
+	^ 91
 ]
 
 { #category : #private }
@@ -132,12 +132,12 @@ YAMLScanner >> currentState [
 
 { #category : #generated }
 YAMLScanner >> emptySymbolTokenId [
-	^ 91
+	^ 92
 ]
 
 { #category : #generated }
 YAMLScanner >> errorTokenId [
-	^ 92
+	^ 93
 ]
 
 { #category : #private }
