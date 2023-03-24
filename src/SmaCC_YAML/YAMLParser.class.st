@@ -16,23 +16,25 @@ YAMLParser class >> ambiguousTransitions [
 #[ 0 6 0 74] 
 #[ 0 82 0 185] 
 #[ 0 6 0 213] 
-#[ 0 126 0 249] 
-#[ 0 130 1 1] 
-#[ 0 6 1 37] 
-#[ 0 162 0 217] 
-#[ 0 158 0 162] 
-#[ 0 41 0 170] 
-#[ 0 170 1 89] 
-#[ 0 202 1 185] 
-#[ 0 185 0 202] 
-#[ 0 250 2 53] 
-#[ 1 130 2 161]
+#[ 0 41 0 122] 
+#[ 0 130 0 253] 
+#[ 0 134 1 5] 
+#[ 0 6 1 41] 
+#[ 0 170 0 217] 
+#[ 0 166 0 170] 
+#[ 0 41 0 178] 
+#[ 0 178 1 101] 
+#[ 0 210 1 213] 
+#[ 0 185 0 210] 
+#[ 1 18 2 109] 
+#[ 0 6 1 30] 
+#[ 1 190 2 249]
 	).
 ]
 
 { #category : #'generated-accessing' }
 YAMLParser class >> cacheId [
-	^'2023-03-23T14:30:24.951416-05:00'
+	^'2023-03-24T07:19:18.687253-05:00'
 ]
 
 { #category : #generated }
@@ -361,11 +363,24 @@ listitem
         value 'value' |
         <NEWLINE>+ <INDENT> list 'value' <DEDENT> |
         <NEWLINE>+ <INDENT> mappinglist 'value' <DEDENT> |
-        flowlist 'value'
+        flowlist 'value' |
+        PushIndent listWithoutInitialNewline 'value' <DEDENT> |	# added
+        PushIndent mappingListWithoutInitialNewline 'value' <DEDENT> |	# added
+        flowmappinglist 'value' 
         ) {{ListItem}}
  | <MINUS> 'minus' <ALIAS> 'alias' {{ListItem}}
  | <MINUS> 'minus' <NEWLINE>  {{ListItem}} #null value
  ;
+mappingListWithoutInitialNewline
+	: mapping 'mapping' (<NEWLINE>* mapping 'mapping' <NEWLINE>?)* {{MappingList}}
+	;
+PushIndent
+	: 
+	[scanner pushIndent: (scanner indentsBefore: currentToken startPosition).
+	currentState notNil
+		ifTrue: [ currentState scannerState: scanner currentState ].
+	nil]
+	;
 
 mappinglist
  : (<NEWLINE>* mapping 'mapping' <NEWLINE>?)+ {{MappingList}}
@@ -413,14 +428,19 @@ mapping
  | key 'key' <COLON> 'colon' <NEWLINE>+ <INDENT> list 'value' <DEDENT> {{}}
  | key 'key' <COLON> 'colon' flowmappinglist 'value' {{}}
  | key 'key' <COLON> 'colon' value 'value'? {{}}
+ | key 'key' <COLON> 'colon' <NEWLINE>+ listWithoutInitialNewline 'value' {{}}	# added
+ | key 'key' <COLON> 'colon' flowlist 'value' {{}}	# added
  ;
+listWithoutInitialNewline
+	: listitem 'item' (<NEWLINE>* listitem 'item' <NEWLINE>?)* {{List}}
+	;
 
 /*
  * flow rules
  */
 
 flowlist
- : PushFlow <OPEN_BRACK> 'leftBracket' value 'item' (<COMMA> 'comma' value  'item')* PopFlow <CLOSE_BRACK> 'rightBracket' {{FlowList}}
+ : PushFlow <OPEN_BRACK> 'leftBracket' value 'item' (<COMMA> 'comma' value  'item')* <COMMA> 'comma'? PopFlow <CLOSE_BRACK> 'rightBracket' {{FlowList}}
  ;
 PopFlow
 	: [scanner opened: scanner opened - 1. self popScope. nil]
@@ -430,7 +450,7 @@ PushFlow
 	;
 
 flowmappinglist
- : PushFlow <OPEN_BRACE> 'leftBrace' mapping 'mapping' (<COMMA> 'comma' mapping 'mapping')* PopFlow <CLOSE_BRACE> 'rightBrace' {{FlowMappingList}}
+ : PushFlow <OPEN_BRACE> 'leftBrace' mapping 'mapping' (<COMMA> 'comma' mapping 'mapping')* <COMMA> 'comma'? PopFlow <CLOSE_BRACE> 'rightBrace' {{FlowMappingList}}
  ;
 
 /*
@@ -452,107 +472,129 @@ integer
  ;"
 ]
 
+{ #category : #accessing }
+YAMLParser class >> fileExtensions [
+	^ #('.yaml' '.yml')
+]
+
 { #category : #generated }
 YAMLParser class >> reduceTable [
 ^#(
-	#(35 0 #nil 6884353 false) 
-	#(72 0 #reduceActionForPushFlow1: 9361409 true) 
-	#(59 0 #reduceActionForPushLiteralString1: 8316929 true) 
-	#(65 0 #reduceActionForPushDoubleQuoteScope1: 8723457 true) 
-	#(77 1 #liftFirstValue: 9817089 false) 
-	#(77 1 #liftFirstValue: 9817090 false) 
-	#(77 1 #liftFirstValue: 9817091 false) 
-	#(77 1 #liftFirstValue: 9817092 false) 
-	#(76 1 #reduceActionFornumber2: 9639938 false) 
-	#(76 1 #reduceActionFornumber2: 9639939 false) 
-	#(49 1 #reduceActionForvalue_scalar2: 7917570 false) 
-	#(37 0 #reduceActionFor__NEWLINE_____DOCUMENTSTART___documentStart___NEWLINE___document__document____DOCUMENTEND___documentEnd___NEWLINE______1: 7011329 false) 
-	#(38 1 #liftFirstValue: 7159809 false) 
-	#(41 1 #reduceActionFor__NEWLINE___listitem__item___NEWLINE____1: 7241729 false) 
-	#(39 1 #reduceActionForlist1: 7233537 false) 
-	#(38 1 #liftFirstValue: 7159810 false) 
-	#(46 1 #reduceActionFor__NEWLINE___listitem__item___NEWLINE____1: 7655425 false) 
-	#(44 1 #reduceActionFormappinglist1: 7640065 false) 
-	#(38 1 #liftFirstValue: 7159813 false) 
-	#(48 1 #liftFirstValue: 7743489 false) 
-	#(48 1 #liftFirstValue: 7743491 false) 
-	#(48 1 #liftFirstValue: 7743492 false) 
-	#(48 1 #liftFirstValue: 7743493 false) 
-	#(48 1 #liftFirstValue: 7743494 false) 
-	#(38 1 #liftFirstValue: 7159811 false) 
-	#(38 1 #liftFirstValue: 7159812 false) 
-	#(49 1 #liftFirstValue: 7917569 false) 
-	#(76 1 #reduceActionFornumber2: 9639937 false) 
-	#(35 2 #liftFirstValue: 6884354 false) 
-	#(47 1 #liftFirstValue: 7719937 false) 
-	#(40 2 #liftSecondValue: 7241729 false) 
-	#(45 2 #liftSecondValue: 7655425 false) 
-	#(41 2 #reduceActionFor__NEWLINE___listitem__item___NEWLINE____2: 7241730 false) 
-	#(46 2 #reduceActionFor__NEWLINE___listitem__item___NEWLINE____2: 7655426 false) 
-	#(57 0 #reduceActionFor__NEWLINE_STR_LITERAL____STRING_MY___part___1: 8228865 false) 
-	#(42 2 #reduceActionForlistitem9: 7292937 false) 
-	#(42 2 #reduceActionForlistitem1: 7292929 false) 
-	#(42 2 #reduceActionForlistitem1: 7292932 false) 
-	#(42 2 #reduceActionForlistitem10: 7292938 false) 
-	#(43 1 #liftFirstValue: 7375873 false) 
-	#(40 3 #liftSecondValue: 7241730 false) 
-	#(67 2 #reduceActionFormapping4: 8830980 false) 
-	#(45 3 #liftSecondValue: 7655426 false) 
-	#(34 4 #reduceActionForfile1: 6876161 false) 
-	#(37 2 #reduceActionFor__NEWLINE_____DOCUMENTSTART___documentStart___NEWLINE___document__document____DOCUMENTEND___documentEnd___NEWLINE______2: 7011330 false) 
-	#(66 0 #reduceActionForPopScope1: 8793089 true) 
-	#(63 0 #reduceActionFor__NEWLINE_STR_LITERAL____STRING_MY___part___1: 8626177 false) 
-	#(70 0 #reduceActionFor__COMMA___comma__value___item___1: 9200641 false) 
-	#(75 0 #reduceActionFor__COMMA___comma__value___item___1: 9517057 false) 
-	#(54 0 #reduceActionFor__NEWLINE_STR_LITERAL____STRING_MY___part___1: 8065025 false) 
-	#(51 1 #reduceActionFor__NEWLINE_STR_LITERAL____STRING_MY___part___1: 8041474 false) 
-	#(52 1 #reduceActionFor__value_scalar__value____NEWLINE__value_scalar__value______multiline_string__1: 8041473 false) 
-	#(42 3 #reduceActionForlistitem5: 7292933 false) 
-	#(42 3 #reduceActionForlistitem5: 7292936 false) 
-	#(43 2 #liftFirstValue: 7375874 false) 
-	#(67 3 #reduceActionFormapping5: 8830981 false) 
-	#(67 3 #reduceActionFormapping5: 8830979 false) 
-	#(57 2 #reduceActionFor__NEWLINE___listitem__item___NEWLINE____2: 8228866 false) 
-	#(58 1 #liftFirstValue: 8229889 false) 
-	#(71 0 #reduceActionForPopFlow1: 9288705 true) 
-	#(34 5 #reduceActionForfile3: 6876163 false) 
-	#(51 2 #reduceActionFor__value_scalar__value____NEWLINE__value_scalar__value______multiline_string_1: 8041473 false) 
-	#(52 2 #reduceActionFor__value_scalar__value____NEWLINE__value_scalar__value______multiline_string__2: 8041474 false) 
-	#(50 4 #reduceActionFormultiline_string1: 7979009 false) 
-	#(34 6 #reduceActionForfile2: 6876162 false) 
-	#(50 5 #reduceActionFormultiline_string3: 7979011 false) 
-	#(56 2 #liftSecondValue: 8228865 false) 
-	#(58 2 #liftFirstValue: 8229890 false) 
-	#(55 5 #reduceActionForstring_literal1: 8166401 false) 
-	#(60 5 #reduceActionForstring_literal1: 8377345 false) 
-	#(64 1 #liftFirstValue: 8627201 false) 
-	#(63 2 #reduceActionFor__NEWLINE___listitem__item___NEWLINE____2: 8626178 false) 
-	#(70 2 #reduceActionFor__COMMA___comma__value___item___2: 9200642 false) 
-	#(75 2 #reduceActionFor__COMMA___comma__value___item___2: 9517058 false) 
-	#(34 6 #reduceActionForfile5: 6876165 false) 
-	#(54 2 #reduceActionFor__NEWLINE___listitem__item___NEWLINE____2: 8065026 false) 
-	#(48 5 #reduceActionForvalue2: 7743490 false) 
-	#(50 5 #reduceActionFormultiline_string1: 7979010 false) 
-	#(42 5 #reduceActionForlistitem2: 7292930 false) 
-	#(42 5 #reduceActionForlistitem2: 7292931 false) 
-	#(36 4 #reduceActionFor__NEWLINE_____DOCUMENTSTART___documentStart___NEWLINE___document__document____DOCUMENTEND___documentEnd___NEWLINE_____1: 7011329 false) 
-	#(50 6 #reduceActionFormultiline_string3: 7979012 false) 
-	#(62 2 #liftSecondValue: 8626177 false) 
-	#(64 2 #liftFirstValue: 8627202 false) 
-	#(61 6 #reduceActionForstring_double_quoted1: 8538113 false) 
-	#(69 2 #reduceActionFor__COMMA___comma__value___item__1: 9200641 false) 
-	#(68 6 #reduceActionForflowlist1: 9138177 false) 
-	#(74 2 #reduceActionFor__COMMA___comma__value___item__1: 9517057 false) 
-	#(73 6 #reduceActionForflowmappinglist1: 9444353 false) 
-	#(34 7 #reduceActionForfile4: 6876164 false) 
-	#(53 2 #liftSecondValue: 8065025 false) 
-	#(42 6 #reduceActionForlistitem6: 7292934 false) 
-	#(42 6 #reduceActionForlistitem6: 7292935 false) 
-	#(67 6 #reduceActionFormapping2: 8830978 false) 
-	#(67 6 #reduceActionFormapping2: 8830977 false) 
-	#(36 5 #reduceActionFor__NEWLINE_____DOCUMENTSTART___documentStart___NEWLINE___document__document____DOCUMENTEND___documentEnd___NEWLINE_____2: 7011330 false) 
-	#(34 8 #reduceActionForfile6: 6876166 false) 
-	#(36 6 #reduceActionFor__NEWLINE_____DOCUMENTSTART___documentStart___NEWLINE___document__document____DOCUMENTEND___documentEnd___NEWLINE_____2: 7011331 false)
+	#(35 0 #nil 6858753 false) 
+	#(77 0 #reduceActionForPushFlow1: 10099713 true) 
+	#(62 0 #reduceActionForPushLiteralString1: 8787969 true) 
+	#(68 0 #reduceActionForPushDoubleQuoteScope1: 9194497 true) 
+	#(82 1 #liftFirstValue: 10572801 false) 
+	#(82 1 #liftFirstValue: 10572802 false) 
+	#(82 1 #liftFirstValue: 10572803 false) 
+	#(82 1 #liftFirstValue: 10572804 false) 
+	#(81 1 #reduceActionFornumber2: 10395650 false) 
+	#(81 1 #reduceActionFornumber2: 10395651 false) 
+	#(52 1 #reduceActionForvalue_scalar2: 8388610 false) 
+	#(37 0 #reduceActionFor__NEWLINE_____DOCUMENTSTART___documentStart___NEWLINE___document__document____DOCUMENTEND___documentEnd___NEWLINE______1: 6985729 false) 
+	#(38 1 #liftFirstValue: 7134209 false) 
+	#(41 1 #reduceActionFor__NEWLINE___listitem__item___NEWLINE____1: 7216129 false) 
+	#(39 1 #reduceActionForlist1: 7207937 false) 
+	#(49 1 #reduceActionFor__NEWLINE___listitem__item___NEWLINE____1: 8126465 false) 
+	#(38 1 #liftFirstValue: 7134210 false) 
+	#(48 1 #reduceActionFormappinglist1: 8111105 false) 
+	#(38 1 #liftFirstValue: 7134213 false) 
+	#(51 1 #liftFirstValue: 8214529 false) 
+	#(51 1 #liftFirstValue: 8214531 false) 
+	#(51 1 #liftFirstValue: 8214532 false) 
+	#(51 1 #liftFirstValue: 8214533 false) 
+	#(51 1 #liftFirstValue: 8214534 false) 
+	#(38 1 #liftFirstValue: 7134211 false) 
+	#(38 1 #liftFirstValue: 7134212 false) 
+	#(52 1 #liftFirstValue: 8388609 false) 
+	#(81 1 #reduceActionFornumber2: 10395649 false) 
+	#(35 2 #liftFirstValue: 6858754 false) 
+	#(47 0 #reduceActionForPushIndent1: 7922689 true) 
+	#(50 1 #liftFirstValue: 8190977 false) 
+	#(40 2 #liftSecondValue: 7216129 false) 
+	#(45 2 #liftSecondValue: 7859201 false) 
+	#(41 2 #reduceActionFor__NEWLINE___listitem__item___NEWLINE____2: 7216130 false) 
+	#(49 2 #reduceActionFor__NEWLINE___listitem__item___NEWLINE____2: 8126466 false) 
+	#(60 0 #reduceActionFor__NEWLINE_STR_LITERAL____STRING_MY___part___1: 8699905 false) 
+	#(42 2 #reduceActionForlistitem15: 7267343 false) 
+	#(42 2 #reduceActionForlistitem1: 7267329 false) 
+	#(42 2 #reduceActionForlistitem1: 7267332 false) 
+	#(42 2 #reduceActionForlistitem1: 7267335 false) 
+	#(42 2 #reduceActionForlistitem16: 7267344 false) 
+	#(43 1 #liftFirstValue: 7350273 false) 
+	#(40 3 #liftSecondValue: 7216130 false) 
+	#(70 2 #reduceActionFormapping4: 9302020 false) 
+	#(45 3 #liftSecondValue: 7859202 false) 
+	#(34 4 #reduceActionForfile1: 6850561 false) 
+	#(37 2 #reduceActionFor__NEWLINE_____DOCUMENTSTART___documentStart___NEWLINE___document__document____DOCUMENTEND___documentEnd___NEWLINE______2: 6985730 false) 
+	#(69 0 #reduceActionForPopScope1: 9264129 true) 
+	#(66 0 #reduceActionFor__NEWLINE_STR_LITERAL____STRING_MY___part___1: 9097217 false) 
+	#(75 0 #reduceActionFor__COMMA___comma__value___item___1: 9921537 false) 
+	#(80 0 #reduceActionFor__COMMA___comma__value___item___1: 10255361 false) 
+	#(57 0 #reduceActionFor__NEWLINE_STR_LITERAL____STRING_MY___part___1: 8536065 false) 
+	#(54 1 #reduceActionFor__NEWLINE_STR_LITERAL____STRING_MY___part___1: 8512514 false) 
+	#(55 1 #reduceActionFor__value_scalar__value____NEWLINE__value_scalar__value______multiline_string__1: 8512513 false) 
+	#(42 3 #reduceActionForlistitem8: 7267336 false) 
+	#(42 3 #reduceActionForlistitem8: 7267339 false) 
+	#(42 3 #reduceActionForlistitem8: 7267342 false) 
+	#(43 2 #liftFirstValue: 7350274 false) 
+	#(72 0 #reduceActionFor__NEWLINE_STR_LITERAL____STRING_MY___part___1: 9781249 false) 
+	#(46 0 #reduceActionFor__NEWLINE_STR_LITERAL____STRING_MY___part___1: 7859201 false) 
+	#(70 3 #reduceActionFormapping5: 9302021 false) 
+	#(70 3 #reduceActionFormapping5: 9302023 false) 
+	#(70 3 #reduceActionFormapping5: 9302019 false) 
+	#(60 2 #reduceActionFor__NEWLINE___listitem__item___NEWLINE____2: 8699906 false) 
+	#(61 1 #liftFirstValue: 8700929 false) 
+	#(76 0 #reduceActionForPopFlow1: 10027009 true) 
+	#(34 5 #reduceActionForfile3: 6850563 false) 
+	#(54 2 #reduceActionFor__value_scalar__value____NEWLINE__value_scalar__value______multiline_string_1: 8512513 false) 
+	#(55 2 #reduceActionFor__value_scalar__value____NEWLINE__value_scalar__value______multiline_string__2: 8512514 false) 
+	#(53 4 #reduceActionFormultiline_string1: 8450049 false) 
+	#(71 2 #reduceActionForlistWithoutInitialNewline1: 9735169 false) 
+	#(42 4 #reduceActionForlistitem6: 7267334 false) 
+	#(44 2 #reduceActionFormappingListWithoutInitialNewline1: 7803905 false) 
+	#(42 4 #reduceActionForlistitem6: 7267333 false) 
+	#(70 4 #reduceActionFormapping6: 9302022 false) 
+	#(34 6 #reduceActionForfile2: 6850562 false) 
+	#(53 5 #reduceActionFormultiline_string3: 8450051 false) 
+	#(59 2 #liftSecondValue: 8699905 false) 
+	#(61 2 #liftFirstValue: 8700930 false) 
+	#(58 5 #reduceActionForstring_literal1: 8637441 false) 
+	#(63 5 #reduceActionForstring_literal1: 8848385 false) 
+	#(67 1 #liftFirstValue: 9098241 false) 
+	#(66 2 #reduceActionFor__NEWLINE___listitem__item___NEWLINE____2: 9097218 false) 
+	#(75 2 #reduceActionFor__COMMA___comma__value___item___2: 9921538 false) 
+	#(80 2 #reduceActionFor__COMMA___comma__value___item___2: 10255362 false) 
+	#(34 6 #reduceActionForfile5: 6850565 false) 
+	#(57 2 #reduceActionFor__NEWLINE___listitem__item___NEWLINE____2: 8536066 false) 
+	#(51 5 #reduceActionForvalue2: 8214530 false) 
+	#(53 5 #reduceActionFormultiline_string1: 8450050 false) 
+	#(42 5 #reduceActionForlistitem13: 7267341 false) 
+	#(42 5 #reduceActionForlistitem13: 7267340 false) 
+	#(42 5 #reduceActionForlistitem2: 7267330 false) 
+	#(42 5 #reduceActionForlistitem2: 7267331 false) 
+	#(72 2 #reduceActionFor__NEWLINE___listitem__item___NEWLINE____2: 9781250 false) 
+	#(46 2 #reduceActionFor__NEWLINE___listitem__item___NEWLINE____2: 7859202 false) 
+	#(36 4 #reduceActionFor__NEWLINE_____DOCUMENTSTART___documentStart___NEWLINE___document__document____DOCUMENTEND___documentEnd___NEWLINE_____1: 6985729 false) 
+	#(53 6 #reduceActionFormultiline_string3: 8450052 false) 
+	#(65 2 #liftSecondValue: 9097217 false) 
+	#(67 2 #liftFirstValue: 9098242 false) 
+	#(64 6 #reduceActionForstring_double_quoted1: 9009153 false) 
+	#(74 2 #reduceActionFor__COMMA___comma__value___item__1: 9921537 false) 
+	#(73 6 #reduceActionForflowlist1: 9859073 false) 
+	#(79 2 #reduceActionFor__COMMA___comma__value___item__1: 10255361 false) 
+	#(78 6 #reduceActionForflowmappinglist1: 10182657 false) 
+	#(34 7 #reduceActionForfile4: 6850564 false) 
+	#(56 2 #liftSecondValue: 8536065 false) 
+	#(42 6 #reduceActionForlistitem9: 7267337 false) 
+	#(42 6 #reduceActionForlistitem9: 7267338 false) 
+	#(70 6 #reduceActionFormapping2: 9302018 false) 
+	#(70 6 #reduceActionFormapping2: 9302017 false) 
+	#(36 5 #reduceActionFor__NEWLINE_____DOCUMENTSTART___documentStart___NEWLINE___document__document____DOCUMENTEND___documentEnd___NEWLINE_____2: 6985730 false) 
+	#(73 7 #reduceActionForflowlist2: 9859074 false) 
+	#(78 7 #reduceActionForflowmappinglist2: 10182658 false) 
+	#(34 8 #reduceActionForfile6: 6850566 false) 
+	#(36 6 #reduceActionFor__NEWLINE_____DOCUMENTSTART___documentStart___NEWLINE___document__document____DOCUMENTEND___documentEnd___NEWLINE_____2: 6985731 false)
 	).
 ]
 
@@ -568,185 +610,207 @@ YAMLParser class >> startingStateForfile [
 
 { #category : #generated }
 YAMLParser class >> symbolNames [
-	^ #('<newline>' '<DECIMAL_INTEGER>' '<OCT_INTEGER>' '<HEX_INTEGER>' '<BIN_INTEGER>' '<FLOAT_NUMBER>' '<IMAG_NUMBER>' '<MINUS>' '<DOCUMENTSTART1>' '<DOCUMENTEND1>' '<COMMA>' '<COLON>' '<OPEN_BRACK>' '<CLOSE_BRACK>' '<OPEN_BRACE>' '<CLOSE_BRACE>' '<LITERAL_STR_IND>' '<FOLD_STR_IND>' '<DOUBLE_QUOTE>' '<ANCHOR>' '<ALIAS>' '<STRING_MY>' '<SKIP1>' '<SPACES>' '<comment>' '<STRING_MY_2>' '<SKIP2>' '<newline_str_literal>' '<STRING_MY_3>' '<STRING_MY_4>' '<NEWLINE_STR_QUOTE>' '<DOUBLE_QUOTE2>' 'B e g i n' 'file' '<NEWLINE>*' '(<NEWLINE>* (<DOCUMENTSTART> ''documentStart'' <NEWLINE>) document ''document'' (<DOCUMENTEND> ''documentEnd'' <NEWLINE>?)?)' '(<NEWLINE>* (<DOCUMENTSTART> ''documentStart'' <NEWLINE>) document ''document'' (<DOCUMENTEND> ''documentEnd'' <NEWLINE>?)?)*' 'document' 'list' '(<NEWLINE>* listitem ''item'' <NEWLINE>?)' '(<NEWLINE>* listitem ''item'' <NEWLINE>?)+' 'listitem' '<NEWLINE>+' 'mappinglist' '(<NEWLINE>* mapping ''mapping'' <NEWLINE>?)' '(<NEWLINE>* mapping ''mapping'' <NEWLINE>?)+' 'key' 'value' 'value_scalar' 'multiline_string' '( value_scalar ''value'' (<NEWLINE> value_scalar ''value'')* | multiline_string)' '( value_scalar ''value'' (<NEWLINE> value_scalar ''value'')* | multiline_string)+' '(<NEWLINE> value_scalar ''value'')' '(<NEWLINE> value_scalar ''value'')*' 'string_literal' '(<NEWLINE_STR_LITERAL>+ <STRING_MY> ''part'')' '(<NEWLINE_STR_LITERAL>+ <STRING_MY> ''part'')*' '<NEWLINE_STR_LITERAL>+' 'PushLiteralString' 'string_folded' 'string_double_quoted' '(<NEWLINE_STR_QUOTE>+ <STRING_MY> ''part'')' '(<NEWLINE_STR_QUOTE>+ <STRING_MY> ''part'')*' '<NEWLINE_STR_QUOTE>+' 'PushDoubleQuoteScope' 'PopScope' 'mapping' 'flowlist' '(<COMMA> ''comma'' value  ''item'')' '(<COMMA> ''comma'' value  ''item'')*' 'PopFlow' 'PushFlow' 'flowmappinglist' '(<COMMA> ''comma'' mapping ''mapping'')' '(<COMMA> ''comma'' mapping ''mapping'')*' 'number' 'integer' '<DEDENT>' '<DOCUMENTEND>' '<DOCUMENTSTART>' '<FINISH_LITERAL_STRING>' '<INDENT>' '<NEWLINE>' '<NEWLINE_STR_LITERAL>' 'E O F' 'error')
+	^ #('<newline>' '<DECIMAL_INTEGER>' '<OCT_INTEGER>' '<HEX_INTEGER>' '<BIN_INTEGER>' '<FLOAT_NUMBER>' '<IMAG_NUMBER>' '<MINUS>' '<DOCUMENTSTART1>' '<DOCUMENTEND1>' '<COMMA>' '<COLON>' '<OPEN_BRACK>' '<CLOSE_BRACK>' '<OPEN_BRACE>' '<CLOSE_BRACE>' '<LITERAL_STR_IND>' '<FOLD_STR_IND>' '<DOUBLE_QUOTE>' '<ANCHOR>' '<ALIAS>' '<STRING_MY>' '<SKIP1>' '<SPACES>' '<comment>' '<STRING_MY_2>' '<SKIP2>' '<newline_str_literal>' '<STRING_MY_3>' '<STRING_MY_4>' '<NEWLINE_STR_QUOTE>' '<DOUBLE_QUOTE2>' 'B e g i n' 'file' '<NEWLINE>*' '(<NEWLINE>* (<DOCUMENTSTART> ''documentStart'' <NEWLINE>) document ''document'' (<DOCUMENTEND> ''documentEnd'' <NEWLINE>?)?)' '(<NEWLINE>* (<DOCUMENTSTART> ''documentStart'' <NEWLINE>) document ''document'' (<DOCUMENTEND> ''documentEnd'' <NEWLINE>?)?)*' 'document' 'list' '(<NEWLINE>* listitem ''item'' <NEWLINE>?)' '(<NEWLINE>* listitem ''item'' <NEWLINE>?)+' 'listitem' '<NEWLINE>+' 'mappingListWithoutInitialNewline' '(<NEWLINE>* mapping ''mapping'' <NEWLINE>?)' '(<NEWLINE>* mapping ''mapping'' <NEWLINE>?)*' 'PushIndent' 'mappinglist' '(<NEWLINE>* mapping ''mapping'' <NEWLINE>?)+' 'key' 'value' 'value_scalar' 'multiline_string' '( value_scalar ''value'' (<NEWLINE> value_scalar ''value'')* | multiline_string)' '( value_scalar ''value'' (<NEWLINE> value_scalar ''value'')* | multiline_string)+' '(<NEWLINE> value_scalar ''value'')' '(<NEWLINE> value_scalar ''value'')*' 'string_literal' '(<NEWLINE_STR_LITERAL>+ <STRING_MY> ''part'')' '(<NEWLINE_STR_LITERAL>+ <STRING_MY> ''part'')*' '<NEWLINE_STR_LITERAL>+' 'PushLiteralString' 'string_folded' 'string_double_quoted' '(<NEWLINE_STR_QUOTE>+ <STRING_MY> ''part'')' '(<NEWLINE_STR_QUOTE>+ <STRING_MY> ''part'')*' '<NEWLINE_STR_QUOTE>+' 'PushDoubleQuoteScope' 'PopScope' 'mapping' 'listWithoutInitialNewline' '(<NEWLINE>* listitem ''item'' <NEWLINE>?)*' 'flowlist' '(<COMMA> ''comma'' value  ''item'')' '(<COMMA> ''comma'' value  ''item'')*' 'PopFlow' 'PushFlow' 'flowmappinglist' '(<COMMA> ''comma'' mapping ''mapping'')' '(<COMMA> ''comma'' mapping ''mapping'')*' 'number' 'integer' '<DEDENT>' '<DOCUMENTEND>' '<DOCUMENTSTART>' '<FINISH_LITERAL_STRING>' '<INDENT>' '<NEWLINE>' '<NEWLINE_STR_LITERAL>' 'E O F' 'error')
 ]
 
 { #category : #generated }
 YAMLParser class >> symbolTypes [
-	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #YAMLFileNode #YAMLFileNode nil #OrderedCollection #OrderedCollection #YAMLParseNode #YAMLListNode #YAMLListItemNode #OrderedCollection #YAMLListItemNode #SmaCCToken #YAMLMappingListNode #YAMLMappingNode #OrderedCollection #SmaCCToken #YAMLParseNode #YAMLParseNode #YAMLMultilineStringNode #OrderedCollection #OrderedCollection #YAMLParseNode #OrderedCollection #YAMLStringLiteralNode #SmaCCToken #OrderedCollection #SmaCCToken #Object #YAMLStringLiteralNode #YAMLStringLiteralNode #SmaCCToken #OrderedCollection #SmaCCToken nil nil #YAMLMappingNode #YAMLFlowListNode #OrderedCollection #OrderedCollection nil nil #YAMLFlowMappingListNode #OrderedCollection #OrderedCollection #YAMLNumberNode #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCErrorNode)
+	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #YAMLFileNode #YAMLFileNode nil #OrderedCollection #OrderedCollection #YAMLParseNode #YAMLListNode #YAMLListItemNode #OrderedCollection #YAMLListItemNode #SmaCCToken #YAMLMappingListNode #YAMLMappingNode #OrderedCollection nil #YAMLMappingListNode #OrderedCollection #SmaCCToken #YAMLParseNode #YAMLParseNode #YAMLMultilineStringNode #OrderedCollection #OrderedCollection #YAMLParseNode #OrderedCollection #YAMLStringLiteralNode #SmaCCToken #OrderedCollection #SmaCCToken #Object #YAMLStringLiteralNode #YAMLStringLiteralNode #SmaCCToken #OrderedCollection #SmaCCToken nil nil #YAMLMappingNode #YAMLListNode #OrderedCollection #YAMLFlowListNode #OrderedCollection #OrderedCollection nil nil #YAMLFlowMappingListNode #OrderedCollection #OrderedCollection #YAMLNumberNode #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCErrorNode)
 ]
 
 { #category : #generated }
 YAMLParser class >> transitionTable [
 ^#(
-#[1 0 6 0 2 0 6 0 3 0 6 0 4 0 6 0 5 0 6 0 6 0 6 0 7 0 6 0 8 0 6 0 13 0 6 0 15 0 6 0 17 0 6 0 18 0 6 0 19 0 6 0 22 0 9 0 34 0 13 0 35 0 6 0 80 0 6 0 83] 
-#[0 0 0 0 85] 
-#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 6 0 8 0 10 0 13 0 10 0 15 0 14 0 17 0 14 0 18 0 18 0 19 0 7 0 22 0 45 0 35 0 49 0 38 0 49 0 39 0 57 0 40 0 61 0 41 0 49 0 44 0 69 0 45 0 73 0 46 0 49 0 48 0 81 0 49 0 49 0 50 0 49 0 55 0 93 0 59 0 49 0 60 0 49 0 61 0 105 0 65 0 49 0 68 0 113 0 72 0 49 0 73 0 81 0 76 0 125 0 77 0 129 0 80 0 11 0 83] 
-#[0 0 22 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[0 0 26 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[0 0 30 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[0 0 34 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[0 0 38 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[0 0 42 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[0 0 46 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[1 0 137 0 8 0 149 0 22 0 145 0 42 0 149 0 47 0 153 0 67 0 157 0 83] 
-#[1 0 161 0 37 0 165 0 79 0 50 0 80 0 50 0 83 0 50 0 85] 
-#[0 0 54 0 79 0 80 0 83 0 85] 
-#[0 0 58 0 8 0 78 0 79 0 80 0 83 0 85] 
-#[1 0 6 0 8 0 169 0 35 0 173 0 40 0 62 0 78 0 62 0 79 0 62 0 80 0 15 0 83 0 62 0 85] 
-#[0 0 66 0 79 0 80 0 83 0 85] 
-#[0 0 70 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[1 0 6 0 22 0 177 0 35 0 181 0 45 0 74 0 78 0 74 0 79 0 74 0 80 0 19 0 83 0 74 0 85] 
-#[0 0 78 0 79 0 80 0 83 0 85] 
-#[1 0 82 0 8 0 82 0 11 0 82 0 14 0 82 0 16 0 82 0 22 0 82 0 78 0 82 0 79 0 82 0 80 0 23 0 83 0 82 0 85] 
-#[0 0 86 0 8 0 11 0 14 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[0 0 90 0 8 0 11 0 14 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
+#[1 0 6 0 2 0 6 0 3 0 6 0 4 0 6 0 5 0 6 0 6 0 6 0 7 0 6 0 8 0 6 0 13 0 6 0 15 0 6 0 17 0 6 0 18 0 6 0 19 0 6 0 22 0 9 0 34 0 13 0 35 0 6 0 85 0 6 0 88] 
+#[0 0 0 0 90] 
+#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 6 0 8 0 10 0 13 0 10 0 15 0 14 0 17 0 14 0 18 0 18 0 19 0 7 0 22 0 45 0 35 0 49 0 38 0 49 0 39 0 57 0 40 0 61 0 41 0 65 0 45 0 49 0 48 0 73 0 49 0 49 0 51 0 81 0 52 0 49 0 53 0 49 0 58 0 93 0 62 0 49 0 63 0 49 0 64 0 105 0 68 0 49 0 73 0 113 0 77 0 49 0 78 0 81 0 81 0 125 0 82 0 129 0 85 0 11 0 88] 
+#[0 0 22 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 0 26 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 0 30 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 0 34 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 0 38 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 0 42 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 0 46 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[1 0 137 0 8 0 149 0 22 0 145 0 42 0 149 0 50 0 153 0 70 0 157 0 88] 
+#[1 0 161 0 37 0 165 0 84 0 50 0 85 0 50 0 88 0 50 0 90] 
+#[0 0 54 0 84 0 85 0 88 0 90] 
+#[0 0 58 0 8 0 83 0 84 0 85 0 88 0 90] 
+#[1 0 6 0 8 0 169 0 35 0 173 0 40 0 62 0 83 0 62 0 84 0 62 0 85 0 15 0 88 0 62 0 90] 
+#[0 0 66 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 0 70 0 84 0 85 0 88 0 90] 
+#[1 0 6 0 22 0 177 0 35 0 181 0 45 0 74 0 83 0 74 0 84 0 74 0 85 0 19 0 88 0 74 0 90] 
+#[0 0 78 0 84 0 85 0 88 0 90] 
+#[1 0 82 0 8 0 82 0 11 0 82 0 14 0 82 0 16 0 82 0 22 0 82 0 83 0 82 0 84 0 82 0 85 0 23 0 88 0 82 0 90] 
+#[0 0 86 0 8 0 11 0 14 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 0 90 0 8 0 11 0 14 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
 #[1 0 189 0 17 0 193 0 18] 
-#[0 0 94 0 8 0 11 0 14 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[0 0 98 0 8 0 11 0 14 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
+#[0 0 94 0 8 0 11 0 14 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 0 98 0 8 0 11 0 14 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
 #[0 0 197 0 19] 
-#[0 0 102 0 79 0 80 0 83 0 85] 
+#[0 0 102 0 84 0 85 0 88 0 90] 
 #[1 0 201 0 13 0 205 0 15] 
-#[0 0 106 0 79 0 80 0 83 0 85] 
-#[0 0 110 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[0 0 114 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 6 0 8 0 10 0 13 0 10 0 15 0 14 0 17 0 14 0 18 0 18 0 19 0 7 0 22 0 45 0 35 0 209 0 38 0 209 0 39 0 57 0 40 0 61 0 41 0 209 0 44 0 69 0 45 0 73 0 46 0 209 0 48 0 81 0 49 0 209 0 50 0 209 0 55 0 93 0 59 0 209 0 60 0 209 0 61 0 105 0 65 0 209 0 68 0 113 0 72 0 209 0 73 0 81 0 76 0 125 0 77 0 27 0 83] 
-#[1 0 118 0 2 0 118 0 3 0 118 0 4 0 118 0 5 0 118 0 6 0 118 0 7 0 118 0 8 0 118 0 13 0 118 0 15 0 118 0 17 0 118 0 18 0 118 0 19 0 118 0 22 0 118 0 80 0 217 0 82 0 118 0 83] 
-#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 10 0 13 0 14 0 17 0 14 0 18 0 18 0 19 0 221 0 20 0 225 0 21 0 41 0 22 0 229 0 43 0 233 0 48 0 81 0 49 0 233 0 50 0 233 0 55 0 93 0 59 0 233 0 60 0 233 0 61 0 105 0 65 0 237 0 68 0 241 0 72 0 81 0 76 0 125 0 77 0 245 0 83] 
-#[0 0 122 0 12] 
-#[1 0 126 0 8 0 126 0 78 0 126 0 79 0 126 0 80 0 31 0 83 0 126 0 85] 
-#[0 0 253 0 12] 
-#[1 0 130 0 22 0 130 0 78 0 130 0 79 0 130 0 80 0 35 0 83 0 130 0 85] 
-#[0 0 118 0 8 0 22 0 80 0 83 0 85] 
-#[1 1 5 0 35 1 9 0 36 0 6 0 80 0 6 0 83 0 6 0 85] 
-#[0 1 13 0 83] 
-#[1 0 137 0 8 0 145 0 42 0 157 0 83] 
-#[0 0 134 0 8 0 78 0 79 0 80 0 83 0 85] 
-#[1 0 149 0 22 0 149 0 47 0 153 0 67 0 157 0 83] 
-#[0 0 138 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[0 1 17 0 82] 
-#[1 1 21 0 57 0 142 0 81 0 142 0 84] 
-#[1 1 25 0 57 0 142 0 81 0 142 0 84] 
-#[0 1 29 0 22] 
-#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 14 0 17 0 14 0 18 0 18 0 19 0 41 0 22 1 33 0 48 0 81 0 49 1 33 0 50 1 33 0 55 0 93 0 59 1 33 0 60 1 33 0 61 0 105 0 65 0 81 0 76 0 125 0 77 1 37 0 83] 
-#[1 0 149 0 22 0 149 0 47 1 41 0 67] 
-#[1 1 45 0 37 1 49 0 79 0 50 0 80 0 50 0 83 0 50 0 85] 
-#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 6 0 8 0 10 0 13 0 10 0 15 0 14 0 17 0 14 0 18 0 18 0 19 0 7 0 22 0 45 0 35 1 53 0 38 1 53 0 39 0 57 0 40 0 61 0 41 1 53 0 44 0 69 0 45 0 73 0 46 1 53 0 48 0 81 0 49 1 53 0 50 1 53 0 55 0 93 0 59 1 53 0 60 1 53 0 61 0 105 0 65 1 53 0 68 0 113 0 72 1 53 0 73 0 81 0 76 0 125 0 77 0 217 0 82 0 39 0 83] 
-#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 41 0 22 1 57 0 49 1 61 0 50 1 65 0 51 1 69 0 52 1 57 0 76 0 125 0 77 1 73 0 83] 
-#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 10 0 13 0 14 0 17 0 14 0 18 0 18 0 19 0 41 0 22 1 77 0 43 1 81 0 48 0 81 0 49 1 81 0 50 1 81 0 55 0 93 0 59 1 81 0 60 1 81 0 61 0 105 0 65 1 85 0 68 0 241 0 72 0 81 0 76 0 125 0 77 1 89 0 83] 
-#[0 0 146 0 8 0 78 0 79 0 80 0 83 0 85] 
-#[1 1 93 0 82 1 97 0 83] 
-#[0 0 150 0 8 0 78 0 79 0 80 0 83 0 85] 
-#[0 0 154 0 8 0 78 0 79 0 80 0 83 0 85] 
-#[0 0 201 0 13] 
-#[1 0 158 0 8 0 158 0 78 0 158 0 79 0 158 0 80 0 43 0 82 0 47 0 83 0 158 0 85] 
-#[0 0 166 0 8 0 78 0 79 0 80 0 83 0 85] 
-#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 170 0 11 0 10 0 15 0 170 0 16 0 14 0 17 0 14 0 18 0 18 0 19 0 51 0 22 1 101 0 43 1 105 0 48 0 81 0 49 1 105 0 50 1 105 0 55 0 93 0 59 1 105 0 60 1 105 0 61 0 105 0 65 1 109 0 72 1 113 0 73 0 81 0 76 0 125 0 77 0 170 0 78 0 170 0 79 0 170 0 80 0 55 0 83 0 170 0 85] 
-#[0 0 174 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[1 1 117 0 80 0 157 0 83 0 178 0 85] 
-#[0 0 182 0 80 0 83 0 85] 
-#[1 1 121 0 37 0 50 0 80 0 50 0 83 0 50 0 85] 
-#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 41 0 22 1 125 0 49 1 61 0 50 1 65 0 51 1 129 0 52 1 125 0 76 0 125 0 77 1 73 0 83] 
-#[1 1 133 0 56 1 137 0 58 1 141 0 66 0 186 0 81 1 137 0 84] 
-#[1 1 133 0 56 1 137 0 58 1 149 0 66 0 186 0 81 1 137 0 84] 
-#[1 0 190 0 19 0 190 0 31 1 153 0 63] 
-#[1 0 194 0 11 0 194 0 14 1 157 0 70] 
-#[0 0 217 0 82] 
-#[1 0 198 0 11 0 198 0 16 1 161 0 75] 
-#[1 1 165 0 35 1 9 0 36 0 6 0 80 0 6 0 83 0 6 0 85] 
-#[0 1 169 0 83] 
-#[1 1 173 0 37 1 177 0 79 0 50 0 80 0 50 0 83 0 50 0 85] 
-#[1 0 202 0 2 0 202 0 3 0 202 0 4 0 202 0 5 0 202 0 6 0 202 0 7 0 202 0 22 1 181 0 54 0 202 0 78 0 59 0 83] 
-#[0 0 206 0 2 0 3 0 4 0 5 0 6 0 7 0 22 0 78 0 83] 
-#[0 0 210 0 2 0 3 0 4 0 5 0 6 0 7 0 22 0 78 0 83] 
-#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 41 0 22 1 125 0 49 1 61 0 50 1 189 0 51 1 125 0 76 0 125 0 77 1 193 0 78 1 197 0 83] 
-#[0 1 201 0 82] 
-#[1 1 205 0 82 1 97 0 83] 
-#[0 0 214 0 8 0 78 0 79 0 80 0 83 0 85] 
-#[0 0 218 0 8 0 78 0 79 0 80 0 83 0 85] 
-#[1 0 43 0 82 0 162 0 83] 
-#[1 0 6 0 8 0 6 0 22 0 45 0 35 1 209 0 39 0 57 0 40 0 61 0 41 1 213 0 44 0 69 0 45 0 73 0 46 0 6 0 83] 
-#[0 0 222 0 82 0 83] 
-#[1 1 217 0 82 1 97 0 83] 
-#[0 0 226 0 11 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[0 0 205 0 15] 
-#[0 0 230 0 11 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[0 1 221 0 83] 
-#[1 1 225 0 35 1 9 0 36 0 6 0 80 0 6 0 83 0 6 0 85] 
-#[1 0 202 0 2 0 202 0 3 0 202 0 4 0 202 0 5 0 202 0 6 0 202 0 7 0 202 0 22 1 181 0 54 0 202 0 78 0 63 0 83] 
-#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 41 0 22 1 125 0 49 1 61 0 50 1 189 0 51 1 125 0 76 0 125 0 77 1 229 0 78 1 233 0 83] 
-#[0 0 234 0 81 0 84] 
-#[1 1 237 0 22 1 241 0 84] 
-#[0 1 245 0 81] 
-#[0 0 238 0 22 0 84] 
-#[0 1 249 0 81] 
-#[1 0 186 0 19 2 5 0 31 2 1 0 62 2 5 0 64 2 9 0 66] 
-#[1 2 13 0 11 0 242 0 14 2 17 0 69 2 21 0 71] 
-#[1 2 25 0 11 0 242 0 16 2 29 0 71 2 33 0 74] 
-#[1 1 117 0 80 0 157 0 83 0 246 0 85] 
-#[1 2 37 0 37 0 50 0 80 0 50 0 83 0 50 0 85] 
-#[1 2 41 0 35 1 9 0 36 0 6 0 80 0 6 0 83 0 6 0 85] 
-#[0 2 45 0 83] 
-#[1 0 250 0 2 0 250 0 3 0 250 0 4 0 250 0 5 0 250 0 6 0 250 0 7 0 250 0 22 2 49 0 53 0 250 0 78 0 67 0 83] 
-#[1 2 57 0 78 1 17 0 82] 
-#[0 0 254 0 2 0 3 0 4 0 5 0 6 0 7 0 22 0 78 0 83] 
-#[0 1 2 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[1 2 61 0 78 1 201 0 82] 
-#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 41 0 22 1 125 0 49 1 61 0 50 1 65 0 51 1 69 0 52 1 125 0 76 0 125 0 77 1 73 0 83] 
-#[1 0 6 0 8 0 6 0 22 0 45 0 35 2 65 0 39 0 57 0 40 0 61 0 41 2 69 0 44 0 69 0 45 0 73 0 46 0 6 0 83] 
-#[0 2 73 0 78] 
-#[0 2 77 0 78] 
-#[1 0 6 0 8 0 6 0 22 0 45 0 35 2 81 0 39 0 57 0 40 0 61 0 41 2 85 0 44 0 69 0 45 0 73 0 46 0 6 0 83] 
-#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 6 0 8 0 10 0 13 0 10 0 15 0 14 0 17 0 14 0 18 0 18 0 19 0 7 0 22 0 45 0 35 2 89 0 38 2 89 0 39 0 57 0 40 0 61 0 41 2 89 0 44 0 69 0 45 0 73 0 46 2 89 0 48 0 81 0 49 2 89 0 50 2 89 0 55 0 93 0 59 2 89 0 60 2 89 0 61 0 105 0 65 2 89 0 68 0 113 0 72 2 89 0 73 0 81 0 76 0 125 0 77 0 39 0 83] 
-#[1 1 117 0 80 0 157 0 83 1 6 0 85] 
-#[0 1 10 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[1 2 93 0 78 1 201 0 82] 
-#[0 1 14 0 81 0 84] 
-#[0 1 18 0 22 0 84] 
-#[0 1 22 0 8 0 11 0 14 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[0 1 26 0 8 0 11 0 14 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[0 1 30 0 22 0 31] 
-#[0 1 34 0 19 0 31] 
-#[1 2 97 0 22 2 101 0 31] 
-#[0 2 105 0 19] 
-#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 14 0 17 0 14 0 18 0 18 0 19 0 41 0 22 2 109 0 48 0 81 0 49 2 109 0 50 2 109 0 55 0 93 0 59 2 109 0 60 2 109 0 61 0 105 0 65 0 81 0 76 0 125 0 77 1 37 0 83] 
-#[0 1 38 0 11 0 14] 
-#[0 2 113 0 14] 
-#[1 0 149 0 22 0 149 0 47 2 117 0 67] 
-#[0 2 121 0 16] 
-#[0 1 42 0 11 0 16] 
-#[1 2 125 0 35 1 9 0 36 0 6 0 80 0 6 0 83 0 6 0 85] 
-#[1 1 117 0 80 0 157 0 83 1 46 0 85] 
-#[1 2 129 0 37 0 50 0 80 0 50 0 83 0 50 0 85] 
-#[0 1 50 0 2 0 3 0 4 0 5 0 6 0 7 0 22 0 78 0 83] 
-#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 41 0 22 2 133 0 49 2 133 0 76 0 125 0 77] 
-#[0 1 54 0 8 0 11 0 14 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[0 1 58 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[0 2 137 0 78] 
-#[0 2 141 0 78] 
-#[0 1 62 0 8 0 78 0 79 0 80 0 83 0 85] 
-#[0 1 66 0 8 0 78 0 79 0 80 0 83 0 85] 
-#[0 2 145 0 78] 
-#[0 2 149 0 78] 
-#[1 2 153 0 79 1 70 0 80 1 70 0 83 1 70 0 85] 
-#[0 1 74 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
+#[0 0 106 0 84 0 85 0 88 0 90] 
+#[0 0 110 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 0 114 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 6 0 8 0 10 0 13 0 10 0 15 0 14 0 17 0 14 0 18 0 18 0 19 0 7 0 22 0 45 0 35 0 209 0 38 0 209 0 39 0 57 0 40 0 61 0 41 0 65 0 45 0 209 0 48 0 73 0 49 0 209 0 51 0 81 0 52 0 209 0 53 0 209 0 58 0 93 0 62 0 209 0 63 0 209 0 64 0 105 0 68 0 209 0 73 0 113 0 77 0 209 0 78 0 81 0 81 0 125 0 82 0 27 0 88] 
+#[1 0 118 0 2 0 118 0 3 0 118 0 4 0 118 0 5 0 118 0 6 0 118 0 7 0 118 0 8 0 118 0 13 0 118 0 15 0 118 0 17 0 118 0 18 0 118 0 19 0 118 0 22 0 118 0 85 0 217 0 87 0 118 0 88] 
+#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 122 0 8 0 10 0 13 0 10 0 15 0 14 0 17 0 14 0 18 0 18 0 19 0 221 0 20 0 225 0 21 0 31 0 22 0 229 0 43 0 233 0 47 0 237 0 51 0 81 0 52 0 237 0 53 0 237 0 58 0 93 0 62 0 237 0 63 0 237 0 64 0 105 0 68 0 241 0 73 0 113 0 77 0 245 0 78 0 81 0 81 0 125 0 82 0 249 0 88] 
+#[0 0 126 0 12] 
+#[1 0 130 0 8 0 130 0 11 0 130 0 16 0 130 0 22 0 130 0 83 0 130 0 84 0 130 0 85 0 35 0 88 0 130 0 90] 
+#[0 1 1 0 12] 
+#[1 0 134 0 22 0 134 0 83 0 134 0 84 0 134 0 85 0 39 0 88 0 134 0 90] 
+#[0 0 118 0 8 0 22 0 85 0 88 0 90] 
+#[1 1 9 0 35 1 13 0 36 0 6 0 85 0 6 0 88 0 6 0 90] 
+#[0 1 17 0 88] 
+#[1 0 137 0 8 0 145 0 42 0 157 0 88] 
+#[0 0 138 0 8 0 83 0 84 0 85 0 88 0 90] 
+#[1 0 149 0 22 0 149 0 50 0 153 0 70 0 157 0 88] 
+#[0 0 142 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 1 21 0 87] 
+#[1 1 25 0 60 0 146 0 86 0 146 0 89] 
+#[1 1 29 0 60 0 146 0 86 0 146 0 89] 
+#[0 1 33 0 22] 
+#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 14 0 17 0 14 0 18 0 18 0 19 0 41 0 22 1 37 0 51 0 81 0 52 1 37 0 53 1 37 0 58 0 93 0 62 1 37 0 63 1 37 0 64 0 105 0 68 0 81 0 81 0 125 0 82 1 41 0 88] 
+#[1 0 149 0 22 0 149 0 50 1 45 0 70] 
+#[1 1 49 0 37 1 53 0 84 0 50 0 85 0 50 0 88 0 50 0 90] 
+#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 6 0 8 0 10 0 13 0 10 0 15 0 14 0 17 0 14 0 18 0 18 0 19 0 7 0 22 0 45 0 35 1 57 0 38 1 57 0 39 0 57 0 40 0 61 0 41 0 65 0 45 1 57 0 48 0 73 0 49 1 57 0 51 0 81 0 52 1 57 0 53 1 57 0 58 0 93 0 62 1 57 0 63 1 57 0 64 0 105 0 68 1 57 0 73 0 113 0 77 1 57 0 78 0 81 0 81 0 125 0 82 0 217 0 87 0 43 0 88] 
+#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 41 0 22 1 61 0 52 1 65 0 53 1 69 0 54 1 73 0 55 1 61 0 81 0 125 0 82 1 77 0 88] 
+#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 122 0 8 0 10 0 13 0 10 0 15 0 14 0 17 0 14 0 18 0 18 0 19 0 31 0 22 1 81 0 43 1 85 0 47 1 89 0 51 0 81 0 52 1 89 0 53 1 89 0 58 0 93 0 62 1 89 0 63 1 89 0 64 0 105 0 68 1 93 0 73 0 113 0 77 1 97 0 78 0 81 0 81 0 125 0 82 1 101 0 88] 
+#[0 0 150 0 8 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[1 1 105 0 87 1 109 0 88] 
+#[1 0 137 0 8 0 149 0 22 1 113 0 42 1 117 0 44 0 149 0 50 1 121 0 70 1 125 0 71] 
+#[0 0 154 0 8 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 0 158 0 8 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 0 162 0 8 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[1 0 166 0 8 0 166 0 11 0 166 0 16 0 166 0 22 0 166 0 83 0 166 0 84 0 166 0 85 0 47 0 87 0 51 0 88 0 166 0 90] 
+#[0 0 174 0 8 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 178 0 11 0 10 0 13 0 10 0 15 0 178 0 16 0 14 0 17 0 14 0 18 0 18 0 19 0 55 0 22 1 129 0 43 1 133 0 51 0 81 0 52 1 133 0 53 1 133 0 58 0 93 0 62 1 133 0 63 1 133 0 64 0 105 0 68 1 137 0 73 0 113 0 77 1 141 0 78 0 81 0 81 0 125 0 82 0 178 0 83 0 178 0 84 0 178 0 85 0 59 0 88 0 178 0 90] 
+#[0 0 182 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[1 1 145 0 85 0 157 0 88 0 186 0 90] 
+#[0 0 190 0 85 0 88 0 90] 
+#[1 1 149 0 37 0 50 0 85 0 50 0 88 0 50 0 90] 
+#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 41 0 22 1 153 0 52 1 65 0 53 1 69 0 54 1 157 0 55 1 153 0 81 0 125 0 82 1 77 0 88] 
+#[1 1 161 0 59 1 165 0 61 1 169 0 69 0 194 0 86 1 165 0 89] 
+#[1 1 161 0 59 1 165 0 61 1 177 0 69 0 194 0 86 1 165 0 89] 
+#[1 0 198 0 19 0 198 0 31 1 181 0 66] 
+#[1 0 202 0 11 0 202 0 14 1 185 0 75] 
+#[0 0 217 0 87] 
+#[1 0 206 0 11 0 206 0 16 1 189 0 80] 
+#[1 1 193 0 35 1 13 0 36 0 6 0 85 0 6 0 88 0 6 0 90] 
+#[0 1 197 0 88] 
+#[1 1 201 0 37 1 205 0 84 0 50 0 85 0 50 0 88 0 50 0 90] 
+#[1 0 210 0 2 0 210 0 3 0 210 0 4 0 210 0 5 0 210 0 6 0 210 0 7 0 210 0 22 1 209 0 57 0 210 0 83 0 63 0 88] 
+#[0 0 214 0 2 0 3 0 4 0 5 0 6 0 7 0 22 0 83 0 88] 
+#[0 0 218 0 2 0 3 0 4 0 5 0 6 0 7 0 22 0 83 0 88] 
+#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 41 0 22 1 153 0 52 1 65 0 53 1 217 0 54 1 153 0 81 0 125 0 82 1 221 0 83 1 225 0 88] 
+#[0 1 229 0 87] 
+#[1 1 233 0 87 1 109 0 88] 
+#[1 0 137 0 8 0 149 0 22 1 113 0 42 1 237 0 44 0 149 0 50 1 121 0 70 1 241 0 71] 
+#[0 0 222 0 8 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 0 226 0 8 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 0 230 0 8 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[1 0 170 0 8 0 47 0 87 0 170 0 88] 
+#[1 0 6 0 8 0 6 0 22 0 45 0 35 1 245 0 39 0 57 0 40 0 61 0 41 0 65 0 45 1 249 0 48 0 73 0 49 0 6 0 88] 
+#[0 0 234 0 8 0 87 0 88] 
+#[1 0 238 0 8 0 238 0 11 0 238 0 16 0 238 0 22 1 253 0 72 0 238 0 83 0 238 0 84 0 238 0 85 0 238 0 88 0 238 0 90] 
+#[0 2 1 0 83] 
+#[1 0 242 0 22 2 5 0 46 0 242 0 83 0 242 0 88] 
+#[0 2 9 0 83] 
+#[1 0 137 0 8 1 113 0 42 2 13 0 71 2 17 0 87 1 109 0 88] 
+#[0 0 246 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 0 250 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 0 254 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 2 21 0 88] 
+#[1 2 25 0 35 1 13 0 36 0 6 0 85 0 6 0 88 0 6 0 90] 
+#[1 0 210 0 2 0 210 0 3 0 210 0 4 0 210 0 5 0 210 0 6 0 210 0 7 0 210 0 22 1 209 0 57 0 210 0 83 0 67 0 88] 
+#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 41 0 22 1 153 0 52 1 65 0 53 1 217 0 54 1 153 0 81 0 125 0 82 2 29 0 83 2 33 0 88] 
+#[0 1 2 0 86 0 89] 
+#[1 2 37 0 22 2 41 0 89] 
+#[0 2 45 0 86] 
+#[0 1 6 0 22 0 89] 
+#[0 2 49 0 86] 
+#[1 0 194 0 19 2 61 0 31 2 57 0 65 2 61 0 67 2 65 0 69] 
+#[1 2 69 0 11 1 10 0 14 2 73 0 74 2 77 0 76] 
+#[1 2 81 0 11 1 10 0 16 2 85 0 76 2 89 0 79] 
+#[1 1 145 0 85 0 157 0 88 1 14 0 90] 
+#[1 2 93 0 37 0 50 0 85 0 50 0 88 0 50 0 90] 
+#[1 2 97 0 35 1 13 0 36 0 6 0 85 0 6 0 88 0 6 0 90] 
+#[0 2 101 0 88] 
+#[1 1 18 0 2 1 18 0 3 1 18 0 4 1 18 0 5 1 18 0 6 1 18 0 7 1 18 0 22 2 105 0 56 1 18 0 83 0 71 0 88] 
+#[1 2 113 0 83 1 21 0 87] 
+#[0 1 22 0 2 0 3 0 4 0 5 0 6 0 7 0 22 0 83 0 88] 
+#[0 1 26 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[1 2 117 0 83 1 229 0 87] 
+#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 41 0 22 1 153 0 52 1 65 0 53 1 69 0 54 1 73 0 55 1 153 0 81 0 125 0 82 1 77 0 88] 
+#[1 0 6 0 8 0 6 0 22 0 45 0 35 2 121 0 39 0 57 0 40 0 61 0 41 0 65 0 45 2 125 0 48 0 73 0 49 0 6 0 88] 
+#[0 2 129 0 83] 
+#[0 2 133 0 83] 
+#[0 2 137 0 83] 
+#[0 2 141 0 83] 
+#[1 0 6 0 8 1 30 0 11 1 30 0 16 1 30 0 22 0 169 0 35 2 145 0 40 1 30 0 83 1 30 0 84 1 30 0 85 0 75 0 88 1 30 0 90] 
+#[0 1 34 0 8 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[1 0 6 0 22 0 177 0 35 2 149 0 45 1 38 0 83 0 6 0 88] 
+#[0 1 42 0 8 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 1 46 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[1 0 6 0 8 0 6 0 22 0 45 0 35 2 153 0 39 0 57 0 40 0 61 0 41 0 65 0 45 2 157 0 48 0 73 0 49 0 6 0 88] 
+#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 6 0 8 0 10 0 13 0 10 0 15 0 14 0 17 0 14 0 18 0 18 0 19 0 7 0 22 0 45 0 35 2 161 0 38 2 161 0 39 0 57 0 40 0 61 0 41 0 65 0 45 2 161 0 48 0 73 0 49 2 161 0 51 0 81 0 52 2 161 0 53 2 161 0 58 0 93 0 62 2 161 0 63 2 161 0 64 0 105 0 68 2 161 0 73 0 113 0 77 2 161 0 78 0 81 0 81 0 125 0 82 0 43 0 88] 
+#[1 1 145 0 85 0 157 0 88 1 50 0 90] 
+#[0 1 54 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[1 2 165 0 83 1 229 0 87] 
+#[0 1 58 0 86 0 89] 
+#[0 1 62 0 22 0 89] 
+#[0 1 66 0 8 0 11 0 14 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 1 70 0 8 0 11 0 14 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 1 74 0 22 0 31] 
 #[0 1 78 0 19 0 31] 
-#[0 1 82 0 22 0 31] 
-#[0 1 86 0 8 0 11 0 14 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[0 1 90 0 11 0 14] 
-#[0 1 94 0 8 0 78 0 79 0 80 0 83 0 85] 
-#[0 1 98 0 11 0 16] 
-#[0 1 102 0 11 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[1 1 117 0 80 0 157 0 83 1 106 0 85] 
-#[1 2 157 0 35 1 9 0 36 0 6 0 80 0 6 0 83 0 6 0 85] 
-#[0 1 110 0 2 0 3 0 4 0 5 0 6 0 7 0 22 0 78 0 83] 
-#[0 1 114 0 8 0 78 0 79 0 80 0 83 0 85] 
-#[0 1 118 0 8 0 78 0 79 0 80 0 83 0 85] 
-#[0 1 122 0 11 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[0 1 126 0 11 0 16 0 22 0 78 0 79 0 80 0 83 0 85] 
-#[1 1 130 0 80 0 71 0 83 1 130 0 85] 
-#[1 1 117 0 80 0 157 0 83 1 134 0 85] 
-#[0 1 138 0 80 0 83 0 85]
+#[1 2 169 0 22 2 173 0 31] 
+#[0 2 177 0 19] 
+#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 1 10 0 14 0 14 0 17 0 14 0 18 0 18 0 19 0 41 0 22 2 181 0 51 0 81 0 52 2 181 0 53 2 181 0 58 0 93 0 62 2 181 0 63 2 181 0 64 0 105 0 68 2 185 0 76 0 81 0 81 0 125 0 82 1 41 0 88] 
+#[0 1 82 0 11 0 14] 
+#[0 2 189 0 14] 
+#[1 1 10 0 16 0 149 0 22 0 149 0 50 2 193 0 70 2 197 0 76] 
+#[0 2 201 0 16] 
+#[0 1 86 0 11 0 16] 
+#[1 2 205 0 35 1 13 0 36 0 6 0 85 0 6 0 88 0 6 0 90] 
+#[1 1 145 0 85 0 157 0 88 1 90 0 90] 
+#[1 2 209 0 37 0 50 0 85 0 50 0 88 0 50 0 90] 
+#[0 1 94 0 2 0 3 0 4 0 5 0 6 0 7 0 22 0 83 0 88] 
+#[1 0 125 0 2 0 125 0 3 0 125 0 4 0 125 0 5 0 33 0 6 0 37 0 7 0 41 0 22 2 213 0 52 2 213 0 81 0 125 0 82] 
+#[0 1 98 0 8 0 11 0 14 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 1 102 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 2 217 0 83] 
+#[0 2 221 0 83] 
+#[0 1 106 0 8 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 1 110 0 8 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 1 114 0 8 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 1 118 0 8 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 1 122 0 8 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 1 126 0 22 0 83 0 88] 
+#[0 2 225 0 83] 
+#[0 2 229 0 83] 
+#[1 2 233 0 84 1 130 0 85 1 130 0 88 1 130 0 90] 
+#[0 1 134 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 11 0 14 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 1 138 0 19 0 31] 
+#[0 1 142 0 22 0 31] 
+#[0 1 146 0 8 0 11 0 14 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 1 150 0 11 0 14] 
+#[0 2 237 0 14] 
+#[0 1 154 0 8 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 1 158 0 11 0 16] 
+#[0 2 241 0 16] 
+#[0 1 162 0 8 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[1 1 145 0 85 0 157 0 88 1 166 0 90] 
+#[1 2 245 0 35 1 13 0 36 0 6 0 85 0 6 0 88 0 6 0 90] 
+#[0 1 170 0 2 0 3 0 4 0 5 0 6 0 7 0 22 0 83 0 88] 
+#[0 1 174 0 8 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 1 178 0 8 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 1 182 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 1 186 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[1 1 190 0 85 0 79 0 88 1 190 0 90] 
+#[0 1 194 0 8 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[0 1 198 0 8 0 11 0 16 0 22 0 83 0 84 0 85 0 88 0 90] 
+#[1 1 145 0 85 0 157 0 88 1 202 0 90] 
+#[0 1 206 0 85 0 88 0 90]
 	).
 ]
 
@@ -815,6 +879,13 @@ YAMLParser >> reduceActionForPushDoubleQuoteScope1: nodes [
 YAMLParser >> reduceActionForPushFlow1: nodes [
 	scanner opened: scanner opened + 1.
 	self pushScope: #FLOW.
+	^ nil
+]
+
+{ #category : #'generated-reduction actions' }
+YAMLParser >> reduceActionForPushIndent1: nodes [
+	scanner pushIndent: (scanner indentsBefore: currentToken startPosition).
+	currentState notNil ifTrue: [ currentState scannerState: scanner currentState ].
 	^ nil
 ]
 
@@ -1021,6 +1092,19 @@ YAMLParser >> reduceActionForflowlist1: nodes [
 ]
 
 { #category : #'generated-reduction actions' }
+YAMLParser >> reduceActionForflowlist2: nodes [
+	| result |
+	result := YAMLFlowListNode new.
+	result leftBracket: (nodes at: 2).
+	result addNode: (nodes at: 3) to: result items.
+	result addTokens: ((nodes at: 4) at: 1) to: result commas.
+	result addNodes: ((nodes at: 4) at: 2) to: result items.
+	result addToken: (nodes at: 5) to: result commas.
+	result rightBracket: (nodes at: 7).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
 YAMLParser >> reduceActionForflowmappinglist1: nodes [
 	| result |
 	result := YAMLFlowMappingListNode new.
@@ -1033,6 +1117,19 @@ YAMLParser >> reduceActionForflowmappinglist1: nodes [
 ]
 
 { #category : #'generated-reduction actions' }
+YAMLParser >> reduceActionForflowmappinglist2: nodes [
+	| result |
+	result := YAMLFlowMappingListNode new.
+	result leftBrace: (nodes at: 2).
+	result addNode: (nodes at: 3) to: result mappings.
+	result addTokens: ((nodes at: 4) at: 1) to: result commas.
+	result addNodes: ((nodes at: 4) at: 2) to: result mappings.
+	result addToken: (nodes at: 5) to: result commas.
+	result rightBrace: (nodes at: 7).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
 YAMLParser >> reduceActionForlist1: nodes [
 	| result |
 	result := YAMLListNode new.
@@ -1041,7 +1138,35 @@ YAMLParser >> reduceActionForlist1: nodes [
 ]
 
 { #category : #'generated-reduction actions' }
-YAMLParser >> reduceActionForlistitem10: nodes [
+YAMLParser >> reduceActionForlistWithoutInitialNewline1: nodes [
+	| result |
+	result := YAMLListNode new.
+	result addNode: (nodes at: 1) to: result items.
+	result addNodes: (nodes at: 2) to: result items.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+YAMLParser >> reduceActionForlistitem13: nodes [
+	| result |
+	result := YAMLListItemNode new.
+	result minus: (nodes at: 1).
+	result anchor: (nodes at: 2).
+	result value: (nodes at: 4).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+YAMLParser >> reduceActionForlistitem15: nodes [
+	| result |
+	result := YAMLListItemNode new.
+	result minus: (nodes at: 1).
+	result alias: (nodes at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+YAMLParser >> reduceActionForlistitem16: nodes [
 	| result |
 	result := YAMLListItemNode new.
 	result minus: (nodes at: 1).
@@ -1067,7 +1192,16 @@ YAMLParser >> reduceActionForlistitem2: nodes [
 ]
 
 { #category : #'generated-reduction actions' }
-YAMLParser >> reduceActionForlistitem5: nodes [
+YAMLParser >> reduceActionForlistitem6: nodes [
+	| result |
+	result := YAMLListItemNode new.
+	result minus: (nodes at: 1).
+	result value: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+YAMLParser >> reduceActionForlistitem8: nodes [
 	| result |
 	result := YAMLListItemNode new.
 	result minus: (nodes at: 1).
@@ -1077,21 +1211,12 @@ YAMLParser >> reduceActionForlistitem5: nodes [
 ]
 
 { #category : #'generated-reduction actions' }
-YAMLParser >> reduceActionForlistitem6: nodes [
+YAMLParser >> reduceActionForlistitem9: nodes [
 	| result |
 	result := YAMLListItemNode new.
 	result minus: (nodes at: 1).
 	result anchor: (nodes at: 2).
 	result value: (nodes at: 5).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-YAMLParser >> reduceActionForlistitem9: nodes [
-	| result |
-	result := YAMLListItemNode new.
-	result minus: (nodes at: 1).
-	result alias: (nodes at: 2).
 	^ result
 ]
 
@@ -1121,6 +1246,25 @@ YAMLParser >> reduceActionFormapping5: nodes [
 	result key: (nodes at: 1).
 	result colon: (nodes at: 2).
 	result value: (nodes at: 3).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+YAMLParser >> reduceActionFormapping6: nodes [
+	| result |
+	result := YAMLMappingNode new.
+	result key: (nodes at: 1).
+	result colon: (nodes at: 2).
+	result value: (nodes at: 4).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+YAMLParser >> reduceActionFormappingListWithoutInitialNewline1: nodes [
+	| result |
+	result := YAMLMappingListNode new.
+	result addNode: (nodes at: 1) to: result mappings.
+	result addNodes: (nodes at: 2) to: result mappings.
 	^ result
 ]
 

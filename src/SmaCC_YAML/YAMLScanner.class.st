@@ -22,7 +22,7 @@ YAMLScanner class >> initializeKeywordMap [
 
 { #category : #generated }
 YAMLScanner >> DEDENTId [
-	^ 78
+	^ 83
 ]
 
 { #category : #private }
@@ -32,7 +32,7 @@ YAMLScanner >> DOCUMENTEND1 [
 
 { #category : #generated }
 YAMLScanner >> DOCUMENTENDId [
-	^ 79
+	^ 84
 ]
 
 { #category : #private }
@@ -46,7 +46,7 @@ YAMLScanner >> DOCUMENTSTART1 [
 
 { #category : #generated }
 YAMLScanner >> DOCUMENTSTARTId [
-	^ 80
+	^ 85
 ]
 
 { #category : #private }
@@ -61,22 +61,22 @@ YAMLScanner >> DOUBLE_QUOTEId [
 
 { #category : #generated }
 YAMLScanner >> FINISH_LITERAL_STRINGId [
-	^ 81
+	^ 86
 ]
 
 { #category : #generated }
 YAMLScanner >> INDENTId [
-	^ 82
+	^ 87
 ]
 
 { #category : #generated }
 YAMLScanner >> NEWLINEId [
-	^ 83
+	^ 88
 ]
 
 { #category : #generated }
 YAMLScanner >> NEWLINE_STR_LITERALId [
-	^ 84
+	^ 89
 ]
 
 { #category : #private }
@@ -132,12 +132,26 @@ YAMLScanner >> currentState [
 
 { #category : #generated }
 YAMLScanner >> emptySymbolTokenId [
-	^ 85
+	^ 90
 ]
 
 { #category : #generated }
 YAMLScanner >> errorTokenId [
-	^ 86
+	^ 91
+]
+
+{ #category : #private }
+YAMLScanner >> indentsBefore: anInteger [
+	| text |
+	text := String
+			streamContents: [ :str | 
+				| index crlf |
+				index := anInteger - 2.
+				crlf := String crlf.
+				[ index > 0
+					and: [ (crlf includes: (str nextPut: (self peekAt: index))) not ] ]
+					whileTrue: [ index := index - 1 ] ].
+	^ self indentsFor: text reversed
 ]
 
 { #category : #private }
@@ -150,9 +164,9 @@ YAMLScanner >> indentsFor: aString [
 	input atEnd ifTrue: [ ^ 0 ].
 	index := 0.
 	[ input atEnd ]
-		whileFalse: [ index := input next = $ 
-					ifTrue: [ index + 1 ]
-					ifFalse: [ (index // 8 + 1) * 8 ] ].
+		whileFalse: [ index := input next = Character tab
+					ifTrue: [ (index // 8 + 1) * 8 ]
+					ifFalse: [ index + 1 ] ].
 	^ index
 ]
 
@@ -223,6 +237,11 @@ YAMLScanner >> opened [
 { #category : #accessing }
 YAMLScanner >> opened: anObject [
 	opened := anObject
+]
+
+{ #category : #private }
+YAMLScanner >> pushIndent: anInteger [
+	indents := indents asLinkPrepend: anInteger
 ]
 
 { #category : #private }
