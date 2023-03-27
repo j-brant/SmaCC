@@ -11,6 +11,11 @@ TYAMLParseNodeVisitor >> visitAlias: anAlias [
 ]
 
 { #category : #generated }
+TYAMLParseNodeVisitor >> visitComplexKey: aComplexKey [
+	^ self visitParse: aComplexKey
+]
+
+{ #category : #generated }
 TYAMLParseNodeVisitor >> visitFile: aFile [
 	^ self visitParse: aFile
 ]

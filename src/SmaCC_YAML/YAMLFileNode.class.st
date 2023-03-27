@@ -3,8 +3,9 @@ Class {
 	#superclass : #YAMLParseNode,
 	#instVars : [
 		'documents',
-		'documentStarts',
-		'documentEnds'
+		'documentEnds',
+		'anchors',
+		'documentStarts'
 	],
 	#category : #'SmaCC_YAML'
 }
@@ -15,13 +16,23 @@ YAMLFileNode >> acceptVisitor: aParseVisitor [
 ]
 
 { #category : #generated }
+YAMLFileNode >> anchors [
+	^ anchors
+]
+
+{ #category : #generated }
+YAMLFileNode >> anchors: anOrderedCollection [
+	anchors := anOrderedCollection
+]
+
+{ #category : #generated }
 YAMLFileNode >> compositeNodeVariables [
 	^ #(#documents)
 ]
 
 { #category : #generated }
 YAMLFileNode >> compositeTokenVariables [
-	^ #(#documentEnds #documentStarts)
+	^ #(#documentEnds #anchors #documentStarts)
 ]
 
 { #category : #generated }
@@ -61,5 +72,6 @@ YAMLFileNode >> initialize [
 	super initialize.
 	documents := OrderedCollection new: 2.
 	documentEnds := OrderedCollection new: 2.
+	anchors := OrderedCollection new: 2.
 	documentStarts := OrderedCollection new: 2.
 ]

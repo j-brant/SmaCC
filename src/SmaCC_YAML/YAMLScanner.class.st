@@ -12,7 +12,7 @@ Class {
 { #category : #'generated-initialization' }
 YAMLScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
-	#(#(22 '---' 9) #(22 '...' 10) #(22 '>' 18) #(22 '>+' 18) #(22 '>+1' 18) #(22 '>+2' 18) #(22 '>+3' 18) #(22 '>+4' 18) #(22 '>+5' 18) #(22 '>+6' 18) #(22 '>+7' 18) #(22 '>+8' 18) #(22 '>+9' 18) #(22 '>-' 18) #(22 '>-1' 18) #(22 '>-2' 18) #(22 '>-3' 18) #(22 '>-4' 18) #(22 '>-5' 18) #(22 '>-6' 18) #(22 '>-7' 18) #(22 '>-8' 18) #(22 '>-9' 18) #(22 '>1' 18) #(22 '>1+' 18) #(22 '>1-' 18) #(22 '>2' 18) #(22 '>2+' 18) #(22 '>2-' 18) #(22 '>3' 18) #(22 '>3+' 18) #(22 '>3-' 18) #(22 '>4' 18) #(22 '>4+' 18) #(22 '>4-' 18) #(22 '>5' 18) #(22 '>5+' 18) #(22 '>5-' 18) #(22 '>6' 18) #(22 '>6+' 18) #(22 '>6-' 18) #(22 '>7' 18) #(22 '>7+' 18) #(22 '>7-' 18) #(22 '>8' 18) #(22 '>8+' 18) #(22 '>8-' 18) #(22 '>9' 18) #(22 '>9+' 18) #(22 '>9-' 18))
+	#(#(21 '---' 9) #(21 '...' 10))
 		do: [ :each | 
 			(keywordMap at: each first ifAbsentPut: [ Dictionary new ])
 				at: (each at: 2)
@@ -21,8 +21,13 @@ YAMLScanner class >> initializeKeywordMap [
 ]
 
 { #category : #generated }
+YAMLScanner >> COLONId [
+	^ 12
+]
+
+{ #category : #generated }
 YAMLScanner >> DEDENTId [
-	^ 85
+	^ 88
 ]
 
 { #category : #private }
@@ -32,7 +37,7 @@ YAMLScanner >> DOCUMENTEND1 [
 
 { #category : #generated }
 YAMLScanner >> DOCUMENTENDId [
-	^ 86
+	^ 89
 ]
 
 { #category : #private }
@@ -46,37 +51,27 @@ YAMLScanner >> DOCUMENTSTART1 [
 
 { #category : #generated }
 YAMLScanner >> DOCUMENTSTARTId [
-	^ 87
-]
-
-{ #category : #private }
-YAMLScanner >> DOUBLE_QUOTE2 [
-	^ self recordAndReportMatch: {self DOUBLE_QUOTEId}
-]
-
-{ #category : #generated }
-YAMLScanner >> DOUBLE_QUOTEId [
-	^ 19
-]
-
-{ #category : #generated }
-YAMLScanner >> FINISH_LITERAL_STRINGId [
-	^ 88
-]
-
-{ #category : #generated }
-YAMLScanner >> INDENTId [
-	^ 89
-]
-
-{ #category : #generated }
-YAMLScanner >> NEWLINEId [
 	^ 90
 ]
 
 { #category : #generated }
-YAMLScanner >> NEWLINE_STR_LITERALId [
+YAMLScanner >> FINISH_LITERAL_STRINGId [
 	^ 91
+]
+
+{ #category : #generated }
+YAMLScanner >> INDENTId [
+	^ 92
+]
+
+{ #category : #generated }
+YAMLScanner >> NEWLINEId [
+	^ 93
+]
+
+{ #category : #generated }
+YAMLScanner >> NEWLINE_STR_LITERALId [
+	^ 94
 ]
 
 { #category : #private }
@@ -97,12 +92,12 @@ YAMLScanner >> SKIP2 [
 
 { #category : #generated }
 YAMLScanner >> SPACESId [
-	^ 24
+	^ 23
 ]
 
 { #category : #generated }
 YAMLScanner >> STRING_MYId [
-	^ 22
+	^ 21
 ]
 
 { #category : #private }
@@ -112,11 +107,6 @@ YAMLScanner >> STRING_MY_2 [
 
 { #category : #private }
 YAMLScanner >> STRING_MY_3 [
-	^ self recordAndReportMatch: {self STRING_MYId}
-]
-
-{ #category : #private }
-YAMLScanner >> STRING_MY_4 [
 	^ self recordAndReportMatch: {self STRING_MYId}
 ]
 
@@ -132,12 +122,12 @@ YAMLScanner >> currentState [
 
 { #category : #generated }
 YAMLScanner >> emptySymbolTokenId [
-	^ 92
+	^ 95
 ]
 
 { #category : #generated }
 YAMLScanner >> errorTokenId [
-	^ 93
+	^ 96
 ]
 
 { #category : #private }
@@ -254,455 +244,301 @@ YAMLScanner >> restoreState: aSmaCCScannerState [
 
 { #category : #generated }
 YAMLScanner >> scan1 [
-	[ self recordMatch: #(30).
 	self step.
-	currentCharacter == $\ ifTrue: [ ^ self scan2 ].
-	currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ (currentCharacter between: (Character value: 14) and: $!)
-						or: [ currentCharacter >= $# ] ] ] ] whileTrue.
-	^ self reportLastMatch
+	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(26) ].
+	currentCharacter == Character cr ifTrue: [ ^ self scan1X7 ].
+	currentCharacter == $" ifTrue: [ ^ self scan7 ].
+	currentCharacter == $# ifTrue: [ ^ self scan1X5 ].
+	currentCharacter == $& ifTrue: [ ^ self scan1X3 ].
+	currentCharacter == $' ifTrue: [ ^ self scan10 ].
+	currentCharacter == $, ifTrue: [ ^ self recordAndReportMatch: #(11) ].
+	^ self scan1X8
 ]
 
 { #category : #generated }
 YAMLScanner >> scan10 [
-	[ self step.
-	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(32) ].
-	currentCharacter == $\ ifTrue: [ ^ self scan11 ].
+	[ self recordMatch: #(25).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan12 ].
+	currentCharacter == $' ifTrue: [ ^ self scan14 ].
+	currentCharacter == $: ifTrue: [ ^ self scan15 ].
+	currentCharacter == $\ ifTrue: [ ^ self scan16 ].
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan11 ].
+	(('",' includes: currentCharacter)
+		or: [ (currentCharacter between: $[ and: $]) or: [ '{}' includes: currentCharacter ] ])
+		ifTrue: [ ^ self scan13 ].
 	true ] whileTrue
 ]
 
 { #category : #generated }
 YAMLScanner >> scan11 [
-	self step.
+	[ self step.
+	currentCharacter == $' ifTrue: [ ^ self scan14 ].
+	currentCharacter == $\ ifTrue: [ ^ self scan16 ].
+	('-:' includes: currentCharacter) ifTrue: [ ^ self scan15 ].
+	currentCharacter == Character lf
+		or: [ currentCharacter == Character cr or: [ currentCharacter == Character space ] ] ]
+		whileTrue.
+	(currentCharacter == Character tab
+		or: [ (currentCharacter between: $" and: $#)
+				or: [ currentCharacter == $,
+						or: [ (currentCharacter between: $[ and: $]) or: [ '{}' includes: currentCharacter ] ] ] ])
+		ifTrue: [ ^ self scan13 ].
 	^ self scan10
 ]
 
 { #category : #generated }
 YAMLScanner >> scan12 [
-	[ self recordMatch: #(20 26).
-	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan7 ].
-	currentCharacter == $: ifTrue: [ ^ self scan13 ].
-	(currentCharacter == Character tab
-		or: [ currentCharacter between: Character pageUp and: Character newPage ])
-		ifTrue: [ ^ self scan6 ].
-	('",[]{}' includes: currentCharacter)
-		ifTrue: [ [ self recordMatch: #(20).
+	[ self step.
+	currentCharacter == Character space ] whileTrue.
+	currentCharacter == $' ifTrue: [ ^ self scan14 ].
+	currentCharacter == $-
+		ifTrue: [ [ self recordMatch: #(25).
 			self step.
-			currentCharacter <= Character backspace
-				or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
-						or: [ currentCharacter >= $! ] ] ] whileTrue.
-			^ self reportLastMatch ].
-	currentCharacter <= Character backspace
-		or: [ currentCharacter >= (Character value: 14) ] ] whileTrue.
-	^ self reportLastMatch
+			currentCharacter == Character space ifTrue: [ ^ self scan12 ].
+			currentCharacter == $' ifTrue: [ ^ self scan14 ].
+			currentCharacter == $: ] whileTrue.
+			currentCharacter == $\ ifTrue: [ ^ self scan16 ].
+			(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+				ifTrue: [ ^ self scan11 ].
+			^ self scan10 ].
+	currentCharacter == $: ifTrue: [ ^ self scan15 ].
+	currentCharacter == $\ ifTrue: [ ^ self scan16 ].
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan11 ].
+	(('#,' includes: currentCharacter)
+		or: [ (currentCharacter between: $[ and: $]) or: [ '{}' includes: currentCharacter ] ])
+		ifTrue: [ ^ self scan13 ].
+	^ self scan10
 ]
 
 { #category : #generated }
 YAMLScanner >> scan13 [
-	self recordMatch: #(20).
-	self step.
-	(currentCharacter == Character tab
-		or: [ currentCharacter between: Character pageUp and: Character newPage ])
-		ifTrue: [ ^ self scan6 ].
-	(currentCharacter <= Character backspace
-		or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
-				or: [ currentCharacter >= $! ] ]) ifTrue: [ ^ self scan12 ].
-	^ self reportLastMatch
+	[ self step.
+	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(31) ].
+	currentCharacter == $\
+		ifTrue: [ self step.
+			^ self scan13 ].
+	true ] whileTrue
 ]
 
 { #category : #generated }
 YAMLScanner >> scan14 [
-	[ self recordMatch: #(6 26).
+	self recordMatch: #(25 31).
 	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan7 ].
-	currentCharacter == $: ifTrue: [ ^ self scan8 ].
-	currentCharacter isDigit ] whileTrue.
-	^ self scan14X1
-]
-
-{ #category : #generated }
-YAMLScanner >> scan14X1 [
-	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan15 ].
-	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan17 ].
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ (currentCharacter between: (Character value: 14) and: $!)
-						or: [ (currentCharacter between: $# and: $+)
-								or: [ (currentCharacter between: $- and: $Z)
-										or: [ currentCharacter == $\
-												or: [ (currentCharacter between: $^ and: $z)
-														or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ] ] ])
-		ifTrue: [ ^ self scan6 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan15 [
-	self recordMatch: #(26).
-	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan7 ].
-	currentCharacter == $: ifTrue: [ ^ self scan8 ].
-	^ self scan15X2
-]
-
-{ #category : #generated }
-YAMLScanner >> scan15X1 [
-	self recordMatch: #(26).
-	self step.
-	^ self scan15X1X1
-]
-
-{ #category : #generated }
-YAMLScanner >> scan15X1X1 [
-	currentCharacter == Character space ifTrue: [ ^ self scan7 ].
-	currentCharacter == $: ifTrue: [ ^ self scan8 ].
-	currentCharacter isDigit ifTrue: [ ^ self scan16 ].
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ (currentCharacter between: (Character value: 14) and: $!)
-						or: [ (currentCharacter between: $# and: $+)
-								or: [ (currentCharacter between: $- and: $Z)
-										or: [ currentCharacter == $\
-												or: [ (currentCharacter between: $^ and: $z)
-														or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ] ] ])
-		ifTrue: [ ^ self scan6 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan15X2 [
-	currentCharacter isDigit ifTrue: [ ^ self scan16 ].
-	('+-' includes: currentCharacter) ifTrue: [ ^ self scan15X1 ].
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ (currentCharacter between: (Character value: 14) and: $!)
-						or: [ (currentCharacter between: $# and: $*)
-								or: [ (currentCharacter between: $. and: $Z)
-										or: [ currentCharacter == $\
-												or: [ (currentCharacter between: $^ and: $z)
-														or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ] ] ])
-		ifTrue: [ ^ self scan6 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan16 [
-	[ self recordMatch: #(6 26).
-	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan7 ].
-	currentCharacter == $: ifTrue: [ ^ self scan8 ].
-	currentCharacter isDigit ] whileTrue.
-	^ self scan16X1
-]
-
-{ #category : #generated }
-YAMLScanner >> scan16X1 [
-	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan17 ].
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ (currentCharacter between: (Character value: 14) and: $!)
-						or: [ (currentCharacter between: $# and: $+)
-								or: [ (currentCharacter between: $- and: $Z)
-										or: [ currentCharacter == $\
-												or: [ (currentCharacter between: $^ and: $z)
-														or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ] ] ])
-		ifTrue: [ ^ self scan6 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan17 [
-	self recordMatch: #(7 26).
-	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan7 ].
-	currentCharacter == $: ifTrue: [ ^ self scan8 ].
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ (currentCharacter between: (Character value: 14) and: $!)
-						or: [ (currentCharacter between: $# and: $+)
-								or: [ (currentCharacter between: $- and: $Z)
-										or: [ currentCharacter == $\
-												or: [ (currentCharacter between: $^ and: $z)
-														or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ] ] ])
-		ifTrue: [ ^ self scan6 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan18 [
-	self recordMatch: #(2 26).
-	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan7 ].
-	currentCharacter == $. ifTrue: [ ^ self scan14 ].
-	currentCharacter == $0 ifTrue: [ ^ self scan18X1 ].
-	currentCharacter == $: ifTrue: [ ^ self scan8 ].
-	currentCharacter isDigit ifTrue: [ ^ self scan19 ].
-	^ self scan18X5
-]
-
-{ #category : #generated }
-YAMLScanner >> scan18X1 [
-	[ self recordMatch: #(2 26).
-	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan7 ].
-	currentCharacter == $. ifTrue: [ ^ self scan14 ].
-	currentCharacter == $0 ] whileTrue.
-	currentCharacter == $: ifTrue: [ ^ self scan8 ].
-	currentCharacter isDigit ifTrue: [ ^ self scan19 ].
-	^ self scan18X1X1
-]
-
-{ #category : #generated }
-YAMLScanner >> scan18X1X1 [
-	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan15 ].
-	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan17 ].
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ (currentCharacter between: (Character value: 14) and: $!)
-						or: [ (currentCharacter between: $# and: $+)
-								or: [ (currentCharacter between: $- and: $Z)
-										or: [ currentCharacter == $\
-												or: [ (currentCharacter between: $^ and: $z)
-														or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ] ] ])
-		ifTrue: [ ^ self scan6 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan18X2 [
-	self recordMatch: #(26).
-	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan7 ].
-	currentCharacter == $: ifTrue: [ ^ self scan8 ].
-	(currentCharacter between: $0 and: $7)
-		ifTrue: [ [ self recordMatch: #(3 26).
-			self step.
-			currentCharacter == Character space ifTrue: [ ^ self scan7 ].
-			currentCharacter == $: ifTrue: [ ^ self scan8 ].
-			currentCharacter between: $0 and: $7 ] whileTrue ].
-	^ self scan18X2X1
-]
-
-{ #category : #generated }
-YAMLScanner >> scan18X2X1 [
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ (currentCharacter between: (Character value: 14) and: $!)
-						or: [ (currentCharacter between: $# and: $+)
-								or: [ (currentCharacter between: $- and: $Z)
-										or: [ currentCharacter == $\
-												or: [ (currentCharacter between: $^ and: $z)
-														or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ] ] ])
-		ifTrue: [ ^ self scan6 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan18X3 [
-	self recordMatch: #(26).
-	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan7 ].
-	currentCharacter == $: ifTrue: [ ^ self scan8 ].
-	(currentCharacter between: $0 and: $1)
-		ifTrue: [ [ self recordMatch: #(5 26).
-			self step.
-			currentCharacter == Character space ifTrue: [ ^ self scan7 ].
-			currentCharacter == $: ifTrue: [ ^ self scan8 ].
-			currentCharacter between: $0 and: $1 ] whileTrue ].
-	^ self scan18X3X1
-]
-
-{ #category : #generated }
-YAMLScanner >> scan18X3X1 [
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ (currentCharacter between: (Character value: 14) and: $!)
-						or: [ (currentCharacter between: $# and: $+)
-								or: [ (currentCharacter between: $- and: $Z)
-										or: [ currentCharacter == $\
-												or: [ (currentCharacter between: $^ and: $z)
-														or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ] ] ])
-		ifTrue: [ ^ self scan6 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan18X4 [
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ (currentCharacter between: (Character value: 14) and: $!)
-						or: [ (currentCharacter between: $# and: $+)
-								or: [ (currentCharacter between: $- and: $Z)
-										or: [ currentCharacter == $\
-												or: [ (currentCharacter between: $^ and: $z)
-														or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ] ] ])
-		ifTrue: [ ^ self scan6 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan18X5 [
-	('Bb' includes: currentCharacter) ifTrue: [ ^ self scan18X3 ].
-	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan15 ].
-	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan17 ].
-	('Oo' includes: currentCharacter) ifTrue: [ ^ self scan18X2 ].
-	('Xx' includes: currentCharacter)
-		ifTrue: [ self recordMatch: #(26).
-			self step.
-			currentCharacter == Character space ifTrue: [ ^ self scan7 ].
-			currentCharacter == $: ifTrue: [ ^ self scan8 ].
-			(currentCharacter isDigit
-				or: [ (currentCharacter between: $A and: $F)
-						or: [ currentCharacter between: $a and: $f ] ])
-				ifTrue: [ [ self recordMatch: #(4 26).
-					self step.
-					currentCharacter == Character space ifTrue: [ ^ self scan7 ].
-					currentCharacter == $: ifTrue: [ ^ self scan8 ].
-					currentCharacter isDigit
-						or: [ (currentCharacter between: $A and: $F)
-								or: [ currentCharacter between: $a and: $f ] ] ] whileTrue ] ].
-	^ self scan18X4
-]
-
-{ #category : #generated }
-YAMLScanner >> scan19 [
-	[ self recordMatch: #(26).
-	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan7 ].
-	currentCharacter == $. ifTrue: [ ^ self scan14 ].
-	currentCharacter == $: ifTrue: [ ^ self scan8 ].
-	currentCharacter isDigit ] whileTrue.
-	^ self scan19X1
-]
-
-{ #category : #generated }
-YAMLScanner >> scan19X1 [
-	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan15 ].
-	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan17 ].
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ (currentCharacter between: (Character value: 14) and: $!)
-						or: [ (currentCharacter between: $# and: $+)
-								or: [ (currentCharacter between: $- and: $Z)
-										or: [ currentCharacter == $\
-												or: [ (currentCharacter between: $^ and: $z)
-														or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ] ] ])
-		ifTrue: [ ^ self scan6 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan2 [
-	self step.
-	currentCharacter == $U
-		ifTrue: [ self step.
-			(currentCharacter isDigit
-				or: [ (currentCharacter between: $A and: $F)
-						or: [ currentCharacter between: $a and: $f ] ])
-				ifTrue: [ self step.
-					(currentCharacter isDigit
-						or: [ (currentCharacter between: $A and: $F)
-								or: [ currentCharacter between: $a and: $f ] ])
-						ifTrue: [ self step.
-							(currentCharacter isDigit
-								or: [ (currentCharacter between: $A and: $F)
-										or: [ currentCharacter between: $a and: $f ] ])
-								ifTrue: [ self step.
-									(currentCharacter isDigit
-										or: [ (currentCharacter between: $A and: $F)
-												or: [ currentCharacter between: $a and: $f ] ])
-										ifTrue: [ ^ self scan3 ] ] ] ].
-			^ self reportLastMatch ].
-	currentCharacter == $u ifTrue: [ ^ self scan3 ].
-	currentCharacter == $x ifTrue: [ ^ self scan4 ].
-	(currentCharacter == $"
-		or: [ (currentCharacter between: $/ and: $0)
-				or: [ ('LNP\_' includes: currentCharacter)
-						or: [ (currentCharacter between: $a and: $b)
-								or: [ (currentCharacter between: $e and: $f)
-										or: [ ('nr' includes: currentCharacter) or: [ currentCharacter between: $t and: $v ] ] ] ] ] ])
-		ifTrue: [ ^ self scan1 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan20 [
-	[ self recordMatch: #(26).
-	self step.
-	currentCharacter == Character tab ] whileTrue.
-	^ self scan20X2
-]
-
-{ #category : #generated }
-YAMLScanner >> scan20X1 [
-	[ self step.
-	currentCharacter == Character tab ifTrue: [ ^ self scan20 ].
-	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(27) ].
-	currentCharacter == Character cr ifTrue: [ ^ self scan9 ].
-	currentCharacter == Character space ] whileTrue.
-	(currentCharacter <= $"
-		or: [ (currentCharacter between: $$ and: $+)
-				or: [ (currentCharacter between: $- and: $9)
-						or: [ (currentCharacter between: $; and: $Z)
-								or: [ currentCharacter == $\
-										or: [ (currentCharacter between: $^ and: $z)
-												or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ] ])
-		ifTrue: [ ^ self scan6 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan20X2 [
-	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(27) ].
-	currentCharacter == Character cr ifTrue: [ ^ self scan9 ].
-	currentCharacter == Character space ifTrue: [ ^ self scan20X1 ].
-	currentCharacter == $: ifTrue: [ ^ self scan8 ].
+	currentCharacter == Character space ifTrue: [ ^ self scan4 ].
+	currentCharacter == $: ifTrue: [ ^ self scan5 ].
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan3 ].
 	(currentCharacter <= $!
 		or: [ (currentCharacter between: $# and: $+)
 				or: [ (currentCharacter between: $- and: $Z)
 						or: [ currentCharacter == $\
 								or: [ (currentCharacter between: $^ and: $z)
 										or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ])
-		ifTrue: [ ^ self scan6 ].
+		ifTrue: [ ^ self scan2 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-YAMLScanner >> scan21 [
+YAMLScanner >> scan15 [
 	self step.
-	currentCharacter == Character lf ifTrue: [ ^ self scan21X15 ].
-	currentCharacter == Character cr ifTrue: [ ^ self scan21X11 ].
-	currentCharacter == $" ifTrue: [ ^ self scan21X13 ].
-	currentCharacter == $# ifTrue: [ ^ self scan21X10 ].
-	currentCharacter == $& ifTrue: [ ^ self scan21X9 ].
-	currentCharacter == $* ifTrue: [ ^ self scan21X8 ].
-	currentCharacter == $, ifTrue: [ ^ self scan21X5 ].
-	currentCharacter == $- ifTrue: [ ^ self scan21X7 ].
-	^ self scan21X16
+	currentCharacter == $' ifTrue: [ ^ self scan14 ].
+	currentCharacter == $\ ifTrue: [ ^ self scan16 ].
+	(currentCharacter == Character lf
+		or: [ currentCharacter == Character cr or: [ currentCharacter == Character space ] ])
+		ifTrue: [ ^ self scan13 ].
+	^ self scan10
 ]
 
 { #category : #generated }
-YAMLScanner >> scan21X1 [
-	[ self recordMatch: #(2 22).
+YAMLScanner >> scan16 [
+	self recordMatch: #(25).
 	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan23 ].
-	currentCharacter == $. ifTrue: [ ^ self scan25 ].
-	currentCharacter == $: ifTrue: [ ^ self scan24 ].
+	currentCharacter == Character space ifTrue: [ ^ self scan12 ].
+	currentCharacter == $: ifTrue: [ ^ self scan15 ].
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan11 ].
+	('",[]{}' includes: currentCharacter) ifTrue: [ ^ self scan13 ].
+	^ self scan10
+]
+
+{ #category : #generated }
+YAMLScanner >> scan17 [
+	[ self recordMatch: #(6 25).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan4 ].
+	currentCharacter == $: ifTrue: [ ^ self scan5 ].
 	currentCharacter isDigit ] whileTrue.
-	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan26 ].
-	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan28 ].
+	^ self scan17X1
+]
+
+{ #category : #generated }
+YAMLScanner >> scan17X1 [
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan3 ].
+	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan18 ].
+	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan20 ].
+	(currentCharacter <= $!
+		or: [ (currentCharacter between: $# and: $+)
+				or: [ (currentCharacter between: $- and: $Z)
+						or: [ currentCharacter == $\
+								or: [ (currentCharacter between: $^ and: $z)
+										or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ])
+		ifTrue: [ ^ self scan2 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan18 [
+	self recordMatch: #(25).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan4 ].
+	^ self scan18X2
+]
+
+{ #category : #generated }
+YAMLScanner >> scan18X1 [
+	self recordMatch: #(25).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan4 ].
+	currentCharacter == $: ifTrue: [ ^ self scan5 ].
+	currentCharacter isDigit ifTrue: [ ^ self scan19 ].
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan3 ].
+	(currentCharacter <= $!
+		or: [ (currentCharacter between: $# and: $+)
+				or: [ (currentCharacter between: $- and: $Z)
+						or: [ currentCharacter == $\
+								or: [ (currentCharacter between: $^ and: $z)
+										or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ])
+		ifTrue: [ ^ self scan2 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan18X2 [
+	currentCharacter == $: ifTrue: [ ^ self scan5 ].
+	currentCharacter isDigit ifTrue: [ ^ self scan19 ].
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan3 ].
+	('+-' includes: currentCharacter) ifTrue: [ ^ self scan18X1 ].
+	(currentCharacter <= $!
+		or: [ (currentCharacter between: $# and: $*)
+				or: [ (currentCharacter between: $. and: $Z)
+						or: [ currentCharacter == $\
+								or: [ (currentCharacter between: $^ and: $z)
+										or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ])
+		ifTrue: [ ^ self scan2 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan19 [
+	[ self recordMatch: #(6 25).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan4 ].
+	currentCharacter == $: ifTrue: [ ^ self scan5 ].
+	currentCharacter isDigit ] whileTrue.
+	^ self scan19X1
+]
+
+{ #category : #generated }
+YAMLScanner >> scan19X1 [
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan3 ].
+	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan20 ].
+	(currentCharacter <= $!
+		or: [ (currentCharacter between: $# and: $+)
+				or: [ (currentCharacter between: $- and: $Z)
+						or: [ currentCharacter == $\
+								or: [ (currentCharacter between: $^ and: $z)
+										or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ])
+		ifTrue: [ ^ self scan2 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan1X1 [
+	[ self recordMatch: #(2 25).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan4 ].
+	currentCharacter == $. ifTrue: [ ^ self scan17 ].
+	currentCharacter == $: ifTrue: [ ^ self scan5 ].
+	currentCharacter isDigit ] whileTrue.
+	^ self scan1X1X1
+]
+
+{ #category : #generated }
+YAMLScanner >> scan1X1X1 [
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan3 ].
+	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan18 ].
+	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan20 ].
+	(currentCharacter <= $!
+		or: [ (currentCharacter between: $# and: $+)
+				or: [ (currentCharacter between: $- and: $Z)
+						or: [ currentCharacter == $\
+								or: [ (currentCharacter between: $^ and: $z)
+										or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ])
+		ifTrue: [ ^ self scan2 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan1X2 [
+	self recordMatch: #(25).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan4 ].
+	currentCharacter == $: ifTrue: [ ^ self scan5 ].
+	currentCharacter isDigit ifTrue: [ ^ self scan17 ].
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan3 ].
+	(currentCharacter <= $!
+		or: [ (currentCharacter between: $# and: $+)
+				or: [ (currentCharacter between: $- and: $Z)
+						or: [ currentCharacter == $\
+								or: [ (currentCharacter between: $^ and: $z)
+										or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ])
+		ifTrue: [ ^ self scan2 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan1X3 [
+	self recordMatch: #(25).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan4 ].
+	currentCharacter == $: ifTrue: [ ^ self scan9 ].
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan3 ].
+	(currentCharacter isSeparator or: [ currentCharacter == Character pageUp ])
+		ifTrue: [ ^ self scan2 ].
+	('",[]{}' includes: currentCharacter)
+		ifTrue: [ [ self recordMatch: #(19).
+			self step.
+			currentCharacter <= Character backspace
+				or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
+						or: [ currentCharacter >= $! ] ] ] whileTrue.
+			^ self reportLastMatch ].
+	^ self scan8
+]
+
+{ #category : #generated }
+YAMLScanner >> scan1X4 [
+	self recordMatch: #(12).
+	self step.
 	(currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ currentCharacter >= (Character value: 14) ] ])
-		ifTrue: [ ^ self scan22 ].
+				or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
+						or: [ currentCharacter >= $! ] ] ]) ifTrue: [ ^ self scan2 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-YAMLScanner >> scan21X10 [
-	[ self recordMatch: #(25).
+YAMLScanner >> scan1X5 [
+	[ self recordMatch: #(24).
 	self step.
 	currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
@@ -711,7 +547,418 @@ YAMLScanner >> scan21X10 [
 ]
 
 { #category : #generated }
-YAMLScanner >> scan21X11 [
+YAMLScanner >> scan1X6 [
+	[ self recordMatch: #(26).
+	self step.
+	currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
+		whileTrue.
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan1X7 [
+	self recordMatch: #(26).
+	self step.
+	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(26) ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan1X8 [
+	currentCharacter == $- ifTrue: [ ^ self scan5 ].
+	currentCharacter == $. ifTrue: [ ^ self scan1X2 ].
+	currentCharacter == $0 ifTrue: [ ^ self scan21 ].
+	currentCharacter == $: ifTrue: [ ^ self scan1X4 ].
+	currentCharacter == $[ ifTrue: [ ^ self recordAndReportMatch: #(13) ].
+	currentCharacter == $\ ifTrue: [ ^ self scan23 ].
+	currentCharacter == $] ifTrue: [ ^ self recordAndReportMatch: #(14) ].
+	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(15) ].
+	currentCharacter == $} ifTrue: [ ^ self recordAndReportMatch: #(16) ].
+	currentCharacter isDigit ifTrue: [ ^ self scan1X1 ].
+	(currentCharacter == Character tab or: [ currentCharacter == Character space ])
+		ifTrue: [ ^ self scan1X6 ].
+	^ self scan2
+]
+
+{ #category : #generated }
+YAMLScanner >> scan2 [
+	[ self recordMatch: #(25).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan4 ].
+	currentCharacter == $: ifTrue: [ ^ self scan5 ].
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan3 ].
+	currentCharacter <= $!
+		or: [ (currentCharacter between: $# and: $+)
+				or: [ (currentCharacter between: $- and: $Z)
+						or: [ currentCharacter == $\
+								or: [ (currentCharacter between: $^ and: $z)
+										or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ] ]
+		whileTrue.
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan20 [
+	self recordMatch: #(7 25).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan4 ].
+	currentCharacter == $: ifTrue: [ ^ self scan5 ].
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan3 ].
+	(currentCharacter <= $!
+		or: [ (currentCharacter between: $# and: $+)
+				or: [ (currentCharacter between: $- and: $Z)
+						or: [ currentCharacter == $\
+								or: [ (currentCharacter between: $^ and: $z)
+										or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ])
+		ifTrue: [ ^ self scan2 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan21 [
+	self recordMatch: #(2 25).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan4 ].
+	currentCharacter == $. ifTrue: [ ^ self scan17 ].
+	currentCharacter == $0 ifTrue: [ ^ self scan21X1 ].
+	currentCharacter == $: ifTrue: [ ^ self scan5 ].
+	currentCharacter isDigit ifTrue: [ ^ self scan22 ].
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan3 ].
+	('Bb' includes: currentCharacter) ifTrue: [ ^ self scan21X3 ].
+	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan18 ].
+	^ self scan21X5
+]
+
+{ #category : #generated }
+YAMLScanner >> scan21X1 [
+	[ self recordMatch: #(2 25).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan4 ].
+	currentCharacter == $. ifTrue: [ ^ self scan17 ].
+	currentCharacter == $0 ] whileTrue.
+	currentCharacter == $: ifTrue: [ ^ self scan5 ].
+	^ self scan21X1X1
+]
+
+{ #category : #generated }
+YAMLScanner >> scan21X1X1 [
+	currentCharacter isDigit ifTrue: [ ^ self scan22 ].
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan3 ].
+	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan18 ].
+	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan20 ].
+	(currentCharacter <= $!
+		or: [ (currentCharacter between: $# and: $+)
+				or: [ (currentCharacter between: $- and: $Z)
+						or: [ currentCharacter == $\
+								or: [ (currentCharacter between: $^ and: $z)
+										or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ])
+		ifTrue: [ ^ self scan2 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan21X2 [
+	self recordMatch: #(25).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan4 ].
+	currentCharacter == $: ifTrue: [ ^ self scan5 ].
+	(currentCharacter between: $0 and: $7)
+		ifTrue: [ [ self recordMatch: #(3 25).
+			self step.
+			currentCharacter == Character space ifTrue: [ ^ self scan4 ].
+			currentCharacter == $: ifTrue: [ ^ self scan5 ].
+			currentCharacter between: $0 and: $7 ] whileTrue ].
+	^ self scan21X2X1
+]
+
+{ #category : #generated }
+YAMLScanner >> scan21X2X1 [
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan3 ].
+	(currentCharacter <= $!
+		or: [ (currentCharacter between: $# and: $+)
+				or: [ (currentCharacter between: $- and: $Z)
+						or: [ currentCharacter == $\
+								or: [ (currentCharacter between: $^ and: $z)
+										or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ])
+		ifTrue: [ ^ self scan2 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan21X3 [
+	self recordMatch: #(25).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan4 ].
+	currentCharacter == $: ifTrue: [ ^ self scan5 ].
+	(currentCharacter between: $0 and: $1)
+		ifTrue: [ [ self recordMatch: #(5 25).
+			self step.
+			currentCharacter == Character space ifTrue: [ ^ self scan4 ].
+			currentCharacter == $: ifTrue: [ ^ self scan5 ].
+			currentCharacter between: $0 and: $1 ] whileTrue ].
+	^ self scan21X3X1
+]
+
+{ #category : #generated }
+YAMLScanner >> scan21X3X1 [
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan3 ].
+	(currentCharacter <= $!
+		or: [ (currentCharacter between: $# and: $+)
+				or: [ (currentCharacter between: $- and: $Z)
+						or: [ currentCharacter == $\
+								or: [ (currentCharacter between: $^ and: $z)
+										or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ])
+		ifTrue: [ ^ self scan2 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan21X4 [
+	(currentCharacter <= $!
+		or: [ (currentCharacter between: $# and: $+)
+				or: [ (currentCharacter between: $- and: $Z)
+						or: [ currentCharacter == $\
+								or: [ (currentCharacter between: $^ and: $z)
+										or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ])
+		ifTrue: [ ^ self scan2 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan21X5 [
+	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan20 ].
+	('Oo' includes: currentCharacter) ifTrue: [ ^ self scan21X2 ].
+	('Xx' includes: currentCharacter)
+		ifTrue: [ self recordMatch: #(25).
+			self step.
+			currentCharacter == Character space ifTrue: [ ^ self scan4 ].
+			currentCharacter == $: ifTrue: [ ^ self scan5 ].
+			(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+				ifTrue: [ ^ self scan3 ].
+			(currentCharacter isDigit
+				or: [ (currentCharacter between: $A and: $F)
+						or: [ currentCharacter between: $a and: $f ] ])
+				ifTrue: [ [ self recordMatch: #(4 25).
+					self step.
+					currentCharacter == Character space ifTrue: [ ^ self scan4 ].
+					currentCharacter == $: ifTrue: [ ^ self scan5 ].
+					(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+						ifTrue: [ ^ self scan3 ].
+					currentCharacter isDigit
+						or: [ (currentCharacter between: $A and: $F)
+								or: [ currentCharacter between: $a and: $f ] ] ] whileTrue ] ].
+	^ self scan21X4
+]
+
+{ #category : #generated }
+YAMLScanner >> scan22 [
+	[ self recordMatch: #(25).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan4 ].
+	currentCharacter == $. ifTrue: [ ^ self scan17 ].
+	currentCharacter == $: ifTrue: [ ^ self scan5 ].
+	currentCharacter isDigit ] whileTrue.
+	^ self scan22X1
+]
+
+{ #category : #generated }
+YAMLScanner >> scan22X1 [
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan3 ].
+	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan18 ].
+	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan20 ].
+	(currentCharacter <= $!
+		or: [ (currentCharacter between: $# and: $+)
+				or: [ (currentCharacter between: $- and: $Z)
+						or: [ currentCharacter == $\
+								or: [ (currentCharacter between: $^ and: $z)
+										or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ])
+		ifTrue: [ ^ self scan2 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan23 [
+	[ self recordMatch: #(25).
+	self step.
+	currentCharacter == Character tab ] whileTrue.
+	^ self scan23X2
+]
+
+{ #category : #generated }
+YAMLScanner >> scan23X1 [
+	[ self step.
+	currentCharacter == Character tab ifTrue: [ ^ self scan23 ].
+	currentCharacter == Character lf ifTrue: [ ^ self scan24 ].
+	currentCharacter == Character cr ifTrue: [ ^ self scan25 ].
+	currentCharacter == Character space ] whileTrue.
+	^ self scan23X1X1
+]
+
+{ #category : #generated }
+YAMLScanner >> scan23X1X1 [
+	currentCharacter == $- ifTrue: [ ^ self scan6 ].
+	currentCharacter == $: ifTrue: [ ^ self scan5 ].
+	(currentCharacter <= $"
+		or: [ (currentCharacter between: $$ and: $+)
+				or: [ (currentCharacter between: $. and: $Z)
+						or: [ currentCharacter == $\
+								or: [ (currentCharacter between: $^ and: $z)
+										or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ])
+		ifTrue: [ ^ self scan2 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan23X2 [
+	currentCharacter == Character lf ifTrue: [ ^ self scan24 ].
+	currentCharacter == Character cr ifTrue: [ ^ self scan25 ].
+	currentCharacter == Character space ifTrue: [ ^ self scan23X1 ].
+	currentCharacter == $: ifTrue: [ ^ self scan5 ].
+	(currentCharacter <= $!
+		or: [ (currentCharacter between: $# and: $+)
+				or: [ (currentCharacter between: $- and: $Z)
+						or: [ currentCharacter == $\
+								or: [ (currentCharacter between: $^ and: $z)
+										or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ])
+		ifTrue: [ ^ self scan2 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan24 [
+	self recordMatch: #(26).
+	self step.
+	('-:' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	(currentCharacter == Character lf
+		or: [ currentCharacter == Character cr or: [ currentCharacter == Character space ] ])
+		ifTrue: [ ^ self scan3 ].
+	(currentCharacter <= Character backspace
+		or: [ (currentCharacter between: Character pageUp and: $!)
+				or: [ (currentCharacter between: $$ and: $+)
+						or: [ (currentCharacter between: $. and: $Z)
+								or: [ currentCharacter == $\
+										or: [ (currentCharacter between: $^ and: $z)
+												or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ] ])
+		ifTrue: [ ^ self scan2 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan25 [
+	self recordMatch: #(26).
+	^ self scan25X1
+]
+
+{ #category : #generated }
+YAMLScanner >> scan25X1 [
+	self step.
+	currentCharacter == Character lf ifTrue: [ ^ self scan24 ].
+	(currentCharacter == Character cr or: [ currentCharacter == Character space ])
+		ifTrue: [ ^ self scan3 ].
+	('-:' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	(currentCharacter <= Character backspace
+		or: [ (currentCharacter between: Character pageUp and: $!)
+				or: [ (currentCharacter between: $$ and: $+)
+						or: [ (currentCharacter between: $. and: $Z)
+								or: [ currentCharacter == $\
+										or: [ (currentCharacter between: $^ and: $z)
+												or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ] ])
+		ifTrue: [ ^ self scan2 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan26 [
+	self step.
+	currentCharacter == Character lf ifTrue: [ ^ self scan26X16 ].
+	currentCharacter == Character cr ifTrue: [ ^ self scan26X14 ].
+	currentCharacter == $" ifTrue: [ ^ self scan7 ].
+	currentCharacter == $# ifTrue: [ ^ self scan26X13 ].
+	currentCharacter == $& ifTrue: [ ^ self scan26X12 ].
+	currentCharacter == $' ifTrue: [ ^ self scan30 ].
+	currentCharacter == $* ifTrue: [ ^ self scan26X11 ].
+	currentCharacter == $, ifTrue: [ ^ self scan26X7 ].
+	currentCharacter == $- ifTrue: [ ^ self scan26X10 ].
+	currentCharacter == $. ifTrue: [ ^ self scan26X4 ].
+	currentCharacter == $0 ifTrue: [ ^ self scan39 ].
+	^ self scan26X17
+]
+
+{ #category : #generated }
+YAMLScanner >> scan26X1 [
+	[ self recordMatch: #(2 21).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan28 ].
+	currentCharacter == $. ifTrue: [ ^ self scan35 ].
+	currentCharacter == $: ifTrue: [ ^ self scan29 ].
+	currentCharacter isDigit ] whileTrue.
+	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan36 ].
+	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan38 ].
+	(currentCharacter <= Character tab
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ currentCharacter >= (Character value: 14) ] ])
+		ifTrue: [ ^ self scan27 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan26X10 [
+	self recordMatch: #(8).
+	self step.
+	(currentCharacter <= Character backspace
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
+						or: [ currentCharacter >= $! ] ] ]) ifTrue: [ ^ self scan27 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan26X11 [
+	self step.
+	(currentCharacter <= Character backspace
+		or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
+				or: [ currentCharacter >= $! ] ])
+		ifTrue: [ [ self recordMatch: #(20).
+			self step.
+			currentCharacter <= Character backspace
+				or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
+						or: [ currentCharacter >= $! ] ] ] whileTrue ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan26X12 [
+	self step.
+	(currentCharacter <= Character backspace
+		or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
+				or: [ currentCharacter >= $! ] ])
+		ifTrue: [ [ self recordMatch: #(19).
+			self step.
+			currentCharacter <= Character backspace
+				or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
+						or: [ currentCharacter >= $! ] ] ] whileTrue ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan26X13 [
+	[ self recordMatch: #(24).
+	self step.
+	currentCharacter <= Character tab
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan26X14 [
 	self recordMatch: #(1).
 	self step.
 	((currentCharacter between: Character tab and: Character lf)
@@ -724,35 +971,8 @@ YAMLScanner >> scan21X11 [
 ]
 
 { #category : #generated }
-YAMLScanner >> scan21X12 [
-	self recordMatch: #(17).
-	self step.
-	(currentCharacter between: $1 and: $9)
-		ifTrue: [ self recordMatch: #(17).
-			self step.
-			('+-' includes: currentCharacter)
-				ifTrue: [ ^ self recordAndReportMatch: #(17) ].
-			^ self reportLastMatch ].
-	('+-' includes: currentCharacter)
-		ifTrue: [ self recordMatch: #(17).
-			self step.
-			(currentCharacter between: $1 and: $9)
-				ifTrue: [ ^ self recordAndReportMatch: #(17) ] ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan21X13 [
-	self recordMatch: #(19).
-	self step.
-	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(32) ].
-	currentCharacter == $\ ifTrue: [ ^ self scan11 ].
-	^ self scan10
-]
-
-{ #category : #generated }
-YAMLScanner >> scan21X14 [
-	[ self recordMatch: #(23 24).
+YAMLScanner >> scan26X15 [
+	[ self recordMatch: #(22 23).
 	self step.
 	currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
 		whileTrue.
@@ -760,7 +980,7 @@ YAMLScanner >> scan21X14 [
 ]
 
 { #category : #generated }
-YAMLScanner >> scan21X15 [
+YAMLScanner >> scan26X16 [
 	[ self recordMatch: #(1).
 	self step.
 	currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
@@ -769,131 +989,184 @@ YAMLScanner >> scan21X15 [
 ]
 
 { #category : #generated }
-YAMLScanner >> scan21X16 [
-	currentCharacter == $. ifTrue: [ ^ self scan21X2 ].
-	currentCharacter == $0 ifTrue: [ ^ self scan29 ].
-	currentCharacter == $: ifTrue: [ ^ self scan21X6 ].
+YAMLScanner >> scan26X17 [
+	currentCharacter == $: ifTrue: [ ^ self scan26X9 ].
+	currentCharacter == $> ifTrue: [ ^ self scan26X2 ].
+	currentCharacter == $? ifTrue: [ ^ self scan26X8 ].
 	currentCharacter == $[ ifTrue: [ ^ self recordAndReportMatch: #(13) ].
-	currentCharacter == $\ ifTrue: [ ^ self scan31 ].
-	currentCharacter == $] ifTrue: [ ^ self scan21X4 ].
+	currentCharacter == $\ ifTrue: [ ^ self scan44 ].
+	currentCharacter == $] ifTrue: [ ^ self scan26X6 ].
 	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(15) ].
-	currentCharacter == $| ifTrue: [ ^ self scan21X12 ].
-	currentCharacter == $} ifTrue: [ ^ self scan21X3 ].
-	currentCharacter isDigit ifTrue: [ ^ self scan21X1 ].
+	currentCharacter == $| ifTrue: [ ^ self scan26X3 ].
+	currentCharacter == $} ifTrue: [ ^ self scan26X5 ].
+	currentCharacter isDigit ifTrue: [ ^ self scan26X1 ].
 	(currentCharacter == Character tab or: [ currentCharacter == Character space ])
-		ifTrue: [ ^ self scan21X14 ].
-	^ self scan22
+		ifTrue: [ ^ self scan26X15 ].
+	^ self scan27
 ]
 
 { #category : #generated }
-YAMLScanner >> scan21X2 [
-	self recordMatch: #(22).
+YAMLScanner >> scan26X2 [
+	self recordMatch: #(18 21).
 	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan23 ].
-	currentCharacter == $: ifTrue: [ ^ self scan24 ].
-	currentCharacter isDigit ifTrue: [ ^ self scan25 ].
-	(currentCharacter <= Character tab
+	currentCharacter == Character tab ifTrue: [ ^ self scan41 ].
+	currentCharacter == Character space ifTrue: [ ^ self scan42 ].
+	currentCharacter == $# ifTrue: [ ^ self scan43 ].
+	currentCharacter == $: ifTrue: [ ^ self scan29 ].
+	(currentCharacter between: $1 and: $9)
+		ifTrue: [ self recordMatch: #(18 21).
+			self step.
+			currentCharacter == Character space ifTrue: [ ^ self scan42 ].
+			currentCharacter == $# ifTrue: [ ^ self scan43 ].
+			currentCharacter == $: ifTrue: [ ^ self scan29 ].
+			(currentCharacter == Character tab or: [ '+-' includes: currentCharacter ])
+				ifTrue: [ ^ self scan41 ].
+			(currentCharacter <= Character backspace
+				or: [ (currentCharacter between: Character pageUp and: Character newPage)
+						or: [ currentCharacter >= (Character value: 14) ] ])
+				ifTrue: [ ^ self scan27 ].
+			^ self reportLastMatch ].
+	('+-' includes: currentCharacter)
+		ifTrue: [ self recordMatch: #(18 21).
+			self step.
+			currentCharacter == Character space ifTrue: [ ^ self scan42 ].
+			currentCharacter == $# ifTrue: [ ^ self scan43 ].
+			currentCharacter == $: ifTrue: [ ^ self scan29 ].
+			(currentCharacter == Character tab
+				or: [ currentCharacter between: $1 and: $9 ]) ifTrue: [ ^ self scan41 ] ].
+	(currentCharacter <= Character backspace
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
 				or: [ currentCharacter >= (Character value: 14) ] ])
-		ifTrue: [ ^ self scan22 ].
+		ifTrue: [ ^ self scan27 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-YAMLScanner >> scan21X3 [
-	self recordMatch: #(16 22).
+YAMLScanner >> scan26X3 [
+	self recordMatch: #(17).
 	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan23 ].
-	currentCharacter == $: ifTrue: [ ^ self scan24 ].
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ currentCharacter >= (Character value: 14) ] ])
-		ifTrue: [ ^ self scan22 ].
+	currentCharacter == $#
+		ifTrue: [ [ self recordMatch: #(17).
+			self step.
+			currentCharacter <= Character tab
+				or: [ (currentCharacter between: Character pageUp and: Character newPage)
+						or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
+			^ self reportLastMatch ].
+	(currentCharacter between: $1 and: $9)
+		ifTrue: [ self recordMatch: #(17).
+			self step.
+			currentCharacter == $#
+				ifTrue: [ [ self recordMatch: #(17).
+					self step.
+					currentCharacter <= Character tab
+						or: [ (currentCharacter between: Character pageUp and: Character newPage)
+								or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
+					^ self reportLastMatch ].
+			(currentCharacter == Character tab
+				or: [ currentCharacter == Character space or: [ '+-' includes: currentCharacter ] ])
+				ifTrue: [ ^ self scan46 ].
+			^ self reportLastMatch ].
+	(currentCharacter == Character tab or: [ currentCharacter == Character space ])
+		ifTrue: [ ^ self scan46 ].
+	('+-' includes: currentCharacter)
+		ifTrue: [ self recordMatch: #(17).
+			self step.
+			currentCharacter == $#
+				ifTrue: [ [ self recordMatch: #(17).
+					self step.
+					currentCharacter <= Character tab
+						or: [ (currentCharacter between: Character pageUp and: Character newPage)
+								or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
+					^ self reportLastMatch ].
+			(currentCharacter == Character tab
+				or: [ currentCharacter == Character space
+						or: [ currentCharacter between: $1 and: $9 ] ]) ifTrue: [ ^ self scan46 ] ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-YAMLScanner >> scan21X4 [
-	self recordMatch: #(14 22).
+YAMLScanner >> scan26X4 [
+	self recordMatch: #(21).
 	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan23 ].
-	currentCharacter == $: ifTrue: [ ^ self scan24 ].
+	currentCharacter == Character space ifTrue: [ ^ self scan28 ].
+	currentCharacter == $: ifTrue: [ ^ self scan29 ].
+	currentCharacter isDigit ifTrue: [ ^ self scan35 ].
 	(currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
 				or: [ currentCharacter >= (Character value: 14) ] ])
-		ifTrue: [ ^ self scan22 ].
+		ifTrue: [ ^ self scan27 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-YAMLScanner >> scan21X5 [
-	self recordMatch: #(11 22).
+YAMLScanner >> scan26X5 [
+	self recordMatch: #(16 21).
 	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan23 ].
-	currentCharacter == $: ifTrue: [ ^ self scan24 ].
+	currentCharacter == Character space ifTrue: [ ^ self scan28 ].
+	currentCharacter == $: ifTrue: [ ^ self scan29 ].
 	(currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
 				or: [ currentCharacter >= (Character value: 14) ] ])
-		ifTrue: [ ^ self scan22 ].
+		ifTrue: [ ^ self scan27 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-YAMLScanner >> scan21X6 [
+YAMLScanner >> scan26X6 [
+	self recordMatch: #(14 21).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan28 ].
+	currentCharacter == $: ifTrue: [ ^ self scan29 ].
+	(currentCharacter <= Character tab
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ currentCharacter >= (Character value: 14) ] ])
+		ifTrue: [ ^ self scan27 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan26X7 [
+	self recordMatch: #(11 21).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan28 ].
+	currentCharacter == $: ifTrue: [ ^ self scan29 ].
+	(currentCharacter <= Character tab
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ currentCharacter >= (Character value: 14) ] ])
+		ifTrue: [ ^ self scan27 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan26X8 [
+	self recordMatch: #(30).
+	self step.
+	(currentCharacter <= Character backspace
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
+						or: [ (currentCharacter between: $! and: $") or: [ currentCharacter >= $$ ] ] ] ])
+		ifTrue: [ ^ self scan27 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan26X9 [
 	self recordMatch: #(12).
 	self step.
-	(currentCharacter <= Character tab
+	(currentCharacter <= Character backspace
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
 				or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
-						or: [ currentCharacter >= $! ] ] ]) ifTrue: [ ^ self scan22 ].
+						or: [ (currentCharacter between: $! and: $") or: [ currentCharacter >= $$ ] ] ] ])
+		ifTrue: [ ^ self scan27 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-YAMLScanner >> scan21X7 [
-	self recordMatch: #(8).
+YAMLScanner >> scan27 [
+	[ self recordMatch: #(21).
 	self step.
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
-						or: [ currentCharacter >= $! ] ] ]) ifTrue: [ ^ self scan22 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan21X8 [
-	self step.
-	(currentCharacter <= Character backspace
-		or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
-				or: [ currentCharacter >= $! ] ])
-		ifTrue: [ [ self recordMatch: #(21).
-			self step.
-			currentCharacter <= Character backspace
-				or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
-						or: [ currentCharacter >= $! ] ] ] whileTrue ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan21X9 [
-	self step.
-	(currentCharacter <= Character backspace
-		or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
-				or: [ currentCharacter >= $! ] ])
-		ifTrue: [ [ self recordMatch: #(20).
-			self step.
-			currentCharacter <= Character backspace
-				or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
-						or: [ currentCharacter >= $! ] ] ] whileTrue ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan22 [
-	[ self recordMatch: #(22).
-	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan23 ].
-	currentCharacter == $: ifTrue: [ ^ self scan24 ].
+	currentCharacter == Character space ifTrue: [ ^ self scan28 ].
+	currentCharacter == $: ifTrue: [ ^ self scan29 ].
 	currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
 				or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
@@ -901,364 +1174,378 @@ YAMLScanner >> scan22 [
 ]
 
 { #category : #generated }
-YAMLScanner >> scan23 [
+YAMLScanner >> scan28 [
 	[ self step.
 	currentCharacter == Character space ] whileTrue.
 	(currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
 				or: [ (currentCharacter between: (Character value: 14) and: $")
 						or: [ (currentCharacter between: $$ and: $9) or: [ currentCharacter >= $; ] ] ] ])
-		ifTrue: [ ^ self scan22 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan24 [
-	self step.
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
-						or: [ currentCharacter >= $! ] ] ]) ifTrue: [ ^ self scan22 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan25 [
-	[ self recordMatch: #(6 22).
-	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan23 ].
-	currentCharacter == $: ifTrue: [ ^ self scan24 ].
-	currentCharacter isDigit ] whileTrue.
-	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan26 ].
-	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan28 ].
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ currentCharacter >= (Character value: 14) ] ])
-		ifTrue: [ ^ self scan22 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan26 [
-	self recordMatch: #(22).
-	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan23 ].
-	currentCharacter == $: ifTrue: [ ^ self scan24 ].
-	currentCharacter isDigit ifTrue: [ ^ self scan27 ].
-	('+-' includes: currentCharacter)
-		ifTrue: [ self recordMatch: #(22).
-			self step.
-			currentCharacter == Character space ifTrue: [ ^ self scan23 ].
-			currentCharacter == $: ifTrue: [ ^ self scan24 ].
-			currentCharacter isDigit ifTrue: [ ^ self scan27 ] ].
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ currentCharacter >= (Character value: 14) ] ])
-		ifTrue: [ ^ self scan22 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan27 [
-	[ self recordMatch: #(6 22).
-	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan23 ].
-	currentCharacter == $: ifTrue: [ ^ self scan24 ].
-	currentCharacter isDigit ] whileTrue.
-	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan28 ].
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ currentCharacter >= (Character value: 14) ] ])
-		ifTrue: [ ^ self scan22 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan28 [
-	self recordMatch: #(7 22).
-	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan23 ].
-	currentCharacter == $: ifTrue: [ ^ self scan24 ].
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ currentCharacter >= (Character value: 14) ] ])
-		ifTrue: [ ^ self scan22 ].
+		ifTrue: [ ^ self scan27 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 YAMLScanner >> scan29 [
-	self recordMatch: #(2 22).
 	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan23 ].
-	currentCharacter == $. ifTrue: [ ^ self scan25 ].
-	currentCharacter == $0 ifTrue: [ ^ self scan29X1 ].
-	currentCharacter == $: ifTrue: [ ^ self scan24 ].
-	currentCharacter isDigit ifTrue: [ ^ self scan30 ].
-	('Bb' includes: currentCharacter) ifTrue: [ ^ self scan29X3 ].
-	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan26 ].
-	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan28 ].
-	('Oo' includes: currentCharacter) ifTrue: [ ^ self scan29X2 ].
-	^ self scan29X4
-]
-
-{ #category : #generated }
-YAMLScanner >> scan29X1 [
-	[ self recordMatch: #(2 22).
-	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan23 ].
-	currentCharacter == $. ifTrue: [ ^ self scan25 ].
-	currentCharacter == $0 ] whileTrue.
-	^ self scan29X1X1
-]
-
-{ #category : #generated }
-YAMLScanner >> scan29X1X1 [
-	currentCharacter == $: ifTrue: [ ^ self scan24 ].
-	currentCharacter isDigit ifTrue: [ ^ self scan30 ].
-	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan26 ].
-	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan28 ].
-	(currentCharacter <= Character tab
+	(currentCharacter <= Character backspace
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ currentCharacter >= (Character value: 14) ] ])
-		ifTrue: [ ^ self scan22 ].
+				or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
+						or: [ (currentCharacter between: $! and: $") or: [ currentCharacter >= $$ ] ] ] ])
+		ifTrue: [ ^ self scan27 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-YAMLScanner >> scan29X2 [
-	self recordMatch: #(22).
+YAMLScanner >> scan3 [
+	[ self step.
+	('-:' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	currentCharacter == Character lf
+		or: [ currentCharacter == Character cr or: [ currentCharacter == Character space ] ] ]
+		whileTrue.
+	(currentCharacter <= Character backspace
+		or: [ (currentCharacter between: Character pageUp and: $!)
+				or: [ (currentCharacter between: $$ and: $+)
+						or: [ (currentCharacter between: $. and: $Z)
+								or: [ currentCharacter == $\
+										or: [ (currentCharacter between: $^ and: $z)
+												or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ] ])
+		ifTrue: [ ^ self scan2 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan30 [
+	[ self recordMatch: #(21).
 	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan23 ].
-	currentCharacter == $: ifTrue: [ ^ self scan24 ].
-	(currentCharacter between: $0 and: $7)
-		ifTrue: [ [ self recordMatch: #(3 22).
+	currentCharacter == Character space ifTrue: [ ^ self scan31 ].
+	currentCharacter == $' ifTrue: [ ^ self scan32 ].
+	currentCharacter == $: ifTrue: [ ^ self scan33 ].
+	currentCharacter == $\ ifTrue: [ ^ self scan34 ].
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan13 ].
+	true ] whileTrue
+]
+
+{ #category : #generated }
+YAMLScanner >> scan31 [
+	[ self step.
+	currentCharacter == Character space ] whileTrue.
+	currentCharacter == $' ifTrue: [ ^ self scan32 ].
+	currentCharacter == $\ ifTrue: [ ^ self scan34 ].
+	(currentCharacter == Character lf
+		or: [ currentCharacter == Character cr or: [ '#:' includes: currentCharacter ] ])
+		ifTrue: [ ^ self scan13 ].
+	^ self scan30
+]
+
+{ #category : #generated }
+YAMLScanner >> scan32 [
+	self recordMatch: #(21 31).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan28 ].
+	currentCharacter == $: ifTrue: [ ^ self scan29 ].
+	(currentCharacter <= Character tab
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ currentCharacter >= (Character value: 14) ] ])
+		ifTrue: [ ^ self scan27 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan33 [
+	self step.
+	currentCharacter == $' ifTrue: [ ^ self scan32 ].
+	currentCharacter == $\ ifTrue: [ ^ self scan34 ].
+	((currentCharacter between: Character tab and: Character lf)
+		or: [ currentCharacter == Character cr
+				or: [ currentCharacter == Character space or: [ currentCharacter == $# ] ] ])
+		ifTrue: [ ^ self scan13 ].
+	^ self scan30
+]
+
+{ #category : #generated }
+YAMLScanner >> scan34 [
+	self recordMatch: #(21).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan31 ].
+	currentCharacter == $: ifTrue: [ ^ self scan33 ].
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan13 ].
+	^ self scan30
+]
+
+{ #category : #generated }
+YAMLScanner >> scan35 [
+	[ self recordMatch: #(6 21).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan28 ].
+	currentCharacter == $: ifTrue: [ ^ self scan29 ].
+	currentCharacter isDigit ] whileTrue.
+	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan36 ].
+	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan38 ].
+	(currentCharacter <= Character tab
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ currentCharacter >= (Character value: 14) ] ])
+		ifTrue: [ ^ self scan27 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan36 [
+	self recordMatch: #(21).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan28 ].
+	currentCharacter == $: ifTrue: [ ^ self scan29 ].
+	currentCharacter isDigit ifTrue: [ ^ self scan37 ].
+	('+-' includes: currentCharacter)
+		ifTrue: [ self recordMatch: #(21).
 			self step.
-			currentCharacter == Character space ifTrue: [ ^ self scan23 ].
-			currentCharacter == $: ifTrue: [ ^ self scan24 ].
+			currentCharacter == Character space ifTrue: [ ^ self scan28 ].
+			currentCharacter == $: ifTrue: [ ^ self scan29 ].
+			currentCharacter isDigit ifTrue: [ ^ self scan37 ] ].
+	(currentCharacter <= Character tab
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ currentCharacter >= (Character value: 14) ] ])
+		ifTrue: [ ^ self scan27 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan37 [
+	[ self recordMatch: #(6 21).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan28 ].
+	currentCharacter == $: ifTrue: [ ^ self scan29 ].
+	currentCharacter isDigit ] whileTrue.
+	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan38 ].
+	(currentCharacter <= Character tab
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ currentCharacter >= (Character value: 14) ] ])
+		ifTrue: [ ^ self scan27 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan38 [
+	self recordMatch: #(7 21).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan28 ].
+	currentCharacter == $: ifTrue: [ ^ self scan29 ].
+	(currentCharacter <= Character tab
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ currentCharacter >= (Character value: 14) ] ])
+		ifTrue: [ ^ self scan27 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan39 [
+	self recordMatch: #(2 21).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan28 ].
+	currentCharacter == $. ifTrue: [ ^ self scan35 ].
+	currentCharacter == $0 ifTrue: [ ^ self scan39X1 ].
+	currentCharacter == $: ifTrue: [ ^ self scan29 ].
+	currentCharacter isDigit ifTrue: [ ^ self scan40 ].
+	('Bb' includes: currentCharacter) ifTrue: [ ^ self scan39X3 ].
+	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan36 ].
+	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan38 ].
+	('Oo' includes: currentCharacter) ifTrue: [ ^ self scan39X2 ].
+	^ self scan39X4
+]
+
+{ #category : #generated }
+YAMLScanner >> scan39X1 [
+	[ self recordMatch: #(2 21).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan28 ].
+	currentCharacter == $. ifTrue: [ ^ self scan35 ].
+	currentCharacter == $0 ] whileTrue.
+	^ self scan39X1X1
+]
+
+{ #category : #generated }
+YAMLScanner >> scan39X1X1 [
+	currentCharacter == $: ifTrue: [ ^ self scan29 ].
+	currentCharacter isDigit ifTrue: [ ^ self scan40 ].
+	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan36 ].
+	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan38 ].
+	(currentCharacter <= Character tab
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ currentCharacter >= (Character value: 14) ] ])
+		ifTrue: [ ^ self scan27 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan39X2 [
+	self recordMatch: #(21).
+	self step.
+	currentCharacter == Character space ifTrue: [ ^ self scan28 ].
+	currentCharacter == $: ifTrue: [ ^ self scan29 ].
+	(currentCharacter between: $0 and: $7)
+		ifTrue: [ [ self recordMatch: #(3 21).
+			self step.
+			currentCharacter == Character space ifTrue: [ ^ self scan28 ].
+			currentCharacter == $: ifTrue: [ ^ self scan29 ].
 			currentCharacter between: $0 and: $7 ] whileTrue ].
 	(currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
 				or: [ currentCharacter >= (Character value: 14) ] ])
-		ifTrue: [ ^ self scan22 ].
+		ifTrue: [ ^ self scan27 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-YAMLScanner >> scan29X3 [
-	self recordMatch: #(22).
+YAMLScanner >> scan39X3 [
+	self recordMatch: #(21).
 	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan23 ].
-	currentCharacter == $: ifTrue: [ ^ self scan24 ].
+	currentCharacter == Character space ifTrue: [ ^ self scan28 ].
+	currentCharacter == $: ifTrue: [ ^ self scan29 ].
 	(currentCharacter between: $0 and: $1)
-		ifTrue: [ [ self recordMatch: #(5 22).
+		ifTrue: [ [ self recordMatch: #(5 21).
 			self step.
-			currentCharacter == Character space ifTrue: [ ^ self scan23 ].
-			currentCharacter == $: ifTrue: [ ^ self scan24 ].
+			currentCharacter == Character space ifTrue: [ ^ self scan28 ].
+			currentCharacter == $: ifTrue: [ ^ self scan29 ].
 			currentCharacter between: $0 and: $1 ] whileTrue ].
 	(currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
 				or: [ currentCharacter >= (Character value: 14) ] ])
-		ifTrue: [ ^ self scan22 ].
+		ifTrue: [ ^ self scan27 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-YAMLScanner >> scan29X4 [
+YAMLScanner >> scan39X4 [
 	('Xx' includes: currentCharacter)
-		ifTrue: [ self recordMatch: #(22).
+		ifTrue: [ self recordMatch: #(21).
 			self step.
-			currentCharacter == Character space ifTrue: [ ^ self scan23 ].
-			currentCharacter == $: ifTrue: [ ^ self scan24 ].
+			currentCharacter == Character space ifTrue: [ ^ self scan28 ].
+			currentCharacter == $: ifTrue: [ ^ self scan29 ].
 			(currentCharacter isDigit
 				or: [ (currentCharacter between: $A and: $F)
 						or: [ currentCharacter between: $a and: $f ] ])
-				ifTrue: [ [ self recordMatch: #(4 22).
+				ifTrue: [ [ self recordMatch: #(4 21).
 					self step.
-					currentCharacter == Character space ifTrue: [ ^ self scan23 ].
-					currentCharacter == $: ifTrue: [ ^ self scan24 ].
+					currentCharacter == Character space ifTrue: [ ^ self scan28 ].
+					currentCharacter == $: ifTrue: [ ^ self scan29 ].
 					currentCharacter isDigit
 						or: [ (currentCharacter between: $A and: $F)
 								or: [ currentCharacter between: $a and: $f ] ] ] whileTrue ] ].
 	(currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
 				or: [ currentCharacter >= (Character value: 14) ] ])
-		ifTrue: [ ^ self scan22 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan3 [
-	self step.
-	(currentCharacter isDigit
-		or: [ (currentCharacter between: $A and: $F)
-				or: [ currentCharacter between: $a and: $f ] ])
-		ifTrue: [ self step.
-			(currentCharacter isDigit
-				or: [ (currentCharacter between: $A and: $F)
-						or: [ currentCharacter between: $a and: $f ] ]) ifTrue: [ ^ self scan4 ] ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan30 [
-	[ self recordMatch: #(22).
-	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan23 ].
-	currentCharacter == $. ifTrue: [ ^ self scan25 ].
-	currentCharacter == $: ifTrue: [ ^ self scan24 ].
-	currentCharacter isDigit ] whileTrue.
-	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan26 ].
-	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan28 ].
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ currentCharacter >= (Character value: 14) ] ])
-		ifTrue: [ ^ self scan22 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan31 [
-	[ self recordMatch: #(22).
-	self step.
-	currentCharacter == Character tab ] whileTrue.
-	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(23) ].
-	currentCharacter == Character cr ifTrue: [ ^ self scan32 ].
-	currentCharacter == Character space
-		ifTrue: [ [ self step.
-			currentCharacter == Character tab ifTrue: [ ^ self scan31 ].
-			currentCharacter == Character lf
-				ifTrue: [ ^ self recordAndReportMatch: #(23) ].
-			currentCharacter == Character cr ifTrue: [ ^ self scan32 ].
-			currentCharacter == Character space ] whileTrue.
-			(currentCharacter <= $"
-				or: [ (currentCharacter between: $$ and: $9) or: [ currentCharacter >= $; ] ])
-				ifTrue: [ ^ self scan22 ].
-			^ self reportLastMatch ].
-	currentCharacter == $: ifTrue: [ ^ self scan24 ].
-	^ self scan22
-]
-
-{ #category : #generated }
-YAMLScanner >> scan32 [
-	self recordMatch: #(23).
-	self step.
-	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(23) ].
+		ifTrue: [ ^ self scan27 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 YAMLScanner >> scan4 [
-	self step.
-	(currentCharacter isDigit
-		or: [ (currentCharacter between: $A and: $F)
-				or: [ currentCharacter between: $a and: $f ] ])
-		ifTrue: [ self step.
-			(currentCharacter isDigit
-				or: [ (currentCharacter between: $A and: $F)
-						or: [ currentCharacter between: $a and: $f ] ]) ifTrue: [ ^ self scan1 ] ].
+	[ self step.
+	currentCharacter == Character space ] whileTrue.
+	currentCharacter == $- ifTrue: [ ^ self scan6 ].
+	currentCharacter == $: ifTrue: [ ^ self scan5 ].
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan3 ].
+	(currentCharacter <= $"
+		or: [ (currentCharacter between: $$ and: $+)
+				or: [ (currentCharacter between: $. and: $Z)
+						or: [ currentCharacter == $\
+								or: [ (currentCharacter between: $^ and: $z)
+										or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ])
+		ifTrue: [ ^ self scan2 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-YAMLScanner >> scan5 [
+YAMLScanner >> scan40 [
+	[ self recordMatch: #(21).
 	self step.
-	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(27) ].
-	currentCharacter == Character cr ifTrue: [ ^ self scan9 ].
-	currentCharacter == $" ifTrue: [ ^ self scan10 ].
-	currentCharacter == $# ifTrue: [ ^ self scan5X5 ].
-	currentCharacter == $& ifTrue: [ ^ self scan5X3 ].
-	currentCharacter == $, ifTrue: [ ^ self recordAndReportMatch: #(11) ].
-	^ self scan5X7
-]
-
-{ #category : #generated }
-YAMLScanner >> scan5X1 [
-	[ self recordMatch: #(2 26).
-	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan7 ].
-	currentCharacter == $. ifTrue: [ ^ self scan14 ].
-	currentCharacter == $: ifTrue: [ ^ self scan8 ].
+	currentCharacter == Character space ifTrue: [ ^ self scan28 ].
+	currentCharacter == $. ifTrue: [ ^ self scan35 ].
+	currentCharacter == $: ifTrue: [ ^ self scan29 ].
 	currentCharacter isDigit ] whileTrue.
-	^ self scan5X1X1
-]
-
-{ #category : #generated }
-YAMLScanner >> scan5X1X1 [
-	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan15 ].
-	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan17 ].
+	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan36 ].
+	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan38 ].
 	(currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ (currentCharacter between: (Character value: 14) and: $!)
-						or: [ (currentCharacter between: $# and: $+)
-								or: [ (currentCharacter between: $- and: $Z)
-										or: [ currentCharacter == $\
-												or: [ (currentCharacter between: $^ and: $z)
-														or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ] ] ])
-		ifTrue: [ ^ self scan6 ].
+				or: [ currentCharacter >= (Character value: 14) ] ])
+		ifTrue: [ ^ self scan27 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-YAMLScanner >> scan5X2 [
-	self recordMatch: #(26).
+YAMLScanner >> scan41 [
+	[ self recordMatch: #(18 21).
 	self step.
-	^ self scan5X2X1
-]
-
-{ #category : #generated }
-YAMLScanner >> scan5X2X1 [
-	currentCharacter == Character space ifTrue: [ ^ self scan7 ].
-	currentCharacter == $: ifTrue: [ ^ self scan8 ].
-	currentCharacter isDigit ifTrue: [ ^ self scan14 ].
-	(currentCharacter <= Character tab
+	currentCharacter == Character tab ] whileTrue.
+	currentCharacter == Character space ifTrue: [ ^ self scan42 ].
+	currentCharacter == $# ifTrue: [ ^ self scan43 ].
+	currentCharacter == $: ifTrue: [ ^ self scan29 ].
+	(currentCharacter <= Character backspace
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ (currentCharacter between: (Character value: 14) and: $!)
-						or: [ (currentCharacter between: $# and: $+)
-								or: [ (currentCharacter between: $- and: $Z)
-										or: [ currentCharacter == $\
-												or: [ (currentCharacter between: $^ and: $z)
-														or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ] ] ])
-		ifTrue: [ ^ self scan6 ].
+				or: [ currentCharacter >= (Character value: 14) ] ])
+		ifTrue: [ ^ self scan27 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-YAMLScanner >> scan5X3 [
-	self recordMatch: #(26).
+YAMLScanner >> scan42 [
+	[ self recordMatch: #(18).
 	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan7 ].
-	currentCharacter == $: ifTrue: [ ^ self scan13 ].
-	(currentCharacter == Character tab
-		or: [ currentCharacter between: Character pageUp and: Character newPage ])
-		ifTrue: [ ^ self scan6 ].
-	('",[]{}' includes: currentCharacter)
-		ifTrue: [ [ self recordMatch: #(20).
+	currentCharacter == Character tab ifTrue: [ ^ self scan41 ].
+	currentCharacter == Character space ] whileTrue.
+	currentCharacter == $#
+		ifTrue: [ [ self recordMatch: #(18).
 			self step.
-			currentCharacter <= Character backspace
-				or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
-						or: [ currentCharacter >= $! ] ] ] whileTrue.
+			currentCharacter <= Character tab
+				or: [ (currentCharacter between: Character pageUp and: Character newPage)
+						or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
 			^ self reportLastMatch ].
 	(currentCharacter <= Character backspace
-		or: [ currentCharacter >= (Character value: 14) ]) ifTrue: [ ^ self scan12 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scan5X4 [
-	self recordMatch: #(12).
-	self step.
-	(currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
-						or: [ currentCharacter >= $! ] ] ]) ifTrue: [ ^ self scan6 ].
+				or: [ (currentCharacter between: (Character value: 14) and: $9)
+						or: [ currentCharacter >= $; ] ] ]) ifTrue: [ ^ self scan27 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-YAMLScanner >> scan5X5 [
-	[ self recordMatch: #(25).
+YAMLScanner >> scan43 [
+	[ self recordMatch: #(18 21).
 	self step.
+	currentCharacter == Character space
+		ifTrue: [ [ self recordMatch: #(18).
+			self step.
+			currentCharacter == Character space ] whileTrue.
+			('#:' includes: currentCharacter)
+				ifTrue: [ [ self recordMatch: #(18).
+					self step.
+					currentCharacter <= Character tab
+						or: [ (currentCharacter between: Character pageUp and: Character newPage)
+								or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
+					^ self reportLastMatch ].
+			(currentCharacter <= Character tab
+				or: [ (currentCharacter between: Character pageUp and: Character newPage)
+						or: [ currentCharacter >= (Character value: 14) ] ])
+				ifTrue: [ ^ self scan43 ].
+			^ self reportLastMatch ].
+	currentCharacter == $:
+		ifTrue: [ self recordMatch: #(18).
+			self step.
+			(currentCharacter == Character tab
+				or: [ currentCharacter == Character space or: [ currentCharacter == $# ] ])
+				ifTrue: [ [ self recordMatch: #(18).
+					self step.
+					currentCharacter <= Character tab
+						or: [ (currentCharacter between: Character pageUp and: Character newPage)
+								or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
+					^ self reportLastMatch ].
+			(currentCharacter <= Character backspace
+				or: [ (currentCharacter between: Character pageUp and: Character newPage)
+						or: [ currentCharacter >= (Character value: 14) ] ])
+				ifTrue: [ ^ self scan43 ].
+			^ self reportLastMatch ].
 	currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
 				or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
@@ -1266,128 +1553,145 @@ YAMLScanner >> scan5X5 [
 ]
 
 { #category : #generated }
-YAMLScanner >> scan5X6 [
-	[ self recordMatch: #(27).
+YAMLScanner >> scan44 [
+	[ self recordMatch: #(21).
 	self step.
+	currentCharacter == Character tab ] whileTrue.
+	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(22) ].
+	currentCharacter == Character cr ifTrue: [ ^ self scan45 ].
+	currentCharacter == Character space
+		ifTrue: [ [ self step.
+			currentCharacter == Character tab ifTrue: [ ^ self scan44 ].
+			currentCharacter == Character lf
+				ifTrue: [ ^ self recordAndReportMatch: #(22) ].
+			currentCharacter == Character cr ifTrue: [ ^ self scan45 ].
+			currentCharacter == Character space ] whileTrue.
+			(currentCharacter <= $"
+				or: [ (currentCharacter between: $$ and: $9) or: [ currentCharacter >= $; ] ])
+				ifTrue: [ ^ self scan27 ].
+			^ self reportLastMatch ].
+	currentCharacter == $: ifTrue: [ ^ self scan29 ].
+	^ self scan27
+]
+
+{ #category : #generated }
+YAMLScanner >> scan45 [
+	self recordMatch: #(22).
+	self step.
+	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(22) ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+YAMLScanner >> scan46 [
+	[ self recordMatch: #(17).
+	self step.
+	currentCharacter == $#
+		ifTrue: [ [ self recordMatch: #(17).
+			self step.
+			currentCharacter <= Character tab
+				or: [ (currentCharacter between: Character pageUp and: Character newPage)
+						or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
+			^ self reportLastMatch ].
 	currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
 		whileTrue.
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-YAMLScanner >> scan5X7 [
-	currentCharacter == $- ifTrue: [ ^ self scan8 ].
-	currentCharacter == $. ifTrue: [ ^ self scan5X2 ].
-	currentCharacter == $0 ifTrue: [ ^ self scan18 ].
-	currentCharacter == $: ifTrue: [ ^ self scan5X4 ].
-	currentCharacter == $[ ifTrue: [ ^ self recordAndReportMatch: #(13) ].
-	currentCharacter == $\ ifTrue: [ ^ self scan20 ].
-	currentCharacter == $] ifTrue: [ ^ self recordAndReportMatch: #(14) ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(15) ].
-	currentCharacter == $} ifTrue: [ ^ self recordAndReportMatch: #(16) ].
-	currentCharacter isDigit ifTrue: [ ^ self scan5X1 ].
-	(currentCharacter == Character tab or: [ currentCharacter == Character space ])
-		ifTrue: [ ^ self scan5X6 ].
-	^ self scan6
+YAMLScanner >> scan5 [
+	self step.
+	(currentCharacter <= Character tab
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
+						or: [ currentCharacter >= $! ] ] ]) ifTrue: [ ^ self scan2 ].
+	^ self reportLastMatch
 ]
 
 { #category : #generated }
 YAMLScanner >> scan6 [
-	[ self recordMatch: #(26).
+	[ self recordMatch: #(25).
 	self step.
-	currentCharacter == Character space ifTrue: [ ^ self scan7 ].
-	currentCharacter == $: ifTrue: [ ^ self scan8 ].
-	currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ (currentCharacter between: (Character value: 14) and: $!)
-						or: [ (currentCharacter between: $# and: $+)
-								or: [ (currentCharacter between: $- and: $Z)
-										or: [ currentCharacter == $\
-												or: [ (currentCharacter between: $^ and: $z)
-														or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ] ] ] ]
-		whileTrue.
-	^ self reportLastMatch
+	currentCharacter == Character space ifTrue: [ ^ self scan4 ].
+	currentCharacter == $: ] whileTrue.
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan3 ].
+	^ self scan2
 ]
 
 { #category : #generated }
 YAMLScanner >> scan7 [
 	[ self step.
-	currentCharacter == Character space ] whileTrue.
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ (currentCharacter between: (Character value: 14) and: $")
-						or: [ (currentCharacter between: $$ and: $+)
-								or: [ (currentCharacter between: $- and: $9)
-										or: [ (currentCharacter between: $; and: $Z)
-												or: [ currentCharacter == $\
-														or: [ (currentCharacter between: $^ and: $z)
-																or: [ currentCharacter == $| or: [ currentCharacter >= $~ ] ] ] ] ] ] ] ] ])
-		ifTrue: [ ^ self scan6 ].
-	^ self reportLastMatch
+	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(29) ].
+	currentCharacter == $\
+		ifTrue: [ self step.
+			^ self scan7 ].
+	true ] whileTrue
 ]
 
 { #category : #generated }
 YAMLScanner >> scan8 [
+	[ self recordMatch: #(19 25).
 	self step.
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+	currentCharacter == Character space ifTrue: [ ^ self scan4 ].
+	currentCharacter == $: ifTrue: [ ^ self scan9 ].
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan3 ].
+	(currentCharacter isSeparator or: [ currentCharacter == Character pageUp ])
+		ifTrue: [ ^ self scan2 ].
+	('",[]{}' includes: currentCharacter)
+		ifTrue: [ [ self recordMatch: #(19).
+			self step.
+			currentCharacter <= Character backspace
 				or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
-						or: [ currentCharacter >= $! ] ] ]) ifTrue: [ ^ self scan6 ].
-	^ self reportLastMatch
+						or: [ currentCharacter >= $! ] ] ] whileTrue.
+			^ self reportLastMatch ].
+	true ] whileTrue
 ]
 
 { #category : #generated }
 YAMLScanner >> scan9 [
-	self recordMatch: #(27).
+	self recordMatch: #(19).
 	self step.
-	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(27) ].
+	(currentCharacter == Character tab
+		or: [ currentCharacter between: Character pageUp and: Character newPage ])
+		ifTrue: [ ^ self scan2 ].
+	(currentCharacter <= Character backspace
+		or: [ (currentCharacter between: (Character value: 14) and: Character arrowDown)
+				or: [ currentCharacter >= $! ] ]) ifTrue: [ ^ self scan8 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 YAMLScanner >> scanForToken [
 	scope == #LITERAL_STRING
-		ifTrue: [ self recordMatch: #(29).
+		ifTrue: [ self recordMatch: #(28).
 			self step.
 			currentCharacter == Character lf
-				ifTrue: [ [ self recordMatch: #(28).
+				ifTrue: [ [ self recordMatch: #(27).
 					self step.
 					currentCharacter == Character tab
 						or: [ currentCharacter == Character space ] ] whileTrue.
 					^ self reportLastMatch ].
 			currentCharacter == Character cr
-				ifTrue: [ self recordMatch: #(28).
+				ifTrue: [ self recordMatch: #(27).
 					self step.
 					((currentCharacter between: Character tab and: Character lf)
 						or: [ currentCharacter == Character space ])
-						ifTrue: [ [ self recordMatch: #(28).
+						ifTrue: [ [ self recordMatch: #(27).
 							self step.
 							currentCharacter == Character tab
 								or: [ currentCharacter == Character space ] ] whileTrue ].
 					^ self reportLastMatch ].
 			true
-				ifTrue: [ [ self recordMatch: #(29).
+				ifTrue: [ [ self recordMatch: #(28).
 					self step.
 					currentCharacter <= Character tab
 						or: [ (currentCharacter between: Character pageUp and: Character newPage)
 								or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue ].
 			^ self reportLastMatch ].
-	scope == #FLOW ifTrue: [ ^ self scan5 ].
-	scope == #DOUBLE_QUOTE_STR ifTrue: [ ^ self scanForTokenX1 ].
-	scope == #default ifTrue: [ ^ self scan21 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-YAMLScanner >> scanForTokenX1 [
-	self recordMatch: #(30).
-	self step.
-	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(31) ].
-	currentCharacter == $\ ifTrue: [ ^ self scan2 ].
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ currentCharacter >= (Character value: 14) ] ])
-		ifTrue: [ ^ self scan1 ].
+	scope == #default ifTrue: [ ^ self scan26 ].
+	scope == #FLOW ifTrue: [ ^ self scan1 ].
 	^ self reportLastMatch
 ]
 
@@ -1398,5 +1702,5 @@ YAMLScanner >> stateClass [
 
 { #category : #generated }
 YAMLScanner >> tokenActions [
-	^ #(#newline nil nil nil nil nil nil nil #DOCUMENTSTART1 #DOCUMENTEND1 nil nil nil nil nil nil nil nil nil nil nil nil #SKIP1 nil #comment #STRING_MY_2 #SKIP2 #newline_str_literal #STRING_MY_3 #STRING_MY_4 #DOUBLE_QUOTE2)
+	^ #(#newline nil nil nil nil nil nil nil #DOCUMENTSTART1 #DOCUMENTEND1 nil nil nil nil nil nil nil nil nil nil nil #SKIP1 nil #comment #STRING_MY_2 #SKIP2 #newline_str_literal #STRING_MY_3)
 ]

@@ -3,8 +3,9 @@ Class {
 	#superclass : #YAMLMappingListNode,
 	#instVars : [
 		'leftBrace',
+		'rightBrace',
 		'commas',
-		'rightBrace'
+		'anchor'
 	],
 	#category : #'SmaCC_YAML'
 }
@@ -12,6 +13,16 @@ Class {
 { #category : #generated }
 YAMLFlowMappingListNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitFlowMappingList: self
+]
+
+{ #category : #generated }
+YAMLFlowMappingListNode >> anchor [
+	^ anchor
+]
+
+{ #category : #generated }
+YAMLFlowMappingListNode >> anchor: aSmaCCToken [
+	anchor := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -57,5 +68,5 @@ YAMLFlowMappingListNode >> rightBrace: aSmaCCToken [
 
 { #category : #generated }
 YAMLFlowMappingListNode >> tokenVariables [
-	^ #(#leftBrace #rightBrace)
+	^ #(#leftBrace #rightBrace #anchor)
 ]
