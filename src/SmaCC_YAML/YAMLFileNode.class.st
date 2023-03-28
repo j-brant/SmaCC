@@ -4,8 +4,8 @@ Class {
 	#instVars : [
 		'documents',
 		'documentEnds',
-		'anchors',
-		'documentStarts'
+		'documentStarts',
+		'globalTag'
 	],
 	#category : #'SmaCC_YAML'
 }
@@ -16,23 +16,13 @@ YAMLFileNode >> acceptVisitor: aParseVisitor [
 ]
 
 { #category : #generated }
-YAMLFileNode >> anchors [
-	^ anchors
-]
-
-{ #category : #generated }
-YAMLFileNode >> anchors: anOrderedCollection [
-	anchors := anOrderedCollection
-]
-
-{ #category : #generated }
 YAMLFileNode >> compositeNodeVariables [
 	^ #(#documents)
 ]
 
 { #category : #generated }
 YAMLFileNode >> compositeTokenVariables [
-	^ #(#documentEnds #anchors #documentStarts)
+	^ #(#documentEnds #documentStarts #anchors #tags)
 ]
 
 { #category : #generated }
@@ -67,11 +57,25 @@ YAMLFileNode >> documents: anOrderedCollection [
 	self setParents: self documents to: self
 ]
 
+{ #category : #generated }
+YAMLFileNode >> globalTag [
+	^ globalTag
+]
+
+{ #category : #generated }
+YAMLFileNode >> globalTag: aSmaCCToken [
+	globalTag := aSmaCCToken
+]
+
 { #category : #'generated-initialize-release' }
 YAMLFileNode >> initialize [
 	super initialize.
 	documents := OrderedCollection new: 2.
 	documentEnds := OrderedCollection new: 2.
-	anchors := OrderedCollection new: 2.
 	documentStarts := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+YAMLFileNode >> tokenVariables [
+	^ #(#globalTag)
 ]

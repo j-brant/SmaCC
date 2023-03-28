@@ -1,6 +1,6 @@
 Class {
 	#name : #YAMLMappingListNode,
-	#superclass : #YAMLParseNode,
+	#superclass : #YAMLValueNode,
 	#instVars : [
 		'mappings'
 	],

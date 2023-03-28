@@ -1,6 +1,6 @@
 Class {
 	#name : #YAMLListNode,
-	#superclass : #YAMLParseNode,
+	#superclass : #YAMLValueNode,
 	#instVars : [
 		'items'
 	],

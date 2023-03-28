@@ -4,7 +4,6 @@ Class {
 	#instVars : [
 		'colon',
 		'value',
-		'anchors',
 		'key'
 	],
 	#category : #'SmaCC_YAML'
@@ -16,16 +15,6 @@ YAMLMappingNode >> acceptVisitor: aParseVisitor [
 ]
 
 { #category : #generated }
-YAMLMappingNode >> anchors [
-	^ anchors
-]
-
-{ #category : #generated }
-YAMLMappingNode >> anchors: anOrderedCollection [
-	anchors := anOrderedCollection
-]
-
-{ #category : #generated }
 YAMLMappingNode >> colon [
 	^ colon
 ]
@@ -33,17 +22,6 @@ YAMLMappingNode >> colon [
 { #category : #generated }
 YAMLMappingNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
-]
-
-{ #category : #generated }
-YAMLMappingNode >> compositeTokenVariables [
-	^ #(#anchors)
-]
-
-{ #category : #'generated-initialize-release' }
-YAMLMappingNode >> initialize [
-	super initialize.
-	anchors := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -74,8 +52,8 @@ YAMLMappingNode >> value [
 ]
 
 { #category : #generated }
-YAMLMappingNode >> value: aYAMLParseNode [
+YAMLMappingNode >> value: aYAMLValueNode [
 	self value notNil ifTrue: [ self value parent: nil ].
-	value := aYAMLParseNode.
+	value := aYAMLValueNode.
 	self value notNil ifTrue: [ self value parent: self ]
 ]

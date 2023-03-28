@@ -1,8 +1,8 @@
 Class {
 	#name : #YAMLStringNode,
-	#superclass : #YAMLParseNode,
+	#superclass : #YAMLValueNode,
 	#instVars : [
-		'value'
+		'parts'
 	],
 	#category : #'SmaCC_YAML'
 }
@@ -13,16 +13,22 @@ YAMLStringNode >> acceptVisitor: aParseVisitor [
 ]
 
 { #category : #generated }
-YAMLStringNode >> tokenVariables [
-	^ #(#value)
+YAMLStringNode >> compositeTokenVariables [
+	^ #(#parts #anchors #tags)
+]
+
+{ #category : #'generated-initialize-release' }
+YAMLStringNode >> initialize [
+	super initialize.
+	parts := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-YAMLStringNode >> value [
-	^ value
+YAMLStringNode >> parts [
+	^ parts
 ]
 
 { #category : #generated }
-YAMLStringNode >> value: aSmaCCToken [
-	value := aSmaCCToken
+YAMLStringNode >> parts: anOrderedCollection [
+	parts := anOrderedCollection
 ]

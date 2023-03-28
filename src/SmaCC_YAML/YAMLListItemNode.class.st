@@ -3,8 +3,7 @@ Class {
 	#superclass : #YAMLParseNode,
 	#instVars : [
 		'minus',
-		'value',
-		'anchor'
+		'value'
 	],
 	#category : #'SmaCC_YAML'
 }
@@ -12,16 +11,6 @@ Class {
 { #category : #generated }
 YAMLListItemNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitListItem: self
-]
-
-{ #category : #generated }
-YAMLListItemNode >> anchor [
-	^ anchor
-]
-
-{ #category : #generated }
-YAMLListItemNode >> anchor: aSmaCCToken [
-	anchor := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -41,7 +30,7 @@ YAMLListItemNode >> nodeVariables [
 
 { #category : #generated }
 YAMLListItemNode >> tokenVariables [
-	^ #(#minus #anchor)
+	^ #(#minus)
 ]
 
 { #category : #generated }
@@ -50,8 +39,8 @@ YAMLListItemNode >> value [
 ]
 
 { #category : #generated }
-YAMLListItemNode >> value: aYAMLParseNode [
+YAMLListItemNode >> value: aYAMLValueNode [
 	self value notNil ifTrue: [ self value parent: nil ].
-	value := aYAMLParseNode.
+	value := aYAMLValueNode.
 	self value notNil ifTrue: [ self value parent: self ]
 ]

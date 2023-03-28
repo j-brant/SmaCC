@@ -4,8 +4,7 @@ Class {
 	#instVars : [
 		'leftBrace',
 		'rightBrace',
-		'commas',
-		'anchor'
+		'commas'
 	],
 	#category : #'SmaCC_YAML'
 }
@@ -13,16 +12,6 @@ Class {
 { #category : #generated }
 YAMLFlowMappingListNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitFlowMappingList: self
-]
-
-{ #category : #generated }
-YAMLFlowMappingListNode >> anchor [
-	^ anchor
-]
-
-{ #category : #generated }
-YAMLFlowMappingListNode >> anchor: aSmaCCToken [
-	anchor := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -37,7 +26,7 @@ YAMLFlowMappingListNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 YAMLFlowMappingListNode >> compositeTokenVariables [
-	^ #(#commas)
+	^ #(#commas #anchors #tags)
 ]
 
 { #category : #'generated-initialize-release' }
@@ -68,5 +57,5 @@ YAMLFlowMappingListNode >> rightBrace: aSmaCCToken [
 
 { #category : #generated }
 YAMLFlowMappingListNode >> tokenVariables [
-	^ #(#leftBrace #rightBrace #anchor)
+	^ #(#leftBrace #rightBrace)
 ]

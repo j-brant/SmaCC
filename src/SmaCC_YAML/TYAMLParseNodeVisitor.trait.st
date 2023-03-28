@@ -7,7 +7,7 @@ Trait {
 
 { #category : #generated }
 TYAMLParseNodeVisitor >> visitAlias: anAlias [
-	^ self visitParse: anAlias
+	^ self visitValue: anAlias
 ]
 
 { #category : #generated }
@@ -31,13 +31,8 @@ TYAMLParseNodeVisitor >> visitFlowMappingList: aFlowMappingList [
 ]
 
 { #category : #generated }
-TYAMLParseNodeVisitor >> visitKey: aKey [
-	^ self visitParse: aKey
-]
-
-{ #category : #generated }
 TYAMLParseNodeVisitor >> visitList: aList [
-	^ self visitParse: aList
+	^ self visitValue: aList
 ]
 
 { #category : #generated }
@@ -52,17 +47,12 @@ TYAMLParseNodeVisitor >> visitMapping: aMapping [
 
 { #category : #generated }
 TYAMLParseNodeVisitor >> visitMappingList: aMappingList [
-	^ self visitParse: aMappingList
-]
-
-{ #category : #generated }
-TYAMLParseNodeVisitor >> visitMultilineString: aMultilineString [
-	^ self visitParse: aMultilineString
+	^ self visitValue: aMappingList
 ]
 
 { #category : #generated }
 TYAMLParseNodeVisitor >> visitNumber: aNumber [
-	^ self visitParse: aNumber
+	^ self visitValue: aNumber
 ]
 
 { #category : #generated }
@@ -72,10 +62,10 @@ TYAMLParseNodeVisitor >> visitParse: aParse [
 
 { #category : #generated }
 TYAMLParseNodeVisitor >> visitString: aString [
-	^ self visitParse: aString
+	^ self visitValue: aString
 ]
 
 { #category : #generated }
-TYAMLParseNodeVisitor >> visitStringLiteral: aStringLiteral [
-	^ self visitParse: aStringLiteral
+TYAMLParseNodeVisitor >> visitValue: aValue [
+	^ self visitParse: aValue
 ]

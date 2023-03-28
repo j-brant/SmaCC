@@ -3,8 +3,7 @@ Class {
 	#superclass : #YAMLParseNode,
 	#instVars : [
 		'questionMark',
-		'value',
-		'anchors'
+		'value'
 	],
 	#category : #'SmaCC_YAML'
 }
@@ -12,27 +11,6 @@ Class {
 { #category : #generated }
 YAMLComplexKeyNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitComplexKey: self
-]
-
-{ #category : #generated }
-YAMLComplexKeyNode >> anchors [
-	^ anchors
-]
-
-{ #category : #generated }
-YAMLComplexKeyNode >> anchors: anOrderedCollection [
-	anchors := anOrderedCollection
-]
-
-{ #category : #generated }
-YAMLComplexKeyNode >> compositeTokenVariables [
-	^ #(#anchors)
-]
-
-{ #category : #'generated-initialize-release' }
-YAMLComplexKeyNode >> initialize [
-	super initialize.
-	anchors := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -61,8 +39,8 @@ YAMLComplexKeyNode >> value [
 ]
 
 { #category : #generated }
-YAMLComplexKeyNode >> value: aYAMLParseNode [
+YAMLComplexKeyNode >> value: aYAMLValueNode [
 	self value notNil ifTrue: [ self value parent: nil ].
-	value := aYAMLParseNode.
+	value := aYAMLValueNode.
 	self value notNil ifTrue: [ self value parent: self ]
 ]
