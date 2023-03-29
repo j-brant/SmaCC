@@ -131,6 +131,11 @@ TJSProgramNodeVisitor >> visitClassExpression: aClassExpression [
 ]
 
 { #category : #generated }
+TJSProgramNodeVisitor >> visitClassStaticBlock: aClassStaticBlock [
+	^ self visitProgram: aClassStaticBlock
+]
+
+{ #category : #generated }
 TJSProgramNodeVisitor >> visitCommaExpression: aCommaExpression [
 	^ self visitExpression: aCommaExpression
 ]
@@ -266,6 +271,11 @@ TJSProgramNodeVisitor >> visitExpressionStatement: anExpressionStatement [
 ]
 
 { #category : #generated }
+TJSProgramNodeVisitor >> visitFieldDefinition: aFieldDefinition [
+	^ self visitProgram: aFieldDefinition
+]
+
+{ #category : #generated }
 TJSProgramNodeVisitor >> visitForInStatement: aForInStatement [
 	^ self visitStatement: aForInStatement
 ]
@@ -326,6 +336,11 @@ TJSProgramNodeVisitor >> visitImportDeclaration: anImportDeclaration [
 ]
 
 { #category : #generated }
+TJSProgramNodeVisitor >> visitImportMeta: anImportMeta [
+	^ self visitExpression: anImportMeta
+]
+
+{ #category : #generated }
 TJSProgramNodeVisitor >> visitImportRequireDeclaration: anImportRequireDeclaration [
 	^ self visitProgram: anImportRequireDeclaration
 ]
@@ -343,6 +358,11 @@ TJSProgramNodeVisitor >> visitIndexMemberDeclaration: anIndexMemberDeclaration [
 { #category : #generated }
 TJSProgramNodeVisitor >> visitIndexSignature: anIndexSignature [
 	^ self visitProgram: anIndexSignature
+]
+
+{ #category : #generated }
+TJSProgramNodeVisitor >> visitIndexedAccessType: anIndexedAccessType [
+	^ self visitType: anIndexedAccessType
 ]
 
 { #category : #generated }

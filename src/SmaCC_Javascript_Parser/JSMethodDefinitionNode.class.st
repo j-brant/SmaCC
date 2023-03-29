@@ -14,7 +14,9 @@ Class {
 		'staticToken',
 		'colonToken',
 		'type',
-		'typeParameters'
+		'typeParameters',
+		'questionMarkToken',
+		'semicolon'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
@@ -56,7 +58,7 @@ JSMethodDefinitionNode >> ignoredCompositeTokenVariables [
 
 { #category : #generated }
 JSMethodDefinitionNode >> ignoredTokenVariables [
-	^ #(#left #right #leftBrace #rightBrace #colonToken)
+	^ #(#left #right #leftBrace #rightBrace #colonToken #semicolon)
 ]
 
 { #category : #'generated-initialize-release' }
@@ -117,6 +119,16 @@ JSMethodDefinitionNode >> parameters: anOrderedCollection [
 ]
 
 { #category : #generated }
+JSMethodDefinitionNode >> questionMarkToken [
+	^ questionMarkToken
+]
+
+{ #category : #generated }
+JSMethodDefinitionNode >> questionMarkToken: aSmaCCToken [
+	questionMarkToken := aSmaCCToken
+]
+
+{ #category : #generated }
 JSMethodDefinitionNode >> restParameter [
 	^ restParameter
 ]
@@ -149,6 +161,16 @@ JSMethodDefinitionNode >> rightBrace: aSmaCCToken [
 ]
 
 { #category : #generated }
+JSMethodDefinitionNode >> semicolon [
+	^ semicolon
+]
+
+{ #category : #generated }
+JSMethodDefinitionNode >> semicolon: aSmaCCToken [
+	semicolon := aSmaCCToken
+]
+
+{ #category : #generated }
 JSMethodDefinitionNode >> statements [
 	^ statements
 ]
@@ -172,7 +194,7 @@ JSMethodDefinitionNode >> staticToken: aSmaCCToken [
 
 { #category : #generated }
 JSMethodDefinitionNode >> tokenVariables [
-	^ #(#staticToken)
+	^ #(#staticToken #questionMarkToken)
 ]
 
 { #category : #generated }

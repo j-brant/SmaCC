@@ -30,12 +30,18 @@ Class {
 		'cacheId',
 		'defaultEncoding'
 	],
-	#category : 'SmaCC_Runtime'
+	#category : #'SmaCC_Runtime'
 }
 
 { #category : #accessing }
 SmaCCParser class >> ambiguousTransitions [
 	^ #()
+]
+
+{ #category : #accessing }
+SmaCCParser class >> availableParsers [
+	^ self withAllSubclasses
+		select: [ :each | [ each scannerClass notNil ] on: Error do: [ :ex | ex return: false ] ]
 ]
 
 { #category : #caching }
@@ -49,6 +55,21 @@ SmaCCParser class >> checkCaches [
 		ifTrue: [ self resetCaches.
 			self scannerClass initialize.
 			cacheId := self cacheId ]
+]
+
+{ #category : #private }
+SmaCCParser class >> contentsOfFile: aString encoding: encodingString [
+	| encoding fileRef |
+	fileRef := aString asFileReference.
+	encoding := encodingString
+			ifNil: [ [ fileRef
+					binaryReadStreamDo: [ :in | (ZnCharacterEncoder detectEncoding: in upToEnd) identifier ] ]
+					on: Error
+					do: [ nil ] ].
+	^ fileRef
+		readStreamDo: [ :stream | 
+			self setEncoding: encoding on: stream.
+			stream contents ]
 ]
 
 { #category : #'instance creation' }
@@ -153,25 +174,26 @@ SmaCCParser class >> parseFile: aString [
 
 { #category : #parsing }
 SmaCCParser class >> parseFile: aString encoding: encodingString [
-	| encoding fileRef |
-	fileRef := aString asFileReference.
-	encoding := encodingString
-		ifNil: [ [ fileRef
-				binaryReadStreamDo: [ :in | (ZnCharacterEncoder detectEncoding: in upToEnd) identifier ] ]
-				on: Error
-				do: [ nil ] ].
-	^ fileRef
-		readStreamDo: [ :stream | 
-			| contents |
-			self setEncoding: encoding on: stream.
-			contents := stream contents.
-			(self parse: contents startingAt: self defaultStartingState)
-				ifNotNil: [ :each | 
-					(each isKindOf: SmaCCParseNode)
-						ifTrue: [ stream position: 0.
-							each completeSource: contents.
-							each filename: aString ].
-					each ] ]
+	| contents |
+	contents := self contentsOfFile: aString encoding: encodingString.
+	^ (self parse: contents startingAt: self defaultStartingState)
+		ifNotNil: [ :each | 
+			(each isKindOf: SmaCCParseNode)
+				ifTrue: [ each completeSource: contents.
+					each filename: aString ].
+			each ]
+]
+
+{ #category : #parsing }
+SmaCCParser class >> parseFileWithErrors: aString [
+	| contents |
+	contents := self contentsOfFile: aString encoding: self defaultEncoding.
+	^ (self parseWithErrors: contents)
+		ifNotNil: [ :each | 
+			(each isKindOf: SmaCCParseNode)
+				ifTrue: [ each completeSource: contents.
+					each filename: aString ].
+			each ]
 ]
 
 { #category : #parsing }

@@ -42,7 +42,7 @@ Class {
 	#classInstVars : [
 		'keywordMap'
 	],
-	#category : 'SmaCC_Runtime'
+	#category : #'SmaCC_Runtime'
 }
 
 { #category : #'class initialization' }
@@ -237,6 +237,14 @@ SmaCCScanner >> patternToken [
 		ids: matchActions.
 	outputStream reset.
 	^ token
+]
+
+{ #category : #accessing }
+SmaCCScanner >> peekAt: anInteger [
+	| position |
+	position := stream position.
+	^ [ stream position: anInteger.
+	stream next ] ensure: [ stream position: position ]
 ]
 
 { #category : #accessing }

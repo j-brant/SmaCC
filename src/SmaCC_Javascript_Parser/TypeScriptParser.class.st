@@ -19,6 +19,14 @@ TypeScriptParser class >> fileExtensionType [
 	^ 'TypeScript files'
 ]
 
+{ #category : #accessing }
+TypeScriptParser class >> keywords [
+	^ keywords
+		ifNil: [ super keywords
+				addAll: #('public' 'protected' 'private' 'override' 'readonly' 'interface' 'static' 'abstract' 'get' 'set');
+				yourself ]
+]
+
 { #category : #private }
 TypeScriptParser >> actionsForCurrentToken [
 	| tsActions token tsToken state position |

@@ -26,6 +26,11 @@ RustMacroInvocationNode >> bang: aSmaCCToken [
 	bang := aSmaCCToken
 ]
 
+{ #category : #generated }
+RustMacroInvocationNode >> compositeNodeVariables [
+	^ #(#tokens)
+]
+
 { #category : #'generated-initialize-release' }
 RustMacroInvocationNode >> initialize [
 	super initialize.
@@ -60,11 +65,6 @@ RustMacroInvocationNode >> nodeVariables [
 ]
 
 { #category : #generated }
-RustMacroInvocationNode >> otherVariables [
-	^ #(#tokens)
-]
-
-{ #category : #generated }
 RustMacroInvocationNode >> right [
 	^ right
 ]
@@ -86,7 +86,7 @@ RustMacroInvocationNode >> tokens [
 
 { #category : #generated }
 RustMacroInvocationNode >> tokens: anOrderedCollection [
-	self setParent: self tokens to: nil.
+	self setParents: self tokens to: nil.
 	tokens := anOrderedCollection.
-	self setParent: self tokens to: self
+	self setParents: self tokens to: self
 ]

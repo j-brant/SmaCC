@@ -6,9 +6,8 @@ Class {
 		'bang',
 		'leftBracket',
 		'path',
-		'tokens',
-		'equalsToken',
 		'value',
+		'equalsToken',
 		'rightBracket'
 	],
 	#category : #'SmaCC_Rust'
@@ -49,12 +48,6 @@ RustAttributeNode >> hashToken: aSmaCCToken [
 	hashToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
-RustAttributeNode >> initialize [
-	super initialize.
-	tokens := OrderedCollection new: 2.
-]
-
 { #category : #generated }
 RustAttributeNode >> leftBracket [
 	^ leftBracket
@@ -68,11 +61,6 @@ RustAttributeNode >> leftBracket: aSmaCCToken [
 { #category : #generated }
 RustAttributeNode >> nodeVariables [
 	^ #(#path #value)
-]
-
-{ #category : #generated }
-RustAttributeNode >> otherVariables [
-	^ #(#tokens)
 ]
 
 { #category : #generated }
@@ -103,25 +91,13 @@ RustAttributeNode >> tokenVariables [
 ]
 
 { #category : #generated }
-RustAttributeNode >> tokens [
-	^ tokens
-]
-
-{ #category : #generated }
-RustAttributeNode >> tokens: anOrderedCollection [
-	self setParent: self tokens to: nil.
-	tokens := anOrderedCollection.
-	self setParent: self tokens to: self
-]
-
-{ #category : #generated }
 RustAttributeNode >> value [
 	^ value
 ]
 
 { #category : #generated }
-RustAttributeNode >> value: aRustLiteralExpressionNode [
+RustAttributeNode >> value: aRustProgramNode [
 	self value notNil ifTrue: [ self value parent: nil ].
-	value := aRustLiteralExpressionNode.
+	value := aRustProgramNode.
 	self value notNil ifTrue: [ self value parent: self ]
 ]
