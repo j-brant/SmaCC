@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'opened',
 		'tokens',
-		'indents'
+		'indents',
+		'documentStringLiteral'
 	],
 	#category : #'SmaCC_YAML'
 }
@@ -14,6 +15,16 @@ YAMLScannerState >> = anObject [
 	^ super = anObject
 		and: [ self indents = anObject indents
 				and: [ self opened = anObject opened and: [ self tokens = anObject tokens ] ] ]
+]
+
+{ #category : #accessing }
+YAMLScannerState >> documentStringLiteral [
+	^ documentStringLiteral
+]
+
+{ #category : #accessing }
+YAMLScannerState >> documentStringLiteral: anObject [
+	documentStringLiteral := anObject
 ]
 
 { #category : #comparing }
