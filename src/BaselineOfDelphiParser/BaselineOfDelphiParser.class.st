@@ -4,14 +4,17 @@ Class {
 	#category : #BaselineOfDelphiParser
 }
 
-{ #category : #accessing }
+{ #category : #baseline }
 BaselineOfDelphiParser >> baseline: spec [
 	<baseline>
-	spec
-		for: #common
-		do: [ spec
-				baseline: 'SmaCCRuntime'
-					with: [ spec repository: 'github://j-brant/SmaCC' ];
-				package: 'SmaCC_Delphi' with: [ spec requires: 'SmaCCRuntime' ];
-				package: 'SmaCC_Delphi_Forms' with: [ spec requires: 'SmaCCRuntime' ] ]
+	spec for: #'common' do: [
+		spec
+			baseline: 'SmaCCRuntime' with: [
+				spec repository: 'github://j-brant/SmaCC:v3.0.1' ].
+
+		spec package: 'SmaCC_Delphi' with: [
+			spec requires: #('SmaCCRuntime') ].
+		spec package: 'SmaCC_Delphi_Forms' with: [
+			spec requires: #('SmaCCRuntime') ].
+	]
 ]

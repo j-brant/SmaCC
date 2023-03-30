@@ -4,13 +4,15 @@ Class {
 	#category : #BaselineOfAntlr4Parser
 }
 
-{ #category : #accessing }
+{ #category : #baseline }
 BaselineOfAntlr4Parser >> baseline: spec [
 	<baseline>
-	spec
-		for: #common
-		do: [ spec
-				baseline: 'SmaCCRuntime'
-					with: [ spec repository: 'github://j-brant/SmaCC' ];
-				package: 'SmaCC_Antlr_Parser' with: [ spec requires: 'SmaCCRuntime' ] ]
+	spec for: #'common' do: [
+		spec
+			baseline: 'SmaCCRuntime' with: [
+				spec repository: 'github://j-brant/SmaCC:v3.0.1' ].
+
+		spec package: 'SmaCC_Antlr_Parser' with: [
+			spec requires: #('SmaCCRuntime') ].
+	]
 ]

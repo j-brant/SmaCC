@@ -4,13 +4,15 @@ Class {
 	#category : #BaselineOfJSONParser
 }
 
-{ #category : #accessing }
+{ #category : #baseline }
 BaselineOfJSONParser >> baseline: spec [
 	<baseline>
-	spec
-		for: #common
-		do: [ spec
-				baseline: 'SmaCCRuntime'
-					with: [ spec repository: 'github://j-brant/SmaCC' ];
-				package: 'SmaCC_JSON_Parser' with: [ spec requires: 'SmaCCRuntime' ] ]
+	spec for: #'common' do: [
+		spec
+			baseline: 'SmaCCRuntime' with: [
+				spec repository: 'github://j-brant/SmaCC:v3.0.1' ].
+
+		spec package: 'SmaCC_JSON_Parser' with: [
+			spec requires: #('SmaCCRuntime') ].
+	]
 ]
