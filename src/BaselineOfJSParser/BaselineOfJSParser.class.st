@@ -10,7 +10,7 @@ BaselineOfJSParser >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.2' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.3' ].
 
 		spec package: 'SmaCC_Javascript_Parser' with: [
 			spec requires: #('SmaCCRuntime') ].
