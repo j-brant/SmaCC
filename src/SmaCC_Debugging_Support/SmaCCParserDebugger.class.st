@@ -62,7 +62,6 @@ SmaCCParserDebugger >> createSourceText [
 { #category : #initialization }
 SmaCCParserDebugger >> createToolBar [
 	| throughAction intoReduceAction nextTokenAction nextCharacterAction toCursorAction resumeAction buttons |
-	glrLabel := self newLabel.
 	throughAction := SmaCCParserStepThroughAction forDebugger: self.
 	intoReduceAction := SmaCCParserStepToReduceAction forDebugger: self.
 	nextTokenAction := SmaCCParserNextTokenAction forDebugger: self.
@@ -119,6 +118,7 @@ SmaCCParserDebugger >> createToolBar [
 									self close ]);
 		yourself.
 	self isGLR ifFalse: [ ^ toolbar := buttons ].
+	glrLabel := self newLabel.
 	toolbar := self newPresenter
 		layout:
 			((SpBoxLayout newLeftToRight)
