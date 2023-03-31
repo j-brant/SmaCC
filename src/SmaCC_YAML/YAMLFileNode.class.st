@@ -4,8 +4,8 @@ Class {
 	#instVars : [
 		'documents',
 		'documentEnds',
-		'documentStarts',
-		'globalTag'
+		'globalTags',
+		'documentStarts'
 	],
 	#category : #'SmaCC_YAML'
 }
@@ -22,7 +22,7 @@ YAMLFileNode >> compositeNodeVariables [
 
 { #category : #generated }
 YAMLFileNode >> compositeTokenVariables [
-	^ #(#documentEnds #documentStarts #anchors #tags)
+	^ #(#documentEnds #documentStarts #globalTags #anchors #tags)
 ]
 
 { #category : #generated }
@@ -58,13 +58,13 @@ YAMLFileNode >> documents: anOrderedCollection [
 ]
 
 { #category : #generated }
-YAMLFileNode >> globalTag [
-	^ globalTag
+YAMLFileNode >> globalTags [
+	^ globalTags
 ]
 
 { #category : #generated }
-YAMLFileNode >> globalTag: aSmaCCToken [
-	globalTag := aSmaCCToken
+YAMLFileNode >> globalTags: anOrderedCollection [
+	globalTags := anOrderedCollection
 ]
 
 { #category : #'generated-initialize-release' }
@@ -73,9 +73,12 @@ YAMLFileNode >> initialize [
 	documents := OrderedCollection new: 2.
 	documentEnds := OrderedCollection new: 2.
 	documentStarts := OrderedCollection new: 2.
+	globalTags := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
-YAMLFileNode >> tokenVariables [
-	^ #(#globalTag)
+{ #category : #accessing }
+YAMLFileNode >> object [
+	^ documents size = 1
+		ifTrue: [ documents first object ]
+		ifFalse: [ documents collect: #object ]
 ]

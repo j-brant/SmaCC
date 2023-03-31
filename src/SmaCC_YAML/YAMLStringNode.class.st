@@ -23,6 +23,15 @@ YAMLStringNode >> initialize [
 	parts := OrderedCollection new: 2.
 ]
 
+{ #category : #accessing }
+YAMLStringNode >> object [
+	^ String
+		streamContents: [ :stream | 
+			parts
+				do: [ :each | stream nextPutAll: each value ]
+				separatedBy: [ stream space ] ]
+]
+
 { #category : #generated }
 YAMLStringNode >> parts [
 	^ parts

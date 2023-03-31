@@ -498,8 +498,7 @@ SmaCCGLRParser >> restoreState: aSmaCCParserState [
 { #category : #private }
 SmaCCGLRParser >> scope: aSymbol [
 	super scope: aSymbol.
-	currentState notNil
-		ifTrue: [ currentState scannerState: scanner currentState ]
+	self updateScannerState
 ]
 
 { #category : #accessing }
@@ -650,6 +649,11 @@ SmaCCGLRParser >> tryEmbededAcceptFor: state [
 			newState isAccepted
 				ifFalse: [ currentState := newState.
 					self killState ] ]
+]
+
+{ #category : #private }
+SmaCCGLRParser >> updateScannerState [
+	currentState notNil ifTrue: [ currentState scannerState: scanner currentState ]
 ]
 
 { #category : #testing }

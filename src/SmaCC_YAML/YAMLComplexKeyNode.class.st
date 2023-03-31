@@ -18,6 +18,11 @@ YAMLComplexKeyNode >> nodeVariables [
 	^ #(#value)
 ]
 
+{ #category : #accessing }
+YAMLComplexKeyNode >> object [
+	^ value object
+]
+
 { #category : #generated }
 YAMLComplexKeyNode >> questionMark [
 	^ questionMark

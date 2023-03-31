@@ -34,3 +34,8 @@ YAMLMappingListNode >> mappings: anOrderedCollection [
 	mappings := anOrderedCollection.
 	self setParents: self mappings to: self
 ]
+
+{ #category : #accessing }
+YAMLMappingListNode >> object [
+	^ OrderedDictionary withAll: (mappings collect: #object)
+]
