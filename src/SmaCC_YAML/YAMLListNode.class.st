@@ -34,3 +34,8 @@ YAMLListNode >> items: anOrderedCollection [
 	items := anOrderedCollection.
 	self setParents: self items to: self
 ]
+
+{ #category : #accessing }
+YAMLListNode >> object [
+	^ items collect: #object
+]

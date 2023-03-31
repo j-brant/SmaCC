@@ -75,3 +75,10 @@ YAMLFileNode >> initialize [
 	documentStarts := OrderedCollection new: 2.
 	globalTags := OrderedCollection new: 2.
 ]
+
+{ #category : #accessing }
+YAMLFileNode >> object [
+	^ documents size = 1
+		ifTrue: [ documents first object ]
+		ifFalse: [ documents collect: #object ]
+]

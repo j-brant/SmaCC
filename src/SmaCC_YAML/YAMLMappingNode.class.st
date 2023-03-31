@@ -41,6 +41,11 @@ YAMLMappingNode >> nodeVariables [
 	^ #(#value #key)
 ]
 
+{ #category : #accessing }
+YAMLMappingNode >> object [
+	^ (key ifNotNil: [ key object ]) -> (value ifNotNil: [ value object ])
+]
+
 { #category : #generated }
 YAMLMappingNode >> tokenVariables [
 	^ #(#colon)

@@ -28,6 +28,11 @@ YAMLListItemNode >> nodeVariables [
 	^ #(#value)
 ]
 
+{ #category : #accessing }
+YAMLListItemNode >> object [
+	^ value ifNotNil: [ value object ]
+]
+
 { #category : #generated }
 YAMLListItemNode >> tokenVariables [
 	^ #(#minus)
