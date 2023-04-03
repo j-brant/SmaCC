@@ -5,7 +5,7 @@ Class {
 		'questionMark',
 		'value'
 	],
-	#category : #'SmaCC_YAML'
+	#category : #'SmaCC_YAML-Parser'
 }
 
 { #category : #generated }
@@ -20,7 +20,7 @@ YAMLComplexKeyNode >> nodeVariables [
 
 { #category : #accessing }
 YAMLComplexKeyNode >> object [
-	^ value object
+	^ value ifNotNil: [ value object ]
 ]
 
 { #category : #generated }

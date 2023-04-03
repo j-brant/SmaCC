@@ -1,7 +1,7 @@
 Class {
 	#name : #YAMLValueNode,
 	#superclass : #YAMLParseNode,
-	#category : #'SmaCC_YAML'
+	#category : #'SmaCC_YAML-Parser'
 }
 
 { #category : #generated }
