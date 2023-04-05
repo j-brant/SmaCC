@@ -47,7 +47,7 @@ YAMLParserTests >> testDocWithLiteralString [
 	ast := YAMLParser parse: 'yaml: |\  ...\' withCRs.
 	self assert: ast documents size equals: 1.
 	mapping := ast documents first mappings first.
-	self assert: mapping value object equals: '...'.
+	self assert: mapping value object equals: '...' , String lf.
 	^ ast
 ]
 
@@ -75,9 +75,49 @@ YAMLParserTests >> testDoubleQuoteString [
 YAMLParserTests >> testFoldString [
 	<gtExample>
 	| ast object |
-	ast := YAMLParser parse: '>\ a\ b\  c\ d\' withCRs.
+	ast := YAMLParser parse: '>\ a\ b\  c\ d\\\' withCRs.
 	object := ast object.
 	self assert: object equals: ('a b\ c\d\' withCRs withLineEndings: String lf).
+	^ ast
+]
+
+{ #category : #objects }
+YAMLParserTests >> testFoldStringIncludeAllNewlines [
+	<gtExample>
+	| ast object |
+	ast := YAMLParser parse: '>+\ a\ b\  c\ d\\\' withCRs.
+	object := ast object.
+	self assert: object equals: ('a b\ c\d\\\' withCRs withLineEndings: String lf).
+	^ ast
+]
+
+{ #category : #objects }
+YAMLParserTests >> testFoldStringStripNewline [
+	<gtExample>
+	| ast object |
+	ast := YAMLParser parse: '>-\ a\ b\  c\ d\\\' withCRs.
+	object := ast object.
+	self assert: object equals: ('a b\ c\d' withCRs withLineEndings: String lf).
+	^ ast
+]
+
+{ #category : #objects }
+YAMLParserTests >> testFoldStringWithIndents [
+	<gtExample>
+	| ast object |
+	ast := YAMLParser parse: '>1\  a\  b\ c\ d\\\' withCRs.
+	object := ast object.
+	self assert: object equals: (' a\ b\c d\' withCRs withLineEndings: String lf).
+	^ ast
+]
+
+{ #category : #objects }
+YAMLParserTests >> testFoldStringWithSpacesAtEnd [
+	<gtExample>
+	| ast object |
+	ast := YAMLParser parse: '>\ a \ b \ c' withCRs.
+	object := ast object.
+	self assert: object equals: 'a  b  c'.
 	^ ast
 ]
 
@@ -155,8 +195,37 @@ YAMLParserTests >> testIndentedMappingList [
 YAMLParserTests >> testLiteralString [
 	<gtExample>
 	| ast |
-	ast := YAMLParser parse: '|\  foo\  bar\' withCRs.
+	ast := YAMLParser parse: '|\  foo\  bar\\\' withCRs.
+	self assert: ast object equals: 'foo' , String lf , 'bar' , String lf.
+	^ ast
+]
+
+{ #category : #parsing }
+YAMLParserTests >> testLiteralStringIncludeAllNewlines [
+	<gtExample>
+	| ast |
+	ast := YAMLParser parse: '|+\  foo\  bar\\\' withCRs.
+	self
+		assert: ast object
+		equals: ('foo\bar\\\' copyReplaceAll: '\' with: String lf).
+	^ ast
+]
+
+{ #category : #parsing }
+YAMLParserTests >> testLiteralStringStripNewline [
+	<gtExample>
+	| ast |
+	ast := YAMLParser parse: '|-\  foo\  bar\\\' withCRs.
 	self assert: ast object equals: 'foo' , String lf , 'bar'.
+	^ ast
+]
+
+{ #category : #parsing }
+YAMLParserTests >> testLiteralStringWithIndents [
+	<gtExample>
+	| ast |
+	ast := YAMLParser parse: '|1\  foo\  bar\\\' withCRs.
+	self assert: ast object equals: ' foo' , String lf , ' bar' , String lf.
 	^ ast
 ]
 

@@ -31,23 +31,6 @@ YAMLStringNode >> combineLines: aString [
 							first := false ] ] ]
 ]
 
-{ #category : #private }
-YAMLStringNode >> combineLines: aString with: joinString [
-	^ String
-		streamContents: [ :stream | 
-			| lines first |
-			first := true.
-			lines := aString lines.
-			lines
-				do: [ :each | 
-					each trim isEmpty
-						ifTrue: [ stream lf.
-							first := true ]
-						ifFalse: [ first ifFalse: [ stream nextPutAll: joinString ].
-							stream nextPutAll: each trim.
-							first := false ] ] ]
-]
-
 { #category : #generated }
 YAMLStringNode >> compositeTokenVariables [
 	^ #(#parts #endingNewlines #anchors #tags)
@@ -99,9 +82,21 @@ YAMLStringNode >> endingNewlines: anOrderedCollection [
 ]
 
 { #category : #private }
-YAMLStringNode >> foldString: aString [
-	| lines indents |
-	lines := aString lines.
+YAMLStringNode >> foldString: aString indicator: indicatorString [
+	| lines indents deleteCrs includeAllCrs index char |
+	char := indicatorString at: 2 ifAbsent: [ $  ].
+	char isDigit ifFalse: [ char := indicatorString at: 3 ifAbsent: [ $  ] ].
+	char isDigit
+		ifTrue: [ indents := (self indent ifNil: [ 0 ]) + (char asInteger - $0 asInteger) ].
+	deleteCrs := indicatorString includes: $-.
+	includeAllCrs := indicatorString includes: $+.
+	lines := aString lines asOrderedCollection.
+	includeAllCrs
+		ifFalse: [ index := lines size.
+			[ index > 0 ]
+				whileTrue: [ (lines at: index) size <= (self indent ifNil: [ 0 ])
+						ifTrue: [ lines removeLast ].
+					index := index - 1 ] ].
 	^ String
 		streamContents: [ :stream | 
 			| lastWasIndented |
@@ -125,9 +120,12 @@ YAMLStringNode >> foldString: aString [
 										ifTrue: [ stream nextPut: Character lf.
 											space := false ].
 									lastWasIndented := false ] ].
-					(space and: [ stream position > 0 ]) ifTrue: [ stream space ].
+					line isEmpty
+						ifTrue: [ stream nextPut: Character lf ]
+						ifFalse: [ (space and: [ stream position > 0 ]) ifTrue: [ stream space ] ].
 					stream nextPutAll: line ].
-			(String crlf includes: aString last) ifTrue: [ stream nextPut: Character lf ] ]
+			(deleteCrs not and: [ String crlf includes: aString last ])
+				ifTrue: [ stream nextPut: Character lf ] ]
 ]
 
 { #category : #generated }
@@ -150,9 +148,21 @@ YAMLStringNode >> initialize [
 ]
 
 { #category : #private }
-YAMLStringNode >> literalString: aString [
-	| lines indents |
-	lines := aString lines.
+YAMLStringNode >> literalString: aString indicator: indicatorString [
+	| lines indents deleteCrs includeAllCrs index char |
+	char := indicatorString at: 2 ifAbsent: [ $  ].
+	char isDigit ifFalse: [ char := indicatorString at: 3 ifAbsent: [ $  ] ].
+	char isDigit
+		ifTrue: [ indents := (self indent ifNil: [ 0 ]) + (char asInteger - $0 asInteger) ].
+	deleteCrs := indicatorString includes: $-.
+	includeAllCrs := indicatorString includes: $+.
+	lines := aString lines asOrderedCollection.
+	includeAllCrs
+		ifFalse: [ index := lines size.
+			[ index > 0 ]
+				whileTrue: [ (lines at: index) size <= (self indent ifNil: [ 0 ])
+						ifTrue: [ lines removeLast ].
+					index := index - 1 ] ].
 	^ String
 		streamContents: [ :stream | 
 			lines
@@ -165,7 +175,9 @@ YAMLStringNode >> literalString: aString [
 									ifTrue: [ each allButFirst: indents ]
 									ifFalse: [ '' ] ].
 					stream nextPutAll: line ]
-				separatedBy: [ stream nextPut: Character lf ] ]
+				separatedBy: [ stream nextPut: Character lf ].
+			(deleteCrs not and: [ String crlf includes: aString last ])
+				ifTrue: [ stream nextPut: Character lf ] ]
 ]
 
 { #category : #accessing }
@@ -184,15 +196,15 @@ YAMLStringNode >> object [
 						separatedBy: [ stream space ] ] ]
 		ifNotNil: [ :str | 
 			(str beginsWith: '>')
-				ifTrue: [ self
-						foldString: (str readStream
-								nextLine;
-								upToEnd) ]
+				ifTrue: [ | stream indicator |
+					stream := str readStream.
+					indicator := stream nextLine.
+					self foldString: stream upToEnd indicator: indicator ]
 				ifFalse: [ (str beginsWith: '|')
-						ifTrue: [ self
-								literalString: (str readStream
-										nextLine;
-										upToEnd) ]
+						ifTrue: [ | stream indicator |
+							stream := str readStream.
+							indicator := stream nextLine.
+							self literalString: stream upToEnd indicator: indicator ]
 						ifFalse: [ self combineLines: str ] ] ]
 ]
 
