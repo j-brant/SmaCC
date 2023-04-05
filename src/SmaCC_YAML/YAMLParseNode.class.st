@@ -5,7 +5,7 @@ Class {
 		'anchors',
 		'tags'
 	],
-	#category : #'SmaCC_YAML'
+	#category : #'SmaCC_YAML-Parser'
 }
 
 { #category : #generated }
@@ -36,11 +36,14 @@ YAMLParseNode >> document [
 ]
 
 { #category : #accessing }
-YAMLParseNode >> findNodeWithAnchor: aString [
-	(anchors anySatisfy: [ :each | each value = aString ]) ifTrue: [ ^ self ].
+YAMLParseNode >> findNodesWithAnchor: aString [
+	| nodes |
+	nodes := OrderedCollection new.
 	self
-		nodesDo: [ :each | (each findNodeWithAnchor: aString) ifNotNil: [ :node | ^ node ] ].
-	^ nil
+		withAllNodesDo: [ :each | 
+			(each anchors anySatisfy: [ :anchor | anchor value = aString ])
+				ifTrue: [ nodes add: each ] ].
+	^ nodes
 ]
 
 { #category : #accessing }

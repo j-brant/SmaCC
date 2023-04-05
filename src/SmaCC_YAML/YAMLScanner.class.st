@@ -7,7 +7,7 @@ Class {
 		'tokens',
 		'documentStringLiteral'
 	],
-	#category : #'SmaCC_YAML'
+	#category : #'SmaCC_YAML-Parser'
 }
 
 { #category : #'generated-initialization' }
@@ -28,17 +28,21 @@ YAMLScanner >> COLONId [
 
 { #category : #generated }
 YAMLScanner >> DEDENTId [
-	^ 103
+	^ 104
 ]
 
 { #category : #private }
 YAMLScanner >> DOCUMENTEND1 [
-	^ self recordAndReportMatch: {self DOCUMENTENDId}
+	matchActions := {(start = 0
+				or: [ String crlf includes: (self peekAt: start - 1) ])
+				ifTrue: [ self DOCUMENTENDId ]
+				ifFalse: [ self STRING_MYId ]}.
+	^ self createTokenFor: outputStream contents
 ]
 
 { #category : #generated }
 YAMLScanner >> DOCUMENTENDId [
-	^ 104
+	^ 105
 ]
 
 { #category : #private }
@@ -52,17 +56,17 @@ YAMLScanner >> DOCUMENTSTART1 [
 
 { #category : #generated }
 YAMLScanner >> DOCUMENTSTARTId [
-	^ 105
-]
-
-{ #category : #generated }
-YAMLScanner >> FINISH_LITERAL_STRINGId [
 	^ 106
 ]
 
 { #category : #generated }
-YAMLScanner >> INDENTId [
+YAMLScanner >> FINISH_LITERAL_STRINGId [
 	^ 107
+]
+
+{ #category : #generated }
+YAMLScanner >> INDENTId [
+	^ 108
 ]
 
 { #category : #generated }
@@ -72,12 +76,12 @@ YAMLScanner >> MINUSId [
 
 { #category : #generated }
 YAMLScanner >> NEWLINEId [
-	^ 108
+	^ 109
 ]
 
 { #category : #generated }
 YAMLScanner >> NEWLINE_STR_LITERALId [
-	^ 109
+	^ 110
 ]
 
 { #category : #private }
@@ -87,7 +91,8 @@ YAMLScanner >> SKIP1 [
 		ifTrue: [ (currentCharacter = Character cr
 				or: [ currentCharacter = Character lf or: [ currentCharacter = $# ] ])
 				ifFalse: [ indent := self indentsFor: outputStream contents.
-					indent > indents value ifTrue: [ indents := indents asLinkPrepend: indent ] ] ].
+					indent > self currentIndent
+						ifTrue: [ indents := indents asLinkPrepend: indent ] ] ].
 	^ self whitespace
 ]
 
@@ -122,6 +127,11 @@ YAMLScanner >> TAGId [
 ]
 
 { #category : #private }
+YAMLScanner >> currentIndent [
+	^ indents value
+]
+
+{ #category : #private }
 YAMLScanner >> currentState [
 	| state |
 	state := super currentState.
@@ -144,12 +154,12 @@ YAMLScanner >> documentStringLiteral: anObject [
 
 { #category : #generated }
 YAMLScanner >> emptySymbolTokenId [
-	^ 110
+	^ 111
 ]
 
 { #category : #generated }
 YAMLScanner >> errorTokenId [
-	^ 111
+	^ 112
 ]
 
 { #category : #private }
@@ -197,15 +207,15 @@ YAMLScanner >> newline [
 		or: [ currentCharacter = Character lf or: [ currentCharacter = $# ] ])
 		ifFalse: [ opened > 0
 				ifFalse: [ indent := self indentsFor: outputStream contents.
-					indent > indents value
+					indent > self currentIndent
 						ifTrue: [ tokens := (SmaCCToken
 									value: ''
 									start: matchEnd
 									ids: {self INDENTId}) asLink.
 							indents := indents asLinkPrepend: indent ]
-						ifFalse: [ [ indent < indents value ]
+						ifFalse: [ [ indent < self currentIndent ]
 								whileTrue: [ indents := indents nextLink.
-									indents value < indent
+									self currentIndent < indent
 										ifTrue: [ indents := indents asLinkPrepend: indent ]
 										ifFalse: [ dedentToken := SmaCCToken
 													value: ''
@@ -223,7 +233,7 @@ YAMLScanner >> newline_str_literal [
 	(opened > 0
 		or: [ currentCharacter = Character cr
 				or: [ currentCharacter = Character lf or: [ currentCharacter = $# ] ] ])
-		ifFalse: [ indent := indents value.
+		ifFalse: [ indent := self currentIndent.
 			spaceCount := self indentsFor: outputStream contents.
 			(documentStringLiteral not and: [ spaceCount <= indent ])
 				ifTrue: [ stream position: start.

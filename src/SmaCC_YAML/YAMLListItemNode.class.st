@@ -5,7 +5,7 @@ Class {
 		'minus',
 		'value'
 	],
-	#category : #'SmaCC_YAML'
+	#category : #'SmaCC_YAML-Parser'
 }
 
 { #category : #generated }

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'name'
 	],
-	#category : #'SmaCC_YAML'
+	#category : #'SmaCC_YAML-Parser'
 }
 
 { #category : #generated }
@@ -24,11 +24,11 @@ YAMLAliasNode >> name: aSmaCCToken [
 
 { #category : #accessing }
 YAMLAliasNode >> nodeForAlias [
-	| anchorName |
+	| anchorName nodes |
 	anchorName := '&' , name value allButFirst.
-	^ (self document
-		ifNotNil: [ :document | document findNodeWithAnchor: anchorName ])
-		ifNil: [ self topParent findNodeWithAnchor: anchorName ]
+	nodes := (self topParent findNodesWithAnchor: anchorName)
+			asSortedCollection: [ :a :b | a stopPosition > b stopPosition ].
+	^ nodes detect: [ :each | each stopPosition < self startPosition ] ifNone: [  ]
 ]
 
 { #category : #accessing }
