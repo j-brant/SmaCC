@@ -28,7 +28,7 @@ YAMLScanner >> COLONId [
 
 { #category : #generated }
 YAMLScanner >> DEDENTId [
-	^ 104
+	^ 103
 ]
 
 { #category : #private }
@@ -42,7 +42,7 @@ YAMLScanner >> DOCUMENTEND1 [
 
 { #category : #generated }
 YAMLScanner >> DOCUMENTENDId [
-	^ 105
+	^ 104
 ]
 
 { #category : #private }
@@ -56,17 +56,17 @@ YAMLScanner >> DOCUMENTSTART1 [
 
 { #category : #generated }
 YAMLScanner >> DOCUMENTSTARTId [
-	^ 106
+	^ 105
 ]
 
 { #category : #generated }
 YAMLScanner >> FINISH_LITERAL_STRINGId [
-	^ 107
+	^ 106
 ]
 
 { #category : #generated }
 YAMLScanner >> INDENTId [
-	^ 108
+	^ 107
 ]
 
 { #category : #generated }
@@ -76,12 +76,12 @@ YAMLScanner >> MINUSId [
 
 { #category : #generated }
 YAMLScanner >> NEWLINEId [
-	^ 109
+	^ 108
 ]
 
 { #category : #generated }
 YAMLScanner >> NEWLINE_STR_LITERALId [
-	^ 110
+	^ 109
 ]
 
 { #category : #private }
@@ -154,12 +154,12 @@ YAMLScanner >> documentStringLiteral: anObject [
 
 { #category : #generated }
 YAMLScanner >> emptySymbolTokenId [
-	^ 111
+	^ 110
 ]
 
 { #category : #generated }
 YAMLScanner >> errorTokenId [
-	^ 112
+	^ 111
 ]
 
 { #category : #private }
