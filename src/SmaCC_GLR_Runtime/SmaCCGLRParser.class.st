@@ -251,11 +251,15 @@ SmaCCGLRParser >> getAcceptedObject [
 	^ parseAsEmbedded
 		ifTrue: [ | state |
 			state := (states
-				asSortedCollection: [ :a :b | a scannerState position > b scannerState position ])
-				first.
+					asSortedCollection: [ :a :b | a scannerState position > b scannerState position ])
+					first.
 			self restoreState: state.
 			state nodeStack first ]
-		ifFalse: [ states first nodeStack first ]
+		ifFalse: [ (states size > 1
+				and: [ states allSatisfy: [ :each | each nodeStack size = 1 ] ])
+				ifTrue: [ (SmaCCDeferredChoice mergeStacks: (states collect: [ :each | each nodeStack ]))
+						first ]
+				ifFalse: [ states first nodeStack first ] ]
 ]
 
 { #category : #private }
