@@ -192,6 +192,21 @@ YAMLParserTests >> testIndentedMappingList [
 ]
 
 { #category : #parsing }
+YAMLParserTests >> testListWithMapping [
+	<gtExample>
+	| ast mappings |
+	ast := YAMLParser parse: 'jobs:\  steps:\  - run: yarn build\' withCRs.
+	mappings := ast documents first mappings first value mappings.
+	self assert: mappings size equals: 1.
+	self assert: mappings first value items size equals: 1.
+	self assert: mappings first value items first value mappings size equals: 1.
+	self
+		assert: mappings first value items first value mappings first object
+		equals: 'run' -> 'yarn build'.
+	^ ast
+]
+
+{ #category : #parsing }
 YAMLParserTests >> testLiteralString [
 	<gtExample>
 	| ast |
