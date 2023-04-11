@@ -10,7 +10,7 @@ BaselineOfJSONParser >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.7' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.8' ].
 
 		spec package: 'SmaCC_JSON_Parser' with: [
 			spec requires: #('SmaCCRuntime') ].
