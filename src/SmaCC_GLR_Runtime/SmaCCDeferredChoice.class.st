@@ -37,8 +37,15 @@ SmaCCDeferredChoice class >> compare: firstCollection to: secondCollection [
 
 { #category : #private }
 SmaCCDeferredChoice class >> deferredItemsIn: aCollection [
-	^ aCollection
-		select: [ :each | each isKindOf: SmaCCDeferredReduceAction ]
+	| deferred |
+	deferred := OrderedCollection new.
+	aCollection
+		do: [ :each | 
+			(each isKindOf: SmaCCDeferredReduceAction)
+				ifTrue: [ deferred add: each ]
+				ifFalse: [ (each isKindOf: SmaCCDeferredChoice)
+						ifTrue: [ deferred addAll: (self deferredItemsIn: {each possibleItems first}) ] ] ].
+	^ deferred
 ]
 
 { #category : #private }
