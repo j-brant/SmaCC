@@ -39,10 +39,7 @@ YAMLParseNode >> document [
 YAMLParseNode >> findNodesWithAnchor: aString [
 	| nodes |
 	nodes := OrderedCollection new.
-	self
-		withAllNodesDo: [ :each | 
-			(each anchors anySatisfy: [ :anchor | anchor value = aString ])
-				ifTrue: [ nodes add: each ] ].
+	self nodesWithAnchor: aString do: [ :each | nodes add: each ].
 	^ nodes
 ]
 
@@ -69,6 +66,18 @@ YAMLParseNode >> initialize [
 	super initialize.
 	anchors := OrderedCollection new: 2.
 	tags := OrderedCollection new: 2.
+]
+
+{ #category : #testing }
+YAMLParseNode >> isStringNode [
+	^ false
+]
+
+{ #category : #enumerating }
+YAMLParseNode >> nodesWithAnchor: aString do: aBlock [
+	(self anchors anySatisfy: [ :anchor | anchor value = aString ])
+		ifTrue: [ aBlock value: self ].
+	self sortedChildren do: [ :each | each nodesWithAnchor: aString do: aBlock ]
 ]
 
 { #category : #accessing }

@@ -37,5 +37,30 @@ YAMLMappingListNode >> mappings: anOrderedCollection [
 
 { #category : #accessing }
 YAMLMappingListNode >> object [
-	^ OrderedDictionary withAll: (mappings collect: #object)
+	| object mergeKeys |
+	mergeKeys := Set new.
+	object := OrderedDictionary new.
+	self mappings
+		do: [ :each | 
+			| key value |
+			value := each valueObject.
+			each isMergeKey
+				ifTrue: [ (value isDictionary
+						ifTrue: [ {value} ]
+						ifFalse: [ (value isCollection and: [ each isString not ])
+								ifTrue: [ value select: #isDictionary ]
+								ifFalse: [ #() ] ])
+						do: [ :dict | 
+							dict
+								keysAndValuesDo: [ :k :v | 
+									(mergeKeys includes: k)
+										ifTrue: [ object at: k put: v ]
+										ifFalse: [ object
+												at: k
+												ifAbsentPut: [ mergeKeys add: k.
+													v ] ] ] ] ]
+				ifFalse: [ key := each keyObject.
+					mergeKeys remove: key ifAbsent: [  ].
+					object at: key put: value ] ].
+	^ object
 ]

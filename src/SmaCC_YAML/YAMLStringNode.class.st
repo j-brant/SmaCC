@@ -147,6 +147,11 @@ YAMLStringNode >> initialize [
 	endingNewlines := OrderedCollection new: 2.
 ]
 
+{ #category : #testing }
+YAMLStringNode >> isStringNode [
+	^ true
+]
+
 { #category : #private }
 YAMLStringNode >> literalString: aString indicator: indicatorString [
 	| lines indents deleteCrs includeAllCrs index char |
