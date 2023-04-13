@@ -17,26 +17,8 @@ YAMLMappingListNode >> compositeNodeVariables [
 	^ #(#mappings)
 ]
 
-{ #category : #'generated-initialize-release' }
-YAMLMappingListNode >> initialize [
-	super initialize.
-	mappings := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-YAMLMappingListNode >> mappings [
-	^ mappings
-]
-
-{ #category : #generated }
-YAMLMappingListNode >> mappings: anOrderedCollection [
-	self setParents: self mappings to: nil.
-	mappings := anOrderedCollection.
-	self setParents: self mappings to: self
-]
-
-{ #category : #accessing }
-YAMLMappingListNode >> object [
+{ #category : #private }
+YAMLMappingListNode >> createObject [
 	| object mergeKeys |
 	mergeKeys := Set new.
 	object := OrderedDictionary new.
@@ -63,4 +45,22 @@ YAMLMappingListNode >> object [
 					mergeKeys remove: key ifAbsent: [  ].
 					object at: key put: value ] ].
 	^ object
+]
+
+{ #category : #'generated-initialize-release' }
+YAMLMappingListNode >> initialize [
+	super initialize.
+	mappings := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+YAMLMappingListNode >> mappings [
+	^ mappings
+]
+
+{ #category : #generated }
+YAMLMappingListNode >> mappings: anOrderedCollection [
+	self setParents: self mappings to: nil.
+	mappings := anOrderedCollection.
+	self setParents: self mappings to: self
 ]

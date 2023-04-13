@@ -25,6 +25,13 @@ YAMLFileNode >> compositeTokenVariables [
 	^ #(#documentEnds #documentStarts #globalTags #anchors #tags)
 ]
 
+{ #category : #private }
+YAMLFileNode >> createObject [
+	^ documents size = 1
+		ifTrue: [ documents first object ]
+		ifFalse: [ documents collect: #object ]
+]
+
 { #category : #generated }
 YAMLFileNode >> documentEnds [
 	^ documentEnds
@@ -74,11 +81,4 @@ YAMLFileNode >> initialize [
 	documentEnds := OrderedCollection new: 2.
 	documentStarts := OrderedCollection new: 2.
 	globalTags := OrderedCollection new: 2.
-]
-
-{ #category : #accessing }
-YAMLFileNode >> object [
-	^ documents size = 1
-		ifTrue: [ documents first object ]
-		ifFalse: [ documents collect: #object ]
 ]

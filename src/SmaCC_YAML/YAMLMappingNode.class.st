@@ -24,6 +24,11 @@ YAMLMappingNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
+{ #category : #private }
+YAMLMappingNode >> createObject [
+	^ self keyObject -> self valueObject
+]
+
 { #category : #testing }
 YAMLMappingNode >> isMergeKey [
 	^ key notNil and: [ key isStringNode and: [ key source = '<<' ] ]
@@ -60,11 +65,6 @@ YAMLMappingNode >> nodesWithAnchor: aString do: aBlock [
 						value: (anchor startPosition < colon startPosition ifTrue: [ key ] ifFalse: [ value ]) ] ].
 	key ifNotNil: [ key nodesWithAnchor: aString do: aBlock ].
 	value ifNotNil: [ value nodesWithAnchor: aString do: aBlock ]
-]
-
-{ #category : #accessing }
-YAMLMappingNode >> object [
-	^ self keyObject -> self valueObject
 ]
 
 { #category : #generated }

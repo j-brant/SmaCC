@@ -37,6 +37,34 @@ YAMLStringNode >> compositeTokenVariables [
 ]
 
 { #category : #private }
+YAMLStringNode >> createObject [
+	(parts size = 1 and: [ parts first value notEmpty ])
+		ifTrue: [ parts first value first = $'
+				ifTrue: [ ^ self singleQuoteValue: parts first value ].
+			parts first value first = $"
+				ifTrue: [ ^ self doubleQuoteValue: parts first value ].
+			^ parts first value ].
+	^ self source
+		ifNil: [ String
+				streamContents: [ :stream | 
+					parts
+						do: [ :each | stream nextPutAll: each value ]
+						separatedBy: [ stream space ] ] ]
+		ifNotNil: [ :str | 
+			(str beginsWith: '>')
+				ifTrue: [ | stream indicator |
+					stream := str readStream.
+					indicator := stream nextLine.
+					self foldString: stream upToEnd indicator: indicator ]
+				ifFalse: [ (str beginsWith: '|')
+						ifTrue: [ | stream indicator |
+							stream := str readStream.
+							indicator := stream nextLine.
+							self literalString: stream upToEnd indicator: indicator ]
+						ifFalse: [ self combineLines: str ] ] ]
+]
+
+{ #category : #private }
 YAMLStringNode >> doubleQuoteEscapeTypes [
 	DoubleQuoteEscapes ifNotNil: [ ^ DoubleQuoteEscapes ].
 	DoubleQuoteEscapes := Dictionary new.
@@ -183,34 +211,6 @@ YAMLStringNode >> literalString: aString indicator: indicatorString [
 				separatedBy: [ stream nextPut: Character lf ].
 			(deleteCrs not and: [ String crlf includes: aString last ])
 				ifTrue: [ stream nextPut: Character lf ] ]
-]
-
-{ #category : #accessing }
-YAMLStringNode >> object [
-	(parts size = 1 and: [ parts first value notEmpty ])
-		ifTrue: [ parts first value first = $'
-				ifTrue: [ ^ self singleQuoteValue: parts first value ].
-			parts first value first = $"
-				ifTrue: [ ^ self doubleQuoteValue: parts first value ].
-			^ parts first value ].
-	^ self source
-		ifNil: [ String
-				streamContents: [ :stream | 
-					parts
-						do: [ :each | stream nextPutAll: each value ]
-						separatedBy: [ stream space ] ] ]
-		ifNotNil: [ :str | 
-			(str beginsWith: '>')
-				ifTrue: [ | stream indicator |
-					stream := str readStream.
-					indicator := stream nextLine.
-					self foldString: stream upToEnd indicator: indicator ]
-				ifFalse: [ (str beginsWith: '|')
-						ifTrue: [ | stream indicator |
-							stream := str readStream.
-							indicator := stream nextLine.
-							self literalString: stream upToEnd indicator: indicator ]
-						ifFalse: [ self combineLines: str ] ] ]
 ]
 
 { #category : #generated }

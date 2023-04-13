@@ -17,6 +17,11 @@ YAMLListNode >> compositeNodeVariables [
 	^ #(#items)
 ]
 
+{ #category : #private }
+YAMLListNode >> createObject [
+	^ items collect: #object
+]
+
 { #category : #'generated-initialize-release' }
 YAMLListNode >> initialize [
 	super initialize.
@@ -33,9 +38,4 @@ YAMLListNode >> items: anOrderedCollection [
 	self setParents: self items to: nil.
 	items := anOrderedCollection.
 	self setParents: self items to: self
-]
-
-{ #category : #accessing }
-YAMLListNode >> object [
-	^ items collect: #object
 ]
