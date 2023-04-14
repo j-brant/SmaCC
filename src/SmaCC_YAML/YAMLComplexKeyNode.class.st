@@ -13,14 +13,14 @@ YAMLComplexKeyNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitComplexKey: self
 ]
 
+{ #category : #private }
+YAMLComplexKeyNode >> createObject [
+	^ value ifNotNil: [ value object ]
+]
+
 { #category : #generated }
 YAMLComplexKeyNode >> nodeVariables [
 	^ #(#value)
-]
-
-{ #category : #accessing }
-YAMLComplexKeyNode >> object [
-	^ value ifNotNil: [ value object ]
 ]
 
 { #category : #generated }

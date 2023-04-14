@@ -12,6 +12,11 @@ YAMLAliasNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitAlias: self
 ]
 
+{ #category : #private }
+YAMLAliasNode >> createObject [
+	^ self nodeForAlias ifNotNil: [ :node | node object copy ]
+]
+
 { #category : #generated }
 YAMLAliasNode >> name [
 	^ name
@@ -29,11 +34,6 @@ YAMLAliasNode >> nodeForAlias [
 	nodes := (self topParent findNodesWithAnchor: anchorName)
 			asSortedCollection: [ :a :b | a stopPosition > b stopPosition ].
 	^ nodes detect: [ :each | each stopPosition < self startPosition ] ifNone: [  ]
-]
-
-{ #category : #accessing }
-YAMLAliasNode >> object [
-	^ self nodeForAlias ifNotNil: [ :node | node object ]
 ]
 
 { #category : #generated }

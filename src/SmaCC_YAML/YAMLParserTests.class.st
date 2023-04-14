@@ -4,6 +4,17 @@ Class {
 	#category : #'SmaCC_YAML-Tests'
 }
 
+{ #category : #objects }
+YAMLParserTests >> testAlias [
+	<gtExample>
+	| ast object |
+	ast := YAMLParser parse: '&a foo : &b bar\*b : *a' withCRs.
+	object := ast object.
+	self assert: (object at: 'foo') equals: 'bar'.
+	self assert: (object at: 'bar') equals: 'foo'.
+	^ ast
+]
+
 { #category : #parsing }
 YAMLParserTests >> testComments [
 	<gtExample>
@@ -40,6 +51,22 @@ YAMLParserTests >> testCompactMappingListItemContinued [
 	^ ast
 ]
 
+{ #category : #objects }
+YAMLParserTests >> testConflictingMergeKeyAlias [
+	<gtExample>
+	| ast object bar |
+	ast := YAMLParser
+			parse: 'foo : &a\ one : 1\ two : 2\baz : &b\ two : 4\bar : \ << : *a\ << : *b\ three : 3' withCRs.
+	object := ast object.
+	self assert: object size equals: 3.
+	bar := object at: 'bar'.
+	self assert: bar size equals: 3.
+	self assert: (bar at: 'one') equals: 1.
+	self assert: (bar at: 'two') equals: 4.
+	self assert: (bar at: 'three') equals: 3.
+	^ ast
+]
+
 { #category : #parsing }
 YAMLParserTests >> testDocWithLiteralString [
 	<gtExample>
@@ -68,6 +95,23 @@ YAMLParserTests >> testDoubleQuoteString [
 	ast := YAMLParser parse: '"Something\nelse\t\x20\u0020\U00000020"'.
 	object := ast object.
 	self assert: object equals: 'Something' , String lf , 'else	   '.
+	^ ast
+]
+
+{ #category : #objects }
+YAMLParserTests >> testFlowListMergeKeyAlias [
+	<gtExample>
+	| ast object bar |
+	ast := YAMLParser
+			parse: 'foo : &a\ one : 1\ two : 2\baz : &b\ three : 3\ four : 4\bar : \ << : [*a, *b]' withCRs.
+	object := ast object.
+	self assert: object size equals: 3.
+	bar := object at: 'bar'.
+	self assert: bar size equals: 4.
+	self assert: (bar at: 'one') equals: 1.
+	self assert: (bar at: 'two') equals: 2.
+	self assert: (bar at: 'three') equals: 3.
+	self assert: (bar at: 'four') equals: 4.
 	^ ast
 ]
 
@@ -244,6 +288,49 @@ YAMLParserTests >> testLiteralStringWithIndents [
 	^ ast
 ]
 
+{ #category : #objects }
+YAMLParserTests >> testMappingKeyAlias [
+	<gtExample>
+	| ast object |
+	ast := YAMLParser parse: 'foo : \ &a one : 1\ two : 2\bar : *a' withCRs.
+	object := ast object.
+	self assert: object size equals: 2.
+	self assert: (object at: 'foo') size equals: 2.
+	self assert: ((object at: 'foo') at: 'one') equals: 1.
+	self assert: ((object at: 'foo') at: 'two') equals: 2.
+	self assert: (object at: 'bar') equals: 'one'.
+	^ ast
+]
+
+{ #category : #objects }
+YAMLParserTests >> testMappingListAlias [
+	<gtExample>
+	| ast object |
+	ast := YAMLParser parse: 'foo : &a\ one : 1\ two : 2\bar : *a' withCRs.
+	object := ast object.
+	self assert: object size equals: 2.
+	object
+		do: [ :each | 
+			self assert: each size equals: 2.
+			self assert: (each at: 'one') equals: 1.
+			self assert: (each at: 'two') equals: 2 ].
+	^ ast
+]
+
+{ #category : #objects }
+YAMLParserTests >> testMappingValueAlias [
+	<gtExample>
+	| ast object |
+	ast := YAMLParser parse: 'foo : \ one : &a 1\ two : 2\bar : *a' withCRs.
+	object := ast object.
+	self assert: object size equals: 2.
+	self assert: (object at: 'foo') size equals: 2.
+	self assert: ((object at: 'foo') at: 'one') equals: 1.
+	self assert: ((object at: 'foo') at: 'two') equals: 2.
+	self assert: (object at: 'bar') equals: 1.
+	^ ast
+]
+
 { #category : #parsing }
 YAMLParserTests >> testMappingWithNullAndNewMapping [
 	<gtExample>
@@ -263,6 +350,22 @@ YAMLParserTests >> testMappingWithNullValueAtEOF [
 	mappings := ast documents first mappings.
 	self assert: mappings size equals: 1.
 	self assert: mappings first object equals: 'foo' -> nil.
+	^ ast
+]
+
+{ #category : #objects }
+YAMLParserTests >> testMergeKeyAlias [
+	<gtExample>
+	| ast object bar |
+	ast := YAMLParser
+			parse: 'foo : &a\ one : 1\ two : 2\bar : \ << : *a\ three : 3' withCRs.
+	object := ast object.
+	self assert: object size equals: 2.
+	bar := object at: 'bar'.
+	self assert: bar size equals: 3.
+	self assert: (bar at: 'one') equals: 1.
+	self assert: (bar at: 'two') equals: 2.
+	self assert: (bar at: 'three') equals: 3.
 	^ ast
 ]
 
@@ -314,6 +417,23 @@ YAMLParserTests >> testNestedMappingListWithList [
 	^ ast
 ]
 
+{ #category : #objects }
+YAMLParserTests >> testOverwritingMergeKeyAlias [
+	<gtExample>
+	| ast object bar |
+	ast := YAMLParser
+			parse: 'foo : &a\ one : 1\ two : 2\baz : &b\ three : 3\ four : 4\bar : \ << : *a\ one: 11\ three : 33\ << : *b' withCRs.
+	object := ast object.
+	self assert: object size equals: 3.
+	bar := object at: 'bar'.
+	self assert: bar size equals: 4.
+	self assert: (bar at: 'one') equals: 11.
+	self assert: (bar at: 'two') equals: 2.
+	self assert: (bar at: 'three') equals: 33.
+	self assert: (bar at: 'four') equals: 4.
+	^ ast
+]
+
 { #category : #parsing }
 YAMLParserTests >> testScalarStringFooBarWithColon [
 	<gtExample>
@@ -329,6 +449,23 @@ YAMLParserTests >> testScalarStringFooBarWithSpaces [
 	| ast |
 	ast := YAMLParser parse: 'foo bar'.
 	self assert: ast object equals: 'foo bar'.
+	^ ast
+]
+
+{ #category : #objects }
+YAMLParserTests >> testSequenceMergeKeyAlias [
+	<gtExample>
+	| ast object bar |
+	ast := YAMLParser
+			parse: 'foo : &a\ one : 1\ two : 2\baz : &b\ three : 3\ four : 4\bar : \ << : \  - *a\  - *b' withCRs.
+	object := ast object.
+	self assert: object size equals: 3.
+	bar := object at: 'bar'.
+	self assert: bar size equals: 4.
+	self assert: (bar at: 'one') equals: 1.
+	self assert: (bar at: 'two') equals: 2.
+	self assert: (bar at: 'three') equals: 3.
+	self assert: (bar at: 'four') equals: 4.
 	^ ast
 ]
 

@@ -13,6 +13,11 @@ YAMLListItemNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitListItem: self
 ]
 
+{ #category : #private }
+YAMLListItemNode >> createObject [
+	^ value ifNotNil: [ value object ]
+]
+
 { #category : #generated }
 YAMLListItemNode >> minus [
 	^ minus
@@ -26,11 +31,6 @@ YAMLListItemNode >> minus: aSmaCCToken [
 { #category : #generated }
 YAMLListItemNode >> nodeVariables [
 	^ #(#value)
-]
-
-{ #category : #accessing }
-YAMLListItemNode >> object [
-	^ value ifNotNil: [ value object ]
 ]
 
 { #category : #generated }

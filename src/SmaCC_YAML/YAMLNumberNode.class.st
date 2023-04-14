@@ -12,8 +12,8 @@ YAMLNumberNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitNumber: self
 ]
 
-{ #category : #accessing }
-YAMLNumberNode >> object [
+{ #category : #private }
+YAMLNumberNode >> createObject [
 	^ [ value value asNumber ] on: Error do: [ :ex | ex return: value value ]
 ]
 

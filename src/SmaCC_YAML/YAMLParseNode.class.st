@@ -28,6 +28,11 @@ YAMLParseNode >> compositeTokenVariables [
 	^ #(#anchors #tags)
 ]
 
+{ #category : #private }
+YAMLParseNode >> createObject [
+	^ self subclassResponsibility
+]
+
 { #category : #accessing }
 YAMLParseNode >> document [
 	^ (parent isNil or: [ parent isKindOf: YAMLFileNode ])
@@ -39,10 +44,7 @@ YAMLParseNode >> document [
 YAMLParseNode >> findNodesWithAnchor: aString [
 	| nodes |
 	nodes := OrderedCollection new.
-	self
-		withAllNodesDo: [ :each | 
-			(each anchors anySatisfy: [ :anchor | anchor value = aString ])
-				ifTrue: [ nodes add: each ] ].
+	self nodesWithAnchor: aString do: [ :each | nodes add: each ].
 	^ nodes
 ]
 
@@ -71,9 +73,44 @@ YAMLParseNode >> initialize [
 	tags := OrderedCollection new: 2.
 ]
 
+{ #category : #testing }
+YAMLParseNode >> isStringNode [
+	^ false
+]
+
+{ #category : #accessing }
+YAMLParseNode >> nodeForObject: anObject [
+	^ (self attributeNamed: #nodeMap ifAbsentPut: [ IdentityDictionary new ])
+		at: anObject
+		ifAbsentPut: [ | node |
+			self
+				withAllNodesDo: [ :each | (each attributeNamed: #object) == anObject ifTrue: [ node := each ] ].
+			node ]
+]
+
+{ #category : #accessing }
+YAMLParseNode >> nodesForObject: anObject [
+	^ anObject isImmediateObject
+		ifTrue: [ | nodes |
+			nodes := OrderedCollection new.
+			self
+				withAllNodesDo: [ :each | (each attributeNamed: #object) == anObject ifTrue: [ nodes add: each ] ].
+			nodes ]
+		ifFalse: [ (self nodeForObject: anObject)
+				ifNotNil: [ :node | {node} ]
+				ifNil: [ #() ] ]
+]
+
+{ #category : #enumerating }
+YAMLParseNode >> nodesWithAnchor: aString do: aBlock [
+	(self anchors anySatisfy: [ :anchor | anchor value = aString ])
+		ifTrue: [ aBlock value: self ].
+	self sortedChildren do: [ :each | each nodesWithAnchor: aString do: aBlock ]
+]
+
 { #category : #accessing }
 YAMLParseNode >> object [
-	^ self subclassResponsibility
+	^ self attributeNamed: #object ifAbsentPut: [ self createObject ]
 ]
 
 { #category : #generated }
