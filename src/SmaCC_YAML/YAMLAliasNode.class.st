@@ -12,6 +12,25 @@ YAMLAliasNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitAlias: self
 ]
 
+{ #category : #accessing }
+YAMLAliasNode >> anchorSource [
+	^ self anchorSourceInterval
+		ifNotNil: [ :interval | self completeSource asString copyFrom: interval first to: interval last ]
+]
+
+{ #category : #accessing }
+YAMLAliasNode >> anchorSourceInterval [
+	^ self nodeForAlias
+		ifNotNil: [ :node | 
+			| anchorName |
+			anchorName := '&' , name value allButFirst.
+			((node anchors anySatisfy: [ :each | each source = anchorName ])
+				ifTrue: [ node startPosition ]
+				ifFalse: [ (node parent anchors
+						detect: [ :each | each source = anchorName ]
+						ifNone: [ node ]) startPosition ]) to: node stopPosition ]
+]
+
 { #category : #private }
 YAMLAliasNode >> createObject [
 	^ self nodeForAlias ifNotNil: [ :node | node object copy ]
