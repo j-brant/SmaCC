@@ -48,7 +48,7 @@ YAMLMappingNode >> key: aYAMLParseNode [
 
 { #category : #accessing }
 YAMLMappingNode >> keyObject [
-	^ key ifNotNil: [ key object ]
+	^ key ifNotNil: [ key isErrorNode ifFalse: [ key object ] ]
 ]
 
 { #category : #generated }
@@ -86,5 +86,5 @@ YAMLMappingNode >> value: aYAMLValueNode [
 
 { #category : #accessing }
 YAMLMappingNode >> valueObject [
-	^ value ifNotNil: [ value object ]
+	^ value ifNotNil: [ value isErrorNode ifFalse: [ value object ] ]
 ]
