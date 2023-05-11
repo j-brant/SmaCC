@@ -1032,3 +1032,12 @@ SmaCCParseNode >> withAllNodesOfType: aClass do: nodeBlock [
 		ifTrue: [ nodeBlock value: self ].
 	self allNodesOfType: aClass do: nodeBlock
 ]
+
+{ #category : #accessing }
+SmaCCParseNode >> withAllParents [
+	| parents |
+	parents := OrderedCollection with: self.
+	[ parents last parent notNil ]
+		whileTrue: [ parents addLast: parents last parent ].
+	^ parents
+]
