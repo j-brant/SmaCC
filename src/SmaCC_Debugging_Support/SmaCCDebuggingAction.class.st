@@ -24,15 +24,27 @@ SmaCCDebuggingAction >> stepUntil: aBlock [
 
 { #category : #private }
 SmaCCDebuggingAction >> stepUntil: aBlock context: rootContext [
-	| context process previousContext |
+	| context process previousContext errorMethod |
 	process := self session process.
 	context := self currentContext.
-	(process suspendedContext findContextSuchThat: [ :c | c == context ]) ifNil: [ ^ self ].
+	(process suspendedContext findContextSuchThat: [ :c | c == context ])
+		ifNil: [ ^ self ].
+	errorMethod := SmaCCParser >> #reportErrorMessage:resumable:.
+	(process suspendedContext
+		findContextSuchThat: [ :c | c compiledCode == errorMethod ])
+		ifNotNil: [ ^ self ].
 	previousContext := nil.
-	[ context notNil and: [ process isTerminating not and: [ process isTerminated not and: [ process suspendedContext notNil and: [ aBlock value: context ] ] ] ] ]
+	[ context notNil
+		and: [ process isTerminating not
+				and: [ process isTerminated not
+						and: [ process suspendedContext notNil
+								and: [ context compiledCode ~~ errorMethod and: [ aBlock value: context ] ] ] ] ] ]
 		whileFalse: [ previousContext == context
 				ifFalse: [ (context findContextSuchThat: [ :c | c == rootContext ]) isNil
 						ifTrue: [ ^ self session updateContextTo: context ].
+					(process suspendedContext
+						findContextSuchThat: [ :c | c compiledCode == errorMethod ])
+						ifNotNil: [ ^ self session updateContextTo: context ].
 					previousContext := context ].
 			context := process step: context ].
 	self session updateContextTo: context
