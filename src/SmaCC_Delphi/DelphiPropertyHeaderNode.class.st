@@ -15,7 +15,8 @@ Class {
 		'implementses',
 		'dispids',
 		'semicolon',
-		'modifier'
+		'modifier',
+		'annotations'
 	],
 	#category : #'SmaCC_Delphi'
 }
@@ -23,6 +24,18 @@ Class {
 { #category : #generated }
 DelphiPropertyHeaderNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPropertyHeader: self
+]
+
+{ #category : #generated }
+DelphiPropertyHeaderNode >> annotations [
+	^ annotations
+]
+
+{ #category : #generated }
+DelphiPropertyHeaderNode >> annotations: anOrderedCollection [
+	self setParents: self annotations to: nil.
+	annotations := anOrderedCollection.
+	self setParents: self annotations to: self
 ]
 
 { #category : #generated }
@@ -51,7 +64,7 @@ DelphiPropertyHeaderNode >> colon: aSmaCCToken [
 
 { #category : #generated }
 DelphiPropertyHeaderNode >> compositeNodeVariables [
-	^ #(#indexes #readers #writers #defaults #storeds #implementses #dispids)
+	^ #(#indexes #readers #writers #defaults #storeds #implementses #dispids #annotations)
 ]
 
 { #category : #generated }
@@ -117,6 +130,7 @@ DelphiPropertyHeaderNode >> initialize [
 	storeds := OrderedCollection new: 2.
 	implementses := OrderedCollection new: 2.
 	dispids := OrderedCollection new: 2.
+	annotations := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
