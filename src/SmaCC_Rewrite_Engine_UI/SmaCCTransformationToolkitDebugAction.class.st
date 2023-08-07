@@ -1,12 +1,54 @@
 Class {
 	#name : #SmaCCTransformationToolkitDebugAction,
-	#superclass : #DebugAction,
+	#superclass : #StDebuggerCommand,
 	#category : #'SmaCC_Rewrite_Engine_UI'
 }
+
+{ #category : #initialization }
+SmaCCTransformationToolkitDebugAction class >> defaultIconName [
+	^ nil
+]
+
+{ #category : #initialization }
+SmaCCTransformationToolkitDebugAction class >> defaultShortcut [
+	^ nil
+]
+
+{ #category : #'instance creation' }
+SmaCCTransformationToolkitDebugAction class >> forDebugger: aDebugger [
+	^ self new
+		  context: aDebugger;
+		  yourself
+]
 
 { #category : #testing }
 SmaCCTransformationToolkitDebugAction >> appliesToContext: aContext [
 	^ self session isActive
+]
+
+{ #category : #accessing }
+SmaCCTransformationToolkitDebugAction >> currentContext [
+	^ self session context
+]
+
+{ #category : #executing }
+SmaCCTransformationToolkitDebugAction >> execute [
+	self executeAction
+]
+
+{ #category : #executing }
+SmaCCTransformationToolkitDebugAction >> executeAction [
+	self subclassResponsibility
+]
+
+{ #category : #accessing }
+SmaCCTransformationToolkitDebugAction >> icon [
+	^ self class defaultIconName ifNotNil: [ :iconName | self iconNamed: iconName ]
+]
+
+{ #category : #accessing }
+SmaCCTransformationToolkitDebugAction >> session [
+	^ self debugger session
 ]
 
 { #category : #private }

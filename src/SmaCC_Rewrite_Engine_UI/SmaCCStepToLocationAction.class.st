@@ -4,26 +4,24 @@ Class {
 	#category : #'SmaCC_Rewrite_Engine_UI'
 }
 
-{ #category : #registration }
-SmaCCStepToLocationAction class >> gtActionFor: aDebugger [
-	<gtSmaCCTransformationInput>
-	
-	^ (self forDebugger: aDebugger) icon: (self iconNamed: #glamorousInto)
+{ #category : #default }
+SmaCCStepToLocationAction class >> defaultDescription [
+	^ 'Step until we process a node at the current location'
+]
+
+{ #category : #default }
+SmaCCStepToLocationAction class >> defaultIconName [
+	^ #glamorousInto
 ]
 
 { #category : #accessing }
-SmaCCStepToLocationAction >> defaultKeymap [
-	^ $r meta
-]
-
-{ #category : #accessing }
-SmaCCStepToLocationAction >> defaultLabel [
+SmaCCStepToLocationAction class >> defaultName [
 	^ 'Run to Cursor'
 ]
 
-{ #category : #accessing }
-SmaCCStepToLocationAction >> defaultOrder [
-	^ 100
+{ #category : #default }
+SmaCCStepToLocationAction class >> defaultShortcut [
+	^ $r meta
 ]
 
 { #category : #actions }
@@ -42,9 +40,4 @@ SmaCCStepToLocationAction >> executeAction [
 										and: [ (interval first between: nextNode startPosition and: nextNode stopPosition)
 												or:
 													[ (interval last between: nextNode startPosition and: nextNode stopPosition) or: [ nextNode startPosition between: interval first and: interval last ] ] ] ] ] ] ]
-]
-
-{ #category : #accessing }
-SmaCCStepToLocationAction >> help [
-	^ 'Step until we process a node at the current location'
 ]

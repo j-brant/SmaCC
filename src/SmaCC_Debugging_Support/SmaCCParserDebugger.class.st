@@ -43,6 +43,11 @@ SmaCCParserDebugger class >> handlesContext: aContext [
 	^ SmaCCParserDebugSession handlesContext: aContext
 ]
 
+{ #category : #debugging }
+SmaCCParserDebugger class >> handlesDebugSession: aSession [
+	^ self handlesContext: aSession context
+]
+
 { #category : #actions }
 SmaCCParserDebugger >> close [
 	self window ifNotNil: [ :window | window close ]
@@ -67,48 +72,48 @@ SmaCCParserDebugger >> createToolBar [
 	nextTokenAction := SmaCCParserNextTokenAction forDebugger: self.
 	nextCharacterAction := SmaCCStepToNextCharacterAction forDebugger: self.
 	toCursorAction := SmaCCStepToCursorAction forDebugger: self.
-	resumeAction := ResumeDebugAction forDebugger: self.
+	resumeAction := StProceedCommand forSpecContext: self.
 	buttons := (self newToolbar)
 		add:
 				((self newToolbarButton)
 						label: 'Through Action';
 						icon: throughAction icon;
 						action:
-								[ throughAction executeAction.
+								[ throughAction execute.
 									self updateParser ]);
 		add:
 				((self newToolbarButton)
 						label: 'Into Reduce';
 						icon: intoReduceAction icon;
 						action:
-								[ intoReduceAction executeAction.
+								[ intoReduceAction execute.
 									self updateParser ]);
 		add:
 				((self newToolbarButton)
 						label: 'Next Token';
 						icon: nextTokenAction icon;
 						action:
-								[ nextTokenAction executeAction.
+								[ nextTokenAction execute.
 									self updateParser ]);
 		add:
 				((self newToolbarButton)
 						label: 'Next Character';
 						icon: nextCharacterAction icon;
 						action:
-								[ nextCharacterAction executeAction.
+								[ nextCharacterAction execute.
 									self updateScanner ]);
 		add:
 				((self newToolbarButton)
 						label: 'To Cursor';
 						icon: toCursorAction icon;
 						action:
-								[ toCursorAction executeAction.
+								[ toCursorAction execute.
 									self updateScanner ]);
 		add:
 				((self newToolbarButton)
 						label: 'Resume';
 						icon: (self iconNamed: #glamorousGo);
-						action: [ resumeAction executeAction ]);
+						action: [ resumeAction execute ]);
 		add:
 				((self newToolbarButton)
 						label: 'Debugger';
@@ -236,6 +241,12 @@ SmaCCParserDebugger >> parserPage [
 				add: stateActionsTable;
 				yourself).
 	^ SpNotebookPage title: 'Parser' provider: [ parserPresenter ]
+]
+
+{ #category : #actions }
+SmaCCParserDebugger >> proceedDebugSession [
+	self session resume.
+	self close
 ]
 
 { #category : #initialization }

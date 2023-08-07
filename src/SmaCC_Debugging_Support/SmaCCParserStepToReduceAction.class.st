@@ -9,14 +9,8 @@ SmaCCParserStepToReduceAction class >> defaultIcon [
 	^ (Smalltalk at: #BrGlamorousIcons ifAbsent: [  ]) ifNil: [ self iconNamed: #glamorousInto ] ifNotNil: [ :cls | cls into ]
 ]
 
-{ #category : #registration }
-SmaCCParserStepToReduceAction class >> gtActionFor: aDebugger [
-	<gtSmaCCDebuggingParserAction>
-	^ self forDebugger: aDebugger
-]
-
 { #category : #accessing }
-SmaCCParserStepToReduceAction >> defaultLabel [
+SmaCCParserStepToReduceAction class >> defaultName [
 	^ 'Into Reduce'
 ]
 
