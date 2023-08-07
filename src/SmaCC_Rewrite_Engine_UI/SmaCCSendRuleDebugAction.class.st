@@ -4,26 +4,24 @@ Class {
 	#category : #'SmaCC_Rewrite_Engine_UI'
 }
 
-{ #category : #registration }
-SmaCCSendRuleDebugAction class >> gtActionFor: aDebugger [
-	<gtSmaCCTransformationStack>
-	
-	^ (self forDebugger: aDebugger) icon: (self iconNamed: #glamorousInto)
+{ #category : #default }
+SmaCCSendRuleDebugAction class >> defaultDescription [
+	^ 'Step into message'
+]
+
+{ #category : #default }
+SmaCCSendRuleDebugAction class >> defaultIconName [
+	^ #glamorousInto
 ]
 
 { #category : #accessing }
-SmaCCSendRuleDebugAction >> defaultKeymap [
-	^ $O meta
-]
-
-{ #category : #accessing }
-SmaCCSendRuleDebugAction >> defaultLabel [
+SmaCCSendRuleDebugAction class >> defaultName [
 	^ 'Into'
 ]
 
-{ #category : #accessing }
-SmaCCSendRuleDebugAction >> defaultOrder [
-	^ 90
+{ #category : #default }
+SmaCCSendRuleDebugAction class >> defaultShortcut [
+	^ $O meta
 ]
 
 { #category : #actions }
@@ -35,9 +33,4 @@ SmaCCSendRuleDebugAction >> executeAction [
 			first
 				ifTrue: [ first := false ]
 				ifFalse: [ self session isRewriteContext: context ] ]
-]
-
-{ #category : #accessing }
-SmaCCSendRuleDebugAction >> help [
-	^ 'Step into message'
 ]

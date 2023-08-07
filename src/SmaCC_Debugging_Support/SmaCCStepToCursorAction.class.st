@@ -15,14 +15,8 @@ SmaCCStepToCursorAction class >> defaultIcon [
 				offset: 0 @ 0 ]
 ]
 
-{ #category : #registration }
-SmaCCStepToCursorAction class >> gtActionFor: aDebugger [
-	<gtSmaCCDebuggingInputAction>
-	^ self forDebugger: aDebugger
-]
-
 { #category : #accessing }
-SmaCCStepToCursorAction >> defaultLabel [
+SmaCCStepToCursorAction class >> defaultName [
 	^ 'Step to Cursor'
 ]
 

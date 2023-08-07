@@ -9,14 +9,8 @@ SmaCCParserStepThroughAction class >> defaultIcon [
 	^ (Smalltalk at: #BrGlamorousIcons ifAbsent: [  ]) ifNil: [ self iconNamed: #glamorousOver ] ifNotNil: [ :cls | cls over ]
 ]
 
-{ #category : #registration }
-SmaCCParserStepThroughAction class >> gtActionFor: aDebugger [
-	<gtSmaCCDebuggingParserAction>
-	^ self forDebugger: aDebugger
-]
-
 { #category : #accessing }
-SmaCCParserStepThroughAction >> defaultLabel [
+SmaCCParserStepThroughAction class >> defaultName [
 	^ 'Through Action'
 ]
 

@@ -4,34 +4,27 @@ Class {
 	#category : #'SmaCC_Rewrite_Engine_UI'
 }
 
-{ #category : #registration }
-SmaCCStepRuleDebugAction class >> gtActionFor: aDebugger [
-	<gtSmaCCTransformationStack>
-	
-	^ (self forDebugger: aDebugger) icon: (self iconNamed: #glamorousOver)
+{ #category : #default }
+SmaCCStepRuleDebugAction class >> defaultDescription [
+	^ 'Step over message'
+]
+
+{ #category : #default }
+SmaCCStepRuleDebugAction class >> defaultIconName [
+	^ #glamorousOver
 ]
 
 { #category : #accessing }
-SmaCCStepRuleDebugAction >> defaultKeymap [
-	^ $o meta
-]
-
-{ #category : #accessing }
-SmaCCStepRuleDebugAction >> defaultLabel [
+SmaCCStepRuleDebugAction class >> defaultName [
 	^ 'Over'
 ]
 
-{ #category : #accessing }
-SmaCCStepRuleDebugAction >> defaultOrder [
-	^ 100
+{ #category : #default }
+SmaCCStepRuleDebugAction class >> defaultShortcut [
+	^ $o meta
 ]
 
 { #category : #actions }
 SmaCCStepRuleDebugAction >> executeAction [
 	self session stepOver: self currentContext
-]
-
-{ #category : #accessing }
-SmaCCStepRuleDebugAction >> help [
-	^ 'Step over message'
 ]

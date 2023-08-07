@@ -46,10 +46,10 @@ SmaCCTransformationToolkitDebugger >> close [
 { #category : #initialization }
 SmaCCTransformationToolkitDebugger >> createToolBar [
 	| send stepRule stepNode stepRewrite |
-	send := SmaCCSendRuleDebugAction gtActionFor: self.
-	stepRule := SmaCCStepRuleDebugAction gtActionFor: self.
-	stepNode := SmaCCStepToNextNodeAction gtActionFor: self.
-	stepRewrite := SmaCCStepToNextRewriteAction gtActionFor: self.
+	send := SmaCCSendRuleDebugAction forDebugger: self.
+	stepRule := SmaCCStepRuleDebugAction forDebugger: self.
+	stepNode := SmaCCStepToNextNodeAction forDebugger: self.
+	stepRewrite := SmaCCStepToNextRewriteAction forDebugger: self.
 	^ (self newToolbar)
 		add:
 				((self newToolbarButton)

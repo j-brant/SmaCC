@@ -15,14 +15,8 @@ SmaCCParserNextTokenAction class >> defaultIcon [
 				offset: 0 @ 0 ]
 ]
 
-{ #category : #registration }
-SmaCCParserNextTokenAction class >> gtActionFor: aDebugger [
-	<gtSmaCCDebuggingParserAction>
-	^ self forDebugger: aDebugger
-]
-
 { #category : #accessing }
-SmaCCParserNextTokenAction >> defaultLabel [
+SmaCCParserNextTokenAction class >> defaultName [
 	^ 'Next Token'
 ]
 

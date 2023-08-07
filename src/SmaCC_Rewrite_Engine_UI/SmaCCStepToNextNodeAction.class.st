@@ -4,26 +4,24 @@ Class {
 	#category : #'SmaCC_Rewrite_Engine_UI'
 }
 
-{ #category : #registration }
-SmaCCStepToNextNodeAction class >> gtActionFor: aDebugger [
-	<gtSmaCCTransformationStack>
-	
-	^ (self forDebugger: aDebugger) icon: (self iconNamed: #glamorousThrough)
+{ #category : #default }
+SmaCCStepToNextNodeAction class >> defaultDescription [
+	^ 'Step until we get to another node'
+]
+
+{ #category : #default }
+SmaCCStepToNextNodeAction class >> defaultIconName [
+	^ #glamorousThrough
 ]
 
 { #category : #accessing }
-SmaCCStepToNextNodeAction >> defaultKeymap [
-	^ $n meta
-]
-
-{ #category : #accessing }
-SmaCCStepToNextNodeAction >> defaultLabel [
+SmaCCStepToNextNodeAction class >> defaultName [
 	^ 'Run to Next Node'
 ]
 
-{ #category : #accessing }
-SmaCCStepToNextNodeAction >> defaultOrder [
-	^ 110
+{ #category : #default }
+SmaCCStepToNextNodeAction class >> defaultShortcut [
+	^ $n meta
 ]
 
 { #category : #actions }
@@ -32,9 +30,4 @@ SmaCCStepToNextNodeAction >> executeAction [
 	nodes := (self session transformationStack collect: [ :each | each last receiver match ]) asSet.
 	self
 		stepUntil: [ :context | context isBlockContext not and: [ (self session isRewriteContext: context) and: [ (nodes includes: context receiver match) not ] ] ]
-]
-
-{ #category : #accessing }
-SmaCCStepToNextNodeAction >> help [
-	^ 'Step until we get to another node'
 ]

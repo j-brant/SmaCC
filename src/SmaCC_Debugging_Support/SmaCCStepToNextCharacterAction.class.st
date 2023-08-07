@@ -15,14 +15,8 @@ SmaCCStepToNextCharacterAction class >> defaultIcon [
 				offset: 0 @ 0 ]
 ]
 
-{ #category : #registration }
-SmaCCStepToNextCharacterAction class >> gtActionFor: aDebugger [
-	<gtSmaCCDebuggingScannerAction>
-	^ self forDebugger: aDebugger
-]
-
 { #category : #accessing }
-SmaCCStepToNextCharacterAction >> defaultLabel [
+SmaCCStepToNextCharacterAction class >> defaultName [
 	^ 'Step Next Character'
 ]
 

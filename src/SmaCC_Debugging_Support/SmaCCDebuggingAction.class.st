@@ -1,11 +1,28 @@
 Class {
 	#name : #SmaCCDebuggingAction,
-	#superclass : #DebugAction,
+	#superclass : #StDebuggerCommand,
 	#classInstVars : [
 		'icon'
 	],
 	#category : #'SmaCC_Debugging_Support-Debugger'
 }
+
+{ #category : #initialization }
+SmaCCDebuggingAction class >> defaultIconName [
+	^ nil
+]
+
+{ #category : #initialization }
+SmaCCDebuggingAction class >> defaultShortcut [
+	^ nil
+]
+
+{ #category : #'instance creation' }
+SmaCCDebuggingAction class >> forDebugger: aDebugger [
+	^ self new
+		  context: aDebugger;
+		  yourself
+]
 
 { #category : #testing }
 SmaCCDebuggingAction >> appliesToContext: aContext [
@@ -13,8 +30,33 @@ SmaCCDebuggingAction >> appliesToContext: aContext [
 ]
 
 { #category : #accessing }
+SmaCCDebuggingAction >> currentContext [
+	^ self session context
+]
+
+{ #category : #executing }
+SmaCCDebuggingAction >> execute [
+	self executeAction
+]
+
+{ #category : #executing }
+SmaCCDebuggingAction >> executeAction [
+	self subclassResponsibility
+]
+
+{ #category : #accessing }
 SmaCCDebuggingAction >> help [
 	^ ''
+]
+
+{ #category : #accessing }
+SmaCCDebuggingAction >> icon [
+	^ self class defaultIcon
+]
+
+{ #category : #accessing }
+SmaCCDebuggingAction >> session [
+	^ self debugger session
 ]
 
 { #category : #private }
