@@ -24,6 +24,11 @@ SmaCCEndToEndTest >> classesInPackage [
 	^ self package classes
 ]
 
+{ #category : #accessing }
+SmaCCEndToEndTest >> defaultTimeLimit [
+	^ 120 seconds
+]
+
 { #category : #tests }
 SmaCCEndToEndTest >> expressionParserString [
 	^ '
