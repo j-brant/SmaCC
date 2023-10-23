@@ -16,6 +16,11 @@ TPyRootNodeVisitor >> visitAndExpr: anAndExpr [
 ]
 
 { #category : #generated }
+TPyRootNodeVisitor >> visitAnnotatedSymbol: anAnnotatedSymbol [
+	^ self visitSymbol: anAnnotatedSymbol
+]
+
+{ #category : #generated }
 TPyRootNodeVisitor >> visitArgument: anArgument [
 	^ self visitRoot: anArgument
 ]
@@ -28,6 +33,11 @@ TPyRootNodeVisitor >> visitAssert: anAssert [
 { #category : #generated }
 TPyRootNodeVisitor >> visitAtom: anAtom [
 	^ self visitRoot: anAtom
+]
+
+{ #category : #generated }
+TPyRootNodeVisitor >> visitAwait: anAwait [
+	^ self visitRoot: anAwait
 ]
 
 { #category : #generated }
@@ -281,6 +291,11 @@ TPyRootNodeVisitor >> visitReturn: aReturn [
 ]
 
 { #category : #generated }
+TPyRootNodeVisitor >> visitReturnTypeAnnotation: aReturnTypeAnnotation [
+	^ self visitRoot: aReturnTypeAnnotation
+]
+
+{ #category : #generated }
 TPyRootNodeVisitor >> visitRoot: aRoot [
 	^ self visitSmaCCParseNode: aRoot
 ]
@@ -351,8 +366,18 @@ TPyRootNodeVisitor >> visitTrailer: aTrailer [
 ]
 
 { #category : #generated }
+TPyRootNodeVisitor >> visitTrailers: aTrailers [
+	^ self visitRoot: aTrailers
+]
+
+{ #category : #generated }
 TPyRootNodeVisitor >> visitTry: aTry [
 	^ self visitRoot: aTry
+]
+
+{ #category : #generated }
+TPyRootNodeVisitor >> visitTypeAnnotation: aTypeAnnotation [
+	^ self visitRoot: aTypeAnnotation
 ]
 
 { #category : #generated }

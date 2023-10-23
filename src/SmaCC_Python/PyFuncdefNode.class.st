@@ -5,18 +5,30 @@ Class {
 		'defToken',
 		'fname',
 		'parameters',
+		'returnAnnotation',
 		'colonToken',
 		'statements',
 		'nEWLINEToken',
 		'iNDENTToken',
-		'dEDENTToken'
+		'dEDENTToken',
+		'asyncToken'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
 PyFuncdefNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitFuncdef: self
+]
+
+{ #category : #generated }
+PyFuncdefNode >> asyncToken [
+	^ asyncToken
+]
+
+{ #category : #generated }
+PyFuncdefNode >> asyncToken: aSmaCCToken [
+	asyncToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -92,7 +104,7 @@ PyFuncdefNode >> nEWLINEToken: aSmaCCToken [
 
 { #category : #generated }
 PyFuncdefNode >> nodeVariables [
-	^ #(#parameters)
+	^ #(#parameters #returnAnnotation)
 ]
 
 { #category : #generated }
@@ -110,6 +122,18 @@ PyFuncdefNode >> parameters: aPyVarArgListNode [
 ]
 
 { #category : #generated }
+PyFuncdefNode >> returnAnnotation [
+	^ returnAnnotation
+]
+
+{ #category : #generated }
+PyFuncdefNode >> returnAnnotation: aPyReturnTypeAnnotationNode [
+	self returnAnnotation notNil ifTrue: [ self returnAnnotation parent: nil ].
+	returnAnnotation := aPyReturnTypeAnnotationNode.
+	self returnAnnotation notNil ifTrue: [ self returnAnnotation parent: self ]
+]
+
+{ #category : #generated }
 PyFuncdefNode >> statements [
 	^ statements
 ]
@@ -123,5 +147,5 @@ PyFuncdefNode >> statements: anOrderedCollection [
 
 { #category : #generated }
 PyFuncdefNode >> tokenVariables [
-	^ #(#defToken #fname #colonToken #nEWLINEToken #iNDENTToken #dEDENTToken)
+	^ #(#defToken #fname #colonToken #nEWLINEToken #iNDENTToken #dEDENTToken #asyncToken)
 ]

@@ -3,6 +3,7 @@ Class {
 	#superclass : #PyRootNode,
 	#instVars : [
 		'args',
+		'parameterAnnotations',
 		'inits',
 		'commaTokens',
 		'timesToken',
@@ -10,7 +11,7 @@ Class {
 		'timesTimesToken',
 		'ssname'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
@@ -42,7 +43,7 @@ PyVarArgListNode >> commaTokens: anOrderedCollection [
 
 { #category : #generated }
 PyVarArgListNode >> compositeNodeVariables [
-	^ #(#args #inits)
+	^ #(#args #inits #parameterAnnotations)
 ]
 
 { #category : #generated }
@@ -56,6 +57,7 @@ PyVarArgListNode >> initialize [
 	args := OrderedCollection new: 2.
 	inits := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
+	parameterAnnotations := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -68,6 +70,18 @@ PyVarArgListNode >> inits: anOrderedCollection [
 	self setParents: self inits to: nil.
 	inits := anOrderedCollection.
 	self setParents: self inits to: self
+]
+
+{ #category : #generated }
+PyVarArgListNode >> parameterAnnotations [
+	^ parameterAnnotations
+]
+
+{ #category : #generated }
+PyVarArgListNode >> parameterAnnotations: anOrderedCollection [
+	self setParents: self parameterAnnotations to: nil.
+	parameterAnnotations := anOrderedCollection.
+	self setParents: self parameterAnnotations to: self
 ]
 
 { #category : #generated }

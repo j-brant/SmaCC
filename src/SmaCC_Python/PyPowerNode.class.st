@@ -2,12 +2,13 @@ Class {
 	#name : #PyPowerNode,
 	#superclass : #PyRootNode,
 	#instVars : [
+		'awaitToken',
 		'atom',
 		'trailers',
 		'timesTimesToken',
 		'factor'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
@@ -27,6 +28,16 @@ PyPowerNode >> atom: aPyRootNode [
 	atom := aPyRootNode.
 	self atom notNil
 		ifTrue: [ self atom parent: self ]
+]
+
+{ #category : #generated }
+PyPowerNode >> awaitToken [
+	^ awaitToken
+]
+
+{ #category : #generated }
+PyPowerNode >> awaitToken: aSmaCCToken [
+	awaitToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -71,7 +82,7 @@ PyPowerNode >> timesTimesToken: aSmaCCToken [
 
 { #category : #generated }
 PyPowerNode >> tokenVariables [
-	^ #(#timesTimesToken)
+	^ #(#awaitToken #timesTimesToken)
 ]
 
 { #category : #generated }
