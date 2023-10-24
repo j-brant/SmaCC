@@ -4,11 +4,13 @@ Class {
 	#instVars : [
 		'raiseToken',
 		'arg1',
+		'fromToken',
+		'from',
 		'commaTokens',
 		'arg2',
 		'arg3'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
@@ -73,6 +75,28 @@ PyRaiseNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
+{ #category : #generated }
+PyRaiseNode >> from [
+	^ from
+]
+
+{ #category : #generated }
+PyRaiseNode >> from: aPyRootNode [
+	self from notNil ifTrue: [ self from parent: nil ].
+	from := aPyRootNode.
+	self from notNil ifTrue: [ self from parent: self ]
+]
+
+{ #category : #generated }
+PyRaiseNode >> fromToken [
+	^ fromToken
+]
+
+{ #category : #generated }
+PyRaiseNode >> fromToken: aSmaCCToken [
+	fromToken := aSmaCCToken
+]
+
 { #category : #'generated-initialize-release' }
 PyRaiseNode >> initialize [
 	super initialize.
@@ -81,7 +105,7 @@ PyRaiseNode >> initialize [
 
 { #category : #generated }
 PyRaiseNode >> nodeVariables [
-	^ #(#arg1 #arg2 #arg3)
+	^ #(#arg1 #from #arg2 #arg3)
 ]
 
 { #category : #generated }
@@ -96,5 +120,5 @@ PyRaiseNode >> raiseToken: aSmaCCToken [
 
 { #category : #generated }
 PyRaiseNode >> tokenVariables [
-	^ #(#raiseToken)
+	^ #(#raiseToken #fromToken)
 ]

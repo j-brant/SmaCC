@@ -2,11 +2,12 @@ Class {
 	#name : #PyPrintNode,
 	#superclass : #PyRootNode,
 	#instVars : [
+		'python2Token',
 		'printToken',
 		'testlist',
 		'greaterThanGreaterThanToken'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
@@ -40,6 +41,16 @@ PyPrintNode >> printToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+PyPrintNode >> python2Token [
+	^ python2Token
+]
+
+{ #category : #generated }
+PyPrintNode >> python2Token: aSmaCCToken [
+	python2Token := aSmaCCToken
+]
+
+{ #category : #generated }
 PyPrintNode >> testlist [
 	^ testlist
 ]
@@ -55,5 +66,5 @@ PyPrintNode >> testlist: aPyRootNode [
 
 { #category : #generated }
 PyPrintNode >> tokenVariables [
-	^ #(#printToken #greaterThanGreaterThanToken)
+	^ #(#python2Token #printToken #greaterThanGreaterThanToken)
 ]

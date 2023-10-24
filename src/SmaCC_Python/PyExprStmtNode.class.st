@@ -4,9 +4,10 @@ Class {
 	#instVars : [
 		'testlist',
 		'assigns',
-		'tos'
+		'tos',
+		'typeAnnotations'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
@@ -26,7 +27,7 @@ PyExprStmtNode >> assigns: anOrderedCollection [
 
 { #category : #generated }
 PyExprStmtNode >> compositeNodeVariables [
-	^ #(#tos)
+	^ #(#tos #typeAnnotations)
 ]
 
 { #category : #generated }
@@ -39,6 +40,7 @@ PyExprStmtNode >> initialize [
 	super initialize.
 	assigns := OrderedCollection new: 2.
 	tos := OrderedCollection new: 2.
+	typeAnnotations := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -70,4 +72,16 @@ PyExprStmtNode >> tos: anOrderedCollection [
 	self setParents: self tos to: nil.
 	tos := anOrderedCollection.
 	self setParents: self tos to: self
+]
+
+{ #category : #generated }
+PyExprStmtNode >> typeAnnotations [
+	^ typeAnnotations
+]
+
+{ #category : #generated }
+PyExprStmtNode >> typeAnnotations: anOrderedCollection [
+	self setParents: self typeAnnotations to: nil.
+	typeAnnotations := anOrderedCollection.
+	self setParents: self typeAnnotations to: self
 ]

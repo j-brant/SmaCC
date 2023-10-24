@@ -1,0 +1,59 @@
+Class {
+	#name : #PyAssignmentExpressionNode,
+	#superclass : #PyRootNode,
+	#instVars : [
+		'variable',
+		'assign',
+		'value'
+	],
+	#category : #'SmaCC_Python'
+}
+
+{ #category : #generated }
+PyAssignmentExpressionNode >> acceptVisitor: aRootVisitor [
+	^ aRootVisitor visitAssignmentExpression: self
+]
+
+{ #category : #generated }
+PyAssignmentExpressionNode >> assign [
+	^ assign
+]
+
+{ #category : #generated }
+PyAssignmentExpressionNode >> assign: aSmaCCToken [
+	assign := aSmaCCToken
+]
+
+{ #category : #generated }
+PyAssignmentExpressionNode >> nodeVariables [
+	^ #(#variable #value)
+]
+
+{ #category : #generated }
+PyAssignmentExpressionNode >> tokenVariables [
+	^ #(#assign)
+]
+
+{ #category : #generated }
+PyAssignmentExpressionNode >> value [
+	^ value
+]
+
+{ #category : #generated }
+PyAssignmentExpressionNode >> value: aPyRootNode [
+	self value notNil ifTrue: [ self value parent: nil ].
+	value := aPyRootNode.
+	self value notNil ifTrue: [ self value parent: self ]
+]
+
+{ #category : #generated }
+PyAssignmentExpressionNode >> variable [
+	^ variable
+]
+
+{ #category : #generated }
+PyAssignmentExpressionNode >> variable: aPySymbolNode [
+	self variable notNil ifTrue: [ self variable parent: nil ].
+	variable := aPySymbolNode.
+	self variable notNil ifTrue: [ self variable parent: self ]
+]
