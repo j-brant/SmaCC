@@ -6,7 +6,7 @@ Class {
 		'rparenToken',
 		'arguments',
 		'commaTokens',
-		'timesToken',
+		'timesTokens',
 		'timesTimesToken',
 		'lbrackToken',
 		'subscripts',
@@ -14,7 +14,7 @@ Class {
 		'periodToken',
 		'nameToken'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
@@ -51,7 +51,7 @@ PyTrailerNode >> compositeNodeVariables [
 
 { #category : #generated }
 PyTrailerNode >> compositeTokenVariables [
-	^ #(#commaTokens)
+	^ #(#commaTokens #timesTokens)
 ]
 
 { #category : #'generated-initialize-release' }
@@ -59,6 +59,7 @@ PyTrailerNode >> initialize [
 	super initialize.
 	arguments := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
+	timesTokens := OrderedCollection new: 2.
 	subscripts := OrderedCollection new: 2.
 ]
 
@@ -145,16 +146,16 @@ PyTrailerNode >> timesTimesToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-PyTrailerNode >> timesToken [
-	^ timesToken
+PyTrailerNode >> timesTokens [
+	^ timesTokens
 ]
 
 { #category : #generated }
-PyTrailerNode >> timesToken: aSmaCCToken [
-	timesToken := aSmaCCToken
+PyTrailerNode >> timesTokens: anOrderedCollection [
+	timesTokens := anOrderedCollection
 ]
 
 { #category : #generated }
 PyTrailerNode >> tokenVariables [
-	^ #(#lparenToken #rparenToken #timesToken #timesTimesToken #lbrackToken #rbrackToken #periodToken #nameToken)
+	^ #(#lparenToken #rparenToken #timesTimesToken #lbrackToken #rbrackToken #periodToken #nameToken)
 ]

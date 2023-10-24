@@ -13,7 +13,7 @@ Class {
 { #category : #'generated-initialization' }
 PythonScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
-	#(#(76 'and' 40) #(76 'as' 41) #(76 'assert' 42) #(76 'async' 43) #(76 'await' 44) #(76 'break' 45) #(76 'class' 46) #(76 'continue' 47) #(76 'def' 48) #(76 'del' 49) #(76 'elif' 50) #(76 'else' 51) #(76 'except' 52) #(76 'exec' 53) #(76 'finally' 54) #(76 'for' 55) #(76 'from' 56) #(76 'global' 57) #(76 'if' 58) #(76 'import' 59) #(76 'in' 60) #(76 'is' 61) #(76 'lambda' 62) #(76 'not' 63) #(76 'or' 64) #(76 'pass' 65) #(76 'print' 66) #(76 'raise' 67) #(76 'return' 68) #(76 'try' 69) #(76 'while' 70) #(76 'with' 71) #(76 'yield' 72))
+	#(#(77 'and' 40) #(77 'as' 41) #(77 'assert' 42) #(77 'async' 43) #(77 'await' 44) #(77 'break' 45) #(77 'class' 46) #(77 'continue' 47) #(77 'def' 48) #(77 'del' 49) #(77 'elif' 50) #(77 'else' 51) #(77 'except' 52) #(77 'exec' 53) #(77 'finally' 54) #(77 'for' 55) #(77 'from' 56) #(77 'global' 57) #(77 'if' 58) #(77 'import' 59) #(77 'in' 60) #(77 'is' 61) #(77 'lambda' 62) #(77 'metaclass' 63) #(77 'not' 64) #(77 'or' 65) #(77 'pass' 66) #(77 'print' 67) #(77 'raise' 68) #(77 'return' 69) #(77 'try' 70) #(77 'while' 71) #(77 'with' 72) #(77 'yield' 73))
 		do: [ :each | 
 			(keywordMap at: each first ifAbsentPut: [ Dictionary new ])
 				at: (each at: 2)
@@ -23,12 +23,12 @@ PythonScanner class >> initializeKeywordMap [
 
 { #category : #generated }
 PythonScanner >> DEDENTId [
-	^ 241
+	^ 250
 ]
 
 { #category : #generated }
 PythonScanner >> INDENTId [
-	^ 242
+	^ 251
 ]
 
 { #category : #private }
@@ -46,12 +46,12 @@ PythonScanner >> NEWLINE [
 
 { #category : #generated }
 PythonScanner >> NEWLINEId [
-	^ 98
+	^ 99
 ]
 
 { #category : #generated }
 PythonScanner >> Python2Id [
-	^ 243
+	^ 252
 ]
 
 { #category : #private }
@@ -85,12 +85,12 @@ PythonScanner >> emptyLine [
 
 { #category : #generated }
 PythonScanner >> emptySymbolTokenId [
-	^ 244
+	^ 253
 ]
 
 { #category : #generated }
 PythonScanner >> errorTokenId [
-	^ 245
+	^ 254
 ]
 
 { #category : #private }
@@ -153,7 +153,7 @@ PythonScanner >> lbrack [
 
 { #category : #generated }
 PythonScanner >> lbrackId [
-	^ 101
+	^ 102
 ]
 
 { #category : #private }
@@ -167,7 +167,7 @@ PythonScanner >> lcurly [
 
 { #category : #generated }
 PythonScanner >> lcurlyId [
-	^ 103
+	^ 104
 ]
 
 { #category : #accessing }
@@ -191,7 +191,7 @@ PythonScanner >> lparen [
 
 { #category : #generated }
 PythonScanner >> lparenId [
-	^ 99
+	^ 100
 ]
 
 { #category : #accessing }
@@ -228,7 +228,7 @@ PythonScanner >> rbrack [
 
 { #category : #generated }
 PythonScanner >> rbrackId [
-	^ 102
+	^ 103
 ]
 
 { #category : #private }
@@ -242,7 +242,7 @@ PythonScanner >> rcurly [
 
 { #category : #generated }
 PythonScanner >> rcurlyId [
-	^ 104
+	^ 105
 ]
 
 { #category : #accessing }
@@ -265,13 +265,13 @@ PythonScanner >> rparen [
 
 { #category : #generated }
 PythonScanner >> rparenId [
-	^ 100
+	^ 101
 ]
 
 { #category : #generated }
 PythonScanner >> scan1 [
 	self step.
-	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(98) ].
+	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(99) ].
 	currentCharacter == Character cr ifTrue: [ ^ self scan1X23 ].
 	currentCharacter == $! ifTrue: [ ^ self scan1X24 ].
 	currentCharacter == $" ifTrue: [ ^ self scan2 ].
@@ -281,9 +281,9 @@ PythonScanner >> scan1 [
 
 { #category : #generated }
 PythonScanner >> scan10 [
-	[ self recordMatch: #(91).
+	[ self recordMatch: #(92).
 	self step.
-	currentCharacter == $j ifTrue: [ ^ self recordAndReportMatch: #(91) ].
+	currentCharacter == $j ifTrue: [ ^ self recordAndReportMatch: #(92) ].
 	currentCharacter isDigit ] whileTrue.
 	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan11 ].
 	^ self reportLastMatch
@@ -301,9 +301,9 @@ PythonScanner >> scan11 [
 
 { #category : #generated }
 PythonScanner >> scan12 [
-	[ self recordMatch: #(91).
+	[ self recordMatch: #(92).
 	self step.
-	currentCharacter == $j ifTrue: [ ^ self recordAndReportMatch: #(91) ].
+	currentCharacter == $j ifTrue: [ ^ self recordAndReportMatch: #(92) ].
 	currentCharacter isDigit ] whileTrue.
 	^ self reportLastMatch
 ]
@@ -312,7 +312,7 @@ PythonScanner >> scan12 [
 PythonScanner >> scan13 [
 	[ self step.
 	currentCharacter == $. ifTrue: [ ^ self scan10 ].
-	currentCharacter == $j ifTrue: [ ^ self recordAndReportMatch: #(91) ].
+	currentCharacter == $j ifTrue: [ ^ self recordAndReportMatch: #(92) ].
 	currentCharacter isDigit ] whileTrue.
 	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan11 ].
 	^ self reportLastMatch
@@ -320,14 +320,14 @@ PythonScanner >> scan13 [
 
 { #category : #generated }
 PythonScanner >> scan14 [
-	self recordMatch: #(76).
+	self recordMatch: #(77).
 	self step.
 	currentCharacter == $" ifTrue: [ ^ self scan2 ].
 	currentCharacter == $' ifTrue: [ ^ self scan6 ].
 	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
 				or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
-		ifTrue: [ [ self recordMatch: #(76).
+		ifTrue: [ [ self recordMatch: #(77).
 			self step.
 			(currentCharacter between: $0 and: $9)
 				or: [ (currentCharacter between: $A and: $Z)
@@ -341,10 +341,10 @@ PythonScanner >> scan15 [
 	self step.
 	currentCharacter == $"
 		ifTrue: [ self step.
-			currentCharacter == $" ifTrue: [ ^ self scan18 ].
+			currentCharacter == $" ifTrue: [ ^ self scan19 ].
 			^ self reportLastMatch ].
 	currentCharacter == $\ ifTrue: [ ^ self scan17 ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(82) ].
+	currentCharacter == ${ ifTrue: [ ^ self scan18 ].
 	(currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
 				or: [ currentCharacter >= (Character value: 14) ] ])
@@ -356,7 +356,7 @@ PythonScanner >> scan15 [
 PythonScanner >> scan16 [
 	[ self step.
 	currentCharacter == $\ ifTrue: [ ^ self scan17 ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(82) ].
+	currentCharacter == ${ ifTrue: [ ^ self scan18 ].
 	currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
 				or: [ (currentCharacter between: (Character value: 14) and: $!)
@@ -372,40 +372,32 @@ PythonScanner >> scan17 [
 
 { #category : #generated }
 PythonScanner >> scan18 [
+	self recordMatch: #(83).
+	self step.
+	currentCharacter == ${ ifTrue: [ ^ self scan16 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+PythonScanner >> scan19 [
 	[ self step.
 	currentCharacter == $"
 		ifTrue: [ self step.
 			currentCharacter == $"
 				ifTrue: [ self step.
-					currentCharacter ~~ $" ifTrue: [ ^ self scan18 ].
+					currentCharacter ~~ $" ifTrue: [ ^ self scan19 ].
 					^ self reportLastMatch ].
-			^ self scan18 ].
+			^ self scan19 ].
 	currentCharacter == $\
 		ifTrue: [ self step.
-			^ self scan18 ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(88) ].
+			^ self scan19 ].
+	currentCharacter == ${ ifTrue: [ ^ self scan20 ].
 	true ] whileTrue
 ]
 
 { #category : #generated }
-PythonScanner >> scan19 [
-	self step.
-	currentCharacter == $'
-		ifTrue: [ self step.
-			currentCharacter == $' ifTrue: [ ^ self scan22 ].
-			^ self reportLastMatch ].
-	currentCharacter == $\ ifTrue: [ ^ self scan21 ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(79) ].
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ currentCharacter >= (Character value: 14) ] ])
-		ifTrue: [ ^ self scan20 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
 PythonScanner >> scan1X1 [
-	self recordMatch: #(91).
+	self recordMatch: #(92).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan10 ].
 	(currentCharacter between: $8 and: $9) ifTrue: [ ^ self scan13 ].
@@ -413,25 +405,25 @@ PythonScanner >> scan1X1 [
 	('Bb' includes: currentCharacter)
 		ifTrue: [ self step.
 			(currentCharacter between: $0 and: $1)
-				ifTrue: [ [ self recordMatch: #(91).
+				ifTrue: [ [ self recordMatch: #(92).
 					self step.
 					currentCharacter between: $0 and: $1 ] whileTrue.
 					('Ll' includes: currentCharacter)
-						ifTrue: [ ^ self recordAndReportMatch: #(91) ] ].
+						ifTrue: [ ^ self recordAndReportMatch: #(92) ] ].
 			^ self reportLastMatch ].
 	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan11 ].
 	('Oo' includes: currentCharacter)
 		ifTrue: [ self step.
 			(currentCharacter between: $0 and: $7)
-				ifTrue: [ [ self recordMatch: #(91).
+				ifTrue: [ [ self recordMatch: #(92).
 					self step.
 					currentCharacter between: $0 and: $7 ] whileTrue.
 					('Ll' includes: currentCharacter)
-						ifTrue: [ ^ self recordAndReportMatch: #(91) ] ].
+						ifTrue: [ ^ self recordAndReportMatch: #(92) ] ].
 			^ self reportLastMatch ].
 	('Xx' includes: currentCharacter) ifTrue: [ ^ self scan1X1X2 ].
 	('Ljl' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(91) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(92) ].
 	^ self reportLastMatch
 ]
 
@@ -484,7 +476,7 @@ PythonScanner >> scan1X13 [
 
 { #category : #generated }
 PythonScanner >> scan1X14 [
-	[ self recordMatch: #(97).
+	[ self recordMatch: #(98).
 	self step.
 	currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
 		whileTrue.
@@ -493,9 +485,9 @@ PythonScanner >> scan1X14 [
 
 { #category : #generated }
 PythonScanner >> scan1X15 [
-	self recordMatch: #(73).
+	self recordMatch: #(74).
 	self step.
-	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(74) ].
+	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(75) ].
 	^ self reportLastMatch
 ]
 
@@ -510,12 +502,12 @@ PythonScanner >> scan1X16 [
 { #category : #generated }
 PythonScanner >> scan1X17 [
 	self step.
-	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(97) ].
+	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(98) ].
 	currentCharacter == Character cr
-		ifTrue: [ self recordMatch: #(97).
+		ifTrue: [ self recordMatch: #(98).
 			self step.
 			currentCharacter == Character lf
-				ifTrue: [ ^ self recordAndReportMatch: #(97) ] ].
+				ifTrue: [ ^ self recordAndReportMatch: #(98) ] ].
 	^ self reportLastMatch
 ]
 
@@ -537,14 +529,14 @@ PythonScanner >> scan1X19 [
 
 { #category : #generated }
 PythonScanner >> scan1X1X1 [
-	[ self recordMatch: #(91).
+	[ self recordMatch: #(92).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan10 ].
 	(currentCharacter between: $8 and: $9) ifTrue: [ ^ self scan13 ].
 	currentCharacter isDigit ] whileTrue.
 	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan11 ].
 	('Ljl' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(91) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(92) ].
 	^ self reportLastMatch
 ]
 
@@ -554,10 +546,10 @@ PythonScanner >> scan1X1X2 [
 	(currentCharacter isDigit
 		or: [ (currentCharacter between: $A and: $F)
 				or: [ currentCharacter between: $a and: $f ] ])
-		ifTrue: [ [ self recordMatch: #(91).
+		ifTrue: [ [ self recordMatch: #(92).
 			self step.
 			('Ll' includes: currentCharacter)
-				ifTrue: [ ^ self recordAndReportMatch: #(91) ].
+				ifTrue: [ ^ self recordAndReportMatch: #(92) ].
 			currentCharacter isDigit
 				or: [ (currentCharacter between: $A and: $F)
 						or: [ currentCharacter between: $a and: $f ] ] ] whileTrue ].
@@ -566,21 +558,21 @@ PythonScanner >> scan1X1X2 [
 
 { #category : #generated }
 PythonScanner >> scan1X2 [
-	self recordMatch: #(76).
+	self recordMatch: #(77).
 	self step.
-	currentCharacter == $" ifTrue: [ ^ self scan24 ].
-	currentCharacter == $' ifTrue: [ ^ self scan28 ].
-	('Rr' includes: currentCharacter) ifTrue: [ ^ self scan32 ].
+	currentCharacter == $" ifTrue: [ ^ self scan28 ].
+	currentCharacter == $' ifTrue: [ ^ self scan32 ].
+	('Rr' includes: currentCharacter) ifTrue: [ ^ self scan36 ].
 	('BUbu' includes: currentCharacter)
-		ifTrue: [ self recordMatch: #(76).
+		ifTrue: [ self recordMatch: #(77).
 			self step.
-			currentCharacter == $" ifTrue: [ ^ self scan24 ].
-			currentCharacter == $' ifTrue: [ ^ self scan28 ].
-			('Rr' includes: currentCharacter) ifTrue: [ ^ self scan32 ] ].
+			currentCharacter == $" ifTrue: [ ^ self scan28 ].
+			currentCharacter == $' ifTrue: [ ^ self scan32 ].
+			('Rr' includes: currentCharacter) ifTrue: [ ^ self scan36 ] ].
 	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
 				or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
-		ifTrue: [ [ self recordMatch: #(76).
+		ifTrue: [ [ self recordMatch: #(77).
 			self step.
 			(currentCharacter between: $0 and: $9)
 				or: [ (currentCharacter between: $A and: $Z)
@@ -615,9 +607,9 @@ PythonScanner >> scan1X22 [
 
 { #category : #generated }
 PythonScanner >> scan1X23 [
-	self recordMatch: #(98).
+	self recordMatch: #(99).
 	self step.
-	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(98) ].
+	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(99) ].
 	^ self reportLastMatch
 ]
 
@@ -631,10 +623,10 @@ PythonScanner >> scan1X24 [
 { #category : #generated }
 PythonScanner >> scan1X25 [
 	currentCharacter == $f ifTrue: [ ^ self scan1X2 ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(103) ].
+	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(104) ].
 	currentCharacter == $| ifTrue: [ ^ self scan1X15 ].
-	currentCharacter == $} ifTrue: [ ^ self recordAndReportMatch: #(104) ].
-	currentCharacter == $~ ifTrue: [ ^ self recordAndReportMatch: #(75) ].
+	currentCharacter == $} ifTrue: [ ^ self recordAndReportMatch: #(105) ].
+	currentCharacter == $~ ifTrue: [ ^ self recordAndReportMatch: #(76) ].
 	currentCharacter isDigit ifTrue: [ ^ self scan1X5 ].
 	(currentCharacter == Character tab or: [ currentCharacter == Character space ])
 		ifTrue: [ ^ self scan1X14 ].
@@ -653,9 +645,9 @@ PythonScanner >> scan1X26 [
 	currentCharacter == $> ifTrue: [ ^ self scan1X9 ].
 	currentCharacter == $@ ifTrue: [ ^ self recordAndReportMatch: #(36) ].
 	currentCharacter == $F ifTrue: [ ^ self scan1X3 ].
-	currentCharacter == $[ ifTrue: [ ^ self recordAndReportMatch: #(101) ].
+	currentCharacter == $[ ifTrue: [ ^ self recordAndReportMatch: #(102) ].
 	currentCharacter == $\ ifTrue: [ ^ self scan1X17 ].
-	currentCharacter == $] ifTrue: [ ^ self recordAndReportMatch: #(102) ].
+	currentCharacter == $] ifTrue: [ ^ self recordAndReportMatch: #(103) ].
 	currentCharacter == $^ ifTrue: [ ^ self scan1X16 ].
 	currentCharacter == $` ifTrue: [ ^ self recordAndReportMatch: #(39) ].
 	^ self scan1X25
@@ -666,8 +658,8 @@ PythonScanner >> scan1X27 [
 	currentCharacter == $% ifTrue: [ ^ self scan1X22 ].
 	currentCharacter == $& ifTrue: [ ^ self scan1X21 ].
 	currentCharacter == $' ifTrue: [ ^ self scan6 ].
-	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(99) ].
-	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(100) ].
+	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(100) ].
+	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(101) ].
 	currentCharacter == $* ifTrue: [ ^ self scan1X11 ].
 	currentCharacter == $+ ifTrue: [ ^ self scan1X20 ].
 	currentCharacter == $, ifTrue: [ ^ self recordAndReportMatch: #(12) ].
@@ -680,21 +672,21 @@ PythonScanner >> scan1X27 [
 
 { #category : #generated }
 PythonScanner >> scan1X3 [
-	self recordMatch: #(76).
+	self recordMatch: #(77).
 	self step.
 	currentCharacter == $" ifTrue: [ ^ self scan15 ].
-	currentCharacter == $' ifTrue: [ ^ self scan19 ].
-	('Rr' includes: currentCharacter) ifTrue: [ ^ self scan23 ].
+	currentCharacter == $' ifTrue: [ ^ self scan21 ].
+	('Rr' includes: currentCharacter) ifTrue: [ ^ self scan27 ].
 	('BUbu' includes: currentCharacter)
-		ifTrue: [ self recordMatch: #(76).
+		ifTrue: [ self recordMatch: #(77).
 			self step.
 			currentCharacter == $" ifTrue: [ ^ self scan15 ].
-			currentCharacter == $' ifTrue: [ ^ self scan19 ].
-			('Rr' includes: currentCharacter) ifTrue: [ ^ self scan23 ] ].
+			currentCharacter == $' ifTrue: [ ^ self scan21 ].
+			('Rr' includes: currentCharacter) ifTrue: [ ^ self scan27 ] ].
 	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
 				or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
-		ifTrue: [ [ self recordMatch: #(76).
+		ifTrue: [ [ self recordMatch: #(77).
 			self step.
 			(currentCharacter between: $0 and: $9)
 				or: [ (currentCharacter between: $A and: $Z)
@@ -705,7 +697,7 @@ PythonScanner >> scan1X3 [
 
 { #category : #generated }
 PythonScanner >> scan1X4 [
-	self recordMatch: #(76).
+	self recordMatch: #(77).
 	self step.
 	currentCharacter == $" ifTrue: [ ^ self scan2 ].
 	currentCharacter == $' ifTrue: [ ^ self scan6 ].
@@ -713,7 +705,7 @@ PythonScanner >> scan1X4 [
 	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
 				or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
-		ifTrue: [ [ self recordMatch: #(76).
+		ifTrue: [ [ self recordMatch: #(77).
 			self step.
 			(currentCharacter between: $0 and: $9)
 				or: [ (currentCharacter between: $A and: $Z)
@@ -724,19 +716,19 @@ PythonScanner >> scan1X4 [
 
 { #category : #generated }
 PythonScanner >> scan1X5 [
-	[ self recordMatch: #(91).
+	[ self recordMatch: #(92).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan10 ].
 	currentCharacter isDigit ] whileTrue.
 	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan11 ].
 	('Ljl' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(91) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(92) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 PythonScanner >> scan1X6 [
-	[ self recordMatch: #(76).
+	[ self recordMatch: #(77).
 	self step.
 	(currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
@@ -760,7 +752,7 @@ PythonScanner >> scan1X7 [
 
 { #category : #generated }
 PythonScanner >> scan1X8 [
-	[ self recordMatch: #(96).
+	[ self recordMatch: #(97).
 	self step.
 	currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
@@ -784,7 +776,7 @@ PythonScanner >> scan1X9 [
 PythonScanner >> scan2 [
 	self step.
 	currentCharacter == $"
-		ifTrue: [ self recordMatch: #(77).
+		ifTrue: [ self recordMatch: #(78).
 			self step.
 			currentCharacter == $" ifTrue: [ ^ self scan5 ].
 			^ self reportLastMatch ].
@@ -798,9 +790,33 @@ PythonScanner >> scan2 [
 
 { #category : #generated }
 PythonScanner >> scan20 [
+	self recordMatch: #(89).
+	self step.
+	currentCharacter == ${ ifTrue: [ ^ self scan19 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+PythonScanner >> scan21 [
+	self step.
+	currentCharacter == $'
+		ifTrue: [ self step.
+			currentCharacter == $' ifTrue: [ ^ self scan25 ].
+			^ self reportLastMatch ].
+	currentCharacter == $\ ifTrue: [ ^ self scan23 ].
+	currentCharacter == ${ ifTrue: [ ^ self scan24 ].
+	(currentCharacter <= Character tab
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ currentCharacter >= (Character value: 14) ] ])
+		ifTrue: [ ^ self scan22 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+PythonScanner >> scan22 [
 	[ self step.
-	currentCharacter == $\ ifTrue: [ ^ self scan21 ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(79) ].
+	currentCharacter == $\ ifTrue: [ ^ self scan23 ].
+	currentCharacter == ${ ifTrue: [ ^ self scan24 ].
 	currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
 				or: [ (currentCharacter between: (Character value: 14) and: $&)
@@ -809,38 +825,54 @@ PythonScanner >> scan20 [
 ]
 
 { #category : #generated }
-PythonScanner >> scan21 [
+PythonScanner >> scan23 [
 	self step.
-	^ self scan20
+	^ self scan22
 ]
 
 { #category : #generated }
-PythonScanner >> scan22 [
+PythonScanner >> scan24 [
+	self recordMatch: #(80).
+	self step.
+	currentCharacter == ${ ifTrue: [ ^ self scan22 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+PythonScanner >> scan25 [
 	[ self step.
 	currentCharacter == $'
 		ifTrue: [ self step.
 			currentCharacter == $'
 				ifTrue: [ self step.
-					currentCharacter ~~ $' ifTrue: [ ^ self scan22 ].
+					currentCharacter ~~ $' ifTrue: [ ^ self scan25 ].
 					^ self reportLastMatch ].
-			^ self scan22 ].
+			^ self scan25 ].
 	currentCharacter == $\
 		ifTrue: [ self step.
-			^ self scan22 ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(85) ].
+			^ self scan25 ].
+	currentCharacter == ${ ifTrue: [ ^ self scan26 ].
 	true ] whileTrue
 ]
 
 { #category : #generated }
-PythonScanner >> scan23 [
-	self recordMatch: #(76).
+PythonScanner >> scan26 [
+	self recordMatch: #(86).
+	self step.
+	currentCharacter == ${ ifTrue: [ ^ self scan25 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+PythonScanner >> scan27 [
+	self recordMatch: #(77).
 	self step.
 	currentCharacter == $" ifTrue: [ ^ self scan15 ].
-	currentCharacter == $' ifTrue: [ ^ self scan19 ].
+	currentCharacter == $' ifTrue: [ ^ self scan21 ].
 	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
 				or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
-		ifTrue: [ [ self recordMatch: #(76).
+		ifTrue: [ [ self recordMatch: #(77).
 			self step.
 			(currentCharacter between: $0 and: $9)
 				or: [ (currentCharacter between: $A and: $Z)
@@ -850,63 +882,15 @@ PythonScanner >> scan23 [
 ]
 
 { #category : #generated }
-PythonScanner >> scan24 [
-	self step.
-	currentCharacter == $"
-		ifTrue: [ self recordMatch: #(78).
-			self step.
-			currentCharacter == $" ifTrue: [ ^ self scan27 ].
-			^ self reportLastMatch ].
-	currentCharacter == $\ ifTrue: [ ^ self scan26 ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(82) ].
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ currentCharacter >= (Character value: 14) ] ])
-		ifTrue: [ ^ self scan25 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-PythonScanner >> scan25 [
-	[ self step.
-	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(78) ].
-	currentCharacter == $\ ifTrue: [ ^ self scan26 ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(82) ].
-	currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-PythonScanner >> scan26 [
-	self step.
-	^ self scan25
-]
-
-{ #category : #generated }
-PythonScanner >> scan27 [
-	[ self step.
-	currentCharacter == $"
-		ifTrue: [ (self scanForString: '""') ifTrue: [ ^ self recordAndReportMatch: #(78) ].
-			^ self scan27 ].
-	currentCharacter == $\
-		ifTrue: [ self step.
-			^ self scan27 ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(88) ].
-	true ] whileTrue
-]
-
-{ #category : #generated }
 PythonScanner >> scan28 [
 	self step.
-	currentCharacter == $'
-		ifTrue: [ self recordMatch: #(78).
+	currentCharacter == $"
+		ifTrue: [ self recordMatch: #(79).
 			self step.
-			currentCharacter == $' ifTrue: [ ^ self scan31 ].
+			currentCharacter == $" ifTrue: [ ^ self scan31 ].
 			^ self reportLastMatch ].
 	currentCharacter == $\ ifTrue: [ ^ self scan30 ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(79) ].
+	currentCharacter == ${ ifTrue: [ ^ self scan18 ].
 	(currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
 				or: [ currentCharacter >= (Character value: 14) ] ])
@@ -917,9 +901,9 @@ PythonScanner >> scan28 [
 { #category : #generated }
 PythonScanner >> scan29 [
 	[ self step.
-	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(78) ].
+	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(79) ].
 	currentCharacter == $\ ifTrue: [ ^ self scan30 ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(79) ].
+	currentCharacter == ${ ifTrue: [ ^ self scan18 ].
 	currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
 				or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
@@ -929,7 +913,7 @@ PythonScanner >> scan29 [
 { #category : #generated }
 PythonScanner >> scan3 [
 	[ self step.
-	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(77) ].
+	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(78) ].
 	currentCharacter == $\ ifTrue: [ ^ self scan4 ].
 	currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
@@ -946,26 +930,74 @@ PythonScanner >> scan30 [
 { #category : #generated }
 PythonScanner >> scan31 [
 	[ self step.
-	currentCharacter == $'
-		ifTrue: [ (self scanForString: '''''') ifTrue: [ ^ self recordAndReportMatch: #(78) ].
+	currentCharacter == $"
+		ifTrue: [ (self scanForString: '""') ifTrue: [ ^ self recordAndReportMatch: #(79) ].
 			^ self scan31 ].
 	currentCharacter == $\
 		ifTrue: [ self step.
 			^ self scan31 ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(85) ].
+	currentCharacter == ${ ifTrue: [ ^ self scan20 ].
 	true ] whileTrue
 ]
 
 { #category : #generated }
 PythonScanner >> scan32 [
-	self recordMatch: #(76).
 	self step.
-	currentCharacter == $" ifTrue: [ ^ self scan24 ].
-	currentCharacter == $' ifTrue: [ ^ self scan28 ].
+	currentCharacter == $'
+		ifTrue: [ self recordMatch: #(79).
+			self step.
+			currentCharacter == $' ifTrue: [ ^ self scan35 ].
+			^ self reportLastMatch ].
+	currentCharacter == $\ ifTrue: [ ^ self scan34 ].
+	currentCharacter == ${ ifTrue: [ ^ self scan24 ].
+	(currentCharacter <= Character tab
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ currentCharacter >= (Character value: 14) ] ])
+		ifTrue: [ ^ self scan33 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+PythonScanner >> scan33 [
+	[ self step.
+	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(79) ].
+	currentCharacter == $\ ifTrue: [ ^ self scan34 ].
+	currentCharacter == ${ ifTrue: [ ^ self scan24 ].
+	currentCharacter <= Character tab
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+PythonScanner >> scan34 [
+	self step.
+	^ self scan33
+]
+
+{ #category : #generated }
+PythonScanner >> scan35 [
+	[ self step.
+	currentCharacter == $'
+		ifTrue: [ (self scanForString: '''''') ifTrue: [ ^ self recordAndReportMatch: #(79) ].
+			^ self scan35 ].
+	currentCharacter == $\
+		ifTrue: [ self step.
+			^ self scan35 ].
+	currentCharacter == ${ ifTrue: [ ^ self scan26 ].
+	true ] whileTrue
+]
+
+{ #category : #generated }
+PythonScanner >> scan36 [
+	self recordMatch: #(77).
+	self step.
+	currentCharacter == $" ifTrue: [ ^ self scan28 ].
+	currentCharacter == $' ifTrue: [ ^ self scan32 ].
 	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
 				or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ] ])
-		ifTrue: [ [ self recordMatch: #(76).
+		ifTrue: [ [ self recordMatch: #(77).
 			self step.
 			(currentCharacter between: $0 and: $9)
 				or: [ (currentCharacter between: $A and: $Z)
@@ -975,74 +1007,68 @@ PythonScanner >> scan32 [
 ]
 
 { #category : #generated }
-PythonScanner >> scan33 [
+PythonScanner >> scan37 [
 	[ self step.
 	currentCharacter == $"
-		ifTrue: [ (self scanForString: '""') ifTrue: [ ^ self recordAndReportMatch: #(90) ].
-			^ self scan33 ].
+		ifTrue: [ (self scanForString: '""') ifTrue: [ ^ self recordAndReportMatch: #(91) ].
+			^ self scan37 ].
 	currentCharacter == $\
 		ifTrue: [ self step.
-			^ self scan33 ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(89) ].
+			^ self scan37 ].
+	currentCharacter == ${
+		ifTrue: [ self recordMatch: #(90).
+			self step.
+			currentCharacter == ${ ifTrue: [ ^ self scan37 ].
+			^ self reportLastMatch ].
 	true ] whileTrue
-]
-
-{ #category : #generated }
-PythonScanner >> scan34 [
-	[ self step.
-	currentCharacter == $'
-		ifTrue: [ (self scanForString: '''''') ifTrue: [ ^ self recordAndReportMatch: #(87) ].
-			^ self scan34 ].
-	currentCharacter == $\
-		ifTrue: [ self step.
-			^ self scan34 ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(86) ].
-	true ] whileTrue
-]
-
-{ #category : #generated }
-PythonScanner >> scan35 [
-	[ self step.
-	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(84) ].
-	currentCharacter == $\
-		ifTrue: [ self step.
-			^ self scan35 ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(83) ].
-	currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-PythonScanner >> scan36 [
-	[ self step.
-	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(81) ].
-	currentCharacter == $\
-		ifTrue: [ self step.
-			^ self scan36 ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(80) ].
-	currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-PythonScanner >> scan37 [
-	self recordMatch: #(93).
-	self step.
-	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(93) ].
-	^ self reportLastMatch
 ]
 
 { #category : #generated }
 PythonScanner >> scan38 [
-	[ self recordMatch: #(93).
-	self step.
-	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(93) ].
-	currentCharacter == Character cr ifTrue: [ ^ self scan37 ].
+	[ self step.
+	currentCharacter == $'
+		ifTrue: [ (self scanForString: '''''') ifTrue: [ ^ self recordAndReportMatch: #(88) ].
+			^ self scan38 ].
+	currentCharacter == $\
+		ifTrue: [ self step.
+			^ self scan38 ].
+	currentCharacter == ${
+		ifTrue: [ self recordMatch: #(87).
+			self step.
+			currentCharacter == ${ ifTrue: [ ^ self scan38 ].
+			^ self reportLastMatch ].
 	true ] whileTrue
+]
+
+{ #category : #generated }
+PythonScanner >> scan39 [
+	[ self step.
+	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(85) ].
+	currentCharacter == $\ ifTrue: [ ^ self scan40 ].
+	currentCharacter == $v
+		ifTrue: [ [ self step.
+			currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(85) ].
+			currentCharacter == $\ ifTrue: [ ^ self scan40 ].
+			currentCharacter == $v ] whileTrue.
+			currentCharacter == ${
+				ifTrue: [ self recordMatch: #(84).
+					self step.
+					currentCharacter == ${ ifTrue: [ ^ self scan39 ].
+					^ self reportLastMatch ].
+			(currentCharacter <= Character tab
+				or: [ (currentCharacter between: Character pageUp and: Character newPage)
+						or: [ currentCharacter >= (Character value: 14) ] ])
+				ifTrue: [ ^ self scan39 ].
+			^ self reportLastMatch ].
+	currentCharacter == ${
+		ifTrue: [ self recordMatch: #(84).
+			self step.
+			currentCharacter == ${ ifTrue: [ ^ self scan41 ].
+			^ self reportLastMatch ].
+	currentCharacter <= Character tab
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
+	^ self reportLastMatch
 ]
 
 { #category : #generated }
@@ -1052,10 +1078,68 @@ PythonScanner >> scan4 [
 ]
 
 { #category : #generated }
+PythonScanner >> scan40 [
+	self step.
+	^ self scan39
+]
+
+{ #category : #generated }
+PythonScanner >> scan41 [
+	[ self step.
+	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(85) ].
+	currentCharacter == $\
+		ifTrue: [ self step.
+			^ self scan41 ].
+	currentCharacter == ${
+		ifTrue: [ self step.
+			currentCharacter == ${ ifTrue: [ ^ self scan41 ].
+			^ self reportLastMatch ].
+	currentCharacter <= Character tab
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+PythonScanner >> scan42 [
+	[ self step.
+	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(82) ].
+	currentCharacter == $\
+		ifTrue: [ self step.
+			^ self scan42 ].
+	currentCharacter == ${
+		ifTrue: [ self recordMatch: #(81).
+			self step.
+			currentCharacter == ${ ifTrue: [ ^ self scan42 ].
+			^ self reportLastMatch ].
+	currentCharacter <= Character tab
+		or: [ (currentCharacter between: Character pageUp and: Character newPage)
+				or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+PythonScanner >> scan43 [
+	self recordMatch: #(94).
+	self step.
+	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(94) ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+PythonScanner >> scan44 [
+	[ self recordMatch: #(94).
+	self step.
+	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(94) ].
+	currentCharacter == Character cr ifTrue: [ ^ self scan43 ].
+	true ] whileTrue
+]
+
+{ #category : #generated }
 PythonScanner >> scan5 [
 	[ self step.
 	currentCharacter == $"
-		ifTrue: [ (self scanForString: '""') ifTrue: [ ^ self recordAndReportMatch: #(77) ].
+		ifTrue: [ (self scanForString: '""') ifTrue: [ ^ self recordAndReportMatch: #(78) ].
 			^ self scan5 ].
 	currentCharacter == $\
 		ifTrue: [ self step.
@@ -1067,7 +1151,7 @@ PythonScanner >> scan5 [
 PythonScanner >> scan6 [
 	self step.
 	currentCharacter == $'
-		ifTrue: [ self recordMatch: #(77).
+		ifTrue: [ self recordMatch: #(78).
 			self step.
 			currentCharacter == $' ifTrue: [ ^ self scan9 ].
 			^ self reportLastMatch ].
@@ -1082,7 +1166,7 @@ PythonScanner >> scan6 [
 { #category : #generated }
 PythonScanner >> scan7 [
 	[ self step.
-	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(77) ].
+	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(78) ].
 	currentCharacter == $\ ifTrue: [ ^ self scan8 ].
 	currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
@@ -1100,7 +1184,7 @@ PythonScanner >> scan8 [
 PythonScanner >> scan9 [
 	[ self step.
 	currentCharacter == $'
-		ifTrue: [ (self scanForString: '''''') ifTrue: [ ^ self recordAndReportMatch: #(77) ].
+		ifTrue: [ (self scanForString: '''''') ifTrue: [ ^ self recordAndReportMatch: #(78) ].
 			^ self scan9 ].
 	currentCharacter == $\
 		ifTrue: [ self step.
@@ -1112,34 +1196,34 @@ PythonScanner >> scan9 [
 PythonScanner >> scanForToken [
 	scope == #fStringSingle
 		ifTrue: [ self step.
-			currentCharacter == $} ifTrue: [ ^ self scan36 ].
+			currentCharacter == $} ifTrue: [ ^ self scan42 ].
 			('!:=' includes: currentCharacter)
 				ifTrue: [ [ self step.
-					currentCharacter == $} ifTrue: [ ^ self scan36 ].
+					currentCharacter == $} ifTrue: [ ^ self scan42 ].
 					true ] whileTrue ].
 			^ self reportLastMatch ].
 	scope == #fStringDouble
 		ifTrue: [ self step.
-			currentCharacter == $} ifTrue: [ ^ self scan35 ].
+			currentCharacter == $} ifTrue: [ ^ self scan39 ].
 			('!:=' includes: currentCharacter)
 				ifTrue: [ [ self step.
-					currentCharacter == $} ifTrue: [ ^ self scan35 ].
+					currentCharacter == $} ifTrue: [ ^ self scan39 ].
 					true ] whileTrue ].
 			^ self reportLastMatch ].
 	scope == #fLongStringSingle
 		ifTrue: [ self step.
-			currentCharacter == $} ifTrue: [ ^ self scan34 ].
+			currentCharacter == $} ifTrue: [ ^ self scan38 ].
 			('!:=' includes: currentCharacter)
 				ifTrue: [ [ self step.
-					currentCharacter == $} ifTrue: [ ^ self scan34 ].
+					currentCharacter == $} ifTrue: [ ^ self scan38 ].
 					true ] whileTrue ].
 			^ self reportLastMatch ].
 	scope == #fLongStringDouble
 		ifTrue: [ self step.
-			currentCharacter == $} ifTrue: [ ^ self scan33 ].
+			currentCharacter == $} ifTrue: [ ^ self scan37 ].
 			('!:=' includes: currentCharacter)
 				ifTrue: [ [ self step.
-					currentCharacter == $} ifTrue: [ ^ self scan33 ].
+					currentCharacter == $} ifTrue: [ ^ self scan37 ].
 					true ] whileTrue ].
 			^ self reportLastMatch ].
 	scope == #default ifTrue: [ ^ self scan1 ].
@@ -1151,45 +1235,24 @@ PythonScanner >> scanForToken [
 PythonScanner >> scanForTokenX1 [
 	self step.
 	currentCharacter == Character lf
-		ifTrue: [ ^ self recordAndReportMatch: #(92 93 95) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(93 94 96) ].
 	currentCharacter == Character cr
-		ifTrue: [ self recordMatch: #(92 93 95).
+		ifTrue: [ self recordMatch: #(93 94 96).
 			self step.
 			currentCharacter == Character lf
-				ifTrue: [ ^ self recordAndReportMatch: #(92 93) ].
+				ifTrue: [ ^ self recordAndReportMatch: #(93 94) ].
 			^ self reportLastMatch ].
-	currentCharacter == $# ifTrue: [ ^ self scan38 ].
+	currentCharacter == $# ifTrue: [ ^ self scan44 ].
 	currentCharacter isSeparator
-		ifTrue: [ [ self recordMatch: #(94).
+		ifTrue: [ [ self recordMatch: #(95).
 			self step.
 			currentCharacter == Character lf
-				ifTrue: [ ^ self recordAndReportMatch: #(93) ].
-			currentCharacter == Character cr ifTrue: [ ^ self scan37 ].
-			currentCharacter == $# ifTrue: [ ^ self scan38 ].
+				ifTrue: [ ^ self recordAndReportMatch: #(94) ].
+			currentCharacter == Character cr ifTrue: [ ^ self scan43 ].
+			currentCharacter == $# ifTrue: [ ^ self scan44 ].
 			currentCharacter isSeparator ] whileTrue.
 			^ self reportLastMatch ].
-	^ self recordAndReportMatch: #(95)
-]
-
-{ #category : #private }
-PythonScanner >> scannerError [
-	"Override to be able to reset indents at end of file. And also if it is necessary to create a NEWLINE token."
-
-	(stream atEnd and: [ start == stream position ])
-		ifTrue: [ 
-			lastLineStart = start
-				ifFalse: [ 
-					matchActions := Array with: self NEWLINEId.
-					self tokenStack add: (self createTokenFor: '').
-					lastLineStart := start ].
-			[ self indentStack last > 0 ]
-				whileTrue: [ 
-					matchActions := Array with: self DEDENTId.
-					self tokenStack add: (self createTokenFor: '').
-					self indentStack removeLast ].
-			self tokenStack notEmpty
-				ifTrue: [ returnMatchBlock value: self tokenStack removeFirst ] ].
-	super scannerError
+	^ self recordAndReportMatch: #(96)
 ]
 
 { #category : #accessing }
@@ -1199,7 +1262,7 @@ PythonScanner >> stateClass [
 
 { #category : #generated }
 PythonScanner >> tokenActions [
-	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #emptyLine #blankLine #indent #noindent #comment #whitespace #NEWLINE #lparen #rparen #lbrack #rbrack #lcurly #rcurly)
+	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #emptyLine #blankLine #indent #noindent #comment #whitespace #NEWLINE #lparen #rparen #lbrack #rbrack #lcurly #rcurly)
 ]
 
 { #category : #accessing }

@@ -55,8 +55,8 @@ PyVarArgListNode >> compositeTokenVariables [
 PyVarArgListNode >> initialize [
 	super initialize.
 	args := OrderedCollection new: 2.
-	inits := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
+	inits := OrderedCollection new: 2.
 	parameterAnnotations := OrderedCollection new: 2.
 ]
 
