@@ -3,14 +3,25 @@ Class {
 	#superclass : #PyRootNode,
 	#instVars : [
 		'yieldToken',
-		'testlist'
+		'testlist',
+		'fromToken'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
 PyYieldNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitYield: self
+]
+
+{ #category : #generated }
+PyYieldNode >> fromToken [
+	^ fromToken
+]
+
+{ #category : #generated }
+PyYieldNode >> fromToken: aSmaCCToken [
+	fromToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -34,7 +45,7 @@ PyYieldNode >> testlist: aPyRootNode [
 
 { #category : #generated }
 PyYieldNode >> tokenVariables [
-	^ #(#yieldToken)
+	^ #(#yieldToken #fromToken)
 ]
 
 { #category : #generated }

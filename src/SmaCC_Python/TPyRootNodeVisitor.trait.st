@@ -31,6 +31,11 @@ TPyRootNodeVisitor >> visitAssert: anAssert [
 ]
 
 { #category : #generated }
+TPyRootNodeVisitor >> visitAssignmentExpression: anAssignmentExpression [
+	^ self visitRoot: anAssignmentExpression
+]
+
+{ #category : #generated }
 TPyRootNodeVisitor >> visitAtom: anAtom [
 	^ self visitRoot: anAtom
 ]

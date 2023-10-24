@@ -1,10 +1,10 @@
 Class {
-	#name : 'PythonParserTests',
-	#superclass : 'TestCase',
-	#category : 'SmaCC_Python_Tests'
+	#name : #PythonParserTests,
+	#superclass : #TestCase,
+	#category : #'SmaCC_Python_Tests'
 }
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> codeBig1 [
 	^
 'import random
@@ -129,19 +129,19 @@ printGrid(grid)
 '
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 PythonParserTests >> parse: aSource [
 	| parser |
 	parser := self parserClass on: (ReadStream on: aSource).
 	^ parser parse
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 PythonParserTests >> parserClass [
-	^ PythonParser
+	^ Python2Parser
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceBig2 [
 	^ '"""
  Show how to bounce a ball with a paddle in Pygame.
@@ -396,7 +396,7 @@ pygame.quit()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceBig3 [
 	^ '"""
 Use sprites to collect blocks.
@@ -518,7 +518,7 @@ pygame.quit()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceCommentAtEnd [
 	^ '__import__("pkg_resources").declare_namespace(__name__)
 ##############################################################
@@ -526,7 +526,7 @@ PythonParserTests >> sourceCommentAtEnd [
 ##############################################################'
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceFor1 [
 	^ '
 #http://programarcadegames.com/python_examples/show_file.php?file=for_loop_examples.py
@@ -610,7 +610,7 @@ for i in range(1,101):
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceIf1 [
 	^ '
 #http://programarcadegames.com/python_examples/show_file.php?file=if_statement_examples.py
@@ -749,13 +749,13 @@ else:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceLambda1 [
 	^ 'def make_incrementor (n): return lambda x: x + n
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceLambda2 [
 	^ '
 foo = [2, 18, 9, 22, 17, 24, 8, 12, 27]
@@ -765,7 +765,7 @@ print reduce(lambda x, y: x + y, foo)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceLibDummyThreading [
 	^ '"""Faux ``threading`` version using ``dummy_thread`` instead of ``thread``.
 
@@ -848,25 +848,25 @@ finally:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceNoReturnAtEnd [
 	^ '__import__("pkg_resources").declare_namespace(__name__)'
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceParameterWithAssign1 [
 	^ '
 f(end="")
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram1 [
 	^ 'print ''Hello, world!''
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram10 [
 	^ 'from time import localtime
 
@@ -889,7 +889,7 @@ else:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram10b [
 	^ 'from time import localtime
 
@@ -912,7 +912,7 @@ else:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram11 [
 	^ 'REFRAIN = ''''''
 %d bottles of beer on the wall,
@@ -928,7 +928,7 @@ while bottles_of_beer > 1:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram12 [
 	^ 'class BankAccount(object):
     def __init__(self, initial_balance=0):
@@ -945,7 +945,7 @@ print my_account.balance
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram13 [
 	^ 'import unittest
 def median(pool):
@@ -964,7 +964,7 @@ if __name__ == ''__main__'':
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram14 [
 	^ 'def median(pool):
     ''''''Statistical median to demonstrate doctest.
@@ -983,7 +983,7 @@ if __name__ == ''__main__'':
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram15 [
 	^ 'from itertools import groupby
 lines = ''''''
@@ -1003,7 +1003,7 @@ for has_chars, frags in groupby(lines, bool):
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram16 [
 	^ 'import csv
 
@@ -1024,7 +1024,7 @@ for ticker, name, price, change, pct in stocks:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram17 [
 	^ 'BOARD_SIZE = 8
 
@@ -1054,7 +1054,7 @@ for answer in solve(BOARD_SIZE):
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram18 [
 	^ 'import itertools
 
@@ -1079,7 +1079,7 @@ for p in iter_primes():
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram19 [
 	^ 'dinner_recipe = ''''''<html><body><table>
 <tr><th>amt</th><th>unit</th><th>item</th></tr>
@@ -1106,26 +1106,26 @@ for ingredient in tree.getiterator(''tr''):
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram1b [
 	^ 'pass
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram1c [
 	^ 'a
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram2 [
 	^ 'name = raw_input(''What is your name?\n'')
 print ''Hi, %s.'' % name
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram20 [
 	^ '
 BOARD_SIZE = 8
@@ -1159,7 +1159,7 @@ print "\n".join(". "*q + "Q " + ". "*(BOARD_SIZE-q-1) for q in queens)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram21 [
 	^ '
 import random
@@ -1193,7 +1193,7 @@ else:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram3 [
 	^ 'friends = [''john'', ''pat'', ''gary'', ''michael'']
 for i, name in enumerate(friends):
@@ -1201,7 +1201,7 @@ for i, name in enumerate(friends):
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram4 [
 	^ 'parents, babies = (1, 1)
 while babies < 100:
@@ -1210,7 +1210,7 @@ while babies < 100:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram5 [
 	^ 'def greet(name):
     print ''Hello'', name
@@ -1220,7 +1220,7 @@ greet(''Bob'')
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram6 [
 	^ 'import re
 for test_string in [''555-1212'', ''ILL-EGAL'']:
@@ -1231,7 +1231,7 @@ for test_string in [''555-1212'', ''ILL-EGAL'']:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram7a [
 	^ 'prices = {''apple'': 0.40, ''banana'': .50}
 my_purchase = {
@@ -1243,7 +1243,7 @@ print ''I owe the grocer $%.2f'' % grocery_bill
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram7b [
 	^ 'prices = {''apple'': 40, ''banana'': 50}
 my_purchase = {
@@ -1255,7 +1255,7 @@ print ''I owe the grocer $%.2f'' % grocery_bill
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram8 [
 	^ '# This program adds up integers in the command line
 import sys
@@ -1267,7 +1267,7 @@ except ValueError:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceSimpleProgram9 [
 	^ '# indent your Python code to put into an email
 import glob
@@ -1284,50 +1284,50 @@ for file_name in sorted(python_files):
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceString1 [
 	^ 't_PLUS    = r''a''
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceString2 [
 	^ 't_PLUS    = r''\a''
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceString3 [
 	^ 't_PLUS    = r''\+a''
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceString4 [
 	^ 't_PLUS    = r''\^''
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceString5 [
 	^ 't_CCONST = r''(L)?\''([^\\\n]|(\\.))*?\''''
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceString6 [
 	^ '[ ''\\'' , ''\n'', ''\'''', ''"'']
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceVarArgs [
 	^ 'def runcall(foo, *args):
 	pass
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> sourceWhileLoop1 [
 	^ '
 #http://programarcadegames.com/python_examples/show_file.php?file=while_loop_examples.py
@@ -1410,7 +1410,7 @@ while i < 10:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_CppHeaderParser [
 	^ '
 #!/usr/bin/python
@@ -3823,7 +3823,7 @@ class CppHeader( _CppHeader ):
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_GardenSnake [
 	^ '# GardenSnake - a parser generator demonstration program
 #
@@ -4537,7 +4537,7 @@ print "Done"
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_basic [
 	^ '# An implementation of Dartmouth BASIC (1964)
 #
@@ -4613,7 +4613,7 @@ while 1:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_basiclex [
 	^ '# An implementation of Dartmouth BASIC (1964)
 
@@ -4692,7 +4692,7 @@ lex.lex(debug=0)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_basiclog [
 	^ '# An implementation of Dartmouth BASIC (1964)
 #
@@ -4776,7 +4776,7 @@ while 1:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_basinterp [
 	^ '# This file provides the runtime support for running a basic program
 # Assumes the program has been parsed using basparse.py
@@ -5222,7 +5222,7 @@ class BasicInterpreter:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_basparse [
 	^ '# An implementation of Dartmouth BASIC (1964)
 #
@@ -5651,7 +5651,7 @@ def parse(data,debug=0):
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_calclex [
 	^ '# -----------------------------------------------------------------------------
 # calclex.py
@@ -5705,7 +5705,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_clex [
 	^ '# ----------------------------------------------------------------------
 # clex.py
@@ -5874,7 +5874,7 @@ if __name__ == "__main__":
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_cparse [
 	^ '# -----------------------------------------------------------------------------
 # cparse.py
@@ -6742,7 +6742,7 @@ yacc.yacc(method=''LALR'')
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_ctokens [
 	^ '# ----------------------------------------------------------------------
 # ctokens.py
@@ -6880,7 +6880,7 @@ def t_CPPCOMMENT(t):
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_hedit [
 	^ '# -----------------------------------------------------------------------------
 # hedit.py
@@ -6933,7 +6933,7 @@ lex.runmain()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex [
 	^ '# -----------------------------------------------------------------------------
 # ply: lex.py
@@ -7996,7 +7996,7 @@ Token = TOKEN
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_closure [
 	^ '# -----------------------------------------------------------------------------
 # lex_closure.py
@@ -8055,7 +8055,7 @@ lex.runmain(data="3+4")
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_doc1 [
 	^ '# lex_doc1.py
 #
@@ -8086,7 +8086,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_dup1 [
 	^ '# lex_dup1.py
 #
@@ -8120,7 +8120,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_dup2 [
 	^ '# lex_dup2.py
 #
@@ -8158,7 +8158,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_dup3 [
 	^ '# lex_dup3.py
 #
@@ -8194,7 +8194,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_empty [
 	^ '# lex_empty.py
 #
@@ -8219,7 +8219,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_error1 [
 	^ '# lex_error1.py
 #
@@ -8248,7 +8248,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_error2 [
 	^ '# lex_error2.py
 #
@@ -8279,7 +8279,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_error3 [
 	^ '# lex_error3.py
 #
@@ -8311,7 +8311,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_error4 [
 	^ '# lex_error4.py
 #
@@ -8343,7 +8343,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_hedit [
 	^ '# -----------------------------------------------------------------------------
 # hedit.py
@@ -8395,7 +8395,7 @@ lex.runmain(data="3Habc 10Habcdefghij 2Hxy")
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_ignore [
 	^ '# lex_ignore.py
 #
@@ -8431,7 +8431,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_ignore2 [
 	^ '# lex_ignore2.py
 #
@@ -8465,7 +8465,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_literal1 [
 	^ '# lex_literal1.py
 #
@@ -8495,7 +8495,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_literal2 [
 	^ '# lex_literal2.py
 #
@@ -8525,7 +8525,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_many_tokens [
 	^ '# lex_many_tokens.py
 #
@@ -8557,7 +8557,7 @@ lex.runmain(data="TOK34: TOK143: TOK269: TOK372: TOK452: TOK561: TOK999:")
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_module [
 	^ '# lex_module.py
 #
@@ -8572,7 +8572,7 @@ lex.runmain(data="3+4")
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_module_import [
 	^ '# -----------------------------------------------------------------------------
 # lex_module_import.py
@@ -8619,7 +8619,7 @@ def t_error(t):
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_object [
 	^ '# -----------------------------------------------------------------------------
 # lex_object.py
@@ -8679,7 +8679,7 @@ lex.runmain(data="3+4")
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_opt_alias [
 	^ '# -----------------------------------------------------------------------------
 # lex_opt_alias.py
@@ -8738,7 +8738,7 @@ lex.runmain(data="3+4")
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_optimize [
 	^ '# -----------------------------------------------------------------------------
 # lex_optimize.py
@@ -8793,7 +8793,7 @@ lex.runmain(data="3+4")
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_optimize2 [
 	^ '# -----------------------------------------------------------------------------
 # lex_optimize2.py
@@ -8848,7 +8848,7 @@ lex.runmain(data="3+4")
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_optimize3 [
 	^ '# -----------------------------------------------------------------------------
 # lex_optimize3.py
@@ -8905,7 +8905,7 @@ lex.runmain(data="3+4")
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_re1 [
 	^ '# lex_re1.py
 #
@@ -8937,7 +8937,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_re2 [
 	^ '# lex_re2.py
 #
@@ -8969,7 +8969,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_re3 [
 	^ '# lex_re3.py
 #
@@ -9003,7 +9003,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_rule1 [
 	^ '# lex_rule1.py
 #
@@ -9035,7 +9035,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_rule2 [
 	^ '# lex_rule2.py
 #
@@ -9069,7 +9069,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_rule3 [
 	^ '# lex_rule3.py
 #
@@ -9101,7 +9101,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_state1 [
 	^ '# lex_state1.py
 #
@@ -9146,7 +9146,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_state2 [
 	^ '# lex_state2.py
 #
@@ -9191,7 +9191,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_state3 [
 	^ '# lex_state3.py
 #
@@ -9238,7 +9238,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_state4 [
 	^ '# lex_state4.py
 #
@@ -9284,7 +9284,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_state5 [
 	^ '# lex_state5.py
 #
@@ -9329,7 +9329,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_state_noerror [
 	^ '# lex_state_noerror.py
 #
@@ -9373,7 +9373,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_state_norule [
 	^ '# lex_state_norule.py
 #
@@ -9418,7 +9418,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_state_try [
 	^ '# lex_state_try.py
 #
@@ -9468,7 +9468,7 @@ lex.runmain(data=data)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_token1 [
 	^ '# lex_token1.py
 #
@@ -9492,7 +9492,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_token2 [
 	^ '# lex_token2.py
 #
@@ -9519,7 +9519,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_token3 [
 	^ '# lex_token3.py
 #
@@ -9548,7 +9548,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_token4 [
 	^ '# lex_token4.py
 #
@@ -9579,7 +9579,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_token5 [
 	^ '# lex_token5.py
 #
@@ -9615,7 +9615,7 @@ t = lex.token()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_lex_token_dup [
 	^ '# lex_token_dup.py
 #
@@ -9649,7 +9649,7 @@ lex.lex()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_makedoc [
 	^ '#!/usr/local/bin/python
 
@@ -9848,7 +9848,7 @@ open(filename,"w").write(data)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_readSampleClass [
 	^ '#!/usr/bin/python
 import sys
@@ -9916,7 +9916,7 @@ for define in cppHeader.defines:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_0 [
 	^ '
 a = 1
@@ -9924,7 +9924,7 @@ a = 1
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_1 [
 	^ '
 def ident(x):
@@ -9936,7 +9936,7 @@ aap = boing(1,1.0)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_10 [
 	^ '
 class fred:                              # hallo: [int]
@@ -9953,7 +9953,7 @@ d = c.a                                  # [str]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_100 [
 	^ '
 print [1,2] == [1,2]                     # [int]
@@ -9975,7 +9975,7 @@ print [1] in ([2],[1])                   # [int]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_102 [
 	^ '
 a = (1,2)                                # [tuple2(int, int)]
@@ -10009,7 +10009,7 @@ a in [(1,e)]                             # [int]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_103 [
 	^ '
 
@@ -10038,7 +10038,7 @@ b.bla()                                  # []
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_104 [
 	^ '
 class fred:                              # y: [int]*
@@ -10057,7 +10057,7 @@ print b == b                             # [int]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_105 [
 	^ '
 def bla():
@@ -10074,7 +10074,7 @@ print bla()                              # [tuple2(int, int)]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_106 [
 	^ '
 def escapement():
@@ -10126,7 +10126,7 @@ transitive()                             # []
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_107 [
 	^ '
 n = 8                                    # [int]
@@ -10147,7 +10147,7 @@ print nums                               # [list(tuple2(int, int))]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_108 [
 	^ '
 t = (1,2,3)                              # [tuple(int)]
@@ -10165,7 +10165,7 @@ print e[t], e[v], e[w]                   # [int], [int], [int]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_109 [
 	^ '
 board = 1                                # [int]
@@ -10181,7 +10181,7 @@ move, mob = best_move(board)                 # [tuple2(tuple2(int, int), int)]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_11 [
 	^ '
 class fred:                              # a: []
@@ -10195,7 +10195,7 @@ b = a.a                                  # [int]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_110 [
 	^ '
 def row_perm_rec(numbers):               # numbers: [list(int)]
@@ -10211,7 +10211,7 @@ row_perm_rec(puzzlerows[0])                 # []
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_111 [
 	^ '
 a = (1,2)                                # [tuple(int)]
@@ -10239,7 +10239,7 @@ print a, dc[a], b, dc[b]                 # [tuple(int)], [int], [tuple(int)], [i
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_112 [
 	^ '
 def row_perm_rec(numbers):               # numbers: [list(int)]
@@ -10261,7 +10261,7 @@ solve_row(17, puzzleboard[0])                 # []
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_113 [
 	^ '
 a = [1,2,3]                              # [list(int)]
@@ -10275,7 +10275,7 @@ print d[-1]                              # [int]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_114 [
 	^ '
 def bla():
@@ -10294,7 +10294,7 @@ bla()                                    # []
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_115 [
 	^ '
 d = (1, (1.1, ''u''))
@@ -10315,7 +10315,7 @@ print ''uh'', ''%.2f %d'' % l[0][0], l[0][1], len(l)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_118 [
 	^ '
 class node:                              # activation: [int]*
@@ -10335,7 +10335,7 @@ c = node(3, e)                           # [node]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_119 [
 	^ '
 a = [1,2,3,4,5]                          # [list(int)]
@@ -10349,7 +10349,7 @@ print a[::-1]                            # [list(int)]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_12 [
 	^ '
 class integer:
@@ -10372,7 +10372,7 @@ print a, b, c, d
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_120 [
 	^ '
 l = [(b,a) for a,b in enumerate([1,2,3])] # [list(tuple(int))]
@@ -10390,7 +10390,7 @@ z,v = bla()                              # [tuple2(str, float)]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_122 [
 	^ '
 # (c) Mark Dufour
@@ -10496,7 +10496,7 @@ for hup in [neural_network_output(network, example) for example, answer in examp
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_123 [
 	^ '
 # (c) Jack Ha
@@ -10681,7 +10681,7 @@ for x in range(30):
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_124 [
 	^ '
 # A simple program to find the prime factors of a given number.
@@ -10724,7 +10724,7 @@ print factors                            # [list(int)]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_125 [
 	^ '
 print ''hello, world!''
@@ -10758,7 +10758,7 @@ print [{"A": 0, "B": 1}[c] for c in "ABABABA"] # [list(int)]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_126 [
 	^ '
 # (c) Wensheng Wang
@@ -10797,7 +10797,7 @@ print primes(100)                        # [list(int)]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_127 [
 	^ '
 print ''hello, world!''                    # [str]
@@ -10840,7 +10840,7 @@ print x[0]                               # [dude]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_128 [
 	^ '
 def main():
@@ -10869,7 +10869,7 @@ print subsets(range(4))
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_129 [
 	^ '
 import sys
@@ -10900,7 +10900,7 @@ print ''hoei\\n''
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_13 [
 	^ '
 class fred:                              # thingy: [int]
@@ -10917,7 +10917,7 @@ c = h.hottum(''jo'')                       # [int]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_130 [
 	^ '
 a = range(10)
@@ -10938,7 +10938,7 @@ print d
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_131 [
 	^ '
 # (c) Bearophile
@@ -10972,7 +10972,7 @@ print [(''%.2f'' % x, ''%.2f'' % y) for x, y in upper + lower[1:-1]]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_132 [
 	^ '
 # From: http://en.wikipedia.org/wiki/Eight_queens_puzzle
@@ -11007,7 +11007,7 @@ print len(solutions), "solutions."
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_133 [
 	^ '
 def mandelbrot(max_iterations=1000):
@@ -11045,7 +11045,7 @@ for x in range(10):
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_134 [
 	^ '
 def pascal(n):
@@ -11061,7 +11061,7 @@ print pascal(9)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_135 [
 	^ '
 # Textual Voronoi code modified from: <abhishek@ocf.berkeley.edu>
@@ -11119,7 +11119,7 @@ round(t2-t1, 3)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_136 [
 	^ '
 print ''hello, world!''
@@ -11356,7 +11356,7 @@ exit(-1)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_137 [
 	^ '
 class node:
@@ -11371,7 +11371,7 @@ print incoming(node())
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_138 [
 	^ '
 x = [0,1]
@@ -11411,7 +11411,7 @@ print "a".join(["a","b"])
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_139 [
 	^ '
 def gen():
@@ -11615,7 +11615,7 @@ fun4(1,2,e=2.0,c=''8'')
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_140 [
 	^ '
 class father(object):
@@ -11652,7 +11652,7 @@ print mydaughter.g(5)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_141 [
 	^ '
 class renderobject:
@@ -11682,7 +11682,7 @@ w.objects.append(sphere(6,7,8))
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_142 [
 	^ '
 class renderobject: pass
@@ -11708,7 +11708,7 @@ lights[0].hoei()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_143 [
 	^ '
 class renderobject:
@@ -11736,7 +11736,7 @@ for obj in meuk:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_144 [
 	^ '
 class huhuhu:
@@ -11774,7 +11774,7 @@ if bla is not ''meuk'':
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_146 [
 	^ '
 class C1:
@@ -11792,7 +11792,7 @@ print c3.a1, c3.a2
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_147 [
 	^ '
 class meuk: pass
@@ -11859,7 +11859,7 @@ except ValueError, v:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_148 [
 	^ '
 # (c) Peter Goodspeed
@@ -12039,7 +12039,7 @@ aigame()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_15 [
 	^ '
 class xevious:                           # y: [int]*, z: [str]*
@@ -12069,7 +12069,7 @@ qbert()                                  # [int]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_150 [
 	^ '
 # (c) Bearophile
@@ -12185,7 +12185,7 @@ sga.run()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_151 [
 	^ '
 # (c) Dave Griffiths
@@ -12545,7 +12545,7 @@ w.render(''test.ppm'')
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_152 [
 	^ '
 x = ''0,0''
@@ -12629,7 +12629,7 @@ except StopIteration: pass
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_153 [
 	^ '
 # (c) (the sister of) Peter Goodspeed
@@ -12744,7 +12744,7 @@ eventLoop(nextI)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_154 [
 	^ '
 # (c) Peter Goodspeed
@@ -12951,7 +12951,7 @@ puzzle.solve()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_155 [
 	^ '
 # (c) Peter Cock
@@ -13138,7 +13138,7 @@ for x in range(50):
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_156 [
 	^ '
 print ''he\\"''
@@ -13226,7 +13226,7 @@ for j in [-2, -1]:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_157 [
 	^ '
 # This is an extremely simple chess like speed test program written in Python
@@ -13602,7 +13602,7 @@ speedTest()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_158 [
 	^ '
 def appl(predicate, x): return predicate(x)
@@ -13649,7 +13649,7 @@ print ''aaaa''.split(''a'', -1)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_159 [
 	^ '
 # (c) Reinhold P. Weicker,  CACM Vol 27, No 10, 10/84 pg. 1013.
@@ -13870,7 +13870,7 @@ main(LOOPS)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_16 [
 	^ '
 class integer:
@@ -13893,7 +13893,7 @@ qbert()                                  # [integer]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_160 [
 	^ '
 #  Based on original version written in BCPL by Dr Martin Richards
@@ -14303,7 +14303,7 @@ print result
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_161 [
 	^ '
 bla = {}
@@ -14337,7 +14337,7 @@ print f
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_162 [
 	^ '
 class City(object):
@@ -14408,7 +14408,7 @@ x = os.listdir(''.'')
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_163 [
 	^ '
 import time
@@ -14449,7 +14449,7 @@ r(81*''0'')
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_164 [
 	^ '
 # basic string module support
@@ -14550,7 +14550,7 @@ BootStrapLoader3()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_165 [
 	^ '
 print 1, 2, ''3'', ''%.2f'' % 4.1
@@ -14609,7 +14609,7 @@ for line in file(''testdata/hopsakee''):
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_166 [
 	^ '# optional start/end arguments for str.{count, startswith, endswith}
 
@@ -14684,7 +14684,7 @@ blah = set([])
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_167 [
 	^ '
 print '''',
@@ -14725,7 +14725,7 @@ def MergeAndVerify(newModList,finalModHash):
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_168 [
 	^ '
 a = frozenset([1])
@@ -14766,7 +14766,7 @@ k = frozenset([2])
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_169 [
 	^ '
 # --- assignment expressions
@@ -14836,7 +14836,7 @@ except getopt.GetoptError:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_170 [
 	^ '
 # --- model list.__str__ call to elem.__repr__
@@ -14918,7 +14918,7 @@ print (e < f) + (e > f), [0,1][e == f]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_171 [
 	^ '
 # --- math.pow
@@ -15093,7 +15093,7 @@ print
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_172 [
 	^ '
 
@@ -15193,7 +15193,7 @@ for i in range(25): runrng(wh)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_173 [
 	^ '
 # --- division revisited
@@ -15361,7 +15361,7 @@ blahx(18, 19)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_174 [
 	^ '
 # iter.__len__
@@ -15557,7 +15557,7 @@ print dd[''hoi'']
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_175 [
 	^ '
 # --- out of bounds can be okay
@@ -15616,7 +15616,7 @@ if d: print 6
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_176 [
 	^ '
 # --- string formatting problem
@@ -15699,7 +15699,7 @@ maze = ASCIIMaze()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_177 [
 	^ '
 # --- import problem
@@ -15719,7 +15719,7 @@ s=hello().hello()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_178 [
 	^ '
 # --- more aug assignment
@@ -15829,7 +15829,7 @@ this = 1
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_179 [
 	^ '
 #simple fixes
@@ -15978,7 +15978,7 @@ print sorted(d3.items())
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_18 [
 	^ '
 cube = []                                # [list_float_int]
@@ -15988,7 +15988,7 @@ cube.append(1.0)                         # [None]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_180 [
 	^ '
 #re
@@ -16193,7 +16193,7 @@ string.x = 4
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_181 [
 	^ '
 #time.strptime
@@ -16342,7 +16342,7 @@ print
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_182 [
 	^ '
 #equality..
@@ -16554,7 +16554,7 @@ except:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_183 [
 	^ '
 # casting
@@ -16715,7 +16715,7 @@ X()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_184 [
 	^ '
 # locally override module name
@@ -16837,7 +16837,7 @@ for xr in xrr:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_185 [
 	^ '
 # file.next
@@ -16907,7 +16907,7 @@ import signal
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_186 [
 	^ '
 # print space or not
@@ -17053,7 +17053,7 @@ print ork
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_187 [
 	^ '
 # __ss_result
@@ -17302,7 +17302,7 @@ with f:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_188 [
 	^ '
 import csv, collections
@@ -17349,7 +17349,7 @@ csv.DictWriter(open(''testdata/woef.csv''), None, dialect = ''excel'', delimiter
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_189 [
 	^ '
 import heapq
@@ -17460,7 +17460,7 @@ for op in heapq.nsmallest(5, [3, 15]):
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_19 [
 	^ '
 #class list:                              # unit: [float]*
@@ -17479,7 +17479,7 @@ y = cube[0]                                  # [float]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_190 [
 	^ '
 import itertools
@@ -17829,7 +17829,7 @@ print ''### Combinations_with_replacement ###''
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_191 [
 	^ '
 # defaultdict fixes
@@ -18143,7 +18143,7 @@ print [[]] == [[1]]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_192 [
 	^ '
 from __future__ import print_function
@@ -18284,7 +18284,7 @@ print(aazz.wa)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_193 [
 	^ '
 # __init__ not called
@@ -18345,7 +18345,7 @@ oink[t2] = oink[t2]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_194 [
 	^ '#new casting/conversion approach
 digit_dict = {
@@ -18505,7 +18505,7 @@ print float('' \n iNf''), float(''INF''), float('' -inf''), float(''NaN''), floa
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_195 [
 	^ '# !$!#$
 try:
@@ -18565,7 +18565,7 @@ a.close()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_196 [
 	^ '# template not removed after iteration
 class BadError(Exception):
@@ -18967,7 +18967,7 @@ sys.exit()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_197 [
 	^ '# mmap
 import mmap
@@ -19460,7 +19460,7 @@ sys.exit(''woef'')
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_198 [
 	^ '# __NOT macro missing parentheses
 x=10
@@ -19506,7 +19506,7 @@ sys.exit(7)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_199 [
 	^ '# skipped Discard node inside generator
 def streams(archive):
@@ -19612,7 +19612,7 @@ print repr(child_stdout.read())
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_2 [
 	^ '
 class fred: pass
@@ -19621,7 +19621,7 @@ x = fred()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_20 [
 	^ '
 cube = []
@@ -19631,7 +19631,7 @@ y = cube[0]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_200 [
 	^ '#select.select
 import os
@@ -19706,7 +19706,7 @@ bla(lambda a,b:a+b)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_201 [
 	^ '# unpacking negative integers
 import struct
@@ -19854,7 +19854,7 @@ print day
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_202 [
 	^ '# name clash
 debug = True
@@ -19868,7 +19868,7 @@ Debug().debug(''debug'')
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_21 [
 	^ '
 def gettuple():
@@ -19881,7 +19881,7 @@ cube = [(1,2),(3,4),a,gettuple()]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_22 [
 	^ '
 for a in [(1,2),(3,4)]:                  # [list_tuple_int]
@@ -19890,7 +19890,7 @@ for a in [(1,2),(3,4)]:                  # [list_tuple_int]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_23 [
 	^ '
 
@@ -19905,7 +19905,7 @@ b = hoei(cube)                               # [tuple_int]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_24 [
 	^ '
 class integer: pass
@@ -19924,7 +19924,7 @@ a = hoei()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_25 [
 	^ '
 cube = [[1,2],(3,4)]
@@ -19932,7 +19932,7 @@ cube = [[1,2],(3,4)]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_26 [
 	^ '
 cube = [(1,2),(3,4)]                     # [list_tuple_int]
@@ -19941,7 +19941,7 @@ cube[0] = (1,2)                          # [tuple_int]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_28 [
 	^ '
 def propagate(la):                       # la: [list(int)]
@@ -19953,7 +19953,7 @@ propagate([2])                           # []
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_29 [
 	^ '
 argv = ['''',''testdata/uuf250-010.cnf'']             # [list(str)]
@@ -19968,7 +19968,7 @@ fixedt = [-1 for var in vars]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_3 [
 	^ '
 def ident(x):
@@ -19981,7 +19981,7 @@ h = boing(boing(a,1.0),boing(3.0,a))
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_30 [
 	^ '
 # (c) Mark Dufour
@@ -20099,7 +20099,7 @@ if not solve_rec():                      # [int]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_31 [
 	^ '
 #class list:                              # unit: [int]*
@@ -20119,7 +20119,7 @@ print puzzlecolumns.__len__()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_32 [
 	^ '
 def qbert(a):                            # a: [int]
@@ -20135,7 +20135,7 @@ qbert(b)                                 # []
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_33 [
 	^ '
 #a = 1                                    # [int]
@@ -20149,7 +20149,7 @@ print b                                  # [int]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_36 [
 	^ '
 argv = ['''',''testdata/uuf250-010.cnf'']             # [list(str)]
@@ -20163,7 +20163,7 @@ cnf = [y for y in ffile(x)]               # [list(int)]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_37 [
 	^ '
 # (c) Mark Dufour
@@ -20345,7 +20345,7 @@ print ''nodes'', nodecount, ''propagations'', propcount # [str], [int], [str], [
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_38 [
 	^ '
 def hu(n, s=-1):                         # s: [int], n: [int]
@@ -20356,7 +20356,7 @@ a = [i for i in hu(10)]                      # []
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_39 [
 	^ '
 import testdata.bert
@@ -20397,7 +20397,7 @@ print toepas(a)                          # [int]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_4 [
 	^ '
 a = [1]
@@ -20405,7 +20405,7 @@ a = [1]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_40 [
 	^ 'def hu(n, s=-1):
     return [s]
@@ -20415,7 +20415,7 @@ c = [i for i in hu(10)]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_43 [
 	^ '
 def hoi():                               # dinges: [list(int)], bla: [list(int)]
@@ -20439,7 +20439,7 @@ print hoi()                              # [list(int)]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_44 [
 	^ '
 #from sets import Set
@@ -20451,7 +20451,7 @@ print a                                  # [Set(int)]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_45 [
 	^ '
 class bert:
@@ -20473,7 +20473,7 @@ if z:                                    # [int]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_46 [
 	^ '
 def hoi(a, b):                           # a: [int, str], b: [int]
@@ -20485,7 +20485,7 @@ hoi(''1'', 1)                                # []
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_5 [
 	^ '
 class fred:
@@ -20497,7 +20497,7 @@ c = b.speak(''goedzo!'')
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_50 [
 	^ '
 
@@ -20517,7 +20517,7 @@ c.append([1])                            # []
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_51 [
 	^ '
 import testdata.bert
@@ -20544,7 +20544,7 @@ print l1(1,2)                            # [int]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_52 [
 	^ '
 #def hoi(a, b, c=1, d=1):                 # a: [int], b: [int], c: [int, float]r, d: [int]
@@ -20570,7 +20570,7 @@ hoi(1,2,3,4)                             # [int]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_53 [
 	^ '
 def yoyo(a):                             # a: [int]
@@ -20587,7 +20587,7 @@ x(1)                                     # []
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_54 [
 	^ '
 import copy
@@ -20605,7 +20605,7 @@ print a, b
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_55 [
 	^ '
 a={}                                     # [dict(int->list(float))]
@@ -20616,7 +20616,7 @@ b= a[1]                                  # [list(float)]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_56 [
 	^ '
 def hoi(a, b, e):                        # a: [int, float], b: [int, float], e: [int]
@@ -20635,7 +20635,7 @@ hoi(1.0, 2.0, 4)                         # [float]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_59 [
 	^ '
 print ''hoi %d %s'' % (2, ''3'')             # [str]
@@ -20645,7 +20645,7 @@ print ''foo\0bar'' != ''foo\0baz''
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_6 [
 	^ '
 def bla():
@@ -20655,7 +20655,7 @@ a = bla()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_60 [
 	^ '
 #class evert:                             # __class__: [class evert]*
@@ -20683,7 +20683,7 @@ PythonParserTests >> source_test_60 [
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_64 [
 	^ '
 def dupl(y):                             # y: [list(int)]
@@ -20698,7 +20698,7 @@ dupl(a)                                  # []
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_69 [
 	^ '
 def ident(x):                            # x: [list(pyobj)]r
@@ -20711,7 +20711,7 @@ ident(ah).append(1.0)                    # []
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_7 [
 	^ '
 def bwa():
@@ -20722,7 +20722,7 @@ a = bwa()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_71 [
 	^ '
 a = (1,)                                # [tuple(int)]
@@ -20737,7 +20737,7 @@ f = [e]                                  # [list(list(float))]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_75 [
 	^ '
 a = [1,2,3,4]                            # [list(int)]
@@ -20753,7 +20753,7 @@ e = [[1, 2],[2, 3, 4]]                   # [list(list(int))]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_76 [
 	^ '
 cnf = [''''.split()]                       # [list()]
@@ -20761,7 +20761,7 @@ cnf = [''''.split()]                       # [list()]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_77 [
 	^ '
 u = ['' p  o'', ''c o '']                    # [list(str)]
@@ -20771,7 +20771,7 @@ cnf2 = [[3] for x in u]                  # [list(list(int))]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_78 [
 	^ '
 cnf = [''8'']                               # [list(str)]
@@ -20782,7 +20782,7 @@ for x in cnf:                            # [list(str)]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_79 [
 	^ '
 nrofvars = [1][0]
@@ -20791,7 +20791,7 @@ vars = range(nrofvars+1)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_8 [
 	^ '
 def aap(y):
@@ -20804,7 +20804,7 @@ y = hap(1.0)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_81 [
 	^ '
 def _reduce(f, l, i=-1):                  # f: [lambda0], l: [list(int)], i: [int]r
@@ -20830,7 +20830,7 @@ print _reduce(acc, score, 0)              # [int]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_82 [
 	^ '
 vars = [1]                               # [list(int)]
@@ -20843,7 +20843,7 @@ a = bla()                                    # []
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_83 [
 	^ '
 def propagate(lit):                      # lit: [int]
@@ -20860,7 +20860,7 @@ propagate(0)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_84 [
 	^ '
 def solve_rec():
@@ -20880,7 +20880,7 @@ solve_rec()                              # []
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_86 [
 	^ '
 def row_perm_rec():
@@ -20904,7 +20904,7 @@ s = row_perm_rec()                       # []
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_88 [
 	^ '
 a = [[0],[1],[2],[3],[4],[5],[6],[7],[8],[9],[0],[1],[2],[3],[4],[5],[6],[7],[8],[9],[0],[1],[2],[3],[4],[5],[6],[7],[8],[9],[0],[1],[2],[3],[4],[5],[6],[7],[8],[9],[0],[1],[2],[3],[4],[5],[6],[7],[8],[9],[0],[1],[2],[3],[4],[5],[6],[7],[8],[9]]
@@ -20918,7 +20918,7 @@ d.append('''')                             # []
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_89 [
 	^ '
 f = {}                                   # [dict(float, int)]
@@ -20934,7 +20934,7 @@ e[4] = 1.0                               # [float]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_9 [
 	^ '
 class fred:
@@ -20947,7 +20947,7 @@ b = a + a                                # [int] = [int]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_93 [
 	^ '
 range(4)                                 # [list(int)]
@@ -20965,7 +20965,7 @@ hans_list = [hans]                       # [list(tuple(float))]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_94 [
 	^ '
 t = (1, 2.0)                             # [tuple2(int, float)]
@@ -20984,7 +20984,7 @@ for e,f in l:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_95 [
 	^ '
 l = [(1,2.0),(2,4.0)]                    # [list(tuple2(int, float))]
@@ -20993,7 +20993,7 @@ m = [(bh, ah) for (ah, bh) in l]         # [list(tuple2(float, int))]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_97 [
 	^ '
 print [(2*a, b) for a in range(4) if a > 0 for b in [''1'',''2'']] # [list(tuple2(int, str))]
@@ -21001,7 +21001,7 @@ print [(2*a, b) for a in range(4) if a > 0 for b in [''1'',''2'']] # [list(tuple
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_98 [
 	^ '
 def best_move(xx):                       # xx: [int]
@@ -21012,7 +21012,7 @@ a, b = best_move(1)                      # [tuple2(tuple2(int, int), int)]
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_99 [
 	^ '
 # (c) Mark Dufour, Haifang Ni
@@ -21138,7 +21138,7 @@ else:
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_test_run [
 	^ '#!/usr/bin/env python
 import traceback
@@ -21361,7 +21361,7 @@ if __name__ == ''__main__'':
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_testlex [
 	^ '# testlex.py
 
@@ -21972,7 +21972,7 @@ unittest.main()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_testyacc [
 	^ '# testyacc.py
 
@@ -22324,7 +22324,7 @@ unittest.main()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_badargs [
 	^ '# -----------------------------------------------------------------------------
 # yacc_badargs.py
@@ -22397,7 +22397,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_badid [
 	^ '# -----------------------------------------------------------------------------
 # yacc_badid.py
@@ -22479,7 +22479,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_badprec [
 	^ '# -----------------------------------------------------------------------------
 # yacc_badprec.py
@@ -22548,7 +22548,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_badprec2 [
 	^ '# -----------------------------------------------------------------------------
 # yacc_badprec2.py
@@ -22621,7 +22621,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_badprec3 [
 	^ '# -----------------------------------------------------------------------------
 # yacc_badprec3.py
@@ -22694,7 +22694,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_badrule [
 	^ '# -----------------------------------------------------------------------------
 # yacc_badrule.py
@@ -22767,7 +22767,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_badtok [
 	^ '# -----------------------------------------------------------------------------
 # yacc_badtok.py
@@ -22840,7 +22840,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_dup [
 	^ '# -----------------------------------------------------------------------------
 # yacc_dup.py
@@ -22913,7 +22913,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_error1 [
 	^ '# -----------------------------------------------------------------------------
 # yacc_error1.py
@@ -22986,7 +22986,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_error2 [
 	^ '# -----------------------------------------------------------------------------
 # yacc_error2.py
@@ -23059,7 +23059,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_error3 [
 	^ '# -----------------------------------------------------------------------------
 # yacc_error3.py
@@ -23131,7 +23131,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_error4 [
 	^ '# -----------------------------------------------------------------------------
 # yacc_error4.py
@@ -23208,7 +23208,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_inf [
 	^ '# -----------------------------------------------------------------------------
 # yacc_inf.py
@@ -23269,7 +23269,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_literal [
 	^ '# -----------------------------------------------------------------------------
 # yacc_literal.py
@@ -23343,7 +23343,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_misplaced [
 	^ '# -----------------------------------------------------------------------------
 # yacc_misplaced.py
@@ -23416,7 +23416,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_missing1 [
 	^ '# -----------------------------------------------------------------------------
 # yacc_missing1.py
@@ -23489,7 +23489,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_nested [
 	^ 'import sys
 
@@ -23527,7 +23527,7 @@ the_parser.parse(''ABC'', the_lexer, tracking=True, debug=1)
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_nodoc [
 	^ '# -----------------------------------------------------------------------------
 # yacc_nodoc.py
@@ -23599,7 +23599,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_noerror [
 	^ '# -----------------------------------------------------------------------------
 # yacc_noerror.py
@@ -23670,7 +23670,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_nop [
 	^ '# -----------------------------------------------------------------------------
 # yacc_nop.py
@@ -23743,7 +23743,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_notfunc [
 	^ '# -----------------------------------------------------------------------------
 # yacc_notfunc.py
@@ -23814,7 +23814,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_notok [
 	^ '# -----------------------------------------------------------------------------
 # yacc_notok.py
@@ -23886,7 +23886,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_prec1 [
 	^ '# -----------------------------------------------------------------------------
 # yacc_prec1.py
@@ -23959,7 +23959,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_rr [
 	^ '# -----------------------------------------------------------------------------
 # yacc_rr.py
@@ -24036,7 +24036,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_rr_unused [
 	^ '# -----------------------------------------------------------------------------
 # yacc_rr_unused.py
@@ -24071,7 +24071,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_simple [
 	^ '# -----------------------------------------------------------------------------
 # yacc_simple.py
@@ -24144,7 +24144,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_sr [
 	^ '# -----------------------------------------------------------------------------
 # yacc_sr.py
@@ -24212,7 +24212,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_term1 [
 	^ '# -----------------------------------------------------------------------------
 # yacc_term1.py
@@ -24285,7 +24285,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_unused [
 	^ '# -----------------------------------------------------------------------------
 # yacc_unused.py
@@ -24367,7 +24367,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_unused_rule [
 	^ '# -----------------------------------------------------------------------------
 # yacc_unused_rule.py
@@ -24444,7 +24444,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_uprec [
 	^ '# -----------------------------------------------------------------------------
 # yacc_uprec.py
@@ -24512,7 +24512,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yacc_uprec2 [
 	^ '# -----------------------------------------------------------------------------
 # yacc_uprec2.py
@@ -24580,7 +24580,7 @@ yacc.yacc()
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_ylex [
 	^ '# lexer for yacc-grammars
 #
@@ -24697,7 +24697,7 @@ if __name__ == ''__main__'':
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yparse [
 	^ '# parser for Unix yacc-based grammars
 #
@@ -24919,7 +24919,7 @@ def print_code(code,indent):
 '
 ]
 
-{ #category : 'resources' }
+{ #category : #resources }
 PythonParserTests >> source_yply [
 	^ '#!/usr/local/bin/python
 # yply.py
@@ -24977,32 +24977,32 @@ if __name__ == ''__main__'':
 '
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testBig1 [
 	self parse: self codeBig1
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testBig2 [
 	self parse: self sourceBig2
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testBig3 [
 	self parse: self sourceBig3
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 PythonParserTests >> testCommentAtEnd [
 	self parse: self sourceCommentAtEnd
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testFor1 [
 	self parse: self sourceFor1
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 PythonParserTests >> testGetComment [
 	self
 		assert:
@@ -25011,7 +25011,7 @@ PythonParserTests >> testGetComment [
 				yourself) scanner comments asArray = #(#(57 64))
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 PythonParserTests >> testGetCommentInBlankLine [
 	self
 		assert:
@@ -25020,1564 +25020,1564 @@ PythonParserTests >> testGetCommentInBlankLine [
 				yourself) scanner comments asArray = #(#(1 8))
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testIf1 [
 	self parse: self sourceIf1
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testLambda1 [
 	self parse: self sourceLambda1
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testLambda2 [
 	self parse: self sourceLambda2
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testLibDummyThreading [
 	"from Python standard library"
 
 	self parse: self sourceLibDummyThreading
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 PythonParserTests >> testNoReturnAtEnd [
 	self parse: self sourceNoReturnAtEnd
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testParameterWithAssign1 [
 	self parse: self sourceParameterWithAssign1
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram1 [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram1
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram10 [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram10
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram10b [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram10b
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram11 [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram11
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram12 [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram12
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram13 [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram13
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram14 [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram14
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram15 [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram15
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram16 [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram16
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram17 [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram17
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram18 [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram18
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram19 [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram19
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram1b [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram1b
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram1c [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram1c
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram2 [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram2
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram20 [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram20
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram21 [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram21
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram3 [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram3
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram4 [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram4
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram5 [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram5
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram6 [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram6
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram7a [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram7a
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram7b [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram7b
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram8 [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram8
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testSimpleProgram9 [
 	"from https://wiki.python.org/moin/SimplePrograms"
 
 	self parse: self sourceSimpleProgram9
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testString1 [
 	self parse: self sourceString1
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testString2 [
 	self parse: self sourceString2
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testString3 [
 	self parse: self sourceString3
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testString4 [
 	self parse: self sourceString4
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testString5 [
 	self parse: self sourceString5
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testString6 [
 	self parse: self sourceString6
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testVarArgs [
 	self parse: self sourceVarArgs
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> testWhileLoop1 [
 	self parse: self sourceWhileLoop1
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_CppHeaderParser [
 	self parse: self source_CppHeaderParser
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_GardenSnake [
 	self parse: self source_GardenSnake
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_basic [
 	self parse: self source_basic
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_basiclex [
 	self parse: self source_basiclex
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_basiclog [
 	self parse: self source_basiclog
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_basinterp [
 	self parse: self source_basinterp
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_basparse [
 	self parse: self source_basparse
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_calclex [
 	self parse: self source_calclex
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_clex [
 	self parse: self source_clex
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_cparse [
 	self parse: self source_cparse
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_ctokens [
 	self parse: self source_ctokens
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_hedit [
 	self parse: self source_hedit
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex [
 	self parse: self source_lex
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_closure [
 	self parse: self source_lex_closure
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_doc1 [
 	self parse: self source_lex_doc1
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_dup1 [
 	self parse: self source_lex_dup1
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_dup2 [
 	self parse: self source_lex_dup2
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_dup3 [
 	self parse: self source_lex_dup3
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_empty [
 	self parse: self source_lex_empty
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_error1 [
 	self parse: self source_lex_error1
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_error2 [
 	self parse: self source_lex_error2
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_error3 [
 	self parse: self source_lex_error3
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_error4 [
 	self parse: self source_lex_error4
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_hedit [
 	self parse: self source_lex_hedit
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_ignore [
 	self parse: self source_lex_ignore
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_ignore2 [
 	self parse: self source_lex_ignore2
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_literal1 [
 	self parse: self source_lex_literal1
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_literal2 [
 	self parse: self source_lex_literal2
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_many_tokens [
 	self parse: self source_lex_many_tokens
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_module [
 	self parse: self source_lex_module
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_module_import [
 	self parse: self source_lex_module_import
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_object [
 	self parse: self source_lex_object
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_opt_alias [
 	self parse: self source_lex_opt_alias
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_optimize [
 	self parse: self source_lex_optimize
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_optimize2 [
 	self parse: self source_lex_optimize2
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_optimize3 [
 	self parse: self source_lex_optimize3
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_re1 [
 	self parse: self source_lex_re1
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_re2 [
 	self parse: self source_lex_re2
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_re3 [
 	self parse: self source_lex_re3
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_rule1 [
 	self parse: self source_lex_rule1
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_rule2 [
 	self parse: self source_lex_rule2
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_rule3 [
 	self parse: self source_lex_rule3
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_state1 [
 	self parse: self source_lex_state1
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_state2 [
 	self parse: self source_lex_state2
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_state3 [
 	self parse: self source_lex_state3
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_state4 [
 	self parse: self source_lex_state4
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_state5 [
 	self parse: self source_lex_state5
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_state_noerror [
 	self parse: self source_lex_state_noerror
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_state_norule [
 	self parse: self source_lex_state_norule
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_state_try [
 	self parse: self source_lex_state_try
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_token1 [
 	self parse: self source_lex_token1
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_token2 [
 	self parse: self source_lex_token2
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_token3 [
 	self parse: self source_lex_token3
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_token4 [
 	self parse: self source_lex_token4
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_token5 [
 	self parse: self source_lex_token5
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_lex_token_dup [
 	self parse: self source_lex_token_dup
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_makedoc [
 	self parse: self source_makedoc
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_readSampleClass [
 	self parse: self source_readSampleClass
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_0 [
 	self parse: self source_test_0
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_1 [
 	self parse: self source_test_1
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_10 [
 	self parse: self source_test_10
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_100 [
 	self parse: self source_test_100
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_102 [
 	self parse: self source_test_102
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_103 [
 	self parse: self source_test_103
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_104 [
 	self parse: self source_test_104
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_105 [
 	self parse: self source_test_105
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_106 [
 	self parse: self source_test_106
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_107 [
 	self parse: self source_test_107
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_108 [
 	self parse: self source_test_108
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_109 [
 	self parse: self source_test_109
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_11 [
 	self parse: self source_test_11
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_110 [
 	self parse: self source_test_110
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_111 [
 	self parse: self source_test_111
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_112 [
 	self parse: self source_test_112
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_113 [
 	self parse: self source_test_113
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_114 [
 	self parse: self source_test_114
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_115 [
 	self parse: self source_test_115
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_118 [
 	self parse: self source_test_118
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_119 [
 	self parse: self source_test_119
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_12 [
 	self parse: self source_test_12
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_120 [
 	self parse: self source_test_120
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_122 [
 	self parse: self source_test_122
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_123 [
 	self parse: self source_test_123
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_124 [
 	self parse: self source_test_124
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_125 [
 	self parse: self source_test_125
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_126 [
 	self parse: self source_test_126
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_127 [
 	self parse: self source_test_127
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_128 [
 	self parse: self source_test_128
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_129 [
 	self parse: self source_test_129
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_13 [
 	self parse: self source_test_13
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_130 [
 	self parse: self source_test_130
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_131 [
 	self parse: self source_test_131
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_132 [
 	self parse: self source_test_132
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_133 [
 	self parse: self source_test_133
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_134 [
 	self parse: self source_test_134
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_135 [
 	self parse: self source_test_135
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_136 [
 	self parse: self source_test_136
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_137 [
 	self parse: self source_test_137
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_138 [
 	self parse: self source_test_138
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_139 [
 	self parse: self source_test_139
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_140 [
 	self parse: self source_test_140
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_141 [
 	self parse: self source_test_141
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_142 [
 	self parse: self source_test_142
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_143 [
 	self parse: self source_test_143
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_144 [
 	self parse: self source_test_144
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_146 [
 	self parse: self source_test_146
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_147 [
 	self parse: self source_test_147
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_148 [
 	self parse: self source_test_148
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_15 [
 	self parse: self source_test_15
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_150 [
 	self parse: self source_test_150
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_151 [
 	self parse: self source_test_151
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_152 [
 	self parse: self source_test_152
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_153 [
 	self parse: self source_test_153
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_154 [
 	self parse: self source_test_154
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_155 [
 	self parse: self source_test_155
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_156 [
 	self parse: self source_test_156
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_157 [
 	self parse: self source_test_157
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_158 [
 	self parse: self source_test_158
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_159 [
 	self parse: self source_test_159
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_16 [
 	self parse: self source_test_16
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_160 [
 	self parse: self source_test_160
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_161 [
 	self parse: self source_test_161
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_162 [
 	self parse: self source_test_162
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_163 [
 	self parse: self source_test_163
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_164 [
 	self parse: self source_test_164
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_165 [
 	self parse: self source_test_165
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_166 [
 	self parse: self source_test_166
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_167 [
 	self parse: self source_test_167
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_168 [
 	self parse: self source_test_168
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_169 [
 	self parse: self source_test_169
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_170 [
 	self parse: self source_test_170
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_171 [
 	self parse: self source_test_171
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_172 [
 	self parse: self source_test_172
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_173 [
 	self parse: self source_test_173
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_174 [
 	self parse: self source_test_174
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_175 [
 	self parse: self source_test_175
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_176 [
 	self parse: self source_test_176
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_177 [
 	self parse: self source_test_177
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_178 [
 	self parse: self source_test_178
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_179 [
 	self parse: self source_test_179
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_18 [
 	self parse: self source_test_18
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_180 [
 	self parse: self source_test_180
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_181 [
 	self parse: self source_test_181
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_182 [
 	self parse: self source_test_182
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_183 [
 	self parse: self source_test_183
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_184 [
 	self parse: self source_test_184
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_185 [
 	self parse: self source_test_185
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_186 [
 	self parse: self source_test_186
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_187 [
 	self parse: self source_test_187
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_188 [
 	self parse: self source_test_188
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_189 [
 	self parse: self source_test_189
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_19 [
 	self parse: self source_test_19
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_190 [
 	self parse: self source_test_190
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_191 [
 	self parse: self source_test_191
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_192 [
 	self parse: self source_test_192
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_193 [
 	self parse: self source_test_193
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_194 [
 	self parse: self source_test_194
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_195 [
 	self parse: self source_test_195
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_196 [
 	self parse: self source_test_196
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_197 [
 	self parse: self source_test_197
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_198 [
 	self parse: self source_test_198
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_199 [
 	self parse: self source_test_199
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_2 [
 	self parse: self source_test_2
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_20 [
 	self parse: self source_test_20
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_200 [
 	self parse: self source_test_200
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_201 [
 	self parse: self source_test_201
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_202 [
 	self parse: self source_test_202
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_21 [
 	self parse: self source_test_21
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_22 [
 	self parse: self source_test_22
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_23 [
 	self parse: self source_test_23
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_24 [
 	self parse: self source_test_24
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_25 [
 	self parse: self source_test_25
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_26 [
 	self parse: self source_test_26
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_28 [
 	self parse: self source_test_28
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_29 [
 	self parse: self source_test_29
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_3 [
 	self parse: self source_test_3
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_30 [
 	self parse: self source_test_30
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_31 [
 	self parse: self source_test_31
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_32 [
 	self parse: self source_test_32
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_33 [
 	self parse: self source_test_33
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_36 [
 	self parse: self source_test_36
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_37 [
 	self parse: self source_test_37
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_38 [
 	self parse: self source_test_38
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_39 [
 	self parse: self source_test_39
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_4 [
 	self parse: self source_test_4
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_40 [
 	self parse: self source_test_40
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_43 [
 	self parse: self source_test_43
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_44 [
 	self parse: self source_test_44
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_45 [
 	self parse: self source_test_45
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_46 [
 	self parse: self source_test_46
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_5 [
 	self parse: self source_test_5
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_50 [
 	self parse: self source_test_50
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_51 [
 	self parse: self source_test_51
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_52 [
 	self parse: self source_test_52
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_53 [
 	self parse: self source_test_53
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_54 [
 	self parse: self source_test_54
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_55 [
 	self parse: self source_test_55
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_56 [
 	self parse: self source_test_56
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_59 [
 	self parse: self source_test_59
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_6 [
 	self parse: self source_test_6
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_60 [
 	self parse: self source_test_60
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_64 [
 	self parse: self source_test_64
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_69 [
 	self parse: self source_test_69
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_7 [
 	self parse: self source_test_7
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_71 [
 	self parse: self source_test_71
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_75 [
 	self parse: self source_test_75
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_76 [
 	self parse: self source_test_76
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_77 [
 	self parse: self source_test_77
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_78 [
 	self parse: self source_test_78
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_79 [
 	self parse: self source_test_79
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_8 [
 	self parse: self source_test_8
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_81 [
 	self parse: self source_test_81
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_82 [
 	self parse: self source_test_82
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_83 [
 	self parse: self source_test_83
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_84 [
 	self parse: self source_test_84
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_86 [
 	self parse: self source_test_86
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_88 [
 	self parse: self source_test_88
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_89 [
 	self parse: self source_test_89
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_9 [
 	self parse: self source_test_9
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_93 [
 	self parse: self source_test_93
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_94 [
 	self parse: self source_test_94
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_95 [
 	self parse: self source_test_95
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_97 [
 	self parse: self source_test_97
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_98 [
 	self parse: self source_test_98
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_99 [
 	self parse: self source_test_99
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_test_run [
 	self parse: self source_test_run
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_testlex [
 	self parse: self source_testlex
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_testyacc [
 	self parse: self source_testyacc
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_badargs [
 	self parse: self source_yacc_badargs
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_badid [
 	self parse: self source_yacc_badid
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_badprec [
 	self parse: self source_yacc_badprec
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_badprec2 [
 	self parse: self source_yacc_badprec2
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_badprec3 [
 	self parse: self source_yacc_badprec3
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_badrule [
 	self parse: self source_yacc_badrule
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_badtok [
 	self parse: self source_yacc_badtok
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_dup [
 	self parse: self source_yacc_dup
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_error1 [
 	self parse: self source_yacc_error1
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_error2 [
 	self parse: self source_yacc_error2
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_error3 [
 	self parse: self source_yacc_error3
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_error4 [
 	self parse: self source_yacc_error4
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_inf [
 	self parse: self source_yacc_inf
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_literal [
 	self parse: self source_yacc_literal
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_misplaced [
 	self parse: self source_yacc_misplaced
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_missing1 [
 	self parse: self source_yacc_missing1
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_nested [
 	self parse: self source_yacc_nested
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_nodoc [
 	self parse: self source_yacc_nodoc
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_noerror [
 	self parse: self source_yacc_noerror
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_nop [
 	self parse: self source_yacc_nop
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_notfunc [
 	self parse: self source_yacc_notfunc
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_notok [
 	self parse: self source_yacc_notok
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_prec1 [
 	self parse: self source_yacc_prec1
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_rr [
 	self parse: self source_yacc_rr
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_rr_unused [
 	self parse: self source_yacc_rr_unused
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_simple [
 	self parse: self source_yacc_simple
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_sr [
 	self parse: self source_yacc_sr
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_term1 [
 	self parse: self source_yacc_term1
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_unused [
 	self parse: self source_yacc_unused
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_unused_rule [
 	self parse: self source_yacc_unused_rule
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_uprec [
 	self parse: self source_yacc_uprec
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yacc_uprec2 [
 	self parse: self source_yacc_uprec2
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_ylex [
 	self parse: self source_ylex
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yparse [
 	self parse: self source_yparse
 ]
 
-{ #category : 'tests - programs' }
+{ #category : #'tests - programs' }
 PythonParserTests >> test_yply [
 	self parse: self source_yply
 ]
