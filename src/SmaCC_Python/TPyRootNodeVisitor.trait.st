@@ -206,8 +206,8 @@ TPyRootNodeVisitor >> visitImport: anImport [
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitInitOpt: anInitOpt [
-	^ self visitRoot: anInitOpt
+TPyRootNodeVisitor >> visitInit: anInit [
+	^ self visitRoot: anInit
 ]
 
 { #category : #generated }
@@ -238,6 +238,11 @@ TPyRootNodeVisitor >> visitListIf: aListIf [
 { #category : #generated }
 TPyRootNodeVisitor >> visitListmaker: aListmaker [
 	^ self visitRoot: aListmaker
+]
+
+{ #category : #generated }
+TPyRootNodeVisitor >> visitMetaclass: aMetaclass [
+	^ self visitRoot: aMetaclass
 ]
 
 { #category : #generated }
@@ -318,6 +323,11 @@ TPyRootNodeVisitor >> visitSingleInput: aSingleInput [
 { #category : #generated }
 TPyRootNodeVisitor >> visitSliceop: aSliceop [
 	^ self visitRoot: aSliceop
+]
+
+{ #category : #generated }
+TPyRootNodeVisitor >> visitSpread: aSpread [
+	^ self visitRoot: aSpread
 ]
 
 { #category : #generated }
