@@ -2,7 +2,6 @@ Class {
 	#name : #PyElifNode,
 	#superclass : #PyRootNode,
 	#instVars : [
-		'elifs_opt',
 		'elifToken',
 		'elif',
 		'colonToken',
@@ -11,7 +10,7 @@ Class {
 		'iNDENTToken',
 		'dEDENTToken'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
@@ -69,20 +68,6 @@ PyElifNode >> elifToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-PyElifNode >> elifs_opt [
-	^ elifs_opt
-]
-
-{ #category : #generated }
-PyElifNode >> elifs_opt: aPyElifNode [
-	self elifs_opt notNil
-		ifTrue: [ self elifs_opt parent: nil ].
-	elifs_opt := aPyElifNode.
-	self elifs_opt notNil
-		ifTrue: [ self elifs_opt parent: self ]
-]
-
-{ #category : #generated }
 PyElifNode >> iNDENTToken [
 	^ iNDENTToken
 ]
@@ -110,7 +95,7 @@ PyElifNode >> nEWLINEToken: aSmaCCToken [
 
 { #category : #generated }
 PyElifNode >> nodeVariables [
-	^ #(#elifs_opt #elif)
+	^ #(#elif)
 ]
 
 { #category : #generated }

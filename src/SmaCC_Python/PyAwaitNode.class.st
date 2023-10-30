@@ -3,8 +3,7 @@ Class {
 	#superclass : #PyRootNode,
 	#instVars : [
 		'awaitToken',
-		'atom',
-		'trailers'
+		'expression'
 	],
 	#category : #'SmaCC_Python'
 }
@@ -12,18 +11,6 @@ Class {
 { #category : #generated }
 PyAwaitNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitAwait: self
-]
-
-{ #category : #generated }
-PyAwaitNode >> atom [
-	^ atom
-]
-
-{ #category : #generated }
-PyAwaitNode >> atom: aPyRootNode [
-	self atom notNil ifTrue: [ self atom parent: nil ].
-	atom := aPyRootNode.
-	self atom notNil ifTrue: [ self atom parent: self ]
 ]
 
 { #category : #generated }
@@ -37,34 +24,23 @@ PyAwaitNode >> awaitToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-PyAwaitNode >> compositeNodeVariables [
-	^ #(#trailers)
+PyAwaitNode >> expression [
+	^ expression
 ]
 
-{ #category : #'generated-initialize-release' }
-PyAwaitNode >> initialize [
-	super initialize.
-	trailers := OrderedCollection new: 2.
+{ #category : #generated }
+PyAwaitNode >> expression: aPyRootNode [
+	self expression notNil ifTrue: [ self expression parent: nil ].
+	expression := aPyRootNode.
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
 PyAwaitNode >> nodeVariables [
-	^ #(#atom)
+	^ #(#expression)
 ]
 
 { #category : #generated }
 PyAwaitNode >> tokenVariables [
 	^ #(#awaitToken)
-]
-
-{ #category : #generated }
-PyAwaitNode >> trailers [
-	^ trailers
-]
-
-{ #category : #generated }
-PyAwaitNode >> trailers: anOrderedCollection [
-	self setParents: self trailers to: nil.
-	trailers := anOrderedCollection.
-	self setParents: self trailers to: self
 ]

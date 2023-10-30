@@ -5,7 +5,7 @@ Class {
 		'periodTokens',
 		'names'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
@@ -15,14 +15,14 @@ PyDottedNameNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 PyDottedNameNode >> compositeTokenVariables [
-	^ #(#periodTokens #names)
+	^ #(#names #periodTokens)
 ]
 
 { #category : #'generated-initialize-release' }
 PyDottedNameNode >> initialize [
 	super initialize.
-	periodTokens := OrderedCollection new: 2.
 	names := OrderedCollection new: 2.
+	periodTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

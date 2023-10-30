@@ -6,7 +6,7 @@ Class {
 		'classdef',
 		'funcdef'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
@@ -29,17 +29,20 @@ PyDecoratedNode >> classdef: aPyClassdefNode [
 ]
 
 { #category : #generated }
+PyDecoratedNode >> compositeNodeVariables [
+	^ #(#decorators)
+]
+
+{ #category : #generated }
 PyDecoratedNode >> decorators [
 	^ decorators
 ]
 
 { #category : #generated }
-PyDecoratedNode >> decorators: aPyDecoratorsNode [
-	self decorators notNil
-		ifTrue: [ self decorators parent: nil ].
-	decorators := aPyDecoratorsNode.
-	self decorators notNil
-		ifTrue: [ self decorators parent: self ]
+PyDecoratedNode >> decorators: anOrderedCollection [
+	self setParents: self decorators to: nil.
+	decorators := anOrderedCollection.
+	self setParents: self decorators to: self
 ]
 
 { #category : #generated }
@@ -56,7 +59,13 @@ PyDecoratedNode >> funcdef: aPyFuncdefNode [
 		ifTrue: [ self funcdef parent: self ]
 ]
 
+{ #category : #'generated-initialize-release' }
+PyDecoratedNode >> initialize [
+	super initialize.
+	decorators := OrderedCollection new: 2.
+]
+
 { #category : #generated }
 PyDecoratedNode >> nodeVariables [
-	^ #(#decorators #classdef #funcdef)
+	^ #(#classdef #funcdef)
 ]

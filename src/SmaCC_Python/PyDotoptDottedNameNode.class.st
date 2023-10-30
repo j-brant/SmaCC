@@ -5,7 +5,7 @@ Class {
 		'dots',
 		'name'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
@@ -33,12 +33,10 @@ PyDotoptDottedNameNode >> name [
 ]
 
 { #category : #generated }
-PyDotoptDottedNameNode >> name: aPyDottedNameNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
-	name := aPyDottedNameNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+PyDotoptDottedNameNode >> name: aPyRootNode [
+	self name notNil ifTrue: [ self name parent: nil ].
+	name := aPyRootNode.
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
