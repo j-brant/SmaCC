@@ -57,12 +57,10 @@ PyImportNode >> from [
 ]
 
 { #category : #generated }
-PyImportNode >> from: aPyDotoptDottedNameNode [
-	self from notNil
-		ifTrue: [ self from parent: nil ].
-	from := aPyDotoptDottedNameNode.
-	self from notNil
-		ifTrue: [ self from parent: self ]
+PyImportNode >> from: aPyRootNode [
+	self from notNil ifTrue: [ self from parent: nil ].
+	from := aPyRootNode.
+	self from notNil ifTrue: [ self from parent: self ]
 ]
 
 { #category : #generated }
