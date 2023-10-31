@@ -101,16 +101,6 @@ TPyRootNodeVisitor >> visitDictorsetmaker: aDictorsetmaker [
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitDotoptDottedName: aDotoptDottedName [
-	^ self visitRoot: aDotoptDottedName
-]
-
-{ #category : #generated }
-TPyRootNodeVisitor >> visitDots: aDots [
-	^ self visitRoot: aDots
-]
-
-{ #category : #generated }
 TPyRootNodeVisitor >> visitDottedName: aDottedName [
 	^ self visitRoot: aDottedName
 ]
@@ -258,6 +248,11 @@ TPyRootNodeVisitor >> visitPrint: aPrint [
 { #category : #generated }
 TPyRootNodeVisitor >> visitRaise: aRaise [
 	^ self visitRoot: aRaise
+]
+
+{ #category : #generated }
+TPyRootNodeVisitor >> visitRelativeName: aRelativeName [
+	^ self visitRoot: aRelativeName
 ]
 
 { #category : #generated }
