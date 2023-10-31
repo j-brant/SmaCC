@@ -5,14 +5,30 @@ Class {
 		'execToken',
 		'expr',
 		'inToken',
-		'tests_opt'
+		'tests',
+		'commaToken'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
 PyExecNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitExec: self
+]
+
+{ #category : #generated }
+PyExecNode >> commaToken [
+	^ commaToken
+]
+
+{ #category : #generated }
+PyExecNode >> commaToken: aSmaCCToken [
+	commaToken := aSmaCCToken
+]
+
+{ #category : #generated }
+PyExecNode >> compositeNodeVariables [
+	^ #(#tests)
 ]
 
 { #category : #generated }
@@ -49,26 +65,30 @@ PyExecNode >> inToken: aSmaCCToken [
 	inToken := aSmaCCToken
 ]
 
+{ #category : #'generated-initialize-release' }
+PyExecNode >> initialize [
+	super initialize.
+	tests := OrderedCollection new: 2.
+]
+
 { #category : #generated }
 PyExecNode >> nodeVariables [
-	^ #(#expr #tests_opt)
+	^ #(#expr)
 ]
 
 { #category : #generated }
-PyExecNode >> tests_opt [
-	^ tests_opt
+PyExecNode >> tests [
+	^ tests
 ]
 
 { #category : #generated }
-PyExecNode >> tests_opt: aPyTestTestOptNode [
-	self tests_opt notNil
-		ifTrue: [ self tests_opt parent: nil ].
-	tests_opt := aPyTestTestOptNode.
-	self tests_opt notNil
-		ifTrue: [ self tests_opt parent: self ]
+PyExecNode >> tests: anOrderedCollection [
+	self setParents: self tests to: nil.
+	tests := anOrderedCollection.
+	self setParents: self tests to: self
 ]
 
 { #category : #generated }
 PyExecNode >> tokenVariables [
-	^ #(#execToken #inToken)
+	^ #(#execToken #inToken #commaToken)
 ]

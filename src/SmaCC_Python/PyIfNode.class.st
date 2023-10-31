@@ -5,14 +5,14 @@ Class {
 		'ifToken',
 		'if',
 		'colonToken',
-		'elsif',
-		'else',
 		'statements',
 		'nEWLINEToken',
 		'iNDENTToken',
-		'dEDENTToken'
+		'dEDENTToken',
+		'elsifs',
+		'else'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
@@ -32,7 +32,7 @@ PyIfNode >> colonToken: aSmaCCToken [
 
 { #category : #generated }
 PyIfNode >> compositeNodeVariables [
-	^ #(#statements)
+	^ #(#statements #elsifs)
 ]
 
 { #category : #generated }
@@ -60,17 +60,15 @@ PyIfNode >> else: aPyElseNode [
 ]
 
 { #category : #generated }
-PyIfNode >> elsif [
-	^ elsif
+PyIfNode >> elsifs [
+	^ elsifs
 ]
 
 { #category : #generated }
-PyIfNode >> elsif: aPyElifNode [
-	self elsif notNil
-		ifTrue: [ self elsif parent: nil ].
-	elsif := aPyElifNode.
-	self elsif notNil
-		ifTrue: [ self elsif parent: self ]
+PyIfNode >> elsifs: anOrderedCollection [
+	self setParents: self elsifs to: nil.
+	elsifs := anOrderedCollection.
+	self setParents: self elsifs to: self
 ]
 
 { #category : #generated }
@@ -111,6 +109,7 @@ PyIfNode >> ifToken: aSmaCCToken [
 PyIfNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
+	elsifs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -125,7 +124,7 @@ PyIfNode >> nEWLINEToken: aSmaCCToken [
 
 { #category : #generated }
 PyIfNode >> nodeVariables [
-	^ #(#if #elsif #else)
+	^ #(#if #else)
 ]
 
 { #category : #generated }

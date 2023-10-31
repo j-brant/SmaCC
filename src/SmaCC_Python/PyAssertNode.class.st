@@ -3,9 +3,10 @@ Class {
 	#superclass : #PyRootNode,
 	#instVars : [
 		'assertToken',
-		'condition'
+		'tests',
+		'commaToken'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
@@ -24,25 +25,39 @@ PyAssertNode >> assertToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-PyAssertNode >> condition [
-	^ condition
+PyAssertNode >> commaToken [
+	^ commaToken
 ]
 
 { #category : #generated }
-PyAssertNode >> condition: aPyTestTestOptNode [
-	self condition notNil
-		ifTrue: [ self condition parent: nil ].
-	condition := aPyTestTestOptNode.
-	self condition notNil
-		ifTrue: [ self condition parent: self ]
+PyAssertNode >> commaToken: aSmaCCToken [
+	commaToken := aSmaCCToken
 ]
 
 { #category : #generated }
-PyAssertNode >> nodeVariables [
-	^ #(#condition)
+PyAssertNode >> compositeNodeVariables [
+	^ #(#tests)
+]
+
+{ #category : #'generated-initialize-release' }
+PyAssertNode >> initialize [
+	super initialize.
+	tests := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+PyAssertNode >> tests [
+	^ tests
+]
+
+{ #category : #generated }
+PyAssertNode >> tests: anOrderedCollection [
+	self setParents: self tests to: nil.
+	tests := anOrderedCollection.
+	self setParents: self tests to: self
 ]
 
 { #category : #generated }
 PyAssertNode >> tokenVariables [
-	^ #(#assertToken)
+	^ #(#assertToken #commaToken)
 ]

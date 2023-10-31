@@ -13,7 +13,7 @@ Class {
 		'lparenToken',
 		'rparenToken'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
@@ -39,6 +39,11 @@ PyImportNode >> commaTokens [
 { #category : #generated }
 PyImportNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
+]
+
+{ #category : #generated }
+PyImportNode >> compositeNodeVariables [
+	^ #(#names)
 ]
 
 { #category : #generated }
@@ -106,19 +111,14 @@ PyImportNode >> names [
 
 { #category : #generated }
 PyImportNode >> names: anOrderedCollection [
-	self setParent: self names to: nil.
+	self setParents: self names to: nil.
 	names := anOrderedCollection.
-	self setParent: self names to: self
+	self setParents: self names to: self
 ]
 
 { #category : #generated }
 PyImportNode >> nodeVariables [
 	^ #(#from)
-]
-
-{ #category : #generated }
-PyImportNode >> otherVariables [
-	^ #(#names)
 ]
 
 { #category : #generated }

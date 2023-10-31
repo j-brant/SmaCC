@@ -6,16 +6,6 @@ Trait {
 }
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitAnd: anAnd [
-	^ self visitRoot: anAnd
-]
-
-{ #category : #generated }
-TPyRootNodeVisitor >> visitAndExpr: anAndExpr [
-	^ self visitRoot: anAndExpr
-]
-
-{ #category : #generated }
 TPyRootNodeVisitor >> visitAnnotatedSymbol: anAnnotatedSymbol [
 	^ self visitSymbol: anAnnotatedSymbol
 ]
@@ -23,6 +13,11 @@ TPyRootNodeVisitor >> visitAnnotatedSymbol: anAnnotatedSymbol [
 { #category : #generated }
 TPyRootNodeVisitor >> visitArgument: anArgument [
 	^ self visitRoot: anArgument
+]
+
+{ #category : #generated }
+TPyRootNodeVisitor >> visitAsName: anAsName [
+	^ self visitName: anAsName
 ]
 
 { #category : #generated }
@@ -51,6 +46,11 @@ TPyRootNodeVisitor >> visitBackTick: aBackTick [
 ]
 
 { #category : #generated }
+TPyRootNodeVisitor >> visitBinaryExpression: aBinaryExpression [
+	^ self visitRoot: aBinaryExpression
+]
+
+{ #category : #generated }
 TPyRootNodeVisitor >> visitBreak: aBreak [
 	^ self visitRoot: aBreak
 ]
@@ -71,13 +71,8 @@ TPyRootNodeVisitor >> visitCompIf: aCompIf [
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitCompOp: aCompOp [
-	^ self visitRoot: aCompOp
-]
-
-{ #category : #generated }
-TPyRootNodeVisitor >> visitComparison: aComparison [
-	^ self visitRoot: aComparison
+TPyRootNodeVisitor >> visitComparisonExpression: aComparisonExpression [
+	^ self visitBinaryExpression: aComparisonExpression
 ]
 
 { #category : #generated }
@@ -93,11 +88,6 @@ TPyRootNodeVisitor >> visitDecorated: aDecorated [
 { #category : #generated }
 TPyRootNodeVisitor >> visitDecorator: aDecorator [
 	^ self visitRoot: aDecorator
-]
-
-{ #category : #generated }
-TPyRootNodeVisitor >> visitDecorators: aDecorators [
-	^ self visitRoot: aDecorators
 ]
 
 { #category : #generated }
@@ -216,11 +206,6 @@ TPyRootNodeVisitor >> visitInterpolatedString: anInterpolatedString [
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitLShiftExpr: aLShiftExpr [
-	^ self visitRoot: aLShiftExpr
-]
-
-{ #category : #generated }
 TPyRootNodeVisitor >> visitLambda: aLambda [
 	^ self visitRoot: aLambda
 ]
@@ -246,8 +231,8 @@ TPyRootNodeVisitor >> visitMetaclass: aMetaclass [
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitMinusExpr: aMinusExpr [
-	^ self visitRoot: aMinusExpr
+TPyRootNodeVisitor >> visitName: aName [
+	^ self visitRoot: aName
 ]
 
 { #category : #generated }
@@ -261,33 +246,13 @@ TPyRootNodeVisitor >> visitNumber: aNumber [
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitOr: anOr [
-	^ self visitRoot: anOr
-]
-
-{ #category : #generated }
 TPyRootNodeVisitor >> visitPass: aPass [
 	^ self visitRoot: aPass
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitPlusExpr: aPlusExpr [
-	^ self visitRoot: aPlusExpr
-]
-
-{ #category : #generated }
-TPyRootNodeVisitor >> visitPower: aPower [
-	^ self visitRoot: aPower
-]
-
-{ #category : #generated }
 TPyRootNodeVisitor >> visitPrint: aPrint [
 	^ self visitRoot: aPrint
-]
-
-{ #category : #generated }
-TPyRootNodeVisitor >> visitRShiftExpr: aRShiftExpr [
-	^ self visitRoot: aRShiftExpr
 ]
 
 { #category : #generated }
@@ -351,16 +316,6 @@ TPyRootNodeVisitor >> visitSymbol: aSymbol [
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitTerm: aTerm [
-	^ self visitRoot: aTerm
-]
-
-{ #category : #generated }
-TPyRootNodeVisitor >> visitTestTestOpt: aTestTestOpt [
-	^ self visitRoot: aTestTestOpt
-]
-
-{ #category : #generated }
 TPyRootNodeVisitor >> visitTestlist1: aTestlist1 [
 	^ self visitRoot: aTestlist1
 ]
@@ -396,11 +351,6 @@ TPyRootNodeVisitor >> visitTypeAnnotation: aTypeAnnotation [
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitVBarExpr: aVBarExpr [
-	^ self visitRoot: aVBarExpr
-]
-
-{ #category : #generated }
 TPyRootNodeVisitor >> visitVarArgList: aVarArgList [
 	^ self visitRoot: aVarArgList
 ]
@@ -418,11 +368,6 @@ TPyRootNodeVisitor >> visitWith: aWith [
 { #category : #generated }
 TPyRootNodeVisitor >> visitWithItem: aWithItem [
 	^ self visitRoot: aWithItem
-]
-
-{ #category : #generated }
-TPyRootNodeVisitor >> visitXorExpr: aXorExpr [
-	^ self visitRoot: aXorExpr
 ]
 
 { #category : #generated }

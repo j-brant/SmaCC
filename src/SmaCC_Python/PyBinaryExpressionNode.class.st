@@ -1,0 +1,70 @@
+Class {
+	#name : #PyBinaryExpressionNode,
+	#superclass : #PyRootNode,
+	#instVars : [
+		'left',
+		'opeator',
+		'right',
+		'operator'
+	],
+	#category : #'SmaCC_Python'
+}
+
+{ #category : #generated }
+PyBinaryExpressionNode >> acceptVisitor: aRootVisitor [
+	^ aRootVisitor visitBinaryExpression: self
+]
+
+{ #category : #generated }
+PyBinaryExpressionNode >> left [
+	^ left
+]
+
+{ #category : #generated }
+PyBinaryExpressionNode >> left: aPyRootNode [
+	self left notNil ifTrue: [ self left parent: nil ].
+	left := aPyRootNode.
+	self left notNil ifTrue: [ self left parent: self ]
+]
+
+{ #category : #generated }
+PyBinaryExpressionNode >> nodeVariables [
+	^ #(#left #right)
+]
+
+{ #category : #generated }
+PyBinaryExpressionNode >> opeator [
+	^ opeator
+]
+
+{ #category : #generated }
+PyBinaryExpressionNode >> opeator: aSmaCCToken [
+	opeator := aSmaCCToken
+]
+
+{ #category : #generated }
+PyBinaryExpressionNode >> operator [
+	^ operator
+]
+
+{ #category : #generated }
+PyBinaryExpressionNode >> operator: aSmaCCToken [
+	operator := aSmaCCToken
+]
+
+{ #category : #generated }
+PyBinaryExpressionNode >> right [
+	^ right
+]
+
+{ #category : #generated }
+PyBinaryExpressionNode >> right: aPyRootNode [
+	self right notNil ifTrue: [ self right parent: nil ].
+	right := aPyRootNode.
+	self right notNil ifTrue: [ self right parent: self ]
+]
+
+{ #category : #generated }
+PyBinaryExpressionNode >> tokenVariables [
+	^ #(#opeator #operator)
+]
