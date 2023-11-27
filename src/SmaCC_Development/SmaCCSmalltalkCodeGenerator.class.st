@@ -1104,11 +1104,11 @@ SmaCCSmalltalkCodeGenerator >> scanStringRewriter [
 		replace:
 			'self recordMatch: `@m. self step. currentCharacter == `#l1 ifTrue: [self recordMatch: `@m. self step. currentCharacter == `#l2 ifTrue: `@b]. `@.Stmts'
 			with:
-			'self recordMatch: `@m. (self scanForString: `{RBLiteralNode value: (String with: `#l1 value with: `#l2 value)}) ifTrue: `@b. `@.Stmts';
+			'(self scanForString: `{RBLiteralNode value: (String with: `#l1 value with: `#l2 value)} match: `@m) ifTrue: `@b. `@.Stmts';
 		replace:
-			'self recordMatch: `@m. (self scanForString: `#l1) ifTrue: [self recordMatch: `@m. self step. currentCharacter == `#l2 ifTrue: `@b]. `@.Stmts'
+			'(self scanForString: `#l1 match: `@m) ifTrue: [self recordMatch: `@m. self step. currentCharacter == `#l2 ifTrue: `@b]. `@.Stmts'
 			with:
-			'self recordMatch: `@m. (self scanForString: `{RBLiteralNode value: (`#l1 value copyWith: `#l2 value)}) ifTrue: `@b. `@.Stmts';
+			'(self scanForString: `{RBLiteralNode value: (`#l1 value copyWith: `#l2 value)} match: `@m) ifTrue: `@b. `@.Stmts';
 		yourself
 ]
 

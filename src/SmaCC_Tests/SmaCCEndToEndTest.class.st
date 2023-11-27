@@ -2287,6 +2287,20 @@ SmaCCEndToEndTest >> testRightRecursive [
 ]
 
 { #category : #tests }
+SmaCCEndToEndTest >> testScanForString [
+	| compiler |
+	(compiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	compiler
+		buildDefinition: '<id> : [a-z]+;
+			<return> : return\@;
+			start : <return> {false} | <id> {true};'.
+	compiler compileInto: 'TestScanner' andParser: 'TestParser'.
+	self assert: (self parserClass parse: 'return').
+	self assert: (self parserClass parse: 'return@') not
+]
+
+{ #category : #tests }
 SmaCCEndToEndTest >> testScannerScopes [
 	| parserCompiler parser |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator

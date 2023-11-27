@@ -391,8 +391,8 @@ KotlinScanner >> scan3 [
 
 { #category : #generated }
 KotlinScanner >> scan30 [
-	self recordMatch: #(133).
-	(self scanForString: 's?') ifTrue: [ ^ self recordAndReportMatch: #(44) ].
+	(self scanForString: 's?' match: #(133))
+		ifTrue: [ ^ self recordAndReportMatch: #(44) ].
 	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
 		ifTrue: [ [ self recordMatch: #(133).
 			self step.
@@ -426,8 +426,7 @@ KotlinScanner >> scan32 [
 
 { #category : #generated }
 KotlinScanner >> scan33 [
-	self recordMatch: #(133).
-	(self scanForString: 'ak@')
+	(self scanForString: 'ak@' match: #(133))
 		ifTrue: [ self step.
 			currentCharacter == $`
 				ifTrue: [ self step.
@@ -515,8 +514,7 @@ KotlinScanner >> scan38 [
 
 { #category : #generated }
 KotlinScanner >> scan39 [
-	self recordMatch: #(133).
-	(self scanForString: 'ue@')
+	(self scanForString: 'ue@' match: #(133))
 		ifTrue: [ self step.
 			currentCharacter == $`
 				ifTrue: [ self step.
@@ -590,8 +588,7 @@ KotlinScanner >> scan42 [
 
 { #category : #generated }
 KotlinScanner >> scan43 [
-	self recordMatch: #(133).
-	(self scanForString: 'rn@')
+	(self scanForString: 'rn@' match: #(133))
 		ifTrue: [ self step.
 			currentCharacter == $`
 				ifTrue: [ self step.
@@ -797,8 +794,7 @@ KotlinScanner >> scan48 [
 
 { #category : #generated }
 KotlinScanner >> scan49 [
-	self recordMatch: #(133).
-	(self scanForString: 'er@')
+	(self scanForString: 'er@' match: #(133))
 		ifTrue: [ self step.
 			currentCharacter == $`
 				ifTrue: [ self step.
@@ -846,8 +842,7 @@ KotlinScanner >> scan50 [
 
 { #category : #generated }
 KotlinScanner >> scan51 [
-	self recordMatch: #(133).
-	(self scanForString: 'is@')
+	(self scanForString: 'is@' match: #(133))
 		ifTrue: [ self step.
 			currentCharacter == $`
 				ifTrue: [ self step.
@@ -942,8 +937,7 @@ KotlinScanner >> scanForToken [
 KotlinScanner >> scanForTokenX1 [
 	self step.
 	currentCharacter == $"
-		ifTrue: [ self recordMatch: #(142).
-			(self scanForString: '""')
+		ifTrue: [ (self scanForString: '""' match: #(142))
 				ifTrue: [ [ self recordMatch: #(141 142).
 					self step.
 					currentCharacter == $" ] whileTrue ].

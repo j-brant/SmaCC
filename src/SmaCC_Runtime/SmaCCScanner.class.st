@@ -323,6 +323,15 @@ SmaCCScanner >> scanForString: aString [
 			currentCharacter == each ]
 ]
 
+{ #category : #private }
+SmaCCScanner >> scanForString: aString match: aCollection [
+	^ aString
+		allSatisfy: [ :each | 
+			self recordMatch: aCollection.
+			self step.
+			currentCharacter == each ]
+]
+
 { #category : #accessing }
 SmaCCScanner >> scanForToken [
 	^ self subclassResponsibility
