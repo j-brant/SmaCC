@@ -34,12 +34,12 @@ KotlinScanner >> DelimitedComment [
 
 { #category : #generated }
 KotlinScanner >> emptySymbolTokenId [
-	^ 447
+	^ 423
 ]
 
 { #category : #generated }
 KotlinScanner >> errorTokenId [
-	^ 448
+	^ 424
 ]
 
 { #category : #generated }
