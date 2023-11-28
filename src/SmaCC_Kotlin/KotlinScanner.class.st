@@ -7,12 +7,45 @@ Class {
 { #category : #'generated-initialization' }
 KotlinScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
-	#(#(133 'abstract' 113) #(133 'actual' 123) #(133 'annotation' 102) #(133 'as' 91) #(133 'break' 90) #(133 'by' 72) #(133 'catch' 82) #(133 'class' 64) #(133 'companion' 73) #(133 'const' 116) #(133 'constructor' 71) #(133 'continue' 89) #(133 'crossinline' 120) #(133 'data' 103) #(133 'delegate' 61) #(133 'do' 85) #(133 'dynamic' 95) #(133 'else' 79) #(133 'enum' 100) #(133 'expect' 122) #(133 'external' 110) #(133 'false' 130) #(133 'field' 54) #(133 'file' 53) #(133 'final' 114) #(133 'finally' 83) #(133 'for' 84) #(133 'fun' 66) #(133 'get' 56) #(133 'if' 78) #(133 'import' 63) #(133 'in' 93) #(133 'infix' 109) #(133 'init' 74) #(133 'inline' 108) #(133 'inner' 104) #(133 'interface' 65) #(133 'internal' 99) #(133 'is' 92) #(133 'lateinit' 117) #(133 'noinline' 119) #(133 'null' 131) #(133 'object' 67) #(133 'open' 115) #(133 'operator' 107) #(133 'out' 94) #(133 'override' 112) #(133 'package' 62) #(133 'param' 59) #(133 'private' 97) #(133 'property' 55) #(133 'protected' 98) #(133 'public' 96) #(133 'receiver' 58) #(133 'reified' 121) #(133 'return' 88) #(133 'sealed' 101) #(133 'set' 57) #(133 'setparam' 60) #(133 'super' 76) #(133 'suspend' 111) #(133 'tailrec' 106) #(133 'this' 75) #(133 'throw' 87) #(133 'true' 130) #(133 'try' 81) #(133 'typealias' 70) #(133 'val' 68) #(133 'value' 105) #(133 'var' 69) #(133 'vararg' 118) #(133 'when' 80) #(133 'where' 77) #(133 'while' 86))
+	#(#(136 'abstract' 116) #(136 'actual' 126) #(136 'annotation' 105) #(136 'as' 92) #(136 'break' 91) #(136 'by' 73) #(136 'catch' 83) #(136 'class' 65) #(136 'companion' 74) #(136 'const' 119) #(136 'constructor' 72) #(136 'continue' 90) #(136 'crossinline' 123) #(136 'data' 106) #(136 'delegate' 62) #(136 'do' 86) #(136 'dynamic' 98) #(136 'else' 80) #(136 'enum' 103) #(136 'expect' 125) #(136 'external' 113) #(136 'false' 133) #(136 'field' 55) #(136 'file' 54) #(136 'final' 117) #(136 'finally' 84) #(136 'for' 85) #(136 'fun' 67) #(136 'get' 57) #(136 'if' 79) #(136 'import' 64) #(136 'in' 94) #(136 'infix' 112) #(136 'init' 75) #(136 'inline' 111) #(136 'inner' 107) #(136 'interface' 66) #(136 'internal' 102) #(136 'is' 93) #(136 'lateinit' 120) #(136 'noinline' 122) #(136 'null' 134) #(136 'object' 68) #(136 'open' 118) #(136 'operator' 110) #(136 'out' 97) #(136 'override' 115) #(136 'package' 63) #(136 'param' 60) #(136 'private' 100) #(136 'property' 56) #(136 'protected' 101) #(136 'public' 99) #(136 'receiver' 59) #(136 'reified' 124) #(136 'return' 89) #(136 'sealed' 104) #(136 'set' 58) #(136 'setparam' 61) #(136 'super' 77) #(136 'suspend' 114) #(136 'tailrec' 109) #(136 'this' 76) #(136 'throw' 88) #(136 'true' 133) #(136 'try' 82) #(136 'typealias' 71) #(136 'val' 69) #(136 'value' 108) #(136 'var' 70) #(136 'vararg' 121) #(136 'when' 81) #(136 'where' 78) #(136 'while' 87))
 		do: [ :each | 
 			(keywordMap at: each first ifAbsentPut: [ Dictionary new ])
 				at: (each at: 2)
 				put: each last ].
 	^ keywordMap
+]
+
+{ #category : #generated }
+KotlinScanner >> AT_BOTH_WSId [
+	^ 420
+]
+
+{ #category : #accessing }
+KotlinScanner >> AT_NO_WS [
+	| ch beforeSpace afterSpace |
+	ch := stream peek.
+	afterSpace := ch isNil or: [ ch isSeparator ].
+	beforeSpace := stream position > 2
+			and: [ (self peekAt: stream position - 2) isSeparator ].
+	matchActions := {afterSpace
+				ifTrue: [ beforeSpace ifTrue: [ self AT_BOTH_WSId ] ifFalse: [ self AT_POST_WSId ] ]
+				ifFalse: [ beforeSpace ifTrue: [ self AT_PRE_WSId ] ifFalse: [ self AT_NO_WSId ] ]}.
+	^ self createTokenFor: '@'
+]
+
+{ #category : #generated }
+KotlinScanner >> AT_NO_WSId [
+	^ 37
+]
+
+{ #category : #generated }
+KotlinScanner >> AT_POST_WSId [
+	^ 421
+]
+
+{ #category : #generated }
+KotlinScanner >> AT_PRE_WSId [
+	^ 422
 ]
 
 { #category : #private }
@@ -33,13 +66,72 @@ KotlinScanner >> DelimitedComment [
 ]
 
 { #category : #generated }
-KotlinScanner >> emptySymbolTokenId [
+KotlinScanner >> EXCL_NO_WSId [
+	^ 24
+]
+
+{ #category : #accessing }
+KotlinScanner >> NOT_IN [
+	| ch |
+	ch := stream peek.
+	(ch isNil or: [ ch isSeparator ])
+		ifTrue: [ matchActions := {self NOT_INId}.
+			^ self createTokenFor: '!in' ].
+	matchActions := {self EXCL_NO_WSId}.
+	stream position: stream position - 2.
+	^ self createTokenFor: '!'
+]
+
+{ #category : #generated }
+KotlinScanner >> NOT_INId [
+	^ 96
+]
+
+{ #category : #accessing }
+KotlinScanner >> NOT_IS [
+	| ch |
+	ch := stream peek.
+	(ch isNil or: [ ch isSeparator ])
+		ifTrue: [ matchActions := {self NOT_ISId}.
+			^ self createTokenFor: '!is' ].
+	matchActions := {self EXCL_NO_WSId}.
+	stream position: stream position - 2.
+	^ self createTokenFor: '!'
+]
+
+{ #category : #generated }
+KotlinScanner >> NOT_ISId [
+	^ 95
+]
+
+{ #category : #accessing }
+KotlinScanner >> QUEST_NO_WS [
+	| ch |
+	ch := stream peek.
+	matchActions := (ch isNil or: [ ch isSeparator ])
+			ifTrue: [ {self QUEST_WSId} ]
+			ifFalse: [ {self QUEST_NO_WSId} ].
+	^ self createTokenFor: '?'
+]
+
+{ #category : #generated }
+KotlinScanner >> QUEST_NO_WSId [
+	^ 38
+]
+
+{ #category : #generated }
+KotlinScanner >> QUEST_WSId [
 	^ 423
 ]
 
 { #category : #generated }
-KotlinScanner >> errorTokenId [
+KotlinScanner >> emptySymbolTokenId [
 	^ 424
+]
+
+{ #category : #generated }
+KotlinScanner >> errorTokenId [
+	^ 425
 ]
 
 { #category : #generated }
@@ -54,7 +146,7 @@ KotlinScanner >> scan10 [
 	self recordMatch: #(17).
 	self step.
 	currentCharacter == $+ ifTrue: [ ^ self recordAndReportMatch: #(19) ].
-	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(27) ].
+	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(28) ].
 	^ self reportLastMatch
 ]
 
@@ -63,8 +155,8 @@ KotlinScanner >> scan11 [
 	self recordMatch: #(18).
 	self step.
 	currentCharacter == $- ifTrue: [ ^ self recordAndReportMatch: #(20) ].
-	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(28) ].
-	currentCharacter == $> ifTrue: [ ^ self recordAndReportMatch: #(32) ].
+	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(29) ].
+	currentCharacter == $> ifTrue: [ ^ self recordAndReportMatch: #(33) ].
 	^ self reportLastMatch
 ]
 
@@ -73,9 +165,9 @@ KotlinScanner >> scan12 [
 	self recordMatch: #(6).
 	self step.
 	currentCharacter == $.
-		ifTrue: [ self recordMatch: #(33).
+		ifTrue: [ self recordMatch: #(34).
 			self step.
-			currentCharacter == $< ifTrue: [ ^ self recordAndReportMatch: #(34) ].
+			currentCharacter == $< ifTrue: [ ^ self recordAndReportMatch: #(35) ].
 			^ self reportLastMatch ].
 	currentCharacter isDigit ifTrue: [ ^ self scan13 ].
 	^ self reportLastMatch
@@ -83,7 +175,7 @@ KotlinScanner >> scan12 [
 
 { #category : #generated }
 KotlinScanner >> scan13 [
-	[ self recordMatch: #(124).
+	[ self recordMatch: #(127).
 	self step.
 	currentCharacter == $_
 		ifTrue: [ [ self step.
@@ -93,7 +185,7 @@ KotlinScanner >> scan13 [
 	currentCharacter isDigit ] whileTrue.
 	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan14 ].
 	('Ff' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(124) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(127) ].
 	^ self reportLastMatch
 ]
 
@@ -107,7 +199,7 @@ KotlinScanner >> scan14 [
 
 { #category : #generated }
 KotlinScanner >> scan15 [
-	[ self recordMatch: #(124).
+	[ self recordMatch: #(127).
 	self step.
 	currentCharacter == $_
 		ifTrue: [ [ self step.
@@ -116,7 +208,7 @@ KotlinScanner >> scan15 [
 			^ self reportLastMatch ].
 	currentCharacter isDigit ] whileTrue.
 	('Ff' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(124) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(127) ].
 	^ self reportLastMatch
 ]
 
@@ -132,13 +224,13 @@ KotlinScanner >> scan16 [
 				or: [ (currentCharacter between: Character pageUp and: Character newPage)
 						or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
 			^ self reportLastMatch ].
-	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(30) ].
+	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(31) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 KotlinScanner >> scan17 [
-	self recordMatch: #(125).
+	self recordMatch: #(128).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan18 ].
 	^ self scan17X2
@@ -158,9 +250,9 @@ KotlinScanner >> scan17X2 [
 	('Bb' includes: currentCharacter) ifTrue: [ ^ self scan17X1 ].
 	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan14 ].
 	('Ff' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(124) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(127) ].
 	('Ll' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(129) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(132) ].
 	('Uu' includes: currentCharacter) ifTrue: [ ^ self scan22 ].
 	('Xx' includes: currentCharacter)
 		ifTrue: [ self step.
@@ -185,13 +277,13 @@ KotlinScanner >> scan19 [
 	currentCharacter isDigit ] whileTrue.
 	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan14 ].
 	('Ff' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(124) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(127) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 KotlinScanner >> scan1X1 [
-	[ self recordMatch: #(133).
+	[ self recordMatch: #(136).
 	self step.
 	currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue
 ]
@@ -219,12 +311,12 @@ KotlinScanner >> scan1X3 [
 	currentCharacter == $/ ifTrue: [ ^ self scan16 ].
 	currentCharacter == $0 ifTrue: [ ^ self scan17 ].
 	currentCharacter == $: ifTrue: [ ^ self scan25 ].
-	currentCharacter == $; ifTrue: [ ^ self recordAndReportMatch: #(25) ].
+	currentCharacter == $; ifTrue: [ ^ self recordAndReportMatch: #(26) ].
 	currentCharacter == $< ifTrue: [ ^ self scan26 ].
 	currentCharacter == $= ifTrue: [ ^ self scan27 ].
 	currentCharacter == $> ifTrue: [ ^ self scan28 ].
-	currentCharacter == $? ifTrue: [ ^ self recordAndReportMatch: #(37) ].
-	currentCharacter == $@ ifTrue: [ ^ self recordAndReportMatch: #(36) ].
+	currentCharacter == $? ifTrue: [ ^ self recordAndReportMatch: #(38) ].
+	currentCharacter == $@ ifTrue: [ ^ self recordAndReportMatch: #(37) ].
 	currentCharacter == $[ ifTrue: [ ^ self recordAndReportMatch: #(10) ].
 	currentCharacter == $] ifTrue: [ ^ self recordAndReportMatch: #(11) ].
 	^ self scan1X2
@@ -265,7 +357,7 @@ KotlinScanner >> scan20 [
 
 { #category : #generated }
 KotlinScanner >> scan21 [
-	[ self recordMatch: #(127).
+	[ self recordMatch: #(130).
 	self step.
 	currentCharacter == $_
 		ifTrue: [ [ self step.
@@ -274,23 +366,23 @@ KotlinScanner >> scan21 [
 			^ self reportLastMatch ].
 	currentCharacter between: $0 and: $1 ] whileTrue.
 	('Ll' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(129) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(132) ].
 	('Uu' includes: currentCharacter) ifTrue: [ ^ self scan22 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 KotlinScanner >> scan22 [
-	self recordMatch: #(128).
+	self recordMatch: #(131).
 	self step.
 	('Ll' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(128) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(131) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 KotlinScanner >> scan23 [
-	[ self recordMatch: #(126).
+	[ self recordMatch: #(129).
 	self step.
 	currentCharacter == $_
 		ifTrue: [ [ self step.
@@ -300,7 +392,7 @@ KotlinScanner >> scan23 [
 						or: [ currentCharacter between: $a and: $f ] ]) ifTrue: [ ^ self scan23 ].
 			^ self reportLastMatch ].
 	('Ll' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(129) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(132) ].
 	('Uu' includes: currentCharacter) ifTrue: [ ^ self scan22 ].
 	currentCharacter isDigit
 		or: [ (currentCharacter between: $A and: $F)
@@ -310,7 +402,7 @@ KotlinScanner >> scan23 [
 
 { #category : #generated }
 KotlinScanner >> scan24 [
-	[ self recordMatch: #(125).
+	[ self recordMatch: #(128).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan18 ].
 	currentCharacter == $_
@@ -321,45 +413,45 @@ KotlinScanner >> scan24 [
 	currentCharacter isDigit ] whileTrue.
 	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan14 ].
 	('Ff' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(124) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(127) ].
 	('Ll' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(129) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(132) ].
 	('Uu' includes: currentCharacter) ifTrue: [ ^ self scan22 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 KotlinScanner >> scan25 [
-	self recordMatch: #(24).
+	self recordMatch: #(25).
 	self step.
-	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(35) ].
+	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(36) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 KotlinScanner >> scan26 [
-	self recordMatch: #(38).
+	self recordMatch: #(39).
 	self step.
-	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(40) ].
+	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(41) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 KotlinScanner >> scan27 [
-	self recordMatch: #(26).
+	self recordMatch: #(27).
 	self step.
 	currentCharacter == $=
-		ifTrue: [ self recordMatch: #(45).
+		ifTrue: [ self recordMatch: #(46).
 			self step.
-			currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(46) ] ].
+			currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(47) ] ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 KotlinScanner >> scan28 [
-	self recordMatch: #(39).
+	self recordMatch: #(40).
 	self step.
-	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(41) ].
+	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(42) ].
 	^ self reportLastMatch
 ]
 
@@ -371,7 +463,7 @@ KotlinScanner >> scan29 [
 				or: [ (currentCharacter between: (Character value: 14) and: $_)
 						or: [ currentCharacter >= $a ] ] ])
 		ifTrue: [ [ self step.
-			currentCharacter == $` ifTrue: [ ^ self recordAndReportMatch: #(133) ].
+			currentCharacter == $` ifTrue: [ ^ self recordAndReportMatch: #(136) ].
 			currentCharacter <= Character tab
 				or: [ (currentCharacter between: Character pageUp and: Character newPage)
 						or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue ].
@@ -380,21 +472,31 @@ KotlinScanner >> scan29 [
 
 { #category : #generated }
 KotlinScanner >> scan3 [
-	self recordMatch: #(23).
+	self recordMatch: #(24).
 	self step.
-	currentCharacter == $=
-		ifTrue: [ self recordMatch: #(42).
+	currentCharacter == $!
+		ifTrue: [ [ self recordMatch: #(23).
 			self step.
-			currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(43) ] ].
+			currentCharacter == $! ] whileTrue.
+			^ self reportLastMatch ].
+	currentCharacter == $=
+		ifTrue: [ self recordMatch: #(43).
+			self step.
+			currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(44) ].
+			^ self reportLastMatch ].
+	currentCharacter == $i
+		ifTrue: [ self step.
+			currentCharacter == $n ifTrue: [ ^ self recordAndReportMatch: #(96) ].
+			currentCharacter == $s ifTrue: [ ^ self recordAndReportMatch: #(95) ] ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 KotlinScanner >> scan30 [
-	(self scanForString: 's?' match: #(133))
-		ifTrue: [ ^ self recordAndReportMatch: #(44) ].
+	(self scanForString: 's?' match: #(136))
+		ifTrue: [ ^ self recordAndReportMatch: #(45) ].
 	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ [ self recordMatch: #(133).
+		ifTrue: [ [ self recordMatch: #(136).
 			self step.
 			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 	^ self reportLastMatch
@@ -402,11 +504,11 @@ KotlinScanner >> scan30 [
 
 { #category : #generated }
 KotlinScanner >> scan31 [
-	self recordMatch: #(133).
+	self recordMatch: #(136).
 	self step.
 	currentCharacter == $r ifTrue: [ ^ self scan32 ].
 	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ [ self recordMatch: #(133).
+		ifTrue: [ [ self recordMatch: #(136).
 			self step.
 			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 	^ self reportLastMatch
@@ -414,11 +516,11 @@ KotlinScanner >> scan31 [
 
 { #category : #generated }
 KotlinScanner >> scan32 [
-	self recordMatch: #(133).
+	self recordMatch: #(136).
 	self step.
 	currentCharacter == $e ifTrue: [ ^ self scan33 ].
 	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ [ self recordMatch: #(133).
+		ifTrue: [ [ self recordMatch: #(136).
 			self step.
 			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 	^ self reportLastMatch
@@ -426,7 +528,95 @@ KotlinScanner >> scan32 [
 
 { #category : #generated }
 KotlinScanner >> scan33 [
-	(self scanForString: 'ak@' match: #(133))
+	(self scanForString: 'ak@' match: #(136))
+		ifTrue: [ self step.
+			currentCharacter == $`
+				ifTrue: [ self step.
+					(currentCharacter <= Character tab
+						or: [ (currentCharacter between: Character pageUp and: Character newPage)
+								or: [ (currentCharacter between: (Character value: 14) and: $_)
+										or: [ currentCharacter >= $a ] ] ])
+						ifTrue: [ [ self step.
+							currentCharacter == $` ifTrue: [ ^ self recordAndReportMatch: #(51) ].
+							currentCharacter <= Character tab
+								or: [ (currentCharacter between: Character pageUp and: Character newPage)
+										or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue ].
+					^ self reportLastMatch ].
+			(currentCharacter isLetter or: [ currentCharacter == $_ ])
+				ifTrue: [ [ self recordMatch: #(51).
+					self step.
+					currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
+			^ self reportLastMatch ].
+	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
+		ifTrue: [ [ self recordMatch: #(136).
+			self step.
+			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+KotlinScanner >> scan34 [
+	self recordMatch: #(136).
+	self step.
+	currentCharacter == $o ifTrue: [ ^ self scan35 ].
+	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
+		ifTrue: [ [ self recordMatch: #(136).
+			self step.
+			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+KotlinScanner >> scan35 [
+	self recordMatch: #(136).
+	self step.
+	currentCharacter == $n ifTrue: [ ^ self scan36 ].
+	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
+		ifTrue: [ [ self recordMatch: #(136).
+			self step.
+			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+KotlinScanner >> scan36 [
+	self recordMatch: #(136).
+	self step.
+	currentCharacter == $t ifTrue: [ ^ self scan37 ].
+	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
+		ifTrue: [ [ self recordMatch: #(136).
+			self step.
+			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+KotlinScanner >> scan37 [
+	self recordMatch: #(136).
+	self step.
+	currentCharacter == $i ifTrue: [ ^ self scan38 ].
+	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
+		ifTrue: [ [ self recordMatch: #(136).
+			self step.
+			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+KotlinScanner >> scan38 [
+	self recordMatch: #(136).
+	self step.
+	currentCharacter == $n ifTrue: [ ^ self scan39 ].
+	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
+		ifTrue: [ [ self recordMatch: #(136).
+			self step.
+			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+KotlinScanner >> scan39 [
+	(self scanForString: 'ue@' match: #(136))
 		ifTrue: [ self step.
 			currentCharacter == $`
 				ifTrue: [ self step.
@@ -446,75 +636,61 @@ KotlinScanner >> scan33 [
 					currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 			^ self reportLastMatch ].
 	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ [ self recordMatch: #(133).
+		ifTrue: [ [ self recordMatch: #(136).
 			self step.
 			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-KotlinScanner >> scan34 [
-	self recordMatch: #(133).
+KotlinScanner >> scan4 [
+	self recordMatch: #(137).
 	self step.
-	currentCharacter == $o ifTrue: [ ^ self scan35 ].
-	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ [ self recordMatch: #(133).
-			self step.
-			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
+	currentCharacter == $"
+		ifTrue: [ self step.
+			currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(138) ] ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-KotlinScanner >> scan35 [
-	self recordMatch: #(133).
+KotlinScanner >> scan40 [
+	self recordMatch: #(136).
 	self step.
-	currentCharacter == $n ifTrue: [ ^ self scan36 ].
+	currentCharacter == $e ifTrue: [ ^ self scan41 ].
 	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ [ self recordMatch: #(133).
+		ifTrue: [ [ self recordMatch: #(136).
 			self step.
 			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-KotlinScanner >> scan36 [
-	self recordMatch: #(133).
+KotlinScanner >> scan41 [
+	self recordMatch: #(136).
 	self step.
-	currentCharacter == $t ifTrue: [ ^ self scan37 ].
+	currentCharacter == $t ifTrue: [ ^ self scan42 ].
 	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ [ self recordMatch: #(133).
+		ifTrue: [ [ self recordMatch: #(136).
 			self step.
 			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-KotlinScanner >> scan37 [
-	self recordMatch: #(133).
+KotlinScanner >> scan42 [
+	self recordMatch: #(136).
 	self step.
-	currentCharacter == $i ifTrue: [ ^ self scan38 ].
+	currentCharacter == $u ifTrue: [ ^ self scan43 ].
 	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ [ self recordMatch: #(133).
+		ifTrue: [ [ self recordMatch: #(136).
 			self step.
 			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-KotlinScanner >> scan38 [
-	self recordMatch: #(133).
-	self step.
-	currentCharacter == $n ifTrue: [ ^ self scan39 ].
-	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ [ self recordMatch: #(133).
-			self step.
-			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-KotlinScanner >> scan39 [
-	(self scanForString: 'ue@' match: #(133))
+KotlinScanner >> scan43 [
+	(self scanForString: 'rn@' match: #(136))
 		ifTrue: [ self step.
 			currentCharacter == $`
 				ifTrue: [ self step.
@@ -534,81 +710,7 @@ KotlinScanner >> scan39 [
 					currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 			^ self reportLastMatch ].
 	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ [ self recordMatch: #(133).
-			self step.
-			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-KotlinScanner >> scan4 [
-	self recordMatch: #(134).
-	self step.
-	currentCharacter == $"
-		ifTrue: [ self step.
-			currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(135) ] ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-KotlinScanner >> scan40 [
-	self recordMatch: #(133).
-	self step.
-	currentCharacter == $e ifTrue: [ ^ self scan41 ].
-	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ [ self recordMatch: #(133).
-			self step.
-			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-KotlinScanner >> scan41 [
-	self recordMatch: #(133).
-	self step.
-	currentCharacter == $t ifTrue: [ ^ self scan42 ].
-	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ [ self recordMatch: #(133).
-			self step.
-			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-KotlinScanner >> scan42 [
-	self recordMatch: #(133).
-	self step.
-	currentCharacter == $u ifTrue: [ ^ self scan43 ].
-	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ [ self recordMatch: #(133).
-			self step.
-			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-KotlinScanner >> scan43 [
-	(self scanForString: 'rn@' match: #(133))
-		ifTrue: [ self step.
-			currentCharacter == $`
-				ifTrue: [ self step.
-					(currentCharacter <= Character tab
-						or: [ (currentCharacter between: Character pageUp and: Character newPage)
-								or: [ (currentCharacter between: (Character value: 14) and: $_)
-										or: [ currentCharacter >= $a ] ] ])
-						ifTrue: [ [ self step.
-							currentCharacter == $` ifTrue: [ ^ self recordAndReportMatch: #(48) ].
-							currentCharacter <= Character tab
-								or: [ (currentCharacter between: Character pageUp and: Character newPage)
-										or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue ].
-					^ self reportLastMatch ].
-			(currentCharacter isLetter or: [ currentCharacter == $_ ])
-				ifTrue: [ [ self recordMatch: #(48).
-					self step.
-					currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
-			^ self reportLastMatch ].
-	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ [ self recordMatch: #(133).
+		ifTrue: [ [ self recordMatch: #(136).
 			self step.
 			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 	^ self reportLastMatch
@@ -624,11 +726,11 @@ KotlinScanner >> scan44 [
 { #category : #generated }
 KotlinScanner >> scan45 [
 	self step.
-	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(136) ].
+	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(139) ].
 	currentCharacter == $$ ifTrue: [ ^ self scan45X1 ].
 	currentCharacter == $\ ifTrue: [ ^ self scan45X2 ].
 	true
-		ifTrue: [ [ self recordMatch: #(138).
+		ifTrue: [ [ self recordMatch: #(141).
 			self step.
 			currentCharacter <= $!
 				or: [ currentCharacter == $#
@@ -639,7 +741,7 @@ KotlinScanner >> scan45 [
 
 { #category : #generated }
 KotlinScanner >> scan45X1 [
-	self recordMatch: #(138).
+	self recordMatch: #(141).
 	self step.
 	currentCharacter == $`
 		ifTrue: [ self step.
@@ -648,14 +750,14 @@ KotlinScanner >> scan45X1 [
 						or: [ (currentCharacter between: (Character value: 14) and: $_)
 								or: [ currentCharacter >= $a ] ] ])
 				ifTrue: [ [ self step.
-					currentCharacter == $` ifTrue: [ ^ self recordAndReportMatch: #(137) ].
+					currentCharacter == $` ifTrue: [ ^ self recordAndReportMatch: #(140) ].
 					currentCharacter <= Character tab
 						or: [ (currentCharacter between: Character pageUp and: Character newPage)
 								or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue ].
 			^ self reportLastMatch ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(140) ].
+	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(143) ].
 	(currentCharacter isLetter or: [ currentCharacter == $_ ])
-		ifTrue: [ [ self recordMatch: #(137).
+		ifTrue: [ [ self recordMatch: #(140).
 			self step.
 			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 	^ self reportLastMatch
@@ -681,10 +783,10 @@ KotlinScanner >> scan45X2 [
 									(currentCharacter isDigit
 										or: [ (currentCharacter between: $A and: $F)
 												or: [ currentCharacter between: $a and: $f ] ])
-										ifTrue: [ ^ self recordAndReportMatch: #(139) ] ] ] ].
+										ifTrue: [ ^ self recordAndReportMatch: #(142) ] ] ] ].
 			^ self reportLastMatch ].
 	('"$''\bnrt' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(139) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(142) ].
 	^ self reportLastMatch
 ]
 
@@ -712,7 +814,7 @@ KotlinScanner >> scan46X1 [
 
 { #category : #generated }
 KotlinScanner >> scan46X2 [
-	[ self recordMatch: #(133).
+	[ self recordMatch: #(136).
 	self step.
 	currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue
 ]
@@ -738,12 +840,12 @@ KotlinScanner >> scan46X3 [
 KotlinScanner >> scan46X4 [
 	currentCharacter == $0 ifTrue: [ ^ self scan17 ].
 	currentCharacter == $: ifTrue: [ ^ self scan25 ].
-	currentCharacter == $; ifTrue: [ ^ self recordAndReportMatch: #(25) ].
+	currentCharacter == $; ifTrue: [ ^ self recordAndReportMatch: #(26) ].
 	currentCharacter == $< ifTrue: [ ^ self scan26 ].
 	currentCharacter == $= ifTrue: [ ^ self scan27 ].
 	currentCharacter == $> ifTrue: [ ^ self scan28 ].
-	currentCharacter == $? ifTrue: [ ^ self recordAndReportMatch: #(37) ].
-	currentCharacter == $@ ifTrue: [ ^ self recordAndReportMatch: #(36) ].
+	currentCharacter == $? ifTrue: [ ^ self recordAndReportMatch: #(38) ].
+	currentCharacter == $@ ifTrue: [ ^ self recordAndReportMatch: #(37) ].
 	currentCharacter == $[ ifTrue: [ ^ self recordAndReportMatch: #(10) ].
 	currentCharacter == $] ifTrue: [ ^ self recordAndReportMatch: #(11) ].
 	currentCharacter == $` ifTrue: [ ^ self scan29 ].
@@ -770,11 +872,11 @@ KotlinScanner >> scan46X5 [
 
 { #category : #generated }
 KotlinScanner >> scan47 [
-	self recordMatch: #(133).
+	self recordMatch: #(136).
 	self step.
 	currentCharacter == $u ifTrue: [ ^ self scan48 ].
 	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ [ self recordMatch: #(133).
+		ifTrue: [ [ self recordMatch: #(136).
 			self step.
 			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 	^ self reportLastMatch
@@ -782,11 +884,11 @@ KotlinScanner >> scan47 [
 
 { #category : #generated }
 KotlinScanner >> scan48 [
-	self recordMatch: #(133).
+	self recordMatch: #(136).
 	self step.
 	currentCharacter == $p ifTrue: [ ^ self scan49 ].
 	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ [ self recordMatch: #(133).
+		ifTrue: [ [ self recordMatch: #(136).
 			self step.
 			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 	^ self reportLastMatch
@@ -794,7 +896,55 @@ KotlinScanner >> scan48 [
 
 { #category : #generated }
 KotlinScanner >> scan49 [
-	(self scanForString: 'er@' match: #(133))
+	(self scanForString: 'er@' match: #(136))
+		ifTrue: [ self step.
+			currentCharacter == $`
+				ifTrue: [ self step.
+					(currentCharacter <= Character tab
+						or: [ (currentCharacter between: Character pageUp and: Character newPage)
+								or: [ (currentCharacter between: (Character value: 14) and: $_)
+										or: [ currentCharacter >= $a ] ] ])
+						ifTrue: [ [ self step.
+							currentCharacter == $` ifTrue: [ ^ self recordAndReportMatch: #(53) ].
+							currentCharacter <= Character tab
+								or: [ (currentCharacter between: Character pageUp and: Character newPage)
+										or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue ].
+					^ self reportLastMatch ].
+			(currentCharacter isLetter or: [ currentCharacter == $_ ])
+				ifTrue: [ [ self recordMatch: #(53).
+					self step.
+					currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
+			^ self reportLastMatch ].
+	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
+		ifTrue: [ [ self recordMatch: #(136).
+			self step.
+			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+KotlinScanner >> scan5 [
+	self recordMatch: #(15).
+	self step.
+	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(32) ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+KotlinScanner >> scan50 [
+	self recordMatch: #(136).
+	self step.
+	currentCharacter == $h ifTrue: [ ^ self scan51 ].
+	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
+		ifTrue: [ [ self recordMatch: #(136).
+			self step.
+			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+KotlinScanner >> scan51 [
+	(self scanForString: 'is@' match: #(136))
 		ifTrue: [ self step.
 			currentCharacter == $`
 				ifTrue: [ self step.
@@ -814,55 +964,7 @@ KotlinScanner >> scan49 [
 					currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 			^ self reportLastMatch ].
 	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ [ self recordMatch: #(133).
-			self step.
-			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-KotlinScanner >> scan5 [
-	self recordMatch: #(15).
-	self step.
-	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(31) ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-KotlinScanner >> scan50 [
-	self recordMatch: #(133).
-	self step.
-	currentCharacter == $h ifTrue: [ ^ self scan51 ].
-	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ [ self recordMatch: #(133).
-			self step.
-			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-KotlinScanner >> scan51 [
-	(self scanForString: 'is@' match: #(133))
-		ifTrue: [ self step.
-			currentCharacter == $`
-				ifTrue: [ self step.
-					(currentCharacter <= Character tab
-						or: [ (currentCharacter between: Character pageUp and: Character newPage)
-								or: [ (currentCharacter between: (Character value: 14) and: $_)
-										or: [ currentCharacter >= $a ] ] ])
-						ifTrue: [ [ self step.
-							currentCharacter == $` ifTrue: [ ^ self recordAndReportMatch: #(51) ].
-							currentCharacter <= Character tab
-								or: [ (currentCharacter between: Character pageUp and: Character newPage)
-										or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue ].
-					^ self reportLastMatch ].
-			(currentCharacter isLetter or: [ currentCharacter == $_ ])
-				ifTrue: [ [ self recordMatch: #(51).
-					self step.
-					currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
-			^ self reportLastMatch ].
-	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ [ self recordMatch: #(133).
+		ifTrue: [ [ self recordMatch: #(136).
 			self step.
 			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 	^ self reportLastMatch
@@ -870,7 +972,7 @@ KotlinScanner >> scan51 [
 
 { #category : #generated }
 KotlinScanner >> scan6 [
-	self recordMatch: #(47).
+	self recordMatch: #(48).
 	self step.
 	currentCharacter == $& ifTrue: [ ^ self recordAndReportMatch: #(21) ].
 	^ self reportLastMatch
@@ -912,7 +1014,7 @@ KotlinScanner >> scan7 [
 { #category : #generated }
 KotlinScanner >> scan8 [
 	self step.
-	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(132) ].
+	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(135) ].
 	^ self reportLastMatch
 ]
 
@@ -920,7 +1022,7 @@ KotlinScanner >> scan8 [
 KotlinScanner >> scan9 [
 	self recordMatch: #(14).
 	self step.
-	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(29) ].
+	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(30) ].
 	^ self reportLastMatch
 ]
 
@@ -937,14 +1039,14 @@ KotlinScanner >> scanForToken [
 KotlinScanner >> scanForTokenX1 [
 	self step.
 	currentCharacter == $"
-		ifTrue: [ (self scanForString: '""' match: #(142))
-				ifTrue: [ [ self recordMatch: #(141 142).
+		ifTrue: [ (self scanForString: '""' match: #(145))
+				ifTrue: [ [ self recordMatch: #(144 145).
 					self step.
 					currentCharacter == $" ] whileTrue ].
 			^ self reportLastMatch ].
 	currentCharacter == $$ ifTrue: [ ^ self scanForTokenX1X1 ].
 	true
-		ifTrue: [ [ self recordMatch: #(144).
+		ifTrue: [ [ self recordMatch: #(147).
 			self step.
 			currentCharacter <= $!
 				or: [ currentCharacter == $# or: [ currentCharacter >= $% ] ] ] whileTrue ].
@@ -953,7 +1055,7 @@ KotlinScanner >> scanForTokenX1 [
 
 { #category : #generated }
 KotlinScanner >> scanForTokenX1X1 [
-	self recordMatch: #(144).
+	self recordMatch: #(147).
 	self step.
 	currentCharacter == $`
 		ifTrue: [ self step.
@@ -962,14 +1064,14 @@ KotlinScanner >> scanForTokenX1X1 [
 						or: [ (currentCharacter between: (Character value: 14) and: $_)
 								or: [ currentCharacter >= $a ] ] ])
 				ifTrue: [ [ self step.
-					currentCharacter == $` ifTrue: [ ^ self recordAndReportMatch: #(143) ].
+					currentCharacter == $` ifTrue: [ ^ self recordAndReportMatch: #(146) ].
 					currentCharacter <= Character tab
 						or: [ (currentCharacter between: Character pageUp and: Character newPage)
 								or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue ].
 			^ self reportLastMatch ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(145) ].
+	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(148) ].
 	(currentCharacter isLetter or: [ currentCharacter == $_ ])
-		ifTrue: [ [ self recordMatch: #(143).
+		ifTrue: [ [ self recordMatch: #(146).
 			self step.
 			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 	^ self reportLastMatch
@@ -977,5 +1079,5 @@ KotlinScanner >> scanForTokenX1X1 [
 
 { #category : #generated }
 KotlinScanner >> tokenActions [
-	^ #(nil #DelimitedComment #comment #whitespace)
+	^ #(nil #DelimitedComment #comment #whitespace nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #AT_NO_WS #QUEST_NO_WS nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #NOT_IS #NOT_IN)
 ]
