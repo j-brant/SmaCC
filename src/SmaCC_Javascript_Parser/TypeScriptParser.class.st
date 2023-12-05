@@ -69,3 +69,13 @@ TypeScriptParser >> actionsForCurrentToken [
 					self position: position ] ].
 	^ super actionsForCurrentToken
 ]
+
+{ #category : #testing }
+TypeScriptParser >> tryAllTokens [
+	^ true
+]
+
+{ #category : #testing }
+TypeScriptParser >> useAllTokenIds [
+	^ false
+]

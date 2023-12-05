@@ -5,6 +5,7 @@ Class {
 		'importToken',
 		'imports',
 		'comma',
+		'typeToken',
 		'fromToken',
 		'from',
 		'semicolon'
@@ -97,5 +98,15 @@ JSImportDeclarationNode >> semicolon: aSmaCCToken [
 
 { #category : #generated }
 JSImportDeclarationNode >> tokenVariables [
-	^ #(#importToken #fromToken #from)
+	^ #(#importToken #typeToken #fromToken #from)
+]
+
+{ #category : #generated }
+JSImportDeclarationNode >> typeToken [
+	^ typeToken
+]
+
+{ #category : #generated }
+JSImportDeclarationNode >> typeToken: aSmaCCToken [
+	typeToken := aSmaCCToken
 ]
