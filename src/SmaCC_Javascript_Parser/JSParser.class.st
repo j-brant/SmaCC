@@ -5242,18 +5242,9 @@ JSParser class >> transitionTable [
 { #category : #private }
 JSParser >> actionsForCurrentToken [
 	| actions |
-	currentToken ids first = scanner questionDotId
-		ifTrue: [ (scanner peekCharacter ifNil: [ $a ]) isDigit
-				ifTrue: [ currentToken := scanner tokenClass
-						value: '?'
-						start: currentToken startPosition
-						ids: (Array with: scanner questionId).
-					self position: currentToken startPosition ] ].
+	self splitQuestionDotToken.
 	actions := super actionsForCurrentToken.
-	(currentToken ids first ~= scanner identifierId
-		and: [ (currentToken ids includes: scanner identifierId)
-				and: [ (self keywords includes: currentToken value) not ] ])
-		ifTrue: [ self addActionsFor: scanner identifierId to: actions ].
+	self addIdentifiers: actions.
 	(currentToken ids first ~= scanner identifierNameId
 		and: [ currentToken ids includes: scanner identifierNameId ])
 		ifTrue: [ self addActionsFor: scanner identifierNameId to: actions ].
@@ -5261,29 +5252,58 @@ JSParser >> actionsForCurrentToken [
 		and: [ actions isEmpty ])
 		ifTrue: [ (currentToken value at: 2) == $=
 				ifTrue: [ currentToken := scanner tokenClass
-						value: '/='
-						start: currentToken startPosition
-						ids: (Array with: scanner slashEqualId).
+							value: '/='
+							start: currentToken startPosition
+							ids: (Array with: scanner slashEqualId).
 					self position: currentToken startPosition + 1 ]
 				ifFalse: [ currentToken := scanner tokenClass
-						value: '/'
-						start: currentToken startPosition
-						ids: (Array with: scanner slashId).
+							value: '/'
+							start: currentToken startPosition
+							ids: (Array with: scanner slashId).
 					self position: currentToken startPosition ].
 			^ self actionsForCurrentToken ].
 	(actions isEmpty
 		and: [ nodeStack isEmpty
 				and: [ currentToken value = '#'
 						and: [ currentToken startPosition = 1 and: [ scanner stream peek = $! ] ] ] ])
-		ifTrue: [ "Handle the #!/program/to/run lines"
-			scanner stream
-				upToAny:
-					{Character cr.
-					Character lf}.
+		ifTrue: [  "Handle the #!/program/to/run lines"scanner stream
+				upToAny: {Character cr.
+						Character lf}.
 			scanner comments add: (1 to: scanner position).
 			currentToken := nil.
 			self getNextToken.
 			^ self actionsForCurrentToken ].
+	self addSemicolons: actions.
+	actions isEmpty
+		ifTrue: [ (currentToken ids includes: scanner rightBraceId)
+				ifTrue: [ | i scannerState stackItem |
+					i := nodeStack size.
+					scannerState := nil.
+					[ i > 0 and: [ scannerState isNil ] ]
+						whileTrue: [ stackItem := nodeStack at: i.
+							stackItem = #template ifTrue: [ scannerState := stackItem ].
+							i := i - 1 ].
+					scannerState notNil
+						ifTrue: [ self scope: scannerState.
+							self position: currentToken startPosition - 1.
+							currentToken := nil.
+							self getNextToken.
+							self scope: #default.
+							(currentToken ids includes: scanner rightBraceId) ifTrue: [ ^ actions ].
+							^ self actionsForCurrentToken ] ] ].
+	^ actions
+]
+
+{ #category : #private }
+JSParser >> addIdentifiers: actions [
+	(currentToken ids first ~= scanner identifierId
+		and: [ (currentToken ids includes: scanner identifierId)
+				and: [ (self keywords includes: currentToken value) not ] ])
+		ifTrue: [ self addActionsFor: scanner identifierId to: actions ]
+]
+
+{ #category : #private }
+JSParser >> addSemicolons: actions [
 	(actions isEmpty and: [ self canInsertSemicolon ])
 		ifTrue: [ self addActionsFor: self scanner semicolonId to: actions.
 			actions notEmpty
@@ -5292,48 +5312,20 @@ JSParser >> actionsForCurrentToken [
 						put: self positionForInsertedSemicolon.
 					self position: currentToken startPosition - 1.
 					currentToken := currentToken class
-						value: ';'
-						start: nil
-						ids: (Array with: self scanner semicolonId) ] ].
-	actions isEmpty
-		ifTrue: [ (currentToken ids includes: scanner rightBraceId)
-				ifTrue: [ | i scannerState stackItem |
-					i := nodeStack size.
-					scannerState := nil.
-					[ i > 0 and: [ scannerState isNil ] ]
-						whileTrue: [ stackItem := nodeStack at: i.
-							stackItem = #template
-								ifTrue: [ scannerState := stackItem ].
-							i := i - 1 ].
-					scannerState notNil
-						ifTrue: [ self scope: scannerState.
-							self position: currentToken startPosition - 1.
-							currentToken := nil.
-							self getNextToken.
-							self scope: #default.
-							(currentToken ids includes: scanner rightBraceId)
-								ifTrue: [ ^ actions ].
-							^ self actionsForCurrentToken ] ] ].
-	^ actions
+							value: ';'
+							start: nil
+							ids: (Array with: self scanner semicolonId) ] ]
 ]
 
 { #category : #private }
 JSParser >> canInsertSemicolon [
 	| item |
-	((currentState attributeNamed: #lastInsertedSemicolonPosition)
-		ifNil: [ -1 ]) < self positionForInsertedSemicolon
-		ifFalse: [ ^ false ].
-	nodeStack size > 1
-		ifFalse: [ ^ true ].
-	(nodeStack at: nodeStack size - 1) = #startExpressionStatement
-		ifFalse: [ ^ true ].
-	item := nodeStack last.
-	(item isKindOf: SmaCCToken)
-		ifFalse: [ ^ true ].
-	(item ids includes: scanner identifierId)
-		ifFalse: [ ^ true ].
-	^ item ids size <= 2
-		or: [ (#('let' 'const') includes: item value) not ]
+	^ (nodeStack size <= 1
+		or: [ (nodeStack at: nodeStack size - 1) ~~ #startExpressionStatement
+				or: [ ((item := nodeStack last) isKindOf: SmaCCToken) not
+						or: [ (item ids includes: scanner identifierId) not
+								or: [ item ids size <= 2 or: [ (#('let' 'const') includes: item value) not ] ] ] ] ])
+		and: [ self lastInsertedSemicolonIsBeforeCurrentPosition ]
 ]
 
 { #category : #private }
@@ -5377,6 +5369,12 @@ JSParser >> isJSX [
 { #category : #private }
 JSParser >> keywords [
 	^ self class keywords
+]
+
+{ #category : #private }
+JSParser >> lastInsertedSemicolonIsBeforeCurrentPosition [
+	^ ((currentState attributeNamed: #lastInsertedSemicolonPosition) ifNil: [ -1 ])
+		< self positionForInsertedSemicolon
 ]
 
 { #category : #private }
@@ -10566,6 +10564,17 @@ JSParser >> reduceActionFor__JSXIdentifier___identifier___period___periodToken__
 	self add: ((nodes at: 2) at: 1) to: (result at: 1).
 	self add: ((nodes at: 2) at: 2) to: (result at: 2).
 	^ result
+]
+
+{ #category : #private }
+JSParser >> splitQuestionDotToken [
+	currentToken ids first = scanner questionDotId
+		ifTrue: [ (scanner peekCharacter ifNil: [ $a ]) isDigit
+				ifTrue: [ currentToken := scanner tokenClass
+							value: '?'
+							start: currentToken startPosition
+							ids: (Array with: scanner questionId).
+					self position: currentToken startPosition ] ]
 ]
 
 { #category : #private }
