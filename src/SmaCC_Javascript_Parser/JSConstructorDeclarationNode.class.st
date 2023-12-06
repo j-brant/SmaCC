@@ -4,17 +4,16 @@ Class {
 	#instVars : [
 		'decorators',
 		'constructorToken',
-		'leftParen',
-		'restParameter',
-		'parameters',
-		'commas',
-		'rightParen',
+		'signature',
 		'leftBrace',
 		'statements',
 		'rightBrace',
 		'modifier',
 		'semicolon',
 		'left',
+		'restParameter',
+		'parameters',
+		'commas',
 		'right'
 	],
 	#category : #'SmaCC_Javascript_Parser'
@@ -37,7 +36,7 @@ JSConstructorDeclarationNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 JSConstructorDeclarationNode >> compositeNodeVariables [
-	^ #(#decorators #parameters #statements)
+	^ #(#decorators #statements #parameters)
 ]
 
 { #category : #generated }
@@ -69,16 +68,16 @@ JSConstructorDeclarationNode >> ignoredCompositeTokenVariables [
 
 { #category : #generated }
 JSConstructorDeclarationNode >> ignoredTokenVariables [
-	^ #(#leftParen #rightParen #leftBrace #rightBrace #semicolon #left #right)
+	^ #(#leftBrace #rightBrace #semicolon #left #right)
 ]
 
 { #category : #'generated-initialize-release' }
 JSConstructorDeclarationNode >> initialize [
 	super initialize.
 	decorators := OrderedCollection new: 2.
+	statements := OrderedCollection new: 2.
 	parameters := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
-	statements := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -102,16 +101,6 @@ JSConstructorDeclarationNode >> leftBrace: aSmaCCToken [
 ]
 
 { #category : #generated }
-JSConstructorDeclarationNode >> leftParen [
-	^ leftParen
-]
-
-{ #category : #generated }
-JSConstructorDeclarationNode >> leftParen: aSmaCCToken [
-	leftParen := aSmaCCToken
-]
-
-{ #category : #generated }
 JSConstructorDeclarationNode >> modifier [
 	^ modifier
 ]
@@ -123,7 +112,7 @@ JSConstructorDeclarationNode >> modifier: aSmaCCToken [
 
 { #category : #generated }
 JSConstructorDeclarationNode >> nodeVariables [
-	^ #(#restParameter)
+	^ #(#signature #restParameter)
 ]
 
 { #category : #generated }
@@ -171,16 +160,6 @@ JSConstructorDeclarationNode >> rightBrace: aSmaCCToken [
 ]
 
 { #category : #generated }
-JSConstructorDeclarationNode >> rightParen [
-	^ rightParen
-]
-
-{ #category : #generated }
-JSConstructorDeclarationNode >> rightParen: aSmaCCToken [
-	rightParen := aSmaCCToken
-]
-
-{ #category : #generated }
 JSConstructorDeclarationNode >> semicolon [
 	^ semicolon
 ]
@@ -188,6 +167,18 @@ JSConstructorDeclarationNode >> semicolon [
 { #category : #generated }
 JSConstructorDeclarationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
+]
+
+{ #category : #generated }
+JSConstructorDeclarationNode >> signature [
+	^ signature
+]
+
+{ #category : #generated }
+JSConstructorDeclarationNode >> signature: aJSCallSignatureNode [
+	self signature notNil ifTrue: [ self signature parent: nil ].
+	signature := aJSCallSignatureNode.
+	self signature notNil ifTrue: [ self signature parent: self ]
 ]
 
 { #category : #generated }
