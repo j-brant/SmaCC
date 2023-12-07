@@ -280,8 +280,8 @@ SmaCCParserDebugSession >> tokenIntervalFor: anObject [
 					interval isNil
 						ifTrue: [ interval := newInterval ]
 						ifFalse: [ newInterval notNil
-								ifTrue:
-									[ interval := (interval first min: newInterval first) to: (interval last max: newInterval last) ] ] ].
+								ifTrue: [ interval := (interval first min: newInterval first)
+											to: (interval last max: newInterval last) ] ] ].
 			^ interval ].
 	(anObject isKindOf: SmaCCToken)
 		ifTrue: [ (anObject startPosition notNil and: [ anObject startPosition > 0 ])
@@ -297,11 +297,10 @@ SmaCCParserDebugSession >> tokenIntervalFor: anObject [
 					(each startPosition notNil and: [ each startPosition > 0 ])
 						ifTrue: [ start := start min: each startPosition.
 							end := end max: each stopPosition ] ].
-			start <= end
-				ifTrue: [ ^ start to: end ] ].
+			start <= end ifTrue: [ ^ start to: end ] ].
 	(anObject isKindOf: SmaCCDeferredReduceAction)
 		ifTrue: [ ^ self tokenIntervalFor: anObject arguments ].
 	(anObject isKindOf: SmaCCDeferredChoice)
-		ifTrue: [ ^ self tokenIntervalFor: anObject possibleItems first ].
+		ifTrue: [ ^ self tokenIntervalFor: anObject preferredItem ].
 	^ nil
 ]

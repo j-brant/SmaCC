@@ -178,8 +178,7 @@ SmaCCEndToEndTest >> testAmbiguousResultWithDifferentScannerTokens [
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
 		defaultCategory: self class category.
 	parserCompiler
-		buildDefinition:
-			'%id <a> <aa>;
+		buildDefinition: '%id <a> <aa>;
 			<a> : a ; <aa> : aa;
 			%glr;
 			List : Item {''1''} | List Item {''1'' + ''2''} ;
@@ -188,8 +187,7 @@ SmaCCEndToEndTest >> testAmbiguousResultWithDifferentScannerTokens [
 	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
 	self parserClass compile: 'alwaysPerformReduceAction ^true'.
 	self parserClass
-		compile:
-			'actionsForCurrentToken 
+		compile: 'actionsForCurrentToken 
 		| oldToken oldPosition |
 		(currentToken ids includes: scanner aaId) ifTrue: [
 			oldToken := currentToken.
@@ -204,10 +202,9 @@ SmaCCEndToEndTest >> testAmbiguousResultWithDifferentScannerTokens [
 	self assert: (self parserClass parse: 'a') = 1.
 	[ result := self parserClass parse: 'aa' ]
 		on: SmaCCAmbiguousResultNotification
-		do:
-			[ :ex | 
-			results := ex tag
-				collect: [ :each | each performOnSmaCCParser: ex parser ].
+		do: [ :ex | 
+			results := ex allPossibleItems
+					collect: [ :each | each performOnSmaCCParser: ex parser ].
 			ex resume: 0 ].
 	self assert: result = 0.
 	self assert: results size = 2.
@@ -221,8 +218,7 @@ SmaCCEndToEndTest >> testAmbiguousResults [
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
 		defaultCategory: self class category.
 	parserCompiler
-		buildDefinition:
-			'<int> : \d+; <whitespace>: \s+;
+		buildDefinition: '<int> : \d+; <whitespace>: \s+;
 			%glr;
 			Expression : Expression "+" Expression {''1'' + ''3''}
 				| Expression "*" Expression {''1'' * ''3''}
@@ -234,23 +230,19 @@ SmaCCEndToEndTest >> testAmbiguousResults [
 	self assert: (self parserClass parse: '3 * 4') = 12.
 	[ result := self parserClass parse: '2 + 3 * 4' ]
 		on: SmaCCAmbiguousResultNotification
-		do:
-			[ :ex | 
-			results := ex tag
-				collect: [ :each | each performOnSmaCCParser: ex parser ].
+		do: [ :ex | 
+			results := ex allPossibleItems
+					collect: [ :each | each performOnSmaCCParser: ex parser ].
 			ex resume: 0 ].
 	self assert: result = 0.
 	self assert: results size = 2.
 	self assert: (results includes: 20).
-	self assert: (results includes: 14).
-
-	"There are a bunch of ways to parse the following expression. If we don't merge the possibilities, then this will never complete."
+	self assert: (results includes: 14).	"There are a bunch of ways to parse the following expression. If we don't merge the possibilities, then this will never complete."
 	self
-		assert:
-			(self parserClass
-				parse:
-					'1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1')
-				= 60
+		assert: ([ self parserClass
+				parse: '1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1' ]
+				on: SmaCCAmbiguousResultNotification
+				do: [ :ex | ex resume: ex allPossibleItems first ]) = 60
 ]
 
 { #category : #'tests-parse tree creation' }
@@ -1805,10 +1797,10 @@ SmaCCEndToEndTest >> testPassThrough [
 { #category : #'tests-parse tree creation' }
 SmaCCEndToEndTest >> testPerformanceMatchCollection [
 	| parserCompiler node match fastTime slowTime |
-	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator defaultCategory: self class category.
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
 	parserCompiler
-		buildDefinition:
-			'<number> : \d; <whitespace> : \s+; 
+		buildDefinition: '<number> : \d; <whitespace> : \s+; 
 			<patternToken>: (\`  [^\`]* \`)+ ;
 			%glr;
 			%root Parse ; %prefix Foo; %suffix Node;
@@ -1817,12 +1809,18 @@ SmaCCEndToEndTest >> testPerformanceMatchCollection [
 			Expression : Number ;
 			Number : <number> ''number'' {{Number}} ;'.
 	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
-	node := self parserClass parse: (String new: 1000 withAll: $1) , '22' , (String new: 1000 withAll: $1).
-	fastTime := Time millisecondsToRun: [ self assert: (node match: node inContext: Dictionary new) ].
+	node := self parserClass
+			parse: (String new: 1000 withAll: $1) , '22' , (String new: 1000 withAll: $1).
+	fastTime := Time
+			millisecondsToRun: [ self assert: (node match: node inContext: Dictionary new) ].
 	match := [ self parserClass parse: '`a{beList}` 22 `b{beList}`' ]
-		on: SmaCCAmbiguousResultNotification
-		do: [ :ex | (ex tag collect: [ :each | each performOnSmaCCParser: ex parser ]) detect: [ :each | (each isKindOf: SmaCCPatternNode) not ] ifNone: [ ex tag first ] ].
-	slowTime := Time millisecondsToRun: [ self assert: (match match: node inContext: Dictionary new) ].
+			on: SmaCCAmbiguousResultNotification
+			do: [ :ex | 
+				(ex allPossibleItems collect: [ :each | each performOnSmaCCParser: ex parser ])
+					detect: [ :each | (each isKindOf: SmaCCPatternNode) not ]
+					ifNone: [ ex allPossibleItems first ] ].
+	slowTime := Time
+			millisecondsToRun: [ self assert: (match match: node inContext: Dictionary new) ].
 	self assert: (fastTime max: 1) * 10 > slowTime
 ]
 
