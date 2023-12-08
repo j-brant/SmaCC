@@ -10,7 +10,7 @@ BaselineOfCPPParser >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.31' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.32' ].
 
 		spec package: 'SmaCC_CPP_Parser' with: [
 			spec requires: #('SmaCCRuntime') ].
