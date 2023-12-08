@@ -76,16 +76,16 @@ SmaCCDeferredChoice >> chooseIn: aSmaCCParser [
 
 { #category : #private }
 SmaCCDeferredChoice >> compare: firstCollection to: secondCollection [
-	| index first second |
+	| first second firstItem secondItem firstHeap secondHeap |
 	first := firstCollection.
 	second := secondCollection.
-	[ first := self sortItems: first.
-	second := self sortItems: second.
-	index := 1.
-	[ index <= first size and: [ index <= second size ] ]
-		whileTrue: [ (first at: index) priority = (second at: index) priority
-				ifTrue: [ index := index + 1 ]
-				ifFalse: [ ^ (first at: index) priority - (second at: index) priority ] ].
+	[ firstHeap := self sortItems: first.
+	secondHeap := self sortItems: second.
+	[ firstHeap notEmpty and: [ secondHeap notEmpty ] ]
+		whileTrue: [ firstItem := firstHeap removeFirst.
+			secondItem := secondHeap removeFirst.
+			firstItem priority = secondItem priority
+				ifFalse: [ ^ firstItem priority - secondItem priority ] ].
 	first := self subItemsIn: first.
 	second := self subItemsIn: second.
 	first notEmpty and: [ second notEmpty ] ] whileTrue.
@@ -129,14 +129,15 @@ SmaCCDeferredChoice >> preferredItem [
 
 { #category : #private }
 SmaCCDeferredChoice >> sortItems: aCollection [
-	^ aCollection asSortedCollection: [ :a :b | a priority < b priority ]
+	^ Heap withAll: aCollection sortBlock: [ :a :b | a priority < b priority ]
 ]
 
 { #category : #accessing }
 SmaCCDeferredChoice >> sortedChoices [
 	^ sortedChoices
-		ifNil: [ sortedChoices := self choices
-					asSortedCollection: [ :a :b | self isStack: (stacksCollection at: a) preferredOver: (stacksCollection at: b) ] ]
+		ifNil: [ sortedChoices := Heap
+					withAll: self choices
+					sortBlock: [ :a :b | self isStack: (stacksCollection at: a) preferredOver: (stacksCollection at: b) ] ]
 ]
 
 { #category : #accessing }
