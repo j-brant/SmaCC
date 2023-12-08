@@ -12,13 +12,70 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'possibleItems',
-		'choiceBlock'
+		'choiceBlock',
+		'choices',
+		'stacksCollection',
+		'sortedChoices'
 	],
 	#category : #'SmaCC_GLR_Runtime'
 }
 
+{ #category : #accessing }
+SmaCCDeferredChoice class >> mergeStacks: stacksCollection [
+	| result |
+	result := OrderedCollection new.
+	1
+		to: stacksCollection first size
+		do: [ :i | 
+			| object |
+			object := stacksCollection first at: i.
+			(stacksCollection allSatisfy: [ :each | object == (each at: i) ])
+				ifTrue: [ result add: object ]
+				ifFalse: [ result
+						add: (self new
+								possibleItems: (stacksCollection collect: [ :each | each at: i ]);
+								stacksCollection: stacksCollection;
+								yourself) ] ].
+	^ result
+]
+
+{ #category : #accessing }
+SmaCCDeferredChoice >> allPossibleItems [
+	^ self choices collect: [ :each | possibleItems at: each ]
+]
+
+{ #category : #accessing }
+SmaCCDeferredChoice >> choiceBlock: aBlock [
+	choiceBlock := aBlock
+]
+
+{ #category : #accessing }
+SmaCCDeferredChoice >> choices [
+	^ choices
+		ifNil: [ choices := (1 to: stacksCollection size) asOrderedCollection ]
+]
+
+{ #category : #accessing }
+SmaCCDeferredChoice >> chooseIn: aSmaCCParser [
+	| returnValue newChoices |
+	^ self choices size == 1
+		ifTrue: [ possibleItems at: choices first ]
+		ifFalse: [ returnValue := (SmaCCAmbiguousResultNotification forParser: aSmaCCParser)
+					messageText: 'Ambiguous results';
+					tag: self;
+					signal.
+			newChoices := choices
+					select: [ :each | (possibleItems at: each) == returnValue ].
+			newChoices notEmpty
+				ifTrue: [ choices := newChoices.
+					sortedChoices
+						ifNotNil: [ sortedChoices := sortedChoices select: [ :each | choices includes: each ] ] ].
+
+			returnValue ]
+]
+
 { #category : #private }
-SmaCCDeferredChoice class >> compare: firstCollection to: secondCollection [
+SmaCCDeferredChoice >> compare: firstCollection to: secondCollection [
 	| index first second |
 	first := firstCollection.
 	second := secondCollection.
@@ -36,7 +93,7 @@ SmaCCDeferredChoice class >> compare: firstCollection to: secondCollection [
 ]
 
 { #category : #private }
-SmaCCDeferredChoice class >> deferredItemsIn: aCollection [
+SmaCCDeferredChoice >> deferredItemsIn: aCollection [
 	| deferred |
 	deferred := OrderedCollection new.
 	aCollection
@@ -44,83 +101,60 @@ SmaCCDeferredChoice class >> deferredItemsIn: aCollection [
 			(each isKindOf: SmaCCDeferredReduceAction)
 				ifTrue: [ deferred add: each ]
 				ifFalse: [ (each isKindOf: SmaCCDeferredChoice)
-						ifTrue: [ deferred addAll: (self deferredItemsIn: {each possibleItems first}) ] ] ].
+						ifTrue: [ deferred addAll: (self deferredItemsIn: {each preferredItem}) ] ] ].
 	^ deferred
 ]
 
 { #category : #private }
-SmaCCDeferredChoice class >> isStack: firstStack preferredOver: secondStack [
+SmaCCDeferredChoice >> isStack: firstStack preferredOver: secondStack [
 	^ (self
 		compare: (self deferredItemsIn: firstStack)
 		to: (self deferredItemsIn: secondStack)) <= 0
 ]
 
 { #category : #accessing }
-SmaCCDeferredChoice class >> mergeStacks: stacksCollection [
-	| result choiceBlock choices stacks |
-	stacks := stacksCollection
-		asSortedCollection: [ :a :b | self isStack: a preferredOver: b ].
-	choices := 1 to: stacks size.
-	choiceBlock := [ :possibleChoices :parser | 
-	| returnValue newChoices |
-	choices size == 1
-		ifTrue: [ possibleChoices at: choices first ]
-		ifFalse: [ returnValue := (SmaCCAmbiguousResultNotification forParser: parser)
-				messageText: 'Ambiguous results';
-				tag: (choices collect: [ :each | possibleChoices at: each ]);
-				signal.
-			newChoices := choices
-				select: [ :each | (possibleChoices at: each) == returnValue ].
-			newChoices notEmpty
-				ifTrue: [ choices := newChoices ].
-			returnValue ] ].
-	result := OrderedCollection new.
-	1 to: stacks first size do: [ :i | 
-		| object |
-		object := stacks first at: i.
-		(stacks allSatisfy: [ :each | object == (each at: i) ])
-			ifTrue: [ result add: object ]
-			ifFalse: [ result
-					add:
-						(self new
-							possibleItems: (stacks collect: [ :each | each at: i ]);
-							choiceBlock: choiceBlock;
-							yourself) ] ].
-	^ result
+SmaCCDeferredChoice >> performOnSmaCCParser: aSmaCCParser [
+	^ (self chooseIn: aSmaCCParser) performOnSmaCCParser: aSmaCCParser
+]
+
+{ #category : #accessing }
+SmaCCDeferredChoice >> possibleItems: aSequenceableCollection [
+	possibleItems := aSequenceableCollection
+]
+
+{ #category : #accessing }
+SmaCCDeferredChoice >> preferredItem [
+	^ possibleItems at: self sortedChoices first
 ]
 
 { #category : #private }
-SmaCCDeferredChoice class >> sortItems: aCollection [
+SmaCCDeferredChoice >> sortItems: aCollection [
 	^ aCollection asSortedCollection: [ :a :b | a priority < b priority ]
 ]
 
+{ #category : #accessing }
+SmaCCDeferredChoice >> sortedChoices [
+	^ sortedChoices
+		ifNil: [ sortedChoices := self choices
+					asSortedCollection: [ :a :b | self isStack: (stacksCollection at: a) preferredOver: (stacksCollection at: b) ] ]
+]
+
+{ #category : #accessing }
+SmaCCDeferredChoice >> stacksCollection [
+	^ stacksCollection
+]
+
+{ #category : #accessing }
+SmaCCDeferredChoice >> stacksCollection: anObject [
+	stacksCollection := anObject
+]
+
 { #category : #private }
-SmaCCDeferredChoice class >> subItemsIn: aCollection [
+SmaCCDeferredChoice >> subItemsIn: aCollection [
 	^ aCollection
 		inject: OrderedCollection new
 		into: [ :sum :each | 
 			sum
 				addAll: (self deferredItemsIn: each arguments);
 				yourself ]
-]
-
-{ #category : #accessing }
-SmaCCDeferredChoice >> choiceBlock: aBlock [
-	choiceBlock := aBlock
-]
-
-{ #category : #accessing }
-SmaCCDeferredChoice >> performOnSmaCCParser: aSmaCCParser [
-	^ (choiceBlock value: possibleItems value: aSmaCCParser)
-		performOnSmaCCParser: aSmaCCParser
-]
-
-{ #category : #accessing }
-SmaCCDeferredChoice >> possibleItems [
-	^ possibleItems
-]
-
-{ #category : #accessing }
-SmaCCDeferredChoice >> possibleItems: aSequenceableCollection [
-	possibleItems := aSequenceableCollection
 ]
