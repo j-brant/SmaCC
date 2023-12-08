@@ -1,6 +1,9 @@
 Class {
 	#name : #TypeScriptParser,
 	#superclass : #JSParser,
+	#instVars : [
+		'tokensFollowingTS'
+	],
 	#category : #'SmaCC_Javascript_Parser'
 }
 
@@ -50,13 +53,16 @@ TypeScriptParser >> actionsForCurrentToken [
 
 { #category : #private }
 TypeScriptParser >> splitTSActions [
-	| tsToken state token tsActions |
+	| tsToken state token tsActions ids |
 	(self isEOFToken
 		or: [ currentToken value isEmpty or: [ currentToken startPosition isNil ] ])
 		ifTrue: [ ^ self ].
 	tsActions := OrderedCollection new.
 	self addActionsFor: scanner tsId to: tsActions.
 	tsActions isEmpty ifTrue: [ ^ self ].
+	ids := self tokensFollowingTS.
+	(currentToken ids anySatisfy: [ :each | ids includes: each ])
+		ifFalse: [ ^ self ].
 	token := currentToken.
 	state := currentState.
 	tsToken := scanner tokenClass
@@ -73,6 +79,30 @@ TypeScriptParser >> splitTSActions [
 			self performParsingStep.
 			currentToken := token.
 			self restoreState: state ]
+]
+
+{ #category : #private }
+TypeScriptParser >> tokensFollowingTS [
+	tokensFollowingTS
+		ifNil: [ | nextStates id |
+			id := scanner tsId.
+			nextStates := Set new.
+			1
+				to: self transitionTable size
+				do: [ :i | 
+					(self actionsForState: i and: id)
+						do: [ :action | 
+							(action bitAnd: self actionMask) = self shiftAction
+								ifTrue: [ nextStates add: (action bitShift: -2) ] ] ].
+			tokensFollowingTS := Set new.
+			nextStates
+				do: [ :i | 
+					self
+						actionsAndSymbolsForState: i
+						do: [ :action :symbol | 
+							(action bitAnd: self actionMask) = self shiftAction
+								ifTrue: [ tokensFollowingTS add: symbol ] ] ] ].
+	^ tokensFollowingTS
 ]
 
 { #category : #testing }

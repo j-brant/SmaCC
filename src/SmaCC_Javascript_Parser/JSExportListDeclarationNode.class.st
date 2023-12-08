@@ -6,6 +6,7 @@ Class {
 		'fromToken',
 		'from',
 		'semicolon',
+		'typeToken',
 		'leftBrace',
 		'rightBrace',
 		'specifiers',
@@ -125,5 +126,15 @@ JSExportListDeclarationNode >> star: aSmaCCToken [
 
 { #category : #generated }
 JSExportListDeclarationNode >> tokenVariables [
-	^ #(#star #fromToken #from #exportToken)
+	^ #(#star #fromToken #from #typeToken #exportToken)
+]
+
+{ #category : #generated }
+JSExportListDeclarationNode >> typeToken [
+	^ typeToken
+]
+
+{ #category : #generated }
+JSExportListDeclarationNode >> typeToken: aSmaCCToken [
+	typeToken := aSmaCCToken
 ]
