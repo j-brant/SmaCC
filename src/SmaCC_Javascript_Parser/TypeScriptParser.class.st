@@ -2,7 +2,8 @@ Class {
 	#name : #TypeScriptParser,
 	#superclass : #JSParser,
 	#instVars : [
-		'tokensFollowingTS'
+		'tokensFollowingTS',
+		'tsActionMap'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
@@ -57,8 +58,7 @@ TypeScriptParser >> splitTSActions [
 	(self isEOFToken
 		or: [ currentToken value isEmpty or: [ currentToken startPosition isNil ] ])
 		ifTrue: [ ^ self ].
-	tsActions := OrderedCollection new.
-	self addActionsFor: scanner tsId to: tsActions.
+	tsActions := self tsActions.
 	tsActions isEmpty ifTrue: [ ^ self ].
 	ids := self tokensFollowingTS.
 	(currentToken ids anySatisfy: [ :each | ids includes: each ])
@@ -108,6 +108,19 @@ TypeScriptParser >> tokensFollowingTS [
 { #category : #testing }
 TypeScriptParser >> tryAllTokens [
 	^ true
+]
+
+{ #category : #private }
+TypeScriptParser >> tsActions [
+	| actions state |
+	state := self currentState.
+	tsActionMap ifNil: [ tsActionMap := Array new: self transitionTable size ].
+	actions := tsActionMap at: state.
+	actions
+		ifNil: [ actions := OrderedCollection new.
+			self addActionsFor: scanner tsId to: actions.
+			tsActionMap at: state put: actions ].
+	^ actions
 ]
 
 { #category : #testing }
