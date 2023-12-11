@@ -94,7 +94,7 @@ SmaCCDeferredReduceAction >> stopPositionIn: args [
 				ifTrue: [ (self stopPositionIn: each)
 						ifNotNil: [ :s | stop ifNil: [ stop := s ] ifNotNil: [ stop := stop max: s ] ] ]
 				ifFalse: [ ((each isKindOf: SmaCCToken)
-						or: [ (each isKindOf: SmaCCNode)
+						or: [ (each isKindOf: SmaCCParseNode)
 								or: [ (each isKindOf: SmaCCDeferredReduceAction)
 										or: [ each isKindOf: SmaCCDeferredChoice ] ] ])
 						ifTrue: [ each stopPosition
