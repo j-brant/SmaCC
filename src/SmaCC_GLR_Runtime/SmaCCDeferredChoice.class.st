@@ -150,6 +150,11 @@ SmaCCDeferredChoice >> stacksCollection: anObject [
 	stacksCollection := anObject
 ]
 
+{ #category : #accessing }
+SmaCCDeferredChoice >> stopPosition [
+	^ self preferredItem stopPosition
+]
+
 { #category : #private }
 SmaCCDeferredChoice >> subItemsIn: aCollection [
 	^ aCollection

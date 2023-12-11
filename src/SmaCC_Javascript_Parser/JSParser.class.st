@@ -5363,10 +5363,9 @@ JSParser >> checkEOL [
 		ifTrue: [ ^ self ].
 	nodeStack isEmpty ifTrue: [ ^ self ].
 	stackTop := nodeStack last.
-	position := [ ((stackTop isKindOf: SmaCCToken)
-			ifTrue: [ stackTop ]
-			ifFalse: [ (stackTop isKindOf: SmaCCDeferredChoice) ifTrue: [ stackTop preferredItem ] ])
-			stopPosition ] on: Error do: [ :ex | currentToken startPosition ].
+	position := [ stackTop stopPosition ]
+			on: Error
+			do: [ :ex | currentToken startPosition ].
 	(scanner hasNewlineBetween: position and: currentToken startPosition)
 		ifTrue: [ currentState
 				attributeNamed: #lastInsertedSemicolonPosition
