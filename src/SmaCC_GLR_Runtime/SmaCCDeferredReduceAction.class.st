@@ -76,3 +76,28 @@ SmaCCDeferredReduceAction >> priority [
 SmaCCDeferredReduceAction >> selector [
 	^ reduceEntry at: 3
 ]
+
+{ #category : #accessing }
+SmaCCDeferredReduceAction >> stopPosition [
+	| stop |
+	stop := self stopPositionIn: arguments.
+	^ stop
+]
+
+{ #category : #private }
+SmaCCDeferredReduceAction >> stopPositionIn: args [
+	| stop |
+	stop := nil.
+	args
+		do: [ :each | 
+			(each isKindOf: SequenceableCollection)
+				ifTrue: [ (self stopPositionIn: each)
+						ifNotNil: [ :s | stop ifNil: [ stop := s ] ifNotNil: [ stop := stop max: s ] ] ]
+				ifFalse: [ ((each isKindOf: SmaCCToken)
+						or: [ (each isKindOf: SmaCCParseNode)
+								or: [ (each isKindOf: SmaCCDeferredReduceAction)
+										or: [ each isKindOf: SmaCCDeferredChoice ] ] ])
+						ifTrue: [ each stopPosition
+								ifNotNil: [ :s | stop ifNil: [ stop := s ] ifNotNil: [ stop := stop max: s ] ] ] ] ].
+	^ stop
+]

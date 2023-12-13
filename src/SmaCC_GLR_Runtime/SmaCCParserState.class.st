@@ -60,7 +60,11 @@ SmaCCParserState >> attributeNamed: aSymbol put: aValue [
 
 { #category : #testing }
 SmaCCParserState >> canBeMergedWith: aSmaCCParserState [
-	^ self stateStack = aSmaCCParserState stateStack and: [ self scannerState = aSmaCCParserState scannerState ]
+	stateStack size = aSmaCCParserState stateStack size ifFalse: [ ^ false ].
+	1
+		to: stateStack size
+		do: [ :i | (stateStack at: i) = (aSmaCCParserState stateStack at: i) ifFalse: [ ^ false ] ].
+	^ self scannerState = aSmaCCParserState scannerState
 ]
 
 { #category : #comparing }

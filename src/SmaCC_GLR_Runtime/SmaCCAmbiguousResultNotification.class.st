@@ -22,9 +22,14 @@ SmaCCAmbiguousResultNotification class >> forParser: aSmaCCParser [
 		yourself
 ]
 
+{ #category : #accessing }
+SmaCCAmbiguousResultNotification >> allPossibleItems [
+	^ tag allPossibleItems
+]
+
 { #category : #'private - actions' }
 SmaCCAmbiguousResultNotification >> defaultAction [
-	^ self tag first
+	^ self tag preferredItem
 ]
 
 { #category : #accessing }
@@ -35,4 +40,9 @@ SmaCCAmbiguousResultNotification >> parser [
 { #category : #accessing }
 SmaCCAmbiguousResultNotification >> parser: anObject [
 	parser := anObject
+]
+
+{ #category : #accessing }
+SmaCCAmbiguousResultNotification >> preferredItem [
+	^ tag preferredItem
 ]

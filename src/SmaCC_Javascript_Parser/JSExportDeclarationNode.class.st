@@ -14,7 +14,8 @@ Class {
 		'semicolon',
 		'statement',
 		'declaration',
-		'defaultToken'
+		'defaultToken',
+		'typeToken'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
@@ -189,5 +190,15 @@ JSExportDeclarationNode >> statement: aJSProgramNode [
 
 { #category : #generated }
 JSExportDeclarationNode >> tokenVariables [
-	^ #(#star #asToken #name #fromToken #from #defaultToken #exportToken)
+	^ #(#star #asToken #name #fromToken #from #defaultToken #typeToken #exportToken)
+]
+
+{ #category : #generated }
+JSExportDeclarationNode >> typeToken [
+	^ typeToken
+]
+
+{ #category : #generated }
+JSExportDeclarationNode >> typeToken: aSmaCCToken [
+	typeToken := aSmaCCToken
 ]
