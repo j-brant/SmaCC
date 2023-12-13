@@ -10,7 +10,7 @@ BaselineOfJavaParser >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.34' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.35' ].
 
 		spec package: 'SmaCC_Java' with: [
 			spec requires: #('SmaCCRuntime') ].
