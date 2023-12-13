@@ -2,6 +2,7 @@ Class {
 	#name : #JavaTypeArgumentNode,
 	#superclass : #JavaProgramNode,
 	#instVars : [
+		'annotations',
 		'type',
 		'questionMark',
 		'token'
@@ -12,6 +13,29 @@ Class {
 { #category : #generated }
 JavaTypeArgumentNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTypeArgument: self
+]
+
+{ #category : #generated }
+JavaTypeArgumentNode >> annotations [
+	^ annotations
+]
+
+{ #category : #generated }
+JavaTypeArgumentNode >> annotations: anOrderedCollection [
+	self setParents: self annotations to: nil.
+	annotations := anOrderedCollection.
+	self setParents: self annotations to: self
+]
+
+{ #category : #generated }
+JavaTypeArgumentNode >> compositeNodeVariables [
+	^ #(#annotations)
+]
+
+{ #category : #'generated-initialize-release' }
+JavaTypeArgumentNode >> initialize [
+	super initialize.
+	annotations := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

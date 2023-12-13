@@ -77,14 +77,12 @@ JavaScanner >> scan1 [
 { #category : #generated }
 JavaScanner >> scan10 [
 	[ self step.
-	currentCharacter == $.
-		ifTrue: [ ^ self scan8 ].
-	currentCharacter == $_
-		ifTrue: [ ^ self scan11 ].
+	currentCharacter == $. ifTrue: [ ^ self scan8 ].
+	currentCharacter == $_ ifTrue: [ ^ self scan11 ].
 	currentCharacter isDigit ] whileTrue.
-	('Ee' includes: currentCharacter)
-		ifTrue: [ ^ self scan5 ].
-	('DFdf' includes: currentCharacter)
+	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	((currentCharacter between: $D and: $F)
+		or: [ currentCharacter between: $d and: $f ])
 		ifTrue: [ ^ self recordAndReportMatch: #(100) ].
 	^ self reportLastMatch
 ]
@@ -165,20 +163,18 @@ JavaScanner >> scan14 [
 JavaScanner >> scan15 [
 	[ self recordMatch: #(99).
 	self step.
-	currentCharacter == $.
-		ifTrue: [ ^ self scan8 ].
+	currentCharacter == $. ifTrue: [ ^ self scan8 ].
 	currentCharacter == $_
 		ifTrue: [ [ self step.
 			currentCharacter == $_ ] whileTrue.
-			currentCharacter isDigit
-				ifTrue: [ ^ self scan15 ].
+			currentCharacter isDigit ifTrue: [ ^ self scan15 ].
 			^ self reportLastMatch ].
 	currentCharacter isDigit ] whileTrue.
-	('Ee' includes: currentCharacter)
-		ifTrue: [ ^ self scan5 ].
+	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
 	('Ll' includes: currentCharacter)
 		ifTrue: [ ^ self recordAndReportMatch: #(99) ].
-	('DFdf' includes: currentCharacter)
+	((currentCharacter between: $D and: $F)
+		or: [ currentCharacter between: $d and: $f ])
 		ifTrue: [ ^ self recordAndReportMatch: #(100) ].
 	^ self reportLastMatch
 ]
@@ -220,13 +216,12 @@ JavaScanner >> scan4 [
 	currentCharacter == $_
 		ifTrue: [ [ self step.
 			currentCharacter == $_ ] whileTrue.
-			currentCharacter isDigit
-				ifTrue: [ ^ self scan4 ].
+			currentCharacter isDigit ifTrue: [ ^ self scan4 ].
 			^ self reportLastMatch ].
 	currentCharacter isDigit ] whileTrue.
-	('Ee' includes: currentCharacter)
-		ifTrue: [ ^ self scan5 ].
-	('DFdf' includes: currentCharacter)
+	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	((currentCharacter between: $D and: $F)
+		or: [ currentCharacter between: $d and: $f ])
 		ifTrue: [ ^ self recordAndReportMatch: #(100) ].
 	^ self reportLastMatch
 ]
@@ -267,11 +262,10 @@ JavaScanner >> scan7 [
 JavaScanner >> scan8 [
 	self recordMatch: #(100).
 	self step.
-	currentCharacter isDigit
-		ifTrue: [ ^ self scan4 ].
-	('Ee' includes: currentCharacter)
-		ifTrue: [ ^ self scan5 ].
-	('DFdf' includes: currentCharacter)
+	currentCharacter isDigit ifTrue: [ ^ self scan4 ].
+	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	((currentCharacter between: $D and: $F)
+		or: [ currentCharacter between: $d and: $f ])
 		ifTrue: [ ^ self recordAndReportMatch: #(100) ].
 	^ self reportLastMatch
 ]
@@ -280,24 +274,20 @@ JavaScanner >> scan8 [
 JavaScanner >> scan9 [
 	[ self recordMatch: #(99).
 	self step.
-	currentCharacter == $.
-		ifTrue: [ ^ self scan8 ].
+	currentCharacter == $. ifTrue: [ ^ self scan8 ].
 	currentCharacter == $_
 		ifTrue: [ [ self step.
 			currentCharacter == $_ ] whileTrue.
-			(currentCharacter between: $8 and: $9)
-				ifTrue: [ ^ self scan10 ].
-			currentCharacter isDigit
-				ifTrue: [ ^ self scan9 ].
+			(currentCharacter between: $8 and: $9) ifTrue: [ ^ self scan10 ].
+			currentCharacter isDigit ifTrue: [ ^ self scan9 ].
 			^ self reportLastMatch ].
-	(currentCharacter between: $8 and: $9)
-		ifTrue: [ ^ self scan10 ].
+	(currentCharacter between: $8 and: $9) ifTrue: [ ^ self scan10 ].
 	currentCharacter isDigit ] whileTrue.
-	('Ee' includes: currentCharacter)
-		ifTrue: [ ^ self scan5 ].
+	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
 	('Ll' includes: currentCharacter)
 		ifTrue: [ ^ self recordAndReportMatch: #(99) ].
-	('DFdf' includes: currentCharacter)
+	((currentCharacter between: $D and: $F)
+		or: [ currentCharacter between: $d and: $f ])
 		ifTrue: [ ^ self recordAndReportMatch: #(100) ].
 	^ self reportLastMatch
 ]
@@ -338,29 +328,7 @@ JavaScanner >> scanForToken [
 JavaScanner >> scanForTokenX1 [
 	self recordMatch: #(99).
 	self step.
-	currentCharacter == $.
-		ifTrue: [ ^ self scan8 ].
-	currentCharacter == $_
-		ifTrue: [ ^ self scan11 ].
-	(currentCharacter between: $8 and: $9)
-		ifTrue: [ ^ self scan10 ].
-	currentCharacter isDigit
-		ifTrue: [ ^ self scan9 ].
-	('Bb' includes: currentCharacter)
-		ifTrue: [ self step.
-			(currentCharacter between: $0 and: $1)
-				ifTrue: [ ^ self scan12 ].
-			^ self reportLastMatch ].
-	('Ee' includes: currentCharacter)
-		ifTrue: [ ^ self scan5 ].
-	('Ll' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(99) ].
-	('Xx' includes: currentCharacter)
-		ifTrue:
-			[ ^ self scanForTokenX1X1 ].
-	('DFdf' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(100) ].
-	^ self reportLastMatch
+	^ self scanForTokenX1X3
 ]
 
 { #category : #generated }
@@ -486,6 +454,30 @@ JavaScanner >> scanForTokenX1X1 [
 ]
 
 { #category : #generated }
+JavaScanner >> scanForTokenX1X2 [
+	self step.
+	(currentCharacter between: $0 and: $1) ifTrue: [ ^ self scan12 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+JavaScanner >> scanForTokenX1X3 [
+	currentCharacter == $. ifTrue: [ ^ self scan8 ].
+	currentCharacter == $_ ifTrue: [ ^ self scan11 ].
+	(currentCharacter between: $8 and: $9) ifTrue: [ ^ self scan10 ].
+	currentCharacter isDigit ifTrue: [ ^ self scan9 ].
+	('Bb' includes: currentCharacter) ifTrue: [ ^ self scanForTokenX1X2 ].
+	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	('Ll' includes: currentCharacter)
+		ifTrue: [ ^ self recordAndReportMatch: #(99) ].
+	('Xx' includes: currentCharacter) ifTrue: [ ^ self scanForTokenX1X1 ].
+	((currentCharacter between: $D and: $F)
+		or: [ currentCharacter between: $d and: $f ])
+		ifTrue: [ ^ self recordAndReportMatch: #(100) ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
 JavaScanner >> scanForTokenX2 [
 	self step.
 	currentCharacter == $\
@@ -511,19 +503,13 @@ JavaScanner >> scanForTokenX2 [
 					^ self reportLastMatch ].
 			(currentCharacter between: $0 and: $3)
 				ifTrue: [ self step.
-					currentCharacter == $'
-						ifTrue: [ ^ self recordAndReportMatch: #(102) ].
-					(currentCharacter between: $0 and: $7)
-						ifTrue: [ ^ self scan3 ].
+					currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(102) ].
+					(currentCharacter between: $0 and: $7) ifTrue: [ ^ self scan3 ].
 					^ self reportLastMatch ].
-			(currentCharacter between: $4 and: $7)
-				ifTrue: [ ^ self scan3 ].
-			('"''\bfnrt' includes: currentCharacter)
-				ifTrue: [ ^ self scan2 ].
+			(currentCharacter between: $4 and: $7) ifTrue: [ ^ self scan3 ].
+			('"''\bfnrt' includes: currentCharacter) ifTrue: [ ^ self scan2 ].
 			^ self reportLastMatch ].
-	(currentCharacter <= $&
-		or: [ (currentCharacter between: $( and: $[)
-				or: [ currentCharacter >= $] ] ])
+	(currentCharacter <= $& or: [ currentCharacter >= $( ])
 		ifTrue: [ ^ self scan2 ].
 	^ self reportLastMatch
 ]
