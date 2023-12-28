@@ -6,6 +6,9 @@ Class {
 		'indent',
 		'endingNewlines'
 	],
+	#classVars : [
+		'DoubleQuoteEscapes'
+	],
 	#category : #'SmaCC_YAML-Parser'
 }
 
