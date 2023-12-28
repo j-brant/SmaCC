@@ -1759,14 +1759,14 @@ PythonParser >> actionsForCurrentToken [
 					actions notEmpty
 						ifTrue: [ currentToken := SmaCCToken
 									value: ''
-									start: currentToken position
+									start: currentToken startPosition
 									ids: {scanner DEDENTId}.
 							^ actions ].
 					self addActionsFor: scanner NEWLINEId to: actions.
 					actions notEmpty
 						ifTrue: [ currentToken := SmaCCToken
 									value: ''
-									start: currentToken position
+									start: currentToken startPosition
 									ids: {scanner NEWLINEId}.
 							^ actions ] ] ].
 	^ actions
