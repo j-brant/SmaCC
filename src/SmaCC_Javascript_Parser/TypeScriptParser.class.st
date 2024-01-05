@@ -26,9 +26,9 @@ TypeScriptParser class >> fileExtensionType [
 { #category : #accessing }
 TypeScriptParser class >> keywords [
 	^ keywords
-		ifNil: [ super keywords
-				addAll: #('public' 'protected' 'private' 'override' 'readonly' 'interface' 'static' 'abstract' 'get' 'set');
-				yourself ]
+		ifNil: [ keywords := superclass keywords copy
+					addAll: #('public' 'protected' 'private' 'override' 'readonly' 'interface' 'static' 'abstract');
+					yourself ]
 ]
 
 { #category : #private }
@@ -105,11 +105,6 @@ TypeScriptParser >> tokensFollowingTS [
 	^ tokensFollowingTS
 ]
 
-{ #category : #testing }
-TypeScriptParser >> tryAllTokens [
-	^ true
-]
-
 { #category : #private }
 TypeScriptParser >> tsActions [
 	| actions state |
@@ -121,9 +116,4 @@ TypeScriptParser >> tsActions [
 			self addActionsFor: scanner tsId to: actions.
 			tsActionMap at: state put: actions ].
 	^ actions
-]
-
-{ #category : #testing }
-TypeScriptParser >> useAllTokenIds [
-	^ false
 ]
