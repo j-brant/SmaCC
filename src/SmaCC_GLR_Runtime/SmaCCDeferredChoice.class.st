@@ -82,10 +82,12 @@ SmaCCDeferredChoice >> compare: firstCollection to: secondCollection [
 	[ firstHeap := self sortItems: first.
 	secondHeap := self sortItems: second.
 	[ firstHeap notEmpty and: [ secondHeap notEmpty ] ]
-		whileTrue: [ firstItem := firstHeap removeFirst.
-			secondItem := secondHeap removeFirst.
+		whileTrue: [ firstItem := firstHeap first.
+			secondItem := secondHeap first.
 			firstItem priority = secondItem priority
-				ifFalse: [ ^ firstItem priority - secondItem priority ] ].
+				ifFalse: [ ^ firstItem priority - secondItem priority ].
+			firstHeap removeFirst.
+			secondHeap removeFirst ].
 	first := self subItemsIn: first.
 	second := self subItemsIn: second.
 	first notEmpty and: [ second notEmpty ] ] whileTrue.
