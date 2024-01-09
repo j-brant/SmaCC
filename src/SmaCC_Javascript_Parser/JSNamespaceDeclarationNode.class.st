@@ -7,7 +7,8 @@ Class {
 		'periodTokens',
 		'leftBrace',
 		'elements',
-		'rightBrace'
+		'rightBrace',
+		'globalToken'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
@@ -37,6 +38,16 @@ JSNamespaceDeclarationNode >> elements: anOrderedCollection [
 	self setParents: self elements to: nil.
 	elements := anOrderedCollection.
 	self setParents: self elements to: self
+]
+
+{ #category : #generated }
+JSNamespaceDeclarationNode >> globalToken [
+	^ globalToken
+]
+
+{ #category : #generated }
+JSNamespaceDeclarationNode >> globalToken: aSmaCCToken [
+	globalToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -106,5 +117,5 @@ JSNamespaceDeclarationNode >> rightBrace: aSmaCCToken [
 
 { #category : #generated }
 JSNamespaceDeclarationNode >> tokenVariables [
-	^ #(#namespaceToken)
+	^ #(#namespaceToken #globalToken)
 ]
