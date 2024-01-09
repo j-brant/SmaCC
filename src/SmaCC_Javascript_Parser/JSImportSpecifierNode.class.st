@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'binding',
 		'name',
-		'asToken'
+		'asToken',
+		'typeToken'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
@@ -53,5 +54,15 @@ JSImportSpecifierNode >> nodeVariables [
 
 { #category : #generated }
 JSImportSpecifierNode >> tokenVariables [
-	^ #(#name #asToken)
+	^ #(#name #asToken #typeToken)
+]
+
+{ #category : #generated }
+JSImportSpecifierNode >> typeToken [
+	^ typeToken
+]
+
+{ #category : #generated }
+JSImportSpecifierNode >> typeToken: aSmaCCToken [
+	typeToken := aSmaCCToken
 ]

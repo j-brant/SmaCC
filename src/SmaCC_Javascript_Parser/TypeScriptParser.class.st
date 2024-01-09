@@ -54,7 +54,7 @@ TypeScriptParser >> actionsForCurrentToken [
 
 { #category : #private }
 TypeScriptParser >> splitTSActions [
-	| tsToken state token tsActions ids |
+	| tsActions ids |
 	(self isEOFToken
 		or: [ currentToken value isEmpty or: [ currentToken startPosition isNil ] ])
 		ifTrue: [ ^ self ].
@@ -63,22 +63,13 @@ TypeScriptParser >> splitTSActions [
 	ids := self tokensFollowingTS.
 	(currentToken ids anySatisfy: [ :each | ids includes: each ])
 		ifFalse: [ ^ self ].
-	token := currentToken.
-	state := currentState.
-	tsToken := scanner tokenClass
-			value: ''
-			start: token startPosition
-			ids: {scanner tsId}.
-	tsActions
-		do: [ :each | 
-			currentToken := tsToken.
-			currentState := self duplicateState.
-			self performAction: each.
-			currentToken notNil ifTrue: [ self performParsingStep ].
-			currentToken := token.
-			self performParsingStep.
-			currentToken := token.
-			self restoreState: state ]
+	self
+		forkActions: tsActions
+		inserting: (scanner tokenClass
+				value: ''
+				start: currentToken startPosition
+				ids: {scanner tsId})
+		before: currentToken
 ]
 
 { #category : #private }
