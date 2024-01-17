@@ -90,9 +90,7 @@ TypeScriptParser >> tokensFollowingTS [
 				do: [ :i | 
 					self
 						actionsAndSymbolsForState: i
-						do: [ :action :symbol | 
-							(action bitAnd: self actionMask) = self shiftAction
-								ifTrue: [ tokensFollowingTS add: symbol ] ] ] ].
+						do: [ :action :symbol | tokensFollowingTS add: symbol ] ] ].
 	^ tokensFollowingTS
 ]
 

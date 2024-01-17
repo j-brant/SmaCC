@@ -56,7 +56,7 @@ JSClassExpressionNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 JSClassExpressionNode >> compositeNodeVariables [
-	^ #(#elements #types #decorators)
+	^ #(#decorators #elements #types)
 ]
 
 { #category : #generated }
@@ -116,10 +116,10 @@ JSClassExpressionNode >> implementsToken: aSmaCCToken [
 { #category : #'generated-initialize-release' }
 JSClassExpressionNode >> initialize [
 	super initialize.
+	decorators := OrderedCollection new: 2.
 	elements := OrderedCollection new: 2.
 	types := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
-	decorators := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -146,7 +146,7 @@ JSClassExpressionNode >> name: aJSNameExpressionNode [
 
 { #category : #generated }
 JSClassExpressionNode >> nodeVariables [
-	^ #(#superclass #name #typeParameters)
+	^ #(#superclass #typeParameters #name)
 ]
 
 { #category : #generated }
