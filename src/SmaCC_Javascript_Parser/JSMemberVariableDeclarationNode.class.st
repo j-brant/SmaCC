@@ -9,7 +9,7 @@ Class {
 		'semicolon',
 		'colonToken',
 		'type',
-		'questionMarkToken',
+		'nullableIndicator',
 		'staticToken',
 		'modifier'
 	],
@@ -97,13 +97,13 @@ JSMemberVariableDeclarationNode >> nodeVariables [
 ]
 
 { #category : #generated }
-JSMemberVariableDeclarationNode >> questionMarkToken [
-	^ questionMarkToken
+JSMemberVariableDeclarationNode >> nullableIndicator [
+	^ nullableIndicator
 ]
 
 { #category : #generated }
-JSMemberVariableDeclarationNode >> questionMarkToken: aSmaCCToken [
-	questionMarkToken := aSmaCCToken
+JSMemberVariableDeclarationNode >> nullableIndicator: aSmaCCToken [
+	nullableIndicator := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -128,7 +128,7 @@ JSMemberVariableDeclarationNode >> staticToken: aSmaCCToken [
 
 { #category : #generated }
 JSMemberVariableDeclarationNode >> tokenVariables [
-	^ #(#equalToken #questionMarkToken #staticToken #modifier)
+	^ #(#equalToken #nullableIndicator #staticToken #modifier)
 ]
 
 { #category : #generated }

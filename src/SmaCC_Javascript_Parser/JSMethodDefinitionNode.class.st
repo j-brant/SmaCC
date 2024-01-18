@@ -15,7 +15,7 @@ Class {
 		'colonToken',
 		'type',
 		'typeParameters',
-		'questionMarkToken',
+		'nullableIndicator',
 		'semicolon'
 	],
 	#category : #'SmaCC_Javascript_Parser'
@@ -107,6 +107,16 @@ JSMethodDefinitionNode >> nodeVariables [
 ]
 
 { #category : #generated }
+JSMethodDefinitionNode >> nullableIndicator [
+	^ nullableIndicator
+]
+
+{ #category : #generated }
+JSMethodDefinitionNode >> nullableIndicator: aSmaCCToken [
+	nullableIndicator := aSmaCCToken
+]
+
+{ #category : #generated }
 JSMethodDefinitionNode >> parameters [
 	^ parameters
 ]
@@ -116,16 +126,6 @@ JSMethodDefinitionNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
-]
-
-{ #category : #generated }
-JSMethodDefinitionNode >> questionMarkToken [
-	^ questionMarkToken
-]
-
-{ #category : #generated }
-JSMethodDefinitionNode >> questionMarkToken: aSmaCCToken [
-	questionMarkToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -194,7 +194,7 @@ JSMethodDefinitionNode >> staticToken: aSmaCCToken [
 
 { #category : #generated }
 JSMethodDefinitionNode >> tokenVariables [
-	^ #(#staticToken #questionMarkToken)
+	^ #(#staticToken #nullableIndicator)
 ]
 
 { #category : #generated }

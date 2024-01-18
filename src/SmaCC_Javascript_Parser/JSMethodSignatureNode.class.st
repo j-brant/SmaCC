@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'name',
 		'signature',
-		'questionMarkToken',
+		'nullableIndicator',
 		'semicolon',
 		'staticToken',
 		'modifier'
@@ -50,13 +50,13 @@ JSMethodSignatureNode >> nodeVariables [
 ]
 
 { #category : #generated }
-JSMethodSignatureNode >> questionMarkToken [
-	^ questionMarkToken
+JSMethodSignatureNode >> nullableIndicator [
+	^ nullableIndicator
 ]
 
 { #category : #generated }
-JSMethodSignatureNode >> questionMarkToken: aSmaCCToken [
-	questionMarkToken := aSmaCCToken
+JSMethodSignatureNode >> nullableIndicator: aSmaCCToken [
+	nullableIndicator := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -93,5 +93,5 @@ JSMethodSignatureNode >> staticToken: aSmaCCToken [
 
 { #category : #generated }
 JSMethodSignatureNode >> tokenVariables [
-	^ #(#questionMarkToken #staticToken #modifier)
+	^ #(#nullableIndicator #staticToken #modifier)
 ]
