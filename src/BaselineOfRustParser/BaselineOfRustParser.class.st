@@ -10,7 +10,7 @@ BaselineOfRustParser >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.38' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.39' ].
 
 		spec package: 'SmaCC_Rust' with: [
 			spec requires: #('SmaCCRuntime') ].
