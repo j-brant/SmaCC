@@ -24,5 +24,5 @@ JSRestVariableDeclarationNode >> ellipsis: aSmaCCToken [
 
 { #category : #generated }
 JSRestVariableDeclarationNode >> tokenVariables [
-	^ #(#ellipsis #equalToken #modifier #questionMarkToken)
+	^ #(#ellipsis #equalToken #nullableIndicator)
 ]

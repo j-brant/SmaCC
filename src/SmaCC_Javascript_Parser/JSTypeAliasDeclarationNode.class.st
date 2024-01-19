@@ -7,6 +7,7 @@ Class {
 		'equalToken',
 		'type',
 		'semicolon',
+		'bar',
 		'typeParameters'
 	],
 	#category : #'SmaCC_Javascript_Parser'
@@ -15,6 +16,16 @@ Class {
 { #category : #generated }
 JSTypeAliasDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTypeAliasDeclaration: self
+]
+
+{ #category : #generated }
+JSTypeAliasDeclarationNode >> bar [
+	^ bar
+]
+
+{ #category : #generated }
+JSTypeAliasDeclarationNode >> bar: aSmaCCToken [
+	bar := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -61,7 +72,7 @@ JSTypeAliasDeclarationNode >> semicolon: aSmaCCToken [
 
 { #category : #generated }
 JSTypeAliasDeclarationNode >> tokenVariables [
-	^ #(#typeToken #equalToken)
+	^ #(#typeToken #equalToken #bar)
 ]
 
 { #category : #generated }

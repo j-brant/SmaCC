@@ -24,5 +24,5 @@ JSGeneratorMethodDefinitionNode >> star: aSmaCCToken [
 
 { #category : #generated }
 JSGeneratorMethodDefinitionNode >> tokenVariables [
-	^ #(#star #staticToken #questionMarkToken)
+	^ #(#star #staticToken #nullableIndicator)
 ]

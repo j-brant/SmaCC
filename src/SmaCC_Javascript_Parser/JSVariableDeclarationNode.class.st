@@ -6,10 +6,10 @@ Class {
 		'equalToken',
 		'value',
 		'decorators',
+		'modifiers',
 		'colonToken',
 		'type',
-		'modifier',
-		'questionMarkToken',
+		'nullableIndicator',
 		'name'
 	],
 	#category : #'SmaCC_Javascript_Parser'
@@ -33,6 +33,11 @@ JSVariableDeclarationNode >> colonToken: aSmaCCToken [
 { #category : #generated }
 JSVariableDeclarationNode >> compositeNodeVariables [
 	^ #(#decorators)
+]
+
+{ #category : #generated }
+JSVariableDeclarationNode >> compositeTokenVariables [
+	^ #(#modifiers)
 ]
 
 { #category : #generated }
@@ -66,16 +71,17 @@ JSVariableDeclarationNode >> ignoredTokenVariables [
 JSVariableDeclarationNode >> initialize [
 	super initialize.
 	decorators := OrderedCollection new: 2.
+	modifiers := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-JSVariableDeclarationNode >> modifier [
-	^ modifier
+JSVariableDeclarationNode >> modifiers [
+	^ modifiers
 ]
 
 { #category : #generated }
-JSVariableDeclarationNode >> modifier: aSmaCCToken [
-	modifier := aSmaCCToken
+JSVariableDeclarationNode >> modifiers: anOrderedCollection [
+	modifiers := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -96,18 +102,18 @@ JSVariableDeclarationNode >> nodeVariables [
 ]
 
 { #category : #generated }
-JSVariableDeclarationNode >> questionMarkToken [
-	^ questionMarkToken
+JSVariableDeclarationNode >> nullableIndicator [
+	^ nullableIndicator
 ]
 
 { #category : #generated }
-JSVariableDeclarationNode >> questionMarkToken: aSmaCCToken [
-	questionMarkToken := aSmaCCToken
+JSVariableDeclarationNode >> nullableIndicator: aSmaCCToken [
+	nullableIndicator := aSmaCCToken
 ]
 
 { #category : #generated }
 JSVariableDeclarationNode >> tokenVariables [
-	^ #(#equalToken #modifier #questionMarkToken)
+	^ #(#equalToken #nullableIndicator)
 ]
 
 { #category : #generated }
