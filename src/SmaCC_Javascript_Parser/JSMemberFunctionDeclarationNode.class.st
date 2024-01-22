@@ -3,6 +3,7 @@ Class {
 	#superclass : #JSProgramNode,
 	#instVars : [
 		'decorators',
+		'asyncToken',
 		'name',
 		'signature',
 		'leftBrace',
@@ -18,6 +19,16 @@ Class {
 { #category : #generated }
 JSMemberFunctionDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMemberFunctionDeclaration: self
+]
+
+{ #category : #generated }
+JSMemberFunctionDeclarationNode >> asyncToken [
+	^ asyncToken
+]
+
+{ #category : #generated }
+JSMemberFunctionDeclarationNode >> asyncToken: aSmaCCToken [
+	asyncToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -142,5 +153,5 @@ JSMemberFunctionDeclarationNode >> staticToken: aSmaCCToken [
 
 { #category : #generated }
 JSMemberFunctionDeclarationNode >> tokenVariables [
-	^ #(#staticToken #modifier)
+	^ #(#asyncToken #staticToken #modifier)
 ]
