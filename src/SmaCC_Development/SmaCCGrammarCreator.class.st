@@ -25,6 +25,16 @@ SmaCCGrammarCreator class >> initialize [
 	MaxExpansions := 16
 ]
 
+{ #category : #accessing }
+SmaCCGrammarCreator class >> maxExpansions [
+	^ MaxExpansions
+]
+
+{ #category : #accessing }
+SmaCCGrammarCreator class >> maxExpansions: anObject [
+	MaxExpansions := anObject
+]
+
 { #category : #private }
 SmaCCGrammarCreator >> addItems: aCollection to: rhs [
 	aCollection
