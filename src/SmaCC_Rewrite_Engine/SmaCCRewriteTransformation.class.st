@@ -1,53 +1,54 @@
 Class {
-	#name : #SmaCCRewriteTransformation,
-	#superclass : #Object,
+	#name : 'SmaCCRewriteTransformation',
+	#superclass : 'Object',
 	#instVars : [
 		'rewrite'
 	],
 	#classVars : [
 		'HaltBlock'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteTransformation class >> haltBlock [
 	^ HaltBlock ifNil: [ [ :rewrite :node | false ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteTransformation class >> haltBlock: aBlock [
 	HaltBlock := aBlock
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCRewriteTransformation >> modified [
 	rewrite notNil
 		ifTrue: [ rewrite modified ]
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 SmaCCRewriteTransformation >> postCopy [
 	super postCopy.
 	rewrite := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteTransformation >> rewrite [
 	^ rewrite
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteTransformation >> rewrite: aSmaCCRewrite [
 	rewrite := aSmaCCRewrite
 ]
 
-{ #category : #saving }
+{ #category : 'saving' }
 SmaCCRewriteTransformation >> saveOn: aStream [
 	self subclassResponsibility
 ]
 
-{ #category : #transforming }
+{ #category : 'transforming' }
 SmaCCRewriteTransformation >> transformUsingContext: aSmaCCRewriteMatchContext [
 	self subclassResponsibility
 ]

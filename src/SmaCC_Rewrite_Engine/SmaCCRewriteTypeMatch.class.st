@@ -1,16 +1,17 @@
 Class {
-	#name : #SmaCCRewriteTypeMatch,
-	#superclass : #SmaCCRewriteMatch,
+	#name : 'SmaCCRewriteTypeMatch',
+	#superclass : 'SmaCCRewriteMatch',
 	#instVars : [
 		'nodeClass',
 		'code',
 		'method',
 		'enableDebug'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCRewriteTypeMatch class >> on: aClass [
 	^ self new
 		enableDebug: false;
@@ -18,24 +19,24 @@ SmaCCRewriteTypeMatch class >> on: aClass [
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCRewriteTypeMatch >> canMatch: aClass [
 	^ aClass includesBehavior: nodeClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteTypeMatch >> code [
 	^ code
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteTypeMatch >> code: aString [
 	code := aString.
 	method := nil.
 	self modified
 ]
 
-{ #category : #matching }
+{ #category : 'matching' }
 SmaCCRewriteTypeMatch >> codeMatches: aSmaCCRewriteMatchContext [
 	(code isNil or: [ code isEmpty ])
 		ifTrue: [ ^ true ].
@@ -50,22 +51,22 @@ SmaCCRewriteTypeMatch >> codeMatches: aSmaCCRewriteMatchContext [
 				do: [ :ex | ex return: false ] ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCRewriteTypeMatch >> displayOn: aStream [
 	aStream nextPutAll: nodeClass name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteTypeMatch >> enableDebug [
 	^ enableDebug
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteTypeMatch >> enableDebug: aBoolean [
 	enableDebug := aBoolean
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCRewriteTypeMatch >> initialize [
 	super initialize.
 	nodeClass := SmaCCParseNode.
@@ -73,7 +74,7 @@ SmaCCRewriteTypeMatch >> initialize [
 	enableDebug := false
 ]
 
-{ #category : #matching }
+{ #category : 'matching' }
 SmaCCRewriteTypeMatch >> match: aSmaCCRewriteMatchContext [
 	| dictionary |
 	(aSmaCCRewriteMatchContext match isKindOf: nodeClass)
@@ -90,7 +91,7 @@ SmaCCRewriteTypeMatch >> match: aSmaCCRewriteMatchContext [
 	^ dictionary
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRewriteTypeMatch >> method [
 	method isNil
 		ifTrue: [ | tree |
@@ -102,23 +103,23 @@ SmaCCRewriteTypeMatch >> method [
 	^ method
 ]
 
-{ #category : #matching }
+{ #category : 'matching' }
 SmaCCRewriteTypeMatch >> methodMatches: aSmaCCRewriteMatchContext [
 	^ (self method valueWithReceiver: aSmaCCRewriteMatchContext arguments: #()) = true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteTypeMatch >> nodeClass [
 	^ nodeClass
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCRewriteTypeMatch >> nodeClass: aClass [
 	nodeClass := aClass.
 	self modified
 ]
 
-{ #category : #saving }
+{ #category : 'saving' }
 SmaCCRewriteTypeMatch >> saveOn: aStream [
 	aStream
 		nextPutAll:

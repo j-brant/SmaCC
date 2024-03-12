@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCRewriteEngine,
-	#superclass : #Object,
+	#name : 'SmaCCRewriteEngine',
+	#superclass : 'Object',
 	#instVars : [
 		'rewriteRule',
 		'source',
@@ -13,25 +13,26 @@ Class {
 		'outputFilename',
 		'contextClass'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #'accessing-methods' }
+{ #category : 'accessing-methods' }
 SmaCCRewriteEngine >> addMethodNamed: aSymbol as: aBlock [
 	methods at: aSymbol put: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteEngine >> addRewrites: aCollection [
 	aCollection do: [ :each | self rewriteRule: each ]
 ]
 
-{ #category : #'accessing-properites' }
+{ #category : 'accessing-properites' }
 SmaCCRewriteEngine >> additionalFiles [
 	^ self propertyAt: #additionalFiles ifAbsentPut: [ Dictionary new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteEngine >> contextClass [
 	contextClass isNil
 		ifTrue: [ contextClass := SmaCCRewriteMatchContext newAnonymousSubclass.
@@ -39,12 +40,12 @@ SmaCCRewriteEngine >> contextClass [
 	^ contextClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteEngine >> contextClass: aBehavior [
 	contextClass := aBehavior
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRewriteEngine >> finished [
 	newStarts := IdentityDictionary new.
 	newStops := IdentityDictionary new.
@@ -54,17 +55,17 @@ SmaCCRewriteEngine >> finished [
 		ifTrue: [ self rewriteRule clearLocalVariablesIn: contextClass ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteEngine >> ignoreFile [
 	^ self propertyAt: #ignoreFile ifAbsent: [ false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteEngine >> ignoreFile: aBoolean [
 	^ self propertyAt: #ignoreFile put: aBoolean
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCRewriteEngine >> initialize [
 	super initialize.
 	newStarts := IdentityDictionary new.
@@ -74,77 +75,77 @@ SmaCCRewriteEngine >> initialize [
 	processedNodes := IdentitySet new
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRewriteEngine >> markAsProcessed: aSmaCCNode [
 	processedNodes add: aSmaCCNode
 ]
 
-{ #category : #'accessing-methods' }
+{ #category : 'accessing-methods' }
 SmaCCRewriteEngine >> methodNamed: aSymbol [
 	^ methods at: aSymbol ifAbsent: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteEngine >> outputDirectory [
 	^ outputDirectory
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteEngine >> outputDirectory: aString [
 	outputDirectory := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteEngine >> outputFilename [
 	^ outputFilename
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteEngine >> outputFilename: aString [
 	outputFilename := aString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRewriteEngine >> processChildrenOf: aSmaCCNode [
 	^ aSmaCCNode nodesDo: [ :each | self rewriteNode: each ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteEngine >> properties [
 	^ properties
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteEngine >> properties: aDictionary [
 	properties := aDictionary
 ]
 
-{ #category : #'accessing-properites' }
+{ #category : 'accessing-properites' }
 SmaCCRewriteEngine >> propertyAt: aString [
 	^ properties at: aString ifAbsent: [ nil ]
 ]
 
-{ #category : #'accessing-properites' }
+{ #category : 'accessing-properites' }
 SmaCCRewriteEngine >> propertyAt: aString ifAbsent: aBlock [
 	^ properties at: aString ifAbsent: aBlock
 ]
 
-{ #category : #'accessing-properites' }
+{ #category : 'accessing-properites' }
 SmaCCRewriteEngine >> propertyAt: aString ifAbsentPut: aBlock [
 	^ properties at: aString ifAbsentPut: aBlock
 ]
 
-{ #category : #'accessing-properites' }
+{ #category : 'accessing-properites' }
 SmaCCRewriteEngine >> propertyAt: aString put: anObject [
 	^ properties at: aString put: anObject
 ]
 
-{ #category : #'accessing-properites' }
+{ #category : 'accessing-properites' }
 SmaCCRewriteEngine >> removeProperty: aString [
 	^ properties removeKey: aString ifAbsent: [ nil ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRewriteEngine >> rewrite: aSmaCCParseNode [
 	self rewriteNode: aSmaCCParseNode.
 	^ source
@@ -152,7 +153,7 @@ SmaCCRewriteEngine >> rewrite: aSmaCCParseNode [
 		to: (self stopPositionForNode: aSmaCCParseNode)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRewriteEngine >> rewriteNode: aSmaCCNode [
 	(aSmaCCNode isNil or: [ processedNodes includes: aSmaCCNode ])
 		ifTrue: [ ^ self ].
@@ -162,25 +163,25 @@ SmaCCRewriteEngine >> rewriteNode: aSmaCCNode [
 		continuation: [ self processChildrenOf: aSmaCCNode ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteEngine >> rewriteRule [
 	^ rewriteRule
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteEngine >> rewriteRule: aSmaCCAbstractRewrite [
 	rewriteRule := aSmaCCAbstractRewrite.
 	aSmaCCAbstractRewrite engine: self
 ]
 
-{ #category : #rewriting }
+{ #category : 'rewriting' }
 SmaCCRewriteEngine >> rewriteTree: aSmaCCParseNode [
 	source isNil
 		ifTrue: [ source := aSmaCCParseNode completeSource copy ].
 	^ (self rewrite: aSmaCCParseNode) asString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRewriteEngine >> setPosition: anIndex in: aSequenceableCollection [
 	| i lastPosition |
 	lastPosition := aSequenceableCollection last.
@@ -190,7 +191,7 @@ SmaCCRewriteEngine >> setPosition: anIndex in: aSequenceableCollection [
 			i := i - 1 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteEngine >> setStartPositionForNode: aSmaCCParseNode to: anIndex [
 	| position current |
 	current := aSmaCCParseNode.
@@ -201,7 +202,7 @@ SmaCCRewriteEngine >> setStartPositionForNode: aSmaCCParseNode to: anIndex [
 		and: [ position = (self startPositionForNode: current) ] ] whileTrue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteEngine >> setStopPositionForNode: aSmaCCParseNode to: anIndex [
 	| position current |
 	current := aSmaCCParseNode.
@@ -212,17 +213,17 @@ SmaCCRewriteEngine >> setStopPositionForNode: aSmaCCParseNode to: anIndex [
 		and: [ position = (self stopPositionForNode: current) ] ] whileTrue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteEngine >> source [
 	^ source
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteEngine >> source: aSmaCCString [
 	source := aSmaCCString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteEngine >> startPositionForNode: aSmaCCParseNode [
 	((aSmaCCParseNode isKindOf: SmaCCParseNode)
 		and: [ aSmaCCParseNode parent isNil ])
@@ -232,7 +233,7 @@ SmaCCRewriteEngine >> startPositionForNode: aSmaCCParseNode [
 		ifAbsent: [ aSmaCCParseNode startPosition ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteEngine >> stopPositionForNode: aSmaCCParseNode [
 	((aSmaCCParseNode isKindOf: SmaCCParseNode)
 		and: [ aSmaCCParseNode parent isNil ])
@@ -242,7 +243,7 @@ SmaCCRewriteEngine >> stopPositionForNode: aSmaCCParseNode [
 		ifAbsent: [ aSmaCCParseNode stopPosition ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteEngine >> updateStartPositionFor: aSmaCCParseNode to: startPosition whenEqualTo: anIndex [
 	anIndex = (self startPositionForNode: aSmaCCParseNode)
 		ifTrue: [ self
@@ -250,7 +251,7 @@ SmaCCRewriteEngine >> updateStartPositionFor: aSmaCCParseNode to: startPosition 
 				to: startPosition ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteEngine >> updateStopPositionFor: aSmaCCParseNode to: stopPosition whenEqualTo: anIndex [
 	anIndex = (self stopPositionForNode: aSmaCCParseNode)
 		ifTrue: [ self

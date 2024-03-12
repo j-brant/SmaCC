@@ -1,31 +1,32 @@
 Class {
-	#name : #SmaCCAbstractRewrite,
-	#superclass : #Model,
+	#name : 'SmaCCAbstractRewrite',
+	#superclass : 'Model',
 	#instVars : [
 		'parent',
 		'properties'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #changing }
+{ #category : 'changing' }
 SmaCCAbstractRewrite >> changed: aSymbol [
 	super changed: aSymbol.
 	self announcer announce: aSymbol.
 	self modified
 ]
 
-{ #category : #rewriting }
+{ #category : 'rewriting' }
 SmaCCAbstractRewrite >> clearLocalVariablesIn: aClass [
 	
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCAbstractRewrite >> displayOn: aStream [
 	self subclassResponsibility
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCAbstractRewrite >> displayString [
 	| stream |
 	stream := WriteStream on: String new.
@@ -33,27 +34,27 @@ SmaCCAbstractRewrite >> displayString [
 	^ stream contents
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCAbstractRewrite >> engine: aSmaCCRewriteEngine [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAbstractRewrite >> finishedLoading [
 	
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCAbstractRewrite >> isComposite [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCAbstractRewrite >> isRoot [
 	^ parent isNil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCAbstractRewrite >> isUnder: aSmaCCAbstractRewrite [
 	| current |
 	current := self.
@@ -62,22 +63,22 @@ SmaCCAbstractRewrite >> isUnder: aSmaCCAbstractRewrite [
 	^ current notNil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCAbstractRewrite >> isUpToDate [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAbstractRewrite >> listForClass: aClass into: aSmaCCRewriteLink [
 	^ aSmaCCRewriteLink
 ]
 
-{ #category : #saving }
+{ #category : 'saving' }
 SmaCCAbstractRewrite >> localSaveOn: aStream [
 	self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCAbstractRewrite >> matches: aString [
 	| stream |
 	stream := WriteStream on: String new.
@@ -85,35 +86,35 @@ SmaCCAbstractRewrite >> matches: aString [
 	^ '*' , aString , '*' match: stream contents
 ]
 
-{ #category : #changing }
+{ #category : 'changing' }
 SmaCCAbstractRewrite >> modified [
 	parent notNil
 		ifTrue: [ parent modified ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAbstractRewrite >> parent [
 	^ parent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAbstractRewrite >> parent: aSmaCCAbstractRewrite [
 	parent := aSmaCCAbstractRewrite
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAbstractRewrite >> parserClass [
 	^ parent notNil
 		ifTrue: [ parent parserClass ]
 		ifFalse: [ nil ]
 ]
 
-{ #category : #rewriting }
+{ #category : 'rewriting' }
 SmaCCAbstractRewrite >> performOn: aSmaCCNode continuation: aBlock [
 	self subclassResponsibility
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 SmaCCAbstractRewrite >> postCopy [
 	announcer := nil.
 	dependents := nil.
@@ -121,57 +122,57 @@ SmaCCAbstractRewrite >> postCopy [
 	parent := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAbstractRewrite >> properties [
 	^ properties ifNil: [ properties := Dictionary new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAbstractRewrite >> properties: aDictionary [
 	properties := aDictionary
 ]
 
-{ #category : #'accessing-properites' }
+{ #category : 'accessing-properites' }
 SmaCCAbstractRewrite >> propertyAt: aString [
 	^ self properties at: aString ifAbsent: [ nil ]
 ]
 
-{ #category : #'accessing-properites' }
+{ #category : 'accessing-properites' }
 SmaCCAbstractRewrite >> propertyAt: aString ifAbsent: aBlock [
 	^ self properties at: aString ifAbsent: aBlock
 ]
 
-{ #category : #'accessing-properites' }
+{ #category : 'accessing-properites' }
 SmaCCAbstractRewrite >> propertyAt: aString ifAbsentPut: aBlock [
 	^ self properties at: aString ifAbsentPut: aBlock
 ]
 
-{ #category : #'accessing-properites' }
+{ #category : 'accessing-properites' }
 SmaCCAbstractRewrite >> propertyAt: aString put: anObject [
 	^ self properties at: aString put: anObject
 ]
 
-{ #category : #'accessing-properites' }
+{ #category : 'accessing-properites' }
 SmaCCAbstractRewrite >> removeProperty: aString [
 	^ self properties removeKey: aString ifAbsent: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAbstractRewrite >> rewrites [
 	^ #()
 ]
 
-{ #category : #saving }
+{ #category : 'saving' }
 SmaCCAbstractRewrite >> saveOn: aStream [
 	self localSaveOn: aStream
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAbstractRewrite >> topParent [
 	^ parent ifNil: [ self ] ifNotNil: [ :value | value topParent ]
 ]
 
-{ #category : #rewriting }
+{ #category : 'rewriting' }
 SmaCCAbstractRewrite >> updateClass: aClass [
 	
 ]

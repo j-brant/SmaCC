@@ -1,6 +1,6 @@
-Extension { #name : #String }
+Extension { #name : 'String' }
 
-{ #category : #'*SmaCC_Rewrite_Engine' }
+{ #category : '*SmaCC_Rewrite_Engine' }
 String >> splitFirstOn: firstCharacter andThen: secondCharacter do: aBlock [
 	(self substrings: firstCharacter asString)
 		do:

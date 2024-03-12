@@ -1,18 +1,19 @@
 Class {
-	#name : #SmaCCRewriteRuleFileParser,
-	#superclass : #SmaCCParser,
+	#name : 'SmaCCRewriteRuleFileParser',
+	#superclass : 'SmaCCParser',
 	#instVars : [
 		'filename'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 SmaCCRewriteRuleFileParser class >> cacheId [
 	^'2020-09-14T14:32:34.912193-05:00'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCRewriteRuleFileParser class >> definitionComment [
 "<singleName>
 	: (<isLetter> | _) (<isLetter> | <isDigit> | _)*
@@ -91,17 +92,17 @@ StartSmalltalkExpression
 	;"
 ]
 
-{ #category : #'file types' }
+{ #category : 'file types' }
 SmaCCRewriteRuleFileParser class >> fileExtension [
 	^ '.rw'
 ]
 
-{ #category : #'file types' }
+{ #category : 'file types' }
 SmaCCRewriteRuleFileParser class >> fileExtensionType [
 	^ 'SmaCC Rewrite files'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteRuleFileParser class >> parse: aString [
 	| fileSystem filename |
 	fileSystem := FileSystem memory.
@@ -110,12 +111,12 @@ SmaCCRewriteRuleFileParser class >> parse: aString [
 	^ self parseFile: filename
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteRuleFileParser class >> parseFile: aString [
 	^ aString asFileReference
 		readStreamDo: [ :stream | 
 			| parser |
-			parser := self on: stream.
+			parser := self on: stream contents readStream.
 			parser filename: aString.
 			parser parse
 				filename: aString;
@@ -123,7 +124,7 @@ SmaCCRewriteRuleFileParser class >> parseFile: aString [
 				yourself ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCRewriteRuleFileParser class >> reduceTable [
 ^#(
 	#(20 0 #reduceActionForRules1: 263169 false ) 
@@ -156,22 +157,22 @@ SmaCCRewriteRuleFileParser class >> reduceTable [
 	).
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 SmaCCRewriteRuleFileParser class >> scannerClass [
 	^SmaCCRewriteRuleFileScanner
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCRewriteRuleFileParser class >> startingStateForFile [
 	^ 1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCRewriteRuleFileParser class >> symbolNames [
 	^ #('"("' '")"' '"+"' '"-"' '"->"' '":"' '"<<<"' '">>>"' '"Import"' '"Parser"' '"["' '"]"' '<name>' '<string>' '<cmt>' '<method>' '<whitespace>' 'B e g i n' 'File' 'Rules' 'ParserClass' 'Import' 'Rule' 'Comment' 'Variables' 'VariableList' 'Variable' 'Match' 'StringExpression' 'Transformation' 'Block' 'StartStringExpression' 'StartSmalltalkExpression' 'E O F' 'error')
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCRewriteRuleFileParser class >> transitionTable [
 ^#(
 #[1 0 6 0 1 0 6 0 8 0 6 0 9 0 6 0 10 0 6 0 13 0 6 0 15 0 6 0 16 0 9 0 19 0 13 0 20 0 6 0 34] 
@@ -216,12 +217,12 @@ SmaCCRewriteRuleFileParser class >> transitionTable [
 	).
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRewriteRuleFileParser >> filename: aString [
 	filename := aString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRewriteRuleFileParser >> lookupClass: aSmaCCToken [
 	| string block |
 	string := aSmaCCToken value.
@@ -233,28 +234,28 @@ SmaCCRewriteRuleFileParser >> lookupClass: aSmaCCToken [
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCRewriteRuleFileParser >> reduceActionForComment2: nodes [
 	^ ((nodes at: 1) value copyFrom: 2 to: (nodes at: 1) value size - 1)
 		copyReplaceAll: '""'
 		with: '"'
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCRewriteRuleFileParser >> reduceActionForImport1: nodes [
 	^ ((nodes at: 3) value copyFrom: 2 to: (nodes at: 3) value size - 1)
 		copyReplaceAll: ''''''
 		with: ''''
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCRewriteRuleFileParser >> reduceActionForMatch1: nodes [
 	^ SmaCCRewriteTreeMatch new
 		source: (nodes at: 1);
 		yourself
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCRewriteRuleFileParser >> reduceActionForMatch2: nodes [
 	^ SmaCCRewriteTreeMatch new
 		source: (nodes at: 2);
@@ -262,24 +263,24 @@ SmaCCRewriteRuleFileParser >> reduceActionForMatch2: nodes [
 		yourself
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCRewriteRuleFileParser >> reduceActionForMatch3: nodes [
 	^ SmaCCRewriteTypeMatch on: (self lookupClass: (nodes at: 1))
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCRewriteRuleFileParser >> reduceActionForMatch4: nodes [
 	^ (SmaCCRewriteTypeMatch on: (self lookupClass: (nodes at: 1)))
 		code: (nodes at: 2);
 		yourself
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCRewriteRuleFileParser >> reduceActionForParserClass1: nodes [
 	^ self lookupClass: (nodes at: 3)
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCRewriteRuleFileParser >> reduceActionForRule1: nodes [
 	^ SmaCCRewrite
 		comment: (nodes at: 1)
@@ -287,7 +288,7 @@ SmaCCRewriteRuleFileParser >> reduceActionForRule1: nodes [
 		transformation: (nodes at: 4)
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCRewriteRuleFileParser >> reduceActionForRule2: nodes [
 	^ SmaCCRewriteMethodDefinition
 		comment: (nodes at: 1)
@@ -296,7 +297,7 @@ SmaCCRewriteRuleFileParser >> reduceActionForRule2: nodes [
 				(nodes at: 2) value size - 1) copyReplaceAll: '!!' with: '!')
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCRewriteRuleFileParser >> reduceActionForRule3: nodes [
 	^ SmaCCRewritePropertyDefinition
 		comment: (nodes at: 1)
@@ -308,87 +309,87 @@ SmaCCRewriteRuleFileParser >> reduceActionForRule3: nodes [
 				collect: [ :each | each last ])
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCRewriteRuleFileParser >> reduceActionForRules1: nodes [
 	^ SmaCCRewriteFile new
 		filename: filename;
 		yourself
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCRewriteRuleFileParser >> reduceActionForRules2: nodes [
 	^ (nodes at: 1)
 		addTransformation: (nodes at: 2);
 		yourself
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCRewriteRuleFileParser >> reduceActionForRules3: nodes [
 	^ (nodes at: 1)
 		parserClass: (nodes at: 2);
 		yourself
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCRewriteRuleFileParser >> reduceActionForRules4: nodes [
 	^ (nodes at: 1)
 		import: (nodes at: 2);
 		yourself
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCRewriteRuleFileParser >> reduceActionForStartSmalltalkExpression1: nodes [
 	^ self scanSmalltalkExpression
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCRewriteRuleFileParser >> reduceActionForStartStringExpression1: nodes [
 	^ self scanStringExpression
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCRewriteRuleFileParser >> reduceActionForTransformation1: nodes [
 	^ SmaCCRewriteStringTransformation on: (nodes at: 1)
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCRewriteRuleFileParser >> reduceActionForTransformation2: nodes [
 	^ SmaCCRewriteCodeTransformation on: (nodes at: 1)
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCRewriteRuleFileParser >> reduceActionForVariable1: nodes [
 	^ Array with: false with: (nodes at: 2) value
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCRewriteRuleFileParser >> reduceActionForVariable2: nodes [
 	^ Array with: true with: (nodes at: 2) value
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCRewriteRuleFileParser >> reduceActionForVariableList1: nodes [
 	^ OrderedCollection new
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCRewriteRuleFileParser >> reduceActionForVariableList2: nodes [
 	^ (nodes at: 1)
 		add: (nodes at: 2);
 		yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRewriteRuleFileParser >> scanSmalltalkExpression [
 	^ scanner scanSmalltalkExpression
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRewriteRuleFileParser >> scanStringExpression [
 	^ scanner scanStringExpression
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRewriteRuleFileParser >> tryAllTokens [
 	^ true
 ]

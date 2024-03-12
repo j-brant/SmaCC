@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCRewriteProcessor,
-	#superclass : #Object,
+	#name : 'SmaCCRewriteProcessor',
+	#superclass : 'Object',
 	#instVars : [
 		'rules',
 		'parserClass',
@@ -15,40 +15,41 @@ Class {
 	#classVars : [
 		'Debug'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor class >> debug [
 	^ Debug ifNil: [ false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor class >> debug: aBoolean [
 	Debug := aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> baseDirectory [
 	^ baseDirectory ifNil: [ '' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> baseDirectory: aString [
 	baseDirectory := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> debug [
 	^ self class debug
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> debug: aBoolean [
 	self class debug: aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> engine [
 	rewriteEngine isNil
 		ifTrue:
@@ -57,37 +58,37 @@ SmaCCRewriteProcessor >> engine [
 	^ rewriteEngine
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> errorClasses [
 	^ Error , UnrecognizedImageFormatError
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> extension [
 	^ self parserClass fileExtension
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> files [
 	^ files ifNil: [ files := self inputFilenames ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> files: aCollection [
 	files := aCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> inputDirectory [
 	^ inputDirectory
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> inputDirectory: aString [
 	inputDirectory := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> inputFilenames [
 	| names |
 	names := OrderedCollection new.
@@ -97,59 +98,59 @@ SmaCCRewriteProcessor >> inputFilenames [
 	^ names
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> lineEnding [
 	^ lineEnding
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> lineEnding: aSymbol [
 	lineEnding := aSymbol
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> outputDirectory [
 	^ outputDirectory
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> outputDirectory: aString [
 	outputDirectory := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> parseFile: aString [
 	| source |
 	source := self sourceFor: aString.
 	^ self parserClass parse: source
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> parseRewriteRuleFile: aString [
 	rules := SmaCCRewriteRuleFileParser parseFile: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> parserClass [
 	^ parserClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> parserClass: aSmaCCParserClass [
 	parserClass := aSmaCCParserClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> processAllNotifying: postBlock [
 	self files do: [ :each | postBlock value: (self processFile: each) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> processFile: aString [
 	^ self processFile: aString usingResult: SmaCCRewriteResult new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> processFile: aString usingResult: aSmaCCRewriteResult [
 	| input output tree stream subdirectory fullFilename |
 	(Smalltalk includesKey: #Smalltalk)
@@ -240,22 +241,22 @@ SmaCCRewriteProcessor >> processFile: aString usingResult: aSmaCCRewriteResult [
 	^ aSmaCCRewriteResult
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> ruleFile: aString [
 	self parseRewriteRuleFile: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> rules [
 	^ rules
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> rules: aSmaCCAbstractRewrite [
 	rules := aSmaCCAbstractRewrite
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> saveOutput: aString in: aFilename [
 	| directory tries |
 	(aFilename isNil or: [ aFilename isEmpty ])
@@ -285,7 +286,7 @@ SmaCCRewriteProcessor >> saveOutput: aString in: aFilename [
 			stream nextPutAll: aString ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> sourceFor: aString [
 	| fileRef |
 	fileRef := aString asFileReference.
@@ -303,7 +304,7 @@ SmaCCRewriteProcessor >> sourceFor: aString [
 					stream contents ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> validate: aString forResult: aSmaCCRewriteResult [
 	| stream |
 	self validationParserClass isNil
@@ -327,12 +328,12 @@ SmaCCRewriteProcessor >> validate: aString forResult: aSmaCCRewriteResult [
 				type: #warning ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> validationParserClass [
 	^ validationParserClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteProcessor >> validationParserClass: aSmaCCParserClass [
 	validationParserClass := aSmaCCParserClass
 ]

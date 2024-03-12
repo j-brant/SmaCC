@@ -1,1 +1,1 @@
-Package { #name : #'SmaCC_Rewrite_Engine' }
+Package { #name : 'SmaCC_Rewrite_Engine' }

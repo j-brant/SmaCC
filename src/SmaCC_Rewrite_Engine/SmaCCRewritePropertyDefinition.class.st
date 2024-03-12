@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCRewritePropertyDefinition,
-	#superclass : #SmaCCAbstractRewrite,
+	#name : 'SmaCCRewritePropertyDefinition',
+	#superclass : 'SmaCCAbstractRewrite',
 	#instVars : [
 		'comment',
 		'propertyNames',
@@ -10,10 +10,11 @@ Class {
 		'Reader',
 		'Writer'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCRewritePropertyDefinition class >> comment: aString locals: localPropertyNames globals: globalPropertyNames [
 	^ self new
 		comment: aString;
@@ -22,55 +23,55 @@ SmaCCRewritePropertyDefinition class >> comment: aString locals: localPropertyNa
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewritePropertyDefinition class >> readerPrototype [
 	^ Reader ifNil: [ Reader := SmaCCRewriteMatchContext compiledMethodFor: 'selector ^Uninitialized' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewritePropertyDefinition class >> writerPrototype [
 	^ Writer ifNil: [ Writer := SmaCCRewriteMatchContext compiledMethodFor: 'selector: anObject ^Uninitialized := anObject' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewritePropertyDefinition >> addAllGlobals: aCollection [
 	aCollection do: [ :each | self addGlobal: each ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewritePropertyDefinition >> addAllLocals: aCollection [
 	aCollection do: [ :each | self addLocal: each ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewritePropertyDefinition >> addGlobal: aString [
 	globalValues at: aString asSymbol put: SmaCCRewriteMatchContext uninitializedValue.
 	self changed: #globals
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewritePropertyDefinition >> addLocal: aString [
 	propertyNames add: aString.
 	self changed: #locals
 ]
 
-{ #category : #rewriting }
+{ #category : 'rewriting' }
 SmaCCRewritePropertyDefinition >> clearLocalVariablesIn: aClass [
 	propertyNames do: [ :each | aClass classPool at: each asSymbol put: nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewritePropertyDefinition >> comment [
 	^ comment ifNil: [ '' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewritePropertyDefinition >> comment: aString [
 	comment := aString.
 	self changed: #comment
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRewritePropertyDefinition >> createPropertyMethodsFor: aSymbol in: aClass [
 	| method variable setterName |
 	method := self class readerPrototype copy.
@@ -85,7 +86,7 @@ SmaCCRewritePropertyDefinition >> createPropertyMethodsFor: aSymbol in: aClass [
 	aClass addSelectorSilently: setterName withMethod: method
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCRewritePropertyDefinition >> displayOn: aStream [
 	self comment notEmpty
 		ifTrue: [ aStream nextPutAll: self comment ]
@@ -97,14 +98,14 @@ SmaCCRewritePropertyDefinition >> displayOn: aStream [
 				nextPutAll: ' global' ]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCRewritePropertyDefinition >> initialize [
 	super initialize.
 	propertyNames := Set new.
 	globalValues := Dictionary new
 ]
 
-{ #category : #saving }
+{ #category : 'saving' }
 SmaCCRewritePropertyDefinition >> localSaveOn: aStream [
 	self comment notEmpty
 		ifTrue: [ aStream
@@ -130,24 +131,24 @@ SmaCCRewritePropertyDefinition >> localSaveOn: aStream [
 	aStream nextPut: $)
 ]
 
-{ #category : #rewriting }
+{ #category : 'rewriting' }
 SmaCCRewritePropertyDefinition >> performOn: aSmaCCNode continuation: aBlock [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewritePropertyDefinition >> removeGlobal: aString [
 	globalValues removeKey: aString asSymbol ifAbsent: [  ].
 	self changed: #globals
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewritePropertyDefinition >> removeLocal: aString [
 	propertyNames remove: aString ifAbsent: [  ].
 	self changed: #locals
 ]
 
-{ #category : #rewriting }
+{ #category : 'rewriting' }
 SmaCCRewritePropertyDefinition >> updateClass: aClass [
 	propertyNames
 		do: [ :each | 

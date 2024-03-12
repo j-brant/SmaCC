@@ -1,36 +1,37 @@
 Class {
-	#name : #SmaCCRewriteMatch,
-	#superclass : #Object,
+	#name : 'SmaCCRewriteMatch',
+	#superclass : 'Object',
 	#instVars : [
 		'rewrite'
 	],
 	#classVars : [
 		'HaltBlock'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteMatch class >> haltBlock [
 	^ HaltBlock ifNil: [ [ :rewrite :node | false ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteMatch class >> haltBlock: aBlock [
 	HaltBlock := aBlock
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCRewriteMatch >> canMatch: aClass [
 	^ true
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCRewriteMatch >> displayOn: aStream [
 	self printOn: aStream
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCRewriteMatch >> displayString [
 	| stream |
 	stream := WriteStream on: String new.
@@ -38,39 +39,39 @@ SmaCCRewriteMatch >> displayString [
 	^ stream contents
 ]
 
-{ #category : #matching }
+{ #category : 'matching' }
 SmaCCRewriteMatch >> match: aSmaCCRewriteMatchContext [
 	self subclassResponsibility
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCRewriteMatch >> modified [
 	rewrite notNil
 		ifTrue: [ rewrite modified ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteMatch >> parserClass [
 	^ rewrite parserClass
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 SmaCCRewriteMatch >> postCopy [
 	super postCopy.
 	rewrite := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteMatch >> rewrite [
 	^ rewrite
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteMatch >> rewrite: anObject [
 	rewrite := anObject
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCRewriteMatch >> saveOn: aStream [
 	self subclassResponsibility
 ]

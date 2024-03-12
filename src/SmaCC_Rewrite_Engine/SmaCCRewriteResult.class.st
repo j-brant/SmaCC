@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCRewriteResult,
-	#superclass : #Object,
+	#name : 'SmaCCRewriteResult',
+	#superclass : 'Object',
 	#instVars : [
 		'filename',
 		'outputFilename',
@@ -11,10 +11,11 @@ Class {
 		'interval',
 		'transformation'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCRewriteResult class >> fromSocketString: aString [
 	| result |
 	result := self new.
@@ -43,17 +44,17 @@ SmaCCRewriteResult class >> fromSocketString: aString [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteResult >> addFile: aSmaCCString named: aString [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteResult >> additionalFiles [
 	^ Dictionary new
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 SmaCCRewriteResult >> asSocketString [
 	| stream null |
 	stream := WriteStream on: String new.
@@ -103,7 +104,7 @@ SmaCCRewriteResult >> asSocketString [
 	^ stream contents
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 SmaCCRewriteResult >> asTabDelimitedString [
 	| stream |
 	stream := WriteStream on: String new.
@@ -125,127 +126,127 @@ SmaCCRewriteResult >> asTabDelimitedString [
 	^ stream contents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteResult >> errorString [
 	^ errorString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteResult >> errorString: anObject [
 	errorString := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteResult >> filename [
 	^ filename
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteResult >> filename: anObject [
 	filename := anObject
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCRewriteResult >> inputSource [
 	^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteResult >> inputSource: aString [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteResult >> interval [
 	^ interval
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteResult >> interval: anObject [
 	interval := anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCRewriteResult >> isError [
 	^ type = #error
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCRewriteResult >> isWarning [
 	^ type = #warning
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteResult >> outputFilename [
 	^ outputFilename
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteResult >> outputFilename: anObject [
 	outputFilename := anObject
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCRewriteResult >> outputSource [
 	^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteResult >> outputSource: aString [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteResult >> smaccStringClass [
 	^ SmaCCString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteResult >> startColumn [
 	^ startColumn
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteResult >> startColumn: anInteger [
 	startColumn := anInteger
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteResult >> startLine [
 	^ startLine
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteResult >> startLine: anInteger [
 	startLine := anInteger
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteResult >> transformation [
 	^ transformation
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteResult >> transformation: anObject [
 	transformation := anObject
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCRewriteResult >> transformedString [
 	^ SmaCCAnnotatedString on: ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteResult >> transformedString: aSmaCCAnnotatedString [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteResult >> type [
 	^ type
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteResult >> type: aSymbol [
 	type := aSymbol
 ]

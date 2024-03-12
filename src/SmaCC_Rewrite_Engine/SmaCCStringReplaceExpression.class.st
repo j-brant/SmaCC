@@ -1,33 +1,34 @@
 Class {
-	#name : #SmaCCStringReplaceExpression,
-	#superclass : #SmaCCReplaceExpression,
+	#name : 'SmaCCStringReplaceExpression',
+	#superclass : 'SmaCCReplaceExpression',
 	#instVars : [
 		'string'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCStringReplaceExpression >> acceptVisitor: aReplaceVisitor [
 	^ aReplaceVisitor visitStringReplace: self
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 SmaCCStringReplaceExpression >> evaluateInContext: aSmaCCRewriteMatchContext [
 	^ string value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCStringReplaceExpression >> string [
 	^ string
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCStringReplaceExpression >> string: aSmaCCToken [
 	string := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCStringReplaceExpression >> tokenVariables [
 	^ #(#string)
 ]

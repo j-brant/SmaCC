@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCTransformationToolkitModel,
-	#superclass : #Model,
+	#name : 'SmaCCTransformationToolkitModel',
+	#superclass : 'Model',
 	#instVars : [
 		'modified',
 		'files',
@@ -14,10 +14,11 @@ Class {
 		'commonParentDirectory',
 		'lineEnding'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #'actions-rewrites' }
+{ #category : 'actions-rewrites' }
 SmaCCTransformationToolkitModel >> addTransformation: aSmaCCAbstractRewrite under: aSmaCCRewriteFile [
 	self
 		addTransformation: aSmaCCAbstractRewrite
@@ -25,7 +26,7 @@ SmaCCTransformationToolkitModel >> addTransformation: aSmaCCAbstractRewrite unde
 		before: nil
 ]
 
-{ #category : #'actions-rewrites' }
+{ #category : 'actions-rewrites' }
 SmaCCTransformationToolkitModel >> addTransformation: aSmaCCAbstractRewrite under: aSmaCCRewriteFile before: anotherSmaCCAbstractRewrite [
 	anotherSmaCCAbstractRewrite isNil
 		ifTrue: [ aSmaCCRewriteFile addTransformation: aSmaCCAbstractRewrite ]
@@ -39,12 +40,12 @@ SmaCCTransformationToolkitModel >> addTransformation: aSmaCCAbstractRewrite unde
 			(Array with: aSmaCCAbstractRewrite with: aSmaCCRewriteFile)
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCTransformationToolkitModel >> areRewritesModified [
 	^ self rewrites notNil and: [ self rewrites isModified ]
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 SmaCCTransformationToolkitModel >> commonParentDirectory [
 	| common |
 	commonParentDirectory notNil
@@ -62,75 +63,75 @@ SmaCCTransformationToolkitModel >> commonParentDirectory [
 	^ common
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitModel >> commonParentDirectory: aString [
 	commonParentDirectory := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitModel >> createSubdirectories [
 	^ createSubdirectories ifNil: [ false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitModel >> createSubdirectories: aBoolean [
 	createSubdirectories := aBoolean.
 	modified := true.
 	self changed: #createSubdirectories with: aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitModel >> files [
 	^ files ifNil: [ #() ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitModel >> files: aCollection [
 	files := aCollection.
 	modified := true.
 	self changed: #files with: aCollection
 ]
 
-{ #category : #'initialize/release' }
+{ #category : 'initialize/release' }
 SmaCCTransformationToolkitModel >> initialize [
 	super initialize.
 	modified := false.
 	rewrites := SmaCCRewriteFile new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitModel >> inputParserClass [
 	^ inputParserClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitModel >> inputParserClass: aSmaCCParserClass [
 	inputParserClass := aSmaCCParserClass.
 	modified := true.
 	self changed: #inputParserClass with: aSmaCCParserClass
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCTransformationToolkitModel >> isModified [
 	^ modified or: [ self areRewritesModified ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCTransformationToolkitModel >> isModified: aBoolean [
 	modified := aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitModel >> lineEnding [
 	^ lineEnding
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitModel >> lineEnding: aSymbol [
 	lineEnding := aSymbol
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SmaCCTransformationToolkitModel >> loadFile: aString [
 	aString asFileReference
 		readStreamDo: [ :stream | 
@@ -142,14 +143,14 @@ SmaCCTransformationToolkitModel >> loadFile: aString [
 			self isModified: false ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCTransformationToolkitModel >> loadRewriteFile: aString [
 	aString isNil
 		ifTrue: [ ^ self ].
 	self rewrites: (self openRewriteFile: aString)
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 SmaCCTransformationToolkitModel >> localRunOn: aCollection [
 	SmaCCRewriteProcessor new
 		rules: self rewrites;
@@ -162,7 +163,7 @@ SmaCCTransformationToolkitModel >> localRunOn: aCollection [
 		processAllNotifying: [ :each | self changed: #resultAdded with: each ]
 ]
 
-{ #category : #'actions-rewrites' }
+{ #category : 'actions-rewrites' }
 SmaCCTransformationToolkitModel >> openRewriteFile: filename [
 	| fileRef |
 	fileRef := filename asFileReference.
@@ -174,62 +175,62 @@ SmaCCTransformationToolkitModel >> openRewriteFile: filename [
 				yourself ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitModel >> outputDirectory [
 	^ outputDirectory ifNil: [ '' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitModel >> outputDirectory: aString [
 	outputDirectory := aString.
 	modified := true.
 	self changed: #outputDirectory with: aString
 ]
 
-{ #category : #'actions-rewrites' }
+{ #category : 'actions-rewrites' }
 SmaCCTransformationToolkitModel >> removeTransformation: aSmaCCAbstractRewrite [
 	aSmaCCAbstractRewrite parent
 		removeTransformation: aSmaCCAbstractRewrite.
 	self changed: #removedTransformation: with: aSmaCCAbstractRewrite
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitModel >> rewrites [
 	^ rewrites
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitModel >> rewrites: aSmaCCRewrite [
 	rewrites := aSmaCCRewrite.
 	modified := true.
 	self changed: #rewrites with: aSmaCCRewrite
 ]
 
-{ #category : #'actions-running' }
+{ #category : 'actions-running' }
 SmaCCTransformationToolkitModel >> runOn: tranformationFiles [
 	self runOnServer
 		ifTrue: [ self serverRunOn: tranformationFiles ]
 		ifFalse: [ self localRunOn: tranformationFiles ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitModel >> runOnServer [
 	^ runOnServer ifNil: [ false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitModel >> runOnServer: aBoolean [
 	runOnServer := aBoolean.
 	modified := true.
 	self changed: #runOnServer with: aBoolean
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCTransformationToolkitModel >> saveRewrites [
 	self rewrites save
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCTransformationToolkitModel >> saveTo: filename [
 	filename asFileReference
 		ensureDelete;
@@ -280,21 +281,21 @@ SmaCCTransformationToolkitModel >> saveTo: filename [
 		ifTrue: [ self saveRewrites ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitModel >> server [
 	^ (server isNil or: [ server isEmpty ])
 		ifTrue: [ 'localhost' ]
 		ifFalse: [ server ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitModel >> server: aString [
 	server := aString.
 	modified := true.
 	self changed: #server with: aString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCTransformationToolkitModel >> serverAndPort: defaultPort from: aString [
 	| serverName port parts |
 	parts := aString substrings: $: asString.
@@ -309,17 +310,17 @@ SmaCCTransformationToolkitModel >> serverAndPort: defaultPort from: aString [
 	^ Array with: serverName with: port
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitModel >> serverName [
 	^ (self serverAndPort: 36rSM from: self server) first
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitModel >> serverPort [
 	^ (self serverAndPort: 36rSM from: self server) last
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 SmaCCTransformationToolkitModel >> serverRunOn: aCollection [
 	| baseString stream socket request serverStream |
 	baseString := 'INPUTPARSER=' , self inputParserClass name
@@ -372,7 +373,7 @@ SmaCCTransformationToolkitModel >> serverRunOn: aCollection [
 		ensure: [ socket close ]
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 SmaCCTransformationToolkitModel >> terminateServer [
 	| socket serverStream |
 	socket := Socket newTCP
@@ -388,17 +389,17 @@ SmaCCTransformationToolkitModel >> terminateServer [
 		ensure: [ serverStream close ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCTransformationToolkitModel >> toggleUseServer [
 	self runOnServer: self runOnServer not
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitModel >> validationParserClass [
 	^ validationParserClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitModel >> validationParserClass: aSmaCCParserClass [
 	validationParserClass := aSmaCCParserClass.
 	modified := true.

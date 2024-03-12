@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCRewriteFile,
-	#superclass : #SmaCCAbstractRewrite,
+	#name : 'SmaCCRewriteFile',
+	#superclass : 'SmaCCAbstractRewrite',
 	#instVars : [
 		'filename',
 		'rewrites',
@@ -9,80 +9,81 @@ Class {
 		'timestamp',
 		'cachedLists'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCRewriteFile >> = anObject [
 	self class = anObject class
 		ifFalse: [ ^ false ].
 	^ self filename = anObject filename
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteFile >> addTransformation: aSmaCCAbstractRewrite [
 	rewrites add: aSmaCCAbstractRewrite.
 	aSmaCCAbstractRewrite parent: self.
 	self changed: #rewrites
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteFile >> addTransformation: aSmaCCAbstractRewrite before: anotherSmaCCAbstractRewrite [
 	rewrites add: aSmaCCAbstractRewrite before: anotherSmaCCAbstractRewrite.
 	aSmaCCAbstractRewrite parent: self.
 	self changed: #rewrites
 ]
 
-{ #category : #rewriting }
+{ #category : 'rewriting' }
 SmaCCRewriteFile >> clearLocalVariablesIn: aClass [
 	self rewrites do: [ :each | each clearLocalVariablesIn: aClass ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteFile >> currentFileTimestamp [
 	^ filename ifNotNil: [ filename exists ifTrue: [ filename modificationTime ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteFile >> directory [
 	^ filename parent
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCRewriteFile >> displayOn: aStream [
 	filename ifNil: [ ^ aStream nextPutAll: '...new file...' ].
 	aStream nextPutAll: filename basename
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteFile >> engine: aSmaCCRewriteEngine [
 	rewrites do: [ :each | each engine: aSmaCCRewriteEngine ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteFile >> filename [
 	^ filename
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteFile >> filename: aString [
 	filename := aString asFileReference.
 	timestamp := self currentFileTimestamp.
 	self changed: #filename
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteFile >> finishedLoading [
 	isModified := false.
 	rewrites do: [ :each | each finishedLoading ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCRewriteFile >> hash [
 	^ self class hash bitXor: self filename hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteFile >> import: aString [
 	| name rewriteFile |
 	name := self directory / aString.
@@ -91,7 +92,7 @@ SmaCCRewriteFile >> import: aString [
 	self addTransformation: rewriteFile
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCRewriteFile >> initialize [
 	super initialize.
 	rewrites := OrderedCollection new.
@@ -99,30 +100,30 @@ SmaCCRewriteFile >> initialize [
 	cachedLists := IdentityDictionary new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCRewriteFile >> isComposite [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCRewriteFile >> isModified [
 	^ isModified
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCRewriteFile >> isUpToDate [
 	^ timestamp = self currentFileTimestamp
 		and: [ rewrites allSatisfy: [ :each | each isUpToDate ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteFile >> listForClass: aClass into: aSmaCCRewriteLink [
 	^ rewrites
 		inject: aSmaCCRewriteLink
 		into: [ :sum :each | each listForClass: aClass into: sum ]
 ]
 
-{ #category : #saving }
+{ #category : 'saving' }
 SmaCCRewriteFile >> localSaveOn: aStream [
 	aStream
 		nextPutAll: 'Import: ''';
@@ -130,7 +131,7 @@ SmaCCRewriteFile >> localSaveOn: aStream [
 		nextPut: $'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteFile >> modified [
 	isModified := true.
 	cachedLists := IdentityDictionary new.
@@ -138,18 +139,18 @@ SmaCCRewriteFile >> modified [
 	self announcer announce: #display
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteFile >> parserClass [
 	^ parserClass ifNil: [ super parserClass ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteFile >> parserClass: aSmaCCParserClass [
 	parserClass := aSmaCCParserClass.
 	self changed: #parserClass
 ]
 
-{ #category : #rewriting }
+{ #category : 'rewriting' }
 SmaCCRewriteFile >> performLink: aSmaCCRewriteLink on: aSmaCCNode continuation: aBlock [
 	| link continuation |
 	link := aSmaCCRewriteLink.
@@ -165,7 +166,7 @@ SmaCCRewriteFile >> performLink: aSmaCCRewriteLink on: aSmaCCNode continuation: 
 	^ aBlock value
 ]
 
-{ #category : #rewriting }
+{ #category : 'rewriting' }
 SmaCCRewriteFile >> performOn: aSmaCCNode continuation: aBlock [
 	| link |
 	link := cachedLists
@@ -178,7 +179,7 @@ SmaCCRewriteFile >> performOn: aSmaCCNode continuation: aBlock [
 	^ self performLink: link on: aSmaCCNode continuation: aBlock
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 SmaCCRewriteFile >> postCopy [
 	| oldRewrites |
 	super postCopy.
@@ -188,31 +189,31 @@ SmaCCRewriteFile >> postCopy [
 	cachedLists := IdentityDictionary new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteFile >> relativeFilename [
 	parent ifNil: [ ^ filename ].
 	^ filename relativeTo: parent directory
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteFile >> removeTransformation: aSmaCCAbstractRewrite [
 	rewrites remove: aSmaCCAbstractRewrite ifAbsent: [  ].
 	aSmaCCAbstractRewrite parent: nil.
 	self changed: #rewrites
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteFile >> rewrites [
 	^ rewrites
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteFile >> rewrites: aCollection [
 	rewrites := aCollection.
 	self changed: #rewrites
 ]
 
-{ #category : #saving }
+{ #category : 'saving' }
 SmaCCRewriteFile >> save [
 	filename
 		ensureDelete;
@@ -235,13 +236,13 @@ SmaCCRewriteFile >> save [
 	timestamp := self currentFileTimestamp
 ]
 
-{ #category : #saving }
+{ #category : 'saving' }
 SmaCCRewriteFile >> saveOn: aStream [
 	super saveOn: aStream.
 	self save
 ]
 
-{ #category : #rewriting }
+{ #category : 'rewriting' }
 SmaCCRewriteFile >> updateClass: aClass [
 	self rewrites do: [ :each | each updateClass: aClass ]
 ]

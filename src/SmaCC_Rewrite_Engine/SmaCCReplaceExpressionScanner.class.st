@@ -1,25 +1,26 @@
 Class {
-	#name : #SmaCCReplaceExpressionScanner,
-	#superclass : #SmaCCScanner,
-	#category : #'SmaCC_Rewrite_Engine'
+	#name : 'SmaCCReplaceExpressionScanner',
+	#superclass : 'SmaCCScanner',
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCReplaceExpressionScanner >> codeExpressionId [
 	^ 23
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCReplaceExpressionScanner >> emptySymbolTokenId [
 	^ 24
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCReplaceExpressionScanner >> errorTokenId [
 	^ 25
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCReplaceExpressionScanner >> isValidCode [
 	RBParser
 		parseExpression: outputStream contents
@@ -27,7 +28,7 @@ SmaCCReplaceExpressionScanner >> isValidCode [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCReplaceExpressionScanner >> next [
 	scope = #code
 		ifTrue:
@@ -37,7 +38,7 @@ SmaCCReplaceExpressionScanner >> next [
 	^ super next
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCReplaceExpressionScanner >> scanCode [
 	outputStream reset.
 	[ outputStream nextPutAll: (stream upTo: $`).
@@ -51,7 +52,7 @@ SmaCCReplaceExpressionScanner >> scanCode [
 	outputStream nextPut: $` ] repeat
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCReplaceExpressionScanner >> scanForToken [
 	scope == #default
 		ifTrue: [ self step.
@@ -75,7 +76,7 @@ SmaCCReplaceExpressionScanner >> scanForToken [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCReplaceExpressionScanner >> scanForTokenX1 [
 	self step.
 	currentCharacter == $\

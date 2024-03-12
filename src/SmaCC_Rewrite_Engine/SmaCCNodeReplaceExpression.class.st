@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCNodeReplaceExpression,
-	#superclass : #SmaCCReplaceExpression,
+	#name : 'SmaCCNodeReplaceExpression',
+	#superclass : 'SmaCCReplaceExpression',
 	#instVars : [
 		'beforeWhitespace',
 		'beforePrefix',
@@ -10,15 +10,16 @@ Class {
 		'afterPostfix',
 		'afterWhitespace'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCNodeReplaceExpression >> acceptVisitor: aReplaceVisitor [
 	^ aReplaceVisitor visitNodeReplace: self
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCNodeReplaceExpression >> addPostfixTo: aSmaCCString inContext: aSmaCCRewriteMatchContext [
 	| node position string |
 	node := aSmaCCRewriteMatchContext nodeFor: name value.
@@ -45,7 +46,7 @@ SmaCCNodeReplaceExpression >> addPostfixTo: aSmaCCString inContext: aSmaCCRewrit
 		ifTrue: [ aSmaCCString addPrefix: postfix value ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCNodeReplaceExpression >> addPrefixTo: aSmaCCString inContext: aSmaCCRewriteMatchContext [
 	| node startPosition |
 	node := aSmaCCRewriteMatchContext nodeFor: name value.
@@ -72,47 +73,47 @@ SmaCCNodeReplaceExpression >> addPrefixTo: aSmaCCString inContext: aSmaCCRewrite
 				addPrefix: (aSmaCCRewriteMatchContext whitespaceBefore: startPosition) ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCNodeReplaceExpression >> afterPostfix [
 	^ afterPostfix
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCNodeReplaceExpression >> afterPostfix: aSmaCCToken [
 	afterPostfix := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCNodeReplaceExpression >> afterWhitespace [
 	^ afterWhitespace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCNodeReplaceExpression >> afterWhitespace: aSmaCCToken [
 	afterWhitespace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCNodeReplaceExpression >> beforePrefix [
 	^ beforePrefix
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCNodeReplaceExpression >> beforePrefix: aSmaCCToken [
 	beforePrefix := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCNodeReplaceExpression >> beforeWhitespace [
 	^ beforeWhitespace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCNodeReplaceExpression >> beforeWhitespace: aSmaCCToken [
 	beforeWhitespace := aSmaCCToken
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 SmaCCNodeReplaceExpression >> evaluateInContext: aSmaCCRewriteMatchContext [
 	| result |
 	result := aSmaCCRewriteMatchContext smaccStringClass new.
@@ -122,37 +123,37 @@ SmaCCNodeReplaceExpression >> evaluateInContext: aSmaCCRewriteMatchContext [
 	^ result
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCNodeReplaceExpression >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCNodeReplaceExpression >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCNodeReplaceExpression >> postfix [
 	^ postfix
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCNodeReplaceExpression >> postfix: aSmaCCToken [
 	postfix := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCNodeReplaceExpression >> prefix [
 	^ prefix
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCNodeReplaceExpression >> prefix: aSmaCCToken [
 	prefix := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCNodeReplaceExpression >> tokenVariables [
 	^ #(#beforeWhitespace #beforePrefix #prefix #name #postfix #afterPostfix #afterWhitespace)
 ]
