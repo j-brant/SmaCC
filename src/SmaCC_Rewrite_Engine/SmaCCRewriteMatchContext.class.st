@@ -20,21 +20,23 @@ Class {
 { #category : 'compiling' }
 SmaCCRewriteMatchContext class >> compiledMethodFor: aString [
 	^ [ "Pharo"
-	(self compiler
-		source: aString;
-		requestor: nil;
-		failBlock: [ ^ nil ];
-		compile) copyWithSource: aString ]
-		on: Error
-		do: [ :ex | 
-			"Squeak version"
-			ex
-				return:
-					(self
-						compile: aString
-						notifying: nil
-						trailer: self defaultMethodTrailer
-						ifFail: [ ^ nil ]) method ]
+	  | method |
+	  method := self compiler
+		            source: aString;
+		            requestor: nil;
+		            failBlock: [ ^ nil ];
+		            compile.
+	  [ method copyWithSource: aString ]
+		  on: Error
+		  do: [ :ex | method propertyAt: #source put: aString ].
+	  method ]
+		  on: Error
+		  do: [ :ex | "Squeak version"
+			  ex return: (self
+					   compile: aString
+					   notifying: nil
+					   trailer: self defaultMethodTrailer
+					   ifFail: [ ^ nil ]) method ]
 ]
 
 { #category : 'accessing' }
