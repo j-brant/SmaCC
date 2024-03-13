@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'filename'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine'
 }
 
 { #category : #'generated-accessing' }
@@ -115,7 +115,7 @@ SmaCCRewriteRuleFileParser class >> parseFile: aString [
 	^ aString asFileReference
 		readStreamDo: [ :stream | 
 			| parser |
-			parser := self on: stream.
+			parser := self on: stream contents readStream.
 			parser filename: aString.
 			parser parse
 				filename: aString;
