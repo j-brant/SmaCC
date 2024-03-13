@@ -10,7 +10,7 @@ Class {
 		'Reader',
 		'Writer'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine'
 }
 
 { #category : #'instance creation' }
@@ -149,12 +149,12 @@ SmaCCRewritePropertyDefinition >> removeLocal: aString [
 
 { #category : #rewriting }
 SmaCCRewritePropertyDefinition >> updateClass: aClass [
-	propertyNames
-		do: [ :each | 
-			aClass classPool at: each asSymbol put: nil.
-			self createPropertyMethodsFor: each asSymbol in: aClass ].
-	globalValues
-		associationsDo: [ :assoc | 
-			aClass classPool add: assoc.
-			self createPropertyMethodsFor: assoc name in: aClass ]
+	propertyNames do: [ :each |
+		(aClass instVarNamed: 'classPool') isNil ifTrue: [
+			aClass instVarNamed: 'classPool' put: Dictionary new ].
+		aClass classPool at: each asSymbol put: nil.
+		self createPropertyMethodsFor: each asSymbol in: aClass ].
+	globalValues associationsDo: [ :assoc |
+		aClass classPool add: assoc.
+		self createPropertyMethodsFor: assoc name in: aClass ]
 ]
