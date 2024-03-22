@@ -271,6 +271,11 @@ TJavaProgramNodeVisitor >> visitInitializer: anInitializer [
 ]
 
 { #category : #generated }
+TJavaProgramNodeVisitor >> visitInstanceofPatternExpression: anInstanceofPatternExpression [
+	^ self visitExpression: anInstanceofPatternExpression
+]
+
+{ #category : #generated }
 TJavaProgramNodeVisitor >> visitIntType: anIntType [
 	^ self visitPrimitiveType: anIntType
 ]
