@@ -476,8 +476,18 @@ TJavaProgramNodeVisitor >> visitSwitchBlock: aSwitchBlock [
 ]
 
 { #category : #generated }
+TJavaProgramNodeVisitor >> visitSwitchBlockExpressionGroup: aSwitchBlockExpressionGroup [
+	^ self visitProgram: aSwitchBlockExpressionGroup
+]
+
+{ #category : #generated }
 TJavaProgramNodeVisitor >> visitSwitchBlockStatementGroup: aSwitchBlockStatementGroup [
 	^ self visitProgram: aSwitchBlockStatementGroup
+]
+
+{ #category : #generated }
+TJavaProgramNodeVisitor >> visitSwitchExpression: aSwitchExpression [
+	^ self visitExpression: aSwitchExpression
 ]
 
 { #category : #generated }

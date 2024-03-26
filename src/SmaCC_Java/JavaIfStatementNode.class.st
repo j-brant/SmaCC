@@ -81,10 +81,8 @@ JavaIfStatementNode >> trueStatement [
 ]
 
 { #category : #generated }
-JavaIfStatementNode >> trueStatement: aJavaStatementNode [
-	self trueStatement notNil
-		ifTrue: [ self trueStatement parent: nil ].
-	trueStatement := aJavaStatementNode.
-	self trueStatement notNil
-		ifTrue: [ self trueStatement parent: self ]
+JavaIfStatementNode >> trueStatement: aJavaProgramNode [
+	self trueStatement notNil ifTrue: [ self trueStatement parent: nil ].
+	trueStatement := aJavaProgramNode.
+	self trueStatement notNil ifTrue: [ self trueStatement parent: self ]
 ]

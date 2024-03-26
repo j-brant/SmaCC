@@ -29,12 +29,10 @@ JavaIfElseStatementNode >> falseStatement [
 ]
 
 { #category : #generated }
-JavaIfElseStatementNode >> falseStatement: aJavaStatementNode [
-	self falseStatement notNil
-		ifTrue: [ self falseStatement parent: nil ].
-	falseStatement := aJavaStatementNode.
-	self falseStatement notNil
-		ifTrue: [ self falseStatement parent: self ]
+JavaIfElseStatementNode >> falseStatement: aJavaProgramNode [
+	self falseStatement notNil ifTrue: [ self falseStatement parent: nil ].
+	falseStatement := aJavaProgramNode.
+	self falseStatement notNil ifTrue: [ self falseStatement parent: self ]
 ]
 
 { #category : #generated }

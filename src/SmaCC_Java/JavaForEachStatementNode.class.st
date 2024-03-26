@@ -127,12 +127,10 @@ JavaForEachStatementNode >> statement [
 ]
 
 { #category : #generated }
-JavaForEachStatementNode >> statement: aJavaStatementNode [
-	self statement notNil
-		ifTrue: [ self statement parent: nil ].
-	statement := aJavaStatementNode.
-	self statement notNil
-		ifTrue: [ self statement parent: self ]
+JavaForEachStatementNode >> statement: aJavaProgramNode [
+	self statement notNil ifTrue: [ self statement parent: nil ].
+	statement := aJavaProgramNode.
+	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
 { #category : #generated }
