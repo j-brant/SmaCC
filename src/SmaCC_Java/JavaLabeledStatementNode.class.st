@@ -45,12 +45,10 @@ JavaLabeledStatementNode >> statement [
 ]
 
 { #category : #generated }
-JavaLabeledStatementNode >> statement: aJavaStatementNode [
-	self statement notNil
-		ifTrue: [ self statement parent: nil ].
-	statement := aJavaStatementNode.
-	self statement notNil
-		ifTrue: [ self statement parent: self ]
+JavaLabeledStatementNode >> statement: aJavaProgramNode [
+	self statement notNil ifTrue: [ self statement parent: nil ].
+	statement := aJavaProgramNode.
+	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
 { #category : #generated }
