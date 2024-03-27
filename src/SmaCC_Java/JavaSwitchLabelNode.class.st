@@ -3,7 +3,8 @@ Class {
 	#superclass : #JavaProgramNode,
 	#instVars : [
 		'caseToken',
-		'constant',
+		'constants',
+		'commas',
 		'colon'
 	],
 	#category : #'SmaCC_Java'
@@ -35,22 +36,42 @@ JavaSwitchLabelNode >> colon: aSmaCCToken [
 ]
 
 { #category : #generated }
-JavaSwitchLabelNode >> constant [
-	^ constant
+JavaSwitchLabelNode >> commas [
+	^ commas
 ]
 
 { #category : #generated }
-JavaSwitchLabelNode >> constant: aJavaExpressionNode [
-	self constant notNil
-		ifTrue: [ self constant parent: nil ].
-	constant := aJavaExpressionNode.
-	self constant notNil
-		ifTrue: [ self constant parent: self ]
+JavaSwitchLabelNode >> commas: anOrderedCollection [
+	commas := anOrderedCollection
 ]
 
 { #category : #generated }
-JavaSwitchLabelNode >> nodeVariables [
-	^ #(#constant)
+JavaSwitchLabelNode >> compositeNodeVariables [
+	^ #(#constants)
+]
+
+{ #category : #generated }
+JavaSwitchLabelNode >> constants [
+	^ constants
+]
+
+{ #category : #generated }
+JavaSwitchLabelNode >> constants: anOrderedCollection [
+	self setParents: self constants to: nil.
+	constants := anOrderedCollection.
+	self setParents: self constants to: self
+]
+
+{ #category : #generated }
+JavaSwitchLabelNode >> ignoredCompositeTokenVariables [
+	^ #(#commas)
+]
+
+{ #category : #'generated-initialize-release' }
+JavaSwitchLabelNode >> initialize [
+	super initialize.
+	constants := OrderedCollection new: 2.
+	commas := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

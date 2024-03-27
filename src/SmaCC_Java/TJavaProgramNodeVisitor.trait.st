@@ -431,6 +431,11 @@ TJavaProgramNodeVisitor >> visitQualifiedTypeName: aQualifiedTypeName [
 ]
 
 { #category : #generated }
+TJavaProgramNodeVisitor >> visitRecordDeclaration: aRecordDeclaration [
+	^ self visitDeclaration: aRecordDeclaration
+]
+
+{ #category : #generated }
 TJavaProgramNodeVisitor >> visitReturnStatement: aReturnStatement [
 	^ self visitStatement: aReturnStatement
 ]
@@ -604,4 +609,9 @@ TJavaProgramNodeVisitor >> visitVoidType: aVoidType [
 { #category : #generated }
 TJavaProgramNodeVisitor >> visitWhileStatement: aWhileStatement [
 	^ self visitStatement: aWhileStatement
+]
+
+{ #category : #generated }
+TJavaProgramNodeVisitor >> visitYieldStatement: aYieldStatement [
+	^ self visitStatement: aYieldStatement
 ]
