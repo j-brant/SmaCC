@@ -145,5 +145,5 @@ JavaMethodReferenceNode >> superToken: aSmaCCToken [
 
 { #category : #generated }
 JavaMethodReferenceNode >> tokenVariables [
-	^ #(#colonColonToken #name #superPeriod #superToken)
+	^ #(#colonColonToken #name #superToken #superPeriod)
 ]

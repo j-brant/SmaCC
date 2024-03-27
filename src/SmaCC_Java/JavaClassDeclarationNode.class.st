@@ -2,18 +2,20 @@ Class {
 	#name : #JavaClassDeclarationNode,
 	#superclass : #JavaDeclarationNode,
 	#instVars : [
-		'modifiers',
 		'classToken',
 		'name',
 		'typeParameters',
-		'extendsToken',
-		'superclass',
+		'leftBrace',
+		'rightBrace',
+		'declarations',
 		'implementsToken',
 		'interfaces',
 		'commas',
-		'leftBrace',
-		'declarations',
-		'rightBrace'
+		'permitsToken',
+		'permits',
+		'extendsToken',
+		'superclass',
+		'modifiers'
 	],
 	#category : #'SmaCC_Java'
 }
@@ -45,7 +47,7 @@ JavaClassDeclarationNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 JavaClassDeclarationNode >> compositeNodeVariables [
-	^ #(#declarations #interfaces #modifiers)
+	^ #(#declarations #interfaces #permits #modifiers)
 ]
 
 { #category : #generated }
@@ -96,6 +98,7 @@ JavaClassDeclarationNode >> initialize [
 	declarations := OrderedCollection new: 2.
 	interfaces := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
+	permits := OrderedCollection new: 2.
 	modifiers := OrderedCollection new: 2.
 ]
 
@@ -149,6 +152,28 @@ JavaClassDeclarationNode >> nodeVariables [
 ]
 
 { #category : #generated }
+JavaClassDeclarationNode >> permits [
+	^ permits
+]
+
+{ #category : #generated }
+JavaClassDeclarationNode >> permits: anOrderedCollection [
+	self setParents: self permits to: nil.
+	permits := anOrderedCollection.
+	self setParents: self permits to: self
+]
+
+{ #category : #generated }
+JavaClassDeclarationNode >> permitsToken [
+	^ permitsToken
+]
+
+{ #category : #generated }
+JavaClassDeclarationNode >> permitsToken: aSmaCCToken [
+	permitsToken := aSmaCCToken
+]
+
+{ #category : #generated }
 JavaClassDeclarationNode >> rightBrace [
 	^ rightBrace
 ]
@@ -174,7 +199,7 @@ JavaClassDeclarationNode >> superclass: aJavaClassTypeNode [
 
 { #category : #generated }
 JavaClassDeclarationNode >> tokenVariables [
-	^ #(#classToken #name #implementsToken #extendsToken)
+	^ #(#classToken #name #implementsToken #permitsToken #extendsToken)
 ]
 
 { #category : #generated }
