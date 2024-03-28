@@ -2,9 +2,9 @@ Class {
 	#name : #JavaInstanceofPatternExpressionNode,
 	#superclass : #JavaExpressionNode,
 	#instVars : [
-		'leftExpression',
-		'op',
-		'rightExpression',
+		'object',
+		'instanceofToken',
+		'type',
 		'variable'
 	],
 	#category : #'SmaCC_Java'
@@ -16,47 +16,47 @@ JavaInstanceofPatternExpressionNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-JavaInstanceofPatternExpressionNode >> leftExpression [
-	^ leftExpression
+JavaInstanceofPatternExpressionNode >> instanceofToken [
+	^ instanceofToken
 ]
 
 { #category : #generated }
-JavaInstanceofPatternExpressionNode >> leftExpression: aJavaExpressionNode [
-	self leftExpression notNil ifTrue: [ self leftExpression parent: nil ].
-	leftExpression := aJavaExpressionNode.
-	self leftExpression notNil ifTrue: [ self leftExpression parent: self ]
+JavaInstanceofPatternExpressionNode >> instanceofToken: aSmaCCToken [
+	instanceofToken := aSmaCCToken
 ]
 
 { #category : #generated }
 JavaInstanceofPatternExpressionNode >> nodeVariables [
-	^ #(#leftExpression #rightExpression #variable)
+	^ #(#object #type #variable)
 ]
 
 { #category : #generated }
-JavaInstanceofPatternExpressionNode >> op [
-	^ op
+JavaInstanceofPatternExpressionNode >> object [
+	^ object
 ]
 
 { #category : #generated }
-JavaInstanceofPatternExpressionNode >> op: aSmaCCToken [
-	op := aSmaCCToken
-]
-
-{ #category : #generated }
-JavaInstanceofPatternExpressionNode >> rightExpression [
-	^ rightExpression
-]
-
-{ #category : #generated }
-JavaInstanceofPatternExpressionNode >> rightExpression: aJavaTypeNode [
-	self rightExpression notNil ifTrue: [ self rightExpression parent: nil ].
-	rightExpression := aJavaTypeNode.
-	self rightExpression notNil ifTrue: [ self rightExpression parent: self ]
+JavaInstanceofPatternExpressionNode >> object: aJavaExpressionNode [
+	self object notNil ifTrue: [ self object parent: nil ].
+	object := aJavaExpressionNode.
+	self object notNil ifTrue: [ self object parent: self ]
 ]
 
 { #category : #generated }
 JavaInstanceofPatternExpressionNode >> tokenVariables [
-	^ #(#op)
+	^ #(#instanceofToken)
+]
+
+{ #category : #generated }
+JavaInstanceofPatternExpressionNode >> type [
+	^ type
+]
+
+{ #category : #generated }
+JavaInstanceofPatternExpressionNode >> type: aJavaTypeNode [
+	self type notNil ifTrue: [ self type parent: nil ].
+	type := aJavaTypeNode.
+	self type notNil ifTrue: [ self type parent: self ]
 ]
 
 { #category : #generated }
