@@ -42,7 +42,12 @@ YAMLStringNode >> compositeTokenVariables [
 { #category : #private }
 YAMLStringNode >> createObject [
 	(parts size = 1 and: [ parts first value notEmpty ])
-		ifTrue: [ parts first value first = $'
+		ifTrue: [ (#('true' 'on' 'yes') includes: parts first value asLowercase)
+				ifTrue: [ ^ true ].
+			(#('false' 'off' 'no') includes: parts first value asLowercase)
+				ifTrue: [ ^ false ].
+			(#('null' '~') includes: parts first value asLowercase) ifTrue: [ ^ nil ].
+			parts first value first = $'
 				ifTrue: [ ^ self singleQuoteValue: parts first value ].
 			parts first value first = $"
 				ifTrue: [ ^ self doubleQuoteValue: parts first value ].
