@@ -48,24 +48,6 @@ YAMLParseNode >> findNodesWithAnchor: aString [
 	^ nodes
 ]
 
-{ #category : #accessing }
-YAMLParseNode >> gtObjectFor: aView [
-	<gtView>
-	^ aView columnedTree
-		title: 'Object';
-		items: [ {'self' -> self object} ];
-		children: [ :each | 
-			each value isDictionary
-				ifTrue: [ each value associations ]
-				ifFalse: [ (each value isArray or: [ each value isKindOf: OrderedCollection ])
-						ifTrue: [ each value collectWithIndex: [ :x :i | i -> x ] ]
-						ifFalse: [ #() ] ] ];
-		column: 'Key' text: #key;
-		column: 'Value' text: #value;
-		send: #value;
-		expandUpTo: 2
-]
-
 { #category : #'generated-initialize-release' }
 YAMLParseNode >> initialize [
 	super initialize.
