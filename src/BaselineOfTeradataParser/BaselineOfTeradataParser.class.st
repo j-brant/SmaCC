@@ -10,7 +10,7 @@ BaselineOfTeradataParser >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.51' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.52' ].
 
 		spec package: 'SmaCC_Teradata_Parser' with: [
 			spec requires: #('SmaCCRuntime') ].
