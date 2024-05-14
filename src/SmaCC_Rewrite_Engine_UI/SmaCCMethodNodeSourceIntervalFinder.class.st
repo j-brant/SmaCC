@@ -8,7 +8,7 @@ Class {
 		'sourceNode',
 		'sourceInterval'
 	],
-	#category : #'SmaCC_Rewrite_Engine_UI-Context'
+	#category : #'SmaCC_Rewrite_Engine_UI'
 }
 
 { #category : #finding }
