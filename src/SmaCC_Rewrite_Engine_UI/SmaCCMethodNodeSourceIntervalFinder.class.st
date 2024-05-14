@@ -13,8 +13,6 @@ Class {
 
 { #category : #finding }
 SmaCCMethodNodeSourceIntervalFinder >> equivalentNodeTo: aNode in: otherTree [
-	"Taken from GtSmaCCTransformationToolkitDebuggerElement>>#equivalentNodeTo:in:"
-
 	| equivParent nodeIndex equivNode |
 	aNode isMethod ifTrue: [ ^ otherTree ].
 	(aNode parent isReturn and: [ aNode parent parent parent isMethod ])
@@ -32,8 +30,6 @@ SmaCCMethodNodeSourceIntervalFinder >> equivalentNodeTo: aNode in: otherTree [
 
 { #category : #finding }
 SmaCCMethodNodeSourceIntervalFinder >> find [
-	"Adopted from GtSmaCCTransformationToolkitDebuggerElement>>#intervalFromMethodNode:inSource:"
-
 	<return: #Interval>
 	sourceAst := RBParser
 			parseExpression: sourceString
