@@ -1,15 +1,14 @@
 Class {
-	#name : 'SmaCCAnnotatedString',
-	#superclass : 'SmaCCString',
+	#name : #SmaCCAnnotatedString,
+	#superclass : #SmaCCString,
 	#instVars : [
 		'node',
 		'rule'
 	],
-	#category : 'SmaCC_Rewrite_Engine',
-	#package : 'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : 'public' }
+{ #category : #public }
 SmaCCAnnotatedString >> addAnnotationTo: aSmaCCAnnotatedStringInterval [
 	(node isNil or: [ rule isNil ])
 		ifTrue: [ ^ self ].
@@ -17,12 +16,12 @@ SmaCCAnnotatedString >> addAnnotationTo: aSmaCCAnnotatedStringInterval [
 		addAnnotation: (SmaCCRewriteAnnotation onNode: node rewrite: rule)
 ]
 
-{ #category : 'public' }
+{ #category : #public }
 SmaCCAnnotatedString >> intervalClass [
 	^ SmaCCAnnotatedStringInterval
 ]
 
-{ #category : 'public' }
+{ #category : #public }
 SmaCCAnnotatedString >> newIntervalFor: aString [
 	| interval |
 	interval := super newIntervalFor: aString.
@@ -30,17 +29,17 @@ SmaCCAnnotatedString >> newIntervalFor: aString [
 	^ interval
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCAnnotatedString >> node [
 	^ node
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCAnnotatedString >> node: aSmaCCParseNode [
 	node := aSmaCCParseNode
 ]
 
-{ #category : 'public' }
+{ #category : #public }
 SmaCCAnnotatedString >> removeInterval: startInterval [
 	| result |
 	result := super removeInterval: startInterval.
@@ -48,12 +47,12 @@ SmaCCAnnotatedString >> removeInterval: startInterval [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCAnnotatedString >> rule [
 	^ rule
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCAnnotatedString >> rule: aSmaCCRewrite [
 	rule := aSmaCCRewrite
 ]

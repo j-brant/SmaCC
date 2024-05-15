@@ -1,16 +1,15 @@
 Class {
-	#name : 'SmaCCReplaceExpression',
-	#superclass : 'SmaCCParseNode',
-	#category : 'SmaCC_Rewrite_Engine',
-	#package : 'SmaCC_Rewrite_Engine'
+	#name : #SmaCCReplaceExpression,
+	#superclass : #SmaCCParseNode,
+	#category : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 SmaCCReplaceExpression >> acceptVisitor: aReplaceVisitor [
 	^ aReplaceVisitor visitReplace: self
 ]
 
-{ #category : 'evaluating' }
+{ #category : #evaluating }
 SmaCCReplaceExpression >> evaluateInContext: aSmaCCRewriteMatchContext [
 	self subclassResponsibility
 ]

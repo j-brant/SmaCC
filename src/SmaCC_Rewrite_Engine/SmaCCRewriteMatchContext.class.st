@@ -1,6 +1,6 @@
 Class {
-	#name : 'SmaCCRewriteMatchContext',
-	#superclass : 'Object',
+	#name : #SmaCCRewriteMatchContext,
+	#superclass : #Object,
 	#instVars : [
 		'rewriteEngine',
 		'match',
@@ -13,11 +13,10 @@ Class {
 		'SilentProperties',
 		'Uninitialized'
 	],
-	#category : 'SmaCC_Rewrite_Engine',
-	#package : 'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : 'compiling' }
+{ #category : #compiling }
 SmaCCRewriteMatchContext class >> compiledMethodFor: aString [
 	^ [ "Pharo"
 	  | method |
@@ -39,12 +38,12 @@ SmaCCRewriteMatchContext class >> compiledMethodFor: aString [
 					   ifFail: [ ^ nil ]) method ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext class >> continue [
 	^ Continue
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 SmaCCRewriteMatchContext class >> forNode: aSmaCCParseNode rewriter: aSmaCCRewriteEngine continuation: aBlock [
 	^ self new
 		forNode: aSmaCCParseNode
@@ -53,29 +52,29 @@ SmaCCRewriteMatchContext class >> forNode: aSmaCCParseNode rewriter: aSmaCCRewri
 		yourself
 ]
 
-{ #category : 'class initialization' }
+{ #category : #'class initialization' }
 SmaCCRewriteMatchContext class >> initialize [
 	Continue := Object new.
 	SilentProperties := false.
 	Uninitialized := Object new
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext class >> silentProperties [
 	^ SilentProperties
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext class >> silentProperties: anObject [
 	SilentProperties := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext class >> uninitializedValue [
 	^ Uninitialized
 ]
 
-{ #category : 'accessing-methods' }
+{ #category : #'accessing-methods' }
 SmaCCRewriteMatchContext >> addGlobalProperty: aSymbol withValueFrom: aBlock [
 	rewriteEngine rewriteRule propertyAt: aSymbol ifAbsentPut: aBlock.
 	self
@@ -86,12 +85,12 @@ SmaCCRewriteMatchContext >> addGlobalProperty: aSymbol withValueFrom: aBlock [
 		as: [ :value | rewriteEngine rewriteRule propertyAt: aSymbol put: value ]
 ]
 
-{ #category : 'accessing-methods' }
+{ #category : #'accessing-methods' }
 SmaCCRewriteMatchContext >> addMethodNamed: aSymbol as: aBlock [
 	rewriteEngine addMethodNamed: aSymbol as: aBlock
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> addNewlineWhitespace: aString to: source [
 	| outputStream inputStream |
 	(aString notNil and: [ aString notEmpty ])
@@ -117,7 +116,7 @@ SmaCCRewriteMatchContext >> addNewlineWhitespace: aString to: source [
 	^ outputStream contents
 ]
 
-{ #category : 'accessing-methods' }
+{ #category : #'accessing-methods' }
 SmaCCRewriteMatchContext >> addProperty: aSymbol withValue: anObject [
 	| property |
 	property := anObject.
@@ -127,17 +126,17 @@ SmaCCRewriteMatchContext >> addProperty: aSymbol withValue: anObject [
 		as: [ :value | property := value ]
 ]
 
-{ #category : 'accessing-properites' }
+{ #category : #'accessing-properites' }
 SmaCCRewriteMatchContext >> additionalFiles [
 	^ rewriteEngine additionalFiles
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> characterAt: anIndex [
 	^ self source at: anIndex
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> characterAtEndOf: aSmaCCNode [
 	| index |
 	index := self stopIndexFor: aSmaCCNode.
@@ -148,7 +147,7 @@ SmaCCRewriteMatchContext >> characterAtEndOf: aSmaCCNode [
 				ifFalse: [ index ])
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCRewriteMatchContext >> charactersAtAndAfter: startPosition matchesToken: aSmaCCToken [
 	| string position |
 	position := startPosition.
@@ -163,7 +162,7 @@ SmaCCRewriteMatchContext >> charactersAtAndAfter: startPosition matchesToken: aS
 	^ true
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCRewriteMatchContext >> charactersAtAndBefore: stopPosition matchesToken: aSmaCCToken [
 	| string position |
 	position := stopPosition.
@@ -178,7 +177,7 @@ SmaCCRewriteMatchContext >> charactersAtAndBefore: stopPosition matchesToken: aS
 	^ true
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> computeStringFor: value [
 	(value isKindOf: Collection)
 		ifTrue:
@@ -211,7 +210,7 @@ SmaCCRewriteMatchContext >> computeStringFor: value [
 		ifFalse: [ value ]
 ]
 
-{ #category : 'initialize-release' }
+{ #category : #'initialize-release' }
 SmaCCRewriteMatchContext >> context: aDictionary [
 	aDictionary
 		keysAndValuesDo:
@@ -223,12 +222,12 @@ SmaCCRewriteMatchContext >> context: aDictionary [
 				put: [ cachedString ifNil: [ cachedString := self computeStringFor: value ] ] ]
 ]
 
-{ #category : 'processing' }
+{ #category : #processing }
 SmaCCRewriteMatchContext >> continue [
 	continuation value
 ]
 
-{ #category : 'processing' }
+{ #category : #processing }
 SmaCCRewriteMatchContext >> debugMethod: aMethod message: aString [
 	| newContext process |
 	newContext := Context
@@ -244,7 +243,7 @@ SmaCCRewriteMatchContext >> debugMethod: aMethod message: aString [
 	process debugWithTitle: 'Debugging ' , aString ] forkAt: process priority + 1
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> delete: anObject [
 	| start stop |
 	start := self startIndexFor: anObject.
@@ -252,28 +251,28 @@ SmaCCRewriteMatchContext >> delete: anObject [
 	self deleteFrom: start to: stop
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> deleteAll: aCollection [
 	aCollection isNil
 		ifTrue: [ ^ self ].
 	aCollection do: [ :each | self delete: each ]
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> deleteAllWithWhitespaceAfter: aCollection [
 	aCollection isNil
 		ifTrue: [ ^ self ].
 	aCollection do: [ :each | self deleteWithWhitespaceAfter: each ]
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> deleteAllWithWhitespaceBefore: aCollection [
 	aCollection isNil
 		ifTrue: [ ^ self ].
 	aCollection do: [ :each | self deleteWithWhitespaceBefore: each ]
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> deleteFrom: start to: stop [
 	| startIndex stopIndex |
 	startIndex := self startIndexFor: start.
@@ -283,33 +282,33 @@ SmaCCRewriteMatchContext >> deleteFrom: start to: stop [
 	self source deleteFrom: startIndex to: stopIndex
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> deleteWhitespaceAfter: anObject [
 	| anIndex |
 	anIndex := self stopIndexFor: anObject.
 	self source deleteWhitespaceAfterIndex: anIndex
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> deleteWhitespaceBefore: anObject [
 	| anIndex |
 	anIndex := self startIndexFor: anObject.
 	self source deleteWhitespaceBeforeIndex: anIndex
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> deleteWithWhitespaceAfter: anObject [
 	self deleteWhitespaceAfter: anObject.
 	self delete: anObject
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> deleteWithWhitespaceBefore: anObject [
 	self deleteWhitespaceBefore: anObject.
 	self delete: anObject
 ]
 
-{ #category : 'accessing-methods' }
+{ #category : #'accessing-methods' }
 SmaCCRewriteMatchContext >> doesNotUnderstand: aMessage [
 	| method |
 	method := rewriteEngine methodNamed: aMessage selector.
@@ -335,7 +334,7 @@ SmaCCRewriteMatchContext >> doesNotUnderstand: aMessage [
 	^ method valueWithArguments: aMessage arguments
 ]
 
-{ #category : 'initialize-release' }
+{ #category : #'initialize-release' }
 SmaCCRewriteMatchContext >> forNode: aSmaCCParseNode rewriter: aSmaCCRewriteEngine continuation: aBlock [
 	rewriteEngine := aSmaCCRewriteEngine.
 	match := aSmaCCParseNode.
@@ -344,7 +343,7 @@ SmaCCRewriteMatchContext >> forNode: aSmaCCParseNode rewriter: aSmaCCRewriteEngi
 	strings := Dictionary new
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCRewriteMatchContext >> hasChild: anObject position: positionSelector [
 	| position node |
 	node := nil.
@@ -366,33 +365,33 @@ SmaCCRewriteMatchContext >> hasChild: anObject position: positionSelector [
 	^ false
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCRewriteMatchContext >> hasChildAtEndOf: anObject [
 	^ self hasChild: anObject position: #stopPosition
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCRewriteMatchContext >> hasChildAtStartOf: anObject [
 	^ self hasChild: anObject position: #startPosition
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> ignoreFile [
 	^ rewriteEngine ignoreFile
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> ignoreFile: aBoolean [
 	^ rewriteEngine ignoreFile: aBoolean
 ]
 
-{ #category : 'accessing-properites' }
+{ #category : #'accessing-properites' }
 SmaCCRewriteMatchContext >> initializeGlobalProperty: aSymbol withValueFrom: aBlock [
 	(self class classPool at: aSymbol ifAbsent: [ nil ]) == SmaCCRewriteMatchContext uninitializedValue
 		ifTrue: [ self class classPool at: aSymbol put: aBlock value ]
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> insert: aString after: anObject [
 	| position endPosition anIndex |
 	anIndex := self stopIndexFor: anObject.
@@ -414,20 +413,20 @@ SmaCCRewriteMatchContext >> insert: aString after: anObject [
 	^ position
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> insert: aString afterAll: aCollection [
 	aCollection isNil
 		ifTrue: [ ^ self ].
 	aCollection do: [ :each | self insert: aString after: each ]
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> insert: aSequenceableCollection around: aNode [
 	self insert: aSequenceableCollection first before: aNode.
 	self insert: aSequenceableCollection last after: aNode
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> insert: aString before: anObject [
 	| position anIndex |
 	anIndex := self startIndexFor: anObject.
@@ -444,21 +443,21 @@ SmaCCRewriteMatchContext >> insert: aString before: anObject [
 	^ position
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> insert: aString beforeAll: aCollection [
 	aCollection isNil
 		ifTrue: [ ^ self ].
 	aCollection do: [ :each | self insert: aString before: each ]
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> insert: aString between: aCollection [
 	aCollection isNil
 		ifTrue: [ ^ self ].
 	1 to: aCollection size - 1 do: [ :i | self insert: aString after: (aCollection at: i) ]
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCRewriteMatchContext >> isAtEndOfParent: anObject [
 	(anObject isKindOf: Collection)
 		ifTrue: [ anObject
@@ -469,7 +468,7 @@ SmaCCRewriteMatchContext >> isAtEndOfParent: anObject [
 				and: [ anObject parent stopPosition = anObject stopPosition ] ]
 ]
 
-{ #category : 'testing' }
+{ #category : #testing }
 SmaCCRewriteMatchContext >> isAtStartOfParent: anObject [
 	(anObject isKindOf: Collection)
 		ifTrue: [ anObject do: [ :each | ^ self isAtStartOfParent: each ] ].
@@ -479,32 +478,32 @@ SmaCCRewriteMatchContext >> isAtStartOfParent: anObject [
 				and: [ anObject parent startPosition = anObject startPosition ] ]
 ]
 
-{ #category : 'processing' }
+{ #category : #processing }
 SmaCCRewriteMatchContext >> markAllAsProcessed: aCollection [
 	aCollection do: [ :each | self markAsProcessed: each ]
 ]
 
-{ #category : 'processing' }
+{ #category : #processing }
 SmaCCRewriteMatchContext >> markAsProcessed: aSmaCCParseNode [
 	rewriteEngine markAsProcessed: aSmaCCParseNode
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> match [
 	^ match
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> match: anObject [
 	match := anObject
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> move: anObject after: anotherObject [
 	^ self move: anObject after: anotherObject withWhitespace: ''
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> move: anObject after: anotherObject withWhitespace: aString [
 	| start stop oldStop |
 	start := self startIndexFor: anObject.
@@ -524,12 +523,12 @@ SmaCCRewriteMatchContext >> move: anObject after: anotherObject withWhitespace: 
 	^ self startIndexFor: anotherObject
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> move: anObject before: anotherObject [
 	^ self move: anObject before: anotherObject withWhitespace: ''
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> move: anObject before: anotherObject withWhitespace: aString [
 	| start stop oldStart |
 	start := self startIndexFor: anObject.
@@ -549,7 +548,7 @@ SmaCCRewriteMatchContext >> move: anObject before: anotherObject withWhitespace:
 	^ self startIndexFor: anObject
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> move: anObject replacing: anotherObject withWhitespace: aString [
 	| oldStop |
 	oldStop := self stopIndexFor: anotherObject.
@@ -558,7 +557,7 @@ SmaCCRewriteMatchContext >> move: anObject replacing: anotherObject withWhitespa
 	^ self startIndexFor: anObject
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> moveFrom: startIndex to: stopIndex after: anObject [
 	^ self source
 		moveFrom: (self startIndexFor: startIndex)
@@ -566,7 +565,7 @@ SmaCCRewriteMatchContext >> moveFrom: startIndex to: stopIndex after: anObject [
 		after: (self startIndexFor: anObject)
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> moveFrom: startIndex to: stopIndex before: anObject [
 	^ self source
 		moveFrom: (self startIndexFor: startIndex)
@@ -574,27 +573,27 @@ SmaCCRewriteMatchContext >> moveFrom: startIndex to: stopIndex before: anObject 
 		before: (self startIndexFor: anObject)
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> nextIndex: position [
 	^ self originalSource nextIndex: position
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> nodeFor: aString [
 	^ nodes at: aString ifAbsent: [ nil ]
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 SmaCCRewriteMatchContext >> nodes [
 	^nodes
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> originalSource [
 	^ match completeSource
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> originalStartIndexFor: anObject [
 	^ ((anObject isKindOf: SmaCCParseNode)
 		or: [ anObject isKindOf: SmaCCToken ])
@@ -602,7 +601,7 @@ SmaCCRewriteMatchContext >> originalStartIndexFor: anObject [
 		ifFalse: [ anObject ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> originalStartPosition: anObject [
 	(anObject isKindOf: Collection)
 		ifTrue: [ anObject
@@ -613,7 +612,7 @@ SmaCCRewriteMatchContext >> originalStartPosition: anObject [
 	^ nil
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> originalStopPosition: anObject [
 	(anObject isKindOf: Collection)
 		ifTrue: [ anObject
@@ -624,27 +623,27 @@ SmaCCRewriteMatchContext >> originalStopPosition: anObject [
 	^ nil
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> outputDirectory [
 	^ rewriteEngine outputDirectory
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> outputDirectory: aString [
 	^ rewriteEngine outputDirectory: aString
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> outputFilename [
 	^ rewriteEngine outputFilename
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> outputFilename: aString [
 	^ rewriteEngine outputFilename: aString
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 SmaCCRewriteMatchContext >> parseCsvStream: aStream withHeader: aBoolean [
 	| array result header line |
 	header := nil.
@@ -667,52 +666,52 @@ SmaCCRewriteMatchContext >> parseCsvStream: aStream withHeader: aBoolean [
 	^ result
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> previousIndex: position [
 	^ self originalSource previousIndex: position
 ]
 
-{ #category : 'processing' }
+{ #category : #processing }
 SmaCCRewriteMatchContext >> processChild: aSmaCCParseNode [
 	rewriteEngine rewriteNode: aSmaCCParseNode
 ]
 
-{ #category : 'processing' }
+{ #category : #processing }
 SmaCCRewriteMatchContext >> processChildren [
 	match nodesDo: [ :each | self processChild: each ]
 ]
 
-{ #category : 'processing' }
+{ #category : #processing }
 SmaCCRewriteMatchContext >> processChildren: aCollection [
 	aCollection do: [ :each | self processChild: each ]
 ]
 
-{ #category : 'accessing-properites' }
+{ #category : #'accessing-properites' }
 SmaCCRewriteMatchContext >> propertyAt: aString [
 	^ rewriteEngine propertyAt: aString
 ]
 
-{ #category : 'accessing-properites' }
+{ #category : #'accessing-properites' }
 SmaCCRewriteMatchContext >> propertyAt: aString ifAbsent: aBlock [
 	^ rewriteEngine propertyAt: aString ifAbsent: aBlock
 ]
 
-{ #category : 'accessing-properites' }
+{ #category : #'accessing-properites' }
 SmaCCRewriteMatchContext >> propertyAt: aString ifAbsentPut: aBlock [
 	^ rewriteEngine propertyAt: aString ifAbsentPut: aBlock
 ]
 
-{ #category : 'accessing-properites' }
+{ #category : #'accessing-properites' }
 SmaCCRewriteMatchContext >> propertyAt: aString put: anObject [
 	^ rewriteEngine propertyAt: aString put: anObject
 ]
 
-{ #category : 'accessing-properites' }
+{ #category : #'accessing-properites' }
 SmaCCRewriteMatchContext >> removeProperty: aString [
 	^ rewriteEngine removeProperty: aString
 ]
 
-{ #category : 'parsing' }
+{ #category : #parsing }
 SmaCCRewriteMatchContext >> removeQuotesAround: aString [
 	aString isEmpty
 		ifTrue: [ ^ aString ].
@@ -729,7 +728,7 @@ SmaCCRewriteMatchContext >> removeQuotesAround: aString [
 	^ aString
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> replace: anObject with: aString [
 	anObject isNil
 		ifTrue: [ ^ self ].
@@ -737,50 +736,50 @@ SmaCCRewriteMatchContext >> replace: anObject with: aString [
 	self insert: aString before: anObject
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> replaceAll: aCollection with: aString [
 	aCollection do: [ :each | self replace: each with: aString ]
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> replaceFrom: startIndex to: stopIndex with: aString [
 	self insert: aString before: startIndex.
 	self deleteFrom: startIndex to: stopIndex
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> rewrite: aSmaCCParseNode [
 	^ rewriteEngine rewrite: aSmaCCParseNode
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> rewriteEngine [
 	^ rewriteEngine
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> rewriteEngine: anObject [
 	rewriteEngine := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> safe: aBlock [
 	^ aBlock
 		on: Error
 		do: [ :ex | ex return ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> smaccStringClass [
 	^ self source class
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> source [
 	^ rewriteEngine source
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> sourceFor: anObject [
 	anObject isNil
 		ifTrue: [ ^ '' ].
@@ -789,14 +788,14 @@ SmaCCRewriteMatchContext >> sourceFor: anObject [
 		to: (self stopIndexFor: anObject)) asString
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> sourceFrom: first to: last [
 	^ (self source
 		copyFrom: (self startIndexFor: first)
 		to: (self stopIndexFor: last)) asString
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> startIndexFor: anObject [
 	^ ((anObject isKindOf: SmaCCParseNode)
 		or: [ anObject isKindOf: SmaCCToken ])
@@ -804,13 +803,13 @@ SmaCCRewriteMatchContext >> startIndexFor: anObject [
 		ifFalse: [ anObject ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> startOfLineWhitespaceBefore: anObject [
 	^ self originalSource
 		startOfLineWhitespaceBeforeIndex: (self originalStartIndexFor: anObject)
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> stopIndexFor: anObject [
 	^ ((anObject isKindOf: SmaCCParseNode)
 		or: [ anObject isKindOf: SmaCCToken ])
@@ -818,17 +817,17 @@ SmaCCRewriteMatchContext >> stopIndexFor: anObject [
 		ifFalse: [ anObject ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> stringFor: aString [
 	^ (strings at: aString ifAbsent: [ [ '' ] ]) value
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 SmaCCRewriteMatchContext >> strings [
 	^strings
 ]
 
-{ #category : 'source editing' }
+{ #category : #'source editing' }
 SmaCCRewriteMatchContext >> updateStopPositionFor: node to: endPosition whenEqualTo: anIndex [
 	rewriteEngine
 		updateStopPositionFor: node
@@ -836,13 +835,13 @@ SmaCCRewriteMatchContext >> updateStopPositionFor: node to: endPosition whenEqua
 		whenEqualTo: anIndex
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> whitespaceAfter: anObject [
 	^ self originalSource
 		whitespaceAfterIndex: (self stopIndexFor: anObject)
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMatchContext >> whitespaceBefore: anObject [
 	^ self originalSource
 		whitespaceBeforeIndex: (self originalStartIndexFor: anObject)

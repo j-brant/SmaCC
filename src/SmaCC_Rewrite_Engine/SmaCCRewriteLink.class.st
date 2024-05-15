@@ -1,25 +1,24 @@
 Class {
-	#name : 'SmaCCRewriteLink',
-	#superclass : 'Object',
+	#name : #SmaCCRewriteLink,
+	#superclass : #Object,
 	#instVars : [
 		'rewrite',
 		'next'
 	],
-	#category : 'SmaCC_Rewrite_Engine',
-	#package : 'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteLink >> next [
 	^ next
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteLink >> next: anObject [
 	next := anObject
 ]
 
-{ #category : 'printing' }
+{ #category : #printing }
 SmaCCRewriteLink >> printOn: aStream [
 	aStream
 		nextPutAll: self class name;
@@ -28,12 +27,12 @@ SmaCCRewriteLink >> printOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteLink >> rewrite [
 	^ rewrite
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteLink >> rewrite: anObject [
 	rewrite := anObject
 ]

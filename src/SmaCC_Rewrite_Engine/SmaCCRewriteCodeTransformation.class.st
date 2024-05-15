@@ -1,40 +1,39 @@
 Class {
-	#name : 'SmaCCRewriteCodeTransformation',
-	#superclass : 'SmaCCRewriteTransformation',
+	#name : #SmaCCRewriteCodeTransformation,
+	#superclass : #SmaCCRewriteTransformation,
 	#instVars : [
 		'code',
 		'method'
 	],
-	#category : 'SmaCC_Rewrite_Engine',
-	#package : 'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 SmaCCRewriteCodeTransformation class >> on: aString [
 	^ self new
 		code: aString;
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteCodeTransformation >> code [
 	^ code
 ]
 
-{ #category : 'initialize-release' }
+{ #category : #'initialize-release' }
 SmaCCRewriteCodeTransformation >> code: aString [
 	code := aString.
 	method := nil.
 	self modified
 ]
 
-{ #category : 'initialize-release' }
+{ #category : #'initialize-release' }
 SmaCCRewriteCodeTransformation >> initialize [
 	super initialize.
 	code := 'self continue'
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteCodeTransformation >> method [
 	method isNil
 		ifTrue: [ | tree rewriter |
@@ -47,7 +46,7 @@ SmaCCRewriteCodeTransformation >> method [
 	^ method
 ]
 
-{ #category : 'saving' }
+{ #category : #saving }
 SmaCCRewriteCodeTransformation >> saveOn: aStream [
 	aStream
 		nextPut: $[;
@@ -55,12 +54,12 @@ SmaCCRewriteCodeTransformation >> saveOn: aStream [
 		nextPut: $]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteCodeTransformation >> string [
 	^ code
 ]
 
-{ #category : 'transforming' }
+{ #category : #transforming }
 SmaCCRewriteCodeTransformation >> transformUsingContext: aSmaCCRewriteMatchContext [
 	self class haltBlock
 		ifNotNil: [ :block | 

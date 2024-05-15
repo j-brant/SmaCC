@@ -1,24 +1,23 @@
 Class {
-	#name : 'SmaCCCompositeReplaceExpression',
-	#superclass : 'SmaCCReplaceExpression',
+	#name : #SmaCCCompositeReplaceExpression,
+	#superclass : #SmaCCReplaceExpression,
 	#instVars : [
 		'expressions'
 	],
-	#category : 'SmaCC_Rewrite_Engine',
-	#package : 'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 SmaCCCompositeReplaceExpression >> acceptVisitor: aReplaceVisitor [
 	^ aReplaceVisitor visitCompositeReplace: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 SmaCCCompositeReplaceExpression >> compositeNodeVariables [
 	^ #(#expressions)
 ]
 
-{ #category : 'evaluating' }
+{ #category : #evaluating }
 SmaCCCompositeReplaceExpression >> evaluateInContext: aSmaCCRewriteMatchContext [
 	| result |
 	result := aSmaCCRewriteMatchContext smaccStringClass new.
@@ -28,19 +27,19 @@ SmaCCCompositeReplaceExpression >> evaluateInContext: aSmaCCRewriteMatchContext 
 	^ result
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 SmaCCCompositeReplaceExpression >> expressions [
 	^ expressions
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 SmaCCCompositeReplaceExpression >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : 'generated-initialize-release' }
+{ #category : #'generated-initialize-release' }
 SmaCCCompositeReplaceExpression >> initialize [
 	super initialize.
 	expressions := OrderedCollection new: 2.

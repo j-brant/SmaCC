@@ -1,34 +1,33 @@
 Class {
-	#name : 'SmaCCRewriteStringTransformation',
-	#superclass : 'SmaCCRewriteTransformation',
+	#name : #SmaCCRewriteStringTransformation,
+	#superclass : #SmaCCRewriteTransformation,
 	#instVars : [
 		'string',
 		'expression'
 	],
-	#category : 'SmaCC_Rewrite_Engine',
-	#package : 'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 SmaCCRewriteStringTransformation class >> on: aString [
 	^ self new
 		string: aString;
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteStringTransformation >> expression [
 	^ expression
 		ifNil: [ expression := SmaCCReplaceExpressionParser parse: self string ]
 ]
 
-{ #category : 'initialize-release' }
+{ #category : #'initialize-release' }
 SmaCCRewriteStringTransformation >> initialize [
 	super initialize.
 	string := ''
 ]
 
-{ #category : 'public' }
+{ #category : #public }
 SmaCCRewriteStringTransformation >> saveOn: aStream [
 	aStream
 		nextPutAll: '>>>';
@@ -36,19 +35,19 @@ SmaCCRewriteStringTransformation >> saveOn: aStream [
 		nextPutAll: '<<<'
 ]
 
-{ #category : 'initialize-release' }
+{ #category : #'initialize-release' }
 SmaCCRewriteStringTransformation >> string [
 	^ string ifNil: [ '' ]
 ]
 
-{ #category : 'initialize-release' }
+{ #category : #'initialize-release' }
 SmaCCRewriteStringTransformation >> string: aString [
 	string := aString.
 	expression := nil.
 	self modified
 ]
 
-{ #category : 'transforming' }
+{ #category : #transforming }
 SmaCCRewriteStringTransformation >> transformUsingContext: aSmaCCRewriteMatchContext [
 	| newSource |
 	newSource := self expression

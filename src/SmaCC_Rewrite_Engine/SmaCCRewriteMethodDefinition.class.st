@@ -1,16 +1,15 @@
 Class {
-	#name : 'SmaCCRewriteMethodDefinition',
-	#superclass : 'SmaCCAbstractRewrite',
+	#name : #SmaCCRewriteMethodDefinition,
+	#superclass : #SmaCCAbstractRewrite,
 	#instVars : [
 		'comment',
 		'source',
 		'method'
 	],
-	#category : 'SmaCC_Rewrite_Engine',
-	#package : 'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 SmaCCRewriteMethodDefinition class >> comment: commentString source: aString [
 	^ self new
 		comment: commentString;
@@ -18,30 +17,30 @@ SmaCCRewriteMethodDefinition class >> comment: commentString source: aString [
 		yourself
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 SmaCCRewriteMethodDefinition class >> source: aString [
 	^ self new
 		source: aString;
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMethodDefinition >> code: aString [
 	self source: aString
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMethodDefinition >> comment [
 	^ comment ifNil: [ '' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMethodDefinition >> comment: aString [
 	comment := aString.
 	self changed: #comment
 ]
 
-{ #category : 'printing' }
+{ #category : #printing }
 SmaCCRewriteMethodDefinition >> displayOn: aStream [
 	self comment notEmpty
 		ifTrue: [ aStream nextPutAll: self comment ]
@@ -52,7 +51,7 @@ SmaCCRewriteMethodDefinition >> displayOn: aStream [
 				nextPutAll: stream nextLine ]
 ]
 
-{ #category : 'saving' }
+{ #category : #saving }
 SmaCCRewriteMethodDefinition >> localSaveOn: aStream [
 	self comment notEmpty
 		ifTrue: [ aStream
@@ -66,31 +65,31 @@ SmaCCRewriteMethodDefinition >> localSaveOn: aStream [
 		nextPut: $!
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMethodDefinition >> method [
 	method isNil
 		ifTrue: [ method := SmaCCRewriteMatchContext compiledMethodFor: self source ].
 	^ method
 ]
 
-{ #category : 'rewriting' }
+{ #category : #rewriting }
 SmaCCRewriteMethodDefinition >> performOn: aSmaCCNode continuation: aBlock [
 	^ false
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMethodDefinition >> source [
 	^ source ifNil: [ 'yourself' ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 SmaCCRewriteMethodDefinition >> source: aString [
 	source := aString.
 	method := nil.
 	self changed: #source
 ]
 
-{ #category : 'rewriting' }
+{ #category : #rewriting }
 SmaCCRewriteMethodDefinition >> updateClass: aClass [
 	aClass addSelectorSilently: self method selector withMethod: self method
 ]
