@@ -10,7 +10,7 @@ BaselineOfCSharpParser >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.53' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.54' ].
 
 		spec package: 'SmaCC_CSharp' with: [
 			spec requires: #('SmaCCRuntime') ].
