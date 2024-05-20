@@ -309,7 +309,9 @@ SmaCCSmalltalkCodeGenerator >> compileCacheId [
 		nextPutAll: '^''';
 		nextPutAll: DateAndTime now printString;
 		nextPut: $'.
-	parserClass theMetaClass compile: stream contents classified: #'generated-accessing'
+	parserClass classSide
+		compile: stream contents
+		classified: #'generated-accessing'
 ]
 
 { #category : #compiling }
@@ -363,38 +365,33 @@ SmaCCSmalltalkCodeGenerator >> compileInitializeMethod: aSmaCCNodeClassDefinitio
 { #category : #'compiling-scanner' }
 SmaCCSmalltalkCodeGenerator >> compileKeywordInitializerUsing: keywordMapDictionary [
 	| stream dataStream |
-	keywordMapDictionary isEmpty
-		ifTrue: [ ^ self ].
+	keywordMapDictionary isEmpty ifTrue: [ ^ self ].
 	stream := WriteStream with: String new.
 	stream nextPutAll: 'initializeKeywordMap'.
 	stream nextPutAll: ' keywordMap :=  Dictionary new. '.
 	dataStream := WriteStream with: Array new.
 	keywordMapDictionary
-		keysAndValuesDo:
-			[ :key :value | 
+		keysAndValuesDo: [ :key :value | 
 			value keys asSortedCollection
-				do:
-					[ :each | 
+				do: [ :each | 
 					dataStream
-						nextPut:
-							(Array with: key with: each with: (value at: each)) ] ].
+						nextPut: (Array
+								with: key
+								with: each
+								with: (value at: each)) ] ].
 	stream
 		nextPutAll: '#(';
 		cr.
 	dataStream contents
-		do:
-			[ :each | 
+		do: [ :each | 
 			stream nextPutAll: '#('.
-			each
-				do: [ :item | item storeOn: stream ]
-				separatedBy: [ stream nextPut: $  ].
+			each do: [ :item | item storeOn: stream ] separatedBy: [ stream nextPut: $  ].
 			stream nextPut: $) ]
 		separatedBy: [ stream cr ].
 	stream nextPut: $).
 	stream
-		nextPutAll:
-			' do: [:each | (keywordMap at: each first ifAbsentPut: [Dictionary new]) at: (each at: 2) put: each last]. ^keywordMap'.
-	scannerClass theMetaClass
+		nextPutAll: ' do: [:each | (keywordMap at: each first ifAbsentPut: [Dictionary new]) at: (each at: 2) put: each last]. ^keywordMap'.
+	scannerClass classSide
 		compile: (RBParser parseMethod: stream contents) formattedCode
 		classified: #'generated-initialization'
 ]
@@ -431,7 +428,7 @@ SmaCCSmalltalkCodeGenerator >> compileScannerClassIntoParser [
 		tab;
 		nextPutAll: '^';
 		nextPutAll: scannerClass name.
-	parserClass theMetaClass
+	parserClass classSide
 		compile: stream contents
 		classified: #'generated-accessing'
 ]
@@ -462,7 +459,7 @@ SmaCCSmalltalkCodeGenerator >> compileSymbolTypes: anArray [
 		nextPutStatement: (self
 				return: (anArray collect: [ :each | each ifNotNil: [ each name ] ]) storeString);
 		endMethod;
-		compileMethodIn: self parserClass theMetaClass
+		compileMethodIn: self parserClass classSide
 ]
 
 { #category : #'compiling-nodes' }
@@ -545,7 +542,7 @@ SmaCCSmalltalkCodeGenerator >> compileVisitor: aSmaCCNodeCalculation [
 			asSubclassOf: (self model classFor: Object)
 			fromTraits: {traitName}.
 	self removeOldMethodsFrom: class.
-	self removeOldMethodsFrom: class theMetaClass.
+	self removeOldMethodsFrom: class classSide.
 	self removeOldMethodsFrom: trait.
 	(SmaCCVisitorClassDefinition
 		forClassDefinitions: aSmaCCNodeCalculation sortedClasses)
@@ -940,10 +937,9 @@ SmaCCSmalltalkCodeGenerator >> parseTreeRewriterFor: aSmaCCRHS [
 SmaCCSmalltalkCodeGenerator >> parserParseTreeFor: aSelector [
 	^ parseTreeCache
 		at: aSelector
-		ifAbsentPut:
-			[ | definingClass |
+		ifAbsentPut: [ | definingClass |
 			definingClass := self parserClass whoDefinesMethod: aSelector.
-			definingClass parseTreeFor: aSelector ]
+			definingClass parseTreeForSelector: aSelector ]
 ]
 
 { #category : #'code generation templates' }
@@ -964,9 +960,9 @@ SmaCCSmalltalkCodeGenerator >> removeChange: aRBChange [
 SmaCCSmalltalkCodeGenerator >> removeOldMethods [
 	self
 		removeOldMethodsFrom: scannerClass;
-		removeOldMethodsFrom: scannerClass theMetaClass;
+		removeOldMethodsFrom: scannerClass classSide;
 		removeOldMethodsFrom: parserClass;
-		removeOldMethodsFrom: parserClass theMetaClass
+		removeOldMethodsFrom: parserClass classSide
 ]
 
 { #category : #compiling }

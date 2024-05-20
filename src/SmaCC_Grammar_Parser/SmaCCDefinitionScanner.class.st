@@ -10,7 +10,7 @@ Class {
 { #category : #'generated-initialization' }
 SmaCCDefinitionScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
-	#(#(29 'annotate_tokens' #(23 #(#directives))) #(29 'attributes' #(11 #(#directives))) #(29 'byte' #(26 #(#directives))) #(29 'error' #(43 #(#parser))) #(29 'excludes' #(8 #(#directives))) #(29 'glr' #(19 #(#directives))) #(29 'hierarchy' #(10 #(#directives))) #(29 'id' #(17 #(#directives))) #(29 'ignore_variable_warning' #(22 #(#directives))) #(29 'ignore_variables' #(21 #(#directives))) #(29 'ignorecase' #(20 #(#directives))) #(29 'left' #(14 #(#directives))) #(29 'lr1' #(24 #(#directives))) #(29 'nonassoc' #(16 #(#directives))) #(29 'prefix' #(12 #(#directives))) #(29 'right' #(15 #(#directives))) #(29 'root' #(9 #(#directives))) #(29 'scopes' #(7 #(#directives))) #(29 'start' #(18 #(#directives))) #(29 'states' #(7 #(#directives))) #(29 'suffix' #(13 #(#directives))) #(29 'unicode' #(25 #(#directives))))
+	#(#(29 'annotate_tokens' #(23 #(#directives))) #(29 'attributes' #(11 #(#directives))) #(29 'byte' #(26 #(#directives))) #(29 'error' #(44 #(#parser))) #(29 'excludes' #(8 #(#directives))) #(29 'glr' #(19 #(#directives))) #(29 'hierarchy' #(10 #(#directives))) #(29 'id' #(17 #(#directives))) #(29 'ignore_variable_warning' #(22 #(#directives))) #(29 'ignore_variables' #(21 #(#directives))) #(29 'ignorecase' #(20 #(#directives))) #(29 'left' #(14 #(#directives))) #(29 'lr1' #(24 #(#directives))) #(29 'nonassoc' #(16 #(#directives))) #(29 'prefix' #(12 #(#directives))) #(29 'right' #(15 #(#directives))) #(29 'root' #(9 #(#directives))) #(29 'scannerSelectors' #(31 #(#directives))) #(29 'scopes' #(7 #(#directives))) #(29 'start' #(18 #(#directives))) #(29 'states' #(7 #(#directives))) #(29 'suffix' #(13 #(#directives))) #(29 'unicode' #(25 #(#directives))))
 		do: [ :each | 
 			(keywordMap at: each first ifAbsentPut: [ Dictionary new ])
 				at: (each at: 2)
@@ -31,12 +31,12 @@ SmaCCDefinitionScanner >> canParseSmalltalk: aString [
 
 { #category : #generated }
 SmaCCDefinitionScanner >> classLeftId [
-	^ 44
+	^ 45
 ]
 
 { #category : #generated }
 SmaCCDefinitionScanner >> classRightId [
-	^ 45
+	^ 46
 ]
 
 { #category : #'token-actions' }
@@ -54,22 +54,22 @@ SmaCCDefinitionScanner >> code [
 
 { #category : #generated }
 SmaCCDefinitionScanner >> codeId [
-	^ 32
+	^ 33
 ]
 
 { #category : #generated }
 SmaCCDefinitionScanner >> directiveId [
-	^ 36
+	^ 37
 ]
 
 { #category : #generated }
 SmaCCDefinitionScanner >> emptySymbolTokenId [
-	^ 102
+	^ 105
 ]
 
 { #category : #generated }
 SmaCCDefinitionScanner >> errorTokenId [
-	^ 103
+	^ 106
 ]
 
 { #category : #'token-actions' }
@@ -87,7 +87,7 @@ SmaCCDefinitionScanner >> immediateCode [
 
 { #category : #generated }
 SmaCCDefinitionScanner >> immediateCodeId [
-	^ 33
+	^ 34
 ]
 
 { #category : #'initialize-release' }
@@ -108,7 +108,7 @@ SmaCCDefinitionScanner >> parseSourceSelector: aSymbol [
 
 { #category : #generated }
 SmaCCDefinitionScanner >> productionId [
-	^ 35
+	^ 36
 ]
 
 { #category : #generated }
@@ -122,20 +122,13 @@ SmaCCDefinitionScanner >> scan1 [
 { #category : #generated }
 SmaCCDefinitionScanner >> scan10 [
 	self step.
-	currentCharacter == Character newPage
-		ifTrue: [ ^ self scan10X4 ].
-	currentCharacter == $#
-		ifTrue: [ ^ self scan10X2 ].
-	currentCharacter == $%
-		ifTrue: [ ^ self recordAndReportMatch: #(36 41) ].
-	currentCharacter == $(
-		ifTrue: [ ^ self recordAndReportMatch: #(1) ].
-	currentCharacter == $)
-		ifTrue: [ ^ self recordAndReportMatch: #(2 41) ].
-	currentCharacter == $*
-		ifTrue: [ ^ self recordAndReportMatch: #(3 41) ].
-	currentCharacter == $+
-		ifTrue: [ ^ self recordAndReportMatch: #(4 41) ].
+	currentCharacter == Character newPage ifTrue: [ ^ self scan10X4 ].
+	currentCharacter == $# ifTrue: [ ^ self scan10X2 ].
+	currentCharacter == $% ifTrue: [ ^ self recordAndReportMatch: #(37 42) ].
+	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(1) ].
+	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(2 42) ].
+	currentCharacter == $* ifTrue: [ ^ self recordAndReportMatch: #(3 42) ].
+	currentCharacter == $+ ifTrue: [ ^ self recordAndReportMatch: #(4 42) ].
 	^ self scan10X10
 ]
 
@@ -145,69 +138,58 @@ SmaCCDefinitionScanner >> scan10X1 [
 	currentCharacter == $c
 		ifTrue: [ self step.
 			(currentCharacter between: $A and: $Z)
-				ifTrue: [ ^ self recordAndReportMatch: #(38) ].
+				ifTrue: [ ^ self recordAndReportMatch: #(39) ].
 			^ self reportLastMatch ].
 	currentCharacter == $x
 		ifTrue: [ self step.
 			(currentCharacter isDigit
 				or: [ (currentCharacter between: $A and: $F)
 						or: [ currentCharacter between: $a and: $f ] ])
-				ifTrue: [ self recordMatch: #(38).
+				ifTrue: [ self recordMatch: #(39).
 					self step.
 					(currentCharacter isDigit
 						or: [ (currentCharacter between: $A and: $F)
 								or: [ currentCharacter between: $a and: $f ] ])
-						ifTrue: [ self recordMatch: #(38).
+						ifTrue: [ self recordMatch: #(39).
 							self step.
 							(currentCharacter isDigit
 								or: [ (currentCharacter between: $A and: $F)
 										or: [ currentCharacter between: $a and: $f ] ])
-								ifTrue: [ self recordMatch: #(38).
+								ifTrue: [ self recordMatch: #(39).
 									self step.
 									(currentCharacter isDigit
 										or: [ (currentCharacter between: $A and: $F)
 												or: [ currentCharacter between: $a and: $f ] ])
-										ifTrue: [ ^ self recordAndReportMatch: #(38) ] ] ] ].
+										ifTrue: [ ^ self recordAndReportMatch: #(39) ] ] ] ].
 			^ self reportLastMatch ].
-	^ self recordAndReportMatch: #(38)
+	^ self recordAndReportMatch: #(39)
 ]
 
 { #category : #generated }
 SmaCCDefinitionScanner >> scan10X10 [
-	currentCharacter == $.
-		ifTrue: [ ^ self recordAndReportMatch: #(42) ].
-	currentCharacter == $/
-		ifTrue: [ ^ self scan10X9 ].
-	currentCharacter == $:
-		ifTrue: [ ^ self scan10X8 ].
-	currentCharacter == $;
-		ifTrue: [ ^ self recordAndReportMatch: #(37 41) ].
-	currentCharacter == $<
-		ifTrue: [ ^ self scan10X6 ].
-	currentCharacter == $?
-		ifTrue: [ ^ self recordAndReportMatch: #(5 41) ].
-	currentCharacter == $[
-		ifTrue: [ ^ self scan10X3 ].
-	currentCharacter == $\
-		ifTrue: [ ^ self scan10X1 ].
-	currentCharacter == ${
-		ifTrue: [ ^ self scan10X5 ].
-	currentCharacter == $|
-		ifTrue: [ ^ self recordAndReportMatch: #(6 41) ].
-	(currentCharacter isSeparator
-		or: [ currentCharacter == Character pageUp ])
+	currentCharacter == $. ifTrue: [ ^ self recordAndReportMatch: #(43) ].
+	currentCharacter == $/ ifTrue: [ ^ self scan10X9 ].
+	currentCharacter == $: ifTrue: [ ^ self scan10X8 ].
+	currentCharacter == $; ifTrue: [ ^ self recordAndReportMatch: #(38 42) ].
+	currentCharacter == $< ifTrue: [ ^ self scan10X6 ].
+	currentCharacter == $? ifTrue: [ ^ self recordAndReportMatch: #(5 42) ].
+	currentCharacter == $[ ifTrue: [ ^ self scan10X3 ].
+	currentCharacter == $\ ifTrue: [ ^ self scan10X1 ].
+	currentCharacter == ${ ifTrue: [ ^ self scan10X5 ].
+	currentCharacter == $| ifTrue: [ ^ self recordAndReportMatch: #(6 42) ].
+	(currentCharacter isSeparator or: [ currentCharacter == Character pageUp ])
 		ifTrue: [ ^ self scan10X7 ].
-	^ self recordAndReportMatch: #(41)
+	^ self recordAndReportMatch: #(42)
 ]
 
 { #category : #generated }
 SmaCCDefinitionScanner >> scan10X2 [
-	self recordMatch: #(31 41).
+	self recordMatch: #(32 42).
 	self step.
 	(currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
 				or: [ currentCharacter >= (Character value: 14) ] ])
-		ifTrue: [ [ self recordMatch: #(31).
+		ifTrue: [ [ self recordMatch: #(32).
 			self step.
 			currentCharacter <= Character tab
 				or: [ (currentCharacter between: Character pageUp and: Character newPage)
@@ -227,14 +209,13 @@ SmaCCDefinitionScanner >> scan10X3 [
 
 { #category : #generated }
 SmaCCDefinitionScanner >> scan10X4 [
-	self recordMatch: #(27 41).
+	self recordMatch: #(27 42).
 	self step.
-	(currentCharacter isSeparator
-		or: [ currentCharacter == Character pageUp ])
+	(currentCharacter isSeparator or: [ currentCharacter == Character pageUp ])
 		ifTrue: [ [ self recordMatch: #(27).
 			self step.
-			currentCharacter isSeparator
-				or: [ currentCharacter == Character pageUp ] ] whileTrue ].
+			currentCharacter isSeparator or: [ currentCharacter == Character pageUp ] ]
+				whileTrue ].
 	^ self reportLastMatch
 ]
 
@@ -243,8 +224,7 @@ SmaCCDefinitionScanner >> scan10X5 [
 	[ self step.
 	currentCharacter == $,
 		ifTrue: [ [ self step.
-			currentCharacter == $}
-				ifTrue: [ ^ self recordAndReportMatch: #(40) ].
+			currentCharacter == $} ifTrue: [ ^ self recordAndReportMatch: #(41) ].
 			currentCharacter isDigit ] whileTrue.
 			^ self reportLastMatch ].
 	currentCharacter isDigit ] whileTrue.
@@ -253,7 +233,7 @@ SmaCCDefinitionScanner >> scan10X5 [
 
 { #category : #generated }
 SmaCCDefinitionScanner >> scan10X6 [
-	self recordMatch: #(41).
+	self recordMatch: #(42).
 	self step.
 	(currentCharacter isLetter or: [ currentCharacter == $_ ])
 		ifTrue: [ ^ self scan6 ].
@@ -271,29 +251,25 @@ SmaCCDefinitionScanner >> scan10X7 [
 
 { #category : #generated }
 SmaCCDefinitionScanner >> scan10X8 [
-	self recordMatch: #(35 41).
+	self recordMatch: #(36 42).
 	self step.
-	currentCharacter == $:
-		ifTrue: [ ^ self scan4 ].
+	currentCharacter == $: ifTrue: [ ^ self scan4 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 SmaCCDefinitionScanner >> scan10X9 [
-	self recordMatch: #(41).
+	self recordMatch: #(42).
 	self step.
-	currentCharacter == $*
-		ifTrue: [ ^ self scan2 ].
+	currentCharacter == $* ifTrue: [ ^ self scan2 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 SmaCCDefinitionScanner >> scan11 [
 	[ self step.
-	currentCharacter == $\
-		ifTrue: [ ^ self scan12 ].
-	currentCharacter == $]
-		ifTrue: [ ^ self recordAndReportMatch: #(39) ].
+	currentCharacter == $\ ifTrue: [ ^ self scan12 ].
+	currentCharacter == $] ifTrue: [ ^ self recordAndReportMatch: #(40) ].
 	true ] whileTrue
 ]
 
@@ -321,26 +297,23 @@ SmaCCDefinitionScanner >> scan2 [
 	currentCharacter == $*
 		ifTrue: [ [ self step.
 			currentCharacter == $* ] whileTrue.
-			currentCharacter == $/
-				ifTrue: [ ^ self recordAndReportMatch: #(31) ].
+			currentCharacter == $/ ifTrue: [ ^ self recordAndReportMatch: #(32) ].
 			^ self scan2 ].
 	true ] whileTrue
 ]
 
 { #category : #generated }
 SmaCCDefinitionScanner >> scan3 [
-	self recordMatch: #(35).
+	self recordMatch: #(36).
 	self step.
-	currentCharacter == $:
-		ifTrue: [ ^ self scan4 ].
+	currentCharacter == $: ifTrue: [ ^ self scan4 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 SmaCCDefinitionScanner >> scan4 [
 	self step.
-	currentCharacter == $=
-		ifTrue: [ ^ self recordAndReportMatch: #(35) ].
+	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(36) ].
 	^ self reportLastMatch
 ]
 
@@ -365,8 +338,7 @@ SmaCCDefinitionScanner >> scan6 [
 { #category : #generated }
 SmaCCDefinitionScanner >> scan7 [
 	[ self step.
-	currentCharacter == $`
-		ifTrue: [ ^ self recordAndReportMatch: #(46) ].
+	currentCharacter == $` ifTrue: [ ^ self recordAndReportMatch: #(47) ].
 	true ] whileTrue
 ]
 
@@ -385,32 +357,21 @@ SmaCCDefinitionScanner >> scan8 [
 { #category : #generated }
 SmaCCDefinitionScanner >> scan9 [
 	self step.
-	currentCharacter == $"
-		ifTrue: [ ^ self scan8 ].
-	currentCharacter == $#
-		ifTrue:
-			[ ^ self scan9X1 ].
-	currentCharacter == $%
-		ifTrue: [ ^ self recordAndReportMatch: #(36) ].
-	currentCharacter == $'
-		ifTrue:
-			[ ^ self scan9X2 ].
-	currentCharacter == $(
-		ifTrue: [ ^ self recordAndReportMatch: #(1) ].
-	currentCharacter == $)
-		ifTrue: [ ^ self recordAndReportMatch: #(2) ].
-	currentCharacter == $*
-		ifTrue: [ ^ self recordAndReportMatch: #(3) ].
-	currentCharacter == $+
-		ifTrue: [ ^ self recordAndReportMatch: #(4) ].
-	currentCharacter == $/
-		ifTrue: [ ^ self scan1 ].
+	currentCharacter == $" ifTrue: [ ^ self scan8 ].
+	currentCharacter == $# ifTrue: [ ^ self scan9X1 ].
+	currentCharacter == $% ifTrue: [ ^ self recordAndReportMatch: #(37) ].
+	currentCharacter == $' ifTrue: [ ^ self scan9X2 ].
+	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(1) ].
+	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(2) ].
+	currentCharacter == $* ifTrue: [ ^ self recordAndReportMatch: #(3) ].
+	currentCharacter == $+ ifTrue: [ ^ self recordAndReportMatch: #(4) ].
+	currentCharacter == $/ ifTrue: [ ^ self scan1 ].
 	^ self scan9X7
 ]
 
 { #category : #generated }
 SmaCCDefinitionScanner >> scan9X1 [
-	[ self recordMatch: #(31).
+	[ self recordMatch: #(32).
 	self step.
 	currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
@@ -423,10 +384,8 @@ SmaCCDefinitionScanner >> scan9X2 [
 	self step.
 	(currentCharacter isLetter or: [ currentCharacter == $_ ])
 		ifTrue: [ [ self step.
-			currentCharacter == $'
-				ifTrue: [ ^ self recordAndReportMatch: #(34) ].
-			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ]
-				whileTrue ].
+			currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(35) ].
+			currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue ].
 	^ self reportLastMatch
 ]
 
@@ -441,10 +400,9 @@ SmaCCDefinitionScanner >> scan9X3 [
 
 { #category : #generated }
 SmaCCDefinitionScanner >> scan9X4 [
-	self recordMatch: #(32).
+	self recordMatch: #(33).
 	self step.
-	currentCharacter == ${
-		ifTrue: [ ^ self recordAndReportMatch: #(44) ].
+	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(45) ].
 	^ self reportLastMatch
 ]
 
@@ -459,40 +417,25 @@ SmaCCDefinitionScanner >> scan9X5 [
 { #category : #generated }
 SmaCCDefinitionScanner >> scan9X6 [
 	self step.
-	currentCharacter == $}
-		ifTrue: [ ^ self recordAndReportMatch: #(45) ].
+	currentCharacter == $} ifTrue: [ ^ self recordAndReportMatch: #(46) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 SmaCCDefinitionScanner >> scan9X7 [
-	currentCharacter == $:
-		ifTrue: [ ^ self scan3 ].
-	currentCharacter == $;
-		ifTrue: [ ^ self recordAndReportMatch: #(37) ].
-	currentCharacter == $<
-		ifTrue: [ ^ self scan5 ].
-	currentCharacter == $?
-		ifTrue: [ ^ self recordAndReportMatch: #(5) ].
-	currentCharacter == $[
-		ifTrue: [ ^ self recordAndReportMatch: #(33) ].
-	currentCharacter == $`
-		ifTrue: [ ^ self scan7 ].
-	currentCharacter == ${
-		ifTrue:
-			[ ^ self scan9X4 ].
-	currentCharacter == $|
-		ifTrue: [ ^ self recordAndReportMatch: #(6) ].
-	currentCharacter == $}
-		ifTrue:
-			[ ^ self scan9X6 ].
-	(currentCharacter isSeparator
-		or: [ currentCharacter == Character pageUp ])
-		ifTrue:
-			[ ^ self scan9X3 ].
+	currentCharacter == $: ifTrue: [ ^ self scan3 ].
+	currentCharacter == $; ifTrue: [ ^ self recordAndReportMatch: #(38) ].
+	currentCharacter == $< ifTrue: [ ^ self scan5 ].
+	currentCharacter == $? ifTrue: [ ^ self recordAndReportMatch: #(5) ].
+	currentCharacter == $[ ifTrue: [ ^ self recordAndReportMatch: #(34) ].
+	currentCharacter == $` ifTrue: [ ^ self scan7 ].
+	currentCharacter == ${ ifTrue: [ ^ self scan9X4 ].
+	currentCharacter == $| ifTrue: [ ^ self recordAndReportMatch: #(6) ].
+	currentCharacter == $} ifTrue: [ ^ self scan9X6 ].
+	(currentCharacter isSeparator or: [ currentCharacter == Character pageUp ])
+		ifTrue: [ ^ self scan9X3 ].
 	(currentCharacter isLetter or: [ currentCharacter == $_ ])
-		ifTrue:
-			[ self scan9X5 ].
+		ifTrue: [ self scan9X5 ].
 	^ self reportLastMatch
 ]
 
@@ -514,21 +457,16 @@ SmaCCDefinitionScanner >> scanForToken [
 { #category : #generated }
 SmaCCDefinitionScanner >> scanForTokenX1 [
 	self step.
-	currentCharacter == $#
-		ifTrue:
-			[ ^ self scanForTokenX1X1 ].
-	currentCharacter == $%
-		ifTrue: [ ^ self recordAndReportMatch: #(36) ].
-	currentCharacter == $(
-		ifTrue: [ ^ self recordAndReportMatch: #(1) ].
-	currentCharacter == $)
-		ifTrue: [ ^ self recordAndReportMatch: #(2) ].
+	currentCharacter == $# ifTrue: [ ^ self scanForTokenX1X1 ].
+	currentCharacter == $% ifTrue: [ ^ self recordAndReportMatch: #(37) ].
+	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(1) ].
+	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(2) ].
 	^ self scanForTokenX1X4
 ]
 
 { #category : #generated }
 SmaCCDefinitionScanner >> scanForTokenX1X1 [
-	[ self recordMatch: #(31).
+	[ self recordMatch: #(32).
 	self step.
 	currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
@@ -555,52 +493,35 @@ SmaCCDefinitionScanner >> scanForTokenX1X3 [
 
 { #category : #generated }
 SmaCCDefinitionScanner >> scanForTokenX1X4 [
-	currentCharacter == $*
-		ifTrue: [ ^ self recordAndReportMatch: #(3) ].
-	currentCharacter == $+
-		ifTrue: [ ^ self recordAndReportMatch: #(4) ].
-	currentCharacter == $/
-		ifTrue: [ ^ self scan1 ].
-	currentCharacter == $:
-		ifTrue: [ ^ self scan3 ].
-	currentCharacter == $;
-		ifTrue: [ ^ self recordAndReportMatch: #(37) ].
-	currentCharacter == $<
-		ifTrue: [ ^ self scan5 ].
-	currentCharacter == $?
-		ifTrue: [ ^ self recordAndReportMatch: #(5) ].
-	currentCharacter == $`
-		ifTrue: [ ^ self scan7 ].
-	currentCharacter == $|
-		ifTrue: [ ^ self recordAndReportMatch: #(6) ].
-	(currentCharacter isSeparator
-		or: [ currentCharacter == Character pageUp ])
-		ifTrue:
-			[ ^ self scanForTokenX1X2 ].
+	currentCharacter == $* ifTrue: [ ^ self recordAndReportMatch: #(3) ].
+	currentCharacter == $+ ifTrue: [ ^ self recordAndReportMatch: #(4) ].
+	currentCharacter == $/ ifTrue: [ ^ self scan1 ].
+	currentCharacter == $: ifTrue: [ ^ self scan3 ].
+	currentCharacter == $; ifTrue: [ ^ self recordAndReportMatch: #(38) ].
+	currentCharacter == $< ifTrue: [ ^ self scan5 ].
+	currentCharacter == $? ifTrue: [ ^ self recordAndReportMatch: #(5) ].
+	currentCharacter == $` ifTrue: [ ^ self scan7 ].
+	currentCharacter == $| ifTrue: [ ^ self recordAndReportMatch: #(6) ].
+	(currentCharacter isSeparator or: [ currentCharacter == Character pageUp ])
+		ifTrue: [ ^ self scanForTokenX1X2 ].
 	(currentCharacter isLetter or: [ currentCharacter == $_ ])
-		ifTrue:
-			[ self scanForTokenX1X3 ].
+		ifTrue: [ self scanForTokenX1X3 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 SmaCCDefinitionScanner >> scanForTokenX2 [
 	self step.
-	currentCharacter == $"
-		ifTrue: [ ^ self scan8 ].
-	currentCharacter == $#
-		ifTrue:
-			[ ^ self scanForTokenX2X1 ].
-	currentCharacter == $%
-		ifTrue: [ ^ self recordAndReportMatch: #(36) ].
-	currentCharacter == $(
-		ifTrue: [ ^ self recordAndReportMatch: #(1) ].
+	currentCharacter == $" ifTrue: [ ^ self scan8 ].
+	currentCharacter == $# ifTrue: [ ^ self scanForTokenX2X1 ].
+	currentCharacter == $% ifTrue: [ ^ self recordAndReportMatch: #(37) ].
+	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(1) ].
 	^ self scanForTokenX2X4
 ]
 
 { #category : #generated }
 SmaCCDefinitionScanner >> scanForTokenX2X1 [
-	[ self recordMatch: #(31).
+	[ self recordMatch: #(32).
 	self step.
 	currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
@@ -627,37 +548,25 @@ SmaCCDefinitionScanner >> scanForTokenX2X3 [
 
 { #category : #generated }
 SmaCCDefinitionScanner >> scanForTokenX2X4 [
-	currentCharacter == $)
-		ifTrue: [ ^ self recordAndReportMatch: #(2) ].
-	currentCharacter == $*
-		ifTrue: [ ^ self recordAndReportMatch: #(3) ].
-	currentCharacter == $+
-		ifTrue: [ ^ self recordAndReportMatch: #(4) ].
-	currentCharacter == $/
-		ifTrue: [ ^ self scan1 ].
-	currentCharacter == $:
-		ifTrue: [ ^ self scan3 ].
-	currentCharacter == $;
-		ifTrue: [ ^ self recordAndReportMatch: #(37) ].
-	currentCharacter == $<
-		ifTrue: [ ^ self scan5 ].
-	currentCharacter == $?
-		ifTrue: [ ^ self recordAndReportMatch: #(5) ].
-	currentCharacter == $|
-		ifTrue: [ ^ self recordAndReportMatch: #(6) ].
-	(currentCharacter isSeparator
-		or: [ currentCharacter == Character pageUp ])
-		ifTrue:
-			[ ^ self scanForTokenX2X2 ].
+	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(2) ].
+	currentCharacter == $* ifTrue: [ ^ self recordAndReportMatch: #(3) ].
+	currentCharacter == $+ ifTrue: [ ^ self recordAndReportMatch: #(4) ].
+	currentCharacter == $/ ifTrue: [ ^ self scan1 ].
+	currentCharacter == $: ifTrue: [ ^ self scan3 ].
+	currentCharacter == $; ifTrue: [ ^ self recordAndReportMatch: #(38) ].
+	currentCharacter == $< ifTrue: [ ^ self scan5 ].
+	currentCharacter == $? ifTrue: [ ^ self recordAndReportMatch: #(5) ].
+	currentCharacter == $| ifTrue: [ ^ self recordAndReportMatch: #(6) ].
+	(currentCharacter isSeparator or: [ currentCharacter == Character pageUp ])
+		ifTrue: [ ^ self scanForTokenX2X2 ].
 	(currentCharacter isLetter or: [ currentCharacter == $_ ])
-		ifTrue:
-			[ self scanForTokenX2X3 ].
+		ifTrue: [ self scanForTokenX2X3 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 SmaCCDefinitionScanner >> semicolonId [
-	^ 37
+	^ 38
 ]
 
 { #category : #generated }
@@ -667,7 +576,7 @@ SmaCCDefinitionScanner >> symbolnameId [
 
 { #category : #generated }
 SmaCCDefinitionScanner >> tokenActions [
-	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace nil nil nil #comment #code #immediateCode nil nil nil nil nil nil nil nil nil nil nil nil #patternToken)
+	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace nil nil nil nil #comment #code #immediateCode nil nil nil nil nil nil nil nil nil nil nil nil #patternToken)
 ]
 
 { #category : #generated }
@@ -677,5 +586,5 @@ SmaCCDefinitionScanner >> tokennameId [
 
 { #category : #generated }
 SmaCCDefinitionScanner >> variablenameId [
-	^ 34
+	^ 35
 ]

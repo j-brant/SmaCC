@@ -373,7 +373,7 @@ SmaCCCodeGenerator >> compileDefinitionComment: aString [
 		nextPutLine: (self method: #definitionComment type: self voidType);
 		nextPutLine: (self comment: aString);
 		endMethod.
-	self compileMethodWithoutFormattingIn: parserClass theMetaClass
+	self compileMethodWithoutFormattingIn: parserClass classSide
 ]
 
 { #category : #'compiling-scanner' }
@@ -502,11 +502,11 @@ SmaCCCodeGenerator >> compileNode: aSmaCCNode [
 SmaCCCodeGenerator >> compileNodeClassDefinition: aSmaCCClassDefinition [
 	| class |
 	class := self
-		defineClass: aSmaCCClassDefinition fullName
-		asSubclassOf: (self model classNamed: aSmaCCClassDefinition superclassName asSymbol).
+			defineClass: aSmaCCClassDefinition fullName
+			asSubclassOf: (self model classNamed: aSmaCCClassDefinition superclassName asSymbol).
 	aSmaCCClassDefinition modelClass: class.
 	self removeOldMethodsFrom: class.
-	self removeOldMethodsFrom: class theMetaClass
+	self removeOldMethodsFrom: class classSide
 ]
 
 { #category : #compiling }
@@ -530,7 +530,7 @@ SmaCCCodeGenerator >> compileReductionTable: reductionTable [
 		nextPutLine: (self method: 'reduceTable' type: self reduceActionArrayType);
 		nextPutStatement: (self return: (self initializerForReductionTable: reductionTable));
 		endMethod;
-		compileMethodWithoutFormattingIn: parserClass theMetaClass
+		compileMethodWithoutFormattingIn: parserClass classSide
 ]
 
 { #category : #compiling }
@@ -548,17 +548,13 @@ SmaCCCodeGenerator >> compileSourceFor: aSmaCCReduceAction [
 { #category : #'compiling-scanner' }
 SmaCCCodeGenerator >> compileStartingStateIds: startingStates [
 	startingStates
-		keysAndValuesDo:
-			[ :symbol :position | 
+		keysAndValuesDo: [ :symbol :position | 
 			self
 				startStaticMethod;
-				nextPutLine:
-					(self
-						method: 'startingStateFor' , symbol compileName
-						type: self unsignedShort);
+				nextPutLine: (self method: 'startingStateFor' , symbol compileName type: self unsignedShort);
 				nextPutStatement: (self return: position printString);
 				endMethod;
-				compileMethodIn: parserClass theMetaClass ]
+				compileMethodIn: parserClass classSide ]
 ]
 
 { #category : #'compiling-parser' }
@@ -575,7 +571,7 @@ SmaCCCodeGenerator >> compileSymbolNames: anArray [
 		nextPutLine: (self method: 'symbolNames' type: self arrayType);
 		nextPutStatement: (self return: anArray storeString);
 		endMethod;
-		compileMethodIn: self parserClass theMetaClass
+		compileMethodIn: self parserClass classSide
 ]
 
 { #category : #'compiling-parser' }
@@ -617,7 +613,7 @@ SmaCCCodeGenerator >> compileTransitionTable: transitionTable [
 		nextPutLine: (self method: 'transitionTable' type: self unsignedShortArrayArray);
 		nextPutStatement: (self return: (self initializerForTransitionTable: transitionTable));
 		endMethod;
-		compileMethodWithoutFormattingIn: parserClass theMetaClass
+		compileMethodWithoutFormattingIn: parserClass classSide
 ]
 
 { #category : #'compiling-nodes' }
