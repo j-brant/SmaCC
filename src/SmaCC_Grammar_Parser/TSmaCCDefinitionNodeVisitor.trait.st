@@ -136,6 +136,11 @@ TSmaCCDefinitionNodeVisitor >> visitRepeatRegex: aRepeatRegex [
 ]
 
 { #category : #generated }
+TSmaCCDefinitionNodeVisitor >> visitScannerSelectorsDirective: aScannerSelectorsDirective [
+	^ self visitDirective: aScannerSelectorsDirective
+]
+
+{ #category : #generated }
 TSmaCCDefinitionNodeVisitor >> visitScopeDirective: aScopeDirective [
 	^ self visitDirective: aScopeDirective
 ]

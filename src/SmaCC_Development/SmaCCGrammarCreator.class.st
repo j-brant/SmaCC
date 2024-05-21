@@ -332,6 +332,13 @@ SmaCCGrammarCreator >> visitProductionSymbol: aProductionSymbol [
 	^ grammar nonTerminalSymbolNamed: aProductionSymbol name value
 ]
 
+{ #category : #accessing }
+SmaCCGrammarCreator >> visitScannerSelectorsDirective: aScannerSelectorsDirective [
+	grammar
+		scannerSymbols: (aScannerSelectorsDirective symbols collect: [ :each | '<' , each value , '>' ])
+				asSet
+]
+
 { #category : #visiting }
 SmaCCGrammarCreator >> visitScopeDirective: aScopeDirective [
 	| type |

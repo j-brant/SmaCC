@@ -18,7 +18,8 @@ Class {
 		'errorSymbol',
 		'emptySymbol',
 		'sentinelSymbol',
-		'ignoredVariableWarnings'
+		'ignoredVariableWarnings',
+		'scannerSymbols'
 	],
 	#classVars : [
 		'IsExpressionMap',
@@ -570,6 +571,16 @@ SmaCCGrammar >> scannerDefinition: aSmaCCScannerDefinition [
 { #category : #accessing }
 SmaCCGrammar >> scannerStates [
 	^ scannerDefinition states
+]
+
+{ #category : #accessing }
+SmaCCGrammar >> scannerSymbols [
+	^ scannerSymbols ifNil: [ #() ]
+]
+
+{ #category : #accessing }
+SmaCCGrammar >> scannerSymbols: aCollection [
+	scannerSymbols := aCollection
 ]
 
 { #category : #accessing }
