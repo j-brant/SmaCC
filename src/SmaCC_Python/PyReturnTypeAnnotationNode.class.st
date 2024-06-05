@@ -2,7 +2,7 @@ Class {
 	#name : #PyReturnTypeAnnotationNode,
 	#superclass : #PyRootNode,
 	#instVars : [
-		'minusGreaterThanToken',
+		'arrowToken',
 		'typeExpression'
 	],
 	#category : #'SmaCC_Python'
@@ -14,13 +14,13 @@ PyReturnTypeAnnotationNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-PyReturnTypeAnnotationNode >> minusGreaterThanToken [
-	^ minusGreaterThanToken
+PyReturnTypeAnnotationNode >> arrowToken [
+	^ arrowToken
 ]
 
 { #category : #generated }
-PyReturnTypeAnnotationNode >> minusGreaterThanToken: aSmaCCToken [
-	minusGreaterThanToken := aSmaCCToken
+PyReturnTypeAnnotationNode >> arrowToken: aSmaCCToken [
+	arrowToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -30,7 +30,7 @@ PyReturnTypeAnnotationNode >> nodeVariables [
 
 { #category : #generated }
 PyReturnTypeAnnotationNode >> tokenVariables [
-	^ #(#minusGreaterThanToken)
+	^ #(#arrowToken)
 ]
 
 { #category : #generated }
@@ -39,8 +39,8 @@ PyReturnTypeAnnotationNode >> typeExpression [
 ]
 
 { #category : #generated }
-PyReturnTypeAnnotationNode >> typeExpression: aPyRootNode [
+PyReturnTypeAnnotationNode >> typeExpression: aPyExpressionNode [
 	self typeExpression notNil ifTrue: [ self typeExpression parent: nil ].
-	typeExpression := aPyRootNode.
+	typeExpression := aPyExpressionNode.
 	self typeExpression notNil ifTrue: [ self typeExpression parent: self ]
 ]

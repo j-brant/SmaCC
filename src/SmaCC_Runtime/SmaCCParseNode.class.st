@@ -730,6 +730,21 @@ SmaCCParseNode >> nodeBefore [
 ]
 
 { #category : #accessing }
+SmaCCParseNode >> nodeForInterval: anInterval [
+	"Return inner most node whose sourceInterval overlaps anInteger or self if no nodes do."
+
+	| node |
+	self
+		withAllNodesDo: [ :each | 
+			(each startPosition > 0
+				and: [ each startPosition <= anInterval first
+						and: [ each stopPosition >= anInterval last ] ]) ifTrue: [ node := each ] ]
+		andTokensDo: [ :each |  ]
+		includesErrors: true.
+	^ node ifNil: [ self ]
+]
+
+{ #category : #accessing }
 SmaCCParseNode >> nodeOfType: aSmaCCParseNodeClassOrCollection [
 	| isCollection |
 	isCollection := aSmaCCParseNodeClassOrCollection isKindOf: Collection.

@@ -4,12 +4,9 @@ Class {
 	#instVars : [
 		'elseToken',
 		'colonToken',
-		'statements',
-		'nEWLINEToken',
-		'iNDENTToken',
-		'dEDENTToken'
+		'statements'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
@@ -33,16 +30,6 @@ PyElseNode >> compositeNodeVariables [
 ]
 
 { #category : #generated }
-PyElseNode >> dEDENTToken [
-	^ dEDENTToken
-]
-
-{ #category : #generated }
-PyElseNode >> dEDENTToken: aSmaCCToken [
-	dEDENTToken := aSmaCCToken
-]
-
-{ #category : #generated }
 PyElseNode >> elseToken [
 	^ elseToken
 ]
@@ -52,30 +39,10 @@ PyElseNode >> elseToken: aSmaCCToken [
 	elseToken := aSmaCCToken
 ]
 
-{ #category : #generated }
-PyElseNode >> iNDENTToken [
-	^ iNDENTToken
-]
-
-{ #category : #generated }
-PyElseNode >> iNDENTToken: aSmaCCToken [
-	iNDENTToken := aSmaCCToken
-]
-
 { #category : #'generated-initialize-release' }
 PyElseNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-PyElseNode >> nEWLINEToken [
-	^ nEWLINEToken
-]
-
-{ #category : #generated }
-PyElseNode >> nEWLINEToken: aSmaCCToken [
-	nEWLINEToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -92,5 +59,5 @@ PyElseNode >> statements: anOrderedCollection [
 
 { #category : #generated }
 PyElseNode >> tokenVariables [
-	^ #(#elseToken #colonToken #nEWLINEToken #iNDENTToken #dEDENTToken)
+	^ #(#elseToken #colonToken)
 ]

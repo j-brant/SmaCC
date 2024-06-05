@@ -2,31 +2,16 @@ Class {
 	#name : #PyArgumentNode,
 	#superclass : #PyRootNode,
 	#instVars : [
+		'name',
 		'equalToken',
-		'test',
-		'comp',
-		'test2'
+		'value'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
 PyArgumentNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitArgument: self
-]
-
-{ #category : #generated }
-PyArgumentNode >> comp [
-	^ comp
-]
-
-{ #category : #generated }
-PyArgumentNode >> comp: aPyCompForNode [
-	self comp notNil
-		ifTrue: [ self comp parent: nil ].
-	comp := aPyCompForNode.
-	self comp notNil
-		ifTrue: [ self comp parent: self ]
 ]
 
 { #category : #generated }
@@ -40,39 +25,35 @@ PyArgumentNode >> equalToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+PyArgumentNode >> name [
+	^ name
+]
+
+{ #category : #generated }
+PyArgumentNode >> name: aPyExpressionNode [
+	self name notNil ifTrue: [ self name parent: nil ].
+	name := aPyExpressionNode.
+	self name notNil ifTrue: [ self name parent: self ]
+]
+
+{ #category : #generated }
 PyArgumentNode >> nodeVariables [
-	^ #(#test #comp #test2)
-]
-
-{ #category : #generated }
-PyArgumentNode >> test [
-	^ test
-]
-
-{ #category : #generated }
-PyArgumentNode >> test2 [
-	^ test2
-]
-
-{ #category : #generated }
-PyArgumentNode >> test2: aPyRootNode [
-	self test2 notNil
-		ifTrue: [ self test2 parent: nil ].
-	test2 := aPyRootNode.
-	self test2 notNil
-		ifTrue: [ self test2 parent: self ]
-]
-
-{ #category : #generated }
-PyArgumentNode >> test: aPyRootNode [
-	self test notNil
-		ifTrue: [ self test parent: nil ].
-	test := aPyRootNode.
-	self test notNil
-		ifTrue: [ self test parent: self ]
+	^ #(#name #value)
 ]
 
 { #category : #generated }
 PyArgumentNode >> tokenVariables [
 	^ #(#equalToken)
+]
+
+{ #category : #generated }
+PyArgumentNode >> value [
+	^ value
+]
+
+{ #category : #generated }
+PyArgumentNode >> value: aPyExpressionNode [
+	self value notNil ifTrue: [ self value parent: nil ].
+	value := aPyExpressionNode.
+	self value notNil ifTrue: [ self value parent: self ]
 ]

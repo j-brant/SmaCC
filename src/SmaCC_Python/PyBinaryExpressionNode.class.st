@@ -1,6 +1,6 @@
 Class {
 	#name : #PyBinaryExpressionNode,
-	#superclass : #PyRootNode,
+	#superclass : #PyExpressionNode,
 	#instVars : [
 		'left',
 		'opeator',
@@ -21,9 +21,9 @@ PyBinaryExpressionNode >> left [
 ]
 
 { #category : #generated }
-PyBinaryExpressionNode >> left: aPyRootNode [
+PyBinaryExpressionNode >> left: aPyExpressionNode [
 	self left notNil ifTrue: [ self left parent: nil ].
-	left := aPyRootNode.
+	left := aPyExpressionNode.
 	self left notNil ifTrue: [ self left parent: self ]
 ]
 
@@ -58,9 +58,9 @@ PyBinaryExpressionNode >> right [
 ]
 
 { #category : #generated }
-PyBinaryExpressionNode >> right: aPyRootNode [
+PyBinaryExpressionNode >> right: aPyExpressionNode [
 	self right notNil ifTrue: [ self right parent: nil ].
-	right := aPyRootNode.
+	right := aPyExpressionNode.
 	self right notNil ifTrue: [ self right parent: self ]
 ]
 

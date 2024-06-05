@@ -3,12 +3,9 @@ Class {
 	#superclass : #PyRootNode,
 	#instVars : [
 		'elifToken',
-		'elif',
+		'condition',
 		'colonToken',
-		'statements',
-		'nEWLINEToken',
-		'iNDENTToken',
-		'dEDENTToken'
+		'statements'
 	],
 	#category : #'SmaCC_Python'
 }
@@ -34,27 +31,15 @@ PyElifNode >> compositeNodeVariables [
 ]
 
 { #category : #generated }
-PyElifNode >> dEDENTToken [
-	^ dEDENTToken
+PyElifNode >> condition [
+	^ condition
 ]
 
 { #category : #generated }
-PyElifNode >> dEDENTToken: aSmaCCToken [
-	dEDENTToken := aSmaCCToken
-]
-
-{ #category : #generated }
-PyElifNode >> elif [
-	^ elif
-]
-
-{ #category : #generated }
-PyElifNode >> elif: aPyRootNode [
-	self elif notNil
-		ifTrue: [ self elif parent: nil ].
-	elif := aPyRootNode.
-	self elif notNil
-		ifTrue: [ self elif parent: self ]
+PyElifNode >> condition: aPyExpressionNode [
+	self condition notNil ifTrue: [ self condition parent: nil ].
+	condition := aPyExpressionNode.
+	self condition notNil ifTrue: [ self condition parent: self ]
 ]
 
 { #category : #generated }
@@ -67,16 +52,6 @@ PyElifNode >> elifToken: aSmaCCToken [
 	elifToken := aSmaCCToken
 ]
 
-{ #category : #generated }
-PyElifNode >> iNDENTToken [
-	^ iNDENTToken
-]
-
-{ #category : #generated }
-PyElifNode >> iNDENTToken: aSmaCCToken [
-	iNDENTToken := aSmaCCToken
-]
-
 { #category : #'generated-initialize-release' }
 PyElifNode >> initialize [
 	super initialize.
@@ -84,18 +59,8 @@ PyElifNode >> initialize [
 ]
 
 { #category : #generated }
-PyElifNode >> nEWLINEToken [
-	^ nEWLINEToken
-]
-
-{ #category : #generated }
-PyElifNode >> nEWLINEToken: aSmaCCToken [
-	nEWLINEToken := aSmaCCToken
-]
-
-{ #category : #generated }
 PyElifNode >> nodeVariables [
-	^ #(#elif)
+	^ #(#condition)
 ]
 
 { #category : #generated }
@@ -112,5 +77,5 @@ PyElifNode >> statements: anOrderedCollection [
 
 { #category : #generated }
 PyElifNode >> tokenVariables [
-	^ #(#elifToken #colonToken #nEWLINEToken #iNDENTToken #dEDENTToken)
+	^ #(#elifToken #colonToken)
 ]

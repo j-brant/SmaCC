@@ -2,14 +2,14 @@ Class {
 	#name : #PyListForNode,
 	#superclass : #PyRootNode,
 	#instVars : [
-		'tests',
-		'commaTokens',
-		'exprs',
 		'forToken',
+		'exprs',
+		'commaTokens',
 		'inToken',
+		'values',
 		'list'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
@@ -29,7 +29,7 @@ PyListForNode >> commaTokens: anOrderedCollection [
 
 { #category : #generated }
 PyListForNode >> compositeNodeVariables [
-	^ #(#exprs #tests)
+	^ #(#exprs #values)
 ]
 
 { #category : #generated }
@@ -74,7 +74,7 @@ PyListForNode >> initialize [
 	super initialize.
 	exprs := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
-	tests := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -97,18 +97,18 @@ PyListForNode >> nodeVariables [
 ]
 
 { #category : #generated }
-PyListForNode >> tests [
-	^ tests
-]
-
-{ #category : #generated }
-PyListForNode >> tests: anOrderedCollection [
-	self setParents: self tests to: nil.
-	tests := anOrderedCollection.
-	self setParents: self tests to: self
-]
-
-{ #category : #generated }
 PyListForNode >> tokenVariables [
 	^ #(#forToken #inToken)
+]
+
+{ #category : #generated }
+PyListForNode >> values [
+	^ values
+]
+
+{ #category : #generated }
+PyListForNode >> values: anOrderedCollection [
+	self setParents: self values to: nil.
+	values := anOrderedCollection.
+	self setParents: self values to: self
 ]

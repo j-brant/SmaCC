@@ -1,6 +1,6 @@
 Class {
 	#name : #PyAssignmentExpressionNode,
-	#superclass : #PyRootNode,
+	#superclass : #PyExpressionNode,
 	#instVars : [
 		'variable',
 		'assign',
@@ -40,9 +40,9 @@ PyAssignmentExpressionNode >> value [
 ]
 
 { #category : #generated }
-PyAssignmentExpressionNode >> value: aPyRootNode [
+PyAssignmentExpressionNode >> value: aPyExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
-	value := aPyRootNode.
+	value := aPyExpressionNode.
 	self value notNil ifTrue: [ self value parent: self ]
 ]
 
@@ -52,8 +52,8 @@ PyAssignmentExpressionNode >> variable [
 ]
 
 { #category : #generated }
-PyAssignmentExpressionNode >> variable: aPySymbolNode [
+PyAssignmentExpressionNode >> variable: aPyVariableExpressionNode [
 	self variable notNil ifTrue: [ self variable parent: nil ].
-	variable := aPySymbolNode.
+	variable := aPyVariableExpressionNode.
 	self variable notNil ifTrue: [ self variable parent: self ]
 ]

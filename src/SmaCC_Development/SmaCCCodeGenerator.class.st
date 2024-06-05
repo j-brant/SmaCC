@@ -346,7 +346,7 @@ SmaCCCodeGenerator >> compileAmbiguousTransitions [
 		nextPutLine: (self method: 'ambiguousTransitions' type: self unsignedShortArrayArray);
 		nextPutStatement: (self return: self initializerForAmbiguousTransitions);
 		endMethod;
-		compileMethodWithoutFormattingIn: parserClass theMetaClass
+		compileMethodWithoutFormattingIn: parserClass classSide
 ]
 
 { #category : #'compiling-parser' }

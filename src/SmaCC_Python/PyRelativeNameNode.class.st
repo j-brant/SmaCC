@@ -2,7 +2,7 @@ Class {
 	#name : #PyRelativeNameNode,
 	#superclass : #PyRootNode,
 	#instVars : [
-		'dots',
+		'periodTokens',
 		'name'
 	],
 	#category : #'SmaCC_Python'
@@ -15,23 +15,13 @@ PyRelativeNameNode >> acceptVisitor: aRootVisitor [
 
 { #category : #generated }
 PyRelativeNameNode >> compositeTokenVariables [
-	^ #(#dots)
-]
-
-{ #category : #generated }
-PyRelativeNameNode >> dots [
-	^ dots
-]
-
-{ #category : #generated }
-PyRelativeNameNode >> dots: anOrderedCollection [
-	dots := anOrderedCollection
+	^ #(#periodTokens)
 ]
 
 { #category : #'generated-initialize-release' }
 PyRelativeNameNode >> initialize [
 	super initialize.
-	dots := OrderedCollection new: 2.
+	periodTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -40,13 +30,23 @@ PyRelativeNameNode >> name [
 ]
 
 { #category : #generated }
-PyRelativeNameNode >> name: aPyRootNode [
+PyRelativeNameNode >> name: aPyExpressionNode [
 	self name notNil ifTrue: [ self name parent: nil ].
-	name := aPyRootNode.
+	name := aPyExpressionNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
 PyRelativeNameNode >> nodeVariables [
 	^ #(#name)
+]
+
+{ #category : #generated }
+PyRelativeNameNode >> periodTokens [
+	^ periodTokens
+]
+
+{ #category : #generated }
+PyRelativeNameNode >> periodTokens: anOrderedCollection [
+	periodTokens := anOrderedCollection
 ]
