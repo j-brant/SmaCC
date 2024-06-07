@@ -45,9 +45,9 @@ PyMetaclassNode >> superclass [
 ]
 
 { #category : #generated }
-PyMetaclassNode >> superclass: aPyRootNode [
+PyMetaclassNode >> superclass: aPyExpressionNode [
 	self superclass notNil ifTrue: [ self superclass parent: nil ].
-	superclass := aPyRootNode.
+	superclass := aPyExpressionNode.
 	self superclass notNil ifTrue: [ self superclass parent: self ]
 ]
 

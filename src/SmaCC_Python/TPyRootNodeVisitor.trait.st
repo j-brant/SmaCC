@@ -6,11 +6,6 @@ Trait {
 }
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitAnnotatedSymbol: anAnnotatedSymbol [
-	^ self visitSymbol: anAnnotatedSymbol
-]
-
-{ #category : #generated }
 TPyRootNodeVisitor >> visitArgument: anArgument [
 	^ self visitRoot: anArgument
 ]
@@ -21,53 +16,43 @@ TPyRootNodeVisitor >> visitAsName: anAsName [
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitAssert: anAssert [
-	^ self visitRoot: anAssert
+TPyRootNodeVisitor >> visitAssertStatement: anAssertStatement [
+	^ self visitStatement: anAssertStatement
 ]
 
 { #category : #generated }
 TPyRootNodeVisitor >> visitAssignmentExpression: anAssignmentExpression [
-	^ self visitRoot: anAssignmentExpression
+	^ self visitExpression: anAssignmentExpression
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitAtom: anAtom [
-	^ self visitRoot: anAtom
+TPyRootNodeVisitor >> visitAssignmentStatement: anAssignmentStatement [
+	^ self visitStatement: anAssignmentStatement
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitAwait: anAwait [
-	^ self visitRoot: anAwait
+TPyRootNodeVisitor >> visitAwaitExpression: anAwaitExpression [
+	^ self visitExpression: anAwaitExpression
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitBackTick: aBackTick [
-	^ self visitRoot: aBackTick
+TPyRootNodeVisitor >> visitBacktickExpression: aBacktickExpression [
+	^ self visitExpression: aBacktickExpression
 ]
 
 { #category : #generated }
 TPyRootNodeVisitor >> visitBinaryExpression: aBinaryExpression [
-	^ self visitRoot: aBinaryExpression
+	^ self visitExpression: aBinaryExpression
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitBreak: aBreak [
-	^ self visitRoot: aBreak
+TPyRootNodeVisitor >> visitBreakStatement: aBreakStatement [
+	^ self visitStatement: aBreakStatement
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitClassdef: aClassdef [
-	^ self visitRoot: aClassdef
-]
-
-{ #category : #generated }
-TPyRootNodeVisitor >> visitCompFor: aCompFor [
-	^ self visitRoot: aCompFor
-]
-
-{ #category : #generated }
-TPyRootNodeVisitor >> visitCompIf: aCompIf [
-	^ self visitRoot: aCompIf
+TPyRootNodeVisitor >> visitClassDefinition: aClassDefinition [
+	^ self visitStatement: aClassDefinition
 ]
 
 { #category : #generated }
@@ -76,33 +61,48 @@ TPyRootNodeVisitor >> visitComparisonExpression: aComparisonExpression [
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitContinue: aContinue [
-	^ self visitRoot: aContinue
+TPyRootNodeVisitor >> visitComprehension: aComprehension [
+	^ self visitRoot: aComprehension
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitDecorated: aDecorated [
-	^ self visitRoot: aDecorated
+TPyRootNodeVisitor >> visitComprehensionDictionaryItem: aComprehensionDictionaryItem [
+	^ self visitRoot: aComprehensionDictionaryItem
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitDecorator: aDecorator [
-	^ self visitRoot: aDecorator
+TPyRootNodeVisitor >> visitComprehensionFor: aComprehensionFor [
+	^ self visitRoot: aComprehensionFor
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitDel: aDel [
-	^ self visitRoot: aDel
+TPyRootNodeVisitor >> visitComprehensionIf: aComprehensionIf [
+	^ self visitRoot: aComprehensionIf
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitDictorsetmaker: aDictorsetmaker [
-	^ self visitRoot: aDictorsetmaker
+TPyRootNodeVisitor >> visitContinueStatement: aContinueStatement [
+	^ self visitStatement: aContinueStatement
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitDottedName: aDottedName [
-	^ self visitRoot: aDottedName
+TPyRootNodeVisitor >> visitDecoratorExpression: aDecoratorExpression [
+	^ self visitFunctionCallExpression: aDecoratorExpression
+]
+
+{ #category : #generated }
+TPyRootNodeVisitor >> visitDelStatement: aDelStatement [
+	^ self visitStatement: aDelStatement
+]
+
+{ #category : #generated }
+TPyRootNodeVisitor >> visitDictionaryExpression: aDictionaryExpression [
+	^ self visitExpression: aDictionaryExpression
+]
+
+{ #category : #generated }
+TPyRootNodeVisitor >> visitDictionaryItem: aDictionaryItem [
+	^ self visitRoot: aDictionaryItem
 ]
 
 { #category : #generated }
@@ -111,13 +111,18 @@ TPyRootNodeVisitor >> visitElif: anElif [
 ]
 
 { #category : #generated }
+TPyRootNodeVisitor >> visitEllipsis: anEllipsis [
+	^ self visitRoot: anEllipsis
+]
+
+{ #category : #generated }
 TPyRootNodeVisitor >> visitElse: anElse [
 	^ self visitRoot: anElse
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitEvalInput: anEvalInput [
-	^ self visitRoot: anEvalInput
+TPyRootNodeVisitor >> visitEval: anEval [
+	^ self visitRoot: anEval
 ]
 
 { #category : #generated }
@@ -126,23 +131,28 @@ TPyRootNodeVisitor >> visitExceptClause: anExceptClause [
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitExec: anExec [
-	^ self visitRoot: anExec
+TPyRootNodeVisitor >> visitExecStatement: anExecStatement [
+	^ self visitStatement: anExecStatement
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitExprStmt: anExprStmt [
-	^ self visitRoot: anExprStmt
+TPyRootNodeVisitor >> visitExpression: anExpression [
+	^ self visitRoot: anExpression
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitFactor: aFactor [
-	^ self visitRoot: aFactor
+TPyRootNodeVisitor >> visitExpressionStatement: anExpressionStatement [
+	^ self visitStatement: anExpressionStatement
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitFileInput: aFileInput [
-	^ self visitRoot: aFileInput
+TPyRootNodeVisitor >> visitFieldAccessExpression: aFieldAccessExpression [
+	^ self visitExpression: aFieldAccessExpression
+]
+
+{ #category : #generated }
+TPyRootNodeVisitor >> visitFile: aFile [
+	^ self visitRoot: aFile
 ]
 
 { #category : #generated }
@@ -151,38 +161,38 @@ TPyRootNodeVisitor >> visitFinally: aFinally [
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitFor: aFor [
-	^ self visitRoot: aFor
+TPyRootNodeVisitor >> visitForStatement: aForStatement [
+	^ self visitStatement: aForStatement
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitFpdef: aFpdef [
-	^ self visitRoot: aFpdef
+TPyRootNodeVisitor >> visitFunctionCallExpression: aFunctionCallExpression [
+	^ self visitExpression: aFunctionCallExpression
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitFuncdef: aFuncdef [
-	^ self visitRoot: aFuncdef
+TPyRootNodeVisitor >> visitFunctionDefinition: aFunctionDefinition [
+	^ self visitStatement: aFunctionDefinition
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitGlobal: aGlobal [
-	^ self visitRoot: aGlobal
+TPyRootNodeVisitor >> visitGlobalStatement: aGlobalStatement [
+	^ self visitStatement: aGlobalStatement
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitIf: anIf [
-	^ self visitRoot: anIf
+TPyRootNodeVisitor >> visitIfExpression: anIfExpression [
+	^ self visitExpression: anIfExpression
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitIfTest: anIfTest [
-	^ self visitRoot: anIfTest
+TPyRootNodeVisitor >> visitIfStatement: anIfStatement [
+	^ self visitStatement: anIfStatement
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitImport: anImport [
-	^ self visitRoot: anImport
+TPyRootNodeVisitor >> visitImportStatement: anImportStatement [
+	^ self visitStatement: anImportStatement
 ]
 
 { #category : #generated }
@@ -191,13 +201,18 @@ TPyRootNodeVisitor >> visitInit: anInit [
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitInterpolatedString: anInterpolatedString [
-	^ self visitRoot: anInterpolatedString
+TPyRootNodeVisitor >> visitKeywordParameter: aKeywordParameter [
+	^ self visitParameter: aKeywordParameter
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitLambda: aLambda [
-	^ self visitRoot: aLambda
+TPyRootNodeVisitor >> visitLambdaExpression: aLambdaExpression [
+	^ self visitExpression: aLambdaExpression
+]
+
+{ #category : #generated }
+TPyRootNodeVisitor >> visitListExpression: aListExpression [
+	^ self visitExpression: aListExpression
 ]
 
 { #category : #generated }
@@ -211,8 +226,8 @@ TPyRootNodeVisitor >> visitListIf: aListIf [
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitListmaker: aListmaker [
-	^ self visitRoot: aListmaker
+TPyRootNodeVisitor >> visitListParameter: aListParameter [
+	^ self visitParameter: aListParameter
 ]
 
 { #category : #generated }
@@ -226,28 +241,33 @@ TPyRootNodeVisitor >> visitName: aName [
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitNot: aNot [
-	^ self visitRoot: aNot
-]
-
-{ #category : #generated }
 TPyRootNodeVisitor >> visitNumber: aNumber [
-	^ self visitRoot: aNumber
+	^ self visitExpression: aNumber
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitPass: aPass [
-	^ self visitRoot: aPass
+TPyRootNodeVisitor >> visitParameter: aParameter [
+	^ self visitRoot: aParameter
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitPrint: aPrint [
-	^ self visitRoot: aPrint
+TPyRootNodeVisitor >> visitParameterList: aParameterList [
+	^ self visitRoot: aParameterList
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitRaise: aRaise [
-	^ self visitRoot: aRaise
+TPyRootNodeVisitor >> visitPassStatement: aPassStatement [
+	^ self visitStatement: aPassStatement
+]
+
+{ #category : #generated }
+TPyRootNodeVisitor >> visitPrintStatement: aPrintStatement [
+	^ self visitStatement: aPrintStatement
+]
+
+{ #category : #generated }
+TPyRootNodeVisitor >> visitRaiseStatement: aRaiseStatement [
+	^ self visitStatement: aRaiseStatement
 ]
 
 { #category : #generated }
@@ -256,8 +276,8 @@ TPyRootNodeVisitor >> visitRelativeName: aRelativeName [
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitReturn: aReturn [
-	^ self visitRoot: aReturn
+TPyRootNodeVisitor >> visitReturnStatement: aReturnStatement [
+	^ self visitStatement: aReturnStatement
 ]
 
 { #category : #generated }
@@ -271,93 +291,63 @@ TPyRootNodeVisitor >> visitRoot: aRoot [
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitSimpleStmt: aSimpleStmt [
-	^ self visitRoot: aSimpleStmt
+TPyRootNodeVisitor >> visitSetExpression: aSetExpression [
+	^ self visitExpression: aSetExpression
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitSingleInput: aSingleInput [
-	^ self visitRoot: aSingleInput
+TPyRootNodeVisitor >> visitSlice: aSlice [
+	^ self visitRoot: aSlice
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitSliceop: aSliceop [
-	^ self visitRoot: aSliceop
+TPyRootNodeVisitor >> visitSpreadExpression: aSpreadExpression [
+	^ self visitExpression: aSpreadExpression
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitSpread: aSpread [
-	^ self visitRoot: aSpread
+TPyRootNodeVisitor >> visitStatement: aStatement [
+	^ self visitRoot: aStatement
 ]
 
 { #category : #generated }
 TPyRootNodeVisitor >> visitString: aString [
-	^ self visitRoot: aString
+	^ self visitExpression: aString
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitStrings: aStrings [
-	^ self visitRoot: aStrings
+TPyRootNodeVisitor >> visitSubscriptExpression: aSubscriptExpression [
+	^ self visitExpression: aSubscriptExpression
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitSubscript: aSubscript [
-	^ self visitRoot: aSubscript
+TPyRootNodeVisitor >> visitTryStatement: aTryStatement [
+	^ self visitStatement: aTryStatement
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitSymbol: aSymbol [
-	^ self visitRoot: aSymbol
+TPyRootNodeVisitor >> visitTupleExpression: aTupleExpression [
+	^ self visitExpression: aTupleExpression
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitTestlist1: aTestlist1 [
-	^ self visitRoot: aTestlist1
+TPyRootNodeVisitor >> visitTypedVariableExpression: aTypedVariableExpression [
+	^ self visitVariableExpression: aTypedVariableExpression
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitTestlist: aTestlist [
-	^ self visitRoot: aTestlist
+TPyRootNodeVisitor >> visitUnaryExpression: anUnaryExpression [
+	^ self visitExpression: anUnaryExpression
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitTestlistComp: aTestlistComp [
-	^ self visitRoot: aTestlistComp
+TPyRootNodeVisitor >> visitVariableExpression: aVariableExpression [
+	^ self visitExpression: aVariableExpression
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitTrailer: aTrailer [
-	^ self visitRoot: aTrailer
-]
-
-{ #category : #generated }
-TPyRootNodeVisitor >> visitTrailers: aTrailers [
-	^ self visitRoot: aTrailers
-]
-
-{ #category : #generated }
-TPyRootNodeVisitor >> visitTry: aTry [
-	^ self visitRoot: aTry
-]
-
-{ #category : #generated }
-TPyRootNodeVisitor >> visitTypeAnnotation: aTypeAnnotation [
-	^ self visitRoot: aTypeAnnotation
-]
-
-{ #category : #generated }
-TPyRootNodeVisitor >> visitVarArgList: aVarArgList [
-	^ self visitRoot: aVarArgList
-]
-
-{ #category : #generated }
-TPyRootNodeVisitor >> visitWhile: aWhile [
-	^ self visitRoot: aWhile
-]
-
-{ #category : #generated }
-TPyRootNodeVisitor >> visitWith: aWith [
-	^ self visitRoot: aWith
+TPyRootNodeVisitor >> visitWhileStatement: aWhileStatement [
+	^ self visitStatement: aWhileStatement
 ]
 
 { #category : #generated }
@@ -366,6 +356,16 @@ TPyRootNodeVisitor >> visitWithItem: aWithItem [
 ]
 
 { #category : #generated }
-TPyRootNodeVisitor >> visitYield: aYield [
-	^ self visitRoot: aYield
+TPyRootNodeVisitor >> visitWithStatement: aWithStatement [
+	^ self visitStatement: aWithStatement
+]
+
+{ #category : #generated }
+TPyRootNodeVisitor >> visitYieldExpression: aYieldExpression [
+	^ self visitExpression: aYieldExpression
+]
+
+{ #category : #generated }
+TPyRootNodeVisitor >> visitYieldStatement: aYieldStatement [
+	^ self visitStatement: aYieldStatement
 ]

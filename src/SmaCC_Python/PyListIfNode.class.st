@@ -6,7 +6,7 @@ Class {
 		'condition',
 		'iter'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
@@ -20,12 +20,10 @@ PyListIfNode >> condition [
 ]
 
 { #category : #generated }
-PyListIfNode >> condition: aPyRootNode [
-	self condition notNil
-		ifTrue: [ self condition parent: nil ].
-	condition := aPyRootNode.
-	self condition notNil
-		ifTrue: [ self condition parent: self ]
+PyListIfNode >> condition: aPyExpressionNode [
+	self condition notNil ifTrue: [ self condition parent: nil ].
+	condition := aPyExpressionNode.
+	self condition notNil ifTrue: [ self condition parent: self ]
 ]
 
 { #category : #generated }

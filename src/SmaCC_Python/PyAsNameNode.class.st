@@ -35,5 +35,5 @@ PyAsNameNode >> rename: aSmaCCToken [
 
 { #category : #generated }
 PyAsNameNode >> tokenVariables [
-	^ #(#asToken #rename #name)
+	^ #(#asToken #rename #nameToken)
 ]

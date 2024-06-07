@@ -1,10 +1,10 @@
 Class {
 	#name : #PyNumberNode,
-	#superclass : #PyRootNode,
+	#superclass : #PyExpressionNode,
 	#instVars : [
 		'numberToken'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }

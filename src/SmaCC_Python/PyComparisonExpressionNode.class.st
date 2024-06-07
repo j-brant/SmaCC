@@ -2,7 +2,7 @@ Class {
 	#name : #PyComparisonExpressionNode,
 	#superclass : #PyBinaryExpressionNode,
 	#instVars : [
-		'not'
+		'notToken'
 	],
 	#category : #'SmaCC_Python'
 }
@@ -13,16 +13,16 @@ PyComparisonExpressionNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-PyComparisonExpressionNode >> not [
-	^ not
+PyComparisonExpressionNode >> notToken [
+	^ notToken
 ]
 
 { #category : #generated }
-PyComparisonExpressionNode >> not: aSmaCCToken [
-	not := aSmaCCToken
+PyComparisonExpressionNode >> notToken: aSmaCCToken [
+	notToken := aSmaCCToken
 ]
 
 { #category : #generated }
 PyComparisonExpressionNode >> tokenVariables [
-	^ #(#not #opeator #operator)
+	^ #(#notToken #opeator #operator)
 ]

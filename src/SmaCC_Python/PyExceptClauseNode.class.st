@@ -3,32 +3,17 @@ Class {
 	#superclass : #PyRootNode,
 	#instVars : [
 		'exceptToken',
-		'except',
+		'exception',
 		'asToken',
-		'another',
-		'commaToken',
-		'except2'
+		'variable',
+		'commaToken'
 	],
-	#category : 'SmaCC_Python'
+	#category : #'SmaCC_Python'
 }
 
 { #category : #generated }
 PyExceptClauseNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitExceptClause: self
-]
-
-{ #category : #generated }
-PyExceptClauseNode >> another [
-	^ another
-]
-
-{ #category : #generated }
-PyExceptClauseNode >> another: aPyRootNode [
-	self another notNil
-		ifTrue: [ self another parent: nil ].
-	another := aPyRootNode.
-	self another notNil
-		ifTrue: [ self another parent: self ]
 ]
 
 { #category : #generated }
@@ -52,34 +37,6 @@ PyExceptClauseNode >> commaToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-PyExceptClauseNode >> except [
-	^ except
-]
-
-{ #category : #generated }
-PyExceptClauseNode >> except2 [
-	^ except2
-]
-
-{ #category : #generated }
-PyExceptClauseNode >> except2: aPyRootNode [
-	self except2 notNil
-		ifTrue: [ self except2 parent: nil ].
-	except2 := aPyRootNode.
-	self except2 notNil
-		ifTrue: [ self except2 parent: self ]
-]
-
-{ #category : #generated }
-PyExceptClauseNode >> except: aPyRootNode [
-	self except notNil
-		ifTrue: [ self except parent: nil ].
-	except := aPyRootNode.
-	self except notNil
-		ifTrue: [ self except parent: self ]
-]
-
-{ #category : #generated }
 PyExceptClauseNode >> exceptToken [
 	^ exceptToken
 ]
@@ -90,11 +47,35 @@ PyExceptClauseNode >> exceptToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+PyExceptClauseNode >> exception [
+	^ exception
+]
+
+{ #category : #generated }
+PyExceptClauseNode >> exception: aPyExpressionNode [
+	self exception notNil ifTrue: [ self exception parent: nil ].
+	exception := aPyExpressionNode.
+	self exception notNil ifTrue: [ self exception parent: self ]
+]
+
+{ #category : #generated }
 PyExceptClauseNode >> nodeVariables [
-	^ #(#except #another #except2)
+	^ #(#exception #variable)
 ]
 
 { #category : #generated }
 PyExceptClauseNode >> tokenVariables [
 	^ #(#exceptToken #asToken #commaToken)
+]
+
+{ #category : #generated }
+PyExceptClauseNode >> variable [
+	^ variable
+]
+
+{ #category : #generated }
+PyExceptClauseNode >> variable: aPyExpressionNode [
+	self variable notNil ifTrue: [ self variable parent: nil ].
+	variable := aPyExpressionNode.
+	self variable notNil ifTrue: [ self variable parent: self ]
 ]

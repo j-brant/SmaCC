@@ -3,7 +3,7 @@ Class {
 	#superclass : #PyRootNode,
 	#instVars : [
 		'equalToken',
-		'test'
+		'value'
 	],
 	#category : #'SmaCC_Python'
 }
@@ -25,22 +25,22 @@ PyInitNode >> equalToken: aSmaCCToken [
 
 { #category : #generated }
 PyInitNode >> nodeVariables [
-	^ #(#test)
-]
-
-{ #category : #generated }
-PyInitNode >> test [
-	^ test
-]
-
-{ #category : #generated }
-PyInitNode >> test: aPyRootNode [
-	self test notNil ifTrue: [ self test parent: nil ].
-	test := aPyRootNode.
-	self test notNil ifTrue: [ self test parent: self ]
+	^ #(#value)
 ]
 
 { #category : #generated }
 PyInitNode >> tokenVariables [
 	^ #(#equalToken)
+]
+
+{ #category : #generated }
+PyInitNode >> value [
+	^ value
+]
+
+{ #category : #generated }
+PyInitNode >> value: aPyExpressionNode [
+	self value notNil ifTrue: [ self value parent: nil ].
+	value := aPyExpressionNode.
+	self value notNil ifTrue: [ self value parent: self ]
 ]

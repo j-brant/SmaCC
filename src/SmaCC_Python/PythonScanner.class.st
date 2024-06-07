@@ -23,12 +23,12 @@ PythonScanner class >> initializeKeywordMap [
 
 { #category : #generated }
 PythonScanner >> DEDENTId [
-	^ 252
+	^ 260
 ]
 
 { #category : #generated }
 PythonScanner >> INDENTId [
-	^ 253
+	^ 261
 ]
 
 { #category : #private }
@@ -51,7 +51,7 @@ PythonScanner >> NEWLINEId [
 
 { #category : #generated }
 PythonScanner >> Python2Id [
-	^ 254
+	^ 262
 ]
 
 { #category : #private }
@@ -85,12 +85,12 @@ PythonScanner >> emptyLine [
 
 { #category : #generated }
 PythonScanner >> emptySymbolTokenId [
-	^ 255
+	^ 263
 ]
 
 { #category : #generated }
 PythonScanner >> errorTokenId [
-	^ 256
+	^ 264
 ]
 
 { #category : #private }
