@@ -523,7 +523,7 @@ SmaCCString >> newPositionFor: anInteger [
 			(each containsIndex: anInteger)
 				ifTrue: [ ^ each isRemoved
 						ifTrue: [ position ]
-						ifFalse: [ position + (anInteger - each start) ] ].
+						ifFalse: [ position + ((self indexFor: anInteger) - each start) ] ].
 			position := position + each size ].
 	^ position
 ]
