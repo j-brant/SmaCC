@@ -15,7 +15,8 @@ Class {
 		'leftBraceToken',
 		'declarations',
 		'rightBraceToken',
-		'semicolon'
+		'semicolon',
+		'refToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -148,6 +149,16 @@ CSStructDeclarationNode >> partialToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+CSStructDeclarationNode >> refToken [
+	^ refToken
+]
+
+{ #category : #generated }
+CSStructDeclarationNode >> refToken: aSmaCCToken [
+	refToken := aSmaCCToken
+]
+
+{ #category : #generated }
 CSStructDeclarationNode >> rightBraceToken [
 	^ rightBraceToken
 ]
@@ -191,7 +202,7 @@ CSStructDeclarationNode >> supertypes: anOrderedCollection [
 
 { #category : #generated }
 CSStructDeclarationNode >> tokenVariables [
-	^ #(#partialToken #structToken #identifierToken #colonToken #leftBraceToken #rightBraceToken #semicolon)
+	^ #(#partialToken #structToken #identifierToken #colonToken #leftBraceToken #rightBraceToken #semicolon #refToken)
 ]
 
 { #category : #generated }

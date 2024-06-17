@@ -2,9 +2,10 @@ Class {
 	#name : #CSConstantDeclaratorNode,
 	#superclass : #CSProgramNode,
 	#instVars : [
-		'identifierToken',
+		'name',
 		'equalToken',
-		'expression'
+		'expression',
+		'identifierToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -31,11 +32,9 @@ CSConstantDeclaratorNode >> expression [
 
 { #category : #generated }
 CSConstantDeclaratorNode >> expression: aCSExpressionNode [
-	self expression notNil
-		ifTrue: [ self expression parent: nil ].
+	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
-	self expression notNil
-		ifTrue: [ self expression parent: self ]
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
@@ -49,11 +48,21 @@ CSConstantDeclaratorNode >> identifierToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+CSConstantDeclaratorNode >> name [
+	^ name
+]
+
+{ #category : #generated }
+CSConstantDeclaratorNode >> name: aSmaCCToken [
+	name := aSmaCCToken
+]
+
+{ #category : #generated }
 CSConstantDeclaratorNode >> nodeVariables [
 	^ #(#expression)
 ]
 
 { #category : #generated }
 CSConstantDeclaratorNode >> tokenVariables [
-	^ #(#identifierToken #equalToken)
+	^ #(#name #equalToken #identifierToken)
 ]

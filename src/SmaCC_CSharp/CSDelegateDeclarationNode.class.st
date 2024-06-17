@@ -7,13 +7,15 @@ Class {
 		'delegateToken',
 		'type',
 		'name',
-		'typeParameters',
 		'leftParen',
 		'parameters',
 		'commas',
 		'rightParen',
+		'semicolon',
+		'typeParameters',
 		'constraintClauses',
-		'semicolon'
+		'refToken',
+		'readonlyToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -135,6 +137,26 @@ CSDelegateDeclarationNode >> parameters: anOrderedCollection [
 ]
 
 { #category : #generated }
+CSDelegateDeclarationNode >> readonlyToken [
+	^ readonlyToken
+]
+
+{ #category : #generated }
+CSDelegateDeclarationNode >> readonlyToken: aSmaCCToken [
+	readonlyToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSDelegateDeclarationNode >> refToken [
+	^ refToken
+]
+
+{ #category : #generated }
+CSDelegateDeclarationNode >> refToken: aSmaCCToken [
+	refToken := aSmaCCToken
+]
+
+{ #category : #generated }
 CSDelegateDeclarationNode >> rightParen [
 	^ rightParen
 ]
@@ -156,7 +178,7 @@ CSDelegateDeclarationNode >> semicolon: aSmaCCToken [
 
 { #category : #generated }
 CSDelegateDeclarationNode >> tokenVariables [
-	^ #(#delegateToken #name #leftParen #rightParen #semicolon)
+	^ #(#delegateToken #name #leftParen #rightParen #semicolon #refToken #readonlyToken)
 ]
 
 { #category : #generated }
@@ -180,9 +202,7 @@ CSDelegateDeclarationNode >> typeParameters [
 
 { #category : #generated }
 CSDelegateDeclarationNode >> typeParameters: aCSVariantTypeParameterListNode [
-	self typeParameters notNil
-		ifTrue: [ self typeParameters parent: nil ].
+	self typeParameters notNil ifTrue: [ self typeParameters parent: nil ].
 	typeParameters := aCSVariantTypeParameterListNode.
-	self typeParameters notNil
-		ifTrue: [ self typeParameters parent: self ]
+	self typeParameters notNil ifTrue: [ self typeParameters parent: self ]
 ]

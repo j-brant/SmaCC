@@ -9,7 +9,9 @@ Class {
 		'leftBrace',
 		'getAccessor',
 		'setAccessor',
-		'rightBrace'
+		'rightBrace',
+		'refToken',
+		'readonlyToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -92,6 +94,26 @@ CSInterfacePropertyDeclarationNode >> nodeVariables [
 ]
 
 { #category : #generated }
+CSInterfacePropertyDeclarationNode >> readonlyToken [
+	^ readonlyToken
+]
+
+{ #category : #generated }
+CSInterfacePropertyDeclarationNode >> readonlyToken: aSmaCCToken [
+	readonlyToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSInterfacePropertyDeclarationNode >> refToken [
+	^ refToken
+]
+
+{ #category : #generated }
+CSInterfacePropertyDeclarationNode >> refToken: aSmaCCToken [
+	refToken := aSmaCCToken
+]
+
+{ #category : #generated }
 CSInterfacePropertyDeclarationNode >> rightBrace [
 	^ rightBrace
 ]
@@ -117,7 +139,7 @@ CSInterfacePropertyDeclarationNode >> setAccessor: aCSInterfacePropertyAccessorN
 
 { #category : #generated }
 CSInterfacePropertyDeclarationNode >> tokenVariables [
-	^ #(#modifier #name #leftBrace #rightBrace)
+	^ #(#modifier #name #leftBrace #rightBrace #refToken #readonlyToken)
 ]
 
 { #category : #generated }

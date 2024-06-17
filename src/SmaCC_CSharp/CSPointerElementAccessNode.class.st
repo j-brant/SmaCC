@@ -22,11 +22,9 @@ CSPointerElementAccessNode >> expression [
 
 { #category : #generated }
 CSPointerElementAccessNode >> expression: aCSExpressionNode [
-	self expression notNil
-		ifTrue: [ self expression parent: nil ].
+	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
-	self expression notNil
-		ifTrue: [ self expression parent: self ]
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
@@ -36,11 +34,9 @@ CSPointerElementAccessNode >> indexExpression [
 
 { #category : #generated }
 CSPointerElementAccessNode >> indexExpression: aCSExpressionNode [
-	self indexExpression notNil
-		ifTrue: [ self indexExpression parent: nil ].
+	self indexExpression notNil ifTrue: [ self indexExpression parent: nil ].
 	indexExpression := aCSExpressionNode.
-	self indexExpression notNil
-		ifTrue: [ self indexExpression parent: self ]
+	self indexExpression notNil ifTrue: [ self indexExpression parent: self ]
 ]
 
 { #category : #generated }

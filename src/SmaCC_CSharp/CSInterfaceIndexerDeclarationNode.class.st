@@ -13,7 +13,9 @@ Class {
 		'leftBrace',
 		'getAccessor',
 		'setAccessor',
-		'rightBrace'
+		'rightBrace',
+		'refToken',
+		'readonlyToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -125,6 +127,26 @@ CSInterfaceIndexerDeclarationNode >> parameters: anOrderedCollection [
 ]
 
 { #category : #generated }
+CSInterfaceIndexerDeclarationNode >> readonlyToken [
+	^ readonlyToken
+]
+
+{ #category : #generated }
+CSInterfaceIndexerDeclarationNode >> readonlyToken: aSmaCCToken [
+	readonlyToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSInterfaceIndexerDeclarationNode >> refToken [
+	^ refToken
+]
+
+{ #category : #generated }
+CSInterfaceIndexerDeclarationNode >> refToken: aSmaCCToken [
+	refToken := aSmaCCToken
+]
+
+{ #category : #generated }
 CSInterfaceIndexerDeclarationNode >> rightBrace [
 	^ rightBrace
 ]
@@ -170,7 +192,7 @@ CSInterfaceIndexerDeclarationNode >> thisToken: aSmaCCToken [
 
 { #category : #generated }
 CSInterfaceIndexerDeclarationNode >> tokenVariables [
-	^ #(#modifier #thisToken #leftBracket #rightBracket #leftBrace #rightBrace)
+	^ #(#modifier #thisToken #leftBracket #rightBracket #leftBrace #rightBrace #refToken #readonlyToken)
 ]
 
 { #category : #generated }

@@ -9,7 +9,9 @@ Class {
 		'inToken',
 		'expression',
 		'rightParenToken',
-		'statement'
+		'statement',
+		'refToken',
+		'readonlyToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -26,11 +28,9 @@ CSForeachStatementNode >> expression [
 
 { #category : #generated }
 CSForeachStatementNode >> expression: aCSExpressionNode [
-	self expression notNil
-		ifTrue: [ self expression parent: nil ].
+	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
-	self expression notNil
-		ifTrue: [ self expression parent: self ]
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
@@ -79,6 +79,26 @@ CSForeachStatementNode >> nodeVariables [
 ]
 
 { #category : #generated }
+CSForeachStatementNode >> readonlyToken [
+	^ readonlyToken
+]
+
+{ #category : #generated }
+CSForeachStatementNode >> readonlyToken: aSmaCCToken [
+	readonlyToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSForeachStatementNode >> refToken [
+	^ refToken
+]
+
+{ #category : #generated }
+CSForeachStatementNode >> refToken: aSmaCCToken [
+	refToken := aSmaCCToken
+]
+
+{ #category : #generated }
 CSForeachStatementNode >> rightParenToken [
 	^ rightParenToken
 ]
@@ -104,7 +124,7 @@ CSForeachStatementNode >> statement: aCSStatementNode [
 
 { #category : #generated }
 CSForeachStatementNode >> tokenVariables [
-	^ #(#foreachToken #leftParenToken #name #inToken #rightParenToken)
+	^ #(#foreachToken #leftParenToken #name #inToken #rightParenToken #refToken #readonlyToken)
 ]
 
 { #category : #generated }

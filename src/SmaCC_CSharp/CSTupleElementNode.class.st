@@ -1,56 +1,56 @@
 Class {
-	#name : #CSNamedArgumentNode,
+	#name : #CSTupleElementNode,
 	#superclass : #CSProgramNode,
 	#instVars : [
+		'value',
 		'name',
-		'equal',
-		'value'
+		'colon'
 	],
 	#category : #'SmaCC_CSharp'
 }
 
 { #category : #generated }
-CSNamedArgumentNode >> acceptVisitor: aProgramVisitor [
-	^ aProgramVisitor visitNamedArgument: self
+CSTupleElementNode >> acceptVisitor: aProgramVisitor [
+	^ aProgramVisitor visitTupleElement: self
 ]
 
 { #category : #generated }
-CSNamedArgumentNode >> equal [
-	^ equal
+CSTupleElementNode >> colon [
+	^ colon
 ]
 
 { #category : #generated }
-CSNamedArgumentNode >> equal: aSmaCCToken [
-	equal := aSmaCCToken
+CSTupleElementNode >> colon: aSmaCCToken [
+	colon := aSmaCCToken
 ]
 
 { #category : #generated }
-CSNamedArgumentNode >> name [
+CSTupleElementNode >> name [
 	^ name
 ]
 
 { #category : #generated }
-CSNamedArgumentNode >> name: aSmaCCToken [
+CSTupleElementNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
 { #category : #generated }
-CSNamedArgumentNode >> nodeVariables [
+CSTupleElementNode >> nodeVariables [
 	^ #(#value)
 ]
 
 { #category : #generated }
-CSNamedArgumentNode >> tokenVariables [
-	^ #(#name #equal)
+CSTupleElementNode >> tokenVariables [
+	^ #(#name #colon)
 ]
 
 { #category : #generated }
-CSNamedArgumentNode >> value [
+CSTupleElementNode >> value [
 	^ value
 ]
 
 { #category : #generated }
-CSNamedArgumentNode >> value: aCSExpressionNode [
+CSTupleElementNode >> value: aCSExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aCSExpressionNode.
 	self value notNil ifTrue: [ self value parent: self ]

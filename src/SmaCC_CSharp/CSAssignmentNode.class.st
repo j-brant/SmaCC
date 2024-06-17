@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'lhs',
 		'operator',
+		'refToken',
 		'rhs'
 	],
 	#category : #'SmaCC_CSharp'
@@ -21,11 +22,9 @@ CSAssignmentNode >> lhs [
 
 { #category : #generated }
 CSAssignmentNode >> lhs: aCSExpressionNode [
-	self lhs notNil
-		ifTrue: [ self lhs parent: nil ].
+	self lhs notNil ifTrue: [ self lhs parent: nil ].
 	lhs := aCSExpressionNode.
-	self lhs notNil
-		ifTrue: [ self lhs parent: self ]
+	self lhs notNil ifTrue: [ self lhs parent: self ]
 ]
 
 { #category : #generated }
@@ -44,20 +43,28 @@ CSAssignmentNode >> operator: aSmaCCToken [
 ]
 
 { #category : #generated }
+CSAssignmentNode >> refToken [
+	^ refToken
+]
+
+{ #category : #generated }
+CSAssignmentNode >> refToken: aSmaCCToken [
+	refToken := aSmaCCToken
+]
+
+{ #category : #generated }
 CSAssignmentNode >> rhs [
 	^ rhs
 ]
 
 { #category : #generated }
 CSAssignmentNode >> rhs: aCSExpressionNode [
-	self rhs notNil
-		ifTrue: [ self rhs parent: nil ].
+	self rhs notNil ifTrue: [ self rhs parent: nil ].
 	rhs := aCSExpressionNode.
-	self rhs notNil
-		ifTrue: [ self rhs parent: self ]
+	self rhs notNil ifTrue: [ self rhs parent: self ]
 ]
 
 { #category : #generated }
 CSAssignmentNode >> tokenVariables [
-	^ #(#operator)
+	^ #(#operator #refToken)
 ]

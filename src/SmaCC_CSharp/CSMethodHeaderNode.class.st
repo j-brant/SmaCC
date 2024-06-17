@@ -2,19 +2,23 @@ Class {
 	#name : #CSMethodHeaderNode,
 	#superclass : #CSProgramNode,
 	#instVars : [
-		'_attributes',
 		'modifiers',
-		'partialToken',
 		'returnType',
 		'name',
-		'interface',
-		'periodToken',
-		'typeParameters',
-		'leftParenToken',
+		'leftParen',
 		'parameters',
 		'commas',
+		'rightParen',
+		'typeParameters',
+		'constraintClauses',
+		'_attributes',
+		'refToken',
+		'readonlyToken',
+		'interface',
+		'periodToken',
+		'leftParenToken',
 		'rightParenToken',
-		'constraintClauses'
+		'partialToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -48,7 +52,7 @@ CSMethodHeaderNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 CSMethodHeaderNode >> compositeNodeVariables [
-	^ #(#_attributes #parameters #constraintClauses)
+	^ #(#parameters #constraintClauses #_attributes)
 ]
 
 { #category : #generated }
@@ -71,11 +75,11 @@ CSMethodHeaderNode >> constraintClauses: anOrderedCollection [
 { #category : #'generated-initialize-release' }
 CSMethodHeaderNode >> initialize [
 	super initialize.
-	_attributes := OrderedCollection new: 2.
 	modifiers := OrderedCollection new: 2.
 	parameters := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 	constraintClauses := OrderedCollection new: 2.
+	_attributes := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -90,6 +94,16 @@ CSMethodHeaderNode >> interface: aCSTypeNode [
 	interface := aCSTypeNode.
 	self interface notNil
 		ifTrue: [ self interface parent: self ]
+]
+
+{ #category : #generated }
+CSMethodHeaderNode >> leftParen [
+	^ leftParen
+]
+
+{ #category : #generated }
+CSMethodHeaderNode >> leftParen: aSmaCCToken [
+	leftParen := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -124,7 +138,7 @@ CSMethodHeaderNode >> name: aSmaCCToken [
 
 { #category : #generated }
 CSMethodHeaderNode >> nodeVariables [
-	^ #(#returnType #interface #typeParameters)
+	^ #(#returnType #typeParameters #interface)
 ]
 
 { #category : #generated }
@@ -160,6 +174,26 @@ CSMethodHeaderNode >> periodToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+CSMethodHeaderNode >> readonlyToken [
+	^ readonlyToken
+]
+
+{ #category : #generated }
+CSMethodHeaderNode >> readonlyToken: aSmaCCToken [
+	readonlyToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSMethodHeaderNode >> refToken [
+	^ refToken
+]
+
+{ #category : #generated }
+CSMethodHeaderNode >> refToken: aSmaCCToken [
+	refToken := aSmaCCToken
+]
+
+{ #category : #generated }
 CSMethodHeaderNode >> returnType [
 	^ returnType
 ]
@@ -174,6 +208,16 @@ CSMethodHeaderNode >> returnType: aCSTypeNode [
 ]
 
 { #category : #generated }
+CSMethodHeaderNode >> rightParen [
+	^ rightParen
+]
+
+{ #category : #generated }
+CSMethodHeaderNode >> rightParen: aSmaCCToken [
+	rightParen := aSmaCCToken
+]
+
+{ #category : #generated }
 CSMethodHeaderNode >> rightParenToken [
 	^ rightParenToken
 ]
@@ -185,7 +229,7 @@ CSMethodHeaderNode >> rightParenToken: aSmaCCToken [
 
 { #category : #generated }
 CSMethodHeaderNode >> tokenVariables [
-	^ #(#partialToken #name #periodToken #leftParenToken #rightParenToken)
+	^ #(#name #leftParen #rightParen #refToken #readonlyToken #periodToken #leftParenToken #rightParenToken #partialToken)
 ]
 
 { #category : #generated }

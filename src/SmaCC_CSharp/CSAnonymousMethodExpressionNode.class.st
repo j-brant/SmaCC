@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'delegateToken',
 		'signature',
-		'block'
+		'block',
+		'asyncToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -12,6 +13,16 @@ Class {
 { #category : #generated }
 CSAnonymousMethodExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAnonymousMethodExpression: self
+]
+
+{ #category : #generated }
+CSAnonymousMethodExpressionNode >> asyncToken [
+	^ asyncToken
+]
+
+{ #category : #generated }
+CSAnonymousMethodExpressionNode >> asyncToken: aSmaCCToken [
+	asyncToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -59,5 +70,5 @@ CSAnonymousMethodExpressionNode >> signature: aCSExplicitAnonymousFunctionSignat
 
 { #category : #generated }
 CSAnonymousMethodExpressionNode >> tokenVariables [
-	^ #(#delegateToken)
+	^ #(#delegateToken #asyncToken)
 ]

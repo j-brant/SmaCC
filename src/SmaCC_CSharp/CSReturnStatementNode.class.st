@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'returnToken',
 		'expression',
-		'semicolonToken'
+		'semicolonToken',
+		'refToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -21,11 +22,9 @@ CSReturnStatementNode >> expression [
 
 { #category : #generated }
 CSReturnStatementNode >> expression: aCSExpressionNode [
-	self expression notNil
-		ifTrue: [ self expression parent: nil ].
+	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
-	self expression notNil
-		ifTrue: [ self expression parent: self ]
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
@@ -36,6 +35,16 @@ CSReturnStatementNode >> ignoredTokenVariables [
 { #category : #generated }
 CSReturnStatementNode >> nodeVariables [
 	^ #(#expression)
+]
+
+{ #category : #generated }
+CSReturnStatementNode >> refToken [
+	^ refToken
+]
+
+{ #category : #generated }
+CSReturnStatementNode >> refToken: aSmaCCToken [
+	refToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -60,5 +69,5 @@ CSReturnStatementNode >> semicolonToken: aSmaCCToken [
 
 { #category : #generated }
 CSReturnStatementNode >> tokenVariables [
-	^ #(#returnToken)
+	^ #(#returnToken #refToken)
 ]

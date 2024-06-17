@@ -146,11 +146,6 @@ TCSProgramNodeVisitor >> visitConditionalExpression: aConditionalExpression [
 ]
 
 { #category : #generated }
-TCSProgramNodeVisitor >> visitConstDeclarator: aConstDeclarator [
-	^ self visitProgram: aConstDeclarator
-]
-
-{ #category : #generated }
 TCSProgramNodeVisitor >> visitConstantDeclaration: aConstantDeclaration [
 	^ self visitDeclaration: aConstantDeclaration
 ]
@@ -186,8 +181,23 @@ TCSProgramNodeVisitor >> visitDeclaration: aDeclaration [
 ]
 
 { #category : #generated }
+TCSProgramNodeVisitor >> visitDeclarationExpression: aDeclarationExpression [
+	^ self visitExpression: aDeclarationExpression
+]
+
+{ #category : #generated }
 TCSProgramNodeVisitor >> visitDeclarationStatement: aDeclarationStatement [
 	^ self visitStatement: aDeclarationStatement
+]
+
+{ #category : #generated }
+TCSProgramNodeVisitor >> visitDeconstructionExpression: aDeconstructionExpression [
+	^ self visitExpression: aDeconstructionExpression
+]
+
+{ #category : #generated }
+TCSProgramNodeVisitor >> visitDeconstructionTuple: aDeconstructionTuple [
+	^ self visitProgram: aDeconstructionTuple
 ]
 
 { #category : #generated }
@@ -203,11 +213,6 @@ TCSProgramNodeVisitor >> visitDelegateCreationExpression: aDelegateCreationExpre
 { #category : #generated }
 TCSProgramNodeVisitor >> visitDelegateDeclaration: aDelegateDeclaration [
 	^ self visitDeclaration: aDelegateDeclaration
-]
-
-{ #category : #generated }
-TCSProgramNodeVisitor >> visitDestructorDeclaration: aDestructorDeclaration [
-	^ self visitDeclaration: aDestructorDeclaration
 ]
 
 { #category : #generated }
@@ -268,6 +273,11 @@ TCSProgramNodeVisitor >> visitExternAliasDirective: anExternAliasDirective [
 { #category : #generated }
 TCSProgramNodeVisitor >> visitFieldDeclaration: aFieldDeclaration [
 	^ self visitDeclaration: aFieldDeclaration
+]
+
+{ #category : #generated }
+TCSProgramNodeVisitor >> visitFinalizerDeclaration: aFinalizerDeclaration [
+	^ self visitProgram: aFinalizerDeclaration
 ]
 
 { #category : #generated }
@@ -381,6 +391,11 @@ TCSProgramNodeVisitor >> visitInterpolation: anInterpolation [
 ]
 
 { #category : #generated }
+TCSProgramNodeVisitor >> visitInvocationAccess: anInvocationAccess [
+	^ self visitProgram: anInvocationAccess
+]
+
+{ #category : #generated }
 TCSProgramNodeVisitor >> visitInvocationExpression: anInvocationExpression [
 	^ self visitExpression: anInvocationExpression
 ]
@@ -403,6 +418,11 @@ TCSProgramNodeVisitor >> visitLiteralExpression: aLiteralExpression [
 { #category : #generated }
 TCSProgramNodeVisitor >> visitLocalConstantDeclaration: aLocalConstantDeclaration [
 	^ self visitDeclaration: aLocalConstantDeclaration
+]
+
+{ #category : #generated }
+TCSProgramNodeVisitor >> visitLocalFunctionDeclarationStatement: aLocalFunctionDeclarationStatement [
+	^ self visitStatement: aLocalFunctionDeclarationStatement
 ]
 
 { #category : #generated }
@@ -471,22 +491,6 @@ TCSProgramNodeVisitor >> visitNamespaceDeclaration: aNamespaceDeclaration [
 ]
 
 { #category : #generated }
-TCSProgramNodeVisitor >> visitNullConditionalElementAccess: aNullConditionalElementAccess [
-	^ self visitElementAccess: aNullConditionalElementAccess
-]
-
-{ #category : #generated }
-TCSProgramNodeVisitor >> visitNullConditionalExpression: aNullConditionalExpression [
-	^ self visitExpression: aNullConditionalExpression
-]
-
-{ #category : #generated }
-TCSProgramNodeVisitor >> visitNullConditionalInvocationExpression: aNullConditionalInvocationExpression [
-	^ self
-		visitInvocationExpression: aNullConditionalInvocationExpression
-]
-
-{ #category : #generated }
 TCSProgramNodeVisitor >> visitNullConditionalMemberAccess: aNullConditionalMemberAccess [
 	^ self visitMemberAccess: aNullConditionalMemberAccess
 ]
@@ -514,11 +518,6 @@ TCSProgramNodeVisitor >> visitObjectInitializer: anObjectInitializer [
 { #category : #generated }
 TCSProgramNodeVisitor >> visitOperatorDeclaration: anOperatorDeclaration [
 	^ self visitDeclaration: anOperatorDeclaration
-]
-
-{ #category : #generated }
-TCSProgramNodeVisitor >> visitOutVariableDeclarationExpression: anOutVariableDeclarationExpression [
-	^ self visitExpression: anOutVariableDeclarationExpression
 ]
 
 { #category : #generated }
@@ -587,6 +586,11 @@ TCSProgramNodeVisitor >> visitRealLiteralExpression: aRealLiteralExpression [
 ]
 
 { #category : #generated }
+TCSProgramNodeVisitor >> visitRefExpression: aRefExpression [
+	^ self visitExpression: aRefExpression
+]
+
+{ #category : #generated }
 TCSProgramNodeVisitor >> visitRemoveAccessorDeclaration: aRemoveAccessorDeclaration [
 	^ self visitProgram: aRemoveAccessorDeclaration
 ]
@@ -617,8 +621,8 @@ TCSProgramNodeVisitor >> visitSizeofExpression: aSizeofExpression [
 ]
 
 { #category : #generated }
-TCSProgramNodeVisitor >> visitStackallocInitializer: aStackallocInitializer [
-	^ self visitProgram: aStackallocInitializer
+TCSProgramNodeVisitor >> visitStackallocExpression: aStackallocExpression [
+	^ self visitExpression: aStackallocExpression
 ]
 
 { #category : #generated }
@@ -667,6 +671,11 @@ TCSProgramNodeVisitor >> visitThisAccess: aThisAccess [
 ]
 
 { #category : #generated }
+TCSProgramNodeVisitor >> visitThrowExpression: aThrowExpression [
+	^ self visitExpression: aThrowExpression
+]
+
+{ #category : #generated }
 TCSProgramNodeVisitor >> visitThrowStatement: aThrowStatement [
 	^ self visitStatement: aThrowStatement
 ]
@@ -674,6 +683,26 @@ TCSProgramNodeVisitor >> visitThrowStatement: aThrowStatement [
 { #category : #generated }
 TCSProgramNodeVisitor >> visitTryStatement: aTryStatement [
 	^ self visitStatement: aTryStatement
+]
+
+{ #category : #generated }
+TCSProgramNodeVisitor >> visitTupleElement: aTupleElement [
+	^ self visitProgram: aTupleElement
+]
+
+{ #category : #generated }
+TCSProgramNodeVisitor >> visitTupleExpression: aTupleExpression [
+	^ self visitExpression: aTupleExpression
+]
+
+{ #category : #generated }
+TCSProgramNodeVisitor >> visitTupleType: aTupleType [
+	^ self visitType: aTupleType
+]
+
+{ #category : #generated }
+TCSProgramNodeVisitor >> visitTupleTypeElement: aTupleTypeElement [
+	^ self visitProgram: aTupleTypeElement
 ]
 
 { #category : #generated }

@@ -4,7 +4,11 @@ Class {
 	#instVars : [
 		'name',
 		'equalToken',
-		'expression'
+		'refToken',
+		'expression',
+		'type',
+		'declarators',
+		'commaTokens'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -12,6 +16,33 @@ Class {
 { #category : #generated }
 CSLocalVariableDeclaratorNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLocalVariableDeclarator: self
+]
+
+{ #category : #generated }
+CSLocalVariableDeclaratorNode >> commaTokens [
+	^ commaTokens
+]
+
+{ #category : #generated }
+CSLocalVariableDeclaratorNode >> commaTokens: anOrderedCollection [
+	commaTokens := anOrderedCollection
+]
+
+{ #category : #generated }
+CSLocalVariableDeclaratorNode >> compositeNodeVariables [
+	^ #(#declarators)
+]
+
+{ #category : #generated }
+CSLocalVariableDeclaratorNode >> declarators [
+	^ declarators
+]
+
+{ #category : #generated }
+CSLocalVariableDeclaratorNode >> declarators: anOrderedCollection [
+	self setParents: self declarators to: nil.
+	declarators := anOrderedCollection.
+	self setParents: self declarators to: self
 ]
 
 { #category : #generated }
@@ -30,12 +61,22 @@ CSLocalVariableDeclaratorNode >> expression [
 ]
 
 { #category : #generated }
-CSLocalVariableDeclaratorNode >> expression: aCSProgramNode [
-	self expression notNil
-		ifTrue: [ self expression parent: nil ].
-	expression := aCSProgramNode.
-	self expression notNil
-		ifTrue: [ self expression parent: self ]
+CSLocalVariableDeclaratorNode >> expression: anObject [
+	self setParent: self expression to: nil.
+	expression := anObject.
+	self setParent: self expression to: self
+]
+
+{ #category : #generated }
+CSLocalVariableDeclaratorNode >> ignoredCompositeTokenVariables [
+	^ #(#commaTokens)
+]
+
+{ #category : #'generated-initialize-release' }
+CSLocalVariableDeclaratorNode >> initialize [
+	super initialize.
+	declarators := OrderedCollection new: 2.
+	commaTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -44,20 +85,45 @@ CSLocalVariableDeclaratorNode >> name [
 ]
 
 { #category : #generated }
-CSLocalVariableDeclaratorNode >> name: aCSSimpleNameNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
-	name := aCSSimpleNameNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+CSLocalVariableDeclaratorNode >> name: anObject [
+	self setParent: self name to: nil.
+	name := anObject.
+	self setParent: self name to: self
 ]
 
 { #category : #generated }
 CSLocalVariableDeclaratorNode >> nodeVariables [
+	^ #(#type)
+]
+
+{ #category : #generated }
+CSLocalVariableDeclaratorNode >> otherVariables [
 	^ #(#name #expression)
 ]
 
 { #category : #generated }
+CSLocalVariableDeclaratorNode >> refToken [
+	^ refToken
+]
+
+{ #category : #generated }
+CSLocalVariableDeclaratorNode >> refToken: aSmaCCToken [
+	refToken := aSmaCCToken
+]
+
+{ #category : #generated }
 CSLocalVariableDeclaratorNode >> tokenVariables [
-	^ #(#equalToken)
+	^ #(#equalToken #refToken)
+]
+
+{ #category : #generated }
+CSLocalVariableDeclaratorNode >> type [
+	^ type
+]
+
+{ #category : #generated }
+CSLocalVariableDeclaratorNode >> type: aCSTypeNode [
+	self type notNil ifTrue: [ self type parent: nil ].
+	type := aCSTypeNode.
+	self type notNil ifTrue: [ self type parent: self ]
 ]

@@ -2,9 +2,9 @@ Class {
 	#name : #CSNullConditionalMemberAccessNode,
 	#superclass : #CSMemberAccessNode,
 	#instVars : [
-		'baseOperations',
 		'questionMarkToken',
-		'identifierToken'
+		'identifierToken',
+		'accesses'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -15,17 +15,20 @@ CSNullConditionalMemberAccessNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-CSNullConditionalMemberAccessNode >> baseOperations [
-	^ baseOperations
+CSNullConditionalMemberAccessNode >> accesses [
+	^ accesses
 ]
 
 { #category : #generated }
-CSNullConditionalMemberAccessNode >> baseOperations: aCSExpressionNode [
-	self baseOperations notNil
-		ifTrue: [ self baseOperations parent: nil ].
-	baseOperations := aCSExpressionNode.
-	self baseOperations notNil
-		ifTrue: [ self baseOperations parent: self ]
+CSNullConditionalMemberAccessNode >> accesses: anOrderedCollection [
+	self setParents: self accesses to: nil.
+	accesses := anOrderedCollection.
+	self setParents: self accesses to: self
+]
+
+{ #category : #generated }
+CSNullConditionalMemberAccessNode >> compositeNodeVariables [
+	^ #(#accesses)
 ]
 
 { #category : #generated }
@@ -38,9 +41,10 @@ CSNullConditionalMemberAccessNode >> identifierToken: aSmaCCToken [
 	identifierToken := aSmaCCToken
 ]
 
-{ #category : #generated }
-CSNullConditionalMemberAccessNode >> nodeVariables [
-	^ #(#baseOperations #expression #typeArguments)
+{ #category : #'generated-initialize-release' }
+CSNullConditionalMemberAccessNode >> initialize [
+	super initialize.
+	accesses := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -55,5 +59,5 @@ CSNullConditionalMemberAccessNode >> questionMarkToken: aSmaCCToken [
 
 { #category : #generated }
 CSNullConditionalMemberAccessNode >> tokenVariables [
-	^ #(#questionMarkToken #identifierToken #periodToken #identifier)
+	^ #(#questionMarkToken #identifierToken #periodToken #identifier #name)
 ]

@@ -10,8 +10,7 @@ Class {
 		'commas',
 		'rightParenToken',
 		'initializer',
-		'block',
-		'semicolonToken'
+		'body'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -34,17 +33,15 @@ CSConstructorDeclarationNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-CSConstructorDeclarationNode >> block [
-	^ block
+CSConstructorDeclarationNode >> body [
+	^ body
 ]
 
 { #category : #generated }
-CSConstructorDeclarationNode >> block: aCSBlockStatementNode [
-	self block notNil
-		ifTrue: [ self block parent: nil ].
-	block := aCSBlockStatementNode.
-	self block notNil
-		ifTrue: [ self block parent: self ]
+CSConstructorDeclarationNode >> body: aCSMethodBodyNode [
+	self body notNil ifTrue: [ self body parent: nil ].
+	body := aCSMethodBodyNode.
+	self body notNil ifTrue: [ self body parent: self ]
 ]
 
 { #category : #generated }
@@ -75,11 +72,6 @@ CSConstructorDeclarationNode >> identifierToken [
 { #category : #generated }
 CSConstructorDeclarationNode >> identifierToken: aSmaCCToken [
 	identifierToken := aSmaCCToken
-]
-
-{ #category : #generated }
-CSConstructorDeclarationNode >> ignoredTokenVariables [
-	^ #(#semicolonToken)
 ]
 
 { #category : #'generated-initialize-release' }
@@ -127,7 +119,7 @@ CSConstructorDeclarationNode >> modifiers: anOrderedCollection [
 
 { #category : #generated }
 CSConstructorDeclarationNode >> nodeVariables [
-	^ #(#initializer #block)
+	^ #(#initializer #body)
 ]
 
 { #category : #generated }
@@ -150,16 +142,6 @@ CSConstructorDeclarationNode >> rightParenToken [
 { #category : #generated }
 CSConstructorDeclarationNode >> rightParenToken: aSmaCCToken [
 	rightParenToken := aSmaCCToken
-]
-
-{ #category : #generated }
-CSConstructorDeclarationNode >> semicolonToken [
-	^ semicolonToken
-]
-
-{ #category : #generated }
-CSConstructorDeclarationNode >> semicolonToken: aSmaCCToken [
-	semicolonToken := aSmaCCToken
 ]
 
 { #category : #generated }

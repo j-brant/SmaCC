@@ -4,6 +4,8 @@ Class {
 	#instVars : [
 		'type',
 		'declarators',
+		'refToken',
+		'readonlyToken',
 		'commaTokens'
 	],
 	#category : #'SmaCC_CSharp'
@@ -56,6 +58,31 @@ CSLocalVariableDeclarationNode >> initialize [
 { #category : #generated }
 CSLocalVariableDeclarationNode >> nodeVariables [
 	^ #(#type)
+]
+
+{ #category : #generated }
+CSLocalVariableDeclarationNode >> readonlyToken [
+	^ readonlyToken
+]
+
+{ #category : #generated }
+CSLocalVariableDeclarationNode >> readonlyToken: aSmaCCToken [
+	readonlyToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSLocalVariableDeclarationNode >> refToken [
+	^ refToken
+]
+
+{ #category : #generated }
+CSLocalVariableDeclarationNode >> refToken: aSmaCCToken [
+	refToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSLocalVariableDeclarationNode >> tokenVariables [
+	^ #(#refToken #readonlyToken)
 ]
 
 { #category : #generated }

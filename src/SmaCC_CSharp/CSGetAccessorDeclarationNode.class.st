@@ -6,7 +6,10 @@ Class {
 		'modifiers',
 		'getToken',
 		'body',
-		'semicolonToken'
+		'equalGreaterThanToken',
+		'expression',
+		'semicolonToken',
+		'refToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -53,6 +56,28 @@ CSGetAccessorDeclarationNode >> compositeTokenVariables [
 ]
 
 { #category : #generated }
+CSGetAccessorDeclarationNode >> equalGreaterThanToken [
+	^ equalGreaterThanToken
+]
+
+{ #category : #generated }
+CSGetAccessorDeclarationNode >> equalGreaterThanToken: aSmaCCToken [
+	equalGreaterThanToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSGetAccessorDeclarationNode >> expression [
+	^ expression
+]
+
+{ #category : #generated }
+CSGetAccessorDeclarationNode >> expression: aCSExpressionNode [
+	self expression notNil ifTrue: [ self expression parent: nil ].
+	expression := aCSExpressionNode.
+	self expression notNil ifTrue: [ self expression parent: self ]
+]
+
+{ #category : #generated }
 CSGetAccessorDeclarationNode >> getToken [
 	^ getToken
 ]
@@ -86,7 +111,17 @@ CSGetAccessorDeclarationNode >> modifiers: anOrderedCollection [
 
 { #category : #generated }
 CSGetAccessorDeclarationNode >> nodeVariables [
-	^ #(#body)
+	^ #(#body #expression)
+]
+
+{ #category : #generated }
+CSGetAccessorDeclarationNode >> refToken [
+	^ refToken
+]
+
+{ #category : #generated }
+CSGetAccessorDeclarationNode >> refToken: aSmaCCToken [
+	refToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -101,5 +136,5 @@ CSGetAccessorDeclarationNode >> semicolonToken: aSmaCCToken [
 
 { #category : #generated }
 CSGetAccessorDeclarationNode >> tokenVariables [
-	^ #(#getToken)
+	^ #(#getToken #equalGreaterThanToken #refToken)
 ]

@@ -5,7 +5,8 @@ Class {
 		'expression',
 		'periodToken',
 		'identifier',
-		'typeArguments'
+		'typeArguments',
+		'name'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -22,11 +23,9 @@ CSMemberAccessNode >> expression [
 
 { #category : #generated }
 CSMemberAccessNode >> expression: aCSExpressionNode [
-	self expression notNil
-		ifTrue: [ self expression parent: nil ].
+	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
-	self expression notNil
-		ifTrue: [ self expression parent: self ]
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
@@ -37,6 +36,16 @@ CSMemberAccessNode >> identifier [
 { #category : #generated }
 CSMemberAccessNode >> identifier: aSmaCCToken [
 	identifier := aSmaCCToken
+]
+
+{ #category : #generated }
+CSMemberAccessNode >> name [
+	^ name
+]
+
+{ #category : #generated }
+CSMemberAccessNode >> name: aSmaCCToken [
+	name := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -56,7 +65,7 @@ CSMemberAccessNode >> periodToken: aSmaCCToken [
 
 { #category : #generated }
 CSMemberAccessNode >> tokenVariables [
-	^ #(#periodToken #identifier)
+	^ #(#periodToken #identifier #name)
 ]
 
 { #category : #generated }

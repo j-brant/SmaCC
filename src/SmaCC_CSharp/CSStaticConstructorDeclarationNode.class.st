@@ -3,13 +3,14 @@ Class {
 	#superclass : #CSDeclarationNode,
 	#instVars : [
 		'_attributes',
-		'modifiers',
 		'staticToken',
-		'unsafeToken',
+		'modifiers',
 		'identifierToken',
 		'leftParenToken',
 		'rightParenToken',
 		'block',
+		'equalGreaterThanToken',
+		'expression',
 		'semicolonToken'
 	],
 	#category : #'SmaCC_CSharp'
@@ -57,6 +58,28 @@ CSStaticConstructorDeclarationNode >> compositeTokenVariables [
 ]
 
 { #category : #generated }
+CSStaticConstructorDeclarationNode >> equalGreaterThanToken [
+	^ equalGreaterThanToken
+]
+
+{ #category : #generated }
+CSStaticConstructorDeclarationNode >> equalGreaterThanToken: aSmaCCToken [
+	equalGreaterThanToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSStaticConstructorDeclarationNode >> expression [
+	^ expression
+]
+
+{ #category : #generated }
+CSStaticConstructorDeclarationNode >> expression: aCSExpressionNode [
+	self expression notNil ifTrue: [ self expression parent: nil ].
+	expression := aCSExpressionNode.
+	self expression notNil ifTrue: [ self expression parent: self ]
+]
+
+{ #category : #generated }
 CSStaticConstructorDeclarationNode >> identifierToken [
 	^ identifierToken
 ]
@@ -100,7 +123,7 @@ CSStaticConstructorDeclarationNode >> modifiers: anOrderedCollection [
 
 { #category : #generated }
 CSStaticConstructorDeclarationNode >> nodeVariables [
-	^ #(#block)
+	^ #(#block #expression)
 ]
 
 { #category : #generated }
@@ -135,15 +158,5 @@ CSStaticConstructorDeclarationNode >> staticToken: aSmaCCToken [
 
 { #category : #generated }
 CSStaticConstructorDeclarationNode >> tokenVariables [
-	^ #(#staticToken #unsafeToken #identifierToken #leftParenToken #rightParenToken)
-]
-
-{ #category : #generated }
-CSStaticConstructorDeclarationNode >> unsafeToken [
-	^ unsafeToken
-]
-
-{ #category : #generated }
-CSStaticConstructorDeclarationNode >> unsafeToken: aSmaCCToken [
-	unsafeToken := aSmaCCToken
+	^ #(#staticToken #identifierToken #leftParenToken #rightParenToken #equalGreaterThanToken)
 ]

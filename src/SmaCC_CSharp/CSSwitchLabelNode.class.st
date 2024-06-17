@@ -5,6 +5,8 @@ Class {
 		'caseToken',
 		'expression',
 		'colonToken',
+		'whenToken',
+		'whenExpression',
 		'defaultToken'
 	],
 	#category : #'SmaCC_CSharp'
@@ -52,19 +54,39 @@ CSSwitchLabelNode >> expression [
 
 { #category : #generated }
 CSSwitchLabelNode >> expression: aCSExpressionNode [
-	self expression notNil
-		ifTrue: [ self expression parent: nil ].
+	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
-	self expression notNil
-		ifTrue: [ self expression parent: self ]
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
 CSSwitchLabelNode >> nodeVariables [
-	^ #(#expression)
+	^ #(#expression #whenExpression)
 ]
 
 { #category : #generated }
 CSSwitchLabelNode >> tokenVariables [
-	^ #(#caseToken #colonToken #defaultToken)
+	^ #(#caseToken #colonToken #whenToken #defaultToken)
+]
+
+{ #category : #generated }
+CSSwitchLabelNode >> whenExpression [
+	^ whenExpression
+]
+
+{ #category : #generated }
+CSSwitchLabelNode >> whenExpression: aCSExpressionNode [
+	self whenExpression notNil ifTrue: [ self whenExpression parent: nil ].
+	whenExpression := aCSExpressionNode.
+	self whenExpression notNil ifTrue: [ self whenExpression parent: self ]
+]
+
+{ #category : #generated }
+CSSwitchLabelNode >> whenToken [
+	^ whenToken
+]
+
+{ #category : #generated }
+CSSwitchLabelNode >> whenToken: aSmaCCToken [
+	whenToken := aSmaCCToken
 ]

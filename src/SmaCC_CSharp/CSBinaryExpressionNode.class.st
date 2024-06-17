@@ -21,11 +21,9 @@ CSBinaryExpressionNode >> left [
 
 { #category : #generated }
 CSBinaryExpressionNode >> left: aCSExpressionNode [
-	self left notNil
-		ifTrue: [ self left parent: nil ].
+	self left notNil ifTrue: [ self left parent: nil ].
 	left := aCSExpressionNode.
-	self left notNil
-		ifTrue: [ self left parent: self ]
+	self left notNil ifTrue: [ self left parent: self ]
 ]
 
 { #category : #generated }

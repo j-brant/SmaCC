@@ -6,6 +6,8 @@ Class {
 		'modifiers',
 		'setToken',
 		'body',
+		'equalGreaterThanToken',
+		'expression',
 		'semicolonToken'
 	],
 	#category : #'SmaCC_CSharp'
@@ -53,6 +55,28 @@ CSSetAccessorDeclarationNode >> compositeTokenVariables [
 ]
 
 { #category : #generated }
+CSSetAccessorDeclarationNode >> equalGreaterThanToken [
+	^ equalGreaterThanToken
+]
+
+{ #category : #generated }
+CSSetAccessorDeclarationNode >> equalGreaterThanToken: aSmaCCToken [
+	equalGreaterThanToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSSetAccessorDeclarationNode >> expression [
+	^ expression
+]
+
+{ #category : #generated }
+CSSetAccessorDeclarationNode >> expression: aCSExpressionNode [
+	self expression notNil ifTrue: [ self expression parent: nil ].
+	expression := aCSExpressionNode.
+	self expression notNil ifTrue: [ self expression parent: self ]
+]
+
+{ #category : #generated }
 CSSetAccessorDeclarationNode >> ignoredTokenVariables [
 	^ #(#semicolonToken)
 ]
@@ -76,7 +100,7 @@ CSSetAccessorDeclarationNode >> modifiers: anOrderedCollection [
 
 { #category : #generated }
 CSSetAccessorDeclarationNode >> nodeVariables [
-	^ #(#body)
+	^ #(#body #expression)
 ]
 
 { #category : #generated }
@@ -101,5 +125,5 @@ CSSetAccessorDeclarationNode >> setToken: aSmaCCToken [
 
 { #category : #generated }
 CSSetAccessorDeclarationNode >> tokenVariables [
-	^ #(#setToken)
+	^ #(#setToken #equalGreaterThanToken)
 ]

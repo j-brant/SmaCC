@@ -3,11 +3,12 @@ Class {
 	#superclass : #CSProgramNode,
 	#instVars : [
 		'identifierTokens',
-		'lessThanTokens',
+		'lessThanToken',
 		'commas',
-		'gtTokens',
+		'gtToken',
 		'colonColonToken',
-		'periodTokens'
+		'type',
+		'periodToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -39,17 +40,17 @@ CSUnboundTypeNameNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 CSUnboundTypeNameNode >> compositeTokenVariables [
-	^ #(#identifierTokens #lessThanTokens #commas #gtTokens #periodTokens)
+	^ #(#identifierTokens #commas)
 ]
 
 { #category : #generated }
-CSUnboundTypeNameNode >> gtTokens [
-	^ gtTokens
+CSUnboundTypeNameNode >> gtToken [
+	^ gtToken
 ]
 
 { #category : #generated }
-CSUnboundTypeNameNode >> gtTokens: anOrderedCollection [
-	gtTokens := anOrderedCollection
+CSUnboundTypeNameNode >> gtToken: aSmaCCToken [
+	gtToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -66,33 +67,47 @@ CSUnboundTypeNameNode >> identifierTokens: anOrderedCollection [
 CSUnboundTypeNameNode >> initialize [
 	super initialize.
 	identifierTokens := OrderedCollection new: 2.
-	lessThanTokens := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
-	gtTokens := OrderedCollection new: 2.
-	periodTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-CSUnboundTypeNameNode >> lessThanTokens [
-	^ lessThanTokens
+CSUnboundTypeNameNode >> lessThanToken [
+	^ lessThanToken
 ]
 
 { #category : #generated }
-CSUnboundTypeNameNode >> lessThanTokens: anOrderedCollection [
-	lessThanTokens := anOrderedCollection
+CSUnboundTypeNameNode >> lessThanToken: aSmaCCToken [
+	lessThanToken := aSmaCCToken
 ]
 
 { #category : #generated }
-CSUnboundTypeNameNode >> periodTokens [
-	^ periodTokens
+CSUnboundTypeNameNode >> nodeVariables [
+	^ #(#type)
 ]
 
 { #category : #generated }
-CSUnboundTypeNameNode >> periodTokens: anOrderedCollection [
-	periodTokens := anOrderedCollection
+CSUnboundTypeNameNode >> periodToken [
+	^ periodToken
+]
+
+{ #category : #generated }
+CSUnboundTypeNameNode >> periodToken: aSmaCCToken [
+	periodToken := aSmaCCToken
 ]
 
 { #category : #generated }
 CSUnboundTypeNameNode >> tokenVariables [
-	^ #(#colonColonToken)
+	^ #(#lessThanToken #gtToken #colonColonToken #periodToken)
+]
+
+{ #category : #generated }
+CSUnboundTypeNameNode >> type [
+	^ type
+]
+
+{ #category : #generated }
+CSUnboundTypeNameNode >> type: aCSUnboundTypeNameNode [
+	self type notNil ifTrue: [ self type parent: nil ].
+	type := aCSUnboundTypeNameNode.
+	self type notNil ifTrue: [ self type parent: self ]
 ]

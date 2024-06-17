@@ -26,11 +26,9 @@ CSForStatementNode >> condition [
 
 { #category : #generated }
 CSForStatementNode >> condition: aCSExpressionNode [
-	self condition notNil
-		ifTrue: [ self condition parent: nil ].
+	self condition notNil ifTrue: [ self condition parent: nil ].
 	condition := aCSExpressionNode.
-	self condition notNil
-		ifTrue: [ self condition parent: self ]
+	self condition notNil ifTrue: [ self condition parent: self ]
 ]
 
 { #category : #generated }
