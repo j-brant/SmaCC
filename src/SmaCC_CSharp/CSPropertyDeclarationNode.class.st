@@ -14,9 +14,11 @@ Class {
 		'rightBraceToken',
 		'equalToken',
 		'initializer',
+		'semicolon',
 		'equalGreaterThanToken',
 		'expression',
-		'semicolon'
+		'refTokens',
+		'readonlyToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -45,7 +47,7 @@ CSPropertyDeclarationNode >> compositeNodeVariables [
 
 { #category : #generated }
 CSPropertyDeclarationNode >> compositeTokenVariables [
-	^ #(#modifiers)
+	^ #(#modifiers #refTokens)
 ]
 
 { #category : #generated }
@@ -75,11 +77,9 @@ CSPropertyDeclarationNode >> expression [
 
 { #category : #generated }
 CSPropertyDeclarationNode >> expression: aCSExpressionNode [
-	self expression notNil
-		ifTrue: [ self expression parent: nil ].
+	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
-	self expression notNil
-		ifTrue: [ self expression parent: self ]
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
@@ -101,6 +101,7 @@ CSPropertyDeclarationNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
 	modifiers := OrderedCollection new: 2.
+	refTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -177,6 +178,26 @@ CSPropertyDeclarationNode >> periodToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+CSPropertyDeclarationNode >> readonlyToken [
+	^ readonlyToken
+]
+
+{ #category : #generated }
+CSPropertyDeclarationNode >> readonlyToken: aSmaCCToken [
+	readonlyToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSPropertyDeclarationNode >> refTokens [
+	^ refTokens
+]
+
+{ #category : #generated }
+CSPropertyDeclarationNode >> refTokens: anOrderedCollection [
+	refTokens := anOrderedCollection
+]
+
+{ #category : #generated }
 CSPropertyDeclarationNode >> rightBraceToken [
 	^ rightBraceToken
 ]
@@ -212,7 +233,7 @@ CSPropertyDeclarationNode >> setAccessor: aCSSetAccessorDeclarationNode [
 
 { #category : #generated }
 CSPropertyDeclarationNode >> tokenVariables [
-	^ #(#name #periodToken #leftBraceToken #rightBraceToken #equalToken #semicolon #equalGreaterThanToken)
+	^ #(#name #periodToken #leftBraceToken #rightBraceToken #equalToken #semicolon #equalGreaterThanToken #readonlyToken)
 ]
 
 { #category : #generated }

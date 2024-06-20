@@ -143,6 +143,11 @@ CSEnumDeclarationNode >> nodeVariables [
 ]
 
 { #category : #generated }
+CSEnumDeclarationNode >> otherVariables [
+	^ #(#typeToken)
+]
+
+{ #category : #generated }
 CSEnumDeclarationNode >> rightBrace [
 	^ rightBrace
 ]
@@ -164,7 +169,7 @@ CSEnumDeclarationNode >> semicolon: aSmaCCToken [
 
 { #category : #generated }
 CSEnumDeclarationNode >> tokenVariables [
-	^ #(#enumToken #name #colonToken #typeToken #leftBrace #rightBrace #semicolon #equal)
+	^ #(#enumToken #name #colonToken #leftBrace #rightBrace #semicolon #equal)
 ]
 
 { #category : #generated }
@@ -173,8 +178,10 @@ CSEnumDeclarationNode >> typeToken [
 ]
 
 { #category : #generated }
-CSEnumDeclarationNode >> typeToken: aSmaCCToken [
-	typeToken := aSmaCCToken
+CSEnumDeclarationNode >> typeToken: anObject [
+	self setParent: self typeToken to: nil.
+	typeToken := anObject.
+	self setParent: self typeToken to: self
 ]
 
 { #category : #generated }
@@ -184,9 +191,7 @@ CSEnumDeclarationNode >> value [
 
 { #category : #generated }
 CSEnumDeclarationNode >> value: aCSExpressionNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
+	self value notNil ifTrue: [ self value parent: nil ].
 	value := aCSExpressionNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+	self value notNil ifTrue: [ self value parent: self ]
 ]

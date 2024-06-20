@@ -3,6 +3,8 @@ Class {
 	#superclass : #CSProgramNode,
 	#instVars : [
 		'expression',
+		'format',
+		'colon',
 		'commaToken',
 		'constant'
 	],
@@ -12,6 +14,16 @@ Class {
 { #category : #generated }
 CSInterpolationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitInterpolation: self
+]
+
+{ #category : #generated }
+CSInterpolationNode >> colon [
+	^ colon
+]
+
+{ #category : #generated }
+CSInterpolationNode >> colon: aSmaCCToken [
+	colon := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -31,11 +43,9 @@ CSInterpolationNode >> constant [
 
 { #category : #generated }
 CSInterpolationNode >> constant: aCSExpressionNode [
-	self constant notNil
-		ifTrue: [ self constant parent: nil ].
+	self constant notNil ifTrue: [ self constant parent: nil ].
 	constant := aCSExpressionNode.
-	self constant notNil
-		ifTrue: [ self constant parent: self ]
+	self constant notNil ifTrue: [ self constant parent: self ]
 ]
 
 { #category : #generated }
@@ -45,11 +55,21 @@ CSInterpolationNode >> expression [
 
 { #category : #generated }
 CSInterpolationNode >> expression: aCSExpressionNode [
-	self expression notNil
-		ifTrue: [ self expression parent: nil ].
+	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
-	self expression notNil
-		ifTrue: [ self expression parent: self ]
+	self expression notNil ifTrue: [ self expression parent: self ]
+]
+
+{ #category : #generated }
+CSInterpolationNode >> format [
+	^ format
+]
+
+{ #category : #generated }
+CSInterpolationNode >> format: anObject [
+	self setParent: self format to: nil.
+	format := anObject.
+	self setParent: self format to: self
 ]
 
 { #category : #generated }
@@ -60,4 +80,14 @@ CSInterpolationNode >> ignoredTokenVariables [
 { #category : #generated }
 CSInterpolationNode >> nodeVariables [
 	^ #(#expression #constant)
+]
+
+{ #category : #generated }
+CSInterpolationNode >> otherVariables [
+	^ #(#format)
+]
+
+{ #category : #generated }
+CSInterpolationNode >> tokenVariables [
+	^ #(#colon)
 ]

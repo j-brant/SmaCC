@@ -8,8 +8,7 @@ Class {
 		'operatorToken',
 		'operator',
 		'leftParenToken',
-		'types',
-		'arguments',
+		'parameters',
 		'rightParenToken',
 		'commaToken',
 		'implicitToken',
@@ -34,16 +33,6 @@ CSOperatorDeclarationNode >> _attributes: anOrderedCollection [
 { #category : #generated }
 CSOperatorDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitOperatorDeclaration: self
-]
-
-{ #category : #generated }
-CSOperatorDeclarationNode >> arguments [
-	^ arguments
-]
-
-{ #category : #generated }
-CSOperatorDeclarationNode >> arguments: anOrderedCollection [
-	arguments := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -72,12 +61,12 @@ CSOperatorDeclarationNode >> commaToken: aSmaCCToken [
 
 { #category : #generated }
 CSOperatorDeclarationNode >> compositeNodeVariables [
-	^ #(#_attributes #types)
+	^ #(#_attributes #parameters)
 ]
 
 { #category : #generated }
 CSOperatorDeclarationNode >> compositeTokenVariables [
-	^ #(#modifiers #arguments)
+	^ #(#modifiers)
 ]
 
 { #category : #generated }
@@ -110,8 +99,7 @@ CSOperatorDeclarationNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
 	modifiers := OrderedCollection new: 2.
-	types := OrderedCollection new: 2.
-	arguments := OrderedCollection new: 2.
+	parameters := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -160,6 +148,18 @@ CSOperatorDeclarationNode >> operatorToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+CSOperatorDeclarationNode >> parameters [
+	^ parameters
+]
+
+{ #category : #generated }
+CSOperatorDeclarationNode >> parameters: anOrderedCollection [
+	self setParents: self parameters to: nil.
+	parameters := anOrderedCollection.
+	self setParents: self parameters to: self
+]
+
+{ #category : #generated }
 CSOperatorDeclarationNode >> returnType [
 	^ returnType
 ]
@@ -186,16 +186,4 @@ CSOperatorDeclarationNode >> rightParenToken: aSmaCCToken [
 { #category : #generated }
 CSOperatorDeclarationNode >> tokenVariables [
 	^ #(#operatorToken #operator #leftParenToken #rightParenToken #implicitToken #explicitToken)
-]
-
-{ #category : #generated }
-CSOperatorDeclarationNode >> types [
-	^ types
-]
-
-{ #category : #generated }
-CSOperatorDeclarationNode >> types: anOrderedCollection [
-	self setParents: self types to: nil.
-	types := anOrderedCollection.
-	self setParents: self types to: self
 ]

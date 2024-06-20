@@ -12,7 +12,9 @@ Class {
 		'commas',
 		'rightParen',
 		'constraintClauses',
-		'body'
+		'body',
+		'refToken',
+		'readonlyToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -137,6 +139,26 @@ CSInterfaceMethodDeclarationNode >> parameters: anOrderedCollection [
 ]
 
 { #category : #generated }
+CSInterfaceMethodDeclarationNode >> readonlyToken [
+	^ readonlyToken
+]
+
+{ #category : #generated }
+CSInterfaceMethodDeclarationNode >> readonlyToken: aSmaCCToken [
+	readonlyToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSInterfaceMethodDeclarationNode >> refToken [
+	^ refToken
+]
+
+{ #category : #generated }
+CSInterfaceMethodDeclarationNode >> refToken: aSmaCCToken [
+	refToken := aSmaCCToken
+]
+
+{ #category : #generated }
 CSInterfaceMethodDeclarationNode >> rightParen [
 	^ rightParen
 ]
@@ -148,7 +170,7 @@ CSInterfaceMethodDeclarationNode >> rightParen: aSmaCCToken [
 
 { #category : #generated }
 CSInterfaceMethodDeclarationNode >> tokenVariables [
-	^ #(#modifier #name #leftParen #rightParen)
+	^ #(#modifier #name #leftParen #rightParen #refToken #readonlyToken)
 ]
 
 { #category : #generated }

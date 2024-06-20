@@ -18,7 +18,9 @@ Class {
 		'rightBraceToken',
 		'equalGreaterThanToken',
 		'expression',
-		'semicolonToken'
+		'semicolonToken',
+		'refTokens',
+		'readonlyToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -57,7 +59,7 @@ CSIndexerDeclarationNode >> compositeNodeVariables [
 
 { #category : #generated }
 CSIndexerDeclarationNode >> compositeTokenVariables [
-	^ #(#modifiers #commas)
+	^ #(#modifiers #commas #refTokens)
 ]
 
 { #category : #generated }
@@ -77,11 +79,9 @@ CSIndexerDeclarationNode >> expression [
 
 { #category : #generated }
 CSIndexerDeclarationNode >> expression: aCSExpressionNode [
-	self expression notNil
-		ifTrue: [ self expression parent: nil ].
+	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
-	self expression notNil
-		ifTrue: [ self expression parent: self ]
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
@@ -110,6 +110,7 @@ CSIndexerDeclarationNode >> initialize [
 	modifiers := OrderedCollection new: 2.
 	parameters := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
+	refTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -167,6 +168,26 @@ CSIndexerDeclarationNode >> periodToken [
 { #category : #generated }
 CSIndexerDeclarationNode >> periodToken: aSmaCCToken [
 	periodToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSIndexerDeclarationNode >> readonlyToken [
+	^ readonlyToken
+]
+
+{ #category : #generated }
+CSIndexerDeclarationNode >> readonlyToken: aSmaCCToken [
+	readonlyToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSIndexerDeclarationNode >> refTokens [
+	^ refTokens
+]
+
+{ #category : #generated }
+CSIndexerDeclarationNode >> refTokens: anOrderedCollection [
+	refTokens := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -239,7 +260,7 @@ CSIndexerDeclarationNode >> thisToken: aSmaCCToken [
 
 { #category : #generated }
 CSIndexerDeclarationNode >> tokenVariables [
-	^ #(#thisToken #leftBracketToken #rightBracketToken #periodToken #leftBraceToken #rightBraceToken #equalGreaterThanToken)
+	^ #(#thisToken #leftBracketToken #rightBracketToken #periodToken #leftBraceToken #rightBraceToken #equalGreaterThanToken #readonlyToken)
 ]
 
 { #category : #generated }

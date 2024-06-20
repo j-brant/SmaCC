@@ -5,6 +5,7 @@ Class {
 		'baseToken',
 		'periodToken',
 		'identifier',
+		'typeArguments',
 		'leftBracketToken',
 		'expressions',
 		'commaTokens',
@@ -88,6 +89,11 @@ CSBaseAccessNode >> leftBracketToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+CSBaseAccessNode >> nodeVariables [
+	^ #(#typeArguments)
+]
+
+{ #category : #generated }
 CSBaseAccessNode >> periodToken [
 	^ periodToken
 ]
@@ -110,4 +116,16 @@ CSBaseAccessNode >> rightBracketToken: aSmaCCToken [
 { #category : #generated }
 CSBaseAccessNode >> tokenVariables [
 	^ #(#baseToken #periodToken #identifier #leftBracketToken #rightBracketToken)
+]
+
+{ #category : #generated }
+CSBaseAccessNode >> typeArguments [
+	^ typeArguments
+]
+
+{ #category : #generated }
+CSBaseAccessNode >> typeArguments: aCSTypeArgumentListNode [
+	self typeArguments notNil ifTrue: [ self typeArguments parent: nil ].
+	typeArguments := aCSTypeArgumentListNode.
+	self typeArguments notNil ifTrue: [ self typeArguments parent: self ]
 ]

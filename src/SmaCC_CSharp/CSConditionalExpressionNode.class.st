@@ -23,11 +23,9 @@ CSConditionalExpressionNode >> booleanExpression [
 
 { #category : #generated }
 CSConditionalExpressionNode >> booleanExpression: aCSExpressionNode [
-	self booleanExpression notNil
-		ifTrue: [ self booleanExpression parent: nil ].
+	self booleanExpression notNil ifTrue: [ self booleanExpression parent: nil ].
 	booleanExpression := aCSExpressionNode.
-	self booleanExpression notNil
-		ifTrue: [ self booleanExpression parent: self ]
+	self booleanExpression notNil ifTrue: [ self booleanExpression parent: self ]
 ]
 
 { #category : #generated }
@@ -47,11 +45,9 @@ CSConditionalExpressionNode >> falseExpression [
 
 { #category : #generated }
 CSConditionalExpressionNode >> falseExpression: aCSExpressionNode [
-	self falseExpression notNil
-		ifTrue: [ self falseExpression parent: nil ].
+	self falseExpression notNil ifTrue: [ self falseExpression parent: nil ].
 	falseExpression := aCSExpressionNode.
-	self falseExpression notNil
-		ifTrue: [ self falseExpression parent: self ]
+	self falseExpression notNil ifTrue: [ self falseExpression parent: self ]
 ]
 
 { #category : #generated }
@@ -81,9 +77,7 @@ CSConditionalExpressionNode >> trueExpression [
 
 { #category : #generated }
 CSConditionalExpressionNode >> trueExpression: aCSExpressionNode [
-	self trueExpression notNil
-		ifTrue: [ self trueExpression parent: nil ].
+	self trueExpression notNil ifTrue: [ self trueExpression parent: nil ].
 	trueExpression := aCSExpressionNode.
-	self trueExpression notNil
-		ifTrue: [ self trueExpression parent: self ]
+	self trueExpression notNil ifTrue: [ self trueExpression parent: self ]
 ]

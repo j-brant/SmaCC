@@ -5,6 +5,7 @@ Class {
 		'identifier',
 		'colonToken',
 		'expression',
+		'inToken',
 		'refToken',
 		'outToken'
 	],
@@ -33,11 +34,9 @@ CSArgumentNode >> expression [
 
 { #category : #generated }
 CSArgumentNode >> expression: aCSExpressionNode [
-	self expression notNil
-		ifTrue: [ self expression parent: nil ].
+	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
-	self expression notNil
-		ifTrue: [ self expression parent: self ]
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
@@ -48,6 +47,16 @@ CSArgumentNode >> identifier [
 { #category : #generated }
 CSArgumentNode >> identifier: aSmaCCToken [
 	identifier := aSmaCCToken
+]
+
+{ #category : #generated }
+CSArgumentNode >> inToken [
+	^ inToken
+]
+
+{ #category : #generated }
+CSArgumentNode >> inToken: aSmaCCToken [
+	inToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -77,5 +86,5 @@ CSArgumentNode >> refToken: aSmaCCToken [
 
 { #category : #generated }
 CSArgumentNode >> tokenVariables [
-	^ #(#identifier #colonToken #refToken #outToken)
+	^ #(#identifier #colonToken #inToken #refToken #outToken)
 ]

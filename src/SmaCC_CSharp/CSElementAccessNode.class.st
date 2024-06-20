@@ -6,7 +6,11 @@ Class {
 		'leftBracketToken',
 		'expressions',
 		'commaTokens',
-		'rightBracketToken'
+		'rightBracketToken',
+		'leftBracket',
+		'arguments',
+		'rightBracket',
+		'questionMarkToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -17,17 +21,27 @@ CSElementAccessNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
+CSElementAccessNode >> arguments [
+	^ arguments
+]
+
+{ #category : #generated }
+CSElementAccessNode >> arguments: anOrderedCollection [
+	self setParents: self arguments to: nil.
+	arguments := anOrderedCollection.
+	self setParents: self arguments to: self
+]
+
+{ #category : #generated }
 CSElementAccessNode >> baseExpression [
 	^ baseExpression
 ]
 
 { #category : #generated }
 CSElementAccessNode >> baseExpression: aCSExpressionNode [
-	self baseExpression notNil
-		ifTrue: [ self baseExpression parent: nil ].
+	self baseExpression notNil ifTrue: [ self baseExpression parent: nil ].
 	baseExpression := aCSExpressionNode.
-	self baseExpression notNil
-		ifTrue: [ self baseExpression parent: self ]
+	self baseExpression notNil ifTrue: [ self baseExpression parent: self ]
 ]
 
 { #category : #generated }
@@ -42,7 +56,7 @@ CSElementAccessNode >> commaTokens: anOrderedCollection [
 
 { #category : #generated }
 CSElementAccessNode >> compositeNodeVariables [
-	^ #(#expressions)
+	^ #(#expressions #arguments)
 ]
 
 { #category : #generated }
@@ -67,6 +81,17 @@ CSElementAccessNode >> initialize [
 	super initialize.
 	expressions := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
+	arguments := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+CSElementAccessNode >> leftBracket [
+	^ leftBracket
+]
+
+{ #category : #generated }
+CSElementAccessNode >> leftBracket: aSmaCCToken [
+	leftBracket := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -85,6 +110,26 @@ CSElementAccessNode >> nodeVariables [
 ]
 
 { #category : #generated }
+CSElementAccessNode >> questionMarkToken [
+	^ questionMarkToken
+]
+
+{ #category : #generated }
+CSElementAccessNode >> questionMarkToken: aSmaCCToken [
+	questionMarkToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSElementAccessNode >> rightBracket [
+	^ rightBracket
+]
+
+{ #category : #generated }
+CSElementAccessNode >> rightBracket: aSmaCCToken [
+	rightBracket := aSmaCCToken
+]
+
+{ #category : #generated }
 CSElementAccessNode >> rightBracketToken [
 	^ rightBracketToken
 ]
@@ -96,5 +141,5 @@ CSElementAccessNode >> rightBracketToken: aSmaCCToken [
 
 { #category : #generated }
 CSElementAccessNode >> tokenVariables [
-	^ #(#leftBracketToken #rightBracketToken)
+	^ #(#leftBracketToken #rightBracketToken #leftBracket #rightBracket #questionMarkToken)
 ]

@@ -1,46 +1,46 @@
 Class {
-	#name : #CSPostExpressionNode,
+	#name : #CSThrowExpressionNode,
 	#superclass : #CSExpressionNode,
 	#instVars : [
-		'expression',
-		'operator'
+		'throwToken',
+		'expression'
 	],
 	#category : #'SmaCC_CSharp'
 }
 
 { #category : #generated }
-CSPostExpressionNode >> acceptVisitor: aProgramVisitor [
-	^ aProgramVisitor visitPostExpression: self
+CSThrowExpressionNode >> acceptVisitor: aProgramVisitor [
+	^ aProgramVisitor visitThrowExpression: self
 ]
 
 { #category : #generated }
-CSPostExpressionNode >> expression [
+CSThrowExpressionNode >> expression [
 	^ expression
 ]
 
 { #category : #generated }
-CSPostExpressionNode >> expression: aCSExpressionNode [
+CSThrowExpressionNode >> expression: aCSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
-CSPostExpressionNode >> nodeVariables [
+CSThrowExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]
 
 { #category : #generated }
-CSPostExpressionNode >> operator [
-	^ operator
+CSThrowExpressionNode >> throwToken [
+	^ throwToken
 ]
 
 { #category : #generated }
-CSPostExpressionNode >> operator: aSmaCCToken [
-	operator := aSmaCCToken
+CSThrowExpressionNode >> throwToken: aSmaCCToken [
+	throwToken := aSmaCCToken
 ]
 
 { #category : #generated }
-CSPostExpressionNode >> tokenVariables [
-	^ #(#operator)
+CSThrowExpressionNode >> tokenVariables [
+	^ #(#throwToken)
 ]

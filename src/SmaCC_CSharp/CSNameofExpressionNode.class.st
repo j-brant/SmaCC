@@ -31,12 +31,10 @@ CSNameofExpressionNode >> name [
 ]
 
 { #category : #generated }
-CSNameofExpressionNode >> name: aCSExpressionNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
-	name := aCSExpressionNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+CSNameofExpressionNode >> name: aCSNamedEntityNode [
+	self name notNil ifTrue: [ self name parent: nil ].
+	name := aCSNamedEntityNode.
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }

@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'signature',
 		'equalGreaterThanToken',
-		'body'
+		'body',
+		'asyncToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -12,6 +13,16 @@ Class {
 { #category : #generated }
 CSLambdaExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLambdaExpression: self
+]
+
+{ #category : #generated }
+CSLambdaExpressionNode >> asyncToken [
+	^ asyncToken
+]
+
+{ #category : #generated }
+CSLambdaExpressionNode >> asyncToken: aSmaCCToken [
+	asyncToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -59,5 +70,5 @@ CSLambdaExpressionNode >> signature: aCSProgramNode [
 
 { #category : #generated }
 CSLambdaExpressionNode >> tokenVariables [
-	^ #(#equalGreaterThanToken)
+	^ #(#equalGreaterThanToken #asyncToken)
 ]

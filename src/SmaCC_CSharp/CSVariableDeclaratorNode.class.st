@@ -2,6 +2,7 @@ Class {
 	#name : #CSVariableDeclaratorNode,
 	#superclass : #CSProgramNode,
 	#instVars : [
+		'name',
 		'identifierToken',
 		'equalToken',
 		'initializer'
@@ -49,11 +50,21 @@ CSVariableDeclaratorNode >> initializer: aCSProgramNode [
 ]
 
 { #category : #generated }
+CSVariableDeclaratorNode >> name [
+	^ name
+]
+
+{ #category : #generated }
+CSVariableDeclaratorNode >> name: aSmaCCToken [
+	name := aSmaCCToken
+]
+
+{ #category : #generated }
 CSVariableDeclaratorNode >> nodeVariables [
 	^ #(#initializer)
 ]
 
 { #category : #generated }
 CSVariableDeclaratorNode >> tokenVariables [
-	^ #(#identifierToken #equalToken)
+	^ #(#name #identifierToken #equalToken)
 ]

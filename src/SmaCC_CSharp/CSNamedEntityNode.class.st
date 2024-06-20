@@ -3,9 +3,9 @@ Class {
 	#superclass : #CSExpressionNode,
 	#instVars : [
 		'target',
-		'periodToken',
-		'identifierToken',
-		'typeArguments'
+		'periodTokens',
+		'identifierTokens',
+		'typeArgumentses'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -16,28 +16,46 @@ CSNamedEntityNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-CSNamedEntityNode >> identifierToken [
-	^ identifierToken
+CSNamedEntityNode >> compositeNodeVariables [
+	^ #(#typeArgumentses)
 ]
 
 { #category : #generated }
-CSNamedEntityNode >> identifierToken: aSmaCCToken [
-	identifierToken := aSmaCCToken
+CSNamedEntityNode >> compositeTokenVariables [
+	^ #(#periodTokens #identifierTokens)
+]
+
+{ #category : #generated }
+CSNamedEntityNode >> identifierTokens [
+	^ identifierTokens
+]
+
+{ #category : #generated }
+CSNamedEntityNode >> identifierTokens: anOrderedCollection [
+	identifierTokens := anOrderedCollection
+]
+
+{ #category : #'generated-initialize-release' }
+CSNamedEntityNode >> initialize [
+	super initialize.
+	periodTokens := OrderedCollection new: 2.
+	identifierTokens := OrderedCollection new: 2.
+	typeArgumentses := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
 CSNamedEntityNode >> nodeVariables [
-	^ #(#target #typeArguments)
+	^ #(#target)
 ]
 
 { #category : #generated }
-CSNamedEntityNode >> periodToken [
-	^ periodToken
+CSNamedEntityNode >> periodTokens [
+	^ periodTokens
 ]
 
 { #category : #generated }
-CSNamedEntityNode >> periodToken: aSmaCCToken [
-	periodToken := aSmaCCToken
+CSNamedEntityNode >> periodTokens: anOrderedCollection [
+	periodTokens := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -55,20 +73,13 @@ CSNamedEntityNode >> target: aCSExpressionNode [
 ]
 
 { #category : #generated }
-CSNamedEntityNode >> tokenVariables [
-	^ #(#periodToken #identifierToken)
+CSNamedEntityNode >> typeArgumentses [
+	^ typeArgumentses
 ]
 
 { #category : #generated }
-CSNamedEntityNode >> typeArguments [
-	^ typeArguments
-]
-
-{ #category : #generated }
-CSNamedEntityNode >> typeArguments: aCSTypeArgumentListNode [
-	self typeArguments notNil
-		ifTrue: [ self typeArguments parent: nil ].
-	typeArguments := aCSTypeArgumentListNode.
-	self typeArguments notNil
-		ifTrue: [ self typeArguments parent: self ]
+CSNamedEntityNode >> typeArgumentses: anOrderedCollection [
+	self setParents: self typeArgumentses to: nil.
+	typeArgumentses := anOrderedCollection.
+	self setParents: self typeArgumentses to: self
 ]

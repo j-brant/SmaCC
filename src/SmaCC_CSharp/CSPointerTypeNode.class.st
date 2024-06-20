@@ -3,7 +3,7 @@ Class {
 	#superclass : #CSTypeNode,
 	#instVars : [
 		'type',
-		'timesToken'
+		'timesTokens'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -14,23 +14,29 @@ CSPointerTypeNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
+CSPointerTypeNode >> compositeTokenVariables [
+	^ #(#timesTokens)
+]
+
+{ #category : #'generated-initialize-release' }
+CSPointerTypeNode >> initialize [
+	super initialize.
+	timesTokens := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
 CSPointerTypeNode >> nodeVariables [
 	^ #(#type)
 ]
 
 { #category : #generated }
-CSPointerTypeNode >> timesToken [
-	^ timesToken
+CSPointerTypeNode >> timesTokens [
+	^ timesTokens
 ]
 
 { #category : #generated }
-CSPointerTypeNode >> timesToken: aSmaCCToken [
-	timesToken := aSmaCCToken
-]
-
-{ #category : #generated }
-CSPointerTypeNode >> tokenVariables [
-	^ #(#timesToken)
+CSPointerTypeNode >> timesTokens: anOrderedCollection [
+	timesTokens := anOrderedCollection
 ]
 
 { #category : #generated }

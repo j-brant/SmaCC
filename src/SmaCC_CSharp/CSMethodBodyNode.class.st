@@ -5,7 +5,9 @@ Class {
 		'block',
 		'equalGreaterThanToken',
 		'expression',
-		'semicolonToken'
+		'semicolonToken',
+		'refToken',
+		'semicolon'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -46,11 +48,9 @@ CSMethodBodyNode >> expression [
 
 { #category : #generated }
 CSMethodBodyNode >> expression: aCSExpressionNode [
-	self expression notNil
-		ifTrue: [ self expression parent: nil ].
+	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
-	self expression notNil
-		ifTrue: [ self expression parent: self ]
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
@@ -61,6 +61,26 @@ CSMethodBodyNode >> ignoredTokenVariables [
 { #category : #generated }
 CSMethodBodyNode >> nodeVariables [
 	^ #(#block #expression)
+]
+
+{ #category : #generated }
+CSMethodBodyNode >> refToken [
+	^ refToken
+]
+
+{ #category : #generated }
+CSMethodBodyNode >> refToken: aSmaCCToken [
+	refToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSMethodBodyNode >> semicolon [
+	^ semicolon
+]
+
+{ #category : #generated }
+CSMethodBodyNode >> semicolon: aSmaCCToken [
+	semicolon := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -75,5 +95,5 @@ CSMethodBodyNode >> semicolonToken: aSmaCCToken [
 
 { #category : #generated }
 CSMethodBodyNode >> tokenVariables [
-	^ #(#equalGreaterThanToken)
+	^ #(#equalGreaterThanToken #refToken #semicolon)
 ]
