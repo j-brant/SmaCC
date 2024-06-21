@@ -2,7 +2,10 @@ Class {
 	#name : #CSLambdaExpressionNode,
 	#superclass : #CSExpressionNode,
 	#instVars : [
-		'signature',
+		'leftParenToken',
+		'parameters',
+		'commaTokens',
+		'rightParenToken',
 		'equalGreaterThanToken',
 		'body',
 		'asyncToken'
@@ -40,6 +43,21 @@ CSLambdaExpressionNode >> body: aCSProgramNode [
 ]
 
 { #category : #generated }
+CSLambdaExpressionNode >> commaTokens [
+	^ commaTokens
+]
+
+{ #category : #generated }
+CSLambdaExpressionNode >> commaTokens: anOrderedCollection [
+	commaTokens := anOrderedCollection
+]
+
+{ #category : #generated }
+CSLambdaExpressionNode >> compositeNodeVariables [
+	^ #(#parameters)
+]
+
+{ #category : #generated }
 CSLambdaExpressionNode >> equalGreaterThanToken [
 	^ equalGreaterThanToken
 ]
@@ -50,25 +68,55 @@ CSLambdaExpressionNode >> equalGreaterThanToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+CSLambdaExpressionNode >> ignoredCompositeTokenVariables [
+	^ #(#commaTokens #_leftParens #_rightParens)
+]
+
+{ #category : #'generated-initialize-release' }
+CSLambdaExpressionNode >> initialize [
+	super initialize.
+	parameters := OrderedCollection new: 2.
+	commaTokens := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+CSLambdaExpressionNode >> leftParenToken [
+	^ leftParenToken
+]
+
+{ #category : #generated }
+CSLambdaExpressionNode >> leftParenToken: aSmaCCToken [
+	leftParenToken := aSmaCCToken
+]
+
+{ #category : #generated }
 CSLambdaExpressionNode >> nodeVariables [
-	^ #(#signature #body)
+	^ #(#body)
 ]
 
 { #category : #generated }
-CSLambdaExpressionNode >> signature [
-	^ signature
+CSLambdaExpressionNode >> parameters [
+	^ parameters
 ]
 
 { #category : #generated }
-CSLambdaExpressionNode >> signature: aCSProgramNode [
-	self signature notNil
-		ifTrue: [ self signature parent: nil ].
-	signature := aCSProgramNode.
-	self signature notNil
-		ifTrue: [ self signature parent: self ]
+CSLambdaExpressionNode >> parameters: anOrderedCollection [
+	self setParents: self parameters to: nil.
+	parameters := anOrderedCollection.
+	self setParents: self parameters to: self
+]
+
+{ #category : #generated }
+CSLambdaExpressionNode >> rightParenToken [
+	^ rightParenToken
+]
+
+{ #category : #generated }
+CSLambdaExpressionNode >> rightParenToken: aSmaCCToken [
+	rightParenToken := aSmaCCToken
 ]
 
 { #category : #generated }
 CSLambdaExpressionNode >> tokenVariables [
-	^ #(#equalGreaterThanToken #asyncToken)
+	^ #(#leftParenToken #rightParenToken #equalGreaterThanToken #asyncToken)
 ]

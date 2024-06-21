@@ -85,10 +85,8 @@ CSLocalVariableDeclaratorNode >> name [
 ]
 
 { #category : #generated }
-CSLocalVariableDeclaratorNode >> name: anObject [
-	self setParent: self name to: nil.
-	name := anObject.
-	self setParent: self name to: self
+CSLocalVariableDeclaratorNode >> name: aSmaCCToken [
+	name := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -98,7 +96,7 @@ CSLocalVariableDeclaratorNode >> nodeVariables [
 
 { #category : #generated }
 CSLocalVariableDeclaratorNode >> otherVariables [
-	^ #(#name #expression)
+	^ #(#expression)
 ]
 
 { #category : #generated }
@@ -113,7 +111,7 @@ CSLocalVariableDeclaratorNode >> refToken: aSmaCCToken [
 
 { #category : #generated }
 CSLocalVariableDeclaratorNode >> tokenVariables [
-	^ #(#equalToken #refToken)
+	^ #(#name #equalToken #refToken)
 ]
 
 { #category : #generated }

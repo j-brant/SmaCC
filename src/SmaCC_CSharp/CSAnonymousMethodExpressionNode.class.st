@@ -51,7 +51,12 @@ CSAnonymousMethodExpressionNode >> delegateToken: aSmaCCToken [
 
 { #category : #generated }
 CSAnonymousMethodExpressionNode >> nodeVariables [
-	^ #(#signature #block)
+	^ #(#block)
+]
+
+{ #category : #generated }
+CSAnonymousMethodExpressionNode >> otherVariables [
+	^ #(#signature)
 ]
 
 { #category : #generated }
@@ -60,12 +65,10 @@ CSAnonymousMethodExpressionNode >> signature [
 ]
 
 { #category : #generated }
-CSAnonymousMethodExpressionNode >> signature: aCSExplicitAnonymousFunctionSignatureNode [
-	self signature notNil
-		ifTrue: [ self signature parent: nil ].
-	signature := aCSExplicitAnonymousFunctionSignatureNode.
-	self signature notNil
-		ifTrue: [ self signature parent: self ]
+CSAnonymousMethodExpressionNode >> signature: anOrderedCollection [
+	self setParent: self signature to: nil.
+	signature := anOrderedCollection.
+	self setParent: self signature to: self
 ]
 
 { #category : #generated }
