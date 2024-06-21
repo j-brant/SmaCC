@@ -251,11 +251,6 @@ TCSProgramNodeVisitor >> visitExceptionFilter: anExceptionFilter [
 ]
 
 { #category : #generated }
-TCSProgramNodeVisitor >> visitExplicitAnonymousFunctionSignature: anExplicitAnonymousFunctionSignature [
-	^ self visitProgram: anExplicitAnonymousFunctionSignature
-]
-
-{ #category : #generated }
 TCSProgramNodeVisitor >> visitExpression: anExpression [
 	^ self visitProgram: anExpression
 ]
@@ -336,11 +331,6 @@ TCSProgramNodeVisitor >> visitIfStatement: anIfStatement [
 ]
 
 { #category : #generated }
-TCSProgramNodeVisitor >> visitImplicitAnonymousFunctionSignature: anImplicitAnonymousFunctionSignature [
-	^ self visitProgram: anImplicitAnonymousFunctionSignature
-]
-
-{ #category : #generated }
 TCSProgramNodeVisitor >> visitIndexerDeclaration: anIndexerDeclaration [
 	^ self visitDeclaration: anIndexerDeclaration
 ]
@@ -361,23 +351,8 @@ TCSProgramNodeVisitor >> visitInterfaceEventDeclaration: anInterfaceEventDeclara
 ]
 
 { #category : #generated }
-TCSProgramNodeVisitor >> visitInterfaceIndexerDeclaration: anInterfaceIndexerDeclaration [
-	^ self visitDeclaration: anInterfaceIndexerDeclaration
-]
-
-{ #category : #generated }
 TCSProgramNodeVisitor >> visitInterfaceMethodDeclaration: anInterfaceMethodDeclaration [
 	^ self visitDeclaration: anInterfaceMethodDeclaration
-]
-
-{ #category : #generated }
-TCSProgramNodeVisitor >> visitInterfacePropertyAccessor: anInterfacePropertyAccessor [
-	^ self visitProgram: anInterfacePropertyAccessor
-]
-
-{ #category : #generated }
-TCSProgramNodeVisitor >> visitInterfacePropertyDeclaration: anInterfacePropertyDeclaration [
-	^ self visitDeclaration: anInterfacePropertyDeclaration
 ]
 
 { #category : #generated }
@@ -518,11 +493,6 @@ TCSProgramNodeVisitor >> visitObjectInitializer: anObjectInitializer [
 { #category : #generated }
 TCSProgramNodeVisitor >> visitOperatorDeclaration: anOperatorDeclaration [
 	^ self visitDeclaration: anOperatorDeclaration
-]
-
-{ #category : #generated }
-TCSProgramNodeVisitor >> visitPointerElementAccess: aPointerElementAccess [
-	^ self visitExpression: aPointerElementAccess
 ]
 
 { #category : #generated }

@@ -25,12 +25,12 @@ CSharpScanner >> IdentifierId [
 
 { #category : #generated }
 CSharpScanner >> emptySymbolTokenId [
-	^ 690
+	^ 638
 ]
 
 { #category : #generated }
 CSharpScanner >> errorTokenId [
-	^ 691
+	^ 639
 ]
 
 { #category : #generated }

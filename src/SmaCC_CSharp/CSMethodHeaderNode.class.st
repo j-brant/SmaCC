@@ -229,7 +229,7 @@ CSMethodHeaderNode >> rightParenToken: aSmaCCToken [
 
 { #category : #generated }
 CSMethodHeaderNode >> tokenVariables [
-	^ #(#name #leftParen #rightParen #refToken #readonlyToken #periodToken #leftParenToken #rightParenToken #partialToken)
+	^ #(#refToken #readonlyToken #name #leftParen #rightParen #periodToken #leftParenToken #rightParenToken #partialToken)
 ]
 
 { #category : #generated }

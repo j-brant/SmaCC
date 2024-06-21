@@ -55,8 +55,8 @@ CSStackallocExpressionNode >> ignoredCompositeTokenVariables [
 { #category : #'generated-initialize-release' }
 CSStackallocExpressionNode >> initialize [
 	super initialize.
-	commaTokens := OrderedCollection new: 2.
 	initializers := OrderedCollection new: 2.
+	commaTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
