@@ -10,7 +10,7 @@ Class {
 { #category : #'generated-initialization' }
 CSharpScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
-	#(#(153 'abstract' #(41 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'add' #(42 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'alias' #(43 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'as' #(44 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'ascending' #(45 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'async' #(46 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'await' #(47 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'base' #(48 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'bool' #(49 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'break' #(50 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'by' #(51 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'byte' #(52 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'case' #(53 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'catch' #(54 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'char' #(55 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'checked' #(56 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'class' #(57 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'const' #(58 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'continue' #(59 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'decimal' #(60 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'default' #(61 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'delegate' #(62 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'descending' #(63 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'do' #(64 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'double' #(65 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'dynamic' #(66 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'else' #(67 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'enum' #(68 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'equals' #(69 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'event' #(70 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'explicit' #(71 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'extern' #(72 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'false' #(73 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'finally' #(74 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'fixed' #(75 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'float' #(76 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'for' #(77 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'foreach' #(78 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'from' #(79 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'get' #(80 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'goto' #(81 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'group' #(82 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'if' #(83 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'implicit' #(84 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'in' #(85 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'int' #(86 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'interface' #(87 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'internal' #(88 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'into' #(89 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'is' #(90 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'join' #(91 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'let' #(92 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'lock' #(93 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'long' #(94 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'nameof' #(95 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'namespace' #(96 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'new' #(97 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'null' #(166 #(#default))) #(153 'object' #(98 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'on' #(99 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'operator' #(100 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'orderby' #(101 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'out' #(102 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'override' #(103 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'params' #(104 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'partial' #(105 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'private' #(106 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'protected' #(107 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'public' #(108 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'readonly' #(109 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'ref' #(110 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'remove' #(111 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'return' #(112 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'sbyte' #(113 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'sealed' #(114 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'select' #(115 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'set' #(116 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'short' #(117 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'sizeof' #(118 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'stackalloc' #(119 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'static' #(120 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'string' #(121 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'struct' #(122 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'switch' #(123 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'this' #(124 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'throw' #(125 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'true' #(126 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'try' #(127 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'typeof' #(128 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'uint' #(129 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'ulong' #(130 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'unchecked' #(131 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'unmanaged' #(132 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'unsafe' #(133 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'ushort' #(134 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'using' #(135 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'var' #(136 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'virtual' #(137 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'void' #(138 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'volatile' #(139 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'when' #(140 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'where' #(141 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'while' #(142 #(#default #interpolatedString #interpolatedVerbatimString))) #(153 'yield' #(143 #(#default #interpolatedString #interpolatedVerbatimString))))
+	#(#(158 'abstract' #(41 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'add' #(42 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'alias' #(43 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'as' #(44 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'ascending' #(45 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'async' #(46 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'await' #(47 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'base' #(48 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'bool' #(49 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'break' #(50 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'by' #(51 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'byte' #(52 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'case' #(53 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'catch' #(54 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'char' #(55 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'checked' #(56 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'class' #(57 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'const' #(58 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'continue' #(59 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'decimal' #(60 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'default' #(61 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'delegate' #(62 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'descending' #(63 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'do' #(64 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'double' #(65 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'dynamic' #(66 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'else' #(67 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'enum' #(68 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'equals' #(69 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'event' #(70 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'explicit' #(71 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'extern' #(72 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'false' #(73 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'field' #(74 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'finally' #(75 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'fixed' #(76 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'float' #(77 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'for' #(78 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'foreach' #(79 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'from' #(80 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'get' #(81 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'goto' #(82 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'group' #(83 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'if' #(84 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'implicit' #(85 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'in' #(86 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'int' #(87 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'interface' #(88 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'internal' #(89 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'into' #(90 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'is' #(91 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'join' #(92 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'let' #(93 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'lock' #(94 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'long' #(95 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'method' #(96 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'nameof' #(97 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'namespace' #(98 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'new' #(99 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'null' #(171 #(#default))) #(158 'object' #(100 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'on' #(101 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'operator' #(102 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'orderby' #(103 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'out' #(104 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'override' #(105 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'param' #(106 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'params' #(107 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'partial' #(108 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'private' #(109 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'property' #(110 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'protected' #(111 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'public' #(112 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'readonly' #(113 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'ref' #(114 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'remove' #(115 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'return' #(116 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'sbyte' #(117 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'sealed' #(118 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'select' #(119 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'set' #(120 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'short' #(121 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'sizeof' #(122 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'stackalloc' #(123 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'static' #(124 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'string' #(125 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'struct' #(126 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'switch' #(127 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'this' #(128 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'throw' #(129 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'true' #(130 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'try' #(131 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'type' #(132 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'typeof' #(133 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'uint' #(134 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'ulong' #(135 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'unchecked' #(136 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'unmanaged' #(137 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'unsafe' #(138 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'ushort' #(139 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'using' #(140 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'var' #(141 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'virtual' #(142 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'void' #(143 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'volatile' #(144 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'when' #(145 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'where' #(146 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'while' #(147 #(#default #interpolatedString #interpolatedVerbatimString))) #(158 'yield' #(148 #(#default #interpolatedString #interpolatedVerbatimString))))
 		do: [ :each | 
 			(keywordMap at: each first ifAbsentPut: [ Dictionary new ])
 				at: (each at: 2)
@@ -20,27 +20,27 @@ CSharpScanner class >> initializeKeywordMap [
 
 { #category : #generated }
 CSharpScanner >> IdentifierId [
-	^ 153
+	^ 158
 ]
 
 { #category : #generated }
 CSharpScanner >> emptySymbolTokenId [
-	^ 685
+	^ 690
 ]
 
 { #category : #generated }
 CSharpScanner >> errorTokenId [
-	^ 686
+	^ 691
 ]
 
 { #category : #generated }
 CSharpScanner >> gtId [
-	^ 149
+	^ 154
 ]
 
 { #category : #generated }
 CSharpScanner >> gtgtId [
-	^ 150
+	^ 155
 ]
 
 { #category : #'initialize-release' }
@@ -62,7 +62,7 @@ CSharpScanner >> preprocessorDirectives [
 
 { #category : #generated }
 CSharpScanner >> rightBraceId [
-	^ 151
+	^ 156
 ]
 
 { #category : #generated }
@@ -93,7 +93,7 @@ CSharpScanner >> scan11 [
 { #category : #generated }
 CSharpScanner >> scan12 [
 	self step.
-	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(156) ].
+	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(161) ].
 	^ self reportLastMatch
 ]
 
@@ -148,7 +148,7 @@ CSharpScanner >> scan16 [
 
 { #category : #generated }
 CSharpScanner >> scan17 [
-	[ self recordMatch: #(155).
+	[ self recordMatch: #(160).
 	self step.
 	currentCharacter == $_
 		ifTrue: [ [ self step.
@@ -160,7 +160,7 @@ CSharpScanner >> scan17 [
 	((currentCharacter between: $D and: $F)
 		or: [ currentCharacter == $M
 				or: [ (currentCharacter between: $d and: $f) or: [ currentCharacter == $m ] ] ])
-		ifTrue: [ ^ self recordAndReportMatch: #(155) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(160) ].
 	^ self reportLastMatch
 ]
 
@@ -174,7 +174,7 @@ CSharpScanner >> scan18 [
 
 { #category : #generated }
 CSharpScanner >> scan19 [
-	[ self recordMatch: #(155).
+	[ self recordMatch: #(160).
 	self step.
 	currentCharacter == $_
 		ifTrue: [ [ self step.
@@ -183,13 +183,13 @@ CSharpScanner >> scan19 [
 			^ self reportLastMatch ].
 	currentCharacter isDigit ] whileTrue.
 	('DFMdfm' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(155) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(160) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 CSharpScanner >> scan1X1 [
-	self recordMatch: #(154).
+	self recordMatch: #(159).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan21 ].
 	^ self scan1X1X1
@@ -199,10 +199,10 @@ CSharpScanner >> scan1X1 [
 CSharpScanner >> scan1X10 [
 	currentCharacter == $^ ifTrue: [ ^ self scan38 ].
 	currentCharacter == $` ifTrue: [ ^ self scan39 ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(144) ].
+	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(149) ].
 	currentCharacter == $| ifTrue: [ ^ self scan40 ].
-	currentCharacter == $} ifTrue: [ ^ self recordAndReportMatch: #(151) ].
-	currentCharacter == $~ ifTrue: [ ^ self recordAndReportMatch: #(148) ].
+	currentCharacter == $} ifTrue: [ ^ self recordAndReportMatch: #(156) ].
+	currentCharacter == $~ ifTrue: [ ^ self recordAndReportMatch: #(153) ].
 	currentCharacter isDigit ifTrue: [ ^ self scan22 ].
 	(currentCharacter isSeparator
 		or: [ currentCharacter == Character pageUp
@@ -259,7 +259,7 @@ CSharpScanner >> scan1X1X1 [
 	((currentCharacter between: $D and: $F)
 		or: [ currentCharacter == $M
 				or: [ (currentCharacter between: $d and: $f) or: [ currentCharacter == $m ] ] ])
-		ifTrue: [ ^ self recordAndReportMatch: #(155) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(160) ].
 	^ self reportLastMatch
 ]
 
@@ -302,17 +302,17 @@ CSharpScanner >> scan1X2X1 [
 				or: [ (currentCharacter between: $A and: $F)
 						or: [ currentCharacter between: $a and: $f ] ])
 				ifTrue: [ self step.
-					currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(156) ].
+					currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(161) ].
 					(currentCharacter isDigit
 						or: [ (currentCharacter between: $A and: $F)
 								or: [ currentCharacter between: $a and: $f ] ])
 						ifTrue: [ self step.
-							currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(156) ].
+							currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(161) ].
 							(currentCharacter isDigit
 								or: [ (currentCharacter between: $A and: $F)
 										or: [ currentCharacter between: $a and: $f ] ])
 								ifTrue: [ self step.
-									currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(156) ].
+									currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(161) ].
 									(currentCharacter isDigit
 										or: [ (currentCharacter between: $A and: $F)
 												or: [ currentCharacter between: $a and: $f ] ])
@@ -332,7 +332,7 @@ CSharpScanner >> scan1X3 [
 	self step.
 	currentCharacter == $* ifTrue: [ ^ self scan20 ].
 	currentCharacter == $/
-		ifTrue: [ [ self recordMatch: #(152).
+		ifTrue: [ [ self recordMatch: #(157).
 			self step.
 			currentCharacter <= Character tab
 				or: [ (currentCharacter between: Character pageUp and: Character newPage)
@@ -355,7 +355,7 @@ CSharpScanner >> scan1X4 [
 
 { #category : #generated }
 CSharpScanner >> scan1X5 [
-	[ self recordMatch: #(168).
+	[ self recordMatch: #(173).
 	self step.
 	currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
@@ -365,7 +365,7 @@ CSharpScanner >> scan1X5 [
 
 { #category : #generated }
 CSharpScanner >> scan1X6 [
-	[ self recordMatch: #(167).
+	[ self recordMatch: #(172).
 	self step.
 	currentCharacter isSeparator
 		or: [ currentCharacter == Character pageUp
@@ -375,11 +375,11 @@ CSharpScanner >> scan1X6 [
 
 { #category : #generated }
 CSharpScanner >> scan1X7 [
-	self recordMatch: #(149).
+	self recordMatch: #(154).
 	self step.
 	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(33) ].
 	currentCharacter == $>
-		ifTrue: [ self recordMatch: #(150).
+		ifTrue: [ self recordMatch: #(155).
 			self step.
 			currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(34) ] ].
 	^ self reportLastMatch
@@ -417,7 +417,7 @@ CSharpScanner >> scan20 [
 	currentCharacter == $*
 		ifTrue: [ [ self step.
 			currentCharacter == $* ] whileTrue.
-			currentCharacter == $/ ifTrue: [ ^ self recordAndReportMatch: #(152) ].
+			currentCharacter == $/ ifTrue: [ ^ self recordAndReportMatch: #(157) ].
 			^ self scan20 ].
 	true ] whileTrue
 ]
@@ -431,7 +431,7 @@ CSharpScanner >> scan21 [
 
 { #category : #generated }
 CSharpScanner >> scan22 [
-	[ self recordMatch: #(154).
+	[ self recordMatch: #(159).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan21 ].
 	currentCharacter == $_ ifTrue: [ ^ self scan25 ].
@@ -442,25 +442,25 @@ CSharpScanner >> scan22 [
 	((currentCharacter between: $D and: $F)
 		or: [ currentCharacter == $M
 				or: [ (currentCharacter between: $d and: $f) or: [ currentCharacter == $m ] ] ])
-		ifTrue: [ ^ self recordAndReportMatch: #(155) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(160) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 CSharpScanner >> scan23 [
-	self recordMatch: #(154).
+	self recordMatch: #(159).
 	self step.
 	('Uu' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(154) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(159) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 CSharpScanner >> scan24 [
-	self recordMatch: #(154).
+	self recordMatch: #(159).
 	self step.
 	('Ll' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(154) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(159) ].
 	^ self reportLastMatch
 ]
 
@@ -477,7 +477,7 @@ CSharpScanner >> scan26 [
 	[ self step.
 	currentCharacter == $_ ] whileTrue.
 	(currentCharacter between: $0 and: $1)
-		ifTrue: [ [ self recordMatch: #(154).
+		ifTrue: [ [ self recordMatch: #(159).
 			self step.
 			currentCharacter == $_ ifTrue: [ ^ self scan26 ].
 			currentCharacter between: $0 and: $1 ] whileTrue.
@@ -493,7 +493,7 @@ CSharpScanner >> scan27 [
 	(currentCharacter isDigit
 		or: [ (currentCharacter between: $A and: $F)
 				or: [ currentCharacter between: $a and: $f ] ])
-		ifTrue: [ [ self recordMatch: #(154).
+		ifTrue: [ [ self recordMatch: #(159).
 			self step.
 			currentCharacter == $_ ifTrue: [ ^ self scan27 ].
 			('Ll' includes: currentCharacter) ifTrue: [ ^ self scan23 ].
@@ -528,7 +528,7 @@ CSharpScanner >> scan29 [
 { #category : #generated }
 CSharpScanner >> scan3 [
 	[ self step.
-	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(165) ].
+	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(170) ].
 	currentCharacter == $\ ifTrue: [ ^ self scan3X1 ].
 	currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
@@ -558,7 +558,7 @@ CSharpScanner >> scan31 [
 CSharpScanner >> scan32 [
 	[ self step.
 	currentCharacter == $"
-		ifTrue: [ self recordMatch: #(165).
+		ifTrue: [ self recordMatch: #(170).
 			self step.
 			currentCharacter == $" ifTrue: [ ^ self scan32 ].
 			^ self reportLastMatch ].
@@ -577,7 +577,7 @@ CSharpScanner >> scan34 [
 	[ self step.
 	currentCharacter == $" ifTrue: [ ^ self scan33 ].
 	currentCharacter == ${
-		ifTrue: [ self recordMatch: #(162).
+		ifTrue: [ self recordMatch: #(167).
 			self step.
 			currentCharacter == ${ ifTrue: [ ^ self scan34 ].
 			^ self reportLastMatch ].
@@ -586,7 +586,7 @@ CSharpScanner >> scan34 [
 
 { #category : #generated }
 CSharpScanner >> scan35 [
-	[ self recordMatch: #(153).
+	[ self recordMatch: #(158).
 	self step.
 	currentCharacter == $\ ifTrue: [ ^ self scan36 ].
 	currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue.
@@ -653,7 +653,7 @@ CSharpScanner >> scan38 [
 CSharpScanner >> scan39 [
 	[ self step.
 	currentCharacter == $`
-		ifTrue: [ self recordMatch: #(169).
+		ifTrue: [ self recordMatch: #(174).
 			self step.
 			currentCharacter == $` ifTrue: [ ^ self scan39 ].
 			^ self reportLastMatch ].
@@ -710,10 +710,10 @@ CSharpScanner >> scan4 [
 
 { #category : #generated }
 CSharpScanner >> scan40 [
-	self recordMatch: #(145).
+	self recordMatch: #(150).
 	self step.
-	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(146) ].
-	currentCharacter == $| ifTrue: [ ^ self recordAndReportMatch: #(147) ].
+	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(151) ].
+	currentCharacter == $| ifTrue: [ ^ self recordAndReportMatch: #(152) ].
 	^ self reportLastMatch
 ]
 
@@ -747,10 +747,10 @@ CSharpScanner >> scan43 [
 { #category : #generated }
 CSharpScanner >> scan44 [
 	[ self step.
-	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(159) ].
+	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(164) ].
 	currentCharacter == $\ ifTrue: [ ^ self scan44X1 ].
 	currentCharacter == ${
-		ifTrue: [ self recordMatch: #(160).
+		ifTrue: [ self recordMatch: #(165).
 			self step.
 			currentCharacter == ${ ifTrue: [ ^ self scan44 ].
 			^ self reportLastMatch ].
@@ -822,12 +822,12 @@ CSharpScanner >> scan46 [
 CSharpScanner >> scan47 [
 	[ self step.
 	currentCharacter == $"
-		ifTrue: [ self recordMatch: #(163).
+		ifTrue: [ self recordMatch: #(168).
 			self step.
 			currentCharacter == $" ifTrue: [ ^ self scan47 ].
 			^ self reportLastMatch ].
 	currentCharacter == ${
-		ifTrue: [ self recordMatch: #(164).
+		ifTrue: [ self recordMatch: #(169).
 			self step.
 			currentCharacter == ${ ifTrue: [ ^ self scan47 ].
 			^ self reportLastMatch ].
@@ -846,10 +846,10 @@ CSharpScanner >> scan5 [
 { #category : #generated }
 CSharpScanner >> scan6 [
 	[ self step.
-	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(157) ].
+	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(162) ].
 	currentCharacter == $\ ifTrue: [ ^ self scan6X1 ].
 	currentCharacter == ${
-		ifTrue: [ self recordMatch: #(158).
+		ifTrue: [ self recordMatch: #(163).
 			self step.
 			currentCharacter == ${ ifTrue: [ ^ self scan6 ].
 			^ self reportLastMatch ].
@@ -919,12 +919,12 @@ CSharpScanner >> scan8 [
 CSharpScanner >> scan9 [
 	[ self step.
 	currentCharacter == $"
-		ifTrue: [ self recordMatch: #(161).
+		ifTrue: [ self recordMatch: #(166).
 			self step.
 			currentCharacter == $" ifTrue: [ ^ self scan9 ].
 			^ self reportLastMatch ].
 	currentCharacter == ${
-		ifTrue: [ self recordMatch: #(162).
+		ifTrue: [ self recordMatch: #(167).
 			self step.
 			currentCharacter == ${ ifTrue: [ ^ self scan9 ].
 			^ self reportLastMatch ].
@@ -958,10 +958,10 @@ CSharpScanner >> scanForTokenX1X1 [
 	currentCharacter == $] ifTrue: [ ^ self recordAndReportMatch: #(38) ].
 	currentCharacter == $^ ifTrue: [ ^ self scan38 ].
 	currentCharacter == $` ifTrue: [ ^ self scan39 ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(144) ].
+	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(149) ].
 	currentCharacter == $| ifTrue: [ ^ self scan40 ].
 	currentCharacter == $} ifTrue: [ ^ self scan47 ].
-	currentCharacter == $~ ifTrue: [ ^ self recordAndReportMatch: #(148) ].
+	currentCharacter == $~ ifTrue: [ ^ self recordAndReportMatch: #(153) ].
 	(currentCharacter isLetter or: [ currentCharacter == $_ ])
 		ifTrue: [ ^ self scan35 ].
 	^ self reportLastMatch
@@ -1003,10 +1003,10 @@ CSharpScanner >> scanForTokenX2X1 [
 	currentCharacter == $] ifTrue: [ ^ self recordAndReportMatch: #(38) ].
 	currentCharacter == $^ ifTrue: [ ^ self scan38 ].
 	currentCharacter == $` ifTrue: [ ^ self scan39 ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(144) ].
+	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(149) ].
 	currentCharacter == $| ifTrue: [ ^ self scan40 ].
 	currentCharacter == $} ifTrue: [ ^ self scan44 ].
-	currentCharacter == $~ ifTrue: [ ^ self recordAndReportMatch: #(148) ].
+	currentCharacter == $~ ifTrue: [ ^ self recordAndReportMatch: #(153) ].
 	(currentCharacter isLetter or: [ currentCharacter == $_ ])
 		ifTrue: [ ^ self scan35 ].
 	^ self reportLastMatch
@@ -1065,5 +1065,5 @@ CSharpScanner >> scanFormat [
 
 { #category : #generated }
 CSharpScanner >> tokenActions [
-	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #comment nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace #preprocessorDirective #patternToken)
+	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #comment nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace #preprocessorDirective #patternToken)
 ]
