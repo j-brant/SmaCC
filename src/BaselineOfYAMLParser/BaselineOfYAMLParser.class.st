@@ -10,7 +10,7 @@ BaselineOfYAMLParser >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.59' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.60' ].
 
 		spec package: 'SmaCC_YAML' with: [
 			spec requires: #('SmaCCRuntime') ].
