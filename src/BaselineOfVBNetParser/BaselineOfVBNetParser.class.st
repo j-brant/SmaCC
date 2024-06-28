@@ -10,7 +10,7 @@ BaselineOfVBNetParser >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.60' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.61' ].
 
 		spec package: 'SmaCC_VB_NET_Parser' with: [
 			spec requires: #('SmaCCRuntime') ].
