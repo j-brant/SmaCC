@@ -15,7 +15,7 @@ Class {
 	#classVars : [
 		'Debug'
 	],
-	#category : 'SmaCC_Rewrite_Engine'
+	#category : #'SmaCC_Rewrite_Engine'
 }
 
 { #category : #accessing }
@@ -176,7 +176,7 @@ SmaCCRewriteProcessor >> processFile: aString usingResult: aSmaCCRewriteResult [
 	subdirectory := self baseDirectory isEmpty
 			ifTrue: [ '' ]
 			ifFalse: [ aString asFileReference parent pathString
-					copyFrom: self baseDirectory size + 1
+					copyFrom: self baseDirectory asFileReference pathString size + 1
 					to: aString asFileReference parent pathString size ].
 	fullFilename := (self outputDirectory isNil
 			or: [ self outputDirectory isEmpty ])
