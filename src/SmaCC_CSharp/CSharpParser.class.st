@@ -5411,15 +5411,6 @@ CSharpParser >> actionsForCurrentToken [
 ]
 
 { #category : #accessing }
-CSharpParser >> duplicateState [
-	Transcript
-		print: currentToken;
-		cr;
-		flush.
-	^ super duplicateState
-]
-
-{ #category : #accessing }
 CSharpParser >> parse [
 	| node |
 	node := super parse.
