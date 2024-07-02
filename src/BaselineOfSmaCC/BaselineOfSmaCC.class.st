@@ -25,6 +25,8 @@ BaselineOfSmaCC >> baseline: spec [
 				baseline: 'CPPParser' with: [ spec repository: 'github://j-brant/SmaCC' ];
 				baseline: 'CSharpParser'
 					with: [ spec repository: 'github://j-brant/SmaCC' ];
+				baseline: 'CSSParser'
+					with: [ spec repository: 'github://j-brant/SmaCC' ];
 				baseline: 'CSVParser' with: [ spec repository: 'github://j-brant/SmaCC' ];
 				baseline: 'DelphiParser'
 					with: [ spec repository: 'github://j-brant/SmaCC' ];
