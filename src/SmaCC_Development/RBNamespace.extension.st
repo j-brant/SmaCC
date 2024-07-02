@@ -9,19 +9,20 @@ RBNamespace >> smaccDefineTrait: aString [
 	newClass
 		ifNil: [ | newMetaclass |
 			self unmarkAsRemoved: newClassName.
-			newClass := modelFactory rbClass named: newClassName.
-			newMetaclass := modelFactory rbMetaclass named: newClassName.
+			newClass := RBClass named: newClassName.
+			newMetaclass := RBMetaclass named: newClassName.
 			newClass model: self.
 			newMetaclass model: self.
-			newClasses
-				at: newClassName
-				put: (Array with: newClass with: newMetaclass) ].
+			newClasses at: newClassName put: (Array with: newClass with: newMetaclass) ].
 	newClass superclass: nil.
 	self rootClasses add: newClass.
 	newClass classSide superclass: nil.
 	newClass instanceVariableNames: #().
 	newClass classVariableNames: #().
 	newClass poolDictionaryNames: #().
-	newClass category: change category.
+	SystemVersion current major >= 12
+		ifTrue: [ newClass packageName: change package.
+			newClass tagName: change tag ]
+		ifFalse: [ newClass category: change category ].
 	^ change
 ]

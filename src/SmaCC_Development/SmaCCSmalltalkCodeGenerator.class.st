@@ -11,7 +11,9 @@ Class {
 	#superclass : #SmaCCCodeGenerator,
 	#instVars : [
 		'isExpressions',
-		'parseTreeCache'
+		'parseTreeCache',
+		'visitorClass',
+		'visitorTrait'
 	],
 	#classVars : [
 		'MaxJumpSize',
@@ -318,9 +320,12 @@ SmaCCSmalltalkCodeGenerator >> compileCacheId [
 SmaCCSmalltalkCodeGenerator >> compileChanges [
 	self removeUnnecessaryChanges.
 	RBRefactoryChangeManager instance performChange: self changes.
+	SystemVersion current major >= 12
+		ifTrue: [ visitorClass
+				ifNotNil: [ (Smalltalk at: visitorClass name)
+						setTraitComposition: (Smalltalk at: visitorTrait name) ] ].
 	parserClass realClass ifNotNil: [ :each | each resetCaches ].
-	scannerClass realClass
-		ifNotNil: [ :each | each initializeKeywordMap ]
+	scannerClass realClass ifNotNil: [ :each | each initializeKeywordMap ]
 ]
 
 { #category : #'compiling-scanner' }
@@ -532,22 +537,24 @@ SmaCCSmalltalkCodeGenerator >> compileVariablesMethods: aSmaCCNodeClassDefinitio
 
 { #category : #private }
 SmaCCSmalltalkCodeGenerator >> compileVisitor: aSmaCCNodeCalculation [
-	| trait class traitName |
+	| traitName |
 	traitName := 'T' , aSmaCCNodeCalculation grammar rootDefinition fullName
 			, 'Visitor'.
-	trait := self defineTrait: traitName fromTraits: #('TSmaCCParseNodeVisitor').
-	class := self
+	visitorTrait := self
+			defineTrait: traitName
+			fromTraits: #('TSmaCCParseNodeVisitor').
+	visitorClass := self
 			defineClass: aSmaCCNodeCalculation grammar rootDefinition fullName
 					, 'Visitor'
 			asSubclassOf: (self model classFor: Object)
 			fromTraits: {traitName}.
-	self removeOldMethodsFrom: class.
-	self removeOldMethodsFrom: class classSide.
-	self removeOldMethodsFrom: trait.
+	self removeOldMethodsFrom: visitorClass.
+	self removeOldMethodsFrom: visitorClass classSide.
+	self removeOldMethodsFrom: visitorTrait.
 	(SmaCCVisitorClassDefinition
 		forClassDefinitions: aSmaCCNodeCalculation sortedClasses)
 		grammar: aSmaCCNodeCalculation grammar;
-		modelClass: trait;
+		modelClass: visitorTrait;
 		compileMethodsAndVariables
 ]
 
@@ -583,9 +590,9 @@ SmaCCSmalltalkCodeGenerator >> defineClass: aString asSubclassOf: aBehavior [
 	| current variables |
 	current := Smalltalk at: aString asSymbol ifAbsent: [ Object ].
 	variables := ''.
-	(current includesBehavior: SmaCCParser) | (current includesBehavior: SmaCCScanner)
-		ifTrue:
-			[ | stream |
+	(current includesBehavior: SmaCCParser)
+		| (current includesBehavior: SmaCCScanner)
+		ifTrue: [ | stream |
 			stream := WriteStream on: String new.
 			current instVarNames
 				do: [ :each | 
@@ -593,52 +600,70 @@ SmaCCSmalltalkCodeGenerator >> defineClass: aString asSubclassOf: aBehavior [
 						nextPutAll: each;
 						space ].
 			variables := stream contents ].
-	model
-		defineClass:
-			aBehavior name , ' subclass: #' , aString , ' instanceVariableNames: ''' , variables
-				,
-					(''' classVariableNames: '''' poolDictionaries: '''' category: '''
-						, (defaultCategory ifNil: [ RPackage defaultPackageName ]) , ''' ').
+	SystemVersion current major >= 12
+		ifTrue: [ model
+				defineClass: [ :builder | 
+					builder
+						superclassName: aBehavior name;
+						name: aString asSymbol;
+						package: self packageName;
+						slots: (current instVarNames collect: #asSymbol) asArray.
+					self tagName ifNotNil: [ :tag | builder tag: tag asSymbol ] ] ]
+		ifFalse: [ model
+				defineClass: aBehavior name , ' subclass: #' , aString , ' instanceVariableNames: '''
+						, variables
+						, (''' classVariableNames: '''' poolDictionaries: '''' category: '''
+								, (defaultCategory ifNil: [ RPackage defaultPackageName ]) , ''' ') ].
 	^ model classNamed: aString asSymbol
 ]
 
 { #category : #compiling }
 SmaCCSmalltalkCodeGenerator >> defineClass: aString asSubclassOf: aBehavior fromTraits: aCollection [
-	| current variables |
+	| current |
 	current := Smalltalk at: aString asSymbol ifAbsent: [ Object ].
-	variables := ''.
-	model
-		defineClass:
-			aBehavior name , ' subclass: #' , aString , ' uses: { '
-				,
-					(String
-						streamContents: [ :stream | 
-							aCollection
-								do: [ :each | stream nextPutAll: each ]
-								separatedBy: [ stream nextPutAll: '. ' ] ])
-				, ' } instanceVariableNames: ''' , variables
-				,
-					(''' classVariableNames: '''' poolDictionaries: '''' category: '''
-						, (defaultCategory ifNil: [ RPackage defaultPackageName ])
-						, ''' ').
+	SystemVersion current major >= 12
+		ifTrue: [ model
+				defineClass: [ :builder | 
+					builder
+						superclassName: aBehavior name;
+						name: aString asSymbol;
+						"traits: (aCollection collect: [ :each | Smalltalk at: each asSymbol ]) asArray;"
+						package: self packageName;
+						slots: (current instVarNames collect: #asSymbol) asArray.
+					self tagName ifNotNil: [ :tag | builder tag: tag asSymbol ] ] ]
+		ifFalse: [ model
+				defineClass: aBehavior name , ' subclass: #' , aString , ' uses: { '
+						, (String
+								streamContents: [ :stream | 
+									aCollection
+										do: [ :each | stream nextPutAll: each ]
+										separatedBy: [ stream nextPutAll: '. ' ] ])
+						, ' } instanceVariableNames: '''' classVariableNames: '''' poolDictionaries: '''' category: '''
+						, (defaultCategory ifNil: [ RPackage defaultPackageName ]) , ''' ' ].
 	^ model classNamed: aString asSymbol
 ]
 
 { #category : #compiling }
 SmaCCSmalltalkCodeGenerator >> defineTrait: aString fromTraits: aCollection [
-	model
-		smaccDefineTrait:
-			'Trait named: #' , aString , ' uses: { '
-				,
-					(String
-						streamContents: [ :stream | 
-							aCollection
-								do: [ :each | stream nextPutAll: each ]
-								separatedBy: [ stream nextPutAll: '. ' ] ])
-				,
-					('} package: '''
-						, (defaultCategory ifNil: [ RPackage defaultPackageName ])
-						, ''' ').
+	SystemVersion current major >= 12
+		ifTrue: [ model
+				smaccDefineTrait: [ :builder | 
+					builder
+						beTrait;
+						name: aString asSymbol;
+						traits: (aCollection collect: [ :each | Smalltalk at: each asSymbol ]) asArray;
+						package: self packageName;
+						fillClassSideFromEnvironment: Object environment.
+					self tagName ifNotNil: [ :tag | builder tag: tag asSymbol ] ] ]
+		ifFalse: [ model
+				smaccDefineTrait: 'Trait named: #' , aString , ' uses: { '
+						, (String
+								streamContents: [ :stream | 
+									aCollection
+										do: [ :each | stream nextPutAll: each ]
+										separatedBy: [ stream nextPutAll: '. ' ] ])
+						, ('} package: ''' , (defaultCategory ifNil: [ RPackage defaultPackageName ])
+								, ''' ') ].
 	^ model classNamed: aString asSymbol
 ]
 
@@ -918,6 +943,24 @@ SmaCCSmalltalkCodeGenerator >> outputStreamClass [
 	^ WriteStream
 ]
 
+{ #category : #accessing }
+SmaCCSmalltalkCodeGenerator >> packageName [
+	defaultCategory ifNil: [ ^ RPackage defaultPackageName ].
+	^ self packageNameFrom: defaultCategory
+]
+
+{ #category : #accessing }
+SmaCCSmalltalkCodeGenerator >> packageNameFrom: aString [
+	RPackage organizer
+		packageNamed: aString asSymbol
+		ifAbsent: [ | index |
+			index := aString lastIndexOf: $-.
+			^ index > 1
+				ifTrue: [ self packageNameFrom: (aString first: index - 1) ]
+				ifFalse: [ aString ] ].
+	^ aString
+]
+
 { #category : #'reduction table' }
 SmaCCSmalltalkCodeGenerator >> parseTreeRewriterFor: aSmaCCRHS [
 	| rewriter |
@@ -985,36 +1028,30 @@ SmaCCSmalltalkCodeGenerator >> removeUnnecessaryClassChanges [
 		allSatisfy: [ :each | (each isKindOf: RBCompositeRefactoryChange) not ])
 		ifFalse: [ ^ self ].
 	classChanges := allChanges
-		select:
-			[ :each | 
-			(each isKindOf: RBAddClassChange)
-				and:
-					[ each changeClass notNil
-						and: [ each changeClass superclass name = each superclassName ] ] ].
+			select: [ :each | 
+				(each isKindOf: RBAddClassChange)
+					and: [ each changeClass notNil
+							and: [ each changeClass isTrait
+									or: [ each changeClass superclass name = each superclassName ] ] ] ].
 	classChanges
-		do:
-			[ :each | 
+		do: [ :each | 
 			| addVars variables existingVariables |
 			addVars := allChanges
-				select:
-					[ :change | 
-					(change isKindOf: RBAddInstanceVariableChange)
-						and: [ each changeClass = change changeClass ] ].
+					select: [ :change | 
+						(change isKindOf: RBAddInstanceVariableChange)
+							and: [ each changeClass = change changeClass ] ].
 			variables := addVars
-				inject: Set new
-				into:
-					[ :sum :change | 
-					sum
-						add: change variable;
-						yourself ].
+					inject: Set new
+					into: [ :sum :change | 
+						sum
+							add: change variable;
+							yourself ].
 			variables addAll: each instanceVariableNames.
 			existingVariables := each changeClass instVarNames.
 			(existingVariables size = variables size
-				and:
-					[ existingVariables asSortedCollection asArray
+				and: [ existingVariables asSortedCollection asArray
 						= variables asSortedCollection asArray ])
-				ifTrue:
-					[ self removeChange: each.
+				ifTrue: [ self removeChange: each.
 					addVars do: [ :change | self removeChange: change ] ] ]
 ]
 
@@ -1111,17 +1148,15 @@ SmaCCSmalltalkCodeGenerator >> scanStringRewriter [
 { #category : #'compiling-scanner' }
 SmaCCSmalltalkCodeGenerator >> scannerActionFor: aString [
 	| selector current |
-	aString size > 2
-		ifFalse: [ ^ nil ].
+	aString size > 2 ifFalse: [ ^ nil ].
 	selector := (aString copyFrom: 2 to: aString size - 1) asSymbol.
-	selector numArgs = 0
-		ifFalse: [ ^ nil ].
-	((SmaCCScanner organization listAtCategoryNamed: #'default token handling') includes: selector)
-		ifTrue: [ ^ selector ].
+	selector numArgs = 0 ifFalse: [ ^ nil ].
+	((SmaCCScanner selectorsInProtocol: #'default token handling')
+		includes: selector) ifTrue: [ ^ selector ].
 	current := scannerClass.
-	[ current notNil and: [ current superclass notNil and: [ current name ~= #SmaCCScanner ] ] ]
-		whileTrue: [ (current directlyDefinesMethod: selector)
-				ifTrue: [ ^ selector ].
+	[ current notNil
+		and: [ current superclass notNil and: [ current name ~= #SmaCCScanner ] ] ]
+		whileTrue: [ (current directlyDefinesMethod: selector) ifTrue: [ ^ selector ].
 			current := current superclass ].
 	^ nil
 ]
@@ -1262,6 +1297,15 @@ SmaCCSmalltalkCodeGenerator >> superMessage: aString argument: firstArgumentStri
 	keywords := aString asSymbol keywords.
 	^ 'super ' , keywords first , ' (' , firstArgumentString , ') '
 		, keywords last , ' (' , secondArgumentString , ')'
+]
+
+{ #category : #accessing }
+SmaCCSmalltalkCodeGenerator >> tagName [
+	| packageName |
+	defaultCategory ifNil: [ ^ nil ].
+	packageName := self packageNameFrom: defaultCategory.
+	^ packageName = defaultCategory
+		ifFalse: [ defaultCategory allButFirst: packageName size + 1 ]
 ]
 
 { #category : #'code generation templates' }
