@@ -10,7 +10,7 @@ SmaCCErrorNode >> addInspectorItemsIn: anObject as: aString to: aCollection [
 	(anObject isKindOf: SmaCCParseNode)
 		ifTrue: [ ^ aCollection
 				add: {aString.
-						#token.
+						#node.
 						anObject} ].
 	(anObject isKindOf: SequenceableCollection)
 		ifTrue: [ anObject
