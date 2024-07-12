@@ -175,13 +175,12 @@ SmaCCRewriteProcessor >> processFile: aString usingResult: aSmaCCRewriteResult [
 		filename: aString.
 	subdirectory := self baseDirectory isEmpty
 			ifTrue: [ '' ]
-			ifFalse: [ aString asFileReference parent pathString
-					copyFrom: self baseDirectory asFileReference pathString size + 1
-					to: aString asFileReference parent pathString size ].
+			ifFalse: [ (aString asFileReference parent relativeTo: self baseDirectory asFileReference)
+					pathString ].
 	fullFilename := (self outputDirectory isNil
 			or: [ self outputDirectory isEmpty ])
 			ifTrue: [ '' ]
-			ifFalse: [ self outputDirectory , FileSystem disk delimiter asString , subdirectory ].
+			ifFalse: [ (self outputDirectory asFileReference / subdirectory) pathString ].
 	self engine
 		source: (aSmaCCRewriteResult smaccStringClass on: input);
 		outputDirectory: fullFilename;
