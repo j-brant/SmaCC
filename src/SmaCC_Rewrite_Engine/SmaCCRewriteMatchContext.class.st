@@ -13,7 +13,7 @@ Class {
 		'SilentProperties',
 		'Uninitialized'
 	],
-	#category : 'SmaCC_Rewrite_Engine'
+	#category : #'SmaCC_Rewrite_Engine'
 }
 
 { #category : #compiling }
@@ -25,7 +25,7 @@ SmaCCRewriteMatchContext class >> compiledMethodFor: aString [
 		            requestor: nil;
 		            failBlock: [ ^ nil ];
 		            compile.
-	  [ method copyWithSource: aString ]
+	  [ method := method copyWithSource: aString ]
 		  on: Error
 		  do: [ :ex | method propertyAt: #source put: aString ].
 	  method ]
