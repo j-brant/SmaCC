@@ -13,29 +13,30 @@ Class {
 		'SilentProperties',
 		'Uninitialized'
 	],
-	#category : 'SmaCC_Rewrite_Engine'
+	#category : #'SmaCC_Rewrite_Engine'
 }
 
 { #category : #compiling }
 SmaCCRewriteMatchContext class >> compiledMethodFor: aString [
-	^ [ "Pharo"
-	  | method |
-	  method := self compiler
-		            source: aString;
-		            requestor: nil;
-		            failBlock: [ ^ nil ];
-		            compile.
-	  [ method copyWithSource: aString ]
-		  on: Error
-		  do: [ :ex | method propertyAt: #source put: aString ].
-	  method ]
-		  on: Error
-		  do: [ :ex | "Squeak version"
-			  ex return: (self
-					   compile: aString
-					   notifying: nil
-					   trailer: self defaultMethodTrailer
-					   ifFail: [ ^ nil ]) method ]
+	^ [ | method |
+	"Pharo"
+	method := self compiler
+			source: aString;
+			requestor: nil;
+			failBlock: [ ^ nil ];
+			compile.
+	[ method becomeForward: (method copyWithSource: aString) ]
+		on: Error
+		do: [ :ex | method propertyAt: #source put: aString ].
+	method ]
+		on: Error
+		do: [ :ex "Squeak version" | 
+			ex
+				return: (self
+						compile: aString
+						notifying: nil
+						trailer: self defaultMethodTrailer
+						ifFail: [ ^ nil ]) method ]
 ]
 
 { #category : #accessing }
