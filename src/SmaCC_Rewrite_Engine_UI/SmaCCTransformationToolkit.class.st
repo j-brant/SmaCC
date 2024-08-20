@@ -494,7 +494,7 @@ SmaCCTransformationToolkit >> loadConfiguration: aFileReference [
 	filename := aFileReference.
 	results removeAll.
 	self updateResults.
-	self displayPreviewResult: SmaCCRewriteCompleteResult new
+	self displayPreviewResult: (SmaCCRewriteCompleteResult model: self model)
 ]
 
 { #category : #'transformation-actions' }
@@ -648,18 +648,12 @@ SmaCCTransformationToolkit >> openResultFor: aFilename [
 { #category : #'configuration-actions' }
 SmaCCTransformationToolkit >> openResultFor: aFilename before: beforeBlock after: afterBlock [
 	aFilename ifNil: [ ^ self ].
-	[ | result processor |
-	result := SmaCCRewriteCompleteResult new.
-	processor := SmaCCRewriteProcessor new.
-	processor rules: self model rewrites.
-	processor parserClass: self model inputParserClass.
-	processor validationParserClass: self model validationParserClass.
-	processor debug: true.
-	beforeBlock value.
-	[ [ processor processFile: aFilename usingResult: result ] on: Error , Halt do: [ :ex | ex pass ] ]
-		ensure:
-			[ afterBlock value.
-			processor debug: false ].
+	[ | result |
+	result := self model
+			previewResultFor: aFilename
+			before: beforeBlock
+			after: afterBlock
+			onException: [  ].
 	self displayPreviewResult: result.
 	self gotoPreviewTab ] fork
 ]

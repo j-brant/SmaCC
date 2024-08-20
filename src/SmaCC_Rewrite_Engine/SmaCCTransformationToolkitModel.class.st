@@ -14,7 +14,7 @@ Class {
 		'commonParentDirectory',
 		'lineEnding'
 	],
-	#category : 'SmaCC_Rewrite_Engine'
+	#category : #'SmaCC_Rewrite_Engine'
 }
 
 { #category : #'actions-rewrites' }
@@ -184,6 +184,26 @@ SmaCCTransformationToolkitModel >> outputDirectory: aString [
 	outputDirectory := aString.
 	modified := true.
 	self changed: #outputDirectory with: aString
+]
+
+{ #category : #accessing }
+SmaCCTransformationToolkitModel >> previewResultFor: aFilename before: beforeBlock after: afterBlock onException: exceptionBlock [
+	| result processor |
+	result := SmaCCRewriteCompleteResult model: self.
+	processor := SmaCCRewriteProcessor new.
+	processor rules: self rewrites.
+	processor parserClass: self inputParserClass.
+	processor validationParserClass: self validationParserClass.
+	processor debug: true.
+	beforeBlock value.
+	[ [ processor processFile: aFilename usingResult: result ]
+		on: Error , Halt
+		do: [ :ex | 
+			exceptionBlock cull: ex.
+			ex pass ] ]
+		ensure: [ afterBlock value.
+			processor debug: false ].
+	^ result
 ]
 
 { #category : #'actions-rewrites' }
