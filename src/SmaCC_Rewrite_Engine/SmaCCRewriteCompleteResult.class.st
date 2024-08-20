@@ -5,10 +5,18 @@ Class {
 		'inputSource',
 		'outputSource',
 		'transformedString',
-		'additionalFiles'
+		'additionalFiles',
+		'model'
 	],
 	#category : #'SmaCC_Rewrite_Engine'
 }
+
+{ #category : #'instance creation' }
+SmaCCRewriteCompleteResult class >> model: aModel [
+	^ self new
+		model: aModel;
+		yourself
+]
 
 { #category : #accessing }
 SmaCCRewriteCompleteResult >> addFile: aSmaCCString named: aString [
@@ -28,6 +36,16 @@ SmaCCRewriteCompleteResult >> inputSource [
 { #category : #accessing }
 SmaCCRewriteCompleteResult >> inputSource: aString [
 	inputSource := aString
+]
+
+{ #category : #accessing }
+SmaCCRewriteCompleteResult >> model [
+	^ model
+]
+
+{ #category : #accessing }
+SmaCCRewriteCompleteResult >> model: anObject [
+	model := anObject
 ]
 
 { #category : #accessing }

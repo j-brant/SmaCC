@@ -145,6 +145,11 @@ SmaCCRewriteResult >> filename: anObject [
 	filename := anObject
 ]
 
+{ #category : #accessing }
+SmaCCRewriteResult >> inputParserClass [
+	^ self model ifNotNil: [ :each | each inputParserClass ]
+]
+
 { #category : #public }
 SmaCCRewriteResult >> inputSource [
 	^ ''
@@ -176,6 +181,16 @@ SmaCCRewriteResult >> isWarning [
 ]
 
 { #category : #accessing }
+SmaCCRewriteResult >> model [
+	^ nil
+]
+
+{ #category : #accessing }
+SmaCCRewriteResult >> model: aModel [
+	
+]
+
+{ #category : #accessing }
 SmaCCRewriteResult >> outputFilename [
 	^ outputFilename
 ]
@@ -193,6 +208,11 @@ SmaCCRewriteResult >> outputSource [
 { #category : #accessing }
 SmaCCRewriteResult >> outputSource: aString [
 	
+]
+
+{ #category : #public }
+SmaCCRewriteResult >> rewrites [
+	^ self model ifNotNil: [ :each | each rewrites ]
 ]
 
 { #category : #accessing }
@@ -248,4 +268,9 @@ SmaCCRewriteResult >> type [
 { #category : #accessing }
 SmaCCRewriteResult >> type: aSymbol [
 	type := aSymbol
+]
+
+{ #category : #accessing }
+SmaCCRewriteResult >> validationParserClass [
+	^ self model ifNotNil: [ :each | each validationParserClass ]
 ]
