@@ -7,7 +7,7 @@ Class {
 		'method',
 		'enableDebug'
 	],
-	#category : 'SmaCC_Rewrite_Engine'
+	#category : #'SmaCC_Rewrite_Engine'
 }
 
 { #category : #'instance creation' }
@@ -52,7 +52,7 @@ SmaCCRewriteTypeMatch >> codeMatches: aSmaCCRewriteMatchContext [
 
 { #category : #printing }
 SmaCCRewriteTypeMatch >> displayOn: aStream [
-	aStream nextPutAll: nodeClass name
+	aStream nextPutAll: (nodeClass ifNil: [ SmaCCParseNode ]) name
 ]
 
 { #category : #accessing }
