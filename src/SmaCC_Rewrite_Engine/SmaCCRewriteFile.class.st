@@ -12,6 +12,17 @@ Class {
 	#category : #'SmaCC_Rewrite_Engine'
 }
 
+{ #category : #'instance creation' }
+SmaCCRewriteFile class >> onFile: aFilename [
+	| fileRef |
+	fileRef := aFilename asFileReference.
+	^ fileRef exists
+		ifTrue: [ SmaCCRewriteRuleFileParser parseFile: fileRef ]
+		ifFalse: [ self new
+				filename: fileRef;
+				yourself ]
+]
+
 { #category : #comparing }
 SmaCCRewriteFile >> = anObject [
 	self class = anObject class

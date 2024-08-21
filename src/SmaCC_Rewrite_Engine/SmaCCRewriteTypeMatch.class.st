@@ -52,7 +52,7 @@ SmaCCRewriteTypeMatch >> codeMatches: aSmaCCRewriteMatchContext [
 
 { #category : #printing }
 SmaCCRewriteTypeMatch >> displayOn: aStream [
-	aStream nextPutAll: nodeClass name
+	aStream nextPutAll: (nodeClass ifNil: [ SmaCCParseNode ]) name
 ]
 
 { #category : #accessing }

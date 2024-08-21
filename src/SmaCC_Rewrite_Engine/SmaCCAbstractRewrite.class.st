@@ -8,6 +8,16 @@ Class {
 	#category : #'SmaCC_Rewrite_Engine'
 }
 
+{ #category : #accessing }
+SmaCCAbstractRewrite >> allParents [
+	| parents current |
+	parents := OrderedCollection new.
+	current := self.
+	[ current := current parent.
+	current notNil ] whileTrue: [ parents addFirst: current ].
+	^ parents
+]
+
 { #category : #changing }
 SmaCCAbstractRewrite >> changed: aSymbol [
 	super changed: aSymbol.
