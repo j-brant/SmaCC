@@ -85,6 +85,13 @@ SmaCCTransformationToolkitModel >> filename [
 ]
 
 { #category : #accessing }
+SmaCCTransformationToolkitModel >> filename: anObject [
+	filename = anObject ifTrue: [ ^ self ].
+	filename := anObject.
+	self changed: #filename with: filename
+]
+
+{ #category : #accessing }
 SmaCCTransformationToolkitModel >> files [
 	^ files ifNil: [ #() ]
 ]
@@ -145,7 +152,7 @@ SmaCCTransformationToolkitModel >> loadFile: aString [
 				receiver: self;
 				evaluate.
 			self isModified: false.
-			filename := aString asFileReference ]
+			self filename: aString asFileReference ]
 ]
 
 { #category : #public }
@@ -301,7 +308,7 @@ SmaCCTransformationToolkitModel >> saveTo: aFilename [
 				nextPutAll: self commonParentDirectory storeString ].
 	modified := false.
 	self areRewritesModified ifTrue: [ self saveRewrites ].
-	filename := aFilename asFileReference
+	self filename: aFilename asFileReference
 ]
 
 { #category : #accessing }
