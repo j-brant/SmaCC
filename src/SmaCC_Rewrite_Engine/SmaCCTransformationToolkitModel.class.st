@@ -12,7 +12,8 @@ Class {
 		'runOnServer',
 		'createSubdirectories',
 		'commonParentDirectory',
-		'lineEnding'
+		'lineEnding',
+		'filename'
 	],
 	#category : #'SmaCC_Rewrite_Engine'
 }
@@ -47,18 +48,17 @@ SmaCCTransformationToolkitModel >> areRewritesModified [
 { #category : #running }
 SmaCCTransformationToolkitModel >> commonParentDirectory [
 	| common |
-	commonParentDirectory notNil
-		ifTrue: [ ^ commonParentDirectory ].
-	(self files isEmpty or: [ self createSubdirectories not ])
-		ifTrue: [ ^ '' ].
+	commonParentDirectory notNil ifTrue: [ ^ commonParentDirectory ].
+	(self files isEmpty or: [ self createSubdirectories not ]) ifTrue: [ ^ '' ].
 	common := self files first asFileReference parent pathString.
 	self files
 		do: [ :each | 
-			[ common isEmpty or: [ each beginsWith: common ] ]
+			[ common isEmpty or: [ each asFileReference pathString beginsWith: common ] ]
 				whileFalse: [ common := (common isEmpty
-						or: [ (common size = 3 and: [ (common at: 2) = $: ]) or: [ common size = 1 and: [ common first = $/ ] ] ])
-						ifTrue: [ '' ]
-						ifFalse: [ (common copyFrom: 1 to: common size - 1) asFileReference parent pathString ] ] ].
+							or: [ (common size = 3 and: [ (common at: 2) = $: ])
+									or: [ common size = 1 and: [ common first = $/ ] ] ])
+							ifTrue: [ '' ]
+							ifFalse: [ (common copyFrom: 1 to: common size - 1) asFileReference parent pathString ] ] ].
 	^ common
 ]
 
@@ -77,6 +77,11 @@ SmaCCTransformationToolkitModel >> createSubdirectories: aBoolean [
 	createSubdirectories := aBoolean.
 	modified := true.
 	self changed: #createSubdirectories with: aBoolean
+]
+
+{ #category : #accessing }
+SmaCCTransformationToolkitModel >> filename [
+	^ filename
 ]
 
 { #category : #accessing }
@@ -139,7 +144,8 @@ SmaCCTransformationToolkitModel >> loadFile: aString [
 				logged: false;
 				receiver: self;
 				evaluate.
-			self isModified: false ]
+			self isModified: false.
+			filename := aString asFileReference ]
 ]
 
 { #category : #public }
@@ -243,8 +249,8 @@ SmaCCTransformationToolkitModel >> saveRewrites [
 ]
 
 { #category : #public }
-SmaCCTransformationToolkitModel >> saveTo: filename [
-	filename asFileReference
+SmaCCTransformationToolkitModel >> saveTo: aFilename [
+	aFilename asFileReference
 		ensureDelete;
 		writeStreamDo: [ :stream | 
 			stream
@@ -287,10 +293,15 @@ SmaCCTransformationToolkitModel >> saveTo: filename [
 				cr;
 				tab;
 				nextPutAll: 'runOnServer: ';
-				nextPutAll: self runOnServer storeString ].
+				nextPutAll: self runOnServer storeString;
+				nextPut: $;;
+				cr;
+				tab;
+				nextPutAll: 'commonParentDirectory: ';
+				nextPutAll: self commonParentDirectory storeString ].
 	modified := false.
-	self areRewritesModified
-		ifTrue: [ self saveRewrites ]
+	self areRewritesModified ifTrue: [ self saveRewrites ].
+	filename := aFilename asFileReference
 ]
 
 { #category : #accessing }
