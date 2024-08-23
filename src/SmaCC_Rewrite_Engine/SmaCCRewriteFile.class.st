@@ -127,6 +127,14 @@ SmaCCRewriteFile >> isUpToDate [
 ]
 
 { #category : #accessing }
+SmaCCRewriteFile >> listForClass: aClass [
+	| link |
+	link := SmaCCRewriteLink new.
+	self listForClass: aClass into: link.
+	^ link next
+]
+
+{ #category : #accessing }
 SmaCCRewriteFile >> listForClass: aClass into: aSmaCCRewriteLink [
 	^ rewrites
 		inject: aSmaCCRewriteLink
