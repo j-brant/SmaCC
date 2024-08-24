@@ -18,6 +18,13 @@ Class {
 	#category : #'SmaCC_Rewrite_Engine'
 }
 
+{ #category : #'instance creation' }
+SmaCCTransformationToolkitModel class >> onFile: aFilename [
+	^ self new
+		loadFile: aFilename;
+		yourself
+]
+
 { #category : #'actions-rewrites' }
 SmaCCTransformationToolkitModel >> addTransformation: aSmaCCAbstractRewrite under: aSmaCCRewriteFile [
 	self
@@ -89,6 +96,12 @@ SmaCCTransformationToolkitModel >> filename: anObject [
 	filename = anObject ifTrue: [ ^ self ].
 	filename := anObject.
 	self changed: #filename with: filename
+]
+
+{ #category : #accessing }
+SmaCCTransformationToolkitModel >> filenameStrings [
+	^ self files
+		collect: [ :each | each isString ifTrue: [ each ] ifFalse: [ each pathString ] ]
 ]
 
 { #category : #accessing }
@@ -280,7 +293,7 @@ SmaCCTransformationToolkitModel >> saveTo: aFilename [
 				cr;
 				tab;
 				nextPutAll: 'files: ';
-				nextPutAll: self files asArray storeString;
+				nextPutAll: self filenameStrings asArray storeString;
 				nextPut: $;;
 				cr;
 				tab;
