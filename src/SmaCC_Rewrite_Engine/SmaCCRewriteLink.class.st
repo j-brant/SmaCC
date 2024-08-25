@@ -8,6 +8,29 @@ Class {
 	#category : #'SmaCC_Rewrite_Engine'
 }
 
+{ #category : #comparing }
+SmaCCRewriteLink >> = anObject [
+	^ self class = anObject class
+		and: [ self rewrite = anObject rewrite and: [ self next = anObject next ] ]
+]
+
+{ #category : #accessing }
+SmaCCRewriteLink >> allRewrites [
+	| rewrites current |
+	rewrites := OrderedCollection new.
+	current := self.
+	[ current notNil ]
+		whileTrue: [ rewrites add: current rewrite.
+			current := current next ].
+	^ rewrites
+]
+
+{ #category : #comparing }
+SmaCCRewriteLink >> hash [
+	^ (self class hash bitXor: self rewrite hash) hashMultiply
+		bitXor: self next hash
+]
+
 { #category : #accessing }
 SmaCCRewriteLink >> next [
 	^ next
