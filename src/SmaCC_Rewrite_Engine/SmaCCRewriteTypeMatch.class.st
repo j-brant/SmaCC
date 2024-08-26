@@ -32,6 +32,7 @@ SmaCCRewriteTypeMatch >> code [
 SmaCCRewriteTypeMatch >> code: aString [
 	code := aString.
 	method := nil.
+	self changed: #code.
 	self modified
 ]
 
@@ -62,7 +63,8 @@ SmaCCRewriteTypeMatch >> enableDebug [
 
 { #category : #accessing }
 SmaCCRewriteTypeMatch >> enableDebug: aBoolean [
-	enableDebug := aBoolean
+	enableDebug := aBoolean.
+	self changed: #enableDebug
 ]
 
 { #category : #'initialize-release' }
@@ -115,6 +117,7 @@ SmaCCRewriteTypeMatch >> nodeClass [
 { #category : #'initialize-release' }
 SmaCCRewriteTypeMatch >> nodeClass: aClass [
 	nodeClass := aClass.
+	self changed: #nodeClass.
 	self modified
 ]
 

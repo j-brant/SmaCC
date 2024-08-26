@@ -2,10 +2,10 @@ Class {
 	#name : #SmaCCRewriteStringTransformation,
 	#superclass : #SmaCCRewriteTransformation,
 	#instVars : [
-		'string',
-		'expression'
+		'expression',
+		'source'
 	],
-	#category : 'SmaCC_Rewrite_Engine'
+	#category : #'SmaCC_Rewrite_Engine'
 }
 
 { #category : #'instance creation' }
@@ -24,7 +24,7 @@ SmaCCRewriteStringTransformation >> expression [
 { #category : #'initialize-release' }
 SmaCCRewriteStringTransformation >> initialize [
 	super initialize.
-	string := ''
+	source := ''
 ]
 
 { #category : #public }
@@ -35,16 +35,28 @@ SmaCCRewriteStringTransformation >> saveOn: aStream [
 		nextPutAll: '<<<'
 ]
 
+{ #category : #accessing }
+SmaCCRewriteStringTransformation >> source [
+	^ source ifNil: [ '' ]
+]
+
+{ #category : #accessing }
+SmaCCRewriteStringTransformation >> source: aString [
+	source := aString.
+	expression := nil.
+	self changed: #string.
+	self changed: #source.
+	self modified
+]
+
 { #category : #'initialize-release' }
 SmaCCRewriteStringTransformation >> string [
-	^ string ifNil: [ '' ]
+	^ self source
 ]
 
 { #category : #'initialize-release' }
 SmaCCRewriteStringTransformation >> string: aString [
-	string := aString.
-	expression := nil.
-	self modified
+	self source: aString
 ]
 
 { #category : #transforming }

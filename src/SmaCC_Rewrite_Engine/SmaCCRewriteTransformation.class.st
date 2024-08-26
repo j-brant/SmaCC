@@ -1,13 +1,13 @@
 Class {
 	#name : #SmaCCRewriteTransformation,
-	#superclass : #Object,
+	#superclass : #Model,
 	#instVars : [
 		'rewrite'
 	],
 	#classVars : [
 		'HaltBlock'
 	],
-	#category : 'SmaCC_Rewrite_Engine'
+	#category : #'SmaCC_Rewrite_Engine'
 }
 
 { #category : #accessing }
@@ -18,6 +18,13 @@ SmaCCRewriteTransformation class >> haltBlock [
 { #category : #accessing }
 SmaCCRewriteTransformation class >> haltBlock: aBlock [
 	HaltBlock := aBlock
+]
+
+{ #category : #changing }
+SmaCCRewriteTransformation >> changed: aSymbol [
+	super changed: aSymbol.
+	self announcer announce: aSymbol.
+	self modified
 ]
 
 { #category : #public }

@@ -1,13 +1,13 @@
 Class {
 	#name : #SmaCCRewriteMatch,
-	#superclass : #Object,
+	#superclass : #Model,
 	#instVars : [
 		'rewrite'
 	],
 	#classVars : [
 		'HaltBlock'
 	],
-	#category : 'SmaCC_Rewrite_Engine'
+	#category : #'SmaCC_Rewrite_Engine'
 }
 
 { #category : #accessing }
@@ -23,6 +23,13 @@ SmaCCRewriteMatch class >> haltBlock: aBlock [
 { #category : #testing }
 SmaCCRewriteMatch >> canMatch: aClass [
 	^ true
+]
+
+{ #category : #changing }
+SmaCCRewriteMatch >> changed: aSymbol [
+	super changed: aSymbol.
+	self announcer announce: aSymbol.
+	self modified
 ]
 
 { #category : #printing }

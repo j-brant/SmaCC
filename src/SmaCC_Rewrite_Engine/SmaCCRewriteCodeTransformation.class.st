@@ -5,7 +5,7 @@ Class {
 		'code',
 		'method'
 	],
-	#category : 'SmaCC_Rewrite_Engine'
+	#category : #'SmaCC_Rewrite_Engine'
 }
 
 { #category : #'instance creation' }
@@ -24,6 +24,7 @@ SmaCCRewriteCodeTransformation >> code [
 SmaCCRewriteCodeTransformation >> code: aString [
 	code := aString.
 	method := nil.
+	self changed: #code.
 	self modified
 ]
 
