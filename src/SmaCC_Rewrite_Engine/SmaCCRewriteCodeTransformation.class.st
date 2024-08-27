@@ -24,6 +24,7 @@ SmaCCRewriteCodeTransformation >> code [
 SmaCCRewriteCodeTransformation >> code: aString [
 	code := aString.
 	method := nil.
+	self changed: #code.
 	self modified
 ]
 

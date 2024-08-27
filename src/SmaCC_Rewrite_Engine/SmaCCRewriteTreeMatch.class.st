@@ -64,6 +64,7 @@ SmaCCRewriteTreeMatch >> source [
 SmaCCRewriteTreeMatch >> source: aString [
 	source := aString.
 	trees := nil.
+	self changed: #source.
 	self modified
 ]
 
@@ -75,6 +76,7 @@ SmaCCRewriteTreeMatch >> startingState [
 { #category : #public }
 SmaCCRewriteTreeMatch >> startingState: aString [
 	startingState := aString.
+	self changed: #startingState.
 	self modified
 ]
 
