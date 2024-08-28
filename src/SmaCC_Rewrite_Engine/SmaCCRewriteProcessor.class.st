@@ -180,7 +180,9 @@ SmaCCRewriteProcessor >> processFile: aString usingResult: aSmaCCRewriteResult [
 	fullFilename := (self outputDirectory isNil
 			or: [ self outputDirectory isEmpty ])
 			ifTrue: [ '' ]
-			ifFalse: [ (self outputDirectory asFileReference / subdirectory) pathString ].
+			ifFalse: [ subdirectory isEmpty
+					ifTrue: [ self outputDirectory ]
+					ifFalse: [ (self outputDirectory asFileReference / subdirectory) pathString ] ].
 	self engine
 		source: (aSmaCCRewriteResult smaccStringClass on: input);
 		outputDirectory: fullFilename;
