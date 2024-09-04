@@ -346,6 +346,36 @@ TJavaProgramNodeVisitor >> visitModifier: aModifier [
 ]
 
 { #category : #generated }
+TJavaProgramNodeVisitor >> visitModule: aModule [
+	^ self visitProgram: aModule
+]
+
+{ #category : #generated }
+TJavaProgramNodeVisitor >> visitModuleExports: aModuleExports [
+	^ self visitProgram: aModuleExports
+]
+
+{ #category : #generated }
+TJavaProgramNodeVisitor >> visitModuleOpens: aModuleOpens [
+	^ self visitProgram: aModuleOpens
+]
+
+{ #category : #generated }
+TJavaProgramNodeVisitor >> visitModuleProvides: aModuleProvides [
+	^ self visitProgram: aModuleProvides
+]
+
+{ #category : #generated }
+TJavaProgramNodeVisitor >> visitModuleRequires: aModuleRequires [
+	^ self visitProgram: aModuleRequires
+]
+
+{ #category : #generated }
+TJavaProgramNodeVisitor >> visitModuleUses: aModuleUses [
+	^ self visitProgram: aModuleUses
+]
+
+{ #category : #generated }
 TJavaProgramNodeVisitor >> visitName: aName [
 	^ self visitExpression: aName
 ]
