@@ -78,7 +78,7 @@ JSParser class >> ambiguousTransitions [
 
 { #category : #'generated-accessing' }
 JSParser class >> cacheId [
-	^'2024-08-29T10:09:17.871271-05:00'
+	^'2024-09-16T06:41:03.70632-05:00'
 ]
 
 { #category : #generated }
@@ -695,7 +695,7 @@ default <numeric_literal>
 :	\/ <regular_expression_body> \/ <regular_expression_flags>
 ;
 <patternToken>
-: 	\`\`\? [a-zA-Z_]+ [^\`]+ \`
+: 	\`\`\? [a-zA-Z_]+ [^\`]* \`
 ;
 <no_substitution_template>##################
 :	\` ([^\`$\\] | <escape> | \$[^\`\{])* \$? \`
@@ -2935,8 +2935,8 @@ JSParser class >> reduceTable [
 	#(464 3 #reduceActionForExportImplementationElement3: 63150081 false) 
 	#(464 3 #reduceActionForExportImplementationElement3: 63150084 false) 
 	#(464 3 #reduceActionForExportImplementationElement3: 63150090 false) 
-	#(464 3 #reduceActionForExportImplementationElement3: 63150086 false) 
 	#(465 3 #reduceActionForExportDeclarationElement2: 64414722 false) 
+	#(464 3 #reduceActionForExportImplementationElement3: 63150086 false) 
 	#(465 3 #reduceActionForExportDeclarationElement2: 64414721 false) 
 	#(464 3 #reduceActionForExportImplementationElement3: 63150085 false) 
 	#(464 3 #reduceActionForExportImplementationElement3: 63150087 false) 
@@ -5209,7 +5209,7 @@ JSParser class >> transitionTable [
 #[0 13 242 0 5 0 6 0 64 0 98 0 99 0 100 0 101 0 105 0 126 0 129 0 130] 
 #[0 29 125 0 5] 
 #[1 11 233 0 61 11 241 0 79 0 193 0 125 29 129 0 142 20 217 1 218 20 221 1 219] 
-#[0 8 202 0 1 0 5 0 67 0 73 0 83 0 88 0 93 0 114] 
+#[0 8 198 0 1 0 5 0 67 0 73 0 83 0 88 0 93 0 114] 
 #[0 8 206 0 1 0 5 0 67 0 73 0 83 0 88 0 93 0 114] 
 #[0 8 226 0 1 0 5 0 67 0 73 0 83 0 88 0 93 0 114] 
 #[1 13 146 0 1 0 235 0 2 13 146 0 4 13 146 0 5 0 235 0 6 0 235 0 8 12 178 0 9 12 178 0 10 12 178 0 11 12 178 0 12 12 178 0 13 12 178 0 14 12 178 0 15 12 178 0 16 12 178 0 17 12 178 0 18 12 178 0 20 12 178 0 21 12 178 0 22 12 178 0 23 12 178 0 24 12 178 0 25 12 178 0 26 12 178 0 27 12 178 0 28 12 178 0 29 12 178 0 30 12 178 0 31 12 178 0 32 12 178 0 33 12 178 0 34 0 235 0 35 0 235 0 36 0 235 0 37 0 235 0 38 13 146 0 39 12 178 0 40 12 178 0 41 12 178 0 42 12 178 0 43 12 178 0 44 12 178 0 45 12 178 0 46 12 178 0 47 12 178 0 48 12 178 0 49 12 178 0 50 12 178 0 51 13 146 0 52 12 178 0 53 12 178 0 54 13 146 0 56 13 146 0 57 13 146 0 58 13 146 0 61 13 146 0 62 13 146 0 63 13 146 0 65 13 146 0 66 13 146 0 67 13 146 0 69 13 146 0 70 13 146 0 72 13 146 0 73 13 146 0 75 13 146 0 77 13 146 0 79 13 146 0 82 13 146 0 83 12 178 0 84 12 178 0 87 13 146 0 88 13 146 0 90 13 146 0 93 13 146 0 94 13 146 0 95 13 146 0 103 13 146 0 107 13 146 0 108 13 146 0 110 13 146 0 111 13 146 0 112 13 146 0 113 13 146 0 114 13 146 0 115 13 146 0 116 13 146 0 117 13 146 0 118 13 146 0 119 13 146 0 120 12 178 0 122 13 146 0 125 13 146 0 127 13 146 0 129 13 146 0 130 13 146 0 131 0 235 0 133 0 235 0 134 13 146 0 137 12 178 1 233 0 235 1 234 13 146 1 235] 

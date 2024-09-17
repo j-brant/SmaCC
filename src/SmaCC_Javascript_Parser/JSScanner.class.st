@@ -581,16 +581,14 @@ JSScanner >> scan24 [
 				ifTrue: [ self step.
 					((currentCharacter between: $A and: $Z)
 						or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ])
-						ifTrue: [ self step.
-							((currentCharacter between: $A and: $Z)
-								or: [ currentCharacter == $_ or: [ currentCharacter between: $a and: $z ] ])
+						ifTrue: [ [ self step.
+							currentCharacter == $` ifTrue: [ ^ self recordAndReportMatch: #(132) ].
+							(currentCharacter between: $A and: $Z)
+								or: [ currentCharacter between: $_ and: $z ] ] whileTrue.
+							true
 								ifTrue: [ [ self step.
 									currentCharacter == $` ifTrue: [ ^ self recordAndReportMatch: #(132) ].
-									(currentCharacter between: $A and: $Z)
-										or: [ currentCharacter between: $_ and: $z ] ] whileTrue.
-									^ self scan29 ].
-							(currentCharacter <= $^ or: [ currentCharacter >= ${ ])
-								ifTrue: [ ^ self scan29 ] ] ].
+									true ] whileTrue ] ] ].
 			^ self reportLastMatch ].
 	^ self scan25
 ]
@@ -645,9 +643,12 @@ JSScanner >> scan28 [
 
 { #category : #generated }
 JSScanner >> scan29 [
-	[ self step.
-	currentCharacter == $` ifTrue: [ ^ self recordAndReportMatch: #(132) ].
-	true ] whileTrue
+	[ self recordMatch: #(138).
+	self step.
+	currentCharacter == $\ ifTrue: [ ^ self scan30 ].
+	currentCharacter isAlphaNumeric or: [ '$-_' includes: currentCharacter ] ]
+		whileTrue.
+	^ self reportLastMatch
 ]
 
 { #category : #generated }
@@ -660,16 +661,6 @@ JSScanner >> scan3 [
 
 { #category : #generated }
 JSScanner >> scan30 [
-	[ self recordMatch: #(138).
-	self step.
-	currentCharacter == $\ ifTrue: [ ^ self scan31 ].
-	currentCharacter isAlphaNumeric or: [ '$-_' includes: currentCharacter ] ]
-		whileTrue.
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-JSScanner >> scan31 [
 	self step.
 	currentCharacter == $u
 		ifTrue: [ self step.
@@ -688,18 +679,18 @@ JSScanner >> scan31 [
 									(currentCharacter isDigit
 										or: [ (currentCharacter between: $A and: $F)
 												or: [ currentCharacter between: $a and: $f ] ])
-										ifTrue: [ ^ self scan30 ] ] ] ] ].
+										ifTrue: [ ^ self scan29 ] ] ] ] ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-JSScanner >> scan32 [
+JSScanner >> scan31 [
 	[ self step.
 	currentCharacter == $$
 		ifTrue: [ self step.
 			currentCharacter == $` ifTrue: [ ^ self recordAndReportMatch: #(136) ].
 			currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(135) ].
-			^ self scan32 ].
+			^ self scan31 ].
 	currentCharacter == $\
 		ifTrue: [ self step.
 			currentCharacter == $u
@@ -711,16 +702,16 @@ JSScanner >> scan32 [
 							(currentCharacter isDigit
 								or: [ (currentCharacter between: $A and: $F)
 										or: [ currentCharacter between: $a and: $f ] ])
-								ifTrue: [ ^ self scan33 ] ].
+								ifTrue: [ ^ self scan32 ] ].
 					^ self reportLastMatch ].
-			currentCharacter == $x ifTrue: [ ^ self scan33 ].
-			^ self scan32 ].
+			currentCharacter == $x ifTrue: [ ^ self scan32 ].
+			^ self scan31 ].
 	currentCharacter == $` ifTrue: [ ^ self recordAndReportMatch: #(136) ].
 	true ] whileTrue
 ]
 
 { #category : #generated }
-JSScanner >> scan33 [
+JSScanner >> scan32 [
 	self step.
 	(currentCharacter isDigit
 		or: [ (currentCharacter between: $A and: $F)
@@ -728,7 +719,7 @@ JSScanner >> scan33 [
 		ifTrue: [ self step.
 			(currentCharacter isDigit
 				or: [ (currentCharacter between: $A and: $F)
-						or: [ currentCharacter between: $a and: $f ] ]) ifTrue: [ ^ self scan32 ] ].
+						or: [ currentCharacter between: $a and: $f ] ]) ifTrue: [ ^ self scan31 ] ].
 	^ self reportLastMatch
 ]
 
@@ -840,7 +831,7 @@ JSScanner >> scanForToken [
 		ifTrue: [ self step.
 			currentCharacter == $/ ifTrue: [ ^ self scanForTokenX3 ].
 			currentCharacter == $` ifTrue: [ ^ self scan24 ].
-			currentCharacter == $} ifTrue: [ ^ self scan32 ] ].
+			currentCharacter == $} ifTrue: [ ^ self scan31 ] ].
 	^ self reportLastMatch
 ]
 
@@ -869,7 +860,7 @@ JSScanner >> scanForTokenX1X2 [
 	currentCharacter == $< ifTrue: [ ^ self recordAndReportMatch: #(137) ].
 	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(23) ].
 	currentCharacter == $> ifTrue: [ ^ self recordAndReportMatch: #(14) ].
-	currentCharacter == $\ ifTrue: [ ^ self scan31 ].
+	currentCharacter == $\ ifTrue: [ ^ self scan30 ].
 	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(4) ].
 	currentCharacter == $} ifTrue: [ ^ self recordAndReportMatch: #(5) ].
 	(currentCharacter isSeparator
@@ -877,7 +868,7 @@ JSScanner >> scanForTokenX1X2 [
 				or: [ currentCharacter = (Character value: 65279) ] ])
 		ifTrue: [ ^ self scanForTokenX1X1 ].
 	(currentCharacter isLetter or: [ '$_' includes: currentCharacter ])
-		ifTrue: [ ^ self scan30 ].
+		ifTrue: [ ^ self scan29 ].
 	^ self reportLastMatch
 ]
 
