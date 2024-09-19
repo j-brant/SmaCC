@@ -193,10 +193,7 @@ SmaCCCodeGenerator >> addVariable: aSmaCCVariableDefinition forDefinition: aSmaC
 SmaCCCodeGenerator >> ambiguousTableEntryFor: aCollection [
 	| entry |
 	entry := aCollection asArray.
-	^ ambiguousActions
-		indexOf: entry
-		ifAbsent: [ ambiguousActions add: entry.
-			ambiguousActions size ]
+	^ ambiguousActions at: entry ifAbsentPut: [ ambiguousActions size + 1 ]
 ]
 
 { #category : #'code generation templates' }
@@ -809,7 +806,7 @@ SmaCCCodeGenerator >> initialMethodStatesFor: aSmaCCNode [
 SmaCCCodeGenerator >> initialize [
 	super initialize.
 	reduceActionCache := Dictionary new.
-	ambiguousActions := OrderedCollection new
+	ambiguousActions := OrderedDictionary new
 ]
 
 { #category : #'compiling-parser' }
@@ -825,16 +822,19 @@ SmaCCCodeGenerator >> initializeResultForReduceAction: aSmaCCRHS [
 
 { #category : #'compiling-parser' }
 SmaCCCodeGenerator >> initializerForAmbiguousTransitions [
-	| stream |
+	| stream first |
 	stream := self outputStream.
 	stream nextPutAll: self newUnsignedShortArrayArray.
+	first := true.
 	ambiguousActions
-		do: [ :each | 
+		keysDo: [ :each | 
+			first
+				ifTrue: [ first := false ]
+				ifFalse: [ stream nextPutAll: self literalArraySeparator ].
 			self
 				writeTransitionTableEntry: each
 				on: stream
-				firstIsType: false ]
-		separatedBy: [ stream nextPutAll: self literalArraySeparator ].
+				firstIsType: false ].
 	stream
 		cr;
 		tab;
