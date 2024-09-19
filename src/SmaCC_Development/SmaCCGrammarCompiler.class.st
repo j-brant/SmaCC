@@ -57,16 +57,14 @@ SmaCCGrammarCompiler >> buildDefinition: definitionString [
 
 { #category : #private }
 SmaCCGrammarCompiler >> checkFor: problemSymbols errorMessage: errorMessage [
-	| stream |
-	problemSymbols isEmpty
-		ifTrue: [ ^ self ].
-	stream := WriteStream with: String new.
-	problemSymbols
-		do: [ :each | stream nextPutAll: each printString ]
-		separatedBy: [ stream space ].
+	problemSymbols isEmpty ifTrue: [ ^ self ].
 	SmaCCCompilationNotification new
 		messageText: errorMessage;
-		tag: stream contents;
+		tagBlock: [ String
+				streamContents: [ :stream | 
+					problemSymbols
+						do: [ :each | stream nextPutAll: each printString ]
+						separatedBy: [ stream space ] ] ];
 		signal
 ]
 
@@ -248,7 +246,7 @@ SmaCCGrammarCompiler >> initialize [
 	super initialize.
 	scannerCompiler := SmaCCScannerCompiler new.
 	startingStateMap := Dictionary new.
-	reduceTable := OrderedCollection new
+	reduceTable := OrderedDictionary new
 ]
 
 { #category : #accessing }
@@ -304,7 +302,7 @@ SmaCCGrammarCompiler >> optimizedShiftFrom: row to: stateIndex inTable: anArray 
 	action := items asArray first.
 	(action bitAnd: 2r11) = SmaCCReduceAction id
 		ifFalse: [ ^ nil ].
-	reduceEntry := reduceTable at: (action bitShift: -2).
+	reduceEntry := reduceTable keyAtIndex: (action bitShift: -2).
 	(reduceEntry at: 3) = (codeGenerator methodNameFor: #liftFirstValue:)
 		ifFalse: [ ^ nil ].
 	(reduceEntry at: 2) = 1
@@ -330,22 +328,18 @@ SmaCCGrammarCompiler >> parserClass: aClassOrString [
 
 { #category : #'reduction table' }
 SmaCCGrammarCompiler >> reduceTable [
-	^ reduceTable
+	^ reduceTable keys
 ]
 
 { #category : #'reduction table' }
 SmaCCGrammarCompiler >> reduceTableIndexFor: aSmaCCReduceAction [
 	| value |
-	value := {(scannerCompiler symbols indexOf: aSmaCCReduceAction symbol).
-	aSmaCCReduceAction rhs size.
-	(self codeGenerator compileSourceFor: aSmaCCReduceAction).
-	aSmaCCReduceAction rhs ruleNumber.
-	aSmaCCReduceAction rhs reduceCode isImmediate}.
-	^ reduceTable
-		indexOf: value
-		ifAbsent: [ reduceTable
-				add: value;
-				size ]
+	value := {scannerCompiler symbols indexOf: aSmaCCReduceAction symbol.
+			aSmaCCReduceAction rhs size.
+			self codeGenerator compileSourceFor: aSmaCCReduceAction.
+			aSmaCCReduceAction rhs ruleNumber.
+			aSmaCCReduceAction rhs reduceCode isImmediate}.
+	^ reduceTable at: value ifAbsentPut: [ reduceTable size + 1 ]
 ]
 
 { #category : #accessing }
