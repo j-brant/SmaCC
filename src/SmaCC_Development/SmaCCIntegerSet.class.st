@@ -170,29 +170,27 @@ SmaCCIntegerSet >> byteSize [
 
 { #category : #private }
 SmaCCIntegerSet >> compareByte: myByte to: otherByte hasMore: aBlock [
-	| mine other |
-	myByte == otherByte
-		ifTrue: [ ^ 0 ].
-	myByte == 0
-		ifTrue: [ ^ (aBlock value: true)
-				ifTrue: [ 1 ]
-				ifFalse: [ -1 ] ].
+	| mine xor bit |
+	myByte == otherByte ifTrue: [ ^ 0 ].
+	myByte == 0 ifTrue: [ ^ (aBlock value: true) ifTrue: [ 1 ] ifFalse: [ -1 ] ].
 	otherByte == 0
-		ifTrue: [ ^ (aBlock value: false)
-				ifTrue: [ -1 ]
-				ifFalse: [ 1 ] ].
-	mine := myByte.
-	other := otherByte.
-	[ mine odd = other odd ]
-		whileTrue: [ mine := mine bitShift: -1.
-			other := other bitShift: -1 ].
-	^ mine odd
-		ifTrue: [ (other ~~ 0 or: [ aBlock value: false ])
-				ifTrue: [ -1 ]
-				ifFalse: [ 1 ] ]
-		ifFalse: [ (mine ~~ 0 or: [ aBlock value: true ])
+		ifTrue: [ ^ (aBlock value: false) ifTrue: [ -1 ] ifFalse: [ 1 ] ].
+	xor := myByte bitXor: otherByte.
+	bit := (xor bitAnd: 2r1111) = 0
+			ifTrue: [ (xor bitAnd: 2r110000) = 0
+					ifTrue: [ (xor bitAnd: 2r1000000) = 0 ifTrue: [ 2r10000000 ] ifFalse: [ 2r1000000 ] ]
+					ifFalse: [ (xor bitAnd: 2r10000) = 0 ifTrue: [ 2r100000 ] ifFalse: [ 2r10000 ] ] ]
+			ifFalse: [ (xor bitAnd: 2r11) = 0
+					ifTrue: [ (xor bitAnd: 2r100) = 0 ifTrue: [ 2r1000 ] ifFalse: [ 2r100 ] ]
+					ifFalse: [ (xor bitAnd: 2r1) = 0 ifTrue: [ 2r10 ] ifFalse: [ 2r1 ] ] ].
+	mine := myByte bitAnd: bit.
+	^ mine = 0
+		ifTrue: [ (myByte >= (bit bitShift: 1) or: [ aBlock value: true ])
 				ifTrue: [ 1 ]
 				ifFalse: [ -1 ] ]
+		ifFalse: [ (otherByte >= (bit bitShift: 1) or: [ aBlock value: false ])
+				ifTrue: [ -1 ]
+				ifFalse: [ 1 ] ]
 ]
 
 { #category : #private }
