@@ -319,7 +319,7 @@ SmaCCNode >> simulate: aStream [
 
 { #category : #converting }
 SmaCCNode >> sortedTransitions [
-	^ transitions asSortedCollection: [ :a :b | a <= b ]
+	^ transitions
 ]
 
 { #category : #accessing }
