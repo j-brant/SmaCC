@@ -785,6 +785,31 @@ SmaCCParser >> shiftAction [
 	^ 2r01
 ]
 
+{ #category : #accessing }
+SmaCCParser >> shortestPathsFrom: startingState [
+	| paths todo currentState nextState |
+	paths := Dictionary new.
+	paths at: startingState put: OrderedCollection new.
+	todo := OrderedCollection with: startingState.
+	[ todo notEmpty ]
+		whileTrue: [ currentState := todo removeFirst.
+			1
+				to: self symbolNames size
+				do: [ :i | 
+					(self actionsForState: currentState and: i)
+						do: [ :action | 
+							(action bitAnd: 2r11) = self shiftAction
+								ifTrue: [ nextState := action bitShift: -2.
+									(paths includesKey: nextState)
+										ifFalse: [ todo add: nextState.
+											paths
+												at: nextState
+												put: ((paths at: currentState) copy
+														add: i;
+														yourself) ] ] ] ] ].
+	^ paths
+]
+
 { #category : #parsing }
 SmaCCParser >> spawnParser: aGLRParserClass [
 	^ self

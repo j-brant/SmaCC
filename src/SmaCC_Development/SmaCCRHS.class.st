@@ -102,7 +102,7 @@ SmaCCRHS >> firstTerminals [
 SmaCCRHS >> generateNamedVariableCollectionWarningFor: problemIndex [
 	SmaCCCompilationNotification new
 		messageText: 'Node creation';
-		tag: [ String
+		tagBlock: [ String
 				streamContents: [ :stream | 
 					stream
 						nextPutAll: 'Non terminal symbol that returns a variable collection is assigned to a variable. The non terminal should be changed to return an AST node:';
