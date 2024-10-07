@@ -1,8 +1,8 @@
 Class {
 	#name : #PyEllipsisNode,
-	#superclass : #PyRootNode,
+	#superclass : #PyExpressionNode,
 	#instVars : [
-		'periodTokens'
+		'ellipsis'
 	],
 	#category : #'SmaCC_Python'
 }
@@ -13,22 +13,16 @@ PyEllipsisNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-PyEllipsisNode >> compositeTokenVariables [
-	^ #(#periodTokens)
-]
-
-{ #category : #'generated-initialize-release' }
-PyEllipsisNode >> initialize [
-	super initialize.
-	periodTokens := OrderedCollection new: 2.
+PyEllipsisNode >> ellipsis [
+	^ ellipsis
 ]
 
 { #category : #generated }
-PyEllipsisNode >> periodTokens [
-	^ periodTokens
+PyEllipsisNode >> ellipsis: aSmaCCToken [
+	ellipsis := aSmaCCToken
 ]
 
 { #category : #generated }
-PyEllipsisNode >> periodTokens: anOrderedCollection [
-	periodTokens := anOrderedCollection
+PyEllipsisNode >> tokenVariables [
+	^ #(#ellipsis)
 ]
