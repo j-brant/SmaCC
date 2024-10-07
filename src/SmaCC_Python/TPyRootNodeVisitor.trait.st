@@ -112,7 +112,7 @@ TPyRootNodeVisitor >> visitElif: anElif [
 
 { #category : #generated }
 TPyRootNodeVisitor >> visitEllipsis: anEllipsis [
-	^ self visitRoot: anEllipsis
+	^ self visitExpression: anEllipsis
 ]
 
 { #category : #generated }
