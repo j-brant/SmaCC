@@ -5476,12 +5476,17 @@ JSParser >> checkSemicolon [
 	currentToken startPosition ifNotNil: [ ^ self ].
 	states size < 2 ifTrue: [ ^ self ].
 	nodeStack isEmpty ifTrue: [ ^ self ].
-	(nodeStack last isKindOf: SmaCCToken)
-		ifTrue: [ token := nodeStack last ]
-		ifFalse: [ (nodeStack last isKindOf: JSNameExpressionNode)
-				ifTrue: [ token := nodeStack last name ]
-				ifFalse: [ (nodeStack last isKindOf: SmaCCDeferredReduceAction)
-						ifTrue: [ token := nodeStack last arguments at: 1 ifAbsent: [  ] ] ] ].
+	token := nodeStack last.
+	[ token isNil or: [ token isKindOf: SmaCCToken ] ]
+		whileFalse: [ (token isKindOf: JSNameExpressionNode)
+				ifTrue: [ token := token name ]
+				ifFalse: [ (token isKindOf: SmaCCDeferredReduceAction)
+						ifTrue: [ token := token arguments at: 1 ifAbsent: [  ] ]
+						ifFalse: [ (token isKindOf: SmaCCDeferredChoice)
+								ifTrue: [ token := token stacksCollection first
+											ifEmpty: [ nil ]
+											ifNotEmpty: [ :items | items last ] ]
+								ifFalse: [ token := nil ] ] ] ].
 	(token notNil and: [ token ids first ~= scanner identifierId ])
 		ifTrue: [ self killState ]
 ]
