@@ -216,11 +216,16 @@ SmaCCParser >> roassalViewForStack: stack [
 
 { #category : #'*SmaCC_Debugging_Support' }
 SmaCCParser class >> sourceFilesIn: aDirectory [
-	^ aDirectory asFileReference allFiles
-		select: [ :each | 
-			| extension |
-			extension := '.' , each extension.
-			self fileExtensions includes: extension ]
+	| pattern |
+	pattern := String
+			streamContents: [ :stream | 
+				self fileExtensions
+					do: [ :each | 
+						stream
+							nextPut: $*;
+							nextPutAll: each ]
+					separatedBy: [ stream nextPut: $; ] ].
+	^ aDirectory allChildrenMatching: pattern
 ]
 
 { #category : #'*SmaCC_Debugging_Support' }
