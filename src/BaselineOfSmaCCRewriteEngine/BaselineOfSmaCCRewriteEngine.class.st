@@ -10,20 +10,20 @@ BaselineOfSmaCCRewriteEngine >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.82' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.83' ].
 
 		spec package: 'SmaCC_Parse_Tree_Comparison' with: [
-			spec requires: #('SmaCCRuntime') ].
+			spec requires: #(#SmaCCRuntime) ].
 		spec package: 'SmaCC_Rewrite_Engine' with: [
-			spec requires: #('SmaCCRuntime') ].
+			spec requires: #(#SmaCCRuntime) ].
 		spec package: 'SmaCC_Rewrite_Engine_Command_Line' with: [
-			spec requires: #('SmaCC_Rewrite_Engine') ].
+			spec requires: #(#SmaCC_Rewrite_Engine) ].
 		spec package: 'SmaCC_Rewrite_Engine_Tests' with: [
-			spec requires: #('SmaCC_Rewrite_Engine') ].
+			spec requires: #(#SmaCC_Rewrite_Engine) ].
 		spec package: 'SmaCC_Rewrite_Engine_UI' with: [
-			spec requires: #('SmaCC_Rewrite_Engine') ].
+			spec requires: #(#SmaCC_Rewrite_Engine) ].
 		spec package: 'SmaCC_Rewrite_Server'.
 		spec package: 'SmaCC_Rewrite_Server_Worker' with: [
-			spec requires: #('SmaCC_Rewrite_Engine') ].
+			spec requires: #(#SmaCC_Rewrite_Engine) ].
 	]
 ]

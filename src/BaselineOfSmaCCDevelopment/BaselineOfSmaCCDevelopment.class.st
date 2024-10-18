@@ -10,17 +10,17 @@ BaselineOfSmaCCDevelopment >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.82' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.83' ].
 
 		spec package: 'SmaCC_Grammar_Parser' with: [
-			spec requires: #('SmaCCRuntime') ].
+			spec requires: #(#SmaCCRuntime) ].
 		spec package: 'SmaCC_Development' with: [
-			spec requires: #('SmaCCRuntime' 'SmaCC_Grammar_Parser') ].
+			spec requires: #(#SmaCCRuntime #SmaCC_Grammar_Parser) ].
 		spec package: 'SmaCC_Development_UI' with: [
-			spec requires: #('SmaCC_Development') ].
+			spec requires: #(#SmaCC_Development) ].
 		spec package: 'SmaCC_Debugging_Support' with: [
-			spec requires: #('SmaCC_Development') ].
+			spec requires: #(#SmaCC_Development) ].
 		spec package: 'SmaCC_Tests' with: [
-			spec requires: #('SmaCC_Development') ].
+			spec requires: #(#SmaCC_Development) ].
 	]
 ]
