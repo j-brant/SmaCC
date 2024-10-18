@@ -225,7 +225,8 @@ SmaCCParser class >> sourceFilesIn: aDirectory [
 							nextPut: $*;
 							nextPutAll: each ]
 					separatedBy: [ stream nextPut: $; ] ].
-	^ aDirectory allChildrenMatching: pattern
+	^ aDirectory allDirectories
+		flatCollect: [ :each | each filesMatching: pattern ]
 ]
 
 { #category : #'*SmaCC_Debugging_Support' }
