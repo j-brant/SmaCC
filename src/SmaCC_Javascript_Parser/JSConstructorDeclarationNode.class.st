@@ -9,12 +9,7 @@ Class {
 		'statements',
 		'rightBrace',
 		'modifier',
-		'semicolon',
-		'left',
-		'restParameter',
-		'parameters',
-		'commas',
-		'right'
+		'semicolon'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
@@ -25,18 +20,8 @@ JSConstructorDeclarationNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-JSConstructorDeclarationNode >> commas [
-	^ commas
-]
-
-{ #category : #generated }
-JSConstructorDeclarationNode >> commas: anOrderedCollection [
-	commas := anOrderedCollection
-]
-
-{ #category : #generated }
 JSConstructorDeclarationNode >> compositeNodeVariables [
-	^ #(#decorators #statements #parameters)
+	^ #(#decorators #statements)
 ]
 
 { #category : #generated }
@@ -62,13 +47,8 @@ JSConstructorDeclarationNode >> decorators: anOrderedCollection [
 ]
 
 { #category : #generated }
-JSConstructorDeclarationNode >> ignoredCompositeTokenVariables [
-	^ #(#commas)
-]
-
-{ #category : #generated }
 JSConstructorDeclarationNode >> ignoredTokenVariables [
-	^ #(#leftBrace #rightBrace #semicolon #left #right)
+	^ #(#leftBrace #rightBrace #semicolon)
 ]
 
 { #category : #'generated-initialize-release' }
@@ -76,18 +56,6 @@ JSConstructorDeclarationNode >> initialize [
 	super initialize.
 	decorators := OrderedCollection new: 2.
 	statements := OrderedCollection new: 2.
-	parameters := OrderedCollection new: 2.
-	commas := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-JSConstructorDeclarationNode >> left [
-	^ left
-]
-
-{ #category : #generated }
-JSConstructorDeclarationNode >> left: aSmaCCToken [
-	left := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -112,41 +80,7 @@ JSConstructorDeclarationNode >> modifier: aSmaCCToken [
 
 { #category : #generated }
 JSConstructorDeclarationNode >> nodeVariables [
-	^ #(#signature #restParameter)
-]
-
-{ #category : #generated }
-JSConstructorDeclarationNode >> parameters [
-	^ parameters
-]
-
-{ #category : #generated }
-JSConstructorDeclarationNode >> parameters: anOrderedCollection [
-	self setParents: self parameters to: nil.
-	parameters := anOrderedCollection.
-	self setParents: self parameters to: self
-]
-
-{ #category : #generated }
-JSConstructorDeclarationNode >> restParameter [
-	^ restParameter
-]
-
-{ #category : #generated }
-JSConstructorDeclarationNode >> restParameter: aJSRestVariableDeclarationNode [
-	self restParameter notNil ifTrue: [ self restParameter parent: nil ].
-	restParameter := aJSRestVariableDeclarationNode.
-	self restParameter notNil ifTrue: [ self restParameter parent: self ]
-]
-
-{ #category : #generated }
-JSConstructorDeclarationNode >> right [
-	^ right
-]
-
-{ #category : #generated }
-JSConstructorDeclarationNode >> right: aSmaCCToken [
-	right := aSmaCCToken
+	^ #(#signature)
 ]
 
 { #category : #generated }
