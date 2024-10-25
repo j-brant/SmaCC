@@ -50,7 +50,14 @@ SmaCCParserState >> = anObject [
 
 { #category : #accessing }
 SmaCCParserState >> attributeNamed: aSymbol [
-	^attributes ifNil: [ nil ] ifNotNil: [ attributes at: aSymbol ]
+	^ attributes ifNil: [ nil ] ifNotNil: [ attributes at: aSymbol ifAbsent: [  ] ]
+]
+
+{ #category : #accessing }
+SmaCCParserState >> attributeNamed: aSymbol ifAbsent: aBlock [
+	^ attributes
+		ifNil: aBlock
+		ifNotNil: [ attributes at: aSymbol ifAbsent: aBlock ]
 ]
 
 { #category : #accessing }
