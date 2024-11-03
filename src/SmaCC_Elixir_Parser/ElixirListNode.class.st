@@ -1,58 +1,57 @@
 Class {
-	#name : 'ElixirListNode',
-	#superclass : 'ElixirProgramNode',
+	#name : #ElixirListNode,
+	#superclass : #ElixirProgramNode,
 	#instVars : [
 		'leftBracket',
 		'close',
 		'args'
 	],
-	#category : 'SmaCC_Elixir_Parser',
-	#package : 'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirListNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitList: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirListNode >> args [
 	^ args
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirListNode >> args: anElixirListArgsNode [
 	self args notNil ifTrue: [ self args parent: nil ].
 	args := anElixirListArgsNode.
 	self args notNil ifTrue: [ self args parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirListNode >> close [
 	^ close
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirListNode >> close: aSmaCCToken [
 	close := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirListNode >> leftBracket [
 	^ leftBracket
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirListNode >> leftBracket: aSmaCCToken [
 	leftBracket := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirListNode >> nodeVariables [
 	^ #(#args)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirListNode >> tokenVariables [
 	^ #(#leftBracket #close)
 ]

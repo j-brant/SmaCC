@@ -1,44 +1,43 @@
 Class {
-	#name : 'ElixirNoParensOneExprNode',
-	#superclass : 'ElixirProgramNode',
+	#name : #ElixirNoParensOneExprNode,
+	#superclass : #ElixirProgramNode,
 	#instVars : [
 		'identifier',
 		'call'
 	],
-	#category : 'SmaCC_Elixir_Parser',
-	#package : 'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirNoParensOneExprNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNoParensOneExpr: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirNoParensOneExprNode >> call [
 	^ call
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirNoParensOneExprNode >> call: anElixirProgramNode [
 	self call notNil ifTrue: [ self call parent: nil ].
 	call := anElixirProgramNode.
 	self call notNil ifTrue: [ self call parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirNoParensOneExprNode >> identifier [
 	^ identifier
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirNoParensOneExprNode >> identifier: anElixirProgramNode [
 	self identifier notNil ifTrue: [ self identifier parent: nil ].
 	identifier := anElixirProgramNode.
 	self identifier notNil ifTrue: [ self identifier parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirNoParensOneExprNode >> nodeVariables [
 	^ #(#identifier #call)
 ]

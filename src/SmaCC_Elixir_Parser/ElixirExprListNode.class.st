@@ -1,52 +1,51 @@
 Class {
-	#name : 'ElixirExprListNode',
-	#superclass : 'ElixirProgramNode',
+	#name : #ElixirExprListNode,
+	#superclass : #ElixirProgramNode,
 	#instVars : [
 		'expressions',
 		'eoes'
 	],
-	#category : 'SmaCC_Elixir_Parser',
-	#package : 'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirExprListNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExprList: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirExprListNode >> compositeNodeVariables [
 	^ #(#expressions)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirExprListNode >> compositeTokenVariables [
 	^ #(#eoes)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirExprListNode >> eoes [
 	^ eoes
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirExprListNode >> eoes: anOrderedCollection [
 	eoes := anOrderedCollection
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirExprListNode >> expressions [
 	^ expressions
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirExprListNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : 'generated-initialize-release' }
+{ #category : #'generated-initialize-release' }
 ElixirExprListNode >> initialize [
 	super initialize.
 	expressions := OrderedCollection new: 2.

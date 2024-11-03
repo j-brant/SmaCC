@@ -1,39 +1,38 @@
 Class {
-	#name : 'ElixirKwNode',
-	#superclass : 'ElixirProgramNode',
+	#name : #ElixirKwNode,
+	#superclass : #ElixirProgramNode,
 	#instVars : [
 		'kw',
 		'com'
 	],
-	#category : 'SmaCC_Elixir_Parser',
-	#package : 'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirKwNode >> acceptVisitor: aProgramVisitor [
 
 	^ aProgramVisitor visitKw: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirKwNode >> com [
 
 	^ com
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirKwNode >> com: aSmaCCToken [
 
 	com := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirKwNode >> kw [
 
 	^ kw
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirKwNode >> kw: anElixirKwBaseNode [
 
 	self kw notNil ifTrue: [ self kw parent: nil ].
@@ -41,13 +40,13 @@ ElixirKwNode >> kw: anElixirKwBaseNode [
 	self kw notNil ifTrue: [ self kw parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirKwNode >> nodeVariables [
 
 	^ #( #kw )
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirKwNode >> tokenVariables [
 
 	^ #( #com )

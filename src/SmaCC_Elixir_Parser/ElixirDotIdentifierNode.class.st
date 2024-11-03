@@ -1,58 +1,57 @@
 Class {
-	#name : 'ElixirDotIdentifierNode',
-	#superclass : 'ElixirProgramNode',
+	#name : #ElixirDotIdentifierNode,
+	#superclass : #ElixirProgramNode,
 	#instVars : [
 		'identifier',
 		'expression',
 		'dot'
 	],
-	#category : 'SmaCC_Elixir_Parser',
-	#package : 'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotIdentifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDotIdentifier: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotIdentifierNode >> dot [
 	^ dot
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotIdentifierNode >> dot: aSmaCCToken [
 	dot := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotIdentifierNode >> expression [
 	^ expression
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotIdentifierNode >> expression: anElixirMatchedExprNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := anElixirMatchedExprNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotIdentifierNode >> identifier [
 	^ identifier
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotIdentifierNode >> identifier: aSmaCCToken [
 	identifier := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotIdentifierNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotIdentifierNode >> tokenVariables [
 	^ #(#identifier #dot)
 ]

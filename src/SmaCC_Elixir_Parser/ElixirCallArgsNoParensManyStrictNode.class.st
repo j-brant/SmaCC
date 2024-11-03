@@ -1,58 +1,57 @@
 Class {
-	#name : 'ElixirCallArgsNoParensManyStrictNode',
-	#superclass : 'ElixirProgramNode',
+	#name : #ElixirCallArgsNoParensManyStrictNode,
+	#superclass : #ElixirProgramNode,
 	#instVars : [
 		'args',
 		'leftParen',
 		'rightParen'
 	],
-	#category : 'SmaCC_Elixir_Parser',
-	#package : 'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirCallArgsNoParensManyStrictNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCallArgsNoParensManyStrict: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirCallArgsNoParensManyStrictNode >> args [
 	^ args
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirCallArgsNoParensManyStrictNode >> args: anElixirProgramNode [
 	self args notNil ifTrue: [ self args parent: nil ].
 	args := anElixirProgramNode.
 	self args notNil ifTrue: [ self args parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirCallArgsNoParensManyStrictNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirCallArgsNoParensManyStrictNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirCallArgsNoParensManyStrictNode >> nodeVariables [
 	^ #(#args)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirCallArgsNoParensManyStrictNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirCallArgsNoParensManyStrictNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirCallArgsNoParensManyStrictNode >> tokenVariables [
 	^ #(#leftParen #rightParen)
 ]

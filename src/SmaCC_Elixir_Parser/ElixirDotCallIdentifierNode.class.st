@@ -1,47 +1,46 @@
 Class {
-	#name : 'ElixirDotCallIdentifierNode',
-	#superclass : 'ElixirProgramNode',
+	#name : #ElixirDotCallIdentifierNode,
+	#superclass : #ElixirProgramNode,
 	#instVars : [
 		'identifier',
 		'op'
 	],
-	#category : 'SmaCC_Elixir_Parser',
-	#package : 'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotCallIdentifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDotCallIdentifier: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotCallIdentifierNode >> identifier [
 	^ identifier
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotCallIdentifierNode >> identifier: anElixirProgramNode [
 	self identifier notNil ifTrue: [ self identifier parent: nil ].
 	identifier := anElixirProgramNode.
 	self identifier notNil ifTrue: [ self identifier parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotCallIdentifierNode >> nodeVariables [
 	^ #(#identifier)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotCallIdentifierNode >> op [
 	^ op
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotCallIdentifierNode >> op: aSmaCCToken [
 	op := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotCallIdentifierNode >> tokenVariables [
 	^ #(#op)
 ]

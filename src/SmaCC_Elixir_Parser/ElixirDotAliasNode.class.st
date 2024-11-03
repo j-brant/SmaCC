@@ -1,6 +1,6 @@
 Class {
-	#name : 'ElixirDotAliasNode',
-	#superclass : 'ElixirProgramNode',
+	#name : #ElixirDotAliasNode,
+	#superclass : #ElixirProgramNode,
 	#instVars : [
 		'alias',
 		'expression',
@@ -8,80 +8,79 @@ Class {
 		'leftCurly',
 		'rightCurly'
 	],
-	#category : 'SmaCC_Elixir_Parser',
-	#package : 'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotAliasNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDotAlias: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotAliasNode >> alias [
 	^ alias
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotAliasNode >> alias: anObject [
 	self setParent: self alias to: nil.
 	alias := anObject.
 	self setParent: self alias to: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotAliasNode >> expression [
 	^ expression
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotAliasNode >> expression: anElixirMatchedExprNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := anElixirMatchedExprNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotAliasNode >> leftCurly [
 	^ leftCurly
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotAliasNode >> leftCurly: aSmaCCToken [
 	leftCurly := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotAliasNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotAliasNode >> op [
 	^ op
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotAliasNode >> op: aSmaCCToken [
 	op := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotAliasNode >> otherVariables [
 	^ #(#alias)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotAliasNode >> rightCurly [
 	^ rightCurly
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotAliasNode >> rightCurly: aSmaCCToken [
 	rightCurly := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirDotAliasNode >> tokenVariables [
 	^ #(#op #leftCurly #rightCurly)
 ]

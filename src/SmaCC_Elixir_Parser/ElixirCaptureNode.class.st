@@ -1,40 +1,39 @@
 Class {
-	#name : 'ElixirCaptureNode',
-	#superclass : 'ElixirProgramNode',
+	#name : #ElixirCaptureNode,
+	#superclass : #ElixirProgramNode,
 	#instVars : [
 		'op',
 		'int'
 	],
-	#category : 'SmaCC_Elixir_Parser',
-	#package : 'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirCaptureNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCapture: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirCaptureNode >> int [
 	^ int
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirCaptureNode >> int: aSmaCCToken [
 	int := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirCaptureNode >> op [
 	^ op
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirCaptureNode >> op: aSmaCCToken [
 	op := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirCaptureNode >> tokenVariables [
 	^ #(#op #int)
 ]

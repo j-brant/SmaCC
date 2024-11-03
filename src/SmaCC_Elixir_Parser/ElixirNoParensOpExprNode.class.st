@@ -1,47 +1,46 @@
 Class {
-	#name : 'ElixirNoParensOpExprNode',
-	#superclass : 'ElixirProgramNode',
+	#name : #ElixirNoParensOpExprNode,
+	#superclass : #ElixirProgramNode,
 	#instVars : [
 		'op',
 		'expression'
 	],
-	#category : 'SmaCC_Elixir_Parser',
-	#package : 'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirNoParensOpExprNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNoParensOpExpr: self
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirNoParensOpExprNode >> expression [
 	^ expression
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirNoParensOpExprNode >> expression: anElixirProgramNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := anElixirProgramNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirNoParensOpExprNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirNoParensOpExprNode >> op [
 	^ op
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirNoParensOpExprNode >> op: aSmaCCToken [
 	op := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : #generated }
 ElixirNoParensOpExprNode >> tokenVariables [
 	^ #(#op)
 ]
