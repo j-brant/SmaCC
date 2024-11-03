@@ -1,57 +1,58 @@
 Class {
-	#name : #ElixirTupleNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirTupleNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'leftCurly',
 		'rightCurly',
 		'elements'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirTupleNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTuple: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirTupleNode >> elements [
 	^ elements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirTupleNode >> elements: anElixirContainerArgsNode [
 	self elements notNil ifTrue: [ self elements parent: nil ].
 	elements := anElixirContainerArgsNode.
 	self elements notNil ifTrue: [ self elements parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirTupleNode >> leftCurly [
 	^ leftCurly
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirTupleNode >> leftCurly: aSmaCCToken [
 	leftCurly := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirTupleNode >> nodeVariables [
 	^ #(#elements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirTupleNode >> rightCurly [
 	^ rightCurly
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirTupleNode >> rightCurly: aSmaCCToken [
 	rightCurly := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirTupleNode >> tokenVariables [
 	^ #(#leftCurly #rightCurly)
 ]

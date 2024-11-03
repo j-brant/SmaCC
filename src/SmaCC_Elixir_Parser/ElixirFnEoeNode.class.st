@@ -1,39 +1,40 @@
 Class {
-	#name : #ElixirFnEoeNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirFnEoeNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'fn',
 		'eoe'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirFnEoeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFnEoe: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirFnEoeNode >> eoe [
 	^ eoe
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirFnEoeNode >> eoe: aSmaCCToken [
 	eoe := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirFnEoeNode >> fn [
 	^ fn
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirFnEoeNode >> fn: aSmaCCToken [
 	fn := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirFnEoeNode >> tokenVariables [
 	^ #(#fn #eoe)
 ]

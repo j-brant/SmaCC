@@ -1,28 +1,29 @@
 Class {
-	#name : #ElixirBinStringNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirBinStringNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'string'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBinStringNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBinString: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBinStringNode >> string [
 	^ string
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBinStringNode >> string: aSmaCCToken [
 	string := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBinStringNode >> tokenVariables [
 	^ #(#string)
 ]

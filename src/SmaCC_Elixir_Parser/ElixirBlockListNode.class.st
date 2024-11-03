@@ -1,34 +1,35 @@
 Class {
-	#name : #ElixirBlockListNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirBlockListNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'items'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBlockListNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBlockList: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBlockListNode >> compositeNodeVariables [
 	^ #(#items)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 ElixirBlockListNode >> initialize [
 	super initialize.
 	items := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBlockListNode >> items [
 	^ items
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBlockListNode >> items: anOrderedCollection [
 	self setParents: self items to: nil.
 	items := anOrderedCollection.

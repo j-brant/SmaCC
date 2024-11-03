@@ -1,69 +1,66 @@
 Class {
-	#name : #ElixirDotOpIdentifierNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirDotOpIdentifierNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'ops',
 		'expressions',
-		'identifier'
+		'identifier',
+		'expression',
+		'op'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirDotOpIdentifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDotOpIdentifier: self
 ]
 
-{ #category : #generated }
-ElixirDotOpIdentifierNode >> compositeNodeVariables [
-	^ #(#expressions)
+{ #category : 'generated' }
+ElixirDotOpIdentifierNode >> expression [
+
+	^ expression
 ]
 
-{ #category : #generated }
-ElixirDotOpIdentifierNode >> compositeTokenVariables [
-	^ #(#ops)
+{ #category : 'generated' }
+ElixirDotOpIdentifierNode >> expression: anElixirMatchedExprNode [
+
+	self expression notNil ifTrue: [ self expression parent: nil ].
+	expression := anElixirMatchedExprNode.
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
-ElixirDotOpIdentifierNode >> expressions [
-	^ expressions
-]
-
-{ #category : #generated }
-ElixirDotOpIdentifierNode >> expressions: anOrderedCollection [
-	self setParents: self expressions to: nil.
-	expressions := anOrderedCollection.
-	self setParents: self expressions to: self
-]
-
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirDotOpIdentifierNode >> identifier [
 	^ identifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirDotOpIdentifierNode >> identifier: aSmaCCToken [
 	identifier := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
-ElixirDotOpIdentifierNode >> initialize [
-	super initialize.
-	expressions := OrderedCollection new: 2.
-	ops := OrderedCollection new: 2.
+{ #category : 'generated' }
+ElixirDotOpIdentifierNode >> nodeVariables [
+
+	^ #( #expression )
 ]
 
-{ #category : #generated }
-ElixirDotOpIdentifierNode >> ops [
-	^ ops
+{ #category : 'generated' }
+ElixirDotOpIdentifierNode >> op [
+
+	^ op
 ]
 
-{ #category : #generated }
-ElixirDotOpIdentifierNode >> ops: anOrderedCollection [
-	ops := anOrderedCollection
+{ #category : 'generated' }
+ElixirDotOpIdentifierNode >> op: aSmaCCToken [
+
+	op := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirDotOpIdentifierNode >> tokenVariables [
-	^ #(#identifier)
+
+	^ #( #identifier #op )
 ]

@@ -1,69 +1,70 @@
 Class {
-	#name : #ElixirMatchedExprNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirMatchedExprNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'ops',
 		'expressions',
 		'identifier'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirMatchedExprNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMatchedExpr: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirMatchedExprNode >> compositeNodeVariables [
 	^ #(#expressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirMatchedExprNode >> compositeTokenVariables [
 	^ #(#ops)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirMatchedExprNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirMatchedExprNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirMatchedExprNode >> identifier [
 	^ identifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirMatchedExprNode >> identifier: aSmaCCToken [
 	identifier := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 ElixirMatchedExprNode >> initialize [
 	super initialize.
 	expressions := OrderedCollection new: 2.
 	ops := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirMatchedExprNode >> ops [
 	^ ops
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirMatchedExprNode >> ops: anOrderedCollection [
 	ops := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirMatchedExprNode >> tokenVariables [
 	^ #(#identifier)
 ]

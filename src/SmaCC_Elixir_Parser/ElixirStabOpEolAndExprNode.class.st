@@ -1,46 +1,47 @@
 Class {
-	#name : #ElixirStabOpEolAndExprNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirStabOpEolAndExprNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'op',
 		'body'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirStabOpEolAndExprNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStabOpEolAndExpr: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirStabOpEolAndExprNode >> body [
 	^ body
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirStabOpEolAndExprNode >> body: anElixirProgramNode [
 	self body notNil ifTrue: [ self body parent: nil ].
 	body := anElixirProgramNode.
 	self body notNil ifTrue: [ self body parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirStabOpEolAndExprNode >> nodeVariables [
 	^ #(#body)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirStabOpEolAndExprNode >> op [
 	^ op
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirStabOpEolAndExprNode >> op: aSmaCCToken [
 	op := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirStabOpEolAndExprNode >> tokenVariables [
 	^ #(#op)
 ]

@@ -1,28 +1,29 @@
 Class {
-	#name : #ElixirListStringNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirListStringNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'string'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirListStringNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitListString: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirListStringNode >> string [
 	^ string
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirListStringNode >> string: aSmaCCToken [
 	string := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirListStringNode >> tokenVariables [
 	^ #(#string)
 ]

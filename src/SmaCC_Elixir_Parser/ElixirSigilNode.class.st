@@ -1,28 +1,29 @@
 Class {
-	#name : #ElixirSigilNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirSigilNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'sigil'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirSigilNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSigil: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirSigilNode >> sigil [
 	^ sigil
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirSigilNode >> sigil: aSmaCCToken [
 	sigil := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirSigilNode >> tokenVariables [
 	^ #(#sigil)
 ]

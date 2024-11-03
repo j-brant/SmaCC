@@ -1,56 +1,76 @@
 Class {
-	#name : #ElixirStabExprNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirStabExprNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'expression',
 		'args',
-		'guard'
+		'guard',
+		'when'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirStabExprNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStabExpr: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirStabExprNode >> args [
 	^ args
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirStabExprNode >> args: anElixirProgramNode [
 	self args notNil ifTrue: [ self args parent: nil ].
 	args := anElixirProgramNode.
 	self args notNil ifTrue: [ self args parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirStabExprNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirStabExprNode >> expression: anElixirProgramNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := anElixirProgramNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirStabExprNode >> guard [
 	^ guard
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirStabExprNode >> guard: anElixirProgramNode [
 	self guard notNil ifTrue: [ self guard parent: nil ].
 	guard := anElixirProgramNode.
 	self guard notNil ifTrue: [ self guard parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirStabExprNode >> nodeVariables [
 	^ #(#expression #args #guard)
+]
+
+{ #category : 'generated' }
+ElixirStabExprNode >> tokenVariables [
+
+	^ #( #when )
+]
+
+{ #category : 'generated' }
+ElixirStabExprNode >> when [
+
+	^ when
+]
+
+{ #category : 'generated' }
+ElixirStabExprNode >> when: aSmaCCToken [
+
+	when := aSmaCCToken
 ]

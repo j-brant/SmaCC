@@ -1,68 +1,70 @@
 Class {
-	#name : #ElixirBracketArgNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirBracketArgNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'leftBracket',
 		'rightBracket',
 		'com',
 		'arg'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBracketArgNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBracketArg: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBracketArgNode >> arg [
 	^ arg
 ]
 
-{ #category : #generated }
-ElixirBracketArgNode >> arg: anElixirProgramNode [
+{ #category : 'generated' }
+ElixirBracketArgNode >> arg: anElixirBracketValuesNode [
+
 	self arg notNil ifTrue: [ self arg parent: nil ].
-	arg := anElixirProgramNode.
+	arg := anElixirBracketValuesNode.
 	self arg notNil ifTrue: [ self arg parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBracketArgNode >> com [
 	^ com
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBracketArgNode >> com: aSmaCCToken [
 	com := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBracketArgNode >> leftBracket [
 	^ leftBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBracketArgNode >> leftBracket: aSmaCCToken [
 	leftBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBracketArgNode >> nodeVariables [
 	^ #(#arg)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBracketArgNode >> rightBracket [
 	^ rightBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBracketArgNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBracketArgNode >> tokenVariables [
 	^ #(#leftBracket #rightBracket #com)
 ]

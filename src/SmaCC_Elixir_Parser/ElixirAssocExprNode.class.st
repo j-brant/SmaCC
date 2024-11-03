@@ -1,57 +1,58 @@
 Class {
-	#name : #ElixirAssocExprNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirAssocExprNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'key',
 		'op',
 		'value'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocExprNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAssocExpr: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocExprNode >> key [
 	^ key
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocExprNode >> key: anElixirProgramNode [
 	self key notNil ifTrue: [ self key parent: nil ].
 	key := anElixirProgramNode.
 	self key notNil ifTrue: [ self key parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocExprNode >> nodeVariables [
 	^ #(#key #value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocExprNode >> op [
 	^ op
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocExprNode >> op: aSmaCCToken [
 	op := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocExprNode >> tokenVariables [
 	^ #(#op)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocExprNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocExprNode >> value: anElixirProgramNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := anElixirProgramNode.

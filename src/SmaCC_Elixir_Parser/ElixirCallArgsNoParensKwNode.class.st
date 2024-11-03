@@ -1,51 +1,52 @@
 Class {
-	#name : #ElixirCallArgsNoParensKwNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirCallArgsNoParensKwNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'kws',
 		'coms'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirCallArgsNoParensKwNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCallArgsNoParensKw: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirCallArgsNoParensKwNode >> compositeNodeVariables [
 	^ #(#kws)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirCallArgsNoParensKwNode >> compositeTokenVariables [
 	^ #(#coms)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirCallArgsNoParensKwNode >> coms [
 	^ coms
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirCallArgsNoParensKwNode >> coms: anOrderedCollection [
 	coms := anOrderedCollection
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 ElixirCallArgsNoParensKwNode >> initialize [
 	super initialize.
 	kws := OrderedCollection new: 2.
 	coms := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirCallArgsNoParensKwNode >> kws [
 	^ kws
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirCallArgsNoParensKwNode >> kws: anOrderedCollection [
 	self setParents: self kws to: nil.
 	kws := anOrderedCollection.

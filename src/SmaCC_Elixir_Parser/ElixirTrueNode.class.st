@@ -1,28 +1,29 @@
 Class {
-	#name : #ElixirTrueNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirTrueNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'_true'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirTrueNode >> _true [
 	^ _true
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirTrueNode >> _true: aSmaCCToken [
 	_true := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirTrueNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTrue: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirTrueNode >> tokenVariables [
 	^ #(#_true)
 ]

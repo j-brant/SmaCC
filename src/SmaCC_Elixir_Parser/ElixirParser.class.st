@@ -1,10 +1,11 @@
 Class {
-	#name : #ElixirParser,
-	#superclass : #SmaCCGLRParser,
-	#category : #'SmaCC_Elixir_Parser'
+	#name : 'ElixirParser',
+	#superclass : 'SmaCCGLRParser',
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirParser class >> ambiguousTransitions [
 ^#(
 #[ 0 37 0 250] 
@@ -72,12 +73,12 @@ ElixirParser class >> ambiguousTransitions [
 	).
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 ElixirParser class >> cacheId [
-	^'2024-10-28T13:33:29.139908+08:00'
+	^'2024-11-03T13:02:07.407304+08:00'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirParser class >> definitionComment [
 "# Modified from https://github.com/elixir-lang/elixir/blob/master/lib/elixir/src/elixir_parser.yrl (f38895cebba0fa06f686e1dd9b74e5729aebcb45)
 # Apache License 2.0: https://github.com/elixir-lang/elixir/blob/master/LICENSE
@@ -581,8 +582,8 @@ access_expr
 	| <capture_op> 'op' <int> 'int' {{Capture}}
 	| fn_eoe'fn' stab'stab' end_eoe'end' {{Lambda}}
 	| open_paren 'leftParen' stab'stab' close_paren'rightParen' {{}}
-	| open_paren 'leftParen' stab'stab' "";"" close_paren'rightParen' {{}}
-	| open_paren 'leftParen' "";"" 'semi' stab'stab'"";"" close_paren'rightParen' {{}}
+	| open_paren 'leftParen' stab'stab' "";"" 'semi' close_paren'rightParen' {{}}
+	| open_paren 'leftParen' "";"" 'semi' stab'stab'"";"" 'semi' close_paren'rightParen' {{}}
 	| open_paren 'leftParen' "";"" 'semi' stab'stab' close_paren'rightParen' {{}}
 	| open_paren 'leftParen' "";"" 'semi' close_paren'rightParen' {{}}
 	| empty_paren 
@@ -638,8 +639,8 @@ bracket_value	# added
 	| container_expr
 	;
 bracket_values	# added
-	: bracket_value#'value'{{}}
-	| bracket_values "","" 'com' bracket_value#'value' {{}}
+	: bracket_value 'value'{{}}
+	| bracket_values "","" 'com' bracket_value 'value' {{}}
 	;
 
 bracket_arg 
@@ -700,7 +701,7 @@ stab
 
 stab_eoe
 	 : stab 'stab' {{}}
-	| stab'stab' eoe 'eoe' 
+	| stab'stab' eoe 'eoe'  {{}}
 	;
 
 ## Here, `element(1, Token)` is the stab operator,
@@ -709,10 +710,10 @@ stab_expr
 	: expr 'expression'  {{}}
 	| stab_op_eol_and_expr'expression' {{}}
 	| empty_paren'args' stab_op_eol_and_expr'expression' {{}}
-	| empty_paren 'args'<when_op> expr 'guard' stab_op_eol_and_expr'expression' {{}}
+	| empty_paren 'args'<when_op>'when' expr 'guard' stab_op_eol_and_expr'expression' {{}}
 	| call_args_no_parens_all'args' stab_op_eol_and_expr'expression' {{}}
 	| stab_parens_many'args' stab_op_eol_and_expr'expression' {{}}
-	| stab_parens_many'args' <when_op> expr 'guard' stab_op_eol_and_expr'expression' {{}}
+	| stab_parens_many'args' <when_op>'when' expr 'guard' stab_op_eol_and_expr'expression' {{}}
 	;
 
 stab_op_eol_and_expr 
@@ -785,8 +786,8 @@ dot_alias
 	;
 
 dot_op_identifier 
-	: <op_identifier> {{}}
-	| matched_expr <dot_op> 'op' <op_identifier> {{}}
+	: <op_identifier> 'identifier' {{}}
+	| matched_expr 'expression' <dot_op> 'op' <op_identifier> 'identifier' {{}}
 	;
 
 dot_do_identifier 
@@ -849,8 +850,8 @@ call_args_no_parens_many_strict
 	;
 
 stab_parens_many 
-	: open_paren 'leftParen' call_args_no_parens_kw'args' close_paren {{}}
-	| open_paren 'leftParen' call_args_no_parens_many'args' close_paren {{}}
+	: open_paren 'leftParen' call_args_no_parens_kw'args' close_paren'rightParen' {{}}
+	| open_paren 'leftParen' call_args_no_parens_many'args' close_paren'rightParen' {{}}
 	;
 
 # Containers
@@ -908,7 +909,7 @@ kw_base
 	;
 
 kw 
-	: kw_base "",""?
+	: kw_base 'kw' "","" 'com' ? {{}}
 	;
 
 call_args_no_parens_kw_expr 
@@ -1018,41 +1019,41 @@ map
 	;"
 ]
 
-{ #category : #'file types' }
+{ #category : 'file types' }
 ElixirParser class >> fileExtensions [
 	^ #('.exs' '.ex')
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirParser class >> reduceTable [
 ^#(
 	#(61 0 #reduceActionForgrammar6: 5811206 false) 
-	#(99 1 #liftFirstValue: 16401409 false) 
-	#(104 1 #liftFirstValue: 16565249 false) 
-	#(102 1 #liftFirstValue: 16512001 false) 
+	#(99 1 #liftFirstValue: 16433153 false) 
+	#(104 1 #liftFirstValue: 16596993 false) 
+	#(102 1 #liftFirstValue: 16543745 false) 
 	#(75 1 #reduceActionForaccess_expr16: 12851216 false) 
-	#(89 1 #reduceActionForfn_eoe1: 15178753 false) 
+	#(89 1 #reduceActionForfn_eoe1: 15193089 false) 
 	#(75 1 #reduceActionForaccess_expr17: 12851217 false) 
 	#(75 1 #reduceActionForaccess_expr15: 12851215 false) 
-	#(106 1 #liftFirstValue: 16612353 false) 
-	#(80 1 #reduceActionFornumber1: 13922305 false) 
+	#(106 1 #liftFirstValue: 16644097 false) 
+	#(80 1 #reduceActionFornumber1: 13936641 false) 
 	#(75 1 #reduceActionForaccess_expr24: 12851224 false) 
-	#(76 1 #reduceActionForbin_string1: 13726721 false) 
-	#(78 1 #reduceActionForbin_heredoc1: 13815809 false) 
-	#(77 1 #reduceActionForlist_string1: 13769729 false) 
-	#(79 1 #reduceActionForlist_heredoc1: 13868033 false) 
-	#(88 1 #liftFirstValue: 15143937 false) 
-	#(145 1 #liftFirstValue: 22276097 false) 
-	#(108 1 #liftFirstValue: 16687106 false) 
-	#(108 1 #liftFirstValue: 16687105 false) 
-	#(80 1 #reduceActionFornumber2: 13922306 false) 
-	#(80 1 #reduceActionFornumber3: 13922307 false) 
+	#(76 1 #reduceActionForbin_string1: 13741057 false) 
+	#(78 1 #reduceActionForbin_heredoc1: 13830145 false) 
+	#(77 1 #reduceActionForlist_string1: 13784065 false) 
+	#(79 1 #reduceActionForlist_heredoc1: 13882369 false) 
+	#(88 1 #liftFirstValue: 15158273 false) 
+	#(145 1 #liftFirstValue: 22389761 false) 
+	#(108 1 #liftFirstValue: 16718850 false) 
+	#(108 1 #liftFirstValue: 16718849 false) 
+	#(80 1 #reduceActionFornumber2: 13936642 false) 
+	#(80 1 #reduceActionFornumber3: 13936643 false) 
 	#(75 1 #reduceActionForaccess_expr23: 12851223 false) 
-	#(109 1 #reduceActionFordot_identifier1: 16759809 false) 
-	#(110 1 #reduceActionFordot_alias1: 16888833 false) 
-	#(88 1 #liftFirstValue: 15143938 false) 
-	#(113 1 #reduceActionFordot_bracket_identifier1: 17437697 false) 
-	#(114 1 #reduceActionFordot_paren_identifier1: 17590273 false) 
+	#(109 1 #reduceActionFordot_identifier1: 16791553 false) 
+	#(110 1 #reduceActionFordot_alias1: 16920577 false) 
+	#(88 1 #liftFirstValue: 15158274 false) 
+	#(113 1 #reduceActionFordot_bracket_identifier1: 17509377 false) 
+	#(114 1 #reduceActionFordot_paren_identifier1: 17661953 false) 
 	#(61 1 #reduceActionForgrammar2: 5811202 false) 
 	#(62 1 #reduceActionForexpr_list1: 6059009 false) 
 	#(63 1 #liftFirstValue: 6148097 false) 
@@ -1077,19 +1078,19 @@ ElixirParser class >> reduceTable [
 	#(74 1 #liftFirstValue: 12531714 false) 
 	#(75 1 #liftFirstValue: 12851225 false) 
 	#(74 1 #liftFirstValue: 12531713 false) 
-	#(115 1 #reduceActionFordot_call_identifier1: 17736705 false) 
+	#(115 1 #reduceActionFordot_call_identifier1: 17808385 false) 
 	#(75 1 #liftFirstValue: 12851212 false) 
 	#(75 1 #liftFirstValue: 12851214 false) 
 	#(75 1 #liftFirstValue: 12851222 false) 
 	#(75 1 #liftFirstValue: 12851213 false) 
-	#(112 1 #reduceActionFordot_do_identifier1: 17299457 false) 
-	#(111 1 #reduceActionFordot_op_identifier1: 17199105 false) 
-	#(89 2 #reduceActionForfn_eoe2: 15178754 false) 
-	#(148 1 #reduceActionForstruct_expr1: 22947841 false) 
-	#(148 1 #reduceActionForstruct_expr1: 22947846 false) 
-	#(148 1 #reduceActionForstruct_expr1: 22947843 false) 
-	#(148 1 #reduceActionForstruct_expr1: 22947842 false) 
-	#(149 2 #reduceActionFormap2: 23160834 false) 
+	#(112 1 #reduceActionFordot_do_identifier1: 17371137 false) 
+	#(111 1 #reduceActionFordot_op_identifier1: 17230849 false) 
+	#(89 2 #reduceActionForfn_eoe2: 15193090 false) 
+	#(148 1 #reduceActionForstruct_expr1: 23061505 false) 
+	#(148 1 #reduceActionForstruct_expr1: 23061510 false) 
+	#(148 1 #reduceActionForstruct_expr1: 23061507 false) 
+	#(148 1 #reduceActionForstruct_expr1: 23061506 false) 
+	#(149 2 #reduceActionFormap2: 23274498 false) 
 	#(75 2 #reduceActionForaccess_expr3: 12851203 false) 
 	#(65 2 #reduceActionForunmatched_expr7: 8179719 false) 
 	#(64 2 #reduceActionFormatched_expr4: 7819268 false) 
@@ -1098,7 +1099,7 @@ ElixirParser class >> reduceTable [
 	#(64 2 #reduceActionFormatched_expr4: 7819267 false) 
 	#(66 2 #reduceActionFormatched_expr4: 8581123 false) 
 	#(61 2 #reduceActionForgrammar4: 5811204 false) 
-	#(115 2 #reduceActionFordot_call_identifier2: 17736706 false) 
+	#(115 2 #reduceActionFordot_call_identifier2: 17808386 false) 
 	#(64 2 #reduceActionFormatched_expr1: 7819265 false) 
 	#(65 2 #reduceActionForunmatched_expr1: 8179713 false) 
 	#(66 2 #reduceActionForno_parens_expr1: 8581121 false) 
@@ -1106,59 +1107,59 @@ ElixirParser class >> reduceTable [
 	#(65 2 #reduceActionFormatched_expr1: 8179715 false) 
 	#(65 2 #reduceActionFormatched_expr1: 8179716 false) 
 	#(64 2 #reduceActionFormatched_expr8: 7819272 false) 
-	#(85 2 #reduceActionForbracket_expr2: 14636034 false) 
+	#(85 2 #reduceActionForbracket_expr2: 14650370 false) 
 	#(61 2 #reduceActionForgrammar3: 5811203 false) 
-	#(96 1 #reduceActionForstab_op_eol_and_expr1: 16163841 false) 
-	#(130 1 #liftFirstValue: 20279297 false) 
-	#(95 1 #reduceActionForstab_expr1: 15707137 false) 
-	#(119 1 #liftFirstValue: 18277378 false) 
-	#(120 1 #liftFirstValue: 18352129 false) 
-	#(93 1 #reduceActionForstab1: 15468545 false) 
-	#(95 1 #reduceActionForstab_expr1: 15707138 false) 
-	#(121 1 #reduceActionForcall_args_no_parens_many2: 18403330 false) 
-	#(118 1 #liftFirstValue: 18158593 false) 
-	#(118 1 #liftFirstValue: 18158594 false) 
-	#(118 1 #liftFirstValue: 18158595 false) 
-	#(134 1 #reduceActionForcall_args_no_parens_kw1: 20669441 false) 
-	#(119 1 #liftFirstValue: 18277377 false) 
-	#(101 2 #reduceActionForempty_paren1: 16450561 false) 
-	#(136 2 #reduceActionForlist1: 21005313 false) 
-	#(124 1 #liftFirstValue: 19091457 false) 
-	#(124 1 #liftFirstValue: 19091458 false) 
-	#(124 1 #liftFirstValue: 19091459 false) 
-	#(125 1 #reduceActionForcontainer_args_base1: 19168257 false) 
-	#(135 1 #reduceActionForlist_args2: 20825090 false) 
-	#(132 1 #liftFirstValue: 20527105 false) 
-	#(135 1 #reduceActionForlist_args1: 20825089 false) 
-	#(138 2 #reduceActionForbit_string1: 21293057 false) 
-	#(126 1 #reduceActionForcontainer_args1: 19297281 false) 
-	#(137 2 #reduceActionFortuple1: 21148673 false) 
+	#(96 1 #reduceActionForstab_op_eol_and_expr1: 16195585 false) 
+	#(130 1 #liftFirstValue: 20375553 false) 
+	#(95 1 #reduceActionForstab_expr1: 15726593 false) 
+	#(119 1 #liftFirstValue: 18349058 false) 
+	#(120 1 #liftFirstValue: 18423809 false) 
+	#(93 1 #reduceActionForstab1: 15482881 false) 
+	#(95 1 #reduceActionForstab_expr1: 15726594 false) 
+	#(121 1 #reduceActionForcall_args_no_parens_many2: 18475010 false) 
+	#(118 1 #liftFirstValue: 18230273 false) 
+	#(118 1 #liftFirstValue: 18230274 false) 
+	#(118 1 #liftFirstValue: 18230275 false) 
+	#(134 1 #reduceActionForcall_args_no_parens_kw1: 20783105 false) 
+	#(119 1 #liftFirstValue: 18349057 false) 
+	#(101 2 #reduceActionForempty_paren1: 16482305 false) 
+	#(136 2 #reduceActionForlist1: 21118977 false) 
+	#(124 1 #liftFirstValue: 19187713 false) 
+	#(124 1 #liftFirstValue: 19187714 false) 
+	#(124 1 #liftFirstValue: 19187715 false) 
+	#(125 1 #reduceActionForcontainer_args_base1: 19264513 false) 
+	#(135 1 #reduceActionForlist_args2: 20938754 false) 
+	#(132 1 #reduceActionForkw1: 20623361 false) 
+	#(135 1 #reduceActionForlist_args1: 20938753 false) 
+	#(138 2 #reduceActionForbit_string1: 21406721 false) 
+	#(126 1 #reduceActionForcontainer_args1: 19393537 false) 
+	#(137 2 #reduceActionFortuple1: 21262337 false) 
 	#(65 2 #reduceActionForunmatched_expr7: 8179717 false) 
 	#(64 2 #reduceActionFormatched_expr4: 7819266 false) 
 	#(66 2 #reduceActionFormatched_expr4: 8581122 false) 
 	#(73 2 #reduceActionForno_parens_one_expr2: 12371970 false) 
 	#(71 2 #reduceActionForno_parens_one_ambig_expr2: 11999234 false) 
-	#(122 1 #reduceActionForcall_args_no_parens_many_strict1: 18653185 false) 
+	#(122 1 #reduceActionForcall_args_no_parens_many_strict1: 18724865 false) 
 	#(72 2 #reduceActionForno_parens_many_expr2: 12181506 false) 
 	#(73 2 #reduceActionForno_parens_one_expr2: 12371969 false) 
 	#(71 2 #reduceActionForno_parens_one_ambig_expr2: 11999233 false) 
 	#(72 2 #reduceActionForno_parens_many_expr2: 12181505 false) 
-	#(90 1 #reduceActionFordo_eoe1: 15238145 false) 
+	#(90 1 #reduceActionFordo_eoe1: 15252481 false) 
 	#(67 2 #reduceActionForblock_expr3: 8868867 false) 
-	#(85 2 #reduceActionForbracket_expr2: 14636033 false) 
-	#(81 2 #reduceActionForparens_call1: 14033921 false) 
-	#(149 2 #reduceActionFormap2: 23160833 false) 
-	#(148 2 #reduceActionFormatched_expr4: 22947844 false) 
-	#(147 2 #reduceActionFormap_args1: 22476801 false) 
-	#(140 1 #reduceActionForassoc_expr6: 21469190 false) 
-	#(140 1 #reduceActionForassoc_expr6: 21469189 false) 
-	#(143 1 #reduceActionForassoc_base1: 22112257 false) 
-	#(144 1 #liftFirstValue: 22204417 false) 
-	#(147 2 #reduceActionFormap_args1: 22476802 false) 
-	#(148 2 #reduceActionFormatched_expr4: 22947845 false) 
-	#(149 3 #reduceActionFormap3: 23160835 false) 
-	#(86 3 #reduceActionForbracket_at_expr2: 14766082 false) 
-	#(86 3 #reduceActionForbracket_at_expr2: 14766081 false) 
+	#(85 2 #reduceActionForbracket_expr2: 14650369 false) 
+	#(81 2 #reduceActionForparens_call1: 14048257 false) 
+	#(149 2 #reduceActionFormap2: 23274497 false) 
+	#(148 2 #reduceActionFormatched_expr4: 23061508 false) 
+	#(147 2 #reduceActionFormap_args1: 22590465 false) 
+	#(140 1 #reduceActionForassoc_expr6: 21582854 false) 
+	#(140 1 #reduceActionForassoc_expr6: 21582853 false) 
+	#(143 1 #reduceActionForassoc_base1: 22225921 false) 
+	#(144 1 #liftFirstValue: 22318081 false) 
+	#(147 2 #reduceActionFormap_args1: 22590466 false) 
+	#(148 2 #reduceActionFormatched_expr4: 23061509 false) 
+	#(149 3 #reduceActionFormap3: 23274499 false) 
+	#(86 3 #reduceActionForbracket_at_expr2: 14780418 false) 
+	#(86 3 #reduceActionForbracket_at_expr2: 14780417 false) 
 	#(62 3 #reduceActionForexpr_list2: 6059010 false) 
 	#(68 2 #reduceActionFormatched_op_expr14: 9317390 false) 
 	#(69 2 #reduceActionForunmatched_op_expr13: 10162189 false) 
@@ -1209,118 +1210,118 @@ ElixirParser class >> reduceTable [
 	#(68 2 #reduceActionFormatched_op_expr14: 9317385 false) 
 	#(69 2 #reduceActionForunmatched_op_expr13: 10162185 false) 
 	#(70 2 #reduceActionForno_parens_op_expr13: 10953737 false) 
-	#(109 3 #reduceActionFordot_identifier2: 16759810 false) 
-	#(110 3 #reduceActionFordot_alias2: 16888834 false) 
-	#(113 3 #reduceActionFordot_bracket_identifier2: 17437698 false) 
-	#(114 3 #reduceActionFordot_paren_identifier2: 17590274 false) 
-	#(112 3 #reduceActionFordot_do_identifier2: 17299458 false) 
-	#(111 3 #reduceActionFordot_op_identifier2: 17199106 false) 
-	#(103 1 #liftFirstValue: 16537601 false) 
-	#(83 1 #liftFirstValue: 14261249 false) 
-	#(84 2 #reduceActionForbracket_arg1: 14374913 false) 
-	#(82 1 #liftFirstValue: 14205954 false) 
-	#(82 1 #liftFirstValue: 14205953 false) 
+	#(109 3 #reduceActionFordot_identifier2: 16791554 false) 
+	#(110 3 #reduceActionFordot_alias2: 16920578 false) 
+	#(113 3 #reduceActionFordot_bracket_identifier2: 17509378 false) 
+	#(114 3 #reduceActionFordot_paren_identifier2: 17661954 false) 
+	#(112 3 #reduceActionFordot_do_identifier2: 17371138 false) 
+	#(111 3 #reduceActionFordot_op_identifier2: 17230850 false) 
+	#(103 1 #liftFirstValue: 16569345 false) 
+	#(83 1 #reduceActionForbracket_values1: 14275585 false) 
+	#(84 2 #reduceActionForbracket_arg1: 14389249 false) 
+	#(82 1 #liftFirstValue: 14220290 false) 
+	#(82 1 #liftFirstValue: 14220289 false) 
 	#(61 3 #reduceActionForgrammar5: 5811205 false) 
-	#(96 2 #reduceActionForstab_op_eol_and_expr2: 16163842 false) 
-	#(91 1 #reduceActionForend_eoe1: 15297537 false) 
+	#(96 2 #reduceActionForstab_op_eol_and_expr2: 16195586 false) 
+	#(91 1 #reduceActionForend_eoe1: 15311873 false) 
 	#(75 3 #reduceActionForaccess_expr4: 12851204 false) 
-	#(95 2 #reduceActionForstab_expr3: 15707139 false) 
-	#(95 2 #reduceActionForstab_expr3: 15707141 false) 
-	#(95 2 #reduceActionForstab_expr3: 15707142 false) 
-	#(133 2 #reduceActionForcall_args_no_parens_kw_expr1: 20551681 false) 
-	#(133 2 #reduceActionForcall_args_no_parens_kw_expr1: 20551682 false) 
-	#(100 1 #liftFirstValue: 16424961 false) 
+	#(95 2 #reduceActionForstab_expr3: 15726595 false) 
+	#(95 2 #reduceActionForstab_expr3: 15726597 false) 
+	#(95 2 #reduceActionForstab_expr3: 15726598 false) 
+	#(133 2 #reduceActionForcall_args_no_parens_kw_expr1: 20665345 false) 
+	#(133 2 #reduceActionForcall_args_no_parens_kw_expr1: 20665346 false) 
+	#(100 1 #liftFirstValue: 16456705 false) 
 	#(75 3 #reduceActionForaccess_expr9: 12851209 false) 
 	#(75 3 #reduceActionForaccess_expr5: 12851205 false) 
-	#(135 2 #reduceActionForlist_args3: 20825091 false) 
-	#(131 2 #reduceActionForkw_base1: 20406273 false) 
-	#(132 2 #liftFirstValue: 20527106 false) 
-	#(136 3 #reduceActionForlist2: 21005314 false) 
-	#(126 2 #reduceActionForcontainer_args2: 19297282 false) 
-	#(105 1 #liftFirstValue: 16587777 false) 
-	#(138 3 #reduceActionForbit_string2: 21293058 false) 
-	#(107 1 #liftFirstValue: 16635905 false) 
-	#(137 3 #reduceActionFortuple2: 21148674 false) 
+	#(135 2 #reduceActionForlist_args3: 20938755 false) 
+	#(131 2 #reduceActionForkw_base1: 20502529 false) 
+	#(132 2 #reduceActionForkw2: 20623362 false) 
+	#(136 3 #reduceActionForlist2: 21118978 false) 
+	#(126 2 #reduceActionForcontainer_args2: 19393538 false) 
+	#(105 1 #liftFirstValue: 16619521 false) 
+	#(138 3 #reduceActionForbit_string2: 21406722 false) 
+	#(107 1 #liftFirstValue: 16667649 false) 
+	#(137 3 #reduceActionFortuple2: 21262338 false) 
 	#(67 3 #reduceActionForblock_expr5: 8868869 false) 
 	#(67 3 #reduceActionForblock_expr5: 8868868 false) 
-	#(90 2 #reduceActionFordo_eoe2: 15238146 false) 
-	#(87 2 #reduceActionFordo_block1: 14937089 false) 
-	#(92 1 #reduceActionForblock_eoe1: 15362049 false) 
-	#(97 1 #reduceActionForblock_item2: 16227330 false) 
-	#(94 1 #reduceActionForstab_eoe1: 15545345 false) 
-	#(98 1 #reduceActionForblock_list1: 16310273 false) 
-	#(129 2 #reduceActionForcall_args_parens1: 19659777 false) 
-	#(127 1 #liftFirstValue: 19441665 false) 
-	#(127 1 #liftFirstValue: 19441666 false) 
-	#(127 1 #liftFirstValue: 19441667 false) 
-	#(128 1 #reduceActionForcall_args_parens_base1: 19525633 false) 
+	#(90 2 #reduceActionFordo_eoe2: 15252482 false) 
+	#(87 2 #reduceActionFordo_block1: 14951425 false) 
+	#(92 1 #reduceActionForblock_eoe1: 15376385 false) 
+	#(97 1 #reduceActionForblock_item2: 16259074 false) 
+	#(94 1 #reduceActionForstab_eoe1: 15559681 false) 
+	#(98 1 #reduceActionForblock_list1: 16342017 false) 
+	#(129 2 #reduceActionForcall_args_parens1: 19756033 false) 
+	#(127 1 #liftFirstValue: 19537921 false) 
+	#(127 1 #liftFirstValue: 19537922 false) 
+	#(127 1 #liftFirstValue: 19537923 false) 
+	#(128 1 #reduceActionForcall_args_parens_base1: 19621889 false) 
 	#(67 3 #reduceActionForblock_expr5: 8868865 false) 
-	#(81 3 #reduceActionForparens_call2: 14033922 false) 
-	#(139 1 #liftFirstValue: 21431297 false) 
-	#(146 2 #reduceActionFormap_close1: 22306817 false) 
-	#(147 3 #reduceActionFormap_args3: 22476803 false) 
-	#(147 3 #reduceActionFormap_args3: 22476806 false) 
-	#(144 2 #reduceActionForassoc2: 22204418 false) 
-	#(146 2 #reduceActionFormap_close2: 22306818 false) 
-	#(110 4 #reduceActionFordot_alias3: 16888835 false) 
-	#(84 3 #reduceActionForbracket_arg2: 14374914 false) 
-	#(84 3 #reduceActionForbracket_arg3: 14374915 false) 
-	#(116 1 #liftFirstValue: 17896449 false) 
-	#(116 1 #liftFirstValue: 17896450 false) 
-	#(117 3 #reduceActionForcall_args_no_parens_comma_expr1: 17964033 false) 
-	#(121 3 #reduceActionForcall_args_no_parens_many1: 18403329 false) 
-	#(91 2 #reduceActionForend_eoe2: 15297538 false) 
-	#(93 3 #reduceActionForstab2: 15468546 false) 
-	#(123 3 #reduceActionForstab_parens_many2: 18905090 false) 
-	#(123 3 #reduceActionForstab_parens_many2: 18905089 false) 
-	#(117 3 #reduceActionForcall_args_no_parens_comma_expr2: 17964034 false) 
-	#(121 3 #reduceActionForcall_args_no_parens_many1: 18403331 false) 
-	#(134 3 #reduceActionForcall_args_no_parens_kw2: 20669442 false) 
+	#(81 3 #reduceActionForparens_call2: 14048258 false) 
+	#(139 1 #liftFirstValue: 21544961 false) 
+	#(146 2 #reduceActionFormap_close1: 22420481 false) 
+	#(147 3 #reduceActionFormap_args3: 22590467 false) 
+	#(147 3 #reduceActionFormap_args3: 22590470 false) 
+	#(144 2 #reduceActionForassoc2: 22318082 false) 
+	#(146 2 #reduceActionFormap_close2: 22420482 false) 
+	#(110 4 #reduceActionFordot_alias3: 16920579 false) 
+	#(84 3 #reduceActionForbracket_arg2: 14389250 false) 
+	#(84 3 #reduceActionForbracket_arg3: 14389251 false) 
+	#(116 1 #liftFirstValue: 17968129 false) 
+	#(116 1 #liftFirstValue: 17968130 false) 
+	#(117 3 #reduceActionForcall_args_no_parens_comma_expr1: 18035713 false) 
+	#(121 3 #reduceActionForcall_args_no_parens_many1: 18475009 false) 
+	#(91 2 #reduceActionForend_eoe2: 15311874 false) 
+	#(93 3 #reduceActionForstab2: 15482882 false) 
+	#(123 3 #reduceActionForstab_parens_many2: 18976770 false) 
+	#(123 3 #reduceActionForstab_parens_many2: 18976769 false) 
+	#(117 3 #reduceActionForcall_args_no_parens_comma_expr2: 18035714 false) 
+	#(121 3 #reduceActionForcall_args_no_parens_many1: 18475011 false) 
+	#(134 3 #reduceActionForcall_args_no_parens_kw2: 20783106 false) 
 	#(75 4 #reduceActionForaccess_expr8: 12851208 false) 
 	#(75 4 #reduceActionForaccess_expr6: 12851206 false) 
-	#(125 3 #reduceActionForcontainer_args_base2: 19168258 false) 
-	#(135 3 #reduceActionForlist_args4: 20825092 false) 
-	#(126 3 #reduceActionForcontainer_args3: 19297283 false) 
-	#(122 3 #reduceActionForcall_args_no_parens_many_strict3: 18653187 false) 
-	#(122 3 #reduceActionForcall_args_no_parens_many_strict3: 18653186 false) 
-	#(92 2 #reduceActionForblock_eoe2: 15362050 false) 
-	#(97 2 #reduceActionForblock_item1: 16227329 false) 
-	#(94 2 #liftFirstValue: 15545346 false) 
-	#(87 3 #reduceActionFordo_block2: 14937090 false) 
-	#(98 2 #reduceActionForblock_list2: 16310274 false) 
-	#(87 3 #reduceActionFordo_block3: 14937091 false) 
-	#(129 3 #reduceActionForcall_args_parens2: 19659778 false) 
-	#(129 3 #reduceActionForcall_args_parens2: 19659781 false) 
-	#(129 3 #reduceActionForcall_args_parens3: 19659779 false) 
+	#(125 3 #reduceActionForcontainer_args_base2: 19264514 false) 
+	#(135 3 #reduceActionForlist_args4: 20938756 false) 
+	#(126 3 #reduceActionForcontainer_args3: 19393539 false) 
+	#(122 3 #reduceActionForcall_args_no_parens_many_strict3: 18724867 false) 
+	#(122 3 #reduceActionForcall_args_no_parens_many_strict3: 18724866 false) 
+	#(92 2 #reduceActionForblock_eoe2: 15376386 false) 
+	#(97 2 #reduceActionForblock_item1: 16259073 false) 
+	#(94 2 #reduceActionForstab_eoe2: 15559682 false) 
+	#(87 3 #reduceActionFordo_block2: 14951426 false) 
+	#(98 2 #reduceActionForblock_list2: 16342018 false) 
+	#(87 3 #reduceActionFordo_block3: 14951427 false) 
+	#(129 3 #reduceActionForcall_args_parens2: 19756034 false) 
+	#(129 3 #reduceActionForcall_args_parens2: 19756037 false) 
+	#(129 3 #reduceActionForcall_args_parens3: 19756035 false) 
 	#(67 4 #reduceActionForblock_expr2: 8868866 false) 
-	#(142 3 #reduceActionForassoc_update_kw1: 21968897 false) 
-	#(141 3 #reduceActionForassoc_update1: 21796865 false) 
-	#(140 3 #reduceActionForassoc_expr1: 21469185 false) 
-	#(140 3 #reduceActionForassoc_expr1: 21469187 false) 
-	#(142 3 #reduceActionForassoc_update_kw1: 21968898 false) 
-	#(141 3 #reduceActionForassoc_update2: 21796866 false) 
-	#(140 3 #reduceActionForassoc_expr1: 21469188 false) 
-	#(140 3 #reduceActionForassoc_expr1: 21469186 false) 
-	#(147 4 #reduceActionFormap_args4: 22476804 false) 
-	#(147 4 #reduceActionFormap_args4: 22476805 false) 
-	#(143 3 #reduceActionForassoc_base2: 22112258 false) 
-	#(110 5 #reduceActionFordot_alias4: 16888836 false) 
-	#(83 3 #liftFirstValue: 14261250 false) 
-	#(84 4 #reduceActionForbracket_arg4: 14374916 false) 
-	#(95 4 #reduceActionForstab_expr4: 15707140 false) 
-	#(95 4 #reduceActionForstab_expr4: 15707143 false) 
+	#(142 3 #reduceActionForassoc_update_kw1: 22082561 false) 
+	#(141 3 #reduceActionForassoc_update1: 21910529 false) 
+	#(140 3 #reduceActionForassoc_expr1: 21582849 false) 
+	#(140 3 #reduceActionForassoc_expr1: 21582851 false) 
+	#(142 3 #reduceActionForassoc_update_kw1: 22082562 false) 
+	#(141 3 #reduceActionForassoc_update2: 21910530 false) 
+	#(140 3 #reduceActionForassoc_expr1: 21582852 false) 
+	#(140 3 #reduceActionForassoc_expr1: 21582850 false) 
+	#(147 4 #reduceActionFormap_args4: 22590468 false) 
+	#(147 4 #reduceActionFormap_args4: 22590469 false) 
+	#(143 3 #reduceActionForassoc_base2: 22225922 false) 
+	#(110 5 #reduceActionFordot_alias4: 16920580 false) 
+	#(83 3 #reduceActionForbracket_values2: 14275586 false) 
+	#(84 4 #reduceActionForbracket_arg4: 14389252 false) 
+	#(95 4 #reduceActionForstab_expr4: 15726596 false) 
+	#(95 4 #reduceActionForstab_expr4: 15726599 false) 
 	#(75 5 #reduceActionForaccess_expr7: 12851207 false) 
-	#(131 4 #reduceActionForkw_base2: 20406274 false) 
-	#(87 4 #reduceActionFordo_block4: 14937092 false) 
-	#(128 3 #reduceActionForcall_args_parens_base2: 19525634 false) 
-	#(129 4 #reduceActionForcall_args_parens4: 19659780 false) 
-	#(146 4 #reduceActionFormap_close3: 22306819 false) 
-	#(129 5 #reduceActionForcall_args_parens6: 19659782 false) 
-	#(129 6 #reduceActionForcall_args_parens7: 19659783 false)
+	#(131 4 #reduceActionForkw_base2: 20502530 false) 
+	#(87 4 #reduceActionFordo_block4: 14951428 false) 
+	#(128 3 #reduceActionForcall_args_parens_base2: 19621890 false) 
+	#(129 4 #reduceActionForcall_args_parens4: 19756036 false) 
+	#(146 4 #reduceActionFormap_close3: 22420483 false) 
+	#(129 5 #reduceActionForcall_args_parens6: 19756038 false) 
+	#(129 6 #reduceActionForcall_args_parens7: 19756039 false)
 	).
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 ElixirParser class >> samples [
 	"Some sample expressions from https://hexdocs.pm/elixir/syntax-reference.html"
 
@@ -1411,27 +1412,74 @@ end' 'defmodule(Math, [
      select: w') collect: [ :each | self parse: each ]
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 ElixirParser class >> scannerClass [
 	^ElixirScanner
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirParser class >> startingStateForgrammar [
 	^ 1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirParser class >> symbolNames [
 	^ #('"("' '")"' '","' '";"' '"<<"' '">>"' '"["' '"]"' '"do"' '"end"' '"false"' '"fn"' '"nil"' '"true"' '"{"' '"}"' '<int>' '<atom>' '<string>' '<string_heredoc>' '<charlist>' '<charlist_heredoc>' '<whitespace>' '<comment>' '<eol>' '<struct_op>' '<map_op>' '<stab_op>' '<comp_op>' '<when_op>' '<type_op>' '<pipe_op>' '<assoc_op>' '<capture_op>' '<match_op>' '<or_op>' '<and_op>' '<rel_op>' '<arrow_op>' '<in_op>' '<three_op>' '<two_op>' '<dual_op>' '<mult_op>' '<unary_op>' '<at_op>' '<flt>' '<char>' '<in_match_op>' '<dot_op>' '<sigil>' '<identifier>' '<kw_identifier>' '<alias>' '<semicolon>' '<bracket_identifier>' '<paren_identifier>' '<block_identifier>' '<dot_call_op>' 'B e g i n' 'grammar' 'expr_list' 'expr' 'matched_expr' 'unmatched_expr' 'no_parens_expr' 'block_expr' 'matched_op_expr' 'unmatched_op_expr' 'no_parens_op_expr' 'no_parens_one_ambig_expr' 'no_parens_many_expr' 'no_parens_one_expr' 'no_parens_zero_expr' 'access_expr' 'bin_string' 'list_string' 'bin_heredoc' 'list_heredoc' 'number' 'parens_call' 'bracket_value' 'bracket_values' 'bracket_arg' 'bracket_expr' 'bracket_at_expr' 'do_block' 'eoe' 'fn_eoe' 'do_eoe' 'end_eoe' 'block_eoe' 'stab' 'stab_eoe' 'stab_expr' 'stab_op_eol_and_expr' 'block_item' 'block_list' 'open_paren' 'close_paren' 'empty_paren' 'open_bracket' 'close_bracket' 'open_bit' 'close_bit' 'open_curly' 'close_curly' 'unary_op_eol' 'dot_identifier' 'dot_alias' 'dot_op_identifier' 'dot_do_identifier' 'dot_bracket_identifier' 'dot_paren_identifier' 'dot_call_identifier' 'call_args_no_parens_expr' 'call_args_no_parens_comma_expr' 'call_args_no_parens_all' 'call_args_no_parens_one' 'call_args_no_parens_ambig' 'call_args_no_parens_many' 'call_args_no_parens_many_strict' 'stab_parens_many' 'container_expr' 'container_args_base' 'container_args' 'call_args_parens_expr' 'call_args_parens_base' 'call_args_parens' 'kw_eol' 'kw_base' 'kw' 'call_args_no_parens_kw_expr' 'call_args_no_parens_kw' 'list_args' 'list' 'tuple' 'bit_string' 'assoc_op_eol' 'assoc_expr' 'assoc_update' 'assoc_update_kw' 'assoc_base' 'assoc' 'map_op' 'map_close' 'map_args' 'struct_expr' 'map' '<do_identifier>' '<op_identifier>' 'E O F' 'error')
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirParser class >> symbolTypes [
-	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #ElixirGrammarNode #ElixirGrammarNode #ElixirExprListNode #ElixirProgramNode #ElixirMatchedExprNode #ElixirUnmatchedExprNode #ElixirNoParensExprNode #ElixirBlockExprNode #ElixirMatchedOpExprNode #ElixirUnmatchedOpExprNode #ElixirNoParensOpExprNode #ElixirNoParensOneAmbigExprNode #ElixirNoParensManyExprNode #ElixirNoParensOneExprNode #ElixirProgramNode #ElixirProgramNode #ElixirBinStringNode #ElixirListStringNode #ElixirBinHeredocNode #ElixirListHeredocNode #ElixirNumberNode #ElixirParensCallNode #ElixirProgramNode #ElixirProgramNode #ElixirBracketArgNode #ElixirBracketExprNode #ElixirBracketAtExprNode #ElixirDoBlockNode #SmaCCToken #ElixirFnEoeNode #ElixirDoEoeNode #ElixirEndEoeNode #ElixirBlockEoeNode #ElixirStabNode #ElixirProgramNode #ElixirStabExprNode #ElixirStabOpEolAndExprNode #ElixirBlockItemNode #ElixirBlockListNode #SmaCCToken #SmaCCToken #ElixirEmptyParenNode #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #ElixirDotIdentifierNode #ElixirDotAliasNode #ElixirDotOpIdentifierNode #ElixirDotDoIdentifierNode #ElixirDotBracketIdentifierNode #ElixirDotParenIdentifierNode #ElixirDotCallIdentifierNode #ElixirProgramNode #ElixirCallArgsNoParensCommaExprNode #ElixirProgramNode #ElixirProgramNode #ElixirNoParensExprNode #ElixirCallArgsNoParensManyNode #ElixirCallArgsNoParensManyStrictNode #ElixirStabParensManyNode #ElixirProgramNode #ElixirContainerArgsBaseNode #ElixirContainerArgsNode #ElixirProgramNode #ElixirCallArgsParensBaseNode #ElixirCallArgsParensNode #SmaCCToken #ElixirKwBaseNode #ElixirKwBaseNode #ElixirCallArgsNoParensKwExprNode #ElixirCallArgsNoParensKwNode #ElixirListArgsNode #ElixirListNode #ElixirTupleNode #ElixirBitStringNode #SmaCCToken #ElixirAssocExprNode #ElixirAssocUpdateNode #ElixirAssocUpdateKwNode #ElixirAssocBaseNode #ElixirProgramNode #SmaCCToken #ElixirMapCloseNode #ElixirMapArgsNode #ElixirStructExprNode #ElixirMapNode #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCErrorNode)
+
+	^ #( #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
+	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
+	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
+	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
+	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
+	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
+	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
+	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
+	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
+	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
+	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
+	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #ElixirGrammarNode
+	     #ElixirGrammarNode #ElixirExprListNode #ElixirProgramNode
+	     #ElixirMatchedExprNode #ElixirUnmatchedExprNode
+	     #ElixirNoParensExprNode #ElixirBlockExprNode
+	     #ElixirMatchedOpExprNode #ElixirUnmatchedOpExprNode
+	     #ElixirNoParensOpExprNode #ElixirNoParensOneAmbigExprNode
+	     #ElixirNoParensManyExprNode #ElixirNoParensOneExprNode
+	     #ElixirProgramNode #ElixirProgramNode #ElixirBinStringNode
+	     #ElixirListStringNode #ElixirBinHeredocNode
+	     #ElixirListHeredocNode #ElixirNumberNode #ElixirParensCallNode
+	     #ElixirProgramNode #ElixirBracketValuesNode
+	     #ElixirBracketArgNode #ElixirBracketExprNode
+	     #ElixirBracketAtExprNode #ElixirDoBlockNode #SmaCCToken
+	     #ElixirFnEoeNode #ElixirDoEoeNode #ElixirEndEoeNode
+	     #ElixirBlockEoeNode #ElixirStabNode #ElixirStabEoeNode
+	     #ElixirStabExprNode #ElixirStabOpEolAndExprNode
+	     #ElixirBlockItemNode #ElixirBlockListNode #SmaCCToken
+	     #SmaCCToken #ElixirEmptyParenNode #SmaCCToken #SmaCCToken
+	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
+	     #ElixirDotIdentifierNode #ElixirDotAliasNode #ElixirDotOpIdentifierNode
+	     #ElixirDotDoIdentifierNode #ElixirDotBracketIdentifierNode
+	     #ElixirDotParenIdentifierNode #ElixirDotCallIdentifierNode
+	     #ElixirProgramNode #ElixirCallArgsNoParensCommaExprNode
+	     #ElixirProgramNode #ElixirProgramNode #ElixirNoParensExprNode
+	     #ElixirCallArgsNoParensManyNode #ElixirCallArgsNoParensManyStrictNode
+	     #ElixirStabParensManyNode #ElixirProgramNode #ElixirContainerArgsBaseNode
+	     #ElixirContainerArgsNode #ElixirProgramNode #ElixirCallArgsParensBaseNode
+	     #ElixirCallArgsParensNode #SmaCCToken #ElixirKwBaseNode
+	     #ElixirKwNode #ElixirCallArgsNoParensKwExprNode
+	     #ElixirCallArgsNoParensKwNode #ElixirListArgsNode
+	     #ElixirListNode #ElixirTupleNode #ElixirBitStringNode
+	     #SmaCCToken #ElixirAssocExprNode #ElixirAssocUpdateNode
+	     #ElixirAssocUpdateKwNode #ElixirAssocBaseNode
+	     #ElixirProgramNode #SmaCCToken #ElixirMapCloseNode
+	     #ElixirMapArgsNode #ElixirStructExprNode #ElixirMapNode
+	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCErrorNode )
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirParser class >> transitionTable [
 ^#(
 #[1 0 213 0 1 0 225 0 5 0 221 0 7 0 21 0 11 0 25 0 12 0 29 0 13 0 33 0 14 0 229 0 15 0 41 0 17 0 45 0 18 0 49 0 19 0 53 0 20 0 57 0 21 0 61 0 22 0 205 0 25 0 69 0 26 1 21 0 27 0 77 0 34 0 233 0 43 0 233 0 45 0 89 0 46 0 93 0 47 0 97 0 48 0 101 0 51 0 105 0 52 0 109 0 54 0 205 0 55 0 117 0 56 0 121 0 57 0 125 0 61 0 129 0 62 0 133 0 63 0 137 0 64 0 141 0 65 0 133 0 66 0 149 0 67 0 153 0 71 0 157 0 72 0 161 0 73 0 165 0 74 0 169 0 75 0 169 0 76 0 169 0 77 0 169 0 78 0 169 0 79 0 169 0 80 0 169 0 81 0 169 0 85 0 169 0 86 0 205 0 88 0 209 0 89 0 213 0 99 0 169 0 101 0 221 0 102 0 225 0 104 0 229 0 106 0 233 0 108 0 237 0 109 0 169 0 110 0 245 0 111 0 249 0 112 0 253 0 113 1 1 0 114 1 5 0 115 0 169 0 136 0 169 0 137 0 169 0 138 1 21 0 145 0 169 0 149 1 29 0 150 1 33 0 151 0 6 0 152] 
@@ -1556,7 +1604,7 @@ ElixirParser class >> transitionTable [
 #[0 1 62 0 2 0 3 0 4 0 6 0 8 0 10 0 16 0 25 0 28 0 29 0 30 0 31 0 32 0 33 0 35 0 36 0 37 0 38 0 39 0 40 0 41 0 42 0 43 0 44 0 49 0 55 0 58 0 152] 
 #[0 1 66 0 2 0 3 0 4 0 6 0 8 0 9 0 10 0 16 0 25 0 28 0 29 0 30 0 31 0 32 0 33 0 35 0 36 0 37 0 38 0 39 0 40 0 41 0 42 0 43 0 44 0 49 0 50 0 55 0 58 0 59 0 152] 
 #[0 1 70 0 2 0 3 0 4 0 6 0 7 0 8 0 9 0 10 0 16 0 25 0 28 0 29 0 30 0 31 0 32 0 33 0 35 0 36 0 37 0 38 0 39 0 40 0 41 0 42 0 43 0 44 0 49 0 50 0 53 0 55 0 58 0 59 0 152] 
-#[1 0 213 0 1 4 133 0 3 0 225 0 5 0 221 0 7 4 149 0 8 0 21 0 11 0 25 0 12 0 29 0 13 0 33 0 14 0 229 0 15 0 41 0 17 0 45 0 18 0 49 0 19 0 53 0 20 0 57 0 21 0 61 0 22 0 69 0 26 1 21 0 27 0 77 0 34 0 233 0 43 0 233 0 45 0 89 0 46 0 93 0 47 0 97 0 48 0 101 0 51 0 105 0 52 2 101 0 53 0 109 0 54 0 117 0 56 0 121 0 57 2 81 0 64 2 85 0 65 4 145 0 66 0 149 0 67 0 153 0 71 0 157 0 72 0 161 0 73 0 165 0 74 0 169 0 75 0 169 0 76 0 169 0 77 0 169 0 78 0 169 0 79 0 169 0 80 0 169 0 81 4 145 0 82 4 145 0 83 0 169 0 85 0 169 0 86 0 209 0 89 0 213 0 99 0 169 0 101 0 221 0 102 4 149 0 103 0 225 0 104 0 229 0 106 0 233 0 108 0 237 0 109 0 169 0 110 0 245 0 111 0 249 0 112 0 253 0 113 1 1 0 114 1 5 0 115 4 145 0 124 2 101 0 130 4 157 0 131 0 169 0 136 0 169 0 137 0 169 0 138 1 21 0 145 0 169 0 149 1 29 0 150 1 33 0 151] 
+#[1 0 213 0 1 4 133 0 3 0 225 0 5 0 221 0 7 4 149 0 8 0 21 0 11 0 25 0 12 0 29 0 13 0 33 0 14 0 229 0 15 0 41 0 17 0 45 0 18 0 49 0 19 0 53 0 20 0 57 0 21 0 61 0 22 0 69 0 26 1 21 0 27 0 77 0 34 0 233 0 43 0 233 0 45 0 89 0 46 0 93 0 47 0 97 0 48 0 101 0 51 0 105 0 52 2 101 0 53 0 109 0 54 0 117 0 56 0 121 0 57 2 81 0 64 2 85 0 65 4 141 0 66 0 149 0 67 0 153 0 71 0 157 0 72 0 161 0 73 0 165 0 74 0 169 0 75 0 169 0 76 0 169 0 77 0 169 0 78 0 169 0 79 0 169 0 80 0 169 0 81 4 141 0 82 4 145 0 83 0 169 0 85 0 169 0 86 0 209 0 89 0 213 0 99 0 169 0 101 0 221 0 102 4 149 0 103 0 225 0 104 0 229 0 106 0 233 0 108 0 237 0 109 0 169 0 110 0 245 0 111 0 249 0 112 0 253 0 113 1 1 0 114 1 5 0 115 4 141 0 124 2 101 0 130 4 157 0 131 0 169 0 136 0 169 0 137 0 169 0 138 1 21 0 145 0 169 0 149 1 29 0 150 1 33 0 151] 
 #[1 4 161 0 25 4 161 0 55 4 161 0 88 1 74 0 152] 
 #[1 0 213 0 1 1 78 0 2 1 78 0 4 0 225 0 5 0 221 0 7 1 78 0 10 0 21 0 11 0 25 0 12 0 29 0 13 0 33 0 14 0 229 0 15 0 41 0 17 0 45 0 18 0 49 0 19 0 53 0 20 0 57 0 21 0 61 0 22 1 78 0 25 0 69 0 26 1 21 0 27 0 77 0 34 0 233 0 43 0 233 0 45 0 89 0 46 0 93 0 47 0 97 0 48 0 101 0 51 0 105 0 52 0 109 0 54 1 78 0 55 0 117 0 56 0 121 0 57 1 78 0 58 4 165 0 63 0 137 0 64 0 141 0 65 4 165 0 66 0 149 0 67 0 153 0 71 0 157 0 72 0 161 0 73 0 165 0 74 0 169 0 75 0 169 0 76 0 169 0 77 0 169 0 78 0 169 0 79 0 169 0 80 0 169 0 81 0 169 0 85 0 169 0 86 0 209 0 89 0 213 0 99 0 169 0 101 0 221 0 102 0 225 0 104 0 229 0 106 0 233 0 108 0 237 0 109 0 169 0 110 0 245 0 111 0 249 0 112 0 253 0 113 1 1 0 114 1 5 0 115 0 169 0 136 0 169 0 137 0 169 0 138 1 21 0 145 0 169 0 149 1 29 0 150 1 33 0 151] 
 #[0 1 82 0 1 0 5 0 7 0 11 0 12 0 13 0 14 0 15 0 17 0 18 0 19 0 20 0 21 0 22 0 26 0 27 0 34 0 43 0 45 0 46 0 47 0 48 0 51 0 52 0 54 0 56 0 57 0 150 0 151] 
@@ -1967,7 +2015,7 @@ ElixirParser class >> transitionTable [
 	).
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ElixirParser >> actionsForCurrentToken [
 	| lookahead ids id actions token position previousState |
 	scanner lastWasEol
@@ -2022,7 +2070,7 @@ ElixirParser >> actionsForCurrentToken [
 	^ super actionsForCurrentToken
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr15: nodes [
 	| result |
 	result := ElixirTrueNode new.
@@ -2030,7 +2078,7 @@ ElixirParser >> reduceActionForaccess_expr15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr16: nodes [
 	| result |
 	result := ElixirFalseNode new.
@@ -2038,7 +2086,7 @@ ElixirParser >> reduceActionForaccess_expr16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr17: nodes [
 	| result |
 	result := ElixirNilNode new.
@@ -2046,7 +2094,7 @@ ElixirParser >> reduceActionForaccess_expr17: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr23: nodes [
 	| result |
 	result := ElixirSigilNode new.
@@ -2054,7 +2102,7 @@ ElixirParser >> reduceActionForaccess_expr23: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr24: nodes [
 	| result |
 	result := ElixirAtomNode new.
@@ -2062,7 +2110,7 @@ ElixirParser >> reduceActionForaccess_expr24: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr3: nodes [
 	| result |
 	result := ElixirCaptureNode new.
@@ -2071,7 +2119,7 @@ ElixirParser >> reduceActionForaccess_expr3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr4: nodes [
 	| result |
 	result := ElixirLambdaNode new.
@@ -2081,7 +2129,7 @@ ElixirParser >> reduceActionForaccess_expr4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr5: nodes [
 	| result |
 	result := ElixirAccessExprNode new.
@@ -2091,49 +2139,55 @@ ElixirParser >> reduceActionForaccess_expr5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr6: nodes [
+
 	| result |
 	result := ElixirAccessExprNode new.
 	result leftParen: (nodes at: 1).
 	result stab: (nodes at: 2).
+	result addToken: (nodes at: 3) to: result semis.
 	result rightParen: (nodes at: 4).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr7: nodes [
+
 	| result |
 	result := ElixirAccessExprNode new.
 	result leftParen: (nodes at: 1).
-	result semi: (nodes at: 2).
+	result addToken: (nodes at: 2) to: result semis.
 	result stab: (nodes at: 3).
+	result addToken: (nodes at: 4) to: result semis.
 	result rightParen: (nodes at: 5).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr8: nodes [
+
 	| result |
 	result := ElixirAccessExprNode new.
 	result leftParen: (nodes at: 1).
-	result semi: (nodes at: 2).
+	result addToken: (nodes at: 2) to: result semis.
 	result stab: (nodes at: 3).
 	result rightParen: (nodes at: 4).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr9: nodes [
+
 	| result |
 	result := ElixirAccessExprNode new.
 	result leftParen: (nodes at: 1).
-	result semi: (nodes at: 2).
+	result addToken: (nodes at: 2) to: result semis.
 	result rightParen: (nodes at: 3).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForassoc2: nodes [
 	| result |
 	result := ElixirAssocNode new.
@@ -2142,7 +2196,7 @@ ElixirParser >> reduceActionForassoc2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForassoc_base1: nodes [
 	| result |
 	result := ElixirAssocBaseNode new.
@@ -2150,7 +2204,7 @@ ElixirParser >> reduceActionForassoc_base1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForassoc_base2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -2159,7 +2213,7 @@ ElixirParser >> reduceActionForassoc_base2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForassoc_expr1: nodes [
 	| result |
 	result := ElixirAssocExprNode new.
@@ -2169,7 +2223,7 @@ ElixirParser >> reduceActionForassoc_expr1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForassoc_expr6: nodes [
 	| result |
 	result := ElixirAssocExprNode new.
@@ -2177,7 +2231,7 @@ ElixirParser >> reduceActionForassoc_expr6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForassoc_update1: nodes [
 	| result |
 	result := ElixirAssocUpdateNode new.
@@ -2187,7 +2241,7 @@ ElixirParser >> reduceActionForassoc_update1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForassoc_update2: nodes [
 	| result |
 	result := ElixirAssocUpdateNode new.
@@ -2197,7 +2251,7 @@ ElixirParser >> reduceActionForassoc_update2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForassoc_update_kw1: nodes [
 	| result |
 	result := ElixirAssocUpdateKwNode new.
@@ -2207,7 +2261,7 @@ ElixirParser >> reduceActionForassoc_update_kw1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForbin_heredoc1: nodes [
 	| result |
 	result := ElixirBinHeredocNode new.
@@ -2215,7 +2269,7 @@ ElixirParser >> reduceActionForbin_heredoc1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForbin_string1: nodes [
 	| result |
 	result := ElixirBinStringNode new.
@@ -2223,7 +2277,7 @@ ElixirParser >> reduceActionForbin_string1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForbit_string1: nodes [
 	| result |
 	result := ElixirBitStringNode new.
@@ -2232,7 +2286,7 @@ ElixirParser >> reduceActionForbit_string1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForbit_string2: nodes [
 	| result |
 	result := ElixirBitStringNode new.
@@ -2242,7 +2296,7 @@ ElixirParser >> reduceActionForbit_string2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForblock_eoe1: nodes [
 	| result |
 	result := ElixirBlockEoeNode new.
@@ -2250,7 +2304,7 @@ ElixirParser >> reduceActionForblock_eoe1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForblock_eoe2: nodes [
 	| result |
 	result := ElixirBlockEoeNode new.
@@ -2259,7 +2313,7 @@ ElixirParser >> reduceActionForblock_eoe2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForblock_expr2: nodes [
 	| result |
 	result := ElixirBlockExprNode new.
@@ -2270,7 +2324,7 @@ ElixirParser >> reduceActionForblock_expr2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForblock_expr3: nodes [
 	| result |
 	result := ElixirBlockExprNode new.
@@ -2279,7 +2333,7 @@ ElixirParser >> reduceActionForblock_expr3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForblock_expr5: nodes [
 	| result |
 	result := ElixirBlockExprNode new.
@@ -2289,7 +2343,7 @@ ElixirParser >> reduceActionForblock_expr5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForblock_item1: nodes [
 	| result |
 	result := ElixirBlockItemNode new.
@@ -2298,7 +2352,7 @@ ElixirParser >> reduceActionForblock_item1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForblock_item2: nodes [
 	| result |
 	result := ElixirBlockItemNode new.
@@ -2306,7 +2360,7 @@ ElixirParser >> reduceActionForblock_item2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForblock_list1: nodes [
 	| result |
 	result := ElixirBlockListNode new.
@@ -2314,7 +2368,7 @@ ElixirParser >> reduceActionForblock_list1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForblock_list2: nodes [
 	| result |
 	result := nodes at: 2.
@@ -2322,7 +2376,7 @@ ElixirParser >> reduceActionForblock_list2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForbracket_arg1: nodes [
 	| result |
 	result := ElixirBracketArgNode new.
@@ -2331,7 +2385,7 @@ ElixirParser >> reduceActionForbracket_arg1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForbracket_arg2: nodes [
 	| result |
 	result := ElixirBracketArgNode new.
@@ -2341,7 +2395,7 @@ ElixirParser >> reduceActionForbracket_arg2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForbracket_arg3: nodes [
 	| result |
 	result := ElixirBracketArgNode new.
@@ -2351,7 +2405,7 @@ ElixirParser >> reduceActionForbracket_arg3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForbracket_arg4: nodes [
 	| result |
 	result := ElixirBracketArgNode new.
@@ -2362,7 +2416,7 @@ ElixirParser >> reduceActionForbracket_arg4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForbracket_at_expr2: nodes [
 	| result |
 	result := ElixirBracketAtExprNode new.
@@ -2372,7 +2426,7 @@ ElixirParser >> reduceActionForbracket_at_expr2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForbracket_expr2: nodes [
 	| result |
 	result := ElixirBracketExprNode new.
@@ -2381,7 +2435,26 @@ ElixirParser >> reduceActionForbracket_expr2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
+ElixirParser >> reduceActionForbracket_values1: nodes [
+
+	| result |
+	result := ElixirBracketValuesNode new.
+	result addNode: (nodes at: 1) to: result values.
+	^ result
+]
+
+{ #category : 'generated-reduction actions' }
+ElixirParser >> reduceActionForbracket_values2: nodes [
+
+	| result |
+	result := nodes at: 1.
+	result addToken: (nodes at: 2) to: result coms.
+	result addNode: (nodes at: 3) to: result values.
+	^ result
+]
+
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_no_parens_comma_expr1: nodes [
 	| result |
 	result := ElixirCallArgsNoParensCommaExprNode new.
@@ -2391,7 +2464,7 @@ ElixirParser >> reduceActionForcall_args_no_parens_comma_expr1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_no_parens_comma_expr2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -2400,7 +2473,7 @@ ElixirParser >> reduceActionForcall_args_no_parens_comma_expr2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_no_parens_kw1: nodes [
 	| result |
 	result := ElixirCallArgsNoParensKwNode new.
@@ -2408,7 +2481,7 @@ ElixirParser >> reduceActionForcall_args_no_parens_kw1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_no_parens_kw2: nodes [
 	| result |
 	result := nodes at: 3.
@@ -2417,7 +2490,7 @@ ElixirParser >> reduceActionForcall_args_no_parens_kw2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_no_parens_kw_expr1: nodes [
 	| result |
 	result := ElixirCallArgsNoParensKwExprNode new.
@@ -2426,7 +2499,7 @@ ElixirParser >> reduceActionForcall_args_no_parens_kw_expr1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_no_parens_many1: nodes [
 	| result |
 	result := ElixirCallArgsNoParensManyNode new.
@@ -2436,7 +2509,7 @@ ElixirParser >> reduceActionForcall_args_no_parens_many1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_no_parens_many2: nodes [
 	| result |
 	result := ElixirCallArgsNoParensManyNode new.
@@ -2444,7 +2517,7 @@ ElixirParser >> reduceActionForcall_args_no_parens_many2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_no_parens_many_strict1: nodes [
 	| result |
 	result := ElixirCallArgsNoParensManyStrictNode new.
@@ -2452,7 +2525,7 @@ ElixirParser >> reduceActionForcall_args_no_parens_many_strict1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_no_parens_many_strict3: nodes [
 	| result |
 	result := ElixirCallArgsNoParensManyStrictNode new.
@@ -2462,7 +2535,7 @@ ElixirParser >> reduceActionForcall_args_no_parens_many_strict3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_parens1: nodes [
 	| result |
 	result := ElixirCallArgsParensNode new.
@@ -2471,7 +2544,7 @@ ElixirParser >> reduceActionForcall_args_parens1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_parens2: nodes [
 	| result |
 	result := ElixirCallArgsParensNode new.
@@ -2481,7 +2554,7 @@ ElixirParser >> reduceActionForcall_args_parens2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_parens3: nodes [
 	| result |
 	result := ElixirCallArgsParensNode new.
@@ -2491,7 +2564,7 @@ ElixirParser >> reduceActionForcall_args_parens3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_parens4: nodes [
 	| result |
 	result := ElixirCallArgsParensNode new.
@@ -2502,7 +2575,7 @@ ElixirParser >> reduceActionForcall_args_parens4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_parens6: nodes [
 	| result |
 	result := ElixirCallArgsParensNode new.
@@ -2514,7 +2587,7 @@ ElixirParser >> reduceActionForcall_args_parens6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_parens7: nodes [
 	| result |
 	result := ElixirCallArgsParensNode new.
@@ -2527,7 +2600,7 @@ ElixirParser >> reduceActionForcall_args_parens7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_parens_base1: nodes [
 	| result |
 	result := ElixirCallArgsParensBaseNode new.
@@ -2535,7 +2608,7 @@ ElixirParser >> reduceActionForcall_args_parens_base1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_parens_base2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -2544,7 +2617,7 @@ ElixirParser >> reduceActionForcall_args_parens_base2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcontainer_args1: nodes [
 	| result |
 	result := ElixirContainerArgsNode new.
@@ -2552,7 +2625,7 @@ ElixirParser >> reduceActionForcontainer_args1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcontainer_args2: nodes [
 	| result |
 	result := ElixirContainerArgsNode new.
@@ -2561,7 +2634,7 @@ ElixirParser >> reduceActionForcontainer_args2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcontainer_args3: nodes [
 	| result |
 	result := ElixirContainerArgsNode new.
@@ -2571,7 +2644,7 @@ ElixirParser >> reduceActionForcontainer_args3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcontainer_args_base1: nodes [
 	| result |
 	result := ElixirContainerArgsBaseNode new.
@@ -2579,7 +2652,7 @@ ElixirParser >> reduceActionForcontainer_args_base1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcontainer_args_base2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -2588,7 +2661,7 @@ ElixirParser >> reduceActionForcontainer_args_base2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordo_block1: nodes [
 	| result |
 	result := ElixirDoBlockNode new.
@@ -2597,7 +2670,7 @@ ElixirParser >> reduceActionFordo_block1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordo_block2: nodes [
 	| result |
 	result := ElixirDoBlockNode new.
@@ -2607,7 +2680,7 @@ ElixirParser >> reduceActionFordo_block2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordo_block3: nodes [
 	| result |
 	result := ElixirDoBlockNode new.
@@ -2617,7 +2690,7 @@ ElixirParser >> reduceActionFordo_block3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordo_block4: nodes [
 	| result |
 	result := ElixirDoBlockNode new.
@@ -2628,7 +2701,7 @@ ElixirParser >> reduceActionFordo_block4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordo_eoe1: nodes [
 	| result |
 	result := ElixirDoEoeNode new.
@@ -2636,7 +2709,7 @@ ElixirParser >> reduceActionFordo_eoe1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordo_eoe2: nodes [
 	| result |
 	result := ElixirDoEoeNode new.
@@ -2645,7 +2718,7 @@ ElixirParser >> reduceActionFordo_eoe2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_alias1: nodes [
 	| result |
 	result := ElixirDotAliasNode new.
@@ -2653,7 +2726,7 @@ ElixirParser >> reduceActionFordot_alias1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_alias2: nodes [
 	| result |
 	result := ElixirDotAliasNode new.
@@ -2663,7 +2736,7 @@ ElixirParser >> reduceActionFordot_alias2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_alias3: nodes [
 	| result |
 	result := ElixirDotAliasNode new.
@@ -2674,7 +2747,7 @@ ElixirParser >> reduceActionFordot_alias3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_alias4: nodes [
 	| result |
 	result := ElixirDotAliasNode new.
@@ -2686,7 +2759,7 @@ ElixirParser >> reduceActionFordot_alias4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_bracket_identifier1: nodes [
 	| result |
 	result := ElixirDotBracketIdentifierNode new.
@@ -2694,7 +2767,7 @@ ElixirParser >> reduceActionFordot_bracket_identifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_bracket_identifier2: nodes [
 	| result |
 	result := ElixirDotBracketIdentifierNode new.
@@ -2704,7 +2777,7 @@ ElixirParser >> reduceActionFordot_bracket_identifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_call_identifier1: nodes [
 	| result |
 	result := ElixirDotCallIdentifierNode new.
@@ -2712,7 +2785,7 @@ ElixirParser >> reduceActionFordot_call_identifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_call_identifier2: nodes [
 	| result |
 	result := ElixirDotCallIdentifierNode new.
@@ -2721,7 +2794,7 @@ ElixirParser >> reduceActionFordot_call_identifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_do_identifier1: nodes [
 	| result |
 	result := ElixirDotDoIdentifierNode new.
@@ -2729,7 +2802,7 @@ ElixirParser >> reduceActionFordot_do_identifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_do_identifier2: nodes [
 	| result |
 	result := ElixirDotDoIdentifierNode new.
@@ -2739,7 +2812,7 @@ ElixirParser >> reduceActionFordot_do_identifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_identifier1: nodes [
 	| result |
 	result := ElixirDotIdentifierNode new.
@@ -2747,7 +2820,7 @@ ElixirParser >> reduceActionFordot_identifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_identifier2: nodes [
 	| result |
 	result := ElixirDotIdentifierNode new.
@@ -2757,22 +2830,27 @@ ElixirParser >> reduceActionFordot_identifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_op_identifier1: nodes [
+
 	| result |
 	result := ElixirDotOpIdentifierNode new.
+	result identifier: (nodes at: 1).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_op_identifier2: nodes [
+
 	| result |
 	result := ElixirDotOpIdentifierNode new.
-	result addToken: (nodes at: 2) to: result ops.
+	result expression: (nodes at: 1).
+	result op: (nodes at: 2).
+	result identifier: (nodes at: 3).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_paren_identifier1: nodes [
 	| result |
 	result := ElixirDotParenIdentifierNode new.
@@ -2780,7 +2858,7 @@ ElixirParser >> reduceActionFordot_paren_identifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_paren_identifier2: nodes [
 	| result |
 	result := ElixirDotParenIdentifierNode new.
@@ -2790,7 +2868,7 @@ ElixirParser >> reduceActionFordot_paren_identifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForempty_paren1: nodes [
 	| result |
 	result := ElixirEmptyParenNode new.
@@ -2799,7 +2877,7 @@ ElixirParser >> reduceActionForempty_paren1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForend_eoe1: nodes [
 	| result |
 	result := ElixirEndEoeNode new.
@@ -2807,7 +2885,7 @@ ElixirParser >> reduceActionForend_eoe1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForend_eoe2: nodes [
 	| result |
 	result := ElixirEndEoeNode new.
@@ -2816,7 +2894,7 @@ ElixirParser >> reduceActionForend_eoe2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForexpr_list1: nodes [
 	| result |
 	result := ElixirExprListNode new.
@@ -2824,7 +2902,7 @@ ElixirParser >> reduceActionForexpr_list1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForexpr_list2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -2833,7 +2911,7 @@ ElixirParser >> reduceActionForexpr_list2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForfn_eoe1: nodes [
 	| result |
 	result := ElixirFnEoeNode new.
@@ -2841,7 +2919,7 @@ ElixirParser >> reduceActionForfn_eoe1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForfn_eoe2: nodes [
 	| result |
 	result := ElixirFnEoeNode new.
@@ -2850,7 +2928,7 @@ ElixirParser >> reduceActionForfn_eoe2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForgrammar1: nodes [
 	| result |
 	result := ElixirGrammarNode new.
@@ -2858,7 +2936,7 @@ ElixirParser >> reduceActionForgrammar1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForgrammar2: nodes [
 	| result |
 	result := ElixirGrammarNode new.
@@ -2866,7 +2944,7 @@ ElixirParser >> reduceActionForgrammar2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForgrammar3: nodes [
 	| result |
 	result := ElixirGrammarNode new.
@@ -2875,7 +2953,7 @@ ElixirParser >> reduceActionForgrammar3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForgrammar4: nodes [
 	| result |
 	result := ElixirGrammarNode new.
@@ -2884,7 +2962,7 @@ ElixirParser >> reduceActionForgrammar4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForgrammar5: nodes [
 	| result |
 	result := ElixirGrammarNode new.
@@ -2894,14 +2972,33 @@ ElixirParser >> reduceActionForgrammar5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForgrammar6: nodes [
 	| result |
 	result := ElixirGrammarNode new.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
+ElixirParser >> reduceActionForkw1: nodes [
+
+	| result |
+	result := ElixirKwNode new.
+	result kw: (nodes at: 1).
+	^ result
+]
+
+{ #category : 'generated-reduction actions' }
+ElixirParser >> reduceActionForkw2: nodes [
+
+	| result |
+	result := ElixirKwNode new.
+	result kw: (nodes at: 1).
+	result com: (nodes at: 2).
+	^ result
+]
+
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForkw_base1: nodes [
 	| result |
 	result := ElixirKwBaseNode new.
@@ -2910,7 +3007,7 @@ ElixirParser >> reduceActionForkw_base1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForkw_base2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -2920,7 +3017,7 @@ ElixirParser >> reduceActionForkw_base2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForlist1: nodes [
 	| result |
 	result := ElixirListNode new.
@@ -2929,7 +3026,7 @@ ElixirParser >> reduceActionForlist1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForlist2: nodes [
 	| result |
 	result := ElixirListNode new.
@@ -2939,7 +3036,7 @@ ElixirParser >> reduceActionForlist2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForlist_args1: nodes [
 	| result |
 	result := ElixirListArgsNode new.
@@ -2947,7 +3044,7 @@ ElixirParser >> reduceActionForlist_args1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForlist_args2: nodes [
 	| result |
 	result := ElixirListArgsNode new.
@@ -2955,7 +3052,7 @@ ElixirParser >> reduceActionForlist_args2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForlist_args3: nodes [
 	| result |
 	result := ElixirListArgsNode new.
@@ -2964,7 +3061,7 @@ ElixirParser >> reduceActionForlist_args3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForlist_args4: nodes [
 	| result |
 	result := ElixirListArgsNode new.
@@ -2974,7 +3071,7 @@ ElixirParser >> reduceActionForlist_args4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForlist_heredoc1: nodes [
 	| result |
 	result := ElixirListHeredocNode new.
@@ -2982,7 +3079,7 @@ ElixirParser >> reduceActionForlist_heredoc1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForlist_string1: nodes [
 	| result |
 	result := ElixirListStringNode new.
@@ -2990,7 +3087,7 @@ ElixirParser >> reduceActionForlist_string1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormap2: nodes [
 	| result |
 	result := ElixirMapNode new.
@@ -2999,7 +3096,7 @@ ElixirParser >> reduceActionFormap2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormap3: nodes [
 	| result |
 	result := ElixirMapNode new.
@@ -3009,7 +3106,7 @@ ElixirParser >> reduceActionFormap3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormap_args1: nodes [
 	| result |
 	result := ElixirMapArgsNode new.
@@ -3018,7 +3115,7 @@ ElixirParser >> reduceActionFormap_args1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormap_args3: nodes [
 	| result |
 	result := ElixirMapArgsNode new.
@@ -3028,7 +3125,7 @@ ElixirParser >> reduceActionFormap_args3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormap_args4: nodes [
 	| result |
 	result := ElixirMapArgsNode new.
@@ -3039,7 +3136,7 @@ ElixirParser >> reduceActionFormap_args4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormap_close1: nodes [
 	| result |
 	result := ElixirMapCloseNode new.
@@ -3048,7 +3145,7 @@ ElixirParser >> reduceActionFormap_close1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormap_close2: nodes [
 	| result |
 	result := ElixirMapCloseNode new.
@@ -3057,7 +3154,7 @@ ElixirParser >> reduceActionFormap_close2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormap_close3: nodes [
 	| result |
 	result := ElixirMapCloseNode new.
@@ -3068,7 +3165,7 @@ ElixirParser >> reduceActionFormap_close3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormatched_expr1: nodes [
 	| result |
 	result := nodes at: 1.
@@ -3076,7 +3173,7 @@ ElixirParser >> reduceActionFormatched_expr1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormatched_expr4: nodes [
 	| result |
 	result := nodes at: 2.
@@ -3084,7 +3181,7 @@ ElixirParser >> reduceActionFormatched_expr4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormatched_expr5: nodes [
 	| result |
 	result := ElixirMatchedExprNode new.
@@ -3092,7 +3189,7 @@ ElixirParser >> reduceActionFormatched_expr5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormatched_expr8: nodes [
 	| result |
 	result := ElixirMatchedExprNode new.
@@ -3101,7 +3198,7 @@ ElixirParser >> reduceActionFormatched_expr8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormatched_op_expr14: nodes [
 	| result |
 	result := ElixirMatchedOpExprNode new.
@@ -3110,7 +3207,7 @@ ElixirParser >> reduceActionFormatched_op_expr14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForno_parens_expr1: nodes [
 	| result |
 	result := ElixirNoParensExprNode new.
@@ -3119,7 +3216,7 @@ ElixirParser >> reduceActionForno_parens_expr1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForno_parens_expr5: nodes [
 	| result |
 	result := ElixirNoParensExprNode new.
@@ -3127,7 +3224,7 @@ ElixirParser >> reduceActionForno_parens_expr5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForno_parens_many_expr2: nodes [
 	| result |
 	result := ElixirNoParensManyExprNode new.
@@ -3136,7 +3233,7 @@ ElixirParser >> reduceActionForno_parens_many_expr2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForno_parens_one_ambig_expr2: nodes [
 	| result |
 	result := ElixirNoParensOneAmbigExprNode new.
@@ -3145,7 +3242,7 @@ ElixirParser >> reduceActionForno_parens_one_ambig_expr2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForno_parens_one_expr2: nodes [
 	| result |
 	result := ElixirNoParensOneExprNode new.
@@ -3154,7 +3251,7 @@ ElixirParser >> reduceActionForno_parens_one_expr2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForno_parens_op_expr13: nodes [
 	| result |
 	result := ElixirNoParensOpExprNode new.
@@ -3163,7 +3260,7 @@ ElixirParser >> reduceActionForno_parens_op_expr13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFornumber1: nodes [
 	| result |
 	result := ElixirNumberNode new.
@@ -3171,7 +3268,7 @@ ElixirParser >> reduceActionFornumber1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFornumber2: nodes [
 	| result |
 	result := ElixirNumberNode new.
@@ -3179,7 +3276,7 @@ ElixirParser >> reduceActionFornumber2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFornumber3: nodes [
 	| result |
 	result := ElixirNumberNode new.
@@ -3187,7 +3284,7 @@ ElixirParser >> reduceActionFornumber3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForparens_call1: nodes [
 	| result |
 	result := ElixirParensCallNode new.
@@ -3196,7 +3293,7 @@ ElixirParser >> reduceActionForparens_call1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForparens_call2: nodes [
 	| result |
 	result := ElixirParensCallNode new.
@@ -3206,7 +3303,7 @@ ElixirParser >> reduceActionForparens_call2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForstab1: nodes [
 	| result |
 	result := ElixirStabNode new.
@@ -3214,7 +3311,7 @@ ElixirParser >> reduceActionForstab1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForstab2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -3223,7 +3320,7 @@ ElixirParser >> reduceActionForstab2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForstab_eoe1: nodes [
 	| result |
 	result := ElixirStabEoeNode new.
@@ -3231,7 +3328,17 @@ ElixirParser >> reduceActionForstab_eoe1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
+ElixirParser >> reduceActionForstab_eoe2: nodes [
+
+	| result |
+	result := ElixirStabEoeNode new.
+	result stab: (nodes at: 1).
+	result eoe: (nodes at: 2).
+	^ result
+]
+
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForstab_expr1: nodes [
 	| result |
 	result := ElixirStabExprNode new.
@@ -3239,7 +3346,7 @@ ElixirParser >> reduceActionForstab_expr1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForstab_expr3: nodes [
 	| result |
 	result := ElixirStabExprNode new.
@@ -3248,17 +3355,19 @@ ElixirParser >> reduceActionForstab_expr3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForstab_expr4: nodes [
+
 	| result |
 	result := ElixirStabExprNode new.
 	result args: (nodes at: 1).
+	result when: (nodes at: 2).
 	result guard: (nodes at: 3).
 	result expression: (nodes at: 4).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForstab_op_eol_and_expr1: nodes [
 	| result |
 	result := ElixirStabOpEolAndExprNode new.
@@ -3266,7 +3375,7 @@ ElixirParser >> reduceActionForstab_op_eol_and_expr1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForstab_op_eol_and_expr2: nodes [
 	| result |
 	result := ElixirStabOpEolAndExprNode new.
@@ -3275,16 +3384,18 @@ ElixirParser >> reduceActionForstab_op_eol_and_expr2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForstab_parens_many2: nodes [
+
 	| result |
 	result := ElixirStabParensManyNode new.
 	result leftParen: (nodes at: 1).
 	result args: (nodes at: 2).
+	result rightParen: (nodes at: 3).
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForstruct_expr1: nodes [
 	| result |
 	result := ElixirStructExprNode new.
@@ -3292,7 +3403,7 @@ ElixirParser >> reduceActionForstruct_expr1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFortuple1: nodes [
 	| result |
 	result := ElixirTupleNode new.
@@ -3301,7 +3412,7 @@ ElixirParser >> reduceActionFortuple1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFortuple2: nodes [
 	| result |
 	result := ElixirTupleNode new.
@@ -3311,7 +3422,7 @@ ElixirParser >> reduceActionFortuple2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForunmatched_expr1: nodes [
 	| result |
 	result := ElixirUnmatchedExprNode new.
@@ -3320,7 +3431,7 @@ ElixirParser >> reduceActionForunmatched_expr1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForunmatched_expr7: nodes [
 	| result |
 	result := ElixirUnmatchedExprNode new.
@@ -3329,7 +3440,7 @@ ElixirParser >> reduceActionForunmatched_expr7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForunmatched_expr8: nodes [
 	| result |
 	result := ElixirUnmatchedExprNode new.
@@ -3337,7 +3448,7 @@ ElixirParser >> reduceActionForunmatched_expr8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForunmatched_op_expr13: nodes [
 	| result |
 	result := ElixirUnmatchedOpExprNode new.
@@ -3346,7 +3457,7 @@ ElixirParser >> reduceActionForunmatched_op_expr13: nodes [
 	^ result
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 ElixirParser >> tryAllTokens [
 	^ (currentToken ids includes: scanner identifierId) not
 		or: [ currentToken ids includes: scanner op_identifierId ]
