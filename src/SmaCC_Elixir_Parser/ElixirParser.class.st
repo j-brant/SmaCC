@@ -1970,15 +1970,18 @@ ElixirParser >> actionsForCurrentToken [
 			self addActionsFor: scanner eolId to: actions.
 			actions notEmpty
 				ifTrue: [ scanner lastWasEol: false.
+					position := scanner position.
 					token := currentToken.
 					previousState := currentState.
 					currentToken := currentToken class
 						value: ''
-						start: nil
+						start: token startPosition
 						ids: {scanner eolId}.
 					currentState := self duplicateState.
+					self position: position - token size.
 					self parseCurrentToken.
 					currentToken := token.
+					self position: position.
 					self parseCurrentToken.
 					self restoreState: previousState.
 					currentToken := token ] ].
