@@ -10,7 +10,7 @@ BaselineOfDOTParser >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.87' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.88' ].
 
 		spec package: 'SmaCC_DOT' with: [
 			spec requires: #(#SmaCCRuntime) ].
