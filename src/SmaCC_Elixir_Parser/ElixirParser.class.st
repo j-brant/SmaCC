@@ -1970,15 +1970,18 @@ ElixirParser >> actionsForCurrentToken [
 			self addActionsFor: scanner eolId to: actions.
 			actions notEmpty
 				ifTrue: [ scanner lastWasEol: false.
+					position := scanner position.
 					token := currentToken.
 					previousState := currentState.
 					currentToken := currentToken class
 						value: ''
-						start: nil
+						start: token startPosition
 						ids: {scanner eolId}.
 					currentState := self duplicateState.
+					self position: position - token size.
 					self parseCurrentToken.
 					currentToken := token.
+					self position: position.
 					self parseCurrentToken.
 					self restoreState: previousState.
 					currentToken := token ] ].
@@ -2002,10 +2005,11 @@ ElixirParser >> actionsForCurrentToken [
 				ifTrue: [ scanner do_identifierId ]
 				ifFalse: [ lookahead value = ' ??? '
 						ifTrue: [ scanner block_identifierId ]
-						ifFalse: [ lookahead value = '['
-								ifTrue: [ scanner bracket_identifierId ]
-								ifFalse: [ lookahead value = '('
-										ifTrue: [ scanner paren_identifierId ] ] ] ].
+						ifFalse: [ currentToken stopPosition + 1 = lookahead startPosition
+								ifTrue: [ lookahead value = '['
+										ifTrue: [ scanner bracket_identifierId ]
+										ifFalse: [ lookahead value = '('
+												ifTrue: [ scanner paren_identifierId ] ] ] ] ].
 			id notNil
 				ifTrue: [ ids := {id.
 					scanner identifierId} ] ].
