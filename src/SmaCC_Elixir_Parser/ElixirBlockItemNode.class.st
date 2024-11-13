@@ -5,7 +5,7 @@ Class {
 		'block',
 		'stab'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser'
 }
 
 { #category : #generated }
@@ -36,8 +36,9 @@ ElixirBlockItemNode >> stab [
 ]
 
 { #category : #generated }
-ElixirBlockItemNode >> stab: anElixirProgramNode [
+ElixirBlockItemNode >> stab: anElixirStabEoeNode [
+
 	self stab notNil ifTrue: [ self stab parent: nil ].
-	stab := anElixirProgramNode.
+	stab := anElixirStabEoeNode.
 	self stab notNil ifTrue: [ self stab parent: self ]
 ]

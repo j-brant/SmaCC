@@ -2,7 +2,7 @@ Trait {
 	#name : #TElixirProgramNodeVisitor,
 	#traits : 'TSmaCCParseNodeVisitor',
 	#classTraits : 'TSmaCCParseNodeVisitor classTrait',
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser'
 }
 
 { #category : #generated }
@@ -88,6 +88,12 @@ TElixirProgramNodeVisitor >> visitBracketAtExpr: aBracketAtExpr [
 { #category : #generated }
 TElixirProgramNodeVisitor >> visitBracketExpr: aBracketExpr [
 	^ self visitProgram: aBracketExpr
+]
+
+{ #category : #generated }
+TElixirProgramNodeVisitor >> visitBracketValues: aBracketValues [
+
+	^ self visitProgram: aBracketValues
 ]
 
 { #category : #generated }
@@ -213,6 +219,12 @@ TElixirProgramNodeVisitor >> visitFnEoe: aFnEoe [
 { #category : #generated }
 TElixirProgramNodeVisitor >> visitGrammar: aGrammar [
 	^ self visitProgram: aGrammar
+]
+
+{ #category : #generated }
+TElixirProgramNodeVisitor >> visitKw: aKw [
+
+	^ self visitProgram: aKw
 ]
 
 { #category : #generated }

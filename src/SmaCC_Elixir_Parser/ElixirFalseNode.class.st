@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'_false'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser'
 }
 
 { #category : #generated }

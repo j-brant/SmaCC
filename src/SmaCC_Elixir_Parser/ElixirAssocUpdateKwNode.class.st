@@ -6,7 +6,7 @@ Class {
 		'pipe',
 		'kw'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser'
 }
 
 { #category : #generated }
@@ -32,9 +32,10 @@ ElixirAssocUpdateKwNode >> kw [
 ]
 
 { #category : #generated }
-ElixirAssocUpdateKwNode >> kw: anElixirKwBaseNode [
+ElixirAssocUpdateKwNode >> kw: anElixirKwNode [
+
 	self kw notNil ifTrue: [ self kw parent: nil ].
-	kw := anElixirKwBaseNode.
+	kw := anElixirKwNode.
 	self kw notNil ifTrue: [ self kw parent: self ]
 ]
 

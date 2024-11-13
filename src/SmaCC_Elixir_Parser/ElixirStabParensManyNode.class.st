@@ -3,9 +3,10 @@ Class {
 	#superclass : #ElixirProgramNode,
 	#instVars : [
 		'leftParen',
-		'args'
+		'args',
+		'rightParen'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser'
 }
 
 { #category : #generated }
@@ -41,6 +42,19 @@ ElixirStabParensManyNode >> nodeVariables [
 ]
 
 { #category : #generated }
+ElixirStabParensManyNode >> rightParen [
+
+	^ rightParen
+]
+
+{ #category : #generated }
+ElixirStabParensManyNode >> rightParen: aSmaCCToken [
+
+	rightParen := aSmaCCToken
+]
+
+{ #category : #generated }
 ElixirStabParensManyNode >> tokenVariables [
-	^ #(#leftParen)
+
+	^ #( #leftParen #rightParen )
 ]

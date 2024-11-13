@@ -6,7 +6,7 @@ Class {
 		'com',
 		'kw'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser'
 }
 
 { #category : #generated }
@@ -42,9 +42,10 @@ ElixirContainerArgsNode >> kw [
 ]
 
 { #category : #generated }
-ElixirContainerArgsNode >> kw: anElixirKwBaseNode [
+ElixirContainerArgsNode >> kw: anElixirKwNode [
+
 	self kw notNil ifTrue: [ self kw parent: nil ].
-	kw := anElixirKwBaseNode.
+	kw := anElixirKwNode.
 	self kw notNil ifTrue: [ self kw parent: self ]
 ]
 

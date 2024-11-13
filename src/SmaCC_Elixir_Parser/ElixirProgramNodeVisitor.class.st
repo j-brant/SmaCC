@@ -3,5 +3,5 @@ Class {
 	#superclass : #Object,
 	#traits : 'TElixirProgramNodeVisitor',
 	#classTraits : 'TElixirProgramNodeVisitor classTrait',
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser'
 }

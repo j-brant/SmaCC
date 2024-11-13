@@ -4,9 +4,10 @@ Class {
 	#instVars : [
 		'expression',
 		'args',
-		'guard'
+		'guard',
+		'when'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser'
 }
 
 { #category : #generated }
@@ -53,4 +54,22 @@ ElixirStabExprNode >> guard: anElixirProgramNode [
 { #category : #generated }
 ElixirStabExprNode >> nodeVariables [
 	^ #(#expression #args #guard)
+]
+
+{ #category : #generated }
+ElixirStabExprNode >> tokenVariables [
+
+	^ #( #when )
+]
+
+{ #category : #generated }
+ElixirStabExprNode >> when [
+
+	^ when
+]
+
+{ #category : #generated }
+ElixirStabExprNode >> when: aSmaCCToken [
+
+	when := aSmaCCToken
 ]

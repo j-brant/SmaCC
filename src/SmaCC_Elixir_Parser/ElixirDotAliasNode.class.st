@@ -8,7 +8,7 @@ Class {
 		'leftCurly',
 		'rightCurly'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser'
 }
 
 { #category : #generated }

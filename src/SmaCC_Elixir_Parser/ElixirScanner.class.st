@@ -10,7 +10,7 @@ Class {
 { #category : #'generated-initialization' }
 ElixirScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
-	#(#(52 'do' 9) #(52 'end' 10) #(52 'false' 11) #(52 'fn' 12) #(52 'nil' 13) #(52 'true' 14) #(52 'when' 30) #(56 'do' 9) #(56 'end' 10) #(56 'false' 11) #(56 'fn' 12) #(56 'nil' 13) #(56 'true' 14) #(56 'when' 30) #(57 'do' 9) #(57 'end' 10) #(57 'false' 11) #(57 'fn' 12) #(57 'nil' 13) #(57 'true' 14) #(57 'when' 30) #(58 'do' 9) #(58 'end' 10) #(58 'false' 11) #(58 'fn' 12) #(58 'nil' 13) #(58 'true' 14) #(58 'when' 30))
+	#(#(52 'do' 9) #(52 'end' 10) #(52 'false' 11) #(52 'fn' 12) #(52 'nil' 13) #(52 'true' 14) #(52 'when' 30) #(56 'do' 9) #(56 'end' 10) #(56 'false' 11) #(56 'fn' 12) #(56 'nil' 13) #(56 'true' 14) #(56 'when' 30))
 		do: [ :each | 
 			(keywordMap at: each first ifAbsentPut: [ Dictionary new ])
 				at: (each at: 2)
@@ -25,12 +25,12 @@ ElixirScanner >> aliasId [
 
 { #category : #generated }
 ElixirScanner >> block_identifierId [
-	^ 58
+	^ 56
 ]
 
 { #category : #generated }
 ElixirScanner >> bracket_identifierId [
-	^ 56
+	^ 148
 ]
 
 { #category : #accessing }
@@ -43,7 +43,7 @@ ElixirScanner >> currentState [
 
 { #category : #generated }
 ElixirScanner >> do_identifierId [
-	^ 150
+	^ 149
 ]
 
 { #category : #private }
@@ -54,7 +54,7 @@ ElixirScanner >> dot_call_op [
 
 { #category : #generated }
 ElixirScanner >> dot_call_opId [
-	^ 59
+	^ 57
 ]
 
 { #category : #generated }
@@ -130,12 +130,12 @@ ElixirScanner >> next [
 
 { #category : #generated }
 ElixirScanner >> op_identifierId [
-	^ 151
+	^ 150
 ]
 
 { #category : #generated }
 ElixirScanner >> paren_identifierId [
-	^ 57
+	^ 151
 ]
 
 { #category : #accessing }
@@ -537,7 +537,7 @@ ElixirScanner >> scan27 [
 
 { #category : #generated }
 ElixirScanner >> scan28 [
-	[ self recordMatch: #(52 56 57 58).
+	[ self recordMatch: #(52 56).
 	self step.
 	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(53) ].
 	('!?' includes: currentCharacter) ifTrue: [ ^ self scan29 ].
@@ -547,7 +547,7 @@ ElixirScanner >> scan28 [
 
 { #category : #generated }
 ElixirScanner >> scan29 [
-	self recordMatch: #(52 56 57 58).
+	self recordMatch: #(52 56).
 	self step.
 	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(53) ].
 	^ self reportLastMatch
@@ -1363,7 +1363,7 @@ ElixirScanner >> scanForTokenX11 [
 ElixirScanner >> scanForTokenX12 [
 	self recordMatch: #(50).
 	self step.
-	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(59) ].
+	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(57) ].
 	currentCharacter == $. ifTrue: [ ^ self recordAndReportMatch: #(42) ].
 	^ self reportLastMatch
 ]
@@ -1438,15 +1438,15 @@ ElixirScanner >> scanForTokenX19 [
 
 { #category : #generated }
 ElixirScanner >> scanForTokenX2 [
-	self recordMatch: #(52 56 57 58).
+	self recordMatch: #(52 56).
 	self step.
 	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(53) ].
 	currentCharacter == $o
-		ifTrue: [ self recordMatch: #(52 56 57 58).
+		ifTrue: [ self recordMatch: #(52 56).
 			self step.
 			currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(53) ].
 			currentCharacter == $t
-				ifTrue: [ self recordMatch: #(45 52 56 57 58).
+				ifTrue: [ self recordMatch: #(45 52 56).
 					self step.
 					currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(53) ].
 					('!?' includes: currentCharacter) ifTrue: [ ^ self scan29 ].
@@ -1573,15 +1573,15 @@ ElixirScanner >> scanForTokenX3 [
 
 { #category : #generated }
 ElixirScanner >> scanForTokenX4 [
-	self recordMatch: #(52 56 57 58).
+	self recordMatch: #(52 56).
 	self step.
 	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(53) ].
 	currentCharacter == $n
-		ifTrue: [ self recordMatch: #(52 56 57 58).
+		ifTrue: [ self recordMatch: #(52 56).
 			self step.
 			currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(53) ].
 			currentCharacter == $d
-				ifTrue: [ self recordMatch: #(37 52 56 57 58).
+				ifTrue: [ self recordMatch: #(37 52 56).
 					self step.
 					currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(53) ] ] ].
 	('!?' includes: currentCharacter) ifTrue: [ ^ self scan29 ].
@@ -1592,11 +1592,11 @@ ElixirScanner >> scanForTokenX4 [
 
 { #category : #generated }
 ElixirScanner >> scanForTokenX5 [
-	self recordMatch: #(52 56 57 58).
+	self recordMatch: #(52 56).
 	self step.
 	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(53) ].
 	currentCharacter == $r
-		ifTrue: [ self recordMatch: #(36 52 56 57 58).
+		ifTrue: [ self recordMatch: #(36 52 56).
 			self step.
 			currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(53) ] ].
 	('!?' includes: currentCharacter) ifTrue: [ ^ self scan29 ].
@@ -1607,11 +1607,11 @@ ElixirScanner >> scanForTokenX5 [
 
 { #category : #generated }
 ElixirScanner >> scanForTokenX6 [
-	self recordMatch: #(52 56 57 58).
+	self recordMatch: #(52 56).
 	self step.
 	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(53) ].
 	currentCharacter == $n
-		ifTrue: [ self recordMatch: #(40 52 56 57 58).
+		ifTrue: [ self recordMatch: #(40 52 56).
 			self step.
 			currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(53) ] ].
 	('!?' includes: currentCharacter) ifTrue: [ ^ self scan29 ].
@@ -1677,5 +1677,5 @@ ElixirScanner >> struct_opId [
 
 { #category : #generated }
 ElixirScanner >> tokenActions [
-	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace #comment #eol nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #kw_identifier nil nil nil nil nil #dot_call_op)
+	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace #comment #eol nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #kw_identifier nil nil nil #dot_call_op)
 ]
