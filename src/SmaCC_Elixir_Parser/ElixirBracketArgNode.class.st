@@ -7,7 +7,7 @@ Class {
 		'com',
 		'arg'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser'
 }
 
 { #category : #generated }
@@ -21,9 +21,10 @@ ElixirBracketArgNode >> arg [
 ]
 
 { #category : #generated }
-ElixirBracketArgNode >> arg: anElixirProgramNode [
+ElixirBracketArgNode >> arg: anElixirBracketValuesNode [
+
 	self arg notNil ifTrue: [ self arg parent: nil ].
-	arg := anElixirProgramNode.
+	arg := anElixirBracketValuesNode.
 	self arg notNil ifTrue: [ self arg parent: self ]
 ]
 

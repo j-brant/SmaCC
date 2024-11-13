@@ -2,9 +2,9 @@ Class {
 	#name : #ElixirDotOpIdentifierNode,
 	#superclass : #ElixirProgramNode,
 	#instVars : [
-		'ops',
-		'expressions',
-		'identifier'
+		'identifier',
+		'expression',
+		'op'
 	],
 	#category : #'SmaCC_Elixir_Parser'
 }
@@ -15,25 +15,17 @@ ElixirDotOpIdentifierNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-ElixirDotOpIdentifierNode >> compositeNodeVariables [
-	^ #(#expressions)
+ElixirDotOpIdentifierNode >> expression [
+
+	^ expression
 ]
 
 { #category : #generated }
-ElixirDotOpIdentifierNode >> compositeTokenVariables [
-	^ #(#ops)
-]
+ElixirDotOpIdentifierNode >> expression: anElixirMatchedExprNode [
 
-{ #category : #generated }
-ElixirDotOpIdentifierNode >> expressions [
-	^ expressions
-]
-
-{ #category : #generated }
-ElixirDotOpIdentifierNode >> expressions: anOrderedCollection [
-	self setParents: self expressions to: nil.
-	expressions := anOrderedCollection.
-	self setParents: self expressions to: self
+	self expression notNil ifTrue: [ self expression parent: nil ].
+	expression := anElixirMatchedExprNode.
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
@@ -46,24 +38,26 @@ ElixirDotOpIdentifierNode >> identifier: aSmaCCToken [
 	identifier := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
-ElixirDotOpIdentifierNode >> initialize [
-	super initialize.
-	expressions := OrderedCollection new: 2.
-	ops := OrderedCollection new: 2.
+{ #category : #generated }
+ElixirDotOpIdentifierNode >> nodeVariables [
+
+	^ #( #expression )
 ]
 
 { #category : #generated }
-ElixirDotOpIdentifierNode >> ops [
-	^ ops
+ElixirDotOpIdentifierNode >> op [
+
+	^ op
 ]
 
 { #category : #generated }
-ElixirDotOpIdentifierNode >> ops: anOrderedCollection [
-	ops := anOrderedCollection
+ElixirDotOpIdentifierNode >> op: aSmaCCToken [
+
+	op := aSmaCCToken
 ]
 
 { #category : #generated }
 ElixirDotOpIdentifierNode >> tokenVariables [
-	^ #(#identifier)
+
+	^ #( #identifier #op )
 ]
