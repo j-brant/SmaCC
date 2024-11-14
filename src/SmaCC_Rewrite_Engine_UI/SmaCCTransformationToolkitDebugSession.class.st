@@ -99,7 +99,7 @@ SmaCCTransformationToolkitDebugSession >> isRewriteContext: context [
 
 { #category : #accessing }
 SmaCCTransformationToolkitDebugSession >> isTransformation: aContext andRewrite: aRewrite [
-	^ aRewrite transformation method == aContext method
+	^ aRewrite transformation method == aContext method method
 ]
 
 { #category : #accessing }
