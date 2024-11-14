@@ -61,7 +61,12 @@ SmaCCTransformationToolkitDebugSession >> codeObjectForContext: aContext andRewr
 
 { #category : #accessing }
 SmaCCTransformationToolkitDebugSession >> currentNode [
-	^ self currentRewriteContext ifNotNil: [ :each | each match ]
+	^ self currentRewrite ifNotNil: [ :each | each match ]
+]
+
+{ #category : #accessing }
+SmaCCTransformationToolkitDebugSession >> currentRewrite [
+	^ self currentRewriteContext ifNotNil: [ :context | context receiver ]
 ]
 
 { #category : #accessing }
@@ -69,8 +74,7 @@ SmaCCTransformationToolkitDebugSession >> currentRewriteContext [
 	| context |
 	context := interruptedContext.
 	[ context isNil ]
-		whileFalse:
-			[ (self isRewriteContext: context) ifTrue: [ ^ context receiver ].
+		whileFalse: [ (self isRewriteContext: context) ifTrue: [ ^ context ].
 			context := context sender ].
 	^ nil
 ]
@@ -115,7 +119,8 @@ SmaCCTransformationToolkitDebugSession >> rewriteEngine [
 
 { #category : #accessing }
 SmaCCTransformationToolkitDebugSession >> rewriteForContext: context [
-	^ context receiver rewriteEngine rewriteRule rewriteForMethod: context method
+	^ context receiver rewriteEngine rewriteRule
+		rewriteForMethod: context method method
 ]
 
 { #category : #accessing }
