@@ -188,7 +188,7 @@ SmaCCTransformationToolkitDebugger >> initializeWindow: aWindowPresenter [
 SmaCCTransformationToolkitDebugger >> outputSelectionIntervalFor: aNode [
 	| string stop matchContext start |
 	aNode ifNil: [ ^ 1 to: 0 ].
-	matchContext := session currentRewriteContext.
+	matchContext := session currentRewrite.
 	string := session rewriteEngine source.
 	start := matchContext startIndexFor: aNode.
 	stop := matchContext stopIndexFor: aNode.

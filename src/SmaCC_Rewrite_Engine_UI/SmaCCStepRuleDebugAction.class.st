@@ -26,5 +26,6 @@ SmaCCStepRuleDebugAction class >> defaultShortcut [
 
 { #category : #actions }
 SmaCCStepRuleDebugAction >> executeAction [
-	self session stepOver: self currentContext
+	self session
+		stepOver: (self session currentRewriteContext ifNil: [ self currentContext ])
 ]
