@@ -64,12 +64,12 @@ SmaCCDefinitionScanner >> directiveId [
 
 { #category : #generated }
 SmaCCDefinitionScanner >> emptySymbolTokenId [
-	^ 105
+	^ 106
 ]
 
 { #category : #generated }
 SmaCCDefinitionScanner >> errorTokenId [
-	^ 106
+	^ 107
 ]
 
 { #category : #'token-actions' }
