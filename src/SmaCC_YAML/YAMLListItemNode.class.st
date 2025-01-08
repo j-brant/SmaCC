@@ -15,7 +15,7 @@ YAMLListItemNode >> acceptVisitor: aParseVisitor [
 
 { #category : #private }
 YAMLListItemNode >> createObject [
-	^ value ifNotNil: [ value object ]
+	^ value ifNotNil: [ value isErrorNode ifFalse: [ value object ] ]
 ]
 
 { #category : #generated }

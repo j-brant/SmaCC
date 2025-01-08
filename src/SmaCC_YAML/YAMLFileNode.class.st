@@ -27,9 +27,11 @@ YAMLFileNode >> compositeTokenVariables [
 
 { #category : #private }
 YAMLFileNode >> createObject [
-	^ documents size = 1
-		ifTrue: [ documents first object ]
-		ifFalse: [ documents collect: #object ]
+	| nonErrorDocs |
+	nonErrorDocs := documents reject: #isErrorNode.
+	^ nonErrorDocs size = 1
+		ifTrue: [ nonErrorDocs first object ]
+		ifFalse: [ nonErrorDocs collect: #object ]
 ]
 
 { #category : #generated }

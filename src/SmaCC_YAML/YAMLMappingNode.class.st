@@ -31,7 +31,8 @@ YAMLMappingNode >> createObject [
 
 { #category : #testing }
 YAMLMappingNode >> isMergeKey [
-	^ key notNil and: [ key isStringNode and: [ key source = '<<' ] ]
+	^ key notNil
+		and: [ key isErrorNode not and: [ key isStringNode and: [ key source = '<<' ] ] ]
 ]
 
 { #category : #generated }
