@@ -15,7 +15,7 @@ YAMLComplexKeyNode >> acceptVisitor: aParseVisitor [
 
 { #category : #private }
 YAMLComplexKeyNode >> createObject [
-	^ value ifNotNil: [ value object ]
+	^ value ifNotNil: [ value isErrorNode ifFalse: [ value object ] ]
 ]
 
 { #category : #generated }

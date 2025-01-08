@@ -19,7 +19,7 @@ YAMLListNode >> compositeNodeVariables [
 
 { #category : #private }
 YAMLListNode >> createObject [
-	^ items collect: #object
+	^ items reject: #isErrorNode thenCollect: #object
 ]
 
 { #category : #'generated-initialize-release' }
