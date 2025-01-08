@@ -1,1 +1,1 @@
-Package { #name : #'SmaCC_YAML' }
+Package { #name : 'SmaCC_YAML' }

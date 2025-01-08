@@ -1,62 +1,65 @@
 Class {
-	#name : #YAMLMappingNode,
-	#superclass : #YAMLParseNode,
+	#name : 'YAMLMappingNode',
+	#superclass : 'YAMLParseNode',
 	#instVars : [
 		'colon',
 		'value',
 		'key'
 	],
-	#category : #'SmaCC_YAML-Parser'
+	#category : 'SmaCC_YAML-Parser',
+	#package : 'SmaCC_YAML',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLMappingNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitMapping: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLMappingNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLMappingNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLMappingNode >> createObject [
 	^ self keyObject -> self valueObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 YAMLMappingNode >> isMergeKey [
-	^ key notNil and: [ key isStringNode and: [ key source = '<<' ] ]
+	^ key notNil
+		and: [ key isErrorNode not and: [ key isStringNode and: [ key source = '<<' ] ] ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLMappingNode >> key [
 	^ key
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLMappingNode >> key: aYAMLParseNode [
 	self key notNil ifTrue: [ self key parent: nil ].
 	key := aYAMLParseNode.
 	self key notNil ifTrue: [ self key parent: self ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLMappingNode >> keyObject [
 	^ key ifNotNil: [ key isErrorNode ifFalse: [ key object ] ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLMappingNode >> nodeVariables [
 	^ #(#value #key)
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 YAMLMappingNode >> nodesWithAnchor: aString do: aBlock [
 	self anchors
 		do: [ :anchor | 
@@ -67,24 +70,24 @@ YAMLMappingNode >> nodesWithAnchor: aString do: aBlock [
 	value ifNotNil: [ value nodesWithAnchor: aString do: aBlock ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLMappingNode >> tokenVariables [
 	^ #(#colon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLMappingNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLMappingNode >> value: aYAMLValueNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aYAMLValueNode.
 	self value notNil ifTrue: [ self value parent: self ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLMappingNode >> valueObject [
 	^ value ifNotNil: [ value isErrorNode ifFalse: [ value object ] ]
 ]

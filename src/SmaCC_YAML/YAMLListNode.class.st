@@ -1,39 +1,41 @@
 Class {
-	#name : #YAMLListNode,
-	#superclass : #YAMLValueNode,
+	#name : 'YAMLListNode',
+	#superclass : 'YAMLValueNode',
 	#instVars : [
 		'items'
 	],
-	#category : #'SmaCC_YAML-Parser'
+	#category : 'SmaCC_YAML-Parser',
+	#package : 'SmaCC_YAML',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLListNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitList: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLListNode >> compositeNodeVariables [
 	^ #(#items)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLListNode >> createObject [
-	^ items collect: #object
+	^ items reject: #isErrorNode thenCollect: #object
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 YAMLListNode >> initialize [
 	super initialize.
 	items := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLListNode >> items [
 	^ items
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLListNode >> items: anOrderedCollection [
 	self setParents: self items to: nil.
 	items := anOrderedCollection.

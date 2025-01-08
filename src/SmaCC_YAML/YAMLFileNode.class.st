@@ -1,80 +1,84 @@
 Class {
-	#name : #YAMLFileNode,
-	#superclass : #YAMLParseNode,
+	#name : 'YAMLFileNode',
+	#superclass : 'YAMLParseNode',
 	#instVars : [
 		'documents',
 		'documentEnds',
 		'globalTags',
 		'documentStarts'
 	],
-	#category : #'SmaCC_YAML-Parser'
+	#category : 'SmaCC_YAML-Parser',
+	#package : 'SmaCC_YAML',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLFileNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitFile: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLFileNode >> compositeNodeVariables [
 	^ #(#documents)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLFileNode >> compositeTokenVariables [
 	^ #(#documentEnds #documentStarts #globalTags #anchors #tags)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLFileNode >> createObject [
-	^ documents size = 1
-		ifTrue: [ documents first object ]
-		ifFalse: [ documents collect: #object ]
+	| nonErrorDocs |
+	nonErrorDocs := documents reject: #isErrorNode.
+	^ nonErrorDocs size = 1
+		ifTrue: [ nonErrorDocs first object ]
+		ifFalse: [ nonErrorDocs collect: #object ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLFileNode >> documentEnds [
 	^ documentEnds
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLFileNode >> documentEnds: anOrderedCollection [
 	documentEnds := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLFileNode >> documentStarts [
 	^ documentStarts
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLFileNode >> documentStarts: anOrderedCollection [
 	documentStarts := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLFileNode >> documents [
 	^ documents
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLFileNode >> documents: anOrderedCollection [
 	self setParents: self documents to: nil.
 	documents := anOrderedCollection.
 	self setParents: self documents to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLFileNode >> globalTags [
 	^ globalTags
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLFileNode >> globalTags: anOrderedCollection [
 	globalTags := anOrderedCollection
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 YAMLFileNode >> initialize [
 	super initialize.
 	documents := OrderedCollection new: 2.

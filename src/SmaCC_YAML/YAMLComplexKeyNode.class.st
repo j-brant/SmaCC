@@ -1,49 +1,51 @@
 Class {
-	#name : #YAMLComplexKeyNode,
-	#superclass : #YAMLParseNode,
+	#name : 'YAMLComplexKeyNode',
+	#superclass : 'YAMLParseNode',
 	#instVars : [
 		'questionMark',
 		'value'
 	],
-	#category : #'SmaCC_YAML-Parser'
+	#category : 'SmaCC_YAML-Parser',
+	#package : 'SmaCC_YAML',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLComplexKeyNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitComplexKey: self
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLComplexKeyNode >> createObject [
-	^ value ifNotNil: [ value object ]
+	^ value ifNotNil: [ value isErrorNode ifFalse: [ value object ] ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLComplexKeyNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLComplexKeyNode >> questionMark [
 	^ questionMark
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLComplexKeyNode >> questionMark: aSmaCCToken [
 	questionMark := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLComplexKeyNode >> tokenVariables [
 	^ #(#questionMark)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLComplexKeyNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLComplexKeyNode >> value: aYAMLValueNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aYAMLValueNode.
