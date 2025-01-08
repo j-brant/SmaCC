@@ -46,6 +46,11 @@ CPPFunctionDefinitionNode >> body: aCPPStatementNode [
 		ifTrue: [ self body parent: self ]
 ]
 
+{ #category : 'accessing' }
+CPPFunctionDefinitionNode >> children [
+	^ self specifiers , { self declarator . self body }
+]
+
 { #category : 'generated' }
 CPPFunctionDefinitionNode >> compositeNodeVariables [
 	^ #(#specifiers)
