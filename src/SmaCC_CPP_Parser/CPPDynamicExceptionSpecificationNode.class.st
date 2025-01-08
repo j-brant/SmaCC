@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPDynamicExceptionSpecificationNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPDynamicExceptionSpecificationNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'throwToken',
 		'leftParen',
@@ -9,45 +9,47 @@ Class {
 		'ellipsises',
 		'commas'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDynamicExceptionSpecificationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDynamicExceptionSpecification: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDynamicExceptionSpecificationNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDynamicExceptionSpecificationNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDynamicExceptionSpecificationNode >> compositeNodeVariables [
 	^ #(#types)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDynamicExceptionSpecificationNode >> compositeTokenVariables [
 	^ #(#ellipsises #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDynamicExceptionSpecificationNode >> ellipsises [
 	^ ellipsises
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDynamicExceptionSpecificationNode >> ellipsises: anOrderedCollection [
 	ellipsises := anOrderedCollection
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPDynamicExceptionSpecificationNode >> initialize [
 	super initialize.
 	types := OrderedCollection new: 2.
@@ -55,47 +57,47 @@ CPPDynamicExceptionSpecificationNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDynamicExceptionSpecificationNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDynamicExceptionSpecificationNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDynamicExceptionSpecificationNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDynamicExceptionSpecificationNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDynamicExceptionSpecificationNode >> throwToken [
 	^ throwToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDynamicExceptionSpecificationNode >> throwToken: aSmaCCToken [
 	throwToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDynamicExceptionSpecificationNode >> tokenVariables [
 	^ #(#throwToken #leftParen #rightParen)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDynamicExceptionSpecificationNode >> types [
 	^ types
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDynamicExceptionSpecificationNode >> types: anOrderedCollection [
 	self setParents: self types to: nil.
 	types := anOrderedCollection.

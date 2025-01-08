@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPUsingDeclarationNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPUsingDeclarationNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'usingToken',
 		'nameSpecifier',
@@ -9,30 +9,32 @@ Class {
 		'typenameToken',
 		'colonColon'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUsingDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDeclarationNode >> colonColon [
 	^ colonColon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDeclarationNode >> colonColon: aSmaCCToken [
 	colonColon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDeclarationNode >> identifier [
 	^ identifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDeclarationNode >> identifier: aCPPProgramNode [
 	self identifier notNil
 		ifTrue: [ self identifier parent: nil ].
@@ -41,12 +43,12 @@ CPPUsingDeclarationNode >> identifier: aCPPProgramNode [
 		ifTrue: [ self identifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDeclarationNode >> nameSpecifier [
 	^ nameSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDeclarationNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 	self nameSpecifier notNil
 		ifTrue: [ self nameSpecifier parent: nil ].
@@ -55,42 +57,42 @@ CPPUsingDeclarationNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 		ifTrue: [ self nameSpecifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDeclarationNode >> nodeVariables [
 	^ #(#nameSpecifier #identifier)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDeclarationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDeclarationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDeclarationNode >> tokenVariables [
 	^ #(#usingToken #semicolon #typenameToken #colonColon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDeclarationNode >> typenameToken [
 	^ typenameToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDeclarationNode >> typenameToken: aSmaCCToken [
 	typenameToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDeclarationNode >> usingToken [
 	^ usingToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDeclarationNode >> usingToken: aSmaCCToken [
 	usingToken := aSmaCCToken
 ]

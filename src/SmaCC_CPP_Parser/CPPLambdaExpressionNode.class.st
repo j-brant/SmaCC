@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPLambdaExpressionNode,
-	#superclass : #CPPExpressionNode,
+	#name : 'CPPLambdaExpressionNode',
+	#superclass : 'CPPExpressionNode',
 	#instVars : [
 		'leftBracket',
 		'rightBracket',
@@ -16,74 +16,76 @@ Class {
 		'exceptionSpecification',
 		'mutableToken'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLambdaExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> arrow [
 	^ arrow
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> arrow: aSmaCCToken [
 	arrow := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> captures [
 	^ captures
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> captures: anOrderedCollection [
 	self setParents: self captures to: nil.
 	captures := anOrderedCollection.
 	self setParents: self captures to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> compositeNodeVariables [
 	^ #(#captures #declarations #specifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> compositeTokenVariables [
 	^ #(#ellipsises #commas #leftParens #rightParens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> declarations [
 	^ declarations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> declarations: anOrderedCollection [
 	self setParents: self declarations to: nil.
 	declarations := anOrderedCollection.
 	self setParents: self declarations to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> declarator [
 	^ declarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> declarator: aCPPProgramNode [
 	self declarator notNil
 		ifTrue: [ self declarator parent: nil ].
@@ -92,32 +94,32 @@ CPPLambdaExpressionNode >> declarator: aCPPProgramNode [
 		ifTrue: [ self declarator parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> default [
 	^ default
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> default: aSmaCCToken [
 	default := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> ellipsises [
 	^ ellipsises
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> ellipsises: anOrderedCollection [
 	ellipsises := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> exceptionSpecification [
 	^ exceptionSpecification
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> exceptionSpecification: aCPPProgramNode [
 	self exceptionSpecification notNil
 		ifTrue: [ self exceptionSpecification parent: nil ].
@@ -126,7 +128,7 @@ CPPLambdaExpressionNode >> exceptionSpecification: aCPPProgramNode [
 		ifTrue: [ self exceptionSpecification parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPLambdaExpressionNode >> initialize [
 	super initialize.
 	captures := OrderedCollection new: 2.
@@ -136,59 +138,59 @@ CPPLambdaExpressionNode >> initialize [
 	specifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> leftBracket [
 	^ leftBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> leftBracket: aSmaCCToken [
 	leftBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> mutableToken [
 	^ mutableToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> mutableToken: aSmaCCToken [
 	mutableToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> nodeVariables [
 	^ #(#statement #declarator #exceptionSpecification)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> rightBracket [
 	^ rightBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> specifiers [
 	^ specifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> specifiers: anOrderedCollection [
 	self setParents: self specifiers to: nil.
 	specifiers := anOrderedCollection.
 	self setParents: self specifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> statement: aCPPCompoundStatementNode [
 	self statement notNil
 		ifTrue: [ self statement parent: nil ].
@@ -197,7 +199,7 @@ CPPLambdaExpressionNode >> statement: aCPPCompoundStatementNode [
 		ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLambdaExpressionNode >> tokenVariables [
 	^ #(#leftBracket #rightBracket #default #arrow #mutableToken)
 ]

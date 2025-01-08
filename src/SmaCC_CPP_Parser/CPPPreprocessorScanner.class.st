@@ -1,10 +1,12 @@
 Class {
-	#name : #CPPPreprocessorScanner,
-	#superclass : #SmaCCScanner,
-	#category : #'SmaCC_CPP_Parser-Preprocessor'
+	#name : 'CPPPreprocessorScanner',
+	#superclass : 'SmaCCScanner',
+	#category : 'SmaCC_CPP_Parser-Preprocessor',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'Preprocessor'
 }
 
-{ #category : #'generated-initialization' }
+{ #category : 'generated-initialization' }
 CPPPreprocessorScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
 	#(#(68 'define' #(53 #(#default))) #(68 'defined' #(54 #(#default))) #(68 'elif' #(55 #(#default))) #(68 'else' #(56 #(#default))) #(68 'endif' #(57 #(#default))) #(68 'error' #(58 #(#default))) #(68 'if' #(59 #(#default))) #(68 'ifdef' #(60 #(#default))) #(68 'ifndef' #(61 #(#default))) #(68 'include' #(62 #(#default))) #(68 'include_next' #(63 #(#default))) #(68 'line' #(64 #(#default))) #(68 'pragma' #(65 #(#default))) #(68 'undef' #(66 #(#default))))
@@ -15,22 +17,22 @@ CPPPreprocessorScanner class >> initializeKeywordMap [
 	^ keywordMap
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> emptySymbolTokenId [
 	^ 104
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> errorTokenId [
 	^ 105
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPPreprocessorScanner >> lineContinuation [
 	^ self whitespace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1 [
 	self step.
 	currentCharacter == Character lf
@@ -58,7 +60,7 @@ CPPPreprocessorScanner >> scan1 [
 	^ self scan1X23
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan10 [
 	[ self recordMatch: #(71).
 	self step.
@@ -75,7 +77,7 @@ CPPPreprocessorScanner >> scan10 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan11 [
 	self step.
 	currentCharacter isDigit
@@ -85,7 +87,7 @@ CPPPreprocessorScanner >> scan11 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan12 [
 	self step.
 	currentCharacter isDigit
@@ -93,7 +95,7 @@ CPPPreprocessorScanner >> scan12 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan13 [
 	[ self recordMatch: #(71).
 	self step.
@@ -105,7 +107,7 @@ CPPPreprocessorScanner >> scan13 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan14 [
 	[ self step.
 	currentCharacter == $*
@@ -117,7 +119,7 @@ CPPPreprocessorScanner >> scan14 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan15 [
 	self step.
 	(currentCharacter between: $8 and: $9)
@@ -127,7 +129,7 @@ CPPPreprocessorScanner >> scan15 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan16 [
 	[ self recordMatch: #(69).
 	self step.
@@ -149,7 +151,7 @@ CPPPreprocessorScanner >> scan16 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan17 [
 	self recordMatch: #(71).
 	self step.
@@ -162,7 +164,7 @@ CPPPreprocessorScanner >> scan17 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan18 [
 	[ self step.
 	currentCharacter == $'
@@ -178,7 +180,7 @@ CPPPreprocessorScanner >> scan18 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan19 [
 	self recordMatch: #(69).
 	self step.
@@ -189,7 +191,7 @@ CPPPreprocessorScanner >> scan19 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X1 [
 	self recordMatch: #(69).
 	self step.
@@ -216,7 +218,7 @@ CPPPreprocessorScanner >> scan1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X10 [
 	self recordMatch: #(23).
 	self step.
@@ -230,7 +232,7 @@ CPPPreprocessorScanner >> scan1X10 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X11 [
 	self recordMatch: #(15).
 	self step.
@@ -241,7 +243,7 @@ CPPPreprocessorScanner >> scan1X11 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X12 [
 	self recordMatch: #(8).
 	self step.
@@ -252,7 +254,7 @@ CPPPreprocessorScanner >> scan1X12 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X13 [
 	[ self recordMatch: #(74).
 	self step.
@@ -261,7 +263,7 @@ CPPPreprocessorScanner >> scan1X13 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X14 [
 	self recordMatch: #(43).
 	self step.
@@ -270,7 +272,7 @@ CPPPreprocessorScanner >> scan1X14 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X15 [
 	self recordMatch: #(34).
 	self step.
@@ -279,7 +281,7 @@ CPPPreprocessorScanner >> scan1X15 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X16 [
 	self recordMatch: #(27).
 	self step.
@@ -288,7 +290,7 @@ CPPPreprocessorScanner >> scan1X16 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X17 [
 	self recordMatch: #(13).
 	self step.
@@ -297,7 +299,7 @@ CPPPreprocessorScanner >> scan1X17 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X18 [
 	self recordMatch: #(6).
 	self step.
@@ -306,7 +308,7 @@ CPPPreprocessorScanner >> scan1X18 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X19 [
 	self recordMatch: #(51).
 	self step.
@@ -315,7 +317,7 @@ CPPPreprocessorScanner >> scan1X19 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X2 [
 	self recordMatch: #(68).
 	self step.
@@ -351,7 +353,7 @@ CPPPreprocessorScanner >> scan1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X20 [
 	self recordMatch: #(4).
 	self step.
@@ -360,7 +362,7 @@ CPPPreprocessorScanner >> scan1X20 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X21 [
 	currentCharacter isDigit
 		ifTrue: [ ^ self scan25 ].
@@ -382,7 +384,7 @@ CPPPreprocessorScanner >> scan1X21 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X22 [
 	currentCharacter == $>
 		ifTrue:
@@ -416,7 +418,7 @@ CPPPreprocessorScanner >> scan1X22 [
 	^ self scan1X21
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X23 [
 	currentCharacter == $)
 		ifTrue: [ ^ self recordAndReportMatch: #(12) ].
@@ -454,7 +456,7 @@ CPPPreprocessorScanner >> scan1X23 [
 	^ self scan1X22
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X3 [
 	self recordMatch: #(68).
 	self step.
@@ -474,7 +476,7 @@ CPPPreprocessorScanner >> scan1X3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X4 [
 	self recordMatch: #(25).
 	self step.
@@ -492,7 +494,7 @@ CPPPreprocessorScanner >> scan1X4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X5 [
 	self step.
 	currentCharacter == Character lf
@@ -506,7 +508,7 @@ CPPPreprocessorScanner >> scan1X5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X6 [
 	self recordMatch: #(19).
 	self step.
@@ -519,7 +521,7 @@ CPPPreprocessorScanner >> scan1X6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X7 [
 	self recordMatch: #(36).
 	self step.
@@ -533,7 +535,7 @@ CPPPreprocessorScanner >> scan1X7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X8 [
 	self recordMatch: #(30).
 	self step.
@@ -548,7 +550,7 @@ CPPPreprocessorScanner >> scan1X8 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan1X9 [
 	self recordMatch: #(46).
 	self step.
@@ -559,7 +561,7 @@ CPPPreprocessorScanner >> scan1X9 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan2 [
 	self recordMatch: #(75).
 	self step.
@@ -568,7 +570,7 @@ CPPPreprocessorScanner >> scan2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan20 [
 	self recordMatch: #(69).
 	self step.
@@ -577,7 +579,7 @@ CPPPreprocessorScanner >> scan20 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan21 [
 	self recordMatch: #(69).
 	self step.
@@ -595,7 +597,7 @@ CPPPreprocessorScanner >> scan21 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan22 [
 	self recordMatch: #(69).
 	self step.
@@ -606,7 +608,7 @@ CPPPreprocessorScanner >> scan22 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan23 [
 	self step.
 	(currentCharacter between: $0 and: $1)
@@ -624,7 +626,7 @@ CPPPreprocessorScanner >> scan23 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan24 [
 	self step.
 	(currentCharacter isDigit
@@ -646,7 +648,7 @@ CPPPreprocessorScanner >> scan24 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan25 [
 	[ self recordMatch: #(69).
 	self step.
@@ -669,7 +671,7 @@ CPPPreprocessorScanner >> scan25 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan26 [
 	[ self recordMatch: #(68).
 	self step.
@@ -682,7 +684,7 @@ CPPPreprocessorScanner >> scan26 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan27 [
 	self step.
 	currentCharacter == $U
@@ -692,7 +694,7 @@ CPPPreprocessorScanner >> scan27 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan28 [
 	self step.
 	(currentCharacter isDigit
@@ -714,7 +716,7 @@ CPPPreprocessorScanner >> scan28 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan29 [
 	self step.
 	(currentCharacter isDigit
@@ -736,7 +738,7 @@ CPPPreprocessorScanner >> scan29 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan3 [
 	[ self step.
 	currentCharacter == $"
@@ -751,7 +753,7 @@ CPPPreprocessorScanner >> scan3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan30 [
 	self recordMatch: #(68).
 	self step.
@@ -767,7 +769,7 @@ CPPPreprocessorScanner >> scan30 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan30X1 [
 	[ self step.
 	currentCharacter == $(
@@ -787,7 +789,7 @@ CPPPreprocessorScanner >> scan30X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan31 [
 	self recordMatch: #(76).
 	self step.
@@ -796,7 +798,7 @@ CPPPreprocessorScanner >> scan31 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan32 [
 	[ self recordMatch: #(68).
 	self step.
@@ -816,7 +818,7 @@ CPPPreprocessorScanner >> scan32 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan33 [
 	self step.
 	(currentCharacter isDigit
@@ -838,7 +840,7 @@ CPPPreprocessorScanner >> scan33 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan34 [
 	self step.
 	(currentCharacter isDigit
@@ -860,7 +862,7 @@ CPPPreprocessorScanner >> scan34 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan35 [
 	[ self step.
 	currentCharacter == $>
@@ -868,7 +870,7 @@ CPPPreprocessorScanner >> scan35 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan36 [
 	[ self recordMatch: #(2).
 	self step.
@@ -881,7 +883,7 @@ CPPPreprocessorScanner >> scan36 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan37 [
 	[ self recordMatch: #(2).
 	self step.
@@ -899,7 +901,7 @@ CPPPreprocessorScanner >> scan37 [
 	^ self scan36
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan4 [
 	self step.
 	currentCharacter == Character cr
@@ -940,7 +942,7 @@ CPPPreprocessorScanner >> scan4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan4X1 [
 	self step.
 	(currentCharacter isDigit
@@ -966,7 +968,7 @@ CPPPreprocessorScanner >> scan4X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan4X2 [
 	self step.
 	currentCharacter == $"
@@ -981,7 +983,7 @@ CPPPreprocessorScanner >> scan4X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan5 [
 	self step.
 	(currentCharacter isDigit
@@ -1003,7 +1005,7 @@ CPPPreprocessorScanner >> scan5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan6 [
 	self step.
 	currentCharacter == $\
@@ -1017,7 +1019,7 @@ CPPPreprocessorScanner >> scan6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan7 [
 	[ self step.
 	currentCharacter == $'
@@ -1032,7 +1034,7 @@ CPPPreprocessorScanner >> scan7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan8 [
 	self step.
 	currentCharacter == Character cr
@@ -1073,7 +1075,7 @@ CPPPreprocessorScanner >> scan8 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan8X1 [
 	self step.
 	(currentCharacter isDigit
@@ -1099,7 +1101,7 @@ CPPPreprocessorScanner >> scan8X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan8X2 [
 	self step.
 	currentCharacter == $'
@@ -1114,7 +1116,7 @@ CPPPreprocessorScanner >> scan8X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scan9 [
 	self step.
 	(currentCharacter isDigit
@@ -1136,7 +1138,7 @@ CPPPreprocessorScanner >> scan9 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scanForToken [
 	scope == #filename
 		ifTrue:
@@ -1147,7 +1149,7 @@ CPPPreprocessorScanner >> scanForToken [
 	^ self scanForTokenX7
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scanForTokenX1 [
 	self step.
 	currentCharacter == $"
@@ -1185,7 +1187,7 @@ CPPPreprocessorScanner >> scanForTokenX1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scanForTokenX2 [
 	self step.
 	currentCharacter == $*
@@ -1199,7 +1201,7 @@ CPPPreprocessorScanner >> scanForTokenX2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scanForTokenX3 [
 	self step.
 	(currentCharacter <= Character tab
@@ -1213,7 +1215,7 @@ CPPPreprocessorScanner >> scanForTokenX3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scanForTokenX4 [
 	self step.
 	currentCharacter == Character lf
@@ -1227,7 +1229,7 @@ CPPPreprocessorScanner >> scanForTokenX4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scanForTokenX5 [
 	self step.
 	currentCharacter == Character lf
@@ -1239,7 +1241,7 @@ CPPPreprocessorScanner >> scanForTokenX5 [
 	^ self scan36
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scanForTokenX6 [
 	[ self recordMatch: #(74).
 	self step.
@@ -1248,7 +1250,7 @@ CPPPreprocessorScanner >> scanForTokenX6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> scanForTokenX7 [
 	scope == #macro
 		ifTrue:
@@ -1277,7 +1279,7 @@ CPPPreprocessorScanner >> scanForTokenX7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorScanner >> tokenActions [
 	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #comment #whitespace nil #lineContinuation)
 ]

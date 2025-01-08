@@ -1,39 +1,41 @@
 Class {
-	#name : #CPPBreakStatementNode,
-	#superclass : #CPPStatementNode,
+	#name : 'CPPBreakStatementNode',
+	#superclass : 'CPPStatementNode',
 	#instVars : [
 		'breakToken',
 		'semicolon'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBreakStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBreakStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBreakStatementNode >> breakToken [
 	^ breakToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBreakStatementNode >> breakToken: aSmaCCToken [
 	breakToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBreakStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBreakStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBreakStatementNode >> tokenVariables [
 	^ #(#breakToken #semicolon)
 ]

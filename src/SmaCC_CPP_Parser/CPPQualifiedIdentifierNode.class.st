@@ -1,25 +1,27 @@
 Class {
-	#name : #CPPQualifiedIdentifierNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPQualifiedIdentifierNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'nameSpecifier',
 		'templateIdentifier',
 		'templateToken'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPQualifiedIdentifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitQualifiedIdentifier: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPQualifiedIdentifierNode >> nameSpecifier [
 	^ nameSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPQualifiedIdentifierNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 	self nameSpecifier notNil
 		ifTrue: [ self nameSpecifier parent: nil ].
@@ -28,17 +30,17 @@ CPPQualifiedIdentifierNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 		ifTrue: [ self nameSpecifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPQualifiedIdentifierNode >> nodeVariables [
 	^ #(#nameSpecifier #templateIdentifier)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPQualifiedIdentifierNode >> templateIdentifier [
 	^ templateIdentifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPQualifiedIdentifierNode >> templateIdentifier: aCPPProgramNode [
 	self templateIdentifier notNil
 		ifTrue: [ self templateIdentifier parent: nil ].
@@ -47,17 +49,17 @@ CPPQualifiedIdentifierNode >> templateIdentifier: aCPPProgramNode [
 		ifTrue: [ self templateIdentifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPQualifiedIdentifierNode >> templateToken [
 	^ templateToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPQualifiedIdentifierNode >> templateToken: aSmaCCToken [
 	templateToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPQualifiedIdentifierNode >> tokenVariables [
 	^ #(#templateToken)
 ]
