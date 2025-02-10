@@ -7,6 +7,7 @@ Class {
 		'returnType',
 		'operatorToken',
 		'operator',
+		'checkedToken',
 		'leftParenToken',
 		'parameters',
 		'rightParenToken',
@@ -47,6 +48,16 @@ CSOperatorDeclarationNode >> body: aCSMethodBodyNode [
 	body := aCSMethodBodyNode.
 	self body notNil
 		ifTrue: [ self body parent: self ]
+]
+
+{ #category : #generated }
+CSOperatorDeclarationNode >> checkedToken [
+	^ checkedToken
+]
+
+{ #category : #generated }
+CSOperatorDeclarationNode >> checkedToken: aSmaCCToken [
+	checkedToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -166,11 +177,9 @@ CSOperatorDeclarationNode >> returnType [
 
 { #category : #generated }
 CSOperatorDeclarationNode >> returnType: aCSTypeNode [
-	self returnType notNil
-		ifTrue: [ self returnType parent: nil ].
+	self returnType notNil ifTrue: [ self returnType parent: nil ].
 	returnType := aCSTypeNode.
-	self returnType notNil
-		ifTrue: [ self returnType parent: self ]
+	self returnType notNil ifTrue: [ self returnType parent: self ]
 ]
 
 { #category : #generated }
@@ -185,5 +194,5 @@ CSOperatorDeclarationNode >> rightParenToken: aSmaCCToken [
 
 { #category : #generated }
 CSOperatorDeclarationNode >> tokenVariables [
-	^ #(#operatorToken #operator #leftParenToken #rightParenToken #implicitToken #explicitToken)
+	^ #(#operatorToken #operator #checkedToken #leftParenToken #rightParenToken #implicitToken #explicitToken)
 ]

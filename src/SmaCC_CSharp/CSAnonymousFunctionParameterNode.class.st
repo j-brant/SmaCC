@@ -2,7 +2,7 @@ Class {
 	#name : #CSAnonymousFunctionParameterNode,
 	#superclass : #CSProgramNode,
 	#instVars : [
-		'modifier',
+		'modifiers',
 		'type',
 		'name'
 	],
@@ -15,13 +15,24 @@ CSAnonymousFunctionParameterNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-CSAnonymousFunctionParameterNode >> modifier [
-	^ modifier
+CSAnonymousFunctionParameterNode >> compositeTokenVariables [
+	^ #(#modifiers)
+]
+
+{ #category : #'generated-initialize-release' }
+CSAnonymousFunctionParameterNode >> initialize [
+	super initialize.
+	modifiers := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-CSAnonymousFunctionParameterNode >> modifier: aSmaCCToken [
-	modifier := aSmaCCToken
+CSAnonymousFunctionParameterNode >> modifiers [
+	^ modifiers
+]
+
+{ #category : #generated }
+CSAnonymousFunctionParameterNode >> modifiers: anOrderedCollection [
+	modifiers := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -41,7 +52,7 @@ CSAnonymousFunctionParameterNode >> nodeVariables [
 
 { #category : #generated }
 CSAnonymousFunctionParameterNode >> tokenVariables [
-	^ #(#modifier #name)
+	^ #(#name)
 ]
 
 { #category : #generated }
@@ -51,9 +62,7 @@ CSAnonymousFunctionParameterNode >> type [
 
 { #category : #generated }
 CSAnonymousFunctionParameterNode >> type: aCSTypeNode [
-	self type notNil
-		ifTrue: [ self type parent: nil ].
+	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.
-	self type notNil
-		ifTrue: [ self type parent: self ]
+	self type notNil ifTrue: [ self type parent: self ]
 ]

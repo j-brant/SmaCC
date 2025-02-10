@@ -5,7 +5,8 @@ Class {
 		'_attributes',
 		'paramsToken',
 		'type',
-		'name'
+		'name',
+		'scopedToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -64,8 +65,18 @@ CSArrayParameterNode >> paramsToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+CSArrayParameterNode >> scopedToken [
+	^ scopedToken
+]
+
+{ #category : #generated }
+CSArrayParameterNode >> scopedToken: aSmaCCToken [
+	scopedToken := aSmaCCToken
+]
+
+{ #category : #generated }
 CSArrayParameterNode >> tokenVariables [
-	^ #(#paramsToken #name)
+	^ #(#paramsToken #name #scopedToken)
 ]
 
 { #category : #generated }
@@ -74,10 +85,8 @@ CSArrayParameterNode >> type [
 ]
 
 { #category : #generated }
-CSArrayParameterNode >> type: aCSArrayTypeNode [
-	self type notNil
-		ifTrue: [ self type parent: nil ].
-	type := aCSArrayTypeNode.
-	self type notNil
-		ifTrue: [ self type parent: self ]
+CSArrayParameterNode >> type: aCSTypeNode [
+	self type notNil ifTrue: [ self type parent: nil ].
+	type := aCSTypeNode.
+	self type notNil ifTrue: [ self type parent: self ]
 ]

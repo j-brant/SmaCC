@@ -3,8 +3,12 @@ Class {
 	#superclass : #CSProgramNode,
 	#instVars : [
 		'classToken',
+		'questionMarkToken',
 		'structToken',
-		'unmanagedToken'
+		'refToken',
+		'unmanagedToken',
+		'notnullToken',
+		'defaultToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -25,6 +29,46 @@ CSPrimaryConstraintNode >> classToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+CSPrimaryConstraintNode >> defaultToken [
+	^ defaultToken
+]
+
+{ #category : #generated }
+CSPrimaryConstraintNode >> defaultToken: aSmaCCToken [
+	defaultToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSPrimaryConstraintNode >> notnullToken [
+	^ notnullToken
+]
+
+{ #category : #generated }
+CSPrimaryConstraintNode >> notnullToken: aSmaCCToken [
+	notnullToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSPrimaryConstraintNode >> questionMarkToken [
+	^ questionMarkToken
+]
+
+{ #category : #generated }
+CSPrimaryConstraintNode >> questionMarkToken: aSmaCCToken [
+	questionMarkToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSPrimaryConstraintNode >> refToken [
+	^ refToken
+]
+
+{ #category : #generated }
+CSPrimaryConstraintNode >> refToken: aSmaCCToken [
+	refToken := aSmaCCToken
+]
+
+{ #category : #generated }
 CSPrimaryConstraintNode >> structToken [
 	^ structToken
 ]
@@ -36,7 +80,7 @@ CSPrimaryConstraintNode >> structToken: aSmaCCToken [
 
 { #category : #generated }
 CSPrimaryConstraintNode >> tokenVariables [
-	^ #(#classToken #structToken #unmanagedToken)
+	^ #(#classToken #questionMarkToken #structToken #refToken #unmanagedToken #notnullToken #defaultToken)
 ]
 
 { #category : #generated }

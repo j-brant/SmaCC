@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'_attributes',
 		'modifiers',
+		'partialToken',
 		'returnType',
 		'thisToken',
 		'leftBracketToken',
@@ -19,8 +20,7 @@ Class {
 		'equalGreaterThanToken',
 		'expression',
 		'semicolonToken',
-		'refTokens',
-		'readonlyToken'
+		'refToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -59,7 +59,7 @@ CSIndexerDeclarationNode >> compositeNodeVariables [
 
 { #category : #generated }
 CSIndexerDeclarationNode >> compositeTokenVariables [
-	^ #(#modifiers #commas #refTokens)
+	^ #(#modifiers #commas)
 ]
 
 { #category : #generated }
@@ -110,7 +110,6 @@ CSIndexerDeclarationNode >> initialize [
 	modifiers := OrderedCollection new: 2.
 	parameters := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
-	refTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -161,6 +160,16 @@ CSIndexerDeclarationNode >> parameters: anOrderedCollection [
 ]
 
 { #category : #generated }
+CSIndexerDeclarationNode >> partialToken [
+	^ partialToken
+]
+
+{ #category : #generated }
+CSIndexerDeclarationNode >> partialToken: aSmaCCToken [
+	partialToken := aSmaCCToken
+]
+
+{ #category : #generated }
 CSIndexerDeclarationNode >> periodToken [
 	^ periodToken
 ]
@@ -171,23 +180,13 @@ CSIndexerDeclarationNode >> periodToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-CSIndexerDeclarationNode >> readonlyToken [
-	^ readonlyToken
+CSIndexerDeclarationNode >> refToken [
+	^ refToken
 ]
 
 { #category : #generated }
-CSIndexerDeclarationNode >> readonlyToken: aSmaCCToken [
-	readonlyToken := aSmaCCToken
-]
-
-{ #category : #generated }
-CSIndexerDeclarationNode >> refTokens [
-	^ refTokens
-]
-
-{ #category : #generated }
-CSIndexerDeclarationNode >> refTokens: anOrderedCollection [
-	refTokens := anOrderedCollection
+CSIndexerDeclarationNode >> refToken: aSmaCCToken [
+	refToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -197,11 +196,9 @@ CSIndexerDeclarationNode >> returnType [
 
 { #category : #generated }
 CSIndexerDeclarationNode >> returnType: aCSTypeNode [
-	self returnType notNil
-		ifTrue: [ self returnType parent: nil ].
+	self returnType notNil ifTrue: [ self returnType parent: nil ].
 	returnType := aCSTypeNode.
-	self returnType notNil
-		ifTrue: [ self returnType parent: self ]
+	self returnType notNil ifTrue: [ self returnType parent: self ]
 ]
 
 { #category : #generated }
@@ -260,7 +257,7 @@ CSIndexerDeclarationNode >> thisToken: aSmaCCToken [
 
 { #category : #generated }
 CSIndexerDeclarationNode >> tokenVariables [
-	^ #(#thisToken #leftBracketToken #rightBracketToken #periodToken #leftBraceToken #rightBraceToken #equalGreaterThanToken #readonlyToken)
+	^ #(#partialToken #thisToken #leftBracketToken #rightBracketToken #periodToken #leftBraceToken #rightBraceToken #equalGreaterThanToken #refToken)
 ]
 
 { #category : #generated }

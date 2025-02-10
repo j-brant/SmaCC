@@ -41,12 +41,10 @@ CSVariableDeclaratorNode >> initializer [
 ]
 
 { #category : #generated }
-CSVariableDeclaratorNode >> initializer: aCSProgramNode [
-	self initializer notNil
-		ifTrue: [ self initializer parent: nil ].
-	initializer := aCSProgramNode.
-	self initializer notNil
-		ifTrue: [ self initializer parent: self ]
+CSVariableDeclaratorNode >> initializer: aCSExpressionNode [
+	self initializer notNil ifTrue: [ self initializer parent: nil ].
+	initializer := aCSExpressionNode.
+	self initializer notNil ifTrue: [ self initializer parent: self ]
 ]
 
 { #category : #generated }

@@ -3,7 +3,7 @@ Class {
 	#superclass : #CSDeclarationNode,
 	#instVars : [
 		'_attributes',
-		'modifier',
+		'modifiers',
 		'type',
 		'name',
 		'typeParameters',
@@ -12,9 +12,7 @@ Class {
 		'commas',
 		'rightParen',
 		'constraintClauses',
-		'body',
-		'refToken',
-		'readonlyToken'
+		'body'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -67,7 +65,7 @@ CSInterfaceMethodDeclarationNode >> compositeNodeVariables [
 
 { #category : #generated }
 CSInterfaceMethodDeclarationNode >> compositeTokenVariables [
-	^ #(#commas)
+	^ #(#modifiers #commas)
 ]
 
 { #category : #generated }
@@ -86,6 +84,7 @@ CSInterfaceMethodDeclarationNode >> constraintClauses: anOrderedCollection [
 CSInterfaceMethodDeclarationNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
+	modifiers := OrderedCollection new: 2.
 	parameters := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 	constraintClauses := OrderedCollection new: 2.
@@ -102,13 +101,13 @@ CSInterfaceMethodDeclarationNode >> leftParen: aSmaCCToken [
 ]
 
 { #category : #generated }
-CSInterfaceMethodDeclarationNode >> modifier [
-	^ modifier
+CSInterfaceMethodDeclarationNode >> modifiers [
+	^ modifiers
 ]
 
 { #category : #generated }
-CSInterfaceMethodDeclarationNode >> modifier: aSmaCCToken [
-	modifier := aSmaCCToken
+CSInterfaceMethodDeclarationNode >> modifiers: anOrderedCollection [
+	modifiers := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -139,26 +138,6 @@ CSInterfaceMethodDeclarationNode >> parameters: anOrderedCollection [
 ]
 
 { #category : #generated }
-CSInterfaceMethodDeclarationNode >> readonlyToken [
-	^ readonlyToken
-]
-
-{ #category : #generated }
-CSInterfaceMethodDeclarationNode >> readonlyToken: aSmaCCToken [
-	readonlyToken := aSmaCCToken
-]
-
-{ #category : #generated }
-CSInterfaceMethodDeclarationNode >> refToken [
-	^ refToken
-]
-
-{ #category : #generated }
-CSInterfaceMethodDeclarationNode >> refToken: aSmaCCToken [
-	refToken := aSmaCCToken
-]
-
-{ #category : #generated }
 CSInterfaceMethodDeclarationNode >> rightParen [
 	^ rightParen
 ]
@@ -170,7 +149,7 @@ CSInterfaceMethodDeclarationNode >> rightParen: aSmaCCToken [
 
 { #category : #generated }
 CSInterfaceMethodDeclarationNode >> tokenVariables [
-	^ #(#modifier #name #leftParen #rightParen #refToken #readonlyToken)
+	^ #(#name #leftParen #rightParen)
 ]
 
 { #category : #generated }
@@ -180,11 +159,9 @@ CSInterfaceMethodDeclarationNode >> type [
 
 { #category : #generated }
 CSInterfaceMethodDeclarationNode >> type: aCSTypeNode [
-	self type notNil
-		ifTrue: [ self type parent: nil ].
+	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.
-	self type notNil
-		ifTrue: [ self type parent: self ]
+	self type notNil ifTrue: [ self type parent: self ]
 ]
 
 { #category : #generated }

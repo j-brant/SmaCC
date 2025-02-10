@@ -16,6 +16,10 @@ Class {
 		'declarations',
 		'rightBraceToken',
 		'semicolon',
+		'leftParen',
+		'parameters',
+		'rightParen',
+		'recordToken',
 		'refToken'
 	],
 	#category : #'SmaCC_CSharp'
@@ -60,7 +64,7 @@ CSStructDeclarationNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 CSStructDeclarationNode >> compositeNodeVariables [
-	^ #(#_attributes #supertypes #constraintClauses #declarations)
+	^ #(#_attributes #supertypes #constraintClauses #declarations #parameters)
 ]
 
 { #category : #generated }
@@ -111,6 +115,7 @@ CSStructDeclarationNode >> initialize [
 	commas := OrderedCollection new: 2.
 	constraintClauses := OrderedCollection new: 2.
 	declarations := OrderedCollection new: 2.
+	parameters := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -121,6 +126,16 @@ CSStructDeclarationNode >> leftBraceToken [
 { #category : #generated }
 CSStructDeclarationNode >> leftBraceToken: aSmaCCToken [
 	leftBraceToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSStructDeclarationNode >> leftParen [
+	^ leftParen
+]
+
+{ #category : #generated }
+CSStructDeclarationNode >> leftParen: aSmaCCToken [
+	leftParen := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -139,6 +154,18 @@ CSStructDeclarationNode >> nodeVariables [
 ]
 
 { #category : #generated }
+CSStructDeclarationNode >> parameters [
+	^ parameters
+]
+
+{ #category : #generated }
+CSStructDeclarationNode >> parameters: anOrderedCollection [
+	self setParents: self parameters to: nil.
+	parameters := anOrderedCollection.
+	self setParents: self parameters to: self
+]
+
+{ #category : #generated }
 CSStructDeclarationNode >> partialToken [
 	^ partialToken
 ]
@@ -146,6 +173,16 @@ CSStructDeclarationNode >> partialToken [
 { #category : #generated }
 CSStructDeclarationNode >> partialToken: aSmaCCToken [
 	partialToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSStructDeclarationNode >> recordToken [
+	^ recordToken
+]
+
+{ #category : #generated }
+CSStructDeclarationNode >> recordToken: aSmaCCToken [
+	recordToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -166,6 +203,16 @@ CSStructDeclarationNode >> rightBraceToken [
 { #category : #generated }
 CSStructDeclarationNode >> rightBraceToken: aSmaCCToken [
 	rightBraceToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSStructDeclarationNode >> rightParen [
+	^ rightParen
+]
+
+{ #category : #generated }
+CSStructDeclarationNode >> rightParen: aSmaCCToken [
+	rightParen := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -202,7 +249,7 @@ CSStructDeclarationNode >> supertypes: anOrderedCollection [
 
 { #category : #generated }
 CSStructDeclarationNode >> tokenVariables [
-	^ #(#partialToken #structToken #identifierToken #colonToken #leftBraceToken #rightBraceToken #semicolon #refToken)
+	^ #(#partialToken #structToken #identifierToken #colonToken #leftBraceToken #rightBraceToken #semicolon #leftParen #rightParen #recordToken #refToken)
 ]
 
 { #category : #generated }

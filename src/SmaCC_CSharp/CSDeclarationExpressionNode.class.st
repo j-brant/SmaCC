@@ -2,8 +2,9 @@ Class {
 	#name : #CSDeclarationExpressionNode,
 	#superclass : #CSExpressionNode,
 	#instVars : [
+		'name',
 		'type',
-		'name'
+		'designation'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -11,6 +12,18 @@ Class {
 { #category : #generated }
 CSDeclarationExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDeclarationExpression: self
+]
+
+{ #category : #generated }
+CSDeclarationExpressionNode >> designation [
+	^ designation
+]
+
+{ #category : #generated }
+CSDeclarationExpressionNode >> designation: aCSProgramNode [
+	self designation notNil ifTrue: [ self designation parent: nil ].
+	designation := aCSProgramNode.
+	self designation notNil ifTrue: [ self designation parent: self ]
 ]
 
 { #category : #generated }
@@ -25,7 +38,7 @@ CSDeclarationExpressionNode >> name: aSmaCCToken [
 
 { #category : #generated }
 CSDeclarationExpressionNode >> nodeVariables [
-	^ #(#type)
+	^ #(#type #designation)
 ]
 
 { #category : #generated }

@@ -37,7 +37,7 @@ TCSProgramNodeVisitor >> visitArrayCreationExpression: anArrayCreationExpression
 
 { #category : #generated }
 TCSProgramNodeVisitor >> visitArrayInitializer: anArrayInitializer [
-	^ self visitProgram: anArrayInitializer
+	^ self visitExpression: anArrayInitializer
 ]
 
 { #category : #generated }
@@ -128,6 +128,11 @@ TCSProgramNodeVisitor >> visitCheckedStatement: aCheckedStatement [
 { #category : #generated }
 TCSProgramNodeVisitor >> visitClassDeclaration: aClassDeclaration [
 	^ self visitDeclaration: aClassDeclaration
+]
+
+{ #category : #generated }
+TCSProgramNodeVisitor >> visitCollectionExpression: aCollectionExpression [
+	^ self visitExpression: aCollectionExpression
 ]
 
 { #category : #generated }
@@ -227,7 +232,7 @@ TCSProgramNodeVisitor >> visitElementAccess: anElementAccess [
 
 { #category : #generated }
 TCSProgramNodeVisitor >> visitElementInitializer: anElementInitializer [
-	^ self visitProgram: anElementInitializer
+	^ self visitExpression: anElementInitializer
 ]
 
 { #category : #generated }
@@ -268,6 +273,11 @@ TCSProgramNodeVisitor >> visitExternAliasDirective: anExternAliasDirective [
 { #category : #generated }
 TCSProgramNodeVisitor >> visitFieldDeclaration: aFieldDeclaration [
 	^ self visitDeclaration: aFieldDeclaration
+]
+
+{ #category : #generated }
+TCSProgramNodeVisitor >> visitFileScopedNamespaceDeclaration: aFileScopedNamespaceDeclaration [
+	^ self visitNamespaceDeclaration: aFileScopedNamespaceDeclaration
 ]
 
 { #category : #generated }
@@ -316,8 +326,33 @@ TCSProgramNodeVisitor >> visitForeachStatement: aForeachStatement [
 ]
 
 { #category : #generated }
+TCSProgramNodeVisitor >> visitFunctionPointerParameter: aFunctionPointerParameter [
+	^ self visitProgram: aFunctionPointerParameter
+]
+
+{ #category : #generated }
+TCSProgramNodeVisitor >> visitFunctionPointerType: aFunctionPointerType [
+	^ self visitType: aFunctionPointerType
+]
+
+{ #category : #generated }
 TCSProgramNodeVisitor >> visitGetAccessorDeclaration: aGetAccessorDeclaration [
 	^ self visitProgram: aGetAccessorDeclaration
+]
+
+{ #category : #generated }
+TCSProgramNodeVisitor >> visitGlobalUsingAliasDirective: aGlobalUsingAliasDirective [
+	^ self visitProgram: aGlobalUsingAliasDirective
+]
+
+{ #category : #generated }
+TCSProgramNodeVisitor >> visitGlobalUsingNamespaceDirective: aGlobalUsingNamespaceDirective [
+	^ self visitProgram: aGlobalUsingNamespaceDirective
+]
+
+{ #category : #generated }
+TCSProgramNodeVisitor >> visitGlobalUsingStaticDirective: aGlobalUsingStaticDirective [
+	^ self visitProgram: aGlobalUsingStaticDirective
 ]
 
 { #category : #generated }
@@ -386,6 +421,11 @@ TCSProgramNodeVisitor >> visitLambdaExpression: aLambdaExpression [
 ]
 
 { #category : #generated }
+TCSProgramNodeVisitor >> visitListPattern: aListPattern [
+	^ self visitExpression: aListPattern
+]
+
+{ #category : #generated }
 TCSProgramNodeVisitor >> visitLiteralExpression: aLiteralExpression [
 	^ self visitExpression: aLiteralExpression
 ]
@@ -398,6 +438,11 @@ TCSProgramNodeVisitor >> visitLocalConstantDeclaration: aLocalConstantDeclaratio
 { #category : #generated }
 TCSProgramNodeVisitor >> visitLocalFunctionDeclarationStatement: aLocalFunctionDeclarationStatement [
 	^ self visitStatement: aLocalFunctionDeclarationStatement
+]
+
+{ #category : #generated }
+TCSProgramNodeVisitor >> visitLocalUsingDeclaration: aLocalUsingDeclaration [
+	^ self visitProgram: aLocalUsingDeclaration
 ]
 
 { #category : #generated }
@@ -476,6 +521,11 @@ TCSProgramNodeVisitor >> visitNullLiteralExpression: aNullLiteralExpression [
 ]
 
 { #category : #generated }
+TCSProgramNodeVisitor >> visitNullableReferenceType: aNullableReferenceType [
+	^ self visitType: aNullableReferenceType
+]
+
+{ #category : #generated }
 TCSProgramNodeVisitor >> visitNullableType: aNullableType [
 	^ self visitType: aNullableType
 ]
@@ -506,6 +556,11 @@ TCSProgramNodeVisitor >> visitPointerType: aPointerType [
 ]
 
 { #category : #generated }
+TCSProgramNodeVisitor >> visitPositionalPattern: aPositionalPattern [
+	^ self visitExpression: aPositionalPattern
+]
+
+{ #category : #generated }
 TCSProgramNodeVisitor >> visitPostExpression: aPostExpression [
 	^ self visitExpression: aPostExpression
 ]
@@ -528,6 +583,11 @@ TCSProgramNodeVisitor >> visitProgram: aProgram [
 { #category : #generated }
 TCSProgramNodeVisitor >> visitPropertyDeclaration: aPropertyDeclaration [
 	^ self visitDeclaration: aPropertyDeclaration
+]
+
+{ #category : #generated }
+TCSProgramNodeVisitor >> visitPropertyPattern: aPropertyPattern [
+	^ self visitExpression: aPropertyPattern
 ]
 
 { #category : #generated }
@@ -561,6 +621,11 @@ TCSProgramNodeVisitor >> visitRefExpression: aRefExpression [
 ]
 
 { #category : #generated }
+TCSProgramNodeVisitor >> visitRelationalPattern: aRelationalPattern [
+	^ self visitExpression: aRelationalPattern
+]
+
+{ #category : #generated }
 TCSProgramNodeVisitor >> visitRemoveAccessorDeclaration: aRemoveAccessorDeclaration [
 	^ self visitProgram: aRemoveAccessorDeclaration
 ]
@@ -591,6 +656,16 @@ TCSProgramNodeVisitor >> visitSizeofExpression: aSizeofExpression [
 ]
 
 { #category : #generated }
+TCSProgramNodeVisitor >> visitSlicePattern: aSlicePattern [
+	^ self visitExpression: aSlicePattern
+]
+
+{ #category : #generated }
+TCSProgramNodeVisitor >> visitSpreadExpression: aSpreadExpression [
+	^ self visitExpression: aSpreadExpression
+]
+
+{ #category : #generated }
 TCSProgramNodeVisitor >> visitStackallocExpression: aStackallocExpression [
 	^ self visitExpression: aStackallocExpression
 ]
@@ -618,6 +693,21 @@ TCSProgramNodeVisitor >> visitStringLiteralExpression: aStringLiteralExpression 
 { #category : #generated }
 TCSProgramNodeVisitor >> visitStructDeclaration: aStructDeclaration [
 	^ self visitDeclaration: aStructDeclaration
+]
+
+{ #category : #generated }
+TCSProgramNodeVisitor >> visitSubpattern: aSubpattern [
+	^ self visitProgram: aSubpattern
+]
+
+{ #category : #generated }
+TCSProgramNodeVisitor >> visitSwitchExpression: aSwitchExpression [
+	^ self visitExpression: aSwitchExpression
+]
+
+{ #category : #generated }
+TCSProgramNodeVisitor >> visitSwitchExpressionArm: aSwitchExpressionArm [
+	^ self visitProgram: aSwitchExpressionArm
 ]
 
 { #category : #generated }
@@ -653,6 +743,11 @@ TCSProgramNodeVisitor >> visitThrowStatement: aThrowStatement [
 { #category : #generated }
 TCSProgramNodeVisitor >> visitTryStatement: aTryStatement [
 	^ self visitStatement: aTryStatement
+]
+
+{ #category : #generated }
+TCSProgramNodeVisitor >> visitTupleDesignation: aTupleDesignation [
+	^ self visitProgram: aTupleDesignation
 ]
 
 { #category : #generated }
@@ -741,6 +836,11 @@ TCSProgramNodeVisitor >> visitUsingAliasDirective: anUsingAliasDirective [
 ]
 
 { #category : #generated }
+TCSProgramNodeVisitor >> visitUsingDeclarator: anUsingDeclarator [
+	^ self visitProgram: anUsingDeclarator
+]
+
+{ #category : #generated }
 TCSProgramNodeVisitor >> visitUsingDirective: anUsingDirective [
 	^ self visitProgram: anUsingDirective
 ]
@@ -768,6 +868,11 @@ TCSProgramNodeVisitor >> visitVarType: aVarType [
 { #category : #generated }
 TCSProgramNodeVisitor >> visitVariableDeclarator: aVariableDeclarator [
 	^ self visitProgram: aVariableDeclarator
+]
+
+{ #category : #generated }
+TCSProgramNodeVisitor >> visitVariableDesignation: aVariableDesignation [
+	^ self visitProgram: aVariableDesignation
 ]
 
 { #category : #generated }

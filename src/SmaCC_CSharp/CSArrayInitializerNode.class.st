@@ -1,6 +1,6 @@
 Class {
 	#name : #CSArrayInitializerNode,
-	#superclass : #CSProgramNode,
+	#superclass : #CSExpressionNode,
 	#instVars : [
 		'leftBraceToken',
 		'initializers',
@@ -32,7 +32,7 @@ CSArrayInitializerNode >> compositeNodeVariables [
 
 { #category : #generated }
 CSArrayInitializerNode >> ignoredCompositeTokenVariables [
-	^ #(#commaTokens)
+	^ #(#commaTokens #_leftParens #_rightParens)
 ]
 
 { #category : #'generated-initialize-release' }

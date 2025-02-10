@@ -1,6 +1,6 @@
 Class {
 	#name : #CSElementInitializerNode,
-	#superclass : #CSProgramNode,
+	#superclass : #CSExpressionNode,
 	#instVars : [
 		'expressions',
 		'leftBraceToken',
@@ -44,7 +44,7 @@ CSElementInitializerNode >> expressions: anOrderedCollection [
 
 { #category : #generated }
 CSElementInitializerNode >> ignoredCompositeTokenVariables [
-	^ #(#commaTokens)
+	^ #(#commaTokens #_leftParens #_rightParens)
 ]
 
 { #category : #'generated-initialize-release' }
