@@ -55,7 +55,8 @@ SmaCCTransformationToolkitModel >> areRewritesModified [
 { #category : #running }
 SmaCCTransformationToolkitModel >> commonParentDirectory [
 	| common |
-	commonParentDirectory notNil ifTrue: [ ^ commonParentDirectory ].
+	(commonParentDirectory notNil and: [ commonParentDirectory notEmpty ])
+		ifTrue: [ ^ commonParentDirectory ].
 	(self files isEmpty or: [ self createSubdirectories not ]) ifTrue: [ ^ '' ].
 	common := self files first asFileReference parent pathString.
 	self files
@@ -318,7 +319,7 @@ SmaCCTransformationToolkitModel >> saveTo: aFilename [
 				cr;
 				tab;
 				nextPutAll: 'commonParentDirectory: ';
-				nextPutAll: self commonParentDirectory storeString ].
+				nextPutAll: commonParentDirectory storeString ].
 	modified := false.
 	self areRewritesModified ifTrue: [ self saveRewrites ].
 	self filename: aFilename asFileReference
