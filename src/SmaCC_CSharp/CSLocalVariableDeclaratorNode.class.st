@@ -61,10 +61,10 @@ CSLocalVariableDeclaratorNode >> expression [
 ]
 
 { #category : #generated }
-CSLocalVariableDeclaratorNode >> expression: anObject [
-	self setParent: self expression to: nil.
-	expression := anObject.
-	self setParent: self expression to: self
+CSLocalVariableDeclaratorNode >> expression: aCSExpressionNode [
+	self expression notNil ifTrue: [ self expression parent: nil ].
+	expression := aCSExpressionNode.
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
@@ -91,12 +91,7 @@ CSLocalVariableDeclaratorNode >> name: aSmaCCToken [
 
 { #category : #generated }
 CSLocalVariableDeclaratorNode >> nodeVariables [
-	^ #(#type)
-]
-
-{ #category : #generated }
-CSLocalVariableDeclaratorNode >> otherVariables [
-	^ #(#expression)
+	^ #(#expression #type)
 ]
 
 { #category : #generated }
