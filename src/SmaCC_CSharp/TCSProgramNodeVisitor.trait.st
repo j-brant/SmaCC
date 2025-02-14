@@ -671,6 +671,11 @@ TCSProgramNodeVisitor >> visitStackallocExpression: aStackallocExpression [
 ]
 
 { #category : #generated }
+TCSProgramNodeVisitor >> visitStackallocInitializer: aStackallocInitializer [
+	^ self visitExpression: aStackallocInitializer
+]
+
+{ #category : #generated }
 TCSProgramNodeVisitor >> visitStatement: aStatement [
 	^ self visitProgram: aStatement
 ]

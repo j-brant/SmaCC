@@ -2,6 +2,7 @@ Class {
 	#name : #CSLambdaExpressionNode,
 	#superclass : #CSExpressionNode,
 	#instVars : [
+		'type',
 		'leftParenToken',
 		'parameters',
 		'commaTokens',
@@ -91,7 +92,7 @@ CSLambdaExpressionNode >> leftParenToken: aSmaCCToken [
 
 { #category : #generated }
 CSLambdaExpressionNode >> nodeVariables [
-	^ #(#body)
+	^ #(#type #body)
 ]
 
 { #category : #generated }
@@ -119,4 +120,16 @@ CSLambdaExpressionNode >> rightParenToken: aSmaCCToken [
 { #category : #generated }
 CSLambdaExpressionNode >> tokenVariables [
 	^ #(#leftParenToken #rightParenToken #equalGreaterThanToken #asyncToken)
+]
+
+{ #category : #generated }
+CSLambdaExpressionNode >> type [
+	^ type
+]
+
+{ #category : #generated }
+CSLambdaExpressionNode >> type: aCSTypeNode [
+	self type notNil ifTrue: [ self type parent: nil ].
+	type := aCSTypeNode.
+	self type notNil ifTrue: [ self type parent: self ]
 ]
