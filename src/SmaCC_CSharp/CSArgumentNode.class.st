@@ -7,7 +7,9 @@ Class {
 		'expression',
 		'inToken',
 		'refToken',
-		'outToken'
+		'outToken',
+		'type',
+		'scopedToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -61,7 +63,7 @@ CSArgumentNode >> inToken: aSmaCCToken [
 
 { #category : #generated }
 CSArgumentNode >> nodeVariables [
-	^ #(#expression)
+	^ #(#expression #type)
 ]
 
 { #category : #generated }
@@ -85,6 +87,28 @@ CSArgumentNode >> refToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+CSArgumentNode >> scopedToken [
+	^ scopedToken
+]
+
+{ #category : #generated }
+CSArgumentNode >> scopedToken: aSmaCCToken [
+	scopedToken := aSmaCCToken
+]
+
+{ #category : #generated }
 CSArgumentNode >> tokenVariables [
-	^ #(#identifier #colonToken #inToken #refToken #outToken)
+	^ #(#identifier #colonToken #inToken #refToken #outToken #scopedToken)
+]
+
+{ #category : #generated }
+CSArgumentNode >> type [
+	^ type
+]
+
+{ #category : #generated }
+CSArgumentNode >> type: aCSTypeNode [
+	self type notNil ifTrue: [ self type parent: nil ].
+	type := aCSTypeNode.
+	self type notNil ifTrue: [ self type parent: self ]
 ]

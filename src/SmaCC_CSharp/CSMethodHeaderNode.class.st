@@ -12,8 +12,6 @@ Class {
 		'typeParameters',
 		'constraintClauses',
 		'_attributes',
-		'refToken',
-		'readonlyToken',
 		'interface',
 		'periodToken',
 		'leftParenToken',
@@ -174,37 +172,15 @@ CSMethodHeaderNode >> periodToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-CSMethodHeaderNode >> readonlyToken [
-	^ readonlyToken
-]
-
-{ #category : #generated }
-CSMethodHeaderNode >> readonlyToken: aSmaCCToken [
-	readonlyToken := aSmaCCToken
-]
-
-{ #category : #generated }
-CSMethodHeaderNode >> refToken [
-	^ refToken
-]
-
-{ #category : #generated }
-CSMethodHeaderNode >> refToken: aSmaCCToken [
-	refToken := aSmaCCToken
-]
-
-{ #category : #generated }
 CSMethodHeaderNode >> returnType [
 	^ returnType
 ]
 
 { #category : #generated }
 CSMethodHeaderNode >> returnType: aCSTypeNode [
-	self returnType notNil
-		ifTrue: [ self returnType parent: nil ].
+	self returnType notNil ifTrue: [ self returnType parent: nil ].
 	returnType := aCSTypeNode.
-	self returnType notNil
-		ifTrue: [ self returnType parent: self ]
+	self returnType notNil ifTrue: [ self returnType parent: self ]
 ]
 
 { #category : #generated }
@@ -229,7 +205,7 @@ CSMethodHeaderNode >> rightParenToken: aSmaCCToken [
 
 { #category : #generated }
 CSMethodHeaderNode >> tokenVariables [
-	^ #(#refToken #readonlyToken #name #leftParen #rightParen #periodToken #leftParenToken #rightParenToken #partialToken)
+	^ #(#name #leftParen #rightParen #periodToken #leftParenToken #rightParenToken #partialToken)
 ]
 
 { #category : #generated }

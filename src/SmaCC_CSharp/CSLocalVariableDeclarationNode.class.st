@@ -4,9 +4,9 @@ Class {
 	#instVars : [
 		'type',
 		'declarators',
-		'refToken',
-		'readonlyToken',
-		'commaTokens'
+		'modifiers',
+		'commaTokens',
+		'scopedToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -32,6 +32,11 @@ CSLocalVariableDeclarationNode >> compositeNodeVariables [
 ]
 
 { #category : #generated }
+CSLocalVariableDeclarationNode >> compositeTokenVariables [
+	^ #(#modifiers)
+]
+
+{ #category : #generated }
 CSLocalVariableDeclarationNode >> declarators [
 	^ declarators
 ]
@@ -52,7 +57,18 @@ CSLocalVariableDeclarationNode >> ignoredCompositeTokenVariables [
 CSLocalVariableDeclarationNode >> initialize [
 	super initialize.
 	declarators := OrderedCollection new: 2.
+	modifiers := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+CSLocalVariableDeclarationNode >> modifiers [
+	^ modifiers
+]
+
+{ #category : #generated }
+CSLocalVariableDeclarationNode >> modifiers: anOrderedCollection [
+	modifiers := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -61,28 +77,18 @@ CSLocalVariableDeclarationNode >> nodeVariables [
 ]
 
 { #category : #generated }
-CSLocalVariableDeclarationNode >> readonlyToken [
-	^ readonlyToken
+CSLocalVariableDeclarationNode >> scopedToken [
+	^ scopedToken
 ]
 
 { #category : #generated }
-CSLocalVariableDeclarationNode >> readonlyToken: aSmaCCToken [
-	readonlyToken := aSmaCCToken
-]
-
-{ #category : #generated }
-CSLocalVariableDeclarationNode >> refToken [
-	^ refToken
-]
-
-{ #category : #generated }
-CSLocalVariableDeclarationNode >> refToken: aSmaCCToken [
-	refToken := aSmaCCToken
+CSLocalVariableDeclarationNode >> scopedToken: aSmaCCToken [
+	scopedToken := aSmaCCToken
 ]
 
 { #category : #generated }
 CSLocalVariableDeclarationNode >> tokenVariables [
-	^ #(#refToken #readonlyToken)
+	^ #(#scopedToken)
 ]
 
 { #category : #generated }
@@ -92,9 +98,7 @@ CSLocalVariableDeclarationNode >> type [
 
 { #category : #generated }
 CSLocalVariableDeclarationNode >> type: aCSTypeNode [
-	self type notNil
-		ifTrue: [ self type parent: nil ].
+	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.
-	self type notNil
-		ifTrue: [ self type parent: self ]
+	self type notNil ifTrue: [ self type parent: self ]
 ]

@@ -10,8 +10,8 @@ Class {
 		'expression',
 		'rightParenToken',
 		'statement',
-		'refToken',
-		'readonlyToken'
+		'modifiers',
+		'scopedToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -19,6 +19,11 @@ Class {
 { #category : #generated }
 CSForeachStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitForeachStatement: self
+]
+
+{ #category : #generated }
+CSForeachStatementNode >> compositeTokenVariables [
+	^ #(#modifiers)
 ]
 
 { #category : #generated }
@@ -53,6 +58,12 @@ CSForeachStatementNode >> inToken: aSmaCCToken [
 	inToken := aSmaCCToken
 ]
 
+{ #category : #'generated-initialize-release' }
+CSForeachStatementNode >> initialize [
+	super initialize.
+	modifiers := OrderedCollection new: 2.
+]
+
 { #category : #generated }
 CSForeachStatementNode >> leftParenToken [
 	^ leftParenToken
@@ -61,6 +72,16 @@ CSForeachStatementNode >> leftParenToken [
 { #category : #generated }
 CSForeachStatementNode >> leftParenToken: aSmaCCToken [
 	leftParenToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSForeachStatementNode >> modifiers [
+	^ modifiers
+]
+
+{ #category : #generated }
+CSForeachStatementNode >> modifiers: anOrderedCollection [
+	modifiers := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -79,26 +100,6 @@ CSForeachStatementNode >> nodeVariables [
 ]
 
 { #category : #generated }
-CSForeachStatementNode >> readonlyToken [
-	^ readonlyToken
-]
-
-{ #category : #generated }
-CSForeachStatementNode >> readonlyToken: aSmaCCToken [
-	readonlyToken := aSmaCCToken
-]
-
-{ #category : #generated }
-CSForeachStatementNode >> refToken [
-	^ refToken
-]
-
-{ #category : #generated }
-CSForeachStatementNode >> refToken: aSmaCCToken [
-	refToken := aSmaCCToken
-]
-
-{ #category : #generated }
 CSForeachStatementNode >> rightParenToken [
 	^ rightParenToken
 ]
@@ -106,6 +107,16 @@ CSForeachStatementNode >> rightParenToken [
 { #category : #generated }
 CSForeachStatementNode >> rightParenToken: aSmaCCToken [
 	rightParenToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSForeachStatementNode >> scopedToken [
+	^ scopedToken
+]
+
+{ #category : #generated }
+CSForeachStatementNode >> scopedToken: aSmaCCToken [
+	scopedToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -124,7 +135,7 @@ CSForeachStatementNode >> statement: aCSStatementNode [
 
 { #category : #generated }
 CSForeachStatementNode >> tokenVariables [
-	^ #(#foreachToken #leftParenToken #name #inToken #rightParenToken #refToken #readonlyToken)
+	^ #(#foreachToken #leftParenToken #name #inToken #rightParenToken #scopedToken)
 ]
 
 { #category : #generated }
@@ -134,9 +145,7 @@ CSForeachStatementNode >> type [
 
 { #category : #generated }
 CSForeachStatementNode >> type: aCSTypeNode [
-	self type notNil
-		ifTrue: [ self type parent: nil ].
+	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.
-	self type notNil
-		ifTrue: [ self type parent: self ]
+	self type notNil ifTrue: [ self type parent: self ]
 ]

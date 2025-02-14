@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'leftBracketToken',
 		'commaTokens',
-		'rightBracketToken'
+		'rightBracketToken',
+		'expression'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -22,6 +23,18 @@ CSRankSpecifierNode >> commaTokens [
 { #category : #generated }
 CSRankSpecifierNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
+]
+
+{ #category : #generated }
+CSRankSpecifierNode >> expression [
+	^ expression
+]
+
+{ #category : #generated }
+CSRankSpecifierNode >> expression: aCSExpressionNode [
+	self expression notNil ifTrue: [ self expression parent: nil ].
+	expression := aCSExpressionNode.
+	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
@@ -43,6 +56,11 @@ CSRankSpecifierNode >> leftBracketToken [
 { #category : #generated }
 CSRankSpecifierNode >> leftBracketToken: aSmaCCToken [
 	leftBracketToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSRankSpecifierNode >> nodeVariables [
+	^ #(#expression)
 ]
 
 { #category : #generated }

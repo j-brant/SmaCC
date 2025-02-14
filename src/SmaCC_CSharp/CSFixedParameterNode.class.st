@@ -3,7 +3,7 @@ Class {
 	#superclass : #CSProgramNode,
 	#instVars : [
 		'_attributes',
-		'modifier',
+		'modifiers',
 		'type',
 		'name',
 		'equalToken',
@@ -35,6 +35,11 @@ CSFixedParameterNode >> compositeNodeVariables [
 ]
 
 { #category : #generated }
+CSFixedParameterNode >> compositeTokenVariables [
+	^ #(#modifiers)
+]
+
+{ #category : #generated }
 CSFixedParameterNode >> equalToken [
 	^ equalToken
 ]
@@ -60,16 +65,17 @@ CSFixedParameterNode >> expression: aCSExpressionNode [
 CSFixedParameterNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
+	modifiers := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-CSFixedParameterNode >> modifier [
-	^ modifier
+CSFixedParameterNode >> modifiers [
+	^ modifiers
 ]
 
 { #category : #generated }
-CSFixedParameterNode >> modifier: aSmaCCToken [
-	modifier := aSmaCCToken
+CSFixedParameterNode >> modifiers: anOrderedCollection [
+	modifiers := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -89,7 +95,7 @@ CSFixedParameterNode >> nodeVariables [
 
 { #category : #generated }
 CSFixedParameterNode >> tokenVariables [
-	^ #(#modifier #name #equalToken)
+	^ #(#name #equalToken)
 ]
 
 { #category : #generated }
@@ -99,9 +105,7 @@ CSFixedParameterNode >> type [
 
 { #category : #generated }
 CSFixedParameterNode >> type: aCSTypeNode [
-	self type notNil
-		ifTrue: [ self type parent: nil ].
+	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.
-	self type notNil
-		ifTrue: [ self type parent: self ]
+	self type notNil ifTrue: [ self type parent: self ]
 ]

@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'directives',
 		'_attributes',
+		'statements',
 		'declarations'
 	],
 	#category : #'SmaCC_CSharp'
@@ -28,7 +29,7 @@ CSCompilationUnitNode >> acceptVisitor: aProgramVisitor [
 
 { #category : #generated }
 CSCompilationUnitNode >> compositeNodeVariables [
-	^ #(#directives #_attributes #declarations)
+	^ #(#directives #_attributes #statements #declarations)
 ]
 
 { #category : #generated }
@@ -60,5 +61,18 @@ CSCompilationUnitNode >> initialize [
 	super initialize.
 	directives := OrderedCollection new: 2.
 	_attributes := OrderedCollection new: 2.
+	statements := OrderedCollection new: 2.
 	declarations := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+CSCompilationUnitNode >> statements [
+	^ statements
+]
+
+{ #category : #generated }
+CSCompilationUnitNode >> statements: anOrderedCollection [
+	self setParents: self statements to: nil.
+	statements := anOrderedCollection.
+	self setParents: self statements to: self
 ]

@@ -6,7 +6,8 @@ Class {
 		'parameter',
 		'colon',
 		'constraints',
-		'commaTokens'
+		'commaTokens',
+		'allowsToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -14,6 +15,16 @@ Class {
 { #category : #generated }
 CSTypeParameterConstraintsClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTypeParameterConstraintsClause: self
+]
+
+{ #category : #generated }
+CSTypeParameterConstraintsClauseNode >> allowsToken [
+	^ allowsToken
+]
+
+{ #category : #generated }
+CSTypeParameterConstraintsClauseNode >> allowsToken: aSmaCCToken [
+	allowsToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -86,7 +97,7 @@ CSTypeParameterConstraintsClauseNode >> parameter: aCSTypeNameNode [
 
 { #category : #generated }
 CSTypeParameterConstraintsClauseNode >> tokenVariables [
-	^ #(#whereToken #colon)
+	^ #(#whereToken #colon #allowsToken)
 ]
 
 { #category : #generated }

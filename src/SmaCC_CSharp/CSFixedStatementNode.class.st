@@ -117,10 +117,8 @@ CSFixedStatementNode >> type [
 ]
 
 { #category : #generated }
-CSFixedStatementNode >> type: aCSPointerTypeNode [
-	self type notNil
-		ifTrue: [ self type parent: nil ].
-	type := aCSPointerTypeNode.
-	self type notNil
-		ifTrue: [ self type parent: self ]
+CSFixedStatementNode >> type: aCSTypeNode [
+	self type notNil ifTrue: [ self type parent: nil ].
+	type := aCSTypeNode.
+	self type notNil ifTrue: [ self type parent: self ]
 ]

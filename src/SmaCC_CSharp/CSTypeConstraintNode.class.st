@@ -2,6 +2,8 @@ Class {
 	#name : #CSTypeConstraintNode,
 	#superclass : #CSProgramNode,
 	#instVars : [
+		'refToken',
+		'structToken',
 		'type'
 	],
 	#category : #'SmaCC_CSharp'
@@ -15,6 +17,31 @@ CSTypeConstraintNode >> acceptVisitor: aProgramVisitor [
 { #category : #generated }
 CSTypeConstraintNode >> nodeVariables [
 	^ #(#type)
+]
+
+{ #category : #generated }
+CSTypeConstraintNode >> refToken [
+	^ refToken
+]
+
+{ #category : #generated }
+CSTypeConstraintNode >> refToken: aSmaCCToken [
+	refToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSTypeConstraintNode >> structToken [
+	^ structToken
+]
+
+{ #category : #generated }
+CSTypeConstraintNode >> structToken: aSmaCCToken [
+	structToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSTypeConstraintNode >> tokenVariables [
+	^ #(#refToken #structToken)
 ]
 
 { #category : #generated }

@@ -52,11 +52,9 @@ CSTypeofExpressionNode >> type [
 
 { #category : #generated }
 CSTypeofExpressionNode >> type: aCSProgramNode [
-	self type notNil
-		ifTrue: [ self type parent: nil ].
+	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSProgramNode.
-	self type notNil
-		ifTrue: [ self type parent: self ]
+	self type notNil ifTrue: [ self type parent: self ]
 ]
 
 { #category : #generated }

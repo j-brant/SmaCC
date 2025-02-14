@@ -6,17 +6,24 @@ Class {
 		'modifiers',
 		'partialToken',
 		'classToken',
+		'recordToken',
 		'name',
 		'typeParameters',
 		'colonToken',
 		'supertypes',
+		'leftParenToken',
+		'arguments',
+		'commaTokens',
+		'rightParenToken',
 		'commas',
-		'commaToken',
 		'constraintClauses',
 		'leftBraceToken',
 		'declarations',
 		'rightBraceToken',
-		'semicolon'
+		'semicolon',
+		'leftParen',
+		'parameters',
+		'rightParen'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -36,6 +43,18 @@ CSClassDeclarationNode >> _attributes: anOrderedCollection [
 { #category : #generated }
 CSClassDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitClassDeclaration: self
+]
+
+{ #category : #generated }
+CSClassDeclarationNode >> arguments [
+	^ arguments
+]
+
+{ #category : #generated }
+CSClassDeclarationNode >> arguments: anOrderedCollection [
+	self setParents: self arguments to: nil.
+	arguments := anOrderedCollection.
+	self setParents: self arguments to: self
 ]
 
 { #category : #generated }
@@ -59,13 +78,13 @@ CSClassDeclarationNode >> colonToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-CSClassDeclarationNode >> commaToken [
-	^ commaToken
+CSClassDeclarationNode >> commaTokens [
+	^ commaTokens
 ]
 
 { #category : #generated }
-CSClassDeclarationNode >> commaToken: aSmaCCToken [
-	commaToken := aSmaCCToken
+CSClassDeclarationNode >> commaTokens: anOrderedCollection [
+	commaTokens := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -80,7 +99,7 @@ CSClassDeclarationNode >> commas: anOrderedCollection [
 
 { #category : #generated }
 CSClassDeclarationNode >> compositeNodeVariables [
-	^ #(#_attributes #supertypes #constraintClauses #declarations)
+	^ #(#_attributes #supertypes #arguments #constraintClauses #declarations #parameters)
 ]
 
 { #category : #generated }
@@ -113,8 +132,8 @@ CSClassDeclarationNode >> declarations: anOrderedCollection [
 ]
 
 { #category : #generated }
-CSClassDeclarationNode >> ignoredTokenVariables [
-	^ #(#commaToken)
+CSClassDeclarationNode >> ignoredCompositeTokenVariables [
+	^ #(#commaTokens)
 ]
 
 { #category : #'generated-initialize-release' }
@@ -123,9 +142,12 @@ CSClassDeclarationNode >> initialize [
 	_attributes := OrderedCollection new: 2.
 	modifiers := OrderedCollection new: 2.
 	supertypes := OrderedCollection new: 2.
+	arguments := OrderedCollection new: 2.
+	commaTokens := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 	constraintClauses := OrderedCollection new: 2.
 	declarations := OrderedCollection new: 2.
+	parameters := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -136,6 +158,26 @@ CSClassDeclarationNode >> leftBraceToken [
 { #category : #generated }
 CSClassDeclarationNode >> leftBraceToken: aSmaCCToken [
 	leftBraceToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSClassDeclarationNode >> leftParen [
+	^ leftParen
+]
+
+{ #category : #generated }
+CSClassDeclarationNode >> leftParen: aSmaCCToken [
+	leftParen := aSmaCCToken
+]
+
+{ #category : #generated }
+CSClassDeclarationNode >> leftParenToken [
+	^ leftParenToken
+]
+
+{ #category : #generated }
+CSClassDeclarationNode >> leftParenToken: aSmaCCToken [
+	leftParenToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -164,6 +206,18 @@ CSClassDeclarationNode >> nodeVariables [
 ]
 
 { #category : #generated }
+CSClassDeclarationNode >> parameters [
+	^ parameters
+]
+
+{ #category : #generated }
+CSClassDeclarationNode >> parameters: anOrderedCollection [
+	self setParents: self parameters to: nil.
+	parameters := anOrderedCollection.
+	self setParents: self parameters to: self
+]
+
+{ #category : #generated }
 CSClassDeclarationNode >> partialToken [
 	^ partialToken
 ]
@@ -174,6 +228,16 @@ CSClassDeclarationNode >> partialToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+CSClassDeclarationNode >> recordToken [
+	^ recordToken
+]
+
+{ #category : #generated }
+CSClassDeclarationNode >> recordToken: aSmaCCToken [
+	recordToken := aSmaCCToken
+]
+
+{ #category : #generated }
 CSClassDeclarationNode >> rightBraceToken [
 	^ rightBraceToken
 ]
@@ -181,6 +245,26 @@ CSClassDeclarationNode >> rightBraceToken [
 { #category : #generated }
 CSClassDeclarationNode >> rightBraceToken: aSmaCCToken [
 	rightBraceToken := aSmaCCToken
+]
+
+{ #category : #generated }
+CSClassDeclarationNode >> rightParen [
+	^ rightParen
+]
+
+{ #category : #generated }
+CSClassDeclarationNode >> rightParen: aSmaCCToken [
+	rightParen := aSmaCCToken
+]
+
+{ #category : #generated }
+CSClassDeclarationNode >> rightParenToken [
+	^ rightParenToken
+]
+
+{ #category : #generated }
+CSClassDeclarationNode >> rightParenToken: aSmaCCToken [
+	rightParenToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -207,7 +291,7 @@ CSClassDeclarationNode >> supertypes: anOrderedCollection [
 
 { #category : #generated }
 CSClassDeclarationNode >> tokenVariables [
-	^ #(#partialToken #classToken #name #colonToken #leftBraceToken #rightBraceToken #semicolon)
+	^ #(#partialToken #classToken #recordToken #name #colonToken #leftParenToken #rightParenToken #leftBraceToken #rightBraceToken #semicolon #leftParen #rightParen)
 ]
 
 { #category : #generated }

@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'_attributes',
 		'modifiers',
+		'partialToken',
 		'type',
 		'name',
 		'interface',
@@ -17,8 +18,7 @@ Class {
 		'semicolon',
 		'equalGreaterThanToken',
 		'expression',
-		'refTokens',
-		'readonlyToken'
+		'refToken'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -47,7 +47,7 @@ CSPropertyDeclarationNode >> compositeNodeVariables [
 
 { #category : #generated }
 CSPropertyDeclarationNode >> compositeTokenVariables [
-	^ #(#modifiers #refTokens)
+	^ #(#modifiers)
 ]
 
 { #category : #generated }
@@ -101,7 +101,6 @@ CSPropertyDeclarationNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
 	modifiers := OrderedCollection new: 2.
-	refTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -110,12 +109,10 @@ CSPropertyDeclarationNode >> initializer [
 ]
 
 { #category : #generated }
-CSPropertyDeclarationNode >> initializer: aCSProgramNode [
-	self initializer notNil
-		ifTrue: [ self initializer parent: nil ].
-	initializer := aCSProgramNode.
-	self initializer notNil
-		ifTrue: [ self initializer parent: self ]
+CSPropertyDeclarationNode >> initializer: aCSExpressionNode [
+	self initializer notNil ifTrue: [ self initializer parent: nil ].
+	initializer := aCSExpressionNode.
+	self initializer notNil ifTrue: [ self initializer parent: self ]
 ]
 
 { #category : #generated }
@@ -168,6 +165,16 @@ CSPropertyDeclarationNode >> nodeVariables [
 ]
 
 { #category : #generated }
+CSPropertyDeclarationNode >> partialToken [
+	^ partialToken
+]
+
+{ #category : #generated }
+CSPropertyDeclarationNode >> partialToken: aSmaCCToken [
+	partialToken := aSmaCCToken
+]
+
+{ #category : #generated }
 CSPropertyDeclarationNode >> periodToken [
 	^ periodToken
 ]
@@ -178,23 +185,13 @@ CSPropertyDeclarationNode >> periodToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-CSPropertyDeclarationNode >> readonlyToken [
-	^ readonlyToken
+CSPropertyDeclarationNode >> refToken [
+	^ refToken
 ]
 
 { #category : #generated }
-CSPropertyDeclarationNode >> readonlyToken: aSmaCCToken [
-	readonlyToken := aSmaCCToken
-]
-
-{ #category : #generated }
-CSPropertyDeclarationNode >> refTokens [
-	^ refTokens
-]
-
-{ #category : #generated }
-CSPropertyDeclarationNode >> refTokens: anOrderedCollection [
-	refTokens := anOrderedCollection
+CSPropertyDeclarationNode >> refToken: aSmaCCToken [
+	refToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -233,7 +230,7 @@ CSPropertyDeclarationNode >> setAccessor: aCSSetAccessorDeclarationNode [
 
 { #category : #generated }
 CSPropertyDeclarationNode >> tokenVariables [
-	^ #(#name #periodToken #leftBraceToken #rightBraceToken #equalToken #semicolon #equalGreaterThanToken #readonlyToken)
+	^ #(#partialToken #name #periodToken #leftBraceToken #rightBraceToken #equalToken #semicolon #equalGreaterThanToken #refToken)
 ]
 
 { #category : #generated }
@@ -243,9 +240,7 @@ CSPropertyDeclarationNode >> type [
 
 { #category : #generated }
 CSPropertyDeclarationNode >> type: aCSTypeNode [
-	self type notNil
-		ifTrue: [ self type parent: nil ].
+	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.
-	self type notNil
-		ifTrue: [ self type parent: self ]
+	self type notNil ifTrue: [ self type parent: self ]
 ]

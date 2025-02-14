@@ -13,9 +13,7 @@ Class {
 		'rightParen',
 		'semicolon',
 		'typeParameters',
-		'constraintClauses',
-		'refToken',
-		'readonlyToken'
+		'constraintClauses'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -137,26 +135,6 @@ CSDelegateDeclarationNode >> parameters: anOrderedCollection [
 ]
 
 { #category : #generated }
-CSDelegateDeclarationNode >> readonlyToken [
-	^ readonlyToken
-]
-
-{ #category : #generated }
-CSDelegateDeclarationNode >> readonlyToken: aSmaCCToken [
-	readonlyToken := aSmaCCToken
-]
-
-{ #category : #generated }
-CSDelegateDeclarationNode >> refToken [
-	^ refToken
-]
-
-{ #category : #generated }
-CSDelegateDeclarationNode >> refToken: aSmaCCToken [
-	refToken := aSmaCCToken
-]
-
-{ #category : #generated }
 CSDelegateDeclarationNode >> rightParen [
 	^ rightParen
 ]
@@ -178,7 +156,7 @@ CSDelegateDeclarationNode >> semicolon: aSmaCCToken [
 
 { #category : #generated }
 CSDelegateDeclarationNode >> tokenVariables [
-	^ #(#delegateToken #name #leftParen #rightParen #semicolon #refToken #readonlyToken)
+	^ #(#delegateToken #name #leftParen #rightParen #semicolon)
 ]
 
 { #category : #generated }
@@ -188,11 +166,9 @@ CSDelegateDeclarationNode >> type [
 
 { #category : #generated }
 CSDelegateDeclarationNode >> type: aCSTypeNode [
-	self type notNil
-		ifTrue: [ self type parent: nil ].
+	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.
-	self type notNil
-		ifTrue: [ self type parent: self ]
+	self type notNil ifTrue: [ self type parent: self ]
 ]
 
 { #category : #generated }
