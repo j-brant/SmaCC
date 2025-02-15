@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'socket',
 		'availableServers',
-		'registeredServers'
+		'registeredServers',
+		'running'
 	],
 	#category : #'SmaCC_Rewrite_Server'
 }
@@ -14,6 +15,12 @@ SmaCCServer class >> startOn: anInteger [
 	^ self new
 		startOn: anInteger;
 		yourself
+]
+
+{ #category : #initialization }
+SmaCCServer >> initialize [
+	super initialize.
+	running := false
 ]
 
 { #category : #running }
@@ -130,10 +137,11 @@ SmaCCServer >> register: aSocketStream [
 
 { #category : #running }
 SmaCCServer >> run [
+	running := true.
 	[ | accepted |
 	accepted := socket waitForAcceptFor: 1000 ifTimedOut: [ nil ].
-	accepted notNil
-		ifTrue: [ self process: accepted ] ] repeat
+	accepted notNil ifTrue: [ self process: accepted ].
+	running ] whileTrue
 ]
 
 { #category : #running }
@@ -150,7 +158,11 @@ SmaCCServer >> startOn: anInteger [
 
 { #category : #running }
 SmaCCServer >> stop [
-	socket close
+	running := false.
+	[ socket close ] on: Error do: [ :ex | ex return ].
+	socket := nil.
+	registeredServers copy
+		do: [ :each | [ each close ] on: Error do: [ :ex | ex return ] ]
 ]
 
 { #category : #running }

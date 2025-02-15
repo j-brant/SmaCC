@@ -40,7 +40,7 @@ SmaCCRewriteServerCommandLineHandler >> startServer [
 	server := SmaCCServer startOn: self port.
 	self writePortNumber: server port.
 	[ server run ]
-		ensure: [ server close ] ]
+		ensure: [ server stop ] ]
 		on: Error
 		do: [ :ex | self stderr nextPutAll: ex messageText ]
 ]
