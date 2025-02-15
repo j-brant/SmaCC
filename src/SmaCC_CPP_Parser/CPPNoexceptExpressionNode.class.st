@@ -1,24 +1,26 @@
 Class {
-	#name : #CPPNoexceptExpressionNode,
-	#superclass : #CPPExpressionNode,
+	#name : 'CPPNoexceptExpressionNode',
+	#superclass : 'CPPExpressionNode',
 	#instVars : [
 		'noexceptToken',
 		'expression'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNoexceptExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNoexceptExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNoexceptExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNoexceptExpressionNode >> expression: aCPPExpressionNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
@@ -27,22 +29,22 @@ CPPNoexceptExpressionNode >> expression: aCPPExpressionNode [
 		ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNoexceptExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNoexceptExpressionNode >> noexceptToken [
 	^ noexceptToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNoexceptExpressionNode >> noexceptToken: aSmaCCToken [
 	noexceptToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNoexceptExpressionNode >> tokenVariables [
 	^ #(#noexceptToken)
 ]
