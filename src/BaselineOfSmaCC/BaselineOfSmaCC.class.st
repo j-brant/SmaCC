@@ -10,69 +10,69 @@ BaselineOfSmaCC >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.94' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.95' ].
 		spec
 			baseline: 'SmaCCDevelopment' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.94' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.95' ].
 		spec
 			baseline: 'SmaCCRewriteEngine' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.94' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.95' ].
 		spec
 			baseline: 'SmaCCSampleParsers' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.94' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.95' ].
 		spec
 			baseline: 'Antlr4Parser' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.94' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.95' ].
 		spec
 			baseline: 'ClojureParser' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.94' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.95' ].
 		spec
 			baseline: 'CPPParser' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.94' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.95' ].
 		spec
 			baseline: 'CSharpParser' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.94' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.95' ].
 		spec
 			baseline: 'CSSParser' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.94' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.95' ].
 		spec
 			baseline: 'CSVParser' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.94' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.95' ].
 		spec
 			baseline: 'DelphiParser' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.94' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.95' ].
 		spec
 			baseline: 'DOTParser' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.94' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.95' ].
 		spec
 			baseline: 'GraphQLParser' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.94' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.95' ].
 		spec
 			baseline: 'JavaParser' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.94' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.95' ].
 		spec
 			baseline: 'JSONParser' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.94' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.95' ].
 		spec
 			baseline: 'JSParser' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.94' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.95' ].
 		spec
 			baseline: 'PythonParser' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.94' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.95' ].
 		spec
 			baseline: 'RubyParser' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.94' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.95' ].
 		spec
 			baseline: 'RustParser' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.94' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.95' ].
 		spec
 			baseline: 'TeradataParser' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.94' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.95' ].
 		spec
 			baseline: 'VBNetParser' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.94' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.95' ].
 		spec
 			baseline: 'YAMLParser' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.94' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.95' ].
 	]
 ]
