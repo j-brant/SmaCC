@@ -60,43 +60,37 @@ SmaCCRewriteResult >> asSocketString [
 	null := Character value: 0.
 	stream
 		nextPutAll: 'FILENAME=';
-		nextPutAll: filename;
+		nextPutAll: (filename ifNil: [ '' ]);
 		nextPut: null.
 	errorString notNil
-		ifTrue:
-			[ stream
+		ifTrue: [ stream
 				nextPutAll: 'ERRORSTRING=';
 				nextPutAll: errorString;
 				nextPut: null ].
 	type notNil
-		ifTrue:
-			[ stream
+		ifTrue: [ stream
 				nextPutAll: 'TYPE=';
 				nextPutAll: type;
 				nextPut: null ].
 	startLine notNil
-		ifTrue:
-			[ stream
+		ifTrue: [ stream
 				nextPutAll: 'STARTLINE=';
 				print: startLine;
 				nextPut: null ].
 	startColumn notNil
-		ifTrue:
-			[ stream
+		ifTrue: [ stream
 				nextPutAll: 'STARTCOLUMN=';
 				print: startColumn;
 				nextPut: null ].
 	interval notNil
-		ifTrue:
-			[ stream
+		ifTrue: [ stream
 				nextPutAll: 'INTERVAL=';
 				print: interval first;
 				nextPut: $-;
 				print: interval last;
 				nextPut: null ].
 	transformation notNil
-		ifTrue:
-			[ stream
+		ifTrue: [ stream
 				nextPutAll: 'TRANSFORMATION=';
 				nextPutAll: transformation displayString;
 				nextPut: null ].
