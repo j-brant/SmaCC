@@ -1,10 +1,12 @@
 Class {
-	#name : #YAMLParserTests,
-	#superclass : #TestCase,
-	#category : #'SmaCC_YAML-Tests'
+	#name : 'YAMLParserTests',
+	#superclass : 'TestCase',
+	#category : 'SmaCC_YAML-Tests',
+	#package : 'SmaCC_YAML',
+	#tag : 'Tests'
 }
 
-{ #category : #objects }
+{ #category : 'objects' }
 YAMLParserTests >> testAlias [
 	<gtExample>
 	| ast object |
@@ -15,7 +17,7 @@ YAMLParserTests >> testAlias [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testComments [
 	<gtExample>
 	| ast |
@@ -26,7 +28,7 @@ YAMLParserTests >> testComments [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testCompactMappingListItem [
 	<gtExample>
 	| ast mapping |
@@ -37,7 +39,7 @@ YAMLParserTests >> testCompactMappingListItem [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testCompactMappingListItemContinued [
 	<gtExample>
 	| ast mapping |
@@ -51,7 +53,7 @@ YAMLParserTests >> testCompactMappingListItemContinued [
 	^ ast
 ]
 
-{ #category : #objects }
+{ #category : 'objects' }
 YAMLParserTests >> testConflictingMergeKeyAlias [
 	<gtExample>
 	| ast object bar |
@@ -67,7 +69,7 @@ YAMLParserTests >> testConflictingMergeKeyAlias [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testDocWithLiteralString [
 	<gtExample>
 	| ast mapping |
@@ -78,7 +80,7 @@ YAMLParserTests >> testDocWithLiteralString [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testDocumentStartEnd [
 	<gtExample>
 	| ast |
@@ -88,7 +90,7 @@ YAMLParserTests >> testDocumentStartEnd [
 	^ ast
 ]
 
-{ #category : #objects }
+{ #category : 'objects' }
 YAMLParserTests >> testDoubleQuoteString [
 	<gtExample>
 	| ast object |
@@ -98,7 +100,7 @@ YAMLParserTests >> testDoubleQuoteString [
 	^ ast
 ]
 
-{ #category : #objects }
+{ #category : 'objects' }
 YAMLParserTests >> testFlowListMergeKeyAlias [
 	<gtExample>
 	| ast object bar |
@@ -115,7 +117,7 @@ YAMLParserTests >> testFlowListMergeKeyAlias [
 	^ ast
 ]
 
-{ #category : #objects }
+{ #category : 'objects' }
 YAMLParserTests >> testFoldString [
 	<gtExample>
 	| ast object |
@@ -125,7 +127,7 @@ YAMLParserTests >> testFoldString [
 	^ ast
 ]
 
-{ #category : #objects }
+{ #category : 'objects' }
 YAMLParserTests >> testFoldStringIncludeAllNewlines [
 	<gtExample>
 	| ast object |
@@ -135,7 +137,7 @@ YAMLParserTests >> testFoldStringIncludeAllNewlines [
 	^ ast
 ]
 
-{ #category : #objects }
+{ #category : 'objects' }
 YAMLParserTests >> testFoldStringStripNewline [
 	<gtExample>
 	| ast object |
@@ -145,7 +147,7 @@ YAMLParserTests >> testFoldStringStripNewline [
 	^ ast
 ]
 
-{ #category : #objects }
+{ #category : 'objects' }
 YAMLParserTests >> testFoldStringWithIndents [
 	<gtExample>
 	| ast object |
@@ -155,7 +157,7 @@ YAMLParserTests >> testFoldStringWithIndents [
 	^ ast
 ]
 
-{ #category : #objects }
+{ #category : 'objects' }
 YAMLParserTests >> testFoldStringWithSpacesAtEnd [
 	<gtExample>
 	| ast object |
@@ -165,7 +167,7 @@ YAMLParserTests >> testFoldStringWithSpacesAtEnd [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testFooBarFlowList [
 	<gtExample>
 	| ast items |
@@ -178,7 +180,7 @@ YAMLParserTests >> testFooBarFlowList [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testFooListItem [
 	<gtExample>
 	| ast items |
@@ -190,7 +192,7 @@ YAMLParserTests >> testFooListItem [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testFoobarFeebazFlowMappingList [
 	<gtExample>
 	| ast mappings |
@@ -202,7 +204,7 @@ YAMLParserTests >> testFoobarFeebazFlowMappingList [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testFoobarFeebazNestedFlowList [
 	<gtExample>
 	| ast items |
@@ -214,7 +216,7 @@ YAMLParserTests >> testFoobarFeebazNestedFlowList [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testFoobarFeebazNestedFlowMappingList [
 	<gtExample>
 	| ast mappings |
@@ -225,7 +227,7 @@ YAMLParserTests >> testFoobarFeebazNestedFlowMappingList [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testIndentedMappingList [
 	<gtExample>
 	| ast mappings |
@@ -235,7 +237,7 @@ YAMLParserTests >> testIndentedMappingList [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testListWithMapping [
 	<gtExample>
 	| ast mappings |
@@ -250,7 +252,7 @@ YAMLParserTests >> testListWithMapping [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testLiteralString [
 	<gtExample>
 	| ast |
@@ -259,7 +261,7 @@ YAMLParserTests >> testLiteralString [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testLiteralStringIncludeAllNewlines [
 	<gtExample>
 	| ast |
@@ -270,7 +272,7 @@ YAMLParserTests >> testLiteralStringIncludeAllNewlines [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testLiteralStringStripNewline [
 	<gtExample>
 	| ast |
@@ -279,7 +281,7 @@ YAMLParserTests >> testLiteralStringStripNewline [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testLiteralStringWithIndents [
 	<gtExample>
 	| ast |
@@ -288,7 +290,7 @@ YAMLParserTests >> testLiteralStringWithIndents [
 	^ ast
 ]
 
-{ #category : #objects }
+{ #category : 'objects' }
 YAMLParserTests >> testMappingKeyAlias [
 	<gtExample>
 	| ast object |
@@ -302,7 +304,7 @@ YAMLParserTests >> testMappingKeyAlias [
 	^ ast
 ]
 
-{ #category : #objects }
+{ #category : 'objects' }
 YAMLParserTests >> testMappingListAlias [
 	<gtExample>
 	| ast object |
@@ -317,7 +319,7 @@ YAMLParserTests >> testMappingListAlias [
 	^ ast
 ]
 
-{ #category : #objects }
+{ #category : 'objects' }
 YAMLParserTests >> testMappingValueAlias [
 	<gtExample>
 	| ast object |
@@ -331,7 +333,7 @@ YAMLParserTests >> testMappingValueAlias [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testMappingWithNullAndNewMapping [
 	<gtExample>
 	| ast mappings |
@@ -342,7 +344,7 @@ YAMLParserTests >> testMappingWithNullAndNewMapping [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testMappingWithNullValueAtEOF [
 	<gtExample>
 	| ast mappings |
@@ -353,7 +355,7 @@ YAMLParserTests >> testMappingWithNullValueAtEOF [
 	^ ast
 ]
 
-{ #category : #objects }
+{ #category : 'objects' }
 YAMLParserTests >> testMergeKeyAlias [
 	<gtExample>
 	| ast object bar |
@@ -369,7 +371,7 @@ YAMLParserTests >> testMergeKeyAlias [
 	^ ast
 ]
 
-{ #category : #objects }
+{ #category : 'objects' }
 YAMLParserTests >> testMultipartString [
 	<gtExample>
 	| ast object |
@@ -379,7 +381,7 @@ YAMLParserTests >> testMultipartString [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testNestedListAndMappingList [
 	<gtExample>
 	| ast items |
@@ -390,7 +392,7 @@ YAMLParserTests >> testNestedListAndMappingList [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testNestedMappingList [
 	<gtExample>
 	| ast mappings |
@@ -404,7 +406,7 @@ YAMLParserTests >> testNestedMappingList [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testNestedMappingListWithList [
 	<gtExample>
 	| ast mappings items |
@@ -417,7 +419,7 @@ YAMLParserTests >> testNestedMappingListWithList [
 	^ ast
 ]
 
-{ #category : #objects }
+{ #category : 'objects' }
 YAMLParserTests >> testOverwritingMergeKeyAlias [
 	<gtExample>
 	| ast object bar |
@@ -434,7 +436,7 @@ YAMLParserTests >> testOverwritingMergeKeyAlias [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testScalarStringFooBarWithColon [
 	<gtExample>
 	| ast |
@@ -443,7 +445,7 @@ YAMLParserTests >> testScalarStringFooBarWithColon [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testScalarStringFooBarWithSpaces [
 	<gtExample>
 	| ast |
@@ -452,7 +454,7 @@ YAMLParserTests >> testScalarStringFooBarWithSpaces [
 	^ ast
 ]
 
-{ #category : #objects }
+{ #category : 'objects' }
 YAMLParserTests >> testSequenceMergeKeyAlias [
 	<gtExample>
 	| ast object bar |
@@ -469,7 +471,7 @@ YAMLParserTests >> testSequenceMergeKeyAlias [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testSimpleMappingList [
 	<gtExample>
 	| ast |
@@ -478,7 +480,7 @@ YAMLParserTests >> testSimpleMappingList [
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testSimpleNestedList [
 	<gtExample>
 	| ast items |
@@ -489,7 +491,7 @@ YAMLParserTests >> testSimpleNestedList [
 	^ ast
 ]
 
-{ #category : #objects }
+{ #category : 'objects' }
 YAMLParserTests >> testSingleQuoteString [
 	<gtExample>
 	| ast object |
@@ -501,7 +503,7 @@ something'''.
 	^ ast
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 YAMLParserTests >> testSingleQuotedStringWithDoubledSingleQuotes [
 	<gtExample>
 	| ast |
