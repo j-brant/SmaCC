@@ -35,9 +35,9 @@ SmaCCTransformationToolkitDebugSession class >> handlesContext: aContext [
 { #category : #accessing }
 SmaCCTransformationToolkitDebugSession class >> isRewriteContext: context [
 	((context receiver isKindOf: SmaCCRewriteMatchContext)
-		and: [ (SmaCCRewriteMatchContext methodDictionary
-				at: context selector
-				ifAbsent: [ nil ]) ~~ context method method ]) ifFalse: [ ^ false ].
+		and: [ ((SmaCCRewriteMatchContext whichClassIncludesSelector: context selector)
+				ifNotNil: [ :cls | cls methodDictionary at: context selector ifAbsent: [ nil ] ])
+				~~ context method method ]) ifFalse: [ ^ false ].
 	context receiver class classPool
 		associationsDo: [ :each | (context method hasLiteral: each) ifTrue: [ ^ false ] ].
 	^ true
