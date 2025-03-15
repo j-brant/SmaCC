@@ -5,10 +5,7 @@ Class {
 		'name',
 		'equalToken',
 		'refToken',
-		'expression',
-		'type',
-		'declarators',
-		'commaTokens'
+		'expression'
 	],
 	#category : #'SmaCC_CSharp'
 }
@@ -16,33 +13,6 @@ Class {
 { #category : #generated }
 CSLocalVariableDeclaratorNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLocalVariableDeclarator: self
-]
-
-{ #category : #generated }
-CSLocalVariableDeclaratorNode >> commaTokens [
-	^ commaTokens
-]
-
-{ #category : #generated }
-CSLocalVariableDeclaratorNode >> commaTokens: anOrderedCollection [
-	commaTokens := anOrderedCollection
-]
-
-{ #category : #generated }
-CSLocalVariableDeclaratorNode >> compositeNodeVariables [
-	^ #(#declarators)
-]
-
-{ #category : #generated }
-CSLocalVariableDeclaratorNode >> declarators [
-	^ declarators
-]
-
-{ #category : #generated }
-CSLocalVariableDeclaratorNode >> declarators: anOrderedCollection [
-	self setParents: self declarators to: nil.
-	declarators := anOrderedCollection.
-	self setParents: self declarators to: self
 ]
 
 { #category : #generated }
@@ -68,18 +38,6 @@ CSLocalVariableDeclaratorNode >> expression: aCSExpressionNode [
 ]
 
 { #category : #generated }
-CSLocalVariableDeclaratorNode >> ignoredCompositeTokenVariables [
-	^ #(#commaTokens)
-]
-
-{ #category : #'generated-initialize-release' }
-CSLocalVariableDeclaratorNode >> initialize [
-	super initialize.
-	declarators := OrderedCollection new: 2.
-	commaTokens := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
 CSLocalVariableDeclaratorNode >> name [
 	^ name
 ]
@@ -91,7 +49,7 @@ CSLocalVariableDeclaratorNode >> name: aSmaCCToken [
 
 { #category : #generated }
 CSLocalVariableDeclaratorNode >> nodeVariables [
-	^ #(#expression #type)
+	^ #(#expression)
 ]
 
 { #category : #generated }
@@ -107,16 +65,4 @@ CSLocalVariableDeclaratorNode >> refToken: aSmaCCToken [
 { #category : #generated }
 CSLocalVariableDeclaratorNode >> tokenVariables [
 	^ #(#name #equalToken #refToken)
-]
-
-{ #category : #generated }
-CSLocalVariableDeclaratorNode >> type [
-	^ type
-]
-
-{ #category : #generated }
-CSLocalVariableDeclaratorNode >> type: aCSTypeNode [
-	self type notNil ifTrue: [ self type parent: nil ].
-	type := aCSTypeNode.
-	self type notNil ifTrue: [ self type parent: self ]
 ]

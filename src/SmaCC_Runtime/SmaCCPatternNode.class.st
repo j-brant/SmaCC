@@ -12,7 +12,7 @@ Class {
 	#instVars : [
 		'patternToken'
 	],
-	#category : 'SmaCC_Runtime'
+	#category : #'SmaCC_Runtime'
 }
 
 { #category : #'instance creation' }
@@ -36,16 +36,19 @@ SmaCCPatternNode >> copyInContext: aDictionary [
 SmaCCPatternNode >> doesNotUnderstand: aMessage [
 	| sender |
 	sender := thisContext sender.
-	^ (aMessage arguments isEmpty
+	^ (aMessage arguments size <= 1
 		and: [ (sender receiver isKindOf: SmaCCParser)
 				and: [ sender method selector beginsWith: 'reduceActionFor' ] ])
-		ifTrue: [ "
-			Hack to work around adding parens around pattern nodes:
-				JavaParser parseAll: '(`pattern`)+1' startingAt: JavaParser startingStateForexpression
-			"
-			self
-				attributeNamed: aMessage selector
-				ifAbsentPut: [ OrderedCollection new ] ]
+		ifTrue: [  "Hack to work around adding parens around pattern nodes:
+				JavaParser parseAll: '(`pattern`)+1' startingAt: JavaParser startingStateForexpression"
+			aMessage
+				arguments size = 1
+				ifTrue: [ self
+						attributeNamed: aMessage selector allButLast asSymbol
+						put: aMessage arguments first ]
+				ifFalse: [ self
+						attributeNamed: aMessage selector
+						ifAbsentPut: [ OrderedCollection new ] ] ]
 		ifFalse: [ super doesNotUnderstand: aMessage ]
 ]
 
