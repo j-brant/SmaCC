@@ -10,7 +10,7 @@ BaselineOfDelphiParser >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.98' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.99' ].
 
 		spec package: 'SmaCC_Delphi' with: [
 			spec requires: #(#SmaCCRuntime) ].
