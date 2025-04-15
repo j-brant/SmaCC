@@ -230,11 +230,19 @@ SmaCCScanner >> outputStream [
 
 { #category : #'default token handling' }
 SmaCCScanner >> patternToken [
-	| token |
-	token := SmaCCPatternToken
-		value: outputStream contents
-		start: start + 1
-		ids: matchActions.
+	| token pattern |
+	pattern := outputStream contents.
+	token := [ SmaCCPatternToken
+			value: pattern
+			start: start + 1
+			ids: matchActions ]
+			on: SmaCCInvalidPatternExpressionError
+			do: [ :ex | 
+				ex
+					return: (self tokenClass
+							value: pattern
+							start: start + 1
+							ids: #(0)) ].
 	outputStream reset.
 	^ token
 ]
