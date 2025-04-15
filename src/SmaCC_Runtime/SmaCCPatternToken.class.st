@@ -20,7 +20,7 @@ Class {
 		'testBlock',
 		'nodeClassName'
 	],
-	#category : 'SmaCC_Runtime'
+	#category : #'SmaCC_Runtime'
 }
 
 { #category : #comparing }
@@ -59,16 +59,28 @@ SmaCCPatternToken >> buildStructure [
 	isNode := true.
 	testBlock := [ :node | true ].
 	index := value indexOf: ${.
-	index > 0
-		ifFalse: [ ^ self ].
+	index > 0 ifFalse: [ ^ self ].
 	code := value copyFrom: index + 1 to: (value lastIndexOf: $}) - 1.
 	source := 'self ' , code.
-	RBParser parseExpression: source onError: [ :s :p | self error: 'Invalid pattern expression' ].
-	self class compiler
+	RBParser
+		parseExpression: source
+		onError: [ :s :p | 
+			SmaCCInvalidPatternExpressionError new
+				errorMessage: s;
+				position: p;
+				token: self;
+				signal ].
+	[ self class compiler
 		source: source;
 		logged: false;
 		receiver: self;
-		evaluate
+		evaluate ]
+		on: Error
+		do: [ :ex | 
+			SmaCCInvalidPatternExpressionError new
+				errorMessage: ex messageText;
+				token: self;
+				signal ]
 ]
 
 { #category : #matching }
