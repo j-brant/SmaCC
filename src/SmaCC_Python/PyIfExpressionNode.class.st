@@ -74,7 +74,7 @@ PyIfExpressionNode >> ifToken: aSmaCCToken [
 
 { #category : #generated }
 PyIfExpressionNode >> nodeVariables [
-	^ #(#condition #if #else)
+	^ #(#if #condition #else)
 ]
 
 { #category : #generated }

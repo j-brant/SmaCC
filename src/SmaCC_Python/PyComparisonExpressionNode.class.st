@@ -24,5 +24,5 @@ PyComparisonExpressionNode >> notToken: aSmaCCToken [
 
 { #category : #generated }
 PyComparisonExpressionNode >> tokenVariables [
-	^ #(#notToken #opeator #operator)
+	^ #(#notToken #operator)
 ]
