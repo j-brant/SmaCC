@@ -40,7 +40,7 @@ PythonParser class >> ambiguousTransitions [
 
 { #category : #'generated-accessing' }
 PythonParser class >> cacheId [
-	^'2025-05-26T07:01:13.939204-05:00'
+	^'2025-05-26T07:08:41.188999-05:00'
 ]
 
 { #category : #generated }
@@ -625,7 +625,7 @@ comma_opt:
 	;
 
 test: or_test
-	| or_test 'condition' ""if"" 'ifToken' or_test 'if' ""else"" 'elseToken' test 'else' {{IfExpression}}
+	| or_test 'if' ""if"" 'ifToken' or_test 'condition' ""else"" 'elseToken' test 'else' {{IfExpression}}
 	| lambdef
 	| assignment_expression
 	;
@@ -3312,9 +3312,9 @@ PythonParser >> reduceActionForsuite2: nodes [
 PythonParser >> reduceActionFortest2: nodes [
 	| result |
 	result := PyIfExpressionNode new.
-	result condition: (nodes at: 1).
+	result if: (nodes at: 1).
 	result ifToken: (nodes at: 2).
-	result if: (nodes at: 3).
+	result condition: (nodes at: 3).
 	result elseToken: (nodes at: 4).
 	result else: (nodes at: 5).
 	^ result
