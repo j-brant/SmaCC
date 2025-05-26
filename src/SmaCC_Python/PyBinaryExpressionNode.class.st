@@ -3,9 +3,8 @@ Class {
 	#superclass : #PyExpressionNode,
 	#instVars : [
 		'left',
-		'opeator',
-		'right',
-		'operator'
+		'operator',
+		'right'
 	],
 	#category : #'SmaCC_Python'
 }
@@ -33,16 +32,6 @@ PyBinaryExpressionNode >> nodeVariables [
 ]
 
 { #category : #generated }
-PyBinaryExpressionNode >> opeator [
-	^ opeator
-]
-
-{ #category : #generated }
-PyBinaryExpressionNode >> opeator: aSmaCCToken [
-	opeator := aSmaCCToken
-]
-
-{ #category : #generated }
 PyBinaryExpressionNode >> operator [
 	^ operator
 ]
@@ -66,5 +55,5 @@ PyBinaryExpressionNode >> right: aPyExpressionNode [
 
 { #category : #generated }
 PyBinaryExpressionNode >> tokenVariables [
-	^ #(#opeator #operator)
+	^ #(#operator)
 ]
