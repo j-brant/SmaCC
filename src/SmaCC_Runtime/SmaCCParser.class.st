@@ -464,6 +464,11 @@ SmaCCParser >> currentToken [
 	^ currentToken
 ]
 
+{ #category : #private }
+SmaCCParser >> currentToken: aToken [
+	currentToken := aToken
+]
+
 { #category : #'error handling' }
 SmaCCParser >> dismissErrorToken [
 	| token |
@@ -830,6 +835,11 @@ SmaCCParser >> spawnParser: aGLRParserClass startingAt: anInteger [
 { #category : #private }
 SmaCCParser >> stateStack [
 	^ stateStack
+]
+
+{ #category : #private }
+SmaCCParser >> stateStack: aCollection [
+	stateStack := aCollection asOrderedCollection
 ]
 
 { #category : #'standard reduction rules' }
