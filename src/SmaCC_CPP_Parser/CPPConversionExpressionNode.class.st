@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPConversionExpressionNode,
-	#superclass : #CPPExpressionNode,
+	#name : 'CPPConversionExpressionNode',
+	#superclass : 'CPPExpressionNode',
 	#instVars : [
 		'castToken',
 		'ltToken',
@@ -8,60 +8,62 @@ Class {
 		'gtToken',
 		'value'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitConversionExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionExpressionNode >> castToken [
 	^ castToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionExpressionNode >> castToken: aSmaCCToken [
 	castToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionExpressionNode >> gtToken [
 	^ gtToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionExpressionNode >> gtToken: aSmaCCToken [
 	gtToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionExpressionNode >> ltToken [
 	^ ltToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionExpressionNode >> ltToken: aSmaCCToken [
 	ltToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionExpressionNode >> nodeVariables [
 	^ #(#type #value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionExpressionNode >> tokenVariables [
 	^ #(#castToken #ltToken #gtToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionExpressionNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionExpressionNode >> type: aCPPTypeIdentifierNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].
@@ -70,12 +72,12 @@ CPPConversionExpressionNode >> type: aCPPTypeIdentifierNode [
 		ifTrue: [ self type parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionExpressionNode >> value: aCPPExpressionNode [
 	self value notNil
 		ifTrue: [ self value parent: nil ].

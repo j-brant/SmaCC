@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPEnumSpecifierNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPEnumSpecifierNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'enumToken',
 		'classToken',
@@ -14,77 +14,79 @@ Class {
 		'definitions',
 		'commas'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEnumSpecifier: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> classToken [
 	^ classToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> classToken: aSmaCCToken [
 	classToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> compositeNodeVariables [
 	^ #(#specifiers #definitions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> definitions [
 	^ definitions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> definitions: anOrderedCollection [
 	self setParents: self definitions to: nil.
 	definitions := anOrderedCollection.
 	self setParents: self definitions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> enumToken [
 	^ enumToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> enumToken: aSmaCCToken [
 	enumToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPEnumSpecifierNode >> initialize [
 	super initialize.
 	specifiers := OrderedCollection new: 2.
@@ -92,32 +94,32 @@ CPPEnumSpecifierNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> nameSpecifier [
 	^ nameSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 	self nameSpecifier notNil
 		ifTrue: [ self nameSpecifier parent: nil ].
@@ -126,44 +128,44 @@ CPPEnumSpecifierNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 		ifTrue: [ self nameSpecifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> nodeVariables [
 	^ #(#nameSpecifier)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> specifiers [
 	^ specifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> specifiers: anOrderedCollection [
 	self setParents: self specifiers to: nil.
 	specifiers := anOrderedCollection.
 	self setParents: self specifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> structToken [
 	^ structToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> structToken: aSmaCCToken [
 	structToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumSpecifierNode >> tokenVariables [
 	^ #(#enumToken #classToken #structToken #colon #name #leftBrace #rightBrace)
 ]
