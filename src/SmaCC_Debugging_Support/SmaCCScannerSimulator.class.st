@@ -21,15 +21,16 @@ SmaCCScannerSimulator class >> forGrammar: aSmaCCGrammar nfa: aSmaCCNode [
 
 { #category : #private }
 SmaCCScannerSimulator >> buildMethodMap [
+	| defaultSelectors |
+	defaultSelectors := (SmaCCScanner selectorsInProtocol: #'default token handling')
+			asSet.
 	methodMap := Dictionary new.
 	grammar tokens
 		keysDo: [ :each | 
 			| selector |
 			each first = $<
 				ifTrue: [ selector := (each copyFrom: 2 to: each size - 1) asSymbol.
-					((SmaCCScanner organization
-						listAtCategoryNamed: #'default token handling')
-						includes: selector)
+					(defaultSelectors includes: selector)
 						ifTrue: [ methodMap
 								at: (grammar symbols identityIndexOf: (grammar symbolNamed: each))
 								put: selector ] ] ]
