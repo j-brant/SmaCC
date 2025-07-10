@@ -580,6 +580,13 @@ SmaCCSmalltalkCodeGenerator >> defaultNodeReductionSource: aReduction [
 	^ '''' , aReduction index printString , ''''
 ]
 
+{ #category : #accessing }
+SmaCCSmalltalkCodeGenerator >> defaultPackageName [
+	^ SystemVersion current major >= 12
+		ifTrue: [ #Package asClass defaultPackageName ]
+		ifFalse: [ #RPackage asClass defaultPackageName ]
+]
+
 { #category : #'reduction table' }
 SmaCCSmalltalkCodeGenerator >> defaultReductionSource [
 	^ '#reduceFor:'
@@ -613,7 +620,7 @@ SmaCCSmalltalkCodeGenerator >> defineClass: aString asSubclassOf: aBehavior [
 				defineClass: aBehavior name , ' subclass: #' , aString , ' instanceVariableNames: '''
 						, variables
 						, (''' classVariableNames: '''' poolDictionaries: '''' category: '''
-								, (defaultCategory ifNil: [ RPackage defaultPackageName ]) , ''' ') ].
+								, (defaultCategory ifNil: [ self defaultPackageName ]) , ''' ') ].
 	^ model classNamed: aString asSymbol
 ]
 
@@ -627,7 +634,6 @@ SmaCCSmalltalkCodeGenerator >> defineClass: aString asSubclassOf: aBehavior from
 					builder
 						superclassName: aBehavior name;
 						name: aString asSymbol;
-						"traits: (aCollection collect: [ :each | Smalltalk at: each asSymbol ]) asArray;"
 						package: self packageName;
 						slots: (current instVarNames collect: #asSymbol) asArray.
 					self tagName ifNotNil: [ :tag | builder tag: tag asSymbol ] ] ]
@@ -639,7 +645,7 @@ SmaCCSmalltalkCodeGenerator >> defineClass: aString asSubclassOf: aBehavior from
 										do: [ :each | stream nextPutAll: each ]
 										separatedBy: [ stream nextPutAll: '. ' ] ])
 						, ' } instanceVariableNames: '''' classVariableNames: '''' poolDictionaries: '''' category: '''
-						, (defaultCategory ifNil: [ RPackage defaultPackageName ]) , ''' ' ].
+						, (defaultCategory ifNil: [ self defaultPackageName ]) , ''' ' ].
 	^ model classNamed: aString asSymbol
 ]
 
@@ -662,8 +668,7 @@ SmaCCSmalltalkCodeGenerator >> defineTrait: aString fromTraits: aCollection [
 									aCollection
 										do: [ :each | stream nextPutAll: each ]
 										separatedBy: [ stream nextPutAll: '. ' ] ])
-						, ('} package: ''' , (defaultCategory ifNil: [ RPackage defaultPackageName ])
-								, ''' ') ].
+						, ('} package: ''' , (defaultCategory ifNil: [ self defaultPackageName ]) , ''' ') ].
 	^ model classNamed: aString asSymbol
 ]
 
@@ -945,13 +950,13 @@ SmaCCSmalltalkCodeGenerator >> outputStreamClass [
 
 { #category : #accessing }
 SmaCCSmalltalkCodeGenerator >> packageName [
-	defaultCategory ifNil: [ ^ RPackage defaultPackageName ].
+	defaultCategory ifNil: [ ^ self defaultPackageName ].
 	^ self packageNameFrom: defaultCategory
 ]
 
 { #category : #accessing }
 SmaCCSmalltalkCodeGenerator >> packageNameFrom: aString [
-	RPackage organizer
+	self class packageOrganizer
 		packageNamed: aString asSymbol
 		ifAbsent: [ | index |
 			index := aString lastIndexOf: $-.

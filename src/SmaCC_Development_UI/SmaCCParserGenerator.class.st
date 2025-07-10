@@ -417,10 +417,9 @@ SmaCCParserGenerator >> setCodeGenerator: aSymbol [
 SmaCCParserGenerator >> setPackage [
 	| name |
 	name := UIManager default
-		enterOrRequestFrom: RPackage organizer packageNames asSortedCollection
-		title: 'Select package:'.
-	(name isNil or: [ name isEmpty ])
-		ifTrue: [ ^ self ].
+			enterOrRequestFrom: self class packageOrganizer packageNames asSortedCollection
+			title: 'Select package:'.
+	(name isNil or: [ name isEmpty ]) ifTrue: [ ^ self ].
 	packageName := name
 ]
 
