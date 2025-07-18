@@ -48,17 +48,30 @@ SmaCCParser >> fillInGraphFromStack: nodeCollection returnTable: tableArray size
 
 { #category : #'*SmaCC_Debugging_Support' }
 SmaCCParser >> graphForStack: aCollection [
-	| id name next graphNodeStack returnTable |
+	| name next graphNodeStack returnTable |
 	graphNodeStack := OrderedCollection new.
-	graphNodeStack add: (SmaCCGraphNode named: '' state: aCollection first parser: self).
-	2 to: aCollection size do: [ :i | 
-		id := self symbolIdForTransitionFrom: (aCollection at: i - 1) to: (aCollection at: i).
-		name := self symbolNameFor: id.
-		next := SmaCCGraphNode named: name state: (aCollection at: i) parser: self.
-		graphNodeStack last followed: next.
-		graphNodeStack add: next ].
+	graphNodeStack
+		add: (SmaCCGraphNode
+				named: ''
+				state: aCollection first
+				parser: self).
+	2
+		to: aCollection size
+		do: [ :i | 
+			name := self
+					symbolForTransitionFrom: (aCollection at: i - 1)
+					to: (aCollection at: i).
+			next := SmaCCGraphNode
+					named: name
+					state: (aCollection at: i)
+					parser: self.
+			graphNodeStack last followed: next.
+			graphNodeStack add: next ].
 	returnTable := self maxReturnSizeTable.
-	self fillInGraphFromStack: graphNodeStack returnTable: returnTable size: 0.
+	self
+		fillInGraphFromStack: graphNodeStack
+		returnTable: returnTable
+		size: 0.
 	^ graphNodeStack first
 ]
 
@@ -230,6 +243,14 @@ SmaCCParser class >> sourceFilesIn: aDirectory [
 ]
 
 { #category : #'*SmaCC_Debugging_Support' }
+SmaCCParser >> stackSymbolNames [
+	| names |
+	names := OrderedCollection new: stateStack size - 1.
+	self symbolNamesFor: stateStack do: [ :each | names add: each ].
+	^ names
+]
+
+{ #category : #'*SmaCC_Debugging_Support' }
 SmaCCParser >> symbolForTransitionFrom: fromState to: toState [
 	| id |
 	id := self symbolIdForTransitionFrom: fromState to: toState.
@@ -251,4 +272,13 @@ SmaCCParser >> symbolIdForTransitionFrom: fromState to: toState [
 { #category : #'*SmaCC_Debugging_Support' }
 SmaCCParser >> symbolNameFor: anInteger [
 	^ self symbolNames at: anInteger ifAbsent: [ '?' ]
+]
+
+{ #category : #'*SmaCC_Debugging_Support' }
+SmaCCParser >> symbolNamesFor: aCollection do: aBlock [
+	2
+		to: aCollection size
+		do: [ :i | 
+			aBlock
+				value: (self symbolForTransitionFrom: (aCollection at: i - 1) to: (aCollection at: i)) ]
 ]

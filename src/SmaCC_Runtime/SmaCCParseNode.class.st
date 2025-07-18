@@ -204,6 +204,14 @@ SmaCCParseNode >> allNodesDo: nodeBlock andTokensDo: tokenBlock includeErrors: a
 ]
 
 { #category : #iterating }
+SmaCCParseNode >> allNodesOfType: aClass [
+	| nodes |
+	nodes := OrderedCollection new.
+	self allNodesOfType: aClass do: [ :each | nodes add: each ].
+	^ nodes
+]
+
+{ #category : #iterating }
 SmaCCParseNode >> allNodesOfType: aClass do: nodeBlock [
 	self
 		allNodesDo: [ :each | 
@@ -1034,6 +1042,14 @@ SmaCCParseNode >> withAllNodesDo: nodeBlock andTokensDo: tokenBlock [
 SmaCCParseNode >> withAllNodesDo: nodeBlock andTokensDo: tokenBlock includesErrors: aBoolean [
 	nodeBlock value: self.
 	self allNodesDo: nodeBlock andTokensDo: tokenBlock includeErrors: aBoolean
+]
+
+{ #category : #iterating }
+SmaCCParseNode >> withAllNodesOfType: aClass [
+	| nodes |
+	nodes := OrderedCollection new.
+	self withAllNodesOfType: aClass do: [ :each | nodes add: each ].
+	^ nodes
 ]
 
 { #category : #iterating }
