@@ -792,16 +792,16 @@ SmaCCParser >> shiftAction [
 
 { #category : #accessing }
 SmaCCParser >> shortestPathsFrom: startingState [
-	| paths todo currentState nextState |
+	| paths todo current nextState |
 	paths := Dictionary new.
-	paths at: startingState put: OrderedCollection new.
+	paths at: startingState put: (OrderedCollection with: startingState).
 	todo := OrderedCollection with: startingState.
 	[ todo notEmpty ]
-		whileTrue: [ currentState := todo removeFirst.
+		whileTrue: [ current := todo removeFirst.
 			1
 				to: self symbolNames size
 				do: [ :i | 
-					(self actionsForState: currentState and: i)
+					(self actionsForState: current and: i)
 						do: [ :action | 
 							(action bitAnd: 2r11) = self shiftAction
 								ifTrue: [ nextState := action bitShift: -2.
@@ -809,8 +809,8 @@ SmaCCParser >> shortestPathsFrom: startingState [
 										ifFalse: [ todo add: nextState.
 											paths
 												at: nextState
-												put: ((paths at: currentState) copy
-														add: i;
+												put: ((paths at: current) copy
+														add: nextState;
 														yourself) ] ] ] ] ].
 	^ paths
 ]
