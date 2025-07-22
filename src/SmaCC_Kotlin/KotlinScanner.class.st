@@ -16,18 +16,8 @@ KotlinScanner class >> initializeKeywordMap [
 ]
 
 { #category : #generated }
-KotlinScanner >> ASId [
-	^ 92
-]
-
-{ #category : #generated }
-KotlinScanner >> AS_SAFEId [
-	^ 45
-]
-
-{ #category : #generated }
 KotlinScanner >> AT_BOTH_WSId [
-	^ 426
+	^ 428
 ]
 
 { #category : #accessing }
@@ -50,32 +40,12 @@ KotlinScanner >> AT_NO_WSId [
 
 { #category : #generated }
 KotlinScanner >> AT_POST_WSId [
-	^ 427
+	^ 429
 ]
 
 { #category : #generated }
 KotlinScanner >> AT_PRE_WSId [
-	^ 428
-]
-
-{ #category : #generated }
-KotlinScanner >> COMMAId [
-	^ 7
-]
-
-{ #category : #generated }
-KotlinScanner >> CONJId [
-	^ 21
-]
-
-{ #category : #generated }
-KotlinScanner >> DISJId [
-	^ 22
-]
-
-{ #category : #generated }
-KotlinScanner >> DOTId [
-	^ 6
+	^ 430
 ]
 
 { #category : #private }
@@ -91,47 +61,57 @@ KotlinScanner >> EXCL_NO_WSId [
 
 { #category : #generated }
 KotlinScanner >> NLId [
-	^ 429
-]
-
-{ #category : #generated }
-KotlinScanner >> NL_ASId [
-	^ 430
-]
-
-{ #category : #generated }
-KotlinScanner >> NL_AS_SAFEId [
 	^ 431
 ]
 
 { #category : #generated }
-KotlinScanner >> NL_COMMAId [
+KotlinScanner >> NL_ASId [
 	^ 432
 ]
 
 { #category : #generated }
-KotlinScanner >> NL_CONJId [
+KotlinScanner >> NL_AS_SAFEId [
 	^ 433
 ]
 
 { #category : #generated }
-KotlinScanner >> NL_DISJId [
+KotlinScanner >> NL_COLONId [
 	^ 434
 ]
 
 { #category : #generated }
-KotlinScanner >> NL_DOTId [
+KotlinScanner >> NL_COMMAId [
 	^ 435
 ]
 
 { #category : #generated }
-KotlinScanner >> NL_QUEST_NO_WSId [
+KotlinScanner >> NL_CONJId [
 	^ 436
 ]
 
 { #category : #generated }
-KotlinScanner >> NL_QUEST_WSId [
+KotlinScanner >> NL_DISJId [
 	^ 437
+]
+
+{ #category : #generated }
+KotlinScanner >> NL_DOTId [
+	^ 438
+]
+
+{ #category : #generated }
+KotlinScanner >> NL_LCURLId [
+	^ 439
+]
+
+{ #category : #generated }
+KotlinScanner >> NL_QUEST_NO_WSId [
+	^ 440
+]
+
+{ #category : #generated }
+KotlinScanner >> NL_QUEST_WSId [
+	^ 441
 ]
 
 { #category : #accessing }
@@ -185,22 +165,22 @@ KotlinScanner >> QUEST_NO_WSId [
 
 { #category : #generated }
 KotlinScanner >> QUEST_WSId [
-	^ 438
+	^ 442
 ]
 
 { #category : #generated }
 KotlinScanner >> emptySymbolTokenId [
-	^ 439
+	^ 443
 ]
 
 { #category : #generated }
 KotlinScanner >> errorTokenId [
-	^ 440
+	^ 444
 ]
 
 { #category : #private }
 KotlinScanner >> nl [
-	| char continue commentStart |
+	| char continue commentStart position |
 	continue := true.
 	[ continue and: [ stream atEnd not ] ]
 		whileTrue: [ char := stream next.
@@ -220,7 +200,79 @@ KotlinScanner >> nl [
 												add: {commentStart.
 														stream position}.
 											continue := true ] ] ].
-					continue ifFalse: [ stream position: stream position - 1 ] ] ].
+					continue
+						ifFalse: [ char = $,
+								ifTrue: [ start := stream position - 1.
+									outputStream
+										reset;
+										nextPutAll: ','.
+									^ self recordAndReportMatch: {self NL_COMMAId} ].
+							char = $:
+								ifTrue: [ stream peek = $:
+										ifFalse: [ start := stream position - 1.
+											outputStream
+												reset;
+												nextPutAll: ':'.
+											^ self recordAndReportMatch: {self NL_COLONId} ] ].
+							char = $.
+								ifTrue: [ char := stream peek.
+									(char notNil and: [ char isDigit ])
+										ifFalse: [ start := stream position - 1.
+											outputStream
+												reset;
+												nextPutAll: '.'.
+											^ self recordAndReportMatch: {self NL_DOTId} ] ].
+							char = ${
+								ifTrue: [ start := stream position - 1.
+									outputStream
+										reset;
+										nextPutAll: '{'.
+									^ self recordAndReportMatch: {self NL_LCURLId} ].
+							char = $?
+								ifTrue: [ start := stream position - 1.
+									char := stream peek.
+									outputStream
+										reset;
+										nextPutAll: '?'.
+									^ self
+										recordAndReportMatch: {(char notNil and: [ char isSeparator ])
+													ifTrue: [ self NL_QUEST_WSId ]
+													ifFalse: [ self NL_QUEST_NO_WSId ]} ].
+							char = $a
+								ifTrue: [ position := stream position.
+									(stream peekFor: $s)
+										ifTrue: [ char := stream peek.
+											char = $?
+												ifTrue: [ stream next.
+													start := stream position - 3.
+													outputStream
+														reset;
+														nextPutAll: 'as?'.
+													^ self recordAndReportMatch: {self NL_AS_SAFEId} ].
+											(char notNil and: [ char isAlphaNumeric ])
+												ifTrue: [ stream position: position ]
+												ifFalse: [ start := stream position - 2.
+													outputStream
+														reset;
+														nextPutAll: 'as'.
+													^ self recordAndReportMatch: {self NL_ASId} ] ] ].
+							char = $&
+								ifTrue: [ (stream peekFor: $&)
+										ifTrue: [ start := stream position - 2.
+											outputStream
+												reset;
+												nextPutAll: '&&'.
+											^ self recordAndReportMatch: {self NL_DISJId} ] ].
+							char = $|
+								ifTrue: [ (stream peekFor: $|)
+										ifTrue: [ start := stream position - 2.
+											outputStream
+												reset;
+												nextPutAll: '||'.
+											^ self recordAndReportMatch: {self NL_CONJId} ] ].
+
+
+							stream position: stream position - 1 ] ] ].
 	self recordMatch: {self NLId}.
 	^ self createTokenFor: outputStream contents
 ]
