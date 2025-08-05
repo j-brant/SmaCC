@@ -2,6 +2,7 @@ Class {
 	#name : #DelphiVariableDefinitionNode,
 	#superclass : #DelphiProgramNode,
 	#instVars : [
+		'annotations',
 		'names',
 		'commas',
 		'colon',
@@ -33,6 +34,18 @@ DelphiVariableDefinitionNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
+DelphiVariableDefinitionNode >> annotations [
+	^ annotations
+]
+
+{ #category : #generated }
+DelphiVariableDefinitionNode >> annotations: anOrderedCollection [
+	self setParents: self annotations to: nil.
+	annotations := anOrderedCollection.
+	self setParents: self annotations to: self
+]
+
+{ #category : #generated }
 DelphiVariableDefinitionNode >> colon [
 	^ colon
 ]
@@ -50,6 +63,11 @@ DelphiVariableDefinitionNode >> commas [
 { #category : #generated }
 DelphiVariableDefinitionNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
+]
+
+{ #category : #generated }
+DelphiVariableDefinitionNode >> compositeNodeVariables [
+	^ #(#annotations)
 ]
 
 { #category : #generated }
@@ -72,6 +90,7 @@ DelphiVariableDefinitionNode >> initialize [
 	super initialize.
 	names := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
+	annotations := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
