@@ -84,9 +84,15 @@ SmaCCSourceReduceCode >> typesForTree: aRBProgramNode seen: aSet [
 				ifNotNil: [ :index | ^ self basicModelTypes: aSet forIndex: index ] ].
 	aRBProgramNode isDynamicArray
 		ifTrue: [ ^ Array with: (self model classFor: Array) ].
-	(aRBProgramNode isMessage
-		and: [ aRBProgramNode receiver isVariable
-				and: [ aRBProgramNode receiver name = 'SmaCCToken' ] ])
-		ifTrue: [ ^ Array with: (self model classFor: SmaCCToken) ].
+	aRBProgramNode isMessage
+		ifTrue: [ aRBProgramNode selector = #yourself
+				ifTrue: [ ^ self typesForTree: aRBProgramNode receiver seen: aSet ].
+			(aRBProgramNode selector = #new and: [ aRBProgramNode receiver isVariable ])
+				ifTrue: [ Smalltalk globals
+						at: aRBProgramNode receiver name
+						ifPresent: [ :cls | ^ {self model classFor: cls} ] ].
+			(aRBProgramNode receiver isVariable
+				and: [ aRBProgramNode receiver name = 'SmaCCToken' ])
+				ifTrue: [ ^ Array with: (self model classFor: SmaCCToken) ] ].
 	^ Array with: (self model classFor: Object)
 ]
