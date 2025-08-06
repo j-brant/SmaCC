@@ -5,9 +5,8 @@ Class {
 		'name',
 		'signature',
 		'nullableIndicator',
-		'semicolon',
-		'staticToken',
-		'modifier'
+		'modifiers',
+		'semicolon'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
@@ -18,18 +17,29 @@ JSMethodSignatureNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
+JSMethodSignatureNode >> compositeTokenVariables [
+	^ #(#modifiers)
+]
+
+{ #category : #generated }
 JSMethodSignatureNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #generated }
-JSMethodSignatureNode >> modifier [
-	^ modifier
+{ #category : #'generated-initialize-release' }
+JSMethodSignatureNode >> initialize [
+	super initialize.
+	modifiers := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-JSMethodSignatureNode >> modifier: aSmaCCToken [
-	modifier := aSmaCCToken
+JSMethodSignatureNode >> modifiers [
+	^ modifiers
+]
+
+{ #category : #generated }
+JSMethodSignatureNode >> modifiers: anOrderedCollection [
+	modifiers := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -82,16 +92,6 @@ JSMethodSignatureNode >> signature: aJSCallSignatureNode [
 ]
 
 { #category : #generated }
-JSMethodSignatureNode >> staticToken [
-	^ staticToken
-]
-
-{ #category : #generated }
-JSMethodSignatureNode >> staticToken: aSmaCCToken [
-	staticToken := aSmaCCToken
-]
-
-{ #category : #generated }
 JSMethodSignatureNode >> tokenVariables [
-	^ #(#nullableIndicator #staticToken #modifier)
+	^ #(#nullableIndicator)
 ]

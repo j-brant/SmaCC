@@ -3,15 +3,14 @@ Class {
 	#superclass : #JSProgramNode,
 	#instVars : [
 		'decorators',
+		'modifiers',
 		'name',
+		'semicolon',
 		'equalToken',
 		'value',
-		'semicolon',
 		'colonToken',
 		'type',
-		'nullableIndicator',
-		'staticToken',
-		'modifier'
+		'nullableIndicator'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
@@ -34,6 +33,11 @@ JSMemberVariableDeclarationNode >> colonToken: aSmaCCToken [
 { #category : #generated }
 JSMemberVariableDeclarationNode >> compositeNodeVariables [
 	^ #(#decorators)
+]
+
+{ #category : #generated }
+JSMemberVariableDeclarationNode >> compositeTokenVariables [
+	^ #(#modifiers)
 ]
 
 { #category : #generated }
@@ -67,16 +71,17 @@ JSMemberVariableDeclarationNode >> ignoredTokenVariables [
 JSMemberVariableDeclarationNode >> initialize [
 	super initialize.
 	decorators := OrderedCollection new: 2.
+	modifiers := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-JSMemberVariableDeclarationNode >> modifier [
-	^ modifier
+JSMemberVariableDeclarationNode >> modifiers [
+	^ modifiers
 ]
 
 { #category : #generated }
-JSMemberVariableDeclarationNode >> modifier: aSmaCCToken [
-	modifier := aSmaCCToken
+JSMemberVariableDeclarationNode >> modifiers: anOrderedCollection [
+	modifiers := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -117,18 +122,8 @@ JSMemberVariableDeclarationNode >> semicolon: aSmaCCToken [
 ]
 
 { #category : #generated }
-JSMemberVariableDeclarationNode >> staticToken [
-	^ staticToken
-]
-
-{ #category : #generated }
-JSMemberVariableDeclarationNode >> staticToken: aSmaCCToken [
-	staticToken := aSmaCCToken
-]
-
-{ #category : #generated }
 JSMemberVariableDeclarationNode >> tokenVariables [
-	^ #(#equalToken #nullableIndicator #staticToken #modifier)
+	^ #(#equalToken #nullableIndicator)
 ]
 
 { #category : #generated }
