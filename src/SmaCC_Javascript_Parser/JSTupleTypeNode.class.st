@@ -3,9 +3,10 @@ Class {
 	#superclass : #JSTypeNode,
 	#instVars : [
 		'leftBracket',
-		'types',
+		'rightBracket',
 		'commas',
-		'rightBracket'
+		'types',
+		'readonlyToken'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
@@ -58,6 +59,16 @@ JSTupleTypeNode >> leftBracket: aSmaCCToken [
 ]
 
 { #category : #generated }
+JSTupleTypeNode >> readonlyToken [
+	^ readonlyToken
+]
+
+{ #category : #generated }
+JSTupleTypeNode >> readonlyToken: aSmaCCToken [
+	readonlyToken := aSmaCCToken
+]
+
+{ #category : #generated }
 JSTupleTypeNode >> rightBracket [
 	^ rightBracket
 ]
@@ -65,6 +76,11 @@ JSTupleTypeNode >> rightBracket [
 { #category : #generated }
 JSTupleTypeNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
+]
+
+{ #category : #generated }
+JSTupleTypeNode >> tokenVariables [
+	^ #(#readonlyToken)
 ]
 
 { #category : #generated }
