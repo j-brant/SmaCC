@@ -10,7 +10,7 @@ BaselineOfPythonParser >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.111' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.112' ].
 
 		spec package: 'SmaCC_Python' with: [
 			spec requires: #(#SmaCCRuntime) ].
