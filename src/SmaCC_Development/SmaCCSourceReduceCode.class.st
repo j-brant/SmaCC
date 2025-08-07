@@ -88,11 +88,12 @@ SmaCCSourceReduceCode >> typesForTree: aRBProgramNode seen: aSet [
 		ifTrue: [ aRBProgramNode selector = #yourself
 				ifTrue: [ ^ self typesForTree: aRBProgramNode receiver seen: aSet ].
 			(aRBProgramNode selector = #new and: [ aRBProgramNode receiver isVariable ])
-				ifTrue: [ Smalltalk globals
-						at: aRBProgramNode receiver name
-						ifPresent: [ :cls | ^ {self model classFor: cls} ] ].
+				ifTrue: [ (self model classNamed: aRBProgramNode receiver name)
+						ifNotNil: [ :cls | ^ {cls} ] ].
 			(aRBProgramNode receiver isVariable
 				and: [ aRBProgramNode receiver name = 'SmaCCToken' ])
 				ifTrue: [ ^ Array with: (self model classFor: SmaCCToken) ] ].
+	aRBProgramNode isCascade
+		ifTrue: [ ^ self typesForTree: aRBProgramNode messages last seen: aSet ].
 	^ Array with: (self model classFor: Object)
 ]
