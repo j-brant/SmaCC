@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'type',
 		'leftBracket',
-		'rightBracket'
+		'rightBracket',
+		'readonlyToken'
 	],
 	#category : #'SmaCC_Javascript_Parser'
 }
@@ -35,6 +36,16 @@ JSArrayTypeNode >> nodeVariables [
 ]
 
 { #category : #generated }
+JSArrayTypeNode >> readonlyToken [
+	^ readonlyToken
+]
+
+{ #category : #generated }
+JSArrayTypeNode >> readonlyToken: aSmaCCToken [
+	readonlyToken := aSmaCCToken
+]
+
+{ #category : #generated }
 JSArrayTypeNode >> rightBracket [
 	^ rightBracket
 ]
@@ -42,6 +53,11 @@ JSArrayTypeNode >> rightBracket [
 { #category : #generated }
 JSArrayTypeNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
+]
+
+{ #category : #generated }
+JSArrayTypeNode >> tokenVariables [
+	^ #(#readonlyToken)
 ]
 
 { #category : #generated }
