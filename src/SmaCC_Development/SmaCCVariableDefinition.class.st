@@ -47,16 +47,18 @@ SmaCCVariableDefinition class >> pluralNameBlock: aBlock [
 
 { #category : #private }
 SmaCCVariableDefinition class >> pluralNameFor: aString [
-	| size |
-	(self pluralNameBlock value: aString)
-		ifNotNil: [ :result | ^ result ].
+	| size maxSize |
+	(self pluralNameBlock value: aString) ifNotNil: [ :result | ^ result ].
+	maxSize := self pluralNames keys max: #size.
 	size := aString size.
-	1 to: size do:
-		[ :i | 
-		(self pluralNames
-			at: (aString copyFrom: size - i + 1 to: size)
-			ifAbsent: [ nil ])
-			ifNotNil: [ :ending | ^ (aString copyFrom: 1 to: size - i) , ending ] ].
+	maxSize
+		to: 1
+		by: -1
+		do: [ :i | 
+			(self pluralNames
+				at: (aString copyFrom: size - i + 1 to: size)
+				ifAbsent: [ nil ])
+				ifNotNil: [ :ending | ^ (aString copyFrom: 1 to: size - i) , ending ] ].
 	^ aString copyWith: $s
 ]
 
@@ -67,6 +69,7 @@ SmaCCVariableDefinition class >> pluralNames [
 			[ PluralNames := Dictionary new.
 			PluralNames
 				at: 's' put: 'ses';
+				at: 'ey' put: 'eys';
 				at: 'y' put: 'ies';
 				at: 'x' put: 'xes';
 				at: 'ch' put: 'ches' ].
