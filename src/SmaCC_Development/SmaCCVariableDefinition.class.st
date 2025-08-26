@@ -49,8 +49,8 @@ SmaCCVariableDefinition class >> pluralNameBlock: aBlock [
 SmaCCVariableDefinition class >> pluralNameFor: aString [
 	| size maxSize |
 	(self pluralNameBlock value: aString) ifNotNil: [ :result | ^ result ].
-	maxSize := self pluralNames keys max: #size.
 	size := aString size.
+	maxSize := (self pluralNames keys max: #size) min: size.
 	maxSize
 		to: 1
 		by: -1

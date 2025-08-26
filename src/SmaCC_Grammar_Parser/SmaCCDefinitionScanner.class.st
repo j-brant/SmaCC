@@ -57,6 +57,17 @@ SmaCCDefinitionScanner >> codeId [
 	^ 33
 ]
 
+{ #category : #'token-actions' }
+SmaCCDefinitionScanner >> conditionCode [
+	| code |
+	code := ''.
+	[ code := code , (stream upToAll: ']]').
+	self canParse: code ]
+		whileFalse: [ stream atEnd ifTrue: [ ^ self scannerError ].
+			code := code , ']]' ].
+	^ self createTokenFor: '[[' , code , ']]'
+]
+
 { #category : #generated }
 SmaCCDefinitionScanner >> directiveId [
 	^ 37
@@ -64,12 +75,12 @@ SmaCCDefinitionScanner >> directiveId [
 
 { #category : #generated }
 SmaCCDefinitionScanner >> emptySymbolTokenId [
-	^ 106
+	^ 107
 ]
 
 { #category : #generated }
 SmaCCDefinitionScanner >> errorTokenId [
-	^ 107
+	^ 108
 ]
 
 { #category : #'token-actions' }
@@ -200,9 +211,9 @@ SmaCCDefinitionScanner >> scan10X2 [
 { #category : #generated }
 SmaCCDefinitionScanner >> scan10X3 [
 	self step.
-	currentCharacter == $\
-		ifTrue: [ ^ self scan12 ].
-	(currentCharacter <= $[ or: [ currentCharacter >= $^ ])
+	currentCharacter == $[ ifTrue: [ ^ self recordAndReportMatch: #(48) ].
+	currentCharacter == $\ ifTrue: [ ^ self scan12 ].
+	(currentCharacter <= $Z or: [ currentCharacter >= $^ ])
 		ifTrue: [ ^ self scan11 ].
 	^ self reportLastMatch
 ]
@@ -244,8 +255,8 @@ SmaCCDefinitionScanner >> scan10X6 [
 SmaCCDefinitionScanner >> scan10X7 [
 	[ self recordMatch: #(27).
 	self step.
-	currentCharacter isSeparator
-		or: [ currentCharacter == Character pageUp ] ] whileTrue.
+	currentCharacter isSeparator or: [ currentCharacter == Character pageUp ] ]
+		whileTrue.
 	^ self reportLastMatch
 ]
 
@@ -270,7 +281,8 @@ SmaCCDefinitionScanner >> scan11 [
 	[ self step.
 	currentCharacter == $\ ifTrue: [ ^ self scan12 ].
 	currentCharacter == $] ifTrue: [ ^ self recordAndReportMatch: #(40) ].
-	true ] whileTrue
+	currentCharacter <= $Z or: [ currentCharacter >= $^ ] ] whileTrue.
+	^ self reportLastMatch
 ]
 
 { #category : #generated }
@@ -278,15 +290,13 @@ SmaCCDefinitionScanner >> scan12 [
 	self step.
 	currentCharacter == $c
 		ifTrue: [ self step.
-			(currentCharacter between: $A and: $Z)
-				ifTrue: [ ^ self scan11 ].
+			(currentCharacter between: $A and: $Z) ifTrue: [ ^ self scan11 ].
 			^ self reportLastMatch ].
 	currentCharacter == $x
 		ifTrue: [ self step.
 			(currentCharacter isDigit
 				or: [ (currentCharacter between: $A and: $F)
-						or: [ currentCharacter between: $a and: $f ] ])
-				ifTrue: [ ^ self scan11 ].
+						or: [ currentCharacter between: $a and: $f ] ]) ifTrue: [ ^ self scan11 ].
 			^ self reportLastMatch ].
 	^ self scan11
 ]
@@ -348,8 +358,7 @@ SmaCCDefinitionScanner >> scan8 [
 	currentCharacter == $"
 		ifTrue: [ self recordMatch: #(30).
 			self step.
-			currentCharacter == $"
-				ifTrue: [ ^ self scan8 ].
+			currentCharacter == $" ifTrue: [ ^ self scan8 ].
 			^ self reportLastMatch ].
 	true ] whileTrue
 ]
@@ -393,8 +402,8 @@ SmaCCDefinitionScanner >> scan9X2 [
 SmaCCDefinitionScanner >> scan9X3 [
 	[ self recordMatch: #(27).
 	self step.
-	currentCharacter isSeparator
-		or: [ currentCharacter == Character pageUp ] ] whileTrue.
+	currentCharacter isSeparator or: [ currentCharacter == Character pageUp ] ]
+		whileTrue.
 	^ self reportLastMatch
 ]
 
@@ -410,8 +419,7 @@ SmaCCDefinitionScanner >> scan9X4 [
 SmaCCDefinitionScanner >> scan9X5 [
 	[ self recordMatch: #(29).
 	self step.
-	currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ]
-		whileTrue
+	currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue
 ]
 
 { #category : #generated }
@@ -441,16 +449,10 @@ SmaCCDefinitionScanner >> scan9X7 [
 
 { #category : #generated }
 SmaCCDefinitionScanner >> scanForToken [
-	scope == #parser
-		ifTrue: [ ^ self scan9 ].
-	scope == #directives
-		ifTrue:
-			[ ^ self scanForTokenX2 ].
-	scope == #default
-		ifTrue:
-			[ ^ self scanForTokenX1 ].
-	scope == #scanner
-		ifTrue: [ ^ self scan10 ].
+	scope == #parser ifTrue: [ ^ self scan9 ].
+	scope == #directives ifTrue: [ ^ self scanForTokenX2 ].
+	scope == #default ifTrue: [ ^ self scanForTokenX1 ].
+	scope == #scanner ifTrue: [ ^ self scan10 ].
 	^ self reportLastMatch
 ]
 
@@ -576,7 +578,7 @@ SmaCCDefinitionScanner >> symbolnameId [
 
 { #category : #generated }
 SmaCCDefinitionScanner >> tokenActions [
-	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace nil nil nil nil #comment #code #immediateCode nil nil nil nil nil nil nil nil nil nil nil nil #patternToken)
+	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace nil nil nil nil #comment #code #immediateCode nil nil nil nil nil nil nil nil nil nil nil nil #patternToken #conditionCode)
 ]
 
 { #category : #generated }

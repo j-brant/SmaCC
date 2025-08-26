@@ -74,18 +74,15 @@ SmaCCNode >> actionForSpecificRegularExpression: aSmaCCRegularExpression [
 
 { #category : #accessing }
 SmaCCNode >> addActions: aCollection [
-	aCollection isNil
-		ifTrue: [ ^ self ].
+	(aCollection isNil or: [ action isSymbol ]) ifTrue: [ ^ self ].
 	action isNil
-		ifTrue: [ ^ action := aCollection copy ].
-	action isSymbol
-		ifTrue: [ ^ self ].
-	aCollection isSymbol
-		ifTrue: [ ^ action := aCollection ].
-	aCollection
-		do: [ :each | 
-			(action includes: each)
-				ifFalse: [ action add: each ] ]
+		ifTrue: [ action := aCollection copy ]
+		ifFalse: [ aCollection isSymbol
+				ifTrue: [ action := aCollection ]
+				ifFalse: [ aCollection
+						do: [ :each | (action includes: each) ifFalse: [ action add: each ] ] ] ].
+	transitions
+		do: [ :each | each isConditionEdge ifTrue: [ each to addActions: action ] ]
 ]
 
 { #category : #edges }
@@ -97,6 +94,12 @@ SmaCCNode >> addEdgeTo: aSmaCCNode [
 SmaCCNode >> addEdgeTo: aSmaCCNode onCharacters: characterCollection [
 	transitions
 		add: (SmaCCCharacterEdge to: aSmaCCNode on: characterCollection)
+]
+
+{ #category : #edges }
+SmaCCNode >> addEdgeTo: aSmaCCNode onConditions: stringCollection [
+	aSmaCCNode addActions: action.
+	transitions add: (SmaCCConditionEdge to: aSmaCCNode on: stringCollection)
 ]
 
 { #category : #edges }
