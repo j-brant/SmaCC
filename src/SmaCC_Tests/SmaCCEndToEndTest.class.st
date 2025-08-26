@@ -2298,6 +2298,43 @@ SmaCCEndToEndTest >> testScanForString [
 	self assert: (self parserClass parse: 'return@') not
 ]
 
+{ #category : #public }
+SmaCCEndToEndTest >> testScannerConditions [
+	| compiler tokens |
+	(compiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	compiler
+		buildDefinition: '%id <a1> <a2> <a> <ab>;
+			<a1> : a [[self position = 1]];
+			<a2> : a [[self position = 2]];
+			<a> : a;
+			<ab> : ab;
+			A : <a1> <a2> (<a>|<ab>);'.
+	compiler compileInto: 'TestScanner' andParser: 'TestParser'.
+	
+	tokens := self parserClass parse: 'aaa'.
+	self assert: tokens size equals: 3.
+	self assert: tokens first ids first equals: self scannerClass basicNew a1Id.
+	self assert: tokens first ids second equals: self scannerClass basicNew aId.
+	self assert: tokens first ids size equals: 2.
+	self assert: tokens second ids first equals: self scannerClass basicNew a2Id.
+	self assert: tokens second ids second equals: self scannerClass basicNew aId.
+	self assert: tokens second ids size equals: 2.
+	self assert: tokens third ids first equals: self scannerClass basicNew aId.
+	self assert: tokens third ids size equals: 1.
+	
+	tokens := self parserClass parse: 'aaab'.
+	self assert: tokens size equals: 3.
+	self assert: tokens first ids first equals: self scannerClass basicNew a1Id.
+	self assert: tokens first ids second equals: self scannerClass basicNew aId.
+	self assert: tokens first ids size equals: 2.
+	self assert: tokens second ids first equals: self scannerClass basicNew a2Id.
+	self assert: tokens second ids second equals: self scannerClass basicNew aId.
+	self assert: tokens second ids size equals: 2.
+	self assert: tokens third ids first equals: self scannerClass basicNew abId.
+	self assert: tokens third ids size equals: 1
+]
+
 { #category : #tests }
 SmaCCEndToEndTest >> testScannerScopes [
 	| parserCompiler parser |

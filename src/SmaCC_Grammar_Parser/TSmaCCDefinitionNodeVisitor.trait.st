@@ -46,6 +46,11 @@ TSmaCCDefinitionNodeVisitor >> visitConcatenationRegex: aConcatenationRegex [
 ]
 
 { #category : #generated }
+TSmaCCDefinitionNodeVisitor >> visitConditionRegex: aConditionRegex [
+	^ self visitRegex: aConditionRegex
+]
+
+{ #category : #generated }
 TSmaCCDefinitionNodeVisitor >> visitDefinition: aDefinition [
 	^ self visitSmaCCParseNode: aDefinition
 ]

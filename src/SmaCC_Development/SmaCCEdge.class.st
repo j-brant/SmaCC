@@ -85,6 +85,11 @@ SmaCCEdge >> isCharacterTransition [
 ]
 
 { #category : #testing }
+SmaCCEdge >> isConditionEdge [
+	^ false
+]
+
+{ #category : #testing }
 SmaCCEdge >> isEmpty [
 	^ transitionObjects isEmpty
 ]

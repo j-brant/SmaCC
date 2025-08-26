@@ -129,6 +129,24 @@ SmaCCCodeGenerator >> acceptCharacterEdge: aSmaCCCharacterEdge seen: aCollection
 ]
 
 { #category : #'compiling-scanner' }
+SmaCCCodeGenerator >> acceptConditionEdge: aSmaCCCharacterEdge [
+	| stream |
+	stream := WriteStream with: String new.
+	aSmaCCCharacterEdge transitionObjects size > 1 ifTrue: [ stream nextPut: $( ].
+	aSmaCCCharacterEdge transitionObjects
+		do: [ :each | 
+			stream
+				nextPut: $(;
+				nextPutAll: each;
+				nextPut: $) ]
+		separatedBy: [ stream nextPutAll: ' or: [' ].
+	aSmaCCCharacterEdge transitionObjects size > 1
+		ifTrue: [ stream next: aSmaCCCharacterEdge transitionObjects size - 1 putAll: $].
+			stream nextPut: $) ].
+	^ stream contents
+]
+
+{ #category : #'compiling-scanner' }
 SmaCCCodeGenerator >> acceptStateEdge: aSmaCCStateEdge [
 	self subclassResponsibility
 ]
@@ -210,15 +228,19 @@ SmaCCCodeGenerator >> argumentIndex: anInteger subIndex: subIndex [
 
 { #category : #'compiling-scanner' }
 SmaCCCodeGenerator >> asStatement: methodMap forNode: aSmaCCNode lastNeedsReturn: aBoolean [
-	| transitions seen |
+	| transitions seen seenCharacter |
 	aSmaCCNode hasSimpleLoop ifTrue: [ self nextPutLine: self startDoWhileLoop ].
 	self writeMatchingCodeFor: aSmaCCNode.
 	transitions := self sortedTransitionsForNode: aSmaCCNode.
 	seen := (transitions notEmpty
 			ifTrue: [ transitions first setClass ]
 			ifFalse: [ Set ]) new.
+	seenCharacter := false.
 	transitions
 		do: [ :each | 
+			(seenCharacter not and: [ each isCharacterTransition ])
+				ifTrue: [ seenCharacter := true.
+					self nextPutLine: 'self step.' ].
 			each to = aSmaCCNode
 				ifTrue: [ self
 						nextPutStatement: (self endDoWhileLoopWithClause: (each dispatchTo: self seen: seen)) ]
@@ -1319,21 +1341,20 @@ SmaCCCodeGenerator >> singleVariableCollectionFor: reduceCode [
 { #category : #'compiling-scanner' }
 SmaCCCodeGenerator >> sortedTransitionsForNode: aSmaCCNode [
 	^ aSmaCCNode transitions
-		asSortedCollection:
-			[ :a :b | 
-			a isCharacterTransition
-				and:
-					[ b isCharacterTransition not
-						or:
-							[ | aPairs bPairs |
+		asSortedCollection: [ :a :b | 
+			a class = b class
+				ifTrue: [ a isCharacterTransition
+						ifTrue: [ | aPairs bPairs |
 							aPairs := self minMaxPairsFor: a transitionObjects without: #().
 							bPairs := self minMaxPairsFor: b transitionObjects without: #().
 							aPairs size < bPairs size
-								or:
-									[ aPairs size = bPairs size
-										and:
-											[ a transitionObjects size < b transitionObjects size
-												or: [ a transitionObjects size = b transitionObjects size and: [ a <= b ] ] ] ] ] ] ]
+								or: [ aPairs size = bPairs size
+										and: [ a transitionObjects size < b transitionObjects size
+												or: [ a transitionObjects size = b transitionObjects size and: [ a <= b ] ] ] ] ]
+						ifFalse: [ a transitionObjects first <= b transitionObjects first ] ]
+				ifFalse: [ a isConditionEdge
+						or: [ b isConditionEdge not
+								or: [ b isCharacterTransition or: [ a isCharacterTransition not ] ] ] ] ]
 ]
 
 { #category : #'compiling-scanner' }
