@@ -214,6 +214,8 @@ SmaCCGrammarCreator >> visitFlagDirective: aFlagDirective [
 	name := aFlagDirective typeToken value.
 	name = 'glr'
 		ifTrue: [ ^ grammar isGLR: true ].
+	name = 'nfa'
+		ifTrue: [ ^ grammar useNFA: true ].
 	name = 'ignorecase'
 		ifTrue: [ ^ grammar ignoreCase: true ].
 	name = 'annotate_tokens'

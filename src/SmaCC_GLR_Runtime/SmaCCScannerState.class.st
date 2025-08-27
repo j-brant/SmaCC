@@ -11,7 +11,8 @@ Class {
 	#instVars : [
 		'position',
 		'scope',
-		'attributes'
+		'attributes',
+		'scopeStack'
 	],
 	#category : #'SmaCC_GLR_Runtime'
 }
@@ -26,7 +27,11 @@ SmaCCScannerState class >> position: anInteger scope: aSymbol [
 
 { #category : #comparing }
 SmaCCScannerState >> = anObject [
-	^ self class = anObject class and: [ self position = anObject position and: [ self scope = anObject scope ] ]
+	^ self class = anObject class
+		and: [ self position = anObject position
+				and: [ self scope = anObject scope
+						and: [ self scopeStack == anObject scopeStack
+								or: [ self scopeStack = anObject scopeStack	"Only need #=, but optimize to not check whole stack if are #==" ] ] ] ]
 ]
 
 { #category : #accessing }
@@ -69,4 +74,14 @@ SmaCCScannerState >> scope [
 { #category : #accessing }
 SmaCCScannerState >> scope: aSymbol [
 	scope := aSymbol
+]
+
+{ #category : #accessing }
+SmaCCScannerState >> scopeStack [
+	^ scopeStack
+]
+
+{ #category : #accessing }
+SmaCCScannerState >> scopeStack: anObject [
+	scopeStack := anObject
 ]

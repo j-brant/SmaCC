@@ -1,1 +1,216 @@
-Parser: Antlr4Parser#convertString: aString allowRange: aBoolean	| stream inStream |	inStream := ReadStream on: aString.	stream := WriteStream on: String new.	[ inStream atEnd ]		whileFalse: [ | each |			each := inStream next.			(each isAlphaNumeric or: [ each = $_ or: [ aBoolean and: [ each = $- ] ] ])				ifTrue: [ stream nextPut: each ]				ifFalse: [ each = $\						ifTrue: [ each := inStream next.							each = $u								ifTrue: [ stream										nextPutAll: '\x';										nextPutAll: (inStream next: 4) ]								ifFalse: [ stream										nextPut: $\;										nextPut: each ] ]						ifFalse: [ stream								nextPut: $\;								nextPut: each ] ] ].	^ stream contents!#convertStringToken: aToken	^ self convertString: (aToken value copyFrom: 2 to: aToken value size - 1) allowRange: false!#convertToBlock: aNode	(aNode isKindOf: Antlr4SetElementNode)		ifTrue: [ ^ self convertStringToken: aNode value ].	(aNode isKindOf: Antlr4BlockSetNode)		ifTrue: [ ^ aNode expressions inject: '' into: [ :sum :each | sum , (self convertToBlock: each) ] ].	(aNode isKindOf: Antlr4LexerCharSetNode)		ifTrue: [ ^ self convertString: aNode charSet value allowRange: true ].	(aNode isKindOf: Antlr4CharacterRangeNode)		ifTrue: [ ^ (self convertStringToken: aNode from) , '-' , (self convertStringToken: aNode to) ].	self halt!"grammar type"Antlr4GrammarSpecNode->[| glr |glr := (match grammarTypeToken notNil	and: [ match grammarTypeToken value = 'lexer' ])	ifTrue: [ '' ]	ifFalse: [ '%glr;' , String cr ].self	insert: glr , '/*'		before: (match grammarTypeToken ifNil: [ match grammarToken ]);	insert: '*/' after: match semicolon.self continue]"convert comments"Antlr4GrammarSpecNode->[self continue.match comments	do: [ :each | 		(self sourceFrom: each first to: each first + 1) = '//'			ifTrue: [ self replaceFrom: each first to: each first + 1 with: '#' ] ]]>>>EOF<<<->>>><<<"lexer rule"Antlr4LexerRuleSpecNode->[self insert: #('<' '>') around: match nameToken.self deleteWithWhitespaceAfter: match modifier.self continue]"lexer reference name"Antlr4ReferenceTerminalNode->[self insert: #('<' '>') around: match nameToken.self continue]"lexer command"Antlr4LexerCommandsNode->[self insert: #('/* TODO: ' '*/') around: match]"parser string"Antlr4StringTerminalNode[(match parentOfType: Antlr4ParserRuleSpecNode) notNil]->[| newValue |newValue := '"' , (match value value copyFrom: 2 to: match value value size - 1) , '"'.self replace: match with: newValue]"lexer string"Antlr4StringTerminalNode[(match parentOfType: Antlr4LexerRuleSpecNode) notNil]->[self replace: match with: (self convertStringToken: match value)]"character range"Antlr4CharacterRangeNode->[self	replace: match	with:		'[' , (self convertStringToken: match from) , '-'			, (self convertStringToken: match to) , ']']Antlr4ElementOptionsNode->[self insert: #('/* TODO: ' '*/') around: match]Antlr4ChannelsSpecNode->[self insert: #('/* TODO: ' '*/') around: match]Antlr4ActionNode->[self insert: #('/* TODO: ' '*/') around: match]Antlr4ActionBlockNode->[self insert: #('/* TODO: ' '*/') around: match]Antlr4ModeSpecNode->[self deleteFrom: match modeToken to: match semicolon.self continue.match lexerRules do: [ :each | self insert: match nameToken value , ' ' before: each ]]Antlr4ElementNode->[self insert: '/* TODO: ' before: match nameToken.self insert: ' */' after: match equal.self continue]Antlr4TokensSpecNode->[self replace: match tokensToken with: '%id'.self delete: match leftBrace.self deleteAll: match commas.self replace: match rightBrace with: ';'.match nameTokens do: [ :each | self insert: #('<' '>') around: each ].self continue]"import lexer"Antlr4OptionsSpecNode[match options anySatisfy: [ :each | each nameToken value = 'tokenVocab' ]]->[| option filename node engine |option := match options	detect: [ :each | each nameToken value = 'tokenVocab' ].filename := match topParent filename.filename notNil	ifTrue: [ filename := filename asFileReference parent			/ (option value source , '.g4').		filename exists			ifTrue: [ node := [ Antlr4Parser parseFile: filename ]					on: SmaCCParserError					do: [ :ex | ex return: nil ].				node notNil					ifTrue: [ engine := SmaCCRewriteEngine new.						engine rewriteRule: rewriteEngine rewriteRule copy.						engine properties: rewriteEngine properties.						^ self replace: match with: ( engine rewriteTree: node ) ] ] ].self continue]Antlr4OptionsSpecNode->[self insert: #('/* TODO: ' ' */') around: match]Antlr4NotSetNode->[self replace: match with: '[^' , (self convertToBlock: match expression) , ']']Antlr4LexerCharSetNode->[self replace: match charSet with: (self convertString: match charSet value allowRange: true)]Antlr4EbnfSuffixNode[match nonGreedyToken notNil]->[self insert: #('/* TODO: ' ' */') around: match nonGreedyToken.self continue]Antlr4BlockNode[match colon notNil]->[self insert: #('/* TODO: ' ' */') around: match colon.self continue]
+Parser: Antlr4Parser
+
+#convertString: aString allowRange: aBoolean
+	| stream inStream |
+	inStream := ReadStream on: aString.
+	stream := WriteStream on: String new.
+	[ inStream atEnd ]
+		whileFalse: [ | each |
+			each := inStream next.
+			(each isAlphaNumeric
+				or: [ each = $_ or: [ aBoolean and: [ each = $- and: [ inStream atEnd not ] ] ] ])
+				ifTrue: [ stream nextPut: each ]
+				ifFalse: [ each = $\
+						ifTrue: [ each := inStream next.
+							each = $u
+								ifTrue: [ stream
+										nextPutAll: '\x';
+										nextPutAll: (inStream next: 4) ]
+								ifFalse: [ stream
+										nextPut: $\;
+										nextPut: each ] ]
+						ifFalse: [ stream
+								nextPut: $\;
+								nextPut: each ] ] ].
+	^ stream contents!
+
+#convertStringToken: aToken
+	^ self convertString: (aToken value copyFrom: 2 to: aToken value size - 1) allowRange: false!
+
+#convertToBlock: aNode
+	(aNode isKindOf: Antlr4SetElementNode)
+		ifTrue: [ ^ self convertStringToken: aNode value ].
+	(aNode isKindOf: Antlr4BlockSetNode)
+		ifTrue: [ ^ aNode expressions
+				inject: ''
+				into: [ :sum :each | sum , (self convertToBlock: each) ] ].
+	(aNode isKindOf: Antlr4LexerCharSetNode)
+		ifTrue: [ ^ self convertString: aNode charSet value allowRange: true ].
+	(aNode isKindOf: Antlr4CharacterRangeNode)
+		ifTrue: [ ^ (self convertStringToken: aNode from) , '-'
+				, (self convertStringToken: aNode to) ].
+	self halt!
+
+"grammar type"
+Antlr4GrammarSpecNode
+->
+[| glr |
+glr := (match grammarTypeToken notNil
+	and: [ match grammarTypeToken value = 'lexer' ])
+	ifTrue: [ '' ]
+	ifFalse: [ '%glr;' , String cr ].
+self
+	insert: glr , '/*'
+		before: (match grammarTypeToken ifNil: [ match grammarToken ]);
+	insert: '*/' after: match semicolon.
+self continue]
+
+"convert comments"
+Antlr4GrammarSpecNode
+->
+[self continue.
+match comments
+	do: [ :each | 
+		(self sourceFrom: each first to: each first + 1) = '//'
+			ifTrue: [ self replaceFrom: each first to: each first + 1 with: '#' ] ]]
+
+>>>EOF<<<
+->
+>>><<<
+
+"lexer rule"
+Antlr4LexerRuleSpecNode
+->
+[self insert: #('<' '>') around: match nameToken.
+self deleteWithWhitespaceAfter: match modifier.
+self continue]
+
+"lexer reference name"
+Antlr4ReferenceTerminalNode
+->
+[self insert: #('<' '>') around: match nameToken.
+self continue]
+
+"lexer command"
+Antlr4LexerCommandsNode
+->
+[self insert: #('/* TODO: ' '*/') around: match]
+
+"parser string"
+Antlr4StringTerminalNode
+[(match parentOfType: Antlr4ParserRuleSpecNode) notNil]
+->
+[| newValue |
+newValue := '"' , (match value value copyFrom: 2 to: match value value size - 1) , '"'.
+self replace: match with: newValue]
+
+"lexer string"
+Antlr4StringTerminalNode
+[(match parentOfType: Antlr4LexerRuleSpecNode) notNil]
+->
+[self replace: match with: (self convertStringToken: match value)]
+
+"character range"
+Antlr4CharacterRangeNode
+->
+[self
+	replace: match
+	with:
+		'[' , (self convertStringToken: match from) , '-'
+			, (self convertStringToken: match to) , ']']
+
+Antlr4ElementOptionsNode
+->
+[self insert: #('/* TODO: ' '*/') around: match]
+
+Antlr4ChannelsSpecNode
+->
+[self insert: #('/* TODO: ' '*/') around: match]
+
+Antlr4ActionNode
+->
+[self insert: #('/* TODO: ' '*/') around: match]
+
+"scanner conditions"
+Antlr4ActionBlockNode
+[(match parent isKindOf: Antlr4LexerElementNode) and: [match parent questionMark notNil]]
+->
+[| newSource ast engine oldSource |
+newSource := SmaCCString on: match actionBlock source.
+ast := JavaParser
+		parse: newSource
+		startingAt: JavaParser startingStateForexpression.
+engine := self rewriteEngine copy.
+oldSource := self rewriteEngine source.
+engine source: newSource.
+self rewriteEngine source: engine source.
+[ engine rewriteNode: ast.
+newSource := self rewriteEngine source asString ]
+	ensure: [ self rewriteEngine source: oldSource ].
+self delete: match parent questionMark.
+self replace: match leftBrace with: '[['.
+self replace: match rightBrace with: ']]'.
+self replace: match actionBlock with: newSource asString]
+
+Antlr4ActionBlockNode
+->
+[self insert: #('/* TODO: ' '*/') around: match]
+
+Antlr4ModeSpecNode
+->
+[self deleteFrom: match modeToken to: match semicolon.
+self continue.
+match lexerRules do: [ :each | self insert: match nameToken value , ' ' before: each ]]
+
+Antlr4ElementNode
+->
+[self insert: '/* TODO: ' before: match nameToken.
+self insert: ' */' after: match equal.
+self continue]
+
+Antlr4TokensSpecNode
+->
+[self replace: match tokensToken with: '%id'.
+self delete: match leftBrace.
+self deleteAll: match commas.
+self replace: match rightBrace with: ';'.
+match nameTokens do: [ :each | self insert: #('<' '>') around: each ].
+self continue]
+
+"import lexer"
+Antlr4OptionsSpecNode
+[match options anySatisfy: [ :each | each nameToken value = 'tokenVocab' ]]
+->
+[| option filename node engine |
+option := match options
+	detect: [ :each | each nameToken value = 'tokenVocab' ].
+filename := match topParent filename.
+filename notNil
+	ifTrue: [ filename := filename asFileReference parent
+			/ (option value source , '.g4').
+		filename exists
+			ifTrue: [ node := [ Antlr4Parser parseFile: filename ]
+					on: SmaCCParserError
+					do: [ :ex | ex return: nil ].
+				node notNil
+					ifTrue: [ engine := SmaCCRewriteEngine new.
+						engine rewriteRule: rewriteEngine rewriteRule copy.
+						engine properties: rewriteEngine properties.
+						^ self replace: match with: ( engine rewriteTree: node ) ] ] ].
+self continue]
+
+Antlr4OptionsSpecNode
+->
+[self insert: #('/* TODO: ' ' */') around: match]
+
+Antlr4NotSetNode
+->
+[self replace: match with: '[^' , (self convertToBlock: match expression) , ']']
+
+Antlr4LexerCharSetNode
+->
+[self replace: match charSet with: (self convertString: match charSet value allowRange: true)]
+
+Antlr4EbnfSuffixNode
+[match nonGreedyToken notNil]
+->
+[self insert: #('/* TODO: ' ' */') around: match nonGreedyToken.
+self continue]
+
+Antlr4BlockNode
+[match colon notNil]
+->
+[self insert: #('/* TODO: ' ' */') around: match colon.
+self continue]
+
+Import: 'java expressions.rw'

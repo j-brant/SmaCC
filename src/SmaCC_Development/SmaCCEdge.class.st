@@ -99,6 +99,11 @@ SmaCCEdge >> isEpsilonTransition [
 	^ transitionObjects isNil
 ]
 
+{ #category : #testing }
+SmaCCEdge >> isStateEdge [
+	^ false
+]
+
 { #category : #merging }
 SmaCCEdge >> mergeWith: aSmaCCEdge [
 	transitionObjects := Array

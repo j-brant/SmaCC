@@ -1,0 +1,66 @@
+Parser: JavaParser
+
+expression
+>>>_modeStack.contains(`var`)<<<
+->
+>>>(self scopeStack includes: #`var`)<<<
+
+expression
+>>>_input.LA(`value`)<<<
+->
+>>>(self peekAhead: `value`)<<<
+
+expression
+>>>_modeStack.peek()==`var`<<<
+->
+>>>self scopeStack nextLink value = #`var`<<<
+
+expression
+>>>_modeStack.peek()!=`var`<<<
+->
+>>>self scopeStack nextLink value ~= #`var`<<<
+
+expression
+>>>!`var`<<<
+->
+>>>(`var`) not<<<
+
+expression
+>>>'\r'<<<
+->
+>>>Character cr<<<
+
+expression
+>>>'\n'<<<
+->
+>>>Character lf<<<
+
+JavaCharacterLiteralNode
+->
+[self replace: match token with: '$' , match token source second asString]
+
+JavaMethodInvocationNode
+->
+[match name source = 'getCharPositionInLine'
+	ifTrue: [ ^ match receiver isNil
+			ifTrue: [ self replace: match with: 'self columnPosition' ]
+			ifFalse: [ self processChild: match receiver.
+				self replace: match period with: ' '.
+				self replace: match name with: 'columnPosition' ] ].
+self continue]
+
+JavaBinaryExpressionNode
+->
+[self processChildren.
+self deleteAll: match _leftParens.
+self deleteAll: match _rightParens.
+match op source = '&&'
+	ifTrue: [ self insert: '(' before: match.
+		self replace: match op with: 'and: ['.
+		^ self insert: '])' after: match ].
+match op source = '||'
+	ifTrue: [ self insert: '(' before: match.
+		self replace: match op with: 'or: ['.
+		^ self insert: '])' after: match ].
+match op source = '!=' ifTrue: [ self replace: match op with: '~=' ].
+self insert: #('(' ')') around: match]

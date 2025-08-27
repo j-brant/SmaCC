@@ -37,7 +37,8 @@ Class {
 		'lastMatchWasEmpty',
 		'returnMatchBlock',
 		'scope',
-		'comments'
+		'comments',
+		'scopeStack'
 	],
 	#classInstVars : [
 		'keywordMap'
@@ -134,6 +135,11 @@ SmaCCScanner >> contents [
 			token notNil
 				ifTrue: [ writeStream nextPut: token ] ].
 	^ writeStream contents
+]
+
+{ #category : #accessing }
+SmaCCScanner >> createToken [
+	^ self createTokenFor: outputStream contents
 ]
 
 { #category : #private }
@@ -248,6 +254,13 @@ SmaCCScanner >> patternToken [
 ]
 
 { #category : #accessing }
+SmaCCScanner >> peekAhead: anInteger [
+	^ anInteger < 0
+		ifTrue: [ self peekAt: self position + anInteger ]
+		ifFalse: [ self peekAt: self position + anInteger - 1 ]
+]
+
+{ #category : #accessing }
 SmaCCScanner >> peekAt: anInteger [
 	| position |
 	position := stream position.
@@ -261,6 +274,12 @@ SmaCCScanner >> peekCharacter [
 ]
 
 { #category : #accessing }
+SmaCCScanner >> popScope [
+	scopeStack := self scopeStack nextLink.
+	self scope: (scopeStack ifNil: [ #default ] ifNotNil: [ scopeStack value ])
+]
+
+{ #category : #accessing }
 SmaCCScanner >> position [
 	^ stream position
 ]
@@ -268,6 +287,12 @@ SmaCCScanner >> position [
 { #category : #accessing }
 SmaCCScanner >> position: anInteger [
 	^ stream position: anInteger
+]
+
+{ #category : #accessing }
+SmaCCScanner >> pushScope: aSymbol [
+	scopeStack := self scopeStack asLinkPrepend: aSymbol.
+	self scope: aSymbol
 ]
 
 { #category : #private }
@@ -365,7 +390,18 @@ SmaCCScanner >> scope [
 
 { #category : #accessing }
 SmaCCScanner >> scope: aSymbol [
-	scope := aSymbol
+	scope := aSymbol.
+	scopeStack ifNotNil: [ scopeStack value: aSymbol ]
+]
+
+{ #category : #accessing }
+SmaCCScanner >> scopeStack [
+	^ scopeStack ifNil: [ scopeStack := self scope asLink ]
+]
+
+{ #category : #accessing }
+SmaCCScanner >> scopeStack: anObject [
+	scopeStack := anObject
 ]
 
 { #category : #accessing }

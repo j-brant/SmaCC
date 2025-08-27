@@ -19,7 +19,8 @@ Class {
 		'emptySymbol',
 		'sentinelSymbol',
 		'ignoredVariableWarnings',
-		'scannerSymbols'
+		'scannerSymbols',
+		'useNFA'
 	],
 	#classVars : [
 		'IsExpressionMap',
@@ -389,6 +390,7 @@ SmaCCGrammar >> initialize [
 	classDefinitions := Dictionary new.
 	prefix := suffix := ''.
 	isGLR := false.
+	useNFA := false.
 	ignoreCase := false.
 	ignoredVariables := Set new.
 	annotateTokens := false
@@ -679,4 +681,14 @@ SmaCCGrammar >> unusedSymbols [
 								ifTrue: [ todo add: each.
 									problemSymbols remove: each ] ] ] ].
 	^ problemSymbols
+]
+
+{ #category : #accessing }
+SmaCCGrammar >> useNFA [
+	^ useNFA
+]
+
+{ #category : #accessing }
+SmaCCGrammar >> useNFA: aBoolean [
+	useNFA := aBoolean
 ]

@@ -83,6 +83,11 @@ SmaCCRegularExpressionNode >> asNFAStartingWith: aSmaCCNode [
 	^ self subclassResponsibility
 ]
 
+{ #category : #testing }
+SmaCCRegularExpressionNode >> canBeEmpty [
+	^ false
+]
+
 { #category : #'initialize-release' }
 SmaCCRegularExpressionNode >> initialize [
 	super initialize.

@@ -423,6 +423,14 @@ SmaCCSmalltalkCodeGenerator >> compileOptimizedMethodIn: modelClass [
 	self compileScannerTree: tree into: modelClass
 ]
 
+{ #category : #'compiling-scanner' }
+SmaCCSmalltalkCodeGenerator >> compileParserClass [
+	scannerClass classSide
+		compile: 'parserClass
+	^' , self parserClass name
+		classified: #generated
+]
+
 { #category : #'compiling-parser' }
 SmaCCSmalltalkCodeGenerator >> compileScannerClassIntoParser [
 	| stream |
@@ -1173,15 +1181,15 @@ SmaCCSmalltalkCodeGenerator >> scannerClass [
 
 { #category : #accessing }
 SmaCCSmalltalkCodeGenerator >> scannerClass: aClassOrString [
+	| superclass |
 	(aClassOrString isKindOf: Behavior)
 		ifTrue: [ scannerClass := model classFor: aClassOrString ]
-		ifFalse:
-			[ scannerClass := model classNamed: aClassOrString asSymbol.
-			scannerClass isNil
-				ifTrue:
-					[ scannerClass := self
-						defineClass: aClassOrString
-						asSubclassOf: SmaCCScanner ] ]
+		ifFalse: [ scannerClass := model classNamed: aClassOrString asSymbol ].
+	superclass := grammar useNFA
+			ifTrue: [ model classNamed: #SmaCCNFAScanner ]
+			ifFalse: [ model classFor: SmaCCScanner ].
+	(scannerClass isNil or: [ (scannerClass includesClass: superclass) not ])
+		ifTrue: [ scannerClass := self defineClass: aClassOrString asSubclassOf: superclass ]
 ]
 
 { #category : #accessing }

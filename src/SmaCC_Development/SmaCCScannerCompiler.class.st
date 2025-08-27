@@ -107,14 +107,19 @@ SmaCCScannerCompiler >> combinedRegexes [
 { #category : #'compiling-scanner' }
 SmaCCScannerCompiler >> compileMethodsFor: regex [
 	| keywordmap dfa selectorMap |
-	dfa := regex ifNil: [ SmaCCNode new ] ifNotNil: [ regex asDFA ].
 	selectorMap := self computeSelectorMap.
-	keywordmap := self computeKeywordMapFor: dfa.
+	grammar useNFA
+		ifTrue: [ keywordmap := Dictionary new.
+			codeGenerator compileParserClass ]
+		ifFalse: [ dfa := regex ifNil: [ SmaCCNode new ] ifNotNil: [ regex asDFA ].
+			keywordmap := self computeKeywordMapFor: dfa.
+			codeGenerator compileNode: dfa ].
 	codeGenerator selectorMap: selectorMap.
 	codeGenerator compileKeywordInitializerUsing: keywordmap.
-	codeGenerator compileNode: dfa.
-	codeGenerator compileEmptySymbolTokenId: (self symbols indexOf: grammar emptySymbol).
-	codeGenerator compileErrorSymbolTokenId: (self symbols indexOf: grammar errorSymbol).
+	codeGenerator
+		compileEmptySymbolTokenId: (self symbols indexOf: grammar emptySymbol).
+	codeGenerator
+		compileErrorSymbolTokenId: (self symbols indexOf: grammar errorSymbol).
 	codeGenerator compileIgnoreCaseMethods
 ]
 
