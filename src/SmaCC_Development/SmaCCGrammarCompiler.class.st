@@ -347,6 +347,11 @@ SmaCCGrammarCompiler >> scannerClass: aClassOrString [
 	self codeGenerator scannerClass: aClassOrString
 ]
 
+{ #category : #accessing }
+SmaCCGrammarCompiler >> scannerCompiler [
+	^ scannerCompiler
+]
+
 { #category : #'action table' }
 SmaCCGrammarCompiler >> shiftTableKeyForIndex: anInteger symbol: aSmaCCSymbol [
 	^ SmaCCSymbolTableIndex forIndex: anInteger symbol: aSmaCCSymbol

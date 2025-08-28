@@ -2,8 +2,7 @@ Class {
 	#name : #SmaCCConditionRENode,
 	#superclass : #SmaCCRegularExpressionNode,
 	#instVars : [
-		'conditions',
-		'node'
+		'conditions'
 	],
 	#category : #'SmaCC_Development-Regular Expressions'
 }
@@ -15,12 +14,16 @@ SmaCCConditionRENode >> addCondition: aString [
 
 { #category : #private }
 SmaCCConditionRENode >> asNFAStartingWith: aSmaCCNode [
-	| endNode startNode |
-	startNode := node asNFAStartingWith: aSmaCCNode.
+	| endNode |
 	endNode := SmaCCNode new.
 	endNode action: action.
-	startNode addEdgeTo: endNode onConditions: conditions.
+	aSmaCCNode addEdgeTo: endNode onConditions: conditions.
 	^ endNode
+]
+
+{ #category : #testing }
+SmaCCConditionRENode >> canBeEmpty [
+	^ true
 ]
 
 { #category : #accessing }
@@ -37,16 +40,6 @@ SmaCCConditionRENode >> conditions: anObject [
 SmaCCConditionRENode >> initialize [
 	super initialize.
 	conditions := OrderedCollection new
-]
-
-{ #category : #accessing }
-SmaCCConditionRENode >> node [
-	^ node
-]
-
-{ #category : #accessing }
-SmaCCConditionRENode >> node: anObject [
-	node := anObject
 ]
 
 { #category : #accessing }

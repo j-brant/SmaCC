@@ -22,3 +22,8 @@ SmaCCStateEdge >> codeSizeEstimate [
 SmaCCStateEdge >> dispatchTo: aSmaCCCodeGenerator seen: aCollection [
 	^ aSmaCCCodeGenerator acceptStateEdge: self
 ]
+
+{ #category : #testing }
+SmaCCStateEdge >> isStateEdge [
+	^ true
+]

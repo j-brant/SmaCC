@@ -37,7 +37,8 @@ Class {
 		'lastMatchWasEmpty',
 		'returnMatchBlock',
 		'scope',
-		'comments'
+		'comments',
+		'scopeStack'
 	],
 	#classInstVars : [
 		'keywordMap'
@@ -136,6 +137,11 @@ SmaCCScanner >> contents [
 	^ writeStream contents
 ]
 
+{ #category : #accessing }
+SmaCCScanner >> createToken [
+	^ self createTokenFor: outputStream contents
+]
+
 { #category : #private }
 SmaCCScanner >> createTokenFor: string [
 	| token |
@@ -175,6 +181,16 @@ SmaCCScanner >> eofTokenId [
 { #category : #accessing }
 SmaCCScanner >> errorTokenId [
 	^ self subclassResponsibility
+]
+
+{ #category : #testing }
+SmaCCScanner >> includesScope: aSymbol [
+	| current |
+	current := self scopeStack.
+	[ current notNil ]
+		whileTrue: [ current value = aSymbol ifTrue: [ ^ true ].
+			current := current nextLink ].
+	^ false
 ]
 
 { #category : #'initialize-release' }
@@ -248,6 +264,13 @@ SmaCCScanner >> patternToken [
 ]
 
 { #category : #accessing }
+SmaCCScanner >> peekAhead: anInteger [
+	^ anInteger < 0
+		ifTrue: [ self peekAt: self position + anInteger ]
+		ifFalse: [ self peekAt: self position + anInteger - 1 ]
+]
+
+{ #category : #accessing }
 SmaCCScanner >> peekAt: anInteger [
 	| position |
 	position := stream position.
@@ -261,6 +284,12 @@ SmaCCScanner >> peekCharacter [
 ]
 
 { #category : #accessing }
+SmaCCScanner >> popScope [
+	scopeStack := self scopeStack nextLink.
+	self scope: (scopeStack ifNil: [ #default ] ifNotNil: [ scopeStack value ])
+]
+
+{ #category : #accessing }
 SmaCCScanner >> position [
 	^ stream position
 ]
@@ -268,6 +297,12 @@ SmaCCScanner >> position [
 { #category : #accessing }
 SmaCCScanner >> position: anInteger [
 	^ stream position: anInteger
+]
+
+{ #category : #accessing }
+SmaCCScanner >> pushScope: aSymbol [
+	scopeStack := self scopeStack asLinkPrepend: aSymbol.
+	self scope: aSymbol
 ]
 
 { #category : #private }
@@ -365,7 +400,18 @@ SmaCCScanner >> scope [
 
 { #category : #accessing }
 SmaCCScanner >> scope: aSymbol [
-	scope := aSymbol
+	scope := aSymbol.
+	scopeStack ifNotNil: [ scopeStack value: aSymbol ]
+]
+
+{ #category : #accessing }
+SmaCCScanner >> scopeStack [
+	^ scopeStack ifNil: [ scopeStack := self scope asLink ]
+]
+
+{ #category : #accessing }
+SmaCCScanner >> scopeStack: anObject [
+	scopeStack := anObject
 ]
 
 { #category : #accessing }

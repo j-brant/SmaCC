@@ -7,7 +7,9 @@ SmaCCScanner >> currentState [
 	always return the same token. If you add state to your scanner you may want to override this method
 	and #restoreState: to include that state."
 
-	^ self stateClass position: self position scope: self scope
+	^ (self stateClass position: self position scope: self scope)
+		scopeStack: scopeStack;
+		yourself
 ]
 
 { #category : #'*SmaCC_GLR_Runtime' }
@@ -15,7 +17,8 @@ SmaCCScanner >> restoreState: aSmaCCScannerState [
 	"Restore the state using the object returned from #currentState."
 
 	self setPosition: aSmaCCScannerState position.
-	self scope: aSmaCCScannerState scope
+	scope := aSmaCCScannerState scope.
+	scopeStack := aSmaCCScannerState scopeStack
 ]
 
 { #category : #'*SmaCC_GLR_Runtime' }

@@ -71,6 +71,13 @@ SmaCCRegularExpressionNode >> asDFA [
 ]
 
 { #category : #converting }
+SmaCCRegularExpressionNode >> asDFAWithExpandedConditions [
+	| startNode |
+	startNode := self asNFA.
+	^ startNode asDFAWithExpandedConditions
+]
+
+{ #category : #converting }
 SmaCCRegularExpressionNode >> asNFA [
 	| startNode |
 	startNode := SmaCCNode new.
@@ -81,6 +88,11 @@ SmaCCRegularExpressionNode >> asNFA [
 { #category : #private }
 SmaCCRegularExpressionNode >> asNFAStartingWith: aSmaCCNode [
 	^ self subclassResponsibility
+]
+
+{ #category : #testing }
+SmaCCRegularExpressionNode >> canBeEmpty [
+	^ false
 ]
 
 { #category : #'initialize-release' }

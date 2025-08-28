@@ -2335,6 +2335,43 @@ SmaCCEndToEndTest >> testScannerConditions [
 	self assert: tokens third ids size equals: 1
 ]
 
+{ #category : #public }
+SmaCCEndToEndTest >> testScannerOverlappingCondition [
+	| compiler tokens |
+	(compiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	compiler
+		buildDefinition: '
+			<a> : [[self position = 0]] a;
+			<ab> : ab;
+			A : <a> | <ab>;'.
+	compiler compileInto: 'TestScanner' andParser: 'TestParser'.
+
+	tokens := self parserClass parse: 'ab'.
+	self assert: tokens size equals: 1.
+	self assert: tokens first source equals: 'ab'
+]
+
+{ #category : #public }
+SmaCCEndToEndTest >> testScannerRepeatingOverlappingCondition [
+	| compiler token |
+	(compiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	compiler
+		buildDefinition: '%id <ab1> <ab2>;
+			<ab1> : a+ [[self position < 4]] b;
+			<ab2> : a+b;
+			A : <ab1> | <ab2>;'.
+	compiler compileInto: 'TestScanner' andParser: 'TestParser'.
+
+	token := (self parserClass parse: 'ab') first.
+	self assert: token ids size equals: 2.
+
+	token := (self parserClass parse: 'aaaaab') first.
+	self assert: token ids size equals: 1.
+	self assert: token ids first equals: self scannerClass basicNew ab2Id
+]
+
 { #category : #tests }
 SmaCCEndToEndTest >> testScannerScopes [
 	| parserCompiler parser |
@@ -2355,6 +2392,28 @@ SmaCCEndToEndTest >> testScannerScopes [
 	parser := self parserClass on: (ReadStream on: 'b').
 	parser scope: #a.
 	self assert: parser parse
+]
+
+{ #category : #public }
+SmaCCEndToEndTest >> testScannerStartCondition [
+	| compiler tokens |
+	(compiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	compiler
+		buildDefinition: '%id <hash1> <hash2>;
+			<hash1> : [[self position = 0]] \#;
+			<hash2> : [[self position > 0]] \#;
+			A : <hash1> <hash2>+;'.
+	compiler compileInto: 'TestScanner' andParser: 'TestParser'.
+
+	tokens := self parserClass parse: '###'.
+	self assert: tokens size equals: 3.
+	self assert: tokens first ids first equals: self scannerClass basicNew hash1Id.
+	self assert: tokens first ids size equals: 1.
+	self assert: tokens second ids first equals: self scannerClass basicNew hash2Id.
+	self assert: tokens second ids size equals: 1.
+	self assert: tokens third ids first equals: self scannerClass basicNew hash2Id.
+	self assert: tokens third ids size equals: 1
 ]
 
 { #category : #tests }

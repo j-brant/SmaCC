@@ -32,6 +32,7 @@ SmaCCCharacterSet >> do: aBlock [
 
 { #category : #testing }
 SmaCCCharacterSet >> includes: aCharacter [
+	(aCharacter isCharacter or: [ aCharacter isInteger ]) ifFalse: [ ^ false ].
 	^ super includes: aCharacter asInteger
 ]
 

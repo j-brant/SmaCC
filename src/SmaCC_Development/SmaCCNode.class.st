@@ -107,6 +107,58 @@ SmaCCNode >> addEdgeTo: aSmaCCNode onStates: symbolCollection [
 	transitions add: (SmaCCStateEdge to: aSmaCCNode on: symbolCollection)
 ]
 
+{ #category : #converting }
+SmaCCNode >> addLocalOverlappingConditions: seen [
+	| lastCondition toNode |
+	lastCondition := (transitions size to: 1 by: -1)
+			detect: [ :i | (transitions at: i) isConditionEdge ].
+	1
+		to: lastCondition
+		do: [ :cond | 
+			toNode := (transitions at: cond) to.
+			toNode ~~ self
+				ifTrue: [ cond + 1
+						to: transitions size
+						do: [ :add | toNode addOverlapEdge: (transitions at: add) seen: seen ] ] ]
+]
+
+{ #category : #converting }
+SmaCCNode >> addOverlapEdge: anEdge seen: seen [
+	| newTo newEdge before |
+	(transitions
+		anySatisfy: [ :each | each to = anEdge to and: [ each transitionObjects = anEdge transitionObjects ] ])
+		ifTrue: [ ^ self ].
+	newTo := self class new.
+	newTo addActions: anEdge to action.
+	newTo transitions: anEdge to transitions.
+	newEdge := anEdge class to: newTo on: anEdge transitionObjects.
+	transitions add: newEdge.
+	(seen includes: self) ifFalse: [ ^ self ].
+	before := true.
+	1
+		to: transitions size
+		do: [ :i | 
+			| other |
+			other := transitions at: i.
+			before
+				ifTrue: [ other isConditionEdge ifFalse: [ ^ self ].
+					other == newEdge
+						ifTrue: [ before := false ]
+						ifFalse: [ other to addOverlapEdge: newEdge seen: seen ] ]
+				ifFalse: [ newEdge to transitions add: other ] ]
+]
+
+{ #category : #converting }
+SmaCCNode >> addOverlappingConditions [
+	| done |
+	done := IdentitySet new.
+	self allStates
+		do: [ :each | 
+			done add: each.
+			each containsOverlappingConditions
+				ifTrue: [ each addLocalOverlappingConditions: done ] ]
+]
+
 { #category : #accessing }
 SmaCCNode >> allStates [
 	| nodes |
@@ -123,12 +175,28 @@ SmaCCNode >> allStatesInto: aSet [
 	transitions do: [ :each | each to allStatesInto: aSet ]
 ]
 
+{ #category : #testing }
+SmaCCNode >> anyContainsOverlappingConditions [
+	^ self allStates anySatisfy: [ :each | each containsOverlappingConditions ]
+]
+
 { #category : #converting }
 SmaCCNode >> asDFA [
 	| new |
-	new := (SmaCCNFAtoDFA
-		convertToDFA: self asNFAWithoutEpsilonTransitions)
-		startingNodeWithoutUnnecessaryDefaultTransition.
+	new := (SmaCCNFAtoDFA convertToDFA: self asNFAWithoutEpsilonTransitions)
+			startingNodeWithoutUnnecessaryDefaultTransition.
+	new removeDuplicateNodes.
+	new orderNodes.
+	^ new
+]
+
+{ #category : #converting }
+SmaCCNode >> asDFAWithExpandedConditions [
+	| new |
+	new := (SmaCCNFAtoDFA convertToDFA: self asNFAWithoutEpsilonTransitions)
+			startingNodeWithoutUnnecessaryDefaultTransition.
+	new anyContainsOverlappingConditions
+		ifTrue: [ new := SmaCCNFAtoDFA convertToDFA: new addOverlappingConditions ].
 	new removeDuplicateNodes.
 	new orderNodes.
 	^ new
@@ -200,6 +268,12 @@ SmaCCNode >> codeSizeEstimate: methodStates [
 									((self == each to or: [ methodStates includes: each to ])
 										ifTrue: [ 4 ]
 										ifFalse: [ each to codeSizeEstimate: methodStates ])) ])
+]
+
+{ #category : #testing }
+SmaCCNode >> containsOverlappingConditions [
+	^ self transitions size > 1
+		and: [ self transitions anySatisfy: #isConditionEdge ]
 ]
 
 { #category : #'initialize-release' }
