@@ -4,13 +4,15 @@ Class {
 	#category : #BaselineOfSmaCCNFAScanner
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #baseline }
 BaselineOfSmaCCNFAScanner >> baseline: spec [
 	<baseline>
-	spec
-		for: #common
-		do: [ spec
-				baseline: 'SmaCCDevelopment'
-					with: [ spec repository: 'github://j-brant/SmaCC' ];
-				package: 'SmaCC_NFA_Scanner' with: [ spec requires: 'SmaCCDevelopment' ] ]
+	spec for: #'common' do: [
+		spec
+			baseline: 'SmaCCDevelopment' with: [
+				spec repository: 'github://j-brant/SmaCC:v3.0.116' ].
+
+		spec package: 'SmaCC_NFA_Scanner' with: [
+			spec requires: #(#SmaCCDevelopment) ].
+	]
 ]
