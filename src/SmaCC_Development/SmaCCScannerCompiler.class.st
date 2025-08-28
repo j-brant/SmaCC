@@ -111,7 +111,9 @@ SmaCCScannerCompiler >> compileMethodsFor: regex [
 	grammar useNFA
 		ifTrue: [ keywordmap := Dictionary new.
 			codeGenerator compileParserClass ]
-		ifFalse: [ dfa := regex ifNil: [ SmaCCNode new ] ifNotNil: [ regex asDFA ].
+		ifFalse: [ dfa := regex
+					ifNil: [ SmaCCNode new ]
+					ifNotNil: [ regex asDFAWithExpandedConditions ].
 			keywordmap := self computeKeywordMapFor: dfa.
 			codeGenerator compileNode: dfa ].
 	codeGenerator selectorMap: selectorMap.

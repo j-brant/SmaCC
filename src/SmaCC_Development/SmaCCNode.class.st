@@ -185,6 +185,16 @@ SmaCCNode >> asDFA [
 	| new |
 	new := (SmaCCNFAtoDFA convertToDFA: self asNFAWithoutEpsilonTransitions)
 			startingNodeWithoutUnnecessaryDefaultTransition.
+	new removeDuplicateNodes.
+	new orderNodes.
+	^ new
+]
+
+{ #category : #converting }
+SmaCCNode >> asDFAWithExpandedConditions [
+	| new |
+	new := (SmaCCNFAtoDFA convertToDFA: self asNFAWithoutEpsilonTransitions)
+			startingNodeWithoutUnnecessaryDefaultTransition.
 	new anyContainsOverlappingConditions
 		ifTrue: [ new := SmaCCNFAtoDFA convertToDFA: new addOverlappingConditions ].
 	new removeDuplicateNodes.

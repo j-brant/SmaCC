@@ -71,6 +71,13 @@ SmaCCRegularExpressionNode >> asDFA [
 ]
 
 { #category : #converting }
+SmaCCRegularExpressionNode >> asDFAWithExpandedConditions [
+	| startNode |
+	startNode := self asNFA.
+	^ startNode asDFAWithExpandedConditions
+]
+
+{ #category : #converting }
 SmaCCRegularExpressionNode >> asNFA [
 	| startNode |
 	startNode := SmaCCNode new.
