@@ -183,6 +183,16 @@ SmaCCScanner >> errorTokenId [
 	^ self subclassResponsibility
 ]
 
+{ #category : #testing }
+SmaCCScanner >> includesScope: aSymbol [
+	| current |
+	current := self scopeStack.
+	[ current notNil ]
+		whileTrue: [ current value = aSymbol ifTrue: [ ^ true ].
+			current := current nextLink ].
+	^ false
+]
+
 { #category : #'initialize-release' }
 SmaCCScanner >> initialize [
 	super initialize.
