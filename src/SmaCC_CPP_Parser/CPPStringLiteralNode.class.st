@@ -1,34 +1,36 @@
 Class {
-	#name : #CPPStringLiteralNode,
-	#superclass : #CPPLiteralNode,
+	#name : 'CPPStringLiteralNode',
+	#superclass : 'CPPLiteralNode',
 	#instVars : [
 		'values'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPStringLiteralNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStringLiteral: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPStringLiteralNode >> compositeTokenVariables [
 	^ #(#values #leftParens #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPStringLiteralNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPStringLiteralNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPStringLiteralNode >> values: anOrderedCollection [
 	values := anOrderedCollection
 ]
