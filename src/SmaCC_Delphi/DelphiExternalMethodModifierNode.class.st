@@ -79,5 +79,5 @@ DelphiExternalMethodModifierNode >> nameToken: aSmaCCToken [
 
 { #category : #generated }
 DelphiExternalMethodModifierNode >> tokenVariables [
-	^ #(#delayed #library #indexToken #index #nameToken #methodName #modifier)
+	^ #(#delayed #indexToken #index #nameToken #methodName #library #modifier)
 ]

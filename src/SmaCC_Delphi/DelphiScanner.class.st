@@ -71,32 +71,33 @@ DelphiScanner >> atId [
 DelphiScanner >> comment [
 	| comment |
 	comment := outputStream contents.
+	(ifDefs isEmpty or: [ ifDefs last last notNil ])
+		ifTrue: [ ('{$DEFINE *' match: comment)
+				ifTrue: [ | name |
+					name := (comment copyFrom: 10 to: comment size - 1) asUppercase.
+					self undefinedItems remove: name ifAbsent: [  ].
+					self definedItems add: name ].
+			('{$UNDEF *' match: comment)
+				ifTrue: [ | name |
+					name := (comment copyFrom: 9 to: comment size - 1) asUppercase.
+					self definedItems remove: name ifAbsent: [  ].
+					self undefinedItems add: name ] ].
 	(optDepths includes: ifDefCount)
-		ifTrue:
-			[ ('{$ELSE*' match: comment)
-				ifTrue:
-					[ optComments add: (Array with: start + 1 with: matchEnd).
+		ifTrue: [ ('{$ELSE*' match: comment)
+				ifTrue: [ optComments add: (Array with: start + 1 with: matchEnd).
 					^ super comment ].
 			(('{$ENDIF*' match: comment) or: [ '{$IFEND*' match: comment ])
-				ifTrue:
-					[ optComments add: (Array with: start + 1 with: matchEnd).
+				ifTrue: [ optComments add: (Array with: start + 1 with: matchEnd).
 					optDepths remove: ifDefCount.
 					^ super comment ] ].
 	ifDefCount > 0
-		ifTrue:
-			[ ((('{$ELSE*' match: comment) and: [ ifDefCount = 1 ])
+		ifTrue: [ ((('{$ELSE*' match: comment) and: [ ifDefCount = 1 ])
 				or: [ ('{$ENDIF*' match: comment) or: [ '{$IFEND*' match: comment ] ])
-				ifTrue:
-					[ ifDefCount := ifDefCount - 1.
-					ifDefCount = 0
-						ifTrue: [ ifDefs last at: 2 put: start + comment size ] ]
-				ifFalse: [ ('{$IF*' match: comment)
-						ifTrue: [ ifDefCount := ifDefCount + 1 ] ] ]
-		ifFalse:
-			[ ('{$IF*' match: comment)
-				ifTrue: [ ^ self processIfMacro: comment ].
-			('{$ELSE*' match: comment)
-				ifTrue: [ ^ self skipUntilEndDef ] ].
+				ifTrue: [ ifDefCount := ifDefCount - 1.
+					ifDefCount = 0 ifTrue: [ ifDefs last at: 2 put: start + comment size ] ]
+				ifFalse: [ ('{$IF*' match: comment) ifTrue: [ ifDefCount := ifDefCount + 1 ] ] ]
+		ifFalse: [ ('{$IF*' match: comment) ifTrue: [ ^ self processIfMacro: comment ].
+			('{$ELSE*' match: comment) ifTrue: [ ^ self skipUntilEndDef ] ].
 	^ super comment
 ]
 
@@ -154,8 +155,8 @@ DelphiScanner >> ifDefs [
 DelphiScanner >> initialize [
 	super initialize.
 	ifDefCount := 0.
-	definedItems := self class definedItems.
-	undefinedItems := self class undefinedItems.
+	definedItems := self class definedItems copy.
+	undefinedItems := self class undefinedItems copy.
 	comments := OrderedCollection new.
 	optComments := OrderedCollection new.
 	optDepths := OrderedCollection new.
