@@ -10,7 +10,7 @@ BaselineOfAntlr4Parser >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.117' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.118' ].
 
 		spec package: 'SmaCC_Antlr_Parser' with: [
 			spec requires: #(#SmaCCRuntime) ].

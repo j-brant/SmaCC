@@ -10,7 +10,7 @@ BaselineOfSmaCCNFAScanner >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCDevelopment' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.117' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.118' ].
 
 		spec package: 'SmaCC_NFA_Scanner' with: [
 			spec requires: #(#SmaCCDevelopment) ].
