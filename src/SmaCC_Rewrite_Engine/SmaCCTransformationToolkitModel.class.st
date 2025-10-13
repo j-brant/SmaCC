@@ -55,9 +55,10 @@ SmaCCTransformationToolkitModel >> areRewritesModified [
 { #category : #running }
 SmaCCTransformationToolkitModel >> commonParentDirectory [
 	| common |
+	self createSubdirectories ifFalse: [ ^ '' ].
 	(commonParentDirectory notNil and: [ commonParentDirectory notEmpty ])
 		ifTrue: [ ^ commonParentDirectory ].
-	(self files isEmpty or: [ self createSubdirectories not ]) ifTrue: [ ^ '' ].
+	self files isEmpty ifTrue: [ ^ '' ].
 	common := self files first asFileReference parent pathString.
 	self files
 		do: [ :each | 
