@@ -3411,5 +3411,6 @@ ElixirParser >> reduceActionForunmatched_op_expr13: nodes [
 { #category : #testing }
 ElixirParser >> tryAllTokens [
 	^ (currentToken ids includes: scanner identifierId) not
-		or: [ currentToken ids includes: scanner op_identifierId ]
+		or: [ (currentToken ids includes: scanner op_identifierId)
+				or: [ currentToken ids includes: scanner block_identifierId ] ]
 ]
