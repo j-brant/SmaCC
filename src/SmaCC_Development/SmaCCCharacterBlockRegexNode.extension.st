@@ -16,18 +16,20 @@ SmaCCCharacterBlockRegexNode >> asRegularExpression [
 { #category : #'*SmaCC_Development' }
 SmaCCCharacterBlockRegexNode >> charactersFor: aStream [
 	| characters char endCharacters |
-	aStream atEnd
-		ifTrue: [ self reportCharacterBlockError ].
+	aStream atEnd ifTrue: [ self reportCharacterBlockError ].
 	char := aStream next.
 	characters := char == $\
-		ifTrue: [ (self nodeFor: aStream) characters ]
-		ifFalse: [ OrderedCollection with: char ].
-	(characters size = 1 and: [ aStream peekFor: $- ])
-		ifFalse: [ ^ characters ].
+			ifTrue: [ (self nodeFor: aStream) characters ]
+			ifFalse: [ OrderedCollection with: char ].
+	(characters size = 1 and: [ aStream peekFor: $- ]) ifFalse: [ ^ characters ].
+	aStream atEnd
+		ifTrue: [ ^characters copy
+				add: $-;
+				yourself ].
 	endCharacters := self charactersFor: aStream.
-	endCharacters size > 1
-		ifTrue: [ self reportCharacterBlockError ].
-	^ (characters first asInteger to: endCharacters first asInteger) collect: [ :each | Character value: each ]
+	endCharacters size > 1 ifTrue: [ self reportCharacterBlockError ].
+	^ (characters first asInteger to: endCharacters first asInteger)
+		collect: [ :each | Character value: each ]
 ]
 
 { #category : #'*SmaCC_Development' }
