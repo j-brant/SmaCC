@@ -320,21 +320,6 @@ SmaCCEndToEndTest >> testAutomaticErrorNodes [
 	self assert: node c token value = 'c'
 ]
 
-{ #category : #tests }
-SmaCCEndToEndTest >> testBadCharacterBlock [
-	| parserCompiler |
-	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
-		defaultCategory: self class category.
-	self
-		should:
-			[ parserCompiler
-				buildDefinition:
-					'<foo> : [a-] ;
-					Start : <foo>;'.
-			parserCompiler compileInto: 'TestScanner' andParser: 'TestParser' ]
-		raise: SmaCCParserError
-]
-
 { #category : #'tests-parse tree creation' }
 SmaCCEndToEndTest >> testBadNode [
 	| compiler |
@@ -372,6 +357,46 @@ SmaCCEndToEndTest >> testBadSmalltalkBlock [
 					Start : <foo> {self printOn: };'.
 			parserCompiler compileInto: 'TestScanner' andParser: 'TestParser' ]
 		raise: SmaCCParserError
+]
+
+{ #category : #tests }
+SmaCCEndToEndTest >> testCharacterBlockWithMinusAtBeginning [
+	| parserCompiler |
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	parserCompiler
+		buildDefinition: '<foo> : [-a] ;
+					Start : <foo>;'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+	0
+		to: 255
+		do: [ :i | 
+			| char |
+			char := Character value: i.
+			[ self parserClass parse: (String with: char).
+			self assert: ('a-' includes: char) ]
+				on: SmaCCParserError
+				do: [ :ex | self assert: ('a-' includes: char) not ] ]
+]
+
+{ #category : #tests }
+SmaCCEndToEndTest >> testCharacterBlockWithMinusAtEnd [
+	| parserCompiler |
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	parserCompiler
+		buildDefinition: '<foo> : [a-] ;
+					Start : <foo>;'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+	0
+		to: 255
+		do: [ :i | 
+			| char |
+			char := Character value: i.
+			[ self parserClass parse: (String with: char).
+			self assert: ('a-' includes: char) ]
+				on: SmaCCParserError
+				do: [ :ex | self assert: ('a-' includes: char) not ] ]
 ]
 
 { #category : #'tests-parse tree creation' }
