@@ -1223,20 +1223,13 @@ PythonScanner >> scan9 [
 
 { #category : #generated }
 PythonScanner >> scanForToken [
-	scope == #fStringSingle
+	scope == #default ifTrue: [ ^ self scan1 ].
+	scope == #fLongStringDouble
 		ifTrue: [ self step.
-			currentCharacter == $} ifTrue: [ ^ self scan42 ].
+			currentCharacter == $} ifTrue: [ ^ self scan37 ].
 			('!:=' includes: currentCharacter)
 				ifTrue: [ [ self step.
-					currentCharacter == $} ifTrue: [ ^ self scan42 ].
-					true ] whileTrue ].
-			^ self reportLastMatch ].
-	scope == #fStringDouble
-		ifTrue: [ self step.
-			currentCharacter == $} ifTrue: [ ^ self scan39 ].
-			('!:=' includes: currentCharacter)
-				ifTrue: [ [ self step.
-					currentCharacter == $} ifTrue: [ ^ self scan39 ].
+					currentCharacter == $} ifTrue: [ ^ self scan37 ].
 					true ] whileTrue ].
 			^ self reportLastMatch ].
 	scope == #fLongStringSingle
@@ -1247,15 +1240,22 @@ PythonScanner >> scanForToken [
 					currentCharacter == $} ifTrue: [ ^ self scan38 ].
 					true ] whileTrue ].
 			^ self reportLastMatch ].
-	scope == #fLongStringDouble
+	scope == #fStringDouble
 		ifTrue: [ self step.
-			currentCharacter == $} ifTrue: [ ^ self scan37 ].
+			currentCharacter == $} ifTrue: [ ^ self scan39 ].
 			('!:=' includes: currentCharacter)
 				ifTrue: [ [ self step.
-					currentCharacter == $} ifTrue: [ ^ self scan37 ].
+					currentCharacter == $} ifTrue: [ ^ self scan39 ].
 					true ] whileTrue ].
 			^ self reportLastMatch ].
-	scope == #default ifTrue: [ ^ self scan1 ].
+	scope == #fStringSingle
+		ifTrue: [ self step.
+			currentCharacter == $} ifTrue: [ ^ self scan42 ].
+			('!:=' includes: currentCharacter)
+				ifTrue: [ [ self step.
+					currentCharacter == $} ifTrue: [ ^ self scan42 ].
+					true ] whileTrue ].
+			^ self reportLastMatch ].
 	scope == #lineBegin ifTrue: [ ^ self scanForTokenX1 ].
 	^ self reportLastMatch
 ]
