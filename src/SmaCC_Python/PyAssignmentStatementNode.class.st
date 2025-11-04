@@ -2,11 +2,11 @@ Class {
 	#name : #PyAssignmentStatementNode,
 	#superclass : #PyStatementNode,
 	#instVars : [
-		'lhs',
+		'variables',
 		'assigns',
-		'tos',
 		'colonTokens',
-		'typeExpressions'
+		'typeExpressions',
+		'value'
 	],
 	#category : #'SmaCC_Python'
 }
@@ -38,7 +38,7 @@ PyAssignmentStatementNode >> colonTokens: anOrderedCollection [
 
 { #category : #generated }
 PyAssignmentStatementNode >> compositeNodeVariables [
-	^ #(#tos #typeExpressions)
+	^ #(#variables #typeExpressions)
 ]
 
 { #category : #generated }
@@ -49,39 +49,27 @@ PyAssignmentStatementNode >> compositeTokenVariables [
 { #category : #'generated-initialize-release' }
 PyAssignmentStatementNode >> initialize [
 	super initialize.
+	variables := OrderedCollection new: 2.
 	assigns := OrderedCollection new: 2.
-	tos := OrderedCollection new: 2.
 	colonTokens := OrderedCollection new: 2.
 	typeExpressions := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : #'as yet unclassified' }
 PyAssignmentStatementNode >> lhs [
-	^ lhs
-]
-
-{ #category : #generated }
-PyAssignmentStatementNode >> lhs: aPyExpressionNode [
-	self lhs notNil ifTrue: [ self lhs parent: nil ].
-	lhs := aPyExpressionNode.
-	self lhs notNil ifTrue: [ self lhs parent: self ]
+	self deprecated: 'Use variables and value instead'.
+	^ variables first
 ]
 
 { #category : #generated }
 PyAssignmentStatementNode >> nodeVariables [
-	^ #(#lhs)
+	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : #'as yet unclassified' }
 PyAssignmentStatementNode >> tos [
-	^ tos
-]
-
-{ #category : #generated }
-PyAssignmentStatementNode >> tos: anOrderedCollection [
-	self setParents: self tos to: nil.
-	tos := anOrderedCollection.
-	self setParents: self tos to: self
+	self deprecated: 'Use variables and value instead'.
+	^ variables allButFirst asArray , {value}
 ]
 
 { #category : #generated }
@@ -94,4 +82,28 @@ PyAssignmentStatementNode >> typeExpressions: anOrderedCollection [
 	self setParents: self typeExpressions to: nil.
 	typeExpressions := anOrderedCollection.
 	self setParents: self typeExpressions to: self
+]
+
+{ #category : #generated }
+PyAssignmentStatementNode >> value [
+	^ value
+]
+
+{ #category : #generated }
+PyAssignmentStatementNode >> value: aPyExpressionNode [
+	self value notNil ifTrue: [ self value parent: nil ].
+	value := aPyExpressionNode.
+	self value notNil ifTrue: [ self value parent: self ]
+]
+
+{ #category : #generated }
+PyAssignmentStatementNode >> variables [
+	^ variables
+]
+
+{ #category : #generated }
+PyAssignmentStatementNode >> variables: anOrderedCollection [
+	self setParents: self variables to: nil.
+	variables := anOrderedCollection.
+	self setParents: self variables to: self
 ]
