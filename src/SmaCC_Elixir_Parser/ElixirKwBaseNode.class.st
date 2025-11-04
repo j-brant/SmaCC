@@ -2,11 +2,11 @@ Class {
 	#name : #ElixirKwBaseNode,
 	#superclass : #ElixirProgramNode,
 	#instVars : [
-		'keies',
+		'keys',
 		'values',
 		'coms'
 	],
-	#category : 'SmaCC_Elixir_Parser'
+	#category : #'SmaCC_Elixir_Parser'
 }
 
 { #category : #generated }
@@ -21,7 +21,7 @@ ElixirKwBaseNode >> compositeNodeVariables [
 
 { #category : #generated }
 ElixirKwBaseNode >> compositeTokenVariables [
-	^ #(#keies #coms)
+	^ #(#keys #coms)
 ]
 
 { #category : #generated }
@@ -37,19 +37,19 @@ ElixirKwBaseNode >> coms: anOrderedCollection [
 { #category : #'generated-initialize-release' }
 ElixirKwBaseNode >> initialize [
 	super initialize.
-	keies := OrderedCollection new: 2.
+	keys := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 	coms := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-ElixirKwBaseNode >> keies [
-	^ keies
+ElixirKwBaseNode >> keys [
+	^ keys
 ]
 
 { #category : #generated }
-ElixirKwBaseNode >> keies: anOrderedCollection [
-	keies := anOrderedCollection
+ElixirKwBaseNode >> keys: anOrderedCollection [
+	keys := anOrderedCollection
 ]
 
 { #category : #generated }

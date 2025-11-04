@@ -63,6 +63,11 @@ ElixirScanner >> dot_opId [
 ]
 
 { #category : #generated }
+ElixirScanner >> dual_opId [
+	^ 43
+]
+
+{ #category : #generated }
 ElixirScanner >> emptySymbolTokenId [
 	^ 152
 ]
@@ -1678,4 +1683,9 @@ ElixirScanner >> struct_opId [
 { #category : #generated }
 ElixirScanner >> tokenActions [
 	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace #comment #eol nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #kw_identifier nil nil nil #dot_call_op)
+]
+
+{ #category : #generated }
+ElixirScanner >> unary_opId [
+	^ 45
 ]
