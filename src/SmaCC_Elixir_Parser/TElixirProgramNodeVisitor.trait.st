@@ -2,7 +2,7 @@ Trait {
 	#name : #TElixirProgramNodeVisitor,
 	#traits : 'TSmaCCParseNodeVisitor',
 	#classTraits : 'TSmaCCParseNodeVisitor classTrait',
-	#category : 'SmaCC_Elixir_Parser'
+	#category : #'SmaCC_Elixir_Parser'
 }
 
 { #category : #generated }
@@ -219,6 +219,11 @@ TElixirProgramNodeVisitor >> visitFnEoe: aFnEoe [
 { #category : #generated }
 TElixirProgramNodeVisitor >> visitGrammar: aGrammar [
 	^ self visitProgram: aGrammar
+]
+
+{ #category : #generated }
+TElixirProgramNodeVisitor >> visitInterpolatedString: anInterpolatedString [
+	^ self visitProgram: anInterpolatedString
 ]
 
 { #category : #generated }
