@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfJavaParser }
+Package { #name : 'BaselineOfJavaParser' }

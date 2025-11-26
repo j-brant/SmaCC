@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfClojureParser }
+Package { #name : 'BaselineOfClojureParser' }

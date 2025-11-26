@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfRubyParser }
+Package { #name : 'BaselineOfRubyParser' }

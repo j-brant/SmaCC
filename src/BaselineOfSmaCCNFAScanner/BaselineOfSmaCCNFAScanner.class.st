@@ -1,16 +1,17 @@
 Class {
-	#name : #BaselineOfSmaCCNFAScanner,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfSmaCCNFAScanner
+	#name : 'BaselineOfSmaCCNFAScanner',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfSmaCCNFAScanner',
+	#package : 'BaselineOfSmaCCNFAScanner'
 }
 
-{ #category : #baseline }
+{ #category : 'baseline' }
 BaselineOfSmaCCNFAScanner >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCDevelopment' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.123' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.124' ].
 
 		spec package: 'SmaCC_NFA_Scanner' with: [
 			spec requires: #(#SmaCCDevelopment) ].

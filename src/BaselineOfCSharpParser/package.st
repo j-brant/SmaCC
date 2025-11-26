@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfCSharpParser }
+Package { #name : 'BaselineOfCSharpParser' }

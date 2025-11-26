@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfCPPParser }
+Package { #name : 'BaselineOfCPPParser' }

@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfDelphiParser }
+Package { #name : 'BaselineOfDelphiParser' }

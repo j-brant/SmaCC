@@ -1,16 +1,17 @@
 Class {
-	#name : #BaselineOfDOTParser,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfDOTParser
+	#name : 'BaselineOfDOTParser',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfDOTParser',
+	#package : 'BaselineOfDOTParser'
 }
 
-{ #category : #baseline }
+{ #category : 'baseline' }
 BaselineOfDOTParser >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.123' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.124' ].
 
 		spec package: 'SmaCC_DOT' with: [
 			spec requires: #(#SmaCCRuntime) ].

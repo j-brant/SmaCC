@@ -1,16 +1,17 @@
 Class {
-	#name : #BaselineOfCSVParser,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfCSVParser
+	#name : 'BaselineOfCSVParser',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfCSVParser',
+	#package : 'BaselineOfCSVParser'
 }
 
-{ #category : #baseline }
+{ #category : 'baseline' }
 BaselineOfCSVParser >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.123' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.124' ].
 
 		spec package: 'SmaCC_CSV_Parser' with: [
 			spec requires: #(#SmaCCRuntime) ].

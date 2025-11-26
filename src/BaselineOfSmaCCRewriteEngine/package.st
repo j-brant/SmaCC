@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfSmaCCRewriteEngine }
+Package { #name : 'BaselineOfSmaCCRewriteEngine' }

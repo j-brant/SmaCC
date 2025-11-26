@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfDOTParser }
+Package { #name : 'BaselineOfDOTParser' }

@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfRustParser }
+Package { #name : 'BaselineOfRustParser' }

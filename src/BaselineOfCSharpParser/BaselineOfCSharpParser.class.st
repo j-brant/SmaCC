@@ -1,16 +1,17 @@
 Class {
-	#name : #BaselineOfCSharpParser,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfCSharpParser
+	#name : 'BaselineOfCSharpParser',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfCSharpParser',
+	#package : 'BaselineOfCSharpParser'
 }
 
-{ #category : #baseline }
+{ #category : 'baseline' }
 BaselineOfCSharpParser >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.123' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.124' ].
 
 		spec package: 'SmaCC_CSharp' with: [
 			spec requires: #(#SmaCCRuntime) ].

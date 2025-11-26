@@ -1,16 +1,17 @@
 Class {
-	#name : #BaselineOfDelphiParser,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfDelphiParser
+	#name : 'BaselineOfDelphiParser',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfDelphiParser',
+	#package : 'BaselineOfDelphiParser'
 }
 
-{ #category : #baseline }
+{ #category : 'baseline' }
 BaselineOfDelphiParser >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.123' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.124' ].
 
 		spec package: 'SmaCC_Delphi' with: [
 			spec requires: #(#SmaCCRuntime) ].

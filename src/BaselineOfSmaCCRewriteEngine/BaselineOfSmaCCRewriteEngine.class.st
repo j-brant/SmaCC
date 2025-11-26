@@ -1,16 +1,17 @@
 Class {
-	#name : #BaselineOfSmaCCRewriteEngine,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfSmaCCRewriteEngine
+	#name : 'BaselineOfSmaCCRewriteEngine',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfSmaCCRewriteEngine',
+	#package : 'BaselineOfSmaCCRewriteEngine'
 }
 
-{ #category : #baseline }
+{ #category : 'baseline' }
 BaselineOfSmaCCRewriteEngine >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.123' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.124' ].
 
 		spec package: 'SmaCC_Parse_Tree_Comparison' with: [
 			spec requires: #(#SmaCCRuntime) ].

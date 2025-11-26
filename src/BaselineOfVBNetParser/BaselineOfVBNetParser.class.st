@@ -1,16 +1,17 @@
 Class {
-	#name : #BaselineOfVBNetParser,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfVBNetParser
+	#name : 'BaselineOfVBNetParser',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfVBNetParser',
+	#package : 'BaselineOfVBNetParser'
 }
 
-{ #category : #baseline }
+{ #category : 'baseline' }
 BaselineOfVBNetParser >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.123' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.124' ].
 
 		spec package: 'SmaCC_VB_NET_Parser' with: [
 			spec requires: #(#SmaCCRuntime) ].

@@ -1,16 +1,17 @@
 Class {
-	#name : #BaselineOfSmaCCDevelopment,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfSmaCCDevelopment
+	#name : 'BaselineOfSmaCCDevelopment',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfSmaCCDevelopment',
+	#package : 'BaselineOfSmaCCDevelopment'
 }
 
-{ #category : #baseline }
+{ #category : 'baseline' }
 BaselineOfSmaCCDevelopment >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.123' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.124' ].
 
 		spec package: 'SmaCC_Grammar_Parser' with: [
 			spec requires: #(#SmaCCRuntime) ].
