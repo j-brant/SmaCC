@@ -1,33 +1,34 @@
 Class {
-	#name : #SmaCCFlagDirectiveNode,
-	#superclass : #SmaCCDirectiveNode,
+	#name : 'SmaCCFlagDirectiveNode',
+	#superclass : 'SmaCCDirectiveNode',
 	#instVars : [
 		'typeToken'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCFlagDirectiveNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitFlagDirective: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCFlagDirectiveNode >> isFlagDirective [
 	^ true
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCFlagDirectiveNode >> tokenVariables [
 	^ #(#typeToken #directiveStartToken #semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCFlagDirectiveNode >> typeToken [
 	^ typeToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCFlagDirectiveNode >> typeToken: aSmaCCToken [
 	typeToken := aSmaCCToken
 ]

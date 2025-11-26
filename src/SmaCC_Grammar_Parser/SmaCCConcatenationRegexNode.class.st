@@ -1,34 +1,35 @@
 Class {
-	#name : #SmaCCConcatenationRegexNode,
-	#superclass : #SmaCCRegexNode,
+	#name : 'SmaCCConcatenationRegexNode',
+	#superclass : 'SmaCCRegexNode',
 	#instVars : [
 		'items'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCConcatenationRegexNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitConcatenationRegex: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCConcatenationRegexNode >> compositeNodeVariables [
 	^ #(#items)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 SmaCCConcatenationRegexNode >> initialize [
 	super initialize.
 	items := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCConcatenationRegexNode >> items [
 	^ items
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCConcatenationRegexNode >> items: anOrderedCollection [
 	self setParents: self items to: nil.
 	items := anOrderedCollection.

@@ -1,61 +1,62 @@
 Class {
-	#name : #SmaCCGrammarDefinitionNode,
-	#superclass : #SmaCCDefinitionNode,
+	#name : 'SmaCCGrammarDefinitionNode',
+	#superclass : 'SmaCCDefinitionNode',
 	#instVars : [
 		'rules'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCGrammarDefinitionNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitGrammarDefinition: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCGrammarDefinitionNode >> compositeNodeVariables [
 	^ #(#rules)
 ]
 
-{ #category : #acccessing }
+{ #category : 'acccessing' }
 SmaCCGrammarDefinitionNode >> definitionNamed: aString [
 	^ (self tokenNamed: aString) ifNil: [ self productionNamed: aString ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 SmaCCGrammarDefinitionNode >> initialize [
 	super initialize.
 	rules := OrderedCollection new: 2.
 ]
 
-{ #category : #acccessing }
+{ #category : 'acccessing' }
 SmaCCGrammarDefinitionNode >> productionNamed: aString [
 	^ self productionRules detect: [ :each | each name value = aString ] ifNone: [ nil ]
 ]
 
-{ #category : #acccessing }
+{ #category : 'acccessing' }
 SmaCCGrammarDefinitionNode >> productionRules [
 	^ rules select: [ :each | each isKindOf: SmaCCProductionRuleNode ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCGrammarDefinitionNode >> rules [
 	^ rules
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCGrammarDefinitionNode >> rules: anOrderedCollection [
 	self setParents: self rules to: nil.
 	rules := anOrderedCollection.
 	self setParents: self rules to: self
 ]
 
-{ #category : #acccessing }
+{ #category : 'acccessing' }
 SmaCCGrammarDefinitionNode >> tokenNamed: aString [
 	^ self tokenRules detect: [ :each | each name value = aString ] ifNone: [ nil ]
 ]
 
-{ #category : #acccessing }
+{ #category : 'acccessing' }
 SmaCCGrammarDefinitionNode >> tokenRules [
 	^ rules select: [ :each | each isKindOf: SmaCCTokenRuleNode ]
 ]

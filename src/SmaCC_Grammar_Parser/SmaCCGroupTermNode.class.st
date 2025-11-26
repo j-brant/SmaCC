@@ -1,114 +1,115 @@
 Class {
-	#name : #SmaCCGroupTermNode,
-	#superclass : #SmaCCDefinitionNode,
+	#name : 'SmaCCGroupTermNode',
+	#superclass : 'SmaCCDefinitionNode',
 	#instVars : [
 		'leftParen',
 		'barTokens',
 		'expressions',
 		'rightParen'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCGroupTermNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitGroupTerm: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGroupTermNode >> allPossibilities [
 	^ self hasReductionExpression
 		ifTrue: [ 1 ]
 		ifFalse: [ (expressions inject: 0 into: [ :sum :each | sum + each allPossibilities ]) max: 1 ]
 ]
 
-{ #category : #iterating }
+{ #category : 'iterating' }
 SmaCCGroupTermNode >> alternativesDo: aBlock [
 	expressions do: [ :each | aBlock value: each terms ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCGroupTermNode >> barTokens [
 	^ barTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCGroupTermNode >> barTokens: anOrderedCollection [
 	barTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCGroupTermNode >> compositeNodeVariables [
 	^ #(#expressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCGroupTermNode >> compositeTokenVariables [
 	^ #(#barTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCGroupTermNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCGroupTermNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCGroupTermNode >> hasReductionExpression [
 	^ expressions anySatisfy: [ :each | each hasReductionExpression ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 SmaCCGroupTermNode >> initialize [
 	super initialize.
 	barTokens := OrderedCollection new: 2.
 	expressions := OrderedCollection new: 2.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCGroupTermNode >> isGroup [
 	^ true
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCGroupTermNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCGroupTermNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGroupTermNode >> possibilities [
 	^ self hasReductionExpression
 		ifTrue: [ 1 ]
 		ifFalse: [ expressions size ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCGroupTermNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCGroupTermNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCGroupTermNode >> tokenVariables [
 	^ #(#leftParen #rightParen)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGroupTermNode >> variableNameToken [
 	^ nil
 ]

@@ -1,28 +1,29 @@
 Class {
-	#name : #SmaCCCharacterRegexNode,
-	#superclass : #SmaCCRegexNode,
+	#name : 'SmaCCCharacterRegexNode',
+	#superclass : 'SmaCCRegexNode',
 	#instVars : [
 		'char'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCCharacterRegexNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitCharacterRegex: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCCharacterRegexNode >> char [
 	^ char
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCCharacterRegexNode >> char: aSmaCCToken [
 	char := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCCharacterRegexNode >> tokenVariables [
 	^ #(#char)
 ]

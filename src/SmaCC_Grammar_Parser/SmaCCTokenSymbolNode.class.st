@@ -1,28 +1,29 @@
 Class {
-	#name : #SmaCCTokenSymbolNode,
-	#superclass : #SmaCCSymbolNode,
+	#name : 'SmaCCTokenSymbolNode',
+	#superclass : 'SmaCCSymbolNode',
 	#instVars : [
 		'name'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCTokenSymbolNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitTokenSymbol: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCTokenSymbolNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCTokenSymbolNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCTokenSymbolNode >> tokenVariables [
 	^ #(#name #variableNameToken)
 ]

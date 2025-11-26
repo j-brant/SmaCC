@@ -1,51 +1,52 @@
 Class {
-	#name : #SmaCCAlternationRegexNode,
-	#superclass : #SmaCCRegexNode,
+	#name : 'SmaCCAlternationRegexNode',
+	#superclass : 'SmaCCRegexNode',
 	#instVars : [
 		'items',
 		'barTokens'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAlternationRegexNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitAlternationRegex: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAlternationRegexNode >> barTokens [
 	^ barTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAlternationRegexNode >> barTokens: anOrderedCollection [
 	barTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAlternationRegexNode >> compositeNodeVariables [
 	^ #(#items)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAlternationRegexNode >> compositeTokenVariables [
 	^ #(#barTokens #leftParens #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 SmaCCAlternationRegexNode >> initialize [
 	super initialize.
 	items := OrderedCollection new: 2.
 	barTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAlternationRegexNode >> items [
 	^ items
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAlternationRegexNode >> items: anOrderedCollection [
 	self setParents: self items to: nil.
 	items := anOrderedCollection.

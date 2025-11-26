@@ -1,28 +1,29 @@
 Class {
-	#name : #SmaCCErrorSymbolNode,
-	#superclass : #SmaCCSymbolNode,
+	#name : 'SmaCCErrorSymbolNode',
+	#superclass : 'SmaCCSymbolNode',
 	#instVars : [
 		'name'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCErrorSymbolNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitErrorSymbol: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCErrorSymbolNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCErrorSymbolNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCErrorSymbolNode >> tokenVariables [
 	^ #(#name #variableNameToken)
 ]

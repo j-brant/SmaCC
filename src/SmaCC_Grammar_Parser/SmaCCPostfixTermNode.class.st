@@ -1,26 +1,27 @@
 Class {
-	#name : #SmaCCPostfixTermNode,
-	#superclass : #SmaCCDefinitionNode,
+	#name : 'SmaCCPostfixTermNode',
+	#superclass : 'SmaCCDefinitionNode',
 	#instVars : [
 		'term',
 		'operator'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCPostfixTermNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitPostfixTerm: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCPostfixTermNode >> allPossibilities [
 	self isOptional
 		ifTrue: [ ^ term allPossibilities + 1 ].
 	^ 1
 ]
 
-{ #category : #iterating }
+{ #category : 'iterating' }
 SmaCCPostfixTermNode >> alternativesDo: aBlock [
 	self isOptional
 		ifTrue: [ aBlock value: #().
@@ -28,39 +29,39 @@ SmaCCPostfixTermNode >> alternativesDo: aBlock [
 		ifFalse: [ aBlock value: (Array with: self) ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCPostfixTermNode >> isOptional [
 	^ operator value = '?'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCPostfixTermNode >> nodeVariables [
 	^ #(#term)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCPostfixTermNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCPostfixTermNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCPostfixTermNode >> possibilities [
 	^ self isOptional
 		ifTrue: [ 2 ]
 		ifFalse: [ 1 ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCPostfixTermNode >> term [
 	^ term
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCPostfixTermNode >> term: aSmaCCDefinitionNode [
 	self term notNil
 		ifTrue: [ self term parent: nil ].
@@ -69,12 +70,12 @@ SmaCCPostfixTermNode >> term: aSmaCCDefinitionNode [
 		ifTrue: [ self term parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCPostfixTermNode >> tokenVariables [
 	^ #(#operator)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCPostfixTermNode >> variableNameToken [
 	^ nil
 ]

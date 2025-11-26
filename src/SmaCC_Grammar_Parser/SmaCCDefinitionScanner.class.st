@@ -1,13 +1,14 @@
 Class {
-	#name : #SmaCCDefinitionScanner,
-	#superclass : #SmaCCScanner,
+	#name : 'SmaCCDefinitionScanner',
+	#superclass : 'SmaCCScanner',
 	#instVars : [
 		'parseSourceSelector'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #'generated-initialization' }
+{ #category : 'generated-initialization' }
 SmaCCDefinitionScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
 	#(#(30 'annotate_tokens' #(24 #(#directives))) #(30 'attributes' #(11 #(#directives))) #(30 'byte' #(27 #(#directives))) #(30 'error' #(45 #(#parser))) #(30 'excludes' #(8 #(#directives))) #(30 'glr' #(20 #(#directives))) #(30 'hierarchy' #(10 #(#directives))) #(30 'id' #(17 #(#directives))) #(30 'ignore_variable_warning' #(23 #(#directives))) #(30 'ignore_variables' #(22 #(#directives))) #(30 'ignorecase' #(21 #(#directives))) #(30 'left' #(14 #(#directives))) #(30 'lr1' #(25 #(#directives))) #(30 'nfa' #(19 #(#directives))) #(30 'nonassoc' #(16 #(#directives))) #(30 'prefix' #(12 #(#directives))) #(30 'right' #(15 #(#directives))) #(30 'root' #(9 #(#directives))) #(30 'scannerSelectors' #(32 #(#directives))) #(30 'scopes' #(7 #(#directives))) #(30 'start' #(18 #(#directives))) #(30 'states' #(7 #(#directives))) #(30 'suffix' #(13 #(#directives))) #(30 'unicode' #(26 #(#directives))))
@@ -18,28 +19,28 @@ SmaCCDefinitionScanner class >> initializeKeywordMap [
 	^ keywordMap
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCDefinitionScanner >> canParse: aString [
 	^ self perform: parseSourceSelector with: aString
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCDefinitionScanner >> canParseSmalltalk: aString [
 	RBParser parseExpression: aString onError: [ :error :pos | ^ false ].
 	^ true
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> classLeftId [
 	^ 46
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> classRightId [
 	^ 47
 ]
 
-{ #category : #'token-actions' }
+{ #category : 'token-actions' }
 SmaCCDefinitionScanner >> code [
 	| code |
 	code := ''.
@@ -52,12 +53,12 @@ SmaCCDefinitionScanner >> code [
 	^ self createTokenFor: '{' , code , '}'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> codeId [
 	^ 34
 ]
 
-{ #category : #'token-actions' }
+{ #category : 'token-actions' }
 SmaCCDefinitionScanner >> conditionCode [
 	| code |
 	code := ''.
@@ -68,22 +69,22 @@ SmaCCDefinitionScanner >> conditionCode [
 	^ self createTokenFor: '[[' , code , ']]'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> directiveId [
 	^ 38
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> emptySymbolTokenId [
 	^ 110
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> errorTokenId [
 	^ 111
 ]
 
-{ #category : #'token-actions' }
+{ #category : 'token-actions' }
 SmaCCDefinitionScanner >> immediateCode [
 	| code |
 	code := ''.
@@ -96,33 +97,33 @@ SmaCCDefinitionScanner >> immediateCode [
 	^ self createTokenFor: '[' , code , ']'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> immediateCodeId [
 	^ 35
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCDefinitionScanner >> initialize [
 	super initialize.
 	parseSourceSelector := #canParseSmalltalk:
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> keywordId [
 	^ 31
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCDefinitionScanner >> parseSourceSelector: aSymbol [
 	parseSourceSelector := aSymbol
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> productionId [
 	^ 37
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan1 [
 	self step.
 	currentCharacter == $*
@@ -130,7 +131,7 @@ SmaCCDefinitionScanner >> scan1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan10 [
 	self step.
 	currentCharacter == Character newPage ifTrue: [ ^ self scan10X4 ].
@@ -143,7 +144,7 @@ SmaCCDefinitionScanner >> scan10 [
 	^ self scan10X10
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan10X1 [
 	self step.
 	currentCharacter == $c
@@ -176,7 +177,7 @@ SmaCCDefinitionScanner >> scan10X1 [
 	^ self recordAndReportMatch: #(40)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan10X10 [
 	currentCharacter == $. ifTrue: [ ^ self recordAndReportMatch: #(44) ].
 	currentCharacter == $/ ifTrue: [ ^ self scan10X9 ].
@@ -193,7 +194,7 @@ SmaCCDefinitionScanner >> scan10X10 [
 	^ self recordAndReportMatch: #(43)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan10X2 [
 	self recordMatch: #(33 43).
 	self step.
@@ -208,7 +209,7 @@ SmaCCDefinitionScanner >> scan10X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan10X3 [
 	self step.
 	currentCharacter == $[ ifTrue: [ ^ self recordAndReportMatch: #(49) ].
@@ -218,7 +219,7 @@ SmaCCDefinitionScanner >> scan10X3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan10X4 [
 	self recordMatch: #(28 43).
 	self step.
@@ -230,7 +231,7 @@ SmaCCDefinitionScanner >> scan10X4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan10X5 [
 	[ self step.
 	currentCharacter == $,
@@ -242,7 +243,7 @@ SmaCCDefinitionScanner >> scan10X5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan10X6 [
 	self recordMatch: #(43).
 	self step.
@@ -251,7 +252,7 @@ SmaCCDefinitionScanner >> scan10X6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan10X7 [
 	[ self recordMatch: #(28).
 	self step.
@@ -260,7 +261,7 @@ SmaCCDefinitionScanner >> scan10X7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan10X8 [
 	self recordMatch: #(37 43).
 	self step.
@@ -268,7 +269,7 @@ SmaCCDefinitionScanner >> scan10X8 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan10X9 [
 	self recordMatch: #(43).
 	self step.
@@ -276,7 +277,7 @@ SmaCCDefinitionScanner >> scan10X9 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan11 [
 	[ self step.
 	currentCharacter == $\ ifTrue: [ ^ self scan12 ].
@@ -285,7 +286,7 @@ SmaCCDefinitionScanner >> scan11 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan12 [
 	self step.
 	currentCharacter == $c
@@ -301,7 +302,7 @@ SmaCCDefinitionScanner >> scan12 [
 	^ self scan11
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan2 [
 	[ self step.
 	currentCharacter == $*
@@ -312,7 +313,7 @@ SmaCCDefinitionScanner >> scan2 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan3 [
 	self recordMatch: #(37).
 	self step.
@@ -320,14 +321,14 @@ SmaCCDefinitionScanner >> scan3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan4 [
 	self step.
 	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(37) ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan5 [
 	self step.
 	(currentCharacter isLetter or: [ currentCharacter == $_ ])
@@ -335,7 +336,7 @@ SmaCCDefinitionScanner >> scan5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan6 [
 	[ self step.
 	currentCharacter == $> ifTrue: [ ^ self recordAndReportMatch: #(29) ].
@@ -343,14 +344,14 @@ SmaCCDefinitionScanner >> scan6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan7 [
 	[ self step.
 	currentCharacter == $` ifTrue: [ ^ self recordAndReportMatch: #(48) ].
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan8 [
 	[ self step.
 	currentCharacter == $"
@@ -361,7 +362,7 @@ SmaCCDefinitionScanner >> scan8 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan9 [
 	self step.
 	currentCharacter == $" ifTrue: [ ^ self scan8 ].
@@ -376,7 +377,7 @@ SmaCCDefinitionScanner >> scan9 [
 	^ self scan9X7
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan9X1 [
 	[ self recordMatch: #(33).
 	self step.
@@ -386,7 +387,7 @@ SmaCCDefinitionScanner >> scan9X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan9X2 [
 	self step.
 	(currentCharacter isLetter or: [ currentCharacter == $_ ])
@@ -396,7 +397,7 @@ SmaCCDefinitionScanner >> scan9X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan9X3 [
 	[ self recordMatch: #(28).
 	self step.
@@ -405,7 +406,7 @@ SmaCCDefinitionScanner >> scan9X3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan9X4 [
 	self recordMatch: #(34).
 	self step.
@@ -413,21 +414,21 @@ SmaCCDefinitionScanner >> scan9X4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan9X5 [
 	[ self recordMatch: #(30).
 	self step.
 	currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan9X6 [
 	self step.
 	currentCharacter == $} ifTrue: [ ^ self recordAndReportMatch: #(47) ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scan9X7 [
 	currentCharacter == $: ifTrue: [ ^ self scan3 ].
 	currentCharacter == $; ifTrue: [ ^ self recordAndReportMatch: #(39) ].
@@ -445,7 +446,7 @@ SmaCCDefinitionScanner >> scan9X7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scanForToken [
 	scope == #default ifTrue: [ ^ self scanForTokenX2 ].
 	scope == #directives ifTrue: [ ^ self scanForTokenX1 ].
@@ -454,7 +455,7 @@ SmaCCDefinitionScanner >> scanForToken [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scanForTokenX1 [
 	self step.
 	currentCharacter == $" ifTrue: [ ^ self scan8 ].
@@ -464,7 +465,7 @@ SmaCCDefinitionScanner >> scanForTokenX1 [
 	^ self scanForTokenX1X4
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scanForTokenX1X1 [
 	[ self recordMatch: #(33).
 	self step.
@@ -474,7 +475,7 @@ SmaCCDefinitionScanner >> scanForTokenX1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scanForTokenX1X2 [
 	[ self recordMatch: #(28).
 	self step.
@@ -483,14 +484,14 @@ SmaCCDefinitionScanner >> scanForTokenX1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scanForTokenX1X3 [
 	[ self recordMatch: #(30).
 	self step.
 	currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scanForTokenX1X4 [
 	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(2) ].
 	currentCharacter == $* ifTrue: [ ^ self recordAndReportMatch: #(3) ].
@@ -508,7 +509,7 @@ SmaCCDefinitionScanner >> scanForTokenX1X4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scanForTokenX2 [
 	self step.
 	currentCharacter == $# ifTrue: [ ^ self scanForTokenX2X1 ].
@@ -518,7 +519,7 @@ SmaCCDefinitionScanner >> scanForTokenX2 [
 	^ self scanForTokenX2X4
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scanForTokenX2X1 [
 	[ self recordMatch: #(33).
 	self step.
@@ -528,7 +529,7 @@ SmaCCDefinitionScanner >> scanForTokenX2X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scanForTokenX2X2 [
 	[ self recordMatch: #(28).
 	self step.
@@ -537,14 +538,14 @@ SmaCCDefinitionScanner >> scanForTokenX2X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scanForTokenX2X3 [
 	[ self recordMatch: #(30).
 	self step.
 	currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> scanForTokenX2X4 [
 	currentCharacter == $* ifTrue: [ ^ self recordAndReportMatch: #(3) ].
 	currentCharacter == $+ ifTrue: [ ^ self recordAndReportMatch: #(4) ].
@@ -562,27 +563,27 @@ SmaCCDefinitionScanner >> scanForTokenX2X4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> semicolonId [
 	^ 39
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> symbolnameId [
 	^ 30
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> tokenActions [
 	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace nil nil nil nil #comment #code #immediateCode nil nil nil nil nil nil nil nil nil nil nil nil #patternToken #conditionCode)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> tokennameId [
 	^ 29
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionScanner >> variablenameId [
 	^ 36
 ]

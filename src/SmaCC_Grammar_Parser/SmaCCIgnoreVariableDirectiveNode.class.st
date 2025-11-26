@@ -1,55 +1,56 @@
 Class {
-	#name : #SmaCCIgnoreVariableDirectiveNode,
-	#superclass : #SmaCCDirectiveNode,
+	#name : 'SmaCCIgnoreVariableDirectiveNode',
+	#superclass : 'SmaCCDirectiveNode',
 	#instVars : [
 		'ignoreVariablesToken',
 		'names'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCIgnoreVariableDirectiveNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitIgnoreVariableDirective: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCIgnoreVariableDirectiveNode >> compositeTokenVariables [
 	^ #(#names)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCIgnoreVariableDirectiveNode >> ignoreVariablesToken [
 	^ ignoreVariablesToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCIgnoreVariableDirectiveNode >> ignoreVariablesToken: aSmaCCToken [
 	ignoreVariablesToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 SmaCCIgnoreVariableDirectiveNode >> initialize [
 	super initialize.
 	names := OrderedCollection new: 2.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCIgnoreVariableDirectiveNode >> isIgnoreDirective [
 	^ true
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCIgnoreVariableDirectiveNode >> names [
 	^ names
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCIgnoreVariableDirectiveNode >> names: anOrderedCollection [
 	names := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCIgnoreVariableDirectiveNode >> tokenVariables [
 	^ #(#ignoreVariablesToken #directiveStartToken #semicolon)
 ]
