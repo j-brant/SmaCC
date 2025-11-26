@@ -1,55 +1,56 @@
 Class {
-	#name : #SmaCCStartDirectiveNode,
-	#superclass : #SmaCCDirectiveNode,
+	#name : 'SmaCCStartDirectiveNode',
+	#superclass : 'SmaCCDirectiveNode',
 	#instVars : [
 		'startToken',
 		'symbols'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCStartDirectiveNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitStartDirective: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCStartDirectiveNode >> compositeTokenVariables [
 	^ #(#symbols)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 SmaCCStartDirectiveNode >> initialize [
 	super initialize.
 	symbols := OrderedCollection new: 2.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCStartDirectiveNode >> isStartDirective [
 	^ true
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCStartDirectiveNode >> startToken [
 	^ startToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCStartDirectiveNode >> startToken: aSmaCCToken [
 	startToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCStartDirectiveNode >> symbols [
 	^ symbols
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCStartDirectiveNode >> symbols: anOrderedCollection [
 	symbols := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCStartDirectiveNode >> tokenVariables [
 	^ #(#startToken #directiveStartToken #semicolon)
 ]

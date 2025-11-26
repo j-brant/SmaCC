@@ -1,28 +1,29 @@
 Class {
-	#name : #SmaCCTokenRegexNode,
-	#superclass : #SmaCCRegexNode,
+	#name : 'SmaCCTokenRegexNode',
+	#superclass : 'SmaCCRegexNode',
 	#instVars : [
 		'name'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCTokenRegexNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitTokenRegex: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCTokenRegexNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCTokenRegexNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCTokenRegexNode >> tokenVariables [
 	^ #(#name)
 ]

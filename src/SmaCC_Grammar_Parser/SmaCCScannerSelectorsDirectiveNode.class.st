@@ -1,50 +1,51 @@
 Class {
-	#name : #SmaCCScannerSelectorsDirectiveNode,
-	#superclass : #SmaCCDirectiveNode,
+	#name : 'SmaCCScannerSelectorsDirectiveNode',
+	#superclass : 'SmaCCDirectiveNode',
 	#instVars : [
 		'scannerSelectorsToken',
 		'symbols'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCScannerSelectorsDirectiveNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitScannerSelectorsDirective: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCScannerSelectorsDirectiveNode >> compositeTokenVariables [
 	^ #(#symbols)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 SmaCCScannerSelectorsDirectiveNode >> initialize [
 	super initialize.
 	symbols := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCScannerSelectorsDirectiveNode >> scannerSelectorsToken [
 	^ scannerSelectorsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCScannerSelectorsDirectiveNode >> scannerSelectorsToken: aSmaCCToken [
 	scannerSelectorsToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCScannerSelectorsDirectiveNode >> symbols [
 	^ symbols
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCScannerSelectorsDirectiveNode >> symbols: anOrderedCollection [
 	symbols := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCScannerSelectorsDirectiveNode >> tokenVariables [
 	^ #(#scannerSelectorsToken #directiveStartToken #semicolon)
 ]

@@ -1,55 +1,56 @@
 Class {
-	#name : #SmaCCIdDirectiveNode,
-	#superclass : #SmaCCDirectiveNode,
+	#name : 'SmaCCIdDirectiveNode',
+	#superclass : 'SmaCCDirectiveNode',
 	#instVars : [
 		'idToken',
 		'names'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCIdDirectiveNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitIdDirective: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCIdDirectiveNode >> compositeTokenVariables [
 	^ #(#names)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCIdDirectiveNode >> idToken [
 	^ idToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCIdDirectiveNode >> idToken: aSmaCCToken [
 	idToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 SmaCCIdDirectiveNode >> initialize [
 	super initialize.
 	names := OrderedCollection new: 2.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCIdDirectiveNode >> isIdDirective [
 	^ true
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCIdDirectiveNode >> names [
 	^ names
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCIdDirectiveNode >> names: anOrderedCollection [
 	names := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCIdDirectiveNode >> tokenVariables [
 	^ #(#idToken #directiveStartToken #semicolon)
 ]

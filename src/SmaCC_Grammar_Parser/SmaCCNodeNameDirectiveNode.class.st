@@ -1,44 +1,45 @@
 Class {
-	#name : #SmaCCNodeNameDirectiveNode,
-	#superclass : #SmaCCDirectiveNode,
+	#name : 'SmaCCNodeNameDirectiveNode',
+	#superclass : 'SmaCCDirectiveNode',
 	#instVars : [
 		'typeToken',
 		'name'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCNodeNameDirectiveNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitNodeNameDirective: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCNodeNameDirectiveNode >> isNameDirective [
 	^ true
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCNodeNameDirectiveNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCNodeNameDirectiveNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCNodeNameDirectiveNode >> tokenVariables [
 	^ #(#typeToken #name #directiveStartToken #semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCNodeNameDirectiveNode >> typeToken [
 	^ typeToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCNodeNameDirectiveNode >> typeToken: aSmaCCToken [
 	typeToken := aSmaCCToken
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCAttributeDirectiveNode,
-	#superclass : #SmaCCDirectiveNode,
+	#name : 'SmaCCAttributeDirectiveNode',
+	#superclass : 'SmaCCDirectiveNode',
 	#instVars : [
 		'attributesToken',
 		'classname',
@@ -8,81 +8,82 @@ Class {
 		'names',
 		'rightParen'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAttributeDirectiveNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitAttributeDirective: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAttributeDirectiveNode >> attributesToken [
 	^ attributesToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAttributeDirectiveNode >> attributesToken: aSmaCCToken [
 	attributesToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAttributeDirectiveNode >> classname [
 	^ classname
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAttributeDirectiveNode >> classname: aSmaCCToken [
 	classname := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAttributeDirectiveNode >> compositeTokenVariables [
 	^ #(#names)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 SmaCCAttributeDirectiveNode >> initialize [
 	super initialize.
 	names := OrderedCollection new: 2.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCAttributeDirectiveNode >> isAttributeDirective [
 	^ true
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAttributeDirectiveNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAttributeDirectiveNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAttributeDirectiveNode >> names [
 	^ names
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAttributeDirectiveNode >> names: anOrderedCollection [
 	names := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAttributeDirectiveNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAttributeDirectiveNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAttributeDirectiveNode >> tokenVariables [
 	^ #(#attributesToken #classname #leftParen #rightParen #directiveStartToken #semicolon)
 ]

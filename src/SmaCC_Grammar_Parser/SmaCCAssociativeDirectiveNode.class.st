@@ -1,57 +1,58 @@
 Class {
-	#name : #SmaCCAssociativeDirectiveNode,
-	#superclass : #SmaCCDirectiveNode,
+	#name : 'SmaCCAssociativeDirectiveNode',
+	#superclass : 'SmaCCDirectiveNode',
 	#instVars : [
 		'typeToken',
 		'symbols'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAssociativeDirectiveNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitAssociativeDirective: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAssociativeDirectiveNode >> compositeNodeVariables [
 	^ #(#symbols)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 SmaCCAssociativeDirectiveNode >> initialize [
 	super initialize.
 	symbols := OrderedCollection new: 2.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCAssociativeDirectiveNode >> isAssociativeDirective [
 	^ true
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAssociativeDirectiveNode >> symbols [
 	^ symbols
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAssociativeDirectiveNode >> symbols: anOrderedCollection [
 	self setParents: self symbols to: nil.
 	symbols := anOrderedCollection.
 	self setParents: self symbols to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAssociativeDirectiveNode >> tokenVariables [
 	^ #(#typeToken #directiveStartToken #semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAssociativeDirectiveNode >> typeToken [
 	^ typeToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCAssociativeDirectiveNode >> typeToken: aSmaCCToken [
 	typeToken := aSmaCCToken
 ]

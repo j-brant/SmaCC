@@ -1,42 +1,43 @@
 Class {
-	#name : #SmaCCSymbolNode,
-	#superclass : #SmaCCDefinitionNode,
+	#name : 'SmaCCSymbolNode',
+	#superclass : 'SmaCCDefinitionNode',
 	#instVars : [
 		'variableNameToken'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCSymbolNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitSymbol: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbolNode >> allPossibilities [
 	^ 1
 ]
 
-{ #category : #iterating }
+{ #category : 'iterating' }
 SmaCCSymbolNode >> alternativesDo: aBlock [
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbolNode >> possibilities [
 	^ 1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCSymbolNode >> tokenVariables [
 	^ #(#variableNameToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCSymbolNode >> variableNameToken [
 	^ variableNameToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCSymbolNode >> variableNameToken: aSmaCCToken [
 	variableNameToken := aSmaCCToken
 ]

@@ -1,28 +1,29 @@
 Class {
-	#name : #SmaCCCodeProductionExpressionNode,
-	#superclass : #SmaCCProductionExpressionNode,
+	#name : 'SmaCCCodeProductionExpressionNode',
+	#superclass : 'SmaCCProductionExpressionNode',
 	#instVars : [
 		'code'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCCodeProductionExpressionNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitCodeProductionExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCCodeProductionExpressionNode >> code [
 	^ code
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCCodeProductionExpressionNode >> code: aSmaCCToken [
 	code := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCCodeProductionExpressionNode >> tokenVariables [
 	^ #(#code)
 ]

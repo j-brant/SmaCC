@@ -1,15 +1,16 @@
 Class {
-	#name : #SmaCCDefinitionNode,
-	#superclass : #SmaCCParseNode,
-	#category : #'SmaCC_Grammar_Parser'
+	#name : 'SmaCCDefinitionNode',
+	#superclass : 'SmaCCParseNode',
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitDefinition: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDefinitionNode >> allReferencesTo: aString [
 	| refs |
 	refs := OrderedCollection new.
@@ -21,72 +22,72 @@ SmaCCDefinitionNode >> allReferencesTo: aString [
 	^ refs
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCDefinitionNode >> isAssociativeDirective [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCDefinitionNode >> isAttributeDirective [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCDefinitionNode >> isDirective [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCDefinitionNode >> isFlagDirective [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCDefinitionNode >> isGroup [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCDefinitionNode >> isHierarchyDirective [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCDefinitionNode >> isIdDirective [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCDefinitionNode >> isIgnoreDirective [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCDefinitionNode >> isNameDirective [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCDefinitionNode >> isProductionRule [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCDefinitionNode >> isScopeDirective [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCDefinitionNode >> isStartDirective [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCDefinitionNode >> isTokenRule [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDefinitionNode >> lookupRule: aString [
 	self topParent rules
 		do: [ :each | 
@@ -96,18 +97,18 @@ SmaCCDefinitionNode >> lookupRule: aString [
 	^ nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDefinitionNode >> rule [
 	^ self
 		lookupNode: [ :node | (node isKindOf: SmaCCProductionRuleNode) or: [ node isKindOf: SmaCCTokenRuleNode ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDefinitionNode >> ruleReferences [
 	^ #()
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDefinitionNode >> ruleReferencesTo: aString [
 	| rules |
 	rules := Set new.
@@ -117,7 +118,7 @@ SmaCCDefinitionNode >> ruleReferencesTo: aString [
 		asSortedCollection: [ :a :b | a startPosition < b startPosition ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDefinitionNode >> uses [
 	| rules |
 	rules := Set new.

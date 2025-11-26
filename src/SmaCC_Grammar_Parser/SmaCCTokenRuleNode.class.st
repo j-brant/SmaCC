@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCTokenRuleNode,
-	#superclass : #SmaCCDefinitionNode,
+	#name : 'SmaCCTokenRuleNode',
+	#superclass : 'SmaCCDefinitionNode',
 	#instVars : [
 		'name',
 		'colon',
@@ -8,61 +8,62 @@ Class {
 		'semicolon',
 		'states'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCTokenRuleNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitTokenRule: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCTokenRuleNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCTokenRuleNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCTokenRuleNode >> compositeTokenVariables [
 	^ #(#states)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 SmaCCTokenRuleNode >> initialize [
 	super initialize.
 	states := OrderedCollection new: 2.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCTokenRuleNode >> isTokenRule [
 	^ true
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCTokenRuleNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCTokenRuleNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCTokenRuleNode >> nodeVariables [
 	^ #(#regex)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCTokenRuleNode >> regex [
 	^ regex
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCTokenRuleNode >> regex: aSmaCCRegexNode [
 	self regex notNil
 		ifTrue: [ self regex parent: nil ].
@@ -71,27 +72,27 @@ SmaCCTokenRuleNode >> regex: aSmaCCRegexNode [
 		ifTrue: [ self regex parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCTokenRuleNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCTokenRuleNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCTokenRuleNode >> states [
 	^ states
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCTokenRuleNode >> states: anOrderedCollection [
 	states := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCTokenRuleNode >> tokenVariables [
 	^ #(#name #colon #semicolon)
 ]

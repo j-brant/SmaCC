@@ -1,44 +1,45 @@
 Class {
-	#name : #SmaCCDirectiveNode,
-	#superclass : #SmaCCDefinitionNode,
+	#name : 'SmaCCDirectiveNode',
+	#superclass : 'SmaCCDefinitionNode',
 	#instVars : [
 		'directiveStartToken',
 		'semicolon'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDirectiveNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitDirective: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDirectiveNode >> directiveStartToken [
 	^ directiveStartToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDirectiveNode >> directiveStartToken: aSmaCCToken [
 	directiveStartToken := aSmaCCToken
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCDirectiveNode >> isDirective [
 	^ true
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDirectiveNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDirectiveNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDirectiveNode >> tokenVariables [
 	^ #(#directiveStartToken #semicolon)
 ]

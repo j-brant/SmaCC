@@ -1,39 +1,40 @@
 Class {
-	#name : #SmaCCDefinitionErrorNode,
-	#superclass : #SmaCCDefinitionNode,
+	#name : 'SmaCCDefinitionErrorNode',
+	#superclass : 'SmaCCDefinitionNode',
 	#instVars : [
 		'smaccError',
 		'semicolon'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionErrorNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitDefinitionError: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionErrorNode >> nodeVariables [
 	^ #(#smaccError)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionErrorNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionErrorNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionErrorNode >> smaccError [
 	^ smaccError
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionErrorNode >> smaccError: aSmaCCErrorNode [
 	self smaccError notNil
 		ifTrue: [ self smaccError parent: nil ].
@@ -42,7 +43,7 @@ SmaCCDefinitionErrorNode >> smaccError: aSmaCCErrorNode [
 		ifTrue: [ self smaccError parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCDefinitionErrorNode >> tokenVariables [
 	^ #(#semicolon)
 ]

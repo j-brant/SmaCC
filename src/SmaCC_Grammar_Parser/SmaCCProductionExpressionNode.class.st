@@ -1,49 +1,50 @@
 Class {
-	#name : #SmaCCProductionExpressionNode,
-	#superclass : #SmaCCDefinitionNode,
+	#name : 'SmaCCProductionExpressionNode',
+	#superclass : 'SmaCCDefinitionNode',
 	#instVars : [
 		'terms'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCProductionExpressionNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitProductionExpression: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCProductionExpressionNode >> allPossibilities [
 	^ terms inject: 1 into: [ :sum :each | sum * each allPossibilities ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCProductionExpressionNode >> compositeNodeVariables [
 	^ #(#terms)
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCProductionExpressionNode >> hasReductionExpression [
 	^ self class ~= SmaCCProductionExpressionNode
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 SmaCCProductionExpressionNode >> initialize [
 	super initialize.
 	terms := OrderedCollection new: 2.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCProductionExpressionNode >> isEmptyExpression [
 	^ self terms isEmpty
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCProductionExpressionNode >> terms [
 	^ terms
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCProductionExpressionNode >> terms: anOrderedCollection [
 	self setParents: self terms to: nil.
 	terms := anOrderedCollection.

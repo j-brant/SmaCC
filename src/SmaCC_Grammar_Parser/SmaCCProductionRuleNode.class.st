@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCProductionRuleNode,
-	#superclass : #SmaCCDefinitionNode,
+	#name : 'SmaCCProductionRuleNode',
+	#superclass : 'SmaCCDefinitionNode',
 	#instVars : [
 		'name',
 		'colon',
@@ -8,89 +8,90 @@ Class {
 		'expressions',
 		'semicolon'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCProductionRuleNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitProductionRule: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCProductionRuleNode >> barTokens [
 	^ barTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCProductionRuleNode >> barTokens: anOrderedCollection [
 	barTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCProductionRuleNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCProductionRuleNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCProductionRuleNode >> compositeNodeVariables [
 	^ #(#expressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCProductionRuleNode >> compositeTokenVariables [
 	^ #(#barTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCProductionRuleNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCProductionRuleNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 SmaCCProductionRuleNode >> initialize [
 	super initialize.
 	barTokens := OrderedCollection new: 2.
 	expressions := OrderedCollection new: 2.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCProductionRuleNode >> isProductionRule [
 	^ true
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCProductionRuleNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCProductionRuleNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCProductionRuleNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCProductionRuleNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCProductionRuleNode >> tokenVariables [
 	^ #(#name #colon #semicolon)
 ]

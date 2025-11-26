@@ -1,50 +1,51 @@
 Class {
-	#name : #SmaCCClassProductionExpressionNode,
-	#superclass : #SmaCCProductionExpressionNode,
+	#name : 'SmaCCClassProductionExpressionNode',
+	#superclass : 'SmaCCProductionExpressionNode',
 	#instVars : [
 		'left',
 		'classname',
 		'right'
 	],
-	#category : #'SmaCC_Grammar_Parser'
+	#category : 'SmaCC_Grammar_Parser',
+	#package : 'SmaCC_Grammar_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCClassProductionExpressionNode >> acceptVisitor: aDefinitionVisitor [
 	^ aDefinitionVisitor visitClassProductionExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCClassProductionExpressionNode >> classname [
 	^ classname
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCClassProductionExpressionNode >> classname: aSmaCCToken [
 	classname := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCClassProductionExpressionNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCClassProductionExpressionNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCClassProductionExpressionNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCClassProductionExpressionNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCClassProductionExpressionNode >> tokenVariables [
 	^ #(#left #classname #right)
 ]
