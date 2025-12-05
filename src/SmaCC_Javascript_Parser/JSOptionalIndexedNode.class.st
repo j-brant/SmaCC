@@ -1,55 +1,56 @@
 Class {
-	#name : #JSOptionalIndexedNode,
-	#superclass : #JSOptionalNode,
+	#name : 'JSOptionalIndexedNode',
+	#superclass : 'JSOptionalNode',
 	#instVars : [
 		'leftBracket',
 		'value',
 		'rightBracket'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalIndexedNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitOptionalIndexed: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalIndexedNode >> ignoredTokenVariables [
 	^ #(#leftBracket #rightBracket)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalIndexedNode >> leftBracket [
 	^ leftBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalIndexedNode >> leftBracket: aSmaCCToken [
 	leftBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalIndexedNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalIndexedNode >> rightBracket [
 	^ rightBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalIndexedNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalIndexedNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalIndexedNode >> value: aJSExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aJSExpressionNode.

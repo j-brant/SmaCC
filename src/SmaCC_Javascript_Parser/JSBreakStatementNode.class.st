@@ -1,62 +1,63 @@
 Class {
-	#name : #JSBreakStatementNode,
-	#superclass : #JSStatementNode,
+	#name : 'JSBreakStatementNode',
+	#superclass : 'JSStatementNode',
 	#instVars : [
 		'breakToken',
 		'label',
 		'semicolon'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBreakStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBreakStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBreakStatementNode >> breakToken [
 	^ breakToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBreakStatementNode >> breakToken: aSmaCCToken [
 	breakToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBreakStatementNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBreakStatementNode >> label [
 	^ label
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBreakStatementNode >> label: aJSNameExpressionNode [
 	self label notNil ifTrue: [ self label parent: nil ].
 	label := aJSNameExpressionNode.
 	self label notNil ifTrue: [ self label parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBreakStatementNode >> nodeVariables [
 	^ #(#label)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBreakStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBreakStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBreakStatementNode >> tokenVariables [
 	^ #(#breakToken)
 ]

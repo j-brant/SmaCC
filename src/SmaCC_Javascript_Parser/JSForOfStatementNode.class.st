@@ -1,6 +1,6 @@
 Class {
-	#name : #JSForOfStatementNode,
-	#superclass : #JSStatementNode,
+	#name : 'JSForOfStatementNode',
+	#superclass : 'JSStatementNode',
 	#instVars : [
 		'forToken',
 		'left',
@@ -12,119 +12,120 @@ Class {
 		'varToken',
 		'awaitToken'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForOfStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitForOfStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForOfStatementNode >> awaitToken [
 	^ awaitToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForOfStatementNode >> awaitToken: aSmaCCToken [
 	awaitToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForOfStatementNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForOfStatementNode >> expression: aJSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aJSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForOfStatementNode >> forToken [
 	^ forToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForOfStatementNode >> forToken: aSmaCCToken [
 	forToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForOfStatementNode >> ignoredTokenVariables [
 	^ #(#left #right)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForOfStatementNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForOfStatementNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForOfStatementNode >> nodeVariables [
 	^ #(#variable #expression #statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForOfStatementNode >> ofToken [
 	^ ofToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForOfStatementNode >> ofToken: aSmaCCToken [
 	ofToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForOfStatementNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForOfStatementNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForOfStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForOfStatementNode >> statement: aJSStatementNode [
 	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aJSStatementNode.
 	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForOfStatementNode >> tokenVariables [
 	^ #(#forToken #ofToken #varToken #awaitToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForOfStatementNode >> varToken [
 	^ varToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForOfStatementNode >> varToken: aSmaCCToken [
 	varToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForOfStatementNode >> variable [
 	^ variable
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForOfStatementNode >> variable: aJSProgramNode [
 	self variable notNil ifTrue: [ self variable parent: nil ].
 	variable := aJSProgramNode.

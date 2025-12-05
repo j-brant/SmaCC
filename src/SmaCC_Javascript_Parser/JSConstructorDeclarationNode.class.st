@@ -1,6 +1,6 @@
 Class {
-	#name : #JSConstructorDeclarationNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSConstructorDeclarationNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'decorators',
 		'constructorToken',
@@ -11,123 +11,124 @@ Class {
 		'modifier',
 		'semicolon'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructorDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitConstructorDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructorDeclarationNode >> compositeNodeVariables [
 	^ #(#decorators #statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructorDeclarationNode >> constructorToken [
 	^ constructorToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructorDeclarationNode >> constructorToken: aSmaCCToken [
 	constructorToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructorDeclarationNode >> decorators [
 	^ decorators
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructorDeclarationNode >> decorators: anOrderedCollection [
 	self setParents: self decorators to: nil.
 	decorators := anOrderedCollection.
 	self setParents: self decorators to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructorDeclarationNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace #semicolon)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSConstructorDeclarationNode >> initialize [
 	super initialize.
 	decorators := OrderedCollection new: 2.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructorDeclarationNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructorDeclarationNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructorDeclarationNode >> modifier [
 	^ modifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructorDeclarationNode >> modifier: aSmaCCToken [
 	modifier := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructorDeclarationNode >> nodeVariables [
 	^ #(#signature)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructorDeclarationNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructorDeclarationNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructorDeclarationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructorDeclarationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructorDeclarationNode >> signature [
 	^ signature
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructorDeclarationNode >> signature: aJSCallSignatureNode [
 	self signature notNil ifTrue: [ self signature parent: nil ].
 	signature := aJSCallSignatureNode.
 	self signature notNil ifTrue: [ self signature parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructorDeclarationNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructorDeclarationNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructorDeclarationNode >> tokenVariables [
 	^ #(#constructorToken #modifier)
 ]

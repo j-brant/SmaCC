@@ -1,6 +1,6 @@
 Class {
-	#name : #JSOptionalArgumentsNode,
-	#superclass : #JSOptionalNode,
+	#name : 'JSOptionalArgumentsNode',
+	#superclass : 'JSOptionalNode',
 	#instVars : [
 		'left',
 		'right',
@@ -10,67 +10,68 @@ Class {
 		'commas',
 		'typeArguments'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalArgumentsNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitOptionalArguments: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalArgumentsNode >> arguments [
 	^ arguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalArgumentsNode >> arguments: anOrderedCollection [
 	self setParents: self arguments to: nil.
 	arguments := anOrderedCollection.
 	self setParents: self arguments to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalArgumentsNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalArgumentsNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalArgumentsNode >> compositeNodeVariables [
 	^ #(#arguments #varArguments)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalArgumentsNode >> compositeTokenVariables [
 	^ #(#ellipsises)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalArgumentsNode >> ellipsises [
 	^ ellipsises
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalArgumentsNode >> ellipsises: anOrderedCollection [
 	ellipsises := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalArgumentsNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalArgumentsNode >> ignoredTokenVariables [
 	^ #(#left #right)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSOptionalArgumentsNode >> initialize [
 	super initialize.
 	arguments := OrderedCollection new: 2.
@@ -79,49 +80,49 @@ JSOptionalArgumentsNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalArgumentsNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalArgumentsNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalArgumentsNode >> nodeVariables [
 	^ #(#typeArguments)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalArgumentsNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalArgumentsNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalArgumentsNode >> typeArguments [
 	^ typeArguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalArgumentsNode >> typeArguments: aJSTypeArgumentsNode [
 	self typeArguments notNil ifTrue: [ self typeArguments parent: nil ].
 	typeArguments := aJSTypeArgumentsNode.
 	self typeArguments notNil ifTrue: [ self typeArguments parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalArgumentsNode >> varArguments [
 	^ varArguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalArgumentsNode >> varArguments: anOrderedCollection [
 	self setParents: self varArguments to: nil.
 	varArguments := anOrderedCollection.

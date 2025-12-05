@@ -1,80 +1,81 @@
 Class {
-	#name : #JSTypeParametersNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSTypeParametersNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'leftAngle',
 		'parameters',
 		'commas',
 		'rightAngle'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeParametersNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTypeParameters: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeParametersNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeParametersNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeParametersNode >> compositeNodeVariables [
 	^ #(#parameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeParametersNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSTypeParametersNode >> initialize [
 	super initialize.
 	parameters := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeParametersNode >> leftAngle [
 	^ leftAngle
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeParametersNode >> leftAngle: aSmaCCToken [
 	leftAngle := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeParametersNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeParametersNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeParametersNode >> rightAngle [
 	^ rightAngle
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeParametersNode >> rightAngle: aSmaCCToken [
 	rightAngle := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeParametersNode >> tokenVariables [
 	^ #(#leftAngle #rightAngle)
 ]

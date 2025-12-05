@@ -1,6 +1,6 @@
 Class {
-	#name : #JSForInStatementNode,
-	#superclass : #JSStatementNode,
+	#name : 'JSForInStatementNode',
+	#superclass : 'JSStatementNode',
 	#instVars : [
 		'forToken',
 		'left',
@@ -11,109 +11,110 @@ Class {
 		'statement',
 		'varToken'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForInStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitForInStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForInStatementNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForInStatementNode >> expression: aJSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aJSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForInStatementNode >> forToken [
 	^ forToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForInStatementNode >> forToken: aSmaCCToken [
 	forToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForInStatementNode >> ignoredTokenVariables [
 	^ #(#left #right)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForInStatementNode >> inToken [
 	^ inToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForInStatementNode >> inToken: aSmaCCToken [
 	inToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForInStatementNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForInStatementNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForInStatementNode >> nodeVariables [
 	^ #(#variable #expression #statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForInStatementNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForInStatementNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForInStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForInStatementNode >> statement: aJSStatementNode [
 	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aJSStatementNode.
 	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForInStatementNode >> tokenVariables [
 	^ #(#forToken #inToken #varToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForInStatementNode >> varToken [
 	^ varToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForInStatementNode >> varToken: aSmaCCToken [
 	varToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForInStatementNode >> variable [
 	^ variable
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSForInStatementNode >> variable: aJSProgramNode [
 	self variable notNil ifTrue: [ self variable parent: nil ].
 	variable := aJSProgramNode.

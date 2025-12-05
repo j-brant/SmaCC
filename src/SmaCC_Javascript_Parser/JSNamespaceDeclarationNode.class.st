@@ -1,6 +1,6 @@
 Class {
-	#name : #JSNamespaceDeclarationNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSNamespaceDeclarationNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'namespaceToken',
 		'names',
@@ -10,52 +10,53 @@ Class {
 		'rightBrace',
 		'globalToken'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNamespaceDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNamespaceDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNamespaceDeclarationNode >> compositeNodeVariables [
 	^ #(#names #elements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNamespaceDeclarationNode >> compositeTokenVariables [
 	^ #(#periodTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNamespaceDeclarationNode >> elements [
 	^ elements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNamespaceDeclarationNode >> elements: anOrderedCollection [
 	self setParents: self elements to: nil.
 	elements := anOrderedCollection.
 	self setParents: self elements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNamespaceDeclarationNode >> globalToken [
 	^ globalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNamespaceDeclarationNode >> globalToken: aSmaCCToken [
 	globalToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNamespaceDeclarationNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSNamespaceDeclarationNode >> initialize [
 	super initialize.
 	names := OrderedCollection new: 2.
@@ -63,59 +64,59 @@ JSNamespaceDeclarationNode >> initialize [
 	elements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNamespaceDeclarationNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNamespaceDeclarationNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNamespaceDeclarationNode >> names [
 	^ names
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNamespaceDeclarationNode >> names: anOrderedCollection [
 	self setParents: self names to: nil.
 	names := anOrderedCollection.
 	self setParents: self names to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNamespaceDeclarationNode >> namespaceToken [
 	^ namespaceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNamespaceDeclarationNode >> namespaceToken: aSmaCCToken [
 	namespaceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNamespaceDeclarationNode >> periodTokens [
 	^ periodTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNamespaceDeclarationNode >> periodTokens: anOrderedCollection [
 	periodTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNamespaceDeclarationNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNamespaceDeclarationNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNamespaceDeclarationNode >> tokenVariables [
 	^ #(#namespaceToken #globalToken)
 ]

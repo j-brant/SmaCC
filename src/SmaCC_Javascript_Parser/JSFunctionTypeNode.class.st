@@ -1,6 +1,6 @@
 Class {
-	#name : #JSFunctionTypeNode,
-	#superclass : #JSTypeNode,
+	#name : 'JSFunctionTypeNode',
+	#superclass : 'JSTypeNode',
 	#instVars : [
 		'restParameter',
 		'parameters',
@@ -9,103 +9,104 @@ Class {
 		'type',
 		'typeParameters'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFunctionTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFunctionType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFunctionTypeNode >> arrow [
 	^ arrow
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFunctionTypeNode >> arrow: aSmaCCToken [
 	arrow := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFunctionTypeNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFunctionTypeNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFunctionTypeNode >> compositeNodeVariables [
 	^ #(#parameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFunctionTypeNode >> ignoredCompositeTokenVariables [
 	^ #(#commas #leftParens #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSFunctionTypeNode >> initialize [
 	super initialize.
 	parameters := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFunctionTypeNode >> nodeVariables [
 	^ #(#restParameter #type #typeParameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFunctionTypeNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFunctionTypeNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFunctionTypeNode >> restParameter [
 	^ restParameter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFunctionTypeNode >> restParameter: aJSRestVariableDeclarationNode [
 	self restParameter notNil ifTrue: [ self restParameter parent: nil ].
 	restParameter := aJSRestVariableDeclarationNode.
 	self restParameter notNil ifTrue: [ self restParameter parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFunctionTypeNode >> tokenVariables [
 	^ #(#arrow)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFunctionTypeNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFunctionTypeNode >> type: aJSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aJSTypeNode.
 	self type notNil ifTrue: [ self type parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFunctionTypeNode >> typeParameters [
 	^ typeParameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFunctionTypeNode >> typeParameters: aJSTypeParametersNode [
 	self typeParameters notNil ifTrue: [ self typeParameters parent: nil ].
 	typeParameters := aJSTypeParametersNode.

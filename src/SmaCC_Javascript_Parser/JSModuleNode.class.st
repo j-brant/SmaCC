@@ -1,34 +1,35 @@
 Class {
-	#name : #JSModuleNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSModuleNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'items'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSModuleNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitModule: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSModuleNode >> compositeNodeVariables [
 	^ #(#items)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSModuleNode >> initialize [
 	super initialize.
 	items := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSModuleNode >> items [
 	^ items
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSModuleNode >> items: anOrderedCollection [
 	self setParents: self items to: nil.
 	items := anOrderedCollection.

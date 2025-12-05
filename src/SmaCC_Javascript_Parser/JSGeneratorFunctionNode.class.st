@@ -1,28 +1,29 @@
 Class {
-	#name : #JSGeneratorFunctionNode,
-	#superclass : #JSFunctionNode,
+	#name : 'JSGeneratorFunctionNode',
+	#superclass : 'JSFunctionNode',
 	#instVars : [
 		'star'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSGeneratorFunctionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitGeneratorFunction: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSGeneratorFunctionNode >> star [
 	^ star
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSGeneratorFunctionNode >> star: aSmaCCToken [
 	star := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSGeneratorFunctionNode >> tokenVariables [
 	^ #(#star #functionToken)
 ]

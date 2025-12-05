@@ -1,46 +1,47 @@
 Class {
-	#name : #JSTypeNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSTypeNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'leftParens',
 		'rightParens'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeNode >> ignoredCompositeTokenVariables [
 	^ #(#leftParens #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSTypeNode >> initialize [
 	super initialize.
 	leftParens := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeNode >> leftParens [
 	^ leftParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeNode >> leftParens: anOrderedCollection [
 	leftParens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeNode >> rightParens [
 	^ rightParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
 ]

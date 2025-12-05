@@ -1,51 +1,52 @@
 Class {
-	#name : #JSCommaExpressionNode,
-	#superclass : #JSExpressionNode,
+	#name : 'JSCommaExpressionNode',
+	#superclass : 'JSExpressionNode',
 	#instVars : [
 		'expressions',
 		'comma'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCommaExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCommaExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCommaExpressionNode >> comma [
 	^ comma
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCommaExpressionNode >> comma: aSmaCCToken [
 	comma := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCommaExpressionNode >> compositeNodeVariables [
 	^ #(#expressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCommaExpressionNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCommaExpressionNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCommaExpressionNode >> ignoredTokenVariables [
 	^ #(#comma)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSCommaExpressionNode >> initialize [
 	super initialize.
 	expressions := OrderedCollection new: 2.

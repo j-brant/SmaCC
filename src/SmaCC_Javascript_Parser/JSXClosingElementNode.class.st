@@ -1,68 +1,69 @@
 Class {
-	#name : #JSXClosingElementNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSXClosingElementNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'ltToken',
 		'slashToken',
 		'name',
 		'gtToken'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXClosingElementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitXClosingElement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXClosingElementNode >> gtToken [
 	^ gtToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXClosingElementNode >> gtToken: aSmaCCToken [
 	gtToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXClosingElementNode >> ltToken [
 	^ ltToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXClosingElementNode >> ltToken: aSmaCCToken [
 	ltToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXClosingElementNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXClosingElementNode >> name: aJSProgramNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSProgramNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXClosingElementNode >> nodeVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXClosingElementNode >> slashToken [
 	^ slashToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXClosingElementNode >> slashToken: aSmaCCToken [
 	slashToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXClosingElementNode >> tokenVariables [
 	^ #(#ltToken #slashToken #gtToken)
 ]

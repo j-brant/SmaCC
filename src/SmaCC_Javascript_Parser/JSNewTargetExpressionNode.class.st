@@ -1,50 +1,51 @@
 Class {
-	#name : #JSNewTargetExpressionNode,
-	#superclass : #JSExpressionNode,
+	#name : 'JSNewTargetExpressionNode',
+	#superclass : 'JSExpressionNode',
 	#instVars : [
 		'newToken',
 		'periodToken',
 		'targetToken'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNewTargetExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNewTargetExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNewTargetExpressionNode >> newToken [
 	^ newToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNewTargetExpressionNode >> newToken: aSmaCCToken [
 	newToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNewTargetExpressionNode >> periodToken [
 	^ periodToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNewTargetExpressionNode >> periodToken: aSmaCCToken [
 	periodToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNewTargetExpressionNode >> targetToken [
 	^ targetToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNewTargetExpressionNode >> targetToken: aSmaCCToken [
 	targetToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNewTargetExpressionNode >> tokenVariables [
 	^ #(#newToken #periodToken #targetToken)
 ]

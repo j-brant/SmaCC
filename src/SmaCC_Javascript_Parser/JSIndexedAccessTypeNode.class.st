@@ -1,68 +1,69 @@
 Class {
-	#name : #JSIndexedAccessTypeNode,
-	#superclass : #JSTypeNode,
+	#name : 'JSIndexedAccessTypeNode',
+	#superclass : 'JSTypeNode',
 	#instVars : [
 		'type',
 		'leftBracket',
 		'index',
 		'rightBracket'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexedAccessTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIndexedAccessType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexedAccessTypeNode >> ignoredTokenVariables [
 	^ #(#leftBracket #rightBracket)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexedAccessTypeNode >> index [
 	^ index
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexedAccessTypeNode >> index: aJSTypeNode [
 	self index notNil ifTrue: [ self index parent: nil ].
 	index := aJSTypeNode.
 	self index notNil ifTrue: [ self index parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexedAccessTypeNode >> leftBracket [
 	^ leftBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexedAccessTypeNode >> leftBracket: aSmaCCToken [
 	leftBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexedAccessTypeNode >> nodeVariables [
 	^ #(#type #index)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexedAccessTypeNode >> rightBracket [
 	^ rightBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexedAccessTypeNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexedAccessTypeNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexedAccessTypeNode >> type: aJSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aJSTypeNode.

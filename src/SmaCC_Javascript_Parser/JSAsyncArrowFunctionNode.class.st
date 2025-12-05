@@ -1,55 +1,56 @@
 Class {
-	#name : #JSAsyncArrowFunctionNode,
-	#superclass : #JSArrowFunctionNode,
+	#name : 'JSAsyncArrowFunctionNode',
+	#superclass : 'JSArrowFunctionNode',
 	#instVars : [
 		'asyncToken',
 		'leftBrace',
 		'rightBrace'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAsyncArrowFunctionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAsyncArrowFunction: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAsyncArrowFunctionNode >> asyncToken [
 	^ asyncToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAsyncArrowFunctionNode >> asyncToken: aSmaCCToken [
 	asyncToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAsyncArrowFunctionNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace #left #right #colonToken #leftBracket #rightBracket)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAsyncArrowFunctionNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAsyncArrowFunctionNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAsyncArrowFunctionNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAsyncArrowFunctionNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAsyncArrowFunctionNode >> tokenVariables [
 	^ #(#asyncToken #arrow)
 ]

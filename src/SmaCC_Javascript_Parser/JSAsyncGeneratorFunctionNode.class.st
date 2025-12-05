@@ -1,28 +1,29 @@
 Class {
-	#name : #JSAsyncGeneratorFunctionNode,
-	#superclass : #JSGeneratorFunctionNode,
+	#name : 'JSAsyncGeneratorFunctionNode',
+	#superclass : 'JSGeneratorFunctionNode',
 	#instVars : [
 		'asyncToken'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAsyncGeneratorFunctionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAsyncGeneratorFunction: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAsyncGeneratorFunctionNode >> asyncToken [
 	^ asyncToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAsyncGeneratorFunctionNode >> asyncToken: aSmaCCToken [
 	asyncToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAsyncGeneratorFunctionNode >> tokenVariables [
 	^ #(#asyncToken #star #functionToken)
 ]

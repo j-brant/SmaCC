@@ -1,6 +1,6 @@
 Class {
-	#name : #JSExportDeclarationNode,
-	#superclass : #JSTSExportNode,
+	#name : 'JSExportDeclarationNode',
+	#superclass : 'JSTSExportNode',
 	#instVars : [
 		'star',
 		'asToken',
@@ -17,188 +17,189 @@ Class {
 		'defaultToken',
 		'typeToken'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExportDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> asToken [
 	^ asToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> asToken: aSmaCCToken [
 	asToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> compositeNodeVariables [
 	^ #(#specifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> declaration [
 	^ declaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> declaration: aJSProgramNode [
 	self declaration notNil ifTrue: [ self declaration parent: nil ].
 	declaration := aJSProgramNode.
 	self declaration notNil ifTrue: [ self declaration parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> defaultToken [
 	^ defaultToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> defaultToken: aSmaCCToken [
 	defaultToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> from [
 	^ from
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> from: aSmaCCToken [
 	from := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> fromToken [
 	^ fromToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> fromToken: aSmaCCToken [
 	fromToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace #semicolon)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSExportDeclarationNode >> initialize [
 	super initialize.
 	specifiers := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> nodeVariables [
 	^ #(#statement #declaration)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> specifiers [
 	^ specifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> specifiers: anOrderedCollection [
 	self setParents: self specifiers to: nil.
 	specifiers := anOrderedCollection.
 	self setParents: self specifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> star [
 	^ star
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> star: aSmaCCToken [
 	star := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> statement: aJSProgramNode [
 	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aJSProgramNode.
 	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> tokenVariables [
 	^ #(#star #asToken #name #fromToken #from #defaultToken #typeToken #exportToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> typeToken [
 	^ typeToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationNode >> typeToken: aSmaCCToken [
 	typeToken := aSmaCCToken
 ]

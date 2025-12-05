@@ -1,6 +1,6 @@
 Class {
-	#name : #JSTryStatementNode,
-	#superclass : #JSStatementNode,
+	#name : 'JSTryStatementNode',
+	#superclass : 'JSStatementNode',
 	#instVars : [
 		'tryToken',
 		'tryBlock',
@@ -12,123 +12,124 @@ Class {
 		'finallyToken',
 		'finallyBlock'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTryStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTryStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTryStatementNode >> catchBlock [
 	^ catchBlock
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTryStatementNode >> catchBlock: aJSBlockStatementNode [
 	self catchBlock notNil ifTrue: [ self catchBlock parent: nil ].
 	catchBlock := aJSBlockStatementNode.
 	self catchBlock notNil ifTrue: [ self catchBlock parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTryStatementNode >> catchToken [
 	^ catchToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTryStatementNode >> catchToken: aSmaCCToken [
 	catchToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTryStatementNode >> exceptionType [
 	^ exceptionType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTryStatementNode >> exceptionType: aJSProgramNode [
 	self exceptionType notNil ifTrue: [ self exceptionType parent: nil ].
 	exceptionType := aJSProgramNode.
 	self exceptionType notNil ifTrue: [ self exceptionType parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTryStatementNode >> finallyBlock [
 	^ finallyBlock
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTryStatementNode >> finallyBlock: aJSBlockStatementNode [
 	self finallyBlock notNil ifTrue: [ self finallyBlock parent: nil ].
 	finallyBlock := aJSBlockStatementNode.
 	self finallyBlock notNil ifTrue: [ self finallyBlock parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTryStatementNode >> finallyToken [
 	^ finallyToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTryStatementNode >> finallyToken: aSmaCCToken [
 	finallyToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTryStatementNode >> ignoredTokenVariables [
 	^ #(#left #right)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTryStatementNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTryStatementNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTryStatementNode >> nodeVariables [
 	^ #(#tryBlock #exceptionType #catchBlock #finallyBlock)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTryStatementNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTryStatementNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTryStatementNode >> tokenVariables [
 	^ #(#tryToken #catchToken #finallyToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTryStatementNode >> tryBlock [
 	^ tryBlock
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTryStatementNode >> tryBlock: aJSBlockStatementNode [
 	self tryBlock notNil ifTrue: [ self tryBlock parent: nil ].
 	tryBlock := aJSBlockStatementNode.
 	self tryBlock notNil ifTrue: [ self tryBlock parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTryStatementNode >> tryToken [
 	^ tryToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTryStatementNode >> tryToken: aSmaCCToken [
 	tryToken := aSmaCCToken
 ]

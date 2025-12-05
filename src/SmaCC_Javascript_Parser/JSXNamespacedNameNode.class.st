@@ -1,49 +1,50 @@
 Class {
-	#name : #JSXNamespacedNameNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSXNamespacedNameNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'identifiers',
 		'colonToken'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXNamespacedNameNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitXNamespacedName: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXNamespacedNameNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXNamespacedNameNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXNamespacedNameNode >> compositeTokenVariables [
 	^ #(#identifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXNamespacedNameNode >> identifiers [
 	^ identifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXNamespacedNameNode >> identifiers: anOrderedCollection [
 	identifiers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXNamespacedNameNode >> ignoredTokenVariables [
 	^ #(#colonToken)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSXNamespacedNameNode >> initialize [
 	super initialize.
 	identifiers := OrderedCollection new: 2.

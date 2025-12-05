@@ -1,6 +1,6 @@
 Class {
-	#name : #JSImportRequireDeclarationNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSImportRequireDeclarationNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'importToken',
 		'name',
@@ -11,107 +11,108 @@ Class {
 		'rightParen',
 		'semicolon'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportRequireDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitImportRequireDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportRequireDeclarationNode >> equalToken [
 	^ equalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportRequireDeclarationNode >> equalToken: aSmaCCToken [
 	equalToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportRequireDeclarationNode >> ignoredTokenVariables [
 	^ #(#leftParen #rightParen #semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportRequireDeclarationNode >> importToken [
 	^ importToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportRequireDeclarationNode >> importToken: aSmaCCToken [
 	importToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportRequireDeclarationNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportRequireDeclarationNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportRequireDeclarationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportRequireDeclarationNode >> name: aJSNameExpressionNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSNameExpressionNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportRequireDeclarationNode >> nodeVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportRequireDeclarationNode >> requireToken [
 	^ requireToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportRequireDeclarationNode >> requireToken: aSmaCCToken [
 	requireToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportRequireDeclarationNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportRequireDeclarationNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportRequireDeclarationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportRequireDeclarationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportRequireDeclarationNode >> tokenVariables [
 	^ #(#importToken #equalToken #requireToken #value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportRequireDeclarationNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportRequireDeclarationNode >> value: aSmaCCToken [
 	value := aSmaCCToken
 ]

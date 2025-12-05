@@ -1,6 +1,6 @@
 Class {
-	#name : #JSConstructSignatureNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSConstructSignatureNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'newToken',
 		'leftParen',
@@ -12,138 +12,139 @@ Class {
 		'type',
 		'typeParameters'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitConstructSignature: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> compositeNodeVariables [
 	^ #(#parameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> ignoredTokenVariables [
 	^ #(#leftParen #rightParen #colonToken)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSConstructSignatureNode >> initialize [
 	super initialize.
 	parameters := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> newToken [
 	^ newToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> newToken: aSmaCCToken [
 	newToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> nodeVariables [
 	^ #(#restParameter #type #typeParameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> restParameter [
 	^ restParameter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> restParameter: aJSRestVariableDeclarationNode [
 	self restParameter notNil ifTrue: [ self restParameter parent: nil ].
 	restParameter := aJSRestVariableDeclarationNode.
 	self restParameter notNil ifTrue: [ self restParameter parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> tokenVariables [
 	^ #(#newToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> type: aJSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aJSTypeNode.
 	self type notNil ifTrue: [ self type parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> typeParameters [
 	^ typeParameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSConstructSignatureNode >> typeParameters: aJSTypeParametersNode [
 	self typeParameters notNil ifTrue: [ self typeParameters parent: nil ].
 	typeParameters := aJSTypeParametersNode.

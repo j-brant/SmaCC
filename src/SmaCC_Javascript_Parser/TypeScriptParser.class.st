@@ -1,29 +1,30 @@
 Class {
-	#name : #TypeScriptParser,
-	#superclass : #JSParser,
+	#name : 'TypeScriptParser',
+	#superclass : 'JSParser',
 	#instVars : [
 		'tokensFollowingTS',
 		'tsActionMap'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TypeScriptParser class >> defaultStartingState [
 	^ self startingStateForSourceFile
 ]
 
-{ #category : #'file types' }
+{ #category : 'file types' }
 TypeScriptParser class >> fileExtension [
 	^ '.ts'
 ]
 
-{ #category : #'file types' }
+{ #category : 'file types' }
 TypeScriptParser class >> fileExtensionType [
 	^ 'TypeScript files'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TypeScriptParser class >> keywords [
 	^ keywords
 		ifNil: [ keywords := superclass keywords copy
@@ -31,7 +32,7 @@ TypeScriptParser class >> keywords [
 					yourself ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TypeScriptParser >> actionsForCurrentToken [
 	| position token tsActions |
 	self splitTSActions.
@@ -52,7 +53,7 @@ TypeScriptParser >> actionsForCurrentToken [
 	^ super actionsForCurrentToken
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TypeScriptParser >> splitTSActions [
 	| tsActions ids |
 	(self isEOFToken
@@ -72,7 +73,7 @@ TypeScriptParser >> splitTSActions [
 		before: currentToken
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TypeScriptParser >> tokensFollowingTS [
 	tokensFollowingTS
 		ifNil: [ | nextStates id |
@@ -94,7 +95,7 @@ TypeScriptParser >> tokensFollowingTS [
 	^ tokensFollowingTS
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TypeScriptParser >> tsActions [
 	| actions state |
 	state := self currentState.

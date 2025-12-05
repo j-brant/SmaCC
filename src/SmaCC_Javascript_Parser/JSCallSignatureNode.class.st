@@ -1,6 +1,6 @@
 Class {
-	#name : #JSCallSignatureNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSCallSignatureNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'left',
 		'restParameter',
@@ -11,123 +11,124 @@ Class {
 		'type',
 		'typeParameters'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallSignatureNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCallSignature: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallSignatureNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallSignatureNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallSignatureNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallSignatureNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallSignatureNode >> compositeNodeVariables [
 	^ #(#parameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallSignatureNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallSignatureNode >> ignoredTokenVariables [
 	^ #(#left #right #colonToken)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSCallSignatureNode >> initialize [
 	super initialize.
 	parameters := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallSignatureNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallSignatureNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallSignatureNode >> nodeVariables [
 	^ #(#restParameter #type #typeParameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallSignatureNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallSignatureNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallSignatureNode >> restParameter [
 	^ restParameter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallSignatureNode >> restParameter: aJSRestVariableDeclarationNode [
 	self restParameter notNil ifTrue: [ self restParameter parent: nil ].
 	restParameter := aJSRestVariableDeclarationNode.
 	self restParameter notNil ifTrue: [ self restParameter parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallSignatureNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallSignatureNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallSignatureNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallSignatureNode >> type: aJSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aJSTypeNode.
 	self type notNil ifTrue: [ self type parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallSignatureNode >> typeParameters [
 	^ typeParameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallSignatureNode >> typeParameters: aJSTypeParametersNode [
 	self typeParameters notNil ifTrue: [ self typeParameters parent: nil ].
 	typeParameters := aJSTypeParametersNode.

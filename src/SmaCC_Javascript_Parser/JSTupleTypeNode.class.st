@@ -1,6 +1,6 @@
 Class {
-	#name : #JSTupleTypeNode,
-	#superclass : #JSTypeNode,
+	#name : 'JSTupleTypeNode',
+	#superclass : 'JSTypeNode',
 	#instVars : [
 		'leftBracket',
 		'rightBracket',
@@ -8,87 +8,88 @@ Class {
 		'types',
 		'readonlyToken'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTupleTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTupleType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTupleTypeNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTupleTypeNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTupleTypeNode >> compositeNodeVariables [
 	^ #(#types)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTupleTypeNode >> ignoredCompositeTokenVariables [
 	^ #(#commas #leftParens #rightParens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTupleTypeNode >> ignoredTokenVariables [
 	^ #(#leftBracket #rightBracket)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSTupleTypeNode >> initialize [
 	super initialize.
 	commas := OrderedCollection new: 2.
 	types := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTupleTypeNode >> leftBracket [
 	^ leftBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTupleTypeNode >> leftBracket: aSmaCCToken [
 	leftBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTupleTypeNode >> readonlyToken [
 	^ readonlyToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTupleTypeNode >> readonlyToken: aSmaCCToken [
 	readonlyToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTupleTypeNode >> rightBracket [
 	^ rightBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTupleTypeNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTupleTypeNode >> tokenVariables [
 	^ #(#readonlyToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTupleTypeNode >> types [
 	^ types
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTupleTypeNode >> types: anOrderedCollection [
 	self setParents: self types to: nil.
 	types := anOrderedCollection.

@@ -1,6 +1,6 @@
 Class {
-	#name : #JSObjectBindingPatternNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSObjectBindingPatternNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'leftBrace',
 		'rightBrace',
@@ -8,91 +8,92 @@ Class {
 		'properties',
 		'commas'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectBindingPatternNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitObjectBindingPattern: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectBindingPatternNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectBindingPatternNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectBindingPatternNode >> compositeNodeVariables [
 	^ #(#properties)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectBindingPatternNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectBindingPatternNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSObjectBindingPatternNode >> initialize [
 	super initialize.
 	properties := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectBindingPatternNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectBindingPatternNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectBindingPatternNode >> nodeVariables [
 	^ #(#restProperty)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectBindingPatternNode >> properties [
 	^ properties
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectBindingPatternNode >> properties: anOrderedCollection [
 	self setParents: self properties to: nil.
 	properties := anOrderedCollection.
 	self setParents: self properties to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectBindingPatternNode >> restProperty [
 	^ restProperty
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectBindingPatternNode >> restProperty: aJSBindingRestPropertyNode [
 	self restProperty notNil ifTrue: [ self restProperty parent: nil ].
 	restProperty := aJSBindingRestPropertyNode.
 	self restProperty notNil ifTrue: [ self restProperty parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectBindingPatternNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectBindingPatternNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]

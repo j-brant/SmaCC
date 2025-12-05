@@ -1,6 +1,6 @@
 Class {
-	#name : #JSXSelfClosingElementNode,
-	#superclass : #JSExpressionNode,
+	#name : 'JSXSelfClosingElementNode',
+	#superclass : 'JSExpressionNode',
 	#instVars : [
 		'ltToken',
 		'name',
@@ -8,85 +8,86 @@ Class {
 		'gtToken',
 		'_attributes'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSelfClosingElementNode >> _attributes [
 	^ _attributes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSelfClosingElementNode >> _attributes: anOrderedCollection [
 	self setParents: self _attributes to: nil.
 	_attributes := anOrderedCollection.
 	self setParents: self _attributes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSelfClosingElementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitXSelfClosingElement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSelfClosingElementNode >> compositeNodeVariables [
 	^ #(#_attributes)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSelfClosingElementNode >> gtToken [
 	^ gtToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSelfClosingElementNode >> gtToken: aSmaCCToken [
 	gtToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSXSelfClosingElementNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSelfClosingElementNode >> ltToken [
 	^ ltToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSelfClosingElementNode >> ltToken: aSmaCCToken [
 	ltToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSelfClosingElementNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSelfClosingElementNode >> name: aJSProgramNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSProgramNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSelfClosingElementNode >> nodeVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSelfClosingElementNode >> slashToken [
 	^ slashToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSelfClosingElementNode >> slashToken: aSmaCCToken [
 	slashToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSelfClosingElementNode >> tokenVariables [
 	^ #(#ltToken #slashToken #gtToken)
 ]

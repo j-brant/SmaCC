@@ -1,28 +1,29 @@
 Class {
-	#name : #JSNameExpressionNode,
-	#superclass : #JSExpressionNode,
+	#name : 'JSNameExpressionNode',
+	#superclass : 'JSExpressionNode',
 	#instVars : [
 		'name'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNameExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNameExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNameExpressionNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNameExpressionNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNameExpressionNode >> tokenVariables [
 	^ #(#name)
 ]

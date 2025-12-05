@@ -1,44 +1,45 @@
 Class {
-	#name : #JSInferTypeNode,
-	#superclass : #JSTypeNode,
+	#name : 'JSInferTypeNode',
+	#superclass : 'JSTypeNode',
 	#instVars : [
 		'inferToken',
 		'type'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSInferTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitInferType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSInferTypeNode >> inferToken [
 	^ inferToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSInferTypeNode >> inferToken: aSmaCCToken [
 	inferToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSInferTypeNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSInferTypeNode >> tokenVariables [
 	^ #(#inferToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSInferTypeNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSInferTypeNode >> type: aJSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aJSTypeNode.

@@ -1,62 +1,63 @@
 Class {
-	#name : #JSContinueStatementNode,
-	#superclass : #JSStatementNode,
+	#name : 'JSContinueStatementNode',
+	#superclass : 'JSStatementNode',
 	#instVars : [
 		'continueToken',
 		'label',
 		'semicolon'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSContinueStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitContinueStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSContinueStatementNode >> continueToken [
 	^ continueToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSContinueStatementNode >> continueToken: aSmaCCToken [
 	continueToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSContinueStatementNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSContinueStatementNode >> label [
 	^ label
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSContinueStatementNode >> label: aJSNameExpressionNode [
 	self label notNil ifTrue: [ self label parent: nil ].
 	label := aJSNameExpressionNode.
 	self label notNil ifTrue: [ self label parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSContinueStatementNode >> nodeVariables [
 	^ #(#label)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSContinueStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSContinueStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSContinueStatementNode >> tokenVariables [
 	^ #(#continueToken)
 ]

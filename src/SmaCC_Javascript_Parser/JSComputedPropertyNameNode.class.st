@@ -1,57 +1,58 @@
 Class {
-	#name : #JSComputedPropertyNameNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSComputedPropertyNameNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'leftBrace',
 		'expression',
 		'rightBrace'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSComputedPropertyNameNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitComputedPropertyName: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSComputedPropertyNameNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSComputedPropertyNameNode >> expression: aJSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aJSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSComputedPropertyNameNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSComputedPropertyNameNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSComputedPropertyNameNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSComputedPropertyNameNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSComputedPropertyNameNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSComputedPropertyNameNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]

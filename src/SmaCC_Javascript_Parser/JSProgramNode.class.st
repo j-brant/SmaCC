@@ -1,10 +1,11 @@
 Class {
-	#name : #JSProgramNode,
-	#superclass : #SmaCCParseNode,
-	#category : #'SmaCC_Javascript_Parser'
+	#name : 'JSProgramNode',
+	#superclass : 'SmaCCParseNode',
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSProgramNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitProgram: self
 ]

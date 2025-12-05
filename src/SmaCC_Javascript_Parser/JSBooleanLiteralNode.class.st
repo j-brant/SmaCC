@@ -1,10 +1,11 @@
 Class {
-	#name : #JSBooleanLiteralNode,
-	#superclass : #JSLiteralNode,
-	#category : #'SmaCC_Javascript_Parser'
+	#name : 'JSBooleanLiteralNode',
+	#superclass : 'JSLiteralNode',
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBooleanLiteralNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBooleanLiteral: self
 ]

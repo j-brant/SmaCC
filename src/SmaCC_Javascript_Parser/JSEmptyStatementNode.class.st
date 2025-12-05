@@ -1,28 +1,29 @@
 Class {
-	#name : #JSEmptyStatementNode,
-	#superclass : #JSStatementNode,
+	#name : 'JSEmptyStatementNode',
+	#superclass : 'JSStatementNode',
 	#instVars : [
 		'semicolon'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEmptyStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEmptyStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEmptyStatementNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEmptyStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEmptyStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]

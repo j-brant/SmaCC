@@ -1,78 +1,79 @@
 Class {
-	#name : #JSObjectTypeNode,
-	#superclass : #JSTypeNode,
+	#name : 'JSObjectTypeNode',
+	#superclass : 'JSTypeNode',
 	#instVars : [
 		'leftBrace',
 		'rightBrace',
 		'types',
 		'separators'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitObjectType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectTypeNode >> compositeNodeVariables [
 	^ #(#types)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectTypeNode >> compositeTokenVariables [
 	^ #(#separators)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectTypeNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSObjectTypeNode >> initialize [
 	super initialize.
 	types := OrderedCollection new: 2.
 	separators := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectTypeNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectTypeNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectTypeNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectTypeNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectTypeNode >> separators [
 	^ separators
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectTypeNode >> separators: anOrderedCollection [
 	separators := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectTypeNode >> types [
 	^ types
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSObjectTypeNode >> types: anOrderedCollection [
 	self setParents: self types to: nil.
 	types := anOrderedCollection.

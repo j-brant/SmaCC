@@ -1,28 +1,29 @@
 Class {
-	#name : #JSLiteralTypeNode,
-	#superclass : #JSTypeNode,
+	#name : 'JSLiteralTypeNode',
+	#superclass : 'JSTypeNode',
 	#instVars : [
 		'value'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSLiteralTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLiteralType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSLiteralTypeNode >> tokenVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSLiteralTypeNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSLiteralTypeNode >> value: aSmaCCToken [
 	value := aSmaCCToken
 ]

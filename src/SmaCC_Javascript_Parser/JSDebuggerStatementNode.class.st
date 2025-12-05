@@ -1,44 +1,45 @@
 Class {
-	#name : #JSDebuggerStatementNode,
-	#superclass : #JSStatementNode,
+	#name : 'JSDebuggerStatementNode',
+	#superclass : 'JSStatementNode',
 	#instVars : [
 		'debuggerToken',
 		'semicolon'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDebuggerStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDebuggerStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDebuggerStatementNode >> debuggerToken [
 	^ debuggerToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDebuggerStatementNode >> debuggerToken: aSmaCCToken [
 	debuggerToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDebuggerStatementNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDebuggerStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDebuggerStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDebuggerStatementNode >> tokenVariables [
 	^ #(#debuggerToken)
 ]

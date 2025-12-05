@@ -1,6 +1,6 @@
 Class {
-	#name : #JSEnumDeclarationNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSEnumDeclarationNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'enumToken',
 		'name',
@@ -10,114 +10,115 @@ Class {
 		'commas',
 		'constToken'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEnumDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEnumDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEnumDeclarationNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEnumDeclarationNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEnumDeclarationNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEnumDeclarationNode >> constToken [
 	^ constToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEnumDeclarationNode >> constToken: aSmaCCToken [
 	constToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEnumDeclarationNode >> enumToken [
 	^ enumToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEnumDeclarationNode >> enumToken: aSmaCCToken [
 	enumToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEnumDeclarationNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEnumDeclarationNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSEnumDeclarationNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEnumDeclarationNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEnumDeclarationNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEnumDeclarationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEnumDeclarationNode >> name: aJSNameExpressionNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSNameExpressionNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEnumDeclarationNode >> nodeVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEnumDeclarationNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEnumDeclarationNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEnumDeclarationNode >> tokenVariables [
 	^ #(#enumToken #constToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEnumDeclarationNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSEnumDeclarationNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

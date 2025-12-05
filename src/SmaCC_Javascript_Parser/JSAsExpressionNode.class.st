@@ -1,57 +1,58 @@
 Class {
-	#name : #JSAsExpressionNode,
-	#superclass : #JSExpressionNode,
+	#name : 'JSAsExpressionNode',
+	#superclass : 'JSExpressionNode',
 	#instVars : [
 		'expression',
 		'asToken',
 		'type'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAsExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAsExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAsExpressionNode >> asToken [
 	^ asToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAsExpressionNode >> asToken: aSmaCCToken [
 	asToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAsExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAsExpressionNode >> expression: aJSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aJSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAsExpressionNode >> nodeVariables [
 	^ #(#expression #type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAsExpressionNode >> tokenVariables [
 	^ #(#asToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAsExpressionNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAsExpressionNode >> type: aJSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aJSTypeNode.

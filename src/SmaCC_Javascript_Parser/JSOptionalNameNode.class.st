@@ -1,39 +1,40 @@
 Class {
-	#name : #JSOptionalNameNode,
-	#superclass : #JSOptionalNode,
+	#name : 'JSOptionalNameNode',
+	#superclass : 'JSOptionalNode',
 	#instVars : [
 		'periodToken',
 		'name'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalNameNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitOptionalName: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalNameNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalNameNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalNameNode >> periodToken [
 	^ periodToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalNameNode >> periodToken: aSmaCCToken [
 	periodToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalNameNode >> tokenVariables [
 	^ #(#periodToken #name)
 ]

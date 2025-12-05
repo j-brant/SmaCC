@@ -1,62 +1,63 @@
 Class {
-	#name : #JSExportAssignmentNode,
-	#superclass : #JSTSExportNode,
+	#name : 'JSExportAssignmentNode',
+	#superclass : 'JSTSExportNode',
 	#instVars : [
 		'equalToken',
 		'name',
 		'semicolon'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportAssignmentNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExportAssignment: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportAssignmentNode >> equalToken [
 	^ equalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportAssignmentNode >> equalToken: aSmaCCToken [
 	equalToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportAssignmentNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportAssignmentNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportAssignmentNode >> name: aJSNameExpressionNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSNameExpressionNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportAssignmentNode >> nodeVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportAssignmentNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportAssignmentNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportAssignmentNode >> tokenVariables [
 	^ #(#equalToken #exportToken)
 ]

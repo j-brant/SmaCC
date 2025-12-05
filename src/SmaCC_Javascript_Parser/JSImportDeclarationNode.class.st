@@ -1,6 +1,6 @@
 Class {
-	#name : #JSImportDeclarationNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSImportDeclarationNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'importToken',
 		'imports',
@@ -10,103 +10,104 @@ Class {
 		'from',
 		'semicolon'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitImportDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportDeclarationNode >> comma [
 	^ comma
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportDeclarationNode >> comma: aSmaCCToken [
 	comma := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportDeclarationNode >> compositeNodeVariables [
 	^ #(#imports)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportDeclarationNode >> from [
 	^ from
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportDeclarationNode >> from: aSmaCCToken [
 	from := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportDeclarationNode >> fromToken [
 	^ fromToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportDeclarationNode >> fromToken: aSmaCCToken [
 	fromToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportDeclarationNode >> ignoredTokenVariables [
 	^ #(#comma #semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportDeclarationNode >> importToken [
 	^ importToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportDeclarationNode >> importToken: aSmaCCToken [
 	importToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportDeclarationNode >> imports [
 	^ imports
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportDeclarationNode >> imports: anOrderedCollection [
 	self setParents: self imports to: nil.
 	imports := anOrderedCollection.
 	self setParents: self imports to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSImportDeclarationNode >> initialize [
 	super initialize.
 	imports := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportDeclarationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportDeclarationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportDeclarationNode >> tokenVariables [
 	^ #(#importToken #typeToken #fromToken #from)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportDeclarationNode >> typeToken [
 	^ typeToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportDeclarationNode >> typeToken: aSmaCCToken [
 	typeToken := aSmaCCToken
 ]

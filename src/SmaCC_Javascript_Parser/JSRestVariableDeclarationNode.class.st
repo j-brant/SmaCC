@@ -1,28 +1,29 @@
 Class {
-	#name : #JSRestVariableDeclarationNode,
-	#superclass : #JSVariableDeclarationNode,
+	#name : 'JSRestVariableDeclarationNode',
+	#superclass : 'JSVariableDeclarationNode',
 	#instVars : [
 		'ellipsis'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSRestVariableDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitRestVariableDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSRestVariableDeclarationNode >> ellipsis [
 	^ ellipsis
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSRestVariableDeclarationNode >> ellipsis: aSmaCCToken [
 	ellipsis := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSRestVariableDeclarationNode >> tokenVariables [
 	^ #(#ellipsis #equalToken #nullableIndicator)
 ]

@@ -1,28 +1,29 @@
 Class {
-	#name : #JSSetMethodDefinitionNode,
-	#superclass : #JSMethodDefinitionNode,
+	#name : 'JSSetMethodDefinitionNode',
+	#superclass : 'JSMethodDefinitionNode',
 	#instVars : [
 		'setToken'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSSetMethodDefinitionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSetMethodDefinition: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSSetMethodDefinitionNode >> setToken [
 	^ setToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSSetMethodDefinitionNode >> setToken: aSmaCCToken [
 	setToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSSetMethodDefinitionNode >> tokenVariables [
 	^ #(#setToken #staticToken #nullableIndicator)
 ]

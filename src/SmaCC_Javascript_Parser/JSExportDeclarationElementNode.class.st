@@ -1,54 +1,55 @@
 Class {
-	#name : #JSExportDeclarationElementNode,
-	#superclass : #JSTSExportNode,
+	#name : 'JSExportDeclarationElementNode',
+	#superclass : 'JSTSExportNode',
 	#instVars : [
 		'decorators',
 		'declaration'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationElementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExportDeclarationElement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationElementNode >> compositeNodeVariables [
 	^ #(#decorators)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationElementNode >> declaration [
 	^ declaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationElementNode >> declaration: aJSProgramNode [
 	self declaration notNil ifTrue: [ self declaration parent: nil ].
 	declaration := aJSProgramNode.
 	self declaration notNil ifTrue: [ self declaration parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationElementNode >> decorators [
 	^ decorators
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationElementNode >> decorators: anOrderedCollection [
 	self setParents: self decorators to: nil.
 	decorators := anOrderedCollection.
 	self setParents: self decorators to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSExportDeclarationElementNode >> initialize [
 	super initialize.
 	decorators := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportDeclarationElementNode >> nodeVariables [
 	^ #(#declaration)
 ]

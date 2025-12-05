@@ -1,28 +1,29 @@
 Class {
-	#name : #JSXTextNode,
-	#superclass : #JSExpressionNode,
+	#name : 'JSXTextNode',
+	#superclass : 'JSExpressionNode',
 	#instVars : [
 		'value'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXTextNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitXText: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXTextNode >> tokenVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXTextNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXTextNode >> value: aSmaCCToken [
 	value := aSmaCCToken
 ]

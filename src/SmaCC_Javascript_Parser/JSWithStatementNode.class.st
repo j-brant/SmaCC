@@ -1,6 +1,6 @@
 Class {
-	#name : #JSWithStatementNode,
-	#superclass : #JSStatementNode,
+	#name : 'JSWithStatementNode',
+	#superclass : 'JSStatementNode',
 	#instVars : [
 		'withToken',
 		'left',
@@ -8,79 +8,80 @@ Class {
 		'right',
 		'statement'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWithStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitWithStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWithStatementNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWithStatementNode >> expression: aJSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aJSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWithStatementNode >> ignoredTokenVariables [
 	^ #(#left #right)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWithStatementNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWithStatementNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWithStatementNode >> nodeVariables [
 	^ #(#expression #statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWithStatementNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWithStatementNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWithStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWithStatementNode >> statement: aJSStatementNode [
 	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aJSStatementNode.
 	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWithStatementNode >> tokenVariables [
 	^ #(#withToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWithStatementNode >> withToken [
 	^ withToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWithStatementNode >> withToken: aSmaCCToken [
 	withToken := aSmaCCToken
 ]

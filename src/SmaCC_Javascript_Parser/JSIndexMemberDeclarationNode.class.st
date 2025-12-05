@@ -1,44 +1,45 @@
 Class {
-	#name : #JSIndexMemberDeclarationNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSIndexMemberDeclarationNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'signature',
 		'semicolon'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexMemberDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIndexMemberDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexMemberDeclarationNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexMemberDeclarationNode >> nodeVariables [
 	^ #(#signature)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexMemberDeclarationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexMemberDeclarationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexMemberDeclarationNode >> signature [
 	^ signature
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexMemberDeclarationNode >> signature: aJSIndexSignatureNode [
 	self signature notNil ifTrue: [ self signature parent: nil ].
 	signature := aJSIndexSignatureNode.

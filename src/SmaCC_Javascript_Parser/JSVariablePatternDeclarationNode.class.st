@@ -1,6 +1,6 @@
 Class {
-	#name : #JSVariablePatternDeclarationNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSVariablePatternDeclarationNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'pattern',
 		'equalToken',
@@ -8,79 +8,80 @@ Class {
 		'colonToken',
 		'type'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSVariablePatternDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitVariablePatternDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSVariablePatternDeclarationNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSVariablePatternDeclarationNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSVariablePatternDeclarationNode >> equalToken [
 	^ equalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSVariablePatternDeclarationNode >> equalToken: aSmaCCToken [
 	equalToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSVariablePatternDeclarationNode >> ignoredTokenVariables [
 	^ #(#colonToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSVariablePatternDeclarationNode >> nodeVariables [
 	^ #(#pattern #value #type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSVariablePatternDeclarationNode >> pattern [
 	^ pattern
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSVariablePatternDeclarationNode >> pattern: aJSProgramNode [
 	self pattern notNil ifTrue: [ self pattern parent: nil ].
 	pattern := aJSProgramNode.
 	self pattern notNil ifTrue: [ self pattern parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSVariablePatternDeclarationNode >> tokenVariables [
 	^ #(#equalToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSVariablePatternDeclarationNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSVariablePatternDeclarationNode >> type: aJSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aJSTypeNode.
 	self type notNil ifTrue: [ self type parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSVariablePatternDeclarationNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSVariablePatternDeclarationNode >> value: aJSExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aJSExpressionNode.

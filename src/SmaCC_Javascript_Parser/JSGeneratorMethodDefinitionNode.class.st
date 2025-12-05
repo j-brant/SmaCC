@@ -1,28 +1,29 @@
 Class {
-	#name : #JSGeneratorMethodDefinitionNode,
-	#superclass : #JSMethodDefinitionNode,
+	#name : 'JSGeneratorMethodDefinitionNode',
+	#superclass : 'JSMethodDefinitionNode',
 	#instVars : [
 		'star'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSGeneratorMethodDefinitionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitGeneratorMethodDefinition: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSGeneratorMethodDefinitionNode >> star [
 	^ star
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSGeneratorMethodDefinitionNode >> star: aSmaCCToken [
 	star := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSGeneratorMethodDefinitionNode >> tokenVariables [
 	^ #(#star #staticToken #nullableIndicator)
 ]

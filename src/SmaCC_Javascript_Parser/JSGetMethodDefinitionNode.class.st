@@ -1,28 +1,29 @@
 Class {
-	#name : #JSGetMethodDefinitionNode,
-	#superclass : #JSMethodDefinitionNode,
+	#name : 'JSGetMethodDefinitionNode',
+	#superclass : 'JSMethodDefinitionNode',
 	#instVars : [
 		'getToken'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSGetMethodDefinitionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitGetMethodDefinition: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSGetMethodDefinitionNode >> getToken [
 	^ getToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSGetMethodDefinitionNode >> getToken: aSmaCCToken [
 	getToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSGetMethodDefinitionNode >> tokenVariables [
 	^ #(#getToken #staticToken #nullableIndicator)
 ]

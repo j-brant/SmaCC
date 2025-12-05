@@ -1,50 +1,51 @@
 Class {
-	#name : #JSImportMetaNode,
-	#superclass : #JSExpressionNode,
+	#name : 'JSImportMetaNode',
+	#superclass : 'JSExpressionNode',
 	#instVars : [
 		'importToken',
 		'periodToken',
 		'metaToken'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportMetaNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitImportMeta: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportMetaNode >> importToken [
 	^ importToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportMetaNode >> importToken: aSmaCCToken [
 	importToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportMetaNode >> metaToken [
 	^ metaToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportMetaNode >> metaToken: aSmaCCToken [
 	metaToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportMetaNode >> periodToken [
 	^ periodToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportMetaNode >> periodToken: aSmaCCToken [
 	periodToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportMetaNode >> tokenVariables [
 	^ #(#importToken #periodToken #metaToken)
 ]

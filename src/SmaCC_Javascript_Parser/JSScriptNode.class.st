@@ -1,34 +1,35 @@
 Class {
-	#name : #JSScriptNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSScriptNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'statements'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSScriptNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitScript: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSScriptNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSScriptNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSScriptNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSScriptNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
