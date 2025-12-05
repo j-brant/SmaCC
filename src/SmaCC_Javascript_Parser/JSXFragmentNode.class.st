@@ -1,41 +1,42 @@
 Class {
-	#name : #JSXFragmentNode,
-	#superclass : #JSExpressionNode,
+	#name : 'JSXFragmentNode',
+	#superclass : 'JSExpressionNode',
 	#instVars : [
 		'ltTokens',
 		'gtTokens',
 		'items',
 		'slashToken'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXFragmentNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitXFragment: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXFragmentNode >> compositeNodeVariables [
 	^ #(#items)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXFragmentNode >> compositeTokenVariables [
 	^ #(#ltTokens #gtTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXFragmentNode >> gtTokens [
 	^ gtTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXFragmentNode >> gtTokens: anOrderedCollection [
 	gtTokens := anOrderedCollection
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSXFragmentNode >> initialize [
 	super initialize.
 	ltTokens := OrderedCollection new: 2.
@@ -43,39 +44,39 @@ JSXFragmentNode >> initialize [
 	items := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXFragmentNode >> items [
 	^ items
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXFragmentNode >> items: anOrderedCollection [
 	self setParents: self items to: nil.
 	items := anOrderedCollection.
 	self setParents: self items to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXFragmentNode >> ltTokens [
 	^ ltTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXFragmentNode >> ltTokens: anOrderedCollection [
 	ltTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXFragmentNode >> slashToken [
 	^ slashToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXFragmentNode >> slashToken: aSmaCCToken [
 	slashToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXFragmentNode >> tokenVariables [
 	^ #(#slashToken)
 ]

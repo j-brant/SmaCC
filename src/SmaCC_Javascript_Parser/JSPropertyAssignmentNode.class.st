@@ -1,73 +1,74 @@
 Class {
-	#name : #JSPropertyAssignmentNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSPropertyAssignmentNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'name',
 		'colonToken',
 		'value',
 		'equalToken'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertyAssignmentNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPropertyAssignment: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertyAssignmentNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertyAssignmentNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertyAssignmentNode >> equalToken [
 	^ equalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertyAssignmentNode >> equalToken: aSmaCCToken [
 	equalToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertyAssignmentNode >> ignoredTokenVariables [
 	^ #(#colonToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertyAssignmentNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertyAssignmentNode >> name: aJSProgramNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSProgramNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertyAssignmentNode >> nodeVariables [
 	^ #(#name #value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertyAssignmentNode >> tokenVariables [
 	^ #(#equalToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertyAssignmentNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertyAssignmentNode >> value: aJSExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aJSExpressionNode.

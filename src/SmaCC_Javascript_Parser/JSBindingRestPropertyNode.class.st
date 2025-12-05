@@ -1,46 +1,47 @@
 Class {
-	#name : #JSBindingRestPropertyNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSBindingRestPropertyNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'ellipsis',
 		'name'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBindingRestPropertyNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBindingRestProperty: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBindingRestPropertyNode >> ellipsis [
 	^ ellipsis
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBindingRestPropertyNode >> ellipsis: aSmaCCToken [
 	ellipsis := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBindingRestPropertyNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBindingRestPropertyNode >> name: aJSNameExpressionNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSNameExpressionNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBindingRestPropertyNode >> nodeVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBindingRestPropertyNode >> tokenVariables [
 	^ #(#ellipsis)
 ]

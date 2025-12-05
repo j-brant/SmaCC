@@ -1,57 +1,58 @@
 Class {
-	#name : #JSTypedParameterNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSTypedParameterNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'variable',
 		'colonToken',
 		'type'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypedParameterNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTypedParameter: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypedParameterNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypedParameterNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypedParameterNode >> ignoredTokenVariables [
 	^ #(#colonToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypedParameterNode >> nodeVariables [
 	^ #(#variable #type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypedParameterNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypedParameterNode >> type: aJSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aJSTypeNode.
 	self type notNil ifTrue: [ self type parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypedParameterNode >> variable [
 	^ variable
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypedParameterNode >> variable: aJSProgramNode [
 	self variable notNil ifTrue: [ self variable parent: nil ].
 	variable := aJSProgramNode.

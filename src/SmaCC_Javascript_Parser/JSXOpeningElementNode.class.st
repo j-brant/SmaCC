@@ -1,81 +1,82 @@
 Class {
-	#name : #JSXOpeningElementNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSXOpeningElementNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'ltToken',
 		'name',
 		'gtToken',
 		'_attributes'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXOpeningElementNode >> _attributes [
 	^ _attributes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXOpeningElementNode >> _attributes: anOrderedCollection [
 	self setParents: self _attributes to: nil.
 	_attributes := anOrderedCollection.
 	self setParents: self _attributes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXOpeningElementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitXOpeningElement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXOpeningElementNode >> compositeNodeVariables [
 	^ #(#_attributes)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXOpeningElementNode >> gtToken [
 	^ gtToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXOpeningElementNode >> gtToken: aSmaCCToken [
 	gtToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSXOpeningElementNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXOpeningElementNode >> ltToken [
 	^ ltToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXOpeningElementNode >> ltToken: aSmaCCToken [
 	ltToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXOpeningElementNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXOpeningElementNode >> name: aJSProgramNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSProgramNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXOpeningElementNode >> nodeVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXOpeningElementNode >> tokenVariables [
 	^ #(#ltToken #gtToken)
 ]

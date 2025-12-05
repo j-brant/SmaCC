@@ -1,6 +1,6 @@
 Class {
-	#name : #JSClassExpressionNode,
-	#superclass : #JSExpressionNode,
+	#name : 'JSClassExpressionNode',
+	#superclass : 'JSExpressionNode',
 	#instVars : [
 		'classToken',
 		'leftBrace',
@@ -16,104 +16,105 @@ Class {
 		'decorators',
 		'typeParameters'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> abstract [
 	^ abstract
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> abstract: aSmaCCToken [
 	abstract := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitClassExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> classToken [
 	^ classToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> classToken: aSmaCCToken [
 	classToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> compositeNodeVariables [
 	^ #(#decorators #elements #types)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> decorators [
 	^ decorators
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> decorators: anOrderedCollection [
 	self setParents: self decorators to: nil.
 	decorators := anOrderedCollection.
 	self setParents: self decorators to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> elements [
 	^ elements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> elements: anOrderedCollection [
 	self setParents: self elements to: nil.
 	elements := anOrderedCollection.
 	self setParents: self elements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> extendsToken [
 	^ extendsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> extendsToken: aSmaCCToken [
 	extendsToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> ignoredCompositeTokenVariables [
 	^ #(#commas #leftParens #rightParens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> implementsToken [
 	^ implementsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> implementsToken: aSmaCCToken [
 	implementsToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSClassExpressionNode >> initialize [
 	super initialize.
 	decorators := OrderedCollection new: 2.
@@ -122,78 +123,78 @@ JSClassExpressionNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> name: aJSNameExpressionNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSNameExpressionNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> nodeVariables [
 	^ #(#superclass #typeParameters #name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> superclass [
 	^ superclass
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> superclass: aJSProgramNode [
 	self superclass notNil ifTrue: [ self superclass parent: nil ].
 	superclass := aJSProgramNode.
 	self superclass notNil ifTrue: [ self superclass parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> tokenVariables [
 	^ #(#classToken #extendsToken #implementsToken #abstract)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> typeParameters [
 	^ typeParameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> typeParameters: aJSTypeParametersNode [
 	self typeParameters notNil ifTrue: [ self typeParameters parent: nil ].
 	typeParameters := aJSTypeParametersNode.
 	self typeParameters notNil ifTrue: [ self typeParameters parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> types [
 	^ types
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSClassExpressionNode >> types: anOrderedCollection [
 	self setParents: self types to: nil.
 	types := anOrderedCollection.

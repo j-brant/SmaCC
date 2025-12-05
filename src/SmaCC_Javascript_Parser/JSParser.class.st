@@ -1,13 +1,14 @@
 Class {
-	#name : #JSParser,
-	#superclass : #SmaCCGLRParser,
+	#name : 'JSParser',
+	#superclass : 'SmaCCGLRParser',
 	#classInstVars : [
 		'keywords'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSParser class >> ambiguousTransitions [
 ^#(
 #[ 0 6 0 45] 
@@ -92,12 +93,12 @@ JSParser class >> ambiguousTransitions [
 	).
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 JSParser class >> cacheId [
-	^'2025-08-07T05:43:51.788892-05:00'
+	^'2025-12-05T05:43:34.266948-06:00'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSParser class >> definitionComment [
 "%root Program;
 %prefix JS;
@@ -617,7 +618,7 @@ default <colon>
 :   \:
 ;
 
-default <comment>
+default jsx <comment>
 	: \/\/ [^\r\n]*
 	| (\/\* [^\*]* \*+ ([^\/\*] [^\*]* \*+)* \/)
 	;
@@ -2370,17 +2371,17 @@ DecoratorExpression
 ;"
 ]
 
-{ #category : #'file types' }
+{ #category : 'file types' }
 JSParser class >> fileExtension [
 	^ '.js'
 ]
 
-{ #category : #'file types' }
+{ #category : 'file types' }
 JSParser class >> fileExtensionType [
 	^ 'Javascript files'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JSParser class >> keywords [
 	^ keywords
 		ifNil:
@@ -2388,1021 +2389,1021 @@ JSParser class >> keywords [
 				asSet collect: [ :each | each asString ] ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSParser class >> reduceTable [
 ^#(
-	#(209 0 #reduceActionForStartStatementListItem1: 24195073 true) 
-	#(306 0 #reduceActionForModule1: 38713345 false) 
-	#(152 0 #reduceActionForValidationNotArrowFunction1: 11709441 true) 
-	#(161 0 #reduceActionForStartTemplateLiteral1: 12924929 true) 
-	#(354 0 #reduceActionForSwitchToJSX1: 44565505 true) 
-	#(304 0 #reduceActionForScript1: 38654977 false) 
-	#(446 0 #reduceActionForSourceFileElement__element__1: 60344321 false) 
-	#(211 1 #liftFirstValue: 24367106 false) 
-	#(290 0 #reduceActionForSourceFileElement__element__1: 37026817 false) 
-	#(211 1 #liftFirstValue: 24367105 false) 
-	#(309 1 #liftFirstValue: 38846467 false) 
-	#(208 1 #liftFirstValue: 24097794 false) 
-	#(141 1 #liftFirstValue: 9046017 false) 
-	#(306 1 #reduceActionForModule2: 38713346 false) 
-	#(307 1 #reduceActionForModuleBody1: 38742017 false) 
-	#(308 1 #reduceActionForModuleItemList1: 38772737 false) 
-	#(309 1 #liftFirstValue: 38846465 false) 
-	#(309 1 #liftFirstValue: 38846466 false) 
-	#(257 0 #reduceActionForFormalParameters1: 32097281 false) 
-	#(328 1 #liftFirstValue: 41818114 false) 
-	#(327 1 #liftFirstValue: 41794561 false) 
-	#(144 1 #reduceActionForPrimaryExpression1: 9453569 false) 
-	#(328 1 #liftFirstValue: 41818113 false) 
-	#(279 1 #reduceActionForYieldExpression1: 35125249 false) 
-	#(142 1 #reduceActionForIdentifier1: 9158657 false) 
-	#(326 1 #reduceActionForIdentifier1: 41724929 false) 
-	#(329 1 #liftFirstValue: 41854977 false) 
-	#(330 1 #liftFirstValue: 41890817 false) 
-	#(331 1 #reduceActionForRegularExpressionLiteral1: 41928705 false) 
-	#(160 1 #reduceActionForTemplateLiteral1: 12769281 false) 
-	#(355 0 #reduceActionForSwitchToJSXText1: 44606465 true) 
-	#(144 1 #liftFirstValue: 9453570 false) 
-	#(267 1 #reduceActionForArrowParameterDeclaration1: 33166337 false) 
-	#(164 1 #liftFirstValue: 13195265 false) 
-	#(144 1 #liftFirstValue: 9453581 false) 
-	#(144 1 #liftFirstValue: 9453571 false) 
-	#(144 1 #liftFirstValue: 9453572 false) 
-	#(144 1 #liftFirstValue: 9453573 false) 
-	#(144 1 #liftFirstValue: 9453580 false) 
-	#(169 1 #liftFirstValue: 14306305 false) 
-	#(164 1 #liftFirstValue: 13195269 false) 
-	#(164 1 #liftFirstValue: 13195270 false) 
-	#(166 1 #liftFirstValue: 14074881 false) 
-	#(166 1 #liftFirstValue: 14074882 false) 
-	#(179 1 #liftFirstValue: 16631809 false) 
-	#(179 1 #liftFirstValue: 16631810 false) 
-	#(170 1 #liftFirstValue: 14396418 false) 
-	#(170 1 #liftFirstValue: 14396419 false) 
-	#(179 1 #liftFirstValue: 16631811 false) 
-	#(180 1 #liftFirstValue: 16713729 false) 
-	#(181 1 #liftFirstValue: 17082369 false) 
-	#(182 1 #liftFirstValue: 17534977 false) 
-	#(183 1 #liftFirstValue: 17704961 false) 
-	#(185 1 #liftFirstValue: 17965057 false) 
-	#(186 1 #liftFirstValue: 18263041 false) 
-	#(187 1 #liftFirstValue: 18648065 false) 
-	#(188 1 #liftFirstValue: 19496961 false) 
-	#(189 1 #liftFirstValue: 20027393 false) 
-	#(190 1 #liftFirstValue: 20191233 false) 
-	#(191 1 #liftFirstValue: 20359169 false) 
-	#(192 1 #liftFirstValue: 20526081 false) 
-	#(195 1 #liftFirstValue: 21023746 false) 
-	#(193 1 #liftFirstValue: 20696065 false) 
-	#(196 1 #liftFirstValue: 21097473 false) 
-	#(196 1 #liftFirstValue: 21097474 false) 
-	#(195 1 #liftFirstValue: 21023745 false) 
-	#(197 1 #liftFirstValue: 21171201 false) 
-	#(198 1 #liftFirstValue: 21398529 false) 
-	#(200 1 #liftFirstValue: 23176193 false) 
-	#(144 1 #liftFirstValue: 9453574 false) 
-	#(198 1 #liftFirstValue: 21398531 false) 
-	#(266 1 #reduceActionForArrowParameters1: 33076225 false) 
-	#(266 1 #reduceActionForArrowParameters2: 33076226 false) 
-	#(198 1 #liftFirstValue: 21398532 false) 
-	#(144 1 #liftFirstValue: 9453576 false) 
-	#(198 1 #liftFirstValue: 21398530 false) 
-	#(144 1 #liftFirstValue: 9453578 false) 
-	#(144 1 #liftFirstValue: 9453577 false) 
-	#(181 1 #liftFirstValue: 17082377 false) 
-	#(144 1 #liftFirstValue: 9453575 false) 
-	#(146 1 #reduceActionForLiteral1: 10554369 false) 
-	#(146 1 #reduceActionForLiteral2: 10554370 false) 
-	#(146 1 #reduceActionForLiteral4: 10554372 false) 
-	#(146 1 #reduceActionForLiteral3: 10554371 false) 
-	#(144 1 #liftFirstValue: 9453579 false) 
-	#(144 1 #liftFirstValue: 9453582 false) 
-	#(332 1 #liftFirstValue: 42180609 false) 
-	#(356 0 #reduceActionForStartJSXText1: 44655617 true) 
-	#(144 1 #liftFirstValue: 9453583 false) 
-	#(181 1 #liftFirstValue: 17082379 false) 
-	#(228 1 #reduceActionForEmptyStatement1: 26714113 false) 
-	#(240 0 #reduceActionForCheckEOL1: 30331905 true) 
-	#(201 1 #liftFirstValue: 23327750 false) 
-	#(201 1 #liftFirstValue: 23327745 false) 
-	#(205 1 #liftFirstValue: 23877633 false) 
-	#(201 1 #liftFirstValue: 23327746 false) 
-	#(201 1 #liftFirstValue: 23327747 false) 
-	#(201 1 #liftFirstValue: 23327748 false) 
-	#(201 1 #liftFirstValue: 23327749 false) 
-	#(204 1 #liftFirstValue: 23815169 false) 
-	#(231 1 #liftFirstValue: 27134977 false) 
-	#(231 1 #liftFirstValue: 27134978 false) 
-	#(231 1 #liftFirstValue: 27134979 false) 
-	#(231 1 #liftFirstValue: 27134980 false) 
-	#(201 1 #liftFirstValue: 23327751 false) 
-	#(201 1 #liftFirstValue: 23327752 false) 
-	#(201 1 #liftFirstValue: 23327753 false) 
-	#(201 1 #liftFirstValue: 23327754 false) 
-	#(204 1 #liftFirstValue: 23815170 false) 
-	#(201 1 #liftFirstValue: 23327755 false) 
-	#(201 1 #liftFirstValue: 23327756 false) 
-	#(201 1 #liftFirstValue: 23327757 false) 
-	#(201 1 #liftFirstValue: 23327758 false) 
-	#(305 1 #reduceActionForModuleBody1: 38683649 false) 
-	#(207 1 #reduceActionForModuleItemList1: 24000513 false) 
-	#(304 1 #reduceActionForScript2: 38654978 false) 
-	#(445 1 #reduceActionForSourceFile1: 60241921 false) 
-	#(393 1 #reduceActionForThisType1: 48350209 false) 
-	#(375 1 #reduceActionForPredefinedType1: 46325761 false) 
-	#(377 1 #reduceActionForTypeName1: 46474241 false) 
-	#(378 1 #reduceActionForNamespaceName1: 46580737 false) 
-	#(373 1 #reduceActionForLiteralType1: 46162945 false) 
-	#(373 1 #reduceActionForLiteralType1: 46162946 false) 
-	#(367 1 #liftFirstValue: 45477889 false) 
-	#(368 1 #liftFirstValue: 45554690 false) 
-	#(369 1 #liftFirstValue: 45631490 false) 
-	#(370 1 #liftFirstValue: 45692929 false) 
-	#(371 1 #liftFirstValue: 45836298 false) 
-	#(371 1 #liftFirstValue: 45836297 false) 
-	#(371 1 #liftFirstValue: 45836289 false) 
-	#(371 1 #liftFirstValue: 45836290 false) 
-	#(371 1 #liftFirstValue: 45836291 false) 
-	#(376 1 #reduceActionForTypeReference1: 46377985 false) 
-	#(371 1 #liftFirstValue: 45836292 false) 
-	#(371 1 #liftFirstValue: 45836293 false) 
-	#(371 1 #liftFirstValue: 45836294 false) 
-	#(368 1 #liftFirstValue: 45554689 false) 
-	#(369 1 #liftFirstValue: 45631489 false) 
-	#(367 1 #liftFirstValue: 45477890 false) 
-	#(367 1 #liftFirstValue: 45477891 false) 
-	#(371 1 #liftFirstValue: 45836295 false) 
-	#(371 1 #liftFirstValue: 45836296 false) 
-	#(296 1 #reduceActionForEmptyStatement1: 37575689 false) 
-	#(299 0 #reduceActionForCheckSemicolon1: 38258689 true) 
-	#(300 1 #reduceActionForIdentifier1: 38305793 false) 
-	#(300 1 #reduceActionForIdentifier1: 38305794 false) 
-	#(298 1 #reduceActionForIdentifier1: 38115330 false) 
-	#(296 1 #liftFirstValue: 37575684 false) 
-	#(273 1 #liftFirstValue: 33732610 false) 
-	#(273 1 #liftFirstValue: 33732612 false) 
-	#(273 1 #liftFirstValue: 33732611 false) 
-	#(297 1 #reduceActionForFieldDefinition2: 38004738 false) 
-	#(296 1 #liftFirstValue: 37575688 false) 
-	#(273 1 #liftFirstValue: 33732618 false) 
-	#(273 1 #liftFirstValue: 33732619 false) 
-	#(322 1 #reduceActionForExportFromClause1: 41175041 false) 
-	#(321 2 #reduceActionForExportDeclaration4: 40381444 false) 
-	#(202 1 #liftFirstValue: 23610369 false) 
-	#(202 1 #liftFirstValue: 23610371 false) 
-	#(321 2 #reduceActionForExportDeclaration3: 40381443 false) 
-	#(203 1 #liftFirstValue: 23689217 false) 
-	#(203 1 #liftFirstValue: 23689218 false) 
-	#(203 1 #liftFirstValue: 23689220 false) 
-	#(203 1 #liftFirstValue: 23689219 false) 
-	#(202 1 #liftFirstValue: 23610370 false) 
-	#(322 1 #reduceActionForExportFromClause3: 41175043 false) 
-	#(320 1 #liftFirstValue: 40346625 false) 
-	#(312 1 #reduceActionForImportClause1: 39148545 false) 
-	#(312 1 #reduceActionForImportClause1: 39148546 false) 
-	#(312 1 #reduceActionForImportClause1: 39148547 false) 
-	#(313 1 #liftFirstValue: 39510017 false) 
-	#(319 1 #liftFirstValue: 40304641 false) 
-	#(208 2 #liftSecondValue: 24097793 false) 
-	#(213 1 #reduceActionForArrowParameterDeclaration1: 24497153 false) 
-	#(212 1 #reduceActionForNamespaceName1: 24398849 false) 
-	#(217 1 #liftFirstValue: 25043969 false) 
-	#(217 1 #liftFirstValue: 25043970 false) 
-	#(213 1 #liftFirstValue: 24497156 false) 
-	#(213 1 #liftFirstValue: 24497157 false) 
-	#(308 2 #reduceActionForModuleItemList2: 38772738 false) 
-	#(226 1 #reduceActionForArrowParameterDeclaration1: 26445825 false) 
-	#(225 1 #reduceActionForBindingElement2: 26335234 false) 
-	#(260 1 #liftFirstValue: 32466945 false) 
-	#(225 1 #liftFirstValue: 26335233 false) 
-	#(259 1 #liftFirstValue: 32420865 false) 
-	#(256 1 #reduceActionForModuleBody1: 32052225 false) 
-	#(257 1 #reduceActionForFormalParameters3: 32097283 false) 
-	#(257 1 #reduceActionForFormalParameters2: 32097282 false) 
-	#(258 1 #reduceActionForNamespaceName1: 32299009 false) 
-	#(147 2 #reduceActionForArrayLiteral1: 10736641 false) 
-	#(149 1 #reduceActionForModuleItemList1: 11215873 false) 
-	#(148 1 #reduceActionForNamespaceName1: 10997763 false) 
-	#(148 1 #reduceActionForNamespaceName1: 10997761 false) 
-	#(181 2 #reduceActionForUnaryExpression5: 17082373 false) 
-	#(180 2 #reduceActionForUpdateExpression4: 16713732 false) 
-	#(181 2 #reduceActionForUnaryExpression5: 17082374 false) 
-	#(180 2 #reduceActionForUpdateExpression4: 16713733 false) 
-	#(181 2 #reduceActionForUnaryExpression5: 17082375 false) 
-	#(181 2 #reduceActionForUnaryExpression5: 17082376 false) 
-	#(288 2 #reduceActionForAwaitExpression1: 36930561 false) 
-	#(291 2 #reduceActionForClassExpression1: 37202945 false) 
-	#(181 2 #reduceActionForUnaryExpression5: 17082370 false) 
-	#(169 2 #reduceActionForNewExpression2: 14306306 false) 
-	#(171 2 #reduceActionForSuperCall1: 14995457 false) 
-	#(181 2 #reduceActionForUnaryExpression5: 17082372 false) 
-	#(181 2 #reduceActionForUnaryExpression5: 17082371 false) 
-	#(279 2 #reduceActionForYieldExpression2: 35125250 false) 
-	#(164 2 #reduceActionForMemberExpression4: 13195268 false) 
-	#(170 2 #reduceActionForCallExpression1: 14396417 false) 
-	#(175 2 #reduceActionForOptionalExpression1: 15660033 false) 
-	#(170 2 #reduceActionForMemberExpression4: 14396423 false) 
-	#(170 2 #reduceActionForCallExpression1: 14396420 false) 
-	#(175 2 #reduceActionForOptionalExpression1: 15660034 false) 
-	#(175 2 #reduceActionForOptionalExpression1: 15660035 false) 
-	#(199 1 #liftFirstValue: 21603331 false) 
-	#(199 1 #liftFirstValue: 21603335 false) 
-	#(199 1 #liftFirstValue: 21603336 false) 
-	#(199 1 #liftFirstValue: 21603337 false) 
-	#(199 1 #liftFirstValue: 21603329 false) 
-	#(199 1 #liftFirstValue: 21603330 false) 
-	#(199 1 #liftFirstValue: 21603332 false) 
-	#(199 1 #liftFirstValue: 21603338 false) 
-	#(199 1 #liftFirstValue: 21603339 false) 
-	#(199 1 #liftFirstValue: 21603340 false) 
-	#(199 1 #liftFirstValue: 21603334 false) 
-	#(199 1 #liftFirstValue: 21603333 false) 
-	#(180 2 #reduceActionForUpdateExpression2: 16713730 false) 
-	#(180 2 #reduceActionForUpdateExpression2: 16713731 false) 
-	#(199 1 #liftFirstValue: 21603342 false) 
-	#(199 1 #liftFirstValue: 21603344 false) 
-	#(199 1 #liftFirstValue: 21603343 false) 
-	#(199 1 #liftFirstValue: 21603341 false) 
-	#(184 1 #liftFirstValue: 17907714 false) 
-	#(184 1 #liftFirstValue: 17907713 false) 
-	#(184 1 #liftFirstValue: 17907715 false) 
-	#(351 0 #reduceActionForSourceFileElement__element__1: 44251137 false) 
-	#(270 2 #reduceActionForArrowFormalParameters2: 33417218 false) 
-	#(206 2 #reduceActionForBlock1: 23903233 false) 
-	#(239 2 #reduceActionForBreakStatement1: 30222337 false) 
-	#(238 2 #reduceActionForContinueStatement1: 30105601 false) 
-	#(255 2 #reduceActionForDebuggerStatement1: 31966209 false) 
-	#(241 2 #reduceActionForReturnStatement1: 30366721 false) 
-	#(216 1 #reduceActionForArrowParameterDeclaration1: 24883201 false) 
-	#(215 1 #reduceActionForNamespaceName1: 24747009 false) 
-	#(229 2 #reduceActionForExpressionStatement1: 26764289 false) 
-	#(207 2 #reduceActionForModuleItemList2: 24000514 false) 
-	#(453 1 #liftFirstValue: 61428737 false) 
-	#(453 1 #liftFirstValue: 61428738 false) 
-	#(453 1 #liftFirstValue: 61428739 false) 
-	#(453 1 #liftFirstValue: 61428740 false) 
-	#(453 1 #liftFirstValue: 61428741 false) 
-	#(447 1 #liftFirstValue: 60393475 false) 
-	#(453 1 #liftFirstValue: 61428743 false) 
-	#(453 1 #liftFirstValue: 61428742 false) 
-	#(453 1 #liftFirstValue: 61428744 false) 
-	#(453 1 #liftFirstValue: 61428745 false) 
-	#(453 1 #liftFirstValue: 61428747 false) 
-	#(446 2 #reduceActionForModuleItemList2: 60344322 false) 
-	#(447 1 #liftFirstValue: 60393473 false) 
-	#(447 1 #liftFirstValue: 60393476 false) 
-	#(447 1 #liftFirstValue: 60393477 false) 
-	#(447 1 #liftFirstValue: 60393481 false) 
-	#(447 1 #liftFirstValue: 60393478 false) 
-	#(447 1 #liftFirstValue: 60393482 false) 
-	#(447 1 #liftFirstValue: 60393479 false) 
-	#(447 1 #liftFirstValue: 60393480 false) 
-	#(453 1 #liftFirstValue: 61428746 false) 
-	#(447 1 #liftFirstValue: 60393474 false) 
-	#(379 2 #reduceActionForObjectType1: 46685185 false) 
-	#(143 1 #reduceActionForIdentifier1: 9352193 false) 
-	#(156 1 #liftFirstValue: 12374017 false) 
-	#(394 1 #reduceActionForPropertySignature1: 48388097 false) 
-	#(155 1 #liftFirstValue: 12311553 false) 
-	#(155 1 #liftFirstValue: 12311554 false) 
-	#(156 1 #reduceActionForIdentifier1: 12374018 false) 
-	#(156 1 #reduceActionForIdentifier1: 12374019 false) 
-	#(380 1 #reduceActionForModuleBody1: 46767105 false) 
-	#(381 1 #reduceActionForNamespaceName1: 46863361 false) 
-	#(382 1 #liftFirstValue: 47017985 false) 
-	#(382 1 #liftFirstValue: 47017986 false) 
-	#(382 1 #liftFirstValue: 47017987 false) 
-	#(382 1 #liftFirstValue: 47017988 false) 
-	#(382 1 #liftFirstValue: 47017989 false) 
-	#(384 2 #reduceActionForTupleType1: 47261697 false) 
-	#(386 1 #liftFirstValue: 47517697 false) 
-	#(385 1 #reduceActionForNamespaceName1: 47409153 false) 
-	#(362 1 #reduceActionForTypeParameter1: 45163521 false) 
-	#(361 1 #reduceActionForNamespaceName1: 45050881 false) 
-	#(370 2 #reduceActionForPrefixType3: 45692931 false) 
-	#(370 2 #reduceActionForPrefixType2: 45692930 false) 
-	#(392 1 #reduceActionForTypeQueryExpression1: 48226305 false) 
-	#(391 2 #reduceActionForTypeQuery1: 48152577 false) 
-	#(303 0 #reduceActionForSourceFileElement__element__1: 38599681 false) 
-	#(296 2 #reduceActionForClassElement5: 37575685 false) 
-	#(298 2 #reduceActionForIdentifier1: 38115329 false) 
-	#(296 2 #reduceActionForClassElement6: 37575686 false) 
-	#(297 2 #reduceActionForFieldDefinition1: 38004737 false) 
-	#(427 0 #reduceActionForSourceFileElement__element__1: 57072641 false) 
-	#(296 2 #liftSecondValue: 37575681 false) 
-	#(296 2 #liftSecondValue: 37575682 false) 
-	#(424 1 #liftFirstValue: 56895489 false) 
-	#(424 1 #liftFirstValue: 56895490 false) 
-	#(424 1 #liftFirstValue: 56895491 false) 
-	#(296 2 #liftSecondValue: 37575683 false) 
-	#(323 2 #reduceActionForNamedExports1: 41282561 false) 
-	#(310 1 #liftFirstValue: 38921217 false) 
-	#(325 1 #reduceActionForExportSpecifier1: 41603073 false) 
-	#(324 1 #reduceActionForNamespaceName1: 41498625 false) 
-	#(310 1 #liftFirstValue: 38921218 false) 
-	#(290 2 #reduceActionForModuleItemList2: 37026818 false) 
-	#(321 3 #reduceActionForExportDeclaration2: 40381442 false) 
-	#(202 2 #liftSecondValue: 23610373 false) 
-	#(202 2 #liftSecondValue: 23610372 false) 
-	#(202 2 #liftSecondValue: 23610374 false) 
-	#(315 2 #reduceActionForNamedImports1: 39634945 false) 
-	#(317 1 #reduceActionForNamespaceName1: 39917569 false) 
-	#(318 1 #reduceActionForImportSpecifier1: 40022017 false) 
-	#(311 3 #reduceActionForImportDeclaration2: 38976514 false) 
-	#(218 2 #reduceActionForObjectBindingPattern1: 25107457 false) 
-	#(221 1 #reduceActionForNamespaceName1: 25932801 false) 
-	#(224 1 #liftFirstValue: 26221569 false) 
-	#(219 2 #reduceActionForArrayBindingPattern1: 25495553 false) 
-	#(222 1 #reduceActionForBindingElementList1: 26051585 false) 
-	#(223 1 #reduceActionForBindingElisionElement1: 26160129 false) 
-	#(213 2 #reduceActionForLexicalBinding2: 24497154 false) 
-	#(210 3 #reduceActionForLexicalDeclaration1: 24278017 false) 
-	#(213 2 #reduceActionForLexicalBinding3: 24497155 false) 
-	#(227 2 #reduceActionForBindingRestElement1: 26531841 false) 
-	#(227 2 #reduceActionForBindingRestElement1: 26531842 false) 
-	#(226 2 #reduceActionForLexicalBinding2: 26445826 false) 
-	#(145 3 #reduceActionForParenthesizedExpression1: 9819137 false) 
-	#(225 2 #reduceActionForLexicalBinding3: 26335235 false) 
-	#(270 3 #reduceActionForArrowFormalParameters1: 33417217 false) 
-	#(257 2 #reduceActionForFormalParameters4: 32097284 false) 
-	#(400 1 #liftFirstValue: 50697220 false) 
-	#(400 1 #liftFirstValue: 50697218 false) 
-	#(400 1 #liftFirstValue: 50697219 false) 
-	#(400 1 #liftFirstValue: 50697217 false) 
-	#(397 0 #reduceActionForSourceFileElement__element__1: 48872449 false) 
-	#(150 2 #reduceActionForSpreadElement1: 11271169 false) 
-	#(147 3 #reduceActionForArrayLiteral3: 10736643 false) 
-	#(147 3 #reduceActionForArrayLiteral2: 10736642 false) 
-	#(149 2 #reduceActionForModuleItemList2: 11215874 false) 
-	#(148 2 #reduceActionForElementList4: 10997764 false) 
-	#(148 2 #reduceActionForElementList4: 10997762 false) 
-	#(292 2 #reduceActionForClassTail1: 37282817 false) 
-	#(294 1 #reduceActionForModuleBody1: 37455873 false) 
-	#(295 1 #reduceActionForModuleItemList1: 37487617 false) 
-	#(293 2 #reduceActionForClassHeritage1: 37374977 false) 
-	#(291 3 #reduceActionForClassExpression2: 37202946 false) 
-	#(293 2 #reduceActionForClassHeritage4: 37374980 false) 
-	#(293 2 #reduceActionForClassHeritage2: 37374978 false) 
-	#(168 3 #reduceActionForImportMeta1: 14219265 false) 
-	#(167 3 #reduceActionForNewTarget1: 14115841 false) 
-	#(164 3 #reduceActionForMemberExpression7: 13195271 false) 
-	#(173 2 #reduceActionForArguments1: 15206401 false) 
-	#(174 1 #reduceActionForArgumentList1: 15391745 false) 
-	#(165 3 #reduceActionForSuperProperty2: 13809666 false) 
-	#(279 3 #reduceActionForYieldExpression3: 35125251 false) 
-	#(151 3 #reduceActionForObjectLiteral1: 11369473 false) 
-	#(154 1 #liftFirstValue: 12062721 false) 
-	#(153 1 #reduceActionForNamespaceName1: 11927553 false) 
-	#(154 1 #liftFirstValue: 12062722 false) 
-	#(154 1 #liftFirstValue: 12062724 false) 
-	#(164 3 #reduceActionForMemberExpression3: 13195267 false) 
-	#(164 3 #reduceActionForMemberExpression3: 13195272 false) 
-	#(178 1 #reduceActionForOptionalFirst3: 16319491 false) 
-	#(178 1 #reduceActionForOptionalFirst3: 16319493 false) 
-	#(178 1 #reduceActionForOptionalFirst4: 16319492 false) 
-	#(178 1 #reduceActionForOptionalFirst1: 16319489 false) 
-	#(176 2 #reduceActionForOptionalChain1: 15838209 false) 
-	#(177 1 #reduceActionForOptionalFirst4: 15961092 false) 
-	#(177 1 #reduceActionForOptionalFirst1: 15961089 false) 
-	#(176 2 #reduceActionForOptionalChain2: 15838210 false) 
-	#(170 3 #reduceActionForMemberExpression3: 14396422 false) 
-	#(170 3 #reduceActionForMemberExpression3: 14396424 false) 
-	#(198 3 #reduceActionForAssignmentExpression5: 21398533 false) 
-	#(144 3 #reduceActionForPrimaryExpression16: 9453584 false) 
-	#(182 3 #reduceActionForExponentiationExpression2: 17534978 false) 
-	#(183 3 #reduceActionForExponentiationExpression2: 17704962 false) 
-	#(185 3 #reduceActionForExponentiationExpression2: 17965058 false) 
-	#(185 3 #reduceActionForExponentiationExpression2: 17965059 false) 
-	#(186 3 #reduceActionForExponentiationExpression2: 18263042 false) 
-	#(186 3 #reduceActionForExponentiationExpression2: 18263043 false) 
-	#(186 3 #reduceActionForExponentiationExpression2: 18263044 false) 
-	#(187 3 #reduceActionForExponentiationExpression2: 18648066 false) 
-	#(187 3 #reduceActionForExponentiationExpression2: 18648067 false) 
-	#(187 3 #reduceActionForExponentiationExpression2: 18648068 false) 
-	#(187 3 #reduceActionForExponentiationExpression2: 18648069 false) 
-	#(187 3 #reduceActionForExponentiationExpression2: 18648071 false) 
-	#(187 3 #reduceActionForExponentiationExpression2: 18648070 false) 
-	#(188 3 #reduceActionForExponentiationExpression2: 19496962 false) 
-	#(188 3 #reduceActionForExponentiationExpression2: 19496964 false) 
-	#(188 3 #reduceActionForExponentiationExpression2: 19496963 false) 
-	#(188 3 #reduceActionForExponentiationExpression2: 19496965 false) 
-	#(189 3 #reduceActionForExponentiationExpression2: 20027394 false) 
-	#(190 3 #reduceActionForExponentiationExpression2: 20191234 false) 
-	#(191 3 #reduceActionForExponentiationExpression2: 20359170 false) 
-	#(192 3 #reduceActionForExponentiationExpression2: 20526082 false) 
-	#(193 3 #reduceActionForExponentiationExpression2: 20696066 false) 
-	#(194 3 #reduceActionForExponentiationExpression2: 20866049 false) 
-	#(200 3 #reduceActionForExpression2: 23176194 false) 
-	#(264 0 #reduceActionForSourceFileElement__element__1: 32966657 false) 
-	#(269 1 #liftFirstValue: 33376257 false) 
-	#(265 3 #reduceActionForArrowFunction1: 33008641 false) 
-	#(268 1 #reduceActionForImportClause1: 33261569 false) 
-	#(187 3 #reduceActionForExponentiationExpression2: 18648072 false) 
-	#(359 0 #reduceActionForSwitchToDefault1: 44817409 true) 
-	#(350 1 #reduceActionForModuleBody1: 44236801 false) 
-	#(337 1 #reduceActionForJSXElementName1: 43092993 false) 
-	#(337 1 #liftFirstValue: 43092994 false) 
-	#(337 1 #liftFirstValue: 43092995 false) 
-	#(341 1 #reduceActionFor__JSXIdentifier___identifier___period___periodToken___1: 43419649 false) 
-	#(206 3 #reduceActionForBlock2: 23903234 false) 
-	#(250 3 #reduceActionForThrowStatement1: 31385601 false) 
-	#(251 3 #reduceActionForTryStatement1: 31481857 false) 
-	#(251 3 #reduceActionForTryStatement2: 31481858 false) 
-	#(216 2 #reduceActionForLexicalBinding2: 24883202 false) 
-	#(214 3 #reduceActionForVariableStatement1: 24651777 false) 
-	#(216 2 #reduceActionForLexicalBinding3: 24883203 false) 
-	#(216 2 #liftSecondValue: 24883204 false) 
-	#(216 2 #liftSecondValue: 24883205 false) 
-	#(249 1 #liftFirstValue: 31291393 false) 
-	#(248 3 #reduceActionForLabelledStatement1: 31192065 false) 
-	#(482 1 #liftFirstValue: 68453377 false) 
-	#(471 2 #reduceActionForAmbientDeclaration1: 66362369 false) 
-	#(471 2 #reduceActionForAmbientDeclaration1: 66362370 false) 
-	#(471 2 #reduceActionForAmbientDeclaration1: 66362371 false) 
-	#(471 2 #reduceActionForAmbientDeclaration1: 66362372 false) 
-	#(471 2 #reduceActionForAmbientDeclaration1: 66362373 false) 
-	#(438 1 #reduceActionForNamespaceName1: 58730497 false) 
-	#(374 3 #reduceActionForParenthesizedExpression1: 46237697 false) 
-	#(394 2 #reduceActionForPropertySignature5: 48388101 false) 
-	#(428 1 #liftFirstValue: 57243649 false) 
-	#(428 1 #liftFirstValue: 57243650 false) 
-	#(394 2 #reduceActionForPropertySignature2: 48388098 false) 
-	#(404 2 #reduceActionForMethodSignature1: 51945473 false) 
-	#(394 2 #reduceActionForPropertySignature3: 48388099 false) 
-	#(379 3 #reduceActionForObjectType2: 46685186 false) 
-	#(380 2 #reduceActionForOptionalChain2: 46767106 false) 
-	#(380 2 #reduceActionForOptionalChain2: 46767108 false) 
-	#(384 3 #reduceActionForTupleType2: 47261698 false) 
-	#(384 3 #reduceActionForTupleType3: 47261699 false) 
-	#(362 2 #reduceActionForTypeParameter2: 45163522 false) 
-	#(360 3 #reduceActionForTypeParameters1: 44972033 false) 
-	#(384 3 #reduceActionForTupleType5: 47261701 false) 
-	#(387 3 #reduceActionForUnionType1: 47544321 false) 
-	#(388 3 #reduceActionForIntersectionType1: 47665153 false) 
-	#(376 3 #reduceActionForTypeReference2: 46377986 false) 
-	#(377 3 #reduceActionForTypeName2: 46474242 false) 
-	#(378 3 #reduceActionForNamespaceName2: 46580738 false) 
-	#(303 1 #reduceActionForModuleBody1: 38599682 false) 
-	#(302 1 #reduceActionForModuleBody1: 38543361 false) 
-	#(296 3 #reduceActionForClassElement7: 37575687 false) 
-	#(159 2 #reduceActionForInitializer1: 12704769 false) 
-	#(430 2 #reduceActionForMemberAccessorDeclaration1: 57788417 false) 
-	#(430 2 #reduceActionForMemberAccessorDeclaration1: 57788421 false) 
-	#(431 2 #reduceActionForIndexMemberDeclaration1: 58064897 false) 
-	#(323 3 #reduceActionForNamedExports2: 41282562 false) 
-	#(322 3 #reduceActionForExportFromClause2: 41175042 false) 
-	#(321 4 #reduceActionForExportDeclaration5: 40381445 false) 
-	#(488 2 #reduceActionForDecoratorExpression2: 69924866 false) 
-	#(488 2 #reduceActionForDecoratorExpression2: 69924865 false) 
-	#(289 3 #reduceActionForClassDeclaration1: 37007361 false) 
-	#(316 2 #reduceActionForInitializer1: 39866369 false) 
-	#(321 4 #reduceActionForExportDeclaration1: 40381441 false) 
-	#(315 3 #reduceActionForNamedImports2: 39634946 false) 
-	#(314 3 #reduceActionForNameSpaceImport1: 39554049 false) 
-	#(311 4 #reduceActionForImportDeclaration1: 38976513 false) 
-	#(312 3 #reduceActionForImportClause4: 39148548 false) 
-	#(312 3 #reduceActionForImportClause4: 39148549 false) 
-	#(312 3 #reduceActionForImportClause6: 39148550 false) 
-	#(312 3 #reduceActionForImportClause6: 39148551 false) 
-	#(220 2 #reduceActionForBindingRestProperty1: 25861121 false) 
-	#(218 3 #reduceActionForObjectBindingPattern2: 25107458 false) 
-	#(218 3 #reduceActionForObjectBindingPattern3: 25107459 false) 
-	#(219 3 #reduceActionForArrayBindingPattern3: 25495555 false) 
-	#(223 2 #reduceActionForBindingElisionElement2: 26160130 false) 
-	#(219 3 #reduceActionForArrayBindingPattern5: 25495557 false) 
-	#(219 3 #reduceActionForArrayBindingPattern2: 25495554 false) 
-	#(212 3 #reduceActionForNamespaceName2: 24398850 false) 
-	#(413 3 #reduceActionForSimpleLexicalBinding1: 55035905 false) 
-	#(414 3 #reduceActionForDestructuringLexicalBinding1: 55145473 false) 
-	#(227 3 #reduceActionForBindingRestElement3: 26531843 false) 
-	#(257 3 #reduceActionForFormalParameters5: 32097285 false) 
-	#(258 3 #reduceActionForNamespaceName2: 32299010 false) 
-	#(226 3 #reduceActionForSimpleLexicalBinding1: 26445827 false) 
-	#(226 3 #reduceActionForSingleNameBinding9: 26445833 false) 
-	#(399 0 #nil 49367044 false) 
-	#(226 3 #reduceActionForSingleNameBinding7: 26445831 false) 
-	#(147 4 #reduceActionForArrayLiteral4: 10736644 false) 
-	#(148 3 #reduceActionForElementList6: 10997766 false) 
-	#(148 3 #reduceActionForElementList6: 10997765 false) 
-	#(272 1 #reduceActionForImportClause1: 33611777 false) 
-	#(271 4 #reduceActionForAsyncArrowFunction1: 33509377 false) 
-	#(292 3 #reduceActionForClassTail2: 37282818 false) 
-	#(295 2 #reduceActionForModuleItemList2: 37487618 false) 
-	#(292 3 #reduceActionForClassTail3: 37282819 false) 
-	#(420 1 #liftFirstValue: 56157185 false) 
-	#(419 2 #reduceActionForInitializer1: 56097793 false) 
-	#(418 1 #liftFirstValue: 55950337 false) 
-	#(421 2 #reduceActionForImplementsClause1: 56199169 false) 
-	#(417 1 #reduceActionForNamespaceName1: 55819265 false) 
-	#(293 3 #reduceActionForClassHeritage3: 37374979 false) 
-	#(172 4 #reduceActionForImportCall1: 15066113 false) 
-	#(174 2 #reduceActionForArgumentList2: 15391746 false) 
-	#(173 3 #reduceActionForArguments2: 15206402 false) 
-	#(165 4 #reduceActionForSuperProperty1: 13809665 false) 
-	#(365 1 #reduceActionForNamespaceName1: 45348865 false) 
-	#(366 1 #liftFirstValue: 45455361 false) 
-	#(154 2 #reduceActionForPropertyDefinition5: 12062725 false) 
-	#(158 2 #reduceActionForCoverInitializedName1: 12621825 false) 
-	#(151 4 #reduceActionForObjectLiteral2: 11369474 false) 
-	#(162 1 #reduceActionForNamespaceName1: 12962817 false) 
-	#(160 4 #reduceActionForTemplateLiteral2: 12769282 false) 
-	#(164 4 #reduceActionForMemberExpression2: 13195266 false) 
-	#(177 2 #reduceActionForOptionalRest3: 15961091 false) 
-	#(177 2 #reduceActionForOptionalRest3: 15961093 false) 
-	#(170 4 #reduceActionForMemberExpression2: 14396421 false) 
-	#(410 4 #reduceActionForAsExpression1: 54381569 false) 
-	#(264 1 #reduceActionForModuleBody1: 32966658 false) 
-	#(263 1 #reduceActionForModuleBody1: 32925697 false) 
-	#(332 4 #reduceActionForJSXElement2: 42180610 false) 
-	#(352 1 #reduceActionForJSXChild1: 44271617 false) 
-	#(352 1 #liftFirstValue: 44271618 false) 
-	#(351 2 #reduceActionForModuleItemList2: 44251138 false) 
-	#(340 2 #reduceActionForInitializer1: 43419649 false) 
-	#(357 0 #reduceActionForSwitchToJSXTextOrDefault11: 44684289 true) 
-	#(347 1 #reduceActionForJSXElementName1: 43843585 false) 
-	#(347 1 #liftFirstValue: 43843586 false) 
-	#(344 1 #reduceActionForModuleItemList1: 43546625 false) 
-	#(342 1 #reduceActionForModuleBody1: 43530241 false) 
-	#(343 1 #liftFirstValue: 43546625 false) 
-	#(343 1 #liftFirstValue: 43546626 false) 
-	#(346 1 #reduceActionForJSXAttribute1: 43760641 false) 
-	#(339 2 #reduceActionForJSXMemberExpression1: 43397121 false) 
-	#(341 2 #reduceActionFor__JSXIdentifier___identifier___period___periodToken___2: 43419650 false) 
-	#(334 4 #reduceActionForJSXOpeningElement3: 42514435 false) 
-	#(410 4 #reduceActionForAsExpression1: 54381570 false) 
-	#(406 3 #reduceActionForArrowFormalParameters1: 52649987 false) 
-	#(239 4 #reduceActionForBreakStatement2: 30222338 false) 
-	#(238 4 #reduceActionForContinueStatement2: 30105602 false) 
-	#(237 1 #liftFirstValue: 30058497 false) 
-	#(237 1 #liftFirstValue: 30058498 false) 
-	#(236 2 #reduceActionForInitializer1: 29993985 false) 
-	#(241 4 #reduceActionForReturnStatement2: 30366722 false) 
-	#(252 2 #reduceActionForCatch2: 31652866 false) 
-	#(253 2 #reduceActionForInitializer1: 31820801 false) 
-	#(251 4 #reduceActionForTryStatement3: 31481859 false) 
-	#(215 3 #reduceActionForNamespaceName2: 24747010 false) 
-	#(411 2 #reduceActionForSimpleVariableDeclaration1: 54735873 false) 
-	#(474 1 #reduceActionForArrowParameterDeclaration1: 67160065 false) 
-	#(473 1 #reduceActionForNamespaceName1: 67047425 false) 
-	#(484 0 #reduceActionForSourceFileElement__element__1: 68797441 false) 
-	#(469 3 #reduceActionForExportListDeclaration5: 65893381 false) 
-	#(415 3 #reduceActionForInterfaceDeclaration1: 55578625 false) 
-	#(439 0 #reduceActionForSourceFileElement__element__1: 58835969 false) 
-	#(465 3 #reduceActionForExportImplementationElement3: 63202307 false) 
-	#(465 3 #reduceActionForExportImplementationElement3: 63202306 false) 
-	#(465 3 #reduceActionForExportImplementationElement3: 63202305 false) 
-	#(465 3 #reduceActionForExportImplementationElement3: 63202308 false) 
-	#(465 3 #reduceActionForExportImplementationElement3: 63202314 false) 
-	#(465 3 #reduceActionForExportImplementationElement3: 63202310 false) 
-	#(466 3 #reduceActionForExportDeclarationElement2: 64466946 false) 
-	#(466 3 #reduceActionForExportDeclarationElement2: 64466945 false) 
-	#(465 3 #reduceActionForExportImplementationElement3: 63202309 false) 
-	#(465 3 #reduceActionForExportImplementationElement3: 63202311 false) 
-	#(465 3 #reduceActionForExportImplementationElement3: 63202312 false) 
-	#(466 3 #reduceActionForExportDeclarationElement2: 64466948 false) 
-	#(466 3 #reduceActionForExportDeclarationElement2: 64466947 false) 
-	#(465 3 #reduceActionForExportImplementationElement3: 63202313 false) 
-	#(396 3 #reduceActionForCallSignature1: 48625665 false) 
-	#(157 3 #reduceActionForComputedPropertyName1: 12500993 false) 
-	#(394 3 #reduceActionForPropertySignature6: 48388102 false) 
-	#(394 3 #reduceActionForPropertySignature7: 48388103 false) 
-	#(395 2 #reduceActionForInitializer1: 48572417 false) 
-	#(394 3 #reduceActionForPropertySignature4: 48388100 false) 
-	#(404 3 #reduceActionForMethodSignature2: 51945474 false) 
-	#(381 3 #reduceActionForNamespaceName2: 46863362 false) 
-	#(381 3 #reduceActionForNamespaceName2: 46863363 false) 
-	#(384 4 #reduceActionForTupleType4: 47261700 false) 
-	#(385 3 #reduceActionForNamespaceName2: 47409154 false) 
-	#(363 2 #reduceActionForInitializer1: 45217793 false) 
-	#(361 3 #reduceActionForNamespaceName2: 45050882 false) 
-	#(384 4 #reduceActionForTupleType6: 47261702 false) 
-	#(384 4 #reduceActionForTupleType7: 47261703 false) 
-	#(392 3 #reduceActionForTypeQueryExpression2: 48226306 false) 
-	#(383 4 #reduceActionForArrayType1: 47125505 false) 
-	#(274 1 #liftFirstValue: 34342913 false) 
-	#(301 4 #reduceActionForClassStaticBlock1: 38420481 false) 
-	#(430 3 #reduceActionForMemberAccessorDeclaration2: 57788418 false) 
-	#(430 3 #reduceActionForMemberAccessorDeclaration2: 57788422 false) 
-	#(430 3 #reduceActionForMemberAccessorDeclaration3: 57788419 false) 
-	#(430 3 #reduceActionForMemberAccessorDeclaration3: 57788423 false) 
-	#(398 1 #liftFirstValue: 49285122 false) 
-	#(426 1 #liftFirstValue: 57072642 false) 
-	#(426 1 #liftFirstValue: 57072641 false) 
-	#(398 1 #liftFirstValue: 49285121 false) 
-	#(427 2 #reduceActionForModuleItemList2: 57072642 false) 
-	#(325 3 #reduceActionForExportSpecifier2: 41603074 false) 
-	#(323 4 #reduceActionForNamedExports3: 41282563 false) 
-	#(324 3 #reduceActionForNamespaceName2: 41498626 false) 
-	#(289 4 #reduceActionForClassDeclaration3: 37007363 false) 
-	#(289 4 #reduceActionForClassDeclaration5: 37007365 false) 
-	#(261 4 #reduceActionForFunctionDeclaration5: 32502789 false) 
-	#(318 3 #reduceActionForImportSpecifier2: 40022018 false) 
-	#(315 4 #reduceActionForNamedImports3: 39634947 false) 
-	#(317 3 #reduceActionForNamespaceName2: 39917570 false) 
-	#(318 3 #reduceActionForImportSpecifier3: 40022019 false) 
-	#(224 3 #reduceActionForBindingProperty2: 26221570 false) 
-	#(218 4 #reduceActionForObjectBindingPattern4: 25107460 false) 
-	#(221 3 #reduceActionForNamespaceName2: 25932802 false) 
-	#(219 4 #reduceActionForArrayBindingPattern4: 25495556 false) 
-	#(219 4 #reduceActionForArrayBindingPattern6: 25495558 false) 
-	#(222 3 #reduceActionForBindingElementList2: 26051586 false) 
-	#(413 4 #reduceActionForSimpleLexicalBinding2: 55035906 false) 
-	#(414 4 #reduceActionForDestructuringLexicalBinding2: 55145474 false) 
-	#(226 4 #reduceActionForSimpleLexicalBinding2: 26445828 false) 
-	#(399 1 #reduceActionForIdentifier1: 49367042 false) 
-	#(399 1 #liftFirstValue: 49367041 false) 
-	#(399 1 #liftFirstValue: 49367043 false) 
-	#(397 2 #reduceActionForModuleItemList2: 48872450 false) 
-	#(225 4 #reduceActionForBindingElement6: 26335238 false) 
-	#(226 4 #reduceActionForSingleNameBinding8: 26445832 false) 
-	#(226 4 #reduceActionForSingleNameBinding5: 26445829 false) 
-	#(226 4 #reduceActionForSingleNameBinding10: 26445834 false) 
-	#(287 1 #reduceActionForModuleBody1: 36894721 false) 
-	#(292 4 #reduceActionForClassTail4: 37282820 false) 
-	#(173 4 #reduceActionForArguments3: 15206403 false) 
-	#(174 3 #reduceActionForArgumentList3: 15391747 false) 
-	#(364 3 #reduceActionForTypeArguments1: 45271041 false) 
-	#(173 4 #reduceActionForArguments4: 15206404 false) 
-	#(151 5 #reduceActionForObjectLiteral3: 11369475 false) 
-	#(153 3 #reduceActionForNamespaceName2: 11927554 false) 
-	#(154 3 #reduceActionForPropertyDefinition3: 12062723 false) 
-	#(163 2 #reduceActionForTemplateMiddleList1: 13049857 false) 
-	#(162 2 #reduceActionForTemplateSpans2: 12962818 false) 
-	#(178 3 #reduceActionForOptionalFirst2: 16319490 false) 
-	#(177 3 #reduceActionForOptionalFirst2: 15961090 false) 
-	#(197 5 #reduceActionForConditionalExpression2: 21171202 false) 
-	#(268 3 #reduceActionForConciseBody2: 33261570 false) 
-	#(338 3 #reduceActionForJSXNamespacedName1: 43273217 false) 
-	#(344 2 #reduceActionForModuleItemList2: 43546626 false) 
-	#(346 2 #reduceActionForJSXAttribute2: 43760642 false) 
-	#(334 5 #reduceActionForJSXOpeningElement1: 42514433 false) 
-	#(406 4 #reduceActionForTypeCallSignature1: 52649985 false) 
-	#(181 5 #reduceActionForUnaryExpression10: 17082378 false) 
-	#(406 4 #reduceActionForTypeCallSignature4: 52649988 false) 
-	#(230 5 #reduceActionForIfStatement2: 26844162 false) 
-	#(243 5 #reduceActionForSwitchStatement1: 30614529 false) 
-	#(254 1 #liftFirstValue: 31881217 false) 
-	#(254 1 #liftFirstValue: 31881219 false) 
-	#(411 3 #reduceActionForSimpleVariableDeclaration2: 54735874 false) 
-	#(412 3 #reduceActionForDestructuringVariableDeclaration1: 54841345 false) 
-	#(233 5 #reduceActionForWhileStatement1: 27421697 false) 
-	#(242 5 #reduceActionForWithStatement1: 30482433 false) 
-	#(474 2 #reduceActionForAmbientBinding2: 67160066 false) 
-	#(472 3 #reduceActionForLexicalDeclaration1: 66751491 false) 
-	#(486 1 #reduceActionForAmbientNamespaceElement3: 68976643 false) 
-	#(486 1 #reduceActionForAmbientNamespaceElement3: 68976649 false) 
-	#(486 1 #reduceActionForAmbientNamespaceElement3: 68976655 false) 
-	#(486 1 #reduceActionForAmbientNamespaceElement3: 68976641 false) 
-	#(486 1 #reduceActionForAmbientNamespaceElement3: 68976645 false) 
-	#(486 1 #reduceActionForAmbientNamespaceElement3: 68976647 false) 
-	#(486 1 #reduceActionForAmbientNamespaceElement3: 68976651 false) 
-	#(486 1 #reduceActionForAmbientNamespaceElement3: 68976653 false) 
-	#(484 1 #reduceActionForModuleBody1: 68797442 false) 
-	#(485 1 #reduceActionForModuleItemList1: 68849665 false) 
-	#(472 3 #reduceActionForLexicalDeclaration1: 66751490 false) 
-	#(461 0 #reduceActionForSourceFileElement__element__1: 62565377 false) 
-	#(472 3 #reduceActionForLexicalDeclaration1: 66751489 false) 
-	#(432 4 #reduceActionForEnumDeclaration1: 58156033 false) 
-	#(435 1 #reduceActionForEnumMember1: 58441729 false) 
-	#(433 1 #reduceActionForModuleBody1: 58303489 false) 
-	#(434 1 #reduceActionForNamespaceName1: 58349569 false) 
-	#(470 4 #reduceActionForExportAssignment1: 66230273 false) 
-	#(469 4 #reduceActionForExportListDeclaration1: 65893377 false) 
-	#(469 4 #reduceActionForExportListDeclaration3: 65893379 false) 
-	#(444 1 #reduceActionForModuleBody1: 60130305 false) 
-	#(416 2 #reduceActionForInitializer1: 55734273 false) 
-	#(415 4 #reduceActionForInterfaceDeclaration3: 55578627 false) 
-	#(415 4 #reduceActionForInterfaceDeclaration2: 55578626 false) 
-	#(441 1 #liftFirstValue: 58972161 false) 
-	#(441 1 #liftFirstValue: 58972162 false) 
-	#(441 1 #liftFirstValue: 58972163 false) 
-	#(441 1 #liftFirstValue: 58972164 false) 
-	#(441 1 #liftFirstValue: 58972165 false) 
-	#(441 1 #liftFirstValue: 58972167 false) 
-	#(441 1 #liftFirstValue: 58972166 false) 
-	#(441 1 #liftFirstValue: 58972168 false) 
-	#(441 1 #liftFirstValue: 58972169 false) 
-	#(439 1 #reduceActionForModuleBody1: 58835970 false) 
-	#(440 1 #reduceActionForModuleItemList1: 58873857 false) 
-	#(441 1 #liftFirstValue: 58972172 false) 
-	#(441 1 #liftFirstValue: 58972171 false) 
-	#(441 1 #liftFirstValue: 58972170 false) 
-	#(438 3 #reduceActionForNamespaceName2: 58730498 false) 
-	#(467 4 #reduceActionForExportDefaultImplementationElement1: 64896001 false) 
-	#(467 4 #reduceActionForExportDefaultImplementationElement1: 64896002 false) 
-	#(467 4 #reduceActionForExportDefaultImplementationElement1: 64896003 false) 
-	#(468 4 #reduceActionForExportDefaultDeclarationElement1: 65457153 false) 
-	#(468 4 #reduceActionForExportDefaultDeclarationElement1: 65457154 false) 
-	#(389 5 #reduceActionForFunctionType1: 47771649 false) 
-	#(396 4 #reduceActionForCallSignature2: 48625666 false) 
-	#(402 4 #reduceActionForConstructSignature1: 51451905 false) 
-	#(394 4 #reduceActionForPropertySignature8: 48388104 false) 
-	#(396 4 #reduceActionForCallSignature3: 48625667 false) 
-	#(384 5 #reduceActionForTupleType8: 47261704 false) 
-	#(383 5 #reduceActionForArrayType2: 47125506 false) 
-	#(372 5 #reduceActionForIndexedAccessType1: 46033921 false) 
-	#(401 1 #liftFirstValue: 50772993 false) 
-	#(401 1 #liftFirstValue: 50772994 false) 
-	#(273 5 #reduceActionForMethodDefinition9: 33732617 false) 
-	#(422 4 #reduceActionForConstructorDeclaration3: 56278019 false) 
-	#(429 4 #reduceActionForMemberFunctionDeclaration9: 57330697 false) 
-	#(430 4 #reduceActionForMemberAccessorDeclaration4: 57788420 false) 
-	#(430 4 #reduceActionForMemberAccessorDeclaration4: 57788424 false) 
-	#(289 5 #reduceActionForClassDeclaration2: 37007362 false) 
-	#(289 5 #reduceActionForClassDeclaration7: 37007367 false) 
-	#(261 5 #reduceActionForFunctionDeclaration6: 32502790 false) 
-	#(218 5 #reduceActionForObjectBindingPattern5: 25107461 false) 
-	#(219 5 #reduceActionForArrayBindingPattern8: 25495560 false) 
-	#(219 5 #reduceActionForArrayBindingPattern7: 25495559 false) 
-	#(321 6 #reduceActionForExportDeclaration6: 40381446 false) 
-	#(225 5 #reduceActionForBindingElement7: 26335239 false) 
-	#(225 5 #reduceActionForBindingElement4: 26335236 false) 
-	#(225 5 #reduceActionForBindingElement8: 26335240 false) 
-	#(226 5 #reduceActionForSingleNameBinding6: 26445830 false) 
-	#(272 3 #reduceActionForConciseBody2: 33611778 false) 
-	#(417 3 #reduceActionForNamespaceName2: 55819266 false) 
-	#(174 4 #reduceActionForArgumentList4: 15391748 false) 
-	#(365 3 #reduceActionForNamespaceName2: 45348866 false) 
-	#(173 5 #reduceActionForArguments5: 15206405 false) 
-	#(173 5 #reduceActionForArguments6: 15206406 false) 
-	#(163 3 #reduceActionForTemplateMiddleList2: 13049858 false) 
-	#(358 0 #reduceActionForSwitchToJSXTextOrDefault21: 44750849 true) 
-	#(353 1 #liftFirstValue: 44504066 false) 
-	#(353 1 #liftFirstValue: 44504065 false) 
-	#(333 6 #reduceActionForJSXSelfClosingElement1: 42331137 false) 
-	#(334 6 #reduceActionForJSXOpeningElement2: 42514434 false) 
-	#(349 1 #reduceActionForLiteral4: 44008449 false) 
-	#(349 1 #liftFirstValue: 44008451 false) 
-	#(349 1 #liftFirstValue: 44008452 false) 
-	#(348 2 #reduceActionForInitializer1: 43934721 false) 
-	#(262 6 #reduceActionForFunctionExpression3: 32714755 false) 
-	#(406 5 #reduceActionForTypeCallSignature2: 52649986 false) 
-	#(234 6 #reduceActionForForStatement1: 27570177 false) 
-	#(234 6 #reduceActionForForStatement13: 27570189 false) 
-	#(244 2 #reduceActionForCaseBlock1: 30740481 false) 
-	#(245 1 #reduceActionForModuleItemList1: 30924801 false) 
-	#(432 5 #reduceActionForEnumDeclaration3: 58156035 false) 
-	#(477 0 #reduceActionForSourceFileElement__element__1: 67596289 false) 
-	#(473 3 #reduceActionForNamespaceName2: 67047426 false) 
-	#(475 4 #reduceActionForAmbientFunctionDeclaration1: 67243009 false) 
-	#(486 2 #reduceActionForAmbientNamespaceElement4: 68976644 false) 
-	#(486 2 #reduceActionForAmbientNamespaceElement4: 68976650 false) 
-	#(486 2 #reduceActionForAmbientNamespaceElement4: 68976656 false) 
-	#(486 2 #reduceActionForAmbientNamespaceElement4: 68976642 false) 
-	#(486 2 #reduceActionForAmbientNamespaceElement4: 68976646 false) 
-	#(486 2 #reduceActionForAmbientNamespaceElement4: 68976648 false) 
-	#(486 2 #reduceActionForAmbientNamespaceElement4: 68976652 false) 
-	#(486 2 #reduceActionForAmbientNamespaceElement4: 68976654 false) 
-	#(483 4 #reduceActionForAmbientNamespaceDeclaration2: 68497410 false) 
-	#(485 2 #reduceActionForModuleItemList2: 68849666 false) 
-	#(463 1 #liftFirstValue: 62746626 false) 
-	#(457 1 #liftFirstValue: 61946882 false) 
-	#(457 1 #liftFirstValue: 61946881 false) 
-	#(457 1 #liftFirstValue: 61946883 false) 
-	#(457 1 #liftFirstValue: 61946885 false) 
-	#(463 1 #liftFirstValue: 62746625 false) 
-	#(461 1 #reduceActionForModuleBody1: 62565378 false) 
-	#(462 1 #reduceActionForModuleItemList1: 62615553 false) 
-	#(463 1 #liftFirstValue: 62746627 false) 
-	#(463 1 #liftFirstValue: 62746628 false) 
-	#(463 1 #liftFirstValue: 62746629 false) 
-	#(463 1 #liftFirstValue: 62746630 false) 
-	#(457 1 #liftFirstValue: 61946884 false) 
-	#(432 5 #reduceActionForEnumDeclaration2: 58156034 false) 
-	#(433 2 #reduceActionForOptionalChain2: 58303490 false) 
-	#(469 5 #reduceActionForExportListDeclaration6: 65893382 false) 
-	#(443 5 #reduceActionForImportAliasDeclaration1: 59995137 false) 
-	#(415 5 #reduceActionForInterfaceDeclaration4: 55578628 false) 
-	#(442 2 #reduceActionForAmbientNamespaceElement4: 59252738 false) 
-	#(442 2 #reduceActionForAmbientNamespaceElement4: 59252737 false) 
-	#(442 2 #reduceActionForAmbientNamespaceElement4: 59252739 false) 
-	#(442 2 #reduceActionForAmbientNamespaceElement4: 59252740 false) 
-	#(442 2 #reduceActionForAmbientNamespaceElement4: 59252741 false) 
-	#(442 2 #reduceActionForAmbientNamespaceElement4: 59252743 false) 
-	#(442 2 #reduceActionForAmbientNamespaceElement4: 59252742 false) 
-	#(442 2 #reduceActionForAmbientNamespaceElement4: 59252744 false) 
-	#(442 2 #reduceActionForAmbientNamespaceElement4: 59252745 false) 
-	#(442 2 #reduceActionForAmbientNamespaceElement4: 59252747 false) 
-	#(442 2 #reduceActionForAmbientNamespaceElement4: 59252746 false) 
-	#(437 5 #reduceActionForNamespaceDeclaration1: 58589185 false) 
-	#(440 2 #reduceActionForModuleItemList2: 58873858 false) 
-	#(405 5 #reduceActionForTypeAliasDeclaration1: 52037633 false) 
-	#(468 5 #reduceActionForExportDefaultDeclarationElement3: 65457155 false) 
-	#(467 5 #reduceActionForExportDefaultImplementationElement4: 64896004 false) 
-	#(402 5 #reduceActionForConstructSignature2: 51451906 false) 
-	#(402 5 #reduceActionForConstructSignature3: 51451907 false) 
-	#(396 5 #reduceActionForCallSignature4: 48625668 false) 
-	#(390 6 #reduceActionForConstructorType1: 47951873 false) 
-	#(389 6 #reduceActionForFunctionType2: 47771650 false) 
-	#(409 2 #reduceActionForTypedPropertySetParameterList1: 53684225 false) 
-	#(273 6 #reduceActionForMethodDefinition7: 33732615 false) 
-	#(429 5 #reduceActionForMemberFunctionDeclaration10: 57330698 false) 
-	#(423 3 #reduceActionForCallSignature1: 56742913 false) 
-	#(429 5 #reduceActionForMemberFunctionDeclaration11: 57330699 false) 
-	#(422 5 #reduceActionForConstructorDeclaration4: 56278020 false) 
-	#(429 5 #reduceActionForMemberFunctionDeclaration13: 57330701 false) 
-	#(425 5 #reduceActionForMemberVariableDeclaration1: 57010177 false) 
-	#(289 6 #reduceActionForClassDeclaration4: 37007364 false) 
-	#(289 6 #reduceActionForClassDeclaration6: 37007366 false) 
-	#(261 6 #reduceActionForFunctionExpression3: 32502787 false) 
-	#(318 5 #reduceActionForImportSpecifier4: 40022020 false) 
-	#(219 6 #reduceActionForArrayBindingPattern9: 25495561 false) 
-	#(225 6 #reduceActionForBindingElement5: 26335237 false) 
-	#(225 6 #reduceActionForBindingElement9: 26335241 false) 
-	#(262 7 #reduceActionForFunctionExpression1: 32714753 false) 
-	#(278 1 #reduceActionForModuleBody1: 35093505 false) 
-	#(173 6 #reduceActionForArguments7: 15206407 false) 
-	#(352 4 #reduceActionForJSXChild3: 44271619 false) 
-	#(333 7 #reduceActionForJSXSelfClosingElement2: 42331138 false) 
-	#(262 7 #reduceActionForFunctionExpression4: 32714756 false) 
-	#(232 7 #reduceActionForDoWhileStatement1: 27229185 false) 
-	#(234 7 #reduceActionForForStatement2: 27570178 false) 
-	#(234 7 #reduceActionForForStatement3: 27570179 false) 
-	#(235 7 #reduceActionForForInOfStatement1: 28291073 false) 
-	#(235 7 #reduceActionForForInOfStatement4: 28291076 false) 
-	#(234 7 #reduceActionForForStatement5: 27570181 false) 
-	#(234 7 #reduceActionForForStatement14: 27570190 false) 
-	#(234 7 #reduceActionForForStatement15: 27570191 false) 
-	#(235 7 #reduceActionForForInOfStatement3: 28291075 false) 
-	#(235 7 #reduceActionForForInOfStatement6: 28291078 false) 
-	#(230 7 #reduceActionForIfStatement1: 26844161 false) 
-	#(247 2 #reduceActionForDefaultClause1: 31104001 false) 
-	#(244 3 #reduceActionForCaseBlock2: 30740482 false) 
-	#(245 2 #reduceActionForModuleItemList2: 30924802 false) 
-	#(244 3 #reduceActionForCaseBlock3: 30740483 false) 
-	#(254 3 #liftFirstValue: 31881218 false) 
-	#(252 5 #reduceActionForCatch1: 31652865 false) 
-	#(432 6 #reduceActionForEnumDeclaration4: 58156036 false) 
-	#(479 1 #liftFirstValue: 67771395 false) 
-	#(477 1 #reduceActionForModuleBody1: 67596290 false) 
-	#(478 1 #reduceActionForModuleItemList1: 67644417 false) 
-	#(479 1 #liftFirstValue: 67771393 false) 
-	#(479 1 #liftFirstValue: 67771394 false) 
-	#(487 6 #reduceActionForAmbientModuleDeclaration1: 69748737 false) 
-	#(462 2 #reduceActionForModuleItemList2: 62615554 false) 
-	#(483 5 #reduceActionForNamespaceDeclaration1: 68497409 false) 
-	#(436 1 #liftFirstValue: 58547201 false) 
-	#(435 3 #reduceActionForEnumMember2: 58441730 false) 
-	#(434 3 #reduceActionForNamespaceName2: 58349570 false) 
-	#(469 6 #reduceActionForExportListDeclaration2: 65893378 false) 
-	#(469 6 #reduceActionForExportListDeclaration4: 65893380 false) 
-	#(405 6 #reduceActionForTypeAliasDeclaration2: 52037634 false) 
-	#(405 6 #reduceActionForTypeAliasDeclaration3: 52037635 false) 
-	#(403 6 #reduceActionForIndexSignature2: 51644418 false) 
-	#(403 6 #reduceActionForIndexSignature2: 51644417 false) 
-	#(402 6 #reduceActionForConstructSignature4: 51451908 false) 
-	#(390 7 #reduceActionForConstructorType2: 47951874 false) 
-	#(273 7 #reduceActionForMethodDefinition5: 33732613 false) 
-	#(273 7 #reduceActionForMethodDefinition1: 33732609 false) 
-	#(273 7 #reduceActionForMethodDefinition8: 33732616 false) 
-	#(423 4 #reduceActionForCallSignature2: 56742914 false) 
-	#(422 6 #reduceActionForConstructorDeclaration1: 56278017 false) 
-	#(429 6 #reduceActionForMemberFunctionDeclaration12: 57330700 false) 
-	#(429 6 #reduceActionForMemberFunctionDeclaration1: 57330689 false) 
-	#(429 6 #reduceActionForMemberFunctionDeclaration14: 57330702 false) 
-	#(429 6 #reduceActionForMemberFunctionDeclaration15: 57330703 false) 
-	#(425 6 #reduceActionForMemberVariableDeclaration2: 57010178 false) 
-	#(425 6 #reduceActionForMemberVariableDeclaration3: 57010179 false) 
-	#(425 6 #reduceActionForMemberVariableDeclaration5: 57010181 false) 
-	#(261 7 #reduceActionForFunctionExpression1: 32502785 false) 
-	#(289 7 #reduceActionForClassDeclaration8: 37007368 false) 
-	#(261 7 #reduceActionForFunctionExpression4: 32502788 false) 
-	#(285 8 #reduceActionForAsyncFunctionExpression1: 36374529 false) 
-	#(283 1 #reduceActionForModuleBody1: 36064257 false) 
-	#(276 8 #reduceActionForGeneratorExpression1: 34637825 false) 
-	#(262 8 #reduceActionForFunctionExpression2: 32714754 false) 
-	#(335 5 #reduceActionForJSXClosingElement1: 42743809 false) 
-	#(352 5 #reduceActionForJSXChild4: 44271620 false) 
-	#(345 5 #reduceActionForJSXSpreadAttribute1: 43611137 false) 
-	#(234 8 #reduceActionForForStatement4: 27570180 false) 
-	#(234 8 #reduceActionForForStatement9: 27570185 false) 
-	#(235 8 #reduceActionForForInOfStatement2: 28291074 false) 
-	#(235 8 #reduceActionForForInOfStatement5: 28291077 false) 
-	#(234 8 #reduceActionForForStatement6: 27570182 false) 
-	#(234 8 #reduceActionForForStatement7: 27570183 false) 
-	#(234 8 #reduceActionForForStatement16: 27570192 false) 
-	#(235 8 #reduceActionForForInOfStatement7: 28291079 false) 
-	#(235 8 #reduceActionForForInOfStatement9: 28291081 false) 
-	#(246 3 #reduceActionForCaseClause1: 30997505 false) 
-	#(247 3 #reduceActionForDefaultClause2: 31104002 false) 
-	#(244 4 #reduceActionForCaseBlock5: 30740485 false) 
-	#(244 4 #reduceActionForCaseBlock4: 30740484 false) 
-	#(476 6 #reduceActionForAmbientClassDeclaration1: 67390465 false) 
-	#(478 2 #reduceActionForModuleItemList2: 67644418 false) 
-	#(405 7 #reduceActionForTypeAliasDeclaration4: 52037636 false) 
-	#(277 8 #reduceActionForGeneratorMethod1: 34873345 false) 
-	#(286 8 #reduceActionForAsyncMethod1: 36647937 false) 
-	#(273 8 #reduceActionForMethodDefinition6: 33732614 false) 
-	#(429 7 #reduceActionForMemberFunctionDeclaration2: 57330690 false) 
-	#(429 7 #reduceActionForMemberFunctionDeclaration3: 57330691 false) 
-	#(422 7 #reduceActionForConstructorDeclaration2: 56278018 false) 
-	#(429 7 #reduceActionForMemberFunctionDeclaration16: 57330704 false) 
-	#(429 7 #reduceActionForMemberFunctionDeclaration5: 57330693 false) 
-	#(425 7 #reduceActionForMemberVariableDeclaration4: 57010180 false) 
-	#(425 7 #reduceActionForMemberVariableDeclaration6: 57010182 false) 
-	#(425 7 #reduceActionForMemberVariableDeclaration7: 57010183 false) 
-	#(284 8 #reduceActionForAsyncFunctionExpression1: 36101121 false) 
-	#(275 8 #reduceActionForGeneratorExpression1: 34401281 false) 
-	#(261 8 #reduceActionForFunctionExpression2: 32502786 false) 
-	#(281 9 #reduceActionForAsyncGeneratorExpression1: 35532801 false) 
-	#(285 9 #reduceActionForAsyncFunctionExpression3: 36374531 false) 
-	#(276 9 #reduceActionForGeneratorExpression2: 34637826 false) 
-	#(336 9 #reduceActionForJSXFragment1: 42904577 false) 
-	#(335 6 #reduceActionForJSXClosingElement2: 42743810 false) 
-	#(234 9 #reduceActionForForStatement10: 27570186 false) 
-	#(234 9 #reduceActionForForStatement11: 27570187 false) 
-	#(234 9 #reduceActionForForStatement8: 27570184 false) 
-	#(235 9 #reduceActionForForInOfStatement8: 28291080 false) 
-	#(246 4 #reduceActionForCaseClause2: 30997506 false) 
-	#(244 5 #reduceActionForCaseBlock6: 30740486 false) 
-	#(480 3 #reduceActionForAmbientConstructorDeclaration1: 67884033 false) 
-	#(476 7 #reduceActionForAmbientClassDeclaration2: 67390466 false) 
-	#(464 8 #reduceActionForImportRequireDeclaration1: 62983169 false) 
-	#(282 9 #reduceActionForAsyncGeneratorMethod1: 35807233 false) 
-	#(407 9 #reduceActionForGetAccessor1: 53013505 false) 
-	#(408 9 #reduceActionForSetAccessor2: 53219330 false) 
-	#(429 8 #reduceActionForMemberFunctionDeclaration4: 57330692 false) 
-	#(429 8 #reduceActionForMemberFunctionDeclaration6: 57330694 false) 
-	#(429 8 #reduceActionForMemberFunctionDeclaration7: 57330695 false) 
-	#(425 8 #reduceActionForMemberVariableDeclaration8: 57010184 false) 
-	#(280 9 #reduceActionForAsyncGeneratorExpression1: 35257345 false) 
-	#(284 9 #reduceActionForAsyncFunctionExpression3: 36101123 false) 
-	#(275 9 #reduceActionForGeneratorExpression2: 34401282 false) 
-	#(285 10 #reduceActionForAsyncFunctionExpression2: 36374530 false) 
-	#(281 10 #reduceActionForAsyncGeneratorExpression2: 35532802 false) 
-	#(349 5 #reduceActionForJSXChild4: 44008450 false) 
-	#(234 10 #reduceActionForForStatement12: 27570188 false) 
-	#(480 4 #reduceActionForAmbientConstructorDeclaration2: 67884034 false) 
-	#(481 4 #reduceActionForAmbientPropertyMemberDeclaration1: 68105217 false) 
-	#(481 4 #reduceActionForAmbientPropertyMemberDeclaration3: 68105219 false) 
-	#(286 10 #reduceActionForAsyncMethod2: 36647938 false) 
-	#(408 10 #reduceActionForSetAccessor1: 53219329 false) 
-	#(408 10 #reduceActionForSetAccessor1: 53219331 false) 
-	#(429 9 #reduceActionForMemberFunctionDeclaration8: 57330696 false) 
-	#(284 10 #reduceActionForAsyncFunctionExpression2: 36101122 false) 
-	#(280 10 #reduceActionForAsyncGeneratorExpression2: 35257346 false) 
-	#(285 11 #reduceActionForAsyncFunctionExpression4: 36374532 false) 
-	#(481 5 #reduceActionForAmbientPropertyMemberDeclaration2: 68105218 false) 
-	#(284 11 #reduceActionForAsyncFunctionExpression4: 36101124 false)
+	#(209 0 #reduceActionForStartStatementListItem1: 24199169 true) 
+	#(306 0 #reduceActionForModule1: 38717441 false) 
+	#(152 0 #reduceActionForValidationNotArrowFunction1: 11713537 true) 
+	#(161 0 #reduceActionForStartTemplateLiteral1: 12929025 true) 
+	#(354 0 #reduceActionForSwitchToJSX1: 44569601 true) 
+	#(304 0 #reduceActionForScript1: 38659073 false) 
+	#(446 0 #reduceActionForSourceFileElement__element__1: 60348417 false) 
+	#(211 1 #liftFirstValue: 24371202 false) 
+	#(290 0 #reduceActionForSourceFileElement__element__1: 37030913 false) 
+	#(211 1 #liftFirstValue: 24371201 false) 
+	#(309 1 #liftFirstValue: 38850563 false) 
+	#(208 1 #liftFirstValue: 24101890 false) 
+	#(141 1 #liftFirstValue: 9050113 false) 
+	#(306 1 #reduceActionForModule2: 38717442 false) 
+	#(307 1 #reduceActionForModuleBody1: 38746113 false) 
+	#(308 1 #reduceActionForModuleItemList1: 38776833 false) 
+	#(309 1 #liftFirstValue: 38850561 false) 
+	#(309 1 #liftFirstValue: 38850562 false) 
+	#(257 0 #reduceActionForFormalParameters1: 32101377 false) 
+	#(328 1 #liftFirstValue: 41822210 false) 
+	#(327 1 #liftFirstValue: 41798657 false) 
+	#(144 1 #reduceActionForPrimaryExpression1: 9457665 false) 
+	#(328 1 #liftFirstValue: 41822209 false) 
+	#(279 1 #reduceActionForYieldExpression1: 35129345 false) 
+	#(142 1 #reduceActionForIdentifier1: 9162753 false) 
+	#(326 1 #reduceActionForIdentifier1: 41729025 false) 
+	#(329 1 #liftFirstValue: 41859073 false) 
+	#(330 1 #liftFirstValue: 41894913 false) 
+	#(331 1 #reduceActionForRegularExpressionLiteral1: 41932801 false) 
+	#(160 1 #reduceActionForTemplateLiteral1: 12773377 false) 
+	#(355 0 #reduceActionForSwitchToJSXText1: 44610561 true) 
+	#(144 1 #liftFirstValue: 9457666 false) 
+	#(267 1 #reduceActionForArrowParameterDeclaration1: 33170433 false) 
+	#(164 1 #liftFirstValue: 13199361 false) 
+	#(144 1 #liftFirstValue: 9457677 false) 
+	#(144 1 #liftFirstValue: 9457667 false) 
+	#(144 1 #liftFirstValue: 9457668 false) 
+	#(144 1 #liftFirstValue: 9457669 false) 
+	#(144 1 #liftFirstValue: 9457676 false) 
+	#(169 1 #liftFirstValue: 14310401 false) 
+	#(164 1 #liftFirstValue: 13199365 false) 
+	#(164 1 #liftFirstValue: 13199366 false) 
+	#(166 1 #liftFirstValue: 14078977 false) 
+	#(166 1 #liftFirstValue: 14078978 false) 
+	#(179 1 #liftFirstValue: 16635905 false) 
+	#(179 1 #liftFirstValue: 16635906 false) 
+	#(170 1 #liftFirstValue: 14400514 false) 
+	#(170 1 #liftFirstValue: 14400515 false) 
+	#(179 1 #liftFirstValue: 16635907 false) 
+	#(180 1 #liftFirstValue: 16717825 false) 
+	#(181 1 #liftFirstValue: 17086465 false) 
+	#(182 1 #liftFirstValue: 17539073 false) 
+	#(183 1 #liftFirstValue: 17709057 false) 
+	#(185 1 #liftFirstValue: 17969153 false) 
+	#(186 1 #liftFirstValue: 18267137 false) 
+	#(187 1 #liftFirstValue: 18652161 false) 
+	#(188 1 #liftFirstValue: 19501057 false) 
+	#(189 1 #liftFirstValue: 20031489 false) 
+	#(190 1 #liftFirstValue: 20195329 false) 
+	#(191 1 #liftFirstValue: 20363265 false) 
+	#(192 1 #liftFirstValue: 20530177 false) 
+	#(195 1 #liftFirstValue: 21027842 false) 
+	#(193 1 #liftFirstValue: 20700161 false) 
+	#(196 1 #liftFirstValue: 21101569 false) 
+	#(196 1 #liftFirstValue: 21101570 false) 
+	#(195 1 #liftFirstValue: 21027841 false) 
+	#(197 1 #liftFirstValue: 21175297 false) 
+	#(198 1 #liftFirstValue: 21402625 false) 
+	#(200 1 #liftFirstValue: 23180289 false) 
+	#(144 1 #liftFirstValue: 9457670 false) 
+	#(198 1 #liftFirstValue: 21402627 false) 
+	#(266 1 #reduceActionForArrowParameters1: 33080321 false) 
+	#(266 1 #reduceActionForArrowParameters2: 33080322 false) 
+	#(198 1 #liftFirstValue: 21402628 false) 
+	#(144 1 #liftFirstValue: 9457672 false) 
+	#(198 1 #liftFirstValue: 21402626 false) 
+	#(144 1 #liftFirstValue: 9457674 false) 
+	#(144 1 #liftFirstValue: 9457673 false) 
+	#(181 1 #liftFirstValue: 17086473 false) 
+	#(144 1 #liftFirstValue: 9457671 false) 
+	#(146 1 #reduceActionForLiteral1: 10558465 false) 
+	#(146 1 #reduceActionForLiteral2: 10558466 false) 
+	#(146 1 #reduceActionForLiteral4: 10558468 false) 
+	#(146 1 #reduceActionForLiteral3: 10558467 false) 
+	#(144 1 #liftFirstValue: 9457675 false) 
+	#(144 1 #liftFirstValue: 9457678 false) 
+	#(332 1 #liftFirstValue: 42184705 false) 
+	#(356 0 #reduceActionForStartJSXText1: 44659713 true) 
+	#(144 1 #liftFirstValue: 9457679 false) 
+	#(181 1 #liftFirstValue: 17086475 false) 
+	#(228 1 #reduceActionForEmptyStatement1: 26718209 false) 
+	#(240 0 #reduceActionForCheckEOL1: 30336001 true) 
+	#(201 1 #liftFirstValue: 23331846 false) 
+	#(201 1 #liftFirstValue: 23331841 false) 
+	#(205 1 #liftFirstValue: 23881729 false) 
+	#(201 1 #liftFirstValue: 23331842 false) 
+	#(201 1 #liftFirstValue: 23331843 false) 
+	#(201 1 #liftFirstValue: 23331844 false) 
+	#(201 1 #liftFirstValue: 23331845 false) 
+	#(204 1 #liftFirstValue: 23819265 false) 
+	#(231 1 #liftFirstValue: 27139073 false) 
+	#(231 1 #liftFirstValue: 27139074 false) 
+	#(231 1 #liftFirstValue: 27139075 false) 
+	#(231 1 #liftFirstValue: 27139076 false) 
+	#(201 1 #liftFirstValue: 23331847 false) 
+	#(201 1 #liftFirstValue: 23331848 false) 
+	#(201 1 #liftFirstValue: 23331849 false) 
+	#(201 1 #liftFirstValue: 23331850 false) 
+	#(204 1 #liftFirstValue: 23819266 false) 
+	#(201 1 #liftFirstValue: 23331851 false) 
+	#(201 1 #liftFirstValue: 23331852 false) 
+	#(201 1 #liftFirstValue: 23331853 false) 
+	#(201 1 #liftFirstValue: 23331854 false) 
+	#(305 1 #reduceActionForModuleBody1: 38687745 false) 
+	#(207 1 #reduceActionForModuleItemList1: 24004609 false) 
+	#(304 1 #reduceActionForScript2: 38659074 false) 
+	#(445 1 #reduceActionForSourceFile1: 60246017 false) 
+	#(393 1 #reduceActionForThisType1: 48354305 false) 
+	#(375 1 #reduceActionForPredefinedType1: 46329857 false) 
+	#(377 1 #reduceActionForTypeName1: 46478337 false) 
+	#(378 1 #reduceActionForNamespaceName1: 46584833 false) 
+	#(373 1 #reduceActionForLiteralType1: 46167041 false) 
+	#(373 1 #reduceActionForLiteralType1: 46167042 false) 
+	#(367 1 #liftFirstValue: 45481985 false) 
+	#(368 1 #liftFirstValue: 45558786 false) 
+	#(369 1 #liftFirstValue: 45635586 false) 
+	#(370 1 #liftFirstValue: 45697025 false) 
+	#(371 1 #liftFirstValue: 45840394 false) 
+	#(371 1 #liftFirstValue: 45840393 false) 
+	#(371 1 #liftFirstValue: 45840385 false) 
+	#(371 1 #liftFirstValue: 45840386 false) 
+	#(371 1 #liftFirstValue: 45840387 false) 
+	#(376 1 #reduceActionForTypeReference1: 46382081 false) 
+	#(371 1 #liftFirstValue: 45840388 false) 
+	#(371 1 #liftFirstValue: 45840389 false) 
+	#(371 1 #liftFirstValue: 45840390 false) 
+	#(368 1 #liftFirstValue: 45558785 false) 
+	#(369 1 #liftFirstValue: 45635585 false) 
+	#(367 1 #liftFirstValue: 45481986 false) 
+	#(367 1 #liftFirstValue: 45481987 false) 
+	#(371 1 #liftFirstValue: 45840391 false) 
+	#(371 1 #liftFirstValue: 45840392 false) 
+	#(296 1 #reduceActionForEmptyStatement1: 37579785 false) 
+	#(299 0 #reduceActionForCheckSemicolon1: 38262785 true) 
+	#(300 1 #reduceActionForIdentifier1: 38309889 false) 
+	#(300 1 #reduceActionForIdentifier1: 38309890 false) 
+	#(298 1 #reduceActionForIdentifier1: 38119426 false) 
+	#(296 1 #liftFirstValue: 37579780 false) 
+	#(273 1 #liftFirstValue: 33736706 false) 
+	#(273 1 #liftFirstValue: 33736708 false) 
+	#(273 1 #liftFirstValue: 33736707 false) 
+	#(297 1 #reduceActionForFieldDefinition2: 38008834 false) 
+	#(296 1 #liftFirstValue: 37579784 false) 
+	#(273 1 #liftFirstValue: 33736714 false) 
+	#(273 1 #liftFirstValue: 33736715 false) 
+	#(322 1 #reduceActionForExportFromClause1: 41179137 false) 
+	#(321 2 #reduceActionForExportDeclaration4: 40385540 false) 
+	#(202 1 #liftFirstValue: 23614465 false) 
+	#(202 1 #liftFirstValue: 23614467 false) 
+	#(321 2 #reduceActionForExportDeclaration3: 40385539 false) 
+	#(203 1 #liftFirstValue: 23693313 false) 
+	#(203 1 #liftFirstValue: 23693314 false) 
+	#(203 1 #liftFirstValue: 23693316 false) 
+	#(203 1 #liftFirstValue: 23693315 false) 
+	#(202 1 #liftFirstValue: 23614466 false) 
+	#(322 1 #reduceActionForExportFromClause3: 41179139 false) 
+	#(320 1 #liftFirstValue: 40350721 false) 
+	#(312 1 #reduceActionForImportClause1: 39152641 false) 
+	#(312 1 #reduceActionForImportClause1: 39152642 false) 
+	#(312 1 #reduceActionForImportClause1: 39152643 false) 
+	#(313 1 #liftFirstValue: 39514113 false) 
+	#(319 1 #liftFirstValue: 40308737 false) 
+	#(208 2 #liftSecondValue: 24101889 false) 
+	#(213 1 #reduceActionForArrowParameterDeclaration1: 24501249 false) 
+	#(212 1 #reduceActionForNamespaceName1: 24402945 false) 
+	#(217 1 #liftFirstValue: 25048065 false) 
+	#(217 1 #liftFirstValue: 25048066 false) 
+	#(213 1 #liftFirstValue: 24501252 false) 
+	#(213 1 #liftFirstValue: 24501253 false) 
+	#(308 2 #reduceActionForModuleItemList2: 38776834 false) 
+	#(226 1 #reduceActionForArrowParameterDeclaration1: 26449921 false) 
+	#(225 1 #reduceActionForBindingElement2: 26339330 false) 
+	#(260 1 #liftFirstValue: 32471041 false) 
+	#(225 1 #liftFirstValue: 26339329 false) 
+	#(259 1 #liftFirstValue: 32424961 false) 
+	#(256 1 #reduceActionForModuleBody1: 32056321 false) 
+	#(257 1 #reduceActionForFormalParameters3: 32101379 false) 
+	#(257 1 #reduceActionForFormalParameters2: 32101378 false) 
+	#(258 1 #reduceActionForNamespaceName1: 32303105 false) 
+	#(147 2 #reduceActionForArrayLiteral1: 10740737 false) 
+	#(149 1 #reduceActionForModuleItemList1: 11219969 false) 
+	#(148 1 #reduceActionForNamespaceName1: 11001859 false) 
+	#(148 1 #reduceActionForNamespaceName1: 11001857 false) 
+	#(181 2 #reduceActionForUnaryExpression5: 17086469 false) 
+	#(180 2 #reduceActionForUpdateExpression4: 16717828 false) 
+	#(181 2 #reduceActionForUnaryExpression5: 17086470 false) 
+	#(180 2 #reduceActionForUpdateExpression4: 16717829 false) 
+	#(181 2 #reduceActionForUnaryExpression5: 17086471 false) 
+	#(181 2 #reduceActionForUnaryExpression5: 17086472 false) 
+	#(288 2 #reduceActionForAwaitExpression1: 36934657 false) 
+	#(291 2 #reduceActionForClassExpression1: 37207041 false) 
+	#(181 2 #reduceActionForUnaryExpression5: 17086466 false) 
+	#(169 2 #reduceActionForNewExpression2: 14310402 false) 
+	#(171 2 #reduceActionForSuperCall1: 14999553 false) 
+	#(181 2 #reduceActionForUnaryExpression5: 17086468 false) 
+	#(181 2 #reduceActionForUnaryExpression5: 17086467 false) 
+	#(279 2 #reduceActionForYieldExpression2: 35129346 false) 
+	#(164 2 #reduceActionForMemberExpression4: 13199364 false) 
+	#(170 2 #reduceActionForCallExpression1: 14400513 false) 
+	#(175 2 #reduceActionForOptionalExpression1: 15664129 false) 
+	#(170 2 #reduceActionForMemberExpression4: 14400519 false) 
+	#(170 2 #reduceActionForCallExpression1: 14400516 false) 
+	#(175 2 #reduceActionForOptionalExpression1: 15664130 false) 
+	#(175 2 #reduceActionForOptionalExpression1: 15664131 false) 
+	#(199 1 #liftFirstValue: 21607427 false) 
+	#(199 1 #liftFirstValue: 21607431 false) 
+	#(199 1 #liftFirstValue: 21607432 false) 
+	#(199 1 #liftFirstValue: 21607433 false) 
+	#(199 1 #liftFirstValue: 21607425 false) 
+	#(199 1 #liftFirstValue: 21607426 false) 
+	#(199 1 #liftFirstValue: 21607428 false) 
+	#(199 1 #liftFirstValue: 21607434 false) 
+	#(199 1 #liftFirstValue: 21607435 false) 
+	#(199 1 #liftFirstValue: 21607436 false) 
+	#(199 1 #liftFirstValue: 21607430 false) 
+	#(199 1 #liftFirstValue: 21607429 false) 
+	#(180 2 #reduceActionForUpdateExpression2: 16717826 false) 
+	#(180 2 #reduceActionForUpdateExpression2: 16717827 false) 
+	#(199 1 #liftFirstValue: 21607438 false) 
+	#(199 1 #liftFirstValue: 21607440 false) 
+	#(199 1 #liftFirstValue: 21607439 false) 
+	#(199 1 #liftFirstValue: 21607437 false) 
+	#(184 1 #liftFirstValue: 17911810 false) 
+	#(184 1 #liftFirstValue: 17911809 false) 
+	#(184 1 #liftFirstValue: 17911811 false) 
+	#(351 0 #reduceActionForSourceFileElement__element__1: 44255233 false) 
+	#(270 2 #reduceActionForArrowFormalParameters2: 33421314 false) 
+	#(206 2 #reduceActionForBlock1: 23907329 false) 
+	#(239 2 #reduceActionForBreakStatement1: 30226433 false) 
+	#(238 2 #reduceActionForContinueStatement1: 30109697 false) 
+	#(255 2 #reduceActionForDebuggerStatement1: 31970305 false) 
+	#(241 2 #reduceActionForReturnStatement1: 30370817 false) 
+	#(216 1 #reduceActionForArrowParameterDeclaration1: 24887297 false) 
+	#(215 1 #reduceActionForNamespaceName1: 24751105 false) 
+	#(229 2 #reduceActionForExpressionStatement1: 26768385 false) 
+	#(207 2 #reduceActionForModuleItemList2: 24004610 false) 
+	#(453 1 #liftFirstValue: 61432833 false) 
+	#(453 1 #liftFirstValue: 61432834 false) 
+	#(453 1 #liftFirstValue: 61432835 false) 
+	#(453 1 #liftFirstValue: 61432836 false) 
+	#(453 1 #liftFirstValue: 61432837 false) 
+	#(447 1 #liftFirstValue: 60397571 false) 
+	#(453 1 #liftFirstValue: 61432839 false) 
+	#(453 1 #liftFirstValue: 61432838 false) 
+	#(453 1 #liftFirstValue: 61432840 false) 
+	#(453 1 #liftFirstValue: 61432841 false) 
+	#(453 1 #liftFirstValue: 61432843 false) 
+	#(446 2 #reduceActionForModuleItemList2: 60348418 false) 
+	#(447 1 #liftFirstValue: 60397569 false) 
+	#(447 1 #liftFirstValue: 60397572 false) 
+	#(447 1 #liftFirstValue: 60397573 false) 
+	#(447 1 #liftFirstValue: 60397577 false) 
+	#(447 1 #liftFirstValue: 60397574 false) 
+	#(447 1 #liftFirstValue: 60397578 false) 
+	#(447 1 #liftFirstValue: 60397575 false) 
+	#(447 1 #liftFirstValue: 60397576 false) 
+	#(453 1 #liftFirstValue: 61432842 false) 
+	#(447 1 #liftFirstValue: 60397570 false) 
+	#(379 2 #reduceActionForObjectType1: 46689281 false) 
+	#(143 1 #reduceActionForIdentifier1: 9356289 false) 
+	#(156 1 #liftFirstValue: 12378113 false) 
+	#(394 1 #reduceActionForPropertySignature1: 48392193 false) 
+	#(155 1 #liftFirstValue: 12315649 false) 
+	#(155 1 #liftFirstValue: 12315650 false) 
+	#(156 1 #reduceActionForIdentifier1: 12378114 false) 
+	#(156 1 #reduceActionForIdentifier1: 12378115 false) 
+	#(380 1 #reduceActionForModuleBody1: 46771201 false) 
+	#(381 1 #reduceActionForNamespaceName1: 46867457 false) 
+	#(382 1 #liftFirstValue: 47022081 false) 
+	#(382 1 #liftFirstValue: 47022082 false) 
+	#(382 1 #liftFirstValue: 47022083 false) 
+	#(382 1 #liftFirstValue: 47022084 false) 
+	#(382 1 #liftFirstValue: 47022085 false) 
+	#(384 2 #reduceActionForTupleType1: 47265793 false) 
+	#(386 1 #liftFirstValue: 47521793 false) 
+	#(385 1 #reduceActionForNamespaceName1: 47413249 false) 
+	#(362 1 #reduceActionForTypeParameter1: 45167617 false) 
+	#(361 1 #reduceActionForNamespaceName1: 45054977 false) 
+	#(370 2 #reduceActionForPrefixType3: 45697027 false) 
+	#(370 2 #reduceActionForPrefixType2: 45697026 false) 
+	#(392 1 #reduceActionForTypeQueryExpression1: 48230401 false) 
+	#(391 2 #reduceActionForTypeQuery1: 48156673 false) 
+	#(303 0 #reduceActionForSourceFileElement__element__1: 38603777 false) 
+	#(296 2 #reduceActionForClassElement5: 37579781 false) 
+	#(298 2 #reduceActionForIdentifier1: 38119425 false) 
+	#(296 2 #reduceActionForClassElement6: 37579782 false) 
+	#(297 2 #reduceActionForFieldDefinition1: 38008833 false) 
+	#(427 0 #reduceActionForSourceFileElement__element__1: 57076737 false) 
+	#(296 2 #liftSecondValue: 37579777 false) 
+	#(296 2 #liftSecondValue: 37579778 false) 
+	#(424 1 #liftFirstValue: 56899585 false) 
+	#(424 1 #liftFirstValue: 56899586 false) 
+	#(424 1 #liftFirstValue: 56899587 false) 
+	#(296 2 #liftSecondValue: 37579779 false) 
+	#(323 2 #reduceActionForNamedExports1: 41286657 false) 
+	#(310 1 #liftFirstValue: 38925313 false) 
+	#(325 1 #reduceActionForExportSpecifier1: 41607169 false) 
+	#(324 1 #reduceActionForNamespaceName1: 41502721 false) 
+	#(310 1 #liftFirstValue: 38925314 false) 
+	#(290 2 #reduceActionForModuleItemList2: 37030914 false) 
+	#(321 3 #reduceActionForExportDeclaration2: 40385538 false) 
+	#(202 2 #liftSecondValue: 23614469 false) 
+	#(202 2 #liftSecondValue: 23614468 false) 
+	#(202 2 #liftSecondValue: 23614470 false) 
+	#(315 2 #reduceActionForNamedImports1: 39639041 false) 
+	#(317 1 #reduceActionForNamespaceName1: 39921665 false) 
+	#(318 1 #reduceActionForImportSpecifier1: 40026113 false) 
+	#(311 3 #reduceActionForImportDeclaration2: 38980610 false) 
+	#(218 2 #reduceActionForObjectBindingPattern1: 25111553 false) 
+	#(221 1 #reduceActionForNamespaceName1: 25936897 false) 
+	#(224 1 #liftFirstValue: 26225665 false) 
+	#(219 2 #reduceActionForArrayBindingPattern1: 25499649 false) 
+	#(222 1 #reduceActionForBindingElementList1: 26055681 false) 
+	#(223 1 #reduceActionForBindingElisionElement1: 26164225 false) 
+	#(213 2 #reduceActionForLexicalBinding2: 24501250 false) 
+	#(210 3 #reduceActionForLexicalDeclaration1: 24282113 false) 
+	#(213 2 #reduceActionForLexicalBinding3: 24501251 false) 
+	#(227 2 #reduceActionForBindingRestElement1: 26535937 false) 
+	#(227 2 #reduceActionForBindingRestElement1: 26535938 false) 
+	#(226 2 #reduceActionForLexicalBinding2: 26449922 false) 
+	#(145 3 #reduceActionForParenthesizedExpression1: 9823233 false) 
+	#(225 2 #reduceActionForLexicalBinding3: 26339331 false) 
+	#(270 3 #reduceActionForArrowFormalParameters1: 33421313 false) 
+	#(257 2 #reduceActionForFormalParameters4: 32101380 false) 
+	#(400 1 #liftFirstValue: 50701316 false) 
+	#(400 1 #liftFirstValue: 50701314 false) 
+	#(400 1 #liftFirstValue: 50701315 false) 
+	#(400 1 #liftFirstValue: 50701313 false) 
+	#(397 0 #reduceActionForSourceFileElement__element__1: 48876545 false) 
+	#(150 2 #reduceActionForSpreadElement1: 11275265 false) 
+	#(147 3 #reduceActionForArrayLiteral3: 10740739 false) 
+	#(147 3 #reduceActionForArrayLiteral2: 10740738 false) 
+	#(149 2 #reduceActionForModuleItemList2: 11219970 false) 
+	#(148 2 #reduceActionForElementList4: 11001860 false) 
+	#(148 2 #reduceActionForElementList4: 11001858 false) 
+	#(292 2 #reduceActionForClassTail1: 37286913 false) 
+	#(294 1 #reduceActionForModuleBody1: 37459969 false) 
+	#(295 1 #reduceActionForModuleItemList1: 37491713 false) 
+	#(293 2 #reduceActionForClassHeritage1: 37379073 false) 
+	#(291 3 #reduceActionForClassExpression2: 37207042 false) 
+	#(293 2 #reduceActionForClassHeritage4: 37379076 false) 
+	#(293 2 #reduceActionForClassHeritage2: 37379074 false) 
+	#(168 3 #reduceActionForImportMeta1: 14223361 false) 
+	#(167 3 #reduceActionForNewTarget1: 14119937 false) 
+	#(164 3 #reduceActionForMemberExpression7: 13199367 false) 
+	#(173 2 #reduceActionForArguments1: 15210497 false) 
+	#(174 1 #reduceActionForArgumentList1: 15395841 false) 
+	#(165 3 #reduceActionForSuperProperty2: 13813762 false) 
+	#(279 3 #reduceActionForYieldExpression3: 35129347 false) 
+	#(151 3 #reduceActionForObjectLiteral1: 11373569 false) 
+	#(154 1 #liftFirstValue: 12066817 false) 
+	#(153 1 #reduceActionForNamespaceName1: 11931649 false) 
+	#(154 1 #liftFirstValue: 12066818 false) 
+	#(154 1 #liftFirstValue: 12066820 false) 
+	#(164 3 #reduceActionForMemberExpression3: 13199363 false) 
+	#(164 3 #reduceActionForMemberExpression3: 13199368 false) 
+	#(178 1 #reduceActionForOptionalFirst3: 16323587 false) 
+	#(178 1 #reduceActionForOptionalFirst3: 16323589 false) 
+	#(178 1 #reduceActionForOptionalFirst4: 16323588 false) 
+	#(178 1 #reduceActionForOptionalFirst1: 16323585 false) 
+	#(176 2 #reduceActionForOptionalChain1: 15842305 false) 
+	#(177 1 #reduceActionForOptionalFirst4: 15965188 false) 
+	#(177 1 #reduceActionForOptionalFirst1: 15965185 false) 
+	#(176 2 #reduceActionForOptionalChain2: 15842306 false) 
+	#(170 3 #reduceActionForMemberExpression3: 14400518 false) 
+	#(170 3 #reduceActionForMemberExpression3: 14400520 false) 
+	#(198 3 #reduceActionForAssignmentExpression5: 21402629 false) 
+	#(144 3 #reduceActionForPrimaryExpression16: 9457680 false) 
+	#(182 3 #reduceActionForExponentiationExpression2: 17539074 false) 
+	#(183 3 #reduceActionForExponentiationExpression2: 17709058 false) 
+	#(185 3 #reduceActionForExponentiationExpression2: 17969154 false) 
+	#(185 3 #reduceActionForExponentiationExpression2: 17969155 false) 
+	#(186 3 #reduceActionForExponentiationExpression2: 18267138 false) 
+	#(186 3 #reduceActionForExponentiationExpression2: 18267139 false) 
+	#(186 3 #reduceActionForExponentiationExpression2: 18267140 false) 
+	#(187 3 #reduceActionForExponentiationExpression2: 18652162 false) 
+	#(187 3 #reduceActionForExponentiationExpression2: 18652163 false) 
+	#(187 3 #reduceActionForExponentiationExpression2: 18652164 false) 
+	#(187 3 #reduceActionForExponentiationExpression2: 18652165 false) 
+	#(187 3 #reduceActionForExponentiationExpression2: 18652167 false) 
+	#(187 3 #reduceActionForExponentiationExpression2: 18652166 false) 
+	#(188 3 #reduceActionForExponentiationExpression2: 19501058 false) 
+	#(188 3 #reduceActionForExponentiationExpression2: 19501060 false) 
+	#(188 3 #reduceActionForExponentiationExpression2: 19501059 false) 
+	#(188 3 #reduceActionForExponentiationExpression2: 19501061 false) 
+	#(189 3 #reduceActionForExponentiationExpression2: 20031490 false) 
+	#(190 3 #reduceActionForExponentiationExpression2: 20195330 false) 
+	#(191 3 #reduceActionForExponentiationExpression2: 20363266 false) 
+	#(192 3 #reduceActionForExponentiationExpression2: 20530178 false) 
+	#(193 3 #reduceActionForExponentiationExpression2: 20700162 false) 
+	#(194 3 #reduceActionForExponentiationExpression2: 20870145 false) 
+	#(200 3 #reduceActionForExpression2: 23180290 false) 
+	#(264 0 #reduceActionForSourceFileElement__element__1: 32970753 false) 
+	#(269 1 #liftFirstValue: 33380353 false) 
+	#(265 3 #reduceActionForArrowFunction1: 33012737 false) 
+	#(268 1 #reduceActionForImportClause1: 33265665 false) 
+	#(187 3 #reduceActionForExponentiationExpression2: 18652168 false) 
+	#(359 0 #reduceActionForSwitchToDefault1: 44821505 true) 
+	#(350 1 #reduceActionForModuleBody1: 44240897 false) 
+	#(337 1 #reduceActionForJSXElementName1: 43097089 false) 
+	#(337 1 #liftFirstValue: 43097090 false) 
+	#(337 1 #liftFirstValue: 43097091 false) 
+	#(341 1 #reduceActionFor__JSXIdentifier___identifier___period___periodToken___1: 43423745 false) 
+	#(206 3 #reduceActionForBlock2: 23907330 false) 
+	#(250 3 #reduceActionForThrowStatement1: 31389697 false) 
+	#(251 3 #reduceActionForTryStatement1: 31485953 false) 
+	#(251 3 #reduceActionForTryStatement2: 31485954 false) 
+	#(216 2 #reduceActionForLexicalBinding2: 24887298 false) 
+	#(214 3 #reduceActionForVariableStatement1: 24655873 false) 
+	#(216 2 #reduceActionForLexicalBinding3: 24887299 false) 
+	#(216 2 #liftSecondValue: 24887300 false) 
+	#(216 2 #liftSecondValue: 24887301 false) 
+	#(249 1 #liftFirstValue: 31295489 false) 
+	#(248 3 #reduceActionForLabelledStatement1: 31196161 false) 
+	#(482 1 #liftFirstValue: 68457473 false) 
+	#(471 2 #reduceActionForAmbientDeclaration1: 66366465 false) 
+	#(471 2 #reduceActionForAmbientDeclaration1: 66366466 false) 
+	#(471 2 #reduceActionForAmbientDeclaration1: 66366467 false) 
+	#(471 2 #reduceActionForAmbientDeclaration1: 66366468 false) 
+	#(471 2 #reduceActionForAmbientDeclaration1: 66366469 false) 
+	#(438 1 #reduceActionForNamespaceName1: 58734593 false) 
+	#(374 3 #reduceActionForParenthesizedExpression1: 46241793 false) 
+	#(394 2 #reduceActionForPropertySignature5: 48392197 false) 
+	#(428 1 #liftFirstValue: 57247745 false) 
+	#(428 1 #liftFirstValue: 57247746 false) 
+	#(394 2 #reduceActionForPropertySignature2: 48392194 false) 
+	#(404 2 #reduceActionForMethodSignature1: 51949569 false) 
+	#(394 2 #reduceActionForPropertySignature3: 48392195 false) 
+	#(379 3 #reduceActionForObjectType2: 46689282 false) 
+	#(380 2 #reduceActionForOptionalChain2: 46771202 false) 
+	#(380 2 #reduceActionForOptionalChain2: 46771204 false) 
+	#(384 3 #reduceActionForTupleType2: 47265794 false) 
+	#(384 3 #reduceActionForTupleType3: 47265795 false) 
+	#(362 2 #reduceActionForTypeParameter2: 45167618 false) 
+	#(360 3 #reduceActionForTypeParameters1: 44976129 false) 
+	#(384 3 #reduceActionForTupleType5: 47265797 false) 
+	#(387 3 #reduceActionForUnionType1: 47548417 false) 
+	#(388 3 #reduceActionForIntersectionType1: 47669249 false) 
+	#(376 3 #reduceActionForTypeReference2: 46382082 false) 
+	#(377 3 #reduceActionForTypeName2: 46478338 false) 
+	#(378 3 #reduceActionForNamespaceName2: 46584834 false) 
+	#(303 1 #reduceActionForModuleBody1: 38603778 false) 
+	#(302 1 #reduceActionForModuleBody1: 38547457 false) 
+	#(296 3 #reduceActionForClassElement7: 37579783 false) 
+	#(159 2 #reduceActionForInitializer1: 12708865 false) 
+	#(430 2 #reduceActionForMemberAccessorDeclaration1: 57792513 false) 
+	#(430 2 #reduceActionForMemberAccessorDeclaration1: 57792517 false) 
+	#(431 2 #reduceActionForIndexMemberDeclaration1: 58068993 false) 
+	#(323 3 #reduceActionForNamedExports2: 41286658 false) 
+	#(322 3 #reduceActionForExportFromClause2: 41179138 false) 
+	#(321 4 #reduceActionForExportDeclaration5: 40385541 false) 
+	#(488 2 #reduceActionForDecoratorExpression2: 69928962 false) 
+	#(488 2 #reduceActionForDecoratorExpression2: 69928961 false) 
+	#(289 3 #reduceActionForClassDeclaration1: 37011457 false) 
+	#(316 2 #reduceActionForInitializer1: 39870465 false) 
+	#(321 4 #reduceActionForExportDeclaration1: 40385537 false) 
+	#(315 3 #reduceActionForNamedImports2: 39639042 false) 
+	#(314 3 #reduceActionForNameSpaceImport1: 39558145 false) 
+	#(311 4 #reduceActionForImportDeclaration1: 38980609 false) 
+	#(312 3 #reduceActionForImportClause4: 39152644 false) 
+	#(312 3 #reduceActionForImportClause4: 39152645 false) 
+	#(312 3 #reduceActionForImportClause6: 39152646 false) 
+	#(312 3 #reduceActionForImportClause6: 39152647 false) 
+	#(220 2 #reduceActionForBindingRestProperty1: 25865217 false) 
+	#(218 3 #reduceActionForObjectBindingPattern2: 25111554 false) 
+	#(218 3 #reduceActionForObjectBindingPattern3: 25111555 false) 
+	#(219 3 #reduceActionForArrayBindingPattern3: 25499651 false) 
+	#(223 2 #reduceActionForBindingElisionElement2: 26164226 false) 
+	#(219 3 #reduceActionForArrayBindingPattern5: 25499653 false) 
+	#(219 3 #reduceActionForArrayBindingPattern2: 25499650 false) 
+	#(212 3 #reduceActionForNamespaceName2: 24402946 false) 
+	#(413 3 #reduceActionForSimpleLexicalBinding1: 55040001 false) 
+	#(414 3 #reduceActionForDestructuringLexicalBinding1: 55149569 false) 
+	#(227 3 #reduceActionForBindingRestElement3: 26535939 false) 
+	#(257 3 #reduceActionForFormalParameters5: 32101381 false) 
+	#(258 3 #reduceActionForNamespaceName2: 32303106 false) 
+	#(226 3 #reduceActionForSimpleLexicalBinding1: 26449923 false) 
+	#(226 3 #reduceActionForSingleNameBinding9: 26449929 false) 
+	#(399 0 #nil 49371140 false) 
+	#(226 3 #reduceActionForSingleNameBinding7: 26449927 false) 
+	#(147 4 #reduceActionForArrayLiteral4: 10740740 false) 
+	#(148 3 #reduceActionForElementList6: 11001862 false) 
+	#(148 3 #reduceActionForElementList6: 11001861 false) 
+	#(272 1 #reduceActionForImportClause1: 33615873 false) 
+	#(271 4 #reduceActionForAsyncArrowFunction1: 33513473 false) 
+	#(292 3 #reduceActionForClassTail2: 37286914 false) 
+	#(295 2 #reduceActionForModuleItemList2: 37491714 false) 
+	#(292 3 #reduceActionForClassTail3: 37286915 false) 
+	#(420 1 #liftFirstValue: 56161281 false) 
+	#(419 2 #reduceActionForInitializer1: 56101889 false) 
+	#(418 1 #liftFirstValue: 55954433 false) 
+	#(421 2 #reduceActionForImplementsClause1: 56203265 false) 
+	#(417 1 #reduceActionForNamespaceName1: 55823361 false) 
+	#(293 3 #reduceActionForClassHeritage3: 37379075 false) 
+	#(172 4 #reduceActionForImportCall1: 15070209 false) 
+	#(174 2 #reduceActionForArgumentList2: 15395842 false) 
+	#(173 3 #reduceActionForArguments2: 15210498 false) 
+	#(165 4 #reduceActionForSuperProperty1: 13813761 false) 
+	#(365 1 #reduceActionForNamespaceName1: 45352961 false) 
+	#(366 1 #liftFirstValue: 45459457 false) 
+	#(154 2 #reduceActionForPropertyDefinition5: 12066821 false) 
+	#(158 2 #reduceActionForCoverInitializedName1: 12625921 false) 
+	#(151 4 #reduceActionForObjectLiteral2: 11373570 false) 
+	#(162 1 #reduceActionForNamespaceName1: 12966913 false) 
+	#(160 4 #reduceActionForTemplateLiteral2: 12773378 false) 
+	#(164 4 #reduceActionForMemberExpression2: 13199362 false) 
+	#(177 2 #reduceActionForOptionalRest3: 15965187 false) 
+	#(177 2 #reduceActionForOptionalRest3: 15965189 false) 
+	#(170 4 #reduceActionForMemberExpression2: 14400517 false) 
+	#(410 4 #reduceActionForAsExpression1: 54385665 false) 
+	#(264 1 #reduceActionForModuleBody1: 32970754 false) 
+	#(263 1 #reduceActionForModuleBody1: 32929793 false) 
+	#(332 4 #reduceActionForJSXElement2: 42184706 false) 
+	#(352 1 #reduceActionForJSXChild1: 44275713 false) 
+	#(352 1 #liftFirstValue: 44275714 false) 
+	#(351 2 #reduceActionForModuleItemList2: 44255234 false) 
+	#(340 2 #reduceActionForInitializer1: 43423745 false) 
+	#(357 0 #reduceActionForSwitchToJSXTextOrDefault11: 44688385 true) 
+	#(347 1 #reduceActionForJSXElementName1: 43847681 false) 
+	#(347 1 #liftFirstValue: 43847682 false) 
+	#(344 1 #reduceActionForModuleItemList1: 43550721 false) 
+	#(342 1 #reduceActionForModuleBody1: 43534337 false) 
+	#(343 1 #liftFirstValue: 43550721 false) 
+	#(343 1 #liftFirstValue: 43550722 false) 
+	#(346 1 #reduceActionForJSXAttribute1: 43764737 false) 
+	#(339 2 #reduceActionForJSXMemberExpression1: 43401217 false) 
+	#(341 2 #reduceActionFor__JSXIdentifier___identifier___period___periodToken___2: 43423746 false) 
+	#(334 4 #reduceActionForJSXOpeningElement3: 42518531 false) 
+	#(410 4 #reduceActionForAsExpression1: 54385666 false) 
+	#(406 3 #reduceActionForArrowFormalParameters1: 52654083 false) 
+	#(239 4 #reduceActionForBreakStatement2: 30226434 false) 
+	#(238 4 #reduceActionForContinueStatement2: 30109698 false) 
+	#(237 1 #liftFirstValue: 30062593 false) 
+	#(237 1 #liftFirstValue: 30062594 false) 
+	#(236 2 #reduceActionForInitializer1: 29998081 false) 
+	#(241 4 #reduceActionForReturnStatement2: 30370818 false) 
+	#(252 2 #reduceActionForCatch2: 31656962 false) 
+	#(253 2 #reduceActionForInitializer1: 31824897 false) 
+	#(251 4 #reduceActionForTryStatement3: 31485955 false) 
+	#(215 3 #reduceActionForNamespaceName2: 24751106 false) 
+	#(411 2 #reduceActionForSimpleVariableDeclaration1: 54739969 false) 
+	#(474 1 #reduceActionForArrowParameterDeclaration1: 67164161 false) 
+	#(473 1 #reduceActionForNamespaceName1: 67051521 false) 
+	#(484 0 #reduceActionForSourceFileElement__element__1: 68801537 false) 
+	#(469 3 #reduceActionForExportListDeclaration5: 65897477 false) 
+	#(415 3 #reduceActionForInterfaceDeclaration1: 55582721 false) 
+	#(439 0 #reduceActionForSourceFileElement__element__1: 58840065 false) 
+	#(465 3 #reduceActionForExportImplementationElement3: 63206403 false) 
+	#(465 3 #reduceActionForExportImplementationElement3: 63206402 false) 
+	#(465 3 #reduceActionForExportImplementationElement3: 63206401 false) 
+	#(465 3 #reduceActionForExportImplementationElement3: 63206404 false) 
+	#(465 3 #reduceActionForExportImplementationElement3: 63206410 false) 
+	#(466 3 #reduceActionForExportDeclarationElement2: 64471042 false) 
+	#(465 3 #reduceActionForExportImplementationElement3: 63206406 false) 
+	#(466 3 #reduceActionForExportDeclarationElement2: 64471041 false) 
+	#(465 3 #reduceActionForExportImplementationElement3: 63206405 false) 
+	#(465 3 #reduceActionForExportImplementationElement3: 63206407 false) 
+	#(465 3 #reduceActionForExportImplementationElement3: 63206408 false) 
+	#(466 3 #reduceActionForExportDeclarationElement2: 64471044 false) 
+	#(465 3 #reduceActionForExportImplementationElement3: 63206409 false) 
+	#(466 3 #reduceActionForExportDeclarationElement2: 64471043 false) 
+	#(396 3 #reduceActionForCallSignature1: 48629761 false) 
+	#(157 3 #reduceActionForComputedPropertyName1: 12505089 false) 
+	#(394 3 #reduceActionForPropertySignature6: 48392198 false) 
+	#(394 3 #reduceActionForPropertySignature7: 48392199 false) 
+	#(395 2 #reduceActionForInitializer1: 48576513 false) 
+	#(394 3 #reduceActionForPropertySignature4: 48392196 false) 
+	#(404 3 #reduceActionForMethodSignature2: 51949570 false) 
+	#(381 3 #reduceActionForNamespaceName2: 46867458 false) 
+	#(381 3 #reduceActionForNamespaceName2: 46867459 false) 
+	#(384 4 #reduceActionForTupleType4: 47265796 false) 
+	#(385 3 #reduceActionForNamespaceName2: 47413250 false) 
+	#(363 2 #reduceActionForInitializer1: 45221889 false) 
+	#(361 3 #reduceActionForNamespaceName2: 45054978 false) 
+	#(384 4 #reduceActionForTupleType6: 47265798 false) 
+	#(384 4 #reduceActionForTupleType7: 47265799 false) 
+	#(392 3 #reduceActionForTypeQueryExpression2: 48230402 false) 
+	#(383 4 #reduceActionForArrayType1: 47129601 false) 
+	#(274 1 #liftFirstValue: 34347009 false) 
+	#(301 4 #reduceActionForClassStaticBlock1: 38424577 false) 
+	#(430 3 #reduceActionForMemberAccessorDeclaration2: 57792514 false) 
+	#(430 3 #reduceActionForMemberAccessorDeclaration2: 57792518 false) 
+	#(430 3 #reduceActionForMemberAccessorDeclaration3: 57792515 false) 
+	#(430 3 #reduceActionForMemberAccessorDeclaration3: 57792519 false) 
+	#(398 1 #liftFirstValue: 49289218 false) 
+	#(426 1 #liftFirstValue: 57076738 false) 
+	#(426 1 #liftFirstValue: 57076737 false) 
+	#(398 1 #liftFirstValue: 49289217 false) 
+	#(427 2 #reduceActionForModuleItemList2: 57076738 false) 
+	#(325 3 #reduceActionForExportSpecifier2: 41607170 false) 
+	#(323 4 #reduceActionForNamedExports3: 41286659 false) 
+	#(324 3 #reduceActionForNamespaceName2: 41502722 false) 
+	#(289 4 #reduceActionForClassDeclaration3: 37011459 false) 
+	#(289 4 #reduceActionForClassDeclaration5: 37011461 false) 
+	#(261 4 #reduceActionForFunctionDeclaration5: 32506885 false) 
+	#(318 3 #reduceActionForImportSpecifier2: 40026114 false) 
+	#(315 4 #reduceActionForNamedImports3: 39639043 false) 
+	#(317 3 #reduceActionForNamespaceName2: 39921666 false) 
+	#(318 3 #reduceActionForImportSpecifier3: 40026115 false) 
+	#(224 3 #reduceActionForBindingProperty2: 26225666 false) 
+	#(218 4 #reduceActionForObjectBindingPattern4: 25111556 false) 
+	#(221 3 #reduceActionForNamespaceName2: 25936898 false) 
+	#(219 4 #reduceActionForArrayBindingPattern4: 25499652 false) 
+	#(219 4 #reduceActionForArrayBindingPattern6: 25499654 false) 
+	#(222 3 #reduceActionForBindingElementList2: 26055682 false) 
+	#(413 4 #reduceActionForSimpleLexicalBinding2: 55040002 false) 
+	#(414 4 #reduceActionForDestructuringLexicalBinding2: 55149570 false) 
+	#(226 4 #reduceActionForSimpleLexicalBinding2: 26449924 false) 
+	#(399 1 #reduceActionForIdentifier1: 49371138 false) 
+	#(399 1 #liftFirstValue: 49371137 false) 
+	#(399 1 #liftFirstValue: 49371139 false) 
+	#(397 2 #reduceActionForModuleItemList2: 48876546 false) 
+	#(225 4 #reduceActionForBindingElement6: 26339334 false) 
+	#(226 4 #reduceActionForSingleNameBinding8: 26449928 false) 
+	#(226 4 #reduceActionForSingleNameBinding5: 26449925 false) 
+	#(226 4 #reduceActionForSingleNameBinding10: 26449930 false) 
+	#(287 1 #reduceActionForModuleBody1: 36898817 false) 
+	#(292 4 #reduceActionForClassTail4: 37286916 false) 
+	#(173 4 #reduceActionForArguments3: 15210499 false) 
+	#(174 3 #reduceActionForArgumentList3: 15395843 false) 
+	#(364 3 #reduceActionForTypeArguments1: 45275137 false) 
+	#(173 4 #reduceActionForArguments4: 15210500 false) 
+	#(151 5 #reduceActionForObjectLiteral3: 11373571 false) 
+	#(153 3 #reduceActionForNamespaceName2: 11931650 false) 
+	#(154 3 #reduceActionForPropertyDefinition3: 12066819 false) 
+	#(163 2 #reduceActionForTemplateMiddleList1: 13053953 false) 
+	#(162 2 #reduceActionForTemplateSpans2: 12966914 false) 
+	#(178 3 #reduceActionForOptionalFirst2: 16323586 false) 
+	#(177 3 #reduceActionForOptionalFirst2: 15965186 false) 
+	#(197 5 #reduceActionForConditionalExpression2: 21175298 false) 
+	#(268 3 #reduceActionForConciseBody2: 33265666 false) 
+	#(338 3 #reduceActionForJSXNamespacedName1: 43277313 false) 
+	#(344 2 #reduceActionForModuleItemList2: 43550722 false) 
+	#(346 2 #reduceActionForJSXAttribute2: 43764738 false) 
+	#(334 5 #reduceActionForJSXOpeningElement1: 42518529 false) 
+	#(406 4 #reduceActionForTypeCallSignature1: 52654081 false) 
+	#(181 5 #reduceActionForUnaryExpression10: 17086474 false) 
+	#(406 4 #reduceActionForTypeCallSignature4: 52654084 false) 
+	#(230 5 #reduceActionForIfStatement2: 26848258 false) 
+	#(243 5 #reduceActionForSwitchStatement1: 30618625 false) 
+	#(254 1 #liftFirstValue: 31885313 false) 
+	#(254 1 #liftFirstValue: 31885315 false) 
+	#(411 3 #reduceActionForSimpleVariableDeclaration2: 54739970 false) 
+	#(412 3 #reduceActionForDestructuringVariableDeclaration1: 54845441 false) 
+	#(233 5 #reduceActionForWhileStatement1: 27425793 false) 
+	#(242 5 #reduceActionForWithStatement1: 30486529 false) 
+	#(474 2 #reduceActionForAmbientBinding2: 67164162 false) 
+	#(472 3 #reduceActionForLexicalDeclaration1: 66755587 false) 
+	#(486 1 #reduceActionForAmbientNamespaceElement3: 68980739 false) 
+	#(486 1 #reduceActionForAmbientNamespaceElement3: 68980745 false) 
+	#(486 1 #reduceActionForAmbientNamespaceElement3: 68980751 false) 
+	#(486 1 #reduceActionForAmbientNamespaceElement3: 68980737 false) 
+	#(486 1 #reduceActionForAmbientNamespaceElement3: 68980741 false) 
+	#(486 1 #reduceActionForAmbientNamespaceElement3: 68980743 false) 
+	#(486 1 #reduceActionForAmbientNamespaceElement3: 68980747 false) 
+	#(486 1 #reduceActionForAmbientNamespaceElement3: 68980749 false) 
+	#(484 1 #reduceActionForModuleBody1: 68801538 false) 
+	#(485 1 #reduceActionForModuleItemList1: 68853761 false) 
+	#(472 3 #reduceActionForLexicalDeclaration1: 66755586 false) 
+	#(461 0 #reduceActionForSourceFileElement__element__1: 62569473 false) 
+	#(472 3 #reduceActionForLexicalDeclaration1: 66755585 false) 
+	#(432 4 #reduceActionForEnumDeclaration1: 58160129 false) 
+	#(435 1 #reduceActionForEnumMember1: 58445825 false) 
+	#(433 1 #reduceActionForModuleBody1: 58307585 false) 
+	#(434 1 #reduceActionForNamespaceName1: 58353665 false) 
+	#(470 4 #reduceActionForExportAssignment1: 66234369 false) 
+	#(469 4 #reduceActionForExportListDeclaration1: 65897473 false) 
+	#(469 4 #reduceActionForExportListDeclaration3: 65897475 false) 
+	#(444 1 #reduceActionForModuleBody1: 60134401 false) 
+	#(416 2 #reduceActionForInitializer1: 55738369 false) 
+	#(415 4 #reduceActionForInterfaceDeclaration3: 55582723 false) 
+	#(415 4 #reduceActionForInterfaceDeclaration2: 55582722 false) 
+	#(441 1 #liftFirstValue: 58976257 false) 
+	#(441 1 #liftFirstValue: 58976258 false) 
+	#(441 1 #liftFirstValue: 58976259 false) 
+	#(441 1 #liftFirstValue: 58976260 false) 
+	#(441 1 #liftFirstValue: 58976261 false) 
+	#(441 1 #liftFirstValue: 58976263 false) 
+	#(441 1 #liftFirstValue: 58976262 false) 
+	#(441 1 #liftFirstValue: 58976264 false) 
+	#(441 1 #liftFirstValue: 58976265 false) 
+	#(439 1 #reduceActionForModuleBody1: 58840066 false) 
+	#(440 1 #reduceActionForModuleItemList1: 58877953 false) 
+	#(441 1 #liftFirstValue: 58976268 false) 
+	#(441 1 #liftFirstValue: 58976267 false) 
+	#(441 1 #liftFirstValue: 58976266 false) 
+	#(438 3 #reduceActionForNamespaceName2: 58734594 false) 
+	#(467 4 #reduceActionForExportDefaultImplementationElement1: 64900097 false) 
+	#(467 4 #reduceActionForExportDefaultImplementationElement1: 64900098 false) 
+	#(467 4 #reduceActionForExportDefaultImplementationElement1: 64900099 false) 
+	#(468 4 #reduceActionForExportDefaultDeclarationElement1: 65461249 false) 
+	#(468 4 #reduceActionForExportDefaultDeclarationElement1: 65461250 false) 
+	#(389 5 #reduceActionForFunctionType1: 47775745 false) 
+	#(396 4 #reduceActionForCallSignature2: 48629762 false) 
+	#(402 4 #reduceActionForConstructSignature1: 51456001 false) 
+	#(394 4 #reduceActionForPropertySignature8: 48392200 false) 
+	#(396 4 #reduceActionForCallSignature3: 48629763 false) 
+	#(384 5 #reduceActionForTupleType8: 47265800 false) 
+	#(383 5 #reduceActionForArrayType2: 47129602 false) 
+	#(372 5 #reduceActionForIndexedAccessType1: 46038017 false) 
+	#(401 1 #liftFirstValue: 50777089 false) 
+	#(401 1 #liftFirstValue: 50777090 false) 
+	#(273 5 #reduceActionForMethodDefinition9: 33736713 false) 
+	#(422 4 #reduceActionForConstructorDeclaration3: 56282115 false) 
+	#(429 4 #reduceActionForMemberFunctionDeclaration9: 57334793 false) 
+	#(430 4 #reduceActionForMemberAccessorDeclaration4: 57792516 false) 
+	#(430 4 #reduceActionForMemberAccessorDeclaration4: 57792520 false) 
+	#(289 5 #reduceActionForClassDeclaration2: 37011458 false) 
+	#(289 5 #reduceActionForClassDeclaration7: 37011463 false) 
+	#(261 5 #reduceActionForFunctionDeclaration6: 32506886 false) 
+	#(218 5 #reduceActionForObjectBindingPattern5: 25111557 false) 
+	#(219 5 #reduceActionForArrayBindingPattern8: 25499656 false) 
+	#(219 5 #reduceActionForArrayBindingPattern7: 25499655 false) 
+	#(321 6 #reduceActionForExportDeclaration6: 40385542 false) 
+	#(225 5 #reduceActionForBindingElement7: 26339335 false) 
+	#(225 5 #reduceActionForBindingElement4: 26339332 false) 
+	#(225 5 #reduceActionForBindingElement8: 26339336 false) 
+	#(226 5 #reduceActionForSingleNameBinding6: 26449926 false) 
+	#(272 3 #reduceActionForConciseBody2: 33615874 false) 
+	#(417 3 #reduceActionForNamespaceName2: 55823362 false) 
+	#(174 4 #reduceActionForArgumentList4: 15395844 false) 
+	#(365 3 #reduceActionForNamespaceName2: 45352962 false) 
+	#(173 5 #reduceActionForArguments5: 15210501 false) 
+	#(173 5 #reduceActionForArguments6: 15210502 false) 
+	#(163 3 #reduceActionForTemplateMiddleList2: 13053954 false) 
+	#(358 0 #reduceActionForSwitchToJSXTextOrDefault21: 44754945 true) 
+	#(353 1 #liftFirstValue: 44508162 false) 
+	#(353 1 #liftFirstValue: 44508161 false) 
+	#(333 6 #reduceActionForJSXSelfClosingElement1: 42335233 false) 
+	#(334 6 #reduceActionForJSXOpeningElement2: 42518530 false) 
+	#(349 1 #reduceActionForLiteral4: 44012545 false) 
+	#(349 1 #liftFirstValue: 44012547 false) 
+	#(349 1 #liftFirstValue: 44012548 false) 
+	#(348 2 #reduceActionForInitializer1: 43938817 false) 
+	#(262 6 #reduceActionForFunctionExpression3: 32718851 false) 
+	#(406 5 #reduceActionForTypeCallSignature2: 52654082 false) 
+	#(234 6 #reduceActionForForStatement1: 27574273 false) 
+	#(234 6 #reduceActionForForStatement13: 27574285 false) 
+	#(244 2 #reduceActionForCaseBlock1: 30744577 false) 
+	#(245 1 #reduceActionForModuleItemList1: 30928897 false) 
+	#(432 5 #reduceActionForEnumDeclaration3: 58160131 false) 
+	#(477 0 #reduceActionForSourceFileElement__element__1: 67600385 false) 
+	#(473 3 #reduceActionForNamespaceName2: 67051522 false) 
+	#(475 4 #reduceActionForAmbientFunctionDeclaration1: 67247105 false) 
+	#(486 2 #reduceActionForAmbientNamespaceElement4: 68980740 false) 
+	#(486 2 #reduceActionForAmbientNamespaceElement4: 68980746 false) 
+	#(486 2 #reduceActionForAmbientNamespaceElement4: 68980752 false) 
+	#(486 2 #reduceActionForAmbientNamespaceElement4: 68980738 false) 
+	#(486 2 #reduceActionForAmbientNamespaceElement4: 68980742 false) 
+	#(486 2 #reduceActionForAmbientNamespaceElement4: 68980744 false) 
+	#(486 2 #reduceActionForAmbientNamespaceElement4: 68980748 false) 
+	#(486 2 #reduceActionForAmbientNamespaceElement4: 68980750 false) 
+	#(483 4 #reduceActionForAmbientNamespaceDeclaration2: 68501506 false) 
+	#(485 2 #reduceActionForModuleItemList2: 68853762 false) 
+	#(463 1 #liftFirstValue: 62750722 false) 
+	#(457 1 #liftFirstValue: 61950978 false) 
+	#(457 1 #liftFirstValue: 61950977 false) 
+	#(457 1 #liftFirstValue: 61950979 false) 
+	#(457 1 #liftFirstValue: 61950981 false) 
+	#(463 1 #liftFirstValue: 62750721 false) 
+	#(461 1 #reduceActionForModuleBody1: 62569474 false) 
+	#(462 1 #reduceActionForModuleItemList1: 62619649 false) 
+	#(463 1 #liftFirstValue: 62750723 false) 
+	#(463 1 #liftFirstValue: 62750724 false) 
+	#(463 1 #liftFirstValue: 62750725 false) 
+	#(463 1 #liftFirstValue: 62750726 false) 
+	#(457 1 #liftFirstValue: 61950980 false) 
+	#(432 5 #reduceActionForEnumDeclaration2: 58160130 false) 
+	#(433 2 #reduceActionForOptionalChain2: 58307586 false) 
+	#(469 5 #reduceActionForExportListDeclaration6: 65897478 false) 
+	#(443 5 #reduceActionForImportAliasDeclaration1: 59999233 false) 
+	#(415 5 #reduceActionForInterfaceDeclaration4: 55582724 false) 
+	#(442 2 #reduceActionForAmbientNamespaceElement4: 59256834 false) 
+	#(442 2 #reduceActionForAmbientNamespaceElement4: 59256833 false) 
+	#(442 2 #reduceActionForAmbientNamespaceElement4: 59256835 false) 
+	#(442 2 #reduceActionForAmbientNamespaceElement4: 59256836 false) 
+	#(442 2 #reduceActionForAmbientNamespaceElement4: 59256837 false) 
+	#(442 2 #reduceActionForAmbientNamespaceElement4: 59256839 false) 
+	#(442 2 #reduceActionForAmbientNamespaceElement4: 59256838 false) 
+	#(442 2 #reduceActionForAmbientNamespaceElement4: 59256840 false) 
+	#(442 2 #reduceActionForAmbientNamespaceElement4: 59256841 false) 
+	#(442 2 #reduceActionForAmbientNamespaceElement4: 59256843 false) 
+	#(442 2 #reduceActionForAmbientNamespaceElement4: 59256842 false) 
+	#(437 5 #reduceActionForNamespaceDeclaration1: 58593281 false) 
+	#(440 2 #reduceActionForModuleItemList2: 58877954 false) 
+	#(405 5 #reduceActionForTypeAliasDeclaration1: 52041729 false) 
+	#(468 5 #reduceActionForExportDefaultDeclarationElement3: 65461251 false) 
+	#(467 5 #reduceActionForExportDefaultImplementationElement4: 64900100 false) 
+	#(402 5 #reduceActionForConstructSignature2: 51456002 false) 
+	#(402 5 #reduceActionForConstructSignature3: 51456003 false) 
+	#(396 5 #reduceActionForCallSignature4: 48629764 false) 
+	#(390 6 #reduceActionForConstructorType1: 47955969 false) 
+	#(389 6 #reduceActionForFunctionType2: 47775746 false) 
+	#(409 2 #reduceActionForTypedPropertySetParameterList1: 53688321 false) 
+	#(273 6 #reduceActionForMethodDefinition7: 33736711 false) 
+	#(429 5 #reduceActionForMemberFunctionDeclaration10: 57334794 false) 
+	#(423 3 #reduceActionForCallSignature1: 56747009 false) 
+	#(429 5 #reduceActionForMemberFunctionDeclaration11: 57334795 false) 
+	#(422 5 #reduceActionForConstructorDeclaration4: 56282116 false) 
+	#(429 5 #reduceActionForMemberFunctionDeclaration13: 57334797 false) 
+	#(425 5 #reduceActionForMemberVariableDeclaration1: 57014273 false) 
+	#(289 6 #reduceActionForClassDeclaration4: 37011460 false) 
+	#(289 6 #reduceActionForClassDeclaration6: 37011462 false) 
+	#(261 6 #reduceActionForFunctionExpression3: 32506883 false) 
+	#(318 5 #reduceActionForImportSpecifier4: 40026116 false) 
+	#(219 6 #reduceActionForArrayBindingPattern9: 25499657 false) 
+	#(225 6 #reduceActionForBindingElement5: 26339333 false) 
+	#(225 6 #reduceActionForBindingElement9: 26339337 false) 
+	#(262 7 #reduceActionForFunctionExpression1: 32718849 false) 
+	#(278 1 #reduceActionForModuleBody1: 35097601 false) 
+	#(173 6 #reduceActionForArguments7: 15210503 false) 
+	#(352 4 #reduceActionForJSXChild3: 44275715 false) 
+	#(333 7 #reduceActionForJSXSelfClosingElement2: 42335234 false) 
+	#(262 7 #reduceActionForFunctionExpression4: 32718852 false) 
+	#(232 7 #reduceActionForDoWhileStatement1: 27233281 false) 
+	#(234 7 #reduceActionForForStatement2: 27574274 false) 
+	#(234 7 #reduceActionForForStatement3: 27574275 false) 
+	#(235 7 #reduceActionForForInOfStatement1: 28295169 false) 
+	#(235 7 #reduceActionForForInOfStatement4: 28295172 false) 
+	#(234 7 #reduceActionForForStatement5: 27574277 false) 
+	#(234 7 #reduceActionForForStatement14: 27574286 false) 
+	#(234 7 #reduceActionForForStatement15: 27574287 false) 
+	#(235 7 #reduceActionForForInOfStatement3: 28295171 false) 
+	#(235 7 #reduceActionForForInOfStatement6: 28295174 false) 
+	#(230 7 #reduceActionForIfStatement1: 26848257 false) 
+	#(247 2 #reduceActionForDefaultClause1: 31108097 false) 
+	#(244 3 #reduceActionForCaseBlock2: 30744578 false) 
+	#(245 2 #reduceActionForModuleItemList2: 30928898 false) 
+	#(244 3 #reduceActionForCaseBlock3: 30744579 false) 
+	#(254 3 #liftFirstValue: 31885314 false) 
+	#(252 5 #reduceActionForCatch1: 31656961 false) 
+	#(432 6 #reduceActionForEnumDeclaration4: 58160132 false) 
+	#(479 1 #liftFirstValue: 67775491 false) 
+	#(477 1 #reduceActionForModuleBody1: 67600386 false) 
+	#(478 1 #reduceActionForModuleItemList1: 67648513 false) 
+	#(479 1 #liftFirstValue: 67775489 false) 
+	#(479 1 #liftFirstValue: 67775490 false) 
+	#(487 6 #reduceActionForAmbientModuleDeclaration1: 69752833 false) 
+	#(462 2 #reduceActionForModuleItemList2: 62619650 false) 
+	#(483 5 #reduceActionForNamespaceDeclaration1: 68501505 false) 
+	#(436 1 #liftFirstValue: 58551297 false) 
+	#(435 3 #reduceActionForEnumMember2: 58445826 false) 
+	#(434 3 #reduceActionForNamespaceName2: 58353666 false) 
+	#(469 6 #reduceActionForExportListDeclaration2: 65897474 false) 
+	#(469 6 #reduceActionForExportListDeclaration4: 65897476 false) 
+	#(405 6 #reduceActionForTypeAliasDeclaration2: 52041730 false) 
+	#(405 6 #reduceActionForTypeAliasDeclaration3: 52041731 false) 
+	#(403 6 #reduceActionForIndexSignature2: 51648514 false) 
+	#(403 6 #reduceActionForIndexSignature2: 51648513 false) 
+	#(402 6 #reduceActionForConstructSignature4: 51456004 false) 
+	#(390 7 #reduceActionForConstructorType2: 47955970 false) 
+	#(273 7 #reduceActionForMethodDefinition5: 33736709 false) 
+	#(273 7 #reduceActionForMethodDefinition1: 33736705 false) 
+	#(273 7 #reduceActionForMethodDefinition8: 33736712 false) 
+	#(423 4 #reduceActionForCallSignature2: 56747010 false) 
+	#(422 6 #reduceActionForConstructorDeclaration1: 56282113 false) 
+	#(429 6 #reduceActionForMemberFunctionDeclaration12: 57334796 false) 
+	#(429 6 #reduceActionForMemberFunctionDeclaration1: 57334785 false) 
+	#(429 6 #reduceActionForMemberFunctionDeclaration14: 57334798 false) 
+	#(429 6 #reduceActionForMemberFunctionDeclaration15: 57334799 false) 
+	#(425 6 #reduceActionForMemberVariableDeclaration2: 57014274 false) 
+	#(425 6 #reduceActionForMemberVariableDeclaration3: 57014275 false) 
+	#(425 6 #reduceActionForMemberVariableDeclaration5: 57014277 false) 
+	#(261 7 #reduceActionForFunctionExpression1: 32506881 false) 
+	#(289 7 #reduceActionForClassDeclaration8: 37011464 false) 
+	#(261 7 #reduceActionForFunctionExpression4: 32506884 false) 
+	#(285 8 #reduceActionForAsyncFunctionExpression1: 36378625 false) 
+	#(283 1 #reduceActionForModuleBody1: 36068353 false) 
+	#(276 8 #reduceActionForGeneratorExpression1: 34641921 false) 
+	#(262 8 #reduceActionForFunctionExpression2: 32718850 false) 
+	#(335 5 #reduceActionForJSXClosingElement1: 42747905 false) 
+	#(352 5 #reduceActionForJSXChild4: 44275716 false) 
+	#(345 5 #reduceActionForJSXSpreadAttribute1: 43615233 false) 
+	#(234 8 #reduceActionForForStatement4: 27574276 false) 
+	#(234 8 #reduceActionForForStatement9: 27574281 false) 
+	#(235 8 #reduceActionForForInOfStatement2: 28295170 false) 
+	#(235 8 #reduceActionForForInOfStatement5: 28295173 false) 
+	#(234 8 #reduceActionForForStatement6: 27574278 false) 
+	#(234 8 #reduceActionForForStatement7: 27574279 false) 
+	#(234 8 #reduceActionForForStatement16: 27574288 false) 
+	#(235 8 #reduceActionForForInOfStatement7: 28295175 false) 
+	#(235 8 #reduceActionForForInOfStatement9: 28295177 false) 
+	#(246 3 #reduceActionForCaseClause1: 31001601 false) 
+	#(247 3 #reduceActionForDefaultClause2: 31108098 false) 
+	#(244 4 #reduceActionForCaseBlock5: 30744581 false) 
+	#(244 4 #reduceActionForCaseBlock4: 30744580 false) 
+	#(476 6 #reduceActionForAmbientClassDeclaration1: 67394561 false) 
+	#(478 2 #reduceActionForModuleItemList2: 67648514 false) 
+	#(405 7 #reduceActionForTypeAliasDeclaration4: 52041732 false) 
+	#(277 8 #reduceActionForGeneratorMethod1: 34877441 false) 
+	#(286 8 #reduceActionForAsyncMethod1: 36652033 false) 
+	#(273 8 #reduceActionForMethodDefinition6: 33736710 false) 
+	#(429 7 #reduceActionForMemberFunctionDeclaration2: 57334786 false) 
+	#(429 7 #reduceActionForMemberFunctionDeclaration3: 57334787 false) 
+	#(422 7 #reduceActionForConstructorDeclaration2: 56282114 false) 
+	#(429 7 #reduceActionForMemberFunctionDeclaration16: 57334800 false) 
+	#(429 7 #reduceActionForMemberFunctionDeclaration5: 57334789 false) 
+	#(425 7 #reduceActionForMemberVariableDeclaration4: 57014276 false) 
+	#(425 7 #reduceActionForMemberVariableDeclaration6: 57014278 false) 
+	#(425 7 #reduceActionForMemberVariableDeclaration7: 57014279 false) 
+	#(284 8 #reduceActionForAsyncFunctionExpression1: 36105217 false) 
+	#(275 8 #reduceActionForGeneratorExpression1: 34405377 false) 
+	#(261 8 #reduceActionForFunctionExpression2: 32506882 false) 
+	#(281 9 #reduceActionForAsyncGeneratorExpression1: 35536897 false) 
+	#(285 9 #reduceActionForAsyncFunctionExpression3: 36378627 false) 
+	#(276 9 #reduceActionForGeneratorExpression2: 34641922 false) 
+	#(336 9 #reduceActionForJSXFragment1: 42908673 false) 
+	#(335 6 #reduceActionForJSXClosingElement2: 42747906 false) 
+	#(234 9 #reduceActionForForStatement10: 27574282 false) 
+	#(234 9 #reduceActionForForStatement11: 27574283 false) 
+	#(234 9 #reduceActionForForStatement8: 27574280 false) 
+	#(235 9 #reduceActionForForInOfStatement8: 28295176 false) 
+	#(246 4 #reduceActionForCaseClause2: 31001602 false) 
+	#(244 5 #reduceActionForCaseBlock6: 30744582 false) 
+	#(480 3 #reduceActionForAmbientConstructorDeclaration1: 67888129 false) 
+	#(476 7 #reduceActionForAmbientClassDeclaration2: 67394562 false) 
+	#(464 8 #reduceActionForImportRequireDeclaration1: 62987265 false) 
+	#(282 9 #reduceActionForAsyncGeneratorMethod1: 35811329 false) 
+	#(407 9 #reduceActionForGetAccessor1: 53017601 false) 
+	#(408 9 #reduceActionForSetAccessor2: 53223426 false) 
+	#(429 8 #reduceActionForMemberFunctionDeclaration4: 57334788 false) 
+	#(429 8 #reduceActionForMemberFunctionDeclaration6: 57334790 false) 
+	#(429 8 #reduceActionForMemberFunctionDeclaration7: 57334791 false) 
+	#(425 8 #reduceActionForMemberVariableDeclaration8: 57014280 false) 
+	#(280 9 #reduceActionForAsyncGeneratorExpression1: 35261441 false) 
+	#(284 9 #reduceActionForAsyncFunctionExpression3: 36105219 false) 
+	#(275 9 #reduceActionForGeneratorExpression2: 34405378 false) 
+	#(285 10 #reduceActionForAsyncFunctionExpression2: 36378626 false) 
+	#(281 10 #reduceActionForAsyncGeneratorExpression2: 35536898 false) 
+	#(349 5 #reduceActionForJSXChild4: 44012546 false) 
+	#(234 10 #reduceActionForForStatement12: 27574284 false) 
+	#(480 4 #reduceActionForAmbientConstructorDeclaration2: 67888130 false) 
+	#(481 4 #reduceActionForAmbientPropertyMemberDeclaration1: 68109313 false) 
+	#(481 4 #reduceActionForAmbientPropertyMemberDeclaration3: 68109315 false) 
+	#(286 10 #reduceActionForAsyncMethod2: 36652034 false) 
+	#(408 10 #reduceActionForSetAccessor1: 53223425 false) 
+	#(408 10 #reduceActionForSetAccessor1: 53223427 false) 
+	#(429 9 #reduceActionForMemberFunctionDeclaration8: 57334792 false) 
+	#(284 10 #reduceActionForAsyncFunctionExpression2: 36105218 false) 
+	#(280 10 #reduceActionForAsyncGeneratorExpression2: 35261442 false) 
+	#(285 11 #reduceActionForAsyncFunctionExpression4: 36378628 false) 
+	#(481 5 #reduceActionForAmbientPropertyMemberDeclaration2: 68109314 false) 
+	#(284 11 #reduceActionForAsyncFunctionExpression4: 36105220 false)
 	).
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 JSParser class >> scannerClass [
 	^JSScanner
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSParser class >> startingStateForClassElement [
 	^ 8
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSParser class >> startingStateForExpression [
 	^ 2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSParser class >> startingStateForModule [
 	^ 5
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSParser class >> startingStateForScript [
 	^ 4
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSParser class >> startingStateForSourceFile [
 	^ 6
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSParser class >> startingStateForStatement [
 	^ 3
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSParser class >> startingStateForType [
 	^ 7
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSParser class >> startingStateForgoal [
 	^ 1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSParser class >> symbolNames [
 	^ #('<at>' '<leftParen>' '<rightParen>' '<leftBrace>' '<rightBrace>' '<leftBracket>' '<rightBracket>' '<semicolon>' '<slash>' '<slashEqual>' '<lt>' '<ltLt>' '<ltLtEq>' '<gt>' '<gtGt>' '<gtGtEq>' '<gtGtGtEq>' '<gtGtGt>' '<eqGt>' '<ltEq>' '<gtEq>' '<period>' '<eq>' '<eqEq>' '<eqEqEq>' '<star>' '<starStar>' '<starEq>' '<percentEq>' '<ampEq>' '<upEq>' '<barEq>' '<minusEq>' '<plusEq>' '<plus>' '<plusPlus>' '<minus>' '<minusMinus>' '<tilde>' '<amp>' '<ampAmp>' '<ampAmpEq>' '<question>' '<questionDot>' '<questionQuestion>' '<questionQuestionEq>' '<percent>' '<bar>' '<barBar>' '<barBarEq>' '<up>' '<bang>' '<bangEq>' '<bangEqEq>' '<as>' '<async>' '<await>' '<break>' '<case>' '<catch>' '<class>' '<abstract>' '<const>' '<constructor>' '<continue>' '<debugger>' '<declare>' '<default>' '<delete>' '<do>' '<else>' '<enum>' '<export>' '<extends>' '<false>' '<finally>' '<for>' '<from>' '<function>' '<get>' '<global>' '<if>' '<import>' '<in>' '<infer>' '<implements>' '<instanceof>' '<interface>' '<keyof>' '<let>' '<meta>' '<module>' '<namespace>' '<new>' '<null>' '<numeric>' '<of>' '<override>' '<private>' '<protected>' '<public>' '<readonly>' '<return>' '<set>' '<static>' '<string>' '<super>' '<switch>' '<target>' '<this>' '<throw>' '<true>' '<try>' '<type>' '<typeof>' '<var>' '<void>' '<while>' '<with>' '<yield>' '<dotDotDot>' '<comma>' '<colon>' '<comment>' '<identifier>' '<identifierName>' '<privateIdentifier>' '<whitespace>' '<string_literal>' '<numeric_literal>' '<regular_expression>' '<patternToken>' '<no_substitution_template>' '<template_head>' '<template_middle>' '<template_tail>' '<jsxLT>' '<JSXIdentifier>' '<JSXText>' 'B e g i n' 'goal' 'Identifier' 'IdentifierName' 'PrimaryExpression' 'ParenthesizedExpression' 'Literal' 'ArrayLiteral' 'ElementList' 'Elision' 'SpreadElement' 'ObjectLiteral' 'ValidationNotArrowFunction' 'PropertyDefinitionList' 'PropertyDefinition' 'PropertyName' 'LiteralPropertyName' 'ComputedPropertyName' 'CoverInitializedName' 'Initializer' 'TemplateLiteral' 'StartTemplateLiteral' 'TemplateSpans' 'TemplateMiddleList' 'MemberExpression' 'SuperProperty' 'MetaProperty' 'NewTarget' 'ImportMeta' 'NewExpression' 'CallExpression' 'SuperCall' 'ImportCall' 'Arguments' 'ArgumentList' 'OptionalExpression' 'OptionalChain' 'OptionalRest' 'OptionalFirst' 'LeftHandSideExpression' 'UpdateExpression' 'UnaryExpression' 'ExponentiationExpression' 'MultiplicativeExpression' 'MultiplicativeOperator' 'AdditiveExpression' 'ShiftExpression' 'RelationalExpression' 'EqualityExpression' 'BitwiseANDExpression' 'BitwiseXORExpression' 'BitwiseORExpression' 'LogicalANDExpression' 'LogicalORExpression' 'CoalesceExpression' 'CoalesceExpressionHead' 'ShortCircuitExpression' 'ConditionalExpression' 'AssignmentExpression' 'AssignmentOperator' 'Expression' 'Statement' 'Declaration' 'HoistableDeclaration' 'BreakableStatement' 'BlockStatement' 'Block' 'StatementList' 'StatementListItem' 'StartStatementListItem' 'LexicalDeclaration' 'LetOrConst' 'BindingList' 'LexicalBinding' 'VariableStatement' 'VariableDeclarationList' 'VariableDeclaration' 'BindingPattern' 'ObjectBindingPattern' 'ArrayBindingPattern' 'BindingRestProperty' 'BindingPropertyList' 'BindingElementList' 'BindingElisionElement' 'BindingProperty' 'BindingElement' 'SingleNameBinding' 'BindingRestElement' 'EmptyStatement' 'ExpressionStatement' 'IfStatement' 'IterationStatement' 'DoWhileStatement' 'WhileStatement' 'ForStatement' 'ForInOfStatement' 'ForDeclaration' 'ForBinding' 'ContinueStatement' 'BreakStatement' 'CheckEOL' 'ReturnStatement' 'WithStatement' 'SwitchStatement' 'CaseBlock' 'CaseClauses' 'CaseClause' 'DefaultClause' 'LabelledStatement' 'LabeledItem' 'ThrowStatement' 'TryStatement' 'Catch' 'Finally' 'CatchParameter' 'DebuggerStatement' 'UniqueFormalParameters' 'FormalParameters' 'FormalParameterList' 'FunctionRestParameter' 'FormalParameter' 'FunctionDeclaration' 'FunctionExpression' 'FunctionBody' 'FunctionStatementList' 'ArrowFunction' 'ArrowParameters' 'ArrowParameterDeclaration' 'ConciseBody' 'ExpressionBody' 'ArrowFormalParameters' 'AsyncArrowFunction' 'AsyncConciseBody' 'MethodDefinition' 'PropertySetParameterList' 'GeneratorDeclaration' 'GeneratorExpression' 'GeneratorMethod' 'GeneratorBody' 'YieldExpression' 'AsyncGeneratorDeclaration' 'AsyncGeneratorExpression' 'AsyncGeneratorMethod' 'AsyncGeneratorBody' 'AsyncFunctionDeclaration' 'AsyncFunctionExpression' 'AsyncMethod' 'AsyncFunctionBody' 'AwaitExpression' 'ClassDeclaration' 'DecoratorExpression ''decorator''*' 'ClassExpression' 'ClassTail' 'ClassHeritage' 'ClassBody' 'ClassElementList' 'ClassElement' 'FieldDefinition' 'ClassElementNameWithSemicolonCheck' 'CheckSemicolon' 'ClassElementName' 'ClassStaticBlock' 'ClassStaticBlockBody' 'ClassStaticBlockStatementList' 'Script' 'ScriptBody' 'Module' 'ModuleBody' 'ModuleItemList' 'ModuleItem' 'ModuleExportName' 'ImportDeclaration' 'ImportClause' 'ImportedDefaultBinding' 'NameSpaceImport' 'NamedImports' 'FromClause' 'ImportsList' 'ImportSpecifier' 'ModuleSpecifier' 'ImportedBinding' 'ExportDeclaration' 'ExportFromClause' 'NamedExports' 'ExportsList' 'ExportSpecifier' 'PrivateIdentifier' 'NullLiteral' 'BooleanLiteral' 'StringLiteral' 'NumericLiteral' 'RegularExpressionLiteral' 'JSXElement' 'JSXSelfClosingElement' 'JSXOpeningElement' 'JSXClosingElement' 'JSXFragment' 'JSXElementName' 'JSXNamespacedName' 'JSXMemberExpression' '(<JSXIdentifier> ''identifier'' <period> ''periodToken'')' '(<JSXIdentifier> ''identifier'' <period> ''periodToken'')+' 'JSXAttributes' '(JSXSpreadAttribute ''attribute'' | JSXAttribute ''attribute'')' '(JSXSpreadAttribute ''attribute'' | JSXAttribute ''attribute'')+' 'JSXSpreadAttribute' 'JSXAttribute' 'JSXAttributeName' 'JSXAttributeInitializer' 'JSXAttributeValue' 'JSXChildren' 'JSXChild ''item'' *' 'JSXChild' 'JSXChildExpression' 'SwitchToJSX' 'SwitchToJSXText' 'StartJSXText' 'SwitchToJSXTextOrDefault1' 'SwitchToJSXTextOrDefault2' 'SwitchToDefault' 'TypeParameters' 'TypeParameterList' 'TypeParameter' 'Constraint' 'TypeArguments' 'TypeArgumentList' 'TypeArgument' 'Type' 'UnionOrIntersectionOrPrimaryType' 'IntersectionOrPrimaryType' 'PrefixType' 'PrimaryType' 'IndexedAccessType' 'LiteralType' 'ParenthesizedType' 'PredefinedType' 'TypeReference' 'TypeName' 'NamespaceName' 'ObjectType' 'TypeBody' 'TypeMemberList' 'TypeMember' 'ArrayType' 'TupleType' 'TupleElementTypes' 'TupleElementType' 'UnionType' 'IntersectionType' 'FunctionType' 'ConstructorType' 'TypeQuery' 'TypeQueryExpression' 'ThisType' 'PropertySignature' 'TypeAnnotation' 'CallSignature' 'BindingModifier*' 'BindingModifier' 'TSIdentifierOrBindingPattern' 'AccessibilityModifier' 'BindingIdentifierOrPattern' 'ConstructSignature' 'IndexSignature' 'MethodSignature' 'TypeAliasDeclaration' 'TypeCallSignature' 'GetAccessor' 'SetAccessor' 'TypedPropertySetParameterList' 'AsExpression' 'SimpleVariableDeclaration' 'DestructuringVariableDeclaration' 'SimpleLexicalBinding' 'DestructuringLexicalBinding' 'InterfaceDeclaration' 'InterfaceExtendsClause' 'ClassOrInterfaceTypeList' 'ClassOrInterfaceType' 'ClassExtendsClause' 'ClassType' 'ImplementsClause' 'ConstructorDeclaration' 'ConstructorCallSignature' 'PropertyMemberDeclaration' 'MemberVariableDeclaration' '(BindingModifier ''modifier'' |  <static> ''modifier'')' '(BindingModifier ''modifier'' |  <static> ''modifier'')*' 'NullableIndicator' 'MemberFunctionDeclaration' 'MemberAccessorDeclaration' 'IndexMemberDeclaration' 'EnumDeclaration' 'EnumBody' 'EnumMemberList' 'EnumMember' 'EnumValue' 'NamespaceDeclaration' 'IdentifierPath' 'NamespaceBody' 'NamespaceElements' 'NamespaceElement' 'ExportNamespaceElement' 'ImportAliasDeclaration' 'EntityName' 'SourceFile' 'SourceFileElement ''element''*' 'SourceFileElement' 'ImplementationSourceFile' 'DeclarationSourceFile' 'ImplementationScript' 'ImplementationScriptElements' 'ImplementationScriptElement' 'ImplementationElement' 'DeclarationScript' 'DeclarationScriptElements' 'DeclarationScriptElement' 'DeclarationElement' 'ImplementationModule' 'ImplementationModuleElements' 'ImplementationModuleElement' 'DeclarationModule' 'DeclarationModuleElements' 'DeclarationModuleElement' 'ImportRequireDeclaration' 'ExportImplementationElement' 'ExportDeclarationElement' 'ExportDefaultImplementationElement' 'ExportDefaultDeclarationElement' 'ExportListDeclaration' 'ExportAssignment' 'AmbientDeclaration' 'AmbientVariableDeclaration' 'AmbientBindingList' 'AmbientBinding' 'AmbientFunctionDeclaration' 'AmbientClassDeclaration' 'AmbientClassBody' 'AmbientClassBodyElements' 'AmbientClassBodyElement' 'AmbientConstructorDeclaration' 'AmbientPropertyMemberDeclaration' 'AmbientEnumDeclaration' 'AmbientNamespaceDeclaration' 'AmbientNamespaceBody' 'AmbientNamespaceElements' 'AmbientNamespaceElement' 'AmbientModuleDeclaration' 'DecoratorExpression' '<require>' '<starStarEq>' '<ts>' 'E O F' 'error')
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSParser class >> symbolTypes [
 	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #JSModuleNode #JSModuleNode #JSNameExpressionNode #JSNameExpressionNode #JSExpressionNode #JSExpressionNode #JSLiteralNode #JSArrayLiteralNode #OrderedCollection #OrderedCollection #JSSpreadExpressionNode #JSObjectLiteralNode nil #OrderedCollection #JSProgramNode #JSProgramNode #JSNameExpressionNode #JSComputedPropertyNameNode #JSPropertyAssignmentNode #OrderedCollection #JSTemplateLiteralNode #ByteSymbol #OrderedCollection #OrderedCollection #JSExpressionNode #JSExpressionNode #JSExpressionNode #JSNewTargetExpressionNode #JSImportMetaNode #JSExpressionNode #JSExpressionNode #JSSuperCallExpressionNode #JSImportCallExpressionNode #OrderedCollection #OrderedCollection #JSOptionalExpressionNode #OrderedCollection #JSOptionalNode #JSOptionalNode #JSExpressionNode #JSExpressionNode #JSExpressionNode #JSExpressionNode #JSExpressionNode #SmaCCToken #JSExpressionNode #JSExpressionNode #JSExpressionNode #JSExpressionNode #JSExpressionNode #JSExpressionNode #JSExpressionNode #JSExpressionNode #JSExpressionNode #JSBinaryExpressionNode #JSExpressionNode #JSExpressionNode #JSExpressionNode #JSExpressionNode #SmaCCToken #JSExpressionNode #JSStatementNode #JSProgramNode #JSProgramNode #JSStatementNode #JSBlockStatementNode #JSBlockStatementNode #OrderedCollection #JSStatementNode #ByteSymbol #JSLexicalDeclarationNode #SmaCCToken #OrderedCollection #JSProgramNode #JSVariableStatementNode #OrderedCollection #JSProgramNode #JSProgramNode #JSObjectBindingPatternNode #JSArrayBindingPatternNode #JSBindingRestPropertyNode #OrderedCollection #OrderedCollection #OrderedCollection #JSProgramNode #JSProgramNode #JSVariableDeclarationNode #JSRestVariableDeclarationNode #JSEmptyStatementNode #JSExpressionStatementNode #JSIfStatementNode #JSStatementNode #JSDoWhileStatementNode #JSWhileStatementNode #JSForStatementNode #JSStatementNode #OrderedCollection #JSProgramNode #JSContinueStatementNode #JSBreakStatementNode nil #JSReturnStatementNode #JSWithStatementNode #JSSwitchStatementNode #OrderedCollection #OrderedCollection #JSCaseClauseNode #JSDefaultClauseNode #JSLabelledStatementNode #JSStatementNode #JSThrowStatementNode #JSTryStatementNode #OrderedCollection #OrderedCollection #JSProgramNode #JSDebuggerStatementNode #OrderedCollection #OrderedCollection #OrderedCollection #JSRestVariableDeclarationNode #JSProgramNode #JSProgramNode #JSFunctionNode #OrderedCollection #OrderedCollection #JSArrowFunctionNode #OrderedCollection #JSVariableDeclarationNode #OrderedCollection #JSExpressionNode #OrderedCollection #JSAsyncArrowFunctionNode #OrderedCollection #JSMethodDefinitionNode #JSProgramNode #JSGeneratorFunctionNode #JSGeneratorFunctionNode #JSGeneratorMethodDefinitionNode #OrderedCollection #JSYieldExpressionNode #JSAsyncGeneratorFunctionNode #JSAsyncGeneratorFunctionNode #JSAsyncGeneratorMethodDefinitionNode #OrderedCollection #JSAsyncFunctionNode #JSAsyncFunctionNode #JSAsyncMethodDefinitionNode #OrderedCollection #JSAwaitExpressionNode #JSClassExpressionNode #OrderedCollection #JSClassExpressionNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #JSProgramNode #OrderedCollection #JSNameExpressionNode nil #JSNameExpressionNode #JSClassStaticBlockNode #OrderedCollection #OrderedCollection #JSScriptNode #OrderedCollection #JSModuleNode #OrderedCollection #OrderedCollection #JSProgramNode #SmaCCToken #JSImportDeclarationNode #OrderedCollection #JSNameExpressionNode #JSNameSpaceImportNode #JSNamedImportsNode #OrderedCollection #OrderedCollection #JSImportSpecifierNode #SmaCCToken #JSNameExpressionNode #JSExportDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #JSExportSpecifierNode #JSNameExpressionNode #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #JSRegularExpressionLiteralNode #JSExpressionNode #JSXSelfClosingElementNode #JSXOpeningElementNode #JSXClosingElementNode #JSXFragmentNode #JSProgramNode #JSXNamespacedNameNode #JSXMemberExpressionNode #OrderedCollection #OrderedCollection #OrderedCollection #JSProgramNode #OrderedCollection #JSXSpreadAttributeNode #JSXAttributeNode #JSProgramNode #OrderedCollection #JSExpressionNode #OrderedCollection #OrderedCollection #JSExpressionNode #JSExpressionNode nil nil #ByteSymbol #Object #Object #ByteSymbol #JSTypeParametersNode #OrderedCollection #JSTypeParameterNode #OrderedCollection #JSTypeArgumentsNode #OrderedCollection #JSTypeNode #JSTypeNode #JSTypeNode #JSTypeNode #JSTypeNode #JSTypeNode #JSIndexedAccessTypeNode #JSLiteralTypeNode #JSTypeNode #JSVoidTypeNode #JSTypeReferenceNode #JSTypeNameNode #OrderedCollection #JSObjectTypeNode #OrderedCollection #OrderedCollection #JSProgramNode #JSArrayTypeNode #JSTupleTypeNode #OrderedCollection #JSTypeNode #JSUnionTypeNode #JSIntersectionTypeNode #JSFunctionTypeNode #JSConstructorTypeNode #JSTypeQueryNode #JSTypeQueryExpressionNode #JSThisTypeNode #JSPropertySignatureNode #OrderedCollection #JSCallSignatureNode #OrderedCollection #SmaCCToken #JSProgramNode #SmaCCToken #JSProgramNode #JSConstructSignatureNode #JSIndexSignatureNode #JSMethodSignatureNode #JSTypeAliasDeclarationNode #OrderedCollection #JSGetMethodDefinitionNode #JSSetMethodDefinitionNode #JSTypedParameterNode #JSAsExpressionNode #JSVariableDeclarationNode #JSVariablePatternDeclarationNode #JSVariableDeclarationNode #JSVariablePatternDeclarationNode #JSInterfaceDeclarationNode #OrderedCollection #OrderedCollection #JSTypeReferenceNode #OrderedCollection #JSTypeReferenceNode #OrderedCollection #JSConstructorDeclarationNode #JSCallSignatureNode #JSProgramNode #JSMemberVariableDeclarationNode #SmaCCToken #OrderedCollection #SmaCCToken #JSMemberFunctionDeclarationNode #JSMemberAccessorDeclarationNode #JSIndexMemberDeclarationNode #JSEnumDeclarationNode #OrderedCollection #OrderedCollection #JSEnumMemberNode #JSExpressionNode #JSNamespaceDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #JSProgramNode #JSExportNamespaceElementNode #JSImportAliasDeclarationNode #OrderedCollection #JSTSSourceFileNode #OrderedCollection #JSProgramNode #JSProgramNode #Object #JSProgramNode #JSProgramNode #JSProgramNode #JSProgramNode #JSProgramNode #JSProgramNode #JSProgramNode #JSProgramNode #JSProgramNode #JSProgramNode #JSProgramNode #OrderedCollection #OrderedCollection #JSProgramNode #JSImportRequireDeclarationNode #JSExportImplementationElementNode #JSExportDeclarationElementNode #JSExportDefaultImplementationElementNode #JSExportDefaultDeclarationElementNode #JSExportListDeclarationNode #JSExportAssignmentNode #JSAmbientDeclarationNode #JSLexicalDeclarationNode #OrderedCollection #JSVariableDeclarationNode #JSEmptyFunctionNode #JSClassExpressionNode #OrderedCollection #OrderedCollection #JSProgramNode #JSConstructorDeclarationNode #JSProgramNode #JSEnumDeclarationNode #JSNamespaceDeclarationNode #OrderedCollection #OrderedCollection #JSExportNamespaceElementNode #JSAmbientModuleDeclarationNode #JSDecoratorExpressionNode #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCErrorNode)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSParser class >> transitionTable [
 ^#(
 #[1 0 6 0 2 0 6 0 4 0 6 0 6 0 6 0 8 0 6 0 35 0 6 0 36 0 6 0 37 0 6 0 38 0 6 0 39 0 6 0 52 0 6 0 56 0 6 0 57 0 6 0 58 0 6 0 61 0 69 0 63 0 6 0 65 0 6 0 66 0 6 0 69 0 6 0 70 0 41 0 73 0 6 0 75 0 6 0 77 0 6 0 79 0 6 0 82 0 7 0 83 0 69 0 90 0 6 0 94 0 6 0 95 0 6 0 103 0 6 0 107 0 6 0 108 0 6 0 110 0 6 0 111 0 6 0 112 0 6 0 113 0 6 0 115 0 6 0 116 0 6 0 117 0 6 0 118 0 6 0 119 0 6 0 120 0 6 0 125 0 6 0 127 0 6 0 129 0 6 0 130 0 6 0 131 0 6 0 133 0 6 0 134 0 6 0 137 0 53 0 141 0 85 0 208 0 61 0 209 0 85 0 210 0 69 0 211 0 53 1 50 0 77 1 51 0 81 1 52 0 85 1 53 0 85 1 55 0 85 1 65 0 11 1 235 0 10 1 236] 
@@ -5209,9 +5210,9 @@ JSParser class >> transitionTable [
 #[0 14 10 0 5 0 6 0 64 0 98 0 99 0 100 0 101 0 102 0 105 0 126 0 129 0 130] 
 #[0 29 49 0 5] 
 #[1 11 245 0 61 11 253 0 79 0 193 0 125 29 53 0 142 21 21 1 219 21 25 1 220] 
-#[0 8 210 0 1 0 5 0 67 0 73 0 83 0 88 0 93 0 114] 
+#[0 8 206 0 1 0 5 0 67 0 73 0 83 0 88 0 93 0 114] 
 #[0 8 214 0 1 0 5 0 67 0 73 0 83 0 88 0 93 0 114] 
-#[0 8 234 0 1 0 5 0 67 0 73 0 83 0 88 0 93 0 114] 
+#[0 8 238 0 1 0 5 0 67 0 73 0 83 0 88 0 93 0 114] 
 #[1 13 170 0 1 1 35 0 2 13 170 0 4 13 170 0 5 1 35 0 6 1 35 0 8 12 206 0 9 12 206 0 10 12 206 0 11 12 206 0 12 12 206 0 13 12 206 0 14 12 206 0 15 12 206 0 16 12 206 0 17 12 206 0 18 12 206 0 20 12 206 0 21 12 206 0 22 12 206 0 23 12 206 0 24 12 206 0 25 12 206 0 26 12 206 0 27 12 206 0 28 12 206 0 29 12 206 0 30 12 206 0 31 12 206 0 32 12 206 0 33 12 206 0 34 1 35 0 35 1 35 0 36 1 35 0 37 1 35 0 38 13 170 0 39 12 206 0 40 12 206 0 41 12 206 0 42 12 206 0 43 12 206 0 44 12 206 0 45 12 206 0 46 12 206 0 47 12 206 0 48 12 206 0 49 12 206 0 50 12 206 0 51 13 170 0 52 12 206 0 53 12 206 0 54 13 170 0 56 13 170 0 57 13 170 0 58 13 170 0 61 13 170 0 62 13 170 0 63 13 170 0 65 13 170 0 66 13 170 0 67 13 170 0 69 13 170 0 70 13 170 0 72 13 170 0 73 13 170 0 75 13 170 0 77 13 170 0 79 13 170 0 82 13 170 0 83 12 206 0 84 12 206 0 87 13 170 0 88 13 170 0 90 13 170 0 93 13 170 0 94 13 170 0 95 13 170 0 103 13 170 0 107 13 170 0 108 13 170 0 110 13 170 0 111 13 170 0 112 13 170 0 113 13 170 0 114 13 170 0 115 13 170 0 116 13 170 0 117 13 170 0 118 13 170 0 119 13 170 0 120 12 206 0 122 13 170 0 125 13 170 0 127 13 170 0 129 13 170 0 130 13 170 0 131 1 35 0 133 1 35 0 134 13 170 0 137 12 206 1 234 1 35 1 235 13 170 1 236] 
 #[0 29 57 0 5] 
 #[1 0 6 0 2 0 6 0 4 6 78 0 5 0 6 0 6 0 6 0 8 0 6 0 35 0 6 0 36 0 6 0 37 0 6 0 38 0 6 0 39 0 6 0 52 0 6 0 56 0 6 0 57 0 6 0 58 0 6 0 61 0 69 0 63 0 6 0 65 0 6 0 66 0 6 0 69 0 6 0 70 0 6 0 75 0 6 0 77 0 6 0 79 0 6 0 82 0 6 0 83 0 69 0 90 0 6 0 94 0 6 0 95 0 6 0 103 0 6 0 107 0 6 0 108 0 6 0 110 0 6 0 111 0 6 0 112 0 6 0 113 0 6 0 115 0 6 0 116 0 6 0 117 0 6 0 118 0 6 0 119 0 6 0 120 0 6 0 125 0 6 0 127 0 6 0 129 0 6 0 130 0 6 0 131 0 6 0 133 0 6 0 134 0 6 0 137 15 49 0 207 2 125 0 208 0 61 0 209 2 125 0 210 0 69 0 211 25 129 1 7 15 57 1 8 29 61 1 22 0 6 1 235] 
@@ -5319,7 +5320,7 @@ JSParser class >> transitionTable [
 	).
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JSParser >> actionsForCurrentToken [
 	| actions |
 	self splitQuestionDotToken.
@@ -5374,7 +5375,7 @@ JSParser >> actionsForCurrentToken [
 	^ actions
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JSParser >> addIdentifiers: actions [
 	(currentToken ids first ~= scanner identifierId
 		and: [ (currentToken ids includes: scanner identifierId)
@@ -5382,7 +5383,7 @@ JSParser >> addIdentifiers: actions [
 		ifTrue: [ self addActionsFor: scanner identifierId to: actions ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JSParser >> addSemicolons: actions [
 	| semicolonActions |
 	(actions isEmpty and: [ self canInsertSemicolon ])
@@ -5403,7 +5404,7 @@ JSParser >> addSemicolons: actions [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JSParser >> canInsertSemicolon [
 	| item |
 	^ (nodeStack size <= 1
@@ -5414,7 +5415,7 @@ JSParser >> canInsertSemicolon [
 		and: [ self lastInsertedSemicolonIsBeforeCurrentPosition ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JSParser >> checkEOL [
 	| stackTop position |
 	(self isEOFToken or: [ currentToken ids includes: scanner semicolonId ])
@@ -5435,7 +5436,7 @@ JSParser >> checkEOL [
 					ids: (Array with: self scanner semicolonId) ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JSParser >> checkSemicolon [
 	| token |
 	currentToken value = ';' ifFalse: [ ^ self ].
@@ -5457,12 +5458,12 @@ JSParser >> checkSemicolon [
 		ifTrue: [ self killState ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JSParser >> defaultScope [
 	^ #jsx
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JSParser >> forkActions: actions inserting: insertedToken before: aToken [
 	| state todo nextActions action lastIndex |
 	state := currentState.
@@ -5502,7 +5503,7 @@ JSParser >> forkActions: actions inserting: insertedToken before: aToken [
 	currentToken := aToken
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JSParser >> handleError: anInteger [
 	(currentToken value = ';' and: [ currentToken startPosition isNil ])
 		ifTrue: [ currentToken := nil.
@@ -5510,23 +5511,23 @@ JSParser >> handleError: anInteger [
 	^ super handleError: anInteger
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JSParser >> isJSX [
 	^ true
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JSParser >> keywords [
 	^ self class keywords
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JSParser >> lastInsertedSemicolonIsBeforeCurrentPosition [
 	^ ((currentState attributeNamed: #lastInsertedSemicolonPosition) ifNil: [ -1 ])
 		< self positionForInsertedSemicolon
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JSParser >> positionForInsertedSemicolon [
 	^ scanner position
 		+ ((currentToken ids at: 1 ifAbsent: [  ]) = scanner emptySymbolTokenId
@@ -5534,7 +5535,7 @@ JSParser >> positionForInsertedSemicolon [
 				ifFalse: [ 0 ])
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAmbientBinding2: nodes [
 	| result |
 	result := JSVariableDeclarationNode new.
@@ -5544,7 +5545,7 @@ JSParser >> reduceActionForAmbientBinding2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAmbientClassDeclaration1: nodes [
 	| result |
 	result := JSClassExpressionNode new.
@@ -5561,7 +5562,7 @@ JSParser >> reduceActionForAmbientClassDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAmbientClassDeclaration2: nodes [
 	| result |
 	result := JSClassExpressionNode new.
@@ -5579,7 +5580,7 @@ JSParser >> reduceActionForAmbientClassDeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAmbientConstructorDeclaration1: nodes [
 	| result |
 	result := JSConstructorDeclarationNode new.
@@ -5589,7 +5590,7 @@ JSParser >> reduceActionForAmbientConstructorDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAmbientConstructorDeclaration2: nodes [
 	| result |
 	result := JSConstructorDeclarationNode new.
@@ -5600,7 +5601,7 @@ JSParser >> reduceActionForAmbientConstructorDeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAmbientDeclaration1: nodes [
 	| result |
 	result := JSAmbientDeclarationNode new.
@@ -5609,7 +5610,7 @@ JSParser >> reduceActionForAmbientDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAmbientFunctionDeclaration1: nodes [
 	| result |
 	result := JSEmptyFunctionNode new.
@@ -5620,7 +5621,7 @@ JSParser >> reduceActionForAmbientFunctionDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAmbientModuleDeclaration1: nodes [
 	| result |
 	result := JSAmbientModuleDeclarationNode new.
@@ -5633,7 +5634,7 @@ JSParser >> reduceActionForAmbientModuleDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAmbientNamespaceDeclaration2: nodes [
 	| result |
 	result := JSNamespaceDeclarationNode new.
@@ -5644,7 +5645,7 @@ JSParser >> reduceActionForAmbientNamespaceDeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAmbientNamespaceElement3: nodes [
 	| result |
 	result := JSExportNamespaceElementNode new.
@@ -5652,7 +5653,7 @@ JSParser >> reduceActionForAmbientNamespaceElement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAmbientNamespaceElement4: nodes [
 	| result |
 	result := JSExportNamespaceElementNode new.
@@ -5661,7 +5662,7 @@ JSParser >> reduceActionForAmbientNamespaceElement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAmbientPropertyMemberDeclaration1: nodes [
 	| result |
 	result := JSMemberVariableDeclarationNode new.
@@ -5671,7 +5672,7 @@ JSParser >> reduceActionForAmbientPropertyMemberDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAmbientPropertyMemberDeclaration2: nodes [
 	| result |
 	result := JSMemberVariableDeclarationNode new.
@@ -5683,7 +5684,7 @@ JSParser >> reduceActionForAmbientPropertyMemberDeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAmbientPropertyMemberDeclaration3: nodes [
 	| result |
 	result := JSMethodSignatureNode new.
@@ -5694,7 +5695,7 @@ JSParser >> reduceActionForAmbientPropertyMemberDeclaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArgumentList1: nodes [
 	| result |
 	result := Array new: 4.
@@ -5706,7 +5707,7 @@ JSParser >> reduceActionForArgumentList1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArgumentList2: nodes [
 	| result |
 	result := Array new: 4.
@@ -5719,7 +5720,7 @@ JSParser >> reduceActionForArgumentList2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArgumentList3: nodes [
 	| result |
 	result := nodes at: 1.
@@ -5728,7 +5729,7 @@ JSParser >> reduceActionForArgumentList3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArgumentList4: nodes [
 	| result |
 	result := nodes at: 1.
@@ -5738,7 +5739,7 @@ JSParser >> reduceActionForArgumentList4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArguments1: nodes [
 	| result |
 	result := Array new: 7.
@@ -5751,7 +5752,7 @@ JSParser >> reduceActionForArguments1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArguments2: nodes [
 	| result |
 	result := Array new: 7.
@@ -5768,7 +5769,7 @@ JSParser >> reduceActionForArguments2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArguments3: nodes [
 	| result |
 	result := Array new: 7.
@@ -5786,7 +5787,7 @@ JSParser >> reduceActionForArguments3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArguments4: nodes [
 	| result |
 	result := Array new: 7.
@@ -5800,7 +5801,7 @@ JSParser >> reduceActionForArguments4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArguments5: nodes [
 	| result |
 	result := Array new: 7.
@@ -5815,7 +5816,7 @@ JSParser >> reduceActionForArguments5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArguments6: nodes [
 	| result |
 	result := Array new: 7.
@@ -5833,7 +5834,7 @@ JSParser >> reduceActionForArguments6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArguments7: nodes [
 	| result |
 	result := Array new: 7.
@@ -5852,7 +5853,7 @@ JSParser >> reduceActionForArguments7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArrayBindingPattern1: nodes [
 	| result |
 	result := JSArrayBindingPatternNode new.
@@ -5861,7 +5862,7 @@ JSParser >> reduceActionForArrayBindingPattern1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArrayBindingPattern2: nodes [
 	| result |
 	result := JSArrayBindingPatternNode new.
@@ -5871,7 +5872,7 @@ JSParser >> reduceActionForArrayBindingPattern2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArrayBindingPattern3: nodes [
 	| result |
 	result := JSArrayBindingPatternNode new.
@@ -5881,7 +5882,7 @@ JSParser >> reduceActionForArrayBindingPattern3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArrayBindingPattern4: nodes [
 	| result |
 	result := JSArrayBindingPatternNode new.
@@ -5892,7 +5893,7 @@ JSParser >> reduceActionForArrayBindingPattern4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArrayBindingPattern5: nodes [
 	| result |
 	result := JSArrayBindingPatternNode new.
@@ -5903,7 +5904,7 @@ JSParser >> reduceActionForArrayBindingPattern5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArrayBindingPattern6: nodes [
 	| result |
 	result := JSArrayBindingPatternNode new.
@@ -5915,7 +5916,7 @@ JSParser >> reduceActionForArrayBindingPattern6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArrayBindingPattern7: nodes [
 	| result |
 	result := JSArrayBindingPatternNode new.
@@ -5928,7 +5929,7 @@ JSParser >> reduceActionForArrayBindingPattern7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArrayBindingPattern8: nodes [
 	| result |
 	result := JSArrayBindingPatternNode new.
@@ -5941,7 +5942,7 @@ JSParser >> reduceActionForArrayBindingPattern8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArrayBindingPattern9: nodes [
 	| result |
 	result := JSArrayBindingPatternNode new.
@@ -5955,7 +5956,7 @@ JSParser >> reduceActionForArrayBindingPattern9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArrayLiteral1: nodes [
 	| result |
 	result := JSArrayLiteralNode new.
@@ -5964,7 +5965,7 @@ JSParser >> reduceActionForArrayLiteral1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArrayLiteral2: nodes [
 	| result |
 	result := JSArrayLiteralNode new.
@@ -5974,7 +5975,7 @@ JSParser >> reduceActionForArrayLiteral2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArrayLiteral3: nodes [
 	| result |
 	result := JSArrayLiteralNode new.
@@ -5985,7 +5986,7 @@ JSParser >> reduceActionForArrayLiteral3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArrayLiteral4: nodes [
 	| result |
 	result := JSArrayLiteralNode new.
@@ -5997,7 +5998,7 @@ JSParser >> reduceActionForArrayLiteral4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArrayType1: nodes [
 	| result |
 	result := JSArrayTypeNode new.
@@ -6007,7 +6008,7 @@ JSParser >> reduceActionForArrayType1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArrayType2: nodes [
 	| result |
 	result := JSArrayTypeNode new.
@@ -6018,7 +6019,7 @@ JSParser >> reduceActionForArrayType2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArrowFormalParameters1: nodes [
 	| result |
 	result := Array new: 8.
@@ -6032,14 +6033,14 @@ JSParser >> reduceActionForArrowFormalParameters1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArrowFormalParameters2: nodes [
 	| result |
 	result := nodes at: 2.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArrowFunction1: nodes [
 	| result |
 	result := JSArrowFunctionNode new.
@@ -6058,7 +6059,7 @@ JSParser >> reduceActionForArrowFunction1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArrowParameterDeclaration1: nodes [
 	| result |
 	result := JSVariableDeclarationNode new.
@@ -6066,7 +6067,7 @@ JSParser >> reduceActionForArrowParameterDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArrowParameters1: nodes [
 	| result |
 	result := Array new: 8.
@@ -6076,7 +6077,7 @@ JSParser >> reduceActionForArrowParameters1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForArrowParameters2: nodes [
 	| result |
 	result := Array new: 8.
@@ -6093,7 +6094,7 @@ JSParser >> reduceActionForArrowParameters2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAsExpression1: nodes [
 	| result |
 	result := JSAsExpressionNode new.
@@ -6103,7 +6104,7 @@ JSParser >> reduceActionForAsExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAssignmentExpression5: nodes [
 	| result |
 	result := JSAssignmentExpressionNode new.
@@ -6113,7 +6114,7 @@ JSParser >> reduceActionForAssignmentExpression5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAsyncArrowFunction1: nodes [
 	| result |
 	result := JSAsyncArrowFunctionNode new.
@@ -6133,7 +6134,7 @@ JSParser >> reduceActionForAsyncArrowFunction1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAsyncFunctionExpression1: nodes [
 	| result |
 	result := JSAsyncFunctionNode new.
@@ -6150,7 +6151,7 @@ JSParser >> reduceActionForAsyncFunctionExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAsyncFunctionExpression2: nodes [
 	| result |
 	result := JSAsyncFunctionNode new.
@@ -6169,7 +6170,7 @@ JSParser >> reduceActionForAsyncFunctionExpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAsyncFunctionExpression3: nodes [
 	| result |
 	result := JSAsyncFunctionNode new.
@@ -6187,7 +6188,7 @@ JSParser >> reduceActionForAsyncFunctionExpression3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAsyncFunctionExpression4: nodes [
 	| result |
 	result := JSAsyncFunctionNode new.
@@ -6207,7 +6208,7 @@ JSParser >> reduceActionForAsyncFunctionExpression4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAsyncGeneratorExpression1: nodes [
 	| result |
 	result := JSAsyncGeneratorFunctionNode new.
@@ -6225,7 +6226,7 @@ JSParser >> reduceActionForAsyncGeneratorExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAsyncGeneratorExpression2: nodes [
 	| result |
 	result := JSAsyncGeneratorFunctionNode new.
@@ -6244,7 +6245,7 @@ JSParser >> reduceActionForAsyncGeneratorExpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAsyncGeneratorMethod1: nodes [
 	| result |
 	result := JSAsyncGeneratorMethodDefinitionNode new.
@@ -6262,7 +6263,7 @@ JSParser >> reduceActionForAsyncGeneratorMethod1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAsyncMethod1: nodes [
 	| result |
 	result := JSAsyncMethodDefinitionNode new.
@@ -6279,7 +6280,7 @@ JSParser >> reduceActionForAsyncMethod1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAsyncMethod2: nodes [
 	| result |
 	result := JSAsyncMethodDefinitionNode new.
@@ -6298,7 +6299,7 @@ JSParser >> reduceActionForAsyncMethod2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForAwaitExpression1: nodes [
 	| result |
 	result := JSAwaitExpressionNode new.
@@ -6307,7 +6308,7 @@ JSParser >> reduceActionForAwaitExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForBindingElement2: nodes [
 	| result |
 	result := JSVariablePatternDeclarationNode new.
@@ -6315,7 +6316,7 @@ JSParser >> reduceActionForBindingElement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForBindingElement4: nodes [
 	| result |
 	result := JSVariableDeclarationNode new.
@@ -6327,7 +6328,7 @@ JSParser >> reduceActionForBindingElement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForBindingElement5: nodes [
 	| result |
 	result := JSVariableDeclarationNode new.
@@ -6341,7 +6342,7 @@ JSParser >> reduceActionForBindingElement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForBindingElement6: nodes [
 	| result |
 	result := JSVariableDeclarationNode new.
@@ -6351,7 +6352,7 @@ JSParser >> reduceActionForBindingElement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForBindingElement7: nodes [
 	| result |
 	result := JSVariableDeclarationNode new.
@@ -6363,7 +6364,7 @@ JSParser >> reduceActionForBindingElement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForBindingElement8: nodes [
 	| result |
 	result := JSVariableDeclarationNode new.
@@ -6374,7 +6375,7 @@ JSParser >> reduceActionForBindingElement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForBindingElement9: nodes [
 	| result |
 	result := JSVariableDeclarationNode new.
@@ -6387,7 +6388,7 @@ JSParser >> reduceActionForBindingElement9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForBindingElementList1: nodes [
 	| result |
 	result := Array new: 2.
@@ -6398,7 +6399,7 @@ JSParser >> reduceActionForBindingElementList1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForBindingElementList2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -6408,7 +6409,7 @@ JSParser >> reduceActionForBindingElementList2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForBindingElisionElement1: nodes [
 	| result |
 	result := Array new: 2.
@@ -6417,7 +6418,7 @@ JSParser >> reduceActionForBindingElisionElement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForBindingElisionElement2: nodes [
 	| result |
 	result := Array new: 2.
@@ -6427,7 +6428,7 @@ JSParser >> reduceActionForBindingElisionElement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForBindingProperty2: nodes [
 	| result |
 	result := JSBindingPropertyNode new.
@@ -6437,7 +6438,7 @@ JSParser >> reduceActionForBindingProperty2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForBindingRestElement1: nodes [
 	| result |
 	result := JSRestVariableDeclarationNode new.
@@ -6446,7 +6447,7 @@ JSParser >> reduceActionForBindingRestElement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForBindingRestElement3: nodes [
 	| result |
 	result := JSRestVariableDeclarationNode new.
@@ -6457,7 +6458,7 @@ JSParser >> reduceActionForBindingRestElement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForBindingRestProperty1: nodes [
 	| result |
 	result := JSBindingRestPropertyNode new.
@@ -6466,7 +6467,7 @@ JSParser >> reduceActionForBindingRestProperty1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForBlock1: nodes [
 	| result |
 	result := JSBlockStatementNode new.
@@ -6475,7 +6476,7 @@ JSParser >> reduceActionForBlock1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForBlock2: nodes [
 	| result |
 	result := JSBlockStatementNode new.
@@ -6485,7 +6486,7 @@ JSParser >> reduceActionForBlock2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForBreakStatement1: nodes [
 	| result |
 	result := JSBreakStatementNode new.
@@ -6494,7 +6495,7 @@ JSParser >> reduceActionForBreakStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForBreakStatement2: nodes [
 	| result |
 	result := JSBreakStatementNode new.
@@ -6504,7 +6505,7 @@ JSParser >> reduceActionForBreakStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForCallExpression1: nodes [
 	| result |
 	result := JSCallExpressionNode new.
@@ -6519,7 +6520,7 @@ JSParser >> reduceActionForCallExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForCallSignature1: nodes [
 	| result |
 	result := JSCallSignatureNode new.
@@ -6531,7 +6532,7 @@ JSParser >> reduceActionForCallSignature1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForCallSignature2: nodes [
 	| result |
 	result := JSCallSignatureNode new.
@@ -6545,7 +6546,7 @@ JSParser >> reduceActionForCallSignature2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForCallSignature3: nodes [
 	| result |
 	result := JSCallSignatureNode new.
@@ -6558,7 +6559,7 @@ JSParser >> reduceActionForCallSignature3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForCallSignature4: nodes [
 	| result |
 	result := JSCallSignatureNode new.
@@ -6573,7 +6574,7 @@ JSParser >> reduceActionForCallSignature4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForCaseBlock1: nodes [
 	| result |
 	result := Array new: 3.
@@ -6583,7 +6584,7 @@ JSParser >> reduceActionForCaseBlock1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForCaseBlock2: nodes [
 	| result |
 	result := Array new: 3.
@@ -6594,7 +6595,7 @@ JSParser >> reduceActionForCaseBlock2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForCaseBlock3: nodes [
 	| result |
 	result := Array new: 3.
@@ -6605,7 +6606,7 @@ JSParser >> reduceActionForCaseBlock3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForCaseBlock4: nodes [
 	| result |
 	result := Array new: 3.
@@ -6617,7 +6618,7 @@ JSParser >> reduceActionForCaseBlock4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForCaseBlock5: nodes [
 	| result |
 	result := Array new: 3.
@@ -6629,7 +6630,7 @@ JSParser >> reduceActionForCaseBlock5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForCaseBlock6: nodes [
 	| result |
 	result := Array new: 3.
@@ -6642,7 +6643,7 @@ JSParser >> reduceActionForCaseBlock6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForCaseClause1: nodes [
 	| result |
 	result := JSCaseClauseNode new.
@@ -6652,7 +6653,7 @@ JSParser >> reduceActionForCaseClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForCaseClause2: nodes [
 	| result |
 	result := JSCaseClauseNode new.
@@ -6663,7 +6664,7 @@ JSParser >> reduceActionForCaseClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForCatch1: nodes [
 	| result |
 	result := Array new: 5.
@@ -6675,7 +6676,7 @@ JSParser >> reduceActionForCatch1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForCatch2: nodes [
 	| result |
 	result := Array new: 5.
@@ -6684,19 +6685,19 @@ JSParser >> reduceActionForCatch2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForCheckEOL1: nodes [
 	self checkEOL.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForCheckSemicolon1: nodes [
 	self checkSemicolon.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForClassDeclaration1: nodes [
 	| result |
 	result := JSClassExpressionNode new.
@@ -6713,7 +6714,7 @@ JSParser >> reduceActionForClassDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForClassDeclaration2: nodes [
 	| result |
 	result := JSClassExpressionNode new.
@@ -6731,7 +6732,7 @@ JSParser >> reduceActionForClassDeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForClassDeclaration3: nodes [
 	| result |
 	result := JSClassExpressionNode new.
@@ -6749,7 +6750,7 @@ JSParser >> reduceActionForClassDeclaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForClassDeclaration4: nodes [
 	| result |
 	result := JSClassExpressionNode new.
@@ -6768,7 +6769,7 @@ JSParser >> reduceActionForClassDeclaration4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForClassDeclaration5: nodes [
 	| result |
 	result := JSClassExpressionNode new.
@@ -6786,7 +6787,7 @@ JSParser >> reduceActionForClassDeclaration5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForClassDeclaration6: nodes [
 	| result |
 	result := JSClassExpressionNode new.
@@ -6805,7 +6806,7 @@ JSParser >> reduceActionForClassDeclaration6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForClassDeclaration7: nodes [
 	| result |
 	result := JSClassExpressionNode new.
@@ -6824,7 +6825,7 @@ JSParser >> reduceActionForClassDeclaration7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForClassDeclaration8: nodes [
 	| result |
 	result := JSClassExpressionNode new.
@@ -6844,7 +6845,7 @@ JSParser >> reduceActionForClassDeclaration8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForClassElement5: nodes [
 	| result |
 	result := nodes at: 2.
@@ -6852,7 +6853,7 @@ JSParser >> reduceActionForClassElement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForClassElement6: nodes [
 	| result |
 	result := JSFieldDefinitionNode new.
@@ -6863,7 +6864,7 @@ JSParser >> reduceActionForClassElement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForClassElement7: nodes [
 	| result |
 	result := JSFieldDefinitionNode new.
@@ -6875,7 +6876,7 @@ JSParser >> reduceActionForClassElement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForClassExpression1: nodes [
 	| result |
 	result := JSClassExpressionNode new.
@@ -6891,7 +6892,7 @@ JSParser >> reduceActionForClassExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForClassExpression2: nodes [
 	| result |
 	result := JSClassExpressionNode new.
@@ -6908,7 +6909,7 @@ JSParser >> reduceActionForClassExpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForClassHeritage1: nodes [
 	| result |
 	result := Array new: 5.
@@ -6919,7 +6920,7 @@ JSParser >> reduceActionForClassHeritage1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForClassHeritage2: nodes [
 	| result |
 	result := Array new: 5.
@@ -6931,7 +6932,7 @@ JSParser >> reduceActionForClassHeritage2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForClassHeritage3: nodes [
 	| result |
 	result := Array new: 5.
@@ -6945,7 +6946,7 @@ JSParser >> reduceActionForClassHeritage3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForClassHeritage4: nodes [
 	| result |
 	result := Array new: 5.
@@ -6956,7 +6957,7 @@ JSParser >> reduceActionForClassHeritage4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForClassStaticBlock1: nodes [
 	| result |
 	result := JSClassStaticBlockNode new.
@@ -6967,7 +6968,7 @@ JSParser >> reduceActionForClassStaticBlock1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForClassTail1: nodes [
 	| result |
 	result := Array new: 8.
@@ -6979,7 +6980,7 @@ JSParser >> reduceActionForClassTail1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForClassTail2: nodes [
 	| result |
 	result := Array new: 8.
@@ -6992,7 +6993,7 @@ JSParser >> reduceActionForClassTail2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForClassTail3: nodes [
 	| result |
 	result := Array new: 8.
@@ -7009,7 +7010,7 @@ JSParser >> reduceActionForClassTail3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForClassTail4: nodes [
 	| result |
 	result := Array new: 8.
@@ -7027,7 +7028,7 @@ JSParser >> reduceActionForClassTail4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForComputedPropertyName1: nodes [
 	| result |
 	result := JSComputedPropertyNameNode new.
@@ -7037,7 +7038,7 @@ JSParser >> reduceActionForComputedPropertyName1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForConciseBody2: nodes [
 	| result |
 	result := Array new: 3.
@@ -7048,7 +7049,7 @@ JSParser >> reduceActionForConciseBody2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForConditionalExpression2: nodes [
 	| result |
 	result := JSConditionalExpressionNode new.
@@ -7060,7 +7061,7 @@ JSParser >> reduceActionForConditionalExpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForConstructSignature1: nodes [
 	| result |
 	result := JSConstructSignatureNode new.
@@ -7073,7 +7074,7 @@ JSParser >> reduceActionForConstructSignature1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForConstructSignature2: nodes [
 	| result |
 	result := JSConstructSignatureNode new.
@@ -7088,7 +7089,7 @@ JSParser >> reduceActionForConstructSignature2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForConstructSignature3: nodes [
 	| result |
 	result := JSConstructSignatureNode new.
@@ -7102,7 +7103,7 @@ JSParser >> reduceActionForConstructSignature3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForConstructSignature4: nodes [
 	| result |
 	result := JSConstructSignatureNode new.
@@ -7118,7 +7119,7 @@ JSParser >> reduceActionForConstructSignature4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForConstructorDeclaration1: nodes [
 	| result |
 	result := JSConstructorDeclarationNode new.
@@ -7131,7 +7132,7 @@ JSParser >> reduceActionForConstructorDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForConstructorDeclaration2: nodes [
 	| result |
 	result := JSConstructorDeclarationNode new.
@@ -7145,7 +7146,7 @@ JSParser >> reduceActionForConstructorDeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForConstructorDeclaration3: nodes [
 	| result |
 	result := JSConstructorDeclarationNode new.
@@ -7156,7 +7157,7 @@ JSParser >> reduceActionForConstructorDeclaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForConstructorDeclaration4: nodes [
 	| result |
 	result := JSConstructorDeclarationNode new.
@@ -7168,7 +7169,7 @@ JSParser >> reduceActionForConstructorDeclaration4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForConstructorType1: nodes [
 	| result |
 	result := JSConstructorTypeNode new.
@@ -7183,7 +7184,7 @@ JSParser >> reduceActionForConstructorType1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForConstructorType2: nodes [
 	| result |
 	result := JSConstructorTypeNode new.
@@ -7199,7 +7200,7 @@ JSParser >> reduceActionForConstructorType2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForContinueStatement1: nodes [
 	| result |
 	result := JSContinueStatementNode new.
@@ -7208,7 +7209,7 @@ JSParser >> reduceActionForContinueStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForContinueStatement2: nodes [
 	| result |
 	result := JSContinueStatementNode new.
@@ -7218,7 +7219,7 @@ JSParser >> reduceActionForContinueStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForCoverInitializedName1: nodes [
 	| result |
 	result := JSPropertyAssignmentNode new.
@@ -7228,7 +7229,7 @@ JSParser >> reduceActionForCoverInitializedName1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForDebuggerStatement1: nodes [
 	| result |
 	result := JSDebuggerStatementNode new.
@@ -7237,7 +7238,7 @@ JSParser >> reduceActionForDebuggerStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForDecoratorExpression2: nodes [
 	| result |
 	result := JSDecoratorExpressionNode new.
@@ -7246,7 +7247,7 @@ JSParser >> reduceActionForDecoratorExpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForDefaultClause1: nodes [
 	| result |
 	result := JSDefaultClauseNode new.
@@ -7255,7 +7256,7 @@ JSParser >> reduceActionForDefaultClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForDefaultClause2: nodes [
 	| result |
 	result := JSDefaultClauseNode new.
@@ -7265,7 +7266,7 @@ JSParser >> reduceActionForDefaultClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForDestructuringLexicalBinding1: nodes [
 	| result |
 	result := JSVariablePatternDeclarationNode new.
@@ -7275,7 +7276,7 @@ JSParser >> reduceActionForDestructuringLexicalBinding1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForDestructuringLexicalBinding2: nodes [
 	| result |
 	result := JSVariablePatternDeclarationNode new.
@@ -7287,7 +7288,7 @@ JSParser >> reduceActionForDestructuringLexicalBinding2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForDestructuringVariableDeclaration1: nodes [
 	| result |
 	result := JSVariablePatternDeclarationNode new.
@@ -7299,7 +7300,7 @@ JSParser >> reduceActionForDestructuringVariableDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForDoWhileStatement1: nodes [
 	| result |
 	result := JSDoWhileStatementNode new.
@@ -7313,7 +7314,7 @@ JSParser >> reduceActionForDoWhileStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForElementList4: nodes [
 	| result |
 	result := Array new: 2.
@@ -7324,7 +7325,7 @@ JSParser >> reduceActionForElementList4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForElementList6: nodes [
 	| result |
 	result := nodes at: 1.
@@ -7333,7 +7334,7 @@ JSParser >> reduceActionForElementList6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForEmptyStatement1: nodes [
 	| result |
 	result := JSEmptyStatementNode new.
@@ -7341,7 +7342,7 @@ JSParser >> reduceActionForEmptyStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForEnumDeclaration1: nodes [
 	| result |
 	result := JSEnumDeclarationNode new.
@@ -7352,7 +7353,7 @@ JSParser >> reduceActionForEnumDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForEnumDeclaration2: nodes [
 	| result |
 	result := JSEnumDeclarationNode new.
@@ -7365,7 +7366,7 @@ JSParser >> reduceActionForEnumDeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForEnumDeclaration3: nodes [
 	| result |
 	result := JSEnumDeclarationNode new.
@@ -7377,7 +7378,7 @@ JSParser >> reduceActionForEnumDeclaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForEnumDeclaration4: nodes [
 	| result |
 	result := JSEnumDeclarationNode new.
@@ -7391,7 +7392,7 @@ JSParser >> reduceActionForEnumDeclaration4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForEnumMember1: nodes [
 	| result |
 	result := JSEnumMemberNode new.
@@ -7399,7 +7400,7 @@ JSParser >> reduceActionForEnumMember1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForEnumMember2: nodes [
 	| result |
 	result := JSEnumMemberNode new.
@@ -7409,7 +7410,7 @@ JSParser >> reduceActionForEnumMember2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExponentiationExpression2: nodes [
 	| result |
 	result := JSBinaryExpressionNode new.
@@ -7419,7 +7420,7 @@ JSParser >> reduceActionForExponentiationExpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportAssignment1: nodes [
 	| result |
 	result := JSExportAssignmentNode new.
@@ -7430,7 +7431,7 @@ JSParser >> reduceActionForExportAssignment1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportDeclaration1: nodes [
 	| result |
 	result := JSExportDeclarationNode new.
@@ -7448,7 +7449,7 @@ JSParser >> reduceActionForExportDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportDeclaration2: nodes [
 	| result |
 	result := JSExportDeclarationNode new.
@@ -7461,7 +7462,7 @@ JSParser >> reduceActionForExportDeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportDeclaration3: nodes [
 	| result |
 	result := JSExportDeclarationNode new.
@@ -7470,7 +7471,7 @@ JSParser >> reduceActionForExportDeclaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportDeclaration4: nodes [
 	| result |
 	result := JSExportDeclarationNode new.
@@ -7479,7 +7480,7 @@ JSParser >> reduceActionForExportDeclaration4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportDeclaration5: nodes [
 	| result |
 	result := JSExportDeclarationNode new.
@@ -7490,7 +7491,7 @@ JSParser >> reduceActionForExportDeclaration5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportDeclaration6: nodes [
 	| result |
 	result := JSExportDeclarationNode new.
@@ -7509,7 +7510,7 @@ JSParser >> reduceActionForExportDeclaration6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportDeclarationElement2: nodes [
 	| result |
 	result := JSExportDeclarationElementNode new.
@@ -7519,7 +7520,7 @@ JSParser >> reduceActionForExportDeclarationElement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportDefaultDeclarationElement1: nodes [
 	| result |
 	result := JSExportDefaultDeclarationElementNode new.
@@ -7530,7 +7531,7 @@ JSParser >> reduceActionForExportDefaultDeclarationElement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportDefaultDeclarationElement3: nodes [
 	| result |
 	result := JSExportDefaultDeclarationElementNode new.
@@ -7542,7 +7543,7 @@ JSParser >> reduceActionForExportDefaultDeclarationElement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportDefaultImplementationElement1: nodes [
 	| result |
 	result := JSExportDefaultImplementationElementNode new.
@@ -7553,7 +7554,7 @@ JSParser >> reduceActionForExportDefaultImplementationElement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportDefaultImplementationElement4: nodes [
 	| result |
 	result := JSExportDefaultImplementationElementNode new.
@@ -7565,7 +7566,7 @@ JSParser >> reduceActionForExportDefaultImplementationElement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportFromClause1: nodes [
 	| result |
 	result := Array new: 7.
@@ -7575,7 +7576,7 @@ JSParser >> reduceActionForExportFromClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportFromClause2: nodes [
 	| result |
 	result := Array new: 7.
@@ -7587,7 +7588,7 @@ JSParser >> reduceActionForExportFromClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportFromClause3: nodes [
 	| result |
 	result := Array new: 7.
@@ -7600,7 +7601,7 @@ JSParser >> reduceActionForExportFromClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportImplementationElement3: nodes [
 	| result |
 	result := JSExportImplementationElementNode new.
@@ -7610,7 +7611,7 @@ JSParser >> reduceActionForExportImplementationElement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportListDeclaration1: nodes [
 	| result |
 	result := JSExportListDeclarationNode new.
@@ -7622,7 +7623,7 @@ JSParser >> reduceActionForExportListDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportListDeclaration2: nodes [
 	| result |
 	result := JSExportListDeclarationNode new.
@@ -7635,7 +7636,7 @@ JSParser >> reduceActionForExportListDeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportListDeclaration3: nodes [
 	| result |
 	result := JSExportListDeclarationNode new.
@@ -7650,7 +7651,7 @@ JSParser >> reduceActionForExportListDeclaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportListDeclaration4: nodes [
 	| result |
 	result := JSExportListDeclarationNode new.
@@ -7666,7 +7667,7 @@ JSParser >> reduceActionForExportListDeclaration4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportListDeclaration5: nodes [
 	| result |
 	result := JSExportListDeclarationNode new.
@@ -7679,7 +7680,7 @@ JSParser >> reduceActionForExportListDeclaration5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportListDeclaration6: nodes [
 	| result |
 	result := JSExportListDeclarationNode new.
@@ -7693,7 +7694,7 @@ JSParser >> reduceActionForExportListDeclaration6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportSpecifier1: nodes [
 	| result |
 	result := JSExportSpecifierNode new.
@@ -7701,7 +7702,7 @@ JSParser >> reduceActionForExportSpecifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExportSpecifier2: nodes [
 	| result |
 	result := JSExportSpecifierNode new.
@@ -7711,7 +7712,7 @@ JSParser >> reduceActionForExportSpecifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExpression2: nodes [
 	| result |
 	result := JSCommaExpressionNode new.
@@ -7721,7 +7722,7 @@ JSParser >> reduceActionForExpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForExpressionStatement1: nodes [
 	| result |
 	result := JSExpressionStatementNode new.
@@ -7730,7 +7731,7 @@ JSParser >> reduceActionForExpressionStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForFieldDefinition1: nodes [
 	| result |
 	result := Array new: 3.
@@ -7740,7 +7741,7 @@ JSParser >> reduceActionForFieldDefinition1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForFieldDefinition2: nodes [
 	| result |
 	result := Array new: 3.
@@ -7748,7 +7749,7 @@ JSParser >> reduceActionForFieldDefinition2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForInOfStatement1: nodes [
 	| result |
 	result := JSForInStatementNode new.
@@ -7762,7 +7763,7 @@ JSParser >> reduceActionForForInOfStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForInOfStatement2: nodes [
 	| result |
 	result := JSForInStatementNode new.
@@ -7777,7 +7778,7 @@ JSParser >> reduceActionForForInOfStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForInOfStatement3: nodes [
 	| result |
 	result := JSForInStatementNode new.
@@ -7792,7 +7793,7 @@ JSParser >> reduceActionForForInOfStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForInOfStatement4: nodes [
 	| result |
 	result := JSForOfStatementNode new.
@@ -7806,7 +7807,7 @@ JSParser >> reduceActionForForInOfStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForInOfStatement5: nodes [
 	| result |
 	result := JSForOfStatementNode new.
@@ -7821,7 +7822,7 @@ JSParser >> reduceActionForForInOfStatement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForInOfStatement6: nodes [
 	| result |
 	result := JSForOfStatementNode new.
@@ -7836,7 +7837,7 @@ JSParser >> reduceActionForForInOfStatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForInOfStatement7: nodes [
 	| result |
 	result := JSForOfStatementNode new.
@@ -7851,7 +7852,7 @@ JSParser >> reduceActionForForInOfStatement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForInOfStatement8: nodes [
 	| result |
 	result := JSForOfStatementNode new.
@@ -7867,7 +7868,7 @@ JSParser >> reduceActionForForInOfStatement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForInOfStatement9: nodes [
 	| result |
 	result := JSForOfStatementNode new.
@@ -7883,7 +7884,7 @@ JSParser >> reduceActionForForInOfStatement9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForStatement10: nodes [
 	| result |
 	result := JSForStatementNode new.
@@ -7900,7 +7901,7 @@ JSParser >> reduceActionForForStatement10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForStatement11: nodes [
 	| result |
 	result := JSForStatementNode new.
@@ -7917,7 +7918,7 @@ JSParser >> reduceActionForForStatement11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForStatement12: nodes [
 	| result |
 	result := JSForStatementNode new.
@@ -7935,7 +7936,7 @@ JSParser >> reduceActionForForStatement12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForStatement13: nodes [
 	| result |
 	result := JSForStatementNode new.
@@ -7948,7 +7949,7 @@ JSParser >> reduceActionForForStatement13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForStatement14: nodes [
 	| result |
 	result := JSForStatementNode new.
@@ -7962,7 +7963,7 @@ JSParser >> reduceActionForForStatement14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForStatement15: nodes [
 	| result |
 	result := JSForStatementNode new.
@@ -7976,7 +7977,7 @@ JSParser >> reduceActionForForStatement15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForStatement16: nodes [
 	| result |
 	result := JSForStatementNode new.
@@ -7991,7 +7992,7 @@ JSParser >> reduceActionForForStatement16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForStatement1: nodes [
 	| result |
 	result := JSForStatementNode new.
@@ -8004,7 +8005,7 @@ JSParser >> reduceActionForForStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForStatement2: nodes [
 	| result |
 	result := JSForStatementNode new.
@@ -8018,7 +8019,7 @@ JSParser >> reduceActionForForStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForStatement3: nodes [
 	| result |
 	result := JSForStatementNode new.
@@ -8032,7 +8033,7 @@ JSParser >> reduceActionForForStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForStatement4: nodes [
 	| result |
 	result := JSForStatementNode new.
@@ -8047,7 +8048,7 @@ JSParser >> reduceActionForForStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForStatement5: nodes [
 	| result |
 	result := JSForStatementNode new.
@@ -8061,7 +8062,7 @@ JSParser >> reduceActionForForStatement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForStatement6: nodes [
 	| result |
 	result := JSForStatementNode new.
@@ -8076,7 +8077,7 @@ JSParser >> reduceActionForForStatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForStatement7: nodes [
 	| result |
 	result := JSForStatementNode new.
@@ -8091,7 +8092,7 @@ JSParser >> reduceActionForForStatement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForStatement8: nodes [
 	| result |
 	result := JSForStatementNode new.
@@ -8107,7 +8108,7 @@ JSParser >> reduceActionForForStatement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForForStatement9: nodes [
 	| result |
 	result := JSForStatementNode new.
@@ -8123,7 +8124,7 @@ JSParser >> reduceActionForForStatement9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForFormalParameters1: nodes [
 	| result |
 	result := Array new: 3.
@@ -8132,7 +8133,7 @@ JSParser >> reduceActionForFormalParameters1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForFormalParameters2: nodes [
 	| result |
 	result := Array new: 3.
@@ -8142,7 +8143,7 @@ JSParser >> reduceActionForFormalParameters2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForFormalParameters3: nodes [
 	| result |
 	result := Array new: 3.
@@ -8153,7 +8154,7 @@ JSParser >> reduceActionForFormalParameters3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForFormalParameters4: nodes [
 	| result |
 	result := Array new: 3.
@@ -8165,7 +8166,7 @@ JSParser >> reduceActionForFormalParameters4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForFormalParameters5: nodes [
 	| result |
 	result := Array new: 3.
@@ -8178,7 +8179,7 @@ JSParser >> reduceActionForFormalParameters5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForFunctionDeclaration5: nodes [
 	| result |
 	result := JSEmptyFunctionNode new.
@@ -8188,7 +8189,7 @@ JSParser >> reduceActionForFunctionDeclaration5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForFunctionDeclaration6: nodes [
 	| result |
 	result := JSEmptyFunctionNode new.
@@ -8199,7 +8200,7 @@ JSParser >> reduceActionForFunctionDeclaration6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForFunctionExpression1: nodes [
 	| result |
 	result := JSFunctionNode new.
@@ -8215,7 +8216,7 @@ JSParser >> reduceActionForFunctionExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForFunctionExpression2: nodes [
 	| result |
 	result := JSFunctionNode new.
@@ -8232,7 +8233,7 @@ JSParser >> reduceActionForFunctionExpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForFunctionExpression3: nodes [
 	| result |
 	result := JSFunctionNode new.
@@ -8251,7 +8252,7 @@ JSParser >> reduceActionForFunctionExpression3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForFunctionExpression4: nodes [
 	| result |
 	result := JSFunctionNode new.
@@ -8271,7 +8272,7 @@ JSParser >> reduceActionForFunctionExpression4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForFunctionType1: nodes [
 	| result |
 	result := JSFunctionTypeNode new.
@@ -8285,7 +8286,7 @@ JSParser >> reduceActionForFunctionType1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForFunctionType2: nodes [
 	| result |
 	result := JSFunctionTypeNode new.
@@ -8300,7 +8301,7 @@ JSParser >> reduceActionForFunctionType2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForGeneratorExpression1: nodes [
 	| result |
 	result := JSGeneratorFunctionNode new.
@@ -8317,7 +8318,7 @@ JSParser >> reduceActionForGeneratorExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForGeneratorExpression2: nodes [
 	| result |
 	result := JSGeneratorFunctionNode new.
@@ -8335,7 +8336,7 @@ JSParser >> reduceActionForGeneratorExpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForGeneratorMethod1: nodes [
 	| result |
 	result := JSGeneratorMethodDefinitionNode new.
@@ -8352,7 +8353,7 @@ JSParser >> reduceActionForGeneratorMethod1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForGetAccessor1: nodes [
 	| result |
 	result := JSGetMethodDefinitionNode new.
@@ -8368,7 +8369,7 @@ JSParser >> reduceActionForGetAccessor1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForIdentifier1: nodes [
 	| result |
 	result := JSNameExpressionNode new.
@@ -8376,7 +8377,7 @@ JSParser >> reduceActionForIdentifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForIfStatement1: nodes [
 	| result |
 	result := JSIfStatementNode new.
@@ -8390,7 +8391,7 @@ JSParser >> reduceActionForIfStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForIfStatement2: nodes [
 	| result |
 	result := JSIfStatementNode new.
@@ -8402,7 +8403,7 @@ JSParser >> reduceActionForIfStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForImplementsClause1: nodes [
 	| result |
 	result := Array new: 3.
@@ -8414,7 +8415,7 @@ JSParser >> reduceActionForImplementsClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForImportAliasDeclaration1: nodes [
 	| result |
 	result := JSImportAliasDeclarationNode new.
@@ -8427,7 +8428,7 @@ JSParser >> reduceActionForImportAliasDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForImportCall1: nodes [
 	| result |
 	result := JSImportCallExpressionNode new.
@@ -8438,7 +8439,7 @@ JSParser >> reduceActionForImportCall1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForImportClause1: nodes [
 	| result |
 	result := Array new: 3.
@@ -8447,7 +8448,7 @@ JSParser >> reduceActionForImportClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForImportClause4: nodes [
 	| result |
 	result := Array new: 3.
@@ -8458,7 +8459,7 @@ JSParser >> reduceActionForImportClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForImportClause6: nodes [
 	| result |
 	result := Array new: 3.
@@ -8468,7 +8469,7 @@ JSParser >> reduceActionForImportClause6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForImportDeclaration1: nodes [
 	| result |
 	result := JSImportDeclarationNode new.
@@ -8482,7 +8483,7 @@ JSParser >> reduceActionForImportDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForImportDeclaration2: nodes [
 	| result |
 	result := JSImportDeclarationNode new.
@@ -8492,7 +8493,7 @@ JSParser >> reduceActionForImportDeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForImportMeta1: nodes [
 	| result |
 	result := JSImportMetaNode new.
@@ -8502,7 +8503,7 @@ JSParser >> reduceActionForImportMeta1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForImportRequireDeclaration1: nodes [
 	| result |
 	result := JSImportRequireDeclarationNode new.
@@ -8517,7 +8518,7 @@ JSParser >> reduceActionForImportRequireDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForImportSpecifier1: nodes [
 	| result |
 	result := JSImportSpecifierNode new.
@@ -8525,7 +8526,7 @@ JSParser >> reduceActionForImportSpecifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForImportSpecifier2: nodes [
 	| result |
 	result := JSImportSpecifierNode new.
@@ -8535,7 +8536,7 @@ JSParser >> reduceActionForImportSpecifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForImportSpecifier3: nodes [
 	| result |
 	result := JSImportSpecifierNode new.
@@ -8544,7 +8545,7 @@ JSParser >> reduceActionForImportSpecifier3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForImportSpecifier4: nodes [
 	| result |
 	result := JSImportSpecifierNode new.
@@ -8555,7 +8556,7 @@ JSParser >> reduceActionForImportSpecifier4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForIndexMemberDeclaration1: nodes [
 	| result |
 	result := JSIndexMemberDeclarationNode new.
@@ -8564,7 +8565,7 @@ JSParser >> reduceActionForIndexMemberDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForIndexSignature2: nodes [
 	| result |
 	result := JSIndexSignatureNode new.
@@ -8578,7 +8579,7 @@ JSParser >> reduceActionForIndexSignature2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForIndexedAccessType1: nodes [
 	| result |
 	result := JSIndexedAccessTypeNode new.
@@ -8589,7 +8590,7 @@ JSParser >> reduceActionForIndexedAccessType1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForInitializer1: nodes [
 	| result |
 	result := Array new: 2.
@@ -8598,7 +8599,7 @@ JSParser >> reduceActionForInitializer1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForInterfaceDeclaration1: nodes [
 	| result |
 	result := JSInterfaceDeclarationNode new.
@@ -8608,7 +8609,7 @@ JSParser >> reduceActionForInterfaceDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForInterfaceDeclaration2: nodes [
 	| result |
 	result := JSInterfaceDeclarationNode new.
@@ -8620,7 +8621,7 @@ JSParser >> reduceActionForInterfaceDeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForInterfaceDeclaration3: nodes [
 	| result |
 	result := JSInterfaceDeclarationNode new.
@@ -8631,7 +8632,7 @@ JSParser >> reduceActionForInterfaceDeclaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForInterfaceDeclaration4: nodes [
 	| result |
 	result := JSInterfaceDeclarationNode new.
@@ -8644,7 +8645,7 @@ JSParser >> reduceActionForInterfaceDeclaration4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForIntersectionType1: nodes [
 	| result |
 	result := JSIntersectionTypeNode new.
@@ -8654,7 +8655,7 @@ JSParser >> reduceActionForIntersectionType1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForJSXAttribute1: nodes [
 	| result |
 	result := JSXAttributeNode new.
@@ -8662,7 +8663,7 @@ JSParser >> reduceActionForJSXAttribute1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForJSXAttribute2: nodes [
 	| result |
 	result := JSXAttributeNode new.
@@ -8672,7 +8673,7 @@ JSParser >> reduceActionForJSXAttribute2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForJSXChild1: nodes [
 	| result |
 	result := JSXTextNode new.
@@ -8680,7 +8681,7 @@ JSParser >> reduceActionForJSXChild1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForJSXChild3: nodes [
 	| result |
 	result := JSXCodeExpressionNode new.
@@ -8689,7 +8690,7 @@ JSParser >> reduceActionForJSXChild3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForJSXChild4: nodes [
 	| result |
 	result := JSXCodeExpressionNode new.
@@ -8699,7 +8700,7 @@ JSParser >> reduceActionForJSXChild4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForJSXClosingElement1: nodes [
 	| result |
 	result := JSXClosingElementNode new.
@@ -8709,7 +8710,7 @@ JSParser >> reduceActionForJSXClosingElement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForJSXClosingElement2: nodes [
 	| result |
 	result := JSXClosingElementNode new.
@@ -8720,7 +8721,7 @@ JSParser >> reduceActionForJSXClosingElement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForJSXElement2: nodes [
 	| result |
 	result := JSXElementNode new.
@@ -8730,7 +8731,7 @@ JSParser >> reduceActionForJSXElement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForJSXElementName1: nodes [
 	| result |
 	result := JSXElementNameNode new.
@@ -8738,7 +8739,7 @@ JSParser >> reduceActionForJSXElementName1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForJSXFragment1: nodes [
 	| result |
 	result := JSXFragmentNode new.
@@ -8751,7 +8752,7 @@ JSParser >> reduceActionForJSXFragment1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForJSXMemberExpression1: nodes [
 	| result |
 	result := JSXMemberExpressionNode new.
@@ -8761,7 +8762,7 @@ JSParser >> reduceActionForJSXMemberExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForJSXNamespacedName1: nodes [
 	| result |
 	result := JSXNamespacedNameNode new.
@@ -8771,7 +8772,7 @@ JSParser >> reduceActionForJSXNamespacedName1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForJSXOpeningElement1: nodes [
 	| result |
 	result := JSXOpeningElementNode new.
@@ -8781,7 +8782,7 @@ JSParser >> reduceActionForJSXOpeningElement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForJSXOpeningElement2: nodes [
 	| result |
 	result := JSXOpeningElementNode new.
@@ -8792,7 +8793,7 @@ JSParser >> reduceActionForJSXOpeningElement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForJSXOpeningElement3: nodes [
 	| result |
 	result := JSXOpeningElementNode new.
@@ -8801,7 +8802,7 @@ JSParser >> reduceActionForJSXOpeningElement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForJSXSelfClosingElement1: nodes [
 	| result |
 	result := JSXSelfClosingElementNode new.
@@ -8812,7 +8813,7 @@ JSParser >> reduceActionForJSXSelfClosingElement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForJSXSelfClosingElement2: nodes [
 	| result |
 	result := JSXSelfClosingElementNode new.
@@ -8824,7 +8825,7 @@ JSParser >> reduceActionForJSXSelfClosingElement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForJSXSpreadAttribute1: nodes [
 	| result |
 	result := JSXSpreadAttributeNode new.
@@ -8834,7 +8835,7 @@ JSParser >> reduceActionForJSXSpreadAttribute1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForLabelledStatement1: nodes [
 	| result |
 	result := JSLabelledStatementNode new.
@@ -8844,7 +8845,7 @@ JSParser >> reduceActionForLabelledStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForLexicalBinding2: nodes [
 	| result |
 	result := JSVariableDeclarationNode new.
@@ -8854,7 +8855,7 @@ JSParser >> reduceActionForLexicalBinding2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForLexicalBinding3: nodes [
 	| result |
 	result := JSVariablePatternDeclarationNode new.
@@ -8864,7 +8865,7 @@ JSParser >> reduceActionForLexicalBinding3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForLexicalDeclaration1: nodes [
 	| result |
 	result := JSLexicalDeclarationNode new.
@@ -8875,7 +8876,7 @@ JSParser >> reduceActionForLexicalDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForLiteral1: nodes [
 	| result |
 	result := JSNullLiteralNode new.
@@ -8883,7 +8884,7 @@ JSParser >> reduceActionForLiteral1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForLiteral2: nodes [
 	| result |
 	result := JSBooleanLiteralNode new.
@@ -8891,7 +8892,7 @@ JSParser >> reduceActionForLiteral2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForLiteral3: nodes [
 	| result |
 	result := JSNumericLiteralNode new.
@@ -8899,7 +8900,7 @@ JSParser >> reduceActionForLiteral3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForLiteral4: nodes [
 	| result |
 	result := JSStringLiteralNode new.
@@ -8907,7 +8908,7 @@ JSParser >> reduceActionForLiteral4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForLiteralType1: nodes [
 	| result |
 	result := JSLiteralTypeNode new.
@@ -8915,7 +8916,7 @@ JSParser >> reduceActionForLiteralType1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberAccessorDeclaration1: nodes [
 	| result |
 	result := JSMemberAccessorDeclarationNode new.
@@ -8924,7 +8925,7 @@ JSParser >> reduceActionForMemberAccessorDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberAccessorDeclaration2: nodes [
 	| result |
 	result := JSMemberAccessorDeclarationNode new.
@@ -8934,7 +8935,7 @@ JSParser >> reduceActionForMemberAccessorDeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberAccessorDeclaration3: nodes [
 	| result |
 	result := JSMemberAccessorDeclarationNode new.
@@ -8944,7 +8945,7 @@ JSParser >> reduceActionForMemberAccessorDeclaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberAccessorDeclaration4: nodes [
 	| result |
 	result := JSMemberAccessorDeclarationNode new.
@@ -8955,7 +8956,7 @@ JSParser >> reduceActionForMemberAccessorDeclaration4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberExpression2: nodes [
 	| result |
 	result := JSIndexedPropertyExpressionNode new.
@@ -8966,7 +8967,7 @@ JSParser >> reduceActionForMemberExpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberExpression3: nodes [
 	| result |
 	result := JSNamedPropertyExpressionNode new.
@@ -8976,7 +8977,7 @@ JSParser >> reduceActionForMemberExpression3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberExpression4: nodes [
 	| result |
 	result := JSTaggedTemplateLiteralNode new.
@@ -8985,7 +8986,7 @@ JSParser >> reduceActionForMemberExpression4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberExpression7: nodes [
 	| result |
 	result := JSNewExpressionNode new.
@@ -9001,7 +9002,7 @@ JSParser >> reduceActionForMemberExpression7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberFunctionDeclaration10: nodes [
 	| result |
 	result := JSMemberFunctionDeclarationNode new.
@@ -9013,7 +9014,7 @@ JSParser >> reduceActionForMemberFunctionDeclaration10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberFunctionDeclaration11: nodes [
 	| result |
 	result := JSMemberFunctionDeclarationNode new.
@@ -9025,7 +9026,7 @@ JSParser >> reduceActionForMemberFunctionDeclaration11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberFunctionDeclaration12: nodes [
 	| result |
 	result := JSMemberFunctionDeclarationNode new.
@@ -9038,7 +9039,7 @@ JSParser >> reduceActionForMemberFunctionDeclaration12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberFunctionDeclaration13: nodes [
 	| result |
 	result := JSMemberFunctionDeclarationNode new.
@@ -9050,7 +9051,7 @@ JSParser >> reduceActionForMemberFunctionDeclaration13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberFunctionDeclaration14: nodes [
 	| result |
 	result := JSMemberFunctionDeclarationNode new.
@@ -9063,7 +9064,7 @@ JSParser >> reduceActionForMemberFunctionDeclaration14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberFunctionDeclaration15: nodes [
 	| result |
 	result := JSMemberFunctionDeclarationNode new.
@@ -9076,7 +9077,7 @@ JSParser >> reduceActionForMemberFunctionDeclaration15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberFunctionDeclaration16: nodes [
 	| result |
 	result := JSMemberFunctionDeclarationNode new.
@@ -9090,7 +9091,7 @@ JSParser >> reduceActionForMemberFunctionDeclaration16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberFunctionDeclaration1: nodes [
 	| result |
 	result := JSMemberFunctionDeclarationNode new.
@@ -9103,7 +9104,7 @@ JSParser >> reduceActionForMemberFunctionDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberFunctionDeclaration2: nodes [
 	| result |
 	result := JSMemberFunctionDeclarationNode new.
@@ -9117,7 +9118,7 @@ JSParser >> reduceActionForMemberFunctionDeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberFunctionDeclaration3: nodes [
 	| result |
 	result := JSMemberFunctionDeclarationNode new.
@@ -9131,7 +9132,7 @@ JSParser >> reduceActionForMemberFunctionDeclaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberFunctionDeclaration4: nodes [
 	| result |
 	result := JSMemberFunctionDeclarationNode new.
@@ -9146,7 +9147,7 @@ JSParser >> reduceActionForMemberFunctionDeclaration4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberFunctionDeclaration5: nodes [
 	| result |
 	result := JSMemberFunctionDeclarationNode new.
@@ -9160,7 +9161,7 @@ JSParser >> reduceActionForMemberFunctionDeclaration5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberFunctionDeclaration6: nodes [
 	| result |
 	result := JSMemberFunctionDeclarationNode new.
@@ -9175,7 +9176,7 @@ JSParser >> reduceActionForMemberFunctionDeclaration6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberFunctionDeclaration7: nodes [
 	| result |
 	result := JSMemberFunctionDeclarationNode new.
@@ -9190,7 +9191,7 @@ JSParser >> reduceActionForMemberFunctionDeclaration7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberFunctionDeclaration8: nodes [
 	| result |
 	result := JSMemberFunctionDeclarationNode new.
@@ -9206,7 +9207,7 @@ JSParser >> reduceActionForMemberFunctionDeclaration8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberFunctionDeclaration9: nodes [
 	| result |
 	result := JSMemberFunctionDeclarationNode new.
@@ -9217,7 +9218,7 @@ JSParser >> reduceActionForMemberFunctionDeclaration9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberVariableDeclaration1: nodes [
 	| result |
 	result := JSMemberVariableDeclarationNode new.
@@ -9228,7 +9229,7 @@ JSParser >> reduceActionForMemberVariableDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberVariableDeclaration2: nodes [
 	| result |
 	result := JSMemberVariableDeclarationNode new.
@@ -9241,7 +9242,7 @@ JSParser >> reduceActionForMemberVariableDeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberVariableDeclaration3: nodes [
 	| result |
 	result := JSMemberVariableDeclarationNode new.
@@ -9254,7 +9255,7 @@ JSParser >> reduceActionForMemberVariableDeclaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberVariableDeclaration4: nodes [
 	| result |
 	result := JSMemberVariableDeclarationNode new.
@@ -9269,7 +9270,7 @@ JSParser >> reduceActionForMemberVariableDeclaration4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberVariableDeclaration5: nodes [
 	| result |
 	result := JSMemberVariableDeclarationNode new.
@@ -9281,7 +9282,7 @@ JSParser >> reduceActionForMemberVariableDeclaration5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberVariableDeclaration6: nodes [
 	| result |
 	result := JSMemberVariableDeclarationNode new.
@@ -9295,7 +9296,7 @@ JSParser >> reduceActionForMemberVariableDeclaration6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberVariableDeclaration7: nodes [
 	| result |
 	result := JSMemberVariableDeclarationNode new.
@@ -9309,7 +9310,7 @@ JSParser >> reduceActionForMemberVariableDeclaration7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMemberVariableDeclaration8: nodes [
 	| result |
 	result := JSMemberVariableDeclarationNode new.
@@ -9325,7 +9326,7 @@ JSParser >> reduceActionForMemberVariableDeclaration8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMethodDefinition1: nodes [
 	| result |
 	result := JSMethodDefinitionNode new.
@@ -9341,7 +9342,7 @@ JSParser >> reduceActionForMethodDefinition1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMethodDefinition5: nodes [
 	| result |
 	result := JSGetMethodDefinitionNode new.
@@ -9355,7 +9356,7 @@ JSParser >> reduceActionForMethodDefinition5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMethodDefinition6: nodes [
 	| result |
 	result := JSSetMethodDefinitionNode new.
@@ -9370,7 +9371,7 @@ JSParser >> reduceActionForMethodDefinition6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMethodDefinition7: nodes [
 	| result |
 	result := JSMethodDefinitionNode new.
@@ -9389,7 +9390,7 @@ JSParser >> reduceActionForMethodDefinition7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMethodDefinition8: nodes [
 	| result |
 	result := JSMethodDefinitionNode new.
@@ -9409,7 +9410,7 @@ JSParser >> reduceActionForMethodDefinition8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMethodDefinition9: nodes [
 	| result |
 	result := JSMethodDefinitionNode new.
@@ -9427,7 +9428,7 @@ JSParser >> reduceActionForMethodDefinition9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMethodSignature1: nodes [
 	| result |
 	result := JSMethodSignatureNode new.
@@ -9436,7 +9437,7 @@ JSParser >> reduceActionForMethodSignature1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForMethodSignature2: nodes [
 	| result |
 	result := JSMethodSignatureNode new.
@@ -9446,14 +9447,14 @@ JSParser >> reduceActionForMethodSignature2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForModule1: nodes [
 	| result |
 	result := JSModuleNode new.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForModule2: nodes [
 	| result |
 	result := JSModuleNode new.
@@ -9461,14 +9462,14 @@ JSParser >> reduceActionForModule2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForModuleBody1: nodes [
 	| result |
 	result := nodes at: 1.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForModuleItemList1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
@@ -9476,7 +9477,7 @@ JSParser >> reduceActionForModuleItemList1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForModuleItemList2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -9484,7 +9485,7 @@ JSParser >> reduceActionForModuleItemList2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForNameSpaceImport1: nodes [
 	| result |
 	result := JSNameSpaceImportNode new.
@@ -9494,7 +9495,7 @@ JSParser >> reduceActionForNameSpaceImport1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForNamedExports1: nodes [
 	| result |
 	result := Array new: 4.
@@ -9505,7 +9506,7 @@ JSParser >> reduceActionForNamedExports1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForNamedExports2: nodes [
 	| result |
 	result := Array new: 4.
@@ -9518,7 +9519,7 @@ JSParser >> reduceActionForNamedExports2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForNamedExports3: nodes [
 	| result |
 	result := Array new: 4.
@@ -9532,7 +9533,7 @@ JSParser >> reduceActionForNamedExports3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForNamedImports1: nodes [
 	| result |
 	result := JSNamedImportsNode new.
@@ -9541,7 +9542,7 @@ JSParser >> reduceActionForNamedImports1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForNamedImports2: nodes [
 	| result |
 	result := JSNamedImportsNode new.
@@ -9552,7 +9553,7 @@ JSParser >> reduceActionForNamedImports2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForNamedImports3: nodes [
 	| result |
 	result := JSNamedImportsNode new.
@@ -9564,7 +9565,7 @@ JSParser >> reduceActionForNamedImports3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForNamespaceDeclaration1: nodes [
 	| result |
 	result := JSNamespaceDeclarationNode new.
@@ -9577,7 +9578,7 @@ JSParser >> reduceActionForNamespaceDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForNamespaceName1: nodes [
 	| result |
 	result := Array new: 2.
@@ -9587,7 +9588,7 @@ JSParser >> reduceActionForNamespaceName1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForNamespaceName2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -9596,7 +9597,7 @@ JSParser >> reduceActionForNamespaceName2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForNewExpression2: nodes [
 	| result |
 	result := JSNewExpressionNode new.
@@ -9605,7 +9606,7 @@ JSParser >> reduceActionForNewExpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForNewTarget1: nodes [
 	| result |
 	result := JSNewTargetExpressionNode new.
@@ -9615,7 +9616,7 @@ JSParser >> reduceActionForNewTarget1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForObjectBindingPattern1: nodes [
 	| result |
 	result := JSObjectBindingPatternNode new.
@@ -9624,7 +9625,7 @@ JSParser >> reduceActionForObjectBindingPattern1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForObjectBindingPattern2: nodes [
 	| result |
 	result := JSObjectBindingPatternNode new.
@@ -9634,7 +9635,7 @@ JSParser >> reduceActionForObjectBindingPattern2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForObjectBindingPattern3: nodes [
 	| result |
 	result := JSObjectBindingPatternNode new.
@@ -9645,7 +9646,7 @@ JSParser >> reduceActionForObjectBindingPattern3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForObjectBindingPattern4: nodes [
 	| result |
 	result := JSObjectBindingPatternNode new.
@@ -9657,7 +9658,7 @@ JSParser >> reduceActionForObjectBindingPattern4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForObjectBindingPattern5: nodes [
 	| result |
 	result := JSObjectBindingPatternNode new.
@@ -9670,7 +9671,7 @@ JSParser >> reduceActionForObjectBindingPattern5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForObjectLiteral1: nodes [
 	| result |
 	result := JSObjectLiteralNode new.
@@ -9679,7 +9680,7 @@ JSParser >> reduceActionForObjectLiteral1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForObjectLiteral2: nodes [
 	| result |
 	result := JSObjectLiteralNode new.
@@ -9690,7 +9691,7 @@ JSParser >> reduceActionForObjectLiteral2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForObjectLiteral3: nodes [
 	| result |
 	result := JSObjectLiteralNode new.
@@ -9702,7 +9703,7 @@ JSParser >> reduceActionForObjectLiteral3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForObjectType1: nodes [
 	| result |
 	result := JSObjectTypeNode new.
@@ -9711,7 +9712,7 @@ JSParser >> reduceActionForObjectType1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForObjectType2: nodes [
 	| result |
 	result := JSObjectTypeNode new.
@@ -9722,7 +9723,7 @@ JSParser >> reduceActionForObjectType2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForOptionalChain1: nodes [
 	| result |
 	result := Array new: 2.
@@ -9732,7 +9733,7 @@ JSParser >> reduceActionForOptionalChain1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForOptionalChain2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -9740,7 +9741,7 @@ JSParser >> reduceActionForOptionalChain2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForOptionalExpression1: nodes [
 	| result |
 	result := JSOptionalExpressionNode new.
@@ -9750,7 +9751,7 @@ JSParser >> reduceActionForOptionalExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForOptionalFirst1: nodes [
 	| result |
 	result := JSOptionalArgumentsNode new.
@@ -9764,7 +9765,7 @@ JSParser >> reduceActionForOptionalFirst1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForOptionalFirst2: nodes [
 	| result |
 	result := JSOptionalIndexedNode new.
@@ -9774,7 +9775,7 @@ JSParser >> reduceActionForOptionalFirst2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForOptionalFirst3: nodes [
 	| result |
 	result := JSOptionalNameNode new.
@@ -9782,7 +9783,7 @@ JSParser >> reduceActionForOptionalFirst3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForOptionalFirst4: nodes [
 	| result |
 	result := JSOptionalTemplateNode new.
@@ -9790,7 +9791,7 @@ JSParser >> reduceActionForOptionalFirst4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForOptionalRest3: nodes [
 	| result |
 	result := JSOptionalNameNode new.
@@ -9799,7 +9800,7 @@ JSParser >> reduceActionForOptionalRest3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForParenthesizedExpression1: nodes [
 	| result |
 	result := nodes at: 2.
@@ -9808,7 +9809,7 @@ JSParser >> reduceActionForParenthesizedExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForPredefinedType1: nodes [
 	| result |
 	result := JSVoidTypeNode new.
@@ -9816,7 +9817,7 @@ JSParser >> reduceActionForPredefinedType1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForPrefixType2: nodes [
 	| result |
 	result := JSKeyOfTypeNode new.
@@ -9825,7 +9826,7 @@ JSParser >> reduceActionForPrefixType2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForPrefixType3: nodes [
 	| result |
 	result := JSInferTypeNode new.
@@ -9834,7 +9835,7 @@ JSParser >> reduceActionForPrefixType3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForPrimaryExpression16: nodes [
 	| result |
 	result := JSPostfixExpressionNode new.
@@ -9843,7 +9844,7 @@ JSParser >> reduceActionForPrimaryExpression16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForPrimaryExpression1: nodes [
 	| result |
 	result := JSThisExpressionNode new.
@@ -9851,7 +9852,7 @@ JSParser >> reduceActionForPrimaryExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForPropertyDefinition3: nodes [
 	| result |
 	result := JSPropertyAssignmentNode new.
@@ -9861,7 +9862,7 @@ JSParser >> reduceActionForPropertyDefinition3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForPropertyDefinition5: nodes [
 	| result |
 	result := JSCopyPropertyNode new.
@@ -9870,7 +9871,7 @@ JSParser >> reduceActionForPropertyDefinition5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForPropertySignature1: nodes [
 	| result |
 	result := JSPropertySignatureNode new.
@@ -9878,7 +9879,7 @@ JSParser >> reduceActionForPropertySignature1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForPropertySignature2: nodes [
 	| result |
 	result := JSPropertySignatureNode new.
@@ -9888,7 +9889,7 @@ JSParser >> reduceActionForPropertySignature2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForPropertySignature3: nodes [
 	| result |
 	result := JSPropertySignatureNode new.
@@ -9897,7 +9898,7 @@ JSParser >> reduceActionForPropertySignature3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForPropertySignature4: nodes [
 	| result |
 	result := JSPropertySignatureNode new.
@@ -9908,7 +9909,7 @@ JSParser >> reduceActionForPropertySignature4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForPropertySignature5: nodes [
 	| result |
 	result := JSPropertySignatureNode new.
@@ -9917,7 +9918,7 @@ JSParser >> reduceActionForPropertySignature5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForPropertySignature6: nodes [
 	| result |
 	result := JSPropertySignatureNode new.
@@ -9928,7 +9929,7 @@ JSParser >> reduceActionForPropertySignature6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForPropertySignature7: nodes [
 	| result |
 	result := JSPropertySignatureNode new.
@@ -9938,7 +9939,7 @@ JSParser >> reduceActionForPropertySignature7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForPropertySignature8: nodes [
 	| result |
 	result := JSPropertySignatureNode new.
@@ -9950,7 +9951,7 @@ JSParser >> reduceActionForPropertySignature8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForRegularExpressionLiteral1: nodes [
 	| result |
 	result := JSRegularExpressionLiteralNode new.
@@ -9958,7 +9959,7 @@ JSParser >> reduceActionForRegularExpressionLiteral1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForReturnStatement1: nodes [
 	| result |
 	result := JSReturnStatementNode new.
@@ -9967,7 +9968,7 @@ JSParser >> reduceActionForReturnStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForReturnStatement2: nodes [
 	| result |
 	result := JSReturnStatementNode new.
@@ -9977,14 +9978,14 @@ JSParser >> reduceActionForReturnStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForScript1: nodes [
 	| result |
 	result := JSScriptNode new.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForScript2: nodes [
 	| result |
 	result := JSScriptNode new.
@@ -9992,7 +9993,7 @@ JSParser >> reduceActionForScript2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSetAccessor1: nodes [
 	| result |
 	result := JSSetMethodDefinitionNode new.
@@ -10009,7 +10010,7 @@ JSParser >> reduceActionForSetAccessor1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSetAccessor2: nodes [
 	| result |
 	result := JSSetMethodDefinitionNode new.
@@ -10024,7 +10025,7 @@ JSParser >> reduceActionForSetAccessor2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSimpleLexicalBinding1: nodes [
 	| result |
 	result := JSVariableDeclarationNode new.
@@ -10034,7 +10035,7 @@ JSParser >> reduceActionForSimpleLexicalBinding1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSimpleLexicalBinding2: nodes [
 	| result |
 	result := JSVariableDeclarationNode new.
@@ -10046,7 +10047,7 @@ JSParser >> reduceActionForSimpleLexicalBinding2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSimpleVariableDeclaration1: nodes [
 	| result |
 	result := JSVariableDeclarationNode new.
@@ -10056,7 +10057,7 @@ JSParser >> reduceActionForSimpleVariableDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSimpleVariableDeclaration2: nodes [
 	| result |
 	result := JSVariableDeclarationNode new.
@@ -10068,7 +10069,7 @@ JSParser >> reduceActionForSimpleVariableDeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSingleNameBinding10: nodes [
 	| result |
 	result := JSVariableDeclarationNode new.
@@ -10078,7 +10079,7 @@ JSParser >> reduceActionForSingleNameBinding10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSingleNameBinding5: nodes [
 	| result |
 	result := JSVariableDeclarationNode new.
@@ -10089,7 +10090,7 @@ JSParser >> reduceActionForSingleNameBinding5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSingleNameBinding6: nodes [
 	| result |
 	result := JSVariableDeclarationNode new.
@@ -10102,7 +10103,7 @@ JSParser >> reduceActionForSingleNameBinding6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSingleNameBinding7: nodes [
 	| result |
 	result := JSVariableDeclarationNode new.
@@ -10111,7 +10112,7 @@ JSParser >> reduceActionForSingleNameBinding7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSingleNameBinding8: nodes [
 	| result |
 	result := JSVariableDeclarationNode new.
@@ -10122,7 +10123,7 @@ JSParser >> reduceActionForSingleNameBinding8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSingleNameBinding9: nodes [
 	| result |
 	result := JSVariableDeclarationNode new.
@@ -10131,7 +10132,7 @@ JSParser >> reduceActionForSingleNameBinding9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSourceFile1: nodes [
 	| result |
 	result := JSTSSourceFileNode new.
@@ -10139,14 +10140,14 @@ JSParser >> reduceActionForSourceFile1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSourceFileElement__element__1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSpreadElement1: nodes [
 	| result |
 	result := JSSpreadExpressionNode new.
@@ -10155,22 +10156,22 @@ JSParser >> reduceActionForSpreadElement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForStartJSXText1: nodes [
 	^ #jsxText
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForStartStatementListItem1: nodes [
 	^ #startExpressionStatement
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForStartTemplateLiteral1: nodes [
 	^ #template
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSuperCall1: nodes [
 	| result |
 	result := JSSuperCallExpressionNode new.
@@ -10185,7 +10186,7 @@ JSParser >> reduceActionForSuperCall1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSuperProperty1: nodes [
 	| result |
 	result := JSSuperIndexedPropertyExpressionNode new.
@@ -10196,7 +10197,7 @@ JSParser >> reduceActionForSuperProperty1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSuperProperty2: nodes [
 	| result |
 	result := JSSuperNamedPropertyExpressionNode new.
@@ -10206,7 +10207,7 @@ JSParser >> reduceActionForSuperProperty2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSwitchStatement1: nodes [
 	| result |
 	result := JSSwitchStatementNode new.
@@ -10220,35 +10221,35 @@ JSParser >> reduceActionForSwitchStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSwitchToDefault1: nodes [
 	self scope: #default.
 	^ #default
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSwitchToJSX1: nodes [
 	self scope: #jsx.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSwitchToJSXText1: nodes [
 	self scope: #jsxText.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSwitchToJSXTextOrDefault11: nodes [
 	^ self switchToJSXTextOrDefault: 1
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForSwitchToJSXTextOrDefault21: nodes [
 	^ self switchToJSXTextOrDefault: 2
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTemplateLiteral1: nodes [
 	| result |
 	result := JSTemplateLiteralNode new.
@@ -10256,7 +10257,7 @@ JSParser >> reduceActionForTemplateLiteral1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTemplateLiteral2: nodes [
 	| result |
 	result := JSTemplateLiteralNode new.
@@ -10267,7 +10268,7 @@ JSParser >> reduceActionForTemplateLiteral2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTemplateMiddleList1: nodes [
 	| result |
 	result := Array new: 2.
@@ -10278,7 +10279,7 @@ JSParser >> reduceActionForTemplateMiddleList1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTemplateMiddleList2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -10287,7 +10288,7 @@ JSParser >> reduceActionForTemplateMiddleList2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTemplateSpans2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -10295,7 +10296,7 @@ JSParser >> reduceActionForTemplateSpans2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForThisType1: nodes [
 	| result |
 	result := JSThisTypeNode new.
@@ -10303,7 +10304,7 @@ JSParser >> reduceActionForThisType1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForThrowStatement1: nodes [
 	| result |
 	result := JSThrowStatementNode new.
@@ -10313,7 +10314,7 @@ JSParser >> reduceActionForThrowStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTryStatement1: nodes [
 	| result |
 	result := JSTryStatementNode new.
@@ -10327,7 +10328,7 @@ JSParser >> reduceActionForTryStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTryStatement2: nodes [
 	| result |
 	result := JSTryStatementNode new.
@@ -10338,7 +10339,7 @@ JSParser >> reduceActionForTryStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTryStatement3: nodes [
 	| result |
 	result := JSTryStatementNode new.
@@ -10354,7 +10355,7 @@ JSParser >> reduceActionForTryStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTupleType1: nodes [
 	| result |
 	result := JSTupleTypeNode new.
@@ -10363,7 +10364,7 @@ JSParser >> reduceActionForTupleType1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTupleType2: nodes [
 	| result |
 	result := JSTupleTypeNode new.
@@ -10373,7 +10374,7 @@ JSParser >> reduceActionForTupleType2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTupleType3: nodes [
 	| result |
 	result := JSTupleTypeNode new.
@@ -10384,7 +10385,7 @@ JSParser >> reduceActionForTupleType3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTupleType4: nodes [
 	| result |
 	result := JSTupleTypeNode new.
@@ -10396,7 +10397,7 @@ JSParser >> reduceActionForTupleType4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTupleType5: nodes [
 	| result |
 	result := JSTupleTypeNode new.
@@ -10406,7 +10407,7 @@ JSParser >> reduceActionForTupleType5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTupleType6: nodes [
 	| result |
 	result := JSTupleTypeNode new.
@@ -10417,7 +10418,7 @@ JSParser >> reduceActionForTupleType6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTupleType7: nodes [
 	| result |
 	result := JSTupleTypeNode new.
@@ -10429,7 +10430,7 @@ JSParser >> reduceActionForTupleType7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTupleType8: nodes [
 	| result |
 	result := JSTupleTypeNode new.
@@ -10442,7 +10443,7 @@ JSParser >> reduceActionForTupleType8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTypeAliasDeclaration1: nodes [
 	| result |
 	result := JSTypeAliasDeclarationNode new.
@@ -10454,7 +10455,7 @@ JSParser >> reduceActionForTypeAliasDeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTypeAliasDeclaration2: nodes [
 	| result |
 	result := JSTypeAliasDeclarationNode new.
@@ -10467,7 +10468,7 @@ JSParser >> reduceActionForTypeAliasDeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTypeAliasDeclaration3: nodes [
 	| result |
 	result := JSTypeAliasDeclarationNode new.
@@ -10480,7 +10481,7 @@ JSParser >> reduceActionForTypeAliasDeclaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTypeAliasDeclaration4: nodes [
 	| result |
 	result := JSTypeAliasDeclarationNode new.
@@ -10494,7 +10495,7 @@ JSParser >> reduceActionForTypeAliasDeclaration4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTypeArguments1: nodes [
 	| result |
 	result := JSTypeArgumentsNode new.
@@ -10505,7 +10506,7 @@ JSParser >> reduceActionForTypeArguments1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTypeCallSignature1: nodes [
 	| result |
 	result := Array new: 8.
@@ -10521,7 +10522,7 @@ JSParser >> reduceActionForTypeCallSignature1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTypeCallSignature2: nodes [
 	| result |
 	result := Array new: 8.
@@ -10538,7 +10539,7 @@ JSParser >> reduceActionForTypeCallSignature2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTypeCallSignature4: nodes [
 	| result |
 	result := Array new: 8.
@@ -10553,7 +10554,7 @@ JSParser >> reduceActionForTypeCallSignature4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTypeName1: nodes [
 	| result |
 	result := JSTypeNameNode new.
@@ -10561,7 +10562,7 @@ JSParser >> reduceActionForTypeName1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTypeName2: nodes [
 	| result |
 	result := JSTypeNameNode new.
@@ -10572,7 +10573,7 @@ JSParser >> reduceActionForTypeName2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTypeParameter1: nodes [
 	| result |
 	result := JSTypeParameterNode new.
@@ -10580,7 +10581,7 @@ JSParser >> reduceActionForTypeParameter1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTypeParameter2: nodes [
 	| result |
 	result := JSTypeParameterNode new.
@@ -10590,7 +10591,7 @@ JSParser >> reduceActionForTypeParameter2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTypeParameters1: nodes [
 	| result |
 	result := JSTypeParametersNode new.
@@ -10601,7 +10602,7 @@ JSParser >> reduceActionForTypeParameters1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTypeQuery1: nodes [
 	| result |
 	result := JSTypeQueryNode new.
@@ -10610,7 +10611,7 @@ JSParser >> reduceActionForTypeQuery1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTypeQueryExpression1: nodes [
 	| result |
 	result := JSTypeQueryExpressionNode new.
@@ -10618,7 +10619,7 @@ JSParser >> reduceActionForTypeQueryExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTypeQueryExpression2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -10627,7 +10628,7 @@ JSParser >> reduceActionForTypeQueryExpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTypeReference1: nodes [
 	| result |
 	result := JSTypeReferenceNode new.
@@ -10635,7 +10636,7 @@ JSParser >> reduceActionForTypeReference1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTypeReference2: nodes [
 	| result |
 	result := JSTypeReferenceNode new.
@@ -10644,7 +10645,7 @@ JSParser >> reduceActionForTypeReference2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForTypedPropertySetParameterList1: nodes [
 	| result |
 	result := JSTypedParameterNode new.
@@ -10654,7 +10655,7 @@ JSParser >> reduceActionForTypedPropertySetParameterList1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForUnaryExpression10: nodes [
 	| result |
 	result := JSCastExpressionNode new.
@@ -10665,7 +10666,7 @@ JSParser >> reduceActionForUnaryExpression10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForUnaryExpression5: nodes [
 	| result |
 	result := JSUnaryExpressionNode new.
@@ -10674,7 +10675,7 @@ JSParser >> reduceActionForUnaryExpression5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForUnionType1: nodes [
 	| result |
 	result := JSUnionTypeNode new.
@@ -10684,7 +10685,7 @@ JSParser >> reduceActionForUnionType1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForUpdateExpression2: nodes [
 	| result |
 	result := JSPostfixExpressionNode new.
@@ -10693,7 +10694,7 @@ JSParser >> reduceActionForUpdateExpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForUpdateExpression4: nodes [
 	| result |
 	result := JSPrefixExpressionNode new.
@@ -10702,7 +10703,7 @@ JSParser >> reduceActionForUpdateExpression4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForValidationNotArrowFunction1: nodes [
 	| token |
 	nodeStack notEmpty
@@ -10712,7 +10713,7 @@ JSParser >> reduceActionForValidationNotArrowFunction1: nodes [
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForVariableStatement1: nodes [
 	| result |
 	result := JSVariableStatementNode new.
@@ -10723,7 +10724,7 @@ JSParser >> reduceActionForVariableStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForWhileStatement1: nodes [
 	| result |
 	result := JSWhileStatementNode new.
@@ -10735,7 +10736,7 @@ JSParser >> reduceActionForWhileStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForWithStatement1: nodes [
 	| result |
 	result := JSWithStatementNode new.
@@ -10747,7 +10748,7 @@ JSParser >> reduceActionForWithStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForYieldExpression1: nodes [
 	| result |
 	result := JSYieldExpressionNode new.
@@ -10755,7 +10756,7 @@ JSParser >> reduceActionForYieldExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForYieldExpression2: nodes [
 	| result |
 	result := JSYieldExpressionNode new.
@@ -10764,7 +10765,7 @@ JSParser >> reduceActionForYieldExpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionForYieldExpression3: nodes [
 	| result |
 	result := JSYieldExpressionNode new.
@@ -10774,7 +10775,7 @@ JSParser >> reduceActionForYieldExpression3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionFor__JSXIdentifier___identifier___period___periodToken___1: nodes [
 	| result |
 	result := Array new: 2.
@@ -10785,7 +10786,7 @@ JSParser >> reduceActionFor__JSXIdentifier___identifier___period___periodToken__
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JSParser >> reduceActionFor__JSXIdentifier___identifier___period___periodToken___2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -10794,7 +10795,7 @@ JSParser >> reduceActionFor__JSXIdentifier___identifier___period___periodToken__
 	^ result
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JSParser >> splitQuestionDotToken [
 	currentToken ids first = scanner questionDotId
 		ifTrue: [ (scanner peekCharacter ifNil: [ $a ]) isDigit
@@ -10805,7 +10806,7 @@ JSParser >> splitQuestionDotToken [
 					self position: currentToken startPosition ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JSParser >> switchToJSXTextOrDefault: anInteger [
 	| count i value |
 	i := nodeStack size.

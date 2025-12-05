@@ -1,6 +1,6 @@
 Class {
-	#name : #JSAmbientModuleDeclarationNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSAmbientModuleDeclarationNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'declareToken',
 		'moduleToken',
@@ -9,93 +9,94 @@ Class {
 		'elements',
 		'rightBrace'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAmbientModuleDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAmbientModuleDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAmbientModuleDeclarationNode >> compositeNodeVariables [
 	^ #(#elements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAmbientModuleDeclarationNode >> declareToken [
 	^ declareToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAmbientModuleDeclarationNode >> declareToken: aSmaCCToken [
 	declareToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAmbientModuleDeclarationNode >> elements [
 	^ elements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAmbientModuleDeclarationNode >> elements: anOrderedCollection [
 	self setParents: self elements to: nil.
 	elements := anOrderedCollection.
 	self setParents: self elements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAmbientModuleDeclarationNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSAmbientModuleDeclarationNode >> initialize [
 	super initialize.
 	elements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAmbientModuleDeclarationNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAmbientModuleDeclarationNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAmbientModuleDeclarationNode >> moduleToken [
 	^ moduleToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAmbientModuleDeclarationNode >> moduleToken: aSmaCCToken [
 	moduleToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAmbientModuleDeclarationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAmbientModuleDeclarationNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAmbientModuleDeclarationNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAmbientModuleDeclarationNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSAmbientModuleDeclarationNode >> tokenVariables [
 	^ #(#declareToken #moduleToken #name)
 ]

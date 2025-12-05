@@ -1,6 +1,6 @@
 Class {
-	#name : #JSWhileStatementNode,
-	#superclass : #JSStatementNode,
+	#name : 'JSWhileStatementNode',
+	#superclass : 'JSStatementNode',
 	#instVars : [
 		'whileToken',
 		'left',
@@ -8,79 +8,80 @@ Class {
 		'right',
 		'statement'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWhileStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitWhileStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWhileStatementNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWhileStatementNode >> expression: aJSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aJSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWhileStatementNode >> ignoredTokenVariables [
 	^ #(#left #right)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWhileStatementNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWhileStatementNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWhileStatementNode >> nodeVariables [
 	^ #(#expression #statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWhileStatementNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWhileStatementNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWhileStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWhileStatementNode >> statement: aJSStatementNode [
 	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aJSStatementNode.
 	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWhileStatementNode >> tokenVariables [
 	^ #(#whileToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWhileStatementNode >> whileToken [
 	^ whileToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSWhileStatementNode >> whileToken: aSmaCCToken [
 	whileToken := aSmaCCToken
 ]

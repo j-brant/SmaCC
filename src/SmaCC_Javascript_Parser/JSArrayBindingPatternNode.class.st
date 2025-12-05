@@ -1,6 +1,6 @@
 Class {
-	#name : #JSArrayBindingPatternNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSArrayBindingPatternNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'leftBracket',
 		'commas',
@@ -8,91 +8,92 @@ Class {
 		'rightBracket',
 		'elements'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSArrayBindingPatternNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitArrayBindingPattern: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSArrayBindingPatternNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSArrayBindingPatternNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSArrayBindingPatternNode >> compositeNodeVariables [
 	^ #(#elements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSArrayBindingPatternNode >> elements [
 	^ elements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSArrayBindingPatternNode >> elements: anOrderedCollection [
 	self setParents: self elements to: nil.
 	elements := anOrderedCollection.
 	self setParents: self elements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSArrayBindingPatternNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSArrayBindingPatternNode >> ignoredTokenVariables [
 	^ #(#leftBracket #rightBracket)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSArrayBindingPatternNode >> initialize [
 	super initialize.
 	commas := OrderedCollection new: 2.
 	elements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSArrayBindingPatternNode >> leftBracket [
 	^ leftBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSArrayBindingPatternNode >> leftBracket: aSmaCCToken [
 	leftBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSArrayBindingPatternNode >> nodeVariables [
 	^ #(#restElement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSArrayBindingPatternNode >> restElement [
 	^ restElement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSArrayBindingPatternNode >> restElement: aJSRestVariableDeclarationNode [
 	self restElement notNil ifTrue: [ self restElement parent: nil ].
 	restElement := aJSRestVariableDeclarationNode.
 	self restElement notNil ifTrue: [ self restElement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSArrayBindingPatternNode >> rightBracket [
 	^ rightBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSArrayBindingPatternNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
 ]

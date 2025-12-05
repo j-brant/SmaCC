@@ -1,70 +1,71 @@
 Class {
-	#name : #JSOptionalExpressionNode,
-	#superclass : #JSExpressionNode,
+	#name : 'JSOptionalExpressionNode',
+	#superclass : 'JSExpressionNode',
 	#instVars : [
 		'expression',
 		'questionDotToken',
 		'options'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitOptionalExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalExpressionNode >> compositeNodeVariables [
 	^ #(#options)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalExpressionNode >> expression: aJSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aJSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSOptionalExpressionNode >> initialize [
 	super initialize.
 	options := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalExpressionNode >> options [
 	^ options
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalExpressionNode >> options: anOrderedCollection [
 	self setParents: self options to: nil.
 	options := anOrderedCollection.
 	self setParents: self options to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalExpressionNode >> questionDotToken [
 	^ questionDotToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalExpressionNode >> questionDotToken: aSmaCCToken [
 	questionDotToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSOptionalExpressionNode >> tokenVariables [
 	^ #(#questionDotToken)
 ]

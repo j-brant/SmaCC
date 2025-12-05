@@ -1,62 +1,63 @@
 Class {
-	#name : #JSThrowStatementNode,
-	#superclass : #JSStatementNode,
+	#name : 'JSThrowStatementNode',
+	#superclass : 'JSStatementNode',
 	#instVars : [
 		'throwToken',
 		'expression',
 		'semicolon'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSThrowStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitThrowStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSThrowStatementNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSThrowStatementNode >> expression: aJSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aJSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSThrowStatementNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSThrowStatementNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSThrowStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSThrowStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSThrowStatementNode >> throwToken [
 	^ throwToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSThrowStatementNode >> throwToken: aSmaCCToken [
 	throwToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSThrowStatementNode >> tokenVariables [
 	^ #(#throwToken)
 ]

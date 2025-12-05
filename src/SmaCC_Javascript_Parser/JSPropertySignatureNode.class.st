@@ -1,6 +1,6 @@
 Class {
-	#name : #JSPropertySignatureNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSPropertySignatureNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'name',
 		'colonToken',
@@ -8,77 +8,78 @@ Class {
 		'nullableIndicator',
 		'readonlyToken'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertySignatureNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPropertySignature: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertySignatureNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertySignatureNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertySignatureNode >> ignoredTokenVariables [
 	^ #(#colonToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertySignatureNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertySignatureNode >> name: aJSProgramNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSProgramNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertySignatureNode >> nodeVariables [
 	^ #(#name #type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertySignatureNode >> nullableIndicator [
 	^ nullableIndicator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertySignatureNode >> nullableIndicator: aSmaCCToken [
 	nullableIndicator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertySignatureNode >> readonlyToken [
 	^ readonlyToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertySignatureNode >> readonlyToken: aSmaCCToken [
 	readonlyToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertySignatureNode >> tokenVariables [
 	^ #(#nullableIndicator #readonlyToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertySignatureNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPropertySignatureNode >> type: aJSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aJSTypeNode.

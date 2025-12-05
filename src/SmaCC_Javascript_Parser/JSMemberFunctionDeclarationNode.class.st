@@ -1,6 +1,6 @@
 Class {
-	#name : #JSMemberFunctionDeclarationNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSMemberFunctionDeclarationNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'decorators',
 		'asyncToken',
@@ -13,145 +13,146 @@ Class {
 		'modifier',
 		'semicolon'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMemberFunctionDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> asyncToken [
 	^ asyncToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> asyncToken: aSmaCCToken [
 	asyncToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> compositeNodeVariables [
 	^ #(#decorators #statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> decorators [
 	^ decorators
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> decorators: anOrderedCollection [
 	self setParents: self decorators to: nil.
 	decorators := anOrderedCollection.
 	self setParents: self decorators to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace #semicolon)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSMemberFunctionDeclarationNode >> initialize [
 	super initialize.
 	decorators := OrderedCollection new: 2.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> modifier [
 	^ modifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> modifier: aSmaCCToken [
 	modifier := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> name: aJSProgramNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSProgramNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> nodeVariables [
 	^ #(#name #signature)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> signature [
 	^ signature
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> signature: aJSCallSignatureNode [
 	self signature notNil ifTrue: [ self signature parent: nil ].
 	signature := aJSCallSignatureNode.
 	self signature notNil ifTrue: [ self signature parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> staticToken [
 	^ staticToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> staticToken: aSmaCCToken [
 	staticToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberFunctionDeclarationNode >> tokenVariables [
 	^ #(#asyncToken #staticToken #modifier)
 ]

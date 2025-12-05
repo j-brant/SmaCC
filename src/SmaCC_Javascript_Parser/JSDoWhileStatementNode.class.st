@@ -1,6 +1,6 @@
 Class {
-	#name : #JSDoWhileStatementNode,
-	#superclass : #JSStatementNode,
+	#name : 'JSDoWhileStatementNode',
+	#superclass : 'JSStatementNode',
 	#instVars : [
 		'doToken',
 		'statement',
@@ -10,99 +10,100 @@ Class {
 		'right',
 		'semicolon'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDoWhileStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDoWhileStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDoWhileStatementNode >> doToken [
 	^ doToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDoWhileStatementNode >> doToken: aSmaCCToken [
 	doToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDoWhileStatementNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDoWhileStatementNode >> expression: aJSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aJSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDoWhileStatementNode >> ignoredTokenVariables [
 	^ #(#left #right #semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDoWhileStatementNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDoWhileStatementNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDoWhileStatementNode >> nodeVariables [
 	^ #(#statement #expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDoWhileStatementNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDoWhileStatementNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDoWhileStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDoWhileStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDoWhileStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDoWhileStatementNode >> statement: aJSStatementNode [
 	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aJSStatementNode.
 	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDoWhileStatementNode >> tokenVariables [
 	^ #(#doToken #whileToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDoWhileStatementNode >> whileToken [
 	^ whileToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSDoWhileStatementNode >> whileToken: aSmaCCToken [
 	whileToken := aSmaCCToken
 ]

@@ -1,65 +1,66 @@
 Class {
-	#name : #JSXElementNode,
-	#superclass : #JSExpressionNode,
+	#name : 'JSXElementNode',
+	#superclass : 'JSExpressionNode',
 	#instVars : [
 		'openingElement',
 		'items',
 		'closingElement'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXElementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitXElement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXElementNode >> closingElement [
 	^ closingElement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXElementNode >> closingElement: aJSXClosingElementNode [
 	self closingElement notNil ifTrue: [ self closingElement parent: nil ].
 	closingElement := aJSXClosingElementNode.
 	self closingElement notNil ifTrue: [ self closingElement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXElementNode >> compositeNodeVariables [
 	^ #(#items)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSXElementNode >> initialize [
 	super initialize.
 	items := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXElementNode >> items [
 	^ items
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXElementNode >> items: anOrderedCollection [
 	self setParents: self items to: nil.
 	items := anOrderedCollection.
 	self setParents: self items to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXElementNode >> nodeVariables [
 	^ #(#openingElement #closingElement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXElementNode >> openingElement [
 	^ openingElement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXElementNode >> openingElement: aJSXOpeningElementNode [
 	self openingElement notNil ifTrue: [ self openingElement parent: nil ].
 	openingElement := aJSXOpeningElementNode.

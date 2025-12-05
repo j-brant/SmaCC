@@ -1,59 +1,60 @@
 Class {
-	#name : #JSBindingPropertyNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSBindingPropertyNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'name',
 		'colonToken',
 		'element'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBindingPropertyNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBindingProperty: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBindingPropertyNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBindingPropertyNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBindingPropertyNode >> element [
 	^ element
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBindingPropertyNode >> element: aJSProgramNode [
 	self element notNil ifTrue: [ self element parent: nil ].
 	element := aJSProgramNode.
 	self element notNil ifTrue: [ self element parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBindingPropertyNode >> ignoredTokenVariables [
 	^ #(#colonToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBindingPropertyNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBindingPropertyNode >> name: aJSProgramNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSProgramNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSBindingPropertyNode >> nodeVariables [
 	^ #(#name #element)
 ]

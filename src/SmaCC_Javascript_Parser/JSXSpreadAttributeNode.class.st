@@ -1,57 +1,58 @@
 Class {
-	#name : #JSXSpreadAttributeNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSXSpreadAttributeNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'leftBrace',
 		'element',
 		'rightBrace'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSpreadAttributeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitXSpreadAttribute: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSpreadAttributeNode >> element [
 	^ element
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSpreadAttributeNode >> element: aJSSpreadExpressionNode [
 	self element notNil ifTrue: [ self element parent: nil ].
 	element := aJSSpreadExpressionNode.
 	self element notNil ifTrue: [ self element parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSpreadAttributeNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSpreadAttributeNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSpreadAttributeNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSpreadAttributeNode >> nodeVariables [
 	^ #(#element)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSpreadAttributeNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSXSpreadAttributeNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]

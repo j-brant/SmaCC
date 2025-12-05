@@ -1,6 +1,6 @@
 Class {
-	#name : #JSIfStatementNode,
-	#superclass : #JSStatementNode,
+	#name : 'JSIfStatementNode',
+	#superclass : 'JSStatementNode',
 	#instVars : [
 		'ifToken',
 		'left',
@@ -10,99 +10,100 @@ Class {
 		'elseToken',
 		'elseStatement'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIfStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIfStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIfStatementNode >> elseStatement [
 	^ elseStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIfStatementNode >> elseStatement: aJSStatementNode [
 	self elseStatement notNil ifTrue: [ self elseStatement parent: nil ].
 	elseStatement := aJSStatementNode.
 	self elseStatement notNil ifTrue: [ self elseStatement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIfStatementNode >> elseToken [
 	^ elseToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIfStatementNode >> elseToken: aSmaCCToken [
 	elseToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIfStatementNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIfStatementNode >> expression: aJSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aJSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIfStatementNode >> ifToken [
 	^ ifToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIfStatementNode >> ifToken: aSmaCCToken [
 	ifToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIfStatementNode >> ignoredTokenVariables [
 	^ #(#left #right)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIfStatementNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIfStatementNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIfStatementNode >> nodeVariables [
 	^ #(#expression #trueStatement #elseStatement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIfStatementNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIfStatementNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIfStatementNode >> tokenVariables [
 	^ #(#ifToken #elseToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIfStatementNode >> trueStatement [
 	^ trueStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIfStatementNode >> trueStatement: aJSStatementNode [
 	self trueStatement notNil ifTrue: [ self trueStatement parent: nil ].
 	trueStatement := aJSStatementNode.

@@ -1,44 +1,45 @@
 Class {
-	#name : #JSKeyOfTypeNode,
-	#superclass : #JSTypeNode,
+	#name : 'JSKeyOfTypeNode',
+	#superclass : 'JSTypeNode',
 	#instVars : [
 		'keyofToken',
 		'type'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSKeyOfTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitKeyOfType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSKeyOfTypeNode >> keyofToken [
 	^ keyofToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSKeyOfTypeNode >> keyofToken: aSmaCCToken [
 	keyofToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSKeyOfTypeNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSKeyOfTypeNode >> tokenVariables [
 	^ #(#keyofToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSKeyOfTypeNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSKeyOfTypeNode >> type: aJSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aJSTypeNode.

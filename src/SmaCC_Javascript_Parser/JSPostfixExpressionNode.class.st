@@ -1,46 +1,47 @@
 Class {
-	#name : #JSPostfixExpressionNode,
-	#superclass : #JSExpressionNode,
+	#name : 'JSPostfixExpressionNode',
+	#superclass : 'JSExpressionNode',
 	#instVars : [
 		'expression',
 		'operator'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPostfixExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPostfixExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPostfixExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPostfixExpressionNode >> expression: aJSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aJSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPostfixExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPostfixExpressionNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPostfixExpressionNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSPostfixExpressionNode >> tokenVariables [
 	^ #(#operator)
 ]

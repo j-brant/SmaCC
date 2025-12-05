@@ -1,50 +1,51 @@
 Class {
-	#name : #JSExportSpecifierNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSExportSpecifierNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'name',
 		'asToken',
 		'_as'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportSpecifierNode >> _as [
 	^ _as
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportSpecifierNode >> _as: aSmaCCToken [
 	_as := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportSpecifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExportSpecifier: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportSpecifierNode >> asToken [
 	^ asToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportSpecifierNode >> asToken: aSmaCCToken [
 	asToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportSpecifierNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportSpecifierNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSExportSpecifierNode >> tokenVariables [
 	^ #(#name #asToken #_as)
 ]

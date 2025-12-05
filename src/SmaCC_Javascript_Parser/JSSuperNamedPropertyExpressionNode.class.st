@@ -1,50 +1,51 @@
 Class {
-	#name : #JSSuperNamedPropertyExpressionNode,
-	#superclass : #JSExpressionNode,
+	#name : 'JSSuperNamedPropertyExpressionNode',
+	#superclass : 'JSExpressionNode',
 	#instVars : [
 		'superToken',
 		'periodToken',
 		'name'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSSuperNamedPropertyExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSuperNamedPropertyExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSSuperNamedPropertyExpressionNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSSuperNamedPropertyExpressionNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSSuperNamedPropertyExpressionNode >> periodToken [
 	^ periodToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSSuperNamedPropertyExpressionNode >> periodToken: aSmaCCToken [
 	periodToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSSuperNamedPropertyExpressionNode >> superToken [
 	^ superToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSSuperNamedPropertyExpressionNode >> superToken: aSmaCCToken [
 	superToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSSuperNamedPropertyExpressionNode >> tokenVariables [
 	^ #(#superToken #periodToken #name)
 ]

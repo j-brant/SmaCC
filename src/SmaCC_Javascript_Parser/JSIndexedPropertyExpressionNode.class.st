@@ -1,70 +1,71 @@
 Class {
-	#name : #JSIndexedPropertyExpressionNode,
-	#superclass : #JSExpressionNode,
+	#name : 'JSIndexedPropertyExpressionNode',
+	#superclass : 'JSExpressionNode',
 	#instVars : [
 		'expression',
 		'leftBracket',
 		'fieldExpression',
 		'rightBracket'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexedPropertyExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIndexedPropertyExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexedPropertyExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexedPropertyExpressionNode >> expression: aJSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aJSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexedPropertyExpressionNode >> fieldExpression [
 	^ fieldExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexedPropertyExpressionNode >> fieldExpression: aJSExpressionNode [
 	self fieldExpression notNil ifTrue: [ self fieldExpression parent: nil ].
 	fieldExpression := aJSExpressionNode.
 	self fieldExpression notNil ifTrue: [ self fieldExpression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexedPropertyExpressionNode >> ignoredTokenVariables [
 	^ #(#leftBracket #rightBracket)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexedPropertyExpressionNode >> leftBracket [
 	^ leftBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexedPropertyExpressionNode >> leftBracket: aSmaCCToken [
 	leftBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexedPropertyExpressionNode >> nodeVariables [
 	^ #(#expression #fieldExpression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexedPropertyExpressionNode >> rightBracket [
 	^ rightBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSIndexedPropertyExpressionNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
 ]

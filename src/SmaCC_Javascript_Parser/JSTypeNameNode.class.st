@@ -1,53 +1,54 @@
 Class {
-	#name : #JSTypeNameNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSTypeNameNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'names',
 		'periodTokens'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeNameNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTypeName: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeNameNode >> compositeNodeVariables [
 	^ #(#names)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeNameNode >> compositeTokenVariables [
 	^ #(#periodTokens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSTypeNameNode >> initialize [
 	super initialize.
 	names := OrderedCollection new: 2.
 	periodTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeNameNode >> names [
 	^ names
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeNameNode >> names: anOrderedCollection [
 	self setParents: self names to: nil.
 	names := anOrderedCollection.
 	self setParents: self names to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeNameNode >> periodTokens [
 	^ periodTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTypeNameNode >> periodTokens: anOrderedCollection [
 	periodTokens := anOrderedCollection
 ]

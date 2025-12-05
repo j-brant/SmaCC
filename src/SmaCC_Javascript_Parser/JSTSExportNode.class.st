@@ -1,28 +1,29 @@
 Class {
-	#name : #JSTSExportNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSTSExportNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'exportToken'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTSExportNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTSExport: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTSExportNode >> exportToken [
 	^ exportToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTSExportNode >> exportToken: aSmaCCToken [
 	exportToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSTSExportNode >> tokenVariables [
 	^ #(#exportToken)
 ]

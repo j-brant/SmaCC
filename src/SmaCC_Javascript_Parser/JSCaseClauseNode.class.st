@@ -1,86 +1,87 @@
 Class {
-	#name : #JSCaseClauseNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSCaseClauseNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'caseToken',
 		'caseExpression',
 		'colonToken',
 		'statements'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCaseClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCaseClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCaseClauseNode >> caseExpression [
 	^ caseExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCaseClauseNode >> caseExpression: aJSExpressionNode [
 	self caseExpression notNil ifTrue: [ self caseExpression parent: nil ].
 	caseExpression := aJSExpressionNode.
 	self caseExpression notNil ifTrue: [ self caseExpression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCaseClauseNode >> caseToken [
 	^ caseToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCaseClauseNode >> caseToken: aSmaCCToken [
 	caseToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCaseClauseNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCaseClauseNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCaseClauseNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCaseClauseNode >> ignoredTokenVariables [
 	^ #(#colonToken)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSCaseClauseNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCaseClauseNode >> nodeVariables [
 	^ #(#caseExpression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCaseClauseNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCaseClauseNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCaseClauseNode >> tokenVariables [
 	^ #(#caseToken)
 ]

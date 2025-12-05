@@ -1,6 +1,6 @@
 Class {
-	#name : #JSFieldDefinitionNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSFieldDefinitionNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'variable',
 		'equalToken',
@@ -8,77 +8,78 @@ Class {
 		'semicolon',
 		'staticToken'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFieldDefinitionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFieldDefinition: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFieldDefinitionNode >> equalToken [
 	^ equalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFieldDefinitionNode >> equalToken: aSmaCCToken [
 	equalToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFieldDefinitionNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFieldDefinitionNode >> nodeVariables [
 	^ #(#variable #value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFieldDefinitionNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFieldDefinitionNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFieldDefinitionNode >> staticToken [
 	^ staticToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFieldDefinitionNode >> staticToken: aSmaCCToken [
 	staticToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFieldDefinitionNode >> tokenVariables [
 	^ #(#equalToken #staticToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFieldDefinitionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFieldDefinitionNode >> value: aJSExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aJSExpressionNode.
 	self value notNil ifTrue: [ self value parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFieldDefinitionNode >> variable [
 	^ variable
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSFieldDefinitionNode >> variable: aJSNameExpressionNode [
 	self variable notNil ifTrue: [ self variable parent: nil ].
 	variable := aJSNameExpressionNode.

@@ -1,6 +1,6 @@
 Class {
-	#name : #JSCallExpressionNode,
-	#superclass : #JSExpressionNode,
+	#name : 'JSCallExpressionNode',
+	#superclass : 'JSExpressionNode',
 	#instVars : [
 		'expression',
 		'left',
@@ -11,79 +11,80 @@ Class {
 		'commas',
 		'typeArguments'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCallExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallExpressionNode >> arguments [
 	^ arguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallExpressionNode >> arguments: anOrderedCollection [
 	self setParents: self arguments to: nil.
 	arguments := anOrderedCollection.
 	self setParents: self arguments to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallExpressionNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallExpressionNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallExpressionNode >> compositeNodeVariables [
 	^ #(#arguments #varArguments)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallExpressionNode >> compositeTokenVariables [
 	^ #(#ellipsises)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallExpressionNode >> ellipsises [
 	^ ellipsises
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallExpressionNode >> ellipsises: anOrderedCollection [
 	ellipsises := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallExpressionNode >> expression: aJSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aJSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallExpressionNode >> ignoredCompositeTokenVariables [
 	^ #(#commas #leftParens #rightParens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallExpressionNode >> ignoredTokenVariables [
 	^ #(#left #right)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSCallExpressionNode >> initialize [
 	super initialize.
 	arguments := OrderedCollection new: 2.
@@ -92,49 +93,49 @@ JSCallExpressionNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallExpressionNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallExpressionNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallExpressionNode >> nodeVariables [
 	^ #(#expression #typeArguments)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallExpressionNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallExpressionNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallExpressionNode >> typeArguments [
 	^ typeArguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallExpressionNode >> typeArguments: aJSTypeArgumentsNode [
 	self typeArguments notNil ifTrue: [ self typeArguments parent: nil ].
 	typeArguments := aJSTypeArgumentsNode.
 	self typeArguments notNil ifTrue: [ self typeArguments parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallExpressionNode >> varArguments [
 	^ varArguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSCallExpressionNode >> varArguments: anOrderedCollection [
 	self setParents: self varArguments to: nil.
 	varArguments := anOrderedCollection.

@@ -1,28 +1,29 @@
 Class {
-	#name : #JSThisTypeNode,
-	#superclass : #JSTypeNode,
+	#name : 'JSThisTypeNode',
+	#superclass : 'JSTypeNode',
 	#instVars : [
 		'thisToken'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSThisTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitThisType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSThisTypeNode >> thisToken [
 	^ thisToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSThisTypeNode >> thisToken: aSmaCCToken [
 	thisToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSThisTypeNode >> tokenVariables [
 	^ #(#thisToken)
 ]

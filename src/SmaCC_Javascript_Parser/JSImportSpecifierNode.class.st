@@ -1,68 +1,69 @@
 Class {
-	#name : #JSImportSpecifierNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSImportSpecifierNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'binding',
 		'name',
 		'asToken',
 		'typeToken'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportSpecifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitImportSpecifier: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportSpecifierNode >> asToken [
 	^ asToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportSpecifierNode >> asToken: aSmaCCToken [
 	asToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportSpecifierNode >> binding [
 	^ binding
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportSpecifierNode >> binding: aJSNameExpressionNode [
 	self binding notNil ifTrue: [ self binding parent: nil ].
 	binding := aJSNameExpressionNode.
 	self binding notNil ifTrue: [ self binding parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportSpecifierNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportSpecifierNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportSpecifierNode >> nodeVariables [
 	^ #(#binding)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportSpecifierNode >> tokenVariables [
 	^ #(#name #asToken #typeToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportSpecifierNode >> typeToken [
 	^ typeToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSImportSpecifierNode >> typeToken: aSmaCCToken [
 	typeToken := aSmaCCToken
 ]

@@ -1,10 +1,11 @@
 Class {
-	#name : #JSNumericLiteralNode,
-	#superclass : #JSLiteralNode,
-	#category : #'SmaCC_Javascript_Parser'
+	#name : 'JSNumericLiteralNode',
+	#superclass : 'JSLiteralNode',
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSNumericLiteralNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNumericLiteral: self
 ]

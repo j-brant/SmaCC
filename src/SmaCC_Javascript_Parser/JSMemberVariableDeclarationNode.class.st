@@ -1,6 +1,6 @@
 Class {
-	#name : #JSMemberVariableDeclarationNode,
-	#superclass : #JSProgramNode,
+	#name : 'JSMemberVariableDeclarationNode',
+	#superclass : 'JSProgramNode',
 	#instVars : [
 		'decorators',
 		'modifiers',
@@ -12,138 +12,139 @@ Class {
 		'type',
 		'nullableIndicator'
 	],
-	#category : #'SmaCC_Javascript_Parser'
+	#category : 'SmaCC_Javascript_Parser',
+	#package : 'SmaCC_Javascript_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMemberVariableDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> compositeNodeVariables [
 	^ #(#decorators)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> compositeTokenVariables [
 	^ #(#modifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> decorators [
 	^ decorators
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> decorators: anOrderedCollection [
 	self setParents: self decorators to: nil.
 	decorators := anOrderedCollection.
 	self setParents: self decorators to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> equalToken [
 	^ equalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> equalToken: aSmaCCToken [
 	equalToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> ignoredTokenVariables [
 	^ #(#semicolon #colonToken)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JSMemberVariableDeclarationNode >> initialize [
 	super initialize.
 	decorators := OrderedCollection new: 2.
 	modifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> modifiers: anOrderedCollection [
 	modifiers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> name: aJSProgramNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJSProgramNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> nodeVariables [
 	^ #(#name #value #type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> nullableIndicator [
 	^ nullableIndicator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> nullableIndicator: aSmaCCToken [
 	nullableIndicator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> tokenVariables [
 	^ #(#equalToken #nullableIndicator)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> type: aJSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aJSTypeNode.
 	self type notNil ifTrue: [ self type parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JSMemberVariableDeclarationNode >> value: aJSExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aJSExpressionNode.
