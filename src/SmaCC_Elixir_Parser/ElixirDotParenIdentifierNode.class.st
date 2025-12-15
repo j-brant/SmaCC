@@ -1,57 +1,58 @@
 Class {
-	#name : #ElixirDotParenIdentifierNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirDotParenIdentifierNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'identifier',
 		'expression',
 		'op'
 	],
-	#category : 'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirDotParenIdentifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDotParenIdentifier: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirDotParenIdentifierNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirDotParenIdentifierNode >> expression: anElixirMatchedExprNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := anElixirMatchedExprNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirDotParenIdentifierNode >> identifier [
 	^ identifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirDotParenIdentifierNode >> identifier: aSmaCCToken [
 	identifier := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirDotParenIdentifierNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirDotParenIdentifierNode >> op [
 	^ op
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirDotParenIdentifierNode >> op: aSmaCCToken [
 	op := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirDotParenIdentifierNode >> tokenVariables [
 	^ #(#identifier #op)
 ]

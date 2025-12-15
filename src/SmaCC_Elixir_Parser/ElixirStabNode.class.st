@@ -1,51 +1,52 @@
 Class {
-	#name : #ElixirStabNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirStabNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'stabs',
 		'eoes'
 	],
-	#category : 'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirStabNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStab: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirStabNode >> compositeNodeVariables [
 	^ #(#stabs)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirStabNode >> compositeTokenVariables [
 	^ #(#eoes)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirStabNode >> eoes [
 	^ eoes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirStabNode >> eoes: anOrderedCollection [
 	eoes := anOrderedCollection
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 ElixirStabNode >> initialize [
 	super initialize.
 	stabs := OrderedCollection new: 2.
 	eoes := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirStabNode >> stabs [
 	^ stabs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirStabNode >> stabs: anOrderedCollection [
 	self setParents: self stabs to: nil.
 	stabs := anOrderedCollection.

@@ -1,10 +1,11 @@
 Class {
-	#name : #ElixirCloseCurlyNode,
-	#superclass : #ElixirProgramNode,
-	#category : 'SmaCC_Elixir_Parser'
+	#name : 'ElixirCloseCurlyNode',
+	#superclass : 'ElixirProgramNode',
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirCloseCurlyNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCloseCurly: self
 ]

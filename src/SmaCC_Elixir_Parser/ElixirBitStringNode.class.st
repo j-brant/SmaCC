@@ -1,57 +1,58 @@
 Class {
-	#name : #ElixirBitStringNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirBitStringNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'open',
 		'close',
 		'args'
 	],
-	#category : 'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBitStringNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBitString: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBitStringNode >> args [
 	^ args
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBitStringNode >> args: anElixirContainerArgsNode [
 	self args notNil ifTrue: [ self args parent: nil ].
 	args := anElixirContainerArgsNode.
 	self args notNil ifTrue: [ self args parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBitStringNode >> close [
 	^ close
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBitStringNode >> close: aSmaCCToken [
 	close := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBitStringNode >> nodeVariables [
 	^ #(#args)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBitStringNode >> open [
 	^ open
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBitStringNode >> open: aSmaCCToken [
 	open := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBitStringNode >> tokenVariables [
 	^ #(#open #close)
 ]

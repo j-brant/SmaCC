@@ -1,39 +1,40 @@
 Class {
-	#name : #ElixirBlockEoeNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirBlockEoeNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'identifier',
 		'eoe'
 	],
-	#category : 'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBlockEoeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBlockEoe: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBlockEoeNode >> eoe [
 	^ eoe
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBlockEoeNode >> eoe: aSmaCCToken [
 	eoe := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBlockEoeNode >> identifier [
 	^ identifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBlockEoeNode >> identifier: aSmaCCToken [
 	identifier := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBlockEoeNode >> tokenVariables [
 	^ #(#identifier #eoe)
 ]

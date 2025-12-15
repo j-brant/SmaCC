@@ -1,46 +1,47 @@
 Class {
-	#name : #ElixirAssocNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirAssocNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'assoc',
 		'com'
 	],
-	#category : 'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAssoc: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocNode >> assoc [
 	^ assoc
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocNode >> assoc: anElixirAssocBaseNode [
 	self assoc notNil ifTrue: [ self assoc parent: nil ].
 	assoc := anElixirAssocBaseNode.
 	self assoc notNil ifTrue: [ self assoc parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocNode >> com [
 	^ com
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocNode >> com: aSmaCCToken [
 	com := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocNode >> nodeVariables [
 	^ #(#assoc)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocNode >> tokenVariables [
 	^ #(#com)
 ]

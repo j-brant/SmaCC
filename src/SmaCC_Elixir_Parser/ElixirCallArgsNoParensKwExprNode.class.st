@@ -1,44 +1,45 @@
 Class {
-	#name : #ElixirCallArgsNoParensKwExprNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirCallArgsNoParensKwExprNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'key',
 		'value'
 	],
-	#category : 'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirCallArgsNoParensKwExprNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCallArgsNoParensKwExpr: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirCallArgsNoParensKwExprNode >> key [
 	^ key
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirCallArgsNoParensKwExprNode >> key: aSmaCCToken [
 	key := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirCallArgsNoParensKwExprNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirCallArgsNoParensKwExprNode >> tokenVariables [
 	^ #(#key)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirCallArgsNoParensKwExprNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirCallArgsNoParensKwExprNode >> value: anElixirProgramNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := anElixirProgramNode.

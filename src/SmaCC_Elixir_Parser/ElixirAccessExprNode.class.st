@@ -1,82 +1,83 @@
 Class {
-	#name : #ElixirAccessExprNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirAccessExprNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'leftParen',
 		'stab',
 		'rightParen',
 		'semis'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAccessExprNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAccessExpr: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAccessExprNode >> compositeTokenVariables [
 
 	^ #( #semis )
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 ElixirAccessExprNode >> initialize [
 	super initialize.
 	semis := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAccessExprNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAccessExprNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAccessExprNode >> nodeVariables [
 	^ #(#stab)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAccessExprNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAccessExprNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAccessExprNode >> semis [
 
 	^ semis
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAccessExprNode >> semis: anOrderedCollection [
 
 	semis := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAccessExprNode >> stab [
 	^ stab
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAccessExprNode >> stab: anElixirStabNode [
 	self stab notNil ifTrue: [ self stab parent: nil ].
 	stab := anElixirStabNode.
 	self stab notNil ifTrue: [ self stab parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAccessExprNode >> tokenVariables [
 
 	^ #( #leftParen #rightParen )

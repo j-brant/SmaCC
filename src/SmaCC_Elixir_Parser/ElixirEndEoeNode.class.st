@@ -1,39 +1,40 @@
 Class {
-	#name : #ElixirEndEoeNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirEndEoeNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'end',
 		'eoe'
 	],
-	#category : 'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirEndEoeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEndEoe: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirEndEoeNode >> end [
 	^ end
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirEndEoeNode >> end: aSmaCCToken [
 	end := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirEndEoeNode >> eoe [
 	^ eoe
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirEndEoeNode >> eoe: aSmaCCToken [
 	eoe := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirEndEoeNode >> tokenVariables [
 	^ #(#end #eoe)
 ]

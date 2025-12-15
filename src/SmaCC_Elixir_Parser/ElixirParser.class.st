@@ -1,10 +1,11 @@
 Class {
-	#name : #ElixirParser,
-	#superclass : #SmaCCGLRParser,
-	#category : #'SmaCC_Elixir_Parser'
+	#name : 'ElixirParser',
+	#superclass : 'SmaCCGLRParser',
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirParser class >> ambiguousTransitions [
 ^#(
 #[ 0 37 1 2] 
@@ -72,12 +73,12 @@ ElixirParser class >> ambiguousTransitions [
 	).
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 ElixirParser class >> cacheId [
 	^'2025-11-05T08:25:54.065629-06:00'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirParser class >> definitionComment [
 "# Modified from https://github.com/elixir-lang/elixir/blob/master/lib/elixir/src/elixir_parser.yrl (f38895cebba0fa06f686e1dd9b74e5729aebcb45)
 # Apache License 2.0: https://github.com/elixir-lang/elixir/blob/master/LICENSE
@@ -1026,12 +1027,12 @@ map
 	;"
 ]
 
-{ #category : #'file types' }
+{ #category : 'file types' }
 ElixirParser class >> fileExtensions [
 	^ #('.exs' '.ex')
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirParser class >> reduceTable [
 ^#(
 	#(62 0 #reduceActionForgrammar6: 5966854 false) 
@@ -1333,7 +1334,7 @@ ElixirParser class >> reduceTable [
 	).
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 ElixirParser class >> samples [
 	"Some sample expressions from https://hexdocs.pm/elixir/syntax-reference.html"
 
@@ -1424,27 +1425,27 @@ end' 'defmodule(Math, [
      select: w') collect: [ :each | self parse: each ]
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 ElixirParser class >> scannerClass [
 	^ElixirScanner
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirParser class >> startingStateForgrammar [
 	^ 1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirParser class >> symbolNames [
 	^ #('"("' '")"' '","' '";"' '"<<"' '">>"' '"["' '"]"' '"do"' '"end"' '"false"' '"fn"' '"nil"' '"true"' '"{"' '"}"' '<int>' '<atom>' '<interpolatedStringStart>' '<interpolatedStringMid>' '<interpolatedStringEnd>' '<string>' '<string_heredoc>' '<charlist>' '<charlist_heredoc>' '<whitespace>' '<comment>' '<eol>' '<struct_op>' '<map_op>' '<stab_op>' '<comp_op>' '<when_op>' '<type_op>' '<pipe_op>' '<assoc_op>' '<capture_op>' '<match_op>' '<or_op>' '<and_op>' '<rel_op>' '<arrow_op>' '<in_op>' '<three_op>' '<two_op>' '<dual_op>' '<mult_op>' '<unary_op>' '<at_op>' '<flt>' '<char>' '<in_match_op>' '<dot_op>' '<sigil>' '<identifier>' '<kw_identifier>' '<alias>' '<semicolon>' '<block_identifier>' '<dot_call_op>' 'B e g i n' 'grammar' 'expr_list' 'expr' 'matched_expr' 'unmatched_expr' 'no_parens_expr' 'block_expr' 'matched_op_expr' 'unmatched_op_expr' 'no_parens_op_expr' 'no_parens_one_ambig_expr' 'no_parens_many_expr' 'no_parens_one_expr' 'no_parens_zero_expr' 'access_expr' 'interpolated_string' '(<interpolatedStringMid> ''part'' expr ''expression'')' '(<interpolatedStringMid> ''part'' expr ''expression'')*' 'bin_string' 'list_string' 'bin_heredoc' 'list_heredoc' 'number' 'parens_call' 'bracket_value' 'bracket_values' 'bracket_arg' 'bracket_expr' 'bracket_at_expr' 'do_block' 'eoe' 'fn_eoe' 'do_eoe' 'end_eoe' 'block_eoe' 'stab' 'stab_eoe' 'stab_expr' 'stab_op_eol_and_expr' 'block_item' 'block_list' 'open_paren' 'close_paren' 'empty_paren' 'open_bracket' 'close_bracket' 'open_bit' 'close_bit' 'open_curly' 'close_curly' 'unary_op_eol' 'dot_identifier' 'dot_alias' 'dot_op_identifier' 'dot_do_identifier' 'dot_bracket_identifier' 'dot_paren_identifier' 'dot_call_identifier' 'call_args_no_parens_expr' 'call_args_no_parens_comma_expr' 'call_args_no_parens_all' 'call_args_no_parens_one' 'call_args_no_parens_ambig' 'call_args_no_parens_many' 'call_args_no_parens_many_strict' 'stab_parens_many' 'container_expr' 'container_args_base' 'container_args' 'call_args_parens_expr' 'call_args_parens_base' 'call_args_parens' 'kw_eol' 'kw_base' 'kw' 'call_args_no_parens_kw_expr' 'call_args_no_parens_kw' 'list_args' 'list' 'tuple' 'bit_string' 'assoc_op_eol' 'assoc_expr' 'assoc_update' 'assoc_update_kw' 'assoc_base' 'assoc' 'map_op' 'map_close' 'map_args' 'struct_expr' 'map' '<bracket_identifier>' '<do_identifier>' '<op_identifier>' '<paren_identifier>' 'E O F' 'error')
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirParser class >> symbolTypes [
 	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #ElixirGrammarNode #ElixirGrammarNode #ElixirExprListNode #ElixirProgramNode #ElixirMatchedExprNode #ElixirUnmatchedExprNode #ElixirNoParensExprNode #ElixirBlockExprNode #ElixirMatchedOpExprNode #ElixirUnmatchedOpExprNode #ElixirNoParensOpExprNode #ElixirNoParensOneAmbigExprNode #ElixirNoParensManyExprNode #ElixirNoParensOneExprNode #ElixirProgramNode #ElixirProgramNode #ElixirInterpolatedStringNode #OrderedCollection #OrderedCollection #ElixirBinStringNode #ElixirListStringNode #ElixirBinHeredocNode #ElixirListHeredocNode #ElixirNumberNode #ElixirParensCallNode #ElixirProgramNode #ElixirBracketValuesNode #ElixirBracketArgNode #ElixirBracketExprNode #ElixirBracketAtExprNode #ElixirDoBlockNode #SmaCCToken #ElixirFnEoeNode #ElixirDoEoeNode #ElixirEndEoeNode #ElixirBlockEoeNode #ElixirStabNode #ElixirStabEoeNode #ElixirStabExprNode #ElixirStabOpEolAndExprNode #ElixirBlockItemNode #ElixirBlockListNode #SmaCCToken #SmaCCToken #ElixirEmptyParenNode #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #ElixirDotIdentifierNode #ElixirDotAliasNode #ElixirDotOpIdentifierNode #ElixirDotDoIdentifierNode #ElixirDotBracketIdentifierNode #ElixirDotParenIdentifierNode #ElixirDotCallIdentifierNode #ElixirProgramNode #ElixirCallArgsNoParensCommaExprNode #ElixirProgramNode #ElixirProgramNode #ElixirNoParensExprNode #ElixirCallArgsNoParensManyNode #ElixirCallArgsNoParensManyStrictNode #ElixirStabParensManyNode #ElixirProgramNode #ElixirContainerArgsBaseNode #ElixirContainerArgsNode #ElixirProgramNode #ElixirCallArgsParensBaseNode #ElixirCallArgsParensNode #SmaCCToken #ElixirKwBaseNode #ElixirKwNode #ElixirCallArgsNoParensKwExprNode #ElixirCallArgsNoParensKwNode #ElixirListArgsNode #ElixirListNode #ElixirTupleNode #ElixirBitStringNode #SmaCCToken #ElixirAssocExprNode #ElixirAssocUpdateNode #ElixirAssocUpdateKwNode #ElixirAssocBaseNode #ElixirProgramNode #SmaCCToken #ElixirMapCloseNode #ElixirMapArgsNode #ElixirStructExprNode #ElixirMapNode #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCErrorNode)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirParser class >> transitionTable [
 ^#(
 #[1 0 213 0 1 0 225 0 5 0 221 0 7 0 21 0 11 0 25 0 12 0 29 0 13 0 33 0 14 0 229 0 15 0 41 0 17 0 45 0 18 0 49 0 19 0 53 0 22 0 57 0 23 0 61 0 24 0 65 0 25 0 205 0 28 0 73 0 29 1 21 0 30 0 81 0 37 0 233 0 46 0 233 0 48 0 93 0 49 0 97 0 50 0 101 0 51 0 105 0 54 0 109 0 55 0 113 0 57 0 205 0 58 0 121 0 62 0 125 0 63 0 129 0 64 0 133 0 65 0 137 0 66 0 129 0 67 0 145 0 68 0 149 0 72 0 153 0 73 0 157 0 74 0 161 0 75 0 165 0 76 0 165 0 77 0 165 0 80 0 165 0 81 0 165 0 82 0 165 0 83 0 165 0 84 0 165 0 85 0 165 0 89 0 165 0 90 0 205 0 92 0 209 0 93 0 213 0 103 0 165 0 105 0 221 0 106 0 225 0 108 0 229 0 110 0 233 0 112 0 237 0 113 0 165 0 114 0 245 0 115 0 249 0 116 0 253 0 117 1 1 0 118 1 5 0 119 0 165 0 140 0 165 0 141 0 165 0 142 1 21 0 149 0 165 0 153 1 29 0 154 1 33 0 155 1 37 0 156 1 41 0 157 0 6 0 158] 
@@ -1988,9 +1989,9 @@ ElixirParser class >> transitionTable [
 	).
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ElixirParser >> actionsForCurrentToken [
-	| lookahead ids id actions token position previousState oldScope |
+	| lookahead ids id actions token position previousState oldScope oldToken |
 	scanner lastWasEol
 		ifTrue: [ actions := OrderedCollection new.
 			self addActionsFor: scanner eolId to: actions.
@@ -2050,17 +2051,22 @@ ElixirParser >> actionsForCurrentToken [
 		and: [ (currentToken ids includes: scanner interpolatedStringEndId) not
 				and: [ (currentToken ids includes: scanner interpolatedStringMidId) not
 						and: [ currentToken value beginsWith: '}' ] ] ])
-		ifTrue: [ oldScope := self scope.
+		ifTrue: [ oldToken := currentToken.
+			oldScope := self scope.
 			self scope: #interpolatedString.
 			self position: currentToken startPosition - 1.
 			currentToken := nil.
 			self getNextToken.
 			self scope: oldScope.
+			(currentToken ids first = scanner interpolatedStringMidId
+				or: [ currentToken ids first = scanner interpolatedStringEndId ])
+				ifFalse: [ currentToken := oldToken.
+					^ actions ].
 			^ self actionsForCurrentToken ].
 	^ actions
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFor__interpolatedStringMid___part__expr__expression__1: nodes [
 	| result |
 	result := Array new: 2.
@@ -2069,7 +2075,7 @@ ElixirParser >> reduceActionFor__interpolatedStringMid___part__expr__expression_
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFor__interpolatedStringMid___part__expr__expression___1: nodes [
 	| result |
 	result := Array new: 2.
@@ -2078,7 +2084,7 @@ ElixirParser >> reduceActionFor__interpolatedStringMid___part__expr__expression_
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFor__interpolatedStringMid___part__expr__expression___2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -2087,7 +2093,7 @@ ElixirParser >> reduceActionFor__interpolatedStringMid___part__expr__expression_
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr15: nodes [
 	| result |
 	result := ElixirTrueNode new.
@@ -2095,7 +2101,7 @@ ElixirParser >> reduceActionForaccess_expr15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr16: nodes [
 	| result |
 	result := ElixirFalseNode new.
@@ -2103,7 +2109,7 @@ ElixirParser >> reduceActionForaccess_expr16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr17: nodes [
 	| result |
 	result := ElixirNilNode new.
@@ -2111,7 +2117,7 @@ ElixirParser >> reduceActionForaccess_expr17: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr24: nodes [
 	| result |
 	result := ElixirSigilNode new.
@@ -2119,7 +2125,7 @@ ElixirParser >> reduceActionForaccess_expr24: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr25: nodes [
 	| result |
 	result := ElixirAtomNode new.
@@ -2127,7 +2133,7 @@ ElixirParser >> reduceActionForaccess_expr25: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr3: nodes [
 	| result |
 	result := ElixirCaptureNode new.
@@ -2136,7 +2142,7 @@ ElixirParser >> reduceActionForaccess_expr3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr4: nodes [
 	| result |
 	result := ElixirLambdaNode new.
@@ -2146,7 +2152,7 @@ ElixirParser >> reduceActionForaccess_expr4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr5: nodes [
 	| result |
 	result := ElixirAccessExprNode new.
@@ -2156,7 +2162,7 @@ ElixirParser >> reduceActionForaccess_expr5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr6: nodes [
 
 	| result |
@@ -2168,7 +2174,7 @@ ElixirParser >> reduceActionForaccess_expr6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr7: nodes [
 
 	| result |
@@ -2181,7 +2187,7 @@ ElixirParser >> reduceActionForaccess_expr7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr8: nodes [
 
 	| result |
@@ -2193,7 +2199,7 @@ ElixirParser >> reduceActionForaccess_expr8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForaccess_expr9: nodes [
 
 	| result |
@@ -2204,7 +2210,7 @@ ElixirParser >> reduceActionForaccess_expr9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForassoc2: nodes [
 	| result |
 	result := ElixirAssocNode new.
@@ -2213,7 +2219,7 @@ ElixirParser >> reduceActionForassoc2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForassoc_base1: nodes [
 	| result |
 	result := ElixirAssocBaseNode new.
@@ -2221,7 +2227,7 @@ ElixirParser >> reduceActionForassoc_base1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForassoc_base2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -2230,7 +2236,7 @@ ElixirParser >> reduceActionForassoc_base2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForassoc_expr1: nodes [
 	| result |
 	result := ElixirAssocExprNode new.
@@ -2240,7 +2246,7 @@ ElixirParser >> reduceActionForassoc_expr1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForassoc_expr6: nodes [
 	| result |
 	result := ElixirAssocExprNode new.
@@ -2248,7 +2254,7 @@ ElixirParser >> reduceActionForassoc_expr6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForassoc_update1: nodes [
 	| result |
 	result := ElixirAssocUpdateNode new.
@@ -2258,7 +2264,7 @@ ElixirParser >> reduceActionForassoc_update1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForassoc_update2: nodes [
 	| result |
 	result := ElixirAssocUpdateNode new.
@@ -2268,7 +2274,7 @@ ElixirParser >> reduceActionForassoc_update2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForassoc_update_kw1: nodes [
 	| result |
 	result := ElixirAssocUpdateKwNode new.
@@ -2278,7 +2284,7 @@ ElixirParser >> reduceActionForassoc_update_kw1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForbin_heredoc1: nodes [
 	| result |
 	result := ElixirBinHeredocNode new.
@@ -2286,7 +2292,7 @@ ElixirParser >> reduceActionForbin_heredoc1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForbin_string1: nodes [
 	| result |
 	result := ElixirBinStringNode new.
@@ -2294,7 +2300,7 @@ ElixirParser >> reduceActionForbin_string1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForbit_string1: nodes [
 	| result |
 	result := ElixirBitStringNode new.
@@ -2303,7 +2309,7 @@ ElixirParser >> reduceActionForbit_string1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForbit_string2: nodes [
 	| result |
 	result := ElixirBitStringNode new.
@@ -2313,7 +2319,7 @@ ElixirParser >> reduceActionForbit_string2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForblock_eoe1: nodes [
 	| result |
 	result := ElixirBlockEoeNode new.
@@ -2321,7 +2327,7 @@ ElixirParser >> reduceActionForblock_eoe1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForblock_eoe2: nodes [
 	| result |
 	result := ElixirBlockEoeNode new.
@@ -2330,7 +2336,7 @@ ElixirParser >> reduceActionForblock_eoe2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForblock_expr2: nodes [
 	| result |
 	result := ElixirBlockExprNode new.
@@ -2341,7 +2347,7 @@ ElixirParser >> reduceActionForblock_expr2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForblock_expr3: nodes [
 	| result |
 	result := ElixirBlockExprNode new.
@@ -2350,7 +2356,7 @@ ElixirParser >> reduceActionForblock_expr3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForblock_expr5: nodes [
 	| result |
 	result := ElixirBlockExprNode new.
@@ -2360,7 +2366,7 @@ ElixirParser >> reduceActionForblock_expr5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForblock_item1: nodes [
 	| result |
 	result := ElixirBlockItemNode new.
@@ -2369,7 +2375,7 @@ ElixirParser >> reduceActionForblock_item1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForblock_item2: nodes [
 	| result |
 	result := ElixirBlockItemNode new.
@@ -2377,7 +2383,7 @@ ElixirParser >> reduceActionForblock_item2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForblock_list1: nodes [
 	| result |
 	result := ElixirBlockListNode new.
@@ -2385,7 +2391,7 @@ ElixirParser >> reduceActionForblock_list1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForblock_list2: nodes [
 	| result |
 	result := nodes at: 2.
@@ -2393,7 +2399,7 @@ ElixirParser >> reduceActionForblock_list2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForbracket_arg1: nodes [
 	| result |
 	result := ElixirBracketArgNode new.
@@ -2402,7 +2408,7 @@ ElixirParser >> reduceActionForbracket_arg1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForbracket_arg2: nodes [
 	| result |
 	result := ElixirBracketArgNode new.
@@ -2412,7 +2418,7 @@ ElixirParser >> reduceActionForbracket_arg2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForbracket_arg3: nodes [
 	| result |
 	result := ElixirBracketArgNode new.
@@ -2422,7 +2428,7 @@ ElixirParser >> reduceActionForbracket_arg3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForbracket_arg4: nodes [
 	| result |
 	result := ElixirBracketArgNode new.
@@ -2433,7 +2439,7 @@ ElixirParser >> reduceActionForbracket_arg4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForbracket_at_expr2: nodes [
 	| result |
 	result := ElixirBracketAtExprNode new.
@@ -2443,7 +2449,7 @@ ElixirParser >> reduceActionForbracket_at_expr2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForbracket_expr2: nodes [
 	| result |
 	result := ElixirBracketExprNode new.
@@ -2452,7 +2458,7 @@ ElixirParser >> reduceActionForbracket_expr2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForbracket_values1: nodes [
 
 	| result |
@@ -2461,7 +2467,7 @@ ElixirParser >> reduceActionForbracket_values1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForbracket_values2: nodes [
 
 	| result |
@@ -2471,7 +2477,7 @@ ElixirParser >> reduceActionForbracket_values2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_no_parens_comma_expr1: nodes [
 	| result |
 	result := ElixirCallArgsNoParensCommaExprNode new.
@@ -2481,7 +2487,7 @@ ElixirParser >> reduceActionForcall_args_no_parens_comma_expr1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_no_parens_comma_expr2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -2490,7 +2496,7 @@ ElixirParser >> reduceActionForcall_args_no_parens_comma_expr2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_no_parens_kw1: nodes [
 	| result |
 	result := ElixirCallArgsNoParensKwNode new.
@@ -2498,7 +2504,7 @@ ElixirParser >> reduceActionForcall_args_no_parens_kw1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_no_parens_kw2: nodes [
 	| result |
 	result := nodes at: 3.
@@ -2507,7 +2513,7 @@ ElixirParser >> reduceActionForcall_args_no_parens_kw2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_no_parens_kw_expr1: nodes [
 	| result |
 	result := ElixirCallArgsNoParensKwExprNode new.
@@ -2516,7 +2522,7 @@ ElixirParser >> reduceActionForcall_args_no_parens_kw_expr1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_no_parens_many1: nodes [
 	| result |
 	result := ElixirCallArgsNoParensManyNode new.
@@ -2526,7 +2532,7 @@ ElixirParser >> reduceActionForcall_args_no_parens_many1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_no_parens_many2: nodes [
 	| result |
 	result := ElixirCallArgsNoParensManyNode new.
@@ -2534,7 +2540,7 @@ ElixirParser >> reduceActionForcall_args_no_parens_many2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_no_parens_many_strict1: nodes [
 	| result |
 	result := ElixirCallArgsNoParensManyStrictNode new.
@@ -2542,7 +2548,7 @@ ElixirParser >> reduceActionForcall_args_no_parens_many_strict1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_no_parens_many_strict3: nodes [
 	| result |
 	result := ElixirCallArgsNoParensManyStrictNode new.
@@ -2552,7 +2558,7 @@ ElixirParser >> reduceActionForcall_args_no_parens_many_strict3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_parens1: nodes [
 	| result |
 	result := ElixirCallArgsParensNode new.
@@ -2561,7 +2567,7 @@ ElixirParser >> reduceActionForcall_args_parens1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_parens2: nodes [
 	| result |
 	result := ElixirCallArgsParensNode new.
@@ -2571,7 +2577,7 @@ ElixirParser >> reduceActionForcall_args_parens2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_parens3: nodes [
 	| result |
 	result := ElixirCallArgsParensNode new.
@@ -2581,7 +2587,7 @@ ElixirParser >> reduceActionForcall_args_parens3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_parens4: nodes [
 	| result |
 	result := ElixirCallArgsParensNode new.
@@ -2592,7 +2598,7 @@ ElixirParser >> reduceActionForcall_args_parens4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_parens6: nodes [
 	| result |
 	result := ElixirCallArgsParensNode new.
@@ -2604,7 +2610,7 @@ ElixirParser >> reduceActionForcall_args_parens6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_parens7: nodes [
 	| result |
 	result := ElixirCallArgsParensNode new.
@@ -2617,7 +2623,7 @@ ElixirParser >> reduceActionForcall_args_parens7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_parens_base1: nodes [
 	| result |
 	result := ElixirCallArgsParensBaseNode new.
@@ -2625,7 +2631,7 @@ ElixirParser >> reduceActionForcall_args_parens_base1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcall_args_parens_base2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -2634,7 +2640,7 @@ ElixirParser >> reduceActionForcall_args_parens_base2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcontainer_args1: nodes [
 	| result |
 	result := ElixirContainerArgsNode new.
@@ -2642,7 +2648,7 @@ ElixirParser >> reduceActionForcontainer_args1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcontainer_args2: nodes [
 	| result |
 	result := ElixirContainerArgsNode new.
@@ -2651,7 +2657,7 @@ ElixirParser >> reduceActionForcontainer_args2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcontainer_args3: nodes [
 	| result |
 	result := ElixirContainerArgsNode new.
@@ -2661,7 +2667,7 @@ ElixirParser >> reduceActionForcontainer_args3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcontainer_args_base1: nodes [
 	| result |
 	result := ElixirContainerArgsBaseNode new.
@@ -2669,7 +2675,7 @@ ElixirParser >> reduceActionForcontainer_args_base1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForcontainer_args_base2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -2678,7 +2684,7 @@ ElixirParser >> reduceActionForcontainer_args_base2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordo_block1: nodes [
 	| result |
 	result := ElixirDoBlockNode new.
@@ -2687,7 +2693,7 @@ ElixirParser >> reduceActionFordo_block1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordo_block2: nodes [
 	| result |
 	result := ElixirDoBlockNode new.
@@ -2697,7 +2703,7 @@ ElixirParser >> reduceActionFordo_block2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordo_block3: nodes [
 	| result |
 	result := ElixirDoBlockNode new.
@@ -2707,7 +2713,7 @@ ElixirParser >> reduceActionFordo_block3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordo_block4: nodes [
 	| result |
 	result := ElixirDoBlockNode new.
@@ -2718,7 +2724,7 @@ ElixirParser >> reduceActionFordo_block4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordo_eoe1: nodes [
 	| result |
 	result := ElixirDoEoeNode new.
@@ -2726,7 +2732,7 @@ ElixirParser >> reduceActionFordo_eoe1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordo_eoe2: nodes [
 	| result |
 	result := ElixirDoEoeNode new.
@@ -2735,7 +2741,7 @@ ElixirParser >> reduceActionFordo_eoe2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_alias1: nodes [
 	| result |
 	result := ElixirDotAliasNode new.
@@ -2743,7 +2749,7 @@ ElixirParser >> reduceActionFordot_alias1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_alias2: nodes [
 	| result |
 	result := ElixirDotAliasNode new.
@@ -2753,7 +2759,7 @@ ElixirParser >> reduceActionFordot_alias2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_alias3: nodes [
 	| result |
 	result := ElixirDotAliasNode new.
@@ -2764,7 +2770,7 @@ ElixirParser >> reduceActionFordot_alias3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_alias4: nodes [
 	| result |
 	result := ElixirDotAliasNode new.
@@ -2776,7 +2782,7 @@ ElixirParser >> reduceActionFordot_alias4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_bracket_identifier1: nodes [
 	| result |
 	result := ElixirDotBracketIdentifierNode new.
@@ -2784,7 +2790,7 @@ ElixirParser >> reduceActionFordot_bracket_identifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_bracket_identifier2: nodes [
 	| result |
 	result := ElixirDotBracketIdentifierNode new.
@@ -2794,7 +2800,7 @@ ElixirParser >> reduceActionFordot_bracket_identifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_call_identifier1: nodes [
 	| result |
 	result := ElixirDotCallIdentifierNode new.
@@ -2802,7 +2808,7 @@ ElixirParser >> reduceActionFordot_call_identifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_call_identifier2: nodes [
 	| result |
 	result := ElixirDotCallIdentifierNode new.
@@ -2811,7 +2817,7 @@ ElixirParser >> reduceActionFordot_call_identifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_do_identifier1: nodes [
 	| result |
 	result := ElixirDotDoIdentifierNode new.
@@ -2819,7 +2825,7 @@ ElixirParser >> reduceActionFordot_do_identifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_do_identifier2: nodes [
 	| result |
 	result := ElixirDotDoIdentifierNode new.
@@ -2829,7 +2835,7 @@ ElixirParser >> reduceActionFordot_do_identifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_identifier1: nodes [
 	| result |
 	result := ElixirDotIdentifierNode new.
@@ -2837,7 +2843,7 @@ ElixirParser >> reduceActionFordot_identifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_identifier2: nodes [
 	| result |
 	result := ElixirDotIdentifierNode new.
@@ -2847,7 +2853,7 @@ ElixirParser >> reduceActionFordot_identifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_op_identifier1: nodes [
 
 	| result |
@@ -2856,7 +2862,7 @@ ElixirParser >> reduceActionFordot_op_identifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_op_identifier2: nodes [
 
 	| result |
@@ -2867,7 +2873,7 @@ ElixirParser >> reduceActionFordot_op_identifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_paren_identifier1: nodes [
 	| result |
 	result := ElixirDotParenIdentifierNode new.
@@ -2875,7 +2881,7 @@ ElixirParser >> reduceActionFordot_paren_identifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFordot_paren_identifier2: nodes [
 	| result |
 	result := ElixirDotParenIdentifierNode new.
@@ -2885,7 +2891,7 @@ ElixirParser >> reduceActionFordot_paren_identifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForempty_paren1: nodes [
 	| result |
 	result := ElixirEmptyParenNode new.
@@ -2894,7 +2900,7 @@ ElixirParser >> reduceActionForempty_paren1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForend_eoe1: nodes [
 	| result |
 	result := ElixirEndEoeNode new.
@@ -2902,7 +2908,7 @@ ElixirParser >> reduceActionForend_eoe1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForend_eoe2: nodes [
 	| result |
 	result := ElixirEndEoeNode new.
@@ -2911,7 +2917,7 @@ ElixirParser >> reduceActionForend_eoe2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForexpr_list1: nodes [
 	| result |
 	result := ElixirExprListNode new.
@@ -2919,7 +2925,7 @@ ElixirParser >> reduceActionForexpr_list1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForexpr_list2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -2928,7 +2934,7 @@ ElixirParser >> reduceActionForexpr_list2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForfn_eoe1: nodes [
 	| result |
 	result := ElixirFnEoeNode new.
@@ -2936,7 +2942,7 @@ ElixirParser >> reduceActionForfn_eoe1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForfn_eoe2: nodes [
 	| result |
 	result := ElixirFnEoeNode new.
@@ -2945,7 +2951,7 @@ ElixirParser >> reduceActionForfn_eoe2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForgrammar1: nodes [
 	| result |
 	result := ElixirGrammarNode new.
@@ -2953,7 +2959,7 @@ ElixirParser >> reduceActionForgrammar1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForgrammar2: nodes [
 	| result |
 	result := ElixirGrammarNode new.
@@ -2961,7 +2967,7 @@ ElixirParser >> reduceActionForgrammar2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForgrammar3: nodes [
 	| result |
 	result := ElixirGrammarNode new.
@@ -2970,7 +2976,7 @@ ElixirParser >> reduceActionForgrammar3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForgrammar4: nodes [
 	| result |
 	result := ElixirGrammarNode new.
@@ -2979,7 +2985,7 @@ ElixirParser >> reduceActionForgrammar4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForgrammar5: nodes [
 	| result |
 	result := ElixirGrammarNode new.
@@ -2989,14 +2995,14 @@ ElixirParser >> reduceActionForgrammar5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForgrammar6: nodes [
 	| result |
 	result := ElixirGrammarNode new.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForinterpolated_string1: nodes [
 	| result |
 	result := ElixirInterpolatedStringNode new.
@@ -3008,7 +3014,7 @@ ElixirParser >> reduceActionForinterpolated_string1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForkw1: nodes [
 
 	| result |
@@ -3017,7 +3023,7 @@ ElixirParser >> reduceActionForkw1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForkw2: nodes [
 
 	| result |
@@ -3027,7 +3033,7 @@ ElixirParser >> reduceActionForkw2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForkw_base1: nodes [
 	| result |
 	result := ElixirKwBaseNode new.
@@ -3036,7 +3042,7 @@ ElixirParser >> reduceActionForkw_base1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForkw_base2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -3046,7 +3052,7 @@ ElixirParser >> reduceActionForkw_base2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForlist1: nodes [
 	| result |
 	result := ElixirListNode new.
@@ -3055,7 +3061,7 @@ ElixirParser >> reduceActionForlist1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForlist2: nodes [
 	| result |
 	result := ElixirListNode new.
@@ -3065,7 +3071,7 @@ ElixirParser >> reduceActionForlist2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForlist_args1: nodes [
 	| result |
 	result := ElixirListArgsNode new.
@@ -3073,7 +3079,7 @@ ElixirParser >> reduceActionForlist_args1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForlist_args2: nodes [
 	| result |
 	result := ElixirListArgsNode new.
@@ -3081,7 +3087,7 @@ ElixirParser >> reduceActionForlist_args2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForlist_args3: nodes [
 	| result |
 	result := ElixirListArgsNode new.
@@ -3090,7 +3096,7 @@ ElixirParser >> reduceActionForlist_args3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForlist_args4: nodes [
 	| result |
 	result := ElixirListArgsNode new.
@@ -3100,7 +3106,7 @@ ElixirParser >> reduceActionForlist_args4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForlist_heredoc1: nodes [
 	| result |
 	result := ElixirListHeredocNode new.
@@ -3108,7 +3114,7 @@ ElixirParser >> reduceActionForlist_heredoc1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForlist_string1: nodes [
 	| result |
 	result := ElixirListStringNode new.
@@ -3116,7 +3122,7 @@ ElixirParser >> reduceActionForlist_string1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormap2: nodes [
 	| result |
 	result := ElixirMapNode new.
@@ -3125,7 +3131,7 @@ ElixirParser >> reduceActionFormap2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormap3: nodes [
 	| result |
 	result := ElixirMapNode new.
@@ -3135,7 +3141,7 @@ ElixirParser >> reduceActionFormap3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormap_args1: nodes [
 	| result |
 	result := ElixirMapArgsNode new.
@@ -3144,7 +3150,7 @@ ElixirParser >> reduceActionFormap_args1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormap_args3: nodes [
 	| result |
 	result := ElixirMapArgsNode new.
@@ -3154,7 +3160,7 @@ ElixirParser >> reduceActionFormap_args3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormap_args4: nodes [
 	| result |
 	result := ElixirMapArgsNode new.
@@ -3165,7 +3171,7 @@ ElixirParser >> reduceActionFormap_args4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormap_close1: nodes [
 	| result |
 	result := ElixirMapCloseNode new.
@@ -3174,7 +3180,7 @@ ElixirParser >> reduceActionFormap_close1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormap_close2: nodes [
 	| result |
 	result := ElixirMapCloseNode new.
@@ -3183,7 +3189,7 @@ ElixirParser >> reduceActionFormap_close2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormap_close3: nodes [
 	| result |
 	result := ElixirMapCloseNode new.
@@ -3194,7 +3200,7 @@ ElixirParser >> reduceActionFormap_close3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormatched_expr1: nodes [
 	| result |
 	result := nodes at: 1.
@@ -3202,7 +3208,7 @@ ElixirParser >> reduceActionFormatched_expr1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormatched_expr4: nodes [
 	| result |
 	result := nodes at: 2.
@@ -3210,7 +3216,7 @@ ElixirParser >> reduceActionFormatched_expr4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormatched_expr5: nodes [
 	| result |
 	result := ElixirMatchedExprNode new.
@@ -3218,7 +3224,7 @@ ElixirParser >> reduceActionFormatched_expr5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormatched_expr8: nodes [
 	| result |
 	result := ElixirMatchedExprNode new.
@@ -3227,7 +3233,7 @@ ElixirParser >> reduceActionFormatched_expr8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFormatched_op_expr14: nodes [
 	| result |
 	result := ElixirMatchedOpExprNode new.
@@ -3236,7 +3242,7 @@ ElixirParser >> reduceActionFormatched_op_expr14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForno_parens_expr1: nodes [
 	| result |
 	result := ElixirNoParensExprNode new.
@@ -3245,7 +3251,7 @@ ElixirParser >> reduceActionForno_parens_expr1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForno_parens_expr5: nodes [
 	| result |
 	result := ElixirNoParensExprNode new.
@@ -3253,7 +3259,7 @@ ElixirParser >> reduceActionForno_parens_expr5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForno_parens_many_expr2: nodes [
 	| result |
 	result := ElixirNoParensManyExprNode new.
@@ -3262,7 +3268,7 @@ ElixirParser >> reduceActionForno_parens_many_expr2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForno_parens_one_ambig_expr2: nodes [
 	| result |
 	result := ElixirNoParensOneAmbigExprNode new.
@@ -3271,7 +3277,7 @@ ElixirParser >> reduceActionForno_parens_one_ambig_expr2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForno_parens_one_expr2: nodes [
 	| result |
 	result := ElixirNoParensOneExprNode new.
@@ -3280,7 +3286,7 @@ ElixirParser >> reduceActionForno_parens_one_expr2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForno_parens_op_expr13: nodes [
 	| result |
 	result := ElixirNoParensOpExprNode new.
@@ -3289,7 +3295,7 @@ ElixirParser >> reduceActionForno_parens_op_expr13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFornumber1: nodes [
 	| result |
 	result := ElixirNumberNode new.
@@ -3297,7 +3303,7 @@ ElixirParser >> reduceActionFornumber1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFornumber2: nodes [
 	| result |
 	result := ElixirNumberNode new.
@@ -3305,7 +3311,7 @@ ElixirParser >> reduceActionFornumber2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFornumber3: nodes [
 	| result |
 	result := ElixirNumberNode new.
@@ -3313,7 +3319,7 @@ ElixirParser >> reduceActionFornumber3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForparens_call1: nodes [
 	| result |
 	result := ElixirParensCallNode new.
@@ -3322,7 +3328,7 @@ ElixirParser >> reduceActionForparens_call1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForparens_call2: nodes [
 	| result |
 	result := ElixirParensCallNode new.
@@ -3332,7 +3338,7 @@ ElixirParser >> reduceActionForparens_call2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForstab1: nodes [
 	| result |
 	result := ElixirStabNode new.
@@ -3340,7 +3346,7 @@ ElixirParser >> reduceActionForstab1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForstab2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -3349,7 +3355,7 @@ ElixirParser >> reduceActionForstab2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForstab_eoe1: nodes [
 	| result |
 	result := ElixirStabEoeNode new.
@@ -3357,7 +3363,7 @@ ElixirParser >> reduceActionForstab_eoe1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForstab_eoe2: nodes [
 
 	| result |
@@ -3367,7 +3373,7 @@ ElixirParser >> reduceActionForstab_eoe2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForstab_expr1: nodes [
 	| result |
 	result := ElixirStabExprNode new.
@@ -3375,7 +3381,7 @@ ElixirParser >> reduceActionForstab_expr1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForstab_expr3: nodes [
 	| result |
 	result := ElixirStabExprNode new.
@@ -3384,7 +3390,7 @@ ElixirParser >> reduceActionForstab_expr3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForstab_expr4: nodes [
 
 	| result |
@@ -3396,7 +3402,7 @@ ElixirParser >> reduceActionForstab_expr4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForstab_op_eol_and_expr1: nodes [
 	| result |
 	result := ElixirStabOpEolAndExprNode new.
@@ -3404,7 +3410,7 @@ ElixirParser >> reduceActionForstab_op_eol_and_expr1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForstab_op_eol_and_expr2: nodes [
 	| result |
 	result := ElixirStabOpEolAndExprNode new.
@@ -3413,7 +3419,7 @@ ElixirParser >> reduceActionForstab_op_eol_and_expr2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForstab_parens_many2: nodes [
 
 	| result |
@@ -3424,7 +3430,7 @@ ElixirParser >> reduceActionForstab_parens_many2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForstruct_expr1: nodes [
 	| result |
 	result := ElixirStructExprNode new.
@@ -3432,7 +3438,7 @@ ElixirParser >> reduceActionForstruct_expr1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFortuple1: nodes [
 	| result |
 	result := ElixirTupleNode new.
@@ -3441,7 +3447,7 @@ ElixirParser >> reduceActionFortuple1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionFortuple2: nodes [
 	| result |
 	result := ElixirTupleNode new.
@@ -3451,7 +3457,7 @@ ElixirParser >> reduceActionFortuple2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForunmatched_expr1: nodes [
 	| result |
 	result := ElixirUnmatchedExprNode new.
@@ -3460,7 +3466,7 @@ ElixirParser >> reduceActionForunmatched_expr1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForunmatched_expr7: nodes [
 	| result |
 	result := ElixirUnmatchedExprNode new.
@@ -3469,7 +3475,7 @@ ElixirParser >> reduceActionForunmatched_expr7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForunmatched_expr8: nodes [
 	| result |
 	result := ElixirUnmatchedExprNode new.
@@ -3477,7 +3483,7 @@ ElixirParser >> reduceActionForunmatched_expr8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 ElixirParser >> reduceActionForunmatched_op_expr13: nodes [
 	| result |
 	result := ElixirUnmatchedOpExprNode new.
@@ -3486,7 +3492,7 @@ ElixirParser >> reduceActionForunmatched_op_expr13: nodes [
 	^ result
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 ElixirParser >> tryAllTokens [
 	^ (currentToken ids includes: scanner identifierId) not
 		or: [ (currentToken ids includes: scanner op_identifierId)
