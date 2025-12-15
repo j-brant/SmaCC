@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPAbstractDeclaratorNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPAbstractDeclaratorNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'leftParens',
 		'ellipsises',
@@ -17,115 +17,117 @@ Class {
 		'rightBrackets',
 		'expressions'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAbstractDeclarator: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> arrow [
 	^ arrow
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> arrow: aSmaCCToken [
 	arrow := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> compositeNodeVariables [
 	^ #(#declarations #specifiers #exceptionSpecifications #cvQualifiers #declarators #expressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> compositeTokenVariables [
 	^ #(#leftParens #ellipsises #commas #rightParens #qualifiers #leftBrackets #rightBrackets)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> cvQualifiers [
 	^ cvQualifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> cvQualifiers: anOrderedCollection [
 	self setParents: self cvQualifiers to: nil.
 	cvQualifiers := anOrderedCollection.
 	self setParents: self cvQualifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> declarations [
 	^ declarations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> declarations: anOrderedCollection [
 	self setParents: self declarations to: nil.
 	declarations := anOrderedCollection.
 	self setParents: self declarations to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> declarators [
 	^ declarators
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> declarators: anOrderedCollection [
 	self setParents: self declarators to: nil.
 	declarators := anOrderedCollection.
 	self setParents: self declarators to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> ellipsises [
 	^ ellipsises
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> ellipsises: anOrderedCollection [
 	ellipsises := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> exceptionSpecifications [
 	^ exceptionSpecifications
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> exceptionSpecifications: anOrderedCollection [
 	self setParents: self exceptionSpecifications to: nil.
 	exceptionSpecifications := anOrderedCollection.
 	self setParents: self exceptionSpecifications to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPAbstractDeclaratorNode >> initialize [
 	super initialize.
 	leftParens := OrderedCollection new: 2.
@@ -143,69 +145,69 @@ CPPAbstractDeclaratorNode >> initialize [
 	expressions := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> leftBrackets [
 	^ leftBrackets
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> leftBrackets: anOrderedCollection [
 	leftBrackets := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> leftParens [
 	^ leftParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> leftParens: anOrderedCollection [
 	leftParens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> qualifiers [
 	^ qualifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> qualifiers: anOrderedCollection [
 	qualifiers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> rightBrackets [
 	^ rightBrackets
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> rightBrackets: anOrderedCollection [
 	rightBrackets := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> rightParens [
 	^ rightParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> specifiers [
 	^ specifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> specifiers: anOrderedCollection [
 	self setParents: self specifiers to: nil.
 	specifiers := anOrderedCollection.
 	self setParents: self specifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAbstractDeclaratorNode >> tokenVariables [
 	^ #(#arrow)
 ]
