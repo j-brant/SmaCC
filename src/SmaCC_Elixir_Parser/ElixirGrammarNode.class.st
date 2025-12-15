@@ -1,52 +1,53 @@
 Class {
-	#name : #ElixirGrammarNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirGrammarNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'eoes',
 		'expressions'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirGrammarNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitGrammar: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirGrammarNode >> compositeTokenVariables [
 	^ #(#eoes)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirGrammarNode >> eoes [
 	^ eoes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirGrammarNode >> eoes: anOrderedCollection [
 	eoes := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirGrammarNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirGrammarNode >> expressions: anElixirExprListNode [
 	self expressions notNil ifTrue: [ self expressions parent: nil ].
 	expressions := anElixirExprListNode.
 	self expressions notNil ifTrue: [ self expressions parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 ElixirGrammarNode >> initialize [
 	super initialize.
 	eoes := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirGrammarNode >> nodeVariables [
 	^ #(#expressions)
 ]

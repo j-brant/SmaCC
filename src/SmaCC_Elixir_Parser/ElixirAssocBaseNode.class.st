@@ -1,51 +1,52 @@
 Class {
-	#name : #ElixirAssocBaseNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirAssocBaseNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'assocs',
 		'coms'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocBaseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAssocBase: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocBaseNode >> assocs [
 	^ assocs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocBaseNode >> assocs: anOrderedCollection [
 	self setParents: self assocs to: nil.
 	assocs := anOrderedCollection.
 	self setParents: self assocs to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocBaseNode >> compositeNodeVariables [
 	^ #(#assocs)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocBaseNode >> compositeTokenVariables [
 	^ #(#coms)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocBaseNode >> coms [
 	^ coms
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAssocBaseNode >> coms: anOrderedCollection [
 	coms := anOrderedCollection
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 ElixirAssocBaseNode >> initialize [
 	super initialize.
 	assocs := OrderedCollection new: 2.

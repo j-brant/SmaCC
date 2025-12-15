@@ -1,59 +1,60 @@
 Class {
-	#name : #ElixirBracketAtExprNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirBracketAtExprNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'op',
 		'identifier',
 		'arg'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBracketAtExprNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBracketAtExpr: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBracketAtExprNode >> arg [
 	^ arg
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBracketAtExprNode >> arg: anElixirBracketArgNode [
 	self arg notNil ifTrue: [ self arg parent: nil ].
 	arg := anElixirBracketArgNode.
 	self arg notNil ifTrue: [ self arg parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBracketAtExprNode >> identifier [
 	^ identifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBracketAtExprNode >> identifier: anElixirProgramNode [
 	self identifier notNil ifTrue: [ self identifier parent: nil ].
 	identifier := anElixirProgramNode.
 	self identifier notNil ifTrue: [ self identifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBracketAtExprNode >> nodeVariables [
 	^ #(#identifier #arg)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBracketAtExprNode >> op [
 	^ op
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBracketAtExprNode >> op: aSmaCCToken [
 	op := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirBracketAtExprNode >> tokenVariables [
 	^ #(#op)
 ]

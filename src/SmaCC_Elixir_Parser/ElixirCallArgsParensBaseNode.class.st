@@ -1,51 +1,52 @@
 Class {
-	#name : #ElixirCallArgsParensBaseNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirCallArgsParensBaseNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'args',
 		'coms'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirCallArgsParensBaseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCallArgsParensBase: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirCallArgsParensBaseNode >> args [
 	^ args
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirCallArgsParensBaseNode >> args: anOrderedCollection [
 	self setParents: self args to: nil.
 	args := anOrderedCollection.
 	self setParents: self args to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirCallArgsParensBaseNode >> compositeNodeVariables [
 	^ #(#args)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirCallArgsParensBaseNode >> compositeTokenVariables [
 	^ #(#coms)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirCallArgsParensBaseNode >> coms [
 	^ coms
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirCallArgsParensBaseNode >> coms: anOrderedCollection [
 	coms := anOrderedCollection
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 ElixirCallArgsParensBaseNode >> initialize [
 	super initialize.
 	args := OrderedCollection new: 2.

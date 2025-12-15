@@ -1,28 +1,29 @@
 Class {
-	#name : #ElixirAtomNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirAtomNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'atom'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAtomNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAtom: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAtomNode >> atom [
 	^ atom
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAtomNode >> atom: aSmaCCToken [
 	atom := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirAtomNode >> tokenVariables [
 	^ #(#atom)
 ]

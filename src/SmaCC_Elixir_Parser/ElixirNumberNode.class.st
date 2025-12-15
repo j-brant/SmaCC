@@ -1,50 +1,51 @@
 Class {
-	#name : #ElixirNumberNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirNumberNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'int',
 		'float',
 		'char'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirNumberNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNumber: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirNumberNode >> char [
 	^ char
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirNumberNode >> char: aSmaCCToken [
 	char := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirNumberNode >> float [
 	^ float
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirNumberNode >> float: aSmaCCToken [
 	float := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirNumberNode >> int [
 	^ int
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirNumberNode >> int: aSmaCCToken [
 	int := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirNumberNode >> tokenVariables [
 	^ #(#int #float #char)
 ]

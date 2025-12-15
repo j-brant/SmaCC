@@ -1,10 +1,11 @@
 Class {
-	#name : #ElixirProgramNode,
-	#superclass : #SmaCCParseNode,
-	#category : #'SmaCC_Elixir_Parser'
+	#name : 'ElixirProgramNode',
+	#superclass : 'SmaCCParseNode',
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirProgramNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitProgram: self
 ]

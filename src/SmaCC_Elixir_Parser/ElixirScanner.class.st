@@ -1,13 +1,14 @@
 Class {
-	#name : #ElixirScanner,
-	#superclass : #SmaCCScanner,
+	#name : 'ElixirScanner',
+	#superclass : 'SmaCCScanner',
 	#instVars : [
 		'lastWasEol'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #'generated-initialization' }
+{ #category : 'generated-initialization' }
 ElixirScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
 	#(#(55 'do' 9) #(55 'end' 10) #(55 'false' 11) #(55 'fn' 12) #(55 'nil' 13) #(55 'true' 14) #(55 'when' 33) #(59 'do' 9) #(59 'end' 10) #(59 'false' 11) #(59 'fn' 12) #(59 'nil' 13) #(59 'true' 14) #(59 'when' 33))
@@ -18,22 +19,22 @@ ElixirScanner class >> initializeKeywordMap [
 	^ keywordMap
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> aliasId [
 	^ 57
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> block_identifierId [
 	^ 59
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> bracket_identifierId [
 	^ 154
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ElixirScanner >> currentState [
 	| state |
 	state := super currentState.
@@ -41,69 +42,69 @@ ElixirScanner >> currentState [
 	^ state
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> do_identifierId [
 	^ 155
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ElixirScanner >> dot_call_op [
 	stream position: stream position - 1.
 	^ self createTokenFor: '.'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> dot_call_opId [
 	^ 60
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> dot_opId [
 	^ 53
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> dual_opId [
 	^ 46
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> emptySymbolTokenId [
 	^ 158
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ElixirScanner >> eol [
 	lastWasEol := true.
 	^ self whitespace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> eolId [
 	^ 28
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> errorTokenId [
 	^ 159
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> identifierId [
 	^ 55
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> interpolatedStringEndId [
 	^ 21
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> interpolatedStringMidId [
 	^ 20
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ElixirScanner >> kw_identifier [
 	| string |
 	string := outputStream contents.
@@ -117,49 +118,49 @@ ElixirScanner >> kw_identifier [
 	^ self createTokenFor: string
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> kw_identifierId [
 	^ 56
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ElixirScanner >> lastWasEol [
 	^ lastWasEol
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ElixirScanner >> lastWasEol: anObject [
 	lastWasEol := anObject
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> map_opId [
 	^ 30
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ElixirScanner >> next [
 	lastWasEol := false.
 	^ super next
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> op_identifierId [
 	^ 156
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> paren_identifierId [
 	^ 157
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ElixirScanner >> restoreState: aSmaCCScannerState [
 	super restoreState: aSmaCCScannerState.
 	self lastWasEol: (aSmaCCScannerState attributeNamed: #lastWasEol)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1 [
 	self step.
 	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(28) ].
@@ -170,7 +171,7 @@ ElixirScanner >> scan1 [
 	^ self scan1X25
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan10 [
 	[ self step.
 	currentCharacter == $"
@@ -184,7 +185,7 @@ ElixirScanner >> scan10 [
 	^ self scan9
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan11 [
 	self step.
 	currentCharacter == $' ifTrue: [ ^ self scan14 ].
@@ -192,7 +193,7 @@ ElixirScanner >> scan11 [
 	^ self scan12
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan12 [
 	[ self step.
 	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(24) ].
@@ -200,13 +201,13 @@ ElixirScanner >> scan12 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan13 [
 	self step.
 	^ self scan12
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan14 [
 	self recordMatch: #(24).
 	self step.
@@ -214,7 +215,7 @@ ElixirScanner >> scan14 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan15 [
 	[ self step.
 	currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
@@ -241,7 +242,7 @@ ElixirScanner >> scan15 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan16 [
 	[ self step.
 	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
@@ -249,7 +250,7 @@ ElixirScanner >> scan16 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan17 [
 	[ self step.
 	currentCharacter == $'
@@ -263,7 +264,7 @@ ElixirScanner >> scan17 [
 	^ self scan16
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan18 [
 	self step.
 	currentCharacter isDigit
@@ -275,7 +276,7 @@ ElixirScanner >> scan18 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan19 [
 	self step.
 	currentCharacter isDigit ifTrue: [ ^ self scan21 ].
@@ -283,7 +284,7 @@ ElixirScanner >> scan19 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X1 [
 	self recordMatch: #(17).
 	self step.
@@ -319,7 +320,7 @@ ElixirScanner >> scan1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X10 [
 	self recordMatch: #(35).
 	self step.
@@ -331,7 +332,7 @@ ElixirScanner >> scan1X10 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X11 [
 	self recordMatch: #(41).
 	self step.
@@ -343,7 +344,7 @@ ElixirScanner >> scan1X11 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X12 [
 	self recordMatch: #(53).
 	self step.
@@ -352,7 +353,7 @@ ElixirScanner >> scan1X12 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X13 [
 	self recordMatch: #(46 48).
 	self step.
@@ -361,7 +362,7 @@ ElixirScanner >> scan1X13 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X14 [
 	self recordMatch: #(29).
 	self step.
@@ -371,7 +372,7 @@ ElixirScanner >> scan1X14 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X15 [
 	[ self recordMatch: #(26).
 	self step.
@@ -380,7 +381,7 @@ ElixirScanner >> scan1X15 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X16 [
 	self recordMatch: #(48).
 	self step.
@@ -390,7 +391,7 @@ ElixirScanner >> scan1X16 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X17 [
 	self recordMatch: #(46 48).
 	self step.
@@ -398,7 +399,7 @@ ElixirScanner >> scan1X17 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X18 [
 	self recordMatch: #(37).
 	self step.
@@ -409,7 +410,7 @@ ElixirScanner >> scan1X18 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X19 [
 	self recordMatch: #(48).
 	self step.
@@ -417,7 +418,7 @@ ElixirScanner >> scan1X19 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X2 [
 	self recordMatch: #(55 59).
 	self step.
@@ -449,7 +450,7 @@ ElixirScanner >> scan1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X20 [
 	self recordMatch: #(28).
 	self step.
@@ -457,21 +458,21 @@ ElixirScanner >> scan1X20 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X21 [
 	self step.
 	currentCharacter == $\ ifTrue: [ ^ self recordAndReportMatch: #(52) ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X22 [
 	self step.
 	currentCharacter == $\ ifTrue: [ self step ].
 	^ self recordAndReportMatch: #(51)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X23 [
 	currentCharacter == $o ifTrue: [ ^ self scan1X5 ].
 	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(15) ].
@@ -489,7 +490,7 @@ ElixirScanner >> scan1X23 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X24 [
 	currentCharacter == $< ifTrue: [ ^ self scan1X3 ].
 	currentCharacter == $= ifTrue: [ ^ self scan1X9 ].
@@ -506,7 +507,7 @@ ElixirScanner >> scan1X24 [
 	^ self scan1X23
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X25 [
 	currentCharacter == $% ifTrue: [ ^ self scan1X14 ].
 	currentCharacter == $& ifTrue: [ ^ self scan1X18 ].
@@ -523,7 +524,7 @@ ElixirScanner >> scan1X25 [
 	^ self scan1X24
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X3 [
 	self recordMatch: #(41).
 	self step.
@@ -544,7 +545,7 @@ ElixirScanner >> scan1X3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X4 [
 	self recordMatch: #(55 59).
 	self step.
@@ -563,7 +564,7 @@ ElixirScanner >> scan1X4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X5 [
 	self recordMatch: #(55 59).
 	self step.
@@ -578,7 +579,7 @@ ElixirScanner >> scan1X5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X6 [
 	self recordMatch: #(55 59).
 	self step.
@@ -593,7 +594,7 @@ ElixirScanner >> scan1X6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X7 [
 	[ self recordMatch: #(57).
 	self step.
@@ -607,7 +608,7 @@ ElixirScanner >> scan1X7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X8 [
 	[ self recordMatch: #(27).
 	self step.
@@ -617,7 +618,7 @@ ElixirScanner >> scan1X8 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan1X9 [
 	self recordMatch: #(38).
 	self step.
@@ -627,7 +628,7 @@ ElixirScanner >> scan1X9 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan2 [
 	self recordMatch: #(32).
 	self step.
@@ -635,14 +636,14 @@ ElixirScanner >> scan2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan20 [
 	self step.
 	currentCharacter isDigit ifTrue: [ ^ self scan21 ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan21 [
 	[ self recordMatch: #(50).
 	self step.
@@ -651,7 +652,7 @@ ElixirScanner >> scan21 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan22 [
 	[ self recordMatch: #(17).
 	self step.
@@ -662,14 +663,14 @@ ElixirScanner >> scan22 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan23 [
 	self step.
 	currentCharacter isDigit ifTrue: [ ^ self scan22 ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan24 [
 	self step.
 	currentCharacter == $! ifTrue: [ ^ self scan24X10 ].
@@ -684,7 +685,7 @@ ElixirScanner >> scan24 [
 	^ self scan24X15
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan24X1 [
 	self recordMatch: #(18).
 	self step.
@@ -700,7 +701,7 @@ ElixirScanner >> scan24X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan24X10 [
 	self recordMatch: #(18).
 	self step.
@@ -708,35 +709,35 @@ ElixirScanner >> scan24X10 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan24X11 [
 	self step.
 	currentCharacter == $\ ifTrue: [ ^ self recordAndReportMatch: #(18) ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan24X12 [
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self recordAndReportMatch: #(18) ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan24X13 [
 	self step.
 	currentCharacter == $> ifTrue: [ ^ self scan28 ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan24X14 [
 	(self scanForString: '&&' match: #(18))
 		ifTrue: [ ^ self recordAndReportMatch: #(18) ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan24X15 [
 	currentCharacter == $= ifTrue: [ ^ self scan24X4 ].
 	currentCharacter == $> ifTrue: [ ^ self scan24X3 ].
@@ -756,7 +757,7 @@ ElixirScanner >> scan24X15 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan24X2 [
 	self recordMatch: #(34).
 	self step.
@@ -771,7 +772,7 @@ ElixirScanner >> scan24X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan24X3 [
 	self recordMatch: #(18).
 	self step.
@@ -780,7 +781,7 @@ ElixirScanner >> scan24X3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan24X4 [
 	self recordMatch: #(18).
 	self step.
@@ -789,7 +790,7 @@ ElixirScanner >> scan24X4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan24X5 [
 	self step.
 	currentCharacter ~~ $'
@@ -799,7 +800,7 @@ ElixirScanner >> scan24X5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan24X6 [
 	self recordMatch: #(18).
 	self step.
@@ -811,7 +812,7 @@ ElixirScanner >> scan24X6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan24X7 [
 	self recordMatch: #(18).
 	self step.
@@ -821,7 +822,7 @@ ElixirScanner >> scan24X7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan24X8 [
 	self recordMatch: #(18).
 	self step.
@@ -829,7 +830,7 @@ ElixirScanner >> scan24X8 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan24X9 [
 	self recordMatch: #(18).
 	self step.
@@ -837,7 +838,7 @@ ElixirScanner >> scan24X9 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan25 [
 	self recordMatch: #(18).
 	self step.
@@ -845,7 +846,7 @@ ElixirScanner >> scan25 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan26 [
 	[ self step.
 	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(18) ].
@@ -856,14 +857,14 @@ ElixirScanner >> scan26 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan27 [
 	self step.
 	currentCharacter == $> ifTrue: [ ^ self recordAndReportMatch: #(18) ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan28 [
 	self recordMatch: #(18).
 	self step.
@@ -871,7 +872,7 @@ ElixirScanner >> scan28 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan29 [
 	self recordMatch: #(42).
 	self step.
@@ -879,7 +880,7 @@ ElixirScanner >> scan29 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan3 [
 	self step.
 	currentCharacter == $" ifTrue: [ ^ self scan7 ].
@@ -888,7 +889,7 @@ ElixirScanner >> scan3 [
 	^ self scan4
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan30 [
 	[ self recordMatch: #(55 59).
 	self step.
@@ -898,7 +899,7 @@ ElixirScanner >> scan30 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan31 [
 	self recordMatch: #(55 59).
 	self step.
@@ -906,7 +907,7 @@ ElixirScanner >> scan31 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan32 [
 	self step.
 	currentCharacter == $> ifTrue: [ ^ self scan29 ].
@@ -925,7 +926,7 @@ ElixirScanner >> scan32 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan32X1 [
 	self step.
 	currentCharacter == $" ifTrue: [ ^ self scan34 ].
@@ -933,14 +934,14 @@ ElixirScanner >> scan32X1 [
 	^ self scan43
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan32X2 [
 	self step.
 	currentCharacter == $~ ifTrue: [ ^ self recordAndReportMatch: #(48) ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan33 [
 	self step.
 	currentCharacter == $"
@@ -1014,7 +1015,7 @@ ElixirScanner >> scan33 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan34 [
 	self recordMatch: #(54).
 	self step.
@@ -1028,7 +1029,7 @@ ElixirScanner >> scan34 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan35 [
 	[ self step.
 	currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
@@ -1055,7 +1056,7 @@ ElixirScanner >> scan35 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan36 [
 	[ self step.
 	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
@@ -1063,7 +1064,7 @@ ElixirScanner >> scan36 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan37 [
 	[ self step.
 	currentCharacter == $"
@@ -1082,7 +1083,7 @@ ElixirScanner >> scan37 [
 	^ self scan36
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan38 [
 	self step.
 	currentCharacter == $' ifTrue: [ ^ self scan39 ].
@@ -1098,7 +1099,7 @@ ElixirScanner >> scan38 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan39 [
 	self recordMatch: #(54).
 	self step.
@@ -1112,7 +1113,7 @@ ElixirScanner >> scan39 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan4 [
 	[ self step.
 	currentCharacter == $"
@@ -1125,7 +1126,7 @@ ElixirScanner >> scan4 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan40 [
 	[ self step.
 	currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
@@ -1152,7 +1153,7 @@ ElixirScanner >> scan40 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan41 [
 	[ self step.
 	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
@@ -1160,7 +1161,7 @@ ElixirScanner >> scan41 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan42 [
 	[ self step.
 	currentCharacter == $'
@@ -1179,7 +1180,7 @@ ElixirScanner >> scan42 [
 	^ self scan41
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan43 [
 	[ self step.
 	currentCharacter == $"
@@ -1192,7 +1193,7 @@ ElixirScanner >> scan43 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan44 [
 	self step.
 	currentCharacter == $u
@@ -1210,7 +1211,7 @@ ElixirScanner >> scan44 [
 	^ self scan43
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan45 [
 	self step.
 	(currentCharacter isDigit
@@ -1223,7 +1224,7 @@ ElixirScanner >> scan45 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan46 [
 	[ self step.
 	currentCharacter == $'
@@ -1250,7 +1251,7 @@ ElixirScanner >> scan46 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan47 [
 	self step.
 	(currentCharacter isDigit
@@ -1263,7 +1264,7 @@ ElixirScanner >> scan47 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan48 [
 	[ self step.
 	currentCharacter == $)
@@ -1290,7 +1291,7 @@ ElixirScanner >> scan48 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan49 [
 	self step.
 	(currentCharacter isDigit
@@ -1303,14 +1304,14 @@ ElixirScanner >> scan49 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan5 [
 	self step.
 	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(19) ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan50 [
 	[ self step.
 	currentCharacter == $/
@@ -1337,7 +1338,7 @@ ElixirScanner >> scan50 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan51 [
 	self step.
 	(currentCharacter isDigit
@@ -1350,7 +1351,7 @@ ElixirScanner >> scan51 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan52 [
 	[ self step.
 	currentCharacter == $>
@@ -1377,7 +1378,7 @@ ElixirScanner >> scan52 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan53 [
 	self step.
 	(currentCharacter isDigit
@@ -1390,7 +1391,7 @@ ElixirScanner >> scan53 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan54 [
 	[ self step.
 	currentCharacter == $\
@@ -1417,7 +1418,7 @@ ElixirScanner >> scan54 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan55 [
 	self step.
 	(currentCharacter isDigit
@@ -1430,7 +1431,7 @@ ElixirScanner >> scan55 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan56 [
 	[ self step.
 	currentCharacter == $\
@@ -1457,7 +1458,7 @@ ElixirScanner >> scan56 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan57 [
 	self step.
 	(currentCharacter isDigit
@@ -1470,7 +1471,7 @@ ElixirScanner >> scan57 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan58 [
 	[ self step.
 	currentCharacter == $\
@@ -1497,7 +1498,7 @@ ElixirScanner >> scan58 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan59 [
 	self step.
 	(currentCharacter isDigit
@@ -1510,13 +1511,13 @@ ElixirScanner >> scan59 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan6 [
 	self step.
 	^ self scan4
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan60 [
 	[ self step.
 	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(21) ].
@@ -1530,7 +1531,7 @@ ElixirScanner >> scan60 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan7 [
 	self recordMatch: #(22).
 	self step.
@@ -1539,7 +1540,7 @@ ElixirScanner >> scan7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan8 [
 	[ self step.
 	currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
@@ -1566,7 +1567,7 @@ ElixirScanner >> scan8 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scan9 [
 	[ self step.
 	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
@@ -1574,7 +1575,7 @@ ElixirScanner >> scan9 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> scanForToken [
 	scope == #default ifTrue: [ ^ self scan1 ].
 	scope == #interpolatedString
@@ -1583,27 +1584,27 @@ ElixirScanner >> scanForToken [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> semicolonId [
 	^ 58
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> stringId [
 	^ 22
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> struct_opId [
 	^ 29
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> tokenActions [
 	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace #comment #eol nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #kw_identifier nil nil nil #dot_call_op)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirScanner >> unary_opId [
 	^ 48
 ]

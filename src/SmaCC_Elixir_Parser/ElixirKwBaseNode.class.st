@@ -1,40 +1,41 @@
 Class {
-	#name : #ElixirKwBaseNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirKwBaseNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'keys',
 		'values',
 		'coms'
 	],
-	#category : #'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirKwBaseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitKwBase: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirKwBaseNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirKwBaseNode >> compositeTokenVariables [
 	^ #(#keys #coms)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirKwBaseNode >> coms [
 	^ coms
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirKwBaseNode >> coms: anOrderedCollection [
 	coms := anOrderedCollection
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 ElixirKwBaseNode >> initialize [
 	super initialize.
 	keys := OrderedCollection new: 2.
@@ -42,22 +43,22 @@ ElixirKwBaseNode >> initialize [
 	coms := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirKwBaseNode >> keys [
 	^ keys
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirKwBaseNode >> keys: anOrderedCollection [
 	keys := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirKwBaseNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirKwBaseNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

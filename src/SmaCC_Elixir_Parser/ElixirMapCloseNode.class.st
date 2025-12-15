@@ -1,58 +1,59 @@
 Class {
-	#name : #ElixirMapCloseNode,
-	#superclass : #ElixirProgramNode,
+	#name : 'ElixirMapCloseNode',
+	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'kw',
 		'close',
 		'association',
 		'com'
 	],
-	#category : 'SmaCC_Elixir_Parser'
+	#category : 'SmaCC_Elixir_Parser',
+	#package : 'SmaCC_Elixir_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirMapCloseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMapClose: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirMapCloseNode >> association [
 	^ association
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirMapCloseNode >> association: anElixirProgramNode [
 	self association notNil ifTrue: [ self association parent: nil ].
 	association := anElixirProgramNode.
 	self association notNil ifTrue: [ self association parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirMapCloseNode >> close [
 	^ close
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirMapCloseNode >> close: aSmaCCToken [
 	close := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirMapCloseNode >> com [
 	^ com
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirMapCloseNode >> com: aSmaCCToken [
 	com := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirMapCloseNode >> kw [
 	^ kw
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirMapCloseNode >> kw: anElixirKwNode [
 
 	self kw notNil ifTrue: [ self kw parent: nil ].
@@ -60,12 +61,12 @@ ElixirMapCloseNode >> kw: anElixirKwNode [
 	self kw notNil ifTrue: [ self kw parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirMapCloseNode >> nodeVariables [
 	^ #(#kw #association)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 ElixirMapCloseNode >> tokenVariables [
 	^ #(#close #com)
 ]
