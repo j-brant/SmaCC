@@ -7,23 +7,24 @@ Instance Variables:
 	errorToken	<SmaCCToken>	the token that started the error handling. This token may also be in the dismissedTokens or it may be used in some other node created after handling the error
 "
 Class {
-	#name : #SmaCCErrorNode,
-	#superclass : #SmaCCParseNode,
+	#name : 'SmaCCErrorNode',
+	#superclass : 'SmaCCParseNode',
 	#instVars : [
 		'stackContents',
 		'dismissedTokens',
 		'errorToken',
 		'visitorTrait'
 	],
-	#category : #'SmaCC_Runtime'
+	#category : 'SmaCC_Runtime',
+	#package : 'SmaCC_Runtime'
 }
 
-{ #category : #'visitor-double dispatching' }
+{ #category : 'visitor-double dispatching' }
 SmaCCErrorNode >> acceptVisitor: aSmaCCParseNodeVisitor [
 	^ aSmaCCParseNodeVisitor visitSmaCCError: self
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCErrorNode >> assignParents: anObject [
 	(anObject isKindOf: SmaCCParseNode)
 		ifTrue: [ anObject parent: self ].
@@ -31,7 +32,7 @@ SmaCCErrorNode >> assignParents: anObject [
 		ifTrue: [ anObject do: [ :each | self assignParents: each ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCErrorNode >> calculateStartPosition [
 	| min |
 	min := SmallInteger maxVal.
@@ -41,7 +42,7 @@ SmaCCErrorNode >> calculateStartPosition [
 	^ min
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCErrorNode >> calculateStopPosition [
 	| max |
 	max := 0.
@@ -54,17 +55,17 @@ SmaCCErrorNode >> calculateStopPosition [
 	^ max
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCErrorNode >> dismissedTokens [
 	^ dismissedTokens
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCErrorNode >> dismissedTokens: tokenCollection [
 	dismissedTokens := tokenCollection
 ]
 
-{ #category : #errors }
+{ #category : 'errors' }
 SmaCCErrorNode >> doesNotUnderstand: aMessage [
 	"Hack to handle reduce action steps that add parens (or other items) to pulled up nodes. 
 	Probably should validate that we are inside a reduce action."
@@ -80,28 +81,28 @@ SmaCCErrorNode >> doesNotUnderstand: aMessage [
 	super doesNotUnderstand: aMessage
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCErrorNode >> errorComponentsDo: aBlock [
 	self nodesAndTokensIn: stackContents do: aBlock.
 	dismissedTokens do: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCErrorNode >> errorToken [
 	^ errorToken
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCErrorNode >> errorToken: smaccToken [
 	errorToken := smaccToken
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCErrorNode >> isErrorNode [
 	^ true
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCErrorNode >> nodesAndTokensIn: anObject do: aBlock [
 	anObject isCollection
 		ifTrue: [ anObject do: [ :each | self nodesAndTokensIn: each do: aBlock ] ]
@@ -109,7 +110,7 @@ SmaCCErrorNode >> nodesAndTokensIn: anObject do: aBlock [
 				ifTrue: [ aBlock value: anObject ] ]
 ]
 
-{ #category : #iterating }
+{ #category : 'iterating' }
 SmaCCErrorNode >> nodesDo: nodeBlock andTokensDo: tokenBlock includeErrors: aBoolean [
 	super nodesDo: nodeBlock andTokensDo: tokenBlock includeErrors: aBoolean.
 	aBoolean
@@ -122,23 +123,23 @@ SmaCCErrorNode >> nodesDo: nodeBlock andTokensDo: tokenBlock includeErrors: aBoo
 				ifTrue: [ tokenBlock value: each ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCErrorNode >> stackContents [
 	^ stackContents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCErrorNode >> stackContents: aCollection [
 	stackContents := aCollection.
 	self assignParents: aCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCErrorNode >> visitorTrait [
 	^ visitorTrait ifNil: [ super visitorTrait ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCErrorNode >> visitorTrait: aSmaCCParseNodeVisitorTrait [
 	visitorTrait := aSmaCCParseNodeVisitorTrait
 ]

@@ -1,28 +1,29 @@
 Class {
-	#name : #CSSNameNode,
-	#superclass : #CSSProgramNode,
+	#name : 'CSSNameNode',
+	#superclass : 'CSSProgramNode',
 	#instVars : [
 		'name'
 	],
-	#category : #'SmaCC_CSS'
+	#category : 'SmaCC_CSS',
+	#package : 'SmaCC_CSS'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSNameNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitName: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSNameNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSNameNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSNameNode >> tokenVariables [
 	^ #(#name)
 ]

@@ -1,28 +1,29 @@
 Class {
-	#name : #CSSOperatorNode,
-	#superclass : #CSSProgramNode,
+	#name : 'CSSOperatorNode',
+	#superclass : 'CSSProgramNode',
 	#instVars : [
 		'value'
 	],
-	#category : #'SmaCC_CSS'
+	#category : 'SmaCC_CSS',
+	#package : 'SmaCC_CSS'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSOperatorNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitOperator: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSOperatorNode >> tokenVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSOperatorNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSOperatorNode >> value: aSmaCCToken [
 	value := aSmaCCToken
 ]

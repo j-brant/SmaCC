@@ -1,25 +1,26 @@
 Class {
-	#name : #CSSScanner,
-	#superclass : #SmaCCScanner,
-	#category : #'SmaCC_CSS'
+	#name : 'CSSScanner',
+	#superclass : 'SmaCCScanner',
+	#category : 'SmaCC_CSS',
+	#package : 'SmaCC_CSS'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> emptySymbolTokenId [
 	^ 55
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> errorTokenId [
 	^ 56
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> keywordFor: aString [
 	^ aString asUppercase
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan1 [
 	[ self step.
 	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(21) ].
@@ -30,14 +31,14 @@ CSSScanner >> scan1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan10 [
 	self step.
 	(currentCharacter between: $0 and: $9) ifTrue: [ ^ self scan11 ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan11 [
 	[ self recordMatch: #(19).
 	self step.
@@ -53,7 +54,7 @@ CSSScanner >> scan11 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan12 [
 	[ self step.
 	currentCharacter == $- ] whileTrue.
@@ -66,7 +67,7 @@ CSSScanner >> scan12 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan13 [
 	[ self recordMatch: #(14).
 	self step.
@@ -80,7 +81,7 @@ CSSScanner >> scan13 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan14 [
 	self step.
 	((currentCharacter between: $0 and: $9)
@@ -93,7 +94,7 @@ CSSScanner >> scan14 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan14X1 [
 	self recordMatch: #(14).
 	self step.
@@ -134,7 +135,7 @@ CSSScanner >> scan14X1 [
 	^ self scan14X1X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan14X1X1 [
 	self recordMatch: #(14).
 	self step.
@@ -153,7 +154,7 @@ CSSScanner >> scan14X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan14X1X2 [
 	((currentCharacter between: Character tab and: Character lf)
 		or: [ currentCharacter == Character newPage
@@ -167,7 +168,7 @@ CSSScanner >> scan14X1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan15 [
 	self recordMatch: #(14).
 	self step.
@@ -183,7 +184,7 @@ CSSScanner >> scan15 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan16 [
 	[ self recordMatch: #(19).
 	self step.
@@ -200,7 +201,7 @@ CSSScanner >> scan16 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan17 [
 	[ self recordMatch: #(17).
 	self step.
@@ -215,7 +216,7 @@ CSSScanner >> scan17 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan18 [
 	self step.
 	((currentCharacter between: $0 and: $9)
@@ -228,7 +229,7 @@ CSSScanner >> scan18 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan19 [
 	self recordMatch: #(17).
 	self step.
@@ -237,7 +238,7 @@ CSSScanner >> scan19 [
 	^ self scan19X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan19X1 [
 	currentCharacter == $\ ifTrue: [ ^ self scan18 ].
 	((currentCharacter between: $0 and: $9)
@@ -255,7 +256,7 @@ CSSScanner >> scan19X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan2 [
 	self step.
 	currentCharacter == Character cr ifTrue: [ ^ self scan3 ].
@@ -301,7 +302,7 @@ CSSScanner >> scan2 [
 	^ self scan1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan20 [
 	self recordMatch: #(17).
 	self step.
@@ -318,7 +319,7 @@ CSSScanner >> scan20 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan21 [
 	self recordMatch: #(17).
 	self step.
@@ -327,7 +328,7 @@ CSSScanner >> scan21 [
 	^ self scan21X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan21X1 [
 	currentCharacter == $\ ifTrue: [ ^ self scan18 ].
 	((currentCharacter between: $0 and: $9)
@@ -345,7 +346,7 @@ CSSScanner >> scan21X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan22 [
 	self recordMatch: #(17).
 	self step.
@@ -354,7 +355,7 @@ CSSScanner >> scan22 [
 	^ self scan22X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan22X1 [
 	currentCharacter == $\ ifTrue: [ ^ self scan18 ].
 	((currentCharacter between: $0 and: $9)
@@ -372,7 +373,7 @@ CSSScanner >> scan22X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan23 [
 	self recordMatch: #(17).
 	self step.
@@ -381,7 +382,7 @@ CSSScanner >> scan23 [
 	^ self scan23X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan23X1 [
 	currentCharacter == $\ ifTrue: [ ^ self scan18 ].
 	((currentCharacter between: $0 and: $9)
@@ -399,7 +400,7 @@ CSSScanner >> scan23X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan24 [
 	self recordMatch: #(17).
 	self step.
@@ -408,7 +409,7 @@ CSSScanner >> scan24 [
 	^ self scan24X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan24X1 [
 	currentCharacter == $\ ifTrue: [ ^ self scan18 ].
 	((currentCharacter between: $0 and: $9)
@@ -426,13 +427,13 @@ CSSScanner >> scan24X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan25 [
 	self recordMatch: #(17).
 	^ self scan25X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan25X1 [
 	self step.
 	currentCharacter == Character cr ifTrue: [ ^ self scan20 ].
@@ -451,7 +452,7 @@ CSSScanner >> scan25X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan26 [
 	[ self step.
 	currentCharacter == $*
@@ -462,7 +463,7 @@ CSSScanner >> scan26 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan27 [
 	[ self recordMatch: #(10).
 	self step.
@@ -476,7 +477,7 @@ CSSScanner >> scan27 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan28 [
 	self step.
 	((currentCharacter between: $0 and: $9)
@@ -489,7 +490,7 @@ CSSScanner >> scan28 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan28X1 [
 	self recordMatch: #(10).
 	self step.
@@ -530,7 +531,7 @@ CSSScanner >> scan28X1 [
 	^ self scan28X1X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan28X1X1 [
 	self recordMatch: #(10).
 	self step.
@@ -549,7 +550,7 @@ CSSScanner >> scan28X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan28X1X2 [
 	((currentCharacter between: Character tab and: Character lf)
 		or: [ currentCharacter == Character newPage
@@ -563,7 +564,7 @@ CSSScanner >> scan28X1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan29 [
 	self recordMatch: #(10).
 	self step.
@@ -579,7 +580,7 @@ CSSScanner >> scan29 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan3 [
 	self step.
 	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(21) ].
@@ -589,7 +590,7 @@ CSSScanner >> scan3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan30 [
 	self step.
 	((currentCharacter between: $0 and: $9)
@@ -624,7 +625,7 @@ CSSScanner >> scan30 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan31 [
 	self recordMatch: #(22).
 	self step.
@@ -632,7 +633,7 @@ CSSScanner >> scan31 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan32 [
 	self recordMatch: #(22).
 	self step.
@@ -640,7 +641,7 @@ CSSScanner >> scan32 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan33 [
 	self recordMatch: #(22).
 	self step.
@@ -648,7 +649,7 @@ CSSScanner >> scan33 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan34 [
 	self recordMatch: #(22).
 	self step.
@@ -656,7 +657,7 @@ CSSScanner >> scan34 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan35 [
 	self recordMatch: #(17).
 	self step.
@@ -673,7 +674,7 @@ CSSScanner >> scan35 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan36 [
 	self recordMatch: #(17).
 	self step.
@@ -689,7 +690,7 @@ CSSScanner >> scan36 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan37 [
 	self recordMatch: #(15).
 	self step.
@@ -703,7 +704,7 @@ CSSScanner >> scan37 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan38 [
 	[ self step.
 	currentCharacter == $" ifTrue: [ ^ self scan39 ].
@@ -714,7 +715,7 @@ CSSScanner >> scan38 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan39 [
 	[ self step.
 	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(23) ].
@@ -722,7 +723,7 @@ CSSScanner >> scan39 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan4 [
 	[ self recordMatch: #(16).
 	self step.
@@ -736,7 +737,7 @@ CSSScanner >> scan4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan40 [
 	self step.
 	currentCharacter == Character cr ifTrue: [ ^ self scan41 ].
@@ -782,7 +783,7 @@ CSSScanner >> scan40 [
 	^ self scan38
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan41 [
 	self step.
 	currentCharacter == $" ifTrue: [ ^ self scan39 ].
@@ -792,7 +793,7 @@ CSSScanner >> scan41 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan42 [
 	[ self step.
 	currentCharacter == $' ifTrue: [ ^ self scan39 ].
@@ -803,7 +804,7 @@ CSSScanner >> scan42 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan43 [
 	self step.
 	currentCharacter == Character cr ifTrue: [ ^ self scan44 ].
@@ -849,7 +850,7 @@ CSSScanner >> scan43 [
 	^ self scan42
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan44 [
 	self step.
 	currentCharacter == $' ifTrue: [ ^ self scan39 ].
@@ -859,7 +860,7 @@ CSSScanner >> scan44 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan45 [
 	self step.
 	currentCharacter == $0 ifTrue: [ ^ self scan46 ].
@@ -875,7 +876,7 @@ CSSScanner >> scan45 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan45X1 [
 	self recordMatch: #(17).
 	self step.
@@ -885,7 +886,7 @@ CSSScanner >> scan45X1 [
 	^ self scan45X1X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan45X1X1 [
 	self recordMatch: #(17).
 	self step.
@@ -893,7 +894,7 @@ CSSScanner >> scan45X1X1 [
 	^ self scan45X1X1X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan45X1X1X1 [
 	currentCharacter == $( ifTrue: [ ^ self scan37 ].
 	currentCharacter == $\ ifTrue: [ ^ self scan18 ].
@@ -910,7 +911,7 @@ CSSScanner >> scan45X1X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan45X1X2 [
 	('Cc' includes: currentCharacter) ifTrue: [ ^ self scan45X1X1 ].
 	((currentCharacter between: $0 and: $9)
@@ -928,7 +929,7 @@ CSSScanner >> scan45X1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan46 [
 	self recordMatch: #(17).
 	self step.
@@ -939,7 +940,7 @@ CSSScanner >> scan46 [
 	^ self scan46X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan46X1 [
 	self recordMatch: #(17).
 	self step.
@@ -949,7 +950,7 @@ CSSScanner >> scan46X1 [
 	^ self scan46X1X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan46X1X1 [
 	self recordMatch: #(17).
 	self step.
@@ -957,7 +958,7 @@ CSSScanner >> scan46X1X1 [
 	^ self scan46X1X1X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan46X1X1X1 [
 	currentCharacter == $( ifTrue: [ ^ self scan37 ].
 	currentCharacter == $\ ifTrue: [ ^ self scan18 ].
@@ -974,7 +975,7 @@ CSSScanner >> scan46X1X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan46X1X2 [
 	('Cc' includes: currentCharacter) ifTrue: [ ^ self scan46X1X1 ].
 	((currentCharacter between: $0 and: $9)
@@ -992,7 +993,7 @@ CSSScanner >> scan46X1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan46X2 [
 	('46' includes: currentCharacter) ifTrue: [ ^ self scan46X1 ].
 	((currentCharacter between: $1 and: $9)
@@ -1010,7 +1011,7 @@ CSSScanner >> scan46X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan47 [
 	self recordMatch: #(17).
 	self step.
@@ -1021,7 +1022,7 @@ CSSScanner >> scan47 [
 	^ self scan47X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan47X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1031,7 +1032,7 @@ CSSScanner >> scan47X1 [
 	^ self scan47X1X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan47X1X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1039,7 +1040,7 @@ CSSScanner >> scan47X1X1 [
 	^ self scan47X1X1X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan47X1X1X1 [
 	currentCharacter == $( ifTrue: [ ^ self scan37 ].
 	currentCharacter == $\ ifTrue: [ ^ self scan18 ].
@@ -1056,7 +1057,7 @@ CSSScanner >> scan47X1X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan47X1X2 [
 	('Cc' includes: currentCharacter) ifTrue: [ ^ self scan47X1X1 ].
 	((currentCharacter between: $0 and: $9)
@@ -1074,7 +1075,7 @@ CSSScanner >> scan47X1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan47X2 [
 	('46' includes: currentCharacter) ifTrue: [ ^ self scan47X1 ].
 	((currentCharacter between: $1 and: $9)
@@ -1092,7 +1093,7 @@ CSSScanner >> scan47X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan48 [
 	self recordMatch: #(17).
 	self step.
@@ -1103,7 +1104,7 @@ CSSScanner >> scan48 [
 	^ self scan48X3
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan48X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1113,7 +1114,7 @@ CSSScanner >> scan48X1 [
 	^ self scan48X1X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan48X1X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1123,7 +1124,7 @@ CSSScanner >> scan48X1X1 [
 	^ self scan48X1X1X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan48X1X1X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1141,7 +1142,7 @@ CSSScanner >> scan48X1X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan48X1X1X2 [
 	('Cc' includes: currentCharacter) ifTrue: [ ^ self scan48X1X1X1 ].
 	((currentCharacter between: $0 and: $9)
@@ -1159,7 +1160,7 @@ CSSScanner >> scan48X1X1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan48X1X2 [
 	('46' includes: currentCharacter) ifTrue: [ ^ self scan48X1X1 ].
 	((currentCharacter between: $0 and: $9)
@@ -1177,7 +1178,7 @@ CSSScanner >> scan48X1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan48X2 [
 	self recordMatch: #(17).
 	self step.
@@ -1187,7 +1188,7 @@ CSSScanner >> scan48X2 [
 	^ self scan48X2X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan48X2X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1195,7 +1196,7 @@ CSSScanner >> scan48X2X1 [
 	^ self scan48X2X1X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan48X2X1X1 [
 	currentCharacter == $( ifTrue: [ ^ self scan37 ].
 	currentCharacter == $\ ifTrue: [ ^ self scan18 ].
@@ -1212,7 +1213,7 @@ CSSScanner >> scan48X2X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan48X2X2 [
 	('Cc' includes: currentCharacter) ifTrue: [ ^ self scan48X2X1 ].
 	((currentCharacter between: $0 and: $9)
@@ -1230,7 +1231,7 @@ CSSScanner >> scan48X2X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan48X3 [
 	('46' includes: currentCharacter) ifTrue: [ ^ self scan48X2 ].
 	((currentCharacter between: $1 and: $9)
@@ -1248,7 +1249,7 @@ CSSScanner >> scan48X3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan49 [
 	self recordMatch: #(17).
 	self step.
@@ -1265,7 +1266,7 @@ CSSScanner >> scan49 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan5 [
 	self step.
 	((currentCharacter between: $0 and: $9)
@@ -1278,7 +1279,7 @@ CSSScanner >> scan5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan50 [
 	self step.
 	currentCharacter == $0 ifTrue: [ ^ self scan51 ].
@@ -1294,7 +1295,7 @@ CSSScanner >> scan50 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan50X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1304,7 +1305,7 @@ CSSScanner >> scan50X1 [
 	^ self scan50X1X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan50X1X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1313,7 +1314,7 @@ CSSScanner >> scan50X1X1 [
 	^ self scan50X1X1X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan50X1X1X1 [
 	currentCharacter == $\ ifTrue: [ ^ self scan45 ].
 	('Ll' includes: currentCharacter) ifTrue: [ ^ self scan36 ].
@@ -1330,7 +1331,7 @@ CSSScanner >> scan50X1X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan50X1X2 [
 	currentCharacter == $\ ifTrue: [ ^ self scan18 ].
 	((currentCharacter between: $0 and: $9)
@@ -1348,7 +1349,7 @@ CSSScanner >> scan50X1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan51 [
 	self recordMatch: #(17).
 	self step.
@@ -1359,7 +1360,7 @@ CSSScanner >> scan51 [
 	^ self scan51X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan51X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1369,7 +1370,7 @@ CSSScanner >> scan51X1 [
 	^ self scan51X1X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan51X1X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1378,7 +1379,7 @@ CSSScanner >> scan51X1X1 [
 	^ self scan51X1X1X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan51X1X1X1 [
 	currentCharacter == $\ ifTrue: [ ^ self scan45 ].
 	('Ll' includes: currentCharacter) ifTrue: [ ^ self scan36 ].
@@ -1395,7 +1396,7 @@ CSSScanner >> scan51X1X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan51X1X2 [
 	currentCharacter == $\ ifTrue: [ ^ self scan18 ].
 	((currentCharacter between: $0 and: $9)
@@ -1413,7 +1414,7 @@ CSSScanner >> scan51X1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan51X2 [
 	('57' includes: currentCharacter) ifTrue: [ ^ self scan51X1 ].
 	((currentCharacter between: $1 and: $9)
@@ -1431,7 +1432,7 @@ CSSScanner >> scan51X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan52 [
 	self recordMatch: #(17).
 	self step.
@@ -1442,7 +1443,7 @@ CSSScanner >> scan52 [
 	^ self scan52X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan52X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1452,7 +1453,7 @@ CSSScanner >> scan52X1 [
 	^ self scan52X1X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan52X1X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1461,7 +1462,7 @@ CSSScanner >> scan52X1X1 [
 	^ self scan52X1X1X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan52X1X1X1 [
 	currentCharacter == $\ ifTrue: [ ^ self scan45 ].
 	('Ll' includes: currentCharacter) ifTrue: [ ^ self scan36 ].
@@ -1478,7 +1479,7 @@ CSSScanner >> scan52X1X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan52X1X2 [
 	currentCharacter == $\ ifTrue: [ ^ self scan18 ].
 	((currentCharacter between: $0 and: $9)
@@ -1496,7 +1497,7 @@ CSSScanner >> scan52X1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan52X2 [
 	('57' includes: currentCharacter) ifTrue: [ ^ self scan52X1 ].
 	((currentCharacter between: $1 and: $9)
@@ -1514,7 +1515,7 @@ CSSScanner >> scan52X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan53 [
 	self recordMatch: #(17).
 	self step.
@@ -1525,7 +1526,7 @@ CSSScanner >> scan53 [
 	^ self scan53X3
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan53X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1535,7 +1536,7 @@ CSSScanner >> scan53X1 [
 	^ self scan53X1X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan53X1X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1545,14 +1546,14 @@ CSSScanner >> scan53X1X1 [
 	^ self scan53X1X1X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan53X1X1X1 [
 	self recordMatch: #(17).
 	self step.
 	^ self scan53X1X1X1X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan53X1X1X1X1 [
 	currentCharacter == Character cr ifTrue: [ ^ self scan54 ].
 	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(15) ].
@@ -1569,7 +1570,7 @@ CSSScanner >> scan53X1X1X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan53X1X1X2 [
 	currentCharacter == $\ ifTrue: [ ^ self scan18 ].
 	((currentCharacter between: $0 and: $9)
@@ -1587,7 +1588,7 @@ CSSScanner >> scan53X1X1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan53X1X2 [
 	('57' includes: currentCharacter) ifTrue: [ ^ self scan53X1X1 ].
 	((currentCharacter between: $0 and: $9)
@@ -1605,7 +1606,7 @@ CSSScanner >> scan53X1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan53X2 [
 	self recordMatch: #(17).
 	self step.
@@ -1615,7 +1616,7 @@ CSSScanner >> scan53X2 [
 	^ self scan53X2X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan53X2X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1624,7 +1625,7 @@ CSSScanner >> scan53X2X1 [
 	^ self scan53X2X1X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan53X2X1X1 [
 	currentCharacter == $\ ifTrue: [ ^ self scan45 ].
 	('Ll' includes: currentCharacter) ifTrue: [ ^ self scan36 ].
@@ -1641,7 +1642,7 @@ CSSScanner >> scan53X2X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan53X2X2 [
 	currentCharacter == $\ ifTrue: [ ^ self scan18 ].
 	((currentCharacter between: $0 and: $9)
@@ -1659,7 +1660,7 @@ CSSScanner >> scan53X2X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan53X3 [
 	('57' includes: currentCharacter) ifTrue: [ ^ self scan53X2 ].
 	((currentCharacter between: $1 and: $9)
@@ -1677,7 +1678,7 @@ CSSScanner >> scan53X3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan54 [
 	self recordMatch: #(17).
 	self step.
@@ -1695,7 +1696,7 @@ CSSScanner >> scan54 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan55 [
 	self recordMatch: #(26).
 	self step.
@@ -1712,7 +1713,7 @@ CSSScanner >> scan55 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan55X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1722,7 +1723,7 @@ CSSScanner >> scan55X1 [
 	^ self scan55X1X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan55X1X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1731,7 +1732,7 @@ CSSScanner >> scan55X1X1 [
 	^ self scan55X1X1X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan55X1X1X1 [
 	currentCharacter == $\ ifTrue: [ ^ self scan50 ].
 	('Rr' includes: currentCharacter) ifTrue: [ ^ self scan35 ].
@@ -1748,7 +1749,7 @@ CSSScanner >> scan55X1X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan55X1X2 [
 	currentCharacter == $\ ifTrue: [ ^ self scan18 ].
 	((currentCharacter between: $0 and: $9)
@@ -1766,7 +1767,7 @@ CSSScanner >> scan55X1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan56 [
 	self recordMatch: #(17).
 	self step.
@@ -1777,7 +1778,7 @@ CSSScanner >> scan56 [
 	^ self scan56X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan56X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1787,7 +1788,7 @@ CSSScanner >> scan56X1 [
 	^ self scan56X1X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan56X1X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1796,7 +1797,7 @@ CSSScanner >> scan56X1X1 [
 	^ self scan56X1X1X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan56X1X1X1 [
 	currentCharacter == $\ ifTrue: [ ^ self scan50 ].
 	('Rr' includes: currentCharacter) ifTrue: [ ^ self scan35 ].
@@ -1813,7 +1814,7 @@ CSSScanner >> scan56X1X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan56X1X2 [
 	currentCharacter == $\ ifTrue: [ ^ self scan18 ].
 	((currentCharacter between: $0 and: $9)
@@ -1831,7 +1832,7 @@ CSSScanner >> scan56X1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan56X2 [
 	('57' includes: currentCharacter) ifTrue: [ ^ self scan56X1 ].
 	((currentCharacter between: $1 and: $9)
@@ -1849,7 +1850,7 @@ CSSScanner >> scan56X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan57 [
 	self recordMatch: #(17).
 	self step.
@@ -1860,7 +1861,7 @@ CSSScanner >> scan57 [
 	^ self scan57X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan57X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1870,7 +1871,7 @@ CSSScanner >> scan57X1 [
 	^ self scan57X1X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan57X1X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1879,7 +1880,7 @@ CSSScanner >> scan57X1X1 [
 	^ self scan57X1X1X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan57X1X1X1 [
 	currentCharacter == $\ ifTrue: [ ^ self scan50 ].
 	('Rr' includes: currentCharacter) ifTrue: [ ^ self scan35 ].
@@ -1896,7 +1897,7 @@ CSSScanner >> scan57X1X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan57X1X2 [
 	currentCharacter == $\ ifTrue: [ ^ self scan18 ].
 	((currentCharacter between: $0 and: $9)
@@ -1914,7 +1915,7 @@ CSSScanner >> scan57X1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan57X2 [
 	('57' includes: currentCharacter) ifTrue: [ ^ self scan57X1 ].
 	((currentCharacter between: $1 and: $9)
@@ -1932,7 +1933,7 @@ CSSScanner >> scan57X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan58 [
 	self recordMatch: #(17).
 	self step.
@@ -1943,7 +1944,7 @@ CSSScanner >> scan58 [
 	^ self scan58X3
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan58X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1953,7 +1954,7 @@ CSSScanner >> scan58X1 [
 	^ self scan58X1X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan58X1X1 [
 	self recordMatch: #(17).
 	self step.
@@ -1963,14 +1964,14 @@ CSSScanner >> scan58X1X1 [
 	^ self scan58X1X1X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan58X1X1X1 [
 	self recordMatch: #(17).
 	self step.
 	^ self scan58X1X1X1X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan58X1X1X1X1 [
 	currentCharacter == Character cr ifTrue: [ ^ self scan60 ].
 	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(15) ].
@@ -1987,7 +1988,7 @@ CSSScanner >> scan58X1X1X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan58X1X1X2 [
 	currentCharacter == $\ ifTrue: [ ^ self scan18 ].
 	((currentCharacter between: $0 and: $9)
@@ -2005,7 +2006,7 @@ CSSScanner >> scan58X1X1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan58X1X2 [
 	('57' includes: currentCharacter) ifTrue: [ ^ self scan58X1X1 ].
 	((currentCharacter between: $0 and: $9)
@@ -2023,7 +2024,7 @@ CSSScanner >> scan58X1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan58X2 [
 	self recordMatch: #(17).
 	self step.
@@ -2033,7 +2034,7 @@ CSSScanner >> scan58X2 [
 	^ self scan58X2X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan58X2X1 [
 	self recordMatch: #(17).
 	self step.
@@ -2042,7 +2043,7 @@ CSSScanner >> scan58X2X1 [
 	^ self scan58X2X1X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan58X2X1X1 [
 	currentCharacter == $\ ifTrue: [ ^ self scan50 ].
 	('Rr' includes: currentCharacter) ifTrue: [ ^ self scan35 ].
@@ -2059,7 +2060,7 @@ CSSScanner >> scan58X2X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan58X2X2 [
 	currentCharacter == $\ ifTrue: [ ^ self scan18 ].
 	((currentCharacter between: $0 and: $9)
@@ -2077,7 +2078,7 @@ CSSScanner >> scan58X2X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan58X3 [
 	('57' includes: currentCharacter) ifTrue: [ ^ self scan58X2 ].
 	((currentCharacter between: $1 and: $9)
@@ -2095,7 +2096,7 @@ CSSScanner >> scan58X3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan59 [
 	self recordMatch: #(17).
 	self step.
@@ -2112,7 +2113,7 @@ CSSScanner >> scan59 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan5X1 [
 	self recordMatch: #(16).
 	self step.
@@ -2153,7 +2154,7 @@ CSSScanner >> scan5X1 [
 	^ self scan5X1X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan5X1X1 [
 	self recordMatch: #(16).
 	self step.
@@ -2172,7 +2173,7 @@ CSSScanner >> scan5X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan5X1X2 [
 	((currentCharacter between: Character tab and: Character lf)
 		or: [ currentCharacter == Character newPage
@@ -2186,7 +2187,7 @@ CSSScanner >> scan5X1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan6 [
 	self recordMatch: #(16).
 	self step.
@@ -2202,7 +2203,7 @@ CSSScanner >> scan6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan60 [
 	self recordMatch: #(17).
 	self step.
@@ -2220,7 +2221,7 @@ CSSScanner >> scan60 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan7 [
 	[ self step.
 	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(21) ].
@@ -2231,7 +2232,7 @@ CSSScanner >> scan7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan8 [
 	self step.
 	currentCharacter == Character cr ifTrue: [ ^ self scan9 ].
@@ -2277,7 +2278,7 @@ CSSScanner >> scan8 [
 	^ self scan7
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scan9 [
 	self step.
 	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(21) ].
@@ -2287,7 +2288,7 @@ CSSScanner >> scan9 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scanForToken [
 	self step.
 	currentCharacter == $" ifTrue: [ ^ self scanForTokenX8 ].
@@ -2299,7 +2300,7 @@ CSSScanner >> scanForToken [
 	^ self scanForTokenX17
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scanForTokenX1 [
 	self recordMatch: #(17 26).
 	self step.
@@ -2317,7 +2318,7 @@ CSSScanner >> scanForTokenX1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scanForTokenX10 [
 	self recordMatch: #(26).
 	self step.
@@ -2326,7 +2327,7 @@ CSSScanner >> scanForTokenX10 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scanForTokenX11 [
 	self recordMatch: #(26).
 	self step.
@@ -2334,7 +2335,7 @@ CSSScanner >> scanForTokenX11 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scanForTokenX12 [
 	self recordMatch: #(26).
 	self step.
@@ -2342,7 +2343,7 @@ CSSScanner >> scanForTokenX12 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scanForTokenX13 [
 	self recordMatch: #(26).
 	self step.
@@ -2350,7 +2351,7 @@ CSSScanner >> scanForTokenX13 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scanForTokenX14 [
 	self recordMatch: #(24 26).
 	self step.
@@ -2361,7 +2362,7 @@ CSSScanner >> scanForTokenX14 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scanForTokenX15 [
 	self recordMatch: #(26).
 	self step.
@@ -2369,7 +2370,7 @@ CSSScanner >> scanForTokenX15 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scanForTokenX16 [
 	currentCharacter == $| ifTrue: [ ^ self scanForTokenX12 ].
 	currentCharacter == $} ifTrue: [ ^ self recordAndReportMatch: #(9 26) ].
@@ -2385,7 +2386,7 @@ CSSScanner >> scanForTokenX16 [
 	^ self recordAndReportMatch: #(26)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scanForTokenX17 [
 	currentCharacter == $+ ifTrue: [ ^ self scanForTokenX9 ].
 	currentCharacter == $- ifTrue: [ ^ self scanForTokenX3 ].
@@ -2402,7 +2403,7 @@ CSSScanner >> scanForTokenX17 [
 	^ self scanForTokenX16
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scanForTokenX1X1 [
 	self step.
 	currentCharacter == $?
@@ -2454,7 +2455,7 @@ CSSScanner >> scanForTokenX1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scanForTokenX2 [
 	self recordMatch: #(19 26).
 	self step.
@@ -2471,7 +2472,7 @@ CSSScanner >> scanForTokenX2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scanForTokenX3 [
 	self recordMatch: #(26).
 	self step.
@@ -2506,7 +2507,7 @@ CSSScanner >> scanForTokenX3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scanForTokenX4 [
 	self recordMatch: #(17 26).
 	self step.
@@ -2522,7 +2523,7 @@ CSSScanner >> scanForTokenX4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scanForTokenX5 [
 	self recordMatch: #(26).
 	self step.
@@ -2537,7 +2538,7 @@ CSSScanner >> scanForTokenX5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scanForTokenX6 [
 	self recordMatch: #(26).
 	self step.
@@ -2553,7 +2554,7 @@ CSSScanner >> scanForTokenX6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scanForTokenX7 [
 	self recordMatch: #(26).
 	self step.
@@ -2566,7 +2567,7 @@ CSSScanner >> scanForTokenX7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scanForTokenX8 [
 	self recordMatch: #(26).
 	self step.
@@ -2579,7 +2580,7 @@ CSSScanner >> scanForTokenX8 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> scanForTokenX9 [
 	self recordMatch: #(26).
 	self step.
@@ -2588,12 +2589,12 @@ CSSScanner >> scanForTokenX9 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> tokenActions [
 	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #comment)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSScanner >> tokenClass [
 	^SmaCCCaseInsensitiveToken
 ]

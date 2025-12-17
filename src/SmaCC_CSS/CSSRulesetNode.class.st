@@ -1,6 +1,6 @@
 Class {
-	#name : #CSSRulesetNode,
-	#superclass : #CSSProgramNode,
+	#name : 'CSSRulesetNode',
+	#superclass : 'CSSProgramNode',
 	#instVars : [
 		'leftBrace',
 		'items',
@@ -8,25 +8,26 @@ Class {
 		'rightBrace',
 		'selectorParts'
 	],
-	#category : #'SmaCC_CSS'
+	#category : 'SmaCC_CSS',
+	#package : 'SmaCC_CSS'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSRulesetNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitRuleset: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSRulesetNode >> compositeNodeVariables [
 	^ #(#items #selectorParts)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSRulesetNode >> compositeTokenVariables [
 	^ #(#semicolons)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSSRulesetNode >> initialize [
 	super initialize.
 	items := OrderedCollection new: 2.
@@ -34,61 +35,61 @@ CSSRulesetNode >> initialize [
 	selectorParts := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSRulesetNode >> items [
 	^ items
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSRulesetNode >> items: anOrderedCollection [
 	self setParents: self items to: nil.
 	items := anOrderedCollection.
 	self setParents: self items to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSRulesetNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSRulesetNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSRulesetNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSRulesetNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSRulesetNode >> selectorParts [
 	^ selectorParts
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSRulesetNode >> selectorParts: anOrderedCollection [
 	self setParents: self selectorParts to: nil.
 	selectorParts := anOrderedCollection.
 	self setParents: self selectorParts to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSRulesetNode >> semicolons [
 	^ semicolons
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSRulesetNode >> semicolons: anOrderedCollection [
 	semicolons := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSRulesetNode >> tokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]

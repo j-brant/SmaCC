@@ -1,28 +1,29 @@
 Class {
-	#name : #CSSCommentDelimiterNode,
-	#superclass : #CSSProgramNode,
+	#name : 'CSSCommentDelimiterNode',
+	#superclass : 'CSSProgramNode',
 	#instVars : [
 		'comment'
 	],
-	#category : #'SmaCC_CSS'
+	#category : 'SmaCC_CSS',
+	#package : 'SmaCC_CSS'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSCommentDelimiterNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCommentDelimiter: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSCommentDelimiterNode >> comment [
 	^ comment
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSCommentDelimiterNode >> comment: aSmaCCToken [
 	comment := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSCommentDelimiterNode >> tokenVariables [
 	^ #(#comment)
 ]
