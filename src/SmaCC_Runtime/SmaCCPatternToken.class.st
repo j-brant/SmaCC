@@ -11,8 +11,8 @@ Instance Variables:
 
 "
 Class {
-	#name : #SmaCCPatternToken,
-	#superclass : #SmaCCToken,
+	#name : 'SmaCCPatternToken',
+	#superclass : 'SmaCCToken',
 	#instVars : [
 		'isList',
 		'isToken',
@@ -20,39 +20,40 @@ Class {
 		'testBlock',
 		'nodeClassName'
 	],
-	#category : #'SmaCC_Runtime'
+	#category : 'SmaCC_Runtime',
+	#package : 'SmaCC_Runtime'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCPatternToken >> = aSmaCCToken [
 	^ self class = aSmaCCToken class
 		and: [ self name = aSmaCCToken name ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCPatternToken >> beList [
 	isList := true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCPatternToken >> beNode [
 	isNode := true.
 	isToken := false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCPatternToken >> beToken [
 	isToken := true.
 	isNode := false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCPatternToken >> beTokenOrNode [
 	isToken := true.
 	isNode := true
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCPatternToken >> buildStructure [
 	| index code source |
 	isList := isToken := false.
@@ -83,37 +84,37 @@ SmaCCPatternToken >> buildStructure [
 				signal ]
 ]
 
-{ #category : #matching }
+{ #category : 'matching' }
 SmaCCPatternToken >> copyInContext: aDictionary [
 	^ aDictionary at: self
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCPatternToken >> hash [
 	^ self class hash bitXor: self name hash
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCPatternToken >> isListMatch [
 	^ isList
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCPatternToken >> isNode [
 	^ isNode
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCPatternToken >> isPattern [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCPatternToken >> isToken [
 	^ isToken
 ]
 
-{ #category : #matching }
+{ #category : 'matching' }
 SmaCCPatternToken >> match: aSmaCCToken inContext: aDictionary [
 	^ (aSmaCCToken isKindOf: SmaCCToken)
 		and:
@@ -121,7 +122,7 @@ SmaCCPatternToken >> match: aSmaCCToken inContext: aDictionary [
 				and: [ self testBlock value: aSmaCCToken ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCPatternToken >> name [
 	| resultStream readStream char |
 	(value first isAlphaNumeric or: [ value first == $_ ])
@@ -137,17 +138,17 @@ SmaCCPatternToken >> name [
 	^ resultStream contents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCPatternToken >> nodeClassName [
 	^ nodeClassName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCPatternToken >> nodeClassName: aString [
 	nodeClassName := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCPatternToken >> testBlock [
 	^ [ :node | 
 	(nodeClassName isNil
@@ -159,12 +160,12 @@ SmaCCPatternToken >> testBlock [
 						ifAbsent: [ SmaCCParseNode ]) ]) and: [ testBlock value: node ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCPatternToken >> testBlock: aBlock [
 	testBlock := aBlock
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCPatternToken >> value: aString start: startPositionInteger ids: aCollection [
 	super value: aString start: startPositionInteger ids: aCollection.
 	self buildStructure

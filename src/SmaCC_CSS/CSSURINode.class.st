@@ -1,10 +1,11 @@
 Class {
-	#name : #CSSURINode,
-	#superclass : #CSSValueNode,
-	#category : #'SmaCC_CSS'
+	#name : 'CSSURINode',
+	#superclass : 'CSSValueNode',
+	#category : 'SmaCC_CSS',
+	#package : 'SmaCC_CSS'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSURINode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitURI: self
 ]

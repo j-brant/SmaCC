@@ -1,15 +1,16 @@
 Class {
-	#name : #CSSParser,
-	#superclass : #SmaCCGLRParser,
-	#category : #'SmaCC_CSS'
+	#name : 'CSSParser',
+	#superclass : 'SmaCCGLRParser',
+	#category : 'SmaCC_CSS',
+	#package : 'SmaCC_CSS'
 }
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 CSSParser class >> cacheId [
 	^'2024-07-03T06:19:36.441868-05:00'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSParser class >> definitionComment [
 "%glr;
 %ignorecase;
@@ -247,12 +248,12 @@ function
   ;*/"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CSSParser class >> fileExtension [
 	^ '.css'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSParser class >> reduceTable [
 ^#(
 	#(54 0 #nil 5529601 true) 
@@ -325,27 +326,27 @@ CSSParser class >> reduceTable [
 	).
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSParser class >> scannerClass [
 	^CSSScanner
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSParser class >> startingStateForstylesheet [
 	^ 1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSParser class >> symbolNames [
 	^ #('"("' '")"' '"*"' '":"' '";"' '"["' '"]"' '"{"' '"}"' '<ATKEYWORD>' '<CDC>' '<CDO>' '<DASHMATCH>' '<DIMENSION>' '<FUNCTION>' '<HASH>' '<IDENT>' '<INCLUDES>' '<NUMBER>' '<PERCENTAGE>' '<STRING>' '<UNICODERANGE>' '<URI>' '<ws>' '<comment>' '<DELIM>' 'B e g i n' 'stylesheet' '( CDO ''item'' | CDC ''item'' | statement ''item'' )' '( CDO ''item'' | CDC ''item'' | statement ''item'' )*' 'CDO' 'CDC' 'statement' 'atrule' 'anyWithWS ''part''*' 'anyWithWS' 'any' '(anyWithWS ''item'' | unused ''item'')' '(anyWithWS ''item'' | unused ''item'')*' 'unused' 'block' '( anyWithWS ''item'' | block ''item'' WS | ATKEYWORD ''item'' WS | ";" ''semicolon'' WS )' '( anyWithWS ''item'' | block ''item'' WS | ATKEYWORD ''item'' WS | ";" ''semicolon'' WS )*' 'ruleset' 'selector' 'anyWithWS ''selectorPart''+' 'declaration_list' 'declaration' 'property' 'value' '( anyWithWS ''value'' | block ''value'' WS | ATKEYWORD ''value'' WS )' '( anyWithWS ''value'' | block ''value'' WS | ATKEYWORD ''value'' WS )+' 'ATKEYWORD' 'WS' 'E O F' 'error')
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSParser class >> symbolTypes [
 	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #CSSStylesheetNode #CSSStylesheetNode #CSSProgramNode #OrderedCollection #CSSCommentDelimiterNode #CSSCommentDelimiterNode #CSSProgramNode #CSSAtRuleNode #OrderedCollection #CSSProgramNode #CSSProgramNode #CSSProgramNode #OrderedCollection #CSSProgramNode #CSSBlockNode #OrderedCollection #OrderedCollection #CSSRulesetNode #OrderedCollection #OrderedCollection #OrderedCollection #CSSDeclarationNode #OrderedCollection #OrderedCollection #CSSProgramNode #OrderedCollection #CSSAtNode nil #SmaCCToken #SmaCCErrorNode)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSParser class >> transitionTable [
 ^#(
 #[1 0 6 0 1 0 6 0 4 0 6 0 6 0 6 0 8 0 6 0 10 0 6 0 11 0 6 0 12 0 6 0 13 0 6 0 14 0 6 0 15 0 6 0 16 0 6 0 17 0 6 0 18 0 6 0 19 0 6 0 20 0 6 0 21 0 6 0 22 0 6 0 23 0 6 0 24 0 6 0 26 0 9 0 28 0 13 0 54 0 6 0 55] 
@@ -461,55 +462,7 @@ CSSParser class >> transitionTable [
 	).
 ]
 
-{ #category : #'generated-reduction actions' }
-CSSParser >> reduceActionForATKEYWORD1: nodes [
-	| result |
-	result := CSSAtNode new.
-	result name: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-CSSParser >> reduceActionForCDC1: nodes [
-	| result |
-	result := CSSCommentDelimiterNode new.
-	result comment: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-CSSParser >> reduceActionFor__CDO__item____CDC__item____statement__item____1: nodes [
-	| result |
-	result := OrderedCollection new: 2.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-CSSParser >> reduceActionFor__CDO__item____CDC__item____statement__item____2: nodes [
-	| result |
-	result := nodes at: 1.
-	self add: (nodes at: 2) to: result.
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-CSSParser >> reduceActionFor__anyWithWS__item____block__item__WS___ATKEYWORD__item__WS________semicolon__WS__4: nodes [
-	| result |
-	result := Array new: 2.
-	result at: 2 put: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-CSSParser >> reduceActionFor__anyWithWS__item____block__item__WS___ATKEYWORD__item__WS________semicolon__WS___2: nodes [
-	| result |
-	result := nodes at: 1.
-	self add: ((nodes at: 2) at: 1) to: (result at: 1).
-	self add: ((nodes at: 2) at: 2) to: (result at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForany11: nodes [
 	| result |
 	result := CSSOperatorNode new.
@@ -517,7 +470,7 @@ CSSParser >> reduceActionForany11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForany12: nodes [
 	| result |
 	result := CSSDelimiterNode new.
@@ -525,7 +478,7 @@ CSSParser >> reduceActionForany12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForany13: nodes [
 	| result |
 	result := CSSFunctionNode new.
@@ -535,7 +488,7 @@ CSSParser >> reduceActionForany13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForany14: nodes [
 	| result |
 	result := CSSParenthesizedExpressionNode new.
@@ -545,7 +498,7 @@ CSSParser >> reduceActionForany14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForany15: nodes [
 	| result |
 	result := CSSBracketExpressionNode new.
@@ -555,7 +508,7 @@ CSSParser >> reduceActionForany15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForany1: nodes [
 	| result |
 	result := CSSIdentifierNode new.
@@ -563,7 +516,7 @@ CSSParser >> reduceActionForany1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForany2: nodes [
 	| result |
 	result := CSSNumberNode new.
@@ -571,7 +524,7 @@ CSSParser >> reduceActionForany2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForany3: nodes [
 	| result |
 	result := CSSPercentageNode new.
@@ -579,7 +532,7 @@ CSSParser >> reduceActionForany3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForany4: nodes [
 	| result |
 	result := CSSDimensionNode new.
@@ -587,7 +540,7 @@ CSSParser >> reduceActionForany4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForany5: nodes [
 	| result |
 	result := CSSStringNode new.
@@ -595,7 +548,7 @@ CSSParser >> reduceActionForany5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForany7: nodes [
 	| result |
 	result := CSSURINode new.
@@ -603,7 +556,7 @@ CSSParser >> reduceActionForany7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForany8: nodes [
 	| result |
 	result := CSSHashNode new.
@@ -611,7 +564,7 @@ CSSParser >> reduceActionForany8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForany9: nodes [
 	| result |
 	result := CSSUnicodeRangeNode new.
@@ -619,7 +572,7 @@ CSSParser >> reduceActionForany9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForanyWithWS__selectorPart__1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
@@ -627,7 +580,15 @@ CSSParser >> reduceActionForanyWithWS__selectorPart__1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
+CSSParser >> reduceActionForATKEYWORD1: nodes [
+	| result |
+	result := CSSAtNode new.
+	result name: (nodes at: 1).
+	^ result
+]
+
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForatrule1: nodes [
 	| result |
 	result := CSSAtRuleNode new.
@@ -637,7 +598,7 @@ CSSParser >> reduceActionForatrule1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForatrule2: nodes [
 	| result |
 	result := CSSAtRuleNode new.
@@ -647,7 +608,7 @@ CSSParser >> reduceActionForatrule2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForblock1: nodes [
 	| result |
 	result := CSSBlockNode new.
@@ -658,7 +619,15 @@ CSSParser >> reduceActionForblock1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
+CSSParser >> reduceActionForCDC1: nodes [
+	| result |
+	result := CSSCommentDelimiterNode new.
+	result comment: (nodes at: 1).
+	^ result
+]
+
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionFordeclaration1: nodes [
 	| result |
 	result := CSSDeclarationNode new.
@@ -669,7 +638,7 @@ CSSParser >> reduceActionFordeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionFordeclaration_list1: nodes [
 	| result |
 	result := Array new: 2.
@@ -679,7 +648,7 @@ CSSParser >> reduceActionFordeclaration_list1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionFordeclaration_list2: nodes [
 	| result |
 	result := nodes at: 4.
@@ -688,7 +657,7 @@ CSSParser >> reduceActionFordeclaration_list2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionFordeclaration_list3: nodes [
 	| result |
 	result := nodes at: 2.
@@ -696,7 +665,7 @@ CSSParser >> reduceActionFordeclaration_list3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionFordeclaration_list4: nodes [
 	| result |
 	result := Array new: 2.
@@ -705,7 +674,7 @@ CSSParser >> reduceActionFordeclaration_list4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForproperty1: nodes [
 	| result |
 	result := Array new: 2.
@@ -713,7 +682,7 @@ CSSParser >> reduceActionForproperty1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForproperty2: nodes [
 	| result |
 	result := Array new: 2.
@@ -722,7 +691,7 @@ CSSParser >> reduceActionForproperty2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForruleset1: nodes [
 	| result |
 	result := CSSRulesetNode new.
@@ -733,7 +702,7 @@ CSSParser >> reduceActionForruleset1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForruleset2: nodes [
 	| result |
 	result := CSSRulesetNode new.
@@ -745,14 +714,14 @@ CSSParser >> reduceActionForruleset2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForselector1: nodes [
 	| result |
 	result := nodes at: 1.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSSParser >> reduceActionForstylesheet1: nodes [
 	| result |
 	result := CSSStylesheetNode new.
@@ -760,12 +729,44 @@ CSSParser >> reduceActionForstylesheet1: nodes [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'generated-reduction actions' }
+CSSParser >> reduceActionFor__anyWithWS__item____block__item__WS___ATKEYWORD__item__WS________semicolon__WS__4: nodes [
+	| result |
+	result := Array new: 2.
+	result at: 2 put: (nodes at: 1).
+	^ result
+]
+
+{ #category : 'generated-reduction actions' }
+CSSParser >> reduceActionFor__anyWithWS__item____block__item__WS___ATKEYWORD__item__WS________semicolon__WS___2: nodes [
+	| result |
+	result := nodes at: 1.
+	self add: ((nodes at: 2) at: 1) to: (result at: 1).
+	self add: ((nodes at: 2) at: 2) to: (result at: 2).
+	^ result
+]
+
+{ #category : 'generated-reduction actions' }
+CSSParser >> reduceActionFor__CDO__item____CDC__item____statement__item____1: nodes [
+	| result |
+	result := OrderedCollection new: 2.
+	^ result
+]
+
+{ #category : 'generated-reduction actions' }
+CSSParser >> reduceActionFor__CDO__item____CDC__item____statement__item____2: nodes [
+	| result |
+	result := nodes at: 1.
+	self add: (nodes at: 2) to: result.
+	^ result
+]
+
+{ #category : 'accessing' }
 CSSParser >> tryAllTokens [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CSSParser >> useAllTokenIds [
 	^ false
 ]

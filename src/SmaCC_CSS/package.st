@@ -1,1 +1,1 @@
-Package { #name : #'SmaCC_CSS' }
+Package { #name : 'SmaCC_CSS' }

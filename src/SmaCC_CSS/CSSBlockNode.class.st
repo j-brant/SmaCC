@@ -1,80 +1,86 @@
 Class {
-	#name : #CSSBlockNode,
-	#superclass : #CSSProgramNode,
+	#name : 'CSSBlockNode',
+	#superclass : 'CSSProgramNode',
 	#instVars : [
 		'leftBrace',
 		'items',
 		'semicolons',
 		'rightBrace'
 	],
-	#category : #'SmaCC_CSS'
+	#category : 'SmaCC_CSS',
+	#package : 'SmaCC_CSS'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSBlockNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBlock: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSBlockNode >> compositeNodeVariables [
 	^ #(#items)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSBlockNode >> compositeTokenVariables [
 	^ #(#semicolons)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSSBlockNode >> initialize [
 	super initialize.
 	items := OrderedCollection new: 2.
 	semicolons := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'as yet unclassified' }
+CSSBlockNode >> isBlockNode [
+	^true
+]
+
+{ #category : 'generated' }
 CSSBlockNode >> items [
 	^ items
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSBlockNode >> items: anOrderedCollection [
 	self setParents: self items to: nil.
 	items := anOrderedCollection.
 	self setParents: self items to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSBlockNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSBlockNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSBlockNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSBlockNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSBlockNode >> semicolons [
 	^ semicolons
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSBlockNode >> semicolons: anOrderedCollection [
 	semicolons := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSBlockNode >> tokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]
