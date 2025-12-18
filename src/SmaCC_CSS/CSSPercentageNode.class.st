@@ -1,10 +1,11 @@
 Class {
-	#name : #CSSPercentageNode,
-	#superclass : #CSSValueNode,
-	#category : #'SmaCC_CSS'
+	#name : 'CSSPercentageNode',
+	#superclass : 'CSSValueNode',
+	#category : 'SmaCC_CSS',
+	#package : 'SmaCC_CSS'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSPercentageNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPercentage: self
 ]

@@ -1,40 +1,41 @@
 Class {
-	#name : #SmaCCInvalidPatternExpressionError,
-	#superclass : #Error,
+	#name : 'SmaCCInvalidPatternExpressionError',
+	#superclass : 'Error',
 	#instVars : [
 		'errorMessage',
 		'position',
 		'token'
 	],
-	#category : #'SmaCC_Runtime'
+	#category : 'SmaCC_Runtime',
+	#package : 'SmaCC_Runtime'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCInvalidPatternExpressionError >> errorMessage [
 	^ errorMessage
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCInvalidPatternExpressionError >> errorMessage: anObject [
 	errorMessage := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCInvalidPatternExpressionError >> position [
 	^ position
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCInvalidPatternExpressionError >> position: anObject [
 	position := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCInvalidPatternExpressionError >> token [
 	^ token
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCInvalidPatternExpressionError >> token: anObject [
 	token := anObject
 ]

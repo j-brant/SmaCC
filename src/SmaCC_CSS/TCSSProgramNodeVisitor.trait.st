@@ -1,121 +1,122 @@
 Trait {
-	#name : #TCSSProgramNodeVisitor,
+	#name : 'TCSSProgramNodeVisitor',
 	#traits : 'TSmaCCParseNodeVisitor',
 	#classTraits : 'TSmaCCParseNodeVisitor classTrait',
-	#category : #'SmaCC_CSS'
+	#category : 'SmaCC_CSS',
+	#package : 'SmaCC_CSS'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitAt: anAt [
 	^ self visitName: anAt
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitAtRule: anAtRule [
 	^ self visitProgram: anAtRule
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitBlock: aBlock [
 	^ self visitProgram: aBlock
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitBracketExpression: aBracketExpression [
 	^ self visitProgram: aBracketExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitCommentDelimiter: aCommentDelimiter [
 	^ self visitProgram: aCommentDelimiter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitDeclaration: aDeclaration [
 	^ self visitProgram: aDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitDelimiter: aDelimiter [
 	^ self visitProgram: aDelimiter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitDimension: aDimension [
 	^ self visitValue: aDimension
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitFunction: aFunction [
 	^ self visitProgram: aFunction
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitHash: aHash [
 	^ self visitName: aHash
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitIdentifier: anIdentifier [
 	^ self visitName: anIdentifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitName: aName [
 	^ self visitProgram: aName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitNumber: aNumber [
 	^ self visitValue: aNumber
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitOperator: anOperator [
 	^ self visitProgram: anOperator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitParenthesizedExpression: aParenthesizedExpression [
 	^ self visitProgram: aParenthesizedExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitPercentage: aPercentage [
 	^ self visitValue: aPercentage
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitProgram: aProgram [
 	^ self visitSmaCCParseNode: aProgram
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitRuleset: aRuleset [
 	^ self visitProgram: aRuleset
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitString: aString [
 	^ self visitValue: aString
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitStylesheet: aStylesheet [
 	^ self visitProgram: aStylesheet
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitURI: anURI [
 	^ self visitValue: anURI
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitUnicodeRange: anUnicodeRange [
 	^ self visitValue: anUnicodeRange
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSSProgramNodeVisitor >> visitValue: aValue [
 	^ self visitProgram: aValue
 ]

@@ -24,8 +24,8 @@ Instance Variables:
 
 "
 Class {
-	#name : #SmaCCScanner,
-	#superclass : #Object,
+	#name : 'SmaCCScanner',
+	#superclass : 'Object',
 	#instVars : [
 		'stream',
 		'start',
@@ -43,34 +43,35 @@ Class {
 	#classInstVars : [
 		'keywordMap'
 	],
-	#category : #'SmaCC_Runtime'
+	#category : 'SmaCC_Runtime',
+	#package : 'SmaCC_Runtime'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 SmaCCScanner class >> initialize [
 	self initializeKeywordMap
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 SmaCCScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScanner class >> keywordMap [
 	keywordMap isNil
 		ifTrue: [ self initializeKeywordMap ].
 	^ keywordMap
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCScanner class >> needsLineNumbers [
 	"Redefine to return true, if you need line number information"
 
 	^ false
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCScanner class >> on: aStream [
 	^ self new
 		on:
@@ -80,12 +81,12 @@ SmaCCScanner class >> on: aStream [
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCScanner >> atEnd [
 	^ stream atEnd
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScanner >> checkForKeyword: aString [
 	| stateMap action oldActions entry |
 	action := matchActions isSymbol
@@ -108,24 +109,24 @@ SmaCCScanner >> checkForKeyword: aString [
 		ifTrue: [ matchActions := (Array with: matchActions) , oldActions ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScanner >> checkForValidMatch [
 	matchActions isNil
 		ifTrue: [ self scannerError ]
 ]
 
-{ #category : #'default token handling' }
+{ #category : 'default token handling' }
 SmaCCScanner >> comment [
 	comments add: (Array with: start + 1 with: matchEnd).
 	^ self whitespace
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScanner >> comments [
 	^ comments
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScanner >> contents [
 	| writeStream token |
 	writeStream := WriteStream with: Array new.
@@ -137,12 +138,12 @@ SmaCCScanner >> contents [
 	^ writeStream contents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScanner >> createToken [
 	^ self createTokenFor: outputStream contents
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScanner >> createTokenFor: string [
 	| token |
 	token := self tokenClass
@@ -153,37 +154,37 @@ SmaCCScanner >> createTokenFor: string [
 	^ token
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScanner >> currentCharacter [
 	^ currentCharacter
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScanner >> debugEnd [
 	^ matchEnd
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScanner >> debugStart [
 	^ start
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScanner >> emptySymbolTokenId [
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScanner >> eofTokenId [
 	^ Array with: self emptySymbolTokenId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScanner >> errorTokenId [
 	^ self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCScanner >> includesScope: aSymbol [
 	| current |
 	current := self scopeStack.
@@ -193,7 +194,7 @@ SmaCCScanner >> includesScope: aSymbol [
 	^ false
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCScanner >> initialize [
 	super initialize.
 	outputStream := WriteStream with: String new.
@@ -202,49 +203,49 @@ SmaCCScanner >> initialize [
 	comments := OrderedCollection new
 ]
 
-{ #category : #utility }
+{ #category : 'utility' }
 SmaCCScanner >> keywordFor: aString [
 	"Subclasses can override this to ignore case"
 
 	^ aString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScanner >> lastOutputStreamMatchPosition [
 	^ lastOutputStreamMatchPosition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScanner >> lineNumber [
 	"This requires the stream to be a line number stream (see the #needsLineNumbers class method)."
 
 	^ stream lineNumber
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScanner >> matchActions [
 	^ matchActions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScanner >> next [
 	self resetScanner.
 	returnMatchBlock := [ :match | ^ match ].
 	^ self scanForToken
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCScanner >> on: aStream [
 	stream := aStream.
 	start := stream position
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScanner >> outputStream [
 	^ outputStream
 ]
 
-{ #category : #'default token handling' }
+{ #category : 'default token handling' }
 SmaCCScanner >> patternToken [
 	| token pattern |
 	pattern := outputStream contents.
@@ -263,14 +264,14 @@ SmaCCScanner >> patternToken [
 	^ token
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScanner >> peekAhead: anInteger [
 	^ anInteger < 0
 		ifTrue: [ self peekAt: self position + anInteger ]
 		ifFalse: [ self peekAt: self position + anInteger - 1 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScanner >> peekAt: anInteger [
 	| position |
 	position := stream position.
@@ -278,47 +279,47 @@ SmaCCScanner >> peekAt: anInteger [
 	stream next ] ensure: [ stream position: position ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScanner >> peekCharacter [
 	^ stream peek
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScanner >> popScope [
 	scopeStack := self scopeStack nextLink.
 	self scope: (scopeStack ifNil: [ #default ] ifNotNil: [ scopeStack value ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScanner >> position [
 	^ stream position
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScanner >> position: anInteger [
 	^ stream position: anInteger
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScanner >> pushScope: aSymbol [
 	scopeStack := self scopeStack asLinkPrepend: aSymbol.
 	self scope: aSymbol
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScanner >> recordAndReportMatch: aCollection [
 	self recordMatch: aCollection.
 	^ self reportLastMatch
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScanner >> recordMatch: aCollection [
 	matchActions := aCollection.
 	matchEnd := stream position.
 	lastOutputStreamMatchPosition := outputStream position
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScanner >> reportLastMatch [
 	"The scanner has found the end of a token and must report it"
 
@@ -339,7 +340,7 @@ SmaCCScanner >> reportLastMatch [
 		ifFalse: [ self createTokenFor: string ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScanner >> resetOutputToLastMatch [
 	outputStream position: lastOutputStreamMatchPosition.
 	lastOutputStreamMatchPosition == 0
@@ -350,7 +351,7 @@ SmaCCScanner >> resetOutputToLastMatch [
 		ifFalse: [ lastMatchWasEmpty := false ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScanner >> resetScanner [
 	matchActions := nil.
 	start := stream position.
@@ -358,7 +359,7 @@ SmaCCScanner >> resetScanner [
 	lastOutputStreamMatchPosition := 0
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScanner >> scanForString: aString [
 	^ aString
 		allSatisfy: [ :each | 
@@ -366,7 +367,7 @@ SmaCCScanner >> scanForString: aString [
 			currentCharacter == each ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScanner >> scanForString: aString match: aCollection [
 	^ aString
 		allSatisfy: [ :each | 
@@ -375,12 +376,12 @@ SmaCCScanner >> scanForString: aString match: aCollection [
 			currentCharacter == each ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScanner >> scanForToken [
 	^ self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScanner >> scannerError [
 	| string |
 	(stream atEnd and: [ start == stream position ])
@@ -393,33 +394,33 @@ SmaCCScanner >> scannerError [
 	returnMatchBlock value: (self createTokenFor: string)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScanner >> scope [
 	^ scope
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScanner >> scope: aSymbol [
 	scope := aSymbol.
 	scopeStack ifNotNil: [ scopeStack value: aSymbol ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScanner >> scopeStack [
 	^ scopeStack ifNil: [ scopeStack := self scope asLink ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScanner >> scopeStack: anObject [
 	scopeStack := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScanner >> setPosition: anInteger [
 	^ stream position: anInteger
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScanner >> step [
 	stream atEnd
 		ifTrue: [ ^ returnMatchBlock value: self reportLastMatch ].
@@ -427,22 +428,22 @@ SmaCCScanner >> step [
 	outputStream nextPut: currentCharacter
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScanner >> stream [
 	^stream
 ]
 
-{ #category : #utility }
+{ #category : 'utility' }
 SmaCCScanner >> tokenActions [
 	^ #()
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScanner >> tokenClass [
 	^ SmaCCToken
 ]
 
-{ #category : #'default token handling' }
+{ #category : 'default token handling' }
 SmaCCScanner >> whitespace [
 	"By default, eat the whitespace"
 

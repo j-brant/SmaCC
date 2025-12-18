@@ -1,10 +1,11 @@
 Class {
-	#name : #CSSIdentifierNode,
-	#superclass : #CSSNameNode,
-	#category : #'SmaCC_CSS'
+	#name : 'CSSIdentifierNode',
+	#superclass : 'CSSNameNode',
+	#category : 'SmaCC_CSS',
+	#package : 'SmaCC_CSS'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSIdentifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIdentifier: self
 ]

@@ -1,63 +1,64 @@
 Class {
-	#name : #CSSParenthesizedExpressionNode,
-	#superclass : #CSSProgramNode,
+	#name : 'CSSParenthesizedExpressionNode',
+	#superclass : 'CSSProgramNode',
 	#instVars : [
 		'leftParen',
 		'items',
 		'rightParen'
 	],
-	#category : #'SmaCC_CSS'
+	#category : 'SmaCC_CSS',
+	#package : 'SmaCC_CSS'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSParenthesizedExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitParenthesizedExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSParenthesizedExpressionNode >> compositeNodeVariables [
 	^ #(#items)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSSParenthesizedExpressionNode >> initialize [
 	super initialize.
 	items := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSParenthesizedExpressionNode >> items [
 	^ items
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSParenthesizedExpressionNode >> items: anOrderedCollection [
 	self setParents: self items to: nil.
 	items := anOrderedCollection.
 	self setParents: self items to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSParenthesizedExpressionNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSParenthesizedExpressionNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSParenthesizedExpressionNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSParenthesizedExpressionNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSParenthesizedExpressionNode >> tokenVariables [
 	^ #(#leftParen #rightParen)
 ]

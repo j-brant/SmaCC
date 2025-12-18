@@ -1,63 +1,64 @@
 Class {
-	#name : #CSSFunctionNode,
-	#superclass : #CSSProgramNode,
+	#name : 'CSSFunctionNode',
+	#superclass : 'CSSProgramNode',
 	#instVars : [
 		'name',
 		'items',
 		'rightParen'
 	],
-	#category : #'SmaCC_CSS'
+	#category : 'SmaCC_CSS',
+	#package : 'SmaCC_CSS'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSFunctionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFunction: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSFunctionNode >> compositeNodeVariables [
 	^ #(#items)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSSFunctionNode >> initialize [
 	super initialize.
 	items := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSFunctionNode >> items [
 	^ items
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSFunctionNode >> items: anOrderedCollection [
 	self setParents: self items to: nil.
 	items := anOrderedCollection.
 	self setParents: self items to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSFunctionNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSFunctionNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSFunctionNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSFunctionNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSFunctionNode >> tokenVariables [
 	^ #(#name #rightParen)
 ]

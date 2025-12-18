@@ -1,10 +1,11 @@
 Class {
-	#name : #CSSUnicodeRangeNode,
-	#superclass : #CSSValueNode,
-	#category : #'SmaCC_CSS'
+	#name : 'CSSUnicodeRangeNode',
+	#superclass : 'CSSValueNode',
+	#category : 'SmaCC_CSS',
+	#package : 'SmaCC_CSS'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSUnicodeRangeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUnicodeRange: self
 ]
