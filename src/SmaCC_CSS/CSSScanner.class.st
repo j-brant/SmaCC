@@ -7,12 +7,12 @@ Class {
 
 { #category : 'generated' }
 CSSScanner >> emptySymbolTokenId [
-	^ 55
+	^ 60
 ]
 
 { #category : 'generated' }
 CSSScanner >> errorTokenId [
-	^ 56
+	^ 61
 ]
 
 { #category : 'generated' }

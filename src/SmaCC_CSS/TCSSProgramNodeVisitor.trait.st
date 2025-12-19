@@ -107,13 +107,13 @@ TCSSProgramNodeVisitor >> visitStylesheet: aStylesheet [
 ]
 
 { #category : 'generated' }
-TCSSProgramNodeVisitor >> visitUnicodeRange: anUnicodeRange [
-	^ self visitValue: anUnicodeRange
+TCSSProgramNodeVisitor >> visitURI: anURI [
+	^ self visitValue: anURI
 ]
 
 { #category : 'generated' }
-TCSSProgramNodeVisitor >> visitURI: anURI [
-	^ self visitValue: anURI
+TCSSProgramNodeVisitor >> visitUnicodeRange: anUnicodeRange [
+	^ self visitValue: anUnicodeRange
 ]
 
 { #category : 'generated' }
