@@ -11,7 +11,7 @@ BaselineOfGraphQLParser >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.129' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.130' ].
 
 		spec package: 'SmaCC_GraphQL' with: [
 			spec requires: #(#SmaCCRuntime) ].
