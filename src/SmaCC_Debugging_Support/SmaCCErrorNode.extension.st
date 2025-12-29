@@ -1,6 +1,6 @@
-Extension { #name : #SmaCCErrorNode }
+Extension { #name : 'SmaCCErrorNode' }
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCErrorNode >> addInspectorItemsIn: anObject as: aString to: aCollection [
 	(anObject isKindOf: SmaCCToken)
 		ifTrue: [ ^ aCollection
@@ -21,7 +21,7 @@ SmaCCErrorNode >> addInspectorItemsIn: anObject as: aString to: aCollection [
 						to: aCollection ] ]
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCErrorNode >> gtInspectorItems [
 	| items |
 	items := OrderedCollection new.

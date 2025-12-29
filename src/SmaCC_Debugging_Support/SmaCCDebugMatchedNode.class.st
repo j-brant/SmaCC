@@ -1,14 +1,16 @@
 Class {
-	#name : #SmaCCDebugMatchedNode,
-	#superclass : #Object,
+	#name : 'SmaCCDebugMatchedNode',
+	#superclass : 'Object',
 	#instVars : [
 		'matchResult',
 		'node'
 	],
-	#category : #'SmaCC_Debugging_Support-Pattern Matching'
+	#category : 'SmaCC_Debugging_Support-Pattern Matching',
+	#package : 'SmaCC_Debugging_Support',
+	#tag : 'Pattern Matching'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCDebugMatchedNode class >> forResult: matchResult andNode: aNode [
 	^ self new
 		matchResult: matchResult;
@@ -16,22 +18,22 @@ SmaCCDebugMatchedNode class >> forResult: matchResult andNode: aNode [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDebugMatchedNode >> matchResult [
 	^ matchResult
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDebugMatchedNode >> matchResult: anObject [
 	matchResult := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDebugMatchedNode >> node [
 	^ node
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDebugMatchedNode >> node: anObject [
 	node := anObject
 ]

@@ -1,6 +1,6 @@
-Extension { #name : #SmaCCAmbiguousAction }
+Extension { #name : 'SmaCCAmbiguousAction' }
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCAmbiguousAction >> simulateOn: aParserSimulator token: aSmaCCToken [
 	| currentState uniqueActions |
 	currentState := aParserSimulator currentParserState.
@@ -13,7 +13,7 @@ SmaCCAmbiguousAction >> simulateOn: aParserSimulator token: aSmaCCToken [
 	uniqueActions first simulateOn: aParserSimulator token: aSmaCCToken
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCAmbiguousAction >> uniqueActions [
 	| hasShift |
 	hasShift := false.

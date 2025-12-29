@@ -1,25 +1,27 @@
 Class {
-	#name : #SmaCCParserStepThroughAction,
-	#superclass : #SmaCCParserStepAction,
-	#category : #'SmaCC_Debugging_Support-Debugger'
+	#name : 'SmaCCParserStepThroughAction',
+	#superclass : 'SmaCCParserStepAction',
+	#category : 'SmaCC_Debugging_Support-Debugger',
+	#package : 'SmaCC_Debugging_Support',
+	#tag : 'Debugger'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserStepThroughAction class >> defaultIcon [
 	^ (Smalltalk at: #BrGlamorousIcons ifAbsent: [  ]) ifNil: [ self iconNamed: #glamorousOver ] ifNotNil: [ :cls | cls over ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserStepThroughAction class >> defaultName [
 	^ 'Through Action'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserStepThroughAction >> defaultOrder [
 	^ 1
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SmaCCParserStepThroughAction >> executeAction [
 	| insidePerform performBlock |
 	performBlock := [ :context | (context receiver isKindOf: SmaCCParser) and: [ context selector = #performAction: ] ].
@@ -32,7 +34,7 @@ SmaCCParserStepThroughAction >> executeAction [
 					false ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserStepThroughAction >> help [
 	^ 'Run until we perform the next action (shift or reduce) or a parse error is encountered.'
 ]

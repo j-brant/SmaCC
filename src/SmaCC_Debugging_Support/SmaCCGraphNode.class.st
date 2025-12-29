@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCGraphNode,
-	#superclass : #Object,
+	#name : 'SmaCCGraphNode',
+	#superclass : 'Object',
 	#instVars : [
 		'state',
 		'name',
@@ -11,10 +11,12 @@ Class {
 		'reductions',
 		'parser'
 	],
-	#category : #'SmaCC_Debugging_Support-Roassal'
+	#category : 'SmaCC_Debugging_Support-Roassal',
+	#package : 'SmaCC_Debugging_Support',
+	#tag : 'Roassal'
 }
 
-{ #category : #inspecting }
+{ #category : 'inspecting' }
 SmaCCGraphNode class >> gtExampleSmaCCGraphNode [
 	<gtExample>
 	<label: 'SmaCCGraphNode'>
@@ -26,7 +28,7 @@ SmaCCGraphNode class >> gtExampleSmaCCGraphNode [
 		parser: parser
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCGraphNode class >> named: aString state: anInteger parser: aSmaCCParser [
 	^ self new
 		name: aString;
@@ -35,7 +37,7 @@ SmaCCGraphNode class >> named: aString state: anInteger parser: aSmaCCParser [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGraphNode >> addDirectLinkToNodeNamed: aString state: anInteger [
 	| node |
 	(followed notNil and: [ followed name = aString ])
@@ -49,17 +51,17 @@ SmaCCGraphNode >> addDirectLinkToNodeNamed: aString state: anInteger [
 	^ directLinks add: node
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGraphNode >> addPrevious: aSmaCCGraphNode [
 	previousNodes add: aSmaCCGraphNode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGraphNode >> addReduction: aString [
 	reductions add: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGraphNode >> allNodes [
 	| nodes |
 	nodes := IdentitySet new.
@@ -67,7 +69,7 @@ SmaCCGraphNode >> allNodes [
 	^ nodes
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGraphNode >> allNodesInto: aCollection [
 	(aCollection includes: self)
 		ifTrue: [ ^ self ].
@@ -77,7 +79,7 @@ SmaCCGraphNode >> allNodesInto: aCollection [
 	directLinks do: [ :each | each allNodesInto: aCollection ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGraphNode >> description [
 	| stream |
 	previousNodes isEmpty
@@ -89,34 +91,24 @@ SmaCCGraphNode >> description [
 	^ stream contents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGraphNode >> directLinks [
 	^ directLinks
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGraphNode >> followed [
 	^ followed
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGraphNode >> followed: aSmaCCGraphNode [
 	followed := aSmaCCGraphNode.
 	aSmaCCGraphNode notNil
 		ifTrue: [ aSmaCCGraphNode addPrevious: self ]
 ]
 
-{ #category : #inspecting }
-SmaCCGraphNode >> gtGraphInspectorViewIn: composite [
-	<gtInspectorPresentationOrder: 20>
-	(composite respondsTo: #roassal2)
-		ifFalse: [ ^ self ].
-	composite roassal2
-		title: 'Graph';
-		initializeView: [ parser roassalViewForStack: self stack ]
-]
-
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCGraphNode >> initialize [
 	super initialize.
 	name := ''.
@@ -126,27 +118,27 @@ SmaCCGraphNode >> initialize [
 	reductions := Set new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCGraphNode >> isFollowed [
 	^ previousNodes isEmpty or: [ previousNodes anySatisfy: [ :each | each followed == self ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGraphNode >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGraphNode >> name: aString [
 	name := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGraphNode >> parser: aSmaCCParser [
 	parser := aSmaCCParser
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGraphNode >> stack [
 	| stack |
 	stack := previousNodes notEmpty
@@ -156,22 +148,22 @@ SmaCCGraphNode >> stack [
 	^ stack
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGraphNode >> state [
 	^ state
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGraphNode >> state: anInteger [
 	state := anInteger
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGraphNode >> success [
 	^ success
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGraphNode >> success: aBoolean [
 	success := aBoolean
 ]

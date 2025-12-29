@@ -1,6 +1,6 @@
-Extension { #name : #SmaCCScanner }
+Extension { #name : 'SmaCCScanner' }
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCScanner >> debugSource [
 	| str position |
 	str := self stream.

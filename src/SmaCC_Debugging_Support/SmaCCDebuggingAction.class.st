@@ -1,70 +1,72 @@
 Class {
-	#name : #SmaCCDebuggingAction,
-	#superclass : #StDebuggerCommand,
+	#name : 'SmaCCDebuggingAction',
+	#superclass : 'StDebuggerCommand',
 	#classInstVars : [
 		'icon'
 	],
-	#category : #'SmaCC_Debugging_Support-Debugger'
+	#category : 'SmaCC_Debugging_Support-Debugger',
+	#package : 'SmaCC_Debugging_Support',
+	#tag : 'Debugger'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SmaCCDebuggingAction class >> defaultIconName [
 	^ nil
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SmaCCDebuggingAction class >> defaultShortcut [
 	^ nil
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCDebuggingAction class >> forDebugger: aDebugger [
 	^ self new
 		  context: aDebugger;
 		  yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCDebuggingAction >> appliesToContext: aContext [
 	^ self session isActive
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDebuggingAction >> currentContext [
 	^ self session context
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 SmaCCDebuggingAction >> execute [
 	self executeAction
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 SmaCCDebuggingAction >> executeAction [
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDebuggingAction >> help [
 	^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDebuggingAction >> icon [
 	^ self class defaultIcon
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDebuggingAction >> session [
 	^ self debugger session
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCDebuggingAction >> stepUntil: aBlock [
 	self stepUntil: aBlock context: self session rootContext
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCDebuggingAction >> stepUntil: aBlock context: rootContext [
 	| context process previousContext errorMethod |
 	process := self session process.
