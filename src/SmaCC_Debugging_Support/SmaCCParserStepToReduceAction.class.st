@@ -1,25 +1,27 @@
 Class {
-	#name : #SmaCCParserStepToReduceAction,
-	#superclass : #SmaCCParserStepAction,
-	#category : #'SmaCC_Debugging_Support-Debugger'
+	#name : 'SmaCCParserStepToReduceAction',
+	#superclass : 'SmaCCParserStepAction',
+	#category : 'SmaCC_Debugging_Support-Debugger',
+	#package : 'SmaCC_Debugging_Support',
+	#tag : 'Debugger'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserStepToReduceAction class >> defaultIcon [
 	^ (Smalltalk at: #BrGlamorousIcons ifAbsent: [  ]) ifNil: [ self iconNamed: #glamorousInto ] ifNotNil: [ :cls | cls into ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserStepToReduceAction class >> defaultName [
 	^ 'Into Reduce'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserStepToReduceAction >> defaultOrder [
 	^ 50
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SmaCCParserStepToReduceAction >> executeAction [
 	| selectors |
 	selectors := self session parser reduceTable
@@ -36,7 +38,7 @@ SmaCCParserStepToReduceAction >> executeAction [
 						and: [ selectors includes: each selector ] ]) notNil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserStepToReduceAction >> help [
 	^ 'Run until we get to the start of a reduction action or a parse error is encountered.'
 ]

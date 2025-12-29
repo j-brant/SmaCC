@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCParserDebugger,
-	#superclass : #SpPresenter,
+	#name : 'SmaCCParserDebugger',
+	#superclass : 'SpPresenter',
 	#traits : 'TDebugger',
 	#classTraits : 'TDebugger classTrait',
 	#instVars : [
@@ -15,15 +15,17 @@ Class {
 		'methodSource',
 		'glrLabel'
 	],
-	#category : #'SmaCC_Debugging_Support-Debugger'
+	#category : 'SmaCC_Debugging_Support-Debugger',
+	#package : 'SmaCC_Debugging_Support',
+	#tag : 'Debugger'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserDebugger class >> closeAllDebuggers [
 	^ self allInstancesDo: [ :each | each close ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCParserDebugger class >> debugSession: aDebugSession [
 	| session |
 	session := SmaCCParserDebugSession from: aDebugSession.
@@ -32,39 +34,39 @@ SmaCCParserDebugger class >> debugSession: aDebugSession [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserDebugger class >> defaultDebuggerRank [
 
 	^ 11
 ]
 
-{ #category : #debugging }
+{ #category : 'debugging' }
 SmaCCParserDebugger class >> handlesContext: aContext [
 	^ SmaCCParserDebugSession handlesContext: aContext
 ]
 
-{ #category : #debugging }
+{ #category : 'debugging' }
 SmaCCParserDebugger class >> handlesDebugSession: aSession [
 	^ self handlesContext: aSession context
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SmaCCParserDebugger >> close [
 	self window ifNotNil: [ :window | window close ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SmaCCParserDebugger >> contextPage [
 	^ SpNotebookPage title: 'Context' provider: [ self methodSource ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SmaCCParserDebugger >> createSourceText [
 	sourceText := self newText.
 	sourceText text: session inputText
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SmaCCParserDebugger >> createToolBar [
 	| throughAction intoReduceAction nextTokenAction nextCharacterAction toCursorAction resumeAction buttons |
 	throughAction := SmaCCParserStepThroughAction forDebugger: self.
@@ -134,17 +136,17 @@ SmaCCParserDebugger >> createToolBar [
 	self updateGLRStates
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserDebugger >> currentContext [
 	^ session interruptedContext
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserDebugger >> currentInputSelectionInterval [
 	^ sourceText selectionInterval
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 SmaCCParserDebugger >> defaultLayout [
 	^ (SpBoxLayout newTopToBottom)
 		spacing: 5;
@@ -154,7 +156,7 @@ SmaCCParserDebugger >> defaultLayout [
 		yourself
 ]
 
-{ #category : #'private-updating' }
+{ #category : 'private-updating' }
 SmaCCParserDebugger >> glrStateText [
 	| text index states |
 	states := self session glrParserStates.
@@ -164,7 +166,7 @@ SmaCCParserDebugger >> glrStateText [
 	^ text
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SmaCCParserDebugger >> initializePresenters [
 	self createToolBar.
 	notebook := self newNotebook.
@@ -174,13 +176,13 @@ SmaCCParserDebugger >> initializePresenters [
 	self createSourceText
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SmaCCParserDebugger >> initializeWindow: aWindowPresenter [
 	super initializeWindow: aWindowPresenter.
 	aWindowPresenter initialExtent: 750 @ 650
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserDebugger >> isGLR [
 	| glrClass |
 	^ isGLR
@@ -189,12 +191,12 @@ SmaCCParserDebugger >> isGLR [
 			isGLR := session parser isKindOf: glrClass ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SmaCCParserDebugger >> methodSource [
 	^ methodSource ifNil: [ methodSource := self newText ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SmaCCParserDebugger >> parserPage [
 	| parserPresenter |
 	parserPresenter := self newPresenter.
@@ -243,13 +245,13 @@ SmaCCParserDebugger >> parserPage [
 	^ SpNotebookPage title: 'Parser' provider: [ parserPresenter ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SmaCCParserDebugger >> proceedDebugSession [
 	self session resume.
 	self close
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SmaCCParserDebugger >> scannerPage [
 	scannerPropertiesTable := self newTable.
 	scannerPropertiesTable
@@ -259,27 +261,27 @@ SmaCCParserDebugger >> scannerPage [
 	^ SpNotebookPage title: 'Scanner' provider: [ scannerPropertiesTable ]
 ]
 
-{ #category : #'private-updating' }
+{ #category : 'private-updating' }
 SmaCCParserDebugger >> selectSourceFor: anObject [
 	(session tokenIntervalFor: anObject) ifNotNil: [ :interval | sourceText selectionInterval: interval ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserDebugger >> session [
 	^ session
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SmaCCParserDebugger >> setModelBeforeInitialization: aDomainObject [
 	session := aDomainObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserDebugger >> title [
 	^ 'SmaCC Debugger'
 ]
 
-{ #category : #'private-updating' }
+{ #category : 'private-updating' }
 SmaCCParserDebugger >> updateContext [
 	(session isInsideReductionAction or: [ session isScanning ])
 		ifTrue:
@@ -289,7 +291,7 @@ SmaCCParserDebugger >> updateContext [
 		ifFalse: [ notebook pages size < 3 ifFalse: [ notebook removePage: notebook pages last ] ]
 ]
 
-{ #category : #'private-updating' }
+{ #category : 'private-updating' }
 SmaCCParserDebugger >> updateDisplay [
 	self updateParserStack.
 	self updateParserStates.
@@ -298,19 +300,19 @@ SmaCCParserDebugger >> updateDisplay [
 	self updateContext
 ]
 
-{ #category : #'private-updating' }
+{ #category : 'private-updating' }
 SmaCCParserDebugger >> updateGLRStates [
 	glrLabel isNil ifTrue: [ ^ self ].
 	glrLabel label: self glrStateText
 ]
 
-{ #category : #'private-updating' }
+{ #category : 'private-updating' }
 SmaCCParserDebugger >> updateParser [
 	notebook selectPage: notebook pages first.
 	self updateDisplay
 ]
 
-{ #category : #'private-updating' }
+{ #category : 'private-updating' }
 SmaCCParserDebugger >> updateParserStack [
 	| items |
 	items := session parserStack.
@@ -319,12 +321,12 @@ SmaCCParserDebugger >> updateParserStack [
 		ifNotNil: [ :i | parserStackTable selectIndex: i ]
 ]
 
-{ #category : #'private-updating' }
+{ #category : 'private-updating' }
 SmaCCParserDebugger >> updateParserStates [
 	stateActionsTable items: session potentialStateActions
 ]
 
-{ #category : #'private-updating' }
+{ #category : 'private-updating' }
 SmaCCParserDebugger >> updateScanner [
 	| scanner success start end |
 	notebook selectPage: notebook pages second.
@@ -337,7 +339,7 @@ SmaCCParserDebugger >> updateScanner [
 	sourceText selectionInterval: (start to: end)
 ]
 
-{ #category : #'private-updating' }
+{ #category : 'private-updating' }
 SmaCCParserDebugger >> updateScannerProperties [
 	scannerPropertiesTable items: session scannerProperties
 ]

@@ -1,32 +1,34 @@
 Class {
-	#name : #SmaCCParserSimulationError,
-	#superclass : #Error,
-	#category : #'SmaCC_Debugging_Support-Simulation'
+	#name : 'SmaCCParserSimulationError',
+	#superclass : 'Error',
+	#category : 'SmaCC_Debugging_Support-Simulation',
+	#package : 'SmaCC_Debugging_Support',
+	#tag : 'Simulation'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCParserSimulationError >> isInputIncomplete [
 	self token isSyntaxError
 		ifTrue: [ ^ false ].
 	^ (self simulator symbolForId: self token ids first) name = 'E O F'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserSimulationError >> nodeStack [
 	^ self simulator currentParserState nodeStack copy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserSimulationError >> simulator [
 	^ self tag first
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserSimulationError >> stateStack [
 	^ self simulator currentParserState stateStack copy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserSimulationError >> token [
 	^ self tag last
 ]

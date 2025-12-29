@@ -1,16 +1,18 @@
 Class {
-	#name : #SmaCCParserDebugSession,
-	#superclass : #DebugSession,
+	#name : 'SmaCCParserDebugSession',
+	#superclass : 'DebugSession',
 	#instVars : [
 		'rootContext'
 	],
 	#classInstVars : [
 		'maxSearchDepth'
 	],
-	#category : #'SmaCC_Debugging_Support-Debugger'
+	#category : 'SmaCC_Debugging_Support-Debugger',
+	#package : 'SmaCC_Debugging_Support',
+	#tag : 'Debugger'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCParserDebugSession class >> from: aDebugSession [
 	| session |
 	(aDebugSession isKindOf: superclass) ifFalse: [ self error: 'Unknown debug session' ].
@@ -19,7 +21,7 @@ SmaCCParserDebugSession class >> from: aDebugSession [
 	^ session
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCParserDebugSession class >> handlesContext: aContext [
 	| max count |
 	max := self maxSearchDepth.
@@ -32,22 +34,22 @@ SmaCCParserDebugSession class >> handlesContext: aContext [
 			self isParseContext: each ]) notNil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCParserDebugSession class >> isParseContext: each [
 	^ each selector = #parse and: [ each receiver isKindOf: SmaCCParser ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCParserDebugSession class >> maxSearchDepth [
 	^ maxSearchDepth ifNil: [ 50 ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCParserDebugSession class >> maxSearchDepth: anInteger [
 	maxSearchDepth := anInteger
 ]
 
-{ #category : #building }
+{ #category : 'building' }
 SmaCCParserDebugSession >> actionLabelFor: anInteger [
 	| type parser ambiguous |
 	parser := self parser.
@@ -67,7 +69,7 @@ SmaCCParserDebugSession >> actionLabelFor: anInteger [
 				separatedBy: [ stream nextPut: $, ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCParserDebugSession >> glrParserStates [
 	| states |
 	states := self parser states.
@@ -76,7 +78,7 @@ SmaCCParserDebugSession >> glrParserStates [
 		ifFalse: [ states ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCParserDebugSession >> inputSelectionInterval [
 	| context receiver |
 	context := self context
@@ -94,17 +96,17 @@ SmaCCParserDebugSession >> inputSelectionInterval [
 		ifFalse: [ self scanner debugStart + 1 to: self scanner position ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserDebugSession >> inputText [
 	^ self scanner debugSource
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCParserDebugSession >> isActive [
 	^ rootContext notNil and: [ rootContext isDead not and: [ rootContext ~= self process suspendedContext or: [ rootContext willReturn not ] ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCParserDebugSession >> isInsideReductionAction [
 	self context
 		findContextSuchThat: [ :each | 
@@ -115,12 +117,12 @@ SmaCCParserDebugSession >> isInsideReductionAction [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCParserDebugSession >> isScanning [
 	^ self isScanning: self context
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCParserDebugSession >> isScanning: aContext [
 	aContext
 		findContextSuchThat: [ :each | 
@@ -130,12 +132,12 @@ SmaCCParserDebugSession >> isScanning: aContext [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserDebugSession >> parser [
 	^ self rootContext ifNotNil: [ :context | context receiver ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCParserDebugSession >> parserStack [
 	| states nodes items context reduceContext |
 	states := self parser stateStack.
@@ -187,7 +189,7 @@ SmaCCParserDebugSession >> parserStack [
 	^ items
 ]
 
-{ #category : #building }
+{ #category : 'building' }
 SmaCCParserDebugSession >> potentialStateActions [
 	| items ids |
 	ids := self parser currentToken
@@ -211,7 +213,7 @@ SmaCCParserDebugSession >> potentialStateActions [
 				ifFalse: [ a third ] ]
 ]
 
-{ #category : #building }
+{ #category : 'building' }
 SmaCCParserDebugSession >> reduceActionName: anInteger [
 	| entry |
 	entry := self parser reduceTable at: anInteger.
@@ -219,7 +221,7 @@ SmaCCParserDebugSession >> reduceActionName: anInteger [
 		, (self parser symbolNameFor: entry first)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserDebugSession >> rootContext [
 	^ rootContext
 		ifNil:
@@ -227,12 +229,12 @@ SmaCCParserDebugSession >> rootContext [
 				findContextSuchThat: [ :each | each selector = #parse and: [ each receiver isKindOf: SmaCCParser ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserDebugSession >> scanner [
 	^ self parser scanner
 ]
 
-{ #category : #building }
+{ #category : 'building' }
 SmaCCParserDebugSession >> scannerProperties [
 	| items scanner string |
 	scanner := self scanner.
@@ -269,7 +271,7 @@ SmaCCParserDebugSession >> scannerProperties [
 	^ items
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserDebugSession >> tokenIntervalFor: anObject [
 	(anObject isKindOf: SequenceableCollection)
 		ifTrue: [ | interval |

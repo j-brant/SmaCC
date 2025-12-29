@@ -1,10 +1,12 @@
 Class {
-	#name : #SmaCCParserNextTokenAction,
-	#superclass : #SmaCCParserStepAction,
-	#category : #'SmaCC_Debugging_Support-Debugger'
+	#name : 'SmaCCParserNextTokenAction',
+	#superclass : 'SmaCCParserStepAction',
+	#category : 'SmaCC_Debugging_Support-Debugger',
+	#package : 'SmaCC_Debugging_Support',
+	#tag : 'Debugger'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserNextTokenAction class >> defaultIcon [
 	^ icon
 		ifNil: [ icon := Form
@@ -15,24 +17,24 @@ SmaCCParserNextTokenAction class >> defaultIcon [
 				offset: 0 @ 0 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserNextTokenAction class >> defaultName [
 	^ 'Next Token'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserNextTokenAction >> defaultOrder [
 	^ 100
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SmaCCParserNextTokenAction >> executeAction [
 	| token |
 	token := self session parser currentToken.
 	self stepUntil: [ :context | self session parser currentToken ~~ token and: [ self session parser currentToken notNil ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCParserNextTokenAction >> help [
 	^ 'Run until we get the next token or a parse error is encountered.'
 ]

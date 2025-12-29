@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCScannerSimulator,
-	#superclass : #SmaCCScanner,
+	#name : 'SmaCCScannerSimulator',
+	#superclass : 'SmaCCScanner',
 	#instVars : [
 		'grammar',
 		'nfa',
@@ -8,10 +8,12 @@ Class {
 		'emptyId',
 		'errorId'
 	],
-	#category : #'SmaCC_Debugging_Support-Simulation'
+	#category : 'SmaCC_Debugging_Support-Simulation',
+	#package : 'SmaCC_Debugging_Support',
+	#tag : 'Simulation'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCScannerSimulator class >> forGrammar: aSmaCCGrammar nfa: aSmaCCNode [
 	^ self new
 		grammar: aSmaCCGrammar;
@@ -19,7 +21,7 @@ SmaCCScannerSimulator class >> forGrammar: aSmaCCGrammar nfa: aSmaCCNode [
 		yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScannerSimulator >> buildMethodMap [
 	| defaultSelectors |
 	defaultSelectors := (SmaCCScanner selectorsInProtocol: #'default token handling')
@@ -36,19 +38,19 @@ SmaCCScannerSimulator >> buildMethodMap [
 								put: selector ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScannerSimulator >> emptySymbolTokenId [
 	^ emptyId
 		ifNil: [ emptyId := grammar symbols identityIndexOf: grammar emptySymbol ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScannerSimulator >> errorTokenId [
 	^ errorId
 		ifNil: [ errorId := grammar symbols identityIndexOf: grammar errorSymbol ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScannerSimulator >> expandStates: aCollection [
 	| todo ids |
 	todo := aCollection copy.
@@ -60,7 +62,7 @@ SmaCCScannerSimulator >> expandStates: aCollection [
 		ifTrue: [ self recordMatch: ids asSortedCollection asArray ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScannerSimulator >> expandStates: aCollection from: aSmaCCNode [
 	aSmaCCNode transitions
 		do: [ :each | 
@@ -72,13 +74,13 @@ SmaCCScannerSimulator >> expandStates: aCollection from: aSmaCCNode [
 							self expandStates: aCollection from: each to ] ] ]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCScannerSimulator >> grammar: smaccGrammar [
 	grammar := smaccGrammar.
 	self buildMethodMap
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScannerSimulator >> moveFrom: currentStates [
 	| newStates |
 	newStates := IdentitySet new.
@@ -93,12 +95,12 @@ SmaCCScannerSimulator >> moveFrom: currentStates [
 	^ newStates
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCScannerSimulator >> nfa: aSmaCCNode [
 	nfa := aSmaCCNode
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCScannerSimulator >> reportLastMatch: isError [
 	matchActions isNil
 		ifTrue: [ isError
@@ -109,7 +111,7 @@ SmaCCScannerSimulator >> reportLastMatch: isError [
 	^ self reportLastMatch
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScannerSimulator >> scanForToken [
 	| currentStates |
 	currentStates := IdentitySet with: nfa.

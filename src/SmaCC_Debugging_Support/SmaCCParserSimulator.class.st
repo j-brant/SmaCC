@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCParserSimulator,
-	#superclass : #SmaCCGrammarCompiler,
+	#name : 'SmaCCParserSimulator',
+	#superclass : 'SmaCCGrammarCompiler',
 	#instVars : [
 		'parserStates',
 		'currentParserState',
@@ -10,10 +10,12 @@ Class {
 		'lastState',
 		'nextScannerState'
 	],
-	#category : #'SmaCC_Debugging_Support-Simulation'
+	#category : 'SmaCC_Debugging_Support-Simulation',
+	#package : 'SmaCC_Debugging_Support',
+	#tag : 'Simulation'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 SmaCCParserSimulator class >> csharpIfStatement [
 	<gtExample>
 	| simulator result |
@@ -32,7 +34,7 @@ SmaCCParserSimulator class >> csharpIfStatement [
 	^ result
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 SmaCCParserSimulator class >> csharpIncompleteIfStatement [
 	<gtExample>
 	| simulator |
@@ -49,7 +51,7 @@ SmaCCParserSimulator class >> csharpIncompleteIfStatement [
 	self error: 'Shouldn''t get here'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 SmaCCParserSimulator class >> csharpInvalidInput [
 	<gtExample>
 	| simulator |
@@ -67,7 +69,7 @@ SmaCCParserSimulator class >> csharpInvalidInput [
 	self error: 'Shouldn''t get here'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 SmaCCParserSimulator class >> csharpInvalidToken [
 	<gtExample>
 	| simulator |
@@ -84,7 +86,7 @@ SmaCCParserSimulator class >> csharpInvalidToken [
 	self error: 'Shouldn''t get here'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 SmaCCParserSimulator class >> javaAmbiguousActions [
 	<gtExample>
 	| simulator items |
@@ -98,19 +100,19 @@ SmaCCParserSimulator class >> javaAmbiguousActions [
 	^ items first
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCParserSimulator class >> on: aString [
 	^ self new
 		buildDefinition: aString;
 		yourself
 ]
 
-{ #category : #'parsing support' }
+{ #category : 'parsing support' }
 SmaCCParserSimulator >> accept [
 	currentParserState markAccepted
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCParserSimulator >> buildDefinition: aString [
 	super buildDefinition: aString.
 	scannerSimulator := SmaCCScannerSimulator
@@ -118,7 +120,7 @@ SmaCCParserSimulator >> buildDefinition: aString [
 		nfa: scannerCompiler createFullRegex asNFA
 ]
 
-{ #category : #'private-item sets' }
+{ #category : 'private-item sets' }
 SmaCCParserSimulator >> createInitialItemSetFor: smaccSymbol [
 	| start |
 	startingStateMap := Dictionary new.
@@ -130,12 +132,12 @@ SmaCCParserSimulator >> createInitialItemSetFor: smaccSymbol [
 	shiftTable := Dictionary new
 ]
 
-{ #category : #'parsing support' }
+{ #category : 'parsing support' }
 SmaCCParserSimulator >> currentParserState [
 	^ currentParserState
 ]
 
-{ #category : #'parsing support' }
+{ #category : 'parsing support' }
 SmaCCParserSimulator >> duplicateState [
 	parserStates
 		add:
@@ -145,7 +147,7 @@ SmaCCParserSimulator >> duplicateState [
 				scannerState: currentParserState scannerState copy)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCParserSimulator >> getNextToken [
 	currentToken isNil
 		ifFalse: [ ^ self ].
@@ -160,12 +162,12 @@ SmaCCParserSimulator >> getNextToken [
 	currentParserState scannerState: nextScannerState
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 SmaCCParserSimulator >> isAccepted [
 	^ parserStates allSatisfy: [ :each | each isAccepted ]
 ]
 
-{ #category : #'parsing support' }
+{ #category : 'parsing support' }
 SmaCCParserSimulator >> killStateFrom: aSmaCCToken [
 	| index |
 	index := parserStates identityIndexOf: currentParserState.
@@ -176,19 +178,19 @@ SmaCCParserSimulator >> killStateFrom: aSmaCCToken [
 		ifFalse: [ self signalErrorFrom: aSmaCCToken ]
 ]
 
-{ #category : #'private-item sets' }
+{ #category : 'private-item sets' }
 SmaCCParserSimulator >> moveOn: smaccSymbol from: state [
 	^ shiftTable
 		at: (self shiftTableKeyForIndex: state symbol: smaccSymbol)
 		ifAbsentPut: [ self indexOfState: ((itemSets at: state) moveOn: smaccSymbol) ]
 ]
 
-{ #category : #'parsing support' }
+{ #category : 'parsing support' }
 SmaCCParserSimulator >> parserStateId [
 	^ currentParserState stateStack last
 ]
 
-{ #category : #'parsing support' }
+{ #category : 'parsing support' }
 SmaCCParserSimulator >> popItems: anInteger [
 	| items |
 	items := OrderedCollection new: anInteger.
@@ -198,7 +200,7 @@ SmaCCParserSimulator >> popItems: anInteger [
 	^ items
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCParserSimulator >> processToken [
 	| action state symbol itemSet |
 	[ currentToken notNil ]
@@ -218,18 +220,18 @@ SmaCCParserSimulator >> processToken [
 			action simulateOn: self token: currentToken ]
 ]
 
-{ #category : #'parsing support' }
+{ #category : 'parsing support' }
 SmaCCParserSimulator >> processedToken [
 	currentToken := nil
 ]
 
-{ #category : #'parsing support' }
+{ #category : 'parsing support' }
 SmaCCParserSimulator >> pushObject: anObject andState: anInteger [
 	currentParserState stateStack add: anInteger.
 	currentParserState nodeStack add: anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCParserSimulator >> resetParser [
 	lastState := nil.
 	currentToken := nil.
@@ -241,24 +243,24 @@ SmaCCParserSimulator >> resetParser [
 				scannerState: (SmaCCScannerState position: 0 scope: #default))
 ]
 
-{ #category : #'parsing support' }
+{ #category : 'parsing support' }
 SmaCCParserSimulator >> restoreState: aParserState [
 	currentParserState := aParserState.
 	scannerSimulator restoreState: currentParserState scannerState
 ]
 
-{ #category : #'parsing support' }
+{ #category : 'parsing support' }
 SmaCCParserSimulator >> restoreState: aParserState andToken: aSmaCCToken [
 	currentParserState := aParserState.
 	currentToken := aSmaCCToken
 ]
 
-{ #category : #setup }
+{ #category : 'setup' }
 SmaCCParserSimulator >> setupFor: productionName [
 	self createInitialItemSetFor: (grammar symbolNamed: productionName)
 ]
 
-{ #category : #'parsing support' }
+{ #category : 'parsing support' }
 SmaCCParserSimulator >> signalErrorFrom: aSmaCCToken [
 	SmaCCParserSimulationError
 		signal: 'Cannot parse input'
@@ -267,7 +269,7 @@ SmaCCParserSimulator >> signalErrorFrom: aSmaCCToken [
 			aSmaCCToken}
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 SmaCCParserSimulator >> simulateParse: aString [
 	"Returns all possible interpretations of the parse"
 
@@ -281,7 +283,7 @@ SmaCCParserSimulator >> simulateParse: aString [
 	^ parserStates collect: [ :each | each nodeStack first ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCParserSimulator >> symbolForId: id [
 	^ grammar symbols at: id
 ]

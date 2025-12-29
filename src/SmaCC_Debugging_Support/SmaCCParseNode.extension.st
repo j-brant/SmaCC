@@ -1,6 +1,6 @@
-Extension { #name : #SmaCCParseNode }
+Extension { #name : 'SmaCCParseNode' }
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParseNode >> debugLabelForChild: anObject [
 	self singularVariableSelectors
 		do: [ :each | 
@@ -19,7 +19,7 @@ SmaCCParseNode >> debugLabelForChild: anObject [
 	^ anObject class name
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParseNode >> debugMatch: aNode [
 	| process done value match context arg |
 	match := SmaCCDebugMatchResult forPattern: self.
@@ -37,30 +37,7 @@ SmaCCParseNode >> debugMatch: aNode [
 	^ match
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
-SmaCCParseNode >> gtAttributesIn: aComposite [
-	<gtInspectorPresentationOrder: 35>
-	| tabulator |
-	(attributes notNil and: [ attributes notEmpty ])
-		ifFalse: [ ^ self ].
-	tabulator := aComposite tabulator.
-	tabulator
-		title: 'Attributes';
-		row: #attributes.
-	tabulator transmit
-		to: #attributes;
-		andShow: [ :pres | 
-			pres fastTable
-				display: [ attributes keys asSortedCollection ];
-				column: 'Name' evaluated: [ :each | each ];
-				column: 'Value' evaluated: [ :each | self attributeNamed: each ifAbsent: [  ] ] ].
-	tabulator transmit
-		toOutsidePort: #selection;
-		from: #attributes port: #selection;
-		transformed: [ :name | self attributeNamed: name ifAbsent: [  ] ]
-]
-
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParseNode >> gtChildrenOf: each [
 	^ (each at: 2) = #node
 		ifTrue: [ each last gtInspectorItems ]
@@ -71,18 +48,18 @@ SmaCCParseNode >> gtChildrenOf: each [
 						ifFalse: [ #() ] ] ]
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParseNode >> gtCollectionItems: aCollection type: aSymbol [
 	^ (1 to: aCollection size) collect: [ :i | Array with: i printString with: aSymbol with: (aCollection at: i) ]
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParseNode class >> gtExampleSimple [
 	<gtExample>
 	^ self new
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParseNode >> gtInspectorItems [
 	| items |
 	items := OrderedCollection new.
@@ -117,57 +94,4 @@ SmaCCParseNode >> gtInspectorItems [
 					tag notNil
 						ifTrue: [ items add: (Array with: each with: tag with: value) ] ] ].
 	^ items
-]
-
-{ #category : #'*SmaCC_Debugging_Support' }
-SmaCCParseNode >> gtInspectorSourceIn: aComposite [
-	<gtInspectorPresentationOrder: 40>
-	aComposite text
-		title: 'Source';
-		withLineNumbers: true;
-		display: [ self topParent completeSource ];
-		initialize:
-				[ :textPresentation | textPresentation selectionInterval: self sourceInterval ]
-]
-
-{ #category : #'*SmaCC_Debugging_Support' }
-SmaCCParseNode >> gtInspectorTreeIn: aComposite [
-	<gtInspectorPresentationOrder: 30>
-	aComposite tabulator
-		with: [ :browser | 
-			browser title: 'Tree'.
-			browser row: #variables.
-			browser transmit
-				from: #variables;
-				toOutsidePort: #selection;
-				transformed: [ :each | each ifNotNil: [ each last ] ].
-			browser transmit
-				to: #variables;
-				andShow: [ :composite | 
-					composite table
-						display: [ Array with: (Array with: 'self' with: #node with: self) ];
-						children: [ :each | self gtChildrenOf: each ];
-						format: [ :each | each first ];
-						column: 'Variable' evaluated: [ :each | each first ];
-						column: 'Type'
-							evaluated: [ :each | 
-							(each at: 2) = #node
-								ifTrue: [ each last class name ]
-								ifFalse: [ '' ] ]
-							tags: [ :each | Array with: (each at: 2) ] ] ]
-]
-
-{ #category : #'*SmaCC_Debugging_Support' }
-SmaCCParseNode >> gtParentsIn: aComposite [
-	<gtInspectorPresentationOrder: 34>
-	parent isNil
-		ifTrue: [ ^ self ].
-	aComposite tree
-		title: 'Parents';
-		allExpanded;
-		display: [ Array with: self ];
-		format: [ :each | each class name ];
-		children: [ :each | 
-			(each notNil and: [ each parent notNil ])
-				ifTrue: [ Array with: each parent ] ]
 ]
