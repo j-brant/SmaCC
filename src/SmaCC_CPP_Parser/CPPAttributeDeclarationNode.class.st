@@ -1,52 +1,54 @@
 Class {
-	#name : #CPPAttributeDeclarationNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPAttributeDeclarationNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'specifiers',
 		'semicolon'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAttributeDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeDeclarationNode >> compositeNodeVariables [
 	^ #(#specifiers)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPAttributeDeclarationNode >> initialize [
 	super initialize.
 	specifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeDeclarationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeDeclarationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeDeclarationNode >> specifiers [
 	^ specifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeDeclarationNode >> specifiers: anOrderedCollection [
 	self setParents: self specifiers to: nil.
 	specifiers := anOrderedCollection.
 	self setParents: self specifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeDeclarationNode >> tokenVariables [
 	^ #(#semicolon)
 ]

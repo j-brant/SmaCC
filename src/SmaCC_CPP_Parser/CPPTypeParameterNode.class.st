@@ -1,66 +1,68 @@
 Class {
-	#name : #CPPTypeParameterNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPTypeParameterNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'name',
 		'ellipsis',
 		'equal',
 		'type'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeParameterNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTypeParameter: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeParameterNode >> ellipsis [
 	^ ellipsis
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeParameterNode >> ellipsis: aSmaCCToken [
 	ellipsis := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeParameterNode >> equal [
 	^ equal
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeParameterNode >> equal: aSmaCCToken [
 	equal := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeParameterNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeParameterNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeParameterNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeParameterNode >> tokenVariables [
 	^ #(#name #ellipsis #equal)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeParameterNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeParameterNode >> type: aCPPProgramNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].
