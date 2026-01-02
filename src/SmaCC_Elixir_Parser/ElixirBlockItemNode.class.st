@@ -37,9 +37,8 @@ ElixirBlockItemNode >> stab [
 ]
 
 { #category : 'generated' }
-ElixirBlockItemNode >> stab: anElixirStabEoeNode [
-
+ElixirBlockItemNode >> stab: anElixirStabNode [
 	self stab notNil ifTrue: [ self stab parent: nil ].
-	stab := anElixirStabEoeNode.
+	stab := anElixirStabNode.
 	self stab notNil ifTrue: [ self stab parent: self ]
 ]

@@ -153,11 +153,6 @@ TElixirProgramNodeVisitor >> visitDoBlock: aDoBlock [
 ]
 
 { #category : 'generated' }
-TElixirProgramNodeVisitor >> visitDoEoe: aDoEoe [
-	^ self visitProgram: aDoEoe
-]
-
-{ #category : 'generated' }
 TElixirProgramNodeVisitor >> visitDotAlias: aDotAlias [
 	^ self visitProgram: aDotAlias
 ]
@@ -341,11 +336,6 @@ TElixirProgramNodeVisitor >> visitSigil: aSigil [
 { #category : 'generated' }
 TElixirProgramNodeVisitor >> visitStab: aStab [
 	^ self visitProgram: aStab
-]
-
-{ #category : 'generated' }
-TElixirProgramNodeVisitor >> visitStabEoe: aStabEoe [
-	^ self visitProgram: aStabEoe
 ]
 
 { #category : 'generated' }
