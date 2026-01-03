@@ -34,10 +34,8 @@ ElixirDoBlockNode >> do [
 ]
 
 { #category : 'generated' }
-ElixirDoBlockNode >> do: anElixirDoEoeNode [
-	self do notNil ifTrue: [ self do parent: nil ].
-	do := anElixirDoEoeNode.
-	self do notNil ifTrue: [ self do parent: self ]
+ElixirDoBlockNode >> do: aSmaCCToken [
+	do := aSmaCCToken
 ]
 
 { #category : 'generated' }
@@ -46,20 +44,13 @@ ElixirDoBlockNode >> end [
 ]
 
 { #category : 'generated' }
-ElixirDoBlockNode >> end: anObject [
-	self setParent: self end to: nil.
-	end := anObject.
-	self setParent: self end to: self
+ElixirDoBlockNode >> end: aSmaCCToken [
+	end := aSmaCCToken
 ]
 
 { #category : 'generated' }
 ElixirDoBlockNode >> nodeVariables [
-	^ #(#do #stab #block)
-]
-
-{ #category : 'generated' }
-ElixirDoBlockNode >> otherVariables [
-	^ #(#end)
+	^ #(#stab #block)
 ]
 
 { #category : 'generated' }
@@ -68,8 +59,13 @@ ElixirDoBlockNode >> stab [
 ]
 
 { #category : 'generated' }
-ElixirDoBlockNode >> stab: anElixirProgramNode [
+ElixirDoBlockNode >> stab: anElixirStabNode [
 	self stab notNil ifTrue: [ self stab parent: nil ].
-	stab := anElixirProgramNode.
+	stab := anElixirStabNode.
 	self stab notNil ifTrue: [ self stab parent: self ]
+]
+
+{ #category : 'generated' }
+ElixirDoBlockNode >> tokenVariables [
+	^ #(#do #end)
 ]

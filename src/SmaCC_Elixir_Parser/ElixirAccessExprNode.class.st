@@ -5,7 +5,8 @@ Class {
 		'leftParen',
 		'stab',
 		'rightParen',
-		'semis'
+		'semis',
+		'semi'
 	],
 	#category : 'SmaCC_Elixir_Parser',
 	#package : 'SmaCC_Elixir_Parser'
@@ -14,18 +15,6 @@ Class {
 { #category : 'generated' }
 ElixirAccessExprNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAccessExpr: self
-]
-
-{ #category : 'generated' }
-ElixirAccessExprNode >> compositeTokenVariables [
-
-	^ #( #semis )
-]
-
-{ #category : 'generated-initialize-release' }
-ElixirAccessExprNode >> initialize [
-	super initialize.
-	semis := OrderedCollection new: 2.
 ]
 
 { #category : 'generated' }
@@ -54,15 +43,13 @@ ElixirAccessExprNode >> rightParen: aSmaCCToken [
 ]
 
 { #category : 'generated' }
-ElixirAccessExprNode >> semis [
-
-	^ semis
+ElixirAccessExprNode >> semi [
+	^ semi
 ]
 
 { #category : 'generated' }
-ElixirAccessExprNode >> semis: anOrderedCollection [
-
-	semis := anOrderedCollection
+ElixirAccessExprNode >> semi: aSmaCCToken [
+	semi := aSmaCCToken
 ]
 
 { #category : 'generated' }
@@ -79,6 +66,5 @@ ElixirAccessExprNode >> stab: anElixirStabNode [
 
 { #category : 'generated' }
 ElixirAccessExprNode >> tokenVariables [
-
-	^ #( #leftParen #rightParen )
+	^ #(#leftParen #rightParen #semi)
 ]
