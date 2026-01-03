@@ -11,7 +11,7 @@ BaselineOfClojureParser >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.130' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.131' ].
 
 		spec package: 'SmaCC_Clojure' with: [
 			spec requires: #(#SmaCCRuntime) ].
