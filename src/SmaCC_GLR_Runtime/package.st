@@ -1,1 +1,1 @@
-Package { #name : #'SmaCC_GLR_Runtime' }
+Package { #name : 'SmaCC_GLR_Runtime' }

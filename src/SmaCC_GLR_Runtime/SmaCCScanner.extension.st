@@ -1,6 +1,6 @@
-Extension { #name : #SmaCCScanner }
+Extension { #name : 'SmaCCScanner' }
 
-{ #category : #'*SmaCC_GLR_Runtime' }
+{ #category : '*SmaCC_GLR_Runtime' }
 SmaCCScanner >> currentState [
 	"Return an object that can be used to restoreState: when switching between parses in a GLR parser. 
 	This object should implement #= in such a way that if the state is restored, then calling #next will 
@@ -12,7 +12,7 @@ SmaCCScanner >> currentState [
 		yourself
 ]
 
-{ #category : #'*SmaCC_GLR_Runtime' }
+{ #category : '*SmaCC_GLR_Runtime' }
 SmaCCScanner >> restoreState: aSmaCCScannerState [
 	"Restore the state using the object returned from #currentState."
 
@@ -21,7 +21,7 @@ SmaCCScanner >> restoreState: aSmaCCScannerState [
 	scopeStack := aSmaCCScannerState scopeStack
 ]
 
-{ #category : #'*SmaCC_GLR_Runtime' }
+{ #category : '*SmaCC_GLR_Runtime' }
 SmaCCScanner >> stateClass [
 	^ SmaCCScannerState
 ]

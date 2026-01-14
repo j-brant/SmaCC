@@ -765,7 +765,8 @@ SmaCCParser >> scope [
 
 { #category : 'accessing' }
 SmaCCParser >> scope: aSymbol [
-	scanner scope: aSymbol
+	scanner scope: aSymbol.
+	self updateScannerState
 ]
 
 { #category : 'initialize-release' }
@@ -866,6 +867,10 @@ SmaCCParser >> transitionTable [
 { #category : 'testing' }
 SmaCCParser >> tryAllTokens [
 	^ false
+]
+
+{ #category : 'private' }
+SmaCCParser >> updateScannerState [
 ]
 
 { #category : 'error handling' }

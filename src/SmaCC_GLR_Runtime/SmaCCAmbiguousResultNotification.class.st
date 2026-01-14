@@ -7,42 +7,43 @@ Instance Variables:
 
 "
 Class {
-	#name : #SmaCCAmbiguousResultNotification,
-	#superclass : #Notification,
+	#name : 'SmaCCAmbiguousResultNotification',
+	#superclass : 'Notification',
 	#instVars : [
 		'parser'
 	],
-	#category : #'SmaCC_GLR_Runtime'
+	#category : 'SmaCC_GLR_Runtime',
+	#package : 'SmaCC_GLR_Runtime'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCAmbiguousResultNotification class >> forParser: aSmaCCParser [
 	^ self new
 		parser: aSmaCCParser;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAmbiguousResultNotification >> allPossibleItems [
 	^ tag allPossibleItems
 ]
 
-{ #category : #'private - actions' }
+{ #category : 'private - actions' }
 SmaCCAmbiguousResultNotification >> defaultAction [
 	^ self tag preferredItem
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAmbiguousResultNotification >> parser [
 	^ parser
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAmbiguousResultNotification >> parser: anObject [
 	parser := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAmbiguousResultNotification >> preferredItem [
 	^ tag preferredItem
 ]
