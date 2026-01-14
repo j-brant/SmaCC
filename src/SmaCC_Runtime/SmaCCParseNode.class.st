@@ -414,6 +414,11 @@ SmaCCParseNode >> compositeTokenVariables [
 ]
 
 { #category : 'variables' }
+SmaCCParseNode >> compositeVariableSelectors [
+	^ #(#compositeTokenVariables #compositeNodeVariables #ignoredCompositeTokenVariables #ignoredCompositeNodeVariables)
+]
+
+{ #category : 'variables' }
 SmaCCParseNode >> compositeVariables [
 	^ self compositeVariableSelectors
 		inject: Set new
@@ -422,11 +427,6 @@ SmaCCParseNode >> compositeVariables [
 			sum
 				addAll: (self perform: each);
 				yourself ]
-]
-
-{ #category : 'variables' }
-SmaCCParseNode >> compositeVariableSelectors [
-	^ #(#compositeTokenVariables #compositeNodeVariables #ignoredCompositeTokenVariables #ignoredCompositeNodeVariables)
 ]
 
 { #category : 'matching' }
@@ -506,6 +506,13 @@ SmaCCParseNode >> hasDescendant: aSmaCCNode [
 	^ aSmaCCNode isDescendantFrom: self
 ]
 
+{ #category : 'testing' }
+SmaCCParseNode >> hasParentOfType: aSmaCCParseNodeClass [
+	(parent isKindOf: aSmaCCParseNodeClass)
+		ifTrue: [ ^ true ].
+	^ parent notNil and: [ parent hasParentOfType: aSmaCCParseNodeClass ]
+]
+
 { #category : 'comparing' }
 SmaCCParseNode >> hash [
 	^ self variableSelectors
@@ -520,13 +527,6 @@ SmaCCParseNode >> hash [
 					newHash := hash bitXor: (self perform: each) hash.
 					((newHash bitShift: 1) bitAnd: SmallInteger maxVal)
 						bitXor: (newHash bitShift: -29) ] ]
-]
-
-{ #category : 'testing' }
-SmaCCParseNode >> hasParentOfType: aSmaCCParseNodeClass [
-	(parent isKindOf: aSmaCCParseNodeClass)
-		ifTrue: [ ^ true ].
-	^ parent notNil and: [ parent hasParentOfType: aSmaCCParseNodeClass ]
 ]
 
 { #category : 'variables' }
@@ -767,6 +767,11 @@ SmaCCParseNode >> nodeOfType: aSmaCCParseNodeClassOrCollection [
 				ifFalse: [ each isKindOf: aSmaCCParseNodeClassOrCollection ] ]
 ]
 
+{ #category : 'variables' }
+SmaCCParseNode >> nodeVariables [
+	^ #()
+]
+
 { #category : 'iterating' }
 SmaCCParseNode >> nodesDo: nodeBlock [
 	self nodesDo: nodeBlock andTokensDo: nil
@@ -805,11 +810,6 @@ SmaCCParseNode >> nodesDo: nodeBlock andTokensDo: tokenBlock includeErrors: aBoo
 		ifTrue: [ each do: block ] ].
 	self otherVariables do: [ :sel | block value: (self perform: sel) ].
 	self ignoredOtherVariables do: [ :sel | block value: (self perform: sel) ]
-]
-
-{ #category : 'variables' }
-SmaCCParseNode >> nodeVariables [
-	^ #()
 ]
 
 { #category : 'variables' }
@@ -951,6 +951,11 @@ SmaCCParseNode >> setParents: aCollection to: anObject [
 ]
 
 { #category : 'variables' }
+SmaCCParseNode >> singularVariableSelectors [
+	^ #(#tokenVariables #nodeVariables #ignoredTokenVariables #ignoredNodeVariables #otherVariables #ignoredOtherVariables)
+]
+
+{ #category : 'variables' }
 SmaCCParseNode >> singularVariables [
 	^ self singularVariableSelectors
 		inject: Set new
@@ -959,11 +964,6 @@ SmaCCParseNode >> singularVariables [
 			sum
 				addAll: (self perform: each);
 				yourself ]
-]
-
-{ #category : 'variables' }
-SmaCCParseNode >> singularVariableSelectors [
-	^ #(#tokenVariables #nodeVariables #ignoredTokenVariables #ignoredNodeVariables #otherVariables #ignoredOtherVariables)
 ]
 
 { #category : 'accessing' }

@@ -119,13 +119,13 @@ SmaCCParser class >> fileExtension [
 ]
 
 { #category : 'file types' }
-SmaCCParser class >> fileExtensions [
-	^ Array with: self fileExtension
+SmaCCParser class >> fileExtensionType [
+	^ 'All files'
 ]
 
 { #category : 'file types' }
-SmaCCParser class >> fileExtensionType [
-	^ 'All files'
+SmaCCParser class >> fileExtensions [
+	^ Array with: self fileExtension
 ]
 
 { #category : 'instance creation' }
@@ -765,7 +765,8 @@ SmaCCParser >> scope [
 
 { #category : 'accessing' }
 SmaCCParser >> scope: aSymbol [
-	scanner scope: aSymbol
+	scanner scope: aSymbol.
+	self updateScannerState
 ]
 
 { #category : 'initialize-release' }
@@ -866,6 +867,10 @@ SmaCCParser >> transitionTable [
 { #category : 'testing' }
 SmaCCParser >> tryAllTokens [
 	^ false
+]
+
+{ #category : 'private' }
+SmaCCParser >> updateScannerState [
 ]
 
 { #category : 'error handling' }

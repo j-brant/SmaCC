@@ -6,23 +6,24 @@ Instance Variables
 	selector	<Symbol>	the selector to send
 "
 Class {
-	#name : #SmaCCDeferredReduceAction,
-	#superclass : #Object,
+	#name : 'SmaCCDeferredReduceAction',
+	#superclass : 'Object',
 	#instVars : [
 		'arguments',
 		'reduceEntry'
 	],
-	#category : #'SmaCC_GLR_Runtime'
+	#category : 'SmaCC_GLR_Runtime',
+	#package : 'SmaCC_GLR_Runtime'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCDeferredReduceAction class >> entry: anArray arguments: aCollection [
 	^ self new
 		entry: anArray arguments: aCollection;
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCDeferredReduceAction >> = anObject [
 	^ self class = anObject class
 		and:
@@ -30,12 +31,12 @@ SmaCCDeferredReduceAction >> = anObject [
 				and: [ self arguments = anObject arguments ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDeferredReduceAction >> arguments [
 	^ arguments
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCDeferredReduceAction >> argumentsFor: aSmaCCParser [
 	1 to: arguments size do:
 		[ :i | 
@@ -45,18 +46,18 @@ SmaCCDeferredReduceAction >> argumentsFor: aSmaCCParser [
 	^ arguments
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCDeferredReduceAction >> entry: anArray arguments: aCollection [
 	reduceEntry := anArray.
 	arguments := aCollection
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCDeferredReduceAction >> hash [
 	^ self class hash bitXor: (reduceEntry hash bitXor: arguments hash)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDeferredReduceAction >> performOnSmaCCParser: aSmaCCParser [
 	| selector |
 	selector := self selector.
@@ -67,24 +68,24 @@ SmaCCDeferredReduceAction >> performOnSmaCCParser: aSmaCCParser [
 				with: (self argumentsFor: aSmaCCParser) ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCDeferredReduceAction >> priority [
 	^ reduceEntry at: 4 ifAbsent: [ 0 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDeferredReduceAction >> selector [
 	^ reduceEntry at: 3
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDeferredReduceAction >> stopPosition [
 	| stop |
 	stop := self stopPositionIn: arguments.
 	^ stop
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCDeferredReduceAction >> stopPositionIn: args [
 	| stop |
 	stop := nil.
