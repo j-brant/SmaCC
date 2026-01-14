@@ -11,7 +11,7 @@ BaselineOfCSSParser >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.131' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.132' ].
 
 		spec package: 'SmaCC_CSS' with: [
 			spec requires: #(#SmaCCRuntime) ].
