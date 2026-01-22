@@ -1,23 +1,25 @@
 Class {
-	#name : #SmaCCNodeCalculation,
-	#superclass : #Object,
+	#name : 'SmaCCNodeCalculation',
+	#superclass : 'Object',
 	#instVars : [
 		'grammar',
 		'classes',
 		'variableSymbols',
 		'singleVariableSymbols'
 	],
-	#category : #'SmaCC_Development-Compilation Model'
+	#category : 'SmaCC_Development-Compilation Model',
+	#package : 'SmaCC_Development',
+	#tag : 'Compilation Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNodeCalculation class >> compileForGrammar: aSmaCCGrammar [
 	self new
 		grammar: aSmaCCGrammar;
 		compileNodeClasses
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCNodeCalculation >> calculateReduceActions [
 	variableSymbols
 		do: [ :each | 
@@ -35,7 +37,7 @@ SmaCCNodeCalculation >> calculateReduceActions [
 						ifFalse: [ each reduceCode: (SmaCCDefaultNodeReduceCode onRHS: each) ] ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCNodeCalculation >> calculateVariableSymbols [
 	variableSymbols := Set new.
 	grammar symbols
@@ -53,7 +55,7 @@ SmaCCNodeCalculation >> calculateVariableSymbols [
 	variableSymbols removeAll: singleVariableSymbols
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCNodeCalculation >> calculateVariableSymbolsFor: aSmaCCSymbol [
 	aSmaCCSymbol isTerminal
 		ifTrue: [ ^ self ].
@@ -69,22 +71,22 @@ SmaCCNodeCalculation >> calculateVariableSymbolsFor: aSmaCCSymbol [
 				unnamedSymbolsDo: [ :each | self calculateVariableSymbolsFor: each ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCNodeCalculation >> calculateVariables [
 	SmaCCVariableCalculation calculateVariablesForGrammar: grammar
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCNodeCalculation >> codeGenerator [
 	^ grammar codeGenerator
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCNodeCalculation >> compileMethodsAndVariables [
 	self sortedClasses do: [ :each | each compileMethodsAndVariables ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCNodeCalculation >> compileNodeClasses [
 	self sortedClasses isEmpty
 		ifTrue: [ ^ self ].
@@ -97,34 +99,34 @@ SmaCCNodeCalculation >> compileNodeClasses [
 	self compileTypes
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCNodeCalculation >> compileTypes [
 	self codeGenerator compileSymbolTypes
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCNodeCalculation >> compileVisitor [
 	self codeGenerator compileVisitor: self
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCNodeCalculation >> defineNodeClasses [
 	self sortedClasses
 		do: [ :each | self codeGenerator compileNodeClassDefinition: each ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNodeCalculation >> grammar [
 
 	^ grammar
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCNodeCalculation >> grammar: aSmaCCGrammar [
 	grammar := aSmaCCGrammar
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCNodeCalculation >> hasSingleVariableName: aSymbol [
 	^ self
 		hasSingleVariableName: aSymbol
@@ -132,7 +134,7 @@ SmaCCNodeCalculation >> hasSingleVariableName: aSymbol [
 		seen: IdentitySet new
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCNodeCalculation >> hasSingleVariableName: aSymbol using: nameSet seen: seen [
 	(seen includes: aSymbol)
 		ifTrue: [ ^ true ].
@@ -151,7 +153,7 @@ SmaCCNodeCalculation >> hasSingleVariableName: aSymbol using: nameSet seen: seen
 	^ true
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCNodeCalculation >> hasVariables: aSmaCCSymbol seen: aSet [
 	aSmaCCSymbol requiresNodeType
 		ifTrue: [ ^ false ].
@@ -170,7 +172,7 @@ SmaCCNodeCalculation >> hasVariables: aSmaCCSymbol seen: aSet [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCNodeCalculation >> sortedClasses [
 	^ classes
 		ifNil:

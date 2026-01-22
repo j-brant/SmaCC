@@ -1,14 +1,16 @@
 Class {
-	#name : #SmaCCScannerCompiler,
-	#superclass : #Object,
+	#name : 'SmaCCScannerCompiler',
+	#superclass : 'Object',
 	#instVars : [
 		'grammar',
 		'codeGenerator'
 	],
-	#category : #'SmaCC_Development-Compiler'
+	#category : 'SmaCC_Development-Compiler',
+	#package : 'SmaCC_Development',
+	#tag : 'Compiler'
 }
 
-{ #category : #'regular expression construction' }
+{ #category : 'regular expression construction' }
 SmaCCScannerCompiler >> addActions [
 	self symbols
 		keysAndValuesDo:
@@ -17,7 +19,7 @@ SmaCCScannerCompiler >> addActions [
 				ifNotNil: [ :eachRegex | eachRegex action: index ] ]
 ]
 
-{ #category : #'regular expression construction' }
+{ #category : 'regular expression construction' }
 SmaCCScannerCompiler >> addActionsFrom: aRegularExpression to: aKeywordMap at: states [
 	^ states
 		do:
@@ -39,12 +41,12 @@ SmaCCScannerCompiler >> addActionsFrom: aRegularExpression to: aKeywordMap at: s
 								put: keywordData ] ] ]
 ]
 
-{ #category : #'regular expression construction' }
+{ #category : 'regular expression construction' }
 SmaCCScannerCompiler >> addNormalSymbols [
 	grammar symbols: (self symbols asSortedCollection: [ :a :b | a < b ])
 ]
 
-{ #category : #'regular expression construction' }
+{ #category : 'regular expression construction' }
 SmaCCScannerCompiler >> addSpecialSymbols [
 	grammar tokens
 		keysDo:
@@ -53,7 +55,7 @@ SmaCCScannerCompiler >> addSpecialSymbols [
 				ifTrue: [ grammar terminalSymbolNamed: each ] ]
 ]
 
-{ #category : #'regular expression construction' }
+{ #category : 'regular expression construction' }
 SmaCCScannerCompiler >> addSpecificREsWithoutActionsTo: aRegularExpression [
 	| dfa regex |
 	regex := aRegularExpression.
@@ -74,12 +76,12 @@ SmaCCScannerCompiler >> addSpecificREsWithoutActionsTo: aRegularExpression [
 	^ regex
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCScannerCompiler >> codeGenerator: aSmaCCCodeGenerator [
 	codeGenerator := aSmaCCCodeGenerator
 ]
 
-{ #category : #'regular expression construction' }
+{ #category : 'regular expression construction' }
 SmaCCScannerCompiler >> combinedGeneralRegexes [
 	| combinedRegex |
 	combinedRegex := nil.
@@ -92,7 +94,7 @@ SmaCCScannerCompiler >> combinedGeneralRegexes [
 	^ combinedRegex
 ]
 
-{ #category : #'regular expression construction' }
+{ #category : 'regular expression construction' }
 SmaCCScannerCompiler >> combinedRegexes [
 	| combinedRegex |
 	combinedRegex := nil.
@@ -104,7 +106,7 @@ SmaCCScannerCompiler >> combinedRegexes [
 	^ combinedRegex
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCScannerCompiler >> compileMethodsFor: regex [
 	| keywordmap dfa selectorMap |
 	selectorMap := self computeSelectorMap.
@@ -125,7 +127,7 @@ SmaCCScannerCompiler >> compileMethodsFor: regex [
 	codeGenerator compileIgnoreCaseMethods
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCScannerCompiler >> compileScanner [
 	| regex |
 	regex := self createRegex.
@@ -133,7 +135,7 @@ SmaCCScannerCompiler >> compileScanner [
 	self compileMethodsFor: regex
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCScannerCompiler >> compileTokenIdMethods [
 	(self symbols select: [ :each | each createIdMethod ])
 		do: [ :each | 
@@ -143,7 +145,7 @@ SmaCCScannerCompiler >> compileTokenIdMethods [
 				isOverridden: false ]
 ]
 
-{ #category : #'regular expression construction' }
+{ #category : 'regular expression construction' }
 SmaCCScannerCompiler >> computeKeywordMapFor: dfa [
 	| keywordmap |
 	keywordmap := Dictionary new.
@@ -158,7 +160,7 @@ SmaCCScannerCompiler >> computeKeywordMapFor: dfa [
 	^ keywordmap
 ]
 
-{ #category : #'regular expression construction' }
+{ #category : 'regular expression construction' }
 SmaCCScannerCompiler >> computeSelectorMap [
 	| selectorMap |
 	selectorMap := Dictionary new.
@@ -170,19 +172,19 @@ SmaCCScannerCompiler >> computeSelectorMap [
 	^ selectorMap
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCScannerCompiler >> createFullRegex [
 	self updateSymbolsAndActions.
 	^ self combinedRegexes
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCScannerCompiler >> createRegex [
 	self updateSymbolsAndActions.
 	^ self addSpecificREsWithoutActionsTo: self combinedGeneralRegexes
 ]
 
-{ #category : #'regular expression construction' }
+{ #category : 'regular expression construction' }
 SmaCCScannerCompiler >> generalRegularExpressionsDo: aBlock [
 	self
 		regularExpressionsDo: [ :each | 
@@ -190,17 +192,17 @@ SmaCCScannerCompiler >> generalRegularExpressionsDo: aBlock [
 				ifFalse: [ aBlock value: each ] ]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCScannerCompiler >> grammar: aGrammar [
 	grammar := aGrammar
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCScannerCompiler >> regularExpressionsDo: aBlock [
 	self symbols do: [ :each | each regularExpression ifNotNil: aBlock ]
 ]
 
-{ #category : #'regular expression construction' }
+{ #category : 'regular expression construction' }
 SmaCCScannerCompiler >> specificRegularExpressionsDo: aBlock [
 	self
 		regularExpressionsDo: [ :each | 
@@ -208,12 +210,12 @@ SmaCCScannerCompiler >> specificRegularExpressionsDo: aBlock [
 				ifTrue: [ aBlock value: each ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScannerCompiler >> symbols [
 	^ grammar symbols
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCScannerCompiler >> updateSymbolsAndActions [
 	self addSpecialSymbols.
 	self addNormalSymbols.

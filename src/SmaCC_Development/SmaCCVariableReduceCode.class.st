@@ -3,22 +3,24 @@ SmaCCVariableReduceCode represents a reduce action that returns a collection of 
 
 "
 Class {
-	#name : #SmaCCVariableReduceCode,
-	#superclass : #SmaCCReduceCode,
-	#category : #'SmaCC_Development-Compilation Model'
+	#name : 'SmaCCVariableReduceCode',
+	#superclass : 'SmaCCReduceCode',
+	#category : 'SmaCC_Development-Compilation Model',
+	#package : 'SmaCC_Development',
+	#tag : 'Compilation Model'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVariableReduceCode >> basicModelTypes: aSet [
 	^ Array with: (self model classFor: OrderedCollection)
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCVariableReduceCode >> returnsVariableCollection [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableReduceCode >> source [
 	^ self codeGenerator variableArrayAction: rhs
 ]

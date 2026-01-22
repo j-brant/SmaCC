@@ -2,22 +2,24 @@
 SmaCCShiftAction represents the LR shift action.
 "
 Class {
-	#name : #SmaCCShiftAction,
-	#superclass : #SmaCCPrimitiveAction,
-	#category : #'SmaCC_Development-Actions'
+	#name : 'SmaCCShiftAction',
+	#superclass : 'SmaCCPrimitiveAction',
+	#category : 'SmaCC_Development-Actions',
+	#package : 'SmaCC_Development',
+	#tag : 'Actions'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCShiftAction class >> id [
 	^ 2r01
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCShiftAction >> isShift [
 	^ true
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 SmaCCShiftAction >> mergeWith: aSmaCCAction prefer: aClass [
 	aSmaCCAction isShift
 		ifTrue: [ ^ self ].
@@ -26,7 +28,7 @@ SmaCCShiftAction >> mergeWith: aSmaCCAction prefer: aClass [
 	^ aSmaCCAction mergeWith: self prefer: aClass
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 SmaCCShiftAction >> mergeWithReduceAction: aSmaCCAction prefer: aClass [
 	| result |
 	(self precedence isNil or: [ aSmaCCAction precedence isNil ])

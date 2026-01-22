@@ -3,21 +3,23 @@ SmaCCCharacterEdge is a SmaCCEdge for Characters.
 
 "
 Class {
-	#name : #SmaCCCharacterEdge,
-	#superclass : #SmaCCEdge,
+	#name : 'SmaCCCharacterEdge',
+	#superclass : 'SmaCCEdge',
 	#instVars : [
 		'codeSizeEstimate'
 	],
-	#category : #'SmaCC_Development-DFA/NFA'
+	#category : 'SmaCC_Development-DFA/NFA',
+	#package : 'SmaCC_Development',
+	#tag : 'DFA/NFA'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCCharacterEdge >> <= aSmaCCEdge [
 	^ self class = aSmaCCEdge class
 		and: [ self transitionObjects <= aSmaCCEdge transitionObjects ]
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCCharacterEdge >> codeSizeEstimate [
 	^ codeSizeEstimate
 		ifNil: [ | last size |
@@ -31,39 +33,39 @@ SmaCCCharacterEdge >> codeSizeEstimate [
 			codeSizeEstimate := size * 8 + 4 ]
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCCharacterEdge >> dispatchTo: aSmaCCCodeGenerator seen: aCollection [
 	^ aSmaCCCodeGenerator acceptCharacterEdge: self seen: aCollection
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCCharacterEdge >> edgeLabel [
 	^ transitionObjects asString
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCCharacterEdge >> isCharacterTransition [
 	^ true
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 SmaCCCharacterEdge >> mergeWith: aSmaCCEdge [
 	transitionObjects := transitionObjects copy.
 	transitionObjects addAll: aSmaCCEdge transitionObjects
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCharacterEdge >> remove: aCollection [
 	transitionObjects := transitionObjects copy.
 	transitionObjects smaccRemoveAll: aCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCCharacterEdge >> setClass [
 	^ SmaCCCharacterSet
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCCharacterEdge >> to: aSmaCCNode on: aStringOrNil [
 	toNode := aSmaCCNode.
 	transitionObjects := aStringOrNil notNil

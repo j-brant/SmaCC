@@ -7,22 +7,24 @@ Instance Variables:
 
 "
 Class {
-	#name : #SmaCCEpsilonRemoval,
-	#superclass : #SmaCCGraphAlgorithm,
+	#name : 'SmaCCEpsilonRemoval',
+	#superclass : 'SmaCCGraphAlgorithm',
 	#instVars : [
 		'nodeMap'
 	],
-	#category : #'SmaCC_Development-DFA/NFA'
+	#category : 'SmaCC_Development-DFA/NFA',
+	#package : 'SmaCC_Development',
+	#tag : 'DFA/NFA'
 }
 
-{ #category : #algorithm }
+{ #category : 'algorithm' }
 SmaCCEpsilonRemoval class >> removeEpsilonEdgesFrom: aSmaCCNode [
 	"Returns an equivalent graph to aSmaCCNode that doesn't contain any epsilon transitions"
 
 	^ self new removeEpsilonEdgesFrom: aSmaCCNode
 ]
 
-{ #category : #algorithm }
+{ #category : 'algorithm' }
 SmaCCEpsilonRemoval >> createNodeWithoutEpsilonEdges: aSmaCCNode [
 	| newNode newTransitions |
 	newNode := self
@@ -43,7 +45,7 @@ SmaCCEpsilonRemoval >> createNodeWithoutEpsilonEdges: aSmaCCNode [
 	^ newNode
 ]
 
-{ #category : #algorithm }
+{ #category : 'algorithm' }
 SmaCCEpsilonRemoval >> epsilonReachableNodesFrom: aSmaCCNode [
 	| todo reachable node |
 	reachable := Set with: aSmaCCNode.
@@ -60,13 +62,13 @@ SmaCCEpsilonRemoval >> epsilonReachableNodesFrom: aSmaCCNode [
 	^ reachable
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCEpsilonRemoval >> initialize [
 	super initialize.
 	nodeMap := Dictionary new
 ]
 
-{ #category : #algorithm }
+{ #category : 'algorithm' }
 SmaCCEpsilonRemoval >> removeEpsilonEdgesFrom: aSmaCCNode [
 	^ nodeMap
 		at: aSmaCCNode

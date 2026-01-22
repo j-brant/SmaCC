@@ -12,8 +12,8 @@ Instance Variables
 
 "
 Class {
-	#name : #SmaCCVariableDefinition,
-	#superclass : #Object,
+	#name : 'SmaCCVariableDefinition',
+	#superclass : 'Object',
 	#instVars : [
 		'variableName',
 		'isCollection',
@@ -27,25 +27,27 @@ Class {
 		'PluralNameBlock',
 		'PluralNames'
 	],
-	#category : #'SmaCC_Development-Compilation Model'
+	#category : 'SmaCC_Development-Compilation Model',
+	#package : 'SmaCC_Development',
+	#tag : 'Compilation Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition class >> assignIndices: aCollection [
 	aCollection keysAndValuesDo: [ :index :each | each index: index ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition class >> pluralNameBlock [
 	^ PluralNameBlock ifNil: [ ^ [ :value | nil ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition class >> pluralNameBlock: aBlock [
 	PluralNameBlock := aBlock
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVariableDefinition class >> pluralNameFor: aString [
 	| size maxSize |
 	(self pluralNameBlock value: aString) ifNotNil: [ :result | ^ result ].
@@ -62,7 +64,7 @@ SmaCCVariableDefinition class >> pluralNameFor: aString [
 	^ aString copyWith: $s
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition class >> pluralNames [
 	PluralNames isNil
 		ifTrue:
@@ -76,12 +78,12 @@ SmaCCVariableDefinition class >> pluralNames [
 	^ PluralNames
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition class >> pluralNames: aDictionary [
 	PluralNames := aDictionary
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCVariableDefinition class >> variableName: aString [
 	^ self new
 		variableName: aString;
@@ -89,7 +91,7 @@ SmaCCVariableDefinition class >> variableName: aString [
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCVariableDefinition >> = anObject [
 	^ self class = anObject class
 		and:
@@ -97,63 +99,63 @@ SmaCCVariableDefinition >> = anObject [
 				and: [ self isCollection = anObject isCollection ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition >> baseType [
 	^ baseType
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCVariableDefinition >> baseType: modelClass [
 	baseType := modelClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition >> collectionType [
 	^ self baseType model classFor: OrderedCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition >> getterMethodName [
 	^ getterMethodName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition >> getterMethodName: aString [
 	getterMethodName := aString
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCVariableDefinition >> hash [
 	^ self variableName hash bitXor: self isCollection hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition >> index [
 	^ index
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition >> index: anInteger [
 	index := anInteger
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition >> isAlwaysAssigned [
 	^ isAlwaysAssigned or: [ self isCollection ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition >> isAlwaysAssigned: aBoolean [
 	isAlwaysAssigned := aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition >> isBaseNodeType [
 	^ self baseType
 		includesClass: (self baseType model classFor: SmaCCParseNode)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition >> isBasePossibleNodeType [
 	^ self isBaseNodeType
 		or:
@@ -161,72 +163,72 @@ SmaCCVariableDefinition >> isBasePossibleNodeType [
 				includesClass: self baseType ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition >> isBaseTokenType [
 	^ self baseType
 		includesClass: (self baseType model classFor: SmaCCToken)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition >> isCollection [
 	^ isCollection
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCVariableDefinition >> isCollection: aBoolean [
 	isCollection := aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition >> isNodeCollectionType [
 	^ self isCollection and: [ self isBaseNodeType ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition >> isNodeType [
 	^ self isCollection not and: [ self isBaseNodeType ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition >> isPossibleNodeCollectionType [
 	^ self isCollection and: [ self isBasePossibleNodeType ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition >> isPossibleNodeType [
 	^ self isCollection not and: [ self isBasePossibleNodeType ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition >> setterMethodName [
 	^ setterMethodName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition >> setterMethodName: aString [
 	setterMethodName := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition >> sourceVariableName [
 	^ self isCollection
 		ifTrue: [ self class pluralNameFor: variableName ]
 		ifFalse: [ variableName ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition >> type [
 	^ self isCollection
 		ifTrue: [ self collectionType ]
 		ifFalse: [ self baseType ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableDefinition >> variableName [
 	^ variableName
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCVariableDefinition >> variableName: aString [
 	variableName := aString
 ]

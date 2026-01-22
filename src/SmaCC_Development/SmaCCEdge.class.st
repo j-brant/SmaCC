@@ -12,16 +12,18 @@ Instance Variables:
 
 "
 Class {
-	#name : #SmaCCEdge,
-	#superclass : #Object,
+	#name : 'SmaCCEdge',
+	#superclass : 'Object',
 	#instVars : [
 		'toNode',
 		'transitionObjects'
 	],
-	#category : #'SmaCC_Development-DFA/NFA'
+	#category : 'SmaCC_Development-DFA/NFA',
+	#package : 'SmaCC_Development',
+	#tag : 'DFA/NFA'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCEdge class >> to: aSmaCCNode on: aCollectionOrNil [
 	| edge |
 	edge := self new.
@@ -29,12 +31,12 @@ SmaCCEdge class >> to: aSmaCCNode on: aCollectionOrNil [
 	^ edge
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCEdge >> <= aSmaCCEdge [
 	^ true
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCEdge >> = aSmaCCEdge [
 	^ self class = aSmaCCEdge class
 		and:
@@ -42,24 +44,24 @@ SmaCCEdge >> = aSmaCCEdge [
 				and: [ self transitionObjects = aSmaCCEdge transitionObjects ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCEdge >> canMergeWith: aSmaCCEdge [
 	^ self class = aSmaCCEdge class
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCEdge >> codeSizeEstimate [
 	"Estimate how many bytecodes will be used to generate the comparison."
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCEdge >> dispatchTo: aSmaCCCodeGenerator seen: aCollection [
 	^ self subclassResponsibility
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCEdge >> edgeLabel [
 	^ transitionObjects isNil
 		ifTrue: [ 'epsilon' ]
@@ -69,42 +71,42 @@ SmaCCEdge >> edgeLabel [
 				into: [ :sum :each | sum , each printString ] ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCEdge >> hash [
 	^ self to hash hashMultiply bitXor: transitionObjects hash
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCEdge >> includes: anObject [
 	^ transitionObjects notNil and: [ transitionObjects includes: anObject ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCEdge >> isCharacterTransition [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCEdge >> isConditionEdge [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCEdge >> isEmpty [
 	^ transitionObjects isEmpty
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCEdge >> isEpsilonTransition [
 	^ transitionObjects isNil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCEdge >> isStateEdge [
 	^ false
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 SmaCCEdge >> mergeWith: aSmaCCEdge [
 	transitionObjects := Array
 		withAll:
@@ -112,7 +114,7 @@ SmaCCEdge >> mergeWith: aSmaCCEdge [
 				asSortedCollection
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCEdge >> printOn: aStream [
 	aStream
 		nextPutAll: '---';
@@ -121,34 +123,34 @@ SmaCCEdge >> printOn: aStream [
 		nextPutAll: toNode printString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCEdge >> remove: aCollection [
 	transitionObjects := transitionObjects
 		reject: [ :each | aCollection includes: each ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCEdge >> setClass [
 	^ Set
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCEdge >> to [
 	^ toNode
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCEdge >> to: aSmaCCNode [
 	toNode := aSmaCCNode
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCEdge >> to: aSmaCCNode on: aStringOrNil [
 	toNode := aSmaCCNode.
 	transitionObjects := aStringOrNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCEdge >> transitionObjects [
 	^ transitionObjects
 ]

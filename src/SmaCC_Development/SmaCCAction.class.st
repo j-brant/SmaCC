@@ -11,83 +11,85 @@ Subclasses must implement the following messages:
 
 "
 Class {
-	#name : #SmaCCAction,
-	#superclass : #Object,
-	#category : #'SmaCC_Development-Actions'
+	#name : 'SmaCCAction',
+	#superclass : 'Object',
+	#category : 'SmaCC_Development-Actions',
+	#package : 'SmaCC_Development',
+	#tag : 'Actions'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCAction >> = anObject [
 	^ self class = anObject class
 		and: [ self symbol = anObject symbol and: [ self rhs = anObject rhs ] ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCAction >> hash [
 	^ self symbol hash bitXor: self rhs hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAction >> id [
 	^ self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCAction >> isAmbiguous [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCAction >> isReduce [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCAction >> isReject [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCAction >> isShift [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAction >> lr1Item [
 	^ self subclassResponsibility
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 SmaCCAction >> mergeWith: aSmaCCAction prefer: aClass [
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAction >> precedence [
 	^ self lr1Item precedence
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAction >> preferredAction [
 	^ self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAction >> rhs [
 	^ self lr1Item rhs
 ]
 
-{ #category : #'error handling' }
+{ #category : 'error handling' }
 SmaCCAction >> signalAllWarnings [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAction >> size [
 	^ self rhs size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAction >> symbol [
 	^ self rhs productionSymbol
 ]

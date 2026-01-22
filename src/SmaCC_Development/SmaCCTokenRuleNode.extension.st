@@ -1,6 +1,6 @@
-Extension { #name : #SmaCCTokenRuleNode }
+Extension { #name : 'SmaCCTokenRuleNode' }
 
-{ #category : #'*SmaCC_Development' }
+{ #category : '*SmaCC_Development' }
 SmaCCTokenRuleNode >> regularExpression [
 	| re |
 	(self attributeNamed: #regularExpression ifAbsent: [ nil ])
@@ -16,7 +16,7 @@ SmaCCTokenRuleNode >> regularExpression [
 	^ re
 ]
 
-{ #category : #'*SmaCC_Development' }
+{ #category : '*SmaCC_Development' }
 SmaCCTokenRuleNode >> reportCircularDefinitionError [
 	SmaCCParserError new
 		messageText: 'Circular token definition';

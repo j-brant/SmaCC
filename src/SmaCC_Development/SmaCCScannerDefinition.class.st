@@ -1,41 +1,43 @@
 Class {
-	#name : #SmaCCScannerDefinition,
-	#superclass : #Object,
+	#name : 'SmaCCScannerDefinition',
+	#superclass : 'Object',
 	#instVars : [
 		'tokens',
 		'states',
 		'excludeStates'
 	],
-	#category : #'SmaCC_Development-Model'
+	#category : 'SmaCC_Development-Model',
+	#package : 'SmaCC_Development',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScannerDefinition >> addExcludeState: aSymbol [
 	excludeStates add: aSymbol.
 	self addState: aSymbol
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScannerDefinition >> addState: aSymbol [
 	states add: aSymbol
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScannerDefinition >> addToken: aSmaCCRENode withName: aString [
 	tokens at: aString put: aSmaCCRENode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScannerDefinition >> defaultState [
 	^ #default
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCScannerDefinition >> includesTokenNamed: aString [
 	^ tokens includesKey: aString
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCScannerDefinition >> initialize [
 	super initialize.
 	tokens := Dictionary new.
@@ -43,12 +45,12 @@ SmaCCScannerDefinition >> initialize [
 	excludeStates := Set new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCScannerDefinition >> isExcludeState: aSymbol [
 	^ excludeStates includes: aSymbol
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScannerDefinition >> nonExcludeStates [
 	| nonExcludeStates |
 	nonExcludeStates := states
@@ -57,22 +59,22 @@ SmaCCScannerDefinition >> nonExcludeStates [
 	^ nonExcludeStates
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScannerDefinition >> states [
 	^ states
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScannerDefinition >> tokenNamed: aString [
 	^ tokens at: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScannerDefinition >> tokenNamed: aString ifAbsentPut: aBlock [
 	^ tokens at: aString ifAbsentPut: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScannerDefinition >> tokens [
 	^ tokens
 ]

@@ -2,28 +2,30 @@
 SmaCCStateEdge is a SmaCCEdge on states (that are represented by symbols) in the scanner.
 "
 Class {
-	#name : #SmaCCStateEdge,
-	#superclass : #SmaCCEdge,
-	#category : #'SmaCC_Development-DFA/NFA'
+	#name : 'SmaCCStateEdge',
+	#superclass : 'SmaCCEdge',
+	#category : 'SmaCC_Development-DFA/NFA',
+	#package : 'SmaCC_Development',
+	#tag : 'DFA/NFA'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCStateEdge >> <= aSmaCCEdge [
 	^ self class ~= aSmaCCEdge class
 		or: [ self transitionObjects first <= aSmaCCEdge transitionObjects first ]
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCStateEdge >> codeSizeEstimate [
 	^ 4 * transitionObjects size
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCStateEdge >> dispatchTo: aSmaCCCodeGenerator seen: aCollection [
 	^ aSmaCCCodeGenerator acceptStateEdge: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCStateEdge >> isStateEdge [
 	^ true
 ]

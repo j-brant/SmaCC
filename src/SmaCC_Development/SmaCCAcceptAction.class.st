@@ -4,17 +4,19 @@ SmaCCAcceptAction represents the LR accept action.
 
 "
 Class {
-	#name : #SmaCCAcceptAction,
-	#superclass : #SmaCCPrimitiveAction,
-	#category : #'SmaCC_Development-Actions'
+	#name : 'SmaCCAcceptAction',
+	#superclass : 'SmaCCPrimitiveAction',
+	#category : 'SmaCC_Development-Actions',
+	#package : 'SmaCC_Development',
+	#tag : 'Actions'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAcceptAction class >> id [
 	^ 2r00
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 SmaCCAcceptAction >> mergeWith: aSmaCCAction prefer: aClass [
 	^ self
 ]

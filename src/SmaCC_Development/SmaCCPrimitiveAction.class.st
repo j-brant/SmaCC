@@ -7,37 +7,39 @@ Instance Variables:
 
 "
 Class {
-	#name : #SmaCCPrimitiveAction,
-	#superclass : #SmaCCAction,
+	#name : 'SmaCCPrimitiveAction',
+	#superclass : 'SmaCCAction',
 	#instVars : [
 		'lr1Item'
 	],
-	#category : #'SmaCC_Development-Actions'
+	#category : 'SmaCC_Development-Actions',
+	#package : 'SmaCC_Development',
+	#tag : 'Actions'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCPrimitiveAction class >> id [
 	^ nil
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCPrimitiveAction class >> item: aSmaCCLR1Item [
 	^ self new
 		lr1Item: aSmaCCLR1Item;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCPrimitiveAction >> id [
 	^ self class id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCPrimitiveAction >> lr1Item [
 	^ lr1Item
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCPrimitiveAction >> lr1Item: aSmaCCLR1Item [
 	lr1Item := aSmaCCLR1Item
 ]

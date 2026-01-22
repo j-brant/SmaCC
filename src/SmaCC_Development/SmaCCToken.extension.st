@@ -1,6 +1,6 @@
-Extension { #name : #SmaCCToken }
+Extension { #name : 'SmaCCToken' }
 
-{ #category : #'*SmaCC_Development' }
+{ #category : '*SmaCC_Development' }
 SmaCCToken >> position [
 	^ self startPosition
 ]

@@ -13,75 +13,77 @@ Instance Variables
 
 "
 Class {
-	#name : #SmaCCReduceCode,
-	#superclass : #Object,
+	#name : 'SmaCCReduceCode',
+	#superclass : 'Object',
 	#instVars : [
 		'rhs',
 		'cachedTypes'
 	],
-	#category : #'SmaCC_Development-Compilation Model'
+	#category : 'SmaCC_Development-Compilation Model',
+	#package : 'SmaCC_Development',
+	#tag : 'Compilation Model'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCReduceCode class >> onRHS: aSmaCCRHS [
 	^ self new
 		rhs: aSmaCCRHS;
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCReduceCode >> = anObject [
 	^ self class = anObject class and: [ self rhs == anObject rhs ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCReduceCode >> baseClassType [
 	^ rhs grammar rootDefinition
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCReduceCode >> basicModelTypes: aSet [
 	self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCReduceCode >> basicModelTypes: aSet forIndex: index [
 	^ (rhs at: index) modelTypes: aSet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCReduceCode >> codeGenerator [
 	^ rhs grammar codeGenerator
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCReduceCode >> hasReduceAction [
 	^ true
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCReduceCode >> hash [
 	^ self class hash bitXor: self rhs hash
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCReduceCode >> isImmediate [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCReduceCode >> model [
 	^ rhs model
 ]
 
-{ #category : #'accessing-types' }
+{ #category : 'accessing-types' }
 SmaCCReduceCode >> modelTypes: anIdentitySet [
 	cachedTypes isNil
 		ifTrue: [ cachedTypes := self basicModelTypes: anIdentitySet ].
 	^ cachedTypes
 ]
 
-{ #category : #'accessing-types' }
+{ #category : 'accessing-types' }
 SmaCCReduceCode >> nodeType: anIdentitySet [
 	| index |
 	index := self returnedNodeIndex.
@@ -90,32 +92,32 @@ SmaCCReduceCode >> nodeType: anIdentitySet [
 		ifFalse: [ self baseClassType ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCReduceCode >> returnedNodeIndex [
 	^ self codeGenerator returnedNodeIndexFor: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCReduceCode >> returnsSingleVariable [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCReduceCode >> returnsVariableCollection [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCReduceCode >> rhs [
 	^ rhs
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCReduceCode >> rhs: aSmaCCRHS [
 	rhs := aSmaCCRHS
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCReduceCode >> source [
 	^ self subclassResponsibility
 ]

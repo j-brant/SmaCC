@@ -6,16 +6,18 @@ Instance Variables
 	index	<Integer>	index in the RHS of a symbol that returns parse node, if no symbol returns the parse node, then the index = 0
 "
 Class {
-	#name : #SmaCCCreateNodeReduceCode,
-	#superclass : #SmaCCReduceCode,
+	#name : 'SmaCCCreateNodeReduceCode',
+	#superclass : 'SmaCCReduceCode',
 	#instVars : [
 		'classDefinition',
 		'index'
 	],
-	#category : #'SmaCC_Development-Compilation Model'
+	#category : 'SmaCC_Development-Compilation Model',
+	#package : 'SmaCC_Development',
+	#tag : 'Compilation Model'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCCreateNodeReduceCode >> = anObject [
 	^ super = anObject
 		and:
@@ -23,12 +25,12 @@ SmaCCCreateNodeReduceCode >> = anObject [
 				and: [ self index = anObject index ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCreateNodeReduceCode >> basicModelTypes: aSet [
 	^ Array with: self classDefinition modelClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCCreateNodeReduceCode >> classDefinition [
 	classDefinition isNil
 		ifTrue: [ classDefinition := rhs nodeClassDefinition
@@ -36,27 +38,27 @@ SmaCCCreateNodeReduceCode >> classDefinition [
 	^ classDefinition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCCreateNodeReduceCode >> index [
 	^ index ifNil: [ index := rhs componentIndex ]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCCreateNodeReduceCode >> index: anInteger [
 	index := anInteger
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCCreateNodeReduceCode >> isPullUpAction [
 	^ self index > 0
 ]
 
-{ #category : #'accessing-types' }
+{ #category : 'accessing-types' }
 SmaCCCreateNodeReduceCode >> nodeType: anIdentitySet [
 	^ self classDefinition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCCreateNodeReduceCode >> source [
 	^ self isPullUpAction
 		ifTrue:

@@ -5,22 +5,24 @@ Instance Variables:
 	nodes	<Collection of: SmaCCRegularExpressionNode>	all RE nodes that are being ORed together
 "
 Class {
-	#name : #SmaCCOrRENode,
-	#superclass : #SmaCCRegularExpressionNode,
+	#name : 'SmaCCOrRENode',
+	#superclass : 'SmaCCRegularExpressionNode',
 	#instVars : [
 		'nodes'
 	],
-	#category : #'SmaCC_Development-Regular Expressions'
+	#category : 'SmaCC_Development-Regular Expressions',
+	#package : 'SmaCC_Development',
+	#tag : 'Regular Expressions'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCOrRENode class >> nodes: aCollection [
 	^ self new
 		nodes: aCollection;
 		yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCOrRENode >> asNFAStartingWith: aSmaCCNode [
 	| endNode startNode |
 	startNode := self addStateTransitionsTo: aSmaCCNode.
@@ -36,17 +38,17 @@ SmaCCOrRENode >> asNFAStartingWith: aSmaCCNode [
 	^ endNode
 ]
 
-{ #category : #constructing }
+{ #category : 'constructing' }
 SmaCCOrRENode >> makeCaseInsensitive [
 	nodes do: [ :each | each makeCaseInsensitive ]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCOrRENode >> nodes: aCollection [
 	nodes := aCollection
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCOrRENode >> possibleMatchesDo: aBlock on: aStream [
 	nodes
 		do:
@@ -57,20 +59,20 @@ SmaCCOrRENode >> possibleMatchesDo: aBlock on: aStream [
 			aStream position: pos ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCOrRENode >> possibleMatchesSize [
 	^ nodes
 		inject: 0
 		into: [ :sum :each | sum + each possibleMatchesSize ]
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 SmaCCOrRENode >> postCopy [
 	super postCopy.
 	nodes := nodes copy
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCOrRENode >> printOn: aStream [
 	aStream nextPut: $(.
 	nodes
@@ -79,7 +81,7 @@ SmaCCOrRENode >> printOn: aStream [
 	aStream nextPut: $)
 ]
 
-{ #category : #constructing }
+{ #category : 'constructing' }
 SmaCCOrRENode >> | aSmaCCRegularExpressionNode [
 	self action = aSmaCCRegularExpressionNode action
 		ifFalse: [ ^ super | aSmaCCRegularExpressionNode ].

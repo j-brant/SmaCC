@@ -7,20 +7,22 @@ Instance Variables:
 
 "
 Class {
-	#name : #SmaCCPreferredCompositeAction,
-	#superclass : #SmaCCCompositeAction,
+	#name : 'SmaCCPreferredCompositeAction',
+	#superclass : 'SmaCCCompositeAction',
 	#instVars : [
 		'preferredAction'
 	],
-	#category : #'SmaCC_Development-Actions'
+	#category : 'SmaCC_Development-Actions',
+	#package : 'SmaCC_Development',
+	#tag : 'Actions'
 }
 
-{ #category : #'error handling' }
+{ #category : 'error handling' }
 SmaCCPreferredCompositeAction >> errorType [
 	^ 'Shift/Reduce Conflict (handled by precedence rules)'
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 SmaCCPreferredCompositeAction >> mergeWith: aSmaCCAction prefer: aClass [
 	aSmaCCAction isReduce
 		ifTrue:
@@ -36,17 +38,17 @@ SmaCCPreferredCompositeAction >> mergeWith: aSmaCCAction prefer: aClass [
 	^ aSmaCCAction mergeWith: self prefer: aClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCPreferredCompositeAction >> preferredAction [
 	^ preferredAction
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCPreferredCompositeAction >> preferredAction: aSmaCCAction [
 	preferredAction := aSmaCCAction
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCPreferredCompositeAction >> reduceAction [
 	^ actions detect: [ :each | each isReduce ]
 ]

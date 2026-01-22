@@ -2,19 +2,21 @@
 SmaCCAmbiguousAction represents several conflicting actions for a state/symbol. If we are creating a GLR parser then all actions will be performed. Otherwise, we'll pick one of the actions to be performed preferring shift actions over reduce actions.
 "
 Class {
-	#name : #SmaCCAmbiguousAction,
-	#superclass : #SmaCCCompositeAction,
-	#category : #'SmaCC_Development-Actions'
+	#name : 'SmaCCAmbiguousAction',
+	#superclass : 'SmaCCCompositeAction',
+	#category : 'SmaCC_Development-Actions',
+	#package : 'SmaCC_Development',
+	#tag : 'Actions'
 }
 
-{ #category : #'accessing-actions' }
+{ #category : 'accessing-actions' }
 SmaCCAmbiguousAction >> addAction: aSmaCCAction [
 	aSmaCCAction isAmbiguous
 		ifTrue: [ actions addAll: aSmaCCAction actions ]
 		ifFalse: [ super addAction: aSmaCCAction ]
 ]
 
-{ #category : #'error handling' }
+{ #category : 'error handling' }
 SmaCCAmbiguousAction >> errorType [
 	| sortedActions |
 	sortedActions := self sortedActions.
@@ -23,12 +25,12 @@ SmaCCAmbiguousAction >> errorType [
 		ifFalse: [ 'Shift/Reduce Conflict' ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCAmbiguousAction >> isAmbiguous [
 	^ true
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 SmaCCAmbiguousAction >> mergeWith: aSmaCCAction prefer: aClass [
 	aSmaCCAction isReject
 		ifTrue: [ ^ self ].
@@ -38,12 +40,12 @@ SmaCCAmbiguousAction >> mergeWith: aSmaCCAction prefer: aClass [
 	^ self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAmbiguousAction >> preferredAction [
 	^ self sortedActions first
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCAmbiguousAction >> sortedActions [
 	"When in doubt shift the token"
 

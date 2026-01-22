@@ -7,28 +7,30 @@ Instance Variables
 
 "
 Class {
-	#name : #SmaCCSourceReduceCode,
-	#superclass : #SmaCCReduceCode,
+	#name : 'SmaCCSourceReduceCode',
+	#superclass : 'SmaCCReduceCode',
 	#instVars : [
 		'source',
 		'isImmediate'
 	],
-	#category : #'SmaCC_Development-Compilation Model'
+	#category : 'SmaCC_Development-Compilation Model',
+	#package : 'SmaCC_Development',
+	#tag : 'Compilation Model'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCSourceReduceCode class >> onRHS: aSmaCCRHS source: aString [
 	^ (self onRHS: aSmaCCRHS)
 		source: aString;
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCSourceReduceCode >> = anObject [
 	^ super = anObject and: [ self source = anObject source ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCSourceReduceCode >> basicModelTypes: aSet [
 	| index parseTree |
 	index := self returnedNodeIndex.
@@ -38,33 +40,33 @@ SmaCCSourceReduceCode >> basicModelTypes: aSet [
 	^ self typesForTree: parseTree seen: aSet
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCSourceReduceCode >> initialize [
 	super initialize.
 	isImmediate := false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSourceReduceCode >> isImmediate [
 	^ isImmediate
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSourceReduceCode >> isImmediate: aBoolean [
 	isImmediate := aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSourceReduceCode >> source [
 	^ source
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCSourceReduceCode >> source: aString [
 	source := aString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCSourceReduceCode >> typesForTree: aRBProgramNode seen: aSet [
 	aRBProgramNode isReturn
 		ifTrue: [ ^ self typesForTree: aRBProgramNode value seen: aSet ].

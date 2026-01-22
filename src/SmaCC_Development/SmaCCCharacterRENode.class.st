@@ -8,23 +8,25 @@ Instance Variables:
 
 "
 Class {
-	#name : #SmaCCCharacterRENode,
-	#superclass : #SmaCCRegularExpressionNode,
+	#name : 'SmaCCCharacterRENode',
+	#superclass : 'SmaCCRegularExpressionNode',
 	#instVars : [
 		'characters',
 		'ignoreCase'
 	],
-	#category : #'SmaCC_Development-Regular Expressions'
+	#category : 'SmaCC_Development-Regular Expressions',
+	#package : 'SmaCC_Development',
+	#tag : 'Regular Expressions'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCCharacterRENode class >> characters: aSmaCCCharacterSet [
 	^ self new
 		characters: aSmaCCCharacterSet;
 		yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCharacterRENode >> asNFAStartingWith: aSmaCCNode [
 	| endNode startNode |
 	startNode := self addStateTransitionsTo: aSmaCCNode.
@@ -34,7 +36,7 @@ SmaCCCharacterRENode >> asNFAStartingWith: aSmaCCNode [
 	^ endNode
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCCharacterRENode >> canMergeWith: aSmaCCRegularExpressionNode [
 	^ self class = aSmaCCRegularExpressionNode class
 		and:
@@ -44,23 +46,23 @@ SmaCCCharacterRENode >> canMergeWith: aSmaCCRegularExpressionNode [
 						and: [ self action = aSmaCCRegularExpressionNode action ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCCharacterRENode >> characters [
 	^ characters
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCCharacterRENode >> characters: aSmaCCCharacterSet [
 	characters := aSmaCCCharacterSet
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCCharacterRENode >> initialize [
 	super initialize.
 	ignoreCase := false
 ]
 
-{ #category : #constructing }
+{ #category : 'constructing' }
 SmaCCCharacterRENode >> makeCaseInsensitive [
 	| newCharacters |
 	ignoreCase := true.
@@ -77,14 +79,14 @@ SmaCCCharacterRENode >> makeCaseInsensitive [
 	characters := newCharacters
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCCharacterRENode >> matchingCharacters [
 	^ ignoreCase
 		ifTrue: [ characters reject: [ :each | each isLowercase ] ]
 		ifFalse: [ characters ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCharacterRENode >> possibleMatchesDo: aBlock on: aStream [
 	self matchingCharacters
 		do: [ :each | 
@@ -93,12 +95,12 @@ SmaCCCharacterRENode >> possibleMatchesDo: aBlock on: aStream [
 			aStream position: aStream position - 1 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCCharacterRENode >> possibleMatchesSize [
 	^ self matchingCharacters size
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCCharacterRENode >> printCharacter: aCharacter on: aStream [
 	(aCharacter asInteger between: 32 and: 126)
 		ifTrue: [ ^ aStream nextPut: aCharacter ].
@@ -106,7 +108,7 @@ SmaCCCharacterRENode >> printCharacter: aCharacter on: aStream [
 	aCharacter asInteger printOn: aStream base: 16 showRadix: false
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCCharacterRENode >> printOn: aStream [
 	| allCharacters |
 	characters size = 1
@@ -122,7 +124,7 @@ SmaCCCharacterRENode >> printOn: aStream [
 	aStream nextPut: $]
 ]
 
-{ #category : #constructing }
+{ #category : 'constructing' }
 SmaCCCharacterRENode >> | aSmaCCRegularExpressionNode [
 	(self canMergeWith: aSmaCCRegularExpressionNode)
 		ifFalse: [ ^ super | aSmaCCRegularExpressionNode ].

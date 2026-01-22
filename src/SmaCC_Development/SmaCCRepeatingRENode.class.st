@@ -7,22 +7,24 @@ Instance Variables:
 	node	<SmaCCRegularExpressionNode>	the node we are matching
 "
 Class {
-	#name : #SmaCCRepeatingRENode,
-	#superclass : #SmaCCRegularExpressionNode,
+	#name : 'SmaCCRepeatingRENode',
+	#superclass : 'SmaCCRegularExpressionNode',
 	#instVars : [
 		'node',
 		'minimumMatches',
 		'maximumMatches'
 	],
-	#category : #'SmaCC_Development-Regular Expressions'
+	#category : 'SmaCC_Development-Regular Expressions',
+	#package : 'SmaCC_Development',
+	#tag : 'Regular Expressions'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCRepeatingRENode class >> component: aSmaCCRegularExpressionNode [
 	^ self component: aSmaCCRegularExpressionNode minimum: 0
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCRepeatingRENode class >> component: aSmaCCRegularExpressionNode minimum: anInteger [
 	^ self
 		component: aSmaCCRegularExpressionNode
@@ -30,7 +32,7 @@ SmaCCRepeatingRENode class >> component: aSmaCCRegularExpressionNode minimum: an
 		maximum: self finiteInfinity
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCRepeatingRENode class >> component: aSmaCCRegularExpressionNode minimum: minInteger maximum: maxInteger [
 	^ self new
 		component: aSmaCCRegularExpressionNode
@@ -39,14 +41,14 @@ SmaCCRepeatingRENode class >> component: aSmaCCRegularExpressionNode minimum: mi
 		yourself
 ]
 
-{ #category : #constants }
+{ #category : 'constants' }
 SmaCCRepeatingRENode class >> finiteInfinity [
 	"The number that we consider to be 'infinite'"
 
 	^ 2147483648
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRepeatingRENode >> asNFAStartingWith: aSmaCCNode [
 	| endNode start |
 	start := SmaCCNode new.
@@ -63,24 +65,24 @@ SmaCCRepeatingRENode >> asNFAStartingWith: aSmaCCNode [
 	^ endNode
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCRepeatingRENode >> component: aSmaCCRegularExpressionNode minimum: minInteger maximum: maxInteger [
 	node := aSmaCCRegularExpressionNode.
 	minimumMatches := minInteger.
 	maximumMatches := maxInteger
 ]
 
-{ #category : #constructing }
+{ #category : 'constructing' }
 SmaCCRepeatingRENode >> makeCaseInsensitive [
 	node makeCaseInsensitive
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRepeatingRENode >> possibleMatchesDo: aBlock on: aStream [
 	self possibleMatchesDo: aBlock on: aStream startingAt: 0
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRepeatingRENode >> possibleMatchesDo: aBlock on: aStream startingAt: anInteger [
 	(anInteger between: minimumMatches and: maximumMatches)
 		ifTrue: [ aBlock value ].
@@ -92,7 +94,7 @@ SmaCCRepeatingRENode >> possibleMatchesDo: aBlock on: aStream startingAt: anInte
 				on: aStream ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRepeatingRENode >> possibleMatchesSize [
 	"This does not return the exact number for expressions with over 50 potential matches since we don't need that detail and computing the exact value may be expensive."
 
@@ -108,7 +110,7 @@ SmaCCRepeatingRENode >> possibleMatchesSize [
 		into: [ :sum :each | sum + (baseSize raisedTo: each) ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCRepeatingRENode >> printOn: aStream [
 	aStream nextPut: $(.
 	node printOn: aStream.

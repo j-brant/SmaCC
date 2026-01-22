@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCRHS,
-	#superclass : #SmaCCGrammarItem,
+	#name : 'SmaCCRHS',
+	#superclass : 'SmaCCGrammarItem',
 	#instVars : [
 		'collection',
 		'variableNameMap',
@@ -8,21 +8,23 @@ Class {
 		'productionSymbol',
 		'reduceCode'
 	],
-	#category : #'SmaCC_Development-Model'
+	#category : 'SmaCC_Development-Model',
+	#package : 'SmaCC_Development',
+	#tag : 'Model'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCRHS >> = aSmaCCRHS [
 	^ self class = aSmaCCRHS class
 		and: [ collection = aSmaCCRHS collection ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRHS >> add: aSmaCCSymbol [
 	collection add: aSmaCCSymbol
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRHS >> annotateTokenVariables: aBlock [
 	collection
 		keysAndValuesDo:
@@ -36,12 +38,12 @@ SmaCCRHS >> annotateTokenVariables: aBlock [
 								add: i ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRHS >> at: anInteger [
 	^ collection at: anInteger
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRHS >> basicModelTypesForVariable: aString into: productionTypes seen: aSet [
 	(self symbolsForVariableName: aString)
 		do:
@@ -60,12 +62,12 @@ SmaCCRHS >> basicModelTypesForVariable: aString into: productionTypes seen: aSet
 						addAll: (each modelTypesForVariable: aString seen: aSet) ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRHS >> collection [
 	^ collection
 ]
 
-{ #category : #'reduce actions' }
+{ #category : 'reduce actions' }
 SmaCCRHS >> componentIndex [
 	collection
 		keysAndValuesDo:
@@ -76,12 +78,12 @@ SmaCCRHS >> componentIndex [
 	^ 0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRHS >> do: aBlock [
 	collection do: aBlock
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRHS >> firstTerminals [
 	| items |
 	collection isEmpty
@@ -98,7 +100,7 @@ SmaCCRHS >> firstTerminals [
 	^ items
 ]
 
-{ #category : #'reduce actions' }
+{ #category : 'reduce actions' }
 SmaCCRHS >> generateNamedVariableCollectionWarningFor: problemIndex [
 	SmaCCCompilationNotification new
 		messageText: 'Node creation';
@@ -120,7 +122,7 @@ SmaCCRHS >> generateNamedVariableCollectionWarningFor: problemIndex [
 		signal
 ]
 
-{ #category : #'reduce actions' }
+{ #category : 'reduce actions' }
 SmaCCRHS >> generateUnnamedSymbolWarningFor: problemIndex [
 	(self grammar ignoredVariableWarnings includes: (self at: problemIndex) name)
 		ifTrue: [ ^ self ].
@@ -144,32 +146,32 @@ SmaCCRHS >> generateUnnamedSymbolWarningFor: problemIndex [
 		signal
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCRHS >> hasNamedVariable [
 	^ variableNameMap notEmpty
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCRHS >> hasNodeClassDefinition [
 	^ self nodeClassDefinition notNil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCRHS >> hasReduceAction [
 	^ reduceCode hasReduceAction
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCRHS >> hash [
 	^ self class hash hashMultiply bitXor: collection hash
 ]
 
-{ #category : #variables }
+{ #category : 'variables' }
 SmaCCRHS >> indexOfVariable: aString [
 	^ (variableNameMap at: aString ifAbsent: [ ^ nil ]) first
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCRHS >> initialize [
 	super initialize.
 	collection := OrderedCollection new.
@@ -177,93 +179,93 @@ SmaCCRHS >> initialize [
 	variableNameMap := Dictionary new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCRHS >> locallyDefinesVariable: aString [
 	^ (self indexOfVariable: aString) notNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRHS >> modelTypes: anIdentitySet [
 	^ reduceCode modelTypes: anIdentitySet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRHS >> nameLastItem: aString [
 	(variableNameMap at: aString ifAbsentPut: [ OrderedCollection new ])
 		add: collection size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRHS >> nodeClassDefinition [
 	^ nodeClassDefinition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRHS >> nodeClassDefinition: aSmaCCNodeClassDefinition [
 	nodeClassDefinition := aSmaCCNodeClassDefinition
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCRHS >> printOn: aStream [
 	^ collection
 		do: [ :each | each printOn: aStream ]
 		separatedBy: [ aStream space ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRHS >> productionSymbol [
 	^ productionSymbol
 ]
 
-{ #category : #'reduce actions' }
+{ #category : 'reduce actions' }
 SmaCCRHS >> reduceCode [
 	^ reduceCode
 ]
 
-{ #category : #'reduce actions' }
+{ #category : 'reduce actions' }
 SmaCCRHS >> reduceCode: aSmaCCReduceCode [
 	reduceCode := aSmaCCReduceCode
 ]
 
-{ #category : #'reduce actions' }
+{ #category : 'reduce actions' }
 SmaCCRHS >> reduceCodeSource: aString [
 	reduceCode := SmaCCSourceReduceCode onRHS: self source: aString
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCRHS >> returnsSingleVariable [
 	^ reduceCode returnsSingleVariable
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCRHS >> returnsVariableCollection [
 	^ reduceCode returnsVariableCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRHS >> ruleNumber [
 	^ (productionSymbol ruleNumber bitShift: 10)
 		+ (productionSymbol positionOf: self)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRHS >> size [
 	^ collection size
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCRHS >> symbol: aSmaCCNonTerminalSymbol [
 	productionSymbol := aSmaCCNonTerminalSymbol
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRHS >> symbolsForVariableName: aString [
 	| indices |
 	indices := variableNameMap at: aString ifAbsent: [ #() ].
 	^ indices collect: [ :i | self at: i ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRHS >> unnamedSymbolsDo: aBlock [
 	self
 		variablesAndSymbolsDo: [ :var :each | 
@@ -271,13 +273,13 @@ SmaCCRHS >> unnamedSymbolsDo: aBlock [
 				ifTrue: [ aBlock value: each ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRHS >> variableDefinitions: aCollection [
 	variableDefinitions := aCollection.
 	SmaCCVariableDefinition assignIndices: variableDefinitions
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRHS >> variableNameForIndex: anInteger [
 	variableNameMap
 		keysAndValuesDo: [ :key :value | 
@@ -286,12 +288,12 @@ SmaCCRHS >> variableNameForIndex: anInteger [
 	^ nil
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRHS >> variableNames [
 	^ variableNameMap keys
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRHS >> variablesAndSymbolsDo: aBlock [
 	collection
 		keysAndValuesDo:

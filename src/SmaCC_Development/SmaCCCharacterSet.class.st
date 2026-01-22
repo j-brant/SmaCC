@@ -1,23 +1,25 @@
 Class {
-	#name : #SmaCCCharacterSet,
-	#superclass : #SmaCCIntegerSet,
-	#category : #'SmaCC_Development-Collections'
+	#name : 'SmaCCCharacterSet',
+	#superclass : 'SmaCCIntegerSet',
+	#category : 'SmaCC_Development-Collections',
+	#package : 'SmaCC_Development',
+	#tag : 'Collections'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCCharacterSet class >> withAllCharactersTo: aCharacter [
 	^ self new
 		initializeWithAllCharactersTo: aCharacter;
 		yourself
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 SmaCCCharacterSet >> add: aCharacter [
 	super add: aCharacter asInteger.
 	^ aCharacter
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 SmaCCCharacterSet >> asString [
 	| stream |
 	stream := WriteStream on: String new.
@@ -25,18 +27,18 @@ SmaCCCharacterSet >> asString [
 	^ stream contents
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 SmaCCCharacterSet >> do: aBlock [
 	^ super do: [ :each | aBlock value: (Character value: each) ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCCharacterSet >> includes: aCharacter [
 	(aCharacter isCharacter or: [ aCharacter isInteger ]) ifFalse: [ ^ false ].
 	^ super includes: aCharacter asInteger
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCCharacterSet >> initializeWithAllCharactersTo: aCharacter [
 	| current index value |
 	self add: aCharacter.
@@ -56,7 +58,7 @@ SmaCCCharacterSet >> initializeWithAllCharactersTo: aCharacter [
 			current := value ]
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 SmaCCCharacterSet >> remove: aCharacter ifAbsent: aBlock [
 	(self includes: aCharacter)
 		ifFalse: [ ^ aBlock value ].

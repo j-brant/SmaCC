@@ -1,6 +1,6 @@
-Extension { #name : #SmaCCCharacterBlockRegexNode }
+Extension { #name : 'SmaCCCharacterBlockRegexNode' }
 
-{ #category : #'*SmaCC_Development' }
+{ #category : '*SmaCC_Development' }
 SmaCCCharacterBlockRegexNode >> asRegularExpression [
 	| characters aStream invert node |
 	aStream := ReadStream on: (block value copyFrom: 2 to: block value size - 1).
@@ -13,7 +13,7 @@ SmaCCCharacterBlockRegexNode >> asRegularExpression [
 	^ node
 ]
 
-{ #category : #'*SmaCC_Development' }
+{ #category : '*SmaCC_Development' }
 SmaCCCharacterBlockRegexNode >> charactersFor: aStream [
 	| characters char endCharacters |
 	aStream atEnd ifTrue: [ self reportCharacterBlockError ].
@@ -32,7 +32,7 @@ SmaCCCharacterBlockRegexNode >> charactersFor: aStream [
 		collect: [ :each | Character value: each ]
 ]
 
-{ #category : #'*SmaCC_Development' }
+{ #category : '*SmaCC_Development' }
 SmaCCCharacterBlockRegexNode >> reportCharacterBlockError [
 	SmaCCParserError new
 		messageText: 'Invalid character block';

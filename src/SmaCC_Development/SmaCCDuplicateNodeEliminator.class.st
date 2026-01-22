@@ -8,21 +8,23 @@ Instance Variables:
 
 "
 Class {
-	#name : #SmaCCDuplicateNodeEliminator,
-	#superclass : #SmaCCGraphAlgorithm,
+	#name : 'SmaCCDuplicateNodeEliminator',
+	#superclass : 'SmaCCGraphAlgorithm',
 	#instVars : [
 		'comparisonState',
 		'root'
 	],
-	#category : #'SmaCC_Development-DFA/NFA'
+	#category : 'SmaCC_Development-DFA/NFA',
+	#package : 'SmaCC_Development',
+	#tag : 'DFA/NFA'
 }
 
-{ #category : #algorithm }
+{ #category : 'algorithm' }
 SmaCCDuplicateNodeEliminator class >> removeDuplicateNodesIn: aSmaCCNode [
 	^ self new removeDuplicateNodesIn: aSmaCCNode
 ]
 
-{ #category : #'graph copying' }
+{ #category : 'graph copying' }
 SmaCCDuplicateNodeEliminator >> copyEdgesWith: aDictionary [
 	| todo |
 	todo := OrderedCollection with: root.
@@ -41,7 +43,7 @@ SmaCCDuplicateNodeEliminator >> copyEdgesWith: aDictionary [
 							copy ]) ]
 ]
 
-{ #category : #'graph copying' }
+{ #category : 'graph copying' }
 SmaCCDuplicateNodeEliminator >> copyGraph [
 	| map |
 	map := Dictionary new.
@@ -50,13 +52,13 @@ SmaCCDuplicateNodeEliminator >> copyGraph [
 	^ map at: root
 ]
 
-{ #category : #'graph copying' }
+{ #category : 'graph copying' }
 SmaCCDuplicateNodeEliminator >> copyNodesInto: aDictionary [
 	root allStates
 		do: [ :each | aDictionary at: each put: each shallowCopy ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCDuplicateNodeEliminator >> isNode: firstSmaCCNode equivalentTo: secondSmaCCNode [
 	firstSmaCCNode = secondSmaCCNode
 		ifTrue: [ ^ true ].
@@ -82,12 +84,12 @@ SmaCCDuplicateNodeEliminator >> isNode: firstSmaCCNode equivalentTo: secondSmaCC
 	^ true
 ]
 
-{ #category : #algorithm }
+{ #category : 'algorithm' }
 SmaCCDuplicateNodeEliminator >> mergeAllTransitions [
 	root allStates do: [ :each | each mergeTransitions ]
 ]
 
-{ #category : #algorithm }
+{ #category : 'algorithm' }
 SmaCCDuplicateNodeEliminator >> mergeNodeUsing: aDictionary [
 	| seen todo mappings |
 	mappings := Dictionary new.
@@ -110,7 +112,7 @@ SmaCCDuplicateNodeEliminator >> mergeNodeUsing: aDictionary [
 				ifTrue: [ node mergeWith: mergedNode ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCDuplicateNodeEliminator >> pairsDo: aBlock [
 	| nodes |
 	nodes := root allStates asSortedCollection.
@@ -118,7 +120,7 @@ SmaCCDuplicateNodeEliminator >> pairsDo: aBlock [
 		[ :i | i + 1 to: nodes size do: [ :j | aBlock value: (nodes at: i) value: (nodes at: j) ] ]
 ]
 
-{ #category : #algorithm }
+{ #category : 'algorithm' }
 SmaCCDuplicateNodeEliminator >> removeDuplicateNodesIn: aSmaCCNode [
 	root := aSmaCCNode.
 	self removeDuplicates.
@@ -126,7 +128,7 @@ SmaCCDuplicateNodeEliminator >> removeDuplicateNodesIn: aSmaCCNode [
 	^ root
 ]
 
-{ #category : #algorithm }
+{ #category : 'algorithm' }
 SmaCCDuplicateNodeEliminator >> removeDuplicates [
 	| toMerge |
 	[ toMerge := Dictionary new.

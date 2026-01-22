@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCGrammarCompiler,
-	#superclass : #Object,
+	#name : 'SmaCCGrammarCompiler',
+	#superclass : 'Object',
 	#instVars : [
 		'shiftTable',
 		'itemSets',
@@ -15,25 +15,27 @@ Class {
 	#classVars : [
 		'OptimizeTransitionTable'
 	],
-	#category : #'SmaCC_Development-Compiler'
+	#category : 'SmaCC_Development-Compiler',
+	#package : 'SmaCC_Development',
+	#tag : 'Compiler'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammarCompiler class >> optimizeTransitionTable [
 	^ OptimizeTransitionTable ifNil: [ true ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammarCompiler class >> optimizeTransitionTable: aBoolean [
 	OptimizeTransitionTable := aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammarCompiler class >> toggleOptimizeTransitionTable [
 	self optimizeTransitionTable: self optimizeTransitionTable not
 ]
 
-{ #category : #'action table' }
+{ #category : 'action table' }
 SmaCCGrammarCompiler >> actionForState: anInteger on: aSmaCCSymbol [
 	| action |
 	action := (itemSets at: anInteger)
@@ -42,7 +44,7 @@ SmaCCGrammarCompiler >> actionForState: anInteger on: aSmaCCSymbol [
 	^ self idForAction: action state: anInteger on: aSmaCCSymbol
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCGrammarCompiler >> buildDefinition: definitionString [
 	| parser tree |
 	scannerCompiler grammar: self grammar.
@@ -55,7 +57,7 @@ SmaCCGrammarCompiler >> buildDefinition: definitionString [
 	grammar finishBuilding
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammarCompiler >> checkFor: problemSymbols errorMessage: errorMessage [
 	problemSymbols isEmpty ifTrue: [ ^ self ].
 	SmaCCCompilationNotification new
@@ -68,27 +70,27 @@ SmaCCGrammarCompiler >> checkFor: problemSymbols errorMessage: errorMessage [
 		signal
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammarCompiler >> checkForEmptySymbols [
 	self
 		checkFor: grammar emptySymbols
 		errorMessage: 'Missing non-terminal productions'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammarCompiler >> checkForUnusedSymbols [
 	self
 		checkFor: grammar unusedSymbols
 		errorMessage: 'Unused non-terminal symbols'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammarCompiler >> codeGenerator [
 	^ codeGenerator
 		ifNil: [ self codeGenerator: SmaCCSmalltalkCodeGenerator new ]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCGrammarCompiler >> codeGenerator: aSmaCCCodeGenerator [
 	codeGenerator := aSmaCCCodeGenerator.
 	self grammar codeGenerator: aSmaCCCodeGenerator.
@@ -96,7 +98,7 @@ SmaCCGrammarCompiler >> codeGenerator: aSmaCCCodeGenerator [
 	^ codeGenerator
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCGrammarCompiler >> compileInto: sClass andParser: pClass [
 	self scannerClass: sClass.
 	self parserClass: pClass.
@@ -104,12 +106,12 @@ SmaCCGrammarCompiler >> compileInto: sClass andParser: pClass [
 	self codeGenerator compileChanges
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCGrammarCompiler >> compileNodeClasses [
 	SmaCCNodeCalculation compileForGrammar: grammar
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCGrammarCompiler >> compileParser [
 	self compileNodeClasses.
 	self codeGenerator
@@ -123,17 +125,17 @@ SmaCCGrammarCompiler >> compileParser [
 		compileCacheId
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCGrammarCompiler >> compileScanner [
 	scannerCompiler compileScanner
 ]
 
-{ #category : #'action table' }
+{ #category : 'action table' }
 SmaCCGrammarCompiler >> compressTable: table [
 	^ table collect: [ :row | self compressTableRow: row ]
 ]
 
-{ #category : #'action table' }
+{ #category : 'action table' }
 SmaCCGrammarCompiler >> compressTableRow: row [
 	| uniqueItems |
 	uniqueItems := self uniqueNonErrorActionsForTableRow: row.
@@ -144,12 +146,12 @@ SmaCCGrammarCompiler >> compressTableRow: row [
 		ifFalse: [ self multipleActionTableRow: row ]
 ]
 
-{ #category : #'action table' }
+{ #category : 'action table' }
 SmaCCGrammarCompiler >> compressedRowStream [
 	^ WriteStream with: Array new
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCGrammarCompiler >> createChanges [
 	self codeGenerator removeOldMethods.
 	self checkForEmptySymbols.
@@ -159,7 +161,7 @@ SmaCCGrammarCompiler >> createChanges [
 	self codeGenerator compileDefinitionComment: parserDefinitionString
 ]
 
-{ #category : #'action table' }
+{ #category : 'action table' }
 SmaCCGrammarCompiler >> createItemSets [
 	| itemSet newState index |
 	startingStateMap := Dictionary new.
@@ -187,7 +189,7 @@ SmaCCGrammarCompiler >> createItemSets [
 			index := index + 1 ]
 ]
 
-{ #category : #'action table' }
+{ #category : 'action table' }
 SmaCCGrammarCompiler >> createTransitionTable [
 	| table optimizedTable |
 	table := (1 to: itemSets size) collect: [ :index | scannerCompiler symbols collect: [ :each | self actionForState: index on: each ] ].
@@ -197,14 +199,14 @@ SmaCCGrammarCompiler >> createTransitionTable [
 	actions := self compressTable: optimizedTable
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammarCompiler >> grammar [
 	^ grammar isNil
 		ifTrue: [ grammar := SmaCCGrammar new ]
 		ifFalse: [ grammar ]
 ]
 
-{ #category : #'action table' }
+{ #category : 'action table' }
 SmaCCGrammarCompiler >> idForAction: aSmaCCAction state: anInteger on: aSmaCCSymbol [
 	| index preferredAction newStateIndex |
 	(aSmaCCAction isAmbiguous and: [ grammar isGLR ])
@@ -230,7 +232,7 @@ SmaCCGrammarCompiler >> idForAction: aSmaCCAction state: anInteger on: aSmaCCSym
 			^ aSmaCCAction id ]
 ]
 
-{ #category : #'action table' }
+{ #category : 'action table' }
 SmaCCGrammarCompiler >> indexOfState: newState [
 	| newStateIndex |
 	newStateIndex := itemSets indexOf: newState.
@@ -241,7 +243,7 @@ SmaCCGrammarCompiler >> indexOfState: newState [
 	^ newStateIndex
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCGrammarCompiler >> initialize [
 	super initialize.
 	scannerCompiler := SmaCCScannerCompiler new.
@@ -249,7 +251,7 @@ SmaCCGrammarCompiler >> initialize [
 	reduceTable := OrderedDictionary new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammarCompiler >> itemSetsComment [
 	| stream |
 	stream := WriteStream on: String new.
@@ -263,7 +265,7 @@ SmaCCGrammarCompiler >> itemSetsComment [
 	^ stream contents
 ]
 
-{ #category : #'action table' }
+{ #category : 'action table' }
 SmaCCGrammarCompiler >> multipleActionTableRow: row [
 	| stream |
 	stream := self compressedRowStream.
@@ -278,7 +280,7 @@ SmaCCGrammarCompiler >> multipleActionTableRow: row [
 	^ stream contents
 ]
 
-{ #category : #'action table' }
+{ #category : 'action table' }
 SmaCCGrammarCompiler >> optimizeTransitionTable: anArray [
 	^ anArray
 		collect: [ :row | 
@@ -292,7 +294,7 @@ SmaCCGrammarCompiler >> optimizeTransitionTable: anArray [
 						ifFalse: [ action ] ] ]
 ]
 
-{ #category : #'action table' }
+{ #category : 'action table' }
 SmaCCGrammarCompiler >> optimizedShiftFrom: row to: stateIndex inTable: anArray [
 	| items action reduceEntry otherAction |
 	items := (anArray at: stateIndex) asSet.
@@ -314,24 +316,24 @@ SmaCCGrammarCompiler >> optimizedShiftFrom: row to: stateIndex inTable: anArray 
 		inTable: anArray) ifNil: [ otherAction ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammarCompiler >> parserClass [
 	^ self codeGenerator parserClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammarCompiler >> parserClass: aClassOrString [
 	grammar isGLR
 		ifTrue: [ self codeGenerator glrParserClass: aClassOrString ]
 		ifFalse: [ self codeGenerator parserClass: aClassOrString ]
 ]
 
-{ #category : #'reduction table' }
+{ #category : 'reduction table' }
 SmaCCGrammarCompiler >> reduceTable [
 	^ reduceTable keys
 ]
 
-{ #category : #'reduction table' }
+{ #category : 'reduction table' }
 SmaCCGrammarCompiler >> reduceTableIndexFor: aSmaCCReduceAction [
 	| value |
 	value := {scannerCompiler symbols indexOf: aSmaCCReduceAction symbol.
@@ -342,22 +344,22 @@ SmaCCGrammarCompiler >> reduceTableIndexFor: aSmaCCReduceAction [
 	^ reduceTable at: value ifAbsentPut: [ reduceTable size + 1 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammarCompiler >> scannerClass: aClassOrString [
 	self codeGenerator scannerClass: aClassOrString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammarCompiler >> scannerCompiler [
 	^ scannerCompiler
 ]
 
-{ #category : #'action table' }
+{ #category : 'action table' }
 SmaCCGrammarCompiler >> shiftTableKeyForIndex: anInteger symbol: aSmaCCSymbol [
 	^ SmaCCSymbolTableIndex forIndex: anInteger symbol: aSmaCCSymbol
 ]
 
-{ #category : #'action table' }
+{ #category : 'action table' }
 SmaCCGrammarCompiler >> singleActionTableRow: row forAction: anInteger [
 	| stream |
 	stream := self compressedRowStream.
@@ -371,7 +373,7 @@ SmaCCGrammarCompiler >> singleActionTableRow: row forAction: anInteger [
 	^ stream contents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammarCompiler >> symbolsComment [
 	| stream |
 	stream := WriteStream on: String new.
@@ -386,7 +388,7 @@ SmaCCGrammarCompiler >> symbolsComment [
 	^ stream contents
 ]
 
-{ #category : #'action table' }
+{ #category : 'action table' }
 SmaCCGrammarCompiler >> transitionTable [
 	actions isNil
 		ifTrue: [ self createItemSets.
@@ -394,14 +396,14 @@ SmaCCGrammarCompiler >> transitionTable [
 	^ actions
 ]
 
-{ #category : #'action table' }
+{ #category : 'action table' }
 SmaCCGrammarCompiler >> uniqueNonErrorActionsForTableRow: row [
 	^ row asSet
 		remove: 3 ifAbsent: [  ];
 		asArray
 ]
 
-{ #category : #'action table' }
+{ #category : 'action table' }
 SmaCCGrammarCompiler >> writeInteger: anInteger on: aStream [
 	aStream nextPut: anInteger
 ]
