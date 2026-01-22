@@ -1,10 +1,12 @@
 Class {
-	#name : #SmaCCGraphAlgorithm,
-	#superclass : #Object,
-	#category : #'SmaCC_Development-DFA/NFA'
+	#name : 'SmaCCGraphAlgorithm',
+	#superclass : 'Object',
+	#category : 'SmaCC_Development-DFA/NFA',
+	#package : 'SmaCC_Development',
+	#tag : 'DFA/NFA'
 }
 
-{ #category : #nodes }
+{ #category : 'nodes' }
 SmaCCGraphAlgorithm >> createMergedNodeFrom: nodeCollection [
 	| newNode |
 	newNode := SmaCCNode new.
@@ -13,12 +15,12 @@ SmaCCGraphAlgorithm >> createMergedNodeFrom: nodeCollection [
 	^ newNode
 ]
 
-{ #category : #nodes }
+{ #category : 'nodes' }
 SmaCCGraphAlgorithm >> mergeActionsFrom: nodeCollection into: aSmaCCNode [
 	nodeCollection do: [ :each | aSmaCCNode addActions: each action ]
 ]
 
-{ #category : #nodes }
+{ #category : 'nodes' }
 SmaCCGraphAlgorithm >> mergeTransitionsFrom: nodeCollection into: aSmaCCNode [
 	| transitions |
 	transitions := Set new.

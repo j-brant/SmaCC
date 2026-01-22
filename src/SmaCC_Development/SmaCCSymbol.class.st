@@ -14,17 +14,19 @@ Instance Variables
 
 "
 Class {
-	#name : #SmaCCSymbol,
-	#superclass : #SmaCCGrammarItem,
+	#name : 'SmaCCSymbol',
+	#superclass : 'SmaCCGrammarItem',
 	#instVars : [
 		'name',
 		'precedence',
 		'firstTerminals'
 	],
-	#category : #'SmaCC_Development-Model'
+	#category : 'SmaCC_Development-Model',
+	#package : 'SmaCC_Development',
+	#tag : 'Model'
 }
 
-{ #category : #variables }
+{ #category : 'variables' }
 SmaCCSymbol class >> mergeOrderedVariableDefinitions: newVariableDefinitions [
 	| result |
 	result := OrderedCollection new.
@@ -33,7 +35,7 @@ SmaCCSymbol class >> mergeOrderedVariableDefinitions: newVariableDefinitions [
 	^ result
 ]
 
-{ #category : #variables }
+{ #category : 'variables' }
 SmaCCSymbol class >> mergeVariableDefinitions: collection into: result [
 	collection
 		do:
@@ -50,14 +52,14 @@ SmaCCSymbol class >> mergeVariableDefinitions: collection into: result [
 				ifTrue: [ variable isCollection: true ] ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCSymbol class >> name: aString [
 	^ self new
 		name: aString;
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCSymbol >> < aSmaCCSymbol [
 	| myPos otherPos |
 	myPos := self position.
@@ -67,12 +69,12 @@ SmaCCSymbol >> < aSmaCCSymbol [
 		ifFalse: [ myPos < otherPos ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCSymbol >> annotateTokenVariables: aBlock [
 	self productionsDo: [ :each | each annotateTokenVariables: aBlock ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCSymbol >> basicModelTypesForVariable: aString into: productionTypes seen: aSet [
 	self
 		productionsDo:
@@ -81,12 +83,12 @@ SmaCCSymbol >> basicModelTypesForVariable: aString into: productionTypes seen: a
 				addAll: (each modelTypesForVariable: aString seen: aSet) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbol >> calculateFirstTerminals [
 	^ self subclassResponsibility
 ]
 
-{ #category : #variables }
+{ #category : 'variables' }
 SmaCCSymbol >> computeVariableDefinitions [
 	| variableCollections |
 	variableCollections := OrderedCollection new.
@@ -98,83 +100,83 @@ SmaCCSymbol >> computeVariableDefinitions [
 	^ variableDefinitions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbol >> createIdMethod [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbol >> firstTerminals [
 	^ firstTerminals
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCSymbol >> initialize [
 	super initialize.
 	firstTerminals := Set new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbol >> isEmptySymbol [
 	^ self = grammar emptySymbol
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCSymbol >> isStartingSymbol [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCSymbol >> isTerminal [
 	^ self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCSymbol >> makeCaseInsensitive [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbol >> name [
 	^ name
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCSymbol >> name: aString [
 	name := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbol >> position [
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbol >> precedence [
 	^ precedence
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbol >> precedence: anInteger [
 	precedence := anInteger
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCSymbol >> printOn: aStream [
 	aStream nextPutAll: name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbol >> productionsDo: aBlock [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbol >> regularExpression [
 	^ nil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCSymbol >> requiresNodeType [
 	self
 		productionsDo: [ :each | 
@@ -183,7 +185,7 @@ SmaCCSymbol >> requiresNodeType [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbol >> safeMethodName [
 	^ self unsafeMethodName
 		collect: [ :each | 
@@ -192,12 +194,12 @@ SmaCCSymbol >> safeMethodName [
 				ifFalse: [ $_ ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbol >> size [
 	^ 0
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCSymbol >> unsafeMethodName [
 	^ self printString
 ]

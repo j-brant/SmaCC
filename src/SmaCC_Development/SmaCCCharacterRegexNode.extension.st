@@ -1,6 +1,6 @@
-Extension { #name : #SmaCCCharacterRegexNode }
+Extension { #name : 'SmaCCCharacterRegexNode' }
 
-{ #category : #'*SmaCC_Development' }
+{ #category : '*SmaCC_Development' }
 SmaCCCharacterRegexNode >> asRegularExpression [
 	| ch |
 	ch := self char value.

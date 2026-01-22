@@ -1,18 +1,20 @@
 Class {
-	#name : #SmaCCConditionRENode,
-	#superclass : #SmaCCRegularExpressionNode,
+	#name : 'SmaCCConditionRENode',
+	#superclass : 'SmaCCRegularExpressionNode',
 	#instVars : [
 		'conditions'
 	],
-	#category : #'SmaCC_Development-Regular Expressions'
+	#category : 'SmaCC_Development-Regular Expressions',
+	#package : 'SmaCC_Development',
+	#tag : 'Regular Expressions'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 SmaCCConditionRENode >> addCondition: aString [
 	conditions add: aString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCConditionRENode >> asNFAStartingWith: aSmaCCNode [
 	| endNode |
 	endNode := SmaCCNode new.
@@ -21,33 +23,33 @@ SmaCCConditionRENode >> asNFAStartingWith: aSmaCCNode [
 	^ endNode
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCConditionRENode >> canBeEmpty [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCConditionRENode >> conditions [
 	^ conditions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCConditionRENode >> conditions: anObject [
 	conditions := anObject
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCConditionRENode >> initialize [
 	super initialize.
 	conditions := OrderedCollection new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCConditionRENode >> possibleMatchesSize [
 	^ SmallInteger maxVal
 ]
 
-{ #category : #constructing }
+{ #category : 'constructing' }
 SmaCCConditionRENode >> | aSmaCCRegularExpressionNode [
 	self class = aSmaCCRegularExpressionNode class
 		ifFalse: [ ^ super | aSmaCCRegularExpressionNode ].

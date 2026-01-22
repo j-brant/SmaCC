@@ -1,6 +1,6 @@
-Extension { #name : #SmaCCParser }
+Extension { #name : 'SmaCCParser' }
 
-{ #category : #'*SmaCC_Development' }
+{ #category : '*SmaCC_Development' }
 SmaCCParser class >> compileGrammar: aString [
 	| oldCharacterSize |
 	(aString isNil or: [ aString isEmpty ])
@@ -12,14 +12,14 @@ SmaCCParser class >> compileGrammar: aString [
 		ensure: [ SmaCCGrammar maximumCharacterValue: oldCharacterSize ]
 ]
 
-{ #category : #'*SmaCC_Development' }
+{ #category : '*SmaCC_Development' }
 SmaCCParser class >> definitionAST [
 	^ [ SmaCCDefinitionParser parse: self parserDefinitionString ]
 		on: SmaCCParserError
 		do: [ :ex | ex return: nil ]
 ]
 
-{ #category : #'*SmaCC_Development' }
+{ #category : '*SmaCC_Development' }
 SmaCCParser class >> parserDefinitionString [
 	| scannerClass source |
 	scannerClass := [ self scannerClass ]
@@ -36,7 +36,7 @@ SmaCCParser class >> parserDefinitionString [
 	^ source
 ]
 
-{ #category : #'*SmaCC_Development' }
+{ #category : '*SmaCC_Development' }
 SmaCCParser class >> recompileAll [
 	"self recompileAll"
 
@@ -45,7 +45,7 @@ SmaCCParser class >> recompileAll [
 		displayingProgress: [ :each | 'Compiling ' , each instanceSide name ]
 ]
 
-{ #category : #'*SmaCC_Development' }
+{ #category : '*SmaCC_Development' }
 SmaCCParser class >> removeCommentedPartOf: aString [
 	| inStream outStream |
 	inStream := ReadStream on: aString.

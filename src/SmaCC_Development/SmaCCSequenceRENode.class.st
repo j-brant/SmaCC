@@ -7,22 +7,24 @@ Instance Variables:
 
 "
 Class {
-	#name : #SmaCCSequenceRENode,
-	#superclass : #SmaCCRegularExpressionNode,
+	#name : 'SmaCCSequenceRENode',
+	#superclass : 'SmaCCRegularExpressionNode',
 	#instVars : [
 		'nodes'
 	],
-	#category : #'SmaCC_Development-Regular Expressions'
+	#category : 'SmaCC_Development-Regular Expressions',
+	#package : 'SmaCC_Development',
+	#tag : 'Regular Expressions'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCSequenceRENode class >> nodes: aCollection [
 	^ self new
 		nodes: aCollection;
 		yourself
 ]
 
-{ #category : #constructing }
+{ #category : 'constructing' }
 SmaCCSequenceRENode >> , aSmaCCRegularExpressionNode [
 	self action = aSmaCCRegularExpressionNode action
 		ifFalse: [ ^ super , aSmaCCRegularExpressionNode ].
@@ -30,7 +32,7 @@ SmaCCSequenceRENode >> , aSmaCCRegularExpressionNode [
 	^ self
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCSequenceRENode >> asNFAStartingWith: aSmaCCNode [
 	| endNode startNode |
 	startNode := self addStateTransitionsTo: aSmaCCNode.
@@ -43,22 +45,22 @@ SmaCCSequenceRENode >> asNFAStartingWith: aSmaCCNode [
 	^ endNode
 ]
 
-{ #category : #constructing }
+{ #category : 'constructing' }
 SmaCCSequenceRENode >> makeCaseInsensitive [
 	nodes do: [ :each | each makeCaseInsensitive ]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCSequenceRENode >> nodes: aCollection [
 	nodes := aCollection
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCSequenceRENode >> possibleMatchesDo: aBlock on: aStream [
 	self possibleMatchesDo: aBlock on: aStream startingAt: 1
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCSequenceRENode >> possibleMatchesDo: aBlock on: aStream startingAt: anInteger [
 	| node |
 	node := nodes at: anInteger.
@@ -71,20 +73,20 @@ SmaCCSequenceRENode >> possibleMatchesDo: aBlock on: aStream startingAt: anInteg
 				on: aStream ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSequenceRENode >> possibleMatchesSize [
 	^ nodes
 		inject: 1
 		into: [ :sum :each | sum * each possibleMatchesSize ]
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 SmaCCSequenceRENode >> postCopy [
 	super postCopy.
 	nodes := nodes copy
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCSequenceRENode >> printOn: aStream [
 	nodes
 		do: [ :each | each printOn: aStream ]

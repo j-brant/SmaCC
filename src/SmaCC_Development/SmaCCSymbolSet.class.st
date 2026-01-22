@@ -1,21 +1,23 @@
 Class {
-	#name : #SmaCCSymbolSet,
-	#superclass : #Model,
+	#name : 'SmaCCSymbolSet',
+	#superclass : 'Model',
 	#instVars : [
 		'symbols',
 		'components'
 	],
-	#category : #'SmaCC_Development-Collections'
+	#category : 'SmaCC_Development-Collections',
+	#package : 'SmaCC_Development',
+	#tag : 'Collections'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCSymbolSet class >> basedOn: aSmaCCSymbolSet [
 	^ self new
 		baseOn: aSmaCCSymbolSet;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbolSet >> add: aSmaCCSymbol [
 	(symbols includes: aSmaCCSymbol)
 		ifTrue: [ ^ self ].
@@ -23,7 +25,7 @@ SmaCCSymbolSet >> add: aSmaCCSymbol [
 	self changed
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbolSet >> addAll: aCollection [
 	| todo |
 	todo := OrderedCollection with: self.
@@ -37,7 +39,7 @@ SmaCCSymbolSet >> addAll: aCollection [
 				ifTrue: [ todo addAll: current dependents ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbolSet >> addComponent: aSmaCCSymbolSet [
 	(aSmaCCSymbolSet = self or: [ components includes: aSmaCCSymbolSet ])
 		ifTrue: [ ^ self ].
@@ -46,73 +48,73 @@ SmaCCSymbolSet >> addComponent: aSmaCCSymbolSet [
 	self addAll: aSmaCCSymbolSet symbols
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbolSet >> addComponentsFrom: aSmaCCSymbolSet [
 	aSmaCCSymbolSet components do: [ :each | self addComponent: each ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCSymbolSet >> allSatisfy: aBlock [
 	^ symbols allSatisfy: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbolSet >> baseOn: aSmaCCSymbolSet [
 	self addComponent: aSmaCCSymbolSet.
 	self addAll: aSmaCCSymbolSet symbols
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbolSet >> components [
 	^ components
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCSymbolSet >> getDependents [
 	^ dependents
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCSymbolSet >> includes: aSmaCCSymbol [
 	^ symbols includes: aSmaCCSymbol
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCSymbolSet >> initialize [
 	super initialize.
 	symbols := Set new.
 	components := Set new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbolSet >> mergeWith: aSmaCCSymbolSet [
 	self addAll: aSmaCCSymbolSet symbols.
 	self addComponentsFrom: aSmaCCSymbolSet
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCSymbolSet >> printOn: aStream [
 	(symbols asSortedCollection: [ :a :b | a name < b name ])
 		do: [ :each | aStream nextPutAll: each printString ]
 		separatedBy: [ aStream space ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCSymbolSet >> setDependents: aCollection [
 	^ dependents := aCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbolSet >> size [
 	^ symbols size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbolSet >> symbols [
 	^ symbols
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 SmaCCSymbolSet >> update: anAspectSymbol with: aParameter from: aSender [
 	(components includes: aSender)
 		ifTrue: [ self addAll: aSender symbols ]

@@ -1,10 +1,12 @@
 Class {
-	#name : #SmaCCStartingSymbol,
-	#superclass : #SmaCCNonTerminalSymbol,
-	#category : #'SmaCC_Development-Model'
+	#name : 'SmaCCStartingSymbol',
+	#superclass : 'SmaCCNonTerminalSymbol',
+	#category : 'SmaCC_Development-Model',
+	#package : 'SmaCC_Development',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStartingSymbol >> asLRItemSet [
 	| itemSet |
 	itemSet := self grammar newItemSet.
@@ -22,17 +24,17 @@ SmaCCStartingSymbol >> asLRItemSet [
 	^ itemSet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStartingSymbol >> compileName [
 	^ (productions first at: 1) safeMethodName
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCStartingSymbol >> isStartingSymbol [
 	^ true
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCStartingSymbol >> symbol [
 	^ productions first at: 1
 ]

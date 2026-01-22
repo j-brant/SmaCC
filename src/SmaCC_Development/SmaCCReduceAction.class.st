@@ -3,36 +3,38 @@ SmaCCReduceAction represents the LR reduce action.
 
 "
 Class {
-	#name : #SmaCCReduceAction,
-	#superclass : #SmaCCPrimitiveAction,
-	#category : #'SmaCC_Development-Actions'
+	#name : 'SmaCCReduceAction',
+	#superclass : 'SmaCCPrimitiveAction',
+	#category : 'SmaCC_Development-Actions',
+	#package : 'SmaCC_Development',
+	#tag : 'Actions'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCReduceAction class >> id [
 	^ 2r10
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCReduceAction class >> rhs: aSmaCCRHS [
 	^ self new
 		rhs: aSmaCCRHS;
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCReduceAction >> isReduce [
 	^ true
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 SmaCCReduceAction >> mergeWith: aSmaCCAction prefer: aClass [
 	aSmaCCAction isReduce
 		ifTrue: [ ^ self mergeWithReduceAction: aSmaCCAction ].
 	^ aSmaCCAction mergeWith: self prefer: aClass
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 SmaCCReduceAction >> mergeWithReduceAction: aSmaCCAction [
 	self = aSmaCCAction
 		ifTrue: [ ^ self ].

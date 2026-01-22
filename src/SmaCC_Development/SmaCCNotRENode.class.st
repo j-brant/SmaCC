@@ -7,27 +7,29 @@ Instance Variables:
 
 "
 Class {
-	#name : #SmaCCNotRENode,
-	#superclass : #SmaCCRegularExpressionNode,
+	#name : 'SmaCCNotRENode',
+	#superclass : 'SmaCCRegularExpressionNode',
 	#instVars : [
 		'node'
 	],
-	#category : #'SmaCC_Development-Regular Expressions'
+	#category : 'SmaCC_Development-Regular Expressions',
+	#package : 'SmaCC_Development',
+	#tag : 'Regular Expressions'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCNotRENode class >> on: aSmaCCCharacterRENode [
 	^ self new
 		node: aSmaCCCharacterRENode;
 		yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCNotRENode >> asNFAStartingWith: aSmaCCNode [
 	^ self characterNode asNFAStartingWith: aSmaCCNode
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCNotRENode >> characterNode [
 	^ (SmaCCCharacterRENode characters: self characters)
 		addStates: states;
@@ -35,33 +37,33 @@ SmaCCNotRENode >> characterNode [
 		yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCNotRENode >> characters [
 	^ SmaCCGrammar allCharacters
 		reject: [ :each | node characters includes: each ]
 ]
 
-{ #category : #constructing }
+{ #category : 'constructing' }
 SmaCCNotRENode >> makeCaseInsensitive [
 	node makeCaseInsensitive
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCNotRENode >> node: aSmaCCCharacterRENode [
 	node := aSmaCCCharacterRENode
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCNotRENode >> possibleMatchesDo: aBlock on: aStream [
 	self characterNode possibleMatchesDo: aBlock on: aStream
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNotRENode >> possibleMatchesSize [
 	^ self characterNode possibleMatchesSize
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCNotRENode >> printOn: aStream [
 	self characterNode printOn: aStream
 ]

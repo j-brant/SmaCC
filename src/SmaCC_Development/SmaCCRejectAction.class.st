@@ -4,22 +4,24 @@ SmaCCRejectAction represents the LR reject action.
 
 "
 Class {
-	#name : #SmaCCRejectAction,
-	#superclass : #SmaCCPrimitiveAction,
-	#category : #'SmaCC_Development-Actions'
+	#name : 'SmaCCRejectAction',
+	#superclass : 'SmaCCPrimitiveAction',
+	#category : 'SmaCC_Development-Actions',
+	#package : 'SmaCC_Development',
+	#tag : 'Actions'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRejectAction class >> id [
 	^ 2r11
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCRejectAction >> isReject [
 	^ true
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 SmaCCRejectAction >> mergeWith: aSmaCCAction prefer: aClass [
 	^ aSmaCCAction
 ]

@@ -1,27 +1,29 @@
 Class {
-	#name : #SmaCCItemSet,
-	#superclass : #Set,
+	#name : 'SmaCCItemSet',
+	#superclass : 'Set',
 	#instVars : [
 		'type',
 		'previousItemSets',
 		'grammar'
 	],
-	#category : #'SmaCC_Development-Item Sets'
+	#category : 'SmaCC_Development-Item Sets',
+	#package : 'SmaCC_Development',
+	#tag : 'Item Sets'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCItemSet class >> new [
 	^self new: 5
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCItemSet class >> new: anInteger [
 	^ (super new: anInteger)
 		initialize;
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCItemSet >> = aSmaCCItemSet [
 	self class = aSmaCCItemSet class
 		ifTrue:
@@ -31,7 +33,7 @@ SmaCCItemSet >> = aSmaCCItemSet [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCItemSet >> action: aSmaCCSymbol prefer: aClass [
 	| action |
 	action := nil.
@@ -47,7 +49,7 @@ SmaCCItemSet >> action: aSmaCCSymbol prefer: aClass [
 	^ action
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 SmaCCItemSet >> add: aSmaCCLR1Item [
 	| index item |
 	aSmaCCLR1Item isNil
@@ -63,29 +65,29 @@ SmaCCItemSet >> add: aSmaCCLR1Item [
 	^ aSmaCCLR1Item
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCItemSet >> addPrevious: aSmaCCItemSet [
 	previousItemSets add: aSmaCCItemSet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCItemSet >> grammar [
 	^ grammar
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCItemSet >> grammar: aSmaCCGrammar [
 	grammar := aSmaCCGrammar
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCItemSet >> hash [
 	^ self
 		inject: self class hash
 		into: [ :sum :each | sum bitXor: each hash ]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCItemSet >> initialize [
 	(self class superclass canUnderstand: #initialize)
 		ifTrue: [ super initialize ].
@@ -93,13 +95,13 @@ SmaCCItemSet >> initialize [
 	previousItemSets := OrderedCollection new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCItemSet >> isLALREqualTo: aSmaCCItemSet [
 	^ aSmaCCItemSet size = self size
 		and: [ self allSatisfy: [ :each | aSmaCCItemSet includes: each ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCItemSet >> isLREqualTo: anItemSet [
 	^ anItemSet size = self size
 		and:
@@ -111,12 +113,12 @@ SmaCCItemSet >> isLREqualTo: anItemSet [
 						and: [ each isLR1EqualTo: item ] ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCItemSet >> itemFor: anObject [
 	^ array at: (self findElementOrNil: anObject)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCItemSet >> mergeWith: aSmaCCItemSet [
 	self == aSmaCCItemSet
 		ifTrue: [ ^ self ].
@@ -124,7 +126,7 @@ SmaCCItemSet >> mergeWith: aSmaCCItemSet [
 	previousItemSets addAll: aSmaCCItemSet previousItemSets
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCItemSet >> moveOn: aSmaCCSymbol [
 	| anItemSet |
 	anItemSet := self class new.
@@ -139,7 +141,7 @@ SmaCCItemSet >> moveOn: aSmaCCSymbol [
 	^ anItemSet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCItemSet >> path [
 	| result |
 	result := OrderedCollection new.
@@ -147,7 +149,7 @@ SmaCCItemSet >> path [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCItemSet >> pathInto: anOrderedCollection [
 	| item |
 	self previousState isNil
@@ -157,7 +159,7 @@ SmaCCItemSet >> pathInto: anOrderedCollection [
 	anOrderedCollection add: (item rhs at: item location - 1)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCItemSet >> performClosureOn: aSmaCCLR1Item [
 	| nextSymbol rest first followers |
 	nextSymbol := aSmaCCLR1Item nextSymbol.
@@ -175,17 +177,17 @@ SmaCCItemSet >> performClosureOn: aSmaCCLR1Item [
 		productionsDo: [ :each | self add: (SmaCCLR1Item rhs: each follow: followers) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCItemSet >> previousItemSets [
 	^ previousItemSets
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCItemSet >> previousItemSets: aCollection [
 	previousItemSets := aCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCItemSet >> previousState [
 	"Pick some previous item set"
 
@@ -194,7 +196,7 @@ SmaCCItemSet >> previousState [
 	^ previousItemSets first
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCItemSet >> printOn: aStream [
 	| strings |
 	strings := OrderedCollection new: self size.
@@ -207,7 +209,7 @@ SmaCCItemSet >> printOn: aStream [
 				cr ]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCItemSet >> type: aSymbol [
 	type := aSymbol
 ]

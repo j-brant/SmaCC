@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCVariableCalculation,
-	#superclass : #Object,
+	#name : 'SmaCCVariableCalculation',
+	#superclass : 'Object',
 	#instVars : [
 		'grammar',
 		'todo',
@@ -10,21 +10,23 @@ Class {
 		'currentRHS',
 		'previousVariables'
 	],
-	#category : #'SmaCC_Development-Compilation Model'
+	#category : 'SmaCC_Development-Compilation Model',
+	#package : 'SmaCC_Development',
+	#tag : 'Compilation Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVariableCalculation class >> calculateVariablesForGrammar: aSmaCCGrammar [
 	self new calculateVariablesForGrammar: aSmaCCGrammar
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVariableCalculation >> addDependent: dependentSmaCCRHS to: aSmaCCRHS [
 	(dependentsMap at: aSmaCCRHS ifAbsentPut: [ IdentitySet new ])
 		add: dependentSmaCCRHS
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVariableCalculation >> addExternallyDefinedVariablesFrom: aSmaCCRHS [
 	aSmaCCRHS variableDefinitions
 		do:
@@ -38,21 +40,21 @@ SmaCCVariableCalculation >> addExternallyDefinedVariablesFrom: aSmaCCRHS [
 				ifTrue: [ variable isCollection: true ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVariableCalculation >> addLocallyDefinedVariable: aString [
 	(self hasVariableNamed: aString)
 		ifTrue: [ (self variableNamed: aString) isCollection: true ]
 		ifFalse: [ self addVariableNamed: aString ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVariableCalculation >> addRHS: aSmaCCRHS [
 	(todo identityIncludes: aSmaCCRHS)
 		ifTrue: [ ^ self ].
 	todo add: aSmaCCRHS
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVariableCalculation >> addRenamedVariableName: aString from: symbol [
 	(self hasVariableNamed: aString)
 		ifTrue: [ (self variableNamed: aString) isCollection: true ]
@@ -74,17 +76,17 @@ SmaCCVariableCalculation >> addRenamedVariableName: aString from: symbol [
 														or: [ rhs variableDefinitions first isCollection ]) ] ] ] ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVariableCalculation >> addVariableNamed: aString [
 	^ newVariables add: (SmaCCVariableDefinition variableName: aString)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVariableCalculation >> assignVariables [
 	currentRHS variableDefinitions: newVariables
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVariableCalculation >> calculateNewVariables [
 	ourType := currentRHS nodeType.
 	newVariables := OrderedCollection new.
@@ -102,14 +104,14 @@ SmaCCVariableCalculation >> calculateNewVariables [
 				collect: [ :each | each variableName ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVariableCalculation >> calculateVariables [
 	self rhsDo: [ :each | self addRHS: each ].
 	[ todo notEmpty ]
 		whileTrue: [ self calculateVariablesFor: todo removeFirst ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVariableCalculation >> calculateVariablesFor: aSmaCCRHS [
 	currentRHS := aSmaCCRHS.
 	self calculateNewVariables.
@@ -118,7 +120,7 @@ SmaCCVariableCalculation >> calculateVariablesFor: aSmaCCRHS [
 			self recalculateDependents ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVariableCalculation >> calculateVariablesForGrammar: aSmaCCGrammar [
 	grammar := aSmaCCGrammar.
 	dependentsMap := IdentityDictionary new.
@@ -127,18 +129,18 @@ SmaCCVariableCalculation >> calculateVariablesForGrammar: aSmaCCGrammar [
 	self calculateVariables
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVariableCalculation >> hasVariableChanges [
 	^ newVariables
 		anySatisfy: [ :each | (currentRHS variableDefinitions includes: each) not ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVariableCalculation >> hasVariableNamed: aString [
 	^ newVariables anySatisfy: [ :each | each variableName = aString ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVariableCalculation >> processUnnamedSymbol: aSmaCCSymbol [
 	aSmaCCSymbol
 		productionsDo:
@@ -147,13 +149,13 @@ SmaCCVariableCalculation >> processUnnamedSymbol: aSmaCCSymbol [
 				ifTrue: [ self addExternallyDefinedVariablesFrom: rhs ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVariableCalculation >> recalculateDependents [
 	(dependentsMap at: currentRHS ifAbsent: [ #() ])
 		do: [ :each | self addRHS: each ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVariableCalculation >> rhsDo: aBlock [
 	grammar symbols
 		do: [ :each | 
@@ -161,12 +163,12 @@ SmaCCVariableCalculation >> rhsDo: aBlock [
 				ifFalse: [ each productionsDo: aBlock ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVariableCalculation >> setupVariableDependents [
 	self rhsDo: [ :rhs | self setupVariableDependentsFor: rhs ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVariableCalculation >> setupVariableDependentsFor: aSmaCCRHS [
 	aSmaCCRHS
 		variablesAndSymbolsDo:
@@ -176,7 +178,7 @@ SmaCCVariableCalculation >> setupVariableDependentsFor: aSmaCCRHS [
 						productionsDo: [ :rhs | self addDependent: aSmaCCRHS to: rhs ] ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVariableCalculation >> shouldAddVariablesFrom: aSmaCCRHS [
 	| theirType |
 	ourType isNil
@@ -189,7 +191,7 @@ SmaCCVariableCalculation >> shouldAddVariablesFrom: aSmaCCRHS [
 	^ (theirType hierarchyIncludes: ourType) not
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVariableCalculation >> variableNamed: aString [
 	^ newVariables
 		detect: [ :each | each variableName = aString ]

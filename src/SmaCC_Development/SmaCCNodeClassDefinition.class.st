@@ -8,17 +8,19 @@ Instance Variables
 
 "
 Class {
-	#name : #SmaCCNodeClassDefinition,
-	#superclass : #SmaCCClassDefinition,
+	#name : 'SmaCCNodeClassDefinition',
+	#superclass : 'SmaCCClassDefinition',
 	#instVars : [
 		'productions',
 		'variables',
 		'extraAttributes'
 	],
-	#category : #'SmaCC_Development-Compilation Model'
+	#category : 'SmaCC_Development-Compilation Model',
+	#package : 'SmaCC_Development',
+	#tag : 'Compilation Model'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCNodeClassDefinition class >> named: aSymbol grammar: aSmaCCGrammar [
 	^ self new
 		name: aSymbol;
@@ -26,20 +28,20 @@ SmaCCNodeClassDefinition class >> named: aSymbol grammar: aSmaCCGrammar [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNodeClassDefinition >> addProduction: aSmaCCRHS [
 	productions add: aSmaCCRHS.
 	aSmaCCRHS nodeClassDefinition: self
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCNodeClassDefinition >> addVariable: aSmaCCVariableDefinition [
 	self codeGenerator
 		addVariable: aSmaCCVariableDefinition
 		forDefinition: self
 ]
 
-{ #category : #'private-variables' }
+{ #category : 'private-variables' }
 SmaCCNodeClassDefinition >> baseTypeOf: aVariableName [
 	| allTypes aRBRootNamespace |
 	aRBRootNamespace := class model.
@@ -61,7 +63,7 @@ SmaCCNodeClassDefinition >> baseTypeOf: aVariableName [
 			current ]
 ]
 
-{ #category : #'private-variables' }
+{ #category : 'private-variables' }
 SmaCCNodeClassDefinition >> calculateCommonSubclassVariables [
 	| allSubclassVars includedVariables |
 	allSubclassVars := Bag new.
@@ -73,49 +75,49 @@ SmaCCNodeClassDefinition >> calculateCommonSubclassVariables [
 		select: [ :each | includedVariables includes: each ]
 ]
 
-{ #category : #'private-variables' }
+{ #category : 'private-variables' }
 SmaCCNodeClassDefinition >> collectionVariableDefinitions [
 	^ self variableDefinitions select: [ :each | each isCollection ]
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCNodeClassDefinition >> compileChildrenMethod [
 	self codeGenerator compileChildrenMethod: self
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCNodeClassDefinition >> compileCopyInContextMethod [
 	self codeGenerator compileCopyInContextMethod: self
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCNodeClassDefinition >> compileEqualMethod [
 	self codeGenerator compileEqualMethod: self
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCNodeClassDefinition >> compileGetterAndSetter: aSmaCCVariableDefinition [
 	self codeGenerator
 		compileGetterAndSetter: aSmaCCVariableDefinition
 		forDefinition: self
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCNodeClassDefinition >> compileHashMethod [
 	self codeGenerator compileHashMethod: self
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCNodeClassDefinition >> compileInitializeMethod [
 	self codeGenerator compileInitializeMethod: self
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCNodeClassDefinition >> compileMatchInContextMethod [
 	self codeGenerator compileMatchInContextMethod: self
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCNodeClassDefinition >> compileMethodsAndVariables [
 	self
 		compileVariablesAndAccessors;
@@ -129,12 +131,12 @@ SmaCCNodeClassDefinition >> compileMethodsAndVariables [
 		compileVariablesMethods
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCNodeClassDefinition >> compilePostCopyMethod [
 	self codeGenerator compilePostCopyMethod: self
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCNodeClassDefinition >> compileVariableAndAccessor: aSmaCCVariableDefinition [
 	aSmaCCVariableDefinition
 		baseType: (self baseTypeOf: aSmaCCVariableDefinition variableName).
@@ -144,7 +146,7 @@ SmaCCNodeClassDefinition >> compileVariableAndAccessor: aSmaCCVariableDefinition
 	self compileGetterAndSetter: aSmaCCVariableDefinition
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCNodeClassDefinition >> compileVariablesAndAccessors [
 	self variableDefinitions
 		do: [ :each | self compileVariableAndAccessor: each ].
@@ -152,45 +154,45 @@ SmaCCNodeClassDefinition >> compileVariablesAndAccessors [
 		do: [ :each | self compileVariableAndAccessor: each ]
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCNodeClassDefinition >> compileVariablesMethods [
 	self codeGenerator compileVariablesMethods: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNodeClassDefinition >> extraAttributes [
 	^ extraAttributes
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCNodeClassDefinition >> extraAttributes: aCollection [
 	extraAttributes := aCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNodeClassDefinition >> fullName [
 	^ self codeGenerator namespaceName , grammar prefix , name
 		, grammar suffix
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNodeClassDefinition >> grammar [
 	^ grammar
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCNodeClassDefinition >> initialize [
 	super initialize.
 	productions := OrderedCollection new.
 	extraAttributes := OrderedCollection new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNodeClassDefinition >> instanceVariableNames [
 	^ self variableDefinitions collect: [ :each | each variableName ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCNodeClassDefinition >> isAlwaysAssigned: aString [
 	^ ((self modelTypesForVariable: aString)
 		includes: (class model classFor: nil class))
@@ -202,7 +204,7 @@ SmaCCNodeClassDefinition >> isAlwaysAssigned: aString [
 						allSatisfy: [ :each | each locallyDefinesVariable: aString ] ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCNodeClassDefinition >> isCollectionVariable: aVariableName [
 	| definition |
 	definition := self variableDefinitionNamed: aVariableName.
@@ -212,7 +214,7 @@ SmaCCNodeClassDefinition >> isCollectionVariable: aVariableName [
 		and: [ superclass isCollectionVariable: aVariableName ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCNodeClassDefinition >> isLocalVariable: aSmaCCVariableDefinition [
 	^ superclass isNil
 		or:
@@ -221,7 +223,7 @@ SmaCCNodeClassDefinition >> isLocalVariable: aSmaCCVariableDefinition [
 				isNil ]
 ]
 
-{ #category : #'private-variables' }
+{ #category : 'private-variables' }
 SmaCCNodeClassDefinition >> modelTypesForVariable: aVariableName [
 	| allTypes |
 	allTypes := Set new.
@@ -234,25 +236,25 @@ SmaCCNodeClassDefinition >> modelTypesForVariable: aVariableName [
 	^ allTypes
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNodeClassDefinition >> nodeVariableDefinitions [
 	^ self variableDefinitions
 		select: [ :each | each isBasePossibleNodeType ]
 ]
 
-{ #category : #'private-variables' }
+{ #category : 'private-variables' }
 SmaCCNodeClassDefinition >> productionVariables [
 	| vars |
 	vars := productions collect: [ :each | each variableDefinitions ].
 	^ SmaCCSymbol mergeOrderedVariableDefinitions: vars
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNodeClassDefinition >> productions [
 	^ productions
 ]
 
-{ #category : #'private-variables' }
+{ #category : 'private-variables' }
 SmaCCNodeClassDefinition >> removeDuplicateSubclassVariables [
 	variables
 		do:
@@ -264,7 +266,7 @@ SmaCCNodeClassDefinition >> removeDuplicateSubclassVariables [
 						ifFalse: [ sub removeInstanceVariable: each variableName ] ] ]
 ]
 
-{ #category : #'private-variables' }
+{ #category : 'private-variables' }
 SmaCCNodeClassDefinition >> removeInstanceVariable: aString [
 	| variable |
 	variable := self variableDefinitions
@@ -276,12 +278,12 @@ SmaCCNodeClassDefinition >> removeInstanceVariable: aString [
 	SmaCCVariableDefinition assignIndices: variables
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCNodeClassDefinition >> rootClassName [
 	^ SmaCCParseNode name
 ]
 
-{ #category : #'private-variables' }
+{ #category : 'private-variables' }
 SmaCCNodeClassDefinition >> subclassProductionVariables [
 	| vars |
 	vars := self withAllSubclasses
@@ -289,12 +291,12 @@ SmaCCNodeClassDefinition >> subclassProductionVariables [
 	^ SmaCCSymbol mergeOrderedVariableDefinitions: vars
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCNodeClassDefinition >> tempNodeName [
 	^ self temporaryNameFor: grammar rootDefinition name
 ]
 
-{ #category : #'private-variables' }
+{ #category : 'private-variables' }
 SmaCCNodeClassDefinition >> variableDefinitionNamed: aString [
 	^ self variableDefinitions
 		detect: [ :each | each variableName = aString ]
@@ -304,7 +306,7 @@ SmaCCNodeClassDefinition >> variableDefinitionNamed: aString [
 				ifFalse: [ superclass variableDefinitionNamed: aString ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNodeClassDefinition >> variableDefinitions [
 	variables isNil
 		ifTrue:
@@ -316,7 +318,7 @@ SmaCCNodeClassDefinition >> variableDefinitions [
 	^ variables
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNodeClassDefinition >> variables [
 	^ superclass isNil
 		ifTrue: [ self instanceVariableNames copy ]

@@ -15,38 +15,40 @@ Instance Variables:
 
 "
 Class {
-	#name : #SmaCCRegularExpressionNode,
-	#superclass : #Object,
+	#name : 'SmaCCRegularExpressionNode',
+	#superclass : 'Object',
 	#instVars : [
 		'action',
 		'position',
 		'states'
 	],
-	#category : #'SmaCC_Development-Regular Expressions'
+	#category : 'SmaCC_Development-Regular Expressions',
+	#package : 'SmaCC_Development',
+	#tag : 'Regular Expressions'
 }
 
-{ #category : #constructing }
+{ #category : 'constructing' }
 SmaCCRegularExpressionNode >> , aSmaCCRegularExpressionNode [
 	^ SmaCCSequenceRENode
 		nodes: (OrderedCollection with: self with: aSmaCCRegularExpressionNode)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRegularExpressionNode >> action [
 	^ action
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCRegularExpressionNode >> action: aString [
 	action := aString
 ]
 
-{ #category : #'accessing-states' }
+{ #category : 'accessing-states' }
 SmaCCRegularExpressionNode >> addState: aSymbol [
 	states add: aSymbol
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRegularExpressionNode >> addStateTransitionsTo: aSmaCCNode [
 	| endNode |
 	states isEmpty
@@ -58,26 +60,26 @@ SmaCCRegularExpressionNode >> addStateTransitionsTo: aSmaCCNode [
 	^ endNode
 ]
 
-{ #category : #'accessing-states' }
+{ #category : 'accessing-states' }
 SmaCCRegularExpressionNode >> addStates: aCollection [
 	states addAll: aCollection
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 SmaCCRegularExpressionNode >> asDFA [
 	| startNode |
 	startNode := self asNFA.
 	^ startNode asDFA
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 SmaCCRegularExpressionNode >> asDFAWithExpandedConditions [
 	| startNode |
 	startNode := self asNFA.
 	^ startNode asDFAWithExpandedConditions
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 SmaCCRegularExpressionNode >> asNFA [
 	| startNode |
 	startNode := SmaCCNode new.
@@ -85,23 +87,23 @@ SmaCCRegularExpressionNode >> asNFA [
 	^ startNode
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRegularExpressionNode >> asNFAStartingWith: aSmaCCNode [
 	^ self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCRegularExpressionNode >> canBeEmpty [
 	^ false
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCRegularExpressionNode >> initialize [
 	super initialize.
 	states := Set new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCRegularExpressionNode >> isKeywordLiteral [
 	^ self possibleMatchesSize < 50
 		and:
@@ -112,22 +114,22 @@ SmaCCRegularExpressionNode >> isKeywordLiteral [
 			false ]
 ]
 
-{ #category : #constructing }
+{ #category : 'constructing' }
 SmaCCRegularExpressionNode >> makeCaseInsensitive [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRegularExpressionNode >> position [
 	^ position
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCRegularExpressionNode >> position: anInteger [
 	position := anInteger
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRegularExpressionNode >> possibleMatches [
 	| matches |
 	matches := OrderedCollection new.
@@ -135,35 +137,35 @@ SmaCCRegularExpressionNode >> possibleMatches [
 	^ matches
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRegularExpressionNode >> possibleMatchesDo: aBlock [
 	| stream |
 	stream := WriteStream with: String new.
 	self possibleMatchesDo: [ aBlock value: stream contents ] on: stream
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRegularExpressionNode >> possibleMatchesDo: aBlock on: aStream [
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRegularExpressionNode >> possibleMatchesSize [
 	^ self subclassResponsibility
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 SmaCCRegularExpressionNode >> postCopy [
 	super postCopy.
 	states := Set new
 ]
 
-{ #category : #constructing }
+{ #category : 'constructing' }
 SmaCCRegularExpressionNode >> repeat [
 	^ SmaCCRepeatingRENode component: self
 ]
 
-{ #category : #constructing }
+{ #category : 'constructing' }
 SmaCCRegularExpressionNode >> repeatFor: minimum to: maximum [
 	^ SmaCCRepeatingRENode
 		component: self
@@ -171,17 +173,17 @@ SmaCCRegularExpressionNode >> repeatFor: minimum to: maximum [
 		maximum: maximum
 ]
 
-{ #category : #constructing }
+{ #category : 'constructing' }
 SmaCCRegularExpressionNode >> repeatForAtLeast: minimum [
 	^ SmaCCRepeatingRENode component: self minimum: minimum
 ]
 
-{ #category : #'accessing-states' }
+{ #category : 'accessing-states' }
 SmaCCRegularExpressionNode >> states [
 	^ states
 ]
 
-{ #category : #constructing }
+{ #category : 'constructing' }
 SmaCCRegularExpressionNode >> | aSmaCCRegularExpressionNode [
 	^ SmaCCOrRENode
 		nodes: (OrderedCollection with: self with: aSmaCCRegularExpressionNode)

@@ -1,33 +1,35 @@
 Class {
-	#name : #SmaCCNFAtoDFA,
-	#superclass : #SmaCCGraphAlgorithm,
+	#name : 'SmaCCNFAtoDFA',
+	#superclass : 'SmaCCGraphAlgorithm',
 	#instVars : [
 		'mergedStates',
 		'reverseMap'
 	],
-	#category : #'SmaCC_Development-DFA/NFA'
+	#category : 'SmaCC_Development-DFA/NFA',
+	#package : 'SmaCC_Development',
+	#tag : 'DFA/NFA'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNFAtoDFA class >> convertToDFA: aSmaCCNode [
 	"Returns an equivalent DFA from the NFA specified by aSmaCCNode -- the NFA must not contain epsilon edges."
 
 	^ self new convertToDFA: aSmaCCNode
 ]
 
-{ #category : #edges }
+{ #category : 'edges' }
 SmaCCNFAtoDFA >> commonTransitionObjectsForEdges: edgeCollection [
 	^ edgeCollection
 		inject: edgeCollection first transitionObjects
 		into: [ :sum :each | sum smaccIntersect: each transitionObjects ]
 ]
 
-{ #category : #algorithm }
+{ #category : 'algorithm' }
 SmaCCNFAtoDFA >> convertToDFA: aSmaCCNode [
 	^ self mergedNodeFor: (Array with: aSmaCCNode)
 ]
 
-{ #category : #edges }
+{ #category : 'edges' }
 SmaCCNFAtoDFA >> createEdgeMerging: conflictingEdgeCollection [
 	| newNode common newEdge |
 	newNode := self
@@ -41,7 +43,7 @@ SmaCCNFAtoDFA >> createEdgeMerging: conflictingEdgeCollection [
 	^ newEdge
 ]
 
-{ #category : #'merging nodes' }
+{ #category : 'merging nodes' }
 SmaCCNFAtoDFA >> eliminateDuplicateTransitionsIn: aSmaCCNode [
 	| newTransitions conflictingObject |
 	newTransitions := aSmaCCNode transitions
@@ -57,14 +59,14 @@ SmaCCNFAtoDFA >> eliminateDuplicateTransitionsIn: aSmaCCNode [
 	self setTransitionsOn: aSmaCCNode to: newTransitions
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCNFAtoDFA >> initialize [
 	super initialize.
 	mergedStates := Dictionary new.
 	reverseMap := IdentityDictionary new.
 ]
 
-{ #category : #'merging nodes' }
+{ #category : 'merging nodes' }
 SmaCCNFAtoDFA >> mergedNodeFor: nodeCollection [
 	| mergedNodes |
 	mergedNodes := IdentitySet new: nodeCollection size.
@@ -83,7 +85,7 @@ SmaCCNFAtoDFA >> mergedNodeFor: nodeCollection [
 			newNode ]
 ]
 
-{ #category : #edges }
+{ #category : 'edges' }
 SmaCCNFAtoDFA >> setTransitionsOn: aSmaCCNode to: edgeCollection [
 	aSmaCCNode
 		transitions: (edgeCollection reject: [ :each | each isEmpty ]).
@@ -91,7 +93,7 @@ SmaCCNFAtoDFA >> setTransitionsOn: aSmaCCNode to: edgeCollection [
 		do: [ :each | each to: (self convertToDFA: each to) ]
 ]
 
-{ #category : #edges }
+{ #category : 'edges' }
 SmaCCNFAtoDFA >> someDuplicateIn: edgeCollection [
 	| objects |
 	objects := SmaCCSet new.

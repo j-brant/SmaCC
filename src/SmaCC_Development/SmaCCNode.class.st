@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCNode,
-	#superclass : #Object,
+	#name : 'SmaCCNode',
+	#superclass : 'Object',
 	#instVars : [
 		'transitions',
 		'action',
@@ -9,30 +9,32 @@ Class {
 	#classVars : [
 		'NextId'
 	],
-	#category : #'SmaCC_Development-DFA/NFA'
+	#category : 'SmaCC_Development-DFA/NFA',
+	#package : 'SmaCC_Development',
+	#tag : 'DFA/NFA'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 SmaCCNode class >> initialize [
 	NextId := 0
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCNode >> <= aSmaCCNode [
 	^ self id <= aSmaCCNode id
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCNode >> = anObject [
 	^ self class = anObject class and: [ self id = anObject id ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNode >> action [
 	^ action
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCNode >> action: anObject [
 	anObject isNil
 		ifTrue: [ ^ self ].
@@ -41,7 +43,7 @@ SmaCCNode >> action: anObject [
 		ifFalse: [ SortedCollection with: anObject ]
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCNode >> actionForSpecificRegularExpression: aSmaCCRegularExpression [
 	| matchedAction strings startingStates first |
 	strings := aSmaCCRegularExpression possibleMatches.
@@ -72,7 +74,7 @@ SmaCCNode >> actionForSpecificRegularExpression: aSmaCCRegularExpression [
 	^ matchedAction
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNode >> addActions: aCollection [
 	(aCollection isNil or: [ action isSymbol ]) ifTrue: [ ^ self ].
 	action isNil
@@ -85,29 +87,29 @@ SmaCCNode >> addActions: aCollection [
 		do: [ :each | each isConditionEdge ifTrue: [ each to addActions: action ] ]
 ]
 
-{ #category : #edges }
+{ #category : 'edges' }
 SmaCCNode >> addEdgeTo: aSmaCCNode [
 	transitions add: (SmaCCEdge to: aSmaCCNode on: nil)
 ]
 
-{ #category : #edges }
+{ #category : 'edges' }
 SmaCCNode >> addEdgeTo: aSmaCCNode onCharacters: characterCollection [
 	transitions
 		add: (SmaCCCharacterEdge to: aSmaCCNode on: characterCollection)
 ]
 
-{ #category : #edges }
+{ #category : 'edges' }
 SmaCCNode >> addEdgeTo: aSmaCCNode onConditions: stringCollection [
 	aSmaCCNode addActions: action.
 	transitions add: (SmaCCConditionEdge to: aSmaCCNode on: stringCollection)
 ]
 
-{ #category : #edges }
+{ #category : 'edges' }
 SmaCCNode >> addEdgeTo: aSmaCCNode onStates: symbolCollection [
 	transitions add: (SmaCCStateEdge to: aSmaCCNode on: symbolCollection)
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 SmaCCNode >> addLocalOverlappingConditions: seen [
 	| lastCondition toNode |
 	lastCondition := (transitions size to: 1 by: -1)
@@ -122,7 +124,7 @@ SmaCCNode >> addLocalOverlappingConditions: seen [
 						do: [ :add | toNode addOverlapEdge: (transitions at: add) seen: seen ] ] ]
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 SmaCCNode >> addOverlapEdge: anEdge seen: seen [
 	| newTo newEdge before |
 	(transitions
@@ -148,7 +150,7 @@ SmaCCNode >> addOverlapEdge: anEdge seen: seen [
 				ifFalse: [ newEdge to transitions add: other ] ]
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 SmaCCNode >> addOverlappingConditions [
 	| done |
 	done := IdentitySet new.
@@ -159,7 +161,7 @@ SmaCCNode >> addOverlappingConditions [
 				ifTrue: [ each addLocalOverlappingConditions: done ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNode >> allStates [
 	| nodes |
 	nodes := Set new.
@@ -167,7 +169,7 @@ SmaCCNode >> allStates [
 	^ nodes
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNode >> allStatesInto: aSet [
 	(aSet includes: self)
 		ifTrue: [ ^ self ].
@@ -175,12 +177,12 @@ SmaCCNode >> allStatesInto: aSet [
 	transitions do: [ :each | each to allStatesInto: aSet ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCNode >> anyContainsOverlappingConditions [
 	^ self allStates anySatisfy: [ :each | each containsOverlappingConditions ]
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 SmaCCNode >> asDFA [
 	| new |
 	new := (SmaCCNFAtoDFA convertToDFA: self asNFAWithoutEpsilonTransitions)
@@ -190,7 +192,7 @@ SmaCCNode >> asDFA [
 	^ new
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 SmaCCNode >> asDFAWithExpandedConditions [
 	| new |
 	new := (SmaCCNFAtoDFA convertToDFA: self asNFAWithoutEpsilonTransitions)
@@ -202,7 +204,7 @@ SmaCCNode >> asDFAWithExpandedConditions [
 	^ new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNode >> asDOTstring [
 	| nodeStream mapStream |
 	nodeStream := WriteStream on: String new.
@@ -246,12 +248,12 @@ SmaCCNode >> asDOTstring [
 	^ nodeStream contents , mapStream contents
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 SmaCCNode >> asNFAWithoutEpsilonTransitions [
 	^ SmaCCEpsilonRemoval removeEpsilonEdgesFrom: self
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCNode >> codeSizeEstimate: methodStates [
 	"Estimate how many bytecodes will be generated from this node and its containing nodes."
 
@@ -270,18 +272,18 @@ SmaCCNode >> codeSizeEstimate: methodStates [
 										ifFalse: [ each to codeSizeEstimate: methodStates ])) ])
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCNode >> containsOverlappingConditions [
 	^ self transitions size > 1
 		and: [ self transitions anySatisfy: #isConditionEdge ]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCNode >> getId [
 	^ NextId := NextId + 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNode >> groupedTransitions [
 	^ transitions
 		inject: OrderedCollection new
@@ -293,35 +295,35 @@ SmaCCNode >> groupedTransitions [
 			sum ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCNode >> hasSimpleLoop [
 	^ transitions anySatisfy: [ :each | each to = self ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCNode >> hash [
 	^ id hashMultiply
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNode >> id [
 	^ id
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCNode >> initialize [
 	super initialize.
 	id := self getId.
 	transitions := SortedCollection new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCNode >> isTerminalNode [
 	^ transitions isEmpty
 		or: [ transitions size = 1 and: [ self hasSimpleLoop ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNode >> mergeTransitions [
 	self groupedTransitions
 		do:
@@ -338,19 +340,19 @@ SmaCCNode >> mergeTransitions [
 						ifFalse: [ toMap at: each to put: each ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNode >> mergeWith: aSmaCCNode [
 	id := aSmaCCNode id.
 	transitions := aSmaCCNode transitions.
 	action := aSmaCCNode action
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 SmaCCNode >> orderNodes [
 	self orderNodesWithId: NextId map: Dictionary new
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 SmaCCNode >> orderNodesWithId: anInteger map: aDictionary [
 	anInteger <= id
 		ifTrue: [ ^ self ].
@@ -359,7 +361,7 @@ SmaCCNode >> orderNodesWithId: anInteger map: aDictionary [
 		do: [ :each | each to orderNodesWithId: anInteger map: aDictionary ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCNode >> printOn: aStream [
 	aStream
 		nextPutAll: self class name;
@@ -368,12 +370,12 @@ SmaCCNode >> printOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNode >> removeDuplicateNodes [
 	^ SmaCCDuplicateNodeEliminator removeDuplicateNodesIn: self
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 SmaCCNode >> shallowCopy [
 	| copy |
 	copy := self class new.
@@ -381,7 +383,7 @@ SmaCCNode >> shallowCopy [
 	^ copy
 ]
 
-{ #category : #simulating }
+{ #category : 'simulating' }
 SmaCCNode >> simulate: aStream [
 	| char |
 	aStream atEnd
@@ -394,12 +396,12 @@ SmaCCNode >> simulate: aStream [
 	^ nil
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 SmaCCNode >> sortedTransitions [
 	^ transitions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNode >> startingNodeWithoutUnnecessaryDefaultTransition [
 	| edge |
 	self transitions size = 1
@@ -410,12 +412,12 @@ SmaCCNode >> startingNodeWithoutUnnecessaryDefaultTransition [
 	^ self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNode >> transitions [
 	^ transitions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNode >> transitions: aCollection [
 	transitions size to: 1 by: -1 do: [ :i | transitions removeAt: i ].
 	transitions addAll: aCollection

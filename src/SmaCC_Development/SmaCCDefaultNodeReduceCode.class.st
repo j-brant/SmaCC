@@ -6,35 +6,37 @@ Instance Variables
 
 "
 Class {
-	#name : #SmaCCDefaultNodeReduceCode,
-	#superclass : #SmaCCReduceCode,
+	#name : 'SmaCCDefaultNodeReduceCode',
+	#superclass : 'SmaCCReduceCode',
 	#instVars : [
 		'index'
 	],
 	#classVars : [
 		'IsCaching'
 	],
-	#category : #'SmaCC_Development-Compilation Model'
+	#category : 'SmaCC_Development-Compilation Model',
+	#package : 'SmaCC_Development',
+	#tag : 'Compilation Model'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 SmaCCDefaultNodeReduceCode class >> initialize [
 	IsCaching := false
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCDefaultNodeReduceCode >> = anObject [
 	^ super = anObject and: [ self index = anObject index ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCDefaultNodeReduceCode >> basicModelTypes: aSet [
 	^ self index = 0
 		ifTrue: [ Array with: (self model classFor: nil class) ]
 		ifFalse: [ self basicModelTypes: aSet forIndex: self index ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDefaultNodeReduceCode >> index [
 	index isNil
 		ifTrue:
@@ -48,7 +50,7 @@ SmaCCDefaultNodeReduceCode >> index [
 	^ index
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCDefaultNodeReduceCode >> modelTypes: anIdentitySet [
 	"Yes, I know it is a hack"
 
@@ -59,14 +61,14 @@ SmaCCDefaultNodeReduceCode >> modelTypes: anIdentitySet [
 		ensure: [ IsCaching := false ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCDefaultNodeReduceCode >> returnedNodeIndex [
 	self index = 0
 		ifTrue: [ ^ nil ].
 	^ self index
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDefaultNodeReduceCode >> signalNodeCreationWarning [
 	SmaCCCompilationNotification new
 		messageText: 'Node creation';
@@ -92,7 +94,7 @@ SmaCCDefaultNodeReduceCode >> signalNodeCreationWarning [
 		signal
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDefaultNodeReduceCode >> source [
 	^ self codeGenerator defaultNodeReductionSource: self
 ]
