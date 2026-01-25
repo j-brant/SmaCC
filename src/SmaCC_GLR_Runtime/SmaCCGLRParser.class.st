@@ -450,8 +450,7 @@ SmaCCGLRParser >> position: anInteger [
 { #category : 'private' }
 SmaCCGLRParser >> processEOFToken [
 	| originalState performed eofToken |
-	currentState isAccepted
-		ifTrue: [ ^ self ].
+	currentState isAccepted ifTrue: [ ^ self ].
 	eofToken := currentToken.
 	originalState := currentState.
 	performed := Set new.
@@ -464,7 +463,8 @@ SmaCCGLRParser >> processEOFToken [
 					self performAction: each.
 					(nodeStack size = 1 and: [ nodeStack first isKindOf: SmaCCParseNode ])
 						ifTrue: [ currentState markAccepted ]
-						ifFalse: [ (originalState stateStack size <= stateStack size and: [ originalState stateStack last == stateStack last ])
+						ifFalse: [ (originalState stateStack size <= stateStack size
+								and: [ originalState stateStack last == self currentState ])
 								ifTrue: [ self killState ]
 								ifFalse: [ self processEOFToken ] ].
 					self restoreState: originalState ] ].
@@ -478,22 +478,6 @@ SmaCCGLRParser >> processEOFToken [
 SmaCCGLRParser >> pushScope: aSymbol [
 	scanner pushScope: aSymbol.
 	self updateScannerState
-]
-
-{ #category : 'private' }
-SmaCCGLRParser >> reduce: anInteger [
-	| reduceEntry items size |
-	reduceEntry := self reduceTable at: anInteger.
-	items := Array new: (size := reduceEntry at: 2).
-	nodeStack size < size
-		ifTrue: [ self killState.
-			^ currentToken := nil ].
-	size to: 1 by: -1 do: [ :i | 
-		items at: i put: self popNodeStack.
-		stateStack removeLast ].
-	nodeStack addLast: (self performReduceEntry: reduceEntry with: items).
-	stateStack
-		addLast: ((self actionFor: (reduceEntry at: 1)) bitShift: -2)
 ]
 
 { #category : 'private' }
@@ -550,44 +534,34 @@ SmaCCGLRParser >> splitForPatternToken [
 	token ids: OrderedCollection new.
 	patternNode := SmaCCPatternNode onToken: token copy.
 	nodeClass := token nodeClassName
-		ifNil: [ SmaCCParseNode ]
-		ifNotNil: [ :name | self class environment at: name ifAbsent: [ SmaCCParseNode ] ].
+			ifNil: [ SmaCCParseNode ]
+			ifNotNil: [ :name | self class environment at: name ifAbsent: [ SmaCCParseNode ] ].
 	self symbolTypes
-		keysAndValuesDo:
-			[ :i :each | 
+		keysAndValuesDo: [ :i :each | 
 			| actions |
 			(i ~= scanner emptySymbolTokenId and: [ i ~= scanner errorTokenId ])
-				ifTrue:
-					[ actions := OrderedCollection new.
+				ifTrue: [ actions := OrderedCollection new.
 					(each = #SmaCCToken
-						or:
-							[ each notNil
-								and:
-									[ ((self class environment at: each ifAbsent: [ Object ])
-includesBehavior: nodeClass) or: [ nodeClass includesBehavior: (self
-class environment at: each ifAbsent: [ self class ]) ] ] ])
-						ifTrue:
-							[ self addActionsFor: i to: actions.
+						or: [ each notNil
+								and: [ ((self class environment at: each ifAbsent: [ Object ])
+										includesBehavior: nodeClass)
+										or: [ nodeClass
+												includesBehavior: (self class environment at: each ifAbsent: [ self class ]) ] ] ])
+						ifTrue: [ self addActionsFor: i to: actions.
 							actions
-								do:
-									[ :action | 
+								do: [ :action | 
 									(performedActions includes: action)
-										ifFalse:
-											[ performedActions add: action.
+										ifFalse: [ performedActions add: action.
 											each = #SmaCCToken
-												ifTrue:
-													[ token ids add: i.
+												ifTrue: [ token ids add: i.
 													((action bitAnd: self actionMask) = self reduceAction
 														or: [ token isToken ])
 														ifTrue: [ currentToken := token.
 															self splitWithAction: action ] ]
-												ifFalse:
-													[ token isNode
-														ifTrue:
-															[ currentToken := nil.
+												ifFalse: [ token isNode
+														ifTrue: [ currentToken := nil.
 															self duplicateState.
-															stateStack addLast: (action bitShift: -2).
-															nodeStack addLast: patternNode.
+															self transitionTo: (action bitShift: -2) withValue: patternNode.
 															self restoreState: currentState ] ] ] ] ] ] ].
 	self killState.
 	currentToken := nil

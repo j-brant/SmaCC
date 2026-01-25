@@ -483,9 +483,10 @@ SmaCCParser >> dismissErrorToken [
 SmaCCParser >> dismissStackTopForErrorRecovery: anInteger [
 	| stackContents |
 	stackContents := Array new: anInteger.
-	anInteger to: 1 by: -1 do: [ :i | 
-		stateStack removeLast.
-		stackContents at: i put: nodeStack removeLast ].
+	anInteger
+		to: 1
+		by: -1
+		do: [ :i | stackContents at: i put: self popStacks ].
 	^ stackContents
 ]
 
@@ -579,6 +580,11 @@ SmaCCParser >> isNodeType: aSymbol [
 	^ (Smalltalk at: aSymbol ifAbsent: [ Object ]) includesBehavior: SmaCCParseNode
 ]
 
+{ #category : 'private' }
+SmaCCParser >> killState [
+	self reportErrorMessage: 'This should not occur for a non-glr parser'
+]
+
 { #category : 'standard reduction rules' }
 SmaCCParser >> liftFirstValue: aCollection [
 	^ aCollection at: 1
@@ -665,6 +671,12 @@ SmaCCParser >> popNodeStack [
 	^ nodeStack removeLast
 ]
 
+{ #category : 'private' }
+SmaCCParser >> popStacks [
+	stateStack removeLast.
+	^ self popNodeStack
+]
+
 { #category : 'accessing' }
 SmaCCParser >> position [
 	^ currentToken isNil
@@ -679,15 +691,19 @@ SmaCCParser >> position: anInteger [
 
 { #category : 'private-actions' }
 SmaCCParser >> reduce: anInteger [
-	| reduceEntry items size |
+	| reduceEntry items size newState value |
 	reduceEntry := self reduceTable at: anInteger.
 	items := Array new: (size := reduceEntry at: 2).
-	size to: 1 by: -1 do: [ :i | 
-		items at: i put: self popNodeStack.
-		stateStack removeLast ].
-	nodeStack addLast: (self performReduceEntry: reduceEntry with: items).
-	stateStack
-		addLast: ((self actionFor: (reduceEntry at: 1)) bitShift: -2)
+	nodeStack size < size
+		ifTrue: [ self killState.
+			^ currentToken := nil ].
+	size
+		to: 1
+		by: -1
+		do: [ :i | items at: i put: self popStacks ].
+	newState := (self actionFor: (reduceEntry at: 1)) bitShift: -2.
+	value := self performReduceEntry: reduceEntry with: items.
+	self transitionTo: newState withValue: value
 ]
 
 { #category : 'private-actions' }
@@ -771,8 +787,7 @@ SmaCCParser >> scope: aSymbol [
 
 { #category : 'initialize-release' }
 SmaCCParser >> setDefaultStartingStateIfNone [
-	stateStack isNil
-		ifTrue: [ self setStartingState: self class defaultStartingState ]
+	stateStack ifNil: [ self setStartingState: self class defaultStartingState ]
 ]
 
 { #category : 'initialize-release' }
@@ -782,8 +797,7 @@ SmaCCParser >> setStartingState: startingState [
 
 { #category : 'private-actions' }
 SmaCCParser >> shift: stateIndex [
-	stateStack addLast: stateIndex.
-	nodeStack addLast: currentToken.
+	self transitionTo: stateIndex withValue: currentToken.
 	currentToken := nil
 ]
 
@@ -862,6 +876,12 @@ SmaCCParser >> symbolTypes [
 { #category : 'accessing' }
 SmaCCParser >> transitionTable [
 	^ self class transitionTable
+]
+
+{ #category : 'private' }
+SmaCCParser >> transitionTo: stateIndex withValue: anObject [
+	stateStack addLast: stateIndex.
+	nodeStack addLast: anObject
 ]
 
 { #category : 'testing' }
