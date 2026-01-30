@@ -47,7 +47,7 @@ SmaCCScannerState >> attributeNamed: aSymbol put: aValue [
 
 { #category : 'comparing' }
 SmaCCScannerState >> hash [
-	^ position hash hashMultiply bitXor: scope hash
+	^ position hash bitXor: scope hash
 ]
 
 { #category : 'accessing' }

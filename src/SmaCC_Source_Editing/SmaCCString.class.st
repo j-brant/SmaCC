@@ -10,37 +10,38 @@ Instance Variables:
 
 "
 Class {
-	#name : #SmaCCString,
-	#superclass : #Object,
+	#name : 'SmaCCString',
+	#superclass : 'Object',
 	#instVars : [
 		'firstSentinel',
 		'lastSentinel',
 		'currentId',
 		'cachedInterval'
 	],
-	#category : #'SmaCC_Source_Editing'
+	#category : 'SmaCC_Source_Editing',
+	#package : 'SmaCC_Source_Editing'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCString class >> on: aString [
 	^ self new
 		insert: aString at: 0;
 		yourself
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 SmaCCString >> , aString [
 	^ self copy
 		append: aString;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> addAnnotationTo: aSmaCCStringInterval [
 	
 ]
 
-{ #category : #editing }
+{ #category : 'editing' }
 SmaCCString >> addNewLineWhitespace: aString from: startIndex to: stopIndex [
 	| currentInterval next |
 	currentInterval := self intervalContaining: startIndex.
@@ -58,7 +59,7 @@ SmaCCString >> addNewLineWhitespace: aString from: startIndex to: stopIndex [
 		whileFalse: [ currentInterval := next ]
 ]
 
-{ #category : #editing }
+{ #category : 'editing' }
 SmaCCString >> addNewLineWhitespace: aString toInterval: currentInterval from: startIndex to: stopIndex [
 	| start stop stream next location interval whitespaceInterval |
 	interval := currentInterval.
@@ -89,12 +90,12 @@ SmaCCString >> addNewLineWhitespace: aString toInterval: currentInterval from: s
 					whitespaceInterval next: interval ] ]
 ]
 
-{ #category : #editing }
+{ #category : 'editing' }
 SmaCCString >> addPrefix: aString [
 	^ self insert: aString at: self startIndex
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCString >> allIntervalsDo: aBlock [
 	| current |
 	current := firstSentinel next.
@@ -103,7 +104,7 @@ SmaCCString >> allIntervalsDo: aBlock [
 			current := current next ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SmaCCString >> annotationRangesFor: aSmaCCAnnotation [
 	| ranges startIndex current |
 	ranges := OrderedCollection new.
@@ -120,7 +121,7 @@ SmaCCString >> annotationRangesFor: aSmaCCAnnotation [
 	^ ranges
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SmaCCString >> annotationsInNewRange: range [
 	| startIndex first last annotations current |
 	annotations := Set new.
@@ -140,7 +141,7 @@ SmaCCString >> annotationsInNewRange: range [
 	^ annotations asOrderedCollection
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SmaCCString >> annotationsInOriginalRange: range [
 	| first last |
 	first := self intervalContaining: range first.
@@ -150,7 +151,7 @@ SmaCCString >> annotationsInOriginalRange: range [
 	^ (first annotationsTo: last) ifNil: [ (last annotationsTo: first) ifNil: [ #() ] ]
 ]
 
-{ #category : #editing }
+{ #category : 'editing' }
 SmaCCString >> append: aString [
 	| position newInterval str |
 	aString isEmpty
@@ -170,13 +171,13 @@ SmaCCString >> append: aString [
 	^ position
 ]
 
-{ #category : #editing }
+{ #category : 'editing' }
 SmaCCString >> appendInterval: newInterval [
 	lastSentinel previous next: newInterval.
 	newInterval next: lastSentinel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> asString [
 	| stream |
 	stream := WriteStream on: (String new: self size).
@@ -184,13 +185,13 @@ SmaCCString >> asString [
 	^ stream contents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> at: anIndex [
 	^ (self intervalContaining: anIndex) string
 		at: (self indexFor: anIndex)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> basicNextIndex: anIndex [
 	| interval newIndex |
 	interval := self intervalContaining: anIndex.
@@ -203,7 +204,7 @@ SmaCCString >> basicNextIndex: anIndex [
 				ifFalse: [ interval next startIndex ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> basicPreviousIndex: anIndex [
 	| interval newIndex |
 	interval := self intervalContaining: anIndex.
@@ -217,7 +218,7 @@ SmaCCString >> basicPreviousIndex: anIndex [
 				ifFalse: [ interval previous stopIndex ] ]
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 SmaCCString >> copy [
 	| new first last current newCurrent |
 	first := last := nil.
@@ -238,7 +239,7 @@ SmaCCString >> copy [
 	^ new
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 SmaCCString >> copyFrom: startIndex to: stopIndex [
 	| result |
 	result := self class new.
@@ -250,7 +251,7 @@ SmaCCString >> copyFrom: startIndex to: stopIndex [
 	^ result
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCString >> copyFrom: startIndex to: stopIndex into: aSmaCCString at: anInteger [
 	| startInterval stopInterval current newInterval first last |
 	startInterval := self intervalContaining: startIndex.
@@ -285,12 +286,12 @@ SmaCCString >> copyFrom: startIndex to: stopIndex into: aSmaCCString at: anInteg
 	^ aSmaCCString insertFirst: first last: last at: anInteger
 ]
 
-{ #category : #editing }
+{ #category : 'editing' }
 SmaCCString >> deleteCharacter: anInteger [
 	^ self deleteFrom: anInteger to: anInteger
 ]
 
-{ #category : #editing }
+{ #category : 'editing' }
 SmaCCString >> deleteFrom: startIndex to: stopIndex [
 	| startInterval atEnd |
 	startInterval := self intervalContaining: startIndex.
@@ -303,17 +304,17 @@ SmaCCString >> deleteFrom: startIndex to: stopIndex [
 		whileFalse: [ startInterval := startInterval next ]
 ]
 
-{ #category : #editing }
+{ #category : 'editing' }
 SmaCCString >> deleteUpTo: anIndex [
 	self deleteFrom: self startIndex to: anIndex - 1
 ]
 
-{ #category : #editing }
+{ #category : 'editing' }
 SmaCCString >> deleteUpToEnd: anIndex [
 	self deleteFrom: anIndex to: self stopIndex
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> deleteWhitespaceAfterIndex: stopPosition [
 	| stopIndex |
 	stopIndex := self whitespaceEndIndexAfterIndex: stopPosition.
@@ -323,7 +324,7 @@ SmaCCString >> deleteWhitespaceAfterIndex: stopPosition [
 	^ self deleteFrom: (self nextIndex: stopPosition) to: stopIndex
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> deleteWhitespaceBeforeIndex: startPosition [
 	| startIndex |
 	startIndex := self whitespaceStartIndexBeforeIndex: startPosition.
@@ -335,14 +336,26 @@ SmaCCString >> deleteWhitespaceBeforeIndex: startPosition [
 		to: (self basicPreviousIndex: startPosition)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> indexFor: anIndex [
 	^ anIndex isInteger
 		ifTrue: [ anIndex ]
 		ifFalse: [ anIndex index ]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'accessing' }
+SmaCCString >> indexForStringIndex: anInteger [
+	| interval left |
+	interval := firstSentinel next.
+	left := anInteger - 1.
+	[ interval isSentinel ]
+		whileFalse: [ interval size > left ifTrue: [ ^ interval startIndex + left ].
+			left := left - interval size.
+			interval := interval next ].
+	^ self stopIndex + 1
+]
+
+{ #category : 'initialize-release' }
 SmaCCString >> initialize [
 	super initialize.
 	firstSentinel := self intervalClass from: 1 to: 0 string: ''.
@@ -353,7 +366,7 @@ SmaCCString >> initialize [
 	currentId := 0
 ]
 
-{ #category : #editing }
+{ #category : 'editing' }
 SmaCCString >> insert: aString at: anInteger [
 	| newFirstInterval |
 	aString isEmpty
@@ -373,7 +386,7 @@ SmaCCString >> insert: aString at: anInteger [
 				at: anInteger ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCString >> insertFirst: first last: last at: anInteger [
 	| interval |
 	interval := self intervalContaining: anInteger.
@@ -383,12 +396,12 @@ SmaCCString >> insertFirst: first last: last at: anInteger [
 	^ first startIndex
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCString >> intervalClass [
 	^ SmaCCStringInterval
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCString >> intervalContaining: anIndex [
 	| prev next |
 	(cachedInterval isNil or: [ cachedInterval isSentinel ])
@@ -410,7 +423,7 @@ SmaCCString >> intervalContaining: anIndex [
 	^ lastSentinel
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCString >> intervalsDo: aBlock [
 	| current |
 	current := firstSentinel next.
@@ -421,7 +434,7 @@ SmaCCString >> intervalsDo: aBlock [
 			current := current next ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCString >> isEmpty [
 	firstSentinel next
 		do: [ :each | 
@@ -430,7 +443,7 @@ SmaCCString >> isEmpty [
 	^ true
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCString >> isIndex: aIndex equalTo: bIndex [
 	aIndex = bIndex
 		ifTrue: [ ^ true ].
@@ -443,19 +456,19 @@ SmaCCString >> isIndex: aIndex equalTo: bIndex [
 				and: [ aIndex intervalId = 1 and: [ aIndex index = bIndex ] ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCString >> isModified [
 	^ firstSentinel next ~~ lastSentinel previous
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCString >> isRemoved: anIndex [
 	| interval |
 	interval := self intervalContaining: anIndex.
 	^ interval isSentinel or: [ interval isRemoved ]
 ]
 
-{ #category : #editing }
+{ #category : 'editing' }
 SmaCCString >> moveFrom: fromIndex to: toIndex after: newIndex [
 	self
 		moveFrom: fromIndex
@@ -464,7 +477,7 @@ SmaCCString >> moveFrom: fromIndex to: toIndex after: newIndex [
 		before: false
 ]
 
-{ #category : #editing }
+{ #category : 'editing' }
 SmaCCString >> moveFrom: fromIndex to: toIndex before: newIndex [
 	self
 		moveFrom: fromIndex
@@ -473,7 +486,7 @@ SmaCCString >> moveFrom: fromIndex to: toIndex before: newIndex [
 		before: true
 ]
 
-{ #category : #editing }
+{ #category : 'editing' }
 SmaCCString >> moveFrom: fromIndex to: toIndex location: newIndex before: aBoolean [
 	| startInterval stopInterval newInterval currentInterval afterInterval |
 	startInterval := self intervalContaining: fromIndex.
@@ -502,7 +515,7 @@ SmaCCString >> moveFrom: fromIndex to: toIndex location: newIndex before: aBoole
 	stopInterval next: afterInterval
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCString >> newIntervalFor: aString [
 	| newInterval |
 	newInterval := self intervalClass
@@ -514,7 +527,7 @@ SmaCCString >> newIntervalFor: aString [
 	^ newInterval
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> newPositionFor: anInteger [
 	| position |
 	position := 1.
@@ -528,7 +541,7 @@ SmaCCString >> newPositionFor: anInteger [
 	^ position
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> nextIndex: anIndex [
 	| interval newIndex |
 	interval := self intervalContaining: anIndex.
@@ -542,17 +555,17 @@ SmaCCString >> nextIndex: anIndex [
 				ifTrue: [ ^ self stopIndex + 1 ] ] ] repeat
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> node [
 	^ nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> node: aSmaCCParseNode [
 	
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCString >> on: aString [
 	| firstInterval |
 	firstInterval := self intervalClass
@@ -565,7 +578,7 @@ SmaCCString >> on: aString [
 	firstInterval next: lastSentinel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> originalStartPositionFor: anInteger [
 	| current lastGoodIndex |
 	lastGoodIndex := 1.
@@ -582,7 +595,7 @@ SmaCCString >> originalStartPositionFor: anInteger [
 	^ lastGoodIndex
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> originalStopPositionFor: anInteger [
 	| current haltOnNext |
 	haltOnNext := false.
@@ -604,7 +617,7 @@ SmaCCString >> originalStopPositionFor: anInteger [
 	^ 0
 ]
 
-{ #category : #editing }
+{ #category : 'editing' }
 SmaCCString >> prepend: aString [
 	| position newInterval str |
 	aString isEmpty
@@ -624,13 +637,13 @@ SmaCCString >> prepend: aString [
 	^ self startIndex
 ]
 
-{ #category : #editing }
+{ #category : 'editing' }
 SmaCCString >> prependInterval: newInterval [
 	newInterval next: firstSentinel next.
 	firstSentinel next: newInterval
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> previousIndex: anIndex [
 	| interval newIndex |
 	interval := self intervalContaining: anIndex.
@@ -647,12 +660,12 @@ SmaCCString >> previousIndex: anIndex [
 					newIndex := interval stopIndex ] ] ] repeat
 ]
 
-{ #category : #editing }
+{ #category : 'editing' }
 SmaCCString >> removeInterval: startInterval [
 	^ startInterval convertToRemoved
 ]
 
-{ #category : #editing }
+{ #category : 'editing' }
 SmaCCString >> replaceFrom: startIndex to: stopIndex with: aString [
 	| newIndex |
 	newIndex := self insert: aString at: startIndex.
@@ -660,7 +673,7 @@ SmaCCString >> replaceFrom: startIndex to: stopIndex with: aString [
 	^ newIndex
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCString >> reverseIntervalsDo: aBlock [
 	| current |
 	current := lastSentinel previous.
@@ -669,17 +682,17 @@ SmaCCString >> reverseIntervalsDo: aBlock [
 			current := current previous ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> rule [
 	^ nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> rule: aSmaCCRewrite [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> safeAllIntervals [
 	"Produce a ordered collection of all nodes. Trying to make the order approximate to the desired list.
 	Mainly used for debugging linking issues in the list"
@@ -704,13 +717,13 @@ SmaCCString >> safeAllIntervals [
 	^ nodes
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCString >> setIntervalId [
 	firstSentinel next
 		do: [ :each | currentId := currentId max: each id ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> size [
 	| current length |
 	length := 0.
@@ -721,14 +734,14 @@ SmaCCString >> size [
 	^ length
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> startIndex [
 	^ firstSentinel next isSentinel
 		ifTrue: [ 0 ]
 		ifFalse: [ firstSentinel next startIndex ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> startOfLineWhitespaceBeforeIndex: startPosition [
 	| startIndex |
 	startIndex := self
@@ -740,7 +753,7 @@ SmaCCString >> startOfLineWhitespaceBeforeIndex: startPosition [
 		to: (self basicPreviousIndex: startPosition)) asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> startOfLineWhitespaceStartIndexBeforeIndex: startPosition [
 	| stopIndex currentIndex position |
 	position := startPosition.
@@ -762,14 +775,14 @@ SmaCCString >> startOfLineWhitespaceStartIndexBeforeIndex: startPosition [
 		ifFalse: [ self basicNextIndex: currentIndex ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> stopIndex [
 	^ lastSentinel previous isSentinel
 		ifTrue: [ 0 ]
 		ifFalse: [ lastSentinel previous stopIndex ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> stringIndexFor: anIndex [
 	| interval result position |
 	interval := self intervalContaining: anIndex.
@@ -790,7 +803,7 @@ SmaCCString >> stringIndexFor: anIndex [
 	^ result
 ]
 
-{ #category : #editing }
+{ #category : 'editing' }
 SmaCCString >> swapFrom: region1Start to: region1Stop with: region2Start to: region2Stop [
 	| prevIndex |
 	prevIndex := self previousIndex: region1Start.
@@ -809,7 +822,7 @@ SmaCCString >> swapFrom: region1Start to: region1Stop with: region2Start to: reg
 				before: self startIndex ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> whitespaceAfterIndex: stopPosition [
 	| stopIndex |
 	stopIndex := self whitespaceEndIndexAfterIndex: stopPosition.
@@ -819,7 +832,7 @@ SmaCCString >> whitespaceAfterIndex: stopPosition [
 		asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> whitespaceBeforeIndex: startPosition [
 	| startIndex |
 	startIndex := self whitespaceStartIndexBeforeIndex: startPosition.
@@ -830,7 +843,7 @@ SmaCCString >> whitespaceBeforeIndex: startPosition [
 		to: (self basicPreviousIndex: startPosition)) asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> whitespaceEndIndexAfterIndex: stopPosition [
 	| currentIndex position startIndex stopIndex |
 	position := stopPosition.
@@ -854,7 +867,7 @@ SmaCCString >> whitespaceEndIndexAfterIndex: stopPosition [
 	^ currentIndex
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCString >> whitespaceStartIndexBeforeIndex: startPosition [
 	| stopIndex currentIndex position |
 	position := startPosition.

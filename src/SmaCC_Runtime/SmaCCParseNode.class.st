@@ -842,15 +842,15 @@ SmaCCParseNode >> parserClass [
 { #category : 'copying' }
 SmaCCParseNode >> postCopy [
 	super postCopy.
-	self
-		allGettersDo:
-			[ :each | 
-			self
-				perform: (self convertToSetter: each)
-				with:
-					((self compositeVariableSelectors includes: each)
-						ifTrue: [ (self perform: each) collect: [ :item | item copy ] ]
-						ifFalse: [ (self perform: each) copy ]) ]
+	self allVariableSelectors
+		do: [ :sel | 
+			(self perform: sel)
+				do: [ :each | 
+					self
+						perform: (self convertToSetter: each)
+						with: ((self compositeVariableSelectors includes: sel)
+								ifTrue: [ (self perform: each) collect: [ :item | item copy ] ]
+								ifFalse: [ (self perform: each) copy ]) ] ]
 ]
 
 { #category : 'printing' }

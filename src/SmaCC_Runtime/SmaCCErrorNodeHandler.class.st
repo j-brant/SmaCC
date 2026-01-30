@@ -39,22 +39,24 @@ SmaCCErrorNodeHandler >> findErrorHandlerIfNoneUseErrorNumber: anInteger [
 	[ self isEOFToken
 		ifTrue: [ self finishErrorParse: startingErrorToken dismissed: dismissedTokens.
 			^ true ].
-	handlerStates size to: 1 by: -1 do: [ :i | 
-		| states newStack |
-		states := handlerStates at: i.
-		states
-			do: [ :each | 
-				newStack := parser stateStack copyFrom: 1 to: handlerStates size - i + 1.
-				newStack addLast: each.
-				(self willShift: newStack)
-					ifTrue: [ index := i.
-						newState := each ] ] ].
+	handlerStates size
+		to: 1
+		by: -1
+		do: [ :i | 
+			| states newStack |
+			states := handlerStates at: i.
+			states
+				do: [ :each | 
+					newStack := self stateStack copyFrom: 1 to: handlerStates size - i + 1.
+					newStack addLast: each.
+					(self willShift: newStack)
+						ifTrue: [ index := i.
+							newState := each ] ] ].
 	index isNil ] whileTrue: [ dismissedTokens add: self dismissErrorToken ].
 	stackContents := self dismissStackTopForErrorRecovery: index - 1.
-	self stateStack addLast: newState.
-	self nodeStack
-		addLast:
-			(SmaCCErrorNode new
+	self
+		transitionTo: newState
+		withValue: (SmaCCErrorNode new
 				stackContents: stackContents;
 				dismissedTokens: dismissedTokens;
 				errorToken: startingErrorToken;
@@ -73,22 +75,23 @@ SmaCCErrorNodeHandler >> finishErrorParse: errorToken dismissed: dismissedTokens
 { #category : 'error handling' }
 SmaCCErrorNodeHandler >> finishErrorParse: errorToken dismissed: dismissedTokens handlerStates: handlerStates [
 	| newStack stackContents |
-	1 to: handlerStates size do: [ :i | 
-		(handlerStates at: i)
-			reverseDo: [ :each | 
-				newStack := parser stateStack copyFrom: 1 to: handlerStates size - i + 1.
-				newStack addLast: each.
-				(self willAccept: newStack)
-					ifTrue: [ stackContents := self dismissStackTopForErrorRecovery: i - 1.
-						self stateStack addLast: each.
-						self nodeStack
-							addLast:
-								(SmaCCErrorNode new
-									stackContents: stackContents;
-									dismissedTokens: dismissedTokens;
-									errorToken: errorToken;
-									yourself).
-						^ true ] ] ].
+	1
+		to: handlerStates size
+		do: [ :i | 
+			(handlerStates at: i)
+				reverseDo: [ :each | 
+					newStack := self stateStack copyFrom: 1 to: handlerStates size - i + 1.
+					newStack addLast: each.
+					(self willAccept: newStack)
+						ifTrue: [ stackContents := self dismissStackTopForErrorRecovery: i - 1.
+							self
+								transitionTo: each
+								withValue: (SmaCCErrorNode new
+										stackContents: stackContents;
+										dismissedTokens: dismissedTokens;
+										errorToken: errorToken;
+										yourself).
+							^ true ] ] ].
 	^ false
 ]
 
@@ -127,4 +130,9 @@ SmaCCErrorNodeHandler >> nodeShiftActionsFor: stateIndex [
 { #category : 'private-error handling' }
 SmaCCErrorNodeHandler >> performErrorReductions [
 	self subclassResponsibility
+]
+
+{ #category : 'private-parser accessing' }
+SmaCCErrorNodeHandler >> transitionTo: newState withValue: anObject [
+	^ parser transitionTo: newState withValue: anObject
 ]

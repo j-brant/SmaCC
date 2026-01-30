@@ -1,1 +1,1 @@
-Package { #name : #'SmaCC_Source_Editing' }
+Package { #name : 'SmaCC_Source_Editing' }
