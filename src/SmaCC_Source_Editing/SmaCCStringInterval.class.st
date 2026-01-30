@@ -13,8 +13,8 @@ Instance Variables:
 
 "
 Class {
-	#name : #SmaCCStringInterval,
-	#superclass : #Object,
+	#name : 'SmaCCStringInterval',
+	#superclass : 'Object',
 	#instVars : [
 		'id',
 		'start',
@@ -24,10 +24,11 @@ Class {
 		'string',
 		'isRemoved'
 	],
-	#category : #'SmaCC_Source_Editing'
+	#category : 'SmaCC_Source_Editing',
+	#package : 'SmaCC_Source_Editing'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCStringInterval class >> from: aSmaCCIndex to: aSmaCCIndex2 string: aString [
 	^ self new
 		start: aSmaCCIndex;
@@ -36,17 +37,17 @@ SmaCCStringInterval class >> from: aSmaCCIndex to: aSmaCCIndex2 string: aString 
 		yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCStringInterval >> addAllAnnotations: aCollection [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringInterval >> annotations [
 	^ #()
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringInterval >> annotationsTo: lastInterval [
 	| annotations current |
 	annotations := Set new.
@@ -59,21 +60,21 @@ SmaCCStringInterval >> annotationsTo: lastInterval [
 	^ annotations asOrderedCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringInterval >> asString [
 	(self isRemoved or: [ self isEmpty ])
 		ifTrue: [ ^ '' ].
 	^ string copyFrom: start to: stop
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCStringInterval >> beSentinel [
 	id := -1.
 	next := self.
 	previous := self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCStringInterval >> canBeMergedWith: nextSmaCCStringInterval [
 	^ self id = nextSmaCCStringInterval id
 		and:
@@ -81,7 +82,7 @@ SmaCCStringInterval >> canBeMergedWith: nextSmaCCStringInterval [
 				and: [ self stop + 1 = nextSmaCCStringInterval start ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCStringInterval >> containsIndex: anIndex [
 	| indexPosition indexId |
 	self isSentinel
@@ -95,7 +96,7 @@ SmaCCStringInterval >> containsIndex: anIndex [
 		and: [ (indexPosition between: start and: stop) or: [ indexPosition = 0 ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCStringInterval >> convertToRemoved [
 	| interval |
 	(self isRemoved or: [ self isSentinel ])
@@ -118,7 +119,7 @@ SmaCCStringInterval >> convertToRemoved [
 	^ self
 ]
 
-{ #category : #iterating }
+{ #category : 'iterating' }
 SmaCCStringInterval >> do: aBlock [
 	| current |
 	current := self.
@@ -127,71 +128,71 @@ SmaCCStringInterval >> do: aBlock [
 			current := current next ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringInterval >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringInterval >> id: anInteger [
 	id := anInteger
 ]
 
-{ #category : #editing }
+{ #category : 'editing' }
 SmaCCStringInterval >> insertAfter: aSmaCCInterval [
 	self next: aSmaCCInterval next.
 	aSmaCCInterval next: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCStringInterval >> isEmpty [
 	^ start > stop
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCStringInterval >> isRemoved [
 	^ isRemoved
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringInterval >> isRemoved: aBoolean [
 	isRemoved := aBoolean
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCStringInterval >> isSentinel [
 	^ id = -1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringInterval >> next [
 	^ next
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringInterval >> next: aSmaCCInterval [
 	next := aSmaCCInterval.
 	aSmaCCInterval previous: self
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCStringInterval >> nextPutOn: aWriteStream [
 	self isRemoved
 		ifTrue: [ ^ self ].
 	aWriteStream next: self size putAll: string startingAt: start
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringInterval >> previous [
 	^ previous
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringInterval >> previous: aSmaCCInterval [
 	previous := aSmaCCInterval
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCStringInterval >> printOn: aStream [
 	super printOn: aStream.
 	aStream
@@ -204,25 +205,25 @@ SmaCCStringInterval >> printOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCStringInterval >> removed [
 	next := nil.
 	previous := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringInterval >> removedString [
 	^ string copyFrom: start to: stop
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringInterval >> size [
 	self isRemoved
 		ifTrue: [ ^ 0 ].
 	^ stop - start + 1 max: 0
 ]
 
-{ #category : #editing }
+{ #category : 'editing' }
 SmaCCStringInterval >> splitAt: anIndex [
 	| new |
 	(self isSentinel or: [ anIndex = start ])
@@ -236,17 +237,17 @@ SmaCCStringInterval >> splitAt: anIndex [
 	^ new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringInterval >> start [
 	^ start
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringInterval >> start: anInteger [
 	start := anInteger
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringInterval >> startIndex [
 	self isSentinel
 		ifTrue: [ ^ nil ].
@@ -255,27 +256,27 @@ SmaCCStringInterval >> startIndex [
 		ifFalse: [ SmaCCStringIndex index: start intervalId: id ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringInterval >> stop [
 	^ stop
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringInterval >> stop: anInteger [
 	stop := anInteger
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringInterval >> stopIndex [
 	^ SmaCCStringIndex index: stop intervalId: id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringInterval >> string [
 	^ string
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringInterval >> string: aString [
 	isRemoved := false.
 	string := aString
