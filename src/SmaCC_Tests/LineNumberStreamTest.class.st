@@ -1,27 +1,28 @@
 Class {
-	#name : #LineNumberStreamTest,
-	#superclass : #TestCase,
-	#category : #'SmaCC_Tests'
+	#name : 'LineNumberStreamTest',
+	#superclass : 'TestCase',
+	#category : 'SmaCC_Tests',
+	#package : 'SmaCC_Tests'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 LineNumberStreamTest >> addCRLFsTo: aString [
 	^ aString
 		copyReplaceAll: '\'
 		with: (String with: Character cr with: Character lf)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 LineNumberStreamTest >> addCRsTo: aString [
 	^ aString copyReplaceAll: '\' with: (String with: Character cr)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 LineNumberStreamTest >> addLFsTo: aString [
 	^ aString copyReplaceAll: '\' with: (String with: Character lf)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LineNumberStreamTest >> testCRLFLines [
 	| stream |
 	stream := SmaCCLineNumberStream
@@ -36,7 +37,7 @@ LineNumberStreamTest >> testCRLFLines [
 		stream upTo: Character lf ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LineNumberStreamTest >> testCRLines [
 	| stream |
 	stream := SmaCCLineNumberStream
@@ -51,7 +52,7 @@ LineNumberStreamTest >> testCRLines [
 		stream upTo: Character cr ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LineNumberStreamTest >> testEmptyLines [
 	| stream |
 	stream := SmaCCLineNumberStream
@@ -62,7 +63,7 @@ LineNumberStreamTest >> testEmptyLines [
 		stream upTo: Character cr ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LineNumberStreamTest >> testForwardPositionCRLFLines [
 	| stream |
 	stream := SmaCCLineNumberStream
@@ -72,7 +73,7 @@ LineNumberStreamTest >> testForwardPositionCRLFLines [
 	self assert: stream columnNumber = 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LineNumberStreamTest >> testLFLines [
 	| stream |
 	stream := SmaCCLineNumberStream
@@ -87,7 +88,7 @@ LineNumberStreamTest >> testLFLines [
 		stream upTo: Character lf ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LineNumberStreamTest >> testNoLines [
 	| stream index |
 	stream := SmaCCLineNumberStream on: (ReadStream on: 'this is a test').
@@ -101,7 +102,7 @@ LineNumberStreamTest >> testNoLines [
 			self assert: stream columnNumber = index ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LineNumberStreamTest >> testPositionCRLFLines [
 	| stream |
 	stream := SmaCCLineNumberStream
@@ -117,7 +118,7 @@ LineNumberStreamTest >> testPositionCRLFLines [
 	self assert: stream columnNumber = 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LineNumberStreamTest >> testPositionCRLines [
 	| stream |
 	stream := SmaCCLineNumberStream on: (ReadStream on: (self addCRsTo: '1\2\3\4')).

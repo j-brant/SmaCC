@@ -3,14 +3,33 @@ Class {
 	#superclass : 'SmaCCGLRParser',
 	#instVars : [
 		'id',
-		'starts',
-		'stateBeforeToken',
 		'previousAST',
 		'previousMap'
 	],
 	#category : 'SmaCC_Incremental_Runtime',
 	#package : 'SmaCC_Incremental_Runtime'
 }
+
+{ #category : 'parsing' }
+SmaCCIncrementalParser class >> parse: aString previous: aNode [
+	^ self
+		parse: aString
+		startingAt: self defaultStartingState
+		previous: aNode
+]
+
+{ #category : 'parsing' }
+SmaCCIncrementalParser class >> parse: aString startingAt: anInteger previous: aNode [
+	| parser value |
+	parser := self
+			createParserOnStream: (ReadStream on: aString)
+			startingAt: anInteger.
+	parser previousAST: aNode.
+	parser createDefaultErrorHandlers.
+	value := parser parse.
+	(value isKindOf: SmaCCParseNode) ifTrue: [ value completeSource: aString ].
+	^ value
+]
 
 { #category : 'parsing' }
 SmaCCIncrementalParser class >> parseWithErrors: aString previous: aNode [
@@ -30,7 +49,7 @@ SmaCCIncrementalParser class >> parseWithErrors: aString startingAt: anInteger p
 	parser createDefaultErrorHandlers.
 	value := parser parse.
 	(value isKindOf: SmaCCParseNode) ifTrue: [ value completeSource: aString ].
-	^ value ]
+	value ]
 		on: SmaCCParserError
 		do: [ :ex | ex isResumable ifTrue: [ ex resume ] ifFalse: [ ex signal ] ]
 ]
@@ -46,7 +65,12 @@ SmaCCIncrementalParser >> checkPreviousParse [
 			currentState scannerState: incrementalState endingScannerState.
 			currentToken := nil.
 			self transitionTo: incrementalState toParserState withValue: node.
-			starts value: incrementalState startingScannerState ]
+			currentState setStart: incrementalState startingScannerState ]
+]
+
+{ #category : 'private' }
+SmaCCIncrementalParser >> deferredReduceActionClass [
+	^ SmaCCIncrementalDeferredReduceAction
 ]
 
 { #category : 'private' }
@@ -59,7 +83,8 @@ SmaCCIncrementalParser >> findNodeForCurrentState [
 
 { #category : 'private' }
 SmaCCIncrementalParser >> getNextToken [
-	currentToken ifNil: [ stateBeforeToken := currentState scannerState ].
+	currentToken
+		ifNil: [ currentState stateBeforeToken: currentState scannerState ].
 	^ super getNextToken
 ]
 
@@ -70,8 +95,13 @@ SmaCCIncrementalParser >> initialize [
 ]
 
 { #category : 'private' }
+SmaCCIncrementalParser >> parserStateClass [
+	^ SmaCCIncrementalParserState
+]
+
+{ #category : 'private' }
 SmaCCIncrementalParser >> popStacks [
-	starts := starts nextLink.
+	currentState popStart.
 	^ super popStacks
 ]
 
@@ -112,29 +142,29 @@ SmaCCIncrementalParser >> reduce: anInteger [
 		to: 1
 		by: -1
 		do: [ :i | 
-			start := starts value.
+			start := currentState getStart.
 			items at: i put: self popStacks ].
 	newState := (self actionFor: (reduceEntry at: 1)) bitShift: -2.
 	value := self performReduceEntry: reduceEntry with: items.
-	(value isKindOf: SmaCCParseNode)
+	value smaccIsNodeLike
 		ifTrue: [ | incrementalState |
 			incrementalState := SmaCCIncrementalNodeState new
 					startingScannerState: start copy;
-					endingScannerState: stateBeforeToken copy;
+					endingScannerState: currentState stateBeforeToken copy;
 					fromParserState: self currentState;
 					toParserState: newState;
 					lookaheadTokenEnd: currentToken stopPosition;
 					yourself.
 			value
-				attributeNamed: #incremental put: incrementalState;
-				attributeNamed: #id ifAbsentPut: [ id := id + 1 ] ].
+				incrementalState: incrementalState;
+				assignIdUsing: [ id := id + 1 ] ].
 	self transitionTo: newState withValue: value
 ]
 
 { #category : 'private-actions' }
 SmaCCIncrementalParser >> shift: stateIndex [
 	| value |
-	value := stateBeforeToken.
+	value := currentState stateBeforeToken.
 	(self transitionTo: stateIndex withValue: currentToken) value: value.
 	currentToken := nil
 ]
@@ -143,7 +173,7 @@ SmaCCIncrementalParser >> shift: stateIndex [
 SmaCCIncrementalParser >> transitionTo: stateIndex withValue: anObject [
 	| result |
 	super transitionTo: stateIndex withValue: anObject.
-	result := starts := starts asLinkPrepend: nil.
+	result := currentState pushStart.
 	self checkPreviousParse.
 	^ result
 ]

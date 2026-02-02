@@ -221,6 +221,11 @@ SmaCCGLRParser >> currentGLRState [
 ]
 
 { #category : 'private' }
+SmaCCGLRParser >> deferredReduceActionClass [
+	^ SmaCCDeferredReduceAction
+]
+
+{ #category : 'private' }
 SmaCCGLRParser >> duplicateState [
 	| state |
 	(parseAsEmbedded not and: [states size >= self class maxParallelParses]) ifTrue: [ SmaCCTooAmbiguousNotification signal ].
@@ -298,10 +303,10 @@ SmaCCGLRParser >> handleEmbeddedError: aSmaCCParserError [
 { #category : 'private' }
 SmaCCGLRParser >> initialParserState [
 	| state |
-	state := SmaCCParserState
-		stateStack: stateStack
-		nodeStack: nodeStack
-		scannerState: scanner currentState.
+	state := self parserStateClass
+			stateStack: stateStack
+			nodeStack: nodeStack
+			scannerState: scanner currentState.
 	^ state
 ]
 
@@ -378,6 +383,11 @@ SmaCCGLRParser >> parseCurrentToken [
 ]
 
 { #category : 'private' }
+SmaCCGLRParser >> parserStateClass [
+	^ SmaCCParserState
+]
+
+{ #category : 'private' }
 SmaCCGLRParser >> performParsingLoop [
 	| result i |
 	self setStartingStatesIfNone.
@@ -420,10 +430,11 @@ SmaCCGLRParser >> performParsingStep [
 SmaCCGLRParser >> performReduceEntry: entryArray with: items [
 	^ (states size = 1
 		or: [ parseAll or: [ entryArray at: 5 ifAbsent: [ false ] ] ])
-		ifTrue:
-			[ 1 to: items size do: [ :i | items at: i put: ((items at: i) performOnSmaCCParser: self) ].
+		ifTrue: [ 1
+				to: items size
+				do: [ :i | items at: i put: ((items at: i) performOnSmaCCParser: self) ].
 			super performReduceEntry: entryArray with: items ]
-		ifFalse: [ SmaCCDeferredReduceAction entry: entryArray arguments: items ]
+		ifFalse: [ self deferredReduceActionClass entry: entryArray arguments: items ]
 ]
 
 { #category : 'private' }
@@ -500,11 +511,9 @@ SmaCCGLRParser >> restoreState: aSmaCCParserState [
 SmaCCGLRParser >> setAllStartingStates [
 	tryAllStates := true.
 	self statesThatShift
-		do:
-			[ :each | 
+		do: [ :each | 
 			states
-				add:
-					(SmaCCParserState
+				add: (self parserStateClass
 						stateStack: (OrderedCollection with: each)
 						nodeStack: OrderedCollection new
 						scannerState: scanner currentState) ]

@@ -214,23 +214,15 @@ SmaCCGrammarCreator >> visitErrorSymbol: anErrorSymbol [
 SmaCCGrammarCreator >> visitFlagDirective: aFlagDirective [
 	| name |
 	name := aFlagDirective typeToken value.
-	name = 'glr'
-		ifTrue: [ ^ grammar isGLR: true ].
-	name = 'nfa'
-		ifTrue: [ ^ grammar useNFA: true ].
-	name = 'ignorecase'
-		ifTrue: [ ^ grammar ignoreCase: true ].
-	name = 'annotate_tokens'
-		ifTrue: [ ^ grammar annotateTokens: true ].
-	name = 'lr1'
-		ifTrue: [ ^ grammar type: #LR1 ].
-	name = 'unicode'
-		ifTrue: [ ^ SmaCCGrammar maximumCharacterValue: 16rE01EF ].
-	name = 'byte'
-		ifTrue: [ ^ SmaCCGrammar maximumCharacterValue: 255 ].
-	self
-		reportErrorMessage: 'Unknown directive'
-		on: aFlagDirective typeToken
+	name = 'glr' ifTrue: [ ^ grammar isGLR: true ].
+	name = 'incremental' ifTrue: [ ^ grammar isIncremental: true ].
+	name = 'nfa' ifTrue: [ ^ grammar useNFA: true ].
+	name = 'ignorecase' ifTrue: [ ^ grammar ignoreCase: true ].
+	name = 'annotate_tokens' ifTrue: [ ^ grammar annotateTokens: true ].
+	name = 'lr1' ifTrue: [ ^ grammar type: #LR1 ].
+	name = 'unicode' ifTrue: [ ^ SmaCCGrammar maximumCharacterValue: 16rE01EF ].
+	name = 'byte' ifTrue: [ ^ SmaCCGrammar maximumCharacterValue: 255 ].
+	self reportErrorMessage: 'Unknown directive' on: aFlagDirective typeToken
 ]
 
 { #category : 'visiting' }

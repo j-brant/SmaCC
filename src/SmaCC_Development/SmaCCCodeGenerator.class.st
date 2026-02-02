@@ -779,14 +779,18 @@ SmaCCCodeGenerator >> getCollectionProperty: aVariable in: aString canBeNil: aBo
 ]
 
 { #category : 'compiling-parser' }
-SmaCCCodeGenerator >> glrParserClass: aClassOrString [
+SmaCCCodeGenerator >> glrParserClass: aClassOrString isIncremental: aBoolean [
 	| name existingClass superclass |
 	name := (aClassOrString isKindOf: Behavior)
-		ifTrue: [ aClassOrString name ]
-		ifFalse: [ aClassOrString ].
-	superclass := SmaCCGLRParser.
+			ifTrue: [ aClassOrString name ]
+			ifFalse: [ aClassOrString ].
+	superclass := aBoolean
+			ifTrue: [ SmaCCIncrementalParser ]
+			ifFalse: [ SmaCCGLRParser ].
 	existingClass := Smalltalk at: name asSymbol ifAbsent: [ nil ].
-	(existingClass notNil and: [ existingClass superclass includesBehavior: superclass ])
+	(existingClass notNil
+		and: [ (existingClass superclass includesBehavior: superclass)
+				and: [ aBoolean or: [ (existingClass includesBehavior: SmaCCIncrementalParser) not ] ] ])
 		ifTrue: [ superclass := existingClass superclass ].
 	(existingClass notNil and: [ defaultCategory isNil ])
 		ifTrue: [ defaultCategory := existingClass category ].
@@ -1086,13 +1090,12 @@ SmaCCCodeGenerator >> parserClass [
 SmaCCCodeGenerator >> parserClass: aClassOrString [
 	| name existingClass superclass |
 	name := (aClassOrString isKindOf: Behavior)
-		ifTrue: [ aClassOrString name ]
-		ifFalse: [ aClassOrString ].
+			ifTrue: [ aClassOrString name ]
+			ifFalse: [ aClassOrString ].
 	superclass := SmaCCParser.
 	existingClass := Smalltalk at: name asSymbol ifAbsent: [ nil ].
 	(existingClass notNil
-		and:
-			[ (existingClass superclass includesBehavior: superclass)
+		and: [ (existingClass superclass includesBehavior: superclass)
 				and: [ (existingClass includesBehavior: SmaCCGLRParser) not ] ])
 		ifTrue: [ superclass := existingClass superclass ].
 	(existingClass notNil and: [ defaultCategory isNil ])

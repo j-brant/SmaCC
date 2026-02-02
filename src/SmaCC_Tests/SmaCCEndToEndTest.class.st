@@ -1,15 +1,16 @@
 Class {
-	#name : #SmaCCEndToEndTest,
-	#superclass : #TestCase,
+	#name : 'SmaCCEndToEndTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'currentClasses',
 		'currentPackage',
 		'manager'
 	],
-	#category : #'SmaCC_Tests'
+	#category : 'SmaCC_Tests',
+	#package : 'SmaCC_Tests'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCEndToEndTest >> checkTokensAreInOrder: tokenCollection [
 	tokenCollection
 		inject: 0
@@ -19,17 +20,17 @@ SmaCCEndToEndTest >> checkTokensAreInOrder: tokenCollection [
 			each startPosition ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCEndToEndTest >> classesInPackage [
 	^ self package classes
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCEndToEndTest >> defaultTimeLimit [
 	^ 120 seconds
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> expressionParserString [
 	^ '
 %left "+" "-" ;
@@ -45,34 +46,34 @@ Expression: Expression ''first'' "+" Expression ''last'' {first + last}
 	| <number> {''1'' value asNumber};'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> expressionScannerString [
 	^ '
 <number>	:	[0-9]+ (\. [0-9]+) ? ;
 <whitespace>	:	\s+;'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCEndToEndTest >> lookupType: className [
 	^ self class environment at: className
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCEndToEndTest >> package [
 	^ RPackageOrganizer default packageNamed: self class category
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCEndToEndTest >> parserClass [
 	^ self lookupType: #TestParser
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCEndToEndTest >> removeClass: aBehavior [
 	aBehavior removeFromSystem
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCEndToEndTest >> removeNewClasses [
 	| classesToRemove |
 	classesToRemove := self classesInPackage
@@ -82,24 +83,24 @@ SmaCCEndToEndTest >> removeNewClasses [
 		do: [ :each | self removeClass: each ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCEndToEndTest >> scannerClass [
 	^ self lookupType: #TestScanner
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 SmaCCEndToEndTest >> setUp [
 	super setUp.
 	SmaCCCodeGenerator reset.
 	self setUpClasses
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCEndToEndTest >> setUpClasses [
 	currentClasses := self classesInPackage
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCEndToEndTest >> supportsUnicodeStrings [
 	^ [ String with: (Character value: 16rFF00).
 	true ]
@@ -107,13 +108,13 @@ SmaCCEndToEndTest >> supportsUnicodeStrings [
 		do: [ :ex | ex return: false ]
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 SmaCCEndToEndTest >> tearDown [
 	self removeNewClasses.
 	super tearDown
 ]
 
-{ #category : #'tests-extended syntax' }
+{ #category : 'tests-extended syntax' }
 SmaCCEndToEndTest >> testAlternativePrecendence [
 	| parserCompiler node |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator defaultCategory: self class category.
@@ -134,7 +135,7 @@ SmaCCEndToEndTest >> testAlternativePrecendence [
 	self assert: node left op value = '*'
 ]
 
-{ #category : #'tests-extended syntax' }
+{ #category : 'tests-extended syntax' }
 SmaCCEndToEndTest >> testAlternatives [
 	| parserCompiler node |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator defaultCategory: self class category.
@@ -151,7 +152,39 @@ SmaCCEndToEndTest >> testAlternatives [
 	self assert: node op value = '*'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
+SmaCCEndToEndTest >> testAmbiguousIncrementalParsing [
+	| parserCompiler expression ast newAst |
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	parserCompiler
+		buildDefinition: '<int> : \d+; <whitespace>: \s+;
+			%incremental;
+			%prefix Inc;
+			%suffix Node;
+			%root Program;
+			Expression : Left ''exp'' "<" ''lt'' {{Left}} | Right ''exp'' ">" ''gt'' {{Right}} ;
+			Left : Left ''left'' "+" ''op'' Int ''right'' {{Exp}} | Int;
+			Right : Int ''left'' "+" ''op'' Right ''right'' {{Exp}} | Int;
+			Int : <int> ''value'' {{}};
+			'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+	expression := String
+			streamContents: [ :s | 
+				s << '1'.
+				100 timesRepeat: [ s << '+1' ].
+				s << '>' ].
+	ast := self parserClass parse: expression.
+	self assert: ast class name = #IncRightNode.
+	ast
+		invalidateFrom: expression size
+		to: expression size - 1
+		inserting: 2.
+	newAst := self parserClass parse: '1+' , expression previous: ast.
+	self assert: newAst class name = #IncRightNode
+]
+
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testAmbiguousReduceReduceConflict [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -172,7 +205,7 @@ SmaCCEndToEndTest >> testAmbiguousReduceReduceConflict [
 		raise: SmaCCParserError
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testAmbiguousResultWithDifferentScannerTokens [
 	| parserCompiler results result |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -212,7 +245,7 @@ SmaCCEndToEndTest >> testAmbiguousResultWithDifferentScannerTokens [
 	self assert: (results includes: 1.5)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testAmbiguousResults [
 	| parserCompiler results result |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -245,7 +278,7 @@ SmaCCEndToEndTest >> testAmbiguousResults [
 				do: [ :ex | ex resume: ex allPossibleItems first ]) = 60
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testAttributesTokens [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator defaultCategory: self class category.
@@ -265,7 +298,7 @@ SmaCCEndToEndTest >> testAttributesTokens [
 	self assert: node b = 2
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testAutoAnnotateTokens [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -285,7 +318,7 @@ SmaCCEndToEndTest >> testAutoAnnotateTokens [
 	self assert: node rightParenToken value = ')'
 ]
 
-{ #category : #'tests-error' }
+{ #category : 'tests-error' }
 SmaCCEndToEndTest >> testAutomaticErrorNodes [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator defaultCategory: self class category.
@@ -320,7 +353,7 @@ SmaCCEndToEndTest >> testAutomaticErrorNodes [
 	self assert: node c token value = 'c'
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testBadNode [
 	| compiler |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -344,7 +377,7 @@ SmaCCEndToEndTest >> testBadNode [
 						ifFalse: [ ex resume: nil ] ])
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testBadSmalltalkBlock [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -359,7 +392,7 @@ SmaCCEndToEndTest >> testBadSmalltalkBlock [
 		raise: SmaCCParserError
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testCharacterBlockWithMinusAtBeginning [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -379,7 +412,7 @@ SmaCCEndToEndTest >> testCharacterBlockWithMinusAtBeginning [
 				do: [ :ex | self assert: ('a-' includes: char) not ] ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testCharacterBlockWithMinusAtEnd [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -399,7 +432,7 @@ SmaCCEndToEndTest >> testCharacterBlockWithMinusAtEnd [
 				do: [ :ex | self assert: ('a-' includes: char) not ] ]
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testChildrenVariables [
 	| parserCompiler node |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -419,7 +452,7 @@ SmaCCEndToEndTest >> testChildrenVariables [
 	self assert: node children size = 3
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testChildrenWhenNodeTypeNotSpecified [
 	| compiler node values |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -449,7 +482,7 @@ SmaCCEndToEndTest >> testChildrenWhenNodeTypeNotSpecified [
 	node children do: [ :each | values remove: each value value ]
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testChildrenWhenNodeTypeNotSpecifiedAndCouldBeToken [
 	| compiler node values |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -480,7 +513,7 @@ SmaCCEndToEndTest >> testChildrenWhenNodeTypeNotSpecifiedAndCouldBeToken [
 	node children do: [ :each | values remove: each value value ]
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testCodeReturnType [
 	| compiler parser |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator defaultCategory: self class category.
@@ -505,7 +538,7 @@ SmaCCEndToEndTest >> testCodeReturnType [
 	self assert: ([  ] class includesBehavior: (Smalltalk at: (parser symbolTypes at: (parser symbolNames indexOf: 'E'))))
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testCollectionSuperclass [
 	| parserCompiler node copy |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -548,7 +581,7 @@ SmaCCEndToEndTest >> testCollectionSuperclass [
 	(self lookupType: #FooParseNodeVisitor) new acceptNode: node
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testCollectionSuperclassWithCodeNode [
 	| parserCompiler node copy |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -592,7 +625,7 @@ SmaCCEndToEndTest >> testCollectionSuperclassWithCodeNode [
 	(self lookupType: #FooParseNodeVisitor) new acceptNode: node
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testCollectionSuperclassWithImplicitPullUp [
 	| parserCompiler node copy |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -636,7 +669,7 @@ SmaCCEndToEndTest >> testCollectionSuperclassWithImplicitPullUp [
 	(self lookupType: #FooParseNodeVisitor) new acceptNode: node
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testComments [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -652,7 +685,7 @@ SmaCCEndToEndTest >> testComments [
 	self assert: (self parserClass parse: 'a')
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testCopyCollection [
 	| parserCompiler node |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -670,7 +703,7 @@ SmaCCEndToEndTest >> testCopyCollection [
 	self assert: (node copyInContext: Dictionary new) = node
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testCrLf [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -691,7 +724,7 @@ SmaCCEndToEndTest >> testCrLf [
 		raise: SmaCCParserError
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testDefaultClassNameWithUnderscore [
 	| parserCompiler node |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -707,7 +740,7 @@ SmaCCEndToEndTest >> testDefaultClassNameWithUnderscore [
 	(self lookupType: #FooTestNodeVisitor) new acceptNode: node
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testEmbeddedBacktracking [
 	| parserCompiler stream |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -723,7 +756,7 @@ SmaCCEndToEndTest >> testEmbeddedBacktracking [
 	self assert: stream upToEnd = '(a'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testEmbeddedExample [
 	| parserCompiler node |
 	(Smalltalk includesKey: #JSONParser)
@@ -764,7 +797,7 @@ SmaCCEndToEndTest >> testEmbeddedExample [
 		assert: (node items last ast isKindOf: (Smalltalk at: #JSONParseNode))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testEmbeddedJS [
 	| parserCompiler node found |
 	(Smalltalk includesKey: #JSParser)
@@ -796,7 +829,7 @@ SmaCCEndToEndTest >> testEmbeddedJS [
 	self assert: found
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testEmbeddedParsing [
 	| parserCompiler stream |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -815,7 +848,7 @@ SmaCCEndToEndTest >> testEmbeddedParsing [
 	self assert: stream atEnd
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testEmptyAlternative [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -835,7 +868,7 @@ SmaCCEndToEndTest >> testEmptyAlternative [
 	self assert: node component isNil
 ]
 
-{ #category : #'tests-error' }
+{ #category : 'tests-error' }
 SmaCCEndToEndTest >> testErrorRecovery [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator defaultCategory: self class category.
@@ -855,7 +888,7 @@ SmaCCEndToEndTest >> testErrorRecovery [
 	self assert: (self parserClass parseWithErrors: 'a 1 2') = 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testErrorToken [
 	| parserCompiler countingBlock |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -885,7 +918,7 @@ SmaCCEndToEndTest >> testErrorToken [
 		do: [ :each | self assert: (countingBlock value: each first) = each last ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testErrors [
 	| parserCompiler position |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -903,7 +936,7 @@ SmaCCEndToEndTest >> testErrors [
 	self assert: position = 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testExcludeScannerState [
 	| parserCompiler parser |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -925,7 +958,7 @@ SmaCCEndToEndTest >> testExcludeScannerState [
 	self should: [ parser parse ] raise: SmaCCParserError
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testExistingVariables [
 	| parserCompiler |
 	SmaCCScanner
@@ -957,7 +990,7 @@ SmaCCEndToEndTest >> testExistingVariables [
 	self assert: (self parserClass instVarNames includes: 'parser2')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testExpressions [
 	#(#LR1 #LALR1)
 		do:
@@ -983,7 +1016,7 @@ SmaCCEndToEndTest >> testExpressions [
 						= (((1 + 2) * 3 raisedTo: 2) raisedTo: 3) ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testGLRHierarchy [
 	| parserCompiler |
 	SmaCCGLRParser
@@ -1012,7 +1045,7 @@ SmaCCEndToEndTest >> testGLRHierarchy [
 	self assert: self parserClass superclass name asString = 'FooParser'
 ]
 
-{ #category : #'tests-error' }
+{ #category : 'tests-error' }
 SmaCCEndToEndTest >> testGlrErrorRecovery [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator defaultCategory: self class category.
@@ -1033,7 +1066,7 @@ SmaCCEndToEndTest >> testGlrErrorRecovery [
 	self assert: (self parserClass parseWithErrors: 'a 1 2') = 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testHierarchy [
 	| parserCompiler |
 	SmaCCScanner
@@ -1074,7 +1107,7 @@ SmaCCEndToEndTest >> testHierarchy [
 	self assert: self parserClass superclass name asString = 'FooParser'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testIgnoreCaseKeywords [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1089,7 +1122,7 @@ SmaCCEndToEndTest >> testIgnoreCaseKeywords [
 	self deny: (self parserClass parse: 'FoObAr ASDS')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testIgnoreCaseTokens [
 	| parserCompiler result |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1105,7 +1138,7 @@ SmaCCEndToEndTest >> testIgnoreCaseTokens [
 	self assert: result first hash = result last hash
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testIgnoreCaseWithMultipleKeywordCases [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1120,7 +1153,7 @@ SmaCCEndToEndTest >> testIgnoreCaseWithMultipleKeywordCases [
 	self assert: (self parserClass parse: 'iF If IF If')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testImmediateExecution [
 	| parserCompiler notification |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1142,7 +1175,7 @@ SmaCCEndToEndTest >> testImmediateExecution [
 	self assert: notification = 'B'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testImplicitParserTokens [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1153,7 +1186,7 @@ SmaCCEndToEndTest >> testImplicitParserTokens [
 	self should: [ self parserClass parse: ' ' ] raise: SmaCCParserError
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testImplicitScannerTokens [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1169,7 +1202,7 @@ SmaCCEndToEndTest >> testImplicitScannerTokens [
 		raise: SmaCCParserError
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testImplicitTokenPrecedence [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1185,7 +1218,7 @@ SmaCCEndToEndTest >> testImplicitTokenPrecedence [
 			assert: (self parserClass parse: (String with: (Character value: each))) ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testInvertedCharactersBlock [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1203,7 +1236,7 @@ SmaCCEndToEndTest >> testInvertedCharactersBlock [
 	self assert: (self parserClass parse: 'a bab') = 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testKeywords [
 	| parserCompiler size definition |
 	definition := '%ignorecase;
@@ -1219,7 +1252,7 @@ SmaCCEndToEndTest >> testKeywords [
 		ensure: [ SmaCCGrammar maximumCharacterValue: size ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testKeywordsWithStates [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1235,7 +1268,7 @@ SmaCCEndToEndTest >> testKeywordsWithStates [
 	self parserClass parse: 'word'
 ]
 
-{ #category : #'tests-error' }
+{ #category : 'tests-error' }
 SmaCCEndToEndTest >> testLALRErrorHandler [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1258,7 +1291,7 @@ SmaCCEndToEndTest >> testLALRErrorHandler [
 		raise: SmaCCParserError
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testLR1 [
 	| parserCompiler definitionString |
 	definitionString := 'S : a E c { 1 }
@@ -1295,7 +1328,7 @@ e : "e";'.
 				do: [ :ex | ex return: true ])
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testLeftAndRightRecursive [
 	| parserCompiler node |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1319,7 +1352,7 @@ SmaCCEndToEndTest >> testLeftAndRightRecursive [
 	(self lookupType: #FooParseNodeVisitor) new acceptNode: node
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testLeftRecursive [
 	| parserCompiler node copy |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1350,7 +1383,7 @@ SmaCCEndToEndTest >> testLeftRecursive [
 	(self lookupType: #FooParseNodeVisitor) new acceptNode: node
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testMatchCollection [
 	| parserCompiler node |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1368,7 +1401,7 @@ SmaCCEndToEndTest >> testMatchCollection [
 	self assert: (node match: node inContext: Dictionary new)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testMoveFromGLRHierarchy [
 	| parserCompiler |
 	SmaCCGLRParser
@@ -1398,7 +1431,7 @@ SmaCCEndToEndTest >> testMoveFromGLRHierarchy [
 		assert: self parserClass superclass name asString = 'SmaCCParser'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testMoveToGLRHierarchy [
 	| parserCompiler |
 	SmaCCParser
@@ -1428,7 +1461,7 @@ SmaCCEndToEndTest >> testMoveToGLRHierarchy [
 		assert: self parserClass superclass name asString = 'SmaCCGLRParser'
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testMultipleComponents [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1446,7 +1479,7 @@ SmaCCEndToEndTest >> testMultipleComponents [
 	self assert: node c startPosition = 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testMultipleStartingPositions [
 	| parserCompiler position |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1475,7 +1508,7 @@ SmaCCEndToEndTest >> testMultipleStartingPositions [
 	self assert: position = 2
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testMultipleTypes [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1501,7 +1534,7 @@ SmaCCEndToEndTest >> testMultipleTypes [
 	self assert: node commas size = 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testNFAtoDFAConversion [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1527,7 +1560,7 @@ SmaCCEndToEndTest >> testNFAtoDFAConversion [
 	self should: [ self parserClass parse: '''' ] raise: SmaCCParserError
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testName [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1550,7 +1583,7 @@ SmaCCEndToEndTest >> testName [
 	self assert: node nameNode base base parent == node nameNode base
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testNamedSubComponent [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1573,7 +1606,7 @@ SmaCCEndToEndTest >> testNamedSubComponent [
 	self assert: node sub sub sub sub isNil
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testNextToken [
 	| compiler tokens |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator defaultCategory: self class category.
@@ -1586,7 +1619,7 @@ SmaCCEndToEndTest >> testNextToken [
 	self assert: tokens first value = 'next'
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testNodeAndExpression [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1601,7 +1634,7 @@ SmaCCEndToEndTest >> testNodeAndExpression [
 	self assert: node a value = 'a'
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testNodeClassName [
 	| compiler pattern |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1628,7 +1661,7 @@ SmaCCEndToEndTest >> testNodeClassName [
 				inContext: Dictionary new)
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testNodeWithoutRoot [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1640,7 +1673,7 @@ SmaCCEndToEndTest >> testNodeWithoutRoot [
 		raise: SmaCCCompilationNotification
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testNonAssociativeTokens [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1665,7 +1698,7 @@ SmaCCEndToEndTest >> testNonAssociativeTokens [
 	self assert: (self parserClass parse: 'a=b and c=d')
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testNonRecursiveVariableInsideRecursiveProduction [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1683,7 +1716,7 @@ SmaCCEndToEndTest >> testNonRecursiveVariableInsideRecursiveProduction [
 	self assert: node letters size = 3
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testOptionalCollection [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1706,7 +1739,7 @@ SmaCCEndToEndTest >> testOptionalCollection [
 	self assert: node numberNodes size = 4
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testOptionalComponent [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1724,7 +1757,7 @@ SmaCCEndToEndTest >> testOptionalComponent [
 	self assert: node b startPosition = 1
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCEndToEndTest >> testOptionalVariableType [
 	| compiler |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator defaultCategory: self class category.
@@ -1739,7 +1772,7 @@ SmaCCEndToEndTest >> testOptionalVariableType [
 		assert: self parserClass basicNew symbolTypes asSet asSortedCollection asArray = #(#FooANode #SmaCCErrorNode #SmaCCToken)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testOutOfOrderTokens [
 	| parserCompiler result |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator defaultCategory: self class category.
@@ -1754,7 +1787,7 @@ SmaCCEndToEndTest >> testOutOfOrderTokens [
 	self assert: result source = 'abc'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testOverlappingTokens [
 	| parserCompiler result |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1770,7 +1803,7 @@ SmaCCEndToEndTest >> testOverlappingTokens [
 	self assert: result ids size = 3
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testParseAllPattern [
 	| compiler trees node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1798,7 +1831,7 @@ SmaCCEndToEndTest >> testParseAllPattern [
 	self assert: node fs size = 2
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testPassThrough [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1819,7 +1852,7 @@ SmaCCEndToEndTest >> testPassThrough [
 	self assert: node b number value = '12'
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testPerformanceMatchCollection [
 	| parserCompiler node match fastTime slowTime |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1849,7 +1882,7 @@ SmaCCEndToEndTest >> testPerformanceMatchCollection [
 	self assert: (fastTime max: 1) * 10 > slowTime
 ]
 
-{ #category : #'tests-extended syntax' }
+{ #category : 'tests-extended syntax' }
 SmaCCEndToEndTest >> testPlus [
 	| parserCompiler node |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator defaultCategory: self class category.
@@ -1866,7 +1899,7 @@ SmaCCEndToEndTest >> testPlus [
 	self should: [self parserClass parse: '1'] raise: SmaCCParserError
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testPreferredReduction [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1884,7 +1917,7 @@ SmaCCEndToEndTest >> testPreferredReduction [
 		equals: 1
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testPrefixSuffix [
 	| parserCompiler node |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1900,7 +1933,7 @@ SmaCCEndToEndTest >> testPrefixSuffix [
 	(self lookupType: #FooTestNodeVisitor) new acceptNode: node
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testPrefixSuffixWithDefaultClassName [
 	| parserCompiler node |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1916,7 +1949,7 @@ SmaCCEndToEndTest >> testPrefixSuffixWithDefaultClassName [
 	(self lookupType: #FooTestNodeVisitor) new acceptNode: node
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testPriority [
 	| parserCompiler |
 	SmaCCScanner
@@ -1944,7 +1977,7 @@ SmaCCEndToEndTest >> testPriority [
 	self deny: (self parserClass parse: '}')
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testPullUpCollectionVariables [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1963,7 +1996,7 @@ SmaCCEndToEndTest >> testPullUpCollectionVariables [
 	self assert: node numbers size = 4
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testPullUpMultipleTypes [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1988,7 +2021,7 @@ SmaCCEndToEndTest >> testPullUpMultipleTypes [
 	self assert: node numbers size = 5
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testPullUpVariablesForLaterSymbols [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2009,7 +2042,7 @@ SmaCCEndToEndTest >> testPullUpVariablesForLaterSymbols [
 	self assert: node numbers isEmpty
 ]
 
-{ #category : #'tests-extended syntax' }
+{ #category : 'tests-extended syntax' }
 SmaCCEndToEndTest >> testQuestion [
 	| parserCompiler node |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator defaultCategory: self class category.
@@ -2029,7 +2062,7 @@ SmaCCEndToEndTest >> testQuestion [
 	self should: [ self parserClass parse: '1,2,3' ] raise: SmaCCParserError
 ]
 
-{ #category : #'tests-extended syntax' }
+{ #category : 'tests-extended syntax' }
 SmaCCEndToEndTest >> testQuestionPrecedence [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator defaultCategory: self class category.
@@ -2046,7 +2079,7 @@ SmaCCEndToEndTest >> testQuestionPrecedence [
 	self parserClass parse: 'a.a..'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testRecursiveRule [
 	#(#LR1 #LALR1)
 		do:
@@ -2074,7 +2107,7 @@ SmaCCEndToEndTest >> testRecursiveRule [
 						= (OrderedCollection with: '2' with: '3' with: '4') ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testReduceActionReuse [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2090,7 +2123,7 @@ SmaCCEndToEndTest >> testReduceActionReuse [
 				anySatisfy: [ :each | each beginsWith: 'reduceActionFor' ])
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testReduceReduceConflict [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2114,7 +2147,7 @@ SmaCCEndToEndTest >> testReduceReduceConflict [
 						ifFalse: [ ex resume: nil ] ])
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testReduceRules [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2133,7 +2166,7 @@ SmaCCEndToEndTest >> testReduceRules [
 	self assert: (self parserClass parse: '   a ') = 'a'
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCEndToEndTest >> testRenamedNullableVariable [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2159,7 +2192,7 @@ SmaCCEndToEndTest >> testRenamedNullableVariable [
 	self assert: node separator isNil
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCEndToEndTest >> testRenamedVariable [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2180,7 +2213,7 @@ SmaCCEndToEndTest >> testRenamedVariable [
 	self deny: (self parserClass basicNew symbolTypes includes: #Object)
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCEndToEndTest >> testRenamedVariableCollection [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2203,7 +2236,7 @@ SmaCCEndToEndTest >> testRenamedVariableCollection [
 	self deny: (self parserClass basicNew symbolTypes includes: #Object)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testRepeat [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2218,7 +2251,7 @@ SmaCCEndToEndTest >> testRepeat [
 	self assert: (self parserClass parse: '`a`b`c`') size = 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testRepeatingCharactersBlock [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2234,7 +2267,7 @@ SmaCCEndToEndTest >> testRepeatingCharactersBlock [
 	self deny: (self parserClass parse: 'aaaa')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testReuseCompositeToken [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2255,7 +2288,7 @@ SmaCCEndToEndTest >> testReuseCompositeToken [
 	self should: [ self parserClass parse: '4b' ] raise: SmaCCParserError
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testReuseSimpleToken [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2272,7 +2305,7 @@ SmaCCEndToEndTest >> testReuseSimpleToken [
 	self assert: (self parserClass parse: '\')
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testRightRecursive [
 	| parserCompiler node copy |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2309,7 +2342,7 @@ SmaCCEndToEndTest >> testRightRecursive [
 	(self lookupType: #FooParseNodeVisitor) new acceptNode: node
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testScanForString [
 	| compiler |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2323,7 +2356,7 @@ SmaCCEndToEndTest >> testScanForString [
 	self assert: (self parserClass parse: 'return@') not
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCEndToEndTest >> testScannerConditions [
 	| compiler tokens |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2360,7 +2393,7 @@ SmaCCEndToEndTest >> testScannerConditions [
 	self assert: tokens third ids size equals: 1
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCEndToEndTest >> testScannerOverlappingCondition [
 	| compiler tokens |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2377,7 +2410,7 @@ SmaCCEndToEndTest >> testScannerOverlappingCondition [
 	self assert: tokens first source equals: 'ab'
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCEndToEndTest >> testScannerRepeatingOverlappingCondition [
 	| compiler token |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2397,7 +2430,7 @@ SmaCCEndToEndTest >> testScannerRepeatingOverlappingCondition [
 	self assert: token ids first equals: self scannerClass basicNew ab2Id
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testScannerScopes [
 	| parserCompiler parser |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2419,7 +2452,7 @@ SmaCCEndToEndTest >> testScannerScopes [
 	self assert: parser parse
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCEndToEndTest >> testScannerStartCondition [
 	| compiler tokens |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2441,7 +2474,7 @@ SmaCCEndToEndTest >> testScannerStartCondition [
 	self assert: tokens third ids size equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testSimple [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2455,7 +2488,7 @@ SmaCCEndToEndTest >> testSimple [
 	self assert: (self parserClass parse: 'a')
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testSimpleHierarchy [
 	| parserCompiler node copy |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2496,7 +2529,7 @@ SmaCCEndToEndTest >> testSimpleHierarchy [
 	(self lookupType: #FooParseNodeVisitor) new acceptNode: node
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testSimpleNode [
 	| parserCompiler node |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2519,7 +2552,7 @@ SmaCCEndToEndTest >> testSimpleNode [
 	(self lookupType: #FooNodeVisitor) new acceptNode: node
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testSimpleTree [
 	| parserCompiler node copy |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2558,7 +2591,7 @@ SmaCCEndToEndTest >> testSimpleTree [
 	(self lookupType: #FooParseNodeVisitor) new acceptNode: node
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCEndToEndTest >> testSingleVariableCollection [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2578,7 +2611,7 @@ SmaCCEndToEndTest >> testSingleVariableCollection [
 	self assert: node items last items size = 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testSpecialCharacters [
 	| parserCompiler maxValue |
 	[ String with: (Character value: 16rFF00) ]
@@ -2605,7 +2638,7 @@ SmaCCEndToEndTest >> testSpecialCharacters [
 		ensure: [ SmaCCGrammar maximumCharacterValue: maxValue ]
 ]
 
-{ #category : #'tests-extended syntax' }
+{ #category : 'tests-extended syntax' }
 SmaCCEndToEndTest >> testStar [
 	| parserCompiler node |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator defaultCategory: self class category.
@@ -2624,7 +2657,7 @@ SmaCCEndToEndTest >> testStar [
 	self assert: node commas isEmpty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testTimesRepeatRewriteBug [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator defaultCategory: self class category.
@@ -2633,7 +2666,7 @@ SmaCCEndToEndTest >> testTimesRepeatRewriteBug [
 	self assert: (self parserClass parse: '<<aa>>')
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCEndToEndTest >> testTokenCollection [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2653,7 +2686,7 @@ SmaCCEndToEndTest >> testTokenCollection [
 	self assert: node commas size = 2
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testUnnamedCollectionSymbol [
 	| compiler |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2676,7 +2709,7 @@ SmaCCEndToEndTest >> testUnnamedCollectionSymbol [
 						ifFalse: [ ex resume: nil ] ])
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCEndToEndTest >> testUnnamedNodeVariable [
 	| compiler |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2701,7 +2734,7 @@ SmaCCEndToEndTest >> testUnnamedNodeVariable [
 						ifFalse: [ ex resume: nil ] ])
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testUnnamedSymbol [
 	| compiler |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2724,7 +2757,7 @@ SmaCCEndToEndTest >> testUnnamedSymbol [
 						ifFalse: [ ex resume: nil ] ])
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCEndToEndTest >> testUnusedSymbols [
 	| parserCompiler |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2762,7 +2795,7 @@ SmaCCEndToEndTest >> testUnusedSymbols [
 				do: [ :ex | ex return: true ])
 ]
 
-{ #category : #'tests-parse tree creation' }
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testUseWithoutClassDefinition [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2779,7 +2812,7 @@ SmaCCEndToEndTest >> testUseWithoutClassDefinition [
 	self assert: node operator value = '+'
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCEndToEndTest >> testVariableCollection [
 	| compiler node |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator
@@ -2800,7 +2833,7 @@ SmaCCEndToEndTest >> testVariableCollection [
 	self assert: node d startPosition = 1
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCEndToEndTest >> testVariableCollectionType [
 	| compiler |
 	(compiler := SmaCCGrammarCompiler new) codeGenerator

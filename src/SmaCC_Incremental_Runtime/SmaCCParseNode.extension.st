@@ -1,6 +1,31 @@
 Extension { #name : 'SmaCCParseNode' }
 
 { #category : '*SmaCC_Incremental_Runtime' }
+SmaCCParseNode >> assignIdUsing: aBlock [
+	self attributeNamed: #id ifAbsentPut: aBlock
+]
+
+{ #category : '*SmaCC_Incremental_Runtime' }
+SmaCCParseNode >> id [
+	^ self attributeNamed: #id
+]
+
+{ #category : '*SmaCC_Incremental_Runtime' }
+SmaCCParseNode >> id: anInteger [
+	self attributeNamed: #id put: anInteger
+]
+
+{ #category : '*SmaCC_Incremental_Runtime' }
+SmaCCParseNode >> incrementalState [
+	^ self attributeNamed: #incrementalState
+]
+
+{ #category : '*SmaCC_Incremental_Runtime' }
+SmaCCParseNode >> incrementalState: incrementalState [
+	self attributeNamed: #incrementalState put: incrementalState
+]
+
+{ #category : '*SmaCC_Incremental_Runtime' }
 SmaCCParseNode >> invalidateFrom: startIndex to: toIndex inserting: length [
 	| incrementalState offset |
 	(self attributeNamed: #source)
@@ -45,4 +70,9 @@ SmaCCParseNode >> invalidateFrom: startIndex to: toIndex inserting: length [
 		nodesDo: nil
 		andTokensDo: [ :token | token startPosition: token startPosition + offset ]
 		includeErrors: true
+]
+
+{ #category : '*SmaCC_Incremental_Runtime' }
+SmaCCParseNode >> smaccIsNodeLike [
+	^ true
 ]

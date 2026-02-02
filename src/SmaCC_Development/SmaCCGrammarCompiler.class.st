@@ -324,7 +324,9 @@ SmaCCGrammarCompiler >> parserClass [
 { #category : 'accessing' }
 SmaCCGrammarCompiler >> parserClass: aClassOrString [
 	grammar isGLR
-		ifTrue: [ self codeGenerator glrParserClass: aClassOrString ]
+		ifTrue: [ self codeGenerator
+				glrParserClass: aClassOrString
+				isIncremental: grammar isIncremental ]
 		ifFalse: [ self codeGenerator parserClass: aClassOrString ]
 ]
 
