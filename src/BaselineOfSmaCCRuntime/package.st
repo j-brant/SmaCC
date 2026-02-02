@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfSmaCCRuntime }
+Package { #name : 'BaselineOfSmaCCRuntime' }

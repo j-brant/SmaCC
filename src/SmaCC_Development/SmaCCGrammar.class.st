@@ -20,7 +20,8 @@ Class {
 		'sentinelSymbol',
 		'ignoredVariableWarnings',
 		'scannerSymbols',
-		'useNFA'
+		'useNFA',
+		'isIncremental'
 	],
 	#classVars : [
 		'IsExpressionMap',
@@ -395,7 +396,8 @@ SmaCCGrammar >> initialize [
 	useNFA := false.
 	ignoreCase := false.
 	ignoredVariables := Set new.
-	annotateTokens := false
+	annotateTokens := false.
+	isIncremental := false
 ]
 
 { #category : 'testing' }
@@ -405,7 +407,19 @@ SmaCCGrammar >> isGLR [
 
 { #category : 'initialize-release' }
 SmaCCGrammar >> isGLR: aBoolean [
-	isGLR := aBoolean
+	isGLR := aBoolean.
+	aBoolean ifFalse: [ self isIncremental: false ]
+]
+
+{ #category : 'testing' }
+SmaCCGrammar >> isIncremental [
+	^ isIncremental
+]
+
+{ #category : 'initialize-release' }
+SmaCCGrammar >> isIncremental: aBoolean [
+	isIncremental := aBoolean.
+	aBoolean ifTrue: [ self isGLR: true ]
 ]
 
 { #category : 'private' }

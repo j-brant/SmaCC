@@ -1,10 +1,11 @@
 Class {
-	#name : #BaselineOfSmaCCRuntime,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfSmaCCRuntime
+	#name : 'BaselineOfSmaCCRuntime',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfSmaCCRuntime',
+	#package : 'BaselineOfSmaCCRuntime'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BaselineOfSmaCCRuntime >> baseline: spec [
 	<baseline>
 	spec
@@ -12,5 +13,6 @@ BaselineOfSmaCCRuntime >> baseline: spec [
 		do: [ spec
 				package: 'SmaCC_Runtime';
 				package: 'SmaCC_GLR_Runtime' with: [ spec requires: 'SmaCC_Runtime' ];
+				package: 'SmaCC_Incremental_Runtime' with: [ spec requires: 'SmaCC_GLR_Runtime' ];
 				package: 'SmaCC_Source_Editing' ]
 ]

@@ -1,15 +1,16 @@
 Class {
-	#name : #SmaCCCharacterSetTest,
-	#superclass : #SmaCCBitCollectionTest,
-	#category : #'SmaCC_Tests'
+	#name : 'SmaCCCharacterSetTest',
+	#superclass : 'SmaCCBitCollectionTest',
+	#category : 'SmaCC_Tests',
+	#package : 'SmaCC_Tests'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCharacterSetTest >> setClass [
 	^ SmaCCCharacterSet
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCharacterSetTest >> supportsLargeValues [
 	[ Character value: 1000 ]
 		on: Error
@@ -17,7 +18,7 @@ SmaCCCharacterSetTest >> supportsLargeValues [
 	^ true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCCharacterSetTest >> testAllCharacterRange [
 	| collection |
 	collection := SmaCCCharacterSet withAllCharactersTo: (Character value: 254).
@@ -34,7 +35,7 @@ SmaCCCharacterSetTest >> testAllCharacterRange [
 	self assert: (collection includes: (Character value: 0))
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCharacterSetTest >> value: anInteger [
 	^ Character
 		value:

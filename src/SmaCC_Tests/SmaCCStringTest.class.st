@@ -1,10 +1,11 @@
 Class {
-	#name : #SmaCCStringTest,
-	#superclass : #TestCase,
-	#category : #'SmaCC_Tests'
+	#name : 'SmaCCStringTest',
+	#superclass : 'TestCase',
+	#category : 'SmaCC_Tests',
+	#package : 'SmaCC_Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringTest >> testAppend [
 	| string |
 	string := SmaCCString on: '0'.
@@ -21,7 +22,7 @@ SmaCCStringTest >> testAppend [
 	self assert: string asString equals: '9876543210'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testCombiningDeletedIntervals [
 	| string intervalCount current |
 	string := SmaCCString on: '12345'.
@@ -35,7 +36,7 @@ SmaCCStringTest >> testCombiningDeletedIntervals [
 	self assert: intervalCount = 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testCopyFromTo [
 	| string |
 	string := SmaCCString on: '1245'.
@@ -43,7 +44,7 @@ SmaCCStringTest >> testCopyFromTo [
 	self assert: (string copyFrom: 2 to: 3) asString = '234'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testDeleteAcrossInsert [
 	| string |
 	string := SmaCCString on: '1233345'.
@@ -52,7 +53,7 @@ SmaCCStringTest >> testDeleteAcrossInsert [
 	self assert: string asString = '12345'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testDeleteAcrossInserts [
 	| string startIndex stopIndex |
 	string := SmaCCString on: '16'.
@@ -63,7 +64,7 @@ SmaCCStringTest >> testDeleteAcrossInserts [
 	self assert: string asString = '123456'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testDeleteAll [
 	| string |
 	string := SmaCCString on: 'asdf'.
@@ -71,7 +72,7 @@ SmaCCStringTest >> testDeleteAll [
 	self assert: string asString = ''
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testDeleteFirst [
 	| string |
 	string := SmaCCString on: 'asdf'.
@@ -79,7 +80,7 @@ SmaCCStringTest >> testDeleteFirst [
 	self assert: string asString = 'sdf'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testDeleteLast [
 	| string |
 	string := SmaCCString on: 'asdf'.
@@ -87,7 +88,7 @@ SmaCCStringTest >> testDeleteLast [
 	self assert: string asString = 'asd'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testDeleteUpTo [
 	| string |
 	string := SmaCCString on: '123456'.
@@ -96,7 +97,7 @@ SmaCCStringTest >> testDeleteUpTo [
 	self assert: string asString = '56'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testDeleteUpToEnd [
 	| string |
 	string := SmaCCString on: '123456'.
@@ -105,7 +106,7 @@ SmaCCStringTest >> testDeleteUpToEnd [
 	self assert: string asString = '2'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testDeleteWhitespaceBeforeAfter [
 	| string |
 	string := SmaCCString on: '0 asdf 9'.
@@ -119,7 +120,7 @@ SmaCCStringTest >> testDeleteWhitespaceBeforeAfter [
 	self assert: string asString = '0asdf9'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testDoubleInsertInMiddle [
 	| string index |
 	string := SmaCCString on: '15'.
@@ -128,7 +129,7 @@ SmaCCStringTest >> testDoubleInsertInMiddle [
 	self assert: string asString = '12345'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testInsertAtBeginning [
 	| string |
 	string := SmaCCString on: '12345'.
@@ -136,7 +137,7 @@ SmaCCStringTest >> testInsertAtBeginning [
 	self assert: string asString = '012345'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testInsertAtEnd [
 	| string |
 	string := SmaCCString on: '12345'.
@@ -144,7 +145,7 @@ SmaCCStringTest >> testInsertAtEnd [
 	self assert: string asString = '123456'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testInsertInMiddle [
 	| string |
 	string := SmaCCString on: '1245'.
@@ -152,7 +153,7 @@ SmaCCStringTest >> testInsertInMiddle [
 	self assert: string asString = '12345'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testInsertOnEmptyString [
 	| string |
 	string := SmaCCString on: ''.
@@ -160,7 +161,7 @@ SmaCCStringTest >> testInsertOnEmptyString [
 	self assert: string asString = '123456'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testInsertWhitespace [
 	| string |
 	string := SmaCCString
@@ -182,7 +183,7 @@ SmaCCStringTest >> testInsertWhitespace [
 						, (String with: Character lf) , ' ')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testMoveAfter [
 	| string |
 	string := SmaCCString on: '123456'.
@@ -195,7 +196,7 @@ SmaCCStringTest >> testMoveAfter [
 	self assert: string asString = '456123'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testMoveBefore [
 	| string |
 	string := SmaCCString on: '123456'.
@@ -208,7 +209,7 @@ SmaCCStringTest >> testMoveBefore [
 	self assert: string asString = '456123'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testMultipleDeleteAll [
 	| string |
 	string := SmaCCString on: 'asdf'.
@@ -216,7 +217,7 @@ SmaCCStringTest >> testMultipleDeleteAll [
 	self assert: string asString = ''
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testMultipleDeleteWhitespaceAfter [
 	| string |
 	string := SmaCCString on: '0 asdf 9'.
@@ -228,7 +229,7 @@ SmaCCStringTest >> testMultipleDeleteWhitespaceAfter [
 	self assert: '0 9' = string asString
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testMultipleDeleteWhitespaceBefore [
 	| string |
 	string := SmaCCString on: '0 asdf 9'.
@@ -240,7 +241,7 @@ SmaCCStringTest >> testMultipleDeleteWhitespaceBefore [
 	self assert: '0 9' = string asString
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testMultipleInserts [
 	| string |
 	string := SmaCCString on: '125'.
@@ -249,7 +250,7 @@ SmaCCStringTest >> testMultipleInserts [
 	self assert: string asString = '12345'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testMultipleInsertsAndDeletes [
 	| string indices last |
 	string := SmaCCString on: ''.
@@ -260,14 +261,14 @@ SmaCCStringTest >> testMultipleInsertsAndDeletes [
 	self assert: string asString = '12345'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testNoEdits [
 	| string |
 	string := SmaCCString on: 'asdf'.
 	self assert: string asString = 'asdf'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringTest >> testPrepend [
 	| string |
 	string := SmaCCString on: '0'.
@@ -284,7 +285,7 @@ SmaCCStringTest >> testPrepend [
 	self assert: string asString equals: '0123456789'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testReplaceInserted [
 	| string index |
 	string := SmaCCString on: '1245'.
@@ -293,7 +294,7 @@ SmaCCStringTest >> testReplaceInserted [
 	self assert: string asString = '12345'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCStringTest >> testSwap [
 	| string |
 	string := SmaCCString on: '12345678'.
