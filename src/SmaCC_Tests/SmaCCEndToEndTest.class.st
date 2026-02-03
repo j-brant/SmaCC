@@ -152,9 +152,9 @@ SmaCCEndToEndTest >> testAlternatives [
 	self assert: node op value = '*'
 ]
 
-{ #category : 'tests' }
+{ #category : 'tests-incremental' }
 SmaCCEndToEndTest >> testAmbiguousIncrementalParsing [
-	| parserCompiler expression ast newAst |
+	| parserCompiler expression ast newAst newNodes oldId |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
 		defaultCategory: self class category.
 	parserCompiler
@@ -169,19 +169,61 @@ SmaCCEndToEndTest >> testAmbiguousIncrementalParsing [
 			Int : <int> ''value'' {{}};
 			'.
 	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+
 	expression := String
 			streamContents: [ :s | 
 				s << '1'.
 				100 timesRepeat: [ s << '+1' ].
-				s << '>' ].
+				s << '<' ].
+
 	ast := self parserClass parse: expression.
-	self assert: ast class name = #IncRightNode.
+	self assert: ast class name = #IncLeftNode.
+	oldId := ast id.
+	ast allNodesDo: [ :each | self assert: each id < oldId ].
+	ast
+		withAllNodesDo: [ :each | 
+			self
+				assert: each incrementalState startingScannerState position + 1
+				equals: each startPosition.
+			self
+				assert: each incrementalState endingScannerState position
+				equals: each stopPosition ].
 	ast
 		invalidateFrom: expression size
 		to: expression size - 1
 		inserting: 2.
 	newAst := self parserClass parse: '1+' , expression previous: ast.
-	self assert: newAst class name = #IncRightNode
+	self assert: newAst class name = #IncLeftNode.
+	newNodes := IdentitySet new.
+	newAst
+		withAllNodesDo: [ :each | each id > oldId ifTrue: [ newNodes add: each ] ].
+	self assert: newNodes size <= 5.
+
+	expression := expression allButLast , '>'.
+
+	ast := self parserClass parse: expression.
+	self assert: ast class name = #IncRightNode.
+	oldId := ast id.
+	ast allNodesDo: [ :each | self assert: each id < oldId ].
+	ast
+		withAllNodesDo: [ :each | 
+			self
+				assert: each incrementalState startingScannerState position + 1
+				equals: each startPosition.
+			self
+				assert: each incrementalState endingScannerState position
+				equals: each stopPosition ].
+	ast
+		invalidateFrom: expression size
+		to: expression size - 1
+		inserting: 2.
+	newAst := self parserClass parse: '1+' , expression previous: ast.
+	self assert: newAst class name = #IncRightNode.
+	newNodes := IdentitySet new.
+	newAst
+		withAllNodesDo: [ :each | each id > oldId ifTrue: [ newNodes add: each ] ].
+	self
+		assert: ((newNodes groupedBy: [ :each | each class name ]) at: #IncIntNode) size <= 2
 ]
 
 { #category : 'tests' }

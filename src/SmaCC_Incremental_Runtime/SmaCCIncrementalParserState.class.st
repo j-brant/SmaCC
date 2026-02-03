@@ -3,28 +3,61 @@ Class {
 	#superclass : 'SmaCCParserState',
 	#instVars : [
 		'starts',
-		'stateBeforeToken'
+		'stateBeforeToken',
+		'potentialNodes'
 	],
 	#category : 'SmaCC_Incremental_Runtime',
 	#package : 'SmaCC_Incremental_Runtime'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'private' }
+SmaCCIncrementalParserState >> dismissPotentialNodes [
+	[ potentialNodes notNil
+		and: [ potentialNodes value incrementalState startingScannerState position
+				< scannerState position ] ]
+		whileTrue: [ potentialNodes := potentialNodes nextLink ]
+]
+
+{ #category : 'accessing' }
+SmaCCIncrementalParserState >> findNodeToReuse [
+	| inc current |
+	self dismissPotentialNodes.
+	current := potentialNodes.
+	[ current notNil
+		and: [ (inc := current value incrementalState) startingScannerState position
+				= scannerState position ] ]
+		whileTrue: [ (inc startingScannerState = scannerState
+				and: [ inc fromParserState = stateStack last ]) ifTrue: [ ^ current value ].
+			current := current nextLink ].
+	^ nil
+]
+
+{ #category : 'accessing' }
 SmaCCIncrementalParserState >> getStart [
 	^ starts value
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 SmaCCIncrementalParserState >> popStart [
 	starts := starts nextLink
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
+SmaCCIncrementalParserState >> potentialNodes [
+	^ potentialNodes
+]
+
+{ #category : 'accessing' }
+SmaCCIncrementalParserState >> potentialNodes: anObject [
+	potentialNodes := anObject
+]
+
+{ #category : 'accessing' }
 SmaCCIncrementalParserState >> pushStart [
 	^ starts := starts asLinkPrepend: nil
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'initialization' }
 SmaCCIncrementalParserState >> setStart: aScannerState [
 	starts value: aScannerState
 ]
