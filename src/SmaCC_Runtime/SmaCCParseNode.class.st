@@ -767,6 +767,19 @@ SmaCCParseNode >> nodeOfType: aSmaCCParseNodeClassOrCollection [
 				ifFalse: [ each isKindOf: aSmaCCParseNodeClassOrCollection ] ]
 ]
 
+{ #category : 'accessing' }
+SmaCCParseNode >> nodeSortBlock [
+	^ [ :a :b | 
+	| startA startB |
+	startA := a startPosition.
+	startB := b startPosition.
+	startA isNil
+		or: [ b notNil
+				and: [ startA class = startB class
+						ifTrue: [ startA < startB ]
+						ifFalse: [ startA class name < startB class name ] ] ] ]
+]
+
 { #category : 'variables' }
 SmaCCParseNode >> nodeVariables [
 	^ #()
@@ -968,19 +981,7 @@ SmaCCParseNode >> singularVariables [
 
 { #category : 'accessing' }
 SmaCCParseNode >> sortedChildren [
-	^ self children
-		asSortedCollection:
-			[ :a :b | 
-			| startA startB |
-			startA := a startPosition.
-			startB := b startPosition.
-			startA isNil
-				or:
-					[ b notNil
-						and:
-							[ startA class = startB class
-								ifTrue: [ startA < startB ]
-								ifFalse: [ startA class name < startB class name ] ] ] ]
+	^ self children asSortedCollection: self nodeSortBlock
 ]
 
 { #category : 'source' }

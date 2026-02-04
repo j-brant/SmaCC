@@ -10,14 +10,6 @@ Class {
 }
 
 { #category : 'parsing' }
-SmaCCIncrementalParser class >> parse: aString previous: aNode [
-	^ self
-		parse: aString
-		startingAt: self defaultStartingState
-		previous: aNode
-]
-
-{ #category : 'parsing' }
 SmaCCIncrementalParser class >> parse: aString startingAt: anInteger previous: aNode [
 	| parser value |
 	parser := self
@@ -28,14 +20,6 @@ SmaCCIncrementalParser class >> parse: aString startingAt: anInteger previous: a
 	value := parser parse.
 	(value isKindOf: SmaCCParseNode) ifTrue: [ value completeSource: aString ].
 	^ value
-]
-
-{ #category : 'parsing' }
-SmaCCIncrementalParser class >> parseWithErrors: aString previous: aNode [
-	^ self
-		parseWithErrors: aString
-		startingAt: self defaultStartingState
-		previous: aNode
 ]
 
 { #category : 'parsing' }
@@ -74,6 +58,17 @@ SmaCCIncrementalParser >> computePotentialNodes [
 	(self potentialReusableNodesIn: previousAST)
 		do: [ :each | potentialNodes := potentialNodes asLinkPrepend: each ].
 	states do: [ :each | each potentialNodes: potentialNodes ]
+]
+
+{ #category : 'as yet unclassified' }
+SmaCCIncrementalParser >> createErrorNode: aToken stack: stackContents dismissed: dismissedTokens [
+	| node |
+	node := super
+			createErrorNode: errorToken
+			stack: stackContents
+			dismissed: dismissedTokens.
+	node id: (id := id + 1).
+	^ node
 ]
 
 { #category : 'private' }
@@ -116,7 +111,7 @@ SmaCCIncrementalParser >> potentialReusableNodesIn: aNode [
 	aNode ifNil: [ ^ #() ].
 	id := id max: aNode id.
 	nodes := OrderedCollection new.
-	aNode sortedChildren
+	(self sortedChildrenOf: aNode)
 		reverseDo: [ :each | nodes addAll: (self potentialReusableNodesIn: each) ].
 	aNode incrementalState
 		ifNotNil: [ :inc | 
@@ -170,7 +165,7 @@ SmaCCIncrementalParser >> reduce: anInteger [
 	(self transitionTo: newState withValue: value) value: start
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'private' }
 SmaCCIncrementalParser >> setStartingStatesIfNone [
 	super setStartingStatesIfNone.
 	self computePotentialNodes.
@@ -188,6 +183,18 @@ SmaCCIncrementalParser >> shift: stateIndex [
 	value := currentState stateBeforeToken.
 	(self transitionTo: stateIndex withValue: currentToken) value: value.
 	currentToken := nil
+]
+
+{ #category : 'private' }
+SmaCCIncrementalParser >> sortedChildrenOf: aNode [
+	| children |
+	children := OrderedCollection new.
+	aNode
+		nodesDo: [ :each | children add: each ]
+		andTokensDo: nil
+		includeErrors: true.
+	children sort: aNode nodeSortBlock.
+	^ children
 ]
 
 { #category : 'private' }

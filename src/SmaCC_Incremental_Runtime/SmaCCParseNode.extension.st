@@ -7,7 +7,7 @@ SmaCCParseNode >> assignIdUsing: aBlock [
 
 { #category : '*SmaCC_Incremental_Runtime' }
 SmaCCParseNode >> id [
-	^ self attributeNamed: #id
+	^ self attributeNamed: #id ifAbsent: [ 0 ]
 ]
 
 { #category : '*SmaCC_Incremental_Runtime' }

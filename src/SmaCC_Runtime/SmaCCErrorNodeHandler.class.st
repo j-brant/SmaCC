@@ -5,6 +5,14 @@ Class {
 	#package : 'SmaCC_Runtime'
 }
 
+{ #category : 'error handling' }
+SmaCCErrorNodeHandler >> createErrorNode: errorToken stack: stackContents dismissed: dismissedTokens [
+	^ parser
+		createErrorNode: errorToken
+		stack: stackContents
+		dismissed: dismissedTokens
+]
+
 { #category : 'private-error handling' }
 SmaCCErrorNodeHandler >> errorHandlerStates [
 	^ self stateStack collect: [ :each | self errorShiftActionsForState: each ]
@@ -56,11 +64,10 @@ SmaCCErrorNodeHandler >> findErrorHandlerIfNoneUseErrorNumber: anInteger [
 	stackContents := self dismissStackTopForErrorRecovery: index - 1.
 	self
 		transitionTo: newState
-		withValue: (SmaCCErrorNode new
-				stackContents: stackContents;
-				dismissedTokens: dismissedTokens;
-				errorToken: startingErrorToken;
-				yourself).
+		withValue: (self
+				createErrorNode: startingErrorToken
+				stack: stackContents
+				dismissed: dismissedTokens).
 	^ true
 ]
 
@@ -86,11 +93,10 @@ SmaCCErrorNodeHandler >> finishErrorParse: errorToken dismissed: dismissedTokens
 						ifTrue: [ stackContents := self dismissStackTopForErrorRecovery: i - 1.
 							self
 								transitionTo: each
-								withValue: (SmaCCErrorNode new
-										stackContents: stackContents;
-										dismissedTokens: dismissedTokens;
-										errorToken: errorToken;
-										yourself).
+								withValue: (self
+										createErrorNode: errorToken
+										stack: stackContents
+										dismissed: dismissedTokens).
 							^ true ] ] ].
 	^ false
 ]
