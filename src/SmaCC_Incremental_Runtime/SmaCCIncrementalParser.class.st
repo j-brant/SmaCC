@@ -158,6 +158,7 @@ SmaCCIncrementalParser >> reduce: anInteger [
 					fromParserState: self currentState;
 					toParserState: newState;
 					lookaheadTokenEnd: currentToken stopPosition;
+					isEOF: self isEOFToken;
 					yourself.
 			value
 				incrementalState: incrementalState;

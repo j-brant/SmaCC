@@ -193,6 +193,9 @@ SmaCCEndToEndTest >> testAmbiguousIncrementalParsing [
 		to: expression size - 1
 		inserting: 2.
 	newAst := self parserClass parse: '1+' , expression previous: ast.
+	self
+		assert: newAst
+		equals: (self parserClass parse: newAst completeSource asString).
 	self assert: newAst class name = #IncLeftNode.
 	newNodes := IdentitySet new.
 	newAst
@@ -218,6 +221,9 @@ SmaCCEndToEndTest >> testAmbiguousIncrementalParsing [
 		to: expression size - 1
 		inserting: 2.
 	newAst := self parserClass parse: '1+' , expression previous: ast.
+	self
+		assert: newAst
+		equals: (self parserClass parse: newAst completeSource asString).
 	self assert: newAst class name = #IncRightNode.
 	newNodes := IdentitySet new.
 	newAst
@@ -1261,8 +1267,8 @@ SmaCCEndToEndTest >> testImplicitTokenPrecedence [
 ]
 
 { #category : 'tests-incremental' }
-SmaCCEndToEndTest >> testIncrementalWithErrors [
-	| parserCompiler expression ast newAst newNodes oldId |
+SmaCCEndToEndTest >> testIncrementalInsertAtEnd [
+	| parserCompiler expression ast newAst newNodes oldId ints |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
 		defaultCategory: self class category.
 	parserCompiler
@@ -1271,7 +1277,39 @@ SmaCCEndToEndTest >> testIncrementalWithErrors [
 			%prefix Inc;
 			%suffix Node;
 			%root Program;
-			Expression : Expression ''left'' "+" Int ''right'' {{}} | Int ;
+			Expression : Int ''left'' "+" ''op'' Expression ''right'' {{}} | Int ;
+			Int : <int> ''value'' {{}};
+			'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+
+	expression := '1+2+3+4'.
+
+	ast := self parserClass parseWithErrors: expression.
+	self assert: ast class name = #IncExpressionNode.
+	self assert: ast left class name = #IncIntNode.
+
+	ast
+		invalidateFrom: expression size + 1
+		to: expression size
+		inserting: 2.
+	newAst := self parserClass parse: '1+2+3+4+5' previous: ast.
+	self assert: newAst equals: (self parserClass parse: '1+2+3+4+5').
+	self assert: newAst class name = #IncExpressionNode.
+	self assert: ast left class name = #IncIntNode
+]
+
+{ #category : 'tests-incremental' }
+SmaCCEndToEndTest >> testIncrementalWithErrors [
+	| parserCompiler expression ast newAst newNodes oldId ints |
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	parserCompiler
+		buildDefinition: '<int> : \d+; <whitespace>: \s+;
+			%incremental;
+			%prefix Inc;
+			%suffix Node;
+			%root Program;
+			Expression : Expression ''left'' "+" ''op'' Int ''right'' {{}} | Int ;
 			Int : <int> ''value'' {{}};
 			'.
 	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
@@ -1291,14 +1329,15 @@ SmaCCEndToEndTest >> testIncrementalWithErrors [
 		to: 6
 		inserting: 1.
 	newAst := self parserClass parse: '1+2+3+4+5+6+7' previous: ast.
+	self assert: newAst equals: (self parserClass parse: '1+2+3+4+5+6+7').
 	self assert: newAst class name = #IncExpressionNode.
 	newNodes := IdentitySet new.
 	newAst
 		withAllNodesDo: [ :each | each id > oldId ifTrue: [ newNodes add: each ] ].
 	self assert: newNodes size <= 5.
-	self
-		assert: ((newNodes groupedBy: [ :each | each class name ]) at: #IncIntNode) size
-		equals: 1
+	ints := (newNodes groupedBy: [ :each | each class name ]) at: #IncIntNode.
+	self assert: ints size equals: 1.
+	self assert: ints anyOne source equals: '4'
 ]
 
 { #category : 'tests' }

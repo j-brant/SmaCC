@@ -54,7 +54,8 @@ SmaCCParseNode >> invalidateFrom: startIndex to: toIndex inserting: length [
 				includeErrors: true ].
 	incrementalState ifNil: [ ^ self ].
 	(toIndex < incrementalState startingScannerState position
-		or: [ startIndex > incrementalState lookaheadTokenEnd ])
+		or: [ startIndex > incrementalState lookaheadTokenEnd
+				and: [ incrementalState isEOF not ] ])
 		ifFalse: [ ^ self removeAttributeNamed: #incrementalState ].
 	self stopPosition < startIndex ifTrue: [ ^ self ].
 	offset := length - (toIndex - startIndex + 1).
