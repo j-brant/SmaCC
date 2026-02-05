@@ -9,16 +9,6 @@ Class {
 }
 
 { #category : 'generated' }
-ElixirTrueNode >> _true [
-	^ _true
-]
-
-{ #category : 'generated' }
-ElixirTrueNode >> _true: aSmaCCToken [
-	_true := aSmaCCToken
-]
-
-{ #category : 'generated' }
 ElixirTrueNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTrue: self
 ]
@@ -26,4 +16,14 @@ ElixirTrueNode >> acceptVisitor: aProgramVisitor [
 { #category : 'generated' }
 ElixirTrueNode >> tokenVariables [
 	^ #(#_true)
+]
+
+{ #category : 'generated' }
+ElixirTrueNode >> _true [
+	^ _true
+]
+
+{ #category : 'generated' }
+ElixirTrueNode >> _true: aSmaCCToken [
+	_true := aSmaCCToken
 ]

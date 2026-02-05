@@ -1,6 +1,6 @@
-Extension { #name : #AbstractFileReference }
+Extension { #name : 'AbstractFileReference' }
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 AbstractFileReference >> gtParseInspectorViewIn: composite [
 	<gtInspectorPresentationOrder: 20>
 	| extension tabulator |
@@ -42,7 +42,7 @@ AbstractFileReference >> gtParseInspectorViewIn: composite [
 							(presentation custom: inspector) title: 'Result' ] ] ]
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 AbstractFileReference >> smaCCParseUsing: parserClass [
 	| contents |
 	self

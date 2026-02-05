@@ -1,13 +1,15 @@
 Class {
-	#name : #SmaCCSingleVariableReduceCode,
-	#superclass : #SmaCCReduceCode,
+	#name : 'SmaCCSingleVariableReduceCode',
+	#superclass : 'SmaCCReduceCode',
 	#instVars : [
 		'indices'
 	],
-	#category : #'SmaCC_Development-Compilation Model'
+	#category : 'SmaCC_Development-Compilation Model',
+	#package : 'SmaCC_Development',
+	#tag : 'Compilation Model'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCSingleVariableReduceCode >> basicModelTypes: aSet [
 	| types isCollection |
 	isCollection := false.
@@ -28,7 +30,7 @@ SmaCCSingleVariableReduceCode >> basicModelTypes: aSet [
 		ifFalse: [ types asArray ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCSingleVariableReduceCode >> computeIndices [
 	indices := OrderedCollection new.
 	1 to: rhs size do:
@@ -42,24 +44,24 @@ SmaCCSingleVariableReduceCode >> computeIndices [
 	^ indices
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSingleVariableReduceCode >> index [
 	^ indices isEmpty
 		ifTrue: [ 0 ]
 		ifFalse: [ indices first ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSingleVariableReduceCode >> indices [
 	^ indices ifNil: [ self computeIndices ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCSingleVariableReduceCode >> returnsSingleVariable [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSingleVariableReduceCode >> source [
 	^ (indices size < 2
 		and:

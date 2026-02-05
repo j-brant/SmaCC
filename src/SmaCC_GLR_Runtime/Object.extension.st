@@ -1,6 +1,6 @@
-Extension { #name : #Object }
+Extension { #name : 'Object' }
 
-{ #category : #'*SmaCC_GLR_Runtime' }
+{ #category : '*SmaCC_GLR_Runtime' }
 Object >> performOnSmaCCParser: aSmaCCParser [
 	^ self
 ]

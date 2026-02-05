@@ -1,6 +1,6 @@
-Extension { #name : #SmaCCRepeatRegexNode }
+Extension { #name : 'SmaCCRepeatRegexNode' }
 
-{ #category : #'*SmaCC_Development' }
+{ #category : '*SmaCC_Development' }
 SmaCCRepeatRegexNode >> asRegularExpression [
 	| re |
 	re := self regex regularExpression.
@@ -27,7 +27,7 @@ SmaCCRepeatRegexNode >> asRegularExpression [
 	self reportCountError
 ]
 
-{ #category : #'*SmaCC_Development' }
+{ #category : '*SmaCC_Development' }
 SmaCCRepeatRegexNode >> reportCountError [
 	SmaCCParserError new
 		messageText: 'Unknown repeat count';

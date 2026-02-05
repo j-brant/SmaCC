@@ -5,22 +5,24 @@ Instance Variables
 	nodeClassDefinitions	<Collection of: SmaCCNodeClassDefinition>	the node classes to create the visitor for
 "
 Class {
-	#name : #SmaCCVisitorClassDefinition,
-	#superclass : #SmaCCClassDefinition,
+	#name : 'SmaCCVisitorClassDefinition',
+	#superclass : 'SmaCCClassDefinition',
 	#instVars : [
 		'nodeClassDefinitions'
 	],
-	#category : #'SmaCC_Development-Compilation Model'
+	#category : 'SmaCC_Development-Compilation Model',
+	#package : 'SmaCC_Development',
+	#tag : 'Compilation Model'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCVisitorClassDefinition class >> forClassDefinitions: aCollection [
 	^ self new
 		nodeClassDefinitions: aCollection;
 		yourself
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCVisitorClassDefinition >> compileMethodsAndVariables [
 	nodeClassDefinitions do: [ :each | self compileVisitMethodFor: each ].
 	self codeGenerator
@@ -28,24 +30,24 @@ SmaCCVisitorClassDefinition >> compileMethodsAndVariables [
 		rootNode: grammar rootDefinition
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCVisitorClassDefinition >> compileVisitMethodFor: aSmaCCNodeClassDefinition [
 	self codeGenerator
 		compileVisitMethodFor: aSmaCCNodeClassDefinition
 		visitor: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCVisitorClassDefinition >> name [
 	^ self modelClass name
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCVisitorClassDefinition >> nodeClassDefinitions: aCollection [
 	nodeClassDefinitions := aCollection
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCVisitorClassDefinition >> rootClassName [
 	^ SmaCCParseNodeVisitor name
 ]

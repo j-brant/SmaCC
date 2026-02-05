@@ -1,6 +1,6 @@
-Extension { #name : #SmaCCParser }
+Extension { #name : 'SmaCCParser' }
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParser class >> filesWithParserErrorsIn: aDirectory [
 	^ (self sourceFilesIn: aDirectory)
 		select: [ :each | 
@@ -10,7 +10,7 @@ SmaCCParser class >> filesWithParserErrorsIn: aDirectory [
 				do: [ :ex | ex return: true ] ]
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParser >> fillInGraphFromStack: nodeCollection returnTable: tableArray size: sizeInteger [
 	self
 		allActionsAndSymbolsForState: nodeCollection last state
@@ -46,7 +46,7 @@ SmaCCParser >> fillInGraphFromStack: nodeCollection returnTable: tableArray size
 							next := top addDirectLinkToNodeNamed: name state: ((self actionForState: top state and: entry first) bitShift: -2) ] ] ]
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParser >> graphForStack: aCollection [
 	| name next graphNodeStack returnTable |
 	graphNodeStack := OrderedCollection new.
@@ -75,7 +75,7 @@ SmaCCParser >> graphForStack: aCollection [
 	^ graphNodeStack first
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParser class >> gtExampleSmaCCParser [
 	<gtExample>
 	<label: 'SmaCCParser'>
@@ -84,13 +84,7 @@ SmaCCParser class >> gtExampleSmaCCParser [
 	
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
-SmaCCParser class >> gtGraphInspectorViewIn: composite [
-	<gtInspectorPresentationOrder: 14>
-	self new gtGraphInspectorViewIn: composite
-]
-
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParser >> gtGraphInspectorViewIn: composite [
 	<gtInspectorPresentationOrder: 20>
 	((Smalltalk includesKey: #RTView) not
@@ -101,7 +95,7 @@ SmaCCParser >> gtGraphInspectorViewIn: composite [
 		initializeView: [ self roassalView ]
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParser >> isAcceptState: stateIndex [
 	self
 		allActionsAndSymbolsForState: stateIndex
@@ -111,7 +105,7 @@ SmaCCParser >> isAcceptState: stateIndex [
 	^ false
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParser >> layout: aView from: aNode position: aPoint [
 	| element bottom nextLeft horizontalGap verticalGap position |
 	horizontalGap := 20.
@@ -131,7 +125,7 @@ SmaCCParser >> layout: aView from: aNode position: aPoint [
 	^ bottom
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParser >> maxReturnSizeTable [
 	| table |
 	table := Array new: self transitionTable size withAll: 0.
@@ -155,12 +149,12 @@ SmaCCParser >> maxReturnSizeTable [
 	^ table
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParser >> roassalView [
 	^ self roassalViewForStack: (stateStack ifNil: [ Array with: self class defaultStartingState ])
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParser >> roassalViewForStack: stack [
 	| shape nodes es root view |
 	root := self graphForStack: stack.
@@ -227,7 +221,7 @@ SmaCCParser >> roassalViewForStack: stack [
 	^ view
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParser class >> sourceFilesIn: aDirectory [
 	| pattern |
 	pattern := String
@@ -242,7 +236,7 @@ SmaCCParser class >> sourceFilesIn: aDirectory [
 		flatCollect: [ :each | each filesMatching: pattern ]
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParser >> stackSymbolNames [
 	| names |
 	names := OrderedCollection new: stateStack size - 1.
@@ -250,14 +244,14 @@ SmaCCParser >> stackSymbolNames [
 	^ names
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParser >> symbolForTransitionFrom: fromState to: toState [
 	| id |
 	id := self symbolIdForTransitionFrom: fromState to: toState.
 	^ self symbolNameFor: id
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParser >> symbolIdForTransitionFrom: fromState to: toState [
 	| toValue |
 	toValue := (toState bitShift: 2) bitOr: self shiftAction.
@@ -269,12 +263,12 @@ SmaCCParser >> symbolIdForTransitionFrom: fromState to: toState [
 	^ 0
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParser >> symbolNameFor: anInteger [
 	^ self symbolNames at: anInteger ifAbsent: [ '?' ]
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParser >> symbolNamesFor: aCollection do: aBlock [
 	2
 		to: aCollection size

@@ -8,16 +8,17 @@ Instance Variables:
 
 "
 Class {
-	#name : #SmaCCStringIndex,
-	#superclass : #Magnitude,
+	#name : 'SmaCCStringIndex',
+	#superclass : 'Magnitude',
 	#instVars : [
 		'index',
 		'intervalId'
 	],
-	#category : #'SmaCC_Source_Editing'
+	#category : 'SmaCC_Source_Editing',
+	#package : 'SmaCC_Source_Editing'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCStringIndex class >> index: anInteger intervalId: intervalId [
 	^ self new
 		index: anInteger;
@@ -25,22 +26,22 @@ SmaCCStringIndex class >> index: anInteger intervalId: intervalId [
 		yourself
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 SmaCCStringIndex >> + anInteger [
 	^ self class index: index + anInteger intervalId: intervalId
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 SmaCCStringIndex >> - anInteger [
 	^ self + anInteger negated
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCStringIndex >> < aSmaCCStringIndex [
 	^ self index < aSmaCCStringIndex index
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCStringIndex >> = anObject [
 	^ self class = anObject class
 		and:
@@ -48,32 +49,32 @@ SmaCCStringIndex >> = anObject [
 				and: [ self intervalId = anObject intervalId ] ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCStringIndex >> hash [
 	^ (index hashMultiply bitXor: intervalId) hashMultiply
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringIndex >> index [
 	^ index
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringIndex >> index: anInteger [
 	index := anInteger
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringIndex >> intervalId [
 	^ intervalId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStringIndex >> intervalId: anInteger [
 	intervalId := anInteger
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCStringIndex >> printOn: aStream [
 	super printOn: aStream.
 	aStream

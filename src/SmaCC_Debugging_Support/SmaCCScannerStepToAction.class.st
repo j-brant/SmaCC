@@ -1,10 +1,12 @@
 Class {
-	#name : #SmaCCScannerStepToAction,
-	#superclass : #SmaCCDebuggingAction,
-	#category : #'SmaCC_Debugging_Support-Debugger'
+	#name : 'SmaCCScannerStepToAction',
+	#superclass : 'SmaCCDebuggingAction',
+	#category : 'SmaCC_Debugging_Support-Debugger',
+	#package : 'SmaCC_Debugging_Support',
+	#tag : 'Debugger'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 SmaCCScannerStepToAction >> executeAction [
 	| scanner toIndex |
 	toIndex := self stepToIndex.
@@ -16,7 +18,7 @@ SmaCCScannerStepToAction >> executeAction [
 	self stepOutOfStepMethod
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SmaCCScannerStepToAction >> stepOutOfStepMethod [
 	| stepContext |
 	stepContext := self session context
@@ -27,7 +29,7 @@ SmaCCScannerStepToAction >> stepOutOfStepMethod [
 	self stepUntil: [ :context | false ] context: stepContext
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScannerStepToAction >> stepToIndex [
 	^ self subclassResponsibility
 ]

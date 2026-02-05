@@ -9,16 +9,6 @@ Class {
 }
 
 { #category : 'generated' }
-ElixirFalseNode >> _false [
-	^ _false
-]
-
-{ #category : 'generated' }
-ElixirFalseNode >> _false: aSmaCCToken [
-	_false := aSmaCCToken
-]
-
-{ #category : 'generated' }
 ElixirFalseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFalse: self
 ]
@@ -26,4 +16,14 @@ ElixirFalseNode >> acceptVisitor: aProgramVisitor [
 { #category : 'generated' }
 ElixirFalseNode >> tokenVariables [
 	^ #(#_false)
+]
+
+{ #category : 'generated' }
+ElixirFalseNode >> _false [
+	^ _false
+]
+
+{ #category : 'generated' }
+ElixirFalseNode >> _false: aSmaCCToken [
+	_false := aSmaCCToken
 ]

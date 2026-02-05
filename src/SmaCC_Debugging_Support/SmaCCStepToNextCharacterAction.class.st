@@ -1,10 +1,12 @@
 Class {
-	#name : #SmaCCStepToNextCharacterAction,
-	#superclass : #SmaCCScannerStepToAction,
-	#category : #'SmaCC_Debugging_Support-Debugger'
+	#name : 'SmaCCStepToNextCharacterAction',
+	#superclass : 'SmaCCScannerStepToAction',
+	#category : 'SmaCC_Debugging_Support-Debugger',
+	#package : 'SmaCC_Debugging_Support',
+	#tag : 'Debugger'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStepToNextCharacterAction class >> defaultIcon [
 	^ icon
 		ifNil: [ icon := Form
@@ -15,17 +17,17 @@ SmaCCStepToNextCharacterAction class >> defaultIcon [
 				offset: 0 @ 0 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStepToNextCharacterAction class >> defaultName [
 	^ 'Step Next Character'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStepToNextCharacterAction >> help [
 	^ 'Run until we get to the character or a parse error is encountered.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStepToNextCharacterAction >> stepToIndex [
 	^ self session scanner stream position + 1
 ]

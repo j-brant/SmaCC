@@ -123,6 +123,11 @@ SmaCCToken >> startPosition [
 ]
 
 { #category : 'accessing' }
+SmaCCToken >> startPosition: anInteger [
+	start := anInteger
+]
+
+{ #category : 'accessing' }
 SmaCCToken >> stopPosition [
 	start isNil
 		ifTrue: [ ^ nil ].

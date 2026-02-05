@@ -55,8 +55,8 @@ Instance Variables
 	scannerClass	<RBClass>	the model's class for the scanner
 "
 Class {
-	#name : #SmaCCCodeGenerator,
-	#superclass : #Object,
+	#name : 'SmaCCCodeGenerator',
+	#superclass : 'Object',
 	#instVars : [
 		'parserClass',
 		'scannerClass',
@@ -70,10 +70,12 @@ Class {
 	#classInstVars : [
 		'codeTemplates'
 	],
-	#category : #'SmaCC_Development-Compiler'
+	#category : 'SmaCC_Development-Compiler',
+	#package : 'SmaCC_Development',
+	#tag : 'Compiler'
 }
 
-{ #category : #'code generation templates' }
+{ #category : 'code generation templates' }
 SmaCCCodeGenerator class >> codeTemplates [
 	^ codeTemplates
 		ifNil:
@@ -83,17 +85,17 @@ SmaCCCodeGenerator class >> codeTemplates [
 			codeTemplates ]
 ]
 
-{ #category : #'code generation templates' }
+{ #category : 'code generation templates' }
 SmaCCCodeGenerator class >> codeTemplatesArray [
 	^ #(#(#override '') #(#trueValue 'true'))
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCCodeGenerator class >> parseSourceSelector [
 	self subclassResponsibility
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 SmaCCCodeGenerator class >> reset [
 	"self reset"
 
@@ -101,12 +103,12 @@ SmaCCCodeGenerator class >> reset [
 	self allSubclassesDo: [ :each | each reset ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCCodeGenerator class >> typeName [
 	^ nil
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> acceptCharacterEdge: aSmaCCCharacterEdge seen: aCollection [
 	| stream |
 	stream := WriteStream with: String new.
@@ -128,7 +130,7 @@ SmaCCCodeGenerator >> acceptCharacterEdge: aSmaCCCharacterEdge seen: aCollection
 	^ stream contents
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> acceptConditionEdge: aSmaCCCharacterEdge [
 	| stream |
 	stream := WriteStream with: String new.
@@ -146,12 +148,12 @@ SmaCCCodeGenerator >> acceptConditionEdge: aSmaCCCharacterEdge [
 	^ stream contents
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> acceptStateEdge: aSmaCCStateEdge [
 	self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> addParentAssignmentFor: aSmaCCVariableDefinition to: valueString [
 	aSmaCCVariableDefinition isBaseNodeType
 		ifFalse: [ aSmaCCVariableDefinition isBaseTokenType
@@ -202,31 +204,49 @@ SmaCCCodeGenerator >> addParentAssignmentFor: aSmaCCVariableDefinition to: value
 			self nextPutStatement: self endConditionalString ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> addVariable: aSmaCCVariableDefinition forDefinition: aSmaCCNodeClassDefinition [
 	self subclassResponsibility
 ]
 
-{ #category : #'compiling-parser' }
+{ #category : 'compiling-parser' }
 SmaCCCodeGenerator >> ambiguousTableEntryFor: aCollection [
 	| entry |
 	entry := aCollection asArray.
 	^ ambiguousActions at: entry ifAbsentPut: [ ambiguousActions size + 1 ]
 ]
 
-{ #category : #'code generation templates' }
+{ #category : 'code generation templates' }
 SmaCCCodeGenerator >> argumentIndex: anInteger [
 	^ self at: 'nodes' index: anInteger
 ]
 
-{ #category : #'code generation templates' }
+{ #category : 'code generation templates' }
 SmaCCCodeGenerator >> argumentIndex: anInteger subIndex: subIndex [
 	^ self
 		at: (self cast: (self argumentIndex: anInteger) to: self collectionType)
 		index: subIndex
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'reduction table' }
+SmaCCCodeGenerator >> assignVariable: variableName in: aSmaCCRHS at: key first: aBoolean [
+	| variableIndex value |
+	variableIndex := aSmaCCRHS productionSymbol indexOfVariable: variableName.
+	value := self argumentIndex: key.
+	self
+		nextPutStatement: ((aSmaCCRHS productionSymbol isCollection: variableName)
+				ifTrue: 
+					[self
+						perform: (aBoolean
+								ifTrue: [#addFirstSendTo:with:]
+								ifFalse: [#addSendTo:with:])
+						with: (self cast: (self at: 'result' index: variableIndex)
+								to: self collectionType)
+						with: value]
+				ifFalse: [self assignArray: 'result' index: variableIndex to: value])
+]
+
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> asStatement: methodMap forNode: aSmaCCNode lastNeedsReturn: aBoolean [
 	| transitions seen seenCharacter |
 	aSmaCCNode hasSimpleLoop ifTrue: [ self nextPutLine: self startDoWhileLoop ].
@@ -260,52 +280,34 @@ SmaCCCodeGenerator >> asStatement: methodMap forNode: aSmaCCNode lastNeedsReturn
 				nextPutStatement: (self return: (self send: #reportLastMatch to: self receiverName)) ]
 ]
 
-{ #category : #'reduction table' }
-SmaCCCodeGenerator >> assignVariable: variableName in: aSmaCCRHS at: key first: aBoolean [
-	| variableIndex value |
-	variableIndex := aSmaCCRHS productionSymbol indexOfVariable: variableName.
-	value := self argumentIndex: key.
-	self
-		nextPutStatement: ((aSmaCCRHS productionSymbol isCollection: variableName)
-				ifTrue: 
-					[self
-						perform: (aBoolean
-								ifTrue: [#addFirstSendTo:with:]
-								ifFalse: [#addSendTo:with:])
-						with: (self cast: (self at: 'result' index: variableIndex)
-								to: self collectionType)
-						with: value]
-				ifFalse: [self assignArray: 'result' index: variableIndex to: value])
-]
-
-{ #category : #'reduction table' }
+{ #category : 'reduction table' }
 SmaCCCodeGenerator >> basicCompileSourceFor: aSmaCCReduceAction [
 	self subclassResponsibility
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> callScanMethod: methodCall [
 	^ self return: (self send: methodCall to: self receiverName)
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> closestIsExpressionsFor: charsCollection seen: anObject [
 	self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> codeStream [
 	codeStream isNil
 		ifTrue: [ codeStream := self outputStream ].
 	^ codeStream
 ]
 
-{ #category : #'code generation templates' }
+{ #category : 'code generation templates' }
 SmaCCCodeGenerator >> comment: aString [
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCCodeGenerator >> commonSupertypeBetween: modelClass and: anotherModelClass [
 	^ (anotherModelClass includesClass: modelClass)
 		ifTrue: [ modelClass ]
@@ -318,7 +320,7 @@ SmaCCCodeGenerator >> commonSupertypeBetween: modelClass and: anotherModelClass 
 						and: anotherModelClass ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCCodeGenerator >> commonSupertypeOf: aCollection [
 	aCollection isEmpty
 		ifTrue: [ ^ self objectClass ].
@@ -327,14 +329,14 @@ SmaCCCodeGenerator >> commonSupertypeOf: aCollection [
 		into: [ :sum :each | self commonSupertypeBetween: sum and: each ]
 ]
 
-{ #category : #'compiling-parser' }
+{ #category : 'compiling-parser' }
 SmaCCCodeGenerator >> compileAcceptNodeMethodFor: aSmaCCVisitorClassDefinition rootNode: aSmaCCClassDefinition [
 	"Only needed if we are using a brain dead type system"
 
 	
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> compileAcceptVisitorMethod: aSmaCCNodeClassDefinition visitor: aSmaCCVisitorClassDefinition [
 	aSmaCCNodeClassDefinition isRoot
 		ifTrue: [ self startPublicVirtualMethod ]
@@ -357,7 +359,7 @@ SmaCCCodeGenerator >> compileAcceptVisitorMethod: aSmaCCNodeClassDefinition visi
 		compileMethodIn: aSmaCCNodeClassDefinition modelClass
 ]
 
-{ #category : #'compiling-parser' }
+{ #category : 'compiling-parser' }
 SmaCCCodeGenerator >> compileAmbiguousTransitions [
 	ambiguousActions isEmpty ifTrue: [ ^ self ].
 	self
@@ -368,24 +370,24 @@ SmaCCCodeGenerator >> compileAmbiguousTransitions [
 		compileMethodWithoutFormattingIn: parserClass classSide
 ]
 
-{ #category : #'compiling-parser' }
+{ #category : 'compiling-parser' }
 SmaCCCodeGenerator >> compileCacheId [
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCCodeGenerator >> compileChanges [
 	self subclassResponsibility
 ]
 
-{ #category : #'compiling-nodes' }
+{ #category : 'compiling-nodes' }
 SmaCCCodeGenerator >> compileChildrenMethod: aSmaCCNodeClassDefinition [
 ]
 
-{ #category : #'compiling-nodes' }
+{ #category : 'compiling-nodes' }
 SmaCCCodeGenerator >> compileCopyInContextMethod: aSmaCCNodeClassDefinition [
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCCodeGenerator >> compileDefinitionComment: aString [
 	self
 		startPublicVirtualMethod;
@@ -395,7 +397,7 @@ SmaCCCodeGenerator >> compileDefinitionComment: aString [
 	self compileMethodWithoutFormattingIn: parserClass classSide
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> compileEmptySymbolTokenId: emptySymbolId [
 	self
 		compileTokenIdMethodNamed: 'emptySymbolToken'
@@ -403,11 +405,11 @@ SmaCCCodeGenerator >> compileEmptySymbolTokenId: emptySymbolId [
 		isOverridden: true
 ]
 
-{ #category : #'compiling-nodes' }
+{ #category : 'compiling-nodes' }
 SmaCCCodeGenerator >> compileEqualMethod: aSmaCCNodeClassDefinition [
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> compileErrorSymbolTokenId: errorTokenId [
 	self
 		compileTokenIdMethodNamed: 'errorToken'
@@ -415,7 +417,7 @@ SmaCCCodeGenerator >> compileErrorSymbolTokenId: errorTokenId [
 		isOverridden: true
 ]
 
-{ #category : #'compiling-nodes' }
+{ #category : 'compiling-nodes' }
 SmaCCCodeGenerator >> compileGetterAndSetter: aSmaCCVariableDefinition forDefinition: aSmaCCNodeClassDefinition [
 	| type typeName variableName definer |
 	variableName := self
@@ -451,11 +453,11 @@ SmaCCCodeGenerator >> compileGetterAndSetter: aSmaCCVariableDefinition forDefini
 		compileMethodIn: aSmaCCNodeClassDefinition modelClass
 ]
 
-{ #category : #'compiling-nodes' }
+{ #category : 'compiling-nodes' }
 SmaCCCodeGenerator >> compileHashMethod: aSmaCCNodeClassDefinition [
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> compileIgnoreCaseMethods [
 	self grammar ignoreCase
 		ifFalse: [ ^ self ].
@@ -472,31 +474,31 @@ SmaCCCodeGenerator >> compileIgnoreCaseMethods [
 		compileMethodIn: scannerClass
 ]
 
-{ #category : #'compiling-nodes' }
+{ #category : 'compiling-nodes' }
 SmaCCCodeGenerator >> compileInitializeMethod: aSmaCCNodeClassDefinition [
 	self subclassResponsibility
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> compileKeywordInitializerUsing: keywordMapDictionary [
 	self subclassResponsibility
 ]
 
-{ #category : #'compiling-nodes' }
+{ #category : 'compiling-nodes' }
 SmaCCCodeGenerator >> compileMatchInContextMethod: aSmaCCNodeClassDefinition [
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> compileMethodIn: modelClass [
 	self subclassResponsibility
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCCodeGenerator >> compileMethodWithoutFormattingIn: modelClass [
 	self subclassResponsibility
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> compileNode: aSmaCCNode [
 	| methodNodes methodMap |
 	methodNodes := self statesToMakeIntoMethodsFor: aSmaCCNode.
@@ -517,7 +519,7 @@ SmaCCCodeGenerator >> compileNode: aSmaCCNode [
 			self compileOptimizedMethodIn: scannerClass ]
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCCodeGenerator >> compileNodeClassDefinition: aSmaCCClassDefinition [
 	| class |
 	class := self
@@ -528,21 +530,21 @@ SmaCCCodeGenerator >> compileNodeClassDefinition: aSmaCCClassDefinition [
 	self removeOldMethodsFrom: class classSide
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCCodeGenerator >> compileOptimizedMethodIn: modelClass [
 	self compileMethodIn: modelClass
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> compilePostCopyMethod: aSmaCCNodeClassDefinition [
 ]
 
-{ #category : #'compiling-parser' }
+{ #category : 'compiling-parser' }
 SmaCCCodeGenerator >> compileReductionActions [
 	
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCCodeGenerator >> compileReductionTable: reductionTable [
 	self
 		startProtectedOverrideMethod;
@@ -552,19 +554,19 @@ SmaCCCodeGenerator >> compileReductionTable: reductionTable [
 		compileMethodWithoutFormattingIn: parserClass classSide
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCCodeGenerator >> compileScannerClassIntoParser [
 	self subclassResponsibility
 ]
 
-{ #category : #'reduction table' }
+{ #category : 'reduction table' }
 SmaCCCodeGenerator >> compileSourceFor: aSmaCCReduceAction [
 	^ reduceActionCache
 		at: aSmaCCReduceAction
 		ifAbsentPut: [ self basicCompileSourceFor: aSmaCCReduceAction ]
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> compileStartingStateIds: startingStates [
 	startingStates
 		keysAndValuesDo: [ :symbol :position | 
@@ -576,14 +578,14 @@ SmaCCCodeGenerator >> compileStartingStateIds: startingStates [
 				compileMethodIn: parserClass classSide ]
 ]
 
-{ #category : #'compiling-parser' }
+{ #category : 'compiling-parser' }
 SmaCCCodeGenerator >> compileSymbolNames [
 	| names |
 	names := grammar symbols collect: [ :each | each name ].
 	self compileSymbolNames: names asArray
 ]
 
-{ #category : #'compiling-parser' }
+{ #category : 'compiling-parser' }
 SmaCCCodeGenerator >> compileSymbolNames: anArray [
 	self
 		startPublicVirtualMethod;
@@ -593,7 +595,7 @@ SmaCCCodeGenerator >> compileSymbolNames: anArray [
 		compileMethodIn: self parserClass classSide
 ]
 
-{ #category : #'compiling-parser' }
+{ #category : 'compiling-parser' }
 SmaCCCodeGenerator >> compileSymbolTypes [
 	| names |
 	names := grammar symbols
@@ -608,12 +610,12 @@ SmaCCCodeGenerator >> compileSymbolTypes [
 	self compileSymbolTypes: names asArray
 ]
 
-{ #category : #'compiling-parser' }
+{ #category : 'compiling-parser' }
 SmaCCCodeGenerator >> compileSymbolTypes: anArray [
 	
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> compileTokenIdMethodNamed: aString withId: symbolId isOverridden: aBoolean [
 	aBoolean
 		ifTrue: [ self startPublicOverrideMethod ]
@@ -625,7 +627,7 @@ SmaCCCodeGenerator >> compileTokenIdMethodNamed: aString withId: symbolId isOver
 		compileMethodIn: scannerClass
 ]
 
-{ #category : #'compiling-parser' }
+{ #category : 'compiling-parser' }
 SmaCCCodeGenerator >> compileTransitionTable: transitionTable [
 	self
 		startPublicOverrideMethod;
@@ -635,12 +637,12 @@ SmaCCCodeGenerator >> compileTransitionTable: transitionTable [
 		compileMethodWithoutFormattingIn: parserClass classSide
 ]
 
-{ #category : #'compiling-nodes' }
+{ #category : 'compiling-nodes' }
 SmaCCCodeGenerator >> compileVariablesMethods: aSmaCCNodeClassDefinition [
 	
 ]
 
-{ #category : #'compiling-nodes' }
+{ #category : 'compiling-nodes' }
 SmaCCCodeGenerator >> compileVisitMethodFor: aSmaCCNodeClassDefinition visitor: aSmaCCVisitorClassDefinition [
 	| tempName |
 	self
@@ -671,17 +673,17 @@ SmaCCCodeGenerator >> compileVisitMethodFor: aSmaCCNodeClassDefinition visitor: 
 		compileMethodIn: aSmaCCVisitorClassDefinition modelClass
 ]
 
-{ #category : #'compiling-nodes' }
+{ #category : 'compiling-nodes' }
 SmaCCCodeGenerator >> compileVisitor: aSmaCCNodeCalculation [
 	self subclassResponsibility
 ]
 
-{ #category : #'reduction table' }
+{ #category : 'reduction table' }
 SmaCCCodeGenerator >> createNodeReduceAction: aSmaCCRHS [
 	^ self createNodeReduceAction: aSmaCCRHS pullUpFrom: 0
 ]
 
-{ #category : #'reduction table' }
+{ #category : 'reduction table' }
 SmaCCCodeGenerator >> createNodeReduceAction: aSmaCCRHS pullUpFrom: anInteger [
 	self resetCodeStream.
 	self
@@ -705,7 +707,7 @@ SmaCCCodeGenerator >> createNodeReduceAction: aSmaCCRHS pullUpFrom: anInteger [
 	^ self codeStream contents
 ]
 
-{ #category : #'reduction table' }
+{ #category : 'reduction table' }
 SmaCCCodeGenerator >> createVariableArrayFor: aSmaCCRHS [
 	self
 		nextPutLine: (self variableDeclaration: 'result' ofType: self arrayType).
@@ -726,32 +728,32 @@ SmaCCCodeGenerator >> createVariableArrayFor: aSmaCCRHS [
 						to: (self newCollectionOfSize: 2)) ]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCCodeGenerator >> defaultCategory: aSymbol [
 	defaultCategory := aSymbol
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> defaultNodeReductionSource: aReduction [
 	self subclassResponsibility
 ]
 
-{ #category : #'reduction table' }
+{ #category : 'reduction table' }
 SmaCCCodeGenerator >> defaultReductionSource [
 	self subclassResponsibility
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> defineClass: aString asSubclassOf: aSmaCCClass [
 	self subclassResponsibility
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> defineTrait: aString fromTraits: aCollection [
 	self subclassResponsibility
 ]
 
-{ #category : #'code generation templates' }
+{ #category : 'code generation templates' }
 SmaCCCodeGenerator >> doesNotUnderstand: failedMessage [
 	"Use the code templates to expand the string."
 
@@ -761,47 +763,129 @@ SmaCCCodeGenerator >> doesNotUnderstand: failedMessage [
 		expandMacrosWithArguments: failedMessage arguments
 ]
 
-{ #category : #'code generation templates' }
+{ #category : 'code generation templates' }
 SmaCCCodeGenerator >> endIteratorString [
 	^ self endConditionalString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> endMethod [
 	self codeStream nextPutAll: self endMethodString
 ]
 
-{ #category : #'code generation templates' }
+{ #category : 'code generation templates' }
 SmaCCCodeGenerator >> getCollectionProperty: aVariable in: aString canBeNil: aBoolean [
 	^ self send: aVariable getterMethodName to: aString
 ]
 
-{ #category : #'compiling-parser' }
-SmaCCCodeGenerator >> glrParserClass: aClassOrString [
+{ #category : 'compiling-parser' }
+SmaCCCodeGenerator >> glrParserClass: aClassOrString isIncremental: aBoolean [
 	| name existingClass superclass |
 	name := (aClassOrString isKindOf: Behavior)
-		ifTrue: [ aClassOrString name ]
-		ifFalse: [ aClassOrString ].
-	superclass := SmaCCGLRParser.
+			ifTrue: [ aClassOrString name ]
+			ifFalse: [ aClassOrString ].
+	superclass := aBoolean
+			ifTrue: [ SmaCCIncrementalParser ]
+			ifFalse: [ SmaCCGLRParser ].
 	existingClass := Smalltalk at: name asSymbol ifAbsent: [ nil ].
-	(existingClass notNil and: [ existingClass superclass includesBehavior: superclass ])
+	(existingClass notNil
+		and: [ (existingClass superclass includesBehavior: superclass)
+				and: [ aBoolean or: [ (existingClass includesBehavior: SmaCCIncrementalParser) not ] ] ])
 		ifTrue: [ superclass := existingClass superclass ].
 	(existingClass notNil and: [ defaultCategory isNil ])
 		ifTrue: [ defaultCategory := existingClass category ].
 	parserClass := self defineClass: name asSubclassOf: superclass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCCodeGenerator >> grammar [
 	^ grammar
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCCodeGenerator >> grammar: aSmaCCGrammar [
 	grammar := aSmaCCGrammar
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'initialize-release' }
+SmaCCCodeGenerator >> initialize [
+	super initialize.
+	reduceActionCache := Dictionary new.
+	ambiguousActions := OrderedDictionary new
+]
+
+{ #category : 'compiling-parser' }
+SmaCCCodeGenerator >> initializeArrayContentsToNull: aSmaCCRHS [
+	
+]
+
+{ #category : 'compiling-parser' }
+SmaCCCodeGenerator >> initializeResultForReduceAction: aSmaCCRHS [
+	^ self
+		newArrayOfSize: aSmaCCRHS productionSymbol variableDefinitions size
+]
+
+{ #category : 'compiling-parser' }
+SmaCCCodeGenerator >> initializerForAmbiguousTransitions [
+	| stream first |
+	stream := self outputStream.
+	stream nextPutAll: self newUnsignedShortArrayArray.
+	first := true.
+	ambiguousActions
+		keysDo: [ :each | 
+			first
+				ifTrue: [ first := false ]
+				ifFalse: [ stream nextPutAll: self literalArraySeparator ].
+			self
+				writeTransitionTableEntry: each
+				on: stream
+				firstIsType: false ].
+	stream
+		cr;
+		tab;
+		nextPutAll: self endLiteralArray.
+	^ stream contents
+]
+
+{ #category : 'compiling' }
+SmaCCCodeGenerator >> initializerForReductionTable: reductionTable [
+	| stream |
+	stream := self outputStream.
+	stream nextPutAll: self reduceActionLiteralStart.
+	reductionTable
+		do: [ :each | 
+			stream
+				cr;
+				tab;
+				nextPutAll: (self reduceAction: each) ]
+		separatedBy: [ stream nextPutAll: self literalArraySeparator ].
+	stream
+		cr;
+		tab;
+		nextPutAll: self endLiteralArray.
+	^ stream contents
+]
+
+{ #category : 'compiling-parser' }
+SmaCCCodeGenerator >> initializerForTransitionTable: transitionTable [
+	| stream |
+	stream := self outputStream.
+	stream nextPutAll: self newUnsignedShortArrayArray.
+	transitionTable
+		do: [ :each | 
+			self
+				writeTransitionTableEntry: each
+				on: stream
+				firstIsType: true ]
+		separatedBy: [ stream nextPutAll: self literalArraySeparator ].
+	stream
+		cr;
+		tab;
+		nextPutAll: self endLiteralArray.
+	^ stream contents
+]
+
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> initialMethodStatesFor: aSmaCCNode [
 	| allStates incoming |
 	allStates := aSmaCCNode allStates.
@@ -824,115 +908,37 @@ SmaCCCodeGenerator >> initialMethodStatesFor: aSmaCCNode [
 						and: [ (incoming at: each ifAbsent: [ #() ]) size > 1 ] ] ]
 ]
 
-{ #category : #'initialize-release' }
-SmaCCCodeGenerator >> initialize [
-	super initialize.
-	reduceActionCache := Dictionary new.
-	ambiguousActions := OrderedDictionary new
-]
-
-{ #category : #'compiling-parser' }
-SmaCCCodeGenerator >> initializeArrayContentsToNull: aSmaCCRHS [
-	
-]
-
-{ #category : #'compiling-parser' }
-SmaCCCodeGenerator >> initializeResultForReduceAction: aSmaCCRHS [
-	^ self
-		newArrayOfSize: aSmaCCRHS productionSymbol variableDefinitions size
-]
-
-{ #category : #'compiling-parser' }
-SmaCCCodeGenerator >> initializerForAmbiguousTransitions [
-	| stream first |
-	stream := self outputStream.
-	stream nextPutAll: self newUnsignedShortArrayArray.
-	first := true.
-	ambiguousActions
-		keysDo: [ :each | 
-			first
-				ifTrue: [ first := false ]
-				ifFalse: [ stream nextPutAll: self literalArraySeparator ].
-			self
-				writeTransitionTableEntry: each
-				on: stream
-				firstIsType: false ].
-	stream
-		cr;
-		tab;
-		nextPutAll: self endLiteralArray.
-	^ stream contents
-]
-
-{ #category : #compiling }
-SmaCCCodeGenerator >> initializerForReductionTable: reductionTable [
-	| stream |
-	stream := self outputStream.
-	stream nextPutAll: self reduceActionLiteralStart.
-	reductionTable
-		do: [ :each | 
-			stream
-				cr;
-				tab;
-				nextPutAll: (self reduceAction: each) ]
-		separatedBy: [ stream nextPutAll: self literalArraySeparator ].
-	stream
-		cr;
-		tab;
-		nextPutAll: self endLiteralArray.
-	^ stream contents
-]
-
-{ #category : #'compiling-parser' }
-SmaCCCodeGenerator >> initializerForTransitionTable: transitionTable [
-	| stream |
-	stream := self outputStream.
-	stream nextPutAll: self newUnsignedShortArrayArray.
-	transitionTable
-		do: [ :each | 
-			self
-				writeTransitionTableEntry: each
-				on: stream
-				firstIsType: true ]
-		separatedBy: [ stream nextPutAll: self literalArraySeparator ].
-	stream
-		cr;
-		tab;
-		nextPutAll: self endLiteralArray.
-	^ stream contents
-]
-
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> keywords [
 	^ #()
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> maxJumpSize [
 	^ SmallInteger maxVal
 ]
 
-{ #category : #'code generation templates' }
+{ #category : 'code generation templates' }
 SmaCCCodeGenerator >> method: aString type: typeString [
 	self subclassResponsibility
 ]
 
-{ #category : #'code generation templates' }
+{ #category : 'code generation templates' }
 SmaCCCodeGenerator >> method: aString type: anObject argumentName: argumentNameString argumentType: argumentTypeString [
 	self subclassResponsibility
 ]
 
-{ #category : #'code generation templates' }
+{ #category : 'code generation templates' }
 SmaCCCodeGenerator >> method: aString type: anObject argumentName: firstArgumentNameString argumentType: firstArgumentTypeString argumentName: secondArgumentNameString argumentType: secondArgumentTypeString [
 	self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> methodNameFor: aString [
 	^ aString
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> methodNameMap: aSmaCCNode forMethods: methodNodes [
 	| index methodMap |
 	methodMap := Dictionary new.
@@ -949,7 +955,7 @@ SmaCCCodeGenerator >> methodNameMap: aSmaCCNode forMethods: methodNodes [
 	^ methodMap
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> minMaxPairsFor: charsCollection without: isSelectors [
 	^ self
 		minMaxPairsFor: charsCollection
@@ -957,7 +963,7 @@ SmaCCCodeGenerator >> minMaxPairsFor: charsCollection without: isSelectors [
 		seen: SmaCCCharacterSet new
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> minMaxPairsFor: charsCollection without: isSelectors seen: seenCollection [
 	| start last pairs charsLeft |
 	charsLeft := charsCollection.
@@ -986,29 +992,29 @@ SmaCCCodeGenerator >> minMaxPairsFor: charsCollection without: isSelectors seen:
 	^ pairs
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> model [
 	^ model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCCodeGenerator >> namespaceName [
 	^ ''
 ]
 
-{ #category : #'compiling-parser' }
+{ #category : 'compiling-parser' }
 SmaCCCodeGenerator >> nextPut: aCharacter [
 	self codeStream nextPut: aCharacter
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> nextPutLine: aString [
 	self codeStream
 		nextPutAll: aString;
 		cr
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> nextPutStatement: aString [
 	self codeStream
 		nextPutAll: aString;
@@ -1016,12 +1022,12 @@ SmaCCCodeGenerator >> nextPutStatement: aString [
 		cr
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> nodeType [
 	^ (model classFor: SmaCCParseNode) name
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> nonKeywordNameFor: aString [
 	| word |
 	word := aString.
@@ -1029,27 +1035,27 @@ SmaCCCodeGenerator >> nonKeywordNameFor: aString [
 	^ word
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCCodeGenerator >> objectClass [
 	^ model classFor: Object
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> outputInvertedMatchFor: aSmaCCCharacterEdge on: stream [
 	self subclassResponsibility
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> outputIsSelector: isSelector on: stream [
 	self subclassResponsibility
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> outputMatchFor: aSmaCCCharacterEdge seen: aCollection on: stream [
 	self subclassResponsibility
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> outputMatchForTransition: each on: stream [
 	each first = each last
 		ifTrue: [ ^ self outputSingleCharacterMatch: each on: stream ].
@@ -1060,37 +1066,31 @@ SmaCCCodeGenerator >> outputMatchForTransition: each on: stream [
 	self outputRangeMatch: each on: stream
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> outputStream [
 	^ self outputStreamClass with: String new
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCCodeGenerator >> outputStreamClass [
 	self subclassResponsibility
 ]
 
-{ #category : #private }
-SmaCCCodeGenerator >> parseSourceSelector [
-	^ self class parseSourceSelector
-]
-
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCCodeGenerator >> parserClass [
 	^ parserClass
 ]
 
-{ #category : #'compiling-parser' }
+{ #category : 'compiling-parser' }
 SmaCCCodeGenerator >> parserClass: aClassOrString [
 	| name existingClass superclass |
 	name := (aClassOrString isKindOf: Behavior)
-		ifTrue: [ aClassOrString name ]
-		ifFalse: [ aClassOrString ].
+			ifTrue: [ aClassOrString name ]
+			ifFalse: [ aClassOrString ].
 	superclass := SmaCCParser.
 	existingClass := Smalltalk at: name asSymbol ifAbsent: [ nil ].
 	(existingClass notNil
-		and:
-			[ (existingClass superclass includesBehavior: superclass)
+		and: [ (existingClass superclass includesBehavior: superclass)
 				and: [ (existingClass includesBehavior: SmaCCGLRParser) not ] ])
 		ifTrue: [ superclass := existingClass superclass ].
 	(existingClass notNil and: [ defaultCategory isNil ])
@@ -1098,7 +1098,12 @@ SmaCCCodeGenerator >> parserClass: aClassOrString [
 	parserClass := self defineClass: name asSubclassOf: superclass
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'private' }
+SmaCCCodeGenerator >> parseSourceSelector [
+	^ self class parseSourceSelector
+]
+
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> possiblyGuardNil: each around: aBlock [
 	each isAlwaysAssigned
 		ifTrue: [ aBlock value ]
@@ -1111,7 +1116,7 @@ SmaCCCodeGenerator >> possiblyGuardNil: each around: aBlock [
 				ensure: [ self nextPutStatement: self endConditionalString ] ]
 ]
 
-{ #category : #'compiling-parser' }
+{ #category : 'compiling-parser' }
 SmaCCCodeGenerator >> processTransitionTable: transitionTable [
 	| table |
 	table := OrderedCollection new.
@@ -1119,13 +1124,13 @@ SmaCCCodeGenerator >> processTransitionTable: transitionTable [
 	^ table
 ]
 
-{ #category : #'reduction table' }
+{ #category : 'reduction table' }
 SmaCCCodeGenerator >> pullUpVariableArrayFor: aSmaCCRHS index: recursionIndex [
 	self nextPutLine: (self variableDeclaration: 'result' ofType: self arrayType).
 	self nextPutStatement: (self assignmentTo: 'result' from: (self cast: (self argumentIndex: recursionIndex) to: self collectionType))
 ]
 
-{ #category : #'reduction table' }
+{ #category : 'reduction table' }
 SmaCCCodeGenerator >> pullUpVariableFrom: aSmaCCSymbol into: aSmaCCRHS index: anInteger first: aBoolean [
 	| variableValue rhsIndex variable |
 	variable := aSmaCCSymbol variableDefinitions first.
@@ -1157,7 +1162,7 @@ SmaCCCodeGenerator >> pullUpVariableFrom: aSmaCCSymbol into: aSmaCCRHS index: an
 					ifFalse: [self assignArray: 'result' index: rhsIndex to: variableValue])
 ]
 
-{ #category : #'reduction table' }
+{ #category : 'reduction table' }
 SmaCCCodeGenerator >> pullUpVariablesFrom: aSmaCCSymbol into: aSmaCCRHS index: anInteger first: aBoolean [
 	aSmaCCSymbol variableDefinitions do: 
 			[:each |
@@ -1190,7 +1195,7 @@ SmaCCCodeGenerator >> pullUpVariablesFrom: aSmaCCSymbol into: aSmaCCRHS index: a
 							ifFalse: [self assignArray: 'result' index: rhsIndex to: variableValue])]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> recursionIndexFor: aSmaCCRHS [
 	| vars index recursionIndex |
 	index := 1.
@@ -1214,68 +1219,68 @@ SmaCCCodeGenerator >> recursionIndexFor: aSmaCCRHS [
 	^recursionIndex
 ]
 
-{ #category : #'code generation templates' }
+{ #category : 'code generation templates' }
 SmaCCCodeGenerator >> reduceAction: anArray [
 	self subclassResponsibility
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCCodeGenerator >> removeOldMethods [
 	self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> removeOldMethodsFrom: aRBClass [
 	self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> resetCodeStream [
 	codeStream := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCCodeGenerator >> returnedNodeIndexFor: aSmaCCReduceCode [
 	self subclassResponsibility
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> scannerActionFor: aString [
 	self subclassResponsibility
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> scannerClass: aString [
 	self subclassResponsibility
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> selectorMap: aDictionary [
 	self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> send: selector to: aString [
 	self subclassResponsibility
 ]
 
-{ #category : #'code generation templates' }
+{ #category : 'code generation templates' }
 SmaCCCodeGenerator >> send: selectorString to: receiverString with: argumentString [
 	self subclassResponsibility
 ]
 
-{ #category : #'code generation templates' }
+{ #category : 'code generation templates' }
 SmaCCCodeGenerator >> send: selectorString to: receiverString with: firstArgumentString with: secondArgumentString [
 	self subclassResponsibility
 ]
 
-{ #category : #'compiling-parser' }
+{ #category : 'compiling-parser' }
 SmaCCCodeGenerator >> setGetterMethodNameTo: aSmaCCVariableDefinition withName: variableName [
 	aSmaCCVariableDefinition
 		getterMethodName: (self methodNameFor: variableName)
 ]
 
-{ #category : #'code generation templates' }
+{ #category : 'code generation templates' }
 SmaCCCodeGenerator >> setProperty: aSmaCCVariableDefinition in: aString to: aValue [
 	^ self
 		send: aSmaCCVariableDefinition setterMethodName
@@ -1283,7 +1288,7 @@ SmaCCCodeGenerator >> setProperty: aSmaCCVariableDefinition in: aString to: aVal
 		with: aValue
 ]
 
-{ #category : #'code generation templates' }
+{ #category : 'code generation templates' }
 SmaCCCodeGenerator >> setter: aString argumentName: argumentNameString argumentType: argumentTypeString [
 	^ self
 		method: aString
@@ -1292,7 +1297,7 @@ SmaCCCodeGenerator >> setter: aString argumentName: argumentNameString argumentT
 		argumentType: argumentTypeString
 ]
 
-{ #category : #'reduction table' }
+{ #category : 'reduction table' }
 SmaCCCodeGenerator >> singleVariableCollectionFor: reduceCode [
 	| variable recursionIndex |
 	variable := reduceCode rhs productionSymbol variableDefinitions asArray first variableName.
@@ -1338,7 +1343,7 @@ SmaCCCodeGenerator >> singleVariableCollectionFor: reduceCode [
 	^self codeStream contents
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> sortedTransitionsForNode: aSmaCCNode [
 	^ aSmaCCNode transitions
 		asSortedCollection: [ :a :b | 
@@ -1357,7 +1362,7 @@ SmaCCCodeGenerator >> sortedTransitionsForNode: aSmaCCNode [
 								or: [ b isCharacterTransition or: [ a isCharacterTransition not ] ] ] ] ]
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> splitLargeNodes: methodStates [
 	"Split nodes that might generate long jumps that may not compile (longer than 16 bit offset)."
 
@@ -1373,7 +1378,7 @@ SmaCCCodeGenerator >> splitLargeNodes: methodStates [
 							todo addLast: edge to ] ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> startProtectedOverrideMethod [
 	self resetCodeStream.
 	self codeStream
@@ -1381,7 +1386,7 @@ SmaCCCodeGenerator >> startProtectedOverrideMethod [
 		nextPutAll: self override
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> startProtectedVirtualMethod [
 	self resetCodeStream.
 	self codeStream
@@ -1389,7 +1394,7 @@ SmaCCCodeGenerator >> startProtectedVirtualMethod [
 		nextPutAll: self virtual
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> startPublicOverrideMethod [
 	self resetCodeStream.
 	self codeStream
@@ -1397,12 +1402,12 @@ SmaCCCodeGenerator >> startPublicOverrideMethod [
 		nextPutAll: self override
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> startPublicVirtualGetter [
 	self startPublicVirtualMethod
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> startPublicVirtualMethod [
 	self resetCodeStream.
 	self codeStream
@@ -1410,13 +1415,13 @@ SmaCCCodeGenerator >> startPublicVirtualMethod [
 		nextPutAll: self virtual
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> startStaticMethod [
 	self resetCodeStream.
 	self codeStream nextPutAll: self static
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> startStaticPrivateMethod [
 	self resetCodeStream.
 	self codeStream
@@ -1424,7 +1429,7 @@ SmaCCCodeGenerator >> startStaticPrivateMethod [
 		nextPutAll: self private
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> statesToMakeIntoMethodsFor: aSmaCCNode [
 	| methodStates |
 	methodStates := self initialMethodStatesFor: aSmaCCNode.
@@ -1432,22 +1437,22 @@ SmaCCCodeGenerator >> statesToMakeIntoMethodsFor: aSmaCCNode [
 	^ methodStates asSortedCollection: [ :a :b | a id < b id ]
 ]
 
-{ #category : #'code generation templates' }
+{ #category : 'code generation templates' }
 SmaCCCodeGenerator >> superMessage: aString [
 	self subclassResponsibility
 ]
 
-{ #category : #'code generation templates' }
+{ #category : 'code generation templates' }
 SmaCCCodeGenerator >> superMessage: aString argument: argumentString [
 	self subclassResponsibility
 ]
 
-{ #category : #'code generation templates' }
+{ #category : 'code generation templates' }
 SmaCCCodeGenerator >> superMessage: aString argument: firstArgumentString argument: secondArgumentString [
 	self subclassResponsibility
 ]
 
-{ #category : #'reduction table' }
+{ #category : 'reduction table' }
 SmaCCCodeGenerator >> variableArrayAction: aSmaCCRHS [
 	| recursionIndex |
 	self resetCodeStream.
@@ -1494,32 +1499,32 @@ SmaCCCodeGenerator >> variableArrayAction: aSmaCCRHS [
 	^self codeStream contents
 ]
 
-{ #category : #'code generation templates' }
+{ #category : 'code generation templates' }
 SmaCCCodeGenerator >> variableReference: aSmaCCVariableDefinition [
 	^ self nonKeywordNameFor: aSmaCCVariableDefinition sourceVariableName
 ]
 
-{ #category : #'code generation templates' }
+{ #category : 'code generation templates' }
 SmaCCCodeGenerator >> variableReference: aSmaCCVariableDefinition in: aString [
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCCodeGenerator >> verifyCodeToken: codeToken for: aSmaCCRHS [
 	self subclassResponsibility
 ]
 
-{ #category : #'compiling-scanner' }
+{ #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> writeMatchingCodeFor: aSmaCCNode [
 	self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> writeTransitionTableEntry: anArray on: aStream firstIsType: aBoolean [
 	self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCCodeGenerator >> writeTransitionTableMethod: stream withIndex: index withArray: array [
 	self
 		startStaticPrivateMethod;

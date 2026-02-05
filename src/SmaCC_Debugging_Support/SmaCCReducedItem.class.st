@@ -1,14 +1,16 @@
 Class {
-	#name : #SmaCCReducedItem,
-	#superclass : #Object,
+	#name : 'SmaCCReducedItem',
+	#superclass : 'Object',
 	#instVars : [
 		'rhs',
 		'items'
 	],
-	#category : #'SmaCC_Debugging_Support-Simulation'
+	#category : 'SmaCC_Debugging_Support-Simulation',
+	#package : 'SmaCC_Debugging_Support',
+	#tag : 'Simulation'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCReducedItem class >> reduced: aRhs with: aCollection [
 	^ self new
 		rhs: aRhs;
@@ -16,17 +18,17 @@ SmaCCReducedItem class >> reduced: aRhs with: aCollection [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCReducedItem >> items [
 	^ items
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCReducedItem >> items: anObject [
 	items := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCReducedItem >> printOn: aStream [
 	| first |
 	first := true.
@@ -47,30 +49,30 @@ SmaCCReducedItem >> printOn: aStream [
 	aStream nextPut: $)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCReducedItem >> rhs [
 	^ rhs
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCReducedItem >> rhs: anObject [
 	rhs := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCReducedItem >> sourceInterval [
 	^ self startPosition
 		ifNil: [ nil ]
 		ifNotNil: [ :pos | pos to: self stopPosition ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCReducedItem >> startPosition [
 	items do: [ :each | each startPosition ifNotNil: [ :int | ^ int ] ].
 	^ nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCReducedItem >> stopPosition [
 	items
 		reverseDo: [ :each | each stopPosition ifNotNil: [ :int | ^ int ] ].

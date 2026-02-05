@@ -1,14 +1,16 @@
 Class {
-	#name : #SmaCCSymbolTableIndex,
-	#superclass : #Object,
+	#name : 'SmaCCSymbolTableIndex',
+	#superclass : 'Object',
 	#instVars : [
 		'index',
 		'symbol'
 	],
-	#category : #'SmaCC_Development-Item Sets'
+	#category : 'SmaCC_Development-Item Sets',
+	#package : 'SmaCC_Development',
+	#tag : 'Item Sets'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCSymbolTableIndex class >> forIndex: anInteger symbol: aSmaCCSymbol [
 	^ self new
 		index: anInteger;
@@ -16,33 +18,33 @@ SmaCCSymbolTableIndex class >> forIndex: anInteger symbol: aSmaCCSymbol [
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCSymbolTableIndex >> = anObject [
 	^ self class = anObject class
 		and: [ self index = anObject index and: [ self symbol = anObject symbol ] ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCSymbolTableIndex >> hash [
 	^ index hashMultiply bitXor: symbol hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbolTableIndex >> index [
 	^ index
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbolTableIndex >> index: anObject [
 	index := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbolTableIndex >> symbol [
 	^ symbol
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSymbolTableIndex >> symbol: anObject [
 	symbol := anObject
 ]

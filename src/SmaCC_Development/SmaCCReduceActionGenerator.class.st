@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCReduceActionGenerator,
-	#superclass : #Object,
+	#name : 'SmaCCReduceActionGenerator',
+	#superclass : 'Object',
 	#instVars : [
 		'rhs',
 		'index',
@@ -9,15 +9,17 @@ Class {
 		'currentIndex',
 		'currentSymbol'
 	],
-	#category : #'SmaCC_Development-Compiler'
+	#category : 'SmaCC_Development-Compiler',
+	#package : 'SmaCC_Development',
+	#tag : 'Compiler'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCReduceActionGenerator class >> generate: aSmaCCRHS pullUp: anInteger on: aCodeGenerator [
 	^ self new generate: aSmaCCRHS pullUp: anInteger on: aCodeGenerator
 ]
 
-{ #category : #'reduction table' }
+{ #category : 'reduction table' }
 SmaCCReduceActionGenerator >> compileAddToVariable: aSmaCCVariableDefinition from: argument collection: isCollection [
 	^ aSmaCCVariableDefinition isCollection
 		ifTrue: [ | selector var |
@@ -45,7 +47,7 @@ SmaCCReduceActionGenerator >> compileAddToVariable: aSmaCCVariableDefinition fro
 				to: argument ]
 ]
 
-{ #category : #'reduction table' }
+{ #category : 'reduction table' }
 SmaCCReduceActionGenerator >> connectChild [
 	| variableDefinition argument symbol isCollection |
 	variableDefinition := rhs nodeType
@@ -63,7 +65,7 @@ SmaCCReduceActionGenerator >> connectChild [
 		collection: isCollection
 ]
 
-{ #category : #'reduction table' }
+{ #category : 'reduction table' }
 SmaCCReduceActionGenerator >> generate: aSmaCCRHS pullUp: anInteger on: aCodeGenerator [
 	rhs := aSmaCCRHS.
 	index := anInteger.
@@ -85,14 +87,14 @@ SmaCCReduceActionGenerator >> generate: aSmaCCRHS pullUp: anInteger on: aCodeGen
 						ifFalse: [ self pullUpChildren ] ] ]
 ]
 
-{ #category : #'reduction table' }
+{ #category : 'reduction table' }
 SmaCCReduceActionGenerator >> getSubIndex: subIndex ofType: collectionType [
 	^ generator
 		cast: (generator argumentIndex: currentIndex subIndex: subIndex)
 		to: collectionType
 ]
 
-{ #category : #'reduction table' }
+{ #category : 'reduction table' }
 SmaCCReduceActionGenerator >> pullUpChildren [
 	currentSymbol returnsVariableCollection
 		ifTrue: [ ^ self pullUpVariableArray ].
@@ -102,7 +104,7 @@ SmaCCReduceActionGenerator >> pullUpChildren [
 		ifFalse: [ rhs generateUnnamedSymbolWarningFor: currentIndex ]
 ]
 
-{ #category : #'reduction table' }
+{ #category : 'reduction table' }
 SmaCCReduceActionGenerator >> pullUpVariable [
 	currentSymbol variableDefinitions
 		keysAndValuesDo: [ :subIndex :var | 
@@ -131,7 +133,7 @@ SmaCCReduceActionGenerator >> pullUpVariable [
 												to: nodesVariable type name) ] ]) ]
 ]
 
-{ #category : #'reduction table' }
+{ #category : 'reduction table' }
 SmaCCReduceActionGenerator >> pullUpVariableArray [
 	currentSymbol variableDefinitions
 		keysAndValuesDo: [ :subIndex :var | 

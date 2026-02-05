@@ -6,18 +6,19 @@ This object holds the state for the scanner so that multiple GLR parses can use 
 	scope		<Symbol>	the type of item to be scanned (most of the time #default)
 "
 Class {
-	#name : #SmaCCScannerState,
-	#superclass : #Object,
+	#name : 'SmaCCScannerState',
+	#superclass : 'Object',
 	#instVars : [
 		'position',
 		'scope',
 		'attributes',
 		'scopeStack'
 	],
-	#category : #'SmaCC_GLR_Runtime'
+	#category : 'SmaCC_GLR_Runtime',
+	#package : 'SmaCC_GLR_Runtime'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCScannerState class >> position: anInteger scope: aSymbol [
 	^ self new
 		position: anInteger;
@@ -25,7 +26,7 @@ SmaCCScannerState class >> position: anInteger scope: aSymbol [
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCScannerState >> = anObject [
 	^ self class = anObject class
 		and: [ self position = anObject position
@@ -34,54 +35,54 @@ SmaCCScannerState >> = anObject [
 								or: [ self scopeStack = anObject scopeStack	"Only need #=, but optimize to not check whole stack if are #==" ] ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScannerState >> attributeNamed: aSymbol [
 	^attributes ifNil: [ nil ] ifNotNil: [ attributes at: aSymbol ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScannerState >> attributeNamed: aSymbol put: aValue [
 	(attributes ifNil: [ attributes := Dictionary new ]) at: aSymbol put: aValue
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCScannerState >> hash [
-	^ position hash hashMultiply bitXor: scope hash
+	^ position hash bitXor: scope hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScannerState >> position [
 	^ position
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScannerState >> position: anInteger [
 	position := anInteger
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 SmaCCScannerState >> postCopy [
 	super postCopy.
 	attributes notNil
 		ifTrue: [ attributes := attributes copy ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScannerState >> scope [
 	^ scope
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScannerState >> scope: aSymbol [
 	scope := aSymbol
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScannerState >> scopeStack [
 	^ scopeStack
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCScannerState >> scopeStack: anObject [
 	scopeStack := anObject
 ]

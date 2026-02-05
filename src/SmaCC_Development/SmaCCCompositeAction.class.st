@@ -12,63 +12,65 @@ Instance Variables:
 
 "
 Class {
-	#name : #SmaCCCompositeAction,
-	#superclass : #SmaCCAction,
+	#name : 'SmaCCCompositeAction',
+	#superclass : 'SmaCCAction',
 	#instVars : [
 		'actions'
 	],
-	#category : #'SmaCC_Development-Actions'
+	#category : 'SmaCC_Development-Actions',
+	#package : 'SmaCC_Development',
+	#tag : 'Actions'
 }
 
-{ #category : #'accessing-actions' }
+{ #category : 'accessing-actions' }
 SmaCCCompositeAction >> actions [
 	^ actions
 ]
 
-{ #category : #'accessing-actions' }
+{ #category : 'accessing-actions' }
 SmaCCCompositeAction >> addAction: aSmaCCAction [
 	actions add: aSmaCCAction
 ]
 
-{ #category : #'accessing-actions' }
+{ #category : 'accessing-actions' }
 SmaCCCompositeAction >> addActions: aSmaCCActionCollection [
 	actions addAll: aSmaCCActionCollection
 ]
 
-{ #category : #'error handling' }
+{ #category : 'error handling' }
 SmaCCCompositeAction >> errorType [
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCCompositeAction >> id [
 	^ self preferredAction id
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCCompositeAction >> initialize [
 	super initialize.
 	actions := OrderedCollection new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCCompositeAction >> lr1Item [
 	^ self preferredAction lr1Item
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCCompositeAction >> preferredAction [
 	self subclassResponsibility
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCCompositeAction >> printPathOn: aStream [
 	self lr1Item path
 		do: [ :each | aStream nextPutAll: each name ]
 		separatedBy: [ aStream space ]
 ]
 
-{ #category : #'error handling' }
+{ #category : 'error handling' }
 SmaCCCompositeAction >> raiseXReduceNotification [
 	SmaCCCompilationNotification new
 		messageText: self errorType;
@@ -84,7 +86,7 @@ SmaCCCompositeAction >> raiseXReduceNotification [
 		signal
 ]
 
-{ #category : #'error handling' }
+{ #category : 'error handling' }
 SmaCCCompositeAction >> signalAllWarnings [
 	self raiseXReduceNotification
 ]

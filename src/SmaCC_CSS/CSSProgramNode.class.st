@@ -10,7 +10,12 @@ CSSProgramNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitProgram: self
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'testing' }
 CSSProgramNode >> isBlockNode [
+	^false
+]
+
+{ #category : 'testing' }
+CSSProgramNode >> isRulesetNode [
 	^false
 ]

@@ -1,21 +1,23 @@
 Class {
-	#name : #SmaCCRegexSimulator,
-	#superclass : #Object,
+	#name : 'SmaCCRegexSimulator',
+	#superclass : 'Object',
 	#instVars : [
 		'grammar',
 		'nfa',
 		'actionMap'
 	],
-	#category : #'SmaCC_Debugging_Support-Simulation'
+	#category : 'SmaCC_Debugging_Support-Simulation',
+	#package : 'SmaCC_Debugging_Support',
+	#tag : 'Simulation'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 SmaCCRegexSimulator class >> example [
 	<gtExample>
 	^ self on: SmaCCDefinitionParser definitionAST tokenName: '<name>'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 SmaCCRegexSimulator class >> matchingExample [
 	<gtExample>
 	self example
@@ -23,7 +25,7 @@ SmaCCRegexSimulator class >> matchingExample [
 		do: [ :i :nodes | self inform: 'Match at: ' , i printString , ' nodes: ' , nodes printString ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCRegexSimulator class >> on: aSmaCCGrammarDefinitionNode tokenName: aString [
 	^ self new
 		grammar: aSmaCCGrammarDefinitionNode;
@@ -31,12 +33,12 @@ SmaCCRegexSimulator class >> on: aSmaCCGrammarDefinitionNode tokenName: aString 
 		yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRegexSimulator >> buildErrorNFA [
 	nfa := SmaCCNode new
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRegexSimulator >> expandEpsilonAndSymbolTransitions: aCollection [
 	| todo |
 	todo := OrderedCollection withAll: aCollection.
@@ -50,12 +52,12 @@ SmaCCRegexSimulator >> expandEpsilonAndSymbolTransitions: aCollection [
 	^ aCollection
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCRegexSimulator >> grammar: aSmaCCGrammarDefinitionNode [
 	grammar := aSmaCCGrammarDefinitionNode
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRegexSimulator >> mapNodesToActionsFor: aNode [
 	aNode
 		allNodesDo: [ :each | 
@@ -67,7 +69,7 @@ SmaCCRegexSimulator >> mapNodesToActionsFor: aNode [
 				ifNotNil: [ :re | re action: actionMap size ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRegexSimulator >> matchedNodesFrom: stateCollection [
 	| indices |
 	indices := IdentitySet new.
@@ -75,7 +77,7 @@ SmaCCRegexSimulator >> matchedNodesFrom: stateCollection [
 	^ indices collect: [ :each | actionMap at: each ]
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 SmaCCRegexSimulator >> matchesOn: aString do: aBlock [
 	| states |
 	states := self expandEpsilonAndSymbolTransitions: (IdentitySet with: nfa).
@@ -87,7 +89,7 @@ SmaCCRegexSimulator >> matchesOn: aString do: aBlock [
 		aBlock value: i value: (self matchedNodesFrom: states) ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRegexSimulator >> moveFrom: stateCollection on: aCharacter [
 	| newStates |
 	newStates := IdentitySet new.
@@ -100,7 +102,7 @@ SmaCCRegexSimulator >> moveFrom: stateCollection on: aCharacter [
 	^ self expandEpsilonAndSymbolTransitions: newStates
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCRegexSimulator >> tokenName: aString [
 	| node regex |
 	node := grammar tokenNamed: aString.

@@ -1,10 +1,11 @@
 Class {
-	#name : #DuplicationNodeEliminationTest,
-	#superclass : #TestCase,
-	#category : #'SmaCC_Tests'
+	#name : 'DuplicationNodeEliminationTest',
+	#superclass : 'TestCase',
+	#category : 'SmaCC_Tests',
+	#package : 'SmaCC_Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 DuplicationNodeEliminationTest >> testDuplicateLoop [
 	| node1 node2 node3 |
 	node1 := SmaCCNode new.
@@ -24,7 +25,7 @@ DuplicationNodeEliminationTest >> testDuplicateLoop [
 	self assert: node1 transitions first to = node1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DuplicationNodeEliminationTest >> testNoDuplicates [
 	| node1 node2 node3 |
 	node1 := SmaCCNode new.
@@ -55,7 +56,7 @@ DuplicationNodeEliminationTest >> testNoDuplicates [
 	self assert: node3 transitions first to = node1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DuplicationNodeEliminationTest >> testSimpleDuplicateWithEdges [
 	| node1 node2 node3 |
 	node1 := SmaCCNode new.
@@ -80,7 +81,7 @@ DuplicationNodeEliminationTest >> testSimpleDuplicateWithEdges [
 	self assert: node2 transitions first to = node1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DuplicationNodeEliminationTest >> testSimpleTerminalDuplicate [
 	| node1 node2 node3 |
 	node1 := SmaCCNode new.

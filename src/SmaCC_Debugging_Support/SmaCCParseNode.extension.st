@@ -1,6 +1,6 @@
-Extension { #name : #SmaCCParseNode }
+Extension { #name : 'SmaCCParseNode' }
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParseNode >> debugLabelForChild: anObject [
 	self singularVariableSelectors
 		do: [ :each | 
@@ -19,7 +19,7 @@ SmaCCParseNode >> debugLabelForChild: anObject [
 	^ anObject class name
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParseNode >> debugMatch: aNode [
 	| process done value match context arg |
 	match := SmaCCDebugMatchResult forPattern: self.
@@ -37,7 +37,7 @@ SmaCCParseNode >> debugMatch: aNode [
 	^ match
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParseNode >> gtAttributesIn: aComposite [
 	<gtInspectorPresentationOrder: 35>
 	| tabulator |
@@ -60,7 +60,7 @@ SmaCCParseNode >> gtAttributesIn: aComposite [
 		transformed: [ :name | self attributeNamed: name ifAbsent: [  ] ]
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParseNode >> gtChildrenOf: each [
 	^ (each at: 2) = #node
 		ifTrue: [ each last gtInspectorItems ]
@@ -71,18 +71,18 @@ SmaCCParseNode >> gtChildrenOf: each [
 						ifFalse: [ #() ] ] ]
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParseNode >> gtCollectionItems: aCollection type: aSymbol [
 	^ (1 to: aCollection size) collect: [ :i | Array with: i printString with: aSymbol with: (aCollection at: i) ]
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParseNode class >> gtExampleSimple [
 	<gtExample>
 	^ self new
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParseNode >> gtInspectorItems [
 	| items |
 	items := OrderedCollection new.
@@ -119,7 +119,7 @@ SmaCCParseNode >> gtInspectorItems [
 	^ items
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParseNode >> gtInspectorSourceIn: aComposite [
 	<gtInspectorPresentationOrder: 40>
 	aComposite text
@@ -130,7 +130,7 @@ SmaCCParseNode >> gtInspectorSourceIn: aComposite [
 				[ :textPresentation | textPresentation selectionInterval: self sourceInterval ]
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParseNode >> gtInspectorTreeIn: aComposite [
 	<gtInspectorPresentationOrder: 30>
 	aComposite tabulator
@@ -157,7 +157,7 @@ SmaCCParseNode >> gtInspectorTreeIn: aComposite [
 							tags: [ :each | Array with: (each at: 2) ] ] ]
 ]
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCParseNode >> gtParentsIn: aComposite [
 	<gtInspectorPresentationOrder: 34>
 	parent isNil

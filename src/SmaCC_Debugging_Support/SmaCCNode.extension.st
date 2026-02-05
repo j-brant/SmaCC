@@ -1,6 +1,6 @@
-Extension { #name : #SmaCCNode }
+Extension { #name : 'SmaCCNode' }
 
-{ #category : #'*SmaCC_Debugging_Support' }
+{ #category : '*SmaCC_Debugging_Support' }
 SmaCCNode >> gtGraphInspectorViewIn: composite [
 	<gtInspectorPresentationOrder: 20>
 	(Smalltalk includesKey: #RTView) not

@@ -1,1 +1,1 @@
-Package { #name : #'SmaCC_Tests' }
+Package { #name : 'SmaCC_Tests' }

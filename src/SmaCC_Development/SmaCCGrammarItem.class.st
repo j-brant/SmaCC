@@ -14,57 +14,59 @@ Instance Variables
 	variableDefinitions	<OrderedCollection of: SmaCCVariableDefinition>	the variables defined by this item
 "
 Class {
-	#name : #SmaCCGrammarItem,
-	#superclass : #Object,
+	#name : 'SmaCCGrammarItem',
+	#superclass : 'Object',
 	#instVars : [
 		'variableDefinitions',
 		'grammar'
 	],
-	#category : #'SmaCC_Development-Model'
+	#category : 'SmaCC_Development-Model',
+	#package : 'SmaCC_Development',
+	#tag : 'Model'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammarItem >> annotateTokenVariables: aBlock [
 	self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammarItem >> basicModelTypesForVariable: aString into: aCollection seen: anIdentitySet [
 	self subclassResponsibility
 ]
 
-{ #category : #variables }
+{ #category : 'variables' }
 SmaCCGrammarItem >> collectionVariableDefinitions [
 	^ self variableDefinitions select: [ :each | each isCollection ]
 ]
 
-{ #category : #variables }
+{ #category : 'variables' }
 SmaCCGrammarItem >> computeVariableDefinitions [
 	^ #()
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammarItem >> firstTerminals [
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammarItem >> grammar [
 	^ grammar
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCGrammarItem >> grammar: aSmaCCGrammar [
 	grammar := aSmaCCGrammar
 ]
 
-{ #category : #variables }
+{ #category : 'variables' }
 SmaCCGrammarItem >> hasVariableNamed: aString [
 	^ self variableDefinitions
 		anySatisfy: [ :each | each variableName = aString ]
 ]
 
-{ #category : #variables }
+{ #category : 'variables' }
 SmaCCGrammarItem >> indexOfVariable: aString [
 	self variableDefinitions
 		keysAndValuesDo: [ :index :each | 
@@ -73,55 +75,55 @@ SmaCCGrammarItem >> indexOfVariable: aString [
 	self error: 'Variable not found'
 ]
 
-{ #category : #variables }
+{ #category : 'variables' }
 SmaCCGrammarItem >> isCollection: aString [
 	^ self collectionVariableDefinitions
 		anySatisfy: [ :each | each variableName = aString ]
 ]
 
-{ #category : #'reduce actions' }
+{ #category : 'reduce actions' }
 SmaCCGrammarItem >> isNode [
 	^ self modelType includesClass: (self model classFor: SmaCCParseNode)
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCGrammarItem >> isSubtypeOf: aSmaCCGrammarItem [
 	^ self modelType includesClass: aSmaCCGrammarItem modelType
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammarItem >> model [
 	^ self grammar codeGenerator model
 ]
 
-{ #category : #'reduce actions' }
+{ #category : 'reduce actions' }
 SmaCCGrammarItem >> modelType [
 	^ self modelType: IdentitySet new
 ]
 
-{ #category : #'reduce actions' }
+{ #category : 'reduce actions' }
 SmaCCGrammarItem >> modelType: anIdentitySet [
 	| types |
 	types := self modelTypes: anIdentitySet.
 	^ self grammar codeGenerator commonSupertypeOf: types
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammarItem >> modelTypes [
 	^ self modelTypes: IdentitySet new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammarItem >> modelTypes: anIdentitySet [
 	^ self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammarItem >> modelTypesForVariable: aString [
 	^ self modelTypesForVariable: aString seen: IdentitySet new
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammarItem >> modelTypesForVariable: aString seen: anIdentitySet [
 	| productionTypes |
 	(anIdentitySet includes: self)
@@ -135,12 +137,12 @@ SmaCCGrammarItem >> modelTypesForVariable: aString seen: anIdentitySet [
 	^ productionTypes
 ]
 
-{ #category : #'reduce actions' }
+{ #category : 'reduce actions' }
 SmaCCGrammarItem >> nodeType [
 	^ self nodeType: IdentitySet new
 ]
 
-{ #category : #'reduce actions' }
+{ #category : 'reduce actions' }
 SmaCCGrammarItem >> nodeType: anIdentitySet [
 	| node rootType |
 	rootType := self modelType: anIdentitySet.
@@ -153,17 +155,17 @@ SmaCCGrammarItem >> nodeType: anIdentitySet [
 	^ node
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCGrammarItem >> returnsSingleVariable [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCGrammarItem >> returnsVariableCollection [
 	^ false
 ]
 
-{ #category : #variables }
+{ #category : 'variables' }
 SmaCCGrammarItem >> variableDefinitions [
 	^ variableDefinitions ifNil: [ self computeVariableDefinitions ]
 ]

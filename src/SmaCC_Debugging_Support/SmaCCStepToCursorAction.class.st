@@ -1,10 +1,12 @@
 Class {
-	#name : #SmaCCStepToCursorAction,
-	#superclass : #SmaCCScannerStepToAction,
-	#category : #'SmaCC_Debugging_Support-Debugger'
+	#name : 'SmaCCStepToCursorAction',
+	#superclass : 'SmaCCScannerStepToAction',
+	#category : 'SmaCC_Debugging_Support-Debugger',
+	#package : 'SmaCC_Debugging_Support',
+	#tag : 'Debugger'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStepToCursorAction class >> defaultIcon [
 	^ icon
 		ifNil: [ icon := Form
@@ -15,17 +17,17 @@ SmaCCStepToCursorAction class >> defaultIcon [
 				offset: 0 @ 0 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStepToCursorAction class >> defaultName [
 	^ 'Step to Cursor'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStepToCursorAction >> help [
 	^ 'Run until we get to the cursor position or a parse error is encountered.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStepToCursorAction >> stepToIndex [
 	^ self debugger currentInputSelectionInterval last
 ]

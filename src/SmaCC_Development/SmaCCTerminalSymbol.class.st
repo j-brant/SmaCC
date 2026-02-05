@@ -1,67 +1,69 @@
 Class {
-	#name : #SmaCCTerminalSymbol,
-	#superclass : #SmaCCSymbol,
+	#name : 'SmaCCTerminalSymbol',
+	#superclass : 'SmaCCSymbol',
 	#instVars : [
 		'regularExpression',
 		'createIdMethod'
 	],
-	#category : #'SmaCC_Development-Model'
+	#category : 'SmaCC_Development-Model',
+	#package : 'SmaCC_Development',
+	#tag : 'Model'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCTerminalSymbol >> calculateFirstTerminals [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTerminalSymbol >> createIdMethod [
 	^ createIdMethod
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTerminalSymbol >> createIdMethod: aBoolean [
 	createIdMethod := aBoolean
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCTerminalSymbol >> initialize [
 	super initialize.
 	firstTerminals add: self.
 	createIdMethod := false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCTerminalSymbol >> isTerminal [
 	^ true
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCTerminalSymbol >> makeCaseInsensitive [
 	regularExpression notNil
 		ifTrue: [ regularExpression makeCaseInsensitive ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTerminalSymbol >> modelTypes: anIdentitySet [
 	^ Set with: (self model classFor: SmaCCToken)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTerminalSymbol >> position [
 	^ self regularExpression ifNil: [ SmallInteger maxVal ] ifNotNil: [ :re | re position ifNil: [ 0 ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTerminalSymbol >> regularExpression [
 	^ regularExpression
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTerminalSymbol >> regularExpression: aSmaCCRegularExpressionNode [
 	regularExpression := aSmaCCRegularExpressionNode
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCTerminalSymbol >> unsafeMethodName [
 	^ name copyFrom: 2 to: name size - 1
 ]

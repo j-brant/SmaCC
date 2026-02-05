@@ -1,6 +1,6 @@
-Extension { #name : #RBNamespace }
+Extension { #name : 'RBNamespace' }
 
-{ #category : #'*SmaCC_Development' }
+{ #category : '*SmaCC_Development' }
 RBNamespace >> smaccDefineTrait: aString [
 	| change newClass newClassName |
 	change := changes defineClass: aString.

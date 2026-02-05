@@ -1,10 +1,11 @@
 Class {
-	#name : #SmaCCIntegerSetTest,
-	#superclass : #SmaCCBitCollectionTest,
-	#category : #'SmaCC_Tests'
+	#name : 'SmaCCIntegerSetTest',
+	#superclass : 'SmaCCBitCollectionTest',
+	#category : 'SmaCC_Tests',
+	#package : 'SmaCC_Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCIntegerSetTest >> testMergeBug [
 	| a b |
 	a := SmaCCIntegerSet with: 1.
@@ -16,7 +17,7 @@ SmaCCIntegerSetTest >> testMergeBug [
 	self assert: a size = 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCIntegerSetTest >> testNegative [
 	| collection |
 	collection := self newCollection.

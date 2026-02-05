@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCGrammarCreator,
-	#superclass : #SmaCCDefinitionNodeVisitor,
+	#name : 'SmaCCGrammarCreator',
+	#superclass : 'SmaCCDefinitionNodeVisitor',
 	#instVars : [
 		'grammar',
 		'defaultClasses',
@@ -9,10 +9,12 @@ Class {
 	#classVars : [
 		'MaxExpansions'
 	],
-	#category : #'SmaCC_Development-Model'
+	#category : 'SmaCC_Development-Model',
+	#package : 'SmaCC_Development',
+	#tag : 'Model'
 }
 
-{ #category : #building }
+{ #category : 'building' }
 SmaCCGrammarCreator class >> buildGrammar: aSmaCCGrammar from: aSmaCCDefinitionNode [
 	self new
 		grammar: aSmaCCGrammar;
@@ -20,22 +22,22 @@ SmaCCGrammarCreator class >> buildGrammar: aSmaCCGrammar from: aSmaCCDefinitionN
 	^ aSmaCCGrammar
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 SmaCCGrammarCreator class >> initialize [
 	MaxExpansions := 16
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammarCreator class >> maxExpansions [
 	^ MaxExpansions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammarCreator class >> maxExpansions: anObject [
 	MaxExpansions := anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammarCreator >> addItems: aCollection to: rhs [
 	aCollection
 		do: [ :each | 
@@ -48,7 +50,7 @@ SmaCCGrammarCreator >> addItems: aCollection to: rhs [
 								to: each variableNameToken value size - 1) ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammarCreator >> buildItemsFrom: aCollection [
 	^ aCollection
 		collect: [ :item | 
@@ -61,7 +63,7 @@ SmaCCGrammarCreator >> buildItemsFrom: aCollection [
 			items ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammarCreator >> combineItems: aCollection [
 	| items |
 	items := OrderedCollection new.
@@ -69,7 +71,7 @@ SmaCCGrammarCreator >> combineItems: aCollection [
 	^ items
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammarCreator >> combineStream: aStream into: aCollection andDo: aBlock [
 	| size position |
 	aStream atEnd
@@ -84,19 +86,13 @@ SmaCCGrammarCreator >> combineStream: aStream into: aCollection andDo: aBlock [
 			aStream position: position ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammarCreator >> createClass: aSymbol for: aSmaCCRHS [
 	(grammar classNamed: aSymbol) addProduction: aSmaCCRHS.
 	^ aSmaCCRHS
 ]
 
-{ #category : #private }
-SmaCCGrammarCreator >> createDefaultClassFor: aSmaCCRHS [
-	defaultClasses add: aSmaCCRHS.
-	^ aSmaCCRHS
-]
-
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammarCreator >> createDefaultClassesForSymbol: aString [
 	| className index |
 	className := aString capitalized.
@@ -108,7 +104,13 @@ SmaCCGrammarCreator >> createDefaultClassesForSymbol: aString [
 	defaultClasses := OrderedCollection new
 ]
 
-{ #category : #private }
+{ #category : 'private' }
+SmaCCGrammarCreator >> createDefaultClassFor: aSmaCCRHS [
+	defaultClasses add: aSmaCCRHS.
+	^ aSmaCCRHS
+]
+
+{ #category : 'private' }
 SmaCCGrammarCreator >> generateRHS: aCollection [
 	| rhs |
 	rhs := grammar newRHS.
@@ -116,23 +118,23 @@ SmaCCGrammarCreator >> generateRHS: aCollection [
 	^ rhs
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCGrammarCreator >> grammar: aSmaCCGrammar [
 	grammar := aSmaCCGrammar
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCGrammarCreator >> initialize [
 	super initialize.
 	defaultClasses := OrderedCollection new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCGrammarCreator >> isDigit: each [
 	^ each between: $0 and: $9
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCGrammarCreator >> isLetterOrDigit: each [
 	^ (each between: $a and: $z)
 		or:
@@ -140,7 +142,7 @@ SmaCCGrammarCreator >> isLetterOrDigit: each [
 				or: [ (each between: $0 and: $9) or: [ each == $_ ] ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammarCreator >> reportErrorMessage: aString on: aSmaCCToken [
 	SmaCCParserError new
 		messageText: aString;
@@ -148,12 +150,12 @@ SmaCCGrammarCreator >> reportErrorMessage: aString on: aSmaCCToken [
 		signal
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammarCreator >> verifyCodeToken: codeToken for: aSmaCCRHS [
 	^ grammar codeGenerator verifyCodeToken: codeToken for: aSmaCCRHS
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitAssociativeDirective: anAssociativeDirective [
 	| type |
 	type := anAssociativeDirective typeToken value = 'left'
@@ -170,13 +172,13 @@ SmaCCGrammarCreator >> visitAssociativeDirective: anAssociativeDirective [
 				setOperatorPrecedenceFor: symbol to: anAssociativeDirective typeToken startPosition ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitAttributeDirective: anAttributeDirective [
 	(grammar classNamed: anAttributeDirective classname value asSymbol)
 		extraAttributes: (anAttributeDirective names collect: [ :each | SmaCCVariableDefinition variableName: each value ])
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitClassProductionExpression: aClassProductionExpression [
 	| items |
 	items := super visitClassProductionExpression: aClassProductionExpression.
@@ -188,7 +190,7 @@ SmaCCGrammarCreator >> visitClassProductionExpression: aClassProductionExpressio
 	^ items
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitCodeProductionExpression: aCodeProdutionExpression [
 	| items |
 	items := super visitCodeProductionExpression: aCodeProdutionExpression.
@@ -196,49 +198,41 @@ SmaCCGrammarCreator >> visitCodeProductionExpression: aCodeProdutionExpression [
 	^ items
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitDefinitionError: anError [
 	"We shouldn't get here, but in case someone is passing an AST with errors, signal an error."
 
 	self error: 'There was a parse error'
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitErrorSymbol: anErrorSymbol [
 	^ grammar errorSymbol
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitFlagDirective: aFlagDirective [
 	| name |
 	name := aFlagDirective typeToken value.
-	name = 'glr'
-		ifTrue: [ ^ grammar isGLR: true ].
-	name = 'nfa'
-		ifTrue: [ ^ grammar useNFA: true ].
-	name = 'ignorecase'
-		ifTrue: [ ^ grammar ignoreCase: true ].
-	name = 'annotate_tokens'
-		ifTrue: [ ^ grammar annotateTokens: true ].
-	name = 'lr1'
-		ifTrue: [ ^ grammar type: #LR1 ].
-	name = 'unicode'
-		ifTrue: [ ^ SmaCCGrammar maximumCharacterValue: 16rE01EF ].
-	name = 'byte'
-		ifTrue: [ ^ SmaCCGrammar maximumCharacterValue: 255 ].
-	self
-		reportErrorMessage: 'Unknown directive'
-		on: aFlagDirective typeToken
+	name = 'glr' ifTrue: [ ^ grammar isGLR: true ].
+	name = 'incremental' ifTrue: [ ^ grammar isIncremental: true ].
+	name = 'nfa' ifTrue: [ ^ grammar useNFA: true ].
+	name = 'ignorecase' ifTrue: [ ^ grammar ignoreCase: true ].
+	name = 'annotate_tokens' ifTrue: [ ^ grammar annotateTokens: true ].
+	name = 'lr1' ifTrue: [ ^ grammar type: #LR1 ].
+	name = 'unicode' ifTrue: [ ^ SmaCCGrammar maximumCharacterValue: 16rE01EF ].
+	name = 'byte' ifTrue: [ ^ SmaCCGrammar maximumCharacterValue: 255 ].
+	self reportErrorMessage: 'Unknown directive' on: aFlagDirective typeToken
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitGrammarDefinition: aGrammarDefinition [
 	self acceptNodes: aGrammarDefinition rules.
 	grammar addExtraSymbols.
 	^ grammar
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitGroupTerm: aGroupTerm [
 	| symbol |
 	symbol := grammar nonTerminalSymbolNamed: aGroupTerm source.
@@ -248,17 +242,17 @@ SmaCCGrammarCreator >> visitGroupTerm: aGroupTerm [
 	^ symbol
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitIdDirective: anIdDirective [
 	anIdDirective names do: [ :each | grammar makeTokenIdMethodFor: each value ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitIgnoreVariableDirective: anIgnoreVariableDirective [
 	grammar ignoredVariables: (anIgnoreVariableDirective names collect: [ :each | each value ])
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitIgnoreVariableWarningDirective: anIgnoreVariableWarningDirective [
 	grammar
 		ignoredVariableWarnings:
@@ -266,12 +260,12 @@ SmaCCGrammarCreator >> visitIgnoreVariableWarningDirective: anIgnoreVariableWarn
 				collect: [ :each | each source ])
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitKeywordSymbol: aKeywordSymbol [
 	^ grammar keywordTerminalNamed: aKeywordSymbol name value
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitNodeNameDirective: aNodeNameDirective [
 	| type name |
 	type := aNodeNameDirective typeToken value.
@@ -285,7 +279,7 @@ SmaCCGrammarCreator >> visitNodeNameDirective: aNodeNameDirective [
 	self reportErrorMessage: 'Unknown directive' on: aNodeNameDirective typeToken
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitPostfixTerm: aPostfixTerm [
 	| operator expression symbol rhs varNameToken hasOne hasMany addBlock |
 	operator := aPostfixTerm operator value.
@@ -312,13 +306,13 @@ SmaCCGrammarCreator >> visitPostfixTerm: aPostfixTerm [
 	^ symbol
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitProductionExpression: aClassProductionExpression [
 	expansionCount := 1.
 	^ (self combineItems: (self buildItemsFrom: aClassProductionExpression terms)) collect: [ :items | self generateRHS: items ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitProductionRule: aProductionRule [
 	| symbol |
 	symbol := grammar nonTerminalSymbolNamed: aProductionRule name value.
@@ -329,19 +323,19 @@ SmaCCGrammarCreator >> visitProductionRule: aProductionRule [
 	^ symbol
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitProductionSymbol: aProductionSymbol [
 	^ grammar nonTerminalSymbolNamed: aProductionSymbol name value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammarCreator >> visitScannerSelectorsDirective: aScannerSelectorsDirective [
 	grammar
 		scannerSymbols: (aScannerSelectorsDirective symbols collect: [ :each | '<' , each value , '>' ])
 				asSet
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitScopeDirective: aScopeDirective [
 	| type |
 	type := aScopeDirective typeToken value.
@@ -352,19 +346,19 @@ SmaCCGrammarCreator >> visitScopeDirective: aScopeDirective [
 	self reportErrorMessage: 'Unknown directive' on: aScopeDirective typeToken
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitStartDirective: aStartDirective [
 	aStartDirective symbols do: [ :each | grammar addStartingSymbol: (grammar nonTerminalSymbolNamed: each value) ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitSuperclassDirective: aSuperclassDirective [
 	| superclass |
 	superclass := grammar classNamed: aSuperclassDirective superclass value asSymbol.
 	aSuperclassDirective names do: [ :each | (grammar classNamed: each value) superclass: superclass ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitTokenRule: aTokenRule [
 	| symbol regex |
 	regex := aTokenRule regularExpression.
@@ -377,7 +371,7 @@ SmaCCGrammarCreator >> visitTokenRule: aTokenRule [
 	^ regex
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SmaCCGrammarCreator >> visitTokenSymbol: aTokenSymbol [
 	^ grammar
 		findSymbolNamed: aTokenSymbol name value

@@ -42,11 +42,6 @@ ElixirScanner >> currentState [
 	^ state
 ]
 
-{ #category : 'generated' }
-ElixirScanner >> do_identifierId [
-	^ 155
-]
-
 { #category : 'private' }
 ElixirScanner >> dot_call_op [
 	stream position: stream position - 1.
@@ -61,6 +56,11 @@ ElixirScanner >> dot_call_opId [
 { #category : 'generated' }
 ElixirScanner >> dot_opId [
 	^ 53
+]
+
+{ #category : 'generated' }
+ElixirScanner >> do_identifierId [
+	^ 155
 ]
 
 { #category : 'generated' }

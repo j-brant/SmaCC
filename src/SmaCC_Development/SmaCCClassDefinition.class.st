@@ -12,8 +12,8 @@ Instance Variables:
 
 "
 Class {
-	#name : #SmaCCClassDefinition,
-	#superclass : #Object,
+	#name : 'SmaCCClassDefinition',
+	#superclass : 'Object',
 	#instVars : [
 		'name',
 		'subclasses',
@@ -22,47 +22,49 @@ Class {
 		'superclass',
 		'isRoot'
 	],
-	#category : #'SmaCC_Development-Compilation Model'
+	#category : 'SmaCC_Development-Compilation Model',
+	#package : 'SmaCC_Development',
+	#tag : 'Compilation Model'
 }
 
-{ #category : #'accessing-hierarchy' }
+{ #category : 'accessing-hierarchy' }
 SmaCCClassDefinition >> addSubclass: aSmaCCClassDefinition [
 	subclasses add: aSmaCCClassDefinition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCClassDefinition >> beRoot [
 	isRoot := true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCClassDefinition >> codeGenerator [
 	^ grammar codeGenerator
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCClassDefinition >> compileMethodsAndVariables [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCClassDefinition >> fullName [
 	^ self codeGenerator namespaceName , self name
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCClassDefinition >> grammar: aSmaCCGrammar [
 	grammar := aSmaCCGrammar
 ]
 
-{ #category : #'accessing-hierarchy' }
+{ #category : 'accessing-hierarchy' }
 SmaCCClassDefinition >> hierarchyCount [
 	^ superclass isNil
 		ifTrue: [ 0 ]
 		ifFalse: [ superclass hierarchyCount + 1 ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCClassDefinition >> hierarchyIncludes: aSmaCCClassDefinition [
 	^ self = aSmaCCClassDefinition
 		or:
@@ -70,19 +72,19 @@ SmaCCClassDefinition >> hierarchyIncludes: aSmaCCClassDefinition [
 				and: [ superclass hierarchyIncludes: aSmaCCClassDefinition ] ]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCClassDefinition >> initialize [
 	super initialize.
 	isRoot := false.
 	subclasses := OrderedCollection new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCClassDefinition >> isRoot [
 	^ isRoot
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCClassDefinition >> isSortedBefore: aSmaCCClassDefinition [
 	^ self hierarchyCount < aSmaCCClassDefinition hierarchyCount
 		or:
@@ -90,27 +92,27 @@ SmaCCClassDefinition >> isSortedBefore: aSmaCCClassDefinition [
 				and: [ self name < aSmaCCClassDefinition name ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCClassDefinition >> modelClass [
 	^ class
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCClassDefinition >> modelClass: aRBClass [
 	class := aRBClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCClassDefinition >> name [
 	^ name
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCClassDefinition >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCClassDefinition >> printOn: aStream [
 	aStream
 		nextPutAll: self class name;
@@ -119,27 +121,27 @@ SmaCCClassDefinition >> printOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #'accessing-hierarchy' }
+{ #category : 'accessing-hierarchy' }
 SmaCCClassDefinition >> removeSubclass: aSmaCCClassDefinition [
 	subclasses remove: aSmaCCClassDefinition ifAbsent: [  ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCClassDefinition >> rootClassName [
 	^ Object name
 ]
 
-{ #category : #'accessing-hierarchy' }
+{ #category : 'accessing-hierarchy' }
 SmaCCClassDefinition >> subclasses [
 	^ subclasses
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCClassDefinition >> superclass [
 	^ superclass
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCClassDefinition >> superclass: anObject [
 	superclass notNil
 		ifTrue: [ superclass removeSubclass: self ].
@@ -148,26 +150,26 @@ SmaCCClassDefinition >> superclass: anObject [
 		ifTrue: [ superclass addSubclass: self ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCClassDefinition >> superclassName [
 	^ self isRoot
 		ifTrue: [ self rootClassName ]
 		ifFalse: [ superclass fullName ]
 ]
 
-{ #category : #compiling }
+{ #category : 'compiling' }
 SmaCCClassDefinition >> temporaryNameFor: fullName [
 	^ (fullName first isVowel
 		ifTrue: [ 'an' ]
 		ifFalse: [ 'a' ]) , fullName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCClassDefinition >> temporaryVariableName [
 	^ self temporaryNameFor: self name
 ]
 
-{ #category : #'accessing-hierarchy' }
+{ #category : 'accessing-hierarchy' }
 SmaCCClassDefinition >> withAllSubclasses [
 	| classes index |
 	classes := OrderedCollection with: self.

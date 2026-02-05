@@ -1,28 +1,30 @@
 Class {
-	#name : #SmaCCSet,
-	#superclass : #Collection,
+	#name : 'SmaCCSet',
+	#superclass : 'Collection',
 	#instVars : [
 		'characters',
 		'objects'
 	],
-	#category : #'SmaCC_Development-Collections'
+	#category : 'SmaCC_Development-Collections',
+	#package : 'SmaCC_Development',
+	#tag : 'Collections'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 SmaCCSet >> add: newObject [
 	^ (newObject isKindOf: Character)
 		ifTrue: [ characters add: newObject ]
 		ifFalse: [ objects add: newObject ]
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 SmaCCSet >> addAll: aCollection [
 	(aCollection isKindOf: SmaCCCharacterSet)
 		ifTrue: [ ^ characters addAll: aCollection ].
 	^ super addAll: aCollection
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 SmaCCSet >> commonElementWith: aCollection [
 	| intersected |
 	characters class = aCollection class
@@ -37,32 +39,32 @@ SmaCCSet >> commonElementWith: aCollection [
 	^ nil
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 SmaCCSet >> do: aBlock [
 	objects do: aBlock.
 	characters do: aBlock
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCSet >> includes: anObject [
 	^ (anObject isKindOf: Character)
 		ifTrue: [ characters includes: anObject ]
 		ifFalse: [ objects includes: anObject ]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCSet >> initialize [
 	super initialize.
 	characters := SmaCCCharacterSet new.
 	objects := Set new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCSet >> isEmpty [
 	^ characters isEmpty and: [ objects isEmpty ]
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 SmaCCSet >> remove: oldObject ifAbsent: aBlock [
 	^ (oldObject isKindOf: Character)
 		ifTrue: [ characters remove: oldObject ifAbsent: aBlock ]

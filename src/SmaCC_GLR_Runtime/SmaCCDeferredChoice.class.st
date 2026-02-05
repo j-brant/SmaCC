@@ -8,8 +8,8 @@ Instance Variables
 
 "
 Class {
-	#name : #SmaCCDeferredChoice,
-	#superclass : #Object,
+	#name : 'SmaCCDeferredChoice',
+	#superclass : 'Object',
 	#instVars : [
 		'possibleItems',
 		'choiceBlock',
@@ -17,10 +17,11 @@ Class {
 		'stacksCollection',
 		'sortedChoices'
 	],
-	#category : #'SmaCC_GLR_Runtime'
+	#category : 'SmaCC_GLR_Runtime',
+	#package : 'SmaCC_GLR_Runtime'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDeferredChoice class >> mergeStacks: stacksCollection [
 	| result |
 	result := OrderedCollection new.
@@ -39,23 +40,23 @@ SmaCCDeferredChoice class >> mergeStacks: stacksCollection [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDeferredChoice >> allPossibleItems [
 	^ self choices collect: [ :each | possibleItems at: each ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDeferredChoice >> choiceBlock: aBlock [
 	choiceBlock := aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDeferredChoice >> choices [
 	^ choices
 		ifNil: [ choices := (1 to: stacksCollection size) asOrderedCollection ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDeferredChoice >> chooseIn: aSmaCCParser [
 	| returnValue newChoices |
 	^ self choices size == 1
@@ -74,7 +75,7 @@ SmaCCDeferredChoice >> chooseIn: aSmaCCParser [
 			returnValue ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCDeferredChoice >> compare: firstCollection to: secondCollection [
 	| first second firstItem secondItem firstHeap secondHeap |
 	first := firstCollection.
@@ -94,7 +95,7 @@ SmaCCDeferredChoice >> compare: firstCollection to: secondCollection [
 	^ 0
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCDeferredChoice >> deferredItemsIn: aCollection [
 	| deferred |
 	deferred := OrderedCollection new.
@@ -107,34 +108,29 @@ SmaCCDeferredChoice >> deferredItemsIn: aCollection [
 	^ deferred
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCDeferredChoice >> isStack: firstStack preferredOver: secondStack [
 	^ (self
 		compare: (self deferredItemsIn: firstStack)
 		to: (self deferredItemsIn: secondStack)) <= 0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDeferredChoice >> performOnSmaCCParser: aSmaCCParser [
 	^ (self chooseIn: aSmaCCParser) performOnSmaCCParser: aSmaCCParser
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDeferredChoice >> possibleItems: aSequenceableCollection [
 	possibleItems := aSequenceableCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDeferredChoice >> preferredItem [
 	^ possibleItems at: self sortedChoices first
 ]
 
-{ #category : #private }
-SmaCCDeferredChoice >> sortItems: aCollection [
-	^ Heap withAll: aCollection sortBlock: [ :a :b | a priority < b priority ]
-]
-
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDeferredChoice >> sortedChoices [
 	^ sortedChoices
 		ifNil: [ sortedChoices := Heap
@@ -142,22 +138,27 @@ SmaCCDeferredChoice >> sortedChoices [
 					sortBlock: [ :a :b | self isStack: (stacksCollection at: a) preferredOver: (stacksCollection at: b) ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'private' }
+SmaCCDeferredChoice >> sortItems: aCollection [
+	^ Heap withAll: aCollection sortBlock: [ :a :b | a priority < b priority ]
+]
+
+{ #category : 'accessing' }
 SmaCCDeferredChoice >> stacksCollection [
 	^ stacksCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDeferredChoice >> stacksCollection: anObject [
 	stacksCollection := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCDeferredChoice >> stopPosition [
 	^ self preferredItem stopPosition
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCDeferredChoice >> subItemsIn: aCollection [
 	^ aCollection
 		inject: OrderedCollection new

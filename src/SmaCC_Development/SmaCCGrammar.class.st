@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCGrammar,
-	#superclass : #Object,
+	#name : 'SmaCCGrammar',
+	#superclass : 'Object',
 	#instVars : [
 		'type',
 		'shiftReduceTable',
@@ -20,7 +20,8 @@ Class {
 		'sentinelSymbol',
 		'ignoredVariableWarnings',
 		'scannerSymbols',
-		'useNFA'
+		'useNFA',
+		'isIncremental'
 	],
 	#classVars : [
 		'IsExpressionMap',
@@ -30,22 +31,24 @@ Class {
 		'TokenNameBlock',
 		'TokenNameMap'
 	],
-	#category : #'SmaCC_Development-Model'
+	#category : 'SmaCC_Development-Model',
+	#package : 'SmaCC_Development',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar class >> allCharacters [
 	^ SmaCCCharacterSet withAllCharactersTo: (Character value: self maximumCharacterValue)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammar class >> charactersFor: aSymbol [
 	| isExpressionMap |
 	isExpressionMap := self isExpressionMap.
 	^ isExpressionMap at: aSymbol ifAbsentPut: [ self generateCharacterSetFor: aSymbol ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar class >> defaultTokenNameFor: aString [
 	| stream string |
 	stream := WriteStream on: String new.
@@ -74,7 +77,7 @@ SmaCCGrammar class >> defaultTokenNameFor: aString [
 	^ string , 'Token'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar class >> defaultTokenNameMap [
 	| map |
 	map := Dictionary new.
@@ -83,7 +86,7 @@ SmaCCGrammar class >> defaultTokenNameMap [
 	^ map
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammar class >> generateCharacterSetFor: aSelector [
 	| set |
 	set := SmaCCCharacterSet new.
@@ -95,7 +98,7 @@ SmaCCGrammar class >> generateCharacterSetFor: aSelector [
 	^ set
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar class >> implicitToken: aString [
 	| symbol node |
 	symbol := (aString copyFrom: 2 to: aString size - 1) asSymbol.
@@ -106,14 +109,14 @@ SmaCCGrammar class >> implicitToken: aString [
 	^ node
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 SmaCCGrammar class >> initialize [
 	self maximumCharacterValue: 255.
 	"A good default of isExpressions -- you can set to nil to have it compute from the image"
-	self isExpressions: #(isAlphaNumeric isDigit isLetter isLiteral isLowercase isSeparator isSpecial isUppercase isVowel)
+	self isExpressions: #(isAlphaNumeric isDigit isLetter isLiteral isLowercase isSeparator isUppercase isVowel)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar class >> isExpressionMap [
 	"Creates a map from selectors that start with 'is' on Character to sets of characters. This allows generated scanners to take
 	full advantage of selectors that are already implemented on Character"
@@ -133,12 +136,12 @@ SmaCCGrammar class >> isExpressionMap [
 	^ IsExpressionMap
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar class >> isExpressions [
 	^ IsExpressions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar class >> isExpressions: aCollection [
 	"Assign a collection of Character is___ selectors that can be used to create the scanner. These can make the generated scanners easier to read as a test like currentCharacter isAlphaNumeric is easier to read than a test of '(currentCharacter >= $A and: [currentCharacter <= $Z]) or: [(currentCharacter >= $a and: [currentCharacter <= $z]) or: [currentCharacter >= $0 and: [currentCharacter <= $9]]]'. If the collection is nil, SmaCC will automatically create the set of all is___ methods that are in the current image. This may result in a scanner that doesn't work in a different image. If you wish to limit the selectors that can be used, you can set them here:
 	
@@ -150,63 +153,63 @@ SmaCCGrammar class >> isExpressions: aCollection [
 	IsExpressionMap := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar class >> maximumCharacterValue [
 	^ MaximumCharacterValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar class >> maximumCharacterValue: anInteger [
 	MaximumCharacterValue := anInteger
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar class >> tokenNameBlock [
 	^ TokenNameBlock
 		ifNil: [ [ :string | self defaultTokenNameFor: string ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar class >> tokenNameBlock: aBlock [
 	TokenNameBlock := aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar class >> tokenNameMap [
 	^ TokenNameMap ifNil: [ TokenNameMap := self defaultTokenNameMap ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar class >> tokenNameMap: aDictionary [
 	TokenNameMap := aDictionary
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> addExtraSymbols [
 	self addSymbol: self emptySymbol.
 	self addSymbol: self errorSymbol
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> addStartingSymbol: aSmaCCSymbol [
 	(otherStartingSymbols includes: aSmaCCSymbol)
 		ifFalse: [ otherStartingSymbols add: aSmaCCSymbol ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammar >> addSymbol: aSmaCCSymbol [
 	aSmaCCSymbol grammar: self.
 	self symbols add: aSmaCCSymbol.
 	^ aSmaCCSymbol
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammar >> addSymbolFirst: aSmaCCSymbol [
 	aSmaCCSymbol grammar: self.
 	^ self symbols addFirst: aSmaCCSymbol
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> allStartingSymbols [
 	"Return all starting symbols with the default starting symbol listed first."
 
@@ -221,12 +224,12 @@ SmaCCGrammar >> allStartingSymbols [
 	^ startingSymbols
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> annotateTokens: aBoolean [
 	annotateTokens := aBoolean
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammar >> calculateFirstSets [
 	| changed |
 	changed := true.
@@ -237,7 +240,7 @@ SmaCCGrammar >> calculateFirstSets [
 				do: [ :each | changed := changed | each calculateFirstTerminals ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> classDefinitions [
 	| defs root |
 	root := self rootDefinition.
@@ -258,25 +261,25 @@ SmaCCGrammar >> classDefinitions [
 	^ defs
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> classNamed: aSymbol [
 	^ classDefinitions
 		at: aSymbol
 		ifAbsentPut: [ SmaCCNodeClassDefinition named: aSymbol grammar: self ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> codeGenerator [
 	^ codeGenerator
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCGrammar >> codeGenerator: aSmaCCCodeGenerator [
 	codeGenerator := aSmaCCCodeGenerator.
 	aSmaCCCodeGenerator grammar: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> createStartingSymbolFor: smaccSymbol [
 	^ (self newStartingSymbolNamed: smaccSymbol name)
 		addProduction:
@@ -286,19 +289,19 @@ SmaCCGrammar >> createStartingSymbolFor: smaccSymbol [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> emptySymbol [
 	^ emptySymbol
 		ifNil: [ emptySymbol := self newTerminalSymbolNamed: 'E O F' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> emptySymbols [
 	^ self symbols
 		select: [ :each | each isTerminal not and: [ each isEmpty ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> errorSymbol [
 	^ errorSymbol
 		ifNil: [ errorSymbol := (SmaCCErrorTerminalSymbol name: 'error')
@@ -306,26 +309,26 @@ SmaCCGrammar >> errorSymbol [
 				yourself ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammar >> findSymbolNamed: aString ifAbsent: aBlock [
 	^ self symbols detect: [ :each | each name = aString ] ifNone: aBlock
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammar >> findSymbolNamed: aString ifAbsentAdd: aBlock [
 	^ self
 		findSymbolNamed: aString
 		ifAbsent: [ self addSymbol: aBlock value ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammar >> findSymbolNamed: aString ifAbsentAddFirst: aBlock [
 	^ self
 		findSymbolNamed: aString
 		ifAbsent: [ self addSymbolFirst: aBlock value ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammar >> finishBuilding [
 	self ignoreCase
 		ifTrue:
@@ -337,49 +340,49 @@ SmaCCGrammar >> finishBuilding [
 				do: [ :each | each annotateTokenVariables: self class tokenNameBlock ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCGrammar >> hasMultipleScannerStates [
 	^ self scannerStates size > 1
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCGrammar >> ignoreCase [
 	^ ignoreCase
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammar >> ignoreCase: aBoolean [
 	ignoreCase := aBoolean
 ]
 
-{ #category : #accessing }
-SmaCCGrammar >> ignoredVariableWarnings [
-	^ ignoredVariableWarnings ifNil: [ #() ]
-]
-
-{ #category : #accessing }
-SmaCCGrammar >> ignoredVariableWarnings: anObject [
-	ignoredVariableWarnings := anObject
-]
-
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammar >> ignoredVariables [
 	^ ignoredVariables
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammar >> ignoredVariables: aCollection [
 	ignoredVariables := aCollection asSet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
+SmaCCGrammar >> ignoredVariableWarnings [
+	^ ignoredVariableWarnings ifNil: [ #() ]
+]
+
+{ #category : 'accessing' }
+SmaCCGrammar >> ignoredVariableWarnings: anObject [
+	ignoredVariableWarnings := anObject
+]
+
+{ #category : 'accessing' }
 SmaCCGrammar >> initialItemSetFor: aSmaCCSymbol [
 	^ aSmaCCSymbol asLRItemSet
 		type: type;
 		yourself
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCGrammar >> initialize [
 	super initialize.
 	scannerDefinition := SmaCCScannerDefinition new.
@@ -393,20 +396,33 @@ SmaCCGrammar >> initialize [
 	useNFA := false.
 	ignoreCase := false.
 	ignoredVariables := Set new.
-	annotateTokens := false
+	annotateTokens := false.
+	isIncremental := false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCGrammar >> isGLR [
 	^ isGLR
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCGrammar >> isGLR: aBoolean [
-	isGLR := aBoolean
+	isGLR := aBoolean.
+	aBoolean ifFalse: [ self isIncremental: false ]
 ]
 
-{ #category : #private }
+{ #category : 'testing' }
+SmaCCGrammar >> isIncremental [
+	^ isIncremental
+]
+
+{ #category : 'initialize-release' }
+SmaCCGrammar >> isIncremental: aBoolean [
+	isIncremental := aBoolean.
+	aBoolean ifTrue: [ self isGLR: true ]
+]
+
+{ #category : 'private' }
 SmaCCGrammar >> keywordRegularExpressionFor: aString [
 	| regularExpressionString regex |
 	regularExpressionString := (aString copyFrom: 2 to: aString size - 1) copyReplaceAll: '""' with: '"'.
@@ -420,7 +436,7 @@ SmaCCGrammar >> keywordRegularExpressionFor: aString [
 	^ regex
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammar >> keywordTerminalNamed: aString [
 	^ self
 		findSymbolNamed: aString
@@ -430,12 +446,12 @@ SmaCCGrammar >> keywordTerminalNamed: aString [
 				yourself ]
 ]
 
-{ #category : #precedence }
+{ #category : 'precedence' }
 SmaCCGrammar >> leftPrecedenceFor: aSmaCCSymbol [
 	shiftReduceTable at: aSmaCCSymbol put: SmaCCReduceAction
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> makeTokenIdMethodFor: aString [
 	| token |
 	token := (scannerDefinition includesTokenNamed: aString)
@@ -447,7 +463,7 @@ SmaCCGrammar >> makeTokenIdMethodFor: aString [
 	token createIdMethod: true
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammar >> mergeAll: anOrderedCollection [
 	| new first set |
 	first := anOrderedCollection first.
@@ -465,7 +481,7 @@ SmaCCGrammar >> mergeAll: anOrderedCollection [
 					ifTrue: [ each collection at: i put: new ] ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammar >> mergeCaseSensitiveKeywords [
 	| duplicateMap |
 	duplicateMap := Dictionary new.
@@ -483,120 +499,120 @@ SmaCCGrammar >> mergeCaseSensitiveKeywords [
 				ifTrue: [ self mergeAll: value ] ]
 ]
 
-{ #category : #'item creation' }
+{ #category : 'item creation' }
 SmaCCGrammar >> newItemSet [
 	^ SmaCCItemSet new
 		grammar: self;
 		yourself
 ]
 
-{ #category : #'item creation' }
+{ #category : 'item creation' }
 SmaCCGrammar >> newNonTerminalSymbolNamed: aString [
 	^ (SmaCCNonTerminalSymbol name: aString)
 		grammar: self;
 		yourself
 ]
 
-{ #category : #'item creation' }
+{ #category : 'item creation' }
 SmaCCGrammar >> newRHS [
 	^ SmaCCRHS new
 		grammar: self;
 		yourself
 ]
 
-{ #category : #'item creation' }
+{ #category : 'item creation' }
 SmaCCGrammar >> newStartingSymbolNamed: aString [
 	^ (SmaCCStartingSymbol name: 'B e g i n' , aString)
 		grammar: self;
 		yourself
 ]
 
-{ #category : #'item creation' }
+{ #category : 'item creation' }
 SmaCCGrammar >> newTerminalSymbolNamed: aString [
 	^ (SmaCCTerminalSymbol name: aString)
 		grammar: self;
 		yourself
 ]
 
-{ #category : #precedence }
+{ #category : 'precedence' }
 SmaCCGrammar >> nonAssociativePrecedenceFor: aSmaCCSymbol [
 	shiftReduceTable at: aSmaCCSymbol put: SmaCCRejectAction
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammar >> nonTerminalSymbolNamed: aString [
 	^ self
 		findSymbolNamed: aString
 		ifAbsentAdd: [ self newNonTerminalSymbolNamed: aString ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> preferredActionFor: aSmaCCSymbol [
 	^ shiftReduceTable at: aSmaCCSymbol ifAbsent: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> prefix [
 	^ prefix
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCGrammar >> prefix: aString [
 	prefix := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> rhsDo: aBlock [
 	self symbols do: [ :each | each productionsDo: aBlock ]
 ]
 
-{ #category : #precedence }
+{ #category : 'precedence' }
 SmaCCGrammar >> rightPrecedenceFor: aSmaCCSymbol [
 	shiftReduceTable at: aSmaCCSymbol put: SmaCCShiftAction
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> rootDefinition [
 	^ classDefinitions detect: [ :each | each isRoot ] ifNone: [ nil ]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCGrammar >> scannerDefinition [
 	^ scannerDefinition
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCGrammar >> scannerDefinition: aSmaCCScannerDefinition [
 	scannerDefinition := aSmaCCScannerDefinition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> scannerStates [
 	^ scannerDefinition states
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> scannerSymbols [
 	^ scannerSymbols ifNil: [ #() ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> scannerSymbols: aCollection [
 	scannerSymbols := aCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> sentinelSymbol [
 	^ sentinelSymbol
 		ifNil: [ sentinelSymbol := self newTerminalSymbolNamed: 'S e n t i n e l' ]
 ]
 
-{ #category : #precedence }
+{ #category : 'precedence' }
 SmaCCGrammar >> setOperatorPrecedenceFor: aSmaCCSymbol to: anInteger [
 	aSmaCCSymbol precedence: anInteger
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> setStartSymbolIfNone: aSmaCCSymbol [
 	| startSymbol |
 	self startSymbol notNil
@@ -610,39 +626,39 @@ SmaCCGrammar >> setStartSymbolIfNone: aSmaCCSymbol [
 				yourself)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> startSymbol [
 	^ self symbols
 		detect: [ :each | each isStartingSymbol ]
 		ifNone: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> suffix [
 	^ suffix
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCGrammar >> suffix: aString [
 	suffix := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> symbolNamed: aString [
 	^self findSymbolNamed: aString ifAbsent: [ nil ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammar >> symbols [
 	^ symbols
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammar >> symbols: aCollection [
 	symbols := aCollection
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCGrammar >> terminalSymbolNamed: aString [
 	^ self
 		findSymbolNamed: aString
@@ -652,17 +668,17 @@ SmaCCGrammar >> terminalSymbolNamed: aString [
 				yourself ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> tokens [
 	^ scannerDefinition tokens
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCGrammar >> type: aSmaCCSymbol [
 	type := aSmaCCSymbol
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> unusedSymbols [
 	| nonTerminals problemSymbols todo |
 	nonTerminals := self symbols reject: [ :each | each isTerminal ].
@@ -683,12 +699,12 @@ SmaCCGrammar >> unusedSymbols [
 	^ problemSymbols
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> useNFA [
 	^ useNFA
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCGrammar >> useNFA: aBoolean [
 	useNFA := aBoolean
 ]

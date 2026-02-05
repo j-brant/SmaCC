@@ -1,67 +1,68 @@
 Class {
-	#name : #SmaCCBitCollectionTest,
-	#superclass : #TestCase,
-	#category : #'SmaCC_Tests'
+	#name : 'SmaCCBitCollectionTest',
+	#superclass : 'TestCase',
+	#category : 'SmaCC_Tests',
+	#package : 'SmaCC_Tests'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCBitCollectionTest class >> isAbstract [
 	^ self == SmaCCBitCollectionTest
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCBitCollectionTest >> byteSizeCollection [
 	^ (0 to: 255) collect: self
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCBitCollectionTest >> byteSizeSet [
 	^ self newCollection
 		addAll: self byteSizeCollection;
 		yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCBitCollectionTest >> largeCollection [
 	^ (1 to: 50000) collect: self
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCBitCollectionTest >> largeSet [
 	^ self setClass withAll: self largeCollection
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCBitCollectionTest >> largeValue [
 	^ 1000000
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCBitCollectionTest >> mediumCollection [
 	^ (1 to: 1000) collect: self
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCBitCollectionTest >> mediumSet [
 	^ self setClass withAll: self mediumCollection
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCBitCollectionTest >> newCollection [
 	^ self setClass new
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCBitCollectionTest >> setClass [
 	^ SmaCCIntegerSet
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCBitCollectionTest >> supportsLargeValues [
 	^ true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCBitCollectionTest >> testABunch [
 	| collection count |
 	collection := self byteSizeSet.
@@ -77,7 +78,7 @@ SmaCCBitCollectionTest >> testABunch [
 	self assert: collection asArray = self byteSizeCollection asArray
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCBitCollectionTest >> testAddAll [
 	| collection large medium |
 	self supportsLargeValues
@@ -98,22 +99,7 @@ SmaCCBitCollectionTest >> testAddAll [
 	self assert: collection size = large size
 ]
 
-{ #category : #tests }
-SmaCCBitCollectionTest >> testAddToNextByte [
-	| collection count |
-	collection := self newCollection.
-	collection add: (self value: 8).
-	count := 0.
-	collection do: [ :each | count := count + 1 ].
-	self assert: count = 1.
-	self assert: collection size = 1.
-	self assert: collection notEmpty.
-	self assert: (collection includes: (self value: 8)).
-	self deny: (collection includes: (self value: 7)).
-	self deny: (collection includes: (self value: 9))
-]
-
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCBitCollectionTest >> testAdding [
 	| collection count |
 	collection := self newCollection.
@@ -128,7 +114,22 @@ SmaCCBitCollectionTest >> testAdding [
 	self deny: (collection includes: (self value: 2))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
+SmaCCBitCollectionTest >> testAddToNextByte [
+	| collection count |
+	collection := self newCollection.
+	collection add: (self value: 8).
+	count := 0.
+	collection do: [ :each | count := count + 1 ].
+	self assert: count = 1.
+	self assert: collection size = 1.
+	self assert: collection notEmpty.
+	self assert: (collection includes: (self value: 8)).
+	self deny: (collection includes: (self value: 7)).
+	self deny: (collection includes: (self value: 9))
+]
+
+{ #category : 'tests' }
 SmaCCBitCollectionTest >> testComparing [
 	| a b |
 	a := self newCollection.
@@ -148,7 +149,7 @@ SmaCCBitCollectionTest >> testComparing [
 	self assert: (self setClass with: (self value: 8)) < (self setClass with: (self value: 16))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCBitCollectionTest >> testCopying [
 	| a b |
 	a := self mediumSet.
@@ -158,7 +159,7 @@ SmaCCBitCollectionTest >> testCopying [
 	self deny: (b includes: (self value: 5))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCBitCollectionTest >> testGrowing [
 	| collection count |
 	collection := self newCollection.
@@ -175,7 +176,7 @@ SmaCCBitCollectionTest >> testGrowing [
 	self assert: collection size = 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCBitCollectionTest >> testIntersect [
 	| collection other |
 	collection := self byteSizeSet.
@@ -204,7 +205,7 @@ SmaCCBitCollectionTest >> testIntersect [
 	self assert: collection size = 255
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCBitCollectionTest >> testLessThan [
 	| a b |
 	a := self mediumSet.
@@ -235,13 +236,13 @@ SmaCCBitCollectionTest >> testLessThan [
 	self assert: a >= b
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCBitCollectionTest >> testNew [
 	self assert: self newCollection size = 0.
 	self assert: self newCollection isEmpty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCBitCollectionTest >> testPerformance [
 	| myTime setTime |
 	myTime := Time
@@ -252,7 +253,7 @@ SmaCCBitCollectionTest >> testPerformance [
 	self assert: myTime < (setTime // 2)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCBitCollectionTest >> testRemoveAll [
 	| collection toRemove |
 	collection := self byteSizeSet.
@@ -279,7 +280,7 @@ SmaCCBitCollectionTest >> testRemoveAll [
 	self assert: self largeCollection size - 255 = collection size
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SmaCCBitCollectionTest >> testRemoving [
 	| collection |
 	collection := self newCollection.
@@ -290,7 +291,7 @@ SmaCCBitCollectionTest >> testRemoving [
 	self deny: (collection includes: (self value: 1))
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCBitCollectionTest >> value: anInteger [
 	^ anInteger
 ]
