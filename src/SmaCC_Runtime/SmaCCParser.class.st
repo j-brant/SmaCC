@@ -455,6 +455,15 @@ SmaCCParser >> createDefaultErrorHandlers [
 				ifTrue: [ errorHandler := SmaCCDefaultErrorNodeHandler on: self ] ]
 ]
 
+{ #category : 'error handling' }
+SmaCCParser >> createErrorNode: aToken stack: stackContents dismissed: dismissedTokens [
+	^ SmaCCErrorNode new
+		stackContents: stackContents;
+		dismissedTokens: dismissedTokens;
+		errorToken: aToken;
+		yourself
+]
+
 { #category : 'private' }
 SmaCCParser >> currentState [
 	^ stateStack last

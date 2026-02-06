@@ -35,6 +35,11 @@ CSSRulesetNode >> initialize [
 	selectorParts := OrderedCollection new: 2.
 ]
 
+{ #category : 'testing' }
+CSSRulesetNode >> isRulesetNode [
+	^true
+]
+
 { #category : 'generated' }
 CSSRulesetNode >> items [
 	^ items

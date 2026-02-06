@@ -6,7 +6,8 @@ Class {
 		'endingScannerState',
 		'fromParserState',
 		'toParserState',
-		'lookaheadTokenEnd'
+		'lookaheadTokenEnd',
+		'isEOF'
 	],
 	#category : 'SmaCC_Incremental_Runtime',
 	#package : 'SmaCC_Incremental_Runtime'
@@ -30,6 +31,16 @@ SmaCCIncrementalNodeState >> fromParserState [
 { #category : 'accessing' }
 SmaCCIncrementalNodeState >> fromParserState: anObject [
 	fromParserState := anObject
+]
+
+{ #category : 'accessing' }
+SmaCCIncrementalNodeState >> isEOF [
+	^ isEOF
+]
+
+{ #category : 'accessing' }
+SmaCCIncrementalNodeState >> isEOF: anObject [
+	isEOF := anObject
 ]
 
 { #category : 'accessing' }

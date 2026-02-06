@@ -33,7 +33,7 @@ CSSBlockNode >> initialize [
 	semicolons := OrderedCollection new: 2.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'testing' }
 CSSBlockNode >> isBlockNode [
 	^true
 ]

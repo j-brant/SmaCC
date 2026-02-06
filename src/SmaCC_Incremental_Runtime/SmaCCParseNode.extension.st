@@ -7,7 +7,7 @@ SmaCCParseNode >> assignIdUsing: aBlock [
 
 { #category : '*SmaCC_Incremental_Runtime' }
 SmaCCParseNode >> id [
-	^ self attributeNamed: #id
+	^ self attributeNamed: #id ifAbsent: [ 0 ]
 ]
 
 { #category : '*SmaCC_Incremental_Runtime' }
@@ -41,7 +41,7 @@ SmaCCParseNode >> invalidateFrom: startIndex to: toIndex inserting: length [
 								replaceFrom: first
 								to: last
 								with: str ] ] ].
-	incrementalState := self attributeNamed: #incremental.
+	incrementalState := self incrementalState.
 	(incrementalState notNil
 		and: [ incrementalState lookaheadTokenEnd >= (startIndex min: toIndex) ])
 		ifTrue: [ self
@@ -54,8 +54,9 @@ SmaCCParseNode >> invalidateFrom: startIndex to: toIndex inserting: length [
 				includeErrors: true ].
 	incrementalState ifNil: [ ^ self ].
 	(toIndex < incrementalState startingScannerState position
-		or: [ startIndex > incrementalState lookaheadTokenEnd ])
-		ifFalse: [ ^ self removeAttributeNamed: #incremental ].
+		or: [ startIndex > incrementalState lookaheadTokenEnd
+				and: [ incrementalState isEOF not ] ])
+		ifFalse: [ ^ self removeAttributeNamed: #incrementalState ].
 	self stopPosition < startIndex ifTrue: [ ^ self ].
 	offset := length - (toIndex - startIndex + 1).
 	offset = 0 ifTrue: [ ^ self ].

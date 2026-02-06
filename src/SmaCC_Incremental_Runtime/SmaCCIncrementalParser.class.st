@@ -3,20 +3,11 @@ Class {
 	#superclass : 'SmaCCGLRParser',
 	#instVars : [
 		'id',
-		'previousAST',
-		'previousMap'
+		'previousAST'
 	],
 	#category : 'SmaCC_Incremental_Runtime',
 	#package : 'SmaCC_Incremental_Runtime'
 }
-
-{ #category : 'parsing' }
-SmaCCIncrementalParser class >> parse: aString previous: aNode [
-	^ self
-		parse: aString
-		startingAt: self defaultStartingState
-		previous: aNode
-]
 
 { #category : 'parsing' }
 SmaCCIncrementalParser class >> parse: aString startingAt: anInteger previous: aNode [
@@ -29,14 +20,6 @@ SmaCCIncrementalParser class >> parse: aString startingAt: anInteger previous: a
 	value := parser parse.
 	(value isKindOf: SmaCCParseNode) ifTrue: [ value completeSource: aString ].
 	^ value
-]
-
-{ #category : 'parsing' }
-SmaCCIncrementalParser class >> parseWithErrors: aString previous: aNode [
-	^ self
-		parseWithErrors: aString
-		startingAt: self defaultStartingState
-		previous: aNode
 ]
 
 { #category : 'parsing' }
@@ -58,9 +41,9 @@ SmaCCIncrementalParser class >> parseWithErrors: aString startingAt: anInteger p
 SmaCCIncrementalParser >> checkPreviousParse [
 	| incrementalState |
 	previousAST ifNil: [ ^ self ].
-	self findNodeForCurrentState
+	self findNodeToReuse
 		ifNotNil: [ :node | 
-			incrementalState := node attributeNamed: #incremental.
+			incrementalState := node incrementalState.
 			scanner restoreState: incrementalState endingScannerState.
 			currentState scannerState: incrementalState endingScannerState.
 			currentToken := nil.
@@ -69,16 +52,33 @@ SmaCCIncrementalParser >> checkPreviousParse [
 ]
 
 { #category : 'private' }
+SmaCCIncrementalParser >> computePotentialNodes [
+	| potentialNodes |
+	potentialNodes := nil.
+	(self potentialReusableNodesIn: previousAST)
+		do: [ :each | potentialNodes := potentialNodes asLinkPrepend: each ].
+	states do: [ :each | each potentialNodes: potentialNodes ]
+]
+
+{ #category : 'as yet unclassified' }
+SmaCCIncrementalParser >> createErrorNode: aToken stack: stackContents dismissed: dismissedTokens [
+	| node |
+	node := super
+			createErrorNode: errorToken
+			stack: stackContents
+			dismissed: dismissedTokens.
+	node id: (id := id + 1).
+	^ node
+]
+
+{ #category : 'private' }
 SmaCCIncrementalParser >> deferredReduceActionClass [
 	^ SmaCCIncrementalDeferredReduceAction
 ]
 
 { #category : 'private' }
-SmaCCIncrementalParser >> findNodeForCurrentState [
-	^ self previousMap
-		at: {self currentState.
-				currentState scannerState}
-		ifAbsent: [  ]
+SmaCCIncrementalParser >> findNodeToReuse [
+	^ currentState findNodeToReuse
 ]
 
 { #category : 'private' }
@@ -105,34 +105,39 @@ SmaCCIncrementalParser >> popStacks [
 	^ super popStacks
 ]
 
+{ #category : 'private' }
+SmaCCIncrementalParser >> potentialReusableNodesIn: aNode [
+	| nodes |
+	aNode ifNil: [ ^ #() ].
+	id := id max: aNode id.
+	nodes := OrderedCollection new.
+	(self sortedChildrenOf: aNode)
+		reverseDo: [ :each | nodes addAll: (self potentialReusableNodesIn: each) ].
+	aNode incrementalState
+		ifNotNil: [ :inc | 
+			(nodes notEmpty
+				and: [ | other |
+					other := nodes last incrementalState.
+					other fromParserState = inc fromParserState
+						and: [ other startingScannerState = inc startingScannerState ] ])
+				ifTrue: [ nodes at: nodes size put: aNode ]
+				ifFalse: [ nodes add: aNode ] ].
+	^ nodes
+]
+
 { #category : 'accessing' }
 SmaCCIncrementalParser >> previousAST [
 	^ previousAST
 ]
 
-{ #category : 'accessing' }
-SmaCCIncrementalParser >> previousAST: anObject [
-	previousAST := anObject.
-	previousMap := Dictionary new.
-	previousAST
-		withAllNodesDo: [ :node | 
-			id := id max: (node attributeNamed: #id ifAbsent: [ 0 ]).
-			(node attributeNamed: #incremental)
-				ifNotNil: [ :inc | 
-					previousMap
-						at: {inc fromParserState.
-								inc startingScannerState}
-						put: node ] ]
-]
-
 { #category : 'private' }
-SmaCCIncrementalParser >> previousMap [
-	^ previousMap
+SmaCCIncrementalParser >> previousAST: aNode [
+	previousAST := aNode
 ]
 
 { #category : 'private-actions' }
 SmaCCIncrementalParser >> reduce: anInteger [
-	| reduceEntry items size newState value start |
+	| reduceEntry items size newState value start incrementalState |
 	reduceEntry := self reduceTable at: anInteger.
 	items := Array new: (size := reduceEntry at: 2).
 	nodeStack size < size
@@ -147,18 +152,30 @@ SmaCCIncrementalParser >> reduce: anInteger [
 	newState := (self actionFor: (reduceEntry at: 1)) bitShift: -2.
 	value := self performReduceEntry: reduceEntry with: items.
 	value smaccIsNodeLike
-		ifTrue: [ | incrementalState |
-			incrementalState := SmaCCIncrementalNodeState new
+		ifTrue: [ incrementalState := SmaCCIncrementalNodeState new
 					startingScannerState: start copy;
 					endingScannerState: currentState stateBeforeToken copy;
 					fromParserState: self currentState;
 					toParserState: newState;
 					lookaheadTokenEnd: currentToken stopPosition;
+					isEOF: self isEOFToken;
 					yourself.
 			value
 				incrementalState: incrementalState;
 				assignIdUsing: [ id := id + 1 ] ].
-	self transitionTo: newState withValue: value
+	(self transitionTo: newState withValue: value) value: start
+]
+
+{ #category : 'private' }
+SmaCCIncrementalParser >> setStartingStatesIfNone [
+	super setStartingStatesIfNone.
+	self computePotentialNodes.
+	states size
+		to: 1
+		by: -1
+		do: [ :i | 
+			self restoreState: (states at: i).
+			self checkPreviousParse ]
 ]
 
 { #category : 'private-actions' }
@@ -167,6 +184,18 @@ SmaCCIncrementalParser >> shift: stateIndex [
 	value := currentState stateBeforeToken.
 	(self transitionTo: stateIndex withValue: currentToken) value: value.
 	currentToken := nil
+]
+
+{ #category : 'private' }
+SmaCCIncrementalParser >> sortedChildrenOf: aNode [
+	| children |
+	children := OrderedCollection new.
+	aNode
+		nodesDo: [ :each | children add: each ]
+		andTokensDo: nil
+		includeErrors: true.
+	children sort: aNode nodeSortBlock.
+	^ children
 ]
 
 { #category : 'private' }
