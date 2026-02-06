@@ -16,7 +16,6 @@ SmaCCIncrementalParser class >> parse: aString startingAt: anInteger previous: a
 			createParserOnStream: (ReadStream on: aString)
 			startingAt: anInteger.
 	parser previousAST: aNode.
-	parser createDefaultErrorHandlers.
 	value := parser parse.
 	(value isKindOf: SmaCCParseNode) ifTrue: [ value completeSource: aString ].
 	^ value
@@ -143,12 +142,14 @@ SmaCCIncrementalParser >> reduce: anInteger [
 	nodeStack size < size
 		ifTrue: [ self killState.
 			^ currentToken := nil ].
-	size
-		to: 1
-		by: -1
-		do: [ :i | 
-			start := currentState getStart.
-			items at: i put: self popStacks ].
+	size = 0
+		ifTrue: [ start := currentState stateBeforeToken ]
+		ifFalse: [ size
+				to: 1
+				by: -1
+				do: [ :i | 
+					start := currentState getStart.
+					items at: i put: self popStacks ] ].
 	newState := (self actionFor: (reduceEntry at: 1)) bitShift: -2.
 	value := self performReduceEntry: reduceEntry with: items.
 	value smaccIsNodeLike
