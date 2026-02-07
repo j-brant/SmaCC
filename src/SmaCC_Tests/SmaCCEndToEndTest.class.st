@@ -1268,7 +1268,7 @@ SmaCCEndToEndTest >> testImplicitTokenPrecedence [
 
 { #category : 'tests-incremental' }
 SmaCCEndToEndTest >> testIncrementalInsertAtEnd [
-	| parserCompiler expression ast newAst newNodes oldId ints |
+	| parserCompiler expression ast newAst |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
 		defaultCategory: self class category.
 	parserCompiler
@@ -1296,6 +1296,83 @@ SmaCCEndToEndTest >> testIncrementalInsertAtEnd [
 	self assert: newAst equals: (self parserClass parse: '1+2+3+4+5').
 	self assert: newAst class name = #IncExpressionNode.
 	self assert: ast left class name = #IncIntNode
+]
+
+{ #category : 'tests-incremental' }
+SmaCCEndToEndTest >> testIncrementalWithEmptyNode [
+	| parserCompiler expression ast newAst lettersId digitsId |
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	parserCompiler
+		buildDefinition: '<whitespace>: \s+; <letter> : [a-z]; <digit> : [0-9]; <special> : [\!\@\#\$\%\^\&\*\(\)];
+			%incremental;
+			%prefix Inc;
+			%suffix Node;
+			%root Program;
+			Expression : Letters ''letters'' Digits ''digits'' SpecialCharacters ''specialCharacters'' {{}};
+			Letters : Letter* {{}};
+			Letter : <letter> ''letterToken'' ;
+			Digits : Digit* {{}};
+			Digit : <digit> ''digitToken'';
+			SpecialCharacters : Special* {{}};
+			Special : <special> ''specialToken'';
+			'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+
+	expression := 'aaaa'.
+
+	ast := self parserClass parse: expression.
+	self assert: ast letters letterTokens size equals: 4.
+	self assert: ast digits digitTokens isEmpty.
+	self assert: ast specialCharacters specialTokens isEmpty.
+
+	expression := 'b' , expression.
+	ast
+		invalidateFrom: 1
+		to: 0
+		inserting: 1.
+	newAst := self parserClass parse: expression previous: ast.
+	self assert: newAst equals: (self parserClass parse: expression).
+	self assert: newAst letters letterTokens size equals: 5.
+	self assert: newAst digits digitTokens isEmpty.
+	self assert: newAst specialCharacters specialTokens isEmpty.
+
+	expression := expression , '!'.
+	ast
+		invalidateFrom: expression size + 1
+		to: expression size
+		inserting: 1.
+	newAst := self parserClass parse: expression previous: ast.
+	self assert: newAst equals: (self parserClass parse: expression).
+	self assert: newAst letters letterTokens size equals: 5.
+	self assert: newAst digits digitTokens isEmpty.
+	self assert: newAst specialCharacters specialTokens size equals: 1.
+	lettersId := newAst letters id.
+	digitsId := newAst digits id.
+
+	expression := expression , '*'.
+	ast
+		invalidateFrom: expression size + 1
+		to: expression size
+		inserting: 1.
+	newAst := self parserClass parse: expression previous: ast.
+	self assert: newAst equals: (self parserClass parse: expression).
+	self assert: newAst letters letterTokens size equals: 5.
+	self assert: newAst letters id equals: lettersId.
+	self assert: newAst digits digitTokens isEmpty.
+	self assert: newAst digits id equals: digitsId.
+	self assert: newAst specialCharacters specialTokens size equals: 2.
+
+	expression := (expression allButLast: 2) , '1' , (expression last: 2).
+	ast
+		invalidateFrom: expression size - 1
+		to: expression size - 2
+		inserting: 1.
+	newAst := self parserClass parse: expression previous: ast.
+	self assert: newAst equals: (self parserClass parse: expression).
+	self assert: newAst letters letterTokens size equals: 5.
+	self assert: newAst digits digitTokens size equals: 1.
+	self assert: newAst specialCharacters specialTokens size equals: 2.
 ]
 
 { #category : 'tests-incremental' }
