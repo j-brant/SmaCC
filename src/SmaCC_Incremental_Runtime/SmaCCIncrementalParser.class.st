@@ -55,7 +55,7 @@ SmaCCIncrementalParser >> computePotentialNodes [
 	| potentialNodes |
 	potentialNodes := nil.
 	(self potentialReusableNodesIn: previousAST)
-		do: [ :each | potentialNodes := potentialNodes asLinkPrepend: each ].
+		ifNotEmpty: [ :nodes | potentialNodes := nodes firstLink ].
 	states do: [ :each | each potentialNodes: potentialNodes ]
 ]
 
@@ -107,20 +107,12 @@ SmaCCIncrementalParser >> popStacks [
 { #category : 'private' }
 SmaCCIncrementalParser >> potentialReusableNodesIn: aNode [
 	| nodes |
-	aNode ifNil: [ ^ #() ].
+	nodes := LinkedList new.
+	aNode ifNil: [ ^ nodes ].
 	id := id max: aNode id.
-	nodes := OrderedCollection new.
 	(self sortedChildrenOf: aNode)
-		reverseDo: [ :each | nodes addAll: (self potentialReusableNodesIn: each) ].
-	aNode incrementalState
-		ifNotNil: [ :inc | 
-			(nodes notEmpty
-				and: [ | other |
-					other := nodes last incrementalState.
-					other fromParserState = inc fromParserState
-						and: [ other startingScannerState = inc startingScannerState ] ])
-				ifTrue: [ nodes at: nodes size put: aNode ]
-				ifFalse: [ nodes add: aNode ] ].
+		do: [ :each | nodes addAll: (self potentialReusableNodesIn: each) ].
+	aNode incrementalState ifNotNil: [ :inc | nodes addFirst: aNode ].
 	^ nodes
 ]
 
@@ -136,7 +128,7 @@ SmaCCIncrementalParser >> previousAST: aNode [
 
 { #category : 'private-actions' }
 SmaCCIncrementalParser >> reduce: anInteger [
-	| reduceEntry items size newState value start incrementalState |
+	| reduceEntry items size newState value start incrementalState ids |
 	reduceEntry := self reduceTable at: anInteger.
 	items := Array new: (size := reduceEntry at: 2).
 	nodeStack size < size
@@ -161,9 +153,12 @@ SmaCCIncrementalParser >> reduce: anInteger [
 					lookaheadTokenEnd: currentToken stopPosition;
 					isEOF: self isEOFToken;
 					yourself.
+			ids := currentState idNodes.
 			value
 				incrementalState: incrementalState;
-				assignIdUsing: [ id := id + 1 ] ].
+				assignIdUsing: [ :node :previousId | 
+					((currentState findIdForNode: node in: ids) ifNil: [ previousId ])
+						ifNil: [ id := id + 1 ] ] ].
 	(self transitionTo: newState withValue: value) value: start
 ]
 

@@ -2241,6 +2241,35 @@ SmaCCEndToEndTest >> testPullUpVariablesForLaterSymbols [
 	self assert: node numbers isEmpty
 ]
 
+{ #category : 'tests-incremental' }
+SmaCCEndToEndTest >> testPulledUpNode [
+	| parserCompiler expression ast newAst |
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	parserCompiler
+		buildDefinition: '<int> : \d+; <whitespace>: \s+;
+			%incremental;
+			%prefix Inc;
+			%suffix Node;
+			%root Program;
+			Expressions : (Expression ''expression'' "." ''period'')* {{}};
+			Expression : "(" ''left'' Expression ")" ''right'' {{}} | <int> ''value'' {{}};
+			'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+
+	expression := '(1).((2)).(((3))).'.
+
+	ast := self parserClass parse: expression.
+	ast
+		invalidateFrom: 1
+		to: 4
+		inserting: 0.
+	newAst := self parserClass parse: '((2)).(((3))).' previous: ast.
+	self assert: newAst equals: (self parserClass parse: '((2)).(((3))).').
+	self assert: newAst expressions first id equals: ast expressions second id.
+	self assert: newAst expressions second id equals: ast expressions third id
+]
+
 { #category : 'tests-extended syntax' }
 SmaCCEndToEndTest >> testQuestion [
 	| parserCompiler node |
@@ -3048,4 +3077,62 @@ SmaCCEndToEndTest >> testVariableCollectionType [
 		assert:
 			self parserClass basicNew symbolTypes asSet asSortedCollection asArray
 				= #(#FooANode #OrderedCollection #SmaCCErrorNode #SmaCCToken)
+]
+
+{ #category : 'tests-incremental' }
+SmaCCEndToEndTest >> testWhitespaceAfterReusesId [
+	| parserCompiler expression ast newAst |
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	parserCompiler
+		buildDefinition: '<int> : \d+; <whitespace>: \s+;
+			%incremental;
+			%prefix Inc;
+			%suffix Node;
+			%root Program;
+			Expression : Int ''left'' "+" ''op'' Expression ''right'' {{}} | Int ;
+			Int : <int> ''value'' {{}};
+			'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+
+	expression := '1+2+3+4 '.
+
+	ast := self parserClass parse: expression.
+	ast
+		invalidateFrom: expression size + 1
+		to: expression size
+		inserting: 1.
+	newAst := self parserClass parse: '1+2+3+4  ' previous: ast.
+	self assert: newAst equals: (self parserClass parse: '1+2+3+4').
+	self assert: newAst id equals: ast id.
+	self assert: newAst right id equals: ast right id
+]
+
+{ #category : 'tests-incremental' }
+SmaCCEndToEndTest >> testWhitespaceBeforeReusesId [
+	| parserCompiler expression ast newAst |
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	parserCompiler
+		buildDefinition: '<int> : \d+; <whitespace>: \s+;
+			%incremental;
+			%prefix Inc;
+			%suffix Node;
+			%root Program;
+			Expression : Int ''left'' "+" ''op'' Expression ''right'' {{}} | Int ;
+			Int : <int> ''value'' {{}};
+			'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+
+	expression := ' 1+2+3+4'.
+
+	ast := self parserClass parse: expression.
+	ast
+		invalidateFrom: 1
+		to: 0
+		inserting: 1.
+	newAst := self parserClass parse: '  1+2+3+4' previous: ast.
+	self assert: newAst equals: (self parserClass parse: '1+2+3+4').
+	self assert: newAst id equals: ast id.
+	self assert: newAst left id equals: ast left id
 ]
