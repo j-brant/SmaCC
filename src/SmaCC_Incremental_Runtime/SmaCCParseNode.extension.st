@@ -2,7 +2,9 @@ Extension { #name : 'SmaCCParseNode' }
 
 { #category : '*SmaCC_Incremental_Runtime' }
 SmaCCParseNode >> assignIdUsing: aBlock [
-	self attributeNamed: #id ifAbsentPut: aBlock
+	| previousId |
+	previousId := self attributeNamed: #id.
+	self attributeNamed: #id put: (aBlock cull: self cull: previousId)
 ]
 
 { #category : '*SmaCC_Incremental_Runtime' }
@@ -26,15 +28,17 @@ SmaCCParseNode >> incrementalState: incrementalState [
 ]
 
 { #category : '*SmaCC_Incremental_Runtime' }
-SmaCCParseNode >> invalidateFrom: startIndex to: toIndex inserting: length [
-	| incrementalState offset |
+SmaCCParseNode >> invalidateFrom: fromIndex to: toIndex inserting: length [
+	| incrementalState offset start stop |
+	start := self startPosition.
+	stop := self stopPosition.
 	(self attributeNamed: #source)
 		ifNotNil: [ :source | 
 			(source isKindOf: SmaCCString)
 				ifTrue: [ | str first last |
-					first := source indexForStringIndex: startIndex.
+					first := source indexForStringIndex: fromIndex.
 					str := String new: length withAll: (Character value: 16r2588).
-					toIndex < startIndex
+					toIndex < fromIndex
 						ifTrue: [ source insert: str at: first ]
 						ifFalse: [ last := source indexForStringIndex: toIndex.
 							source
@@ -43,30 +47,33 @@ SmaCCParseNode >> invalidateFrom: startIndex to: toIndex inserting: length [
 								with: str ] ] ].
 	incrementalState := self incrementalState.
 	(incrementalState notNil
-		and: [ incrementalState lookaheadTokenEnd >= (startIndex min: toIndex) ])
+		and: [ incrementalState lookaheadTokenEnd >= (fromIndex min: toIndex) ])
 		ifTrue: [ self
 				nodesDo: [ :each | 
 					each
-						invalidateFrom: startIndex
+						invalidateFrom: fromIndex
 						to: toIndex
 						inserting: length ]
 				andTokensDo: nil
 				includeErrors: true ].
 	incrementalState ifNil: [ ^ self ].
-	(toIndex < incrementalState startingScannerState position
-		or: [ startIndex > incrementalState lookaheadTokenEnd
-				and: [ incrementalState isEOF not ] ])
-		ifFalse: [ ^ self removeAttributeNamed: #incrementalState ].
-	self stopPosition < startIndex ifTrue: [ ^ self ].
-	offset := length - (toIndex - startIndex + 1).
+	((fromIndex max: toIndex) > incrementalState startingScannerState position
+		and: [ fromIndex <= incrementalState lookaheadTokenEnd or: [ incrementalState isEOF ] ])
+		ifTrue: [ toIndex < start
+				ifTrue: [ incrementalState isModifiedBefore: true ]
+				ifFalse: [ toIndex > stop
+						ifTrue: [ incrementalState isModifiedAfter: true ]
+						ifFalse: [ ^ self removeAttributeNamed: #incrementalState ] ] ].
+	stop < fromIndex ifTrue: [ ^ self ].
+	offset := length - (toIndex - fromIndex + 1).
 	offset = 0 ifTrue: [ ^ self ].
 	incrementalState startingScannerState
 		position: incrementalState startingScannerState position + offset.
 	incrementalState endingScannerState
 		position: incrementalState endingScannerState position + offset.
 	incrementalState lookaheadTokenEnd: incrementalState lookaheadTokenEnd + offset.
-	self attributeNamed: #startPosition put: self startPosition + offset.
-	self attributeNamed: #stopPosition put: self stopPosition + offset.
+	self attributeNamed: #startPosition put: start + offset.
+	self attributeNamed: #stopPosition put: stop + offset.
 	self
 		nodesDo: nil
 		andTokensDo: [ :token | token startPosition: token startPosition + offset ]

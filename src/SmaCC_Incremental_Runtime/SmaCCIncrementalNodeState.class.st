@@ -7,7 +7,7 @@ Class {
 		'fromParserState',
 		'toParserState',
 		'lookaheadTokenEnd',
-		'isEOF'
+		'flags'
 	],
 	#category : 'SmaCC_Incremental_Runtime',
 	#package : 'SmaCC_Incremental_Runtime'
@@ -23,6 +23,11 @@ SmaCCIncrementalNodeState >> endingScannerState: anObject [
 	endingScannerState := anObject
 ]
 
+{ #category : 'private' }
+SmaCCIncrementalNodeState >> eofFlag [
+	^ 2r1
+]
+
 { #category : 'accessing' }
 SmaCCIncrementalNodeState >> fromParserState [
 	^ fromParserState
@@ -33,14 +38,50 @@ SmaCCIncrementalNodeState >> fromParserState: anObject [
 	fromParserState := anObject
 ]
 
-{ #category : 'accessing' }
-SmaCCIncrementalNodeState >> isEOF [
-	^ isEOF
+{ #category : 'initialization' }
+SmaCCIncrementalNodeState >> initialize [
+	super initialize.
+	flags := 0
 ]
 
 { #category : 'accessing' }
-SmaCCIncrementalNodeState >> isEOF: anObject [
-	isEOF := anObject
+SmaCCIncrementalNodeState >> isEOF [
+	^ self isSet: self eofFlag
+]
+
+{ #category : 'accessing' }
+SmaCCIncrementalNodeState >> isEOF: aBoolean [
+	self setFlag: self eofFlag to: aBoolean
+]
+
+{ #category : 'accessing' }
+SmaCCIncrementalNodeState >> isModified [
+	^ self isSet: self modifiedFlag
+]
+
+{ #category : 'accessing' }
+SmaCCIncrementalNodeState >> isModifiedAfter [
+	^ self isSet: self modifiedAfterFlag
+]
+
+{ #category : 'accessing' }
+SmaCCIncrementalNodeState >> isModifiedAfter: aBoolean [
+	self setFlag: self modifiedAfterFlag to: aBoolean
+]
+
+{ #category : 'accessing' }
+SmaCCIncrementalNodeState >> isModifiedBefore [
+	^ self isSet: self modifiedBeforeFlag
+]
+
+{ #category : 'accessing' }
+SmaCCIncrementalNodeState >> isModifiedBefore: aBoolean [
+	self setFlag: self modifiedBeforeFlag to: aBoolean
+]
+
+{ #category : 'private' }
+SmaCCIncrementalNodeState >> isSet: flag [
+	^ (flags bitAnd: flag) ~= 0
 ]
 
 { #category : 'accessing' }
@@ -51,6 +92,27 @@ SmaCCIncrementalNodeState >> lookaheadTokenEnd [
 { #category : 'accessing' }
 SmaCCIncrementalNodeState >> lookaheadTokenEnd: anObject [
 	lookaheadTokenEnd := anObject
+]
+
+{ #category : 'private' }
+SmaCCIncrementalNodeState >> modifiedAfterFlag [
+	^ 2r100
+]
+
+{ #category : 'private' }
+SmaCCIncrementalNodeState >> modifiedBeforeFlag [
+	^ 2r10
+]
+
+{ #category : 'private' }
+SmaCCIncrementalNodeState >> modifiedFlag [
+	^ 2r110
+]
+
+{ #category : 'accessing' }
+SmaCCIncrementalNodeState >> setFlag: flag to: aBoolean [
+	flags := (flags bitAnd: flag bitInvert)
+			bitOr: (aBoolean ifTrue: [ flag ] ifFalse: [ 0 ])
 ]
 
 { #category : 'accessing' }

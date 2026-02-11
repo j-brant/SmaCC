@@ -4,18 +4,54 @@ Class {
 	#instVars : [
 		'starts',
 		'stateBeforeToken',
-		'potentialNodes'
+		'potentialNodes',
+		'idNodes'
 	],
 	#category : 'SmaCC_Incremental_Runtime',
 	#package : 'SmaCC_Incremental_Runtime'
 }
 
 { #category : 'private' }
+SmaCCIncrementalParserState >> dismissIdNodesFor: aNode in: potentialIds [
+	| stop current |
+	stop := aNode calculateStopPosition.
+	current := potentialIds.
+	[ current notNil and: [ current value stopPosition < stop ] ]
+		whileTrue: [ current := current nextLink ].
+	^ current
+]
+
+{ #category : 'private' }
 SmaCCIncrementalParserState >> dismissPotentialNodes [
 	[ potentialNodes notNil
 		and: [ potentialNodes value incrementalState startingScannerState position
-				< scannerState position ] ]
-		whileTrue: [ potentialNodes := potentialNodes nextLink ]
+				< scannerState position
+				or: [ potentialNodes value incrementalState isModified ] ] ]
+		whileTrue: [ | node |
+			node := potentialNodes value.
+			(node startPosition <= node stopPosition
+				or: [ potentialNodes value incrementalState isModified ])
+				ifTrue: [ idNodes := idNodes asLinkPrepend: node ].
+			potentialNodes := potentialNodes nextLink ]
+]
+
+{ #category : 'accessing' }
+SmaCCIncrementalParserState >> findIdForNode: aNode in: potentialIds [
+	| current stop start resetNodes |
+	current := self dismissIdNodesFor: aNode in: potentialIds.
+	resetNodes := potentialIds == idNodes.
+	resetNodes ifTrue: [ idNodes := current ].
+	[ current notNil
+		and: [ (stop ifNil: [ stop := aNode calculateStopPosition ])
+				>= current value stopPosition ] ]
+		whileTrue: [ (stop = current value stopPosition
+				and: [ aNode class = current value class
+						and: [ (start ifNil: [ start := aNode calculateStartPosition ])
+								= current value startPosition ] ])
+				ifTrue: [ resetNodes ifTrue: [ idNodes := current nextLink ].
+					^ current value id ].
+			current := current nextLink ].
+	^ nil
 ]
 
 { #category : 'accessing' }
@@ -27,7 +63,12 @@ SmaCCIncrementalParserState >> findNodeToReuse [
 		and: [ (inc := current value incrementalState) startingScannerState position
 				= scannerState position ] ]
 		whileTrue: [ (inc startingScannerState = scannerState
-				and: [ inc fromParserState = stateStack last ]) ifTrue: [ ^ current value ].
+				and: [ inc fromParserState = stateStack last ])
+				ifTrue: [ potentialNodes := current nextLink.
+					[ potentialNodes notNil
+						and: [ potentialNodes value isDescendantFrom: current value ] ]
+						whileTrue: [ potentialNodes := potentialNodes nextLink ].
+					^ current value ].
 			current := current nextLink ].
 	^ nil
 ]
@@ -35,6 +76,11 @@ SmaCCIncrementalParserState >> findNodeToReuse [
 { #category : 'accessing' }
 SmaCCIncrementalParserState >> getStart [
 	^ starts value
+]
+
+{ #category : 'accessing' }
+SmaCCIncrementalParserState >> idNodes [
+	^ idNodes
 ]
 
 { #category : 'accessing' }
