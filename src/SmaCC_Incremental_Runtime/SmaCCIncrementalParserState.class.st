@@ -12,10 +12,16 @@ Class {
 }
 
 { #category : 'private' }
-SmaCCIncrementalParserState >> dismissIdNodesFor: aNode in: potentialIds [
+SmaCCIncrementalParserState >> addIdNode: node [
+	idNodes := idNodes asLinkPrepend: node.
+	self sortByStopPosition
+]
+
+{ #category : 'private' }
+SmaCCIncrementalParserState >> dismissIdNodesFor: aNode [
 	| stop current |
 	stop := aNode calculateStopPosition.
-	current := potentialIds.
+	current := idNodes.
 	[ current notNil and: [ current value stopPosition < stop ] ]
 		whileTrue: [ current := current nextLink ].
 	^ current
@@ -31,25 +37,21 @@ SmaCCIncrementalParserState >> dismissPotentialNodes [
 			node := potentialNodes value.
 			(node startPosition <= node stopPosition
 				or: [ potentialNodes value incrementalState isModified ])
-				ifTrue: [ idNodes := idNodes asLinkPrepend: node ].
+				ifTrue: [ self addIdNode: node ].
 			potentialNodes := potentialNodes nextLink ]
 ]
 
 { #category : 'accessing' }
-SmaCCIncrementalParserState >> findIdForNode: aNode in: potentialIds [
-	| current stop start resetNodes |
-	current := self dismissIdNodesFor: aNode in: potentialIds.
-	resetNodes := potentialIds == idNodes.
-	resetNodes ifTrue: [ idNodes := current ].
+SmaCCIncrementalParserState >> findIdForNode: aNode [
+	| current stop start |
+	current := self dismissIdNodesFor: aNode.
 	[ current notNil
 		and: [ (stop ifNil: [ stop := aNode calculateStopPosition ])
 				>= current value stopPosition ] ]
 		whileTrue: [ (stop = current value stopPosition
 				and: [ aNode class = current value class
 						and: [ (start ifNil: [ start := aNode calculateStartPosition ])
-								= current value startPosition ] ])
-				ifTrue: [ resetNodes ifTrue: [ idNodes := current nextLink ].
-					^ current value id ].
+								= current value startPosition ] ]) ifTrue: [ ^ current value id ].
 			current := current nextLink ].
 	^ nil
 ]
@@ -106,6 +108,19 @@ SmaCCIncrementalParserState >> pushStart [
 { #category : 'initialization' }
 SmaCCIncrementalParserState >> setStart: aScannerState [
 	starts value: aScannerState
+]
+
+{ #category : 'private' }
+SmaCCIncrementalParserState >> sortByStopPosition [
+	| next temp current |
+	current := idNodes.
+	[ next := current nextLink.
+	next ifNil: [ ^ self ].
+	current value stopPosition > next value stopPosition ifFalse: [ ^ self ].
+	temp := current value.
+	current value: next value.
+	next value: temp.
+	current := next ] repeat
 ]
 
 { #category : 'accessing' }

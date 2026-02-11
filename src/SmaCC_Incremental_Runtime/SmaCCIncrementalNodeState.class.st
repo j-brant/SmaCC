@@ -79,6 +79,16 @@ SmaCCIncrementalNodeState >> isModifiedBefore: aBoolean [
 	self setFlag: self modifiedBeforeFlag to: aBoolean
 ]
 
+{ #category : 'accessing' }
+SmaCCIncrementalNodeState >> isModifiedInside [
+	^ self isSet: self modifiedInsideFlag
+]
+
+{ #category : 'accessing' }
+SmaCCIncrementalNodeState >> isModifiedInside: aBoolean [
+	self setFlag: self modifiedInsideFlag to: aBoolean
+]
+
 { #category : 'private' }
 SmaCCIncrementalNodeState >> isSet: flag [
 	^ (flags bitAnd: flag) ~= 0
@@ -106,7 +116,12 @@ SmaCCIncrementalNodeState >> modifiedBeforeFlag [
 
 { #category : 'private' }
 SmaCCIncrementalNodeState >> modifiedFlag [
-	^ 2r110
+	^ 2r1110
+]
+
+{ #category : 'private' }
+SmaCCIncrementalNodeState >> modifiedInsideFlag [
+	^ 2r1000
 ]
 
 { #category : 'accessing' }
