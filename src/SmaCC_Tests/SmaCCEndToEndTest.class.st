@@ -10,6 +10,18 @@ Class {
 	#package : 'SmaCC_Tests'
 }
 
+{ #category : 'tests-incremental' }
+SmaCCEndToEndTest >> allNodesIn: aNode newerThan: anInteger [
+	| nodes |
+	nodes := OrderedCollection new.
+	aNode
+		withAllNodesDo: [ :each | each id > anInteger ifTrue: [ nodes add: each ] ]
+		andTokensDo: nil
+		includesErrors: true.
+	nodes sort: [ :a :b | a class name < b class name ].
+	^ nodes
+]
+
 { #category : 'private' }
 SmaCCEndToEndTest >> checkTokensAreInOrder: tokenCollection [
 	tokenCollection
@@ -1299,6 +1311,79 @@ SmaCCEndToEndTest >> testIncrementalInsertAtEnd [
 ]
 
 { #category : 'tests-incremental' }
+SmaCCEndToEndTest >> testIncrementalInsertInside [
+	| parserCompiler expression ast newAst newNodes lastId |
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	parserCompiler
+		buildDefinition: '<int> : \d+; <whitespace>: \s+;
+			%incremental;
+			%prefix Inc;
+			%suffix Node;
+			%root Program;
+			Expression : Int ''left'' "+" ''op'' Expression ''right'' {{}} | Int ;
+			Int : <int> ''value'' {{}};
+			'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+
+	expression := '1 + 2 + 3 + 4'.
+
+	ast := self parserClass parse: expression.
+	lastId := ast id.
+	self assert: ast class name = #IncExpressionNode.
+	self assert: ast left class name = #IncIntNode.
+
+	ast
+		invalidateFrom: 1
+		to: 0
+		inserting: 2.
+	newAst := self parserClass parse: '0+1 + 2 + 3 + 4' previous: ast.
+	self assert: newAst equals: (self parserClass parse: '0+1+2+3+4').
+	self assert: newAst class name = #IncExpressionNode.
+	self assert: ast left class name = #IncIntNode.
+	newNodes := self allNodesIn: newAst newerThan: lastId.
+	self assert: newNodes size equals: 2.
+	self assert: newNodes first left equals: newNodes last.
+	self assert: newNodes last source equals: '0'.
+
+	ast := self parserClass parse: expression.
+
+	ast
+		invalidateFrom: 2
+		to: 1
+		inserting: 2.
+	newAst := self parserClass parse: '1+5 + 2 + 3 + 4' previous: ast.
+	self assert: newAst equals: (self parserClass parse: '1+5+2+3+4').
+	newNodes := self allNodesIn: newAst newerThan: lastId.
+	self assert: newAst id equals: ast id.
+	self assert: newNodes size equals: 2.
+	self assert: (newNodes includes: newAst right).
+	self assert: (newNodes includes: newNodes first left).
+
+	expression := '1+2+3+4'.
+	ast := self parserClass parse: expression.
+	lastId := ast id.
+	6
+		to: 2
+		by: -2
+		do: [ :i | 
+			ast
+				invalidateFrom: i + 1
+					to: i
+					inserting: 1;
+				invalidateFrom: i
+					to: i - 1
+					inserting: 1 ].
+
+	newAst := self parserClass
+			parse: (expression copyReplaceAll: '+' with: ' + ')
+			previous: ast.
+	self assert: newAst equals: (self parserClass parse: expression).
+	newNodes := self allNodesIn: newAst newerThan: lastId.
+	self assert: newNodes isEmpty
+]
+
+{ #category : 'tests-incremental' }
 SmaCCEndToEndTest >> testIncrementalWithEmptyNode [
 	| parserCompiler expression ast newAst lettersId digitsId |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
@@ -1658,6 +1743,41 @@ SmaCCEndToEndTest >> testMoveToGLRHierarchy [
 	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
 	self
 		assert: self parserClass superclass name asString = 'SmaCCGLRParser'
+]
+
+{ #category : 'tests-incremental' }
+SmaCCEndToEndTest >> testMultipleChanges [
+	| parserCompiler expression ast newAst |
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	parserCompiler
+		buildDefinition: '<int> : \d+; <whitespace>: \s+;
+			%incremental;
+			%prefix Inc;
+			%suffix Node;
+			%root Program;
+			Expression : Int ''left'' "+" ''op'' Expression ''right'' {{}} | Int ;
+			Int : <int> ''value'' {{}};
+			'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+
+	expression := '1+2+3+4'.
+
+	ast := self parserClass parse: expression.
+	ast
+		invalidateFrom: expression size + 1
+		to: expression size
+		inserting: 1.
+	ast
+		invalidateFrom: 2
+		to: 1
+		inserting: 1.
+	newAst := self parserClass parse: '10+2+3+40' previous: ast.
+	self assert: newAst equals: (self parserClass parse: '10+2+3+40').
+	self assert: newAst left source equals: '10'.
+	self assert: newAst right right right source equals: '40'.
+	self assert: newAst right left id equals: ast right left id.
+	self assert: newAst right right left id equals: ast right right left id
 ]
 
 { #category : 'tests-parse tree creation' }
