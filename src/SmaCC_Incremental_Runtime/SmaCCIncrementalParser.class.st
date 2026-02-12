@@ -128,7 +128,7 @@ SmaCCIncrementalParser >> previousAST: aNode [
 
 { #category : 'private-actions' }
 SmaCCIncrementalParser >> reduce: anInteger [
-	| reduceEntry items size newState value start incrementalState |
+	| reduceEntry items size newState value start incrementalState current |
 	reduceEntry := self reduceTable at: anInteger.
 	items := Array new: (size := reduceEntry at: 2).
 	nodeStack size < size
@@ -153,11 +153,10 @@ SmaCCIncrementalParser >> reduce: anInteger [
 					lookaheadTokenEnd: currentToken stopPosition;
 					isEOF: self isEOFToken;
 					yourself.
+			current := currentState.
 			value
 				incrementalState: incrementalState;
-				assignIdUsing: [ :node :previousId | 
-					((currentState findIdForNode: node) ifNil: [ previousId ])
-						ifNil: [ id := id + 1 ] ] ].
+				assignIdUsing: [ :node :previousId | ((current findIdForNode: node) ifNil: [ previousId ]) ifNil: [ id := id + 1 ] ] ].
 	(self transitionTo: newState withValue: value) value: start
 ]
 

@@ -189,7 +189,7 @@ SmaCCEndToEndTest >> testAmbiguousIncrementalParsing [
 				s << '<' ].
 
 	ast := self parserClass parse: expression.
-	self assert: ast class name = #IncLeftNode.
+	self assert: ast class name equals: #IncLeftNode.
 	oldId := ast id.
 	ast allNodesDo: [ :each | self assert: each id < oldId ].
 	ast
@@ -209,10 +209,8 @@ SmaCCEndToEndTest >> testAmbiguousIncrementalParsing [
 		assert: newAst
 		equals: (self parserClass parse: newAst completeSource asString).
 	self assert: newAst class name = #IncLeftNode.
-	newNodes := IdentitySet new.
-	newAst
-		withAllNodesDo: [ :each | each id > oldId ifTrue: [ newNodes add: each ] ].
-	self assert: newNodes size <= 5.
+	newNodes := self allNodesIn: newAst newerThan: oldId.
+	self assert: newNodes size equals: 2.
 
 	expression := expression allButLast , '>'.
 
@@ -237,11 +235,25 @@ SmaCCEndToEndTest >> testAmbiguousIncrementalParsing [
 		assert: newAst
 		equals: (self parserClass parse: newAst completeSource asString).
 	self assert: newAst class name = #IncRightNode.
-	newNodes := IdentitySet new.
-	newAst
-		withAllNodesDo: [ :each | each id > oldId ifTrue: [ newNodes add: each ] ].
+	newNodes := self allNodesIn: newAst newerThan: oldId.
 	self
-		assert: ((newNodes groupedBy: [ :each | each class name ]) at: #IncIntNode) size <= 2
+		assert: ((newNodes groupedBy: [ :each | each class name ]) at: #IncIntNode) size
+		equals: 1.
+
+	ast := self parserClass parse: expression.
+	oldId := ast id.
+	ast
+		invalidateFrom: expression size
+		to: expression size
+		inserting: 1.
+	newAst := self parserClass parse: expression allButLast , '<' previous: ast.
+	self assert: newAst class name equals: #IncLeftNode.
+	newNodes := self allNodesIn: newAst newerThan: oldId.
+	newNodes
+		do: [ :each | 
+			self
+				assert: (each class name = #IncExpNode or: [ each class name = #IncLeftNode ]) ].
+	self assert: newNodes size equals: 100
 ]
 
 { #category : 'tests' }
@@ -1462,7 +1474,7 @@ SmaCCEndToEndTest >> testIncrementalWithEmptyNode [
 
 { #category : 'tests-incremental' }
 SmaCCEndToEndTest >> testIncrementalWithErrors [
-	| parserCompiler expression ast newAst newNodes oldId ints |
+	| parserCompiler expression ast newAst newNodes oldId |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
 		defaultCategory: self class category.
 	parserCompiler
@@ -1493,13 +1505,12 @@ SmaCCEndToEndTest >> testIncrementalWithErrors [
 	newAst := self parserClass parse: '1+2+3+4+5+6+7' previous: ast.
 	self assert: newAst equals: (self parserClass parse: '1+2+3+4+5+6+7').
 	self assert: newAst class name = #IncExpressionNode.
-	newNodes := IdentitySet new.
-	newAst
-		withAllNodesDo: [ :each | each id > oldId ifTrue: [ newNodes add: each ] ].
-	self assert: newNodes size <= 5.
-	ints := (newNodes groupedBy: [ :each | each class name ]) at: #IncIntNode.
-	self assert: ints size equals: 1.
-	self assert: ints anyOne source equals: '4'
+	newNodes := self allNodesIn: newAst newerThan: oldId.
+	self assert: newNodes size equals: 2.
+	self assert: newNodes first class name equals: #IncExpressionNode.
+	self assert: newNodes first source equals: '1+2+3+4'.
+	self assert: newNodes last class name equals: #IncIntNode.
+	self assert: newNodes last source equals: '4'
 ]
 
 { #category : 'tests' }
