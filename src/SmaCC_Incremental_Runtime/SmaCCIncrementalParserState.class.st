@@ -12,19 +12,20 @@ Class {
 }
 
 { #category : 'private' }
-SmaCCIncrementalParserState >> addIdNode: node [
-	idNodes := idNodes asLinkPrepend: node.
-	self sortByStopPosition
+SmaCCIncrementalParserState >> addIdNode: node in: linkedNodes [
+	linkedNodes ifNil: [ ^ node asLink ].
+	node stopPosition <= linkedNodes value stopPosition
+		ifTrue: [ ^ linkedNodes asLinkPrepend: node ].
+	^ (self addIdNode: node in: linkedNodes nextLink)
+		asLinkPrepend: linkedNodes value
 ]
 
 { #category : 'private' }
 SmaCCIncrementalParserState >> dismissIdNodesFor: aNode [
-	| stop current |
+	| stop |
 	stop := aNode calculateStopPosition.
-	current := idNodes.
-	[ current notNil and: [ current value stopPosition < stop ] ]
-		whileTrue: [ current := current nextLink ].
-	^ current
+	[ idNodes notNil and: [ idNodes value stopPosition < stop ] ]
+		whileTrue: [ idNodes := idNodes nextLink ]
 ]
 
 { #category : 'private' }
@@ -37,14 +38,15 @@ SmaCCIncrementalParserState >> dismissPotentialNodes [
 			node := potentialNodes value.
 			(node startPosition <= node stopPosition
 				or: [ potentialNodes value incrementalState isModified ])
-				ifTrue: [ self addIdNode: node ].
+				ifTrue: [ idNodes := self addIdNode: node in: idNodes ].
 			potentialNodes := potentialNodes nextLink ]
 ]
 
 { #category : 'accessing' }
 SmaCCIncrementalParserState >> findIdForNode: aNode [
 	| current stop start |
-	current := self dismissIdNodesFor: aNode.
+	self dismissIdNodesFor: aNode.
+	current := idNodes.
 	[ current notNil
 		and: [ (stop ifNil: [ stop := aNode calculateStopPosition ])
 				>= current value stopPosition ] ]
@@ -108,19 +110,6 @@ SmaCCIncrementalParserState >> pushStart [
 { #category : 'initialization' }
 SmaCCIncrementalParserState >> setStart: aScannerState [
 	starts value: aScannerState
-]
-
-{ #category : 'private' }
-SmaCCIncrementalParserState >> sortByStopPosition [
-	| next temp current |
-	current := idNodes.
-	[ next := current nextLink.
-	next ifNil: [ ^ self ].
-	current value stopPosition > next value stopPosition ifFalse: [ ^ self ].
-	temp := current value.
-	current value: next value.
-	next value: temp.
-	current := next ] repeat
 ]
 
 { #category : 'accessing' }
