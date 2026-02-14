@@ -10,7 +10,10 @@ SmaCCParser class >> parse: aString previous: aNode [
 
 { #category : '*SmaCC_Incremental_Runtime' }
 SmaCCParser class >> parse: aString startingAt: anInteger previous: aNode [
-	^ self parse: aString startingAt: anInteger
+	| result |
+	result := self parse: aString startingAt: anInteger.
+	(result isKindOf: SmaCCParseNode) ifTrue: [ result assignIdsFrom: aNode ].
+	^ result
 ]
 
 { #category : '*SmaCC_Incremental_Runtime' }
@@ -23,5 +26,8 @@ SmaCCParser class >> parseWithErrors: aString previous: aNode [
 
 { #category : '*SmaCC_Incremental_Runtime' }
 SmaCCParser class >> parseWithErrors: aString startingAt: anInteger previous: aNode [
-	^ self parseWithErrors: aString startingAt: anInteger
+	| result |
+	result := self parseWithErrors: aString startingAt: anInteger.
+	(result isKindOf: SmaCCParseNode) ifTrue: [ result assignIdsFrom: aNode ].
+	^ result
 ]

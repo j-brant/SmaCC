@@ -146,12 +146,15 @@ SmaCCIncrementalParser >> reduce: anInteger [
 	value := self performReduceEntry: reduceEntry with: items.
 	value smaccIsNodeLike
 		ifTrue: [ incrementalState := SmaCCIncrementalNodeState new
-					startingScannerState: start copy;
+					startingScannerState: (start
+							ifNil: [ SmaCCScannerState position: -1 scope: #default ]
+							ifNotNil: [ start copy ]);
 					endingScannerState: currentState stateBeforeToken copy;
 					fromParserState: self currentState;
 					toParserState: newState;
 					lookaheadTokenEnd: currentToken stopPosition;
 					isEOF: self isEOFToken;
+					isAmbiguous: states size > 1;
 					yourself.
 			current := currentState.
 			value

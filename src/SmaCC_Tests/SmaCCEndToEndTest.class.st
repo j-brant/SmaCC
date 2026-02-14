@@ -464,6 +464,48 @@ SmaCCEndToEndTest >> testBadSmalltalkBlock [
 		raise: SmaCCParserError
 ]
 
+{ #category : 'tests-incremental' }
+SmaCCEndToEndTest >> testCharacterAfterLookahead [
+	| parserCompiler expression ast newAst count |
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	parserCompiler
+		buildDefinition: '<int> : \d+; <whitespace>: \s+;
+			%incremental;
+			%prefix Inc;
+			%suffix Node;
+			%root Program;
+			Expression : Left ''exp'' "<" ''lt'' {{Left}} | Right ''exp'' "<<" ''ltlt'' {{Right}} ;
+			Left : Left ''left'' "+" ''op'' Int ''right'' {{Exp}} | Int;
+			Right : Int ''left'' "+" ''op'' Right ''right'' {{Exp}} | Int;
+			Int : <int> ''value'' {{}};
+			'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+
+	expression := '1 + 1 < '.
+
+	ast := self parserClass parse: expression.
+	self assert: ast class name equals: #IncLeftNode.
+	ast
+		invalidateFrom: expression size
+		to: expression size
+		inserting: 1.
+	newAst := self parserClass parse: '1 + 1 <<' previous: ast.
+	self
+		assert: newAst
+		equals: (self parserClass parse: newAst completeSource asString).
+	self assert: newAst class name = #IncRightNode.
+	count := 0.
+	newAst
+		withAllNodesDo: [ :each | 
+			count := count + 1.
+			self
+				assert: (#(IncRightNode IncExpNode IncIntNode) includes: each class name) ]
+		andTokensDo: nil
+		includesErrors: true.
+	self assert: count equals: 4
+]
+
 { #category : 'tests' }
 SmaCCEndToEndTest >> testCharacterBlockWithMinusAtBeginning [
 	| parserCompiler |
