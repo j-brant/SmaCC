@@ -8,6 +8,39 @@ SmaCCParseNode >> assignIdUsing: aBlock [
 ]
 
 { #category : '*SmaCC_Incremental_Runtime' }
+SmaCCParseNode >> assignIdsFrom: previousNode [
+	| maxId map |
+	maxId := 0.
+	map := Dictionary new.
+	previousNode
+		ifNotNil: [ previousNode
+				withAllNodesDo: [ :each | 
+					(each attributeNamed: #id)
+						ifNotNil: [ :id | 
+							maxId := maxId max: id.
+							map
+								at: {each class.
+										each sourceInterval}
+								put: id ] ]
+				andTokensDo: nil
+				includesErrors: true ].
+	self
+		withAllNodesDo: [ :each | 
+			each
+				id: (map
+						at: {each class.
+								each sourceInterval}
+						ifAbsent: [ maxId := maxId + 1 ]);
+				incrementalState: (SmaCCIncrementalNodeState new
+						startingScannerState: (SmaCCScannerState position: each startPosition scope: #default);
+						endingScannerState: (SmaCCScannerState position: each stopPosition scope: #default);
+						lookaheadTokenEnd: each stopPosition;
+						yourself) ]
+		andTokensDo: nil
+		includesErrors: true
+]
+
+{ #category : '*SmaCC_Incremental_Runtime' }
 SmaCCParseNode >> id [
 	^ self attributeNamed: #id ifAbsent: [ 0 ]
 ]
@@ -50,7 +83,7 @@ SmaCCParseNode >> invalidateFrom: fromIndex to: toIndex inserting: length [
 	minIndex := fromIndex min: toIndex.
 	maxIndex := fromIndex max: toIndex.
 	(incrementalState isNil
-		or: [ incrementalState lookaheadTokenEnd >= (fromIndex min: toIndex) ])
+		or: [ incrementalState lookaheadTokenEnd + 1 >= fromIndex ])
 		ifTrue: [ self
 				nodesDo: [ :each | 
 					each
@@ -63,10 +96,10 @@ SmaCCParseNode >> invalidateFrom: fromIndex to: toIndex inserting: length [
 				includeErrors: true ].
 	incrementalState ifNil: [ ^ self ].
 	(maxIndex > incrementalState startingScannerState position
-		and: [ fromIndex <= incrementalState lookaheadTokenEnd or: [ incrementalState isEOF ] ])
+		and: [ fromIndex - 1 <= incrementalState lookaheadTokenEnd or: [ incrementalState isEOF ] ])
 		ifTrue: [ toIndex < start
 				ifTrue: [ incrementalState isModifiedBefore: true ]
-				ifFalse: [ toIndex > stop
+				ifFalse: [ fromIndex > stop
 						ifTrue: [ incrementalState isModifiedAfter: true ]
 						ifFalse: [ modifiedToken ifTrue: [ ^ self removeAttributeNamed: #incrementalState ].
 							incrementalState isModifiedInside: true ] ] ].

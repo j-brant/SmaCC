@@ -13,6 +13,11 @@ Class {
 	#package : 'SmaCC_Incremental_Runtime'
 }
 
+{ #category : 'private' }
+SmaCCIncrementalNodeState >> ambiguousFlag [
+	^ 2r1000000000
+]
+
 { #category : 'accessing' }
 SmaCCIncrementalNodeState >> endingScannerState [
 	^ endingScannerState
@@ -42,6 +47,16 @@ SmaCCIncrementalNodeState >> fromParserState: anObject [
 SmaCCIncrementalNodeState >> initialize [
 	super initialize.
 	flags := 0
+]
+
+{ #category : 'accessing' }
+SmaCCIncrementalNodeState >> isAmbiguous [
+	^ self isSet: self ambiguousFlag
+]
+
+{ #category : 'accessing' }
+SmaCCIncrementalNodeState >> isAmbiguous: aBoolean [
+	self setFlag: self ambiguousFlag to: aBoolean
 ]
 
 { #category : 'accessing' }

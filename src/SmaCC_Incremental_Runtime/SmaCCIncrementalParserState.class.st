@@ -21,23 +21,17 @@ SmaCCIncrementalParserState >> addIdNode: node in: linkedNodes [
 ]
 
 { #category : 'private' }
-SmaCCIncrementalParserState >> dismissIdNodesFor: aNode [
-	| stop |
-	stop := aNode calculateStopPosition.
-	[ idNodes notNil and: [ idNodes value stopPosition < stop ] ]
-		whileTrue: [ idNodes := idNodes nextLink ]
-]
-
-{ #category : 'private' }
 SmaCCIncrementalParserState >> dismissPotentialNodes [
 	[ potentialNodes notNil
 		and: [ potentialNodes value incrementalState startingScannerState position
 				< scannerState position
-				or: [ potentialNodes value incrementalState isModified ] ] ]
+				or: [ potentialNodes value incrementalState isModified
+						or: [ potentialNodes value incrementalState isAmbiguous ] ] ] ]
 		whileTrue: [ | node |
 			node := potentialNodes value.
 			(node startPosition <= node stopPosition
-				or: [ potentialNodes value incrementalState isModified ])
+				or: [ potentialNodes value incrementalState isModified
+						or: [ potentialNodes value incrementalState isAmbiguous ] ])
 				ifTrue: [ idNodes := self addIdNode: node in: idNodes ].
 			potentialNodes := potentialNodes nextLink ]
 ]
@@ -45,11 +39,11 @@ SmaCCIncrementalParserState >> dismissPotentialNodes [
 { #category : 'accessing' }
 SmaCCIncrementalParserState >> findIdForNode: aNode [
 	| current stop start |
-	self dismissIdNodesFor: aNode.
+	stop := aNode calculateStopPosition.
+	[ idNodes notNil and: [ idNodes value stopPosition < stop ] ]
+		whileTrue: [ idNodes := idNodes nextLink ].
 	current := idNodes.
-	[ current notNil
-		and: [ (stop ifNil: [ stop := aNode calculateStopPosition ])
-				>= current value stopPosition ] ]
+	[ current notNil and: [ stop >= current value stopPosition ] ]
 		whileTrue: [ (stop = current value stopPosition
 				and: [ aNode class = current value class
 						and: [ (start ifNil: [ start := aNode calculateStartPosition ])
