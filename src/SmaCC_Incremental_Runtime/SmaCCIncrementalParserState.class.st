@@ -24,7 +24,7 @@ SmaCCIncrementalParserState >> addIdNode: node in: linkedNodes [
 SmaCCIncrementalParserState >> dismissPotentialNodes [
 	[ potentialNodes notNil
 		and: [ potentialNodes value incrementalState startingScannerState position
-				< scannerState position
+				< stateBeforeToken position
 				or: [ potentialNodes value incrementalState isModified
 						or: [ potentialNodes value incrementalState isAmbiguous ] ] ] ]
 		whileTrue: [ | node |
@@ -99,11 +99,6 @@ SmaCCIncrementalParserState >> potentialNodes: anObject [
 { #category : 'accessing' }
 SmaCCIncrementalParserState >> pushStart [
 	^ starts := starts asLinkPrepend: nil
-]
-
-{ #category : 'initialization' }
-SmaCCIncrementalParserState >> setStart: aScannerState [
-	starts value: aScannerState
 ]
 
 { #category : 'accessing' }

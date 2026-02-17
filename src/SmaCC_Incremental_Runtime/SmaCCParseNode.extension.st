@@ -17,11 +17,14 @@ SmaCCParseNode >> assignIdsFrom: previousNode [
 				withAllNodesDo: [ :each | 
 					(each attributeNamed: #id)
 						ifNotNil: [ :id | 
+							| sourceInterval |
 							maxId := maxId max: id.
-							map
-								at: {each class.
-										each sourceInterval}
-								put: id ] ]
+							sourceInterval := each sourceInterval.
+							sourceInterval stop > 0
+								ifTrue: [ map
+										at: {each class.
+												sourceInterval}
+										put: id ] ] ]
 				andTokensDo: nil
 				includesErrors: true ].
 	self
