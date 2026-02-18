@@ -2597,6 +2597,39 @@ SmaCCEndToEndTest >> testReduceRules [
 	self assert: (self parserClass parse: '   a ') = 'a'
 ]
 
+{ #category : 'tests-parse tree creation' }
+SmaCCEndToEndTest >> testRemoveVariablesFromNodes [
+	| parserCompiler class |
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	parserCompiler
+		buildDefinition: '<number> : \d+; <whitespace> : \s+; 
+			%root Parse ; %prefix Foo; %suffix Node; 
+			%left "+" "-" ;
+			If : "if" ''if'' number ''condition'' "then" ''then'' number ''thenValue'' {{If}}
+				| "if" ''if'' number ''condition'' "then" ''then'' number ''thenValue'' "else" ''else'' number ''elseValue'' {{If}};
+			number : <number> ''value'' {{}};'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+	class := #FooIfNode asClass.
+	self
+		assert: class instVarNames asSortedCollection asArray
+		equals: #('condition' 'else' 'elseValue' 'if' 'then' 'thenValue').
+
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	parserCompiler
+		buildDefinition: '<number> : \d+; <whitespace> : \s+; 
+			%root Parse ; %prefix Foo; %suffix Node; 
+			%left "+" "-" ;
+			If : "if" ''if'' number ''condition'' "then" ''then'' number ''thenValue'' {{If}};
+			number : <number> ''value'' {{}};'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+	class := #FooIfNode asClass.
+	self
+		assert: class instVarNames asSortedCollection asArray
+		equals: #('condition' 'if' 'then' 'thenValue')
+]
+
 { #category : 'public' }
 SmaCCEndToEndTest >> testRenamedNullableVariable [
 	| compiler node |
