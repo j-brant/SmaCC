@@ -46,8 +46,8 @@ SmaCCIncrementalParser >> checkPreviousParse [
 			scanner restoreState: incrementalState endingScannerState.
 			currentState scannerState: incrementalState endingScannerState.
 			currentToken := nil.
-			self transitionTo: incrementalState toParserState withValue: node.
-			currentState setStart: incrementalState startingScannerState ]
+			(self transitionTo: incrementalState toParserState withValue: node)
+				value: incrementalState startingScannerState ]
 ]
 
 { #category : 'private' }
@@ -59,7 +59,7 @@ SmaCCIncrementalParser >> computePotentialNodes [
 	states do: [ :each | each potentialNodes: potentialNodes ]
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'error handling' }
 SmaCCIncrementalParser >> createErrorNode: aToken stack: stackContents dismissed: dismissedTokens [
 	| node |
 	node := super
@@ -85,6 +85,14 @@ SmaCCIncrementalParser >> getNextToken [
 	currentToken
 		ifNil: [ currentState stateBeforeToken: currentState scannerState ].
 	^ super getNextToken
+]
+
+{ #category : 'private' }
+SmaCCIncrementalParser >> initialParserState [
+	| result |
+	result := super initialParserState.
+	result stateBeforeToken: scanner currentState.
+	^ result
 ]
 
 { #category : 'initialize-release' }
@@ -179,6 +187,7 @@ SmaCCIncrementalParser >> setStartingStatesIfNone [
 SmaCCIncrementalParser >> shift: stateIndex [
 	| value |
 	value := currentState stateBeforeToken.
+	currentState stateBeforeToken: currentState scannerState.
 	(self transitionTo: stateIndex withValue: currentToken) value: value.
 	currentToken := nil
 ]

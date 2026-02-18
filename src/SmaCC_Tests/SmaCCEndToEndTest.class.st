@@ -1720,6 +1720,36 @@ SmaCCEndToEndTest >> testLeftRecursive [
 	(self lookupType: #FooParseNodeVisitor) new acceptNode: node
 ]
 
+{ #category : 'tests-incremental' }
+SmaCCEndToEndTest >> testList [
+	| parserCompiler expression ast newAst newNodes lastId |
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	parserCompiler
+		buildDefinition: '<int> : \d+; <whitespace>: \s+;
+			%incremental;
+			%prefix Inc;
+			%suffix Node;
+			%root Program;
+			Ints : "<" ''left'' Int ''value''* ">" ''right'' {{}};
+			Int : <int> ''value'' {{}};
+			'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+
+	expression := '< 1 2 3 '.
+
+	ast := self parserClass parseWithErrors: expression.
+	lastId := ast id.
+
+	ast
+		invalidateFrom: expression size + 1
+		to: expression size
+		inserting: 3.
+	newAst := self parserClass parse: '< 1 2 3 4 >' previous: ast.
+	self assert: newAst equals: (self parserClass parse: '< 1 2 3 4 >').
+	self assert: newAst values size equals: 4
+]
+
 { #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testMatchCollection [
 	| parserCompiler node |
