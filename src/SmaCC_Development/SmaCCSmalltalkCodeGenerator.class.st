@@ -624,7 +624,7 @@ SmaCCSmalltalkCodeGenerator >> defineClass: aString asSubclassOf: aBehavior [
 						superclassName: aBehavior name;
 						name: aString asSymbol;
 						package: self packageName;
-						slots: (current instVarNames collect: #asSymbol) asArray.
+						slots: ((variables substrings: ' ') collect: #asSymbol) asArray.
 					self tagName ifNotNil: [ :tag | builder tag: tag asSymbol ] ] ]
 		ifFalse: [ model
 				defineClass: aBehavior name , ' subclass: #' , aString , ' instanceVariableNames: '''
