@@ -447,6 +447,15 @@ SmaCCParser >> checkForErrors [
 	self reportErrorMessage: 'Token not expected' resumable: true
 ]
 
+{ #category : 'accessing' }
+SmaCCParser >> columnNumber [
+	"Only works if you are using a line number stream"
+
+	^ currentToken
+		ifNil: [ scanner columnNumber ]
+		ifNotNil: [ scanner stream columnNumberFor: currentToken startPosition ]
+]
+
 { #category : 'initialize-release' }
 SmaCCParser >> createDefaultErrorHandlers [
 	(self hasStateThatShifts: self errorTokenId)
@@ -607,6 +616,15 @@ SmaCCParser >> liftLastValue: aCollection [
 { #category : 'standard reduction rules' }
 SmaCCParser >> liftSecondValue: aCollection [
 	^ aCollection at: 2
+]
+
+{ #category : 'accessing' }
+SmaCCParser >> lineNumber [
+	"Only works if you are using a line number stream"
+
+	^ currentToken
+		ifNil: [ scanner lineNumber ]
+		ifNotNil: [ scanner stream lineNumberFor: currentToken startPosition ]
 ]
 
 { #category : 'standard reduction rules' }
