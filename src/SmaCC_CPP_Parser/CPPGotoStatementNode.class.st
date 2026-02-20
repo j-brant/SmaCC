@@ -1,50 +1,52 @@
 Class {
-	#name : #CPPGotoStatementNode,
-	#superclass : #CPPStatementNode,
+	#name : 'CPPGotoStatementNode',
+	#superclass : 'CPPStatementNode',
 	#instVars : [
 		'gotoToken',
 		'label',
 		'semicolon'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPGotoStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitGotoStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPGotoStatementNode >> gotoToken [
 	^ gotoToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPGotoStatementNode >> gotoToken: aSmaCCToken [
 	gotoToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPGotoStatementNode >> label [
 	^ label
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPGotoStatementNode >> label: aSmaCCToken [
 	label := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPGotoStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPGotoStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPGotoStatementNode >> tokenVariables [
 	^ #(#gotoToken #label #semicolon)
 ]

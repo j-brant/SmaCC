@@ -1,63 +1,65 @@
 Class {
-	#name : #CPPCompoundStatementNode,
-	#superclass : #CPPStatementNode,
+	#name : 'CPPCompoundStatementNode',
+	#superclass : 'CPPStatementNode',
 	#instVars : [
 		'leftBrace',
 		'rightBrace',
 		'statements'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCompoundStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCompoundStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCompoundStatementNode >> compositeNodeVariables [
 	^ #(#statements #specifiers)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPCompoundStatementNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCompoundStatementNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCompoundStatementNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCompoundStatementNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCompoundStatementNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCompoundStatementNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCompoundStatementNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCompoundStatementNode >> tokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]

@@ -1,24 +1,26 @@
 Class {
-	#name : #CPPConversionDeclaratorNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPConversionDeclaratorNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'operator',
 		'declarator'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionDeclaratorNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitConversionDeclarator: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionDeclaratorNode >> declarator [
 	^ declarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionDeclaratorNode >> declarator: aCPPConversionDeclaratorNode [
 	self declarator notNil
 		ifTrue: [ self declarator parent: nil ].
@@ -27,17 +29,17 @@ CPPConversionDeclaratorNode >> declarator: aCPPConversionDeclaratorNode [
 		ifTrue: [ self declarator parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionDeclaratorNode >> nodeVariables [
 	^ #(#operator #declarator)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionDeclaratorNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionDeclaratorNode >> operator: aCPPPointerOperatorNode [
 	self operator notNil
 		ifTrue: [ self operator parent: nil ].

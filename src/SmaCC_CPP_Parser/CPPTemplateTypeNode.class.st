@@ -1,25 +1,27 @@
 Class {
-	#name : #CPPTemplateTypeNode,
-	#superclass : #CPPTypeNode,
+	#name : 'CPPTemplateTypeNode',
+	#superclass : 'CPPTypeNode',
 	#instVars : [
 		'nameSpecifier',
 		'templateToken',
 		'templateIdentifier'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTemplateType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateTypeNode >> nameSpecifier [
 	^ nameSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateTypeNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 	self nameSpecifier notNil
 		ifTrue: [ self nameSpecifier parent: nil ].
@@ -28,17 +30,17 @@ CPPTemplateTypeNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 		ifTrue: [ self nameSpecifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateTypeNode >> nodeVariables [
 	^ #(#nameSpecifier #templateIdentifier)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateTypeNode >> templateIdentifier [
 	^ templateIdentifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateTypeNode >> templateIdentifier: aCPPTemplateIdentifierNode [
 	self templateIdentifier notNil
 		ifTrue: [ self templateIdentifier parent: nil ].
@@ -47,17 +49,17 @@ CPPTemplateTypeNode >> templateIdentifier: aCPPTemplateIdentifierNode [
 		ifTrue: [ self templateIdentifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateTypeNode >> templateToken [
 	^ templateToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateTypeNode >> templateToken: aSmaCCToken [
 	templateToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateTypeNode >> tokenVariables [
 	^ #(#templateToken)
 ]

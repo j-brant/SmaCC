@@ -1,14 +1,16 @@
 Class {
-	#name : #CPPPreprocessedFile,
-	#superclass : #Object,
+	#name : 'CPPPreprocessedFile',
+	#superclass : 'Object',
 	#instVars : [
 		'files',
 		'source'
 	],
-	#category : #'SmaCC_CPP_Parser-Preprocessor'
+	#category : 'SmaCC_CPP_Parser-Preprocessor',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'Preprocessor'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessedFile >> append: aString from: startIndex to: endIndex [
 	| interval |
 	interval := SmaCCStringInterval
@@ -19,7 +21,7 @@ CPPPreprocessedFile >> append: aString from: startIndex to: endIndex [
 	source appendInterval: interval
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessedFile >> directoryForSource: aString [
 	files
 		do: [ :assoc | 
@@ -28,14 +30,14 @@ CPPPreprocessedFile >> directoryForSource: aString [
 	^ nil
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 CPPPreprocessedFile >> initialize [
 	super initialize.
 	files := OrderedCollection new.
 	source := SmaCCString new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessedFile >> intervalIdFor: aString [
 	1 to: files size do: [ :i | 
 		(files at: i) value == aString
@@ -44,7 +46,7 @@ CPPPreprocessedFile >> intervalIdFor: aString [
 	^ files size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessedFile >> loadFile: aFilename [
 	| code |
 	code := self sourceFor: aFilename.
@@ -52,17 +54,17 @@ CPPPreprocessedFile >> loadFile: aFilename [
 	^ code
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessedFile >> originalSource [
 	^ files first value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessedFile >> smaccString [
 	^ source
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessedFile >> sourceFor: aFilename [
 	| encoding fileRef |
 	fileRef := aFilename asFileReference.
@@ -76,17 +78,17 @@ CPPPreprocessedFile >> sourceFor: aFilename [
 			stream contents ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessedFile >> sourceString [
 	^ source asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessedFile >> startPositionFor: anInteger [
 	^ source originalStartPositionFor: anInteger
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessedFile >> stopPositionFor: anInteger [
 	^ source originalStopPositionFor: anInteger
 ]

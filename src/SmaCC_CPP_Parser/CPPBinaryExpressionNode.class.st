@@ -1,25 +1,27 @@
 Class {
-	#name : #CPPBinaryExpressionNode,
-	#superclass : #CPPExpressionNode,
+	#name : 'CPPBinaryExpressionNode',
+	#superclass : 'CPPExpressionNode',
 	#instVars : [
 		'left',
 		'operator',
 		'right'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBinaryExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBinaryExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBinaryExpressionNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBinaryExpressionNode >> left: aCPPExpressionNode [
 	self left notNil
 		ifTrue: [ self left parent: nil ].
@@ -28,27 +30,27 @@ CPPBinaryExpressionNode >> left: aCPPExpressionNode [
 		ifTrue: [ self left parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBinaryExpressionNode >> nodeVariables [
 	^ #(#left #right)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBinaryExpressionNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBinaryExpressionNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBinaryExpressionNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBinaryExpressionNode >> right: aCPPExpressionNode [
 	self right notNil
 		ifTrue: [ self right parent: nil ].
@@ -57,7 +59,7 @@ CPPBinaryExpressionNode >> right: aCPPExpressionNode [
 		ifTrue: [ self right parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBinaryExpressionNode >> tokenVariables [
 	^ #(#operator)
 ]
