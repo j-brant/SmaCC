@@ -115,6 +115,13 @@ SmaCCScanner >> checkForValidMatch [
 		ifTrue: [ self scannerError ]
 ]
 
+{ #category : 'accessing' }
+SmaCCScanner >> columnNumber [
+	"This requires the stream to be a line number stream (see the #needsLineNumbers class method)."
+
+	^ stream columnNumber
+]
+
 { #category : 'default token handling' }
 SmaCCScanner >> comment [
 	comments add: (Array with: start + 1 with: matchEnd).
