@@ -5,7 +5,6 @@ Class {
 		'leftParen',
 		'stab',
 		'rightParen',
-		'semis',
 		'semi'
 	],
 	#category : 'SmaCC_Elixir_Parser',

@@ -4,8 +4,9 @@ Class {
 	#instVars : [
 		'leftCurly',
 		'rightCurly',
-		'association',
-		'com'
+		'kw',
+		'associations',
+		'coms'
 	],
 	#category : 'SmaCC_Elixir_Parser',
 	#package : 'SmaCC_Elixir_Parser'
@@ -17,25 +18,54 @@ ElixirMapArgsNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : 'generated' }
-ElixirMapArgsNode >> association [
-	^ association
+ElixirMapArgsNode >> associations [
+	^ associations
 ]
 
 { #category : 'generated' }
-ElixirMapArgsNode >> association: anElixirProgramNode [
-	self association notNil ifTrue: [ self association parent: nil ].
-	association := anElixirProgramNode.
-	self association notNil ifTrue: [ self association parent: self ]
+ElixirMapArgsNode >> associations: anOrderedCollection [
+	self setParents: self associations to: nil.
+	associations := anOrderedCollection.
+	self setParents: self associations to: self
 ]
 
 { #category : 'generated' }
-ElixirMapArgsNode >> com [
-	^ com
+ElixirMapArgsNode >> compositeNodeVariables [
+	^ #(#associations)
 ]
 
 { #category : 'generated' }
-ElixirMapArgsNode >> com: aSmaCCToken [
-	com := aSmaCCToken
+ElixirMapArgsNode >> compositeTokenVariables [
+	^ #(#coms)
+]
+
+{ #category : 'generated' }
+ElixirMapArgsNode >> coms [
+	^ coms
+]
+
+{ #category : 'generated' }
+ElixirMapArgsNode >> coms: anOrderedCollection [
+	coms := anOrderedCollection
+]
+
+{ #category : 'generated-initialize-release' }
+ElixirMapArgsNode >> initialize [
+	super initialize.
+	associations := OrderedCollection new: 2.
+	coms := OrderedCollection new: 2.
+]
+
+{ #category : 'generated' }
+ElixirMapArgsNode >> kw [
+	^ kw
+]
+
+{ #category : 'generated' }
+ElixirMapArgsNode >> kw: anElixirKwNode [
+	self kw notNil ifTrue: [ self kw parent: nil ].
+	kw := anElixirKwNode.
+	self kw notNil ifTrue: [ self kw parent: self ]
 ]
 
 { #category : 'generated' }
@@ -50,12 +80,7 @@ ElixirMapArgsNode >> leftCurly: aSmaCCToken [
 
 { #category : 'generated' }
 ElixirMapArgsNode >> nodeVariables [
-	^ #(#association)
-]
-
-{ #category : 'generated' }
-ElixirMapArgsNode >> otherVariables [
-	^ #(#rightCurly)
+	^ #(#kw)
 ]
 
 { #category : 'generated' }
@@ -64,13 +89,11 @@ ElixirMapArgsNode >> rightCurly [
 ]
 
 { #category : 'generated' }
-ElixirMapArgsNode >> rightCurly: anObject [
-	self setParent: self rightCurly to: nil.
-	rightCurly := anObject.
-	self setParent: self rightCurly to: self
+ElixirMapArgsNode >> rightCurly: aSmaCCToken [
+	rightCurly := aSmaCCToken
 ]
 
 { #category : 'generated' }
 ElixirMapArgsNode >> tokenVariables [
-	^ #(#leftCurly #com)
+	^ #(#leftCurly #rightCurly)
 ]
