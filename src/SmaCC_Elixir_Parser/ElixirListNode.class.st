@@ -3,7 +3,7 @@ Class {
 	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'leftBracket',
-		'close',
+		'rightBracket',
 		'args'
 	],
 	#category : 'SmaCC_Elixir_Parser',
@@ -28,16 +28,6 @@ ElixirListNode >> args: anElixirListArgsNode [
 ]
 
 { #category : 'generated' }
-ElixirListNode >> close [
-	^ close
-]
-
-{ #category : 'generated' }
-ElixirListNode >> close: aSmaCCToken [
-	close := aSmaCCToken
-]
-
-{ #category : 'generated' }
 ElixirListNode >> leftBracket [
 	^ leftBracket
 ]
@@ -53,6 +43,16 @@ ElixirListNode >> nodeVariables [
 ]
 
 { #category : 'generated' }
+ElixirListNode >> rightBracket [
+	^ rightBracket
+]
+
+{ #category : 'generated' }
+ElixirListNode >> rightBracket: aSmaCCToken [
+	rightBracket := aSmaCCToken
+]
+
+{ #category : 'generated' }
 ElixirListNode >> tokenVariables [
-	^ #(#leftBracket #close)
+	^ #(#leftBracket #rightBracket)
 ]

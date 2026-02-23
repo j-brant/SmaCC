@@ -269,11 +269,6 @@ TElixirProgramNodeVisitor >> visitMapArgs: aMapArgs [
 ]
 
 { #category : 'generated' }
-TElixirProgramNodeVisitor >> visitMapClose: aMapClose [
-	^ self visitProgram: aMapClose
-]
-
-{ #category : 'generated' }
 TElixirProgramNodeVisitor >> visitMatchedExpr: aMatchedExpr [
 	^ self visitProgram: aMatchedExpr
 ]
