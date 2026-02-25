@@ -7,7 +7,8 @@ Class {
 		'name',
 		'leftBrace',
 		'elements',
-		'rightBrace'
+		'rightBrace',
+		'namespaceToken'
 	],
 	#category : 'SmaCC_Javascript_Parser',
 	#package : 'SmaCC_Javascript_Parser'
@@ -87,6 +88,16 @@ JSAmbientModuleDeclarationNode >> name: aSmaCCToken [
 ]
 
 { #category : 'generated' }
+JSAmbientModuleDeclarationNode >> namespaceToken [
+	^ namespaceToken
+]
+
+{ #category : 'generated' }
+JSAmbientModuleDeclarationNode >> namespaceToken: aSmaCCToken [
+	namespaceToken := aSmaCCToken
+]
+
+{ #category : 'generated' }
 JSAmbientModuleDeclarationNode >> rightBrace [
 	^ rightBrace
 ]
@@ -98,5 +109,5 @@ JSAmbientModuleDeclarationNode >> rightBrace: aSmaCCToken [
 
 { #category : 'generated' }
 JSAmbientModuleDeclarationNode >> tokenVariables [
-	^ #(#declareToken #moduleToken #name)
+	^ #(#declareToken #moduleToken #name #namespaceToken)
 ]
