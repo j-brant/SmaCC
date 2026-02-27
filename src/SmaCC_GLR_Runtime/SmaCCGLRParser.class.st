@@ -500,6 +500,12 @@ SmaCCGLRParser >> reduceActionsDo: aBlock [
 ]
 
 { #category : 'private' }
+SmaCCGLRParser >> restoreScannerState: scannerState [
+	super restoreScannerState: scannerState.
+	currentState scannerState: scannerState
+]
+
+{ #category : 'private' }
 SmaCCGLRParser >> restoreState: aSmaCCParserState [
 	currentState := aSmaCCParserState.
 	nodeStack := aSmaCCParserState nodeStack.

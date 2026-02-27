@@ -650,13 +650,13 @@ SmaCCParser >> parse [
 
 { #category : 'private' }
 SmaCCParser >> peekNextToken [
-	| token position lookahead |
+	| token lookahead scannerState |
 	token := currentToken.
 	currentToken := nil.
-	position := scanner position.
+	scannerState := scanner currentState.
 	self getNextToken.
 	lookahead := currentToken.
-	self position: position.
+	self restoreScannerState: scannerState.
 	currentToken := token.
 	^ lookahead
 ]
@@ -789,6 +789,11 @@ SmaCCParser >> reportErrorMessage: aString resumable: aBoolean [
 		messageText: aString;
 		parser: self;
 		signal
+]
+
+{ #category : 'private' }
+SmaCCParser >> restoreScannerState: scannerState [
+	scanner restoreState: scannerState
 ]
 
 { #category : 'accessing' }
