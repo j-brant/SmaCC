@@ -1,50 +1,52 @@
 Class {
-	#name : #CPPPointerOperatorNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPPointerOperatorNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'operator',
 		'cvQualifiers',
 		'specifiers',
 		'nameSpecifier'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPointerOperatorNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPointerOperator: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPointerOperatorNode >> compositeNodeVariables [
 	^ #(#cvQualifiers #specifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPointerOperatorNode >> cvQualifiers [
 	^ cvQualifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPointerOperatorNode >> cvQualifiers: anOrderedCollection [
 	self setParents: self cvQualifiers to: nil.
 	cvQualifiers := anOrderedCollection.
 	self setParents: self cvQualifiers to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPPointerOperatorNode >> initialize [
 	super initialize.
 	cvQualifiers := OrderedCollection new: 2.
 	specifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPointerOperatorNode >> nameSpecifier [
 	^ nameSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPointerOperatorNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 	self nameSpecifier notNil
 		ifTrue: [ self nameSpecifier parent: nil ].
@@ -53,34 +55,34 @@ CPPPointerOperatorNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 		ifTrue: [ self nameSpecifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPointerOperatorNode >> nodeVariables [
 	^ #(#nameSpecifier)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPointerOperatorNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPointerOperatorNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPointerOperatorNode >> specifiers [
 	^ specifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPointerOperatorNode >> specifiers: anOrderedCollection [
 	self setParents: self specifiers to: nil.
 	specifiers := anOrderedCollection.
 	self setParents: self specifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPointerOperatorNode >> tokenVariables [
 	^ #(#operator)
 ]
