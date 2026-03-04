@@ -961,19 +961,18 @@ SmaCCSmalltalkCodeGenerator >> outputStreamClass [
 { #category : 'accessing' }
 SmaCCSmalltalkCodeGenerator >> packageName [
 	defaultCategory ifNil: [ ^ self defaultPackageName ].
-	^ self packageNameFrom: defaultCategory
+	^ (self packageNameFrom: defaultCategory) ifNil: [ defaultCategory ]
 ]
 
 { #category : 'accessing' }
 SmaCCSmalltalkCodeGenerator >> packageNameFrom: aString [
-	self class packageOrganizer
+	^ (self class packageOrganizer
 		packageNamed: aString asSymbol
-		ifAbsent: [ | index |
+		ifPresent: [ :pkg | aString ])
+		ifNil: [ | index |
 			index := aString lastIndexOf: $-.
-			^ index > 1
-				ifTrue: [ self packageNameFrom: (aString first: index - 1) ]
-				ifFalse: [ aString ] ].
-	^ aString
+			index > 1
+				ifTrue: [ (self packageNameFrom: (aString first: index - 1)) ifNotNil: [ :name | name ] ] ]
 ]
 
 { #category : 'reduction table' }
@@ -1318,7 +1317,7 @@ SmaCCSmalltalkCodeGenerator >> superMessage: aString argument: firstArgumentStri
 SmaCCSmalltalkCodeGenerator >> tagName [
 	| packageName |
 	defaultCategory ifNil: [ ^ nil ].
-	packageName := self packageNameFrom: defaultCategory.
+	packageName := self packageName.
 	^ packageName = defaultCategory
 		ifFalse: [ defaultCategory allButFirst: packageName size + 1 ]
 ]
