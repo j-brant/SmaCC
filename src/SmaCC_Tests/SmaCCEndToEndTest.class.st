@@ -800,6 +800,28 @@ SmaCCEndToEndTest >> testComments [
 ]
 
 { #category : 'tests-parse tree creation' }
+SmaCCEndToEndTest >> testCompileIntoNewPackage [
+	| compiler package |
+	compiler := SmaCCGrammarCompiler new.
+	compiler codeGenerator defaultCategory: 'Test123-Package321'.
+	[ compiler
+		buildDefinition: '<int> : \d+;
+			<whitespace> : \s+;
+			File : <int>+;'.
+	compiler compileInto: 'Test123Scanner' andParser: 'Test123Parser'.
+	self assert: #Test123Parser asClass package name equals: 'Test123-Package321' ]
+		ensure: [ Smalltalk globals
+				at: #Test123Parser
+				ifPresent: [ :class | 
+					package := class package.
+					class removeFromSystem ].
+			Smalltalk globals
+				at: #Test123Scanner
+				ifPresent: [ :class | class removeFromSystem ].
+			package ifNotNil: [ package removeFromSystem ] ]
+]
+
+{ #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testCopyCollection [
 	| parserCompiler node |
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
