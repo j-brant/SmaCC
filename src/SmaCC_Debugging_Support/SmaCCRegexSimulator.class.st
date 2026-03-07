@@ -89,6 +89,16 @@ SmaCCRegexSimulator >> matchesOn: aString do: aBlock [
 		aBlock value: i value: (self matchedNodesFrom: states) ]
 ]
 
+{ #category : 'testing' }
+SmaCCRegexSimulator >> matchesString: aString [
+	self
+		matchesOn: aString
+		do: [ :index :nodes | 
+			(index = aString size and: [ nodes notNil ])
+				ifTrue: [ ^ nodes anySatisfy: [ :each | each isTokenRule ] ] ].
+	^ false
+]
+
 { #category : 'private' }
 SmaCCRegexSimulator >> moveFrom: stateCollection on: aCharacter [
 	| newStates |
