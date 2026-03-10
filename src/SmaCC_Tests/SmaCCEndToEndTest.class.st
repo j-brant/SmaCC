@@ -72,7 +72,7 @@ SmaCCEndToEndTest >> lookupType: className [
 
 { #category : 'private' }
 SmaCCEndToEndTest >> package [
-	^ RPackageOrganizer default packageNamed: self class category
+	^ self class packageOrganizer packageNamed: self class category
 ]
 
 { #category : 'private' }
