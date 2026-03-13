@@ -1772,6 +1772,41 @@ SmaCCEndToEndTest >> testList [
 	self assert: newAst values size equals: 4
 ]
 
+{ #category : 'tests-incremental' }
+SmaCCEndToEndTest >> testLiteralArray [
+	| parserCompiler expression ast newAst newNodes lastId |
+	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
+		defaultCategory: self class category.
+	parserCompiler
+		buildDefinition: '<int> : \d+; <whitespace>: \s+;
+			%incremental;
+			%prefix Inc;
+			%suffix Node;
+			%root Program;
+			Array : "#(" ''left'' ArrayValues ")" ''right'' {{}};
+			ArrayValues : | ArrayValues Int ''value'' | ArrayValues Array ''value'';
+			Int : <int> ''value'' {{}};
+			'.
+	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
+
+	expression := '#(#(1 2 3) #(4 5 6) #( #(7 8 9))'.
+
+	ast := self parserClass parseWithErrors: expression.
+	lastId := ast id.
+
+	ast
+		invalidateFrom: 23
+		to: 22
+		inserting: 1.
+	newAst := self parserClass
+			parse: '#(#(1 2 3) #(4 5 6) #() #(7 8 9))'
+			previous: ast.
+	self
+		assert: newAst
+		equals: (self parserClass parse: '#(#(1 2 3) #(4 5 6) #() #(7 8 9))').
+	self assert: newAst values size equals: 4
+]
+
 { #category : 'tests-parse tree creation' }
 SmaCCEndToEndTest >> testMatchCollection [
 	| parserCompiler node |

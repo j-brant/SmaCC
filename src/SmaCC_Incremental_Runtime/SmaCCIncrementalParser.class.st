@@ -168,7 +168,10 @@ SmaCCIncrementalParser >> reduce: anInteger [
 			value
 				incrementalState: incrementalState;
 				assignIdUsing: [ :node :previousId | ((current findIdForNode: node) ifNil: [ previousId ]) ifNil: [ id := id + 1 ] ] ].
-	(self transitionTo: newState withValue: value) value: start
+	self
+		transitionTo: newState
+		withValue: value
+		start: start
 ]
 
 { #category : 'private' }
@@ -211,4 +214,13 @@ SmaCCIncrementalParser >> transitionTo: stateIndex withValue: anObject [
 	result := currentState pushStart.
 	self checkPreviousParse.
 	^ result
+]
+
+{ #category : 'private' }
+SmaCCIncrementalParser >> transitionTo: newState withValue: value start: start [
+	| result |
+	super transitionTo: newState withValue: value.
+	result := currentState pushStart.
+	result value: start.
+	self checkPreviousParse
 ]

@@ -59,8 +59,10 @@ SmaCCIncrementalParserState >> findNodeToReuse [
 	current := potentialNodes.
 	[ current notNil
 		and: [ (inc := current value incrementalState) startingScannerState position
-				= scannerState position ] ]
-		whileTrue: [ (inc startingScannerState = scannerState
+				= (stateBeforeToken
+						ifNil: [ scannerState position ]
+						ifNotNil: [ stateBeforeToken position ]) ] ]
+		whileTrue: [ (inc startingScannerState = (stateBeforeToken ifNil: [ scannerState ])
 				and: [ inc fromParserState = stateStack last ])
 				ifTrue: [ potentialNodes := current nextLink.
 					[ potentialNodes notNil
