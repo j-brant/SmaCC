@@ -1,6 +1,6 @@
 Class {
-	#name : #PySubscriptExpressionNode,
-	#superclass : #PyExpressionNode,
+	#name : 'PySubscriptExpressionNode',
+	#superclass : 'PyExpressionNode',
 	#instVars : [
 		'receiver',
 		'lbrackToken',
@@ -8,91 +8,92 @@ Class {
 		'commaTokens',
 		'rbrackToken'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySubscriptExpressionNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitSubscriptExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySubscriptExpressionNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySubscriptExpressionNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySubscriptExpressionNode >> compositeNodeVariables [
 	^ #(#subscripts)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySubscriptExpressionNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PySubscriptExpressionNode >> initialize [
 	super initialize.
 	subscripts := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySubscriptExpressionNode >> lbrackToken [
 	^ lbrackToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySubscriptExpressionNode >> lbrackToken: aSmaCCToken [
 	lbrackToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySubscriptExpressionNode >> nodeVariables [
 	^ #(#receiver)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySubscriptExpressionNode >> rbrackToken [
 	^ rbrackToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySubscriptExpressionNode >> rbrackToken: aSmaCCToken [
 	rbrackToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySubscriptExpressionNode >> receiver [
 	^ receiver
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySubscriptExpressionNode >> receiver: aPyExpressionNode [
 	self receiver notNil ifTrue: [ self receiver parent: nil ].
 	receiver := aPyExpressionNode.
 	self receiver notNil ifTrue: [ self receiver parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySubscriptExpressionNode >> subscripts [
 	^ subscripts
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySubscriptExpressionNode >> subscripts: anOrderedCollection [
 	self setParents: self subscripts to: nil.
 	subscripts := anOrderedCollection.
 	self setParents: self subscripts to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySubscriptExpressionNode >> tokenVariables [
 	^ #(#lbrackToken #rbrackToken)
 ]

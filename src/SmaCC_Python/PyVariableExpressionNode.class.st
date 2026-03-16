@@ -1,28 +1,29 @@
 Class {
-	#name : #PyVariableExpressionNode,
-	#superclass : #PyExpressionNode,
+	#name : 'PyVariableExpressionNode',
+	#superclass : 'PyExpressionNode',
 	#instVars : [
 		'nameToken'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyVariableExpressionNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitVariableExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyVariableExpressionNode >> nameToken [
 	^ nameToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyVariableExpressionNode >> nameToken: aSmaCCToken [
 	nameToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyVariableExpressionNode >> tokenVariables [
 	^ #(#nameToken)
 ]

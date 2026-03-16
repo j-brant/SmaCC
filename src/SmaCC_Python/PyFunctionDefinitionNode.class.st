@@ -1,6 +1,6 @@
 Class {
-	#name : #PyFunctionDefinitionNode,
-	#superclass : #PyStatementNode,
+	#name : 'PyFunctionDefinitionNode',
+	#superclass : 'PyStatementNode',
 	#instVars : [
 		'defToken',
 		'fname',
@@ -14,87 +14,88 @@ Class {
 		'asyncToken',
 		'decorators'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitFunctionDefinition: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> asyncToken [
 	^ asyncToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> asyncToken: aSmaCCToken [
 	asyncToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> compositeNodeVariables [
 	^ #(#parameters #statements #decorators)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> decorators [
 	^ decorators
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> decorators: anOrderedCollection [
 	self setParents: self decorators to: nil.
 	decorators := anOrderedCollection.
 	self setParents: self decorators to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> defToken [
 	^ defToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> defToken: aSmaCCToken [
 	defToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> fname [
 	^ fname
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> fname: aSmaCCToken [
 	fname := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyFunctionDefinitionNode >> initialize [
 	super initialize.
 	parameters := OrderedCollection new: 2.
@@ -103,68 +104,68 @@ PyFunctionDefinitionNode >> initialize [
 	decorators := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> lparenToken [
 	^ lparenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> lparenToken: aSmaCCToken [
 	lparenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> nodeVariables [
 	^ #(#returnAnnotation)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> returnAnnotation [
 	^ returnAnnotation
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> returnAnnotation: aPyReturnTypeAnnotationNode [
 	self returnAnnotation notNil ifTrue: [ self returnAnnotation parent: nil ].
 	returnAnnotation := aPyReturnTypeAnnotationNode.
 	self returnAnnotation notNil ifTrue: [ self returnAnnotation parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> rparenToken [
 	^ rparenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> rparenToken: aSmaCCToken [
 	rparenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFunctionDefinitionNode >> tokenVariables [
 	^ #(#defToken #fname #lparenToken #rparenToken #colonToken #asyncToken #semicolonToken)
 ]

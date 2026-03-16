@@ -1,6 +1,6 @@
 Class {
-	#name : #PyLambdaExpressionNode,
-	#superclass : #PyExpressionNode,
+	#name : 'PyLambdaExpressionNode',
+	#superclass : 'PyExpressionNode',
 	#instVars : [
 		'lambdaToken',
 		'parameters',
@@ -8,91 +8,92 @@ Class {
 		'colonToken',
 		'body'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyLambdaExpressionNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitLambdaExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyLambdaExpressionNode >> body [
 	^ body
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyLambdaExpressionNode >> body: aPyExpressionNode [
 	self body notNil ifTrue: [ self body parent: nil ].
 	body := aPyExpressionNode.
 	self body notNil ifTrue: [ self body parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyLambdaExpressionNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyLambdaExpressionNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyLambdaExpressionNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyLambdaExpressionNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyLambdaExpressionNode >> compositeNodeVariables [
 	^ #(#parameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyLambdaExpressionNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyLambdaExpressionNode >> initialize [
 	super initialize.
 	parameters := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyLambdaExpressionNode >> lambdaToken [
 	^ lambdaToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyLambdaExpressionNode >> lambdaToken: aSmaCCToken [
 	lambdaToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyLambdaExpressionNode >> nodeVariables [
 	^ #(#body)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyLambdaExpressionNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyLambdaExpressionNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyLambdaExpressionNode >> tokenVariables [
 	^ #(#lambdaToken #colonToken)
 ]

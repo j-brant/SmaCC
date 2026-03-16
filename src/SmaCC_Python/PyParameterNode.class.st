@@ -1,70 +1,71 @@
 Class {
-	#name : #PyParameterNode,
-	#superclass : #PyRootNode,
+	#name : 'PyParameterNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'name',
 		'initializer',
 		'colonToken',
 		'typeExpression'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitParameter: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterNode >> initializer [
 	^ initializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterNode >> initializer: aPyInitNode [
 	self initializer notNil ifTrue: [ self initializer parent: nil ].
 	initializer := aPyInitNode.
 	self initializer notNil ifTrue: [ self initializer parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterNode >> name: aPyRootNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aPyRootNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterNode >> nodeVariables [
 	^ #(#name #initializer #typeExpression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterNode >> tokenVariables [
 	^ #(#colonToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterNode >> typeExpression [
 	^ typeExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterNode >> typeExpression: aPyExpressionNode [
 	self typeExpression notNil ifTrue: [ self typeExpression parent: nil ].
 	typeExpression := aPyExpressionNode.

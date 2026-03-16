@@ -1,6 +1,6 @@
 Class {
-	#name : #PyWithStatementNode,
-	#superclass : #PyStatementNode,
+	#name : 'PyWithStatementNode',
+	#superclass : 'PyStatementNode',
 	#instVars : [
 		'withToken',
 		'commaTokens',
@@ -8,45 +8,46 @@ Class {
 		'colonToken',
 		'statements'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithStatementNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitWithStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithStatementNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithStatementNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithStatementNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithStatementNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithStatementNode >> compositeNodeVariables [
 	^ #(#withItems #statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithStatementNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyWithStatementNode >> initialize [
 	super initialize.
 	commaTokens := OrderedCollection new: 2.
@@ -54,41 +55,41 @@ PyWithStatementNode >> initialize [
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithStatementNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithStatementNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithStatementNode >> tokenVariables [
 	^ #(#withToken #colonToken #semicolonToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithStatementNode >> withItems [
 	^ withItems
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithStatementNode >> withItems: anOrderedCollection [
 	self setParents: self withItems to: nil.
 	withItems := anOrderedCollection.
 	self setParents: self withItems to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithStatementNode >> withToken [
 	^ withToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithStatementNode >> withToken: aSmaCCToken [
 	withToken := aSmaCCToken
 ]

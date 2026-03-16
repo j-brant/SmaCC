@@ -1,28 +1,29 @@
 Class {
-	#name : #PyContinueStatementNode,
-	#superclass : #PyStatementNode,
+	#name : 'PyContinueStatementNode',
+	#superclass : 'PyStatementNode',
 	#instVars : [
 		'continueToken'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyContinueStatementNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitContinueStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyContinueStatementNode >> continueToken [
 	^ continueToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyContinueStatementNode >> continueToken: aSmaCCToken [
 	continueToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyContinueStatementNode >> tokenVariables [
 	^ #(#continueToken #semicolonToken)
 ]

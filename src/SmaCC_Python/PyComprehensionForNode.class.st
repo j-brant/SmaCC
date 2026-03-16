@@ -1,6 +1,6 @@
 Class {
-	#name : #PyComprehensionForNode,
-	#superclass : #PyRootNode,
+	#name : 'PyComprehensionForNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'forToken',
 		'exprs',
@@ -9,103 +9,104 @@ Class {
 		'inValue',
 		'comprehension'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionForNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitComprehensionFor: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionForNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionForNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionForNode >> compositeNodeVariables [
 	^ #(#exprs)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionForNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionForNode >> comprehension [
 	^ comprehension
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionForNode >> comprehension: aPyRootNode [
 	self comprehension notNil ifTrue: [ self comprehension parent: nil ].
 	comprehension := aPyRootNode.
 	self comprehension notNil ifTrue: [ self comprehension parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionForNode >> exprs [
 	^ exprs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionForNode >> exprs: anOrderedCollection [
 	self setParents: self exprs to: nil.
 	exprs := anOrderedCollection.
 	self setParents: self exprs to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionForNode >> forToken [
 	^ forToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionForNode >> forToken: aSmaCCToken [
 	forToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionForNode >> inToken [
 	^ inToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionForNode >> inToken: aSmaCCToken [
 	inToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionForNode >> inValue [
 	^ inValue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionForNode >> inValue: aPyExpressionNode [
 	self inValue notNil ifTrue: [ self inValue parent: nil ].
 	inValue := aPyExpressionNode.
 	self inValue notNil ifTrue: [ self inValue parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyComprehensionForNode >> initialize [
 	super initialize.
 	exprs := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionForNode >> nodeVariables [
 	^ #(#inValue #comprehension)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionForNode >> tokenVariables [
 	^ #(#forToken #inToken)
 ]

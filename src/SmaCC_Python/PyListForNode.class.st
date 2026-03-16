@@ -1,6 +1,6 @@
 Class {
-	#name : #PyListForNode,
-	#superclass : #PyRootNode,
+	#name : 'PyListForNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'forToken',
 		'exprs',
@@ -9,67 +9,68 @@ Class {
 		'values',
 		'list'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyListForNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitListFor: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyListForNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyListForNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyListForNode >> compositeNodeVariables [
 	^ #(#exprs #values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyListForNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyListForNode >> exprs [
 	^ exprs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyListForNode >> exprs: anOrderedCollection [
 	self setParents: self exprs to: nil.
 	exprs := anOrderedCollection.
 	self setParents: self exprs to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyListForNode >> forToken [
 	^ forToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyListForNode >> forToken: aSmaCCToken [
 	forToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyListForNode >> inToken [
 	^ inToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyListForNode >> inToken: aSmaCCToken [
 	inToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyListForNode >> initialize [
 	super initialize.
 	exprs := OrderedCollection new: 2.
@@ -77,12 +78,12 @@ PyListForNode >> initialize [
 	values := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyListForNode >> list [
 	^ list
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyListForNode >> list: aPyRootNode [
 	self list notNil
 		ifTrue: [ self list parent: nil ].
@@ -91,22 +92,22 @@ PyListForNode >> list: aPyRootNode [
 		ifTrue: [ self list parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyListForNode >> nodeVariables [
 	^ #(#list)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyListForNode >> tokenVariables [
 	^ #(#forToken #inToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyListForNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyListForNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

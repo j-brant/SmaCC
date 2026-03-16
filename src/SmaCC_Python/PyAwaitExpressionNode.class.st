@@ -1,46 +1,47 @@
 Class {
-	#name : #PyAwaitExpressionNode,
-	#superclass : #PyExpressionNode,
+	#name : 'PyAwaitExpressionNode',
+	#superclass : 'PyExpressionNode',
 	#instVars : [
 		'awaitToken',
 		'expression'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAwaitExpressionNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitAwaitExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAwaitExpressionNode >> awaitToken [
 	^ awaitToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAwaitExpressionNode >> awaitToken: aSmaCCToken [
 	awaitToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAwaitExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAwaitExpressionNode >> expression: aPyExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aPyExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAwaitExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAwaitExpressionNode >> tokenVariables [
 	^ #(#awaitToken)
 ]

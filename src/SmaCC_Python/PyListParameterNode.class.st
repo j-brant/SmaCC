@@ -1,28 +1,29 @@
 Class {
-	#name : #PyListParameterNode,
-	#superclass : #PyParameterNode,
+	#name : 'PyListParameterNode',
+	#superclass : 'PyParameterNode',
 	#instVars : [
 		'starToken'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyListParameterNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitListParameter: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyListParameterNode >> starToken [
 	^ starToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyListParameterNode >> starToken: aSmaCCToken [
 	starToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyListParameterNode >> tokenVariables [
 	^ #(#starToken #colonToken)
 ]

@@ -1,44 +1,45 @@
 Class {
-	#name : #PyTypedVariableExpressionNode,
-	#superclass : #PyVariableExpressionNode,
+	#name : 'PyTypedVariableExpressionNode',
+	#superclass : 'PyVariableExpressionNode',
 	#instVars : [
 		'colonToken',
 		'typeExpression'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTypedVariableExpressionNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitTypedVariableExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTypedVariableExpressionNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTypedVariableExpressionNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTypedVariableExpressionNode >> nodeVariables [
 	^ #(#typeExpression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTypedVariableExpressionNode >> tokenVariables [
 	^ #(#colonToken #nameToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTypedVariableExpressionNode >> typeExpression [
 	^ typeExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTypedVariableExpressionNode >> typeExpression: aPyExpressionNode [
 	self typeExpression notNil ifTrue: [ self typeExpression parent: nil ].
 	typeExpression := aPyExpressionNode.

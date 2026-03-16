@@ -1,6 +1,6 @@
 Class {
-	#name : #PyForStatementNode,
-	#superclass : #PyStatementNode,
+	#name : 'PyForStatementNode',
+	#superclass : 'PyStatementNode',
 	#instVars : [
 		'forToken',
 		'exprs',
@@ -11,101 +11,102 @@ Class {
 		'statements',
 		'else'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForStatementNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitForStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForStatementNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForStatementNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForStatementNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForStatementNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForStatementNode >> compositeNodeVariables [
 	^ #(#exprs #statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForStatementNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForStatementNode >> else [
 	^ else
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForStatementNode >> else: aPyElseNode [
 	self else notNil ifTrue: [ self else parent: nil ].
 	else := aPyElseNode.
 	self else notNil ifTrue: [ self else parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForStatementNode >> exprs [
 	^ exprs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForStatementNode >> exprs: anOrderedCollection [
 	self setParents: self exprs to: nil.
 	exprs := anOrderedCollection.
 	self setParents: self exprs to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForStatementNode >> forToken [
 	^ forToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForStatementNode >> forToken: aSmaCCToken [
 	forToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForStatementNode >> inExpression [
 	^ inExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForStatementNode >> inExpression: aPyExpressionNode [
 	self inExpression notNil ifTrue: [ self inExpression parent: nil ].
 	inExpression := aPyExpressionNode.
 	self inExpression notNil ifTrue: [ self inExpression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForStatementNode >> inToken [
 	^ inToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForStatementNode >> inToken: aSmaCCToken [
 	inToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyForStatementNode >> initialize [
 	super initialize.
 	exprs := OrderedCollection new: 2.
@@ -113,24 +114,24 @@ PyForStatementNode >> initialize [
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForStatementNode >> nodeVariables [
 	^ #(#inExpression #else)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForStatementNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForStatementNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyForStatementNode >> tokenVariables [
 	^ #(#forToken #inToken #colonToken #semicolonToken)
 ]

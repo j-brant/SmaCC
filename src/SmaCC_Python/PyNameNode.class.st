@@ -1,28 +1,29 @@
 Class {
-	#name : #PyNameNode,
-	#superclass : #PyRootNode,
+	#name : 'PyNameNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'nameToken'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyNameNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitName: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyNameNode >> nameToken [
 	^ nameToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyNameNode >> nameToken: aSmaCCToken [
 	nameToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyNameNode >> tokenVariables [
 	^ #(#nameToken)
 ]

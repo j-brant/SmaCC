@@ -1,6 +1,6 @@
 Class {
-	#name : #PyAssignmentStatementNode,
-	#superclass : #PyStatementNode,
+	#name : 'PyAssignmentStatementNode',
+	#superclass : 'PyStatementNode',
 	#instVars : [
 		'variables',
 		'assigns',
@@ -8,45 +8,46 @@ Class {
 		'typeExpressions',
 		'value'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentStatementNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitAssignmentStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentStatementNode >> assigns [
 	^ assigns
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentStatementNode >> assigns: anOrderedCollection [
 	assigns := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentStatementNode >> colonTokens [
 	^ colonTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentStatementNode >> colonTokens: anOrderedCollection [
 	colonTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentStatementNode >> compositeNodeVariables [
 	^ #(#variables #typeExpressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentStatementNode >> compositeTokenVariables [
 	^ #(#assigns #colonTokens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyAssignmentStatementNode >> initialize [
 	super initialize.
 	variables := OrderedCollection new: 2.
@@ -55,53 +56,53 @@ PyAssignmentStatementNode >> initialize [
 	typeExpressions := OrderedCollection new: 2.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 PyAssignmentStatementNode >> lhs [
 	self deprecated: 'Use variables and value instead'.
 	^ variables first
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentStatementNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 PyAssignmentStatementNode >> tos [
 	self deprecated: 'Use variables and value instead'.
 	^ variables allButFirst asArray , {value}
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentStatementNode >> typeExpressions [
 	^ typeExpressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentStatementNode >> typeExpressions: anOrderedCollection [
 	self setParents: self typeExpressions to: nil.
 	typeExpressions := anOrderedCollection.
 	self setParents: self typeExpressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentStatementNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentStatementNode >> value: aPyExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aPyExpressionNode.
 	self value notNil ifTrue: [ self value parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentStatementNode >> variables [
 	^ variables
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentStatementNode >> variables: anOrderedCollection [
 	self setParents: self variables to: nil.
 	variables := anOrderedCollection.

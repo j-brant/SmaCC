@@ -1,6 +1,6 @@
 Class {
-	#name : #PyClassDefinitionNode,
-	#superclass : #PyStatementNode,
+	#name : 'PyClassDefinitionNode',
+	#superclass : 'PyStatementNode',
 	#instVars : [
 		'classToken',
 		'cname',
@@ -12,77 +12,78 @@ Class {
 		'superClasses',
 		'commaTokens'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyClassDefinitionNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitClassDefinition: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyClassDefinitionNode >> classToken [
 	^ classToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyClassDefinitionNode >> classToken: aSmaCCToken [
 	classToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyClassDefinitionNode >> cname [
 	^ cname
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyClassDefinitionNode >> cname: aSmaCCToken [
 	cname := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyClassDefinitionNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyClassDefinitionNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyClassDefinitionNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyClassDefinitionNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyClassDefinitionNode >> compositeNodeVariables [
 	^ #(#statements #decorators #superClasses)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyClassDefinitionNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyClassDefinitionNode >> decorators [
 	^ decorators
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyClassDefinitionNode >> decorators: anOrderedCollection [
 	self setParents: self decorators to: nil.
 	decorators := anOrderedCollection.
 	self setParents: self decorators to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyClassDefinitionNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
@@ -91,51 +92,51 @@ PyClassDefinitionNode >> initialize [
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyClassDefinitionNode >> lparenToken [
 	^ lparenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyClassDefinitionNode >> lparenToken: aSmaCCToken [
 	lparenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyClassDefinitionNode >> rparenToken [
 	^ rparenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyClassDefinitionNode >> rparenToken: aSmaCCToken [
 	rparenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyClassDefinitionNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyClassDefinitionNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyClassDefinitionNode >> superClasses [
 	^ superClasses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyClassDefinitionNode >> superClasses: anOrderedCollection [
 	self setParents: self superClasses to: nil.
 	superClasses := anOrderedCollection.
 	self setParents: self superClasses to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyClassDefinitionNode >> tokenVariables [
 	^ #(#classToken #cname #colonToken #lparenToken #rparenToken #semicolonToken)
 ]

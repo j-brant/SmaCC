@@ -1,44 +1,45 @@
 Class {
-	#name : #PyReturnTypeAnnotationNode,
-	#superclass : #PyRootNode,
+	#name : 'PyReturnTypeAnnotationNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'arrowToken',
 		'typeExpression'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyReturnTypeAnnotationNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitReturnTypeAnnotation: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyReturnTypeAnnotationNode >> arrowToken [
 	^ arrowToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyReturnTypeAnnotationNode >> arrowToken: aSmaCCToken [
 	arrowToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyReturnTypeAnnotationNode >> nodeVariables [
 	^ #(#typeExpression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyReturnTypeAnnotationNode >> tokenVariables [
 	^ #(#arrowToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyReturnTypeAnnotationNode >> typeExpression [
 	^ typeExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyReturnTypeAnnotationNode >> typeExpression: aPyExpressionNode [
 	self typeExpression notNil ifTrue: [ self typeExpression parent: nil ].
 	typeExpression := aPyExpressionNode.

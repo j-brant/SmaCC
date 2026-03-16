@@ -1,34 +1,35 @@
 Class {
-	#name : #PyFileNode,
-	#superclass : #PyRootNode,
+	#name : 'PyFileNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'statements'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFileNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitFile: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFileNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyFileNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFileNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFileNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.

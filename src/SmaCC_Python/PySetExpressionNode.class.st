@@ -1,80 +1,81 @@
 Class {
-	#name : #PySetExpressionNode,
-	#superclass : #PyExpressionNode,
+	#name : 'PySetExpressionNode',
+	#superclass : 'PyExpressionNode',
 	#instVars : [
 		'lcurlyToken',
 		'expressions',
 		'commaTokens',
 		'rcurlyToken'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySetExpressionNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitSetExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySetExpressionNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySetExpressionNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySetExpressionNode >> compositeNodeVariables [
 	^ #(#expressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySetExpressionNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySetExpressionNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySetExpressionNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PySetExpressionNode >> initialize [
 	super initialize.
 	expressions := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySetExpressionNode >> lcurlyToken [
 	^ lcurlyToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySetExpressionNode >> lcurlyToken: aSmaCCToken [
 	lcurlyToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySetExpressionNode >> rcurlyToken [
 	^ rcurlyToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySetExpressionNode >> rcurlyToken: aSmaCCToken [
 	rcurlyToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySetExpressionNode >> tokenVariables [
 	^ #(#lcurlyToken #rcurlyToken)
 ]

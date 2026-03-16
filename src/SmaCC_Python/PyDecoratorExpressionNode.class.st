@@ -1,28 +1,29 @@
 Class {
-	#name : #PyDecoratorExpressionNode,
-	#superclass : #PyFunctionCallExpressionNode,
+	#name : 'PyDecoratorExpressionNode',
+	#superclass : 'PyFunctionCallExpressionNode',
 	#instVars : [
 		'ampersandToken'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDecoratorExpressionNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitDecoratorExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDecoratorExpressionNode >> ampersandToken [
 	^ ampersandToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDecoratorExpressionNode >> ampersandToken: aSmaCCToken [
 	ampersandToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDecoratorExpressionNode >> tokenVariables [
 	^ #(#ampersandToken #lparenToken #rparenToken #starStarToken)
 ]

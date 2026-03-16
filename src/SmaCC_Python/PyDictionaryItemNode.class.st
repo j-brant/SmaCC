@@ -1,57 +1,58 @@
 Class {
-	#name : #PyDictionaryItemNode,
-	#superclass : #PyRootNode,
+	#name : 'PyDictionaryItemNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'object',
 		'colonToken',
 		'value'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictionaryItemNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitDictionaryItem: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictionaryItemNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictionaryItemNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictionaryItemNode >> nodeVariables [
 	^ #(#object #value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictionaryItemNode >> object [
 	^ object
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictionaryItemNode >> object: aPyExpressionNode [
 	self object notNil ifTrue: [ self object parent: nil ].
 	object := aPyExpressionNode.
 	self object notNil ifTrue: [ self object parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictionaryItemNode >> tokenVariables [
 	^ #(#colonToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictionaryItemNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDictionaryItemNode >> value: aPyExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aPyExpressionNode.

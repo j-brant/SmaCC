@@ -1,70 +1,71 @@
 Class {
-	#name : #PyComprehensionDictionaryItemNode,
-	#superclass : #PyRootNode,
+	#name : 'PyComprehensionDictionaryItemNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'object',
 		'colonToken',
 		'value',
 		'comp'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionDictionaryItemNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitComprehensionDictionaryItem: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionDictionaryItemNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionDictionaryItemNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionDictionaryItemNode >> comp [
 	^ comp
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionDictionaryItemNode >> comp: aPyComprehensionForNode [
 	self comp notNil ifTrue: [ self comp parent: nil ].
 	comp := aPyComprehensionForNode.
 	self comp notNil ifTrue: [ self comp parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionDictionaryItemNode >> nodeVariables [
 	^ #(#object #value #comp)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionDictionaryItemNode >> object [
 	^ object
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionDictionaryItemNode >> object: aPyExpressionNode [
 	self object notNil ifTrue: [ self object parent: nil ].
 	object := aPyExpressionNode.
 	self object notNil ifTrue: [ self object parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionDictionaryItemNode >> tokenVariables [
 	^ #(#colonToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionDictionaryItemNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionDictionaryItemNode >> value: aPyExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aPyExpressionNode.

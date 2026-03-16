@@ -1,53 +1,54 @@
 Class {
-	#name : #PyStringNode,
-	#superclass : #PyExpressionNode,
+	#name : 'PyStringNode',
+	#superclass : 'PyExpressionNode',
 	#instVars : [
 		'parts',
 		'expressions'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStringNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitString: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStringNode >> compositeNodeVariables [
 	^ #(#expressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStringNode >> compositeTokenVariables [
 	^ #(#parts)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStringNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStringNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyStringNode >> initialize [
 	super initialize.
 	parts := OrderedCollection new: 2.
 	expressions := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStringNode >> parts [
 	^ parts
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStringNode >> parts: anOrderedCollection [
 	parts := anOrderedCollection
 ]
