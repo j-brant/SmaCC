@@ -1,57 +1,58 @@
 Class {
-	#name : #PyFieldAccessExpressionNode,
-	#superclass : #PyExpressionNode,
+	#name : 'PyFieldAccessExpressionNode',
+	#superclass : 'PyExpressionNode',
 	#instVars : [
 		'receiver',
 		'periodToken',
 		'nameToken'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFieldAccessExpressionNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitFieldAccessExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFieldAccessExpressionNode >> nameToken [
 	^ nameToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFieldAccessExpressionNode >> nameToken: aSmaCCToken [
 	nameToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFieldAccessExpressionNode >> nodeVariables [
 	^ #(#receiver)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFieldAccessExpressionNode >> periodToken [
 	^ periodToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFieldAccessExpressionNode >> periodToken: aSmaCCToken [
 	periodToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFieldAccessExpressionNode >> receiver [
 	^ receiver
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFieldAccessExpressionNode >> receiver: aPyExpressionNode [
 	self receiver notNil ifTrue: [ self receiver parent: nil ].
 	receiver := aPyExpressionNode.
 	self receiver notNil ifTrue: [ self receiver parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFieldAccessExpressionNode >> tokenVariables [
 	^ #(#periodToken #nameToken)
 ]

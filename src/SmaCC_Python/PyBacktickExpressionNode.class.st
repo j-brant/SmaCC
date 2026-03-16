@@ -1,62 +1,63 @@
 Class {
-	#name : #PyBacktickExpressionNode,
-	#superclass : #PyExpressionNode,
+	#name : 'PyBacktickExpressionNode',
+	#superclass : 'PyExpressionNode',
 	#instVars : [
 		'backtickTokens',
 		'expressions',
 		'commaTokens'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyBacktickExpressionNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitBacktickExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyBacktickExpressionNode >> backtickTokens [
 	^ backtickTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyBacktickExpressionNode >> backtickTokens: anOrderedCollection [
 	backtickTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyBacktickExpressionNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyBacktickExpressionNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyBacktickExpressionNode >> compositeNodeVariables [
 	^ #(#expressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyBacktickExpressionNode >> compositeTokenVariables [
 	^ #(#backtickTokens #commaTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyBacktickExpressionNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyBacktickExpressionNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyBacktickExpressionNode >> initialize [
 	super initialize.
 	backtickTokens := OrderedCollection new: 2.

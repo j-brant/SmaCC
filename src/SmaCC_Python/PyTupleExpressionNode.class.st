@@ -1,80 +1,81 @@
 Class {
-	#name : #PyTupleExpressionNode,
-	#superclass : #PyExpressionNode,
+	#name : 'PyTupleExpressionNode',
+	#superclass : 'PyExpressionNode',
 	#instVars : [
 		'lparenToken',
 		'rparenToken',
 		'expressions',
 		'commaTokens'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTupleExpressionNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitTupleExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTupleExpressionNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTupleExpressionNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTupleExpressionNode >> compositeNodeVariables [
 	^ #(#expressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTupleExpressionNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTupleExpressionNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTupleExpressionNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyTupleExpressionNode >> initialize [
 	super initialize.
 	expressions := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTupleExpressionNode >> lparenToken [
 	^ lparenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTupleExpressionNode >> lparenToken: aSmaCCToken [
 	lparenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTupleExpressionNode >> rparenToken [
 	^ rparenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTupleExpressionNode >> rparenToken: aSmaCCToken [
 	rparenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyTupleExpressionNode >> tokenVariables [
 	^ #(#lparenToken #rparenToken)
 ]

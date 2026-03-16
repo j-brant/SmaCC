@@ -1,51 +1,52 @@
 Class {
-	#name : #PyEvalNode,
-	#superclass : #PyRootNode,
+	#name : 'PyEvalNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'expressions',
 		'commaTokens'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyEvalNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitEval: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyEvalNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyEvalNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyEvalNode >> compositeNodeVariables [
 	^ #(#expressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyEvalNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyEvalNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyEvalNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyEvalNode >> initialize [
 	super initialize.
 	expressions := OrderedCollection new: 2.

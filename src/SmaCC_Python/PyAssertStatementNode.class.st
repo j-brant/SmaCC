@@ -1,61 +1,62 @@
 Class {
-	#name : #PyAssertStatementNode,
-	#superclass : #PyStatementNode,
+	#name : 'PyAssertStatementNode',
+	#superclass : 'PyStatementNode',
 	#instVars : [
 		'assertToken',
 		'values',
 		'commaToken'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssertStatementNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitAssertStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssertStatementNode >> assertToken [
 	^ assertToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssertStatementNode >> assertToken: aSmaCCToken [
 	assertToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssertStatementNode >> commaToken [
 	^ commaToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssertStatementNode >> commaToken: aSmaCCToken [
 	commaToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssertStatementNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyAssertStatementNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssertStatementNode >> tokenVariables [
 	^ #(#assertToken #commaToken #semicolonToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssertStatementNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssertStatementNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

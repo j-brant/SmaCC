@@ -1,28 +1,29 @@
 Class {
-	#name : #PyNumberNode,
-	#superclass : #PyExpressionNode,
+	#name : 'PyNumberNode',
+	#superclass : 'PyExpressionNode',
 	#instVars : [
 		'numberToken'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyNumberNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitNumber: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyNumberNode >> numberToken [
 	^ numberToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyNumberNode >> numberToken: aSmaCCToken [
 	numberToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyNumberNode >> tokenVariables [
 	^ #(#numberToken)
 ]

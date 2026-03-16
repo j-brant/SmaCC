@@ -1,16 +1,17 @@
 Class {
-	#name : #PythonScanner,
-	#superclass : #SmaCCScanner,
+	#name : 'PythonScanner',
+	#superclass : 'SmaCCScanner',
 	#instVars : [
 		'lineJoiningStack',
 		'indentStack',
 		'tokenStack',
 		'lastLineStart'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #'generated-initialization' }
+{ #category : 'generated-initialization' }
 PythonScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
 	#(#(77 'and' 38) #(77 'as' 39) #(77 'assert' 40) #(77 'async' 41) #(77 'await' 42) #(77 'break' 43) #(77 'class' 44) #(77 'continue' 45) #(77 'def' 46) #(77 'del' 47) #(77 'elif' 48) #(77 'else' 49) #(77 'except' 50) #(77 'exec' 51) #(77 'finally' 52) #(77 'for' 53) #(77 'from' 54) #(77 'global' 55) #(77 'if' 56) #(77 'import' 57) #(77 'in' 58) #(77 'is' 59) #(77 'lambda' 60) #(77 'metaclass' 61) #(77 'not' 62) #(77 'or' 63) #(77 'pass' 64) #(77 'print' 65) #(77 'raise' 66) #(77 'return' 67) #(77 'try' 68) #(77 'while' 69) #(77 'with' 70) #(77 'yield' 71))
@@ -21,17 +22,17 @@ PythonScanner class >> initializeKeywordMap [
 	^ keywordMap
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> DEDENTId [
-	^ 261
+	^ 263
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> INDENTId [
-	^ 262
+	^ 264
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PythonScanner >> NEWLINE [
 	"Handle the newline, depending on the mode. Line joining and non-joining is not working in the scanner as I expected, but this may be for the best."
 
@@ -44,17 +45,17 @@ PythonScanner >> NEWLINE [
 		ifFalse: [ ^ self whitespace ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> NEWLINEId [
 	^ 99
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> Python2Id [
-	^ 263
+	^ 265
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PythonScanner >> blankLine [
 	"A blank line is ignored. However, if it contains comments, we need to recover them."
 
@@ -64,7 +65,7 @@ PythonScanner >> blankLine [
 	^ self whitespace
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PythonScanner >> currentState [
 	| state |
 	state := super currentState.
@@ -75,12 +76,12 @@ PythonScanner >> currentState [
 	^ state
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> ellipsisId [
 	^ 75
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PythonScanner >> emptyLine [
 	"An empty line is also ignored in fact."
 
@@ -88,17 +89,17 @@ PythonScanner >> emptyLine [
 	^ self whitespace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> emptySymbolTokenId [
-	^ 264
+	^ 266
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> errorTokenId [
-	^ 265
+	^ 267
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PythonScanner >> indent [
 	"Here we should generate the IDENT and DEDENT tokens"
 
@@ -131,23 +132,23 @@ PythonScanner >> indent [
 	^ self next
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PythonScanner >> indentStack [
 	^ indentStack ifNil: [ indentStack := OrderedCollection with: 0 ]
 ]
 
-{ #category : #initialize }
+{ #category : 'initialize' }
 PythonScanner >> initialize [
 	super initialize.
 	scope := #lineBegin
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PythonScanner >> lasLineStart [
 	^ lastLineStart ifNil: [ lastLineStart := 1 ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PythonScanner >> lbrack [
 	"start of line joining mode"
 
@@ -156,12 +157,12 @@ PythonScanner >> lbrack [
 	^ self createTokenFor: '['
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> lbrackId [
 	^ 102
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PythonScanner >> lcurly [
 	"start of line joining mode"
 
@@ -170,22 +171,22 @@ PythonScanner >> lcurly [
 	^ self createTokenFor: '{'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> lcurlyId [
 	^ 104
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PythonScanner >> lineJoiningStack [
 	^ lineJoiningStack ifNil: [ lineJoiningStack := 0 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PythonScanner >> lineJoiningStack: anObject [
 	lineJoiningStack := anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PythonScanner >> lparen [
 	"start of line joining mode"
 
@@ -194,19 +195,19 @@ PythonScanner >> lparen [
 	^ self createTokenFor: '('
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> lparenId [
 	^ 100
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PythonScanner >> next [
 	self tokenStack isEmpty
 		ifFalse: [ ^ self tokenStack removeFirst ].
 	^ super next
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PythonScanner >> noindent [
 	"We should revert to the beginning of the scan."
 
@@ -222,12 +223,12 @@ PythonScanner >> noindent [
 	^ self next
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> periodId [
 	^ 76
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PythonScanner >> rbrack [
 	"end of line joining mode"
 
@@ -236,12 +237,12 @@ PythonScanner >> rbrack [
 	^ self createTokenFor: ']'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> rbrackId [
 	^ 103
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PythonScanner >> rcurly [
 	"end of line joining mode"
 
@@ -250,12 +251,12 @@ PythonScanner >> rcurly [
 	^ self createTokenFor: '}'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> rcurlyId [
 	^ 105
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PythonScanner >> restoreState: aSmaCCScannerState [
 	super restoreState: aSmaCCScannerState.
 	indentStack := aSmaCCScannerState indentStack copy.
@@ -264,7 +265,7 @@ PythonScanner >> restoreState: aSmaCCScannerState [
 	tokenStack := aSmaCCScannerState tokenStack copy
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PythonScanner >> rparen [
 	"end of line joining mode"
 
@@ -273,12 +274,12 @@ PythonScanner >> rparen [
 	^ self createTokenFor: ')'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> rparenId [
 	^ 101
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1 [
 	self step.
 	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(99) ].
@@ -289,7 +290,7 @@ PythonScanner >> scan1 [
 	^ self scan1X28
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan10 [
 	[ self recordMatch: #(92).
 	self step.
@@ -299,7 +300,7 @@ PythonScanner >> scan10 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan11 [
 	self step.
 	('+-' includes: currentCharacter)
@@ -309,7 +310,7 @@ PythonScanner >> scan11 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan12 [
 	[ self recordMatch: #(92).
 	self step.
@@ -318,7 +319,7 @@ PythonScanner >> scan12 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan13 [
 	[ self step.
 	currentCharacter == $. ifTrue: [ ^ self scan10 ].
@@ -328,7 +329,7 @@ PythonScanner >> scan13 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan14 [
 	self recordMatch: #(77).
 	self step.
@@ -346,7 +347,7 @@ PythonScanner >> scan14 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan15 [
 	self step.
 	currentCharacter == $"
@@ -362,7 +363,7 @@ PythonScanner >> scan15 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan16 [
 	[ self step.
 	currentCharacter == $\ ifTrue: [ ^ self scan17 ].
@@ -374,13 +375,13 @@ PythonScanner >> scan16 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan17 [
 	self step.
 	^ self scan16
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan18 [
 	self recordMatch: #(83).
 	self step.
@@ -388,7 +389,7 @@ PythonScanner >> scan18 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan19 [
 	[ self step.
 	currentCharacter == $"
@@ -405,7 +406,7 @@ PythonScanner >> scan19 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X1 [
 	self recordMatch: #(92).
 	self step.
@@ -437,7 +438,7 @@ PythonScanner >> scan1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X10 [
 	self recordMatch: #(30).
 	self step.
@@ -449,7 +450,7 @@ PythonScanner >> scan1X10 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X11 [
 	self recordMatch: #(16).
 	self step.
@@ -462,7 +463,7 @@ PythonScanner >> scan1X11 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X12 [
 	self recordMatch: #(6).
 	self step.
@@ -475,7 +476,7 @@ PythonScanner >> scan1X12 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X13 [
 	self recordMatch: #(76).
 	self step.
@@ -487,7 +488,7 @@ PythonScanner >> scan1X13 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X14 [
 	self recordMatch: #(13).
 	self step.
@@ -496,7 +497,7 @@ PythonScanner >> scan1X14 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X15 [
 	[ self recordMatch: #(98).
 	self step.
@@ -505,7 +506,7 @@ PythonScanner >> scan1X15 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X16 [
 	self recordMatch: #(72).
 	self step.
@@ -513,7 +514,7 @@ PythonScanner >> scan1X16 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X17 [
 	self recordMatch: #(35).
 	self step.
@@ -521,7 +522,7 @@ PythonScanner >> scan1X17 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X18 [
 	self step.
 	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(98) ].
@@ -533,7 +534,7 @@ PythonScanner >> scan1X18 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X19 [
 	self recordMatch: #(28).
 	self step.
@@ -541,7 +542,7 @@ PythonScanner >> scan1X19 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X1X1 [
 	[ self recordMatch: #(92).
 	self step.
@@ -554,7 +555,7 @@ PythonScanner >> scan1X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X1X2 [
 	self step.
 	(currentCharacter isDigit
@@ -570,7 +571,7 @@ PythonScanner >> scan1X1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X2 [
 	self recordMatch: #(77).
 	self step.
@@ -595,7 +596,7 @@ PythonScanner >> scan1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X20 [
 	self recordMatch: #(20).
 	self step.
@@ -603,7 +604,7 @@ PythonScanner >> scan1X20 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X21 [
 	self recordMatch: #(10).
 	self step.
@@ -611,7 +612,7 @@ PythonScanner >> scan1X21 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X22 [
 	self recordMatch: #(4).
 	self step.
@@ -619,7 +620,7 @@ PythonScanner >> scan1X22 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X23 [
 	self recordMatch: #(2).
 	self step.
@@ -627,7 +628,7 @@ PythonScanner >> scan1X23 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X24 [
 	self recordMatch: #(99).
 	self step.
@@ -635,14 +636,14 @@ PythonScanner >> scan1X24 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X25 [
 	self step.
 	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(1) ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X26 [
 	currentCharacter == $f ifTrue: [ ^ self scan1X2 ].
 	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(104) ].
@@ -658,7 +659,7 @@ PythonScanner >> scan1X26 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X27 [
 	currentCharacter == $: ifTrue: [ ^ self scan1X20 ].
 	currentCharacter == $; ifTrue: [ ^ self recordAndReportMatch: #(22) ].
@@ -675,7 +676,7 @@ PythonScanner >> scan1X27 [
 	^ self scan1X26
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X28 [
 	currentCharacter == $% ifTrue: [ ^ self scan1X23 ].
 	currentCharacter == $& ifTrue: [ ^ self scan1X22 ].
@@ -692,7 +693,7 @@ PythonScanner >> scan1X28 [
 	^ self scan1X27
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X3 [
 	self recordMatch: #(77).
 	self step.
@@ -717,7 +718,7 @@ PythonScanner >> scan1X3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X4 [
 	self recordMatch: #(77).
 	self step.
@@ -736,7 +737,7 @@ PythonScanner >> scan1X4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X5 [
 	self recordMatch: #(37).
 	self step.
@@ -755,7 +756,7 @@ PythonScanner >> scan1X5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X6 [
 	[ self recordMatch: #(92).
 	self step.
@@ -767,7 +768,7 @@ PythonScanner >> scan1X6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X7 [
 	[ self recordMatch: #(77).
 	self step.
@@ -777,7 +778,7 @@ PythonScanner >> scan1X7 [
 		whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X8 [
 	self recordMatch: #(23).
 	self step.
@@ -791,7 +792,7 @@ PythonScanner >> scan1X8 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan1X9 [
 	[ self recordMatch: #(97).
 	self step.
@@ -801,7 +802,7 @@ PythonScanner >> scan1X9 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan2 [
 	self step.
 	currentCharacter == $"
@@ -817,7 +818,7 @@ PythonScanner >> scan2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan20 [
 	self recordMatch: #(89).
 	self step.
@@ -825,7 +826,7 @@ PythonScanner >> scan20 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan21 [
 	self step.
 	currentCharacter == $'
@@ -841,7 +842,7 @@ PythonScanner >> scan21 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan22 [
 	[ self step.
 	currentCharacter == $\ ifTrue: [ ^ self scan23 ].
@@ -853,13 +854,13 @@ PythonScanner >> scan22 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan23 [
 	self step.
 	^ self scan22
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan24 [
 	self recordMatch: #(80).
 	self step.
@@ -867,7 +868,7 @@ PythonScanner >> scan24 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan25 [
 	[ self step.
 	currentCharacter == $'
@@ -884,7 +885,7 @@ PythonScanner >> scan25 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan26 [
 	self recordMatch: #(86).
 	self step.
@@ -892,7 +893,7 @@ PythonScanner >> scan26 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan27 [
 	self recordMatch: #(77).
 	self step.
@@ -910,7 +911,7 @@ PythonScanner >> scan27 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan28 [
 	self step.
 	currentCharacter == $"
@@ -927,7 +928,7 @@ PythonScanner >> scan28 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan29 [
 	[ self step.
 	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(79) ].
@@ -939,7 +940,7 @@ PythonScanner >> scan29 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan3 [
 	[ self step.
 	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(78) ].
@@ -950,13 +951,13 @@ PythonScanner >> scan3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan30 [
 	self step.
 	^ self scan29
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan31 [
 	[ self step.
 	currentCharacter == $"
@@ -969,7 +970,7 @@ PythonScanner >> scan31 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan32 [
 	self step.
 	currentCharacter == $'
@@ -986,7 +987,7 @@ PythonScanner >> scan32 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan33 [
 	[ self step.
 	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(79) ].
@@ -998,13 +999,13 @@ PythonScanner >> scan33 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan34 [
 	self step.
 	^ self scan33
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan35 [
 	[ self step.
 	currentCharacter == $'
@@ -1017,7 +1018,7 @@ PythonScanner >> scan35 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan36 [
 	self recordMatch: #(77).
 	self step.
@@ -1035,7 +1036,7 @@ PythonScanner >> scan36 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan37 [
 	[ self step.
 	currentCharacter == $"
@@ -1052,7 +1053,7 @@ PythonScanner >> scan37 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan38 [
 	[ self step.
 	currentCharacter == $'
@@ -1069,7 +1070,7 @@ PythonScanner >> scan38 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan39 [
 	[ self step.
 	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(85) ].
@@ -1100,19 +1101,19 @@ PythonScanner >> scan39 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan4 [
 	self step.
 	^ self scan3
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan40 [
 	self step.
 	^ self scan39
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan41 [
 	[ self step.
 	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(85) ].
@@ -1129,7 +1130,7 @@ PythonScanner >> scan41 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan42 [
 	[ self step.
 	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(82) ].
@@ -1147,7 +1148,7 @@ PythonScanner >> scan42 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan43 [
 	self recordMatch: #(94).
 	self step.
@@ -1155,7 +1156,7 @@ PythonScanner >> scan43 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan44 [
 	[ self recordMatch: #(94).
 	self step.
@@ -1164,7 +1165,7 @@ PythonScanner >> scan44 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan5 [
 	[ self step.
 	currentCharacter == $"
@@ -1176,7 +1177,7 @@ PythonScanner >> scan5 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan6 [
 	self step.
 	currentCharacter == $'
@@ -1192,7 +1193,7 @@ PythonScanner >> scan6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan7 [
 	[ self step.
 	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(78) ].
@@ -1203,13 +1204,13 @@ PythonScanner >> scan7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan8 [
 	self step.
 	^ self scan7
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scan9 [
 	[ self step.
 	currentCharacter == $'
@@ -1221,7 +1222,7 @@ PythonScanner >> scan9 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scanForToken [
 	scope == #default ifTrue: [ ^ self scan1 ].
 	scope == #fLongStringDouble
@@ -1260,7 +1261,7 @@ PythonScanner >> scanForToken [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> scanForTokenX1 [
 	self step.
 	currentCharacter == Character lf
@@ -1284,22 +1285,22 @@ PythonScanner >> scanForTokenX1 [
 	^ self recordAndReportMatch: #(96)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PythonScanner >> stateClass [
 	^ PythonScannerState
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PythonScanner >> tokenActions [
 	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #emptyLine #blankLine #indent #noindent #comment #whitespace #NEWLINE #lparen #rparen #lbrack #rbrack #lcurly #rcurly #patternToken)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PythonScanner >> tokenStack [
 	^ tokenStack ifNil: [ tokenStack := OrderedCollection new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PythonScanner >> tokenStack: anObject [
 	tokenStack := anObject
 ]

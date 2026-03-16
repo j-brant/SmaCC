@@ -1,59 +1,60 @@
 Class {
-	#name : #PyWithItemNode,
-	#superclass : #PyRootNode,
+	#name : 'PyWithItemNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'expression',
 		'asToken',
 		'name'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithItemNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitWithItem: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithItemNode >> asToken [
 	^ asToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithItemNode >> asToken: aSmaCCToken [
 	asToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithItemNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithItemNode >> expression: aPyExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aPyExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithItemNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithItemNode >> name: aPyExpressionNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aPyExpressionNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithItemNode >> nodeVariables [
 	^ #(#expression #name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyWithItemNode >> tokenVariables [
 	^ #(#asToken)
 ]

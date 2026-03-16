@@ -1,57 +1,58 @@
 Class {
-	#name : #PyMetaclassNode,
-	#superclass : #PyRootNode,
+	#name : 'PyMetaclassNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'metaclassToken',
 		'equalToken',
 		'superclass'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMetaclassNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitMetaclass: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMetaclassNode >> equalToken [
 	^ equalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMetaclassNode >> equalToken: aSmaCCToken [
 	equalToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMetaclassNode >> metaclassToken [
 	^ metaclassToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMetaclassNode >> metaclassToken: aSmaCCToken [
 	metaclassToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMetaclassNode >> nodeVariables [
 	^ #(#superclass)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMetaclassNode >> superclass [
 	^ superclass
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMetaclassNode >> superclass: aPyExpressionNode [
 	self superclass notNil ifTrue: [ self superclass parent: nil ].
 	superclass := aPyExpressionNode.
 	self superclass notNil ifTrue: [ self superclass parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyMetaclassNode >> tokenVariables [
 	^ #(#metaclassToken #equalToken)
 ]

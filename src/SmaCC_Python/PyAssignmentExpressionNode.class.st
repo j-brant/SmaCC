@@ -1,57 +1,58 @@
 Class {
-	#name : #PyAssignmentExpressionNode,
-	#superclass : #PyExpressionNode,
+	#name : 'PyAssignmentExpressionNode',
+	#superclass : 'PyExpressionNode',
 	#instVars : [
 		'variable',
 		'assign',
 		'value'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentExpressionNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitAssignmentExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentExpressionNode >> assign [
 	^ assign
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentExpressionNode >> assign: aSmaCCToken [
 	assign := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentExpressionNode >> nodeVariables [
 	^ #(#variable #value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentExpressionNode >> tokenVariables [
 	^ #(#assign)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentExpressionNode >> value: aPyExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aPyExpressionNode.
 	self value notNil ifTrue: [ self value parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentExpressionNode >> variable [
 	^ variable
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAssignmentExpressionNode >> variable: aPyVariableExpressionNode [
 	self variable notNil ifTrue: [ self variable parent: nil ].
 	variable := aPyVariableExpressionNode.

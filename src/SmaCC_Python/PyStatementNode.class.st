@@ -1,28 +1,29 @@
 Class {
-	#name : #PyStatementNode,
-	#superclass : #PyRootNode,
+	#name : 'PyStatementNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'semicolonToken'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> semicolonToken [
 	^ semicolonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> semicolonToken: aSmaCCToken [
 	semicolonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyStatementNode >> tokenVariables [
 	^ #(#semicolonToken)
 ]

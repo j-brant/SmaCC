@@ -1,80 +1,81 @@
 Class {
-	#name : #PyPrintStatementNode,
-	#superclass : #PyStatementNode,
+	#name : 'PyPrintStatementNode',
+	#superclass : 'PyStatementNode',
 	#instVars : [
 		'printToken',
 		'expressions',
 		'commaTokens',
 		'gtgtToken'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyPrintStatementNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitPrintStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyPrintStatementNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyPrintStatementNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyPrintStatementNode >> compositeNodeVariables [
 	^ #(#expressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyPrintStatementNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyPrintStatementNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyPrintStatementNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyPrintStatementNode >> gtgtToken [
 	^ gtgtToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyPrintStatementNode >> gtgtToken: aSmaCCToken [
 	gtgtToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyPrintStatementNode >> initialize [
 	super initialize.
 	expressions := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyPrintStatementNode >> printToken [
 	^ printToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyPrintStatementNode >> printToken: aSmaCCToken [
 	printToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyPrintStatementNode >> tokenVariables [
 	^ #(#printToken #gtgtToken #semicolonToken)
 ]

@@ -1,69 +1,70 @@
 Class {
-	#name : #PyDelStatementNode,
-	#superclass : #PyStatementNode,
+	#name : 'PyDelStatementNode',
+	#superclass : 'PyStatementNode',
 	#instVars : [
 		'delToken',
 		'exprs',
 		'commaTokens'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDelStatementNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitDelStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDelStatementNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDelStatementNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDelStatementNode >> compositeNodeVariables [
 	^ #(#exprs)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDelStatementNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDelStatementNode >> delToken [
 	^ delToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDelStatementNode >> delToken: aSmaCCToken [
 	delToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDelStatementNode >> exprs [
 	^ exprs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDelStatementNode >> exprs: anOrderedCollection [
 	self setParents: self exprs to: nil.
 	exprs := anOrderedCollection.
 	self setParents: self exprs to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyDelStatementNode >> initialize [
 	super initialize.
 	exprs := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyDelStatementNode >> tokenVariables [
 	^ #(#delToken #semicolonToken)
 ]

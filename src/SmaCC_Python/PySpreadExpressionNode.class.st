@@ -1,46 +1,47 @@
 Class {
-	#name : #PySpreadExpressionNode,
-	#superclass : #PyExpressionNode,
+	#name : 'PySpreadExpressionNode',
+	#superclass : 'PyExpressionNode',
 	#instVars : [
 		'operator',
 		'expression'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySpreadExpressionNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitSpreadExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySpreadExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySpreadExpressionNode >> expression: aPyExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aPyExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySpreadExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySpreadExpressionNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySpreadExpressionNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PySpreadExpressionNode >> tokenVariables [
 	^ #(#operator)
 ]

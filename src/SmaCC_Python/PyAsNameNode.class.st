@@ -1,39 +1,40 @@
 Class {
-	#name : #PyAsNameNode,
-	#superclass : #PyNameNode,
+	#name : 'PyAsNameNode',
+	#superclass : 'PyNameNode',
 	#instVars : [
 		'asToken',
 		'rename'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAsNameNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitAsName: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAsNameNode >> asToken [
 	^ asToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAsNameNode >> asToken: aSmaCCToken [
 	asToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAsNameNode >> rename [
 	^ rename
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAsNameNode >> rename: aSmaCCToken [
 	rename := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyAsNameNode >> tokenVariables [
 	^ #(#asToken #rename #nameToken)
 ]

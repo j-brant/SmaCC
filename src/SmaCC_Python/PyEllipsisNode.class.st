@@ -1,28 +1,29 @@
 Class {
-	#name : #PyEllipsisNode,
-	#superclass : #PyExpressionNode,
+	#name : 'PyEllipsisNode',
+	#superclass : 'PyExpressionNode',
 	#instVars : [
 		'ellipsis'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyEllipsisNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitEllipsis: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyEllipsisNode >> ellipsis [
 	^ ellipsis
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyEllipsisNode >> ellipsis: aSmaCCToken [
 	ellipsis := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyEllipsisNode >> tokenVariables [
 	^ #(#ellipsis)
 ]

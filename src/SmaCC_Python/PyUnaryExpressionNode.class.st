@@ -1,46 +1,47 @@
 Class {
-	#name : #PyUnaryExpressionNode,
-	#superclass : #PyExpressionNode,
+	#name : 'PyUnaryExpressionNode',
+	#superclass : 'PyExpressionNode',
 	#instVars : [
 		'operator',
 		'expression'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyUnaryExpressionNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitUnaryExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyUnaryExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyUnaryExpressionNode >> expression: aPyExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aPyExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyUnaryExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyUnaryExpressionNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyUnaryExpressionNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyUnaryExpressionNode >> tokenVariables [
 	^ #(#operator)
 ]

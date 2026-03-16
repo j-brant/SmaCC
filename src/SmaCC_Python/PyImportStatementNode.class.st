@@ -1,6 +1,6 @@
 Class {
-	#name : #PyImportStatementNode,
-	#superclass : #PyStatementNode,
+	#name : 'PyImportStatementNode',
+	#superclass : 'PyStatementNode',
 	#instVars : [
 		'importToken',
 		'commaTokens',
@@ -13,77 +13,78 @@ Class {
 		'lparenToken',
 		'rparenToken'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitImportStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> asTokens [
 	^ asTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> asTokens: anOrderedCollection [
 	asTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> compositeNodeVariables [
 	^ #(#names)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> compositeTokenVariables [
 	^ #(#commaTokens #asTokens #renames)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> from [
 	^ from
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> from: aPyRootNode [
 	self from notNil ifTrue: [ self from parent: nil ].
 	from := aPyRootNode.
 	self from notNil ifTrue: [ self from parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> fromToken [
 	^ fromToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> fromToken: aSmaCCToken [
 	fromToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> importToken [
 	^ importToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> importToken: aSmaCCToken [
 	importToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyImportStatementNode >> initialize [
 	super initialize.
 	commaTokens := OrderedCollection new: 2.
@@ -92,64 +93,64 @@ PyImportStatementNode >> initialize [
 	renames := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> lparenToken [
 	^ lparenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> lparenToken: aSmaCCToken [
 	lparenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> names [
 	^ names
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> names: anOrderedCollection [
 	self setParents: self names to: nil.
 	names := anOrderedCollection.
 	self setParents: self names to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> nodeVariables [
 	^ #(#from)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> renames [
 	^ renames
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> renames: anOrderedCollection [
 	renames := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> rparenToken [
 	^ rparenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> rparenToken: aSmaCCToken [
 	rparenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> starToken [
 	^ starToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> starToken: aSmaCCToken [
 	starToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyImportStatementNode >> tokenVariables [
 	^ #(#importToken #fromToken #starToken #lparenToken #rparenToken #semicolonToken)
 ]

@@ -1,63 +1,64 @@
 Class {
-	#name : #PyFinallyNode,
-	#superclass : #PyRootNode,
+	#name : 'PyFinallyNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'finallyToken',
 		'colonToken',
 		'statements'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFinallyNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitFinally: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFinallyNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFinallyNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFinallyNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFinallyNode >> finallyToken [
 	^ finallyToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFinallyNode >> finallyToken: aSmaCCToken [
 	finallyToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyFinallyNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFinallyNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFinallyNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyFinallyNode >> tokenVariables [
 	^ #(#finallyToken #colonToken)
 ]

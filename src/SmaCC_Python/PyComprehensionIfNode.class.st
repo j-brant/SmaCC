@@ -1,59 +1,60 @@
 Class {
-	#name : #PyComprehensionIfNode,
-	#superclass : #PyRootNode,
+	#name : 'PyComprehensionIfNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'ifToken',
 		'condition',
 		'iter'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionIfNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitComprehensionIf: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionIfNode >> condition [
 	^ condition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionIfNode >> condition: aPyExpressionNode [
 	self condition notNil ifTrue: [ self condition parent: nil ].
 	condition := aPyExpressionNode.
 	self condition notNil ifTrue: [ self condition parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionIfNode >> ifToken [
 	^ ifToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionIfNode >> ifToken: aSmaCCToken [
 	ifToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionIfNode >> iter [
 	^ iter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionIfNode >> iter: aPyRootNode [
 	self iter notNil ifTrue: [ self iter parent: nil ].
 	iter := aPyRootNode.
 	self iter notNil ifTrue: [ self iter parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionIfNode >> nodeVariables [
 	^ #(#condition #iter)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyComprehensionIfNode >> tokenVariables [
 	^ #(#ifToken)
 ]

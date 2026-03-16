@@ -1,80 +1,81 @@
 Class {
-	#name : #PyParameterListNode,
-	#superclass : #PyRootNode,
+	#name : 'PyParameterListNode',
+	#superclass : 'PyRootNode',
 	#instVars : [
 		'lparenToken',
 		'names',
 		'commaTokens',
 		'rparenToken'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterListNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitParameterList: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterListNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterListNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterListNode >> compositeNodeVariables [
 	^ #(#names)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterListNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyParameterListNode >> initialize [
 	super initialize.
 	names := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterListNode >> lparenToken [
 	^ lparenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterListNode >> lparenToken: aSmaCCToken [
 	lparenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterListNode >> names [
 	^ names
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterListNode >> names: anOrderedCollection [
 	self setParents: self names to: nil.
 	names := anOrderedCollection.
 	self setParents: self names to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterListNode >> rparenToken [
 	^ rparenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterListNode >> rparenToken: aSmaCCToken [
 	rparenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyParameterListNode >> tokenVariables [
 	^ #(#lparenToken #rparenToken)
 ]

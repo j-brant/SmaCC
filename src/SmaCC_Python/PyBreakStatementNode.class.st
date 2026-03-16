@@ -1,28 +1,29 @@
 Class {
-	#name : #PyBreakStatementNode,
-	#superclass : #PyStatementNode,
+	#name : 'PyBreakStatementNode',
+	#superclass : 'PyStatementNode',
 	#instVars : [
 		'breakToken'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyBreakStatementNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitBreakStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyBreakStatementNode >> breakToken [
 	^ breakToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyBreakStatementNode >> breakToken: aSmaCCToken [
 	breakToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyBreakStatementNode >> tokenVariables [
 	^ #(#breakToken #semicolonToken)
 ]

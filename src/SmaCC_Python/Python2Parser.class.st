@@ -2,12 +2,13 @@
 Not really a Python 2 parser, but a Python 3 parser that handles some deprecated syntax.
 "
 Class {
-	#name : #Python2Parser,
-	#superclass : #PythonParser,
-	#category : #'SmaCC_Python'
+	#name : 'Python2Parser',
+	#superclass : 'PythonParser',
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Python2Parser >> actionsForCurrentToken [
 	| actions |
 	'print' = currentToken source

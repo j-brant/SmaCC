@@ -1,6 +1,6 @@
 Class {
-	#name : #PyRaiseStatementNode,
-	#superclass : #PyStatementNode,
+	#name : 'PyRaiseStatementNode',
+	#superclass : 'PyStatementNode',
 	#instVars : [
 		'raiseToken',
 		'args',
@@ -8,91 +8,92 @@ Class {
 		'from',
 		'commaTokens'
 	],
-	#category : #'SmaCC_Python'
+	#category : 'SmaCC_Python',
+	#package : 'SmaCC_Python'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyRaiseStatementNode >> acceptVisitor: aRootVisitor [
 	^ aRootVisitor visitRaiseStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyRaiseStatementNode >> args [
 	^ args
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyRaiseStatementNode >> args: anOrderedCollection [
 	self setParents: self args to: nil.
 	args := anOrderedCollection.
 	self setParents: self args to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyRaiseStatementNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyRaiseStatementNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyRaiseStatementNode >> compositeNodeVariables [
 	^ #(#args)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyRaiseStatementNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyRaiseStatementNode >> from [
 	^ from
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyRaiseStatementNode >> from: aPyExpressionNode [
 	self from notNil ifTrue: [ self from parent: nil ].
 	from := aPyExpressionNode.
 	self from notNil ifTrue: [ self from parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyRaiseStatementNode >> fromToken [
 	^ fromToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyRaiseStatementNode >> fromToken: aSmaCCToken [
 	fromToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 PyRaiseStatementNode >> initialize [
 	super initialize.
 	args := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyRaiseStatementNode >> nodeVariables [
 	^ #(#from)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyRaiseStatementNode >> raiseToken [
 	^ raiseToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyRaiseStatementNode >> raiseToken: aSmaCCToken [
 	raiseToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 PyRaiseStatementNode >> tokenVariables [
 	^ #(#raiseToken #fromToken #semicolonToken)
 ]
