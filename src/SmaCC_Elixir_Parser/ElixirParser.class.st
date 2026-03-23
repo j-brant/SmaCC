@@ -2049,6 +2049,9 @@ ElixirParser >> actionsForCurrentToken [
 					(')|}<>:' includes: char)
 						ifTrue: [ otherActions := super actionsForCurrentToken.
 							otherActions notEmpty ifTrue: [ ^ otherActions ] ].
+					self shouldSuppressEol
+						ifTrue: [ otherActions := super actionsForCurrentToken.
+							otherActions notEmpty ifTrue: [ ^ otherActions ] ].
 					scanner lastWasEol: false.
 					self position: currentToken startPosition - 1.
 					currentToken := currentToken class
@@ -2104,6 +2107,22 @@ ElixirParser >> actionsForCurrentToken [
 					^ actions ].
 			^ self actionsForCurrentToken ].
 	^ actions
+]
+
+{ #category : 'private' }
+ElixirParser >> shouldSuppressEol [
+	"Suppress eol injection after binary operators and keyword identifiers.
+	 Replicates what the original Elixir tokenizer does by not emitting eol
+	 after operators, reducing GLR ambiguity and improving performance."
+	| prev |
+	prev := scanner lastTokenValue.
+	prev ifNil: [ ^ false ].
+	(#('=' '+' '-' '*' '/' '|>' '||' '|||' '&&' '&&&' '==' '!=' '===' '!=='
+	   '=~' '<=' '>=' '<-' '\\' '|' '=>' '::' '..'
+	   '++' '--' '<>' '^^^' '<<<' '>>>' '<<~' '~>>' '~>' '<~' '<~>' '<|>'
+	   'not' 'when' 'in' 'and' 'or' 'not in') includes: prev) ifTrue: [ ^ true ].
+	(prev notEmpty and: [ prev last = $: ]) ifTrue: [ ^ true ].
+	^ false
 ]
 
 { #category : 'generated-reduction actions' }
