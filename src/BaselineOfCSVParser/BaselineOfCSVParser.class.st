@@ -11,7 +11,7 @@ BaselineOfCSVParser >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.153' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.154' ].
 
 		spec package: 'SmaCC_CSV_Parser' with: [
 			spec requires: #(#SmaCCRuntime) ].
