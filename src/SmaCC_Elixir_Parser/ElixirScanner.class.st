@@ -2,7 +2,8 @@ Class {
 	#name : 'ElixirScanner',
 	#superclass : 'SmaCCScanner',
 	#instVars : [
-		'lastWasEol'
+		'lastWasEol',
+		'lastTokenValue'
 	],
 	#category : 'SmaCC_Elixir_Parser',
 	#package : 'SmaCC_Elixir_Parser'
@@ -39,6 +40,7 @@ ElixirScanner >> currentState [
 	| state |
 	state := super currentState.
 	state attributeNamed: #lastWasEol put: self lastWasEol.
+	state attributeNamed: #lastTokenValue put: lastTokenValue.
 	^ state
 ]
 
@@ -75,6 +77,11 @@ ElixirScanner >> emptySymbolTokenId [
 
 { #category : 'private' }
 ElixirScanner >> eol [
+	"After comma: truly suppress eol (parser won't see it).
+	 Otherwise: mark lastWasEol so parser can inject synthetic eol."
+	(lastTokenValue = ',') ifTrue: [
+		self resetScanner.
+		^ self scanForToken ].
 	lastWasEol := true.
 	^ self whitespace
 ]
@@ -124,6 +131,11 @@ ElixirScanner >> kw_identifierId [
 ]
 
 { #category : 'accessing' }
+ElixirScanner >> lastTokenValue [
+	^ lastTokenValue
+]
+
+{ #category : 'accessing' }
 ElixirScanner >> lastWasEol [
 	^ lastWasEol
 ]
@@ -140,8 +152,12 @@ ElixirScanner >> map_opId [
 
 { #category : 'accessing' }
 ElixirScanner >> next [
+	| token |
 	lastWasEol := false.
-	^ super next
+	token := super next.
+	token ifNotNil: [
+		lastWasEol ifFalse: [ lastTokenValue := token value ] ].
+	^ token
 ]
 
 { #category : 'generated' }
@@ -157,7 +173,8 @@ ElixirScanner >> paren_identifierId [
 { #category : 'accessing' }
 ElixirScanner >> restoreState: aSmaCCScannerState [
 	super restoreState: aSmaCCScannerState.
-	self lastWasEol: (aSmaCCScannerState attributeNamed: #lastWasEol)
+	self lastWasEol: (aSmaCCScannerState attributeNamed: #lastWasEol).
+	lastTokenValue := aSmaCCScannerState attributeNamed: #lastTokenValue
 ]
 
 { #category : 'generated' }
