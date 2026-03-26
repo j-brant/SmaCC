@@ -24,13 +24,14 @@ SmaCCParserStepThroughAction >> defaultOrder [
 { #category : 'actions' }
 SmaCCParserStepThroughAction >> executeAction [
 	| insidePerform performBlock |
-	performBlock := [ :context | (context receiver isKindOf: SmaCCParser) and: [ context selector = #performAction: ] ].
-	insidePerform := (self session context findContextSuchThat: performBlock) notNil.
+	performBlock := [ :each | (each receiver isKindOf: SmaCCParser) and: [ each selector = #performAction: ] ].
+	insidePerform := (self session context findContextSuchThat: performBlock)
+			notNil.
 	self
-		stepUntil: [ :context | 
+		stepUntil: [ :each | 
 			insidePerform
-				ifTrue: [ (context findContextSuchThat: performBlock) isNil ]
-				ifFalse: [ insidePerform := performBlock value: context.
+				ifTrue: [ (each findContextSuchThat: performBlock) isNil ]
+				ifFalse: [ insidePerform := performBlock value: each.
 					false ] ]
 ]
 

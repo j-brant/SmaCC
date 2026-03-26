@@ -30,8 +30,11 @@ SmaCCParserNextTokenAction >> defaultOrder [
 { #category : 'actions' }
 SmaCCParserNextTokenAction >> executeAction [
 	| token |
-	token := self session parser currentToken.
-	self stepUntil: [ :context | self session parser currentToken ~~ token and: [ self session parser currentToken notNil ] ]
+	token := self smaccSession parser currentToken.
+	self
+		stepUntil: [ :each | 
+			self smaccSession parser currentToken ~~ token
+				and: [ self smaccSession parser currentToken notNil ] ]
 ]
 
 { #category : 'accessing' }

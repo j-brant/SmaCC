@@ -10,11 +10,9 @@ Class {
 SmaCCScannerStepToAction >> executeAction [
 	| scanner toIndex |
 	toIndex := self stepToIndex.
-	scanner := self session scanner.
+	scanner := self smaccSession scanner.
 	self
-		stepUntil: [ :context | 
-			scanner stream position >= toIndex
-				and: [ self session isScanning: context ] ].
+		stepUntil: [ :each | scanner stream position >= toIndex and: [ self smaccSession isScanning: each ] ].
 	self stepOutOfStepMethod
 ]
 

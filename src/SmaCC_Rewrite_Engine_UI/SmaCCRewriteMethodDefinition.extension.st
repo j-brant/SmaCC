@@ -1,6 +1,6 @@
-Extension { #name : #SmaCCRewriteMethodDefinition }
+Extension { #name : 'SmaCCRewriteMethodDefinition' }
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewriteMethodDefinition >> buildPresenterLayout [
 	| layout code |
 	layout := SpBoxLayout newTopToBottom.
@@ -15,14 +15,14 @@ SmaCCRewriteMethodDefinition >> buildPresenterLayout [
 	^ layout
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewriteMethodDefinition >> rewriteForMethod: aMethod [
 	aMethod == self method
 		ifTrue: [ ^ self ].
 	^ nil
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewriteMethodDefinition >> title [
 	^ 'Method'
 ]

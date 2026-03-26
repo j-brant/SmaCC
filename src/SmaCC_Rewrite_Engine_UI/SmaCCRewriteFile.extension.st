@@ -1,6 +1,6 @@
-Extension { #name : #SmaCCRewriteFile }
+Extension { #name : 'SmaCCRewriteFile' }
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewriteFile >> buildPresenterLayout [
 	| parserList |
 	parserList := SpDropListPresenter new.
@@ -22,7 +22,7 @@ SmaCCRewriteFile >> buildPresenterLayout [
 		yourself
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewriteFile >> rewriteForMethod: aMethod [
 	rewrites do: [ :each | (each rewriteForMethod: aMethod) ifNotNil: [ :rewrite | ^ rewrite ] ].
 	^ nil

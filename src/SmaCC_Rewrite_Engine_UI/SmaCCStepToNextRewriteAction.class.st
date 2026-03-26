@@ -1,35 +1,38 @@
 Class {
-	#name : #SmaCCStepToNextRewriteAction,
-	#superclass : #SmaCCTransformationToolkitDebugAction,
-	#category : #'SmaCC_Rewrite_Engine_UI'
+	#name : 'SmaCCStepToNextRewriteAction',
+	#superclass : 'SmaCCTransformationToolkitDebugAction',
+	#category : 'SmaCC_Rewrite_Engine_UI',
+	#package : 'SmaCC_Rewrite_Engine_UI'
 }
 
-{ #category : #default }
+{ #category : 'default' }
 SmaCCStepToNextRewriteAction class >> defaultDescription [
 	^ 'Step until we get to another rewrite'
 ]
 
-{ #category : #default }
+{ #category : 'default' }
 SmaCCStepToNextRewriteAction class >> defaultIconName [
 	^ #glamorousThrough
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStepToNextRewriteAction class >> defaultName [
 	^ 'Run to Next Rewrite'
 ]
 
-{ #category : #default }
+{ #category : 'default' }
 SmaCCStepToNextRewriteAction class >> defaultShortcut [
 	^ $t meta
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SmaCCStepToNextRewriteAction >> executeAction [
 	| rewrites |
-	rewrites := (self session transformationStack collect: [ :each | self session rewriteForContext: each last ]) asSet.
+	rewrites := (self smaccSession transformationStack
+			collect: [ :each | self smaccSession rewriteForContext: each last ]) asSet.
 	self
-		stepUntil: [ :context | 
-			context isBlockContext not
-				and: [ (self session isRewriteContext: context) and: [ (rewrites includes: (self session rewriteForContext: context)) not ] ] ]
+		stepUntil: [ :each | 
+			each isBlockContext not
+				and: [ (self smaccSession isRewriteContext: each)
+						and: [ (rewrites includes: (self smaccSession rewriteForContext: each)) not ] ] ]
 ]

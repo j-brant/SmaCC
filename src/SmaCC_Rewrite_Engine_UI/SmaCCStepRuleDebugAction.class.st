@@ -1,31 +1,32 @@
 Class {
-	#name : #SmaCCStepRuleDebugAction,
-	#superclass : #SmaCCTransformationToolkitDebugAction,
-	#category : #'SmaCC_Rewrite_Engine_UI'
+	#name : 'SmaCCStepRuleDebugAction',
+	#superclass : 'SmaCCTransformationToolkitDebugAction',
+	#category : 'SmaCC_Rewrite_Engine_UI',
+	#package : 'SmaCC_Rewrite_Engine_UI'
 }
 
-{ #category : #default }
+{ #category : 'default' }
 SmaCCStepRuleDebugAction class >> defaultDescription [
 	^ 'Step over message'
 ]
 
-{ #category : #default }
+{ #category : 'default' }
 SmaCCStepRuleDebugAction class >> defaultIconName [
 	^ #glamorousOver
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStepRuleDebugAction class >> defaultName [
 	^ 'Over'
 ]
 
-{ #category : #default }
+{ #category : 'default' }
 SmaCCStepRuleDebugAction class >> defaultShortcut [
 	^ $o meta
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SmaCCStepRuleDebugAction >> executeAction [
 	self session
-		stepOver: (self session currentRewriteContext ifNil: [ self currentContext ])
+		stepOver: (self smaccSession currentRewriteContext ifNil: [ self currentContext ])
 ]
