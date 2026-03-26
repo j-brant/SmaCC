@@ -1,83 +1,90 @@
 Class {
-	#name : #SmaCCTransformationToolkitDebugAction,
-	#superclass : #StDebuggerCommand,
-	#category : #'SmaCC_Rewrite_Engine_UI'
+	#name : 'SmaCCTransformationToolkitDebugAction',
+	#superclass : 'StDebuggerCommand',
+	#category : 'SmaCC_Rewrite_Engine_UI',
+	#package : 'SmaCC_Rewrite_Engine_UI'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SmaCCTransformationToolkitDebugAction class >> defaultIconName [
 	^ nil
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SmaCCTransformationToolkitDebugAction class >> defaultShortcut [
 	^ nil
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCTransformationToolkitDebugAction class >> forDebugger: aDebugger [
 	^ self new
 		  context: aDebugger;
 		  yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCTransformationToolkitDebugAction >> appliesToContext: aContext [
-	^ self session isActive
+	^ self smaccSession isActive
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugAction >> currentContext [
 	^ self session context
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 SmaCCTransformationToolkitDebugAction >> execute [
 	self executeAction
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 SmaCCTransformationToolkitDebugAction >> executeAction [
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugAction >> icon [
 	^ self class defaultIconName ifNotNil: [ :iconName | self iconNamed: iconName ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugAction >> session [
 	^ self debugger session
 ]
 
-{ #category : #private }
+{ #category : 'accessing' }
+SmaCCTransformationToolkitDebugAction >> smaccSession [
+	^ self debugger smaccSession
+]
+
+{ #category : 'private' }
 SmaCCTransformationToolkitDebugAction >> stepUntil: aBlock [
-	| context process searchBlock transformationBlock previousContext searchContext found rootContext |
+	| ctx process searchBlock transformationBlock previousContext searchContext found rootContext |
 	searchBlock := SmaCCRewriteMatch haltBlock.
 	transformationBlock := SmaCCRewriteTransformation haltBlock.
 	SmaCCRewriteMatch haltBlock: nil.
 	SmaCCRewriteTransformation haltBlock: nil.
 	[ process := self session process.
-	context := self currentContext.
+	ctx := self currentContext.
 	searchContext := process suspendedContext.
 	previousContext := searchContext.
 	found := false.
 	[ searchContext notNil ]
-		whileTrue: [ found := found or: [ searchContext == context ].
-			(self session isRewriteContext: searchContext)
+		whileTrue: [ found := found or: [ searchContext == ctx ].
+			(self smaccSession isRewriteContext: searchContext)
 				ifTrue: [ rootContext := searchContext ].
 			searchContext := searchContext sender ].
-	(found and: [ rootContext notNil ])
-		ifFalse: [ ^ self ].
-	[ context notNil
-		and: [ process isTerminating not and: [ process isTerminated not and: [ process suspendedContext notNil and: [ aBlock value: context ] ] ] ] ]
-		whileFalse: [ previousContext == context
-				ifFalse: [ (context findContextSuchThat: [ :c | c == rootContext ]) isNil
-						ifTrue: [ ^ self session updateContextTo: context ].
-					previousContext := context ].
-			context := process step: context ].
-	self session updateContextTo: context ]
+	(found and: [ rootContext notNil ]) ifFalse: [ ^ self ].
+	[ ctx notNil
+		and: [ process isTerminating not
+				and: [ process isTerminated not
+						and: [ process suspendedContext notNil and: [ aBlock value: ctx ] ] ] ] ]
+		whileFalse: [ previousContext == ctx
+				ifFalse: [ (ctx findContextSuchThat: [ :c | c == rootContext ]) isNil
+						ifTrue: [ ^ self session updateContextTo: ctx ].
+					previousContext := ctx ].
+			ctx := process step: ctx ].
+	self session updateContextTo: ctx ]
 		ensure: [ SmaCCRewriteMatch haltBlock: searchBlock.
 			SmaCCRewriteTransformation haltBlock: transformationBlock ]
 ]

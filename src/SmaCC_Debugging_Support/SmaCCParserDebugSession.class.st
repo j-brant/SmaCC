@@ -1,8 +1,9 @@
 Class {
 	#name : 'SmaCCParserDebugSession',
-	#superclass : 'DebugSession',
+	#superclass : 'Object',
 	#instVars : [
-		'rootContext'
+		'rootContext',
+		'debugSession'
 	],
 	#classInstVars : [
 		'maxSearchDepth'
@@ -14,11 +15,9 @@ Class {
 
 { #category : 'instance creation' }
 SmaCCParserDebugSession class >> from: aDebugSession [
-	| session |
-	(aDebugSession isKindOf: superclass) ifFalse: [ self error: 'Unknown debug session' ].
-	session := self basicNew.
-	1 to: superclass instSize do: [ :i | session instVarAt: i put: (aDebugSession instVarAt: i) ].
-	^ session
+	^ self new
+		debugSession: aDebugSession;
+		yourself
 ]
 
 { #category : 'testing' }
@@ -69,6 +68,16 @@ SmaCCParserDebugSession >> actionLabelFor: anInteger [
 				separatedBy: [ stream nextPut: $, ] ]
 ]
 
+{ #category : 'debug session' }
+SmaCCParserDebugSession >> context [
+	^ debugSession context
+]
+
+{ #category : 'private' }
+SmaCCParserDebugSession >> debugSession: aDebugSession [
+	debugSession := aDebugSession
+]
+
 { #category : 'private' }
 SmaCCParserDebugSession >> glrParserStates [
 	| states |
@@ -82,15 +91,13 @@ SmaCCParserDebugSession >> glrParserStates [
 SmaCCParserDebugSession >> inputSelectionInterval [
 	| context receiver |
 	context := self context
-		findContextSuchThat: [ :each | 
-			(each receiver isKindOf: SmaCCScanner)
-				or: [ each receiver isKindOf: SmaCCParser ] ].
-	context isNil
-		ifTrue: [ ^ 1 to: 0 ].
+			findContextSuchThat: [ :each | 
+				(each receiver isKindOf: SmaCCScanner)
+					or: [ each receiver isKindOf: SmaCCParser ] ].
+	context ifNil: [ ^ 1 to: 0 ].
 	receiver := context receiver.
 	^ (receiver isKindOf: SmaCCParser)
-		ifTrue: [ (receiver currentToken isNil
-				or: [ receiver currentToken startPosition isNil ])
+		ifTrue: [ (receiver currentToken isNil or: [ receiver currentToken startPosition isNil ])
 				ifTrue: [ self scanner position + 1 to: self scanner position ]
 				ifFalse: [ receiver currentToken sourceInterval ] ]
 		ifFalse: [ self scanner debugStart + 1 to: self scanner position ]
@@ -101,9 +108,17 @@ SmaCCParserDebugSession >> inputText [
 	^ self scanner debugSource
 ]
 
+{ #category : 'debug session' }
+SmaCCParserDebugSession >> interruptedContext [
+	^ debugSession interruptedContext
+]
+
 { #category : 'testing' }
 SmaCCParserDebugSession >> isActive [
-	^ rootContext notNil and: [ rootContext isDead not and: [ rootContext ~= self process suspendedContext or: [ rootContext willReturn not ] ] ]
+	^ rootContext notNil
+		and: [ rootContext isDead not
+				and: [ rootContext ~= self process suspendedContext
+						or: [ rootContext willReturn not ] ] ]
 ]
 
 { #category : 'testing' }
@@ -111,8 +126,7 @@ SmaCCParserDebugSession >> isInsideReductionAction [
 	self context
 		findContextSuchThat: [ :each | 
 			((each receiver isKindOf: SmaCCParser)
-				and: [ each selector beginsWith: 'reduceActionFor' ])
-				ifTrue: [ ^ true ].
+				and: [ each selector beginsWith: 'reduceActionFor' ]) ifTrue: [ ^ true ].
 			each == rootContext ].
 	^ false
 ]
@@ -213,6 +227,11 @@ SmaCCParserDebugSession >> potentialStateActions [
 				ifFalse: [ a third ] ]
 ]
 
+{ #category : 'debug session' }
+SmaCCParserDebugSession >> process [
+	^ debugSession process
+]
+
 { #category : 'building' }
 SmaCCParserDebugSession >> reduceActionName: anInteger [
 	| entry |
@@ -225,7 +244,7 @@ SmaCCParserDebugSession >> reduceActionName: anInteger [
 SmaCCParserDebugSession >> rootContext [
 	^ rootContext
 		ifNil:
-			[ rootContext := interruptedContext
+			[ rootContext := self interruptedContext
 				findContextSuchThat: [ :each | each selector = #parse and: [ each receiver isKindOf: SmaCCParser ] ] ]
 ]
 
@@ -271,6 +290,16 @@ SmaCCParserDebugSession >> scannerProperties [
 	^ items
 ]
 
+{ #category : 'debug session' }
+SmaCCParserDebugSession >> selectedCodeRangeForContext: aContext [
+	^ debugSession selectedCodeRangeForContext: aContext
+]
+
+{ #category : 'debug session' }
+SmaCCParserDebugSession >> session [
+	^ debugSession
+]
+
 { #category : 'accessing' }
 SmaCCParserDebugSession >> tokenIntervalFor: anObject [
 	(anObject isKindOf: SequenceableCollection)
@@ -279,9 +308,9 @@ SmaCCParserDebugSession >> tokenIntervalFor: anObject [
 				do: [ :each | 
 					| newInterval |
 					newInterval := self tokenIntervalFor: each.
-					interval isNil
-						ifTrue: [ interval := newInterval ]
-						ifFalse: [ newInterval notNil
+					interval
+						ifNil: [ interval := newInterval ]
+						ifNotNil: [ newInterval notNil
 								ifTrue: [ interval := (interval first min: newInterval first)
 											to: (interval last max: newInterval last) ] ] ].
 			^ interval ].

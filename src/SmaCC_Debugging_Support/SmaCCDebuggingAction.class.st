@@ -58,38 +58,43 @@ SmaCCDebuggingAction >> icon [
 
 { #category : 'accessing' }
 SmaCCDebuggingAction >> session [
-	^ self debugger session
+	^ self smaccSession session
+]
+
+{ #category : 'accessing' }
+SmaCCDebuggingAction >> smaccSession [
+	^ self debugger smaccSession
 ]
 
 { #category : 'private' }
 SmaCCDebuggingAction >> stepUntil: aBlock [
-	self stepUntil: aBlock context: self session rootContext
+	self stepUntil: aBlock context: self smaccSession rootContext
 ]
 
 { #category : 'private' }
 SmaCCDebuggingAction >> stepUntil: aBlock context: rootContext [
-	| context process previousContext errorMethod |
+	| ctx process previousContext errorMethod |
 	process := self session process.
-	context := self currentContext.
-	(process suspendedContext findContextSuchThat: [ :c | c == context ])
+	ctx := self currentContext.
+	(process suspendedContext findContextSuchThat: [ :c | c == ctx ])
 		ifNil: [ ^ self ].
 	errorMethod := SmaCCParser >> #reportErrorMessage:resumable:.
 	(process suspendedContext
 		findContextSuchThat: [ :c | c compiledCode == errorMethod ])
 		ifNotNil: [ ^ self ].
 	previousContext := nil.
-	[ context notNil
+	[ ctx notNil
 		and: [ process isTerminating not
 				and: [ process isTerminated not
 						and: [ process suspendedContext notNil
-								and: [ context compiledCode ~~ errorMethod and: [ aBlock value: context ] ] ] ] ] ]
-		whileFalse: [ previousContext == context
-				ifFalse: [ (context findContextSuchThat: [ :c | c == rootContext ]) isNil
-						ifTrue: [ ^ self session updateContextTo: context ].
+								and: [ ctx compiledCode ~~ errorMethod and: [ aBlock value: ctx ] ] ] ] ] ]
+		whileFalse: [ previousContext == ctx
+				ifFalse: [ (ctx findContextSuchThat: [ :c | c == rootContext ]) isNil
+						ifTrue: [ ^ self session updateContextTo: ctx ].
 					(process suspendedContext
 						findContextSuchThat: [ :c | c compiledCode == errorMethod ])
-						ifNotNil: [ ^ self session updateContextTo: context ].
-					previousContext := context ].
-			context := process step: context ].
-	self session updateContextTo: context
+						ifNotNil: [ ^ self session updateContextTo: ctx ].
+					previousContext := ctx ].
+			ctx := process step: ctx ].
+	self session updateContextTo: ctx
 ]

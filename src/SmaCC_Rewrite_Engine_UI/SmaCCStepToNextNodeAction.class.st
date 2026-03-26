@@ -1,33 +1,38 @@
 Class {
-	#name : #SmaCCStepToNextNodeAction,
-	#superclass : #SmaCCTransformationToolkitDebugAction,
-	#category : #'SmaCC_Rewrite_Engine_UI'
+	#name : 'SmaCCStepToNextNodeAction',
+	#superclass : 'SmaCCTransformationToolkitDebugAction',
+	#category : 'SmaCC_Rewrite_Engine_UI',
+	#package : 'SmaCC_Rewrite_Engine_UI'
 }
 
-{ #category : #default }
+{ #category : 'default' }
 SmaCCStepToNextNodeAction class >> defaultDescription [
 	^ 'Step until we get to another node'
 ]
 
-{ #category : #default }
+{ #category : 'default' }
 SmaCCStepToNextNodeAction class >> defaultIconName [
 	^ #glamorousThrough
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStepToNextNodeAction class >> defaultName [
 	^ 'Run to Next Node'
 ]
 
-{ #category : #default }
+{ #category : 'default' }
 SmaCCStepToNextNodeAction class >> defaultShortcut [
 	^ $n meta
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SmaCCStepToNextNodeAction >> executeAction [
 	| nodes |
-	nodes := (self session transformationStack collect: [ :each | each last receiver match ]) asSet.
+	nodes := (self smaccSession transformationStack
+			collect: [ :each | each last receiver match ]) asSet.
 	self
-		stepUntil: [ :context | context isBlockContext not and: [ (self session isRewriteContext: context) and: [ (nodes includes: context receiver match) not ] ] ]
+		stepUntil: [ :each | 
+			each isBlockContext not
+				and: [ (self smaccSession isRewriteContext: each)
+						and: [ (nodes includes: each receiver match) not ] ] ]
 ]

@@ -1,11 +1,11 @@
-Extension { #name : #SmaCCAbstractRewrite }
+Extension { #name : 'SmaCCAbstractRewrite' }
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCAbstractRewrite >> buildPresenterLayout [
 	^ SpBoxLayout newTopToBottom
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCAbstractRewrite >> commentPresenter [
 	| text |
 	text := SpTextInputFieldPresenter new.
@@ -21,7 +21,7 @@ SmaCCAbstractRewrite >> commentPresenter [
 				yourself)
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCAbstractRewrite >> contextClass [
 	^ SmaCCRewriteMatchContext
 ]

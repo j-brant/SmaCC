@@ -1,6 +1,6 @@
-Extension { #name : #SmaCCRewritePropertyDefinition }
+Extension { #name : 'SmaCCRewritePropertyDefinition' }
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewritePropertyDefinition >> addGlobal [
 	| variable |
 	variable := UITheme builder textEntry: 'Enter variable name:' title: 'Variable' entryText: ''.
@@ -8,7 +8,7 @@ SmaCCRewritePropertyDefinition >> addGlobal [
 		ifTrue: [ self addGlobal: variable ]
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewritePropertyDefinition >> addLocal [
 	| variable |
 	variable := UITheme builder textEntry: 'Enter variable name:' title: 'Variable' entryText: ''.
@@ -16,7 +16,7 @@ SmaCCRewritePropertyDefinition >> addLocal [
 		ifTrue: [ self addLocal: variable ]
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewritePropertyDefinition >> buildPresenterLayout [
 	| layout notebook |
 	layout := SpBoxLayout newTopToBottom.
@@ -29,7 +29,7 @@ SmaCCRewritePropertyDefinition >> buildPresenterLayout [
 	^ layout
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewritePropertyDefinition >> buildVariables: aString [
 	| presenter vars toolbar selector |
 	selector := (aString , 's') asSymbol.
@@ -69,17 +69,17 @@ SmaCCRewritePropertyDefinition >> buildVariables: aString [
 	^ presenter
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewritePropertyDefinition >> globals [
 	^ globalValues keys asSortedCollection
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewritePropertyDefinition >> locals [
 	^ propertyNames asSortedCollection
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewritePropertyDefinition >> rewriteForMethod: aMethod [
 	^ nil
 ]

@@ -1,6 +1,6 @@
-Extension { #name : #SmaCCRewrite }
+Extension { #name : 'SmaCCRewrite' }
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewrite >> buildPresenterLayout [
 	| layout |
 	layout := SpBoxLayout newTopToBottom.
@@ -16,7 +16,7 @@ SmaCCRewrite >> buildPresenterLayout [
 	^ layout
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewrite >> changedReplaceTo: aSymbol [
 	| class rewrite |
 	class := SmaCCRewriteTransformation withAllSubclasses detect: [ :each | each type = aSymbol ].
@@ -26,7 +26,7 @@ SmaCCRewrite >> changedReplaceTo: aSymbol [
 	self transformation: rewrite
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewrite >> changedSearchTo: aSymbol [
 	| class newMatch |
 	class := SmaCCRewriteMatch withAllSubclasses detect: [ :each | each type = aSymbol ].
@@ -36,7 +36,7 @@ SmaCCRewrite >> changedSearchTo: aSymbol [
 	self match: newMatch
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewrite >> matchCodePresenterFor: typeMatch [
 	^ (SpPresenter new)
 		layout:
@@ -69,7 +69,7 @@ SmaCCRewrite >> matchCodePresenterFor: typeMatch [
 		yourself
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewrite >> matchPatternPresenterFor: treeMatch [
 	^ (SpPresenter new)
 		layout:
@@ -102,7 +102,7 @@ SmaCCRewrite >> matchPatternPresenterFor: treeMatch [
 		yourself
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewrite >> matchPresenter [
 	| notebook code pattern index |
 	match class type = #Type
@@ -123,13 +123,13 @@ SmaCCRewrite >> matchPresenter [
 	^ notebook
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewrite >> matchTypes [
 	^ (SmaCCRewriteMatch allSubclasses collect: [ :each | each type ])
 		asSet asSortedCollection
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewrite >> nodeClasses [
 	| classes parserNodeClasses |
 	classes := SmaCCParseNode withAllSubclasses.
@@ -143,7 +143,7 @@ SmaCCRewrite >> nodeClasses [
 				ifFalse: [ aSortAtTop ] ]
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewrite >> parserNodeClasses [
 	self parserClass
 		ifNotNil:
@@ -159,14 +159,14 @@ SmaCCRewrite >> parserNodeClasses [
 	^ #()
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewrite >> rewriteForMethod: aMethod [
 	(match method == aMethod or: [ transformation method == aMethod ])
 		ifTrue: [ ^ self ].
 	^ nil
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewrite >> transformationCodePresenterFor: codeTransformation [
 	^ (SpTextPresenter new)
 		text: codeTransformation code;
@@ -174,7 +174,7 @@ SmaCCRewrite >> transformationCodePresenterFor: codeTransformation [
 		yourself
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewrite >> transformationPatternPresenterFor: stringTransformation [
 	^ (SpTextPresenter new)
 		text: stringTransformation string;
@@ -182,7 +182,7 @@ SmaCCRewrite >> transformationPatternPresenterFor: stringTransformation [
 		yourself
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewrite >> transformationPresenter [
 	| notebook code pattern index |
 	transformation class type = #Code
@@ -204,7 +204,7 @@ SmaCCRewrite >> transformationPresenter [
 	^ notebook
 ]
 
-{ #category : #'*SmaCC_Rewrite_Engine_UI' }
+{ #category : '*SmaCC_Rewrite_Engine_UI' }
 SmaCCRewrite >> transformationTypes [
 	^ ((SmaCCRewriteTransformation allSubclasses
 		collect: [ :each | each type ]) asSet

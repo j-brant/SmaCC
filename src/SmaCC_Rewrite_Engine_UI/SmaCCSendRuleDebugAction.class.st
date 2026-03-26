@@ -1,36 +1,37 @@
 Class {
-	#name : #SmaCCSendRuleDebugAction,
-	#superclass : #SmaCCTransformationToolkitDebugAction,
-	#category : #'SmaCC_Rewrite_Engine_UI'
+	#name : 'SmaCCSendRuleDebugAction',
+	#superclass : 'SmaCCTransformationToolkitDebugAction',
+	#category : 'SmaCC_Rewrite_Engine_UI',
+	#package : 'SmaCC_Rewrite_Engine_UI'
 }
 
-{ #category : #default }
+{ #category : 'default' }
 SmaCCSendRuleDebugAction class >> defaultDescription [
 	^ 'Step into message'
 ]
 
-{ #category : #default }
+{ #category : 'default' }
 SmaCCSendRuleDebugAction class >> defaultIconName [
 	^ #glamorousInto
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCSendRuleDebugAction class >> defaultName [
 	^ 'Into'
 ]
 
-{ #category : #default }
+{ #category : 'default' }
 SmaCCSendRuleDebugAction class >> defaultShortcut [
 	^ $O meta
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SmaCCSendRuleDebugAction >> executeAction [
 	| first |
 	first := true.
 	self
-		stepUntil: [ :context | 
+		stepUntil: [ :each | 
 			first
 				ifTrue: [ first := false ]
-				ifFalse: [ self session isRewriteContext: context ] ]
+				ifFalse: [ self smaccSession isRewriteContext: each ] ]
 ]

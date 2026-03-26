@@ -24,18 +24,17 @@ SmaCCParserStepToReduceAction >> defaultOrder [
 { #category : 'actions' }
 SmaCCParserStepToReduceAction >> executeAction [
 	| selectors |
-	selectors := self session parser reduceTable
-		inject: Set new
-		into: [ :sum :each | 
-			sum
-				add: (each at: 3);
-				yourself ].
+	selectors := self smaccSession parser reduceTable
+			inject: Set new
+			into: [ :sum :each | 
+				sum
+					add: (each at: 3);
+					yourself ].
 	self
-		stepUntil: [ :context | 
-			(context
-				findContextSuchThat: [ :each | 
-					(each receiver isKindOf: SmaCCParser)
-						and: [ selectors includes: each selector ] ]) notNil ]
+		stepUntil: [ :ctx | 
+			(ctx
+				findContextSuchThat: [ :each | (each receiver isKindOf: SmaCCParser) and: [ selectors includes: each selector ] ])
+				notNil ]
 ]
 
 { #category : 'accessing' }

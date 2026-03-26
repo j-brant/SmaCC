@@ -1,43 +1,44 @@
 Class {
-	#name : #SmaCCStepToLocationAction,
-	#superclass : #SmaCCTransformationToolkitDebugAction,
-	#category : #'SmaCC_Rewrite_Engine_UI'
+	#name : 'SmaCCStepToLocationAction',
+	#superclass : 'SmaCCTransformationToolkitDebugAction',
+	#category : 'SmaCC_Rewrite_Engine_UI',
+	#package : 'SmaCC_Rewrite_Engine_UI'
 }
 
-{ #category : #default }
+{ #category : 'default' }
 SmaCCStepToLocationAction class >> defaultDescription [
 	^ 'Step until we process a node at the current location'
 ]
 
-{ #category : #default }
+{ #category : 'default' }
 SmaCCStepToLocationAction class >> defaultIconName [
 	^ #glamorousInto
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCStepToLocationAction class >> defaultName [
 	^ 'Run to Cursor'
 ]
 
-{ #category : #default }
+{ #category : 'default' }
 SmaCCStepToLocationAction class >> defaultShortcut [
 	^ $r meta
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SmaCCStepToLocationAction >> executeAction [
 	| first node interval nextNode |
 	first := true.
 	interval := self debugger currentInputSelectionInterval.
-	node := self session currentNode.
+	node := self smaccSession currentNode.
 	self
-		stepUntil: [ :context | 
+		stepUntil: [ :each | 
 			first
 				ifTrue: [ first := false ]
-				ifFalse: [ context isBlockContext not
-						and: [ (self session isRewriteContext: context)
-								and: [ node ~~ (nextNode := context receiver match)
+				ifFalse: [ each isBlockContext not
+						and: [ (self smaccSession isRewriteContext: each)
+								and: [ node ~~ (nextNode := each receiver match)
 										and: [ (interval first between: nextNode startPosition and: nextNode stopPosition)
-												or:
-													[ (interval last between: nextNode startPosition and: nextNode stopPosition) or: [ nextNode startPosition between: interval first and: interval last ] ] ] ] ] ] ]
+												or: [ (interval last between: nextNode startPosition and: nextNode stopPosition)
+														or: [ nextNode startPosition between: interval first and: interval last ] ] ] ] ] ] ]
 ]

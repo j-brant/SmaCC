@@ -1,25 +1,25 @@
 Class {
-	#name : #SmaCCTransformationToolkitDebugSession,
-	#superclass : #DebugSession,
+	#name : 'SmaCCTransformationToolkitDebugSession',
+	#superclass : 'Object',
 	#instVars : [
-		'rootContext'
+		'rootContext',
+		'debugSession'
 	],
 	#classInstVars : [
 		'maxSearchDepth'
 	],
-	#category : #'SmaCC_Rewrite_Engine_UI'
+	#category : 'SmaCC_Rewrite_Engine_UI',
+	#package : 'SmaCC_Rewrite_Engine_UI'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCTransformationToolkitDebugSession class >> from: aDebugSession [
-	| session |
-	(aDebugSession isKindOf: superclass) ifFalse: [ self error: 'Unknown debug session' ].
-	session := self basicNew.
-	1 to: superclass instSize do: [ :i | session instVarAt: i put: (aDebugSession instVarAt: i) ].
-	^ session
+	^ self new
+		debugSession: aDebugSession;
+		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCTransformationToolkitDebugSession class >> handlesContext: aContext [
 	| max count |
 	max := self maxSearchDepth.
@@ -32,7 +32,7 @@ SmaCCTransformationToolkitDebugSession class >> handlesContext: aContext [
 			self isTransformationContext: each ]) notNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugSession class >> isRewriteContext: context [
 	((context receiver isKindOf: SmaCCRewriteMatchContext)
 		and: [ ((SmaCCRewriteMatchContext whichClassIncludesSelector: context selector)
@@ -43,43 +43,55 @@ SmaCCTransformationToolkitDebugSession class >> isRewriteContext: context [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCTransformationToolkitDebugSession class >> isTransformationContext: each [
 	^ each selector = #rewriteTree: and: [ each receiver isKindOf: SmaCCRewriteEngine ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugSession class >> maxSearchDepth [
 	^ maxSearchDepth ifNil: [ 5000 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugSession >> codeObjectForContext: aContext andRewrite: aRewrite [
 	(aRewrite isKindOf: SmaCCRewriteMethodDefinition) ifTrue: [ ^ aRewrite ].
-	^ (self isTransformation: aContext andRewrite: aRewrite) ifTrue: [ aRewrite transformation ] ifFalse: [ aRewrite match ]
+	^ (self isTransformation: aContext andRewrite: aRewrite)
+		ifTrue: [ aRewrite transformation ]
+		ifFalse: [ aRewrite match ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugSession >> currentNode [
 	^ self currentRewrite ifNotNil: [ :each | each match ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugSession >> currentRewrite [
 	^ self currentRewriteContext ifNotNil: [ :context | context receiver ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugSession >> currentRewriteContext [
 	| context |
-	context := interruptedContext.
+	context := self interruptedContext.
 	[ context isNil ]
 		whileFalse: [ (self isRewriteContext: context) ifTrue: [ ^ context ].
 			context := context sender ].
 	^ nil
 ]
 
-{ #category : #private }
+{ #category : 'private' }
+SmaCCTransformationToolkitDebugSession >> debugSession: aDebugSession [
+	debugSession := aDebugSession
+]
+
+{ #category : 'debug session' }
+SmaCCTransformationToolkitDebugSession >> interruptedContext [
+	^ debugSession interruptedContext
+]
+
+{ #category : 'private' }
 SmaCCTransformationToolkitDebugSession >> intervalFromMethodNode: aNode inSource: aString [
 	^ SmaCCMethodNodeSourceIntervalFinder new
 		methodNode: aNode;
@@ -87,82 +99,97 @@ SmaCCTransformationToolkitDebugSession >> intervalFromMethodNode: aNode inSource
 		find
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCTransformationToolkitDebugSession >> isActive [
-	^ rootContext notNil and: [ rootContext isDead not and: [ rootContext ~= self process suspendedContext or: [ rootContext willReturn not ] ] ]
+	^ rootContext notNil
+		and: [ rootContext isDead not
+				and: [ rootContext ~= self process suspendedContext
+						or: [ rootContext willReturn not ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugSession >> isRewriteContext: context [
 	^ self class isRewriteContext: context
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugSession >> isTransformation: aContext andRewrite: aRewrite [
 	^ aRewrite transformation method == aContext method method
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugSession >> newSource [
 	^ self rewriteEngine source asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugSession >> originalSource [
 	^ self rewriteNode completeSource asString
 ]
 
-{ #category : #accessing }
+{ #category : 'debug session' }
+SmaCCTransformationToolkitDebugSession >> process [
+	^ debugSession process
+]
+
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugSession >> rewriteEngine [
 	^ self rootContext receiver
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugSession >> rewriteForContext: context [
 	^ context receiver rewriteEngine rewriteRule
 		rewriteForMethod: context method method
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugSession >> rewriteNode [
 	^ self rootContext tempAt: 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugSession >> rootContext [
 	^ rootContext
-		ifNil: [ rootContext := interruptedContext findContextSuchThat: [ :each | self class isTransformationContext: each ] ]
+		ifNil: [ rootContext := self interruptedContext
+					findContextSuchThat: [ :each | self class isTransformationContext: each ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'debug session' }
+SmaCCTransformationToolkitDebugSession >> session [
+	^ debugSession
+]
+
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugSession >> sourceForContext: aContext andRewrite: aRewrite [
 	aContext ifNil: [ ^ '' ].
 	^ (self codeObjectForContext: aContext andRewrite: aRewrite) source
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugSession >> sourceSelectionIntervalForContext: aContext andRewrite: aRewrite [
 	| node |
 	aContext ifNil: [ ^ 1 to: 0 ].
 	node := aContext method sourceNodeForPC: aContext pc.
 	^ (aRewrite isKindOf: SmaCCRewriteMethodDefinition)
 		ifTrue: [ node sourceInterval ]
-		ifFalse: [ self intervalFromMethodNode: node inSource: (self sourceForContext: aContext andRewrite: aRewrite) ]
+		ifFalse: [ self
+				intervalFromMethodNode: node
+				inSource: (self sourceForContext: aContext andRewrite: aRewrite) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugSession >> transformationStack [
 	| stack context rewrite |
 	stack := OrderedCollection new.
-	context := interruptedContext.
+	context := self interruptedContext.
 	[ context isNil ]
 		whileFalse: [ (self isRewriteContext: context)
 				ifTrue: [ rewrite := self rewriteForContext: context.
 					rewrite notNil
 						ifTrue: [ stack
-								add:
-									{rewrite.
-									context} ] ].
+								add: {rewrite.
+										context} ] ].
 			context := context sender ].
 	^ stack
 ]

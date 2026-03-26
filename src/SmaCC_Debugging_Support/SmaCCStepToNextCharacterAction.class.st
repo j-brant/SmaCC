@@ -29,5 +29,5 @@ SmaCCStepToNextCharacterAction >> help [
 
 { #category : 'accessing' }
 SmaCCStepToNextCharacterAction >> stepToIndex [
-	^ self session scanner stream position + 1
+	^ self smaccSession scanner stream position + 1
 ]

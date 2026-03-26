@@ -1,49 +1,54 @@
 Class {
-	#name : #SmaCCTransformationToolkitDebugger,
-	#superclass : #SpPresenter,
+	#name : 'SmaCCTransformationToolkitDebugger',
+	#superclass : 'SpPresenter',
 	#traits : 'TDebugger',
 	#classTraits : 'TDebugger classTrait',
 	#instVars : [
-		'session',
 		'stack',
 		'source',
 		'input',
 		'output',
-		'inspector'
+		'inspector',
+		'smaccSession'
 	],
-	#category : #'SmaCC_Rewrite_Engine_UI'
+	#category : 'SmaCC_Rewrite_Engine_UI',
+	#package : 'SmaCC_Rewrite_Engine_UI'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugger class >> closeAllDebuggers [
 	^ self allInstancesDo: [ :each | each close ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCTransformationToolkitDebugger class >> debugSession: aDebugSession [
-	| session |
-	session := SmaCCTransformationToolkitDebugSession from: aDebugSession.
+	| session applicationDebugSession |
+	applicationDebugSession := SystemVersion current major >= 13
+			ifTrue: [ self currentApplication backend
+					spawnNewDebugSessionForSpecBackend: aDebugSession ]
+			ifFalse: [ aDebugSession ].
+	session := SmaCCTransformationToolkitDebugSession from: applicationDebugSession.
 	^ (self on: session)
 		open;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugger class >> defaultDebuggerRank [
 	^ 12
 ]
 
-{ #category : #debugging }
+{ #category : 'debugging' }
 SmaCCTransformationToolkitDebugger class >> handlesContext: aContext [
 	^ SmaCCTransformationToolkitDebugSession handlesContext: aContext
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 SmaCCTransformationToolkitDebugger >> close [
 	self window ifNotNil: [ :window | window close ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SmaCCTransformationToolkitDebugger >> createToolBar [
 	| send stepRule stepNode stepRewrite |
 	send := SmaCCSendRuleDebugAction forDebugger: self.
@@ -84,22 +89,22 @@ SmaCCTransformationToolkitDebugger >> createToolBar [
 						label: 'Debugger';
 						icon: (self iconNamed: #glamorousBug);
 						action:
-								[ StDebugger debugSession: session.
+								[ StDebugger debugSession: smaccSession.
 									self close ]);
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugger >> currentContext [
-	^ stack selectedItem ifNil: [ session interruptedContext ] ifNotNil: [ :each | each last ]
+	^ stack selectedItem ifNil: [ smaccSession interruptedContext ] ifNotNil: [ :each | each last ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugger >> currentNode [
-	^ stack selectedItem ifNil: [ session currentNode ] ifNotNil: [ :each | each last receiver match ]
+	^ stack selectedItem ifNil: [ smaccSession currentNode ] ifNotNil: [ :each | each last receiver match ]
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 SmaCCTransformationToolkitDebugger >> defaultLayout [
 	^ (SpPanedLayout newTopToBottom)
 		positionOfSlider: 0.66;
@@ -135,7 +140,7 @@ SmaCCTransformationToolkitDebugger >> defaultLayout [
 		yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCTransformationToolkitDebugger >> highlightNodeInterval: anInterval in: presenter [
 	| text |
 	text := presenter adapter ifNil: [ ^ self ] ifNotNil: [ :each | each widget getText ].
@@ -152,7 +157,7 @@ SmaCCTransformationToolkitDebugger >> highlightNodeInterval: anInterval in: pres
 			self scrollTo: anInterval first in: presenter ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCTransformationToolkitDebugger >> highlightNodes [
 	| inputInterval outputInterval |
 	self currentNode
@@ -164,38 +169,38 @@ SmaCCTransformationToolkitDebugger >> highlightNodes [
 	self highlightNodeInterval: outputInterval in: output
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SmaCCTransformationToolkitDebugger >> initializePresenters [
 	source := self newText.
 	stack := self newList.
 	stack display: [ :each | each first displayString ].
 	stack whenSelectionChangedDo: [ :each | self updateContext ].
 	input := self newText.
-	input text: session originalSource asString.
+	input text: smaccSession originalSource asString.
 	output := self newText.
 	inspector := self instantiate: StDebuggerInspector on: (StDebuggerInspectorModel on: StDebuggerContext new).
 	inspector label: 'Receiver'.
 	self whenDisplayDo: [ :each | self updateDisplay ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SmaCCTransformationToolkitDebugger >> initializeWindow: aWindowPresenter [
 	super initializeWindow: aWindowPresenter.
 	aWindowPresenter initialExtent: 850 @ 750
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCTransformationToolkitDebugger >> outputSelectionIntervalFor: aNode [
 	| string stop matchContext start |
 	aNode ifNil: [ ^ 1 to: 0 ].
-	matchContext := session currentRewrite.
-	string := session rewriteEngine source.
+	matchContext := smaccSession currentRewrite.
+	string := smaccSession rewriteEngine source.
 	start := matchContext startIndexFor: aNode.
 	stop := matchContext stopIndexFor: aNode.
 	^ (string stringIndexFor: start) to: (string stringIndexFor: stop)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCTransformationToolkitDebugger >> scrollTo: anIndex in: presenter [
 	| text line count |
 	text := presenter text.
@@ -204,40 +209,45 @@ SmaCCTransformationToolkitDebugger >> scrollTo: anIndex in: presenter [
 	presenter scrollValue: 0 @ ((line - 1) / count)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugger >> session [
-	^ session
+	^ smaccSession session
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SmaCCTransformationToolkitDebugger >> setModelBeforeInitialization: aDomainObject [
-	session := aDomainObject
+	smaccSession := aDomainObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
+SmaCCTransformationToolkitDebugger >> smaccSession [
+	^ smaccSession
+]
+
+{ #category : 'accessing' }
 SmaCCTransformationToolkitDebugger >> title [
 	^ 'SmaCC Transformation Toolkit Debugger'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCTransformationToolkitDebugger >> updateContext [
 	stack selectedItem
 		ifNil: [ source text: '' ]
 		ifNotNil:
 			[ :item | 
-			source text: (session sourceForContext: item last andRewrite: item first).
-			self highlightNodeInterval: (session sourceSelectionIntervalForContext: item last andRewrite: item first) in: source.
+			source text: (smaccSession sourceForContext: item last andRewrite: item first).
+			self highlightNodeInterval: (smaccSession sourceSelectionIntervalForContext: item last andRewrite: item first) in: source.
 			inspector updateWith: (StDebuggerContext context: item last).
 			self highlightNodes ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCTransformationToolkitDebugger >> updateDisplay [
 	| items newSource |
-	items := session transformationStack.
+	items := smaccSession transformationStack.
 	stack items: items.
 	items notEmpty ifTrue: [ stack selectItem: items first ].
-	newSource := session newSource.
+	newSource := smaccSession newSource.
 	newSource ~= output text asString ifTrue: [ output text: newSource ].
 	self highlightNodes
 ]
