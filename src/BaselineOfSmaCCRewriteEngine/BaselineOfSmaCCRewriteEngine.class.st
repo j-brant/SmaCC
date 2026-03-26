@@ -11,7 +11,7 @@ BaselineOfSmaCCRewriteEngine >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'SmaCCRuntime' with: [
-				spec repository: 'github://j-brant/SmaCC:v3.0.154' ].
+				spec repository: 'github://j-brant/SmaCC:v3.0.155' ].
 
 		spec package: 'SmaCC_Parse_Tree_Comparison' with: [
 			spec requires: #(#SmaCCRuntime) ].
