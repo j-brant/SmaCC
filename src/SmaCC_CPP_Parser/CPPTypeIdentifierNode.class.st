@@ -1,29 +1,31 @@
 Class {
-	#name : #CPPTypeIdentifierNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPTypeIdentifierNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'specifiers',
 		'declarator'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeIdentifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTypeIdentifier: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeIdentifierNode >> compositeNodeVariables [
 	^ #(#specifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeIdentifierNode >> declarator [
 	^ declarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeIdentifierNode >> declarator: aCPPProgramNode [
 	self declarator notNil
 		ifTrue: [ self declarator parent: nil ].
@@ -32,23 +34,23 @@ CPPTypeIdentifierNode >> declarator: aCPPProgramNode [
 		ifTrue: [ self declarator parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPTypeIdentifierNode >> initialize [
 	super initialize.
 	specifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeIdentifierNode >> nodeVariables [
 	^ #(#declarator)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeIdentifierNode >> specifiers [
 	^ specifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeIdentifierNode >> specifiers: anOrderedCollection [
 	self setParents: self specifiers to: nil.
 	specifiers := anOrderedCollection.
