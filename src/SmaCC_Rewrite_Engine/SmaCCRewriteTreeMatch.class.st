@@ -1,21 +1,22 @@
 Class {
-	#name : #SmaCCRewriteTreeMatch,
-	#superclass : #SmaCCRewriteMatch,
+	#name : 'SmaCCRewriteTreeMatch',
+	#superclass : 'SmaCCRewriteMatch',
 	#instVars : [
 		'startingState',
 		'source',
 		'trees'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCRewriteTreeMatch >> canMatch: aClass [
 	^ self trees
 		anySatisfy: [ :each | each class == aClass or: [ each isKindOf: SmaCCPatternNode ] ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCRewriteTreeMatch >> displayOn: aStream [
 	aStream
 		nextPutAll:
@@ -24,13 +25,13 @@ SmaCCRewriteTreeMatch >> displayOn: aStream [
 				ifFalse: [ source ])
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCRewriteTreeMatch >> initialize [
 	super initialize.
 	source := ''
 ]
 
-{ #category : #matching }
+{ #category : 'matching' }
 SmaCCRewriteTreeMatch >> match: aSmaCCRewriteMatchContext [
 	| context |
 	1 to: self trees size do:
@@ -43,7 +44,7 @@ SmaCCRewriteTreeMatch >> match: aSmaCCRewriteMatchContext [
 	^ nil
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCRewriteTreeMatch >> saveOn: aStream [
 	startingState notNil
 		ifTrue: [ aStream
@@ -55,12 +56,12 @@ SmaCCRewriteTreeMatch >> saveOn: aStream [
 		nextPutAll: '<<<'
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCRewriteTreeMatch >> source [
 	^ source
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCRewriteTreeMatch >> source: aString [
 	source := aString.
 	trees := nil.
@@ -68,19 +69,19 @@ SmaCCRewriteTreeMatch >> source: aString [
 	self modified
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCRewriteTreeMatch >> startingState [
 	^ startingState
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCRewriteTreeMatch >> startingState: aString [
 	startingState := aString.
 	self changed: #startingState.
 	self modified
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRewriteTreeMatch >> startingStateIndex [
 	startingState isNil
 		ifTrue: [ ^ 1 ].
@@ -88,7 +89,7 @@ SmaCCRewriteTreeMatch >> startingStateIndex [
 		perform: ('startingStateFor' , startingState) asSymbol
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteTreeMatch >> trees [
 	^ trees
 		ifNil: [ trees := [ startingState isNil
@@ -98,7 +99,7 @@ SmaCCRewriteTreeMatch >> trees [
 				do: [ :ex | ex return: #() ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteTreeMatch >> trees: aCollection [
 	trees := aCollection
 ]

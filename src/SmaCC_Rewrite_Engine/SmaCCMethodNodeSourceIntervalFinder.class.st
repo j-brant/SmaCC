@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCMethodNodeSourceIntervalFinder,
-	#superclass : #Object,
+	#name : 'SmaCCMethodNodeSourceIntervalFinder',
+	#superclass : 'Object',
 	#instVars : [
 		'methodNode',
 		'sourceString',
@@ -8,10 +8,11 @@ Class {
 		'sourceNode',
 		'sourceInterval'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #finding }
+{ #category : 'finding' }
 SmaCCMethodNodeSourceIntervalFinder >> equivalentNodeTo: aNode in: otherTree [
 	| equivParent nodeIndex equivNode |
 	aNode isMethod ifTrue: [ ^ otherTree ].
@@ -28,7 +29,7 @@ SmaCCMethodNodeSourceIntervalFinder >> equivalentNodeTo: aNode in: otherTree [
 	^ equivParent children at: nodeIndex ifAbsent: [ nil ]
 ]
 
-{ #category : #finding }
+{ #category : 'finding' }
 SmaCCMethodNodeSourceIntervalFinder >> find [
 	<return: #Interval>
 	sourceAst := RBParser
@@ -39,37 +40,37 @@ SmaCCMethodNodeSourceIntervalFinder >> find [
 	^ sourceInterval := sourceNode start to: sourceNode stop
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCMethodNodeSourceIntervalFinder >> methodNode [
 	^ methodNode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCMethodNodeSourceIntervalFinder >> methodNode: anObject [
 	methodNode := anObject
 ]
 
-{ #category : #'accessing - computed' }
+{ #category : 'accessing - computed' }
 SmaCCMethodNodeSourceIntervalFinder >> sourceAst [
 	^ sourceAst
 ]
 
-{ #category : #'accessing - computed' }
+{ #category : 'accessing - computed' }
 SmaCCMethodNodeSourceIntervalFinder >> sourceInterval [
 	^ sourceInterval
 ]
 
-{ #category : #'accessing - computed' }
+{ #category : 'accessing - computed' }
 SmaCCMethodNodeSourceIntervalFinder >> sourceNode [
 	^ sourceNode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCMethodNodeSourceIntervalFinder >> sourceString [
 	^ sourceString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCMethodNodeSourceIntervalFinder >> sourceString: anObject [
 	sourceString := anObject
 ]
