@@ -1,15 +1,16 @@
 Class {
-	#name : #SmaCCReplaceExpressionParser,
-	#superclass : #SmaCCParser,
-	#category : #'SmaCC_Rewrite_Engine'
+	#name : 'SmaCCReplaceExpressionParser',
+	#superclass : 'SmaCCParser',
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 SmaCCReplaceExpressionParser class >> cacheId [
 	^'2020-09-14T14:32:26.531215-05:00'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCReplaceExpressionParser class >> definitionComment [
 "%excludes expression code ;
 %id <codeExpression>;
@@ -91,7 +92,7 @@ Characters
 	;"
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCReplaceExpressionParser class >> reduceTable [
 ^#(
 	#(10 0 #reduceActionForRewriteExpressions1: 525313 false ) 
@@ -118,27 +119,27 @@ SmaCCReplaceExpressionParser class >> reduceTable [
 	).
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 SmaCCReplaceExpressionParser class >> scannerClass [
 	^SmaCCReplaceExpressionScanner
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCReplaceExpressionParser class >> startingStateForExpression [
 	^ 1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCReplaceExpressionParser class >> symbolNames [
 	^ #('<name>' '<newline>' '<special_characters>' '<end_of_expression_character>' '<string>' '<backquote>' '<double_backquote>' 'B e g i n' 'Expression' 'RewriteExpressions' 'RewriteExpression' 'StringReplace' 'NodeReplace' 'SwitchStateToDefault' 'SwitchStateToExpression' 'CodeReplace' 'SwitchStateToCode' 'PrefixModifiers' 'PostfixModifiers' 'OptionalWhitespace' 'OptionalCharacters' 'Characters' '<codeExpression>' 'E O F' 'error')
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCReplaceExpressionParser class >> symbolTypes [
 	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCCompositeReplaceExpression #SmaCCCompositeReplaceExpression #OrderedCollection #SmaCCReplaceExpression #SmaCCStringReplaceExpression #SmaCCNodeReplaceExpression nil nil #SmaCCCodeReplaceExpression nil #OrderedCollection #OrderedCollection #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCErrorNode)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCReplaceExpressionParser class >> transitionTable [
 ^#(
 #[1 0 6 0 5 0 6 0 6 0 6 0 7 0 9 0 9 0 13 0 10 0 6 0 24] 
@@ -177,7 +178,7 @@ SmaCCReplaceExpressionParser class >> transitionTable [
 	).
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCReplaceExpressionParser >> reduceActionForCodeReplace1: nodes [
 	| result |
 	result := SmaCCCodeReplaceExpression new.
@@ -185,7 +186,7 @@ SmaCCReplaceExpressionParser >> reduceActionForCodeReplace1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCReplaceExpressionParser >> reduceActionForExpression1: nodes [
 	| result |
 	result := SmaCCCompositeReplaceExpression new.
@@ -193,7 +194,7 @@ SmaCCReplaceExpressionParser >> reduceActionForExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCReplaceExpressionParser >> reduceActionForNodeReplace1: nodes [
 	| result |
 	result := SmaCCNodeReplaceExpression new.
@@ -207,7 +208,7 @@ SmaCCReplaceExpressionParser >> reduceActionForNodeReplace1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCReplaceExpressionParser >> reduceActionForPostfixModifiers1: nodes [
 	| result |
 	result := Array new: 3.
@@ -217,7 +218,7 @@ SmaCCReplaceExpressionParser >> reduceActionForPostfixModifiers1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCReplaceExpressionParser >> reduceActionForPrefixModifiers1: nodes [
 	| result |
 	result := Array new: 3.
@@ -227,7 +228,7 @@ SmaCCReplaceExpressionParser >> reduceActionForPrefixModifiers1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCReplaceExpressionParser >> reduceActionForPrefixModifiers2: nodes [
 	| result |
 	result := Array new: 3.
@@ -236,14 +237,14 @@ SmaCCReplaceExpressionParser >> reduceActionForPrefixModifiers2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCReplaceExpressionParser >> reduceActionForRewriteExpressions1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCReplaceExpressionParser >> reduceActionForRewriteExpressions2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -251,7 +252,7 @@ SmaCCReplaceExpressionParser >> reduceActionForRewriteExpressions2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCReplaceExpressionParser >> reduceActionForStringReplace1: nodes [
 	| result |
 	result := SmaCCStringReplaceExpression new.
@@ -259,19 +260,19 @@ SmaCCReplaceExpressionParser >> reduceActionForStringReplace1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCReplaceExpressionParser >> reduceActionForSwitchStateToCode1: nodes [
 	self scope: #code.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCReplaceExpressionParser >> reduceActionForSwitchStateToDefault1: nodes [
 	self scope: #default.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 SmaCCReplaceExpressionParser >> reduceActionForSwitchStateToExpression1: nodes [
 	self scope: #expression.
 	^ nil

@@ -1,18 +1,19 @@
 Class {
-	#name : #SmaCCAnnotatedStringInterval,
-	#superclass : #SmaCCStringInterval,
+	#name : 'SmaCCAnnotatedStringInterval',
+	#superclass : 'SmaCCStringInterval',
 	#instVars : [
 		'annotations'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCAnnotatedStringInterval >> addAllAnnotations: aCollection [
 	self annotations addAll: aCollection
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCAnnotatedStringInterval >> addAnnotation: aSmaCCRewriteAnnotation [
 	| collection |
 	collection := self annotations.
@@ -22,24 +23,24 @@ SmaCCAnnotatedStringInterval >> addAnnotation: aSmaCCRewriteAnnotation [
 	collection add: aSmaCCRewriteAnnotation
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCAnnotatedStringInterval >> annotations [
 	^ annotations ifNil: [ annotations := OrderedCollection new: 2 ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCAnnotatedStringInterval >> annotations: aSequenceableCollection [
 	annotations := aSequenceableCollection
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCAnnotatedStringInterval >> canBeMergedWith: nextSmaCCStringInterval [
 	"We want to keep the annotations, so we don't allow merging"
 
 	^ false
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 SmaCCAnnotatedStringInterval >> postCopy [
 	super postCopy.
 	annotations := annotations copy

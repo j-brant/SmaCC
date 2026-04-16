@@ -1,28 +1,29 @@
 Class {
-	#name : #SmaCCCodeReplaceExpression,
-	#superclass : #SmaCCReplaceExpression,
+	#name : 'SmaCCCodeReplaceExpression',
+	#superclass : 'SmaCCReplaceExpression',
 	#instVars : [
 		'code'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCCodeReplaceExpression >> acceptVisitor: aReplaceVisitor [
 	^ aReplaceVisitor visitCodeReplace: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCCodeReplaceExpression >> code [
 	^ code
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCCodeReplaceExpression >> code: aSmaCCToken [
 	code := aSmaCCToken
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 SmaCCCodeReplaceExpression >> evaluateInContext: aSmaCCRewriteMatchContext [
 	| value |
 	value := self method
@@ -36,7 +37,7 @@ SmaCCCodeReplaceExpression >> evaluateInContext: aSmaCCRewriteMatchContext [
 				to: aSmaCCRewriteMatchContext match stopPosition ]
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 SmaCCCodeReplaceExpression >> method [
 	^ self
 		attributeNamed: #method
@@ -48,7 +49,7 @@ SmaCCCodeReplaceExpression >> method [
 			SmaCCRewriteMatchContext compiledMethodFor: tree formattedCode ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCCodeReplaceExpression >> tokenVariables [
 	^ #(#code)
 ]

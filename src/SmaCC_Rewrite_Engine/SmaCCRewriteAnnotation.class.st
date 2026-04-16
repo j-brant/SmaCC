@@ -1,15 +1,16 @@
 Class {
-	#name : #SmaCCRewriteAnnotation,
-	#superclass : #Object,
+	#name : 'SmaCCRewriteAnnotation',
+	#superclass : 'Object',
 	#instVars : [
 		'nodeClass',
 		'nodeInterval',
 		'rewrite'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCRewriteAnnotation class >> onNode: aSmaCCParseNode rewrite: aSmaCCRewrite [
 	^ self new
 		nodeClass: aSmaCCParseNode class;
@@ -18,7 +19,7 @@ SmaCCRewriteAnnotation class >> onNode: aSmaCCParseNode rewrite: aSmaCCRewrite [
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCRewriteAnnotation >> = anObject [
 	^ self class = anObject class
 		and:
@@ -28,32 +29,32 @@ SmaCCRewriteAnnotation >> = anObject [
 						and: [ self rewrite = anObject rewrite ] ] ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SmaCCRewriteAnnotation >> hash [
 	^ (nodeClass hash bitXor: nodeInterval hash) bitXor: rewrite hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteAnnotation >> nodeClass [
 	^ nodeClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteAnnotation >> nodeClass: aBehavior [
 	nodeClass := aBehavior
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteAnnotation >> nodeInterval [
 	^ nodeInterval
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteAnnotation >> nodeInterval: anInterval [
 	nodeInterval := anInterval
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCRewriteAnnotation >> printOn: aStream [
 	super printOn: aStream.
 	aStream
@@ -65,12 +66,12 @@ SmaCCRewriteAnnotation >> printOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteAnnotation >> rewrite [
 	^ rewrite
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteAnnotation >> rewrite: aSmaCCRewrite [
 	rewrite := aSmaCCRewrite
 ]

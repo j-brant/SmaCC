@@ -1,13 +1,14 @@
 Class {
-	#name : #SmaCCRewriteRuleFileScanner,
-	#superclass : #SmaCCScanner,
+	#name : 'SmaCCRewriteRuleFileScanner',
+	#superclass : 'SmaCCScanner',
 	#classInstVars : [
 		'rewriter'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #'generated-initialization' }
+{ #category : 'generated-initialization' }
 SmaCCRewriteRuleFileScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
 	#(#(13 'Import' 9) #(13 'Parser' 10))
@@ -18,27 +19,27 @@ SmaCCRewriteRuleFileScanner class >> initializeKeywordMap [
 	^ keywordMap
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteRuleFileScanner class >> rewriter [
 	^ rewriter
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteRuleFileScanner class >> rewriter: aParseTreeRewriter [
 	rewriter := aParseTreeRewriter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCRewriteRuleFileScanner >> emptySymbolTokenId [
 	^ 34
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCRewriteRuleFileScanner >> errorTokenId [
 	^ 35
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRewriteRuleFileScanner >> fixExpression: expression [
 	| rewriter tree |
 	rewriter := self class rewriter.
@@ -49,13 +50,13 @@ SmaCCRewriteRuleFileScanner >> fixExpression: expression [
 	^ tree formattedCode
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRewriteRuleFileScanner >> isValidSmalltalk: aString [
 	RBParser parseExpression: aString onError: [ :e :p | ^ false ].
 	^ true
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCRewriteRuleFileScanner >> scan1 [
 	[ self step.
 	currentCharacter == $"
@@ -67,7 +68,7 @@ SmaCCRewriteRuleFileScanner >> scan1 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCRewriteRuleFileScanner >> scan2 [
 	[ self step.
 	currentCharacter == $!
@@ -79,7 +80,7 @@ SmaCCRewriteRuleFileScanner >> scan2 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCRewriteRuleFileScanner >> scan3 [
 	[ self step.
 	currentCharacter == $'
@@ -91,7 +92,7 @@ SmaCCRewriteRuleFileScanner >> scan3 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCRewriteRuleFileScanner >> scan4 [
 	[ self recordMatch: #(13).
 	self step.
@@ -105,7 +106,7 @@ SmaCCRewriteRuleFileScanner >> scan4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCRewriteRuleFileScanner >> scanForToken [
 	self step.
 	currentCharacter == $"
@@ -118,7 +119,7 @@ SmaCCRewriteRuleFileScanner >> scanForToken [
 	^ self scanForTokenX7
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCRewriteRuleFileScanner >> scanForTokenX1 [
 	self recordMatch: #(4).
 	self step.
@@ -127,7 +128,7 @@ SmaCCRewriteRuleFileScanner >> scanForTokenX1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCRewriteRuleFileScanner >> scanForTokenX2 [
 	[ self recordMatch: #(17).
 	self step.
@@ -135,21 +136,21 @@ SmaCCRewriteRuleFileScanner >> scanForTokenX2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCRewriteRuleFileScanner >> scanForTokenX3 [
 	(self scanForString: '>>')
 		ifTrue: [ ^ self recordAndReportMatch: #(8) ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCRewriteRuleFileScanner >> scanForTokenX4 [
 	(self scanForString: '<<')
 		ifTrue: [ ^ self recordAndReportMatch: #(7) ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCRewriteRuleFileScanner >> scanForTokenX5 [
 	self step.
 	currentCharacter == $!
@@ -157,7 +158,7 @@ SmaCCRewriteRuleFileScanner >> scanForTokenX5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCRewriteRuleFileScanner >> scanForTokenX6 [
 	self step.
 	currentCharacter == $!
@@ -165,7 +166,7 @@ SmaCCRewriteRuleFileScanner >> scanForTokenX6 [
 	^ self scan2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCRewriteRuleFileScanner >> scanForTokenX7 [
 	currentCharacter == $(
 		ifTrue: [ ^ self recordAndReportMatch: #(1) ].
@@ -196,7 +197,7 @@ SmaCCRewriteRuleFileScanner >> scanForTokenX7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRewriteRuleFileScanner >> scanSmalltalkExpression [
 	| expression |
 	expression := ''.
@@ -208,7 +209,7 @@ SmaCCRewriteRuleFileScanner >> scanSmalltalkExpression [
 	^ self fixExpression: expression
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SmaCCRewriteRuleFileScanner >> scanStringExpression [
 	| string |
 	string := stream upToAll: '<<<'.
@@ -216,7 +217,7 @@ SmaCCRewriteRuleFileScanner >> scanStringExpression [
 	^ string
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 SmaCCRewriteRuleFileScanner >> tokenActions [
 	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace)
 ]

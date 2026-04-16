@@ -1,16 +1,17 @@
 Class {
-	#name : #SmaCCRewrite,
-	#superclass : #SmaCCAbstractRewrite,
+	#name : 'SmaCCRewrite',
+	#superclass : 'SmaCCAbstractRewrite',
 	#instVars : [
 		'comment',
 		'match',
 		'transformation',
 		'engine'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCRewrite class >> comment: aString match: aSmaCCRewriteMatch transformation: aSmaCCRewriteTransformation [
 	^ self new
 		comment: aString;
@@ -19,7 +20,7 @@ SmaCCRewrite class >> comment: aString match: aSmaCCRewriteMatch transformation:
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCRewrite class >> newInstance [
 	^ self
 		comment: ''
@@ -27,30 +28,30 @@ SmaCCRewrite class >> newInstance [
 		transformation: (SmaCCRewriteCodeTransformation on: 'self continue')
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewrite >> comment [
 	^ comment ifNil: [ '' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewrite >> comment: aString [
 	comment := aString.
 	self changed: #comment
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SmaCCRewrite >> displayOn: aStream [
 	self comment notEmpty
 		ifTrue: [ aStream nextPutAll: self comment ]
 		ifFalse: [ match displayOn: aStream ]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCRewrite >> engine: aSmaCCRewriteEngine [
 	engine := aSmaCCRewriteEngine
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewrite >> listForClass: aClass into: aSmaCCRewriteLink [
 	| next |
 	(match canMatch: aClass)
@@ -61,7 +62,7 @@ SmaCCRewrite >> listForClass: aClass into: aSmaCCRewriteLink [
 	^ next
 ]
 
-{ #category : #saving }
+{ #category : 'saving' }
 SmaCCRewrite >> localSaveOn: aStream [
 	self comment notEmpty
 		ifTrue:
@@ -78,19 +79,19 @@ SmaCCRewrite >> localSaveOn: aStream [
 	transformation saveOn: aStream
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewrite >> match [
 	^ match
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewrite >> match: aSmaCCRewriteMatch [
 	match := aSmaCCRewriteMatch.
 	match rewrite: self.
 	self changed: #match
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SmaCCRewrite >> matches: aString [
 	^ (super matches: aString)
 		or: [ (Smalltalk at: aString asSymbol ifAbsent: [ nil ])
@@ -98,7 +99,7 @@ SmaCCRewrite >> matches: aString [
 				ifNotNil: [ :class | (class isKindOf: SmaCCParseNode class) and: [ match canMatch: class ] ] ]
 ]
 
-{ #category : #rewriting }
+{ #category : 'rewriting' }
 SmaCCRewrite >> performOn: aSmaCCNode continuation: aBlock [
 	| matchedContext dictionary result previousNode previousRule |
 	previousNode := engine source node.
@@ -119,7 +120,7 @@ SmaCCRewrite >> performOn: aSmaCCNode continuation: aBlock [
 	^ result
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 SmaCCRewrite >> postCopy [
 	super postCopy.
 	self match: self match copy.
@@ -127,12 +128,12 @@ SmaCCRewrite >> postCopy [
 	engine := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewrite >> transformation [
 	^ transformation
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewrite >> transformation: aSmaCCRewriteTransformation [
 	transformation := aSmaCCRewriteTransformation.
 	transformation rewrite: self.

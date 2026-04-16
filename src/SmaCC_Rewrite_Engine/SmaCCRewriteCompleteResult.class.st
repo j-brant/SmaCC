@@ -1,6 +1,6 @@
 Class {
-	#name : #SmaCCRewriteCompleteResult,
-	#superclass : #SmaCCRewriteResult,
+	#name : 'SmaCCRewriteCompleteResult',
+	#superclass : 'SmaCCRewriteResult',
 	#instVars : [
 		'inputSource',
 		'outputSource',
@@ -8,67 +8,68 @@ Class {
 		'additionalFiles',
 		'model'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCRewriteCompleteResult class >> model: aModel [
 	^ self new
 		model: aModel;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteCompleteResult >> addFile: aSmaCCString named: aString [
 	self additionalFiles at: aString put: aSmaCCString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteCompleteResult >> additionalFiles [
 	^ additionalFiles ifNil: [ additionalFiles := Dictionary new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteCompleteResult >> inputSource [
 	^ inputSource
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteCompleteResult >> inputSource: aString [
 	inputSource := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteCompleteResult >> model [
 	^ model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteCompleteResult >> model: anObject [
 	model := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteCompleteResult >> outputSource [
 	^ outputSource
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteCompleteResult >> outputSource: aString [
 	outputSource := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteCompleteResult >> smaccStringClass [
 	^ SmaCCAnnotatedString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteCompleteResult >> transformedString [
 	^ transformedString ifNil: [ super transformedString ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteCompleteResult >> transformedString: aSmaCCAnnotatedString [
 	transformedString := aSmaCCAnnotatedString
 ]

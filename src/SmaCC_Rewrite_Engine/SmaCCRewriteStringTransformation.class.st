@@ -1,33 +1,34 @@
 Class {
-	#name : #SmaCCRewriteStringTransformation,
-	#superclass : #SmaCCRewriteTransformation,
+	#name : 'SmaCCRewriteStringTransformation',
+	#superclass : 'SmaCCRewriteTransformation',
 	#instVars : [
 		'expression',
 		'source'
 	],
-	#category : #'SmaCC_Rewrite_Engine'
+	#category : 'SmaCC_Rewrite_Engine',
+	#package : 'SmaCC_Rewrite_Engine'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SmaCCRewriteStringTransformation class >> on: aString [
 	^ self new
 		string: aString;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteStringTransformation >> expression [
 	^ expression
 		ifNil: [ expression := SmaCCReplaceExpressionParser parse: self string ]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCRewriteStringTransformation >> initialize [
 	super initialize.
 	source := ''
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 SmaCCRewriteStringTransformation >> saveOn: aStream [
 	aStream
 		nextPutAll: '>>>';
@@ -35,12 +36,12 @@ SmaCCRewriteStringTransformation >> saveOn: aStream [
 		nextPutAll: '<<<'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteStringTransformation >> source [
 	^ source ifNil: [ '' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCRewriteStringTransformation >> source: aString [
 	source := aString.
 	expression := nil.
@@ -49,17 +50,17 @@ SmaCCRewriteStringTransformation >> source: aString [
 	self modified
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCRewriteStringTransformation >> string [
 	^ self source
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 SmaCCRewriteStringTransformation >> string: aString [
 	self source: aString
 ]
 
-{ #category : #transforming }
+{ #category : 'transforming' }
 SmaCCRewriteStringTransformation >> transformUsingContext: aSmaCCRewriteMatchContext [
 	| newSource |
 	newSource := self expression
