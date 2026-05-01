@@ -218,6 +218,11 @@ TElixirProgramNodeVisitor >> visitGrammar: aGrammar [
 ]
 
 { #category : 'generated' }
+TElixirProgramNodeVisitor >> visitIdentifier: anIdentifier [
+	^ self visitProgram: anIdentifier
+]
+
+{ #category : 'generated' }
 TElixirProgramNodeVisitor >> visitInterpolatedString: anInterpolatedString [
 	^ self visitProgram: anInterpolatedString
 ]
