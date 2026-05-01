@@ -2083,7 +2083,7 @@ ElixirParser >> actionForCurrentToken [
 				char := currentToken value isEmpty
 						ifTrue: [ $  ]
 						ifFalse: [ currentToken value first ].
-				shouldShift := (')|}<>:' includes: char).
+				shouldShift := (')|}<>' includes: char).
 				shouldShift ifFalse: [ shouldShift := self shouldSuppressEol ].
 				shouldShift ifTrue: [
 					action := self actionFor: currentToken ids first.
