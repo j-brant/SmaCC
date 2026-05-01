@@ -48,9 +48,9 @@ ElixirMapNode >> struct [
 ]
 
 { #category : 'generated' }
-ElixirMapNode >> struct: anElixirStructExprNode [
+ElixirMapNode >> struct: anElixirProgramNode [
 	self struct notNil ifTrue: [ self struct parent: nil ].
-	struct := anElixirStructExprNode.
+	struct := anElixirProgramNode.
 	self struct notNil ifTrue: [ self struct parent: self ]
 ]
 
