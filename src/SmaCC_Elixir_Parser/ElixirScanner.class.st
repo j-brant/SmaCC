@@ -181,94 +181,45 @@ ElixirScanner >> restoreState: aSmaCCScannerState [
 ElixirScanner >> scan1 [
 	self step.
 	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(28) ].
-	currentCharacter == Character cr ifTrue: [ ^ self scan1X20 ].
-	currentCharacter == $! ifTrue: [ ^ self scan1X19 ].
-	currentCharacter == $" ifTrue: [ ^ self scan3 ].
-	currentCharacter == $# ifTrue: [ ^ self scan1X8 ].
-	^ self scan1X25
+	currentCharacter == Character cr ifTrue: [ ^ self scan1X21 ].
+	currentCharacter == $! ifTrue: [ ^ self scan1X20 ].
+	currentCharacter == $" ifTrue: [ ^ self scan1X3 ].
+	currentCharacter == $# ifTrue: [ ^ self scan1X9 ].
+	^ self scan1X26
 ]
 
 { #category : 'generated' }
 ElixirScanner >> scan10 [
-	[ self step.
-	currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
-		whileTrue.
-	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
-		ifTrue: [ [ self step.
-			currentCharacter == $"
-				ifTrue: [ self step.
-					currentCharacter == $"
-						ifTrue: [ self step.
-							(currentCharacter == Character lf
-								or: [ currentCharacter == Character cr ]) ifTrue: [ ^ self scan12 ].
-							(currentCharacter <= $! or: [ currentCharacter >= $# ])
-								ifTrue: [ ^ self scan11 ].
-							^ self reportLastMatch ].
-					(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
-						ifTrue: [ ^ self scan12 ].
-					^ self scan11 ].
-			currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
-				whileTrue.
-			(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
-				ifTrue: [ ^ self scan12 ].
-			^ self scan11 ].
-	^ self reportLastMatch
+	self step.
+	currentCharacter == $' ifTrue: [ ^ self scan13 ].
+	currentCharacter == $\ ifTrue: [ ^ self scan12 ].
+	^ self scan11
 ]
 
 { #category : 'generated' }
 ElixirScanner >> scan11 [
 	[ self step.
-	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
-		ifTrue: [ ^ self scan12 ].
+	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(24) ].
+	currentCharacter == $\ ifTrue: [ ^ self scan12 ].
 	true ] whileTrue
 ]
 
 { #category : 'generated' }
 ElixirScanner >> scan12 [
-	[ self step.
-	currentCharacter == $"
-		ifTrue: [ (self scanForString: '""') ifTrue: [ ^ self recordAndReportMatch: #(23) ].
-			(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
-				ifTrue: [ ^ self scan12 ].
-			^ self scan11 ].
-	(currentCharacter between: Character tab and: Character lf)
-		or: [ currentCharacter == Character cr or: [ currentCharacter == Character space ] ] ]
-		whileTrue.
+	self step.
 	^ self scan11
 ]
 
 { #category : 'generated' }
 ElixirScanner >> scan13 [
-	self step.
-	currentCharacter == $' ifTrue: [ ^ self scan16 ].
-	currentCharacter == $\ ifTrue: [ ^ self scan15 ].
-	^ self scan14
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan14 [
-	[ self step.
-	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(24) ].
-	currentCharacter == $\ ifTrue: [ ^ self scan15 ].
-	true ] whileTrue
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan15 [
-	self step.
-	^ self scan14
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan16 [
 	self recordMatch: #(24).
 	self step.
-	currentCharacter == $' ifTrue: [ ^ self scan17 ].
+	currentCharacter == $' ifTrue: [ ^ self scan14 ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan17 [
+ElixirScanner >> scan14 [
 	[ self step.
 	currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
 		whileTrue.
@@ -279,51 +230,78 @@ ElixirScanner >> scan17 [
 					currentCharacter == $'
 						ifTrue: [ self step.
 							(currentCharacter == Character lf
-								or: [ currentCharacter == Character cr ]) ifTrue: [ ^ self scan19 ].
+								or: [ currentCharacter == Character cr ]) ifTrue: [ ^ self scan16 ].
 							(currentCharacter <= $& or: [ currentCharacter >= $( ])
-								ifTrue: [ ^ self scan18 ].
+								ifTrue: [ ^ self scan15 ].
 							^ self reportLastMatch ].
 					(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
-						ifTrue: [ ^ self scan19 ].
-					^ self scan18 ].
+						ifTrue: [ ^ self scan16 ].
+					^ self scan15 ].
 			currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
 				whileTrue.
 			(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
-				ifTrue: [ ^ self scan19 ].
-			^ self scan18 ].
+				ifTrue: [ ^ self scan16 ].
+			^ self scan15 ].
+	^ self reportLastMatch
+]
+
+{ #category : 'generated' }
+ElixirScanner >> scan15 [
+	[ self step.
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan16 ].
+	true ] whileTrue
+]
+
+{ #category : 'generated' }
+ElixirScanner >> scan16 [
+	[ self step.
+	currentCharacter == $'
+		ifTrue: [ (self scanForString: '''''') ifTrue: [ ^ self recordAndReportMatch: #(25) ].
+			(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+				ifTrue: [ ^ self scan16 ].
+			^ self scan15 ].
+	(currentCharacter between: Character tab and: Character lf)
+		or: [ currentCharacter == Character cr or: [ currentCharacter == Character space ] ] ]
+		whileTrue.
+	^ self scan15
+]
+
+{ #category : 'generated' }
+ElixirScanner >> scan17 [
+	self step.
+	currentCharacter isDigit
+		ifTrue: [ [ self recordMatch: #(50).
+			self step.
+			currentCharacter == $_ ifTrue: [ ^ self scan17 ].
+			currentCharacter isDigit ] whileTrue.
+			('Ee' includes: currentCharacter) ifTrue: [ ^ self scan18 ] ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
 ElixirScanner >> scan18 [
-	[ self step.
-	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
-		ifTrue: [ ^ self scan19 ].
-	true ] whileTrue
+	self step.
+	currentCharacter isDigit ifTrue: [ ^ self scan20 ].
+	('+-' includes: currentCharacter) ifTrue: [ ^ self scan19 ].
+	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
 ElixirScanner >> scan19 [
-	[ self step.
-	currentCharacter == $'
-		ifTrue: [ (self scanForString: '''''') ifTrue: [ ^ self recordAndReportMatch: #(25) ].
-			(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
-				ifTrue: [ ^ self scan19 ].
-			^ self scan18 ].
-	(currentCharacter between: Character tab and: Character lf)
-		or: [ currentCharacter == Character cr or: [ currentCharacter == Character space ] ] ]
-		whileTrue.
-	^ self scan18
+	self step.
+	currentCharacter isDigit ifTrue: [ ^ self scan20 ].
+	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
 ElixirScanner >> scan1X1 [
 	self recordMatch: #(17).
 	self step.
-	currentCharacter == $. ifTrue: [ ^ self scan20 ].
-	currentCharacter == $_ ifTrue: [ ^ self scan25 ].
-	currentCharacter == $b ifTrue: [ ^ self scan26 ].
-	currentCharacter == $o ifTrue: [ ^ self scan27 ].
+	currentCharacter == $. ifTrue: [ ^ self scan17 ].
+	currentCharacter == $_ ifTrue: [ ^ self scan22 ].
+	currentCharacter == $b ifTrue: [ ^ self scan23 ].
+	currentCharacter == $o ifTrue: [ ^ self scan24 ].
 	currentCharacter == $x
 		ifTrue: [ self step.
 			(currentCharacter isDigit
@@ -335,13 +313,23 @@ ElixirScanner >> scan1X1 [
 						or: [ (currentCharacter between: $A and: $F)
 								or: [ currentCharacter between: $a and: $f ] ] ] whileTrue ].
 			^ self reportLastMatch ].
-	currentCharacter isDigit ifTrue: [ ^ self scan24 ].
-	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan21 ].
+	currentCharacter isDigit ifTrue: [ ^ self scan21 ].
+	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan18 ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
 ElixirScanner >> scan1X10 [
+	self recordMatch: #(38).
+	self step.
+	currentCharacter == $= ifTrue: [ ^ self scan2 ].
+	currentCharacter == $> ifTrue: [ ^ self recordAndReportMatch: #(36) ].
+	currentCharacter == $~ ifTrue: [ ^ self recordAndReportMatch: #(32) ].
+	^ self reportLastMatch
+]
+
+{ #category : 'generated' }
+ElixirScanner >> scan1X11 [
 	self recordMatch: #(35).
 	self step.
 	currentCharacter == $> ifTrue: [ ^ self recordAndReportMatch: #(35 42) ].
@@ -353,7 +341,7 @@ ElixirScanner >> scan1X10 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X11 [
+ElixirScanner >> scan1X12 [
 	self recordMatch: #(41).
 	self step.
 	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(41) ].
@@ -365,7 +353,7 @@ ElixirScanner >> scan1X11 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X12 [
+ElixirScanner >> scan1X13 [
 	self recordMatch: #(53).
 	self step.
 	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(60) ].
@@ -374,7 +362,7 @@ ElixirScanner >> scan1X12 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X13 [
+ElixirScanner >> scan1X14 [
 	self recordMatch: #(46 48).
 	self step.
 	currentCharacter == $- ifTrue: [ ^ self recordAndReportMatch: #(45) ].
@@ -383,7 +371,7 @@ ElixirScanner >> scan1X13 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X14 [
+ElixirScanner >> scan1X15 [
 	self recordMatch: #(29).
 	self step.
 	currentCharacter == ${
@@ -393,7 +381,7 @@ ElixirScanner >> scan1X14 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X15 [
+ElixirScanner >> scan1X16 [
 	[ self recordMatch: #(26).
 	self step.
 	currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
@@ -402,7 +390,7 @@ ElixirScanner >> scan1X15 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X16 [
+ElixirScanner >> scan1X17 [
 	self recordMatch: #(48).
 	self step.
 	currentCharacter == $^
@@ -412,7 +400,7 @@ ElixirScanner >> scan1X16 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X17 [
+ElixirScanner >> scan1X18 [
 	self recordMatch: #(46 48).
 	self step.
 	currentCharacter == $+ ifTrue: [ ^ self recordAndReportMatch: #(45) ].
@@ -420,21 +408,13 @@ ElixirScanner >> scan1X17 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X18 [
+ElixirScanner >> scan1X19 [
 	self recordMatch: #(37).
 	self step.
 	currentCharacter == $&
 		ifTrue: [ self recordMatch: #(40).
 			self step.
 			currentCharacter == $& ifTrue: [ ^ self recordAndReportMatch: #(40) ] ].
-	^ self reportLastMatch
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan1X19 [
-	self recordMatch: #(48).
-	self step.
-	currentCharacter == $= ifTrue: [ ^ self scan2 ].
 	^ self reportLastMatch
 ]
 
@@ -451,7 +431,7 @@ ElixirScanner >> scan1X2 [
 				ifTrue: [ self recordMatch: #(48 55 59).
 					self step.
 					currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(56) ].
-					('!?' includes: currentCharacter) ifTrue: [ ^ self scan35 ].
+					('!?' includes: currentCharacter) ifTrue: [ ^ self scan32 ].
 					(currentCharacter isSeparator or: [ currentCharacter == Character pageUp ])
 						ifTrue: [ [ self step.
 							currentCharacter == $i
@@ -462,16 +442,24 @@ ElixirScanner >> scan1X2 [
 								whileTrue.
 							^ self reportLastMatch ].
 					(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-						ifTrue: [ ^ self scan34 ].
+						ifTrue: [ ^ self scan31 ].
 					^ self reportLastMatch ] ].
-	('!?' includes: currentCharacter) ifTrue: [ ^ self scan35 ].
+	('!?' includes: currentCharacter) ifTrue: [ ^ self scan32 ].
 	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ ^ self scan34 ].
+		ifTrue: [ ^ self scan31 ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
 ElixirScanner >> scan1X20 [
+	self recordMatch: #(48).
+	self step.
+	currentCharacter == $= ifTrue: [ ^ self scan2 ].
+	^ self reportLastMatch
+]
+
+{ #category : 'generated' }
+ElixirScanner >> scan1X21 [
 	self recordMatch: #(28).
 	self step.
 	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(28) ].
@@ -479,73 +467,93 @@ ElixirScanner >> scan1X20 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X21 [
+ElixirScanner >> scan1X22 [
 	self step.
 	currentCharacter == $\ ifTrue: [ ^ self recordAndReportMatch: #(52) ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X22 [
+ElixirScanner >> scan1X23 [
 	self step.
 	currentCharacter == $\ ifTrue: [ self step ].
 	^ self recordAndReportMatch: #(51)
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X23 [
-	currentCharacter == $o ifTrue: [ ^ self scan1X5 ].
+ElixirScanner >> scan1X24 [
+	currentCharacter == $o ifTrue: [ ^ self scan1X6 ].
 	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(15) ].
-	currentCharacter == $| ifTrue: [ ^ self scan1X10 ].
+	currentCharacter == $| ifTrue: [ ^ self scan1X11 ].
 	currentCharacter == $} ifTrue: [ ^ self recordAndReportMatch: #(16) ].
-	currentCharacter == $~ ifTrue: [ ^ self scan36 ].
-	currentCharacter isDigit ifTrue: [ ^ self scan24 ].
+	currentCharacter == $~ ifTrue: [ ^ self scan33 ].
+	currentCharacter isDigit ifTrue: [ ^ self scan21 ].
 	(currentCharacter == Character tab or: [ currentCharacter == Character space ])
-		ifTrue: [ ^ self scan1X15 ].
+		ifTrue: [ ^ self scan1X16 ].
 	(currentCharacter between: $* and: $/)
 		ifTrue: [ ^ self recordAndReportMatch: #(47) ].
-	currentCharacter isUppercase ifTrue: [ ^ self scan1X7 ].
+	currentCharacter isUppercase ifTrue: [ ^ self scan1X8 ].
 	(currentCharacter isLowercase or: [ currentCharacter == $_ ])
-		ifTrue: [ ^ self scan34 ].
+		ifTrue: [ ^ self scan31 ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X24 [
-	currentCharacter == $< ifTrue: [ ^ self scan1X3 ].
-	currentCharacter == $= ifTrue: [ ^ self scan1X9 ].
-	currentCharacter == $> ifTrue: [ ^ self scan1X11 ].
-	currentCharacter == $? ifTrue: [ ^ self scan1X22 ].
+ElixirScanner >> scan1X25 [
+	currentCharacter == $< ifTrue: [ ^ self scan1X4 ].
+	currentCharacter == $= ifTrue: [ ^ self scan1X10 ].
+	currentCharacter == $> ifTrue: [ ^ self scan1X12 ].
+	currentCharacter == $? ifTrue: [ ^ self scan1X23 ].
 	currentCharacter == $@ ifTrue: [ ^ self recordAndReportMatch: #(49) ].
 	currentCharacter == $[ ifTrue: [ ^ self recordAndReportMatch: #(7) ].
-	currentCharacter == $\ ifTrue: [ ^ self scan1X21 ].
+	currentCharacter == $\ ifTrue: [ ^ self scan1X22 ].
 	currentCharacter == $] ifTrue: [ ^ self recordAndReportMatch: #(8) ].
-	currentCharacter == $^ ifTrue: [ ^ self scan1X16 ].
-	currentCharacter == $a ifTrue: [ ^ self scan1X4 ].
-	currentCharacter == $i ifTrue: [ ^ self scan1X6 ].
+	currentCharacter == $^ ifTrue: [ ^ self scan1X17 ].
+	currentCharacter == $a ifTrue: [ ^ self scan1X5 ].
+	currentCharacter == $i ifTrue: [ ^ self scan1X7 ].
 	currentCharacter == $n ifTrue: [ ^ self scan1X2 ].
-	^ self scan1X23
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan1X25 [
-	currentCharacter == $% ifTrue: [ ^ self scan1X14 ].
-	currentCharacter == $& ifTrue: [ ^ self scan1X18 ].
-	currentCharacter == $' ifTrue: [ ^ self scan13 ].
-	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(1) ].
-	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(2) ].
-	currentCharacter == $+ ifTrue: [ ^ self scan1X17 ].
-	currentCharacter == $, ifTrue: [ ^ self recordAndReportMatch: #(3) ].
-	currentCharacter == $- ifTrue: [ ^ self scan1X13 ].
-	currentCharacter == $. ifTrue: [ ^ self scan1X12 ].
-	currentCharacter == $0 ifTrue: [ ^ self scan1X1 ].
-	currentCharacter == $: ifTrue: [ ^ self scan28 ].
-	currentCharacter == $; ifTrue: [ ^ self recordAndReportMatch: #(4 58) ].
 	^ self scan1X24
 ]
 
 { #category : 'generated' }
+ElixirScanner >> scan1X26 [
+	currentCharacter == $% ifTrue: [ ^ self scan1X15 ].
+	currentCharacter == $& ifTrue: [ ^ self scan1X19 ].
+	currentCharacter == $' ifTrue: [ ^ self scan10 ].
+	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(1) ].
+	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(2) ].
+	currentCharacter == $+ ifTrue: [ ^ self scan1X18 ].
+	currentCharacter == $, ifTrue: [ ^ self recordAndReportMatch: #(3) ].
+	currentCharacter == $- ifTrue: [ ^ self scan1X14 ].
+	currentCharacter == $. ifTrue: [ ^ self scan1X13 ].
+	currentCharacter == $0 ifTrue: [ ^ self scan1X1 ].
+	currentCharacter == $: ifTrue: [ ^ self scan25 ].
+	currentCharacter == $; ifTrue: [ ^ self recordAndReportMatch: #(4 58) ].
+	^ self scan1X25
+]
+
+{ #category : 'generated' }
 ElixirScanner >> scan1X3 [
+	self step.
+	currentCharacter == $"
+		ifTrue: [ self recordMatch: #(22).
+			self step.
+			currentCharacter == $"
+				ifTrue: [ [ self step.
+					currentCharacter == Character tab
+						or: [ currentCharacter == Character space ] ] whileTrue.
+					(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+						ifTrue: [ ^ self scan8 ].
+					^ self reportLastMatch ].
+			currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(56) ].
+			^ self reportLastMatch ].
+	currentCharacter == $# ifTrue: [ ^ self scan5 ].
+	currentCharacter == $\ ifTrue: [ ^ self scan7 ].
+	^ self scan3
+]
+
+{ #category : 'generated' }
+ElixirScanner >> scan1X4 [
 	self recordMatch: #(41).
 	self step.
 	currentCharacter == $- ifTrue: [ ^ self recordAndReportMatch: #(52) ].
@@ -561,12 +569,12 @@ ElixirScanner >> scan1X3 [
 		ifTrue: [ self step.
 			currentCharacter == $> ifTrue: [ ^ self recordAndReportMatch: #(42) ].
 			^ self reportLastMatch ].
-	currentCharacter == $~ ifTrue: [ ^ self scan33 ].
+	currentCharacter == $~ ifTrue: [ ^ self scan30 ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X4 [
+ElixirScanner >> scan1X5 [
 	self recordMatch: #(55 59).
 	self step.
 	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(56) ].
@@ -578,24 +586,9 @@ ElixirScanner >> scan1X4 [
 				ifTrue: [ self recordMatch: #(40 55 59).
 					self step.
 					currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(56) ] ] ].
-	('!?' includes: currentCharacter) ifTrue: [ ^ self scan35 ].
+	('!?' includes: currentCharacter) ifTrue: [ ^ self scan32 ].
 	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ ^ self scan34 ].
-	^ self reportLastMatch
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan1X5 [
-	self recordMatch: #(55 59).
-	self step.
-	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(56) ].
-	currentCharacter == $r
-		ifTrue: [ self recordMatch: #(39 55 59).
-			self step.
-			currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(56) ] ].
-	('!?' includes: currentCharacter) ifTrue: [ ^ self scan35 ].
-	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ ^ self scan34 ].
+		ifTrue: [ ^ self scan31 ].
 	^ self reportLastMatch
 ]
 
@@ -604,18 +597,33 @@ ElixirScanner >> scan1X6 [
 	self recordMatch: #(55 59).
 	self step.
 	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(56) ].
-	currentCharacter == $n
-		ifTrue: [ self recordMatch: #(43 55 59).
+	currentCharacter == $r
+		ifTrue: [ self recordMatch: #(39 55 59).
 			self step.
 			currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(56) ] ].
-	('!?' includes: currentCharacter) ifTrue: [ ^ self scan35 ].
+	('!?' includes: currentCharacter) ifTrue: [ ^ self scan32 ].
 	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
-		ifTrue: [ ^ self scan34 ].
+		ifTrue: [ ^ self scan31 ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
 ElixirScanner >> scan1X7 [
+	self recordMatch: #(55 59).
+	self step.
+	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(56) ].
+	currentCharacter == $n
+		ifTrue: [ self recordMatch: #(43 55 59).
+			self step.
+			currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(56) ] ].
+	('!?' includes: currentCharacter) ifTrue: [ ^ self scan32 ].
+	(currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ])
+		ifTrue: [ ^ self scan31 ].
+	^ self reportLastMatch
+]
+
+{ #category : 'generated' }
+ElixirScanner >> scan1X8 [
 	[ self recordMatch: #(57).
 	self step.
 	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(56) ].
@@ -629,22 +637,12 @@ ElixirScanner >> scan1X7 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X8 [
+ElixirScanner >> scan1X9 [
 	[ self recordMatch: #(27).
 	self step.
 	currentCharacter <= Character tab
 		or: [ (currentCharacter between: Character pageUp and: Character newPage)
 				or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
-	^ self reportLastMatch
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan1X9 [
-	self recordMatch: #(38).
-	self step.
-	currentCharacter == $= ifTrue: [ ^ self scan2 ].
-	currentCharacter == $> ifTrue: [ ^ self recordAndReportMatch: #(36) ].
-	currentCharacter == $~ ifTrue: [ ^ self recordAndReportMatch: #(32) ].
 	^ self reportLastMatch
 ]
 
@@ -658,97 +656,70 @@ ElixirScanner >> scan2 [
 
 { #category : 'generated' }
 ElixirScanner >> scan20 [
+	[ self recordMatch: #(50).
 	self step.
-	currentCharacter isDigit
-		ifTrue: [ [ self recordMatch: #(50).
-			self step.
-			currentCharacter == $_ ifTrue: [ ^ self scan20 ].
-			currentCharacter isDigit ] whileTrue.
-			('Ee' includes: currentCharacter) ifTrue: [ ^ self scan21 ] ].
+	currentCharacter == $_ ifTrue: [ ^ self scan19 ].
+	currentCharacter isDigit ] whileTrue.
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
 ElixirScanner >> scan21 [
+	[ self recordMatch: #(17).
 	self step.
-	currentCharacter isDigit ifTrue: [ ^ self scan23 ].
-	('+-' includes: currentCharacter) ifTrue: [ ^ self scan22 ].
+	currentCharacter == $. ifTrue: [ ^ self scan17 ].
+	currentCharacter == $_ ifTrue: [ ^ self scan22 ].
+	currentCharacter isDigit ] whileTrue.
+	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan18 ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
 ElixirScanner >> scan22 [
 	self step.
-	currentCharacter isDigit ifTrue: [ ^ self scan23 ].
+	currentCharacter isDigit ifTrue: [ ^ self scan21 ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
 ElixirScanner >> scan23 [
-	[ self recordMatch: #(50).
 	self step.
-	currentCharacter == $_ ifTrue: [ ^ self scan22 ].
-	currentCharacter isDigit ] whileTrue.
+	(currentCharacter between: $0 and: $1)
+		ifTrue: [ [ self recordMatch: #(17).
+			self step.
+			currentCharacter == $_ ifTrue: [ ^ self scan23 ].
+			currentCharacter between: $0 and: $1 ] whileTrue ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
 ElixirScanner >> scan24 [
-	[ self recordMatch: #(17).
 	self step.
-	currentCharacter == $. ifTrue: [ ^ self scan20 ].
-	currentCharacter == $_ ifTrue: [ ^ self scan25 ].
-	currentCharacter isDigit ] whileTrue.
-	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan21 ].
+	(currentCharacter between: $0 and: $7)
+		ifTrue: [ [ self recordMatch: #(17).
+			self step.
+			currentCharacter == $_ ifTrue: [ ^ self scan24 ].
+			currentCharacter between: $0 and: $7 ] whileTrue ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
 ElixirScanner >> scan25 [
 	self step.
-	currentCharacter isDigit ifTrue: [ ^ self scan24 ].
-	^ self reportLastMatch
+	currentCharacter == $! ifTrue: [ ^ self scan25X10 ].
+	currentCharacter == $" ifTrue: [ ^ self scan27 ].
+	currentCharacter == $& ifTrue: [ ^ self scan25X14 ].
+	currentCharacter == $' ifTrue: [ ^ self scan25X5 ].
+	currentCharacter == $+ ifTrue: [ ^ self scan25X9 ].
+	currentCharacter == $- ifTrue: [ ^ self scan25X8 ].
+	currentCharacter == $. ifTrue: [ ^ self scan25X12 ].
+	currentCharacter == $: ifTrue: [ ^ self scan25X2 ].
+	currentCharacter == $< ifTrue: [ ^ self scan25X1 ].
+	^ self scan25X15
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan26 [
-	self step.
-	(currentCharacter between: $0 and: $1)
-		ifTrue: [ [ self recordMatch: #(17).
-			self step.
-			currentCharacter == $_ ifTrue: [ ^ self scan26 ].
-			currentCharacter between: $0 and: $1 ] whileTrue ].
-	^ self reportLastMatch
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan27 [
-	self step.
-	(currentCharacter between: $0 and: $7)
-		ifTrue: [ [ self recordMatch: #(17).
-			self step.
-			currentCharacter == $_ ifTrue: [ ^ self scan27 ].
-			currentCharacter between: $0 and: $7 ] whileTrue ].
-	^ self reportLastMatch
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan28 [
-	self step.
-	currentCharacter == $! ifTrue: [ ^ self scan28X10 ].
-	currentCharacter == $" ifTrue: [ ^ self scan30 ].
-	currentCharacter == $& ifTrue: [ ^ self scan28X14 ].
-	currentCharacter == $' ifTrue: [ ^ self scan28X5 ].
-	currentCharacter == $+ ifTrue: [ ^ self scan28X9 ].
-	currentCharacter == $- ifTrue: [ ^ self scan28X8 ].
-	currentCharacter == $. ifTrue: [ ^ self scan28X12 ].
-	currentCharacter == $: ifTrue: [ ^ self scan28X2 ].
-	currentCharacter == $< ifTrue: [ ^ self scan28X1 ].
-	^ self scan28X15
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan28X1 [
+ElixirScanner >> scan25X1 [
 	self recordMatch: #(18).
 	self step.
 	currentCharacter == $<
@@ -756,57 +727,57 @@ ElixirScanner >> scan28X1 [
 			('<~' includes: currentCharacter)
 				ifTrue: [ ^ self recordAndReportMatch: #(18) ].
 			^ self reportLastMatch ].
-	currentCharacter == $| ifTrue: [ ^ self scan31 ].
-	currentCharacter == $~ ifTrue: [ ^ self scan32 ].
+	currentCharacter == $| ifTrue: [ ^ self scan28 ].
+	currentCharacter == $~ ifTrue: [ ^ self scan29 ].
 	(currentCharacter == $- or: [ currentCharacter between: $= and: $> ])
 		ifTrue: [ ^ self recordAndReportMatch: #(18) ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan28X10 [
+ElixirScanner >> scan25X10 [
 	self recordMatch: #(18).
 	self step.
-	currentCharacter == $= ifTrue: [ ^ self scan29 ].
+	currentCharacter == $= ifTrue: [ ^ self scan26 ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan28X11 [
+ElixirScanner >> scan25X11 [
 	self step.
 	currentCharacter == $\ ifTrue: [ ^ self recordAndReportMatch: #(18) ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan28X12 [
+ElixirScanner >> scan25X12 [
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self recordAndReportMatch: #(18) ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan28X13 [
+ElixirScanner >> scan25X13 [
 	self step.
-	currentCharacter == $> ifTrue: [ ^ self scan32 ].
+	currentCharacter == $> ifTrue: [ ^ self scan29 ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan28X14 [
+ElixirScanner >> scan25X14 [
 	(self scanForString: '&&' match: #(18))
 		ifTrue: [ ^ self recordAndReportMatch: #(18) ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan28X15 [
-	currentCharacter == $= ifTrue: [ ^ self scan28X4 ].
-	currentCharacter == $> ifTrue: [ ^ self scan28X3 ].
-	currentCharacter == $\ ifTrue: [ ^ self scan28X11 ].
-	currentCharacter == $^ ifTrue: [ ^ self scan28X7 ].
-	currentCharacter == $| ifTrue: [ ^ self scan28X6 ].
-	currentCharacter == $~ ifTrue: [ ^ self scan28X13 ].
+ElixirScanner >> scan25X15 [
+	currentCharacter == $= ifTrue: [ ^ self scan25X4 ].
+	currentCharacter == $> ifTrue: [ ^ self scan25X3 ].
+	currentCharacter == $\ ifTrue: [ ^ self scan25X11 ].
+	currentCharacter == $^ ifTrue: [ ^ self scan25X7 ].
+	currentCharacter == $| ifTrue: [ ^ self scan25X6 ].
+	currentCharacter == $~ ifTrue: [ ^ self scan25X13 ].
 	('*/' includes: currentCharacter)
 		ifTrue: [ ^ self recordAndReportMatch: #(18) ].
 	(currentCharacter isLetter or: [ currentCharacter == $_ ])
@@ -820,7 +791,7 @@ ElixirScanner >> scan28X15 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan28X2 [
+ElixirScanner >> scan25X2 [
 	self recordMatch: #(34).
 	self step.
 	currentCharacter == $"
@@ -835,25 +806,25 @@ ElixirScanner >> scan28X2 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan28X3 [
+ElixirScanner >> scan25X3 [
 	self recordMatch: #(18).
 	self step.
 	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(18) ].
-	currentCharacter == $> ifTrue: [ ^ self scan31 ].
+	currentCharacter == $> ifTrue: [ ^ self scan28 ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan28X4 [
+ElixirScanner >> scan25X4 [
 	self recordMatch: #(18).
 	self step.
-	currentCharacter == $= ifTrue: [ ^ self scan29 ].
+	currentCharacter == $= ifTrue: [ ^ self scan26 ].
 	currentCharacter == $~ ifTrue: [ ^ self recordAndReportMatch: #(18) ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan28X5 [
+ElixirScanner >> scan25X5 [
 	self step.
 	currentCharacter ~~ $'
 		ifTrue: [ [ self step.
@@ -863,7 +834,7 @@ ElixirScanner >> scan28X5 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan28X6 [
+ElixirScanner >> scan25X6 [
 	self recordMatch: #(18).
 	self step.
 	currentCharacter == $> ifTrue: [ ^ self recordAndReportMatch: #(18) ].
@@ -875,7 +846,7 @@ ElixirScanner >> scan28X6 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan28X7 [
+ElixirScanner >> scan25X7 [
 	self recordMatch: #(18).
 	self step.
 	currentCharacter == $^
@@ -885,7 +856,7 @@ ElixirScanner >> scan28X7 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan28X8 [
+ElixirScanner >> scan25X8 [
 	self recordMatch: #(18).
 	self step.
 	currentCharacter == $- ifTrue: [ ^ self recordAndReportMatch: #(18) ].
@@ -893,7 +864,7 @@ ElixirScanner >> scan28X8 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan28X9 [
+ElixirScanner >> scan25X9 [
 	self recordMatch: #(18).
 	self step.
 	currentCharacter == $+ ifTrue: [ ^ self recordAndReportMatch: #(18) ].
@@ -901,7 +872,7 @@ ElixirScanner >> scan28X9 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan29 [
+ElixirScanner >> scan26 [
 	self recordMatch: #(18).
 	self step.
 	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(18) ].
@@ -909,39 +880,30 @@ ElixirScanner >> scan29 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan3 [
-	self step.
-	currentCharacter == $" ifTrue: [ ^ self scan9 ].
-	currentCharacter == $# ifTrue: [ ^ self scan6 ].
-	currentCharacter == $\ ifTrue: [ ^ self scan8 ].
-	^ self scan4
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan30 [
+ElixirScanner >> scan27 [
 	[ self step.
 	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(18) ].
 	currentCharacter == $#
 		ifTrue: [ self step.
 			currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(18) ].
 			(currentCharacter <= $z or: [ currentCharacter >= $| ])
-				ifTrue: [ ^ self scan30 ].
+				ifTrue: [ ^ self scan27 ].
 			^ self reportLastMatch ].
 	currentCharacter == $\
 		ifTrue: [ self step.
-			^ self scan30 ].
+			^ self scan27 ].
 	true ] whileTrue
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan31 [
+ElixirScanner >> scan28 [
 	self step.
 	currentCharacter == $> ifTrue: [ ^ self recordAndReportMatch: #(18) ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan32 [
+ElixirScanner >> scan29 [
 	self recordMatch: #(18).
 	self step.
 	currentCharacter == $> ifTrue: [ ^ self recordAndReportMatch: #(18) ].
@@ -949,7 +911,16 @@ ElixirScanner >> scan32 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan33 [
+ElixirScanner >> scan3 [
+	[ self step.
+	currentCharacter == $" ifTrue: [ ^ self scan4 ].
+	currentCharacter == $# ifTrue: [ ^ self scan5 ].
+	currentCharacter == $\ ifTrue: [ ^ self scan7 ].
+	true ] whileTrue
+]
+
+{ #category : 'generated' }
+ElixirScanner >> scan30 [
 	self recordMatch: #(42).
 	self step.
 	currentCharacter == $> ifTrue: [ ^ self recordAndReportMatch: #(42) ].
@@ -957,17 +928,17 @@ ElixirScanner >> scan33 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan34 [
+ElixirScanner >> scan31 [
 	[ self recordMatch: #(55 59).
 	self step.
 	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(56) ].
-	('!?' includes: currentCharacter) ifTrue: [ ^ self scan35 ].
+	('!?' includes: currentCharacter) ifTrue: [ ^ self scan32 ].
 	currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue.
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan35 [
+ElixirScanner >> scan32 [
 	self recordMatch: #(55 59).
 	self step.
 	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(56) ].
@@ -975,45 +946,45 @@ ElixirScanner >> scan35 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan36 [
+ElixirScanner >> scan33 [
 	self step.
-	currentCharacter == $> ifTrue: [ ^ self scan33 ].
-	currentCharacter == $~ ifTrue: [ ^ self scan36X2 ].
-	(currentCharacter between: $A and: $Z) ifTrue: [ ^ self scan37 ].
+	currentCharacter == $> ifTrue: [ ^ self scan30 ].
+	currentCharacter == $~ ifTrue: [ ^ self scan33X2 ].
+	(currentCharacter between: $A and: $Z) ifTrue: [ ^ self scan34 ].
 	(currentCharacter between: $a and: $z)
 		ifTrue: [ self step.
-			currentCharacter == $" ifTrue: [ ^ self scan36X1 ].
-			currentCharacter == $' ifTrue: [ ^ self scan50 ].
-			currentCharacter == $( ifTrue: [ ^ self scan52 ].
-			currentCharacter == $/ ifTrue: [ ^ self scan54 ].
-			currentCharacter == $< ifTrue: [ ^ self scan56 ].
-			currentCharacter == $[ ifTrue: [ ^ self scan58 ].
-			currentCharacter == ${ ifTrue: [ ^ self scan60 ].
-			currentCharacter == $| ifTrue: [ ^ self scan62 ] ].
+			currentCharacter == $" ifTrue: [ ^ self scan33X1 ].
+			currentCharacter == $' ifTrue: [ ^ self scan46 ].
+			currentCharacter == $( ifTrue: [ ^ self scan48 ].
+			currentCharacter == $/ ifTrue: [ ^ self scan50 ].
+			currentCharacter == $< ifTrue: [ ^ self scan52 ].
+			currentCharacter == $[ ifTrue: [ ^ self scan54 ].
+			currentCharacter == ${ ifTrue: [ ^ self scan56 ].
+			currentCharacter == $| ifTrue: [ ^ self scan58 ] ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan36X1 [
+ElixirScanner >> scan33X1 [
 	self step.
-	currentCharacter == $" ifTrue: [ ^ self scan38 ].
-	currentCharacter == $\ ifTrue: [ ^ self scan48 ].
-	^ self scan47
+	currentCharacter == $" ifTrue: [ ^ self scan35 ].
+	currentCharacter == $\ ifTrue: [ ^ self scan44 ].
+	^ self scan43
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan36X2 [
+ElixirScanner >> scan33X2 [
 	self step.
 	currentCharacter == $~ ifTrue: [ ^ self recordAndReportMatch: #(48) ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan37 [
+ElixirScanner >> scan34 [
 	self step.
 	currentCharacter == $"
 		ifTrue: [ self step.
-			currentCharacter == $" ifTrue: [ ^ self scan38 ].
+			currentCharacter == $" ifTrue: [ ^ self scan35 ].
 			true
 				ifTrue: [ [ self step.
 					currentCharacter == $"
@@ -1024,7 +995,7 @@ ElixirScanner >> scan37 [
 							^ self reportLastMatch ].
 					true ] whileTrue ].
 			^ self reportLastMatch ].
-	currentCharacter == $' ifTrue: [ ^ self scan42 ].
+	currentCharacter == $' ifTrue: [ ^ self scan38 ].
 	currentCharacter == $(
 		ifTrue: [ [ self step.
 			currentCharacter == $)
@@ -1083,10 +1054,16 @@ ElixirScanner >> scan37 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan38 [
+ElixirScanner >> scan35 [
 	self recordMatch: #(54).
 	self step.
-	currentCharacter == $" ifTrue: [ ^ self scan39 ].
+	currentCharacter == $"
+		ifTrue: [ [ self step.
+			currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
+				whileTrue.
+			(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+				ifTrue: [ ^ self scan36 ].
+			^ self reportLastMatch ].
 	((currentCharacter between: $A and: $Z)
 		or: [ currentCharacter between: $a and: $z ])
 		ifTrue: [ [ self recordMatch: #(54).
@@ -1097,51 +1074,7 @@ ElixirScanner >> scan38 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan39 [
-	[ self step.
-	currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
-		whileTrue.
-	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
-		ifTrue: [ [ self step.
-			currentCharacter == $"
-				ifTrue: [ self step.
-					currentCharacter == $"
-						ifTrue: [ self step.
-							(currentCharacter == Character lf
-								or: [ currentCharacter == Character cr ]) ifTrue: [ ^ self scan41 ].
-							(currentCharacter <= $! or: [ currentCharacter >= $# ])
-								ifTrue: [ ^ self scan40 ].
-							^ self reportLastMatch ].
-					(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
-						ifTrue: [ ^ self scan41 ].
-					^ self scan40 ].
-			currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
-				whileTrue.
-			(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
-				ifTrue: [ ^ self scan41 ].
-			^ self scan40 ].
-	^ self reportLastMatch
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan4 [
-	[ self step.
-	currentCharacter == $" ifTrue: [ ^ self scan5 ].
-	currentCharacter == $# ifTrue: [ ^ self scan6 ].
-	currentCharacter == $\ ifTrue: [ ^ self scan8 ].
-	true ] whileTrue
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan40 [
-	[ self step.
-	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
-		ifTrue: [ ^ self scan41 ].
-	true ] whileTrue
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan41 [
+ElixirScanner >> scan36 [
 	[ self step.
 	currentCharacter == $"
 		ifTrue: [ (self scanForString: '""')
@@ -1151,18 +1084,26 @@ ElixirScanner >> scan41 [
 						or: [ currentCharacter between: $a and: $z ] ] whileTrue.
 					^ self reportLastMatch ].
 			(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
-				ifTrue: [ ^ self scan41 ].
-			^ self scan40 ].
+				ifTrue: [ ^ self scan36 ].
+			^ self scan37 ].
 	(currentCharacter between: Character tab and: Character lf)
 		or: [ currentCharacter == Character cr or: [ currentCharacter == Character space ] ] ]
 		whileTrue.
-	^ self scan40
+	^ self scan37
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan42 [
+ElixirScanner >> scan37 [
+	[ self step.
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan36 ].
+	true ] whileTrue
+]
+
+{ #category : 'generated' }
+ElixirScanner >> scan38 [
 	self step.
-	currentCharacter == $' ifTrue: [ ^ self scan43 ].
+	currentCharacter == $' ifTrue: [ ^ self scan39 ].
 	true
 		ifTrue: [ [ self step.
 			currentCharacter == $'
@@ -1176,10 +1117,10 @@ ElixirScanner >> scan42 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan43 [
+ElixirScanner >> scan39 [
 	self recordMatch: #(54).
 	self step.
-	currentCharacter == $' ifTrue: [ ^ self scan44 ].
+	currentCharacter == $' ifTrue: [ ^ self scan40 ].
 	((currentCharacter between: $A and: $Z)
 		or: [ currentCharacter between: $a and: $z ])
 		ifTrue: [ [ self recordMatch: #(54).
@@ -1190,7 +1131,15 @@ ElixirScanner >> scan43 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan44 [
+ElixirScanner >> scan4 [
+	self recordMatch: #(22).
+	self step.
+	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(56) ].
+	^ self reportLastMatch
+]
+
+{ #category : 'generated' }
+ElixirScanner >> scan40 [
 	[ self step.
 	currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
 		whileTrue.
@@ -1201,31 +1150,31 @@ ElixirScanner >> scan44 [
 					currentCharacter == $'
 						ifTrue: [ self step.
 							(currentCharacter == Character lf
-								or: [ currentCharacter == Character cr ]) ifTrue: [ ^ self scan46 ].
+								or: [ currentCharacter == Character cr ]) ifTrue: [ ^ self scan42 ].
 							(currentCharacter <= $& or: [ currentCharacter >= $( ])
-								ifTrue: [ ^ self scan45 ].
+								ifTrue: [ ^ self scan41 ].
 							^ self reportLastMatch ].
 					(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
-						ifTrue: [ ^ self scan46 ].
-					^ self scan45 ].
+						ifTrue: [ ^ self scan42 ].
+					^ self scan41 ].
 			currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
 				whileTrue.
 			(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
-				ifTrue: [ ^ self scan46 ].
-			^ self scan45 ].
+				ifTrue: [ ^ self scan42 ].
+			^ self scan41 ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan45 [
+ElixirScanner >> scan41 [
 	[ self step.
 	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
-		ifTrue: [ ^ self scan46 ].
+		ifTrue: [ ^ self scan42 ].
 	true ] whileTrue
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan46 [
+ElixirScanner >> scan42 [
 	[ self step.
 	currentCharacter == $'
 		ifTrue: [ (self scanForString: '''''')
@@ -1235,16 +1184,16 @@ ElixirScanner >> scan46 [
 						or: [ currentCharacter between: $a and: $z ] ] whileTrue.
 					^ self reportLastMatch ].
 			(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
-				ifTrue: [ ^ self scan46 ].
-			^ self scan45 ].
+				ifTrue: [ ^ self scan42 ].
+			^ self scan41 ].
 	(currentCharacter between: Character tab and: Character lf)
 		or: [ currentCharacter == Character cr or: [ currentCharacter == Character space ] ] ]
 		whileTrue.
-	^ self scan45
+	^ self scan41
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan47 [
+ElixirScanner >> scan43 [
 	[ self step.
 	currentCharacter == $"
 		ifTrue: [ [ self recordMatch: #(54).
@@ -1252,12 +1201,12 @@ ElixirScanner >> scan47 [
 			(currentCharacter between: $A and: $Z)
 				or: [ currentCharacter between: $a and: $z ] ] whileTrue.
 			^ self reportLastMatch ].
-	currentCharacter == $\ ifTrue: [ ^ self scan48 ].
+	currentCharacter == $\ ifTrue: [ ^ self scan44 ].
 	true ] whileTrue
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan48 [
+ElixirScanner >> scan44 [
 	self step.
 	currentCharacter == $u
 		ifTrue: [ self step.
@@ -1279,7 +1228,7 @@ ElixirScanner >> scan48 [
 												or: [ (currentCharacter between: $A and: $F)
 														or: [ currentCharacter between: $a and: $f ] ])
 												ifTrue: [ self step.
-													currentCharacter == $} ifTrue: [ ^ self scan47 ].
+													currentCharacter == $} ifTrue: [ ^ self scan43 ].
 													(currentCharacter isDigit
 														or: [ (currentCharacter between: $A and: $F)
 																or: [ currentCharacter between: $a and: $f ] ])
@@ -1288,7 +1237,7 @@ ElixirScanner >> scan48 [
 																or: [ (currentCharacter between: $A and: $F)
 																		or: [ currentCharacter between: $a and: $f ] ])
 																ifTrue: [ self step ].
-															currentCharacter == $} ifTrue: [ ^ self scan47 ] ] ] ] ] ].
+															currentCharacter == $} ifTrue: [ ^ self scan43 ] ] ] ] ] ].
 					^ self reportLastMatch ].
 			(currentCharacter isDigit
 				or: [ (currentCharacter between: $A and: $F)
@@ -1297,10 +1246,148 @@ ElixirScanner >> scan48 [
 					(currentCharacter isDigit
 						or: [ (currentCharacter between: $A and: $F)
 								or: [ currentCharacter between: $a and: $f ] ])
-						ifTrue: [ ^ self scan49 ] ].
+						ifTrue: [ ^ self scan45 ] ].
 			^ self reportLastMatch ].
-	currentCharacter == $x ifTrue: [ ^ self scan49 ].
-	^ self scan47
+	currentCharacter == $x ifTrue: [ ^ self scan45 ].
+	^ self scan43
+]
+
+{ #category : 'generated' }
+ElixirScanner >> scan45 [
+	self step.
+	(currentCharacter isDigit
+		or: [ (currentCharacter between: $A and: $F)
+				or: [ currentCharacter between: $a and: $f ] ])
+		ifTrue: [ self step.
+			(currentCharacter isDigit
+				or: [ (currentCharacter between: $A and: $F)
+						or: [ currentCharacter between: $a and: $f ] ]) ifTrue: [ ^ self scan43 ] ].
+	^ self reportLastMatch
+]
+
+{ #category : 'generated' }
+ElixirScanner >> scan46 [
+	[ self step.
+	currentCharacter == $'
+		ifTrue: [ [ self recordMatch: #(54).
+			self step.
+			(currentCharacter between: $A and: $Z)
+				or: [ currentCharacter between: $a and: $z ] ] whileTrue.
+			^ self reportLastMatch ].
+	currentCharacter == $\
+		ifTrue: [ self step.
+			currentCharacter == $u
+				ifTrue: [ self step.
+					currentCharacter == ${
+						ifTrue: [ self step.
+							(currentCharacter isDigit
+								or: [ (currentCharacter between: $A and: $F)
+										or: [ currentCharacter between: $a and: $f ] ])
+								ifTrue: [ self step.
+									(currentCharacter isDigit
+										or: [ (currentCharacter between: $A and: $F)
+												or: [ currentCharacter between: $a and: $f ] ])
+										ifTrue: [ self step.
+											(currentCharacter isDigit
+												or: [ (currentCharacter between: $A and: $F)
+														or: [ currentCharacter between: $a and: $f ] ])
+												ifTrue: [ self step.
+													(currentCharacter isDigit
+														or: [ (currentCharacter between: $A and: $F)
+																or: [ currentCharacter between: $a and: $f ] ])
+														ifTrue: [ self step.
+															currentCharacter == $} ifTrue: [ ^ self scan46 ].
+															(currentCharacter isDigit
+																or: [ (currentCharacter between: $A and: $F)
+																		or: [ currentCharacter between: $a and: $f ] ])
+																ifTrue: [ self step.
+																	(currentCharacter isDigit
+																		or: [ (currentCharacter between: $A and: $F)
+																				or: [ currentCharacter between: $a and: $f ] ])
+																		ifTrue: [ self step ].
+																	currentCharacter == $} ifTrue: [ ^ self scan46 ] ] ] ] ] ].
+							^ self reportLastMatch ].
+					(currentCharacter isDigit
+						or: [ (currentCharacter between: $A and: $F)
+								or: [ currentCharacter between: $a and: $f ] ])
+						ifTrue: [ self step.
+							(currentCharacter isDigit
+								or: [ (currentCharacter between: $A and: $F)
+										or: [ currentCharacter between: $a and: $f ] ])
+								ifTrue: [ ^ self scan47 ] ].
+					^ self reportLastMatch ].
+			currentCharacter == $x ifTrue: [ ^ self scan47 ].
+			^ self scan46 ].
+	true ] whileTrue
+]
+
+{ #category : 'generated' }
+ElixirScanner >> scan47 [
+	self step.
+	(currentCharacter isDigit
+		or: [ (currentCharacter between: $A and: $F)
+				or: [ currentCharacter between: $a and: $f ] ])
+		ifTrue: [ self step.
+			(currentCharacter isDigit
+				or: [ (currentCharacter between: $A and: $F)
+						or: [ currentCharacter between: $a and: $f ] ]) ifTrue: [ ^ self scan46 ] ].
+	^ self reportLastMatch
+]
+
+{ #category : 'generated' }
+ElixirScanner >> scan48 [
+	[ self step.
+	currentCharacter == $)
+		ifTrue: [ [ self recordMatch: #(54).
+			self step.
+			(currentCharacter between: $A and: $Z)
+				or: [ currentCharacter between: $a and: $z ] ] whileTrue.
+			^ self reportLastMatch ].
+	currentCharacter == $\
+		ifTrue: [ self step.
+			currentCharacter == $u
+				ifTrue: [ self step.
+					currentCharacter == ${
+						ifTrue: [ self step.
+							(currentCharacter isDigit
+								or: [ (currentCharacter between: $A and: $F)
+										or: [ currentCharacter between: $a and: $f ] ])
+								ifTrue: [ self step.
+									(currentCharacter isDigit
+										or: [ (currentCharacter between: $A and: $F)
+												or: [ currentCharacter between: $a and: $f ] ])
+										ifTrue: [ self step.
+											(currentCharacter isDigit
+												or: [ (currentCharacter between: $A and: $F)
+														or: [ currentCharacter between: $a and: $f ] ])
+												ifTrue: [ self step.
+													(currentCharacter isDigit
+														or: [ (currentCharacter between: $A and: $F)
+																or: [ currentCharacter between: $a and: $f ] ])
+														ifTrue: [ self step.
+															currentCharacter == $} ifTrue: [ ^ self scan48 ].
+															(currentCharacter isDigit
+																or: [ (currentCharacter between: $A and: $F)
+																		or: [ currentCharacter between: $a and: $f ] ])
+																ifTrue: [ self step.
+																	(currentCharacter isDigit
+																		or: [ (currentCharacter between: $A and: $F)
+																				or: [ currentCharacter between: $a and: $f ] ])
+																		ifTrue: [ self step ].
+																	currentCharacter == $} ifTrue: [ ^ self scan48 ] ] ] ] ] ].
+							^ self reportLastMatch ].
+					(currentCharacter isDigit
+						or: [ (currentCharacter between: $A and: $F)
+								or: [ currentCharacter between: $a and: $f ] ])
+						ifTrue: [ self step.
+							(currentCharacter isDigit
+								or: [ (currentCharacter between: $A and: $F)
+										or: [ currentCharacter between: $a and: $f ] ])
+								ifTrue: [ ^ self scan49 ] ].
+					^ self reportLastMatch ].
+			currentCharacter == $x ifTrue: [ ^ self scan49 ].
+			^ self scan48 ].
+	true ] whileTrue
 ]
 
 { #category : 'generated' }
@@ -1312,22 +1399,22 @@ ElixirScanner >> scan49 [
 		ifTrue: [ self step.
 			(currentCharacter isDigit
 				or: [ (currentCharacter between: $A and: $F)
-						or: [ currentCharacter between: $a and: $f ] ]) ifTrue: [ ^ self scan47 ] ].
+						or: [ currentCharacter between: $a and: $f ] ]) ifTrue: [ ^ self scan48 ] ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
 ElixirScanner >> scan5 [
-	self recordMatch: #(22).
 	self step.
-	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(56) ].
-	^ self reportLastMatch
+	currentCharacter == $" ifTrue: [ ^ self scan4 ].
+	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(19) ].
+	^ self scan6
 ]
 
 { #category : 'generated' }
 ElixirScanner >> scan50 [
 	[ self step.
-	currentCharacter == $'
+	currentCharacter == $/
 		ifTrue: [ [ self recordMatch: #(54).
 			self step.
 			(currentCharacter between: $A and: $Z)
@@ -1396,7 +1483,7 @@ ElixirScanner >> scan51 [
 { #category : 'generated' }
 ElixirScanner >> scan52 [
 	[ self step.
-	currentCharacter == $)
+	currentCharacter == $>
 		ifTrue: [ [ self recordMatch: #(54).
 			self step.
 			(currentCharacter between: $A and: $Z)
@@ -1465,12 +1552,6 @@ ElixirScanner >> scan53 [
 { #category : 'generated' }
 ElixirScanner >> scan54 [
 	[ self step.
-	currentCharacter == $/
-		ifTrue: [ [ self recordMatch: #(54).
-			self step.
-			(currentCharacter between: $A and: $Z)
-				or: [ currentCharacter between: $a and: $z ] ] whileTrue.
-			^ self reportLastMatch ].
 	currentCharacter == $\
 		ifTrue: [ self step.
 			currentCharacter == $u
@@ -1515,6 +1596,12 @@ ElixirScanner >> scan54 [
 					^ self reportLastMatch ].
 			currentCharacter == $x ifTrue: [ ^ self scan55 ].
 			^ self scan54 ].
+	currentCharacter == $]
+		ifTrue: [ [ self recordMatch: #(54).
+			self step.
+			(currentCharacter between: $A and: $Z)
+				or: [ currentCharacter between: $a and: $z ] ] whileTrue.
+			^ self reportLastMatch ].
 	true ] whileTrue
 ]
 
@@ -1534,12 +1621,6 @@ ElixirScanner >> scan55 [
 { #category : 'generated' }
 ElixirScanner >> scan56 [
 	[ self step.
-	currentCharacter == $>
-		ifTrue: [ [ self recordMatch: #(54).
-			self step.
-			(currentCharacter between: $A and: $Z)
-				or: [ currentCharacter between: $a and: $z ] ] whileTrue.
-			^ self reportLastMatch ].
 	currentCharacter == $\
 		ifTrue: [ self step.
 			currentCharacter == $u
@@ -1584,6 +1665,12 @@ ElixirScanner >> scan56 [
 					^ self reportLastMatch ].
 			currentCharacter == $x ifTrue: [ ^ self scan57 ].
 			^ self scan56 ].
+	currentCharacter == $}
+		ifTrue: [ [ self recordMatch: #(54).
+			self step.
+			(currentCharacter between: $A and: $Z)
+				or: [ currentCharacter between: $a and: $z ] ] whileTrue.
+			^ self reportLastMatch ].
 	true ] whileTrue
 ]
 
@@ -1647,7 +1734,7 @@ ElixirScanner >> scan58 [
 					^ self reportLastMatch ].
 			currentCharacter == $x ifTrue: [ ^ self scan59 ].
 			^ self scan58 ].
-	currentCharacter == $]
+	currentCharacter == $|
 		ifTrue: [ [ self recordMatch: #(54).
 			self step.
 			(currentCharacter between: $A and: $Z)
@@ -1671,152 +1758,22 @@ ElixirScanner >> scan59 [
 
 { #category : 'generated' }
 ElixirScanner >> scan6 [
-	self step.
-	currentCharacter == $" ifTrue: [ ^ self scan5 ].
-	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(19) ].
-	^ self scan7
+	[ self step.
+	currentCharacter == $" ifTrue: [ ^ self scan4 ].
+	currentCharacter == $#
+		ifTrue: [ self step.
+			currentCharacter == $" ifTrue: [ ^ self scan4 ].
+			(currentCharacter <= $z or: [ currentCharacter >= $| ])
+				ifTrue: [ ^ self scan6 ].
+			^ self reportLastMatch ].
+	currentCharacter == $\
+		ifTrue: [ self step.
+			^ self scan6 ].
+	true ] whileTrue
 ]
 
 { #category : 'generated' }
 ElixirScanner >> scan60 [
-	[ self step.
-	currentCharacter == $\
-		ifTrue: [ self step.
-			currentCharacter == $u
-				ifTrue: [ self step.
-					currentCharacter == ${
-						ifTrue: [ self step.
-							(currentCharacter isDigit
-								or: [ (currentCharacter between: $A and: $F)
-										or: [ currentCharacter between: $a and: $f ] ])
-								ifTrue: [ self step.
-									(currentCharacter isDigit
-										or: [ (currentCharacter between: $A and: $F)
-												or: [ currentCharacter between: $a and: $f ] ])
-										ifTrue: [ self step.
-											(currentCharacter isDigit
-												or: [ (currentCharacter between: $A and: $F)
-														or: [ currentCharacter between: $a and: $f ] ])
-												ifTrue: [ self step.
-													(currentCharacter isDigit
-														or: [ (currentCharacter between: $A and: $F)
-																or: [ currentCharacter between: $a and: $f ] ])
-														ifTrue: [ self step.
-															currentCharacter == $} ifTrue: [ ^ self scan60 ].
-															(currentCharacter isDigit
-																or: [ (currentCharacter between: $A and: $F)
-																		or: [ currentCharacter between: $a and: $f ] ])
-																ifTrue: [ self step.
-																	(currentCharacter isDigit
-																		or: [ (currentCharacter between: $A and: $F)
-																				or: [ currentCharacter between: $a and: $f ] ])
-																		ifTrue: [ self step ].
-																	currentCharacter == $} ifTrue: [ ^ self scan60 ] ] ] ] ] ].
-							^ self reportLastMatch ].
-					(currentCharacter isDigit
-						or: [ (currentCharacter between: $A and: $F)
-								or: [ currentCharacter between: $a and: $f ] ])
-						ifTrue: [ self step.
-							(currentCharacter isDigit
-								or: [ (currentCharacter between: $A and: $F)
-										or: [ currentCharacter between: $a and: $f ] ])
-								ifTrue: [ ^ self scan61 ] ].
-					^ self reportLastMatch ].
-			currentCharacter == $x ifTrue: [ ^ self scan61 ].
-			^ self scan60 ].
-	currentCharacter == $}
-		ifTrue: [ [ self recordMatch: #(54).
-			self step.
-			(currentCharacter between: $A and: $Z)
-				or: [ currentCharacter between: $a and: $z ] ] whileTrue.
-			^ self reportLastMatch ].
-	true ] whileTrue
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan61 [
-	self step.
-	(currentCharacter isDigit
-		or: [ (currentCharacter between: $A and: $F)
-				or: [ currentCharacter between: $a and: $f ] ])
-		ifTrue: [ self step.
-			(currentCharacter isDigit
-				or: [ (currentCharacter between: $A and: $F)
-						or: [ currentCharacter between: $a and: $f ] ]) ifTrue: [ ^ self scan60 ] ].
-	^ self reportLastMatch
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan62 [
-	[ self step.
-	currentCharacter == $\
-		ifTrue: [ self step.
-			currentCharacter == $u
-				ifTrue: [ self step.
-					currentCharacter == ${
-						ifTrue: [ self step.
-							(currentCharacter isDigit
-								or: [ (currentCharacter between: $A and: $F)
-										or: [ currentCharacter between: $a and: $f ] ])
-								ifTrue: [ self step.
-									(currentCharacter isDigit
-										or: [ (currentCharacter between: $A and: $F)
-												or: [ currentCharacter between: $a and: $f ] ])
-										ifTrue: [ self step.
-											(currentCharacter isDigit
-												or: [ (currentCharacter between: $A and: $F)
-														or: [ currentCharacter between: $a and: $f ] ])
-												ifTrue: [ self step.
-													(currentCharacter isDigit
-														or: [ (currentCharacter between: $A and: $F)
-																or: [ currentCharacter between: $a and: $f ] ])
-														ifTrue: [ self step.
-															currentCharacter == $} ifTrue: [ ^ self scan62 ].
-															(currentCharacter isDigit
-																or: [ (currentCharacter between: $A and: $F)
-																		or: [ currentCharacter between: $a and: $f ] ])
-																ifTrue: [ self step.
-																	(currentCharacter isDigit
-																		or: [ (currentCharacter between: $A and: $F)
-																				or: [ currentCharacter between: $a and: $f ] ])
-																		ifTrue: [ self step ].
-																	currentCharacter == $} ifTrue: [ ^ self scan62 ] ] ] ] ] ].
-							^ self reportLastMatch ].
-					(currentCharacter isDigit
-						or: [ (currentCharacter between: $A and: $F)
-								or: [ currentCharacter between: $a and: $f ] ])
-						ifTrue: [ self step.
-							(currentCharacter isDigit
-								or: [ (currentCharacter between: $A and: $F)
-										or: [ currentCharacter between: $a and: $f ] ])
-								ifTrue: [ ^ self scan63 ] ].
-					^ self reportLastMatch ].
-			currentCharacter == $x ifTrue: [ ^ self scan63 ].
-			^ self scan62 ].
-	currentCharacter == $|
-		ifTrue: [ [ self recordMatch: #(54).
-			self step.
-			(currentCharacter between: $A and: $Z)
-				or: [ currentCharacter between: $a and: $z ] ] whileTrue.
-			^ self reportLastMatch ].
-	true ] whileTrue
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan63 [
-	self step.
-	(currentCharacter isDigit
-		or: [ (currentCharacter between: $A and: $F)
-				or: [ currentCharacter between: $a and: $f ] ])
-		ifTrue: [ self step.
-			(currentCharacter isDigit
-				or: [ (currentCharacter between: $A and: $F)
-						or: [ currentCharacter between: $a and: $f ] ]) ifTrue: [ ^ self scan62 ] ].
-	^ self reportLastMatch
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan64 [
 	[ self step.
 	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(21) ].
 	currentCharacter == $#
@@ -1825,39 +1782,36 @@ ElixirScanner >> scan64 [
 			^ self reportLastMatch ].
 	currentCharacter == $\
 		ifTrue: [ self step.
-			^ self scan64 ].
+			^ self scan60 ].
 	true ] whileTrue
 ]
 
 { #category : 'generated' }
 ElixirScanner >> scan7 [
-	[ self step.
-	currentCharacter == $" ifTrue: [ ^ self scan5 ].
-	currentCharacter == $#
-		ifTrue: [ self step.
-			currentCharacter == $" ifTrue: [ ^ self scan5 ].
-			(currentCharacter <= $z or: [ currentCharacter >= $| ])
-				ifTrue: [ ^ self scan7 ].
-			^ self reportLastMatch ].
-	currentCharacter == $\
-		ifTrue: [ self step.
-			^ self scan7 ].
-	true ] whileTrue
+	self step.
+	^ self scan3
 ]
 
 { #category : 'generated' }
 ElixirScanner >> scan8 [
-	self step.
-	^ self scan4
+	[ self step.
+	currentCharacter == $"
+		ifTrue: [ (self scanForString: '""') ifTrue: [ ^ self recordAndReportMatch: #(23) ].
+			(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+				ifTrue: [ ^ self scan8 ].
+			^ self scan9 ].
+	(currentCharacter between: Character tab and: Character lf)
+		or: [ currentCharacter == Character cr or: [ currentCharacter == Character space ] ] ]
+		whileTrue.
+	^ self scan9
 ]
 
 { #category : 'generated' }
 ElixirScanner >> scan9 [
-	self recordMatch: #(22).
-	self step.
-	currentCharacter == $" ifTrue: [ ^ self scan10 ].
-	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(56) ].
-	^ self reportLastMatch
+	[ self step.
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan8 ].
+	true ] whileTrue
 ]
 
 { #category : 'generated' }
@@ -1865,7 +1819,7 @@ ElixirScanner >> scanForToken [
 	scope == #default ifTrue: [ ^ self scan1 ].
 	scope == #interpolatedString
 		ifTrue: [ self step.
-			currentCharacter == $} ifTrue: [ ^ self scan64 ] ].
+			currentCharacter == $} ifTrue: [ ^ self scan60 ] ].
 	^ self reportLastMatch
 ]
 
