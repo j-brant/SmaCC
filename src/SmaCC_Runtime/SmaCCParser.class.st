@@ -327,8 +327,27 @@ SmaCCParser >> actionForCurrentToken [
 
 { #category : 'private-actions' }
 SmaCCParser >> actionForState: stateIndex and: aSymbolIndex [
-	| index row |
+	"Look up the parse action for (state, symbol). Rows are either ByteArray (16-bit values
+	 packed as high/low byte pairs) or Array (integers stored directly) — see codegen note in
+	 SmaCCSmalltalkCodeGenerator>>writeTransitionTableEntry:on:firstIsType:."
+
+	| index row isBytes |
 	row := self transitionTable at: stateIndex.
+	isBytes := row class isBytes.
+	isBytes ifFalse: [
+		"Array format: type at index 1, (symbol, action) pairs starting at index 2."
+		(row at: 1) == 0
+			ifTrue: [
+				index := self binarySearchIn: row for: aSymbolIndex size: 2.
+				index == 0
+					ifTrue: [ ^ self errorAction ]
+					ifFalse: [ ^ row at: 2 ] ]
+			ifFalse: [
+				index := self binarySearchIn: row for: aSymbolIndex size: 4.
+				index == 0
+					ifTrue: [ ^ self errorAction ]
+					ifFalse: [ ^ row at: index + 1 ] ] ].
+	"ByteArray format (legacy): type at byte 1, pairs of (high, low) bytes for 16-bit values."
 	^ (row at: 1) == 0
 		ifTrue:
 			[ index := self binarySearchIn: row for: aSymbolIndex size: 2.
@@ -350,8 +369,21 @@ SmaCCParser >> actionMask [
 
 { #category : 'private-actions' }
 SmaCCParser >> actionsAndSymbolsForState: stateIndex do: aBlock [
-	| action bytes |
+	"Iterate (action, symbol) pairs for a given state. Format-aware."
+
+	| action bytes isBytes |
 	bytes := self transitionTable at: stateIndex.
+	isBytes := bytes class isBytes.
+	isBytes ifFalse: [
+		"Array format: type at 1, then either single (action) at 2 (type=0 default) or (symbol, action) pairs at 2+."
+		(bytes at: 1) = 0
+			ifTrue: [
+				action := bytes at: 2.
+				3 to: bytes size do: [ :i | aBlock value: action value: (bytes at: i) ] ]
+			ifFalse: [
+				2 to: bytes size by: 2 do: [ :i | aBlock value: (bytes at: i) value: (bytes at: i + 1) ] ].
+		^ self ].
+	"ByteArray format (legacy)."
 	(bytes at: 1) = 0
 		ifTrue: [ action := ((bytes at: 2) bitShift: 8) + (bytes at: 3).
 			4 to: bytes size by: 2 do: [ :i | aBlock value: action value: ((bytes at: i) bitShift: 8) + (bytes at: i + 1) ] ]
@@ -395,13 +427,19 @@ SmaCCParser >> addFirst: anObject to: aCollection [
 
 { #category : 'private-actions' }
 SmaCCParser >> allActionsAndSymbolsForState: stateIndex do: aBlock [
+	"Expand ambiguous-action entries to their constituent actions. Format-aware on ambiguousTransitions rows."
+
 	self
 		actionsAndSymbolsForState: stateIndex
-		do: [ :action :symbol | 
-			| row |
+		do: [ :action :symbol |
+			| row isBytes |
 			(action bitAnd: self actionMask) = 2r11
-				ifTrue: [ row := self ambiguousTransitions at: (action bitShift: -2).
-					1 to: row size by: 2 do: [ :i | aBlock value: ((row at: i) bitShift: 8) + (row at: i + 1) value: symbol ] ]
+				ifTrue: [
+					row := self ambiguousTransitions at: (action bitShift: -2).
+					isBytes := row class isBytes.
+					isBytes
+						ifTrue: [ 1 to: row size by: 2 do: [ :i | aBlock value: ((row at: i) bitShift: 8) + (row at: i + 1) value: symbol ] ]
+						ifFalse: [ 1 to: row size do: [ :i | aBlock value: (row at: i) value: symbol ] ] ]
 				ifFalse: [ aBlock value: action value: symbol ] ]
 ]
 
@@ -410,9 +448,34 @@ SmaCCParser >> ambiguousTransitions [
 	^ self class ambiguousTransitions
 ]
 
-{ #category : 'private' }
+{ #category : 'private-actions' }
 SmaCCParser >> binarySearchIn: aRow for: aSymbolIndex size: step [
-	| start mid length high low midItem stop |
+	"Binary-search the row for a given symbol. Format-aware:
+	 - ByteArray: each entry is `step` bytes, symbol stored as high+low byte pair starting at the entry's first byte; logical step is `step` bytes per entry.
+	 - Array:     each entry has logical pair (symbol, action); step is logical (2 for type-0, 4 for type-1)."
+
+	| start mid length high low midItem stop isBytes logStep |
+	isBytes := aRow class isBytes.
+	isBytes ifFalse: [
+		"Array format. The 'step' arg from callers is in BYTE units; halve it for logical pairs."
+		logStep := step // 2.
+		start := 2.
+		stop := aRow size.
+		length := (stop - start + 1) // logStep.
+		[ length > 4 ]
+			whileTrue:
+				[ length := length bitShift: -1.
+				mid := length * logStep + start.
+				midItem := aRow at: mid.
+				midItem <= aSymbolIndex
+					ifTrue: [ start := mid ]
+					ifFalse: [ stop := mid ] ].
+		[ start <= stop ]
+			whileTrue:
+				[ (aRow at: start) == aSymbolIndex ifTrue: [ ^ start ].
+				start := start + logStep ].
+		^ 0 ].
+	"ByteArray format (legacy)."
 	high := aSymbolIndex bitShift: -8.
 	low := aSymbolIndex bitAnd: 16rFF.
 	start := 4.
