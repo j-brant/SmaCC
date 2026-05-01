@@ -1367,11 +1367,21 @@ SmaCCSmalltalkCodeGenerator >> writeMatchingCodeFor: aSmaCCNode [
 				cr ]
 ]
 
-{ #category : 'compiling-parser' }
+{ #category : 'code generation templates' }
 SmaCCSmalltalkCodeGenerator >> writeTransitionTableEntry: anArray on: aStream firstIsType: aBoolean [
-	| startIndex |
+	"Emit a transition-table entry as a literal. ByteArray (#[...]) is preferred — it splits each
+	 logical 16-bit value into two bytes for compactness — but its element range is 0-255.
+	 Fall back to Array (#(...)) which stores integers directly when:
+	 - The type byte (first element when firstIsType: true) exceeds 255, or
+	 - Any other element exceeds 65535 (the 16-bit pair-encoding limit).
+	 The runtime detects format via aRow class isBytes."
+
+	| startIndex useByteArray typeFitsByte allFit16 |
 	aStream cr.
-	self hasLiteralByteArrays
+	typeFitsByte := aBoolean not or: [ anArray isEmpty or: [ anArray first <= 255 ] ].
+	allFit16 := anArray allSatisfy: [ :each | each <= 16rFFFF ].
+	useByteArray := self hasLiteralByteArrays and: [ typeFitsByte and: [ allFit16 ] ].
+	useByteArray
 		ifTrue:
 			[ aStream nextPutAll: '#['.
 			aBoolean
@@ -1379,7 +1389,7 @@ SmaCCSmalltalkCodeGenerator >> writeTransitionTableEntry: anArray on: aStream fi
 					startIndex := 2 ]
 				ifFalse: [ startIndex := 1 ].
 			startIndex to: anArray size do:
-				[ :i | 
+				[ :i |
 				aStream
 					nextPutAll: self literalArraySeparator;
 					print: ((anArray at: i) bitShift: -8);
