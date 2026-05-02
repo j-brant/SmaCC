@@ -59,8 +59,9 @@ SmaCCLR1Item >> grammar [
 
 { #category : 'comparing' }
 SmaCCLR1Item >> hash [
-	^ (self symbol identityHash hashMultiply bitXor: location)
-		hashMultiply bitXor: rhs identityHash
+	"Stable hash, not identityHash."
+	^ (self symbol hash hashMultiply bitXor: location)
+		hashMultiply bitXor: rhs hash
 ]
 
 { #category : 'accessing' }
