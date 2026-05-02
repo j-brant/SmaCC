@@ -110,6 +110,12 @@ SmaCCSymbol >> firstTerminals [
 	^ firstTerminals
 ]
 
+{ #category : 'comparing' }
+SmaCCSymbol >> hash [
+	"Content-based hash for reproducible LR generation."
+	^ name ifNil: [ super hash ] ifNotNil: [ name hash ]
+]
+
 { #category : 'initialize-release' }
 SmaCCSymbol >> initialize [
 	super initialize.
