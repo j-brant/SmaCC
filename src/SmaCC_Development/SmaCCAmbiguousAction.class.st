@@ -47,7 +47,15 @@ SmaCCAmbiguousAction >> preferredAction [
 
 { #category : 'accessing' }
 SmaCCAmbiguousAction >> sortedActions [
-	"When in doubt shift the token"
+	"For reduce-reduce ties, prefer higher-precedence rule (yacc-style).
+	 The default tie-break by id is unchanged for shift-reduce. Closes the
+	 gap where SmaCCShiftAction>>mergeWithReduceAction:prefer: resolves
+	 shift-reduce by precedence, but the complementary reduce-reduce path
+	 in SmaCCReduceAction>>mergeWithReduceAction: just bundles into a
+	 SmaCCAmbiguousAction without consulting precedence."
 
-	^ actions asSortedCollection: [ :a :b | a id <= b id ]
+	^ actions asSortedCollection: [ :a :b |
+		a id = b id
+			ifTrue: [ (a precedence ifNil: [ -1 ]) >= (b precedence ifNil: [ -1 ]) ]
+			ifFalse: [ a id < b id ] ]
 ]
