@@ -41,10 +41,17 @@ ElixirParser class >> definitionComment [
 	: (_ | <isLetter>) (_ | <isLetter> | <isDigit> | \@)* [?!]?
 	| ' [^']+ '
 	| \: "" [^""]+ ""
-	| [+\-*/!\^<>=&]	#operators
-	| \+\+ 
-	| \-\- 
-	| \.\.
+	| [+\-*/!\^<>=&@%.]	#single-char operators (incl. @, %, .)
+	| \+\+\+?	#++ or +++
+	| \-\-\-?	#-- or ---
+	| \.\.\.?	#.. or ...
+	| \.\.//	#..//
+	| \*\*	#**
+	| //	#//
+	| ->	#->
+	| <<>>	#<<>>
+	| %\{\}	#%{}
+	| \{\}	#{}
 	| <>
 	| ^^^
 	| \|>
@@ -185,6 +192,8 @@ interpolatedString <interpolatedStringEnd>
 <mult_op>
 	: \*
 	| /
+	| \*\*
+	| //
 	;
 <unary_op>
 	: \+
@@ -227,7 +236,7 @@ interpolatedString <interpolatedStringEnd>
 	| <charlist_heredoc>
 	;
 <sigilEscape>
-	: \\ ([^xu] | (x [0-9a-fA-F]{2,2}) | (u [0-9a-fA-F]{4,4}) | (u \{[0-9a-fA-F]{4,6}\}))
+	: \\ ([^xu] | (x [0-9a-fA-F]{2,2}) | (u [0-9a-fA-F]{4,4}) | (u \{[0-9a-fA-F]{1,6}\}))
 	;
 <sigilEscapedValue>
 	: \/ ([^\/\\]|<sigilEscape>)* \/
@@ -239,17 +248,19 @@ interpolatedString <interpolatedStringEnd>
 	| \{ ([^\}\\]|<sigilEscape>)* \}
 	| \< ([^\>\\]|<sigilEscape>)* \>
 	| <string_heredoc>
+	| <charlist_heredoc>
 	;
 <sigilModifier>
 	: [a-zA-Z]*		# what are the potential values
 	;
 <sigil>
 	: \~ [a-z] <sigilEscapedValue> <sigilModifier>
-	| \~ [A-Z] <sigilValue> <sigilModifier>
+	| \~ [A-Z]+ <sigilValue> <sigilModifier>
 	;
 	
 <identifier>
 	: (_ | <isLowercase>) (<isLetter> | <isDigit> |  _)* [\?\!]?
+	| \.\.\.
 	;
 <kw_identifier>
 	: <identifier> \:
@@ -320,6 +331,23 @@ Rootsymbol grammar.
 
 <block_identifier>
 	: <identifier> # Seems to be related to unsfae_atoms
+	;
+<op_identifier>
+	: <dual_op>
+	| <mult_op>
+	| <comp_op>
+	| <two_op>
+	| <or_op>
+	| <and_op>
+	| <pipe_op>
+	| <type_op>
+	| <in_op>
+	| <three_op>
+	| <arrow_op>
+	| <rel_op>
+	| <match_op>
+	| <assoc_op>
+	| <unary_op>
 	;
 <dot_call_op>
 	: \.\(
@@ -510,6 +538,7 @@ access_expr
 	: bracket_at_expr 
 	| bracket_expr 
 	| <capture_op> 'op' <int> 'int' {{Capture}}
+	| <capture_op> 'op' <op_identifier> 'identifier' <mult_op> 'slash' <int> 'arity' {{}}
 	| fn_eoe'fn' stab'stab' end_eoe'end' {{Lambda}}
 	| open_paren 'leftParen' stab_eoe'stab' close_paren {{}}
 	| open_paren 'leftParen' "";"" 'semi' stab_eoe'stab' close_paren {{}}
