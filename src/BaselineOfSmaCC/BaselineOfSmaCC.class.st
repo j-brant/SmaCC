@@ -1,10 +1,11 @@
 Class {
-	#name : #BaselineOfSmaCC,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfSmaCC
+	#name : 'BaselineOfSmaCC',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfSmaCC',
+	#package : 'BaselineOfSmaCC'
 }
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfSmaCC >> baseline: spec [
 	<baseline>
 	spec
@@ -37,6 +38,7 @@ BaselineOfSmaCC >> baseline: spec [
 				baseline: 'JavaParser' with: [ spec repository: 'github://j-brant/SmaCC' ];
 				baseline: 'JSONParser' with: [ spec repository: 'github://j-brant/SmaCC' ];
 				baseline: 'JSParser' with: [ spec repository: 'github://j-brant/SmaCC' ];
+				baseline: 'KotlinParser' with: [ spec repository: 'github://j-brant/SmaCC' ];
 				baseline: 'PythonParser'
 					with: [ spec repository: 'github://j-brant/SmaCC' ];
 				baseline: 'RubyParser' with: [ spec repository: 'github://j-brant/SmaCC' ];

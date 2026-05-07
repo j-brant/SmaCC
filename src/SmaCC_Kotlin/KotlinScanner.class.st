@@ -1,10 +1,11 @@
 Class {
-	#name : #KotlinScanner,
-	#superclass : #SmaCCScanner,
-	#category : #'SmaCC_Kotlin'
+	#name : 'KotlinScanner',
+	#superclass : 'SmaCCScanner',
+	#category : 'SmaCC_Kotlin',
+	#package : 'SmaCC_Kotlin'
 }
 
-{ #category : #'generated-initialization' }
+{ #category : 'generated-initialization' }
 KotlinScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
 	#(#(136 'abstract' 116) #(136 'actual' 126) #(136 'annotation' 105) #(136 'as' 92) #(136 'break' 91) #(136 'by' 73) #(136 'catch' 83) #(136 'class' 65) #(136 'companion' 74) #(136 'const' 119) #(136 'constructor' 72) #(136 'continue' 90) #(136 'crossinline' 123) #(136 'data' 106) #(136 'delegate' 62) #(136 'do' 86) #(136 'dynamic' 98) #(136 'else' 80) #(136 'enum' 103) #(136 'expect' 125) #(136 'external' 113) #(136 'false' 133) #(136 'field' 55) #(136 'file' 54) #(136 'final' 117) #(136 'finally' 84) #(136 'for' 85) #(136 'fun' 67) #(136 'get' 57) #(136 'if' 79) #(136 'import' 64) #(136 'in' 94) #(136 'infix' 112) #(136 'init' 75) #(136 'inline' 111) #(136 'inner' 107) #(136 'interface' 66) #(136 'internal' 102) #(136 'is' 93) #(136 'lateinit' 120) #(136 'noinline' 122) #(136 'null' 134) #(136 'object' 68) #(136 'open' 118) #(136 'operator' 110) #(136 'out' 97) #(136 'override' 115) #(136 'package' 63) #(136 'param' 60) #(136 'private' 100) #(136 'property' 56) #(136 'protected' 101) #(136 'public' 99) #(136 'receiver' 59) #(136 'reified' 124) #(136 'return' 89) #(136 'sealed' 104) #(136 'set' 58) #(136 'setparam' 61) #(136 'super' 77) #(136 'suspend' 114) #(136 'tailrec' 109) #(136 'this' 76) #(136 'throw' 88) #(136 'true' 133) #(136 'try' 82) #(136 'typealias' 71) #(136 'val' 69) #(136 'value' 108) #(136 'var' 70) #(136 'vararg' 121) #(136 'when' 81) #(136 'where' 78) #(136 'while' 87))
@@ -15,12 +16,12 @@ KotlinScanner class >> initializeKeywordMap [
 	^ keywordMap
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> AT_BOTH_WSId [
 	^ 428
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 KotlinScanner >> AT_NO_WS [
 	| ch beforeSpace afterSpace |
 	ch := stream peek.
@@ -33,88 +34,88 @@ KotlinScanner >> AT_NO_WS [
 	^ self createTokenFor: '@'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> AT_NO_WSId [
 	^ 37
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> AT_POST_WSId [
 	^ 429
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> AT_PRE_WSId [
 	^ 430
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 KotlinScanner >> DelimitedComment [
 	self scanDelimitedComment.
 	^ self comment
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> EXCL_NO_WSId [
 	^ 24
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> NLId [
 	^ 431
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> NL_ASId [
 	^ 432
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> NL_AS_SAFEId [
 	^ 433
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> NL_COLONId [
 	^ 434
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> NL_COMMAId [
 	^ 435
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> NL_CONJId [
 	^ 436
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> NL_DISJId [
 	^ 437
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> NL_DOTId [
 	^ 438
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> NL_LCURLId [
 	^ 439
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> NL_QUEST_NO_WSId [
 	^ 440
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> NL_QUEST_WSId [
 	^ 441
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 KotlinScanner >> NOT_IN [
 	| ch |
 	ch := stream peek.
@@ -126,12 +127,12 @@ KotlinScanner >> NOT_IN [
 	^ self createTokenFor: '!'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> NOT_INId [
 	^ 96
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 KotlinScanner >> NOT_IS [
 	| ch |
 	ch := stream peek.
@@ -143,12 +144,12 @@ KotlinScanner >> NOT_IS [
 	^ self createTokenFor: '!'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> NOT_ISId [
 	^ 95
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 KotlinScanner >> QUEST_NO_WS [
 	| ch |
 	ch := stream peek.
@@ -158,27 +159,27 @@ KotlinScanner >> QUEST_NO_WS [
 	^ self createTokenFor: '?'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> QUEST_NO_WSId [
 	^ 38
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> QUEST_WSId [
 	^ 442
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> emptySymbolTokenId [
 	^ 443
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> errorTokenId [
 	^ 444
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 KotlinScanner >> nl [
 	| char continue commentStart position |
 	continue := true.
@@ -277,14 +278,14 @@ KotlinScanner >> nl [
 	^ self createTokenFor: outputStream contents
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan1 [
 	self step.
 	currentCharacter == $! ifTrue: [ ^ self scan2 ].
 	^ self scan1X4
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan10 [
 	self recordMatch: #(18).
 	self step.
@@ -294,7 +295,7 @@ KotlinScanner >> scan10 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan11 [
 	self recordMatch: #(6).
 	self step.
@@ -307,7 +308,7 @@ KotlinScanner >> scan11 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan12 [
 	[ self recordMatch: #(127).
 	self step.
@@ -323,7 +324,7 @@ KotlinScanner >> scan12 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan13 [
 	self step.
 	('+-' includes: currentCharacter) ifTrue: [ self step ].
@@ -331,7 +332,7 @@ KotlinScanner >> scan13 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan14 [
 	[ self recordMatch: #(127).
 	self step.
@@ -346,7 +347,7 @@ KotlinScanner >> scan14 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan15 [
 	self recordMatch: #(16).
 	self step.
@@ -362,7 +363,7 @@ KotlinScanner >> scan15 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan16 [
 	self recordMatch: #(128).
 	self step.
@@ -370,14 +371,14 @@ KotlinScanner >> scan16 [
 	^ self scan16X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan16X1 [
 	self step.
 	(currentCharacter between: $0 and: $1) ifTrue: [ ^ self scan20 ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan16X2 [
 	currentCharacter == $_ ifTrue: [ ^ self scan19 ].
 	currentCharacter isDigit ifTrue: [ ^ self scan18 ].
@@ -396,14 +397,14 @@ KotlinScanner >> scan16X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan17 [
 	self step.
 	currentCharacter isDigit ifTrue: [ ^ self scan12 ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan18 [
 	[ self step.
 	currentCharacter == $. ifTrue: [ ^ self scan17 ].
@@ -415,7 +416,7 @@ KotlinScanner >> scan18 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan19 [
 	[ self step.
 	currentCharacter == $_ ] whileTrue.
@@ -423,14 +424,14 @@ KotlinScanner >> scan19 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan1X1 [
 	[ self recordMatch: #(136).
 	self step.
 	currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan1X2 [
 	currentCharacter == $b ifTrue: [ ^ self scan30 ].
 	currentCharacter == $c ifTrue: [ ^ self scan33 ].
@@ -448,7 +449,7 @@ KotlinScanner >> scan1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan1X3 [
 	currentCharacter == $0 ifTrue: [ ^ self scan16 ].
 	currentCharacter == $: ifTrue: [ ^ self scan24 ].
@@ -465,7 +466,7 @@ KotlinScanner >> scan1X3 [
 	^ self scan1X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan1X4 [
 	currentCharacter == $" ifTrue: [ ^ self scan3 ].
 	currentCharacter == $% ifTrue: [ ^ self scan4 ].
@@ -482,7 +483,7 @@ KotlinScanner >> scan1X4 [
 	^ self scan1X3
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan2 [
 	self recordMatch: #(24).
 	self step.
@@ -503,7 +504,7 @@ KotlinScanner >> scan2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan20 [
 	[ self recordMatch: #(130).
 	self step.
@@ -519,7 +520,7 @@ KotlinScanner >> scan20 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan21 [
 	self recordMatch: #(131).
 	self step.
@@ -528,7 +529,7 @@ KotlinScanner >> scan21 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan22 [
 	[ self recordMatch: #(129).
 	self step.
@@ -548,7 +549,7 @@ KotlinScanner >> scan22 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan23 [
 	[ self recordMatch: #(128).
 	self step.
@@ -568,7 +569,7 @@ KotlinScanner >> scan23 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan24 [
 	self recordMatch: #(25).
 	self step.
@@ -576,7 +577,7 @@ KotlinScanner >> scan24 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan25 [
 	self recordMatch: #(39).
 	self step.
@@ -584,7 +585,7 @@ KotlinScanner >> scan25 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan26 [
 	self recordMatch: #(27).
 	self step.
@@ -595,7 +596,7 @@ KotlinScanner >> scan26 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan27 [
 	self recordMatch: #(40).
 	self step.
@@ -603,7 +604,7 @@ KotlinScanner >> scan27 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan28 [
 	self step.
 	(currentCharacter <= Character tab
@@ -618,7 +619,7 @@ KotlinScanner >> scan28 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan29 [
 	(self scanForString: 's?' match: #(136))
 		ifTrue: [ ^ self recordAndReportMatch: #(45) ].
@@ -629,7 +630,7 @@ KotlinScanner >> scan29 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan3 [
 	self recordMatch: #(137).
 	self step.
@@ -639,7 +640,7 @@ KotlinScanner >> scan3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan30 [
 	self recordMatch: #(136).
 	self step.
@@ -651,7 +652,7 @@ KotlinScanner >> scan30 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan31 [
 	self recordMatch: #(136).
 	self step.
@@ -663,7 +664,7 @@ KotlinScanner >> scan31 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan32 [
 	(self scanForString: 'ak@' match: #(136))
 		ifTrue: [ self step.
@@ -691,7 +692,7 @@ KotlinScanner >> scan32 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan33 [
 	self recordMatch: #(136).
 	self step.
@@ -703,7 +704,7 @@ KotlinScanner >> scan33 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan34 [
 	self recordMatch: #(136).
 	self step.
@@ -715,7 +716,7 @@ KotlinScanner >> scan34 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan35 [
 	self recordMatch: #(136).
 	self step.
@@ -727,7 +728,7 @@ KotlinScanner >> scan35 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan36 [
 	self recordMatch: #(136).
 	self step.
@@ -739,7 +740,7 @@ KotlinScanner >> scan36 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan37 [
 	self recordMatch: #(136).
 	self step.
@@ -751,7 +752,7 @@ KotlinScanner >> scan37 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan38 [
 	(self scanForString: 'ue@' match: #(136))
 		ifTrue: [ self step.
@@ -779,7 +780,7 @@ KotlinScanner >> scan38 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan39 [
 	self recordMatch: #(136).
 	self step.
@@ -791,7 +792,7 @@ KotlinScanner >> scan39 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan4 [
 	self recordMatch: #(15).
 	self step.
@@ -799,7 +800,7 @@ KotlinScanner >> scan4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan40 [
 	self recordMatch: #(136).
 	self step.
@@ -811,7 +812,7 @@ KotlinScanner >> scan40 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan41 [
 	self recordMatch: #(136).
 	self step.
@@ -823,7 +824,7 @@ KotlinScanner >> scan41 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan42 [
 	(self scanForString: 'rn@' match: #(136))
 		ifTrue: [ self step.
@@ -851,7 +852,7 @@ KotlinScanner >> scan42 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan43 [
 	self recordMatch: #(136).
 	self step.
@@ -863,7 +864,7 @@ KotlinScanner >> scan43 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan44 [
 	(self scanForString: 'is@' match: #(136))
 		ifTrue: [ self step.
@@ -891,14 +892,14 @@ KotlinScanner >> scan44 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan45 [
 	self step.
 	currentCharacter == $| ifTrue: [ ^ self recordAndReportMatch: #(22) ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan46 [
 	self step.
 	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(139) ].
@@ -914,7 +915,7 @@ KotlinScanner >> scan46 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan46X1 [
 	self recordMatch: #(141).
 	self step.
@@ -938,7 +939,7 @@ KotlinScanner >> scan46X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan46X2 [
 	self step.
 	currentCharacter == $u
@@ -965,7 +966,7 @@ KotlinScanner >> scan46X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan47 [
 	self step.
 	currentCharacter == $! ifTrue: [ ^ self scan2 ].
@@ -974,7 +975,7 @@ KotlinScanner >> scan47 [
 	^ self scan47X5
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan47X1 [
 	self step.
 	currentCharacter == $!
@@ -986,14 +987,14 @@ KotlinScanner >> scan47X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan47X2 [
 	[ self recordMatch: #(136).
 	self step.
 	currentCharacter isAlphaNumeric or: [ currentCharacter == $_ ] ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan47X3 [
 	currentCharacter == $c ifTrue: [ ^ self scan33 ].
 	currentCharacter == $r ifTrue: [ ^ self scan39 ].
@@ -1011,7 +1012,7 @@ KotlinScanner >> scan47X3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan47X4 [
 	currentCharacter == $: ifTrue: [ ^ self scan24 ].
 	currentCharacter == $; ifTrue: [ ^ self recordAndReportMatch: #(26) ].
@@ -1028,7 +1029,7 @@ KotlinScanner >> scan47X4 [
 	^ self scan47X3
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan47X5 [
 	currentCharacter == $% ifTrue: [ ^ self scan4 ].
 	currentCharacter == $& ifTrue: [ ^ self scan5 ].
@@ -1045,7 +1046,7 @@ KotlinScanner >> scan47X5 [
 	^ self scan47X4
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan48 [
 	self recordMatch: #(136).
 	self step.
@@ -1057,7 +1058,7 @@ KotlinScanner >> scan48 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan49 [
 	self recordMatch: #(136).
 	self step.
@@ -1069,7 +1070,7 @@ KotlinScanner >> scan49 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan5 [
 	self recordMatch: #(48).
 	self step.
@@ -1077,7 +1078,7 @@ KotlinScanner >> scan5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan50 [
 	(self scanForString: 'er@' match: #(136))
 		ifTrue: [ self step.
@@ -1105,7 +1106,7 @@ KotlinScanner >> scan50 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan6 [
 	self step.
 	currentCharacter == $\
@@ -1138,14 +1139,14 @@ KotlinScanner >> scan6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan7 [
 	self step.
 	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(135) ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan8 [
 	self recordMatch: #(14).
 	self step.
@@ -1153,7 +1154,7 @@ KotlinScanner >> scan8 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scan9 [
 	self recordMatch: #(17).
 	self step.
@@ -1162,7 +1163,7 @@ KotlinScanner >> scan9 [
 	^ self reportLastMatch
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 KotlinScanner >> scanDelimitedComment [
 	| count current previous |
 	count := 0.
@@ -1181,16 +1182,16 @@ KotlinScanner >> scanDelimitedComment [
 	^ self scannerError
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scanForToken [
-	scope == #MultiLineString ifTrue: [ ^ self scanForTokenX1 ].
-	scope == #LineString ifTrue: [ ^ self scan46 ].
 	scope == #Inside ifTrue: [ ^ self scan1 ].
+	scope == #LineString ifTrue: [ ^ self scan46 ].
+	scope == #MultiLineString ifTrue: [ ^ self scanForTokenX1 ].
 	scope == #default ifTrue: [ ^ self scan47 ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scanForTokenX1 [
 	self step.
 	currentCharacter == $"
@@ -1208,7 +1209,7 @@ KotlinScanner >> scanForTokenX1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> scanForTokenX1X1 [
 	self recordMatch: #(147).
 	self step.
@@ -1232,7 +1233,7 @@ KotlinScanner >> scanForTokenX1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 KotlinScanner >> tokenActions [
 	^ #(nil #DelimitedComment #comment #whitespace #nl nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #AT_NO_WS #QUEST_NO_WS nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #NOT_IS #NOT_IN)
 ]

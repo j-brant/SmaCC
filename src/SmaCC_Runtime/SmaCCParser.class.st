@@ -291,6 +291,11 @@ SmaCCParser class >> symbolNames [
 ]
 
 { #category : 'accessing' }
+SmaCCParser class >> symbolTypeFor: aString [
+	^ self symbolTypes at: (self symbolNames indexOf: aString ifAbsent: [ ^ nil ])
+]
+
+{ #category : 'accessing' }
 SmaCCParser class >> symbolTypes [
 	^ #()
 ]
