@@ -6,11 +6,7 @@ Class {
 		'leftBrace',
 		'entries',
 		'rightBrace',
-		'expression',
-		'annotations',
-		'valToken',
-		'variableDeclaration',
-		'operator'
+		'subject'
 	],
 	#category : 'SmaCC_Kotlin',
 	#package : 'SmaCC_Kotlin'
@@ -22,20 +18,8 @@ KotlinWhenExpressionNode >> acceptVisitor: aNodeVisitor [
 ]
 
 { #category : 'generated' }
-KotlinWhenExpressionNode >> annotations [
-	^ annotations
-]
-
-{ #category : 'generated' }
-KotlinWhenExpressionNode >> annotations: anOrderedCollection [
-	self setParents: self annotations to: nil.
-	annotations := anOrderedCollection.
-	self setParents: self annotations to: self
-]
-
-{ #category : 'generated' }
 KotlinWhenExpressionNode >> compositeNodeVariables [
-	^ #(#entries #annotations)
+	^ #(#entries)
 ]
 
 { #category : 'generated' }
@@ -50,23 +34,10 @@ KotlinWhenExpressionNode >> entries: anOrderedCollection [
 	self setParents: self entries to: self
 ]
 
-{ #category : 'generated' }
-KotlinWhenExpressionNode >> expression [
-	^ expression
-]
-
-{ #category : 'generated' }
-KotlinWhenExpressionNode >> expression: aKotlinExpressionNode [
-	self expression notNil ifTrue: [ self expression parent: nil ].
-	expression := aKotlinExpressionNode.
-	self expression notNil ifTrue: [ self expression parent: self ]
-]
-
 { #category : 'generated-initialize-release' }
 KotlinWhenExpressionNode >> initialize [
 	super initialize.
 	entries := OrderedCollection new: 2.
-	annotations := OrderedCollection new: 2.
 ]
 
 { #category : 'generated' }
@@ -81,17 +52,7 @@ KotlinWhenExpressionNode >> leftBrace: aSmaCCToken [
 
 { #category : 'generated' }
 KotlinWhenExpressionNode >> nodeVariables [
-	^ #(#expression #variableDeclaration)
-]
-
-{ #category : 'generated' }
-KotlinWhenExpressionNode >> operator [
-	^ operator
-]
-
-{ #category : 'generated' }
-KotlinWhenExpressionNode >> operator: aSmaCCToken [
-	operator := aSmaCCToken
+	^ #(#subject)
 ]
 
 { #category : 'generated' }
@@ -105,32 +66,20 @@ KotlinWhenExpressionNode >> rightBrace: aSmaCCToken [
 ]
 
 { #category : 'generated' }
+KotlinWhenExpressionNode >> subject [
+	^ subject
+]
+
+{ #category : 'generated' }
+KotlinWhenExpressionNode >> subject: aKotlinWhenSubjectNode [
+	self subject notNil ifTrue: [ self subject parent: nil ].
+	subject := aKotlinWhenSubjectNode.
+	self subject notNil ifTrue: [ self subject parent: self ]
+]
+
+{ #category : 'generated' }
 KotlinWhenExpressionNode >> tokenVariables [
-	^ #(#whenToken #leftBrace #rightBrace #valToken #operator)
-]
-
-{ #category : 'generated' }
-KotlinWhenExpressionNode >> valToken [
-	^ valToken
-]
-
-{ #category : 'generated' }
-KotlinWhenExpressionNode >> valToken: aSmaCCToken [
-	valToken := aSmaCCToken
-]
-
-{ #category : 'generated' }
-KotlinWhenExpressionNode >> variableDeclaration [
-	^ variableDeclaration
-]
-
-{ #category : 'generated' }
-KotlinWhenExpressionNode >> variableDeclaration: aKotlinVariableDeclarationNode [
-	self variableDeclaration notNil
-		ifTrue: [ self variableDeclaration parent: nil ].
-	variableDeclaration := aKotlinVariableDeclarationNode.
-	self variableDeclaration notNil
-		ifTrue: [ self variableDeclaration parent: self ]
+	^ #(#whenToken #leftBrace #rightBrace)
 ]
 
 { #category : 'generated' }

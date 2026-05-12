@@ -102,6 +102,11 @@ TKotlinNodeNodeVisitor >> visitCompanionObject: aCompanionObject [
 ]
 
 { #category : 'generated' }
+TKotlinNodeNodeVisitor >> visitConstructorDelegationCall: aConstructorDelegationCall [
+	^ self visitNode: aConstructorDelegationCall
+]
+
+{ #category : 'generated' }
 TKotlinNodeNodeVisitor >> visitConstructorInvocation: aConstructorInvocation [
 	^ self visitMember: aConstructorInvocation
 ]
@@ -124,6 +129,11 @@ TKotlinNodeNodeVisitor >> visitDefinitelyNonNullableType: aDefinitelyNonNullable
 { #category : 'generated' }
 TKotlinNodeNodeVisitor >> visitDoWhileStatement: aDoWhileStatement [
 	^ self visitStatement: aDoWhileStatement
+]
+
+{ #category : 'generated' }
+TKotlinNodeNodeVisitor >> visitElvisExpression: anElvisExpression [
+	^ self visitExpression: anElvisExpression
 ]
 
 { #category : 'generated' }
@@ -459,6 +469,11 @@ TKotlinNodeNodeVisitor >> visitWhenEntry: aWhenEntry [
 { #category : 'generated' }
 TKotlinNodeNodeVisitor >> visitWhenExpression: aWhenExpression [
 	^ self visitExpression: aWhenExpression
+]
+
+{ #category : 'generated' }
+TKotlinNodeNodeVisitor >> visitWhenSubject: aWhenSubject [
+	^ self visitNode: aWhenSubject
 ]
 
 { #category : 'generated' }

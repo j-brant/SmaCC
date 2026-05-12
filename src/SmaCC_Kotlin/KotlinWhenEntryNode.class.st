@@ -2,7 +2,7 @@ Class {
 	#name : 'KotlinWhenEntryNode',
 	#superclass : 'KotlinMemberNode',
 	#instVars : [
-		'whens',
+		'conditions',
 		'commaTokens',
 		'arrowToken',
 		'body',
@@ -52,12 +52,24 @@ KotlinWhenEntryNode >> commaTokens: anOrderedCollection [
 
 { #category : 'generated' }
 KotlinWhenEntryNode >> compositeNodeVariables [
-	^ #(#whens)
+	^ #(#conditions)
 ]
 
 { #category : 'generated' }
 KotlinWhenEntryNode >> compositeTokenVariables [
 	^ #(#commaTokens)
+]
+
+{ #category : 'generated' }
+KotlinWhenEntryNode >> conditions [
+	^ conditions
+]
+
+{ #category : 'generated' }
+KotlinWhenEntryNode >> conditions: anOrderedCollection [
+	self setParents: self conditions to: nil.
+	conditions := anOrderedCollection.
+	self setParents: self conditions to: self
 ]
 
 { #category : 'generated' }
@@ -73,7 +85,7 @@ KotlinWhenEntryNode >> elseToken: aSmaCCToken [
 { #category : 'generated-initialize-release' }
 KotlinWhenEntryNode >> initialize [
 	super initialize.
-	whens := OrderedCollection new: 2.
+	conditions := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
 
@@ -95,16 +107,4 @@ KotlinWhenEntryNode >> semicolonToken: aSmaCCToken [
 { #category : 'generated' }
 KotlinWhenEntryNode >> tokenVariables [
 	^ #(#arrowToken #semicolonToken #elseToken)
-]
-
-{ #category : 'generated' }
-KotlinWhenEntryNode >> whens [
-	^ whens
-]
-
-{ #category : 'generated' }
-KotlinWhenEntryNode >> whens: anOrderedCollection [
-	self setParents: self whens to: nil.
-	whens := anOrderedCollection.
-	self setParents: self whens to: self
 ]

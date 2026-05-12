@@ -3,7 +3,7 @@ Class {
 	#superclass : 'KotlinMemberNode',
 	#instVars : [
 		'lambda',
-		'argument',
+		'arguments',
 		'typeArgument'
 	],
 	#category : 'SmaCC_Kotlin',
@@ -16,15 +16,15 @@ KotlinCallSuffixNode >> acceptVisitor: aNodeVisitor [
 ]
 
 { #category : 'generated' }
-KotlinCallSuffixNode >> argument [
-	^ argument
+KotlinCallSuffixNode >> arguments [
+	^ arguments
 ]
 
 { #category : 'generated' }
-KotlinCallSuffixNode >> argument: aKotlinValueArgumentsNode [
-	self argument notNil ifTrue: [ self argument parent: nil ].
-	argument := aKotlinValueArgumentsNode.
-	self argument notNil ifTrue: [ self argument parent: self ]
+KotlinCallSuffixNode >> arguments: aKotlinValueArgumentsNode [
+	self arguments notNil ifTrue: [ self arguments parent: nil ].
+	arguments := aKotlinValueArgumentsNode.
+	self arguments notNil ifTrue: [ self arguments parent: self ]
 ]
 
 { #category : 'generated' }
@@ -41,7 +41,7 @@ KotlinCallSuffixNode >> lambda: aKotlinLambdaExpressionNode [
 
 { #category : 'generated' }
 KotlinCallSuffixNode >> nodeVariables [
-	^ #(#lambda #argument #typeArgument)
+	^ #(#lambda #arguments #typeArgument)
 ]
 
 { #category : 'generated' }

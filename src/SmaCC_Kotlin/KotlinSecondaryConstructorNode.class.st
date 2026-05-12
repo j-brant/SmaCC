@@ -11,8 +11,7 @@ Class {
 		'commaTokens',
 		'block',
 		'colonToken',
-		'targetToken',
-		'arguments'
+		'constructorCall'
 	],
 	#category : 'SmaCC_Kotlin',
 	#package : 'SmaCC_Kotlin'
@@ -33,18 +32,6 @@ KotlinSecondaryConstructorNode >> annotations: anOrderedCollection [
 	self setParents: self annotations to: nil.
 	annotations := anOrderedCollection.
 	self setParents: self annotations to: self
-]
-
-{ #category : 'generated' }
-KotlinSecondaryConstructorNode >> arguments [
-	^ arguments
-]
-
-{ #category : 'generated' }
-KotlinSecondaryConstructorNode >> arguments: aKotlinValueArgumentsNode [
-	self arguments notNil ifTrue: [ self arguments parent: nil ].
-	arguments := aKotlinValueArgumentsNode.
-	self arguments notNil ifTrue: [ self arguments parent: self ]
 ]
 
 { #category : 'generated' }
@@ -90,6 +77,18 @@ KotlinSecondaryConstructorNode >> compositeTokenVariables [
 ]
 
 { #category : 'generated' }
+KotlinSecondaryConstructorNode >> constructorCall [
+	^ constructorCall
+]
+
+{ #category : 'generated' }
+KotlinSecondaryConstructorNode >> constructorCall: aKotlinConstructorDelegationCallNode [
+	self constructorCall notNil ifTrue: [ self constructorCall parent: nil ].
+	constructorCall := aKotlinConstructorDelegationCallNode.
+	self constructorCall notNil ifTrue: [ self constructorCall parent: self ]
+]
+
+{ #category : 'generated' }
 KotlinSecondaryConstructorNode >> constructorToken [
 	^ constructorToken
 ]
@@ -132,7 +131,7 @@ KotlinSecondaryConstructorNode >> modifiers: anOrderedCollection [
 
 { #category : 'generated' }
 KotlinSecondaryConstructorNode >> nodeVariables [
-	^ #(#block #arguments)
+	^ #(#block #constructorCall)
 ]
 
 { #category : 'generated' }
@@ -158,16 +157,6 @@ KotlinSecondaryConstructorNode >> rightParen: aSmaCCToken [
 ]
 
 { #category : 'generated' }
-KotlinSecondaryConstructorNode >> targetToken [
-	^ targetToken
-]
-
-{ #category : 'generated' }
-KotlinSecondaryConstructorNode >> targetToken: aSmaCCToken [
-	targetToken := aSmaCCToken
-]
-
-{ #category : 'generated' }
 KotlinSecondaryConstructorNode >> tokenVariables [
-	^ #(#constructorToken #leftParen #rightParen #colonToken #targetToken)
+	^ #(#constructorToken #leftParen #rightParen #colonToken)
 ]

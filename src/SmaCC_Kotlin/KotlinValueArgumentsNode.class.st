@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'leftParen',
 		'rightParen',
-		'args',
+		'arguments',
 		'commaTokens'
 	],
 	#category : 'SmaCC_Kotlin',
@@ -17,15 +17,15 @@ KotlinValueArgumentsNode >> acceptVisitor: aNodeVisitor [
 ]
 
 { #category : 'generated' }
-KotlinValueArgumentsNode >> args [
-	^ args
+KotlinValueArgumentsNode >> arguments [
+	^ arguments
 ]
 
 { #category : 'generated' }
-KotlinValueArgumentsNode >> args: anOrderedCollection [
-	self setParents: self args to: nil.
-	args := anOrderedCollection.
-	self setParents: self args to: self
+KotlinValueArgumentsNode >> arguments: anOrderedCollection [
+	self setParents: self arguments to: nil.
+	arguments := anOrderedCollection.
+	self setParents: self arguments to: self
 ]
 
 { #category : 'generated' }
@@ -40,7 +40,7 @@ KotlinValueArgumentsNode >> commaTokens: anOrderedCollection [
 
 { #category : 'generated' }
 KotlinValueArgumentsNode >> compositeNodeVariables [
-	^ #(#args)
+	^ #(#arguments)
 ]
 
 { #category : 'generated' }
@@ -51,7 +51,7 @@ KotlinValueArgumentsNode >> compositeTokenVariables [
 { #category : 'generated-initialize-release' }
 KotlinValueArgumentsNode >> initialize [
 	super initialize.
-	args := OrderedCollection new: 2.
+	arguments := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
 

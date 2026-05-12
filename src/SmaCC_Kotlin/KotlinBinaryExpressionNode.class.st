@@ -3,7 +3,7 @@ Class {
 	#superclass : 'KotlinExpressionNode',
 	#instVars : [
 		'left',
-		'operators',
+		'operator',
 		'right',
 		'operatorName'
 	],
@@ -14,17 +14,6 @@ Class {
 { #category : 'generated' }
 KotlinBinaryExpressionNode >> acceptVisitor: aNodeVisitor [
 	^ aNodeVisitor visitBinaryExpression: self
-]
-
-{ #category : 'generated' }
-KotlinBinaryExpressionNode >> compositeTokenVariables [
-	^ #(#operators #leftParens #rightParens)
-]
-
-{ #category : 'generated-initialize-release' }
-KotlinBinaryExpressionNode >> initialize [
-	super initialize.
-	operators := OrderedCollection new: 2.
 ]
 
 { #category : 'generated' }
@@ -45,6 +34,16 @@ KotlinBinaryExpressionNode >> nodeVariables [
 ]
 
 { #category : 'generated' }
+KotlinBinaryExpressionNode >> operator [
+	^ operator
+]
+
+{ #category : 'generated' }
+KotlinBinaryExpressionNode >> operator: aSmaCCToken [
+	operator := aSmaCCToken
+]
+
+{ #category : 'generated' }
 KotlinBinaryExpressionNode >> operatorName [
 	^ operatorName
 ]
@@ -52,16 +51,6 @@ KotlinBinaryExpressionNode >> operatorName [
 { #category : 'generated' }
 KotlinBinaryExpressionNode >> operatorName: aSmaCCToken [
 	operatorName := aSmaCCToken
-]
-
-{ #category : 'generated' }
-KotlinBinaryExpressionNode >> operators [
-	^ operators
-]
-
-{ #category : 'generated' }
-KotlinBinaryExpressionNode >> operators: anOrderedCollection [
-	operators := anOrderedCollection
 ]
 
 { #category : 'generated' }
@@ -78,5 +67,5 @@ KotlinBinaryExpressionNode >> right: aKotlinExpressionNode [
 
 { #category : 'generated' }
 KotlinBinaryExpressionNode >> tokenVariables [
-	^ #(#operatorName)
+	^ #(#operator #operatorName)
 ]

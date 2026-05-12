@@ -3,30 +3,30 @@ Class {
 	#superclass : 'KotlinDeclarationNode',
 	#instVars : [
 		'importToken',
-		'import',
+		'path',
 		'semicolonToken',
 		'dot',
 		'star',
 		'asToken',
-		'_as'
+		'alias'
 	],
 	#category : 'SmaCC_Kotlin',
 	#package : 'SmaCC_Kotlin'
 }
 
 { #category : 'generated' }
-KotlinImportDeclarationNode >> _as [
-	^ _as
-]
-
-{ #category : 'generated' }
-KotlinImportDeclarationNode >> _as: aSmaCCToken [
-	_as := aSmaCCToken
-]
-
-{ #category : 'generated' }
 KotlinImportDeclarationNode >> acceptVisitor: aNodeVisitor [
 	^ aNodeVisitor visitImportDeclaration: self
+]
+
+{ #category : 'generated' }
+KotlinImportDeclarationNode >> alias [
+	^ alias
+]
+
+{ #category : 'generated' }
+KotlinImportDeclarationNode >> alias: aSmaCCToken [
+	alias := aSmaCCToken
 ]
 
 { #category : 'generated' }
@@ -50,18 +50,6 @@ KotlinImportDeclarationNode >> dot: aSmaCCToken [
 ]
 
 { #category : 'generated' }
-KotlinImportDeclarationNode >> import [
-	^ import
-]
-
-{ #category : 'generated' }
-KotlinImportDeclarationNode >> import: aKotlinIdentifierNode [
-	self import notNil ifTrue: [ self import parent: nil ].
-	import := aKotlinIdentifierNode.
-	self import notNil ifTrue: [ self import parent: self ]
-]
-
-{ #category : 'generated' }
 KotlinImportDeclarationNode >> importToken [
 	^ importToken
 ]
@@ -73,7 +61,19 @@ KotlinImportDeclarationNode >> importToken: aSmaCCToken [
 
 { #category : 'generated' }
 KotlinImportDeclarationNode >> nodeVariables [
-	^ #(#import)
+	^ #(#path)
+]
+
+{ #category : 'generated' }
+KotlinImportDeclarationNode >> path [
+	^ path
+]
+
+{ #category : 'generated' }
+KotlinImportDeclarationNode >> path: aKotlinIdentifierNode [
+	self path notNil ifTrue: [ self path parent: nil ].
+	path := aKotlinIdentifierNode.
+	self path notNil ifTrue: [ self path parent: self ]
 ]
 
 { #category : 'generated' }
@@ -98,5 +98,5 @@ KotlinImportDeclarationNode >> star: aSmaCCToken [
 
 { #category : 'generated' }
 KotlinImportDeclarationNode >> tokenVariables [
-	^ #(#importToken #semicolonToken #dot #star #asToken #_as)
+	^ #(#importToken #semicolonToken #dot #star #asToken #alias)
 ]

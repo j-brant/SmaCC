@@ -8,9 +8,8 @@ Class {
 		'statements',
 		'rightBrace',
 		'arrowToken',
-		'parameter',
+		'parameters',
 		'commaTokens',
-		'paramters',
 		'label'
 	],
 	#category : 'SmaCC_Kotlin',
@@ -56,7 +55,7 @@ KotlinLambdaExpressionNode >> commaTokens: anOrderedCollection [
 
 { #category : 'generated' }
 KotlinLambdaExpressionNode >> compositeNodeVariables [
-	^ #(#annotations #statements #paramters)
+	^ #(#annotations #statements #parameters)
 ]
 
 { #category : 'generated' }
@@ -70,8 +69,8 @@ KotlinLambdaExpressionNode >> initialize [
 	annotations := OrderedCollection new: 2.
 	semicolonTokens := OrderedCollection new: 2.
 	statements := OrderedCollection new: 2.
+	parameters := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
-	paramters := OrderedCollection new: 2.
 ]
 
 { #category : 'generated' }
@@ -98,31 +97,19 @@ KotlinLambdaExpressionNode >> leftBrace: aSmaCCToken [
 
 { #category : 'generated' }
 KotlinLambdaExpressionNode >> nodeVariables [
-	^ #(#parameter #label)
+	^ #(#label)
 ]
 
 { #category : 'generated' }
-KotlinLambdaExpressionNode >> parameter [
-	^ parameter
+KotlinLambdaExpressionNode >> parameters [
+	^ parameters
 ]
 
 { #category : 'generated' }
-KotlinLambdaExpressionNode >> parameter: aKotlinMemberNode [
-	self parameter notNil ifTrue: [ self parameter parent: nil ].
-	parameter := aKotlinMemberNode.
-	self parameter notNil ifTrue: [ self parameter parent: self ]
-]
-
-{ #category : 'generated' }
-KotlinLambdaExpressionNode >> paramters [
-	^ paramters
-]
-
-{ #category : 'generated' }
-KotlinLambdaExpressionNode >> paramters: anOrderedCollection [
-	self setParents: self paramters to: nil.
-	paramters := anOrderedCollection.
-	self setParents: self paramters to: self
+KotlinLambdaExpressionNode >> parameters: anOrderedCollection [
+	self setParents: self parameters to: nil.
+	parameters := anOrderedCollection.
+	self setParents: self parameters to: self
 ]
 
 { #category : 'generated' }

@@ -7,25 +7,13 @@ Class {
 		'annotations',
 		'variable',
 		'inToken',
-		'_in',
+		'range',
 		'rightParen',
 		'body'
 	],
 	#category : 'SmaCC_Kotlin',
 	#package : 'SmaCC_Kotlin'
 }
-
-{ #category : 'generated' }
-KotlinForStatementNode >> _in [
-	^ _in
-]
-
-{ #category : 'generated' }
-KotlinForStatementNode >> _in: aKotlinExpressionNode [
-	self _in notNil ifTrue: [ self _in parent: nil ].
-	_in := aKotlinExpressionNode.
-	self _in notNil ifTrue: [ self _in parent: self ]
-]
 
 { #category : 'generated' }
 KotlinForStatementNode >> acceptVisitor: aNodeVisitor [
@@ -99,7 +87,19 @@ KotlinForStatementNode >> leftParen: aSmaCCToken [
 
 { #category : 'generated' }
 KotlinForStatementNode >> nodeVariables [
-	^ #(#variable #_in #body)
+	^ #(#variable #range #body)
+]
+
+{ #category : 'generated' }
+KotlinForStatementNode >> range [
+	^ range
+]
+
+{ #category : 'generated' }
+KotlinForStatementNode >> range: aKotlinExpressionNode [
+	self range notNil ifTrue: [ self range parent: nil ].
+	range := aKotlinExpressionNode.
+	self range notNil ifTrue: [ self range parent: self ]
 ]
 
 { #category : 'generated' }

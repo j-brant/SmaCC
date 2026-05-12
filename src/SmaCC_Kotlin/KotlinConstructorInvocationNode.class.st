@@ -3,7 +3,7 @@ Class {
 	#superclass : 'KotlinMemberNode',
 	#instVars : [
 		'type',
-		'argument'
+		'arguments'
 	],
 	#category : 'SmaCC_Kotlin',
 	#package : 'SmaCC_Kotlin'
@@ -15,20 +15,20 @@ KotlinConstructorInvocationNode >> acceptVisitor: aNodeVisitor [
 ]
 
 { #category : 'generated' }
-KotlinConstructorInvocationNode >> argument [
-	^ argument
+KotlinConstructorInvocationNode >> arguments [
+	^ arguments
 ]
 
 { #category : 'generated' }
-KotlinConstructorInvocationNode >> argument: aKotlinValueArgumentsNode [
-	self argument notNil ifTrue: [ self argument parent: nil ].
-	argument := aKotlinValueArgumentsNode.
-	self argument notNil ifTrue: [ self argument parent: self ]
+KotlinConstructorInvocationNode >> arguments: aKotlinValueArgumentsNode [
+	self arguments notNil ifTrue: [ self arguments parent: nil ].
+	arguments := aKotlinValueArgumentsNode.
+	self arguments notNil ifTrue: [ self arguments parent: self ]
 ]
 
 { #category : 'generated' }
 KotlinConstructorInvocationNode >> nodeVariables [
-	^ #(#type #argument)
+	^ #(#type #arguments)
 ]
 
 { #category : 'generated' }

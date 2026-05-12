@@ -1853,7 +1853,7 @@ KotlinParser class >> ambiguousTransitions [
 
 { #category : 'generated-accessing' }
 KotlinParser class >> cacheId [
-	^'2026-05-12T07:20:13.723571-05:00'
+	^'2026-05-12T10:00:30.917171-05:00'
 ]
 
 { #category : 'generated' }
@@ -1877,7 +1877,7 @@ with the following  license:
 %hierarchy Declaration (ImportDeclaration ClassDeclaration ObjectDeclaration FunctionDeclaration PropertyDeclaration TypeAliasDeclaration);
 %hierarchy Member (CompanionObject SecondaryConstructor AnonymousInitializer Getter Setter EnumEntry WhenEntry CatchBlock FinallyBlock RangeTest TypeTest CallSuffix IndexingSuffix NavigationSuffix ValueArgument ConstructorInvocation ExplicitDelegation ClassParameter TypeParameter TypeConstraint Parameter VariableDeclaration MultiVariableDeclaration FunctionBody ExpressionBody Identifier SimpleUserType);
 %hierarchy Statement (AnnotatedStatement Block AssignmentStatement ExpressionStatement ForStatement WhileStatement DoWhileStatement Label LabeledStatement);
-%hierarchy Expression (BinaryExpression PrefixExpression PostfixExpression CastExpression IsExpression NameExpression LiteralExpression StringLiteral CallableReference LambdaExpression AnonymousFunction ObjectLiteral ThisExpression SuperExpression IfExpression WhenExpression TryExpression ThrowExpression ReturnExpression BreakExpression ContinueExpression CollectionLiteral AnnotatedExpression LabeledExpression);
+%hierarchy Expression (BinaryExpression PrefixExpression PostfixExpression CastExpression IsExpression NameExpression LiteralExpression StringLiteral CallableReference LambdaExpression AnonymousFunction ObjectLiteral ThisExpression SuperExpression IfExpression WhenExpression TryExpression ThrowExpression ReturnExpression BreakExpression ContinueExpression CollectionLiteral AnnotatedExpression LabeledExpression ElvisExpression);
 %hierarchy Type (UserType NullableType FunctionType DefinitelyNonNullableType);
 %hierarchy Annotation (FileAnnotation SingleAnnotation MultiAnnotation AnnotationUseSiteTarget UnescapedAnnotation);
 %id <EXCL_NO_WS> <AT_POST_WS> <AT_PRE_WS> <AT_BOTH_WS> <AT_NO_WS> <QUEST_WS> <QUEST_NO_WS> <NOT_IS> <NOT_IN> <NL> <NL_DOT> <NL_QUEST_NO_WS> <NL_QUEST_WS> <NL_AS> <NL_AS_SAFE> <NL_CONJ> <NL_DISJ> <NL_COMMA> <NL_LCURL> <NL_COLON>;
@@ -2166,10 +2166,10 @@ importList
     : importHeader 'import'*
     ;
 importHeader
-    : <IMPORT> 'importToken' identifier 'import' (<DOT> 'dot' <MULT> 'star' | importAlias)? _semi {{ImportDeclaration}}
+    : <IMPORT> 'importToken' identifier 'path' (<DOT> 'dot' <MULT> 'star' | importAlias)? _semi {{ImportDeclaration}}
     ;
 importAlias
-    : <AS> 'asToken' simpleIdentifier 'as'
+    : <AS> 'asToken' simpleIdentifier 'alias'
     ;
 topLevelObject
     : declaration 'declaration' semis?
@@ -2219,7 +2219,7 @@ delegationSpecifier
     | <SUSPEND> 'suspendToken' <NL>? functionType {{FunctionType}}
     ;
 constructorInvocation
-    : userType 'type' <NL>? valueArguments 'argument' {{ConstructorInvocation}}
+    : userType 'type' <NL>? valueArguments 'arguments' {{ConstructorInvocation}}
     ;
 annotatedDelegationSpecifier
     : annotation 'annotation'* <NL>? delegationSpecifier 'specifier' {{}}
@@ -2335,10 +2335,10 @@ objectDeclaration
     ;
 secondaryConstructor
     : _modifiers <CONSTRUCTOR> 'constructorToken' <NL>? functionValueParameters
-      ((<NL_COLON> 'colonToken' | <COLON> 'colonToken') <NL>? constructorDelegationCall)? block 'block'? {{SecondaryConstructor}}
+      ((<NL_COLON> 'colonToken' | <COLON> 'colonToken') <NL>? constructorDelegationCall 'constructorCall')? block 'block'? {{SecondaryConstructor}}
     ;
 constructorDelegationCall
-    : (<THIS> 'targetToken' | <SUPER> 'targetToken') <NL>? valueArguments 'arguments'
+    : (<THIS> 'targetToken' | <SUPER> 'targetToken') <NL>? valueArguments 'arguments' {{}}
     ;
 enumClassBody
     : (nl_lcurl | lcurl) <NL>? enumEntries? (<NL>? <SEMICOLON> 'semicolonToken' <NL>? classMemberDeclarations | <NL>?) rcurl
@@ -2373,7 +2373,7 @@ userType
     : simpleUserType 'segment' ((<NL_DOT> 'dot' | <DOT> 'dot') <NL>? simpleUserType 'segment')* {{UserType}}
     ;
 simpleUserType
-    : simpleIdentifier 'name' (<NL>? typeArguments 'argument')? {{SimpleUserType}}
+    : simpleIdentifier 'name' (<NL>? typeArguments 'typeArguments')? {{SimpleUserType}}
     ;
 typeProjection
     : typeProjectionModifiers? type 'type' {{}}
@@ -2434,7 +2434,7 @@ loopStatement
     ;
 forStatement
     : <FOR> 'forToken' <NL>? lparen annotation 'annotation'* (variableDeclaration 'variable' | multiVariableDeclaration 'variable')
-      <IN> 'inToken' expression 'in' rparen controlStructureBody 'body'? {{ForStatement}}
+      <IN> 'inToken' expression 'range' rparen controlStructureBody 'body'? {{ForStatement}}
     ;
 whileStatement
     : <WHILE> 'whileToken' <NL>? lparen expression 'condition' rparen (controlStructureBody 'body' | <NL>? <SEMICOLON> 'semicolonToken') {{WhileStatement}}
@@ -2481,7 +2481,7 @@ infixOperation
     | elvisExpression
     ;
 elvisExpression
-    : elvisExpression 'left' elvis <NL>? infixFunctionCall 'right' {{BinaryExpression}}
+    : elvisExpression 'left' elvis <NL>? infixFunctionCall 'right' {{ElvisExpression}}
     | infixFunctionCall
     ;
 elvis
@@ -2557,8 +2557,8 @@ navigationSuffix
     : memberAccessOperator <NL>? (simpleIdentifier 'member' | parenthesizedExpression 'member' | <CLASS> 'member') {{NavigationSuffix}}
     ;
 callSuffix
-    : typeArguments 'typeArgument'? (valueArguments 'argument'? annotatedLambda 'lambda' | valueArguments 'argument') {{CallSuffix}}
-    | (valueArguments 'argument'? annotatedLambda 'lambda' | valueArguments 'argument') {{CallSuffix}}
+    : typeArguments 'typeArgument'? (valueArguments 'arguments'? annotatedLambda 'lambda' | valueArguments 'arguments') {{CallSuffix}}
+    | (valueArguments 'arguments'? annotatedLambda 'lambda' | valueArguments 'arguments') {{CallSuffix}}
     ;
 annotatedLambda
     : annotation 'annotation'* label 'label'? lambdaLiteral {{LambdaExpression}}
@@ -2567,7 +2567,7 @@ typeArguments
     : <LANGLE> 'lt' <NL>? typeProjection 'projection' ((<NL_COMMA> 'commaToken' | <COMMA> 'commaToken') <NL>? typeProjection 'projection')* _comma <NL>? <RANGLE> 'gt' {{TypeArguments}}
     ;
 valueArguments
-    : lparen <NL>? (valueArgument 'arg' ((<NL_COMMA> 'commaToken' | <COMMA> 'commaToken') <NL>? valueArgument 'arg')* _comma <NL>?)? rparen {{}}
+    : lparen <NL>? (valueArgument 'argument' ((<NL_COMMA> 'commaToken' | <COMMA> 'commaToken') <NL>? valueArgument 'argument')* _comma <NL>?)? rparen {{}}
     ;
 valueArgument
     : (annotation 'annotation' <NL>?)? (simpleIdentifier 'name' <NL>? <ASSIGNMENT> 'operator' <NL>?)? (<MULT> 'spread' <NL>?)? expression 'value' {{ValueArgument}}
@@ -2647,7 +2647,7 @@ lambdaLiteral
     : (nl_lcurl | lcurl) <NL>? ((lambdaParameters <NL>?)? <ARROW> 'arrowToken' <NL>?)? statements rcurl {{LambdaExpression}}
     ;
 lambdaParameters
-    : lambdaParameter 'parameter' ((<NL_COMMA> 'commaToken' | <COMMA> 'commaToken') <NL>? lambdaParameter 'paramter')* _comma
+    : lambdaParameter 'parameter' ((<NL_COMMA> 'commaToken' | <COMMA> 'commaToken') <NL>? lambdaParameter 'parameter')* _comma
     ;
 lambdaParameter
     : variableDeclaration
@@ -2684,13 +2684,13 @@ ifExpression
       | <NL>? <SEMICOLON> 'semicolonToken') {{IfExpression}}
     ;
 whenSubject
-    : lparen (annotation 'annotation'* <NL>? <VAL> 'valToken' <NL>? variableDeclaration 'variableDeclaration' <NL>? <ASSIGNMENT> 'operator' <NL>?)? expression 'expression' rparen
+    : lparen (annotation 'annotation'* <NL>? <VAL> 'valToken' <NL>? variableDeclaration 'variableDeclaration' <NL>? <ASSIGNMENT> 'operator' <NL>?)? expression 'expression' rparen {{}}
     ;
 whenExpression
-    : <WHEN> 'whenToken' <NL>? whenSubject? (nl_lcurl | lcurl) <NL>? (whenEntry 'entry' <NL>?)* <NL>? rcurl {{WhenExpression}}
+    : <WHEN> 'whenToken' <NL>? whenSubject 'subject'? (nl_lcurl | lcurl) <NL>? (whenEntry 'entry' <NL>?)* <NL>? rcurl {{WhenExpression}}
     ;
 whenEntry
-    : whenCondition 'when' ((<NL_COMMA> 'commaToken' | <COMMA> 'commaToken') <NL>? whenCondition 'when')* _comma <NL>? <ARROW> 'arrowToken' controlStructureBody 'body' _semi {{WhenEntry}}
+    : whenCondition 'condition' ((<NL_COMMA> 'commaToken' | <COMMA> 'commaToken') <NL>? whenCondition 'condition')* _comma <NL>? <ARROW> 'arrowToken' controlStructureBody 'body' _semi {{WhenEntry}}
     | <ELSE> 'elseToken' <NL>? <ARROW> 'arrowToken' <NL>? controlStructureBody 'body' _semi {{WhenEntry}}
     ;
 whenCondition
@@ -2950,1173 +2950,1173 @@ KotlinParser class >> fileExtension [
 { #category : 'generated' }
 KotlinParser class >> reduceTable [
 ^#(
-	#(151 0 #reduceActionForfileAnnotation__annotation__1: 9591809 false) 
-	#(160 0 #reduceActionForpackageHeader1: 10149889 false) 
-	#(156 2 #liftFirstValue: 9829377 false) 
-	#(410 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 36090881 false) 
-	#(151 2 #reduceActionForfileAnnotation__annotation__2: 9591810 false) 
-	#(162 0 #reduceActionForfileAnnotation__annotation__1: 10247169 false) 
-	#(422 0 #nil 36841473 false) 
-	#(152 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 9647105 false) 
-	#(161 1 #reduceActionForimportList1: 10229761 false) 
-	#(155 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 9781249 false) 
-	#(418 0 #reduceActionForPushModeInside1: 36588545 true) 
-	#(269 1 #liftFirstValue: 21460993 false) 
-	#(422 1 #liftFirstValue: 36841474 false) 
-	#(160 3 #reduceActionForpackageHeader2: 10149890 false) 
-	#(269 1 #nil 21460995 false) 
-	#(407 1 #liftFirstValue: 35615771 false) 
-	#(407 1 #liftFirstValue: 35615765 false) 
-	#(407 1 #liftFirstValue: 35615766 false) 
-	#(407 1 #liftFirstValue: 35615755 false) 
-	#(407 1 #liftFirstValue: 35615763 false) 
-	#(407 1 #liftFirstValue: 35615767 false) 
-	#(407 1 #liftFirstValue: 35615768 false) 
-	#(407 1 #liftFirstValue: 35615769 false) 
-	#(407 1 #liftFirstValue: 35615770 false) 
-	#(407 1 #liftFirstValue: 35615756 false) 
-	#(407 1 #liftFirstValue: 35615750 false) 
-	#(407 1 #liftFirstValue: 35615747 false) 
-	#(407 1 #liftFirstValue: 35615749 false) 
-	#(407 1 #liftFirstValue: 35615757 false) 
-	#(407 1 #liftFirstValue: 35615764 false) 
-	#(407 1 #liftFirstValue: 35615748 false) 
-	#(407 1 #liftFirstValue: 35615754 false) 
-	#(407 1 #liftFirstValue: 35615760 false) 
-	#(407 1 #liftFirstValue: 35615752 false) 
-	#(390 1 #liftFirstValue: 33908737 false) 
-	#(390 1 #liftFirstValue: 33908738 false) 
-	#(390 1 #liftFirstValue: 33908740 false) 
-	#(390 1 #liftFirstValue: 33908739 false) 
-	#(388 1 #liftFirstValue: 33766401 false) 
-	#(388 1 #liftFirstValue: 33766402 false) 
-	#(388 1 #liftFirstValue: 33766403 false) 
-	#(388 1 #liftFirstValue: 33766404 false) 
-	#(388 1 #liftFirstValue: 33766405 false) 
-	#(388 1 #liftFirstValue: 33766406 false) 
-	#(396 1 #liftFirstValue: 34344961 false) 
-	#(396 1 #liftFirstValue: 34344962 false) 
-	#(396 1 #liftFirstValue: 34344964 false) 
-	#(396 1 #liftFirstValue: 34344963 false) 
-	#(396 1 #liftFirstValue: 34344965 false) 
-	#(396 1 #liftFirstValue: 34344966 false) 
-	#(389 1 #liftFirstValue: 33856513 false) 
-	#(398 1 #liftFirstValue: 34483201 false) 
-	#(398 1 #liftFirstValue: 34483202 false) 
-	#(398 1 #liftFirstValue: 34483203 false) 
-	#(397 1 #liftFirstValue: 34445313 false) 
-	#(389 1 #liftFirstValue: 33856514 false) 
-	#(399 1 #liftFirstValue: 34546689 false) 
-	#(399 1 #liftFirstValue: 34546690 false) 
-	#(399 1 #liftFirstValue: 34546691 false) 
-	#(400 1 #liftFirstValue: 34616321 false) 
-	#(401 1 #liftFirstValue: 34659329 false) 
-	#(401 1 #liftFirstValue: 34659330 false) 
-	#(407 1 #liftFirstValue: 35615745 false) 
-	#(407 1 #liftFirstValue: 35615753 false) 
-	#(407 1 #liftFirstValue: 35615759 false) 
-	#(407 1 #liftFirstValue: 35615758 false) 
-	#(407 1 #liftFirstValue: 35615762 false) 
-	#(407 1 #liftFirstValue: 35615773 false) 
-	#(407 1 #liftFirstValue: 35615746 false) 
-	#(407 1 #liftFirstValue: 35615751 false) 
-	#(407 1 #liftFirstValue: 35615761 false) 
-	#(407 1 #liftFirstValue: 35615772 false) 
-	#(408 2 #reduceActionForidentifier1: 36073473 false) 
-	#(410 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 36090882 false) 
-	#(420 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 36725761 false) 
-	#(150 4 #reduceActionForkotlinFile1: 9554945 false) 
-	#(162 2 #reduceActionForfileAnnotation__annotation__2: 10247170 false) 
-	#(331 0 #reduceActionForPushModeDefault1: 28407809 true) 
-	#(321 0 #reduceActionForPushModeLineString1: 27537409 true) 
-	#(326 0 #reduceActionForPushModeMultiLineString1: 27871233 true) 
-	#(153 4 #reduceActionForscript1: 9678849 false) 
-	#(406 1 #reduceActionForunescapedAnnotation1: 35469313 false) 
-	#(406 1 #reduceActionForunescapedAnnotation1: 35469314 false) 
-	#(243 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 18499585 false) 
-	#(159 0 #nil 10118145 false) 
-	#(244 1 #reduceActionForsimpleUserType1: 18585601 false) 
-	#(269 2 #liftFirstValue: 21460994 false) 
-	#(409 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 36090882 false) 
-	#(409 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 36090881 false) 
-	#(152 2 #reduceActionFortopLevelObject_2: 9647106 false) 
-	#(167 1 #liftFirstValue: 10729477 false) 
-	#(165 1 #reduceActionFortopLevelObject1: 10481665 false) 
-	#(167 1 #liftFirstValue: 10729473 false) 
-	#(167 1 #liftFirstValue: 10729475 false) 
-	#(167 1 #liftFirstValue: 10729476 false) 
-	#(167 1 #liftFirstValue: 10729474 false) 
-	#(420 1 #reduceActionForimportList1: 36725762 false) 
-	#(378 1 #reduceActionFor_annotation__annotation____modifier__modifier___1: 33105921 false) 
-	#(376 1 #reduceActionForimportList1: 33089537 false) 
-	#(377 1 #reduceActionFor_annotation__annotation____modifier__modifier__2: 33105922 false) 
-	#(383 1 #reduceActionFormodifier1: 33325057 false) 
-	#(383 1 #reduceActionFormodifier1: 33325059 false) 
-	#(383 1 #reduceActionFormodifier1: 33325061 false) 
-	#(383 1 #reduceActionFormodifier1: 33325063 false) 
-	#(383 1 #reduceActionFormodifier1: 33325065 false) 
-	#(383 1 #reduceActionFormodifier1: 33325067 false) 
-	#(383 1 #reduceActionFormodifier1: 33325069 false) 
-	#(383 1 #reduceActionFormodifier1: 33325071 false) 
-	#(377 1 #reduceActionFor_annotation__annotation____modifier__modifier__1: 33105921 false) 
-	#(402 1 #reduceActionForimportList1: 34709505 false) 
-	#(402 1 #reduceActionForimportList1: 34709507 false) 
-	#(150 5 #reduceActionForkotlinFile3: 9554947 false) 
-	#(150 5 #reduceActionForkotlinFile2: 9554946 false) 
-	#(371 1 #liftFirstValue: 32666628 false) 
-	#(371 1 #liftFirstValue: 32666627 false) 
-	#(371 1 #liftFirstValue: 32666625 false) 
-	#(371 1 #liftFirstValue: 32666626 false) 
-	#(373 1 #liftFirstValue: 32839681 false) 
-	#(361 1 #reduceActionForjumpExpression5: 31489029 false) 
-	#(361 1 #reduceActionForjumpExpression8: 31489032 false) 
-	#(361 1 #reduceActionForjumpExpression10: 31489034 false) 
-	#(340 1 #reduceActionForthisExpression2: 29421570 false) 
-	#(341 1 #reduceActionForsuperExpression11: 29536267 false) 
-	#(423 0 #reduceActionFor_classBody1: 36871169 false) 
-	#(340 1 #reduceActionForthisExpression2: 29421569 false) 
-	#(341 1 #reduceActionForsuperExpression11: 29536257 false) 
-	#(361 1 #reduceActionForjumpExpression5: 31489027 false) 
-	#(361 1 #reduceActionForjumpExpression8: 31489031 false) 
-	#(361 1 #reduceActionForjumpExpression10: 31489033 false) 
-	#(237 1 #reduceActionFortypeReference2: 18162690 false) 
-	#(387 1 #reduceActionFormodifier1: 33705985 false) 
-	#(316 1 #liftFirstValue: 27071494 false) 
-	#(316 1 #liftFirstValue: 27071490 false) 
-	#(316 1 #liftFirstValue: 27071491 false) 
-	#(316 1 #liftFirstValue: 27071492 false) 
-	#(316 1 #liftFirstValue: 27071497 false) 
-	#(316 1 #liftFirstValue: 27071496 false) 
-	#(316 1 #liftFirstValue: 27071489 false) 
-	#(316 1 #liftFirstValue: 27071495 false) 
-	#(316 1 #liftFirstValue: 27071493 false) 
-	#(155 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 9781250 false) 
-	#(260 1 #liftFirstValue: 20033539 false) 
-	#(254 1 #reduceActionForimportList1: 19447813 false) 
-	#(254 1 #reduceActionForimportList1: 19447811 false) 
-	#(237 1 #liftFirstValue: 18162689 false) 
-	#(254 1 #reduceActionForimportList1: 19447809 false) 
-	#(260 1 #liftFirstValue: 20033541 false) 
-	#(264 1 #liftFirstValue: 20574209 false) 
-	#(264 1 #liftFirstValue: 20574210 false) 
-	#(264 1 #liftFirstValue: 20574211 false) 
-	#(260 1 #liftFirstValue: 20033540 false) 
-	#(260 1 #reduceActionForstatement6: 20033542 false) 
-	#(274 1 #liftFirstValue: 21673985 false) 
-	#(275 1 #liftFirstValue: 21709829 false) 
-	#(276 1 #liftFirstValue: 21864453 false) 
-	#(277 1 #liftFirstValue: 22012931 false) 
-	#(278 1 #liftFirstValue: 22144003 false) 
-	#(279 1 #liftFirstValue: 22311937 false) 
-	#(280 1 #liftFirstValue: 22366213 false) 
-	#(281 1 #liftFirstValue: 22606851 false) 
-	#(283 1 #liftFirstValue: 22840323 false) 
-	#(284 1 #liftFirstValue: 23004165 false) 
-	#(285 1 #liftFirstValue: 23186435 false) 
-	#(286 1 #liftFirstValue: 23366659 false) 
-	#(287 1 #liftFirstValue: 23540737 false) 
-	#(293 1 #liftFirstValue: 24816641 false) 
-	#(288 1 #liftFirstValue: 23683077 false) 
-	#(187 0 #reduceActionForfileAnnotation__annotation__1: 12423169 false) 
-	#(291 1 #liftFirstValue: 24462339 false) 
-	#(293 1 #liftFirstValue: 24816642 false) 
-	#(289 1 #liftFirstValue: 24177666 false) 
-	#(311 1 #liftFirstValue: 26390529 false) 
-	#(311 1 #liftFirstValue: 26390536 false) 
-	#(311 1 #reduceActionForprimaryExpression3: 26390531 false) 
-	#(311 1 #liftFirstValue: 26390532 false) 
-	#(317 1 #liftFirstValue: 27291649 false) 
-	#(317 1 #liftFirstValue: 27291650 false) 
-	#(338 1 #liftFirstValue: 29164545 false) 
-	#(338 1 #liftFirstValue: 29164546 false) 
-	#(311 1 #liftFirstValue: 26390534 false) 
-	#(311 1 #liftFirstValue: 26390535 false) 
-	#(311 1 #liftFirstValue: 26390537 false) 
-	#(311 1 #liftFirstValue: 26390538 false) 
-	#(311 1 #liftFirstValue: 26390539 false) 
-	#(311 1 #liftFirstValue: 26390540 false) 
-	#(311 1 #liftFirstValue: 26390541 false) 
-	#(311 1 #liftFirstValue: 26390542 false) 
-	#(311 1 #liftFirstValue: 26390533 false) 
-	#(371 1 #liftFirstValue: 32666629 false) 
-	#(384 1 #reduceActionForimportList1: 33580033 false) 
-	#(385 1 #reduceActionFor_annotation__annotation____modifier__modifier___1: 33600513 false) 
-	#(386 1 #reduceActionFor_annotation__annotation____modifier__modifier__2: 33620994 false) 
-	#(386 1 #reduceActionFor_annotation__annotation____modifier__modifier__1: 33620993 false) 
-	#(311 1 #reduceActionForprimaryExpression2: 26390530 false) 
-	#(291 1 #reduceActionForprimaryExpression2: 24462338 false) 
-	#(419 0 #reduceActionForPopModeInside1: 36646913 true) 
-	#(257 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 19945473 false) 
-	#(153 5 #reduceActionForscript3: 9678851 false) 
-	#(153 5 #reduceActionForscript2: 9678850 false) 
-	#(185 2 #reduceActionForconstructorInvocation1: 12276737 false) 
-	#(310 0 #nil 26320897 false) 
-	#(241 2 #reduceActionForuserType1: 18458625 false) 
-	#(157 5 #reduceActionForfileAnnotation6: 9883654 false) 
-	#(159 1 #liftFirstValue: 10118146 false) 
-	#(244 2 #reduceActionForsimpleUserType2: 18585602 false) 
-	#(158 1 #reduceActionForunescapedAnnotation__annotation__1: 10038273 false) 
-	#(413 2 #liftSecondValue: 36308993 false) 
-	#(157 5 #reduceActionForfileAnnotation6: 9883650 false) 
-	#(403 2 #reduceActionForsingleAnnotation3: 34792451 false) 
-	#(273 1 #reduceActionForunescapedAnnotation__annotation__1: 21543937 false) 
-	#(165 2 #reduceActionFortopLevelObject2: 10481666 false) 
-	#(270 1 #reduceActionForimportList1: 21525506 false) 
-	#(272 0 #reduceActionForfileAnnotation__annotation__1: 21542913 false) 
-	#(378 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 33105922 false) 
-	#(383 2 #reduceActionFormodifier1: 33325058 false) 
-	#(383 2 #reduceActionFormodifier1: 33325060 false) 
-	#(383 2 #reduceActionFormodifier1: 33325062 false) 
-	#(383 2 #reduceActionFormodifier1: 33325064 false) 
-	#(383 2 #reduceActionFormodifier1: 33325066 false) 
-	#(383 2 #reduceActionFormodifier1: 33325068 false) 
-	#(383 2 #reduceActionFormodifier1: 33325070 false) 
-	#(383 2 #reduceActionFormodifier1: 33325072 false) 
-	#(402 2 #reduceActionForimportList1: 34709506 false) 
-	#(402 2 #reduceActionForimportList1: 34709508 false) 
-	#(403 2 #reduceActionForsingleAnnotation1: 34792449 false) 
-	#(425 0 #reduceActionFor_classBody1: 36963329 false) 
-	#(403 2 #reduceActionForsingleAnnotation3: 34792452 false) 
-	#(163 3 #reduceActionForimportHeader1: 10276865 false) 
-	#(157 5 #reduceActionForfileAnnotation6: 9883662 false) 
-	#(157 5 #reduceActionForfileAnnotation6: 9883658 false) 
-	#(150 6 #reduceActionForkotlinFile4: 9554948 false) 
-	#(362 2 #reduceActionForcallableReference2: 31903746 false) 
-	#(362 2 #reduceActionForcallableReference2: 31903745 false) 
-	#(361 2 #reduceActionForjumpExpression6: 31489030 false) 
-	#(236 1 #reduceActionForimportList1: 17869831 false) 
-	#(236 1 #reduceActionForimportList1: 17869829 false) 
-	#(236 1 #reduceActionForimportList1: 17869825 false) 
-	#(236 1 #reduceActionForimportList1: 17869827 false) 
-	#(236 1 #reduceActionForimportList1: 17869833 false) 
-	#(252 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 19240961 false) 
-	#(423 1 #reduceActionForimportList1: 36871170 false) 
-	#(197 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 13298691 false) 
-	#(339 2 #reduceActionForobjectLiteral1: 29232129 false) 
-	#(349 0 #reduceActionForfileAnnotation__annotation__1: 30429185 false) 
-	#(262 1 #liftFirstValue: 20411394 false) 
-	#(262 1 #liftFirstValue: 20411393 false) 
-	#(361 2 #reduceActionForjumpExpression1: 31489025 false) 
-	#(361 2 #reduceActionForjumpExpression6: 31489028 false) 
-	#(387 2 #reduceActionFormodifier1: 33705986 false) 
-	#(240 1 #liftFirstValue: 18364418 false) 
-	#(238 2 #reduceActionFornullableType1: 18238465 false) 
-	#(239 1 #reduceActionForunescapedAnnotation__annotation__1: 18317313 false) 
-	#(240 1 #liftFirstValue: 18364417 false) 
-	#(240 1 #liftFirstValue: 18364419 false) 
-	#(240 1 #liftFirstValue: 18364420 false) 
-	#(238 2 #reduceActionFornullableType1: 18238466 false) 
-	#(154 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 9781249 false) 
-	#(260 2 #reduceActionForstatement1: 20033537 false) 
-	#(288 2 #reduceActionForprefixUnaryExpression2: 23683074 false) 
-	#(364 1 #liftFirstValue: 32207873 false) 
-	#(364 1 #liftFirstValue: 32207874 false) 
-	#(364 1 #liftFirstValue: 32207875 false) 
-	#(364 1 #liftFirstValue: 32207876 false) 
-	#(365 1 #liftFirstValue: 32294913 false) 
-	#(365 1 #liftFirstValue: 32294914 false) 
-	#(365 1 #liftFirstValue: 32294915 false) 
-	#(365 1 #liftFirstValue: 32294916 false) 
-	#(367 1 #liftFirstValue: 32428033 false) 
-	#(366 1 #liftFirstValue: 32384001 false) 
-	#(367 1 #liftFirstValue: 32428034 false) 
-	#(366 1 #liftFirstValue: 32384002 false) 
-	#(368 1 #liftFirstValue: 32472065 false) 
-	#(368 1 #liftFirstValue: 32472066 false) 
-	#(369 1 #liftFirstValue: 32520193 false) 
-	#(369 1 #liftFirstValue: 32520195 false) 
-	#(369 1 #liftFirstValue: 32520194 false) 
-	#(370 1 #liftFirstValue: 32587780 false) 
-	#(370 1 #liftFirstValue: 32587778 false) 
-	#(370 1 #liftFirstValue: 32587777 false) 
-	#(370 1 #liftFirstValue: 32587779 false) 
-	#(374 1 #reduceActionForunescapedAnnotation__annotation__1: 32870402 false) 
-	#(372 1 #liftFirstValue: 32755713 false) 
-	#(372 1 #liftFirstValue: 32755714 false) 
-	#(372 1 #liftFirstValue: 32755716 false) 
-	#(372 1 #liftFirstValue: 32755715 false) 
-	#(374 1 #reduceActionForunescapedAnnotation__annotation__1: 32870404 false) 
-	#(289 2 #reduceActionForpostfixUnaryExpression1: 24177665 false) 
-	#(291 2 #reduceActionForpostfixUnaryExpression1: 24462337 false) 
-	#(290 1 #liftFirstValue: 24326148 false) 
-	#(295 1 #liftFirstValue: 25024514 false) 
-	#(290 1 #liftFirstValue: 24326149 false) 
-	#(295 1 #liftFirstValue: 25024515 false) 
-	#(290 1 #liftFirstValue: 24326147 false) 
-	#(300 1 #reduceActionForcallSuffix1: 25457665 false) 
-	#(290 1 #liftFirstValue: 24326146 false) 
-	#(295 1 #liftFirstValue: 25024513 false) 
-	#(300 1 #reduceActionForcallSuffix3: 25457667 false) 
-	#(290 1 #liftFirstValue: 24326145 false) 
-	#(374 1 #reduceActionForimportList1: 32870403 false) 
-	#(374 1 #reduceActionForunescapedAnnotation__annotation__1: 32870401 false) 
-	#(363 1 #liftFirstValue: 32060417 false) 
-	#(363 1 #liftFirstValue: 32060418 false) 
-	#(363 1 #liftFirstValue: 32060419 false) 
-	#(363 1 #liftFirstValue: 32060420 false) 
-	#(363 1 #liftFirstValue: 32060421 false) 
-	#(320 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 27430913 false) 
-	#(325 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 27714561 false) 
-	#(415 2 #liftSecondValue: 36429825 false) 
-	#(416 2 #liftSecondValue: 36485121 false) 
-	#(288 2 #reduceActionForprefixUnaryExpression3: 23683075 false) 
-	#(254 2 #reduceActionForreceiverType6: 19447814 false) 
-	#(254 2 #reduceActionForreceiverType6: 19447812 false) 
-	#(254 2 #reduceActionForreceiverType6: 19447810 false) 
-	#(385 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 33600514 false) 
-	#(260 2 #reduceActionForstatement2: 20033538 false) 
-	#(288 2 #reduceActionForprefixUnaryExpression1: 23683073 false) 
-	#(261 2 #reduceActionForlabel1: 20302849 false) 
-	#(261 2 #reduceActionForlabel1: 20302851 false) 
-	#(315 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 26940417 false) 
-	#(313 2 #reduceActionForcollectionLiteral1: 26881025 false) 
-	#(336 1 #liftFirstValue: 28763137 false) 
-	#(427 0 #reduceActionFor_colonType1: 37088257 false) 
-	#(322 0 #reduceActionForPopMode1: 27597825 true) 
-	#(259 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 19986433 false) 
-	#(257 1 #reduceActionForstatements2: 19945474 false) 
-	#(335 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 28662785 false) 
-	#(411 2 #liftSecondValue: 36196353 false) 
-	#(153 6 #reduceActionForscript4: 9678852 false) 
-	#(309 1 #liftFirstValue: 26320897 false) 
-	#(307 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 26088449 false) 
-	#(310 1 #liftFirstValue: 26320898 false) 
-	#(305 2 #reduceActionForvalueArguments1: 26032129 false) 
-	#(185 3 #reduceActionForconstructorInvocation2: 12276738 false) 
-	#(243 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 18499586 false) 
-	#(245 1 #reduceActionFortypeProjection3: 18692099 false) 
-	#(391 1 #reduceActionFormodifier1: 33989633 false) 
-	#(391 1 #reduceActionFormodifier1: 33989634 false) 
-	#(245 1 #reduceActionFortypeProjection1: 18692097 false) 
-	#(304 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 25891841 false) 
-	#(246 1 #reduceActionForimportList1: 18793473 false) 
-	#(247 1 #reduceActionFor_annotation__annotation____modifier__modifier___1: 18824193 false) 
-	#(248 1 #reduceActionFor_annotation__annotation____modifier__modifier__1: 18854913 false) 
-	#(248 1 #reduceActionFor_annotation__annotation____modifier__modifier__2: 18854915 false) 
-	#(244 3 #reduceActionForsimpleUserType3: 18585603 false) 
-	#(158 2 #reduceActionForfileAnnotation__annotation__2: 10038274 false) 
-	#(157 6 #reduceActionForfileAnnotation8: 9883656 false) 
-	#(157 6 #reduceActionForfileAnnotation8: 9883652 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158018 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158017 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158020 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158019 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158022 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158021 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158024 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158023 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158026 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158025 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158028 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158027 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158030 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158029 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158032 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158031 false) 
-	#(273 2 #reduceActionForfileAnnotation__annotation__2: 21543938 false) 
-	#(270 2 #reduceActionForsemis1: 21525505 false) 
-	#(403 3 #reduceActionForsingleAnnotation2: 34792450 false) 
-	#(425 1 #reduceActionForimportList1: 36963330 false) 
-	#(216 0 #reduceActionFor_colonType1: 15549441 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158034 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158033 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158036 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158035 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158038 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158037 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158040 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158039 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158042 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158041 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158044 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158043 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158046 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158045 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158048 false) 
-	#(405 3 #reduceActionForannotationUseSiteTarget2: 35158047 false) 
-	#(164 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 10419201 false) 
-	#(163 4 #reduceActionForimportHeader3: 10276867 false) 
-	#(157 6 #reduceActionForfileAnnotation8: 9883664 false) 
-	#(157 6 #reduceActionForfileAnnotation8: 9883660 false) 
-	#(362 3 #reduceActionForcallableReference4: 31903748 false) 
-	#(362 3 #reduceActionForcallableReference4: 31903747 false) 
-	#(236 2 #reduceActionForreceiverType6: 17869832 false) 
-	#(236 2 #reduceActionForreceiverType6: 17869830 false) 
-	#(236 2 #reduceActionForreceiverType6: 17869826 false) 
-	#(236 2 #reduceActionForreceiverType6: 17869828 false) 
-	#(236 2 #reduceActionForreceiverType6: 17869834 false) 
-	#(421 0 #nil 36765697 false) 
-	#(183 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 11975681 false) 
-	#(200 1 #liftFirstValue: 13402113 false) 
-	#(199 1 #reduceActionFor_classMemberDeclaration__declaration__semis___1: 13329409 false) 
-	#(197 1 #reduceActionForimportList1: 13298689 false) 
-	#(198 1 #reduceActionFortopLevelObject1: 13329409 false) 
-	#(200 1 #liftFirstValue: 13402115 false) 
-	#(200 1 #liftFirstValue: 13402114 false) 
-	#(200 1 #liftFirstValue: 13402116 false) 
-	#(197 1 #reduceActionForclassMemberDeclarations2: 13298690 false) 
-	#(341 3 #reduceActionForsuperExpression2: 29536258 false) 
-	#(358 1 #reduceActionForunescapedAnnotation__annotation__1: 31100929 false) 
-	#(356 3 #reduceActionFortryExpression1: 31049729 false) 
-	#(357 1 #liftFirstValue: 31100929 false) 
-	#(356 3 #reduceActionFortryExpression4: 31049732 false) 
-	#(262 2 #liftSecondValue: 20411395 false) 
-	#(361 3 #reduceActionForjumpExpression2: 31489026 false) 
-	#(339 3 #reduceActionForobjectLiteral4: 29232132 false) 
-	#(239 2 #reduceActionForfileAnnotation__annotation__2: 18317314 false) 
-	#(362 3 #reduceActionForcallableReference6: 31903750 false) 
-	#(362 3 #reduceActionForcallableReference6: 31903749 false) 
-	#(275 3 #reduceActionFordisjunction3: 21709827 false) 
-	#(275 3 #reduceActionFordisjunction3: 21709825 false) 
-	#(276 3 #reduceActionFordisjunction3: 21864451 false) 
-	#(276 3 #reduceActionFordisjunction3: 21864449 false) 
-	#(277 3 #reduceActionFordisjunction3: 22012929 false) 
-	#(278 3 #reduceActionFordisjunction3: 22144001 false) 
-	#(280 3 #reduceActionFordisjunction3: 22366209 false) 
-	#(280 3 #reduceActionForinfixOperation3: 22366211 false) 
-	#(282 2 #reduceActionForelvis2: 22744066 false) 
-	#(281 3 #reduceActionForelvisExpression1: 22606849 false) 
-	#(282 2 #reduceActionForelvis2: 22744065 false) 
-	#(283 3 #reduceActionForinfixFunctionCall1: 22840321 false) 
-	#(284 3 #reduceActionFordisjunction3: 23004161 false) 
-	#(284 3 #reduceActionFordisjunction3: 23004163 false) 
-	#(285 3 #reduceActionFordisjunction3: 23186433 false) 
-	#(286 3 #reduceActionFordisjunction3: 23366657 false) 
-	#(287 3 #reduceActionForasExpression2: 23540738 false) 
-	#(375 2 #reduceActionForelvis2: 32993282 false) 
-	#(301 2 #reduceActionForannotatedLambda1: 25716737 false) 
-	#(187 2 #reduceActionForfileAnnotation__annotation__2: 12423170 false) 
-	#(300 2 #reduceActionForcallSuffix4: 25457668 false) 
-	#(300 2 #reduceActionForcallSuffix6: 25457670 false) 
-	#(300 2 #reduceActionForcallSuffix2: 25457666 false) 
-	#(299 2 #reduceActionFornavigationSuffix3: 25294851 false) 
-	#(299 2 #reduceActionFornavigationSuffix3: 25294850 false) 
-	#(299 2 #reduceActionFornavigationSuffix3: 25294849 false) 
-	#(298 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 25168897 false) 
-	#(375 2 #reduceActionForelvis2: 32993281 false) 
-	#(268 3 #reduceActionForassignment1: 21255169 false) 
-	#(268 3 #reduceActionForassignment1: 21255171 false) 
-	#(288 3 #reduceActionForprefixUnaryExpression4: 23683076 false) 
-	#(261 3 #reduceActionForlabel1: 20302850 false) 
-	#(261 3 #reduceActionForlabel1: 20302852 false) 
-	#(253 3 #reduceActionForparenthesizedType1: 19376129 false) 
-	#(312 3 #reduceActionForparenthesizedType1: 26790913 false) 
-	#(292 3 #reduceActionForparenthesizedType1: 24689665 false) 
-	#(294 3 #reduceActionForparenthesizedType1: 24913921 false) 
-	#(414 2 #liftSecondValue: 36369409 false) 
-	#(313 3 #reduceActionForcollectionLiteral4: 26881028 false) 
-	#(336 2 #reduceActionForlambdaParameter2: 28763138 false) 
-	#(332 3 #reduceActionForlambdaLiteral7: 28462087 false) 
-	#(257 2 #reduceActionForstatements3: 19945475 false) 
-	#(213 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 14926849 false) 
-	#(332 3 #reduceActionForlambdaLiteral7: 28462081 false) 
-	#(309 2 #liftFirstValue: 26320898 false) 
-	#(308 2 #reduceActionForvalueArgument1: 26202113 false) 
-	#(412 2 #liftSecondValue: 36252673 false) 
-	#(305 3 #reduceActionForvalueArguments4: 26032132 false) 
-	#(242 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 18499587 false) 
-	#(242 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 18499585 false) 
-	#(245 2 #reduceActionFortypeProjection2: 18692098 false) 
-	#(247 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 18824194 false) 
-	#(248 2 #reduceActionFor_annotation__annotation____modifier__modifier__1: 18854914 false) 
-	#(157 7 #reduceActionForfileAnnotation5: 9883653 false) 
-	#(157 7 #reduceActionForfileAnnotation5: 9883649 false) 
-	#(404 4 #reduceActionFormultiAnnotation3: 34967555 false) 
-	#(270 3 #reduceActionForsemis3: 21525507 false) 
-	#(272 2 #reduceActionFor__SEMICOLON___semicolonToken____NL____2: 21542914 false) 
-	#(271 1 #reduceActionForimportList1: 21542913 false) 
-	#(404 4 #reduceActionFormultiAnnotation1: 34967553 false) 
-	#(169 0 #reduceActionForprimaryConstructor_1: 11035649 false) 
-	#(191 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 12722177 false) 
-	#(394 1 #reduceActionFor_annotation__annotation____modifier__modifier__1: 34132994 false) 
-	#(392 1 #reduceActionForimportList1: 34073601 false) 
-	#(393 1 #reduceActionFor_annotation__annotation____modifier__modifier___1: 34103297 false) 
-	#(394 1 #reduceActionFor_annotation__annotation____modifier__modifier__1: 34132993 false) 
-	#(395 1 #reduceActionFormodifier1: 34271233 false) 
-	#(394 1 #reduceActionFor_annotation__annotation____modifier__modifier__2: 34132996 false) 
-	#(227 4 #reduceActionForobjectDeclaration1: 16884737 false) 
-	#(404 4 #reduceActionFormultiAnnotation3: 34967556 false) 
-	#(163 5 #reduceActionForimportHeader2: 10276866 false) 
-	#(157 7 #reduceActionForfileAnnotation5: 9883661 false) 
-	#(157 7 #reduceActionForfileAnnotation5: 9883657 false) 
-	#(424 0 #reduceActionFor_typeConstraints1: 36911105 false) 
-	#(223 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 16276481 false) 
-	#(224 1 #reduceActionForfunctionValueParameterWithOptionalType1: 16416769 false) 
-	#(381 1 #reduceActionFor_annotation__annotation____modifier__modifier___1: 33187841 false) 
-	#(379 1 #reduceActionForimportList1: 33162241 false) 
-	#(380 1 #reduceActionFor_annotation__annotation____modifier__modifier__2: 33187842 false) 
-	#(382 1 #reduceActionFormodifier1: 33257473 false) 
-	#(380 1 #reduceActionFor_annotation__annotation____modifier__modifier__1: 33187841 false) 
-	#(225 1 #reduceActionForparameterWithOptionalType5: 16598021 false) 
-	#(221 2 #reduceActionForparametersWithOptionalType1: 16176129 false) 
-	#(256 3 #reduceActionFordefinitelyNonNullableType1: 19728385 false) 
-	#(256 3 #reduceActionFordefinitelyNonNullableType1: 19728386 false) 
-	#(256 3 #reduceActionFordefinitelyNonNullableType1: 19728401 false) 
-	#(256 3 #reduceActionFordefinitelyNonNullableType1: 19728402 false) 
-	#(255 3 #reduceActionForparenthesizedType1: 19617793 false) 
-	#(421 1 #liftFirstValue: 36765699 false) 
-	#(252 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 19240962 false) 
-	#(421 1 #liftFirstValue: 36765698 false) 
-	#(255 3 #reduceActionForparenthesizedType1: 19617795 false) 
-	#(181 2 #reduceActionFordelegationSpecifiers1: 11890689 false) 
-	#(186 2 #reduceActionForannotatedDelegationSpecifier1: 12387329 false) 
-	#(184 1 #liftFirstValue: 12092417 false) 
-	#(184 1 #liftFirstValue: 12092418 false) 
-	#(184 1 #liftFirstValue: 12092419 false) 
-	#(184 1 #liftFirstValue: 12092420 false) 
-	#(201 2 #reduceActionForanonymousInitializer1: 13542401 false) 
-	#(174 3 #reduceActionForclassBody3: 11398147 false) 
-	#(199 2 #reduceActionFortopLevelObject_2: 13329410 false) 
-	#(198 2 #reduceActionFortopLevelObject2: 13329410 false) 
-	#(174 3 #reduceActionForclassBody3: 11398145 false) 
-	#(341 4 #reduceActionForsuperExpression3: 29536259 false) 
-	#(343 0 #nil 29901825 false) 
-	#(346 3 #reduceActionForwhenSubject1: 30141441 false) 
-	#(353 1 #liftFirstValue: 30812161 false) 
-	#(349 2 #reduceActionForfileAnnotation__annotation__2: 30429186 false) 
-	#(348 1 #liftFirstValue: 30429185 false) 
-	#(352 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 30532609 false) 
-	#(353 1 #liftFirstValue: 30812162 false) 
-	#(353 1 #liftFirstValue: 30812163 false) 
-	#(360 2 #reduceActionForfinallyBlock1: 31406081 false) 
-	#(358 2 #reduceActionForfileAnnotation__annotation__2: 31100930 false) 
-	#(356 4 #reduceActionFortryExpression2: 31049730 false) 
-	#(357 2 #liftSecondValue: 31100930 false) 
-	#(356 4 #reduceActionFortryExpression5: 31049733 false) 
-	#(263 3 #reduceActionForblock3: 20502531 false) 
-	#(263 3 #reduceActionForblock3: 20502529 false) 
-	#(339 4 #reduceActionForobjectLiteral7: 29232135 false) 
-	#(362 4 #reduceActionForcallableReference8: 31903752 false) 
-	#(362 4 #reduceActionForcallableReference8: 31903751 false) 
-	#(275 4 #reduceActionFordisjunction4: 21709828 false) 
-	#(275 4 #reduceActionFordisjunction4: 21709826 false) 
-	#(276 4 #reduceActionFordisjunction4: 21864452 false) 
-	#(276 4 #reduceActionFordisjunction4: 21864450 false) 
-	#(277 4 #reduceActionFordisjunction4: 22012930 false) 
-	#(278 4 #reduceActionFordisjunction4: 22144002 false) 
-	#(280 4 #reduceActionFordisjunction4: 22366210 false) 
-	#(280 4 #reduceActionForinfixOperation4: 22366212 false) 
-	#(281 4 #reduceActionForelvisExpression2: 22606850 false) 
-	#(283 4 #reduceActionForinfixFunctionCall2: 22840322 false) 
-	#(284 4 #reduceActionFordisjunction4: 23004162 false) 
-	#(284 4 #reduceActionFordisjunction4: 23004164 false) 
-	#(285 4 #reduceActionFordisjunction4: 23186434 false) 
-	#(286 4 #reduceActionFordisjunction4: 23366658 false) 
-	#(287 4 #reduceActionForasExpression3: 23540739 false) 
-	#(301 3 #reduceActionForannotatedLambda2: 25716738 false) 
-	#(300 3 #reduceActionForcallSuffix5: 25457669 false) 
-	#(299 3 #reduceActionFornavigationSuffix6: 25294854 false) 
-	#(299 3 #reduceActionFornavigationSuffix6: 25294853 false) 
-	#(299 3 #reduceActionFornavigationSuffix6: 25294852 false) 
-	#(268 4 #reduceActionForassignment2: 21255170 false) 
-	#(268 4 #reduceActionForassignment2: 21255172 false) 
-	#(327 1 #liftFirstValue: 27941891 false) 
-	#(327 1 #liftFirstValue: 27941889 false) 
-	#(327 1 #liftFirstValue: 27941890 false) 
-	#(320 2 #reduceActionFor_lineStringContent__part____lineStringExpression__2: 27430914 false) 
-	#(319 1 #reduceActionFor_lineStringContent__part____lineStringExpression_1: 27430913 false) 
-	#(319 1 #reduceActionForimportList1: 27430914 false) 
-	#(324 1 #reduceActionFor_lineStringContent__part____lineStringExpression_1: 27714563 false) 
-	#(329 1 #liftFirstValue: 28161026 false) 
-	#(329 1 #liftFirstValue: 28161027 false) 
-	#(329 1 #liftFirstValue: 28161025 false) 
-	#(325 2 #reduceActionFor_lineStringContent__part____lineStringExpression__2: 27714562 false) 
-	#(324 1 #reduceActionFor_lineStringContent__part____lineStringExpression_1: 27714561 false) 
-	#(324 1 #reduceActionForimportList1: 27714562 false) 
-	#(253 4 #reduceActionForparenthesizedType2: 19376130 false) 
-	#(312 4 #reduceActionForparenthesizedType2: 26790914 false) 
-	#(292 4 #reduceActionForparenthesizedType2: 24689666 false) 
-	#(294 4 #reduceActionForparenthesizedType2: 24913922 false) 
-	#(253 4 #reduceActionForparenthesizedType3: 19376131 false) 
-	#(312 4 #reduceActionForparenthesizedType3: 26790915 false) 
-	#(292 4 #reduceActionForparenthesizedType3: 24689667 false) 
-	#(294 4 #reduceActionForparenthesizedType3: 24913923 false) 
-	#(315 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 26940418 false) 
-	#(210 3 #reduceActionForvariableDeclaration1: 14725121 false) 
-	#(427 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 37088260 false) 
-	#(427 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 37088258 false) 
-	#(417 2 #liftSecondValue: 36540417 false) 
-	#(259 2 #reduceActionFor_semis_statement__statement___2: 19986434 false) 
-	#(257 3 #reduceActionForstatements4: 19945476 false) 
-	#(335 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 28662786 false) 
-	#(333 3 #reduceActionForlambdaParameters1: 28610561 false) 
-	#(332 4 #reduceActionForlambdaLiteral10: 28462090 false) 
-	#(332 4 #reduceActionForlambdaLiteral10: 28462084 false) 
-	#(307 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 26088450 false) 
-	#(308 3 #reduceActionForvalueArgument4: 26202116 false) 
-	#(242 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 18499588 false) 
-	#(242 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 18499586 false) 
-	#(304 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 25891842 false) 
-	#(157 8 #reduceActionForfileAnnotation7: 9883655 false) 
-	#(157 8 #reduceActionForfileAnnotation7: 9883651 false) 
-	#(271 2 #reduceActionForimportList1: 21542914 false) 
-	#(404 5 #reduceActionFormultiAnnotation2: 34967554 false) 
-	#(171 0 #reduceActionFor_typeConstraints1: 11062273 false) 
-	#(169 1 #reduceActionForimportList1: 11035650 false) 
-	#(173 1 #reduceActionForprimaryConstructor1: 11289601 false) 
-	#(394 2 #reduceActionFor_annotation__annotation____modifier__modifier__1: 34132995 false) 
-	#(393 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 34103298 false) 
-	#(395 2 #reduceActionFormodifier1: 34271234 false) 
-	#(192 2 #reduceActionFortypeParameter1: 12841985 false) 
-	#(227 5 #reduceActionForobjectDeclaration4: 16884740 false) 
-	#(216 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 15549443 false) 
-	#(216 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 15549442 false) 
-	#(157 8 #reduceActionForfileAnnotation7: 9883663 false) 
-	#(157 8 #reduceActionForfileAnnotation7: 9883659 false) 
-	#(424 1 #reduceActionForimportList1: 36911106 false) 
-	#(208 0 #nil 14529537 false) 
-	#(224 2 #reduceActionForfunctionValueParameterWithOptionalType6: 16416774 false) 
-	#(381 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 33187842 false) 
-	#(225 2 #reduceActionForparameterWithOptionalType5: 16598022 false) 
-	#(221 3 #reduceActionForparametersWithOptionalType2: 16176130 false) 
-	#(256 4 #reduceActionFordefinitelyNonNullableType3: 19728387 false) 
-	#(256 4 #reduceActionFordefinitelyNonNullableType3: 19728388 false) 
-	#(256 4 #reduceActionFordefinitelyNonNullableType5: 19728389 false) 
-	#(256 4 #reduceActionFordefinitelyNonNullableType5: 19728390 false) 
-	#(256 4 #reduceActionFordefinitelyNonNullableType9: 19728393 false) 
-	#(256 4 #reduceActionFordefinitelyNonNullableType9: 19728394 false) 
-	#(249 4 #reduceActionForfunctionType1: 18956289 false) 
-	#(256 4 #reduceActionFordefinitelyNonNullableType3: 19728403 false) 
-	#(256 4 #reduceActionFordefinitelyNonNullableType3: 19728404 false) 
-	#(256 4 #reduceActionFordefinitelyNonNullableType5: 19728405 false) 
-	#(256 4 #reduceActionFordefinitelyNonNullableType5: 19728406 false) 
-	#(256 4 #reduceActionFordefinitelyNonNullableType9: 19728409 false) 
-	#(256 4 #reduceActionFordefinitelyNonNullableType9: 19728410 false) 
-	#(255 4 #reduceActionForparenthesizedType2: 19617794 false) 
-	#(251 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 19240965 false) 
-	#(251 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 19240966 false) 
-	#(250 4 #reduceActionForfunctionTypeParameters1: 19150849 false) 
-	#(251 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 19240961 false) 
-	#(251 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 19240962 false) 
-	#(255 4 #reduceActionForparenthesizedType2: 19617796 false) 
-	#(226 3 #reduceActionForparameter3: 16754691 false) 
-	#(226 3 #reduceActionForparameter3: 16754689 false) 
-	#(255 4 #reduceActionForparenthesizedType3: 19617797 false) 
-	#(255 4 #reduceActionForparenthesizedType3: 19617799 false) 
-	#(339 5 #reduceActionForobjectLiteral3: 29232131 false) 
-	#(183 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 11975682 false) 
-	#(184 2 #reduceActionFordelegationSpecifier5: 12092421 false) 
-	#(186 3 #reduceActionForannotatedDelegationSpecifier2: 12387330 false) 
-	#(181 3 #reduceActionFordelegationSpecifiers2: 11890690 false) 
-	#(229 0 #nil 17303553 false) 
-	#(174 4 #reduceActionForclassBody4: 11398148 false) 
-	#(174 4 #reduceActionForclassBody4: 11398146 false) 
-	#(339 5 #reduceActionForobjectLiteral3: 29232130 false) 
-	#(341 5 #reduceActionForsuperExpression5: 29536261 false) 
-	#(341 5 #reduceActionForsuperExpression7: 29536263 false) 
-	#(342 5 #reduceActionForifExpression1: 29761537 false) 
-	#(343 1 #liftFirstValue: 29901826 false) 
-	#(347 5 #reduceActionForwhenExpression3: 30343171 false) 
-	#(348 2 #liftFirstValue: 30429186 false) 
-	#(354 2 #reduceActionForrangeTest1: 30883841 false) 
-	#(355 2 #reduceActionFortypeTest1: 30973953 false) 
-	#(347 5 #reduceActionForwhenExpression3: 30343169 false) 
-	#(356 5 #reduceActionFortryExpression3: 31049731 false) 
-	#(263 4 #reduceActionForblock4: 20502532 false) 
-	#(263 4 #reduceActionForblock4: 20502530 false) 
-	#(267 5 #reduceActionFordoWhileStatement1: 21087233 false) 
-	#(266 5 #reduceActionForwhileStatement2: 20905986 false) 
-	#(266 5 #reduceActionForwhileStatement1: 20905985 false) 
-	#(298 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 25168898 false) 
-	#(318 5 #reduceActionForlineStringLiteral1: 27366401 false) 
-	#(323 5 #reduceActionForlineStringLiteral1: 27632641 false) 
-	#(253 5 #reduceActionForparenthesizedType4: 19376132 false) 
-	#(312 5 #reduceActionForparenthesizedType4: 26790916 false) 
-	#(292 5 #reduceActionForparenthesizedType4: 24689668 false) 
-	#(294 5 #reduceActionForparenthesizedType4: 24913924 false) 
-	#(314 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 26940419 false) 
-	#(313 5 #reduceActionForcollectionLiteral2: 26881026 false) 
-	#(314 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 26940417 false) 
-	#(332 5 #reduceActionForlambdaLiteral8: 28462088 false) 
-	#(210 4 #reduceActionForvariableDeclaration2: 14725122 false) 
-	#(427 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 37088261 false) 
-	#(427 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 37088259 false) 
-	#(258 2 #reduceActionFor_semis_statement__statement__1: 19986433 false) 
-	#(334 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 28662787 false) 
-	#(334 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 28662785 false) 
-	#(213 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 14926850 false) 
-	#(332 5 #reduceActionForlambdaLiteral8: 28462082 false) 
-	#(306 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 26088451 false) 
-	#(305 5 #reduceActionForvalueArguments2: 26032130 false) 
-	#(306 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 26088449 false) 
-	#(308 4 #reduceActionForvalueArgument7: 26202119 false) 
-	#(303 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 25891843 false) 
-	#(302 5 #reduceActionFortypeArguments1: 25822209 false) 
-	#(303 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 25891841 false) 
-	#(171 1 #reduceActionForimportList1: 11062274 false) 
-	#(177 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 11541505 false) 
-	#(175 2 #reduceActionForparametersWithOptionalType1: 11476993 false) 
-	#(173 2 #reduceActionForprimaryConstructor4: 11289604 false) 
-	#(191 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 12722178 false) 
-	#(192 3 #reduceActionFortypeParameter3: 12841987 false) 
-	#(192 3 #reduceActionFortypeParameter2: 12841986 false) 
-	#(227 6 #reduceActionForobjectDeclaration3: 16884739 false) 
-	#(227 6 #reduceActionForobjectDeclaration3: 16884738 false) 
-	#(215 0 #reduceActionFor_colonType1: 15425537 false) 
-	#(216 3 #reduceActionForpropertyDeclarationReceiverType5: 15549445 false) 
-	#(216 3 #reduceActionForpropertyDeclarationReceiverType5: 15549444 false) 
-	#(166 6 #reduceActionFortypeAlias1: 10543105 false) 
-	#(195 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 13038593 false) 
-	#(337 6 #reduceActionForanonymousFunction1: 28884993 false) 
-	#(208 1 #liftFirstValue: 14529538 false) 
-	#(209 1 #reduceActionForfunctionBody1: 14581761 false) 
-	#(223 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 16276482 false) 
-	#(224 3 #reduceActionForfunctionValueParameterWithOptionalType2: 16416770 false) 
-	#(225 3 #reduceActionForparameter3: 16598019 false) 
-	#(225 3 #reduceActionForparameter3: 16598017 false) 
-	#(221 4 #reduceActionForparametersWithOptionalType6: 16176134 false) 
-	#(256 5 #reduceActionFordefinitelyNonNullableType7: 19728391 false) 
-	#(256 5 #reduceActionFordefinitelyNonNullableType7: 19728392 false) 
-	#(256 5 #reduceActionFordefinitelyNonNullableType11: 19728395 false) 
-	#(256 5 #reduceActionFordefinitelyNonNullableType11: 19728396 false) 
-	#(256 5 #reduceActionFordefinitelyNonNullableType13: 19728397 false) 
-	#(256 5 #reduceActionFordefinitelyNonNullableType13: 19728398 false) 
-	#(249 5 #reduceActionForfunctionType2: 18956290 false) 
-	#(256 5 #reduceActionFordefinitelyNonNullableType7: 19728407 false) 
-	#(256 5 #reduceActionFordefinitelyNonNullableType7: 19728408 false) 
-	#(256 5 #reduceActionFordefinitelyNonNullableType11: 19728411 false) 
-	#(256 5 #reduceActionFordefinitelyNonNullableType11: 19728412 false) 
-	#(256 5 #reduceActionFordefinitelyNonNullableType13: 19728413 false) 
-	#(256 5 #reduceActionFordefinitelyNonNullableType13: 19728414 false) 
-	#(250 5 #reduceActionForfunctionTypeParameters3: 19150851 false) 
-	#(250 5 #reduceActionForfunctionTypeParameters3: 19150853 false) 
-	#(251 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 19240967 false) 
-	#(251 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 19240968 false) 
-	#(250 5 #reduceActionForfunctionTypeParameters2: 19150850 false) 
-	#(251 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 19240963 false) 
-	#(251 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 19240964 false) 
-	#(226 4 #reduceActionForparameter4: 16754692 false) 
-	#(226 4 #reduceActionForparameter4: 16754690 false) 
-	#(255 5 #reduceActionForparenthesizedType4: 19617798 false) 
-	#(255 5 #reduceActionForparenthesizedType4: 19617800 false) 
-	#(182 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 11975683 false) 
-	#(182 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 11975681 false) 
-	#(184 3 #reduceActionFordelegationSpecifier6: 12092422 false) 
-	#(188 3 #reduceActionForexplicitDelegation1: 12498945 false) 
-	#(188 3 #reduceActionForexplicitDelegation1: 12498949 false) 
-	#(228 4 #reduceActionForsecondaryConstructor1: 17107969 false) 
-	#(229 1 #liftFirstValue: 17303554 false) 
-	#(205 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 14003201 false) 
-	#(206 1 #reduceActionForfunctionValueParameter1: 14127105 false) 
-	#(203 2 #reduceActionForparametersWithOptionalType1: 13922305 false) 
-	#(341 6 #reduceActionForsuperExpression4: 29536260 false) 
-	#(341 6 #reduceActionForsuperExpression9: 29536265 false) 
-	#(342 6 #reduceActionForifExpression4: 29761540 false) 
-	#(345 0 #nil 29941761 false) 
-	#(342 6 #reduceActionForifExpression5: 29761541 false) 
-	#(342 6 #reduceActionForifExpression9: 29761545 false) 
-	#(342 6 #reduceActionForifExpression17: 29761553 false) 
-	#(347 6 #reduceActionForwhenExpression7: 30343175 false) 
-	#(347 6 #reduceActionForwhenExpression7: 30343173 false) 
-	#(352 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 30532610 false) 
-	#(354 3 #reduceActionForrangeTest2: 30883842 false) 
-	#(355 3 #reduceActionFortypeTest2: 30973954 false) 
-	#(347 6 #reduceActionForwhenExpression4: 30343172 false) 
-	#(347 6 #reduceActionForwhenExpression4: 30343170 false) 
-	#(347 6 #reduceActionForwhenExpression11: 30343179 false) 
-	#(347 6 #reduceActionForwhenExpression11: 30343177 false) 
-	#(267 6 #reduceActionFordoWhileStatement2: 21087234 false) 
-	#(267 6 #reduceActionFordoWhileStatement5: 21087237 false) 
-	#(267 6 #reduceActionFordoWhileStatement3: 21087235 false) 
-	#(266 6 #reduceActionForwhileStatement3: 20905987 false) 
-	#(266 6 #reduceActionForwhileStatement5: 20905989 false) 
-	#(266 6 #reduceActionForwhileStatement4: 20905988 false) 
-	#(339 6 #reduceActionForobjectLiteral6: 29232134 false) 
-	#(339 6 #reduceActionForobjectLiteral6: 29232133 false) 
-	#(297 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 25168899 false) 
-	#(296 5 #reduceActionForindexingSuffix1: 25113601 false) 
-	#(297 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 25168897 false) 
-	#(314 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 26940420 false) 
-	#(313 6 #reduceActionForcollectionLiteral3: 26881027 false) 
-	#(314 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 26940418 false) 
-	#(313 6 #reduceActionForcollectionLiteral5: 26881029 false) 
-	#(334 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 28662788 false) 
-	#(334 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 28662786 false) 
-	#(212 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 14926851 false) 
-	#(211 5 #reduceActionFormultiVariableDeclaration1: 14850049 false) 
-	#(212 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 14926849 false) 
-	#(332 6 #reduceActionForlambdaLiteral11: 28462091 false) 
-	#(332 6 #reduceActionForlambdaLiteral11: 28462085 false) 
-	#(306 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 26088452 false) 
-	#(305 6 #reduceActionForvalueArguments3: 26032131 false) 
-	#(306 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 26088450 false) 
-	#(308 5 #reduceActionForvalueArgument2: 26202114 false) 
-	#(305 6 #reduceActionForvalueArguments5: 26032133 false) 
-	#(303 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 25891844 false) 
-	#(302 6 #reduceActionFortypeArguments2: 25822210 false) 
-	#(303 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 25891842 false) 
-	#(302 6 #reduceActionFortypeArguments3: 25822211 false) 
-	#(170 2 #reduceActionFor___NL_COLON___colonToken_____COLON___colonToken___delegationSpecifiers_2: 11062274 false) 
-	#(172 0 #reduceActionFor_classOrEnumClassBody1: 11216897 false) 
-	#(170 2 #reduceActionFor___NL_COLON___colonToken_____COLON___colonToken___delegationSpecifiers_2: 11062273 false) 
-	#(175 3 #reduceActionForparametersWithOptionalType2: 11476994 false) 
-	#(173 3 #reduceActionForprimaryConstructor2: 11289602 false) 
-	#(190 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 12722179 false) 
-	#(189 5 #reduceActionFortypeParameters1: 12647425 false) 
-	#(190 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 12722177 false) 
-	#(192 4 #reduceActionFortypeParameter4: 12841988 false) 
-	#(227 7 #reduceActionForobjectDeclaration6: 16884742 false) 
-	#(227 7 #reduceActionForobjectDeclaration6: 16884741 false) 
-	#(426 0 #nil 37013505 false) 
-	#(215 1 #reduceActionForimportList1: 15425540 false) 
-	#(166 7 #reduceActionFortypeAlias2: 10543106 false) 
-	#(166 7 #reduceActionFortypeAlias3: 10543107 false) 
-	#(166 7 #reduceActionFortypeAlias5: 10543109 false) 
-	#(193 3 #reduceActionFortypeConstraints1: 12953601 false) 
-	#(209 2 #reduceActionForfunctionBody2: 14581762 false) 
-	#(222 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 16276483 false) 
-	#(221 5 #reduceActionForparametersWithOptionalType3: 16176131 false) 
-	#(222 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 16276481 false) 
-	#(224 4 #reduceActionForfunctionValueParameterWithOptionalType3: 16416771 false) 
-	#(224 4 #reduceActionForfunctionValueParameterWithOptionalType4: 16416772 false) 
-	#(224 4 #reduceActionForfunctionValueParameterWithOptionalType7: 16416775 false) 
-	#(225 4 #reduceActionForparameter4: 16598020 false) 
-	#(225 4 #reduceActionForparameter4: 16598018 false) 
-	#(256 6 #reduceActionFordefinitelyNonNullableType15: 19728399 false) 
-	#(256 6 #reduceActionFordefinitelyNonNullableType15: 19728400 false) 
-	#(249 6 #reduceActionForfunctionType7: 18956295 false) 
-	#(249 6 #reduceActionForfunctionType7: 18956291 false) 
-	#(256 6 #reduceActionFordefinitelyNonNullableType15: 19728415 false) 
-	#(256 6 #reduceActionFordefinitelyNonNullableType15: 19728416 false) 
-	#(250 6 #reduceActionForfunctionTypeParameters4: 19150852 false) 
-	#(250 6 #reduceActionForfunctionTypeParameters4: 19150854 false) 
-	#(250 6 #reduceActionForfunctionTypeParameters7: 19150855 false) 
-	#(250 6 #reduceActionForfunctionTypeParameters7: 19150857 false) 
-	#(182 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 11975684 false) 
-	#(182 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 11975682 false) 
-	#(188 4 #reduceActionForexplicitDelegation2: 12498946 false) 
-	#(188 4 #reduceActionForexplicitDelegation3: 12498947 false) 
-	#(188 4 #reduceActionForexplicitDelegation2: 12498950 false) 
-	#(188 4 #reduceActionForexplicitDelegation3: 12498951 false) 
-	#(206 2 #reduceActionForfunctionValueParameter6: 14127110 false) 
-	#(203 3 #reduceActionForparametersWithOptionalType2: 13922306 false) 
-	#(228 5 #reduceActionForsecondaryConstructor6: 17107974 false) 
-	#(202 5 #reduceActionForcompanionObject1: 13635585 false) 
-	#(341 7 #reduceActionForsuperExpression6: 29536262 false) 
-	#(341 7 #reduceActionForsuperExpression8: 29536264 false) 
-	#(344 1 #liftFirstValue: 29941761 false) 
-	#(345 1 #liftFirstValue: 29941762 false) 
-	#(342 7 #reduceActionForifExpression8: 29761544 false) 
-	#(342 7 #reduceActionForifExpression12: 29761548 false) 
-	#(342 7 #reduceActionForifExpression13: 29761549 false) 
-	#(342 7 #reduceActionForifExpression20: 29761556 false) 
-	#(342 7 #reduceActionForifExpression21: 29761557 false) 
-	#(342 7 #reduceActionForifExpression25: 29761561 false) 
-	#(347 7 #reduceActionForwhenExpression8: 30343176 false) 
-	#(347 7 #reduceActionForwhenExpression8: 30343174 false) 
-	#(350 4 #reduceActionForwhenEntry3: 30494723 false) 
-	#(351 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 30532611 false) 
-	#(351 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 30532609 false) 
-	#(347 7 #reduceActionForwhenExpression15: 30343183 false) 
-	#(347 7 #reduceActionForwhenExpression15: 30343181 false) 
-	#(347 7 #reduceActionForwhenExpression12: 30343180 false) 
-	#(347 7 #reduceActionForwhenExpression12: 30343178 false) 
-	#(265 7 #reduceActionForforStatement1: 20659201 false) 
-	#(265 7 #reduceActionForforStatement1: 20659203 false) 
-	#(267 7 #reduceActionFordoWhileStatement6: 21087238 false) 
-	#(267 7 #reduceActionFordoWhileStatement7: 21087239 false) 
-	#(267 7 #reduceActionFordoWhileStatement4: 21087236 false) 
-	#(266 7 #reduceActionForwhileStatement6: 20905990 false) 
-	#(339 7 #reduceActionForobjectLiteral9: 29232137 false) 
-	#(339 7 #reduceActionForobjectLiteral9: 29232136 false) 
-	#(337 7 #reduceActionForanonymousFunction6: 28884998 false) 
-	#(297 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 25168900 false) 
-	#(296 6 #reduceActionForindexingSuffix2: 25113602 false) 
-	#(297 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 25168898 false) 
-	#(296 6 #reduceActionForindexingSuffix3: 25113603 false) 
-	#(328 4 #reduceActionForlineStringExpression1: 28034049 false) 
-	#(330 4 #reduceActionForlineStringExpression1: 28270593 false) 
-	#(313 7 #reduceActionForcollectionLiteral6: 26881030 false) 
-	#(332 7 #reduceActionForlambdaLiteral9: 28462089 false) 
-	#(212 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 14926852 false) 
-	#(211 6 #reduceActionFormultiVariableDeclaration2: 14850050 false) 
-	#(212 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 14926850 false) 
-	#(211 6 #reduceActionFormultiVariableDeclaration3: 14850051 false) 
-	#(332 7 #reduceActionForlambdaLiteral9: 28462083 false) 
-	#(308 6 #reduceActionForvalueArgument5: 26202117 false) 
-	#(308 6 #reduceActionForvalueArgument3: 26202115 false) 
-	#(305 7 #reduceActionForvalueArguments6: 26032134 false) 
-	#(302 7 #reduceActionFortypeArguments4: 25822212 false) 
-	#(168 8 #reduceActionForclassDeclaration1: 10865665 false) 
-	#(172 1 #reduceActionFor_classOrEnumClassBody2: 11216898 false) 
-	#(172 1 #reduceActionFor_classOrEnumClassBody3: 11216899 false) 
-	#(177 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 11541506 false) 
-	#(175 4 #reduceActionForparametersWithOptionalType6: 11476998 false) 
-	#(173 4 #reduceActionForprimaryConstructor3: 11289603 false) 
-	#(173 4 #reduceActionForprimaryConstructor5: 11289605 false) 
-	#(168 8 #reduceActionForclassDeclaration3: 10865667 false) 
-	#(190 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 12722180 false) 
-	#(189 6 #reduceActionFortypeParameters2: 12647426 false) 
-	#(190 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 12722178 false) 
-	#(189 6 #reduceActionFortypeParameters3: 12647427 false) 
-	#(189 6 #reduceActionFortypeParameters5: 12647429 false) 
-	#(215 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 15425538 false) 
-	#(218 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 15779841 false) 
-	#(426 1 #liftFirstValue: 37013507 false) 
-	#(217 0 #reduceActionForpackageHeader1: 15650817 false) 
-	#(426 1 #nil 37013506 false) 
-	#(215 2 #reduceActionForsemis1: 15425543 false) 
-	#(166 8 #reduceActionFortypeAlias4: 10543108 false) 
-	#(166 8 #reduceActionFortypeAlias6: 10543110 false) 
-	#(166 8 #reduceActionFortypeAlias7: 10543111 false) 
-	#(195 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 13038594 false) 
-	#(193 4 #reduceActionFortypeConstraints2: 12953602 false) 
-	#(209 3 #reduceActionForfunctionBody3: 14581763 false) 
-	#(209 3 #reduceActionForfunctionBody4: 14581764 false) 
-	#(193 4 #reduceActionFortypeConstraints3: 12953603 false) 
-	#(222 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 16276484 false) 
-	#(221 6 #reduceActionForparametersWithOptionalType4: 16176132 false) 
-	#(222 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 16276482 false) 
-	#(224 5 #reduceActionForfunctionValueParameterWithOptionalType5: 16416773 false) 
-	#(224 5 #reduceActionForfunctionValueParameterWithOptionalType8: 16416776 false) 
-	#(224 5 #reduceActionForfunctionValueParameterWithOptionalType9: 16416777 false) 
-	#(221 6 #reduceActionForparametersWithOptionalType7: 16176135 false) 
-	#(337 8 #reduceActionForanonymousFunction3: 28884995 false) 
-	#(337 8 #reduceActionForanonymousFunction3: 28884994 false) 
-	#(249 7 #reduceActionForfunctionType8: 18956296 false) 
-	#(249 7 #reduceActionForfunctionType9: 18956297 false) 
-	#(249 7 #reduceActionForfunctionType8: 18956292 false) 
-	#(249 7 #reduceActionForfunctionType9: 18956293 false) 
-	#(250 7 #reduceActionForfunctionTypeParameters8: 19150856 false) 
-	#(250 7 #reduceActionForfunctionTypeParameters8: 19150858 false) 
-	#(188 5 #reduceActionForexplicitDelegation4: 12498948 false) 
-	#(188 5 #reduceActionForexplicitDelegation4: 12498952 false) 
-	#(230 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 17350657 false) 
-	#(230 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 17350659 false) 
-	#(228 6 #reduceActionForsecondaryConstructor4: 17107972 false) 
-	#(228 6 #reduceActionForsecondaryConstructor4: 17107970 false) 
-	#(205 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 14003202 false) 
-	#(206 3 #reduceActionForfunctionValueParameter2: 14127106 false) 
-	#(203 4 #reduceActionForparametersWithOptionalType6: 13922310 false) 
-	#(202 6 #reduceActionForcompanionObject5: 13635589 false) 
-	#(202 6 #reduceActionForcompanionObject3: 13635587 false) 
-	#(341 8 #reduceActionForsuperExpression10: 29536266 false) 
-	#(344 2 #liftFirstValue: 29941762 false) 
-	#(342 8 #reduceActionForifExpression16: 29761552 false) 
-	#(342 8 #reduceActionForifExpression24: 29761560 false) 
-	#(342 8 #reduceActionForifExpression28: 29761564 false) 
-	#(342 8 #reduceActionForifExpression29: 29761565 false) 
-	#(350 5 #reduceActionForwhenEntry4: 30494724 false) 
-	#(350 5 #reduceActionForwhenEntry5: 30494725 false) 
-	#(351 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 30532612 false) 
-	#(351 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 30532610 false) 
-	#(347 8 #reduceActionForwhenExpression16: 30343184 false) 
-	#(347 8 #reduceActionForwhenExpression16: 30343182 false) 
-	#(265 8 #reduceActionForforStatement2: 20659202 false) 
-	#(265 8 #reduceActionForforStatement2: 20659204 false) 
-	#(265 8 #reduceActionForforStatement5: 20659205 false) 
-	#(265 8 #reduceActionForforStatement5: 20659207 false) 
-	#(267 8 #reduceActionFordoWhileStatement8: 21087240 false) 
-	#(337 8 #reduceActionForanonymousFunction11: 28885003 false) 
-	#(296 7 #reduceActionForindexingSuffix4: 25113604 false) 
-	#(328 5 #reduceActionForlineStringExpression2: 28034050 false) 
-	#(328 5 #reduceActionForlineStringExpression3: 28034051 false) 
-	#(330 5 #reduceActionForlineStringExpression2: 28270594 false) 
-	#(330 5 #reduceActionForlineStringExpression3: 28270595 false) 
-	#(211 7 #reduceActionFormultiVariableDeclaration4: 14850052 false) 
-	#(332 8 #reduceActionForlambdaLiteral12: 28462092 false) 
-	#(332 8 #reduceActionForlambdaLiteral12: 28462086 false) 
-	#(308 7 #reduceActionForvalueArgument6: 26202118 false) 
-	#(308 7 #reduceActionForvalueArgument8: 26202120 false) 
-	#(234 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 17656833 false) 
-	#(176 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 11541507 false) 
-	#(175 5 #reduceActionForparametersWithOptionalType3: 11476995 false) 
-	#(176 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 11541505 false) 
-	#(180 0 #reduceActionFor_colonType1: 11800577 false) 
-	#(173 5 #reduceActionForprimaryConstructor6: 11289606 false) 
-	#(168 9 #reduceActionForclassDeclaration2: 10865666 false) 
-	#(168 9 #reduceActionForclassDeclaration4: 10865668 false) 
-	#(189 7 #reduceActionFortypeParameters4: 12647428 false) 
-	#(168 9 #reduceActionForclassDeclaration5: 10865669 false) 
-	#(207 9 #reduceActionForfunctionDeclaration1: 14275585 false) 
-	#(189 7 #reduceActionFortypeParameters6: 12647430 false) 
-	#(189 7 #reduceActionFortypeParameters7: 12647431 false) 
-	#(215 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 15425539 false) 
-	#(218 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 15779842 false) 
-	#(426 2 #liftFirstValue: 37013508 false) 
-	#(214 9 #reduceActionForpropertyDeclaration2: 15074306 false) 
-	#(217 1 #reduceActionFor_getterSetter2: 15650818 false) 
-	#(217 1 #reduceActionFor_getterSetter5: 15650821 false) 
-	#(426 2 #liftSecondValue: 37013509 false) 
-	#(215 3 #reduceActionForpropertyDeclarationReceiverType5: 15425541 false) 
-	#(214 9 #reduceActionForpropertyDeclaration2: 15074305 false) 
-	#(214 9 #reduceActionForpropertyDeclaration6: 15074310 false) 
-	#(214 9 #reduceActionForpropertyDeclaration6: 15074309 false) 
-	#(166 9 #reduceActionFortypeAlias8: 10543112 false) 
-	#(196 4 #reduceActionFortypeConstraint3: 13132803 false) 
-	#(196 4 #reduceActionFortypeConstraint3: 13132801 false) 
-	#(194 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 13038595 false) 
-	#(194 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 13038593 false) 
-	#(209 4 #reduceActionForfunctionBody5: 14581765 false) 
-	#(193 5 #reduceActionFortypeConstraints4: 12953604 false) 
-	#(224 6 #reduceActionForfunctionValueParameterWithOptionalType10: 16416778 false) 
-	#(221 7 #reduceActionForparametersWithOptionalType8: 16176136 false) 
-	#(249 8 #reduceActionForfunctionType10: 18956298 false) 
-	#(249 8 #reduceActionForfunctionType10: 18956294 false) 
-	#(337 9 #reduceActionForanonymousFunction5: 28884997 false) 
-	#(337 9 #reduceActionForanonymousFunction5: 28884996 false) 
-	#(230 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 17350658 false) 
-	#(230 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 17350660 false) 
-	#(228 7 #reduceActionForsecondaryConstructor5: 17107973 false) 
-	#(228 7 #reduceActionForsecondaryConstructor5: 17107971 false) 
-	#(204 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 14003203 false) 
-	#(203 5 #reduceActionForparametersWithOptionalType3: 13922307 false) 
-	#(204 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 14003201 false) 
-	#(206 4 #reduceActionForfunctionValueParameter3: 14127107 false) 
-	#(206 4 #reduceActionForfunctionValueParameter4: 14127108 false) 
-	#(206 4 #reduceActionForfunctionValueParameter7: 14127111 false) 
-	#(228 7 #reduceActionForsecondaryConstructor9: 17107977 false) 
-	#(228 7 #reduceActionForsecondaryConstructor9: 17107975 false) 
-	#(202 7 #reduceActionForcompanionObject2: 13635586 false) 
-	#(202 7 #reduceActionForcompanionObject7: 13635591 false) 
-	#(202 7 #reduceActionForcompanionObject9: 13635593 false) 
-	#(342 9 #reduceActionForifExpression2: 29761538 false) 
-	#(342 9 #reduceActionForifExpression32: 29761568 false) 
-	#(346 8 #reduceActionForwhenSubject2: 30141442 false) 
-	#(350 6 #reduceActionForwhenEntry6: 30494726 false) 
-	#(350 6 #reduceActionForwhenEntry1: 30494721 false) 
-	#(265 9 #reduceActionForforStatement6: 20659206 false) 
-	#(265 9 #reduceActionForforStatement6: 20659208 false) 
-	#(337 9 #reduceActionForanonymousFunction8: 28885000 false) 
-	#(337 9 #reduceActionForanonymousFunction8: 28884999 false) 
-	#(328 6 #reduceActionForlineStringExpression4: 28034052 false) 
-	#(330 6 #reduceActionForlineStringExpression4: 28270596 false) 
-	#(308 8 #reduceActionForvalueArgument9: 26202121 false) 
-	#(231 3 #reduceActionForenumClassBody10: 17471498 false) 
-	#(231 3 #reduceActionForenumClassBody10: 17471490 false) 
-	#(176 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 11541508 false) 
-	#(175 6 #reduceActionForparametersWithOptionalType4: 11476996 false) 
-	#(176 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 11541506 false) 
-	#(180 1 #reduceActionForimportList1: 11800578 false) 
-	#(178 5 #reduceActionForclassParameter1: 11657217 false) 
-	#(175 6 #reduceActionForparametersWithOptionalType7: 11476999 false) 
-	#(168 10 #reduceActionForclassDeclaration6: 10865670 false) 
-	#(207 10 #reduceActionForfunctionDeclaration2: 14275586 false) 
-	#(189 8 #reduceActionFortypeParameters8: 12647432 false) 
-	#(168 10 #reduceActionForclassDeclaration7: 10865671 false) 
-	#(219 2 #reduceActionForgetter1: 15856641 false) 
-	#(220 2 #reduceActionForsetter1: 15983617 false) 
-	#(426 3 #liftSecondValue: 37013510 false) 
-	#(215 4 #reduceActionForpropertyDeclarationAssignment6: 15425542 false) 
-	#(214 10 #reduceActionForpropertyDeclaration4: 15074308 false) 
-	#(214 10 #reduceActionForpropertyDeclaration4: 15074307 false) 
-	#(214 10 #reduceActionForpropertyDeclaration8: 15074312 false) 
-	#(214 10 #reduceActionForpropertyDeclaration8: 15074311 false) 
-	#(196 5 #reduceActionFortypeConstraint4: 13132804 false) 
-	#(196 5 #reduceActionFortypeConstraint4: 13132802 false) 
-	#(194 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 13038596 false) 
-	#(194 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 13038594 false) 
-	#(204 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 14003204 false) 
-	#(203 6 #reduceActionForparametersWithOptionalType4: 13922308 false) 
-	#(204 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 14003202 false) 
-	#(206 5 #reduceActionForfunctionValueParameter5: 14127109 false) 
-	#(206 5 #reduceActionForfunctionValueParameter8: 14127112 false) 
-	#(206 5 #reduceActionForfunctionValueParameter9: 14127113 false) 
-	#(203 6 #reduceActionForparametersWithOptionalType7: 13922311 false) 
-	#(228 8 #reduceActionForsecondaryConstructor10: 17107978 false) 
-	#(228 8 #reduceActionForsecondaryConstructor10: 17107976 false) 
-	#(202 8 #reduceActionForcompanionObject6: 13635590 false) 
-	#(202 8 #reduceActionForcompanionObject4: 13635588 false) 
-	#(202 8 #reduceActionForcompanionObject11: 13635595 false) 
-	#(342 10 #reduceActionForifExpression3: 29761539 false) 
-	#(342 10 #reduceActionForifExpression6: 29761542 false) 
-	#(342 10 #reduceActionForifExpression10: 29761546 false) 
-	#(342 10 #reduceActionForifExpression18: 29761554 false) 
-	#(346 9 #reduceActionForwhenSubject3: 30141443 false) 
-	#(346 9 #reduceActionForwhenSubject4: 30141444 false) 
-	#(346 9 #reduceActionForwhenSubject6: 30141446 false) 
-	#(350 7 #reduceActionForwhenEntry2: 30494722 false) 
-	#(337 10 #reduceActionForanonymousFunction10: 28885002 false) 
-	#(337 10 #reduceActionForanonymousFunction10: 28885001 false) 
-	#(337 10 #reduceActionForanonymousFunction13: 28885005 false) 
-	#(337 10 #reduceActionForanonymousFunction13: 28885004 false) 
-	#(231 4 #reduceActionForenumClassBody12: 17471500 false) 
-	#(234 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 17656834 false) 
-	#(232 3 #reduceActionForenumEntries1: 17619969 false) 
-	#(235 3 #reduceActionForenumEntry1: 17747969 false) 
-	#(231 4 #reduceActionForenumClassBody14: 17471502 false) 
-	#(231 4 #reduceActionForenumClassBody12: 17471492 false) 
-	#(231 4 #reduceActionForenumClassBody14: 17471494 false) 
-	#(178 6 #reduceActionForclassParameter5: 11657221 false) 
-	#(178 6 #reduceActionForclassParameter9: 11657225 false) 
-	#(179 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 11800577 false) 
-	#(178 6 #reduceActionForclassParameter2: 11657218 false) 
-	#(178 6 #reduceActionForclassParameter3: 11657219 false) 
-	#(175 7 #reduceActionForparametersWithOptionalType8: 11477000 false) 
-	#(207 11 #reduceActionForfunctionDeclaration5: 14275589 false) 
-	#(207 11 #reduceActionForfunctionDeclaration5: 14275587 false) 
-	#(168 11 #reduceActionForclassDeclaration8: 10865672 false) 
-	#(217 3 #reduceActionForpackageHeader2: 15650819 false) 
-	#(217 3 #reduceActionFor_getterSetter6: 15650822 false) 
-	#(206 6 #reduceActionForfunctionValueParameter10: 14127114 false) 
-	#(203 7 #reduceActionForparametersWithOptionalType8: 13922312 false) 
-	#(202 9 #reduceActionForcompanionObject8: 13635592 false) 
-	#(202 9 #reduceActionForcompanionObject10: 13635594 false) 
-	#(342 11 #reduceActionForifExpression7: 29761543 false) 
-	#(342 11 #reduceActionForifExpression11: 29761547 false) 
-	#(342 11 #reduceActionForifExpression14: 29761550 false) 
-	#(342 11 #reduceActionForifExpression19: 29761555 false) 
-	#(342 11 #reduceActionForifExpression22: 29761558 false) 
-	#(342 11 #reduceActionForifExpression26: 29761562 false) 
-	#(346 10 #reduceActionForwhenSubject5: 30141445 false) 
-	#(346 10 #reduceActionForwhenSubject7: 30141447 false) 
-	#(346 10 #reduceActionForwhenSubject8: 30141448 false) 
-	#(359 9 #reduceActionForcatchBlock1: 31219713 false) 
-	#(337 11 #reduceActionForanonymousFunction15: 28885007 false) 
-	#(337 11 #reduceActionForanonymousFunction15: 28885006 false) 
-	#(233 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 17656835 false) 
-	#(233 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 17656833 false) 
-	#(235 4 #reduceActionForenumEntry2: 17747970 false) 
-	#(231 5 #reduceActionForenumClassBody16: 17471504 false) 
-	#(231 5 #reduceActionForenumClassBody16: 17471496 false) 
-	#(178 7 #reduceActionForclassParameter6: 11657222 false) 
-	#(178 7 #reduceActionForclassParameter7: 11657223 false) 
-	#(178 7 #reduceActionForclassParameter10: 11657226 false) 
-	#(178 7 #reduceActionForclassParameter11: 11657227 false) 
-	#(179 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 11800578 false) 
-	#(179 3 #reduceActionForpropertyDeclarationReceiverType5: 11800579 false) 
-	#(178 7 #reduceActionForclassParameter4: 11657220 false) 
-	#(207 12 #reduceActionForfunctionDeclaration6: 14275590 false) 
-	#(207 12 #reduceActionForfunctionDeclaration6: 14275588 false) 
-	#(207 12 #reduceActionForfunctionDeclaration9: 14275593 false) 
-	#(207 12 #reduceActionForfunctionDeclaration9: 14275591 false) 
-	#(217 4 #reduceActionFor_getterSetter4: 15650820 false) 
-	#(202 10 #reduceActionForcompanionObject12: 13635596 false) 
-	#(342 12 #reduceActionForifExpression15: 29761551 false) 
-	#(342 12 #reduceActionForifExpression23: 29761559 false) 
-	#(342 12 #reduceActionForifExpression27: 29761563 false) 
-	#(342 12 #reduceActionForifExpression30: 29761566 false) 
-	#(346 11 #reduceActionForwhenSubject9: 30141449 false) 
-	#(359 10 #reduceActionForcatchBlock2: 31219714 false) 
-	#(231 6 #reduceActionForenumClassBody9: 17471497 false) 
-	#(233 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 17656836 false) 
-	#(233 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 17656834 false) 
-	#(235 5 #reduceActionForenumEntry3: 17747971 false) 
-	#(231 6 #reduceActionForenumClassBody9: 17471489 false) 
-	#(178 8 #reduceActionForclassParameter8: 11657224 false) 
-	#(178 8 #reduceActionForclassParameter12: 11657228 false) 
-	#(179 4 #reduceActionForpropertyDeclarationAssignment6: 11800580 false) 
-	#(207 13 #reduceActionForfunctionDeclaration10: 14275594 false) 
-	#(207 13 #reduceActionForfunctionDeclaration10: 14275592 false) 
-	#(342 13 #reduceActionForifExpression31: 29761567 false) 
-	#(231 7 #reduceActionForenumClassBody11: 17471499 false) 
-	#(231 7 #reduceActionForenumClassBody13: 17471501 false) 
-	#(231 7 #reduceActionForenumClassBody11: 17471491 false) 
-	#(231 7 #reduceActionForenumClassBody13: 17471493 false) 
-	#(219 6 #reduceActionForgetter2: 15856642 false) 
-	#(231 8 #reduceActionForenumClassBody15: 17471503 false) 
-	#(231 8 #reduceActionForenumClassBody15: 17471495 false) 
-	#(219 7 #reduceActionForgetter3: 15856643 false) 
-	#(219 7 #reduceActionForgetter4: 15856644 false) 
-	#(219 8 #reduceActionForgetter5: 15856645 false) 
-	#(220 8 #reduceActionForsetter2: 15983618 false) 
-	#(220 9 #reduceActionForsetter3: 15983619 false) 
-	#(220 9 #reduceActionForsetter4: 15983620 false) 
-	#(220 9 #reduceActionForsetter6: 15983622 false) 
-	#(220 10 #reduceActionForsetter5: 15983621 false) 
-	#(220 10 #reduceActionForsetter7: 15983623 false) 
-	#(220 10 #reduceActionForsetter8: 15983624 false) 
-	#(220 11 #reduceActionForsetter9: 15983625 false)
+	#(151 0 #reduceActionForfileAnnotation__annotation__1: 9608193 false) 
+	#(160 0 #reduceActionForpackageHeader1: 10166273 false) 
+	#(156 2 #liftFirstValue: 9845761 false) 
+	#(410 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 36180993 false) 
+	#(151 2 #reduceActionForfileAnnotation__annotation__2: 9608194 false) 
+	#(162 0 #reduceActionForfileAnnotation__annotation__1: 10263553 false) 
+	#(422 0 #nil 36931585 false) 
+	#(152 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 9663489 false) 
+	#(161 1 #reduceActionForimportList1: 10246145 false) 
+	#(155 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 9797633 false) 
+	#(418 0 #reduceActionForPushModeInside1: 36678657 true) 
+	#(269 1 #liftFirstValue: 21511169 false) 
+	#(422 1 #liftFirstValue: 36931586 false) 
+	#(160 3 #reduceActionForpackageHeader2: 10166274 false) 
+	#(269 1 #nil 21511171 false) 
+	#(407 1 #liftFirstValue: 35705883 false) 
+	#(407 1 #liftFirstValue: 35705877 false) 
+	#(407 1 #liftFirstValue: 35705878 false) 
+	#(407 1 #liftFirstValue: 35705867 false) 
+	#(407 1 #liftFirstValue: 35705875 false) 
+	#(407 1 #liftFirstValue: 35705879 false) 
+	#(407 1 #liftFirstValue: 35705880 false) 
+	#(407 1 #liftFirstValue: 35705881 false) 
+	#(407 1 #liftFirstValue: 35705882 false) 
+	#(407 1 #liftFirstValue: 35705868 false) 
+	#(407 1 #liftFirstValue: 35705862 false) 
+	#(407 1 #liftFirstValue: 35705859 false) 
+	#(407 1 #liftFirstValue: 35705861 false) 
+	#(407 1 #liftFirstValue: 35705869 false) 
+	#(407 1 #liftFirstValue: 35705876 false) 
+	#(407 1 #liftFirstValue: 35705860 false) 
+	#(407 1 #liftFirstValue: 35705866 false) 
+	#(407 1 #liftFirstValue: 35705872 false) 
+	#(407 1 #liftFirstValue: 35705864 false) 
+	#(390 1 #liftFirstValue: 33998849 false) 
+	#(390 1 #liftFirstValue: 33998850 false) 
+	#(390 1 #liftFirstValue: 33998852 false) 
+	#(390 1 #liftFirstValue: 33998851 false) 
+	#(388 1 #liftFirstValue: 33856513 false) 
+	#(388 1 #liftFirstValue: 33856514 false) 
+	#(388 1 #liftFirstValue: 33856515 false) 
+	#(388 1 #liftFirstValue: 33856516 false) 
+	#(388 1 #liftFirstValue: 33856517 false) 
+	#(388 1 #liftFirstValue: 33856518 false) 
+	#(396 1 #liftFirstValue: 34435073 false) 
+	#(396 1 #liftFirstValue: 34435074 false) 
+	#(396 1 #liftFirstValue: 34435076 false) 
+	#(396 1 #liftFirstValue: 34435075 false) 
+	#(396 1 #liftFirstValue: 34435077 false) 
+	#(396 1 #liftFirstValue: 34435078 false) 
+	#(389 1 #liftFirstValue: 33946625 false) 
+	#(398 1 #liftFirstValue: 34573313 false) 
+	#(398 1 #liftFirstValue: 34573314 false) 
+	#(398 1 #liftFirstValue: 34573315 false) 
+	#(397 1 #liftFirstValue: 34535425 false) 
+	#(389 1 #liftFirstValue: 33946626 false) 
+	#(399 1 #liftFirstValue: 34636801 false) 
+	#(399 1 #liftFirstValue: 34636802 false) 
+	#(399 1 #liftFirstValue: 34636803 false) 
+	#(400 1 #liftFirstValue: 34706433 false) 
+	#(401 1 #liftFirstValue: 34749441 false) 
+	#(401 1 #liftFirstValue: 34749442 false) 
+	#(407 1 #liftFirstValue: 35705857 false) 
+	#(407 1 #liftFirstValue: 35705865 false) 
+	#(407 1 #liftFirstValue: 35705871 false) 
+	#(407 1 #liftFirstValue: 35705870 false) 
+	#(407 1 #liftFirstValue: 35705874 false) 
+	#(407 1 #liftFirstValue: 35705885 false) 
+	#(407 1 #liftFirstValue: 35705858 false) 
+	#(407 1 #liftFirstValue: 35705863 false) 
+	#(407 1 #liftFirstValue: 35705873 false) 
+	#(407 1 #liftFirstValue: 35705884 false) 
+	#(408 2 #reduceActionForidentifier1: 36163585 false) 
+	#(410 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 36180994 false) 
+	#(420 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 36815873 false) 
+	#(150 4 #reduceActionForkotlinFile1: 9571329 false) 
+	#(162 2 #reduceActionForfileAnnotation__annotation__2: 10263554 false) 
+	#(331 0 #reduceActionForPushModeDefault1: 28471297 true) 
+	#(321 0 #reduceActionForPushModeLineString1: 27600897 true) 
+	#(326 0 #reduceActionForPushModeMultiLineString1: 27934721 true) 
+	#(153 4 #reduceActionForscript1: 9695233 false) 
+	#(406 1 #reduceActionForunescapedAnnotation1: 35559425 false) 
+	#(406 1 #reduceActionForunescapedAnnotation1: 35559426 false) 
+	#(243 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 18541569 false) 
+	#(159 0 #nil 10134529 false) 
+	#(244 1 #reduceActionForsimpleUserType1: 18627585 false) 
+	#(269 2 #liftFirstValue: 21511170 false) 
+	#(409 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 36180994 false) 
+	#(409 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 36180993 false) 
+	#(152 2 #reduceActionFortopLevelObject_2: 9663490 false) 
+	#(167 1 #liftFirstValue: 10746885 false) 
+	#(165 1 #reduceActionFortopLevelObject1: 10499073 false) 
+	#(167 1 #liftFirstValue: 10746881 false) 
+	#(167 1 #liftFirstValue: 10746883 false) 
+	#(167 1 #liftFirstValue: 10746884 false) 
+	#(167 1 #liftFirstValue: 10746882 false) 
+	#(420 1 #reduceActionForimportList1: 36815874 false) 
+	#(378 1 #reduceActionFor_annotation__annotation____modifier__modifier___1: 33196033 false) 
+	#(376 1 #reduceActionForimportList1: 33179649 false) 
+	#(377 1 #reduceActionFor_annotation__annotation____modifier__modifier__2: 33196034 false) 
+	#(383 1 #reduceActionFormodifier1: 33415169 false) 
+	#(383 1 #reduceActionFormodifier1: 33415171 false) 
+	#(383 1 #reduceActionFormodifier1: 33415173 false) 
+	#(383 1 #reduceActionFormodifier1: 33415175 false) 
+	#(383 1 #reduceActionFormodifier1: 33415177 false) 
+	#(383 1 #reduceActionFormodifier1: 33415179 false) 
+	#(383 1 #reduceActionFormodifier1: 33415181 false) 
+	#(383 1 #reduceActionFormodifier1: 33415183 false) 
+	#(377 1 #reduceActionFor_annotation__annotation____modifier__modifier__1: 33196033 false) 
+	#(402 1 #reduceActionForimportList1: 34799617 false) 
+	#(402 1 #reduceActionForimportList1: 34799619 false) 
+	#(150 5 #reduceActionForkotlinFile3: 9571331 false) 
+	#(150 5 #reduceActionForkotlinFile2: 9571330 false) 
+	#(371 1 #liftFirstValue: 32756740 false) 
+	#(371 1 #liftFirstValue: 32756739 false) 
+	#(371 1 #liftFirstValue: 32756737 false) 
+	#(371 1 #liftFirstValue: 32756738 false) 
+	#(373 1 #liftFirstValue: 32929793 false) 
+	#(361 1 #reduceActionForjumpExpression5: 31579141 false) 
+	#(361 1 #reduceActionForjumpExpression8: 31579144 false) 
+	#(361 1 #reduceActionForjumpExpression10: 31579146 false) 
+	#(340 1 #reduceActionForthisExpression2: 29486082 false) 
+	#(341 1 #reduceActionForsuperExpression11: 29600779 false) 
+	#(423 0 #reduceActionFor_classBody1: 36961281 false) 
+	#(340 1 #reduceActionForthisExpression2: 29486081 false) 
+	#(341 1 #reduceActionForsuperExpression11: 29600769 false) 
+	#(361 1 #reduceActionForjumpExpression5: 31579139 false) 
+	#(361 1 #reduceActionForjumpExpression8: 31579143 false) 
+	#(361 1 #reduceActionForjumpExpression10: 31579145 false) 
+	#(237 1 #reduceActionFortypeReference2: 18204674 false) 
+	#(387 1 #reduceActionFormodifier1: 33796097 false) 
+	#(316 1 #liftFirstValue: 27134982 false) 
+	#(316 1 #liftFirstValue: 27134978 false) 
+	#(316 1 #liftFirstValue: 27134979 false) 
+	#(316 1 #liftFirstValue: 27134980 false) 
+	#(316 1 #liftFirstValue: 27134985 false) 
+	#(316 1 #liftFirstValue: 27134984 false) 
+	#(316 1 #liftFirstValue: 27134977 false) 
+	#(316 1 #liftFirstValue: 27134983 false) 
+	#(316 1 #liftFirstValue: 27134981 false) 
+	#(155 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 9797634 false) 
+	#(260 1 #liftFirstValue: 20080643 false) 
+	#(254 1 #reduceActionForimportList1: 19494917 false) 
+	#(254 1 #reduceActionForimportList1: 19494915 false) 
+	#(237 1 #liftFirstValue: 18204673 false) 
+	#(254 1 #reduceActionForimportList1: 19494913 false) 
+	#(260 1 #liftFirstValue: 20080645 false) 
+	#(264 1 #liftFirstValue: 20621313 false) 
+	#(264 1 #liftFirstValue: 20621314 false) 
+	#(264 1 #liftFirstValue: 20621315 false) 
+	#(260 1 #liftFirstValue: 20080644 false) 
+	#(260 1 #reduceActionForstatement6: 20080646 false) 
+	#(274 1 #liftFirstValue: 21724161 false) 
+	#(275 1 #liftFirstValue: 21760005 false) 
+	#(276 1 #liftFirstValue: 21914629 false) 
+	#(277 1 #liftFirstValue: 22063107 false) 
+	#(278 1 #liftFirstValue: 22194179 false) 
+	#(279 1 #liftFirstValue: 22362113 false) 
+	#(280 1 #liftFirstValue: 22416389 false) 
+	#(281 1 #liftFirstValue: 22657027 false) 
+	#(283 1 #liftFirstValue: 22889475 false) 
+	#(284 1 #liftFirstValue: 23053317 false) 
+	#(285 1 #liftFirstValue: 23235587 false) 
+	#(286 1 #liftFirstValue: 23415811 false) 
+	#(287 1 #liftFirstValue: 23589889 false) 
+	#(293 1 #liftFirstValue: 24865793 false) 
+	#(288 1 #liftFirstValue: 23732229 false) 
+	#(187 0 #reduceActionForfileAnnotation__annotation__1: 12441601 false) 
+	#(291 1 #liftFirstValue: 24511491 false) 
+	#(293 1 #liftFirstValue: 24865794 false) 
+	#(289 1 #liftFirstValue: 24226818 false) 
+	#(311 1 #liftFirstValue: 26454017 false) 
+	#(311 1 #liftFirstValue: 26454024 false) 
+	#(311 1 #reduceActionForprimaryExpression3: 26454019 false) 
+	#(311 1 #liftFirstValue: 26454020 false) 
+	#(317 1 #liftFirstValue: 27355137 false) 
+	#(317 1 #liftFirstValue: 27355138 false) 
+	#(338 1 #liftFirstValue: 29229057 false) 
+	#(338 1 #liftFirstValue: 29229058 false) 
+	#(311 1 #liftFirstValue: 26454022 false) 
+	#(311 1 #liftFirstValue: 26454023 false) 
+	#(311 1 #liftFirstValue: 26454025 false) 
+	#(311 1 #liftFirstValue: 26454026 false) 
+	#(311 1 #liftFirstValue: 26454027 false) 
+	#(311 1 #liftFirstValue: 26454028 false) 
+	#(311 1 #liftFirstValue: 26454029 false) 
+	#(311 1 #liftFirstValue: 26454030 false) 
+	#(311 1 #liftFirstValue: 26454021 false) 
+	#(371 1 #liftFirstValue: 32756741 false) 
+	#(384 1 #reduceActionForimportList1: 33670145 false) 
+	#(385 1 #reduceActionFor_annotation__annotation____modifier__modifier___1: 33690625 false) 
+	#(386 1 #reduceActionFor_annotation__annotation____modifier__modifier__2: 33711106 false) 
+	#(386 1 #reduceActionFor_annotation__annotation____modifier__modifier__1: 33711105 false) 
+	#(311 1 #reduceActionForprimaryExpression2: 26454018 false) 
+	#(291 1 #reduceActionForprimaryExpression2: 24511490 false) 
+	#(419 0 #reduceActionForPopModeInside1: 36737025 true) 
+	#(257 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 19992577 false) 
+	#(153 5 #reduceActionForscript3: 9695235 false) 
+	#(153 5 #reduceActionForscript2: 9695234 false) 
+	#(185 2 #reduceActionForconstructorInvocation1: 12294145 false) 
+	#(310 0 #nil 26384385 false) 
+	#(241 2 #reduceActionForuserType1: 18500609 false) 
+	#(157 5 #reduceActionForfileAnnotation6: 9900038 false) 
+	#(159 1 #liftFirstValue: 10134530 false) 
+	#(244 2 #reduceActionForsimpleUserType2: 18627586 false) 
+	#(158 1 #reduceActionForunescapedAnnotation__annotation__1: 10054657 false) 
+	#(413 2 #liftSecondValue: 36399105 false) 
+	#(157 5 #reduceActionForfileAnnotation6: 9900034 false) 
+	#(403 2 #reduceActionForsingleAnnotation3: 34882563 false) 
+	#(273 1 #reduceActionForunescapedAnnotation__annotation__1: 21594113 false) 
+	#(165 2 #reduceActionFortopLevelObject2: 10499074 false) 
+	#(270 1 #reduceActionForimportList1: 21575682 false) 
+	#(272 0 #reduceActionForfileAnnotation__annotation__1: 21593089 false) 
+	#(378 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 33196034 false) 
+	#(383 2 #reduceActionFormodifier1: 33415170 false) 
+	#(383 2 #reduceActionFormodifier1: 33415172 false) 
+	#(383 2 #reduceActionFormodifier1: 33415174 false) 
+	#(383 2 #reduceActionFormodifier1: 33415176 false) 
+	#(383 2 #reduceActionFormodifier1: 33415178 false) 
+	#(383 2 #reduceActionFormodifier1: 33415180 false) 
+	#(383 2 #reduceActionFormodifier1: 33415182 false) 
+	#(383 2 #reduceActionFormodifier1: 33415184 false) 
+	#(402 2 #reduceActionForimportList1: 34799618 false) 
+	#(402 2 #reduceActionForimportList1: 34799620 false) 
+	#(403 2 #reduceActionForsingleAnnotation1: 34882561 false) 
+	#(425 0 #reduceActionFor_classBody1: 37053441 false) 
+	#(403 2 #reduceActionForsingleAnnotation3: 34882564 false) 
+	#(163 3 #reduceActionForimportHeader1: 10293249 false) 
+	#(157 5 #reduceActionForfileAnnotation6: 9900046 false) 
+	#(157 5 #reduceActionForfileAnnotation6: 9900042 false) 
+	#(150 6 #reduceActionForkotlinFile4: 9571332 false) 
+	#(362 2 #reduceActionForcallableReference2: 31993858 false) 
+	#(362 2 #reduceActionForcallableReference2: 31993857 false) 
+	#(361 2 #reduceActionForjumpExpression6: 31579142 false) 
+	#(236 1 #reduceActionForimportList1: 17911815 false) 
+	#(236 1 #reduceActionForimportList1: 17911813 false) 
+	#(236 1 #reduceActionForimportList1: 17911809 false) 
+	#(236 1 #reduceActionForimportList1: 17911811 false) 
+	#(236 1 #reduceActionForimportList1: 17911817 false) 
+	#(252 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 19288065 false) 
+	#(423 1 #reduceActionForimportList1: 36961282 false) 
+	#(197 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 13317123 false) 
+	#(339 2 #reduceActionForobjectLiteral1: 29296641 false) 
+	#(349 0 #reduceActionForfileAnnotation__annotation__1: 30509057 false) 
+	#(262 1 #liftFirstValue: 20458498 false) 
+	#(262 1 #liftFirstValue: 20458497 false) 
+	#(361 2 #reduceActionForjumpExpression1: 31579137 false) 
+	#(361 2 #reduceActionForjumpExpression6: 31579140 false) 
+	#(387 2 #reduceActionFormodifier1: 33796098 false) 
+	#(240 1 #liftFirstValue: 18406402 false) 
+	#(238 2 #reduceActionFornullableType1: 18280449 false) 
+	#(239 1 #reduceActionForunescapedAnnotation__annotation__1: 18359297 false) 
+	#(240 1 #liftFirstValue: 18406401 false) 
+	#(240 1 #liftFirstValue: 18406403 false) 
+	#(240 1 #liftFirstValue: 18406404 false) 
+	#(238 2 #reduceActionFornullableType1: 18280450 false) 
+	#(154 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 9797633 false) 
+	#(260 2 #reduceActionForstatement1: 20080641 false) 
+	#(288 2 #reduceActionForprefixUnaryExpression2: 23732226 false) 
+	#(364 1 #liftFirstValue: 32297985 false) 
+	#(364 1 #liftFirstValue: 32297986 false) 
+	#(364 1 #liftFirstValue: 32297987 false) 
+	#(364 1 #liftFirstValue: 32297988 false) 
+	#(365 1 #liftFirstValue: 32385025 false) 
+	#(365 1 #liftFirstValue: 32385026 false) 
+	#(365 1 #liftFirstValue: 32385027 false) 
+	#(365 1 #liftFirstValue: 32385028 false) 
+	#(367 1 #liftFirstValue: 32518145 false) 
+	#(366 1 #liftFirstValue: 32474113 false) 
+	#(367 1 #liftFirstValue: 32518146 false) 
+	#(366 1 #liftFirstValue: 32474114 false) 
+	#(368 1 #liftFirstValue: 32562177 false) 
+	#(368 1 #liftFirstValue: 32562178 false) 
+	#(369 1 #liftFirstValue: 32610305 false) 
+	#(369 1 #liftFirstValue: 32610307 false) 
+	#(369 1 #liftFirstValue: 32610306 false) 
+	#(370 1 #liftFirstValue: 32677892 false) 
+	#(370 1 #liftFirstValue: 32677890 false) 
+	#(370 1 #liftFirstValue: 32677889 false) 
+	#(370 1 #liftFirstValue: 32677891 false) 
+	#(374 1 #reduceActionForunescapedAnnotation__annotation__1: 32960514 false) 
+	#(372 1 #liftFirstValue: 32845825 false) 
+	#(372 1 #liftFirstValue: 32845826 false) 
+	#(372 1 #liftFirstValue: 32845828 false) 
+	#(372 1 #liftFirstValue: 32845827 false) 
+	#(374 1 #reduceActionForunescapedAnnotation__annotation__1: 32960516 false) 
+	#(289 2 #reduceActionForpostfixUnaryExpression1: 24226817 false) 
+	#(291 2 #reduceActionForpostfixUnaryExpression1: 24511489 false) 
+	#(290 1 #liftFirstValue: 24375300 false) 
+	#(295 1 #liftFirstValue: 25073666 false) 
+	#(290 1 #liftFirstValue: 24375301 false) 
+	#(295 1 #liftFirstValue: 25073667 false) 
+	#(290 1 #liftFirstValue: 24375299 false) 
+	#(300 1 #reduceActionForcallSuffix1: 25506817 false) 
+	#(290 1 #liftFirstValue: 24375298 false) 
+	#(295 1 #liftFirstValue: 25073665 false) 
+	#(300 1 #reduceActionForcallSuffix3: 25506819 false) 
+	#(290 1 #liftFirstValue: 24375297 false) 
+	#(374 1 #reduceActionForimportList1: 32960515 false) 
+	#(374 1 #reduceActionForunescapedAnnotation__annotation__1: 32960513 false) 
+	#(363 1 #liftFirstValue: 32150529 false) 
+	#(363 1 #liftFirstValue: 32150530 false) 
+	#(363 1 #liftFirstValue: 32150531 false) 
+	#(363 1 #liftFirstValue: 32150532 false) 
+	#(363 1 #liftFirstValue: 32150533 false) 
+	#(320 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 27494401 false) 
+	#(325 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 27778049 false) 
+	#(415 2 #liftSecondValue: 36519937 false) 
+	#(416 2 #liftSecondValue: 36575233 false) 
+	#(288 2 #reduceActionForprefixUnaryExpression3: 23732227 false) 
+	#(254 2 #reduceActionForreceiverType6: 19494918 false) 
+	#(254 2 #reduceActionForreceiverType6: 19494916 false) 
+	#(254 2 #reduceActionForreceiverType6: 19494914 false) 
+	#(385 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 33690626 false) 
+	#(260 2 #reduceActionForstatement2: 20080642 false) 
+	#(288 2 #reduceActionForprefixUnaryExpression1: 23732225 false) 
+	#(261 2 #reduceActionForlabel1: 20349953 false) 
+	#(261 2 #reduceActionForlabel1: 20349955 false) 
+	#(315 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 27003905 false) 
+	#(313 2 #reduceActionForcollectionLiteral1: 26944513 false) 
+	#(336 1 #liftFirstValue: 28827649 false) 
+	#(427 0 #reduceActionFor_colonType1: 37178369 false) 
+	#(322 0 #reduceActionForPopMode1: 27661313 true) 
+	#(259 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 20033537 false) 
+	#(257 1 #reduceActionForstatements2: 19992578 false) 
+	#(335 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 28726273 false) 
+	#(411 2 #liftSecondValue: 36286465 false) 
+	#(153 6 #reduceActionForscript4: 9695236 false) 
+	#(309 1 #liftFirstValue: 26384385 false) 
+	#(307 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 26146817 false) 
+	#(310 1 #liftFirstValue: 26384386 false) 
+	#(305 2 #reduceActionForvalueArguments1: 26085377 false) 
+	#(185 3 #reduceActionForconstructorInvocation2: 12294146 false) 
+	#(243 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 18541570 false) 
+	#(245 1 #reduceActionFortypeProjection3: 18739203 false) 
+	#(391 1 #reduceActionFormodifier1: 34079745 false) 
+	#(391 1 #reduceActionFormodifier1: 34079746 false) 
+	#(245 1 #reduceActionFortypeProjection1: 18739201 false) 
+	#(304 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 25945089 false) 
+	#(246 1 #reduceActionForimportList1: 18840577 false) 
+	#(247 1 #reduceActionFor_annotation__annotation____modifier__modifier___1: 18871297 false) 
+	#(248 1 #reduceActionFor_annotation__annotation____modifier__modifier__1: 18902017 false) 
+	#(248 1 #reduceActionFor_annotation__annotation____modifier__modifier__2: 18902019 false) 
+	#(244 3 #reduceActionForsimpleUserType3: 18627587 false) 
+	#(158 2 #reduceActionForfileAnnotation__annotation__2: 10054658 false) 
+	#(157 6 #reduceActionForfileAnnotation8: 9900040 false) 
+	#(157 6 #reduceActionForfileAnnotation8: 9900036 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248130 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248129 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248132 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248131 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248134 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248133 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248136 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248135 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248138 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248137 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248140 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248139 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248142 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248141 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248144 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248143 false) 
+	#(273 2 #reduceActionForfileAnnotation__annotation__2: 21594114 false) 
+	#(270 2 #reduceActionForsemis1: 21575681 false) 
+	#(403 3 #reduceActionForsingleAnnotation2: 34882562 false) 
+	#(425 1 #reduceActionForimportList1: 37053442 false) 
+	#(216 0 #reduceActionFor_colonType1: 15567873 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248146 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248145 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248148 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248147 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248150 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248149 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248152 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248151 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248154 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248153 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248156 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248155 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248158 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248157 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248160 false) 
+	#(405 3 #reduceActionForannotationUseSiteTarget2: 35248159 false) 
+	#(164 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 10433537 false) 
+	#(163 4 #reduceActionForimportHeader3: 10293251 false) 
+	#(157 6 #reduceActionForfileAnnotation8: 9900048 false) 
+	#(157 6 #reduceActionForfileAnnotation8: 9900044 false) 
+	#(362 3 #reduceActionForcallableReference4: 31993860 false) 
+	#(362 3 #reduceActionForcallableReference4: 31993859 false) 
+	#(236 2 #reduceActionForreceiverType6: 17911816 false) 
+	#(236 2 #reduceActionForreceiverType6: 17911814 false) 
+	#(236 2 #reduceActionForreceiverType6: 17911810 false) 
+	#(236 2 #reduceActionForreceiverType6: 17911812 false) 
+	#(236 2 #reduceActionForreceiverType6: 17911818 false) 
+	#(421 0 #nil 36855809 false) 
+	#(183 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 11993089 false) 
+	#(200 1 #liftFirstValue: 13420545 false) 
+	#(199 1 #reduceActionFor_classMemberDeclaration__declaration__semis___1: 13347841 false) 
+	#(197 1 #reduceActionForimportList1: 13317121 false) 
+	#(198 1 #reduceActionFortopLevelObject1: 13347841 false) 
+	#(200 1 #liftFirstValue: 13420547 false) 
+	#(200 1 #liftFirstValue: 13420546 false) 
+	#(200 1 #liftFirstValue: 13420548 false) 
+	#(197 1 #reduceActionForclassMemberDeclarations2: 13317122 false) 
+	#(341 3 #reduceActionForsuperExpression2: 29600770 false) 
+	#(358 1 #reduceActionForunescapedAnnotation__annotation__1: 31191041 false) 
+	#(356 3 #reduceActionFortryExpression1: 31139841 false) 
+	#(357 1 #liftFirstValue: 31191041 false) 
+	#(356 3 #reduceActionFortryExpression4: 31139844 false) 
+	#(262 2 #liftSecondValue: 20458499 false) 
+	#(361 3 #reduceActionForjumpExpression2: 31579138 false) 
+	#(339 3 #reduceActionForobjectLiteral4: 29296644 false) 
+	#(239 2 #reduceActionForfileAnnotation__annotation__2: 18359298 false) 
+	#(362 3 #reduceActionForcallableReference6: 31993862 false) 
+	#(362 3 #reduceActionForcallableReference6: 31993861 false) 
+	#(275 3 #reduceActionFordisjunction3: 21760003 false) 
+	#(275 3 #reduceActionFordisjunction3: 21760001 false) 
+	#(276 3 #reduceActionFordisjunction3: 21914627 false) 
+	#(276 3 #reduceActionFordisjunction3: 21914625 false) 
+	#(277 3 #reduceActionFordisjunction3: 22063105 false) 
+	#(278 3 #reduceActionFordisjunction3: 22194177 false) 
+	#(280 3 #reduceActionFordisjunction3: 22416385 false) 
+	#(280 3 #reduceActionForinfixOperation3: 22416387 false) 
+	#(282 2 #reduceActionForelvis2: 22793218 false) 
+	#(281 3 #reduceActionForelvisExpression1: 22657025 false) 
+	#(282 2 #reduceActionForelvis2: 22793217 false) 
+	#(283 3 #reduceActionForinfixFunctionCall1: 22889473 false) 
+	#(284 3 #reduceActionFordisjunction3: 23053313 false) 
+	#(284 3 #reduceActionFordisjunction3: 23053315 false) 
+	#(285 3 #reduceActionFordisjunction3: 23235585 false) 
+	#(286 3 #reduceActionFordisjunction3: 23415809 false) 
+	#(287 3 #reduceActionForasExpression2: 23589890 false) 
+	#(375 2 #reduceActionForelvis2: 33083394 false) 
+	#(301 2 #reduceActionForannotatedLambda1: 25769985 false) 
+	#(187 2 #reduceActionForfileAnnotation__annotation__2: 12441602 false) 
+	#(300 2 #reduceActionForcallSuffix4: 25506820 false) 
+	#(300 2 #reduceActionForcallSuffix6: 25506822 false) 
+	#(300 2 #reduceActionForcallSuffix2: 25506818 false) 
+	#(299 2 #reduceActionFornavigationSuffix3: 25344003 false) 
+	#(299 2 #reduceActionFornavigationSuffix3: 25344002 false) 
+	#(299 2 #reduceActionFornavigationSuffix3: 25344001 false) 
+	#(298 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 25218049 false) 
+	#(375 2 #reduceActionForelvis2: 33083393 false) 
+	#(268 3 #reduceActionForassignment1: 21305345 false) 
+	#(268 3 #reduceActionForassignment1: 21305347 false) 
+	#(288 3 #reduceActionForprefixUnaryExpression4: 23732228 false) 
+	#(261 3 #reduceActionForlabel1: 20349954 false) 
+	#(261 3 #reduceActionForlabel1: 20349956 false) 
+	#(253 3 #reduceActionForparenthesizedType1: 19423233 false) 
+	#(312 3 #reduceActionForparenthesizedType1: 26854401 false) 
+	#(292 3 #reduceActionForparenthesizedType1: 24738817 false) 
+	#(294 3 #reduceActionForparenthesizedType1: 24963073 false) 
+	#(414 2 #liftSecondValue: 36459521 false) 
+	#(313 3 #reduceActionForcollectionLiteral4: 26944516 false) 
+	#(336 2 #reduceActionForlambdaParameter2: 28827650 false) 
+	#(332 3 #reduceActionForlambdaLiteral7: 28525575 false) 
+	#(257 2 #reduceActionForstatements3: 19992579 false) 
+	#(213 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 14945281 false) 
+	#(332 3 #reduceActionForlambdaLiteral7: 28525569 false) 
+	#(309 2 #liftFirstValue: 26384386 false) 
+	#(308 2 #reduceActionForvalueArgument1: 26265601 false) 
+	#(412 2 #liftSecondValue: 36342785 false) 
+	#(305 3 #reduceActionForvalueArguments4: 26085380 false) 
+	#(242 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 18541571 false) 
+	#(242 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 18541569 false) 
+	#(245 2 #reduceActionFortypeProjection2: 18739202 false) 
+	#(247 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 18871298 false) 
+	#(248 2 #reduceActionFor_annotation__annotation____modifier__modifier__1: 18902018 false) 
+	#(157 7 #reduceActionForfileAnnotation5: 9900037 false) 
+	#(157 7 #reduceActionForfileAnnotation5: 9900033 false) 
+	#(404 4 #reduceActionFormultiAnnotation3: 35057667 false) 
+	#(270 3 #reduceActionForsemis3: 21575683 false) 
+	#(272 2 #reduceActionFor__SEMICOLON___semicolonToken____NL____2: 21593090 false) 
+	#(271 1 #reduceActionForimportList1: 21593089 false) 
+	#(404 4 #reduceActionFormultiAnnotation1: 35057665 false) 
+	#(169 0 #reduceActionForprimaryConstructor_1: 11053057 false) 
+	#(191 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 12740609 false) 
+	#(394 1 #reduceActionFor_annotation__annotation____modifier__modifier__1: 34223106 false) 
+	#(392 1 #reduceActionForimportList1: 34163713 false) 
+	#(393 1 #reduceActionFor_annotation__annotation____modifier__modifier___1: 34193409 false) 
+	#(394 1 #reduceActionFor_annotation__annotation____modifier__modifier__1: 34223105 false) 
+	#(395 1 #reduceActionFormodifier1: 34361345 false) 
+	#(394 1 #reduceActionFor_annotation__annotation____modifier__modifier__2: 34223108 false) 
+	#(227 4 #reduceActionForobjectDeclaration1: 16903169 false) 
+	#(404 4 #reduceActionFormultiAnnotation3: 35057668 false) 
+	#(163 5 #reduceActionForimportHeader2: 10293250 false) 
+	#(157 7 #reduceActionForfileAnnotation5: 9900045 false) 
+	#(157 7 #reduceActionForfileAnnotation5: 9900041 false) 
+	#(424 0 #reduceActionFor_typeConstraints1: 37001217 false) 
+	#(223 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 16294913 false) 
+	#(224 1 #reduceActionForfunctionValueParameterWithOptionalType1: 16435201 false) 
+	#(381 1 #reduceActionFor_annotation__annotation____modifier__modifier___1: 33277953 false) 
+	#(379 1 #reduceActionForimportList1: 33252353 false) 
+	#(380 1 #reduceActionFor_annotation__annotation____modifier__modifier__2: 33277954 false) 
+	#(382 1 #reduceActionFormodifier1: 33347585 false) 
+	#(380 1 #reduceActionFor_annotation__annotation____modifier__modifier__1: 33277953 false) 
+	#(225 1 #reduceActionForparameterWithOptionalType5: 16616453 false) 
+	#(221 2 #reduceActionForparametersWithOptionalType1: 16194561 false) 
+	#(256 3 #reduceActionFordefinitelyNonNullableType1: 19775489 false) 
+	#(256 3 #reduceActionFordefinitelyNonNullableType1: 19775490 false) 
+	#(256 3 #reduceActionFordefinitelyNonNullableType1: 19775505 false) 
+	#(256 3 #reduceActionFordefinitelyNonNullableType1: 19775506 false) 
+	#(255 3 #reduceActionForparenthesizedType1: 19664897 false) 
+	#(421 1 #liftFirstValue: 36855811 false) 
+	#(252 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 19288066 false) 
+	#(421 1 #liftFirstValue: 36855810 false) 
+	#(255 3 #reduceActionForparenthesizedType1: 19664899 false) 
+	#(181 2 #reduceActionFordelegationSpecifiers1: 11908097 false) 
+	#(186 2 #reduceActionForannotatedDelegationSpecifier1: 12405761 false) 
+	#(184 1 #liftFirstValue: 12109825 false) 
+	#(184 1 #liftFirstValue: 12109826 false) 
+	#(184 1 #liftFirstValue: 12109827 false) 
+	#(184 1 #liftFirstValue: 12109828 false) 
+	#(201 2 #reduceActionForanonymousInitializer1: 13560833 false) 
+	#(174 3 #reduceActionForclassBody3: 11415555 false) 
+	#(199 2 #reduceActionFortopLevelObject_2: 13347842 false) 
+	#(198 2 #reduceActionFortopLevelObject2: 13347842 false) 
+	#(174 3 #reduceActionForclassBody3: 11415553 false) 
+	#(341 4 #reduceActionForsuperExpression3: 29600771 false) 
+	#(343 0 #nil 29966337 false) 
+	#(346 3 #reduceActionForwhenSubject1: 30205953 false) 
+	#(353 1 #liftFirstValue: 30902273 false) 
+	#(349 2 #reduceActionForfileAnnotation__annotation__2: 30509058 false) 
+	#(348 1 #liftFirstValue: 30509057 false) 
+	#(352 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 30617601 false) 
+	#(353 1 #liftFirstValue: 30902274 false) 
+	#(353 1 #liftFirstValue: 30902275 false) 
+	#(360 2 #reduceActionForfinallyBlock1: 31496193 false) 
+	#(358 2 #reduceActionForfileAnnotation__annotation__2: 31191042 false) 
+	#(356 4 #reduceActionFortryExpression2: 31139842 false) 
+	#(357 2 #liftSecondValue: 31191042 false) 
+	#(356 4 #reduceActionFortryExpression5: 31139845 false) 
+	#(263 3 #reduceActionForblock3: 20549635 false) 
+	#(263 3 #reduceActionForblock3: 20549633 false) 
+	#(339 4 #reduceActionForobjectLiteral7: 29296647 false) 
+	#(362 4 #reduceActionForcallableReference8: 31993864 false) 
+	#(362 4 #reduceActionForcallableReference8: 31993863 false) 
+	#(275 4 #reduceActionFordisjunction4: 21760004 false) 
+	#(275 4 #reduceActionFordisjunction4: 21760002 false) 
+	#(276 4 #reduceActionFordisjunction4: 21914628 false) 
+	#(276 4 #reduceActionFordisjunction4: 21914626 false) 
+	#(277 4 #reduceActionFordisjunction4: 22063106 false) 
+	#(278 4 #reduceActionFordisjunction4: 22194178 false) 
+	#(280 4 #reduceActionFordisjunction4: 22416386 false) 
+	#(280 4 #reduceActionForinfixOperation4: 22416388 false) 
+	#(281 4 #reduceActionForelvisExpression2: 22657026 false) 
+	#(283 4 #reduceActionForinfixFunctionCall2: 22889474 false) 
+	#(284 4 #reduceActionFordisjunction4: 23053314 false) 
+	#(284 4 #reduceActionFordisjunction4: 23053316 false) 
+	#(285 4 #reduceActionFordisjunction4: 23235586 false) 
+	#(286 4 #reduceActionFordisjunction4: 23415810 false) 
+	#(287 4 #reduceActionForasExpression3: 23589891 false) 
+	#(301 3 #reduceActionForannotatedLambda2: 25769986 false) 
+	#(300 3 #reduceActionForcallSuffix5: 25506821 false) 
+	#(299 3 #reduceActionFornavigationSuffix6: 25344006 false) 
+	#(299 3 #reduceActionFornavigationSuffix6: 25344005 false) 
+	#(299 3 #reduceActionFornavigationSuffix6: 25344004 false) 
+	#(268 4 #reduceActionForassignment2: 21305346 false) 
+	#(268 4 #reduceActionForassignment2: 21305348 false) 
+	#(327 1 #liftFirstValue: 28005379 false) 
+	#(327 1 #liftFirstValue: 28005377 false) 
+	#(327 1 #liftFirstValue: 28005378 false) 
+	#(320 2 #reduceActionFor_lineStringContent__part____lineStringExpression__2: 27494402 false) 
+	#(319 1 #reduceActionFor_lineStringContent__part____lineStringExpression_1: 27494401 false) 
+	#(319 1 #reduceActionForimportList1: 27494402 false) 
+	#(324 1 #reduceActionFor_lineStringContent__part____lineStringExpression_1: 27778051 false) 
+	#(329 1 #liftFirstValue: 28224514 false) 
+	#(329 1 #liftFirstValue: 28224515 false) 
+	#(329 1 #liftFirstValue: 28224513 false) 
+	#(325 2 #reduceActionFor_lineStringContent__part____lineStringExpression__2: 27778050 false) 
+	#(324 1 #reduceActionFor_lineStringContent__part____lineStringExpression_1: 27778049 false) 
+	#(324 1 #reduceActionForimportList1: 27778050 false) 
+	#(253 4 #reduceActionForparenthesizedType2: 19423234 false) 
+	#(312 4 #reduceActionForparenthesizedType2: 26854402 false) 
+	#(292 4 #reduceActionForparenthesizedType2: 24738818 false) 
+	#(294 4 #reduceActionForparenthesizedType2: 24963074 false) 
+	#(253 4 #reduceActionForparenthesizedType3: 19423235 false) 
+	#(312 4 #reduceActionForparenthesizedType3: 26854403 false) 
+	#(292 4 #reduceActionForparenthesizedType3: 24738819 false) 
+	#(294 4 #reduceActionForparenthesizedType3: 24963075 false) 
+	#(315 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 27003906 false) 
+	#(210 3 #reduceActionForvariableDeclaration1: 14743553 false) 
+	#(427 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 37178372 false) 
+	#(427 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 37178370 false) 
+	#(417 2 #liftSecondValue: 36630529 false) 
+	#(259 2 #reduceActionFor_semis_statement__statement___2: 20033538 false) 
+	#(257 3 #reduceActionForstatements4: 19992580 false) 
+	#(335 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 28726274 false) 
+	#(333 3 #reduceActionForlambdaParameters1: 28674049 false) 
+	#(332 4 #reduceActionForlambdaLiteral10: 28525578 false) 
+	#(332 4 #reduceActionForlambdaLiteral10: 28525572 false) 
+	#(307 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 26146818 false) 
+	#(308 3 #reduceActionForvalueArgument4: 26265604 false) 
+	#(242 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 18541572 false) 
+	#(242 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 18541570 false) 
+	#(304 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 25945090 false) 
+	#(157 8 #reduceActionForfileAnnotation7: 9900039 false) 
+	#(157 8 #reduceActionForfileAnnotation7: 9900035 false) 
+	#(271 2 #reduceActionForimportList1: 21593090 false) 
+	#(404 5 #reduceActionFormultiAnnotation2: 35057666 false) 
+	#(171 0 #reduceActionFor_typeConstraints1: 11079681 false) 
+	#(169 1 #reduceActionForimportList1: 11053058 false) 
+	#(173 1 #reduceActionForprimaryConstructor1: 11307009 false) 
+	#(394 2 #reduceActionFor_annotation__annotation____modifier__modifier__1: 34223107 false) 
+	#(393 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 34193410 false) 
+	#(395 2 #reduceActionFormodifier1: 34361346 false) 
+	#(192 2 #reduceActionFortypeParameter1: 12860417 false) 
+	#(227 5 #reduceActionForobjectDeclaration4: 16903172 false) 
+	#(216 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 15567875 false) 
+	#(216 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 15567874 false) 
+	#(157 8 #reduceActionForfileAnnotation7: 9900047 false) 
+	#(157 8 #reduceActionForfileAnnotation7: 9900043 false) 
+	#(424 1 #reduceActionForimportList1: 37001218 false) 
+	#(208 0 #nil 14547969 false) 
+	#(224 2 #reduceActionForfunctionValueParameterWithOptionalType6: 16435206 false) 
+	#(381 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 33277954 false) 
+	#(225 2 #reduceActionForparameterWithOptionalType5: 16616454 false) 
+	#(221 3 #reduceActionForparametersWithOptionalType2: 16194562 false) 
+	#(256 4 #reduceActionFordefinitelyNonNullableType3: 19775491 false) 
+	#(256 4 #reduceActionFordefinitelyNonNullableType3: 19775492 false) 
+	#(256 4 #reduceActionFordefinitelyNonNullableType5: 19775493 false) 
+	#(256 4 #reduceActionFordefinitelyNonNullableType5: 19775494 false) 
+	#(256 4 #reduceActionFordefinitelyNonNullableType9: 19775497 false) 
+	#(256 4 #reduceActionFordefinitelyNonNullableType9: 19775498 false) 
+	#(249 4 #reduceActionForfunctionType1: 19003393 false) 
+	#(256 4 #reduceActionFordefinitelyNonNullableType3: 19775507 false) 
+	#(256 4 #reduceActionFordefinitelyNonNullableType3: 19775508 false) 
+	#(256 4 #reduceActionFordefinitelyNonNullableType5: 19775509 false) 
+	#(256 4 #reduceActionFordefinitelyNonNullableType5: 19775510 false) 
+	#(256 4 #reduceActionFordefinitelyNonNullableType9: 19775513 false) 
+	#(256 4 #reduceActionFordefinitelyNonNullableType9: 19775514 false) 
+	#(255 4 #reduceActionForparenthesizedType2: 19664898 false) 
+	#(251 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 19288069 false) 
+	#(251 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 19288070 false) 
+	#(250 4 #reduceActionForfunctionTypeParameters1: 19197953 false) 
+	#(251 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 19288065 false) 
+	#(251 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 19288066 false) 
+	#(255 4 #reduceActionForparenthesizedType2: 19664900 false) 
+	#(226 3 #reduceActionForparameter3: 16773123 false) 
+	#(226 3 #reduceActionForparameter3: 16773121 false) 
+	#(255 4 #reduceActionForparenthesizedType3: 19664901 false) 
+	#(255 4 #reduceActionForparenthesizedType3: 19664903 false) 
+	#(339 5 #reduceActionForobjectLiteral3: 29296643 false) 
+	#(183 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 11993090 false) 
+	#(184 2 #reduceActionFordelegationSpecifier5: 12109829 false) 
+	#(186 3 #reduceActionForannotatedDelegationSpecifier2: 12405762 false) 
+	#(181 3 #reduceActionFordelegationSpecifiers2: 11908098 false) 
+	#(229 0 #nil 17340417 false) 
+	#(174 4 #reduceActionForclassBody4: 11415556 false) 
+	#(174 4 #reduceActionForclassBody4: 11415554 false) 
+	#(339 5 #reduceActionForobjectLiteral3: 29296642 false) 
+	#(341 5 #reduceActionForsuperExpression5: 29600773 false) 
+	#(341 5 #reduceActionForsuperExpression7: 29600775 false) 
+	#(342 5 #reduceActionForifExpression1: 29826049 false) 
+	#(343 1 #liftFirstValue: 29966338 false) 
+	#(347 5 #reduceActionForwhenExpression3: 30412803 false) 
+	#(348 2 #liftFirstValue: 30509058 false) 
+	#(354 2 #reduceActionForrangeTest1: 30973953 false) 
+	#(355 2 #reduceActionFortypeTest1: 31064065 false) 
+	#(347 5 #reduceActionForwhenExpression3: 30412801 false) 
+	#(356 5 #reduceActionFortryExpression3: 31139843 false) 
+	#(263 4 #reduceActionForblock4: 20549636 false) 
+	#(263 4 #reduceActionForblock4: 20549634 false) 
+	#(267 5 #reduceActionFordoWhileStatement1: 21137409 false) 
+	#(266 5 #reduceActionForwhileStatement2: 20956162 false) 
+	#(266 5 #reduceActionForwhileStatement1: 20956161 false) 
+	#(298 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 25218050 false) 
+	#(318 5 #reduceActionForlineStringLiteral1: 27429889 false) 
+	#(323 5 #reduceActionForlineStringLiteral1: 27696129 false) 
+	#(253 5 #reduceActionForparenthesizedType4: 19423236 false) 
+	#(312 5 #reduceActionForparenthesizedType4: 26854404 false) 
+	#(292 5 #reduceActionForparenthesizedType4: 24738820 false) 
+	#(294 5 #reduceActionForparenthesizedType4: 24963076 false) 
+	#(314 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 27003907 false) 
+	#(313 5 #reduceActionForcollectionLiteral2: 26944514 false) 
+	#(314 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 27003905 false) 
+	#(332 5 #reduceActionForlambdaLiteral8: 28525576 false) 
+	#(210 4 #reduceActionForvariableDeclaration2: 14743554 false) 
+	#(427 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 37178373 false) 
+	#(427 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 37178371 false) 
+	#(258 2 #reduceActionFor_semis_statement__statement__1: 20033537 false) 
+	#(334 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 28726275 false) 
+	#(334 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 28726273 false) 
+	#(213 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 14945282 false) 
+	#(332 5 #reduceActionForlambdaLiteral8: 28525570 false) 
+	#(306 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 26146819 false) 
+	#(305 5 #reduceActionForvalueArguments2: 26085378 false) 
+	#(306 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 26146817 false) 
+	#(308 4 #reduceActionForvalueArgument7: 26265607 false) 
+	#(303 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 25945091 false) 
+	#(302 5 #reduceActionFortypeArguments1: 25875457 false) 
+	#(303 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 25945089 false) 
+	#(171 1 #reduceActionForimportList1: 11079682 false) 
+	#(177 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 11558913 false) 
+	#(175 2 #reduceActionForparametersWithOptionalType1: 11494401 false) 
+	#(173 2 #reduceActionForprimaryConstructor4: 11307012 false) 
+	#(191 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 12740610 false) 
+	#(192 3 #reduceActionFortypeParameter3: 12860419 false) 
+	#(192 3 #reduceActionFortypeParameter2: 12860418 false) 
+	#(227 6 #reduceActionForobjectDeclaration3: 16903171 false) 
+	#(227 6 #reduceActionForobjectDeclaration3: 16903170 false) 
+	#(215 0 #reduceActionFor_colonType1: 15443969 false) 
+	#(216 3 #reduceActionForpropertyDeclarationReceiverType5: 15567877 false) 
+	#(216 3 #reduceActionForpropertyDeclarationReceiverType5: 15567876 false) 
+	#(166 6 #reduceActionFortypeAlias1: 10560513 false) 
+	#(195 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 13057025 false) 
+	#(337 6 #reduceActionForanonymousFunction1: 28949505 false) 
+	#(208 1 #liftFirstValue: 14547970 false) 
+	#(209 1 #reduceActionForfunctionBody1: 14600193 false) 
+	#(223 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 16294914 false) 
+	#(224 3 #reduceActionForfunctionValueParameterWithOptionalType2: 16435202 false) 
+	#(225 3 #reduceActionForparameter3: 16616451 false) 
+	#(225 3 #reduceActionForparameter3: 16616449 false) 
+	#(221 4 #reduceActionForparametersWithOptionalType6: 16194566 false) 
+	#(256 5 #reduceActionFordefinitelyNonNullableType7: 19775495 false) 
+	#(256 5 #reduceActionFordefinitelyNonNullableType7: 19775496 false) 
+	#(256 5 #reduceActionFordefinitelyNonNullableType11: 19775499 false) 
+	#(256 5 #reduceActionFordefinitelyNonNullableType11: 19775500 false) 
+	#(256 5 #reduceActionFordefinitelyNonNullableType13: 19775501 false) 
+	#(256 5 #reduceActionFordefinitelyNonNullableType13: 19775502 false) 
+	#(249 5 #reduceActionForfunctionType2: 19003394 false) 
+	#(256 5 #reduceActionFordefinitelyNonNullableType7: 19775511 false) 
+	#(256 5 #reduceActionFordefinitelyNonNullableType7: 19775512 false) 
+	#(256 5 #reduceActionFordefinitelyNonNullableType11: 19775515 false) 
+	#(256 5 #reduceActionFordefinitelyNonNullableType11: 19775516 false) 
+	#(256 5 #reduceActionFordefinitelyNonNullableType13: 19775517 false) 
+	#(256 5 #reduceActionFordefinitelyNonNullableType13: 19775518 false) 
+	#(250 5 #reduceActionForfunctionTypeParameters3: 19197955 false) 
+	#(250 5 #reduceActionForfunctionTypeParameters3: 19197957 false) 
+	#(251 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 19288071 false) 
+	#(251 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 19288072 false) 
+	#(250 5 #reduceActionForfunctionTypeParameters2: 19197954 false) 
+	#(251 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 19288067 false) 
+	#(251 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 19288068 false) 
+	#(226 4 #reduceActionForparameter4: 16773124 false) 
+	#(226 4 #reduceActionForparameter4: 16773122 false) 
+	#(255 5 #reduceActionForparenthesizedType4: 19664902 false) 
+	#(255 5 #reduceActionForparenthesizedType4: 19664904 false) 
+	#(182 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 11993091 false) 
+	#(182 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 11993089 false) 
+	#(184 3 #reduceActionFordelegationSpecifier6: 12109830 false) 
+	#(188 3 #reduceActionForexplicitDelegation1: 12517377 false) 
+	#(188 3 #reduceActionForexplicitDelegation1: 12517381 false) 
+	#(228 4 #reduceActionForsecondaryConstructor1: 17126401 false) 
+	#(229 1 #liftFirstValue: 17340418 false) 
+	#(205 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 14021633 false) 
+	#(206 1 #reduceActionForfunctionValueParameter1: 14145537 false) 
+	#(203 2 #reduceActionForparametersWithOptionalType1: 13940737 false) 
+	#(341 6 #reduceActionForsuperExpression4: 29600772 false) 
+	#(341 6 #reduceActionForsuperExpression9: 29600777 false) 
+	#(342 6 #reduceActionForifExpression4: 29826052 false) 
+	#(345 0 #nil 30006273 false) 
+	#(342 6 #reduceActionForifExpression5: 29826053 false) 
+	#(342 6 #reduceActionForifExpression9: 29826057 false) 
+	#(342 6 #reduceActionForifExpression17: 29826065 false) 
+	#(347 6 #reduceActionForwhenExpression7: 30412807 false) 
+	#(347 6 #reduceActionForwhenExpression7: 30412805 false) 
+	#(352 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 30617602 false) 
+	#(354 3 #reduceActionForrangeTest2: 30973954 false) 
+	#(355 3 #reduceActionFortypeTest2: 31064066 false) 
+	#(347 6 #reduceActionForwhenExpression4: 30412804 false) 
+	#(347 6 #reduceActionForwhenExpression4: 30412802 false) 
+	#(347 6 #reduceActionForwhenExpression11: 30412811 false) 
+	#(347 6 #reduceActionForwhenExpression11: 30412809 false) 
+	#(267 6 #reduceActionFordoWhileStatement2: 21137410 false) 
+	#(267 6 #reduceActionFordoWhileStatement5: 21137413 false) 
+	#(267 6 #reduceActionFordoWhileStatement3: 21137411 false) 
+	#(266 6 #reduceActionForwhileStatement3: 20956163 false) 
+	#(266 6 #reduceActionForwhileStatement5: 20956165 false) 
+	#(266 6 #reduceActionForwhileStatement4: 20956164 false) 
+	#(339 6 #reduceActionForobjectLiteral6: 29296646 false) 
+	#(339 6 #reduceActionForobjectLiteral6: 29296645 false) 
+	#(297 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 25218051 false) 
+	#(296 5 #reduceActionForindexingSuffix1: 25162753 false) 
+	#(297 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 25218049 false) 
+	#(314 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 27003908 false) 
+	#(313 6 #reduceActionForcollectionLiteral3: 26944515 false) 
+	#(314 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 27003906 false) 
+	#(313 6 #reduceActionForcollectionLiteral5: 26944517 false) 
+	#(334 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 28726276 false) 
+	#(334 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 28726274 false) 
+	#(212 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 14945283 false) 
+	#(211 5 #reduceActionFormultiVariableDeclaration1: 14868481 false) 
+	#(212 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 14945281 false) 
+	#(332 6 #reduceActionForlambdaLiteral11: 28525579 false) 
+	#(332 6 #reduceActionForlambdaLiteral11: 28525573 false) 
+	#(306 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 26146820 false) 
+	#(305 6 #reduceActionForvalueArguments3: 26085379 false) 
+	#(306 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 26146818 false) 
+	#(308 5 #reduceActionForvalueArgument2: 26265602 false) 
+	#(305 6 #reduceActionForvalueArguments5: 26085381 false) 
+	#(303 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 25945092 false) 
+	#(302 6 #reduceActionFortypeArguments2: 25875458 false) 
+	#(303 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 25945090 false) 
+	#(302 6 #reduceActionFortypeArguments3: 25875459 false) 
+	#(170 2 #reduceActionFor___NL_COLON___colonToken_____COLON___colonToken___delegationSpecifiers_2: 11079682 false) 
+	#(172 0 #reduceActionFor_classOrEnumClassBody1: 11234305 false) 
+	#(170 2 #reduceActionFor___NL_COLON___colonToken_____COLON___colonToken___delegationSpecifiers_2: 11079681 false) 
+	#(175 3 #reduceActionForparametersWithOptionalType2: 11494402 false) 
+	#(173 3 #reduceActionForprimaryConstructor2: 11307010 false) 
+	#(190 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 12740611 false) 
+	#(189 5 #reduceActionFortypeParameters1: 12665857 false) 
+	#(190 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 12740609 false) 
+	#(192 4 #reduceActionFortypeParameter4: 12860420 false) 
+	#(227 7 #reduceActionForobjectDeclaration6: 16903174 false) 
+	#(227 7 #reduceActionForobjectDeclaration6: 16903173 false) 
+	#(426 0 #nil 37103617 false) 
+	#(215 1 #reduceActionForimportList1: 15443972 false) 
+	#(166 7 #reduceActionFortypeAlias2: 10560514 false) 
+	#(166 7 #reduceActionFortypeAlias3: 10560515 false) 
+	#(166 7 #reduceActionFortypeAlias5: 10560517 false) 
+	#(193 3 #reduceActionFortypeConstraints1: 12972033 false) 
+	#(209 2 #reduceActionForfunctionBody2: 14600194 false) 
+	#(222 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 16294915 false) 
+	#(221 5 #reduceActionForparametersWithOptionalType3: 16194563 false) 
+	#(222 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 16294913 false) 
+	#(224 4 #reduceActionForfunctionValueParameterWithOptionalType3: 16435203 false) 
+	#(224 4 #reduceActionForfunctionValueParameterWithOptionalType4: 16435204 false) 
+	#(224 4 #reduceActionForfunctionValueParameterWithOptionalType7: 16435207 false) 
+	#(225 4 #reduceActionForparameter4: 16616452 false) 
+	#(225 4 #reduceActionForparameter4: 16616450 false) 
+	#(256 6 #reduceActionFordefinitelyNonNullableType15: 19775503 false) 
+	#(256 6 #reduceActionFordefinitelyNonNullableType15: 19775504 false) 
+	#(249 6 #reduceActionForfunctionType7: 19003399 false) 
+	#(249 6 #reduceActionForfunctionType7: 19003395 false) 
+	#(256 6 #reduceActionFordefinitelyNonNullableType15: 19775519 false) 
+	#(256 6 #reduceActionFordefinitelyNonNullableType15: 19775520 false) 
+	#(250 6 #reduceActionForfunctionTypeParameters4: 19197956 false) 
+	#(250 6 #reduceActionForfunctionTypeParameters4: 19197958 false) 
+	#(250 6 #reduceActionForfunctionTypeParameters7: 19197959 false) 
+	#(250 6 #reduceActionForfunctionTypeParameters7: 19197961 false) 
+	#(182 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 11993092 false) 
+	#(182 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 11993090 false) 
+	#(188 4 #reduceActionForexplicitDelegation2: 12517378 false) 
+	#(188 4 #reduceActionForexplicitDelegation3: 12517379 false) 
+	#(188 4 #reduceActionForexplicitDelegation2: 12517382 false) 
+	#(188 4 #reduceActionForexplicitDelegation3: 12517383 false) 
+	#(206 2 #reduceActionForfunctionValueParameter6: 14145542 false) 
+	#(203 3 #reduceActionForparametersWithOptionalType2: 13940738 false) 
+	#(228 5 #reduceActionForsecondaryConstructor6: 17126406 false) 
+	#(202 5 #reduceActionForcompanionObject1: 13654017 false) 
+	#(341 7 #reduceActionForsuperExpression6: 29600774 false) 
+	#(341 7 #reduceActionForsuperExpression8: 29600776 false) 
+	#(344 1 #liftFirstValue: 30006273 false) 
+	#(345 1 #liftFirstValue: 30006274 false) 
+	#(342 7 #reduceActionForifExpression8: 29826056 false) 
+	#(342 7 #reduceActionForifExpression12: 29826060 false) 
+	#(342 7 #reduceActionForifExpression13: 29826061 false) 
+	#(342 7 #reduceActionForifExpression20: 29826068 false) 
+	#(342 7 #reduceActionForifExpression21: 29826069 false) 
+	#(342 7 #reduceActionForifExpression25: 29826073 false) 
+	#(347 7 #reduceActionForwhenExpression8: 30412808 false) 
+	#(347 7 #reduceActionForwhenExpression8: 30412806 false) 
+	#(350 4 #reduceActionForwhenEntry3: 30574595 false) 
+	#(351 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 30617603 false) 
+	#(351 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 30617601 false) 
+	#(347 7 #reduceActionForwhenExpression15: 30412815 false) 
+	#(347 7 #reduceActionForwhenExpression15: 30412813 false) 
+	#(347 7 #reduceActionForwhenExpression12: 30412812 false) 
+	#(347 7 #reduceActionForwhenExpression12: 30412810 false) 
+	#(265 7 #reduceActionForforStatement1: 20706305 false) 
+	#(265 7 #reduceActionForforStatement1: 20706307 false) 
+	#(267 7 #reduceActionFordoWhileStatement6: 21137414 false) 
+	#(267 7 #reduceActionFordoWhileStatement7: 21137415 false) 
+	#(267 7 #reduceActionFordoWhileStatement4: 21137412 false) 
+	#(266 7 #reduceActionForwhileStatement6: 20956166 false) 
+	#(339 7 #reduceActionForobjectLiteral9: 29296649 false) 
+	#(339 7 #reduceActionForobjectLiteral9: 29296648 false) 
+	#(337 7 #reduceActionForanonymousFunction6: 28949510 false) 
+	#(297 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 25218052 false) 
+	#(296 6 #reduceActionForindexingSuffix2: 25162754 false) 
+	#(297 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 25218050 false) 
+	#(296 6 #reduceActionForindexingSuffix3: 25162755 false) 
+	#(328 4 #reduceActionForlineStringExpression1: 28097537 false) 
+	#(330 4 #reduceActionForlineStringExpression1: 28334081 false) 
+	#(313 7 #reduceActionForcollectionLiteral6: 26944518 false) 
+	#(332 7 #reduceActionForlambdaLiteral9: 28525577 false) 
+	#(212 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 14945284 false) 
+	#(211 6 #reduceActionFormultiVariableDeclaration2: 14868482 false) 
+	#(212 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 14945282 false) 
+	#(211 6 #reduceActionFormultiVariableDeclaration3: 14868483 false) 
+	#(332 7 #reduceActionForlambdaLiteral9: 28525571 false) 
+	#(308 6 #reduceActionForvalueArgument5: 26265605 false) 
+	#(308 6 #reduceActionForvalueArgument3: 26265603 false) 
+	#(305 7 #reduceActionForvalueArguments6: 26085382 false) 
+	#(302 7 #reduceActionFortypeArguments4: 25875460 false) 
+	#(168 8 #reduceActionForclassDeclaration1: 10883073 false) 
+	#(172 1 #reduceActionFor_classOrEnumClassBody2: 11234306 false) 
+	#(172 1 #reduceActionFor_classOrEnumClassBody3: 11234307 false) 
+	#(177 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 11558914 false) 
+	#(175 4 #reduceActionForparametersWithOptionalType6: 11494406 false) 
+	#(173 4 #reduceActionForprimaryConstructor3: 11307011 false) 
+	#(173 4 #reduceActionForprimaryConstructor5: 11307013 false) 
+	#(168 8 #reduceActionForclassDeclaration3: 10883075 false) 
+	#(190 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 12740612 false) 
+	#(189 6 #reduceActionFortypeParameters2: 12665858 false) 
+	#(190 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 12740610 false) 
+	#(189 6 #reduceActionFortypeParameters3: 12665859 false) 
+	#(189 6 #reduceActionFortypeParameters5: 12665861 false) 
+	#(215 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 15443970 false) 
+	#(218 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 15798273 false) 
+	#(426 1 #liftFirstValue: 37103619 false) 
+	#(217 0 #reduceActionForpackageHeader1: 15669249 false) 
+	#(426 1 #nil 37103618 false) 
+	#(215 2 #reduceActionForsemis1: 15443975 false) 
+	#(166 8 #reduceActionFortypeAlias4: 10560516 false) 
+	#(166 8 #reduceActionFortypeAlias6: 10560518 false) 
+	#(166 8 #reduceActionFortypeAlias7: 10560519 false) 
+	#(195 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 13057026 false) 
+	#(193 4 #reduceActionFortypeConstraints2: 12972034 false) 
+	#(209 3 #reduceActionForfunctionBody3: 14600195 false) 
+	#(209 3 #reduceActionForfunctionBody4: 14600196 false) 
+	#(193 4 #reduceActionFortypeConstraints3: 12972035 false) 
+	#(222 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 16294916 false) 
+	#(221 6 #reduceActionForparametersWithOptionalType4: 16194564 false) 
+	#(222 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 16294914 false) 
+	#(224 5 #reduceActionForfunctionValueParameterWithOptionalType5: 16435205 false) 
+	#(224 5 #reduceActionForfunctionValueParameterWithOptionalType8: 16435208 false) 
+	#(224 5 #reduceActionForfunctionValueParameterWithOptionalType9: 16435209 false) 
+	#(221 6 #reduceActionForparametersWithOptionalType7: 16194567 false) 
+	#(337 8 #reduceActionForanonymousFunction3: 28949507 false) 
+	#(337 8 #reduceActionForanonymousFunction3: 28949506 false) 
+	#(249 7 #reduceActionForfunctionType8: 19003400 false) 
+	#(249 7 #reduceActionForfunctionType9: 19003401 false) 
+	#(249 7 #reduceActionForfunctionType8: 19003396 false) 
+	#(249 7 #reduceActionForfunctionType9: 19003397 false) 
+	#(250 7 #reduceActionForfunctionTypeParameters8: 19197960 false) 
+	#(250 7 #reduceActionForfunctionTypeParameters8: 19197962 false) 
+	#(188 5 #reduceActionForexplicitDelegation4: 12517380 false) 
+	#(188 5 #reduceActionForexplicitDelegation4: 12517384 false) 
+	#(230 2 #reduceActionForconstructorDelegationCall1: 17387521 false) 
+	#(230 2 #reduceActionForconstructorDelegationCall1: 17387523 false) 
+	#(228 6 #reduceActionForsecondaryConstructor4: 17126404 false) 
+	#(228 6 #reduceActionForsecondaryConstructor4: 17126402 false) 
+	#(205 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 14021634 false) 
+	#(206 3 #reduceActionForfunctionValueParameter2: 14145538 false) 
+	#(203 4 #reduceActionForparametersWithOptionalType6: 13940742 false) 
+	#(202 6 #reduceActionForcompanionObject5: 13654021 false) 
+	#(202 6 #reduceActionForcompanionObject3: 13654019 false) 
+	#(341 8 #reduceActionForsuperExpression10: 29600778 false) 
+	#(344 2 #liftFirstValue: 30006274 false) 
+	#(342 8 #reduceActionForifExpression16: 29826064 false) 
+	#(342 8 #reduceActionForifExpression24: 29826072 false) 
+	#(342 8 #reduceActionForifExpression28: 29826076 false) 
+	#(342 8 #reduceActionForifExpression29: 29826077 false) 
+	#(350 5 #reduceActionForwhenEntry4: 30574596 false) 
+	#(350 5 #reduceActionForwhenEntry5: 30574597 false) 
+	#(351 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 30617604 false) 
+	#(351 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 30617602 false) 
+	#(347 8 #reduceActionForwhenExpression16: 30412816 false) 
+	#(347 8 #reduceActionForwhenExpression16: 30412814 false) 
+	#(265 8 #reduceActionForforStatement2: 20706306 false) 
+	#(265 8 #reduceActionForforStatement2: 20706308 false) 
+	#(265 8 #reduceActionForforStatement5: 20706309 false) 
+	#(265 8 #reduceActionForforStatement5: 20706311 false) 
+	#(267 8 #reduceActionFordoWhileStatement8: 21137416 false) 
+	#(337 8 #reduceActionForanonymousFunction11: 28949515 false) 
+	#(296 7 #reduceActionForindexingSuffix4: 25162756 false) 
+	#(328 5 #reduceActionForlineStringExpression2: 28097538 false) 
+	#(328 5 #reduceActionForlineStringExpression3: 28097539 false) 
+	#(330 5 #reduceActionForlineStringExpression2: 28334082 false) 
+	#(330 5 #reduceActionForlineStringExpression3: 28334083 false) 
+	#(211 7 #reduceActionFormultiVariableDeclaration4: 14868484 false) 
+	#(332 8 #reduceActionForlambdaLiteral12: 28525580 false) 
+	#(332 8 #reduceActionForlambdaLiteral12: 28525574 false) 
+	#(308 7 #reduceActionForvalueArgument6: 26265606 false) 
+	#(308 7 #reduceActionForvalueArgument8: 26265608 false) 
+	#(234 0 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____1: 17698817 false) 
+	#(176 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 11558915 false) 
+	#(175 5 #reduceActionForparametersWithOptionalType3: 11494403 false) 
+	#(176 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 11558913 false) 
+	#(180 0 #reduceActionFor_colonType1: 11817985 false) 
+	#(173 5 #reduceActionForprimaryConstructor6: 11307014 false) 
+	#(168 9 #reduceActionForclassDeclaration2: 10883074 false) 
+	#(168 9 #reduceActionForclassDeclaration4: 10883076 false) 
+	#(189 7 #reduceActionFortypeParameters4: 12665860 false) 
+	#(168 9 #reduceActionForclassDeclaration5: 10883077 false) 
+	#(207 9 #reduceActionForfunctionDeclaration1: 14294017 false) 
+	#(189 7 #reduceActionFortypeParameters6: 12665862 false) 
+	#(189 7 #reduceActionFortypeParameters7: 12665863 false) 
+	#(215 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 15443971 false) 
+	#(218 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 15798274 false) 
+	#(426 2 #liftFirstValue: 37103620 false) 
+	#(214 9 #reduceActionForpropertyDeclaration2: 15092738 false) 
+	#(217 1 #reduceActionFor_getterSetter2: 15669250 false) 
+	#(217 1 #reduceActionFor_getterSetter5: 15669253 false) 
+	#(426 2 #liftSecondValue: 37103621 false) 
+	#(215 3 #reduceActionForpropertyDeclarationReceiverType5: 15443973 false) 
+	#(214 9 #reduceActionForpropertyDeclaration2: 15092737 false) 
+	#(214 9 #reduceActionForpropertyDeclaration6: 15092742 false) 
+	#(214 9 #reduceActionForpropertyDeclaration6: 15092741 false) 
+	#(166 9 #reduceActionFortypeAlias8: 10560520 false) 
+	#(196 4 #reduceActionFortypeConstraint3: 13151235 false) 
+	#(196 4 #reduceActionFortypeConstraint3: 13151233 false) 
+	#(194 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 13057027 false) 
+	#(194 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 13057025 false) 
+	#(209 4 #reduceActionForfunctionBody5: 14600197 false) 
+	#(193 5 #reduceActionFortypeConstraints4: 12972036 false) 
+	#(224 6 #reduceActionForfunctionValueParameterWithOptionalType10: 16435210 false) 
+	#(221 7 #reduceActionForparametersWithOptionalType8: 16194568 false) 
+	#(249 8 #reduceActionForfunctionType10: 19003402 false) 
+	#(249 8 #reduceActionForfunctionType10: 19003398 false) 
+	#(337 9 #reduceActionForanonymousFunction5: 28949509 false) 
+	#(337 9 #reduceActionForanonymousFunction5: 28949508 false) 
+	#(230 3 #reduceActionForconstructorDelegationCall2: 17387522 false) 
+	#(230 3 #reduceActionForconstructorDelegationCall2: 17387524 false) 
+	#(228 7 #reduceActionForsecondaryConstructor5: 17126405 false) 
+	#(228 7 #reduceActionForsecondaryConstructor5: 17126403 false) 
+	#(204 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 14021635 false) 
+	#(203 5 #reduceActionForparametersWithOptionalType3: 13940739 false) 
+	#(204 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 14021633 false) 
+	#(206 4 #reduceActionForfunctionValueParameter3: 14145539 false) 
+	#(206 4 #reduceActionForfunctionValueParameter4: 14145540 false) 
+	#(206 4 #reduceActionForfunctionValueParameter7: 14145543 false) 
+	#(228 7 #reduceActionForsecondaryConstructor9: 17126409 false) 
+	#(228 7 #reduceActionForsecondaryConstructor9: 17126407 false) 
+	#(202 7 #reduceActionForcompanionObject2: 13654018 false) 
+	#(202 7 #reduceActionForcompanionObject7: 13654023 false) 
+	#(202 7 #reduceActionForcompanionObject9: 13654025 false) 
+	#(342 9 #reduceActionForifExpression2: 29826050 false) 
+	#(342 9 #reduceActionForifExpression32: 29826080 false) 
+	#(346 8 #reduceActionForwhenSubject2: 30205954 false) 
+	#(350 6 #reduceActionForwhenEntry6: 30574598 false) 
+	#(350 6 #reduceActionForwhenEntry1: 30574593 false) 
+	#(265 9 #reduceActionForforStatement6: 20706310 false) 
+	#(265 9 #reduceActionForforStatement6: 20706312 false) 
+	#(337 9 #reduceActionForanonymousFunction8: 28949512 false) 
+	#(337 9 #reduceActionForanonymousFunction8: 28949511 false) 
+	#(328 6 #reduceActionForlineStringExpression4: 28097540 false) 
+	#(330 6 #reduceActionForlineStringExpression4: 28334084 false) 
+	#(308 8 #reduceActionForvalueArgument9: 26265609 false) 
+	#(231 3 #reduceActionForenumClassBody10: 17513482 false) 
+	#(231 3 #reduceActionForenumClassBody10: 17513474 false) 
+	#(176 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 11558916 false) 
+	#(175 6 #reduceActionForparametersWithOptionalType4: 11494404 false) 
+	#(176 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 11558914 false) 
+	#(180 1 #reduceActionForimportList1: 11817986 false) 
+	#(178 5 #reduceActionForclassParameter1: 11674625 false) 
+	#(175 6 #reduceActionForparametersWithOptionalType7: 11494407 false) 
+	#(168 10 #reduceActionForclassDeclaration6: 10883078 false) 
+	#(207 10 #reduceActionForfunctionDeclaration2: 14294018 false) 
+	#(189 8 #reduceActionFortypeParameters8: 12665864 false) 
+	#(168 10 #reduceActionForclassDeclaration7: 10883079 false) 
+	#(219 2 #reduceActionForgetter1: 15875073 false) 
+	#(220 2 #reduceActionForsetter1: 16002049 false) 
+	#(426 3 #liftSecondValue: 37103622 false) 
+	#(215 4 #reduceActionForpropertyDeclarationAssignment6: 15443974 false) 
+	#(214 10 #reduceActionForpropertyDeclaration4: 15092740 false) 
+	#(214 10 #reduceActionForpropertyDeclaration4: 15092739 false) 
+	#(214 10 #reduceActionForpropertyDeclaration8: 15092744 false) 
+	#(214 10 #reduceActionForpropertyDeclaration8: 15092743 false) 
+	#(196 5 #reduceActionFortypeConstraint4: 13151236 false) 
+	#(196 5 #reduceActionFortypeConstraint4: 13151234 false) 
+	#(194 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 13057028 false) 
+	#(194 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 13057026 false) 
+	#(204 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 14021636 false) 
+	#(203 6 #reduceActionForparametersWithOptionalType4: 13940740 false) 
+	#(204 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 14021634 false) 
+	#(206 5 #reduceActionForfunctionValueParameter5: 14145541 false) 
+	#(206 5 #reduceActionForfunctionValueParameter8: 14145544 false) 
+	#(206 5 #reduceActionForfunctionValueParameter9: 14145545 false) 
+	#(203 6 #reduceActionForparametersWithOptionalType7: 13940743 false) 
+	#(228 8 #reduceActionForsecondaryConstructor10: 17126410 false) 
+	#(228 8 #reduceActionForsecondaryConstructor10: 17126408 false) 
+	#(202 8 #reduceActionForcompanionObject6: 13654022 false) 
+	#(202 8 #reduceActionForcompanionObject4: 13654020 false) 
+	#(202 8 #reduceActionForcompanionObject11: 13654027 false) 
+	#(342 10 #reduceActionForifExpression3: 29826051 false) 
+	#(342 10 #reduceActionForifExpression6: 29826054 false) 
+	#(342 10 #reduceActionForifExpression10: 29826058 false) 
+	#(342 10 #reduceActionForifExpression18: 29826066 false) 
+	#(346 9 #reduceActionForwhenSubject3: 30205955 false) 
+	#(346 9 #reduceActionForwhenSubject4: 30205956 false) 
+	#(346 9 #reduceActionForwhenSubject6: 30205958 false) 
+	#(350 7 #reduceActionForwhenEntry2: 30574594 false) 
+	#(337 10 #reduceActionForanonymousFunction10: 28949514 false) 
+	#(337 10 #reduceActionForanonymousFunction10: 28949513 false) 
+	#(337 10 #reduceActionForanonymousFunction13: 28949517 false) 
+	#(337 10 #reduceActionForanonymousFunction13: 28949516 false) 
+	#(231 4 #reduceActionForenumClassBody12: 17513484 false) 
+	#(234 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot____2: 17698818 false) 
+	#(232 3 #reduceActionForlambdaParameters1: 17661953 false) 
+	#(235 3 #reduceActionForenumEntry1: 17789953 false) 
+	#(231 4 #reduceActionForenumClassBody14: 17513486 false) 
+	#(231 4 #reduceActionForenumClassBody12: 17513476 false) 
+	#(231 4 #reduceActionForenumClassBody14: 17513478 false) 
+	#(178 6 #reduceActionForclassParameter5: 11674629 false) 
+	#(178 6 #reduceActionForclassParameter9: 11674633 false) 
+	#(179 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 11817985 false) 
+	#(178 6 #reduceActionForclassParameter2: 11674626 false) 
+	#(178 6 #reduceActionForclassParameter3: 11674627 false) 
+	#(175 7 #reduceActionForparametersWithOptionalType8: 11494408 false) 
+	#(207 11 #reduceActionForfunctionDeclaration5: 14294021 false) 
+	#(207 11 #reduceActionForfunctionDeclaration5: 14294019 false) 
+	#(168 11 #reduceActionForclassDeclaration8: 10883080 false) 
+	#(217 3 #reduceActionForpackageHeader2: 15669251 false) 
+	#(217 3 #reduceActionFor_getterSetter6: 15669254 false) 
+	#(206 6 #reduceActionForfunctionValueParameter10: 14145546 false) 
+	#(203 7 #reduceActionForparametersWithOptionalType8: 13940744 false) 
+	#(202 9 #reduceActionForcompanionObject8: 13654024 false) 
+	#(202 9 #reduceActionForcompanionObject10: 13654026 false) 
+	#(342 11 #reduceActionForifExpression7: 29826055 false) 
+	#(342 11 #reduceActionForifExpression11: 29826059 false) 
+	#(342 11 #reduceActionForifExpression14: 29826062 false) 
+	#(342 11 #reduceActionForifExpression19: 29826067 false) 
+	#(342 11 #reduceActionForifExpression22: 29826070 false) 
+	#(342 11 #reduceActionForifExpression26: 29826074 false) 
+	#(346 10 #reduceActionForwhenSubject5: 30205957 false) 
+	#(346 10 #reduceActionForwhenSubject7: 30205959 false) 
+	#(346 10 #reduceActionForwhenSubject8: 30205960 false) 
+	#(359 9 #reduceActionForcatchBlock1: 31309825 false) 
+	#(337 11 #reduceActionForanonymousFunction15: 28949519 false) 
+	#(337 11 #reduceActionForanonymousFunction15: 28949518 false) 
+	#(233 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 17698819 false) 
+	#(233 2 #reduceActionFor_simpleIdentifier__name____NL_DOT___dot_____DOT___dot___2: 17698817 false) 
+	#(235 4 #reduceActionForenumEntry2: 17789954 false) 
+	#(231 5 #reduceActionForenumClassBody16: 17513488 false) 
+	#(231 5 #reduceActionForenumClassBody16: 17513480 false) 
+	#(178 7 #reduceActionForclassParameter6: 11674630 false) 
+	#(178 7 #reduceActionForclassParameter7: 11674631 false) 
+	#(178 7 #reduceActionForclassParameter10: 11674634 false) 
+	#(178 7 #reduceActionForclassParameter11: 11674635 false) 
+	#(179 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 11817986 false) 
+	#(179 3 #reduceActionForpropertyDeclarationReceiverType5: 11817987 false) 
+	#(178 7 #reduceActionForclassParameter4: 11674628 false) 
+	#(207 12 #reduceActionForfunctionDeclaration6: 14294022 false) 
+	#(207 12 #reduceActionForfunctionDeclaration6: 14294020 false) 
+	#(207 12 #reduceActionForfunctionDeclaration9: 14294025 false) 
+	#(207 12 #reduceActionForfunctionDeclaration9: 14294023 false) 
+	#(217 4 #reduceActionFor_getterSetter4: 15669252 false) 
+	#(202 10 #reduceActionForcompanionObject12: 13654028 false) 
+	#(342 12 #reduceActionForifExpression15: 29826063 false) 
+	#(342 12 #reduceActionForifExpression23: 29826071 false) 
+	#(342 12 #reduceActionForifExpression27: 29826075 false) 
+	#(342 12 #reduceActionForifExpression30: 29826078 false) 
+	#(346 11 #reduceActionForwhenSubject9: 30205961 false) 
+	#(359 10 #reduceActionForcatchBlock2: 31309826 false) 
+	#(231 6 #reduceActionForenumClassBody9: 17513481 false) 
+	#(233 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 17698820 false) 
+	#(233 3 #reduceActionFor___NL_DOT___dot_____DOT___dot____NL___simpleUserType__segment__4: 17698818 false) 
+	#(235 5 #reduceActionForenumEntry3: 17789955 false) 
+	#(231 6 #reduceActionForenumClassBody9: 17513473 false) 
+	#(178 8 #reduceActionForclassParameter8: 11674632 false) 
+	#(178 8 #reduceActionForclassParameter12: 11674636 false) 
+	#(179 4 #reduceActionForpropertyDeclarationAssignment6: 11817988 false) 
+	#(207 13 #reduceActionForfunctionDeclaration10: 14294026 false) 
+	#(207 13 #reduceActionForfunctionDeclaration10: 14294024 false) 
+	#(342 13 #reduceActionForifExpression31: 29826079 false) 
+	#(231 7 #reduceActionForenumClassBody11: 17513483 false) 
+	#(231 7 #reduceActionForenumClassBody13: 17513485 false) 
+	#(231 7 #reduceActionForenumClassBody11: 17513475 false) 
+	#(231 7 #reduceActionForenumClassBody13: 17513477 false) 
+	#(219 6 #reduceActionForgetter2: 15875074 false) 
+	#(231 8 #reduceActionForenumClassBody15: 17513487 false) 
+	#(231 8 #reduceActionForenumClassBody15: 17513479 false) 
+	#(219 7 #reduceActionForgetter3: 15875075 false) 
+	#(219 7 #reduceActionForgetter4: 15875076 false) 
+	#(219 8 #reduceActionForgetter5: 15875077 false) 
+	#(220 8 #reduceActionForsetter2: 16002050 false) 
+	#(220 9 #reduceActionForsetter3: 16002051 false) 
+	#(220 9 #reduceActionForsetter4: 16002052 false) 
+	#(220 9 #reduceActionForsetter6: 16002054 false) 
+	#(220 10 #reduceActionForsetter5: 16002053 false) 
+	#(220 10 #reduceActionForsetter7: 16002055 false) 
+	#(220 10 #reduceActionForsetter8: 16002056 false) 
+	#(220 11 #reduceActionForsetter9: 16002057 false)
 	).
 ]
 
@@ -4137,12 +4137,12 @@ KotlinParser class >> startingStateForscript [
 
 { #category : 'generated' }
 KotlinParser class >> symbolNames [
-	^ #('<ShebangLine>' '<DelimitedComment>' '<comment>' '<whitespace>' '<nl>' '<DOT>' '<COMMA>' '<LPAREN>' '<RPAREN>' '<LSQUARE>' '<RSQUARE>' '<LCURL>' '<RCURL>' '<MULT>' '<MOD>' '<DIV>' '<ADD>' '<SUB>' '<INCR>' '<DECR>' '<CONJ>' '<DISJ>' '<EXCLs>' '<EXCL_NO_WS>' '<COLON>' '<SEMICOLON>' '<ASSIGNMENT>' '<ADD_ASSIGNMENT>' '<SUB_ASSIGNMENT>' '<MULT_ASSIGNMENT>' '<DIV_ASSIGNMENT>' '<MOD_ASSIGNMENT>' '<ARROW>' '<RANGE>' '<RANGE_UNTIL>' '<COLONCOLON>' '<AT_NO_WS>' '<QUEST_NO_WS>' '<LANGLE>' '<RANGLE>' '<LE>' '<GE>' '<EXCL_EQ>' '<EXCL_EQEQ>' '<AS_SAFE>' '<EQEQ>' '<EQEQEQ>' '<AMP>' '<RETURN_AT>' '<CONTINUE_AT>' '<BREAK_AT>' '<THIS_AT>' '<SUPER_AT>' '<FILE>' '<FIELD>' '<PROPERTY>' '<GET>' '<SET>' '<RECEIVER>' '<PARAM>' '<SETPARAM>' '<DELEGATE>' '<PACKAGE>' '<IMPORT>' '<CLASS>' '<INTERFACE>' '<FUN>' '<OBJECT>' '<VAL>' '<VAR>' '<TYPE_ALIAS>' '<CONSTRUCTOR>' '<BY>' '<COMPANION>' '<INIT>' '<THIS>' '<SUPER>' '<WHERE>' '<IF>' '<ELSE>' '<WHEN>' '<TRY>' '<CATCH>' '<FINALLY>' '<FOR>' '<DO>' '<WHILE>' '<THROW>' '<RETURN>' '<CONTINUE>' '<BREAK>' '<AS>' '<IS>' '<IN>' '<NOT_IS>' '<NOT_IN>' '<OUT>' '<DYNAMIC>' '<PUBLIC>' '<PRIVATE>' '<PROTECTED>' '<INTERNAL>' '<ENUM>' '<SEALED>' '<ANNOTATION>' '<DATA>' '<INNER>' '<VALUE>' '<TAILREC>' '<OPERATOR>' '<INLINE>' '<INFIX>' '<EXTERNAL>' '<SUSPEND>' '<OVERRIDE>' '<ABSTRACT>' '<FINAL>' '<OPEN>' '<CONST>' '<LATEINIT>' '<VARARG>' '<NOINLINE>' '<CROSSINLINE>' '<REIFIED>' '<EXPECT>' '<ACTUAL>' '<RealLiteral>' '<IntegerLiteral>' '<HexLiteral>' '<BinLiteral>' '<UnsignedLiteral>' '<LongLiteral>' '<BooleanLiteral>' '<NullLiteral>' '<CharacterLiteral>' '<Identifier>' '<QUOTE_OPEN>' '<TRIPLE_QUOTE_OPEN>' '<QUOTE_CLOSE>' '<LineStrRef>' '<LineStrText>' '<LineStrEscapedChar>' '<LineStrExprStart>' '<TRIPLE_QUOTE_CLOSE>' '<MultiLineStringQuote>' '<MultiLineStrRef>' '<MultiLineStrText>' '<MultiLineStrExprStart>' 'B e g i n' 'kotlinFile' 'fileAnnotation ''annotation''*' 'topLevelObject*' 'script' '(statement ''statement'' semi)' '(statement ''statement'' semi)*' 'shebangLine' 'fileAnnotation' 'unescapedAnnotation ''annotation''+' '<NL>?' 'packageHeader' 'importList' 'importHeader ''import''*' 'importHeader' 'importAlias' 'topLevelObject' 'typeAlias' 'declaration' 'classDeclaration' 'primaryConstructor?' '((<NL_COLON> ''colonToken'' | <COLON> ''colonToken'') delegationSpecifiers)' '((<NL_COLON> ''colonToken'' | <COLON> ''colonToken'') delegationSpecifiers)?' '_classOrEnumClassBody' 'primaryConstructor' 'classBody' 'classParameters' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? classParameter ''parameter'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? classParameter ''parameter'')*' 'classParameter' '(<NL>? <ASSIGNMENT> ''operator'' <NL>? expression ''expression'')' '(<NL>? <ASSIGNMENT> ''operator'' <NL>? expression ''expression'')?' 'delegationSpecifiers' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? annotatedDelegationSpecifier ''annotatedSpecifier'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? annotatedDelegationSpecifier ''annotatedSpecifier'')*' 'delegationSpecifier' 'constructorInvocation' 'annotatedDelegationSpecifier' 'annotation ''annotation''*' 'explicitDelegation' 'typeParameters' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? typeParameter ''parameter'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? typeParameter ''parameter'')*' 'typeParameter' 'typeConstraints' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? typeConstraint ''constraint'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? typeConstraint ''constraint'')*' 'typeConstraint' 'classMemberDeclarations' '(classMemberDeclaration ''declaration'' semis?)' '(classMemberDeclaration ''declaration'' semis?)+' 'classMemberDeclaration' 'anonymousInitializer' 'companionObject' 'functionValueParameters' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? functionValueParameter ''parameter'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? functionValueParameter ''parameter'')*' 'functionValueParameter' 'functionDeclaration' 'functionBody ''body''?' 'functionBody' 'variableDeclaration' 'multiVariableDeclaration' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? variableDeclaration ''variable'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? variableDeclaration ''variable'')*' 'propertyDeclaration' 'propertyDeclarationAssignment' 'propertyDeclarationReceiverType' '_getterSetter' 'propertyDelegate' 'getter' 'setter' 'parametersWithOptionalType' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? functionValueParameterWithOptionalType ''parameter'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? functionValueParameterWithOptionalType ''parameter'')*' 'functionValueParameterWithOptionalType' 'parameterWithOptionalType' 'parameter' 'objectDeclaration' 'secondaryConstructor' 'block ''block''?' 'constructorDelegationCall' 'enumClassBody' 'enumEntries' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? enumEntry ''entry'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? enumEntry ''entry'')*' 'enumEntry' 'type' 'typeReference' 'nullableType' 'quest ''questionToken''+' 'quest' 'userType' '((<NL_DOT> ''dot'' | <DOT> ''dot'') <NL>? simpleUserType ''segment'')' '((<NL_DOT> ''dot'' | <DOT> ''dot'') <NL>? simpleUserType ''segment'')*' 'simpleUserType' 'typeProjection' 'typeProjectionModifiers' 'typeProjectionModifier+' 'typeProjectionModifier' 'functionType' 'functionTypeParameters' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? (parameter ''parameter'' | type ''parameter''))' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? (parameter ''parameter'' | type ''parameter''))*' 'parenthesizedType' 'receiverType' 'parenthesizedUserType' 'definitelyNonNullableType' 'statements' '(semis statement ''statement'')' '(semis statement ''statement'')*' 'statement' 'label' 'controlStructureBody' 'block' 'loopStatement' 'forStatement' 'whileStatement' 'doWhileStatement' 'assignment' 'semi' 'semis' '(<SEMICOLON> ''semicolonToken''+ <NL>?)' '(<SEMICOLON> ''semicolonToken''+ <NL>?)*' '<SEMICOLON> ''semicolonToken''+' 'expression' 'disjunction' 'conjunction' 'equality' 'comparison' 'genericCallLikeComparison' 'infixOperation' 'elvisExpression' 'elvis' 'infixFunctionCall' 'rangeExpression' 'additiveExpression' 'multiplicativeExpression' 'asExpression' 'prefixUnaryExpression' 'postfixUnaryExpression' 'postfixUnarySuffix' 'directlyAssignableExpression' 'parenthesizedDirectlyAssignableExpression' 'assignableExpression' 'parenthesizedAssignableExpression' 'assignableSuffix' 'indexingSuffix' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? expression ''index'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? expression ''index'')*' 'navigationSuffix' 'callSuffix' 'annotatedLambda' 'typeArguments' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? typeProjection ''projection'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? typeProjection ''projection'')*' 'valueArguments' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? valueArgument ''arg'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? valueArgument ''arg'')*' 'valueArgument' '(<MULT> ''spread'' <NL>?)' '(<MULT> ''spread'' <NL>?)?' 'primaryExpression' 'parenthesizedExpression' 'collectionLiteral' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? expression ''value'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? expression ''value'')*' 'literalConstant' 'stringLiteral' 'lineStringLiteral' '(lineStringContent ''part'' | lineStringExpression)' '(lineStringContent ''part'' | lineStringExpression)*' 'PushModeLineString' 'PopMode' 'multiLineStringLiteral' '(multiLineStringContent ''part'' | multiLineStringExpression | <MultiLineStringQuote> ''part'')' '(multiLineStringContent ''part'' | multiLineStringExpression | <MultiLineStringQuote> ''part'')*' 'PushModeMultiLineString' 'lineStringContent' 'lineStringExpression' 'multiLineStringContent' 'multiLineStringExpression' 'PushModeDefault' 'lambdaLiteral' 'lambdaParameters' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? lambdaParameter ''paramter'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? lambdaParameter ''paramter'')*' 'lambdaParameter' 'anonymousFunction' 'functionLiteral' 'objectLiteral' 'thisExpression' 'superExpression' 'ifExpression' 'controlStructureBody ''thenBody''?' '(<SEMICOLON> ''semicolonToken'' <NL>?)' '(<SEMICOLON> ''semicolonToken'' <NL>?)?' 'whenSubject' 'whenExpression' '(whenEntry ''entry'' <NL>?)' '(whenEntry ''entry'' <NL>?)*' 'whenEntry' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? whenCondition ''when'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? whenCondition ''when'')*' 'whenCondition' 'rangeTest' 'typeTest' 'tryExpression' '(<NL>? catchBlock ''catch'')' '(<NL>? catchBlock ''catch'')+' 'catchBlock' 'finallyBlock' 'jumpExpression' 'callableReference' 'assignmentAndOperator' 'equalityOperator' 'comparisonOperator' 'inOperator' 'isOperator' 'additiveOperator' 'multiplicativeOperator' 'asOperator' 'prefixUnaryOperator' 'postfixUnaryOperator' 'excl' 'memberAccessOperator' 'safeNav' 'modifiers' '(annotation ''annotation'' | modifier ''modifier'')' '(annotation ''annotation'' | modifier ''modifier'')+' 'parameterModifiers' '(annotation ''annotation'' | parameterModifierNode ''modifier'')' '(annotation ''annotation'' | parameterModifierNode ''modifier'')+' 'parameterModifierNode' 'modifier' 'typeModifiers' 'typeModifier+' 'typeModifier' 'typeModifierNode' 'classModifier' 'memberModifier' 'visibilityModifier' 'varianceModifier' 'typeParameterModifiers' 'typeParameterModifier+' 'typeParameterModifier' 'reifiedModifierNode' 'functionModifier' 'propertyModifier' 'inheritanceModifier' 'parameterModifier' 'reificationModifier' 'platformModifier' 'annotation' 'singleAnnotation' 'multiAnnotation' 'annotationUseSiteTarget' 'unescapedAnnotation' 'simpleIdentifier' 'identifier' '(simpleIdentifier ''name'' (<NL_DOT> ''dot'' | <DOT> ''dot''))' '(simpleIdentifier ''name'' (<NL_DOT> ''dot'' | <DOT> ''dot''))*' 'lparen' 'rparen' 'lsquare' 'rsquare' 'lcurl' 'nl_lcurl' 'rcurl' 'PushModeInside' 'PopModeInside' '_modifiers' '_comma' '_semi' '_classBody' '_typeConstraints' '_typeParameters' '_nlSemi' '_colonType' '<AT_BOTH_WS>' '<AT_POST_WS>' '<AT_PRE_WS>' '<NL>' '<NL_AS>' '<NL_AS_SAFE>' '<NL_COLON>' '<NL_COMMA>' '<NL_CONJ>' '<NL_DISJ>' '<NL_DOT>' '<NL_LCURL>' '<NL_QUEST_NO_WS>' '<NL_QUEST_WS>' '<QUEST_WS>' 'E O F' 'error')
+	^ #('<ShebangLine>' '<DelimitedComment>' '<comment>' '<whitespace>' '<nl>' '<DOT>' '<COMMA>' '<LPAREN>' '<RPAREN>' '<LSQUARE>' '<RSQUARE>' '<LCURL>' '<RCURL>' '<MULT>' '<MOD>' '<DIV>' '<ADD>' '<SUB>' '<INCR>' '<DECR>' '<CONJ>' '<DISJ>' '<EXCLs>' '<EXCL_NO_WS>' '<COLON>' '<SEMICOLON>' '<ASSIGNMENT>' '<ADD_ASSIGNMENT>' '<SUB_ASSIGNMENT>' '<MULT_ASSIGNMENT>' '<DIV_ASSIGNMENT>' '<MOD_ASSIGNMENT>' '<ARROW>' '<RANGE>' '<RANGE_UNTIL>' '<COLONCOLON>' '<AT_NO_WS>' '<QUEST_NO_WS>' '<LANGLE>' '<RANGLE>' '<LE>' '<GE>' '<EXCL_EQ>' '<EXCL_EQEQ>' '<AS_SAFE>' '<EQEQ>' '<EQEQEQ>' '<AMP>' '<RETURN_AT>' '<CONTINUE_AT>' '<BREAK_AT>' '<THIS_AT>' '<SUPER_AT>' '<FILE>' '<FIELD>' '<PROPERTY>' '<GET>' '<SET>' '<RECEIVER>' '<PARAM>' '<SETPARAM>' '<DELEGATE>' '<PACKAGE>' '<IMPORT>' '<CLASS>' '<INTERFACE>' '<FUN>' '<OBJECT>' '<VAL>' '<VAR>' '<TYPE_ALIAS>' '<CONSTRUCTOR>' '<BY>' '<COMPANION>' '<INIT>' '<THIS>' '<SUPER>' '<WHERE>' '<IF>' '<ELSE>' '<WHEN>' '<TRY>' '<CATCH>' '<FINALLY>' '<FOR>' '<DO>' '<WHILE>' '<THROW>' '<RETURN>' '<CONTINUE>' '<BREAK>' '<AS>' '<IS>' '<IN>' '<NOT_IS>' '<NOT_IN>' '<OUT>' '<DYNAMIC>' '<PUBLIC>' '<PRIVATE>' '<PROTECTED>' '<INTERNAL>' '<ENUM>' '<SEALED>' '<ANNOTATION>' '<DATA>' '<INNER>' '<VALUE>' '<TAILREC>' '<OPERATOR>' '<INLINE>' '<INFIX>' '<EXTERNAL>' '<SUSPEND>' '<OVERRIDE>' '<ABSTRACT>' '<FINAL>' '<OPEN>' '<CONST>' '<LATEINIT>' '<VARARG>' '<NOINLINE>' '<CROSSINLINE>' '<REIFIED>' '<EXPECT>' '<ACTUAL>' '<RealLiteral>' '<IntegerLiteral>' '<HexLiteral>' '<BinLiteral>' '<UnsignedLiteral>' '<LongLiteral>' '<BooleanLiteral>' '<NullLiteral>' '<CharacterLiteral>' '<Identifier>' '<QUOTE_OPEN>' '<TRIPLE_QUOTE_OPEN>' '<QUOTE_CLOSE>' '<LineStrRef>' '<LineStrText>' '<LineStrEscapedChar>' '<LineStrExprStart>' '<TRIPLE_QUOTE_CLOSE>' '<MultiLineStringQuote>' '<MultiLineStrRef>' '<MultiLineStrText>' '<MultiLineStrExprStart>' 'B e g i n' 'kotlinFile' 'fileAnnotation ''annotation''*' 'topLevelObject*' 'script' '(statement ''statement'' semi)' '(statement ''statement'' semi)*' 'shebangLine' 'fileAnnotation' 'unescapedAnnotation ''annotation''+' '<NL>?' 'packageHeader' 'importList' 'importHeader ''import''*' 'importHeader' 'importAlias' 'topLevelObject' 'typeAlias' 'declaration' 'classDeclaration' 'primaryConstructor?' '((<NL_COLON> ''colonToken'' | <COLON> ''colonToken'') delegationSpecifiers)' '((<NL_COLON> ''colonToken'' | <COLON> ''colonToken'') delegationSpecifiers)?' '_classOrEnumClassBody' 'primaryConstructor' 'classBody' 'classParameters' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? classParameter ''parameter'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? classParameter ''parameter'')*' 'classParameter' '(<NL>? <ASSIGNMENT> ''operator'' <NL>? expression ''expression'')' '(<NL>? <ASSIGNMENT> ''operator'' <NL>? expression ''expression'')?' 'delegationSpecifiers' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? annotatedDelegationSpecifier ''annotatedSpecifier'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? annotatedDelegationSpecifier ''annotatedSpecifier'')*' 'delegationSpecifier' 'constructorInvocation' 'annotatedDelegationSpecifier' 'annotation ''annotation''*' 'explicitDelegation' 'typeParameters' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? typeParameter ''parameter'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? typeParameter ''parameter'')*' 'typeParameter' 'typeConstraints' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? typeConstraint ''constraint'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? typeConstraint ''constraint'')*' 'typeConstraint' 'classMemberDeclarations' '(classMemberDeclaration ''declaration'' semis?)' '(classMemberDeclaration ''declaration'' semis?)+' 'classMemberDeclaration' 'anonymousInitializer' 'companionObject' 'functionValueParameters' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? functionValueParameter ''parameter'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? functionValueParameter ''parameter'')*' 'functionValueParameter' 'functionDeclaration' 'functionBody ''body''?' 'functionBody' 'variableDeclaration' 'multiVariableDeclaration' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? variableDeclaration ''variable'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? variableDeclaration ''variable'')*' 'propertyDeclaration' 'propertyDeclarationAssignment' 'propertyDeclarationReceiverType' '_getterSetter' 'propertyDelegate' 'getter' 'setter' 'parametersWithOptionalType' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? functionValueParameterWithOptionalType ''parameter'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? functionValueParameterWithOptionalType ''parameter'')*' 'functionValueParameterWithOptionalType' 'parameterWithOptionalType' 'parameter' 'objectDeclaration' 'secondaryConstructor' 'block ''block''?' 'constructorDelegationCall' 'enumClassBody' 'enumEntries' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? enumEntry ''entry'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? enumEntry ''entry'')*' 'enumEntry' 'type' 'typeReference' 'nullableType' 'quest ''questionToken''+' 'quest' 'userType' '((<NL_DOT> ''dot'' | <DOT> ''dot'') <NL>? simpleUserType ''segment'')' '((<NL_DOT> ''dot'' | <DOT> ''dot'') <NL>? simpleUserType ''segment'')*' 'simpleUserType' 'typeProjection' 'typeProjectionModifiers' 'typeProjectionModifier+' 'typeProjectionModifier' 'functionType' 'functionTypeParameters' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? (parameter ''parameter'' | type ''parameter''))' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? (parameter ''parameter'' | type ''parameter''))*' 'parenthesizedType' 'receiverType' 'parenthesizedUserType' 'definitelyNonNullableType' 'statements' '(semis statement ''statement'')' '(semis statement ''statement'')*' 'statement' 'label' 'controlStructureBody' 'block' 'loopStatement' 'forStatement' 'whileStatement' 'doWhileStatement' 'assignment' 'semi' 'semis' '(<SEMICOLON> ''semicolonToken''+ <NL>?)' '(<SEMICOLON> ''semicolonToken''+ <NL>?)*' '<SEMICOLON> ''semicolonToken''+' 'expression' 'disjunction' 'conjunction' 'equality' 'comparison' 'genericCallLikeComparison' 'infixOperation' 'elvisExpression' 'elvis' 'infixFunctionCall' 'rangeExpression' 'additiveExpression' 'multiplicativeExpression' 'asExpression' 'prefixUnaryExpression' 'postfixUnaryExpression' 'postfixUnarySuffix' 'directlyAssignableExpression' 'parenthesizedDirectlyAssignableExpression' 'assignableExpression' 'parenthesizedAssignableExpression' 'assignableSuffix' 'indexingSuffix' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? expression ''index'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? expression ''index'')*' 'navigationSuffix' 'callSuffix' 'annotatedLambda' 'typeArguments' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? typeProjection ''projection'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? typeProjection ''projection'')*' 'valueArguments' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? valueArgument ''argument'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? valueArgument ''argument'')*' 'valueArgument' '(<MULT> ''spread'' <NL>?)' '(<MULT> ''spread'' <NL>?)?' 'primaryExpression' 'parenthesizedExpression' 'collectionLiteral' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? expression ''value'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? expression ''value'')*' 'literalConstant' 'stringLiteral' 'lineStringLiteral' '(lineStringContent ''part'' | lineStringExpression)' '(lineStringContent ''part'' | lineStringExpression)*' 'PushModeLineString' 'PopMode' 'multiLineStringLiteral' '(multiLineStringContent ''part'' | multiLineStringExpression | <MultiLineStringQuote> ''part'')' '(multiLineStringContent ''part'' | multiLineStringExpression | <MultiLineStringQuote> ''part'')*' 'PushModeMultiLineString' 'lineStringContent' 'lineStringExpression' 'multiLineStringContent' 'multiLineStringExpression' 'PushModeDefault' 'lambdaLiteral' 'lambdaParameters' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? lambdaParameter ''parameter'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? lambdaParameter ''parameter'')*' 'lambdaParameter' 'anonymousFunction' 'functionLiteral' 'objectLiteral' 'thisExpression' 'superExpression' 'ifExpression' 'controlStructureBody ''thenBody''?' '(<SEMICOLON> ''semicolonToken'' <NL>?)' '(<SEMICOLON> ''semicolonToken'' <NL>?)?' 'whenSubject' 'whenExpression' '(whenEntry ''entry'' <NL>?)' '(whenEntry ''entry'' <NL>?)*' 'whenEntry' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? whenCondition ''condition'')' '((<NL_COMMA> ''commaToken'' | <COMMA> ''commaToken'') <NL>? whenCondition ''condition'')*' 'whenCondition' 'rangeTest' 'typeTest' 'tryExpression' '(<NL>? catchBlock ''catch'')' '(<NL>? catchBlock ''catch'')+' 'catchBlock' 'finallyBlock' 'jumpExpression' 'callableReference' 'assignmentAndOperator' 'equalityOperator' 'comparisonOperator' 'inOperator' 'isOperator' 'additiveOperator' 'multiplicativeOperator' 'asOperator' 'prefixUnaryOperator' 'postfixUnaryOperator' 'excl' 'memberAccessOperator' 'safeNav' 'modifiers' '(annotation ''annotation'' | modifier ''modifier'')' '(annotation ''annotation'' | modifier ''modifier'')+' 'parameterModifiers' '(annotation ''annotation'' | parameterModifierNode ''modifier'')' '(annotation ''annotation'' | parameterModifierNode ''modifier'')+' 'parameterModifierNode' 'modifier' 'typeModifiers' 'typeModifier+' 'typeModifier' 'typeModifierNode' 'classModifier' 'memberModifier' 'visibilityModifier' 'varianceModifier' 'typeParameterModifiers' 'typeParameterModifier+' 'typeParameterModifier' 'reifiedModifierNode' 'functionModifier' 'propertyModifier' 'inheritanceModifier' 'parameterModifier' 'reificationModifier' 'platformModifier' 'annotation' 'singleAnnotation' 'multiAnnotation' 'annotationUseSiteTarget' 'unescapedAnnotation' 'simpleIdentifier' 'identifier' '(simpleIdentifier ''name'' (<NL_DOT> ''dot'' | <DOT> ''dot''))' '(simpleIdentifier ''name'' (<NL_DOT> ''dot'' | <DOT> ''dot''))*' 'lparen' 'rparen' 'lsquare' 'rsquare' 'lcurl' 'nl_lcurl' 'rcurl' 'PushModeInside' 'PopModeInside' '_modifiers' '_comma' '_semi' '_classBody' '_typeConstraints' '_typeParameters' '_nlSemi' '_colonType' '<AT_BOTH_WS>' '<AT_POST_WS>' '<AT_PRE_WS>' '<NL>' '<NL_AS>' '<NL_AS_SAFE>' '<NL_COLON>' '<NL_COMMA>' '<NL_CONJ>' '<NL_DISJ>' '<NL_DOT>' '<NL_LCURL>' '<NL_QUEST_NO_WS>' '<NL_QUEST_WS>' '<QUEST_WS>' 'E O F' 'error')
 ]
 
 { #category : 'generated' }
 KotlinParser class >> symbolTypes [
-	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #KotlinFileNode #KotlinFileNode #OrderedCollection #OrderedCollection #KotlinScriptNode #OrderedCollection #OrderedCollection #SmaCCToken #KotlinFileAnnotationNode #OrderedCollection #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #KotlinImportDeclarationNode #OrderedCollection #OrderedCollection #KotlinTypeAliasDeclarationNode #KotlinDeclarationNode #KotlinClassDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #KotlinClassParameterNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #KotlinNodeNode #KotlinConstructorInvocationNode #KotlinAnnotatedDelegationSpecifierNode #OrderedCollection #KotlinExplicitDelegationNode #OrderedCollection #OrderedCollection #OrderedCollection #KotlinTypeParameterNode #OrderedCollection #OrderedCollection #OrderedCollection #KotlinTypeConstraintNode #OrderedCollection #OrderedCollection #OrderedCollection #KotlinNodeNode #KotlinAnonymousInitializerNode #KotlinCompanionObjectNode #OrderedCollection #OrderedCollection #OrderedCollection #KotlinFunctionValueParameterNode #KotlinFunctionDeclarationNode #KotlinMemberNode #KotlinMemberNode #KotlinVariableDeclarationNode #KotlinMultiVariableDeclarationNode #OrderedCollection #OrderedCollection #KotlinPropertyDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #KotlinGetterNode #KotlinSetterNode #OrderedCollection #OrderedCollection #OrderedCollection #KotlinFunctionValueParameterWithOptionalTypeNode #KotlinParameterNode #KotlinParameterNode #KotlinObjectDeclarationNode #KotlinSecondaryConstructorNode #KotlinBlockNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #KotlinEnumEntryNode #KotlinTypeNode #KotlinUserTypeNode #KotlinNullableTypeNode #OrderedCollection #SmaCCToken #KotlinUserTypeNode #OrderedCollection #OrderedCollection #KotlinSimpleUserTypeNode #KotlinTypeProjectionNode #OrderedCollection #OrderedCollection #OrderedCollection #KotlinFunctionTypeNode #KotlinFunctionTypeParametersNode #OrderedCollection #OrderedCollection #KotlinTypeNode #KotlinTypeNode #KotlinUserTypeNode #KotlinDefinitelyNonNullableTypeNode #OrderedCollection #OrderedCollection #OrderedCollection #KotlinNodeNode #KotlinLabelNode #KotlinNodeNode #KotlinBlockNode #KotlinStatementNode #KotlinForStatementNode #KotlinWhileStatementNode #KotlinDoWhileStatementNode #KotlinAssignmentStatementNode #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #OrderedCollection #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #Object #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #KotlinNodeNode #KotlinIndexingSuffixNode #OrderedCollection #OrderedCollection #KotlinNavigationSuffixNode #KotlinCallSuffixNode #KotlinLambdaExpressionNode #KotlinTypeArgumentsNode #OrderedCollection #OrderedCollection #KotlinValueArgumentsNode #OrderedCollection #OrderedCollection #KotlinValueArgumentNode #SmaCCToken #SmaCCToken #KotlinExpressionNode #KotlinExpressionNode #KotlinCollectionLiteralNode #OrderedCollection #OrderedCollection #SmaCCToken #KotlinStringLiteralNode #KotlinStringLiteralNode #OrderedCollection #OrderedCollection nil nil #KotlinStringLiteralNode #OrderedCollection #OrderedCollection nil #SmaCCToken #OrderedCollection #SmaCCToken #OrderedCollection nil #KotlinLambdaExpressionNode #OrderedCollection #OrderedCollection #OrderedCollection #KotlinMemberNode #KotlinAnonymousFunctionNode #KotlinExpressionNode #KotlinObjectLiteralNode #KotlinThisExpressionNode #KotlinSuperExpressionNode #KotlinIfExpressionNode #KotlinNodeNode #SmaCCToken #SmaCCToken #OrderedCollection #KotlinWhenExpressionNode #KotlinWhenEntryNode #OrderedCollection #KotlinWhenEntryNode #OrderedCollection #OrderedCollection #KotlinNodeNode #KotlinRangeTestNode #KotlinTypeTestNode #KotlinTryExpressionNode #KotlinCatchBlockNode #OrderedCollection #KotlinCatchBlockNode #KotlinFinallyBlockNode #KotlinExpressionNode #KotlinCallableReferenceNode #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #Object #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #KotlinModifierNode #KotlinModifierNode #OrderedCollection #OrderedCollection #OrderedCollection #KotlinModifierNode #SmaCCToken #SmaCCToken #SmaCCToken #KotlinModifierNode #OrderedCollection #OrderedCollection #OrderedCollection #KotlinModifierNode #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #KotlinAnnotationNode #KotlinSingleAnnotationNode #KotlinMultiAnnotationNode #KotlinAnnotationUseSiteTargetNode #KotlinUnescapedAnnotationNode #SmaCCToken #KotlinIdentifierNode #OrderedCollection #OrderedCollection #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken nil nil #OrderedCollection #SmaCCToken #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #OrderedCollection #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCErrorNode)
+	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #KotlinFileNode #KotlinFileNode #OrderedCollection #OrderedCollection #KotlinScriptNode #OrderedCollection #OrderedCollection #SmaCCToken #KotlinFileAnnotationNode #OrderedCollection #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #KotlinImportDeclarationNode #OrderedCollection #OrderedCollection #KotlinTypeAliasDeclarationNode #KotlinDeclarationNode #KotlinClassDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #KotlinClassParameterNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #KotlinNodeNode #KotlinConstructorInvocationNode #KotlinAnnotatedDelegationSpecifierNode #OrderedCollection #KotlinExplicitDelegationNode #OrderedCollection #OrderedCollection #OrderedCollection #KotlinTypeParameterNode #OrderedCollection #OrderedCollection #OrderedCollection #KotlinTypeConstraintNode #OrderedCollection #OrderedCollection #OrderedCollection #KotlinNodeNode #KotlinAnonymousInitializerNode #KotlinCompanionObjectNode #OrderedCollection #OrderedCollection #OrderedCollection #KotlinFunctionValueParameterNode #KotlinFunctionDeclarationNode #KotlinMemberNode #KotlinMemberNode #KotlinVariableDeclarationNode #KotlinMultiVariableDeclarationNode #OrderedCollection #OrderedCollection #KotlinPropertyDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #KotlinGetterNode #KotlinSetterNode #OrderedCollection #OrderedCollection #OrderedCollection #KotlinFunctionValueParameterWithOptionalTypeNode #KotlinParameterNode #KotlinParameterNode #KotlinObjectDeclarationNode #KotlinSecondaryConstructorNode #KotlinBlockNode #KotlinConstructorDelegationCallNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #KotlinEnumEntryNode #KotlinTypeNode #KotlinUserTypeNode #KotlinNullableTypeNode #OrderedCollection #SmaCCToken #KotlinUserTypeNode #OrderedCollection #OrderedCollection #KotlinSimpleUserTypeNode #KotlinTypeProjectionNode #OrderedCollection #OrderedCollection #OrderedCollection #KotlinFunctionTypeNode #KotlinFunctionTypeParametersNode #OrderedCollection #OrderedCollection #KotlinTypeNode #KotlinTypeNode #KotlinUserTypeNode #KotlinDefinitelyNonNullableTypeNode #OrderedCollection #OrderedCollection #OrderedCollection #KotlinNodeNode #KotlinLabelNode #KotlinNodeNode #KotlinBlockNode #KotlinStatementNode #KotlinForStatementNode #KotlinWhileStatementNode #KotlinDoWhileStatementNode #KotlinAssignmentStatementNode #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #OrderedCollection #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #Object #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #KotlinExpressionNode #KotlinNodeNode #KotlinIndexingSuffixNode #OrderedCollection #OrderedCollection #KotlinNavigationSuffixNode #KotlinCallSuffixNode #KotlinLambdaExpressionNode #KotlinTypeArgumentsNode #OrderedCollection #OrderedCollection #KotlinValueArgumentsNode #OrderedCollection #OrderedCollection #KotlinValueArgumentNode #SmaCCToken #SmaCCToken #KotlinExpressionNode #KotlinExpressionNode #KotlinCollectionLiteralNode #OrderedCollection #OrderedCollection #SmaCCToken #KotlinStringLiteralNode #KotlinStringLiteralNode #OrderedCollection #OrderedCollection nil nil #KotlinStringLiteralNode #OrderedCollection #OrderedCollection nil #SmaCCToken #OrderedCollection #SmaCCToken #OrderedCollection nil #KotlinLambdaExpressionNode #OrderedCollection #OrderedCollection #OrderedCollection #KotlinMemberNode #KotlinAnonymousFunctionNode #KotlinExpressionNode #KotlinObjectLiteralNode #KotlinThisExpressionNode #KotlinSuperExpressionNode #KotlinIfExpressionNode #KotlinNodeNode #SmaCCToken #SmaCCToken #KotlinWhenSubjectNode #KotlinWhenExpressionNode #KotlinWhenEntryNode #OrderedCollection #KotlinWhenEntryNode #OrderedCollection #OrderedCollection #KotlinNodeNode #KotlinRangeTestNode #KotlinTypeTestNode #KotlinTryExpressionNode #KotlinCatchBlockNode #OrderedCollection #KotlinCatchBlockNode #KotlinFinallyBlockNode #KotlinExpressionNode #KotlinCallableReferenceNode #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #Object #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #KotlinModifierNode #KotlinModifierNode #OrderedCollection #OrderedCollection #OrderedCollection #KotlinModifierNode #SmaCCToken #SmaCCToken #SmaCCToken #KotlinModifierNode #OrderedCollection #OrderedCollection #OrderedCollection #KotlinModifierNode #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #KotlinAnnotationNode #KotlinSingleAnnotationNode #KotlinMultiAnnotationNode #KotlinAnnotationUseSiteTargetNode #KotlinUnescapedAnnotationNode #SmaCCToken #KotlinIdentifierNode #OrderedCollection #OrderedCollection #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken nil nil #OrderedCollection #SmaCCToken #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #OrderedCollection #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCErrorNode)
 ]
 
 { #category : 'generated' }
@@ -7382,7 +7382,7 @@ KotlinParser >> reduceActionForcallSuffix1: nodes [
 KotlinParser >> reduceActionForcallSuffix2: nodes [
 	| result |
 	result := KotlinCallSuffixNode new.
-	result argument: (nodes at: 1).
+	result arguments: (nodes at: 1).
 	result lambda: (nodes at: 2).
 	^ result
 ]
@@ -7391,7 +7391,7 @@ KotlinParser >> reduceActionForcallSuffix2: nodes [
 KotlinParser >> reduceActionForcallSuffix3: nodes [
 	| result |
 	result := KotlinCallSuffixNode new.
-	result argument: (nodes at: 1).
+	result arguments: (nodes at: 1).
 	^ result
 ]
 
@@ -7409,7 +7409,7 @@ KotlinParser >> reduceActionForcallSuffix5: nodes [
 	| result |
 	result := KotlinCallSuffixNode new.
 	result typeArgument: (nodes at: 1).
-	result argument: (nodes at: 2).
+	result arguments: (nodes at: 2).
 	result lambda: (nodes at: 3).
 	^ result
 ]
@@ -7419,7 +7419,7 @@ KotlinParser >> reduceActionForcallSuffix6: nodes [
 	| result |
 	result := KotlinCallSuffixNode new.
 	result typeArgument: (nodes at: 1).
-	result argument: (nodes at: 2).
+	result arguments: (nodes at: 2).
 	^ result
 ]
 
@@ -8282,11 +8282,29 @@ KotlinParser >> reduceActionForcompanionObject9: nodes [
 ]
 
 { #category : 'generated-reduction actions' }
+KotlinParser >> reduceActionForconstructorDelegationCall1: nodes [
+	| result |
+	result := KotlinConstructorDelegationCallNode new.
+	result targetToken: (nodes at: 1).
+	result arguments: (nodes at: 2).
+	^ result
+]
+
+{ #category : 'generated-reduction actions' }
+KotlinParser >> reduceActionForconstructorDelegationCall2: nodes [
+	| result |
+	result := KotlinConstructorDelegationCallNode new.
+	result targetToken: (nodes at: 1).
+	result arguments: (nodes at: 3).
+	^ result
+]
+
+{ #category : 'generated-reduction actions' }
 KotlinParser >> reduceActionForconstructorInvocation1: nodes [
 	| result |
 	result := KotlinConstructorInvocationNode new.
 	result type: (nodes at: 1).
-	result argument: (nodes at: 2).
+	result arguments: (nodes at: 2).
 	^ result
 ]
 
@@ -8295,7 +8313,7 @@ KotlinParser >> reduceActionForconstructorInvocation2: nodes [
 	| result |
 	result := KotlinConstructorInvocationNode new.
 	result type: (nodes at: 1).
-	result argument: (nodes at: 3).
+	result arguments: (nodes at: 3).
 	^ result
 ]
 
@@ -8432,7 +8450,7 @@ KotlinParser >> reduceActionFordisjunction3: nodes [
 	| result |
 	result := KotlinBinaryExpressionNode new.
 	result left: (nodes at: 1).
-	result addToken: (nodes at: 2) to: result operators.
+	result operator: (nodes at: 2).
 	result right: (nodes at: 3).
 	^ result
 ]
@@ -8442,7 +8460,7 @@ KotlinParser >> reduceActionFordisjunction4: nodes [
 	| result |
 	result := KotlinBinaryExpressionNode new.
 	result left: (nodes at: 1).
-	result addToken: (nodes at: 2) to: result operators.
+	result operator: (nodes at: 2).
 	result right: (nodes at: 4).
 	^ result
 ]
@@ -8559,7 +8577,7 @@ KotlinParser >> reduceActionForelvis2: nodes [
 { #category : 'generated-reduction actions' }
 KotlinParser >> reduceActionForelvisExpression1: nodes [
 	| result |
-	result := KotlinBinaryExpressionNode new.
+	result := KotlinElvisExpressionNode new.
 	result left: (nodes at: 1).
 	result addTokens: (nodes at: 2) to: result operators.
 	result right: (nodes at: 3).
@@ -8569,7 +8587,7 @@ KotlinParser >> reduceActionForelvisExpression1: nodes [
 { #category : 'generated-reduction actions' }
 KotlinParser >> reduceActionForelvisExpression2: nodes [
 	| result |
-	result := KotlinBinaryExpressionNode new.
+	result := KotlinElvisExpressionNode new.
 	result left: (nodes at: 1).
 	result addTokens: (nodes at: 2) to: result operators.
 	result right: (nodes at: 4).
@@ -8697,19 +8715,6 @@ KotlinParser >> reduceActionForenumClassBody9: nodes [
 	self addAll: ((nodes at: 5) at: 1) to: (result at: 3).
 	self addAll: ((nodes at: 5) at: 2) to: (result at: 2).
 	result at: 4 put: (nodes at: 6).
-	^ result
-]
-
-{ #category : 'generated-reduction actions' }
-KotlinParser >> reduceActionForenumEntries1: nodes [
-	| result |
-	result := Array new: 2.
-	result at: 1 put: (OrderedCollection new: 2).
-	result at: 2 put: (OrderedCollection new: 2).
-	self add: (nodes at: 1) to: (result at: 1).
-	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 1).
-	self add: (nodes at: 3) to: (result at: 2).
 	^ result
 ]
 
@@ -8878,7 +8883,7 @@ KotlinParser >> reduceActionForforStatement1: nodes [
 	result addNodes: (nodes at: 3) to: result annotations.
 	result variable: (nodes at: 4).
 	result inToken: (nodes at: 5).
-	result _in: (nodes at: 6).
+	result range: (nodes at: 6).
 	result rightParen: (nodes at: 7).
 	^ result
 ]
@@ -8892,7 +8897,7 @@ KotlinParser >> reduceActionForforStatement2: nodes [
 	result addNodes: (nodes at: 3) to: result annotations.
 	result variable: (nodes at: 4).
 	result inToken: (nodes at: 5).
-	result _in: (nodes at: 6).
+	result range: (nodes at: 6).
 	result rightParen: (nodes at: 7).
 	result body: (nodes at: 8).
 	^ result
@@ -8907,7 +8912,7 @@ KotlinParser >> reduceActionForforStatement5: nodes [
 	result addNodes: (nodes at: 4) to: result annotations.
 	result variable: (nodes at: 5).
 	result inToken: (nodes at: 6).
-	result _in: (nodes at: 7).
+	result range: (nodes at: 7).
 	result rightParen: (nodes at: 8).
 	^ result
 ]
@@ -8921,7 +8926,7 @@ KotlinParser >> reduceActionForforStatement6: nodes [
 	result addNodes: (nodes at: 4) to: result annotations.
 	result variable: (nodes at: 5).
 	result inToken: (nodes at: 6).
-	result _in: (nodes at: 7).
+	result range: (nodes at: 7).
 	result rightParen: (nodes at: 8).
 	result body: (nodes at: 9).
 	^ result
@@ -10002,7 +10007,7 @@ KotlinParser >> reduceActionForimportHeader1: nodes [
 	| result |
 	result := KotlinImportDeclarationNode new.
 	result importToken: (nodes at: 1).
-	result import: (nodes at: 2).
+	result path: (nodes at: 2).
 	result semicolonToken: (nodes at: 3).
 	^ result
 ]
@@ -10012,7 +10017,7 @@ KotlinParser >> reduceActionForimportHeader2: nodes [
 	| result |
 	result := KotlinImportDeclarationNode new.
 	result importToken: (nodes at: 1).
-	result import: (nodes at: 2).
+	result path: (nodes at: 2).
 	result dot: (nodes at: 3).
 	result star: (nodes at: 4).
 	result semicolonToken: (nodes at: 5).
@@ -10024,9 +10029,9 @@ KotlinParser >> reduceActionForimportHeader3: nodes [
 	| result |
 	result := KotlinImportDeclarationNode new.
 	result importToken: (nodes at: 1).
-	result import: (nodes at: 2).
+	result path: (nodes at: 2).
 	result asToken: ((nodes at: 3) at: 1).
-	result _as: ((nodes at: 3) at: 2).
+	result alias: ((nodes at: 3) at: 2).
 	result semicolonToken: (nodes at: 4).
 	^ result
 ]
@@ -10276,9 +10281,8 @@ KotlinParser >> reduceActionForlambdaLiteral12: nodes [
 	| result |
 	result := KotlinLambdaExpressionNode new.
 	result leftBrace: (nodes at: 1).
-	result parameter: ((nodes at: 3) at: 1).
+	result addNodes: ((nodes at: 3) at: 1) to: result parameters.
 	result addTokens: ((nodes at: 3) at: 2) to: result commaTokens.
-	result addNodes: ((nodes at: 3) at: 3) to: result paramters.
 	result arrowToken: (nodes at: 5).
 	result addTokens: ((nodes at: 7) at: 1) to: result semicolonTokens.
 	result addNodes: ((nodes at: 7) at: 2) to: result statements.
@@ -10314,9 +10318,8 @@ KotlinParser >> reduceActionForlambdaLiteral9: nodes [
 	| result |
 	result := KotlinLambdaExpressionNode new.
 	result leftBrace: (nodes at: 1).
-	result parameter: ((nodes at: 2) at: 1).
+	result addNodes: ((nodes at: 2) at: 1) to: result parameters.
 	result addTokens: ((nodes at: 2) at: 2) to: result commaTokens.
-	result addNodes: ((nodes at: 2) at: 3) to: result paramters.
 	result arrowToken: (nodes at: 4).
 	result addTokens: ((nodes at: 6) at: 1) to: result semicolonTokens.
 	result addNodes: ((nodes at: 6) at: 2) to: result statements.
@@ -10336,12 +10339,12 @@ KotlinParser >> reduceActionForlambdaParameter2: nodes [
 { #category : 'generated-reduction actions' }
 KotlinParser >> reduceActionForlambdaParameters1: nodes [
 	| result |
-	result := Array new: 3.
+	result := Array new: 2.
+	result at: 1 put: (OrderedCollection new: 2).
 	result at: 2 put: (OrderedCollection new: 2).
-	result at: 3 put: (OrderedCollection new: 2).
-	result at: 1 put: (nodes at: 1).
+	self add: (nodes at: 1) to: (result at: 1).
 	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
-	self addAll: ((nodes at: 2) at: 2) to: (result at: 3).
+	self addAll: ((nodes at: 2) at: 2) to: (result at: 1).
 	self add: (nodes at: 3) to: (result at: 2).
 	^ result
 ]
@@ -11239,8 +11242,7 @@ KotlinParser >> reduceActionForsecondaryConstructor10: nodes [
 	result addNodes: ((nodes at: 4) at: 3) to: result parameters.
 	result addTokens: ((nodes at: 4) at: 4) to: result commaTokens.
 	result colonToken: (nodes at: 5).
-	result targetToken: ((nodes at: 7) at: 1).
-	result arguments: ((nodes at: 7) at: 2).
+	result constructorCall: (nodes at: 7).
 	result block: (nodes at: 8).
 	^ result
 ]
@@ -11272,8 +11274,7 @@ KotlinParser >> reduceActionForsecondaryConstructor4: nodes [
 	result addNodes: ((nodes at: 3) at: 3) to: result parameters.
 	result addTokens: ((nodes at: 3) at: 4) to: result commaTokens.
 	result colonToken: (nodes at: 4).
-	result targetToken: ((nodes at: 5) at: 1).
-	result arguments: ((nodes at: 5) at: 2).
+	result constructorCall: (nodes at: 5).
 	result block: (nodes at: 6).
 	^ result
 ]
@@ -11290,8 +11291,7 @@ KotlinParser >> reduceActionForsecondaryConstructor5: nodes [
 	result addNodes: ((nodes at: 3) at: 3) to: result parameters.
 	result addTokens: ((nodes at: 3) at: 4) to: result commaTokens.
 	result colonToken: (nodes at: 4).
-	result targetToken: ((nodes at: 6) at: 1).
-	result arguments: ((nodes at: 6) at: 2).
+	result constructorCall: (nodes at: 6).
 	result block: (nodes at: 7).
 	^ result
 ]
@@ -11323,8 +11323,7 @@ KotlinParser >> reduceActionForsecondaryConstructor9: nodes [
 	result addNodes: ((nodes at: 4) at: 3) to: result parameters.
 	result addTokens: ((nodes at: 4) at: 4) to: result commaTokens.
 	result colonToken: (nodes at: 5).
-	result targetToken: ((nodes at: 6) at: 1).
-	result arguments: ((nodes at: 6) at: 2).
+	result constructorCall: (nodes at: 6).
 	result block: (nodes at: 7).
 	^ result
 ]
@@ -11503,7 +11502,7 @@ KotlinParser >> reduceActionForsimpleUserType2: nodes [
 	| result |
 	result := KotlinSimpleUserTypeNode new.
 	result name: (nodes at: 1).
-	result argument: (nodes at: 2).
+	result typeArguments: (nodes at: 2).
 	^ result
 ]
 
@@ -11512,7 +11511,7 @@ KotlinParser >> reduceActionForsimpleUserType3: nodes [
 	| result |
 	result := KotlinSimpleUserTypeNode new.
 	result name: (nodes at: 1).
-	result argument: (nodes at: 3).
+	result typeArguments: (nodes at: 3).
 	^ result
 ]
 
@@ -12423,9 +12422,9 @@ KotlinParser >> reduceActionForvalueArguments2: nodes [
 	| result |
 	result := KotlinValueArgumentsNode new.
 	result leftParen: (nodes at: 1).
-	result addNode: (nodes at: 2) to: result args.
+	result addNode: (nodes at: 2) to: result arguments.
 	result addTokens: ((nodes at: 3) at: 1) to: result commaTokens.
-	result addNodes: ((nodes at: 3) at: 2) to: result args.
+	result addNodes: ((nodes at: 3) at: 2) to: result arguments.
 	result addToken: (nodes at: 4) to: result commaTokens.
 	result rightParen: (nodes at: 5).
 	^ result
@@ -12436,9 +12435,9 @@ KotlinParser >> reduceActionForvalueArguments3: nodes [
 	| result |
 	result := KotlinValueArgumentsNode new.
 	result leftParen: (nodes at: 1).
-	result addNode: (nodes at: 2) to: result args.
+	result addNode: (nodes at: 2) to: result arguments.
 	result addTokens: ((nodes at: 3) at: 1) to: result commaTokens.
-	result addNodes: ((nodes at: 3) at: 2) to: result args.
+	result addNodes: ((nodes at: 3) at: 2) to: result arguments.
 	result addToken: (nodes at: 4) to: result commaTokens.
 	result rightParen: (nodes at: 6).
 	^ result
@@ -12458,9 +12457,9 @@ KotlinParser >> reduceActionForvalueArguments5: nodes [
 	| result |
 	result := KotlinValueArgumentsNode new.
 	result leftParen: (nodes at: 1).
-	result addNode: (nodes at: 3) to: result args.
+	result addNode: (nodes at: 3) to: result arguments.
 	result addTokens: ((nodes at: 4) at: 1) to: result commaTokens.
-	result addNodes: ((nodes at: 4) at: 2) to: result args.
+	result addNodes: ((nodes at: 4) at: 2) to: result arguments.
 	result addToken: (nodes at: 5) to: result commaTokens.
 	result rightParen: (nodes at: 6).
 	^ result
@@ -12471,9 +12470,9 @@ KotlinParser >> reduceActionForvalueArguments6: nodes [
 	| result |
 	result := KotlinValueArgumentsNode new.
 	result leftParen: (nodes at: 1).
-	result addNode: (nodes at: 3) to: result args.
+	result addNode: (nodes at: 3) to: result arguments.
 	result addTokens: ((nodes at: 4) at: 1) to: result commaTokens.
-	result addNodes: ((nodes at: 4) at: 2) to: result args.
+	result addNodes: ((nodes at: 4) at: 2) to: result arguments.
 	result addToken: (nodes at: 5) to: result commaTokens.
 	result rightParen: (nodes at: 7).
 	^ result
@@ -12505,9 +12504,9 @@ KotlinParser >> reduceActionForvariableDeclaration2: nodes [
 KotlinParser >> reduceActionForwhenEntry1: nodes [
 	| result |
 	result := KotlinWhenEntryNode new.
-	result addNode: (nodes at: 1) to: result whens.
+	result addNode: (nodes at: 1) to: result conditions.
 	result addTokens: ((nodes at: 2) at: 1) to: result commaTokens.
-	result addNodes: ((nodes at: 2) at: 2) to: result whens.
+	result addNodes: ((nodes at: 2) at: 2) to: result conditions.
 	result addToken: (nodes at: 3) to: result commaTokens.
 	result arrowToken: (nodes at: 4).
 	result body: (nodes at: 5).
@@ -12519,9 +12518,9 @@ KotlinParser >> reduceActionForwhenEntry1: nodes [
 KotlinParser >> reduceActionForwhenEntry2: nodes [
 	| result |
 	result := KotlinWhenEntryNode new.
-	result addNode: (nodes at: 1) to: result whens.
+	result addNode: (nodes at: 1) to: result conditions.
 	result addTokens: ((nodes at: 2) at: 1) to: result commaTokens.
-	result addNodes: ((nodes at: 2) at: 2) to: result whens.
+	result addNodes: ((nodes at: 2) at: 2) to: result conditions.
 	result addToken: (nodes at: 3) to: result commaTokens.
 	result arrowToken: (nodes at: 5).
 	result body: (nodes at: 6).
@@ -12600,13 +12599,7 @@ KotlinParser >> reduceActionForwhenExpression15: nodes [
 	| result |
 	result := KotlinWhenExpressionNode new.
 	result whenToken: (nodes at: 1).
-	result addToken: ((nodes at: 3) at: 1) to: result leftParens.
-	result expression: ((nodes at: 3) at: 2).
-	result addToken: ((nodes at: 3) at: 3) to: result rightParens.
-	result addNodes: ((nodes at: 3) at: 4) to: result annotations.
-	result valToken: ((nodes at: 3) at: 5).
-	result variableDeclaration: ((nodes at: 3) at: 6).
-	result operator: ((nodes at: 3) at: 7).
+	result subject: (nodes at: 3).
 	result leftBrace: (nodes at: 4).
 	result addNodes: (nodes at: 5) to: result entries.
 	result rightBrace: (nodes at: 7).
@@ -12618,13 +12611,7 @@ KotlinParser >> reduceActionForwhenExpression16: nodes [
 	| result |
 	result := KotlinWhenExpressionNode new.
 	result whenToken: (nodes at: 1).
-	result addToken: ((nodes at: 3) at: 1) to: result leftParens.
-	result expression: ((nodes at: 3) at: 2).
-	result addToken: ((nodes at: 3) at: 3) to: result rightParens.
-	result addNodes: ((nodes at: 3) at: 4) to: result annotations.
-	result valToken: ((nodes at: 3) at: 5).
-	result variableDeclaration: ((nodes at: 3) at: 6).
-	result operator: ((nodes at: 3) at: 7).
+	result subject: (nodes at: 3).
 	result leftBrace: (nodes at: 4).
 	result addNodes: (nodes at: 6) to: result entries.
 	result rightBrace: (nodes at: 8).
@@ -12658,13 +12645,7 @@ KotlinParser >> reduceActionForwhenExpression7: nodes [
 	| result |
 	result := KotlinWhenExpressionNode new.
 	result whenToken: (nodes at: 1).
-	result addToken: ((nodes at: 2) at: 1) to: result leftParens.
-	result expression: ((nodes at: 2) at: 2).
-	result addToken: ((nodes at: 2) at: 3) to: result rightParens.
-	result addNodes: ((nodes at: 2) at: 4) to: result annotations.
-	result valToken: ((nodes at: 2) at: 5).
-	result variableDeclaration: ((nodes at: 2) at: 6).
-	result operator: ((nodes at: 2) at: 7).
+	result subject: (nodes at: 2).
 	result leftBrace: (nodes at: 3).
 	result addNodes: (nodes at: 4) to: result entries.
 	result rightBrace: (nodes at: 6).
@@ -12676,13 +12657,7 @@ KotlinParser >> reduceActionForwhenExpression8: nodes [
 	| result |
 	result := KotlinWhenExpressionNode new.
 	result whenToken: (nodes at: 1).
-	result addToken: ((nodes at: 2) at: 1) to: result leftParens.
-	result expression: ((nodes at: 2) at: 2).
-	result addToken: ((nodes at: 2) at: 3) to: result rightParens.
-	result addNodes: ((nodes at: 2) at: 4) to: result annotations.
-	result valToken: ((nodes at: 2) at: 5).
-	result variableDeclaration: ((nodes at: 2) at: 6).
-	result operator: ((nodes at: 2) at: 7).
+	result subject: (nodes at: 2).
 	result leftBrace: (nodes at: 3).
 	result addNodes: (nodes at: 5) to: result entries.
 	result rightBrace: (nodes at: 7).
@@ -12692,131 +12667,122 @@ KotlinParser >> reduceActionForwhenExpression8: nodes [
 { #category : 'generated-reduction actions' }
 KotlinParser >> reduceActionForwhenSubject1: nodes [
 	| result |
-	result := Array new: 7.
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 1 put: (nodes at: 1).
-	result at: 2 put: (nodes at: 2).
-	result at: 3 put: (nodes at: 3).
+	result := KotlinWhenSubjectNode new.
+	result leftParen: (nodes at: 1).
+	result expression: (nodes at: 2).
+	result rightParen: (nodes at: 3).
 	^ result
 ]
 
 { #category : 'generated-reduction actions' }
 KotlinParser >> reduceActionForwhenSubject2: nodes [
 	| result |
-	result := Array new: 7.
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 1 put: (nodes at: 1).
-	self addAll: (nodes at: 2) to: (result at: 4).
-	result at: 5 put: (nodes at: 3).
-	result at: 6 put: (nodes at: 4).
-	result at: 7 put: (nodes at: 5).
-	result at: 2 put: (nodes at: 7).
-	result at: 3 put: (nodes at: 8).
+	result := KotlinWhenSubjectNode new.
+	result leftParen: (nodes at: 1).
+	result addNodes: (nodes at: 2) to: result annotations.
+	result valToken: (nodes at: 3).
+	result variableDeclaration: (nodes at: 4).
+	result operator: (nodes at: 5).
+	result expression: (nodes at: 7).
+	result rightParen: (nodes at: 8).
 	^ result
 ]
 
 { #category : 'generated-reduction actions' }
 KotlinParser >> reduceActionForwhenSubject3: nodes [
 	| result |
-	result := Array new: 7.
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 1 put: (nodes at: 1).
-	self addAll: (nodes at: 2) to: (result at: 4).
-	result at: 5 put: (nodes at: 3).
-	result at: 6 put: (nodes at: 4).
-	result at: 7 put: (nodes at: 6).
-	result at: 2 put: (nodes at: 8).
-	result at: 3 put: (nodes at: 9).
+	result := KotlinWhenSubjectNode new.
+	result leftParen: (nodes at: 1).
+	result addNodes: (nodes at: 2) to: result annotations.
+	result valToken: (nodes at: 3).
+	result variableDeclaration: (nodes at: 4).
+	result operator: (nodes at: 6).
+	result expression: (nodes at: 8).
+	result rightParen: (nodes at: 9).
 	^ result
 ]
 
 { #category : 'generated-reduction actions' }
 KotlinParser >> reduceActionForwhenSubject4: nodes [
 	| result |
-	result := Array new: 7.
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 1 put: (nodes at: 1).
-	self addAll: (nodes at: 2) to: (result at: 4).
-	result at: 5 put: (nodes at: 3).
-	result at: 6 put: (nodes at: 5).
-	result at: 7 put: (nodes at: 6).
-	result at: 2 put: (nodes at: 8).
-	result at: 3 put: (nodes at: 9).
+	result := KotlinWhenSubjectNode new.
+	result leftParen: (nodes at: 1).
+	result addNodes: (nodes at: 2) to: result annotations.
+	result valToken: (nodes at: 3).
+	result variableDeclaration: (nodes at: 5).
+	result operator: (nodes at: 6).
+	result expression: (nodes at: 8).
+	result rightParen: (nodes at: 9).
 	^ result
 ]
 
 { #category : 'generated-reduction actions' }
 KotlinParser >> reduceActionForwhenSubject5: nodes [
 	| result |
-	result := Array new: 7.
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 1 put: (nodes at: 1).
-	self addAll: (nodes at: 2) to: (result at: 4).
-	result at: 5 put: (nodes at: 3).
-	result at: 6 put: (nodes at: 5).
-	result at: 7 put: (nodes at: 7).
-	result at: 2 put: (nodes at: 9).
-	result at: 3 put: (nodes at: 10).
+	result := KotlinWhenSubjectNode new.
+	result leftParen: (nodes at: 1).
+	result addNodes: (nodes at: 2) to: result annotations.
+	result valToken: (nodes at: 3).
+	result variableDeclaration: (nodes at: 5).
+	result operator: (nodes at: 7).
+	result expression: (nodes at: 9).
+	result rightParen: (nodes at: 10).
 	^ result
 ]
 
 { #category : 'generated-reduction actions' }
 KotlinParser >> reduceActionForwhenSubject6: nodes [
 	| result |
-	result := Array new: 7.
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 1 put: (nodes at: 1).
-	self addAll: (nodes at: 2) to: (result at: 4).
-	result at: 5 put: (nodes at: 4).
-	result at: 6 put: (nodes at: 5).
-	result at: 7 put: (nodes at: 6).
-	result at: 2 put: (nodes at: 8).
-	result at: 3 put: (nodes at: 9).
+	result := KotlinWhenSubjectNode new.
+	result leftParen: (nodes at: 1).
+	result addNodes: (nodes at: 2) to: result annotations.
+	result valToken: (nodes at: 4).
+	result variableDeclaration: (nodes at: 5).
+	result operator: (nodes at: 6).
+	result expression: (nodes at: 8).
+	result rightParen: (nodes at: 9).
 	^ result
 ]
 
 { #category : 'generated-reduction actions' }
 KotlinParser >> reduceActionForwhenSubject7: nodes [
 	| result |
-	result := Array new: 7.
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 1 put: (nodes at: 1).
-	self addAll: (nodes at: 2) to: (result at: 4).
-	result at: 5 put: (nodes at: 4).
-	result at: 6 put: (nodes at: 5).
-	result at: 7 put: (nodes at: 7).
-	result at: 2 put: (nodes at: 9).
-	result at: 3 put: (nodes at: 10).
+	result := KotlinWhenSubjectNode new.
+	result leftParen: (nodes at: 1).
+	result addNodes: (nodes at: 2) to: result annotations.
+	result valToken: (nodes at: 4).
+	result variableDeclaration: (nodes at: 5).
+	result operator: (nodes at: 7).
+	result expression: (nodes at: 9).
+	result rightParen: (nodes at: 10).
 	^ result
 ]
 
 { #category : 'generated-reduction actions' }
 KotlinParser >> reduceActionForwhenSubject8: nodes [
 	| result |
-	result := Array new: 7.
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 1 put: (nodes at: 1).
-	self addAll: (nodes at: 2) to: (result at: 4).
-	result at: 5 put: (nodes at: 4).
-	result at: 6 put: (nodes at: 6).
-	result at: 7 put: (nodes at: 7).
-	result at: 2 put: (nodes at: 9).
-	result at: 3 put: (nodes at: 10).
+	result := KotlinWhenSubjectNode new.
+	result leftParen: (nodes at: 1).
+	result addNodes: (nodes at: 2) to: result annotations.
+	result valToken: (nodes at: 4).
+	result variableDeclaration: (nodes at: 6).
+	result operator: (nodes at: 7).
+	result expression: (nodes at: 9).
+	result rightParen: (nodes at: 10).
 	^ result
 ]
 
 { #category : 'generated-reduction actions' }
 KotlinParser >> reduceActionForwhenSubject9: nodes [
 	| result |
-	result := Array new: 7.
-	result at: 4 put: (OrderedCollection new: 2).
-	result at: 1 put: (nodes at: 1).
-	self addAll: (nodes at: 2) to: (result at: 4).
-	result at: 5 put: (nodes at: 4).
-	result at: 6 put: (nodes at: 6).
-	result at: 7 put: (nodes at: 8).
-	result at: 2 put: (nodes at: 10).
-	result at: 3 put: (nodes at: 11).
+	result := KotlinWhenSubjectNode new.
+	result leftParen: (nodes at: 1).
+	result addNodes: (nodes at: 2) to: result annotations.
+	result valToken: (nodes at: 4).
+	result variableDeclaration: (nodes at: 6).
+	result operator: (nodes at: 8).
+	result expression: (nodes at: 10).
+	result rightParen: (nodes at: 11).
 	^ result
 ]
 

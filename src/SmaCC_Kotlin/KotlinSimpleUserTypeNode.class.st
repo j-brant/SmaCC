@@ -3,7 +3,7 @@ Class {
 	#superclass : 'KotlinMemberNode',
 	#instVars : [
 		'name',
-		'argument'
+		'typeArguments'
 	],
 	#category : 'SmaCC_Kotlin',
 	#package : 'SmaCC_Kotlin'
@@ -12,18 +12,6 @@ Class {
 { #category : 'generated' }
 KotlinSimpleUserTypeNode >> acceptVisitor: aNodeVisitor [
 	^ aNodeVisitor visitSimpleUserType: self
-]
-
-{ #category : 'generated' }
-KotlinSimpleUserTypeNode >> argument [
-	^ argument
-]
-
-{ #category : 'generated' }
-KotlinSimpleUserTypeNode >> argument: aKotlinTypeArgumentsNode [
-	self argument notNil ifTrue: [ self argument parent: nil ].
-	argument := aKotlinTypeArgumentsNode.
-	self argument notNil ifTrue: [ self argument parent: self ]
 ]
 
 { #category : 'generated' }
@@ -38,10 +26,22 @@ KotlinSimpleUserTypeNode >> name: aSmaCCToken [
 
 { #category : 'generated' }
 KotlinSimpleUserTypeNode >> nodeVariables [
-	^ #(#argument)
+	^ #(#typeArguments)
 ]
 
 { #category : 'generated' }
 KotlinSimpleUserTypeNode >> tokenVariables [
 	^ #(#name)
+]
+
+{ #category : 'generated' }
+KotlinSimpleUserTypeNode >> typeArguments [
+	^ typeArguments
+]
+
+{ #category : 'generated' }
+KotlinSimpleUserTypeNode >> typeArguments: aKotlinTypeArgumentsNode [
+	self typeArguments notNil ifTrue: [ self typeArguments parent: nil ].
+	typeArguments := aKotlinTypeArgumentsNode.
+	self typeArguments notNil ifTrue: [ self typeArguments parent: self ]
 ]
