@@ -2075,6 +2075,31 @@ ElixirParser >> actionForCurrentToken [
 	 #actionsForCurrentToken, minus state-duplication tricks that only work with multi-stack."
 
 	| lookahead ids id action eolAction oldToken oldScope |
+	"'not in' greedy-match split. The scanner's <in_op> regex matches
+	 'not in' as a single token. That's correct for 'a not in [1,2]' but
+	 wrong for 'not in_signed_set' where 'in_signed_set' is a single
+	 identifier and 'not' is the unary operator. The DFA can't
+	 distinguish without a lookahead. If the next source char is an
+	 identifier continuation (letter, digit, _, ?, !), rewind the
+	 scanner past 'not' and replace currentToken with a 3-char <unary_op>
+	 'not'; the 'in' part will be re-tokenized as the start of the 'in_…'
+	 identifier."
+	(currentToken value = 'not in')
+		ifTrue: [
+			| contents afterPos afterCh |
+			contents := scanner stream contents.
+			afterPos := currentToken stopPosition + 1.
+			(afterPos <= contents size) ifTrue: [
+				afterCh := contents at: afterPos.
+				(afterCh isLetter or: [ afterCh isDigit or: [ '_?!' includes: afterCh ] ])
+					ifTrue: [
+						| notEnd |
+						notEnd := currentToken startPosition + 2.
+						self position: notEnd.
+						currentToken := currentToken class
+							value: 'not'
+							start: currentToken startPosition
+							ids: { scanner unary_opId } ] ] ].
 	scanner lastWasEol
 		ifTrue: [
 			eolAction := self actionFor: scanner eolId.
@@ -2085,17 +2110,27 @@ ElixirParser >> actionForCurrentToken [
 						ifFalse: [ currentToken value first ].
 				shouldShift := (')|}<>' includes: char).
 				shouldShift ifFalse: [ shouldShift := self shouldSuppressEol ].
+				"Continuation keywords on a new line should not get an eol
+				 separating them from the previous expression."
+				shouldShift ifFalse: [ shouldShift := #('when' 'and' 'or' 'in') includes: currentToken value ].
 				shouldShift ifTrue: [
 					action := self actionFor: currentToken ids first.
 					(action bitAnd: self actionMask) = self errorAction
 						ifFalse: [ ^ action ] ].
-				scanner lastWasEol: false.
-				self position: currentToken startPosition - 1.
-				currentToken := currentToken class
-						value: ''
-						start: currentToken startPosition
-						ids: {scanner eolId}.
-				^ eolAction ] ].
+				"For '}' specifically: don't inject eol — the close-curly may be
+				 the end of an interpolation that the }-rescue path will
+				 retokenize as <interpolatedStringMid/End>. If we inject eol
+				 here, the parser shifts eol successfully but then can't get
+				 back to the rescue."
+				char = $} ifTrue: [ scanner lastWasEol: false ].
+				char = $} ifFalse: [
+					scanner lastWasEol: false.
+					self position: currentToken startPosition - 1.
+					currentToken := currentToken class
+							value: ''
+							start: currentToken startPosition
+							ids: {scanner eolId}.
+					^ eolAction ] ] ].
 	currentToken ids first = scanner map_opId
 		ifTrue: [
 			| position |
@@ -2142,9 +2177,41 @@ ElixirParser >> actionForCurrentToken [
 			self scope: oldScope.
 			(currentToken ids first = scanner interpolatedStringMidId
 				or: [ currentToken ids first = scanner interpolatedStringEndId ])
-				ifFalse: [ currentToken := oldToken.
-					^ action ].
-			^ self actionForCurrentToken ].
+				ifTrue: [ ^ self actionForCurrentToken ].
+			"Scanner could not tokenize the interpolated-string tail (typical
+			 case: a literal hash that is not part of an interpolation start,
+			 as in #{x}#main or #{x}/path%{y}). Walk the source forward to
+			 find the next interpolation start or the closing string quote,
+			 respecting backslash escapes, and synthesize the right token."
+			oldToken ifNotNil: [ | contents pos size depth foundMid foundEnd |
+				contents := scanner stream contents.
+				size := contents size.
+				pos := oldToken startPosition + 1.
+				depth := 0.
+				foundMid := false.
+				foundEnd := false.
+				[ pos <= size and: [ foundMid not and: [ foundEnd not ] ] ] whileTrue: [
+					| ch |
+					ch := contents at: pos.
+					ch = $\
+						ifTrue: [ pos := pos + 2 ]
+						ifFalse: [ (ch = $# and: [ pos < size and: [ (contents at: pos + 1) = ${ ] ])
+							ifTrue: [ foundMid := true ]
+							ifFalse: [ ch = (Character value: 34)
+								ifTrue: [ foundEnd := true ]
+								ifFalse: [ pos := pos + 1 ] ] ] ].
+				(foundMid or: [ foundEnd ]) ifTrue: [
+					| endPos newId |
+					endPos := foundMid ifTrue: [ pos + 1 ] ifFalse: [ pos ].
+					newId := foundMid ifTrue: [ scanner interpolatedStringMidId ] ifFalse: [ scanner interpolatedStringEndId ].
+					self position: endPos.
+					currentToken := oldToken class
+						value: (contents copyFrom: oldToken startPosition to: endPos)
+						start: oldToken startPosition
+						ids: { newId }.
+					^ self actionForCurrentToken ] ].
+			currentToken := oldToken.
+			^ action ].
 	^ action
 ]
 
