@@ -2,8 +2,8 @@ Class {
 	#name : 'ElixirMatchedExprNode',
 	#superclass : 'ElixirProgramNode',
 	#instVars : [
-		'ops',
 		'expressions',
+		'ops',
 		'identifier'
 	],
 	#category : 'SmaCC_Elixir_Parser',

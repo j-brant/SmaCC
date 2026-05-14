@@ -131,6 +131,11 @@ ElixirScanner >> kw_identifierId [
 ]
 
 { #category : 'accessing' }
+ElixirScanner >> lastTokenValue [
+	^ lastTokenValue
+]
+
+{ #category : 'accessing' }
 ElixirScanner >> lastWasEol [
 	^ lastWasEol
 ]
@@ -143,11 +148,6 @@ ElixirScanner >> lastWasEol: anObject [
 { #category : 'generated' }
 ElixirScanner >> map_opId [
 	^ 30
-]
-
-{ #category : 'accessing' }
-ElixirScanner >> lastTokenValue [
-	^ lastTokenValue
 ]
 
 { #category : 'accessing' }
