@@ -47,7 +47,17 @@ SmaCCAmbiguousAction >> preferredAction [
 
 { #category : 'accessing' }
 SmaCCAmbiguousAction >> sortedActions [
-	"When in doubt shift the token"
+	"When in doubt shift the token. For reduce/reduce pick the one by precedence first and if not specified, then by order in the grammar."
 
-	^ actions asSortedCollection: [ :a :b | a id <= b id ]
+	^ actions
+		asSortedCollection: [ :a :b | 
+			a id = b id
+				ifTrue: [  "Reduce/Reduce conflict"
+					| aPrec bPrec |
+					aPrec := a precedence ifNil: [ -1 ].
+					bPrec := b precedence ifNil: [ -1 ].
+					aPrec = bPrec
+						ifTrue: [ a rhs productionSymbol position < b rhs productionSymbol position ]
+						ifFalse: [ aPrec >= bPrec ] ]
+				ifFalse: [ a id < b id ] ]
 ]
