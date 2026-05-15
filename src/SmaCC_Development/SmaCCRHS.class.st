@@ -104,21 +104,7 @@ SmaCCRHS >> firstTerminals [
 SmaCCRHS >> generateNamedVariableCollectionWarningFor: problemIndex [
 	SmaCCCompilationNotification new
 		messageText: 'Node creation';
-		tagBlock: [ String
-				streamContents: [ :stream | 
-					stream
-						nextPutAll: 'Non terminal symbol that returns a variable collection is assigned to a variable. The non terminal should be changed to return an AST node:';
-						cr;
-						cr;
-						nextPutAll: self productionSymbol name;
-						nextPutAll: ' : '.
-					1
-						to: self size
-						do: [ :i | 
-							i == problemIndex ifTrue: [ stream nextPutAll: '>>>' ].
-							stream nextPutAll: (self at: i) name.
-							i == problemIndex ifTrue: [ stream nextPutAll: '<<<' ].
-							stream space ] ] ];
+		issue: (SmaCCNonTerminalShouldBeNode on: self index: problemIndex);
 		signal
 ]
 
@@ -128,21 +114,7 @@ SmaCCRHS >> generateUnnamedSymbolWarningFor: problemIndex [
 		ifTrue: [ ^ self ].
 	SmaCCCompilationNotification new
 		messageText: 'Node creation';
-		tagBlock: [ String
-				streamContents: [ :stream | 
-					stream
-						nextPutAll: 'Unnamed symbol in production. Without a variable name the value will be dropped from the parsed AST.';
-						cr;
-						cr;
-						nextPutAll: self productionSymbol name;
-						nextPutAll: ' : '.
-					1
-						to: self size
-						do: [ :i | 
-							i == problemIndex ifTrue: [ stream nextPutAll: '>>>' ].
-							stream nextPutAll: (self at: i) name.
-							i == problemIndex ifTrue: [ stream nextPutAll: '<<<' ].
-							stream space ] ] ];
+		issue: (SmaCCValueIsDroppedIssue on: self index: problemIndex);
 		signal
 ]
 
