@@ -223,6 +223,11 @@ TElixirProgramNodeVisitor >> visitGrammar: aGrammar [
 ]
 
 { #category : 'generated' }
+TElixirProgramNodeVisitor >> visitInterpolatedAtom: anInterpolatedAtom [
+	^ self visitProgram: anInterpolatedAtom
+]
+
+{ #category : 'generated' }
 TElixirProgramNodeVisitor >> visitInterpolatedString: anInterpolatedString [
 	^ self visitProgram: anInterpolatedString
 ]
