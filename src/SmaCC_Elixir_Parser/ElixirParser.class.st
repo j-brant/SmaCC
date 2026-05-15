@@ -7,7 +7,7 @@ Class {
 
 { #category : 'generated-accessing' }
 ElixirParser class >> cacheId [
-	^'2026-05-15T23:30:36.015016+08:00'
+	^'2026-05-16T00:03:56.062848+08:00'
 ]
 
 { #category : 'generated' }
@@ -16,8 +16,8 @@ ElixirParser class >> definitionComment [
 # Apache License 2.0: https://github.com/elixir-lang/elixir/blob/master/LICENSE
 
 
-%id <identifier> <do_identifier> <block_identifier> <bracket_identifier> <paren_identifier> <op_identifier> 
-	<dot_call_op> <dot_op> <eol> <kw_identifier> <map_op> <struct_op> <semicolon> <alias> <string> <dual_op> <unary_op> <interpolatedStringMid> <interpolatedStringEnd>;
+%id <identifier> <do_identifier> <block_identifier> <bracket_identifier> <paren_identifier> <op_identifier>
+	<dot_call_op> <dot_op> <eol> <kw_identifier> <map_op> <struct_op> <semicolon> <alias> <string> <dual_op> <unary_op> <interpolatedStringStart> <interpolatedStringMid> <interpolatedStringEnd>;
 
 <decimal>
 	: [0-9]+ (_ [0-9]+)*
@@ -642,8 +642,8 @@ fn_eoe
 	;
 
 do_eoe 
-	: ""do"" 'do'
-	| ""do"" 'do' eoe 'eoe'
+	: ""do"" 'do' {{}}
+	| ""do"" 'do' eoe 'eoe' {{}}
 	;
 
 end_eoe 
@@ -997,306 +997,306 @@ ElixirParser class >> initialize [
 { #category : 'generated' }
 ElixirParser class >> reduceTable [
 ^#(
-	#(63 0 #reduceActionForgrammar6: 6520838 false) 
-	#(104 1 #liftFirstValue: 16855041 false) 
-	#(109 1 #liftFirstValue: 17045505 false) 
-	#(107 1 #liftFirstValue: 16977921 false) 
-	#(77 1 #reduceActionForaccess_expr15: 13222927 false) 
-	#(94 1 #reduceActionForfn_eoe1: 15638529 false) 
-	#(77 1 #reduceActionForaccess_expr16: 13222928 false) 
-	#(77 1 #reduceActionForaccess_expr14: 13222926 false) 
-	#(111 1 #liftFirstValue: 17099777 false) 
-	#(85 1 #reduceActionFornumber1: 14393345 false) 
-	#(77 1 #reduceActionForaccess_expr24: 13222936 false) 
-	#(81 1 #reduceActionForbin_string1: 14197761 false) 
-	#(83 1 #reduceActionForbin_heredoc1: 14286849 false) 
-	#(82 1 #reduceActionForlist_string1: 14240769 false) 
-	#(84 1 #reduceActionForlist_heredoc1: 14339073 false) 
-	#(93 1 #liftFirstValue: 15603713 false) 
-	#(155 1 #reduceActionFormap2: 23643138 false) 
-	#(150 1 #liftFirstValue: 22758401 false) 
-	#(113 1 #liftFirstValue: 17174530 false) 
-	#(113 1 #liftFirstValue: 17174529 false) 
-	#(85 1 #reduceActionFornumber2: 14393346 false) 
-	#(85 1 #reduceActionFornumber3: 14393347 false) 
-	#(77 1 #reduceActionForaccess_expr23: 13222935 false) 
-	#(114 1 #reduceActionFordot_identifier1: 17247233 false) 
-	#(115 1 #reduceActionFordot_alias1: 17376257 false) 
-	#(93 1 #liftFirstValue: 15603714 false) 
-	#(116 1 #reduceActionFordot_op_identifier1: 17674241 false) 
-	#(63 1 #reduceActionForgrammar2: 6520834 false) 
-	#(64 1 #reduceActionForexpr_list1: 6768641 false) 
-	#(65 1 #liftFirstValue: 6857729 false) 
-	#(65 1 #liftFirstValue: 6857731 false) 
-	#(65 1 #liftFirstValue: 6857730 false) 
-	#(67 1 #reduceActionForunmatched_expr8: 8786952 false) 
-	#(68 1 #reduceActionForno_parens_expr5: 9188357 false) 
-	#(68 1 #reduceActionForno_parens_expr5: 9188358 false) 
-	#(66 1 #reduceActionFormatched_expr5: 8528901 false) 
-	#(153 1 #reduceActionForsub_matched_expr1: 23353345 false) 
-	#(153 1 #reduceActionForsub_matched_expr1: 23353346 false) 
-	#(77 1 #liftFirstValue: 13222934 false) 
-	#(77 1 #liftFirstValue: 13222929 false) 
-	#(77 1 #liftFirstValue: 13222930 false) 
-	#(77 1 #liftFirstValue: 13222931 false) 
-	#(77 1 #liftFirstValue: 13222932 false) 
-	#(77 1 #liftFirstValue: 13222922 false) 
-	#(77 1 #liftFirstValue: 13222938 false) 
-	#(77 1 #liftFirstValue: 13222914 false) 
-	#(77 1 #liftFirstValue: 13222913 false) 
-	#(63 1 #reduceActionForgrammar1: 6520833 false) 
-	#(77 1 #liftFirstValue: 13222921 false) 
-	#(76 1 #liftFirstValue: 12903426 false) 
-	#(77 1 #liftFirstValue: 13222937 false) 
-	#(76 1 #liftFirstValue: 12903425 false) 
-	#(120 1 #reduceActionFordot_call_identifier1: 18251777 false) 
-	#(77 1 #liftFirstValue: 13222923 false) 
-	#(77 1 #liftFirstValue: 13222925 false) 
-	#(77 1 #liftFirstValue: 13222933 false) 
-	#(66 1 #reduceActionFormatched_expr5: 8528902 false) 
-	#(77 1 #liftFirstValue: 13222924 false) 
-	#(118 1 #reduceActionFordot_bracket_identifier1: 17952769 false) 
-	#(117 1 #reduceActionFordot_do_identifier1: 17814529 false) 
-	#(119 1 #reduceActionFordot_paren_identifier1: 18105345 false) 
-	#(94 2 #reduceActionForfn_eoe2: 15638530 false) 
-	#(80 0 #reduceActionFor__interpolatedStringMid___part__expr__expression___1: 14102529 false) 
-	#(155 2 #reduceActionFormap3: 23643139 false) 
-	#(154 1 #reduceActionFormap_base_expr1: 23514113 false) 
-	#(77 2 #reduceActionForaccess_expr3: 13222915 false) 
-	#(67 2 #reduceActionForunmatched_expr7: 8786951 false) 
-	#(66 2 #reduceActionFormatched_expr4: 8528900 false) 
-	#(68 2 #reduceActionFormatched_expr4: 9188356 false) 
-	#(67 2 #reduceActionForunmatched_expr7: 8786950 false) 
-	#(66 2 #reduceActionFormatched_expr4: 8528899 false) 
-	#(68 2 #reduceActionFormatched_expr4: 9188355 false) 
-	#(63 2 #reduceActionForgrammar4: 6520836 false) 
-	#(120 2 #reduceActionFordot_call_identifier2: 18251778 false) 
-	#(66 2 #reduceActionFormatched_expr1: 8528897 false) 
-	#(67 2 #reduceActionForunmatched_expr1: 8786945 false) 
-	#(68 2 #reduceActionForno_parens_expr1: 9188353 false) 
-	#(67 2 #reduceActionFormatched_expr1: 8786946 false) 
-	#(67 2 #reduceActionFormatched_expr1: 8786947 false) 
-	#(67 2 #reduceActionFormatched_expr1: 8786948 false) 
-	#(153 2 #reduceActionForsub_matched_expr3: 23353347 false) 
-	#(90 2 #reduceActionForbracket_expr2: 15093762 false) 
-	#(63 2 #reduceActionForgrammar3: 6520835 false) 
-	#(101 1 #reduceActionForstab_op_eol_and_expr1: 16617473 false) 
-	#(135 1 #liftFirstValue: 20729857 false) 
-	#(100 1 #reduceActionForstab_expr1: 16148481 false) 
-	#(124 1 #liftFirstValue: 18792450 false) 
-	#(125 1 #liftFirstValue: 18867201 false) 
-	#(98 1 #reduceActionForstab1: 15918081 false) 
-	#(100 1 #reduceActionForstab_expr1: 16148482 false) 
-	#(126 1 #reduceActionForcall_args_no_parens_many2: 18918402 false) 
-	#(123 1 #liftFirstValue: 18673665 false) 
-	#(123 1 #liftFirstValue: 18673666 false) 
-	#(123 1 #liftFirstValue: 18673667 false) 
-	#(139 1 #reduceActionForcall_args_no_parens_kw1: 21152769 false) 
-	#(124 1 #liftFirstValue: 18792449 false) 
-	#(106 2 #reduceActionForempty_paren1: 16916481 false) 
-	#(99 1 #liftFirstValue: 15994881 false) 
-	#(141 2 #reduceActionForlist1: 21504001 false) 
-	#(129 1 #liftFirstValue: 19581953 false) 
-	#(129 1 #liftFirstValue: 19581954 false) 
-	#(129 1 #liftFirstValue: 19581955 false) 
-	#(130 1 #reduceActionForcontainer_args_base1: 19658753 false) 
-	#(140 1 #reduceActionForlist_args2: 21308418 false) 
-	#(137 1 #reduceActionForkw1: 20984833 false) 
-	#(140 1 #reduceActionForlist_args1: 21308417 false) 
-	#(143 2 #reduceActionForbit_string1: 21797889 false) 
-	#(131 1 #reduceActionForcontainer_args1: 19787777 false) 
-	#(142 2 #reduceActionFortuple1: 21653505 false) 
-	#(67 2 #reduceActionForunmatched_expr7: 8786949 false) 
-	#(66 2 #reduceActionFormatched_expr4: 8528898 false) 
-	#(68 2 #reduceActionFormatched_expr4: 9188354 false) 
-	#(75 2 #reduceActionForno_parens_one_expr2: 12743682 false) 
-	#(73 2 #reduceActionForno_parens_one_ambig_expr2: 12370946 false) 
-	#(127 1 #reduceActionForcall_args_no_parens_many_strict1: 19168257 false) 
-	#(74 2 #reduceActionForno_parens_many_expr2: 12553218 false) 
-	#(75 2 #reduceActionForno_parens_one_expr2: 12743681 false) 
-	#(73 2 #reduceActionForno_parens_one_ambig_expr2: 12370945 false) 
-	#(74 2 #reduceActionForno_parens_many_expr2: 12553217 false) 
-	#(95 1 #liftFirstValue: 15697921 false) 
-	#(69 2 #reduceActionForblock_expr3: 9476099 false) 
-	#(90 2 #reduceActionForbracket_expr2: 15093761 false) 
-	#(86 2 #reduceActionForparens_call1: 14504961 false) 
-	#(155 2 #reduceActionFormap3: 23643137 false) 
-	#(154 2 #reduceActionFormatched_expr4: 23514114 false) 
-	#(152 2 #reduceActionFormap_args1: 22929409 false) 
-	#(148 1 #reduceActionForassoc_base1: 22580225 false) 
-	#(149 1 #liftFirstValue: 22679553 false) 
-	#(152 2 #reduceActionFormap_args2: 22929410 false) 
-	#(145 1 #reduceActionForassoc_expr5: 21966853 false) 
-	#(154 2 #reduceActionFormatched_expr4: 23514115 false) 
-	#(155 3 #reduceActionFormap4: 23643140 false) 
-	#(91 3 #reduceActionForbracket_at_expr2: 15223810 false) 
-	#(91 3 #reduceActionForbracket_at_expr2: 15223809 false) 
-	#(64 3 #reduceActionForexpr_list2: 6768642 false) 
-	#(70 2 #reduceActionFormatched_op_expr14: 9924622 false) 
-	#(71 2 #reduceActionForunmatched_op_expr13: 10683405 false) 
-	#(72 2 #reduceActionForno_parens_op_expr13: 11474957 false) 
-	#(70 2 #reduceActionFormatched_op_expr14: 9924619 false) 
-	#(71 2 #reduceActionForunmatched_op_expr13: 10683403 false) 
-	#(72 2 #reduceActionForno_parens_op_expr13: 11474955 false) 
-	#(72 2 #reduceActionForno_parens_op_expr13: 11474960 false) 
-	#(70 2 #reduceActionFormatched_op_expr14: 9924618 false) 
-	#(71 2 #reduceActionForunmatched_op_expr13: 10683402 false) 
-	#(72 2 #reduceActionForno_parens_op_expr13: 11474954 false) 
-	#(70 2 #reduceActionFormatched_op_expr14: 9924620 false) 
-	#(71 2 #reduceActionForunmatched_op_expr13: 10683404 false) 
-	#(72 2 #reduceActionForno_parens_op_expr13: 11474956 false) 
-	#(70 2 #reduceActionFormatched_op_expr14: 9924609 false) 
-	#(71 2 #reduceActionForunmatched_op_expr13: 10683393 false) 
-	#(72 2 #reduceActionForno_parens_op_expr13: 11474945 false) 
-	#(70 2 #reduceActionFormatched_op_expr14: 9924615 false) 
-	#(71 2 #reduceActionForunmatched_op_expr13: 10683399 false) 
-	#(72 2 #reduceActionForno_parens_op_expr13: 11474951 false) 
-	#(70 2 #reduceActionFormatched_op_expr14: 9924614 false) 
-	#(71 2 #reduceActionForunmatched_op_expr13: 10683398 false) 
-	#(72 2 #reduceActionForno_parens_op_expr13: 11474950 false) 
-	#(70 2 #reduceActionFormatched_op_expr14: 9924621 false) 
-	#(71 2 #reduceActionForunmatched_op_expr13: 10683406 false) 
-	#(72 2 #reduceActionForno_parens_op_expr13: 11474958 false) 
-	#(70 2 #reduceActionFormatched_op_expr14: 9924623 false) 
-	#(71 2 #reduceActionForunmatched_op_expr13: 10683407 false) 
-	#(72 2 #reduceActionForno_parens_op_expr13: 11474959 false) 
-	#(70 2 #reduceActionFormatched_op_expr14: 9924616 false) 
-	#(71 2 #reduceActionForunmatched_op_expr13: 10683400 false) 
-	#(72 2 #reduceActionForno_parens_op_expr13: 11474952 false) 
-	#(70 2 #reduceActionFormatched_op_expr14: 9924613 false) 
-	#(71 2 #reduceActionForunmatched_op_expr13: 10683397 false) 
-	#(72 2 #reduceActionForno_parens_op_expr13: 11474949 false) 
-	#(70 2 #reduceActionFormatched_op_expr14: 9924612 false) 
-	#(71 2 #reduceActionForunmatched_op_expr13: 10683396 false) 
-	#(72 2 #reduceActionForno_parens_op_expr13: 11474948 false) 
-	#(70 2 #reduceActionFormatched_op_expr14: 9924610 false) 
-	#(71 2 #reduceActionForunmatched_op_expr13: 10683394 false) 
-	#(72 2 #reduceActionForno_parens_op_expr13: 11474946 false) 
-	#(70 2 #reduceActionFormatched_op_expr14: 9924611 false) 
-	#(71 2 #reduceActionForunmatched_op_expr13: 10683395 false) 
-	#(72 2 #reduceActionForno_parens_op_expr13: 11474947 false) 
-	#(70 2 #reduceActionFormatched_op_expr14: 9924617 false) 
-	#(71 2 #reduceActionForunmatched_op_expr13: 10683401 false) 
-	#(72 2 #reduceActionForno_parens_op_expr13: 11474953 false) 
-	#(114 3 #reduceActionFordot_identifier2: 17247234 false) 
-	#(115 3 #reduceActionFordot_alias2: 17376258 false) 
-	#(116 3 #reduceActionFordot_op_identifier2: 17674242 false) 
-	#(118 3 #reduceActionFordot_bracket_identifier2: 17952770 false) 
-	#(117 3 #reduceActionFordot_do_identifier2: 17814530 false) 
-	#(119 3 #reduceActionFordot_paren_identifier2: 18105346 false) 
-	#(108 1 #liftFirstValue: 17003521 false) 
-	#(88 1 #reduceActionForbracket_values1: 14732289 false) 
-	#(89 2 #reduceActionForbracket_arg1: 14845953 false) 
-	#(87 1 #liftFirstValue: 14676994 false) 
-	#(87 1 #liftFirstValue: 14676993 false) 
-	#(63 3 #reduceActionForgrammar5: 6520837 false) 
-	#(101 2 #reduceActionForstab_op_eol_and_expr2: 16617474 false) 
-	#(96 1 #reduceActionForend_eoe1: 15747073 false) 
-	#(77 3 #reduceActionForaccess_expr5: 13222917 false) 
-	#(100 2 #reduceActionForstab_expr3: 16148483 false) 
-	#(100 2 #reduceActionForstab_expr3: 16148485 false) 
-	#(100 2 #reduceActionForstab_expr3: 16148486 false) 
-	#(138 2 #reduceActionForcall_args_no_parens_kw_expr1: 21035009 false) 
-	#(138 2 #reduceActionForcall_args_no_parens_kw_expr1: 21035010 false) 
-	#(105 1 #liftFirstValue: 16878593 false) 
-	#(77 3 #reduceActionForaccess_expr8: 13222920 false) 
-	#(99 2 #reduceActionForstab_eoe2: 15994882 false) 
-	#(77 3 #reduceActionForaccess_expr6: 13222918 false) 
-	#(140 2 #reduceActionForlist_args3: 21308419 false) 
-	#(136 2 #reduceActionForkw_base1: 20856833 false) 
-	#(137 2 #reduceActionForkw2: 20984834 false) 
-	#(141 3 #reduceActionForlist2: 21504002 false) 
-	#(131 2 #reduceActionForcontainer_args2: 19787778 false) 
-	#(110 1 #liftFirstValue: 17068033 false) 
-	#(143 3 #reduceActionForbit_string2: 21797890 false) 
-	#(112 1 #liftFirstValue: 17123329 false) 
-	#(142 3 #reduceActionFortuple2: 21653506 false) 
-	#(69 3 #reduceActionForblock_expr5: 9476101 false) 
-	#(69 3 #reduceActionForblock_expr5: 9476100 false) 
-	#(95 2 #liftSecondValue: 15697922 false) 
-	#(92 2 #reduceActionFordo_block1: 15394817 false) 
-	#(97 1 #reduceActionForblock_eoe1: 15811585 false) 
-	#(102 1 #reduceActionForblock_item2: 16680962 false) 
-	#(103 1 #reduceActionForblock_list1: 16763905 false) 
-	#(134 2 #reduceActionForcall_args_parens1: 20150273 false) 
-	#(132 1 #liftFirstValue: 19932161 false) 
-	#(132 1 #liftFirstValue: 19932162 false) 
-	#(132 1 #liftFirstValue: 19932163 false) 
-	#(133 1 #reduceActionForcall_args_parens_base1: 20016129 false) 
-	#(69 3 #reduceActionForblock_expr5: 9476097 false) 
-	#(86 3 #reduceActionForparens_call2: 14504962 false) 
-	#(78 4 #reduceActionForinterpolated_string1: 14026753 false) 
-	#(80 2 #reduceActionFor__interpolatedStringMid___part__expr__expression___2: 14102530 false) 
-	#(144 1 #liftFirstValue: 21928961 false) 
-	#(151 2 #reduceActionFormap_close1: 22789121 false) 
-	#(152 3 #reduceActionFormap_args3: 22929411 false) 
-	#(152 3 #reduceActionFormap_args3: 22929416 false) 
-	#(149 2 #reduceActionForassoc2: 22679554 false) 
-	#(151 2 #reduceActionFormap_close2: 22789122 false) 
-	#(77 4 #reduceActionForaccess_expr4: 13222916 false) 
-	#(115 4 #reduceActionFordot_alias3: 17376259 false) 
-	#(89 3 #reduceActionForbracket_arg2: 14845954 false) 
-	#(89 3 #reduceActionForbracket_arg3: 14845955 false) 
-	#(121 1 #liftFirstValue: 18411521 false) 
-	#(121 1 #liftFirstValue: 18411522 false) 
-	#(122 3 #reduceActionForcall_args_no_parens_comma_expr1: 18479105 false) 
-	#(126 3 #reduceActionForcall_args_no_parens_many1: 18918401 false) 
-	#(96 2 #reduceActionForend_eoe2: 15747074 false) 
-	#(98 3 #reduceActionForstab2: 15918082 false) 
-	#(128 3 #reduceActionForstab_parens_many2: 19395586 false) 
-	#(128 3 #reduceActionForstab_parens_many2: 19395585 false) 
-	#(122 3 #reduceActionForcall_args_no_parens_comma_expr2: 18479106 false) 
-	#(126 3 #reduceActionForcall_args_no_parens_many1: 18918403 false) 
-	#(139 3 #reduceActionForcall_args_no_parens_kw2: 21152770 false) 
-	#(77 4 #reduceActionForaccess_expr7: 13222919 false) 
-	#(140 3 #reduceActionForlist_args3: 21308420 false) 
-	#(130 3 #reduceActionForcontainer_args_base2: 19658754 false) 
-	#(140 3 #reduceActionForlist_args5: 21308421 false) 
-	#(137 3 #reduceActionForkw2: 20984835 false) 
-	#(141 4 #reduceActionForlist3: 21504003 false) 
-	#(131 3 #reduceActionForcontainer_args3: 19787779 false) 
-	#(127 3 #reduceActionForcall_args_no_parens_many_strict3: 19168259 false) 
-	#(127 3 #reduceActionForcall_args_no_parens_many_strict3: 19168258 false) 
-	#(97 2 #reduceActionForblock_eoe2: 15811586 false) 
-	#(102 2 #reduceActionForblock_item1: 16680961 false) 
-	#(92 3 #reduceActionFordo_block2: 15394818 false) 
-	#(103 2 #reduceActionForblock_list2: 16763906 false) 
-	#(92 3 #reduceActionFordo_block3: 15394819 false) 
-	#(134 3 #reduceActionForcall_args_parens2: 20150274 false) 
-	#(134 3 #reduceActionForcall_args_parens2: 20150277 false) 
-	#(134 3 #reduceActionForcall_args_parens3: 20150275 false) 
-	#(69 4 #reduceActionForblock_expr2: 9476098 false) 
-	#(79 2 #reduceActionFor__interpolatedStringMid___part__expr__expression__1: 14102529 false) 
-	#(147 3 #reduceActionForassoc_update_kw1: 22436865 false) 
-	#(146 3 #reduceActionForassoc_update1: 22264833 false) 
-	#(145 3 #reduceActionForassoc_expr1: 21966849 false) 
-	#(145 3 #reduceActionForassoc_expr1: 21966851 false) 
-	#(147 3 #reduceActionForassoc_update_kw1: 22436866 false) 
-	#(146 3 #reduceActionForassoc_update2: 22264834 false) 
-	#(145 3 #reduceActionForassoc_expr1: 21966852 false) 
-	#(145 3 #reduceActionForassoc_expr1: 21966850 false) 
-	#(152 4 #reduceActionFormap_args4: 22929412 false) 
-	#(152 4 #reduceActionFormap_args6: 22929414 false) 
-	#(149 3 #reduceActionForassoc2: 22679555 false) 
-	#(148 3 #reduceActionForassoc_base2: 22580226 false) 
-	#(115 5 #reduceActionFordot_alias4: 17376260 false) 
-	#(88 3 #reduceActionForbracket_values2: 14732290 false) 
-	#(89 4 #reduceActionForbracket_arg4: 14845956 false) 
-	#(100 4 #reduceActionForstab_expr4: 16148484 false) 
-	#(100 4 #reduceActionForstab_expr4: 16148487 false) 
-	#(140 4 #reduceActionForlist_args6: 21308422 false) 
-	#(136 4 #reduceActionForkw_base2: 20856834 false) 
-	#(92 4 #reduceActionFordo_block4: 15394820 false) 
-	#(133 3 #reduceActionForcall_args_parens_base2: 20016130 false) 
-	#(134 4 #reduceActionForcall_args_parens4: 20150276 false) 
-	#(152 5 #reduceActionFormap_args5: 22929413 false) 
-	#(152 5 #reduceActionFormap_args7: 22929415 false) 
-	#(148 4 #reduceActionForassoc_base3: 22580227 false) 
-	#(151 4 #reduceActionFormap_close3: 22789123 false) 
-	#(136 5 #reduceActionForkw_base3: 20856835 false) 
-	#(134 5 #reduceActionForcall_args_parens6: 20150278 false) 
-	#(151 5 #reduceActionFormap_close4: 22789124 false) 
-	#(134 6 #reduceActionForcall_args_parens7: 20150279 false)
+	#(63 0 #reduceActionForgrammar6: 6546438 false) 
+	#(104 1 #liftFirstValue: 16890881 false) 
+	#(109 1 #liftFirstValue: 17081345 false) 
+	#(107 1 #liftFirstValue: 17013761 false) 
+	#(77 1 #reduceActionForaccess_expr15: 13248527 false) 
+	#(94 1 #reduceActionForfn_eoe1: 15664129 false) 
+	#(77 1 #reduceActionForaccess_expr16: 13248528 false) 
+	#(77 1 #reduceActionForaccess_expr14: 13248526 false) 
+	#(111 1 #liftFirstValue: 17135617 false) 
+	#(85 1 #reduceActionFornumber1: 14418945 false) 
+	#(77 1 #reduceActionForaccess_expr24: 13248536 false) 
+	#(81 1 #reduceActionForbin_string1: 14223361 false) 
+	#(83 1 #reduceActionForbin_heredoc1: 14312449 false) 
+	#(82 1 #reduceActionForlist_string1: 14266369 false) 
+	#(84 1 #reduceActionForlist_heredoc1: 14364673 false) 
+	#(93 1 #liftFirstValue: 15629313 false) 
+	#(155 1 #reduceActionFormap2: 23678978 false) 
+	#(150 1 #liftFirstValue: 22794241 false) 
+	#(113 1 #liftFirstValue: 17210370 false) 
+	#(113 1 #liftFirstValue: 17210369 false) 
+	#(85 1 #reduceActionFornumber2: 14418946 false) 
+	#(85 1 #reduceActionFornumber3: 14418947 false) 
+	#(77 1 #reduceActionForaccess_expr23: 13248535 false) 
+	#(114 1 #reduceActionFordot_identifier1: 17283073 false) 
+	#(115 1 #reduceActionFordot_alias1: 17412097 false) 
+	#(93 1 #liftFirstValue: 15629314 false) 
+	#(116 1 #reduceActionFordot_op_identifier1: 17710081 false) 
+	#(63 1 #reduceActionForgrammar2: 6546434 false) 
+	#(64 1 #reduceActionForexpr_list1: 6794241 false) 
+	#(65 1 #liftFirstValue: 6883329 false) 
+	#(65 1 #liftFirstValue: 6883331 false) 
+	#(65 1 #liftFirstValue: 6883330 false) 
+	#(67 1 #reduceActionForunmatched_expr8: 8812552 false) 
+	#(68 1 #reduceActionForno_parens_expr5: 9213957 false) 
+	#(68 1 #reduceActionForno_parens_expr5: 9213958 false) 
+	#(66 1 #reduceActionFormatched_expr5: 8554501 false) 
+	#(153 1 #reduceActionForsub_matched_expr1: 23389185 false) 
+	#(153 1 #reduceActionForsub_matched_expr1: 23389186 false) 
+	#(77 1 #liftFirstValue: 13248534 false) 
+	#(77 1 #liftFirstValue: 13248529 false) 
+	#(77 1 #liftFirstValue: 13248530 false) 
+	#(77 1 #liftFirstValue: 13248531 false) 
+	#(77 1 #liftFirstValue: 13248532 false) 
+	#(77 1 #liftFirstValue: 13248522 false) 
+	#(77 1 #liftFirstValue: 13248538 false) 
+	#(77 1 #liftFirstValue: 13248514 false) 
+	#(77 1 #liftFirstValue: 13248513 false) 
+	#(63 1 #reduceActionForgrammar1: 6546433 false) 
+	#(77 1 #liftFirstValue: 13248521 false) 
+	#(76 1 #liftFirstValue: 12929026 false) 
+	#(77 1 #liftFirstValue: 13248537 false) 
+	#(76 1 #liftFirstValue: 12929025 false) 
+	#(120 1 #reduceActionFordot_call_identifier1: 18287617 false) 
+	#(77 1 #liftFirstValue: 13248523 false) 
+	#(77 1 #liftFirstValue: 13248525 false) 
+	#(77 1 #liftFirstValue: 13248533 false) 
+	#(66 1 #reduceActionFormatched_expr5: 8554502 false) 
+	#(77 1 #liftFirstValue: 13248524 false) 
+	#(118 1 #reduceActionFordot_bracket_identifier1: 17988609 false) 
+	#(117 1 #reduceActionFordot_do_identifier1: 17850369 false) 
+	#(119 1 #reduceActionFordot_paren_identifier1: 18141185 false) 
+	#(94 2 #reduceActionForfn_eoe2: 15664130 false) 
+	#(80 0 #reduceActionFor__interpolatedStringMid___part__expr__expression___1: 14128129 false) 
+	#(155 2 #reduceActionFormap3: 23678979 false) 
+	#(154 1 #reduceActionFormap_base_expr1: 23549953 false) 
+	#(77 2 #reduceActionForaccess_expr3: 13248515 false) 
+	#(67 2 #reduceActionForunmatched_expr7: 8812551 false) 
+	#(66 2 #reduceActionFormatched_expr4: 8554500 false) 
+	#(68 2 #reduceActionFormatched_expr4: 9213956 false) 
+	#(67 2 #reduceActionForunmatched_expr7: 8812550 false) 
+	#(66 2 #reduceActionFormatched_expr4: 8554499 false) 
+	#(68 2 #reduceActionFormatched_expr4: 9213955 false) 
+	#(63 2 #reduceActionForgrammar4: 6546436 false) 
+	#(120 2 #reduceActionFordot_call_identifier2: 18287618 false) 
+	#(66 2 #reduceActionFormatched_expr1: 8554497 false) 
+	#(67 2 #reduceActionForunmatched_expr1: 8812545 false) 
+	#(68 2 #reduceActionForno_parens_expr1: 9213953 false) 
+	#(67 2 #reduceActionFormatched_expr1: 8812546 false) 
+	#(67 2 #reduceActionFormatched_expr1: 8812547 false) 
+	#(67 2 #reduceActionFormatched_expr1: 8812548 false) 
+	#(153 2 #reduceActionForsub_matched_expr3: 23389187 false) 
+	#(90 2 #reduceActionForbracket_expr2: 15119362 false) 
+	#(63 2 #reduceActionForgrammar3: 6546435 false) 
+	#(101 1 #reduceActionForstab_op_eol_and_expr1: 16653313 false) 
+	#(135 1 #liftFirstValue: 20765697 false) 
+	#(100 1 #reduceActionForstab_expr1: 16184321 false) 
+	#(124 1 #liftFirstValue: 18828290 false) 
+	#(125 1 #liftFirstValue: 18903041 false) 
+	#(98 1 #reduceActionForstab1: 15953921 false) 
+	#(100 1 #reduceActionForstab_expr1: 16184322 false) 
+	#(126 1 #reduceActionForcall_args_no_parens_many2: 18954242 false) 
+	#(123 1 #liftFirstValue: 18709505 false) 
+	#(123 1 #liftFirstValue: 18709506 false) 
+	#(123 1 #liftFirstValue: 18709507 false) 
+	#(139 1 #reduceActionForcall_args_no_parens_kw1: 21188609 false) 
+	#(124 1 #liftFirstValue: 18828289 false) 
+	#(106 2 #reduceActionForempty_paren1: 16952321 false) 
+	#(99 1 #liftFirstValue: 16030721 false) 
+	#(141 2 #reduceActionForlist1: 21539841 false) 
+	#(129 1 #liftFirstValue: 19617793 false) 
+	#(129 1 #liftFirstValue: 19617794 false) 
+	#(129 1 #liftFirstValue: 19617795 false) 
+	#(130 1 #reduceActionForcontainer_args_base1: 19694593 false) 
+	#(140 1 #reduceActionForlist_args2: 21344258 false) 
+	#(137 1 #reduceActionForkw1: 21020673 false) 
+	#(140 1 #reduceActionForlist_args1: 21344257 false) 
+	#(143 2 #reduceActionForbit_string1: 21833729 false) 
+	#(131 1 #reduceActionForcontainer_args1: 19823617 false) 
+	#(142 2 #reduceActionFortuple1: 21689345 false) 
+	#(67 2 #reduceActionForunmatched_expr7: 8812549 false) 
+	#(66 2 #reduceActionFormatched_expr4: 8554498 false) 
+	#(68 2 #reduceActionFormatched_expr4: 9213954 false) 
+	#(75 2 #reduceActionForno_parens_one_expr2: 12769282 false) 
+	#(73 2 #reduceActionForno_parens_one_ambig_expr2: 12396546 false) 
+	#(127 1 #reduceActionForcall_args_no_parens_many_strict1: 19204097 false) 
+	#(74 2 #reduceActionForno_parens_many_expr2: 12578818 false) 
+	#(75 2 #reduceActionForno_parens_one_expr2: 12769281 false) 
+	#(73 2 #reduceActionForno_parens_one_ambig_expr2: 12396545 false) 
+	#(74 2 #reduceActionForno_parens_many_expr2: 12578817 false) 
+	#(95 1 #reduceActionFordo_eoe1: 15723521 false) 
+	#(69 2 #reduceActionForblock_expr3: 9501699 false) 
+	#(90 2 #reduceActionForbracket_expr2: 15119361 false) 
+	#(86 2 #reduceActionForparens_call1: 14530561 false) 
+	#(155 2 #reduceActionFormap3: 23678977 false) 
+	#(154 2 #reduceActionFormatched_expr4: 23549954 false) 
+	#(152 2 #reduceActionFormap_args1: 22965249 false) 
+	#(148 1 #reduceActionForassoc_base1: 22616065 false) 
+	#(149 1 #liftFirstValue: 22715393 false) 
+	#(152 2 #reduceActionFormap_args2: 22965250 false) 
+	#(145 1 #reduceActionForassoc_expr5: 22002693 false) 
+	#(154 2 #reduceActionFormatched_expr4: 23549955 false) 
+	#(155 3 #reduceActionFormap4: 23678980 false) 
+	#(91 3 #reduceActionForbracket_at_expr2: 15249410 false) 
+	#(91 3 #reduceActionForbracket_at_expr2: 15249409 false) 
+	#(64 3 #reduceActionForexpr_list2: 6794242 false) 
+	#(70 2 #reduceActionFormatched_op_expr14: 9950222 false) 
+	#(71 2 #reduceActionForunmatched_op_expr13: 10709005 false) 
+	#(72 2 #reduceActionForno_parens_op_expr13: 11500557 false) 
+	#(70 2 #reduceActionFormatched_op_expr14: 9950219 false) 
+	#(71 2 #reduceActionForunmatched_op_expr13: 10709003 false) 
+	#(72 2 #reduceActionForno_parens_op_expr13: 11500555 false) 
+	#(72 2 #reduceActionForno_parens_op_expr13: 11500560 false) 
+	#(70 2 #reduceActionFormatched_op_expr14: 9950218 false) 
+	#(71 2 #reduceActionForunmatched_op_expr13: 10709002 false) 
+	#(72 2 #reduceActionForno_parens_op_expr13: 11500554 false) 
+	#(70 2 #reduceActionFormatched_op_expr14: 9950220 false) 
+	#(71 2 #reduceActionForunmatched_op_expr13: 10709004 false) 
+	#(72 2 #reduceActionForno_parens_op_expr13: 11500556 false) 
+	#(70 2 #reduceActionFormatched_op_expr14: 9950209 false) 
+	#(71 2 #reduceActionForunmatched_op_expr13: 10708993 false) 
+	#(72 2 #reduceActionForno_parens_op_expr13: 11500545 false) 
+	#(70 2 #reduceActionFormatched_op_expr14: 9950215 false) 
+	#(71 2 #reduceActionForunmatched_op_expr13: 10708999 false) 
+	#(72 2 #reduceActionForno_parens_op_expr13: 11500551 false) 
+	#(70 2 #reduceActionFormatched_op_expr14: 9950214 false) 
+	#(71 2 #reduceActionForunmatched_op_expr13: 10708998 false) 
+	#(72 2 #reduceActionForno_parens_op_expr13: 11500550 false) 
+	#(70 2 #reduceActionFormatched_op_expr14: 9950221 false) 
+	#(71 2 #reduceActionForunmatched_op_expr13: 10709006 false) 
+	#(72 2 #reduceActionForno_parens_op_expr13: 11500558 false) 
+	#(70 2 #reduceActionFormatched_op_expr14: 9950223 false) 
+	#(71 2 #reduceActionForunmatched_op_expr13: 10709007 false) 
+	#(72 2 #reduceActionForno_parens_op_expr13: 11500559 false) 
+	#(70 2 #reduceActionFormatched_op_expr14: 9950216 false) 
+	#(71 2 #reduceActionForunmatched_op_expr13: 10709000 false) 
+	#(72 2 #reduceActionForno_parens_op_expr13: 11500552 false) 
+	#(70 2 #reduceActionFormatched_op_expr14: 9950213 false) 
+	#(71 2 #reduceActionForunmatched_op_expr13: 10708997 false) 
+	#(72 2 #reduceActionForno_parens_op_expr13: 11500549 false) 
+	#(70 2 #reduceActionFormatched_op_expr14: 9950212 false) 
+	#(71 2 #reduceActionForunmatched_op_expr13: 10708996 false) 
+	#(72 2 #reduceActionForno_parens_op_expr13: 11500548 false) 
+	#(70 2 #reduceActionFormatched_op_expr14: 9950210 false) 
+	#(71 2 #reduceActionForunmatched_op_expr13: 10708994 false) 
+	#(72 2 #reduceActionForno_parens_op_expr13: 11500546 false) 
+	#(70 2 #reduceActionFormatched_op_expr14: 9950211 false) 
+	#(71 2 #reduceActionForunmatched_op_expr13: 10708995 false) 
+	#(72 2 #reduceActionForno_parens_op_expr13: 11500547 false) 
+	#(70 2 #reduceActionFormatched_op_expr14: 9950217 false) 
+	#(71 2 #reduceActionForunmatched_op_expr13: 10709001 false) 
+	#(72 2 #reduceActionForno_parens_op_expr13: 11500553 false) 
+	#(114 3 #reduceActionFordot_identifier2: 17283074 false) 
+	#(115 3 #reduceActionFordot_alias2: 17412098 false) 
+	#(116 3 #reduceActionFordot_op_identifier2: 17710082 false) 
+	#(118 3 #reduceActionFordot_bracket_identifier2: 17988610 false) 
+	#(117 3 #reduceActionFordot_do_identifier2: 17850370 false) 
+	#(119 3 #reduceActionFordot_paren_identifier2: 18141186 false) 
+	#(108 1 #liftFirstValue: 17039361 false) 
+	#(88 1 #reduceActionForbracket_values1: 14757889 false) 
+	#(89 2 #reduceActionForbracket_arg1: 14871553 false) 
+	#(87 1 #liftFirstValue: 14702594 false) 
+	#(87 1 #liftFirstValue: 14702593 false) 
+	#(63 3 #reduceActionForgrammar5: 6546437 false) 
+	#(101 2 #reduceActionForstab_op_eol_and_expr2: 16653314 false) 
+	#(96 1 #reduceActionForend_eoe1: 15782913 false) 
+	#(77 3 #reduceActionForaccess_expr5: 13248517 false) 
+	#(100 2 #reduceActionForstab_expr3: 16184323 false) 
+	#(100 2 #reduceActionForstab_expr3: 16184325 false) 
+	#(100 2 #reduceActionForstab_expr3: 16184326 false) 
+	#(138 2 #reduceActionForcall_args_no_parens_kw_expr1: 21070849 false) 
+	#(138 2 #reduceActionForcall_args_no_parens_kw_expr1: 21070850 false) 
+	#(105 1 #liftFirstValue: 16914433 false) 
+	#(77 3 #reduceActionForaccess_expr8: 13248520 false) 
+	#(99 2 #reduceActionForstab_eoe2: 16030722 false) 
+	#(77 3 #reduceActionForaccess_expr6: 13248518 false) 
+	#(140 2 #reduceActionForlist_args3: 21344259 false) 
+	#(136 2 #reduceActionForkw_base1: 20892673 false) 
+	#(137 2 #reduceActionForkw2: 21020674 false) 
+	#(141 3 #reduceActionForlist2: 21539842 false) 
+	#(131 2 #reduceActionForcontainer_args2: 19823618 false) 
+	#(110 1 #liftFirstValue: 17103873 false) 
+	#(143 3 #reduceActionForbit_string2: 21833730 false) 
+	#(112 1 #liftFirstValue: 17159169 false) 
+	#(142 3 #reduceActionFortuple2: 21689346 false) 
+	#(69 3 #reduceActionForblock_expr5: 9501701 false) 
+	#(69 3 #reduceActionForblock_expr5: 9501700 false) 
+	#(95 2 #reduceActionFordo_eoe2: 15723522 false) 
+	#(92 2 #reduceActionFordo_block1: 15420417 false) 
+	#(97 1 #reduceActionForblock_eoe1: 15847425 false) 
+	#(102 1 #reduceActionForblock_item2: 16716802 false) 
+	#(103 1 #reduceActionForblock_list1: 16799745 false) 
+	#(134 2 #reduceActionForcall_args_parens1: 20186113 false) 
+	#(132 1 #liftFirstValue: 19968001 false) 
+	#(132 1 #liftFirstValue: 19968002 false) 
+	#(132 1 #liftFirstValue: 19968003 false) 
+	#(133 1 #reduceActionForcall_args_parens_base1: 20051969 false) 
+	#(69 3 #reduceActionForblock_expr5: 9501697 false) 
+	#(86 3 #reduceActionForparens_call2: 14530562 false) 
+	#(78 4 #reduceActionForinterpolated_string1: 14052353 false) 
+	#(80 2 #reduceActionFor__interpolatedStringMid___part__expr__expression___2: 14128130 false) 
+	#(144 1 #liftFirstValue: 21964801 false) 
+	#(151 2 #reduceActionFormap_close1: 22824961 false) 
+	#(152 3 #reduceActionFormap_args3: 22965251 false) 
+	#(152 3 #reduceActionFormap_args3: 22965256 false) 
+	#(149 2 #reduceActionForassoc2: 22715394 false) 
+	#(151 2 #reduceActionFormap_close2: 22824962 false) 
+	#(77 4 #reduceActionForaccess_expr4: 13248516 false) 
+	#(115 4 #reduceActionFordot_alias3: 17412099 false) 
+	#(89 3 #reduceActionForbracket_arg2: 14871554 false) 
+	#(89 3 #reduceActionForbracket_arg3: 14871555 false) 
+	#(121 1 #liftFirstValue: 18447361 false) 
+	#(121 1 #liftFirstValue: 18447362 false) 
+	#(122 3 #reduceActionForcall_args_no_parens_comma_expr1: 18514945 false) 
+	#(126 3 #reduceActionForcall_args_no_parens_many1: 18954241 false) 
+	#(96 2 #reduceActionForend_eoe2: 15782914 false) 
+	#(98 3 #reduceActionForstab2: 15953922 false) 
+	#(128 3 #reduceActionForstab_parens_many2: 19431426 false) 
+	#(128 3 #reduceActionForstab_parens_many2: 19431425 false) 
+	#(122 3 #reduceActionForcall_args_no_parens_comma_expr2: 18514946 false) 
+	#(126 3 #reduceActionForcall_args_no_parens_many1: 18954243 false) 
+	#(139 3 #reduceActionForcall_args_no_parens_kw2: 21188610 false) 
+	#(77 4 #reduceActionForaccess_expr7: 13248519 false) 
+	#(140 3 #reduceActionForlist_args3: 21344260 false) 
+	#(130 3 #reduceActionForcontainer_args_base2: 19694594 false) 
+	#(140 3 #reduceActionForlist_args5: 21344261 false) 
+	#(137 3 #reduceActionForkw2: 21020675 false) 
+	#(141 4 #reduceActionForlist3: 21539843 false) 
+	#(131 3 #reduceActionForcontainer_args3: 19823619 false) 
+	#(127 3 #reduceActionForcall_args_no_parens_many_strict3: 19204099 false) 
+	#(127 3 #reduceActionForcall_args_no_parens_many_strict3: 19204098 false) 
+	#(97 2 #reduceActionForblock_eoe2: 15847426 false) 
+	#(102 2 #reduceActionForblock_item1: 16716801 false) 
+	#(92 3 #reduceActionFordo_block2: 15420418 false) 
+	#(103 2 #reduceActionForblock_list2: 16799746 false) 
+	#(92 3 #reduceActionFordo_block3: 15420419 false) 
+	#(134 3 #reduceActionForcall_args_parens2: 20186114 false) 
+	#(134 3 #reduceActionForcall_args_parens2: 20186117 false) 
+	#(134 3 #reduceActionForcall_args_parens3: 20186115 false) 
+	#(69 4 #reduceActionForblock_expr2: 9501698 false) 
+	#(79 2 #reduceActionFor__interpolatedStringMid___part__expr__expression__1: 14128129 false) 
+	#(147 3 #reduceActionForassoc_update_kw1: 22472705 false) 
+	#(146 3 #reduceActionForassoc_update1: 22300673 false) 
+	#(145 3 #reduceActionForassoc_expr1: 22002689 false) 
+	#(145 3 #reduceActionForassoc_expr1: 22002691 false) 
+	#(147 3 #reduceActionForassoc_update_kw1: 22472706 false) 
+	#(146 3 #reduceActionForassoc_update2: 22300674 false) 
+	#(145 3 #reduceActionForassoc_expr1: 22002692 false) 
+	#(145 3 #reduceActionForassoc_expr1: 22002690 false) 
+	#(152 4 #reduceActionFormap_args4: 22965252 false) 
+	#(152 4 #reduceActionFormap_args6: 22965254 false) 
+	#(149 3 #reduceActionForassoc2: 22715395 false) 
+	#(148 3 #reduceActionForassoc_base2: 22616066 false) 
+	#(115 5 #reduceActionFordot_alias4: 17412100 false) 
+	#(88 3 #reduceActionForbracket_values2: 14757890 false) 
+	#(89 4 #reduceActionForbracket_arg4: 14871556 false) 
+	#(100 4 #reduceActionForstab_expr4: 16184324 false) 
+	#(100 4 #reduceActionForstab_expr4: 16184327 false) 
+	#(140 4 #reduceActionForlist_args6: 21344262 false) 
+	#(136 4 #reduceActionForkw_base2: 20892674 false) 
+	#(92 4 #reduceActionFordo_block4: 15420420 false) 
+	#(133 3 #reduceActionForcall_args_parens_base2: 20051970 false) 
+	#(134 4 #reduceActionForcall_args_parens4: 20186116 false) 
+	#(152 5 #reduceActionFormap_args5: 22965253 false) 
+	#(152 5 #reduceActionFormap_args7: 22965255 false) 
+	#(148 4 #reduceActionForassoc_base3: 22616067 false) 
+	#(151 4 #reduceActionFormap_close3: 22824963 false) 
+	#(136 5 #reduceActionForkw_base3: 20892675 false) 
+	#(134 5 #reduceActionForcall_args_parens6: 20186118 false) 
+	#(151 5 #reduceActionFormap_close4: 22824964 false) 
+	#(134 6 #reduceActionForcall_args_parens7: 20186119 false)
 	).
 ]
 
@@ -1549,7 +1549,7 @@ ElixirParser class >> symbolNames [
 
 { #category : 'generated' }
 ElixirParser class >> symbolTypes [
-	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #ElixirGrammarNode #ElixirGrammarNode #ElixirExprListNode #ElixirProgramNode #ElixirMatchedExprNode #ElixirUnmatchedExprNode #ElixirNoParensExprNode #ElixirBlockExprNode #ElixirMatchedOpExprNode #ElixirUnmatchedOpExprNode #ElixirNoParensOpExprNode #ElixirNoParensOneAmbigExprNode #ElixirNoParensManyExprNode #ElixirNoParensOneExprNode #ElixirProgramNode #ElixirProgramNode #ElixirInterpolatedStringNode #OrderedCollection #OrderedCollection #ElixirBinStringNode #ElixirListStringNode #ElixirBinHeredocNode #ElixirListHeredocNode #ElixirNumberNode #ElixirParensCallNode #ElixirProgramNode #ElixirBracketValuesNode #ElixirBracketArgNode #ElixirBracketExprNode #ElixirBracketAtExprNode #ElixirDoBlockNode #SmaCCToken #ElixirFnEoeNode #SmaCCToken #ElixirEndEoeNode #ElixirBlockEoeNode #ElixirStabNode #ElixirStabNode #ElixirStabExprNode #ElixirStabOpEolAndExprNode #ElixirBlockItemNode #ElixirBlockListNode #SmaCCToken #SmaCCToken #ElixirEmptyParenNode #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #ElixirDotIdentifierNode #ElixirDotAliasNode #ElixirDotOpIdentifierNode #ElixirDotDoIdentifierNode #ElixirDotBracketIdentifierNode #ElixirDotParenIdentifierNode #ElixirDotCallIdentifierNode #ElixirProgramNode #ElixirCallArgsNoParensCommaExprNode #ElixirProgramNode #ElixirProgramNode #ElixirNoParensExprNode #ElixirCallArgsNoParensManyNode #ElixirCallArgsNoParensManyStrictNode #ElixirStabParensManyNode #ElixirProgramNode #ElixirContainerArgsBaseNode #ElixirContainerArgsNode #ElixirProgramNode #ElixirCallArgsParensBaseNode #ElixirCallArgsParensNode #SmaCCToken #ElixirKwBaseNode #ElixirKwNode #ElixirCallArgsNoParensKwExprNode #ElixirCallArgsNoParensKwNode #ElixirListArgsNode #ElixirListNode #ElixirTupleNode #ElixirBitStringNode #SmaCCToken #ElixirAssocExprNode #ElixirAssocUpdateNode #ElixirAssocUpdateKwNode #ElixirAssocBaseNode #ElixirProgramNode #SmaCCToken #OrderedCollection #ElixirMapArgsNode #ElixirSubMatchedExprNode #ElixirMapBaseExprNode #ElixirMapNode #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCErrorNode)
+	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #ElixirGrammarNode #ElixirGrammarNode #ElixirExprListNode #ElixirProgramNode #ElixirMatchedExprNode #ElixirUnmatchedExprNode #ElixirNoParensExprNode #ElixirBlockExprNode #ElixirMatchedOpExprNode #ElixirUnmatchedOpExprNode #ElixirNoParensOpExprNode #ElixirNoParensOneAmbigExprNode #ElixirNoParensManyExprNode #ElixirNoParensOneExprNode #ElixirProgramNode #ElixirProgramNode #ElixirInterpolatedStringNode #OrderedCollection #OrderedCollection #ElixirBinStringNode #ElixirListStringNode #ElixirBinHeredocNode #ElixirListHeredocNode #ElixirNumberNode #ElixirParensCallNode #ElixirProgramNode #ElixirBracketValuesNode #ElixirBracketArgNode #ElixirBracketExprNode #ElixirBracketAtExprNode #ElixirDoBlockNode #SmaCCToken #ElixirFnEoeNode #ElixirDoEoeNode #ElixirEndEoeNode #ElixirBlockEoeNode #ElixirStabNode #ElixirStabNode #ElixirStabExprNode #ElixirStabOpEolAndExprNode #ElixirBlockItemNode #ElixirBlockListNode #SmaCCToken #SmaCCToken #ElixirEmptyParenNode #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #ElixirDotIdentifierNode #ElixirDotAliasNode #ElixirDotOpIdentifierNode #ElixirDotDoIdentifierNode #ElixirDotBracketIdentifierNode #ElixirDotParenIdentifierNode #ElixirDotCallIdentifierNode #ElixirProgramNode #ElixirCallArgsNoParensCommaExprNode #ElixirProgramNode #ElixirProgramNode #ElixirNoParensExprNode #ElixirCallArgsNoParensManyNode #ElixirCallArgsNoParensManyStrictNode #ElixirStabParensManyNode #ElixirProgramNode #ElixirContainerArgsBaseNode #ElixirContainerArgsNode #ElixirProgramNode #ElixirCallArgsParensBaseNode #ElixirCallArgsParensNode #SmaCCToken #ElixirKwBaseNode #ElixirKwNode #ElixirCallArgsNoParensKwExprNode #ElixirCallArgsNoParensKwNode #ElixirListArgsNode #ElixirListNode #ElixirTupleNode #ElixirBitStringNode #SmaCCToken #ElixirAssocExprNode #ElixirAssocUpdateNode #ElixirAssocUpdateKwNode #ElixirAssocBaseNode #ElixirProgramNode #SmaCCToken #OrderedCollection #ElixirMapArgsNode #ElixirSubMatchedExprNode #ElixirMapBaseExprNode #ElixirMapNode #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCErrorNode)
 ]
 
 { #category : 'generated' }
@@ -2107,6 +2107,7 @@ ElixirParser class >> transitionTable [
 { #category : 'private' }
 ElixirParser >> actionForCurrentToken [
 
+
 	"LALR-mode entry point. Same runtime token rewriting as the GLR override on
 	 #actionsForCurrentToken, minus state-duplication tricks that only work with multi-stack."
 
@@ -2205,41 +2206,25 @@ ElixirParser >> actionForCurrentToken [
 			(currentToken ids first = scanner interpolatedStringMidId
 				or: [ currentToken ids first = scanner interpolatedStringEndId ])
 				ifTrue: [ ^ self actionForCurrentToken ].
-			"Scanner could not tokenize the interpolated-string tail (typical
-			 case: a literal hash that is not part of an interpolation start,
-			 as in #{x}#main or #{x}/path%{y}). Walk the source forward to
-			 find the next interpolation start or the closing string quote,
-			 respecting backslash escapes, and synthesize the right token."
-			oldToken ifNotNil: [ | contents pos size depth foundMid foundEnd |
-				contents := scanner stream contents.
-				size := contents size.
-				pos := oldToken startPosition + 1.
-				depth := 0.
-				foundMid := false.
-				foundEnd := false.
-				[ pos <= size and: [ foundMid not and: [ foundEnd not ] ] ] whileTrue: [
-					| ch |
-					ch := contents at: pos.
-					ch = $\
-						ifTrue: [ pos := pos + 2 ]
-						ifFalse: [ (ch = $# and: [ pos < size and: [ (contents at: pos + 1) = ${ ] ])
-							ifTrue: [ foundMid := true ]
-							ifFalse: [ ch = (Character value: 34)
-								ifTrue: [ foundEnd := true ]
-								ifFalse: [ pos := pos + 1 ] ] ] ].
-				(foundMid or: [ foundEnd ]) ifTrue: [
-					| endPos newId |
-					endPos := foundMid ifTrue: [ pos + 1 ] ifFalse: [ pos ].
-					newId := foundMid ifTrue: [ scanner interpolatedStringMidId ] ifFalse: [ scanner interpolatedStringEndId ].
-					self position: endPos.
-					currentToken := oldToken class
-						value: (contents copyFrom: oldToken startPosition to: endPos)
-						start: oldToken startPosition
-						ids: { newId }.
-					^ self actionForCurrentToken ] ].
+			(self
+				rescueInterpolatedStringFrom: oldToken
+				midId: scanner interpolatedStringMidId
+				endId: scanner interpolatedStringEndId)
+				ifTrue: [ ^ self actionForCurrentToken ].
 			currentToken := oldToken.
 			^ action ].
+	((action bitAnd: self actionMask) = self errorAction
+		and: [ currentToken value beginsWith: '"' ])
+		ifTrue: [
+			oldToken := currentToken.
+			(self
+				rescueInterpolatedStringFrom: oldToken
+				midId: scanner interpolatedStringStartId
+				endId: scanner stringId)
+				ifTrue: [ ^ self actionForCurrentToken ].
+			currentToken := oldToken ].
 	^ action
+
 
 ]
 
@@ -2971,6 +2956,23 @@ ElixirParser >> reduceActionFordo_block4: nodes [
 	result stab: (nodes at: 2).
 	result block: (nodes at: 3).
 	result end: (nodes at: 4).
+	^ result
+]
+
+{ #category : 'generated-reduction actions' }
+ElixirParser >> reduceActionFordo_eoe1: nodes [
+	| result |
+	result := ElixirDoEoeNode new.
+	result do: (nodes at: 1).
+	^ result
+]
+
+{ #category : 'generated-reduction actions' }
+ElixirParser >> reduceActionFordo_eoe2: nodes [
+	| result |
+	result := ElixirDoEoeNode new.
+	result do: (nodes at: 1).
+	result eoe: (nodes at: 2).
 	^ result
 ]
 
@@ -3821,6 +3823,43 @@ ElixirParser >> reduceActionForunmatched_op_expr13: nodes [
 	result op: (nodes at: 1).
 	result expression: (nodes at: 2).
 	^ result
+]
+
+{ #category : 'private' }
+ElixirParser >> rescueInterpolatedStringFrom: oldToken midId: midId endId: endId [
+
+	"Walk source forward from oldToken's start+1, looking for the next
+	 unescaped #{ (synthesize a token with midId) or closing quote
+	 (synthesize a token with endId). Returns true if currentToken was
+	 replaced. Used by both the }-rescue and the quote-rescue paths."
+
+	| contents pos size foundMid foundEnd endPos newId |
+	oldToken ifNil: [ ^ false ].
+	contents := scanner stream contents.
+	size := contents size.
+	pos := oldToken startPosition + 1.
+	foundMid := false.
+	foundEnd := false.
+	[ pos <= size and: [ foundMid not and: [ foundEnd not ] ] ] whileTrue: [
+		| ch |
+		ch := contents at: pos.
+		ch = $\
+			ifTrue: [ pos := pos + 2 ]
+			ifFalse: [ (ch = $# and: [ pos < size and: [ (contents at: pos + 1) = ${ ] ])
+				ifTrue: [ foundMid := true ]
+				ifFalse: [ ch = (Character value: 34)
+					ifTrue: [ foundEnd := true ]
+					ifFalse: [ pos := pos + 1 ] ] ] ].
+	(foundMid or: [ foundEnd ]) ifFalse: [ ^ false ].
+	endPos := foundMid ifTrue: [ pos + 1 ] ifFalse: [ pos ].
+	newId := foundMid ifTrue: [ midId ] ifFalse: [ endId ].
+	self position: endPos.
+	currentToken := oldToken class
+		value: (contents copyFrom: oldToken startPosition to: endPos)
+		start: oldToken startPosition
+		ids: { newId }.
+	^ true
+
 ]
 
 { #category : 'private' }

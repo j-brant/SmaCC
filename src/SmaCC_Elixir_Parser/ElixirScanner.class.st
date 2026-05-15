@@ -111,6 +111,11 @@ ElixirScanner >> interpolatedStringMidId [
 	^ 20
 ]
 
+{ #category : 'generated' }
+ElixirScanner >> interpolatedStringStartId [
+	^ 19
+]
+
 { #category : 'private' }
 ElixirScanner >> kw_identifier [
 	| string |
