@@ -32,7 +32,7 @@ ElixirScanner >> block_identifierId [
 
 { #category : 'generated' }
 ElixirScanner >> bracket_identifierId [
-	^ 155
+	^ 156
 ]
 
 { #category : 'accessing' }
@@ -46,7 +46,7 @@ ElixirScanner >> currentState [
 
 { #category : 'generated' }
 ElixirScanner >> do_identifierId [
-	^ 156
+	^ 157
 ]
 
 { #category : 'private' }
@@ -72,7 +72,7 @@ ElixirScanner >> dual_opId [
 
 { #category : 'generated' }
 ElixirScanner >> emptySymbolTokenId [
-	^ 158
+	^ 159
 ]
 
 { #category : 'private' }
@@ -93,7 +93,7 @@ ElixirScanner >> eolId [
 
 { #category : 'generated' }
 ElixirScanner >> errorTokenId [
-	^ 159
+	^ 160
 ]
 
 { #category : 'generated' }
@@ -167,7 +167,7 @@ ElixirScanner >> op_identifierId [
 
 { #category : 'generated' }
 ElixirScanner >> paren_identifierId [
-	^ 157
+	^ 158
 ]
 
 { #category : 'accessing' }

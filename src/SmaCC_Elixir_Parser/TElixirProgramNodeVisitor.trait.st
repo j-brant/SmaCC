@@ -218,11 +218,6 @@ TElixirProgramNodeVisitor >> visitGrammar: aGrammar [
 ]
 
 { #category : 'generated' }
-TElixirProgramNodeVisitor >> visitIdentifier: anIdentifier [
-	^ self visitProgram: anIdentifier
-]
-
-{ #category : 'generated' }
 TElixirProgramNodeVisitor >> visitInterpolatedString: anInterpolatedString [
 	^ self visitProgram: anInterpolatedString
 ]
@@ -271,6 +266,11 @@ TElixirProgramNodeVisitor >> visitMap: aMap [
 { #category : 'generated' }
 TElixirProgramNodeVisitor >> visitMapArgs: aMapArgs [
 	^ self visitProgram: aMapArgs
+]
+
+{ #category : 'generated' }
+TElixirProgramNodeVisitor >> visitMapBaseExpr: aMapBaseExpr [
+	^ self visitProgram: aMapBaseExpr
 ]
 
 { #category : 'generated' }
@@ -354,8 +354,8 @@ TElixirProgramNodeVisitor >> visitStabParensMany: aStabParensMany [
 ]
 
 { #category : 'generated' }
-TElixirProgramNodeVisitor >> visitStructExpr: aStructExpr [
-	^ self visitProgram: aStructExpr
+TElixirProgramNodeVisitor >> visitSubMatchedExpr: aSubMatchedExpr [
+	^ self visitProgram: aSubMatchedExpr
 ]
 
 { #category : 'generated' }

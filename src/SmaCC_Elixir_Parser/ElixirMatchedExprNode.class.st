@@ -3,8 +3,7 @@ Class {
 	#superclass : 'ElixirProgramNode',
 	#instVars : [
 		'expressions',
-		'ops',
-		'identifier'
+		'ops'
 	],
 	#category : 'SmaCC_Elixir_Parser',
 	#package : 'SmaCC_Elixir_Parser'
@@ -37,16 +36,6 @@ ElixirMatchedExprNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: self
 ]
 
-{ #category : 'generated' }
-ElixirMatchedExprNode >> identifier [
-	^ identifier
-]
-
-{ #category : 'generated' }
-ElixirMatchedExprNode >> identifier: aSmaCCToken [
-	identifier := aSmaCCToken
-]
-
 { #category : 'generated-initialize-release' }
 ElixirMatchedExprNode >> initialize [
 	super initialize.
@@ -62,9 +51,4 @@ ElixirMatchedExprNode >> ops [
 { #category : 'generated' }
 ElixirMatchedExprNode >> ops: anOrderedCollection [
 	ops := anOrderedCollection
-]
-
-{ #category : 'generated' }
-ElixirMatchedExprNode >> tokenVariables [
-	^ #(#identifier)
 ]
