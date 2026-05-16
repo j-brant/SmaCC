@@ -1002,6 +1002,36 @@ ElixirParser class >> initialize [
 	self maxParallelParses: 500
 ]
 
+{ #category : 'samples' }
+ElixirParser class >> parityTestsSource [
+	"Example expressions from https://github.com/elixir-lang/elixir/blob/main/lib/elixir/test/elixir/kernel/parser_test.exs"
+	 
+	<gtExample>
+	^ #(
+		'..'
+		'...'
+		'&../0'
+		'&.../0'
+		'if .. do end'
+		'f(!: :ok)'
+		'f @: :ok'
+		'%{+foo, bar => bat, ...baz}'
+		'f -var'
+		'f -(var)'
+		'f +-var'
+		'f - var'
+		'f --var'
+		'(f ->var)'
+		'f(+: :ok)'
+		'f +: :ok'
+		'1..2//3'
+		'(1..2)//3'
+		'foo do end..bar do end//baz do end'
+		'1..foo do end//bar bat'
+		'~r/foo/'
+	)
+]
+
 { #category : 'generated' }
 ElixirParser class >> reduceTable [
 ^#(
