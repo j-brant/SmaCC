@@ -324,6 +324,11 @@ TElixirProgramNodeVisitor >> visitNoParensOpExpr: aNoParensOpExpr [
 ]
 
 { #category : 'generated' }
+TElixirProgramNodeVisitor >> visitNullaryOp: aNullaryOp [
+	^ self visitProgram: aNullaryOp
+]
+
+{ #category : 'generated' }
 TElixirProgramNodeVisitor >> visitNumber: aNumber [
 	^ self visitProgram: aNumber
 ]

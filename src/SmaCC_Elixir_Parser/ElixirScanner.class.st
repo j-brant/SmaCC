@@ -191,11 +191,11 @@ ElixirScanner >> restoreState: aSmaCCScannerState [
 ElixirScanner >> scan1 [
 	self step.
 	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(29) ].
-	currentCharacter == Character cr ifTrue: [ ^ self scan1X23 ].
-	currentCharacter == $! ifTrue: [ ^ self scan1X22 ].
+	currentCharacter == Character cr ifTrue: [ ^ self scan1X24 ].
+	currentCharacter == $! ifTrue: [ ^ self scan1X17 ].
 	currentCharacter == $" ifTrue: [ ^ self scan1X3 ].
 	currentCharacter == $# ifTrue: [ ^ self scan1X9 ].
-	^ self scan1X28
+	^ self scan1X29
 ]
 
 { #category : 'generated' }
@@ -331,6 +331,29 @@ ElixirScanner >> scan1X1 [
 
 { #category : 'generated' }
 ElixirScanner >> scan1X10 [
+	self recordMatch: #(47 49 61).
+	self step.
+	currentCharacter == $- ifTrue: [ ^ self recordAndReportMatch: #(61) ].
+	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(57) ].
+	currentCharacter == $> ifTrue: [ ^ self recordAndReportMatch: #(32) ].
+	^ self reportLastMatch
+]
+
+{ #category : 'generated' }
+ElixirScanner >> scan1X11 [
+	self recordMatch: #(61).
+	self step.
+	currentCharacter == $> ifTrue: [ ^ self recordAndReportMatch: #(61) ].
+	currentCharacter == $|
+		ifTrue: [ self recordMatch: #(40 61).
+			self step.
+			currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(57) ].
+			currentCharacter == $| ifTrue: [ ^ self recordAndReportMatch: #(40 61) ] ].
+	^ self reportLastMatch
+]
+
+{ #category : 'generated' }
+ElixirScanner >> scan1X12 [
 	self recordMatch: #(39 61).
 	self step.
 	currentCharacter == $= ifTrue: [ ^ self scan2 ].
@@ -340,7 +363,7 @@ ElixirScanner >> scan1X10 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X11 [
+ElixirScanner >> scan1X13 [
 	self recordMatch: #(54).
 	self step.
 	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(62) ].
@@ -352,28 +375,50 @@ ElixirScanner >> scan1X11 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X12 [
+ElixirScanner >> scan1X14 [
+	self recordMatch: #(49 61).
+	self step.
+	currentCharacter == $^
+		ifTrue: [ self step.
+			currentCharacter == $^
+				ifTrue: [ self recordMatch: #(61).
+					self step.
+					currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(57) ] ] ].
+	^ self reportLastMatch
+]
+
+{ #category : 'generated' }
+ElixirScanner >> scan1X15 [
 	self recordMatch: #(47 49 61).
 	self step.
-	currentCharacter == $- ifTrue: [ ^ self recordAndReportMatch: #(61) ].
-	currentCharacter == $> ifTrue: [ ^ self recordAndReportMatch: #(32) ].
+	currentCharacter == $+ ifTrue: [ ^ self recordAndReportMatch: #(61) ].
+	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(57) ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X13 [
-	self recordMatch: #(61).
+ElixirScanner >> scan1X16 [
+	self recordMatch: #(38).
 	self step.
-	currentCharacter == $> ifTrue: [ ^ self recordAndReportMatch: #(61) ].
-	currentCharacter == $|
-		ifTrue: [ self recordMatch: #(40 61).
+	currentCharacter == $&
+		ifTrue: [ self recordMatch: #(41 61).
 			self step.
-			currentCharacter == $| ifTrue: [ ^ self recordAndReportMatch: #(40 61) ] ].
+			currentCharacter == $& ifTrue: [ ^ self recordAndReportMatch: #(41 61) ].
+			currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(57) ] ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X14 [
+ElixirScanner >> scan1X17 [
+	self recordMatch: #(49 61).
+	self step.
+	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(57) ].
+	currentCharacter == $= ifTrue: [ ^ self scan2 ].
+	^ self reportLastMatch
+]
+
+{ #category : 'generated' }
+ElixirScanner >> scan1X18 [
 	self recordMatch: #(61).
 	self step.
 	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(61) ].
@@ -385,50 +430,12 @@ ElixirScanner >> scan1X14 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X15 [
+ElixirScanner >> scan1X19 [
 	self recordMatch: #(30).
 	self step.
 	currentCharacter == ${
 		ifTrue: [ self step.
 			currentCharacter == $} ifTrue: [ ^ self recordAndReportMatch: #(31) ] ].
-	^ self reportLastMatch
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan1X16 [
-	[ self recordMatch: #(27).
-	self step.
-	currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
-		whileTrue.
-	^ self reportLastMatch
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan1X17 [
-	self recordMatch: #(49 61).
-	self step.
-	currentCharacter == $^
-		ifTrue: [ self step.
-			currentCharacter == $^ ifTrue: [ ^ self recordAndReportMatch: #(61) ] ].
-	^ self reportLastMatch
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan1X18 [
-	self recordMatch: #(47 49 61).
-	self step.
-	currentCharacter == $+ ifTrue: [ ^ self recordAndReportMatch: #(61) ].
-	^ self reportLastMatch
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan1X19 [
-	self recordMatch: #(38).
-	self step.
-	currentCharacter == $&
-		ifTrue: [ self recordMatch: #(41 61).
-			self step.
-			currentCharacter == $& ifTrue: [ ^ self recordAndReportMatch: #(41 61) ] ].
 	^ self reportLastMatch
 ]
 
@@ -467,6 +474,23 @@ ElixirScanner >> scan1X2 [
 
 { #category : 'generated' }
 ElixirScanner >> scan1X20 [
+	[ self recordMatch: #(27).
+	self step.
+	currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
+		whileTrue.
+	^ self reportLastMatch
+]
+
+{ #category : 'generated' }
+ElixirScanner >> scan1X21 [
+	self recordMatch: #(50).
+	self step.
+	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(57) ].
+	^ self reportLastMatch
+]
+
+{ #category : 'generated' }
+ElixirScanner >> scan1X22 [
 	self recordMatch: #(61).
 	self step.
 	currentCharacter == $/ ifTrue: [ ^ self recordAndReportMatch: #(61) ].
@@ -474,7 +498,7 @@ ElixirScanner >> scan1X20 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X21 [
+ElixirScanner >> scan1X23 [
 	self recordMatch: #(61).
 	self step.
 	currentCharacter == $* ifTrue: [ ^ self recordAndReportMatch: #(61) ].
@@ -482,15 +506,7 @@ ElixirScanner >> scan1X21 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X22 [
-	self recordMatch: #(49 61).
-	self step.
-	currentCharacter == $= ifTrue: [ ^ self scan2 ].
-	^ self reportLastMatch
-]
-
-{ #category : 'generated' }
-ElixirScanner >> scan1X23 [
+ElixirScanner >> scan1X24 [
 	self recordMatch: #(29).
 	self step.
 	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(29) ].
@@ -498,31 +514,31 @@ ElixirScanner >> scan1X23 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X24 [
+ElixirScanner >> scan1X25 [
 	self step.
 	currentCharacter == $\ ifTrue: [ ^ self recordAndReportMatch: #(53) ].
 	^ self reportLastMatch
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X25 [
+ElixirScanner >> scan1X26 [
 	self step.
 	currentCharacter == $\ ifTrue: [ self step ].
 	^ self recordAndReportMatch: #(52)
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X26 [
+ElixirScanner >> scan1X27 [
 	currentCharacter == $i ifTrue: [ ^ self scan1X7 ].
 	currentCharacter == $n ifTrue: [ ^ self scan1X2 ].
 	currentCharacter == $o ifTrue: [ ^ self scan1X6 ].
 	currentCharacter == ${ ifTrue: [ ^ self recordAndReportMatch: #(15) ].
-	currentCharacter == $| ifTrue: [ ^ self scan1X13 ].
+	currentCharacter == $| ifTrue: [ ^ self scan1X11 ].
 	currentCharacter == $} ifTrue: [ ^ self recordAndReportMatch: #(16) ].
 	currentCharacter == $~ ifTrue: [ ^ self scan35 ].
 	currentCharacter isDigit ifTrue: [ ^ self scan22 ].
 	(currentCharacter == Character tab or: [ currentCharacter == Character space ])
-		ifTrue: [ ^ self scan1X16 ].
+		ifTrue: [ ^ self scan1X20 ].
 	currentCharacter isUppercase ifTrue: [ ^ self scan1X8 ].
 	(currentCharacter isLowercase or: [ currentCharacter == $_ ])
 		ifTrue: [ ^ self scan34 ].
@@ -530,37 +546,37 @@ ElixirScanner >> scan1X26 [
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X27 [
+ElixirScanner >> scan1X28 [
 	currentCharacter == $: ifTrue: [ ^ self scan26 ].
 	currentCharacter == $; ifTrue: [ ^ self recordAndReportMatch: #(4 59) ].
 	currentCharacter == $< ifTrue: [ ^ self scan1X5 ].
-	currentCharacter == $= ifTrue: [ ^ self scan1X10 ].
-	currentCharacter == $> ifTrue: [ ^ self scan1X14 ].
-	currentCharacter == $? ifTrue: [ ^ self scan1X25 ].
-	currentCharacter == $@ ifTrue: [ ^ self recordAndReportMatch: #(50) ].
+	currentCharacter == $= ifTrue: [ ^ self scan1X12 ].
+	currentCharacter == $> ifTrue: [ ^ self scan1X18 ].
+	currentCharacter == $? ifTrue: [ ^ self scan1X26 ].
+	currentCharacter == $@ ifTrue: [ ^ self scan1X21 ].
 	currentCharacter == $[ ifTrue: [ ^ self recordAndReportMatch: #(7) ].
-	currentCharacter == $\ ifTrue: [ ^ self scan1X24 ].
+	currentCharacter == $\ ifTrue: [ ^ self scan1X25 ].
 	currentCharacter == $] ifTrue: [ ^ self recordAndReportMatch: #(8) ].
-	currentCharacter == $^ ifTrue: [ ^ self scan1X17 ].
+	currentCharacter == $^ ifTrue: [ ^ self scan1X14 ].
 	currentCharacter == $a ifTrue: [ ^ self scan1X4 ].
-	^ self scan1X26
+	^ self scan1X27
 ]
 
 { #category : 'generated' }
-ElixirScanner >> scan1X28 [
-	currentCharacter == $% ifTrue: [ ^ self scan1X15 ].
-	currentCharacter == $& ifTrue: [ ^ self scan1X19 ].
+ElixirScanner >> scan1X29 [
+	currentCharacter == $% ifTrue: [ ^ self scan1X19 ].
+	currentCharacter == $& ifTrue: [ ^ self scan1X16 ].
 	currentCharacter == $' ifTrue: [ ^ self scan10 ].
 	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(1) ].
 	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(2) ].
-	currentCharacter == $* ifTrue: [ ^ self scan1X21 ].
-	currentCharacter == $+ ifTrue: [ ^ self scan1X18 ].
+	currentCharacter == $* ifTrue: [ ^ self scan1X23 ].
+	currentCharacter == $+ ifTrue: [ ^ self scan1X15 ].
 	currentCharacter == $, ifTrue: [ ^ self recordAndReportMatch: #(3) ].
-	currentCharacter == $- ifTrue: [ ^ self scan1X12 ].
-	currentCharacter == $. ifTrue: [ ^ self scan1X11 ].
-	currentCharacter == $/ ifTrue: [ ^ self scan1X20 ].
+	currentCharacter == $- ifTrue: [ ^ self scan1X10 ].
+	currentCharacter == $. ifTrue: [ ^ self scan1X13 ].
+	currentCharacter == $/ ifTrue: [ ^ self scan1X22 ].
 	currentCharacter == $0 ifTrue: [ ^ self scan1X1 ].
-	^ self scan1X27
+	^ self scan1X28
 ]
 
 { #category : 'generated' }
