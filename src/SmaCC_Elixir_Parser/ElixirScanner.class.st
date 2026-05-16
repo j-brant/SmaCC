@@ -72,7 +72,7 @@ ElixirScanner >> dual_opId [
 
 { #category : 'generated' }
 ElixirScanner >> emptySymbolTokenId [
-	^ 161
+	^ 162
 ]
 
 { #category : 'private' }
@@ -93,7 +93,7 @@ ElixirScanner >> eolId [
 
 { #category : 'generated' }
 ElixirScanner >> errorTokenId [
-	^ 162
+	^ 163
 ]
 
 { #category : 'generated' }
@@ -171,13 +171,18 @@ ElixirScanner >> next [
 ]
 
 { #category : 'generated' }
+ElixirScanner >> nullary_two_opId [
+	^ 160
+]
+
+{ #category : 'generated' }
 ElixirScanner >> op_identifierId [
 	^ 61
 ]
 
 { #category : 'generated' }
 ElixirScanner >> paren_identifierId [
-	^ 160
+	^ 161
 ]
 
 { #category : 'accessing' }

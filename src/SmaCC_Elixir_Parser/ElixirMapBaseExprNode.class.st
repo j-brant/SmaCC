@@ -25,9 +25,9 @@ ElixirMapBaseExprNode >> expression [
 ]
 
 { #category : 'generated' }
-ElixirMapBaseExprNode >> expression: anElixirProgramNode [
+ElixirMapBaseExprNode >> expression: anElixirSubMatchedExprNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
-	expression := anElixirProgramNode.
+	expression := anElixirSubMatchedExprNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
