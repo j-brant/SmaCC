@@ -245,17 +245,14 @@ SmaCCGrammar >> classDefinitions [
 	| defs root |
 	root := self rootDefinition.
 	(root isNil and: [ classDefinitions notEmpty ])
-		ifTrue:
-			[ SmaCCCompilationNotification new
+		ifTrue: [ SmaCCCompilationNotification new
 				messageText: 'Node generation';
-				tag: 'Cannot generate node classes without specifying a "%root" node.';
+				issue: SmaCCMissingRootIssue new;
 				signal ].
-	root isNil
-		ifTrue: [ ^ #() ].
+	root isNil ifTrue: [ ^ #() ].
 	defs := classDefinitions asOrderedCollection.
 	defs
-		do:
-			[ :each | 
+		do: [ :each | 
 			(each isRoot not and: [ each superclass isNil ])
 				ifTrue: [ each superclass: root ] ].
 	^ defs

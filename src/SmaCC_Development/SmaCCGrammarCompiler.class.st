@@ -58,30 +58,21 @@ SmaCCGrammarCompiler >> buildDefinition: definitionString [
 ]
 
 { #category : 'private' }
-SmaCCGrammarCompiler >> checkFor: problemSymbols errorMessage: errorMessage [
-	problemSymbols isEmpty ifTrue: [ ^ self ].
-	SmaCCCompilationNotification new
-		messageText: errorMessage;
-		tagBlock: [ String
-				streamContents: [ :stream | 
-					problemSymbols
-						do: [ :each | stream nextPutAll: each printString ]
-						separatedBy: [ stream space ] ] ];
+SmaCCGrammarCompiler >> checkForEmptySymbols [
+	grammar emptySymbols isEmpty ifTrue: [ ^ self ].
+	^ SmaCCCompilationNotification new
+		messageText: 'Missing non-terminal productions';
+		issue: (SmaCCMissingSymbolsIssue new missing: grammar emptySymbols);
 		signal
 ]
 
 { #category : 'private' }
-SmaCCGrammarCompiler >> checkForEmptySymbols [
-	self
-		checkFor: grammar emptySymbols
-		errorMessage: 'Missing non-terminal productions'
-]
-
-{ #category : 'private' }
 SmaCCGrammarCompiler >> checkForUnusedSymbols [
-	self
-		checkFor: grammar unusedSymbols
-		errorMessage: 'Unused non-terminal symbols'
+	grammar unusedSymbols isEmpty ifTrue: [ ^ self ].
+	SmaCCCompilationNotification new
+		messageText: 'Unused non-terminal symbols';
+		issue: (SmaCCUnusedSymbolsIssue new unused: grammar unusedSymbols);
+		signal
 ]
 
 { #category : 'accessing' }

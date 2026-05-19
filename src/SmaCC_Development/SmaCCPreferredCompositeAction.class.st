@@ -38,6 +38,11 @@ SmaCCPreferredCompositeAction >> mergeWith: aSmaCCAction prefer: aClass [
 	^ aSmaCCAction mergeWith: self prefer: aClass
 ]
 
+{ #category : 'as yet unclassified' }
+SmaCCPreferredCompositeAction >> notificationIssueClass [
+	^ SmaCCAmbiguousActionHandledByPrecedenceIssue
+]
+
 { #category : 'accessing' }
 SmaCCPreferredCompositeAction >> preferredAction [
 	^ preferredAction

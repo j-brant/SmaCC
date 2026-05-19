@@ -5,25 +5,26 @@ Class {
 	#name : 'SmaCCCompilationNotification',
 	#superclass : 'Notification',
 	#instVars : [
-		'tagBlock'
+		'tagBlock',
+		'issue'
 	],
 	#category : 'SmaCC_Development-Compiler',
 	#package : 'SmaCC_Development',
 	#tag : 'Compiler'
 }
 
+{ #category : 'accessing' }
+SmaCCCompilationNotification >> issue [
+	^ issue
+]
+
+{ #category : 'accessing' }
+SmaCCCompilationNotification >> issue: anObject [
+	issue := anObject
+]
+
 { #category : 'as yet unclassified' }
 SmaCCCompilationNotification >> tag [
-	(tag isNil and: [ tagBlock notNil ]) ifTrue: [ tag := tagBlock value ].
+	tag ifNil: [ issue ifNotNil: [ tag := issue displayString ] ].
 	^ tag
-]
-
-{ #category : 'accessing' }
-SmaCCCompilationNotification >> tagBlock [
-	^ tagBlock
-]
-
-{ #category : 'accessing' }
-SmaCCCompilationNotification >> tagBlock: anObject [
-	tagBlock := anObject
 ]

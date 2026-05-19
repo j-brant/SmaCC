@@ -58,6 +58,16 @@ SmaCCCompositeAction >> lr1Item [
 	^ self preferredAction lr1Item
 ]
 
+{ #category : 'as yet unclassified' }
+SmaCCCompositeAction >> notificationIssue [
+	^ self notificationIssueClass new action: self
+]
+
+{ #category : 'as yet unclassified' }
+SmaCCCompositeAction >> notificationIssueClass [
+	^ SmaCCAmbiguousActionIssue
+]
+
 { #category : 'accessing' }
 SmaCCCompositeAction >> preferredAction [
 	self subclassResponsibility
@@ -74,15 +84,7 @@ SmaCCCompositeAction >> printPathOn: aStream [
 SmaCCCompositeAction >> raiseXReduceNotification [
 	SmaCCCompilationNotification new
 		messageText: self errorType;
-		tagBlock: [ String
-				streamContents: [ :stream | 
-					actions
-						do: [ :each | 
-							stream nextPutAll: each lr1Item printString.
-							each == self preferredAction ifTrue: [ stream nextPutAll: '	*****' ].
-							stream cr ].
-					stream cr.
-					self printPathOn: stream ] ];
+		issue: self notificationIssue;
 		signal
 ]
 
