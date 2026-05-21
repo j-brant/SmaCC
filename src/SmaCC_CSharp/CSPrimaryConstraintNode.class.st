@@ -1,6 +1,6 @@
 Class {
-	#name : #CSPrimaryConstraintNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSPrimaryConstraintNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'classToken',
 		'questionMarkToken',
@@ -10,85 +10,86 @@ Class {
 		'notnullToken',
 		'defaultToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPrimaryConstraintNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPrimaryConstraint: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPrimaryConstraintNode >> classToken [
 	^ classToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPrimaryConstraintNode >> classToken: aSmaCCToken [
 	classToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPrimaryConstraintNode >> defaultToken [
 	^ defaultToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPrimaryConstraintNode >> defaultToken: aSmaCCToken [
 	defaultToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPrimaryConstraintNode >> notnullToken [
 	^ notnullToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPrimaryConstraintNode >> notnullToken: aSmaCCToken [
 	notnullToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPrimaryConstraintNode >> questionMarkToken [
 	^ questionMarkToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPrimaryConstraintNode >> questionMarkToken: aSmaCCToken [
 	questionMarkToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPrimaryConstraintNode >> refToken [
 	^ refToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPrimaryConstraintNode >> refToken: aSmaCCToken [
 	refToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPrimaryConstraintNode >> structToken [
 	^ structToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPrimaryConstraintNode >> structToken: aSmaCCToken [
 	structToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPrimaryConstraintNode >> tokenVariables [
 	^ #(#classToken #questionMarkToken #structToken #refToken #unmanagedToken #notnullToken #defaultToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPrimaryConstraintNode >> unmanagedToken [
 	^ unmanagedToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPrimaryConstraintNode >> unmanagedToken: aSmaCCToken [
 	unmanagedToken := aSmaCCToken
 ]

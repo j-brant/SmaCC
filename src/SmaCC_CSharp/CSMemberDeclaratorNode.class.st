@@ -1,6 +1,6 @@
 Class {
-	#name : #CSMemberDeclaratorNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSMemberDeclaratorNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'name',
 		'access',
@@ -8,20 +8,21 @@ Class {
 		'equalToken',
 		'value'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberDeclaratorNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMemberDeclarator: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberDeclaratorNode >> access [
 	^ access
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberDeclaratorNode >> access: aCSExpressionNode [
 	self access notNil
 		ifTrue: [ self access parent: nil ].
@@ -30,32 +31,32 @@ CSMemberDeclaratorNode >> access: aCSExpressionNode [
 		ifTrue: [ self access parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberDeclaratorNode >> equalToken [
 	^ equalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberDeclaratorNode >> equalToken: aSmaCCToken [
 	equalToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberDeclaratorNode >> identifierToken [
 	^ identifierToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberDeclaratorNode >> identifierToken: aSmaCCToken [
 	identifierToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberDeclaratorNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberDeclaratorNode >> name: aCSSimpleNameNode [
 	self name notNil
 		ifTrue: [ self name parent: nil ].
@@ -64,22 +65,22 @@ CSMemberDeclaratorNode >> name: aCSSimpleNameNode [
 		ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberDeclaratorNode >> nodeVariables [
 	^ #(#name #access #value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberDeclaratorNode >> tokenVariables [
 	^ #(#identifierToken #equalToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberDeclaratorNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberDeclaratorNode >> value: aCSExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aCSExpressionNode.

@@ -1,68 +1,69 @@
 Class {
-	#name : #CSFixedSizeBufferDeclaratorNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSFixedSizeBufferDeclaratorNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'name',
 		'leftBracketToken',
 		'expression',
 		'rightBracketToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclaratorNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFixedSizeBufferDeclarator: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclaratorNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclaratorNode >> expression: aCSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclaratorNode >> leftBracketToken [
 	^ leftBracketToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclaratorNode >> leftBracketToken: aSmaCCToken [
 	leftBracketToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclaratorNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclaratorNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclaratorNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclaratorNode >> rightBracketToken [
 	^ rightBracketToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclaratorNode >> rightBracketToken: aSmaCCToken [
 	rightBracketToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclaratorNode >> tokenVariables [
 	^ #(#name #leftBracketToken #rightBracketToken)
 ]

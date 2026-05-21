@@ -1,44 +1,45 @@
 Class {
-	#name : #CSTupleTypeElementNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSTupleTypeElementNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'type',
 		'name'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleTypeElementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTupleTypeElement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleTypeElementNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleTypeElementNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleTypeElementNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleTypeElementNode >> tokenVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleTypeElementNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleTypeElementNode >> type: aCSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.

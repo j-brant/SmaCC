@@ -1,66 +1,67 @@
 Class {
-	#name : #CSExternAliasDirectiveNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSExternAliasDirectiveNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'externToken',
 		'aliasToken',
 		'identifierToken',
 		'semicolonToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSExternAliasDirectiveNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExternAliasDirective: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSExternAliasDirectiveNode >> aliasToken [
 	^ aliasToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSExternAliasDirectiveNode >> aliasToken: aSmaCCToken [
 	aliasToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSExternAliasDirectiveNode >> externToken [
 	^ externToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSExternAliasDirectiveNode >> externToken: aSmaCCToken [
 	externToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSExternAliasDirectiveNode >> identifierToken [
 	^ identifierToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSExternAliasDirectiveNode >> identifierToken: aSmaCCToken [
 	identifierToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSExternAliasDirectiveNode >> ignoredTokenVariables [
 	^ #(#semicolonToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSExternAliasDirectiveNode >> semicolonToken [
 	^ semicolonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSExternAliasDirectiveNode >> semicolonToken: aSmaCCToken [
 	semicolonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSExternAliasDirectiveNode >> tokenVariables [
 	^ #(#externToken #aliasToken #identifierToken)
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : #CSForStatementNode,
-	#superclass : #CSStatementNode,
+	#name : 'CSForStatementNode',
+	#superclass : 'CSStatementNode',
 	#instVars : [
 		'forToken',
 		'leftParenToken',
@@ -11,53 +11,54 @@ Class {
 		'rightParenToken',
 		'statement'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitForStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForStatementNode >> condition [
 	^ condition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForStatementNode >> condition: aCSExpressionNode [
 	self condition notNil ifTrue: [ self condition parent: nil ].
 	condition := aCSExpressionNode.
 	self condition notNil ifTrue: [ self condition parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForStatementNode >> forToken [
 	^ forToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForStatementNode >> forToken: aSmaCCToken [
 	forToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForStatementNode >> ignoredCompositeTokenVariables [
 	^ #(#semicolonTokens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSForStatementNode >> initialize [
 	super initialize.
 	semicolonTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForStatementNode >> initializer [
 	^ initializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForStatementNode >> initializer: aCSProgramNode [
 	self initializer notNil
 		ifTrue: [ self initializer parent: nil ].
@@ -66,12 +67,12 @@ CSForStatementNode >> initializer: aCSProgramNode [
 		ifTrue: [ self initializer parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForStatementNode >> iterator [
 	^ iterator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForStatementNode >> iterator: aCSStatementListNode [
 	self iterator notNil
 		ifTrue: [ self iterator parent: nil ].
@@ -80,47 +81,47 @@ CSForStatementNode >> iterator: aCSStatementListNode [
 		ifTrue: [ self iterator parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForStatementNode >> leftParenToken [
 	^ leftParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForStatementNode >> leftParenToken: aSmaCCToken [
 	leftParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForStatementNode >> nodeVariables [
 	^ #(#initializer #condition #iterator #statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForStatementNode >> rightParenToken [
 	^ rightParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForStatementNode >> rightParenToken: aSmaCCToken [
 	rightParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForStatementNode >> semicolonTokens [
 	^ semicolonTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForStatementNode >> semicolonTokens: anOrderedCollection [
 	semicolonTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForStatementNode >> statement: aCSStatementNode [
 	self statement notNil
 		ifTrue: [ self statement parent: nil ].
@@ -129,7 +130,7 @@ CSForStatementNode >> statement: aCSStatementNode [
 		ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForStatementNode >> tokenVariables [
 	^ #(#forToken #leftParenToken #rightParenToken)
 ]

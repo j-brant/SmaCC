@@ -1,6 +1,6 @@
 Class {
-	#name : #CSLocalVariableDeclarationNode,
-	#superclass : #CSDeclarationNode,
+	#name : 'CSLocalVariableDeclarationNode',
+	#superclass : 'CSDeclarationNode',
 	#instVars : [
 		'type',
 		'declarators',
@@ -8,52 +8,53 @@ Class {
 		'commaTokens',
 		'scopedToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalVariableDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLocalVariableDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalVariableDeclarationNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalVariableDeclarationNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalVariableDeclarationNode >> compositeNodeVariables [
 	^ #(#declarators)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalVariableDeclarationNode >> compositeTokenVariables [
 	^ #(#modifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalVariableDeclarationNode >> declarators [
 	^ declarators
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalVariableDeclarationNode >> declarators: anOrderedCollection [
 	self setParents: self declarators to: nil.
 	declarators := anOrderedCollection.
 	self setParents: self declarators to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalVariableDeclarationNode >> ignoredCompositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSLocalVariableDeclarationNode >> initialize [
 	super initialize.
 	declarators := OrderedCollection new: 2.
@@ -61,42 +62,42 @@ CSLocalVariableDeclarationNode >> initialize [
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalVariableDeclarationNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalVariableDeclarationNode >> modifiers: anOrderedCollection [
 	modifiers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalVariableDeclarationNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalVariableDeclarationNode >> scopedToken [
 	^ scopedToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalVariableDeclarationNode >> scopedToken: aSmaCCToken [
 	scopedToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalVariableDeclarationNode >> tokenVariables [
 	^ #(#scopedToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalVariableDeclarationNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalVariableDeclarationNode >> type: aCSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.

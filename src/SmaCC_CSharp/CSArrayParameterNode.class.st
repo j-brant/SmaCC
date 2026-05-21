@@ -1,6 +1,6 @@
 Class {
-	#name : #CSArrayParameterNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSArrayParameterNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'_attributes',
 		'paramsToken',
@@ -8,83 +8,84 @@ Class {
 		'name',
 		'scopedToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayParameterNode >> _attributes [
 	^ _attributes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayParameterNode >> _attributes: anOrderedCollection [
 	self setParents: self _attributes to: nil.
 	_attributes := anOrderedCollection.
 	self setParents: self _attributes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayParameterNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitArrayParameter: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayParameterNode >> compositeNodeVariables [
 	^ #(#_attributes)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSArrayParameterNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayParameterNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayParameterNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayParameterNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayParameterNode >> paramsToken [
 	^ paramsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayParameterNode >> paramsToken: aSmaCCToken [
 	paramsToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayParameterNode >> scopedToken [
 	^ scopedToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayParameterNode >> scopedToken: aSmaCCToken [
 	scopedToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayParameterNode >> tokenVariables [
 	^ #(#paramsToken #name #scopedToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayParameterNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayParameterNode >> type: aCSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.

@@ -1,24 +1,25 @@
 Class {
-	#name : #CSUncheckedStatementNode,
-	#superclass : #CSStatementNode,
+	#name : 'CSUncheckedStatementNode',
+	#superclass : 'CSStatementNode',
 	#instVars : [
 		'uncheckedToken',
 		'block'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUncheckedStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUncheckedStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUncheckedStatementNode >> block [
 	^ block
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUncheckedStatementNode >> block: aCSBlockStatementNode [
 	self block notNil
 		ifTrue: [ self block parent: nil ].
@@ -27,22 +28,22 @@ CSUncheckedStatementNode >> block: aCSBlockStatementNode [
 		ifTrue: [ self block parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUncheckedStatementNode >> nodeVariables [
 	^ #(#block)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUncheckedStatementNode >> tokenVariables [
 	^ #(#uncheckedToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUncheckedStatementNode >> uncheckedToken [
 	^ uncheckedToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUncheckedStatementNode >> uncheckedToken: aSmaCCToken [
 	uncheckedToken := aSmaCCToken
 ]

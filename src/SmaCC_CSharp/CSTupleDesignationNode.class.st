@@ -1,80 +1,81 @@
 Class {
-	#name : #CSTupleDesignationNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSTupleDesignationNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'leftParen',
 		'rightParen',
 		'designations',
 		'commas'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleDesignationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTupleDesignation: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleDesignationNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleDesignationNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleDesignationNode >> compositeNodeVariables [
 	^ #(#designations)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleDesignationNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleDesignationNode >> designations [
 	^ designations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleDesignationNode >> designations: anOrderedCollection [
 	self setParents: self designations to: nil.
 	designations := anOrderedCollection.
 	self setParents: self designations to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSTupleDesignationNode >> initialize [
 	super initialize.
 	designations := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleDesignationNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleDesignationNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleDesignationNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleDesignationNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleDesignationNode >> tokenVariables [
 	^ #(#leftParen #rightParen)
 ]

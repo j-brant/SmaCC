@@ -1,24 +1,25 @@
 Class {
-	#name : #CSCheckedStatementNode,
-	#superclass : #CSStatementNode,
+	#name : 'CSCheckedStatementNode',
+	#superclass : 'CSStatementNode',
 	#instVars : [
 		'checkedToken',
 		'block'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCheckedStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCheckedStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCheckedStatementNode >> block [
 	^ block
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCheckedStatementNode >> block: aCSBlockStatementNode [
 	self block notNil
 		ifTrue: [ self block parent: nil ].
@@ -27,22 +28,22 @@ CSCheckedStatementNode >> block: aCSBlockStatementNode [
 		ifTrue: [ self block parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCheckedStatementNode >> checkedToken [
 	^ checkedToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCheckedStatementNode >> checkedToken: aSmaCCToken [
 	checkedToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCheckedStatementNode >> nodeVariables [
 	^ #(#block)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCheckedStatementNode >> tokenVariables [
 	^ #(#checkedToken)
 ]

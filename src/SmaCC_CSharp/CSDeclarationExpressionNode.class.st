@@ -1,57 +1,58 @@
 Class {
-	#name : #CSDeclarationExpressionNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSDeclarationExpressionNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'name',
 		'type',
 		'designation'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDeclarationExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDeclarationExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDeclarationExpressionNode >> designation [
 	^ designation
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDeclarationExpressionNode >> designation: aCSProgramNode [
 	self designation notNil ifTrue: [ self designation parent: nil ].
 	designation := aCSProgramNode.
 	self designation notNil ifTrue: [ self designation parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDeclarationExpressionNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDeclarationExpressionNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDeclarationExpressionNode >> nodeVariables [
 	^ #(#type #designation)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDeclarationExpressionNode >> tokenVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDeclarationExpressionNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDeclarationExpressionNode >> type: aCSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.

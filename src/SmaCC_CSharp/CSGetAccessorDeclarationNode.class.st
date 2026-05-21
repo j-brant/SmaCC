@@ -1,6 +1,6 @@
 Class {
-	#name : #CSGetAccessorDeclarationNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSGetAccessorDeclarationNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'_attributes',
 		'modifiers',
@@ -11,32 +11,33 @@ Class {
 		'semicolonToken',
 		'refToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGetAccessorDeclarationNode >> _attributes [
 	^ _attributes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGetAccessorDeclarationNode >> _attributes: anOrderedCollection [
 	self setParents: self _attributes to: nil.
 	_attributes := anOrderedCollection.
 	self setParents: self _attributes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGetAccessorDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitGetAccessorDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGetAccessorDeclarationNode >> body [
 	^ body
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGetAccessorDeclarationNode >> body: aCSBlockStatementNode [
 	self body notNil
 		ifTrue: [ self body parent: nil ].
@@ -45,96 +46,96 @@ CSGetAccessorDeclarationNode >> body: aCSBlockStatementNode [
 		ifTrue: [ self body parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGetAccessorDeclarationNode >> compositeNodeVariables [
 	^ #(#_attributes)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGetAccessorDeclarationNode >> compositeTokenVariables [
 	^ #(#modifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGetAccessorDeclarationNode >> equalGreaterThanToken [
 	^ equalGreaterThanToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGetAccessorDeclarationNode >> equalGreaterThanToken: aSmaCCToken [
 	equalGreaterThanToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGetAccessorDeclarationNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGetAccessorDeclarationNode >> expression: aCSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGetAccessorDeclarationNode >> getToken [
 	^ getToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGetAccessorDeclarationNode >> getToken: aSmaCCToken [
 	getToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGetAccessorDeclarationNode >> ignoredTokenVariables [
 	^ #(#semicolonToken)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSGetAccessorDeclarationNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
 	modifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGetAccessorDeclarationNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGetAccessorDeclarationNode >> modifiers: anOrderedCollection [
 	modifiers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGetAccessorDeclarationNode >> nodeVariables [
 	^ #(#body #expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGetAccessorDeclarationNode >> refToken [
 	^ refToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGetAccessorDeclarationNode >> refToken: aSmaCCToken [
 	refToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGetAccessorDeclarationNode >> semicolonToken [
 	^ semicolonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGetAccessorDeclarationNode >> semicolonToken: aSmaCCToken [
 	semicolonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGetAccessorDeclarationNode >> tokenVariables [
 	^ #(#getToken #equalGreaterThanToken #refToken)
 ]

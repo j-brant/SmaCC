@@ -1,6 +1,6 @@
 Class {
-	#name : #CSListPatternNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSListPatternNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'leftBracket',
 		'rightBracket',
@@ -8,91 +8,92 @@ Class {
 		'commas',
 		'designation'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSListPatternNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitListPattern: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSListPatternNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSListPatternNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSListPatternNode >> compositeNodeVariables [
 	^ #(#patterns)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSListPatternNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSListPatternNode >> designation [
 	^ designation
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSListPatternNode >> designation: aCSVariableDesignationNode [
 	self designation notNil ifTrue: [ self designation parent: nil ].
 	designation := aCSVariableDesignationNode.
 	self designation notNil ifTrue: [ self designation parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSListPatternNode >> initialize [
 	super initialize.
 	patterns := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSListPatternNode >> leftBracket [
 	^ leftBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSListPatternNode >> leftBracket: aSmaCCToken [
 	leftBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSListPatternNode >> nodeVariables [
 	^ #(#designation)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSListPatternNode >> patterns [
 	^ patterns
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSListPatternNode >> patterns: anOrderedCollection [
 	self setParents: self patterns to: nil.
 	patterns := anOrderedCollection.
 	self setParents: self patterns to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSListPatternNode >> rightBracket [
 	^ rightBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSListPatternNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSListPatternNode >> tokenVariables [
 	^ #(#leftBracket #rightBracket)
 ]

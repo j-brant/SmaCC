@@ -1,28 +1,29 @@
 Class {
-	#name : #CSEmptyStatementNode,
-	#superclass : #CSStatementNode,
+	#name : 'CSEmptyStatementNode',
+	#superclass : 'CSStatementNode',
 	#instVars : [
 		'semicolonToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEmptyStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEmptyStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEmptyStatementNode >> ignoredTokenVariables [
 	^ #(#semicolonToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEmptyStatementNode >> semicolonToken [
 	^ semicolonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEmptyStatementNode >> semicolonToken: aSmaCCToken [
 	semicolonToken := aSmaCCToken
 ]

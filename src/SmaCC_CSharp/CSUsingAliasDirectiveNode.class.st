@@ -1,39 +1,40 @@
 Class {
-	#name : #CSUsingAliasDirectiveNode,
-	#superclass : #CSUsingDirectiveNode,
+	#name : 'CSUsingAliasDirectiveNode',
+	#superclass : 'CSUsingDirectiveNode',
 	#instVars : [
 		'name',
 		'equalToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingAliasDirectiveNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUsingAliasDirective: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingAliasDirectiveNode >> equalToken [
 	^ equalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingAliasDirectiveNode >> equalToken: aSmaCCToken [
 	equalToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingAliasDirectiveNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingAliasDirectiveNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingAliasDirectiveNode >> tokenVariables [
 	^ #(#name #equalToken #usingToken)
 ]

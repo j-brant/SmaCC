@@ -1,28 +1,29 @@
 Class {
-	#name : #CSVarTypeNode,
-	#superclass : #CSTypeNode,
+	#name : 'CSVarTypeNode',
+	#superclass : 'CSTypeNode',
 	#instVars : [
 		'varToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVarTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitVarType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVarTypeNode >> tokenVariables [
 	^ #(#varToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVarTypeNode >> varToken [
 	^ varToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVarTypeNode >> varToken: aSmaCCToken [
 	varToken := aSmaCCToken
 ]

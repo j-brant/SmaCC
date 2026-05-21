@@ -1,55 +1,56 @@
 Class {
-	#name : #CSNamedArgumentNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSNamedArgumentNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'name',
 		'equal',
 		'value'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNamedArgumentNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNamedArgument: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNamedArgumentNode >> equal [
 	^ equal
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNamedArgumentNode >> equal: aSmaCCToken [
 	equal := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNamedArgumentNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNamedArgumentNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNamedArgumentNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNamedArgumentNode >> tokenVariables [
 	^ #(#name #equal)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNamedArgumentNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNamedArgumentNode >> value: aCSExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aCSExpressionNode.

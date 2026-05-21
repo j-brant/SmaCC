@@ -1,46 +1,47 @@
 Class {
-	#name : #CSDeclarationStatementNode,
-	#superclass : #CSStatementNode,
+	#name : 'CSDeclarationStatementNode',
+	#superclass : 'CSStatementNode',
 	#instVars : [
 		'declaration',
 		'semicolonToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDeclarationStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDeclarationStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDeclarationStatementNode >> declaration [
 	^ declaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDeclarationStatementNode >> declaration: aCSProgramNode [
 	self declaration notNil ifTrue: [ self declaration parent: nil ].
 	declaration := aCSProgramNode.
 	self declaration notNil ifTrue: [ self declaration parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDeclarationStatementNode >> ignoredTokenVariables [
 	^ #(#semicolonToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDeclarationStatementNode >> nodeVariables [
 	^ #(#declaration)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDeclarationStatementNode >> semicolonToken [
 	^ semicolonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDeclarationStatementNode >> semicolonToken: aSmaCCToken [
 	semicolonToken := aSmaCCToken
 ]

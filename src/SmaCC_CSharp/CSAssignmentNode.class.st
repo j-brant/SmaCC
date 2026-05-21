@@ -1,70 +1,71 @@
 Class {
-	#name : #CSAssignmentNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSAssignmentNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'lhs',
 		'operator',
 		'refToken',
 		'rhs'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAssignmentNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAssignment: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAssignmentNode >> lhs [
 	^ lhs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAssignmentNode >> lhs: aCSExpressionNode [
 	self lhs notNil ifTrue: [ self lhs parent: nil ].
 	lhs := aCSExpressionNode.
 	self lhs notNil ifTrue: [ self lhs parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAssignmentNode >> nodeVariables [
 	^ #(#lhs #rhs)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAssignmentNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAssignmentNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAssignmentNode >> refToken [
 	^ refToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAssignmentNode >> refToken: aSmaCCToken [
 	refToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAssignmentNode >> rhs [
 	^ rhs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAssignmentNode >> rhs: aCSExpressionNode [
 	self rhs notNil ifTrue: [ self rhs parent: nil ].
 	rhs := aCSExpressionNode.
 	self rhs notNil ifTrue: [ self rhs parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAssignmentNode >> tokenVariables [
 	^ #(#operator #refToken)
 ]

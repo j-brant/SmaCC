@@ -1,57 +1,58 @@
 Class {
-	#name : #CSLabeledStatementNode,
-	#superclass : #CSStatementNode,
+	#name : 'CSLabeledStatementNode',
+	#superclass : 'CSStatementNode',
 	#instVars : [
 		'identifierToken',
 		'colonToken',
 		'statement'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLabeledStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLabeledStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLabeledStatementNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLabeledStatementNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLabeledStatementNode >> identifierToken [
 	^ identifierToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLabeledStatementNode >> identifierToken: aSmaCCToken [
 	identifierToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLabeledStatementNode >> nodeVariables [
 	^ #(#statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLabeledStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLabeledStatementNode >> statement: aCSStatementNode [
 	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aCSStatementNode.
 	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLabeledStatementNode >> tokenVariables [
 	^ #(#identifierToken #colonToken)
 ]

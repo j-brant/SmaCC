@@ -1,6 +1,6 @@
 Class {
-	#name : #CSFixedParameterNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSFixedParameterNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'_attributes',
 		'modifiers',
@@ -9,101 +9,102 @@ Class {
 		'equalToken',
 		'expression'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedParameterNode >> _attributes [
 	^ _attributes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedParameterNode >> _attributes: anOrderedCollection [
 	self setParents: self _attributes to: nil.
 	_attributes := anOrderedCollection.
 	self setParents: self _attributes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedParameterNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFixedParameter: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedParameterNode >> compositeNodeVariables [
 	^ #(#_attributes)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedParameterNode >> compositeTokenVariables [
 	^ #(#modifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedParameterNode >> equalToken [
 	^ equalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedParameterNode >> equalToken: aSmaCCToken [
 	equalToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedParameterNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedParameterNode >> expression: aCSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSFixedParameterNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
 	modifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedParameterNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedParameterNode >> modifiers: anOrderedCollection [
 	modifiers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedParameterNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedParameterNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedParameterNode >> nodeVariables [
 	^ #(#type #expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedParameterNode >> tokenVariables [
 	^ #(#name #equalToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedParameterNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedParameterNode >> type: aCSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.

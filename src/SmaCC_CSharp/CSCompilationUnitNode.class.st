@@ -1,62 +1,63 @@
 Class {
-	#name : #CSCompilationUnitNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSCompilationUnitNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'directives',
 		'_attributes',
 		'statements',
 		'declarations'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCompilationUnitNode >> _attributes [
 	^ _attributes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCompilationUnitNode >> _attributes: anOrderedCollection [
 	self setParents: self _attributes to: nil.
 	_attributes := anOrderedCollection.
 	self setParents: self _attributes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCompilationUnitNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCompilationUnit: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCompilationUnitNode >> compositeNodeVariables [
 	^ #(#directives #_attributes #statements #declarations)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCompilationUnitNode >> declarations [
 	^ declarations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCompilationUnitNode >> declarations: anOrderedCollection [
 	self setParents: self declarations to: nil.
 	declarations := anOrderedCollection.
 	self setParents: self declarations to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCompilationUnitNode >> directives [
 	^ directives
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCompilationUnitNode >> directives: anOrderedCollection [
 	self setParents: self directives to: nil.
 	directives := anOrderedCollection.
 	self setParents: self directives to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSCompilationUnitNode >> initialize [
 	super initialize.
 	directives := OrderedCollection new: 2.
@@ -65,12 +66,12 @@ CSCompilationUnitNode >> initialize [
 	declarations := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCompilationUnitNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCompilationUnitNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.

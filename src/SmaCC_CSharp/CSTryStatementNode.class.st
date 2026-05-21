@@ -1,26 +1,27 @@
 Class {
-	#name : #CSTryStatementNode,
-	#superclass : #CSStatementNode,
+	#name : 'CSTryStatementNode',
+	#superclass : 'CSStatementNode',
 	#instVars : [
 		'tryToken',
 		'block',
 		'clauses',
 		'finally'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTryStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTryStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTryStatementNode >> block [
 	^ block
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTryStatementNode >> block: aCSBlockStatementNode [
 	self block notNil
 		ifTrue: [ self block parent: nil ].
@@ -29,29 +30,29 @@ CSTryStatementNode >> block: aCSBlockStatementNode [
 		ifTrue: [ self block parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTryStatementNode >> clauses [
 	^ clauses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTryStatementNode >> clauses: anOrderedCollection [
 	self setParents: self clauses to: nil.
 	clauses := anOrderedCollection.
 	self setParents: self clauses to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTryStatementNode >> compositeNodeVariables [
 	^ #(#clauses)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTryStatementNode >> finally [
 	^ finally
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTryStatementNode >> finally: aCSFinallyClauseNode [
 	self finally notNil
 		ifTrue: [ self finally parent: nil ].
@@ -60,28 +61,28 @@ CSTryStatementNode >> finally: aCSFinallyClauseNode [
 		ifTrue: [ self finally parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSTryStatementNode >> initialize [
 	super initialize.
 	clauses := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTryStatementNode >> nodeVariables [
 	^ #(#block #finally)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTryStatementNode >> tokenVariables [
 	^ #(#tryToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTryStatementNode >> tryToken [
 	^ tryToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTryStatementNode >> tryToken: aSmaCCToken [
 	tryToken := aSmaCCToken
 ]

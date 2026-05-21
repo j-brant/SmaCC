@@ -1,142 +1,93 @@
 Class {
-	#name : #CSStackallocExpressionNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSStackallocExpressionNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'stackallocToken',
 		'type',
 		'leftBracket',
 		'expression',
 		'rightBracket',
-		'leftBrace',
-		'commaTokens',
-		'initializers',
-		'rightBrace'
+		'initializer'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStackallocExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStackallocExpression: self
 ]
 
-{ #category : #generated }
-CSStackallocExpressionNode >> commaTokens [
-	^ commaTokens
-]
-
-{ #category : #generated }
-CSStackallocExpressionNode >> commaTokens: anOrderedCollection [
-	commaTokens := anOrderedCollection
-]
-
-{ #category : #generated }
-CSStackallocExpressionNode >> compositeNodeVariables [
-	^ #(#initializers)
-]
-
-{ #category : #generated }
+{ #category : 'generated' }
 CSStackallocExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStackallocExpressionNode >> expression: aCSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
-CSStackallocExpressionNode >> ignoredCompositeTokenVariables [
-	^ #(#commaTokens #_leftParens #_rightParens)
+{ #category : 'generated' }
+CSStackallocExpressionNode >> initializer [
+	^ initializer
 ]
 
-{ #category : #'generated-initialize-release' }
-CSStackallocExpressionNode >> initialize [
-	super initialize.
-	initializers := OrderedCollection new: 2.
-	commaTokens := OrderedCollection new: 2.
+{ #category : 'generated' }
+CSStackallocExpressionNode >> initializer: aCSStackallocInitializerNode [
+	self initializer notNil ifTrue: [ self initializer parent: nil ].
+	initializer := aCSStackallocInitializerNode.
+	self initializer notNil ifTrue: [ self initializer parent: self ]
 ]
 
-{ #category : #generated }
-CSStackallocExpressionNode >> initializers [
-	^ initializers
-]
-
-{ #category : #generated }
-CSStackallocExpressionNode >> initializers: anOrderedCollection [
-	self setParents: self initializers to: nil.
-	initializers := anOrderedCollection.
-	self setParents: self initializers to: self
-]
-
-{ #category : #generated }
-CSStackallocExpressionNode >> leftBrace [
-	^ leftBrace
-]
-
-{ #category : #generated }
-CSStackallocExpressionNode >> leftBrace: aSmaCCToken [
-	leftBrace := aSmaCCToken
-]
-
-{ #category : #generated }
+{ #category : 'generated' }
 CSStackallocExpressionNode >> leftBracket [
 	^ leftBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStackallocExpressionNode >> leftBracket: aSmaCCToken [
 	leftBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStackallocExpressionNode >> nodeVariables [
-	^ #(#type #expression)
+	^ #(#type #expression #initializer)
 ]
 
-{ #category : #generated }
-CSStackallocExpressionNode >> rightBrace [
-	^ rightBrace
-]
-
-{ #category : #generated }
-CSStackallocExpressionNode >> rightBrace: aSmaCCToken [
-	rightBrace := aSmaCCToken
-]
-
-{ #category : #generated }
+{ #category : 'generated' }
 CSStackallocExpressionNode >> rightBracket [
 	^ rightBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStackallocExpressionNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStackallocExpressionNode >> stackallocToken [
 	^ stackallocToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStackallocExpressionNode >> stackallocToken: aSmaCCToken [
 	stackallocToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStackallocExpressionNode >> tokenVariables [
-	^ #(#stackallocToken #leftBracket #rightBracket #leftBrace #rightBrace)
+	^ #(#stackallocToken #leftBracket #rightBracket)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStackallocExpressionNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStackallocExpressionNode >> type: aCSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.

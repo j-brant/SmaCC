@@ -1,6 +1,6 @@
 Class {
-	#name : #CSClassDeclarationNode,
-	#superclass : #CSDeclarationNode,
+	#name : 'CSClassDeclarationNode',
+	#superclass : 'CSDeclarationNode',
 	#instVars : [
 		'_attributes',
 		'modifiers',
@@ -25,118 +25,119 @@ Class {
 		'parameters',
 		'rightParen'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> _attributes [
 	^ _attributes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> _attributes: anOrderedCollection [
 	self setParents: self _attributes to: nil.
 	_attributes := anOrderedCollection.
 	self setParents: self _attributes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitClassDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> arguments [
 	^ arguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> arguments: anOrderedCollection [
 	self setParents: self arguments to: nil.
 	arguments := anOrderedCollection.
 	self setParents: self arguments to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> classToken [
 	^ classToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> classToken: aSmaCCToken [
 	classToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> compositeNodeVariables [
 	^ #(#_attributes #supertypes #arguments #constraintClauses #declarations #parameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> compositeTokenVariables [
 	^ #(#modifiers #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> constraintClauses [
 	^ constraintClauses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> constraintClauses: anOrderedCollection [
 	self setParents: self constraintClauses to: nil.
 	constraintClauses := anOrderedCollection.
 	self setParents: self constraintClauses to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> declarations [
 	^ declarations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> declarations: anOrderedCollection [
 	self setParents: self declarations to: nil.
 	declarations := anOrderedCollection.
 	self setParents: self declarations to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> ignoredCompositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSClassDeclarationNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
@@ -150,156 +151,156 @@ CSClassDeclarationNode >> initialize [
 	parameters := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> leftBraceToken [
 	^ leftBraceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> leftBraceToken: aSmaCCToken [
 	leftBraceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> leftParenToken [
 	^ leftParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> leftParenToken: aSmaCCToken [
 	leftParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> modifiers: anOrderedCollection [
 	modifiers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> nodeVariables [
 	^ #(#typeParameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> partialToken [
 	^ partialToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> partialToken: aSmaCCToken [
 	partialToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> recordToken [
 	^ recordToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> recordToken: aSmaCCToken [
 	recordToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> rightBraceToken [
 	^ rightBraceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> rightBraceToken: aSmaCCToken [
 	rightBraceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> rightParenToken [
 	^ rightParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> rightParenToken: aSmaCCToken [
 	rightParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> supertypes [
 	^ supertypes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> supertypes: anOrderedCollection [
 	self setParents: self supertypes to: nil.
 	supertypes := anOrderedCollection.
 	self setParents: self supertypes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> tokenVariables [
 	^ #(#partialToken #classToken #recordToken #name #colonToken #leftParenToken #rightParenToken #leftBraceToken #rightBraceToken #semicolon #leftParen #rightParen)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> typeParameters [
 	^ typeParameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSClassDeclarationNode >> typeParameters: aCSTypeParameterListNode [
 	self typeParameters notNil
 		ifTrue: [ self typeParameters parent: nil ].

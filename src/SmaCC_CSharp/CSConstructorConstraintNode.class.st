@@ -1,50 +1,51 @@
 Class {
-	#name : #CSConstructorConstraintNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSConstructorConstraintNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'newToken',
 		'leftParenToken',
 		'rightParenToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorConstraintNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitConstructorConstraint: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorConstraintNode >> leftParenToken [
 	^ leftParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorConstraintNode >> leftParenToken: aSmaCCToken [
 	leftParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorConstraintNode >> newToken [
 	^ newToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorConstraintNode >> newToken: aSmaCCToken [
 	newToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorConstraintNode >> rightParenToken [
 	^ rightParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorConstraintNode >> rightParenToken: aSmaCCToken [
 	rightParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorConstraintNode >> tokenVariables [
 	^ #(#newToken #leftParenToken #rightParenToken)
 ]

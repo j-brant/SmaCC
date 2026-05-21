@@ -1,6 +1,6 @@
 Class {
-	#name : #CSUsingStatementNode,
-	#superclass : #CSStatementNode,
+	#name : 'CSUsingStatementNode',
+	#superclass : 'CSStatementNode',
 	#instVars : [
 		'usingToken',
 		'leftParenToken',
@@ -8,20 +8,21 @@ Class {
 		'rightParenToken',
 		'statement'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUsingStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingStatementNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingStatementNode >> expression: aCSProgramNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
@@ -30,37 +31,37 @@ CSUsingStatementNode >> expression: aCSProgramNode [
 		ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingStatementNode >> leftParenToken [
 	^ leftParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingStatementNode >> leftParenToken: aSmaCCToken [
 	leftParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingStatementNode >> nodeVariables [
 	^ #(#expression #statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingStatementNode >> rightParenToken [
 	^ rightParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingStatementNode >> rightParenToken: aSmaCCToken [
 	rightParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingStatementNode >> statement: aCSStatementNode [
 	self statement notNil
 		ifTrue: [ self statement parent: nil ].
@@ -69,17 +70,17 @@ CSUsingStatementNode >> statement: aCSStatementNode [
 		ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingStatementNode >> tokenVariables [
 	^ #(#usingToken #leftParenToken #rightParenToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingStatementNode >> usingToken [
 	^ usingToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingStatementNode >> usingToken: aSmaCCToken [
 	usingToken := aSmaCCToken
 ]

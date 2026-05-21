@@ -1,6 +1,6 @@
 Class {
-	#name : #CSSwitchStatementNode,
-	#superclass : #CSStatementNode,
+	#name : 'CSSwitchStatementNode',
+	#superclass : 'CSStatementNode',
 	#instVars : [
 		'switchToken',
 		'leftParenToken',
@@ -10,105 +10,106 @@ Class {
 		'sections',
 		'rightBraceToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSwitchStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchStatementNode >> compositeNodeVariables [
 	^ #(#sections)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchStatementNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchStatementNode >> expression: aCSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSSwitchStatementNode >> initialize [
 	super initialize.
 	sections := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchStatementNode >> leftBraceToken [
 	^ leftBraceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchStatementNode >> leftBraceToken: aSmaCCToken [
 	leftBraceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchStatementNode >> leftParenToken [
 	^ leftParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchStatementNode >> leftParenToken: aSmaCCToken [
 	leftParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchStatementNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchStatementNode >> rightBraceToken [
 	^ rightBraceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchStatementNode >> rightBraceToken: aSmaCCToken [
 	rightBraceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchStatementNode >> rightParenToken [
 	^ rightParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchStatementNode >> rightParenToken: aSmaCCToken [
 	rightParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchStatementNode >> sections [
 	^ sections
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchStatementNode >> sections: anOrderedCollection [
 	self setParents: self sections to: nil.
 	sections := anOrderedCollection.
 	self setParents: self sections to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchStatementNode >> switchToken [
 	^ switchToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchStatementNode >> switchToken: aSmaCCToken [
 	switchToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchStatementNode >> tokenVariables [
 	^ #(#switchToken #leftParenToken #rightParenToken #leftBraceToken #rightBraceToken)
 ]

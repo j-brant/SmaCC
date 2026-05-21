@@ -1,6 +1,6 @@
 Class {
-	#name : #CSEventDeclarationNode,
-	#superclass : #CSDeclarationNode,
+	#name : 'CSEventDeclarationNode',
+	#superclass : 'CSDeclarationNode',
 	#instVars : [
 		'_attributes',
 		'modifiers',
@@ -17,32 +17,33 @@ Class {
 		'removeDeclaration',
 		'rightBraceToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> _attributes [
 	^ _attributes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> _attributes: anOrderedCollection [
 	self setParents: self _attributes to: nil.
 	_attributes := anOrderedCollection.
 	self setParents: self _attributes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEventDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> addDeclaration [
 	^ addDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> addDeclaration: aCSAddAccessorDeclarationNode [
 	self addDeclaration notNil
 		ifTrue: [ self addDeclaration parent: nil ].
@@ -51,59 +52,59 @@ CSEventDeclarationNode >> addDeclaration: aCSAddAccessorDeclarationNode [
 		ifTrue: [ self addDeclaration parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> compositeNodeVariables [
 	^ #(#_attributes #declarators)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> compositeTokenVariables [
 	^ #(#modifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> declarators [
 	^ declarators
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> declarators: anOrderedCollection [
 	self setParents: self declarators to: nil.
 	declarators := anOrderedCollection.
 	self setParents: self declarators to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> eventToken [
 	^ eventToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> eventToken: aSmaCCToken [
 	eventToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> ignoredCompositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> ignoredTokenVariables [
 	^ #(#semicolonToken)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSEventDeclarationNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
@@ -112,12 +113,12 @@ CSEventDeclarationNode >> initialize [
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> interface [
 	^ interface
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> interface: aCSTypeNode [
 	self interface notNil
 		ifTrue: [ self interface parent: nil ].
@@ -126,57 +127,57 @@ CSEventDeclarationNode >> interface: aCSTypeNode [
 		ifTrue: [ self interface parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> leftBraceToken [
 	^ leftBraceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> leftBraceToken: aSmaCCToken [
 	leftBraceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> modifiers: anOrderedCollection [
 	modifiers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> nodeVariables [
 	^ #(#type #interface #addDeclaration #removeDeclaration)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> periodToken [
 	^ periodToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> periodToken: aSmaCCToken [
 	periodToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> removeDeclaration [
 	^ removeDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> removeDeclaration: aCSRemoveAccessorDeclarationNode [
 	self removeDeclaration notNil
 		ifTrue: [ self removeDeclaration parent: nil ].
@@ -185,37 +186,37 @@ CSEventDeclarationNode >> removeDeclaration: aCSRemoveAccessorDeclarationNode [
 		ifTrue: [ self removeDeclaration parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> rightBraceToken [
 	^ rightBraceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> rightBraceToken: aSmaCCToken [
 	rightBraceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> semicolonToken [
 	^ semicolonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> semicolonToken: aSmaCCToken [
 	semicolonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> tokenVariables [
 	^ #(#eventToken #name #periodToken #leftBraceToken #rightBraceToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEventDeclarationNode >> type: aCSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.

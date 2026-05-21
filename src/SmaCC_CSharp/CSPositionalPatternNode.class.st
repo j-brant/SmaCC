@@ -1,6 +1,6 @@
 Class {
-	#name : #CSPositionalPatternNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSPositionalPatternNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'type',
 		'leftParen',
@@ -11,121 +11,122 @@ Class {
 		'patterns',
 		'commas'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPositionalPatternNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPositionalPattern: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPositionalPatternNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPositionalPatternNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPositionalPatternNode >> compositeNodeVariables [
 	^ #(#patterns)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPositionalPatternNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPositionalPatternNode >> designation [
 	^ designation
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPositionalPatternNode >> designation: aCSVariableDesignationNode [
 	self designation notNil ifTrue: [ self designation parent: nil ].
 	designation := aCSVariableDesignationNode.
 	self designation notNil ifTrue: [ self designation parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSPositionalPatternNode >> initialize [
 	super initialize.
 	patterns := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPositionalPatternNode >> leftBraceToken [
 	^ leftBraceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPositionalPatternNode >> leftBraceToken: aSmaCCToken [
 	leftBraceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPositionalPatternNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPositionalPatternNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPositionalPatternNode >> nodeVariables [
 	^ #(#type #designation)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPositionalPatternNode >> patterns [
 	^ patterns
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPositionalPatternNode >> patterns: anOrderedCollection [
 	self setParents: self patterns to: nil.
 	patterns := anOrderedCollection.
 	self setParents: self patterns to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPositionalPatternNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPositionalPatternNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPositionalPatternNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPositionalPatternNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPositionalPatternNode >> tokenVariables [
 	^ #(#leftParen #rightParen #leftBraceToken #rightBrace)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPositionalPatternNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPositionalPatternNode >> type: aCSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.

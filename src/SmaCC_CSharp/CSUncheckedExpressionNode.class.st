@@ -1,68 +1,69 @@
 Class {
-	#name : #CSUncheckedExpressionNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSUncheckedExpressionNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'uncheckedToken',
 		'leftParenToken',
 		'expression',
 		'rightParenToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUncheckedExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUncheckedExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUncheckedExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUncheckedExpressionNode >> expression: aCSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUncheckedExpressionNode >> leftParenToken [
 	^ leftParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUncheckedExpressionNode >> leftParenToken: aSmaCCToken [
 	leftParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUncheckedExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUncheckedExpressionNode >> rightParenToken [
 	^ rightParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUncheckedExpressionNode >> rightParenToken: aSmaCCToken [
 	rightParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUncheckedExpressionNode >> tokenVariables [
 	^ #(#uncheckedToken #leftParenToken #rightParenToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUncheckedExpressionNode >> uncheckedToken [
 	^ uncheckedToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUncheckedExpressionNode >> uncheckedToken: aSmaCCToken [
 	uncheckedToken := aSmaCCToken
 ]

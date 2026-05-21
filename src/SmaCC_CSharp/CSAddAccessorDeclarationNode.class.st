@@ -1,47 +1,48 @@
 Class {
-	#name : #CSAddAccessorDeclarationNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSAddAccessorDeclarationNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'_attributes',
 		'addToken',
 		'block'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAddAccessorDeclarationNode >> _attributes [
 	^ _attributes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAddAccessorDeclarationNode >> _attributes: anOrderedCollection [
 	self setParents: self _attributes to: nil.
 	_attributes := anOrderedCollection.
 	self setParents: self _attributes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAddAccessorDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAddAccessorDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAddAccessorDeclarationNode >> addToken [
 	^ addToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAddAccessorDeclarationNode >> addToken: aSmaCCToken [
 	addToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAddAccessorDeclarationNode >> block [
 	^ block
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAddAccessorDeclarationNode >> block: aCSBlockStatementNode [
 	self block notNil
 		ifTrue: [ self block parent: nil ].
@@ -50,23 +51,23 @@ CSAddAccessorDeclarationNode >> block: aCSBlockStatementNode [
 		ifTrue: [ self block parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAddAccessorDeclarationNode >> compositeNodeVariables [
 	^ #(#_attributes)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSAddAccessorDeclarationNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAddAccessorDeclarationNode >> nodeVariables [
 	^ #(#block)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAddAccessorDeclarationNode >> tokenVariables [
 	^ #(#addToken)
 ]

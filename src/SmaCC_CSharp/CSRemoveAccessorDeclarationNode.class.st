@@ -1,37 +1,38 @@
 Class {
-	#name : #CSRemoveAccessorDeclarationNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSRemoveAccessorDeclarationNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'_attributes',
 		'removeToken',
 		'block'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSRemoveAccessorDeclarationNode >> _attributes [
 	^ _attributes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSRemoveAccessorDeclarationNode >> _attributes: anOrderedCollection [
 	self setParents: self _attributes to: nil.
 	_attributes := anOrderedCollection.
 	self setParents: self _attributes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSRemoveAccessorDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitRemoveAccessorDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSRemoveAccessorDeclarationNode >> block [
 	^ block
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSRemoveAccessorDeclarationNode >> block: aCSBlockStatementNode [
 	self block notNil
 		ifTrue: [ self block parent: nil ].
@@ -40,33 +41,33 @@ CSRemoveAccessorDeclarationNode >> block: aCSBlockStatementNode [
 		ifTrue: [ self block parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSRemoveAccessorDeclarationNode >> compositeNodeVariables [
 	^ #(#_attributes)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSRemoveAccessorDeclarationNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSRemoveAccessorDeclarationNode >> nodeVariables [
 	^ #(#block)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSRemoveAccessorDeclarationNode >> removeToken [
 	^ removeToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSRemoveAccessorDeclarationNode >> removeToken: aSmaCCToken [
 	removeToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSRemoveAccessorDeclarationNode >> tokenVariables [
 	^ #(#removeToken)
 ]

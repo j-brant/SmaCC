@@ -1,78 +1,79 @@
 Class {
-	#name : #CSCollectionExpressionNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSCollectionExpressionNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'leftBracket',
 		'rightBracket',
 		'values',
 		'commaTokens'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCollectionExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCollectionExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCollectionExpressionNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCollectionExpressionNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCollectionExpressionNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCollectionExpressionNode >> ignoredCompositeTokenVariables [
 	^ #(#commaTokens #_leftParens #_rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSCollectionExpressionNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCollectionExpressionNode >> leftBracket [
 	^ leftBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCollectionExpressionNode >> leftBracket: aSmaCCToken [
 	leftBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCollectionExpressionNode >> rightBracket [
 	^ rightBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCollectionExpressionNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCollectionExpressionNode >> tokenVariables [
 	^ #(#leftBracket #rightBracket)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCollectionExpressionNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCollectionExpressionNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

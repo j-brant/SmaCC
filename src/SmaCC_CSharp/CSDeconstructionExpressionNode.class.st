@@ -1,41 +1,42 @@
 Class {
-	#name : #CSDeconstructionExpressionNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSDeconstructionExpressionNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'type',
 		'tuple'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDeconstructionExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDeconstructionExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDeconstructionExpressionNode >> nodeVariables [
 	^ #(#type #tuple)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDeconstructionExpressionNode >> tuple [
 	^ tuple
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDeconstructionExpressionNode >> tuple: aCSDeconstructionTupleNode [
 	self tuple notNil ifTrue: [ self tuple parent: nil ].
 	tuple := aCSDeconstructionTupleNode.
 	self tuple notNil ifTrue: [ self tuple parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDeconstructionExpressionNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDeconstructionExpressionNode >> type: aCSVarTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSVarTypeNode.

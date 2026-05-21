@@ -1,10 +1,11 @@
 Class {
-	#name : #CSStringLiteralExpressionNode,
-	#superclass : #CSLiteralExpressionNode,
-	#category : #'SmaCC_CSharp'
+	#name : 'CSStringLiteralExpressionNode',
+	#superclass : 'CSLiteralExpressionNode',
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStringLiteralExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStringLiteralExpression: self
 ]

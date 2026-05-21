@@ -1,48 +1,49 @@
 Class {
-	#name : #CSSwitchSectionNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSSwitchSectionNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'labels',
 		'statements'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchSectionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSwitchSection: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchSectionNode >> compositeNodeVariables [
 	^ #(#labels #statements)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSSwitchSectionNode >> initialize [
 	super initialize.
 	labels := OrderedCollection new: 2.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchSectionNode >> labels [
 	^ labels
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchSectionNode >> labels: anOrderedCollection [
 	self setParents: self labels to: nil.
 	labels := anOrderedCollection.
 	self setParents: self labels to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchSectionNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchSectionNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.

@@ -1,6 +1,6 @@
 Class {
-	#name : #CSUnboundTypeNameNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSUnboundTypeNameNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'identifierTokens',
 		'lessThanToken',
@@ -10,102 +10,103 @@ Class {
 		'type',
 		'periodToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnboundTypeNameNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUnboundTypeName: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnboundTypeNameNode >> colonColonToken [
 	^ colonColonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnboundTypeNameNode >> colonColonToken: aSmaCCToken [
 	colonColonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnboundTypeNameNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnboundTypeNameNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnboundTypeNameNode >> compositeTokenVariables [
 	^ #(#identifierTokens #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnboundTypeNameNode >> gtToken [
 	^ gtToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnboundTypeNameNode >> gtToken: aSmaCCToken [
 	gtToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnboundTypeNameNode >> identifierTokens [
 	^ identifierTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnboundTypeNameNode >> identifierTokens: anOrderedCollection [
 	identifierTokens := anOrderedCollection
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSUnboundTypeNameNode >> initialize [
 	super initialize.
 	identifierTokens := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnboundTypeNameNode >> lessThanToken [
 	^ lessThanToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnboundTypeNameNode >> lessThanToken: aSmaCCToken [
 	lessThanToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnboundTypeNameNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnboundTypeNameNode >> periodToken [
 	^ periodToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnboundTypeNameNode >> periodToken: aSmaCCToken [
 	periodToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnboundTypeNameNode >> tokenVariables [
 	^ #(#lessThanToken #gtToken #colonColonToken #periodToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnboundTypeNameNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnboundTypeNameNode >> type: aCSUnboundTypeNameNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSUnboundTypeNameNode.

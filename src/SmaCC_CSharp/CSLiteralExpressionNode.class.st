@@ -1,28 +1,29 @@
 Class {
-	#name : #CSLiteralExpressionNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSLiteralExpressionNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'token'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLiteralExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLiteralExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLiteralExpressionNode >> token [
 	^ token
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLiteralExpressionNode >> token: aSmaCCToken [
 	token := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLiteralExpressionNode >> tokenVariables [
 	^ #(#token)
 ]

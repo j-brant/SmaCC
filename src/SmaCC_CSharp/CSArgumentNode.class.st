@@ -1,6 +1,6 @@
 Class {
-	#name : #CSArgumentNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSArgumentNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'identifier',
 		'colonToken',
@@ -11,102 +11,103 @@ Class {
 		'type',
 		'scopedToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArgumentNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitArgument: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArgumentNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArgumentNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArgumentNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArgumentNode >> expression: aCSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArgumentNode >> identifier [
 	^ identifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArgumentNode >> identifier: aSmaCCToken [
 	identifier := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArgumentNode >> inToken [
 	^ inToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArgumentNode >> inToken: aSmaCCToken [
 	inToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArgumentNode >> nodeVariables [
 	^ #(#expression #type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArgumentNode >> outToken [
 	^ outToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArgumentNode >> outToken: aSmaCCToken [
 	outToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArgumentNode >> refToken [
 	^ refToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArgumentNode >> refToken: aSmaCCToken [
 	refToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArgumentNode >> scopedToken [
 	^ scopedToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArgumentNode >> scopedToken: aSmaCCToken [
 	scopedToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArgumentNode >> tokenVariables [
 	^ #(#identifier #colonToken #inToken #refToken #outToken #scopedToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArgumentNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArgumentNode >> type: aCSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.

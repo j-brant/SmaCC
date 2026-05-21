@@ -1,6 +1,6 @@
 Class {
-	#name : #CSStaticConstructorDeclarationNode,
-	#superclass : #CSDeclarationNode,
+	#name : 'CSStaticConstructorDeclarationNode',
+	#superclass : 'CSDeclarationNode',
 	#instVars : [
 		'_attributes',
 		'staticToken',
@@ -13,32 +13,33 @@ Class {
 		'expression',
 		'semicolonToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> _attributes [
 	^ _attributes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> _attributes: anOrderedCollection [
 	self setParents: self _attributes to: nil.
 	_attributes := anOrderedCollection.
 	self setParents: self _attributes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStaticConstructorDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> block [
 	^ block
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> block: aCSBlockStatementNode [
 	self block notNil
 		ifTrue: [ self block parent: nil ].
@@ -47,116 +48,116 @@ CSStaticConstructorDeclarationNode >> block: aCSBlockStatementNode [
 		ifTrue: [ self block parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> compositeNodeVariables [
 	^ #(#_attributes)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> compositeTokenVariables [
 	^ #(#modifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> equalGreaterThanToken [
 	^ equalGreaterThanToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> equalGreaterThanToken: aSmaCCToken [
 	equalGreaterThanToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> expression: aCSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> identifierToken [
 	^ identifierToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> identifierToken: aSmaCCToken [
 	identifierToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> ignoredTokenVariables [
 	^ #(#semicolonToken)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSStaticConstructorDeclarationNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
 	modifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> leftParenToken [
 	^ leftParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> leftParenToken: aSmaCCToken [
 	leftParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> modifiers: anOrderedCollection [
 	modifiers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> nodeVariables [
 	^ #(#block #expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> rightParenToken [
 	^ rightParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> rightParenToken: aSmaCCToken [
 	rightParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> semicolonToken [
 	^ semicolonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> semicolonToken: aSmaCCToken [
 	semicolonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> staticToken [
 	^ staticToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> staticToken: aSmaCCToken [
 	staticToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStaticConstructorDeclarationNode >> tokenVariables [
 	^ #(#staticToken #identifierToken #leftParenToken #rightParenToken #equalGreaterThanToken)
 ]

@@ -1,46 +1,47 @@
 Class {
-	#name : #CSRefExpressionNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSRefExpressionNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'refToken',
 		'expression'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSRefExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitRefExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSRefExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSRefExpressionNode >> expression: aCSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSRefExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSRefExpressionNode >> refToken [
 	^ refToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSRefExpressionNode >> refToken: aSmaCCToken [
 	refToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSRefExpressionNode >> tokenVariables [
 	^ #(#refToken)
 ]

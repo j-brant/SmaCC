@@ -1,6 +1,6 @@
 Class {
-	#name : #CSFinalizerDeclarationNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSFinalizerDeclarationNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'_attributes',
 		'modifiers',
@@ -10,111 +10,112 @@ Class {
 		'rightParenToken',
 		'body'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFinalizerDeclarationNode >> _attributes [
 	^ _attributes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFinalizerDeclarationNode >> _attributes: anOrderedCollection [
 	self setParents: self _attributes to: nil.
 	_attributes := anOrderedCollection.
 	self setParents: self _attributes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFinalizerDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFinalizerDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFinalizerDeclarationNode >> body [
 	^ body
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFinalizerDeclarationNode >> body: aCSMethodBodyNode [
 	self body notNil ifTrue: [ self body parent: nil ].
 	body := aCSMethodBodyNode.
 	self body notNil ifTrue: [ self body parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFinalizerDeclarationNode >> compositeNodeVariables [
 	^ #(#_attributes)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFinalizerDeclarationNode >> compositeTokenVariables [
 	^ #(#modifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFinalizerDeclarationNode >> identifierToken [
 	^ identifierToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFinalizerDeclarationNode >> identifierToken: aSmaCCToken [
 	identifierToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSFinalizerDeclarationNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
 	modifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFinalizerDeclarationNode >> leftParenToken [
 	^ leftParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFinalizerDeclarationNode >> leftParenToken: aSmaCCToken [
 	leftParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFinalizerDeclarationNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFinalizerDeclarationNode >> modifiers: anOrderedCollection [
 	modifiers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFinalizerDeclarationNode >> nodeVariables [
 	^ #(#body)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFinalizerDeclarationNode >> rightParenToken [
 	^ rightParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFinalizerDeclarationNode >> rightParenToken: aSmaCCToken [
 	rightParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFinalizerDeclarationNode >> tildeToken [
 	^ tildeToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFinalizerDeclarationNode >> tildeToken: aSmaCCToken [
 	tildeToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFinalizerDeclarationNode >> tokenVariables [
 	^ #(#tildeToken #identifierToken #leftParenToken #rightParenToken)
 ]

@@ -1,68 +1,69 @@
 Class {
-	#name : #CSTypeofExpressionNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSTypeofExpressionNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'typeofToken',
 		'leftParenToken',
 		'type',
 		'rightParenToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeofExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTypeofExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeofExpressionNode >> leftParenToken [
 	^ leftParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeofExpressionNode >> leftParenToken: aSmaCCToken [
 	leftParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeofExpressionNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeofExpressionNode >> rightParenToken [
 	^ rightParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeofExpressionNode >> rightParenToken: aSmaCCToken [
 	rightParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeofExpressionNode >> tokenVariables [
 	^ #(#typeofToken #leftParenToken #rightParenToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeofExpressionNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeofExpressionNode >> type: aCSProgramNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSProgramNode.
 	self type notNil ifTrue: [ self type parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeofExpressionNode >> typeofToken [
 	^ typeofToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeofExpressionNode >> typeofToken: aSmaCCToken [
 	typeofToken := aSmaCCToken
 ]

@@ -1,24 +1,25 @@
 Class {
-	#name : #CSExpressionStatementNode,
-	#superclass : #CSStatementNode,
+	#name : 'CSExpressionStatementNode',
+	#superclass : 'CSStatementNode',
 	#instVars : [
 		'expression',
 		'semicolonToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSExpressionStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExpressionStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSExpressionStatementNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSExpressionStatementNode >> expression: aCSExpressionNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
@@ -27,22 +28,22 @@ CSExpressionStatementNode >> expression: aCSExpressionNode [
 		ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSExpressionStatementNode >> ignoredTokenVariables [
 	^ #(#semicolonToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSExpressionStatementNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSExpressionStatementNode >> semicolonToken [
 	^ semicolonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSExpressionStatementNode >> semicolonToken: aSmaCCToken [
 	semicolonToken := aSmaCCToken
 ]

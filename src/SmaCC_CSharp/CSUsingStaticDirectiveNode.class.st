@@ -1,28 +1,29 @@
 Class {
-	#name : #CSUsingStaticDirectiveNode,
-	#superclass : #CSUsingDirectiveNode,
+	#name : 'CSUsingStaticDirectiveNode',
+	#superclass : 'CSUsingDirectiveNode',
 	#instVars : [
 		'staticToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingStaticDirectiveNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUsingStaticDirective: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingStaticDirectiveNode >> staticToken [
 	^ staticToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingStaticDirectiveNode >> staticToken: aSmaCCToken [
 	staticToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingStaticDirectiveNode >> tokenVariables [
 	^ #(#staticToken #usingToken)
 ]

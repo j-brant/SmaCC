@@ -1,66 +1,67 @@
 Class {
-	#name : #CSAnonymousFunctionParameterNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSAnonymousFunctionParameterNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'modifiers',
 		'type',
 		'name'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAnonymousFunctionParameterNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAnonymousFunctionParameter: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAnonymousFunctionParameterNode >> compositeTokenVariables [
 	^ #(#modifiers)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSAnonymousFunctionParameterNode >> initialize [
 	super initialize.
 	modifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAnonymousFunctionParameterNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAnonymousFunctionParameterNode >> modifiers: anOrderedCollection [
 	modifiers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAnonymousFunctionParameterNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAnonymousFunctionParameterNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAnonymousFunctionParameterNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAnonymousFunctionParameterNode >> tokenVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAnonymousFunctionParameterNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAnonymousFunctionParameterNode >> type: aCSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.

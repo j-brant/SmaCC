@@ -1,28 +1,29 @@
 Class {
-	#name : #CSTypeExpressionNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSTypeExpressionNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'type'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTypeExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeExpressionNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeExpressionNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeExpressionNode >> type: aCSTypeNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].

@@ -1,6 +1,6 @@
 Class {
-	#name : #CSLambdaExpressionNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSLambdaExpressionNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'type',
 		'leftParenToken',
@@ -11,30 +11,31 @@ Class {
 		'body',
 		'asyncToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLambdaExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLambdaExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLambdaExpressionNode >> asyncToken [
 	^ asyncToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLambdaExpressionNode >> asyncToken: aSmaCCToken [
 	asyncToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLambdaExpressionNode >> body [
 	^ body
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLambdaExpressionNode >> body: aCSProgramNode [
 	self body notNil
 		ifTrue: [ self body parent: nil ].
@@ -43,91 +44,91 @@ CSLambdaExpressionNode >> body: aCSProgramNode [
 		ifTrue: [ self body parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLambdaExpressionNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLambdaExpressionNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLambdaExpressionNode >> compositeNodeVariables [
 	^ #(#parameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLambdaExpressionNode >> equalGreaterThanToken [
 	^ equalGreaterThanToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLambdaExpressionNode >> equalGreaterThanToken: aSmaCCToken [
 	equalGreaterThanToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLambdaExpressionNode >> ignoredCompositeTokenVariables [
 	^ #(#commaTokens #_leftParens #_rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSLambdaExpressionNode >> initialize [
 	super initialize.
 	parameters := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLambdaExpressionNode >> leftParenToken [
 	^ leftParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLambdaExpressionNode >> leftParenToken: aSmaCCToken [
 	leftParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLambdaExpressionNode >> nodeVariables [
 	^ #(#type #body)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLambdaExpressionNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLambdaExpressionNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLambdaExpressionNode >> rightParenToken [
 	^ rightParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLambdaExpressionNode >> rightParenToken: aSmaCCToken [
 	rightParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLambdaExpressionNode >> tokenVariables [
 	^ #(#leftParenToken #rightParenToken #equalGreaterThanToken #asyncToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLambdaExpressionNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLambdaExpressionNode >> type: aCSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.

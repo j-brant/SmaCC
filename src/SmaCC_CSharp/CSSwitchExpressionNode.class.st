@@ -1,6 +1,6 @@
 Class {
-	#name : #CSSwitchExpressionNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSSwitchExpressionNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'value',
 		'switchToken',
@@ -10,109 +10,110 @@ Class {
 		'arms',
 		'commas'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSwitchExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchExpressionNode >> arms [
 	^ arms
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchExpressionNode >> arms: anOrderedCollection [
 	self setParents: self arms to: nil.
 	arms := anOrderedCollection.
 	self setParents: self arms to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchExpressionNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchExpressionNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchExpressionNode >> compositeNodeVariables [
 	^ #(#arms)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchExpressionNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSSwitchExpressionNode >> initialize [
 	super initialize.
 	arms := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchExpressionNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchExpressionNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchExpressionNode >> leftBraceToken [
 	^ leftBraceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchExpressionNode >> leftBraceToken: aSmaCCToken [
 	leftBraceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchExpressionNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchExpressionNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchExpressionNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchExpressionNode >> switchToken [
 	^ switchToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchExpressionNode >> switchToken: aSmaCCToken [
 	switchToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchExpressionNode >> tokenVariables [
 	^ #(#switchToken #leftBrace #rightBrace #leftBraceToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSwitchExpressionNode >> value: aCSExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aCSExpressionNode.

@@ -1,51 +1,52 @@
 Class {
-	#name : #CSStatementListNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSStatementListNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'expressions',
 		'commaTokens'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStatementListNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStatementList: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStatementListNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStatementListNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStatementListNode >> compositeNodeVariables [
 	^ #(#expressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStatementListNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStatementListNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStatementListNode >> ignoredCompositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSStatementListNode >> initialize [
 	super initialize.
 	expressions := OrderedCollection new: 2.

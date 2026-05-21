@@ -1,52 +1,53 @@
 Class {
-	#name : #CSArrayTypeNode,
-	#superclass : #CSTypeNode,
+	#name : 'CSArrayTypeNode',
+	#superclass : 'CSTypeNode',
 	#instVars : [
 		'type',
 		'rankSpecifiers'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitArrayType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayTypeNode >> compositeNodeVariables [
 	^ #(#rankSpecifiers)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSArrayTypeNode >> initialize [
 	super initialize.
 	rankSpecifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayTypeNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayTypeNode >> rankSpecifiers [
 	^ rankSpecifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayTypeNode >> rankSpecifiers: anOrderedCollection [
 	self setParents: self rankSpecifiers to: nil.
 	rankSpecifiers := anOrderedCollection.
 	self setParents: self rankSpecifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayTypeNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayTypeNode >> type: aCSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.

@@ -1,7 +1,8 @@
 Class {
-	#name : #CSProgramNodeVisitor,
-	#superclass : #Object,
+	#name : 'CSProgramNodeVisitor',
+	#superclass : 'Object',
 	#traits : 'TCSProgramNodeVisitor',
 	#classTraits : 'TCSProgramNodeVisitor classTrait',
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }

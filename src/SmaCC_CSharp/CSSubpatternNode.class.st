@@ -1,59 +1,60 @@
 Class {
-	#name : #CSSubpatternNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSSubpatternNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'pattern',
 		'name',
 		'colon'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSubpatternNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSubpattern: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSubpatternNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSubpatternNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSubpatternNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSubpatternNode >> name: aCSQualifiedIdentifierNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aCSQualifiedIdentifierNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSubpatternNode >> nodeVariables [
 	^ #(#pattern #name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSubpatternNode >> pattern [
 	^ pattern
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSubpatternNode >> pattern: aCSExpressionNode [
 	self pattern notNil ifTrue: [ self pattern parent: nil ].
 	pattern := aCSExpressionNode.
 	self pattern notNil ifTrue: [ self pattern parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSubpatternNode >> tokenVariables [
 	^ #(#colon)
 ]

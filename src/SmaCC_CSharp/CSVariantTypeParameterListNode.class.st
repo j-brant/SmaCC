@@ -1,33 +1,34 @@
 Class {
-	#name : #CSVariantTypeParameterListNode,
-	#superclass : #CSTypeParameterListNode,
+	#name : 'CSVariantTypeParameterListNode',
+	#superclass : 'CSTypeParameterListNode',
 	#instVars : [
 		'annotations'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVariantTypeParameterListNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitVariantTypeParameterList: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVariantTypeParameterListNode >> annotations [
 	^ annotations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVariantTypeParameterListNode >> annotations: anOrderedCollection [
 	annotations := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVariantTypeParameterListNode >> compositeTokenVariables [
 	^ #(#annotations)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSVariantTypeParameterListNode >> initialize [
 	super initialize.
 	annotations := OrderedCollection new: 2.

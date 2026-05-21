@@ -1,6 +1,6 @@
 Class {
-	#name : #CSGlobalUsingStaticDirectiveNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSGlobalUsingStaticDirectiveNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'globalToken',
 		'usingToken',
@@ -8,72 +8,73 @@ Class {
 		'namespace',
 		'semicolon'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingStaticDirectiveNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitGlobalUsingStaticDirective: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingStaticDirectiveNode >> globalToken [
 	^ globalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingStaticDirectiveNode >> globalToken: aSmaCCToken [
 	globalToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingStaticDirectiveNode >> namespace [
 	^ namespace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingStaticDirectiveNode >> namespace: aCSTypeNode [
 	self namespace notNil ifTrue: [ self namespace parent: nil ].
 	namespace := aCSTypeNode.
 	self namespace notNil ifTrue: [ self namespace parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingStaticDirectiveNode >> nodeVariables [
 	^ #(#namespace)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingStaticDirectiveNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingStaticDirectiveNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingStaticDirectiveNode >> staticToken [
 	^ staticToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingStaticDirectiveNode >> staticToken: aSmaCCToken [
 	staticToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingStaticDirectiveNode >> tokenVariables [
 	^ #(#globalToken #usingToken #staticToken #semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingStaticDirectiveNode >> usingToken [
 	^ usingToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingStaticDirectiveNode >> usingToken: aSmaCCToken [
 	usingToken := aSmaCCToken
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : #CSSetAccessorDeclarationNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSSetAccessorDeclarationNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'_attributes',
 		'modifiers',
@@ -10,32 +10,33 @@ Class {
 		'expression',
 		'semicolonToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSetAccessorDeclarationNode >> _attributes [
 	^ _attributes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSetAccessorDeclarationNode >> _attributes: anOrderedCollection [
 	self setParents: self _attributes to: nil.
 	_attributes := anOrderedCollection.
 	self setParents: self _attributes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSetAccessorDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSetAccessorDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSetAccessorDeclarationNode >> body [
 	^ body
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSetAccessorDeclarationNode >> body: aCSBlockStatementNode [
 	self body notNil
 		ifTrue: [ self body parent: nil ].
@@ -44,86 +45,86 @@ CSSetAccessorDeclarationNode >> body: aCSBlockStatementNode [
 		ifTrue: [ self body parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSetAccessorDeclarationNode >> compositeNodeVariables [
 	^ #(#_attributes)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSetAccessorDeclarationNode >> compositeTokenVariables [
 	^ #(#modifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSetAccessorDeclarationNode >> equalGreaterThanToken [
 	^ equalGreaterThanToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSetAccessorDeclarationNode >> equalGreaterThanToken: aSmaCCToken [
 	equalGreaterThanToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSetAccessorDeclarationNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSetAccessorDeclarationNode >> expression: aCSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSetAccessorDeclarationNode >> ignoredTokenVariables [
 	^ #(#semicolonToken)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSSetAccessorDeclarationNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
 	modifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSetAccessorDeclarationNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSetAccessorDeclarationNode >> modifiers: anOrderedCollection [
 	modifiers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSetAccessorDeclarationNode >> nodeVariables [
 	^ #(#body #expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSetAccessorDeclarationNode >> semicolonToken [
 	^ semicolonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSetAccessorDeclarationNode >> semicolonToken: aSmaCCToken [
 	semicolonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSetAccessorDeclarationNode >> setToken [
 	^ setToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSetAccessorDeclarationNode >> setToken: aSmaCCToken [
 	setToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSetAccessorDeclarationNode >> tokenVariables [
 	^ #(#setToken #equalGreaterThanToken)
 ]

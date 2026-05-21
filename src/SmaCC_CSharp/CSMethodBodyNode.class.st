@@ -1,6 +1,6 @@
 Class {
-	#name : #CSMethodBodyNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSMethodBodyNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'block',
 		'equalGreaterThanToken',
@@ -9,20 +9,21 @@ Class {
 		'refToken',
 		'semicolon'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMethodBodyNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMethodBody: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMethodBodyNode >> block [
 	^ block
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMethodBodyNode >> block: aCSBlockStatementNode [
 	self block notNil
 		ifTrue: [ self block parent: nil ].
@@ -31,69 +32,69 @@ CSMethodBodyNode >> block: aCSBlockStatementNode [
 		ifTrue: [ self block parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMethodBodyNode >> equalGreaterThanToken [
 	^ equalGreaterThanToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMethodBodyNode >> equalGreaterThanToken: aSmaCCToken [
 	equalGreaterThanToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMethodBodyNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMethodBodyNode >> expression: aCSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMethodBodyNode >> ignoredTokenVariables [
 	^ #(#semicolonToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMethodBodyNode >> nodeVariables [
 	^ #(#block #expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMethodBodyNode >> refToken [
 	^ refToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMethodBodyNode >> refToken: aSmaCCToken [
 	refToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMethodBodyNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMethodBodyNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMethodBodyNode >> semicolonToken [
 	^ semicolonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMethodBodyNode >> semicolonToken: aSmaCCToken [
 	semicolonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMethodBodyNode >> tokenVariables [
 	^ #(#equalGreaterThanToken #refToken #semicolon)
 ]

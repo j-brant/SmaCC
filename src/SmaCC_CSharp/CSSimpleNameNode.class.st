@@ -1,44 +1,45 @@
 Class {
-	#name : #CSSimpleNameNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSSimpleNameNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'identifierToken',
 		'typeArguments'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSimpleNameNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSimpleName: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSimpleNameNode >> identifierToken [
 	^ identifierToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSimpleNameNode >> identifierToken: aSmaCCToken [
 	identifierToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSimpleNameNode >> nodeVariables [
 	^ #(#typeArguments)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSimpleNameNode >> tokenVariables [
 	^ #(#identifierToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSimpleNameNode >> typeArguments [
 	^ typeArguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSimpleNameNode >> typeArguments: aCSTypeArgumentListNode [
 	self typeArguments notNil
 		ifTrue: [ self typeArguments parent: nil ].
