@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataWhenMergeConditionNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataWhenMergeConditionNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'whenToken',
 		'matchedToken',
@@ -16,35 +16,36 @@ Class {
 		'rightParens',
 		'valuesToken'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitWhenMergeCondition: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> compositeNodeVariables [
 	^ #(#setExpressions #values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> compositeTokenVariables [
 	^ #(#commas #leftParens #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataWhenMergeConditionNode >> initialize [
 	super initialize.
 	setExpressions := OrderedCollection new: 2.
@@ -54,131 +55,131 @@ TeradataWhenMergeConditionNode >> initialize [
 	rightParens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> insertToken [
 	^ insertToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> insertToken: aSmaCCToken [
 	insertToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> leftParens [
 	^ leftParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> leftParens: anOrderedCollection [
 	leftParens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> matchedToken [
 	^ matchedToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> matchedToken: aSmaCCToken [
 	matchedToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> notToken [
 	^ notToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> notToken: aSmaCCToken [
 	notToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> rightParens [
 	^ rightParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> setExpressions [
 	^ setExpressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> setExpressions: anOrderedCollection [
 	self setParents: self setExpressions to: nil.
 	setExpressions := anOrderedCollection.
 	self setParents: self setExpressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> setToken [
 	^ setToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> setToken: aSmaCCToken [
 	setToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> thenToken [
 	^ thenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> thenToken: aSmaCCToken [
 	thenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> tokenVariables [
 	^ #(#whenToken #matchedToken #thenToken #updateToken #setToken #notToken #insertToken #valuesToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> updateToken [
 	^ updateToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> updateToken: aSmaCCToken [
 	updateToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.
 	self setParents: self values to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> valuesToken [
 	^ valuesToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> valuesToken: aSmaCCToken [
 	valuesToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> whenToken [
 	^ whenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhenMergeConditionNode >> whenToken: aSmaCCToken [
 	whenToken := aSmaCCToken
 ]

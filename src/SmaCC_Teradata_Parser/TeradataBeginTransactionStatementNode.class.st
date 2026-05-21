@@ -1,28 +1,29 @@
 Class {
-	#name : #TeradataBeginTransactionStatementNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataBeginTransactionStatementNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'beginToken'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginTransactionStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBeginTransactionStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginTransactionStatementNode >> beginToken [
 	^ beginToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginTransactionStatementNode >> beginToken: aSmaCCToken [
 	beginToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginTransactionStatementNode >> tokenVariables [
 	^ #(#beginToken)
 ]

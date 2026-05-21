@@ -1,28 +1,29 @@
 Class {
-	#name : #TeradataQueryExpressionNode,
-	#superclass : #TeradataExpressionNode,
+	#name : 'TeradataQueryExpressionNode',
+	#superclass : 'TeradataExpressionNode',
 	#instVars : [
 		'query'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataQueryExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitQueryExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataQueryExpressionNode >> nodeVariables [
 	^ #(#query)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataQueryExpressionNode >> query [
 	^ query
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataQueryExpressionNode >> query: aTeradataProgramNode [
 	self query notNil ifTrue: [ self query parent: nil ].
 	query := aTeradataProgramNode.

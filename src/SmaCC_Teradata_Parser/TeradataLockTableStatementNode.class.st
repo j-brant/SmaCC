@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataLockTableStatementNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataLockTableStatementNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'lockToken',
 		'table',
@@ -9,84 +9,85 @@ Class {
 		'statement',
 		'tableToken'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataLockTableStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLockTableStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataLockTableStatementNode >> forToken [
 	^ forToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataLockTableStatementNode >> forToken: aSmaCCToken [
 	forToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataLockTableStatementNode >> lock [
 	^ lock
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataLockTableStatementNode >> lock: aSmaCCToken [
 	lock := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataLockTableStatementNode >> lockToken [
 	^ lockToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataLockTableStatementNode >> lockToken: aSmaCCToken [
 	lockToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataLockTableStatementNode >> nodeVariables [
 	^ #(#table #statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataLockTableStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataLockTableStatementNode >> statement: aTeradataProgramNode [
 	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aTeradataProgramNode.
 	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataLockTableStatementNode >> table [
 	^ table
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataLockTableStatementNode >> table: aTeradataTableNode [
 	self table notNil ifTrue: [ self table parent: nil ].
 	table := aTeradataTableNode.
 	self table notNil ifTrue: [ self table parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataLockTableStatementNode >> tableToken [
 	^ tableToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataLockTableStatementNode >> tableToken: aSmaCCToken [
 	tableToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataLockTableStatementNode >> tokenVariables [
 	^ #(#lockToken #forToken #lock #tableToken)
 ]

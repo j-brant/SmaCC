@@ -1,44 +1,45 @@
 Class {
-	#name : #TeradataElseExpressionNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataElseExpressionNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'elseToken',
 		'value'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataElseExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitElseExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataElseExpressionNode >> elseToken [
 	^ elseToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataElseExpressionNode >> elseToken: aSmaCCToken [
 	elseToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataElseExpressionNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataElseExpressionNode >> tokenVariables [
 	^ #(#elseToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataElseExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataElseExpressionNode >> value: aTeradataExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aTeradataExpressionNode.

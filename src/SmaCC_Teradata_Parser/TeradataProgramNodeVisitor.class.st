@@ -1,7 +1,8 @@
 Class {
-	#name : #TeradataProgramNodeVisitor,
-	#superclass : #Object,
+	#name : 'TeradataProgramNodeVisitor',
+	#superclass : 'Object',
 	#traits : 'TTeradataProgramNodeVisitor',
 	#classTraits : 'TTeradataProgramNodeVisitor classTrait',
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }

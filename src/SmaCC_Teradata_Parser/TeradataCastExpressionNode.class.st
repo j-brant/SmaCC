@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataCastExpressionNode,
-	#superclass : #TeradataExpressionNode,
+	#name : 'TeradataCastExpressionNode',
+	#superclass : 'TeradataExpressionNode',
 	#instVars : [
 		'castToken',
 		'value',
@@ -9,82 +9,83 @@ Class {
 		'format',
 		'type'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCastExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCastExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCastExpressionNode >> asToken [
 	^ asToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCastExpressionNode >> asToken: aSmaCCToken [
 	asToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCastExpressionNode >> castToken [
 	^ castToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCastExpressionNode >> castToken: aSmaCCToken [
 	castToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCastExpressionNode >> format [
 	^ format
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCastExpressionNode >> format: aSmaCCToken [
 	format := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCastExpressionNode >> formatToken [
 	^ formatToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCastExpressionNode >> formatToken: aSmaCCToken [
 	formatToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCastExpressionNode >> nodeVariables [
 	^ #(#value #type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCastExpressionNode >> tokenVariables [
 	^ #(#castToken #asToken #formatToken #format)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCastExpressionNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCastExpressionNode >> type: aTeradataTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aTeradataTypeNode.
 	self type notNil ifTrue: [ self type parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCastExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCastExpressionNode >> value: aTeradataExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aTeradataExpressionNode.

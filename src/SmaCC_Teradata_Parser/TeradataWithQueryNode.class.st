@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataWithQueryNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataWithQueryNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'withToken',
 		'withTables',
@@ -8,91 +8,92 @@ Class {
 		'statement',
 		'recursiveToken'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithQueryNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitWithQuery: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithQueryNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithQueryNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithQueryNode >> compositeNodeVariables [
 	^ #(#withTables)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithQueryNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataWithQueryNode >> initialize [
 	super initialize.
 	withTables := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithQueryNode >> nodeVariables [
 	^ #(#statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithQueryNode >> recursiveToken [
 	^ recursiveToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithQueryNode >> recursiveToken: aSmaCCToken [
 	recursiveToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithQueryNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithQueryNode >> statement: aTeradataProgramNode [
 	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aTeradataProgramNode.
 	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithQueryNode >> tokenVariables [
 	^ #(#withToken #recursiveToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithQueryNode >> withTables [
 	^ withTables
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithQueryNode >> withTables: anOrderedCollection [
 	self setParents: self withTables to: nil.
 	withTables := anOrderedCollection.
 	self setParents: self withTables to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithQueryNode >> withToken [
 	^ withToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithQueryNode >> withToken: aSmaCCToken [
 	withToken := aSmaCCToken
 ]

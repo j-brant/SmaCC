@@ -1,51 +1,52 @@
 Class {
-	#name : #TeradataExpressionListNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataExpressionListNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'values',
 		'commas'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataExpressionListNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExpressionList: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataExpressionListNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataExpressionListNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataExpressionListNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataExpressionListNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataExpressionListNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataExpressionListNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataExpressionListNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

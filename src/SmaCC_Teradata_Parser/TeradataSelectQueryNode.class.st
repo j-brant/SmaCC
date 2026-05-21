@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataSelectQueryNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataSelectQueryNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'selectToken',
 		'values',
@@ -21,109 +21,110 @@ Class {
 		'top',
 		'distinctToken'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSelectQuery: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> compositeNodeVariables [
 	^ #(#values #wheres #groups #havings #partitions #qualifies #orderBies #tables)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> count [
 	^ count
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> count: aSmaCCToken [
 	count := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> cursorToken [
 	^ cursorToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> cursorToken: aSmaCCToken [
 	cursorToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> distinctToken [
 	^ distinctToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> distinctToken: aSmaCCToken [
 	distinctToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> forToken [
 	^ forToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> forToken: aSmaCCToken [
 	forToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> fromToken [
 	^ fromToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> fromToken: aSmaCCToken [
 	fromToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> groups [
 	^ groups
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> groups: anOrderedCollection [
 	self setParents: self groups to: nil.
 	groups := anOrderedCollection.
 	self setParents: self groups to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> havings [
 	^ havings
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> havings: anOrderedCollection [
 	self setParents: self havings to: nil.
 	havings := anOrderedCollection.
 	self setParents: self havings to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataSelectQueryNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
@@ -137,124 +138,124 @@ TeradataSelectQueryNode >> initialize [
 	tables := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> into [
 	^ into
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> into: aTeradataIntoExpressionNode [
 	self into notNil ifTrue: [ self into parent: nil ].
 	into := aTeradataIntoExpressionNode.
 	self into notNil ifTrue: [ self into parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> nodeVariables [
 	^ #(#into)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> orderBies [
 	^ orderBies
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> orderBies: anOrderedCollection [
 	self setParents: self orderBies to: nil.
 	orderBies := anOrderedCollection.
 	self setParents: self orderBies to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> partitions [
 	^ partitions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> partitions: anOrderedCollection [
 	self setParents: self partitions to: nil.
 	partitions := anOrderedCollection.
 	self setParents: self partitions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> qualifies [
 	^ qualifies
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> qualifies: anOrderedCollection [
 	self setParents: self qualifies to: nil.
 	qualifies := anOrderedCollection.
 	self setParents: self qualifies to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> selectToken [
 	^ selectToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> selectToken: aSmaCCToken [
 	selectToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> tables [
 	^ tables
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> tables: anOrderedCollection [
 	self setParents: self tables to: nil.
 	tables := anOrderedCollection.
 	self setParents: self tables to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> tokenVariables [
 	^ #(#selectToken #fromToken #forToken #cursorToken #count #topToken #top #distinctToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> top [
 	^ top
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> top: aSmaCCToken [
 	top := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> topToken [
 	^ topToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> topToken: aSmaCCToken [
 	topToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.
 	self setParents: self values to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> wheres [
 	^ wheres
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectQueryNode >> wheres: anOrderedCollection [
 	self setParents: self wheres to: nil.
 	wheres := anOrderedCollection.

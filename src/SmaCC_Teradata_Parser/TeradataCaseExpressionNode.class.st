@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataCaseExpressionNode,
-	#superclass : #TeradataExpressionNode,
+	#name : 'TeradataCaseExpressionNode',
+	#superclass : 'TeradataExpressionNode',
 	#instVars : [
 		'caseToken',
 		'whens',
@@ -8,85 +8,86 @@ Class {
 		'else',
 		'expression'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCaseExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCaseExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCaseExpressionNode >> caseToken [
 	^ caseToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCaseExpressionNode >> caseToken: aSmaCCToken [
 	caseToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCaseExpressionNode >> compositeNodeVariables [
 	^ #(#whens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCaseExpressionNode >> else [
 	^ else
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCaseExpressionNode >> else: aTeradataElseExpressionNode [
 	self else notNil ifTrue: [ self else parent: nil ].
 	else := aTeradataElseExpressionNode.
 	self else notNil ifTrue: [ self else parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCaseExpressionNode >> endToken [
 	^ endToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCaseExpressionNode >> endToken: aSmaCCToken [
 	endToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCaseExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCaseExpressionNode >> expression: aTeradataExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aTeradataExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataCaseExpressionNode >> initialize [
 	super initialize.
 	whens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCaseExpressionNode >> nodeVariables [
 	^ #(#else #expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCaseExpressionNode >> tokenVariables [
 	^ #(#caseToken #endToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCaseExpressionNode >> whens [
 	^ whens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCaseExpressionNode >> whens: anOrderedCollection [
 	self setParents: self whens to: nil.
 	whens := anOrderedCollection.

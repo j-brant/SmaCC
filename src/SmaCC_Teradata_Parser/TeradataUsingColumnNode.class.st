@@ -1,66 +1,67 @@
 Class {
-	#name : #TeradataUsingColumnNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataUsingColumnNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'name',
 		'type',
 		'leftParen',
 		'rightParen'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingColumnNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUsingColumn: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingColumnNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingColumnNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingColumnNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingColumnNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingColumnNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingColumnNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingColumnNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingColumnNode >> tokenVariables [
 	^ #(#name #leftParen #rightParen)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingColumnNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingColumnNode >> type: aTeradataTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aTeradataTypeNode.

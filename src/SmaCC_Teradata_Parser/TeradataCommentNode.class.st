@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataCommentNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataCommentNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'commentToken',
 		'onToken',
@@ -8,72 +8,73 @@ Class {
 		'table',
 		'comment'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCommentNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitComment: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCommentNode >> comment [
 	^ comment
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCommentNode >> comment: aSmaCCToken [
 	comment := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCommentNode >> commentToken [
 	^ commentToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCommentNode >> commentToken: aSmaCCToken [
 	commentToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCommentNode >> nodeVariables [
 	^ #(#table)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCommentNode >> onToken [
 	^ onToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCommentNode >> onToken: aSmaCCToken [
 	onToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCommentNode >> table [
 	^ table
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCommentNode >> table: aTeradataTableNode [
 	self table notNil ifTrue: [ self table parent: nil ].
 	table := aTeradataTableNode.
 	self table notNil ifTrue: [ self table parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCommentNode >> tokenVariables [
 	^ #(#commentToken #onToken #viewToken #comment)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCommentNode >> viewToken [
 	^ viewToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCommentNode >> viewToken: aSmaCCToken [
 	viewToken := aSmaCCToken
 ]

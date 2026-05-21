@@ -1,78 +1,79 @@
 Class {
-	#name : #TeradataGroupByNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataGroupByNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'groupToken',
 		'byToken',
 		'values',
 		'commas'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataGroupByNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitGroupBy: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataGroupByNode >> byToken [
 	^ byToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataGroupByNode >> byToken: aSmaCCToken [
 	byToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataGroupByNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataGroupByNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataGroupByNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataGroupByNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataGroupByNode >> groupToken [
 	^ groupToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataGroupByNode >> groupToken: aSmaCCToken [
 	groupToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataGroupByNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataGroupByNode >> tokenVariables [
 	^ #(#groupToken #byToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataGroupByNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataGroupByNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

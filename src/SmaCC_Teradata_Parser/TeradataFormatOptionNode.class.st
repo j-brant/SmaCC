@@ -1,39 +1,40 @@
 Class {
-	#name : #TeradataFormatOptionNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataFormatOptionNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'formatToken',
 		'format'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataFormatOptionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFormatOption: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataFormatOptionNode >> format [
 	^ format
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataFormatOptionNode >> format: aSmaCCToken [
 	format := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataFormatOptionNode >> formatToken [
 	^ formatToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataFormatOptionNode >> formatToken: aSmaCCToken [
 	formatToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataFormatOptionNode >> tokenVariables [
 	^ #(#formatToken #format)
 ]

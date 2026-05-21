@@ -1,10 +1,11 @@
 Class {
-	#name : #TeradataParser,
-	#superclass : #SmaCCGLRParser,
-	#category : #'SmaCC_Teradata_Parser'
+	#name : 'TeradataParser',
+	#superclass : 'SmaCCGLRParser',
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataParser class >> ambiguousTransitions [
 ^#(
 #[ 0 10 1 57] 
@@ -189,12 +190,12 @@ TeradataParser class >> ambiguousTransitions [
 	).
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 TeradataParser class >> cacheId [
-	^'2022-02-09T14:43:42.556654-06:00'
+	^'2026-05-21T10:01:58.703082-05:00'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataParser class >> definitionComment [
 "%glr;
 %ignorecase;
@@ -312,7 +313,7 @@ CreateView
 	: ""CREATE"" 'createToken' ""VIEW"" 'viewToken' TableName 'view' ""("" 'leftParen' <identifier> 'column' ("","" 'comma' <identifier> 'column' )* "")"" 'rightParen' ""AS"" 'asToken' (""LOCKING"" 'lockingToken' ""ROW"" 'rowToken' ""FOR"" 'forToken' ""ACCESS"" 'accessToken' ""MODE"" 'modeToken')? SelectQuery 'query' {{}}
 	;
 CreateTable
-	: ""CREATE"" 'createToken' ""MULTISET"" 'multisetToken'? ""TABLE"" 'tableToken' TableName 'table' CreateTableOption* ""("" 'leftParen' CreateTableColumns "")"" 'rightParen' CreateTableIndexes {{}}
+	: ""CREATE"" 'createToken' ""MULTISET"" 'multisetToken'? ""TABLE"" 'tableToken' TableName 'table' CreateTableOption 'createOption'* ""("" 'leftParen' CreateTableColumns "")"" 'rightParen' CreateTableIndexes {{}}
 	;
 CreateTableOption
 	: "","" 'comma' ""NO"" 'noToken' ""FALLBACK"" 'fallbackToken' {{}}
@@ -610,13 +611,13 @@ ExpressionWithDistinct
 	;"
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataParser class >> reduceTable [
 ^#(
 	#(174 0 #reduceActionFor_____semicolon__1: 1558529 false) 
-	#(247 0 #reduceActionFor__identifier___name_______period___1: 10865665 false) 
-	#(222 1 #reduceActionForTransactionStatement1: 8204289 false) 
-	#(222 1 #reduceActionForTransactionStatement2: 8204290 false) 
+	#(247 0 #reduceActionFor__identifier___name_______period___1: 10881025 false) 
+	#(222 1 #reduceActionForTransactionStatement1: 8219649 false) 
+	#(222 1 #reduceActionForTransactionStatement2: 8219650 false) 
 	#(173 1 #reduceActionForFile2: 1539074 false) 
 	#(175 1 #reduceActionForStatements1: 1609729 false) 
 	#(176 1 #liftFirstValue: 1720341 false) 
@@ -640,517 +641,517 @@ TeradataParser class >> reduceTable [
 	#(176 1 #liftFirstValue: 1720323 false) 
 	#(176 1 #liftFirstValue: 1720322 false) 
 	#(176 1 #liftFirstValue: 1720321 false) 
-	#(259 1 #reduceActionForExpression186: 12266682 false) 
-	#(259 1 #reduceActionForExpression5: 12266501 false) 
-	#(259 1 #reduceActionForExpression186: 12266684 false) 
-	#(259 1 #reduceActionForExpression186: 12266680 false) 
-	#(267 0 #reduceActionFor__identifier___name_______period___1: 17753089 false) 
-	#(259 1 #reduceActionForExpression2: 12266498 false) 
-	#(259 1 #reduceActionForExpression3: 12266499 false) 
-	#(259 1 #reduceActionForExpression3: 12266500 false) 
-	#(259 1 #liftFirstValue: 12266503 false) 
-	#(259 1 #liftFirstValue: 12266504 false) 
-	#(259 1 #liftFirstValue: 12266497 false) 
-	#(269 1 #reduceActionForExpressionListNode1: 17923073 false) 
-	#(256 1 #reduceActionForStatements1: 12041217 false) 
-	#(258 1 #liftFirstValue: 12143617 false) 
-	#(270 1 #liftFirstValue: 17983490 false) 
-	#(223 2 #reduceActionForDatabaseStatement1: 8329217 false) 
-	#(225 2 #reduceActionForDeleteQuery7: 8570887 false) 
-	#(225 2 #reduceActionForDeleteQuery7: 8570881 false) 
-	#(218 2 #reduceActionForLoadingStatement2: 7480322 false) 
-	#(224 2 #reduceActionForExecuteStatement3: 8413187 false) 
-	#(224 2 #reduceActionForExecuteStatement3: 8413185 false) 
-	#(221 2 #reduceActionForHelpSessionStatement1: 8126465 false) 
-	#(227 0 #nil 8902657 false) 
-	#(216 1 #reduceActionForStatements1: 7258113 false) 
-	#(236 1 #reduceActionForStatements1: 9982977 false) 
+	#(259 1 #reduceActionForExpression186: 12282042 false) 
+	#(259 1 #reduceActionForExpression5: 12281861 false) 
+	#(259 1 #reduceActionForExpression186: 12282044 false) 
+	#(259 1 #reduceActionForExpression186: 12282040 false) 
+	#(267 0 #reduceActionFor__identifier___name_______period___1: 17768449 false) 
+	#(259 1 #reduceActionForExpression2: 12281858 false) 
+	#(259 1 #reduceActionForExpression3: 12281859 false) 
+	#(259 1 #reduceActionForExpression3: 12281860 false) 
+	#(259 1 #liftFirstValue: 12281863 false) 
+	#(259 1 #liftFirstValue: 12281864 false) 
+	#(259 1 #liftFirstValue: 12281857 false) 
+	#(269 1 #reduceActionForExpressionListNode1: 17938433 false) 
+	#(256 1 #reduceActionForStatements1: 12056577 false) 
+	#(258 1 #liftFirstValue: 12158977 false) 
+	#(270 1 #liftFirstValue: 17998850 false) 
+	#(223 2 #reduceActionForDatabaseStatement1: 8344577 false) 
+	#(225 2 #reduceActionForDeleteQuery7: 8586247 false) 
+	#(225 2 #reduceActionForDeleteQuery7: 8586241 false) 
+	#(218 2 #reduceActionForLoadingStatement2: 7495682 false) 
+	#(224 2 #reduceActionForExecuteStatement3: 8428547 false) 
+	#(224 2 #reduceActionForExecuteStatement3: 8428545 false) 
+	#(221 2 #reduceActionForHelpSessionStatement1: 8141825 false) 
+	#(227 0 #nil 8918017 false) 
+	#(216 1 #reduceActionForStatements1: 7273473 false) 
+	#(236 1 #reduceActionForStatements1: 9998337 false) 
 	#(174 2 #reduceActionFor_____semicolon__2: 1558530 false) 
 	#(173 2 #reduceActionForFile1: 1539073 false) 
-	#(259 2 #reduceActionForExpression61: 12266557 false) 
-	#(259 2 #reduceActionForExpression61: 12266556 false) 
-	#(262 1 #reduceActionForWhenExpressions1: 17415169 false) 
-	#(259 2 #reduceActionForExpression187: 12266683 false) 
-	#(259 2 #reduceActionForExpression61: 12266568 false) 
-	#(259 2 #reduceActionForExpression187: 12266685 false) 
-	#(259 2 #reduceActionForExpression187: 12266681 false) 
-	#(265 2 #reduceActionForIdentifier1: 17718273 false) 
-	#(259 2 #reduceActionForExpression6: 12266502 false) 
-	#(268 2 #reduceActionForIdentifierName1: 17839105 false) 
-	#(247 2 #reduceActionFor__identifier___name_______period___2: 10865666 false) 
-	#(257 1 #reduceActionForWhenExpressions1: 12102657 false) 
-	#(258 2 #reduceActionForNamedExpression2: 12143618 false) 
-	#(270 2 #reduceActionForExpressionWithDistinct1: 17983489 false) 
-	#(219 3 #reduceActionForCheckWorkloadStatement2: 7760898 false) 
-	#(200 0 #reduceActionForMacroArgs1: 4781057 false) 
-	#(182 0 #nil 2679809 false) 
-	#(225 3 #reduceActionForDeleteQuery10: 8570890 false) 
-	#(225 3 #reduceActionForDeleteQuery9: 8570889 false) 
-	#(248 0 #nil 11171841 false) 
-	#(225 3 #reduceActionForDeleteQuery8: 8570888 false) 
-	#(245 2 #reduceActionForTable1: 10856449 false) 
-	#(225 3 #reduceActionForDeleteQuery10: 8570884 false) 
-	#(225 3 #reduceActionForDeleteQuery9: 8570883 false) 
-	#(225 3 #reduceActionForDeleteQuery8: 8570882 false) 
-	#(210 3 #reduceActionForDropTableQuery1: 6014977 false) 
-	#(251 2 #reduceActionForTable1: 11542529 false) 
-	#(234 0 #reduceActionForQueryExpressions1: 9714689 false) 
-	#(229 0 #reduceActionFor_FromTables__QueryExpressions__1: 8926209 false) 
-	#(227 1 #liftFirstValue: 8902658 false) 
-	#(208 1 #liftFirstValue: 5616651 false) 
-	#(208 1 #liftFirstValue: 5616659 false) 
-	#(208 1 #liftFirstValue: 5616647 false) 
-	#(208 1 #liftFirstValue: 5616641 false) 
-	#(208 1 #liftFirstValue: 5616643 false) 
-	#(208 1 #liftFirstValue: 5616644 false) 
-	#(208 1 #liftFirstValue: 5616652 false) 
-	#(208 1 #liftFirstValue: 5616653 false) 
-	#(208 1 #liftFirstValue: 5616655 false) 
-	#(208 1 #liftFirstValue: 5616649 false) 
-	#(208 1 #liftFirstValue: 5616650 false) 
-	#(208 1 #liftFirstValue: 5616657 false) 
-	#(208 1 #liftFirstValue: 5616654 false) 
-	#(208 1 #liftFirstValue: 5616656 false) 
-	#(208 1 #liftFirstValue: 5616648 false) 
-	#(208 1 #liftFirstValue: 5616645 false) 
-	#(208 1 #liftFirstValue: 5616646 false) 
-	#(208 1 #liftFirstValue: 5616658 false) 
-	#(208 1 #liftFirstValue: 5616642 false) 
-	#(217 2 #reduceActionForUsingColumn1: 7349249 false) 
-	#(205 0 #reduceActionFor_____semicolon__1: 5144577 false) 
-	#(207 1 #reduceActionForWhenExpressions1: 5539841 false) 
-	#(215 3 #reduceActionForUsingStatement1: 7074817 false) 
-	#(226 3 #reduceActionForSelectQuery17: 8724497 false) 
-	#(239 1 #reduceActionForUnionSelectQuery2: 10339330 false) 
-	#(226 3 #reduceActionForSelectQuery23: 8724503 false) 
-	#(226 3 #reduceActionForSelectQuery21: 8724501 false) 
-	#(226 3 #reduceActionForSelectQuery19: 8724499 false) 
-	#(226 3 #reduceActionForSelectQuery13: 8724493 false) 
-	#(259 3 #reduceActionForExpression71: 12266567 false) 
-	#(259 3 #reduceActionForExpression36: 12266532 false) 
-	#(260 3 #reduceActionForCaseExpression1: 17220609 false) 
-	#(262 2 #reduceActionFor_____semicolon__2: 17415170 false) 
-	#(259 3 #reduceActionForExpression178: 12266674 false) 
-	#(267 2 #reduceActionFor__identifier___name_______period___2: 17753090 false) 
-	#(259 3 #reduceActionForExpression197: 12266693 false) 
-	#(246 2 #reduceActionFor__identifier___name_______period__1: 10865665 false) 
-	#(259 3 #reduceActionForExpression11: 12266507 false) 
-	#(259 3 #reduceActionForExpression11: 12266511 false) 
-	#(259 3 #reduceActionForExpression11: 12266505 false) 
-	#(259 3 #reduceActionForExpression11: 12266506 false) 
-	#(259 3 #reduceActionForExpression11: 12266508 false) 
-	#(259 3 #reduceActionForExpression11: 12266518 false) 
-	#(259 3 #reduceActionForExpression11: 12266519 false) 
-	#(259 3 #reduceActionForExpression11: 12266516 false) 
-	#(259 3 #reduceActionForExpression11: 12266515 false) 
-	#(259 3 #reduceActionForExpression11: 12266520 false) 
-	#(259 3 #reduceActionForExpression11: 12266521 false) 
-	#(259 3 #reduceActionForExpression11: 12266513 false) 
-	#(259 3 #reduceActionForExpression11: 12266512 false) 
-	#(259 3 #reduceActionForExpression198: 12266694 false) 
-	#(259 3 #reduceActionForExpression37: 12266533 false) 
-	#(259 3 #reduceActionForExpression34: 12266530 false) 
-	#(259 3 #reduceActionForExpression26: 12266522 false) 
-	#(259 3 #reduceActionForExpression11: 12266509 false) 
-	#(259 3 #reduceActionForExpression11: 12266517 false) 
-	#(259 3 #reduceActionForExpression11: 12266514 false) 
-	#(259 3 #reduceActionForExpression11: 12266510 false) 
-	#(264 3 #reduceActionForFunctionExpression1: 17610753 false) 
-	#(257 2 #reduceActionFor_____semicolon__2: 12102658 false) 
-	#(256 3 #reduceActionForExpressionList2: 12041218 false) 
-	#(258 3 #reduceActionForNamedExpression3: 12143619 false) 
-	#(219 4 #reduceActionForCheckWorkloadStatement1: 7760897 false) 
-	#(209 4 #reduceActionForCheckpointStatement1: 5860353 false) 
-	#(245 3 #reduceActionForTable4: 10856452 false) 
-	#(225 4 #reduceActionForDeleteQuery12: 8570892 false) 
-	#(225 4 #reduceActionForDeleteQuery11: 8570891 false) 
-	#(248 1 #liftFirstValue: 11171842 false) 
-	#(250 0 #reduceActionFor__ON___onToken__Expression__on___1: 11258881 false) 
-	#(252 2 #reduceActionForWhereExpression1: 11626497 false) 
-	#(245 3 #reduceActionForTable2: 10856450 false) 
-	#(225 4 #reduceActionForDeleteQuery12: 8570886 false) 
-	#(225 4 #reduceActionForDeleteQuery11: 8570885 false) 
-	#(214 4 #reduceActionForInsertQuery11: 6672395 false) 
-	#(214 4 #reduceActionForInsertQuery11: 6672393 false) 
-	#(198 4 #reduceActionForLockTableStatement5: 4413445 false) 
-	#(198 4 #reduceActionForLockTableStatement5: 4413441 false) 
-	#(229 1 #reduceActionFor_FromTables__QueryExpressions__2: 8926210 false) 
-	#(231 0 #reduceActionFor__ON___onToken__Expression__on___1: 8958977 false) 
-	#(228 1 #reduceActionFor_FromTables__QueryExpressions_1: 8926209 false) 
-	#(244 1 #reduceActionForStatements1: 10784769 false) 
-	#(211 4 #reduceActionForUpdateQuery1: 6100993 false) 
-	#(212 1 #reduceActionForStatements1: 6475777 false) 
-	#(207 2 #reduceActionForTypeName2: 5539842 false) 
-	#(203 2 #reduceActionForType1: 5000193 false) 
-	#(204 1 #reduceActionFor_FromTables__QueryExpressions__2: 5129217 false) 
-	#(216 3 #reduceActionForUsingColumns2: 7258114 false) 
-	#(226 4 #reduceActionForSelectQuery18: 8724498 false) 
-	#(236 3 #reduceActionForUsingColumns2: 9982978 false) 
+	#(259 2 #reduceActionForExpression61: 12281917 false) 
+	#(259 2 #reduceActionForExpression61: 12281916 false) 
+	#(262 1 #reduceActionForWhenExpressions1: 17430529 false) 
+	#(259 2 #reduceActionForExpression187: 12282043 false) 
+	#(259 2 #reduceActionForExpression61: 12281928 false) 
+	#(259 2 #reduceActionForExpression187: 12282045 false) 
+	#(259 2 #reduceActionForExpression187: 12282041 false) 
+	#(265 2 #reduceActionForIdentifier1: 17733633 false) 
+	#(259 2 #reduceActionForExpression6: 12281862 false) 
+	#(268 2 #reduceActionForIdentifierName1: 17854465 false) 
+	#(247 2 #reduceActionFor__identifier___name_______period___2: 10881026 false) 
+	#(257 1 #reduceActionForWhenExpressions1: 12118017 false) 
+	#(258 2 #reduceActionForNamedExpression2: 12158978 false) 
+	#(270 2 #reduceActionForExpressionWithDistinct1: 17998849 false) 
+	#(219 3 #reduceActionForCheckWorkloadStatement2: 7776258 false) 
+	#(200 0 #reduceActionForMacroArgs1: 4796417 false) 
+	#(182 0 #reduceActionFor_____semicolon__1: 2679809 false) 
+	#(225 3 #reduceActionForDeleteQuery10: 8586250 false) 
+	#(225 3 #reduceActionForDeleteQuery9: 8586249 false) 
+	#(248 0 #nil 11187201 false) 
+	#(225 3 #reduceActionForDeleteQuery8: 8586248 false) 
+	#(245 2 #reduceActionForTable1: 10871809 false) 
+	#(225 3 #reduceActionForDeleteQuery10: 8586244 false) 
+	#(225 3 #reduceActionForDeleteQuery9: 8586243 false) 
+	#(225 3 #reduceActionForDeleteQuery8: 8586242 false) 
+	#(210 3 #reduceActionForDropTableQuery1: 6030337 false) 
+	#(251 2 #reduceActionForTable1: 11557889 false) 
+	#(234 0 #reduceActionForQueryExpressions1: 9730049 false) 
+	#(229 0 #reduceActionFor_FromTables__QueryExpressions__1: 8941569 false) 
+	#(227 1 #liftFirstValue: 8918018 false) 
+	#(208 1 #liftFirstValue: 5632011 false) 
+	#(208 1 #liftFirstValue: 5632019 false) 
+	#(208 1 #liftFirstValue: 5632007 false) 
+	#(208 1 #liftFirstValue: 5632001 false) 
+	#(208 1 #liftFirstValue: 5632003 false) 
+	#(208 1 #liftFirstValue: 5632004 false) 
+	#(208 1 #liftFirstValue: 5632012 false) 
+	#(208 1 #liftFirstValue: 5632013 false) 
+	#(208 1 #liftFirstValue: 5632015 false) 
+	#(208 1 #liftFirstValue: 5632009 false) 
+	#(208 1 #liftFirstValue: 5632010 false) 
+	#(208 1 #liftFirstValue: 5632017 false) 
+	#(208 1 #liftFirstValue: 5632014 false) 
+	#(208 1 #liftFirstValue: 5632016 false) 
+	#(208 1 #liftFirstValue: 5632008 false) 
+	#(208 1 #liftFirstValue: 5632005 false) 
+	#(208 1 #liftFirstValue: 5632006 false) 
+	#(208 1 #liftFirstValue: 5632018 false) 
+	#(208 1 #liftFirstValue: 5632002 false) 
+	#(217 2 #reduceActionForUsingColumn1: 7364609 false) 
+	#(205 0 #reduceActionFor_____semicolon__1: 5159937 false) 
+	#(207 1 #reduceActionForWhenExpressions1: 5555201 false) 
+	#(215 3 #reduceActionForUsingStatement1: 7090177 false) 
+	#(226 3 #reduceActionForSelectQuery17: 8739857 false) 
+	#(239 1 #reduceActionForUnionSelectQuery2: 10354690 false) 
+	#(226 3 #reduceActionForSelectQuery23: 8739863 false) 
+	#(226 3 #reduceActionForSelectQuery21: 8739861 false) 
+	#(226 3 #reduceActionForSelectQuery19: 8739859 false) 
+	#(226 3 #reduceActionForSelectQuery13: 8739853 false) 
+	#(259 3 #reduceActionForExpression71: 12281927 false) 
+	#(259 3 #reduceActionForExpression36: 12281892 false) 
+	#(260 3 #reduceActionForCaseExpression1: 17235969 false) 
+	#(262 2 #reduceActionFor_____semicolon__2: 17430530 false) 
+	#(259 3 #reduceActionForExpression178: 12282034 false) 
+	#(267 2 #reduceActionFor__identifier___name_______period___2: 17768450 false) 
+	#(259 3 #reduceActionForExpression197: 12282053 false) 
+	#(246 2 #reduceActionFor__identifier___name_______period__1: 10881025 false) 
+	#(259 3 #reduceActionForExpression11: 12281867 false) 
+	#(259 3 #reduceActionForExpression11: 12281871 false) 
+	#(259 3 #reduceActionForExpression11: 12281865 false) 
+	#(259 3 #reduceActionForExpression11: 12281866 false) 
+	#(259 3 #reduceActionForExpression11: 12281868 false) 
+	#(259 3 #reduceActionForExpression11: 12281878 false) 
+	#(259 3 #reduceActionForExpression11: 12281879 false) 
+	#(259 3 #reduceActionForExpression11: 12281876 false) 
+	#(259 3 #reduceActionForExpression11: 12281875 false) 
+	#(259 3 #reduceActionForExpression11: 12281880 false) 
+	#(259 3 #reduceActionForExpression11: 12281881 false) 
+	#(259 3 #reduceActionForExpression11: 12281873 false) 
+	#(259 3 #reduceActionForExpression11: 12281872 false) 
+	#(259 3 #reduceActionForExpression198: 12282054 false) 
+	#(259 3 #reduceActionForExpression37: 12281893 false) 
+	#(259 3 #reduceActionForExpression34: 12281890 false) 
+	#(259 3 #reduceActionForExpression26: 12281882 false) 
+	#(259 3 #reduceActionForExpression11: 12281869 false) 
+	#(259 3 #reduceActionForExpression11: 12281877 false) 
+	#(259 3 #reduceActionForExpression11: 12281874 false) 
+	#(259 3 #reduceActionForExpression11: 12281870 false) 
+	#(264 3 #reduceActionForFunctionExpression1: 17626113 false) 
+	#(257 2 #reduceActionFor_____semicolon__2: 12118018 false) 
+	#(256 3 #reduceActionForExpressionList2: 12056578 false) 
+	#(258 3 #reduceActionForNamedExpression3: 12158979 false) 
+	#(219 4 #reduceActionForCheckWorkloadStatement1: 7776257 false) 
+	#(209 4 #reduceActionForCheckpointStatement1: 5875713 false) 
+	#(245 3 #reduceActionForTable4: 10871812 false) 
+	#(225 4 #reduceActionForDeleteQuery12: 8586252 false) 
+	#(225 4 #reduceActionForDeleteQuery11: 8586251 false) 
+	#(248 1 #liftFirstValue: 11187202 false) 
+	#(250 0 #reduceActionFor__ON___onToken__Expression__on___1: 11274241 false) 
+	#(252 2 #reduceActionForWhereExpression1: 11641857 false) 
+	#(245 3 #reduceActionForTable2: 10871810 false) 
+	#(225 4 #reduceActionForDeleteQuery12: 8586246 false) 
+	#(225 4 #reduceActionForDeleteQuery11: 8586245 false) 
+	#(214 4 #reduceActionForInsertQuery11: 6687755 false) 
+	#(214 4 #reduceActionForInsertQuery11: 6687753 false) 
+	#(198 4 #reduceActionForLockTableStatement5: 4428805 false) 
+	#(198 4 #reduceActionForLockTableStatement5: 4428801 false) 
+	#(229 1 #reduceActionFor_FromTables__QueryExpressions__2: 8941570 false) 
+	#(231 0 #reduceActionFor__ON___onToken__Expression__on___1: 8974337 false) 
+	#(228 1 #reduceActionFor_FromTables__QueryExpressions_1: 8941569 false) 
+	#(244 1 #reduceActionForStatements1: 10800129 false) 
+	#(211 4 #reduceActionForUpdateQuery1: 6116353 false) 
+	#(212 1 #reduceActionForStatements1: 6491137 false) 
+	#(207 2 #reduceActionForTypeName2: 5555202 false) 
+	#(203 2 #reduceActionForType1: 5015553 false) 
+	#(204 1 #reduceActionFor_FromTables__QueryExpressions__2: 5144577 false) 
+	#(216 3 #reduceActionForUsingColumns2: 7273474 false) 
+	#(226 4 #reduceActionForSelectQuery18: 8739858 false) 
+	#(236 3 #reduceActionForUsingColumns2: 9998338 false) 
 	#(175 4 #reduceActionForStatements2: 1609730 false) 
-	#(226 4 #reduceActionForSelectQuery14: 8724494 false) 
-	#(260 4 #reduceActionForCaseExpression3: 17220611 false) 
-	#(261 2 #reduceActionForElseExpression1: 17349633 false) 
-	#(260 4 #reduceActionForCaseExpression2: 17220610 false) 
-	#(259 4 #reduceActionForExpression181: 12266677 false) 
-	#(259 4 #reduceActionForExpression190: 12266686 false) 
-	#(259 4 #reduceActionForExpression64: 12266560 false) 
-	#(266 2 #reduceActionFor__identifier___name_______period__1: 17753089 false) 
-	#(266 2 #reduceActionFor__identifier___name_______period__1: 17753090 false) 
-	#(259 4 #reduceActionForExpression179: 12266675 false) 
-	#(259 4 #reduceActionForExpression50: 12266546 false) 
-	#(259 4 #reduceActionForExpression41: 12266537 false) 
-	#(259 4 #reduceActionForExpression35: 12266531 false) 
-	#(259 4 #reduceActionForExpression39: 12266535 false) 
-	#(259 4 #reduceActionForExpression28: 12266524 false) 
-	#(259 4 #reduceActionForExpression74: 12266570 false) 
-	#(264 4 #reduceActionForFunctionExpression2: 17610754 false) 
-	#(226 5 #reduceActionForSelectQuery24: 8724504 false) 
-	#(226 5 #reduceActionForSelectQuery22: 8724502 false) 
-	#(226 5 #reduceActionForSelectQuery20: 8724500 false) 
-	#(226 5 #reduceActionForSelectQuery15: 8724495 false) 
-	#(209 5 #reduceActionForCheckpointStatement2: 5860354 false) 
+	#(226 4 #reduceActionForSelectQuery14: 8739854 false) 
+	#(260 4 #reduceActionForCaseExpression3: 17235971 false) 
+	#(261 2 #reduceActionForElseExpression1: 17364993 false) 
+	#(260 4 #reduceActionForCaseExpression2: 17235970 false) 
+	#(259 4 #reduceActionForExpression181: 12282037 false) 
+	#(259 4 #reduceActionForExpression190: 12282046 false) 
+	#(259 4 #reduceActionForExpression64: 12281920 false) 
+	#(266 2 #reduceActionFor__identifier___name_______period__1: 17768449 false) 
+	#(266 2 #reduceActionFor__identifier___name_______period__1: 17768450 false) 
+	#(259 4 #reduceActionForExpression179: 12282035 false) 
+	#(259 4 #reduceActionForExpression50: 12281906 false) 
+	#(259 4 #reduceActionForExpression41: 12281897 false) 
+	#(259 4 #reduceActionForExpression35: 12281891 false) 
+	#(259 4 #reduceActionForExpression39: 12281895 false) 
+	#(259 4 #reduceActionForExpression28: 12281884 false) 
+	#(259 4 #reduceActionForExpression74: 12281930 false) 
+	#(264 4 #reduceActionForFunctionExpression2: 17626114 false) 
+	#(226 5 #reduceActionForSelectQuery24: 8739864 false) 
+	#(226 5 #reduceActionForSelectQuery22: 8739862 false) 
+	#(226 5 #reduceActionForSelectQuery20: 8739860 false) 
+	#(226 5 #reduceActionForSelectQuery15: 8739855 false) 
+	#(209 5 #reduceActionForCheckpointStatement2: 5875714 false) 
 	#(177 5 #reduceActionForComment1: 2134017 false) 
-	#(201 1 #reduceActionForStatements1: 4848641 false) 
-	#(182 2 #liftFirstValue: 2679810 false) 
+	#(201 1 #reduceActionForStatements1: 4864001 false) 
+	#(182 2 #reduceActionFor_____semicolon__2: 2679810 false) 
 	#(180 0 #reduceActionFor__identifier___name_______period___1: 2365441 false) 
-	#(245 4 #reduceActionForTable5: 10856453 false) 
-	#(250 1 #reduceActionFor_FromTables__QueryExpressions__2: 11258882 false) 
-	#(245 4 #reduceActionForTable7: 10856455 false) 
-	#(245 4 #reduceActionForTable3: 10856451 false) 
-	#(224 5 #reduceActionForExecuteStatement4: 8413188 false) 
-	#(224 5 #reduceActionForExecuteStatement4: 8413186 false) 
-	#(198 5 #reduceActionForLockTableStatement7: 4413447 false) 
-	#(198 5 #reduceActionForLockTableStatement6: 4413446 false) 
-	#(198 5 #reduceActionForLockTableStatement7: 4413443 false) 
-	#(198 5 #reduceActionForLockTableStatement6: 4413442 false) 
-	#(243 2 #reduceActionForFromTables1: 10737665 false) 
-	#(231 1 #reduceActionFor_FromTables__QueryExpressions__2: 8958978 false) 
-	#(233 0 #nil 9003009 false) 
-	#(234 2 #reduceActionForQueryExpressions2: 9714690 false) 
-	#(235 1 #reduceActionForQueryExpression3: 9775107 false) 
-	#(235 1 #reduceActionForQueryExpression5: 9775109 false) 
-	#(235 1 #reduceActionForQueryExpression4: 9775108 false) 
-	#(235 1 #reduceActionForQueryExpression1: 9775105 false) 
-	#(235 1 #reduceActionForQueryExpression2: 9775106 false) 
-	#(235 1 #reduceActionForQueryExpression6: 9775110 false) 
-	#(228 2 #reduceActionFor_FromTables__QueryExpressions_2: 8926210 false) 
-	#(211 5 #reduceActionForUpdateQuery4: 6100996 false) 
-	#(211 5 #reduceActionForUpdateQuery7: 6100999 false) 
-	#(215 5 #reduceActionForUsingStatement2: 7074818 false) 
-	#(217 4 #reduceActionForUsingColumn2: 7349250 false) 
-	#(206 1 #reduceActionForTypeOption5: 5171205 false) 
-	#(205 2 #reduceActionFor_____semicolon__2: 5144578 false) 
-	#(263 4 #reduceActionForWhenExpression1: 17502209 false) 
-	#(260 5 #reduceActionForCaseExpression4: 17220612 false) 
-	#(259 5 #reduceActionForExpression56: 12266552 false) 
-	#(259 5 #reduceActionForExpression183: 12266679 false) 
-	#(259 5 #reduceActionForExpression183: 12266678 false) 
-	#(259 5 #reduceActionForExpression191: 12266687 false) 
-	#(259 5 #reduceActionForExpression56: 12266548 false) 
-	#(259 5 #reduceActionForExpression196: 12266692 false) 
-	#(259 5 #reduceActionForExpression49: 12266545 false) 
-	#(259 5 #reduceActionForExpression180: 12266676 false) 
-	#(259 5 #reduceActionForExpression62: 12266558 false) 
-	#(259 5 #reduceActionForExpression45: 12266541 false) 
-	#(259 5 #reduceActionForExpression43: 12266539 false) 
-	#(259 5 #reduceActionForExpression27: 12266523 false) 
-	#(259 5 #reduceActionForExpression126: 12266622 false) 
-	#(259 5 #reduceActionForExpression100: 12266596 false) 
-	#(226 6 #reduceActionForSelectQuery16: 8724496 false) 
-	#(200 3 #reduceActionForMacroArgs2: 4781058 false) 
-	#(202 2 #reduceActionForParameter1: 4943873 false) 
-	#(192 0 #reduceActionFor__identifier___name_______period___1: 3566593 false) 
-	#(245 5 #reduceActionForTable6: 10856454 false) 
-	#(245 5 #reduceActionForTable12: 10856460 false) 
-	#(245 5 #reduceActionForTable12: 10856459 false) 
-	#(249 2 #reduceActionFor__identifier___name_______period__1: 11258881 false) 
-	#(214 6 #reduceActionForInsertQuery5: 6672389 false) 
-	#(214 6 #reduceActionForInsertQuery5: 6672385 false) 
-	#(198 6 #reduceActionForLockTableStatement8: 4413448 false) 
-	#(198 6 #reduceActionForLockTableStatement8: 4413444 false) 
-	#(197 6 #reduceActionForRollbackStatement1: 4265985 false) 
-	#(242 4 #reduceActionForIntoExpression1: 10642433 false) 
-	#(230 2 #reduceActionFor__identifier___name_______period__1: 8958977 false) 
-	#(232 1 #liftFirstValue: 9003009 false) 
-	#(233 1 #liftFirstValue: 9003010 false) 
-	#(226 6 #reduceActionForSelectQuery7: 8724487 false) 
-	#(238 2 #reduceActionForHavingExpression1: 10257409 false) 
-	#(240 2 #reduceActionForQualifyExpression1: 10469377 false) 
-	#(226 6 #reduceActionForSelectQuery7: 8724481 false) 
-	#(220 6 #reduceActionForSetStatement1: 7961601 false) 
-	#(211 6 #reduceActionForUpdateQuery13: 6101005 false) 
-	#(244 3 #reduceActionForUsingColumns2: 10784770 false) 
-	#(211 6 #reduceActionForUpdateQuery19: 6101011 false) 
-	#(212 3 #reduceActionForUsingColumns2: 6475778 false) 
-	#(211 6 #reduceActionForUpdateQuery3: 6100995 false) 
-	#(211 6 #reduceActionForUpdateQuery3: 6100994 false) 
-	#(213 3 #reduceActionForSetExpression1: 6595585 false) 
-	#(211 6 #reduceActionForUpdateQuery10: 6101002 false) 
-	#(206 2 #reduceActionForTypeOption4: 5171204 false) 
-	#(206 2 #reduceActionForTypeOption3: 5171203 false) 
-	#(206 2 #reduceActionForTypeOption2: 5171202 false) 
-	#(237 5 #reduceActionForWithTable1: 10072065 false) 
-	#(239 4 #reduceActionForUnionSelectQuery1: 10339329 false) 
-	#(259 6 #reduceActionForExpression58: 12266554 false) 
-	#(259 6 #reduceActionForExpression73: 12266569 false) 
-	#(259 6 #reduceActionForExpression32: 12266528 false) 
-	#(259 6 #reduceActionForExpression30: 12266526 false) 
-	#(259 6 #reduceActionForExpression192: 12266688 false) 
-	#(259 6 #reduceActionForExpression192: 12266690 false) 
-	#(259 6 #reduceActionForExpression65: 12266561 false) 
-	#(259 6 #reduceActionForExpression65: 12266565 false) 
-	#(259 6 #reduceActionForExpression65: 12266563 false) 
-	#(259 6 #reduceActionForExpression58: 12266550 false) 
-	#(255 3 #reduceActionForOrderByExpression1: 11959297 false) 
-	#(259 6 #reduceActionForExpression63: 12266559 false) 
-	#(259 6 #reduceActionForExpression46: 12266542 false) 
-	#(259 6 #reduceActionForExpression29: 12266525 false) 
-	#(241 3 #reduceActionForPartitionByExpression1: 10548225 false) 
-	#(259 6 #reduceActionForExpression152: 12266648 false) 
-	#(218 7 #reduceActionForLoadingStatement1: 7480321 false) 
-	#(201 3 #reduceActionForUsingColumns2: 4848642 false) 
-	#(193 2 #reduceActionForCreateTableColumn1: 3612673 false) 
-	#(184 0 #reduceActionFor__identifier___name_______period___1: 3204098 false) 
-	#(190 2 #reduceActionForCreateTableColumns1: 3516417 false) 
-	#(183 3 #reduceActionForCreateTableOption5: 2780165 false) 
-	#(183 3 #reduceActionForCreateTableOption1: 2780161 false) 
+	#(245 4 #reduceActionForTable5: 10871813 false) 
+	#(250 1 #reduceActionFor_FromTables__QueryExpressions__2: 11274242 false) 
+	#(245 4 #reduceActionForTable7: 10871815 false) 
+	#(245 4 #reduceActionForTable3: 10871811 false) 
+	#(224 5 #reduceActionForExecuteStatement4: 8428548 false) 
+	#(224 5 #reduceActionForExecuteStatement4: 8428546 false) 
+	#(198 5 #reduceActionForLockTableStatement7: 4428807 false) 
+	#(198 5 #reduceActionForLockTableStatement6: 4428806 false) 
+	#(198 5 #reduceActionForLockTableStatement7: 4428803 false) 
+	#(198 5 #reduceActionForLockTableStatement6: 4428802 false) 
+	#(243 2 #reduceActionForFromTables1: 10753025 false) 
+	#(231 1 #reduceActionFor_FromTables__QueryExpressions__2: 8974338 false) 
+	#(233 0 #nil 9018369 false) 
+	#(234 2 #reduceActionForQueryExpressions2: 9730050 false) 
+	#(235 1 #reduceActionForQueryExpression3: 9790467 false) 
+	#(235 1 #reduceActionForQueryExpression5: 9790469 false) 
+	#(235 1 #reduceActionForQueryExpression4: 9790468 false) 
+	#(235 1 #reduceActionForQueryExpression1: 9790465 false) 
+	#(235 1 #reduceActionForQueryExpression2: 9790466 false) 
+	#(235 1 #reduceActionForQueryExpression6: 9790470 false) 
+	#(228 2 #reduceActionFor_FromTables__QueryExpressions_2: 8941570 false) 
+	#(211 5 #reduceActionForUpdateQuery4: 6116356 false) 
+	#(211 5 #reduceActionForUpdateQuery7: 6116359 false) 
+	#(215 5 #reduceActionForUsingStatement2: 7090178 false) 
+	#(217 4 #reduceActionForUsingColumn2: 7364610 false) 
+	#(206 1 #reduceActionForTypeOption5: 5186565 false) 
+	#(205 2 #reduceActionFor_____semicolon__2: 5159938 false) 
+	#(263 4 #reduceActionForWhenExpression1: 17517569 false) 
+	#(260 5 #reduceActionForCaseExpression4: 17235972 false) 
+	#(259 5 #reduceActionForExpression56: 12281912 false) 
+	#(259 5 #reduceActionForExpression183: 12282039 false) 
+	#(259 5 #reduceActionForExpression183: 12282038 false) 
+	#(259 5 #reduceActionForExpression191: 12282047 false) 
+	#(259 5 #reduceActionForExpression56: 12281908 false) 
+	#(259 5 #reduceActionForExpression196: 12282052 false) 
+	#(259 5 #reduceActionForExpression49: 12281905 false) 
+	#(259 5 #reduceActionForExpression180: 12282036 false) 
+	#(259 5 #reduceActionForExpression62: 12281918 false) 
+	#(259 5 #reduceActionForExpression45: 12281901 false) 
+	#(259 5 #reduceActionForExpression43: 12281899 false) 
+	#(259 5 #reduceActionForExpression27: 12281883 false) 
+	#(259 5 #reduceActionForExpression126: 12281982 false) 
+	#(259 5 #reduceActionForExpression100: 12281956 false) 
+	#(226 6 #reduceActionForSelectQuery16: 8739856 false) 
+	#(200 3 #reduceActionForMacroArgs2: 4796418 false) 
+	#(202 2 #reduceActionForParameter1: 4959233 false) 
+	#(192 0 #reduceActionFor__identifier___name_______period___1: 3581953 false) 
+	#(245 5 #reduceActionForTable6: 10871814 false) 
+	#(245 5 #reduceActionForTable12: 10871820 false) 
+	#(245 5 #reduceActionForTable12: 10871819 false) 
+	#(249 2 #reduceActionFor__identifier___name_______period__1: 11274241 false) 
+	#(214 6 #reduceActionForInsertQuery5: 6687749 false) 
+	#(214 6 #reduceActionForInsertQuery5: 6687745 false) 
+	#(198 6 #reduceActionForLockTableStatement8: 4428808 false) 
+	#(198 6 #reduceActionForLockTableStatement8: 4428804 false) 
+	#(197 6 #reduceActionForRollbackStatement1: 4281345 false) 
+	#(242 4 #reduceActionForIntoExpression1: 10657793 false) 
+	#(230 2 #reduceActionFor__identifier___name_______period__1: 8974337 false) 
+	#(232 1 #liftFirstValue: 9018369 false) 
+	#(233 1 #liftFirstValue: 9018370 false) 
+	#(226 6 #reduceActionForSelectQuery7: 8739847 false) 
+	#(238 2 #reduceActionForHavingExpression1: 10272769 false) 
+	#(240 2 #reduceActionForQualifyExpression1: 10484737 false) 
+	#(226 6 #reduceActionForSelectQuery7: 8739841 false) 
+	#(220 6 #reduceActionForSetStatement1: 7976961 false) 
+	#(211 6 #reduceActionForUpdateQuery13: 6116365 false) 
+	#(244 3 #reduceActionForUsingColumns2: 10800130 false) 
+	#(211 6 #reduceActionForUpdateQuery19: 6116371 false) 
+	#(212 3 #reduceActionForUsingColumns2: 6491138 false) 
+	#(211 6 #reduceActionForUpdateQuery3: 6116355 false) 
+	#(211 6 #reduceActionForUpdateQuery3: 6116354 false) 
+	#(213 3 #reduceActionForSetExpression1: 6610945 false) 
+	#(211 6 #reduceActionForUpdateQuery10: 6116362 false) 
+	#(206 2 #reduceActionForTypeOption4: 5186564 false) 
+	#(206 2 #reduceActionForTypeOption3: 5186563 false) 
+	#(206 2 #reduceActionForTypeOption2: 5186562 false) 
+	#(237 5 #reduceActionForWithTable1: 10087425 false) 
+	#(239 4 #reduceActionForUnionSelectQuery1: 10354689 false) 
+	#(259 6 #reduceActionForExpression58: 12281914 false) 
+	#(259 6 #reduceActionForExpression73: 12281929 false) 
+	#(259 6 #reduceActionForExpression32: 12281888 false) 
+	#(259 6 #reduceActionForExpression30: 12281886 false) 
+	#(259 6 #reduceActionForExpression192: 12282048 false) 
+	#(259 6 #reduceActionForExpression192: 12282050 false) 
+	#(259 6 #reduceActionForExpression65: 12281921 false) 
+	#(259 6 #reduceActionForExpression65: 12281925 false) 
+	#(259 6 #reduceActionForExpression65: 12281923 false) 
+	#(259 6 #reduceActionForExpression58: 12281910 false) 
+	#(255 3 #reduceActionForOrderByExpression1: 11974657 false) 
+	#(259 6 #reduceActionForExpression63: 12281919 false) 
+	#(259 6 #reduceActionForExpression46: 12281902 false) 
+	#(259 6 #reduceActionForExpression29: 12281885 false) 
+	#(241 3 #reduceActionForPartitionByExpression1: 10563585 false) 
+	#(259 6 #reduceActionForExpression152: 12282008 false) 
+	#(218 7 #reduceActionForLoadingStatement1: 7495681 false) 
+	#(201 3 #reduceActionForUsingColumns2: 4864002 false) 
+	#(193 2 #reduceActionForCreateTableColumn1: 3628033 false) 
+	#(184 0 #reduceActionFor__identifier___name_______period___1: 3219458 false) 
+	#(190 2 #reduceActionForCreateTableColumns1: 3531777 false) 
+	#(183 3 #reduceActionForCreateTableOption5: 2795525 false) 
+	#(183 3 #reduceActionForCreateTableOption1: 2795521 false) 
 	#(180 2 #reduceActionFor__identifier___name_______period___2: 2365442 false) 
-	#(245 6 #reduceActionForTable13: 10856461 false) 
-	#(245 6 #reduceActionForTable10: 10856458 false) 
-	#(245 6 #reduceActionForTable10: 10856456 false) 
-	#(245 6 #reduceActionForTable10: 10856457 false) 
-	#(214 7 #reduceActionForInsertQuery12: 6672396 false) 
-	#(214 7 #reduceActionForInsertQuery7: 6672391 false) 
-	#(214 7 #reduceActionForInsertQuery12: 6672394 false) 
-	#(214 7 #reduceActionForInsertQuery7: 6672387 false) 
-	#(194 7 #reduceActionForMergeQuery1: 3676161 false) 
-	#(195 1 #reduceActionForWhenExpressions1: 3831809 false) 
-	#(226 7 #reduceActionForSelectQuery9: 8724489 false) 
-	#(226 7 #reduceActionForSelectQuery9: 8724491 false) 
-	#(253 3 #reduceActionForGroupByExpression2: 11695106 false) 
-	#(253 3 #reduceActionForGroupByExpression1: 11695105 false) 
-	#(226 7 #reduceActionForSelectQuery9: 8724483 false) 
-	#(226 7 #reduceActionForSelectQuery9: 8724485 false) 
-	#(220 7 #reduceActionForSetStatement2: 7961602 false) 
-	#(211 7 #reduceActionForUpdateQuery16: 6101008 false) 
-	#(211 7 #reduceActionForUpdateQuery20: 6101012 false) 
-	#(211 7 #reduceActionForUpdateQuery6: 6100998 false) 
-	#(211 7 #reduceActionForUpdateQuery6: 6100997 false) 
-	#(211 7 #reduceActionForUpdateQuery9: 6101001 false) 
-	#(211 7 #reduceActionForUpdateQuery9: 6101000 false) 
-	#(203 5 #reduceActionForType2: 5000194 false) 
-	#(206 3 #reduceActionForTypeOption1: 5171201 false) 
-	#(259 7 #reduceActionForExpression57: 12266553 false) 
-	#(259 7 #reduceActionForExpression66: 12266562 false) 
-	#(259 7 #reduceActionForExpression66: 12266566 false) 
-	#(259 7 #reduceActionForExpression66: 12266564 false) 
-	#(259 7 #reduceActionForExpression57: 12266549 false) 
-	#(259 7 #reduceActionForExpression51: 12266547 false) 
-	#(259 7 #reduceActionForExpression38: 12266534 false) 
+	#(245 6 #reduceActionForTable13: 10871821 false) 
+	#(245 6 #reduceActionForTable10: 10871818 false) 
+	#(245 6 #reduceActionForTable10: 10871816 false) 
+	#(245 6 #reduceActionForTable10: 10871817 false) 
+	#(214 7 #reduceActionForInsertQuery12: 6687756 false) 
+	#(214 7 #reduceActionForInsertQuery7: 6687751 false) 
+	#(214 7 #reduceActionForInsertQuery12: 6687754 false) 
+	#(214 7 #reduceActionForInsertQuery7: 6687747 false) 
+	#(194 7 #reduceActionForMergeQuery1: 3691521 false) 
+	#(195 1 #reduceActionForWhenExpressions1: 3847169 false) 
+	#(226 7 #reduceActionForSelectQuery9: 8739849 false) 
+	#(226 7 #reduceActionForSelectQuery9: 8739851 false) 
+	#(253 3 #reduceActionForGroupByExpression2: 11710466 false) 
+	#(253 3 #reduceActionForGroupByExpression1: 11710465 false) 
+	#(226 7 #reduceActionForSelectQuery9: 8739843 false) 
+	#(226 7 #reduceActionForSelectQuery9: 8739845 false) 
+	#(220 7 #reduceActionForSetStatement2: 7976962 false) 
+	#(211 7 #reduceActionForUpdateQuery16: 6116368 false) 
+	#(211 7 #reduceActionForUpdateQuery20: 6116372 false) 
+	#(211 7 #reduceActionForUpdateQuery6: 6116358 false) 
+	#(211 7 #reduceActionForUpdateQuery6: 6116357 false) 
+	#(211 7 #reduceActionForUpdateQuery9: 6116361 false) 
+	#(211 7 #reduceActionForUpdateQuery9: 6116360 false) 
+	#(203 5 #reduceActionForType2: 5015554 false) 
+	#(206 3 #reduceActionForTypeOption1: 5186561 false) 
+	#(259 7 #reduceActionForExpression57: 12281913 false) 
+	#(259 7 #reduceActionForExpression66: 12281922 false) 
+	#(259 7 #reduceActionForExpression66: 12281926 false) 
+	#(259 7 #reduceActionForExpression66: 12281924 false) 
+	#(259 7 #reduceActionForExpression57: 12281909 false) 
+	#(259 7 #reduceActionForExpression51: 12281907 false) 
+	#(259 7 #reduceActionForExpression38: 12281894 false) 
 	#(181 8 #reduceActionForCreateTable1: 2572289 false) 
-	#(186 0 #reduceActionFor__identifier___name_______period___1: 3240961 false) 
-	#(192 2 #reduceActionFor__identifier___name_______period___2: 3566594 false) 
-	#(183 4 #reduceActionForCreateTableOption4: 2780164 false) 
-	#(183 4 #reduceActionForCreateTableOption3: 2780163 false) 
-	#(183 4 #reduceActionForCreateTableOption2: 2780162 false) 
+	#(186 0 #reduceActionFor__identifier___name_______period___1: 3256321 false) 
+	#(192 2 #reduceActionFor__identifier___name_______period___2: 3581954 false) 
+	#(183 4 #reduceActionForCreateTableOption4: 2795524 false) 
+	#(183 4 #reduceActionForCreateTableOption3: 2795523 false) 
+	#(183 4 #reduceActionForCreateTableOption2: 2795522 false) 
 	#(179 2 #reduceActionFor__identifier___name_______period__1: 2365441 false) 
-	#(245 7 #reduceActionForTable17: 10856465 false) 
-	#(245 7 #reduceActionForTable17: 10856464 false) 
-	#(194 8 #reduceActionForMergeQuery2: 3676162 false) 
-	#(195 2 #reduceActionFor_____semicolon__2: 3831810 false) 
-	#(226 8 #reduceActionForSelectQuery8: 8724488 false) 
-	#(254 2 #reduceActionForEmptyGroupByExpression1: 11868161 false) 
-	#(226 8 #reduceActionForSelectQuery8: 8724482 false) 
-	#(211 8 #reduceActionForUpdateQuery15: 6101007 false) 
-	#(211 8 #reduceActionForUpdateQuery15: 6101006 false) 
-	#(211 8 #reduceActionForUpdateQuery12: 6101004 false) 
-	#(211 8 #reduceActionForUpdateQuery12: 6101003 false) 
-	#(259 8 #reduceActionForExpression59: 12266555 false) 
-	#(259 8 #reduceActionForExpression33: 12266529 false) 
-	#(259 8 #reduceActionForExpression31: 12266527 false) 
-	#(259 8 #reduceActionForExpression193: 12266689 false) 
-	#(259 8 #reduceActionForExpression193: 12266691 false) 
-	#(259 8 #reduceActionForExpression59: 12266551 false) 
-	#(259 8 #reduceActionForExpression42: 12266538 false) 
-	#(259 8 #reduceActionForExpression40: 12266536 false) 
-	#(199 9 #reduceActionForCreateMacroStatement1: 4592641 false) 
+	#(245 7 #reduceActionForTable17: 10871825 false) 
+	#(245 7 #reduceActionForTable17: 10871824 false) 
+	#(194 8 #reduceActionForMergeQuery2: 3691522 false) 
+	#(195 2 #reduceActionFor_____semicolon__2: 3847170 false) 
+	#(226 8 #reduceActionForSelectQuery8: 8739848 false) 
+	#(254 2 #reduceActionForEmptyGroupByExpression1: 11883521 false) 
+	#(226 8 #reduceActionForSelectQuery8: 8739842 false) 
+	#(211 8 #reduceActionForUpdateQuery15: 6116367 false) 
+	#(211 8 #reduceActionForUpdateQuery15: 6116366 false) 
+	#(211 8 #reduceActionForUpdateQuery12: 6116364 false) 
+	#(211 8 #reduceActionForUpdateQuery12: 6116363 false) 
+	#(259 8 #reduceActionForExpression59: 12281915 false) 
+	#(259 8 #reduceActionForExpression33: 12281889 false) 
+	#(259 8 #reduceActionForExpression31: 12281887 false) 
+	#(259 8 #reduceActionForExpression193: 12282049 false) 
+	#(259 8 #reduceActionForExpression193: 12282051 false) 
+	#(259 8 #reduceActionForExpression59: 12281911 false) 
+	#(259 8 #reduceActionForExpression42: 12281898 false) 
+	#(259 8 #reduceActionForExpression40: 12281896 false) 
+	#(199 9 #reduceActionForCreateMacroStatement1: 4608001 false) 
 	#(181 9 #reduceActionForCreateTable2: 2572290 false) 
-	#(184 2 #reduceActionForCreateTableColumns1: 3204097 false) 
-	#(191 2 #reduceActionFor__identifier___name_______period__1: 3566593 false) 
+	#(184 2 #reduceActionForCreateTableColumns1: 3219457 false) 
+	#(191 2 #reduceActionFor__identifier___name_______period__1: 3581953 false) 
 	#(178 9 #reduceActionForCreateView1: 2251777 false) 
-	#(245 8 #reduceActionForTable14: 10856462 false) 
-	#(245 8 #reduceActionForTable14: 10856463 false) 
-	#(214 9 #reduceActionForInsertQuery6: 6672390 false) 
-	#(214 9 #reduceActionForInsertQuery6: 6672386 false) 
-	#(226 9 #reduceActionForSelectQuery10: 8724490 false) 
-	#(226 9 #reduceActionForSelectQuery10: 8724492 false) 
-	#(226 9 #reduceActionForSelectQuery10: 8724484 false) 
-	#(226 9 #reduceActionForSelectQuery10: 8724486 false) 
-	#(211 9 #reduceActionForUpdateQuery18: 6101010 false) 
-	#(211 9 #reduceActionForUpdateQuery18: 6101009 false) 
-	#(203 7 #reduceActionForType3: 5000195 false) 
-	#(237 8 #reduceActionForWithTable2: 10072066 false) 
-	#(259 9 #reduceActionForExpression47: 12266543 false) 
-	#(259 9 #reduceActionForExpression44: 12266540 false) 
-	#(186 2 #reduceActionFor__identifier___name_______period___2: 3240962 false) 
-	#(214 10 #reduceActionForInsertQuery8: 6672392 false) 
-	#(214 10 #reduceActionForInsertQuery8: 6672388 false) 
-	#(259 10 #reduceActionForExpression48: 12266544 false) 
-	#(189 0 #reduceActionFor__identifier___name_______period___1: 3418113 false) 
-	#(185 2 #reduceActionFor__identifier___name_______period__1: 3240961 false) 
-	#(259 11 #reduceActionForExpression99: 12266595 false) 
-	#(259 11 #reduceActionForExpression98: 12266594 false) 
-	#(259 11 #reduceActionForExpression97: 12266593 false) 
-	#(259 11 #reduceActionForExpression98: 12266592 false) 
-	#(259 11 #reduceActionForExpression97: 12266591 false) 
-	#(259 11 #reduceActionForExpression94: 12266590 false) 
-	#(259 11 #reduceActionForExpression93: 12266589 false) 
-	#(259 11 #reduceActionForExpression92: 12266588 false) 
-	#(259 11 #reduceActionForExpression93: 12266587 false) 
-	#(259 11 #reduceActionForExpression92: 12266586 false) 
-	#(259 11 #reduceActionForExpression89: 12266585 false) 
-	#(259 11 #reduceActionForExpression88: 12266584 false) 
-	#(259 11 #reduceActionForExpression87: 12266583 false) 
-	#(259 11 #reduceActionForExpression88: 12266582 false) 
-	#(259 11 #reduceActionForExpression87: 12266581 false) 
-	#(259 11 #reduceActionForExpression94: 12266580 false) 
-	#(259 11 #reduceActionForExpression93: 12266579 false) 
-	#(259 11 #reduceActionForExpression92: 12266578 false) 
-	#(259 11 #reduceActionForExpression93: 12266577 false) 
-	#(259 11 #reduceActionForExpression92: 12266576 false) 
-	#(259 11 #reduceActionForExpression89: 12266575 false) 
-	#(259 11 #reduceActionForExpression88: 12266574 false) 
-	#(259 11 #reduceActionForExpression87: 12266573 false) 
-	#(259 11 #reduceActionForExpression88: 12266572 false) 
-	#(259 11 #reduceActionForExpression87: 12266571 false) 
-	#(196 6 #reduceActionForWhenMergeCondition1: 3872769 false) 
-	#(259 12 #reduceActionForExpression151: 12266647 false) 
-	#(259 12 #reduceActionForExpression150: 12266646 false) 
-	#(259 12 #reduceActionForExpression149: 12266645 false) 
-	#(259 12 #reduceActionForExpression150: 12266644 false) 
-	#(259 12 #reduceActionForExpression149: 12266643 false) 
-	#(259 12 #reduceActionForExpression146: 12266642 false) 
-	#(259 12 #reduceActionForExpression145: 12266641 false) 
-	#(259 12 #reduceActionForExpression144: 12266640 false) 
-	#(259 12 #reduceActionForExpression145: 12266639 false) 
-	#(259 12 #reduceActionForExpression144: 12266638 false) 
-	#(259 12 #reduceActionForExpression141: 12266637 false) 
-	#(259 12 #reduceActionForExpression140: 12266636 false) 
-	#(259 12 #reduceActionForExpression139: 12266635 false) 
-	#(259 12 #reduceActionForExpression140: 12266634 false) 
-	#(259 12 #reduceActionForExpression139: 12266633 false) 
-	#(259 12 #reduceActionForExpression146: 12266632 false) 
-	#(259 12 #reduceActionForExpression145: 12266631 false) 
-	#(259 12 #reduceActionForExpression144: 12266630 false) 
-	#(259 12 #reduceActionForExpression145: 12266629 false) 
-	#(259 12 #reduceActionForExpression144: 12266628 false) 
-	#(259 12 #reduceActionForExpression141: 12266627 false) 
-	#(259 12 #reduceActionForExpression140: 12266626 false) 
-	#(259 12 #reduceActionForExpression139: 12266625 false) 
-	#(259 12 #reduceActionForExpression140: 12266624 false) 
-	#(259 12 #reduceActionForExpression139: 12266623 false) 
-	#(259 12 #reduceActionForExpression125: 12266621 false) 
-	#(259 12 #reduceActionForExpression124: 12266620 false) 
-	#(259 12 #reduceActionForExpression123: 12266619 false) 
-	#(259 12 #reduceActionForExpression124: 12266618 false) 
-	#(259 12 #reduceActionForExpression123: 12266617 false) 
-	#(259 12 #reduceActionForExpression120: 12266616 false) 
-	#(259 12 #reduceActionForExpression119: 12266615 false) 
-	#(259 12 #reduceActionForExpression118: 12266614 false) 
-	#(259 12 #reduceActionForExpression119: 12266613 false) 
-	#(259 12 #reduceActionForExpression118: 12266612 false) 
-	#(259 12 #reduceActionForExpression115: 12266611 false) 
-	#(259 12 #reduceActionForExpression114: 12266610 false) 
-	#(259 12 #reduceActionForExpression113: 12266609 false) 
-	#(259 12 #reduceActionForExpression114: 12266608 false) 
-	#(259 12 #reduceActionForExpression113: 12266607 false) 
-	#(259 12 #reduceActionForExpression120: 12266606 false) 
-	#(259 12 #reduceActionForExpression119: 12266605 false) 
-	#(259 12 #reduceActionForExpression118: 12266604 false) 
-	#(259 12 #reduceActionForExpression119: 12266603 false) 
-	#(259 12 #reduceActionForExpression118: 12266602 false) 
-	#(259 12 #reduceActionForExpression115: 12266601 false) 
-	#(259 12 #reduceActionForExpression114: 12266600 false) 
-	#(259 12 #reduceActionForExpression113: 12266599 false) 
-	#(259 12 #reduceActionForExpression114: 12266598 false) 
-	#(259 12 #reduceActionForExpression113: 12266597 false) 
-	#(187 6 #reduceActionForIndex1: 3276801 false) 
-	#(189 2 #reduceActionFor__identifier___name_______period___2: 3418114 false) 
-	#(259 13 #reduceActionForExpression177: 12266673 false) 
-	#(259 13 #reduceActionForExpression176: 12266672 false) 
-	#(259 13 #reduceActionForExpression175: 12266671 false) 
-	#(259 13 #reduceActionForExpression176: 12266670 false) 
-	#(259 13 #reduceActionForExpression175: 12266669 false) 
-	#(259 13 #reduceActionForExpression172: 12266668 false) 
-	#(259 13 #reduceActionForExpression171: 12266667 false) 
-	#(259 13 #reduceActionForExpression170: 12266666 false) 
-	#(259 13 #reduceActionForExpression171: 12266665 false) 
-	#(259 13 #reduceActionForExpression170: 12266664 false) 
-	#(259 13 #reduceActionForExpression167: 12266663 false) 
-	#(259 13 #reduceActionForExpression166: 12266662 false) 
-	#(259 13 #reduceActionForExpression165: 12266661 false) 
-	#(259 13 #reduceActionForExpression166: 12266660 false) 
-	#(259 13 #reduceActionForExpression165: 12266659 false) 
-	#(259 13 #reduceActionForExpression172: 12266658 false) 
-	#(259 13 #reduceActionForExpression171: 12266657 false) 
-	#(259 13 #reduceActionForExpression170: 12266656 false) 
-	#(259 13 #reduceActionForExpression171: 12266655 false) 
-	#(259 13 #reduceActionForExpression170: 12266654 false) 
-	#(259 13 #reduceActionForExpression167: 12266653 false) 
-	#(259 13 #reduceActionForExpression166: 12266652 false) 
-	#(259 13 #reduceActionForExpression165: 12266651 false) 
-	#(259 13 #reduceActionForExpression166: 12266650 false) 
-	#(259 13 #reduceActionForExpression165: 12266649 false) 
-	#(187 7 #reduceActionForIndex2: 3276802 false) 
-	#(188 2 #reduceActionFor__identifier___name_______period__1: 3418113 false) 
-	#(187 7 #reduceActionForIndex3: 3276803 false) 
-	#(187 7 #reduceActionForIndex5: 3276805 false) 
+	#(245 8 #reduceActionForTable14: 10871822 false) 
+	#(245 8 #reduceActionForTable14: 10871823 false) 
+	#(214 9 #reduceActionForInsertQuery6: 6687750 false) 
+	#(214 9 #reduceActionForInsertQuery6: 6687746 false) 
+	#(226 9 #reduceActionForSelectQuery10: 8739850 false) 
+	#(226 9 #reduceActionForSelectQuery10: 8739852 false) 
+	#(226 9 #reduceActionForSelectQuery10: 8739844 false) 
+	#(226 9 #reduceActionForSelectQuery10: 8739846 false) 
+	#(211 9 #reduceActionForUpdateQuery18: 6116370 false) 
+	#(211 9 #reduceActionForUpdateQuery18: 6116369 false) 
+	#(203 7 #reduceActionForType3: 5015555 false) 
+	#(237 8 #reduceActionForWithTable2: 10087426 false) 
+	#(259 9 #reduceActionForExpression47: 12281903 false) 
+	#(259 9 #reduceActionForExpression44: 12281900 false) 
+	#(186 2 #reduceActionFor__identifier___name_______period___2: 3256322 false) 
+	#(214 10 #reduceActionForInsertQuery8: 6687752 false) 
+	#(214 10 #reduceActionForInsertQuery8: 6687748 false) 
+	#(259 10 #reduceActionForExpression48: 12281904 false) 
+	#(189 0 #reduceActionFor__identifier___name_______period___1: 3433473 false) 
+	#(185 2 #reduceActionFor__identifier___name_______period__1: 3256321 false) 
+	#(259 11 #reduceActionForExpression99: 12281955 false) 
+	#(259 11 #reduceActionForExpression98: 12281954 false) 
+	#(259 11 #reduceActionForExpression97: 12281953 false) 
+	#(259 11 #reduceActionForExpression98: 12281952 false) 
+	#(259 11 #reduceActionForExpression97: 12281951 false) 
+	#(259 11 #reduceActionForExpression94: 12281950 false) 
+	#(259 11 #reduceActionForExpression93: 12281949 false) 
+	#(259 11 #reduceActionForExpression92: 12281948 false) 
+	#(259 11 #reduceActionForExpression93: 12281947 false) 
+	#(259 11 #reduceActionForExpression92: 12281946 false) 
+	#(259 11 #reduceActionForExpression89: 12281945 false) 
+	#(259 11 #reduceActionForExpression88: 12281944 false) 
+	#(259 11 #reduceActionForExpression87: 12281943 false) 
+	#(259 11 #reduceActionForExpression88: 12281942 false) 
+	#(259 11 #reduceActionForExpression87: 12281941 false) 
+	#(259 11 #reduceActionForExpression94: 12281940 false) 
+	#(259 11 #reduceActionForExpression93: 12281939 false) 
+	#(259 11 #reduceActionForExpression92: 12281938 false) 
+	#(259 11 #reduceActionForExpression93: 12281937 false) 
+	#(259 11 #reduceActionForExpression92: 12281936 false) 
+	#(259 11 #reduceActionForExpression89: 12281935 false) 
+	#(259 11 #reduceActionForExpression88: 12281934 false) 
+	#(259 11 #reduceActionForExpression87: 12281933 false) 
+	#(259 11 #reduceActionForExpression88: 12281932 false) 
+	#(259 11 #reduceActionForExpression87: 12281931 false) 
+	#(196 6 #reduceActionForWhenMergeCondition1: 3888129 false) 
+	#(259 12 #reduceActionForExpression151: 12282007 false) 
+	#(259 12 #reduceActionForExpression150: 12282006 false) 
+	#(259 12 #reduceActionForExpression149: 12282005 false) 
+	#(259 12 #reduceActionForExpression150: 12282004 false) 
+	#(259 12 #reduceActionForExpression149: 12282003 false) 
+	#(259 12 #reduceActionForExpression146: 12282002 false) 
+	#(259 12 #reduceActionForExpression145: 12282001 false) 
+	#(259 12 #reduceActionForExpression144: 12282000 false) 
+	#(259 12 #reduceActionForExpression145: 12281999 false) 
+	#(259 12 #reduceActionForExpression144: 12281998 false) 
+	#(259 12 #reduceActionForExpression141: 12281997 false) 
+	#(259 12 #reduceActionForExpression140: 12281996 false) 
+	#(259 12 #reduceActionForExpression139: 12281995 false) 
+	#(259 12 #reduceActionForExpression140: 12281994 false) 
+	#(259 12 #reduceActionForExpression139: 12281993 false) 
+	#(259 12 #reduceActionForExpression146: 12281992 false) 
+	#(259 12 #reduceActionForExpression145: 12281991 false) 
+	#(259 12 #reduceActionForExpression144: 12281990 false) 
+	#(259 12 #reduceActionForExpression145: 12281989 false) 
+	#(259 12 #reduceActionForExpression144: 12281988 false) 
+	#(259 12 #reduceActionForExpression141: 12281987 false) 
+	#(259 12 #reduceActionForExpression140: 12281986 false) 
+	#(259 12 #reduceActionForExpression139: 12281985 false) 
+	#(259 12 #reduceActionForExpression140: 12281984 false) 
+	#(259 12 #reduceActionForExpression139: 12281983 false) 
+	#(259 12 #reduceActionForExpression125: 12281981 false) 
+	#(259 12 #reduceActionForExpression124: 12281980 false) 
+	#(259 12 #reduceActionForExpression123: 12281979 false) 
+	#(259 12 #reduceActionForExpression124: 12281978 false) 
+	#(259 12 #reduceActionForExpression123: 12281977 false) 
+	#(259 12 #reduceActionForExpression120: 12281976 false) 
+	#(259 12 #reduceActionForExpression119: 12281975 false) 
+	#(259 12 #reduceActionForExpression118: 12281974 false) 
+	#(259 12 #reduceActionForExpression119: 12281973 false) 
+	#(259 12 #reduceActionForExpression118: 12281972 false) 
+	#(259 12 #reduceActionForExpression115: 12281971 false) 
+	#(259 12 #reduceActionForExpression114: 12281970 false) 
+	#(259 12 #reduceActionForExpression113: 12281969 false) 
+	#(259 12 #reduceActionForExpression114: 12281968 false) 
+	#(259 12 #reduceActionForExpression113: 12281967 false) 
+	#(259 12 #reduceActionForExpression120: 12281966 false) 
+	#(259 12 #reduceActionForExpression119: 12281965 false) 
+	#(259 12 #reduceActionForExpression118: 12281964 false) 
+	#(259 12 #reduceActionForExpression119: 12281963 false) 
+	#(259 12 #reduceActionForExpression118: 12281962 false) 
+	#(259 12 #reduceActionForExpression115: 12281961 false) 
+	#(259 12 #reduceActionForExpression114: 12281960 false) 
+	#(259 12 #reduceActionForExpression113: 12281959 false) 
+	#(259 12 #reduceActionForExpression114: 12281958 false) 
+	#(259 12 #reduceActionForExpression113: 12281957 false) 
+	#(187 6 #reduceActionForIndex1: 3292161 false) 
+	#(189 2 #reduceActionFor__identifier___name_______period___2: 3433474 false) 
+	#(259 13 #reduceActionForExpression177: 12282033 false) 
+	#(259 13 #reduceActionForExpression176: 12282032 false) 
+	#(259 13 #reduceActionForExpression175: 12282031 false) 
+	#(259 13 #reduceActionForExpression176: 12282030 false) 
+	#(259 13 #reduceActionForExpression175: 12282029 false) 
+	#(259 13 #reduceActionForExpression172: 12282028 false) 
+	#(259 13 #reduceActionForExpression171: 12282027 false) 
+	#(259 13 #reduceActionForExpression170: 12282026 false) 
+	#(259 13 #reduceActionForExpression171: 12282025 false) 
+	#(259 13 #reduceActionForExpression170: 12282024 false) 
+	#(259 13 #reduceActionForExpression167: 12282023 false) 
+	#(259 13 #reduceActionForExpression166: 12282022 false) 
+	#(259 13 #reduceActionForExpression165: 12282021 false) 
+	#(259 13 #reduceActionForExpression166: 12282020 false) 
+	#(259 13 #reduceActionForExpression165: 12282019 false) 
+	#(259 13 #reduceActionForExpression172: 12282018 false) 
+	#(259 13 #reduceActionForExpression171: 12282017 false) 
+	#(259 13 #reduceActionForExpression170: 12282016 false) 
+	#(259 13 #reduceActionForExpression171: 12282015 false) 
+	#(259 13 #reduceActionForExpression170: 12282014 false) 
+	#(259 13 #reduceActionForExpression167: 12282013 false) 
+	#(259 13 #reduceActionForExpression166: 12282012 false) 
+	#(259 13 #reduceActionForExpression165: 12282011 false) 
+	#(259 13 #reduceActionForExpression166: 12282010 false) 
+	#(259 13 #reduceActionForExpression165: 12282009 false) 
+	#(187 7 #reduceActionForIndex2: 3292162 false) 
+	#(188 2 #reduceActionFor__identifier___name_______period__1: 3433473 false) 
+	#(187 7 #reduceActionForIndex3: 3292163 false) 
+	#(187 7 #reduceActionForIndex5: 3292165 false) 
 	#(178 14 #reduceActionForCreateView2: 2251778 false) 
-	#(196 8 #reduceActionForWhenMergeCondition2: 3872770 false) 
-	#(187 8 #reduceActionForIndex4: 3276804 false) 
-	#(187 8 #reduceActionForIndex6: 3276806 false) 
-	#(187 8 #reduceActionForIndex7: 3276807 false) 
-	#(187 9 #reduceActionForIndex8: 3276808 false) 
-	#(196 12 #reduceActionForWhenMergeCondition3: 3872771 false)
+	#(196 8 #reduceActionForWhenMergeCondition2: 3888130 false) 
+	#(187 8 #reduceActionForIndex4: 3292164 false) 
+	#(187 8 #reduceActionForIndex6: 3292166 false) 
+	#(187 8 #reduceActionForIndex7: 3292167 false) 
+	#(187 9 #reduceActionForIndex8: 3292168 false) 
+	#(196 12 #reduceActionForWhenMergeCondition3: 3888131 false)
 	).
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 TeradataParser class >> scannerClass [
 	^TeradataScanner
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataParser class >> startingStateForExpression [
 	^ 2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataParser class >> startingStateForExpressionListNode [
 	^ 3
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataParser class >> startingStateForExpressionWithDistinct [
 	^ 4
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataParser class >> startingStateForFile [
 	^ 1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataParser class >> symbolNames [
-	^ #('"("' '")"' '"*"' '"**"' '"+"' '","' '"-"' '"."' '"/"' '";"' '"<"' '"<="' '"<>"' '"="' '">"' '">="' '"ACCESS"' '"AFTER"' '"ALL"' '"AND"' '"AS"' '"BEFORE"' '"BEGIN"' '"BETWEEN"' '"BIGINT"' '"BOTH"' '"BT"' '"BY"' '"BYTE"' '"BYTEINT"' '"CASE"' '"CASESPECIFIC"' '"CAST"' '"CHAR"' '"CHARACTER"' '"CHECK"' '"CHECKPOINT"' '"CHECKSUM"' '"CLOB"' '"COMMENT"' '"COMPRESS"' '"COUNT"' '"CREATE"' '"CROSS"' '"CURRENT"' '"CURSOR"' '"DATABASE"' '"DATE"' '"DEC"' '"DECIMAL"' '"DEFAULT"' '"DEL"' '"DELETE"' '"DISTINCT"' '"DISTINCTROW"' '"DOUBLE"' '"DROP"' '"ELSE"' '"END"' '"EQ"' '"ERROR"' '"ERRORFILES"' '"ESCAPE"' '"ET"' '"EXCEPT"' '"EXEC"' '"EXECUTE"' '"EXISTS"' '"EXTRACT"' '"FALLBACK"' '"FLOAT"' '"FOLLOWING"' '"FOR"' '"FORMAT"' '"FROM"' '"FULL"' '"GROUP"' '"HAVING"' '"HELP"' '"IGNORE"' '"IN"' '"INDEX"' '"INNER"' '"INS"' '"INSERT"' '"INT"' '"INTEGER"' '"INTERSECT"' '"INTERVAL"' '"INTO"' '"IS"' '"JOIN"' '"JOURNAL"' '"LEADING"' '"LEFT"' '"LIKE"' '"LOADING"' '"LOCK"' '"LOCKING"' '"MACRO"' '"MATCHED"' '"MERGE"' '"MERGEBLOCKRATIO"' '"MINUS"' '"MOD"' '"MODE"' '"MULTISET"' '"NE"' '"NO"' '"NOT"' '"NULL"' '"NULLS"' '"NUMBER"' '"NUMERIC"' '"ON"' '"OR"' '"ORDER"' '"OUTER"' '"OVER"' '"PARTITION"' '"PRECEDING"' '"PRECISION"' '"PRIMARY"' '"QUALIFY"' '"REAL"' '"RECURSIVE"' '"RIGHT"' '"ROLLBACK"' '"ROW"' '"ROWS"' '"SEL"' '"SELECT"' '"SESSION"' '"SET"' '"SMALLINT"' '"SUBSTRING"' '"TABLE"' '"THEN"' '"TIME"' '"TIMESTAMP"' '"TITLE"' '"TOP"' '"TRAILING"' '"TRANSLATE"' '"TRANSLATE_CHK"' '"TRIM"' '"TRYCAST"' '"UESCAPE"' '"UNBOUNDED"' '"UNION"' '"UNIQUE"' '"UPDATE"' '"USING"' '"VALUES"' '"VARBYTE"' '"VARCHAR"' '"VIEW"' '"WHEN"' '"WHERE"' '"WITH"' '"WORK"' '"WORKLOAD"' '"XMLAGG"' '"||"' '<identifier>' '<variable>' '<ustring>' '<string>' '<number>' '<whitespace>' '<comment>' 'B e g i n' 'File' '";" ''semicolon''*' 'Statements' 'Statement' 'Comment' 'CreateView' '("," ''comma'' <identifier> ''column'' )' '("," ''comma'' <identifier> ''column'' )*' 'CreateTable' 'CreateTableOption*' 'CreateTableOption' 'CreateTableIndexes' '("," ''comma'' Index ''index'')' '("," ''comma'' Index ''index'')*' 'Index' '("," ''comma'' <identifier> ''column'')' '("," ''comma'' <identifier> ''column'')*' 'CreateTableColumns' '("," ''comma'' CreateTableColumn ''column'')' '("," ''comma'' CreateTableColumn ''column'')*' 'CreateTableColumn' 'MergeQuery' 'WhenMergeCondition ''whenMerge''+' 'WhenMergeCondition' 'RollbackStatement' 'LockTableStatement' 'CreateMacroStatement' 'MacroArgs' 'ParameterList' 'Parameter' 'Type' 'TypeOptions' 'TypeOption  ''option'' *' 'TypeOption' 'TypeName' 'SingleTypeName' 'CheckpointStatement' 'DropTableQuery' 'UpdateQuery' 'SetExpressionList' 'SetExpression' 'InsertQuery' 'UsingStatement' 'UsingColumns' 'UsingColumn' 'LoadingStatement' 'CheckWorkloadStatement' 'SetStatement' 'HelpSessionStatement' 'TransactionStatement' 'DatabaseStatement' 'ExecuteStatement' 'DeleteQuery' 'SelectQuery' 'IntoExpression ''into''?' '(FromTables? QueryExpressions)' '(FromTables? QueryExpressions)?' '("FOR" ''forToken'' "CURSOR" ''cursorToken'')' '("FOR" ''forToken'' "CURSOR" ''cursorToken'')?' '(<number> ''count'')' '(<number> ''count'')?' 'QueryExpressions' 'QueryExpression' 'WithTables' 'WithTable' 'HavingExpression' 'UnionSelectQuery' 'QualifyExpression' 'PartitionByExpression' 'IntoExpression' 'FromTables' 'TableList' 'Table' '(<identifier> ''name'' "." ''period'')' '(<identifier> ''name'' "." ''period'')*' '"OUTER" ''type''?' '("ON" ''onToken'' Expression ''on'')' '("ON" ''onToken'' Expression ''on'')?' 'TableName' 'WhereExpression' 'GroupByExpression' 'EmptyGroupByExpression' 'OrderByExpression' 'ExpressionList' '"," ''comma''+' 'NamedExpression' 'Expression' 'CaseExpression' 'ElseExpression' 'WhenExpressions' 'WhenExpression' 'FunctionExpression' 'Identifier' '("." ''period'' (<identifier> ''name'' | <string> ''name''))' '("." ''period'' (<identifier> ''name'' | <string> ''name''))*' 'IdentifierName' 'ExpressionListNode' 'ExpressionWithDistinct' 'E O F' 'error')
+	^ #('"("' '")"' '"*"' '"**"' '"+"' '","' '"-"' '"."' '"/"' '";"' '"<"' '"<="' '"<>"' '"="' '">"' '">="' '"ACCESS"' '"AFTER"' '"ALL"' '"AND"' '"AS"' '"BEFORE"' '"BEGIN"' '"BETWEEN"' '"BIGINT"' '"BOTH"' '"BT"' '"BY"' '"BYTE"' '"BYTEINT"' '"CASE"' '"CASESPECIFIC"' '"CAST"' '"CHAR"' '"CHARACTER"' '"CHECK"' '"CHECKPOINT"' '"CHECKSUM"' '"CLOB"' '"COMMENT"' '"COMPRESS"' '"COUNT"' '"CREATE"' '"CROSS"' '"CURRENT"' '"CURSOR"' '"DATABASE"' '"DATE"' '"DEC"' '"DECIMAL"' '"DEFAULT"' '"DEL"' '"DELETE"' '"DISTINCT"' '"DISTINCTROW"' '"DOUBLE"' '"DROP"' '"ELSE"' '"END"' '"EQ"' '"ERROR"' '"ERRORFILES"' '"ESCAPE"' '"ET"' '"EXCEPT"' '"EXEC"' '"EXECUTE"' '"EXISTS"' '"EXTRACT"' '"FALLBACK"' '"FLOAT"' '"FOLLOWING"' '"FOR"' '"FORMAT"' '"FROM"' '"FULL"' '"GROUP"' '"HAVING"' '"HELP"' '"IGNORE"' '"IN"' '"INDEX"' '"INNER"' '"INS"' '"INSERT"' '"INT"' '"INTEGER"' '"INTERSECT"' '"INTERVAL"' '"INTO"' '"IS"' '"JOIN"' '"JOURNAL"' '"LEADING"' '"LEFT"' '"LIKE"' '"LOADING"' '"LOCK"' '"LOCKING"' '"MACRO"' '"MATCHED"' '"MERGE"' '"MERGEBLOCKRATIO"' '"MINUS"' '"MOD"' '"MODE"' '"MULTISET"' '"NE"' '"NO"' '"NOT"' '"NULL"' '"NULLS"' '"NUMBER"' '"NUMERIC"' '"ON"' '"OR"' '"ORDER"' '"OUTER"' '"OVER"' '"PARTITION"' '"PRECEDING"' '"PRECISION"' '"PRIMARY"' '"QUALIFY"' '"REAL"' '"RECURSIVE"' '"RIGHT"' '"ROLLBACK"' '"ROW"' '"ROWS"' '"SEL"' '"SELECT"' '"SESSION"' '"SET"' '"SMALLINT"' '"SUBSTRING"' '"TABLE"' '"THEN"' '"TIME"' '"TIMESTAMP"' '"TITLE"' '"TOP"' '"TRAILING"' '"TRANSLATE"' '"TRANSLATE_CHK"' '"TRIM"' '"TRYCAST"' '"UESCAPE"' '"UNBOUNDED"' '"UNION"' '"UNIQUE"' '"UPDATE"' '"USING"' '"VALUES"' '"VARBYTE"' '"VARCHAR"' '"VIEW"' '"WHEN"' '"WHERE"' '"WITH"' '"WORK"' '"WORKLOAD"' '"XMLAGG"' '"||"' '<identifier>' '<variable>' '<ustring>' '<string>' '<number>' '<whitespace>' '<comment>' 'B e g i n' 'File' '";" ''semicolon''*' 'Statements' 'Statement' 'Comment' 'CreateView' '("," ''comma'' <identifier> ''column'' )' '("," ''comma'' <identifier> ''column'' )*' 'CreateTable' 'CreateTableOption ''createOption''*' 'CreateTableOption' 'CreateTableIndexes' '("," ''comma'' Index ''index'')' '("," ''comma'' Index ''index'')*' 'Index' '("," ''comma'' <identifier> ''column'')' '("," ''comma'' <identifier> ''column'')*' 'CreateTableColumns' '("," ''comma'' CreateTableColumn ''column'')' '("," ''comma'' CreateTableColumn ''column'')*' 'CreateTableColumn' 'MergeQuery' 'WhenMergeCondition ''whenMerge''+' 'WhenMergeCondition' 'RollbackStatement' 'LockTableStatement' 'CreateMacroStatement' 'MacroArgs' 'ParameterList' 'Parameter' 'Type' 'TypeOptions' 'TypeOption  ''option'' *' 'TypeOption' 'TypeName' 'SingleTypeName' 'CheckpointStatement' 'DropTableQuery' 'UpdateQuery' 'SetExpressionList' 'SetExpression' 'InsertQuery' 'UsingStatement' 'UsingColumns' 'UsingColumn' 'LoadingStatement' 'CheckWorkloadStatement' 'SetStatement' 'HelpSessionStatement' 'TransactionStatement' 'DatabaseStatement' 'ExecuteStatement' 'DeleteQuery' 'SelectQuery' 'IntoExpression ''into''?' '(FromTables? QueryExpressions)' '(FromTables? QueryExpressions)?' '("FOR" ''forToken'' "CURSOR" ''cursorToken'')' '("FOR" ''forToken'' "CURSOR" ''cursorToken'')?' '(<number> ''count'')' '(<number> ''count'')?' 'QueryExpressions' 'QueryExpression' 'WithTables' 'WithTable' 'HavingExpression' 'UnionSelectQuery' 'QualifyExpression' 'PartitionByExpression' 'IntoExpression' 'FromTables' 'TableList' 'Table' '(<identifier> ''name'' "." ''period'')' '(<identifier> ''name'' "." ''period'')*' '"OUTER" ''type''?' '("ON" ''onToken'' Expression ''on'')' '("ON" ''onToken'' Expression ''on'')?' 'TableName' 'WhereExpression' 'GroupByExpression' 'EmptyGroupByExpression' 'OrderByExpression' 'ExpressionList' '"," ''comma''+' 'NamedExpression' 'Expression' 'CaseExpression' 'ElseExpression' 'WhenExpressions' 'WhenExpression' 'FunctionExpression' 'Identifier' '("." ''period'' (<identifier> ''name'' | <string> ''name''))' '("." ''period'' (<identifier> ''name'' | <string> ''name''))*' 'IdentifierName' 'ExpressionListNode' 'ExpressionWithDistinct' 'E O F' 'error')
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataParser class >> symbolTypes [
-	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #TeradataFileNode #TeradataFileNode #OrderedCollection #OrderedCollection #TeradataProgramNode #TeradataCommentNode #TeradataCreateViewNode #OrderedCollection #OrderedCollection #TeradataCreateTableNode nil #TeradataCreateTableOptionNode #OrderedCollection #OrderedCollection #OrderedCollection #TeradataIndexNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #TeradataCreateTableColumnNode #TeradataMergeQueryNode #OrderedCollection #TeradataWhenMergeConditionNode #TeradataRollbackStatementNode #TeradataLockTableStatementNode #TeradataCreateMacroStatementNode #OrderedCollection #OrderedCollection #TeradataParameterNode #TeradataTypeNode #OrderedCollection #OrderedCollection #TeradataProgramNode #OrderedCollection #SmaCCToken #TeradataCheckpointStatementNode #TeradataDropTableQueryNode #TeradataUpdateQueryNode #OrderedCollection #TeradataSetExpressionNode #TeradataInsertQueryNode #TeradataUsingStatementNode #OrderedCollection #TeradataUsingColumnNode #TeradataProgramNode #TeradataCheckWorkloadStatementNode #TeradataSetStatementNode #TeradataHelpSessionStatementNode #TeradataProgramNode #TeradataDatabaseStatementNode #TeradataExecuteStatementNode #TeradataDeleteQueryNode #TeradataProgramNode #TeradataIntoExpressionNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #TeradataWithTableDefinitionNode #TeradataHavingNode #OrderedCollection #TeradataQualifyExpressionNode #TeradataPartitionByExpressionNode #TeradataIntoExpressionNode #OrderedCollection #OrderedCollection #TeradataProgramNode #OrderedCollection #OrderedCollection #SmaCCToken #OrderedCollection #OrderedCollection #TeradataTableNode #TeradataWhereExpressionNode #TeradataGroupByNode #TeradataEmptyGroupByExpressionNode #TeradataOrderByExpressionNode #OrderedCollection #OrderedCollection #TeradataExpressionNode #TeradataExpressionNode #TeradataCaseExpressionNode #TeradataElseExpressionNode #OrderedCollection #TeradataWhenExpressionNode #TeradataFunctionExpressionNode #TeradataIdentifierExpressionNode #OrderedCollection #OrderedCollection #TeradataIdentifierNameNode #TeradataExpressionListNode #TeradataExpressionNode #SmaCCToken #SmaCCErrorNode)
+	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #TeradataFileNode #TeradataFileNode #OrderedCollection #OrderedCollection #TeradataProgramNode #TeradataCommentNode #TeradataCreateViewNode #OrderedCollection #OrderedCollection #TeradataCreateTableNode #OrderedCollection #TeradataCreateTableOptionNode #OrderedCollection #OrderedCollection #OrderedCollection #TeradataIndexNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #TeradataCreateTableColumnNode #TeradataMergeQueryNode #OrderedCollection #TeradataWhenMergeConditionNode #TeradataRollbackStatementNode #TeradataLockTableStatementNode #TeradataCreateMacroStatementNode #OrderedCollection #OrderedCollection #TeradataParameterNode #TeradataTypeNode #OrderedCollection #OrderedCollection #TeradataProgramNode #OrderedCollection #SmaCCToken #TeradataCheckpointStatementNode #TeradataDropTableQueryNode #TeradataUpdateQueryNode #OrderedCollection #TeradataSetExpressionNode #TeradataInsertQueryNode #TeradataUsingStatementNode #OrderedCollection #TeradataUsingColumnNode #TeradataProgramNode #TeradataCheckWorkloadStatementNode #TeradataSetStatementNode #TeradataHelpSessionStatementNode #TeradataProgramNode #TeradataDatabaseStatementNode #TeradataExecuteStatementNode #TeradataDeleteQueryNode #TeradataProgramNode #TeradataIntoExpressionNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #TeradataWithTableDefinitionNode #TeradataHavingNode #OrderedCollection #TeradataQualifyExpressionNode #TeradataPartitionByExpressionNode #TeradataIntoExpressionNode #OrderedCollection #OrderedCollection #TeradataProgramNode #OrderedCollection #OrderedCollection #SmaCCToken #OrderedCollection #OrderedCollection #TeradataTableNode #TeradataWhereExpressionNode #TeradataGroupByNode #TeradataEmptyGroupByExpressionNode #TeradataOrderByExpressionNode #OrderedCollection #OrderedCollection #TeradataExpressionNode #TeradataExpressionNode #TeradataCaseExpressionNode #TeradataElseExpressionNode #OrderedCollection #TeradataWhenExpressionNode #TeradataFunctionExpressionNode #TeradataIdentifierExpressionNode #OrderedCollection #OrderedCollection #TeradataIdentifierNameNode #TeradataExpressionListNode #TeradataExpressionNode #SmaCCToken #SmaCCErrorNode)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataParser class >> transitionTable [
 ^#(
 #[1 0 21 0 1 0 6 0 10 0 25 0 23 0 29 0 27 0 33 0 36 0 37 0 37 0 41 0 40 0 45 0 43 0 49 0 47 0 53 0 52 0 57 0 53 0 61 0 57 0 65 0 59 0 69 0 64 0 73 0 66 0 77 0 67 0 81 0 79 0 85 0 84 0 89 0 85 0 93 0 98 0 97 0 99 0 101 0 102 0 105 0 128 0 109 0 131 0 113 0 132 0 117 0 134 0 121 0 152 0 125 0 153 0 129 0 160 0 133 0 173 0 137 0 174 0 141 0 175 0 145 0 176 0 145 0 177 0 145 0 178 0 145 0 181 0 145 0 194 0 145 0 197 0 145 0 198 0 145 0 199 0 145 0 209 0 145 0 210 0 145 0 211 0 145 0 214 0 145 0 215 0 145 0 218 0 145 0 219 0 145 0 220 0 145 0 221 0 145 0 222 0 145 0 223 0 145 0 224 0 145 0 225 0 229 0 226 0 6 1 15] 
@@ -2471,7 +2472,7 @@ TeradataParser class >> transitionTable [
 	).
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForCaseExpression1: nodes [
 	| result |
 	result := TeradataCaseExpressionNode new.
@@ -2481,7 +2482,7 @@ TeradataParser >> reduceActionForCaseExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForCaseExpression2: nodes [
 	| result |
 	result := TeradataCaseExpressionNode new.
@@ -2492,7 +2493,7 @@ TeradataParser >> reduceActionForCaseExpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForCaseExpression3: nodes [
 	| result |
 	result := TeradataCaseExpressionNode new.
@@ -2503,7 +2504,7 @@ TeradataParser >> reduceActionForCaseExpression3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForCaseExpression4: nodes [
 	| result |
 	result := TeradataCaseExpressionNode new.
@@ -2515,7 +2516,7 @@ TeradataParser >> reduceActionForCaseExpression4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForCheckWorkloadStatement1: nodes [
 	| result |
 	result := TeradataCheckWorkloadStatementNode new.
@@ -2526,7 +2527,7 @@ TeradataParser >> reduceActionForCheckWorkloadStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForCheckWorkloadStatement2: nodes [
 	| result |
 	result := TeradataCheckWorkloadStatementNode new.
@@ -2536,7 +2537,7 @@ TeradataParser >> reduceActionForCheckWorkloadStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForCheckpointStatement1: nodes [
 	| result |
 	result := TeradataCheckpointStatementNode new.
@@ -2547,7 +2548,7 @@ TeradataParser >> reduceActionForCheckpointStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForCheckpointStatement2: nodes [
 	| result |
 	result := TeradataCheckpointStatementNode new.
@@ -2559,7 +2560,7 @@ TeradataParser >> reduceActionForCheckpointStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForComment1: nodes [
 	| result |
 	result := TeradataCommentNode new.
@@ -2571,7 +2572,7 @@ TeradataParser >> reduceActionForComment1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForCreateMacroStatement1: nodes [
 	| result |
 	result := TeradataCreateMacroStatementNode new.
@@ -2591,13 +2592,14 @@ TeradataParser >> reduceActionForCreateMacroStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForCreateTable1: nodes [
 	| result |
 	result := TeradataCreateTableNode new.
 	result createToken: (nodes at: 1).
 	result tableToken: (nodes at: 2).
 	result table: (nodes at: 3).
+	result addNodes: (nodes at: 4) to: result createOptions.
 	result leftParen: (nodes at: 5).
 	result addNodes: ((nodes at: 6) at: 1) to: result columns.
 	result addTokens: ((nodes at: 6) at: 2) to: result commas.
@@ -2607,7 +2609,7 @@ TeradataParser >> reduceActionForCreateTable1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForCreateTable2: nodes [
 	| result |
 	result := TeradataCreateTableNode new.
@@ -2615,6 +2617,7 @@ TeradataParser >> reduceActionForCreateTable2: nodes [
 	result multisetToken: (nodes at: 2).
 	result tableToken: (nodes at: 3).
 	result table: (nodes at: 4).
+	result addNodes: (nodes at: 5) to: result createOptions.
 	result leftParen: (nodes at: 6).
 	result addNodes: ((nodes at: 7) at: 1) to: result columns.
 	result addTokens: ((nodes at: 7) at: 2) to: result commas.
@@ -2624,7 +2627,7 @@ TeradataParser >> reduceActionForCreateTable2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForCreateTableColumn1: nodes [
 	| result |
 	result := TeradataCreateTableColumnNode new.
@@ -2633,7 +2636,7 @@ TeradataParser >> reduceActionForCreateTableColumn1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForCreateTableColumns1: nodes [
 	| result |
 	result := Array new: 2.
@@ -2645,7 +2648,7 @@ TeradataParser >> reduceActionForCreateTableColumns1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForCreateTableOption1: nodes [
 	| result |
 	result := TeradataCreateTableOptionNode new.
@@ -2655,7 +2658,7 @@ TeradataParser >> reduceActionForCreateTableOption1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForCreateTableOption2: nodes [
 	| result |
 	result := TeradataCreateTableOptionNode new.
@@ -2666,7 +2669,7 @@ TeradataParser >> reduceActionForCreateTableOption2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForCreateTableOption3: nodes [
 	| result |
 	result := TeradataCreateTableOptionNode new.
@@ -2677,7 +2680,7 @@ TeradataParser >> reduceActionForCreateTableOption3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForCreateTableOption4: nodes [
 	| result |
 	result := TeradataCreateTableOptionNode new.
@@ -2688,7 +2691,7 @@ TeradataParser >> reduceActionForCreateTableOption4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForCreateTableOption5: nodes [
 	| result |
 	result := TeradataCreateTableOptionNode new.
@@ -2698,7 +2701,7 @@ TeradataParser >> reduceActionForCreateTableOption5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForCreateView1: nodes [
 	| result |
 	result := TeradataCreateViewNode new.
@@ -2715,7 +2718,7 @@ TeradataParser >> reduceActionForCreateView1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForCreateView2: nodes [
 	| result |
 	result := TeradataCreateViewNode new.
@@ -2737,7 +2740,7 @@ TeradataParser >> reduceActionForCreateView2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForDatabaseStatement1: nodes [
 	| result |
 	result := TeradataDatabaseStatementNode new.
@@ -2746,7 +2749,7 @@ TeradataParser >> reduceActionForDatabaseStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForDeleteQuery10: nodes [
 	| result |
 	result := TeradataDeleteQueryNode new.
@@ -2756,7 +2759,7 @@ TeradataParser >> reduceActionForDeleteQuery10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForDeleteQuery11: nodes [
 	| result |
 	result := TeradataDeleteQueryNode new.
@@ -2767,7 +2770,7 @@ TeradataParser >> reduceActionForDeleteQuery11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForDeleteQuery12: nodes [
 	| result |
 	result := TeradataDeleteQueryNode new.
@@ -2778,7 +2781,7 @@ TeradataParser >> reduceActionForDeleteQuery12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForDeleteQuery7: nodes [
 	| result |
 	result := TeradataDeleteQueryNode new.
@@ -2787,7 +2790,7 @@ TeradataParser >> reduceActionForDeleteQuery7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForDeleteQuery8: nodes [
 	| result |
 	result := TeradataDeleteQueryNode new.
@@ -2797,7 +2800,7 @@ TeradataParser >> reduceActionForDeleteQuery8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForDeleteQuery9: nodes [
 	| result |
 	result := TeradataDeleteQueryNode new.
@@ -2807,7 +2810,7 @@ TeradataParser >> reduceActionForDeleteQuery9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForDropTableQuery1: nodes [
 	| result |
 	result := TeradataDropTableQueryNode new.
@@ -2817,7 +2820,7 @@ TeradataParser >> reduceActionForDropTableQuery1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForElseExpression1: nodes [
 	| result |
 	result := TeradataElseExpressionNode new.
@@ -2826,7 +2829,7 @@ TeradataParser >> reduceActionForElseExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForEmptyGroupByExpression1: nodes [
 	| result |
 	result := TeradataEmptyGroupByExpressionNode new.
@@ -2835,7 +2838,7 @@ TeradataParser >> reduceActionForEmptyGroupByExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExecuteStatement3: nodes [
 	| result |
 	result := TeradataExecuteStatementNode new.
@@ -2844,7 +2847,7 @@ TeradataParser >> reduceActionForExecuteStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExecuteStatement4: nodes [
 	| result |
 	result := TeradataExecuteStatementNode new.
@@ -2857,7 +2860,7 @@ TeradataParser >> reduceActionForExecuteStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression100: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -2869,7 +2872,7 @@ TeradataParser >> reduceActionForExpression100: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression113: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -2888,7 +2891,7 @@ TeradataParser >> reduceActionForExpression113: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression114: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -2907,7 +2910,7 @@ TeradataParser >> reduceActionForExpression114: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression115: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -2926,7 +2929,7 @@ TeradataParser >> reduceActionForExpression115: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression118: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -2945,7 +2948,7 @@ TeradataParser >> reduceActionForExpression118: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression119: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -2964,7 +2967,7 @@ TeradataParser >> reduceActionForExpression119: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression11: nodes [
 	| result |
 	result := TeradataBinaryExpressionNode new.
@@ -2974,7 +2977,7 @@ TeradataParser >> reduceActionForExpression11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression120: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -2993,7 +2996,7 @@ TeradataParser >> reduceActionForExpression120: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression123: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3012,7 +3015,7 @@ TeradataParser >> reduceActionForExpression123: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression124: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3031,7 +3034,7 @@ TeradataParser >> reduceActionForExpression124: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression125: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3050,7 +3053,7 @@ TeradataParser >> reduceActionForExpression125: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression126: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3062,7 +3065,7 @@ TeradataParser >> reduceActionForExpression126: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression139: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3081,7 +3084,7 @@ TeradataParser >> reduceActionForExpression139: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression140: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3100,7 +3103,7 @@ TeradataParser >> reduceActionForExpression140: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression141: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3119,7 +3122,7 @@ TeradataParser >> reduceActionForExpression141: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression144: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3138,7 +3141,7 @@ TeradataParser >> reduceActionForExpression144: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression145: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3157,7 +3160,7 @@ TeradataParser >> reduceActionForExpression145: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression146: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3176,7 +3179,7 @@ TeradataParser >> reduceActionForExpression146: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression149: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3195,7 +3198,7 @@ TeradataParser >> reduceActionForExpression149: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression150: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3214,7 +3217,7 @@ TeradataParser >> reduceActionForExpression150: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression151: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3233,7 +3236,7 @@ TeradataParser >> reduceActionForExpression151: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression152: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3246,7 +3249,7 @@ TeradataParser >> reduceActionForExpression152: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression165: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3266,7 +3269,7 @@ TeradataParser >> reduceActionForExpression165: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression166: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3286,7 +3289,7 @@ TeradataParser >> reduceActionForExpression166: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression167: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3306,7 +3309,7 @@ TeradataParser >> reduceActionForExpression167: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression170: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3326,7 +3329,7 @@ TeradataParser >> reduceActionForExpression170: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression171: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3346,7 +3349,7 @@ TeradataParser >> reduceActionForExpression171: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression172: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3366,7 +3369,7 @@ TeradataParser >> reduceActionForExpression172: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression175: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3386,7 +3389,7 @@ TeradataParser >> reduceActionForExpression175: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression176: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3406,7 +3409,7 @@ TeradataParser >> reduceActionForExpression176: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression177: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -3426,7 +3429,7 @@ TeradataParser >> reduceActionForExpression177: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression178: nodes [
 	| result |
 	result := TeradataIntervalExpressionNode new.
@@ -3436,7 +3439,7 @@ TeradataParser >> reduceActionForExpression178: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression179: nodes [
 	| result |
 	result := TeradataCaseSpecificExpressionNode new.
@@ -3447,7 +3450,7 @@ TeradataParser >> reduceActionForExpression179: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression180: nodes [
 	| result |
 	result := TeradataTitleExpressionNode new.
@@ -3459,7 +3462,7 @@ TeradataParser >> reduceActionForExpression180: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression181: nodes [
 	| result |
 	result := TeradataCountExpressionNode new.
@@ -3470,7 +3473,7 @@ TeradataParser >> reduceActionForExpression181: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression183: nodes [
 	| result |
 	result := TeradataCountExpressionNode new.
@@ -3482,7 +3485,7 @@ TeradataParser >> reduceActionForExpression183: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression186: nodes [
 	| result |
 	result := TeradataTimestampExpressionNode new.
@@ -3490,7 +3493,7 @@ TeradataParser >> reduceActionForExpression186: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression187: nodes [
 	| result |
 	result := TeradataTimestampExpressionNode new.
@@ -3499,7 +3502,7 @@ TeradataParser >> reduceActionForExpression187: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression190: nodes [
 	| result |
 	result := TeradataExistsExpressionNode new.
@@ -3510,7 +3513,7 @@ TeradataParser >> reduceActionForExpression190: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression191: nodes [
 	| result |
 	result := TeradataExistsExpressionNode new.
@@ -3522,7 +3525,7 @@ TeradataParser >> reduceActionForExpression191: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression192: nodes [
 	| result |
 	result := TeradataTranslateExpressionNode new.
@@ -3535,7 +3538,7 @@ TeradataParser >> reduceActionForExpression192: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression193: nodes [
 	| result |
 	result := TeradataTranslateExpressionNode new.
@@ -3550,7 +3553,7 @@ TeradataParser >> reduceActionForExpression193: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression196: nodes [
 	| result |
 	result := TeradataXmlAggExpressionNode new.
@@ -3562,7 +3565,7 @@ TeradataParser >> reduceActionForExpression196: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression197: nodes [
 	| result |
 	result := TeradataUnicodeEscapeExpressionNode new.
@@ -3572,7 +3575,7 @@ TeradataParser >> reduceActionForExpression197: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression198: nodes [
 	| result |
 	result := TeradataIgnoreNullsExpressionNode new.
@@ -3582,7 +3585,7 @@ TeradataParser >> reduceActionForExpression198: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression26: nodes [
 	| result |
 	result := TeradataLikeExpressionNode new.
@@ -3592,7 +3595,7 @@ TeradataParser >> reduceActionForExpression26: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression27: nodes [
 	| result |
 	result := TeradataLikeExpressionNode new.
@@ -3604,7 +3607,7 @@ TeradataParser >> reduceActionForExpression27: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression28: nodes [
 	| result |
 	result := TeradataLikeExpressionNode new.
@@ -3615,7 +3618,7 @@ TeradataParser >> reduceActionForExpression28: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression29: nodes [
 	| result |
 	result := TeradataLikeExpressionNode new.
@@ -3628,7 +3631,7 @@ TeradataParser >> reduceActionForExpression29: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression2: nodes [
 	| result |
 	result := TeradataVariableExpressionNode new.
@@ -3636,7 +3639,7 @@ TeradataParser >> reduceActionForExpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression30: nodes [
 	| result |
 	result := TeradataSubstringExpressionNode new.
@@ -3649,7 +3652,7 @@ TeradataParser >> reduceActionForExpression30: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression31: nodes [
 	| result |
 	result := TeradataSubstringExpressionNode new.
@@ -3664,7 +3667,7 @@ TeradataParser >> reduceActionForExpression31: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression32: nodes [
 	| result |
 	result := TeradataSubstringExpressionNode new.
@@ -3677,7 +3680,7 @@ TeradataParser >> reduceActionForExpression32: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression33: nodes [
 	| result |
 	result := TeradataSubstringExpressionNode new.
@@ -3692,7 +3695,7 @@ TeradataParser >> reduceActionForExpression33: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression34: nodes [
 	| result |
 	result := TeradataIsNullExpressionNode new.
@@ -3702,7 +3705,7 @@ TeradataParser >> reduceActionForExpression34: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression35: nodes [
 	| result |
 	result := TeradataIsNullExpressionNode new.
@@ -3713,7 +3716,7 @@ TeradataParser >> reduceActionForExpression35: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression36: nodes [
 	| result |
 	result := nodes at: 2.
@@ -3722,7 +3725,7 @@ TeradataParser >> reduceActionForExpression36: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression37: nodes [
 	| result |
 	result := TeradataInValueExpressionNode new.
@@ -3732,7 +3735,7 @@ TeradataParser >> reduceActionForExpression37: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression38: nodes [
 	| result |
 	result := TeradataInValueExpressionNode new.
@@ -3747,7 +3750,7 @@ TeradataParser >> reduceActionForExpression38: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression39: nodes [
 	| result |
 	result := TeradataInValueExpressionNode new.
@@ -3758,7 +3761,7 @@ TeradataParser >> reduceActionForExpression39: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression3: nodes [
 	| result |
 	result := TeradataLiteralExpressionNode new.
@@ -3766,7 +3769,7 @@ TeradataParser >> reduceActionForExpression3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression40: nodes [
 	| result |
 	result := TeradataInValueExpressionNode new.
@@ -3782,7 +3785,7 @@ TeradataParser >> reduceActionForExpression40: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression41: nodes [
 	| result |
 	result := TeradataInValueExpressionNode new.
@@ -3793,7 +3796,7 @@ TeradataParser >> reduceActionForExpression41: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression42: nodes [
 	| result |
 	result := TeradataInValueExpressionNode new.
@@ -3809,7 +3812,7 @@ TeradataParser >> reduceActionForExpression42: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression43: nodes [
 	| result |
 	result := TeradataInValueExpressionNode new.
@@ -3821,7 +3824,7 @@ TeradataParser >> reduceActionForExpression43: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression44: nodes [
 	| result |
 	result := TeradataInValueExpressionNode new.
@@ -3838,7 +3841,7 @@ TeradataParser >> reduceActionForExpression44: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression45: nodes [
 	| result |
 	result := TeradataInQueryExpressionNode new.
@@ -3850,7 +3853,7 @@ TeradataParser >> reduceActionForExpression45: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression46: nodes [
 	| result |
 	result := TeradataInQueryExpressionNode new.
@@ -3863,7 +3866,7 @@ TeradataParser >> reduceActionForExpression46: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression47: nodes [
 	| result |
 	result := TeradataInQueryExpressionNode new.
@@ -3880,7 +3883,7 @@ TeradataParser >> reduceActionForExpression47: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression48: nodes [
 	| result |
 	result := TeradataInQueryExpressionNode new.
@@ -3898,7 +3901,7 @@ TeradataParser >> reduceActionForExpression48: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression49: nodes [
 	| result |
 	result := TeradataConversionExpressionNode new.
@@ -3910,7 +3913,7 @@ TeradataParser >> reduceActionForExpression49: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression50: nodes [
 	| result |
 	result := TeradataConversionExpressionNode new.
@@ -3921,7 +3924,7 @@ TeradataParser >> reduceActionForExpression50: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression51: nodes [
 	| result |
 	result := TeradataConversionExpressionNode new.
@@ -3935,7 +3938,7 @@ TeradataParser >> reduceActionForExpression51: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression56: nodes [
 	| result |
 	result := TeradataCastExpressionNode new.
@@ -3947,7 +3950,7 @@ TeradataParser >> reduceActionForExpression56: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression57: nodes [
 	| result |
 	result := TeradataCastExpressionNode new.
@@ -3961,7 +3964,7 @@ TeradataParser >> reduceActionForExpression57: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression58: nodes [
 	| result |
 	result := TeradataCastExpressionNode new.
@@ -3974,7 +3977,7 @@ TeradataParser >> reduceActionForExpression58: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression59: nodes [
 	| result |
 	result := TeradataCastExpressionNode new.
@@ -3989,7 +3992,7 @@ TeradataParser >> reduceActionForExpression59: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression5: nodes [
 	| result |
 	result := TeradataNullExpressionNode new.
@@ -3997,7 +4000,7 @@ TeradataParser >> reduceActionForExpression5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression61: nodes [
 	| result |
 	result := TeradataUnaryExpressionNode new.
@@ -4006,7 +4009,7 @@ TeradataParser >> reduceActionForExpression61: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression62: nodes [
 	| result |
 	result := TeradataBetweenExpressionNode new.
@@ -4018,7 +4021,7 @@ TeradataParser >> reduceActionForExpression62: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression63: nodes [
 	| result |
 	result := TeradataBetweenExpressionNode new.
@@ -4031,7 +4034,7 @@ TeradataParser >> reduceActionForExpression63: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression64: nodes [
 	| result |
 	result := TeradataTrimExpressionNode new.
@@ -4042,7 +4045,7 @@ TeradataParser >> reduceActionForExpression64: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression65: nodes [
 	| result |
 	result := TeradataTrimExpressionNode new.
@@ -4055,7 +4058,7 @@ TeradataParser >> reduceActionForExpression65: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression66: nodes [
 	| result |
 	result := TeradataTrimExpressionNode new.
@@ -4069,7 +4072,7 @@ TeradataParser >> reduceActionForExpression66: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression6: nodes [
 	| result |
 	result := TeradataStarExpressionNode new.
@@ -4079,7 +4082,7 @@ TeradataParser >> reduceActionForExpression6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression71: nodes [
 	| result |
 	result := TeradataQueryExpressionNode new.
@@ -4089,7 +4092,7 @@ TeradataParser >> reduceActionForExpression71: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression73: nodes [
 	| result |
 	result := TeradataExtractExpressionNode new.
@@ -4102,7 +4105,7 @@ TeradataParser >> reduceActionForExpression73: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression74: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -4113,7 +4116,7 @@ TeradataParser >> reduceActionForExpression74: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression87: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -4131,7 +4134,7 @@ TeradataParser >> reduceActionForExpression87: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression88: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -4149,7 +4152,7 @@ TeradataParser >> reduceActionForExpression88: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression89: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -4167,7 +4170,7 @@ TeradataParser >> reduceActionForExpression89: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression92: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -4185,7 +4188,7 @@ TeradataParser >> reduceActionForExpression92: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression93: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -4203,7 +4206,7 @@ TeradataParser >> reduceActionForExpression93: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression94: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -4221,7 +4224,7 @@ TeradataParser >> reduceActionForExpression94: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression97: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -4239,7 +4242,7 @@ TeradataParser >> reduceActionForExpression97: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression98: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -4257,7 +4260,7 @@ TeradataParser >> reduceActionForExpression98: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpression99: nodes [
 	| result |
 	result := TeradataOverExpressionNode new.
@@ -4275,7 +4278,7 @@ TeradataParser >> reduceActionForExpression99: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpressionList2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -4284,7 +4287,7 @@ TeradataParser >> reduceActionForExpressionList2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpressionListNode1: nodes [
 	| result |
 	result := TeradataExpressionListNode new.
@@ -4293,7 +4296,7 @@ TeradataParser >> reduceActionForExpressionListNode1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForExpressionWithDistinct1: nodes [
 	| result |
 	result := TeradataDistinctExpressionNode new.
@@ -4302,7 +4305,7 @@ TeradataParser >> reduceActionForExpressionWithDistinct1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForFile1: nodes [
 	| result |
 	result := TeradataFileNode new.
@@ -4312,7 +4315,7 @@ TeradataParser >> reduceActionForFile1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForFile2: nodes [
 	| result |
 	result := TeradataFileNode new.
@@ -4320,7 +4323,7 @@ TeradataParser >> reduceActionForFile2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForFromTables1: nodes [
 	| result |
 	result := Array new: 3.
@@ -4332,7 +4335,7 @@ TeradataParser >> reduceActionForFromTables1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForFunctionExpression1: nodes [
 	| result |
 	result := TeradataFunctionExpressionNode new.
@@ -4342,7 +4345,7 @@ TeradataParser >> reduceActionForFunctionExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForFunctionExpression2: nodes [
 	| result |
 	result := TeradataFunctionExpressionNode new.
@@ -4354,7 +4357,7 @@ TeradataParser >> reduceActionForFunctionExpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForGroupByExpression1: nodes [
 	| result |
 	result := TeradataGroupByNode new.
@@ -4365,7 +4368,7 @@ TeradataParser >> reduceActionForGroupByExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForGroupByExpression2: nodes [
 	| result |
 	result := TeradataGroupByNode new.
@@ -4375,7 +4378,7 @@ TeradataParser >> reduceActionForGroupByExpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForHavingExpression1: nodes [
 	| result |
 	result := TeradataHavingNode new.
@@ -4384,7 +4387,7 @@ TeradataParser >> reduceActionForHavingExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForHelpSessionStatement1: nodes [
 	| result |
 	result := TeradataHelpSessionStatementNode new.
@@ -4393,7 +4396,7 @@ TeradataParser >> reduceActionForHelpSessionStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForIdentifier1: nodes [
 	| result |
 	result := TeradataIdentifierExpressionNode new.
@@ -4403,7 +4406,7 @@ TeradataParser >> reduceActionForIdentifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForIdentifierName1: nodes [
 	| result |
 	result := TeradataIdentifierNameNode new.
@@ -4413,7 +4416,7 @@ TeradataParser >> reduceActionForIdentifierName1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForIndex1: nodes [
 	| result |
 	result := TeradataIndexNode new.
@@ -4427,7 +4430,7 @@ TeradataParser >> reduceActionForIndex1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForIndex2: nodes [
 	| result |
 	result := TeradataIndexNode new.
@@ -4442,7 +4445,7 @@ TeradataParser >> reduceActionForIndex2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForIndex3: nodes [
 	| result |
 	result := TeradataIndexNode new.
@@ -4457,7 +4460,7 @@ TeradataParser >> reduceActionForIndex3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForIndex4: nodes [
 	| result |
 	result := TeradataIndexNode new.
@@ -4473,7 +4476,7 @@ TeradataParser >> reduceActionForIndex4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForIndex5: nodes [
 	| result |
 	result := TeradataIndexNode new.
@@ -4488,7 +4491,7 @@ TeradataParser >> reduceActionForIndex5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForIndex6: nodes [
 	| result |
 	result := TeradataIndexNode new.
@@ -4504,7 +4507,7 @@ TeradataParser >> reduceActionForIndex6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForIndex7: nodes [
 	| result |
 	result := TeradataIndexNode new.
@@ -4520,7 +4523,7 @@ TeradataParser >> reduceActionForIndex7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForIndex8: nodes [
 	| result |
 	result := TeradataIndexNode new.
@@ -4537,7 +4540,7 @@ TeradataParser >> reduceActionForIndex8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForInsertQuery11: nodes [
 	| result |
 	result := TeradataInsertQueryNode new.
@@ -4548,7 +4551,7 @@ TeradataParser >> reduceActionForInsertQuery11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForInsertQuery12: nodes [
 	| result |
 	result := TeradataInsertQueryNode new.
@@ -4563,7 +4566,7 @@ TeradataParser >> reduceActionForInsertQuery12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForInsertQuery5: nodes [
 	| result |
 	result := TeradataInsertQueryNode new.
@@ -4577,7 +4580,7 @@ TeradataParser >> reduceActionForInsertQuery5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForInsertQuery6: nodes [
 	| result |
 	result := TeradataInsertQueryNode new.
@@ -4595,7 +4598,7 @@ TeradataParser >> reduceActionForInsertQuery6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForInsertQuery7: nodes [
 	| result |
 	result := TeradataInsertQueryNode new.
@@ -4610,7 +4613,7 @@ TeradataParser >> reduceActionForInsertQuery7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForInsertQuery8: nodes [
 	| result |
 	result := TeradataInsertQueryNode new.
@@ -4629,7 +4632,7 @@ TeradataParser >> reduceActionForInsertQuery8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForIntoExpression1: nodes [
 	| result |
 	result := TeradataIntoExpressionNode new.
@@ -4641,7 +4644,7 @@ TeradataParser >> reduceActionForIntoExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForLoadingStatement1: nodes [
 	| result |
 	result := TeradataBeginLoadingStatementNode new.
@@ -4656,7 +4659,7 @@ TeradataParser >> reduceActionForLoadingStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForLoadingStatement2: nodes [
 	| result |
 	result := TeradataEndLoadingStatementNode new.
@@ -4665,7 +4668,7 @@ TeradataParser >> reduceActionForLoadingStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForLockTableStatement5: nodes [
 	| result |
 	result := TeradataLockTableStatementNode new.
@@ -4676,7 +4679,7 @@ TeradataParser >> reduceActionForLockTableStatement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForLockTableStatement6: nodes [
 	| result |
 	result := TeradataLockTableStatementNode new.
@@ -4688,7 +4691,7 @@ TeradataParser >> reduceActionForLockTableStatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForLockTableStatement7: nodes [
 	| result |
 	result := TeradataLockTableStatementNode new.
@@ -4700,7 +4703,7 @@ TeradataParser >> reduceActionForLockTableStatement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForLockTableStatement8: nodes [
 	| result |
 	result := TeradataLockTableStatementNode new.
@@ -4713,7 +4716,7 @@ TeradataParser >> reduceActionForLockTableStatement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForMacroArgs1: nodes [
 	| result |
 	result := Array new: 4.
@@ -4722,7 +4725,7 @@ TeradataParser >> reduceActionForMacroArgs1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForMacroArgs2: nodes [
 	| result |
 	result := Array new: 4.
@@ -4735,7 +4738,7 @@ TeradataParser >> reduceActionForMacroArgs2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForMergeQuery1: nodes [
 	| result |
 	result := TeradataMergeQueryNode new.
@@ -4749,7 +4752,7 @@ TeradataParser >> reduceActionForMergeQuery1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForMergeQuery2: nodes [
 	| result |
 	result := TeradataMergeQueryNode new.
@@ -4764,7 +4767,7 @@ TeradataParser >> reduceActionForMergeQuery2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForNamedExpression2: nodes [
 	| result |
 	result := TeradataAliasedExpressionNode new.
@@ -4773,7 +4776,7 @@ TeradataParser >> reduceActionForNamedExpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForNamedExpression3: nodes [
 	| result |
 	result := TeradataAliasedExpressionNode new.
@@ -4783,7 +4786,7 @@ TeradataParser >> reduceActionForNamedExpression3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForOrderByExpression1: nodes [
 	| result |
 	result := TeradataOrderByExpressionNode new.
@@ -4794,7 +4797,7 @@ TeradataParser >> reduceActionForOrderByExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForParameter1: nodes [
 	| result |
 	result := TeradataParameterNode new.
@@ -4803,7 +4806,7 @@ TeradataParser >> reduceActionForParameter1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForPartitionByExpression1: nodes [
 	| result |
 	result := TeradataPartitionByExpressionNode new.
@@ -4814,7 +4817,7 @@ TeradataParser >> reduceActionForPartitionByExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForQualifyExpression1: nodes [
 	| result |
 	result := TeradataQualifyExpressionNode new.
@@ -4823,7 +4826,7 @@ TeradataParser >> reduceActionForQualifyExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForQueryExpression1: nodes [
 	| result |
 	result := Array new: 6.
@@ -4831,7 +4834,7 @@ TeradataParser >> reduceActionForQueryExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForQueryExpression2: nodes [
 	| result |
 	result := Array new: 6.
@@ -4839,7 +4842,7 @@ TeradataParser >> reduceActionForQueryExpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForQueryExpression3: nodes [
 	| result |
 	result := Array new: 6.
@@ -4847,7 +4850,7 @@ TeradataParser >> reduceActionForQueryExpression3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForQueryExpression4: nodes [
 	| result |
 	result := Array new: 6.
@@ -4855,7 +4858,7 @@ TeradataParser >> reduceActionForQueryExpression4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForQueryExpression5: nodes [
 	| result |
 	result := Array new: 6.
@@ -4863,7 +4866,7 @@ TeradataParser >> reduceActionForQueryExpression5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForQueryExpression6: nodes [
 	| result |
 	result := Array new: 6.
@@ -4871,7 +4874,7 @@ TeradataParser >> reduceActionForQueryExpression6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForQueryExpressions1: nodes [
 	| result |
 	result := Array new: 6.
@@ -4884,7 +4887,7 @@ TeradataParser >> reduceActionForQueryExpressions1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForQueryExpressions2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -4897,7 +4900,7 @@ TeradataParser >> reduceActionForQueryExpressions2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForRollbackStatement1: nodes [
 	| result |
 	result := TeradataRollbackStatementNode new.
@@ -4911,7 +4914,7 @@ TeradataParser >> reduceActionForRollbackStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForSelectQuery10: nodes [
 	| result |
 	result := TeradataSelectQueryNode new.
@@ -4937,7 +4940,7 @@ TeradataParser >> reduceActionForSelectQuery10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForSelectQuery13: nodes [
 	| result |
 	result := TeradataUnionQueryNode new.
@@ -4950,7 +4953,7 @@ TeradataParser >> reduceActionForSelectQuery13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForSelectQuery14: nodes [
 	| result |
 	result := TeradataUnionQueryNode new.
@@ -4964,7 +4967,7 @@ TeradataParser >> reduceActionForSelectQuery14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForSelectQuery15: nodes [
 	| result |
 	result := TeradataUnionQueryNode new.
@@ -4979,7 +4982,7 @@ TeradataParser >> reduceActionForSelectQuery15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForSelectQuery16: nodes [
 	| result |
 	result := TeradataUnionQueryNode new.
@@ -4995,7 +4998,7 @@ TeradataParser >> reduceActionForSelectQuery16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForSelectQuery17: nodes [
 	| result |
 	result := TeradataWithQueryNode new.
@@ -5006,7 +5009,7 @@ TeradataParser >> reduceActionForSelectQuery17: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForSelectQuery18: nodes [
 	| result |
 	result := TeradataWithQueryNode new.
@@ -5018,7 +5021,7 @@ TeradataParser >> reduceActionForSelectQuery18: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForSelectQuery19: nodes [
 	| result |
 	result := TeradataMinusQueryNode new.
@@ -5031,7 +5034,7 @@ TeradataParser >> reduceActionForSelectQuery19: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForSelectQuery20: nodes [
 	| result |
 	result := TeradataMinusQueryNode new.
@@ -5046,7 +5049,7 @@ TeradataParser >> reduceActionForSelectQuery20: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForSelectQuery21: nodes [
 	| result |
 	result := TeradataIntersectQueryNode new.
@@ -5059,7 +5062,7 @@ TeradataParser >> reduceActionForSelectQuery21: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForSelectQuery22: nodes [
 	| result |
 	result := TeradataIntersectQueryNode new.
@@ -5074,7 +5077,7 @@ TeradataParser >> reduceActionForSelectQuery22: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForSelectQuery23: nodes [
 	| result |
 	result := TeradataExceptQueryNode new.
@@ -5087,7 +5090,7 @@ TeradataParser >> reduceActionForSelectQuery23: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForSelectQuery24: nodes [
 	| result |
 	result := TeradataExceptQueryNode new.
@@ -5102,7 +5105,7 @@ TeradataParser >> reduceActionForSelectQuery24: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForSelectQuery7: nodes [
 	| result |
 	result := TeradataSelectQueryNode new.
@@ -5125,7 +5128,7 @@ TeradataParser >> reduceActionForSelectQuery7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForSelectQuery8: nodes [
 	| result |
 	result := TeradataSelectQueryNode new.
@@ -5150,7 +5153,7 @@ TeradataParser >> reduceActionForSelectQuery8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForSelectQuery9: nodes [
 	| result |
 	result := TeradataSelectQueryNode new.
@@ -5174,7 +5177,7 @@ TeradataParser >> reduceActionForSelectQuery9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForSetExpression1: nodes [
 	| result |
 	result := TeradataSetExpressionNode new.
@@ -5184,7 +5187,7 @@ TeradataParser >> reduceActionForSetExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForSetStatement1: nodes [
 	| result |
 	result := TeradataSetStatementNode new.
@@ -5197,7 +5200,7 @@ TeradataParser >> reduceActionForSetStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForSetStatement2: nodes [
 	| result |
 	result := TeradataSetStatementNode new.
@@ -5211,7 +5214,7 @@ TeradataParser >> reduceActionForSetStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForStatements1: nodes [
 	| result |
 	result := Array new: 2.
@@ -5221,7 +5224,7 @@ TeradataParser >> reduceActionForStatements1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForStatements2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -5231,7 +5234,7 @@ TeradataParser >> reduceActionForStatements2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForTable10: nodes [
 	| result |
 	result := TeradataJoinTableNode new.
@@ -5245,7 +5248,7 @@ TeradataParser >> reduceActionForTable10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForTable12: nodes [
 	| result |
 	result := TeradataJoinTableNode new.
@@ -5258,7 +5261,7 @@ TeradataParser >> reduceActionForTable12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForTable13: nodes [
 	| result |
 	result := TeradataJoinTableNode new.
@@ -5272,7 +5275,7 @@ TeradataParser >> reduceActionForTable13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForTable14: nodes [
 	| result |
 	result := TeradataJoinTableNode new.
@@ -5288,7 +5291,7 @@ TeradataParser >> reduceActionForTable14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForTable17: nodes [
 	| result |
 	result := TeradataJoinTableNode new.
@@ -5303,7 +5306,7 @@ TeradataParser >> reduceActionForTable17: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForTable1: nodes [
 	| result |
 	result := TeradataTableNode new.
@@ -5313,7 +5316,7 @@ TeradataParser >> reduceActionForTable1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForTable2: nodes [
 	| result |
 	result := TeradataTableNode new.
@@ -5324,7 +5327,7 @@ TeradataParser >> reduceActionForTable2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForTable3: nodes [
 	| result |
 	result := TeradataTableNode new.
@@ -5336,7 +5339,7 @@ TeradataParser >> reduceActionForTable3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForTable4: nodes [
 	| result |
 	result := TeradataSelectTableNode new.
@@ -5346,7 +5349,7 @@ TeradataParser >> reduceActionForTable4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForTable5: nodes [
 	| result |
 	result := TeradataSelectTableNode new.
@@ -5357,7 +5360,7 @@ TeradataParser >> reduceActionForTable5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForTable6: nodes [
 	| result |
 	result := TeradataSelectTableNode new.
@@ -5369,7 +5372,7 @@ TeradataParser >> reduceActionForTable6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForTable7: nodes [
 	| result |
 	result := TeradataJoinTableNode new.
@@ -5381,7 +5384,7 @@ TeradataParser >> reduceActionForTable7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForTransactionStatement1: nodes [
 	| result |
 	result := TeradataBeginTransactionStatementNode new.
@@ -5389,7 +5392,7 @@ TeradataParser >> reduceActionForTransactionStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForTransactionStatement2: nodes [
 	| result |
 	result := TeradataEndTransactionStatementNode new.
@@ -5397,7 +5400,7 @@ TeradataParser >> reduceActionForTransactionStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForType1: nodes [
 	| result |
 	result := TeradataTypeNode new.
@@ -5406,7 +5409,7 @@ TeradataParser >> reduceActionForType1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForType2: nodes [
 	| result |
 	result := TeradataTypeNode new.
@@ -5418,7 +5421,7 @@ TeradataParser >> reduceActionForType2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForType3: nodes [
 	| result |
 	result := TeradataTypeNode new.
@@ -5432,7 +5435,7 @@ TeradataParser >> reduceActionForType3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForTypeName2: nodes [
 	| result |
 	result := OrderedCollection new: 2.
@@ -5441,7 +5444,7 @@ TeradataParser >> reduceActionForTypeName2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForTypeOption1: nodes [
 	| result |
 	result := TeradataCharacterSetOptionNode new.
@@ -5451,7 +5454,7 @@ TeradataParser >> reduceActionForTypeOption1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForTypeOption2: nodes [
 	| result |
 	result := TeradataNotNullOptionNode new.
@@ -5460,7 +5463,7 @@ TeradataParser >> reduceActionForTypeOption2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForTypeOption3: nodes [
 	| result |
 	result := TeradataFormatOptionNode new.
@@ -5469,7 +5472,7 @@ TeradataParser >> reduceActionForTypeOption3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForTypeOption4: nodes [
 	| result |
 	result := TeradataCompressOptionNode new.
@@ -5478,7 +5481,7 @@ TeradataParser >> reduceActionForTypeOption4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForTypeOption5: nodes [
 	| result |
 	result := TeradataCaseSpecificOptionNode new.
@@ -5486,7 +5489,7 @@ TeradataParser >> reduceActionForTypeOption5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForUnionSelectQuery1: nodes [
 	| result |
 	result := Array new: 4.
@@ -5497,7 +5500,7 @@ TeradataParser >> reduceActionForUnionSelectQuery1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForUnionSelectQuery2: nodes [
 	| result |
 	result := Array new: 4.
@@ -5505,7 +5508,7 @@ TeradataParser >> reduceActionForUnionSelectQuery2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForUpdateQuery10: nodes [
 	| result |
 	result := TeradataUpdateQueryNode new.
@@ -5519,7 +5522,7 @@ TeradataParser >> reduceActionForUpdateQuery10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForUpdateQuery12: nodes [
 	| result |
 	result := TeradataUpdateQueryNode new.
@@ -5535,7 +5538,7 @@ TeradataParser >> reduceActionForUpdateQuery12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForUpdateQuery13: nodes [
 	| result |
 	result := TeradataUpdateQueryNode new.
@@ -5549,7 +5552,7 @@ TeradataParser >> reduceActionForUpdateQuery13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForUpdateQuery15: nodes [
 	| result |
 	result := TeradataUpdateQueryNode new.
@@ -5565,7 +5568,7 @@ TeradataParser >> reduceActionForUpdateQuery15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForUpdateQuery16: nodes [
 	| result |
 	result := TeradataUpdateQueryNode new.
@@ -5580,7 +5583,7 @@ TeradataParser >> reduceActionForUpdateQuery16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForUpdateQuery18: nodes [
 	| result |
 	result := TeradataUpdateQueryNode new.
@@ -5597,7 +5600,7 @@ TeradataParser >> reduceActionForUpdateQuery18: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForUpdateQuery19: nodes [
 	| result |
 	result := TeradataUpdateQueryNode new.
@@ -5612,7 +5615,7 @@ TeradataParser >> reduceActionForUpdateQuery19: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForUpdateQuery1: nodes [
 	| result |
 	result := TeradataUpdateQueryNode new.
@@ -5624,7 +5627,7 @@ TeradataParser >> reduceActionForUpdateQuery1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForUpdateQuery20: nodes [
 	| result |
 	result := TeradataUpdateQueryNode new.
@@ -5640,7 +5643,7 @@ TeradataParser >> reduceActionForUpdateQuery20: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForUpdateQuery3: nodes [
 	| result |
 	result := TeradataUpdateQueryNode new.
@@ -5654,7 +5657,7 @@ TeradataParser >> reduceActionForUpdateQuery3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForUpdateQuery4: nodes [
 	| result |
 	result := TeradataUpdateQueryNode new.
@@ -5667,7 +5670,7 @@ TeradataParser >> reduceActionForUpdateQuery4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForUpdateQuery6: nodes [
 	| result |
 	result := TeradataUpdateQueryNode new.
@@ -5682,7 +5685,7 @@ TeradataParser >> reduceActionForUpdateQuery6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForUpdateQuery7: nodes [
 	| result |
 	result := TeradataUpdateQueryNode new.
@@ -5695,7 +5698,7 @@ TeradataParser >> reduceActionForUpdateQuery7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForUpdateQuery9: nodes [
 	| result |
 	result := TeradataUpdateQueryNode new.
@@ -5710,7 +5713,7 @@ TeradataParser >> reduceActionForUpdateQuery9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForUsingColumn1: nodes [
 	| result |
 	result := TeradataUsingColumnNode new.
@@ -5719,7 +5722,7 @@ TeradataParser >> reduceActionForUsingColumn1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForUsingColumn2: nodes [
 	| result |
 	result := TeradataUsingColumnNode new.
@@ -5730,7 +5733,7 @@ TeradataParser >> reduceActionForUsingColumn2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForUsingColumns2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -5739,7 +5742,7 @@ TeradataParser >> reduceActionForUsingColumns2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForUsingStatement1: nodes [
 	| result |
 	result := TeradataUsingStatementNode new.
@@ -5750,7 +5753,7 @@ TeradataParser >> reduceActionForUsingStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForUsingStatement2: nodes [
 	| result |
 	result := TeradataUsingStatementNode new.
@@ -5763,7 +5766,7 @@ TeradataParser >> reduceActionForUsingStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForWhenExpression1: nodes [
 	| result |
 	result := TeradataWhenExpressionNode new.
@@ -5774,7 +5777,7 @@ TeradataParser >> reduceActionForWhenExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForWhenExpressions1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
@@ -5782,7 +5785,7 @@ TeradataParser >> reduceActionForWhenExpressions1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForWhenMergeCondition1: nodes [
 	| result |
 	result := TeradataWhenMergeConditionNode new.
@@ -5796,7 +5799,7 @@ TeradataParser >> reduceActionForWhenMergeCondition1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForWhenMergeCondition2: nodes [
 	| result |
 	result := TeradataWhenMergeConditionNode new.
@@ -5812,7 +5815,7 @@ TeradataParser >> reduceActionForWhenMergeCondition2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForWhenMergeCondition3: nodes [
 	| result |
 	result := TeradataWhenMergeConditionNode new.
@@ -5833,7 +5836,7 @@ TeradataParser >> reduceActionForWhenMergeCondition3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForWhereExpression1: nodes [
 	| result |
 	result := TeradataWhereExpressionNode new.
@@ -5842,7 +5845,7 @@ TeradataParser >> reduceActionForWhereExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForWithTable1: nodes [
 	| result |
 	result := TeradataWithTableDefinitionNode new.
@@ -5854,7 +5857,7 @@ TeradataParser >> reduceActionForWithTable1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionForWithTable2: nodes [
 	| result |
 	result := TeradataWithTableDefinitionNode new.
@@ -5870,7 +5873,7 @@ TeradataParser >> reduceActionForWithTable2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionFor_FromTables__QueryExpressions_1: nodes [
 	| result |
 	result := Array new: 9.
@@ -5891,7 +5894,7 @@ TeradataParser >> reduceActionFor_FromTables__QueryExpressions_1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionFor_FromTables__QueryExpressions_2: nodes [
 	| result |
 	result := Array new: 9.
@@ -5915,7 +5918,7 @@ TeradataParser >> reduceActionFor_FromTables__QueryExpressions_2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionFor_FromTables__QueryExpressions__1: nodes [
 	| result |
 	result := Array new: 9.
@@ -5930,28 +5933,28 @@ TeradataParser >> reduceActionFor_FromTables__QueryExpressions__1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionFor_FromTables__QueryExpressions__2: nodes [
 	| result |
 	result := nodes at: 1.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionFor__ON___onToken__Expression__on___1: nodes [
 	| result |
 	result := Array new: 2.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionFor_____semicolon__1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionFor_____semicolon__2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -5959,7 +5962,7 @@ TeradataParser >> reduceActionFor_____semicolon__2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionFor__identifier___name_______period__1: nodes [
 	| result |
 	result := Array new: 2.
@@ -5968,7 +5971,7 @@ TeradataParser >> reduceActionFor__identifier___name_______period__1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionFor__identifier___name_______period___1: nodes [
 	| result |
 	result := Array new: 2.
@@ -5977,7 +5980,7 @@ TeradataParser >> reduceActionFor__identifier___name_______period___1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 TeradataParser >> reduceActionFor__identifier___name_______period___2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -5986,12 +5989,12 @@ TeradataParser >> reduceActionFor__identifier___name_______period___2: nodes [
 	^ result
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TeradataParser >> tryAllTokens [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TeradataParser >> useAllTokenIds [
 	^ false
 ]

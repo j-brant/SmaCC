@@ -1,1 +1,1 @@
-Package { #name : #'SmaCC_Teradata_Parser' }
+Package { #name : 'SmaCC_Teradata_Parser' }

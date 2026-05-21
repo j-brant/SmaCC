@@ -1,39 +1,40 @@
 Class {
-	#name : #TeradataNotNullOptionNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataNotNullOptionNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'notToken',
 		'nullToken'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataNotNullOptionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNotNullOption: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataNotNullOptionNode >> notToken [
 	^ notToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataNotNullOptionNode >> notToken: aSmaCCToken [
 	notToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataNotNullOptionNode >> nullToken [
 	^ nullToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataNotNullOptionNode >> nullToken: aSmaCCToken [
 	nullToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataNotNullOptionNode >> tokenVariables [
 	^ #(#notToken #nullToken)
 ]

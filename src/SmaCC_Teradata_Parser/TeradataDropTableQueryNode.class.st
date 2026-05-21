@@ -1,57 +1,58 @@
 Class {
-	#name : #TeradataDropTableQueryNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataDropTableQueryNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'dropToken',
 		'tableToken',
 		'table'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDropTableQueryNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDropTableQuery: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDropTableQueryNode >> dropToken [
 	^ dropToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDropTableQueryNode >> dropToken: aSmaCCToken [
 	dropToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDropTableQueryNode >> nodeVariables [
 	^ #(#table)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDropTableQueryNode >> table [
 	^ table
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDropTableQueryNode >> table: aTeradataTableNode [
 	self table notNil ifTrue: [ self table parent: nil ].
 	table := aTeradataTableNode.
 	self table notNil ifTrue: [ self table parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDropTableQueryNode >> tableToken [
 	^ tableToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDropTableQueryNode >> tableToken: aSmaCCToken [
 	tableToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDropTableQueryNode >> tokenVariables [
 	^ #(#dropToken #tableToken)
 ]

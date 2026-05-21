@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataInQueryExpressionNode,
-	#superclass : #TeradataExpressionNode,
+	#name : 'TeradataInQueryExpressionNode',
+	#superclass : 'TeradataExpressionNode',
 	#instVars : [
 		'values',
 		'inToken',
@@ -8,89 +8,90 @@ Class {
 		'notToken',
 		'commas'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInQueryExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitInQueryExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInQueryExpressionNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInQueryExpressionNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInQueryExpressionNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInQueryExpressionNode >> compositeTokenVariables [
 	^ #(#commas #leftParens #rightParens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInQueryExpressionNode >> inToken [
 	^ inToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInQueryExpressionNode >> inToken: aSmaCCToken [
 	inToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataInQueryExpressionNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInQueryExpressionNode >> nodeVariables [
 	^ #(#query)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInQueryExpressionNode >> notToken [
 	^ notToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInQueryExpressionNode >> notToken: aSmaCCToken [
 	notToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInQueryExpressionNode >> query [
 	^ query
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInQueryExpressionNode >> query: aTeradataProgramNode [
 	self query notNil ifTrue: [ self query parent: nil ].
 	query := aTeradataProgramNode.
 	self query notNil ifTrue: [ self query parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInQueryExpressionNode >> tokenVariables [
 	^ #(#inToken #notToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInQueryExpressionNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInQueryExpressionNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

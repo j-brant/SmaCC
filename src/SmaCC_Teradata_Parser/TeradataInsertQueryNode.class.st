@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataInsertQueryNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataInsertQueryNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'insertToken',
 		'table',
@@ -12,35 +12,36 @@ Class {
 		'intoToken',
 		'query'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitInsertQuery: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> compositeTokenVariables [
 	^ #(#leftParens #commas #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataInsertQueryNode >> initialize [
 	super initialize.
 	leftParens := OrderedCollection new: 2.
@@ -49,98 +50,98 @@ TeradataInsertQueryNode >> initialize [
 	rightParens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> insertToken [
 	^ insertToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> insertToken: aSmaCCToken [
 	insertToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> intoToken [
 	^ intoToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> intoToken: aSmaCCToken [
 	intoToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> leftParens [
 	^ leftParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> leftParens: anOrderedCollection [
 	leftParens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> nodeVariables [
 	^ #(#table #query)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> query [
 	^ query
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> query: aTeradataProgramNode [
 	self query notNil ifTrue: [ self query parent: nil ].
 	query := aTeradataProgramNode.
 	self query notNil ifTrue: [ self query parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> rightParens [
 	^ rightParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> table [
 	^ table
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> table: aTeradataTableNode [
 	self table notNil ifTrue: [ self table parent: nil ].
 	table := aTeradataTableNode.
 	self table notNil ifTrue: [ self table parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> tokenVariables [
 	^ #(#insertToken #valuesToken #intoToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.
 	self setParents: self values to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> valuesToken [
 	^ valuesToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInsertQueryNode >> valuesToken: aSmaCCToken [
 	valuesToken := aSmaCCToken
 ]

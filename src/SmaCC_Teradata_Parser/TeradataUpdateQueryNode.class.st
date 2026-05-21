@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataUpdateQueryNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataUpdateQueryNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'updateToken',
 		'tables',
@@ -14,87 +14,88 @@ Class {
 		'asToken',
 		'fromToken'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUpdateQuery: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> alias [
 	^ alias
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> alias: aSmaCCToken [
 	alias := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> asToken [
 	^ asToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> asToken: aSmaCCToken [
 	asToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> compositeNodeVariables [
 	^ #(#tables #setExpressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> else [
 	^ else
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> else: aTeradataProgramNode [
 	self else notNil ifTrue: [ self else parent: nil ].
 	else := aTeradataProgramNode.
 	self else notNil ifTrue: [ self else parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> elseToken [
 	^ elseToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> elseToken: aSmaCCToken [
 	elseToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> fromToken [
 	^ fromToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> fromToken: aSmaCCToken [
 	fromToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataUpdateQueryNode >> initialize [
 	super initialize.
 	tables := OrderedCollection new: 2.
@@ -102,66 +103,66 @@ TeradataUpdateQueryNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> nodeVariables [
 	^ #(#else #where)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> setExpressions [
 	^ setExpressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> setExpressions: anOrderedCollection [
 	self setParents: self setExpressions to: nil.
 	setExpressions := anOrderedCollection.
 	self setParents: self setExpressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> setToken [
 	^ setToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> setToken: aSmaCCToken [
 	setToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> tables [
 	^ tables
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> tables: anOrderedCollection [
 	self setParents: self tables to: nil.
 	tables := anOrderedCollection.
 	self setParents: self tables to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> tokenVariables [
 	^ #(#updateToken #setToken #elseToken #alias #asToken #fromToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> updateToken [
 	^ updateToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> updateToken: aSmaCCToken [
 	updateToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> where [
 	^ where
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUpdateQueryNode >> where: aTeradataWhereExpressionNode [
 	self where notNil ifTrue: [ self where parent: nil ].
 	where := aTeradataWhereExpressionNode.

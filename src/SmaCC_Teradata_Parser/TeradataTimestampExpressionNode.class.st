@@ -1,39 +1,40 @@
 Class {
-	#name : #TeradataTimestampExpressionNode,
-	#superclass : #TeradataExpressionNode,
+	#name : 'TeradataTimestampExpressionNode',
+	#superclass : 'TeradataExpressionNode',
 	#instVars : [
 		'typeToken',
 		'value'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTimestampExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTimestampExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTimestampExpressionNode >> tokenVariables [
 	^ #(#typeToken #value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTimestampExpressionNode >> typeToken [
 	^ typeToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTimestampExpressionNode >> typeToken: aSmaCCToken [
 	typeToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTimestampExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTimestampExpressionNode >> value: aSmaCCToken [
 	value := aSmaCCToken
 ]

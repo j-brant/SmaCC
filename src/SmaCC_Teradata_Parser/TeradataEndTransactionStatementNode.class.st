@@ -1,28 +1,29 @@
 Class {
-	#name : #TeradataEndTransactionStatementNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataEndTransactionStatementNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'endToken'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataEndTransactionStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEndTransactionStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataEndTransactionStatementNode >> endToken [
 	^ endToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataEndTransactionStatementNode >> endToken: aSmaCCToken [
 	endToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataEndTransactionStatementNode >> tokenVariables [
 	^ #(#endToken)
 ]

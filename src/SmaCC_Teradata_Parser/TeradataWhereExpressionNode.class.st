@@ -1,46 +1,47 @@
 Class {
-	#name : #TeradataWhereExpressionNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataWhereExpressionNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'whereToken',
 		'where'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhereExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitWhereExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhereExpressionNode >> nodeVariables [
 	^ #(#where)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhereExpressionNode >> tokenVariables [
 	^ #(#whereToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhereExpressionNode >> where [
 	^ where
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhereExpressionNode >> where: aTeradataExpressionNode [
 	self where notNil ifTrue: [ self where parent: nil ].
 	where := aTeradataExpressionNode.
 	self where notNil ifTrue: [ self where parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhereExpressionNode >> whereToken [
 	^ whereToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWhereExpressionNode >> whereToken: aSmaCCToken [
 	whereToken := aSmaCCToken
 ]

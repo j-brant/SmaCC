@@ -1,44 +1,45 @@
 Class {
-	#name : #TeradataDistinctExpressionNode,
-	#superclass : #TeradataExpressionNode,
+	#name : 'TeradataDistinctExpressionNode',
+	#superclass : 'TeradataExpressionNode',
 	#instVars : [
 		'distinctToken',
 		'value'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDistinctExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDistinctExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDistinctExpressionNode >> distinctToken [
 	^ distinctToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDistinctExpressionNode >> distinctToken: aSmaCCToken [
 	distinctToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDistinctExpressionNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDistinctExpressionNode >> tokenVariables [
 	^ #(#distinctToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDistinctExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDistinctExpressionNode >> value: aTeradataExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aTeradataExpressionNode.

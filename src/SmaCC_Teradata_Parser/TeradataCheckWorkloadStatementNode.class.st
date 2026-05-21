@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataCheckWorkloadStatementNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataCheckWorkloadStatementNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'checkToken',
 		'workloadToken',
@@ -8,72 +8,73 @@ Class {
 		'statement',
 		'endToken'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckWorkloadStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCheckWorkloadStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckWorkloadStatementNode >> checkToken [
 	^ checkToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckWorkloadStatementNode >> checkToken: aSmaCCToken [
 	checkToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckWorkloadStatementNode >> endToken [
 	^ endToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckWorkloadStatementNode >> endToken: aSmaCCToken [
 	endToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckWorkloadStatementNode >> forToken [
 	^ forToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckWorkloadStatementNode >> forToken: aSmaCCToken [
 	forToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckWorkloadStatementNode >> nodeVariables [
 	^ #(#statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckWorkloadStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckWorkloadStatementNode >> statement: aTeradataProgramNode [
 	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aTeradataProgramNode.
 	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckWorkloadStatementNode >> tokenVariables [
 	^ #(#checkToken #workloadToken #forToken #endToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckWorkloadStatementNode >> workloadToken [
 	^ workloadToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckWorkloadStatementNode >> workloadToken: aSmaCCToken [
 	workloadToken := aSmaCCToken
 ]

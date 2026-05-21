@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataTrimExpressionNode,
-	#superclass : #TeradataExpressionNode,
+	#name : 'TeradataTrimExpressionNode',
+	#superclass : 'TeradataExpressionNode',
 	#instVars : [
 		'trimToken',
 		'value',
@@ -8,70 +8,71 @@ Class {
 		'fromToken',
 		'character'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTrimExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTrimExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTrimExpressionNode >> character [
 	^ character
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTrimExpressionNode >> character: aSmaCCToken [
 	character := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTrimExpressionNode >> fromToken [
 	^ fromToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTrimExpressionNode >> fromToken: aSmaCCToken [
 	fromToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTrimExpressionNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTrimExpressionNode >> positionToken [
 	^ positionToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTrimExpressionNode >> positionToken: aSmaCCToken [
 	positionToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTrimExpressionNode >> tokenVariables [
 	^ #(#trimToken #positionToken #fromToken #character)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTrimExpressionNode >> trimToken [
 	^ trimToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTrimExpressionNode >> trimToken: aSmaCCToken [
 	trimToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTrimExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTrimExpressionNode >> value: aTeradataExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aTeradataExpressionNode.

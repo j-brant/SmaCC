@@ -1,10 +1,11 @@
 Class {
-	#name : #TeradataProgramNode,
-	#superclass : #SmaCCParseNode,
-	#category : #'SmaCC_Teradata_Parser'
+	#name : 'TeradataProgramNode',
+	#superclass : 'SmaCCParseNode',
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataProgramNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitProgram: self
 ]
