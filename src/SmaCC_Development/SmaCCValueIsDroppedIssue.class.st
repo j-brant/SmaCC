@@ -22,3 +22,26 @@ SmaCCValueIsDroppedIssue >> displayStringOn: aStream [
 			i == problemIndex ifTrue: [ aStream nextPutAll: '<<<' ].
 			aStream space ]
 ]
+
+{ #category : 'accessing' }
+SmaCCValueIsDroppedIssue >> itemName [
+	^ (rhs at: problemIndex) name
+]
+
+{ #category : 'accessing' }
+SmaCCValueIsDroppedIssue >> itemNames [
+	| names ast |
+	names := Set new.
+	ast := SmaCCDefinitionParser
+			parse: (rhs at: problemIndex) name
+			startingAt: SmaCCDefinitionParser startingStateForParserRule.
+	ast
+		withAllNodesOfType: SmaCCSymbolNode
+		do: [ :each | each variableNameToken ifNil: [ names add: each name source ] ].
+	^ names
+]
+
+{ #category : 'accessing' }
+SmaCCValueIsDroppedIssue >> productionName [
+	^ rhs productionSymbol name
+]
