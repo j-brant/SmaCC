@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataRollbackStatementNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataRollbackStatementNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'rollbackToken',
 		'workToken',
@@ -10,111 +10,112 @@ Class {
 		'commas',
 		'where'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataRollbackStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitRollbackStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataRollbackStatementNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataRollbackStatementNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataRollbackStatementNode >> compositeNodeVariables [
 	^ #(#tables)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataRollbackStatementNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataRollbackStatementNode >> fromToken [
 	^ fromToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataRollbackStatementNode >> fromToken: aSmaCCToken [
 	fromToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataRollbackStatementNode >> initialize [
 	super initialize.
 	tables := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataRollbackStatementNode >> nodeVariables [
 	^ #(#where)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataRollbackStatementNode >> rollbackToken [
 	^ rollbackToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataRollbackStatementNode >> rollbackToken: aSmaCCToken [
 	rollbackToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataRollbackStatementNode >> tables [
 	^ tables
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataRollbackStatementNode >> tables: anOrderedCollection [
 	self setParents: self tables to: nil.
 	tables := anOrderedCollection.
 	self setParents: self tables to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataRollbackStatementNode >> tokenVariables [
 	^ #(#rollbackToken #workToken #work #fromToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataRollbackStatementNode >> where [
 	^ where
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataRollbackStatementNode >> where: aTeradataWhereExpressionNode [
 	self where notNil ifTrue: [ self where parent: nil ].
 	where := aTeradataWhereExpressionNode.
 	self where notNil ifTrue: [ self where parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataRollbackStatementNode >> work [
 	^ work
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataRollbackStatementNode >> work: aSmaCCToken [
 	work := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataRollbackStatementNode >> workToken [
 	^ workToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataRollbackStatementNode >> workToken: aSmaCCToken [
 	workToken := aSmaCCToken
 ]

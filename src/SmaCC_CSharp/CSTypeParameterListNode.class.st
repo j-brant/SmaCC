@@ -1,6 +1,6 @@
 Class {
-	#name : #CSTypeParameterListNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSTypeParameterListNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'lessThan',
 		'_attributes',
@@ -8,57 +8,58 @@ Class {
 		'commaTokens',
 		'greaterThan'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterListNode >> _attributes [
 	^ _attributes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterListNode >> _attributes: anOrderedCollection [
 	self setParents: self _attributes to: nil.
 	_attributes := anOrderedCollection.
 	self setParents: self _attributes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterListNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTypeParameterList: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterListNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterListNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterListNode >> compositeNodeVariables [
 	^ #(#_attributes #parameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterListNode >> greaterThan [
 	^ greaterThan
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterListNode >> greaterThan: aSmaCCToken [
 	greaterThan := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterListNode >> ignoredCompositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSTypeParameterListNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
@@ -66,29 +67,29 @@ CSTypeParameterListNode >> initialize [
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterListNode >> lessThan [
 	^ lessThan
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterListNode >> lessThan: aSmaCCToken [
 	lessThan := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterListNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterListNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterListNode >> tokenVariables [
 	^ #(#lessThan #greaterThan)
 ]

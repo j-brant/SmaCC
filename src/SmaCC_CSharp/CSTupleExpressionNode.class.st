@@ -1,80 +1,81 @@
 Class {
-	#name : #CSTupleExpressionNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSTupleExpressionNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'leftParen',
 		'elements',
 		'commaTokens',
 		'rightParen'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTupleExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleExpressionNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleExpressionNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleExpressionNode >> compositeNodeVariables [
 	^ #(#elements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleExpressionNode >> elements [
 	^ elements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleExpressionNode >> elements: anOrderedCollection [
 	self setParents: self elements to: nil.
 	elements := anOrderedCollection.
 	self setParents: self elements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleExpressionNode >> ignoredCompositeTokenVariables [
 	^ #(#commaTokens #_leftParens #_rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSTupleExpressionNode >> initialize [
 	super initialize.
 	elements := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleExpressionNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleExpressionNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleExpressionNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleExpressionNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleExpressionNode >> tokenVariables [
 	^ #(#leftParen #rightParen)
 ]

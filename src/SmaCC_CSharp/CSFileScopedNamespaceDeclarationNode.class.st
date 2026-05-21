@@ -1,10 +1,11 @@
 Class {
-	#name : #CSFileScopedNamespaceDeclarationNode,
-	#superclass : #CSNamespaceDeclarationNode,
-	#category : #'SmaCC_CSharp'
+	#name : 'CSFileScopedNamespaceDeclarationNode',
+	#superclass : 'CSNamespaceDeclarationNode',
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFileScopedNamespaceDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFileScopedNamespaceDeclaration: self
 ]

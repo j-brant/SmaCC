@@ -1,50 +1,51 @@
 Class {
-	#name : #TeradataUnicodeEscapeExpressionNode,
-	#superclass : #TeradataExpressionNode,
+	#name : 'TeradataUnicodeEscapeExpressionNode',
+	#superclass : 'TeradataExpressionNode',
 	#instVars : [
 		'value',
 		'uescapeToken',
 		'escape'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUnicodeEscapeExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUnicodeEscapeExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUnicodeEscapeExpressionNode >> escape [
 	^ escape
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUnicodeEscapeExpressionNode >> escape: aSmaCCToken [
 	escape := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUnicodeEscapeExpressionNode >> tokenVariables [
 	^ #(#value #uescapeToken #escape)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUnicodeEscapeExpressionNode >> uescapeToken [
 	^ uescapeToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUnicodeEscapeExpressionNode >> uescapeToken: aSmaCCToken [
 	uescapeToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUnicodeEscapeExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUnicodeEscapeExpressionNode >> value: aSmaCCToken [
 	value := aSmaCCToken
 ]

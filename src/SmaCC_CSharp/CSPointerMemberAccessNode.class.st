@@ -1,68 +1,69 @@
 Class {
-	#name : #CSPointerMemberAccessNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSPointerMemberAccessNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'expression',
 		'arrowToken',
 		'name',
 		'typeArguments'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPointerMemberAccessNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPointerMemberAccess: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPointerMemberAccessNode >> arrowToken [
 	^ arrowToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPointerMemberAccessNode >> arrowToken: aSmaCCToken [
 	arrowToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPointerMemberAccessNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPointerMemberAccessNode >> expression: aCSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPointerMemberAccessNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPointerMemberAccessNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPointerMemberAccessNode >> nodeVariables [
 	^ #(#expression #typeArguments)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPointerMemberAccessNode >> tokenVariables [
 	^ #(#arrowToken #name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPointerMemberAccessNode >> typeArguments [
 	^ typeArguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPointerMemberAccessNode >> typeArguments: aCSTypeArgumentListNode [
 	self typeArguments notNil ifTrue: [ self typeArguments parent: nil ].
 	typeArguments := aCSTypeArgumentListNode.

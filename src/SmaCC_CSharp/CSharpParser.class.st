@@ -1,13 +1,14 @@
 Class {
-	#name : #CSharpParser,
-	#superclass : #SmaCCGLRParser,
+	#name : 'CSharpParser',
+	#superclass : 'SmaCCGLRParser',
 	#classInstVars : [
 		'keywords'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSharpParser class >> ambiguousTransitions [
 ^#(
 #[ 0 6 0 29] 
@@ -592,12 +593,12 @@ CSharpParser class >> ambiguousTransitions [
 	).
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 CSharpParser class >> cacheId [
-	^'2025-03-15T07:41:05.144984-05:00'
+	^'2026-05-21T09:06:17.520927-05:00'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSharpParser class >> definitionComment [
 "%glr;
 %id <Identifier> <gt> <gtgt> <gtgtgt> <rightBrace> <StringLiteral> <MultiLineInterpolatedRegularStringStart> <MultiLineInterpolatedRegularStringMid> <MultiLineInterpolatedRegularStringEnd> <MultiLineInterpolatedRegularStringWhole>;
@@ -1607,7 +1608,7 @@ default_value_expression
 	;
 stackalloc_expression
 	: ""stackalloc"" unmanaged_type 'type' ""["" 'leftBracket' expression 'expression' ""]"" 'rightBracket' {{}}
-	| ""stackalloc"" unmanaged_type 'type' ""["" 'leftBracket' expression 'expression' ""]"" 'rightBracket' stackalloc_initializer {{}}
+	| ""stackalloc"" unmanaged_type 'type' ""["" 'leftBracket' expression 'expression' ""]"" 'rightBracket' stackalloc_initializer 'initializer' {{}}
 	;
 nameof_expression
 	: ""nameof"" ""("" named_entity 'name' "")"" {{}}
@@ -3292,17 +3293,17 @@ any_modifier
 	;"
 ]
 
-{ #category : #'file types' }
+{ #category : 'file types' }
 CSharpParser class >> fileExtension [
 	^ '.cs'
 ]
 
-{ #category : #'file types' }
+{ #category : 'file types' }
 CSharpParser class >> fileExtensionType [
 	^ 'C# files'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CSharpParser class >> keywords [
 	^ keywords
 		ifNil:
@@ -3310,7 +3311,7 @@ CSharpParser class >> keywords [
 				asSet ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CSharpParser class >> parseBlock: aString onError: aBlock [
 	^ self
 		parse: aString
@@ -3318,12 +3319,12 @@ CSharpParser class >> parseBlock: aString onError: aBlock [
 		onError: aBlock
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSharpParser class >> reduceTable [
 ^#(
 	#(206 0 #reduceActionFor_extern_alias_directives1: 8041473 false) 
-	#(659 0 #reduceActionFor_extern_alias_directives1: 66051073 false) 
-	#(448 0 #reduceActionFor_extern_alias_directives1: 37167105 false) 
+	#(659 0 #reduceActionFor_extern_alias_directives1: 66065409 false) 
+	#(448 0 #reduceActionFor_extern_alias_directives1: 37181441 false) 
 	#(302 0 #reduceActionForStartInterpolatedString1: 18912257 true) 
 	#(308 0 #reduceActionForStartInterpolatedVerbatimString1: 19746817 true) 
 	#(300 0 #reduceActionForStartMultiLineInterpolatedString1: 18605057 true) 
@@ -3331,7 +3332,7 @@ CSharpParser class >> reduceTable [
 	#(195 0 #reduceActionFor_extern_alias_directives1: 6788097 false) 
 	#(206 1 #reduceActionFor_extern_alias_directives2: 8041474 false) 
 	#(207 1 #reduceActionForextern_alias_directives1: 8100865 false) 
-	#(663 0 #reduceActionFor_attribute_target_specifier1: 66462721 false) 
+	#(663 0 #reduceActionFor_attribute_target_specifier1: 66477057 false) 
 	#(217 1 #liftFirstValue: 9079809 false) 
 	#(217 1 #liftFirstValue: 9079810 false) 
 	#(218 1 #liftFirstValue: 9158657 false) 
@@ -3339,11 +3340,11 @@ CSharpParser class >> reduceTable [
 	#(218 1 #liftFirstValue: 9158659 false) 
 	#(218 1 #liftFirstValue: 9158660 false) 
 	#(218 1 #liftFirstValue: 9158661 false) 
-	#(526 0 #reduceActionFor_extern_alias_directives1: 44958721 false) 
-	#(659 1 #reduceActionFor_extern_alias_directives2: 66051074 false) 
-	#(660 1 #reduceActionFor_extern_alias_directives2: 66083841 false) 
-	#(661 1 #reduceActionForextern_alias_directives1: 66120705 false) 
-	#(443 1 #reduceActionForempty_statement1: 36628481 false) 
+	#(526 0 #reduceActionFor_extern_alias_directives1: 44973057 false) 
+	#(659 1 #reduceActionFor_extern_alias_directives2: 66065410 false) 
+	#(660 1 #reduceActionFor_extern_alias_directives2: 66098177 false) 
+	#(661 1 #reduceActionForextern_alias_directives1: 66135041 false) 
+	#(443 1 #reduceActionForempty_statement1: 36642817 false) 
 	#(233 1 #reduceActionForsimple_type2: 11361282 false) 
 	#(325 1 #reduceActionForsimple_type2: 21307393 false) 
 	#(235 1 #liftFirstValue: 11500546 false) 
@@ -3353,12 +3354,12 @@ CSharpParser class >> reduceTable [
 	#(234 1 #liftFirstValue: 11429891 false) 
 	#(325 1 #reduceActionForsimple_type2: 21307396 false) 
 	#(360 1 #reduceActionFordefault_value_expression1: 25610241 false) 
-	#(399 0 #nil 32384001 false) 
+	#(399 0 #nil 32398337 false) 
 	#(236 1 #liftFirstValue: 11614210 false) 
 	#(325 1 #reduceActionForsimple_type2: 21307397 false) 
 	#(238 1 #reduceActionForsimple_type2: 11774980 false) 
 	#(244 1 #reduceActionForsimple_type2: 12403716 false) 
-	#(678 1 #liftFirstValue: 68190210 false) 
+	#(678 1 #liftFirstValue: 68204546 false) 
 	#(236 1 #liftFirstValue: 11614209 false) 
 	#(325 1 #reduceActionForsimple_type2: 21307398 false) 
 	#(235 1 #liftFirstValue: 11500549 false) 
@@ -3368,8 +3369,8 @@ CSharpParser class >> reduceTable [
 	#(238 1 #reduceActionForsimple_type2: 11774977 false) 
 	#(325 1 #reduceActionForsimple_type2: 21307401 false) 
 	#(244 1 #reduceActionForsimple_type2: 12403714 false) 
-	#(462 1 #reduceActionForextern_alias_directives1: 39058433 false) 
-	#(433 0 #nil 35762177 false) 
+	#(462 1 #reduceActionForextern_alias_directives1: 39072769 false) 
+	#(433 0 #nil 35776513 false) 
 	#(235 1 #liftFirstValue: 11500545 false) 
 	#(325 1 #reduceActionForsimple_type2: 21307402 false) 
 	#(235 1 #liftFirstValue: 11500547 false) 
@@ -3378,24 +3379,24 @@ CSharpParser class >> reduceTable [
 	#(325 1 #reduceActionForsimple_type2: 21307404 false) 
 	#(244 1 #reduceActionForsimple_type2: 12403715 false) 
 	#(329 1 #reduceActionForthis_access1: 22139905 false) 
-	#(678 1 #liftFirstValue: 68190209 false) 
+	#(678 1 #liftFirstValue: 68204545 false) 
 	#(235 1 #liftFirstValue: 11500550 false) 
 	#(325 1 #reduceActionForsimple_type2: 21307405 false) 
 	#(235 1 #liftFirstValue: 11500552 false) 
 	#(325 1 #reduceActionForsimple_type2: 21307406 false) 
 	#(235 1 #liftFirstValue: 11500548 false) 
 	#(325 1 #reduceActionForsimple_type2: 21307407 false) 
-	#(474 1 #reduceActionForVarType1: 39998465 false) 
-	#(720 1 #reduceActionForvoid_type1: 73023489 false) 
-	#(441 0 #reduceActionFor_extern_alias_directives1: 36501505 false) 
+	#(474 1 #reduceActionForVarType1: 40012801 false) 
+	#(720 1 #reduceActionForvoid_type1: 73037825 false) 
+	#(441 0 #reduceActionFor_extern_alias_directives1: 36515841 false) 
 	#(311 0 #nil 20076545 false) 
-	#(677 1 #reduceActionForliteral2: 67840002 false) 
-	#(677 1 #reduceActionForliteral3: 67840003 false) 
-	#(677 1 #reduceActionForliteral4: 67840004 false) 
+	#(677 1 #reduceActionForliteral2: 67854338 false) 
+	#(677 1 #reduceActionForliteral3: 67854339 false) 
+	#(677 1 #reduceActionForliteral4: 67854340 false) 
 	#(301 1 #reduceActionForinterpolated_regular_string1: 18676737 false) 
 	#(307 1 #reduceActionForinterpolated_regular_string1: 19495937 false) 
-	#(677 1 #reduceActionForliteral5: 67840005 false) 
-	#(677 1 #reduceActionForliteral6: 67840006 false) 
+	#(677 1 #reduceActionForliteral5: 67854341 false) 
+	#(677 1 #reduceActionForliteral6: 67854342 false) 
 	#(223 1 #liftFirstValue: 10570755 false) 
 	#(323 1 #reduceActionForqualified_alias_member_expression1: 21139457 false) 
 	#(228 1 #liftFirstValue: 11115521 false) 
@@ -3414,7 +3415,7 @@ CSharpParser class >> reduceTable [
 	#(225 1 #liftFirstValue: 10849282 false) 
 	#(238 1 #liftFirstValue: 11774981 false) 
 	#(238 1 #liftFirstValue: 11774979 false) 
-	#(367 1 #liftFirstValue: 26286081 false) 
+	#(367 1 #liftFirstValue: 26300417 false) 
 	#(288 1 #liftFirstValue: 16621571 false) 
 	#(288 1 #liftFirstValue: 16621569 false) 
 	#(290 1 #liftFirstValue: 16850970 false) 
@@ -3429,16 +3430,16 @@ CSharpParser class >> reduceTable [
 	#(290 1 #liftFirstValue: 16850950 false) 
 	#(324 1 #reduceActionForqualified_alias_member_expression1: 21230593 false) 
 	#(290 1 #liftFirstValue: 16850952 false) 
-	#(480 1 #liftFirstValue: 40836098 false) 
+	#(480 1 #liftFirstValue: 40850434 false) 
 	#(290 1 #liftFirstValue: 16850953 false) 
 	#(290 1 #liftFirstValue: 16850955 false) 
 	#(290 1 #liftFirstValue: 16850956 false) 
 	#(290 1 #liftFirstValue: 16850957 false) 
-	#(480 1 #liftFirstValue: 40836101 false) 
+	#(480 1 #liftFirstValue: 40850437 false) 
 	#(290 1 #liftFirstValue: 16850958 false) 
-	#(480 1 #liftFirstValue: 40836102 false) 
+	#(480 1 #liftFirstValue: 40850438 false) 
 	#(290 1 #liftFirstValue: 16850959 false) 
-	#(480 1 #liftFirstValue: 40836099 false) 
+	#(480 1 #liftFirstValue: 40850435 false) 
 	#(288 1 #liftFirstValue: 16621570 false) 
 	#(290 1 #liftFirstValue: 16850960 false) 
 	#(290 1 #liftFirstValue: 16850961 false) 
@@ -3449,158 +3450,158 @@ CSharpParser class >> reduceTable [
 	#(290 1 #liftFirstValue: 16850969 false) 
 	#(290 1 #liftFirstValue: 16850967 false) 
 	#(290 1 #liftFirstValue: 16850951 false) 
-	#(480 1 #liftFirstValue: 40836097 false) 
+	#(480 1 #liftFirstValue: 40850433 false) 
 	#(290 1 #liftFirstValue: 16850954 false) 
-	#(367 1 #liftFirstValue: 26286087 false) 
-	#(480 1 #liftFirstValue: 40836103 false) 
-	#(367 1 #liftFirstValue: 26286088 false) 
-	#(480 1 #liftFirstValue: 40836104 false) 
-	#(367 1 #liftFirstValue: 26286089 false) 
-	#(367 1 #liftFirstValue: 26286090 false) 
-	#(480 1 #liftFirstValue: 40836105 false) 
+	#(367 1 #liftFirstValue: 26300423 false) 
+	#(480 1 #liftFirstValue: 40850439 false) 
+	#(367 1 #liftFirstValue: 26300424 false) 
+	#(480 1 #liftFirstValue: 40850440 false) 
+	#(367 1 #liftFirstValue: 26300425 false) 
+	#(367 1 #liftFirstValue: 26300426 false) 
+	#(480 1 #liftFirstValue: 40850441 false) 
 	#(290 1 #liftFirstValue: 16850968 false) 
-	#(480 1 #liftFirstValue: 40836100 false) 
-	#(438 1 #liftFirstValue: 36091907 false) 
-	#(439 1 #liftFirstValue: 36174849 false) 
-	#(439 1 #liftFirstValue: 36174850 false) 
-	#(438 1 #liftFirstValue: 36091905 false) 
-	#(438 1 #liftFirstValue: 36091906 false) 
-	#(445 1 #liftFirstValue: 36729859 false) 
-	#(456 1 #liftFirstValue: 38246404 false) 
-	#(456 1 #reduceActionForlocal_variable_declaration1: 38246401 false) 
-	#(456 1 #liftFirstValue: 38246402 false) 
-	#(456 1 #reduceActionForlocal_variable_declaration3: 38246403 false) 
-	#(439 1 #liftFirstValue: 36174851 false) 
-	#(439 1 #liftFirstValue: 36174852 false) 
-	#(481 1 #liftFirstValue: 41111553 false) 
-	#(481 1 #liftFirstValue: 41111554 false) 
-	#(439 1 #liftFirstValue: 36174853 false) 
-	#(491 1 #liftFirstValue: 41968641 false) 
-	#(491 1 #liftFirstValue: 41968642 false) 
-	#(491 1 #liftFirstValue: 41968643 false) 
-	#(491 1 #liftFirstValue: 41968644 false) 
-	#(439 1 #liftFirstValue: 36174854 false) 
-	#(503 1 #liftFirstValue: 43092993 false) 
-	#(503 1 #liftFirstValue: 43092994 false) 
-	#(503 1 #liftFirstValue: 43092995 false) 
-	#(503 1 #liftFirstValue: 43092996 false) 
-	#(503 1 #liftFirstValue: 43092997 false) 
-	#(439 1 #liftFirstValue: 36174855 false) 
-	#(439 1 #liftFirstValue: 36174856 false) 
-	#(439 1 #liftFirstValue: 36174857 false) 
-	#(439 1 #liftFirstValue: 36174858 false) 
-	#(439 1 #liftFirstValue: 36174859 false) 
-	#(439 1 #liftFirstValue: 36174860 false) 
+	#(480 1 #liftFirstValue: 40850436 false) 
+	#(438 1 #liftFirstValue: 36106243 false) 
+	#(439 1 #liftFirstValue: 36189185 false) 
+	#(439 1 #liftFirstValue: 36189186 false) 
+	#(438 1 #liftFirstValue: 36106241 false) 
+	#(438 1 #liftFirstValue: 36106242 false) 
+	#(445 1 #liftFirstValue: 36744195 false) 
+	#(456 1 #liftFirstValue: 38260740 false) 
+	#(456 1 #reduceActionForlocal_variable_declaration1: 38260737 false) 
+	#(456 1 #liftFirstValue: 38260738 false) 
+	#(456 1 #reduceActionForlocal_variable_declaration3: 38260739 false) 
+	#(439 1 #liftFirstValue: 36189187 false) 
+	#(439 1 #liftFirstValue: 36189188 false) 
+	#(481 1 #liftFirstValue: 41125889 false) 
+	#(481 1 #liftFirstValue: 41125890 false) 
+	#(439 1 #liftFirstValue: 36189189 false) 
+	#(491 1 #liftFirstValue: 41982977 false) 
+	#(491 1 #liftFirstValue: 41982978 false) 
+	#(491 1 #liftFirstValue: 41982979 false) 
+	#(491 1 #liftFirstValue: 41982980 false) 
+	#(439 1 #liftFirstValue: 36189190 false) 
+	#(503 1 #liftFirstValue: 43107329 false) 
+	#(503 1 #liftFirstValue: 43107330 false) 
+	#(503 1 #liftFirstValue: 43107331 false) 
+	#(503 1 #liftFirstValue: 43107332 false) 
+	#(503 1 #liftFirstValue: 43107333 false) 
+	#(439 1 #liftFirstValue: 36189191 false) 
+	#(439 1 #liftFirstValue: 36189192 false) 
+	#(439 1 #liftFirstValue: 36189193 false) 
+	#(439 1 #liftFirstValue: 36189194 false) 
+	#(439 1 #liftFirstValue: 36189195 false) 
+	#(439 1 #liftFirstValue: 36189196 false) 
 	#(290 1 #liftFirstValue: 16850945 false) 
-	#(677 1 #reduceActionForliteral1: 67840001 false) 
-	#(439 1 #liftFirstValue: 36174861 false) 
+	#(677 1 #reduceActionForliteral1: 67854337 false) 
+	#(439 1 #liftFirstValue: 36189197 false) 
 	#(225 1 #liftFirstValue: 10849283 false) 
 	#(244 1 #liftFirstValue: 12403717 false) 
-	#(688 1 #liftFirstValue: 69711875 false) 
-	#(367 1 #liftFirstValue: 26286091 false) 
+	#(688 1 #liftFirstValue: 69726211 false) 
+	#(367 1 #liftFirstValue: 26300427 false) 
 	#(290 1 #liftFirstValue: 16850971 false) 
-	#(367 1 #liftFirstValue: 26286092 false) 
+	#(367 1 #liftFirstValue: 26300428 false) 
 	#(290 1 #liftFirstValue: 16850963 false) 
-	#(439 1 #liftFirstValue: 36174862 false) 
+	#(439 1 #liftFirstValue: 36189198 false) 
 	#(298 1 #reduceActionForinterpolated_regular_string1: 18099201 false) 
-	#(382 1 #reduceActionForrange_expression2: 28928002 false) 
-	#(473 1 #liftFirstValue: 39955457 false) 
+	#(382 1 #reduceActionForrange_expression2: 28942338 false) 
+	#(473 1 #liftFirstValue: 39969793 false) 
 	#(224 1 #liftFirstValue: 10821634 false) 
-	#(382 1 #liftFirstValue: 28928001 false) 
-	#(383 1 #liftFirstValue: 29071361 false) 
-	#(378 1 #liftFirstValue: 28089345 false) 
-	#(379 1 #liftFirstValue: 28441601 false) 
-	#(384 1 #liftFirstValue: 29329409 false) 
-	#(385 1 #liftFirstValue: 29662209 false) 
-	#(386 1 #liftFirstValue: 30347265 false) 
-	#(387 1 #liftFirstValue: 30595073 false) 
-	#(388 1 #liftFirstValue: 30728193 false) 
-	#(389 1 #liftFirstValue: 30869505 false) 
-	#(390 1 #liftFirstValue: 31029249 false) 
-	#(391 1 #liftFirstValue: 31196161 false) 
-	#(392 1 #liftFirstValue: 31367169 false) 
-	#(395 1 #liftFirstValue: 31719425 false) 
-	#(392 1 #liftFirstValue: 31367171 false) 
-	#(435 1 #liftFirstValue: 35868673 false) 
-	#(435 1 #liftFirstValue: 35868674 false) 
-	#(435 1 #liftFirstValue: 35868675 false) 
-	#(435 1 #liftFirstValue: 35868676 false) 
-	#(414 0 #reduceActionFor_query_body_clauses1: 34106369 false) 
-	#(434 1 #liftFirstValue: 35808258 false) 
-	#(434 1 #liftFirstValue: 35808257 false) 
-	#(473 1 #liftFirstValue: 39955458 false) 
-	#(551 1 #liftFirstValue: 48370699 false) 
-	#(551 1 #liftFirstValue: 48370689 false) 
-	#(551 1 #liftFirstValue: 48370690 false) 
-	#(551 1 #liftFirstValue: 48370691 false) 
-	#(551 1 #liftFirstValue: 48370692 false) 
-	#(551 1 #liftFirstValue: 48370693 false) 
-	#(551 1 #liftFirstValue: 48370694 false) 
-	#(551 1 #liftFirstValue: 48370695 false) 
-	#(551 1 #liftFirstValue: 48370696 false) 
-	#(551 1 #liftFirstValue: 48370698 false) 
-	#(682 0 #nil 68340737 false) 
-	#(551 1 #liftFirstValue: 48370697 false) 
+	#(382 1 #liftFirstValue: 28942337 false) 
+	#(383 1 #liftFirstValue: 29085697 false) 
+	#(378 1 #liftFirstValue: 28103681 false) 
+	#(379 1 #liftFirstValue: 28455937 false) 
+	#(384 1 #liftFirstValue: 29343745 false) 
+	#(385 1 #liftFirstValue: 29676545 false) 
+	#(386 1 #liftFirstValue: 30361601 false) 
+	#(387 1 #liftFirstValue: 30609409 false) 
+	#(388 1 #liftFirstValue: 30742529 false) 
+	#(389 1 #liftFirstValue: 30883841 false) 
+	#(390 1 #liftFirstValue: 31043585 false) 
+	#(391 1 #liftFirstValue: 31210497 false) 
+	#(392 1 #liftFirstValue: 31381505 false) 
+	#(395 1 #liftFirstValue: 31733761 false) 
+	#(392 1 #liftFirstValue: 31381507 false) 
+	#(435 1 #liftFirstValue: 35883009 false) 
+	#(435 1 #liftFirstValue: 35883010 false) 
+	#(435 1 #liftFirstValue: 35883011 false) 
+	#(435 1 #liftFirstValue: 35883012 false) 
+	#(414 0 #reduceActionFor_query_body_clauses1: 34120705 false) 
+	#(434 1 #liftFirstValue: 35822594 false) 
+	#(434 1 #liftFirstValue: 35822593 false) 
+	#(473 1 #liftFirstValue: 39969794 false) 
+	#(551 1 #liftFirstValue: 48385035 false) 
+	#(551 1 #liftFirstValue: 48385025 false) 
+	#(551 1 #liftFirstValue: 48385026 false) 
+	#(551 1 #liftFirstValue: 48385027 false) 
+	#(551 1 #liftFirstValue: 48385028 false) 
+	#(551 1 #liftFirstValue: 48385029 false) 
+	#(551 1 #liftFirstValue: 48385030 false) 
+	#(551 1 #liftFirstValue: 48385031 false) 
+	#(551 1 #liftFirstValue: 48385032 false) 
+	#(551 1 #liftFirstValue: 48385034 false) 
+	#(682 0 #nil 68355073 false) 
+	#(551 1 #liftFirstValue: 48385033 false) 
 	#(209 0 #reduceActionFor_extern_alias_directives1: 8300545 false) 
 	#(207 2 #reduceActionForextern_alias_directives2: 8100866 false) 
-	#(665 1 #liftFirstValue: 66601986 false) 
-	#(665 1 #liftFirstValue: 66601985 false) 
-	#(665 1 #liftFirstValue: 66601987 false) 
-	#(665 1 #liftFirstValue: 66601988 false) 
-	#(665 1 #liftFirstValue: 66601989 false) 
-	#(665 1 #liftFirstValue: 66601990 false) 
-	#(665 1 #liftFirstValue: 66601991 false) 
-	#(663 1 #reduceActionFor_extern_alias_directives2: 66462722 false) 
+	#(665 1 #liftFirstValue: 66616322 false) 
+	#(665 1 #liftFirstValue: 66616321 false) 
+	#(665 1 #liftFirstValue: 66616323 false) 
+	#(665 1 #liftFirstValue: 66616324 false) 
+	#(665 1 #liftFirstValue: 66616325 false) 
+	#(665 1 #liftFirstValue: 66616326 false) 
+	#(665 1 #liftFirstValue: 66616327 false) 
+	#(663 1 #reduceActionFor_extern_alias_directives2: 66477058 false) 
 	#(204 1 #reduceActionForqualified_identifier1: 7819265 false) 
-	#(681 0 #nil 68296705 false) 
-	#(661 2 #reduceActionForextern_alias_directives2: 66120706 false) 
-	#(367 2 #reduceActionForunary_expression4: 26286084 false) 
-	#(705 2 #reduceActionForunary_expression4: 71373825 false) 
+	#(681 0 #nil 68311041 false) 
+	#(661 2 #reduceActionForextern_alias_directives2: 66135042 false) 
+	#(367 2 #reduceActionForunary_expression4: 26300420 false) 
+	#(705 2 #reduceActionForunary_expression4: 71388161 false) 
 	#(232 1 #reduceActionFortuple_type_element1: 11296769 false) 
 	#(316 1 #reduceActionFortuple_element1: 20369409 false) 
-	#(703 2 #reduceActionForunary_expression4: 70998017 false) 
-	#(367 2 #reduceActionForunary_expression4: 26286082 false) 
-	#(374 2 #reduceActionForunary_expression4: 27742209 false) 
-	#(367 2 #reduceActionForunary_expression4: 26286083 false) 
-	#(375 2 #reduceActionForunary_expression4: 27842561 false) 
+	#(703 2 #reduceActionForunary_expression4: 71012353 false) 
+	#(367 2 #reduceActionForunary_expression4: 26300418 false) 
+	#(374 2 #reduceActionForunary_expression4: 27756545 false) 
+	#(367 2 #reduceActionForunary_expression4: 26300419 false) 
+	#(375 2 #reduceActionForunary_expression4: 27856897 false) 
 	#(291 2 #reduceActionForcollection_expression1: 17570817 false) 
 	#(293 0 #reduceActionFor______collection_element__value___1: 17688577 false) 
 	#(294 1 #liftFirstValue: 17758210 false) 
 	#(294 1 #liftFirstValue: 17758209 false) 
 	#(296 1 #liftFirstValue: 17905665 false) 
-	#(367 2 #reduceActionForunary_expression4: 26286086 false) 
-	#(377 2 #reduceActionForawait_expression1: 28021761 false) 
-	#(504 2 #reduceActionForbreak_statement1: 43211777 false) 
-	#(519 2 #reduceActionForchecked_statement1: 44391425 false) 
-	#(505 2 #reduceActionForcontinue_statement1: 43251713 false) 
-	#(404 0 #reduceActionFor_extern_alias_directives1: 33052673 false) 
-	#(401 0 #reduceActionFor______collection_element__value___1: 32571393 false) 
-	#(399 1 #liftFirstValue: 32384002 false) 
-	#(495 0 #nil 42417153 false) 
+	#(367 2 #reduceActionForunary_expression4: 26300422 false) 
+	#(377 2 #reduceActionForawait_expression1: 28036097 false) 
+	#(504 2 #reduceActionForbreak_statement1: 43226113 false) 
+	#(519 2 #reduceActionForchecked_statement1: 44405761 false) 
+	#(505 2 #reduceActionForcontinue_statement1: 43266049 false) 
+	#(404 0 #reduceActionFor_extern_alias_directives1: 33067009 false) 
+	#(401 0 #reduceActionFor______collection_element__value___1: 32585729 false) 
+	#(399 1 #liftFirstValue: 32398338 false) 
+	#(495 0 #nil 42431489 false) 
 	#(285 0 #reduceActionFor_attribute_target_specifier1: 16316417 false) 
 	#(282 0 #reduceActionFor______collection_element__value___1: 16134145 false) 
 	#(248 0 #reduceActionFor_extern_alias_directives1: 13010945 false) 
 	#(349 0 #reduceActionFor______collection_element__value___1: 24491009 false) 
 	#(250 1 #liftFirstValue: 13101057 false) 
 	#(347 2 #reduceActionForanonymous_object_creation_expression1: 24280065 false) 
-	#(462 2 #reduceActionForref_kind2: 39058434 false) 
-	#(433 1 #liftFirstValue: 35762178 false) 
-	#(702 1 #liftFirstValue: 70746113 false) 
-	#(702 1 #liftFirstValue: 70746114 false) 
-	#(512 0 #reduceActionFor_extern_alias_directives1: 43841537 false) 
-	#(520 2 #reduceActionForunchecked_statement1: 44445697 false) 
-	#(687 2 #reduceActionForunsafe_statement1: 69619713 false) 
-	#(442 1 #reduceActionForextern_alias_directives1: 36543489 false) 
-	#(441 1 #reduceActionFor_extern_alias_directives2: 36501506 false) 
-	#(367 2 #reduceActionForunary_expression4: 26286085 false) 
+	#(462 2 #reduceActionForref_kind2: 39072770 false) 
+	#(433 1 #liftFirstValue: 35776514 false) 
+	#(702 1 #liftFirstValue: 70760449 false) 
+	#(702 1 #liftFirstValue: 70760450 false) 
+	#(512 0 #reduceActionFor_extern_alias_directives1: 43855873 false) 
+	#(520 2 #reduceActionForunchecked_statement1: 44460033 false) 
+	#(687 2 #reduceActionForunsafe_statement1: 69634049 false) 
+	#(442 1 #reduceActionForextern_alias_directives1: 36557825 false) 
+	#(441 1 #reduceActionFor_extern_alias_directives2: 36515842 false) 
+	#(367 2 #reduceActionForunary_expression4: 26300421 false) 
 	#(311 1 #liftFirstValue: 20076546 false) 
-	#(310 2 #reduceActionForsimple_name1: 20002817 false) 
 	#(223 2 #reduceActionFornamespace_or_type_name1: 10570753 false) 
-	#(468 1 #reduceActionForexplicitly_typed_local_variable_declarator1: 39573505 false) 
-	#(464 2 #reduceActionForexplicitly_typed_local_variable_declaration1: 39262209 false) 
-	#(467 0 #reduceActionFor______collection_element__value___1: 39505921 false) 
-	#(689 1 #reduceActionForextern_alias_directives1: 69746689 false) 
-	#(688 2 #reduceActionForpointer_type1: 69711873 false) 
+	#(310 2 #reduceActionForsimple_name1: 20002817 false) 
+	#(468 1 #reduceActionForexplicitly_typed_local_variable_declarator1: 39587841 false) 
+	#(464 2 #reduceActionForexplicitly_typed_local_variable_declaration1: 39276545 false) 
+	#(467 0 #reduceActionFor______collection_element__value___1: 39520257 false) 
+	#(689 1 #reduceActionForextern_alias_directives1: 69761025 false) 
+	#(688 2 #reduceActionForpointer_type1: 69726209 false) 
 	#(227 2 #reduceActionFornullable_value_type1: 11035649 false) 
 	#(239 2 #reduceActionFornullable_reference_type1: 12092417 false) 
 	#(243 2 #reduceActionForarray_type1: 12342273 false) 
@@ -3608,131 +3609,131 @@ CSharpParser class >> reduceTable [
 	#(289 2 #reduceActionFornull_forgiving_expression1: 16747521 false) 
 	#(331 2 #reduceActionFornull_forgiving_expression1: 22308865 false) 
 	#(332 2 #reduceActionFornull_forgiving_expression1: 22410241 false) 
-	#(432 1 #reduceActionForassignment_operator7: 35494919 false) 
-	#(432 1 #reduceActionForassignment_operator7: 35494920 false) 
-	#(432 1 #reduceActionForassignment_operator7: 35494917 false) 
-	#(432 1 #reduceActionForassignment_operator7: 35494915 false) 
-	#(432 1 #reduceActionForassignment_operator7: 35494916 false) 
-	#(432 1 #reduceActionForassignment_operator7: 35494918 false) 
-	#(432 1 #reduceActionForassignment_operator7: 35494923 false) 
-	#(432 1 #reduceActionForassignment_operator7: 35494913 false) 
-	#(432 1 #reduceActionForassignment_operator7: 35494924 false) 
-	#(432 1 #reduceActionForassignment_operator7: 35494925 false) 
-	#(432 1 #reduceActionForassignment_operator7: 35494922 false) 
-	#(432 1 #reduceActionForassignment_operator7: 35494921 false) 
-	#(455 1 #reduceActionForref_local_function_body1: 38107137 false) 
-	#(446 2 #reduceActionForlocal_function_declaration2: 36894722 false) 
-	#(453 1 #liftFirstValue: 37820417 false) 
-	#(686 1 #liftFirstValue: 69216257 false) 
-	#(448 2 #reduceActionForextern_alias_directives2: 37167106 false) 
-	#(453 1 #liftFirstValue: 37820418 false) 
-	#(454 1 #reduceActionForlocal_function_body4: 37895172 false) 
-	#(454 1 #reduceActionForref_local_function_body1: 37895169 false) 
-	#(446 2 #reduceActionForlocal_function_declaration2: 36894721 false) 
-	#(445 2 #reduceActionFordeclaration_statement1: 36729857 false) 
+	#(432 1 #reduceActionForassignment_operator7: 35509255 false) 
+	#(432 1 #reduceActionForassignment_operator7: 35509256 false) 
+	#(432 1 #reduceActionForassignment_operator7: 35509253 false) 
+	#(432 1 #reduceActionForassignment_operator7: 35509251 false) 
+	#(432 1 #reduceActionForassignment_operator7: 35509252 false) 
+	#(432 1 #reduceActionForassignment_operator7: 35509254 false) 
+	#(432 1 #reduceActionForassignment_operator7: 35509259 false) 
+	#(432 1 #reduceActionForassignment_operator7: 35509249 false) 
+	#(432 1 #reduceActionForassignment_operator7: 35509260 false) 
+	#(432 1 #reduceActionForassignment_operator7: 35509261 false) 
+	#(432 1 #reduceActionForassignment_operator7: 35509258 false) 
+	#(432 1 #reduceActionForassignment_operator7: 35509257 false) 
+	#(455 1 #reduceActionForref_local_function_body1: 38121473 false) 
+	#(446 2 #reduceActionForlocal_function_declaration2: 36909058 false) 
+	#(453 1 #liftFirstValue: 37834753 false) 
+	#(686 1 #liftFirstValue: 69230593 false) 
+	#(448 2 #reduceActionForextern_alias_directives2: 37181442 false) 
+	#(453 1 #liftFirstValue: 37834754 false) 
+	#(454 1 #reduceActionForlocal_function_body4: 37909508 false) 
+	#(454 1 #reduceActionForref_local_function_body1: 37909505 false) 
+	#(446 2 #reduceActionForlocal_function_declaration2: 36909057 false) 
+	#(445 2 #reduceActionFordeclaration_statement1: 36744193 false) 
 	#(317 2 #reduceActionFordeconstruction_expression1: 20450305 false) 
-	#(460 2 #reduceActionForimplicitly_typed_local_variable_declaration1: 38730753 false) 
-	#(445 2 #reduceActionFordeclaration_statement1: 36729858 false) 
-	#(479 2 #reduceActionForexpression_statement1: 40764417 false) 
-	#(452 1 #liftFirstValue: 37714946 false) 
-	#(452 1 #liftFirstValue: 37714947 false) 
-	#(562 1 #liftFirstValue: 50487297 false) 
-	#(450 1 #reduceActionForextern_alias_directives1: 37320705 false) 
-	#(452 1 #liftFirstValue: 37714945 false) 
-	#(562 1 #liftFirstValue: 50487298 false) 
-	#(688 2 #reduceActionForpointer_type1: 69711874 false) 
-	#(382 2 #reduceActionForrange_expression3: 28928003 false) 
-	#(393 2 #reduceActionForthrow_expression1: 31558657 false) 
-	#(408 1 #reduceActionForimplicit_anonymous_function_parameter1: 33623041 false) 
-	#(398 1 #reduceActionFor_extern_alias_directives2: 32267265 false) 
-	#(398 1 #reduceActionFor_extern_alias_directives2: 32267266 false) 
-	#(406 1 #reduceActionForimplicit_anonymous_function_signature2: 33267714 false) 
-	#(382 2 #reduceActionForrange_expression4: 28928004 false) 
-	#(416 1 #reduceActionForquery_body_clause1: 34241537 false) 
-	#(411 2 #reduceActionForquery_expression1: 33897473 false) 
-	#(414 1 #reduceActionFor_extern_alias_directives2: 34106370 false) 
-	#(415 1 #reduceActionForquery_body_clauses1: 34156545 false) 
-	#(416 1 #reduceActionForquery_body_clause2: 34241538 false) 
-	#(416 1 #reduceActionForquery_body_clause3: 34241539 false) 
-	#(416 1 #reduceActionForquery_body_clause4: 34241540 false) 
-	#(416 1 #reduceActionForquery_body_clause5: 34241541 false) 
-	#(416 1 #reduceActionForquery_body_clause6: 34241542 false) 
-	#(394 2 #reduceActionFordeclaration_expression1: 31636481 false) 
-	#(566 1 #reduceActionForlocal_function_body4: 50808835 false) 
-	#(566 1 #reduceActionForref_local_function_body1: 50808833 false) 
-	#(559 2 #reduceActionFormethod_declaration2: 49716226 false) 
-	#(565 1 #reduceActionForlocal_function_body4: 50646020 false) 
-	#(565 1 #reduceActionForref_local_function_body1: 50646017 false) 
-	#(559 2 #reduceActionFormethod_declaration2: 49716225 false) 
-	#(721 1 #liftFirstValue: 73052166 false) 
-	#(721 1 #liftFirstValue: 73052171 false) 
-	#(721 1 #liftFirstValue: 73052175 false) 
-	#(682 1 #liftFirstValue: 68340738 false) 
-	#(721 1 #liftFirstValue: 73052178 false) 
-	#(721 1 #liftFirstValue: 73052164 false) 
-	#(721 1 #liftFirstValue: 73052161 false) 
-	#(721 1 #liftFirstValue: 73052174 false) 
-	#(721 1 #liftFirstValue: 73052165 false) 
-	#(721 1 #liftFirstValue: 73052163 false) 
-	#(721 1 #liftFirstValue: 73052162 false) 
-	#(721 1 #liftFirstValue: 73052169 false) 
-	#(721 1 #liftFirstValue: 73052177 false) 
-	#(721 1 #liftFirstValue: 73052167 false) 
-	#(721 1 #liftFirstValue: 73052168 false) 
-	#(615 1 #reduceActionForstatic_constructor_modifiers1: 58139649 false) 
-	#(721 1 #liftFirstValue: 73052172 false) 
-	#(721 1 #liftFirstValue: 73052170 false) 
-	#(721 1 #liftFirstValue: 73052176 false) 
-	#(601 1 #reduceActionForextern_alias_directives1: 55762945 false) 
+	#(460 2 #reduceActionForimplicitly_typed_local_variable_declaration1: 38745089 false) 
+	#(445 2 #reduceActionFordeclaration_statement1: 36744194 false) 
+	#(479 2 #reduceActionForexpression_statement1: 40778753 false) 
+	#(452 1 #liftFirstValue: 37729282 false) 
+	#(452 1 #liftFirstValue: 37729283 false) 
+	#(562 1 #liftFirstValue: 50501633 false) 
+	#(450 1 #reduceActionForextern_alias_directives1: 37335041 false) 
+	#(452 1 #liftFirstValue: 37729281 false) 
+	#(562 1 #liftFirstValue: 50501634 false) 
+	#(688 2 #reduceActionForpointer_type1: 69726210 false) 
+	#(382 2 #reduceActionForrange_expression3: 28942339 false) 
+	#(393 2 #reduceActionForthrow_expression1: 31572993 false) 
+	#(408 1 #reduceActionForimplicit_anonymous_function_parameter1: 33637377 false) 
+	#(398 1 #reduceActionFor_extern_alias_directives2: 32281601 false) 
+	#(398 1 #reduceActionFor_extern_alias_directives2: 32281602 false) 
+	#(406 1 #reduceActionForimplicit_anonymous_function_signature2: 33282050 false) 
+	#(382 2 #reduceActionForrange_expression4: 28942340 false) 
+	#(416 1 #reduceActionForquery_body_clause1: 34255873 false) 
+	#(411 2 #reduceActionForquery_expression1: 33911809 false) 
+	#(414 1 #reduceActionFor_extern_alias_directives2: 34120706 false) 
+	#(415 1 #reduceActionForquery_body_clauses1: 34170881 false) 
+	#(416 1 #reduceActionForquery_body_clause2: 34255874 false) 
+	#(416 1 #reduceActionForquery_body_clause3: 34255875 false) 
+	#(416 1 #reduceActionForquery_body_clause4: 34255876 false) 
+	#(416 1 #reduceActionForquery_body_clause5: 34255877 false) 
+	#(416 1 #reduceActionForquery_body_clause6: 34255878 false) 
+	#(394 2 #reduceActionFordeclaration_expression1: 31650817 false) 
+	#(566 1 #reduceActionForlocal_function_body4: 50823171 false) 
+	#(566 1 #reduceActionForref_local_function_body1: 50823169 false) 
+	#(559 2 #reduceActionFormethod_declaration2: 49730562 false) 
+	#(565 1 #reduceActionForlocal_function_body4: 50660356 false) 
+	#(565 1 #reduceActionForref_local_function_body1: 50660353 false) 
+	#(559 2 #reduceActionFormethod_declaration2: 49730561 false) 
+	#(721 1 #liftFirstValue: 73066502 false) 
+	#(721 1 #liftFirstValue: 73066507 false) 
+	#(721 1 #liftFirstValue: 73066511 false) 
+	#(682 1 #liftFirstValue: 68355074 false) 
+	#(721 1 #liftFirstValue: 73066514 false) 
+	#(721 1 #liftFirstValue: 73066500 false) 
+	#(721 1 #liftFirstValue: 73066497 false) 
+	#(721 1 #liftFirstValue: 73066510 false) 
+	#(721 1 #liftFirstValue: 73066501 false) 
+	#(721 1 #liftFirstValue: 73066499 false) 
+	#(721 1 #liftFirstValue: 73066498 false) 
+	#(721 1 #liftFirstValue: 73066505 false) 
+	#(721 1 #liftFirstValue: 73066513 false) 
+	#(721 1 #liftFirstValue: 73066503 false) 
+	#(721 1 #liftFirstValue: 73066504 false) 
+	#(615 1 #reduceActionForstatic_constructor_modifiers1: 58153985 false) 
+	#(721 1 #liftFirstValue: 73066508 false) 
+	#(721 1 #liftFirstValue: 73066506 false) 
+	#(721 1 #liftFirstValue: 73066512 false) 
+	#(601 1 #reduceActionForextern_alias_directives1: 55777281 false) 
 	#(195 2 #reduceActionForextern_alias_directives2: 6788098 false) 
 	#(199 1 #liftFirstValue: 7208963 false) 
 	#(199 1 #liftFirstValue: 7208962 false) 
 	#(199 1 #liftFirstValue: 7208961 false) 
-	#(653 0 #reduceActionFor_extern_alias_directives1: 65431553 false) 
+	#(653 0 #reduceActionFor_extern_alias_directives1: 65445889 false) 
 	#(209 1 #reduceActionFor_extern_alias_directives2: 8300546 false) 
 	#(210 1 #reduceActionForextern_alias_directives1: 8345601 false) 
 	#(211 1 #liftFirstValue: 8446977 false) 
 	#(211 1 #liftFirstValue: 8446978 false) 
 	#(211 1 #liftFirstValue: 8446979 false) 
-	#(668 1 #liftFirstValue: 66925569 false) 
-	#(666 1 #reduceActionForinterpolated_regular_string1: 66738177 false) 
-	#(669 0 #reduceActionFor_attribute_arguments1: 66957313 false) 
-	#(664 2 #reduceActionForattribute_target_specifier1: 66529281 false) 
-	#(679 0 #nil 68239361 false) 
-	#(681 1 #liftFirstValue: 68296706 false) 
-	#(526 2 #reduceActionForextern_alias_directives2: 44958722 false) 
+	#(668 1 #liftFirstValue: 66939905 false) 
+	#(666 1 #reduceActionForinterpolated_regular_string1: 66752513 false) 
+	#(669 0 #reduceActionFor_attribute_arguments1: 66971649 false) 
+	#(664 2 #reduceActionForattribute_target_specifier1: 66543617 false) 
+	#(679 0 #nil 68253697 false) 
+	#(681 1 #liftFirstValue: 68311042 false) 
+	#(526 2 #reduceActionForextern_alias_directives2: 44973058 false) 
 	#(232 2 #reduceActionFortuple_type_element2: 11296770 false) 
 	#(231 1 #reduceActionFor_____tuple_type_element__element___1: 11234305 false) 
 	#(315 1 #reduceActionFor_____tuple_type_element__element___1: 20282369 false) 
 	#(312 3 #reduceActionForparenthesized_expression1: 20126721 false) 
 	#(295 2 #reduceActionForspread_element1: 17821697 false) 
 	#(328 1 #reduceActionForinterpolated_regular_string1: 22044673 false) 
-	#(476 3 #reduceActionForlocal_constant_declaration1: 40468481 false) 
-	#(477 1 #reduceActionForinterpolated_regular_string1: 40546305 false) 
-	#(405 1 #reduceActionForextern_alias_directives1: 33141764 false) 
-	#(405 1 #reduceActionForextern_alias_directives1: 33141763 false) 
-	#(405 1 #reduceActionForextern_alias_directives1: 33141761 false) 
-	#(401 1 #reduceActionFor_extern_alias_directives2: 32571394 false) 
-	#(402 1 #reduceActionForinterpolated_regular_string1: 32672769 false) 
-	#(404 1 #reduceActionFor_extern_alias_directives2: 33052674 false) 
-	#(695 0 #reduceActionFor______collection_element__value___1: 70152193 false) 
-	#(698 1 #reduceActionForcalling_convention_specifier1: 70365185 false) 
-	#(698 1 #reduceActionForcalling_convention_specifier1: 70365186 false) 
-	#(397 3 #reduceActionForanonymous_method_expression1: 32140289 false) 
-	#(496 1 #liftFirstValue: 42475521 false) 
-	#(501 1 #reduceActionForinterpolated_regular_string1: 42778625 false) 
-	#(495 1 #liftFirstValue: 42417154 false) 
-	#(496 1 #reduceActionForfor_initializer2: 42475522 false) 
-	#(436 1 #liftFirstValue: 35996673 false) 
-	#(506 3 #reduceActionForgoto_statement3: 43297795 false) 
-	#(506 3 #reduceActionForgoto_statement1: 43297793 false) 
-	#(437 1 #liftFirstValue: 36034561 false) 
-	#(366 1 #reduceActionFornamed_entity_target3: 26122243 false) 
-	#(366 1 #reduceActionForthis_access1: 26122242 false) 
-	#(366 1 #liftFirstValue: 26122241 false) 
-	#(366 1 #liftFirstValue: 26122245 false) 
-	#(366 1 #liftFirstValue: 26122244 false) 
-	#(365 0 #reduceActionFor______Identifier___type_argument_list__typeArguments___1: 26056705 false) 
+	#(476 3 #reduceActionForlocal_constant_declaration1: 40482817 false) 
+	#(477 1 #reduceActionForinterpolated_regular_string1: 40560641 false) 
+	#(405 1 #reduceActionForextern_alias_directives1: 33156100 false) 
+	#(405 1 #reduceActionForextern_alias_directives1: 33156099 false) 
+	#(405 1 #reduceActionForextern_alias_directives1: 33156097 false) 
+	#(401 1 #reduceActionFor_extern_alias_directives2: 32585730 false) 
+	#(402 1 #reduceActionForinterpolated_regular_string1: 32687105 false) 
+	#(404 1 #reduceActionFor_extern_alias_directives2: 33067010 false) 
+	#(695 0 #reduceActionFor______collection_element__value___1: 70166529 false) 
+	#(698 1 #reduceActionForcalling_convention_specifier1: 70379521 false) 
+	#(698 1 #reduceActionForcalling_convention_specifier1: 70379522 false) 
+	#(397 3 #reduceActionForanonymous_method_expression1: 32154625 false) 
+	#(496 1 #liftFirstValue: 42489857 false) 
+	#(501 1 #reduceActionForinterpolated_regular_string1: 42792961 false) 
+	#(495 1 #liftFirstValue: 42431490 false) 
+	#(496 1 #reduceActionForfor_initializer2: 42489858 false) 
+	#(436 1 #liftFirstValue: 36011009 false) 
+	#(506 3 #reduceActionForgoto_statement3: 43312131 false) 
+	#(506 3 #reduceActionForgoto_statement1: 43312129 false) 
+	#(437 1 #liftFirstValue: 36048897 false) 
+	#(366 1 #reduceActionFornamed_entity_target3: 26136579 false) 
+	#(366 1 #reduceActionForthis_access1: 26136578 false) 
+	#(366 1 #liftFirstValue: 26136577 false) 
+	#(366 1 #liftFirstValue: 26136581 false) 
+	#(366 1 #liftFirstValue: 26136580 false) 
+	#(365 0 #reduceActionFor______Identifier___type_argument_list__typeArguments___1: 26071041 false) 
 	#(282 1 #reduceActionFor_extern_alias_directives2: 16134146 false) 
 	#(283 1 #reduceActionForinterpolated_regular_string1: 16182273 false) 
 	#(285 1 #reduceActionFor_extern_alias_directives2: 16316418 false) 
@@ -3748,64 +3749,64 @@ CSharpParser class >> reduceTable [
 	#(333 3 #reduceActionForobject_creation_expression3: 22511619 false) 
 	#(335 1 #liftFirstValue: 22842369 false) 
 	#(335 1 #liftFirstValue: 22842370 false) 
-	#(626 0 #reduceActionFor______collection_element__value___1: 60035073 false) 
+	#(626 0 #reduceActionFor______collection_element__value___1: 60049409 false) 
 	#(345 3 #reduceActionForarray_creation_expression2: 23876610 false) 
 	#(345 3 #reduceActionForarray_creation_expression3: 23876611 false) 
-	#(507 3 #reduceActionForreturn_statement2: 43439106 false) 
+	#(507 3 #reduceActionForreturn_statement2: 43453442 false) 
 	#(254 1 #liftFirstValue: 13338625 false) 
-	#(507 3 #reduceActionForreturn_statement1: 43439105 false) 
-	#(508 3 #reduceActionForthrow_statement1: 43549697 false) 
-	#(509 3 #reduceActionFortry_statement1: 43601921 false) 
-	#(510 1 #reduceActionFor_extern_alias_directives2: 43785217 false) 
-	#(511 1 #reduceActionForextern_alias_directives1: 43802625 false) 
-	#(509 3 #reduceActionFortry_statement2: 43601922 false) 
+	#(507 3 #reduceActionForreturn_statement1: 43453441 false) 
+	#(508 3 #reduceActionForthrow_statement1: 43564033 false) 
+	#(509 3 #reduceActionFortry_statement1: 43616257 false) 
+	#(510 1 #reduceActionFor_extern_alias_directives2: 43799553 false) 
+	#(511 1 #reduceActionForextern_alias_directives1: 43816961 false) 
+	#(509 3 #reduceActionFortry_statement2: 43616258 false) 
 	#(354 0 #reduceActionFor_generic_dimension_specifier1: 25264129 false) 
-	#(523 1 #liftFirstValue: 44712962 false) 
-	#(523 1 #liftFirstValue: 44712961 false) 
-	#(457 3 #reduceActionForlocal_using_declaration1: 38455297 false) 
-	#(458 1 #reduceActionForinterpolated_regular_string1: 38530049 false) 
-	#(524 3 #reduceActionForyield_statement2: 44782594 false) 
-	#(440 3 #reduceActionForblock1: 36435969 false) 
-	#(442 2 #reduceActionForextern_alias_directives2: 36543490 false) 
-	#(444 3 #reduceActionForlabeled_statement1: 36660225 false) 
+	#(523 1 #liftFirstValue: 44727298 false) 
+	#(523 1 #liftFirstValue: 44727297 false) 
+	#(457 3 #reduceActionForlocal_using_declaration1: 38469633 false) 
+	#(458 1 #reduceActionForinterpolated_regular_string1: 38544385 false) 
+	#(524 3 #reduceActionForyield_statement2: 44796930 false) 
+	#(440 3 #reduceActionForblock1: 36450305 false) 
+	#(442 2 #reduceActionForextern_alias_directives2: 36557826 false) 
+	#(444 3 #reduceActionForlabeled_statement1: 36674561 false) 
 	#(253 1 #liftFirstValue: 13293569 false) 
 	#(252 1 #reduceActionForinterpolated_regular_string1: 13206529 false) 
-	#(465 2 #reduceActionForexplicitly_typed_local_variable_declarators1: 39400449 false) 
-	#(689 2 #reduceActionForextern_alias_directives2: 69746690 false) 
+	#(465 2 #reduceActionForexplicitly_typed_local_variable_declarators1: 39414785 false) 
+	#(689 2 #reduceActionForextern_alias_directives2: 69761026 false) 
 	#(246 2 #reduceActionForextern_alias_directives2: 12804098 false) 
 	#(299 1 #reduceActionForinterpolated_regular_string1: 18392065 false) 
 	#(306 0 #reduceActionForScanFormat1: 19460097 true) 
 	#(304 1 #reduceActionForinterpolation1: 19270657 false) 
 	#(303 1 #reduceActionForinterpolated_regular_string1: 18965505 false) 
 	#(309 1 #reduceActionForinterpolated_regular_string1: 19816449 false) 
-	#(432 2 #reduceActionForattribute_target_specifier1: 35494914 false) 
-	#(431 3 #reduceActionForassignment1: 35410945 false) 
-	#(563 1 #liftFirstValue: 50524161 false) 
-	#(472 0 #reduceActionFor______collection_element__value___1: 39901185 false) 
-	#(469 3 #reduceActionForref_local_variable_declaration1: 39720961 false) 
-	#(460 3 #reduceActionForimplicitly_typed_local_variable_declaration2: 38730754 false) 
+	#(432 2 #reduceActionForattribute_target_specifier1: 35509250 false) 
+	#(431 3 #reduceActionForassignment1: 35425281 false) 
+	#(563 1 #liftFirstValue: 50538497 false) 
+	#(472 0 #reduceActionFor______collection_element__value___1: 39915521 false) 
+	#(469 3 #reduceActionForref_local_variable_declaration1: 39735297 false) 
+	#(460 3 #reduceActionForimplicitly_typed_local_variable_declaration2: 38745090 false) 
 	#(321 1 #reduceActionFordeconstruction_element2: 20674562 false) 
 	#(321 1 #liftFirstValue: 20674561 false) 
-	#(450 2 #reduceActionForextern_alias_directives2: 37320706 false) 
-	#(449 3 #reduceActionForLocalFunctionHeader1: 37284865 false) 
-	#(407 1 #reduceActionForinterpolated_regular_string1: 33419265 false) 
-	#(378 3 #reduceActionFormultiplicative_expression4: 28089348 false) 
-	#(378 3 #reduceActionFormultiplicative_expression4: 28089346 false) 
-	#(378 3 #reduceActionFormultiplicative_expression4: 28089347 false) 
-	#(382 3 #reduceActionFormultiplicative_expression4: 28928005 false) 
-	#(383 3 #reduceActionFormultiplicative_expression4: 29071362 false) 
-	#(383 3 #reduceActionFormultiplicative_expression4: 29071363 false) 
-	#(384 3 #reduceActionFormultiplicative_expression4: 29329410 false) 
-	#(384 3 #reduceActionFormultiplicative_expression4: 29329411 false) 
-	#(384 3 #reduceActionFormultiplicative_expression4: 29329412 false) 
-	#(385 3 #reduceActionFormultiplicative_expression4: 29662210 false) 
-	#(385 3 #reduceActionFormultiplicative_expression4: 29662212 false) 
-	#(385 3 #reduceActionFormultiplicative_expression4: 29662213 false) 
-	#(385 3 #reduceActionFormultiplicative_expression4: 29662216 false) 
+	#(450 2 #reduceActionForextern_alias_directives2: 37335042 false) 
+	#(449 3 #reduceActionForLocalFunctionHeader1: 37299201 false) 
+	#(407 1 #reduceActionForinterpolated_regular_string1: 33433601 false) 
+	#(378 3 #reduceActionFormultiplicative_expression4: 28103684 false) 
+	#(378 3 #reduceActionFormultiplicative_expression4: 28103682 false) 
+	#(378 3 #reduceActionFormultiplicative_expression4: 28103683 false) 
+	#(382 3 #reduceActionFormultiplicative_expression4: 28942341 false) 
+	#(383 3 #reduceActionFormultiplicative_expression4: 29085698 false) 
+	#(383 3 #reduceActionFormultiplicative_expression4: 29085699 false) 
+	#(384 3 #reduceActionFormultiplicative_expression4: 29343746 false) 
+	#(384 3 #reduceActionFormultiplicative_expression4: 29343747 false) 
+	#(384 3 #reduceActionFormultiplicative_expression4: 29343748 false) 
+	#(385 3 #reduceActionFormultiplicative_expression4: 29676546 false) 
+	#(385 3 #reduceActionFormultiplicative_expression4: 29676548 false) 
+	#(385 3 #reduceActionFormultiplicative_expression4: 29676549 false) 
+	#(385 3 #reduceActionFormultiplicative_expression4: 29676552 false) 
 	#(260 1 #reduceActionForslice_pattern1: 14033921 false) 
 	#(266 1 #reduceActionFordiscard_pattern1: 14583809 false) 
-	#(385 3 #reduceActionFormultiplicative_expression4: 29662214 false) 
-	#(385 3 #reduceActionFormultiplicative_expression4: 29662215 false) 
+	#(385 3 #reduceActionFormultiplicative_expression4: 29676550 false) 
+	#(385 3 #reduceActionFormultiplicative_expression4: 29676551 false) 
 	#(255 1 #liftFirstValue: 13375489 false) 
 	#(256 1 #liftFirstValue: 13410306 false) 
 	#(257 1 #liftFirstValue: 13560834 false) 
@@ -3821,47 +3822,47 @@ CSharpParser class >> reduceTable [
 	#(259 1 #liftFirstValue: 13820930 false) 
 	#(259 1 #liftFirstValue: 13820929 false) 
 	#(278 1 #liftFirstValue: 15766529 false) 
-	#(385 3 #reduceActionFormultiplicative_expression4: 29662211 false) 
-	#(386 3 #reduceActionFormultiplicative_expression4: 30347267 false) 
-	#(386 3 #reduceActionFormultiplicative_expression4: 30347266 false) 
-	#(387 3 #reduceActionFormultiplicative_expression4: 30595074 false) 
-	#(388 3 #reduceActionFormultiplicative_expression4: 30728194 false) 
-	#(389 3 #reduceActionFormultiplicative_expression4: 30869506 false) 
-	#(390 3 #reduceActionFormultiplicative_expression4: 31029250 false) 
-	#(392 3 #reduceActionFormultiplicative_expression4: 31367170 false) 
-	#(391 3 #reduceActionFormultiplicative_expression4: 31196162 false) 
-	#(421 2 #reduceActionFororderby_clause1: 34835457 false) 
-	#(422 1 #reduceActionFororderings1: 34877441 false) 
-	#(424 0 #reduceActionFor_attribute_target_specifier1: 34990081 false) 
-	#(418 2 #reduceActionForattribute_target_specifier1: 34428929 false) 
-	#(429 0 #reduceActionFor_query_continuation1: 35303425 false) 
-	#(426 1 #reduceActionForselect_or_group_clause1: 35094529 false) 
-	#(426 1 #reduceActionForselect_or_group_clause2: 35094530 false) 
-	#(415 2 #reduceActionForquery_body_clauses2: 34156546 false) 
-	#(615 2 #reduceActionForstatic_constructor_modifiers5: 58139653 false) 
-	#(615 2 #reduceActionForstatic_constructor_modifiers2: 58139650 false) 
-	#(602 1 #reduceActionForoperator_declarator1: 55920641 false) 
-	#(602 1 #reduceActionForoperator_declarator2: 55920642 false) 
-	#(602 1 #reduceActionForoperator_declarator3: 55920643 false) 
-	#(601 2 #reduceActionForextern_alias_directives2: 55762946 false) 
+	#(385 3 #reduceActionFormultiplicative_expression4: 29676547 false) 
+	#(386 3 #reduceActionFormultiplicative_expression4: 30361603 false) 
+	#(386 3 #reduceActionFormultiplicative_expression4: 30361602 false) 
+	#(387 3 #reduceActionFormultiplicative_expression4: 30609410 false) 
+	#(388 3 #reduceActionFormultiplicative_expression4: 30742530 false) 
+	#(389 3 #reduceActionFormultiplicative_expression4: 30883842 false) 
+	#(390 3 #reduceActionFormultiplicative_expression4: 31043586 false) 
+	#(392 3 #reduceActionFormultiplicative_expression4: 31381506 false) 
+	#(391 3 #reduceActionFormultiplicative_expression4: 31210498 false) 
+	#(421 2 #reduceActionFororderby_clause1: 34849793 false) 
+	#(422 1 #reduceActionFororderings1: 34891777 false) 
+	#(424 0 #reduceActionFor_attribute_target_specifier1: 35004417 false) 
+	#(418 2 #reduceActionForattribute_target_specifier1: 34443265 false) 
+	#(429 0 #reduceActionFor_query_continuation1: 35317761 false) 
+	#(426 1 #reduceActionForselect_or_group_clause1: 35108865 false) 
+	#(426 1 #reduceActionForselect_or_group_clause2: 35108866 false) 
+	#(415 2 #reduceActionForquery_body_clauses2: 34170882 false) 
+	#(615 2 #reduceActionForstatic_constructor_modifiers5: 58153989 false) 
+	#(615 2 #reduceActionForstatic_constructor_modifiers2: 58153986 false) 
+	#(602 1 #reduceActionForoperator_declarator1: 55934977 false) 
+	#(602 1 #reduceActionForoperator_declarator2: 55934978 false) 
+	#(602 1 #reduceActionForoperator_declarator3: 55934979 false) 
+	#(601 2 #reduceActionForextern_alias_directives2: 55777282 false) 
 	#(208 4 #reduceActionForextern_alias_directive1: 8230913 false) 
 	#(221 1 #liftFirstValue: 10485761 false) 
-	#(653 1 #reduceActionFor_extern_alias_directives2: 65431554 false) 
-	#(654 1 #reduceActionFor_extern_alias_directives2: 65478657 false) 
-	#(655 1 #reduceActionForextern_alias_directives1: 65529857 false) 
+	#(653 1 #reduceActionFor_extern_alias_directives2: 65445890 false) 
+	#(654 1 #reduceActionFor_extern_alias_directives2: 65492993 false) 
+	#(655 1 #reduceActionForextern_alias_directives1: 65544193 false) 
 	#(210 2 #reduceActionForextern_alias_directives2: 8345602 false) 
-	#(662 4 #reduceActionForattribute_section1: 66230273 false) 
-	#(671 0 #reduceActionFor______collection_element__value___1: 67249153 false) 
-	#(667 2 #reduceActionForattribute1: 66845697 false) 
-	#(669 1 #reduceActionFor_extern_alias_directives2: 66957314 false) 
+	#(662 4 #reduceActionForattribute_section1: 66244609 false) 
+	#(671 0 #reduceActionFor______collection_element__value___1: 67263489 false) 
+	#(667 2 #reduceActionForattribute1: 66860033 false) 
+	#(669 1 #reduceActionFor_extern_alias_directives2: 66971650 false) 
 	#(204 3 #reduceActionForqualified_identifier2: 7819266 false) 
-	#(679 1 #liftFirstValue: 68239362 false) 
+	#(679 1 #liftFirstValue: 68253698 false) 
 	#(203 4 #reduceActionFornamespace_declaration1: 7711745 false) 
-	#(644 0 #reduceActionFor_attribute_target_specifier1: 63885313 false) 
-	#(527 1 #reduceActionForassignment_operator7: 45137921 false) 
-	#(527 1 #reduceActionForclass_designator2: 45137922 false) 
+	#(644 0 #reduceActionFor_attribute_target_specifier1: 63899649 false) 
+	#(527 1 #reduceActionForassignment_operator7: 45152257 false) 
+	#(527 1 #reduceActionForclass_designator2: 45152258 false) 
 	#(316 3 #reduceActionFortuple_element2: 20369410 false) 
-	#(376 4 #reduceActionForcast_expression1: 27942913 false) 
+	#(376 4 #reduceActionForcast_expression1: 27957249 false) 
 	#(230 2 #reduceActionForattribute_target_specifier1: 11234305 false) 
 	#(229 4 #reduceActionFortuple_type1: 11173889 false) 
 	#(231 2 #reduceActionFor_____tuple_type_element__element___2: 11234306 false) 
@@ -3870,19 +3871,19 @@ CSharpParser class >> reduceTable [
 	#(315 2 #reduceActionFor_____tuple_type_element__element___2: 20282370 false) 
 	#(291 4 #reduceActionForcollection_expression2: 17570818 false) 
 	#(293 2 #reduceActionFor_____tuple_type_element__element___2: 17688578 false) 
-	#(397 4 #reduceActionForanonymous_method_expression2: 32140290 false) 
+	#(397 4 #reduceActionForanonymous_method_expression2: 32154626 false) 
 	#(330 4 #reduceActionForbase_access1: 22170625 false) 
 	#(330 4 #reduceActionForbase_access2: 22170626 false) 
 	#(358 4 #reduceActionForchecked_expression1: 25458689 false) 
 	#(360 4 #reduceActionFordefault_value_expression2: 25610242 false) 
-	#(405 2 #reduceActionForref_kind2: 33141762 false) 
-	#(400 3 #reduceActionForexplicit_anonymous_function_signature1: 32472065 false) 
-	#(693 1 #reduceActionFor_extern_alias_directives2: 70122497 false) 
-	#(708 1 #reduceActionForinterpolated_regular_string1: 71703553 false) 
-	#(497 0 #nil 42573825 false) 
-	#(506 4 #reduceActionForgoto_statement2: 43297794 false) 
-	#(362 4 #reduceActionFornameof_expression1: 25943041 false) 
-	#(363 2 #reduceActionFornamed_entity1: 26010625 false) 
+	#(405 2 #reduceActionForref_kind2: 33156098 false) 
+	#(400 3 #reduceActionForexplicit_anonymous_function_signature1: 32486401 false) 
+	#(693 1 #reduceActionFor_extern_alias_directives2: 70136833 false) 
+	#(708 1 #reduceActionForinterpolated_regular_string1: 71717889 false) 
+	#(497 0 #nil 42588161 false) 
+	#(506 4 #reduceActionForgoto_statement2: 43312130 false) 
+	#(362 4 #reduceActionFornameof_expression1: 25957377 false) 
+	#(363 2 #reduceActionFornamed_entity1: 26024961 false) 
 	#(286 2 #reduceActionForattribute_target_specifier1: 16355329 false) 
 	#(334 0 #nil 22764545 false) 
 	#(284 2 #reduceActionForargument1: 16265217 false) 
@@ -3896,18 +3897,18 @@ CSharpParser class >> reduceTable [
 	#(338 1 #reduceActionForinterpolated_regular_string1: 23116801 false) 
 	#(343 1 #reduceActionForinterpolated_regular_string1: 23628801 false) 
 	#(344 1 #reduceActionForelement_initializer1: 23762945 false) 
-	#(558 1 #liftFirstValue: 49655809 false) 
-	#(627 1 #reduceActionForinterpolated_regular_string1: 60098561 false) 
-	#(558 1 #liftFirstValue: 49655810 false) 
-	#(626 1 #reduceActionFor_extern_alias_directives2: 60035074 false) 
-	#(469 4 #reduceActionForref_local_variable_declaration2: 39720962 false) 
-	#(706 4 #reduceActionForsizeof_expression1: 71469057 false) 
-	#(515 0 #nil 44142593 false) 
-	#(518 2 #reduceActionForfinally_clause1: 44340225 false) 
-	#(509 4 #reduceActionFortry_statement3: 43601923 false) 
-	#(511 2 #reduceActionForextern_alias_directives2: 43802626 false) 
-	#(512 2 #reduceActionForextern_alias_directives2: 43841538 false) 
-	#(510 2 #reduceActionForextern_alias_directives2: 43785218 false) 
+	#(558 1 #liftFirstValue: 49670145 false) 
+	#(627 1 #reduceActionForinterpolated_regular_string1: 60112897 false) 
+	#(558 1 #liftFirstValue: 49670146 false) 
+	#(626 1 #reduceActionFor_extern_alias_directives2: 60049410 false) 
+	#(469 4 #reduceActionForref_local_variable_declaration2: 39735298 false) 
+	#(706 4 #reduceActionForsizeof_expression1: 71483393 false) 
+	#(515 0 #nil 44156929 false) 
+	#(518 2 #reduceActionForfinally_clause1: 44354561 false) 
+	#(509 4 #reduceActionFortry_statement3: 43616259 false) 
+	#(511 2 #reduceActionForextern_alias_directives2: 43816962 false) 
+	#(512 2 #reduceActionForextern_alias_directives2: 43855874 false) 
+	#(510 2 #reduceActionForextern_alias_directives2: 43799554 false) 
 	#(356 0 #reduceActionFor_extern_alias_directives1: 25384961 false) 
 	#(353 2 #reduceActionForunbound_type_name1: 25040897 false) 
 	#(354 1 #reduceActionFor_extern_alias_directives2: 25264130 false) 
@@ -3915,17 +3916,17 @@ CSharpParser class >> reduceTable [
 	#(352 4 #reduceActionFortypeof_expression1: 24887298 false) 
 	#(352 4 #reduceActionFortypeof_expression1: 24887299 false) 
 	#(359 4 #reduceActionForunchecked_expression1: 25532417 false) 
-	#(524 4 #reduceActionForyield_statement1: 44782593 false) 
+	#(524 4 #reduceActionForyield_statement1: 44796929 false) 
 	#(220 4 #reduceActionForqualified_alias_member1: 10356737 false) 
 	#(251 3 #reduceActionFortype_argument_list1: 13131777 false) 
 	#(223 4 #reduceActionFornamespace_or_type_name2: 10570754 false) 
-	#(475 1 #liftFirstValue: 40401921 false) 
-	#(468 3 #reduceActionForexplicitly_typed_local_variable_declarator2: 39573506 false) 
-	#(475 1 #liftFirstValue: 40401922 false) 
-	#(475 1 #liftFirstValue: 40401923 false) 
-	#(467 2 #reduceActionFor_____tuple_type_element__element___2: 39505922 false) 
+	#(475 1 #liftFirstValue: 40416257 false) 
+	#(468 3 #reduceActionForexplicitly_typed_local_variable_declarator2: 39587842 false) 
+	#(475 1 #liftFirstValue: 40416258 false) 
+	#(475 1 #liftFirstValue: 40416259 false) 
+	#(467 2 #reduceActionFor_____tuple_type_element__element___2: 39520258 false) 
 	#(326 4 #reduceActionForinvocation_expression1: 21848065 false) 
-	#(704 4 #reduceActionForpointer_member_access1: 71103489 false) 
+	#(704 4 #reduceActionForpointer_member_access1: 71117825 false) 
 	#(322 4 #reduceActionFormember_access1: 20772865 false) 
 	#(327 4 #reduceActionForelement_access1: 21938177 false) 
 	#(298 4 #reduceActionFormultiline_interpolated_regular_string2: 18099202 false) 
@@ -3934,24 +3935,24 @@ CSharpParser class >> reduceTable [
 	#(307 4 #reduceActionFormultiline_interpolated_regular_string2: 19495938 false) 
 	#(322 4 #reduceActionFormember_access1: 20772867 false) 
 	#(322 4 #reduceActionFormember_access1: 20772866 false) 
-	#(372 4 #reduceActionForinvocation_expression1: 27362305 false) 
-	#(372 4 #reduceActionForinvocation_expression1: 27362306 false) 
-	#(447 4 #reduceActionForRefLocalFunctionHeader1: 37140481 false) 
-	#(454 3 #reduceActionForlocal_function_body2: 37895170 false) 
-	#(454 3 #reduceActionForlocal_function_body2: 37895171 false) 
-	#(470 2 #reduceActionForexplicitly_typed_local_variable_declarators1: 39822337 false) 
+	#(372 4 #reduceActionForinvocation_expression1: 27376641 false) 
+	#(372 4 #reduceActionForinvocation_expression1: 27376642 false) 
+	#(447 4 #reduceActionForRefLocalFunctionHeader1: 37154817 false) 
+	#(454 3 #reduceActionForlocal_function_body2: 37909506 false) 
+	#(454 3 #reduceActionForlocal_function_body2: 37909507 false) 
+	#(470 2 #reduceActionForexplicitly_typed_local_variable_declarators1: 39836673 false) 
 	#(320 1 #reduceActionFor_____tuple_type_element__element___1: 20608001 false) 
-	#(463 3 #reduceActionForexplicitly_typed_local_variable_declarator2: 39134209 false) 
-	#(449 4 #reduceActionForLocalFunctionHeader2: 37284866 false) 
-	#(567 0 #reduceActionFor______collection_element__value___1: 50950145 false) 
-	#(406 3 #reduceActionForexplicit_anonymous_function_signature1: 33267713 false) 
-	#(409 1 #liftFirstValue: 33720321 false) 
-	#(396 4 #reduceActionForlambda_expression1: 32028673 false) 
-	#(409 1 #liftFirstValue: 33720323 false) 
-	#(409 1 #liftFirstValue: 33720322 false) 
-	#(409 1 #liftFirstValue: 33720324 false) 
-	#(379 4 #reduceActionForswitch_expression2: 28441602 false) 
-	#(380 1 #reduceActionForinterpolated_regular_string1: 28692481 false) 
+	#(463 3 #reduceActionForexplicitly_typed_local_variable_declarator2: 39148545 false) 
+	#(449 4 #reduceActionForLocalFunctionHeader2: 37299202 false) 
+	#(567 0 #reduceActionFor______collection_element__value___1: 50964481 false) 
+	#(406 3 #reduceActionForexplicit_anonymous_function_signature1: 33282049 false) 
+	#(409 1 #liftFirstValue: 33734657 false) 
+	#(396 4 #reduceActionForlambda_expression1: 32043009 false) 
+	#(409 1 #liftFirstValue: 33734659 false) 
+	#(409 1 #liftFirstValue: 33734658 false) 
+	#(409 1 #liftFirstValue: 33734660 false) 
+	#(379 4 #reduceActionForswitch_expression2: 28455938 false) 
+	#(380 1 #reduceActionForinterpolated_regular_string1: 28706817 false) 
 	#(260 2 #reduceActionForslice_pattern2: 14033922 false) 
 	#(265 2 #reduceActionForrelational_pattern1: 14308353 false) 
 	#(265 2 #reduceActionForrelational_pattern1: 14308354 false) 
@@ -3968,70 +3969,70 @@ CSharpParser class >> reduceTable [
 	#(274 2 #reduceActionFordeclaration_pattern1: 15428609 false) 
 	#(275 1 #liftFirstValue: 15515650 false) 
 	#(275 1 #liftFirstValue: 15515649 false) 
-	#(410 2 #reduceActionForRefExpression1: 33832961 false) 
-	#(425 1 #reduceActionForassignment_operator7: 35040257 false) 
-	#(425 1 #reduceActionForclass_designator2: 35040258 false) 
-	#(423 2 #reduceActionForordering1: 34929665 false) 
-	#(424 1 #reduceActionFor_extern_alias_directives2: 34990082 false) 
-	#(427 2 #reduceActionForattribute_target_specifier1: 35154945 false) 
-	#(413 3 #reduceActionForquery_body1: 34024449 false) 
-	#(429 1 #reduceActionFor_extern_alias_directives2: 35303426 false) 
-	#(565 3 #reduceActionForlocal_function_body2: 50646018 false) 
-	#(565 3 #reduceActionForlocal_function_body2: 50646019 false) 
-	#(615 3 #reduceActionForstatic_constructor_modifiers6: 58139654 false) 
-	#(615 3 #reduceActionForstatic_constructor_modifiers7: 58139655 false) 
-	#(615 3 #reduceActionForstatic_constructor_modifiers3: 58139651 false) 
-	#(615 3 #reduceActionForstatic_constructor_modifiers3: 58139652 false) 
-	#(615 3 #reduceActionForstatic_constructor_modifiers3: 58139661 false) 
-	#(557 1 #reduceActionForvariable_declarator1: 49516545 false) 
-	#(556 1 #reduceActionForinterpolated_regular_string1: 49392641 false) 
-	#(557 1 #liftFirstValue: 49516547 false) 
-	#(613 1 #reduceActionForlocal_function_body4: 57845763 false) 
-	#(613 1 #reduceActionForref_local_function_body1: 57845761 false) 
-	#(609 4 #reduceActionForconstructor_declaration1: 57290753 false) 
-	#(608 1 #reduceActionForlocal_function_body4: 57165827 false) 
-	#(608 1 #reduceActionForref_local_function_body1: 57165825 false) 
-	#(600 4 #reduceActionForoperator_declaration1: 55702529 false) 
-	#(615 3 #reduceActionForstatic_constructor_modifiers7: 58139657 false) 
-	#(615 3 #reduceActionForstatic_constructor_modifiers6: 58139656 false) 
-	#(615 3 #reduceActionForstatic_constructor_modifiers6: 58139665 false) 
+	#(410 2 #reduceActionForRefExpression1: 33847297 false) 
+	#(425 1 #reduceActionForassignment_operator7: 35054593 false) 
+	#(425 1 #reduceActionForclass_designator2: 35054594 false) 
+	#(423 2 #reduceActionForordering1: 34944001 false) 
+	#(424 1 #reduceActionFor_extern_alias_directives2: 35004418 false) 
+	#(427 2 #reduceActionForattribute_target_specifier1: 35169281 false) 
+	#(413 3 #reduceActionForquery_body1: 34038785 false) 
+	#(429 1 #reduceActionFor_extern_alias_directives2: 35317762 false) 
+	#(565 3 #reduceActionForlocal_function_body2: 50660354 false) 
+	#(565 3 #reduceActionForlocal_function_body2: 50660355 false) 
+	#(615 3 #reduceActionForstatic_constructor_modifiers6: 58153990 false) 
+	#(615 3 #reduceActionForstatic_constructor_modifiers7: 58153991 false) 
+	#(615 3 #reduceActionForstatic_constructor_modifiers3: 58153987 false) 
+	#(615 3 #reduceActionForstatic_constructor_modifiers3: 58153988 false) 
+	#(615 3 #reduceActionForstatic_constructor_modifiers3: 58153997 false) 
+	#(557 1 #reduceActionForvariable_declarator1: 49530881 false) 
+	#(556 1 #reduceActionForinterpolated_regular_string1: 49406977 false) 
+	#(557 1 #liftFirstValue: 49530883 false) 
+	#(613 1 #reduceActionForlocal_function_body4: 57860099 false) 
+	#(613 1 #reduceActionForref_local_function_body1: 57860097 false) 
+	#(609 4 #reduceActionForconstructor_declaration1: 57305089 false) 
+	#(608 1 #reduceActionForlocal_function_body4: 57180163 false) 
+	#(608 1 #reduceActionForref_local_function_body1: 57180161 false) 
+	#(600 4 #reduceActionForoperator_declaration1: 55716865 false) 
+	#(615 3 #reduceActionForstatic_constructor_modifiers7: 58153993 false) 
+	#(615 3 #reduceActionForstatic_constructor_modifiers6: 58153992 false) 
+	#(615 3 #reduceActionForstatic_constructor_modifiers6: 58154001 false) 
 	#(213 3 #reduceActionForusing_namespace_directive1: 8691713 false) 
-	#(658 1 #liftFirstValue: 66007041 false) 
+	#(658 1 #liftFirstValue: 66021377 false) 
 	#(194 5 #reduceActionForcompilation_unit1: 6742017 false) 
 	#(196 1 #reduceActionForcompilation_unit_body2: 6893570 false) 
 	#(215 0 #reduceActionFor_extern_alias_directives1: 8848385 false) 
-	#(655 2 #reduceActionForextern_alias_directives2: 65529858 false) 
-	#(662 5 #reduceActionForattribute_section2: 66230274 false) 
-	#(666 3 #reduceActionForattribute_list2: 66738178 false) 
-	#(671 1 #reduceActionFor_extern_alias_directives2: 67249154 false) 
-	#(672 1 #reduceActionForinterpolated_regular_string1: 67310593 false) 
-	#(674 1 #reduceActionForinterpolated_regular_string1: 67546113 false) 
-	#(651 5 #reduceActionFordelegate_declaration1: 64695297 false) 
-	#(644 1 #reduceActionFor_extern_alias_directives2: 63885314 false) 
-	#(629 0 #nil 60684289 false) 
-	#(527 2 #reduceActionForclass_designator3: 45137923 false) 
-	#(528 0 #nil 45337601 false) 
+	#(655 2 #reduceActionForextern_alias_directives2: 65544194 false) 
+	#(662 5 #reduceActionForattribute_section2: 66244610 false) 
+	#(666 3 #reduceActionForattribute_list2: 66752514 false) 
+	#(671 1 #reduceActionFor_extern_alias_directives2: 67263490 false) 
+	#(672 1 #reduceActionForinterpolated_regular_string1: 67324929 false) 
+	#(674 1 #reduceActionForinterpolated_regular_string1: 67560449 false) 
+	#(651 5 #reduceActionFordelegate_declaration1: 64709633 false) 
+	#(644 1 #reduceActionFor_extern_alias_directives2: 63899650 false) 
+	#(629 0 #nil 60698625 false) 
+	#(527 2 #reduceActionForclass_designator3: 45152259 false) 
+	#(528 0 #nil 45351937 false) 
 	#(291 5 #reduceActionForcollection_expression3: 17570819 false) 
 	#(292 2 #reduceActionForattribute_target_specifier1: 17688577 false) 
 	#(328 3 #reduceActionForattribute_list2: 22044674 false) 
-	#(478 3 #reduceActionForconst_declarator1: 40658945 false) 
-	#(477 3 #reduceActionForattribute_list2: 40546306 false) 
-	#(402 3 #reduceActionForattribute_list2: 32672770 false) 
-	#(403 3 #reduceActionForexplicit_anonymous_function_paramenter1: 32880641 false) 
-	#(692 1 #reduceActionForextern_alias_directives1: 70047745 false) 
-	#(691 1 #reduceActionForstatic_constructor_modifiers1: 69976065 false) 
-	#(697 1 #liftFirstValue: 70307843 false) 
-	#(697 1 #liftFirstValue: 70307842 false) 
-	#(697 1 #liftFirstValue: 70307841 false) 
-	#(696 1 #reduceActionForfuncptr_parameter1: 70201345 false) 
-	#(695 2 #reduceActionFor_____tuple_type_element__element___2: 70152194 false) 
-	#(701 0 #reduceActionFor______collection_element__value___1: 70697985 false) 
-	#(498 1 #liftFirstValue: 42625025 false) 
-	#(497 1 #liftFirstValue: 42573826 false) 
-	#(501 3 #reduceActionForattribute_list2: 42778626 false) 
-	#(482 5 #reduceActionForif_statement1: 41171969 false) 
-	#(521 5 #reduceActionForlock_statement1: 44504065 false) 
-	#(365 2 #reduceActionFor______Identifier___type_argument_list__typeArguments___2: 26056706 false) 
+	#(478 3 #reduceActionForconst_declarator1: 40673281 false) 
+	#(477 3 #reduceActionForattribute_list2: 40560642 false) 
+	#(402 3 #reduceActionForattribute_list2: 32687106 false) 
+	#(403 3 #reduceActionForexplicit_anonymous_function_paramenter1: 32894977 false) 
+	#(692 1 #reduceActionForextern_alias_directives1: 70062081 false) 
+	#(691 1 #reduceActionForstatic_constructor_modifiers1: 69990401 false) 
+	#(697 1 #liftFirstValue: 70322179 false) 
+	#(697 1 #liftFirstValue: 70322178 false) 
+	#(697 1 #liftFirstValue: 70322177 false) 
+	#(696 1 #reduceActionForfuncptr_parameter1: 70215681 false) 
+	#(695 2 #reduceActionFor_____tuple_type_element__element___2: 70166530 false) 
+	#(701 0 #reduceActionFor______collection_element__value___1: 70712321 false) 
+	#(498 1 #liftFirstValue: 42639361 false) 
+	#(497 1 #liftFirstValue: 42588162 false) 
+	#(501 3 #reduceActionForattribute_list2: 42792962 false) 
+	#(482 5 #reduceActionForif_statement1: 41186305 false) 
+	#(521 5 #reduceActionForlock_statement1: 44518401 false) 
+	#(365 2 #reduceActionFor______Identifier___type_argument_list__typeArguments___2: 26071042 false) 
 	#(333 5 #reduceActionForobject_creation_expression1: 22511617 false) 
 	#(334 1 #liftFirstValue: 22764546 false) 
 	#(283 3 #reduceActionForattribute_list2: 16182274 false) 
@@ -4043,48 +4044,48 @@ CSharpParser class >> reduceTable [
 	#(350 3 #reduceActionForattribute_list2: 24549378 false) 
 	#(336 3 #reduceActionForobject_initializer1: 22928385 false) 
 	#(342 3 #reduceActionForcollection_initializer1: 23495681 false) 
-	#(625 3 #reduceActionForarray_initializer1: 59904001 false) 
+	#(625 3 #reduceActionForarray_initializer1: 59918337 false) 
 	#(245 0 #reduceActionFor_extern_alias_directives1: 12760065 false) 
 	#(346 5 #reduceActionFordelegate_creation_expression1: 24178689 false) 
 	#(361 5 #reduceActionForstackalloc_expression1: 25680897 false) 
-	#(485 0 #reduceActionFor_extern_alias_directives1: 41549825 false) 
-	#(483 5 #reduceActionForswitch_statement1: 41411585 false) 
-	#(683 0 #nil 68378625 false) 
-	#(515 1 #liftFirstValue: 44142594 false) 
-	#(513 3 #reduceActionForspecific_catch_clause2: 43908098 false) 
-	#(517 2 #reduceActionForgeneral_catch_clause1: 44273665 false) 
+	#(485 0 #reduceActionFor_extern_alias_directives1: 41564161 false) 
+	#(483 5 #reduceActionForswitch_statement1: 41425921 false) 
+	#(683 0 #nil 68392961 false) 
+	#(515 1 #liftFirstValue: 44156930 false) 
+	#(513 3 #reduceActionForspecific_catch_clause2: 43922434 false) 
+	#(517 2 #reduceActionForgeneral_catch_clause1: 44288001 false) 
 	#(357 1 #reduceActionForextern_alias_directives1: 25410561 false) 
 	#(356 1 #reduceActionFor_extern_alias_directives2: 25384962 false) 
-	#(522 5 #reduceActionForusing_statement1: 44602369 false) 
-	#(459 3 #reduceActionForusing_declarator1: 38649857 false) 
-	#(458 3 #reduceActionForattribute_list2: 38530050 false) 
-	#(492 5 #reduceActionForwhile_statement1: 42066945 false) 
+	#(522 5 #reduceActionForusing_statement1: 44616705 false) 
+	#(459 3 #reduceActionForusing_declarator1: 38664193 false) 
+	#(458 3 #reduceActionForattribute_list2: 38544386 false) 
+	#(492 5 #reduceActionForwhile_statement1: 42081281 false) 
 	#(252 3 #reduceActionForattribute_list2: 13206530 false) 
-	#(719 1 #liftFirstValue: 72947713 false) 
-	#(718 0 #reduceActionFor______collection_element__value___1: 72905729 false) 
-	#(466 2 #reduceActionForattribute_target_specifier1: 39505921 false) 
-	#(369 0 #reduceActionFor_extern_alias_directives1: 26905601 false) 
-	#(373 5 #reduceActionFornull_conditional_element_access1: 27600897 false) 
+	#(719 1 #liftFirstValue: 72962049 false) 
+	#(718 0 #reduceActionFor______collection_element__value___1: 72920065 false) 
+	#(466 2 #reduceActionForattribute_target_specifier1: 39520257 false) 
+	#(369 0 #reduceActionFor_extern_alias_directives1: 26919937 false) 
+	#(373 5 #reduceActionFornull_conditional_element_access1: 27615233 false) 
 	#(299 3 #reduceActionForattribute_list2: 18392066 false) 
 	#(304 3 #reduceActionForinterpolation3: 19270659 false) 
 	#(305 2 #reduceActionForattribute_target_specifier1: 19390465 false) 
 	#(303 3 #reduceActionForattribute_list2: 18965506 false) 
 	#(303 3 #reduceActionForattribute_list2: 18965507 false) 
 	#(309 3 #reduceActionForattribute_list2: 19816450 false) 
-	#(455 4 #reduceActionForref_local_function_body2: 38107138 false) 
-	#(472 2 #reduceActionFor_____tuple_type_element__element___2: 39901186 false) 
+	#(455 4 #reduceActionForref_local_function_body2: 38121474 false) 
+	#(472 2 #reduceActionFor_____tuple_type_element__element___2: 39915522 false) 
 	#(319 2 #reduceActionForattribute_target_specifier1: 20608001 false) 
 	#(318 4 #reduceActionFordeconstruction_tuple1: 20533249 false) 
 	#(320 2 #reduceActionFor_____tuple_type_element__element___2: 20608002 false) 
-	#(567 1 #reduceActionFor_extern_alias_directives2: 50950146 false) 
-	#(568 1 #reduceActionFor_extern_alias_directives2: 51008513 false) 
-	#(569 1 #reduceActionForinterpolated_regular_string1: 51159041 false) 
-	#(568 1 #reduceActionForinterpolated_regular_string1: 51008515 false) 
-	#(573 0 #reduceActionFor_extern_alias_directives1: 51495937 false) 
-	#(396 5 #reduceActionForlambda_expression2: 32028674 false) 
-	#(412 5 #reduceActionForfrom_clause1: 33949697 false) 
-	#(407 3 #reduceActionForattribute_list2: 33419266 false) 
-	#(379 5 #reduceActionForswitch_expression3: 28441603 false) 
+	#(567 1 #reduceActionFor_extern_alias_directives2: 50964482 false) 
+	#(568 1 #reduceActionFor_extern_alias_directives2: 51022849 false) 
+	#(569 1 #reduceActionForinterpolated_regular_string1: 51173377 false) 
+	#(568 1 #reduceActionForinterpolated_regular_string1: 51022851 false) 
+	#(573 0 #reduceActionFor_extern_alias_directives1: 51510273 false) 
+	#(396 5 #reduceActionForlambda_expression2: 32043010 false) 
+	#(412 5 #reduceActionForfrom_clause1: 33964033 false) 
+	#(407 3 #reduceActionForattribute_list2: 33433602 false) 
+	#(379 5 #reduceActionForswitch_expression3: 28455939 false) 
 	#(269 3 #reduceActionForpositional_pattern1: 14843905 false) 
 	#(273 1 #liftFirstValue: 15314945 false) 
 	#(272 1 #reduceActionForsubpattern1: 15205377 false) 
@@ -4095,76 +4096,76 @@ CSharpParser class >> reduceTable [
 	#(257 3 #reduceActionFormultiplicative_expression4: 13560833 false) 
 	#(276 2 #reduceActionFortuple_designation1: 15578113 false) 
 	#(277 1 #reduceActionForinterpolated_regular_string1: 15659009 false) 
-	#(395 5 #reduceActionForconditional_expression3: 31719427 false) 
-	#(395 5 #reduceActionForconditional_expression3: 31719426 false) 
-	#(417 4 #reduceActionForlet_clause1: 34363393 false) 
-	#(422 3 #reduceActionFororderings2: 34877442 false) 
-	#(566 4 #reduceActionForref_method_body2: 50808834 false) 
-	#(553 1 #reduceActionForinterpolated_regular_string1: 48901121 false) 
-	#(564 1 #reduceActionFormember_name1: 50551809 false) 
+	#(395 5 #reduceActionForconditional_expression3: 31733763 false) 
+	#(395 5 #reduceActionForconditional_expression3: 31733762 false) 
+	#(417 4 #reduceActionForlet_clause1: 34377729 false) 
+	#(422 3 #reduceActionFororderings2: 34891778 false) 
+	#(566 4 #reduceActionForref_method_body2: 50823170 false) 
+	#(553 1 #reduceActionForinterpolated_regular_string1: 48915457 false) 
+	#(564 1 #reduceActionFormember_name1: 50566145 false) 
 	#(242 1 #liftFirstValue: 12310529 false) 
-	#(555 5 #reduceActionForfield_declaration1: 49107969 false) 
-	#(596 5 #reduceActionForindexer_declaration1: 54864897 false) 
-	#(604 1 #reduceActionForassignment_operator7: 56167428 false) 
-	#(606 1 #reduceActionForassignment_operator7: 56552465 false) 
-	#(606 1 #reduceActionForassignment_operator7: 56552457 false) 
-	#(606 1 #reduceActionForassignment_operator7: 56552458 false) 
-	#(606 1 #reduceActionForassignment_operator7: 56552453 false) 
-	#(604 1 #reduceActionForassignment_operator7: 56167425 false) 
-	#(606 1 #reduceActionForassignment_operator7: 56552449 false) 
-	#(604 1 #reduceActionForassignment_operator7: 56167430 false) 
-	#(604 1 #reduceActionForassignment_operator7: 56167426 false) 
-	#(606 1 #reduceActionForassignment_operator7: 56552451 false) 
-	#(604 1 #reduceActionForassignment_operator7: 56167432 false) 
-	#(606 1 #reduceActionForassignment_operator7: 56552455 false) 
-	#(606 1 #reduceActionForassignment_operator7: 56552467 false) 
-	#(606 1 #reduceActionForassignment_operator7: 56552461 false) 
-	#(606 1 #reduceActionForassignment_operator7: 56552469 false) 
-	#(606 1 #reduceActionForassignment_operator7: 56552464 false) 
-	#(606 1 #reduceActionForassignment_operator7: 56552468 false) 
-	#(606 1 #reduceActionForassignment_operator7: 56552460 false) 
-	#(604 1 #reduceActionForassignment_operator7: 56167435 false) 
-	#(604 1 #reduceActionForassignment_operator7: 56167434 false) 
-	#(606 1 #reduceActionForassignment_operator7: 56552459 false) 
-	#(604 1 #reduceActionForassignment_operator7: 56167429 false) 
-	#(606 1 #reduceActionForassignment_operator7: 56552466 false) 
-	#(606 1 #reduceActionForassignment_operator7: 56552462 false) 
-	#(606 1 #reduceActionForassignment_operator7: 56552463 false) 
+	#(555 5 #reduceActionForfield_declaration1: 49122305 false) 
+	#(596 5 #reduceActionForindexer_declaration1: 54879233 false) 
+	#(604 1 #reduceActionForassignment_operator7: 56181764 false) 
+	#(606 1 #reduceActionForassignment_operator7: 56566801 false) 
+	#(606 1 #reduceActionForassignment_operator7: 56566793 false) 
+	#(606 1 #reduceActionForassignment_operator7: 56566794 false) 
+	#(606 1 #reduceActionForassignment_operator7: 56566789 false) 
+	#(604 1 #reduceActionForassignment_operator7: 56181761 false) 
+	#(606 1 #reduceActionForassignment_operator7: 56566785 false) 
+	#(604 1 #reduceActionForassignment_operator7: 56181766 false) 
+	#(606 1 #reduceActionForassignment_operator7: 56566787 false) 
+	#(604 1 #reduceActionForassignment_operator7: 56181762 false) 
+	#(604 1 #reduceActionForassignment_operator7: 56181768 false) 
+	#(606 1 #reduceActionForassignment_operator7: 56566791 false) 
+	#(606 1 #reduceActionForassignment_operator7: 56566803 false) 
+	#(606 1 #reduceActionForassignment_operator7: 56566797 false) 
+	#(606 1 #reduceActionForassignment_operator7: 56566805 false) 
+	#(606 1 #reduceActionForassignment_operator7: 56566800 false) 
+	#(606 1 #reduceActionForassignment_operator7: 56566804 false) 
+	#(606 1 #reduceActionForassignment_operator7: 56566796 false) 
+	#(604 1 #reduceActionForassignment_operator7: 56181771 false) 
+	#(604 1 #reduceActionForassignment_operator7: 56181770 false) 
+	#(606 1 #reduceActionForassignment_operator7: 56566795 false) 
+	#(604 1 #reduceActionForassignment_operator7: 56181765 false) 
+	#(606 1 #reduceActionForassignment_operator7: 56566802 false) 
+	#(606 1 #reduceActionForassignment_operator7: 56566798 false) 
+	#(606 1 #reduceActionForassignment_operator7: 56566799 false) 
 	#(201 4 #reduceActionForglobal_using_namespace_directive1: 7455745 false) 
 	#(214 4 #reduceActionForusing_static_directive1: 8769537 false) 
-	#(657 2 #reduceActionForattribute_target_specifier1: 65920001 false) 
+	#(657 2 #reduceActionForattribute_target_specifier1: 65934337 false) 
 	#(196 2 #reduceActionForcompilation_unit_body1: 6893569 false) 
 	#(215 1 #reduceActionFor_extern_alias_directives2: 8848386 false) 
 	#(216 1 #reduceActionForextern_alias_directives1: 8921089 false) 
-	#(676 1 #liftFirstValue: 67773441 false) 
-	#(673 2 #reduceActionForpositional_argument1: 67446785 false) 
-	#(670 3 #reduceActionForexplicit_anonymous_function_signature1: 67009537 false) 
-	#(670 3 #reduceActionForexplicit_anonymous_function_signature1: 67009539 false) 
-	#(651 6 #reduceActionFordelegate_declaration2: 64695298 false) 
-	#(646 1 #liftFirstValue: 64002049 false) 
-	#(645 2 #reduceActionForattribute_target_specifier1: 63916033 false) 
-	#(645 2 #reduceActionForattribute_target_specifier1: 63916034 false) 
-	#(647 1 #reduceActionForenum_body3: 64037891 false) 
-	#(648 0 #reduceActionFor______collection_element__value___1: 64334849 false) 
-	#(643 6 #reduceActionForenum_declaration1: 63737857 false) 
-	#(634 0 #reduceActionFor_interface_base1: 61159425 false) 
-	#(629 1 #liftFirstValue: 60684290 false) 
-	#(618 0 #reduceActionFor_interface_base1: 59126785 false) 
-	#(528 1 #liftFirstValue: 45337602 false) 
-	#(532 0 #reduceActionFor_class_base1: 45672449 false) 
-	#(403 4 #reduceActionForexplicit_anonymous_function_paramenter2: 32880642 false) 
-	#(692 2 #reduceActionForref_kind2: 70047746 false) 
-	#(690 6 #reduceActionForfuncptr_type1: 69810177 false) 
-	#(691 2 #reduceActionForfuncptr_return_type2: 69976066 false) 
-	#(694 2 #reduceActionForattribute_target_specifier1: 70152193 false) 
-	#(696 2 #reduceActionForfuncptr_parameter2: 70201346 false) 
-	#(699 2 #reduceActionForexplicitly_typed_local_variable_declarators1: 70512641 false) 
-	#(698 4 #reduceActionForcalling_convention_specifier3: 70365187 false) 
-	#(710 1 #reduceActionForclass_designator2: 71928834 false) 
-	#(709 3 #reduceActionForfixed_pointer_declarator1: 71847937 false) 
-	#(707 6 #reduceActionForfixed_statement1: 71580673 false) 
-	#(708 3 #reduceActionForattribute_list2: 71703554 false) 
-	#(499 0 #nil 42664961 false) 
+	#(676 1 #liftFirstValue: 67787777 false) 
+	#(673 2 #reduceActionForpositional_argument1: 67461121 false) 
+	#(670 3 #reduceActionForexplicit_anonymous_function_signature1: 67023873 false) 
+	#(670 3 #reduceActionForexplicit_anonymous_function_signature1: 67023875 false) 
+	#(651 6 #reduceActionFordelegate_declaration2: 64709634 false) 
+	#(646 1 #liftFirstValue: 64016385 false) 
+	#(645 2 #reduceActionForattribute_target_specifier1: 63930369 false) 
+	#(645 2 #reduceActionForattribute_target_specifier1: 63930370 false) 
+	#(647 1 #reduceActionForenum_body3: 64052227 false) 
+	#(648 0 #reduceActionFor______collection_element__value___1: 64349185 false) 
+	#(643 6 #reduceActionForenum_declaration1: 63752193 false) 
+	#(634 0 #reduceActionFor_interface_base1: 61173761 false) 
+	#(629 1 #liftFirstValue: 60698626 false) 
+	#(618 0 #reduceActionFor_interface_base1: 59141121 false) 
+	#(528 1 #liftFirstValue: 45351938 false) 
+	#(532 0 #reduceActionFor_class_base1: 45686785 false) 
+	#(403 4 #reduceActionForexplicit_anonymous_function_paramenter2: 32894978 false) 
+	#(692 2 #reduceActionForref_kind2: 70062082 false) 
+	#(690 6 #reduceActionForfuncptr_type1: 69824513 false) 
+	#(691 2 #reduceActionForfuncptr_return_type2: 69990402 false) 
+	#(694 2 #reduceActionForattribute_target_specifier1: 70166529 false) 
+	#(696 2 #reduceActionForfuncptr_parameter2: 70215682 false) 
+	#(699 2 #reduceActionForexplicitly_typed_local_variable_declarators1: 70526977 false) 
+	#(698 4 #reduceActionForcalling_convention_specifier3: 70379523 false) 
+	#(710 1 #reduceActionForclass_designator2: 71943170 false) 
+	#(709 3 #reduceActionForfixed_pointer_declarator1: 71862273 false) 
+	#(707 6 #reduceActionForfixed_statement1: 71595009 false) 
+	#(708 3 #reduceActionForattribute_list2: 71717890 false) 
+	#(499 0 #nil 42679297 false) 
 	#(287 3 #reduceActionForargument_value5: 16406533 false) 
 	#(333 6 #reduceActionForobject_creation_expression2: 22511618 false) 
 	#(340 3 #reduceActionForinitializer_target2: 23327746 false) 
@@ -4177,41 +4178,41 @@ CSharpParser class >> reduceTable [
 	#(341 1 #liftFirstValue: 23405570 false) 
 	#(342 4 #reduceActionForcollection_initializer2: 23495682 false) 
 	#(343 3 #reduceActionForattribute_list2: 23628802 false) 
-	#(625 4 #reduceActionForarray_initializer2: 59904002 false) 
-	#(627 3 #reduceActionForattribute_list2: 60098562 false) 
-	#(624 0 #nil 59856897 false) 
+	#(625 4 #reduceActionForarray_initializer2: 59918338 false) 
+	#(627 3 #reduceActionForattribute_list2: 60112898 false) 
+	#(624 0 #nil 59871233 false) 
 	#(245 1 #reduceActionFor_extern_alias_directives2: 12760066 false) 
-	#(361 6 #reduceActionForstackalloc_expression1: 25680898 false) 
-	#(485 1 #reduceActionFor_extern_alias_directives2: 41549826 false) 
-	#(486 1 #reduceActionForextern_alias_directives1: 41592833 false) 
-	#(488 1 #reduceActionForextern_alias_directives1: 41742337 false) 
-	#(683 1 #liftFirstValue: 68378626 false) 
-	#(513 4 #reduceActionForspecific_catch_clause1: 43908097 false) 
+	#(361 6 #reduceActionForstackalloc_expression2: 25680898 false) 
+	#(485 1 #reduceActionFor_extern_alias_directives2: 41564162 false) 
+	#(486 1 #reduceActionForextern_alias_directives1: 41607169 false) 
+	#(488 1 #reduceActionForextern_alias_directives1: 41756673 false) 
+	#(683 1 #liftFirstValue: 68392962 false) 
+	#(513 4 #reduceActionForspecific_catch_clause1: 43922433 false) 
 	#(353 4 #reduceActionForunbound_type_name2: 25040898 false) 
 	#(355 3 #reduceActionForgeneric_dimension_specifier1: 25332737 false) 
 	#(357 2 #reduceActionForextern_alias_directives2: 25410562 false) 
 	#(353 4 #reduceActionForunbound_type_name3: 25040899 false) 
-	#(715 3 #reduceActionForstackalloc_initializer1: 72719361 false) 
-	#(716 2 #reduceActionForexplicitly_typed_local_variable_declarators1: 72834049 false) 
-	#(368 6 #reduceActionFornull_conditional_member_access1: 26779649 false) 
+	#(715 3 #reduceActionForstackalloc_initializer1: 72733697 false) 
+	#(716 2 #reduceActionForexplicitly_typed_local_variable_declarators1: 72848385 false) 
+	#(368 6 #reduceActionFornull_conditional_member_access1: 26793985 false) 
 	#(304 4 #reduceActionForinterpolation4: 19270660 false) 
-	#(461 4 #reduceActionForref_local_variable_declarator1: 38929409 false) 
-	#(471 2 #reduceActionForattribute_target_specifier1: 39901185 false) 
-	#(451 4 #reduceActionForlocal_function_header1: 37415937 false) 
-	#(575 1 #reduceActionForextern_alias_directives1: 51719172 false) 
-	#(575 1 #reduceActionForextern_alias_directives1: 51719171 false) 
-	#(575 1 #reduceActionForextern_alias_directives1: 51719169 false) 
-	#(574 1 #reduceActionForextern_alias_directives1: 51545093 false) 
-	#(574 1 #reduceActionForextern_alias_directives1: 51545089 false) 
-	#(573 1 #reduceActionFor_extern_alias_directives2: 51495938 false) 
-	#(574 1 #reduceActionFor_extern_alias_directives2: 51545095 false) 
-	#(529 3 #reduceActionFortype_parameter_list1: 45407233 false) 
-	#(531 1 #reduceActionFortype_parameter1: 45616129 false) 
-	#(530 2 #reduceActionFortype_parameters1: 45490177 false) 
-	#(381 3 #reduceActionForswitch_expression_arm1: 28827649 false) 
-	#(490 2 #reduceActionForattribute_target_specifier1: 41915393 false) 
-	#(379 6 #reduceActionForswitch_expression4: 28441604 false) 
-	#(380 3 #reduceActionForattribute_list2: 28692482 false) 
+	#(461 4 #reduceActionForref_local_variable_declarator1: 38943745 false) 
+	#(471 2 #reduceActionForattribute_target_specifier1: 39915521 false) 
+	#(451 4 #reduceActionForlocal_function_header1: 37430273 false) 
+	#(575 1 #reduceActionForextern_alias_directives1: 51733508 false) 
+	#(575 1 #reduceActionForextern_alias_directives1: 51733507 false) 
+	#(575 1 #reduceActionForextern_alias_directives1: 51733505 false) 
+	#(574 1 #reduceActionForextern_alias_directives1: 51559429 false) 
+	#(574 1 #reduceActionForextern_alias_directives1: 51559425 false) 
+	#(573 1 #reduceActionFor_extern_alias_directives2: 51510274 false) 
+	#(574 1 #reduceActionFor_extern_alias_directives2: 51559431 false) 
+	#(529 3 #reduceActionFortype_parameter_list1: 45421569 false) 
+	#(531 1 #reduceActionFortype_parameter1: 45630465 false) 
+	#(530 2 #reduceActionFortype_parameters1: 45504513 false) 
+	#(381 3 #reduceActionForswitch_expression_arm1: 28841985 false) 
+	#(490 2 #reduceActionForattribute_target_specifier1: 41929729 false) 
+	#(379 6 #reduceActionForswitch_expression4: 28455940 false) 
+	#(380 3 #reduceActionForattribute_list2: 28706818 false) 
 	#(262 4 #reduceActionForlist_pattern_clause2: 14175234 false) 
 	#(264 2 #reduceActionFor_____tuple_type_element__element___2: 14236674 false) 
 	#(269 4 #reduceActionForpositional_pattern3: 14843907 false) 
@@ -4219,74 +4220,74 @@ CSharpParser class >> reduceTable [
 	#(269 4 #reduceActionForpositional_pattern5: 14843909 false) 
 	#(268 3 #reduceActionForproperty_pattern_clause2: 14741506 false) 
 	#(276 3 #reduceActionFortuple_designation2: 15578114 false) 
-	#(428 4 #reduceActionForlet_clause1: 35209217 false) 
-	#(430 3 #reduceActionForquery_continuation1: 35353601 false) 
-	#(552 6 #reduceActionForconstant_declaration1: 48670721 false) 
-	#(592 6 #reduceActionForevent_declaration1: 54030337 false) 
-	#(611 0 #nil 57657345 false) 
-	#(557 3 #reduceActionForvariable_declarator2: 49516546 false) 
-	#(556 3 #reduceActionForattribute_list2: 49392642 false) 
-	#(555 6 #reduceActionForfield_declaration2: 49107970 false) 
-	#(613 3 #reduceActionForlocal_function_body2: 57845762 false) 
-	#(577 6 #reduceActionForproperty_declaration1: 51956737 false) 
-	#(596 6 #reduceActionForindexer_declaration2: 54864898 false) 
-	#(585 0 #nil 53206017 false) 
-	#(583 0 #nil 53054465 false) 
-	#(587 0 #reduceActionFor_extern_alias_directives1: 53391361 false) 
-	#(606 2 #reduceActionForclass_designator3: 56552454 false) 
-	#(606 2 #reduceActionForclass_designator3: 56552450 false) 
-	#(604 2 #reduceActionForclass_designator3: 56167431 false) 
-	#(604 2 #reduceActionForclass_designator3: 56167427 false) 
-	#(606 2 #reduceActionForclass_designator3: 56552452 false) 
-	#(604 2 #reduceActionForclass_designator3: 56167433 false) 
-	#(606 2 #reduceActionForclass_designator3: 56552456 false) 
-	#(608 3 #reduceActionForlocal_function_body2: 57165826 false) 
-	#(616 1 #reduceActionForstatic_constructor_body3: 58481667 false) 
-	#(616 1 #reduceActionForstatic_constructor_body1: 58481665 false) 
-	#(614 6 #reduceActionForstatic_constructor_declaration1: 57973761 false) 
+	#(428 4 #reduceActionForlet_clause1: 35223553 false) 
+	#(430 3 #reduceActionForquery_continuation1: 35367937 false) 
+	#(552 6 #reduceActionForconstant_declaration1: 48685057 false) 
+	#(592 6 #reduceActionForevent_declaration1: 54044673 false) 
+	#(611 0 #nil 57671681 false) 
+	#(557 3 #reduceActionForvariable_declarator2: 49530882 false) 
+	#(556 3 #reduceActionForattribute_list2: 49406978 false) 
+	#(555 6 #reduceActionForfield_declaration2: 49122306 false) 
+	#(613 3 #reduceActionForlocal_function_body2: 57860098 false) 
+	#(577 6 #reduceActionForproperty_declaration1: 51971073 false) 
+	#(596 6 #reduceActionForindexer_declaration2: 54879234 false) 
+	#(585 0 #nil 53220353 false) 
+	#(583 0 #nil 53068801 false) 
+	#(587 0 #reduceActionFor_extern_alias_directives1: 53405697 false) 
+	#(606 2 #reduceActionForclass_designator3: 56566790 false) 
+	#(606 2 #reduceActionForclass_designator3: 56566786 false) 
+	#(604 2 #reduceActionForclass_designator3: 56181767 false) 
+	#(604 2 #reduceActionForclass_designator3: 56181763 false) 
+	#(606 2 #reduceActionForclass_designator3: 56566788 false) 
+	#(604 2 #reduceActionForclass_designator3: 56181769 false) 
+	#(606 2 #reduceActionForclass_designator3: 56566792 false) 
+	#(608 3 #reduceActionForlocal_function_body2: 57180162 false) 
+	#(616 1 #reduceActionForstatic_constructor_body3: 58496003 false) 
+	#(616 1 #reduceActionForstatic_constructor_body1: 58496001 false) 
+	#(614 6 #reduceActionForstatic_constructor_declaration1: 57988097 false) 
 	#(200 5 #reduceActionForglobal_using_static_directive1: 7348225 false) 
 	#(212 5 #reduceActionForusing_alias_directive1: 8548353 false) 
-	#(656 4 #reduceActionForattribute_section1: 65668097 false) 
+	#(656 4 #reduceActionForattribute_section1: 65682433 false) 
 	#(216 2 #reduceActionForextern_alias_directives2: 8921090 false) 
-	#(675 3 #reduceActionFornamed_argument1: 67661825 false) 
-	#(672 3 #reduceActionForattribute_list2: 67310594 false) 
-	#(674 3 #reduceActionForattribute_list2: 67546114 false) 
+	#(675 3 #reduceActionFornamed_argument1: 67676161 false) 
+	#(672 3 #reduceActionForattribute_list2: 67324930 false) 
+	#(674 3 #reduceActionForattribute_list2: 67560450 false) 
 	#(205 5 #reduceActionFornamespace_body1: 7926785 false) 
-	#(632 0 #nil 61053953 false) 
-	#(648 1 #reduceActionFor_extern_alias_directives2: 64334850 false) 
-	#(649 1 #reduceActionForinterpolated_regular_string1: 64396289 false) 
-	#(535 0 #reduceActionFor_extern_alias_directives1: 46029825 false) 
-	#(634 1 #reduceActionFor_extern_alias_directives2: 61159426 false) 
-	#(618 1 #reduceActionFor_extern_alias_directives2: 59126786 false) 
-	#(532 1 #reduceActionFor_extern_alias_directives2: 45672450 false) 
-	#(701 2 #reduceActionFor_____tuple_type_element__element___2: 70697986 false) 
-	#(690 7 #reduceActionForfuncptr_type2: 69810178 false) 
-	#(493 7 #reduceActionFordo_statement1: 42175489 false) 
-	#(710 2 #reduceActionForattribute_target_specifier1: 71928833 false) 
-	#(499 1 #liftFirstValue: 42664962 false) 
-	#(500 1 #reduceActionForfor_initializer2: 42714113 false) 
-	#(482 7 #reduceActionForif_statement2: 41171970 false) 
-	#(364 3 #reduceActionFor______Identifier___type_argument_list__typeArguments__1: 26056705 false) 
+	#(632 0 #nil 61068289 false) 
+	#(648 1 #reduceActionFor_extern_alias_directives2: 64349186 false) 
+	#(649 1 #reduceActionForinterpolated_regular_string1: 64410625 false) 
+	#(535 0 #reduceActionFor_extern_alias_directives1: 46044161 false) 
+	#(634 1 #reduceActionFor_extern_alias_directives2: 61173762 false) 
+	#(618 1 #reduceActionFor_extern_alias_directives2: 59141122 false) 
+	#(532 1 #reduceActionFor_extern_alias_directives2: 45686786 false) 
+	#(701 2 #reduceActionFor_____tuple_type_element__element___2: 70712322 false) 
+	#(690 7 #reduceActionForfuncptr_type2: 69824514 false) 
+	#(493 7 #reduceActionFordo_statement1: 42189825 false) 
+	#(710 2 #reduceActionForattribute_target_specifier1: 71943169 false) 
+	#(499 1 #liftFirstValue: 42679298 false) 
+	#(500 1 #reduceActionForfor_initializer2: 42728449 false) 
+	#(482 7 #reduceActionForif_statement2: 41186306 false) 
+	#(364 3 #reduceActionFor______Identifier___type_argument_list__typeArguments__1: 26071041 false) 
 	#(287 4 #reduceActionForargument_value6: 16406534 false) 
-	#(371 5 #reduceActionFornull_conditional_projection_initializer1: 27191297 false) 
+	#(371 5 #reduceActionFornull_conditional_projection_initializer1: 27205633 false) 
 	#(345 7 #reduceActionForarray_creation_expression1: 23876609 false) 
-	#(624 1 #liftFirstValue: 59856898 false) 
-	#(489 2 #reduceActionForswitch_label3: 41823235 false) 
-	#(484 3 #reduceActionForgeneric_dimension_specifier1: 41495553 false) 
-	#(486 2 #reduceActionForextern_alias_directives2: 41592834 false) 
-	#(487 2 #reduceActionForswitch_section1: 41686017 false) 
-	#(488 2 #reduceActionForextern_alias_directives2: 41742338 false) 
-	#(514 4 #reduceActionForlet_clause1: 44083201 false) 
-	#(516 4 #reduceActionForexception_filter1: 44196865 false) 
-	#(718 2 #reduceActionFor_____tuple_type_element__element___2: 72905730 false) 
-	#(369 2 #reduceActionForextern_alias_directives2: 26905602 false) 
-	#(569 3 #reduceActionForattribute_list2: 51159042 false) 
-	#(568 3 #reduceActionForattribute_list2: 51008514 false) 
-	#(575 2 #reduceActionForref_kind2: 51719170 false) 
-	#(574 2 #reduceActionForparameter_modifier6: 51545094 false) 
-	#(574 2 #reduceActionForref_kind2: 51545091 false) 
-	#(574 2 #reduceActionForparameter_modifier6: 51545090 false) 
-	#(381 4 #reduceActionForswitch_expression_arm2: 28827650 false) 
+	#(624 1 #liftFirstValue: 59871234 false) 
+	#(489 2 #reduceActionForswitch_label3: 41837571 false) 
+	#(484 3 #reduceActionForgeneric_dimension_specifier1: 41509889 false) 
+	#(486 2 #reduceActionForextern_alias_directives2: 41607170 false) 
+	#(487 2 #reduceActionForswitch_section1: 41700353 false) 
+	#(488 2 #reduceActionForextern_alias_directives2: 41756674 false) 
+	#(514 4 #reduceActionForlet_clause1: 44097537 false) 
+	#(516 4 #reduceActionForexception_filter1: 44211201 false) 
+	#(718 2 #reduceActionFor_____tuple_type_element__element___2: 72920066 false) 
+	#(369 2 #reduceActionForextern_alias_directives2: 26919938 false) 
+	#(569 3 #reduceActionForattribute_list2: 51173378 false) 
+	#(568 3 #reduceActionForattribute_list2: 51022850 false) 
+	#(575 2 #reduceActionForref_kind2: 51733506 false) 
+	#(574 2 #reduceActionForparameter_modifier6: 51559430 false) 
+	#(574 2 #reduceActionForref_kind2: 51559427 false) 
+	#(574 2 #reduceActionForparameter_modifier6: 51559426 false) 
+	#(381 4 #reduceActionForswitch_expression_arm2: 28841986 false) 
 	#(262 5 #reduceActionForlist_pattern_clause3: 14175235 false) 
 	#(263 2 #reduceActionForattribute_target_specifier1: 14236673 false) 
 	#(270 2 #reduceActionForlist_pattern_clause1: 14987265 false) 
@@ -4297,262 +4298,262 @@ CSharpParser class >> reduceTable [
 	#(272 3 #reduceActionForsubpattern2: 15205378 false) 
 	#(268 4 #reduceActionForproperty_pattern_clause3: 14741507 false) 
 	#(277 3 #reduceActionForattribute_list2: 15659010 false) 
-	#(554 3 #reduceActionForconstant_declarator1: 49025025 false) 
-	#(553 3 #reduceActionForattribute_list2: 48901122 false) 
-	#(564 3 #reduceActionFormember_name2: 50551810 false) 
-	#(610 5 #reduceActionForconstructor_declarator1: 57555969 false) 
-	#(611 1 #liftFirstValue: 57657346 false) 
-	#(714 4 #reduceActionForfixed_size_buffer_declarator1: 72558593 false) 
-	#(577 7 #reduceActionForproperty_declaration2: 51956738 false) 
-	#(598 3 #reduceActionForindexer_body2: 55470082 false) 
-	#(598 3 #reduceActionForindexer_body1: 55470081 false) 
-	#(582 2 #reduceActionForattribute_target_specifier1: 52860929 false) 
-	#(585 1 #liftFirstValue: 53206018 false) 
-	#(582 2 #reduceActionForclass_designator3: 52860930 false) 
-	#(583 1 #liftFirstValue: 53054466 false) 
-	#(588 1 #reduceActionForextern_alias_directives1: 53440514 false) 
-	#(588 1 #reduceActionForextern_alias_directives1: 53440515 false) 
-	#(588 1 #reduceActionForextern_alias_directives1: 53440513 false) 
-	#(587 1 #reduceActionFor_extern_alias_directives2: 53391362 false) 
-	#(685 1 #reduceActionForlocal_function_body4: 69090307 false) 
-	#(685 1 #reduceActionForref_local_function_body1: 69090305 false) 
-	#(684 7 #reduceActionForfinalizer_declaration1: 68805633 false) 
+	#(554 3 #reduceActionForconstant_declarator1: 49039361 false) 
+	#(553 3 #reduceActionForattribute_list2: 48915458 false) 
+	#(564 3 #reduceActionFormember_name2: 50566146 false) 
+	#(610 5 #reduceActionForconstructor_declarator1: 57570305 false) 
+	#(611 1 #liftFirstValue: 57671682 false) 
+	#(714 4 #reduceActionForfixed_size_buffer_declarator1: 72572929 false) 
+	#(577 7 #reduceActionForproperty_declaration2: 51971074 false) 
+	#(598 3 #reduceActionForindexer_body2: 55484418 false) 
+	#(598 3 #reduceActionForindexer_body1: 55484417 false) 
+	#(582 2 #reduceActionForattribute_target_specifier1: 52875265 false) 
+	#(585 1 #liftFirstValue: 53220354 false) 
+	#(582 2 #reduceActionForclass_designator3: 52875266 false) 
+	#(583 1 #liftFirstValue: 53068802 false) 
+	#(588 1 #reduceActionForextern_alias_directives1: 53454850 false) 
+	#(588 1 #reduceActionForextern_alias_directives1: 53454851 false) 
+	#(588 1 #reduceActionForextern_alias_directives1: 53454849 false) 
+	#(587 1 #reduceActionFor_extern_alias_directives2: 53405698 false) 
+	#(685 1 #reduceActionForlocal_function_body4: 69104643 false) 
+	#(685 1 #reduceActionForref_local_function_body1: 69104641 false) 
+	#(684 7 #reduceActionForfinalizer_declaration1: 68819969 false) 
 	#(202 6 #reduceActionForglobal_using_alias_directive1: 7562241 false) 
-	#(656 5 #reduceActionForattribute_section2: 65668098 false) 
-	#(670 5 #reduceActionForattribute_arguments2: 67009538 false) 
-	#(630 3 #reduceActionForvariant_type_parameter_list1: 60769281 false) 
-	#(633 1 #liftFirstValue: 61118465 false) 
-	#(633 1 #liftFirstValue: 61118466 false) 
-	#(632 1 #liftFirstValue: 61053954 false) 
-	#(650 2 #reduceActionForenum_member_declaration1: 64546817 false) 
-	#(534 1 #reduceActionForinterpolated_regular_string1: 45912065 false) 
-	#(635 2 #reduceActionForinterface_base1: 61201409 false) 
-	#(535 1 #reduceActionFor_extern_alias_directives2: 46029826 false) 
-	#(536 1 #reduceActionForextern_alias_directives1: 46112769 false) 
-	#(619 2 #reduceActionForinterface_base1: 59173889 false) 
+	#(656 5 #reduceActionForattribute_section2: 65682434 false) 
+	#(670 5 #reduceActionForattribute_arguments2: 67023874 false) 
+	#(630 3 #reduceActionForvariant_type_parameter_list1: 60783617 false) 
+	#(633 1 #liftFirstValue: 61132801 false) 
+	#(633 1 #liftFirstValue: 61132802 false) 
+	#(632 1 #liftFirstValue: 61068290 false) 
+	#(650 2 #reduceActionForenum_member_declaration1: 64561153 false) 
+	#(534 1 #reduceActionForinterpolated_regular_string1: 45926401 false) 
+	#(635 2 #reduceActionForinterface_base1: 61215745 false) 
+	#(535 1 #reduceActionFor_extern_alias_directives2: 46044162 false) 
+	#(536 1 #reduceActionForextern_alias_directives1: 46127105 false) 
+	#(619 2 #reduceActionForinterface_base1: 59188225 false) 
 	#(241 1 #reduceActionForsimple_type2: 12211202 false) 
 	#(241 1 #reduceActionForsimple_type2: 12211203 false) 
 	#(241 1 #liftFirstValue: 12211201 false) 
-	#(533 2 #reduceActionForclass_base1: 45706241 false) 
-	#(700 2 #reduceActionForattribute_target_specifier1: 70697985 false) 
-	#(502 8 #reduceActionForforeach_statement1: 42914817 false) 
-	#(489 3 #reduceActionForswitch_label1: 41823233 false) 
-	#(717 2 #reduceActionForattribute_target_specifier1: 72905729 false) 
-	#(576 4 #reduceActionForparameter_collection1: 51830785 false) 
-	#(574 3 #reduceActionForparameter_modifier4: 51545092 false) 
-	#(571 0 #reduceActionFor_attribute_target_specifier1: 51398657 false) 
-	#(530 4 #reduceActionFortype_parameters2: 45490178 false) 
-	#(451 6 #reduceActionForlocal_function_header2: 37415938 false) 
+	#(533 2 #reduceActionForclass_base1: 45720577 false) 
+	#(700 2 #reduceActionForattribute_target_specifier1: 70712321 false) 
+	#(502 8 #reduceActionForforeach_statement1: 42929153 false) 
+	#(489 3 #reduceActionForswitch_label1: 41837569 false) 
+	#(717 2 #reduceActionForattribute_target_specifier1: 72920065 false) 
+	#(576 4 #reduceActionForparameter_collection1: 51845121 false) 
+	#(574 3 #reduceActionForparameter_modifier4: 51559428 false) 
+	#(571 0 #reduceActionFor_attribute_target_specifier1: 51412993 false) 
+	#(530 4 #reduceActionFortype_parameters2: 45504514 false) 
+	#(451 6 #reduceActionForlocal_function_header2: 37430274 false) 
 	#(270 3 #reduceActionForproperty_pattern_clause2: 14987266 false) 
 	#(269 6 #reduceActionForpositional_pattern8: 14843912 false) 
-	#(592 8 #reduceActionForevent_declaration2: 54030338 false) 
-	#(593 2 #reduceActionForattribute_target_specifier1: 54497281 false) 
-	#(593 2 #reduceActionForclass_designator3: 54497282 false) 
-	#(597 5 #reduceActionForindexer_declarator1: 55300097 false) 
-	#(578 3 #reduceActionForproperty_body2: 52420610 false) 
-	#(579 0 #reduceActionFor_property_initializer1: 52552705 false) 
-	#(599 3 #reduceActionForref_indexer_body1: 55566337 false) 
-	#(588 2 #reduceActionForref_kind2: 53440517 false) 
-	#(588 2 #reduceActionForref_kind2: 53440519 false) 
-	#(588 2 #reduceActionForref_kind2: 53440516 false) 
-	#(588 2 #reduceActionForref_kind2: 53440518 false) 
-	#(607 6 #reduceActionForconversion_operator_declarator2: 56957954 false) 
-	#(607 6 #reduceActionForconversion_operator_declarator1: 56957953 false) 
-	#(603 6 #reduceActionForunary_operator_declarator1: 56039425 false) 
-	#(616 3 #reduceActionForstatic_constructor_body2: 58481666 false) 
-	#(684 8 #reduceActionForfinalizer_declaration2: 68805634 false) 
-	#(684 8 #reduceActionForfinalizer_declaration2: 68805635 false) 
+	#(592 8 #reduceActionForevent_declaration2: 54044674 false) 
+	#(593 2 #reduceActionForattribute_target_specifier1: 54511617 false) 
+	#(593 2 #reduceActionForclass_designator3: 54511618 false) 
+	#(597 5 #reduceActionForindexer_declarator1: 55314433 false) 
+	#(578 3 #reduceActionForproperty_body2: 52434946 false) 
+	#(579 0 #reduceActionFor_property_initializer1: 52567041 false) 
+	#(599 3 #reduceActionForref_indexer_body1: 55580673 false) 
+	#(588 2 #reduceActionForref_kind2: 53454853 false) 
+	#(588 2 #reduceActionForref_kind2: 53454855 false) 
+	#(588 2 #reduceActionForref_kind2: 53454852 false) 
+	#(588 2 #reduceActionForref_kind2: 53454854 false) 
+	#(607 6 #reduceActionForconversion_operator_declarator2: 56972290 false) 
+	#(607 6 #reduceActionForconversion_operator_declarator1: 56972289 false) 
+	#(603 6 #reduceActionForunary_operator_declarator1: 56053761 false) 
+	#(616 3 #reduceActionForstatic_constructor_body2: 58496002 false) 
+	#(684 8 #reduceActionForfinalizer_declaration2: 68819970 false) 
+	#(684 8 #reduceActionForfinalizer_declaration2: 68819971 false) 
 	#(198 0 #reduceActionFor_extern_alias_directives1: 7168001 false) 
-	#(652 5 #reduceActionFordelegate_header1: 65001473 false) 
-	#(631 3 #reduceActionForvariant_type_parameters1: 60868609 false) 
-	#(647 4 #reduceActionForenum_body1: 64037889 false) 
-	#(649 3 #reduceActionForattribute_list2: 64396290 false) 
-	#(636 1 #reduceActionForinterface_body2: 61255682 false) 
-	#(637 0 #reduceActionFor_extern_alias_directives1: 61381633 false) 
-	#(628 9 #reduceActionForinterface_declaration1: 60318721 false) 
-	#(536 2 #reduceActionForextern_alias_directives2: 46112770 false) 
+	#(652 5 #reduceActionFordelegate_header1: 65015809 false) 
+	#(631 3 #reduceActionForvariant_type_parameters1: 60882945 false) 
+	#(647 4 #reduceActionForenum_body1: 64052225 false) 
+	#(649 3 #reduceActionForattribute_list2: 64410626 false) 
+	#(636 1 #reduceActionForinterface_body2: 61270018 false) 
+	#(637 0 #reduceActionFor_extern_alias_directives1: 61395969 false) 
+	#(628 9 #reduceActionForinterface_declaration1: 60333057 false) 
+	#(536 2 #reduceActionForextern_alias_directives2: 46127106 false) 
 	#(219 3 #reduceActionForexplicit_anonymous_function_signature1: 9890817 false) 
-	#(620 1 #reduceActionForinterface_body2: 59223042 false) 
-	#(621 0 #reduceActionFor_extern_alias_directives1: 59318273 false) 
-	#(617 9 #reduceActionForstruct_declaration1: 58758145 false) 
-	#(548 1 #reduceActionForinterface_body2: 48070658 false) 
-	#(549 0 #reduceActionFor_extern_alias_directives1: 48163841 false) 
-	#(525 9 #reduceActionForclass_declaration1: 44903425 false) 
-	#(494 9 #reduceActionForfor_statement1: 42290177 false) 
-	#(502 9 #reduceActionForforeach_statement3: 42914819 false) 
-	#(502 9 #reduceActionForforeach_statement2: 42914818 false) 
-	#(489 4 #reduceActionForswitch_label2: 41823234 false) 
-	#(370 3 #reduceActionFordependent_access3: 26941443 false) 
-	#(370 3 #reduceActionFordependent_access1: 26941441 false) 
-	#(370 3 #reduceActionFordependent_access2: 26941442 false) 
-	#(576 5 #reduceActionForparameter_collection2: 51830786 false) 
-	#(570 5 #reduceActionForfixed_parameter1: 51272705 false) 
-	#(571 1 #reduceActionFor_extern_alias_directives2: 51398658 false) 
+	#(620 1 #reduceActionForinterface_body2: 59237378 false) 
+	#(621 0 #reduceActionFor_extern_alias_directives1: 59332609 false) 
+	#(617 9 #reduceActionForstruct_declaration1: 58772481 false) 
+	#(548 1 #reduceActionForinterface_body2: 48084994 false) 
+	#(549 0 #reduceActionFor_extern_alias_directives1: 48178177 false) 
+	#(525 9 #reduceActionForclass_declaration1: 44917761 false) 
+	#(494 9 #reduceActionForfor_statement1: 42304513 false) 
+	#(502 9 #reduceActionForforeach_statement3: 42929155 false) 
+	#(502 9 #reduceActionForforeach_statement2: 42929154 false) 
+	#(489 4 #reduceActionForswitch_label2: 41837570 false) 
+	#(370 3 #reduceActionFordependent_access3: 26955779 false) 
+	#(370 3 #reduceActionFordependent_access1: 26955777 false) 
+	#(370 3 #reduceActionFordependent_access2: 26955778 false) 
+	#(576 5 #reduceActionForparameter_collection2: 51845122 false) 
+	#(570 5 #reduceActionForfixed_parameter1: 51287041 false) 
+	#(571 1 #reduceActionFor_extern_alias_directives2: 51412994 false) 
 	#(270 4 #reduceActionForproperty_pattern_clause3: 14987267 false) 
-	#(594 3 #reduceActionForadd_accessor_declaration1: 54719489 false) 
-	#(595 3 #reduceActionForremove_accessor_declaration1: 54789121 false) 
-	#(578 4 #reduceActionForproperty_body1: 52420609 false) 
-	#(579 1 #reduceActionFor_extern_alias_directives2: 52552706 false) 
-	#(599 4 #reduceActionForref_indexer_body2: 55566338 false) 
-	#(589 1 #reduceActionForstatic_constructor_body3: 53734403 false) 
-	#(589 1 #reduceActionForstatic_constructor_body1: 53734401 false) 
-	#(584 4 #reduceActionForget_accessor_declaration1: 53115905 false) 
-	#(586 4 #reduceActionForset_accessor_declaration2: 53267458 false) 
-	#(586 4 #reduceActionForset_accessor_declaration2: 53267457 false) 
-	#(607 7 #reduceActionForconversion_operator_declarator3: 56957955 false) 
-	#(685 3 #reduceActionForlocal_function_body2: 69090306 false) 
+	#(594 3 #reduceActionForadd_accessor_declaration1: 54733825 false) 
+	#(595 3 #reduceActionForremove_accessor_declaration1: 54803457 false) 
+	#(578 4 #reduceActionForproperty_body1: 52434945 false) 
+	#(579 1 #reduceActionFor_extern_alias_directives2: 52567042 false) 
+	#(599 4 #reduceActionForref_indexer_body2: 55580674 false) 
+	#(589 1 #reduceActionForstatic_constructor_body3: 53748739 false) 
+	#(589 1 #reduceActionForstatic_constructor_body1: 53748737 false) 
+	#(584 4 #reduceActionForget_accessor_declaration1: 53130241 false) 
+	#(586 4 #reduceActionForset_accessor_declaration2: 53281794 false) 
+	#(586 4 #reduceActionForset_accessor_declaration2: 53281793 false) 
+	#(607 7 #reduceActionForconversion_operator_declarator3: 56972291 false) 
+	#(685 3 #reduceActionForlocal_function_body2: 69104642 false) 
 	#(197 6 #reduceActionForfile_scoped_namespace_declaration1: 7022593 false) 
-	#(647 5 #reduceActionForenum_body2: 64037890 false) 
-	#(650 4 #reduceActionForenum_member_declaration2: 64546818 false) 
-	#(617 10 #reduceActionForstruct_declaration5: 58758149 false) 
-	#(534 3 #reduceActionForattribute_list2: 45912066 false) 
-	#(639 1 #liftFirstValue: 61612034 false) 
-	#(639 1 #liftFirstValue: 61612036 false) 
-	#(637 1 #reduceActionFor_extern_alias_directives2: 61381634 false) 
-	#(638 1 #reduceActionForextern_alias_directives1: 61453313 false) 
-	#(639 1 #liftFirstValue: 61612033 false) 
-	#(639 1 #liftFirstValue: 61612035 false) 
-	#(680 0 #nil 68276225 false) 
-	#(617 10 #reduceActionForstruct_declaration3: 58758147 false) 
-	#(617 10 #reduceActionForstruct_declaration2: 58758146 false) 
-	#(623 1 #liftFirstValue: 59531274 false) 
-	#(623 1 #liftFirstValue: 59531265 false) 
-	#(623 1 #liftFirstValue: 59531266 false) 
-	#(623 1 #liftFirstValue: 59531267 false) 
-	#(623 1 #liftFirstValue: 59531268 false) 
-	#(623 1 #liftFirstValue: 59531269 false) 
-	#(623 1 #liftFirstValue: 59531270 false) 
-	#(623 1 #liftFirstValue: 59531271 false) 
-	#(623 1 #liftFirstValue: 59531272 false) 
-	#(623 1 #liftFirstValue: 59531273 false) 
-	#(621 1 #reduceActionFor_extern_alias_directives2: 59318274 false) 
-	#(622 1 #reduceActionForextern_alias_directives1: 59384833 false) 
-	#(623 1 #liftFirstValue: 59531275 false) 
-	#(533 4 #reduceActionForclass_base3: 45706243 false) 
-	#(525 10 #reduceActionForclass_declaration2: 44903426 false) 
-	#(549 1 #reduceActionFor_extern_alias_directives2: 48163842 false) 
-	#(550 1 #reduceActionForextern_alias_directives1: 48228353 false) 
-	#(502 10 #reduceActionForforeach_statement4: 42914820 false) 
-	#(572 2 #reduceActionForattribute_target_specifier1: 51443713 false) 
-	#(419 9 #reduceActionForjoin_clause1: 34489345 false) 
-	#(560 10 #reduceActionForRefMethodHeader1: 49847297 false) 
-	#(597 7 #reduceActionForindexer_declarator2: 55300098 false) 
-	#(581 4 #reduceActionForref_property_body2: 52689922 false) 
-	#(581 4 #reduceActionForref_property_body1: 52689921 false) 
-	#(591 1 #reduceActionForref_accessor_body3: 53933059 false) 
-	#(591 1 #reduceActionForref_accessor_body1: 53933057 false) 
-	#(590 4 #reduceActionForref_get_accessor_declaration1: 53812225 false) 
-	#(561 10 #reduceActionFormethod_header1: 50092033 false) 
-	#(605 8 #reduceActionForbinary_operator_declarator1: 56389633 false) 
+	#(647 5 #reduceActionForenum_body2: 64052226 false) 
+	#(650 4 #reduceActionForenum_member_declaration2: 64561154 false) 
+	#(617 10 #reduceActionForstruct_declaration5: 58772485 false) 
+	#(534 3 #reduceActionForattribute_list2: 45926402 false) 
+	#(639 1 #liftFirstValue: 61626370 false) 
+	#(639 1 #liftFirstValue: 61626372 false) 
+	#(637 1 #reduceActionFor_extern_alias_directives2: 61395970 false) 
+	#(638 1 #reduceActionForextern_alias_directives1: 61467649 false) 
+	#(639 1 #liftFirstValue: 61626369 false) 
+	#(639 1 #liftFirstValue: 61626371 false) 
+	#(680 0 #nil 68290561 false) 
+	#(617 10 #reduceActionForstruct_declaration3: 58772483 false) 
+	#(617 10 #reduceActionForstruct_declaration2: 58772482 false) 
+	#(623 1 #liftFirstValue: 59545610 false) 
+	#(623 1 #liftFirstValue: 59545601 false) 
+	#(623 1 #liftFirstValue: 59545602 false) 
+	#(623 1 #liftFirstValue: 59545603 false) 
+	#(623 1 #liftFirstValue: 59545604 false) 
+	#(623 1 #liftFirstValue: 59545605 false) 
+	#(623 1 #liftFirstValue: 59545606 false) 
+	#(623 1 #liftFirstValue: 59545607 false) 
+	#(623 1 #liftFirstValue: 59545608 false) 
+	#(623 1 #liftFirstValue: 59545609 false) 
+	#(621 1 #reduceActionFor_extern_alias_directives2: 59332610 false) 
+	#(622 1 #reduceActionForextern_alias_directives1: 59399169 false) 
+	#(623 1 #liftFirstValue: 59545611 false) 
+	#(533 4 #reduceActionForclass_base3: 45720579 false) 
+	#(525 10 #reduceActionForclass_declaration2: 44917762 false) 
+	#(549 1 #reduceActionFor_extern_alias_directives2: 48178178 false) 
+	#(550 1 #reduceActionForextern_alias_directives1: 48242689 false) 
+	#(502 10 #reduceActionForforeach_statement4: 42929156 false) 
+	#(572 2 #reduceActionForattribute_target_specifier1: 51458049 false) 
+	#(419 9 #reduceActionForjoin_clause1: 34503681 false) 
+	#(560 10 #reduceActionForRefMethodHeader1: 49861633 false) 
+	#(597 7 #reduceActionForindexer_declarator2: 55314434 false) 
+	#(581 4 #reduceActionForref_property_body2: 52704258 false) 
+	#(581 4 #reduceActionForref_property_body1: 52704257 false) 
+	#(591 1 #reduceActionForref_accessor_body3: 53947395 false) 
+	#(591 1 #reduceActionForref_accessor_body1: 53947393 false) 
+	#(590 4 #reduceActionForref_get_accessor_declaration1: 53826561 false) 
+	#(561 10 #reduceActionFormethod_header1: 50106369 false) 
+	#(605 8 #reduceActionForbinary_operator_declarator1: 56403969 false) 
 	#(198 2 #reduceActionForextern_alias_directives2: 7168002 false) 
-	#(631 5 #reduceActionForvariant_type_parameters2: 60868610 false) 
-	#(652 7 #reduceActionFordelegate_header2: 65001474 false) 
-	#(617 11 #reduceActionForstruct_declaration7: 58758151 false) 
-	#(617 11 #reduceActionForstruct_declaration6: 58758150 false) 
-	#(544 1 #reduceActionForprimary_constraint2: 47496194 false) 
-	#(544 1 #reduceActionForprimary_constraint8: 47496200 false) 
-	#(544 1 #reduceActionForprimary_constraint7: 47496199 false) 
-	#(544 1 #reduceActionForprimary_constraint4: 47496196 false) 
-	#(544 1 #reduceActionForprimary_constraint6: 47496198 false) 
-	#(544 1 #reduceActionForprimary_constraint1: 47496193 false) 
-	#(546 1 #reduceActionForprimary_constraint1: 47946753 false) 
-	#(545 1 #reduceActionForinterpolated_regular_string1: 47682562 false) 
-	#(537 4 #reduceActionFortype_parameter_constraints_clause1: 46302209 false) 
-	#(538 1 #reduceActionFortype_parameter_constraints2: 46437378 false) 
-	#(538 1 #reduceActionFortype_parameter_constraints1: 46437377 false) 
-	#(543 1 #reduceActionForinterpolated_regular_string1: 47041537 false) 
-	#(543 1 #reduceActionFor_extern_alias_directives2: 47041538 false) 
-	#(545 1 #reduceActionForinterpolated_regular_string1: 47682561 false) 
-	#(543 1 #reduceActionForinterpolated_regular_string1: 47041539 false) 
-	#(638 2 #reduceActionForextern_alias_directives2: 61453314 false) 
-	#(680 1 #liftFirstValue: 68276226 false) 
-	#(617 11 #reduceActionForstruct_declaration4: 58758148 false) 
-	#(622 2 #reduceActionForextern_alias_directives2: 59384834 false) 
-	#(533 5 #reduceActionForclass_base2: 45706242 false) 
-	#(550 2 #reduceActionForextern_alias_directives2: 48228354 false) 
-	#(612 5 #reduceActionForconstructor_initializer1: 57732097 false) 
-	#(612 5 #reduceActionForconstructor_initializer2: 57732098 false) 
-	#(580 3 #reduceActionFor______Identifier___type_argument_list__typeArguments__1: 52605953 false) 
-	#(589 3 #reduceActionForstatic_constructor_body2: 53734402 false) 
-	#(617 12 #reduceActionForstruct_declaration8: 58758152 false) 
-	#(539 2 #reduceActionForinterface_base1: 46651393 false) 
-	#(540 1 #reduceActionForinterpolated_regular_string1: 46743553 false) 
-	#(541 1 #reduceActionForallows_type_parameter_constraint1: 46923777 false) 
-	#(544 2 #reduceActionForprimary_constraint3: 47496195 false) 
-	#(544 2 #reduceActionForprimary_constraint5: 47496197 false) 
-	#(636 4 #reduceActionForinterface_body1: 61255681 false) 
-	#(620 4 #reduceActionForinterface_body1: 59223041 false) 
-	#(548 4 #reduceActionForinterface_body1: 48070657 false) 
-	#(420 11 #reduceActionForjoin_into_clause1: 34649089 false) 
-	#(542 2 #reduceActionForattribute_target_specifier1: 47001601 false) 
-	#(547 3 #reduceActionForconstructor_constraint1: 48021505 false) 
-	#(538 3 #reduceActionFortype_parameter_constraints3: 46437379 false) 
-	#(543 3 #reduceActionForrestrictive_type_parameter_constraints4: 47041540 false) 
-	#(543 3 #reduceActionForrestrictive_type_parameter_constraints5: 47041541 false) 
-	#(545 3 #reduceActionForattribute_list2: 47682564 false) 
-	#(545 3 #reduceActionForattribute_list2: 47682563 false) 
-	#(543 3 #reduceActionForattribute_list2: 47041542 false) 
-	#(640 4 #reduceActionForinterface_method_declaration1: 61802497 false) 
-	#(712 1 #liftFirstValue: 72370177 false) 
-	#(533 7 #reduceActionForclass_base4: 45706244 false) 
-	#(591 4 #reduceActionForref_accessor_body2: 53933058 false) 
-	#(540 3 #reduceActionForattribute_list2: 46743554 false) 
-	#(640 5 #reduceActionForinterface_method_declaration2: 61802498 false) 
-	#(713 1 #reduceActionForextern_alias_directives1: 72401921 false) 
-	#(543 5 #reduceActionForrestrictive_type_parameter_constraints7: 47041543 false) 
-	#(642 6 #reduceActionForinterface_event_declaration1: 63142913 false) 
-	#(711 6 #reduceActionForfixed_size_buffer_declaration1: 72089601 false) 
-	#(713 2 #reduceActionForextern_alias_directives2: 72401922 false) 
-	#(641 7 #reduceActionForinterface_method_header1: 62010369 false)
+	#(631 5 #reduceActionForvariant_type_parameters2: 60882946 false) 
+	#(652 7 #reduceActionFordelegate_header2: 65015810 false) 
+	#(617 11 #reduceActionForstruct_declaration7: 58772487 false) 
+	#(617 11 #reduceActionForstruct_declaration6: 58772486 false) 
+	#(544 1 #reduceActionForprimary_constraint2: 47510530 false) 
+	#(544 1 #reduceActionForprimary_constraint8: 47510536 false) 
+	#(544 1 #reduceActionForprimary_constraint7: 47510535 false) 
+	#(544 1 #reduceActionForprimary_constraint4: 47510532 false) 
+	#(544 1 #reduceActionForprimary_constraint6: 47510534 false) 
+	#(544 1 #reduceActionForprimary_constraint1: 47510529 false) 
+	#(546 1 #reduceActionForprimary_constraint1: 47961089 false) 
+	#(545 1 #reduceActionForinterpolated_regular_string1: 47696898 false) 
+	#(537 4 #reduceActionFortype_parameter_constraints_clause1: 46316545 false) 
+	#(538 1 #reduceActionFortype_parameter_constraints2: 46451714 false) 
+	#(538 1 #reduceActionFortype_parameter_constraints1: 46451713 false) 
+	#(543 1 #reduceActionForinterpolated_regular_string1: 47055873 false) 
+	#(543 1 #reduceActionFor_extern_alias_directives2: 47055874 false) 
+	#(545 1 #reduceActionForinterpolated_regular_string1: 47696897 false) 
+	#(543 1 #reduceActionForinterpolated_regular_string1: 47055875 false) 
+	#(638 2 #reduceActionForextern_alias_directives2: 61467650 false) 
+	#(680 1 #liftFirstValue: 68290562 false) 
+	#(617 11 #reduceActionForstruct_declaration4: 58772484 false) 
+	#(622 2 #reduceActionForextern_alias_directives2: 59399170 false) 
+	#(533 5 #reduceActionForclass_base2: 45720578 false) 
+	#(550 2 #reduceActionForextern_alias_directives2: 48242690 false) 
+	#(612 5 #reduceActionForconstructor_initializer1: 57746433 false) 
+	#(612 5 #reduceActionForconstructor_initializer2: 57746434 false) 
+	#(580 3 #reduceActionFor______Identifier___type_argument_list__typeArguments__1: 52620289 false) 
+	#(589 3 #reduceActionForstatic_constructor_body2: 53748738 false) 
+	#(617 12 #reduceActionForstruct_declaration8: 58772488 false) 
+	#(539 2 #reduceActionForinterface_base1: 46665729 false) 
+	#(540 1 #reduceActionForinterpolated_regular_string1: 46757889 false) 
+	#(541 1 #reduceActionForallows_type_parameter_constraint1: 46938113 false) 
+	#(544 2 #reduceActionForprimary_constraint3: 47510531 false) 
+	#(544 2 #reduceActionForprimary_constraint5: 47510533 false) 
+	#(636 4 #reduceActionForinterface_body1: 61270017 false) 
+	#(620 4 #reduceActionForinterface_body1: 59237377 false) 
+	#(548 4 #reduceActionForinterface_body1: 48084993 false) 
+	#(420 11 #reduceActionForjoin_into_clause1: 34663425 false) 
+	#(542 2 #reduceActionForattribute_target_specifier1: 47015937 false) 
+	#(547 3 #reduceActionForconstructor_constraint1: 48035841 false) 
+	#(538 3 #reduceActionFortype_parameter_constraints3: 46451715 false) 
+	#(543 3 #reduceActionForrestrictive_type_parameter_constraints4: 47055876 false) 
+	#(543 3 #reduceActionForrestrictive_type_parameter_constraints5: 47055877 false) 
+	#(545 3 #reduceActionForattribute_list2: 47696900 false) 
+	#(545 3 #reduceActionForattribute_list2: 47696899 false) 
+	#(543 3 #reduceActionForattribute_list2: 47055878 false) 
+	#(640 4 #reduceActionForinterface_method_declaration1: 61816833 false) 
+	#(712 1 #liftFirstValue: 72384513 false) 
+	#(533 7 #reduceActionForclass_base4: 45720580 false) 
+	#(591 4 #reduceActionForref_accessor_body2: 53947394 false) 
+	#(540 3 #reduceActionForattribute_list2: 46757890 false) 
+	#(640 5 #reduceActionForinterface_method_declaration2: 61816834 false) 
+	#(713 1 #reduceActionForextern_alias_directives1: 72416257 false) 
+	#(543 5 #reduceActionForrestrictive_type_parameter_constraints7: 47055879 false) 
+	#(642 6 #reduceActionForinterface_event_declaration1: 63157249 false) 
+	#(711 6 #reduceActionForfixed_size_buffer_declaration1: 72103937 false) 
+	#(713 2 #reduceActionForextern_alias_directives2: 72416258 false) 
+	#(641 7 #reduceActionForinterface_method_header1: 62024705 false)
 	).
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 CSharpParser class >> scannerClass [
 	^CSharpScanner
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSharpParser class >> startingStateForblock [
 	^ 5
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSharpParser class >> startingStateForclass_member_declaration [
 	^ 6
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSharpParser class >> startingStateForcompilation_unit [
 	^ 1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSharpParser class >> startingStateForexpression [
 	^ 4
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSharpParser class >> startingStateFornamespace_member_declaration [
 	^ 2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSharpParser class >> startingStateForstatement [
 	^ 3
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSharpParser class >> symbolNames [
 	^ #('"!"' '"!="' '"%"' '"%="' '"&"' '"&&"' '"&="' '"("' '")"' '"*"' '"*="' '"+"' '"++"' '"+="' '","' '"-"' '"--"' '"-="' '"->"' '"."' '".."' '"/"' '"/="' '":"' '"::"' '";"' '"<"' '"<<"' '"<<="' '"<="' '"="' '"=="' '"=>"' '">="' '">>="' '">>>="' '"?"' '"??"' '"["' '"]"' '"^"' '"^="' '"_"' '"abstract"' '"add"' '"alias"' '"allows"' '"and"' '"as"' '"ascending"' '"async"' '"await"' '"base"' '"bool"' '"break"' '"by"' '"byte"' '"case"' '"catch"' '"char"' '"checked"' '"class"' '"const"' '"continue"' '"decimal"' '"default"' '"delegate"' '"descending"' '"do"' '"double"' '"dynamic"' '"else"' '"enum"' '"equals"' '"event"' '"explicit"' '"extern"' '"false"' '"field"' '"file"' '"finally"' '"fixed"' '"float"' '"for"' '"foreach"' '"from"' '"get"' '"global"' '"goto"' '"group"' '"if"' '"implicit"' '"in"' '"init"' '"int"' '"interface"' '"internal"' '"into"' '"is"' '"join"' '"let"' '"lock"' '"long"' '"managed"' '"method"' '"nameof"' '"namespace"' '"new"' '"not"' '"notnull"' '"object"' '"on"' '"operator"' '"or"' '"orderby"' '"out"' '"override"' '"param"' '"params"' '"partial"' '"private"' '"property"' '"protected"' '"public"' '"readonly"' '"record"' '"ref"' '"remove"' '"required"' '"return"' '"sbyte"' '"scoped"' '"sealed"' '"select"' '"set"' '"short"' '"sizeof"' '"stackalloc"' '"static"' '"string"' '"struct"' '"switch"' '"this"' '"throw"' '"true"' '"try"' '"type"' '"typeof"' '"uint"' '"ulong"' '"unchecked"' '"unmanaged"' '"unsafe"' '"ushort"' '"using"' '"var"' '"virtual"' '"void"' '"volatile"' '"when"' '"where"' '"while"' '"yield"' '"{"' '"|"' '"|="' '"||"' '"~"' '<gt>' '<gtgt>' '<gtgtgt>' '<rightBrace>' '<comment>' '<Identifier>' '<IntegerLiteral>' '<RealLiteral>' '<CharacterLiteral>' '<multiLineInterpolatedString>' '<InterpolatedRegularStringWhole>' '<InterpolatedRegularStringStart>' '<InterpolatedRegularStringEnd>' '<InterpolatedRegularStringMid>' '<InterpolatedVerbatimStringLiteral>' '<InterpolatedVerbatimStringStart>' '<InterpolatedVerbatimStringEnd>' '<InterpolatedVerbatimStringMid>' '<StringLiteral>' '<NullLiteral>' '<whitespace>' '<preprocessorDirective>' '<patternToken>' '<rawStringLiteral>' 'B e g i n' 'compilation_unit' 'global_using_directive ''directive''*' 'compilation_unit_body' 'file_scoped_namespace_declaration' 'type_declaration ''declaration''*' 'global_using_directive' 'global_using_static_directive' 'global_using_namespace_directive' 'global_using_alias_directive' 'namespace_declaration' 'qualified_identifier' 'namespace_body' '_extern_alias_directives' 'extern_alias_directives' 'extern_alias_directive' '_using_directives' 'using_directives' 'using_directive' 'using_alias_directive' 'using_namespace_directive' 'using_static_directive' '_namespace_member_declarations' 'namespace_member_declarations' 'namespace_member_declaration' 'type_declaration' 'parameter_list' 'qualified_alias_member' 'namespace_name' 'type_name' 'namespace_or_type_name' '_type' 'type' 'value_type' 'nullable_value_type' 'struct_type' 'tuple_type' '("," tuple_type_element ''element'')' '("," tuple_type_element ''element'')+' 'tuple_type_element' 'simple_type' 'numeric_type' 'integral_type' 'floating_point_type' 'non_nullable_value_type' 'reference_type' 'nullable_reference_type' 'non_nullable_reference_type' 'class_type' 'interface_type' 'array_type' 'non_array_type' '_rank_specifiers' 'rank_specifiers' 'rank_specifier' '_dim_separators' 'dim_separators' 'delegate_type' 'type_argument_list' 'type_arguments' 'type_argument' 'variable_reference' 'pattern' 'disjunctive_pattern' 'conjunctive_pattern' 'negated_pattern' 'primary_pattern' 'slice_pattern' 'list_pattern' 'list_pattern_clause' '("," ''comma'' pattern ''pattern'')' '("," ''comma'' pattern ''pattern'')*' 'relational_pattern' 'discard_pattern' 'property_pattern' 'property_pattern_clause' 'positional_pattern' 'property_subpattern' 'subpatterns' 'subpattern' 'subpattern_name' 'var_pattern' 'designation' 'tuple_designation' 'designations' 'constant_pattern' 'declaration_pattern' 'simple_designation' 'single_variable_designation' '_argument_list' 'argument_list' 'argument' '_argument_name' 'argument_name' 'argument_value' 'primary_expression' 'null_forgiving_expression' 'primary_no_array_creation_expression' 'collection_expression' '( "," collection_element ''value'')' '( "," collection_element ''value'')*' 'collection_element' 'spread_element' 'expression_element' 'interpolated_string_expression' 'multiline_interpolated_regular_string' 'multiline_interpolated_regular_string_body' 'StartMultiLineInterpolatedString' 'interpolated_regular_string' 'StartInterpolatedString' 'interpolated_regular_string_body' 'interpolation' 'Regular_Interpolation_Format' 'ScanFormat' 'interpolated_verbatim_string' 'StartInterpolatedVerbatimString' 'interpolated_verbatim_string_body' 'simple_name' '_type_argument_list' 'parenthesized_expression' 'tuple_expression' '("," tuple_element ''element'')' '("," tuple_element ''element'')+' 'tuple_element' 'deconstruction_expression' 'deconstruction_tuple' '("," deconstruction_element ''element'')' '("," deconstruction_element ''element'')+' 'deconstruction_element' 'member_access' 'qualified_alias_member_expression' 'predefined_type_expression' 'predefined_type' 'invocation_expression' 'element_access' 'expression_list' 'this_access' 'base_access' 'post_increment_expression' 'post_decrement_expression' 'object_creation_expression' '_object_or_collection_initializer' 'object_or_collection_initializer' 'object_initializer' '_member_initializer_list' 'member_initializer_list' 'member_initializer' 'initializer_target' 'initializer_value' 'collection_initializer' 'element_initializer_list' 'element_initializer' 'array_creation_expression' 'delegate_creation_expression' 'anonymous_object_creation_expression' 'anonymous_object_initializer' '_member_declarator_list' 'member_declarator_list' 'member_declarator' 'typeof_expression' 'unbound_type_name' '_generic_dimension_specifier' 'generic_dimension_specifier' '_commas' 'commas' 'checked_expression' 'unchecked_expression' 'default_value_expression' 'stackalloc_expression' 'nameof_expression' 'named_entity' '("." <Identifier> _type_argument_list ''typeArguments'')' '("." <Identifier> _type_argument_list ''typeArguments'')*' 'named_entity_target' 'unary_expression' 'null_conditional_member_access' 'dependent_access ''access''*' 'dependent_access' 'null_conditional_projection_initializer' 'null_conditional_invocation_expression' 'null_conditional_element_access' 'pre_increment_expression' 'pre_decrement_expression' 'cast_expression' 'await_expression' 'multiplicative_expression' 'switch_expression' 'switch_expression_arms' 'switch_expression_arm' 'range_expression' 'additive_expression' 'shift_expression' 'relational_expression' 'equality_expression' 'and_expression' 'exclusive_or_expression' 'inclusive_or_expression' 'conditional_and_expression' 'conditional_or_expression' 'null_coalescing_expression' 'throw_expression' 'declaration_expression' 'conditional_expression' 'lambda_expression' 'anonymous_method_expression' 'anonymous_function_signature' '_explicit_anonymous_function_signature' 'explicit_anonymous_function_signature' '_explicit_anonymous_function_paramenter_list' 'explicit_anonymous_function_paramenter_list' 'explicit_anonymous_function_paramenter' '_anonymous_function_parameter_modifier' 'anonymous_function_parameter_modifier' 'implicit_anonymous_function_signature' 'implicit_anonymous_function_parameter_list' 'implicit_anonymous_function_parameter' 'anonymous_function_body' 'RefExpression' 'query_expression' 'from_clause' 'query_body' '_query_body_clauses' 'query_body_clauses' 'query_body_clause' 'let_clause' 'where_clause' 'join_clause' 'join_into_clause' 'orderby_clause' 'orderings' 'ordering' '_ordering_direction' 'ordering_direction' 'select_or_group_clause' 'select_clause' 'group_clause' '_query_continuation' 'query_continuation' 'assignment' 'assignment_operator' '_expression' 'expression' 'non_assignment_expression' 'constant_expression' 'boolean_expression' 'statement' 'embedded_statement' 'block' '_statement_list' 'statement_list' 'empty_statement' 'labeled_statement' 'declaration_statement' 'local_function_declaration' 'RefLocalFunctionHeader' 'ref_local_function_modifier*' 'LocalFunctionHeader' 'local_function_modifier+' 'local_function_header' 'local_function_modifier' 'ref_local_function_modifier' 'local_function_body' 'ref_local_function_body' 'local_variable_declaration' 'local_using_declaration' 'using_declarators' 'using_declarator' 'implicitly_typed_local_variable_declaration' 'ref_local_variable_declarator' 'ref_kind' 'implicitly_typed_local_variable_declarator' 'explicitly_typed_local_variable_declaration' 'explicitly_typed_local_variable_declarators' '("," explicitly_typed_local_variable_declarator ''declarator'')' '("," explicitly_typed_local_variable_declarator ''declarator'')*' 'explicitly_typed_local_variable_declarator' 'ref_local_variable_declaration' 'ref_local_variable_declarators' '("," ref_local_variable_declarator ''declarator'')' '("," ref_local_variable_declarator ''declarator'')*' 'local_variable_type' 'VarType' 'local_variable_initializer' 'local_constant_declaration' 'const_declarators' 'const_declarator' 'expression_statement' 'statement_expression' 'selection_statement' 'if_statement' 'switch_statement' 'switch_block' '_switch_sections' 'switch_sections' 'switch_section' 'switch_labels' 'switch_label' 'case_guard' 'iteration_statement' 'while_statement' 'do_statement' 'for_statement' '_for_initializer' 'for_initializer' '_for_condition' 'for_condition' '_for_iterator' 'for_iterator' 'statement_expression_list' 'foreach_statement' 'jump_statement' 'break_statement' 'continue_statement' 'goto_statement' 'return_statement' 'throw_statement' 'try_statement' 'catch_clauses' 'specific_catch_clause ''clause''+' 'specific_catch_clause ''clause''*' 'specific_catch_clause' 'exception_specifier' '_exception_filter' 'exception_filter' 'general_catch_clause' 'finally_clause' 'checked_statement' 'unchecked_statement' 'lock_statement' 'using_statement' 'resource_acquisition' 'yield_statement' 'class_declaration' 'any_modifier ''modifier''*' 'class_designator' '_type_parameter_list' 'type_parameter_list' 'type_parameters' 'type_parameter' '_class_base' 'class_base' 'interface_type_list' '_type_parameter_constraints_clauses' 'type_parameter_constraints_clauses' 'type_parameter_constraints_clause' 'type_parameter_constraints' 'allows_type_parameter_constraints_clause' 'allows_type_parameter_constraints' 'allows_type_parameter_constraint' 'ref_struct_clause' 'restrictive_type_parameter_constraints' 'primary_constraint' 'secondary_constraints' 'interface_type_constraint' 'constructor_constraint' 'class_body' '_class_member_declarations' 'class_member_declarations' 'class_member_declaration' 'constant_declaration' 'constant_declarators' 'constant_declarator' 'field_declaration' 'variable_declarators' 'variable_declarator' 'variable_initializer' 'method_declaration' 'RefMethodHeader' 'method_header' 'return_type' 'ref_return_type' 'member_name' 'method_body' 'ref_method_body' '_formal_parameters_list' 'formal_parameters_list' 'fixed_parameters' 'fixed_parameter' '_default_argument' 'default_argument' '_parameter_modifier' 'parameter_modifier' 'parameter_mode_modifier' 'parameter_collection' 'property_declaration' 'property_body' '_property_initializer' 'property_initializer' 'ref_property_body' 'accessor_declarations' '_get_accessor_declaration' 'get_accessor_declaration' '_set_accessor_declaration' 'set_accessor_declaration' '_accessor_modifiers' 'accessor_modifiers' 'accessor_body' 'ref_get_accessor_declaration' 'ref_accessor_body' 'event_declaration' 'event_accessor_declarations' 'add_accessor_declaration' 'remove_accessor_declaration' 'indexer_declaration' 'indexer_declarator' 'indexer_body' 'ref_indexer_body' 'operator_declaration' 'any_modifier ''modifier''+' 'operator_declarator' 'unary_operator_declarator' 'overloadable_unary_operator' 'binary_operator_declarator' 'overloadable_binary_operator' 'conversion_operator_declarator' 'operator_body' 'constructor_declaration' 'constructor_declarator' '_constructor_initializer' 'constructor_initializer' 'constructor_body' 'static_constructor_declaration' 'static_constructor_modifiers' 'static_constructor_body' 'struct_declaration' '_struct_interfaces' 'struct_interfaces' 'struct_body' '_struct_member_declarations' 'struct_member_declarations' 'struct_member_declaration' '_array_initializer' 'array_initializer' '_variable_initializer_list' 'variable_initializer_list' 'interface_declaration' '_variant_type_parameter_list' 'variant_type_parameter_list' 'variant_type_parameters' '_variance_annotation' 'variance_annotation' '_interface_base' 'interface_base' 'interface_body' '_interface_member_declarations' 'interface_member_declarations' 'interface_member_declaration' 'interface_method_declaration' 'interface_method_header' 'interface_event_declaration' 'enum_declaration' '_enum_base' 'enum_base' 'integral_type_name' 'enum_body' '_enum_member_declarations' 'enum_member_declarations' 'enum_member_declaration' 'delegate_declaration' 'delegate_header' '_global_attributes' 'global_attributes' 'global_attribute_sections' 'global_attribute_section' 'global_attribute_target_specifier' 'global_attribute_target' '_attributes' 'attributes' 'attribute_sections' 'attribute_section' '_attribute_target_specifier' 'attribute_target_specifier' 'attribute_target' 'attribute_list' 'attribute' 'attribute_name' '_attribute_arguments' 'attribute_arguments' '_positional_argument_list' 'positional_argument_list' 'positional_argument' 'named_argument_list' 'named_argument' 'attribute_argument_expression' 'literal' 'boolean_literal' '_semicolon' '_new' '_partial' '_extern' '_identifier' 'finalizer_declaration' 'finalizer_body' 'unsafe_modifier' 'unsafe_statement' 'pointer_type' '"*"+' 'funcptr_type' 'funcptr_return_type' 'funcptr_return_modifier' 'funcptr_parameter_list' '(funcptr_parameter ''parameter'' "," ''comma'')' '(funcptr_parameter ''parameter'' "," ''comma'')*' 'funcptr_parameter' 'funcptr_parameter_modifier' 'calling_convention_specifier' 'unmanaged_calling_convention' '("," ''comma'' <Identifier> ''convention'')' '("," ''comma'' <Identifier> ''convention'')*' 'unmanaged_type' 'pointer_indirection_expression' 'pointer_member_access' 'addressof_expression' 'sizeof_expression' 'fixed_statement' 'fixed_pointer_declarators' 'fixed_pointer_declarator' 'fixed_pointer_initializer' 'fixed_size_buffer_declaration' 'buffer_element_type' 'fixed_size_buffer_declarators' 'fixed_size_buffer_declarator' 'stackalloc_initializer' 'stackalloc_initializer_element_list' '("," stackalloc_element_initializer)' '("," stackalloc_element_initializer)*' 'stackalloc_element_initializer' 'void_type' 'any_modifier' '<MultiLineInterpolatedRegularStringEnd>' '<MultiLineInterpolatedRegularStringMid>' '<MultiLineInterpolatedRegularStringStart>' '<MultiLineInterpolatedRegularStringWhole>' 'E O F' 'error')
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSharpParser class >> symbolTypes [
 	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #CSCompilationUnitNode #CSCompilationUnitNode #OrderedCollection #OrderedCollection #CSFileScopedNamespaceDeclarationNode #OrderedCollection #CSProgramNode #CSGlobalUsingStaticDirectiveNode #CSGlobalUsingNamespaceDirectiveNode #CSGlobalUsingAliasDirectiveNode #CSNamespaceDeclarationNode #CSQualifiedIdentifierNode #OrderedCollection #OrderedCollection #OrderedCollection #CSExternAliasDirectiveNode #OrderedCollection #OrderedCollection #CSUsingDirectiveNode #CSUsingAliasDirectiveNode #CSUsingNamespaceDirectiveNode #CSUsingStaticDirectiveNode #OrderedCollection #OrderedCollection #CSDeclarationNode #CSDeclarationNode #OrderedCollection #CSQualifiedAliasMemberNode #CSTypeNode #CSTypeNode #CSTypeNode #CSTypeNode #CSTypeNode #CSTypeNode #CSNullableTypeNode #CSTypeNode #CSTupleTypeNode #OrderedCollection #OrderedCollection #CSTupleTypeElementNode #CSSimpleTypeNode #SmaCCToken #SmaCCToken #SmaCCToken #CSTypeNode #CSTypeNode #CSNullableReferenceTypeNode #CSTypeNode #CSTypeNode #CSTypeNode #CSArrayTypeNode #CSTypeNode #OrderedCollection #OrderedCollection #CSRankSpecifierNode #OrderedCollection #OrderedCollection #CSTypeNode #CSTypeArgumentListNode #OrderedCollection #CSTypeNode #CSExpressionNode #CSExpressionNode #CSExpressionNode #CSExpressionNode #CSExpressionNode #CSExpressionNode #CSSlicePatternNode #CSListPatternNode #OrderedCollection #OrderedCollection #OrderedCollection #CSRelationalPatternNode #CSDeclarationExpressionNode #CSPropertyPatternNode #OrderedCollection #CSPositionalPatternNode #OrderedCollection #OrderedCollection #CSSubpatternNode #CSQualifiedIdentifierNode #CSDeclarationExpressionNode #CSProgramNode #CSTupleDesignationNode #OrderedCollection #CSExpressionNode #CSDeclarationExpressionNode #CSVariableDesignationNode #SmaCCToken #OrderedCollection #OrderedCollection #CSArgumentNode #OrderedCollection #OrderedCollection #OrderedCollection #CSExpressionNode #CSPostExpressionNode #CSExpressionNode #CSCollectionExpressionNode #OrderedCollection #OrderedCollection #CSExpressionNode #CSSpreadExpressionNode #CSExpressionNode #CSInterpolatedStringExpressionNode #OrderedCollection #OrderedCollection #ByteSymbol #OrderedCollection #ByteSymbol #OrderedCollection #CSInterpolationNode #OrderedCollection #Object #OrderedCollection #ByteSymbol #OrderedCollection #CSSimpleNameNode #CSTypeArgumentListNode #CSExpressionNode #CSExpressionNode #OrderedCollection #OrderedCollection #CSTupleElementNode #CSDeconstructionExpressionNode #CSDeconstructionTupleNode #OrderedCollection #OrderedCollection #CSProgramNode #CSMemberAccessNode #CSTypeExpressionNode #CSTypeExpressionNode #CSSimpleTypeNode #CSInvocationExpressionNode #CSElementAccessNode #OrderedCollection #CSThisAccessNode #CSBaseAccessNode #CSPostExpressionNode #CSPostExpressionNode #CSObjectCreationExpressionNode #CSProgramNode #CSProgramNode #CSObjectInitializerNode #OrderedCollection #OrderedCollection #CSMemberInitializerNode #OrderedCollection #CSProgramNode #CSCollectionInitializerNode #OrderedCollection #CSElementInitializerNode #CSArrayCreationExpressionNode #CSDelegateCreationExpressionNode #CSAnonymousObjectCreationExpressionNode #OrderedCollection #OrderedCollection #OrderedCollection #CSMemberDeclaratorNode #CSTypeofExpressionNode #CSUnboundTypeNameNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CSCheckedExpressionNode #CSUncheckedExpressionNode #CSDefaultValueExpressionNode #CSStackallocExpressionNode #CSNameofExpressionNode #CSNamedEntityNode #OrderedCollection #OrderedCollection #CSExpressionNode #CSExpressionNode #CSNullConditionalMemberAccessNode #OrderedCollection #CSProgramNode #CSNullConditionalMemberAccessNode #CSInvocationExpressionNode #CSElementAccessNode #CSPrefixExpressionNode #CSPrefixExpressionNode #CSCastExpressionNode #CSAwaitExpressionNode #CSExpressionNode #CSExpressionNode #OrderedCollection #CSSwitchExpressionArmNode #CSExpressionNode #CSExpressionNode #CSExpressionNode #CSExpressionNode #CSExpressionNode #CSExpressionNode #CSExpressionNode #CSExpressionNode #CSExpressionNode #CSExpressionNode #CSExpressionNode #CSThrowExpressionNode #CSDeclarationExpressionNode #CSExpressionNode #CSLambdaExpressionNode #CSAnonymousMethodExpressionNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CSAnonymousFunctionParameterNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CSAnonymousFunctionParameterNode #CSProgramNode #CSRefExpressionNode #CSQueryExpressionNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CSAssignmentNode #OrderedCollection #CSExpressionNode #CSExpressionNode #CSExpressionNode #CSExpressionNode #CSExpressionNode #CSStatementNode #CSStatementNode #CSBlockStatementNode #OrderedCollection #OrderedCollection #CSEmptyStatementNode #CSLabeledStatementNode #CSStatementNode #CSLocalFunctionDeclarationStatementNode #CSMethodHeaderNode #OrderedCollection #CSMethodHeaderNode #OrderedCollection #CSMethodHeaderNode #SmaCCToken #SmaCCToken #CSMethodBodyNode #CSMethodBodyNode #CSProgramNode #CSLocalUsingDeclarationNode #OrderedCollection #CSUsingDeclaratorNode #OrderedCollection #CSLocalVariableDeclaratorNode #OrderedCollection #CSLocalVariableDeclaratorNode #CSLocalVariableDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #CSLocalVariableDeclaratorNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CSTypeNode #CSVarTypeNode #CSExpressionNode #CSLocalConstantDeclarationNode #OrderedCollection #CSConstantDeclaratorNode #CSExpressionStatementNode #CSExpressionNode #CSStatementNode #CSIfStatementNode #CSSwitchStatementNode #OrderedCollection #OrderedCollection #OrderedCollection #CSSwitchSectionNode #OrderedCollection #CSSwitchLabelNode #OrderedCollection #CSStatementNode #CSWhileStatementNode #CSDoStatementNode #CSForStatementNode #CSProgramNode #CSProgramNode #CSExpressionNode #CSExpressionNode #CSStatementListNode #CSStatementListNode #OrderedCollection #CSForeachStatementNode #CSStatementNode #CSBreakStatementNode #CSContinueStatementNode #CSGotoStatementNode #CSReturnStatementNode #CSThrowStatementNode #CSTryStatementNode #OrderedCollection #OrderedCollection #OrderedCollection #CSCatchClauseNode #OrderedCollection #CSExceptionFilterNode #CSExceptionFilterNode #CSCatchClauseNode #CSFinallyClauseNode #CSCheckedStatementNode #CSUncheckedStatementNode #CSLockStatementNode #CSUsingStatementNode #CSProgramNode #CSYieldStatementNode #CSClassDeclarationNode #OrderedCollection #OrderedCollection #CSTypeParameterListNode #CSTypeParameterListNode #OrderedCollection #CSTypeNameNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CSTypeParameterConstraintsClauseNode #OrderedCollection #OrderedCollection #OrderedCollection #CSTypeConstraintNode #OrderedCollection #OrderedCollection #CSProgramNode #OrderedCollection #CSTypeConstraintNode #CSConstructorConstraintNode #OrderedCollection #OrderedCollection #OrderedCollection #CSProgramNode #CSConstantDeclarationNode #OrderedCollection #CSConstantDeclaratorNode #CSFieldDeclarationNode #OrderedCollection #CSProgramNode #CSExpressionNode #CSMethodDeclarationNode #CSMethodHeaderNode #CSMethodHeaderNode #CSTypeNode #CSTypeNode #OrderedCollection #CSMethodBodyNode #CSMethodBodyNode #OrderedCollection #OrderedCollection #OrderedCollection #CSFixedParameterNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CSArrayParameterNode #CSPropertyDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CSGetAccessorDeclarationNode #CSGetAccessorDeclarationNode #CSSetAccessorDeclarationNode #CSSetAccessorDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #CSGetAccessorDeclarationNode #OrderedCollection #CSEventDeclarationNode #OrderedCollection #CSAddAccessorDeclarationNode #CSRemoveAccessorDeclarationNode #CSIndexerDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #CSOperatorDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CSMethodBodyNode #CSConstructorDeclarationNode #OrderedCollection #CSConstructorInitializerNode #CSConstructorInitializerNode #CSMethodBodyNode #CSStaticConstructorDeclarationNode #OrderedCollection #OrderedCollection #CSStructDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CSDeclarationNode #CSArrayInitializerNode #CSArrayInitializerNode #OrderedCollection #OrderedCollection #CSInterfaceDeclarationNode #CSVariantTypeParameterListNode #CSVariantTypeParameterListNode #OrderedCollection #SmaCCToken #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CSDeclarationNode #CSInterfaceMethodDeclarationNode #OrderedCollection #CSInterfaceEventDeclarationNode #CSEnumDeclarationNode #OrderedCollection #OrderedCollection #CSTypeNode #OrderedCollection #OrderedCollection #OrderedCollection #CSEnumDeclarationNode #CSDelegateDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CSAttributeNode #OrderedCollection #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #CSAttributeNode #OrderedCollection #OrderedCollection #SmaCCToken #OrderedCollection #CSAttributeValueNode #CSTypeNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CSArgumentNode #OrderedCollection #CSNamedArgumentNode #CSExpressionNode #CSLiteralExpressionNode #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #CSFinalizerDeclarationNode #CSMethodBodyNode #SmaCCToken #CSUnsafeStatementNode #CSTypeNode #OrderedCollection #CSFunctionPointerTypeNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CSFunctionPointerParameterNode #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CSTypeNode #CSPrefixExpressionNode #CSPointerMemberAccessNode #CSPrefixExpressionNode #CSSizeofExpressionNode #CSFixedStatementNode #OrderedCollection #CSFixedPointerDeclaratorNode #OrderedCollection #CSFixedSizeBufferDeclarationNode #CSTypeNode #OrderedCollection #CSFixedSizeBufferDeclaratorNode #CSStackallocInitializerNode #OrderedCollection #OrderedCollection #OrderedCollection #CSExpressionNode #CSVoidTypeNode #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCErrorNode)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSharpParser class >> transitionTable [
 ^#(
 #[1 0 6 0 1 0 6 0 5 0 6 0 8 0 6 0 10 0 6 0 12 0 6 0 13 0 6 0 16 0 6 0 17 0 6 0 26 0 6 0 39 0 6 0 41 0 6 0 44 0 6 0 51 0 6 0 52 0 6 0 53 0 6 0 54 0 6 0 55 0 6 0 57 0 6 0 60 0 6 0 61 0 6 0 62 0 6 0 63 0 6 0 64 0 6 0 65 0 6 0 66 0 6 0 67 0 6 0 69 0 6 0 70 0 6 0 71 0 6 0 73 0 7 0 77 0 6 0 78 0 6 0 80 0 6 0 82 0 6 0 83 0 6 0 84 0 6 0 85 0 6 0 88 0 6 0 89 0 6 0 91 0 6 0 95 0 6 0 96 0 6 0 97 0 6 0 102 0 6 0 103 0 6 0 106 0 6 0 107 0 6 0 108 0 6 0 111 0 6 0 117 0 6 0 120 0 6 0 121 0 6 0 123 0 6 0 124 0 6 0 125 0 6 0 126 0 6 0 127 0 6 0 129 0 6 0 130 0 6 0 131 0 6 0 132 0 6 0 133 0 6 0 136 0 6 0 137 0 6 0 138 0 6 0 139 0 6 0 140 0 6 0 141 0 6 0 142 0 6 0 143 0 6 0 144 0 6 0 145 0 6 0 146 0 6 0 148 0 6 0 149 0 6 0 150 0 6 0 151 0 6 0 153 0 6 0 154 0 6 0 155 0 6 0 156 0 6 0 157 0 6 0 158 0 6 0 159 0 6 0 162 0 6 0 163 0 6 0 164 0 6 0 168 0 6 0 174 0 6 0 175 0 6 0 176 0 6 0 177 0 6 0 179 0 6 0 180 0 6 0 183 0 6 0 184 0 6 0 187 0 6 0 188 0 33 0 194 0 37 0 206 0 41 0 207 0 45 0 208 0 6 2 212 0 6 2 213 0 6 2 214] 
@@ -4969,7 +4970,7 @@ CSharpParser class >> transitionTable [
 #[0 11 109 0 174] 
 #[1 5 77 0 8 5 81 0 54 1 181 0 57 1 181 0 60 1 181 0 65 5 97 0 67 1 181 0 70 0 209 0 71 1 181 0 83 1 181 0 95 1 181 0 103 5 117 0 111 1 181 0 131 1 181 0 136 5 129 0 140 1 181 0 149 1 181 0 150 1 181 0 154 1 93 0 158 5 145 0 174 1 153 0 220 1 193 0 222 1 153 0 223 11 113 0 225 1 161 0 226 1 161 0 227 1 193 0 228 1 193 0 229 1 193 0 233 1 181 0 234 1 181 0 235 1 181 0 236 1 193 0 237 11 113 0 238 11 113 0 239 1 205 0 240 11 113 0 243 1 213 0 244 11 117 0 252 11 121 0 253 3 61 2 176 3 61 2 178 3 89 2 208] 
 #[0 4 70 0 1 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 9 0 10 0 11 0 12 0 13 0 14 0 15 0 16 0 17 0 18 0 19 0 20 0 21 0 22 0 23 0 24 0 26 0 27 0 28 0 29 0 30 0 31 0 32 0 33 0 34 0 35 0 36 0 37 0 38 0 39 0 40 0 41 0 42 0 44 0 48 0 49 0 50 0 51 0 52 0 53 0 54 0 55 0 56 0 57 0 58 0 60 0 61 0 62 0 63 0 64 0 65 0 66 0 67 0 68 0 69 0 70 0 71 0 72 0 73 0 74 0 77 0 78 0 80 0 82 0 83 0 84 0 85 0 86 0 89 0 90 0 91 0 95 0 96 0 97 0 98 0 99 0 100 0 101 0 102 0 103 0 106 0 107 0 108 0 111 0 112 0 113 0 114 0 115 0 117 0 120 0 121 0 123 0 124 0 125 0 126 0 127 0 129 0 130 0 131 0 132 0 133 0 134 0 136 0 137 0 138 0 139 0 140 0 141 0 142 0 143 0 144 0 145 0 146 0 148 0 149 0 150 0 151 0 153 0 154 0 155 0 156 0 157 0 158 0 159 0 160 0 161 0 162 0 163 0 164 0 165 0 166 0 167 0 168 0 169 0 170 0 171 0 172 0 174 0 175 0 176 0 177 0 179 0 180 0 181 0 182 0 183 0 184 0 185 0 186 0 187 0 188 2 210 2 211 2 212 2 213 2 214] 
-#[1 2 207 0 1 2 207 0 2 4 74 0 3 4 74 0 4 2 207 0 5 2 207 0 6 4 74 0 7 2 207 0 8 2 207 0 9 2 207 0 10 4 74 0 11 2 207 0 12 2 207 0 13 4 74 0 14 2 207 0 15 2 207 0 16 2 207 0 17 4 74 0 18 4 74 0 19 2 207 0 20 2 207 0 21 4 74 0 22 4 74 0 23 2 207 0 24 2 207 0 26 2 207 0 27 4 74 0 28 4 74 0 29 2 207 0 30 4 74 0 31 2 207 0 32 2 207 0 33 2 207 0 34 4 74 0 35 4 74 0 36 2 207 0 37 2 207 0 38 2 207 0 39 2 207 0 40 2 207 0 41 4 74 0 42 2 207 0 44 2 207 0 48 2 207 0 49 2 207 0 50 2 207 0 51 2 207 0 52 2 207 0 53 2 207 0 54 2 207 0 55 2 207 0 56 2 207 0 57 2 207 0 58 2 207 0 60 2 207 0 61 2 207 0 62 2 207 0 63 2 207 0 64 2 207 0 65 2 207 0 66 2 207 0 67 2 207 0 68 2 207 0 69 2 207 0 70 2 207 0 71 2 207 0 72 2 207 0 73 2 207 0 74 2 207 0 77 2 207 0 78 2 207 0 80 2 207 0 82 2 207 0 83 2 207 0 84 2 207 0 85 2 207 0 86 2 207 0 89 2 207 0 90 2 207 0 91 2 207 0 95 2 207 0 96 2 207 0 97 2 207 0 98 2 207 0 99 2 207 0 100 2 207 0 101 2 207 0 102 2 207 0 103 2 207 0 106 2 207 0 107 2 207 0 108 2 207 0 111 2 207 0 112 2 207 0 114 2 207 0 115 2 207 0 117 2 207 0 120 2 207 0 121 2 207 0 123 2 207 0 124 2 207 0 125 2 207 0 126 2 207 0 127 2 207 0 129 2 207 0 130 2 207 0 131 2 207 0 132 2 207 0 133 2 207 0 134 2 207 0 136 2 207 0 137 2 207 0 138 2 207 0 139 2 207 0 140 2 207 0 141 2 207 0 142 2 207 0 143 2 207 0 144 2 207 0 145 2 207 0 146 2 207 0 148 2 207 0 149 2 207 0 150 2 207 0 151 2 207 0 153 2 207 0 154 2 207 0 155 2 207 0 156 2 207 0 157 2 207 0 158 2 207 0 159 2 207 0 160 2 207 0 161 2 207 0 162 2 207 0 163 2 207 0 164 2 207 0 165 4 74 0 166 2 207 0 167 2 207 0 168 2 207 0 169 4 74 0 170 4 74 0 171 2 207 0 172 2 207 0 174 2 207 0 175 2 207 0 176 2 207 0 177 2 207 0 179 2 207 0 180 2 207 0 181 2 207 0 182 2 207 0 183 2 207 0 184 2 207 0 185 2 207 0 186 2 207 0 187 2 207 0 188 2 207 2 210 2 207 2 211 2 207 2 212 2 207 2 213 2 207 2 214] 
+#[1 2 207 0 1 2 207 0 2 4 78 0 3 4 78 0 4 2 207 0 5 2 207 0 6 4 78 0 7 2 207 0 8 2 207 0 9 2 207 0 10 4 78 0 11 2 207 0 12 2 207 0 13 4 78 0 14 2 207 0 15 2 207 0 16 2 207 0 17 4 78 0 18 4 78 0 19 2 207 0 20 2 207 0 21 4 78 0 22 4 78 0 23 2 207 0 24 2 207 0 26 2 207 0 27 4 78 0 28 4 78 0 29 2 207 0 30 4 78 0 31 2 207 0 32 2 207 0 33 2 207 0 34 4 78 0 35 4 78 0 36 2 207 0 37 2 207 0 38 2 207 0 39 2 207 0 40 2 207 0 41 4 78 0 42 2 207 0 44 2 207 0 48 2 207 0 49 2 207 0 50 2 207 0 51 2 207 0 52 2 207 0 53 2 207 0 54 2 207 0 55 2 207 0 56 2 207 0 57 2 207 0 58 2 207 0 60 2 207 0 61 2 207 0 62 2 207 0 63 2 207 0 64 2 207 0 65 2 207 0 66 2 207 0 67 2 207 0 68 2 207 0 69 2 207 0 70 2 207 0 71 2 207 0 72 2 207 0 73 2 207 0 74 2 207 0 77 2 207 0 78 2 207 0 80 2 207 0 82 2 207 0 83 2 207 0 84 2 207 0 85 2 207 0 86 2 207 0 89 2 207 0 90 2 207 0 91 2 207 0 95 2 207 0 96 2 207 0 97 2 207 0 98 2 207 0 99 2 207 0 100 2 207 0 101 2 207 0 102 2 207 0 103 2 207 0 106 2 207 0 107 2 207 0 108 2 207 0 111 2 207 0 112 2 207 0 114 2 207 0 115 2 207 0 117 2 207 0 120 2 207 0 121 2 207 0 123 2 207 0 124 2 207 0 125 2 207 0 126 2 207 0 127 2 207 0 129 2 207 0 130 2 207 0 131 2 207 0 132 2 207 0 133 2 207 0 134 2 207 0 136 2 207 0 137 2 207 0 138 2 207 0 139 2 207 0 140 2 207 0 141 2 207 0 142 2 207 0 143 2 207 0 144 2 207 0 145 2 207 0 146 2 207 0 148 2 207 0 149 2 207 0 150 2 207 0 151 2 207 0 153 2 207 0 154 2 207 0 155 2 207 0 156 2 207 0 157 2 207 0 158 2 207 0 159 2 207 0 160 2 207 0 161 2 207 0 162 2 207 0 163 2 207 0 164 2 207 0 165 4 78 0 166 2 207 0 167 2 207 0 168 2 207 0 169 4 78 0 170 4 78 0 171 2 207 0 172 2 207 0 174 2 207 0 175 2 207 0 176 2 207 0 177 2 207 0 179 2 207 0 180 2 207 0 181 2 207 0 182 2 207 0 183 2 207 0 184 2 207 0 185 2 207 0 186 2 207 0 187 2 207 0 188 2 207 2 210 2 207 2 211 2 207 2 212 2 207 2 213 2 207 2 214] 
 #[0 11 125 0 174] 
 #[1 4 82 0 9 4 82 0 15 4 82 0 26 11 129 0 31] 
 #[0 4 86 0 9 0 26] 
@@ -5153,7 +5154,7 @@ CSharpParser class >> transitionTable [
 #[0 5 170 0 8 0 44 0 51 0 54 0 57 0 60 0 62 0 63 0 65 0 67 0 70 0 71 0 73 0 75 0 76 0 77 0 80 0 82 0 83 0 92 0 95 0 96 0 97 0 103 0 108 0 111 0 117 0 120 0 121 0 123 0 124 0 125 0 126 0 127 0 129 0 131 0 133 0 136 0 139 0 140 0 141 0 149 0 150 0 153 0 154 0 157 0 158 0 159 0 174] 
 #[0 5 242 0 8 0 44 0 51 0 54 0 57 0 60 0 62 0 63 0 65 0 67 0 70 0 71 0 73 0 75 0 77 0 80 0 82 0 83 0 95 0 96 0 97 0 103 0 108 0 111 0 117 0 120 0 121 0 123 0 124 0 125 0 126 0 127 0 129 0 131 0 133 0 136 0 139 0 140 0 141 0 149 0 150 0 153 0 154 0 157 0 158 0 159 0 174] 
 #[1 2 230 0 8 9 101 0 9 1 66 0 37 1 179 0 174] 
-#[0 4 74 0 1 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 9 0 10 0 11 0 12 0 13 0 14 0 15 0 16 0 17 0 18 0 19 0 20 0 21 0 22 0 23 0 24 0 26 0 27 0 28 0 29 0 30 0 31 0 32 0 33 0 34 0 35 0 36 0 37 0 38 0 39 0 40 0 41 0 42 0 44 0 48 0 49 0 50 0 51 0 52 0 53 0 54 0 55 0 56 0 57 0 58 0 60 0 61 0 62 0 63 0 64 0 65 0 66 0 67 0 68 0 69 0 70 0 71 0 72 0 73 0 74 0 77 0 78 0 80 0 82 0 83 0 84 0 85 0 86 0 89 0 90 0 91 0 95 0 96 0 97 0 98 0 99 0 100 0 101 0 102 0 103 0 106 0 107 0 108 0 111 0 112 0 114 0 115 0 117 0 120 0 121 0 123 0 124 0 125 0 126 0 127 0 129 0 130 0 131 0 132 0 133 0 134 0 136 0 137 0 138 0 139 0 140 0 141 0 142 0 143 0 144 0 145 0 146 0 148 0 149 0 150 0 151 0 153 0 154 0 155 0 156 0 157 0 158 0 159 0 160 0 161 0 162 0 163 0 164 0 165 0 166 0 167 0 168 0 169 0 170 0 171 0 172 0 174 0 175 0 176 0 177 0 179 0 180 0 181 0 182 0 183 0 184 0 185 0 186 0 187 0 188 2 210 2 211 2 212 2 213 2 214] 
+#[0 4 78 0 1 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 9 0 10 0 11 0 12 0 13 0 14 0 15 0 16 0 17 0 18 0 19 0 20 0 21 0 22 0 23 0 24 0 26 0 27 0 28 0 29 0 30 0 31 0 32 0 33 0 34 0 35 0 36 0 37 0 38 0 39 0 40 0 41 0 42 0 44 0 48 0 49 0 50 0 51 0 52 0 53 0 54 0 55 0 56 0 57 0 58 0 60 0 61 0 62 0 63 0 64 0 65 0 66 0 67 0 68 0 69 0 70 0 71 0 72 0 73 0 74 0 77 0 78 0 80 0 82 0 83 0 84 0 85 0 86 0 89 0 90 0 91 0 95 0 96 0 97 0 98 0 99 0 100 0 101 0 102 0 103 0 106 0 107 0 108 0 111 0 112 0 114 0 115 0 117 0 120 0 121 0 123 0 124 0 125 0 126 0 127 0 129 0 130 0 131 0 132 0 133 0 134 0 136 0 137 0 138 0 139 0 140 0 141 0 142 0 143 0 144 0 145 0 146 0 148 0 149 0 150 0 151 0 153 0 154 0 155 0 156 0 157 0 158 0 159 0 160 0 161 0 162 0 163 0 164 0 165 0 166 0 167 0 168 0 169 0 170 0 171 0 172 0 174 0 175 0 176 0 177 0 179 0 180 0 181 0 182 0 183 0 184 0 185 0 186 0 187 0 188 2 210 2 211 2 212 2 213 2 214] 
 #[1 0 105 0 1 0 109 0 5 0 107 0 8 0 117 0 10 0 121 0 12 0 125 0 13 0 129 0 16 0 133 0 17 3 97 0 21 3 101 0 39 0 145 0 41 3 105 0 51 0 153 0 52 0 157 0 53 0 161 0 54 0 169 0 57 0 173 0 60 3 109 0 61 0 189 0 65 0 193 0 66 0 197 0 67 0 205 0 70 0 209 0 71 3 53 0 78 0 221 0 83 3 113 0 86 0 241 0 95 0 249 0 103 0 253 0 106 1 1 0 108 1 5 0 111 1 17 0 131 1 25 0 136 1 29 0 137 1 33 0 138 1 37 0 140 1 45 0 143 3 117 0 144 3 53 0 145 1 61 0 148 1 65 0 149 1 69 0 150 3 121 0 151 1 81 0 154 1 89 0 156 1 93 0 158 1 109 0 168 0 111 0 174 1 117 0 175 1 121 0 176 1 125 0 177 1 129 0 179 0 18 0 180 1 133 0 183 0 22 0 184 1 137 0 187 1 141 0 188 1 145 0 220 1 193 0 222 1 153 0 223 3 129 0 224 3 133 0 225 1 161 0 226 1 161 0 227 1 193 0 228 1 193 0 229 1 193 0 233 1 181 0 234 1 181 0 235 1 181 0 236 1 193 0 237 3 133 0 238 3 133 0 239 1 205 0 240 3 133 0 243 1 213 0 244 1 217 1 32 1 217 1 33 1 225 1 34 1 225 1 35 1 225 1 41 1 237 1 42 1 241 1 44 1 245 1 45 1 249 1 46 1 253 1 51 2 1 1 52 1 225 1 54 1 225 1 56 1 225 1 57 1 225 1 61 1 225 1 66 2 25 1 67 2 29 1 68 2 33 1 69 1 225 1 70 1 225 1 71 1 225 1 73 1 225 1 74 1 225 1 75 1 225 1 76 1 225 1 77 1 217 1 89 1 225 1 90 1 225 1 91 1 225 1 96 1 225 1 102 1 225 1 103 1 225 1 104 1 225 1 105 1 225 1 106 3 153 1 111 1 225 1 112 1 225 1 117 3 153 1 118 3 153 1 119 3 153 1 120 3 153 1 121 3 177 1 122 3 177 1 123 3 185 1 126 3 189 1 127 3 193 1 128 3 197 1 129 3 201 1 130 3 205 1 131 3 209 1 132 3 213 1 133 3 217 1 134 3 221 1 135 3 225 1 136 3 225 1 137 14 45 1 138 14 45 1 139 14 45 1 140 1 225 1 141 14 45 1 155 3 249 1 156 14 45 1 175 14 45 1 178 14 45 1 179 4 9 1 217 4 13 1 218 1 225 2 165 3 53 2 166 3 61 2 176 3 61 2 178 3 153 2 191 1 225 2 192 3 153 2 193 1 225 2 194 3 89 2 208 0 26 2 212 3 93 2 213] 
 #[1 0 105 0 1 0 109 0 5 4 149 0 8 0 117 0 10 0 121 0 12 0 125 0 13 0 129 0 16 0 133 0 17 3 101 0 39 0 145 0 41 0 149 0 51 0 153 0 52 0 157 0 53 4 153 0 54 4 157 0 57 4 161 0 60 3 109 0 61 4 165 0 65 0 193 0 66 4 169 0 67 4 173 0 70 3 53 0 78 4 177 0 83 4 181 0 95 4 185 0 103 0 253 0 106 1 1 0 108 4 189 0 111 4 193 0 131 4 197 0 136 1 29 0 137 1 33 0 138 4 201 0 140 1 45 0 143 3 53 0 145 1 61 0 148 4 205 0 149 4 209 0 150 3 121 0 151 4 213 0 154 1 89 0 156 1 109 0 168 4 217 0 174 1 117 0 175 1 121 0 176 1 125 0 177 1 129 0 179 0 18 0 180 1 133 0 183 0 22 0 184 1 137 0 187 1 141 0 188 4 221 0 220 1 217 1 32 1 217 1 33 1 225 1 34 1 225 1 35 1 225 1 41 1 237 1 42 1 241 1 44 1 245 1 45 1 249 1 46 1 253 1 51 2 1 1 52 1 225 1 54 1 225 1 56 1 225 1 57 1 225 1 61 1 225 1 66 2 25 1 67 2 29 1 68 2 33 1 69 1 225 1 70 1 225 1 71 1 225 1 73 1 225 1 74 1 225 1 75 1 225 1 76 1 225 1 77 1 217 1 89 1 225 1 90 1 225 1 91 1 225 1 96 1 225 1 102 1 225 1 103 1 225 1 104 1 225 1 105 1 225 1 106 14 49 1 111 1 225 1 112 1 225 1 117 14 49 1 118 14 49 1 119 14 49 1 120 14 49 1 121 1 225 1 141 4 229 1 218 1 225 2 165 3 53 2 166 14 49 2 191 1 225 2 192 14 49 2 193 1 225 2 194 0 26 2 212 3 93 2 213] 
 #[0 5 246 0 9 0 15] 
@@ -5173,7 +5174,7 @@ CSharpParser class >> transitionTable [
 #[0 6 10 0 15 0 40 0 172] 
 #[0 14 109 0 9] 
 #[1 3 178 0 9 3 178 0 15 1 66 0 37 9 105 0 174] 
-#[0 4 78 0 1 0 2 0 5 0 6 0 8 0 9 0 10 0 12 0 13 0 15 0 16 0 17 0 20 0 21 0 24 0 26 0 27 0 30 0 32 0 33 0 34 0 37 0 38 0 39 0 40 0 41 0 44 0 48 0 49 0 50 0 51 0 52 0 53 0 54 0 55 0 56 0 57 0 58 0 60 0 61 0 62 0 63 0 64 0 65 0 66 0 67 0 68 0 69 0 70 0 71 0 72 0 73 0 74 0 77 0 78 0 80 0 82 0 83 0 84 0 85 0 86 0 89 0 90 0 91 0 95 0 96 0 97 0 98 0 99 0 100 0 101 0 102 0 103 0 106 0 107 0 108 0 111 0 112 0 113 0 114 0 115 0 117 0 120 0 121 0 123 0 124 0 125 0 126 0 127 0 129 0 130 0 131 0 132 0 133 0 134 0 136 0 137 0 138 0 139 0 140 0 141 0 142 0 143 0 144 0 145 0 146 0 148 0 149 0 150 0 151 0 153 0 154 0 155 0 156 0 157 0 158 0 159 0 160 0 161 0 162 0 163 0 164 0 165 0 167 0 168 0 169 0 172 0 174 0 175 0 176 0 177 0 179 0 180 0 181 0 182 0 183 0 184 0 185 0 186 0 187 0 188 2 210 2 211 2 212 2 213 2 214] 
+#[0 4 74 0 1 0 2 0 5 0 6 0 8 0 9 0 10 0 12 0 13 0 15 0 16 0 17 0 20 0 21 0 24 0 26 0 27 0 30 0 32 0 33 0 34 0 37 0 38 0 39 0 40 0 41 0 44 0 48 0 49 0 50 0 51 0 52 0 53 0 54 0 55 0 56 0 57 0 58 0 60 0 61 0 62 0 63 0 64 0 65 0 66 0 67 0 68 0 69 0 70 0 71 0 72 0 73 0 74 0 77 0 78 0 80 0 82 0 83 0 84 0 85 0 86 0 89 0 90 0 91 0 95 0 96 0 97 0 98 0 99 0 100 0 101 0 102 0 103 0 106 0 107 0 108 0 111 0 112 0 113 0 114 0 115 0 117 0 120 0 121 0 123 0 124 0 125 0 126 0 127 0 129 0 130 0 131 0 132 0 133 0 134 0 136 0 137 0 138 0 139 0 140 0 141 0 142 0 143 0 144 0 145 0 146 0 148 0 149 0 150 0 151 0 153 0 154 0 155 0 156 0 157 0 158 0 159 0 160 0 161 0 162 0 163 0 164 0 165 0 167 0 168 0 169 0 172 0 174 0 175 0 176 0 177 0 179 0 180 0 181 0 182 0 183 0 184 0 185 0 186 0 187 0 188 2 210 2 211 2 212 2 213 2 214] 
 #[0 14 113 0 31] 
 #[1 14 117 0 15 6 14 0 26] 
 #[0 6 18 0 15 0 26] 
@@ -6612,7 +6613,7 @@ CSharpParser class >> transitionTable [
 	).
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CSharpParser >> actionsForCurrentToken [
 	| actions |
 	actions := super actionsForCurrentToken.
@@ -6649,7 +6650,7 @@ CSharpParser >> actionsForCurrentToken [
 	^ actions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CSharpParser >> parse [
 	| node |
 	node := super parse.
@@ -6660,7 +6661,7 @@ CSharpParser >> parse [
 	^ node
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForLocalFunctionHeader1: nodes [
 	| result |
 	result := nodes at: 3.
@@ -6669,7 +6670,7 @@ CSharpParser >> reduceActionForLocalFunctionHeader1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForLocalFunctionHeader2: nodes [
 	| result |
 	result := nodes at: 4.
@@ -6679,7 +6680,7 @@ CSharpParser >> reduceActionForLocalFunctionHeader2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForRefExpression1: nodes [
 	| result |
 	result := CSRefExpressionNode new.
@@ -6688,7 +6689,7 @@ CSharpParser >> reduceActionForRefExpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForRefLocalFunctionHeader1: nodes [
 	| result |
 	result := nodes at: 4.
@@ -6698,7 +6699,7 @@ CSharpParser >> reduceActionForRefLocalFunctionHeader1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForRefMethodHeader1: nodes [
 	| result |
 	result := CSMethodHeaderNode new.
@@ -6718,27 +6719,27 @@ CSharpParser >> reduceActionForRefMethodHeader1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForScanFormat1: nodes [
 	^ self scanFormat
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForStartInterpolatedString1: nodes [
 	^ #interpolatedString
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForStartInterpolatedVerbatimString1: nodes [
 	^ #interpolatedVerbatimString
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForStartMultiLineInterpolatedString1: nodes [
 	^ #multiLineInterpolatedString
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForVarType1: nodes [
 	| result |
 	result := CSVarTypeNode new.
@@ -6746,7 +6747,7 @@ CSharpParser >> reduceActionForVarType1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFor______Identifier___type_argument_list__typeArguments__1: nodes [
 	| result |
 	result := Array new: 3.
@@ -6756,7 +6757,7 @@ CSharpParser >> reduceActionFor______Identifier___type_argument_list__typeArgume
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFor______Identifier___type_argument_list__typeArguments___1: nodes [
 	| result |
 	result := Array new: 3.
@@ -6766,7 +6767,7 @@ CSharpParser >> reduceActionFor______Identifier___type_argument_list__typeArgume
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFor______Identifier___type_argument_list__typeArguments___2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -6776,7 +6777,7 @@ CSharpParser >> reduceActionFor______Identifier___type_argument_list__typeArgume
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFor______collection_element__value___1: nodes [
 	| result |
 	result := Array new: 2.
@@ -6785,7 +6786,7 @@ CSharpParser >> reduceActionFor______collection_element__value___1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFor_____tuple_type_element__element___1: nodes [
 	| result |
 	result := Array new: 2.
@@ -6796,7 +6797,7 @@ CSharpParser >> reduceActionFor_____tuple_type_element__element___1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFor_____tuple_type_element__element___2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -6805,7 +6806,7 @@ CSharpParser >> reduceActionFor_____tuple_type_element__element___2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFor_attribute_arguments1: nodes [
 	| result |
 	result := Array new: 4.
@@ -6814,14 +6815,14 @@ CSharpParser >> reduceActionFor_attribute_arguments1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFor_attribute_target_specifier1: nodes [
 	| result |
 	result := Array new: 2.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFor_class_base1: nodes [
 	| result |
 	result := Array new: 7.
@@ -6832,21 +6833,21 @@ CSharpParser >> reduceActionFor_class_base1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFor_extern_alias_directives1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFor_extern_alias_directives2: nodes [
 	| result |
 	result := nodes at: 1.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFor_generic_dimension_specifier1: nodes [
 	| result |
 	result := Array new: 3.
@@ -6854,7 +6855,7 @@ CSharpParser >> reduceActionFor_generic_dimension_specifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFor_interface_base1: nodes [
 	| result |
 	result := Array new: 3.
@@ -6863,14 +6864,14 @@ CSharpParser >> reduceActionFor_interface_base1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFor_property_initializer1: nodes [
 	| result |
 	result := Array new: 3.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFor_query_body_clauses1: nodes [
 	| result |
 	result := Array new: 19.
@@ -6896,7 +6897,7 @@ CSharpParser >> reduceActionFor_query_body_clauses1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFor_query_continuation1: nodes [
 	| result |
 	result := Array new: 24.
@@ -6927,7 +6928,7 @@ CSharpParser >> reduceActionFor_query_continuation1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForadd_accessor_declaration1: nodes [
 	| result |
 	result := CSAddAccessorDeclarationNode new.
@@ -6937,7 +6938,7 @@ CSharpParser >> reduceActionForadd_accessor_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForallows_type_parameter_constraint1: nodes [
 	| result |
 	result := CSTypeConstraintNode new.
@@ -6946,7 +6947,7 @@ CSharpParser >> reduceActionForallows_type_parameter_constraint1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForanonymous_method_expression1: nodes [
 	| result |
 	result := CSAnonymousMethodExpressionNode new.
@@ -6956,7 +6957,7 @@ CSharpParser >> reduceActionForanonymous_method_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForanonymous_method_expression2: nodes [
 	| result |
 	result := CSAnonymousMethodExpressionNode new.
@@ -6967,7 +6968,7 @@ CSharpParser >> reduceActionForanonymous_method_expression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForanonymous_object_creation_expression1: nodes [
 	| result |
 	result := CSAnonymousObjectCreationExpressionNode new.
@@ -6979,7 +6980,7 @@ CSharpParser >> reduceActionForanonymous_object_creation_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForanonymous_object_initializer2: nodes [
 	| result |
 	result := Array new: 4.
@@ -6993,7 +6994,7 @@ CSharpParser >> reduceActionForanonymous_object_initializer2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForargument1: nodes [
 	| result |
 	result := CSArgumentNode new.
@@ -7008,7 +7009,7 @@ CSharpParser >> reduceActionForargument1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForargument_value1: nodes [
 	| result |
 	result := Array new: 6.
@@ -7016,7 +7017,7 @@ CSharpParser >> reduceActionForargument_value1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForargument_value2: nodes [
 	| result |
 	result := Array new: 6.
@@ -7025,7 +7026,7 @@ CSharpParser >> reduceActionForargument_value2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForargument_value3: nodes [
 	| result |
 	result := Array new: 6.
@@ -7034,7 +7035,7 @@ CSharpParser >> reduceActionForargument_value3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForargument_value4: nodes [
 	| result |
 	result := Array new: 6.
@@ -7043,7 +7044,7 @@ CSharpParser >> reduceActionForargument_value4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForargument_value5: nodes [
 	| result |
 	result := Array new: 6.
@@ -7053,7 +7054,7 @@ CSharpParser >> reduceActionForargument_value5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForargument_value6: nodes [
 	| result |
 	result := Array new: 6.
@@ -7064,7 +7065,7 @@ CSharpParser >> reduceActionForargument_value6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForarray_creation_expression1: nodes [
 	| result |
 	result := CSArrayCreationExpressionNode new.
@@ -7079,7 +7080,7 @@ CSharpParser >> reduceActionForarray_creation_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForarray_creation_expression2: nodes [
 	| result |
 	result := CSArrayCreationExpressionNode new.
@@ -7089,7 +7090,7 @@ CSharpParser >> reduceActionForarray_creation_expression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForarray_creation_expression3: nodes [
 	| result |
 	result := CSArrayCreationExpressionNode new.
@@ -7099,7 +7100,7 @@ CSharpParser >> reduceActionForarray_creation_expression3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForarray_initializer1: nodes [
 	| result |
 	result := CSArrayInitializerNode new.
@@ -7110,7 +7111,7 @@ CSharpParser >> reduceActionForarray_initializer1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForarray_initializer2: nodes [
 	| result |
 	result := CSArrayInitializerNode new.
@@ -7122,7 +7123,7 @@ CSharpParser >> reduceActionForarray_initializer2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForarray_type1: nodes [
 	| result |
 	result := CSArrayTypeNode new.
@@ -7131,7 +7132,7 @@ CSharpParser >> reduceActionForarray_type1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForassignment1: nodes [
 	| result |
 	result := CSAssignmentNode new.
@@ -7142,7 +7143,7 @@ CSharpParser >> reduceActionForassignment1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForassignment_operator7: nodes [
 	| result |
 	result := Array new: 2.
@@ -7150,7 +7151,7 @@ CSharpParser >> reduceActionForassignment_operator7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForattribute1: nodes [
 	| result |
 	result := CSAttributeValueNode new.
@@ -7162,7 +7163,7 @@ CSharpParser >> reduceActionForattribute1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForattribute_arguments2: nodes [
 	| result |
 	result := Array new: 4.
@@ -7178,7 +7179,7 @@ CSharpParser >> reduceActionForattribute_arguments2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForattribute_list2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -7187,7 +7188,7 @@ CSharpParser >> reduceActionForattribute_list2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForattribute_section1: nodes [
 	| result |
 	result := CSAttributeNode new.
@@ -7200,7 +7201,7 @@ CSharpParser >> reduceActionForattribute_section1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForattribute_section2: nodes [
 	| result |
 	result := CSAttributeNode new.
@@ -7214,7 +7215,7 @@ CSharpParser >> reduceActionForattribute_section2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForattribute_target_specifier1: nodes [
 	| result |
 	result := Array new: 2.
@@ -7223,7 +7224,7 @@ CSharpParser >> reduceActionForattribute_target_specifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForawait_expression1: nodes [
 	| result |
 	result := CSAwaitExpressionNode new.
@@ -7232,7 +7233,7 @@ CSharpParser >> reduceActionForawait_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForbase_access1: nodes [
 	| result |
 	result := CSBaseAccessNode new.
@@ -7243,7 +7244,7 @@ CSharpParser >> reduceActionForbase_access1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForbase_access2: nodes [
 	| result |
 	result := CSBaseAccessNode new.
@@ -7255,7 +7256,7 @@ CSharpParser >> reduceActionForbase_access2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForbinary_operator_declarator1: nodes [
 	| result |
 	result := Array new: 8.
@@ -7272,7 +7273,7 @@ CSharpParser >> reduceActionForbinary_operator_declarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForblock1: nodes [
 	| result |
 	result := CSBlockStatementNode new.
@@ -7282,7 +7283,7 @@ CSharpParser >> reduceActionForblock1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForbreak_statement1: nodes [
 	| result |
 	result := CSBreakStatementNode new.
@@ -7291,7 +7292,7 @@ CSharpParser >> reduceActionForbreak_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForcalling_convention_specifier1: nodes [
 	| result |
 	result := Array new: 5.
@@ -7301,7 +7302,7 @@ CSharpParser >> reduceActionForcalling_convention_specifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForcalling_convention_specifier3: nodes [
 	| result |
 	result := Array new: 5.
@@ -7315,7 +7316,7 @@ CSharpParser >> reduceActionForcalling_convention_specifier3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForcast_expression1: nodes [
 	| result |
 	result := CSCastExpressionNode new.
@@ -7326,7 +7327,7 @@ CSharpParser >> reduceActionForcast_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForchecked_expression1: nodes [
 	| result |
 	result := CSCheckedExpressionNode new.
@@ -7337,7 +7338,7 @@ CSharpParser >> reduceActionForchecked_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForchecked_statement1: nodes [
 	| result |
 	result := CSCheckedStatementNode new.
@@ -7346,7 +7347,7 @@ CSharpParser >> reduceActionForchecked_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForclass_base1: nodes [
 	| result |
 	result := Array new: 7.
@@ -7359,7 +7360,7 @@ CSharpParser >> reduceActionForclass_base1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForclass_base2: nodes [
 	| result |
 	result := Array new: 7.
@@ -7376,7 +7377,7 @@ CSharpParser >> reduceActionForclass_base2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForclass_base3: nodes [
 	| result |
 	result := Array new: 7.
@@ -7392,7 +7393,7 @@ CSharpParser >> reduceActionForclass_base3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForclass_base4: nodes [
 	| result |
 	result := Array new: 7.
@@ -7412,7 +7413,7 @@ CSharpParser >> reduceActionForclass_base4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForclass_declaration1: nodes [
 	| result |
 	result := CSClassDeclarationNode new.
@@ -7438,7 +7439,7 @@ CSharpParser >> reduceActionForclass_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForclass_declaration2: nodes [
 	| result |
 	result := CSClassDeclarationNode new.
@@ -7468,7 +7469,7 @@ CSharpParser >> reduceActionForclass_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForclass_designator2: nodes [
 	| result |
 	result := Array new: 2.
@@ -7476,7 +7477,7 @@ CSharpParser >> reduceActionForclass_designator2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForclass_designator3: nodes [
 	| result |
 	result := Array new: 2.
@@ -7485,7 +7486,7 @@ CSharpParser >> reduceActionForclass_designator3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForcollection_expression1: nodes [
 	| result |
 	result := CSCollectionExpressionNode new.
@@ -7494,7 +7495,7 @@ CSharpParser >> reduceActionForcollection_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForcollection_expression2: nodes [
 	| result |
 	result := CSCollectionExpressionNode new.
@@ -7506,7 +7507,7 @@ CSharpParser >> reduceActionForcollection_expression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForcollection_expression3: nodes [
 	| result |
 	result := CSCollectionExpressionNode new.
@@ -7519,7 +7520,7 @@ CSharpParser >> reduceActionForcollection_expression3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForcollection_initializer1: nodes [
 	| result |
 	result := CSCollectionInitializerNode new.
@@ -7530,7 +7531,7 @@ CSharpParser >> reduceActionForcollection_initializer1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForcollection_initializer2: nodes [
 	| result |
 	result := CSCollectionInitializerNode new.
@@ -7542,7 +7543,7 @@ CSharpParser >> reduceActionForcollection_initializer2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForcompilation_unit1: nodes [
 	| result |
 	result := CSCompilationUnitNode new.
@@ -7555,7 +7556,7 @@ CSharpParser >> reduceActionForcompilation_unit1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForcompilation_unit_body1: nodes [
 	| result |
 	result := Array new: 2.
@@ -7566,7 +7567,7 @@ CSharpParser >> reduceActionForcompilation_unit_body1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForcompilation_unit_body2: nodes [
 	| result |
 	result := Array new: 2.
@@ -7576,7 +7577,7 @@ CSharpParser >> reduceActionForcompilation_unit_body2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForconditional_expression3: nodes [
 	| result |
 	result := CSConditionalExpressionNode new.
@@ -7588,7 +7589,7 @@ CSharpParser >> reduceActionForconditional_expression3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForconst_declarator1: nodes [
 	| result |
 	result := CSConstantDeclaratorNode new.
@@ -7598,7 +7599,7 @@ CSharpParser >> reduceActionForconst_declarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForconstant_declaration1: nodes [
 	| result |
 	result := CSConstantDeclarationNode new.
@@ -7612,7 +7613,7 @@ CSharpParser >> reduceActionForconstant_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForconstant_declarator1: nodes [
 	| result |
 	result := CSConstantDeclaratorNode new.
@@ -7622,7 +7623,7 @@ CSharpParser >> reduceActionForconstant_declarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForconstructor_constraint1: nodes [
 	| result |
 	result := CSConstructorConstraintNode new.
@@ -7632,7 +7633,7 @@ CSharpParser >> reduceActionForconstructor_constraint1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForconstructor_declaration1: nodes [
 	| result |
 	result := CSConstructorDeclarationNode new.
@@ -7648,7 +7649,7 @@ CSharpParser >> reduceActionForconstructor_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForconstructor_declarator1: nodes [
 	| result |
 	result := Array new: 6.
@@ -7663,7 +7664,7 @@ CSharpParser >> reduceActionForconstructor_declarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForconstructor_initializer1: nodes [
 	| result |
 	result := CSConstructorInitializerNode new.
@@ -7676,7 +7677,7 @@ CSharpParser >> reduceActionForconstructor_initializer1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForconstructor_initializer2: nodes [
 	| result |
 	result := CSConstructorInitializerNode new.
@@ -7689,7 +7690,7 @@ CSharpParser >> reduceActionForconstructor_initializer2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForcontinue_statement1: nodes [
 	| result |
 	result := CSContinueStatementNode new.
@@ -7698,7 +7699,7 @@ CSharpParser >> reduceActionForcontinue_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForconversion_operator_declarator1: nodes [
 	| result |
 	result := Array new: 8.
@@ -7711,7 +7712,7 @@ CSharpParser >> reduceActionForconversion_operator_declarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForconversion_operator_declarator2: nodes [
 	| result |
 	result := Array new: 8.
@@ -7724,7 +7725,7 @@ CSharpParser >> reduceActionForconversion_operator_declarator2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForconversion_operator_declarator3: nodes [
 	| result |
 	result := Array new: 8.
@@ -7738,7 +7739,7 @@ CSharpParser >> reduceActionForconversion_operator_declarator3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFordeclaration_expression1: nodes [
 	| result |
 	result := CSDeclarationExpressionNode new.
@@ -7747,7 +7748,7 @@ CSharpParser >> reduceActionFordeclaration_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFordeclaration_pattern1: nodes [
 	| result |
 	result := CSDeclarationExpressionNode new.
@@ -7756,7 +7757,7 @@ CSharpParser >> reduceActionFordeclaration_pattern1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFordeclaration_statement1: nodes [
 	| result |
 	result := CSDeclarationStatementNode new.
@@ -7765,7 +7766,7 @@ CSharpParser >> reduceActionFordeclaration_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFordeconstruction_element2: nodes [
 	| result |
 	result := CSVariableDeclaratorNode new.
@@ -7773,7 +7774,7 @@ CSharpParser >> reduceActionFordeconstruction_element2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFordeconstruction_expression1: nodes [
 	| result |
 	result := CSDeconstructionExpressionNode new.
@@ -7782,7 +7783,7 @@ CSharpParser >> reduceActionFordeconstruction_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFordeconstruction_tuple1: nodes [
 	| result |
 	result := CSDeconstructionTupleNode new.
@@ -7794,7 +7795,7 @@ CSharpParser >> reduceActionFordeconstruction_tuple1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFordefault_value_expression1: nodes [
 	| result |
 	result := CSDefaultValueExpressionNode new.
@@ -7802,7 +7803,7 @@ CSharpParser >> reduceActionFordefault_value_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFordefault_value_expression2: nodes [
 	| result |
 	result := CSDefaultValueExpressionNode new.
@@ -7813,7 +7814,7 @@ CSharpParser >> reduceActionFordefault_value_expression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFordelegate_creation_expression1: nodes [
 	| result |
 	result := CSDelegateCreationExpressionNode new.
@@ -7825,7 +7826,7 @@ CSharpParser >> reduceActionFordelegate_creation_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFordelegate_declaration1: nodes [
 	| result |
 	result := CSDelegateDeclarationNode new.
@@ -7844,7 +7845,7 @@ CSharpParser >> reduceActionFordelegate_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFordelegate_declaration2: nodes [
 	| result |
 	result := CSDelegateDeclarationNode new.
@@ -7864,7 +7865,7 @@ CSharpParser >> reduceActionFordelegate_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFordelegate_header1: nodes [
 	| result |
 	result := Array new: 8.
@@ -7880,7 +7881,7 @@ CSharpParser >> reduceActionFordelegate_header1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFordelegate_header2: nodes [
 	| result |
 	result := Array new: 8.
@@ -7898,7 +7899,7 @@ CSharpParser >> reduceActionFordelegate_header2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFordependent_access1: nodes [
 	| result |
 	result := CSMemberAccessNode new.
@@ -7908,7 +7909,7 @@ CSharpParser >> reduceActionFordependent_access1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFordependent_access2: nodes [
 	| result |
 	result := CSElementAccessNode new.
@@ -7919,7 +7920,7 @@ CSharpParser >> reduceActionFordependent_access2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFordependent_access3: nodes [
 	| result |
 	result := CSInvocationAccessNode new.
@@ -7930,7 +7931,7 @@ CSharpParser >> reduceActionFordependent_access3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFordiscard_pattern1: nodes [
 	| result |
 	result := CSDeclarationExpressionNode new.
@@ -7938,7 +7939,7 @@ CSharpParser >> reduceActionFordiscard_pattern1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFordo_statement1: nodes [
 	| result |
 	result := CSDoStatementNode new.
@@ -7952,7 +7953,7 @@ CSharpParser >> reduceActionFordo_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForelement_access1: nodes [
 	| result |
 	result := CSElementAccessNode new.
@@ -7964,7 +7965,7 @@ CSharpParser >> reduceActionForelement_access1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForelement_initializer1: nodes [
 	| result |
 	result := CSElementInitializerNode new.
@@ -7972,7 +7973,7 @@ CSharpParser >> reduceActionForelement_initializer1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForelement_initializer2: nodes [
 	| result |
 	result := CSElementInitializerNode new.
@@ -7983,7 +7984,7 @@ CSharpParser >> reduceActionForelement_initializer2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForempty_statement1: nodes [
 	| result |
 	result := CSEmptyStatementNode new.
@@ -7991,7 +7992,7 @@ CSharpParser >> reduceActionForempty_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForenum_body1: nodes [
 	| result |
 	result := Array new: 5.
@@ -8005,7 +8006,7 @@ CSharpParser >> reduceActionForenum_body1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForenum_body2: nodes [
 	| result |
 	result := Array new: 5.
@@ -8020,7 +8021,7 @@ CSharpParser >> reduceActionForenum_body2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForenum_body3: nodes [
 	| result |
 	result := Array new: 5.
@@ -8030,7 +8031,7 @@ CSharpParser >> reduceActionForenum_body3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForenum_declaration1: nodes [
 	| result |
 	result := CSEnumDeclarationNode new.
@@ -8048,7 +8049,7 @@ CSharpParser >> reduceActionForenum_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForenum_member_declaration1: nodes [
 	| result |
 	result := CSEnumDeclarationNode new.
@@ -8057,7 +8058,7 @@ CSharpParser >> reduceActionForenum_member_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForenum_member_declaration2: nodes [
 	| result |
 	result := CSEnumDeclarationNode new.
@@ -8068,7 +8069,7 @@ CSharpParser >> reduceActionForenum_member_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForevent_declaration1: nodes [
 	| result |
 	result := CSEventDeclarationNode new.
@@ -8082,7 +8083,7 @@ CSharpParser >> reduceActionForevent_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForevent_declaration2: nodes [
 	| result |
 	result := CSEventDeclarationNode new.
@@ -8100,7 +8101,7 @@ CSharpParser >> reduceActionForevent_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForexception_filter1: nodes [
 	| result |
 	result := CSExceptionFilterNode new.
@@ -8111,7 +8112,7 @@ CSharpParser >> reduceActionForexception_filter1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForexplicit_anonymous_function_paramenter1: nodes [
 	| result |
 	result := CSAnonymousFunctionParameterNode new.
@@ -8121,7 +8122,7 @@ CSharpParser >> reduceActionForexplicit_anonymous_function_paramenter1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForexplicit_anonymous_function_paramenter2: nodes [
 	| result |
 	result := CSAnonymousFunctionParameterNode new.
@@ -8132,7 +8133,7 @@ CSharpParser >> reduceActionForexplicit_anonymous_function_paramenter2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForexplicit_anonymous_function_signature1: nodes [
 	| result |
 	result := Array new: 4.
@@ -8145,7 +8146,7 @@ CSharpParser >> reduceActionForexplicit_anonymous_function_signature1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForexplicitly_typed_local_variable_declaration1: nodes [
 	| result |
 	result := CSLocalVariableDeclarationNode new.
@@ -8155,7 +8156,7 @@ CSharpParser >> reduceActionForexplicitly_typed_local_variable_declaration1: nod
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForexplicitly_typed_local_variable_declarator1: nodes [
 	| result |
 	result := CSLocalVariableDeclaratorNode new.
@@ -8163,7 +8164,7 @@ CSharpParser >> reduceActionForexplicitly_typed_local_variable_declarator1: node
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForexplicitly_typed_local_variable_declarator2: nodes [
 	| result |
 	result := CSLocalVariableDeclaratorNode new.
@@ -8173,7 +8174,7 @@ CSharpParser >> reduceActionForexplicitly_typed_local_variable_declarator2: node
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForexplicitly_typed_local_variable_declarators1: nodes [
 	| result |
 	result := Array new: 2.
@@ -8185,7 +8186,7 @@ CSharpParser >> reduceActionForexplicitly_typed_local_variable_declarators1: nod
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForexpression_statement1: nodes [
 	| result |
 	result := CSExpressionStatementNode new.
@@ -8194,7 +8195,7 @@ CSharpParser >> reduceActionForexpression_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForextern_alias_directive1: nodes [
 	| result |
 	result := CSExternAliasDirectiveNode new.
@@ -8205,7 +8206,7 @@ CSharpParser >> reduceActionForextern_alias_directive1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForextern_alias_directives1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
@@ -8213,7 +8214,7 @@ CSharpParser >> reduceActionForextern_alias_directives1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForextern_alias_directives2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -8221,7 +8222,7 @@ CSharpParser >> reduceActionForextern_alias_directives2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForfield_declaration1: nodes [
 	| result |
 	result := CSFieldDeclarationNode new.
@@ -8234,7 +8235,7 @@ CSharpParser >> reduceActionForfield_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForfield_declaration2: nodes [
 	| result |
 	result := CSFieldDeclarationNode new.
@@ -8248,7 +8249,7 @@ CSharpParser >> reduceActionForfield_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForfile_scoped_namespace_declaration1: nodes [
 	| result |
 	result := CSFileScopedNamespaceDeclarationNode new.
@@ -8261,7 +8262,7 @@ CSharpParser >> reduceActionForfile_scoped_namespace_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForfinalizer_declaration1: nodes [
 	| result |
 	result := CSFinalizerDeclarationNode new.
@@ -8275,7 +8276,7 @@ CSharpParser >> reduceActionForfinalizer_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForfinalizer_declaration2: nodes [
 	| result |
 	result := CSFinalizerDeclarationNode new.
@@ -8290,7 +8291,7 @@ CSharpParser >> reduceActionForfinalizer_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForfinally_clause1: nodes [
 	| result |
 	result := CSFinallyClauseNode new.
@@ -8299,7 +8300,7 @@ CSharpParser >> reduceActionForfinally_clause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForfixed_parameter1: nodes [
 	| result |
 	result := CSFixedParameterNode new.
@@ -8312,7 +8313,7 @@ CSharpParser >> reduceActionForfixed_parameter1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForfixed_pointer_declarator1: nodes [
 	| result |
 	result := CSFixedPointerDeclaratorNode new.
@@ -8323,7 +8324,7 @@ CSharpParser >> reduceActionForfixed_pointer_declarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForfixed_size_buffer_declaration1: nodes [
 	| result |
 	result := CSFixedSizeBufferDeclarationNode new.
@@ -8336,7 +8337,7 @@ CSharpParser >> reduceActionForfixed_size_buffer_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForfixed_size_buffer_declarator1: nodes [
 	| result |
 	result := CSFixedSizeBufferDeclaratorNode new.
@@ -8347,7 +8348,7 @@ CSharpParser >> reduceActionForfixed_size_buffer_declarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForfixed_statement1: nodes [
 	| result |
 	result := CSFixedStatementNode new.
@@ -8361,7 +8362,7 @@ CSharpParser >> reduceActionForfixed_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForfor_initializer2: nodes [
 	| result |
 	result := CSStatementListNode new.
@@ -8370,7 +8371,7 @@ CSharpParser >> reduceActionForfor_initializer2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForfor_statement1: nodes [
 	| result |
 	result := CSForStatementNode new.
@@ -8386,7 +8387,7 @@ CSharpParser >> reduceActionForfor_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForforeach_statement1: nodes [
 	| result |
 	result := CSForeachStatementNode new.
@@ -8401,7 +8402,7 @@ CSharpParser >> reduceActionForforeach_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForforeach_statement2: nodes [
 	| result |
 	result := CSForeachStatementNode new.
@@ -8417,7 +8418,7 @@ CSharpParser >> reduceActionForforeach_statement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForforeach_statement3: nodes [
 	| result |
 	result := CSForeachStatementNode new.
@@ -8433,7 +8434,7 @@ CSharpParser >> reduceActionForforeach_statement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForforeach_statement4: nodes [
 	| result |
 	result := CSForeachStatementNode new.
@@ -8450,7 +8451,7 @@ CSharpParser >> reduceActionForforeach_statement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForfrom_clause1: nodes [
 	| result |
 	result := Array new: 5.
@@ -8462,7 +8463,7 @@ CSharpParser >> reduceActionForfrom_clause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForfuncptr_parameter1: nodes [
 	| result |
 	result := CSFunctionPointerParameterNode new.
@@ -8470,7 +8471,7 @@ CSharpParser >> reduceActionForfuncptr_parameter1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForfuncptr_parameter2: nodes [
 	| result |
 	result := CSFunctionPointerParameterNode new.
@@ -8479,7 +8480,7 @@ CSharpParser >> reduceActionForfuncptr_parameter2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForfuncptr_return_type2: nodes [
 	| result |
 	result := Array new: 2.
@@ -8489,7 +8490,7 @@ CSharpParser >> reduceActionForfuncptr_return_type2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForfuncptr_type1: nodes [
 	| result |
 	result := CSFunctionPointerTypeNode new.
@@ -8504,7 +8505,7 @@ CSharpParser >> reduceActionForfuncptr_type1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForfuncptr_type2: nodes [
 	| result |
 	result := CSFunctionPointerTypeNode new.
@@ -8524,7 +8525,7 @@ CSharpParser >> reduceActionForfuncptr_type2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForgeneral_catch_clause1: nodes [
 	| result |
 	result := CSCatchClauseNode new.
@@ -8533,7 +8534,7 @@ CSharpParser >> reduceActionForgeneral_catch_clause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForgeneric_dimension_specifier1: nodes [
 	| result |
 	result := Array new: 3.
@@ -8544,7 +8545,7 @@ CSharpParser >> reduceActionForgeneric_dimension_specifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForget_accessor_declaration1: nodes [
 	| result |
 	result := CSGetAccessorDeclarationNode new.
@@ -8558,7 +8559,7 @@ CSharpParser >> reduceActionForget_accessor_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForglobal_using_alias_directive1: nodes [
 	| result |
 	result := CSGlobalUsingAliasDirectiveNode new.
@@ -8571,7 +8572,7 @@ CSharpParser >> reduceActionForglobal_using_alias_directive1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForglobal_using_namespace_directive1: nodes [
 	| result |
 	result := CSGlobalUsingNamespaceDirectiveNode new.
@@ -8582,7 +8583,7 @@ CSharpParser >> reduceActionForglobal_using_namespace_directive1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForglobal_using_static_directive1: nodes [
 	| result |
 	result := CSGlobalUsingStaticDirectiveNode new.
@@ -8594,7 +8595,7 @@ CSharpParser >> reduceActionForglobal_using_static_directive1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForgoto_statement1: nodes [
 	| result |
 	result := CSGotoStatementNode new.
@@ -8604,7 +8605,7 @@ CSharpParser >> reduceActionForgoto_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForgoto_statement2: nodes [
 	| result |
 	result := CSGotoStatementNode new.
@@ -8615,7 +8616,7 @@ CSharpParser >> reduceActionForgoto_statement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForgoto_statement3: nodes [
 	| result |
 	result := CSGotoStatementNode new.
@@ -8625,7 +8626,7 @@ CSharpParser >> reduceActionForgoto_statement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForif_statement1: nodes [
 	| result |
 	result := CSIfStatementNode new.
@@ -8637,7 +8638,7 @@ CSharpParser >> reduceActionForif_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForif_statement2: nodes [
 	| result |
 	result := CSIfStatementNode new.
@@ -8651,7 +8652,7 @@ CSharpParser >> reduceActionForif_statement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForimplicit_anonymous_function_parameter1: nodes [
 	| result |
 	result := CSAnonymousFunctionParameterNode new.
@@ -8659,7 +8660,7 @@ CSharpParser >> reduceActionForimplicit_anonymous_function_parameter1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForimplicit_anonymous_function_signature2: nodes [
 	| result |
 	result := Array new: 4.
@@ -8669,7 +8670,7 @@ CSharpParser >> reduceActionForimplicit_anonymous_function_signature2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForimplicitly_typed_local_variable_declaration1: nodes [
 	| result |
 	result := Array new: 3.
@@ -8679,7 +8680,7 @@ CSharpParser >> reduceActionForimplicitly_typed_local_variable_declaration1: nod
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForimplicitly_typed_local_variable_declaration2: nodes [
 	| result |
 	result := Array new: 3.
@@ -8690,7 +8691,7 @@ CSharpParser >> reduceActionForimplicitly_typed_local_variable_declaration2: nod
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForindexer_body1: nodes [
 	| result |
 	result := Array new: 7.
@@ -8701,7 +8702,7 @@ CSharpParser >> reduceActionForindexer_body1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForindexer_body2: nodes [
 	| result |
 	result := Array new: 7.
@@ -8711,7 +8712,7 @@ CSharpParser >> reduceActionForindexer_body2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForindexer_declaration1: nodes [
 	| result |
 	result := CSIndexerDeclarationNode new.
@@ -8736,7 +8737,7 @@ CSharpParser >> reduceActionForindexer_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForindexer_declaration2: nodes [
 	| result |
 	result := CSIndexerDeclarationNode new.
@@ -8762,7 +8763,7 @@ CSharpParser >> reduceActionForindexer_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForindexer_declarator1: nodes [
 	| result |
 	result := Array new: 8.
@@ -8777,7 +8778,7 @@ CSharpParser >> reduceActionForindexer_declarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForindexer_declarator2: nodes [
 	| result |
 	result := Array new: 8.
@@ -8794,7 +8795,7 @@ CSharpParser >> reduceActionForindexer_declarator2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForinitializer_target2: nodes [
 	| result |
 	result := Array new: 5.
@@ -8807,7 +8808,7 @@ CSharpParser >> reduceActionForinitializer_target2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForinterface_base1: nodes [
 	| result |
 	result := Array new: 3.
@@ -8819,7 +8820,7 @@ CSharpParser >> reduceActionForinterface_base1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForinterface_body1: nodes [
 	| result |
 	result := Array new: 4.
@@ -8831,7 +8832,7 @@ CSharpParser >> reduceActionForinterface_body1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForinterface_body2: nodes [
 	| result |
 	result := Array new: 4.
@@ -8840,7 +8841,7 @@ CSharpParser >> reduceActionForinterface_body2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForinterface_declaration1: nodes [
 	| result |
 	result := CSInterfaceDeclarationNode new.
@@ -8861,7 +8862,7 @@ CSharpParser >> reduceActionForinterface_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForinterface_event_declaration1: nodes [
 	| result |
 	result := CSInterfaceEventDeclarationNode new.
@@ -8874,7 +8875,7 @@ CSharpParser >> reduceActionForinterface_event_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForinterface_method_declaration1: nodes [
 	| result |
 	result := CSInterfaceMethodDeclarationNode new.
@@ -8892,7 +8893,7 @@ CSharpParser >> reduceActionForinterface_method_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForinterface_method_declaration2: nodes [
 	| result |
 	result := CSInterfaceMethodDeclarationNode new.
@@ -8911,7 +8912,7 @@ CSharpParser >> reduceActionForinterface_method_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForinterface_method_header1: nodes [
 	| result |
 	result := Array new: 8.
@@ -8929,7 +8930,7 @@ CSharpParser >> reduceActionForinterface_method_header1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForinterpolated_regular_string1: nodes [
 	| result |
 	result := Array new: 2.
@@ -8939,7 +8940,7 @@ CSharpParser >> reduceActionForinterpolated_regular_string1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForinterpolated_string_expression2: nodes [
 	| result |
 	result := CSInterpolatedStringExpressionNode new.
@@ -8948,7 +8949,7 @@ CSharpParser >> reduceActionForinterpolated_string_expression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForinterpolation1: nodes [
 	| result |
 	result := CSInterpolationNode new.
@@ -8956,7 +8957,7 @@ CSharpParser >> reduceActionForinterpolation1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForinterpolation2: nodes [
 	| result |
 	result := CSInterpolationNode new.
@@ -8966,7 +8967,7 @@ CSharpParser >> reduceActionForinterpolation2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForinterpolation3: nodes [
 	| result |
 	result := CSInterpolationNode new.
@@ -8976,7 +8977,7 @@ CSharpParser >> reduceActionForinterpolation3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForinterpolation4: nodes [
 	| result |
 	result := CSInterpolationNode new.
@@ -8988,7 +8989,7 @@ CSharpParser >> reduceActionForinterpolation4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForinvocation_expression1: nodes [
 	| result |
 	result := CSInvocationExpressionNode new.
@@ -9000,7 +9001,7 @@ CSharpParser >> reduceActionForinvocation_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForjoin_clause1: nodes [
 	| result |
 	result := Array new: 9.
@@ -9016,7 +9017,7 @@ CSharpParser >> reduceActionForjoin_clause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForjoin_into_clause1: nodes [
 	| result |
 	result := Array new: 10.
@@ -9035,7 +9036,7 @@ CSharpParser >> reduceActionForjoin_into_clause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForlabeled_statement1: nodes [
 	| result |
 	result := CSLabeledStatementNode new.
@@ -9045,7 +9046,7 @@ CSharpParser >> reduceActionForlabeled_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForlambda_expression1: nodes [
 	| result |
 	result := CSLambdaExpressionNode new.
@@ -9059,7 +9060,7 @@ CSharpParser >> reduceActionForlambda_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForlambda_expression2: nodes [
 	| result |
 	result := CSLambdaExpressionNode new.
@@ -9074,7 +9075,7 @@ CSharpParser >> reduceActionForlambda_expression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForlet_clause1: nodes [
 	| result |
 	result := Array new: 4.
@@ -9085,7 +9086,7 @@ CSharpParser >> reduceActionForlet_clause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForlist_pattern1: nodes [
 	| result |
 	result := CSListPatternNode new.
@@ -9096,7 +9097,7 @@ CSharpParser >> reduceActionForlist_pattern1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForlist_pattern2: nodes [
 	| result |
 	result := CSListPatternNode new.
@@ -9108,7 +9109,7 @@ CSharpParser >> reduceActionForlist_pattern2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForlist_pattern_clause1: nodes [
 	| result |
 	result := Array new: 4.
@@ -9119,7 +9120,7 @@ CSharpParser >> reduceActionForlist_pattern_clause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForlist_pattern_clause2: nodes [
 	| result |
 	result := Array new: 4.
@@ -9133,7 +9134,7 @@ CSharpParser >> reduceActionForlist_pattern_clause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForlist_pattern_clause3: nodes [
 	| result |
 	result := Array new: 4.
@@ -9148,7 +9149,7 @@ CSharpParser >> reduceActionForlist_pattern_clause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForliteral1: nodes [
 	| result |
 	result := CSBooleanLiteralExpressionNode new.
@@ -9156,7 +9157,7 @@ CSharpParser >> reduceActionForliteral1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForliteral2: nodes [
 	| result |
 	result := CSIntegerLiteralExpressionNode new.
@@ -9164,7 +9165,7 @@ CSharpParser >> reduceActionForliteral2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForliteral3: nodes [
 	| result |
 	result := CSRealLiteralExpressionNode new.
@@ -9172,7 +9173,7 @@ CSharpParser >> reduceActionForliteral3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForliteral4: nodes [
 	| result |
 	result := CSCharacterLiteralExpressionNode new.
@@ -9180,7 +9181,7 @@ CSharpParser >> reduceActionForliteral4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForliteral5: nodes [
 	| result |
 	result := CSStringLiteralExpressionNode new.
@@ -9188,7 +9189,7 @@ CSharpParser >> reduceActionForliteral5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForliteral6: nodes [
 	| result |
 	result := CSNullLiteralExpressionNode new.
@@ -9196,7 +9197,7 @@ CSharpParser >> reduceActionForliteral6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForlocal_constant_declaration1: nodes [
 	| result |
 	result := CSLocalConstantDeclarationNode new.
@@ -9207,7 +9208,7 @@ CSharpParser >> reduceActionForlocal_constant_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForlocal_function_body2: nodes [
 	| result |
 	result := CSMethodBodyNode new.
@@ -9217,7 +9218,7 @@ CSharpParser >> reduceActionForlocal_function_body2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForlocal_function_body4: nodes [
 	| result |
 	result := CSMethodBodyNode new.
@@ -9225,7 +9226,7 @@ CSharpParser >> reduceActionForlocal_function_body4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForlocal_function_declaration2: nodes [
 	| result |
 	result := CSLocalFunctionDeclarationStatementNode new.
@@ -9234,7 +9235,7 @@ CSharpParser >> reduceActionForlocal_function_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForlocal_function_header1: nodes [
 	| result |
 	result := CSMethodHeaderNode new.
@@ -9246,7 +9247,7 @@ CSharpParser >> reduceActionForlocal_function_header1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForlocal_function_header2: nodes [
 	| result |
 	result := CSMethodHeaderNode new.
@@ -9260,7 +9261,7 @@ CSharpParser >> reduceActionForlocal_function_header2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForlocal_using_declaration1: nodes [
 	| result |
 	result := CSLocalUsingDeclarationNode new.
@@ -9271,7 +9272,7 @@ CSharpParser >> reduceActionForlocal_using_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForlocal_variable_declaration1: nodes [
 	| result |
 	result := CSLocalVariableDeclarationNode new.
@@ -9281,7 +9282,7 @@ CSharpParser >> reduceActionForlocal_variable_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForlocal_variable_declaration3: nodes [
 	| result |
 	result := CSLocalVariableDeclarationNode new.
@@ -9293,7 +9294,7 @@ CSharpParser >> reduceActionForlocal_variable_declaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForlock_statement1: nodes [
 	| result |
 	result := CSLockStatementNode new.
@@ -9305,7 +9306,7 @@ CSharpParser >> reduceActionForlock_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFormember_access1: nodes [
 	| result |
 	result := CSMemberAccessNode new.
@@ -9316,7 +9317,7 @@ CSharpParser >> reduceActionFormember_access1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFormember_declarator1: nodes [
 	| result |
 	result := CSMemberDeclaratorNode new.
@@ -9324,7 +9325,7 @@ CSharpParser >> reduceActionFormember_declarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFormember_declarator2: nodes [
 	| result |
 	result := CSMemberDeclaratorNode new.
@@ -9332,7 +9333,7 @@ CSharpParser >> reduceActionFormember_declarator2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFormember_declarator5: nodes [
 	| result |
 	result := CSMemberDeclaratorNode new.
@@ -9342,7 +9343,7 @@ CSharpParser >> reduceActionFormember_declarator5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFormember_initializer1: nodes [
 	| result |
 	result := CSMemberInitializerNode new.
@@ -9356,7 +9357,7 @@ CSharpParser >> reduceActionFormember_initializer1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFormember_name1: nodes [
 	| result |
 	result := Array new: 3.
@@ -9364,7 +9365,7 @@ CSharpParser >> reduceActionFormember_name1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFormember_name2: nodes [
 	| result |
 	result := Array new: 3.
@@ -9374,7 +9375,7 @@ CSharpParser >> reduceActionFormember_name2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFormethod_declaration2: nodes [
 	| result |
 	result := CSMethodDeclarationNode new.
@@ -9383,7 +9384,7 @@ CSharpParser >> reduceActionFormethod_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFormethod_header1: nodes [
 	| result |
 	result := CSMethodHeaderNode new.
@@ -9403,7 +9404,7 @@ CSharpParser >> reduceActionFormethod_header1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFormultiline_interpolated_regular_string2: nodes [
 	| result |
 	result := Array new: 2.
@@ -9416,7 +9417,7 @@ CSharpParser >> reduceActionFormultiline_interpolated_regular_string2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFormultiplicative_expression4: nodes [
 	| result |
 	result := CSBinaryExpressionNode new.
@@ -9426,7 +9427,7 @@ CSharpParser >> reduceActionFormultiplicative_expression4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFornamed_argument1: nodes [
 	| result |
 	result := CSNamedArgumentNode new.
@@ -9436,7 +9437,7 @@ CSharpParser >> reduceActionFornamed_argument1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFornamed_entity1: nodes [
 	| result |
 	result := CSNamedEntityNode new.
@@ -9447,7 +9448,7 @@ CSharpParser >> reduceActionFornamed_entity1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFornamed_entity_target3: nodes [
 	| result |
 	result := CSBaseExpressionNode new.
@@ -9455,7 +9456,7 @@ CSharpParser >> reduceActionFornamed_entity_target3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFornameof_expression1: nodes [
 	| result |
 	result := CSNameofExpressionNode new.
@@ -9466,7 +9467,7 @@ CSharpParser >> reduceActionFornameof_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFornamespace_body1: nodes [
 	| result |
 	result := Array new: 4.
@@ -9480,7 +9481,7 @@ CSharpParser >> reduceActionFornamespace_body1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFornamespace_declaration1: nodes [
 	| result |
 	result := CSNamespaceDeclarationNode new.
@@ -9494,7 +9495,7 @@ CSharpParser >> reduceActionFornamespace_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFornamespace_or_type_name1: nodes [
 	| result |
 	result := CSTypeNameNode new.
@@ -9503,7 +9504,7 @@ CSharpParser >> reduceActionFornamespace_or_type_name1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFornamespace_or_type_name2: nodes [
 	| result |
 	result := CSTypeNameNode new.
@@ -9514,7 +9515,7 @@ CSharpParser >> reduceActionFornamespace_or_type_name2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFornull_conditional_element_access1: nodes [
 	| result |
 	result := CSElementAccessNode new.
@@ -9527,7 +9528,7 @@ CSharpParser >> reduceActionFornull_conditional_element_access1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFornull_conditional_member_access1: nodes [
 	| result |
 	result := CSNullConditionalMemberAccessNode new.
@@ -9540,7 +9541,7 @@ CSharpParser >> reduceActionFornull_conditional_member_access1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFornull_conditional_projection_initializer1: nodes [
 	| result |
 	result := CSNullConditionalMemberAccessNode new.
@@ -9552,7 +9553,7 @@ CSharpParser >> reduceActionFornull_conditional_projection_initializer1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFornull_forgiving_expression1: nodes [
 	| result |
 	result := CSPostExpressionNode new.
@@ -9561,7 +9562,7 @@ CSharpParser >> reduceActionFornull_forgiving_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFornullable_reference_type1: nodes [
 	| result |
 	result := CSNullableReferenceTypeNode new.
@@ -9570,7 +9571,7 @@ CSharpParser >> reduceActionFornullable_reference_type1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFornullable_value_type1: nodes [
 	| result |
 	result := CSNullableTypeNode new.
@@ -9579,7 +9580,7 @@ CSharpParser >> reduceActionFornullable_value_type1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForobject_creation_expression1: nodes [
 	| result |
 	result := CSObjectCreationExpressionNode new.
@@ -9592,7 +9593,7 @@ CSharpParser >> reduceActionForobject_creation_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForobject_creation_expression2: nodes [
 	| result |
 	result := CSObjectCreationExpressionNode new.
@@ -9606,7 +9607,7 @@ CSharpParser >> reduceActionForobject_creation_expression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForobject_creation_expression3: nodes [
 	| result |
 	result := CSObjectCreationExpressionNode new.
@@ -9616,7 +9617,7 @@ CSharpParser >> reduceActionForobject_creation_expression3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForobject_initializer1: nodes [
 	| result |
 	result := CSObjectInitializerNode new.
@@ -9627,7 +9628,7 @@ CSharpParser >> reduceActionForobject_initializer1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForobject_initializer2: nodes [
 	| result |
 	result := CSObjectInitializerNode new.
@@ -9639,7 +9640,7 @@ CSharpParser >> reduceActionForobject_initializer2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForoperator_declaration1: nodes [
 	| result |
 	result := CSOperatorDeclarationNode new.
@@ -9659,7 +9660,7 @@ CSharpParser >> reduceActionForoperator_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForoperator_declarator1: nodes [
 	| result |
 	result := Array new: 10.
@@ -9674,7 +9675,7 @@ CSharpParser >> reduceActionForoperator_declarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForoperator_declarator2: nodes [
 	| result |
 	result := Array new: 10.
@@ -9690,7 +9691,7 @@ CSharpParser >> reduceActionForoperator_declarator2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForoperator_declarator3: nodes [
 	| result |
 	result := Array new: 10.
@@ -9706,7 +9707,7 @@ CSharpParser >> reduceActionForoperator_declarator3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFororderby_clause1: nodes [
 	| result |
 	result := Array new: 5.
@@ -9722,7 +9723,7 @@ CSharpParser >> reduceActionFororderby_clause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForordering1: nodes [
 	| result |
 	result := Array new: 3.
@@ -9732,7 +9733,7 @@ CSharpParser >> reduceActionForordering1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFororderings1: nodes [
 	| result |
 	result := Array new: 4.
@@ -9746,7 +9747,7 @@ CSharpParser >> reduceActionFororderings1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFororderings2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -9757,7 +9758,7 @@ CSharpParser >> reduceActionFororderings2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForparameter_collection1: nodes [
 	| result |
 	result := CSArrayParameterNode new.
@@ -9768,7 +9769,7 @@ CSharpParser >> reduceActionForparameter_collection1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForparameter_collection2: nodes [
 	| result |
 	result := CSArrayParameterNode new.
@@ -9780,7 +9781,7 @@ CSharpParser >> reduceActionForparameter_collection2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForparameter_modifier4: nodes [
 	| result |
 	result := nodes at: 3.
@@ -9789,7 +9790,7 @@ CSharpParser >> reduceActionForparameter_modifier4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForparameter_modifier6: nodes [
 	| result |
 	result := nodes at: 2.
@@ -9797,7 +9798,7 @@ CSharpParser >> reduceActionForparameter_modifier6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForparenthesized_expression1: nodes [
 	| result |
 	result := nodes at: 2.
@@ -9806,7 +9807,7 @@ CSharpParser >> reduceActionForparenthesized_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForpointer_member_access1: nodes [
 	| result |
 	result := CSPointerMemberAccessNode new.
@@ -9817,7 +9818,7 @@ CSharpParser >> reduceActionForpointer_member_access1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForpointer_type1: nodes [
 	| result |
 	result := CSPointerTypeNode new.
@@ -9826,7 +9827,7 @@ CSharpParser >> reduceActionForpointer_type1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForpositional_argument1: nodes [
 	| result |
 	result := CSArgumentNode new.
@@ -9836,7 +9837,7 @@ CSharpParser >> reduceActionForpositional_argument1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForpositional_pattern1: nodes [
 	| result |
 	result := CSPositionalPatternNode new.
@@ -9846,7 +9847,7 @@ CSharpParser >> reduceActionForpositional_pattern1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForpositional_pattern2: nodes [
 	| result |
 	result := CSPositionalPatternNode new.
@@ -9857,7 +9858,7 @@ CSharpParser >> reduceActionForpositional_pattern2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForpositional_pattern3: nodes [
 	| result |
 	result := CSPositionalPatternNode new.
@@ -9871,7 +9872,7 @@ CSharpParser >> reduceActionForpositional_pattern3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForpositional_pattern4: nodes [
 	| result |
 	result := CSPositionalPatternNode new.
@@ -9886,7 +9887,7 @@ CSharpParser >> reduceActionForpositional_pattern4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForpositional_pattern5: nodes [
 	| result |
 	result := CSPositionalPatternNode new.
@@ -9898,7 +9899,7 @@ CSharpParser >> reduceActionForpositional_pattern5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForpositional_pattern6: nodes [
 	| result |
 	result := CSPositionalPatternNode new.
@@ -9911,7 +9912,7 @@ CSharpParser >> reduceActionForpositional_pattern6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForpositional_pattern7: nodes [
 	| result |
 	result := CSPositionalPatternNode new.
@@ -9927,7 +9928,7 @@ CSharpParser >> reduceActionForpositional_pattern7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForpositional_pattern8: nodes [
 	| result |
 	result := CSPositionalPatternNode new.
@@ -9944,7 +9945,7 @@ CSharpParser >> reduceActionForpositional_pattern8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForprimary_constraint1: nodes [
 	| result |
 	result := CSTypeConstraintNode new.
@@ -9952,7 +9953,7 @@ CSharpParser >> reduceActionForprimary_constraint1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForprimary_constraint2: nodes [
 	| result |
 	result := CSPrimaryConstraintNode new.
@@ -9960,7 +9961,7 @@ CSharpParser >> reduceActionForprimary_constraint2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForprimary_constraint3: nodes [
 	| result |
 	result := CSPrimaryConstraintNode new.
@@ -9969,7 +9970,7 @@ CSharpParser >> reduceActionForprimary_constraint3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForprimary_constraint4: nodes [
 	| result |
 	result := CSPrimaryConstraintNode new.
@@ -9977,7 +9978,7 @@ CSharpParser >> reduceActionForprimary_constraint4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForprimary_constraint5: nodes [
 	| result |
 	result := CSPrimaryConstraintNode new.
@@ -9986,7 +9987,7 @@ CSharpParser >> reduceActionForprimary_constraint5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForprimary_constraint6: nodes [
 	| result |
 	result := CSPrimaryConstraintNode new.
@@ -9994,7 +9995,7 @@ CSharpParser >> reduceActionForprimary_constraint6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForprimary_constraint7: nodes [
 	| result |
 	result := CSPrimaryConstraintNode new.
@@ -10002,7 +10003,7 @@ CSharpParser >> reduceActionForprimary_constraint7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForprimary_constraint8: nodes [
 	| result |
 	result := CSPrimaryConstraintNode new.
@@ -10010,7 +10011,7 @@ CSharpParser >> reduceActionForprimary_constraint8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForproperty_body1: nodes [
 	| result |
 	result := Array new: 9.
@@ -10024,7 +10025,7 @@ CSharpParser >> reduceActionForproperty_body1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForproperty_body2: nodes [
 	| result |
 	result := Array new: 9.
@@ -10034,7 +10035,7 @@ CSharpParser >> reduceActionForproperty_body2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForproperty_declaration1: nodes [
 	| result |
 	result := CSPropertyDeclarationNode new.
@@ -10057,7 +10058,7 @@ CSharpParser >> reduceActionForproperty_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForproperty_declaration2: nodes [
 	| result |
 	result := CSPropertyDeclarationNode new.
@@ -10081,7 +10082,7 @@ CSharpParser >> reduceActionForproperty_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForproperty_pattern1: nodes [
 	| result |
 	result := CSPropertyPatternNode new.
@@ -10093,7 +10094,7 @@ CSharpParser >> reduceActionForproperty_pattern1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForproperty_pattern2: nodes [
 	| result |
 	result := CSPropertyPatternNode new.
@@ -10106,7 +10107,7 @@ CSharpParser >> reduceActionForproperty_pattern2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForproperty_pattern_clause2: nodes [
 	| result |
 	result := Array new: 4.
@@ -10119,7 +10120,7 @@ CSharpParser >> reduceActionForproperty_pattern_clause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForproperty_pattern_clause3: nodes [
 	| result |
 	result := Array new: 4.
@@ -10133,7 +10134,7 @@ CSharpParser >> reduceActionForproperty_pattern_clause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForqualified_alias_member1: nodes [
 	| result |
 	result := CSQualifiedAliasMemberNode new.
@@ -10144,7 +10145,7 @@ CSharpParser >> reduceActionForqualified_alias_member1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForqualified_alias_member_expression1: nodes [
 	| result |
 	result := CSTypeExpressionNode new.
@@ -10152,7 +10153,7 @@ CSharpParser >> reduceActionForqualified_alias_member_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForqualified_identifier1: nodes [
 	| result |
 	result := CSQualifiedIdentifierNode new.
@@ -10160,7 +10161,7 @@ CSharpParser >> reduceActionForqualified_identifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForqualified_identifier2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -10169,7 +10170,7 @@ CSharpParser >> reduceActionForqualified_identifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForquery_body1: nodes [
 	| result |
 	result := Array new: 24.
@@ -10249,7 +10250,7 @@ CSharpParser >> reduceActionForquery_body1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForquery_body_clause1: nodes [
 	| result |
 	result := Array new: 19.
@@ -10266,7 +10267,7 @@ CSharpParser >> reduceActionForquery_body_clause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForquery_body_clause2: nodes [
 	| result |
 	result := Array new: 19.
@@ -10282,7 +10283,7 @@ CSharpParser >> reduceActionForquery_body_clause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForquery_body_clause3: nodes [
 	| result |
 	result := Array new: 19.
@@ -10296,7 +10297,7 @@ CSharpParser >> reduceActionForquery_body_clause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForquery_body_clause4: nodes [
 	| result |
 	result := Array new: 19.
@@ -10317,7 +10318,7 @@ CSharpParser >> reduceActionForquery_body_clause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForquery_body_clause5: nodes [
 	| result |
 	result := Array new: 19.
@@ -10339,7 +10340,7 @@ CSharpParser >> reduceActionForquery_body_clause5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForquery_body_clause6: nodes [
 	| result |
 	result := Array new: 19.
@@ -10356,7 +10357,7 @@ CSharpParser >> reduceActionForquery_body_clause6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForquery_body_clauses1: nodes [
 	| result |
 	result := Array new: 19.
@@ -10401,7 +10402,7 @@ CSharpParser >> reduceActionForquery_body_clauses1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForquery_body_clauses2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -10427,7 +10428,7 @@ CSharpParser >> reduceActionForquery_body_clauses2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForquery_continuation1: nodes [
 	| result |
 	result := Array new: 24.
@@ -10484,7 +10485,7 @@ CSharpParser >> reduceActionForquery_continuation1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForquery_expression1: nodes [
 	| result |
 	result := CSQueryExpressionNode new.
@@ -10520,7 +10521,7 @@ CSharpParser >> reduceActionForquery_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForrange_expression2: nodes [
 	| result |
 	result := CSBinaryExpressionNode new.
@@ -10528,7 +10529,7 @@ CSharpParser >> reduceActionForrange_expression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForrange_expression3: nodes [
 	| result |
 	result := CSBinaryExpressionNode new.
@@ -10537,7 +10538,7 @@ CSharpParser >> reduceActionForrange_expression3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForrange_expression4: nodes [
 	| result |
 	result := CSBinaryExpressionNode new.
@@ -10546,7 +10547,7 @@ CSharpParser >> reduceActionForrange_expression4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForrank_specifier1: nodes [
 	| result |
 	result := CSRankSpecifierNode new.
@@ -10556,7 +10557,7 @@ CSharpParser >> reduceActionForrank_specifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForrank_specifier2: nodes [
 	| result |
 	result := CSRankSpecifierNode new.
@@ -10566,7 +10567,7 @@ CSharpParser >> reduceActionForrank_specifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForref_accessor_body1: nodes [
 	| result |
 	result := Array new: 5.
@@ -10574,7 +10575,7 @@ CSharpParser >> reduceActionForref_accessor_body1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForref_accessor_body2: nodes [
 	| result |
 	result := Array new: 5.
@@ -10585,7 +10586,7 @@ CSharpParser >> reduceActionForref_accessor_body2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForref_accessor_body3: nodes [
 	| result |
 	result := Array new: 5.
@@ -10593,7 +10594,7 @@ CSharpParser >> reduceActionForref_accessor_body3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForref_get_accessor_declaration1: nodes [
 	| result |
 	result := CSGetAccessorDeclarationNode new.
@@ -10608,7 +10609,7 @@ CSharpParser >> reduceActionForref_get_accessor_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForref_indexer_body1: nodes [
 	| result |
 	result := Array new: 7.
@@ -10618,7 +10619,7 @@ CSharpParser >> reduceActionForref_indexer_body1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForref_indexer_body2: nodes [
 	| result |
 	result := Array new: 7.
@@ -10629,7 +10630,7 @@ CSharpParser >> reduceActionForref_indexer_body2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForref_kind2: nodes [
 	| result |
 	result := OrderedCollection new: 2.
@@ -10638,7 +10639,7 @@ CSharpParser >> reduceActionForref_kind2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForref_local_function_body1: nodes [
 	| result |
 	result := CSMethodBodyNode new.
@@ -10646,7 +10647,7 @@ CSharpParser >> reduceActionForref_local_function_body1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForref_local_function_body2: nodes [
 	| result |
 	result := CSMethodBodyNode new.
@@ -10657,7 +10658,7 @@ CSharpParser >> reduceActionForref_local_function_body2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForref_local_variable_declaration1: nodes [
 	| result |
 	result := Array new: 5.
@@ -10671,7 +10672,7 @@ CSharpParser >> reduceActionForref_local_variable_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForref_local_variable_declaration2: nodes [
 	| result |
 	result := Array new: 5.
@@ -10686,7 +10687,7 @@ CSharpParser >> reduceActionForref_local_variable_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForref_local_variable_declarator1: nodes [
 	| result |
 	result := CSLocalVariableDeclaratorNode new.
@@ -10697,7 +10698,7 @@ CSharpParser >> reduceActionForref_local_variable_declarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForref_method_body2: nodes [
 	| result |
 	result := CSMethodBodyNode new.
@@ -10708,7 +10709,7 @@ CSharpParser >> reduceActionForref_method_body2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForref_property_body1: nodes [
 	| result |
 	result := Array new: 9.
@@ -10721,7 +10722,7 @@ CSharpParser >> reduceActionForref_property_body1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForref_property_body2: nodes [
 	| result |
 	result := Array new: 9.
@@ -10732,7 +10733,7 @@ CSharpParser >> reduceActionForref_property_body2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForrelational_pattern1: nodes [
 	| result |
 	result := CSRelationalPatternNode new.
@@ -10741,7 +10742,7 @@ CSharpParser >> reduceActionForrelational_pattern1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForremove_accessor_declaration1: nodes [
 	| result |
 	result := CSRemoveAccessorDeclarationNode new.
@@ -10751,7 +10752,7 @@ CSharpParser >> reduceActionForremove_accessor_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForrestrictive_type_parameter_constraints4: nodes [
 	| result |
 	result := nodes at: 3.
@@ -10760,7 +10761,7 @@ CSharpParser >> reduceActionForrestrictive_type_parameter_constraints4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForrestrictive_type_parameter_constraints5: nodes [
 	| result |
 	result := Array new: 2.
@@ -10772,7 +10773,7 @@ CSharpParser >> reduceActionForrestrictive_type_parameter_constraints5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForrestrictive_type_parameter_constraints7: nodes [
 	| result |
 	result := nodes at: 3.
@@ -10783,7 +10784,7 @@ CSharpParser >> reduceActionForrestrictive_type_parameter_constraints7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForreturn_statement1: nodes [
 	| result |
 	result := CSReturnStatementNode new.
@@ -10793,7 +10794,7 @@ CSharpParser >> reduceActionForreturn_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForreturn_statement2: nodes [
 	| result |
 	result := CSReturnStatementNode new.
@@ -10803,7 +10804,7 @@ CSharpParser >> reduceActionForreturn_statement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForselect_or_group_clause1: nodes [
 	| result |
 	result := Array new: 6.
@@ -10812,7 +10813,7 @@ CSharpParser >> reduceActionForselect_or_group_clause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForselect_or_group_clause2: nodes [
 	| result |
 	result := Array new: 6.
@@ -10823,7 +10824,7 @@ CSharpParser >> reduceActionForselect_or_group_clause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForset_accessor_declaration2: nodes [
 	| result |
 	result := CSSetAccessorDeclarationNode new.
@@ -10837,7 +10838,7 @@ CSharpParser >> reduceActionForset_accessor_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForsimple_designation1: nodes [
 	| result |
 	result := CSVariableDesignationNode new.
@@ -10845,7 +10846,7 @@ CSharpParser >> reduceActionForsimple_designation1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForsimple_name1: nodes [
 	| result |
 	result := CSSimpleNameNode new.
@@ -10854,7 +10855,7 @@ CSharpParser >> reduceActionForsimple_name1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForsimple_type2: nodes [
 	| result |
 	result := CSSimpleTypeNode new.
@@ -10862,7 +10863,7 @@ CSharpParser >> reduceActionForsimple_type2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForsizeof_expression1: nodes [
 	| result |
 	result := CSSizeofExpressionNode new.
@@ -10873,7 +10874,7 @@ CSharpParser >> reduceActionForsizeof_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForslice_pattern1: nodes [
 	| result |
 	result := CSSlicePatternNode new.
@@ -10881,7 +10882,7 @@ CSharpParser >> reduceActionForslice_pattern1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForslice_pattern2: nodes [
 	| result |
 	result := CSSlicePatternNode new.
@@ -10890,7 +10891,7 @@ CSharpParser >> reduceActionForslice_pattern2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForspecific_catch_clause1: nodes [
 	| result |
 	result := CSCatchClauseNode new.
@@ -10904,7 +10905,7 @@ CSharpParser >> reduceActionForspecific_catch_clause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForspecific_catch_clause2: nodes [
 	| result |
 	result := CSCatchClauseNode new.
@@ -10914,7 +10915,7 @@ CSharpParser >> reduceActionForspecific_catch_clause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForspread_element1: nodes [
 	| result |
 	result := CSSpreadExpressionNode new.
@@ -10923,7 +10924,7 @@ CSharpParser >> reduceActionForspread_element1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForstackalloc_expression1: nodes [
 	| result |
 	result := CSStackallocExpressionNode new.
@@ -10935,7 +10936,20 @@ CSharpParser >> reduceActionForstackalloc_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
+CSharpParser >> reduceActionForstackalloc_expression2: nodes [
+	| result |
+	result := CSStackallocExpressionNode new.
+	result stackallocToken: (nodes at: 1).
+	result type: (nodes at: 2).
+	result leftBracket: (nodes at: 3).
+	result expression: (nodes at: 4).
+	result rightBracket: (nodes at: 5).
+	result initializer: (nodes at: 6).
+	^ result
+]
+
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForstackalloc_initializer1: nodes [
 	| result |
 	result := CSStackallocInitializerNode new.
@@ -10946,7 +10960,7 @@ CSharpParser >> reduceActionForstackalloc_initializer1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForstatic_constructor_body1: nodes [
 	| result |
 	result := Array new: 4.
@@ -10954,7 +10968,7 @@ CSharpParser >> reduceActionForstatic_constructor_body1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForstatic_constructor_body2: nodes [
 	| result |
 	result := Array new: 4.
@@ -10964,7 +10978,7 @@ CSharpParser >> reduceActionForstatic_constructor_body2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForstatic_constructor_body3: nodes [
 	| result |
 	result := Array new: 4.
@@ -10972,7 +10986,7 @@ CSharpParser >> reduceActionForstatic_constructor_body3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForstatic_constructor_declaration1: nodes [
 	| result |
 	result := CSStaticConstructorDeclarationNode new.
@@ -10989,7 +11003,7 @@ CSharpParser >> reduceActionForstatic_constructor_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForstatic_constructor_modifiers1: nodes [
 	| result |
 	result := Array new: 2.
@@ -10998,7 +11012,7 @@ CSharpParser >> reduceActionForstatic_constructor_modifiers1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForstatic_constructor_modifiers2: nodes [
 	| result |
 	result := Array new: 2.
@@ -11008,7 +11022,7 @@ CSharpParser >> reduceActionForstatic_constructor_modifiers2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForstatic_constructor_modifiers3: nodes [
 	| result |
 	result := Array new: 2.
@@ -11019,7 +11033,7 @@ CSharpParser >> reduceActionForstatic_constructor_modifiers3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForstatic_constructor_modifiers5: nodes [
 	| result |
 	result := Array new: 2.
@@ -11029,7 +11043,7 @@ CSharpParser >> reduceActionForstatic_constructor_modifiers5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForstatic_constructor_modifiers6: nodes [
 	| result |
 	result := Array new: 2.
@@ -11040,7 +11054,7 @@ CSharpParser >> reduceActionForstatic_constructor_modifiers6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForstatic_constructor_modifiers7: nodes [
 	| result |
 	result := Array new: 2.
@@ -11051,7 +11065,7 @@ CSharpParser >> reduceActionForstatic_constructor_modifiers7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForstruct_declaration1: nodes [
 	| result |
 	result := CSStructDeclarationNode new.
@@ -11072,7 +11086,7 @@ CSharpParser >> reduceActionForstruct_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForstruct_declaration2: nodes [
 	| result |
 	result := CSStructDeclarationNode new.
@@ -11097,7 +11111,7 @@ CSharpParser >> reduceActionForstruct_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForstruct_declaration3: nodes [
 	| result |
 	result := CSStructDeclarationNode new.
@@ -11119,7 +11133,7 @@ CSharpParser >> reduceActionForstruct_declaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForstruct_declaration4: nodes [
 	| result |
 	result := CSStructDeclarationNode new.
@@ -11145,7 +11159,7 @@ CSharpParser >> reduceActionForstruct_declaration4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForstruct_declaration5: nodes [
 	| result |
 	result := CSStructDeclarationNode new.
@@ -11167,7 +11181,7 @@ CSharpParser >> reduceActionForstruct_declaration5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForstruct_declaration6: nodes [
 	| result |
 	result := CSStructDeclarationNode new.
@@ -11193,7 +11207,7 @@ CSharpParser >> reduceActionForstruct_declaration6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForstruct_declaration7: nodes [
 	| result |
 	result := CSStructDeclarationNode new.
@@ -11216,7 +11230,7 @@ CSharpParser >> reduceActionForstruct_declaration7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForstruct_declaration8: nodes [
 	| result |
 	result := CSStructDeclarationNode new.
@@ -11243,7 +11257,7 @@ CSharpParser >> reduceActionForstruct_declaration8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForsubpattern1: nodes [
 	| result |
 	result := CSSubpatternNode new.
@@ -11251,7 +11265,7 @@ CSharpParser >> reduceActionForsubpattern1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForsubpattern2: nodes [
 	| result |
 	result := CSSubpatternNode new.
@@ -11261,7 +11275,7 @@ CSharpParser >> reduceActionForsubpattern2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForswitch_expression2: nodes [
 	| result |
 	result := CSSwitchExpressionNode new.
@@ -11272,7 +11286,7 @@ CSharpParser >> reduceActionForswitch_expression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForswitch_expression3: nodes [
 	| result |
 	result := CSSwitchExpressionNode new.
@@ -11285,7 +11299,7 @@ CSharpParser >> reduceActionForswitch_expression3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForswitch_expression4: nodes [
 	| result |
 	result := CSSwitchExpressionNode new.
@@ -11299,7 +11313,7 @@ CSharpParser >> reduceActionForswitch_expression4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForswitch_expression_arm1: nodes [
 	| result |
 	result := CSSwitchExpressionArmNode new.
@@ -11309,7 +11323,7 @@ CSharpParser >> reduceActionForswitch_expression_arm1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForswitch_expression_arm2: nodes [
 	| result |
 	result := CSSwitchExpressionArmNode new.
@@ -11321,7 +11335,7 @@ CSharpParser >> reduceActionForswitch_expression_arm2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForswitch_label1: nodes [
 	| result |
 	result := CSSwitchLabelNode new.
@@ -11331,7 +11345,7 @@ CSharpParser >> reduceActionForswitch_label1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForswitch_label2: nodes [
 	| result |
 	result := CSSwitchLabelNode new.
@@ -11343,7 +11357,7 @@ CSharpParser >> reduceActionForswitch_label2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForswitch_label3: nodes [
 	| result |
 	result := CSSwitchLabelNode new.
@@ -11352,7 +11366,7 @@ CSharpParser >> reduceActionForswitch_label3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForswitch_section1: nodes [
 	| result |
 	result := CSSwitchSectionNode new.
@@ -11361,7 +11375,7 @@ CSharpParser >> reduceActionForswitch_section1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForswitch_statement1: nodes [
 	| result |
 	result := CSSwitchStatementNode new.
@@ -11375,7 +11389,7 @@ CSharpParser >> reduceActionForswitch_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForthis_access1: nodes [
 	| result |
 	result := CSThisAccessNode new.
@@ -11383,7 +11397,7 @@ CSharpParser >> reduceActionForthis_access1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForthrow_expression1: nodes [
 	| result |
 	result := CSThrowExpressionNode new.
@@ -11392,7 +11406,7 @@ CSharpParser >> reduceActionForthrow_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForthrow_statement1: nodes [
 	| result |
 	result := CSThrowStatementNode new.
@@ -11402,7 +11416,7 @@ CSharpParser >> reduceActionForthrow_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFortry_statement1: nodes [
 	| result |
 	result := CSTryStatementNode new.
@@ -11412,7 +11426,7 @@ CSharpParser >> reduceActionFortry_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFortry_statement2: nodes [
 	| result |
 	result := CSTryStatementNode new.
@@ -11422,7 +11436,7 @@ CSharpParser >> reduceActionFortry_statement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFortry_statement3: nodes [
 	| result |
 	result := CSTryStatementNode new.
@@ -11433,7 +11447,7 @@ CSharpParser >> reduceActionFortry_statement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFortuple_designation1: nodes [
 	| result |
 	result := CSTupleDesignationNode new.
@@ -11442,7 +11456,7 @@ CSharpParser >> reduceActionFortuple_designation1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFortuple_designation2: nodes [
 	| result |
 	result := CSTupleDesignationNode new.
@@ -11453,7 +11467,7 @@ CSharpParser >> reduceActionFortuple_designation2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFortuple_element1: nodes [
 	| result |
 	result := CSTupleElementNode new.
@@ -11461,7 +11475,7 @@ CSharpParser >> reduceActionFortuple_element1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFortuple_element2: nodes [
 	| result |
 	result := CSTupleElementNode new.
@@ -11471,7 +11485,7 @@ CSharpParser >> reduceActionFortuple_element2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFortuple_expression1: nodes [
 	| result |
 	result := CSTupleExpressionNode new.
@@ -11483,7 +11497,7 @@ CSharpParser >> reduceActionFortuple_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFortuple_type1: nodes [
 	| result |
 	result := CSTupleTypeNode new.
@@ -11495,7 +11509,7 @@ CSharpParser >> reduceActionFortuple_type1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFortuple_type_element1: nodes [
 	| result |
 	result := CSTupleTypeElementNode new.
@@ -11503,7 +11517,7 @@ CSharpParser >> reduceActionFortuple_type_element1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFortuple_type_element2: nodes [
 	| result |
 	result := CSTupleTypeElementNode new.
@@ -11512,7 +11526,7 @@ CSharpParser >> reduceActionFortuple_type_element2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFortype_argument_list1: nodes [
 	| result |
 	result := CSTypeArgumentListNode new.
@@ -11523,7 +11537,7 @@ CSharpParser >> reduceActionFortype_argument_list1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFortype_parameter1: nodes [
 	| result |
 	result := CSTypeNameNode new.
@@ -11531,7 +11545,7 @@ CSharpParser >> reduceActionFortype_parameter1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFortype_parameter_constraints1: nodes [
 	| result |
 	result := Array new: 3.
@@ -11542,7 +11556,7 @@ CSharpParser >> reduceActionFortype_parameter_constraints1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFortype_parameter_constraints2: nodes [
 	| result |
 	result := Array new: 3.
@@ -11554,7 +11568,7 @@ CSharpParser >> reduceActionFortype_parameter_constraints2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFortype_parameter_constraints3: nodes [
 	| result |
 	result := Array new: 3.
@@ -11569,7 +11583,7 @@ CSharpParser >> reduceActionFortype_parameter_constraints3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFortype_parameter_constraints_clause1: nodes [
 	| result |
 	result := CSTypeParameterConstraintsClauseNode new.
@@ -11582,7 +11596,7 @@ CSharpParser >> reduceActionFortype_parameter_constraints_clause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFortype_parameter_list1: nodes [
 	| result |
 	result := CSTypeParameterListNode new.
@@ -11594,7 +11608,7 @@ CSharpParser >> reduceActionFortype_parameter_list1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFortype_parameters1: nodes [
 	| result |
 	result := Array new: 3.
@@ -11606,7 +11620,7 @@ CSharpParser >> reduceActionFortype_parameters1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFortype_parameters2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -11616,7 +11630,7 @@ CSharpParser >> reduceActionFortype_parameters2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionFortypeof_expression1: nodes [
 	| result |
 	result := CSTypeofExpressionNode new.
@@ -11627,7 +11641,7 @@ CSharpParser >> reduceActionFortypeof_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForunary_expression4: nodes [
 	| result |
 	result := CSPrefixExpressionNode new.
@@ -11636,7 +11650,7 @@ CSharpParser >> reduceActionForunary_expression4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForunary_operator_declarator1: nodes [
 	| result |
 	result := Array new: 7.
@@ -11650,7 +11664,7 @@ CSharpParser >> reduceActionForunary_operator_declarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForunbound_type_name1: nodes [
 	| result |
 	result := CSUnboundTypeNameNode new.
@@ -11661,7 +11675,7 @@ CSharpParser >> reduceActionForunbound_type_name1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForunbound_type_name2: nodes [
 	| result |
 	result := CSUnboundTypeNameNode new.
@@ -11674,7 +11688,7 @@ CSharpParser >> reduceActionForunbound_type_name2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForunbound_type_name3: nodes [
 	| result |
 	result := CSUnboundTypeNameNode new.
@@ -11687,7 +11701,7 @@ CSharpParser >> reduceActionForunbound_type_name3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForunchecked_expression1: nodes [
 	| result |
 	result := CSUncheckedExpressionNode new.
@@ -11698,7 +11712,7 @@ CSharpParser >> reduceActionForunchecked_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForunchecked_statement1: nodes [
 	| result |
 	result := CSUncheckedStatementNode new.
@@ -11707,7 +11721,7 @@ CSharpParser >> reduceActionForunchecked_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForunsafe_statement1: nodes [
 	| result |
 	result := CSUnsafeStatementNode new.
@@ -11716,7 +11730,7 @@ CSharpParser >> reduceActionForunsafe_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForusing_alias_directive1: nodes [
 	| result |
 	result := CSUsingAliasDirectiveNode new.
@@ -11728,7 +11742,7 @@ CSharpParser >> reduceActionForusing_alias_directive1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForusing_declarator1: nodes [
 	| result |
 	result := CSUsingDeclaratorNode new.
@@ -11738,7 +11752,7 @@ CSharpParser >> reduceActionForusing_declarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForusing_namespace_directive1: nodes [
 	| result |
 	result := CSUsingNamespaceDirectiveNode new.
@@ -11748,7 +11762,7 @@ CSharpParser >> reduceActionForusing_namespace_directive1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForusing_statement1: nodes [
 	| result |
 	result := CSUsingStatementNode new.
@@ -11760,7 +11774,7 @@ CSharpParser >> reduceActionForusing_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForusing_static_directive1: nodes [
 	| result |
 	result := CSUsingStaticDirectiveNode new.
@@ -11771,7 +11785,7 @@ CSharpParser >> reduceActionForusing_static_directive1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForvariable_declarator1: nodes [
 	| result |
 	result := CSVariableDeclaratorNode new.
@@ -11779,7 +11793,7 @@ CSharpParser >> reduceActionForvariable_declarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForvariable_declarator2: nodes [
 	| result |
 	result := CSVariableDeclaratorNode new.
@@ -11789,7 +11803,7 @@ CSharpParser >> reduceActionForvariable_declarator2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForvariant_type_parameter_list1: nodes [
 	| result |
 	result := CSVariantTypeParameterListNode new.
@@ -11802,7 +11816,7 @@ CSharpParser >> reduceActionForvariant_type_parameter_list1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForvariant_type_parameters1: nodes [
 	| result |
 	result := Array new: 4.
@@ -11816,7 +11830,7 @@ CSharpParser >> reduceActionForvariant_type_parameters1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForvariant_type_parameters2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -11827,7 +11841,7 @@ CSharpParser >> reduceActionForvariant_type_parameters2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForvoid_type1: nodes [
 	| result |
 	result := CSVoidTypeNode new.
@@ -11835,7 +11849,7 @@ CSharpParser >> reduceActionForvoid_type1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForwhile_statement1: nodes [
 	| result |
 	result := CSWhileStatementNode new.
@@ -11847,7 +11861,7 @@ CSharpParser >> reduceActionForwhile_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForyield_statement1: nodes [
 	| result |
 	result := CSYieldStatementNode new.
@@ -11858,7 +11872,7 @@ CSharpParser >> reduceActionForyield_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSharpParser >> reduceActionForyield_statement2: nodes [
 	| result |
 	result := CSYieldStatementNode new.
@@ -11868,7 +11882,7 @@ CSharpParser >> reduceActionForyield_statement2: nodes [
 	^ result
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CSharpParser >> scanFormat [
 	| token |
 	token := scanner scanFormat.
@@ -11876,7 +11890,7 @@ CSharpParser >> scanFormat [
 	^ token
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CSharpParser >> tryAllTokens [
 	| id ids |
 	id := scanner IdentifierId.

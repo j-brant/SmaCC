@@ -1,6 +1,6 @@
 Class {
-	#name : #CSIndexerDeclarationNode,
-	#superclass : #CSDeclarationNode,
+	#name : 'CSIndexerDeclarationNode',
+	#superclass : 'CSDeclarationNode',
 	#instVars : [
 		'_attributes',
 		'modifiers',
@@ -22,74 +22,75 @@ Class {
 		'semicolonToken',
 		'refToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> _attributes [
 	^ _attributes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> _attributes: anOrderedCollection [
 	self setParents: self _attributes to: nil.
 	_attributes := anOrderedCollection.
 	self setParents: self _attributes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIndexerDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> compositeNodeVariables [
 	^ #(#_attributes #parameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> compositeTokenVariables [
 	^ #(#modifiers #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> equalGreaterThanToken [
 	^ equalGreaterThanToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> equalGreaterThanToken: aSmaCCToken [
 	equalGreaterThanToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> expression: aCSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> getAccessor [
 	^ getAccessor
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> getAccessor: aCSGetAccessorDeclarationNode [
 	self getAccessor notNil
 		ifTrue: [ self getAccessor parent: nil ].
@@ -98,12 +99,12 @@ CSIndexerDeclarationNode >> getAccessor: aCSGetAccessorDeclarationNode [
 		ifTrue: [ self getAccessor parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> ignoredTokenVariables [
 	^ #(#semicolonToken)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSIndexerDeclarationNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
@@ -112,131 +113,131 @@ CSIndexerDeclarationNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> leftBraceToken [
 	^ leftBraceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> leftBraceToken: aSmaCCToken [
 	leftBraceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> leftBracketToken [
 	^ leftBracketToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> leftBracketToken: aSmaCCToken [
 	leftBracketToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> modifiers: anOrderedCollection [
 	modifiers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> nodeVariables [
 	^ #(#returnType #type #getAccessor #setAccessor #expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> partialToken [
 	^ partialToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> partialToken: aSmaCCToken [
 	partialToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> periodToken [
 	^ periodToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> periodToken: aSmaCCToken [
 	periodToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> refToken [
 	^ refToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> refToken: aSmaCCToken [
 	refToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> returnType [
 	^ returnType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> returnType: aCSTypeNode [
 	self returnType notNil ifTrue: [ self returnType parent: nil ].
 	returnType := aCSTypeNode.
 	self returnType notNil ifTrue: [ self returnType parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> rightBraceToken [
 	^ rightBraceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> rightBraceToken: aSmaCCToken [
 	rightBraceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> rightBracketToken [
 	^ rightBracketToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> rightBracketToken: aSmaCCToken [
 	rightBracketToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> semicolonToken [
 	^ semicolonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> semicolonToken: aSmaCCToken [
 	semicolonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> setAccessor [
 	^ setAccessor
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> setAccessor: aCSSetAccessorDeclarationNode [
 	self setAccessor notNil
 		ifTrue: [ self setAccessor parent: nil ].
@@ -245,27 +246,27 @@ CSIndexerDeclarationNode >> setAccessor: aCSSetAccessorDeclarationNode [
 		ifTrue: [ self setAccessor parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> thisToken [
 	^ thisToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> thisToken: aSmaCCToken [
 	thisToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> tokenVariables [
 	^ #(#partialToken #thisToken #leftBracketToken #rightBracketToken #periodToken #leftBraceToken #rightBraceToken #equalGreaterThanToken #refToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIndexerDeclarationNode >> type: aCSTypeNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].

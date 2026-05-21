@@ -1,6 +1,6 @@
 Class {
-	#name : #CSDelegateCreationExpressionNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSDelegateCreationExpressionNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'newToken',
 		'type',
@@ -8,72 +8,73 @@ Class {
 		'expression',
 		'rightParenToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDelegateCreationExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDelegateCreationExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDelegateCreationExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDelegateCreationExpressionNode >> expression: aCSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDelegateCreationExpressionNode >> leftParenToken [
 	^ leftParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDelegateCreationExpressionNode >> leftParenToken: aSmaCCToken [
 	leftParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDelegateCreationExpressionNode >> newToken [
 	^ newToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDelegateCreationExpressionNode >> newToken: aSmaCCToken [
 	newToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDelegateCreationExpressionNode >> nodeVariables [
 	^ #(#type #expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDelegateCreationExpressionNode >> rightParenToken [
 	^ rightParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDelegateCreationExpressionNode >> rightParenToken: aSmaCCToken [
 	rightParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDelegateCreationExpressionNode >> tokenVariables [
 	^ #(#newToken #leftParenToken #rightParenToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDelegateCreationExpressionNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDelegateCreationExpressionNode >> type: aCSTypeNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].

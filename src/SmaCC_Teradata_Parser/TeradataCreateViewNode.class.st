@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataCreateViewNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataCreateViewNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'createToken',
 		'viewToken',
@@ -17,176 +17,177 @@ Class {
 		'accessToken',
 		'modeToken'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCreateView: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> accessToken [
 	^ accessToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> accessToken: aSmaCCToken [
 	accessToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> asToken [
 	^ asToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> asToken: aSmaCCToken [
 	asToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> columns [
 	^ columns
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> columns: anOrderedCollection [
 	columns := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> compositeTokenVariables [
 	^ #(#columns #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> createToken [
 	^ createToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> createToken: aSmaCCToken [
 	createToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> forToken [
 	^ forToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> forToken: aSmaCCToken [
 	forToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataCreateViewNode >> initialize [
 	super initialize.
 	columns := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> lockingToken [
 	^ lockingToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> lockingToken: aSmaCCToken [
 	lockingToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> modeToken [
 	^ modeToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> modeToken: aSmaCCToken [
 	modeToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> nodeVariables [
 	^ #(#view #query)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> query [
 	^ query
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> query: aTeradataProgramNode [
 	self query notNil ifTrue: [ self query parent: nil ].
 	query := aTeradataProgramNode.
 	self query notNil ifTrue: [ self query parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> rowToken [
 	^ rowToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> rowToken: aSmaCCToken [
 	rowToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> tokenVariables [
 	^ #(#createToken #viewToken #leftParen #rightParen #asToken #lockingToken #rowToken #forToken #accessToken #modeToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> view [
 	^ view
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> view: aTeradataTableNode [
 	self view notNil ifTrue: [ self view parent: nil ].
 	view := aTeradataTableNode.
 	self view notNil ifTrue: [ self view parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> viewToken [
 	^ viewToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateViewNode >> viewToken: aSmaCCToken [
 	viewToken := aSmaCCToken
 ]

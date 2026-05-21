@@ -1,50 +1,51 @@
 Class {
-	#name : #CSPointerTypeNode,
-	#superclass : #CSTypeNode,
+	#name : 'CSPointerTypeNode',
+	#superclass : 'CSTypeNode',
 	#instVars : [
 		'type',
 		'timesTokens'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPointerTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPointerType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPointerTypeNode >> compositeTokenVariables [
 	^ #(#timesTokens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSPointerTypeNode >> initialize [
 	super initialize.
 	timesTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPointerTypeNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPointerTypeNode >> timesTokens [
 	^ timesTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPointerTypeNode >> timesTokens: anOrderedCollection [
 	timesTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPointerTypeNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPointerTypeNode >> type: aCSTypeNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].

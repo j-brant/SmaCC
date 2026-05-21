@@ -1,6 +1,6 @@
 Class {
-	#name : #CSFixedStatementNode,
-	#superclass : #CSStatementNode,
+	#name : 'CSFixedStatementNode',
+	#superclass : 'CSStatementNode',
 	#instVars : [
 		'fixedToken',
 		'leftParenToken',
@@ -10,94 +10,95 @@ Class {
 		'rightParenToken',
 		'statement'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFixedStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedStatementNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedStatementNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedStatementNode >> compositeNodeVariables [
 	^ #(#declarators)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedStatementNode >> declarators [
 	^ declarators
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedStatementNode >> declarators: anOrderedCollection [
 	self setParents: self declarators to: nil.
 	declarators := anOrderedCollection.
 	self setParents: self declarators to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedStatementNode >> fixedToken [
 	^ fixedToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedStatementNode >> fixedToken: aSmaCCToken [
 	fixedToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedStatementNode >> ignoredCompositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSFixedStatementNode >> initialize [
 	super initialize.
 	declarators := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedStatementNode >> leftParenToken [
 	^ leftParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedStatementNode >> leftParenToken: aSmaCCToken [
 	leftParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedStatementNode >> nodeVariables [
 	^ #(#type #statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedStatementNode >> rightParenToken [
 	^ rightParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedStatementNode >> rightParenToken: aSmaCCToken [
 	rightParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedStatementNode >> statement: aCSStatementNode [
 	self statement notNil
 		ifTrue: [ self statement parent: nil ].
@@ -106,17 +107,17 @@ CSFixedStatementNode >> statement: aCSStatementNode [
 		ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedStatementNode >> tokenVariables [
 	^ #(#fixedToken #leftParenToken #rightParenToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedStatementNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedStatementNode >> type: aCSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.

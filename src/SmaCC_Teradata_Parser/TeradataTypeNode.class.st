@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataTypeNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataTypeNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'names',
 		'options',
@@ -10,104 +10,105 @@ Class {
 		'comma',
 		'scale'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTypeNode >> comma [
 	^ comma
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTypeNode >> comma: aSmaCCToken [
 	comma := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTypeNode >> compositeNodeVariables [
 	^ #(#options)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTypeNode >> compositeTokenVariables [
 	^ #(#names)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataTypeNode >> initialize [
 	super initialize.
 	names := OrderedCollection new: 2.
 	options := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTypeNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTypeNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTypeNode >> names [
 	^ names
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTypeNode >> names: anOrderedCollection [
 	names := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTypeNode >> options [
 	^ options
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTypeNode >> options: anOrderedCollection [
 	self setParents: self options to: nil.
 	options := anOrderedCollection.
 	self setParents: self options to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTypeNode >> precision [
 	^ precision
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTypeNode >> precision: aSmaCCToken [
 	precision := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTypeNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTypeNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTypeNode >> scale [
 	^ scale
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTypeNode >> scale: aSmaCCToken [
 	scale := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataTypeNode >> tokenVariables [
 	^ #(#leftParen #precision #rightParen #comma #scale)
 ]

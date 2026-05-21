@@ -1,24 +1,25 @@
 Class {
-	#name : #CSMethodDeclarationNode,
-	#superclass : #CSDeclarationNode,
+	#name : 'CSMethodDeclarationNode',
+	#superclass : 'CSDeclarationNode',
 	#instVars : [
 		'header',
 		'body'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMethodDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMethodDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMethodDeclarationNode >> body [
 	^ body
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMethodDeclarationNode >> body: aCSMethodBodyNode [
 	self body notNil
 		ifTrue: [ self body parent: nil ].
@@ -27,12 +28,12 @@ CSMethodDeclarationNode >> body: aCSMethodBodyNode [
 		ifTrue: [ self body parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMethodDeclarationNode >> header [
 	^ header
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMethodDeclarationNode >> header: aCSMethodHeaderNode [
 	self header notNil
 		ifTrue: [ self header parent: nil ].
@@ -41,7 +42,7 @@ CSMethodDeclarationNode >> header: aCSMethodHeaderNode [
 		ifTrue: [ self header parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMethodDeclarationNode >> nodeVariables [
 	^ #(#header #body)
 ]

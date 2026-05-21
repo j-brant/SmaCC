@@ -1,44 +1,45 @@
 Class {
-	#name : #TeradataUnaryExpressionNode,
-	#superclass : #TeradataExpressionNode,
+	#name : 'TeradataUnaryExpressionNode',
+	#superclass : 'TeradataExpressionNode',
 	#instVars : [
 		'operator',
 		'value'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUnaryExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUnaryExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUnaryExpressionNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUnaryExpressionNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUnaryExpressionNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUnaryExpressionNode >> tokenVariables [
 	^ #(#operator)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUnaryExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUnaryExpressionNode >> value: aTeradataExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aTeradataExpressionNode.

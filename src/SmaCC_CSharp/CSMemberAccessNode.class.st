@@ -1,6 +1,6 @@
 Class {
-	#name : #CSMemberAccessNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSMemberAccessNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'expression',
 		'periodToken',
@@ -8,72 +8,73 @@ Class {
 		'typeArguments',
 		'name'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberAccessNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMemberAccess: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberAccessNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberAccessNode >> expression: aCSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberAccessNode >> identifier [
 	^ identifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberAccessNode >> identifier: aSmaCCToken [
 	identifier := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberAccessNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberAccessNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberAccessNode >> nodeVariables [
 	^ #(#expression #typeArguments)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberAccessNode >> periodToken [
 	^ periodToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberAccessNode >> periodToken: aSmaCCToken [
 	periodToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberAccessNode >> tokenVariables [
 	^ #(#periodToken #identifier #name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberAccessNode >> typeArguments [
 	^ typeArguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSMemberAccessNode >> typeArguments: aCSTypeArgumentListNode [
 	self typeArguments notNil
 		ifTrue: [ self typeArguments parent: nil ].

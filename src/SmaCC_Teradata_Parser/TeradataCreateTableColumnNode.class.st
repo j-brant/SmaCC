@@ -1,44 +1,45 @@
 Class {
-	#name : #TeradataCreateTableColumnNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataCreateTableColumnNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'name',
 		'type'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableColumnNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCreateTableColumn: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableColumnNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableColumnNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableColumnNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableColumnNode >> tokenVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableColumnNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableColumnNode >> type: aTeradataTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aTeradataTypeNode.

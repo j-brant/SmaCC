@@ -1,46 +1,47 @@
 Class {
-	#name : #TeradataIdentifierNameNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataIdentifierNameNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'names',
 		'periods'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIdentifierNameNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIdentifierName: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIdentifierNameNode >> compositeTokenVariables [
 	^ #(#names #periods)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataIdentifierNameNode >> initialize [
 	super initialize.
 	names := OrderedCollection new: 2.
 	periods := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIdentifierNameNode >> names [
 	^ names
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIdentifierNameNode >> names: anOrderedCollection [
 	names := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIdentifierNameNode >> periods [
 	^ periods
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIdentifierNameNode >> periods: anOrderedCollection [
 	periods := anOrderedCollection
 ]

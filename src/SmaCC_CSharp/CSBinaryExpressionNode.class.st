@@ -1,59 +1,60 @@
 Class {
-	#name : #CSBinaryExpressionNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSBinaryExpressionNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'left',
 		'operator',
 		'right'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBinaryExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBinaryExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBinaryExpressionNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBinaryExpressionNode >> left: aCSExpressionNode [
 	self left notNil ifTrue: [ self left parent: nil ].
 	left := aCSExpressionNode.
 	self left notNil ifTrue: [ self left parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBinaryExpressionNode >> nodeVariables [
 	^ #(#left #right)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBinaryExpressionNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBinaryExpressionNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBinaryExpressionNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBinaryExpressionNode >> right: aCSProgramNode [
 	self right notNil ifTrue: [ self right parent: nil ].
 	right := aCSProgramNode.
 	self right notNil ifTrue: [ self right parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBinaryExpressionNode >> tokenVariables [
 	^ #(#operator)
 ]

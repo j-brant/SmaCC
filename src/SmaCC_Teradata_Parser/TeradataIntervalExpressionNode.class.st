@@ -1,50 +1,51 @@
 Class {
-	#name : #TeradataIntervalExpressionNode,
-	#superclass : #TeradataExpressionNode,
+	#name : 'TeradataIntervalExpressionNode',
+	#superclass : 'TeradataExpressionNode',
 	#instVars : [
 		'intervalToken',
 		'interval',
 		'name'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIntervalExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIntervalExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIntervalExpressionNode >> interval [
 	^ interval
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIntervalExpressionNode >> interval: aSmaCCToken [
 	interval := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIntervalExpressionNode >> intervalToken [
 	^ intervalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIntervalExpressionNode >> intervalToken: aSmaCCToken [
 	intervalToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIntervalExpressionNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIntervalExpressionNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIntervalExpressionNode >> tokenVariables [
 	^ #(#intervalToken #interval #name)
 ]

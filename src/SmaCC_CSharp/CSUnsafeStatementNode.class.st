@@ -1,24 +1,25 @@
 Class {
-	#name : #CSUnsafeStatementNode,
-	#superclass : #CSStatementNode,
+	#name : 'CSUnsafeStatementNode',
+	#superclass : 'CSStatementNode',
 	#instVars : [
 		'unsafeToken',
 		'block'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnsafeStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUnsafeStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnsafeStatementNode >> block [
 	^ block
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnsafeStatementNode >> block: aCSBlockStatementNode [
 	self block notNil
 		ifTrue: [ self block parent: nil ].
@@ -27,22 +28,22 @@ CSUnsafeStatementNode >> block: aCSBlockStatementNode [
 		ifTrue: [ self block parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnsafeStatementNode >> nodeVariables [
 	^ #(#block)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnsafeStatementNode >> tokenVariables [
 	^ #(#unsafeToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnsafeStatementNode >> unsafeToken [
 	^ unsafeToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUnsafeStatementNode >> unsafeToken: aSmaCCToken [
 	unsafeToken := aSmaCCToken
 ]

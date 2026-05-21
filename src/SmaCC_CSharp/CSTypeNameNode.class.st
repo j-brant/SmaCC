@@ -1,36 +1,37 @@
 Class {
-	#name : #CSTypeNameNode,
-	#superclass : #CSTypeNode,
+	#name : 'CSTypeNameNode',
+	#superclass : 'CSTypeNode',
 	#instVars : [
 		'name',
 		'typeArguments',
 		'namespace',
 		'periodToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeNameNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTypeName: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeNameNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeNameNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeNameNode >> namespace [
 	^ namespace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeNameNode >> namespace: aCSTypeNode [
 	self namespace notNil
 		ifTrue: [ self namespace parent: nil ].
@@ -39,32 +40,32 @@ CSTypeNameNode >> namespace: aCSTypeNode [
 		ifTrue: [ self namespace parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeNameNode >> nodeVariables [
 	^ #(#typeArguments #namespace)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeNameNode >> periodToken [
 	^ periodToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeNameNode >> periodToken: aSmaCCToken [
 	periodToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeNameNode >> tokenVariables [
 	^ #(#name #periodToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeNameNode >> typeArguments [
 	^ typeArguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeNameNode >> typeArguments: aCSTypeArgumentListNode [
 	self typeArguments notNil
 		ifTrue: [ self typeArguments parent: nil ].

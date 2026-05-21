@@ -1,46 +1,47 @@
 Class {
-	#name : #TeradataIdentifierExpressionNode,
-	#superclass : #TeradataExpressionNode,
+	#name : 'TeradataIdentifierExpressionNode',
+	#superclass : 'TeradataExpressionNode',
 	#instVars : [
 		'names',
 		'periods'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIdentifierExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIdentifierExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIdentifierExpressionNode >> compositeTokenVariables [
 	^ #(#names #periods #leftParens #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataIdentifierExpressionNode >> initialize [
 	super initialize.
 	names := OrderedCollection new: 2.
 	periods := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIdentifierExpressionNode >> names [
 	^ names
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIdentifierExpressionNode >> names: anOrderedCollection [
 	names := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIdentifierExpressionNode >> periods [
 	^ periods
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIdentifierExpressionNode >> periods: anOrderedCollection [
 	periods := anOrderedCollection
 ]

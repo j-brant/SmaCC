@@ -1,55 +1,56 @@
 Class {
-	#name : #CSUsingDeclaratorNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSUsingDeclaratorNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'name',
 		'equal',
 		'value'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingDeclaratorNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUsingDeclarator: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingDeclaratorNode >> equal [
 	^ equal
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingDeclaratorNode >> equal: aSmaCCToken [
 	equal := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingDeclaratorNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingDeclaratorNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingDeclaratorNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingDeclaratorNode >> tokenVariables [
 	^ #(#name #equal)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingDeclaratorNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingDeclaratorNode >> value: aCSExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aCSExpressionNode.

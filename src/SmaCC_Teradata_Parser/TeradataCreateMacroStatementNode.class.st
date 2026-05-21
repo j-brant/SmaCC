@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataCreateMacroStatementNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataCreateMacroStatementNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'createToken',
 		'macroToken',
@@ -13,55 +13,56 @@ Class {
 		'statements',
 		'semicolons'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCreateMacroStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> asToken [
 	^ asToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> asToken: aSmaCCToken [
 	asToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> compositeNodeVariables [
 	^ #(#parameters #statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> compositeTokenVariables [
 	^ #(#leftParens #commas #rightParens #semicolons)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> createToken [
 	^ createToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> createToken: aSmaCCToken [
 	createToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataCreateMacroStatementNode >> initialize [
 	super initialize.
 	leftParens := OrderedCollection new: 2.
@@ -72,88 +73,88 @@ TeradataCreateMacroStatementNode >> initialize [
 	semicolons := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> leftParens [
 	^ leftParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> leftParens: anOrderedCollection [
 	leftParens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> macroToken [
 	^ macroToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> macroToken: aSmaCCToken [
 	macroToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> name: aTeradataIdentifierNameNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aTeradataIdentifierNameNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> nodeVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> rightParens [
 	^ rightParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> semicolons [
 	^ semicolons
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> semicolons: anOrderedCollection [
 	semicolons := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateMacroStatementNode >> tokenVariables [
 	^ #(#createToken #macroToken #asToken)
 ]

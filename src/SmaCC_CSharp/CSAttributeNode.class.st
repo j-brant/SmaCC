@@ -1,6 +1,6 @@
 Class {
-	#name : #CSAttributeNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSAttributeNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'leftBracket',
 		'target',
@@ -9,94 +9,95 @@ Class {
 		'commas',
 		'rightBracket'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAttributeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAttribute: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAttributeNode >> attributeValues [
 	^ attributeValues
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAttributeNode >> attributeValues: anOrderedCollection [
 	self setParents: self attributeValues to: nil.
 	attributeValues := anOrderedCollection.
 	self setParents: self attributeValues to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAttributeNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAttributeNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAttributeNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAttributeNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAttributeNode >> compositeNodeVariables [
 	^ #(#attributeValues)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAttributeNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSAttributeNode >> initialize [
 	super initialize.
 	attributeValues := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAttributeNode >> leftBracket [
 	^ leftBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAttributeNode >> leftBracket: aSmaCCToken [
 	leftBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAttributeNode >> rightBracket [
 	^ rightBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAttributeNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAttributeNode >> target [
 	^ target
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAttributeNode >> target: aSmaCCToken [
 	target := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSAttributeNode >> tokenVariables [
 	^ #(#leftBracket #target #colon #rightBracket)
 ]

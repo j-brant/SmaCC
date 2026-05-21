@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataBetweenExpressionNode,
-	#superclass : #TeradataExpressionNode,
+	#name : 'TeradataBetweenExpressionNode',
+	#superclass : 'TeradataExpressionNode',
 	#instVars : [
 		'value',
 		'betweenToken',
@@ -9,84 +9,85 @@ Class {
 		'last',
 		'notToken'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBetweenExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBetweenExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBetweenExpressionNode >> andToken [
 	^ andToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBetweenExpressionNode >> andToken: aSmaCCToken [
 	andToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBetweenExpressionNode >> betweenToken [
 	^ betweenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBetweenExpressionNode >> betweenToken: aSmaCCToken [
 	betweenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBetweenExpressionNode >> first [
 	^ first
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBetweenExpressionNode >> first: aTeradataExpressionNode [
 	self first notNil ifTrue: [ self first parent: nil ].
 	first := aTeradataExpressionNode.
 	self first notNil ifTrue: [ self first parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBetweenExpressionNode >> last [
 	^ last
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBetweenExpressionNode >> last: aTeradataExpressionNode [
 	self last notNil ifTrue: [ self last parent: nil ].
 	last := aTeradataExpressionNode.
 	self last notNil ifTrue: [ self last parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBetweenExpressionNode >> nodeVariables [
 	^ #(#value #first #last)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBetweenExpressionNode >> notToken [
 	^ notToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBetweenExpressionNode >> notToken: aSmaCCToken [
 	notToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBetweenExpressionNode >> tokenVariables [
 	^ #(#betweenToken #andToken #notToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBetweenExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBetweenExpressionNode >> value: aTeradataExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aTeradataExpressionNode.

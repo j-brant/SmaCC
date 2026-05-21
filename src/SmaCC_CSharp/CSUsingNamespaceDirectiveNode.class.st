@@ -1,10 +1,11 @@
 Class {
-	#name : #CSUsingNamespaceDirectiveNode,
-	#superclass : #CSUsingDirectiveNode,
-	#category : #'SmaCC_CSharp'
+	#name : 'CSUsingNamespaceDirectiveNode',
+	#superclass : 'CSUsingDirectiveNode',
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingNamespaceDirectiveNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUsingNamespaceDirective: self
 ]

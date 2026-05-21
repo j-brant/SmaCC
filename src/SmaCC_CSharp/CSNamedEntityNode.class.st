@@ -1,41 +1,42 @@
 Class {
-	#name : #CSNamedEntityNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSNamedEntityNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'target',
 		'periodTokens',
 		'identifierTokens',
 		'typeArgumentses'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNamedEntityNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNamedEntity: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNamedEntityNode >> compositeNodeVariables [
 	^ #(#typeArgumentses)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNamedEntityNode >> compositeTokenVariables [
 	^ #(#periodTokens #identifierTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNamedEntityNode >> identifierTokens [
 	^ identifierTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNamedEntityNode >> identifierTokens: anOrderedCollection [
 	identifierTokens := anOrderedCollection
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSNamedEntityNode >> initialize [
 	super initialize.
 	periodTokens := OrderedCollection new: 2.
@@ -43,27 +44,27 @@ CSNamedEntityNode >> initialize [
 	typeArgumentses := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNamedEntityNode >> nodeVariables [
 	^ #(#target)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNamedEntityNode >> periodTokens [
 	^ periodTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNamedEntityNode >> periodTokens: anOrderedCollection [
 	periodTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNamedEntityNode >> target [
 	^ target
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNamedEntityNode >> target: aCSExpressionNode [
 	self target notNil
 		ifTrue: [ self target parent: nil ].
@@ -72,12 +73,12 @@ CSNamedEntityNode >> target: aCSExpressionNode [
 		ifTrue: [ self target parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNamedEntityNode >> typeArgumentses [
 	^ typeArgumentses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNamedEntityNode >> typeArgumentses: anOrderedCollection [
 	self setParents: self typeArgumentses to: nil.
 	typeArgumentses := anOrderedCollection.

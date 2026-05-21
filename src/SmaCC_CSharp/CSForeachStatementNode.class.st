@@ -1,6 +1,6 @@
 Class {
-	#name : #CSForeachStatementNode,
-	#superclass : #CSStatementNode,
+	#name : 'CSForeachStatementNode',
+	#superclass : 'CSStatementNode',
 	#instVars : [
 		'foreachToken',
 		'leftParenToken',
@@ -13,118 +13,119 @@ Class {
 		'modifiers',
 		'scopedToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitForeachStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> compositeTokenVariables [
 	^ #(#modifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> expression: aCSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> foreachToken [
 	^ foreachToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> foreachToken: aSmaCCToken [
 	foreachToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> inToken [
 	^ inToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> inToken: aSmaCCToken [
 	inToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSForeachStatementNode >> initialize [
 	super initialize.
 	modifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> leftParenToken [
 	^ leftParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> leftParenToken: aSmaCCToken [
 	leftParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> modifiers: anOrderedCollection [
 	modifiers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> nodeVariables [
 	^ #(#type #expression #statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> rightParenToken [
 	^ rightParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> rightParenToken: aSmaCCToken [
 	rightParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> scopedToken [
 	^ scopedToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> scopedToken: aSmaCCToken [
 	scopedToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> statement: aCSStatementNode [
 	self statement notNil
 		ifTrue: [ self statement parent: nil ].
@@ -133,17 +134,17 @@ CSForeachStatementNode >> statement: aCSStatementNode [
 		ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> tokenVariables [
 	^ #(#foreachToken #leftParenToken #name #inToken #rightParenToken #scopedToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSForeachStatementNode >> type: aCSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.

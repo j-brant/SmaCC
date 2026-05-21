@@ -1,51 +1,52 @@
 Class {
-	#name : #TeradataFileNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataFileNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'statements',
 		'semicolons'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataFileNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFile: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataFileNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataFileNode >> compositeTokenVariables [
 	^ #(#semicolons)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataFileNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
 	semicolons := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataFileNode >> semicolons [
 	^ semicolons
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataFileNode >> semicolons: anOrderedCollection [
 	semicolons := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataFileNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataFileNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.

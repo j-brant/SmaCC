@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataOverExpressionNode,
-	#superclass : #TeradataExpressionNode,
+	#name : 'TeradataOverExpressionNode',
+	#superclass : 'TeradataExpressionNode',
 	#instVars : [
 		'value',
 		'overToken',
@@ -18,186 +18,187 @@ Class {
 		'orderBy',
 		'partition'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitOverExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> andToken [
 	^ andToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> andToken: aSmaCCToken [
 	andToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> betweenToken [
 	^ betweenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> betweenToken: aSmaCCToken [
 	betweenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> compositeTokenVariables [
 	^ #(#precedingTokens #followingTokens #leftParens #rightParens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> currentFromToken [
 	^ currentFromToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> currentFromToken: aSmaCCToken [
 	currentFromToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> currentToToken [
 	^ currentToToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> currentToToken: aSmaCCToken [
 	currentToToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> followingTokens [
 	^ followingTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> followingTokens: anOrderedCollection [
 	followingTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> from [
 	^ from
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> from: aSmaCCToken [
 	from := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataOverExpressionNode >> initialize [
 	super initialize.
 	precedingTokens := OrderedCollection new: 2.
 	followingTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> nodeVariables [
 	^ #(#value #orderBy #partition)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> orderBy [
 	^ orderBy
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> orderBy: aTeradataOrderByExpressionNode [
 	self orderBy notNil ifTrue: [ self orderBy parent: nil ].
 	orderBy := aTeradataOrderByExpressionNode.
 	self orderBy notNil ifTrue: [ self orderBy parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> overToken [
 	^ overToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> overToken: aSmaCCToken [
 	overToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> partition [
 	^ partition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> partition: aTeradataPartitionByExpressionNode [
 	self partition notNil ifTrue: [ self partition parent: nil ].
 	partition := aTeradataPartitionByExpressionNode.
 	self partition notNil ifTrue: [ self partition parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> precedingTokens [
 	^ precedingTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> precedingTokens: anOrderedCollection [
 	precedingTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> rowFromToken [
 	^ rowFromToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> rowFromToken: aSmaCCToken [
 	rowFromToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> rowToToken [
 	^ rowToToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> rowToToken: aSmaCCToken [
 	rowToToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> rows [
 	^ rows
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> rows: aSmaCCToken [
 	rows := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> to [
 	^ to
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> to: aSmaCCToken [
 	to := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> tokenVariables [
 	^ #(#overToken #rows #betweenToken #from #andToken #to #currentToToken #rowToToken #currentFromToken #rowFromToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOverExpressionNode >> value: aTeradataExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aTeradataExpressionNode.

@@ -1,10 +1,11 @@
 Class {
-	#name : #CSBooleanLiteralExpressionNode,
-	#superclass : #CSLiteralExpressionNode,
-	#category : #'SmaCC_CSharp'
+	#name : 'CSBooleanLiteralExpressionNode',
+	#superclass : 'CSLiteralExpressionNode',
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBooleanLiteralExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBooleanLiteralExpression: self
 ]

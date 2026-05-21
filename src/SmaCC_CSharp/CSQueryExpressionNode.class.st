@@ -1,6 +1,6 @@
 Class {
-	#name : #CSQueryExpressionNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSQueryExpressionNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'fromTokens',
 		'types',
@@ -27,166 +27,167 @@ Class {
 		'byTokens',
 		'groupByExpressions'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitQueryExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> ascendingTokens [
 	^ ascendingTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> ascendingTokens: anOrderedCollection [
 	ascendingTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> byTokens [
 	^ byTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> byTokens: anOrderedCollection [
 	byTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> compositeNodeVariables [
 	^ #(#types #expressions #joinInExpressions #joinOnExpressions #joinEqualsExpressions #groupExpressions #groupByExpressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> compositeTokenVariables [
 	^ #(#fromTokens #identifierTokens #inTokens #letTokens #equalTokens #whereTokens #joinTokens #onTokens #equalsTokens #intoTokens #orderbyTokens #ascendingTokens #descendingTokens #selectTokens #groupTokens #byTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> descendingTokens [
 	^ descendingTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> descendingTokens: anOrderedCollection [
 	descendingTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> equalTokens [
 	^ equalTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> equalTokens: anOrderedCollection [
 	equalTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> equalsTokens [
 	^ equalsTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> equalsTokens: anOrderedCollection [
 	equalsTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> fromTokens [
 	^ fromTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> fromTokens: anOrderedCollection [
 	fromTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> groupByExpressions [
 	^ groupByExpressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> groupByExpressions: anOrderedCollection [
 	self setParents: self groupByExpressions to: nil.
 	groupByExpressions := anOrderedCollection.
 	self setParents: self groupByExpressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> groupExpressions [
 	^ groupExpressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> groupExpressions: anOrderedCollection [
 	self setParents: self groupExpressions to: nil.
 	groupExpressions := anOrderedCollection.
 	self setParents: self groupExpressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> groupTokens [
 	^ groupTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> groupTokens: anOrderedCollection [
 	groupTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> identifierTokens [
 	^ identifierTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> identifierTokens: anOrderedCollection [
 	identifierTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> ignoredCompositeTokenVariables [
 	^ #(#commaTokens #_leftParens #_rightParens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> inTokens [
 	^ inTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> inTokens: anOrderedCollection [
 	inTokens := anOrderedCollection
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSQueryExpressionNode >> initialize [
 	super initialize.
 	fromTokens := OrderedCollection new: 2.
@@ -215,120 +216,120 @@ CSQueryExpressionNode >> initialize [
 	groupByExpressions := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> intoTokens [
 	^ intoTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> intoTokens: anOrderedCollection [
 	intoTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> joinEqualsExpressions [
 	^ joinEqualsExpressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> joinEqualsExpressions: anOrderedCollection [
 	self setParents: self joinEqualsExpressions to: nil.
 	joinEqualsExpressions := anOrderedCollection.
 	self setParents: self joinEqualsExpressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> joinInExpressions [
 	^ joinInExpressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> joinInExpressions: anOrderedCollection [
 	self setParents: self joinInExpressions to: nil.
 	joinInExpressions := anOrderedCollection.
 	self setParents: self joinInExpressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> joinOnExpressions [
 	^ joinOnExpressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> joinOnExpressions: anOrderedCollection [
 	self setParents: self joinOnExpressions to: nil.
 	joinOnExpressions := anOrderedCollection.
 	self setParents: self joinOnExpressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> joinTokens [
 	^ joinTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> joinTokens: anOrderedCollection [
 	joinTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> letTokens [
 	^ letTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> letTokens: anOrderedCollection [
 	letTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> onTokens [
 	^ onTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> onTokens: anOrderedCollection [
 	onTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> orderbyTokens [
 	^ orderbyTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> orderbyTokens: anOrderedCollection [
 	orderbyTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> selectTokens [
 	^ selectTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> selectTokens: anOrderedCollection [
 	selectTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> types [
 	^ types
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> types: anOrderedCollection [
 	self setParents: self types to: nil.
 	types := anOrderedCollection.
 	self setParents: self types to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> whereTokens [
 	^ whereTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQueryExpressionNode >> whereTokens: anOrderedCollection [
 	whereTokens := anOrderedCollection
 ]

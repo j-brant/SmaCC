@@ -1,44 +1,45 @@
 Class {
-	#name : #CSNullableTypeNode,
-	#superclass : #CSTypeNode,
+	#name : 'CSNullableTypeNode',
+	#superclass : 'CSTypeNode',
 	#instVars : [
 		'type',
 		'questionMarkToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNullableTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNullableType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNullableTypeNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNullableTypeNode >> questionMarkToken [
 	^ questionMarkToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNullableTypeNode >> questionMarkToken: aSmaCCToken [
 	questionMarkToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNullableTypeNode >> tokenVariables [
 	^ #(#questionMarkToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNullableTypeNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSNullableTypeNode >> type: aCSTypeNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].

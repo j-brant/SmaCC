@@ -1,6 +1,6 @@
 Class {
-	#name : #CSEnumDeclarationNode,
-	#superclass : #CSDeclarationNode,
+	#name : 'CSEnumDeclarationNode',
+	#superclass : 'CSDeclarationNode',
 	#instVars : [
 		'_attributes',
 		'modifiers',
@@ -16,89 +16,90 @@ Class {
 		'equal',
 		'value'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> _attributes [
 	^ _attributes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> _attributes: anOrderedCollection [
 	self setParents: self _attributes to: nil.
 	_attributes := anOrderedCollection.
 	self setParents: self _attributes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEnumDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> compositeNodeVariables [
 	^ #(#_attributes #declarations)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> compositeTokenVariables [
 	^ #(#modifiers #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> declarations [
 	^ declarations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> declarations: anOrderedCollection [
 	self setParents: self declarations to: nil.
 	declarations := anOrderedCollection.
 	self setParents: self declarations to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> enumToken [
 	^ enumToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> enumToken: aSmaCCToken [
 	enumToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> equal [
 	^ equal
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> equal: aSmaCCToken [
 	equal := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSEnumDeclarationNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
@@ -107,89 +108,89 @@ CSEnumDeclarationNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> modifiers: anOrderedCollection [
 	modifiers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> otherVariables [
 	^ #(#typeToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> tokenVariables [
 	^ #(#enumToken #name #colonToken #leftBrace #rightBrace #semicolon #equal)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> typeToken [
 	^ typeToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> typeToken: anObject [
 	self setParent: self typeToken to: nil.
 	typeToken := anObject.
 	self setParent: self typeToken to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSEnumDeclarationNode >> value: aCSExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aCSExpressionNode.

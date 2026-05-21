@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataIndexNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataIndexNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'indexToken',
 		'name',
@@ -12,124 +12,125 @@ Class {
 		'primaryToken',
 		'uniqueToken'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIndexNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIndex: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIndexNode >> columns [
 	^ columns
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIndexNode >> columns: anOrderedCollection [
 	columns := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIndexNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIndexNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIndexNode >> compositeTokenVariables [
 	^ #(#columns #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIndexNode >> indexToken [
 	^ indexToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIndexNode >> indexToken: aSmaCCToken [
 	indexToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataIndexNode >> initialize [
 	super initialize.
 	columns := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIndexNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIndexNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIndexNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIndexNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIndexNode >> nodeVariables [
 	^ #(#partition)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIndexNode >> partition [
 	^ partition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIndexNode >> partition: aTeradataPartitionByExpressionNode [
 	self partition notNil ifTrue: [ self partition parent: nil ].
 	partition := aTeradataPartitionByExpressionNode.
 	self partition notNil ifTrue: [ self partition parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIndexNode >> primaryToken [
 	^ primaryToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIndexNode >> primaryToken: aSmaCCToken [
 	primaryToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIndexNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIndexNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIndexNode >> tokenVariables [
 	^ #(#indexToken #name #leftParen #rightParen #primaryToken #uniqueToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIndexNode >> uniqueToken [
 	^ uniqueToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIndexNode >> uniqueToken: aSmaCCToken [
 	uniqueToken := aSmaCCToken
 ]

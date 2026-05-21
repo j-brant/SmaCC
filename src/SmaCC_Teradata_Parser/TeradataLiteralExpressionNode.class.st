@@ -1,28 +1,29 @@
 Class {
-	#name : #TeradataLiteralExpressionNode,
-	#superclass : #TeradataExpressionNode,
+	#name : 'TeradataLiteralExpressionNode',
+	#superclass : 'TeradataExpressionNode',
 	#instVars : [
 		'value'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataLiteralExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLiteralExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataLiteralExpressionNode >> tokenVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataLiteralExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataLiteralExpressionNode >> value: aSmaCCToken [
 	value := aSmaCCToken
 ]

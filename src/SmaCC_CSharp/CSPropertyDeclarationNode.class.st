@@ -1,6 +1,6 @@
 Class {
-	#name : #CSPropertyDeclarationNode,
-	#superclass : #CSDeclarationNode,
+	#name : 'CSPropertyDeclarationNode',
+	#superclass : 'CSDeclarationNode',
 	#instVars : [
 		'_attributes',
 		'modifiers',
@@ -20,74 +20,75 @@ Class {
 		'expression',
 		'refToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> _attributes [
 	^ _attributes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> _attributes: anOrderedCollection [
 	self setParents: self _attributes to: nil.
 	_attributes := anOrderedCollection.
 	self setParents: self _attributes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPropertyDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> compositeNodeVariables [
 	^ #(#_attributes)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> compositeTokenVariables [
 	^ #(#modifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> equalGreaterThanToken [
 	^ equalGreaterThanToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> equalGreaterThanToken: aSmaCCToken [
 	equalGreaterThanToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> equalToken [
 	^ equalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> equalToken: aSmaCCToken [
 	equalToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> expression: aCSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> getAccessor [
 	^ getAccessor
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> getAccessor: aCSGetAccessorDeclarationNode [
 	self getAccessor notNil
 		ifTrue: [ self getAccessor parent: nil ].
@@ -96,31 +97,31 @@ CSPropertyDeclarationNode >> getAccessor: aCSGetAccessorDeclarationNode [
 		ifTrue: [ self getAccessor parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSPropertyDeclarationNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
 	modifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> initializer [
 	^ initializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> initializer: aCSExpressionNode [
 	self initializer notNil ifTrue: [ self initializer parent: nil ].
 	initializer := aCSExpressionNode.
 	self initializer notNil ifTrue: [ self initializer parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> interface [
 	^ interface
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> interface: aCSTypeNode [
 	self interface notNil
 		ifTrue: [ self interface parent: nil ].
@@ -129,97 +130,97 @@ CSPropertyDeclarationNode >> interface: aCSTypeNode [
 		ifTrue: [ self interface parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> leftBraceToken [
 	^ leftBraceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> leftBraceToken: aSmaCCToken [
 	leftBraceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> modifiers: anOrderedCollection [
 	modifiers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> nodeVariables [
 	^ #(#type #interface #getAccessor #setAccessor #initializer #expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> partialToken [
 	^ partialToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> partialToken: aSmaCCToken [
 	partialToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> periodToken [
 	^ periodToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> periodToken: aSmaCCToken [
 	periodToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> refToken [
 	^ refToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> refToken: aSmaCCToken [
 	refToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> rightBraceToken [
 	^ rightBraceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> rightBraceToken: aSmaCCToken [
 	rightBraceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> setAccessor [
 	^ setAccessor
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> setAccessor: aCSSetAccessorDeclarationNode [
 	self setAccessor notNil
 		ifTrue: [ self setAccessor parent: nil ].
@@ -228,17 +229,17 @@ CSPropertyDeclarationNode >> setAccessor: aCSSetAccessorDeclarationNode [
 		ifTrue: [ self setAccessor parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> tokenVariables [
 	^ #(#partialToken #name #periodToken #leftBraceToken #rightBraceToken #equalToken #semicolon #equalGreaterThanToken #refToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSPropertyDeclarationNode >> type: aCSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.

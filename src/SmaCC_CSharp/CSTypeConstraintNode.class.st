@@ -1,55 +1,56 @@
 Class {
-	#name : #CSTypeConstraintNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSTypeConstraintNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'refToken',
 		'structToken',
 		'type'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeConstraintNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTypeConstraint: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeConstraintNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeConstraintNode >> refToken [
 	^ refToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeConstraintNode >> refToken: aSmaCCToken [
 	refToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeConstraintNode >> structToken [
 	^ structToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeConstraintNode >> structToken: aSmaCCToken [
 	structToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeConstraintNode >> tokenVariables [
 	^ #(#refToken #structToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeConstraintNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeConstraintNode >> type: aCSTypeNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].

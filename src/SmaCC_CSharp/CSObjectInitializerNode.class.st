@@ -1,80 +1,81 @@
 Class {
-	#name : #CSObjectInitializerNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSObjectInitializerNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'leftBraceToken',
 		'initializers',
 		'commaTokens',
 		'rightBraceToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSObjectInitializerNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitObjectInitializer: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSObjectInitializerNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSObjectInitializerNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSObjectInitializerNode >> compositeNodeVariables [
 	^ #(#initializers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSObjectInitializerNode >> ignoredCompositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSObjectInitializerNode >> initialize [
 	super initialize.
 	initializers := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSObjectInitializerNode >> initializers [
 	^ initializers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSObjectInitializerNode >> initializers: anOrderedCollection [
 	self setParents: self initializers to: nil.
 	initializers := anOrderedCollection.
 	self setParents: self initializers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSObjectInitializerNode >> leftBraceToken [
 	^ leftBraceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSObjectInitializerNode >> leftBraceToken: aSmaCCToken [
 	leftBraceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSObjectInitializerNode >> rightBraceToken [
 	^ rightBraceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSObjectInitializerNode >> rightBraceToken: aSmaCCToken [
 	rightBraceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSObjectInitializerNode >> tokenVariables [
 	^ #(#leftBraceToken #rightBraceToken)
 ]

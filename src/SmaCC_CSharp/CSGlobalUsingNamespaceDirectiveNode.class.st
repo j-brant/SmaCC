@@ -1,68 +1,69 @@
 Class {
-	#name : #CSGlobalUsingNamespaceDirectiveNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSGlobalUsingNamespaceDirectiveNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'globalToken',
 		'usingToken',
 		'namespace',
 		'semicolon'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingNamespaceDirectiveNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitGlobalUsingNamespaceDirective: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingNamespaceDirectiveNode >> globalToken [
 	^ globalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingNamespaceDirectiveNode >> globalToken: aSmaCCToken [
 	globalToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingNamespaceDirectiveNode >> namespace [
 	^ namespace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingNamespaceDirectiveNode >> namespace: aCSTypeNode [
 	self namespace notNil ifTrue: [ self namespace parent: nil ].
 	namespace := aCSTypeNode.
 	self namespace notNil ifTrue: [ self namespace parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingNamespaceDirectiveNode >> nodeVariables [
 	^ #(#namespace)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingNamespaceDirectiveNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingNamespaceDirectiveNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingNamespaceDirectiveNode >> tokenVariables [
 	^ #(#globalToken #usingToken #semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingNamespaceDirectiveNode >> usingToken [
 	^ usingToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingNamespaceDirectiveNode >> usingToken: aSmaCCToken [
 	usingToken := aSmaCCToken
 ]

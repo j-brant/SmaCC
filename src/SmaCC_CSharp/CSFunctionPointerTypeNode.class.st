@@ -1,6 +1,6 @@
 Class {
-	#name : #CSFunctionPointerTypeNode,
-	#superclass : #CSTypeNode,
+	#name : 'CSFunctionPointerTypeNode',
+	#superclass : 'CSTypeNode',
 	#instVars : [
 		'delegateToken',
 		'timesToken',
@@ -15,75 +15,76 @@ Class {
 		'conventions',
 		'rightBracketToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFunctionPointerType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> ccSpecifierToken [
 	^ ccSpecifierToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> ccSpecifierToken: aSmaCCToken [
 	ccSpecifierToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> compositeNodeVariables [
 	^ #(#parameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> compositeTokenVariables [
 	^ #(#commas #modifiers #conventions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> conventions [
 	^ conventions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> conventions: anOrderedCollection [
 	conventions := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> delegateToken [
 	^ delegateToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> delegateToken: aSmaCCToken [
 	delegateToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> greaterThanToken [
 	^ greaterThanToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> greaterThanToken: aSmaCCToken [
 	greaterThanToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSFunctionPointerTypeNode >> initialize [
 	super initialize.
 	parameters := OrderedCollection new: 2.
@@ -92,84 +93,84 @@ CSFunctionPointerTypeNode >> initialize [
 	conventions := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> leftBracketToken [
 	^ leftBracketToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> leftBracketToken: aSmaCCToken [
 	leftBracketToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> lessThanToken [
 	^ lessThanToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> lessThanToken: aSmaCCToken [
 	lessThanToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> modifiers: anOrderedCollection [
 	modifiers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> rightBracketToken [
 	^ rightBracketToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> rightBracketToken: aSmaCCToken [
 	rightBracketToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> timesToken [
 	^ timesToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> timesToken: aSmaCCToken [
 	timesToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> tokenVariables [
 	^ #(#delegateToken #timesToken #lessThanToken #greaterThanToken #ccSpecifierToken #leftBracketToken #rightBracketToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFunctionPointerTypeNode >> type: aCSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.

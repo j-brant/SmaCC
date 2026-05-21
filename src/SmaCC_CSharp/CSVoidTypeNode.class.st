@@ -1,28 +1,29 @@
 Class {
-	#name : #CSVoidTypeNode,
-	#superclass : #CSTypeNode,
+	#name : 'CSVoidTypeNode',
+	#superclass : 'CSTypeNode',
 	#instVars : [
 		'voidToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVoidTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitVoidType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVoidTypeNode >> tokenVariables [
 	^ #(#voidToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVoidTypeNode >> voidToken [
 	^ voidToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVoidTypeNode >> voidToken: aSmaCCToken [
 	voidToken := aSmaCCToken
 ]

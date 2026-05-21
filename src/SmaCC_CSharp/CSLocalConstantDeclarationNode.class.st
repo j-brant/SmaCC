@@ -1,85 +1,86 @@
 Class {
-	#name : #CSLocalConstantDeclarationNode,
-	#superclass : #CSDeclarationNode,
+	#name : 'CSLocalConstantDeclarationNode',
+	#superclass : 'CSDeclarationNode',
 	#instVars : [
 		'constToken',
 		'type',
 		'declarators',
 		'commaTokens'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalConstantDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLocalConstantDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalConstantDeclarationNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalConstantDeclarationNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalConstantDeclarationNode >> compositeNodeVariables [
 	^ #(#declarators)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalConstantDeclarationNode >> constToken [
 	^ constToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalConstantDeclarationNode >> constToken: aSmaCCToken [
 	constToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalConstantDeclarationNode >> declarators [
 	^ declarators
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalConstantDeclarationNode >> declarators: anOrderedCollection [
 	self setParents: self declarators to: nil.
 	declarators := anOrderedCollection.
 	self setParents: self declarators to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalConstantDeclarationNode >> ignoredCompositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSLocalConstantDeclarationNode >> initialize [
 	super initialize.
 	declarators := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalConstantDeclarationNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalConstantDeclarationNode >> tokenVariables [
 	^ #(#constToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalConstantDeclarationNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSLocalConstantDeclarationNode >> type: aCSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.

@@ -1,46 +1,47 @@
 Class {
-	#name : #TeradataExpressionNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataExpressionNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'leftParens',
 		'rightParens'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataExpressionNode >> compositeTokenVariables [
 	^ #(#leftParens #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataExpressionNode >> initialize [
 	super initialize.
 	leftParens := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataExpressionNode >> leftParens [
 	^ leftParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataExpressionNode >> leftParens: anOrderedCollection [
 	leftParens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataExpressionNode >> rightParens [
 	^ rightParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataExpressionNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
 ]

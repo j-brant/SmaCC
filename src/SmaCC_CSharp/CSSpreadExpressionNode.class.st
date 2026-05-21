@@ -1,46 +1,47 @@
 Class {
-	#name : #CSSpreadExpressionNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSSpreadExpressionNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'operator',
 		'expression'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSpreadExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSpreadExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSpreadExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSpreadExpressionNode >> expression: aCSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSpreadExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSpreadExpressionNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSpreadExpressionNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSpreadExpressionNode >> tokenVariables [
 	^ #(#operator)
 ]

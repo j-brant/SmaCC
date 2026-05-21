@@ -1,28 +1,29 @@
 Class {
-	#name : #CSSimpleTypeNode,
-	#superclass : #CSTypeNode,
+	#name : 'CSSimpleTypeNode',
+	#superclass : 'CSTypeNode',
 	#instVars : [
 		'token'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSimpleTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSimpleType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSimpleTypeNode >> token [
 	^ token
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSimpleTypeNode >> token: aSmaCCToken [
 	token := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSSimpleTypeNode >> tokenVariables [
 	^ #(#token)
 ]

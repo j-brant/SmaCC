@@ -1,10 +1,11 @@
 Class {
-	#name : #CSIntegerLiteralExpressionNode,
-	#superclass : #CSLiteralExpressionNode,
-	#category : #'SmaCC_CSharp'
+	#name : 'CSIntegerLiteralExpressionNode',
+	#superclass : 'CSLiteralExpressionNode',
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSIntegerLiteralExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIntegerLiteralExpression: self
 ]

@@ -1,55 +1,56 @@
 Class {
-	#name : #TeradataCountExpressionNode,
-	#superclass : #TeradataExpressionNode,
+	#name : 'TeradataCountExpressionNode',
+	#superclass : 'TeradataExpressionNode',
 	#instVars : [
 		'countToken',
 		'value',
 		'countType'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCountExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCountExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCountExpressionNode >> countToken [
 	^ countToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCountExpressionNode >> countToken: aSmaCCToken [
 	countToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCountExpressionNode >> countType [
 	^ countType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCountExpressionNode >> countType: aSmaCCToken [
 	countType := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCountExpressionNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCountExpressionNode >> tokenVariables [
 	^ #(#countToken #countType)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCountExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCountExpressionNode >> value: aTeradataExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aTeradataExpressionNode.

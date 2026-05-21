@@ -1,80 +1,81 @@
 Class {
-	#name : #CSElementInitializerNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSElementInitializerNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'expressions',
 		'leftBraceToken',
 		'commaTokens',
 		'rightBraceToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSElementInitializerNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitElementInitializer: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSElementInitializerNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSElementInitializerNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSElementInitializerNode >> compositeNodeVariables [
 	^ #(#expressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSElementInitializerNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSElementInitializerNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSElementInitializerNode >> ignoredCompositeTokenVariables [
 	^ #(#commaTokens #_leftParens #_rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSElementInitializerNode >> initialize [
 	super initialize.
 	expressions := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSElementInitializerNode >> leftBraceToken [
 	^ leftBraceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSElementInitializerNode >> leftBraceToken: aSmaCCToken [
 	leftBraceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSElementInitializerNode >> rightBraceToken [
 	^ rightBraceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSElementInitializerNode >> rightBraceToken: aSmaCCToken [
 	rightBraceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSElementInitializerNode >> tokenVariables [
 	^ #(#leftBraceToken #rightBraceToken)
 ]

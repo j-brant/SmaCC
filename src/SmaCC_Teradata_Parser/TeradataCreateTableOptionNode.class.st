@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataCreateTableOptionNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataCreateTableOptionNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'comma',
 		'noToken',
@@ -14,125 +14,126 @@ Class {
 		'defaultToken',
 		'mergeBlockRatioToken'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCreateTableOption: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> afterToken [
 	^ afterToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> afterToken: aSmaCCToken [
 	afterToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> beforeToken [
 	^ beforeToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> beforeToken: aSmaCCToken [
 	beforeToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> checksumToken [
 	^ checksumToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> checksumToken: aSmaCCToken [
 	checksumToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> comma [
 	^ comma
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> comma: aSmaCCToken [
 	comma := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> defaultToken [
 	^ defaultToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> defaultToken: aSmaCCToken [
 	defaultToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> equals [
 	^ equals
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> equals: aSmaCCToken [
 	equals := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> fallbackToken [
 	^ fallbackToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> fallbackToken: aSmaCCToken [
 	fallbackToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> journalToken [
 	^ journalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> journalToken: aSmaCCToken [
 	journalToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> mergeBlockRatioToken [
 	^ mergeBlockRatioToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> mergeBlockRatioToken: aSmaCCToken [
 	mergeBlockRatioToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> noToken [
 	^ noToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> noToken: aSmaCCToken [
 	noToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> tokenVariables [
 	^ #(#comma #noToken #fallbackToken #beforeToken #journalToken #afterToken #checksumToken #equals #value #defaultToken #mergeBlockRatioToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCreateTableOptionNode >> value: aSmaCCToken [
 	value := aSmaCCToken
 ]

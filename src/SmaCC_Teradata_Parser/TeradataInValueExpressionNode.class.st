@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataInValueExpressionNode,
-	#superclass : #TeradataExpressionNode,
+	#name : 'TeradataInValueExpressionNode',
+	#superclass : 'TeradataExpressionNode',
 	#instVars : [
 		'testValue',
 		'inToken',
@@ -9,99 +9,100 @@ Class {
 		'notToken',
 		'_isToken'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInValueExpressionNode >> _isToken [
 	^ _isToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInValueExpressionNode >> _isToken: aSmaCCToken [
 	_isToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInValueExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitInValueExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInValueExpressionNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInValueExpressionNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInValueExpressionNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInValueExpressionNode >> compositeTokenVariables [
 	^ #(#commas #leftParens #rightParens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInValueExpressionNode >> inToken [
 	^ inToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInValueExpressionNode >> inToken: aSmaCCToken [
 	inToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataInValueExpressionNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInValueExpressionNode >> nodeVariables [
 	^ #(#testValue)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInValueExpressionNode >> notToken [
 	^ notToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInValueExpressionNode >> notToken: aSmaCCToken [
 	notToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInValueExpressionNode >> testValue [
 	^ testValue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInValueExpressionNode >> testValue: aTeradataExpressionNode [
 	self testValue notNil ifTrue: [ self testValue parent: nil ].
 	testValue := aTeradataExpressionNode.
 	self testValue notNil ifTrue: [ self testValue parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInValueExpressionNode >> tokenVariables [
 	^ #(#inToken #notToken #_isToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInValueExpressionNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataInValueExpressionNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

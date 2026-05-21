@@ -1,10 +1,11 @@
 Class {
-	#name : #TeradataEmptyGroupByExpressionNode,
-	#superclass : #TeradataExpressionNode,
-	#category : #'SmaCC_Teradata_Parser'
+	#name : 'TeradataEmptyGroupByExpressionNode',
+	#superclass : 'TeradataExpressionNode',
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataEmptyGroupByExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEmptyGroupByExpression: self
 ]

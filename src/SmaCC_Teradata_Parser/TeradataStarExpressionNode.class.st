@@ -1,62 +1,63 @@
 Class {
-	#name : #TeradataStarExpressionNode,
-	#superclass : #TeradataExpressionNode,
+	#name : 'TeradataStarExpressionNode',
+	#superclass : 'TeradataExpressionNode',
 	#instVars : [
 		'names',
 		'periods',
 		'star'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataStarExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStarExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataStarExpressionNode >> compositeTokenVariables [
 	^ #(#names #periods #leftParens #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataStarExpressionNode >> initialize [
 	super initialize.
 	names := OrderedCollection new: 2.
 	periods := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataStarExpressionNode >> names [
 	^ names
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataStarExpressionNode >> names: anOrderedCollection [
 	names := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataStarExpressionNode >> periods [
 	^ periods
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataStarExpressionNode >> periods: anOrderedCollection [
 	periods := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataStarExpressionNode >> star [
 	^ star
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataStarExpressionNode >> star: aSmaCCToken [
 	star := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataStarExpressionNode >> tokenVariables [
 	^ #(#star)
 ]

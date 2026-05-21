@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataBeginLoadingStatementNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataBeginLoadingStatementNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'beginToken',
 		'loadingToken',
@@ -11,121 +11,122 @@ Class {
 		'withToken',
 		'intervalToken'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginLoadingStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBeginLoadingStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginLoadingStatementNode >> beginToken [
 	^ beginToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginLoadingStatementNode >> beginToken: aSmaCCToken [
 	beginToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginLoadingStatementNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginLoadingStatementNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginLoadingStatementNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginLoadingStatementNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginLoadingStatementNode >> errorfilesToken [
 	^ errorfilesToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginLoadingStatementNode >> errorfilesToken: aSmaCCToken [
 	errorfilesToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataBeginLoadingStatementNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginLoadingStatementNode >> intervalToken [
 	^ intervalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginLoadingStatementNode >> intervalToken: aSmaCCToken [
 	intervalToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginLoadingStatementNode >> loadingToken [
 	^ loadingToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginLoadingStatementNode >> loadingToken: aSmaCCToken [
 	loadingToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginLoadingStatementNode >> nodeVariables [
 	^ #(#table)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginLoadingStatementNode >> table [
 	^ table
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginLoadingStatementNode >> table: aTeradataTableNode [
 	self table notNil ifTrue: [ self table parent: nil ].
 	table := aTeradataTableNode.
 	self table notNil ifTrue: [ self table parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginLoadingStatementNode >> tokenVariables [
 	^ #(#beginToken #loadingToken #errorfilesToken #withToken #intervalToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginLoadingStatementNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginLoadingStatementNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.
 	self setParents: self values to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginLoadingStatementNode >> withToken [
 	^ withToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataBeginLoadingStatementNode >> withToken: aSmaCCToken [
 	withToken := aSmaCCToken
 ]

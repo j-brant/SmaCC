@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataUsingStatementNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataUsingStatementNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'usingToken',
 		'columns',
@@ -9,101 +9,102 @@ Class {
 		'leftParen',
 		'rightParen'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUsingStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingStatementNode >> columns [
 	^ columns
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingStatementNode >> columns: anOrderedCollection [
 	self setParents: self columns to: nil.
 	columns := anOrderedCollection.
 	self setParents: self columns to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingStatementNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingStatementNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingStatementNode >> compositeNodeVariables [
 	^ #(#columns)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingStatementNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataUsingStatementNode >> initialize [
 	super initialize.
 	columns := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingStatementNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingStatementNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingStatementNode >> nodeVariables [
 	^ #(#statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingStatementNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingStatementNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingStatementNode >> statement: aTeradataProgramNode [
 	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aTeradataProgramNode.
 	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingStatementNode >> tokenVariables [
 	^ #(#usingToken #leftParen #rightParen)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingStatementNode >> usingToken [
 	^ usingToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataUsingStatementNode >> usingToken: aSmaCCToken [
 	usingToken := aSmaCCToken
 ]

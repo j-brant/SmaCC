@@ -1,55 +1,56 @@
 Class {
-	#name : #CSTupleElementNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSTupleElementNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'value',
 		'name',
 		'colon'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleElementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTupleElement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleElementNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleElementNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleElementNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleElementNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleElementNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleElementNode >> tokenVariables [
 	^ #(#name #colon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleElementNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTupleElementNode >> value: aCSExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aCSExpressionNode.

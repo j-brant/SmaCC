@@ -1,6 +1,6 @@
 Class {
-	#name : #CSConstructorDeclarationNode,
-	#superclass : #CSDeclarationNode,
+	#name : 'CSConstructorDeclarationNode',
+	#superclass : 'CSDeclarationNode',
 	#instVars : [
 		'_attributes',
 		'modifiers',
@@ -12,69 +12,70 @@ Class {
 		'initializer',
 		'body'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> _attributes [
 	^ _attributes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> _attributes: anOrderedCollection [
 	self setParents: self _attributes to: nil.
 	_attributes := anOrderedCollection.
 	self setParents: self _attributes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitConstructorDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> body [
 	^ body
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> body: aCSMethodBodyNode [
 	self body notNil ifTrue: [ self body parent: nil ].
 	body := aCSMethodBodyNode.
 	self body notNil ifTrue: [ self body parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> compositeNodeVariables [
 	^ #(#_attributes #parameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> compositeTokenVariables [
 	^ #(#modifiers #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> identifierToken [
 	^ identifierToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> identifierToken: aSmaCCToken [
 	identifierToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSConstructorDeclarationNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
@@ -83,12 +84,12 @@ CSConstructorDeclarationNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> initializer [
 	^ initializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> initializer: aCSConstructorInitializerNode [
 	self initializer notNil
 		ifTrue: [ self initializer parent: nil ].
@@ -97,54 +98,54 @@ CSConstructorDeclarationNode >> initializer: aCSConstructorInitializerNode [
 		ifTrue: [ self initializer parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> leftParenToken [
 	^ leftParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> leftParenToken: aSmaCCToken [
 	leftParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> modifiers: anOrderedCollection [
 	modifiers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> nodeVariables [
 	^ #(#initializer #body)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> rightParenToken [
 	^ rightParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> rightParenToken: aSmaCCToken [
 	rightParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSConstructorDeclarationNode >> tokenVariables [
 	^ #(#identifierToken #leftParenToken #rightParenToken)
 ]

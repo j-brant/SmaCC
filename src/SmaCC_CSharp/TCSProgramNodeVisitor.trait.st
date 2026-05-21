@@ -1,901 +1,902 @@
 Trait {
-	#name : #TCSProgramNodeVisitor,
+	#name : 'TCSProgramNodeVisitor',
 	#traits : 'TSmaCCParseNodeVisitor',
 	#classTraits : 'TSmaCCParseNodeVisitor classTrait',
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitAddAccessorDeclaration: anAddAccessorDeclaration [
 	^ self visitProgram: anAddAccessorDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitAnonymousFunctionParameter: anAnonymousFunctionParameter [
 	^ self visitProgram: anAnonymousFunctionParameter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitAnonymousMethodExpression: anAnonymousMethodExpression [
 	^ self visitExpression: anAnonymousMethodExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitAnonymousObjectCreationExpression: anAnonymousObjectCreationExpression [
 	^ self visitExpression: anAnonymousObjectCreationExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitArgument: anArgument [
 	^ self visitProgram: anArgument
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitArrayCreationExpression: anArrayCreationExpression [
 	^ self visitExpression: anArrayCreationExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitArrayInitializer: anArrayInitializer [
 	^ self visitExpression: anArrayInitializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitArrayParameter: anArrayParameter [
 	^ self visitProgram: anArrayParameter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitArrayType: anArrayType [
 	^ self visitType: anArrayType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitAssignment: anAssignment [
 	^ self visitExpression: anAssignment
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitAttribute: anAttribute [
 	^ self visitProgram: anAttribute
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitAttributeValue: anAttributeValue [
 	^ self visitProgram: anAttributeValue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitAwaitExpression: anAwaitExpression [
 	^ self visitExpression: anAwaitExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitBaseAccess: aBaseAccess [
 	^ self visitExpression: aBaseAccess
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitBaseExpression: aBaseExpression [
 	^ self visitExpression: aBaseExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitBinaryExpression: aBinaryExpression [
 	^ self visitExpression: aBinaryExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitBlockStatement: aBlockStatement [
 	^ self visitStatement: aBlockStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitBooleanLiteralExpression: aBooleanLiteralExpression [
 	^ self visitLiteralExpression: aBooleanLiteralExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitBreakStatement: aBreakStatement [
 	^ self visitStatement: aBreakStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitCastExpression: aCastExpression [
 	^ self visitExpression: aCastExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitCatchClause: aCatchClause [
 	^ self visitProgram: aCatchClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitCharacterLiteralExpression: aCharacterLiteralExpression [
 	^ self visitLiteralExpression: aCharacterLiteralExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitCheckedExpression: aCheckedExpression [
 	^ self visitExpression: aCheckedExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitCheckedStatement: aCheckedStatement [
 	^ self visitStatement: aCheckedStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitClassDeclaration: aClassDeclaration [
 	^ self visitDeclaration: aClassDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitCollectionExpression: aCollectionExpression [
 	^ self visitExpression: aCollectionExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitCollectionInitializer: aCollectionInitializer [
 	^ self visitProgram: aCollectionInitializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitCompilationUnit: aCompilationUnit [
 	^ self visitProgram: aCompilationUnit
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitConditionalExpression: aConditionalExpression [
 	^ self visitExpression: aConditionalExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitConstantDeclaration: aConstantDeclaration [
 	^ self visitDeclaration: aConstantDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitConstantDeclarator: aConstantDeclarator [
 	^ self visitProgram: aConstantDeclarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitConstructorConstraint: aConstructorConstraint [
 	^ self visitProgram: aConstructorConstraint
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitConstructorDeclaration: aConstructorDeclaration [
 	^ self visitDeclaration: aConstructorDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitConstructorInitializer: aConstructorInitializer [
 	^ self visitProgram: aConstructorInitializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitContinueStatement: aContinueStatement [
 	^ self visitStatement: aContinueStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitDeclaration: aDeclaration [
 	^ self visitProgram: aDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitDeclarationExpression: aDeclarationExpression [
 	^ self visitExpression: aDeclarationExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitDeclarationStatement: aDeclarationStatement [
 	^ self visitStatement: aDeclarationStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitDeconstructionExpression: aDeconstructionExpression [
 	^ self visitExpression: aDeconstructionExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitDeconstructionTuple: aDeconstructionTuple [
 	^ self visitProgram: aDeconstructionTuple
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitDefaultValueExpression: aDefaultValueExpression [
 	^ self visitExpression: aDefaultValueExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitDelegateCreationExpression: aDelegateCreationExpression [
 	^ self visitExpression: aDelegateCreationExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitDelegateDeclaration: aDelegateDeclaration [
 	^ self visitDeclaration: aDelegateDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitDoStatement: aDoStatement [
 	^ self visitStatement: aDoStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitElementAccess: anElementAccess [
 	^ self visitExpression: anElementAccess
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitElementInitializer: anElementInitializer [
 	^ self visitExpression: anElementInitializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitEmptyStatement: anEmptyStatement [
 	^ self visitStatement: anEmptyStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitEnumDeclaration: anEnumDeclaration [
 	^ self visitDeclaration: anEnumDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitEventDeclaration: anEventDeclaration [
 	^ self visitDeclaration: anEventDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitExceptionFilter: anExceptionFilter [
 	^ self visitProgram: anExceptionFilter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitExpression: anExpression [
 	^ self visitProgram: anExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitExpressionStatement: anExpressionStatement [
 	^ self visitStatement: anExpressionStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitExternAliasDirective: anExternAliasDirective [
 	^ self visitProgram: anExternAliasDirective
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitFieldDeclaration: aFieldDeclaration [
 	^ self visitDeclaration: aFieldDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitFileScopedNamespaceDeclaration: aFileScopedNamespaceDeclaration [
 	^ self visitNamespaceDeclaration: aFileScopedNamespaceDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitFinalizerDeclaration: aFinalizerDeclaration [
 	^ self visitProgram: aFinalizerDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitFinallyClause: aFinallyClause [
 	^ self visitProgram: aFinallyClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitFixedParameter: aFixedParameter [
 	^ self visitProgram: aFixedParameter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitFixedPointerDeclarator: aFixedPointerDeclarator [
 	^ self visitProgram: aFixedPointerDeclarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitFixedSizeBufferDeclaration: aFixedSizeBufferDeclaration [
 	^ self visitDeclaration: aFixedSizeBufferDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitFixedSizeBufferDeclarator: aFixedSizeBufferDeclarator [
 	^ self visitProgram: aFixedSizeBufferDeclarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitFixedStatement: aFixedStatement [
 	^ self visitStatement: aFixedStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitForStatement: aForStatement [
 	^ self visitStatement: aForStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitForeachStatement: aForeachStatement [
 	^ self visitStatement: aForeachStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitFunctionPointerParameter: aFunctionPointerParameter [
 	^ self visitProgram: aFunctionPointerParameter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitFunctionPointerType: aFunctionPointerType [
 	^ self visitType: aFunctionPointerType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitGetAccessorDeclaration: aGetAccessorDeclaration [
 	^ self visitProgram: aGetAccessorDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitGlobalUsingAliasDirective: aGlobalUsingAliasDirective [
 	^ self visitProgram: aGlobalUsingAliasDirective
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitGlobalUsingNamespaceDirective: aGlobalUsingNamespaceDirective [
 	^ self visitProgram: aGlobalUsingNamespaceDirective
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitGlobalUsingStaticDirective: aGlobalUsingStaticDirective [
 	^ self visitProgram: aGlobalUsingStaticDirective
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitGotoStatement: aGotoStatement [
 	^ self visitStatement: aGotoStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitIfStatement: anIfStatement [
 	^ self visitStatement: anIfStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitIndexerDeclaration: anIndexerDeclaration [
 	^ self visitDeclaration: anIndexerDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitIntegerLiteralExpression: anIntegerLiteralExpression [
 	^ self visitLiteralExpression: anIntegerLiteralExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitInterfaceDeclaration: anInterfaceDeclaration [
 	^ self visitDeclaration: anInterfaceDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitInterfaceEventDeclaration: anInterfaceEventDeclaration [
 	^ self visitDeclaration: anInterfaceEventDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitInterfaceMethodDeclaration: anInterfaceMethodDeclaration [
 	^ self visitDeclaration: anInterfaceMethodDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitInterpolatedStringExpression: anInterpolatedStringExpression [
 	^ self visitExpression: anInterpolatedStringExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitInterpolation: anInterpolation [
 	^ self visitProgram: anInterpolation
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitInvocationAccess: anInvocationAccess [
 	^ self visitProgram: anInvocationAccess
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitInvocationExpression: anInvocationExpression [
 	^ self visitExpression: anInvocationExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitLabeledStatement: aLabeledStatement [
 	^ self visitStatement: aLabeledStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitLambdaExpression: aLambdaExpression [
 	^ self visitExpression: aLambdaExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitListPattern: aListPattern [
 	^ self visitExpression: aListPattern
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitLiteralExpression: aLiteralExpression [
 	^ self visitExpression: aLiteralExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitLocalConstantDeclaration: aLocalConstantDeclaration [
 	^ self visitDeclaration: aLocalConstantDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitLocalFunctionDeclarationStatement: aLocalFunctionDeclarationStatement [
 	^ self visitStatement: aLocalFunctionDeclarationStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitLocalUsingDeclaration: aLocalUsingDeclaration [
 	^ self visitProgram: aLocalUsingDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitLocalVariableDeclaration: aLocalVariableDeclaration [
 	^ self visitDeclaration: aLocalVariableDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitLocalVariableDeclarator: aLocalVariableDeclarator [
 	^ self visitProgram: aLocalVariableDeclarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitLockStatement: aLockStatement [
 	^ self visitStatement: aLockStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitMemberAccess: aMemberAccess [
 	^ self visitExpression: aMemberAccess
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitMemberDeclarator: aMemberDeclarator [
 	^ self visitProgram: aMemberDeclarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitMemberInitializer: aMemberInitializer [
 	^ self visitProgram: aMemberInitializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitMethodBody: aMethodBody [
 	^ self visitProgram: aMethodBody
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitMethodDeclaration: aMethodDeclaration [
 	^ self visitDeclaration: aMethodDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitMethodHeader: aMethodHeader [
 	^ self visitProgram: aMethodHeader
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitNamedArgument: aNamedArgument [
 	^ self visitProgram: aNamedArgument
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitNamedEntity: aNamedEntity [
 	^ self visitExpression: aNamedEntity
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitNameofExpression: aNameofExpression [
 	^ self visitExpression: aNameofExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitNamespaceDeclaration: aNamespaceDeclaration [
 	^ self visitDeclaration: aNamespaceDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitNullConditionalMemberAccess: aNullConditionalMemberAccess [
 	^ self visitMemberAccess: aNullConditionalMemberAccess
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitNullLiteralExpression: aNullLiteralExpression [
 	^ self visitLiteralExpression: aNullLiteralExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitNullableReferenceType: aNullableReferenceType [
 	^ self visitType: aNullableReferenceType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitNullableType: aNullableType [
 	^ self visitType: aNullableType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitObjectCreationExpression: anObjectCreationExpression [
 	^ self visitExpression: anObjectCreationExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitObjectInitializer: anObjectInitializer [
 	^ self visitProgram: anObjectInitializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitOperatorDeclaration: anOperatorDeclaration [
 	^ self visitDeclaration: anOperatorDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitPointerMemberAccess: aPointerMemberAccess [
 	^ self visitExpression: aPointerMemberAccess
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitPointerType: aPointerType [
 	^ self visitType: aPointerType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitPositionalPattern: aPositionalPattern [
 	^ self visitExpression: aPositionalPattern
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitPostExpression: aPostExpression [
 	^ self visitExpression: aPostExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitPrefixExpression: aPrefixExpression [
 	^ self visitExpression: aPrefixExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitPrimaryConstraint: aPrimaryConstraint [
 	^ self visitProgram: aPrimaryConstraint
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitProgram: aProgram [
 	^ self visitSmaCCParseNode: aProgram
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitPropertyDeclaration: aPropertyDeclaration [
 	^ self visitDeclaration: aPropertyDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitPropertyPattern: aPropertyPattern [
 	^ self visitExpression: aPropertyPattern
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitQualifiedAliasMember: aQualifiedAliasMember [
 	^ self visitType: aQualifiedAliasMember
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitQualifiedIdentifier: aQualifiedIdentifier [
 	^ self visitProgram: aQualifiedIdentifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitQueryExpression: aQueryExpression [
 	^ self visitExpression: aQueryExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitRankSpecifier: aRankSpecifier [
 	^ self visitProgram: aRankSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitRealLiteralExpression: aRealLiteralExpression [
 	^ self visitLiteralExpression: aRealLiteralExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitRefExpression: aRefExpression [
 	^ self visitExpression: aRefExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitRelationalPattern: aRelationalPattern [
 	^ self visitExpression: aRelationalPattern
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitRemoveAccessorDeclaration: aRemoveAccessorDeclaration [
 	^ self visitProgram: aRemoveAccessorDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitReturnStatement: aReturnStatement [
 	^ self visitStatement: aReturnStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitSetAccessorDeclaration: aSetAccessorDeclaration [
 	^ self visitProgram: aSetAccessorDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitSimpleName: aSimpleName [
 	^ self visitExpression: aSimpleName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitSimpleType: aSimpleType [
 	^ self visitType: aSimpleType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitSizeofExpression: aSizeofExpression [
 	^ self visitExpression: aSizeofExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitSlicePattern: aSlicePattern [
 	^ self visitExpression: aSlicePattern
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitSpreadExpression: aSpreadExpression [
 	^ self visitExpression: aSpreadExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitStackallocExpression: aStackallocExpression [
 	^ self visitExpression: aStackallocExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitStackallocInitializer: aStackallocInitializer [
 	^ self visitExpression: aStackallocInitializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitStatement: aStatement [
 	^ self visitProgram: aStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitStatementList: aStatementList [
 	^ self visitProgram: aStatementList
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitStaticConstructorDeclaration: aStaticConstructorDeclaration [
 	^ self visitDeclaration: aStaticConstructorDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitStringLiteralExpression: aStringLiteralExpression [
 	^ self visitLiteralExpression: aStringLiteralExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitStructDeclaration: aStructDeclaration [
 	^ self visitDeclaration: aStructDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitSubpattern: aSubpattern [
 	^ self visitProgram: aSubpattern
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitSwitchExpression: aSwitchExpression [
 	^ self visitExpression: aSwitchExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitSwitchExpressionArm: aSwitchExpressionArm [
 	^ self visitProgram: aSwitchExpressionArm
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitSwitchLabel: aSwitchLabel [
 	^ self visitProgram: aSwitchLabel
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitSwitchSection: aSwitchSection [
 	^ self visitProgram: aSwitchSection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitSwitchStatement: aSwitchStatement [
 	^ self visitStatement: aSwitchStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitThisAccess: aThisAccess [
 	^ self visitExpression: aThisAccess
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitThrowExpression: aThrowExpression [
 	^ self visitExpression: aThrowExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitThrowStatement: aThrowStatement [
 	^ self visitStatement: aThrowStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitTryStatement: aTryStatement [
 	^ self visitStatement: aTryStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitTupleDesignation: aTupleDesignation [
 	^ self visitProgram: aTupleDesignation
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitTupleElement: aTupleElement [
 	^ self visitProgram: aTupleElement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitTupleExpression: aTupleExpression [
 	^ self visitExpression: aTupleExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitTupleType: aTupleType [
 	^ self visitType: aTupleType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitTupleTypeElement: aTupleTypeElement [
 	^ self visitProgram: aTupleTypeElement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitType: aType [
 	^ self visitProgram: aType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitTypeArgumentList: aTypeArgumentList [
 	^ self visitProgram: aTypeArgumentList
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitTypeConstraint: aTypeConstraint [
 	^ self visitProgram: aTypeConstraint
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitTypeExpression: aTypeExpression [
 	^ self visitExpression: aTypeExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitTypeName: aTypeName [
 	^ self visitType: aTypeName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitTypeParameterConstraintsClause: aTypeParameterConstraintsClause [
 	^ self visitProgram: aTypeParameterConstraintsClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitTypeParameterList: aTypeParameterList [
 	^ self visitProgram: aTypeParameterList
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitTypeofExpression: aTypeofExpression [
 	^ self visitExpression: aTypeofExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitUnboundTypeName: anUnboundTypeName [
 	^ self visitProgram: anUnboundTypeName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitUncheckedExpression: anUncheckedExpression [
 	^ self visitExpression: anUncheckedExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitUncheckedStatement: anUncheckedStatement [
 	^ self visitStatement: anUncheckedStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitUnsafeStatement: anUnsafeStatement [
 	^ self visitStatement: anUnsafeStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitUsingAliasDirective: anUsingAliasDirective [
 	^ self visitUsingDirective: anUsingAliasDirective
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitUsingDeclarator: anUsingDeclarator [
 	^ self visitProgram: anUsingDeclarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitUsingDirective: anUsingDirective [
 	^ self visitProgram: anUsingDirective
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitUsingNamespaceDirective: anUsingNamespaceDirective [
 	^ self visitUsingDirective: anUsingNamespaceDirective
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitUsingStatement: anUsingStatement [
 	^ self visitStatement: anUsingStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitUsingStaticDirective: anUsingStaticDirective [
 	^ self visitUsingDirective: anUsingStaticDirective
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitVarType: aVarType [
 	^ self visitType: aVarType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitVariableDeclarator: aVariableDeclarator [
 	^ self visitProgram: aVariableDeclarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitVariableDesignation: aVariableDesignation [
 	^ self visitProgram: aVariableDesignation
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitVariantTypeParameterList: aVariantTypeParameterList [
 	^ self visitTypeParameterList: aVariantTypeParameterList
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitVoidType: aVoidType [
 	^ self visitType: aVoidType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitWhileStatement: aWhileStatement [
 	^ self visitStatement: aWhileStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCSProgramNodeVisitor >> visitYieldStatement: aYieldStatement [
 	^ self visitStatement: aYieldStatement
 ]

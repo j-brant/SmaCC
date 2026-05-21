@@ -1,46 +1,47 @@
 Class {
-	#name : #TeradataDatabaseStatementNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataDatabaseStatementNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'databaseToken',
 		'database'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDatabaseStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDatabaseStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDatabaseStatementNode >> database [
 	^ database
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDatabaseStatementNode >> database: aTeradataIdentifierNameNode [
 	self database notNil ifTrue: [ self database parent: nil ].
 	database := aTeradataIdentifierNameNode.
 	self database notNil ifTrue: [ self database parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDatabaseStatementNode >> databaseToken [
 	^ databaseToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDatabaseStatementNode >> databaseToken: aSmaCCToken [
 	databaseToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDatabaseStatementNode >> nodeVariables [
 	^ #(#database)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataDatabaseStatementNode >> tokenVariables [
 	^ #(#databaseToken)
 ]

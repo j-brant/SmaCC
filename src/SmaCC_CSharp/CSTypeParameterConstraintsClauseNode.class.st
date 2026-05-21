@@ -1,6 +1,6 @@
 Class {
-	#name : #CSTypeParameterConstraintsClauseNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSTypeParameterConstraintsClauseNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'whereToken',
 		'parameter',
@@ -9,84 +9,85 @@ Class {
 		'commaTokens',
 		'allowsToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterConstraintsClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTypeParameterConstraintsClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterConstraintsClauseNode >> allowsToken [
 	^ allowsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterConstraintsClauseNode >> allowsToken: aSmaCCToken [
 	allowsToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterConstraintsClauseNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterConstraintsClauseNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterConstraintsClauseNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterConstraintsClauseNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterConstraintsClauseNode >> compositeNodeVariables [
 	^ #(#constraints)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterConstraintsClauseNode >> constraints [
 	^ constraints
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterConstraintsClauseNode >> constraints: anOrderedCollection [
 	self setParents: self constraints to: nil.
 	constraints := anOrderedCollection.
 	self setParents: self constraints to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterConstraintsClauseNode >> ignoredCompositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSTypeParameterConstraintsClauseNode >> initialize [
 	super initialize.
 	constraints := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterConstraintsClauseNode >> nodeVariables [
 	^ #(#parameter)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterConstraintsClauseNode >> parameter [
 	^ parameter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterConstraintsClauseNode >> parameter: aCSTypeNameNode [
 	self parameter notNil
 		ifTrue: [ self parameter parent: nil ].
@@ -95,17 +96,17 @@ CSTypeParameterConstraintsClauseNode >> parameter: aCSTypeNameNode [
 		ifTrue: [ self parameter parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterConstraintsClauseNode >> tokenVariables [
 	^ #(#whereToken #colon #allowsToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterConstraintsClauseNode >> whereToken [
 	^ whereToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSTypeParameterConstraintsClauseNode >> whereToken: aSmaCCToken [
 	whereToken := aSmaCCToken
 ]

@@ -1,57 +1,58 @@
 Class {
-	#name : #TeradataSetExpressionNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataSetExpressionNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'name',
 		'equals',
 		'value'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSetExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSetExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSetExpressionNode >> equals [
 	^ equals
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSetExpressionNode >> equals: aSmaCCToken [
 	equals := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSetExpressionNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSetExpressionNode >> name: aTeradataIdentifierExpressionNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aTeradataIdentifierExpressionNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSetExpressionNode >> nodeVariables [
 	^ #(#name #value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSetExpressionNode >> tokenVariables [
 	^ #(#equals)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSetExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSetExpressionNode >> value: aTeradataExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aTeradataExpressionNode.

@@ -1,6 +1,6 @@
 Class {
-	#name : #CSBaseAccessNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSBaseAccessNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'baseToken',
 		'periodToken',
@@ -11,119 +11,120 @@ Class {
 		'commaTokens',
 		'rightBracketToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBaseAccessNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBaseAccess: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBaseAccessNode >> baseToken [
 	^ baseToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBaseAccessNode >> baseToken: aSmaCCToken [
 	baseToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBaseAccessNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBaseAccessNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBaseAccessNode >> compositeNodeVariables [
 	^ #(#expressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBaseAccessNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBaseAccessNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBaseAccessNode >> identifier [
 	^ identifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBaseAccessNode >> identifier: aSmaCCToken [
 	identifier := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBaseAccessNode >> ignoredCompositeTokenVariables [
 	^ #(#commaTokens #_leftParens #_rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSBaseAccessNode >> initialize [
 	super initialize.
 	expressions := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBaseAccessNode >> leftBracketToken [
 	^ leftBracketToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBaseAccessNode >> leftBracketToken: aSmaCCToken [
 	leftBracketToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBaseAccessNode >> nodeVariables [
 	^ #(#typeArguments)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBaseAccessNode >> periodToken [
 	^ periodToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBaseAccessNode >> periodToken: aSmaCCToken [
 	periodToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBaseAccessNode >> rightBracketToken [
 	^ rightBracketToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBaseAccessNode >> rightBracketToken: aSmaCCToken [
 	rightBracketToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBaseAccessNode >> tokenVariables [
 	^ #(#baseToken #periodToken #identifier #leftBracketToken #rightBracketToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBaseAccessNode >> typeArguments [
 	^ typeArguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBaseAccessNode >> typeArguments: aCSTypeArgumentListNode [
 	self typeArguments notNil ifTrue: [ self typeArguments parent: nil ].
 	typeArguments := aCSTypeArgumentListNode.

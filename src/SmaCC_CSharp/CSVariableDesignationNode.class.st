@@ -1,28 +1,29 @@
 Class {
-	#name : #CSVariableDesignationNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSVariableDesignationNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'name'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVariableDesignationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitVariableDesignation: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVariableDesignationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVariableDesignationNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVariableDesignationNode >> tokenVariables [
 	^ #(#name)
 ]

@@ -1,68 +1,69 @@
 Class {
-	#name : #CSVariableDeclaratorNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSVariableDeclaratorNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'name',
 		'identifierToken',
 		'equalToken',
 		'initializer'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVariableDeclaratorNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitVariableDeclarator: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVariableDeclaratorNode >> equalToken [
 	^ equalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVariableDeclaratorNode >> equalToken: aSmaCCToken [
 	equalToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVariableDeclaratorNode >> identifierToken [
 	^ identifierToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVariableDeclaratorNode >> identifierToken: aSmaCCToken [
 	identifierToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVariableDeclaratorNode >> initializer [
 	^ initializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVariableDeclaratorNode >> initializer: aCSExpressionNode [
 	self initializer notNil ifTrue: [ self initializer parent: nil ].
 	initializer := aCSExpressionNode.
 	self initializer notNil ifTrue: [ self initializer parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVariableDeclaratorNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVariableDeclaratorNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVariableDeclaratorNode >> nodeVariables [
 	^ #(#initializer)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSVariableDeclaratorNode >> tokenVariables [
 	^ #(#name #identifierToken #equalToken)
 ]

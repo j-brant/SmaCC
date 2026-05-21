@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataSelectTableNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataSelectTableNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'leftParen',
 		'query',
@@ -8,72 +8,73 @@ Class {
 		'alias',
 		'asToken'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectTableNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSelectTable: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectTableNode >> alias [
 	^ alias
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectTableNode >> alias: aSmaCCToken [
 	alias := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectTableNode >> asToken [
 	^ asToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectTableNode >> asToken: aSmaCCToken [
 	asToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectTableNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectTableNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectTableNode >> nodeVariables [
 	^ #(#query)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectTableNode >> query [
 	^ query
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectTableNode >> query: aTeradataProgramNode [
 	self query notNil ifTrue: [ self query parent: nil ].
 	query := aTeradataProgramNode.
 	self query notNil ifTrue: [ self query parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectTableNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectTableNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataSelectTableNode >> tokenVariables [
 	^ #(#leftParen #rightParen #alias #asToken)
 ]

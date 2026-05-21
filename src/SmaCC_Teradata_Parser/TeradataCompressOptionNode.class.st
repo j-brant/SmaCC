@@ -1,39 +1,40 @@
 Class {
-	#name : #TeradataCompressOptionNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataCompressOptionNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'compressToken',
 		'compress'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCompressOptionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCompressOption: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCompressOptionNode >> compress [
 	^ compress
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCompressOptionNode >> compress: aSmaCCToken [
 	compress := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCompressOptionNode >> compressToken [
 	^ compressToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCompressOptionNode >> compressToken: aSmaCCToken [
 	compressToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCompressOptionNode >> tokenVariables [
 	^ #(#compressToken #compress)
 ]

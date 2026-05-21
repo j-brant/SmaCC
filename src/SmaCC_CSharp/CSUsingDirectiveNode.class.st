@@ -1,30 +1,31 @@
 Class {
-	#name : #CSUsingDirectiveNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSUsingDirectiveNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'usingToken',
 		'namespace',
 		'semicolonToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingDirectiveNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUsingDirective: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingDirectiveNode >> ignoredTokenVariables [
 	^ #(#semicolonToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingDirectiveNode >> namespace [
 	^ namespace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingDirectiveNode >> namespace: aCSTypeNode [
 	self namespace notNil
 		ifTrue: [ self namespace parent: nil ].
@@ -33,32 +34,32 @@ CSUsingDirectiveNode >> namespace: aCSTypeNode [
 		ifTrue: [ self namespace parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingDirectiveNode >> nodeVariables [
 	^ #(#namespace)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingDirectiveNode >> semicolonToken [
 	^ semicolonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingDirectiveNode >> semicolonToken: aSmaCCToken [
 	semicolonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingDirectiveNode >> tokenVariables [
 	^ #(#usingToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingDirectiveNode >> usingToken [
 	^ usingToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSUsingDirectiveNode >> usingToken: aSmaCCToken [
 	usingToken := aSmaCCToken
 ]

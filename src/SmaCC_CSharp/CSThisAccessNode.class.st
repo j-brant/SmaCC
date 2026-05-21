@@ -1,28 +1,29 @@
 Class {
-	#name : #CSThisAccessNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSThisAccessNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'thisToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSThisAccessNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitThisAccess: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSThisAccessNode >> thisToken [
 	^ thisToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSThisAccessNode >> thisToken: aSmaCCToken [
 	thisToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSThisAccessNode >> tokenVariables [
 	^ #(#thisToken)
 ]

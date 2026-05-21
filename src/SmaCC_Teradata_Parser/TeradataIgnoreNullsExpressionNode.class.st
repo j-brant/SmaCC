@@ -1,55 +1,56 @@
 Class {
-	#name : #TeradataIgnoreNullsExpressionNode,
-	#superclass : #TeradataExpressionNode,
+	#name : 'TeradataIgnoreNullsExpressionNode',
+	#superclass : 'TeradataExpressionNode',
 	#instVars : [
 		'value',
 		'ignoreToken',
 		'nullsToken'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIgnoreNullsExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIgnoreNullsExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIgnoreNullsExpressionNode >> ignoreToken [
 	^ ignoreToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIgnoreNullsExpressionNode >> ignoreToken: aSmaCCToken [
 	ignoreToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIgnoreNullsExpressionNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIgnoreNullsExpressionNode >> nullsToken [
 	^ nullsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIgnoreNullsExpressionNode >> nullsToken: aSmaCCToken [
 	nullsToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIgnoreNullsExpressionNode >> tokenVariables [
 	^ #(#ignoreToken #nullsToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIgnoreNullsExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIgnoreNullsExpressionNode >> value: aTeradataExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aTeradataExpressionNode.

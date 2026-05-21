@@ -1,6 +1,6 @@
 Class {
-	#name : #CSGlobalUsingAliasDirectiveNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSGlobalUsingAliasDirectiveNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'globalToken',
 		'usingToken',
@@ -9,82 +9,83 @@ Class {
 		'namespace',
 		'semicolon'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingAliasDirectiveNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitGlobalUsingAliasDirective: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingAliasDirectiveNode >> equal [
 	^ equal
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingAliasDirectiveNode >> equal: aSmaCCToken [
 	equal := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingAliasDirectiveNode >> globalToken [
 	^ globalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingAliasDirectiveNode >> globalToken: aSmaCCToken [
 	globalToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingAliasDirectiveNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingAliasDirectiveNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingAliasDirectiveNode >> namespace [
 	^ namespace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingAliasDirectiveNode >> namespace: aCSTypeNode [
 	self namespace notNil ifTrue: [ self namespace parent: nil ].
 	namespace := aCSTypeNode.
 	self namespace notNil ifTrue: [ self namespace parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingAliasDirectiveNode >> nodeVariables [
 	^ #(#namespace)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingAliasDirectiveNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingAliasDirectiveNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingAliasDirectiveNode >> tokenVariables [
 	^ #(#globalToken #usingToken #name #equal #semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingAliasDirectiveNode >> usingToken [
 	^ usingToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSGlobalUsingAliasDirectiveNode >> usingToken: aSmaCCToken [
 	usingToken := aSmaCCToken
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : #CSArrayCreationExpressionNode,
-	#superclass : #CSExpressionNode,
+	#name : 'CSArrayCreationExpressionNode',
+	#superclass : 'CSExpressionNode',
 	#instVars : [
 		'newToken',
 		'type',
@@ -11,20 +11,21 @@ Class {
 		'rankSpecifiers',
 		'arrayInitializer'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayCreationExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitArrayCreationExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayCreationExpressionNode >> arrayInitializer [
 	^ arrayInitializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayCreationExpressionNode >> arrayInitializer: aCSArrayInitializerNode [
 	self arrayInitializer notNil
 		ifTrue: [ self arrayInitializer parent: nil ].
@@ -33,39 +34,39 @@ CSArrayCreationExpressionNode >> arrayInitializer: aCSArrayInitializerNode [
 		ifTrue: [ self arrayInitializer parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayCreationExpressionNode >> commaTokens [
 	^ commaTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayCreationExpressionNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayCreationExpressionNode >> compositeNodeVariables [
 	^ #(#expressions #rankSpecifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayCreationExpressionNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayCreationExpressionNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayCreationExpressionNode >> ignoredCompositeTokenVariables [
 	^ #(#commaTokens #_leftParens #_rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSArrayCreationExpressionNode >> initialize [
 	super initialize.
 	expressions := OrderedCollection new: 2.
@@ -73,64 +74,64 @@ CSArrayCreationExpressionNode >> initialize [
 	rankSpecifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayCreationExpressionNode >> leftBracketToken [
 	^ leftBracketToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayCreationExpressionNode >> leftBracketToken: aSmaCCToken [
 	leftBracketToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayCreationExpressionNode >> newToken [
 	^ newToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayCreationExpressionNode >> newToken: aSmaCCToken [
 	newToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayCreationExpressionNode >> nodeVariables [
 	^ #(#type #arrayInitializer)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayCreationExpressionNode >> rankSpecifiers [
 	^ rankSpecifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayCreationExpressionNode >> rankSpecifiers: anOrderedCollection [
 	self setParents: self rankSpecifiers to: nil.
 	rankSpecifiers := anOrderedCollection.
 	self setParents: self rankSpecifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayCreationExpressionNode >> rightBracketToken [
 	^ rightBracketToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayCreationExpressionNode >> rightBracketToken: aSmaCCToken [
 	rightBracketToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayCreationExpressionNode >> tokenVariables [
 	^ #(#newToken #leftBracketToken #rightBracketToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayCreationExpressionNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSArrayCreationExpressionNode >> type: aCSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.

@@ -1,10 +1,11 @@
 Class {
-	#name : #CSProgramNode,
-	#superclass : #SmaCCParseNode,
-	#category : #'SmaCC_CSharp'
+	#name : 'CSProgramNode',
+	#superclass : 'SmaCCParseNode',
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSProgramNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitProgram: self
 ]

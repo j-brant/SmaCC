@@ -1,44 +1,45 @@
 Class {
-	#name : #CSContinueStatementNode,
-	#superclass : #CSStatementNode,
+	#name : 'CSContinueStatementNode',
+	#superclass : 'CSStatementNode',
 	#instVars : [
 		'continueToken',
 		'semicolonToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSContinueStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitContinueStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSContinueStatementNode >> continueToken [
 	^ continueToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSContinueStatementNode >> continueToken: aSmaCCToken [
 	continueToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSContinueStatementNode >> ignoredTokenVariables [
 	^ #(#semicolonToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSContinueStatementNode >> semicolonToken [
 	^ semicolonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSContinueStatementNode >> semicolonToken: aSmaCCToken [
 	semicolonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSContinueStatementNode >> tokenVariables [
 	^ #(#continueToken)
 ]

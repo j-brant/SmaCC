@@ -1,66 +1,67 @@
 Class {
-	#name : #CSQualifiedAliasMemberNode,
-	#superclass : #CSTypeNode,
+	#name : 'CSQualifiedAliasMemberNode',
+	#superclass : 'CSTypeNode',
 	#instVars : [
 		'global',
 		'colonColonToken',
 		'name',
 		'typeArguments'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQualifiedAliasMemberNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitQualifiedAliasMember: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQualifiedAliasMemberNode >> colonColonToken [
 	^ colonColonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQualifiedAliasMemberNode >> colonColonToken: aSmaCCToken [
 	colonColonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQualifiedAliasMemberNode >> global [
 	^ global
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQualifiedAliasMemberNode >> global: aSmaCCToken [
 	global := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQualifiedAliasMemberNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQualifiedAliasMemberNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQualifiedAliasMemberNode >> nodeVariables [
 	^ #(#typeArguments)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQualifiedAliasMemberNode >> tokenVariables [
 	^ #(#global #colonColonToken #name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQualifiedAliasMemberNode >> typeArguments [
 	^ typeArguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSQualifiedAliasMemberNode >> typeArguments: aCSTypeArgumentListNode [
 	self typeArguments notNil
 		ifTrue: [ self typeArguments parent: nil ].

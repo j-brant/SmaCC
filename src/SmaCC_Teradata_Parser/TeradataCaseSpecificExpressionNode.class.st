@@ -1,44 +1,45 @@
 Class {
-	#name : #TeradataCaseSpecificExpressionNode,
-	#superclass : #TeradataExpressionNode,
+	#name : 'TeradataCaseSpecificExpressionNode',
+	#superclass : 'TeradataExpressionNode',
 	#instVars : [
 		'value',
 		'caseSpecificToken'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCaseSpecificExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCaseSpecificExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCaseSpecificExpressionNode >> caseSpecificToken [
 	^ caseSpecificToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCaseSpecificExpressionNode >> caseSpecificToken: aSmaCCToken [
 	caseSpecificToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCaseSpecificExpressionNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCaseSpecificExpressionNode >> tokenVariables [
 	^ #(#caseSpecificToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCaseSpecificExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCaseSpecificExpressionNode >> value: aTeradataExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aTeradataExpressionNode.

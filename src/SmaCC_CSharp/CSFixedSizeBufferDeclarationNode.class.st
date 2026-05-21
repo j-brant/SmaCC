@@ -1,6 +1,6 @@
 Class {
-	#name : #CSFixedSizeBufferDeclarationNode,
-	#superclass : #CSDeclarationNode,
+	#name : 'CSFixedSizeBufferDeclarationNode',
+	#superclass : 'CSDeclarationNode',
 	#instVars : [
 		'_attributes',
 		'modifiers',
@@ -9,64 +9,65 @@ Class {
 		'declarators',
 		'semicolonToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclarationNode >> _attributes [
 	^ _attributes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclarationNode >> _attributes: anOrderedCollection [
 	self setParents: self _attributes to: nil.
 	_attributes := anOrderedCollection.
 	self setParents: self _attributes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFixedSizeBufferDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclarationNode >> compositeNodeVariables [
 	^ #(#_attributes #declarators)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclarationNode >> compositeTokenVariables [
 	^ #(#modifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclarationNode >> declarators [
 	^ declarators
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclarationNode >> declarators: anOrderedCollection [
 	self setParents: self declarators to: nil.
 	declarators := anOrderedCollection.
 	self setParents: self declarators to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclarationNode >> fixedToken [
 	^ fixedToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclarationNode >> fixedToken: aSmaCCToken [
 	fixedToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclarationNode >> ignoredTokenVariables [
 	^ #(#semicolonToken)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSFixedSizeBufferDeclarationNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
@@ -74,42 +75,42 @@ CSFixedSizeBufferDeclarationNode >> initialize [
 	declarators := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclarationNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclarationNode >> modifiers: anOrderedCollection [
 	modifiers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclarationNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclarationNode >> semicolonToken [
 	^ semicolonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclarationNode >> semicolonToken: aSmaCCToken [
 	semicolonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclarationNode >> tokenVariables [
 	^ #(#fixedToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclarationNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedSizeBufferDeclarationNode >> type: aCSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.

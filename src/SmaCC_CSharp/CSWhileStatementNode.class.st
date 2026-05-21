@@ -1,6 +1,6 @@
 Class {
-	#name : #CSWhileStatementNode,
-	#superclass : #CSStatementNode,
+	#name : 'CSWhileStatementNode',
+	#superclass : 'CSStatementNode',
 	#instVars : [
 		'whileToken',
 		'leftParenToken',
@@ -8,57 +8,58 @@ Class {
 		'rightParenToken',
 		'statement'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSWhileStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitWhileStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSWhileStatementNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSWhileStatementNode >> expression: aCSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSWhileStatementNode >> leftParenToken [
 	^ leftParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSWhileStatementNode >> leftParenToken: aSmaCCToken [
 	leftParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSWhileStatementNode >> nodeVariables [
 	^ #(#expression #statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSWhileStatementNode >> rightParenToken [
 	^ rightParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSWhileStatementNode >> rightParenToken: aSmaCCToken [
 	rightParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSWhileStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSWhileStatementNode >> statement: aCSStatementNode [
 	self statement notNil
 		ifTrue: [ self statement parent: nil ].
@@ -67,17 +68,17 @@ CSWhileStatementNode >> statement: aCSStatementNode [
 		ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSWhileStatementNode >> tokenVariables [
 	^ #(#whileToken #leftParenToken #rightParenToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSWhileStatementNode >> whileToken [
 	^ whileToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSWhileStatementNode >> whileToken: aSmaCCToken [
 	whileToken := aSmaCCToken
 ]

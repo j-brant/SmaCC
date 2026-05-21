@@ -1,57 +1,58 @@
 Class {
-	#name : #TeradataExistsExpressionNode,
-	#superclass : #TeradataExpressionNode,
+	#name : 'TeradataExistsExpressionNode',
+	#superclass : 'TeradataExpressionNode',
 	#instVars : [
 		'existsToken',
 		'query',
 		'notToken'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataExistsExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExistsExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataExistsExpressionNode >> existsToken [
 	^ existsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataExistsExpressionNode >> existsToken: aSmaCCToken [
 	existsToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataExistsExpressionNode >> nodeVariables [
 	^ #(#query)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataExistsExpressionNode >> notToken [
 	^ notToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataExistsExpressionNode >> notToken: aSmaCCToken [
 	notToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataExistsExpressionNode >> query [
 	^ query
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataExistsExpressionNode >> query: aTeradataProgramNode [
 	self query notNil ifTrue: [ self query parent: nil ].
 	query := aTeradataProgramNode.
 	self query notNil ifTrue: [ self query parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataExistsExpressionNode >> tokenVariables [
 	^ #(#existsToken #notToken)
 ]

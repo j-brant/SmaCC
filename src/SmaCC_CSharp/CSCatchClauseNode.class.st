@@ -1,6 +1,6 @@
 Class {
-	#name : #CSCatchClauseNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSCatchClauseNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'catchToken',
 		'leftParenToken',
@@ -10,20 +10,21 @@ Class {
 		'filter',
 		'block'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCatchClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCatchClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCatchClauseNode >> block [
 	^ block
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCatchClauseNode >> block: aCSBlockStatementNode [
 	self block notNil
 		ifTrue: [ self block parent: nil ].
@@ -32,22 +33,22 @@ CSCatchClauseNode >> block: aCSBlockStatementNode [
 		ifTrue: [ self block parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCatchClauseNode >> catchToken [
 	^ catchToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCatchClauseNode >> catchToken: aSmaCCToken [
 	catchToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCatchClauseNode >> filter [
 	^ filter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCatchClauseNode >> filter: aCSExceptionFilterNode [
 	self filter notNil
 		ifTrue: [ self filter parent: nil ].
@@ -56,52 +57,52 @@ CSCatchClauseNode >> filter: aCSExceptionFilterNode [
 		ifTrue: [ self filter parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCatchClauseNode >> leftParenToken [
 	^ leftParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCatchClauseNode >> leftParenToken: aSmaCCToken [
 	leftParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCatchClauseNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCatchClauseNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCatchClauseNode >> nodeVariables [
 	^ #(#type #filter #block)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCatchClauseNode >> rightParenToken [
 	^ rightParenToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCatchClauseNode >> rightParenToken: aSmaCCToken [
 	rightParenToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCatchClauseNode >> tokenVariables [
 	^ #(#catchToken #leftParenToken #name #rightParenToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCatchClauseNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSCatchClauseNode >> type: aCSTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aCSTypeNode.

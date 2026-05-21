@@ -1,68 +1,69 @@
 Class {
-	#name : #CSFixedPointerDeclaratorNode,
-	#superclass : #CSProgramNode,
+	#name : 'CSFixedPointerDeclaratorNode',
+	#superclass : 'CSProgramNode',
 	#instVars : [
 		'identifierToken',
 		'equalToken',
 		'andToken',
 		'expression'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedPointerDeclaratorNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFixedPointerDeclarator: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedPointerDeclaratorNode >> andToken [
 	^ andToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedPointerDeclaratorNode >> andToken: aSmaCCToken [
 	andToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedPointerDeclaratorNode >> equalToken [
 	^ equalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedPointerDeclaratorNode >> equalToken: aSmaCCToken [
 	equalToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedPointerDeclaratorNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedPointerDeclaratorNode >> expression: aCSExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aCSExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedPointerDeclaratorNode >> identifierToken [
 	^ identifierToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedPointerDeclaratorNode >> identifierToken: aSmaCCToken [
 	identifierToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedPointerDeclaratorNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSFixedPointerDeclaratorNode >> tokenVariables [
 	^ #(#identifierToken #equalToken #andToken)
 ]

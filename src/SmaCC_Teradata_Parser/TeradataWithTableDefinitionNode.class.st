@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataWithTableDefinitionNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataWithTableDefinitionNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'name',
 		'asToken',
@@ -10,45 +10,46 @@ Class {
 		'values',
 		'commas'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithTableDefinitionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitWithTableDefinition: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithTableDefinitionNode >> asToken [
 	^ asToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithTableDefinitionNode >> asToken: aSmaCCToken [
 	asToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithTableDefinitionNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithTableDefinitionNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithTableDefinitionNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithTableDefinitionNode >> compositeTokenVariables [
 	^ #(#leftParens #rightParens #commas)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataWithTableDefinitionNode >> initialize [
 	super initialize.
 	leftParens := OrderedCollection new: 2.
@@ -57,66 +58,66 @@ TeradataWithTableDefinitionNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithTableDefinitionNode >> leftParens [
 	^ leftParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithTableDefinitionNode >> leftParens: anOrderedCollection [
 	leftParens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithTableDefinitionNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithTableDefinitionNode >> name: aTeradataIdentifierNameNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aTeradataIdentifierNameNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithTableDefinitionNode >> nodeVariables [
 	^ #(#name #query)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithTableDefinitionNode >> query [
 	^ query
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithTableDefinitionNode >> query: aTeradataProgramNode [
 	self query notNil ifTrue: [ self query parent: nil ].
 	query := aTeradataProgramNode.
 	self query notNil ifTrue: [ self query parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithTableDefinitionNode >> rightParens [
 	^ rightParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithTableDefinitionNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithTableDefinitionNode >> tokenVariables [
 	^ #(#asToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithTableDefinitionNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataWithTableDefinitionNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

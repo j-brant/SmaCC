@@ -1,57 +1,58 @@
 Class {
-	#name : #TeradataAliasedExpressionNode,
-	#superclass : #TeradataExpressionNode,
+	#name : 'TeradataAliasedExpressionNode',
+	#superclass : 'TeradataExpressionNode',
 	#instVars : [
 		'expression',
 		'alias',
 		'asToken'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataAliasedExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAliasedExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataAliasedExpressionNode >> alias [
 	^ alias
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataAliasedExpressionNode >> alias: aSmaCCToken [
 	alias := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataAliasedExpressionNode >> asToken [
 	^ asToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataAliasedExpressionNode >> asToken: aSmaCCToken [
 	asToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataAliasedExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataAliasedExpressionNode >> expression: aTeradataExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aTeradataExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataAliasedExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataAliasedExpressionNode >> tokenVariables [
 	^ #(#alias #asToken)
 ]

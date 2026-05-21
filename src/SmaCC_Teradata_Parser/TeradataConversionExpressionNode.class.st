@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataConversionExpressionNode,
-	#superclass : #TeradataExpressionNode,
+	#name : 'TeradataConversionExpressionNode',
+	#superclass : 'TeradataExpressionNode',
 	#instVars : [
 		'value',
 		'formatToken',
@@ -8,72 +8,73 @@ Class {
 		'type',
 		'comma'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataConversionExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitConversionExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataConversionExpressionNode >> comma [
 	^ comma
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataConversionExpressionNode >> comma: aSmaCCToken [
 	comma := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataConversionExpressionNode >> format [
 	^ format
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataConversionExpressionNode >> format: aSmaCCToken [
 	format := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataConversionExpressionNode >> formatToken [
 	^ formatToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataConversionExpressionNode >> formatToken: aSmaCCToken [
 	formatToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataConversionExpressionNode >> nodeVariables [
 	^ #(#value #type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataConversionExpressionNode >> tokenVariables [
 	^ #(#formatToken #format #comma)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataConversionExpressionNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataConversionExpressionNode >> type: aTeradataTypeNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aTeradataTypeNode.
 	self type notNil ifTrue: [ self type parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataConversionExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataConversionExpressionNode >> value: aTeradataExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aTeradataExpressionNode.

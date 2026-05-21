@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataCheckpointStatementNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataCheckpointStatementNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'checkpointToken',
 		'loadingToken',
@@ -8,65 +8,66 @@ Class {
 		'interal',
 		'endToken'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckpointStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCheckpointStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckpointStatementNode >> checkpointToken [
 	^ checkpointToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckpointStatementNode >> checkpointToken: aSmaCCToken [
 	checkpointToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckpointStatementNode >> endToken [
 	^ endToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckpointStatementNode >> endToken: aSmaCCToken [
 	endToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckpointStatementNode >> interal [
 	^ interal
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckpointStatementNode >> interal: aSmaCCToken [
 	interal := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckpointStatementNode >> intervalToken [
 	^ intervalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckpointStatementNode >> intervalToken: aSmaCCToken [
 	intervalToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckpointStatementNode >> loadingToken [
 	^ loadingToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckpointStatementNode >> loadingToken: aSmaCCToken [
 	loadingToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataCheckpointStatementNode >> tokenVariables [
 	^ #(#checkpointToken #loadingToken #intervalToken #interal #endToken)
 ]

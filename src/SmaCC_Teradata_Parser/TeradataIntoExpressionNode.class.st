@@ -1,6 +1,6 @@
 Class {
-	#name : #TeradataIntoExpressionNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataIntoExpressionNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'intoToken',
 		'leftParen',
@@ -8,82 +8,83 @@ Class {
 		'commas',
 		'rightParen'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIntoExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIntoExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIntoExpressionNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIntoExpressionNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIntoExpressionNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIntoExpressionNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataIntoExpressionNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIntoExpressionNode >> intoToken [
 	^ intoToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIntoExpressionNode >> intoToken: aSmaCCToken [
 	intoToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIntoExpressionNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIntoExpressionNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIntoExpressionNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIntoExpressionNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIntoExpressionNode >> tokenVariables [
 	^ #(#intoToken #leftParen #rightParen)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIntoExpressionNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataIntoExpressionNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

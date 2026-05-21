@@ -1,6 +1,6 @@
 Class {
-	#name : #CSStructDeclarationNode,
-	#superclass : #CSDeclarationNode,
+	#name : 'CSStructDeclarationNode',
+	#superclass : 'CSDeclarationNode',
 	#instVars : [
 		'_attributes',
 		'modifiers',
@@ -22,91 +22,92 @@ Class {
 		'recordToken',
 		'refToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> _attributes [
 	^ _attributes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> _attributes: anOrderedCollection [
 	self setParents: self _attributes to: nil.
 	_attributes := anOrderedCollection.
 	self setParents: self _attributes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStructDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> colonToken [
 	^ colonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> colonToken: aSmaCCToken [
 	colonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> compositeNodeVariables [
 	^ #(#_attributes #supertypes #constraintClauses #declarations #parameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> compositeTokenVariables [
 	^ #(#modifiers #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> constraintClauses [
 	^ constraintClauses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> constraintClauses: anOrderedCollection [
 	self setParents: self constraintClauses to: nil.
 	constraintClauses := anOrderedCollection.
 	self setParents: self constraintClauses to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> declarations [
 	^ declarations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> declarations: anOrderedCollection [
 	self setParents: self declarations to: nil.
 	declarations := anOrderedCollection.
 	self setParents: self declarations to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> identifierToken [
 	^ identifierToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> identifierToken: aSmaCCToken [
 	identifierToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CSStructDeclarationNode >> initialize [
 	super initialize.
 	_attributes := OrderedCollection new: 2.
@@ -118,146 +119,146 @@ CSStructDeclarationNode >> initialize [
 	parameters := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> leftBraceToken [
 	^ leftBraceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> leftBraceToken: aSmaCCToken [
 	leftBraceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> modifiers: anOrderedCollection [
 	modifiers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> nodeVariables [
 	^ #(#typeParameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> partialToken [
 	^ partialToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> partialToken: aSmaCCToken [
 	partialToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> recordToken [
 	^ recordToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> recordToken: aSmaCCToken [
 	recordToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> refToken [
 	^ refToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> refToken: aSmaCCToken [
 	refToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> rightBraceToken [
 	^ rightBraceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> rightBraceToken: aSmaCCToken [
 	rightBraceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> structToken [
 	^ structToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> structToken: aSmaCCToken [
 	structToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> supertypes [
 	^ supertypes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> supertypes: anOrderedCollection [
 	self setParents: self supertypes to: nil.
 	supertypes := anOrderedCollection.
 	self setParents: self supertypes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> tokenVariables [
 	^ #(#partialToken #structToken #identifierToken #colonToken #leftBraceToken #rightBraceToken #semicolon #leftParen #rightParen #recordToken #refToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> typeParameters [
 	^ typeParameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSStructDeclarationNode >> typeParameters: aCSTypeParameterListNode [
 	self typeParameters notNil
 		ifTrue: [ self typeParameters parent: nil ].

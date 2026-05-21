@@ -1,46 +1,47 @@
 Class {
-	#name : #TeradataHavingNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataHavingNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'havingToken',
 		'condition'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataHavingNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitHaving: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataHavingNode >> condition [
 	^ condition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataHavingNode >> condition: aTeradataExpressionNode [
 	self condition notNil ifTrue: [ self condition parent: nil ].
 	condition := aTeradataExpressionNode.
 	self condition notNil ifTrue: [ self condition parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataHavingNode >> havingToken [
 	^ havingToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataHavingNode >> havingToken: aSmaCCToken [
 	havingToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataHavingNode >> nodeVariables [
 	^ #(#condition)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataHavingNode >> tokenVariables [
 	^ #(#havingToken)
 ]

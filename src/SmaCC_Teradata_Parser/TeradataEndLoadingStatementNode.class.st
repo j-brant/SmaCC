@@ -1,39 +1,40 @@
 Class {
-	#name : #TeradataEndLoadingStatementNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataEndLoadingStatementNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'endToken',
 		'loadingToken'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataEndLoadingStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEndLoadingStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataEndLoadingStatementNode >> endToken [
 	^ endToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataEndLoadingStatementNode >> endToken: aSmaCCToken [
 	endToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataEndLoadingStatementNode >> loadingToken [
 	^ loadingToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataEndLoadingStatementNode >> loadingToken: aSmaCCToken [
 	loadingToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataEndLoadingStatementNode >> tokenVariables [
 	^ #(#endToken #loadingToken)
 ]

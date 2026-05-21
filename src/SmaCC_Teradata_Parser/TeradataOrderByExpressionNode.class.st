@@ -1,78 +1,79 @@
 Class {
-	#name : #TeradataOrderByExpressionNode,
-	#superclass : #TeradataProgramNode,
+	#name : 'TeradataOrderByExpressionNode',
+	#superclass : 'TeradataProgramNode',
 	#instVars : [
 		'orderToken',
 		'byToken',
 		'values',
 		'commas'
 	],
-	#category : #'SmaCC_Teradata_Parser'
+	#category : 'SmaCC_Teradata_Parser',
+	#package : 'SmaCC_Teradata_Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOrderByExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitOrderByExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOrderByExpressionNode >> byToken [
 	^ byToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOrderByExpressionNode >> byToken: aSmaCCToken [
 	byToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOrderByExpressionNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOrderByExpressionNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOrderByExpressionNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOrderByExpressionNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 TeradataOrderByExpressionNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOrderByExpressionNode >> orderToken [
 	^ orderToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOrderByExpressionNode >> orderToken: aSmaCCToken [
 	orderToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOrderByExpressionNode >> tokenVariables [
 	^ #(#orderToken #byToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOrderByExpressionNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TeradataOrderByExpressionNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

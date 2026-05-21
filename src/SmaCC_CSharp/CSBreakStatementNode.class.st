@@ -1,44 +1,45 @@
 Class {
-	#name : #CSBreakStatementNode,
-	#superclass : #CSStatementNode,
+	#name : 'CSBreakStatementNode',
+	#superclass : 'CSStatementNode',
 	#instVars : [
 		'breakToken',
 		'semicolonToken'
 	],
-	#category : #'SmaCC_CSharp'
+	#category : 'SmaCC_CSharp',
+	#package : 'SmaCC_CSharp'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBreakStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBreakStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBreakStatementNode >> breakToken [
 	^ breakToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBreakStatementNode >> breakToken: aSmaCCToken [
 	breakToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBreakStatementNode >> ignoredTokenVariables [
 	^ #(#semicolonToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBreakStatementNode >> semicolonToken [
 	^ semicolonToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBreakStatementNode >> semicolonToken: aSmaCCToken [
 	semicolonToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSBreakStatementNode >> tokenVariables [
 	^ #(#breakToken)
 ]
