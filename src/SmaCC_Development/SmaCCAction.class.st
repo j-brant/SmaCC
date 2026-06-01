@@ -24,6 +24,11 @@ SmaCCAction >> = anObject [
 		and: [ self symbol = anObject symbol and: [ self rhs = anObject rhs ] ]
 ]
 
+{ #category : 'accessing' }
+SmaCCAction >> grammar [
+	^ self lr1Item grammar
+]
+
 { #category : 'comparing' }
 SmaCCAction >> hash [
 	^ self symbol hash bitXor: self rhs hash
