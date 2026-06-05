@@ -52,3 +52,8 @@ SmaCCShiftAction >> mergeWithReduceAction: aSmaCCAction prefer: aClass [
 		preferredAction: result;
 		yourself
 ]
+
+{ #category : 'accessing' }
+SmaCCShiftAction >> token [
+	^ self lr1Item rhs at: self lr1Item location
+]
