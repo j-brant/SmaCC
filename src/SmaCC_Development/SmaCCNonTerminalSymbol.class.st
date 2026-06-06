@@ -39,6 +39,11 @@ SmaCCNonTerminalSymbol >> isEmpty [
 ]
 
 { #category : 'testing' }
+SmaCCNonTerminalSymbol >> isExplicitlyDefined [
+	^ RBScanner isVariable: self name
+]
+
+{ #category : 'testing' }
 SmaCCNonTerminalSymbol >> isTerminal [
 	^ false
 ]
@@ -72,8 +77,13 @@ SmaCCNonTerminalSymbol >> positionOf: aSmaCCRHS [
 ]
 
 { #category : 'accessing' }
+SmaCCNonTerminalSymbol >> productions [
+	^ productions
+]
+
+{ #category : 'accessing' }
 SmaCCNonTerminalSymbol >> productionsDo: aBlock [
-	productions do: aBlock
+	self productions do: aBlock
 ]
 
 { #category : 'testing' }
@@ -94,6 +104,27 @@ SmaCCNonTerminalSymbol >> ruleNumber [
 { #category : 'accessing' }
 SmaCCNonTerminalSymbol >> size [
 	^ productions size
+]
+
+{ #category : 'accessing' }
+SmaCCNonTerminalSymbol >> usedBy [
+	| usedBy |
+	usedBy := IdentitySet new.
+	self usedByInto: usedBy seen: IdentitySet new.
+	^ usedBy
+]
+
+{ #category : 'private' }
+SmaCCNonTerminalSymbol >> usedByInto: usesSet seen: seenSet [
+	(seenSet includes: self) ifTrue: [ ^ self ].
+	seenSet add: self.
+	self grammar symbols
+		do: [ :each | 
+			(each isTerminal not
+				and: [ each productions anySatisfy: [ :s | s collection includes: self ] ])
+				ifTrue: [ each isExplicitlyDefined
+						ifTrue: [ usesSet add: each ]
+						ifFalse: [ each usedByInto: usesSet seen: seenSet ] ] ]
 ]
 
 { #category : 'accessing' }

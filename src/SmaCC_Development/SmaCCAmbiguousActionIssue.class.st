@@ -31,6 +31,19 @@ SmaCCAmbiguousActionIssue >> displayStringOn: stream [
 ]
 
 { #category : 'accessing' }
+SmaCCAmbiguousActionIssue >> lookaheadTokens [
+	^ action actions
+		detect: [ :each | each isShift ]
+		ifFound: [ :each | Set with: each token ]
+		ifNone: [ | all |
+			all := Set withAll: action actions first lr1Item followers symbols.
+			2
+				to: action actions size
+				do: [ :i | all := all intersection: (action actions at: i) lr1Item followers symbols ].
+			all ]
+]
+
+{ #category : 'accessing' }
 SmaCCAmbiguousActionIssue >> preferredAction [
 	^ action preferredAction
 ]
