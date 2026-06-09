@@ -102,6 +102,15 @@ SmaCCIncrementalParser >> initialize [
 ]
 
 { #category : 'private' }
+SmaCCIncrementalParser >> markModified: aNode [
+	| node |
+	node := aNode.
+	[ node notNil ]
+		whileTrue: [ node incrementalState ifNotNil: [ :state | state isModifiedInside: true ].
+			node := node parent ]
+]
+
+{ #category : 'private' }
 SmaCCIncrementalParser >> parserStateClass [
 	^ SmaCCIncrementalParserState
 ]
@@ -120,6 +129,8 @@ SmaCCIncrementalParser >> potentialReusableNodesIn: aNode [
 	id := id max: aNode id.
 	(self sortedChildrenOf: aNode)
 		do: [ :each | nodes addAll: (self potentialReusableNodesIn: each) ].
+	(aNode isKindOf: SmaCCErrorNode)
+		ifTrue: [ aNode errorToken ids = #(0) ifTrue: [ self markModified: aNode ] ].
 	aNode incrementalState ifNotNil: [ :inc | nodes addFirst: aNode ].
 	^ nodes
 ]
