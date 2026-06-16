@@ -119,6 +119,14 @@ SmaCCLineNumberStream >> next [
 	^ character
 ]
 
+{ #category : 'as yet unclassified' }
+SmaCCLineNumberStream >> next: anInteger [
+	| output |
+	output := WriteStream on: (String new: anInteger).
+	anInteger timesRepeat: [ output nextPut: self next ].
+	^ output contents
+]
+
 { #category : 'accessing' }
 SmaCCLineNumberStream >> nextPut: anObject [
 	^ sourceStream nextPut: anObject
