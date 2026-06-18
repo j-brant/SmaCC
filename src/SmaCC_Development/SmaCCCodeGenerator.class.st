@@ -204,6 +204,11 @@ SmaCCCodeGenerator >> addParentAssignmentFor: aSmaCCVariableDefinition to: value
 			self nextPutStatement: self endConditionalString ]
 ]
 
+{ #category : 'compiling-scanner' }
+SmaCCCodeGenerator >> addStepSend [
+	self subclassResponsibility
+]
+
 { #category : 'private' }
 SmaCCCodeGenerator >> addVariable: aSmaCCVariableDefinition forDefinition: aSmaCCNodeClassDefinition [
 	self subclassResponsibility
@@ -242,7 +247,7 @@ SmaCCCodeGenerator >> asStatement: methodMap forNode: aSmaCCNode lastNeedsReturn
 		do: [ :each | 
 			(seenCharacter not and: [ each isCharacterTransition ])
 				ifTrue: [ seenCharacter := true.
-					self nextPutLine: 'self step.' ].
+					self addStepSend ].
 			each to = aSmaCCNode
 				ifTrue: [ self
 						nextPutStatement: (self endDoWhileLoopWithClause: (each dispatchTo: self seen: seen)) ]
