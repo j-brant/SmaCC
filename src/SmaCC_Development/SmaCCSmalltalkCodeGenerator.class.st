@@ -185,6 +185,11 @@ SmaCCSmalltalkCodeGenerator >> addImplementationSpecificRewritesTo: rewriter [
 		with: 'currentCharacter = (Character value: `@a)'
 ]
 
+{ #category : 'compiling-scanner' }
+SmaCCSmalltalkCodeGenerator >> addStepSend [
+	self nextPutLine: 'self step.'
+]
+
 { #category : 'compiling' }
 SmaCCSmalltalkCodeGenerator >> addVariable: aSmaCCVariableDefinition forDefinition: aSmaCCNodeClassDefinition [
 	| instVarName |
