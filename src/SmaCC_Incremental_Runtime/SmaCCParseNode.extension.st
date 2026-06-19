@@ -94,12 +94,14 @@ SmaCCParseNode >> invalidateFrom: fromIndex to: toIndex inserting: length [
 						to: toIndex
 						inserting: length ]
 				andTokensDo: [ :each | 
-					modifiedToken := modifiedToken
-							or: [ each stopPosition >= fromIndex and: [ each startPosition <= toIndex ] ] ]
+					each startPosition
+						ifNotNil: [ modifiedToken := modifiedToken
+									or: [ each stopPosition >= fromIndex and: [ each startPosition <= toIndex ] ] ] ]
 				includeErrors: true ].
 	incrementalState ifNil: [ ^ self ].
 	(maxIndex > incrementalState startingScannerState position
-		and: [ fromIndex - 1 <= incrementalState lookaheadTokenEnd or: [ incrementalState isEOF ] ])
+		and: [ fromIndex - 1 <= incrementalState lookaheadTokenEnd
+				or: [ incrementalState isEOF ] ])
 		ifTrue: [ toIndex < start
 				ifTrue: [ incrementalState isModifiedBefore: true ]
 				ifFalse: [ fromIndex > stop
