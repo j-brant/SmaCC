@@ -5445,10 +5445,12 @@ JSParser >> actionsForCurrentToken [
 		and: [ nodeStack isEmpty
 				and: [ currentToken value = '#'
 						and: [ currentToken startPosition = 1 and: [ scanner stream peek = $! ] ] ] ])
-		ifTrue: [  "Handle the #!/program/to/run lines"scanner stream
+		ifTrue: [  "Handle the #!/program/to/run lines"
+			scanner stream
 				upToAny: {Character cr.
 						Character lf}.
-			scanner comments add: (1 to: scanner position).
+			self position: scanner stream position.
+			scanner comments add: (1 to: self position).
 			currentToken := nil.
 			self getNextToken.
 			^ self actionsForCurrentToken ].
