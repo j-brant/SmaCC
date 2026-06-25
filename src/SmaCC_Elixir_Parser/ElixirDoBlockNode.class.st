@@ -34,8 +34,10 @@ ElixirDoBlockNode >> do [
 ]
 
 { #category : 'generated' }
-ElixirDoBlockNode >> do: aSmaCCToken [
-	do := aSmaCCToken
+ElixirDoBlockNode >> do: anElixirDoEoeNode [
+	self do notNil ifTrue: [ self do parent: nil ].
+	do := anElixirDoEoeNode.
+	self do notNil ifTrue: [ self do parent: self ]
 ]
 
 { #category : 'generated' }
@@ -50,7 +52,7 @@ ElixirDoBlockNode >> end: aSmaCCToken [
 
 { #category : 'generated' }
 ElixirDoBlockNode >> nodeVariables [
-	^ #(#stab #block)
+	^ #(#do #stab #block)
 ]
 
 { #category : 'generated' }
@@ -67,5 +69,5 @@ ElixirDoBlockNode >> stab: anElixirStabNode [
 
 { #category : 'generated' }
 ElixirDoBlockNode >> tokenVariables [
-	^ #(#do #end)
+	^ #(#end)
 ]

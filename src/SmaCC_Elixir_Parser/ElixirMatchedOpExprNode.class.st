@@ -20,9 +20,9 @@ ElixirMatchedOpExprNode >> expression [
 ]
 
 { #category : 'generated' }
-ElixirMatchedOpExprNode >> expression: anElixirProgramNode [
+ElixirMatchedOpExprNode >> expression: anElixirMatchedExprNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
-	expression := anElixirProgramNode.
+	expression := anElixirMatchedExprNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
