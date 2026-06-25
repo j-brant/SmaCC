@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPNamespaceAliasDefinitionNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPNamespaceAliasDefinitionNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'namespaceToken',
 		'name',
@@ -9,40 +9,42 @@ Class {
 		'nameSpecifier',
 		'semicolon'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNamespaceAliasDefinitionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNamespaceAliasDefinition: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNamespaceAliasDefinitionNode >> equal [
 	^ equal
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNamespaceAliasDefinitionNode >> equal: aSmaCCToken [
 	equal := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNamespaceAliasDefinitionNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNamespaceAliasDefinitionNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNamespaceAliasDefinitionNode >> nameSpecifier [
 	^ nameSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNamespaceAliasDefinitionNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 	self nameSpecifier notNil
 		ifTrue: [ self nameSpecifier parent: nil ].
@@ -51,12 +53,12 @@ CPPNamespaceAliasDefinitionNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 		ifTrue: [ self nameSpecifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNamespaceAliasDefinitionNode >> namespaceName [
 	^ namespaceName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNamespaceAliasDefinitionNode >> namespaceName: aCPPIdentifierNode [
 	self namespaceName notNil
 		ifTrue: [ self namespaceName parent: nil ].
@@ -65,32 +67,32 @@ CPPNamespaceAliasDefinitionNode >> namespaceName: aCPPIdentifierNode [
 		ifTrue: [ self namespaceName parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNamespaceAliasDefinitionNode >> namespaceToken [
 	^ namespaceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNamespaceAliasDefinitionNode >> namespaceToken: aSmaCCToken [
 	namespaceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNamespaceAliasDefinitionNode >> nodeVariables [
 	^ #(#namespaceName #nameSpecifier)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNamespaceAliasDefinitionNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNamespaceAliasDefinitionNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNamespaceAliasDefinitionNode >> tokenVariables [
 	^ #(#namespaceToken #name #equal #semicolon)
 ]

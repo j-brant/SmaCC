@@ -1,29 +1,31 @@
 Class {
-	#name : #CPPForRangeDeclarationNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPForRangeDeclarationNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'specifiers',
 		'declarator'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForRangeDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitForRangeDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForRangeDeclarationNode >> compositeNodeVariables [
 	^ #(#specifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForRangeDeclarationNode >> declarator [
 	^ declarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForRangeDeclarationNode >> declarator: aCPPDeclaratorNode [
 	self declarator notNil
 		ifTrue: [ self declarator parent: nil ].
@@ -32,23 +34,23 @@ CPPForRangeDeclarationNode >> declarator: aCPPDeclaratorNode [
 		ifTrue: [ self declarator parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPForRangeDeclarationNode >> initialize [
 	super initialize.
 	specifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForRangeDeclarationNode >> nodeVariables [
 	^ #(#declarator)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForRangeDeclarationNode >> specifiers [
 	^ specifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForRangeDeclarationNode >> specifiers: anOrderedCollection [
 	self setParents: self specifiers to: nil.
 	specifiers := anOrderedCollection.

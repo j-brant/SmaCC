@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPCatchHandlerNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPCatchHandlerNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'catchToken',
 		'leftParen',
@@ -8,30 +8,32 @@ Class {
 		'rightParen',
 		'statement'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCatchHandlerNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCatchHandler: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCatchHandlerNode >> catchToken [
 	^ catchToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCatchHandlerNode >> catchToken: aSmaCCToken [
 	catchToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCatchHandlerNode >> declaration [
 	^ declaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCatchHandlerNode >> declaration: aCPPExceptionDeclarationNode [
 	self declaration notNil
 		ifTrue: [ self declaration parent: nil ].
@@ -40,37 +42,37 @@ CPPCatchHandlerNode >> declaration: aCPPExceptionDeclarationNode [
 		ifTrue: [ self declaration parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCatchHandlerNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCatchHandlerNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCatchHandlerNode >> nodeVariables [
 	^ #(#declaration #statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCatchHandlerNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCatchHandlerNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCatchHandlerNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCatchHandlerNode >> statement: aCPPCompoundStatementNode [
 	self statement notNil
 		ifTrue: [ self statement parent: nil ].
@@ -79,7 +81,7 @@ CPPCatchHandlerNode >> statement: aCPPCompoundStatementNode [
 		ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCatchHandlerNode >> tokenVariables [
 	^ #(#catchToken #leftParen #rightParen)
 ]

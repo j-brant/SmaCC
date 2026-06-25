@@ -1,30 +1,32 @@
 Class {
-	#name : #CPPExceptionDeclarationNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPExceptionDeclarationNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'specifiers',
 		'declarator',
 		'ellipsis'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExceptionDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExceptionDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExceptionDeclarationNode >> compositeNodeVariables [
 	^ #(#specifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExceptionDeclarationNode >> declarator [
 	^ declarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExceptionDeclarationNode >> declarator: aCPPProgramNode [
 	self declarator notNil
 		ifTrue: [ self declarator parent: nil ].
@@ -33,40 +35,40 @@ CPPExceptionDeclarationNode >> declarator: aCPPProgramNode [
 		ifTrue: [ self declarator parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExceptionDeclarationNode >> ellipsis [
 	^ ellipsis
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExceptionDeclarationNode >> ellipsis: aSmaCCToken [
 	ellipsis := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPExceptionDeclarationNode >> initialize [
 	super initialize.
 	specifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExceptionDeclarationNode >> nodeVariables [
 	^ #(#declarator)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExceptionDeclarationNode >> specifiers [
 	^ specifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExceptionDeclarationNode >> specifiers: anOrderedCollection [
 	self setParents: self specifiers to: nil.
 	specifiers := anOrderedCollection.
 	self setParents: self specifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExceptionDeclarationNode >> tokenVariables [
 	^ #(#ellipsis)
 ]

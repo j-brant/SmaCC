@@ -1,26 +1,28 @@
 Class {
-	#name : #CPPSubscriptExpressionNode,
-	#superclass : #CPPExpressionNode,
+	#name : 'CPPSubscriptExpressionNode',
+	#superclass : 'CPPExpressionNode',
 	#instVars : [
 		'expression',
 		'leftBracket',
 		'subscript',
 		'rightBracket'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSubscriptExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSubscriptExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSubscriptExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSubscriptExpressionNode >> expression: aCPPExpressionNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
@@ -29,37 +31,37 @@ CPPSubscriptExpressionNode >> expression: aCPPExpressionNode [
 		ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSubscriptExpressionNode >> leftBracket [
 	^ leftBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSubscriptExpressionNode >> leftBracket: aSmaCCToken [
 	leftBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSubscriptExpressionNode >> nodeVariables [
 	^ #(#expression #subscript)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSubscriptExpressionNode >> rightBracket [
 	^ rightBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSubscriptExpressionNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSubscriptExpressionNode >> subscript [
 	^ subscript
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSubscriptExpressionNode >> subscript: aCPPProgramNode [
 	self subscript notNil
 		ifTrue: [ self subscript parent: nil ].
@@ -68,7 +70,7 @@ CPPSubscriptExpressionNode >> subscript: aCPPProgramNode [
 		ifTrue: [ self subscript parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSubscriptExpressionNode >> tokenVariables [
 	^ #(#leftBracket #rightBracket)
 ]

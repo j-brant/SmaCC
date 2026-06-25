@@ -1,71 +1,73 @@
 Trait {
-	#name : #TYAMLParseNodeVisitor,
+	#name : 'TYAMLParseNodeVisitor',
 	#traits : 'TSmaCCParseNodeVisitor',
 	#classTraits : 'TSmaCCParseNodeVisitor classTrait',
-	#category : #'SmaCC_YAML-Parser'
+	#category : 'SmaCC_YAML-Parser',
+	#package : 'SmaCC_YAML',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TYAMLParseNodeVisitor >> visitAlias: anAlias [
 	^ self visitValue: anAlias
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TYAMLParseNodeVisitor >> visitComplexKey: aComplexKey [
 	^ self visitParse: aComplexKey
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TYAMLParseNodeVisitor >> visitFile: aFile [
 	^ self visitParse: aFile
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TYAMLParseNodeVisitor >> visitFlowList: aFlowList [
 	^ self visitList: aFlowList
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TYAMLParseNodeVisitor >> visitFlowMappingList: aFlowMappingList [
 	^ self visitMappingList: aFlowMappingList
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TYAMLParseNodeVisitor >> visitList: aList [
 	^ self visitValue: aList
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TYAMLParseNodeVisitor >> visitListItem: aListItem [
 	^ self visitParse: aListItem
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TYAMLParseNodeVisitor >> visitMapping: aMapping [
 	^ self visitParse: aMapping
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TYAMLParseNodeVisitor >> visitMappingList: aMappingList [
 	^ self visitValue: aMappingList
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TYAMLParseNodeVisitor >> visitNumber: aNumber [
 	^ self visitValue: aNumber
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TYAMLParseNodeVisitor >> visitParse: aParse [
 	^ self visitSmaCCParseNode: aParse
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TYAMLParseNodeVisitor >> visitString: aString [
 	^ self visitValue: aString
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TYAMLParseNodeVisitor >> visitValue: aValue [
 	^ self visitParse: aValue
 ]
