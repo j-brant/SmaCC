@@ -2,6 +2,10 @@ Class {
 	#name : 'ElixirAccessExprNode',
 	#superclass : 'ElixirProgramNode',
 	#instVars : [
+		'op',
+		'identifier',
+		'slash',
+		'arity',
 		'leftParen',
 		'stab',
 		'rightParen',
@@ -17,6 +21,26 @@ ElixirAccessExprNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : 'generated' }
+ElixirAccessExprNode >> arity [
+	^ arity
+]
+
+{ #category : 'generated' }
+ElixirAccessExprNode >> arity: aSmaCCToken [
+	arity := aSmaCCToken
+]
+
+{ #category : 'generated' }
+ElixirAccessExprNode >> identifier [
+	^ identifier
+]
+
+{ #category : 'generated' }
+ElixirAccessExprNode >> identifier: aSmaCCToken [
+	identifier := aSmaCCToken
+]
+
+{ #category : 'generated' }
 ElixirAccessExprNode >> leftParen [
 	^ leftParen
 ]
@@ -29,6 +53,16 @@ ElixirAccessExprNode >> leftParen: aSmaCCToken [
 { #category : 'generated' }
 ElixirAccessExprNode >> nodeVariables [
 	^ #(#stab)
+]
+
+{ #category : 'generated' }
+ElixirAccessExprNode >> op [
+	^ op
+]
+
+{ #category : 'generated' }
+ElixirAccessExprNode >> op: aSmaCCToken [
+	op := aSmaCCToken
 ]
 
 { #category : 'generated' }
@@ -52,6 +86,16 @@ ElixirAccessExprNode >> semi: aSmaCCToken [
 ]
 
 { #category : 'generated' }
+ElixirAccessExprNode >> slash [
+	^ slash
+]
+
+{ #category : 'generated' }
+ElixirAccessExprNode >> slash: aSmaCCToken [
+	slash := aSmaCCToken
+]
+
+{ #category : 'generated' }
 ElixirAccessExprNode >> stab [
 	^ stab
 ]
@@ -65,5 +109,5 @@ ElixirAccessExprNode >> stab: anElixirStabNode [
 
 { #category : 'generated' }
 ElixirAccessExprNode >> tokenVariables [
-	^ #(#leftParen #rightParen #semi)
+	^ #(#op #identifier #slash #arity #leftParen #rightParen #semi)
 ]

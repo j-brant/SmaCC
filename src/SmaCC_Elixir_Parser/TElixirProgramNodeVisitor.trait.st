@@ -153,6 +153,11 @@ TElixirProgramNodeVisitor >> visitDoBlock: aDoBlock [
 ]
 
 { #category : 'generated' }
+TElixirProgramNodeVisitor >> visitDoEoe: aDoEoe [
+	^ self visitProgram: aDoEoe
+]
+
+{ #category : 'generated' }
 TElixirProgramNodeVisitor >> visitDotAlias: aDotAlias [
 	^ self visitProgram: aDotAlias
 ]
@@ -218,6 +223,11 @@ TElixirProgramNodeVisitor >> visitGrammar: aGrammar [
 ]
 
 { #category : 'generated' }
+TElixirProgramNodeVisitor >> visitInterpolatedAtom: anInterpolatedAtom [
+	^ self visitProgram: anInterpolatedAtom
+]
+
+{ #category : 'generated' }
 TElixirProgramNodeVisitor >> visitInterpolatedString: anInterpolatedString [
 	^ self visitProgram: anInterpolatedString
 ]
@@ -269,6 +279,11 @@ TElixirProgramNodeVisitor >> visitMapArgs: aMapArgs [
 ]
 
 { #category : 'generated' }
+TElixirProgramNodeVisitor >> visitMapBaseExpr: aMapBaseExpr [
+	^ self visitProgram: aMapBaseExpr
+]
+
+{ #category : 'generated' }
 TElixirProgramNodeVisitor >> visitMatchedExpr: aMatchedExpr [
 	^ self visitProgram: aMatchedExpr
 ]
@@ -306,6 +321,11 @@ TElixirProgramNodeVisitor >> visitNoParensOneExpr: aNoParensOneExpr [
 { #category : 'generated' }
 TElixirProgramNodeVisitor >> visitNoParensOpExpr: aNoParensOpExpr [
 	^ self visitProgram: aNoParensOpExpr
+]
+
+{ #category : 'generated' }
+TElixirProgramNodeVisitor >> visitNullaryOp: aNullaryOp [
+	^ self visitProgram: aNullaryOp
 ]
 
 { #category : 'generated' }
@@ -349,8 +369,8 @@ TElixirProgramNodeVisitor >> visitStabParensMany: aStabParensMany [
 ]
 
 { #category : 'generated' }
-TElixirProgramNodeVisitor >> visitStructExpr: aStructExpr [
-	^ self visitProgram: aStructExpr
+TElixirProgramNodeVisitor >> visitSubMatchedExpr: aSubMatchedExpr [
+	^ self visitProgram: aSubMatchedExpr
 ]
 
 { #category : 'generated' }
