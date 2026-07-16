@@ -1000,11 +1000,6 @@ ElixirParser class >> fileExtensions [
 	^ #('.exs' '.ex')
 ]
 
-{ #category : 'class initialization' }
-ElixirParser class >> initialize [
-	self maxParallelParses: 500
-]
-
 { #category : 'samples' }
 ElixirParser class >> parityTestsSource [
 	"Example expressions from https://github.com/elixir-lang/elixir/blob/main/lib/elixir/test/elixir/kernel/parser_test.exs"
