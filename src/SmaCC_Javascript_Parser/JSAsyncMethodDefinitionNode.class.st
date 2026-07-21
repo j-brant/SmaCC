@@ -25,5 +25,5 @@ JSAsyncMethodDefinitionNode >> asyncToken: aSmaCCToken [
 
 { #category : 'generated' }
 JSAsyncMethodDefinitionNode >> tokenVariables [
-	^ #(#asyncToken #staticToken #nullableIndicator)
+	^ #(#asyncToken #nullableIndicator #staticToken)
 ]

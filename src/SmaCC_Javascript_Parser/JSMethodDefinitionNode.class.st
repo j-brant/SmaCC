@@ -11,6 +11,7 @@ Class {
 		'leftBrace',
 		'statements',
 		'rightBrace',
+		'decorators',
 		'staticToken',
 		'colonToken',
 		'type',
@@ -49,7 +50,19 @@ JSMethodDefinitionNode >> commas: anOrderedCollection [
 
 { #category : 'generated' }
 JSMethodDefinitionNode >> compositeNodeVariables [
-	^ #(#parameters #statements)
+	^ #(#parameters #statements #decorators)
+]
+
+{ #category : 'generated' }
+JSMethodDefinitionNode >> decorators [
+	^ decorators
+]
+
+{ #category : 'generated' }
+JSMethodDefinitionNode >> decorators: anOrderedCollection [
+	self setParents: self decorators to: nil.
+	decorators := anOrderedCollection.
+	self setParents: self decorators to: self
 ]
 
 { #category : 'generated' }
@@ -68,6 +81,7 @@ JSMethodDefinitionNode >> initialize [
 	parameters := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 	statements := OrderedCollection new: 2.
+	decorators := OrderedCollection new: 2.
 ]
 
 { #category : 'generated' }
@@ -195,7 +209,7 @@ JSMethodDefinitionNode >> staticToken: aSmaCCToken [
 
 { #category : 'generated' }
 JSMethodDefinitionNode >> tokenVariables [
-	^ #(#staticToken #nullableIndicator)
+	^ #(#nullableIndicator #staticToken)
 ]
 
 { #category : 'generated' }

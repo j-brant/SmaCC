@@ -8,7 +8,8 @@ Class {
 		'typeToken',
 		'fromToken',
 		'from',
-		'semicolon'
+		'semicolon',
+		'importMetadata'
 	],
 	#category : 'SmaCC_Javascript_Parser',
 	#package : 'SmaCC_Javascript_Parser'
@@ -60,6 +61,18 @@ JSImportDeclarationNode >> ignoredTokenVariables [
 ]
 
 { #category : 'generated' }
+JSImportDeclarationNode >> importMetadata [
+	^ importMetadata
+]
+
+{ #category : 'generated' }
+JSImportDeclarationNode >> importMetadata: aJSProgramNode [
+	self importMetadata notNil ifTrue: [ self importMetadata parent: nil ].
+	importMetadata := aJSProgramNode.
+	self importMetadata notNil ifTrue: [ self importMetadata parent: self ]
+]
+
+{ #category : 'generated' }
 JSImportDeclarationNode >> importToken [
 	^ importToken
 ]
@@ -85,6 +98,11 @@ JSImportDeclarationNode >> imports: anOrderedCollection [
 JSImportDeclarationNode >> initialize [
 	super initialize.
 	imports := OrderedCollection new: 2.
+]
+
+{ #category : 'generated' }
+JSImportDeclarationNode >> nodeVariables [
+	^ #(#importMetadata)
 ]
 
 { #category : 'generated' }
