@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPExpressionListInitializerNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPExpressionListInitializerNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'leftParen',
 		'values',
@@ -8,45 +8,47 @@ Class {
 		'commas',
 		'rightParen'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionListInitializerNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExpressionListInitializer: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionListInitializerNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionListInitializerNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionListInitializerNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionListInitializerNode >> compositeTokenVariables [
 	^ #(#ellipsises #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionListInitializerNode >> ellipsises [
 	^ ellipsises
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionListInitializerNode >> ellipsises: anOrderedCollection [
 	ellipsises := anOrderedCollection
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPExpressionListInitializerNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
@@ -54,37 +56,37 @@ CPPExpressionListInitializerNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionListInitializerNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionListInitializerNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionListInitializerNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionListInitializerNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionListInitializerNode >> tokenVariables [
 	^ #(#leftParen #rightParen)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionListInitializerNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionListInitializerNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

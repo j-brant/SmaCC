@@ -1,55 +1,57 @@
 Class {
-	#name : #CPPReturnStatementNode,
-	#superclass : #CPPStatementNode,
+	#name : 'CPPReturnStatementNode',
+	#superclass : 'CPPStatementNode',
 	#instVars : [
 		'returnToken',
 		'semicolon',
 		'value'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPReturnStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReturnStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPReturnStatementNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPReturnStatementNode >> returnToken [
 	^ returnToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPReturnStatementNode >> returnToken: aSmaCCToken [
 	returnToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPReturnStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPReturnStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPReturnStatementNode >> tokenVariables [
 	^ #(#returnToken #semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPReturnStatementNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPReturnStatementNode >> value: aCPPProgramNode [
 	self value notNil
 		ifTrue: [ self value parent: nil ].

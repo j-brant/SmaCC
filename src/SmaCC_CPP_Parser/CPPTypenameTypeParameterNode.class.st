@@ -1,28 +1,30 @@
 Class {
-	#name : #CPPTypenameTypeParameterNode,
-	#superclass : #CPPTypeParameterNode,
+	#name : 'CPPTypenameTypeParameterNode',
+	#superclass : 'CPPTypeParameterNode',
 	#instVars : [
 		'typenameToken'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypenameTypeParameterNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTypenameTypeParameter: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypenameTypeParameterNode >> tokenVariables [
 	^ #(#typenameToken #name #ellipsis #equal)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypenameTypeParameterNode >> typenameToken [
 	^ typenameToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypenameTypeParameterNode >> typenameToken: aSmaCCToken [
 	typenameToken := aSmaCCToken
 ]

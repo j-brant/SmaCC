@@ -1,6 +1,6 @@
 Class {
-	#name : #YAMLStringNode,
-	#superclass : #YAMLValueNode,
+	#name : 'YAMLStringNode',
+	#superclass : 'YAMLValueNode',
 	#instVars : [
 		'parts',
 		'indent',
@@ -9,15 +9,17 @@ Class {
 	#classVars : [
 		'DoubleQuoteEscapes'
 	],
-	#category : #'SmaCC_YAML-Parser'
+	#category : 'SmaCC_YAML-Parser',
+	#package : 'SmaCC_YAML',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLStringNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitString: self
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLStringNode >> combineLines: aString [
 	^ String
 		streamContents: [ :stream | 
@@ -34,12 +36,12 @@ YAMLStringNode >> combineLines: aString [
 							first := false ] ] ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLStringNode >> compositeTokenVariables [
 	^ #(#parts #endingNewlines #anchors #tags)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLStringNode >> createObject [
 	(parts size = 1 and: [ parts first value notEmpty ])
 		ifTrue: [ (parent notNil
@@ -74,7 +76,7 @@ YAMLStringNode >> createObject [
 						ifFalse: [ self combineLines: str ] ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLStringNode >> doubleQuoteEscapeTypes [
 	DoubleQuoteEscapes ifNotNil: [ ^ DoubleQuoteEscapes ].
 	DoubleQuoteEscapes := Dictionary new.
@@ -91,7 +93,7 @@ YAMLStringNode >> doubleQuoteEscapeTypes [
 	^ DoubleQuoteEscapes
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLStringNode >> doubleQuoteValue: aString [
 	| input |
 	input := (self combineLines: (aString copyFrom: 2 to: aString size - 1))
@@ -109,17 +111,17 @@ YAMLStringNode >> doubleQuoteValue: aString [
 						ifFalse: [ stream nextPut: char ] ] ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLStringNode >> endingNewlines [
 	^ endingNewlines
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLStringNode >> endingNewlines: anOrderedCollection [
 	endingNewlines := anOrderedCollection
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLStringNode >> foldString: aString indicator: indicatorString [
 	| lines indents deleteCrs includeAllCrs index char |
 	char := indicatorString at: 2 ifAbsent: [ $  ].
@@ -166,31 +168,31 @@ YAMLStringNode >> foldString: aString indicator: indicatorString [
 				ifTrue: [ stream nextPut: Character lf ] ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLStringNode >> indent [
 	^ indent
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLStringNode >> indent: anObject [
 	self setParent: self indent to: nil.
 	indent := anObject.
 	self setParent: self indent to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 YAMLStringNode >> initialize [
 	super initialize.
 	parts := OrderedCollection new: 2.
 	endingNewlines := OrderedCollection new: 2.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 YAMLStringNode >> isStringNode [
 	^ true
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLStringNode >> literalString: aString indicator: indicatorString [
 	| lines indents deleteCrs includeAllCrs index char |
 	char := indicatorString at: 2 ifAbsent: [ $  ].
@@ -223,22 +225,22 @@ YAMLStringNode >> literalString: aString indicator: indicatorString [
 				ifTrue: [ stream nextPut: Character lf ] ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLStringNode >> otherVariables [
 	^ #(#indent)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLStringNode >> parts [
 	^ parts
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLStringNode >> parts: anOrderedCollection [
 	parts := anOrderedCollection
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLStringNode >> singleQuoteValue: aString [
 	| value |
 	value := (aString copyFrom: 2 to: aString size - 1)

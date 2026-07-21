@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPDeclaratorNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPDeclaratorNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'id',
 		'ellipsises',
@@ -19,74 +19,76 @@ Class {
 		'arrow',
 		'declarator'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDeclarator: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> arrow [
 	^ arrow
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> arrow: aSmaCCToken [
 	arrow := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> compositeNodeVariables [
 	^ #(#specifiers #expressions #ptrOperators #exceptionSpecifications #cvQualifiers #declarations)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> compositeTokenVariables [
 	^ #(#ellipsises #leftBrackets #rightBrackets #leftParens #rightParens #qualifiers #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> cvQualifiers [
 	^ cvQualifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> cvQualifiers: anOrderedCollection [
 	self setParents: self cvQualifiers to: nil.
 	cvQualifiers := anOrderedCollection.
 	self setParents: self cvQualifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> declarations [
 	^ declarations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> declarations: anOrderedCollection [
 	self setParents: self declarations to: nil.
 	declarations := anOrderedCollection.
 	self setParents: self declarations to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> declarator [
 	^ declarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> declarator: aCPPProgramNode [
 	self declarator notNil
 		ifTrue: [ self declarator parent: nil ].
@@ -95,46 +97,46 @@ CPPDeclaratorNode >> declarator: aCPPProgramNode [
 		ifTrue: [ self declarator parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> ellipsises [
 	^ ellipsises
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> ellipsises: anOrderedCollection [
 	ellipsises := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> exceptionSpecifications [
 	^ exceptionSpecifications
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> exceptionSpecifications: anOrderedCollection [
 	self setParents: self exceptionSpecifications to: nil.
 	exceptionSpecifications := anOrderedCollection.
 	self setParents: self exceptionSpecifications to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> id [
 	^ id
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> id: aCPPIdentifierExpressionNode [
 	self id notNil
 		ifTrue: [ self id parent: nil ].
@@ -143,7 +145,7 @@ CPPDeclaratorNode >> id: aCPPIdentifierExpressionNode [
 		ifTrue: [ self id parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPDeclaratorNode >> initialize [
 	super initialize.
 	ellipsises := OrderedCollection new: 2.
@@ -161,86 +163,86 @@ CPPDeclaratorNode >> initialize [
 	declarations := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> leftBrackets [
 	^ leftBrackets
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> leftBrackets: anOrderedCollection [
 	leftBrackets := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> leftParens [
 	^ leftParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> leftParens: anOrderedCollection [
 	leftParens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> nodeVariables [
 	^ #(#id #declarator)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> ptrOperators [
 	^ ptrOperators
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> ptrOperators: anOrderedCollection [
 	self setParents: self ptrOperators to: nil.
 	ptrOperators := anOrderedCollection.
 	self setParents: self ptrOperators to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> qualifiers [
 	^ qualifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> qualifiers: anOrderedCollection [
 	qualifiers := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> rightBrackets [
 	^ rightBrackets
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> rightBrackets: anOrderedCollection [
 	rightBrackets := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> rightParens [
 	^ rightParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> specifiers [
 	^ specifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> specifiers: anOrderedCollection [
 	self setParents: self specifiers to: nil.
 	specifiers := anOrderedCollection.
 	self setParents: self specifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclaratorNode >> tokenVariables [
 	^ #(#arrow)
 ]

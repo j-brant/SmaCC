@@ -1,44 +1,46 @@
 Class {
-	#name : #CPPAlignofExpressionNode,
-	#superclass : #CPPExpressionNode,
+	#name : 'CPPAlignofExpressionNode',
+	#superclass : 'CPPExpressionNode',
 	#instVars : [
 		'alignofToken',
 		'type'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAlignofExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAlignofExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAlignofExpressionNode >> alignofToken [
 	^ alignofToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAlignofExpressionNode >> alignofToken: aSmaCCToken [
 	alignofToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAlignofExpressionNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAlignofExpressionNode >> tokenVariables [
 	^ #(#alignofToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAlignofExpressionNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAlignofExpressionNode >> type: aCPPTypeIdentifierNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].

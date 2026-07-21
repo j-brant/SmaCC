@@ -1,69 +1,71 @@
 Class {
-	#name : #CPPBaseSpecifierNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPBaseSpecifierNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'type',
 		'specifiers',
 		'virtualToken',
 		'accessToken'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBaseSpecifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBaseSpecifier: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBaseSpecifierNode >> accessToken [
 	^ accessToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBaseSpecifierNode >> accessToken: aSmaCCToken [
 	accessToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBaseSpecifierNode >> compositeNodeVariables [
 	^ #(#specifiers)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPBaseSpecifierNode >> initialize [
 	super initialize.
 	specifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBaseSpecifierNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBaseSpecifierNode >> specifiers [
 	^ specifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBaseSpecifierNode >> specifiers: anOrderedCollection [
 	self setParents: self specifiers to: nil.
 	specifiers := anOrderedCollection.
 	self setParents: self specifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBaseSpecifierNode >> tokenVariables [
 	^ #(#virtualToken #accessToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBaseSpecifierNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBaseSpecifierNode >> type: aCPPProgramNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].
@@ -72,12 +74,12 @@ CPPBaseSpecifierNode >> type: aCPPProgramNode [
 		ifTrue: [ self type parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBaseSpecifierNode >> virtualToken [
 	^ virtualToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBaseSpecifierNode >> virtualToken: aSmaCCToken [
 	virtualToken := aSmaCCToken
 ]

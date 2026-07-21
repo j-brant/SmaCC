@@ -1,23 +1,25 @@
 Class {
-	#name : #CPPIdentifierExpressionNode,
-	#superclass : #CPPExpressionNode,
+	#name : 'CPPIdentifierExpressionNode',
+	#superclass : 'CPPExpressionNode',
 	#instVars : [
 		'identifier'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPIdentifierExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIdentifierExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPIdentifierExpressionNode >> identifier [
 	^ identifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPIdentifierExpressionNode >> identifier: aCPPProgramNode [
 	self identifier notNil
 		ifTrue: [ self identifier parent: nil ].
@@ -26,7 +28,7 @@ CPPIdentifierExpressionNode >> identifier: aCPPProgramNode [
 		ifTrue: [ self identifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPIdentifierExpressionNode >> nodeVariables [
 	^ #(#identifier)
 ]

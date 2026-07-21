@@ -1,13 +1,15 @@
 Class {
-	#name : #YAMLParser,
-	#superclass : #SmaCCGLRParser,
+	#name : 'YAMLParser',
+	#superclass : 'SmaCCGLRParser',
 	#instVars : [
 		'scopeStack'
 	],
-	#category : #'SmaCC_YAML-Parser'
+	#category : 'SmaCC_YAML-Parser',
+	#package : 'SmaCC_YAML',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLParser class >> ambiguousTransitions [
 ^#(
 #[ 0 14 0 205] 
@@ -157,12 +159,12 @@ YAMLParser class >> ambiguousTransitions [
 	).
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 YAMLParser class >> cacheId [
 	^'2024-04-04T07:18:07.63811-05:00'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLParser class >> definitionComment [
 "/*
 Converted to SmaCC from ANTLR grammar found at https://github.com/umaranis/FastYaml with license:
@@ -661,17 +663,17 @@ TagAndAnchorWithIndent
 	;"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLParser class >> fileExtensions [
 	^ #('.yaml' '.yml')
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 YAMLParser class >> initialize [
 	self maxParallelParses: 100
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLParser class >> reduceTable [
 ^#(
 	#(85 0 #reduceActionForPushFlow1: 11670529 true) 
@@ -958,29 +960,29 @@ YAMLParser class >> reduceTable [
 	).
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLParser class >> scannerClass [
 	^YAMLScanner
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLParser class >> startingStateForfile [
 	^ 1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLParser class >> symbolNames [
 	^ #('<newline>' '<DECIMAL_INTEGER>' '<OCT_INTEGER>' '<HEX_INTEGER>' '<BIN_INTEGER>' '<FLOAT_NUMBER>' '<IMAG_NUMBER>' '<MINUS>' '<DOCUMENTSTART1>' '<DOCUMENTEND1>' '<COMMA>' '<COLON>' '<OPEN_BRACK>' '<CLOSE_BRACK>' '<OPEN_BRACE>' '<CLOSE_BRACE>' '<LITERAL_STR_IND>' '<FOLD_STR_IND>' '<ANCHOR>' '<GLOBAL_TAG>' '<TAG>' '<ALIAS>' '<STRING_MY>' '<SKIP1>' '<SPACES>' '<comment>' '<STRING_MY_2>' '<SKIP2>' '<newline_str_literal>' '<STRING_MY_3>' '<doubleQuoteString>' '<questionMark>' '<singleQuoteString>' 'B e g i n' 'file' '<NEWLINE>+' 'document' 'documentValue' 'SetDocumentIndent' 'documentMultilineString' '(<NEWLINE>+? 
 		((numberToken ''part'' | <STRING_MY> ''part'') | (<INDENT> documentMultilineString <NEWLINE>+? <DEDENT>)))' '(<NEWLINE>+? 
 		((numberToken ''part'' | <STRING_MY> ''part'') | (<INDENT> documentMultilineString <NEWLINE>+? <DEDENT>)))+' 'list' '(<NEWLINE>+? listitem ''item'')' '(<NEWLINE>+? listitem ''item'')+' 'listitem' 'ListItemValue' 'alias' 'mappingListWithoutInitialNewline' '(<NEWLINE>+? mapping ''mapping'')' '(<NEWLINE>+? mapping ''mapping'')*' 'PushIndent' 'mappinglist' '(<NEWLINE>+? mapping ''mapping'')+' 'key' 'ComplexKey' 'value' 'PopIndent' 'string_single_quoted' 'value_scalar' 'multiline_string' '( (numberToken ''part'' | <STRING_MY> ''part'') (<NEWLINE>+ (numberToken ''part'' | <STRING_MY> ''part'' | <singleQuoteString> ''part'' | <doubleQuoteString> ''part'')?)* | multiline_string)' '( (numberToken ''part'' | <STRING_MY> ''part'') (<NEWLINE>+ (numberToken ''part'' | <STRING_MY> ''part'' | <singleQuoteString> ''part'' | <doubleQuoteString> ''part'')?)* | multiline_string)+' '(<NEWLINE>+ (numberToken ''part'' | <STRING_MY> ''part'' | <singleQuoteString> ''part'' | <doubleQuoteString> ''part'')?)' '(<NEWLINE>+ (numberToken ''part'' | <STRING_MY> ''part'' | <singleQuoteString> ''part'' | <doubleQuoteString> ''part'')?)*' 'string_literal' '(<NEWLINE_STR_LITERAL>+ <STRING_MY> ''part'')' '(<NEWLINE_STR_LITERAL>+ <STRING_MY> ''part'')*' '<NEWLINE_STR_LITERAL>+' '<NEWLINE_STR_LITERAL> ''endingNewline''+' 'PushLiteralString' 'string_folded' 'string_double_quoted' 'PopScope' 'mapping' 'MappingValueWithTags' 'MappingValue' 'listWithoutInitialNewline' '(<NEWLINE>+? listitem ''item'')*' 'flowlist' '(<COMMA> ''comma'' flowListValue  ''item'')' '(<COMMA> ''comma'' flowListValue  ''item'')*' 'flowListValue' 'PopFlow' 'PushFlow' 'flowmappinglist' '(<COMMA> ''comma'' flowMapping ''mapping'')' '(<COMMA> ''comma'' flowMapping ''mapping'')*' 'flowMapping' 'number' 'numberToken' 'integer' 'fileDocuments' '(SplitDocument <NEWLINE>+? fileDocument)' '(SplitDocument <NEWLINE>+? fileDocument)*' 'fileDocument' 'SplitDocument' 'SetZeroIndent' 'TagOrAnchor' 'TagsOrAnchors' 'TagAndAnchorWithIndent' '<DEDENT>' '<DOCUMENTEND>' '<DOCUMENTSTART>' '<FINISH_LITERAL_STRING>' '<INDENT>' '<NEWLINE>' '<NEWLINE_STR_LITERAL>' 'E O F' 'error')
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLParser class >> symbolTypes [
 	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #YAMLFileNode #YAMLFileNode #SmaCCToken #YAMLValueNode #YAMLValueNode nil #YAMLStringNode #SmaCCToken #OrderedCollection #YAMLListNode #YAMLListItemNode #OrderedCollection #YAMLListItemNode #YAMLValueNode #YAMLAliasNode #YAMLMappingListNode #YAMLMappingNode #OrderedCollection nil #YAMLMappingListNode #OrderedCollection #YAMLParseNode #YAMLComplexKeyNode #YAMLValueNode nil #YAMLStringNode #YAMLValueNode #YAMLStringNode #OrderedCollection #OrderedCollection #SmaCCToken #OrderedCollection #YAMLStringNode #SmaCCToken #OrderedCollection #SmaCCToken #OrderedCollection #Object #YAMLStringNode #YAMLStringNode nil #YAMLMappingNode #OrderedCollection #OrderedCollection #YAMLListNode #OrderedCollection #YAMLFlowListNode #OrderedCollection #OrderedCollection #YAMLParseNode nil nil #YAMLFlowMappingListNode #OrderedCollection #OrderedCollection #YAMLMappingNode #YAMLNumberNode #SmaCCToken #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection nil #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCErrorNode)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLParser class >> transitionTable [
 ^#(
 #[1 0 177 0 2 0 177 0 3 0 177 0 4 0 177 0 5 0 177 0 6 0 177 0 7 0 33 0 8 0 37 0 12 0 6 0 13 0 6 0 15 0 10 0 17 0 10 0 18 0 41 0 19 0 14 0 20 0 45 0 21 0 49 0 22 0 53 0 23 0 57 0 31 0 61 0 32 0 65 0 33 0 69 0 35 0 73 0 36 0 77 0 37 0 77 0 38 0 85 0 39 0 77 0 40 0 93 0 41 0 97 0 42 0 77 0 43 0 105 0 44 0 109 0 45 0 105 0 46 0 133 0 48 0 121 0 50 0 77 0 53 0 129 0 54 0 133 0 55 0 137 0 56 0 141 0 59 0 145 0 60 0 149 0 61 0 153 0 73 0 121 0 75 0 161 0 80 0 165 0 85 0 169 0 86 0 145 0 90 0 177 0 91 0 177 0 92 0 185 0 93 0 189 0 96 0 193 0 99 0 197 0 100 0 14 0 103 0 14 0 104 0 201 0 106 0 7 0 107 0 14 0 109] 
@@ -1589,7 +1591,7 @@ YAMLParser class >> transitionTable [
 	).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLParser >> actionsForCurrentToken [
 	| actions |
 	(currentToken ids first = scanner STRING_MYId
@@ -1650,7 +1652,7 @@ YAMLParser >> actionsForCurrentToken [
 	^ actions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLParser >> popScope [
 	scopeStack
 		ifNil: [ self scope: #default ]
@@ -1658,7 +1660,7 @@ YAMLParser >> popScope [
 			scopeStack := scopeStack nextLink ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLParser >> pushScope: aSymbol [
 	scopeStack := scopeStack
 			ifNil: [ self scope asLink ]
@@ -1666,7 +1668,7 @@ YAMLParser >> pushScope: aSymbol [
 	self scope: aSymbol
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForComplexKey1: nodes [
 	| result |
 	result := YAMLComplexKeyNode new.
@@ -1677,7 +1679,7 @@ YAMLParser >> reduceActionForComplexKey1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForMappingValue14: nodes [
 	| result |
 	result := Array new: 3.
@@ -1689,7 +1691,7 @@ YAMLParser >> reduceActionForMappingValue14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForMappingValue5: nodes [
 	| result |
 	result := Array new: 3.
@@ -1699,7 +1701,7 @@ YAMLParser >> reduceActionForMappingValue5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForMappingValue7: nodes [
 	| result |
 	result := Array new: 3.
@@ -1711,7 +1713,7 @@ YAMLParser >> reduceActionForMappingValue7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForMappingValueWithTags2: nodes [
 	| result |
 	result := nodes at: 2.
@@ -1720,54 +1722,54 @@ YAMLParser >> reduceActionForMappingValueWithTags2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForPopFlow1: nodes [
 	scanner opened: scanner opened - 1.
 	self popScope.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForPopIndent1: nodes [
 	scanner popIndent.
 	self updateScannerState.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForPopScope1: nodes [
 	self popScope.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForPushFlow1: nodes [
 	scanner opened: scanner opened + 1.
 	self pushScope: #FLOW.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForPushIndent1: nodes [
 	scanner pushIndent: (scanner indentsBefore: currentToken startPosition).
 	self updateScannerState.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForPushLiteralString1: nodes [
 	self pushScope: #LITERAL_STRING.
 	^ scanner currentIndent
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForSetDocumentIndent1: nodes [
 	scanner documentStringLiteral: true.
 	self updateScannerState.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForSetZeroIndent1: nodes [
 	scanner documentStringLiteral: false.
 	scanner setIndent: 0.
@@ -1775,7 +1777,7 @@ YAMLParser >> reduceActionForSetZeroIndent1: nodes [
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForSplitDocument10: nodes [
 	| result |
 	result := Array new: 3.
@@ -1785,7 +1787,7 @@ YAMLParser >> reduceActionForSplitDocument10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForSplitDocument11: nodes [
 	| result |
 	result := Array new: 3.
@@ -1793,7 +1795,7 @@ YAMLParser >> reduceActionForSplitDocument11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForSplitDocument12: nodes [
 	| result |
 	result := Array new: 3.
@@ -1801,7 +1803,7 @@ YAMLParser >> reduceActionForSplitDocument12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForSplitDocument15: nodes [
 	| result |
 	result := Array new: 3.
@@ -1810,7 +1812,7 @@ YAMLParser >> reduceActionForSplitDocument15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForSplitDocument16: nodes [
 	| result |
 	result := Array new: 3.
@@ -1819,7 +1821,7 @@ YAMLParser >> reduceActionForSplitDocument16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForSplitDocument18: nodes [
 	| result |
 	result := Array new: 3.
@@ -1827,7 +1829,7 @@ YAMLParser >> reduceActionForSplitDocument18: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForSplitDocument19: nodes [
 	| result |
 	result := Array new: 3.
@@ -1836,7 +1838,7 @@ YAMLParser >> reduceActionForSplitDocument19: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForSplitDocument1: nodes [
 	| result |
 	result := Array new: 3.
@@ -1844,7 +1846,7 @@ YAMLParser >> reduceActionForSplitDocument1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForSplitDocument20: nodes [
 	| result |
 	result := Array new: 3.
@@ -1853,7 +1855,7 @@ YAMLParser >> reduceActionForSplitDocument20: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForSplitDocument2: nodes [
 	| result |
 	result := Array new: 3.
@@ -1862,7 +1864,7 @@ YAMLParser >> reduceActionForSplitDocument2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForSplitDocument3: nodes [
 	| result |
 	result := Array new: 3.
@@ -1872,7 +1874,7 @@ YAMLParser >> reduceActionForSplitDocument3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForSplitDocument4: nodes [
 	| result |
 	result := Array new: 3.
@@ -1881,7 +1883,7 @@ YAMLParser >> reduceActionForSplitDocument4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForSplitDocument5: nodes [
 	| result |
 	result := Array new: 3.
@@ -1891,7 +1893,7 @@ YAMLParser >> reduceActionForSplitDocument5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForSplitDocument6: nodes [
 	| result |
 	result := Array new: 3.
@@ -1899,7 +1901,7 @@ YAMLParser >> reduceActionForSplitDocument6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForSplitDocument7: nodes [
 	| result |
 	result := Array new: 3.
@@ -1908,7 +1910,7 @@ YAMLParser >> reduceActionForSplitDocument7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForSplitDocument8: nodes [
 	| result |
 	result := Array new: 3.
@@ -1918,7 +1920,7 @@ YAMLParser >> reduceActionForSplitDocument8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForSplitDocument9: nodes [
 	| result |
 	result := Array new: 3.
@@ -1927,7 +1929,7 @@ YAMLParser >> reduceActionForSplitDocument9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForTagAndAnchorWithIndent1: nodes [
 	| result |
 	result := Array new: 2.
@@ -1940,7 +1942,7 @@ YAMLParser >> reduceActionForTagAndAnchorWithIndent1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForTagOrAnchor1: nodes [
 	| result |
 	result := Array new: 2.
@@ -1948,7 +1950,7 @@ YAMLParser >> reduceActionForTagOrAnchor1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForTagOrAnchor2: nodes [
 	| result |
 	result := Array new: 2.
@@ -1956,7 +1958,7 @@ YAMLParser >> reduceActionForTagOrAnchor2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForTagsOrAnchors1: nodes [
 	| result |
 	result := Array new: 2.
@@ -1967,7 +1969,7 @@ YAMLParser >> reduceActionForTagsOrAnchors1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForTagsOrAnchors2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -1976,7 +1978,7 @@ YAMLParser >> reduceActionForTagsOrAnchors2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForTagsOrAnchors3: nodes [
 	| result |
 	result := nodes at: 1.
@@ -1985,7 +1987,7 @@ YAMLParser >> reduceActionForTagsOrAnchors3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFor_SplitDocument__NEWLINE____fileDocument_1: nodes [
 	| result |
 	result := Array new: 6.
@@ -2000,7 +2002,7 @@ YAMLParser >> reduceActionFor_SplitDocument__NEWLINE____fileDocument_1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFor_SplitDocument__NEWLINE____fileDocument_2: nodes [
 	| result |
 	result := Array new: 6.
@@ -2015,7 +2017,7 @@ YAMLParser >> reduceActionFor_SplitDocument__NEWLINE____fileDocument_2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFor_SplitDocument__NEWLINE____fileDocument__1: nodes [
 	| result |
 	result := Array new: 6.
@@ -2028,7 +2030,7 @@ YAMLParser >> reduceActionFor_SplitDocument__NEWLINE____fileDocument__1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFor_SplitDocument__NEWLINE____fileDocument__2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -2041,7 +2043,7 @@ YAMLParser >> reduceActionFor_SplitDocument__NEWLINE____fileDocument__2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFor__COMMA___comma__flowListValue___item__1: nodes [
 	| result |
 	result := Array new: 2.
@@ -2050,7 +2052,7 @@ YAMLParser >> reduceActionFor__COMMA___comma__flowListValue___item__1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFor__COMMA___comma__flowListValue___item___1: nodes [
 	| result |
 	result := Array new: 2.
@@ -2059,7 +2061,7 @@ YAMLParser >> reduceActionFor__COMMA___comma__flowListValue___item___1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFor__NEWLINE_________numberToken__part_____STRING_MY___part_______INDENT__documentMultilineString__NEWLINE_____DEDENT____2: nodes [
 	| result |
 	result := OrderedCollection new: 2.
@@ -2067,7 +2069,7 @@ YAMLParser >> reduceActionFor__NEWLINE_________numberToken__part_____STRING_MY__
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFor__NEWLINE_________numberToken__part_____STRING_MY___part_______INDENT__documentMultilineString__NEWLINE_____DEDENT____6: nodes [
 	| result |
 	result := OrderedCollection new: 2.
@@ -2075,14 +2077,14 @@ YAMLParser >> reduceActionFor__NEWLINE_________numberToken__part_____STRING_MY__
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFor__NEWLINE_________numberToken__part_____STRING_MY___part_______INDENT__documentMultilineString__NEWLINE_____DEDENT_____1: nodes [
 	| result |
 	result := nodes at: 1.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFor__NEWLINE_________numberToken__part_____STRING_MY___part_______INDENT__documentMultilineString__NEWLINE_____DEDENT_____2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -2090,14 +2092,14 @@ YAMLParser >> reduceActionFor__NEWLINE_________numberToken__part_____STRING_MY__
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFor__NEWLINE____listitem__item___1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFor__NEWLINE____listitem__item___2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -2105,7 +2107,7 @@ YAMLParser >> reduceActionFor__NEWLINE____listitem__item___2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFor___numberToken__part_____STRING_MY___part_____NEWLINE____numberToken__part_____STRING_MY___part_____singleQuoteString___part_____doubleQuoteString___part________multiline_string_2: nodes [
 	| result |
 	result := nodes at: 2.
@@ -2113,7 +2115,7 @@ YAMLParser >> reduceActionFor___numberToken__part_____STRING_MY___part_____NEWLI
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForalias1: nodes [
 	| result |
 	result := YAMLAliasNode new.
@@ -2121,12 +2123,12 @@ YAMLParser >> reduceActionForalias1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFordocument4: nodes [
 	^ nodes at: 3
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFordocumentMultilineString1: nodes [
 	| result |
 	result := YAMLStringNode new.
@@ -2134,7 +2136,7 @@ YAMLParser >> reduceActionFordocumentMultilineString1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFordocumentValue10: nodes [
 	| result |
 	result := nodes at: 4.
@@ -2143,7 +2145,7 @@ YAMLParser >> reduceActionFordocumentValue10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFordocumentValue18: nodes [
 	| result |
 	result := nodes at: 2.
@@ -2152,21 +2154,21 @@ YAMLParser >> reduceActionFordocumentValue18: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFordocumentValue7: nodes [
 	| result |
 	result := nodes at: 2.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFordocumentValue8: nodes [
 	| result |
 	result := nodes at: 3.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFordocumentValue9: nodes [
 	| result |
 	result := nodes at: 3.
@@ -2175,7 +2177,7 @@ YAMLParser >> reduceActionFordocumentValue9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForfile1: nodes [
 	| result |
 	result := YAMLFileNode new.
@@ -2188,7 +2190,7 @@ YAMLParser >> reduceActionForfile1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForfileDocument1: nodes [
 	| result |
 	result := Array new: 3.
@@ -2198,7 +2200,7 @@ YAMLParser >> reduceActionForfileDocument1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForfileDocument2: nodes [
 	| result |
 	result := Array new: 3.
@@ -2210,7 +2212,7 @@ YAMLParser >> reduceActionForfileDocument2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForfileDocument3: nodes [
 	| result |
 	result := Array new: 3.
@@ -2222,7 +2224,7 @@ YAMLParser >> reduceActionForfileDocument3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForfileDocument4: nodes [
 	| result |
 	result := Array new: 3.
@@ -2233,7 +2235,7 @@ YAMLParser >> reduceActionForfileDocument4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForfileDocument5: nodes [
 	| result |
 	result := Array new: 3.
@@ -2243,7 +2245,7 @@ YAMLParser >> reduceActionForfileDocument5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForfileDocument6: nodes [
 	| result |
 	result := Array new: 3.
@@ -2252,7 +2254,7 @@ YAMLParser >> reduceActionForfileDocument6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForfileDocuments1: nodes [
 	| result |
 	result := Array new: 6.
@@ -2274,7 +2276,7 @@ YAMLParser >> reduceActionForfileDocuments1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForflowlist1: nodes [
 	| result |
 	result := YAMLFlowListNode new.
@@ -2283,7 +2285,7 @@ YAMLParser >> reduceActionForflowlist1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForflowlist2: nodes [
 	| result |
 	result := YAMLFlowListNode new.
@@ -2293,7 +2295,7 @@ YAMLParser >> reduceActionForflowlist2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForflowlist3: nodes [
 	| result |
 	result := YAMLFlowListNode new.
@@ -2305,7 +2307,7 @@ YAMLParser >> reduceActionForflowlist3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForflowlist4: nodes [
 	| result |
 	result := YAMLFlowListNode new.
@@ -2318,7 +2320,7 @@ YAMLParser >> reduceActionForflowlist4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForflowlist5: nodes [
 	| result |
 	result := YAMLFlowListNode new.
@@ -2329,7 +2331,7 @@ YAMLParser >> reduceActionForflowlist5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForflowlist6: nodes [
 	| result |
 	result := YAMLFlowListNode new.
@@ -2341,7 +2343,7 @@ YAMLParser >> reduceActionForflowlist6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForflowlist7: nodes [
 	| result |
 	result := YAMLFlowListNode new.
@@ -2355,7 +2357,7 @@ YAMLParser >> reduceActionForflowlist7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForflowlist8: nodes [
 	| result |
 	result := YAMLFlowListNode new.
@@ -2370,7 +2372,7 @@ YAMLParser >> reduceActionForflowlist8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForflowmappinglist1: nodes [
 	| result |
 	result := YAMLFlowMappingListNode new.
@@ -2379,7 +2381,7 @@ YAMLParser >> reduceActionForflowmappinglist1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForflowmappinglist2: nodes [
 	| result |
 	result := YAMLFlowMappingListNode new.
@@ -2389,7 +2391,7 @@ YAMLParser >> reduceActionForflowmappinglist2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForflowmappinglist3: nodes [
 	| result |
 	result := YAMLFlowMappingListNode new.
@@ -2401,7 +2403,7 @@ YAMLParser >> reduceActionForflowmappinglist3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForflowmappinglist4: nodes [
 	| result |
 	result := YAMLFlowMappingListNode new.
@@ -2414,7 +2416,7 @@ YAMLParser >> reduceActionForflowmappinglist4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForflowmappinglist5: nodes [
 	| result |
 	result := YAMLFlowMappingListNode new.
@@ -2425,7 +2427,7 @@ YAMLParser >> reduceActionForflowmappinglist5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForflowmappinglist6: nodes [
 	| result |
 	result := YAMLFlowMappingListNode new.
@@ -2437,7 +2439,7 @@ YAMLParser >> reduceActionForflowmappinglist6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForflowmappinglist7: nodes [
 	| result |
 	result := YAMLFlowMappingListNode new.
@@ -2451,7 +2453,7 @@ YAMLParser >> reduceActionForflowmappinglist7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForflowmappinglist8: nodes [
 	| result |
 	result := YAMLFlowMappingListNode new.
@@ -2466,7 +2468,7 @@ YAMLParser >> reduceActionForflowmappinglist8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForkey1: nodes [
 	| result |
 	result := YAMLStringNode new.
@@ -2474,7 +2476,7 @@ YAMLParser >> reduceActionForkey1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForlist1: nodes [
 	| result |
 	result := YAMLListNode new.
@@ -2482,7 +2484,7 @@ YAMLParser >> reduceActionForlist1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForlistWithoutInitialNewline1: nodes [
 	| result |
 	result := YAMLListNode new.
@@ -2491,7 +2493,7 @@ YAMLParser >> reduceActionForlistWithoutInitialNewline1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForlistitem2: nodes [
 	| result |
 	result := YAMLListItemNode new.
@@ -2500,7 +2502,7 @@ YAMLParser >> reduceActionForlistitem2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForlistitem3: nodes [
 	| result |
 	result := YAMLListItemNode new.
@@ -2511,7 +2513,7 @@ YAMLParser >> reduceActionForlistitem3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForlistitem7: nodes [
 	| result |
 	result := YAMLListItemNode new.
@@ -2519,7 +2521,7 @@ YAMLParser >> reduceActionForlistitem7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForlistitem8: nodes [
 	| result |
 	result := YAMLListItemNode new.
@@ -2529,7 +2531,7 @@ YAMLParser >> reduceActionForlistitem8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFormapping10: nodes [
 	| result |
 	result := YAMLMappingNode new.
@@ -2539,7 +2541,7 @@ YAMLParser >> reduceActionFormapping10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFormapping1: nodes [
 	| result |
 	result := YAMLMappingNode new.
@@ -2550,7 +2552,7 @@ YAMLParser >> reduceActionFormapping1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFormapping2: nodes [
 	| result |
 	result := YAMLMappingNode new.
@@ -2561,7 +2563,7 @@ YAMLParser >> reduceActionFormapping2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFormapping3: nodes [
 	| result |
 	result := YAMLMappingNode new.
@@ -2573,7 +2575,7 @@ YAMLParser >> reduceActionFormapping3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFormapping4: nodes [
 	| result |
 	result := YAMLMappingNode new.
@@ -2585,7 +2587,7 @@ YAMLParser >> reduceActionFormapping4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFormapping5: nodes [
 	| result |
 	result := YAMLMappingNode new.
@@ -2598,7 +2600,7 @@ YAMLParser >> reduceActionFormapping5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFormapping6: nodes [
 	| result |
 	result := YAMLMappingNode new.
@@ -2611,7 +2613,7 @@ YAMLParser >> reduceActionFormapping6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFormapping7: nodes [
 	| result |
 	result := YAMLMappingNode new.
@@ -2625,7 +2627,7 @@ YAMLParser >> reduceActionFormapping7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFormapping8: nodes [
 	| result |
 	result := YAMLMappingNode new.
@@ -2639,7 +2641,7 @@ YAMLParser >> reduceActionFormapping8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFormapping9: nodes [
 	| result |
 	result := YAMLMappingNode new.
@@ -2647,7 +2649,7 @@ YAMLParser >> reduceActionFormapping9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFormappingListWithoutInitialNewline1: nodes [
 	| result |
 	result := YAMLMappingListNode new.
@@ -2656,7 +2658,7 @@ YAMLParser >> reduceActionFormappingListWithoutInitialNewline1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFormappinglist1: nodes [
 	| result |
 	result := YAMLMappingListNode new.
@@ -2664,7 +2666,7 @@ YAMLParser >> reduceActionFormappinglist1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFormultiline_string1: nodes [
 	| result |
 	result := YAMLStringNode new.
@@ -2672,7 +2674,7 @@ YAMLParser >> reduceActionFormultiline_string1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFormultiline_string5: nodes [
 	| result |
 	result := YAMLStringNode new.
@@ -2681,7 +2683,7 @@ YAMLParser >> reduceActionFormultiline_string5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionFornumber1: nodes [
 	| result |
 	result := YAMLNumberNode new.
@@ -2689,7 +2691,7 @@ YAMLParser >> reduceActionFornumber1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForstring_literal1: nodes [
 	| result |
 	result := YAMLStringNode new.
@@ -2699,7 +2701,7 @@ YAMLParser >> reduceActionForstring_literal1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForstring_literal2: nodes [
 	| result |
 	result := YAMLStringNode new.
@@ -2710,7 +2712,7 @@ YAMLParser >> reduceActionForstring_literal2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForvalue17: nodes [
 	| result |
 	result := nodes at: 4.
@@ -2719,7 +2721,7 @@ YAMLParser >> reduceActionForvalue17: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForvalue18: nodes [
 	| result |
 	result := nodes at: 5.
@@ -2728,21 +2730,21 @@ YAMLParser >> reduceActionForvalue18: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForvalue19: nodes [
 	| result |
 	result := nodes at: 4.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForvalue20: nodes [
 	| result |
 	result := nodes at: 5.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForvalue21: nodes [
 	| result |
 	result := nodes at: 5.
@@ -2751,7 +2753,7 @@ YAMLParser >> reduceActionForvalue21: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 YAMLParser >> reduceActionForvalue22: nodes [
 	| result |
 	result := nodes at: 6.
@@ -2760,12 +2762,12 @@ YAMLParser >> reduceActionForvalue22: nodes [
 	^ result
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 YAMLParser >> tryAllTokens [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 YAMLParser >> useAllTokenIds [
 	^ false
 ]

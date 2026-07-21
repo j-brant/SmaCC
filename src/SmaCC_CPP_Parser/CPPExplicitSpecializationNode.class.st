@@ -1,26 +1,28 @@
 Class {
-	#name : #CPPExplicitSpecializationNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPExplicitSpecializationNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'templateToken',
 		'ltToken',
 		'gtToken',
 		'declaration'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExplicitSpecializationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExplicitSpecialization: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExplicitSpecializationNode >> declaration [
 	^ declaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExplicitSpecializationNode >> declaration: aCPPProgramNode [
 	self declaration notNil
 		ifTrue: [ self declaration parent: nil ].
@@ -29,42 +31,42 @@ CPPExplicitSpecializationNode >> declaration: aCPPProgramNode [
 		ifTrue: [ self declaration parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExplicitSpecializationNode >> gtToken [
 	^ gtToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExplicitSpecializationNode >> gtToken: aSmaCCToken [
 	gtToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExplicitSpecializationNode >> ltToken [
 	^ ltToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExplicitSpecializationNode >> ltToken: aSmaCCToken [
 	ltToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExplicitSpecializationNode >> nodeVariables [
 	^ #(#declaration)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExplicitSpecializationNode >> templateToken [
 	^ templateToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExplicitSpecializationNode >> templateToken: aSmaCCToken [
 	templateToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExplicitSpecializationNode >> tokenVariables [
 	^ #(#templateToken #ltToken #gtToken)
 ]

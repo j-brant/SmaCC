@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPStaticAssertDeclarationNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPStaticAssertDeclarationNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'static_assertToken',
 		'leftParen',
@@ -10,30 +10,32 @@ Class {
 		'rightParen',
 		'semicolon'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPStaticAssertDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStaticAssertDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPStaticAssertDeclarationNode >> comma [
 	^ comma
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPStaticAssertDeclarationNode >> comma: aSmaCCToken [
 	comma := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPStaticAssertDeclarationNode >> condition [
 	^ condition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPStaticAssertDeclarationNode >> condition: aCPPExpressionNode [
 	self condition notNil
 		ifTrue: [ self condition parent: nil ].
@@ -42,62 +44,62 @@ CPPStaticAssertDeclarationNode >> condition: aCPPExpressionNode [
 		ifTrue: [ self condition parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPStaticAssertDeclarationNode >> label [
 	^ label
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPStaticAssertDeclarationNode >> label: aSmaCCToken [
 	label := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPStaticAssertDeclarationNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPStaticAssertDeclarationNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPStaticAssertDeclarationNode >> nodeVariables [
 	^ #(#condition)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPStaticAssertDeclarationNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPStaticAssertDeclarationNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPStaticAssertDeclarationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPStaticAssertDeclarationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPStaticAssertDeclarationNode >> static_assertToken [
 	^ static_assertToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPStaticAssertDeclarationNode >> static_assertToken: aSmaCCToken [
 	static_assertToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPStaticAssertDeclarationNode >> tokenVariables [
 	^ #(#static_assertToken #leftParen #comma #label #rightParen #semicolon)
 ]

@@ -1,61 +1,63 @@
 Class {
-	#name : #YAMLFlowMappingListNode,
-	#superclass : #YAMLMappingListNode,
+	#name : 'YAMLFlowMappingListNode',
+	#superclass : 'YAMLMappingListNode',
 	#instVars : [
 		'leftBrace',
 		'rightBrace',
 		'commas'
 	],
-	#category : #'SmaCC_YAML-Parser'
+	#category : 'SmaCC_YAML-Parser',
+	#package : 'SmaCC_YAML',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLFlowMappingListNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitFlowMappingList: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLFlowMappingListNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLFlowMappingListNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLFlowMappingListNode >> compositeTokenVariables [
 	^ #(#commas #anchors #tags)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 YAMLFlowMappingListNode >> initialize [
 	super initialize.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLFlowMappingListNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLFlowMappingListNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLFlowMappingListNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLFlowMappingListNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLFlowMappingListNode >> tokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]

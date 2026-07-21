@@ -1,18 +1,20 @@
 Class {
-	#name : #YAMLNumberNode,
-	#superclass : #YAMLValueNode,
+	#name : 'YAMLNumberNode',
+	#superclass : 'YAMLValueNode',
 	#instVars : [
 		'value'
 	],
-	#category : #'SmaCC_YAML-Parser'
+	#category : 'SmaCC_YAML-Parser',
+	#package : 'SmaCC_YAML',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLNumberNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitNumber: self
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLNumberNode >> createObject [
 	| numberString exponent index |
 	numberString := value value.
@@ -36,17 +38,17 @@ YAMLNumberNode >> createObject [
 	num ] on: Error do: [ :ex | ex return: numberString ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLNumberNode >> tokenVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLNumberNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLNumberNode >> value: aSmaCCToken [
 	value := aSmaCCToken
 ]

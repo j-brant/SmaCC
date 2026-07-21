@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPRangeForStatementNode,
-	#superclass : #CPPStatementNode,
+	#name : 'CPPRangeForStatementNode',
+	#superclass : 'CPPStatementNode',
 	#instVars : [
 		'forToken',
 		'leftParen',
@@ -10,30 +10,32 @@ Class {
 		'rightParen',
 		'statement'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPRangeForStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitRangeForStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPRangeForStatementNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPRangeForStatementNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPRangeForStatementNode >> declaration [
 	^ declaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPRangeForStatementNode >> declaration: aCPPForRangeDeclarationNode [
 	self declaration notNil
 		ifTrue: [ self declaration parent: nil ].
@@ -42,22 +44,22 @@ CPPRangeForStatementNode >> declaration: aCPPForRangeDeclarationNode [
 		ifTrue: [ self declaration parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPRangeForStatementNode >> forToken [
 	^ forToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPRangeForStatementNode >> forToken: aSmaCCToken [
 	forToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPRangeForStatementNode >> initializer [
 	^ initializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPRangeForStatementNode >> initializer: aCPPProgramNode [
 	self initializer notNil
 		ifTrue: [ self initializer parent: nil ].
@@ -66,37 +68,37 @@ CPPRangeForStatementNode >> initializer: aCPPProgramNode [
 		ifTrue: [ self initializer parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPRangeForStatementNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPRangeForStatementNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPRangeForStatementNode >> nodeVariables [
 	^ #(#declaration #initializer #statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPRangeForStatementNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPRangeForStatementNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPRangeForStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPRangeForStatementNode >> statement: aCPPProgramNode [
 	self statement notNil
 		ifTrue: [ self statement parent: nil ].
@@ -105,7 +107,7 @@ CPPRangeForStatementNode >> statement: aCPPProgramNode [
 		ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPRangeForStatementNode >> tokenVariables [
 	^ #(#forToken #leftParen #colon #rightParen)
 ]

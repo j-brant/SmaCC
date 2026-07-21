@@ -1,26 +1,28 @@
 Class {
-	#name : #CPPNoExceptionSpecificiationNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPNoExceptionSpecificiationNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'noexceptToken',
 		'leftParen',
 		'expression',
 		'rightParen'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNoExceptionSpecificiationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNoExceptionSpecificiation: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNoExceptionSpecificiationNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNoExceptionSpecificiationNode >> expression: aCPPExpressionNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
@@ -29,42 +31,42 @@ CPPNoExceptionSpecificiationNode >> expression: aCPPExpressionNode [
 		ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNoExceptionSpecificiationNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNoExceptionSpecificiationNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNoExceptionSpecificiationNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNoExceptionSpecificiationNode >> noexceptToken [
 	^ noexceptToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNoExceptionSpecificiationNode >> noexceptToken: aSmaCCToken [
 	noexceptToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNoExceptionSpecificiationNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNoExceptionSpecificiationNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNoExceptionSpecificiationNode >> tokenVariables [
 	^ #(#noexceptToken #leftParen #rightParen)
 ]
