@@ -5,7 +5,8 @@ Class {
 		'importToken',
 		'left',
 		'expression',
-		'right'
+		'right',
+		'comma'
 	],
 	#category : 'SmaCC_Javascript_Parser',
 	#package : 'SmaCC_Javascript_Parser'
@@ -14,6 +15,16 @@ Class {
 { #category : 'generated' }
 JSImportCallExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitImportCallExpression: self
+]
+
+{ #category : 'generated' }
+JSImportCallExpressionNode >> comma [
+	^ comma
+]
+
+{ #category : 'generated' }
+JSImportCallExpressionNode >> comma: aSmaCCToken [
+	comma := aSmaCCToken
 ]
 
 { #category : 'generated' }
@@ -30,7 +41,7 @@ JSImportCallExpressionNode >> expression: aJSExpressionNode [
 
 { #category : 'generated' }
 JSImportCallExpressionNode >> ignoredTokenVariables [
-	^ #(#left #right)
+	^ #(#left #right #comma)
 ]
 
 { #category : 'generated' }

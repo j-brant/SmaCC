@@ -2,6 +2,7 @@ Class {
 	#name : 'JSFieldDefinitionNode',
 	#superclass : 'JSProgramNode',
 	#instVars : [
+		'decorators',
 		'variable',
 		'equalToken',
 		'value',
@@ -18,6 +19,23 @@ JSFieldDefinitionNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : 'generated' }
+JSFieldDefinitionNode >> compositeNodeVariables [
+	^ #(#decorators)
+]
+
+{ #category : 'generated' }
+JSFieldDefinitionNode >> decorators [
+	^ decorators
+]
+
+{ #category : 'generated' }
+JSFieldDefinitionNode >> decorators: anOrderedCollection [
+	self setParents: self decorators to: nil.
+	decorators := anOrderedCollection.
+	self setParents: self decorators to: self
+]
+
+{ #category : 'generated' }
 JSFieldDefinitionNode >> equalToken [
 	^ equalToken
 ]
@@ -30,6 +48,12 @@ JSFieldDefinitionNode >> equalToken: aSmaCCToken [
 { #category : 'generated' }
 JSFieldDefinitionNode >> ignoredTokenVariables [
 	^ #(#semicolon)
+]
+
+{ #category : 'generated-initialize-release' }
+JSFieldDefinitionNode >> initialize [
+	super initialize.
+	decorators := OrderedCollection new: 2.
 ]
 
 { #category : 'generated' }
@@ -80,8 +104,8 @@ JSFieldDefinitionNode >> variable [
 ]
 
 { #category : 'generated' }
-JSFieldDefinitionNode >> variable: aJSNameExpressionNode [
+JSFieldDefinitionNode >> variable: aJSProgramNode [
 	self variable notNil ifTrue: [ self variable parent: nil ].
-	variable := aJSNameExpressionNode.
+	variable := aJSProgramNode.
 	self variable notNil ifTrue: [ self variable parent: self ]
 ]

@@ -2,6 +2,7 @@ Class {
 	#name : 'JSIndexMemberDeclarationNode',
 	#superclass : 'JSProgramNode',
 	#instVars : [
+		'decorators',
 		'signature',
 		'semicolon'
 	],
@@ -15,8 +16,31 @@ JSIndexMemberDeclarationNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : 'generated' }
+JSIndexMemberDeclarationNode >> compositeNodeVariables [
+	^ #(#decorators)
+]
+
+{ #category : 'generated' }
+JSIndexMemberDeclarationNode >> decorators [
+	^ decorators
+]
+
+{ #category : 'generated' }
+JSIndexMemberDeclarationNode >> decorators: anOrderedCollection [
+	self setParents: self decorators to: nil.
+	decorators := anOrderedCollection.
+	self setParents: self decorators to: self
+]
+
+{ #category : 'generated' }
 JSIndexMemberDeclarationNode >> ignoredTokenVariables [
 	^ #(#semicolon)
+]
+
+{ #category : 'generated-initialize-release' }
+JSIndexMemberDeclarationNode >> initialize [
+	super initialize.
+	decorators := OrderedCollection new: 2.
 ]
 
 { #category : 'generated' }

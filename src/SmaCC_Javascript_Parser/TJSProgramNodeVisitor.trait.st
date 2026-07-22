@@ -327,6 +327,21 @@ TJSProgramNodeVisitor >> visitImportAliasDeclaration: anImportAliasDeclaration [
 ]
 
 { #category : 'generated' }
+TJSProgramNodeVisitor >> visitImportAssertion: anImportAssertion [
+	^ self visitProgram: anImportAssertion
+]
+
+{ #category : 'generated' }
+TJSProgramNodeVisitor >> visitImportAssertionEntry: anImportAssertionEntry [
+	^ self visitProgram: anImportAssertionEntry
+]
+
+{ #category : 'generated' }
+TJSProgramNodeVisitor >> visitImportAttributes: anImportAttributes [
+	^ self visitProgram: anImportAttributes
+]
+
+{ #category : 'generated' }
 TJSProgramNodeVisitor >> visitImportCallExpression: anImportCallExpression [
 	^ self visitExpression: anImportCallExpression
 ]
