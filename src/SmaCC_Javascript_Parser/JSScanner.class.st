@@ -147,6 +147,38 @@ JSScanner >> scan12 [
 			^ self reportLastMatch ].
 	currentCharacter == $u
 		ifTrue: [ self step.
+			currentCharacter == ${
+				ifTrue: [ self step.
+					(currentCharacter isDigit
+						or: [ (currentCharacter between: $A and: $F)
+								or: [ currentCharacter between: $a and: $f ] ])
+						ifTrue: [ self step.
+							currentCharacter == $} ifTrue: [ ^ self scan10 ].
+							(currentCharacter isDigit
+								or: [ (currentCharacter between: $A and: $F)
+										or: [ currentCharacter between: $a and: $f ] ])
+								ifTrue: [ self step.
+									currentCharacter == $} ifTrue: [ ^ self scan10 ].
+									(currentCharacter isDigit
+										or: [ (currentCharacter between: $A and: $F)
+												or: [ currentCharacter between: $a and: $f ] ])
+										ifTrue: [ self step.
+											currentCharacter == $} ifTrue: [ ^ self scan10 ].
+											(currentCharacter isDigit
+												or: [ (currentCharacter between: $A and: $F)
+														or: [ currentCharacter between: $a and: $f ] ])
+												ifTrue: [ self step.
+													currentCharacter == $} ifTrue: [ ^ self scan10 ].
+													(currentCharacter isDigit
+														or: [ (currentCharacter between: $A and: $F)
+																or: [ currentCharacter between: $a and: $f ] ])
+														ifTrue: [ self step.
+															(currentCharacter isDigit
+																or: [ (currentCharacter between: $A and: $F)
+																		or: [ currentCharacter between: $a and: $f ] ])
+																ifTrue: [ self step ].
+															currentCharacter == $} ifTrue: [ ^ self scan10 ] ] ] ] ] ].
+					^ self reportLastMatch ].
 			(currentCharacter isDigit
 				or: [ (currentCharacter between: $A and: $F)
 						or: [ currentCharacter between: $a and: $f ] ])
@@ -691,6 +723,38 @@ JSScanner >> scan34 [
 	self step.
 	currentCharacter == $u
 		ifTrue: [ self step.
+			currentCharacter == ${
+				ifTrue: [ self step.
+					(currentCharacter isDigit
+						or: [ (currentCharacter between: $A and: $F)
+								or: [ currentCharacter between: $a and: $f ] ])
+						ifTrue: [ self step.
+							currentCharacter == $} ifTrue: [ ^ self scan32 ].
+							(currentCharacter isDigit
+								or: [ (currentCharacter between: $A and: $F)
+										or: [ currentCharacter between: $a and: $f ] ])
+								ifTrue: [ self step.
+									currentCharacter == $} ifTrue: [ ^ self scan32 ].
+									(currentCharacter isDigit
+										or: [ (currentCharacter between: $A and: $F)
+												or: [ currentCharacter between: $a and: $f ] ])
+										ifTrue: [ self step.
+											currentCharacter == $} ifTrue: [ ^ self scan32 ].
+											(currentCharacter isDigit
+												or: [ (currentCharacter between: $A and: $F)
+														or: [ currentCharacter between: $a and: $f ] ])
+												ifTrue: [ self step.
+													currentCharacter == $} ifTrue: [ ^ self scan32 ].
+													(currentCharacter isDigit
+														or: [ (currentCharacter between: $A and: $F)
+																or: [ currentCharacter between: $a and: $f ] ])
+														ifTrue: [ self step.
+															(currentCharacter isDigit
+																or: [ (currentCharacter between: $A and: $F)
+																		or: [ currentCharacter between: $a and: $f ] ])
+																ifTrue: [ self step ].
+															currentCharacter == $} ifTrue: [ ^ self scan32 ] ] ] ] ] ].
+					^ self reportLastMatch ].
 			(currentCharacter isDigit
 				or: [ (currentCharacter between: $A and: $F)
 						or: [ currentCharacter between: $a and: $f ] ])
@@ -763,6 +827,38 @@ JSScanner >> scan38 [
 		ifTrue: [ self step.
 			currentCharacter == $u
 				ifTrue: [ self step.
+					currentCharacter == ${
+						ifTrue: [ self step.
+							(currentCharacter isDigit
+								or: [ (currentCharacter between: $A and: $F)
+										or: [ currentCharacter between: $a and: $f ] ])
+								ifTrue: [ self step.
+									currentCharacter == $} ifTrue: [ ^ self scan38 ].
+									(currentCharacter isDigit
+										or: [ (currentCharacter between: $A and: $F)
+												or: [ currentCharacter between: $a and: $f ] ])
+										ifTrue: [ self step.
+											currentCharacter == $} ifTrue: [ ^ self scan38 ].
+											(currentCharacter isDigit
+												or: [ (currentCharacter between: $A and: $F)
+														or: [ currentCharacter between: $a and: $f ] ])
+												ifTrue: [ self step.
+													currentCharacter == $} ifTrue: [ ^ self scan38 ].
+													(currentCharacter isDigit
+														or: [ (currentCharacter between: $A and: $F)
+																or: [ currentCharacter between: $a and: $f ] ])
+														ifTrue: [ self step.
+															currentCharacter == $} ifTrue: [ ^ self scan38 ].
+															(currentCharacter isDigit
+																or: [ (currentCharacter between: $A and: $F)
+																		or: [ currentCharacter between: $a and: $f ] ])
+																ifTrue: [ self step.
+																	(currentCharacter isDigit
+																		or: [ (currentCharacter between: $A and: $F)
+																				or: [ currentCharacter between: $a and: $f ] ])
+																		ifTrue: [ self step ].
+																	currentCharacter == $} ifTrue: [ ^ self scan38 ] ] ] ] ] ].
+							^ self reportLastMatch ].
 					(currentCharacter isDigit
 						or: [ (currentCharacter between: $A and: $F)
 								or: [ currentCharacter between: $a and: $f ] ])
@@ -795,20 +891,53 @@ JSScanner >> scan39 [
 JSScanner >> scan4 [
 	self step.
 	currentCharacter == Character cr
-		ifTrue:
-			[ self step.
+		ifTrue: [ self step.
 			currentCharacter == $" ifTrue: [ ^ self scan3 ].
 			currentCharacter == $\ ifTrue: [ ^ self scan4 ].
-			(currentCharacter <= Character newPage or: [ currentCharacter >= (Character value: 14) ]) ifTrue: [ ^ self scan2 ].
+			(currentCharacter <= Character newPage
+				or: [ currentCharacter >= (Character value: 14) ]) ifTrue: [ ^ self scan2 ].
 			^ self reportLastMatch ].
 	currentCharacter == $u
-		ifTrue:
-			[ self step.
-			(currentCharacter isDigit or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-				ifTrue:
-					[ self step.
-					(currentCharacter isDigit or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-						ifTrue: [ ^ self scan5 ] ].
+		ifTrue: [ self step.
+			currentCharacter == ${
+				ifTrue: [ self step.
+					(currentCharacter isDigit
+						or: [ (currentCharacter between: $A and: $F)
+								or: [ currentCharacter between: $a and: $f ] ])
+						ifTrue: [ self step.
+							currentCharacter == $} ifTrue: [ ^ self scan2 ].
+							(currentCharacter isDigit
+								or: [ (currentCharacter between: $A and: $F)
+										or: [ currentCharacter between: $a and: $f ] ])
+								ifTrue: [ self step.
+									currentCharacter == $} ifTrue: [ ^ self scan2 ].
+									(currentCharacter isDigit
+										or: [ (currentCharacter between: $A and: $F)
+												or: [ currentCharacter between: $a and: $f ] ])
+										ifTrue: [ self step.
+											currentCharacter == $} ifTrue: [ ^ self scan2 ].
+											(currentCharacter isDigit
+												or: [ (currentCharacter between: $A and: $F)
+														or: [ currentCharacter between: $a and: $f ] ])
+												ifTrue: [ self step.
+													currentCharacter == $} ifTrue: [ ^ self scan2 ].
+													(currentCharacter isDigit
+														or: [ (currentCharacter between: $A and: $F)
+																or: [ currentCharacter between: $a and: $f ] ])
+														ifTrue: [ self step.
+															(currentCharacter isDigit
+																or: [ (currentCharacter between: $A and: $F)
+																		or: [ currentCharacter between: $a and: $f ] ])
+																ifTrue: [ self step ].
+															currentCharacter == $} ifTrue: [ ^ self scan2 ] ] ] ] ] ].
+					^ self reportLastMatch ].
+			(currentCharacter isDigit
+				or: [ (currentCharacter between: $A and: $F)
+						or: [ currentCharacter between: $a and: $f ] ])
+				ifTrue: [ self step.
+					(currentCharacter isDigit
+						or: [ (currentCharacter between: $A and: $F)
+								or: [ currentCharacter between: $a and: $f ] ]) ifTrue: [ ^ self scan5 ] ].
 			^ self reportLastMatch ].
 	currentCharacter == $x ifTrue: [ ^ self scan5 ].
 	^ self scan2
