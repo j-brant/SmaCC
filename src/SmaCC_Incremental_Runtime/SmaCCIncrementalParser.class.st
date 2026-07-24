@@ -5,9 +5,35 @@ Class {
 		'id',
 		'previousAST'
 	],
+	#classInstVars : [
+		'parserClasses'
+	],
 	#category : 'SmaCC_Incremental_Runtime',
 	#package : 'SmaCC_Incremental_Runtime'
 }
+
+{ #category : 'accessing' }
+SmaCCIncrementalParser class >> incremental [
+	^ self
+]
+
+{ #category : 'accessing' }
+SmaCCIncrementalParser class >> incrementalParserFrom: aGLRParserClass [
+	^ self parserClasses
+		at: aGLRParserClass
+		ifAbsentPut: [ | class |
+			class := Smalltalk anonymousClassInstaller
+					make: [ :builder | 
+						builder
+							installingEnvironment: aGLRParserClass environment;
+							superclass: aGLRParserClass;
+							layoutClass: aGLRParserClass classLayout class;
+							slots: (self instVarNames collect: [ :each | InstanceVariableSlot named: each ]) ].
+			self selectors do: [ :each | class compile: (self sourceCodeAt: each) ].
+			self class selectors
+				do: [ :each | class class compile: (self class sourceCodeAt: each) ].
+			class ]
+]
 
 { #category : 'parsing' }
 SmaCCIncrementalParser class >> parse: aString startingAt: anInteger previous: aNode [
@@ -34,6 +60,11 @@ SmaCCIncrementalParser class >> parseWithErrors: aString startingAt: anInteger p
 	value ]
 		on: SmaCCParserError
 		do: [ :ex | ex isResumable ifTrue: [ ex resume ] ifFalse: [ ex signal ] ]
+]
+
+{ #category : 'accessing' }
+SmaCCIncrementalParser class >> parserClasses [
+	^ parserClasses ifNil: [ parserClasses := WeakIdentityKeyDictionary new ]
 ]
 
 { #category : 'private' }
