@@ -114,8 +114,10 @@ SmaCCGLRParser class >> resetCaches [
 
 { #category : 'private' }
 SmaCCGLRParser >> actionsDo: aBlock [
-	| row actionBlock |
-	actionBlock := [ :action | 
+	"Iterate actions for the current state. Format-aware on transitionTable rows."
+
+	| row actionBlock isBytes |
+	actionBlock := [ :action |
 	(self isAmbiguous: action)
 		ifTrue: [ | ambiguous |
 			ambiguous := OrderedCollection new.
@@ -123,6 +125,14 @@ SmaCCGLRParser >> actionsDo: aBlock [
 			ambiguous do: aBlock ]
 		ifFalse: [ aBlock value: action ] ].
 	row := self transitionTable at: self currentState.
+	isBytes := row class isBytes.
+	isBytes ifFalse: [
+		"Array format: type at 1, default action at 2 (when type=0), or pairs at 2+ (when type=1)."
+		(row at: 1) == 0
+			ifTrue: [ actionBlock value: (row at: 2) ]
+			ifFalse: [ 2 to: row size by: 2 do: [ :i | actionBlock value: (row at: i + 1) ] ].
+		^ self ].
+	"ByteArray format (legacy)."
 	(row at: 1) == 0
 		ifTrue: [ actionBlock value: ((row at: 2) bitShift: 8) + (row at: 3) ]
 		ifFalse: [ 2 to: row size by: 4 do: [ :i | actionBlock value: ((row at: i) bitShift: 8) + (row at: i + 1) ] ]
@@ -196,15 +206,23 @@ SmaCCGLRParser >> alwaysPerformReduceAction [
 
 { #category : 'private' }
 SmaCCGLRParser >> ambiguousTransitionsAt: anIndex into: anOrderedCollection [
-	| ambiguousTransitions |
+	"Add the actions encoded in an ambiguousTransitions row to anOrderedCollection. Format-aware."
+
+	| ambiguousTransitions isBytes |
 	ambiguousTransitions := self ambiguousTransitions at: anIndex.
-	1 to: ambiguousTransitions size by: 2 do:
-		[ :i | 
-		self
-			addAction:
-				((ambiguousTransitions at: i) bitShift: 8)
-					+ (ambiguousTransitions at: i + 1)
-			to: anOrderedCollection ]
+	isBytes := ambiguousTransitions class isBytes.
+	isBytes
+		ifTrue: [
+			1 to: ambiguousTransitions size by: 2 do:
+				[ :i |
+				self
+					addAction:
+						((ambiguousTransitions at: i) bitShift: 8)
+							+ (ambiguousTransitions at: i + 1)
+					to: anOrderedCollection ] ]
+		ifFalse: [
+			"Array format: each element is a full action integer."
+			ambiguousTransitions do: [ :action | self addAction: action to: anOrderedCollection ] ]
 ]
 
 { #category : 'private' }
