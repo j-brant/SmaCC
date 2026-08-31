@@ -11,7 +11,8 @@ Class {
 	#superclass : 'SmaCCReduceCode',
 	#instVars : [
 		'source',
-		'isImmediate'
+		'isImmediate',
+		'typeName'
 	],
 	#category : 'SmaCC_Development-Compilation Model',
 	#package : 'SmaCC_Development',
@@ -34,9 +35,12 @@ SmaCCSourceReduceCode >> = anObject [
 SmaCCSourceReduceCode >> basicModelTypes: aSet [
 	| index parseTree |
 	index := self returnedNodeIndex.
-	index notNil
-		ifTrue: [ ^ self basicModelTypes: aSet forIndex: index ].
-	parseTree := RBParser parseExpression: self source onError: [ :e :p | ^ Array with: (self model classFor: Object) ].
+	index notNil ifTrue: [ ^ self basicModelTypes: aSet forIndex: index ].
+	typeName
+		ifNotNil: [ (self model classNamed: typeName) ifNotNil: [ :type | ^ {type} ] ].
+	parseTree := RBParser
+			parseExpression: self source
+			onError: [ :e :p | ^ Array with: (self model classFor: Object) ].
 	^ self typesForTree: parseTree seen: aSet
 ]
 
@@ -64,6 +68,16 @@ SmaCCSourceReduceCode >> source [
 { #category : 'initialize-release' }
 SmaCCSourceReduceCode >> source: aString [
 	source := aString
+]
+
+{ #category : 'accessing' }
+SmaCCSourceReduceCode >> typeName [
+	^ typeName
+]
+
+{ #category : 'accessing' }
+SmaCCSourceReduceCode >> typeName: anObject [
+	typeName := anObject
 ]
 
 { #category : 'private' }

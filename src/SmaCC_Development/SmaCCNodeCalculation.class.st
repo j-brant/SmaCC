@@ -20,6 +20,14 @@ SmaCCNodeCalculation class >> compileForGrammar: aSmaCCGrammar [
 ]
 
 { #category : 'private' }
+SmaCCNodeCalculation >> calculateAbstractNodeClasses [
+	self sortedClasses
+		do: [ :each | 
+			(each productions noneSatisfy: [ :prod | prod reduceCode isCreateNode ])
+				ifTrue: [ self codeGenerator markAsAbstract: each ] ]
+]
+
+{ #category : 'private' }
 SmaCCNodeCalculation >> calculateReduceActions [
 	variableSymbols
 		do: [ :each | 
@@ -93,6 +101,7 @@ SmaCCNodeCalculation >> compileNodeClasses [
 	self defineNodeClasses.
 	self calculateVariableSymbols.
 	self calculateReduceActions.
+	self calculateAbstractNodeClasses.
 	self calculateVariables.
 	self compileMethodsAndVariables.
 	self compileVisitor.

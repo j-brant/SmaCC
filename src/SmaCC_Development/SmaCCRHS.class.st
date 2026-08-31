@@ -201,7 +201,15 @@ SmaCCRHS >> reduceCode: aSmaCCReduceCode [
 
 { #category : 'reduce actions' }
 SmaCCRHS >> reduceCodeSource: aString [
-	reduceCode := SmaCCSourceReduceCode onRHS: self source: aString
+	| stream code typeName |
+	code := aString.
+	stream := code readStream.
+	stream skipSeparators.
+	(stream peekFor: $`)
+		ifTrue: [ typeName := stream upTo: $`.
+			code := stream upToEnd ].
+	reduceCode := SmaCCSourceReduceCode onRHS: self source: code.
+	typeName ifNotNil: [ reduceCode typeName: typeName ]
 ]
 
 { #category : 'testing' }

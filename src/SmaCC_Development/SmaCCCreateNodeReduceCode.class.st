@@ -49,6 +49,11 @@ SmaCCCreateNodeReduceCode >> index: anInteger [
 ]
 
 { #category : 'testing' }
+SmaCCCreateNodeReduceCode >> isCreateNode [
+	^ self isPullUpAction not
+]
+
+{ #category : 'testing' }
 SmaCCCreateNodeReduceCode >> isPullUpAction [
 	^ self index > 0
 ]
