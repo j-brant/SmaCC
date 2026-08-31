@@ -67,6 +67,11 @@ SmaCCReduceCode >> hash [
 ]
 
 { #category : 'testing' }
+SmaCCReduceCode >> isCreateNode [
+	^ false
+]
+
+{ #category : 'testing' }
 SmaCCReduceCode >> isImmediate [
 	^ false
 ]

@@ -918,6 +918,11 @@ SmaCCCodeGenerator >> keywords [
 	^ #()
 ]
 
+{ #category : 'compiling-nodes' }
+SmaCCCodeGenerator >> markAsAbstract: aSmaCCNodeClassDefinition [
+	
+]
+
 { #category : 'private' }
 SmaCCCodeGenerator >> maxJumpSize [
 	^ SmallInteger maxVal
