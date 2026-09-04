@@ -87,6 +87,7 @@ SmaCCVariableDefinition class >> pluralNames: aDictionary [
 SmaCCVariableDefinition class >> variableName: aString [
 	^ self new
 		variableName: aString;
+		isAlwaysAssigned: true;
 		isCollection: false;
 		yourself
 ]
@@ -116,7 +117,7 @@ SmaCCVariableDefinition >> collectionType [
 
 { #category : 'accessing' }
 SmaCCVariableDefinition >> getterMethodName [
-	^ getterMethodName
+	^ getterMethodName ifNil: [ variableName ]
 ]
 
 { #category : 'accessing' }

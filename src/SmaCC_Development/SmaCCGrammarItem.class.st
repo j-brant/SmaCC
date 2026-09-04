@@ -25,6 +25,11 @@ Class {
 	#tag : 'Model'
 }
 
+{ #category : 'variables' }
+SmaCCGrammarItem >> allVariableDefinitions [
+	^ self variableDefinitions
+]
+
 { #category : 'private' }
 SmaCCGrammarItem >> annotateTokenVariables: aBlock [
 	self subclassResponsibility
@@ -105,6 +110,13 @@ SmaCCGrammarItem >> modelType [
 SmaCCGrammarItem >> modelType: anIdentitySet [
 	| types |
 	types := self modelTypes: anIdentitySet.
+	^ self grammar codeGenerator commonSupertypeOf: types
+]
+
+{ #category : 'reduce actions' }
+SmaCCGrammarItem >> modelTypeForVariable: aString [
+	| types |
+	types := self modelTypesForVariable: aString.
 	^ self grammar codeGenerator commonSupertypeOf: types
 ]
 
