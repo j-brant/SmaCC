@@ -41,6 +41,16 @@ SmaCCNodeClassDefinition >> addVariable: aSmaCCVariableDefinition [
 		forDefinition: self
 ]
 
+{ #category : 'accessing' }
+SmaCCNodeClassDefinition >> allVariableDefinitions [
+	^ self superclass
+		ifNil: [ self variableDefinitions copy ]
+		ifNotNil: [ :spr | 
+			spr allVariableDefinitions
+				addAll: self variableDefinitions;
+				yourself ]
+]
+
 { #category : 'private-variables' }
 SmaCCNodeClassDefinition >> baseTypeOf: aVariableName [
 	| allTypes aRBRootNamespace |
@@ -195,13 +205,9 @@ SmaCCNodeClassDefinition >> instanceVariableNames [
 { #category : 'testing' }
 SmaCCNodeClassDefinition >> isAlwaysAssigned: aString [
 	^ ((self modelTypesForVariable: aString)
-		includes: (class model classFor: nil class))
-		and:
-			[ self withAllSubclasses
-				allSatisfy:
-					[ :sub | 
-					sub productions
-						allSatisfy: [ :each | each locallyDefinesVariable: aString ] ] ]
+		includes: (class model classFor: nil class)) not
+		and: [ self withAllSubclasses
+				allSatisfy: [ :sub | sub productions allSatisfy: [ :each | each locallyDefinesVariable: aString ] ] ]
 ]
 
 { #category : 'testing' }

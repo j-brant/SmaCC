@@ -152,6 +152,24 @@ SmaCCRHS >> initialize [
 ]
 
 { #category : 'testing' }
+SmaCCRHS >> isAlwaysAssigned: aString [
+	(self hasVariableNamed: aString) ifFalse: [ ^ false ].
+	(variableNameMap at: aString ifAbsent: [ #() ])
+		do: [ :i | 
+			| each |
+			each := collection at: i.
+			each isTerminal
+				ifFalse: [ each productions do: [ :rhs | rhs collection isEmpty ifTrue: [ ^ false ] ] ] ].
+	self
+		variablesAndSymbolsDo: [ :variable :symbol | 
+			variable isNil
+				ifTrue: [ (symbol hasVariableNamed: aString)
+						ifTrue: [ symbol
+								productionsDo: [ :rhs | (rhs isAlwaysAssigned: aString) ifFalse: [ ^ false ] ] ] ] ].
+	^ true
+]
+
+{ #category : 'testing' }
 SmaCCRHS >> locallyDefinesVariable: aString [
 	^ (self indexOfVariable: aString) notNil
 ]
