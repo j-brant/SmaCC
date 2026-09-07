@@ -61,6 +61,11 @@ SmaCCReduceCode >> hasReduceAction [
 	^ true
 ]
 
+{ #category : 'testing' }
+SmaCCReduceCode >> hasSource [
+	^ false
+]
+
 { #category : 'comparing' }
 SmaCCReduceCode >> hash [
 	^ self class hash bitXor: self rhs hash
