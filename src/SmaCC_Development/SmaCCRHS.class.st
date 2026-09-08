@@ -159,7 +159,10 @@ SmaCCRHS >> isAlwaysAssigned: aString [
 			| each |
 			each := collection at: i.
 			each isTerminal
-				ifFalse: [ each productions do: [ :rhs | rhs collection isEmpty ifTrue: [ ^ false ] ] ] ].
+				ifFalse: [ each productions
+						do: [ :rhs | 
+							(rhs collection isEmpty and: [ rhs reduceCode isCreateNode not ])
+								ifTrue: [ ^ false ] ] ] ].
 	self
 		variablesAndSymbolsDo: [ :variable :symbol | 
 			variable isNil
