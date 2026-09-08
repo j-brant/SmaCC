@@ -1439,6 +1439,10 @@ SmaCCCodeGenerator >> startStaticPrivateMethod [
 		nextPutAll: self private
 ]
 
+{ #category : 'compiling-parser' }
+SmaCCCodeGenerator >> startingParserCompilation [
+]
+
 { #category : 'compiling-scanner' }
 SmaCCCodeGenerator >> statesToMakeIntoMethodsFor: aSmaCCNode [
 	| methodStates |

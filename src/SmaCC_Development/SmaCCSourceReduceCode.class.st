@@ -44,6 +44,11 @@ SmaCCSourceReduceCode >> basicModelTypes: aSet [
 	^ self typesForTree: parseTree seen: aSet
 ]
 
+{ #category : 'testing' }
+SmaCCSourceReduceCode >> hasSource [
+	^ true
+]
+
 { #category : 'initialize-release' }
 SmaCCSourceReduceCode >> initialize [
 	super initialize.

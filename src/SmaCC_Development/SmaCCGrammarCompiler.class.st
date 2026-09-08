@@ -106,6 +106,7 @@ SmaCCGrammarCompiler >> compileNodeClasses [
 SmaCCGrammarCompiler >> compileParser [
 	self compileNodeClasses.
 	self codeGenerator
+		startingParserCompilation;
 		compileTransitionTable: self transitionTable;
 		compileAmbiguousTransitions;
 		compileStartingStateIds: startingStateMap;
