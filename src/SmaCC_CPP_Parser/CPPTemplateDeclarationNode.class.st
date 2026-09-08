@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPTemplateDeclarationNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPTemplateDeclarationNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'templateToken',
 		'ltToken',
@@ -9,40 +9,42 @@ Class {
 		'gtToken',
 		'declaration'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTemplateDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateDeclarationNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateDeclarationNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateDeclarationNode >> compositeNodeVariables [
 	^ #(#parameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateDeclarationNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateDeclarationNode >> declaration [
 	^ declaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateDeclarationNode >> declaration: aCPPProgramNode [
 	self declaration notNil
 		ifTrue: [ self declaration parent: nil ].
@@ -51,61 +53,61 @@ CPPTemplateDeclarationNode >> declaration: aCPPProgramNode [
 		ifTrue: [ self declaration parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateDeclarationNode >> gtToken [
 	^ gtToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateDeclarationNode >> gtToken: aSmaCCToken [
 	gtToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPTemplateDeclarationNode >> initialize [
 	super initialize.
 	parameters := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateDeclarationNode >> ltToken [
 	^ ltToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateDeclarationNode >> ltToken: aSmaCCToken [
 	ltToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateDeclarationNode >> nodeVariables [
 	^ #(#declaration)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateDeclarationNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateDeclarationNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateDeclarationNode >> templateToken [
 	^ templateToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateDeclarationNode >> templateToken: aSmaCCToken [
 	templateToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateDeclarationNode >> tokenVariables [
 	^ #(#templateToken #ltToken #gtToken)
 ]

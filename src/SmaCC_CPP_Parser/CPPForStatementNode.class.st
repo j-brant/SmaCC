@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPForStatementNode,
-	#superclass : #CPPStatementNode,
+	#name : 'CPPForStatementNode',
+	#superclass : 'CPPStatementNode',
 	#instVars : [
 		'forToken',
 		'leftParen',
@@ -11,20 +11,22 @@ Class {
 		'updateExpression',
 		'condition'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitForStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForStatementNode >> condition [
 	^ condition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForStatementNode >> condition: aCPPProgramNode [
 	self condition notNil
 		ifTrue: [ self condition parent: nil ].
@@ -33,22 +35,22 @@ CPPForStatementNode >> condition: aCPPProgramNode [
 		ifTrue: [ self condition parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForStatementNode >> forToken [
 	^ forToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForStatementNode >> forToken: aSmaCCToken [
 	forToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForStatementNode >> initializerStatement [
 	^ initializerStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForStatementNode >> initializerStatement: aCPPProgramNode [
 	self initializerStatement notNil
 		ifTrue: [ self initializerStatement parent: nil ].
@@ -57,47 +59,47 @@ CPPForStatementNode >> initializerStatement: aCPPProgramNode [
 		ifTrue: [ self initializerStatement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForStatementNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForStatementNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForStatementNode >> nodeVariables [
 	^ #(#initializerStatement #statement #updateExpression #condition)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForStatementNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForStatementNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForStatementNode >> statement: aCPPProgramNode [
 	self statement notNil
 		ifTrue: [ self statement parent: nil ].
@@ -106,17 +108,17 @@ CPPForStatementNode >> statement: aCPPProgramNode [
 		ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForStatementNode >> tokenVariables [
 	^ #(#forToken #leftParen #semicolon #rightParen)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForStatementNode >> updateExpression [
 	^ updateExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPForStatementNode >> updateExpression: aCPPExpressionNode [
 	self updateExpression notNil
 		ifTrue: [ self updateExpression parent: nil ].

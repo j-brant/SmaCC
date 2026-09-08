@@ -1,24 +1,26 @@
 Class {
-	#name : #CPPThrowExpressionNode,
-	#superclass : #CPPExpressionNode,
+	#name : 'CPPThrowExpressionNode',
+	#superclass : 'CPPExpressionNode',
 	#instVars : [
 		'throwToken',
 		'expression'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPThrowExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitThrowExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPThrowExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPThrowExpressionNode >> expression: aCPPExpressionNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
@@ -27,22 +29,22 @@ CPPThrowExpressionNode >> expression: aCPPExpressionNode [
 		ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPThrowExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPThrowExpressionNode >> throwToken [
 	^ throwToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPThrowExpressionNode >> throwToken: aSmaCCToken [
 	throwToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPThrowExpressionNode >> tokenVariables [
 	^ #(#throwToken)
 ]

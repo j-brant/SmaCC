@@ -1,17 +1,19 @@
 Class {
-	#name : #CPPExamples,
-	#superclass : #Object,
-	#category : #'SmaCC_CPP_Parser-Examples'
+	#name : 'CPPExamples',
+	#superclass : 'Object',
+	#category : 'SmaCC_CPP_Parser-Examples',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'Examples'
 }
 
-{ #category : #'file system' }
+{ #category : 'file system' }
 CPPExamples >> addFile: aString to: aFileSystem [
 	aFileSystem / (self perform: (aString , 'Filename') asSymbol)
 		writeStreamDo:
 			[ :stream | stream nextPutAll: (self perform: (aString , 'FileSource') asSymbol) ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> defineFileSource [
 	^ '#define VAR j
 int main() {
@@ -20,12 +22,12 @@ int main() {
 }'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> defineFilename [
 	^ 'define.cpp'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> defineFunctionFileSource [
 	^ '#define FOO(a,b,c) printf(#a,b##c)
 int main() {
@@ -34,12 +36,12 @@ int main() {
 }'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> defineFunctionFilename [
 	^ 'defineFunction.cpp'
 ]
 
-{ #category : #'file system' }
+{ #category : 'file system' }
 CPPExamples >> fileSystem [
 	<gtExample>
 	| fileSystem |
@@ -50,7 +52,7 @@ CPPExamples >> fileSystem [
 	^ fileSystem
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> foreachFileSource [
 	^ 'int main() {
 	foreach(Foo bar,someCollection) {
@@ -59,12 +61,12 @@ CPPExamples >> foreachFileSource [
 }'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> foreachFilename [
 	^ 'foreach.cpp'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> if0ElseFileSource [
 	^ '
 #if 0
@@ -78,12 +80,12 @@ int main() {}
 #endif'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> if0ElseFilename [
 	^ 'if0Else.c'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> ifDefFileSource [
 	^ '#ifdef A
 #ifdef B
@@ -114,12 +116,12 @@ CPPExamples >> ifDefFileSource [
 #endif'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> ifDefFilename [
 	^ 'ifdef.c'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> ifElseIfFileSource [
 	^ '#if defined A
 1
@@ -130,47 +132,47 @@ CPPExamples >> ifElseIfFileSource [
 #endif'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> ifElseIfFilename [
 	^ 'ifElseIf.c'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> includedFileSource [
 	^ 'int main() {
 	return 1;
 }'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> includedFilename [
 	^ 'included.h'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> includingFileSource [
 	^ '//before
 #include "included.h"
 //after'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> includingFilename [
 	^ 'including.cpp'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> missingIncludeFileSource [
 	^ '#include "missing.h"
 int main() { return 2; }'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> missingIncludeFilename [
 	^ 'missingInclude.cpp'
 ]
 
-{ #category : #preprocessing }
+{ #category : 'preprocessing' }
 CPPExamples >> preprocessConcatenationFile [
 	<gtExample>
 	| fileSystem fileRef preprocessor source |
@@ -189,7 +191,7 @@ CPPExamples >> preprocessConcatenationFile [
 	^ source
 ]
 
-{ #category : #preprocessing }
+{ #category : 'preprocessing' }
 CPPExamples >> preprocessDefine [
 	<gtExample>
 	| fileSystem fileRef preprocessor source |
@@ -203,7 +205,7 @@ CPPExamples >> preprocessDefine [
 	^ source
 ]
 
-{ #category : #preprocessing }
+{ #category : 'preprocessing' }
 CPPExamples >> preprocessDefineFunction [
 	<gtExample>
 	| fileSystem fileRef preprocessor source |
@@ -217,7 +219,7 @@ CPPExamples >> preprocessDefineFunction [
 	^ source
 ]
 
-{ #category : #preprocessing }
+{ #category : 'preprocessing' }
 CPPExamples >> preprocessForeachFile [
 	<gtExample>
 	| fileSystem fileRef preprocessor source |
@@ -236,7 +238,7 @@ CPPExamples >> preprocessForeachFile [
 	^ source
 ]
 
-{ #category : #preprocessing }
+{ #category : 'preprocessing' }
 CPPExamples >> preprocessFunctionTestMacroFile [
 	<gtExample>
 	| fileSystem fileRef preprocessor source |
@@ -255,7 +257,7 @@ CPPExamples >> preprocessFunctionTestMacroFile [
 	^ source
 ]
 
-{ #category : #preprocessing }
+{ #category : 'preprocessing' }
 CPPExamples >> preprocessIf0Else [
 	<gtExample>
 	| fileSystem fileRef preprocessor source |
@@ -268,7 +270,7 @@ CPPExamples >> preprocessIf0Else [
 	^ source
 ]
 
-{ #category : #preprocessing }
+{ #category : 'preprocessing' }
 CPPExamples >> preprocessIfDef [
 	<gtExample>
 	| fileSystem fileRef preprocessor source |
@@ -285,7 +287,7 @@ CPPExamples >> preprocessIfDef [
 	^ source
 ]
 
-{ #category : #preprocessing }
+{ #category : 'preprocessing' }
 CPPExamples >> preprocessIfElseIf [
 	<gtExample>
 	| fileSystem fileRef preprocessor |
@@ -318,7 +320,7 @@ CPPExamples >> preprocessIfElseIf [
 	^ preprocessor
 ]
 
-{ #category : #preprocessing }
+{ #category : 'preprocessing' }
 CPPExamples >> preprocessIncludeNext [
 	<gtExample>
 	| fileSystem fileRef preprocessor source |
@@ -338,7 +340,7 @@ CPPExamples >> preprocessIncludeNext [
 	^ source
 ]
 
-{ #category : #preprocessing }
+{ #category : 'preprocessing' }
 CPPExamples >> preprocessIncludesFile [
 	<gtExample>
 	| fileSystem fileRef preprocessor source |
@@ -357,7 +359,7 @@ CPPExamples >> preprocessIncludesFile [
 	^ preprocessor preprocessedFile
 ]
 
-{ #category : #preprocessing }
+{ #category : 'preprocessing' }
 CPPExamples >> preprocessMissingIncludeFile [
 	<gtExample>
 	| fileSystem fileRef preprocessor source |
@@ -371,7 +373,7 @@ CPPExamples >> preprocessMissingIncludeFile [
 	^ source
 ]
 
-{ #category : #preprocessing }
+{ #category : 'preprocessing' }
 CPPExamples >> preprocessStandaloneFile [
 	<gtExample>
 	| fileSystem fileRef preprocessor source |
@@ -384,7 +386,7 @@ CPPExamples >> preprocessStandaloneFile [
 	^ source
 ]
 
-{ #category : #preprocessing }
+{ #category : 'preprocessing' }
 CPPExamples >> preprocessStringifyTestMacroFile [
 	<gtExample>
 	| fileSystem fileRef preprocessor source |
@@ -403,7 +405,7 @@ CPPExamples >> preprocessStringifyTestMacroFile [
 	^ source
 ]
 
-{ #category : #preprocessing }
+{ #category : 'preprocessing' }
 CPPExamples >> preprocessTestMacroFile [
 	<gtExample>
 	| fileSystem fileRef preprocessor source |
@@ -420,7 +422,7 @@ CPPExamples >> preprocessTestMacroFile [
 	^ source
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> replacedDefineFunctionSource [
 	^ '
 int main() {
@@ -429,7 +431,7 @@ int main() {
 }'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> replacedDefineSource [
 	^ '
 int main() {
@@ -438,7 +440,7 @@ int main() {
 }'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> replacedForeachSource [
 	^ 'int main() {
 	for(Foo bar : someCollection) {
@@ -447,14 +449,14 @@ CPPExamples >> replacedForeachSource [
 }'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> replacedIf0ElseFileSource [
 	^ '
 int main() {}
 '
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> replacedIfDefSource [
 	^ '2
 
@@ -465,62 +467,62 @@ CPPExamples >> replacedIfDefSource [
 '
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> replacedTestMacroFileSource [
 	^ 'int main() {
 	return zzz(3,(bar() + baz()));
 }'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> standaloneFileSource [
 	^ 'int main() {
 	return 1;
 }'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> standaloneFilename [
 	^ 'standalone.cpp'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> stringifiedTestMacroFileSource [
 	^ 'int main() {
 	return zzz("(bar() + baz())","3");
 }'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> subdirectoryIncludedFileSource [
 	^ '//before1
 #include_next "included.h"
 //after1'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> subdirectoryIncludedFilename [
 	^ 'sub/included.h'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> subdirectoryIncludingFileSource [
 	^ '#include "included.h"'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> subdirectoryIncludingFilename [
 	^ 'sub/including.cpp'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> testMacroFileSource [
 	^ 'int main() {
 	return foo((bar() + baz()),3);
 }'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPExamples >> testMacroFilename [
 	^ 'test_macro.cpp'
 ]

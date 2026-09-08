@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPAliasDeclarationNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPAliasDeclarationNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'usingToken',
 		'name',
@@ -9,83 +9,85 @@ Class {
 		'semicolon',
 		'specifiers'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAliasDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAliasDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAliasDeclarationNode >> compositeNodeVariables [
 	^ #(#specifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAliasDeclarationNode >> equal [
 	^ equal
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAliasDeclarationNode >> equal: aSmaCCToken [
 	equal := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPAliasDeclarationNode >> initialize [
 	super initialize.
 	specifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAliasDeclarationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAliasDeclarationNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAliasDeclarationNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAliasDeclarationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAliasDeclarationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAliasDeclarationNode >> specifiers [
 	^ specifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAliasDeclarationNode >> specifiers: anOrderedCollection [
 	self setParents: self specifiers to: nil.
 	specifiers := anOrderedCollection.
 	self setParents: self specifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAliasDeclarationNode >> tokenVariables [
 	^ #(#usingToken #name #equal #semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAliasDeclarationNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAliasDeclarationNode >> type: aCPPTypeIdentifierNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].
@@ -94,12 +96,12 @@ CPPAliasDeclarationNode >> type: aCPPTypeIdentifierNode [
 		ifTrue: [ self type parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAliasDeclarationNode >> usingToken [
 	^ usingToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAliasDeclarationNode >> usingToken: aSmaCCToken [
 	usingToken := aSmaCCToken
 ]

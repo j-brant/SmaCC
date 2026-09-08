@@ -1,46 +1,48 @@
 Class {
-	#name : #CPPExpressionNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPExpressionNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'leftParens',
 		'rightParens'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionNode >> compositeTokenVariables [
 	^ #(#leftParens #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPExpressionNode >> initialize [
 	super initialize.
 	leftParens := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionNode >> leftParens [
 	^ leftParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionNode >> leftParens: anOrderedCollection [
 	leftParens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionNode >> rightParens [
 	^ rightParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
 ]

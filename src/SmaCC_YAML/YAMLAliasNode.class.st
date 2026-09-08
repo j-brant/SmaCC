@@ -1,24 +1,26 @@
 Class {
-	#name : #YAMLAliasNode,
-	#superclass : #YAMLValueNode,
+	#name : 'YAMLAliasNode',
+	#superclass : 'YAMLValueNode',
 	#instVars : [
 		'name'
 	],
-	#category : #'SmaCC_YAML-Parser'
+	#category : 'SmaCC_YAML-Parser',
+	#package : 'SmaCC_YAML',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLAliasNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitAlias: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLAliasNode >> anchorSource [
 	^ self anchorSourceInterval
 		ifNotNil: [ :interval | self completeSource asString copyFrom: interval first to: interval last ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLAliasNode >> anchorSourceInterval [
 	^ self nodeForAlias
 		ifNotNil: [ :node | 
@@ -31,22 +33,22 @@ YAMLAliasNode >> anchorSourceInterval [
 						ifNone: [ node ]) startPosition ]) to: node stopPosition ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLAliasNode >> createObject [
 	^ self nodeForAlias ifNotNil: [ :node | node object copy ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLAliasNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLAliasNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLAliasNode >> nodeForAlias [
 	| anchorName nodes |
 	anchorName := '&' , name value allButFirst.
@@ -55,7 +57,7 @@ YAMLAliasNode >> nodeForAlias [
 	^ nodes detect: [ :each | each stopPosition < self startPosition ] ifNone: [  ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLAliasNode >> tokenVariables [
 	^ #(#name)
 ]

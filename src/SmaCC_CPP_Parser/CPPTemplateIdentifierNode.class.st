@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPTemplateIdentifierNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPTemplateIdentifierNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'name',
 		'ltToken',
@@ -9,67 +9,69 @@ Class {
 		'ellipsises',
 		'commas'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateIdentifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTemplateIdentifier: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateIdentifierNode >> arguments [
 	^ arguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateIdentifierNode >> arguments: anOrderedCollection [
 	self setParents: self arguments to: nil.
 	arguments := anOrderedCollection.
 	self setParents: self arguments to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateIdentifierNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateIdentifierNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateIdentifierNode >> compositeNodeVariables [
 	^ #(#arguments)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateIdentifierNode >> compositeTokenVariables [
 	^ #(#ellipsises #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateIdentifierNode >> ellipsises [
 	^ ellipsises
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateIdentifierNode >> ellipsises: anOrderedCollection [
 	ellipsises := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateIdentifierNode >> gtToken [
 	^ gtToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateIdentifierNode >> gtToken: aSmaCCToken [
 	gtToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPTemplateIdentifierNode >> initialize [
 	super initialize.
 	arguments := OrderedCollection new: 2.
@@ -77,27 +79,27 @@ CPPTemplateIdentifierNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateIdentifierNode >> ltToken [
 	^ ltToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateIdentifierNode >> ltToken: aSmaCCToken [
 	ltToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateIdentifierNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateIdentifierNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTemplateIdentifierNode >> tokenVariables [
 	^ #(#name #ltToken #gtToken)
 ]

@@ -1,24 +1,26 @@
 Class {
-	#name : #CPPDestructorIdentifierNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPDestructorIdentifierNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'tilde',
 		'name'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDestructorIdentifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDestructorIdentifier: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDestructorIdentifierNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDestructorIdentifierNode >> name: aCPPProgramNode [
 	self name notNil
 		ifTrue: [ self name parent: nil ].
@@ -27,22 +29,22 @@ CPPDestructorIdentifierNode >> name: aCPPProgramNode [
 		ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDestructorIdentifierNode >> nodeVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDestructorIdentifierNode >> tilde [
 	^ tilde
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDestructorIdentifierNode >> tilde: aSmaCCToken [
 	tilde := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDestructorIdentifierNode >> tokenVariables [
 	^ #(#tilde)
 ]

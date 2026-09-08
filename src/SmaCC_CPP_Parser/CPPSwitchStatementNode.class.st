@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPSwitchStatementNode,
-	#superclass : #CPPStatementNode,
+	#name : 'CPPSwitchStatementNode',
+	#superclass : 'CPPStatementNode',
 	#instVars : [
 		'switchToken',
 		'leftParen',
@@ -8,20 +8,22 @@ Class {
 		'rightParen',
 		'statement'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSwitchStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSwitchStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSwitchStatementNode >> condition [
 	^ condition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSwitchStatementNode >> condition: aCPPProgramNode [
 	self condition notNil
 		ifTrue: [ self condition parent: nil ].
@@ -30,37 +32,37 @@ CPPSwitchStatementNode >> condition: aCPPProgramNode [
 		ifTrue: [ self condition parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSwitchStatementNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSwitchStatementNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSwitchStatementNode >> nodeVariables [
 	^ #(#condition #statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSwitchStatementNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSwitchStatementNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSwitchStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSwitchStatementNode >> statement: aCPPProgramNode [
 	self statement notNil
 		ifTrue: [ self statement parent: nil ].
@@ -69,17 +71,17 @@ CPPSwitchStatementNode >> statement: aCPPProgramNode [
 		ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSwitchStatementNode >> switchToken [
 	^ switchToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSwitchStatementNode >> switchToken: aSmaCCToken [
 	switchToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSwitchStatementNode >> tokenVariables [
 	^ #(#switchToken #leftParen #rightParen)
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPDoWhileStatementNode,
-	#superclass : #CPPStatementNode,
+	#name : 'CPPDoWhileStatementNode',
+	#superclass : 'CPPStatementNode',
 	#instVars : [
 		'doToken',
 		'statement',
@@ -10,20 +10,22 @@ Class {
 		'rightParen',
 		'semicolon'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDoWhileStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDoWhileStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDoWhileStatementNode >> condition [
 	^ condition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDoWhileStatementNode >> condition: aCPPExpressionNode [
 	self condition notNil
 		ifTrue: [ self condition parent: nil ].
@@ -32,57 +34,57 @@ CPPDoWhileStatementNode >> condition: aCPPExpressionNode [
 		ifTrue: [ self condition parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDoWhileStatementNode >> doToken [
 	^ doToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDoWhileStatementNode >> doToken: aSmaCCToken [
 	doToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDoWhileStatementNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDoWhileStatementNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDoWhileStatementNode >> nodeVariables [
 	^ #(#statement #condition)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDoWhileStatementNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDoWhileStatementNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDoWhileStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDoWhileStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDoWhileStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDoWhileStatementNode >> statement: aCPPProgramNode [
 	self statement notNil
 		ifTrue: [ self statement parent: nil ].
@@ -91,17 +93,17 @@ CPPDoWhileStatementNode >> statement: aCPPProgramNode [
 		ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDoWhileStatementNode >> tokenVariables [
 	^ #(#doToken #whileToken #leftParen #rightParen #semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDoWhileStatementNode >> whileToken [
 	^ whileToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDoWhileStatementNode >> whileToken: aSmaCCToken [
 	whileToken := aSmaCCToken
 ]

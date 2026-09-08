@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPAttributeNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPAttributeNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'name',
 		'namespace',
@@ -11,69 +11,71 @@ Class {
 		'arguments',
 		'commas'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAttribute: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeNode >> arguments [
 	^ arguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeNode >> arguments: anOrderedCollection [
 	self setParents: self arguments to: nil.
 	arguments := anOrderedCollection.
 	self setParents: self arguments to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeNode >> balancedTokens [
 	^ balancedTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeNode >> balancedTokens: anOrderedCollection [
 	self setParents: self balancedTokens to: nil.
 	balancedTokens := anOrderedCollection.
 	self setParents: self balancedTokens to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeNode >> colonColon [
 	^ colonColon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeNode >> colonColon: aSmaCCToken [
 	colonColon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeNode >> compositeNodeVariables [
 	^ #(#balancedTokens #arguments)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPAttributeNode >> initialize [
 	super initialize.
 	balancedTokens := OrderedCollection new: 2.
@@ -81,47 +83,47 @@ CPPAttributeNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeNode >> namespace [
 	^ namespace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeNode >> namespace: aSmaCCToken [
 	namespace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAttributeNode >> tokenVariables [
 	^ #(#name #namespace #colonColon #left #right)
 ]

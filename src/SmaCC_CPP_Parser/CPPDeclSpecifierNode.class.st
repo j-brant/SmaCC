@@ -1,28 +1,30 @@
 Class {
-	#name : #CPPDeclSpecifierNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPDeclSpecifierNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'name'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclSpecifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDeclSpecifier: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclSpecifierNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclSpecifierNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDeclSpecifierNode >> tokenVariables [
 	^ #(#name)
 ]
