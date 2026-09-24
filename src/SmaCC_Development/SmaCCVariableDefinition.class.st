@@ -200,6 +200,17 @@ SmaCCVariableDefinition >> isPossibleNodeType [
 	^ self isCollection not and: [ self isBasePossibleNodeType ]
 ]
 
+{ #category : 'as yet unclassified' }
+SmaCCVariableDefinition >> printOn: aStream [
+	aStream
+		nextPutAll: self class name;
+		nextPut: $(;
+		nextPutAll: self variableName;
+		nextPutAll: (self isCollection ifTrue: [ '[]' ] ifFalse: [ '' ]);
+		nextPutAll: (self isAlwaysAssigned ifTrue: [ '' ] ifFalse: [ '?' ]);
+		nextPut: $)
+]
+
 { #category : 'accessing' }
 SmaCCVariableDefinition >> setterMethodName [
 	^ setterMethodName
