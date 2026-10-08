@@ -60,17 +60,15 @@ SmaCCParser class >> checkCaches [
 
 { #category : 'private' }
 SmaCCParser class >> contentsOfFile: aString encoding: encodingString [
-	| encoding fileRef |
+	| fileRef |
 	fileRef := aString asFileReference.
-	encoding := encodingString
-			ifNil: [ [ fileRef
-					binaryReadStreamDo: [ :in | (ZnCharacterEncoder detectEncoding: in upToEnd) identifier ] ]
-					on: Error
-					do: [ nil ] ].
-	^ fileRef
-		readStreamDo: [ :stream | 
-			self setEncoding: encoding on: stream.
-			stream contents ]
+	(encodingString ifNil: [ #(utf8 windows1252) ] ifNotNil: [ {encodingString} ])
+		do: [ :encoding | 
+			[ ^ fileRef
+				readStreamDo: [ :stream | 
+					self setEncoding: encoding on: stream.
+					stream contents ] ] on: Error do: [ :ex | ex return ] ].
+	self error: 'Could not determine encoding of file'
 ]
 
 { #category : 'instance creation' }

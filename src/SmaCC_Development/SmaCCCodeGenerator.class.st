@@ -430,7 +430,7 @@ SmaCCCodeGenerator >> compileGetterAndSetter: aSmaCCVariableDefinition forDefini
 	type := aSmaCCVariableDefinition type.
 	self setGetterMethodNameTo: aSmaCCVariableDefinition withName: variableName.
 	definer := aSmaCCNodeClassDefinition modelClass
-			whoDefinesMethod: aSmaCCVariableDefinition getterMethodName asSymbol.
+			whichClassIncludesSelector: aSmaCCVariableDefinition getterMethodName asSymbol.
 	(definer isNil or: [ definer ~= aSmaCCNodeClassDefinition modelClass ])
 		ifTrue: [ self
 				startPublicVirtualGetter;
@@ -440,7 +440,7 @@ SmaCCCodeGenerator >> compileGetterAndSetter: aSmaCCVariableDefinition forDefini
 				compileMethodIn: aSmaCCNodeClassDefinition modelClass ].
 	aSmaCCVariableDefinition setterMethodName: variableName , ':'.
 	definer := aSmaCCNodeClassDefinition modelClass
-			whoDefinesMethod: aSmaCCVariableDefinition setterMethodName asSymbol.
+			whichClassIncludesSelector: aSmaCCVariableDefinition setterMethodName asSymbol.
 	(definer isNil or: [ definer = self objectClass ]) ifFalse: [ ^ self ].
 	typeName := aSmaCCNodeClassDefinition temporaryNameFor: type name.
 	self
