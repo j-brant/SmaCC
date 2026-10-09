@@ -326,7 +326,7 @@ SmaCCSmalltalkCodeGenerator >> compileCacheId [
 { #category : 'compiling' }
 SmaCCSmalltalkCodeGenerator >> compileChanges [
 	self removeUnnecessaryChanges.
-	RBRefactoryChangeManager instance performChange: self changes.
+	RBRefactoryChangeManager instance performCompositeChange: self changes.
 	SystemVersion current major >= 12
 		ifTrue: [ visitorClass
 				ifNotNil: [ (Smalltalk at: visitorClass name)
@@ -1000,7 +1000,7 @@ SmaCCSmalltalkCodeGenerator >> parserParseTreeFor: aSelector [
 	^ parseTreeCache
 		at: aSelector
 		ifAbsentPut: [ | definingClass |
-			definingClass := self parserClass whoDefinesMethod: aSelector.
+			definingClass := self parserClass whichClassIncludesSelector: aSelector.
 			definingClass parseTreeForSelector: aSelector ]
 ]
 

@@ -63,14 +63,6 @@ SmaCCPatternToken >> buildStructure [
 	index > 0 ifFalse: [ ^ self ].
 	code := value copyFrom: index + 1 to: (value lastIndexOf: $}) - 1.
 	source := 'self ' , code.
-	RBParser
-		parseExpression: source
-		onError: [ :s :p | 
-			SmaCCInvalidPatternExpressionError new
-				errorMessage: s;
-				position: p;
-				token: self;
-				signal ].
 	[ self class compiler
 		source: source;
 		logged: false;
