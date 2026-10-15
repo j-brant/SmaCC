@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfYAMLParser }
+Package { #name : 'BaselineOfYAMLParser' }

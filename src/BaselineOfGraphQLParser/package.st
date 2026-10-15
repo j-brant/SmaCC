@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfGraphQLParser }
+Package { #name : 'BaselineOfGraphQLParser' }

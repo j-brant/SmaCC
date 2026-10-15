@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfCSSParser }
+Package { #name : 'BaselineOfCSSParser' }

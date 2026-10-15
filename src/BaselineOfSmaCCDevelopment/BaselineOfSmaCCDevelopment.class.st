@@ -1,17 +1,18 @@
 Class {
-	#name : #BaselineOfSmaCCDevelopment,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfSmaCCDevelopment
+	#name : 'BaselineOfSmaCCDevelopment',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfSmaCCDevelopment',
+	#package : 'BaselineOfSmaCCDevelopment'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BaselineOfSmaCCDevelopment >> baseline: spec [
 	<baseline>
 	spec
 		for: #common
 		do: [ spec
 				baseline: 'SmaCCRuntime'
-					with: [ spec repository: 'github://j-brant/SmaCC' ];
+					with: [ spec repository: 'github://j-brant/SmaCC:/src' ];
 				package: 'SmaCC_Debugging_Support'
 					with: [ spec requires: 'SmaCC_Development' ];
 				package: 'SmaCC_Development'

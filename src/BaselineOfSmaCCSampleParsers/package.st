@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfSmaCCSampleParsers }
+Package { #name : 'BaselineOfSmaCCSampleParsers' }

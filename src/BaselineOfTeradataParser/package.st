@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfTeradataParser }
+Package { #name : 'BaselineOfTeradataParser' }

@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfSmaCCNFAScanner }
+Package { #name : 'BaselineOfSmaCCNFAScanner' }

@@ -1,16 +1,17 @@
 Class {
-	#name : #BaselineOfAntlr4Parser,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfAntlr4Parser
+	#name : 'BaselineOfAntlr4Parser',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfAntlr4Parser',
+	#package : 'BaselineOfAntlr4Parser'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BaselineOfAntlr4Parser >> baseline: spec [
 	<baseline>
 	spec
 		for: #common
 		do: [ spec
 				baseline: 'SmaCCRuntime'
-					with: [ spec repository: 'github://j-brant/SmaCC' ];
+					with: [ spec repository: 'github://j-brant/SmaCC:/src' ];
 				package: 'SmaCC_Antlr_Parser' with: [ spec requires: 'SmaCCRuntime' ] ]
 ]

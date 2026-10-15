@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfSmaCCDevelopment }
+Package { #name : 'BaselineOfSmaCCDevelopment' }

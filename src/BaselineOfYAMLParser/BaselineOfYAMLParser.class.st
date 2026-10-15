@@ -1,16 +1,17 @@
 Class {
-	#name : #BaselineOfYAMLParser,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfYAMLParser
+	#name : 'BaselineOfYAMLParser',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfYAMLParser',
+	#package : 'BaselineOfYAMLParser'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BaselineOfYAMLParser >> baseline: spec [
 	<baseline>
 	spec
 		for: #common
 		do: [ spec
 				baseline: 'SmaCCRuntime'
-					with: [ spec repository: 'github://j-brant/SmaCC' ];
+					with: [ spec repository: 'github://j-brant/SmaCC:/src' ];
 				package: 'SmaCC_YAML' with: [ spec requires: 'SmaCCRuntime' ] ]
 ]

@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfAntlr4Parser }
+Package { #name : 'BaselineOfAntlr4Parser' }

@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfPythonParser }
+Package { #name : 'BaselineOfPythonParser' }

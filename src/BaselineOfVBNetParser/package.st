@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfVBNetParser }
+Package { #name : 'BaselineOfVBNetParser' }

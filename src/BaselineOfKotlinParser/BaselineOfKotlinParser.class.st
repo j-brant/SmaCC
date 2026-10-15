@@ -12,6 +12,6 @@ BaselineOfKotlinParser >> baseline: spec [
 		for: #common
 		do: [ spec
 				baseline: 'SmaCCRuntime'
-					with: [ spec repository: 'github://j-brant/SmaCC' ];
+					with: [ spec repository: 'github://j-brant/SmaCC:/src' ];
 				package: 'SmaCC_Kotlin' with: [ spec requires: 'SmaCCRuntime' ] ]
 ]
