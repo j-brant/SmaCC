@@ -30,7 +30,7 @@ SmaCCIncrementalNodeState >> endingScannerState: anObject [
 
 { #category : 'private' }
 SmaCCIncrementalNodeState >> eofFlag [
-	^ 2r1
+	^ 1
 ]
 
 { #category : 'accessing' }
