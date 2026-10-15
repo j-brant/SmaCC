@@ -61,11 +61,9 @@ SmaCCDeferredReduceAction >> hash [
 SmaCCDeferredReduceAction >> performOnSmaCCParser: aSmaCCParser [
 	| selector |
 	selector := self selector.
-	^ selector numArgs = 0
-		ifTrue: [ aSmaCCParser perform: selector ]
-		ifFalse: [ aSmaCCParser
-				perform: selector
-				with: (self argumentsFor: aSmaCCParser) ]
+	^ selector last == $:
+		ifTrue: [ aSmaCCParser perform: selector with: (self argumentsFor: aSmaCCParser) ]
+		ifFalse: [ aSmaCCParser perform: selector ]
 ]
 
 { #category : 'comparing' }
