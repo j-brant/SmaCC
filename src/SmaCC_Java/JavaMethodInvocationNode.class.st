@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaMethodInvocationNode,
-	#superclass : #JavaExpressionNode,
+	#name : 'JavaMethodInvocationNode',
+	#superclass : 'JavaExpressionNode',
 	#instVars : [
 		'lt',
 		'arguments',
@@ -15,74 +15,75 @@ Class {
 		'superToken',
 		'superPeriod'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMethodInvocation: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> arguments [
 	^ arguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> arguments: anOrderedCollection [
 	self setParents: self arguments to: nil.
 	arguments := anOrderedCollection.
 	self setParents: self arguments to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> compositeNodeVariables [
 	^ #(#arguments #expressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> gt [
 	^ gt
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> gt: aSmaCCToken [
 	gt := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> ignoredCompositeTokenVariables [
 	^ #(#commas #_leftParens #_rightParens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> ignoredTokenVariables [
 	^ #(#lt #gt #leftParen #rightParen)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaMethodInvocationNode >> initialize [
 	super initialize.
 	arguments := OrderedCollection new: 2.
@@ -90,57 +91,57 @@ JavaMethodInvocationNode >> initialize [
 	expressions := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> lt [
 	^ lt
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> lt: aSmaCCToken [
 	lt := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> nodeVariables [
 	^ #(#receiver)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> receiver [
 	^ receiver
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> receiver: aJavaExpressionNode [
 	self receiver notNil
 		ifTrue: [ self receiver parent: nil ].
@@ -149,37 +150,37 @@ JavaMethodInvocationNode >> receiver: aJavaExpressionNode [
 		ifTrue: [ self receiver parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> superPeriod [
 	^ superPeriod
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> superPeriod: aSmaCCToken [
 	superPeriod := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> superToken [
 	^ superToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> superToken: aSmaCCToken [
 	superToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodInvocationNode >> tokenVariables [
 	^ #(#name #period #superToken #superPeriod)
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaSwitchBlockExpressionGroupNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaSwitchBlockExpressionGroupNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'caseToken',
 		'constants',
@@ -10,114 +10,115 @@ Class {
 		'value',
 		'semicolon'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSwitchBlockExpressionGroup: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> arrowToken [
 	^ arrowToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> arrowToken: aSmaCCToken [
 	arrowToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> caseToken [
 	^ caseToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> caseToken: aSmaCCToken [
 	caseToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> compositeNodeVariables [
 	^ #(#constants)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> constants [
 	^ constants
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> constants: anOrderedCollection [
 	self setParents: self constants to: nil.
 	constants := anOrderedCollection.
 	self setParents: self constants to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> defaultToken [
 	^ defaultToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> defaultToken: aSmaCCToken [
 	defaultToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaSwitchBlockExpressionGroupNode >> initialize [
 	super initialize.
 	constants := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> tokenVariables [
 	^ #(#caseToken #arrowToken #defaultToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> value: aJavaProgramNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aJavaProgramNode.

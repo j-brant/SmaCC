@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaNewNode,
-	#superclass : #JavaExpressionNode,
+	#name : 'JavaNewNode',
+	#superclass : 'JavaExpressionNode',
 	#instVars : [
 		'newToken',
 		'type',
@@ -17,74 +17,75 @@ Class {
 		'typeArgLeft',
 		'typeArgRight'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNew: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> arguments [
 	^ arguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> arguments: anOrderedCollection [
 	self setParents: self arguments to: nil.
 	arguments := anOrderedCollection.
 	self setParents: self arguments to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> compositeNodeVariables [
 	^ #(#expressions #arguments)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> gt [
 	^ gt
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> gt: aSmaCCToken [
 	gt := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> ignoredCompositeTokenVariables [
 	^ #(#commas #_leftParens #_rightParens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> ignoredTokenVariables [
 	^ #(#leftParen #rightParen #lt #gt)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaNewNode >> initialize [
 	super initialize.
 	expressions := OrderedCollection new: 2.
@@ -92,67 +93,67 @@ JavaNewNode >> initialize [
 	arguments := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> lt [
 	^ lt
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> lt: aSmaCCToken [
 	lt := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> newToken [
 	^ newToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> newToken: aSmaCCToken [
 	newToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> nodeVariables [
 	^ #(#type #primary)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> primary [
 	^ primary
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> primary: aJavaExpressionNode [
 	self primary notNil
 		ifTrue: [ self primary parent: nil ].
@@ -161,27 +162,27 @@ JavaNewNode >> primary: aJavaExpressionNode [
 		ifTrue: [ self primary parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> tokenVariables [
 	^ #(#newToken #period #name #typeArgLeft #typeArgRight)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> type: aJavaClassTypeNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].
@@ -190,22 +191,22 @@ JavaNewNode >> type: aJavaClassTypeNode [
 		ifTrue: [ self type parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> typeArgLeft [
 	^ typeArgLeft
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> typeArgLeft: aSmaCCToken [
 	typeArgLeft := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> typeArgRight [
 	^ typeArgRight
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewNode >> typeArgRight: aSmaCCToken [
 	typeArgRight := aSmaCCToken
 ]

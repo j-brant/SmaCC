@@ -1,29 +1,30 @@
 Class {
-	#name : #JavaQualifiedTypeNameNode,
-	#superclass : #JavaTypeNameNode,
+	#name : 'JavaQualifiedTypeNameNode',
+	#superclass : 'JavaTypeNameNode',
 	#instVars : [
 		'nspace',
 		'period'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaQualifiedTypeNameNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitQualifiedTypeName: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaQualifiedTypeNameNode >> nodeVariables [
 	^ #(#nspace)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaQualifiedTypeNameNode >> nspace [
 	^ nspace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaQualifiedTypeNameNode >> nspace: aJavaTypeNameNode [
 	self nspace notNil
 		ifTrue: [ self nspace parent: nil ].
@@ -32,17 +33,17 @@ JavaQualifiedTypeNameNode >> nspace: aJavaTypeNameNode [
 		ifTrue: [ self nspace parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaQualifiedTypeNameNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaQualifiedTypeNameNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaQualifiedTypeNameNode >> tokenVariables [
 	^ #(#period #name)
 ]

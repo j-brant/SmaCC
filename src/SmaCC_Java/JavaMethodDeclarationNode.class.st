@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaMethodDeclarationNode,
-	#superclass : #JavaDeclarationNode,
+	#name : 'JavaMethodDeclarationNode',
+	#superclass : 'JavaDeclarationNode',
 	#instVars : [
 		'modifiers',
 		'typeParameters',
@@ -9,20 +9,21 @@ Class {
 		'throws',
 		'body'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMethodDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodDeclarationNode >> body [
 	^ body
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodDeclarationNode >> body: aJavaProgramNode [
 	self body notNil
 		ifTrue: [ self body parent: nil ].
@@ -31,17 +32,17 @@ JavaMethodDeclarationNode >> body: aJavaProgramNode [
 		ifTrue: [ self body parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodDeclarationNode >> compositeNodeVariables [
 	^ #(#modifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodDeclarationNode >> declarator [
 	^ declarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodDeclarationNode >> declarator: aJavaProgramNode [
 	self declarator notNil
 		ifTrue: [ self declarator parent: nil ].
@@ -50,35 +51,35 @@ JavaMethodDeclarationNode >> declarator: aJavaProgramNode [
 		ifTrue: [ self declarator parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaMethodDeclarationNode >> initialize [
 	super initialize.
 	modifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodDeclarationNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodDeclarationNode >> modifiers: anOrderedCollection [
 	self setParents: self modifiers to: nil.
 	modifiers := anOrderedCollection.
 	self setParents: self modifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodDeclarationNode >> nodeVariables [
 	^ #(#typeParameters #type #declarator #throws #body)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodDeclarationNode >> throws [
 	^ throws
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodDeclarationNode >> throws: aJavaThrowsNode [
 	self throws notNil
 		ifTrue: [ self throws parent: nil ].
@@ -87,12 +88,12 @@ JavaMethodDeclarationNode >> throws: aJavaThrowsNode [
 		ifTrue: [ self throws parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodDeclarationNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodDeclarationNode >> type: aJavaProgramNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].
@@ -101,12 +102,12 @@ JavaMethodDeclarationNode >> type: aJavaProgramNode [
 		ifTrue: [ self type parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodDeclarationNode >> typeParameters [
 	^ typeParameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaMethodDeclarationNode >> typeParameters: aJavaTypeParametersNode [
 	self typeParameters notNil
 		ifTrue: [ self typeParameters parent: nil ].

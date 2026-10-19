@@ -1,34 +1,35 @@
 Class {
-	#name : #JavaInitializedVariableDeclarationNode,
-	#superclass : #JavaVariableDeclarationNode,
+	#name : 'JavaInitializedVariableDeclarationNode',
+	#superclass : 'JavaVariableDeclarationNode',
 	#instVars : [
 		'equals',
 		'initializer'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInitializedVariableDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitInitializedVariableDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInitializedVariableDeclarationNode >> equals [
 	^ equals
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInitializedVariableDeclarationNode >> equals: aSmaCCToken [
 	equals := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInitializedVariableDeclarationNode >> initializer [
 	^ initializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInitializedVariableDeclarationNode >> initializer: aJavaProgramNode [
 	self initializer notNil
 		ifTrue: [ self initializer parent: nil ].
@@ -37,12 +38,12 @@ JavaInitializedVariableDeclarationNode >> initializer: aJavaProgramNode [
 		ifTrue: [ self initializer parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInitializedVariableDeclarationNode >> nodeVariables [
 	^ #(#initializer #variable)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInitializedVariableDeclarationNode >> tokenVariables [
 	^ #(#equals)
 ]

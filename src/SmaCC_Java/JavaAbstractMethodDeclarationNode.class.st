@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaAbstractMethodDeclarationNode,
-	#superclass : #JavaDeclarationNode,
+	#name : 'JavaAbstractMethodDeclarationNode',
+	#superclass : 'JavaDeclarationNode',
 	#instVars : [
 		'modifiers',
 		'typeParameters',
@@ -9,25 +9,26 @@ Class {
 		'throws',
 		'semicolon'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAbstractMethodDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAbstractMethodDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAbstractMethodDeclarationNode >> compositeNodeVariables [
 	^ #(#modifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAbstractMethodDeclarationNode >> declarator [
 	^ declarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAbstractMethodDeclarationNode >> declarator: aJavaProgramNode [
 	self declarator notNil
 		ifTrue: [ self declarator parent: nil ].
@@ -36,50 +37,50 @@ JavaAbstractMethodDeclarationNode >> declarator: aJavaProgramNode [
 		ifTrue: [ self declarator parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAbstractMethodDeclarationNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaAbstractMethodDeclarationNode >> initialize [
 	super initialize.
 	modifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAbstractMethodDeclarationNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAbstractMethodDeclarationNode >> modifiers: anOrderedCollection [
 	self setParents: self modifiers to: nil.
 	modifiers := anOrderedCollection.
 	self setParents: self modifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAbstractMethodDeclarationNode >> nodeVariables [
 	^ #(#typeParameters #type #declarator #throws)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAbstractMethodDeclarationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAbstractMethodDeclarationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAbstractMethodDeclarationNode >> throws [
 	^ throws
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAbstractMethodDeclarationNode >> throws: aJavaThrowsNode [
 	self throws notNil
 		ifTrue: [ self throws parent: nil ].
@@ -88,12 +89,12 @@ JavaAbstractMethodDeclarationNode >> throws: aJavaThrowsNode [
 		ifTrue: [ self throws parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAbstractMethodDeclarationNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAbstractMethodDeclarationNode >> type: aJavaProgramNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].
@@ -102,12 +103,12 @@ JavaAbstractMethodDeclarationNode >> type: aJavaProgramNode [
 		ifTrue: [ self type parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAbstractMethodDeclarationNode >> typeParameters [
 	^ typeParameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAbstractMethodDeclarationNode >> typeParameters: aJavaTypeParametersNode [
 	self typeParameters notNil
 		ifTrue: [ self typeParameters parent: nil ].

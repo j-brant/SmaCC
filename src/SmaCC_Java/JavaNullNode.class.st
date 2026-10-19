@@ -1,10 +1,11 @@
 Class {
-	#name : #JavaNullNode,
-	#superclass : #JavaLiteralNode,
-	#category : #'SmaCC_Java'
+	#name : 'JavaNullNode',
+	#superclass : 'JavaLiteralNode',
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNullNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNull: self
 ]

@@ -1,55 +1,56 @@
 Class {
-	#name : #JavaArrayVariableNameNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaArrayVariableNameNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'variable',
 		'leftBracket',
 		'rightBracket'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayVariableNameNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitArrayVariableName: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayVariableNameNode >> ignoredTokenVariables [
 	^ #(#leftBracket #rightBracket)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayVariableNameNode >> leftBracket [
 	^ leftBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayVariableNameNode >> leftBracket: aSmaCCToken [
 	leftBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayVariableNameNode >> nodeVariables [
 	^ #(#variable)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayVariableNameNode >> rightBracket [
 	^ rightBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayVariableNameNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayVariableNameNode >> variable [
 	^ variable
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayVariableNameNode >> variable: aJavaProgramNode [
 	self variable notNil
 		ifTrue: [ self variable parent: nil ].

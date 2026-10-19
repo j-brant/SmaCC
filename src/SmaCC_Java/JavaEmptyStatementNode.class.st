@@ -1,28 +1,29 @@
 Class {
-	#name : #JavaEmptyStatementNode,
-	#superclass : #JavaStatementNode,
+	#name : 'JavaEmptyStatementNode',
+	#superclass : 'JavaStatementNode',
 	#instVars : [
 		'semicolon'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEmptyStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEmptyStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEmptyStatementNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEmptyStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEmptyStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]

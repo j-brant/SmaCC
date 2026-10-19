@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaModuleExportsNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaModuleExportsNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'exportsToken',
 		'name',
@@ -9,106 +9,107 @@ Class {
 		'toNames',
 		'commas'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleExportsNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitModuleExports: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleExportsNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleExportsNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleExportsNode >> compositeNodeVariables [
 	^ #(#toNames)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleExportsNode >> exportsToken [
 	^ exportsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleExportsNode >> exportsToken: aSmaCCToken [
 	exportsToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleExportsNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleExportsNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaModuleExportsNode >> initialize [
 	super initialize.
 	toNames := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleExportsNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleExportsNode >> name: aJavaNameNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJavaNameNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleExportsNode >> nodeVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleExportsNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleExportsNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleExportsNode >> toNames [
 	^ toNames
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleExportsNode >> toNames: anOrderedCollection [
 	self setParents: self toNames to: nil.
 	toNames := anOrderedCollection.
 	self setParents: self toNames to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleExportsNode >> toToken [
 	^ toToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleExportsNode >> toToken: aSmaCCToken [
 	toToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleExportsNode >> tokenVariables [
 	^ #(#exportsToken #toToken)
 ]

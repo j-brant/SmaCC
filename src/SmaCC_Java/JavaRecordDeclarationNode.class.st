@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaRecordDeclarationNode,
-	#superclass : #JavaDeclarationNode,
+	#name : 'JavaRecordDeclarationNode',
+	#superclass : 'JavaDeclarationNode',
 	#instVars : [
 		'recordToken',
 		'name',
@@ -16,62 +16,63 @@ Class {
 		'parameters',
 		'modifiers'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitRecordDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> compositeNodeVariables [
 	^ #(#declarations #interfaces #parameters #modifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> declarations [
 	^ declarations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> declarations: anOrderedCollection [
 	self setParents: self declarations to: nil.
 	declarations := anOrderedCollection.
 	self setParents: self declarations to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> ignoredTokenVariables [
 	^ #(#leftParen #rightParen #leftBrace #rightBrace)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> implementsToken [
 	^ implementsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> implementsToken: aSmaCCToken [
 	implementsToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaRecordDeclarationNode >> initialize [
 	super initialize.
 	declarations := OrderedCollection new: 2.
@@ -81,118 +82,118 @@ JavaRecordDeclarationNode >> initialize [
 	modifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> interfaces [
 	^ interfaces
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> interfaces: anOrderedCollection [
 	self setParents: self interfaces to: nil.
 	interfaces := anOrderedCollection.
 	self setParents: self interfaces to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> modifiers: anOrderedCollection [
 	self setParents: self modifiers to: nil.
 	modifiers := anOrderedCollection.
 	self setParents: self modifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> nodeVariables [
 	^ #(#typeParameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> recordToken [
 	^ recordToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> recordToken: aSmaCCToken [
 	recordToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> tokenVariables [
 	^ #(#recordToken #name #implementsToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> typeParameters [
 	^ typeParameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaRecordDeclarationNode >> typeParameters: aJavaTypeParametersNode [
 	self typeParameters notNil ifTrue: [ self typeParameters parent: nil ].
 	typeParameters := aJavaTypeParametersNode.

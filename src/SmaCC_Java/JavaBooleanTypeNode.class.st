@@ -1,10 +1,11 @@
 Class {
-	#name : #JavaBooleanTypeNode,
-	#superclass : #JavaPrimitiveTypeNode,
-	#category : #'SmaCC_Java'
+	#name : 'JavaBooleanTypeNode',
+	#superclass : 'JavaPrimitiveTypeNode',
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBooleanTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBooleanType: self
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaSynchronizedStatementNode,
-	#superclass : #JavaStatementNode,
+	#name : 'JavaSynchronizedStatementNode',
+	#superclass : 'JavaStatementNode',
 	#instVars : [
 		'synchronizedToken',
 		'leftParen',
@@ -8,20 +8,21 @@ Class {
 		'rightParen',
 		'block'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSynchronizedStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSynchronizedStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSynchronizedStatementNode >> block [
 	^ block
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSynchronizedStatementNode >> block: aJavaBlockNode [
 	self block notNil
 		ifTrue: [ self block parent: nil ].
@@ -30,12 +31,12 @@ JavaSynchronizedStatementNode >> block: aJavaBlockNode [
 		ifTrue: [ self block parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSynchronizedStatementNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSynchronizedStatementNode >> expression: aJavaExpressionNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
@@ -44,47 +45,47 @@ JavaSynchronizedStatementNode >> expression: aJavaExpressionNode [
 		ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSynchronizedStatementNode >> ignoredTokenVariables [
 	^ #(#leftParen #rightParen)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSynchronizedStatementNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSynchronizedStatementNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSynchronizedStatementNode >> nodeVariables [
 	^ #(#expression #block)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSynchronizedStatementNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSynchronizedStatementNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSynchronizedStatementNode >> synchronizedToken [
 	^ synchronizedToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSynchronizedStatementNode >> synchronizedToken: aSmaCCToken [
 	synchronizedToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSynchronizedStatementNode >> tokenVariables [
 	^ #(#synchronizedToken)
 ]

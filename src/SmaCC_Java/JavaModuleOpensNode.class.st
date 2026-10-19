@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaModuleOpensNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaModuleOpensNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'opensToken',
 		'name',
@@ -8,79 +8,80 @@ Class {
 		'toToken',
 		'toName'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleOpensNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitModuleOpens: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleOpensNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleOpensNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleOpensNode >> name: aJavaNameNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJavaNameNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleOpensNode >> nodeVariables [
 	^ #(#name #toName)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleOpensNode >> opensToken [
 	^ opensToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleOpensNode >> opensToken: aSmaCCToken [
 	opensToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleOpensNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleOpensNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleOpensNode >> toName [
 	^ toName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleOpensNode >> toName: aJavaNameNode [
 	self toName notNil ifTrue: [ self toName parent: nil ].
 	toName := aJavaNameNode.
 	self toName notNil ifTrue: [ self toName parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleOpensNode >> toToken [
 	^ toToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleOpensNode >> toToken: aSmaCCToken [
 	toToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleOpensNode >> tokenVariables [
 	^ #(#opensToken #toToken)
 ]

@@ -1,28 +1,29 @@
 Class {
-	#name : #JavaEmptyMethodBodyNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaEmptyMethodBodyNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'semicolon'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEmptyMethodBodyNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEmptyMethodBody: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEmptyMethodBodyNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEmptyMethodBodyNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEmptyMethodBodyNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]

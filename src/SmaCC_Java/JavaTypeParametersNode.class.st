@@ -1,78 +1,79 @@
 Class {
-	#name : #JavaTypeParametersNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaTypeParametersNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'lt',
 		'parameters',
 		'commas',
 		'gt'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeParametersNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTypeParameters: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeParametersNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeParametersNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeParametersNode >> compositeNodeVariables [
 	^ #(#parameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeParametersNode >> gt [
 	^ gt
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeParametersNode >> gt: aSmaCCToken [
 	gt := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeParametersNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeParametersNode >> ignoredTokenVariables [
 	^ #(#lt #gt)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaTypeParametersNode >> initialize [
 	super initialize.
 	parameters := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeParametersNode >> lt [
 	^ lt
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeParametersNode >> lt: aSmaCCToken [
 	lt := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeParametersNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeParametersNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.

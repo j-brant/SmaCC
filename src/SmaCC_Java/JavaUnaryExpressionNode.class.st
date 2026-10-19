@@ -1,23 +1,24 @@
 Class {
-	#name : #JavaUnaryExpressionNode,
-	#superclass : #JavaExpressionNode,
+	#name : 'JavaUnaryExpressionNode',
+	#superclass : 'JavaExpressionNode',
 	#instVars : [
 		'expression'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaUnaryExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUnaryExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaUnaryExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaUnaryExpressionNode >> expression: aJavaExpressionNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
@@ -26,7 +27,7 @@ JavaUnaryExpressionNode >> expression: aJavaExpressionNode [
 		ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaUnaryExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]

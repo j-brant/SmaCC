@@ -1,24 +1,25 @@
 Class {
-	#name : #JavaLocalVariableDeclarationStatementNode,
-	#superclass : #JavaStatementNode,
+	#name : 'JavaLocalVariableDeclarationStatementNode',
+	#superclass : 'JavaStatementNode',
 	#instVars : [
 		'declaration',
 		'semicolon'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLocalVariableDeclarationStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLocalVariableDeclarationStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLocalVariableDeclarationStatementNode >> declaration [
 	^ declaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLocalVariableDeclarationStatementNode >> declaration: aJavaLocalVariableDeclarationNode [
 	self declaration notNil
 		ifTrue: [ self declaration parent: nil ].
@@ -27,22 +28,22 @@ JavaLocalVariableDeclarationStatementNode >> declaration: aJavaLocalVariableDecl
 		ifTrue: [ self declaration parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLocalVariableDeclarationStatementNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLocalVariableDeclarationStatementNode >> nodeVariables [
 	^ #(#declaration)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLocalVariableDeclarationStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLocalVariableDeclarationStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]

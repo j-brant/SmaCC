@@ -1,41 +1,42 @@
 Class {
-	#name : #JavaCatchParameterNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaCatchParameterNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'modifiers',
 		'types',
 		'bars',
 		'variable'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCatchParameterNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCatchParameter: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCatchParameterNode >> bars [
 	^ bars
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCatchParameterNode >> bars: anOrderedCollection [
 	bars := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCatchParameterNode >> compositeNodeVariables [
 	^ #(#modifiers #types)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCatchParameterNode >> compositeTokenVariables [
 	^ #(#bars)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaCatchParameterNode >> initialize [
 	super initialize.
 	modifiers := OrderedCollection new: 2.
@@ -43,41 +44,41 @@ JavaCatchParameterNode >> initialize [
 	bars := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCatchParameterNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCatchParameterNode >> modifiers: anOrderedCollection [
 	self setParents: self modifiers to: nil.
 	modifiers := anOrderedCollection.
 	self setParents: self modifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCatchParameterNode >> nodeVariables [
 	^ #(#variable)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCatchParameterNode >> types [
 	^ types
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCatchParameterNode >> types: anOrderedCollection [
 	self setParents: self types to: nil.
 	types := anOrderedCollection.
 	self setParents: self types to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCatchParameterNode >> variable [
 	^ variable
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCatchParameterNode >> variable: aJavaProgramNode [
 	self variable notNil
 		ifTrue: [ self variable parent: nil ].

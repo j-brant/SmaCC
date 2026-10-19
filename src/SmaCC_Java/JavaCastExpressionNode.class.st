@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaCastExpressionNode,
-	#superclass : #JavaUnaryExpressionNode,
+	#name : 'JavaCastExpressionNode',
+	#superclass : 'JavaUnaryExpressionNode',
 	#instVars : [
 		'leftParen',
 		'type',
@@ -8,35 +8,36 @@ Class {
 		'ampToken',
 		'interfaceType'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCastExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCastExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCastExpressionNode >> ampToken [
 	^ ampToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCastExpressionNode >> ampToken: aSmaCCToken [
 	ampToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCastExpressionNode >> ignoredTokenVariables [
 	^ #(#leftParen #rightParen)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCastExpressionNode >> interfaceType [
 	^ interfaceType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCastExpressionNode >> interfaceType: aJavaClassTypeNode [
 	self interfaceType notNil
 		ifTrue: [ self interfaceType parent: nil ].
@@ -45,42 +46,42 @@ JavaCastExpressionNode >> interfaceType: aJavaClassTypeNode [
 		ifTrue: [ self interfaceType parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCastExpressionNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCastExpressionNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCastExpressionNode >> nodeVariables [
 	^ #(#type #interfaceType #expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCastExpressionNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCastExpressionNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCastExpressionNode >> tokenVariables [
 	^ #(#ampToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCastExpressionNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCastExpressionNode >> type: aJavaTypeNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].

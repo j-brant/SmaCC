@@ -1,57 +1,58 @@
 Class {
-	#name : #JavaLabeledStatementNode,
-	#superclass : #JavaStatementNode,
+	#name : 'JavaLabeledStatementNode',
+	#superclass : 'JavaStatementNode',
 	#instVars : [
 		'identifier',
 		'colon',
 		'statement'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLabeledStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLabeledStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLabeledStatementNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLabeledStatementNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLabeledStatementNode >> identifier [
 	^ identifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLabeledStatementNode >> identifier: aSmaCCToken [
 	identifier := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLabeledStatementNode >> nodeVariables [
 	^ #(#statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLabeledStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLabeledStatementNode >> statement: aJavaProgramNode [
 	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aJavaProgramNode.
 	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLabeledStatementNode >> tokenVariables [
 	^ #(#identifier #colon)
 ]

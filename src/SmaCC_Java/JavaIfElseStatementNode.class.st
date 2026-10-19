@@ -1,46 +1,47 @@
 Class {
-	#name : #JavaIfElseStatementNode,
-	#superclass : #JavaIfStatementNode,
+	#name : 'JavaIfElseStatementNode',
+	#superclass : 'JavaIfStatementNode',
 	#instVars : [
 		'elseToken',
 		'falseStatement'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaIfElseStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIfElseStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaIfElseStatementNode >> elseToken [
 	^ elseToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaIfElseStatementNode >> elseToken: aSmaCCToken [
 	elseToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaIfElseStatementNode >> falseStatement [
 	^ falseStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaIfElseStatementNode >> falseStatement: aJavaProgramNode [
 	self falseStatement notNil ifTrue: [ self falseStatement parent: nil ].
 	falseStatement := aJavaProgramNode.
 	self falseStatement notNil ifTrue: [ self falseStatement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaIfElseStatementNode >> nodeVariables [
 	^ #(#falseStatement #expression #trueStatement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaIfElseStatementNode >> tokenVariables [
 	^ #(#elseToken #ifToken)
 ]

@@ -1,13 +1,14 @@
 Class {
-	#name : #JavaParser,
-	#superclass : #SmaCCGLRParser,
+	#name : 'JavaParser',
+	#superclass : 'SmaCCGLRParser',
 	#classInstVars : [
 		'keywords'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaParser class >> ambiguousTransitions [
 ^#(
 #[ 0 6 0 37]
@@ -152,12 +153,12 @@ JavaParser class >> ambiguousTransitions [
 	).
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 JavaParser class >> cacheId [
 	^'2026-10-17T20:50:48.315143+02:00'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaParser class >> definitionComment [
 "%start goal block_statement expression type_declaration method_declaration class_body_declaration class_or_interface_body_declaration;
 %glr;
@@ -1168,17 +1169,17 @@ class_or_interface_body_declaration
 	;"
 ]
 
-{ #category : #'file types' }
+{ #category : 'file types' }
 JavaParser class >> fileExtension [
 	^ '.java'
 ]
 
-{ #category : #'file types' }
+{ #category : 'file types' }
 JavaParser class >> fileExtensionType [
 	^ 'Java files'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JavaParser class >> keywords [
 	^ keywords
 		ifNil: [ keywords := (Set new: 100)
@@ -1187,7 +1188,7 @@ JavaParser class >> keywords [
 				yourself ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaParser class >> reduceTable [
 ^#(
 	#(310 0 #reduceActionForannotations1: 32310273 false)
@@ -1777,57 +1778,57 @@ JavaParser class >> reduceTable [
 	).
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 JavaParser class >> scannerClass [
 	^JavaScanner
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaParser class >> startingStateForblock_statement [
 	^ 2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaParser class >> startingStateForclass_body_declaration [
 	^ 6
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaParser class >> startingStateForclass_or_interface_body_declaration [
 	^ 7
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaParser class >> startingStateForexpression [
 	^ 3
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaParser class >> startingStateForgoal [
 	^ 1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaParser class >> startingStateFormethod_declaration [
 	^ 5
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaParser class >> startingStateFortype_declaration [
 	^ 4
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaParser class >> symbolNames [
 	^ #('"!"' '"!="' '"%"' '"%="' '"&"' '"&&"' '"&="' '"("' '")"' '"*"' '"*="' '"+"' '"++"' '"+="' '","' '"-"' '"--"' '"-="' '"->"' '"."' '"..."' '"/"' '"/="' '":"' '"::"' '";"' '"<"' '"<<"' '"<<="' '"<="' '"="' '"=="' '">="' '">>="' '">>>="' '"?"' '"@"' '"["' '"]"' '"^"' '"^="' '"abstract"' '"assert"' '"boolean"' '"break"' '"byte"' '"case"' '"catch"' '"char"' '"class"' '"continue"' '"default"' '"do"' '"double"' '"else"' '"enum"' '"exports"' '"extends"' '"final"' '"finally"' '"float"' '"for"' '"if"' '"implements"' '"import"' '"instanceof"' '"int"' '"interface"' '"long"' '"module"' '"native"' '"new"' '"non-sealed"' '"open"' '"opens"' '"package"' '"permits"' '"private"' '"protected"' '"provides"' '"public"' '"record"' '"requires"' '"return"' '"sealed"' '"short"' '"static"' '"strictfp"' '"super"' '"switch"' '"synchronized"' '"this"' '"throw"' '"throws"' '"to"' '"transient"' '"transitive"' '"try"' '"uses"' '"void"' '"volatile"' '"while"' '"with"' '"yield"' '"{"' '"|"' '"|="' '"||"' '"}"' '"~"' '<GREATER_THAN>' '<SIGNED_RIGHT_SHIFT>' '<UNSIGNED_RIGHT_SHIFT>' '<INTEGER_LITERAL>' '<FLOATING_POINT_LITERAL>' '<BOOLEAN_LITERAL>' '<CHARACTER_LITERAL>' '<STRING_LITERAL>' '<NULL_LITERAL>' '<IDENTIFIER>' '<whitespace>' '<comment>' '<patternToken>' 'B e g i n' 'goal' 'literal' 'type' 'primitive_type' 'numeric_type' 'integral_type' 'floating_point_type' 'reference_type' 'class_or_interface_type' 'class_type' 'interface_type' 'array_type' 'name' 'simple_name' 'qualified_name' 'compilation_unit' 'module' 'module_body' 'module_body_item ''directive''*' 'module_body_item' 'with_names' '(name ''withName'' "," ''comma'')' '(name ''withName'' "," ''comma'')*' 'export_to_names' '(name ''toName'' "," ''comma'')' '(name ''toName'' "," ''comma'')*' 'import_declarations' 'type_declarations' 'package_declaration' 'import_declaration' 'single_type_import_declaration' 'type_import_on_demand_declaration' 'type_declaration' 'record_declaration' 'record_body' 'record_body_declarations' 'record_body_declaration ''declaration''*' 'record_body_declaration' 'record_constructor_declaration' 'record_constructor_declarator' 'modifiers' 'modifier' 'class_declaration' 'permits' 'permits_type_list' '("," ''comma'' interface_type ''permit'')' '("," ''comma'' interface_type ''permit'')*' 'super' 'interfaces' 'interface_type_list' 'class_body' 'class_body_declarations' 'class_body_declaration' 'class_member_declaration' 'field_declaration' 'variable_declarators' 'variable_declarator' 'initialized_variable_declarator' 'variable_declarator_id' 'variable_initializer' 'method_declaration' 'method_header' 'void' 'method_declarator' 'formal_parameter_list' 'formal_parameter' 'throws' 'class_type_list' 'method_body' 'static_initializer' 'constructor_declaration' 'constructor_declarator' 'constructor_body' 'explicit_constructor_invocation' 'interface_declaration' 'annotation_interface_declaration' 'annotation_interface_body' 'annotation_interface_member_declarations' 'annotation_interface_member_declaration' 'annotation_method_declaration' 'extends_interfaces' 'interface_body' 'interface_member_declarations' 'interface_member_declaration' 'constant_declaration' 'interface_method_declaration' 'interface_method_header' 'interface_modifier*' 'interface_modifier' 'default_modifier' 'abstract_method_declaration' 'array_initializer' 'variable_initializers' 'block' 'block_statements' 'block_statement' 'local_variable_declaration_statement' 'local_variable_declaration' 'statement' 'statement_without_trailing_substatement' 'yield_statement' 'empty_statement' 'labeled_statement' 'expression_statement' 'statement_expression' 'if_then_statement' 'if_then_else_statement' 'switch_statement' 'switch_block' 'switch_block_statement_groups' 'switch_block_statement_group' 'switch_labels' 'switch_label' '("," ''comma'' constant_expression ''constant'')' '("," ''comma'' constant_expression ''constant'')*' 'while_statement' 'do_statement' 'for_statement' 'for_init' 'for_update' 'statement_expression_list' 'break_statement' 'continue_statement' 'return_statement' 'throw_statement' 'synchronized_statement' 'try_statement' 'try_resources' 'try_resources_list' 'try_resource' 'catches' 'catch_clause' 'catch_parameter' 'catch_types' 'finally' 'assert_statement' 'primary' 'primary_no_new_array' 'switch_expression' 'switch_expression_block' 'switch_block_expression_groups' 'switch_block_expression_group' 'switch_expression_labels' 'lambda_expression' 'lambda_parameters' 'lambda_parameter_list' 'lambda_parameter' 'untyped_lambda_parameter' 'lambda_function' 'method_reference_expression' 'class_instance_creation_expression' 'argument_list' 'array_creation_expression' 'dim_exprs' 'dim_expr' 'dims' 'empty_dim_expr' 'field_access' 'method_invocation' 'array_access' 'postfix_expression' 'postincrement_expression' 'postdecrement_expression' 'unary_expression' 'preincrement_expression' 'predecrement_expression' 'unary_expression_not_plus_minus' 'cast_expression' 'multiplicative_expression' 'additive_expression' 'shift_expression' 'relational_expression' 'equality_expression' 'and_expression' 'exclusive_or_expression' 'inclusive_or_expression' 'conditional_and_expression' 'conditional_or_expression' 'conditional_expression' 'assignment_expression' 'assignment' 'left_hand_side' 'assignment_operator' 'expression' 'constant_expression' 'annotations' 'annotation' 'annotation_args' 'elementValuePairs' 'elementValuePair' 'elementValue' 'elementValueArrayInitializer' 'elementValues' 'enum_declaration' 'enum_body' 'enum_constants' 'enum_constant' 'enum_body_declarations' 'type_parameters_opt' 'type_parameters' 'type_parameter' 'type_bound' 'type_arguments_or_diamond_opt' 'type_arguments_opt' 'type_arguments' 'type_argument' 'type_argument_type' 'type_name' 'simple_type_name' 'qualified_type_name' 'foreach_statement' 'variable_modifiers' 'variable_modifier' 'primary_or_name' 'class_or_interface_body_declaration' 'E O F' 'error')
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaParser class >> symbolTypes [
 	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #JavaProgramNode #JavaProgramNode #JavaLiteralNode #JavaTypeNode #JavaPrimitiveTypeNode #JavaPrimitiveTypeNode #JavaPrimitiveTypeNode #JavaPrimitiveTypeNode #JavaTypeNode #JavaClassTypeNode #JavaClassTypeNode #JavaClassTypeNode #JavaArrayTypeNode #JavaNameNode #JavaNameNode #JavaQualifiedNameNode #JavaProgramNode #JavaModuleNode #OrderedCollection #OrderedCollection #JavaProgramNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #JavaPackageDeclarationNode #JavaSingleTypeImportDeclarationNode #JavaSingleTypeImportDeclarationNode #JavaTypeImportOnDemandDeclarationNode #JavaProgramNode #JavaRecordDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #JavaProgramNode #JavaConstructorDeclarationNode #OrderedCollection #OrderedCollection #JavaProgramNode #JavaDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #JavaProgramNode #JavaProgramNode #JavaFieldDeclarationNode #OrderedCollection #JavaVariableDeclarationNode #JavaInitializedVariableDeclarationNode #JavaProgramNode #JavaProgramNode #JavaMethodDeclarationNode #OrderedCollection #JavaVoidTypeNode #JavaProgramNode #OrderedCollection #JavaParameterNode #JavaThrowsNode #OrderedCollection #JavaProgramNode #JavaStaticInitializerNode #JavaConstructorDeclarationNode #OrderedCollection #JavaBlockNode #JavaStatementNode #JavaInterfaceDeclarationNode #JavaAnnotationInterfaceNode #OrderedCollection #OrderedCollection #JavaProgramNode #JavaAbstractMethodDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #JavaProgramNode #JavaFieldDeclarationNode #JavaMethodDeclarationNode #OrderedCollection #OrderedCollection #JavaProgramNode #JavaModifierNode #JavaAbstractMethodDeclarationNode #JavaArrayInitializerNode #OrderedCollection #JavaBlockNode #OrderedCollection #JavaProgramNode #JavaLocalVariableDeclarationStatementNode #JavaLocalVariableDeclarationNode #JavaProgramNode #JavaStatementNode #JavaYieldStatementNode #JavaEmptyStatementNode #JavaLabeledStatementNode #JavaExpressionStatementNode #JavaExpressionNode #JavaIfStatementNode #JavaIfElseStatementNode #JavaSwitchStatementNode #JavaSwitchBlockNode #OrderedCollection #JavaSwitchBlockStatementGroupNode #OrderedCollection #JavaProgramNode #OrderedCollection #OrderedCollection #JavaWhileStatementNode #JavaDoWhileStatementNode #JavaForStatementNode #JavaProgramNode #JavaStatementExpressionListNode #JavaStatementExpressionListNode #JavaBreakStatementNode #JavaContinueStatementNode #JavaReturnStatementNode #JavaThrowStatementNode #JavaSynchronizedStatementNode #JavaTryStatementNode #OrderedCollection #OrderedCollection #JavaProgramNode #OrderedCollection #JavaCatchClauseNode #JavaCatchParameterNode #OrderedCollection #JavaFinallyClauseNode #JavaAssertStatementNode #JavaExpressionNode #JavaExpressionNode #JavaSwitchExpressionNode #OrderedCollection #OrderedCollection #JavaSwitchBlockExpressionGroupNode #OrderedCollection #JavaLambdaExpressionNode #OrderedCollection #OrderedCollection #JavaParameterNode #JavaParameterNode #JavaProgramNode #JavaMethodReferenceNode #JavaNewNode #OrderedCollection #JavaNewArrayNode #OrderedCollection #JavaDimensionExpressionNode #OrderedCollection #OrderedCollection #JavaFieldAccessNode #JavaMethodInvocationNode #JavaArrayAccessNode #JavaExpressionNode #JavaPostIncrementExpressionNode #JavaPostDecrementExpressionNode #JavaExpressionNode #JavaPreIncrementExpressionNode #JavaPreDecrementExpressionNode #JavaExpressionNode #JavaCastExpressionNode #JavaExpressionNode #JavaExpressionNode #JavaExpressionNode #JavaExpressionNode #JavaExpressionNode #JavaExpressionNode #JavaExpressionNode #JavaExpressionNode #JavaExpressionNode #JavaExpressionNode #JavaExpressionNode #JavaExpressionNode #JavaAssignmentNode #JavaExpressionNode #SmaCCToken #JavaExpressionNode #JavaExpressionNode #OrderedCollection #JavaAnnotationNode #OrderedCollection #OrderedCollection #JavaElementValuePairNode #JavaProgramNode #JavaElementArrayInitializerNode #OrderedCollection #JavaEnumDeclarationNode #OrderedCollection #OrderedCollection #JavaEnumConstantNode #OrderedCollection #JavaTypeParametersNode #OrderedCollection #JavaTypeParameterNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #JavaTypeArgumentNode #OrderedCollection #JavaTypeNameNode #JavaTypeNameNode #JavaQualifiedTypeNameNode #JavaForEachStatementNode #OrderedCollection #JavaProgramNode #JavaExpressionNode #JavaProgramNode #SmaCCToken #SmaCCErrorNode)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaParser class >> transitionTable [
 ^#(
 #[1 0 33 0 26 0 7 0 37 0 41 0 42 0 45 0 50 0 49 0 56 0 53 0 59 0 57 0 65 0 61 0 68 0 65 0 70 0 69 0 71 0 73 0 73 0 77 0 74 0 6 0 76 0 81 0 78 0 85 0 79 0 89 0 81 0 93 0 82 0 97 0 85 0 101 0 87 0 105 0 88 0 109 0 91 0 113 0 96 0 117 0 101 0 121 0 125 0 121 0 140 0 121 0 141 0 133 0 151 0 137 0 152 0 141 0 153 0 145 0 154 0 145 0 155 0 145 0 156 0 157 0 157 0 157 0 158 0 165 0 165 0 169 0 166 0 157 0 167 0 157 0 199 0 157 0 200 0 185 1 54 0 169 1 55 0 157 1 62 0 10 1 84]
@@ -2894,7 +2895,7 @@ JavaParser class >> transitionTable [
 	).
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JavaParser >> performParsingStep [
 	| actions scannerState token |
 	(currentToken value = '>>' or: [ currentToken value = '>>>' ])
@@ -2911,7 +2912,7 @@ JavaParser >> performParsingStep [
 	^ super performParsingStep
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForabstract_method_declaration1: nodes [
 	| result |
 	result := JavaAbstractMethodDeclarationNode new.
@@ -2924,7 +2925,7 @@ JavaParser >> reduceActionForabstract_method_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForannotation1: nodes [
 	| result |
 	result := JavaAnnotationNode new.
@@ -2933,7 +2934,7 @@ JavaParser >> reduceActionForannotation1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForannotation2: nodes [
 	| result |
 	result := JavaAnnotationNode new.
@@ -2946,7 +2947,7 @@ JavaParser >> reduceActionForannotation2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForannotation_args1: nodes [
 	| result |
 	result := Array new: 2.
@@ -2955,14 +2956,14 @@ JavaParser >> reduceActionForannotation_args1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForannotation_args2: nodes [
 	| result |
 	result := nodes at: 1.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForannotation_interface_body1: nodes [
 	| result |
 	result := Array new: 3.
@@ -2972,7 +2973,7 @@ JavaParser >> reduceActionForannotation_interface_body1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForannotation_interface_body2: nodes [
 	| result |
 	result := Array new: 3.
@@ -2983,7 +2984,7 @@ JavaParser >> reduceActionForannotation_interface_body2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForannotation_interface_declaration1: nodes [
 	| result |
 	result := JavaAnnotationInterfaceNode new.
@@ -2996,7 +2997,7 @@ JavaParser >> reduceActionForannotation_interface_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForannotation_interface_declaration2: nodes [
 	| result |
 	result := JavaAnnotationInterfaceNode new.
@@ -3010,7 +3011,7 @@ JavaParser >> reduceActionForannotation_interface_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForannotation_method_declaration2: nodes [
 	| result |
 	result := JavaAnnotationMethodDeclarationNode new.
@@ -3025,14 +3026,14 @@ JavaParser >> reduceActionForannotation_method_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForannotations1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForarray_access1: nodes [
 	| result |
 	result := JavaArrayAccessNode new.
@@ -3043,7 +3044,7 @@ JavaParser >> reduceActionForarray_access1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForarray_creation_expression1: nodes [
 	| result |
 	result := JavaNewArrayNode new.
@@ -3053,7 +3054,7 @@ JavaParser >> reduceActionForarray_creation_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForarray_creation_expression2: nodes [
 	| result |
 	result := JavaNewArrayNode new.
@@ -3065,7 +3066,7 @@ JavaParser >> reduceActionForarray_creation_expression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForarray_creation_expression5: nodes [
 	| result |
 	result := JavaNewArrayNode new.
@@ -3077,7 +3078,7 @@ JavaParser >> reduceActionForarray_creation_expression5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForarray_initializer1: nodes [
 	| result |
 	result := JavaArrayInitializerNode new.
@@ -3089,7 +3090,7 @@ JavaParser >> reduceActionForarray_initializer1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForarray_initializer2: nodes [
 	| result |
 	result := JavaArrayInitializerNode new.
@@ -3100,7 +3101,7 @@ JavaParser >> reduceActionForarray_initializer2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForarray_initializer3: nodes [
 	| result |
 	result := JavaArrayInitializerNode new.
@@ -3110,7 +3111,7 @@ JavaParser >> reduceActionForarray_initializer3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForarray_initializer4: nodes [
 	| result |
 	result := JavaArrayInitializerNode new.
@@ -3119,7 +3120,7 @@ JavaParser >> reduceActionForarray_initializer4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForarray_type1: nodes [
 	| result |
 	result := JavaArrayTypeNode new.
@@ -3129,7 +3130,7 @@ JavaParser >> reduceActionForarray_type1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForassert_statement1: nodes [
 	| result |
 	result := JavaAssertStatementNode new.
@@ -3139,7 +3140,7 @@ JavaParser >> reduceActionForassert_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForassert_statement2: nodes [
 	| result |
 	result := JavaAssertStatementNode new.
@@ -3151,7 +3152,7 @@ JavaParser >> reduceActionForassert_statement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForassignment1: nodes [
 	| result |
 	result := JavaAssignmentNode new.
@@ -3161,7 +3162,7 @@ JavaParser >> reduceActionForassignment1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForblock1: nodes [
 	| result |
 	result := JavaBlockNode new.
@@ -3170,7 +3171,7 @@ JavaParser >> reduceActionForblock1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForblock2: nodes [
 	| result |
 	result := JavaBlockNode new.
@@ -3180,7 +3181,7 @@ JavaParser >> reduceActionForblock2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForbreak_statement1: nodes [
 	| result |
 	result := JavaBreakStatementNode new.
@@ -3189,7 +3190,7 @@ JavaParser >> reduceActionForbreak_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForbreak_statement2: nodes [
 	| result |
 	result := JavaBreakStatementNode new.
@@ -3199,7 +3200,7 @@ JavaParser >> reduceActionForbreak_statement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForcast_expression1: nodes [
 	| result |
 	result := JavaCastExpressionNode new.
@@ -3210,7 +3211,7 @@ JavaParser >> reduceActionForcast_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForcast_expression5: nodes [
 	| result |
 	result := JavaCastExpressionNode new.
@@ -3223,7 +3224,7 @@ JavaParser >> reduceActionForcast_expression5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForcatch_clause1: nodes [
 	| result |
 	result := JavaCatchClauseNode new.
@@ -3235,7 +3236,7 @@ JavaParser >> reduceActionForcatch_clause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForcatch_parameter1: nodes [
 	| result |
 	result := JavaCatchParameterNode new.
@@ -3246,7 +3247,7 @@ JavaParser >> reduceActionForcatch_parameter1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_body_declaration4: nodes [
 	| result |
 	result := JavaInitializerNode new.
@@ -3254,7 +3255,7 @@ JavaParser >> reduceActionForclass_body_declaration4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_declaration10: nodes [
 	| result |
 	result := JavaClassDeclarationNode new.
@@ -3271,7 +3272,7 @@ JavaParser >> reduceActionForclass_declaration10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_declaration11: nodes [
 	| result |
 	result := JavaClassDeclarationNode new.
@@ -3288,7 +3289,7 @@ JavaParser >> reduceActionForclass_declaration11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_declaration12: nodes [
 	| result |
 	result := JavaClassDeclarationNode new.
@@ -3308,7 +3309,7 @@ JavaParser >> reduceActionForclass_declaration12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_declaration13: nodes [
 	| result |
 	result := JavaClassDeclarationNode new.
@@ -3324,7 +3325,7 @@ JavaParser >> reduceActionForclass_declaration13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_declaration14: nodes [
 	| result |
 	result := JavaClassDeclarationNode new.
@@ -3343,7 +3344,7 @@ JavaParser >> reduceActionForclass_declaration14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_declaration15: nodes [
 	| result |
 	result := JavaClassDeclarationNode new.
@@ -3362,7 +3363,7 @@ JavaParser >> reduceActionForclass_declaration15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_declaration16: nodes [
 	| result |
 	result := JavaClassDeclarationNode new.
@@ -3384,7 +3385,7 @@ JavaParser >> reduceActionForclass_declaration16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_declaration1: nodes [
 	| result |
 	result := JavaClassDeclarationNode new.
@@ -3397,7 +3398,7 @@ JavaParser >> reduceActionForclass_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_declaration2: nodes [
 	| result |
 	result := JavaClassDeclarationNode new.
@@ -3413,7 +3414,7 @@ JavaParser >> reduceActionForclass_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_declaration3: nodes [
 	| result |
 	result := JavaClassDeclarationNode new.
@@ -3429,7 +3430,7 @@ JavaParser >> reduceActionForclass_declaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_declaration4: nodes [
 	| result |
 	result := JavaClassDeclarationNode new.
@@ -3448,7 +3449,7 @@ JavaParser >> reduceActionForclass_declaration4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_declaration5: nodes [
 	| result |
 	result := JavaClassDeclarationNode new.
@@ -3463,7 +3464,7 @@ JavaParser >> reduceActionForclass_declaration5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_declaration6: nodes [
 	| result |
 	result := JavaClassDeclarationNode new.
@@ -3481,7 +3482,7 @@ JavaParser >> reduceActionForclass_declaration6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_declaration7: nodes [
 	| result |
 	result := JavaClassDeclarationNode new.
@@ -3499,7 +3500,7 @@ JavaParser >> reduceActionForclass_declaration7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_declaration8: nodes [
 	| result |
 	result := JavaClassDeclarationNode new.
@@ -3520,7 +3521,7 @@ JavaParser >> reduceActionForclass_declaration8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_declaration9: nodes [
 	| result |
 	result := JavaClassDeclarationNode new.
@@ -3534,7 +3535,7 @@ JavaParser >> reduceActionForclass_declaration9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_instance_creation_expression1: nodes [
 	| result |
 	result := JavaNewNode new.
@@ -3545,7 +3546,7 @@ JavaParser >> reduceActionForclass_instance_creation_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_instance_creation_expression2: nodes [
 	| result |
 	result := JavaNewNode new.
@@ -3558,7 +3559,7 @@ JavaParser >> reduceActionForclass_instance_creation_expression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_instance_creation_expression3: nodes [
 	| result |
 	result := JavaNewClassNode new.
@@ -3572,7 +3573,7 @@ JavaParser >> reduceActionForclass_instance_creation_expression3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_instance_creation_expression4: nodes [
 	| result |
 	result := JavaNewClassNode new.
@@ -3588,7 +3589,7 @@ JavaParser >> reduceActionForclass_instance_creation_expression4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_instance_creation_expression5: nodes [
 	| result |
 	result := JavaNewNode new.
@@ -3609,7 +3610,7 @@ JavaParser >> reduceActionForclass_instance_creation_expression5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_instance_creation_expression6: nodes [
 	| result |
 	result := JavaNewNode new.
@@ -3632,7 +3633,7 @@ JavaParser >> reduceActionForclass_instance_creation_expression6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_instance_creation_expression7: nodes [
 	| result |
 	result := JavaNewClassNode new.
@@ -3656,7 +3657,7 @@ JavaParser >> reduceActionForclass_instance_creation_expression7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_instance_creation_expression8: nodes [
 	| result |
 	result := JavaNewClassNode new.
@@ -3682,7 +3683,7 @@ JavaParser >> reduceActionForclass_instance_creation_expression8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForclass_or_interface_type1: nodes [
 	| result |
 	result := JavaClassTypeNode new.
@@ -3690,14 +3691,14 @@ JavaParser >> reduceActionForclass_or_interface_type1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForcompilation_unit1: nodes [
 	| result |
 	result := JavaProgramFileNode new.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForcompilation_unit2: nodes [
 	| result |
 	result := JavaProgramFileNode new.
@@ -3705,7 +3706,7 @@ JavaParser >> reduceActionForcompilation_unit2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForcompilation_unit3: nodes [
 	| result |
 	result := JavaProgramFileNode new.
@@ -3713,7 +3714,7 @@ JavaParser >> reduceActionForcompilation_unit3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForcompilation_unit4: nodes [
 	| result |
 	result := JavaProgramFileNode new.
@@ -3722,7 +3723,7 @@ JavaParser >> reduceActionForcompilation_unit4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForcompilation_unit5: nodes [
 	| result |
 	result := JavaProgramFileNode new.
@@ -3730,7 +3731,7 @@ JavaParser >> reduceActionForcompilation_unit5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForcompilation_unit6: nodes [
 	| result |
 	result := JavaProgramFileNode new.
@@ -3739,7 +3740,7 @@ JavaParser >> reduceActionForcompilation_unit6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForcompilation_unit7: nodes [
 	| result |
 	result := JavaProgramFileNode new.
@@ -3748,7 +3749,7 @@ JavaParser >> reduceActionForcompilation_unit7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForcompilation_unit8: nodes [
 	| result |
 	result := JavaProgramFileNode new.
@@ -3758,7 +3759,7 @@ JavaParser >> reduceActionForcompilation_unit8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForconditional_expression3: nodes [
 	| result |
 	result := JavaConditionalExpressionNode new.
@@ -3769,7 +3770,7 @@ JavaParser >> reduceActionForconditional_expression3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForconditional_expression4: nodes [
 	| result |
 	result := JavaConditionalExpressionNode new.
@@ -3781,7 +3782,7 @@ JavaParser >> reduceActionForconditional_expression4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForconstructor_body1: nodes [
 	| result |
 	result := JavaBlockNode new.
@@ -3792,7 +3793,7 @@ JavaParser >> reduceActionForconstructor_body1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForconstructor_body2: nodes [
 	| result |
 	result := JavaBlockNode new.
@@ -3802,7 +3803,7 @@ JavaParser >> reduceActionForconstructor_body2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForconstructor_declaration1: nodes [
 	| result |
 	result := JavaConstructorDeclarationNode new.
@@ -3816,7 +3817,7 @@ JavaParser >> reduceActionForconstructor_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForconstructor_declaration2: nodes [
 	| result |
 	result := JavaConstructorDeclarationNode new.
@@ -3831,7 +3832,7 @@ JavaParser >> reduceActionForconstructor_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForconstructor_declaration3: nodes [
 	| result |
 	result := JavaConstructorDeclarationNode new.
@@ -3846,7 +3847,7 @@ JavaParser >> reduceActionForconstructor_declaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForconstructor_declaration4: nodes [
 	| result |
 	result := JavaConstructorDeclarationNode new.
@@ -3862,7 +3863,7 @@ JavaParser >> reduceActionForconstructor_declaration4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForconstructor_declarator1: nodes [
 	| result |
 	result := Array new: 6.
@@ -3875,7 +3876,7 @@ JavaParser >> reduceActionForconstructor_declarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForconstructor_declarator2: nodes [
 	| result |
 	result := Array new: 6.
@@ -3890,7 +3891,7 @@ JavaParser >> reduceActionForconstructor_declarator2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForcontinue_statement1: nodes [
 	| result |
 	result := JavaContinueStatementNode new.
@@ -3899,7 +3900,7 @@ JavaParser >> reduceActionForcontinue_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForcontinue_statement2: nodes [
 	| result |
 	result := JavaContinueStatementNode new.
@@ -3909,7 +3910,7 @@ JavaParser >> reduceActionForcontinue_statement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFordim_expr1: nodes [
 	| result |
 	result := JavaDimensionExpressionNode new.
@@ -3919,7 +3920,7 @@ JavaParser >> reduceActionFordim_expr1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFordims1: nodes [
 	| result |
 	result := Array new: 2.
@@ -3930,7 +3931,7 @@ JavaParser >> reduceActionFordims1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFordims2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -3939,7 +3940,7 @@ JavaParser >> reduceActionFordims2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFordo_statement1: nodes [
 	| result |
 	result := JavaDoWhileStatementNode new.
@@ -3953,7 +3954,7 @@ JavaParser >> reduceActionFordo_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForelementValueArrayInitializer1: nodes [
 	| result |
 	result := JavaElementArrayInitializerNode new.
@@ -3962,7 +3963,7 @@ JavaParser >> reduceActionForelementValueArrayInitializer1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForelementValueArrayInitializer2: nodes [
 	| result |
 	result := JavaElementArrayInitializerNode new.
@@ -3972,7 +3973,7 @@ JavaParser >> reduceActionForelementValueArrayInitializer2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForelementValueArrayInitializer3: nodes [
 	| result |
 	result := JavaElementArrayInitializerNode new.
@@ -3983,7 +3984,7 @@ JavaParser >> reduceActionForelementValueArrayInitializer3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForelementValueArrayInitializer4: nodes [
 	| result |
 	result := JavaElementArrayInitializerNode new.
@@ -3995,7 +3996,7 @@ JavaParser >> reduceActionForelementValueArrayInitializer4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForelementValuePair1: nodes [
 	| result |
 	result := JavaElementValuePairNode new.
@@ -4005,7 +4006,7 @@ JavaParser >> reduceActionForelementValuePair1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForempty_dim_expr1: nodes [
 	| result |
 	result := Array new: 2.
@@ -4014,7 +4015,7 @@ JavaParser >> reduceActionForempty_dim_expr1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForempty_statement1: nodes [
 	| result |
 	result := JavaEmptyStatementNode new.
@@ -4022,7 +4023,7 @@ JavaParser >> reduceActionForempty_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForenum_body1: nodes [
 	| result |
 	result := Array new: 6.
@@ -4034,7 +4035,7 @@ JavaParser >> reduceActionForenum_body1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForenum_body2: nodes [
 	| result |
 	result := Array new: 6.
@@ -4048,7 +4049,7 @@ JavaParser >> reduceActionForenum_body2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForenum_body3: nodes [
 	| result |
 	result := Array new: 6.
@@ -4061,7 +4062,7 @@ JavaParser >> reduceActionForenum_body3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForenum_body4: nodes [
 	| result |
 	result := Array new: 6.
@@ -4076,7 +4077,7 @@ JavaParser >> reduceActionForenum_body4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForenum_body5: nodes [
 	| result |
 	result := Array new: 6.
@@ -4090,7 +4091,7 @@ JavaParser >> reduceActionForenum_body5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForenum_body6: nodes [
 	| result |
 	result := Array new: 6.
@@ -4106,7 +4107,7 @@ JavaParser >> reduceActionForenum_body6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForenum_body7: nodes [
 	| result |
 	result := Array new: 6.
@@ -4121,7 +4122,7 @@ JavaParser >> reduceActionForenum_body7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForenum_body8: nodes [
 	| result |
 	result := Array new: 6.
@@ -4138,7 +4139,7 @@ JavaParser >> reduceActionForenum_body8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForenum_body_declarations1: nodes [
 	| result |
 	result := Array new: 2.
@@ -4147,7 +4148,7 @@ JavaParser >> reduceActionForenum_body_declarations1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForenum_body_declarations2: nodes [
 	| result |
 	result := Array new: 2.
@@ -4157,7 +4158,7 @@ JavaParser >> reduceActionForenum_body_declarations2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForenum_constant1: nodes [
 	| result |
 	result := JavaEnumConstantNode new.
@@ -4166,7 +4167,7 @@ JavaParser >> reduceActionForenum_constant1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForenum_constant2: nodes [
 	| result |
 	result := JavaEnumConstantNode new.
@@ -4178,7 +4179,7 @@ JavaParser >> reduceActionForenum_constant2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForenum_constant3: nodes [
 	| result |
 	result := JavaEnumConstantNode new.
@@ -4189,7 +4190,7 @@ JavaParser >> reduceActionForenum_constant3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForenum_constant4: nodes [
 	| result |
 	result := JavaEnumConstantNode new.
@@ -4203,7 +4204,7 @@ JavaParser >> reduceActionForenum_constant4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForenum_constant5: nodes [
 	| result |
 	result := JavaEnumConstantNode new.
@@ -4216,7 +4217,7 @@ JavaParser >> reduceActionForenum_constant5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForenum_constant6: nodes [
 	| result |
 	result := JavaEnumConstantNode new.
@@ -4232,7 +4233,7 @@ JavaParser >> reduceActionForenum_constant6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForenum_declaration1: nodes [
 	| result |
 	result := JavaEnumDeclarationNode new.
@@ -4247,7 +4248,7 @@ JavaParser >> reduceActionForenum_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForenum_declaration2: nodes [
 	| result |
 	result := JavaEnumDeclarationNode new.
@@ -4265,7 +4266,7 @@ JavaParser >> reduceActionForenum_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForenum_declaration3: nodes [
 	| result |
 	result := JavaEnumDeclarationNode new.
@@ -4281,7 +4282,7 @@ JavaParser >> reduceActionForenum_declaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForenum_declaration4: nodes [
 	| result |
 	result := JavaEnumDeclarationNode new.
@@ -4300,7 +4301,7 @@ JavaParser >> reduceActionForenum_declaration4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForexplicit_constructor_invocation1: nodes [
 	| result |
 	result := JavaThisConstructorInvocationNode new.
@@ -4311,7 +4312,7 @@ JavaParser >> reduceActionForexplicit_constructor_invocation1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForexplicit_constructor_invocation2: nodes [
 	| result |
 	result := JavaThisConstructorInvocationNode new.
@@ -4324,7 +4325,7 @@ JavaParser >> reduceActionForexplicit_constructor_invocation2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForexplicit_constructor_invocation3: nodes [
 	| result |
 	result := JavaSuperConstructorInvocationNode new.
@@ -4335,7 +4336,7 @@ JavaParser >> reduceActionForexplicit_constructor_invocation3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForexplicit_constructor_invocation4: nodes [
 	| result |
 	result := JavaSuperConstructorInvocationNode new.
@@ -4348,7 +4349,7 @@ JavaParser >> reduceActionForexplicit_constructor_invocation4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForexplicit_constructor_invocation5: nodes [
 	| result |
 	result := JavaThisConstructorInvocationNode new.
@@ -4361,7 +4362,7 @@ JavaParser >> reduceActionForexplicit_constructor_invocation5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForexplicit_constructor_invocation6: nodes [
 	| result |
 	result := JavaThisConstructorInvocationNode new.
@@ -4376,7 +4377,7 @@ JavaParser >> reduceActionForexplicit_constructor_invocation6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForexplicit_constructor_invocation7: nodes [
 	| result |
 	result := JavaSuperConstructorInvocationNode new.
@@ -4389,7 +4390,7 @@ JavaParser >> reduceActionForexplicit_constructor_invocation7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForexplicit_constructor_invocation8: nodes [
 	| result |
 	result := JavaSuperConstructorInvocationNode new.
@@ -4404,7 +4405,7 @@ JavaParser >> reduceActionForexplicit_constructor_invocation8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForexport_to_names1: nodes [
 	| result |
 	result := nodes at: 1.
@@ -4412,7 +4413,7 @@ JavaParser >> reduceActionForexport_to_names1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForexpression_statement1: nodes [
 	| result |
 	result := JavaExpressionStatementNode new.
@@ -4421,7 +4422,7 @@ JavaParser >> reduceActionForexpression_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForextends_interfaces1: nodes [
 	| result |
 	result := Array new: 3.
@@ -4432,7 +4433,7 @@ JavaParser >> reduceActionForextends_interfaces1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForextends_interfaces2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -4441,7 +4442,7 @@ JavaParser >> reduceActionForextends_interfaces2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForfield_access1: nodes [
 	| result |
 	result := JavaFieldAccessNode new.
@@ -4451,7 +4452,7 @@ JavaParser >> reduceActionForfield_access1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForfield_access2: nodes [
 	| result |
 	result := JavaFieldAccessNode new.
@@ -4461,7 +4462,7 @@ JavaParser >> reduceActionForfield_access2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForfield_access3: nodes [
 	| result |
 	result := JavaFieldAccessNode new.
@@ -4473,7 +4474,7 @@ JavaParser >> reduceActionForfield_access3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForfield_declaration1: nodes [
 	| result |
 	result := JavaFieldDeclarationNode new.
@@ -4486,7 +4487,7 @@ JavaParser >> reduceActionForfield_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForfield_declaration2: nodes [
 	| result |
 	result := JavaFieldDeclarationNode new.
@@ -4500,7 +4501,7 @@ JavaParser >> reduceActionForfield_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForfinally1: nodes [
 	| result |
 	result := JavaFinallyClauseNode new.
@@ -4509,7 +4510,7 @@ JavaParser >> reduceActionForfinally1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForfloating_point_type1: nodes [
 	| result |
 	result := JavaFloatTypeNode new.
@@ -4517,7 +4518,7 @@ JavaParser >> reduceActionForfloating_point_type1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForfloating_point_type2: nodes [
 	| result |
 	result := JavaDoubleTypeNode new.
@@ -4525,7 +4526,7 @@ JavaParser >> reduceActionForfloating_point_type2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForfor_statement1: nodes [
 	| result |
 	result := JavaForStatementNode new.
@@ -4538,7 +4539,7 @@ JavaParser >> reduceActionForfor_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForfor_statement2: nodes [
 	| result |
 	result := JavaForStatementNode new.
@@ -4552,7 +4553,7 @@ JavaParser >> reduceActionForfor_statement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForfor_statement3: nodes [
 	| result |
 	result := JavaForStatementNode new.
@@ -4566,7 +4567,7 @@ JavaParser >> reduceActionForfor_statement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForfor_statement4: nodes [
 	| result |
 	result := JavaForStatementNode new.
@@ -4581,7 +4582,7 @@ JavaParser >> reduceActionForfor_statement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForfor_statement5: nodes [
 	| result |
 	result := JavaForStatementNode new.
@@ -4595,7 +4596,7 @@ JavaParser >> reduceActionForfor_statement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForfor_statement6: nodes [
 	| result |
 	result := JavaForStatementNode new.
@@ -4610,7 +4611,7 @@ JavaParser >> reduceActionForfor_statement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForfor_statement7: nodes [
 	| result |
 	result := JavaForStatementNode new.
@@ -4625,7 +4626,7 @@ JavaParser >> reduceActionForfor_statement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForfor_statement8: nodes [
 	| result |
 	result := JavaForStatementNode new.
@@ -4641,7 +4642,7 @@ JavaParser >> reduceActionForfor_statement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForforeach_statement1: nodes [
 	| result |
 	result := JavaForEachStatementNode new.
@@ -4657,7 +4658,7 @@ JavaParser >> reduceActionForforeach_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForformal_parameter1: nodes [
 	| result |
 	result := JavaParameterNode new.
@@ -4667,7 +4668,7 @@ JavaParser >> reduceActionForformal_parameter1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForformal_parameter2: nodes [
 	| result |
 	result := JavaVariableArgumentParameterNode new.
@@ -4678,7 +4679,7 @@ JavaParser >> reduceActionForformal_parameter2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForif_then_else_statement1: nodes [
 	| result |
 	result := JavaIfElseStatementNode new.
@@ -4692,7 +4693,7 @@ JavaParser >> reduceActionForif_then_else_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForif_then_statement1: nodes [
 	| result |
 	result := JavaIfStatementNode new.
@@ -4704,7 +4705,7 @@ JavaParser >> reduceActionForif_then_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForimport_declarations1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
@@ -4712,7 +4713,7 @@ JavaParser >> reduceActionForimport_declarations1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForimport_declarations2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -4720,7 +4721,7 @@ JavaParser >> reduceActionForimport_declarations2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForinitialized_variable_declarator1: nodes [
 	| result |
 	result := JavaInitializedVariableDeclarationNode new.
@@ -4730,7 +4731,7 @@ JavaParser >> reduceActionForinitialized_variable_declarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForintegral_type1: nodes [
 	| result |
 	result := JavaByteTypeNode new.
@@ -4738,7 +4739,7 @@ JavaParser >> reduceActionForintegral_type1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForintegral_type2: nodes [
 	| result |
 	result := JavaShortTypeNode new.
@@ -4746,7 +4747,7 @@ JavaParser >> reduceActionForintegral_type2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForintegral_type3: nodes [
 	| result |
 	result := JavaIntTypeNode new.
@@ -4754,7 +4755,7 @@ JavaParser >> reduceActionForintegral_type3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForintegral_type4: nodes [
 	| result |
 	result := JavaLongTypeNode new.
@@ -4762,7 +4763,7 @@ JavaParser >> reduceActionForintegral_type4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForintegral_type5: nodes [
 	| result |
 	result := JavaCharTypeNode new.
@@ -4770,7 +4771,7 @@ JavaParser >> reduceActionForintegral_type5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForinterface_declaration1: nodes [
 	| result |
 	result := JavaInterfaceDeclarationNode new.
@@ -4783,7 +4784,7 @@ JavaParser >> reduceActionForinterface_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForinterface_declaration2: nodes [
 	| result |
 	result := JavaInterfaceDeclarationNode new.
@@ -4799,7 +4800,7 @@ JavaParser >> reduceActionForinterface_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForinterface_declaration3: nodes [
 	| result |
 	result := JavaInterfaceDeclarationNode new.
@@ -4813,7 +4814,7 @@ JavaParser >> reduceActionForinterface_declaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForinterface_declaration4: nodes [
 	| result |
 	result := JavaInterfaceDeclarationNode new.
@@ -4830,7 +4831,7 @@ JavaParser >> reduceActionForinterface_declaration4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForinterface_method_declaration1: nodes [
 	| result |
 	result := JavaMethodDeclarationNode new.
@@ -4843,7 +4844,7 @@ JavaParser >> reduceActionForinterface_method_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForinterface_method_header1: nodes [
 	| result |
 	result := Array new: 5.
@@ -4855,7 +4856,7 @@ JavaParser >> reduceActionForinterface_method_header1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForinterface_method_header2: nodes [
 	| result |
 	result := Array new: 5.
@@ -4868,7 +4869,7 @@ JavaParser >> reduceActionForinterface_method_header2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForinterfaces1: nodes [
 	| result |
 	result := Array new: 3.
@@ -4880,7 +4881,7 @@ JavaParser >> reduceActionForinterfaces1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForlabeled_statement1: nodes [
 	| result |
 	result := JavaLabeledStatementNode new.
@@ -4890,7 +4891,7 @@ JavaParser >> reduceActionForlabeled_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForlambda_expression1: nodes [
 	| result |
 	result := JavaLambdaExpressionNode new.
@@ -4903,7 +4904,7 @@ JavaParser >> reduceActionForlambda_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForlambda_parameters1: nodes [
 	| result |
 	result := Array new: 4.
@@ -4914,7 +4915,7 @@ JavaParser >> reduceActionForlambda_parameters1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForlambda_parameters2: nodes [
 	| result |
 	result := Array new: 4.
@@ -4927,7 +4928,7 @@ JavaParser >> reduceActionForlambda_parameters2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForlambda_parameters3: nodes [
 	| result |
 	result := Array new: 4.
@@ -4937,7 +4938,7 @@ JavaParser >> reduceActionForlambda_parameters3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForliteral1: nodes [
 	| result |
 	result := JavaIntegerLiteralNode new.
@@ -4945,7 +4946,7 @@ JavaParser >> reduceActionForliteral1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForliteral2: nodes [
 	| result |
 	result := JavaFloatLiteralNode new.
@@ -4953,7 +4954,7 @@ JavaParser >> reduceActionForliteral2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForliteral3: nodes [
 	| result |
 	result := JavaBooleanLiteralNode new.
@@ -4961,7 +4962,7 @@ JavaParser >> reduceActionForliteral3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForliteral4: nodes [
 	| result |
 	result := JavaCharacterLiteralNode new.
@@ -4969,7 +4970,7 @@ JavaParser >> reduceActionForliteral4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForliteral5: nodes [
 	| result |
 	result := JavaStringLiteralNode new.
@@ -4977,7 +4978,7 @@ JavaParser >> reduceActionForliteral5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForliteral6: nodes [
 	| result |
 	result := JavaNullNode new.
@@ -4985,7 +4986,7 @@ JavaParser >> reduceActionForliteral6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForlocal_variable_declaration1: nodes [
 	| result |
 	result := JavaLocalVariableDeclarationNode new.
@@ -4998,7 +4999,7 @@ JavaParser >> reduceActionForlocal_variable_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForlocal_variable_declaration_statement1: nodes [
 	| result |
 	result := JavaLocalVariableDeclarationStatementNode new.
@@ -5007,7 +5008,7 @@ JavaParser >> reduceActionForlocal_variable_declaration_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormethod_body2: nodes [
 	| result |
 	result := JavaEmptyMethodBodyNode new.
@@ -5015,7 +5016,7 @@ JavaParser >> reduceActionFormethod_body2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormethod_declaration1: nodes [
 	| result |
 	result := JavaMethodDeclarationNode new.
@@ -5028,7 +5029,7 @@ JavaParser >> reduceActionFormethod_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormethod_declarator1: nodes [
 	| result |
 	result := JavaMethodDeclaratorNode new.
@@ -5038,7 +5039,7 @@ JavaParser >> reduceActionFormethod_declarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormethod_declarator2: nodes [
 	| result |
 	result := JavaMethodDeclaratorNode new.
@@ -5050,7 +5051,7 @@ JavaParser >> reduceActionFormethod_declarator2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormethod_declarator3: nodes [
 	| result |
 	result := JavaArrayMethodDeclaratorNode new.
@@ -5060,7 +5061,7 @@ JavaParser >> reduceActionFormethod_declarator3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormethod_header1: nodes [
 	| result |
 	result := Array new: 5.
@@ -5071,7 +5072,7 @@ JavaParser >> reduceActionFormethod_header1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormethod_header2: nodes [
 	| result |
 	result := Array new: 5.
@@ -5083,7 +5084,7 @@ JavaParser >> reduceActionFormethod_header2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormethod_header3: nodes [
 	| result |
 	result := Array new: 5.
@@ -5095,7 +5096,7 @@ JavaParser >> reduceActionFormethod_header3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormethod_header4: nodes [
 	| result |
 	result := Array new: 5.
@@ -5108,7 +5109,7 @@ JavaParser >> reduceActionFormethod_header4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormethod_invocation1: nodes [
 	| result |
 	result := JavaMethodInvocationNode new.
@@ -5122,7 +5123,7 @@ JavaParser >> reduceActionFormethod_invocation1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormethod_invocation2: nodes [
 	| result |
 	result := JavaMethodInvocationNode new.
@@ -5138,7 +5139,7 @@ JavaParser >> reduceActionFormethod_invocation2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormethod_invocation3: nodes [
 	| result |
 	result := JavaMethodInvocationNode new.
@@ -5154,7 +5155,7 @@ JavaParser >> reduceActionFormethod_invocation3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormethod_invocation4: nodes [
 	| result |
 	result := JavaMethodInvocationNode new.
@@ -5172,7 +5173,7 @@ JavaParser >> reduceActionFormethod_invocation4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormethod_invocation5: nodes [
 	| result |
 	result := JavaMethodInvocationNode new.
@@ -5188,7 +5189,7 @@ JavaParser >> reduceActionFormethod_invocation5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormethod_invocation6: nodes [
 	| result |
 	result := JavaMethodInvocationNode new.
@@ -5206,7 +5207,7 @@ JavaParser >> reduceActionFormethod_invocation6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormethod_invocation7: nodes [
 	| result |
 	result := JavaMethodInvocationNode new.
@@ -5224,7 +5225,7 @@ JavaParser >> reduceActionFormethod_invocation7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormethod_invocation8: nodes [
 	| result |
 	result := JavaMethodInvocationNode new.
@@ -5244,7 +5245,7 @@ JavaParser >> reduceActionFormethod_invocation8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormethod_reference_expression2: nodes [
 	| result |
 	result := JavaMethodReferenceNode new.
@@ -5258,7 +5259,7 @@ JavaParser >> reduceActionFormethod_reference_expression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormethod_reference_expression3: nodes [
 	| result |
 	result := JavaMethodReferenceNode new.
@@ -5268,7 +5269,7 @@ JavaParser >> reduceActionFormethod_reference_expression3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormethod_reference_expression4: nodes [
 	| result |
 	result := JavaMethodReferenceNode new.
@@ -5284,7 +5285,7 @@ JavaParser >> reduceActionFormethod_reference_expression4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormodifier5: nodes [
 	| result |
 	result := JavaModifierNode new.
@@ -5292,7 +5293,7 @@ JavaParser >> reduceActionFormodifier5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormodule1: nodes [
 	| result |
 	result := JavaModuleNode new.
@@ -5304,7 +5305,7 @@ JavaParser >> reduceActionFormodule1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormodule2: nodes [
 	| result |
 	result := JavaModuleNode new.
@@ -5317,7 +5318,7 @@ JavaParser >> reduceActionFormodule2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormodule_body_item1: nodes [
 	| result |
 	result := JavaModuleRequiresNode new.
@@ -5327,7 +5328,7 @@ JavaParser >> reduceActionFormodule_body_item1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormodule_body_item2: nodes [
 	| result |
 	result := JavaModuleRequiresNode new.
@@ -5338,7 +5339,7 @@ JavaParser >> reduceActionFormodule_body_item2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormodule_body_item3: nodes [
 	| result |
 	result := JavaModuleRequiresNode new.
@@ -5349,7 +5350,7 @@ JavaParser >> reduceActionFormodule_body_item3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormodule_body_item4: nodes [
 	| result |
 	result := JavaModuleOpensNode new.
@@ -5359,7 +5360,7 @@ JavaParser >> reduceActionFormodule_body_item4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormodule_body_item5: nodes [
 	| result |
 	result := JavaModuleOpensNode new.
@@ -5371,7 +5372,7 @@ JavaParser >> reduceActionFormodule_body_item5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormodule_body_item6: nodes [
 	| result |
 	result := JavaModuleExportsNode new.
@@ -5381,7 +5382,7 @@ JavaParser >> reduceActionFormodule_body_item6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormodule_body_item7: nodes [
 	| result |
 	result := JavaModuleExportsNode new.
@@ -5394,7 +5395,7 @@ JavaParser >> reduceActionFormodule_body_item7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormodule_body_item8: nodes [
 	| result |
 	result := JavaModuleUsesNode new.
@@ -5404,7 +5405,7 @@ JavaParser >> reduceActionFormodule_body_item8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormodule_body_item9: nodes [
 	| result |
 	result := JavaModuleProvidesNode new.
@@ -5417,7 +5418,7 @@ JavaParser >> reduceActionFormodule_body_item9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFormultiplicative_expression4: nodes [
 	| result |
 	result := JavaBinaryExpressionNode new.
@@ -5427,7 +5428,7 @@ JavaParser >> reduceActionFormultiplicative_expression4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForpackage_declaration1: nodes [
 	| result |
 	result := JavaPackageDeclarationNode new.
@@ -5438,7 +5439,7 @@ JavaParser >> reduceActionForpackage_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForpermits_type_list1: nodes [
 	| result |
 	result := Array new: 2.
@@ -5450,7 +5451,7 @@ JavaParser >> reduceActionForpermits_type_list1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForpostdecrement_expression1: nodes [
 	| result |
 	result := JavaPostDecrementExpressionNode new.
@@ -5459,7 +5460,7 @@ JavaParser >> reduceActionForpostdecrement_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForpostincrement_expression1: nodes [
 	| result |
 	result := JavaPostIncrementExpressionNode new.
@@ -5468,7 +5469,7 @@ JavaParser >> reduceActionForpostincrement_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForpredecrement_expression1: nodes [
 	| result |
 	result := JavaPreDecrementExpressionNode new.
@@ -5477,7 +5478,7 @@ JavaParser >> reduceActionForpredecrement_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForpreincrement_expression1: nodes [
 	| result |
 	result := JavaPreIncrementExpressionNode new.
@@ -5486,7 +5487,7 @@ JavaParser >> reduceActionForpreincrement_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForprimary_no_new_array10: nodes [
 	| result |
 	result := JavaClassExpressionNode new.
@@ -5496,7 +5497,7 @@ JavaParser >> reduceActionForprimary_no_new_array10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForprimary_no_new_array11: nodes [
 	| result |
 	result := JavaOuterThisNode new.
@@ -5506,7 +5507,7 @@ JavaParser >> reduceActionForprimary_no_new_array11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForprimary_no_new_array2: nodes [
 	| result |
 	result := JavaNameNode new.
@@ -5514,7 +5515,7 @@ JavaParser >> reduceActionForprimary_no_new_array2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForprimary_no_new_array3: nodes [
 	| result |
 	result := nodes at: 2.
@@ -5523,7 +5524,7 @@ JavaParser >> reduceActionForprimary_no_new_array3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForprimitive_type2: nodes [
 	| result |
 	result := JavaBooleanTypeNode new.
@@ -5531,7 +5532,7 @@ JavaParser >> reduceActionForprimitive_type2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForqualified_name1: nodes [
 	| result |
 	result := JavaQualifiedNameNode new.
@@ -5541,7 +5542,7 @@ JavaParser >> reduceActionForqualified_name1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForqualified_type_name1: nodes [
 	| result |
 	result := JavaQualifiedTypeNameNode new.
@@ -5555,7 +5556,7 @@ JavaParser >> reduceActionForqualified_type_name1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForrecord_constructor_declarator1: nodes [
 	| result |
 	result := Array new: 6.
@@ -5566,7 +5567,7 @@ JavaParser >> reduceActionForrecord_constructor_declarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForrecord_declaration1: nodes [
 	| result |
 	result := JavaRecordDeclarationNode new.
@@ -5581,7 +5582,7 @@ JavaParser >> reduceActionForrecord_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForrecord_declaration2: nodes [
 	| result |
 	result := JavaRecordDeclarationNode new.
@@ -5599,7 +5600,7 @@ JavaParser >> reduceActionForrecord_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForrecord_declaration3: nodes [
 	| result |
 	result := JavaRecordDeclarationNode new.
@@ -5616,7 +5617,7 @@ JavaParser >> reduceActionForrecord_declaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForrecord_declaration4: nodes [
 	| result |
 	result := JavaRecordDeclarationNode new.
@@ -5636,7 +5637,7 @@ JavaParser >> reduceActionForrecord_declaration4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForrecord_declaration5: nodes [
 	| result |
 	result := JavaRecordDeclarationNode new.
@@ -5652,7 +5653,7 @@ JavaParser >> reduceActionForrecord_declaration5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForrecord_declaration6: nodes [
 	| result |
 	result := JavaRecordDeclarationNode new.
@@ -5671,7 +5672,7 @@ JavaParser >> reduceActionForrecord_declaration6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForrecord_declaration7: nodes [
 	| result |
 	result := JavaRecordDeclarationNode new.
@@ -5689,7 +5690,7 @@ JavaParser >> reduceActionForrecord_declaration7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForrecord_declaration8: nodes [
 	| result |
 	result := JavaRecordDeclarationNode new.
@@ -5710,7 +5711,7 @@ JavaParser >> reduceActionForrecord_declaration8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForrelational_expression7: nodes [
 	| result |
 	result := JavaInstanceofPatternExpressionNode new.
@@ -5721,7 +5722,7 @@ JavaParser >> reduceActionForrelational_expression7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForreturn_statement1: nodes [
 	| result |
 	result := JavaReturnStatementNode new.
@@ -5730,7 +5731,7 @@ JavaParser >> reduceActionForreturn_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForreturn_statement2: nodes [
 	| result |
 	result := JavaReturnStatementNode new.
@@ -5740,7 +5741,7 @@ JavaParser >> reduceActionForreturn_statement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForsimple_type_name1: nodes [
 	| result |
 	result := JavaTypeNameNode new.
@@ -5752,7 +5753,7 @@ JavaParser >> reduceActionForsimple_type_name1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForsingle_type_import_declaration1: nodes [
 	| result |
 	result := JavaSingleTypeImportDeclarationNode new.
@@ -5762,7 +5763,7 @@ JavaParser >> reduceActionForsingle_type_import_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForsingle_type_import_declaration2: nodes [
 	| result |
 	result := JavaSingleTypeImportDeclarationNode new.
@@ -5773,7 +5774,7 @@ JavaParser >> reduceActionForsingle_type_import_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForstatement_expression_list1: nodes [
 	| result |
 	result := JavaStatementExpressionListNode new.
@@ -5781,7 +5782,7 @@ JavaParser >> reduceActionForstatement_expression_list1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForstatement_expression_list2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -5790,7 +5791,7 @@ JavaParser >> reduceActionForstatement_expression_list2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForstatic_initializer1: nodes [
 	| result |
 	result := JavaStaticInitializerNode new.
@@ -5799,7 +5800,7 @@ JavaParser >> reduceActionForstatic_initializer1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForswitch_block1: nodes [
 	| result |
 	result := JavaSwitchBlockNode new.
@@ -5810,7 +5811,7 @@ JavaParser >> reduceActionForswitch_block1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForswitch_block2: nodes [
 	| result |
 	result := JavaSwitchBlockNode new.
@@ -5820,7 +5821,7 @@ JavaParser >> reduceActionForswitch_block2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForswitch_block3: nodes [
 	| result |
 	result := JavaSwitchBlockNode new.
@@ -5830,7 +5831,7 @@ JavaParser >> reduceActionForswitch_block3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForswitch_block4: nodes [
 	| result |
 	result := JavaSwitchBlockNode new.
@@ -5839,7 +5840,7 @@ JavaParser >> reduceActionForswitch_block4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForswitch_block_expression_group2: nodes [
 	| result |
 	result := JavaSwitchBlockExpressionGroupNode new.
@@ -5852,7 +5853,7 @@ JavaParser >> reduceActionForswitch_block_expression_group2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForswitch_block_expression_group3: nodes [
 	| result |
 	result := JavaSwitchBlockExpressionGroupNode new.
@@ -5866,7 +5867,7 @@ JavaParser >> reduceActionForswitch_block_expression_group3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForswitch_block_statement_group1: nodes [
 	| result |
 	result := JavaSwitchBlockStatementGroupNode new.
@@ -5875,7 +5876,7 @@ JavaParser >> reduceActionForswitch_block_statement_group1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForswitch_expression1: nodes [
 	| result |
 	result := JavaSwitchExpressionNode new.
@@ -5889,7 +5890,7 @@ JavaParser >> reduceActionForswitch_expression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForswitch_expression_block1: nodes [
 	| result |
 	result := Array new: 3.
@@ -5900,7 +5901,7 @@ JavaParser >> reduceActionForswitch_expression_block1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForswitch_expression_labels1: nodes [
 	| result |
 	result := Array new: 5.
@@ -5914,7 +5915,7 @@ JavaParser >> reduceActionForswitch_expression_labels1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForswitch_expression_labels2: nodes [
 	| result |
 	result := Array new: 5.
@@ -5925,7 +5926,7 @@ JavaParser >> reduceActionForswitch_expression_labels2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForswitch_label1: nodes [
 	| result |
 	result := JavaSwitchLabelNode new.
@@ -5937,7 +5938,7 @@ JavaParser >> reduceActionForswitch_label1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForswitch_label2: nodes [
 	| result |
 	result := JavaDefaultLabelNode new.
@@ -5946,7 +5947,7 @@ JavaParser >> reduceActionForswitch_label2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForswitch_statement1: nodes [
 	| result |
 	result := JavaSwitchStatementNode new.
@@ -5958,7 +5959,7 @@ JavaParser >> reduceActionForswitch_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForsynchronized_statement1: nodes [
 	| result |
 	result := JavaSynchronizedStatementNode new.
@@ -5970,7 +5971,7 @@ JavaParser >> reduceActionForsynchronized_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForthrow_statement1: nodes [
 	| result |
 	result := JavaThrowStatementNode new.
@@ -5980,7 +5981,7 @@ JavaParser >> reduceActionForthrow_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForthrows1: nodes [
 	| result |
 	result := JavaThrowsNode new.
@@ -5990,7 +5991,7 @@ JavaParser >> reduceActionForthrows1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortry_resource1: nodes [
 	| result |
 	result := JavaLocalVariableDeclarationNode new.
@@ -6000,7 +6001,7 @@ JavaParser >> reduceActionFortry_resource1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortry_resources2: nodes [
 	| result |
 	result := Array new: 4.
@@ -6014,7 +6015,7 @@ JavaParser >> reduceActionFortry_resources2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortry_statement1: nodes [
 	| result |
 	result := JavaTryStatementNode new.
@@ -6024,7 +6025,7 @@ JavaParser >> reduceActionFortry_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortry_statement2: nodes [
 	| result |
 	result := JavaTryStatementNode new.
@@ -6038,7 +6039,7 @@ JavaParser >> reduceActionFortry_statement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortry_statement3: nodes [
 	| result |
 	result := JavaTryStatementNode new.
@@ -6048,7 +6049,7 @@ JavaParser >> reduceActionFortry_statement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortry_statement4: nodes [
 	| result |
 	result := JavaTryStatementNode new.
@@ -6059,7 +6060,7 @@ JavaParser >> reduceActionFortry_statement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortry_statement5: nodes [
 	| result |
 	result := JavaTryStatementNode new.
@@ -6073,7 +6074,7 @@ JavaParser >> reduceActionFortry_statement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortry_statement6: nodes [
 	| result |
 	result := JavaTryStatementNode new.
@@ -6088,7 +6089,7 @@ JavaParser >> reduceActionFortry_statement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortry_statement7: nodes [
 	| result |
 	result := JavaTryStatementNode new.
@@ -6101,7 +6102,7 @@ JavaParser >> reduceActionFortry_statement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortype_argument1: nodes [
 	| result |
 	result := JavaTypeArgumentNode new.
@@ -6110,7 +6111,7 @@ JavaParser >> reduceActionFortype_argument1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortype_argument2: nodes [
 	| result |
 	result := JavaTypeArgumentNode new.
@@ -6120,14 +6121,14 @@ JavaParser >> reduceActionFortype_argument2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortype_argument_type3: nodes [
 	| result |
 	result := Array new: 2.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortype_arguments1: nodes [
 	| result |
 	result := Array new: 2.
@@ -6137,7 +6138,7 @@ JavaParser >> reduceActionFortype_arguments1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortype_arguments2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -6146,7 +6147,7 @@ JavaParser >> reduceActionFortype_arguments2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortype_arguments_opt1: nodes [
 	| result |
 	result := Array new: 4.
@@ -6155,7 +6156,7 @@ JavaParser >> reduceActionFortype_arguments_opt1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortype_arguments_opt2: nodes [
 	| result |
 	result := Array new: 4.
@@ -6168,7 +6169,7 @@ JavaParser >> reduceActionFortype_arguments_opt2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortype_arguments_opt3: nodes [
 	| result |
 	result := Array new: 4.
@@ -6179,7 +6180,7 @@ JavaParser >> reduceActionFortype_arguments_opt3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortype_declaration5: nodes [
 	| result |
 	result := JavaEmptyDeclarationNode new.
@@ -6187,7 +6188,7 @@ JavaParser >> reduceActionFortype_declaration5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortype_import_on_demand_declaration1: nodes [
 	| result |
 	result := JavaTypeImportOnDemandDeclarationNode new.
@@ -6199,7 +6200,7 @@ JavaParser >> reduceActionFortype_import_on_demand_declaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortype_import_on_demand_declaration2: nodes [
 	| result |
 	result := JavaTypeImportOnDemandDeclarationNode new.
@@ -6212,7 +6213,7 @@ JavaParser >> reduceActionFortype_import_on_demand_declaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortype_parameter1: nodes [
 	| result |
 	result := JavaTypeParameterNode new.
@@ -6220,7 +6221,7 @@ JavaParser >> reduceActionFortype_parameter1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortype_parameter2: nodes [
 	| result |
 	result := JavaTypeParameterNode new.
@@ -6231,7 +6232,7 @@ JavaParser >> reduceActionFortype_parameter2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionFortype_parameters_opt2: nodes [
 	| result |
 	result := JavaTypeParametersNode new.
@@ -6242,7 +6243,7 @@ JavaParser >> reduceActionFortype_parameters_opt2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForunary_expression3: nodes [
 	| result |
 	result := JavaUnaryAdditionNode new.
@@ -6251,7 +6252,7 @@ JavaParser >> reduceActionForunary_expression3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForunary_expression4: nodes [
 	| result |
 	result := JavaUnarySubtractionNode new.
@@ -6260,7 +6261,7 @@ JavaParser >> reduceActionForunary_expression4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForunary_expression_not_plus_minus2: nodes [
 	| result |
 	result := JavaUnaryBitInvertNode new.
@@ -6269,7 +6270,7 @@ JavaParser >> reduceActionForunary_expression_not_plus_minus2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForunary_expression_not_plus_minus3: nodes [
 	| result |
 	result := JavaUnaryNotNode new.
@@ -6278,7 +6279,7 @@ JavaParser >> reduceActionForunary_expression_not_plus_minus3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForuntyped_lambda_parameter1: nodes [
 	| result |
 	result := JavaParameterNode new.
@@ -6286,7 +6287,7 @@ JavaParser >> reduceActionForuntyped_lambda_parameter1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForvariable_declarator1: nodes [
 	| result |
 	result := JavaVariableDeclarationNode new.
@@ -6294,7 +6295,7 @@ JavaParser >> reduceActionForvariable_declarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForvariable_declarator_id1: nodes [
 	| result |
 	result := JavaVariableNameNode new.
@@ -6302,7 +6303,7 @@ JavaParser >> reduceActionForvariable_declarator_id1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForvariable_declarator_id2: nodes [
 	| result |
 	result := JavaArrayVariableNameNode new.
@@ -6312,7 +6313,7 @@ JavaParser >> reduceActionForvariable_declarator_id2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForvoid1: nodes [
 	| result |
 	result := JavaVoidTypeNode new.
@@ -6320,7 +6321,7 @@ JavaParser >> reduceActionForvoid1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForwhile_statement1: nodes [
 	| result |
 	result := JavaWhileStatementNode new.
@@ -6332,7 +6333,7 @@ JavaParser >> reduceActionForwhile_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForyield_statement1: nodes [
 	| result |
 	result := JavaYieldStatementNode new.
@@ -6341,7 +6342,7 @@ JavaParser >> reduceActionForyield_statement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JavaParser >> reduceActionForyield_statement2: nodes [
 	| result |
 	result := JavaYieldStatementNode new.
@@ -6351,75 +6352,7 @@ JavaParser >> reduceActionForyield_statement2: nodes [
 	^ result
 ]
 
-{ #category : #private }
-JavaParser >> tryAllTokens [
-	^ (self class keywords includes: currentToken value) not
-]
-aParser >> reduceActionForvariable_declarator1: nodes [
-	| result |
-	result := JavaVariableDeclarationNode new.
-	result variable: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-JavaParser >> reduceActionForvariable_declarator_id1: nodes [
-	| result |
-	result := JavaVariableNameNode new.
-	result name: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-JavaParser >> reduceActionForvariable_declarator_id2: nodes [
-	| result |
-	result := JavaArrayVariableNameNode new.
-	result variable: (nodes at: 1).
-	result leftBracket: (nodes at: 2).
-	result rightBracket: (nodes at: 3).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-JavaParser >> reduceActionForvoid1: nodes [
-	| result |
-	result := JavaVoidTypeNode new.
-	result voidToken: (nodes at: 1).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-JavaParser >> reduceActionForwhile_statement1: nodes [
-	| result |
-	result := JavaWhileStatementNode new.
-	result whileToken: (nodes at: 1).
-	result leftParen: (nodes at: 2).
-	result expression: (nodes at: 3).
-	result rightParen: (nodes at: 4).
-	result statement: (nodes at: 5).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-JavaParser >> reduceActionForyield_statement1: nodes [
-	| result |
-	result := JavaYieldStatementNode new.
-	result yieldToken: (nodes at: 1).
-	result semicolon: (nodes at: 2).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-JavaParser >> reduceActionForyield_statement2: nodes [
-	| result |
-	result := JavaYieldStatementNode new.
-	result yieldToken: (nodes at: 1).
-	result expression: (nodes at: 2).
-	result semicolon: (nodes at: 3).
-	^ result
-]
-
-{ #category : #private }
+{ #category : 'private' }
 JavaParser >> tryAllTokens [
 	^ (self class keywords includes: currentToken value) not
 ]

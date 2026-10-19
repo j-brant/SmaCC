@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaSwitchExpressionNode,
-	#superclass : #JavaExpressionNode,
+	#name : 'JavaSwitchExpressionNode',
+	#superclass : 'JavaExpressionNode',
 	#instVars : [
 		'switchToken',
 		'leftParen',
@@ -10,110 +10,111 @@ Class {
 		'statementGroups',
 		'rightBrace'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSwitchExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchExpressionNode >> compositeNodeVariables [
 	^ #(#statementGroups)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchExpressionNode >> expression: aJavaExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aJavaExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchExpressionNode >> ignoredTokenVariables [
 	^ #(#leftParen #rightParen #leftBrace #rightBrace)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaSwitchExpressionNode >> initialize [
 	super initialize.
 	statementGroups := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchExpressionNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchExpressionNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchExpressionNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchExpressionNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchExpressionNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchExpressionNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchExpressionNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchExpressionNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchExpressionNode >> statementGroups [
 	^ statementGroups
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchExpressionNode >> statementGroups: anOrderedCollection [
 	self setParents: self statementGroups to: nil.
 	statementGroups := anOrderedCollection.
 	self setParents: self statementGroups to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchExpressionNode >> switchToken [
 	^ switchToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchExpressionNode >> switchToken: aSmaCCToken [
 	switchToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSwitchExpressionNode >> tokenVariables [
 	^ #(#switchToken)
 ]

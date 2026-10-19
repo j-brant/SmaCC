@@ -1,54 +1,55 @@
 Class {
-	#name : #JavaProgramFileNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaProgramFileNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'packageDeclaration',
 		'imports',
 		'typeDeclarations'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaProgramFileNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitProgramFile: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaProgramFileNode >> compositeNodeVariables [
 	^ #(#typeDeclarations #imports)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaProgramFileNode >> imports [
 	^ imports
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaProgramFileNode >> imports: anOrderedCollection [
 	self setParents: self imports to: nil.
 	imports := anOrderedCollection.
 	self setParents: self imports to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaProgramFileNode >> initialize [
 	super initialize.
 	typeDeclarations := OrderedCollection new: 2.
 	imports := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaProgramFileNode >> nodeVariables [
 	^ #(#packageDeclaration)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaProgramFileNode >> packageDeclaration [
 	^ packageDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaProgramFileNode >> packageDeclaration: aJavaPackageDeclarationNode [
 	self packageDeclaration notNil
 		ifTrue: [ self packageDeclaration parent: nil ].
@@ -57,12 +58,12 @@ JavaProgramFileNode >> packageDeclaration: aJavaPackageDeclarationNode [
 		ifTrue: [ self packageDeclaration parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaProgramFileNode >> typeDeclarations [
 	^ typeDeclarations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaProgramFileNode >> typeDeclarations: anOrderedCollection [
 	self setParents: self typeDeclarations to: nil.
 	typeDeclarations := anOrderedCollection.

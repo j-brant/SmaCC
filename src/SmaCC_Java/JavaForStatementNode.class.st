@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaForStatementNode,
-	#superclass : #JavaStatementNode,
+	#name : 'JavaForStatementNode',
+	#superclass : 'JavaStatementNode',
 	#instVars : [
 		'forToken',
 		'leftParen',
@@ -12,15 +12,16 @@ Class {
 		'rightParen',
 		'statement'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForStatementNode >> _update [
 	^ _update
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForStatementNode >> _update: aJavaStatementExpressionListNode [
 	self _update notNil
 		ifTrue: [ self _update parent: nil ].
@@ -29,42 +30,42 @@ JavaForStatementNode >> _update: aJavaStatementExpressionListNode [
 		ifTrue: [ self _update parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitForStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForStatementNode >> firstSemicolon [
 	^ firstSemicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForStatementNode >> firstSemicolon: aSmaCCToken [
 	firstSemicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForStatementNode >> forToken [
 	^ forToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForStatementNode >> forToken: aSmaCCToken [
 	forToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForStatementNode >> ignoredTokenVariables [
 	^ #(#leftParen #rightParen)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForStatementNode >> initial [
 	^ initial
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForStatementNode >> initial: aJavaProgramNode [
 	self initial notNil
 		ifTrue: [ self initial parent: nil ].
@@ -73,59 +74,59 @@ JavaForStatementNode >> initial: aJavaProgramNode [
 		ifTrue: [ self initial parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForStatementNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForStatementNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForStatementNode >> nodeVariables [
 	^ #(#statement #_update #test #initial)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForStatementNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForStatementNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForStatementNode >> secondSemicolon [
 	^ secondSemicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForStatementNode >> secondSemicolon: aSmaCCToken [
 	secondSemicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForStatementNode >> statement: aJavaProgramNode [
 	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aJavaProgramNode.
 	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForStatementNode >> test [
 	^ test
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForStatementNode >> test: aJavaExpressionNode [
 	self test notNil
 		ifTrue: [ self test parent: nil ].
@@ -134,7 +135,7 @@ JavaForStatementNode >> test: aJavaExpressionNode [
 		ifTrue: [ self test parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForStatementNode >> tokenVariables [
 	^ #(#forToken #firstSemicolon #secondSemicolon)
 ]

@@ -1,25 +1,26 @@
 Class {
-	#name : #JavaReturnStatementNode,
-	#superclass : #JavaStatementNode,
+	#name : 'JavaReturnStatementNode',
+	#superclass : 'JavaStatementNode',
 	#instVars : [
 		'returnToken',
 		'expression',
 		'semicolon'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaReturnStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReturnStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaReturnStatementNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaReturnStatementNode >> expression: aJavaExpressionNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
@@ -28,37 +29,37 @@ JavaReturnStatementNode >> expression: aJavaExpressionNode [
 		ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaReturnStatementNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaReturnStatementNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaReturnStatementNode >> returnToken [
 	^ returnToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaReturnStatementNode >> returnToken: aSmaCCToken [
 	returnToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaReturnStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaReturnStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaReturnStatementNode >> tokenVariables [
 	^ #(#returnToken)
 ]

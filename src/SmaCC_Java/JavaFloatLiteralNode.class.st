@@ -1,10 +1,11 @@
 Class {
-	#name : #JavaFloatLiteralNode,
-	#superclass : #JavaLiteralNode,
-	#category : #'SmaCC_Java'
+	#name : 'JavaFloatLiteralNode',
+	#superclass : 'JavaLiteralNode',
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaFloatLiteralNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFloatLiteral: self
 ]

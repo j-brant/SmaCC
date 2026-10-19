@@ -1,10 +1,11 @@
 Class {
-	#name : #JavaTypeNode,
-	#superclass : #JavaProgramNode,
-	#category : #'SmaCC_Java'
+	#name : 'JavaTypeNode',
+	#superclass : 'JavaProgramNode',
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitType: self
 ]

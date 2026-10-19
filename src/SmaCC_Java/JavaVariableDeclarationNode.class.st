@@ -1,28 +1,29 @@
 Class {
-	#name : #JavaVariableDeclarationNode,
-	#superclass : #JavaDeclarationNode,
+	#name : 'JavaVariableDeclarationNode',
+	#superclass : 'JavaDeclarationNode',
 	#instVars : [
 		'variable'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaVariableDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitVariableDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaVariableDeclarationNode >> nodeVariables [
 	^ #(#variable)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaVariableDeclarationNode >> variable [
 	^ variable
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaVariableDeclarationNode >> variable: aJavaProgramNode [
 	self variable notNil
 		ifTrue: [ self variable parent: nil ].

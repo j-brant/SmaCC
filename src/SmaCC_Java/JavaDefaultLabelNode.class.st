@@ -1,39 +1,40 @@
 Class {
-	#name : #JavaDefaultLabelNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaDefaultLabelNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'defaultToken',
 		'colon'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDefaultLabelNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDefaultLabel: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDefaultLabelNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDefaultLabelNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDefaultLabelNode >> defaultToken [
 	^ defaultToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDefaultLabelNode >> defaultToken: aSmaCCToken [
 	defaultToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDefaultLabelNode >> tokenVariables [
 	^ #(#defaultToken #colon)
 ]

@@ -1,41 +1,42 @@
 Class {
-	#name : #JavaSingleTypeImportDeclarationNode,
-	#superclass : #JavaDeclarationNode,
+	#name : 'JavaSingleTypeImportDeclarationNode',
+	#superclass : 'JavaDeclarationNode',
 	#instVars : [
 		'importToken',
 		'staticToken',
 		'name',
 		'semicolon'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSingleTypeImportDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSingleTypeImportDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSingleTypeImportDeclarationNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSingleTypeImportDeclarationNode >> importToken [
 	^ importToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSingleTypeImportDeclarationNode >> importToken: aSmaCCToken [
 	importToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSingleTypeImportDeclarationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSingleTypeImportDeclarationNode >> name: aJavaNameNode [
 	self name notNil
 		ifTrue: [ self name parent: nil ].
@@ -44,32 +45,32 @@ JavaSingleTypeImportDeclarationNode >> name: aJavaNameNode [
 		ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSingleTypeImportDeclarationNode >> nodeVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSingleTypeImportDeclarationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSingleTypeImportDeclarationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSingleTypeImportDeclarationNode >> staticToken [
 	^ staticToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSingleTypeImportDeclarationNode >> staticToken: aSmaCCToken [
 	staticToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSingleTypeImportDeclarationNode >> tokenVariables [
 	^ #(#importToken #staticToken)
 ]

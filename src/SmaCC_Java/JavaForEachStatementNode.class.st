@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaForEachStatementNode,
-	#superclass : #JavaStatementNode,
+	#name : 'JavaForEachStatementNode',
+	#superclass : 'JavaStatementNode',
 	#instVars : [
 		'forToken',
 		'leftParen',
@@ -12,35 +12,36 @@ Class {
 		'rightParen',
 		'statement'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitForEachStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> compositeNodeVariables [
 	^ #(#modifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> expression: aJavaExpressionNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
@@ -49,55 +50,55 @@ JavaForEachStatementNode >> expression: aJavaExpressionNode [
 		ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> forToken [
 	^ forToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> forToken: aSmaCCToken [
 	forToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> ignoredTokenVariables [
 	^ #(#leftParen #rightParen)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaForEachStatementNode >> initialize [
 	super initialize.
 	modifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> modifiers: anOrderedCollection [
 	self setParents: self modifiers to: nil.
 	modifiers := anOrderedCollection.
 	self setParents: self modifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> name: aJavaProgramNode [
 	self name notNil
 		ifTrue: [ self name parent: nil ].
@@ -106,44 +107,44 @@ JavaForEachStatementNode >> name: aJavaProgramNode [
 		ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> nodeVariables [
 	^ #(#type #name #expression #statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> statement: aJavaProgramNode [
 	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aJavaProgramNode.
 	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> tokenVariables [
 	^ #(#forToken #colon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaForEachStatementNode >> type: aJavaTypeNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].

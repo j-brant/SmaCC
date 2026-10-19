@@ -1,25 +1,26 @@
 Class {
-	#name : #JavaDimensionExpressionNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaDimensionExpressionNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'leftBracket',
 		'expression',
 		'rightBracket'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDimensionExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDimensionExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDimensionExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDimensionExpressionNode >> expression: aJavaExpressionNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
@@ -28,32 +29,32 @@ JavaDimensionExpressionNode >> expression: aJavaExpressionNode [
 		ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDimensionExpressionNode >> ignoredTokenVariables [
 	^ #(#leftBracket #rightBracket)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDimensionExpressionNode >> leftBracket [
 	^ leftBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDimensionExpressionNode >> leftBracket: aSmaCCToken [
 	leftBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDimensionExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDimensionExpressionNode >> rightBracket [
 	^ rightBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDimensionExpressionNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
 ]

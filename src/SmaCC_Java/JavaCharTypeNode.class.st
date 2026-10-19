@@ -1,10 +1,11 @@
 Class {
-	#name : #JavaCharTypeNode,
-	#superclass : #JavaPrimitiveTypeNode,
-	#category : #'SmaCC_Java'
+	#name : 'JavaCharTypeNode',
+	#superclass : 'JavaPrimitiveTypeNode',
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaCharTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCharType: self
 ]

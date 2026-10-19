@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaLambdaExpressionNode,
-	#superclass : #JavaExpressionNode,
+	#name : 'JavaLambdaExpressionNode',
+	#superclass : 'JavaExpressionNode',
 	#instVars : [
 		'leftParen',
 		'parameters',
@@ -9,104 +9,105 @@ Class {
 		'arrowToken',
 		'value'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLambdaExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLambdaExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLambdaExpressionNode >> arrowToken [
 	^ arrowToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLambdaExpressionNode >> arrowToken: aSmaCCToken [
 	arrowToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLambdaExpressionNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLambdaExpressionNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLambdaExpressionNode >> compositeNodeVariables [
 	^ #(#parameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLambdaExpressionNode >> ignoredCompositeTokenVariables [
 	^ #(#commas #_leftParens #_rightParens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLambdaExpressionNode >> ignoredTokenVariables [
 	^ #(#leftParen #rightParen)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaLambdaExpressionNode >> initialize [
 	super initialize.
 	parameters := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLambdaExpressionNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLambdaExpressionNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLambdaExpressionNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLambdaExpressionNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLambdaExpressionNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLambdaExpressionNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLambdaExpressionNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLambdaExpressionNode >> tokenVariables [
 	^ #(#arrowToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLambdaExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLambdaExpressionNode >> value: aJavaProgramNode [
 	self value notNil
 		ifTrue: [ self value parent: nil ].

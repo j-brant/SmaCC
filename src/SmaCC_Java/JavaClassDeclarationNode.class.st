@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaClassDeclarationNode,
-	#superclass : #JavaDeclarationNode,
+	#name : 'JavaClassDeclarationNode',
+	#superclass : 'JavaDeclarationNode',
 	#instVars : [
 		'classToken',
 		'name',
@@ -17,82 +17,83 @@ Class {
 		'superclass',
 		'modifiers'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitClassDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> classToken [
 	^ classToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> classToken: aSmaCCToken [
 	classToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> compositeNodeVariables [
 	^ #(#declarations #interfaces #permits #modifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> declarations [
 	^ declarations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> declarations: anOrderedCollection [
 	self setParents: self declarations to: nil.
 	declarations := anOrderedCollection.
 	self setParents: self declarations to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> extendsToken [
 	^ extendsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> extendsToken: aSmaCCToken [
 	extendsToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> implementsToken [
 	^ implementsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> implementsToken: aSmaCCToken [
 	implementsToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaClassDeclarationNode >> initialize [
 	super initialize.
 	declarations := OrderedCollection new: 2.
@@ -102,93 +103,93 @@ JavaClassDeclarationNode >> initialize [
 	modifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> interfaces [
 	^ interfaces
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> interfaces: anOrderedCollection [
 	self setParents: self interfaces to: nil.
 	interfaces := anOrderedCollection.
 	self setParents: self interfaces to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> modifiers: anOrderedCollection [
 	self setParents: self modifiers to: nil.
 	modifiers := anOrderedCollection.
 	self setParents: self modifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> nodeVariables [
 	^ #(#typeParameters #superclass)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> permits [
 	^ permits
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> permits: anOrderedCollection [
 	self setParents: self permits to: nil.
 	permits := anOrderedCollection.
 	self setParents: self permits to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> permitsToken [
 	^ permitsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> permitsToken: aSmaCCToken [
 	permitsToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> superclass [
 	^ superclass
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> superclass: aJavaClassTypeNode [
 	self superclass notNil
 		ifTrue: [ self superclass parent: nil ].
@@ -197,17 +198,17 @@ JavaClassDeclarationNode >> superclass: aJavaClassTypeNode [
 		ifTrue: [ self superclass parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> tokenVariables [
 	^ #(#classToken #name #implementsToken #permitsToken #extendsToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> typeParameters [
 	^ typeParameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassDeclarationNode >> typeParameters: aJavaTypeParametersNode [
 	self typeParameters notNil
 		ifTrue: [ self typeParameters parent: nil ].

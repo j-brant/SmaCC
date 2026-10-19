@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaConditionalExpressionNode,
-	#superclass : #JavaExpressionNode,
+	#name : 'JavaConditionalExpressionNode',
+	#superclass : 'JavaExpressionNode',
 	#instVars : [
 		'testExpression',
 		'questionMark',
@@ -8,30 +8,31 @@ Class {
 		'colon',
 		'falseExpression'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConditionalExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitConditionalExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConditionalExpressionNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConditionalExpressionNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConditionalExpressionNode >> falseExpression [
 	^ falseExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConditionalExpressionNode >> falseExpression: aJavaExpressionNode [
 	self falseExpression notNil
 		ifTrue: [ self falseExpression parent: nil ].
@@ -40,27 +41,27 @@ JavaConditionalExpressionNode >> falseExpression: aJavaExpressionNode [
 		ifTrue: [ self falseExpression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConditionalExpressionNode >> nodeVariables [
 	^ #(#testExpression #trueExpression #falseExpression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConditionalExpressionNode >> questionMark [
 	^ questionMark
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConditionalExpressionNode >> questionMark: aSmaCCToken [
 	questionMark := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConditionalExpressionNode >> testExpression [
 	^ testExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConditionalExpressionNode >> testExpression: aJavaExpressionNode [
 	self testExpression notNil
 		ifTrue: [ self testExpression parent: nil ].
@@ -69,17 +70,17 @@ JavaConditionalExpressionNode >> testExpression: aJavaExpressionNode [
 		ifTrue: [ self testExpression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConditionalExpressionNode >> tokenVariables [
 	^ #(#questionMark #colon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConditionalExpressionNode >> trueExpression [
 	^ trueExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConditionalExpressionNode >> trueExpression: aJavaExpressionNode [
 	self trueExpression notNil
 		ifTrue: [ self trueExpression parent: nil ].

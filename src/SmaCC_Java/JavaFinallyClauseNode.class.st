@@ -1,24 +1,25 @@
 Class {
-	#name : #JavaFinallyClauseNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaFinallyClauseNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'finallyToken',
 		'block'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaFinallyClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFinallyClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaFinallyClauseNode >> block [
 	^ block
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaFinallyClauseNode >> block: aJavaBlockNode [
 	self block notNil
 		ifTrue: [ self block parent: nil ].
@@ -27,22 +28,22 @@ JavaFinallyClauseNode >> block: aJavaBlockNode [
 		ifTrue: [ self block parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaFinallyClauseNode >> finallyToken [
 	^ finallyToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaFinallyClauseNode >> finallyToken: aSmaCCToken [
 	finallyToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaFinallyClauseNode >> nodeVariables [
 	^ #(#block)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaFinallyClauseNode >> tokenVariables [
 	^ #(#finallyToken)
 ]

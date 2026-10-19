@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaNewArrayNode,
-	#superclass : #JavaExpressionNode,
+	#name : 'JavaNewArrayNode',
+	#superclass : 'JavaExpressionNode',
 	#instVars : [
 		'newToken',
 		'type',
@@ -9,37 +9,38 @@ Class {
 		'rightBrackets',
 		'initializer'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewArrayNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNewArray: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewArrayNode >> compositeNodeVariables [
 	^ #(#dimExpressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewArrayNode >> dimExpressions [
 	^ dimExpressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewArrayNode >> dimExpressions: anOrderedCollection [
 	self setParents: self dimExpressions to: nil.
 	dimExpressions := anOrderedCollection.
 	self setParents: self dimExpressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewArrayNode >> ignoredCompositeTokenVariables [
 	^ #(#leftBrackets #rightBrackets #_leftParens #_rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaNewArrayNode >> initialize [
 	super initialize.
 	dimExpressions := OrderedCollection new: 2.
@@ -47,12 +48,12 @@ JavaNewArrayNode >> initialize [
 	rightBrackets := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewArrayNode >> initializer [
 	^ initializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewArrayNode >> initializer: aJavaArrayInitializerNode [
 	self initializer notNil
 		ifTrue: [ self initializer parent: nil ].
@@ -61,52 +62,52 @@ JavaNewArrayNode >> initializer: aJavaArrayInitializerNode [
 		ifTrue: [ self initializer parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewArrayNode >> leftBrackets [
 	^ leftBrackets
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewArrayNode >> leftBrackets: anOrderedCollection [
 	leftBrackets := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewArrayNode >> newToken [
 	^ newToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewArrayNode >> newToken: aSmaCCToken [
 	newToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewArrayNode >> nodeVariables [
 	^ #(#type #initializer)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewArrayNode >> rightBrackets [
 	^ rightBrackets
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewArrayNode >> rightBrackets: anOrderedCollection [
 	rightBrackets := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewArrayNode >> tokenVariables [
 	^ #(#newToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewArrayNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewArrayNode >> type: aJavaTypeNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].

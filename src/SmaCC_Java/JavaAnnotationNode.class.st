@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaAnnotationNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaAnnotationNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'_at',
 		'name',
@@ -9,72 +9,73 @@ Class {
 		'commas',
 		'rightParen'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationNode >> _at [
 	^ _at
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationNode >> _at: aSmaCCToken [
 	_at := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAnnotation: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationNode >> ignoredTokenVariables [
 	^ #(#leftParen #rightParen)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaAnnotationNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationNode >> name: aJavaNameNode [
 	self name notNil
 		ifTrue: [ self name parent: nil ].
@@ -83,32 +84,32 @@ JavaAnnotationNode >> name: aJavaNameNode [
 		ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationNode >> nodeVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationNode >> tokenVariables [
 	^ #(#_at)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

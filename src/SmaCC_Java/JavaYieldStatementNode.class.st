@@ -1,62 +1,63 @@
 Class {
-	#name : #JavaYieldStatementNode,
-	#superclass : #JavaStatementNode,
+	#name : 'JavaYieldStatementNode',
+	#superclass : 'JavaStatementNode',
 	#instVars : [
 		'yieldToken',
 		'semicolon',
 		'expression'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaYieldStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitYieldStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaYieldStatementNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaYieldStatementNode >> expression: aJavaExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aJavaExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaYieldStatementNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaYieldStatementNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaYieldStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaYieldStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaYieldStatementNode >> tokenVariables [
 	^ #(#yieldToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaYieldStatementNode >> yieldToken [
 	^ yieldToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaYieldStatementNode >> yieldToken: aSmaCCToken [
 	yieldToken := aSmaCCToken
 ]

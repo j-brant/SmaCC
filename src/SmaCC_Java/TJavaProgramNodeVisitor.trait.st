@@ -1,647 +1,648 @@
 Trait {
-	#name : #TJavaProgramNodeVisitor,
+	#name : 'TJavaProgramNodeVisitor',
 	#traits : 'TSmaCCParseNodeVisitor',
 	#classTraits : 'TSmaCCParseNodeVisitor classTrait',
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitAbstractMethodDeclaration: anAbstractMethodDeclaration [
 	^ self visitDeclaration: anAbstractMethodDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitAnnotation: anAnnotation [
 	^ self visitProgram: anAnnotation
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitAnnotationInterface: anAnnotationInterface [
 	^ self visitProgram: anAnnotationInterface
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitAnnotationMethodDeclaration: anAnnotationMethodDeclaration [
 	^ self visitAbstractMethodDeclaration: anAnnotationMethodDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitArrayAccess: anArrayAccess [
 	^ self visitExpression: anArrayAccess
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitArrayInitializer: anArrayInitializer [
 	^ self visitProgram: anArrayInitializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitArrayMethodDeclarator: anArrayMethodDeclarator [
 	^ self visitProgram: anArrayMethodDeclarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitArrayType: anArrayType [
 	^ self visitType: anArrayType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitArrayVariableName: anArrayVariableName [
 	^ self visitProgram: anArrayVariableName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitAssertStatement: anAssertStatement [
 	^ self visitStatement: anAssertStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitAssignment: anAssignment [
 	^ self visitExpression: anAssignment
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitBinaryExpression: aBinaryExpression [
 	^ self visitExpression: aBinaryExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitBlock: aBlock [
 	^ self visitStatement: aBlock
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitBooleanLiteral: aBooleanLiteral [
 	^ self visitLiteral: aBooleanLiteral
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitBooleanType: aBooleanType [
 	^ self visitPrimitiveType: aBooleanType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitBreakStatement: aBreakStatement [
 	^ self visitStatement: aBreakStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitByteType: aByteType [
 	^ self visitPrimitiveType: aByteType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitCastExpression: aCastExpression [
 	^ self visitUnaryExpression: aCastExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitCatchClause: aCatchClause [
 	^ self visitProgram: aCatchClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitCatchParameter: aCatchParameter [
 	^ self visitProgram: aCatchParameter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitCharType: aCharType [
 	^ self visitPrimitiveType: aCharType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitCharacterLiteral: aCharacterLiteral [
 	^ self visitLiteral: aCharacterLiteral
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitClassDeclaration: aClassDeclaration [
 	^ self visitDeclaration: aClassDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitClassExpression: aClassExpression [
 	^ self visitExpression: aClassExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitClassType: aClassType [
 	^ self visitType: aClassType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitConditionalExpression: aConditionalExpression [
 	^ self visitExpression: aConditionalExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitConstructorDeclaration: aConstructorDeclaration [
 	^ self visitDeclaration: aConstructorDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitContinueStatement: aContinueStatement [
 	^ self visitStatement: aContinueStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitDeclaration: aDeclaration [
 	^ self visitProgram: aDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitDefaultLabel: aDefaultLabel [
 	^ self visitProgram: aDefaultLabel
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitDimensionExpression: aDimensionExpression [
 	^ self visitProgram: aDimensionExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitDoWhileStatement: aDoWhileStatement [
 	^ self visitStatement: aDoWhileStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitDoubleType: aDoubleType [
 	^ self visitPrimitiveType: aDoubleType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitElementArrayInitializer: anElementArrayInitializer [
 	^ self visitProgram: anElementArrayInitializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitElementValuePair: anElementValuePair [
 	^ self visitProgram: anElementValuePair
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitEmptyDeclaration: anEmptyDeclaration [
 	^ self visitDeclaration: anEmptyDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitEmptyMethodBody: anEmptyMethodBody [
 	^ self visitProgram: anEmptyMethodBody
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitEmptyStatement: anEmptyStatement [
 	^ self visitStatement: anEmptyStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitEnumConstant: anEnumConstant [
 	^ self visitProgram: anEnumConstant
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitEnumDeclaration: anEnumDeclaration [
 	^ self visitDeclaration: anEnumDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitExpression: anExpression [
 	^ self visitProgram: anExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitExpressionStatement: anExpressionStatement [
 	^ self visitStatement: anExpressionStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitFieldAccess: aFieldAccess [
 	^ self visitExpression: aFieldAccess
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitFieldDeclaration: aFieldDeclaration [
 	^ self visitDeclaration: aFieldDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitFinallyClause: aFinallyClause [
 	^ self visitProgram: aFinallyClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitFloatLiteral: aFloatLiteral [
 	^ self visitLiteral: aFloatLiteral
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitFloatType: aFloatType [
 	^ self visitPrimitiveType: aFloatType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitForEachStatement: aForEachStatement [
 	^ self visitStatement: aForEachStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitForStatement: aForStatement [
 	^ self visitStatement: aForStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitIfElseStatement: anIfElseStatement [
 	^ self visitIfStatement: anIfElseStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitIfStatement: anIfStatement [
 	^ self visitStatement: anIfStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitInitializedVariableDeclaration: anInitializedVariableDeclaration [
 	^ self visitVariableDeclaration: anInitializedVariableDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitInitializer: anInitializer [
 	^ self visitProgram: anInitializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitInstanceofPatternExpression: anInstanceofPatternExpression [
 	^ self visitExpression: anInstanceofPatternExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitIntType: anIntType [
 	^ self visitPrimitiveType: anIntType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitIntegerLiteral: anIntegerLiteral [
 	^ self visitLiteral: anIntegerLiteral
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitInterfaceDeclaration: anInterfaceDeclaration [
 	^ self visitDeclaration: anInterfaceDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitLabeledStatement: aLabeledStatement [
 	^ self visitStatement: aLabeledStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitLambdaExpression: aLambdaExpression [
 	^ self visitExpression: aLambdaExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitLiteral: aLiteral [
 	^ self visitExpression: aLiteral
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitLocalVariableDeclaration: aLocalVariableDeclaration [
 	^ self visitDeclaration: aLocalVariableDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitLocalVariableDeclarationStatement: aLocalVariableDeclarationStatement [
 	^ self visitStatement: aLocalVariableDeclarationStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitLongType: aLongType [
 	^ self visitPrimitiveType: aLongType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitMethodDeclaration: aMethodDeclaration [
 	^ self visitDeclaration: aMethodDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitMethodDeclarator: aMethodDeclarator [
 	^ self visitProgram: aMethodDeclarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitMethodInvocation: aMethodInvocation [
 	^ self visitExpression: aMethodInvocation
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitMethodReference: aMethodReference [
 	^ self visitExpression: aMethodReference
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitModifier: aModifier [
 	^ self visitProgram: aModifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitModule: aModule [
 	^ self visitProgram: aModule
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitModuleExports: aModuleExports [
 	^ self visitProgram: aModuleExports
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitModuleOpens: aModuleOpens [
 	^ self visitProgram: aModuleOpens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitModuleProvides: aModuleProvides [
 	^ self visitProgram: aModuleProvides
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitModuleRequires: aModuleRequires [
 	^ self visitProgram: aModuleRequires
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitModuleUses: aModuleUses [
 	^ self visitProgram: aModuleUses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitName: aName [
 	^ self visitExpression: aName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitNew: aNew [
 	^ self visitExpression: aNew
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitNewArray: aNewArray [
 	^ self visitExpression: aNewArray
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitNewClass: aNewClass [
 	^ self visitNew: aNewClass
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitNull: aNull [
 	^ self visitLiteral: aNull
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitOuterThis: anOuterThis [
 	^ self visitExpression: anOuterThis
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitPackageDeclaration: aPackageDeclaration [
 	^ self visitDeclaration: aPackageDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitParameter: aParameter [
 	^ self visitProgram: aParameter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitPostDecrementExpression: aPostDecrementExpression [
 	^ self visitUnaryExpression: aPostDecrementExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitPostIncrementExpression: aPostIncrementExpression [
 	^ self visitUnaryExpression: aPostIncrementExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitPreDecrementExpression: aPreDecrementExpression [
 	^ self visitUnaryExpression: aPreDecrementExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitPreIncrementExpression: aPreIncrementExpression [
 	^ self visitUnaryExpression: aPreIncrementExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitPrimitiveType: aPrimitiveType [
 	^ self visitType: aPrimitiveType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitProgram: aProgram [
 	^ self visitSmaCCParseNode: aProgram
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitProgramFile: aProgramFile [
 	^ self visitProgram: aProgramFile
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitQualifiedName: aQualifiedName [
 	^ self visitName: aQualifiedName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitQualifiedTypeName: aQualifiedTypeName [
 	^ self visitTypeName: aQualifiedTypeName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitRecordDeclaration: aRecordDeclaration [
 	^ self visitDeclaration: aRecordDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitReturnStatement: aReturnStatement [
 	^ self visitStatement: aReturnStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitShortType: aShortType [
 	^ self visitPrimitiveType: aShortType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitSingleTypeImportDeclaration: aSingleTypeImportDeclaration [
 	^ self visitDeclaration: aSingleTypeImportDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitStatement: aStatement [
 	^ self visitProgram: aStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitStatementExpressionList: aStatementExpressionList [
 	^ self visitProgram: aStatementExpressionList
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitStaticInitializer: aStaticInitializer [
 	^ self visitInitializer: aStaticInitializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitStringLiteral: aStringLiteral [
 	^ self visitLiteral: aStringLiteral
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitSuperConstructorInvocation: aSuperConstructorInvocation [
 	^ self visitStatement: aSuperConstructorInvocation
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitSwitchBlock: aSwitchBlock [
 	^ self visitProgram: aSwitchBlock
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitSwitchBlockExpressionGroup: aSwitchBlockExpressionGroup [
 	^ self visitProgram: aSwitchBlockExpressionGroup
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitSwitchBlockStatementGroup: aSwitchBlockStatementGroup [
 	^ self visitProgram: aSwitchBlockStatementGroup
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitSwitchExpression: aSwitchExpression [
 	^ self visitExpression: aSwitchExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitSwitchLabel: aSwitchLabel [
 	^ self visitProgram: aSwitchLabel
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitSwitchStatement: aSwitchStatement [
 	^ self visitStatement: aSwitchStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitSynchronizedStatement: aSynchronizedStatement [
 	^ self visitStatement: aSynchronizedStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitThisConstructorInvocation: aThisConstructorInvocation [
 	^ self visitStatement: aThisConstructorInvocation
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitThrowStatement: aThrowStatement [
 	^ self visitStatement: aThrowStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitThrows: aThrows [
 	^ self visitProgram: aThrows
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitTryStatement: aTryStatement [
 	^ self visitStatement: aTryStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitType: aType [
 	^ self visitProgram: aType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitTypeArgument: aTypeArgument [
 	^ self visitProgram: aTypeArgument
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitTypeImportOnDemandDeclaration: aTypeImportOnDemandDeclaration [
 	^ self
 		visitSingleTypeImportDeclaration: aTypeImportOnDemandDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitTypeName: aTypeName [
 	^ self visitProgram: aTypeName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitTypeParameter: aTypeParameter [
 	^ self visitProgram: aTypeParameter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitTypeParameters: aTypeParameters [
 	^ self visitProgram: aTypeParameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitUnaryAddition: anUnaryAddition [
 	^ self visitUnaryExpression: anUnaryAddition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitUnaryBitInvert: anUnaryBitInvert [
 	^ self visitUnaryExpression: anUnaryBitInvert
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitUnaryExpression: anUnaryExpression [
 	^ self visitExpression: anUnaryExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitUnaryNot: anUnaryNot [
 	^ self visitUnaryExpression: anUnaryNot
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitUnarySubtraction: anUnarySubtraction [
 	^ self visitUnaryExpression: anUnarySubtraction
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitVariableArgumentParameter: aVariableArgumentParameter [
 	^ self visitParameter: aVariableArgumentParameter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitVariableDeclaration: aVariableDeclaration [
 	^ self visitDeclaration: aVariableDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitVariableName: aVariableName [
 	^ self visitProgram: aVariableName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitVoidType: aVoidType [
 	^ self visitProgram: aVoidType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitWhileStatement: aWhileStatement [
 	^ self visitStatement: aWhileStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitYieldStatement: aYieldStatement [
 	^ self visitStatement: aYieldStatement
 ]

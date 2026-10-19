@@ -1,28 +1,29 @@
 Class {
-	#name : #JavaPostDecrementExpressionNode,
-	#superclass : #JavaUnaryExpressionNode,
+	#name : 'JavaPostDecrementExpressionNode',
+	#superclass : 'JavaUnaryExpressionNode',
 	#instVars : [
 		'minusMinus'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPostDecrementExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPostDecrementExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPostDecrementExpressionNode >> minusMinus [
 	^ minusMinus
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPostDecrementExpressionNode >> minusMinus: aSmaCCToken [
 	minusMinus := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPostDecrementExpressionNode >> tokenVariables [
 	^ #(#minusMinus)
 ]

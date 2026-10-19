@@ -1,28 +1,29 @@
 Class {
-	#name : #JavaUnarySubtractionNode,
-	#superclass : #JavaUnaryExpressionNode,
+	#name : 'JavaUnarySubtractionNode',
+	#superclass : 'JavaUnaryExpressionNode',
 	#instVars : [
 		'minus'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaUnarySubtractionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUnarySubtraction: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaUnarySubtractionNode >> minus [
 	^ minus
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaUnarySubtractionNode >> minus: aSmaCCToken [
 	minus := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaUnarySubtractionNode >> tokenVariables [
 	^ #(#minus)
 ]

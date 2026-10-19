@@ -1,25 +1,26 @@
 Class {
-	#name : #JavaBinaryExpressionNode,
-	#superclass : #JavaExpressionNode,
+	#name : 'JavaBinaryExpressionNode',
+	#superclass : 'JavaExpressionNode',
 	#instVars : [
 		'leftExpression',
 		'op',
 		'rightExpression'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBinaryExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBinaryExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBinaryExpressionNode >> leftExpression [
 	^ leftExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBinaryExpressionNode >> leftExpression: aJavaExpressionNode [
 	self leftExpression notNil
 		ifTrue: [ self leftExpression parent: nil ].
@@ -28,27 +29,27 @@ JavaBinaryExpressionNode >> leftExpression: aJavaExpressionNode [
 		ifTrue: [ self leftExpression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBinaryExpressionNode >> nodeVariables [
 	^ #(#leftExpression #rightExpression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBinaryExpressionNode >> op [
 	^ op
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBinaryExpressionNode >> op: aSmaCCToken [
 	op := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBinaryExpressionNode >> rightExpression [
 	^ rightExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBinaryExpressionNode >> rightExpression: aJavaProgramNode [
 	self rightExpression notNil
 		ifTrue: [ self rightExpression parent: nil ].
@@ -57,7 +58,7 @@ JavaBinaryExpressionNode >> rightExpression: aJavaProgramNode [
 		ifTrue: [ self rightExpression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBinaryExpressionNode >> tokenVariables [
 	^ #(#op)
 ]

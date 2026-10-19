@@ -1,10 +1,11 @@
 Class {
-	#name : #JavaShortTypeNode,
-	#superclass : #JavaPrimitiveTypeNode,
-	#category : #'SmaCC_Java'
+	#name : 'JavaShortTypeNode',
+	#superclass : 'JavaPrimitiveTypeNode',
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaShortTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitShortType: self
 ]

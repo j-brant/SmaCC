@@ -1,10 +1,11 @@
 Class {
-	#name : #JavaLongTypeNode,
-	#superclass : #JavaPrimitiveTypeNode,
-	#category : #'SmaCC_Java'
+	#name : 'JavaLongTypeNode',
+	#superclass : 'JavaPrimitiveTypeNode',
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLongTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLongType: self
 ]

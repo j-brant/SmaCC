@@ -1,28 +1,29 @@
 Class {
-	#name : #JavaPreIncrementExpressionNode,
-	#superclass : #JavaUnaryExpressionNode,
+	#name : 'JavaPreIncrementExpressionNode',
+	#superclass : 'JavaUnaryExpressionNode',
 	#instVars : [
 		'plusPlus'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPreIncrementExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPreIncrementExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPreIncrementExpressionNode >> plusPlus [
 	^ plusPlus
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPreIncrementExpressionNode >> plusPlus: aSmaCCToken [
 	plusPlus := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPreIncrementExpressionNode >> tokenVariables [
 	^ #(#plusPlus)
 ]

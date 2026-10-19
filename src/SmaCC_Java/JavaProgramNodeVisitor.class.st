@@ -1,7 +1,8 @@
 Class {
-	#name : #JavaProgramNodeVisitor,
-	#superclass : #Object,
+	#name : 'JavaProgramNodeVisitor',
+	#superclass : 'Object',
 	#traits : 'TJavaProgramNodeVisitor',
 	#classTraits : 'TJavaProgramNodeVisitor classTrait',
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }

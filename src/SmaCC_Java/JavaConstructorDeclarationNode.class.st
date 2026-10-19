@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaConstructorDeclarationNode,
-	#superclass : #JavaDeclarationNode,
+	#name : 'JavaConstructorDeclarationNode',
+	#superclass : 'JavaDeclarationNode',
 	#instVars : [
 		'modifiers',
 		'typeParameters',
@@ -12,20 +12,21 @@ Class {
 		'throws',
 		'body'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitConstructorDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> body [
 	^ body
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> body: aJavaBlockNode [
 	self body notNil
 		ifTrue: [ self body parent: nil ].
@@ -34,32 +35,32 @@ JavaConstructorDeclarationNode >> body: aJavaBlockNode [
 		ifTrue: [ self body parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> compositeNodeVariables [
 	^ #(#parameters #modifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> ignoredTokenVariables [
 	^ #(#leftParen #rightParen)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaConstructorDeclarationNode >> initialize [
 	super initialize.
 	parameters := OrderedCollection new: 2.
@@ -67,34 +68,34 @@ JavaConstructorDeclarationNode >> initialize [
 	modifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> modifiers: anOrderedCollection [
 	self setParents: self modifiers to: nil.
 	modifiers := anOrderedCollection.
 	self setParents: self modifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> name: aJavaNameNode [
 	self name notNil
 		ifTrue: [ self name parent: nil ].
@@ -103,39 +104,39 @@ JavaConstructorDeclarationNode >> name: aJavaNameNode [
 		ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> nodeVariables [
 	^ #(#typeParameters #name #body #throws)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> throws [
 	^ throws
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> throws: aJavaThrowsNode [
 	self throws notNil
 		ifTrue: [ self throws parent: nil ].
@@ -144,12 +145,12 @@ JavaConstructorDeclarationNode >> throws: aJavaThrowsNode [
 		ifTrue: [ self throws parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> typeParameters [
 	^ typeParameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaConstructorDeclarationNode >> typeParameters: aJavaTypeParametersNode [
 	self typeParameters notNil
 		ifTrue: [ self typeParameters parent: nil ].

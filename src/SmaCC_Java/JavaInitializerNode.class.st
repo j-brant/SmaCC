@@ -1,23 +1,24 @@
 Class {
-	#name : #JavaInitializerNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaInitializerNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'block'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInitializerNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitInitializer: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInitializerNode >> block [
 	^ block
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInitializerNode >> block: aJavaBlockNode [
 	self block notNil
 		ifTrue: [ self block parent: nil ].
@@ -26,7 +27,7 @@ JavaInitializerNode >> block: aJavaBlockNode [
 		ifTrue: [ self block parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInitializerNode >> nodeVariables [
 	^ #(#block)
 ]

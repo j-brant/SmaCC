@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaModuleRequiresNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaModuleRequiresNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'requiresToken',
 		'name',
@@ -8,77 +8,78 @@ Class {
 		'staticToken',
 		'transitiveToken'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleRequiresNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitModuleRequires: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleRequiresNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleRequiresNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleRequiresNode >> name: aJavaNameNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJavaNameNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleRequiresNode >> nodeVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleRequiresNode >> requiresToken [
 	^ requiresToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleRequiresNode >> requiresToken: aSmaCCToken [
 	requiresToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleRequiresNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleRequiresNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleRequiresNode >> staticToken [
 	^ staticToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleRequiresNode >> staticToken: aSmaCCToken [
 	staticToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleRequiresNode >> tokenVariables [
 	^ #(#requiresToken #staticToken #transitiveToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleRequiresNode >> transitiveToken [
 	^ transitiveToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleRequiresNode >> transitiveToken: aSmaCCToken [
 	transitiveToken := aSmaCCToken
 ]

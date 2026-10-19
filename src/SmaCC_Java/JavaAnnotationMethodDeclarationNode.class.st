@@ -1,44 +1,45 @@
 Class {
-	#name : #JavaAnnotationMethodDeclarationNode,
-	#superclass : #JavaAbstractMethodDeclarationNode,
+	#name : 'JavaAnnotationMethodDeclarationNode',
+	#superclass : 'JavaAbstractMethodDeclarationNode',
 	#instVars : [
 		'defaultToken',
 		'value'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationMethodDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAnnotationMethodDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationMethodDeclarationNode >> defaultToken [
 	^ defaultToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationMethodDeclarationNode >> defaultToken: aSmaCCToken [
 	defaultToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationMethodDeclarationNode >> nodeVariables [
 	^ #(#value #typeParameters #type #declarator #throws)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationMethodDeclarationNode >> tokenVariables [
 	^ #(#defaultToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationMethodDeclarationNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationMethodDeclarationNode >> value: aJavaProgramNode [
 	self value notNil
 		ifTrue: [ self value parent: nil ].

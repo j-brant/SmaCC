@@ -1,25 +1,26 @@
 Class {
-	#name : #JavaArrayMethodDeclaratorNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaArrayMethodDeclaratorNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'declarator',
 		'leftBracket',
 		'rightBracket'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayMethodDeclaratorNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitArrayMethodDeclarator: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayMethodDeclaratorNode >> declarator [
 	^ declarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayMethodDeclaratorNode >> declarator: aJavaProgramNode [
 	self declarator notNil
 		ifTrue: [ self declarator parent: nil ].
@@ -28,32 +29,32 @@ JavaArrayMethodDeclaratorNode >> declarator: aJavaProgramNode [
 		ifTrue: [ self declarator parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayMethodDeclaratorNode >> ignoredTokenVariables [
 	^ #(#leftBracket #rightBracket)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayMethodDeclaratorNode >> leftBracket [
 	^ leftBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayMethodDeclaratorNode >> leftBracket: aSmaCCToken [
 	leftBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayMethodDeclaratorNode >> nodeVariables [
 	^ #(#declarator)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayMethodDeclaratorNode >> rightBracket [
 	^ rightBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayMethodDeclaratorNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
 ]

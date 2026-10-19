@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaAnnotationInterfaceNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaAnnotationInterfaceNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'modifiers',
 		'atToken',
@@ -10,106 +10,107 @@ Class {
 		'declarations',
 		'rightBrace'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationInterfaceNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAnnotationInterface: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationInterfaceNode >> atToken [
 	^ atToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationInterfaceNode >> atToken: aSmaCCToken [
 	atToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationInterfaceNode >> compositeNodeVariables [
 	^ #(#declarations #modifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationInterfaceNode >> declarations [
 	^ declarations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationInterfaceNode >> declarations: anOrderedCollection [
 	self setParents: self declarations to: nil.
 	declarations := anOrderedCollection.
 	self setParents: self declarations to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationInterfaceNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaAnnotationInterfaceNode >> initialize [
 	super initialize.
 	declarations := OrderedCollection new: 2.
 	modifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationInterfaceNode >> interfaceToken [
 	^ interfaceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationInterfaceNode >> interfaceToken: aSmaCCToken [
 	interfaceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationInterfaceNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationInterfaceNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationInterfaceNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationInterfaceNode >> modifiers: anOrderedCollection [
 	self setParents: self modifiers to: nil.
 	modifiers := anOrderedCollection.
 	self setParents: self modifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationInterfaceNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationInterfaceNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationInterfaceNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationInterfaceNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAnnotationInterfaceNode >> tokenVariables [
 	^ #(#atToken #interfaceToken #name)
 ]

@@ -1,55 +1,56 @@
 Class {
-	#name : #JavaBreakStatementNode,
-	#superclass : #JavaStatementNode,
+	#name : 'JavaBreakStatementNode',
+	#superclass : 'JavaStatementNode',
 	#instVars : [
 		'breakToken',
 		'identifier',
 		'semicolon'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBreakStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBreakStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBreakStatementNode >> breakToken [
 	^ breakToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBreakStatementNode >> breakToken: aSmaCCToken [
 	breakToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBreakStatementNode >> identifier [
 	^ identifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBreakStatementNode >> identifier: aSmaCCToken [
 	identifier := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBreakStatementNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBreakStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBreakStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBreakStatementNode >> tokenVariables [
 	^ #(#breakToken #identifier)
 ]

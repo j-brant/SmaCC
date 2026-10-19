@@ -1,79 +1,80 @@
 Class {
-	#name : #JavaTypeArgumentNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaTypeArgumentNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'annotations',
 		'type',
 		'questionMark',
 		'token'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeArgumentNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTypeArgument: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeArgumentNode >> annotations [
 	^ annotations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeArgumentNode >> annotations: anOrderedCollection [
 	self setParents: self annotations to: nil.
 	annotations := anOrderedCollection.
 	self setParents: self annotations to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeArgumentNode >> compositeNodeVariables [
 	^ #(#annotations)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaTypeArgumentNode >> initialize [
 	super initialize.
 	annotations := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeArgumentNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeArgumentNode >> questionMark [
 	^ questionMark
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeArgumentNode >> questionMark: aSmaCCToken [
 	questionMark := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeArgumentNode >> token [
 	^ token
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeArgumentNode >> token: aSmaCCToken [
 	token := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeArgumentNode >> tokenVariables [
 	^ #(#questionMark #token)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeArgumentNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaTypeArgumentNode >> type: aJavaTypeNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].

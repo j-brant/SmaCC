@@ -1,78 +1,79 @@
 Class {
-	#name : #JavaElementArrayInitializerNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaElementArrayInitializerNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'leftBrace',
 		'values',
 		'commas',
 		'rightBrace'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaElementArrayInitializerNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitElementArrayInitializer: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaElementArrayInitializerNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaElementArrayInitializerNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaElementArrayInitializerNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaElementArrayInitializerNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaElementArrayInitializerNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaElementArrayInitializerNode >> initialize [
 	super initialize.
 	commas := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaElementArrayInitializerNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaElementArrayInitializerNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaElementArrayInitializerNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaElementArrayInitializerNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaElementArrayInitializerNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaElementArrayInitializerNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

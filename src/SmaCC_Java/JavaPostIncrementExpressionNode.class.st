@@ -1,28 +1,29 @@
 Class {
-	#name : #JavaPostIncrementExpressionNode,
-	#superclass : #JavaUnaryExpressionNode,
+	#name : 'JavaPostIncrementExpressionNode',
+	#superclass : 'JavaUnaryExpressionNode',
 	#instVars : [
 		'plusPlus'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPostIncrementExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPostIncrementExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPostIncrementExpressionNode >> plusPlus [
 	^ plusPlus
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPostIncrementExpressionNode >> plusPlus: aSmaCCToken [
 	plusPlus := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPostIncrementExpressionNode >> tokenVariables [
 	^ #(#plusPlus)
 ]

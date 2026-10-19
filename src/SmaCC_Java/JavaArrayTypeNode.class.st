@@ -1,25 +1,26 @@
 Class {
-	#name : #JavaArrayTypeNode,
-	#superclass : #JavaTypeNode,
+	#name : 'JavaArrayTypeNode',
+	#superclass : 'JavaTypeNode',
 	#instVars : [
 		'baseType',
 		'leftBrackets',
 		'rightBrackets'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitArrayType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayTypeNode >> baseType [
 	^ baseType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayTypeNode >> baseType: aJavaProgramNode [
 	self baseType notNil
 		ifTrue: [ self baseType parent: nil ].
@@ -28,39 +29,39 @@ JavaArrayTypeNode >> baseType: aJavaProgramNode [
 		ifTrue: [ self baseType parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayTypeNode >> ignoredCompositeTokenVariables [
 	^ #(#leftBrackets #rightBrackets)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaArrayTypeNode >> initialize [
 	super initialize.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayTypeNode >> leftBrackets [
 	^ leftBrackets
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayTypeNode >> leftBrackets: anOrderedCollection [
 	leftBrackets := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayTypeNode >> nodeVariables [
 	^ #(#baseType)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayTypeNode >> rightBrackets [
 	^ rightBrackets
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayTypeNode >> rightBrackets: anOrderedCollection [
 	rightBrackets := anOrderedCollection
 ]

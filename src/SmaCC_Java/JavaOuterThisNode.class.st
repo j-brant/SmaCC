@@ -1,25 +1,26 @@
 Class {
-	#name : #JavaOuterThisNode,
-	#superclass : #JavaExpressionNode,
+	#name : 'JavaOuterThisNode',
+	#superclass : 'JavaExpressionNode',
 	#instVars : [
 		'name',
 		'period',
 		'thisToken'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaOuterThisNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitOuterThis: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaOuterThisNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaOuterThisNode >> name: aJavaNameNode [
 	self name notNil
 		ifTrue: [ self name parent: nil ].
@@ -28,32 +29,32 @@ JavaOuterThisNode >> name: aJavaNameNode [
 		ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaOuterThisNode >> nodeVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaOuterThisNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaOuterThisNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaOuterThisNode >> thisToken [
 	^ thisToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaOuterThisNode >> thisToken: aSmaCCToken [
 	thisToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaOuterThisNode >> tokenVariables [
 	^ #(#period #thisToken)
 ]

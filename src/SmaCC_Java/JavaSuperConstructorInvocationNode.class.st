@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaSuperConstructorInvocationNode,
-	#superclass : #JavaStatementNode,
+	#name : 'JavaSuperConstructorInvocationNode',
+	#superclass : 'JavaStatementNode',
 	#instVars : [
 		'superToken',
 		'leftParen',
@@ -11,89 +11,90 @@ Class {
 		'primary',
 		'period'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSuperConstructorInvocation: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> compositeNodeVariables [
 	^ #(#expressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> ignoredTokenVariables [
 	^ #(#leftParen #rightParen #semicolon)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaSuperConstructorInvocationNode >> initialize [
 	super initialize.
 	expressions := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> nodeVariables [
 	^ #(#primary)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> primary [
 	^ primary
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> primary: aJavaExpressionNode [
 	self primary notNil
 		ifTrue: [ self primary parent: nil ].
@@ -102,37 +103,37 @@ JavaSuperConstructorInvocationNode >> primary: aJavaExpressionNode [
 		ifTrue: [ self primary parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> superToken [
 	^ superToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> superToken: aSmaCCToken [
 	superToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> tokenVariables [
 	^ #(#superToken #period)
 ]

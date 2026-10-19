@@ -1,28 +1,29 @@
 Class {
-	#name : #JavaNameNode,
-	#superclass : #JavaExpressionNode,
+	#name : 'JavaNameNode',
+	#superclass : 'JavaExpressionNode',
 	#instVars : [
 		'name'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNameNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitName: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNameNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNameNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNameNode >> tokenVariables [
 	^ #(#name)
 ]

@@ -1,55 +1,56 @@
 Class {
-	#name : #JavaElementValuePairNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaElementValuePairNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'name',
 		'equals',
 		'value'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaElementValuePairNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitElementValuePair: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaElementValuePairNode >> equals [
 	^ equals
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaElementValuePairNode >> equals: aSmaCCToken [
 	equals := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaElementValuePairNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaElementValuePairNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaElementValuePairNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaElementValuePairNode >> tokenVariables [
 	^ #(#name #equals)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaElementValuePairNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaElementValuePairNode >> value: aJavaProgramNode [
 	self value notNil
 		ifTrue: [ self value parent: nil ].

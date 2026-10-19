@@ -1,23 +1,24 @@
 Class {
-	#name : #JavaClassTypeNode,
-	#superclass : #JavaTypeNode,
+	#name : 'JavaClassTypeNode',
+	#superclass : 'JavaTypeNode',
 	#instVars : [
 		'name'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitClassType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassTypeNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassTypeNode >> name: aJavaTypeNameNode [
 	self name notNil
 		ifTrue: [ self name parent: nil ].
@@ -26,7 +27,7 @@ JavaClassTypeNode >> name: aJavaTypeNameNode [
 		ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassTypeNode >> nodeVariables [
 	^ #(#name)
 ]

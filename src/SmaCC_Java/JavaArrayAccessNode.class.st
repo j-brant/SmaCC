@@ -1,26 +1,27 @@
 Class {
-	#name : #JavaArrayAccessNode,
-	#superclass : #JavaExpressionNode,
+	#name : 'JavaArrayAccessNode',
+	#superclass : 'JavaExpressionNode',
 	#instVars : [
 		'array',
 		'leftBracket',
 		'expression',
 		'rightBracket'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayAccessNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitArrayAccess: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayAccessNode >> array [
 	^ array
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayAccessNode >> array: aJavaExpressionNode [
 	self array notNil
 		ifTrue: [ self array parent: nil ].
@@ -29,12 +30,12 @@ JavaArrayAccessNode >> array: aJavaExpressionNode [
 		ifTrue: [ self array parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayAccessNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayAccessNode >> expression: aJavaExpressionNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
@@ -43,32 +44,32 @@ JavaArrayAccessNode >> expression: aJavaExpressionNode [
 		ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayAccessNode >> ignoredTokenVariables [
 	^ #(#leftBracket #rightBracket)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayAccessNode >> leftBracket [
 	^ leftBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayAccessNode >> leftBracket: aSmaCCToken [
 	leftBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayAccessNode >> nodeVariables [
 	^ #(#array #expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayAccessNode >> rightBracket [
 	^ rightBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayAccessNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
 ]

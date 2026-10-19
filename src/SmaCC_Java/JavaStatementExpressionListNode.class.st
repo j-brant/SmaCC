@@ -1,51 +1,52 @@
 Class {
-	#name : #JavaStatementExpressionListNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaStatementExpressionListNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'expressions',
 		'commas'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaStatementExpressionListNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStatementExpressionList: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaStatementExpressionListNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaStatementExpressionListNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaStatementExpressionListNode >> compositeNodeVariables [
 	^ #(#expressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaStatementExpressionListNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaStatementExpressionListNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaStatementExpressionListNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaStatementExpressionListNode >> initialize [
 	super initialize.
 	expressions := OrderedCollection new: 2.

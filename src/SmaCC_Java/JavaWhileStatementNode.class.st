@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaWhileStatementNode,
-	#superclass : #JavaStatementNode,
+	#name : 'JavaWhileStatementNode',
+	#superclass : 'JavaStatementNode',
 	#instVars : [
 		'whileToken',
 		'leftParen',
@@ -8,20 +8,21 @@ Class {
 		'rightParen',
 		'statement'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaWhileStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitWhileStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaWhileStatementNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaWhileStatementNode >> expression: aJavaExpressionNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
@@ -30,59 +31,59 @@ JavaWhileStatementNode >> expression: aJavaExpressionNode [
 		ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaWhileStatementNode >> ignoredTokenVariables [
 	^ #(#leftParen #rightParen)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaWhileStatementNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaWhileStatementNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaWhileStatementNode >> nodeVariables [
 	^ #(#expression #statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaWhileStatementNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaWhileStatementNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaWhileStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaWhileStatementNode >> statement: aJavaProgramNode [
 	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aJavaProgramNode.
 	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaWhileStatementNode >> tokenVariables [
 	^ #(#whileToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaWhileStatementNode >> whileToken [
 	^ whileToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaWhileStatementNode >> whileToken: aSmaCCToken [
 	whileToken := aSmaCCToken
 ]

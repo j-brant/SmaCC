@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaModuleNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaModuleNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'moduleToken',
 		'name',
@@ -9,100 +9,101 @@ Class {
 		'rightBrace',
 		'openToken'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitModule: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleNode >> compositeNodeVariables [
 	^ #(#directives)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleNode >> directives [
 	^ directives
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleNode >> directives: anOrderedCollection [
 	self setParents: self directives to: nil.
 	directives := anOrderedCollection.
 	self setParents: self directives to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaModuleNode >> initialize [
 	super initialize.
 	directives := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleNode >> moduleToken [
 	^ moduleToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleNode >> moduleToken: aSmaCCToken [
 	moduleToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleNode >> name: aJavaNameNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJavaNameNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleNode >> nodeVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleNode >> openToken [
 	^ openToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleNode >> openToken: aSmaCCToken [
 	openToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleNode >> tokenVariables [
 	^ #(#moduleToken #openToken)
 ]

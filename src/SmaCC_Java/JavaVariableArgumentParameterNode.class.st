@@ -1,28 +1,29 @@
 Class {
-	#name : #JavaVariableArgumentParameterNode,
-	#superclass : #JavaParameterNode,
+	#name : 'JavaVariableArgumentParameterNode',
+	#superclass : 'JavaParameterNode',
 	#instVars : [
 		'varArgsToken'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaVariableArgumentParameterNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitVariableArgumentParameter: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaVariableArgumentParameterNode >> tokenVariables [
 	^ #(#varArgsToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaVariableArgumentParameterNode >> varArgsToken [
 	^ varArgsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaVariableArgumentParameterNode >> varArgsToken: aSmaCCToken [
 	varArgsToken := aSmaCCToken
 ]

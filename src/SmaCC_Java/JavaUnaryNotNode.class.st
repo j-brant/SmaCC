@@ -1,28 +1,29 @@
 Class {
-	#name : #JavaUnaryNotNode,
-	#superclass : #JavaUnaryExpressionNode,
+	#name : 'JavaUnaryNotNode',
+	#superclass : 'JavaUnaryExpressionNode',
 	#instVars : [
 		'bang'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaUnaryNotNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUnaryNot: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaUnaryNotNode >> bang [
 	^ bang
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaUnaryNotNode >> bang: aSmaCCToken [
 	bang := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaUnaryNotNode >> tokenVariables [
 	^ #(#bang)
 ]

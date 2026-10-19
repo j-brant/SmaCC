@@ -1,28 +1,29 @@
 Class {
-	#name : #JavaPrimitiveTypeNode,
-	#superclass : #JavaTypeNode,
+	#name : 'JavaPrimitiveTypeNode',
+	#superclass : 'JavaTypeNode',
 	#instVars : [
 		'token'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPrimitiveTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPrimitiveType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPrimitiveTypeNode >> token [
 	^ token
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPrimitiveTypeNode >> token: aSmaCCToken [
 	token := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPrimitiveTypeNode >> tokenVariables [
 	^ #(#token)
 ]

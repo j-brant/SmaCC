@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaDoWhileStatementNode,
-	#superclass : #JavaStatementNode,
+	#name : 'JavaDoWhileStatementNode',
+	#superclass : 'JavaStatementNode',
 	#instVars : [
 		'doToken',
 		'statement',
@@ -10,30 +10,31 @@ Class {
 		'rightParen',
 		'semicolon'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDoWhileStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDoWhileStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDoWhileStatementNode >> doToken [
 	^ doToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDoWhileStatementNode >> doToken: aSmaCCToken [
 	doToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDoWhileStatementNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDoWhileStatementNode >> expression: aJavaExpressionNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
@@ -42,69 +43,69 @@ JavaDoWhileStatementNode >> expression: aJavaExpressionNode [
 		ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDoWhileStatementNode >> ignoredTokenVariables [
 	^ #(#leftParen #rightParen #semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDoWhileStatementNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDoWhileStatementNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDoWhileStatementNode >> nodeVariables [
 	^ #(#statement #expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDoWhileStatementNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDoWhileStatementNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDoWhileStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDoWhileStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDoWhileStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDoWhileStatementNode >> statement: aJavaProgramNode [
 	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aJavaProgramNode.
 	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDoWhileStatementNode >> tokenVariables [
 	^ #(#doToken #whileToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDoWhileStatementNode >> whileToken [
 	^ whileToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDoWhileStatementNode >> whileToken: aSmaCCToken [
 	whileToken := aSmaCCToken
 ]

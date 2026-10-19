@@ -1,61 +1,62 @@
 Class {
-	#name : #JavaBlockNode,
-	#superclass : #JavaStatementNode,
+	#name : 'JavaBlockNode',
+	#superclass : 'JavaStatementNode',
 	#instVars : [
 		'leftBrace',
 		'statements',
 		'rightBrace'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBlockNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBlock: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBlockNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBlockNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaBlockNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBlockNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBlockNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBlockNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBlockNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBlockNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaBlockNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.

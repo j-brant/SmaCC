@@ -1,41 +1,42 @@
 Class {
-	#name : #JavaLocalVariableDeclarationNode,
-	#superclass : #JavaDeclarationNode,
+	#name : 'JavaLocalVariableDeclarationNode',
+	#superclass : 'JavaDeclarationNode',
 	#instVars : [
 		'modifiers',
 		'type',
 		'variableDeclarations',
 		'commas'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLocalVariableDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLocalVariableDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLocalVariableDeclarationNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLocalVariableDeclarationNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLocalVariableDeclarationNode >> compositeNodeVariables [
 	^ #(#modifiers #variableDeclarations)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLocalVariableDeclarationNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaLocalVariableDeclarationNode >> initialize [
 	super initialize.
 	modifiers := OrderedCollection new: 2.
@@ -43,29 +44,29 @@ JavaLocalVariableDeclarationNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLocalVariableDeclarationNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLocalVariableDeclarationNode >> modifiers: anOrderedCollection [
 	self setParents: self modifiers to: nil.
 	modifiers := anOrderedCollection.
 	self setParents: self modifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLocalVariableDeclarationNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLocalVariableDeclarationNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLocalVariableDeclarationNode >> type: aJavaTypeNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].
@@ -74,12 +75,12 @@ JavaLocalVariableDeclarationNode >> type: aJavaTypeNode [
 		ifTrue: [ self type parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLocalVariableDeclarationNode >> variableDeclarations [
 	^ variableDeclarations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaLocalVariableDeclarationNode >> variableDeclarations: anOrderedCollection [
 	self setParents: self variableDeclarations to: nil.
 	variableDeclarations := anOrderedCollection.

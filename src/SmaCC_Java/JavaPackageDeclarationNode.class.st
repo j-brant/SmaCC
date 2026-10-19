@@ -1,54 +1,55 @@
 Class {
-	#name : #JavaPackageDeclarationNode,
-	#superclass : #JavaDeclarationNode,
+	#name : 'JavaPackageDeclarationNode',
+	#superclass : 'JavaDeclarationNode',
 	#instVars : [
 		'annotations',
 		'packageToken',
 		'name',
 		'semicolon'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPackageDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPackageDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPackageDeclarationNode >> annotations [
 	^ annotations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPackageDeclarationNode >> annotations: anOrderedCollection [
 	self setParents: self annotations to: nil.
 	annotations := anOrderedCollection.
 	self setParents: self annotations to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPackageDeclarationNode >> compositeNodeVariables [
 	^ #(#annotations)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPackageDeclarationNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaPackageDeclarationNode >> initialize [
 	super initialize.
 	annotations := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPackageDeclarationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPackageDeclarationNode >> name: aJavaNameNode [
 	self name notNil
 		ifTrue: [ self name parent: nil ].
@@ -57,32 +58,32 @@ JavaPackageDeclarationNode >> name: aJavaNameNode [
 		ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPackageDeclarationNode >> nodeVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPackageDeclarationNode >> packageToken [
 	^ packageToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPackageDeclarationNode >> packageToken: aSmaCCToken [
 	packageToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPackageDeclarationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPackageDeclarationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaPackageDeclarationNode >> tokenVariables [
 	^ #(#packageToken)
 ]

@@ -1,10 +1,11 @@
 Class {
-	#name : #JavaDoubleTypeNode,
-	#superclass : #JavaPrimitiveTypeNode,
-	#category : #'SmaCC_Java'
+	#name : 'JavaDoubleTypeNode',
+	#superclass : 'JavaPrimitiveTypeNode',
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaDoubleTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDoubleType: self
 ]

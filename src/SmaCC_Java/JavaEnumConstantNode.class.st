@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaEnumConstantNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaEnumConstantNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'annotations',
 		'name',
@@ -12,76 +12,77 @@ Class {
 		'declarations',
 		'rightBrace'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEnumConstant: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> annotations [
 	^ annotations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> annotations: anOrderedCollection [
 	self setParents: self annotations to: nil.
 	annotations := anOrderedCollection.
 	self setParents: self annotations to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> compositeNodeVariables [
 	^ #(#annotations #declarations #expressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> declarations [
 	^ declarations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> declarations: anOrderedCollection [
 	self setParents: self declarations to: nil.
 	declarations := anOrderedCollection.
 	self setParents: self declarations to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace #leftParen #rightParen)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaEnumConstantNode >> initialize [
 	super initialize.
 	annotations := OrderedCollection new: 2.
@@ -90,57 +91,57 @@ JavaEnumConstantNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumConstantNode >> tokenVariables [
 	^ #(#name)
 ]

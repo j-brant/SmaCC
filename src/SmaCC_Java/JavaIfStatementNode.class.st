@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaIfStatementNode,
-	#superclass : #JavaStatementNode,
+	#name : 'JavaIfStatementNode',
+	#superclass : 'JavaStatementNode',
 	#instVars : [
 		'ifToken',
 		'leftParen',
@@ -8,20 +8,21 @@ Class {
 		'rightParen',
 		'trueStatement'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaIfStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIfStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaIfStatementNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaIfStatementNode >> expression: aJavaExpressionNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
@@ -30,57 +31,57 @@ JavaIfStatementNode >> expression: aJavaExpressionNode [
 		ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaIfStatementNode >> ifToken [
 	^ ifToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaIfStatementNode >> ifToken: aSmaCCToken [
 	ifToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaIfStatementNode >> ignoredTokenVariables [
 	^ #(#leftParen #rightParen)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaIfStatementNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaIfStatementNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaIfStatementNode >> nodeVariables [
 	^ #(#expression #trueStatement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaIfStatementNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaIfStatementNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaIfStatementNode >> tokenVariables [
 	^ #(#ifToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaIfStatementNode >> trueStatement [
 	^ trueStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaIfStatementNode >> trueStatement: aJavaProgramNode [
 	self trueStatement notNil ifTrue: [ self trueStatement parent: nil ].
 	trueStatement := aJavaProgramNode.

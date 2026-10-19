@@ -1,28 +1,29 @@
 Class {
-	#name : #JavaModifierNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaModifierNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'token'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitModifier: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModifierNode >> token [
 	^ token
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModifierNode >> token: aSmaCCToken [
 	token := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModifierNode >> tokenVariables [
 	^ #(#token)
 ]

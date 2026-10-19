@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaThisConstructorInvocationNode,
-	#superclass : #JavaStatementNode,
+	#name : 'JavaThisConstructorInvocationNode',
+	#superclass : 'JavaStatementNode',
 	#instVars : [
 		'thisToken',
 		'leftParen',
@@ -11,89 +11,90 @@ Class {
 		'primary',
 		'period'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThisConstructorInvocationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitThisConstructorInvocation: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThisConstructorInvocationNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThisConstructorInvocationNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThisConstructorInvocationNode >> compositeNodeVariables [
 	^ #(#expressions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThisConstructorInvocationNode >> expressions [
 	^ expressions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThisConstructorInvocationNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: nil.
 	expressions := anOrderedCollection.
 	self setParents: self expressions to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThisConstructorInvocationNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThisConstructorInvocationNode >> ignoredTokenVariables [
 	^ #(#leftParen #rightParen #semicolon)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaThisConstructorInvocationNode >> initialize [
 	super initialize.
 	expressions := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThisConstructorInvocationNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThisConstructorInvocationNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThisConstructorInvocationNode >> nodeVariables [
 	^ #(#primary)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThisConstructorInvocationNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThisConstructorInvocationNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThisConstructorInvocationNode >> primary [
 	^ primary
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThisConstructorInvocationNode >> primary: aJavaExpressionNode [
 	self primary notNil
 		ifTrue: [ self primary parent: nil ].
@@ -102,37 +103,37 @@ JavaThisConstructorInvocationNode >> primary: aJavaExpressionNode [
 		ifTrue: [ self primary parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThisConstructorInvocationNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThisConstructorInvocationNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThisConstructorInvocationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThisConstructorInvocationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThisConstructorInvocationNode >> thisToken [
 	^ thisToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThisConstructorInvocationNode >> thisToken: aSmaCCToken [
 	thisToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThisConstructorInvocationNode >> tokenVariables [
 	^ #(#thisToken #period)
 ]

@@ -1,10 +1,11 @@
 Class {
-	#name : #JavaScanner,
-	#superclass : #SmaCCScanner,
-	#category : #'SmaCC_Java'
+	#name : 'JavaScanner',
+	#superclass : 'SmaCCScanner',
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #'generated-initialization' }
+{ #category : 'generated-initialization' }
 JavaScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
 	#(#(120 'abstract' 42) #(120 'assert' 43) #(120 'boolean' 44) #(120 'break' 45) #(120 'byte' 46) #(120 'case' 47) #(120 'catch' 48) #(120 'char' 49) #(120 'class' 50) #(120 'continue' 51) #(120 'default' 52) #(120 'do' 53) #(120 'double' 54) #(120 'else' 55) #(120 'enum' 56) #(120 'exports' 57) #(120 'extends' 58) #(120 'false' 116) #(120 'final' 59) #(120 'finally' 60) #(120 'float' 61) #(120 'for' 62) #(120 'if' 63) #(120 'implements' 64) #(120 'import' 65) #(120 'instanceof' 66) #(120 'int' 67) #(120 'interface' 68) #(120 'long' 69) #(120 'module' 70) #(120 'native' 71) #(120 'new' 72) #(120 'null' 119) #(120 'open' 74) #(120 'opens' 75) #(120 'package' 76) #(120 'permits' 77) #(120 'private' 78) #(120 'protected' 79) #(120 'provides' 80) #(120 'public' 81) #(120 'record' 82) #(120 'requires' 83) #(120 'return' 84) #(120 'sealed' 85) #(120 'short' 86) #(120 'static' 87) #(120 'strictfp' 88) #(120 'super' 89) #(120 'switch' 90) #(120 'synchronized' 91) #(120 'this' 92) #(120 'throw' 93) #(120 'throws' 94) #(120 'to' 95) #(120 'transient' 96) #(120 'transitive' 97) #(120 'true' 116) #(120 'try' 98) #(120 'uses' 99) #(120 'void' 100) #(120 'volatile' 101) #(120 'while' 102) #(120 'with' 103) #(120 'yield' 104))
@@ -15,32 +16,32 @@ JavaScanner class >> initializeKeywordMap [
 	^ keywordMap
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> GREATER_THANId [
 	^ 111
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> SIGNED_RIGHT_SHIFTId [
 	^ 112
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> UNSIGNED_RIGHT_SHIFTId [
 	^ 113
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> emptySymbolTokenId [
 	^ 340
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> errorTokenId [
 	^ 341
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scan1 [
 	[ self step.
 	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(118) ].
@@ -48,7 +49,7 @@ JavaScanner >> scan1 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scan10 [
 	[ self step.
 	currentCharacter == $*
@@ -59,7 +60,7 @@ JavaScanner >> scan10 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scan11 [
 	self recordMatch: #(115).
 	self step.
@@ -71,7 +72,7 @@ JavaScanner >> scan11 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scan12 [
 	[ self recordMatch: #(114).
 	self step.
@@ -93,7 +94,7 @@ JavaScanner >> scan12 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scan13 [
 	[ self step.
 	currentCharacter == $. ifTrue: [ ^ self scan11 ].
@@ -106,7 +107,7 @@ JavaScanner >> scan13 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scan14 [
 	[ self step.
 	currentCharacter == $_ ] whileTrue.
@@ -114,7 +115,7 @@ JavaScanner >> scan14 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scan15 [
 	[ self recordMatch: #(114).
 	self step.
@@ -129,7 +130,7 @@ JavaScanner >> scan15 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scan16 [
 	[ self recordMatch: #(114).
 	self step.
@@ -154,7 +155,7 @@ JavaScanner >> scan16 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scan17 [
 	[ self recordMatch: #(115).
 	self step.
@@ -172,7 +173,7 @@ JavaScanner >> scan17 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scan18 [
 	[ self recordMatch: #(114).
 	self step.
@@ -192,7 +193,7 @@ JavaScanner >> scan18 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scan19 [
 	[ self step.
 	currentCharacter == $`
@@ -203,7 +204,7 @@ JavaScanner >> scan19 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scan2 [
 	self step.
 	currentCharacter == $u
@@ -231,27 +232,27 @@ JavaScanner >> scan2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scan3 [
 	[ self step.
 	currentCharacter == $" ifTrue: [ ^ self scan4 ].
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scan4 [
 	(self scanForString: '""') ifTrue: [ ^ self recordAndReportMatch: #(118) ].
 	^ self scan3
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scan5 [
 	self step.
 	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(117) ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scan6 [
 	self step.
 	currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(117) ].
@@ -259,7 +260,7 @@ JavaScanner >> scan6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scan7 [
 	[ self recordMatch: #(115).
 	self step.
@@ -276,7 +277,7 @@ JavaScanner >> scan7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scan8 [
 	self step.
 	('+-' includes: currentCharacter) ifTrue: [ self step ].
@@ -284,7 +285,7 @@ JavaScanner >> scan8 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scan9 [
 	[ self recordMatch: #(115).
 	self step.
@@ -294,7 +295,7 @@ JavaScanner >> scan9 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForToken [
 	self step.
 	currentCharacter == $! ifTrue: [ ^ self scanForTokenX19 ].
@@ -311,14 +312,14 @@ JavaScanner >> scanForToken [
 	^ self scanForTokenX22
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX1 [
 	self recordMatch: #(114).
 	self step.
 	^ self scanForTokenX1X3
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX10 [
 	self recordMatch: #(20).
 	self step.
@@ -330,7 +331,7 @@ JavaScanner >> scanForTokenX10 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX11 [
 	self recordMatch: #(12).
 	self step.
@@ -339,7 +340,7 @@ JavaScanner >> scanForTokenX11 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX12 [
 	self recordMatch: #(5).
 	self step.
@@ -348,7 +349,7 @@ JavaScanner >> scanForTokenX12 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX13 [
 	[ self recordMatch: #(121).
 	self step.
@@ -357,7 +358,7 @@ JavaScanner >> scanForTokenX13 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX14 [
 	self recordMatch: #(40).
 	self step.
@@ -365,7 +366,7 @@ JavaScanner >> scanForTokenX14 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX15 [
 	self recordMatch: #(31).
 	self step.
@@ -373,7 +374,7 @@ JavaScanner >> scanForTokenX15 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX16 [
 	self recordMatch: #(24).
 	self step.
@@ -381,7 +382,7 @@ JavaScanner >> scanForTokenX16 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX17 [
 	self recordMatch: #(10).
 	self step.
@@ -389,7 +390,7 @@ JavaScanner >> scanForTokenX17 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX18 [
 	self recordMatch: #(3).
 	self step.
@@ -397,7 +398,7 @@ JavaScanner >> scanForTokenX18 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX19 [
 	self recordMatch: #(1).
 	self step.
@@ -405,7 +406,7 @@ JavaScanner >> scanForTokenX19 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX1X1 [
 	self step.
 	(currentCharacter isDigit
@@ -414,14 +415,14 @@ JavaScanner >> scanForTokenX1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX1X2 [
 	self step.
 	(currentCharacter between: $0 and: $1) ifTrue: [ ^ self scan15 ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX1X3 [
 	currentCharacter == $. ifTrue: [ ^ self scan11 ].
 	currentCharacter == $_ ifTrue: [ ^ self scan14 ].
@@ -438,7 +439,7 @@ JavaScanner >> scanForTokenX1X3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX2 [
 	self step.
 	currentCharacter == $\
@@ -475,7 +476,7 @@ JavaScanner >> scanForTokenX2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX20 [
 	[ self recordMatch: #(120).
 	self step.
@@ -483,7 +484,7 @@ JavaScanner >> scanForTokenX20 [
 		whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX21 [
 	currentCharacter == $^ ifTrue: [ ^ self scanForTokenX14 ].
 	currentCharacter == $` ifTrue: [ ^ self scan19 ].
@@ -500,7 +501,7 @@ JavaScanner >> scanForTokenX21 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX22 [
 	currentCharacter == $. ifTrue: [ ^ self scanForTokenX10 ].
 	currentCharacter == $/ ifTrue: [ ^ self scanForTokenX3 ].
@@ -517,7 +518,7 @@ JavaScanner >> scanForTokenX22 [
 	^ self scanForTokenX21
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX3 [
 	self recordMatch: #(22).
 	self step.
@@ -533,7 +534,7 @@ JavaScanner >> scanForTokenX3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX4 [
 	self step.
 	currentCharacter == $"
@@ -554,7 +555,7 @@ JavaScanner >> scanForTokenX4 [
 	^ self scan1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX5 [
 	(self scanForString: 'on-' match: #(120))
 		ifTrue: [ (self scanForString: 'sealed') ifTrue: [ ^ self recordAndReportMatch: #(73) ].
@@ -567,7 +568,7 @@ JavaScanner >> scanForTokenX5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX6 [
 	self recordMatch: #(111).
 	self step.
@@ -583,7 +584,7 @@ JavaScanner >> scanForTokenX6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX7 [
 	self recordMatch: #(16).
 	self step.
@@ -593,7 +594,7 @@ JavaScanner >> scanForTokenX7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX8 [
 	self recordMatch: #(27).
 	self step.
@@ -606,7 +607,7 @@ JavaScanner >> scanForTokenX8 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> scanForTokenX9 [
 	self recordMatch: #(106).
 	self step.
@@ -615,7 +616,7 @@ JavaScanner >> scanForTokenX9 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaScanner >> tokenActions [
 	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace #comment #patternToken)
 ]

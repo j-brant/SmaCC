@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaInterfaceDeclarationNode,
-	#superclass : #JavaDeclarationNode,
+	#name : 'JavaInterfaceDeclarationNode',
+	#superclass : 'JavaDeclarationNode',
 	#instVars : [
 		'modifiers',
 		'interfaceToken',
@@ -13,62 +13,63 @@ Class {
 		'declarations',
 		'rightBrace'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitInterfaceDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> compositeNodeVariables [
 	^ #(#declarations #interfaceTypes #modifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> declarations [
 	^ declarations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> declarations: anOrderedCollection [
 	self setParents: self declarations to: nil.
 	declarations := anOrderedCollection.
 	self setParents: self declarations to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> extendsToken [
 	^ extendsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> extendsToken: aSmaCCToken [
 	extendsToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaInterfaceDeclarationNode >> initialize [
 	super initialize.
 	declarations := OrderedCollection new: 2.
@@ -77,86 +78,86 @@ JavaInterfaceDeclarationNode >> initialize [
 	modifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> interfaceToken [
 	^ interfaceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> interfaceToken: aSmaCCToken [
 	interfaceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> interfaceTypes [
 	^ interfaceTypes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> interfaceTypes: anOrderedCollection [
 	self setParents: self interfaceTypes to: nil.
 	interfaceTypes := anOrderedCollection.
 	self setParents: self interfaceTypes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> modifiers: anOrderedCollection [
 	self setParents: self modifiers to: nil.
 	modifiers := anOrderedCollection.
 	self setParents: self modifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> nodeVariables [
 	^ #(#typeParameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> tokenVariables [
 	^ #(#interfaceToken #name #extendsToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> typeParameters [
 	^ typeParameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> typeParameters: aJavaTypeParametersNode [
 	self typeParameters notNil
 		ifTrue: [ self typeParameters parent: nil ].

@@ -1,69 +1,70 @@
 Class {
-	#name : #JavaThrowsNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaThrowsNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'throwsToken',
 		'classTypes',
 		'commas'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThrowsNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitThrows: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThrowsNode >> classTypes [
 	^ classTypes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThrowsNode >> classTypes: anOrderedCollection [
 	self setParents: self classTypes to: nil.
 	classTypes := anOrderedCollection.
 	self setParents: self classTypes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThrowsNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThrowsNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThrowsNode >> compositeNodeVariables [
 	^ #(#classTypes)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThrowsNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaThrowsNode >> initialize [
 	super initialize.
 	classTypes := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThrowsNode >> throwsToken [
 	^ throwsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThrowsNode >> throwsToken: aSmaCCToken [
 	throwsToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaThrowsNode >> tokenVariables [
 	^ #(#throwsToken)
 ]

@@ -1,1 +1,1 @@
-Package { #name : #'SmaCC_Java' }
+Package { #name : 'SmaCC_Java' }

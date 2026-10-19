@@ -1,63 +1,64 @@
 Class {
-	#name : #JavaNewClassNode,
-	#superclass : #JavaNewNode,
+	#name : 'JavaNewClassNode',
+	#superclass : 'JavaNewNode',
 	#instVars : [
 		'leftBrace',
 		'declarations',
 		'rightBrace'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewClassNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNewClass: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewClassNode >> compositeNodeVariables [
 	^ #(#declarations #expressions #arguments)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewClassNode >> declarations [
 	^ declarations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewClassNode >> declarations: anOrderedCollection [
 	self setParents: self declarations to: nil.
 	declarations := anOrderedCollection.
 	self setParents: self declarations to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewClassNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace #leftParen #rightParen #lt #gt)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaNewClassNode >> initialize [
 	super initialize.
 	declarations := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewClassNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewClassNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewClassNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaNewClassNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]

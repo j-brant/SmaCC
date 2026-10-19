@@ -1,80 +1,81 @@
 Class {
-	#name : #JavaArrayInitializerNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaArrayInitializerNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'leftBrace',
 		'initializers',
 		'commas',
 		'rightBrace'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayInitializerNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitArrayInitializer: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayInitializerNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayInitializerNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayInitializerNode >> compositeNodeVariables [
 	^ #(#initializers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayInitializerNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayInitializerNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaArrayInitializerNode >> initialize [
 	super initialize.
 	initializers := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayInitializerNode >> initializers [
 	^ initializers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayInitializerNode >> initializers: anOrderedCollection [
 	self setParents: self initializers to: nil.
 	initializers := anOrderedCollection.
 	self setParents: self initializers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayInitializerNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayInitializerNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayInitializerNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaArrayInitializerNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]

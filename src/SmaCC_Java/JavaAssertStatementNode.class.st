@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaAssertStatementNode,
-	#superclass : #JavaStatementNode,
+	#name : 'JavaAssertStatementNode',
+	#superclass : 'JavaStatementNode',
 	#instVars : [
 		'assertToken',
 		'testExpression',
@@ -8,45 +8,46 @@ Class {
 		'colon',
 		'messageExpression'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssertStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAssertStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssertStatementNode >> assertToken [
 	^ assertToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssertStatementNode >> assertToken: aSmaCCToken [
 	assertToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssertStatementNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssertStatementNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssertStatementNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssertStatementNode >> messageExpression [
 	^ messageExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssertStatementNode >> messageExpression: aJavaExpressionNode [
 	self messageExpression notNil
 		ifTrue: [ self messageExpression parent: nil ].
@@ -55,27 +56,27 @@ JavaAssertStatementNode >> messageExpression: aJavaExpressionNode [
 		ifTrue: [ self messageExpression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssertStatementNode >> nodeVariables [
 	^ #(#testExpression #messageExpression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssertStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssertStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssertStatementNode >> testExpression [
 	^ testExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssertStatementNode >> testExpression: aJavaExpressionNode [
 	self testExpression notNil
 		ifTrue: [ self testExpression parent: nil ].
@@ -84,7 +85,7 @@ JavaAssertStatementNode >> testExpression: aJavaExpressionNode [
 		ifTrue: [ self testExpression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssertStatementNode >> tokenVariables [
 	^ #(#assertToken #colon)
 ]

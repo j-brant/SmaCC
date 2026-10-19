@@ -1,62 +1,63 @@
 Class {
-	#name : #JavaModuleUsesNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaModuleUsesNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'usesToken',
 		'name',
 		'semicolon'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleUsesNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitModuleUses: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleUsesNode >> ignoredTokenVariables [
 	^ #(#semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleUsesNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleUsesNode >> name: aJavaNameNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aJavaNameNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleUsesNode >> nodeVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleUsesNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleUsesNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleUsesNode >> tokenVariables [
 	^ #(#usesToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleUsesNode >> usesToken [
 	^ usesToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaModuleUsesNode >> usesToken: aSmaCCToken [
 	usesToken := aSmaCCToken
 ]

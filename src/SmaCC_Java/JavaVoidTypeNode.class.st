@@ -1,28 +1,29 @@
 Class {
-	#name : #JavaVoidTypeNode,
-	#superclass : #JavaProgramNode,
+	#name : 'JavaVoidTypeNode',
+	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'voidToken'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaVoidTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitVoidType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaVoidTypeNode >> tokenVariables [
 	^ #(#voidToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaVoidTypeNode >> voidToken [
 	^ voidToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaVoidTypeNode >> voidToken: aSmaCCToken [
 	voidToken := aSmaCCToken
 ]

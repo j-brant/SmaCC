@@ -1,45 +1,46 @@
 Class {
-	#name : #JavaAssignmentNode,
-	#superclass : #JavaExpressionNode,
+	#name : 'JavaAssignmentNode',
+	#superclass : 'JavaExpressionNode',
 	#instVars : [
 		'variable',
 		'op',
 		'value'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssignmentNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAssignment: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssignmentNode >> nodeVariables [
 	^ #(#variable #value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssignmentNode >> op [
 	^ op
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssignmentNode >> op: aSmaCCToken [
 	op := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssignmentNode >> tokenVariables [
 	^ #(#op)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssignmentNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssignmentNode >> value: aJavaExpressionNode [
 	self value notNil
 		ifTrue: [ self value parent: nil ].
@@ -48,12 +49,12 @@ JavaAssignmentNode >> value: aJavaExpressionNode [
 		ifTrue: [ self value parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssignmentNode >> variable [
 	^ variable
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaAssignmentNode >> variable: aJavaExpressionNode [
 	self variable notNil
 		ifTrue: [ self variable parent: nil ].

@@ -1,10 +1,11 @@
 Class {
-	#name : #JavaIntegerLiteralNode,
-	#superclass : #JavaLiteralNode,
-	#category : #'SmaCC_Java'
+	#name : 'JavaIntegerLiteralNode',
+	#superclass : 'JavaLiteralNode',
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaIntegerLiteralNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIntegerLiteral: self
 ]

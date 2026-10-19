@@ -1,6 +1,6 @@
 Class {
-	#name : #JavaEnumDeclarationNode,
-	#superclass : #JavaDeclarationNode,
+	#name : 'JavaEnumDeclarationNode',
+	#superclass : 'JavaDeclarationNode',
 	#instVars : [
 		'modifiers',
 		'enumToken',
@@ -14,84 +14,85 @@ Class {
 		'declarations',
 		'rightBrace'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEnumDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> compositeNodeVariables [
 	^ #(#declarations #constants #interfaces #modifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> constants [
 	^ constants
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> constants: anOrderedCollection [
 	self setParents: self constants to: nil.
 	constants := anOrderedCollection.
 	self setParents: self constants to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> declarations [
 	^ declarations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> declarations: anOrderedCollection [
 	self setParents: self declarations to: nil.
 	declarations := anOrderedCollection.
 	self setParents: self declarations to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> enumToken [
 	^ enumToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> enumToken: aSmaCCToken [
 	enumToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace #semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> implementsToken [
 	^ implementsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> implementsToken: aSmaCCToken [
 	implementsToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JavaEnumDeclarationNode >> initialize [
 	super initialize.
 	declarations := OrderedCollection new: 2.
@@ -101,71 +102,71 @@ JavaEnumDeclarationNode >> initialize [
 	modifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> interfaces [
 	^ interfaces
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> interfaces: anOrderedCollection [
 	self setParents: self interfaces to: nil.
 	interfaces := anOrderedCollection.
 	self setParents: self interfaces to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> modifiers [
 	^ modifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> modifiers: anOrderedCollection [
 	self setParents: self modifiers to: nil.
 	modifiers := anOrderedCollection.
 	self setParents: self modifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaEnumDeclarationNode >> tokenVariables [
 	^ #(#enumToken #name #implementsToken)
 ]

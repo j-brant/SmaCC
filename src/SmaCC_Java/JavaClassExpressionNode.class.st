@@ -1,55 +1,56 @@
 Class {
-	#name : #JavaClassExpressionNode,
-	#superclass : #JavaExpressionNode,
+	#name : 'JavaClassExpressionNode',
+	#superclass : 'JavaExpressionNode',
 	#instVars : [
 		'type',
 		'period',
 		'classToken'
 	],
-	#category : #'SmaCC_Java'
+	#category : 'SmaCC_Java',
+	#package : 'SmaCC_Java'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitClassExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassExpressionNode >> classToken [
 	^ classToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassExpressionNode >> classToken: aSmaCCToken [
 	classToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassExpressionNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassExpressionNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassExpressionNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassExpressionNode >> tokenVariables [
 	^ #(#period #classToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassExpressionNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JavaClassExpressionNode >> type: aJavaProgramNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].
