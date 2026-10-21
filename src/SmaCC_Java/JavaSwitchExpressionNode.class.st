@@ -8,7 +8,8 @@ Class {
 		'rightParen',
 		'leftBrace',
 		'statementGroups',
-		'rightBrace'
+		'rightBrace',
+		'block'
 	],
 	#category : 'SmaCC_Java',
 	#package : 'SmaCC_Java'
@@ -17,6 +18,20 @@ Class {
 { #category : 'generated' }
 JavaSwitchExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSwitchExpression: self
+]
+
+{ #category : 'generated' }
+JavaSwitchExpressionNode >> block [
+
+	^ block
+]
+
+{ #category : 'generated' }
+JavaSwitchExpressionNode >> block: aJavaSwitchBlockNode [
+
+	self block notNil ifTrue: [ self block parent: nil ].
+	block := aJavaSwitchBlockNode.
+	self block notNil ifTrue: [ self block parent: self ]
 ]
 
 { #category : 'generated' }
@@ -69,7 +84,8 @@ JavaSwitchExpressionNode >> leftParen: aSmaCCToken [
 
 { #category : 'generated' }
 JavaSwitchExpressionNode >> nodeVariables [
-	^ #(#expression)
+
+	^ #( #expression #block )
 ]
 
 { #category : 'generated' }
