@@ -2,16 +2,18 @@ Class {
 	#name : 'JavaInterfaceDeclarationNode',
 	#superclass : 'JavaDeclarationNode',
 	#instVars : [
-		'modifiers',
 		'interfaceToken',
 		'name',
 		'typeParameters',
+		'leftBrace',
+		'rightBrace',
+		'declarations',
+		'permitsToken',
+		'permits',
+		'commas',
 		'extendsToken',
 		'interfaceTypes',
-		'commas',
-		'leftBrace',
-		'declarations',
-		'rightBrace'
+		'modifiers'
 	],
 	#category : 'SmaCC_Java',
 	#package : 'SmaCC_Java'
@@ -34,7 +36,8 @@ JavaInterfaceDeclarationNode >> commas: anOrderedCollection [
 
 { #category : 'generated' }
 JavaInterfaceDeclarationNode >> compositeNodeVariables [
-	^ #(#declarations #interfaceTypes #modifiers)
+
+	^ #( #declarations #permits #interfaceTypes #modifiers )
 ]
 
 { #category : 'generated' }
@@ -73,8 +76,9 @@ JavaInterfaceDeclarationNode >> ignoredTokenVariables [
 JavaInterfaceDeclarationNode >> initialize [
 	super initialize.
 	declarations := OrderedCollection new: 2.
-	interfaceTypes := OrderedCollection new: 2.
+	permits := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
+	interfaceTypes := OrderedCollection new: 2.
 	modifiers := OrderedCollection new: 2.
 ]
 
@@ -138,6 +142,32 @@ JavaInterfaceDeclarationNode >> nodeVariables [
 ]
 
 { #category : 'generated' }
+JavaInterfaceDeclarationNode >> permits [
+
+	^ permits
+]
+
+{ #category : 'generated' }
+JavaInterfaceDeclarationNode >> permits: anOrderedCollection [
+
+	self setParents: self permits to: nil.
+	permits := anOrderedCollection.
+	self setParents: self permits to: self
+]
+
+{ #category : 'generated' }
+JavaInterfaceDeclarationNode >> permitsToken [
+
+	^ permitsToken
+]
+
+{ #category : 'generated' }
+JavaInterfaceDeclarationNode >> permitsToken: aSmaCCToken [
+
+	permitsToken := aSmaCCToken
+]
+
+{ #category : 'generated' }
 JavaInterfaceDeclarationNode >> rightBrace [
 	^ rightBrace
 ]
@@ -149,7 +179,8 @@ JavaInterfaceDeclarationNode >> rightBrace: aSmaCCToken [
 
 { #category : 'generated' }
 JavaInterfaceDeclarationNode >> tokenVariables [
-	^ #(#interfaceToken #name #extendsToken)
+
+	^ #( #interfaceToken #name #permitsToken #extendsToken )
 ]
 
 { #category : 'generated' }
