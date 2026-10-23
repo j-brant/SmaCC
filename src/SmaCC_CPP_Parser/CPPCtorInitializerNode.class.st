@@ -1,61 +1,63 @@
 Class {
-	#name : #CPPCtorInitializerNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPCtorInitializerNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'colon',
 		'initializers',
 		'ellipsises',
 		'commas'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCtorInitializerNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCtorInitializer: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCtorInitializerNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCtorInitializerNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCtorInitializerNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCtorInitializerNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCtorInitializerNode >> compositeNodeVariables [
 	^ #(#initializers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCtorInitializerNode >> compositeTokenVariables [
 	^ #(#ellipsises #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCtorInitializerNode >> ellipsises [
 	^ ellipsises
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCtorInitializerNode >> ellipsises: anOrderedCollection [
 	ellipsises := anOrderedCollection
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPCtorInitializerNode >> initialize [
 	super initialize.
 	initializers := OrderedCollection new: 2.
@@ -63,19 +65,19 @@ CPPCtorInitializerNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCtorInitializerNode >> initializers [
 	^ initializers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCtorInitializerNode >> initializers: anOrderedCollection [
 	self setParents: self initializers to: nil.
 	initializers := anOrderedCollection.
 	self setParents: self initializers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCtorInitializerNode >> tokenVariables [
 	^ #(#colon)
 ]

@@ -1,13 +1,15 @@
 Class {
-	#name : #CPPScanner,
-	#superclass : #SmaCCScanner,
+	#name : 'CPPScanner',
+	#superclass : 'SmaCCScanner',
 	#instVars : [
 		'preprocessorDirectives'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ Parser'
+	#category : 'SmaCC_CPP_Parser-C++ Parser',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ Parser'
 }
 
-{ #category : #'generated-initialization' }
+{ #category : 'generated-initialization' }
 CPPScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
 	#(#(129 'alignas' 49) #(129 'alignof' 50) #(129 'and' 39) #(129 'asm' 51) #(129 'auto' 52) #(129 'bool' 53) #(129 'break' 54) #(129 'case' 55) #(129 'catch' 56) #(129 'char' 57) #(129 'char16_t' 58) #(129 'char32_t' 59) #(129 'class' 60) #(129 'const' 61) #(129 'const_cast' 63) #(129 'constexpr' 62) #(129 'continue' 64) #(129 'decltype' 65) #(129 'default' 66) #(129 'delete' 67) #(129 'do' 68) #(129 'double' 69) #(129 'dynamic_cast' 70) #(129 'else' 71) #(129 'enum' 72) #(129 'explicit' 73) #(129 'extern' 74) #(129 'false' 75) #(129 'final' 76) #(129 'float' 77) #(129 'for' 78) #(129 'friend' 79) #(129 'goto' 80) #(129 'if' 81) #(129 'inline' 82) #(129 'int' 83) #(129 'long' 84) #(129 'mutable' 85) #(129 'namespace' 86) #(129 'new' 87) #(129 'noexcept' 88) #(129 'not' 40) #(129 'nullptr' 89) #(129 'operator' 90) #(129 'or' 41) #(129 'override' 91) #(129 'private' 92) #(129 'protected' 93) #(129 'public' 94) #(129 'register' 95) #(129 'reinterpret_cast' 96) #(129 'return' 97) #(129 'short' 98) #(129 'signed' 99) #(129 'sizeof' 100) #(129 'static' 101) #(129 'static_assert' 102) #(129 'static_cast' 103) #(129 'struct' 104) #(129 'switch' 105) #(129 'template' 106) #(129 'this' 107) #(129 'thread_local' 108) #(129 'throw' 109) #(129 'true' 110) #(129 'try' 111) #(129 'typedef' 112) #(129 'typeid' 113) #(129 'typename' 114) #(129 'union' 115) #(129 'unsigned' 116) #(129 'using' 117) #(129 'virtual' 118) #(129 'void' 119) #(129 'volatile' 120) #(129 'wchar_t' 121) #(129 'while' 122))
@@ -18,54 +20,54 @@ CPPScanner class >> initializeKeywordMap [
 	^ keywordMap
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> GTId [
 	^ 125
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> RightShiftId [
 	^ 126
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPScanner >> directive [
 	preprocessorDirectives add: (Array with: start + 1 with: matchEnd).
 	^ self whitespace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> emptySymbolTokenId [
 	^ 344
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> errorTokenId [
 	^ 345
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> gtId [
 	^ 124
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 CPPScanner >> initialize [
 	super initialize.
 	preprocessorDirectives := OrderedCollection new
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPScanner >> lineContinuation [
 	^ self whitespace
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPScanner >> preprocessorDirectives [
 	^ preprocessorDirectives
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan1 [
 	[ self step.
 	currentCharacter == $"
@@ -80,7 +82,7 @@ CPPScanner >> scan1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan10 [
 	self step.
 	currentCharacter == $\
@@ -94,7 +96,7 @@ CPPScanner >> scan10 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan11 [
 	[ self step.
 	currentCharacter == $'
@@ -109,7 +111,7 @@ CPPScanner >> scan11 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan12 [
 	self recordMatch: #(132).
 	self step.
@@ -121,7 +123,7 @@ CPPScanner >> scan12 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan13 [
 	[ self recordMatch: #(138).
 	self step.
@@ -134,7 +136,7 @@ CPPScanner >> scan13 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan14 [
 	self step.
 	currentCharacter == $U
@@ -161,7 +163,7 @@ CPPScanner >> scan14 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan15 [
 	self step.
 	(currentCharacter isDigit
@@ -183,7 +185,7 @@ CPPScanner >> scan15 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan16 [
 	self step.
 	currentCharacter == $U
@@ -220,7 +222,7 @@ CPPScanner >> scan16 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan16X1 [
 	self step.
 	(currentCharacter isDigit
@@ -246,7 +248,7 @@ CPPScanner >> scan16X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan17 [
 	self step.
 	(currentCharacter isDigit
@@ -268,7 +270,7 @@ CPPScanner >> scan17 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan18 [
 	[ self recordMatch: #(133).
 	self step.
@@ -281,7 +283,7 @@ CPPScanner >> scan18 [
 	^ self scan18X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan18X1 [
 	self step.
 	currentCharacter isDigit
@@ -289,7 +291,7 @@ CPPScanner >> scan18X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan18X2 [
 	('Ee' includes: currentCharacter)
 		ifTrue: [ ^ self scan22 ].
@@ -306,7 +308,7 @@ CPPScanner >> scan18X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan19 [
 	[ self recordMatch: #(136).
 	self step.
@@ -319,7 +321,7 @@ CPPScanner >> scan19 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan2 [
 	self recordMatch: #(134).
 	self step.
@@ -331,7 +333,7 @@ CPPScanner >> scan2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan20 [
 	self step.
 	currentCharacter == $U
@@ -358,7 +360,7 @@ CPPScanner >> scan20 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan21 [
 	self step.
 	(currentCharacter isDigit
@@ -380,7 +382,7 @@ CPPScanner >> scan21 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan22 [
 	self recordMatch: #(136).
 	self step.
@@ -397,7 +399,7 @@ CPPScanner >> scan22 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan22X1 [
 	[ self recordMatch: #(133 136).
 	self step.
@@ -409,7 +411,7 @@ CPPScanner >> scan22X1 [
 	^ self scan22X1X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan22X1X1 [
 	('FLfl' includes: currentCharacter)
 		ifTrue: [ ^ self scan25 ].
@@ -424,7 +426,7 @@ CPPScanner >> scan22X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan23 [
 	self step.
 	currentCharacter isDigit
@@ -432,7 +434,7 @@ CPPScanner >> scan23 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan24 [
 	[ self recordMatch: #(133).
 	self step.
@@ -444,7 +446,7 @@ CPPScanner >> scan24 [
 	^ self scan24X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan24X1 [
 	('FLfl' includes: currentCharacter)
 		ifTrue: [ ^ self scan25 ].
@@ -459,7 +461,7 @@ CPPScanner >> scan24X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan25 [
 	self recordMatch: #(133 136).
 	self step.
@@ -472,7 +474,7 @@ CPPScanner >> scan25 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan26 [
 	[ self step.
 	currentCharacter == $*
@@ -484,7 +486,7 @@ CPPScanner >> scan26 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan27 [
 	self step.
 	(currentCharacter between: $8 and: $9)
@@ -494,7 +496,7 @@ CPPScanner >> scan27 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan28 [
 	[ self recordMatch: #(130 131).
 	self step.
@@ -514,7 +516,7 @@ CPPScanner >> scan28 [
 	^ self scan28X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan28X1 [
 	('Ee' includes: currentCharacter)
 		ifTrue: [ ^ self scan34 ].
@@ -533,13 +535,13 @@ CPPScanner >> scan28X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan29 [
 	self recordMatch: #(133).
 	^ self scan29X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan29X1 [
 	self step.
 	currentCharacter == $\
@@ -561,7 +563,7 @@ CPPScanner >> scan29X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan3 [
 	[ self recordMatch: #(137).
 	self step.
@@ -574,7 +576,7 @@ CPPScanner >> scan3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan30 [
 	[ self step.
 	currentCharacter == $'
@@ -594,7 +596,7 @@ CPPScanner >> scan30 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan31 [
 	[ self recordMatch: #(135).
 	self step.
@@ -607,7 +609,7 @@ CPPScanner >> scan31 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan32 [
 	self step.
 	currentCharacter == $U
@@ -634,7 +636,7 @@ CPPScanner >> scan32 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan33 [
 	self step.
 	(currentCharacter isDigit
@@ -656,7 +658,7 @@ CPPScanner >> scan33 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan34 [
 	self recordMatch: #(135).
 	self step.
@@ -673,7 +675,7 @@ CPPScanner >> scan34 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan34X1 [
 	[ self recordMatch: #(133 135).
 	self step.
@@ -685,7 +687,7 @@ CPPScanner >> scan34X1 [
 	^ self scan34X1X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan34X1X1 [
 	self recordMatch: #(133 135 136).
 	self step.
@@ -698,7 +700,7 @@ CPPScanner >> scan34X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan34X1X2 [
 	('FLfl' includes: currentCharacter)
 		ifTrue:
@@ -714,7 +716,7 @@ CPPScanner >> scan34X1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan35 [
 	[ self recordMatch: #(135 136).
 	self step.
@@ -727,7 +729,7 @@ CPPScanner >> scan35 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan36 [
 	self step.
 	currentCharacter == $U
@@ -754,7 +756,7 @@ CPPScanner >> scan36 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan37 [
 	self step.
 	(currentCharacter isDigit
@@ -776,7 +778,7 @@ CPPScanner >> scan37 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan38 [
 	self recordMatch: #(130 135).
 	self step.
@@ -797,7 +799,7 @@ CPPScanner >> scan38 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan39 [
 	self recordMatch: #(130 135).
 	self step.
@@ -815,7 +817,7 @@ CPPScanner >> scan39 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan4 [
 	self step.
 	currentCharacter == $U
@@ -842,7 +844,7 @@ CPPScanner >> scan4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan40 [
 	self recordMatch: #(130 135).
 	self step.
@@ -855,7 +857,7 @@ CPPScanner >> scan40 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan41 [
 	self recordMatch: #(130 135).
 	self step.
@@ -898,7 +900,7 @@ CPPScanner >> scan41 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan42 [
 	self recordMatch: #(130 135).
 	self step.
@@ -919,7 +921,7 @@ CPPScanner >> scan42 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan43 [
 	self step.
 	(currentCharacter between: $0 and: $1)
@@ -947,7 +949,7 @@ CPPScanner >> scan43 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan44 [
 	[ self recordMatch: #(130 135).
 	self step.
@@ -967,7 +969,7 @@ CPPScanner >> scan44 [
 	^ self scan44X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan44X1 [
 	((currentCharacter between: $G and: $K)
 		or: [ (currentCharacter between: $M and: $T)
@@ -980,7 +982,7 @@ CPPScanner >> scan44X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan45 [
 	self step.
 	(currentCharacter isDigit
@@ -1013,7 +1015,7 @@ CPPScanner >> scan45 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan46 [
 	[ self recordMatch: #(130).
 	self step.
@@ -1032,7 +1034,7 @@ CPPScanner >> scan46 [
 	^ self scan46X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan46X1 [
 	self step.
 	currentCharacter isDigit
@@ -1040,7 +1042,7 @@ CPPScanner >> scan46X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan46X2 [
 	('Ee' includes: currentCharacter)
 		ifTrue: [ ^ self scan34 ].
@@ -1059,7 +1061,7 @@ CPPScanner >> scan46X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan47 [
 	[ self recordMatch: #(129).
 	self step.
@@ -1072,7 +1074,7 @@ CPPScanner >> scan47 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan48 [
 	self step.
 	currentCharacter == $U
@@ -1082,7 +1084,7 @@ CPPScanner >> scan48 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan49 [
 	self step.
 	(currentCharacter isDigit
@@ -1104,7 +1106,7 @@ CPPScanner >> scan49 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan5 [
 	self step.
 	(currentCharacter isDigit
@@ -1126,7 +1128,7 @@ CPPScanner >> scan5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan50 [
 	self step.
 	(currentCharacter isDigit
@@ -1148,7 +1150,7 @@ CPPScanner >> scan50 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan51 [
 	self recordMatch: #(129).
 	self step.
@@ -1178,7 +1180,7 @@ CPPScanner >> scan51 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan52 [
 	[ self step.
 	currentCharacter == $`
@@ -1190,7 +1192,7 @@ CPPScanner >> scan52 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan6 [
 	self step.
 	currentCharacter == Character cr
@@ -1231,7 +1233,7 @@ CPPScanner >> scan6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan6X1 [
 	self step.
 	(currentCharacter isDigit
@@ -1257,7 +1259,7 @@ CPPScanner >> scan6X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan6X2 [
 	self step.
 	currentCharacter == $"
@@ -1272,7 +1274,7 @@ CPPScanner >> scan6X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan7 [
 	self step.
 	(currentCharacter isDigit
@@ -1294,7 +1296,7 @@ CPPScanner >> scan7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan8 [
 	[ self recordMatch: #(48).
 	self step.
@@ -1307,7 +1309,7 @@ CPPScanner >> scan8 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scan9 [
 	[ self recordMatch: #(48).
 	self step.
@@ -1325,7 +1327,7 @@ CPPScanner >> scan9 [
 	^ self scan8
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForToken [
 	self step.
 	currentCharacter == $!
@@ -1350,13 +1352,13 @@ CPPScanner >> scanForToken [
 	^ self scanForTokenX22
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX1 [
 	self recordMatch: #(130 131).
 	^ self scanForTokenX1X4
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX10 [
 	self recordMatch: #(29).
 	self step.
@@ -1371,7 +1373,7 @@ CPPScanner >> scanForTokenX10 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX11 [
 	self recordMatch: #(43).
 	self step.
@@ -1382,7 +1384,7 @@ CPPScanner >> scanForTokenX11 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX12 [
 	self recordMatch: #(12).
 	self step.
@@ -1393,7 +1395,7 @@ CPPScanner >> scanForTokenX12 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX13 [
 	self recordMatch: #(5).
 	self step.
@@ -1404,7 +1406,7 @@ CPPScanner >> scanForTokenX13 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX14 [
 	self recordMatch: #(37).
 	self step.
@@ -1413,7 +1415,7 @@ CPPScanner >> scanForTokenX14 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX15 [
 	self recordMatch: #(31).
 	self step.
@@ -1422,7 +1424,7 @@ CPPScanner >> scanForTokenX15 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX16 [
 	self recordMatch: #(26).
 	self step.
@@ -1431,7 +1433,7 @@ CPPScanner >> scanForTokenX16 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX17 [
 	self recordMatch: #(10).
 	self step.
@@ -1440,7 +1442,7 @@ CPPScanner >> scanForTokenX17 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX18 [
 	self recordMatch: #(3).
 	self step.
@@ -1449,7 +1451,7 @@ CPPScanner >> scanForTokenX18 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX19 [
 	self recordMatch: #(1).
 	self step.
@@ -1458,7 +1460,7 @@ CPPScanner >> scanForTokenX19 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX1X1 [
 	self recordMatch: #(135).
 	self step.
@@ -1474,7 +1476,7 @@ CPPScanner >> scanForTokenX1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX1X1X1 [
 	[ self recordMatch: #(130 135).
 	self step.
@@ -1490,7 +1492,7 @@ CPPScanner >> scanForTokenX1X1X1 [
 	^ self scanForTokenX1X1X1X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX1X1X1X1 [
 	('Uu' includes: currentCharacter)
 		ifTrue: [ ^ self scan41 ].
@@ -1506,7 +1508,7 @@ CPPScanner >> scanForTokenX1X1X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX1X2 [
 	self recordMatch: #(135).
 	self step.
@@ -1522,7 +1524,7 @@ CPPScanner >> scanForTokenX1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX1X3 [
 	(currentCharacter == $A
 		or: [ (currentCharacter between: $C and: $D)
@@ -1540,7 +1542,7 @@ CPPScanner >> scanForTokenX1X3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX1X4 [
 	self step.
 	currentCharacter == $'
@@ -1570,7 +1572,7 @@ CPPScanner >> scanForTokenX1X4 [
 	^ self scanForTokenX1X3
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX2 [
 	self recordMatch: #(129).
 	self step.
@@ -1606,7 +1608,7 @@ CPPScanner >> scanForTokenX2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX20 [
 	currentCharacter isDigit
 		ifTrue: [ ^ self scan46 ].
@@ -1629,7 +1631,7 @@ CPPScanner >> scanForTokenX20 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX21 [
 	currentCharacter == $?
 		ifTrue: [ ^ self recordAndReportMatch: #(34) ].
@@ -1662,7 +1664,7 @@ CPPScanner >> scanForTokenX21 [
 	^ self scanForTokenX20
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX22 [
 	currentCharacter == $*
 		ifTrue:
@@ -1701,7 +1703,7 @@ CPPScanner >> scanForTokenX22 [
 	^ self scanForTokenX21
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX3 [
 	self recordMatch: #(129).
 	self step.
@@ -1721,7 +1723,7 @@ CPPScanner >> scanForTokenX3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX4 [
 	self recordMatch: #(24).
 	self step.
@@ -1739,7 +1741,7 @@ CPPScanner >> scanForTokenX4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX5 [
 	self recordMatch: #(16).
 	self step.
@@ -1755,7 +1757,7 @@ CPPScanner >> scanForTokenX5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX6 [
 	self step.
 	currentCharacter == Character lf
@@ -1773,7 +1775,7 @@ CPPScanner >> scanForTokenX6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX7 [
 	self recordMatch: #(21).
 	self step.
@@ -1789,7 +1791,7 @@ CPPScanner >> scanForTokenX7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX8 [
 	[ self recordMatch: #(139).
 	self step.
@@ -1799,7 +1801,7 @@ CPPScanner >> scanForTokenX8 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> scanForTokenX9 [
 	self recordMatch: #(124 125).
 	self step.
@@ -1813,7 +1815,7 @@ CPPScanner >> scanForTokenX9 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPScanner >> tokenActions [
 	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #directive nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace #comment #lineContinuation #patternToken)
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPElaboratedTypeSpecifierNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPElaboratedTypeSpecifierNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'classToken',
 		'structToken',
@@ -12,61 +12,63 @@ Class {
 		'templateToken',
 		'enumToken'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPElaboratedTypeSpecifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitElaboratedTypeSpecifier: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPElaboratedTypeSpecifierNode >> classToken [
 	^ classToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPElaboratedTypeSpecifierNode >> classToken: aSmaCCToken [
 	classToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPElaboratedTypeSpecifierNode >> compositeNodeVariables [
 	^ #(#specifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPElaboratedTypeSpecifierNode >> enumToken [
 	^ enumToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPElaboratedTypeSpecifierNode >> enumToken: aSmaCCToken [
 	enumToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPElaboratedTypeSpecifierNode >> initialize [
 	super initialize.
 	specifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPElaboratedTypeSpecifierNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPElaboratedTypeSpecifierNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPElaboratedTypeSpecifierNode >> nameSpecifier [
 	^ nameSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPElaboratedTypeSpecifierNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 	self nameSpecifier notNil
 		ifTrue: [ self nameSpecifier parent: nil ].
@@ -75,39 +77,39 @@ CPPElaboratedTypeSpecifierNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 		ifTrue: [ self nameSpecifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPElaboratedTypeSpecifierNode >> nodeVariables [
 	^ #(#nameSpecifier #templateIdentifier)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPElaboratedTypeSpecifierNode >> specifiers [
 	^ specifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPElaboratedTypeSpecifierNode >> specifiers: anOrderedCollection [
 	self setParents: self specifiers to: nil.
 	specifiers := anOrderedCollection.
 	self setParents: self specifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPElaboratedTypeSpecifierNode >> structToken [
 	^ structToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPElaboratedTypeSpecifierNode >> structToken: aSmaCCToken [
 	structToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPElaboratedTypeSpecifierNode >> templateIdentifier [
 	^ templateIdentifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPElaboratedTypeSpecifierNode >> templateIdentifier: aCPPTemplateIdentifierNode [
 	self templateIdentifier notNil
 		ifTrue: [ self templateIdentifier parent: nil ].
@@ -116,27 +118,27 @@ CPPElaboratedTypeSpecifierNode >> templateIdentifier: aCPPTemplateIdentifierNode
 		ifTrue: [ self templateIdentifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPElaboratedTypeSpecifierNode >> templateToken [
 	^ templateToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPElaboratedTypeSpecifierNode >> templateToken: aSmaCCToken [
 	templateToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPElaboratedTypeSpecifierNode >> tokenVariables [
 	^ #(#classToken #structToken #unionToken #name #templateToken #enumToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPElaboratedTypeSpecifierNode >> unionToken [
 	^ unionToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPElaboratedTypeSpecifierNode >> unionToken: aSmaCCToken [
 	unionToken := aSmaCCToken
 ]

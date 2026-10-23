@@ -1,53 +1,55 @@
 Class {
-	#name : #CPPMemberDeclarationNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPMemberDeclarationNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'semicolon',
 		'declarators',
 		'commas',
 		'specifiers'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMemberDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclarationNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclarationNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclarationNode >> compositeNodeVariables [
 	^ #(#declarators #specifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclarationNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclarationNode >> declarators [
 	^ declarators
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclarationNode >> declarators: anOrderedCollection [
 	self setParents: self declarators to: nil.
 	declarators := anOrderedCollection.
 	self setParents: self declarators to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPMemberDeclarationNode >> initialize [
 	super initialize.
 	declarators := OrderedCollection new: 2.
@@ -55,29 +57,29 @@ CPPMemberDeclarationNode >> initialize [
 	specifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclarationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclarationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclarationNode >> specifiers [
 	^ specifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclarationNode >> specifiers: anOrderedCollection [
 	self setParents: self specifiers to: nil.
 	specifiers := anOrderedCollection.
 	self setParents: self specifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclarationNode >> tokenVariables [
 	^ #(#semicolon)
 ]

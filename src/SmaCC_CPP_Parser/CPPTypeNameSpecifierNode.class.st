@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPTypeNameSpecifierNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPTypeNameSpecifierNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'typenameToken',
 		'nameSpecifier',
@@ -8,30 +8,32 @@ Class {
 		'templateIdentifier',
 		'templateToken'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeNameSpecifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTypeNameSpecifier: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeNameSpecifierNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeNameSpecifierNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeNameSpecifierNode >> nameSpecifier [
 	^ nameSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeNameSpecifierNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 	self nameSpecifier notNil
 		ifTrue: [ self nameSpecifier parent: nil ].
@@ -40,17 +42,17 @@ CPPTypeNameSpecifierNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 		ifTrue: [ self nameSpecifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeNameSpecifierNode >> nodeVariables [
 	^ #(#nameSpecifier #templateIdentifier)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeNameSpecifierNode >> templateIdentifier [
 	^ templateIdentifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeNameSpecifierNode >> templateIdentifier: aCPPTemplateIdentifierNode [
 	self templateIdentifier notNil
 		ifTrue: [ self templateIdentifier parent: nil ].
@@ -59,27 +61,27 @@ CPPTypeNameSpecifierNode >> templateIdentifier: aCPPTemplateIdentifierNode [
 		ifTrue: [ self templateIdentifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeNameSpecifierNode >> templateToken [
 	^ templateToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeNameSpecifierNode >> templateToken: aSmaCCToken [
 	templateToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeNameSpecifierNode >> tokenVariables [
 	^ #(#typenameToken #name #templateToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeNameSpecifierNode >> typenameToken [
 	^ typenameToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTypeNameSpecifierNode >> typenameToken: aSmaCCToken [
 	typenameToken := aSmaCCToken
 ]

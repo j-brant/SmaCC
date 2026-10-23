@@ -1,35 +1,37 @@
 Class {
-	#name : #CPPTranslationUnitNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPTranslationUnitNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'declarations'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTranslationUnitNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTranslationUnit: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTranslationUnitNode >> compositeNodeVariables [
 	^ #(#declarations)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTranslationUnitNode >> declarations [
 	^ declarations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTranslationUnitNode >> declarations: anOrderedCollection [
 	self setParents: self declarations to: nil.
 	declarations := anOrderedCollection.
 	self setParents: self declarations to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPTranslationUnitNode >> initialize [
 	super initialize.
 	declarations := OrderedCollection new: 2.

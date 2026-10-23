@@ -1,24 +1,26 @@
 Class {
-	#name : #CPPPostfixExpressionNode,
-	#superclass : #CPPExpressionNode,
+	#name : 'CPPPostfixExpressionNode',
+	#superclass : 'CPPExpressionNode',
 	#instVars : [
 		'expression',
 		'operator'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPostfixExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPostfixExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPostfixExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPostfixExpressionNode >> expression: aCPPExpressionNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
@@ -27,22 +29,22 @@ CPPPostfixExpressionNode >> expression: aCPPExpressionNode [
 		ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPostfixExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPostfixExpressionNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPostfixExpressionNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPostfixExpressionNode >> tokenVariables [
 	^ #(#operator)
 ]

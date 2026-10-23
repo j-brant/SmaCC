@@ -1,14 +1,16 @@
 Class {
-	#name : #CPPPreprocessorMacro,
-	#superclass : #Object,
+	#name : 'CPPPreprocessorMacro',
+	#superclass : 'Object',
 	#instVars : [
 		'interval',
 		'source'
 	],
-	#category : #'SmaCC_CPP_Parser-Preprocessor'
+	#category : 'SmaCC_CPP_Parser-Preprocessor',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'Preprocessor'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CPPPreprocessorMacro class >> replacement: aString [
 	^ self new
 		source: aString;
@@ -16,7 +18,7 @@ CPPPreprocessorMacro class >> replacement: aString [
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CPPPreprocessorMacro class >> replacement: aString interval: anInterval [
 	^ self new
 		source: aString;
@@ -24,17 +26,17 @@ CPPPreprocessorMacro class >> replacement: aString interval: anInterval [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessorMacro >> interval [
 	^ interval
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessorMacro >> interval: anInterval [
 	interval := anInterval
 ]
 
-{ #category : #processing }
+{ #category : 'processing' }
 CPPPreprocessorMacro >> process: aToken on: aPreprocessor using: aParser [
 	aPreprocessor
 		removeMacro: aToken source
@@ -45,12 +47,12 @@ CPPPreprocessorMacro >> process: aToken on: aPreprocessor using: aParser [
 	^ aToken stopPosition + 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessorMacro >> source [
 	^ source
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessorMacro >> source: aString [
 	source := aString
 ]

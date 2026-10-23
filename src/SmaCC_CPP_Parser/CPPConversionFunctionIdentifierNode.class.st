@@ -1,30 +1,32 @@
 Class {
-	#name : #CPPConversionFunctionIdentifierNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPConversionFunctionIdentifierNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'operatorToken',
 		'specifiers',
 		'declarator'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionFunctionIdentifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitConversionFunctionIdentifier: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionFunctionIdentifierNode >> compositeNodeVariables [
 	^ #(#specifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionFunctionIdentifierNode >> declarator [
 	^ declarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionFunctionIdentifierNode >> declarator: aCPPConversionDeclaratorNode [
 	self declarator notNil
 		ifTrue: [ self declarator parent: nil ].
@@ -33,40 +35,40 @@ CPPConversionFunctionIdentifierNode >> declarator: aCPPConversionDeclaratorNode 
 		ifTrue: [ self declarator parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPConversionFunctionIdentifierNode >> initialize [
 	super initialize.
 	specifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionFunctionIdentifierNode >> nodeVariables [
 	^ #(#declarator)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionFunctionIdentifierNode >> operatorToken [
 	^ operatorToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionFunctionIdentifierNode >> operatorToken: aSmaCCToken [
 	operatorToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionFunctionIdentifierNode >> specifiers [
 	^ specifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionFunctionIdentifierNode >> specifiers: anOrderedCollection [
 	self setParents: self specifiers to: nil.
 	specifiers := anOrderedCollection.
 	self setParents: self specifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConversionFunctionIdentifierNode >> tokenVariables [
 	^ #(#operatorToken)
 ]

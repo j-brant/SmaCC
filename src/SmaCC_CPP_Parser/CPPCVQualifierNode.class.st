@@ -1,28 +1,30 @@
 Class {
-	#name : #CPPCVQualifierNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPCVQualifierNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'type'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCVQualifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCVQualifier: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCVQualifierNode >> tokenVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCVQualifierNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCVQualifierNode >> type: aSmaCCToken [
 	type := aSmaCCToken
 ]

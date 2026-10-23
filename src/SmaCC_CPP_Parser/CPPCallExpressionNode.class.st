@@ -1,56 +1,58 @@
 Class {
-	#name : #CPPCallExpressionNode,
-	#superclass : #CPPExpressionNode,
+	#name : 'CPPCallExpressionNode',
+	#superclass : 'CPPExpressionNode',
 	#instVars : [
 		'expression',
 		'values',
 		'ellipsises',
 		'commas'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCallExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCallExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCallExpressionNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCallExpressionNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCallExpressionNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCallExpressionNode >> compositeTokenVariables [
 	^ #(#ellipsises #commas #leftParens #rightParens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCallExpressionNode >> ellipsises [
 	^ ellipsises
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCallExpressionNode >> ellipsises: anOrderedCollection [
 	ellipsises := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCallExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCallExpressionNode >> expression: aCPPProgramNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
@@ -59,7 +61,7 @@ CPPCallExpressionNode >> expression: aCPPProgramNode [
 		ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPCallExpressionNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
@@ -67,17 +69,17 @@ CPPCallExpressionNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCallExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCallExpressionNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCallExpressionNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.
