@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'object',
 		'instanceofToken',
+		'modifiers',
 		'type',
 		'variable'
 	],
@@ -17,6 +18,18 @@ JavaInstanceofPatternExpressionNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : 'generated' }
+JavaInstanceofPatternExpressionNode >> compositeNodeVariables [
+
+	^ #( #modifiers )
+]
+
+{ #category : 'generated-initialize-release' }
+JavaInstanceofPatternExpressionNode >> initialize [
+	super initialize.
+	modifiers := OrderedCollection new: 2.
+]
+
+{ #category : 'generated' }
 JavaInstanceofPatternExpressionNode >> instanceofToken [
 	^ instanceofToken
 ]
@@ -24,6 +37,20 @@ JavaInstanceofPatternExpressionNode >> instanceofToken [
 { #category : 'generated' }
 JavaInstanceofPatternExpressionNode >> instanceofToken: aSmaCCToken [
 	instanceofToken := aSmaCCToken
+]
+
+{ #category : 'generated' }
+JavaInstanceofPatternExpressionNode >> modifiers [
+
+	^ modifiers
+]
+
+{ #category : 'generated' }
+JavaInstanceofPatternExpressionNode >> modifiers: anOrderedCollection [
+
+	self setParents: self modifiers to: nil.
+	modifiers := anOrderedCollection.
+	self setParents: self modifiers to: self
 ]
 
 { #category : 'generated' }
