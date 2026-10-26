@@ -1,57 +1,58 @@
 Class {
-	#name : #RustBorrowExpressionNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustBorrowExpressionNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'amp',
 		'expression',
 		'mutToken'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBorrowExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBorrowExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBorrowExpressionNode >> amp [
 	^ amp
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBorrowExpressionNode >> amp: aSmaCCToken [
 	amp := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBorrowExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBorrowExpressionNode >> expression: aRustExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aRustExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBorrowExpressionNode >> mutToken [
 	^ mutToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBorrowExpressionNode >> mutToken: aSmaCCToken [
 	mutToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBorrowExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBorrowExpressionNode >> tokenVariables [
 	^ #(#amp #mutToken)
 ]

@@ -1,44 +1,45 @@
 Class {
-	#name : #RustReturnExpressionNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustReturnExpressionNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'returnToken',
 		'value'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustReturnExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReturnExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustReturnExpressionNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustReturnExpressionNode >> returnToken [
 	^ returnToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustReturnExpressionNode >> returnToken: aSmaCCToken [
 	returnToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustReturnExpressionNode >> tokenVariables [
 	^ #(#returnToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustReturnExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustReturnExpressionNode >> value: aRustExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aRustExpressionNode.

@@ -1,55 +1,69 @@
 Class {
-	#name : #RustGenericArgBindingNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustGenericArgBindingNode',
+	#superclass : 'RustProgramNode',
 	#instVars : [
 		'name',
 		'equalsToken',
-		'type'
+		'type',
+		'genericArgs'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustGenericArgBindingNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitGenericArgBinding: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustGenericArgBindingNode >> equalsToken [
 	^ equalsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustGenericArgBindingNode >> equalsToken: aSmaCCToken [
 	equalsToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
+RustGenericArgBindingNode >> genericArgs [
+	^ genericArgs
+]
+
+{ #category : 'generated' }
+RustGenericArgBindingNode >> genericArgs: aRustGenericArgsNode [
+	self genericArgs notNil ifTrue: [ self genericArgs parent: nil ].
+	genericArgs := aRustGenericArgsNode.
+	self genericArgs notNil ifTrue: [ self genericArgs parent: self ]
+]
+
+{ #category : 'generated' }
 RustGenericArgBindingNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustGenericArgBindingNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustGenericArgBindingNode >> nodeVariables [
-	^ #(#type)
+	^ #(#type #genericArgs)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustGenericArgBindingNode >> tokenVariables [
 	^ #(#name #equalsToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustGenericArgBindingNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustGenericArgBindingNode >> type: aRustProgramNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aRustProgramNode.

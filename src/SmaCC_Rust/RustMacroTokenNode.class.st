@@ -1,28 +1,29 @@
 Class {
-	#name : #RustMacroTokenNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustMacroTokenNode',
+	#superclass : 'RustProgramNode',
 	#instVars : [
 		'value'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroTokenNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMacroToken: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroTokenNode >> tokenVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroTokenNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroTokenNode >> value: aSmaCCToken [
 	value := aSmaCCToken
 ]

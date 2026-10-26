@@ -1,6 +1,6 @@
 Class {
-	#name : #RustMacroInvocationNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustMacroInvocationNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'name',
 		'bang',
@@ -8,83 +8,84 @@ Class {
 		'tokens',
 		'right'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroInvocationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMacroInvocation: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroInvocationNode >> bang [
 	^ bang
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroInvocationNode >> bang: aSmaCCToken [
 	bang := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroInvocationNode >> compositeNodeVariables [
 	^ #(#tokens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustMacroInvocationNode >> initialize [
 	super initialize.
 	tokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroInvocationNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroInvocationNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroInvocationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroInvocationNode >> name: aRustPathNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aRustPathNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroInvocationNode >> nodeVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroInvocationNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroInvocationNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroInvocationNode >> tokenVariables [
 	^ #(#bang #left #right)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroInvocationNode >> tokens [
 	^ tokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroInvocationNode >> tokens: anOrderedCollection [
 	self setParents: self tokens to: nil.
 	tokens := anOrderedCollection.

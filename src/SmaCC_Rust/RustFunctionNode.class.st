@@ -1,6 +1,6 @@
 Class {
-	#name : #RustFunctionNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustFunctionNode',
+	#superclass : 'RustItemNode',
 	#instVars : [
 		'externToken',
 		'abi',
@@ -17,7 +17,6 @@ Class {
 		'where',
 		'arrow',
 		'types',
-		'attrs',
 		'selfToken',
 		'mutToken',
 		'amp',
@@ -30,185 +29,174 @@ Class {
 		'lt',
 		'gt',
 		'params',
-		'visibility'
+		'visibility',
+		'safeToken'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> abi [
 	^ abi
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> abi: aSmaCCToken [
 	abi := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFunction: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> amp [
 	^ amp
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> amp: aSmaCCToken [
 	amp := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> arrow [
 	^ arrow
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> arrow: aSmaCCToken [
 	arrow := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> asyncToken [
 	^ asyncToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> asyncToken: aSmaCCToken [
 	asyncToken := aSmaCCToken
 ]
 
-{ #category : #generated }
-RustFunctionNode >> attrs [
-	^ attrs
-]
-
-{ #category : #generated }
-RustFunctionNode >> attrs: anOrderedCollection [
-	self setParents: self attrs to: nil.
-	attrs := anOrderedCollection.
-	self setParents: self attrs to: self
-]
-
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> bars [
 	^ bars
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> bars: anOrderedCollection [
 	bars := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> block [
 	^ block
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> block: aRustBlockExpressionNode [
 	self block notNil ifTrue: [ self block parent: nil ].
 	block := aRustBlockExpressionNode.
 	self block notNil ifTrue: [ self block parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> colons [
 	^ colons
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> colons: anOrderedCollection [
 	colons := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> compositeNodeVariables [
-	^ #(#types #attrs #patterns #params)
+	^ #(#types #patterns #params #attrs)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> compositeTokenVariables [
 	^ #(#colons #commas #bars #ellipsises)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> constToken [
 	^ constToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> constToken: aSmaCCToken [
 	constToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> defaultToken [
 	^ defaultToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> defaultToken: aSmaCCToken [
 	defaultToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> ellipsises [
 	^ ellipsises
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> ellipsises: anOrderedCollection [
 	ellipsises := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> externToken [
 	^ externToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> externToken: aSmaCCToken [
 	externToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> fnToken [
 	^ fnToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> fnToken: aSmaCCToken [
 	fnToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> gt [
 	^ gt
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> gt: aSmaCCToken [
 	gt := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustFunctionNode >> initialize [
 	super initialize.
 	types := OrderedCollection new: 2.
-	attrs := OrderedCollection new: 2.
 	colons := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 	patterns := OrderedCollection new: 2.
@@ -217,160 +205,170 @@ RustFunctionNode >> initialize [
 	params := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> lifetime [
 	^ lifetime
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> lifetime: aSmaCCToken [
 	lifetime := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> lt [
 	^ lt
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> lt: aSmaCCToken [
 	lt := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> mutToken [
 	^ mutToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> mutToken: aSmaCCToken [
 	mutToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> nodeVariables [
 	^ #(#block #where #visibility)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> params [
 	^ params
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> params: anOrderedCollection [
 	self setParents: self params to: nil.
 	params := anOrderedCollection.
 	self setParents: self params to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> patterns [
 	^ patterns
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> patterns: anOrderedCollection [
 	self setParents: self patterns to: nil.
 	patterns := anOrderedCollection.
 	self setParents: self patterns to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
+RustFunctionNode >> safeToken [
+	^ safeToken
+]
+
+{ #category : 'generated' }
+RustFunctionNode >> safeToken: aSmaCCToken [
+	safeToken := aSmaCCToken
+]
+
+{ #category : 'generated' }
 RustFunctionNode >> selfToken [
 	^ selfToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> selfToken: aSmaCCToken [
 	selfToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> tokenVariables [
-	^ #(#externToken #abi #unsafeToken #asyncToken #constToken #defaultToken #fnToken #name #leftParen #rightParen #semicolon #arrow #selfToken #mutToken #amp #lifetime #lt #gt)
+	^ #(#externToken #abi #unsafeToken #asyncToken #constToken #defaultToken #fnToken #name #leftParen #rightParen #semicolon #arrow #selfToken #mutToken #amp #lifetime #lt #gt #safeToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> types [
 	^ types
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> types: anOrderedCollection [
 	self setParents: self types to: nil.
 	types := anOrderedCollection.
 	self setParents: self types to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> unsafeToken [
 	^ unsafeToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> unsafeToken: aSmaCCToken [
 	unsafeToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> visibility [
 	^ visibility
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> visibility: aRustVisibilityNode [
 	self visibility notNil ifTrue: [ self visibility parent: nil ].
 	visibility := aRustVisibilityNode.
 	self visibility notNil ifTrue: [ self visibility parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> where [
 	^ where
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionNode >> where: aRustWhereClauseNode [
 	self where notNil ifTrue: [ self where parent: nil ].
 	where := aRustWhereClauseNode.

@@ -1,6 +1,6 @@
 Class {
-	#name : #RustLetStatementNode,
-	#superclass : #RustStatementNode,
+	#name : 'RustLetStatementNode',
+	#superclass : 'RustStatementNode',
 	#instVars : [
 		'attrs',
 		'letToken',
@@ -9,70 +9,95 @@ Class {
 		'semicolon',
 		'equalsToken',
 		'value',
+		'elseToken',
+		'elseValue',
 		'colon',
 		'type'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLetStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLetStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLetStatementNode >> attrs [
 	^ attrs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLetStatementNode >> attrs: anOrderedCollection [
 	self setParents: self attrs to: nil.
 	attrs := anOrderedCollection.
 	self setParents: self attrs to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLetStatementNode >> bars [
 	^ bars
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLetStatementNode >> bars: anOrderedCollection [
 	bars := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLetStatementNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLetStatementNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLetStatementNode >> compositeNodeVariables [
 	^ #(#attrs #patterns)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLetStatementNode >> compositeTokenVariables [
 	^ #(#bars)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
+RustLetStatementNode >> elseToken [
+	^ elseToken
+]
+
+{ #category : 'generated' }
+RustLetStatementNode >> elseToken: aSmaCCToken [
+	elseToken := aSmaCCToken
+]
+
+{ #category : 'generated' }
+RustLetStatementNode >> elseValue [
+	^ elseValue
+]
+
+{ #category : 'generated' }
+RustLetStatementNode >> elseValue: aRustBlockExpressionNode [
+	self elseValue notNil ifTrue: [ self elseValue parent: nil ].
+	elseValue := aRustBlockExpressionNode.
+	self elseValue notNil ifTrue: [ self elseValue parent: self ]
+]
+
+{ #category : 'generated' }
 RustLetStatementNode >> equalsToken [
 	^ equalsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLetStatementNode >> equalsToken: aSmaCCToken [
 	equalsToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustLetStatementNode >> initialize [
 	super initialize.
 	attrs := OrderedCollection new: 2.
@@ -80,66 +105,66 @@ RustLetStatementNode >> initialize [
 	bars := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLetStatementNode >> letToken [
 	^ letToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLetStatementNode >> letToken: aSmaCCToken [
 	letToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLetStatementNode >> nodeVariables [
-	^ #(#value #type)
+	^ #(#value #elseValue #type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLetStatementNode >> patterns [
 	^ patterns
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLetStatementNode >> patterns: anOrderedCollection [
 	self setParents: self patterns to: nil.
 	patterns := anOrderedCollection.
 	self setParents: self patterns to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLetStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLetStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLetStatementNode >> tokenVariables [
-	^ #(#letToken #semicolon #equalsToken #colon)
+	^ #(#letToken #semicolon #equalsToken #elseToken #colon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLetStatementNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLetStatementNode >> type: aRustProgramNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aRustProgramNode.
 	self type notNil ifTrue: [ self type parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLetStatementNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLetStatementNode >> value: aRustExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aRustExpressionNode.

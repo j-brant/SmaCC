@@ -1,28 +1,29 @@
 Class {
-	#name : #RustEmptyStatementNode,
-	#superclass : #RustStatementNode,
+	#name : 'RustEmptyStatementNode',
+	#superclass : 'RustStatementNode',
 	#instVars : [
 		'semicolon'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEmptyStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEmptyStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEmptyStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEmptyStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEmptyStatementNode >> tokenVariables [
 	^ #(#semicolon)
 ]

@@ -1,57 +1,58 @@
 Class {
-	#name : #RustTypeCastExpressionNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustTypeCastExpressionNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'expression',
 		'asToken',
 		'type'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeCastExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTypeCastExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeCastExpressionNode >> asToken [
 	^ asToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeCastExpressionNode >> asToken: aSmaCCToken [
 	asToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeCastExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeCastExpressionNode >> expression: aRustExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aRustExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeCastExpressionNode >> nodeVariables [
 	^ #(#expression #type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeCastExpressionNode >> tokenVariables [
 	^ #(#asToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeCastExpressionNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeCastExpressionNode >> type: aRustProgramNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aRustProgramNode.

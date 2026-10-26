@@ -1,28 +1,29 @@
 Class {
-	#name : #RustNeverTypeNode,
-	#superclass : #RustTypeNode,
+	#name : 'RustNeverTypeNode',
+	#superclass : 'RustTypeNode',
 	#instVars : [
 		'bang'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustNeverTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNeverType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustNeverTypeNode >> bang [
 	^ bang
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustNeverTypeNode >> bang: aSmaCCToken [
 	bang := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustNeverTypeNode >> tokenVariables [
 	^ #(#bang)
 ]

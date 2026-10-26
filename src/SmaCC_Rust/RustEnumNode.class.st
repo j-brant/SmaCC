@@ -1,6 +1,6 @@
 Class {
-	#name : #RustEnumNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustEnumNode',
+	#superclass : 'RustItemNode',
 	#instVars : [
 		'enumToken',
 		'name',
@@ -14,55 +14,56 @@ Class {
 		'params',
 		'visibility'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEnum: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> compositeNodeVariables [
-	^ #(#items #params)
+	^ #(#items #params #attrs)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> enumToken [
 	^ enumToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> enumToken: aSmaCCToken [
 	enumToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> gt [
 	^ gt
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> gt: aSmaCCToken [
 	gt := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustEnumNode >> initialize [
 	super initialize.
 	items := OrderedCollection new: 2.
@@ -70,98 +71,98 @@ RustEnumNode >> initialize [
 	params := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> items [
 	^ items
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> items: anOrderedCollection [
 	self setParents: self items to: nil.
 	items := anOrderedCollection.
 	self setParents: self items to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> lt [
 	^ lt
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> lt: aSmaCCToken [
 	lt := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> nodeVariables [
 	^ #(#where #visibility)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> params [
 	^ params
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> params: anOrderedCollection [
 	self setParents: self params to: nil.
 	params := anOrderedCollection.
 	self setParents: self params to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> tokenVariables [
 	^ #(#enumToken #name #leftBrace #rightBrace #lt #gt)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> visibility [
 	^ visibility
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> visibility: aRustVisibilityNode [
 	self visibility notNil ifTrue: [ self visibility parent: nil ].
 	visibility := aRustVisibilityNode.
 	self visibility notNil ifTrue: [ self visibility parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> where [
 	^ where
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustEnumNode >> where: aRustWhereClauseNode [
 	self where notNil ifTrue: [ self where parent: nil ].
 	where := aRustWhereClauseNode.

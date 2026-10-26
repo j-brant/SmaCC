@@ -1,6 +1,6 @@
 Class {
-	#name : #RustStructPatternFieldNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustStructPatternFieldNode',
+	#superclass : 'RustProgramNode',
 	#instVars : [
 		'attrs',
 		'name',
@@ -10,57 +10,58 @@ Class {
 		'mutToken',
 		'refToken'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternFieldNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStructPatternField: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternFieldNode >> attrs [
 	^ attrs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternFieldNode >> attrs: anOrderedCollection [
 	self setParents: self attrs to: nil.
 	attrs := anOrderedCollection.
 	self setParents: self attrs to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternFieldNode >> bars [
 	^ bars
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternFieldNode >> bars: anOrderedCollection [
 	bars := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternFieldNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternFieldNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternFieldNode >> compositeNodeVariables [
 	^ #(#attrs #patterns)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternFieldNode >> compositeTokenVariables [
 	^ #(#bars)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustStructPatternFieldNode >> initialize [
 	super initialize.
 	attrs := OrderedCollection new: 2.
@@ -68,49 +69,49 @@ RustStructPatternFieldNode >> initialize [
 	bars := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternFieldNode >> mutToken [
 	^ mutToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternFieldNode >> mutToken: aSmaCCToken [
 	mutToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternFieldNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternFieldNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternFieldNode >> patterns [
 	^ patterns
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternFieldNode >> patterns: anOrderedCollection [
 	self setParents: self patterns to: nil.
 	patterns := anOrderedCollection.
 	self setParents: self patterns to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternFieldNode >> refToken [
 	^ refToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternFieldNode >> refToken: aSmaCCToken [
 	refToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternFieldNode >> tokenVariables [
 	^ #(#name #colon #mutToken #refToken)
 ]

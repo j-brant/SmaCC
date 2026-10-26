@@ -1,6 +1,6 @@
 Class {
-	#name : #RustSlicePatternNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustSlicePatternNode',
+	#superclass : 'RustProgramNode',
 	#instVars : [
 		'leftBracket',
 		'rightBracket',
@@ -8,45 +8,46 @@ Class {
 		'bars',
 		'commas'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustSlicePatternNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSlicePattern: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustSlicePatternNode >> bars [
 	^ bars
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustSlicePatternNode >> bars: anOrderedCollection [
 	bars := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustSlicePatternNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustSlicePatternNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustSlicePatternNode >> compositeNodeVariables [
 	^ #(#patterns)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustSlicePatternNode >> compositeTokenVariables [
 	^ #(#bars #commas)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustSlicePatternNode >> initialize [
 	super initialize.
 	patterns := OrderedCollection new: 2.
@@ -54,39 +55,39 @@ RustSlicePatternNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustSlicePatternNode >> leftBracket [
 	^ leftBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustSlicePatternNode >> leftBracket: aSmaCCToken [
 	leftBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustSlicePatternNode >> patterns [
 	^ patterns
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustSlicePatternNode >> patterns: anOrderedCollection [
 	self setParents: self patterns to: nil.
 	patterns := anOrderedCollection.
 	self setParents: self patterns to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustSlicePatternNode >> rightBracket [
 	^ rightBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustSlicePatternNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustSlicePatternNode >> tokenVariables [
 	^ #(#leftBracket #rightBracket)
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : #RustIfLetExpressionNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustIfLetExpressionNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'ifToken',
 		'letToken',
@@ -12,135 +12,136 @@ Class {
 		'elseToken',
 		'elseValue'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIfLetExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> bars [
 	^ bars
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> bars: anOrderedCollection [
 	bars := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> compositeNodeVariables [
 	^ #(#patterns)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> compositeTokenVariables [
 	^ #(#bars)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> elseToken [
 	^ elseToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> elseToken: aSmaCCToken [
 	elseToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> elseValue [
 	^ elseValue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> elseValue: aRustExpressionNode [
 	self elseValue notNil ifTrue: [ self elseValue parent: nil ].
 	elseValue := aRustExpressionNode.
 	self elseValue notNil ifTrue: [ self elseValue parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> equalsToken [
 	^ equalsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> equalsToken: aSmaCCToken [
 	equalsToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> ifToken [
 	^ ifToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> ifToken: aSmaCCToken [
 	ifToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustIfLetExpressionNode >> initialize [
 	super initialize.
 	patterns := OrderedCollection new: 2.
 	bars := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> letToken [
 	^ letToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> letToken: aSmaCCToken [
 	letToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> matchValue [
 	^ matchValue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> matchValue: aRustExpressionNode [
 	self matchValue notNil ifTrue: [ self matchValue parent: nil ].
 	matchValue := aRustExpressionNode.
 	self matchValue notNil ifTrue: [ self matchValue parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> nodeVariables [
 	^ #(#matchValue #thenValue #elseValue)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> patterns [
 	^ patterns
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> patterns: anOrderedCollection [
 	self setParents: self patterns to: nil.
 	patterns := anOrderedCollection.
 	self setParents: self patterns to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> thenValue [
 	^ thenValue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> thenValue: aRustBlockExpressionNode [
 	self thenValue notNil ifTrue: [ self thenValue parent: nil ].
 	thenValue := aRustBlockExpressionNode.
 	self thenValue notNil ifTrue: [ self thenValue parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfLetExpressionNode >> tokenVariables [
 	^ #(#ifToken #letToken #equalsToken #elseToken)
 ]

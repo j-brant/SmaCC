@@ -1,6 +1,6 @@
 Class {
-	#name : #RustClosureParamNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustClosureParamNode',
+	#superclass : 'RustProgramNode',
 	#instVars : [
 		'attrs',
 		'patterns',
@@ -8,57 +8,58 @@ Class {
 		'colon',
 		'type'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureParamNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitClosureParam: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureParamNode >> attrs [
 	^ attrs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureParamNode >> attrs: anOrderedCollection [
 	self setParents: self attrs to: nil.
 	attrs := anOrderedCollection.
 	self setParents: self attrs to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureParamNode >> bars [
 	^ bars
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureParamNode >> bars: anOrderedCollection [
 	bars := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureParamNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureParamNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureParamNode >> compositeNodeVariables [
 	^ #(#attrs #patterns)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureParamNode >> compositeTokenVariables [
 	^ #(#bars)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustClosureParamNode >> initialize [
 	super initialize.
 	attrs := OrderedCollection new: 2.
@@ -66,34 +67,34 @@ RustClosureParamNode >> initialize [
 	bars := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureParamNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureParamNode >> patterns [
 	^ patterns
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureParamNode >> patterns: anOrderedCollection [
 	self setParents: self patterns to: nil.
 	patterns := anOrderedCollection.
 	self setParents: self patterns to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureParamNode >> tokenVariables [
 	^ #(#colon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureParamNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureParamNode >> type: aRustProgramNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aRustProgramNode.

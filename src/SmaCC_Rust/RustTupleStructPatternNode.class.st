@@ -1,6 +1,6 @@
 Class {
-	#name : #RustTupleStructPatternNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustTupleStructPatternNode',
+	#superclass : 'RustProgramNode',
 	#instVars : [
 		'path',
 		'leftParen',
@@ -9,45 +9,46 @@ Class {
 		'bars',
 		'commas'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleStructPatternNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTupleStructPattern: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleStructPatternNode >> bars [
 	^ bars
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleStructPatternNode >> bars: anOrderedCollection [
 	bars := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleStructPatternNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleStructPatternNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleStructPatternNode >> compositeNodeVariables [
 	^ #(#patterns)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleStructPatternNode >> compositeTokenVariables [
 	^ #(#bars #commas)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustTupleStructPatternNode >> initialize [
 	super initialize.
 	patterns := OrderedCollection new: 2.
@@ -55,56 +56,56 @@ RustTupleStructPatternNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleStructPatternNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleStructPatternNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleStructPatternNode >> nodeVariables [
 	^ #(#path)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleStructPatternNode >> path [
 	^ path
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleStructPatternNode >> path: aRustPathExpressionNode [
 	self path notNil ifTrue: [ self path parent: nil ].
 	path := aRustPathExpressionNode.
 	self path notNil ifTrue: [ self path parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleStructPatternNode >> patterns [
 	^ patterns
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleStructPatternNode >> patterns: anOrderedCollection [
 	self setParents: self patterns to: nil.
 	patterns := anOrderedCollection.
 	self setParents: self patterns to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleStructPatternNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleStructPatternNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleStructPatternNode >> tokenVariables [
 	^ #(#leftParen #rightParen)
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : #RustStructExprStructNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustStructExprStructNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'path',
 		'leftBrace',
@@ -11,81 +11,82 @@ Class {
 		'dotDot',
 		'from'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructExprStructNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStructExprStruct: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructExprStructNode >> attrs [
 	^ attrs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructExprStructNode >> attrs: anOrderedCollection [
 	self setParents: self attrs to: nil.
 	attrs := anOrderedCollection.
 	self setParents: self attrs to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructExprStructNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructExprStructNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructExprStructNode >> compositeNodeVariables [
 	^ #(#attrs #fields)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructExprStructNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructExprStructNode >> dotDot [
 	^ dotDot
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructExprStructNode >> dotDot: aSmaCCToken [
 	dotDot := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructExprStructNode >> fields [
 	^ fields
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructExprStructNode >> fields: anOrderedCollection [
 	self setParents: self fields to: nil.
 	fields := anOrderedCollection.
 	self setParents: self fields to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructExprStructNode >> from [
 	^ from
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructExprStructNode >> from: aRustExpressionNode [
 	self from notNil ifTrue: [ self from parent: nil ].
 	from := aRustExpressionNode.
 	self from notNil ifTrue: [ self from parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustStructExprStructNode >> initialize [
 	super initialize.
 	attrs := OrderedCollection new: 2.
@@ -93,44 +94,44 @@ RustStructExprStructNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructExprStructNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructExprStructNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructExprStructNode >> nodeVariables [
 	^ #(#path #from)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructExprStructNode >> path [
 	^ path
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructExprStructNode >> path: aRustPathExpressionNode [
 	self path notNil ifTrue: [ self path parent: nil ].
 	path := aRustPathExpressionNode.
 	self path notNil ifTrue: [ self path parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructExprStructNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructExprStructNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructExprStructNode >> tokenVariables [
 	^ #(#leftBrace #rightBrace #dotDot)
 ]

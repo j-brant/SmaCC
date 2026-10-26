@@ -1,28 +1,29 @@
 Class {
-	#name : #RustWildcardPatternNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustWildcardPatternNode',
+	#superclass : 'RustProgramNode',
 	#instVars : [
 		'underscore'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustWildcardPatternNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitWildcardPattern: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustWildcardPatternNode >> tokenVariables [
 	^ #(#underscore)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustWildcardPatternNode >> underscore [
 	^ underscore
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustWildcardPatternNode >> underscore: aSmaCCToken [
 	underscore := aSmaCCToken
 ]

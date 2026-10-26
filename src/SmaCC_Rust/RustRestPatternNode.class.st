@@ -1,28 +1,29 @@
 Class {
-	#name : #RustRestPatternNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustRestPatternNode',
+	#superclass : 'RustProgramNode',
 	#instVars : [
 		'operator'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustRestPatternNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitRestPattern: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustRestPatternNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustRestPatternNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustRestPatternNode >> tokenVariables [
 	^ #(#operator)
 ]

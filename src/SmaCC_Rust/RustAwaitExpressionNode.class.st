@@ -1,57 +1,58 @@
 Class {
-	#name : #RustAwaitExpressionNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustAwaitExpressionNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'expression',
 		'period',
 		'awaitToken'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAwaitExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAwaitExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAwaitExpressionNode >> awaitToken [
 	^ awaitToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAwaitExpressionNode >> awaitToken: aSmaCCToken [
 	awaitToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAwaitExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAwaitExpressionNode >> expression: aRustExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aRustExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAwaitExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAwaitExpressionNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAwaitExpressionNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAwaitExpressionNode >> tokenVariables [
 	^ #(#period #awaitToken)
 ]

@@ -1,46 +1,47 @@
 Class {
-	#name : #RustMacroInvocationStatementNode,
-	#superclass : #RustStatementNode,
+	#name : 'RustMacroInvocationStatementNode',
+	#superclass : 'RustStatementNode',
 	#instVars : [
 		'macroInvocation',
 		'semicolon'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroInvocationStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMacroInvocationStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroInvocationStatementNode >> macroInvocation [
 	^ macroInvocation
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroInvocationStatementNode >> macroInvocation: aRustMacroInvocationNode [
 	self macroInvocation notNil ifTrue: [ self macroInvocation parent: nil ].
 	macroInvocation := aRustMacroInvocationNode.
 	self macroInvocation notNil ifTrue: [ self macroInvocation parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroInvocationStatementNode >> nodeVariables [
 	^ #(#macroInvocation)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroInvocationStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroInvocationStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroInvocationStatementNode >> tokenVariables [
 	^ #(#semicolon)
 ]

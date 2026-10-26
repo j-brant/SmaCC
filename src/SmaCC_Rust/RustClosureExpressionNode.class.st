@@ -1,6 +1,6 @@
 Class {
-	#name : #RustClosureExpressionNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustClosureExpressionNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'bars',
 		'expression',
@@ -8,69 +8,81 @@ Class {
 		'type',
 		'parameters',
 		'commas',
-		'moveToken'
+		'moveToken',
+		'asyncToken'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitClosureExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureExpressionNode >> arrow [
 	^ arrow
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureExpressionNode >> arrow: aSmaCCToken [
 	arrow := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
+RustClosureExpressionNode >> asyncToken [
+	^ asyncToken
+]
+
+{ #category : 'generated' }
+RustClosureExpressionNode >> asyncToken: aSmaCCToken [
+	asyncToken := aSmaCCToken
+]
+
+{ #category : 'generated' }
 RustClosureExpressionNode >> bars [
 	^ bars
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureExpressionNode >> bars: anOrderedCollection [
 	bars := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureExpressionNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureExpressionNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureExpressionNode >> compositeNodeVariables [
 	^ #(#parameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureExpressionNode >> compositeTokenVariables [
 	^ #(#bars #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureExpressionNode >> expression: aRustExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aRustExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustClosureExpressionNode >> initialize [
 	super initialize.
 	bars := OrderedCollection new: 2.
@@ -78,44 +90,44 @@ RustClosureExpressionNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureExpressionNode >> moveToken [
 	^ moveToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureExpressionNode >> moveToken: aSmaCCToken [
 	moveToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureExpressionNode >> nodeVariables [
 	^ #(#expression #type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureExpressionNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureExpressionNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureExpressionNode >> tokenVariables [
-	^ #(#arrow #moveToken)
+	^ #(#arrow #moveToken #asyncToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureExpressionNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustClosureExpressionNode >> type: aRustProgramNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aRustProgramNode.

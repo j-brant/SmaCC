@@ -1,67 +1,68 @@
 Class {
-	#name : #RustImplTraitTypeNode,
-	#superclass : #RustTypeNode,
+	#name : 'RustImplTraitTypeNode',
+	#superclass : 'RustTypeNode',
 	#instVars : [
 		'implToken',
 		'typeBounds',
 		'pluses'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustImplTraitTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitImplTraitType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustImplTraitTypeNode >> compositeNodeVariables [
 	^ #(#typeBounds)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustImplTraitTypeNode >> compositeTokenVariables [
 	^ #(#pluses)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustImplTraitTypeNode >> implToken [
 	^ implToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustImplTraitTypeNode >> implToken: aSmaCCToken [
 	implToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustImplTraitTypeNode >> initialize [
 	super initialize.
 	typeBounds := OrderedCollection new: 2.
 	pluses := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustImplTraitTypeNode >> pluses [
 	^ pluses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustImplTraitTypeNode >> pluses: anOrderedCollection [
 	pluses := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustImplTraitTypeNode >> tokenVariables [
 	^ #(#implToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustImplTraitTypeNode >> typeBounds [
 	^ typeBounds
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustImplTraitTypeNode >> typeBounds: anOrderedCollection [
 	self setParents: self typeBounds to: nil.
 	typeBounds := anOrderedCollection.

@@ -1,6 +1,6 @@
 Class {
-	#name : #RustArrayExpressionNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustArrayExpressionNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'leftBracket',
 		'attrs',
@@ -8,49 +8,50 @@ Class {
 		'elements',
 		'separators'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustArrayExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitArrayExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustArrayExpressionNode >> attrs [
 	^ attrs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustArrayExpressionNode >> attrs: anOrderedCollection [
 	self setParents: self attrs to: nil.
 	attrs := anOrderedCollection.
 	self setParents: self attrs to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustArrayExpressionNode >> compositeNodeVariables [
 	^ #(#attrs #elements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustArrayExpressionNode >> compositeTokenVariables [
 	^ #(#separators)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustArrayExpressionNode >> elements [
 	^ elements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustArrayExpressionNode >> elements: anOrderedCollection [
 	self setParents: self elements to: nil.
 	elements := anOrderedCollection.
 	self setParents: self elements to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustArrayExpressionNode >> initialize [
 	super initialize.
 	attrs := OrderedCollection new: 2.
@@ -58,37 +59,37 @@ RustArrayExpressionNode >> initialize [
 	separators := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustArrayExpressionNode >> leftBracket [
 	^ leftBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustArrayExpressionNode >> leftBracket: aSmaCCToken [
 	leftBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustArrayExpressionNode >> rightBracket [
 	^ rightBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustArrayExpressionNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustArrayExpressionNode >> separators [
 	^ separators
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustArrayExpressionNode >> separators: anOrderedCollection [
 	separators := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustArrayExpressionNode >> tokenVariables [
 	^ #(#leftBracket #rightBracket)
 ]

@@ -1,44 +1,45 @@
 Class {
-	#name : #RustBoxExpressionNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustBoxExpressionNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'boxToken',
 		'value'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBoxExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBoxExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBoxExpressionNode >> boxToken [
 	^ boxToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBoxExpressionNode >> boxToken: aSmaCCToken [
 	boxToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBoxExpressionNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBoxExpressionNode >> tokenVariables [
 	^ #(#boxToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBoxExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBoxExpressionNode >> value: aRustExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aRustExpressionNode.

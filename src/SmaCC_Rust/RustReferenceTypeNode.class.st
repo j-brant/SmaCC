@@ -1,66 +1,67 @@
 Class {
-	#name : #RustReferenceTypeNode,
-	#superclass : #RustTypeNode,
+	#name : 'RustReferenceTypeNode',
+	#superclass : 'RustTypeNode',
 	#instVars : [
 		'amp',
 		'type',
 		'mutToken',
 		'lifetime'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustReferenceTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReferenceType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustReferenceTypeNode >> amp [
 	^ amp
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustReferenceTypeNode >> amp: aSmaCCToken [
 	amp := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustReferenceTypeNode >> lifetime [
 	^ lifetime
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustReferenceTypeNode >> lifetime: aSmaCCToken [
 	lifetime := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustReferenceTypeNode >> mutToken [
 	^ mutToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustReferenceTypeNode >> mutToken: aSmaCCToken [
 	mutToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustReferenceTypeNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustReferenceTypeNode >> tokenVariables [
 	^ #(#amp #mutToken #lifetime)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustReferenceTypeNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustReferenceTypeNode >> type: aRustProgramNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aRustProgramNode.

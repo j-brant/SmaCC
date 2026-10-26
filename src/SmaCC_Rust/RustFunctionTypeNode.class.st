@@ -1,6 +1,6 @@
 Class {
-	#name : #RustFunctionTypeNode,
-	#superclass : #RustTypeNode,
+	#name : 'RustFunctionTypeNode',
+	#superclass : 'RustTypeNode',
 	#instVars : [
 		'externToken',
 		'abi',
@@ -20,127 +20,128 @@ Class {
 		'gt',
 		'params'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> abi [
 	^ abi
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> abi: aSmaCCToken [
 	abi := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFunctionType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> arrow [
 	^ arrow
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> arrow: aSmaCCToken [
 	arrow := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> attrs [
 	^ attrs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> attrs: anOrderedCollection [
 	self setParents: self attrs to: nil.
 	attrs := anOrderedCollection.
 	self setParents: self attrs to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> colons [
 	^ colons
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> colons: anOrderedCollection [
 	colons := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> compositeNodeVariables [
 	^ #(#types #attrs #params)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> compositeTokenVariables [
 	^ #(#names #colons #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> ellipsis [
 	^ ellipsis
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> ellipsis: aSmaCCToken [
 	ellipsis := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> externToken [
 	^ externToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> externToken: aSmaCCToken [
 	externToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> fnToken [
 	^ fnToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> fnToken: aSmaCCToken [
 	fnToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> forToken [
 	^ forToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> forToken: aSmaCCToken [
 	forToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> gt [
 	^ gt
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> gt: aSmaCCToken [
 	gt := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustFunctionTypeNode >> initialize [
 	super initialize.
 	types := OrderedCollection new: 2.
@@ -151,81 +152,81 @@ RustFunctionTypeNode >> initialize [
 	params := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> lt [
 	^ lt
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> lt: aSmaCCToken [
 	lt := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> names [
 	^ names
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> names: anOrderedCollection [
 	names := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> params [
 	^ params
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> params: anOrderedCollection [
 	self setParents: self params to: nil.
 	params := anOrderedCollection.
 	self setParents: self params to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> tokenVariables [
 	^ #(#externToken #abi #unsafeToken #fnToken #leftParen #rightParen #arrow #ellipsis #forToken #lt #gt)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> types [
 	^ types
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> types: anOrderedCollection [
 	self setParents: self types to: nil.
 	types := anOrderedCollection.
 	self setParents: self types to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> unsafeToken [
 	^ unsafeToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustFunctionTypeNode >> unsafeToken: aSmaCCToken [
 	unsafeToken := aSmaCCToken
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : #RustTypeParamNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustTypeParamNode',
+	#superclass : 'RustProgramNode',
 	#instVars : [
 		'name',
 		'equalsToken',
@@ -9,99 +9,100 @@ Class {
 		'typeBounds',
 		'pluses'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeParamNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTypeParam: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeParamNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeParamNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeParamNode >> compositeNodeVariables [
 	^ #(#typeBounds)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeParamNode >> compositeTokenVariables [
 	^ #(#pluses)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeParamNode >> equalsToken [
 	^ equalsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeParamNode >> equalsToken: aSmaCCToken [
 	equalsToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustTypeParamNode >> initialize [
 	super initialize.
 	typeBounds := OrderedCollection new: 2.
 	pluses := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeParamNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeParamNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeParamNode >> nodeVariables [
 	^ #(#type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeParamNode >> pluses [
 	^ pluses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeParamNode >> pluses: anOrderedCollection [
 	pluses := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeParamNode >> tokenVariables [
 	^ #(#name #equalsToken #colon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeParamNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeParamNode >> type: aRustProgramNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aRustProgramNode.
 	self type notNil ifTrue: [ self type parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeParamNode >> typeBounds [
 	^ typeBounds
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTypeParamNode >> typeBounds: anOrderedCollection [
 	self setParents: self typeBounds to: nil.
 	typeBounds := anOrderedCollection.

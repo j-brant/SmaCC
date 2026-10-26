@@ -1,6 +1,6 @@
 Class {
-	#name : #RustMatchExpressionNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustMatchExpressionNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'matchToken',
 		'value',
@@ -12,81 +12,82 @@ Class {
 		'armValues',
 		'commas'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMatchExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> armValues [
 	^ armValues
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> armValues: anOrderedCollection [
 	self setParents: self armValues to: nil.
 	armValues := anOrderedCollection.
 	self setParents: self armValues to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> arms [
 	^ arms
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> arms: anOrderedCollection [
 	self setParents: self arms to: nil.
 	arms := anOrderedCollection.
 	self setParents: self arms to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> arrows [
 	^ arrows
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> arrows: anOrderedCollection [
 	arrows := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> attrs [
 	^ attrs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> attrs: anOrderedCollection [
 	self setParents: self attrs to: nil.
 	attrs := anOrderedCollection.
 	self setParents: self attrs to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> compositeNodeVariables [
 	^ #(#attrs #arms #armValues)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> compositeTokenVariables [
 	^ #(#arrows #commas)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustMatchExpressionNode >> initialize [
 	super initialize.
 	attrs := OrderedCollection new: 2.
@@ -96,52 +97,52 @@ RustMatchExpressionNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> matchToken [
 	^ matchToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> matchToken: aSmaCCToken [
 	matchToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> tokenVariables [
 	^ #(#matchToken #leftBrace #rightBrace)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchExpressionNode >> value: aRustExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aRustExpressionNode.

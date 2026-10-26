@@ -1,54 +1,31 @@
 Class {
-	#name : #RustItemStatementNode,
-	#superclass : #RustStatementNode,
+	#name : 'RustItemStatementNode',
+	#superclass : 'RustStatementNode',
 	#instVars : [
-		'attrs',
 		'item'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustItemStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitItemStatement: self
 ]
 
-{ #category : #generated }
-RustItemStatementNode >> attrs [
-	^ attrs
-]
-
-{ #category : #generated }
-RustItemStatementNode >> attrs: anOrderedCollection [
-	self setParents: self attrs to: nil.
-	attrs := anOrderedCollection.
-	self setParents: self attrs to: self
-]
-
-{ #category : #generated }
-RustItemStatementNode >> compositeNodeVariables [
-	^ #(#attrs)
-]
-
-{ #category : #'generated-initialize-release' }
-RustItemStatementNode >> initialize [
-	super initialize.
-	attrs := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
+{ #category : 'generated' }
 RustItemStatementNode >> item [
 	^ item
 ]
 
-{ #category : #generated }
-RustItemStatementNode >> item: aRustProgramNode [
+{ #category : 'generated' }
+RustItemStatementNode >> item: aRustItemNode [
 	self item notNil ifTrue: [ self item parent: nil ].
-	item := aRustProgramNode.
+	item := aRustItemNode.
 	self item notNil ifTrue: [ self item parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustItemStatementNode >> nodeVariables [
 	^ #(#item)
 ]

@@ -1,12 +1,11 @@
 Class {
-	#name : #RustTraitNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustTraitNode',
+	#superclass : 'RustItemNode',
 	#instVars : [
 		'traitToken',
 		'name',
 		'where',
 		'leftBrace',
-		'attrs',
 		'items',
 		'rightBrace',
 		'colon',
@@ -20,80 +19,68 @@ Class {
 		'unsafeToken',
 		'visibility'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTrait: self
 ]
 
-{ #category : #generated }
-RustTraitNode >> attrs [
-	^ attrs
-]
-
-{ #category : #generated }
-RustTraitNode >> attrs: anOrderedCollection [
-	self setParents: self attrs to: nil.
-	attrs := anOrderedCollection.
-	self setParents: self attrs to: self
-]
-
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> autoToken [
 	^ autoToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> autoToken: aSmaCCToken [
 	autoToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> compositeNodeVariables [
-	^ #(#attrs #items #typeBounds #params)
+	^ #(#items #typeBounds #params #attrs)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> compositeTokenVariables [
 	^ #(#pluses #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> gt [
 	^ gt
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> gt: aSmaCCToken [
 	gt := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustTraitNode >> initialize [
 	super initialize.
-	attrs := OrderedCollection new: 2.
 	items := OrderedCollection new: 2.
 	typeBounds := OrderedCollection new: 2.
 	pluses := OrderedCollection new: 2.
@@ -101,140 +88,140 @@ RustTraitNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> items [
 	^ items
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> items: anOrderedCollection [
 	self setParents: self items to: nil.
 	items := anOrderedCollection.
 	self setParents: self items to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> lt [
 	^ lt
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> lt: aSmaCCToken [
 	lt := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> nodeVariables [
 	^ #(#where #visibility)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> params [
 	^ params
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> params: anOrderedCollection [
 	self setParents: self params to: nil.
 	params := anOrderedCollection.
 	self setParents: self params to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> pluses [
 	^ pluses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> pluses: anOrderedCollection [
 	pluses := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> tokenVariables [
 	^ #(#traitToken #name #leftBrace #rightBrace #colon #lt #gt #autoToken #unsafeToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> traitToken [
 	^ traitToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> traitToken: aSmaCCToken [
 	traitToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> typeBounds [
 	^ typeBounds
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> typeBounds: anOrderedCollection [
 	self setParents: self typeBounds to: nil.
 	typeBounds := anOrderedCollection.
 	self setParents: self typeBounds to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> unsafeToken [
 	^ unsafeToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> unsafeToken: aSmaCCToken [
 	unsafeToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> visibility [
 	^ visibility
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> visibility: aRustVisibilityNode [
 	self visibility notNil ifTrue: [ self visibility parent: nil ].
 	visibility := aRustVisibilityNode.
 	self visibility notNil ifTrue: [ self visibility parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> where [
 	^ where
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTraitNode >> where: aRustWhereClauseNode [
 	self where notNil ifTrue: [ self where parent: nil ].
 	where := aRustWhereClauseNode.

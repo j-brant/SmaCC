@@ -1,28 +1,29 @@
 Class {
-	#name : #RustInferredTypeNode,
-	#superclass : #RustTypeNode,
+	#name : 'RustInferredTypeNode',
+	#superclass : 'RustTypeNode',
 	#instVars : [
 		'underscore'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustInferredTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitInferredType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustInferredTypeNode >> tokenVariables [
 	^ #(#underscore)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustInferredTypeNode >> underscore [
 	^ underscore
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustInferredTypeNode >> underscore: aSmaCCToken [
 	underscore := aSmaCCToken
 ]

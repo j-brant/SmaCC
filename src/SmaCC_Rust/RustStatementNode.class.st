@@ -1,10 +1,11 @@
 Class {
-	#name : #RustStatementNode,
-	#superclass : #RustProgramNode,
-	#category : #'SmaCC_Rust'
+	#name : 'RustStatementNode',
+	#superclass : 'RustProgramNode',
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStatement: self
 ]

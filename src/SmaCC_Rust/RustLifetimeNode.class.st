@@ -1,28 +1,29 @@
 Class {
-	#name : #RustLifetimeNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustLifetimeNode',
+	#superclass : 'RustProgramNode',
 	#instVars : [
 		'lifetime'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLifetimeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLifetime: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLifetimeNode >> lifetime [
 	^ lifetime
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLifetimeNode >> lifetime: aSmaCCToken [
 	lifetime := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLifetimeNode >> tokenVariables [
 	^ #(#lifetime)
 ]

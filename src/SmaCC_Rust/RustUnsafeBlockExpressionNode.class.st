@@ -1,46 +1,47 @@
 Class {
-	#name : #RustUnsafeBlockExpressionNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustUnsafeBlockExpressionNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'unsafeToken',
 		'expression'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustUnsafeBlockExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUnsafeBlockExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustUnsafeBlockExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustUnsafeBlockExpressionNode >> expression: aRustBlockExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aRustBlockExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustUnsafeBlockExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustUnsafeBlockExpressionNode >> tokenVariables [
 	^ #(#unsafeToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustUnsafeBlockExpressionNode >> unsafeToken [
 	^ unsafeToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustUnsafeBlockExpressionNode >> unsafeToken: aSmaCCToken [
 	unsafeToken := aSmaCCToken
 ]

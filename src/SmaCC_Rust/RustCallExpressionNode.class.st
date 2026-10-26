@@ -1,6 +1,6 @@
 Class {
-	#name : #RustCallExpressionNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustCallExpressionNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'expression',
 		'leftParen',
@@ -8,91 +8,92 @@ Class {
 		'args',
 		'commas'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustCallExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCallExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustCallExpressionNode >> args [
 	^ args
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustCallExpressionNode >> args: anOrderedCollection [
 	self setParents: self args to: nil.
 	args := anOrderedCollection.
 	self setParents: self args to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustCallExpressionNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustCallExpressionNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustCallExpressionNode >> compositeNodeVariables [
 	^ #(#args)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustCallExpressionNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustCallExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustCallExpressionNode >> expression: aRustExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aRustExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustCallExpressionNode >> initialize [
 	super initialize.
 	args := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustCallExpressionNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustCallExpressionNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustCallExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustCallExpressionNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustCallExpressionNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustCallExpressionNode >> tokenVariables [
 	^ #(#leftParen #rightParen)
 ]

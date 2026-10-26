@@ -1,6 +1,6 @@
 Class {
-	#name : #RustIfExpressionNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustIfExpressionNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'ifToken',
 		'conditional',
@@ -8,76 +8,77 @@ Class {
 		'elseToken',
 		'elseValue'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIfExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfExpressionNode >> conditional [
 	^ conditional
 ]
 
-{ #category : #generated }
-RustIfExpressionNode >> conditional: aRustExpressionNode [
+{ #category : 'generated' }
+RustIfExpressionNode >> conditional: aRustProgramNode [
 	self conditional notNil ifTrue: [ self conditional parent: nil ].
-	conditional := aRustExpressionNode.
+	conditional := aRustProgramNode.
 	self conditional notNil ifTrue: [ self conditional parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfExpressionNode >> elseToken [
 	^ elseToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfExpressionNode >> elseToken: aSmaCCToken [
 	elseToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfExpressionNode >> elseValue [
 	^ elseValue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfExpressionNode >> elseValue: aRustExpressionNode [
 	self elseValue notNil ifTrue: [ self elseValue parent: nil ].
 	elseValue := aRustExpressionNode.
 	self elseValue notNil ifTrue: [ self elseValue parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfExpressionNode >> ifToken [
 	^ ifToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfExpressionNode >> ifToken: aSmaCCToken [
 	ifToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfExpressionNode >> nodeVariables [
 	^ #(#conditional #thenValue #elseValue)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfExpressionNode >> thenValue [
 	^ thenValue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfExpressionNode >> thenValue: aRustBlockExpressionNode [
 	self thenValue notNil ifTrue: [ self thenValue parent: nil ].
 	thenValue := aRustBlockExpressionNode.
 	self thenValue notNil ifTrue: [ self thenValue parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIfExpressionNode >> tokenVariables [
 	^ #(#ifToken #elseToken)
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : #RustQualifiedPathInTypeNode,
-	#superclass : #RustTypeNode,
+	#name : 'RustQualifiedPathInTypeNode',
+	#superclass : 'RustTypeNode',
 	#instVars : [
 		'lt',
 		'types',
@@ -15,77 +15,78 @@ Class {
 		'arrows',
 		'commas'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitQualifiedPathInType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> arrows [
 	^ arrows
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> arrows: anOrderedCollection [
 	arrows := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> asToken [
 	^ asToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> asToken: aSmaCCToken [
 	asToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> compositeNodeVariables [
 	^ #(#types #genericArgses)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> compositeTokenVariables [
 	^ #(#separators #names #leftParens #rightParens #arrows #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> genericArgses [
 	^ genericArgses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> genericArgses: anOrderedCollection [
 	self setParents: self genericArgses to: nil.
 	genericArgses := anOrderedCollection.
 	self setParents: self genericArgses to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> gt [
 	^ gt
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> gt: aSmaCCToken [
 	gt := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustQualifiedPathInTypeNode >> initialize [
 	super initialize.
 	types := OrderedCollection new: 2.
@@ -98,84 +99,84 @@ RustQualifiedPathInTypeNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> leftParens [
 	^ leftParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> leftParens: anOrderedCollection [
 	leftParens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> lt [
 	^ lt
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> lt: aSmaCCToken [
 	lt := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> names [
 	^ names
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> names: anOrderedCollection [
 	names := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> nodeVariables [
 	^ #(#typePath)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> rightParens [
 	^ rightParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> separators [
 	^ separators
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> separators: anOrderedCollection [
 	separators := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> tokenVariables [
 	^ #(#lt #gt #asToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> typePath [
 	^ typePath
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> typePath: aRustTypePathNode [
 	self typePath notNil ifTrue: [ self typePath parent: nil ].
 	typePath := aRustTypePathNode.
 	self typePath notNil ifTrue: [ self typePath parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> types [
 	^ types
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustQualifiedPathInTypeNode >> types: anOrderedCollection [
 	self setParents: self types to: nil.
 	types := anOrderedCollection.

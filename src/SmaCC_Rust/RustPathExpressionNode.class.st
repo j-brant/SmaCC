@@ -1,6 +1,6 @@
 Class {
-	#name : #RustPathExpressionNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustPathExpressionNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'names',
 		'separators',
@@ -11,57 +11,58 @@ Class {
 		'asToken',
 		'typePath'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPathExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathExpressionNode >> asToken [
 	^ asToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathExpressionNode >> asToken: aSmaCCToken [
 	asToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathExpressionNode >> compositeNodeVariables [
 	^ #(#genericArgses)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathExpressionNode >> compositeTokenVariables [
 	^ #(#names #separators)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathExpressionNode >> genericArgses [
 	^ genericArgses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathExpressionNode >> genericArgses: anOrderedCollection [
 	self setParents: self genericArgses to: nil.
 	genericArgses := anOrderedCollection.
 	self setParents: self genericArgses to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathExpressionNode >> gt [
 	^ gt
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathExpressionNode >> gt: aSmaCCToken [
 	gt := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustPathExpressionNode >> initialize [
 	super initialize.
 	names := OrderedCollection new: 2.
@@ -69,64 +70,64 @@ RustPathExpressionNode >> initialize [
 	genericArgses := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathExpressionNode >> lt [
 	^ lt
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathExpressionNode >> lt: aSmaCCToken [
 	lt := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathExpressionNode >> names [
 	^ names
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathExpressionNode >> names: anOrderedCollection [
 	names := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathExpressionNode >> nodeVariables [
 	^ #(#type #typePath)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathExpressionNode >> separators [
 	^ separators
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathExpressionNode >> separators: anOrderedCollection [
 	separators := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathExpressionNode >> tokenVariables [
 	^ #(#lt #gt #asToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathExpressionNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathExpressionNode >> type: aRustProgramNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aRustProgramNode.
 	self type notNil ifTrue: [ self type parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathExpressionNode >> typePath [
 	^ typePath
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathExpressionNode >> typePath: aRustTypePathNode [
 	self typePath notNil ifTrue: [ self typePath parent: nil ].
 	typePath := aRustTypePathNode.

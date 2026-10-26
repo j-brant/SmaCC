@@ -1,1 +1,1 @@
-Package { #name : #'SmaCC_Rust' }
+Package { #name : 'SmaCC_Rust' }

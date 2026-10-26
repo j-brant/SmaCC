@@ -1,6 +1,6 @@
 Class {
-	#name : #RustStructNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustStructNode',
+	#superclass : 'RustItemNode',
 	#instVars : [
 		'structToken',
 		'name',
@@ -15,57 +15,58 @@ Class {
 		'params',
 		'visibility'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStruct: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> compositeNodeVariables [
-	^ #(#fields #params)
+	^ #(#fields #params #attrs)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> fields [
 	^ fields
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> fields: anOrderedCollection [
 	self setParents: self fields to: nil.
 	fields := anOrderedCollection.
 	self setParents: self fields to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> gt [
 	^ gt
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> gt: aSmaCCToken [
 	gt := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustStructNode >> initialize [
 	super initialize.
 	fields := OrderedCollection new: 2.
@@ -73,106 +74,106 @@ RustStructNode >> initialize [
 	params := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> lt [
 	^ lt
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> lt: aSmaCCToken [
 	lt := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> nodeVariables [
 	^ #(#where #visibility)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> params [
 	^ params
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> params: anOrderedCollection [
 	self setParents: self params to: nil.
 	params := anOrderedCollection.
 	self setParents: self params to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> structToken [
 	^ structToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> structToken: aSmaCCToken [
 	structToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> tokenVariables [
 	^ #(#structToken #name #left #right #semicolon #lt #gt)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> visibility [
 	^ visibility
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> visibility: aRustVisibilityNode [
 	self visibility notNil ifTrue: [ self visibility parent: nil ].
 	visibility := aRustVisibilityNode.
 	self visibility notNil ifTrue: [ self visibility parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> where [
 	^ where
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructNode >> where: aRustWhereClauseNode [
 	self where notNil ifTrue: [ self where parent: nil ].
 	where := aRustWhereClauseNode.

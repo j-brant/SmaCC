@@ -1,6 +1,6 @@
 Class {
-	#name : #RustIdentifierPatternNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustIdentifierPatternNode',
+	#superclass : 'RustProgramNode',
 	#instVars : [
 		'name',
 		'atToken',
@@ -9,94 +9,95 @@ Class {
 		'mutToken',
 		'refToken'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIdentifierPatternNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIdentifierPattern: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIdentifierPatternNode >> atToken [
 	^ atToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIdentifierPatternNode >> atToken: aSmaCCToken [
 	atToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIdentifierPatternNode >> bars [
 	^ bars
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIdentifierPatternNode >> bars: anOrderedCollection [
 	bars := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIdentifierPatternNode >> compositeNodeVariables [
 	^ #(#patterns)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIdentifierPatternNode >> compositeTokenVariables [
 	^ #(#bars)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustIdentifierPatternNode >> initialize [
 	super initialize.
 	patterns := OrderedCollection new: 2.
 	bars := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIdentifierPatternNode >> mutToken [
 	^ mutToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIdentifierPatternNode >> mutToken: aSmaCCToken [
 	mutToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIdentifierPatternNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIdentifierPatternNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIdentifierPatternNode >> patterns [
 	^ patterns
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIdentifierPatternNode >> patterns: anOrderedCollection [
 	self setParents: self patterns to: nil.
 	patterns := anOrderedCollection.
 	self setParents: self patterns to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIdentifierPatternNode >> refToken [
 	^ refToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIdentifierPatternNode >> refToken: aSmaCCToken [
 	refToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustIdentifierPatternNode >> tokenVariables [
 	^ #(#name #atToken #mutToken #refToken)
 ]

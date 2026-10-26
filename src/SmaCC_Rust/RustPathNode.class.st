@@ -1,46 +1,47 @@
 Class {
-	#name : #RustPathNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustPathNode',
+	#superclass : 'RustProgramNode',
 	#instVars : [
 		'names',
 		'separators'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPath: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathNode >> compositeTokenVariables [
 	^ #(#names #separators)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustPathNode >> initialize [
 	super initialize.
 	names := OrderedCollection new: 2.
 	separators := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathNode >> names [
 	^ names
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathNode >> names: anOrderedCollection [
 	names := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathNode >> separators [
 	^ separators
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustPathNode >> separators: anOrderedCollection [
 	separators := anOrderedCollection
 ]

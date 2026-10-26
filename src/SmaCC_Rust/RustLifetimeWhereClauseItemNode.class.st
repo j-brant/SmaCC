@@ -1,73 +1,74 @@
 Class {
-	#name : #RustLifetimeWhereClauseItemNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustLifetimeWhereClauseItemNode',
+	#superclass : 'RustProgramNode',
 	#instVars : [
 		'lifetime',
 		'colon',
 		'lifetimeBounds',
 		'pluses'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLifetimeWhereClauseItemNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLifetimeWhereClauseItem: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLifetimeWhereClauseItemNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLifetimeWhereClauseItemNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLifetimeWhereClauseItemNode >> compositeTokenVariables [
 	^ #(#lifetimeBounds #pluses)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustLifetimeWhereClauseItemNode >> initialize [
 	super initialize.
 	lifetimeBounds := OrderedCollection new: 2.
 	pluses := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLifetimeWhereClauseItemNode >> lifetime [
 	^ lifetime
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLifetimeWhereClauseItemNode >> lifetime: aSmaCCToken [
 	lifetime := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLifetimeWhereClauseItemNode >> lifetimeBounds [
 	^ lifetimeBounds
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLifetimeWhereClauseItemNode >> lifetimeBounds: anOrderedCollection [
 	lifetimeBounds := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLifetimeWhereClauseItemNode >> pluses [
 	^ pluses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLifetimeWhereClauseItemNode >> pluses: anOrderedCollection [
 	pluses := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustLifetimeWhereClauseItemNode >> tokenVariables [
 	^ #(#lifetime #colon)
 ]

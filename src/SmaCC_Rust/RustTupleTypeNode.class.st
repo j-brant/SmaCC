@@ -1,78 +1,79 @@
 Class {
-	#name : #RustTupleTypeNode,
-	#superclass : #RustTypeNode,
+	#name : 'RustTupleTypeNode',
+	#superclass : 'RustTypeNode',
 	#instVars : [
 		'leftParen',
 		'rightParen',
 		'types',
 		'commas'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTupleType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleTypeNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleTypeNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleTypeNode >> compositeNodeVariables [
 	^ #(#types)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleTypeNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustTupleTypeNode >> initialize [
 	super initialize.
 	types := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleTypeNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleTypeNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleTypeNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleTypeNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleTypeNode >> tokenVariables [
 	^ #(#leftParen #rightParen)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleTypeNode >> types [
 	^ types
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleTypeNode >> types: anOrderedCollection [
 	self setParents: self types to: nil.
 	types := anOrderedCollection.

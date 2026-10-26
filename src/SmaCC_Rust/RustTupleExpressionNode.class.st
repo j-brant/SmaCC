@@ -1,6 +1,6 @@
 Class {
-	#name : #RustTupleExpressionNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustTupleExpressionNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'leftParen',
 		'attrs',
@@ -8,59 +8,60 @@ Class {
 		'elements',
 		'commas'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTupleExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleExpressionNode >> attrs [
 	^ attrs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleExpressionNode >> attrs: anOrderedCollection [
 	self setParents: self attrs to: nil.
 	attrs := anOrderedCollection.
 	self setParents: self attrs to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleExpressionNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleExpressionNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleExpressionNode >> compositeNodeVariables [
 	^ #(#attrs #elements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleExpressionNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleExpressionNode >> elements [
 	^ elements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleExpressionNode >> elements: anOrderedCollection [
 	self setParents: self elements to: nil.
 	elements := anOrderedCollection.
 	self setParents: self elements to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustTupleExpressionNode >> initialize [
 	super initialize.
 	attrs := OrderedCollection new: 2.
@@ -68,27 +69,27 @@ RustTupleExpressionNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleExpressionNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleExpressionNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleExpressionNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleExpressionNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustTupleExpressionNode >> tokenVariables [
 	^ #(#leftParen #rightParen)
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : #RustAttributeNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustAttributeNode',
+	#superclass : 'RustProgramNode',
 	#instVars : [
 		'hashToken',
 		'bang',
@@ -8,94 +8,128 @@ Class {
 		'path',
 		'value',
 		'equalsToken',
+		'unsafeToken',
+		'leftParen',
+		'rightParen',
 		'rightBracket'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAttributeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAttribute: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAttributeNode >> bang [
 	^ bang
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAttributeNode >> bang: aSmaCCToken [
 	bang := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAttributeNode >> equalsToken [
 	^ equalsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAttributeNode >> equalsToken: aSmaCCToken [
 	equalsToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAttributeNode >> hashToken [
 	^ hashToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAttributeNode >> hashToken: aSmaCCToken [
 	hashToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAttributeNode >> leftBracket [
 	^ leftBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAttributeNode >> leftBracket: aSmaCCToken [
 	leftBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
+RustAttributeNode >> leftParen [
+	^ leftParen
+]
+
+{ #category : 'generated' }
+RustAttributeNode >> leftParen: aSmaCCToken [
+	leftParen := aSmaCCToken
+]
+
+{ #category : 'generated' }
 RustAttributeNode >> nodeVariables [
 	^ #(#path #value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAttributeNode >> path [
 	^ path
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAttributeNode >> path: aRustPathNode [
 	self path notNil ifTrue: [ self path parent: nil ].
 	path := aRustPathNode.
 	self path notNil ifTrue: [ self path parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAttributeNode >> rightBracket [
 	^ rightBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAttributeNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
-RustAttributeNode >> tokenVariables [
-	^ #(#hashToken #bang #leftBracket #equalsToken #rightBracket)
+{ #category : 'generated' }
+RustAttributeNode >> rightParen [
+	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
+RustAttributeNode >> rightParen: aSmaCCToken [
+	rightParen := aSmaCCToken
+]
+
+{ #category : 'generated' }
+RustAttributeNode >> tokenVariables [
+	^ #(#hashToken #bang #leftBracket #equalsToken #unsafeToken #leftParen #rightParen #rightBracket)
+]
+
+{ #category : 'generated' }
+RustAttributeNode >> unsafeToken [
+	^ unsafeToken
+]
+
+{ #category : 'generated' }
+RustAttributeNode >> unsafeToken: aSmaCCToken [
+	unsafeToken := aSmaCCToken
+]
+
+{ #category : 'generated' }
 RustAttributeNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAttributeNode >> value: aRustProgramNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aRustProgramNode.

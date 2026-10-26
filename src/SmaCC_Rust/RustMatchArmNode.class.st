@@ -1,6 +1,6 @@
 Class {
-	#name : #RustMatchArmNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustMatchArmNode',
+	#superclass : 'RustProgramNode',
 	#instVars : [
 		'attrs',
 		'patterns',
@@ -11,79 +11,80 @@ Class {
 		'equalsToken',
 		'matchValue'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchArmNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMatchArm: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchArmNode >> attrs [
 	^ attrs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchArmNode >> attrs: anOrderedCollection [
 	self setParents: self attrs to: nil.
 	attrs := anOrderedCollection.
 	self setParents: self attrs to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchArmNode >> bars [
 	^ bars
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchArmNode >> bars: anOrderedCollection [
 	bars := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchArmNode >> compositeNodeVariables [
 	^ #(#attrs #patterns)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchArmNode >> compositeTokenVariables [
 	^ #(#bars)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchArmNode >> condition [
 	^ condition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchArmNode >> condition: aRustExpressionNode [
 	self condition notNil ifTrue: [ self condition parent: nil ].
 	condition := aRustExpressionNode.
 	self condition notNil ifTrue: [ self condition parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchArmNode >> equalsToken [
 	^ equalsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchArmNode >> equalsToken: aSmaCCToken [
 	equalsToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchArmNode >> ifToken [
 	^ ifToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchArmNode >> ifToken: aSmaCCToken [
 	ifToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustMatchArmNode >> initialize [
 	super initialize.
 	attrs := OrderedCollection new: 2.
@@ -91,46 +92,46 @@ RustMatchArmNode >> initialize [
 	bars := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchArmNode >> letToken [
 	^ letToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchArmNode >> letToken: aSmaCCToken [
 	letToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchArmNode >> matchValue [
 	^ matchValue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchArmNode >> matchValue: aRustExpressionNode [
 	self matchValue notNil ifTrue: [ self matchValue parent: nil ].
 	matchValue := aRustExpressionNode.
 	self matchValue notNil ifTrue: [ self matchValue parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchArmNode >> nodeVariables [
 	^ #(#condition #matchValue)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchArmNode >> patterns [
 	^ patterns
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchArmNode >> patterns: anOrderedCollection [
 	self setParents: self patterns to: nil.
 	patterns := anOrderedCollection.
 	self setParents: self patterns to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMatchArmNode >> tokenVariables [
 	^ #(#ifToken #letToken #equalsToken)
 ]

@@ -1,46 +1,47 @@
 Class {
-	#name : #RustErrorPropogationExpressionNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustErrorPropogationExpressionNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'expression',
 		'question'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustErrorPropogationExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitErrorPropogationExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustErrorPropogationExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustErrorPropogationExpressionNode >> expression: aRustExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aRustExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustErrorPropogationExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustErrorPropogationExpressionNode >> question [
 	^ question
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustErrorPropogationExpressionNode >> question: aSmaCCToken [
 	question := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustErrorPropogationExpressionNode >> tokenVariables [
 	^ #(#question)
 ]

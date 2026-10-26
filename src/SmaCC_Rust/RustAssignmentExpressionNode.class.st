@@ -1,59 +1,60 @@
 Class {
-	#name : #RustAssignmentExpressionNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustAssignmentExpressionNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'lhs',
 		'operator',
 		'rhs'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAssignmentExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAssignmentExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAssignmentExpressionNode >> lhs [
 	^ lhs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAssignmentExpressionNode >> lhs: aRustExpressionNode [
 	self lhs notNil ifTrue: [ self lhs parent: nil ].
 	lhs := aRustExpressionNode.
 	self lhs notNil ifTrue: [ self lhs parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAssignmentExpressionNode >> nodeVariables [
 	^ #(#lhs #rhs)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAssignmentExpressionNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAssignmentExpressionNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAssignmentExpressionNode >> rhs [
 	^ rhs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAssignmentExpressionNode >> rhs: aRustExpressionNode [
 	self rhs notNil ifTrue: [ self rhs parent: nil ].
 	rhs := aRustExpressionNode.
 	self rhs notNil ifTrue: [ self rhs parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustAssignmentExpressionNode >> tokenVariables [
 	^ #(#operator)
 ]

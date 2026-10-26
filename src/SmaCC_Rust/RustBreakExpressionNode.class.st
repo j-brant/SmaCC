@@ -1,55 +1,56 @@
 Class {
-	#name : #RustBreakExpressionNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustBreakExpressionNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'breakToken',
 		'value',
 		'label'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBreakExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBreakExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBreakExpressionNode >> breakToken [
 	^ breakToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBreakExpressionNode >> breakToken: aSmaCCToken [
 	breakToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBreakExpressionNode >> label [
 	^ label
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBreakExpressionNode >> label: aSmaCCToken [
 	label := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBreakExpressionNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBreakExpressionNode >> tokenVariables [
 	^ #(#breakToken #label)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBreakExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBreakExpressionNode >> value: aRustExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aRustExpressionNode.

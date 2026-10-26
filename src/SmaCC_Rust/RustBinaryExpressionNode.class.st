@@ -1,59 +1,60 @@
 Class {
-	#name : #RustBinaryExpressionNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustBinaryExpressionNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'left',
 		'operator',
 		'right'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBinaryExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBinaryExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBinaryExpressionNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBinaryExpressionNode >> left: aRustExpressionNode [
 	self left notNil ifTrue: [ self left parent: nil ].
 	left := aRustExpressionNode.
 	self left notNil ifTrue: [ self left parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBinaryExpressionNode >> nodeVariables [
 	^ #(#left #right)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBinaryExpressionNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBinaryExpressionNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBinaryExpressionNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBinaryExpressionNode >> right: aRustExpressionNode [
 	self right notNil ifTrue: [ self right parent: nil ].
 	right := aRustExpressionNode.
 	self right notNil ifTrue: [ self right parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBinaryExpressionNode >> tokenVariables [
 	^ #(#operator)
 ]

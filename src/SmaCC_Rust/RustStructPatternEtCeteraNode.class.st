@@ -1,52 +1,53 @@
 Class {
-	#name : #RustStructPatternEtCeteraNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustStructPatternEtCeteraNode',
+	#superclass : 'RustProgramNode',
 	#instVars : [
 		'attrs',
 		'dotDot'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternEtCeteraNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStructPatternEtCetera: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternEtCeteraNode >> attrs [
 	^ attrs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternEtCeteraNode >> attrs: anOrderedCollection [
 	self setParents: self attrs to: nil.
 	attrs := anOrderedCollection.
 	self setParents: self attrs to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternEtCeteraNode >> compositeNodeVariables [
 	^ #(#attrs)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternEtCeteraNode >> dotDot [
 	^ dotDot
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternEtCeteraNode >> dotDot: aSmaCCToken [
 	dotDot := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustStructPatternEtCeteraNode >> initialize [
 	super initialize.
 	attrs := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustStructPatternEtCeteraNode >> tokenVariables [
 	^ #(#dotDot)
 ]

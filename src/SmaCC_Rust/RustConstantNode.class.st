@@ -1,6 +1,6 @@
 Class {
-	#name : #RustConstantNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustConstantNode',
+	#superclass : 'RustItemNode',
 	#instVars : [
 		'constToken',
 		'name',
@@ -9,130 +9,107 @@ Class {
 		'semicolon',
 		'equalsToken',
 		'value',
-		'visibility',
-		'attrs'
+		'visibility'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustConstantNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitConstant: self
 ]
 
-{ #category : #generated }
-RustConstantNode >> attrs [
-	^ attrs
-]
-
-{ #category : #generated }
-RustConstantNode >> attrs: anOrderedCollection [
-	self setParents: self attrs to: nil.
-	attrs := anOrderedCollection.
-	self setParents: self attrs to: self
-]
-
-{ #category : #generated }
+{ #category : 'generated' }
 RustConstantNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustConstantNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
-RustConstantNode >> compositeNodeVariables [
-	^ #(#attrs)
-]
-
-{ #category : #generated }
+{ #category : 'generated' }
 RustConstantNode >> constToken [
 	^ constToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustConstantNode >> constToken: aSmaCCToken [
 	constToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustConstantNode >> equalsToken [
 	^ equalsToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustConstantNode >> equalsToken: aSmaCCToken [
 	equalsToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
-RustConstantNode >> initialize [
-	super initialize.
-	attrs := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
+{ #category : 'generated' }
 RustConstantNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustConstantNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustConstantNode >> nodeVariables [
 	^ #(#type #value #visibility)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustConstantNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustConstantNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustConstantNode >> tokenVariables [
 	^ #(#constToken #name #colon #semicolon #equalsToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustConstantNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustConstantNode >> type: aRustProgramNode [
 	self type notNil ifTrue: [ self type parent: nil ].
 	type := aRustProgramNode.
 	self type notNil ifTrue: [ self type parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustConstantNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustConstantNode >> value: aRustExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aRustExpressionNode.
 	self value notNil ifTrue: [ self value parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustConstantNode >> visibility [
 	^ visibility
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustConstantNode >> visibility: aRustVisibilityNode [
 	self visibility notNil ifTrue: [ self visibility parent: nil ].
 	visibility := aRustVisibilityNode.

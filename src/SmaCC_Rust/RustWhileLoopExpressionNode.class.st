@@ -1,6 +1,6 @@
 Class {
-	#name : #RustWhileLoopExpressionNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustWhileLoopExpressionNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'whileToken',
 		'condition',
@@ -8,74 +8,75 @@ Class {
 		'label',
 		'colon'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustWhileLoopExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitWhileLoopExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustWhileLoopExpressionNode >> block [
 	^ block
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustWhileLoopExpressionNode >> block: aRustBlockExpressionNode [
 	self block notNil ifTrue: [ self block parent: nil ].
 	block := aRustBlockExpressionNode.
 	self block notNil ifTrue: [ self block parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustWhileLoopExpressionNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustWhileLoopExpressionNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustWhileLoopExpressionNode >> condition [
 	^ condition
 ]
 
-{ #category : #generated }
-RustWhileLoopExpressionNode >> condition: aRustExpressionNode [
+{ #category : 'generated' }
+RustWhileLoopExpressionNode >> condition: aRustProgramNode [
 	self condition notNil ifTrue: [ self condition parent: nil ].
-	condition := aRustExpressionNode.
+	condition := aRustProgramNode.
 	self condition notNil ifTrue: [ self condition parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustWhileLoopExpressionNode >> label [
 	^ label
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustWhileLoopExpressionNode >> label: aSmaCCToken [
 	label := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustWhileLoopExpressionNode >> nodeVariables [
 	^ #(#condition #block)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustWhileLoopExpressionNode >> tokenVariables [
 	^ #(#whileToken #label #colon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustWhileLoopExpressionNode >> whileToken [
 	^ whileToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustWhileLoopExpressionNode >> whileToken: aSmaCCToken [
 	whileToken := aSmaCCToken
 ]

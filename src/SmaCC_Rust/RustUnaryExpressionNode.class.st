@@ -1,44 +1,45 @@
 Class {
-	#name : #RustUnaryExpressionNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustUnaryExpressionNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'operator',
 		'value'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustUnaryExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUnaryExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustUnaryExpressionNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustUnaryExpressionNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustUnaryExpressionNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustUnaryExpressionNode >> tokenVariables [
 	^ #(#operator)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustUnaryExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustUnaryExpressionNode >> value: aRustExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aRustExpressionNode.

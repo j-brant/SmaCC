@@ -1,61 +1,62 @@
 Class {
-	#name : #RustMacroTokenTreeNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustMacroTokenTreeNode',
+	#superclass : 'RustProgramNode',
 	#instVars : [
 		'left',
 		'tokens',
 		'right'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroTokenTreeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMacroTokenTree: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroTokenTreeNode >> compositeNodeVariables [
 	^ #(#tokens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustMacroTokenTreeNode >> initialize [
 	super initialize.
 	tokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroTokenTreeNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroTokenTreeNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroTokenTreeNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroTokenTreeNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroTokenTreeNode >> tokenVariables [
 	^ #(#left #right)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroTokenTreeNode >> tokens [
 	^ tokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroTokenTreeNode >> tokens: anOrderedCollection [
 	self setParents: self tokens to: nil.
 	tokens := anOrderedCollection.

@@ -1,46 +1,47 @@
 Class {
-	#name : #RustExpressionStatementNode,
-	#superclass : #RustStatementNode,
+	#name : 'RustExpressionStatementNode',
+	#superclass : 'RustStatementNode',
 	#instVars : [
 		'expression',
 		'semicolon'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustExpressionStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExpressionStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustExpressionStatementNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustExpressionStatementNode >> expression: aRustExpressionNode [
 	self expression notNil ifTrue: [ self expression parent: nil ].
 	expression := aRustExpressionNode.
 	self expression notNil ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustExpressionStatementNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustExpressionStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustExpressionStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustExpressionStatementNode >> tokenVariables [
 	^ #(#semicolon)
 ]

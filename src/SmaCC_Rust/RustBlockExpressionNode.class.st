@@ -1,77 +1,100 @@
 Class {
-	#name : #RustBlockExpressionNode,
-	#superclass : #RustExpressionNode,
+	#name : 'RustBlockExpressionNode',
+	#superclass : 'RustExpressionNode',
 	#instVars : [
 		'leftBrace',
 		'attrs',
 		'rightBrace',
-		'statements'
+		'statements',
+		'label',
+		'colon'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBlockExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBlockExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBlockExpressionNode >> attrs [
 	^ attrs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBlockExpressionNode >> attrs: anOrderedCollection [
 	self setParents: self attrs to: nil.
 	attrs := anOrderedCollection.
 	self setParents: self attrs to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
+RustBlockExpressionNode >> colon [
+	^ colon
+]
+
+{ #category : 'generated' }
+RustBlockExpressionNode >> colon: aSmaCCToken [
+	colon := aSmaCCToken
+]
+
+{ #category : 'generated' }
 RustBlockExpressionNode >> compositeNodeVariables [
 	^ #(#attrs #statements)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustBlockExpressionNode >> initialize [
 	super initialize.
 	attrs := OrderedCollection new: 2.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
+RustBlockExpressionNode >> label [
+	^ label
+]
+
+{ #category : 'generated' }
+RustBlockExpressionNode >> label: aSmaCCToken [
+	label := aSmaCCToken
+]
+
+{ #category : 'generated' }
 RustBlockExpressionNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBlockExpressionNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBlockExpressionNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBlockExpressionNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBlockExpressionNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBlockExpressionNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustBlockExpressionNode >> tokenVariables [
-	^ #(#leftBrace #rightBrace)
+	^ #(#leftBrace #rightBrace #label #colon)
 ]

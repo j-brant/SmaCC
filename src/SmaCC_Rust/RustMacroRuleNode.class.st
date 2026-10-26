@@ -1,6 +1,6 @@
 Class {
-	#name : #RustMacroRuleNode,
-	#superclass : #RustProgramNode,
+	#name : 'RustMacroRuleNode',
+	#superclass : 'RustProgramNode',
 	#instVars : [
 		'left',
 		'matches',
@@ -8,83 +8,84 @@ Class {
 		'arrow',
 		'tokens'
 	],
-	#category : #'SmaCC_Rust'
+	#category : 'SmaCC_Rust',
+	#package : 'SmaCC_Rust'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroRuleNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMacroRule: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroRuleNode >> arrow [
 	^ arrow
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroRuleNode >> arrow: aSmaCCToken [
 	arrow := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroRuleNode >> compositeNodeVariables [
 	^ #(#matches)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 RustMacroRuleNode >> initialize [
 	super initialize.
 	matches := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroRuleNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroRuleNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroRuleNode >> matches [
 	^ matches
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroRuleNode >> matches: anOrderedCollection [
 	self setParents: self matches to: nil.
 	matches := anOrderedCollection.
 	self setParents: self matches to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroRuleNode >> nodeVariables [
 	^ #(#tokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroRuleNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroRuleNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroRuleNode >> tokenVariables [
 	^ #(#left #right #arrow)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroRuleNode >> tokens [
 	^ tokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 RustMacroRuleNode >> tokens: aRustMacroTokenTreeNode [
 	self tokens notNil ifTrue: [ self tokens parent: nil ].
 	tokens := aRustMacroTokenTreeNode.
