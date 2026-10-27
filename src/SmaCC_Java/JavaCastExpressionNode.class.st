@@ -5,8 +5,8 @@ Class {
 		'leftParen',
 		'type',
 		'rightParen',
-		'ampToken',
-		'interfaceType'
+		'ampTokens',
+		'interfaceTypes'
 	],
 	#category : 'SmaCC_Java',
 	#package : 'SmaCC_Java'
@@ -18,13 +18,27 @@ JavaCastExpressionNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : 'generated' }
-JavaCastExpressionNode >> ampToken [
-	^ ampToken
+JavaCastExpressionNode >> ampTokens [
+
+	^ ampTokens
 ]
 
 { #category : 'generated' }
-JavaCastExpressionNode >> ampToken: aSmaCCToken [
-	ampToken := aSmaCCToken
+JavaCastExpressionNode >> ampTokens: anOrderedCollection [
+
+	ampTokens := anOrderedCollection
+]
+
+{ #category : 'generated' }
+JavaCastExpressionNode >> compositeNodeVariables [
+
+	^ #( #interfaceTypes )
+]
+
+{ #category : 'generated' }
+JavaCastExpressionNode >> compositeTokenVariables [
+
+	^ #( #ampTokens )
 ]
 
 { #category : 'generated' }
@@ -32,18 +46,25 @@ JavaCastExpressionNode >> ignoredTokenVariables [
 	^ #(#leftParen #rightParen)
 ]
 
-{ #category : 'generated' }
-JavaCastExpressionNode >> interfaceType [
-	^ interfaceType
+{ #category : 'generated-initialize-release' }
+JavaCastExpressionNode >> initialize [
+	super initialize.
+	ampTokens := OrderedCollection new: 2.
+	interfaceTypes := OrderedCollection new: 2.
 ]
 
 { #category : 'generated' }
-JavaCastExpressionNode >> interfaceType: aJavaClassTypeNode [
-	self interfaceType notNil
-		ifTrue: [ self interfaceType parent: nil ].
-	interfaceType := aJavaClassTypeNode.
-	self interfaceType notNil
-		ifTrue: [ self interfaceType parent: self ]
+JavaCastExpressionNode >> interfaceTypes [
+
+	^ interfaceTypes
+]
+
+{ #category : 'generated' }
+JavaCastExpressionNode >> interfaceTypes: anOrderedCollection [
+
+	self setParents: self interfaceTypes to: nil.
+	interfaceTypes := anOrderedCollection.
+	self setParents: self interfaceTypes to: self
 ]
 
 { #category : 'generated' }
@@ -58,7 +79,8 @@ JavaCastExpressionNode >> leftParen: aSmaCCToken [
 
 { #category : 'generated' }
 JavaCastExpressionNode >> nodeVariables [
-	^ #(#type #interfaceType #expression)
+
+	^ #( #type #expression )
 ]
 
 { #category : 'generated' }
@@ -69,11 +91,6 @@ JavaCastExpressionNode >> rightParen [
 { #category : 'generated' }
 JavaCastExpressionNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
-]
-
-{ #category : 'generated' }
-JavaCastExpressionNode >> tokenVariables [
-	^ #(#ampToken)
 ]
 
 { #category : 'generated' }
