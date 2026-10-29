@@ -8,9 +8,13 @@ Class {
 		'commas',
 		'gt',
 		'colonColonToken',
+		'methodTypeArgLeft',
+		'methodTypeArguments',
+		'methodTypeArgCommas',
+		'methodTypeArgRight',
 		'name',
-		'superPeriod',
-		'superToken'
+		'superToken',
+		'superPeriod'
 	],
 	#category : 'SmaCC_Java',
 	#package : 'SmaCC_Java'
@@ -55,7 +59,14 @@ JavaMethodReferenceNode >> commas: anOrderedCollection [
 
 { #category : 'generated' }
 JavaMethodReferenceNode >> compositeNodeVariables [
-	^ #(#arguments)
+
+	^ #( #arguments #methodTypeArguments )
+]
+
+{ #category : 'generated' }
+JavaMethodReferenceNode >> compositeTokenVariables [
+
+	^ #( #methodTypeArgCommas )
 ]
 
 { #category : 'generated' }
@@ -83,6 +94,8 @@ JavaMethodReferenceNode >> initialize [
 	super initialize.
 	arguments := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
+	methodTypeArguments := OrderedCollection new: 2.
+	methodTypeArgCommas := OrderedCollection new: 2.
 ]
 
 { #category : 'generated' }
@@ -93,6 +106,56 @@ JavaMethodReferenceNode >> lt [
 { #category : 'generated' }
 JavaMethodReferenceNode >> lt: aSmaCCToken [
 	lt := aSmaCCToken
+]
+
+{ #category : 'generated' }
+JavaMethodReferenceNode >> methodTypeArgCommas [
+
+	^ methodTypeArgCommas
+]
+
+{ #category : 'generated' }
+JavaMethodReferenceNode >> methodTypeArgCommas: anOrderedCollection [
+
+	methodTypeArgCommas := anOrderedCollection
+]
+
+{ #category : 'generated' }
+JavaMethodReferenceNode >> methodTypeArgLeft [
+
+	^ methodTypeArgLeft
+]
+
+{ #category : 'generated' }
+JavaMethodReferenceNode >> methodTypeArgLeft: aSmaCCToken [
+
+	methodTypeArgLeft := aSmaCCToken
+]
+
+{ #category : 'generated' }
+JavaMethodReferenceNode >> methodTypeArgRight [
+
+	^ methodTypeArgRight
+]
+
+{ #category : 'generated' }
+JavaMethodReferenceNode >> methodTypeArgRight: aSmaCCToken [
+
+	methodTypeArgRight := aSmaCCToken
+]
+
+{ #category : 'generated' }
+JavaMethodReferenceNode >> methodTypeArguments [
+
+	^ methodTypeArguments
+]
+
+{ #category : 'generated' }
+JavaMethodReferenceNode >> methodTypeArguments: anOrderedCollection [
+
+	self setParents: self methodTypeArguments to: nil.
+	methodTypeArguments := anOrderedCollection.
+	self setParents: self methodTypeArguments to: self
 ]
 
 { #category : 'generated' }
@@ -146,5 +209,6 @@ JavaMethodReferenceNode >> superToken: aSmaCCToken [
 
 { #category : 'generated' }
 JavaMethodReferenceNode >> tokenVariables [
-	^ #(#colonColonToken #name #superToken #superPeriod)
+
+	^ #( #colonColonToken #methodTypeArgLeft #methodTypeArgRight #name #superToken #superPeriod )
 ]

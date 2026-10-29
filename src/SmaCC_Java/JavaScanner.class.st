@@ -46,13 +46,13 @@ JavaScanner >> UNSIGNED_RIGHT_SHIFTId [
 { #category : 'generated' }
 JavaScanner >> emptySymbolTokenId [
 
-	^ 343
+	^ 345
 ]
 
 { #category : 'generated' }
 JavaScanner >> errorTokenId [
 
-	^ 344
+	^ 346
 ]
 
 { #category : 'generated' }
