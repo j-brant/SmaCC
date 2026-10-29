@@ -2,12 +2,15 @@ Class {
 	#name : 'JavaSuperConstructorInvocationNode',
 	#superclass : 'JavaStatementNode',
 	#instVars : [
+		'lt',
+		'arguments',
+		'commas',
+		'gt',
 		'superToken',
 		'leftParen',
-		'expressions',
-		'commas',
 		'rightParen',
 		'semicolon',
+		'expressions',
 		'primary',
 		'period'
 	],
@@ -18,6 +21,20 @@ Class {
 { #category : 'generated' }
 JavaSuperConstructorInvocationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSuperConstructorInvocation: self
+]
+
+{ #category : 'generated' }
+JavaSuperConstructorInvocationNode >> arguments [
+
+	^ arguments
+]
+
+{ #category : 'generated' }
+JavaSuperConstructorInvocationNode >> arguments: anOrderedCollection [
+
+	self setParents: self arguments to: nil.
+	arguments := anOrderedCollection.
+	self setParents: self arguments to: self
 ]
 
 { #category : 'generated' }
@@ -32,7 +49,8 @@ JavaSuperConstructorInvocationNode >> commas: anOrderedCollection [
 
 { #category : 'generated' }
 JavaSuperConstructorInvocationNode >> compositeNodeVariables [
-	^ #(#expressions)
+
+	^ #( #arguments #expressions )
 ]
 
 { #category : 'generated' }
@@ -48,20 +66,34 @@ JavaSuperConstructorInvocationNode >> expressions: anOrderedCollection [
 ]
 
 { #category : 'generated' }
+JavaSuperConstructorInvocationNode >> gt [
+
+	^ gt
+]
+
+{ #category : 'generated' }
+JavaSuperConstructorInvocationNode >> gt: aSmaCCToken [
+
+	gt := aSmaCCToken
+]
+
+{ #category : 'generated' }
 JavaSuperConstructorInvocationNode >> ignoredCompositeTokenVariables [
 	^ #(#commas)
 ]
 
 { #category : 'generated' }
 JavaSuperConstructorInvocationNode >> ignoredTokenVariables [
-	^ #(#leftParen #rightParen #semicolon)
+
+	^ #( #lt #gt #leftParen #rightParen #semicolon )
 ]
 
 { #category : 'generated-initialize-release' }
 JavaSuperConstructorInvocationNode >> initialize [
 	super initialize.
-	expressions := OrderedCollection new: 2.
+	arguments := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
+	expressions := OrderedCollection new: 2.
 ]
 
 { #category : 'generated' }
@@ -72,6 +104,18 @@ JavaSuperConstructorInvocationNode >> leftParen [
 { #category : 'generated' }
 JavaSuperConstructorInvocationNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
+]
+
+{ #category : 'generated' }
+JavaSuperConstructorInvocationNode >> lt [
+
+	^ lt
+]
+
+{ #category : 'generated' }
+JavaSuperConstructorInvocationNode >> lt: aSmaCCToken [
+
+	lt := aSmaCCToken
 ]
 
 { #category : 'generated' }
