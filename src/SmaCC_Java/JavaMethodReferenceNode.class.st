@@ -13,6 +13,7 @@ Class {
 		'methodTypeArgCommas',
 		'methodTypeArgRight',
 		'name',
+		'annotations',
 		'superToken',
 		'superPeriod'
 	],
@@ -23,6 +24,20 @@ Class {
 { #category : 'generated' }
 JavaMethodReferenceNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMethodReference: self
+]
+
+{ #category : 'generated' }
+JavaMethodReferenceNode >> annotations [
+
+	^ annotations
+]
+
+{ #category : 'generated' }
+JavaMethodReferenceNode >> annotations: anOrderedCollection [
+
+	self setParents: self annotations to: nil.
+	annotations := anOrderedCollection.
+	self setParents: self annotations to: self
 ]
 
 { #category : 'generated' }
@@ -60,7 +75,7 @@ JavaMethodReferenceNode >> commas: anOrderedCollection [
 { #category : 'generated' }
 JavaMethodReferenceNode >> compositeNodeVariables [
 
-	^ #( #arguments #methodTypeArguments )
+	^ #( #arguments #methodTypeArguments #annotations )
 ]
 
 { #category : 'generated' }
@@ -96,6 +111,7 @@ JavaMethodReferenceNode >> initialize [
 	commas := OrderedCollection new: 2.
 	methodTypeArguments := OrderedCollection new: 2.
 	methodTypeArgCommas := OrderedCollection new: 2.
+	annotations := OrderedCollection new: 2.
 ]
 
 { #category : 'generated' }

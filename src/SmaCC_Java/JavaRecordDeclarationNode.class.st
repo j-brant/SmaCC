@@ -138,7 +138,8 @@ JavaRecordDeclarationNode >> name: aSmaCCToken [
 
 { #category : 'generated' }
 JavaRecordDeclarationNode >> nodeVariables [
-	^ #(#typeParameters)
+
+	^ #( #typeParameters )
 ]
 
 { #category : 'generated' }

@@ -2,15 +2,16 @@ Class {
 	#name : 'JavaConstructorDeclarationNode',
 	#superclass : 'JavaDeclarationNode',
 	#instVars : [
-		'modifiers',
 		'typeParameters',
 		'name',
 		'leftParen',
-		'parameters',
-		'commas',
 		'rightParen',
+		'parameters',
+		'receiver',
+		'commas',
+		'body',
 		'throws',
-		'body'
+		'modifiers'
 	],
 	#category : 'SmaCC_Java',
 	#package : 'SmaCC_Java'
@@ -106,7 +107,8 @@ JavaConstructorDeclarationNode >> name: aJavaNameNode [
 
 { #category : 'generated' }
 JavaConstructorDeclarationNode >> nodeVariables [
-	^ #(#typeParameters #name #body #throws)
+
+	^ #( #typeParameters #name #body #throws #receiver )
 ]
 
 { #category : 'generated' }
@@ -119,6 +121,20 @@ JavaConstructorDeclarationNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
+]
+
+{ #category : 'generated' }
+JavaConstructorDeclarationNode >> receiver [
+
+	^ receiver
+]
+
+{ #category : 'generated' }
+JavaConstructorDeclarationNode >> receiver: aJavaReceiverParameterNode [
+
+	self receiver notNil ifTrue: [ self receiver parent: nil ].
+	receiver := aJavaReceiverParameterNode.
+	self receiver notNil ifTrue: [ self receiver parent: self ]
 ]
 
 { #category : 'generated' }

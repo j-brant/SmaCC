@@ -6,12 +6,10 @@ Class {
 		'constants',
 		'commas',
 		'arrowToken',
-		'modifiers',
-		'type',
-		'variable',
+		'defaultToken',
+		'patterns',
 		'whenToken',
 		'guard',
-		'defaultToken',
 		'value',
 		'semicolon'
 	],
@@ -57,7 +55,7 @@ JavaSwitchBlockExpressionGroupNode >> commas: anOrderedCollection [
 { #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> compositeNodeVariables [
 
-	^ #( #constants #modifiers )
+	^ #( #constants #patterns )
 ]
 
 { #category : 'generated' }
@@ -111,27 +109,38 @@ JavaSwitchBlockExpressionGroupNode >> initialize [
 	super initialize.
 	constants := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
-	modifiers := OrderedCollection new: 2.
+	patterns := OrderedCollection new: 2.
 ]
 
-{ #category : 'generated' }
+{ #category : 'deprecated' }
 JavaSwitchBlockExpressionGroupNode >> modifiers [
-
-	^ modifiers
-]
-
-{ #category : 'generated' }
-JavaSwitchBlockExpressionGroupNode >> modifiers: anOrderedCollection [
-
-	self setParents: self modifiers to: nil.
-	modifiers := anOrderedCollection.
-	self setParents: self modifiers to: self
+	self deprecated: 'Use patterns instead'.
+	^ patterns
+		  inject: OrderedCollection new
+		  into: [ :all :each |
+			  each class = JavaTypePatternNode
+				  ifTrue: [ all , each modifiers ]
+				  ifFalse: [ all ] ]
 ]
 
 { #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> nodeVariables [
 
-	^ #( #type #variable #guard #value )
+	^ #( #guard #value )
+]
+
+{ #category : 'generated' }
+JavaSwitchBlockExpressionGroupNode >> patterns [
+
+	^ patterns
+]
+
+{ #category : 'generated' }
+JavaSwitchBlockExpressionGroupNode >> patterns: anOrderedCollection [
+
+	self setParents: self patterns to: nil.
+	patterns := anOrderedCollection.
+	self setParents: self patterns to: self
 ]
 
 { #category : 'generated' }
@@ -147,21 +156,13 @@ JavaSwitchBlockExpressionGroupNode >> semicolon: aSmaCCToken [
 { #category : 'generated' }
 JavaSwitchBlockExpressionGroupNode >> tokenVariables [
 
-	^ #( #caseToken #arrowToken #whenToken #defaultToken )
+	^ #( #caseToken #arrowToken #defaultToken #whenToken )
 ]
 
-{ #category : 'generated' }
+{ #category : 'deprecated' }
 JavaSwitchBlockExpressionGroupNode >> type [
-
-	^ type
-]
-
-{ #category : 'generated' }
-JavaSwitchBlockExpressionGroupNode >> type: aJavaTypeNode [
-
-	self type notNil ifTrue: [ self type parent: nil ].
-	type := aJavaTypeNode.
-	self type notNil ifTrue: [ self type parent: self ]
+	self deprecated: 'Use patterns instead'.
+	^ patterns ifNotEmpty: [ :all | all first type ]
 ]
 
 { #category : 'generated' }
@@ -176,18 +177,11 @@ JavaSwitchBlockExpressionGroupNode >> value: aJavaProgramNode [
 	self value notNil ifTrue: [ self value parent: self ]
 ]
 
-{ #category : 'generated' }
+{ #category : 'deprecated' }
 JavaSwitchBlockExpressionGroupNode >> variable [
-
-	^ variable
-]
-
-{ #category : 'generated' }
-JavaSwitchBlockExpressionGroupNode >> variable: aJavaProgramNode [
-
-	self variable notNil ifTrue: [ self variable parent: nil ].
-	variable := aJavaProgramNode.
-	self variable notNil ifTrue: [ self variable parent: self ]
+	self deprecated: 'Use patterns instead'.
+	^ patterns ifNotEmpty: [ :all |
+		  all first class = JavaTypePatternNode ifTrue: [ all first variable ] ]
 ]
 
 { #category : 'generated' }

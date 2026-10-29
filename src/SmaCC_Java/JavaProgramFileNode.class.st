@@ -2,9 +2,10 @@ Class {
 	#name : 'JavaProgramFileNode',
 	#superclass : 'JavaProgramNode',
 	#instVars : [
-		'packageDeclaration',
+		'typeDeclarations',
 		'imports',
-		'typeDeclarations'
+		'packageDeclaration',
+		'declarations'
 	],
 	#category : 'SmaCC_Java',
 	#package : 'SmaCC_Java'
@@ -17,7 +18,22 @@ JavaProgramFileNode >> acceptVisitor: aProgramVisitor [
 
 { #category : 'generated' }
 JavaProgramFileNode >> compositeNodeVariables [
-	^ #(#typeDeclarations #imports)
+
+	^ #( #typeDeclarations #imports #declarations )
+]
+
+{ #category : 'generated' }
+JavaProgramFileNode >> declarations [
+
+	^ declarations
+]
+
+{ #category : 'generated' }
+JavaProgramFileNode >> declarations: anOrderedCollection [
+
+	self setParents: self declarations to: nil.
+	declarations := anOrderedCollection.
+	self setParents: self declarations to: self
 ]
 
 { #category : 'generated' }
@@ -37,6 +53,7 @@ JavaProgramFileNode >> initialize [
 	super initialize.
 	typeDeclarations := OrderedCollection new: 2.
 	imports := OrderedCollection new: 2.
+	declarations := OrderedCollection new: 2.
 ]
 
 { #category : 'generated' }

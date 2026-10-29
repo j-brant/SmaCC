@@ -6,9 +6,8 @@ Class {
 		'constants',
 		'commas',
 		'colon',
-		'modifiers',
-		'type',
-		'variable',
+		'defaultToken',
+		'patterns',
 		'whenToken',
 		'guard'
 	],
@@ -54,7 +53,7 @@ JavaSwitchLabelNode >> commas: anOrderedCollection [
 { #category : 'generated' }
 JavaSwitchLabelNode >> compositeNodeVariables [
 
-	^ #( #constants #modifiers )
+	^ #( #constants #patterns )
 ]
 
 { #category : 'generated' }
@@ -67,6 +66,18 @@ JavaSwitchLabelNode >> constants: anOrderedCollection [
 	self setParents: self constants to: nil.
 	constants := anOrderedCollection.
 	self setParents: self constants to: self
+]
+
+{ #category : 'generated' }
+JavaSwitchLabelNode >> defaultToken [
+
+	^ defaultToken
+]
+
+{ #category : 'generated' }
+JavaSwitchLabelNode >> defaultToken: aSmaCCToken [
+
+	defaultToken := aSmaCCToken
 ]
 
 { #category : 'generated' }
@@ -93,61 +104,57 @@ JavaSwitchLabelNode >> initialize [
 	super initialize.
 	constants := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
-	modifiers := OrderedCollection new: 2.
+	patterns := OrderedCollection new: 2.
 ]
 
-{ #category : 'generated' }
+{ #category : 'deprecated' }
 JavaSwitchLabelNode >> modifiers [
-
-	^ modifiers
-]
-
-{ #category : 'generated' }
-JavaSwitchLabelNode >> modifiers: anOrderedCollection [
-
-	self setParents: self modifiers to: nil.
-	modifiers := anOrderedCollection.
-	self setParents: self modifiers to: self
+	self deprecated: 'Use patterns instead'.
+	^ patterns
+		  inject: OrderedCollection new
+		  into: [ :all :each |
+			  each class = JavaTypePatternNode
+				  ifTrue: [ all , each modifiers ]
+				  ifFalse: [ all ] ]
 ]
 
 { #category : 'generated' }
 JavaSwitchLabelNode >> nodeVariables [
 
-	^ #( #type #variable #guard )
+	^ #( #guard )
+]
+
+{ #category : 'generated' }
+JavaSwitchLabelNode >> patterns [
+
+	^ patterns
+]
+
+{ #category : 'generated' }
+JavaSwitchLabelNode >> patterns: anOrderedCollection [
+
+	self setParents: self patterns to: nil.
+	patterns := anOrderedCollection.
+	self setParents: self patterns to: self
 ]
 
 { #category : 'generated' }
 JavaSwitchLabelNode >> tokenVariables [
 
-	^ #( #caseToken #colon #whenToken )
+	^ #( #caseToken #colon #defaultToken #whenToken )
 ]
 
-{ #category : 'generated' }
+{ #category : 'deprecated' }
 JavaSwitchLabelNode >> type [
-
-	^ type
+	self deprecated: 'Use patterns instead'.
+	^ patterns ifNotEmpty: [ :all | all first type ]
 ]
 
-{ #category : 'generated' }
-JavaSwitchLabelNode >> type: aJavaTypeNode [
-
-	self type notNil ifTrue: [ self type parent: nil ].
-	type := aJavaTypeNode.
-	self type notNil ifTrue: [ self type parent: self ]
-]
-
-{ #category : 'generated' }
+{ #category : 'deprecated' }
 JavaSwitchLabelNode >> variable [
-
-	^ variable
-]
-
-{ #category : 'generated' }
-JavaSwitchLabelNode >> variable: aJavaProgramNode [
-
-	self variable notNil ifTrue: [ self variable parent: nil ].
-	variable := aJavaProgramNode.
-	self variable notNil ifTrue: [ self variable parent: self ]
+	self deprecated: 'Use patterns instead'.
+	^ patterns ifNotEmpty: [ :all |
+		  all first class = JavaTypePatternNode ifTrue: [ all first variable ] ]
 ]
 
 { #category : 'generated' }

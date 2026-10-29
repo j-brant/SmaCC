@@ -2,12 +2,14 @@ Class {
 	#name : 'JavaModuleNode',
 	#superclass : 'JavaProgramNode',
 	#instVars : [
+		'annotations',
 		'moduleToken',
 		'name',
 		'leftBrace',
 		'directives',
 		'rightBrace',
-		'openToken'
+		'openToken',
+		'imports'
 	],
 	#category : 'SmaCC_Java',
 	#package : 'SmaCC_Java'
@@ -19,8 +21,23 @@ JavaModuleNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : 'generated' }
+JavaModuleNode >> annotations [
+
+	^ annotations
+]
+
+{ #category : 'generated' }
+JavaModuleNode >> annotations: anOrderedCollection [
+
+	self setParents: self annotations to: nil.
+	annotations := anOrderedCollection.
+	self setParents: self annotations to: self
+]
+
+{ #category : 'generated' }
 JavaModuleNode >> compositeNodeVariables [
-	^ #(#directives)
+
+	^ #( #annotations #directives #imports )
 ]
 
 { #category : 'generated' }
@@ -40,10 +57,26 @@ JavaModuleNode >> ignoredTokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]
 
+{ #category : 'generated' }
+JavaModuleNode >> imports [
+
+	^ imports
+]
+
+{ #category : 'generated' }
+JavaModuleNode >> imports: anOrderedCollection [
+
+	self setParents: self imports to: nil.
+	imports := anOrderedCollection.
+	self setParents: self imports to: self
+]
+
 { #category : 'generated-initialize-release' }
 JavaModuleNode >> initialize [
 	super initialize.
+	annotations := OrderedCollection new: 2.
 	directives := OrderedCollection new: 2.
+	imports := OrderedCollection new: 2.
 ]
 
 { #category : 'generated' }

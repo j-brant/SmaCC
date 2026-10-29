@@ -5,6 +5,7 @@ Class {
 		'newToken',
 		'type',
 		'dimExpressions',
+		'dimensions',
 		'leftBrackets',
 		'rightBrackets',
 		'initializer'
@@ -20,7 +21,8 @@ JavaNewArrayNode >> acceptVisitor: aProgramVisitor [
 
 { #category : 'generated' }
 JavaNewArrayNode >> compositeNodeVariables [
-	^ #(#dimExpressions)
+
+	^ #( #dimExpressions #dimensions )
 ]
 
 { #category : 'generated' }
@@ -36,6 +38,20 @@ JavaNewArrayNode >> dimExpressions: anOrderedCollection [
 ]
 
 { #category : 'generated' }
+JavaNewArrayNode >> dimensions [
+
+	^ dimensions
+]
+
+{ #category : 'generated' }
+JavaNewArrayNode >> dimensions: anOrderedCollection [
+
+	self setParents: self dimensions to: nil.
+	dimensions := anOrderedCollection.
+	self setParents: self dimensions to: self
+]
+
+{ #category : 'generated' }
 JavaNewArrayNode >> ignoredCompositeTokenVariables [
 	^ #(#leftBrackets #rightBrackets #_leftParens #_rightParens)
 ]
@@ -44,6 +60,7 @@ JavaNewArrayNode >> ignoredCompositeTokenVariables [
 JavaNewArrayNode >> initialize [
 	super initialize.
 	dimExpressions := OrderedCollection new: 2.
+	dimensions := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 ]

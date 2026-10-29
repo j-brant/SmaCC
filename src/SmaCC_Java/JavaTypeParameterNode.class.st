@@ -2,6 +2,7 @@ Class {
 	#name : 'JavaTypeParameterNode',
 	#superclass : 'JavaProgramNode',
 	#instVars : [
+		'annotations',
 		'name',
 		'extendsToken',
 		'types',
@@ -27,8 +28,23 @@ JavaTypeParameterNode >> amps: anOrderedCollection [
 ]
 
 { #category : 'generated' }
+JavaTypeParameterNode >> annotations [
+
+	^ annotations
+]
+
+{ #category : 'generated' }
+JavaTypeParameterNode >> annotations: anOrderedCollection [
+
+	self setParents: self annotations to: nil.
+	annotations := anOrderedCollection.
+	self setParents: self annotations to: self
+]
+
+{ #category : 'generated' }
 JavaTypeParameterNode >> compositeNodeVariables [
-	^ #(#types)
+
+	^ #( #annotations #types )
 ]
 
 { #category : 'generated' }
@@ -49,6 +65,7 @@ JavaTypeParameterNode >> extendsToken: aSmaCCToken [
 { #category : 'generated-initialize-release' }
 JavaTypeParameterNode >> initialize [
 	super initialize.
+	annotations := OrderedCollection new: 2.
 	types := OrderedCollection new: 2.
 	amps := OrderedCollection new: 2.
 ]

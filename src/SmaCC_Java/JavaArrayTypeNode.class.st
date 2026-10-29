@@ -3,6 +3,7 @@ Class {
 	#superclass : 'JavaTypeNode',
 	#instVars : [
 		'baseType',
+		'dimensions',
 		'leftBrackets',
 		'rightBrackets'
 	],
@@ -30,6 +31,26 @@ JavaArrayTypeNode >> baseType: aJavaProgramNode [
 ]
 
 { #category : 'generated' }
+JavaArrayTypeNode >> compositeNodeVariables [
+
+	^ #( #dimensions )
+]
+
+{ #category : 'generated' }
+JavaArrayTypeNode >> dimensions [
+
+	^ dimensions
+]
+
+{ #category : 'generated' }
+JavaArrayTypeNode >> dimensions: anOrderedCollection [
+
+	self setParents: self dimensions to: nil.
+	dimensions := anOrderedCollection.
+	self setParents: self dimensions to: self
+]
+
+{ #category : 'generated' }
 JavaArrayTypeNode >> ignoredCompositeTokenVariables [
 	^ #(#leftBrackets #rightBrackets)
 ]
@@ -37,6 +58,7 @@ JavaArrayTypeNode >> ignoredCompositeTokenVariables [
 { #category : 'generated-initialize-release' }
 JavaArrayTypeNode >> initialize [
 	super initialize.
+	dimensions := OrderedCollection new: 2.
 	leftBrackets := OrderedCollection new: 2.
 	rightBrackets := OrderedCollection new: 2.
 ]

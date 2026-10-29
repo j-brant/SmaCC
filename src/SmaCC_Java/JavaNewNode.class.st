@@ -3,18 +3,20 @@ Class {
 	#superclass : 'JavaExpressionNode',
 	#instVars : [
 		'newToken',
+		'creationTypeArgLeft',
+		'creationTypeArguments',
+		'creationTypeArgCommas',
+		'creationTypeArgRight',
 		'type',
 		'leftParen',
+		'rightParen',
 		'expressions',
 		'commas',
-		'rightParen',
 		'primary',
 		'period',
-		'lt',
-		'arguments',
-		'gt',
 		'name',
 		'typeArgLeft',
+		'arguments',
 		'typeArgRight'
 	],
 	#category : 'SmaCC_Java',
@@ -50,7 +52,64 @@ JavaNewNode >> commas: anOrderedCollection [
 
 { #category : 'generated' }
 JavaNewNode >> compositeNodeVariables [
-	^ #(#expressions #arguments)
+
+	^ #( #creationTypeArguments #expressions #arguments )
+]
+
+{ #category : 'generated' }
+JavaNewNode >> compositeTokenVariables [
+
+	^ #( #creationTypeArgCommas )
+]
+
+{ #category : 'generated' }
+JavaNewNode >> creationTypeArgCommas [
+
+	^ creationTypeArgCommas
+]
+
+{ #category : 'generated' }
+JavaNewNode >> creationTypeArgCommas: anOrderedCollection [
+
+	creationTypeArgCommas := anOrderedCollection
+]
+
+{ #category : 'generated' }
+JavaNewNode >> creationTypeArgLeft [
+
+	^ creationTypeArgLeft
+]
+
+{ #category : 'generated' }
+JavaNewNode >> creationTypeArgLeft: aSmaCCToken [
+
+	creationTypeArgLeft := aSmaCCToken
+]
+
+{ #category : 'generated' }
+JavaNewNode >> creationTypeArgRight [
+
+	^ creationTypeArgRight
+]
+
+{ #category : 'generated' }
+JavaNewNode >> creationTypeArgRight: aSmaCCToken [
+
+	creationTypeArgRight := aSmaCCToken
+]
+
+{ #category : 'generated' }
+JavaNewNode >> creationTypeArguments [
+
+	^ creationTypeArguments
+]
+
+{ #category : 'generated' }
+JavaNewNode >> creationTypeArguments: anOrderedCollection [
+
+	self setParents: self creationTypeArguments to: nil.
+	creationTypeArguments := anOrderedCollection.
+	self setParents: self creationTypeArguments to: self
 ]
 
 { #category : 'generated' }
@@ -65,14 +124,11 @@ JavaNewNode >> expressions: anOrderedCollection [
 	self setParents: self expressions to: self
 ]
 
-{ #category : 'generated' }
+{ #category : 'deprecated' }
 JavaNewNode >> gt [
-	^ gt
-]
 
-{ #category : 'generated' }
-JavaNewNode >> gt: aSmaCCToken [
-	gt := aSmaCCToken
+	self deprecated: 'Use creationTypeArgRight instead'.
+	^ creationTypeArgRight
 ]
 
 { #category : 'generated' }
@@ -82,12 +138,15 @@ JavaNewNode >> ignoredCompositeTokenVariables [
 
 { #category : 'generated' }
 JavaNewNode >> ignoredTokenVariables [
-	^ #(#leftParen #rightParen #lt #gt)
+
+	^ #( #leftParen #rightParen )
 ]
 
 { #category : 'generated-initialize-release' }
 JavaNewNode >> initialize [
 	super initialize.
+	creationTypeArguments := OrderedCollection new: 2.
+	creationTypeArgCommas := OrderedCollection new: 2.
 	expressions := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 	arguments := OrderedCollection new: 2.
@@ -103,14 +162,11 @@ JavaNewNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : 'deprecated' }
 JavaNewNode >> lt [
-	^ lt
-]
 
-{ #category : 'generated' }
-JavaNewNode >> lt: aSmaCCToken [
-	lt := aSmaCCToken
+	self deprecated: 'Use creationTypeArgLeft instead'.
+	^ creationTypeArgLeft
 ]
 
 { #category : 'generated' }
@@ -174,7 +230,8 @@ JavaNewNode >> rightParen: aSmaCCToken [
 
 { #category : 'generated' }
 JavaNewNode >> tokenVariables [
-	^ #(#newToken #period #name #typeArgLeft #typeArgRight)
+
+	^ #( #newToken #creationTypeArgLeft #creationTypeArgRight #period #name #typeArgLeft #typeArgRight )
 ]
 
 { #category : 'generated' }

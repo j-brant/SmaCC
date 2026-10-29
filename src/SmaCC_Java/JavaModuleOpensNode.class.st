@@ -6,7 +6,8 @@ Class {
 		'name',
 		'semicolon',
 		'toToken',
-		'toName'
+		'toNames',
+		'commas'
 	],
 	#category : 'SmaCC_Java',
 	#package : 'SmaCC_Java'
@@ -18,8 +19,39 @@ JavaModuleOpensNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : 'generated' }
+JavaModuleOpensNode >> commas [
+
+	^ commas
+]
+
+{ #category : 'generated' }
+JavaModuleOpensNode >> commas: anOrderedCollection [
+
+	commas := anOrderedCollection
+]
+
+{ #category : 'generated' }
+JavaModuleOpensNode >> compositeNodeVariables [
+
+	^ #( #toNames )
+]
+
+{ #category : 'generated' }
+JavaModuleOpensNode >> ignoredCompositeTokenVariables [
+
+	^ #( #commas )
+]
+
+{ #category : 'generated' }
 JavaModuleOpensNode >> ignoredTokenVariables [
 	^ #(#semicolon)
+]
+
+{ #category : 'generated-initialize-release' }
+JavaModuleOpensNode >> initialize [
+	super initialize.
+	toNames := OrderedCollection new: 2.
+	commas := OrderedCollection new: 2.
 ]
 
 { #category : 'generated' }
@@ -36,7 +68,8 @@ JavaModuleOpensNode >> name: aJavaNameNode [
 
 { #category : 'generated' }
 JavaModuleOpensNode >> nodeVariables [
-	^ #(#name #toName)
+
+	^ #( #name )
 ]
 
 { #category : 'generated' }
@@ -59,16 +92,25 @@ JavaModuleOpensNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : 'deprecated' }
 JavaModuleOpensNode >> toName [
-	^ toName
+
+	self deprecated: 'Use toNames instead'.
+	^ toNames ifEmpty: [ nil ] ifNotEmpty: [ :names | names first ]
 ]
 
 { #category : 'generated' }
-JavaModuleOpensNode >> toName: aJavaNameNode [
-	self toName notNil ifTrue: [ self toName parent: nil ].
-	toName := aJavaNameNode.
-	self toName notNil ifTrue: [ self toName parent: self ]
+JavaModuleOpensNode >> toNames [
+
+	^ toNames
+]
+
+{ #category : 'generated' }
+JavaModuleOpensNode >> toNames: anOrderedCollection [
+
+	self setParents: self toNames to: nil.
+	toNames := anOrderedCollection.
+	self setParents: self toNames to: self
 ]
 
 { #category : 'generated' }
