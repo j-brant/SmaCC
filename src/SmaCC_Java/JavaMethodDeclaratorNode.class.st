@@ -4,9 +4,10 @@ Class {
 	#instVars : [
 		'name',
 		'leftParen',
+		'rightParen',
 		'parameters',
-		'commas',
-		'rightParen'
+		'receiver',
+		'commas'
 	],
 	#category : 'SmaCC_Java',
 	#package : 'SmaCC_Java'
@@ -70,6 +71,12 @@ JavaMethodDeclaratorNode >> name: aSmaCCToken [
 ]
 
 { #category : 'generated' }
+JavaMethodDeclaratorNode >> nodeVariables [
+
+	^ #( #receiver )
+]
+
+{ #category : 'generated' }
 JavaMethodDeclaratorNode >> parameters [
 	^ parameters
 ]
@@ -79,6 +86,20 @@ JavaMethodDeclaratorNode >> parameters: anOrderedCollection [
 	self setParents: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParents: self parameters to: self
+]
+
+{ #category : 'generated' }
+JavaMethodDeclaratorNode >> receiver [
+
+	^ receiver
+]
+
+{ #category : 'generated' }
+JavaMethodDeclaratorNode >> receiver: aJavaReceiverParameterNode [
+
+	self receiver notNil ifTrue: [ self receiver parent: nil ].
+	receiver := aJavaReceiverParameterNode.
+	self receiver notNil ifTrue: [ self receiver parent: self ]
 ]
 
 { #category : 'generated' }

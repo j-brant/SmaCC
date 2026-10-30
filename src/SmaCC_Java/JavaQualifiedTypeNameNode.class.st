@@ -3,7 +3,8 @@ Class {
 	#superclass : 'JavaTypeNameNode',
 	#instVars : [
 		'nspace',
-		'period'
+		'period',
+		'annotations'
 	],
 	#category : 'SmaCC_Java',
 	#package : 'SmaCC_Java'
@@ -12,6 +13,32 @@ Class {
 { #category : 'generated' }
 JavaQualifiedTypeNameNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitQualifiedTypeName: self
+]
+
+{ #category : 'generated' }
+JavaQualifiedTypeNameNode >> annotations [
+
+	^ annotations
+]
+
+{ #category : 'generated' }
+JavaQualifiedTypeNameNode >> annotations: anOrderedCollection [
+
+	self setParents: self annotations to: nil.
+	annotations := anOrderedCollection.
+	self setParents: self annotations to: self
+]
+
+{ #category : 'generated' }
+JavaQualifiedTypeNameNode >> compositeNodeVariables [
+
+	^ #( #annotations #arguments )
+]
+
+{ #category : 'generated-initialize-release' }
+JavaQualifiedTypeNameNode >> initialize [
+	super initialize.
+	annotations := OrderedCollection new: 2.
 ]
 
 { #category : 'generated' }

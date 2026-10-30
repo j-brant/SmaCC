@@ -17,7 +17,8 @@ JavaNewClassNode >> acceptVisitor: aProgramVisitor [
 
 { #category : 'generated' }
 JavaNewClassNode >> compositeNodeVariables [
-	^ #(#declarations #expressions #arguments)
+
+	^ #( #declarations #creationTypeArguments #expressions #arguments )
 ]
 
 { #category : 'generated' }
@@ -34,7 +35,8 @@ JavaNewClassNode >> declarations: anOrderedCollection [
 
 { #category : 'generated' }
 JavaNewClassNode >> ignoredTokenVariables [
-	^ #(#leftBrace #rightBrace #leftParen #rightParen #lt #gt)
+
+	^ #( #leftBrace #rightBrace #leftParen #rightParen )
 ]
 
 { #category : 'generated-initialize-release' }

@@ -41,7 +41,8 @@ JavaTypeNameNode >> commas: anOrderedCollection [
 
 { #category : 'generated' }
 JavaTypeNameNode >> compositeNodeVariables [
-	^ #(#arguments)
+
+	^ #( #arguments )
 ]
 
 { #category : 'generated' }

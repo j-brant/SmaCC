@@ -2,6 +2,7 @@ Class {
 	#name : 'JavaDimensionExpressionNode',
 	#superclass : 'JavaProgramNode',
 	#instVars : [
+		'annotations',
 		'leftBracket',
 		'expression',
 		'rightBracket'
@@ -13,6 +14,26 @@ Class {
 { #category : 'generated' }
 JavaDimensionExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDimensionExpression: self
+]
+
+{ #category : 'generated' }
+JavaDimensionExpressionNode >> annotations [
+
+	^ annotations
+]
+
+{ #category : 'generated' }
+JavaDimensionExpressionNode >> annotations: anOrderedCollection [
+
+	self setParents: self annotations to: nil.
+	annotations := anOrderedCollection.
+	self setParents: self annotations to: self
+]
+
+{ #category : 'generated' }
+JavaDimensionExpressionNode >> compositeNodeVariables [
+
+	^ #( #annotations )
 ]
 
 { #category : 'generated' }
@@ -32,6 +53,12 @@ JavaDimensionExpressionNode >> expression: aJavaExpressionNode [
 { #category : 'generated' }
 JavaDimensionExpressionNode >> ignoredTokenVariables [
 	^ #(#leftBracket #rightBracket)
+]
+
+{ #category : 'generated-initialize-release' }
+JavaDimensionExpressionNode >> initialize [
+	super initialize.
+	annotations := OrderedCollection new: 2.
 ]
 
 { #category : 'generated' }

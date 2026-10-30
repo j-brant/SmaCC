@@ -3,6 +3,7 @@ Class {
 	#superclass : 'JavaProgramNode',
 	#instVars : [
 		'variable',
+		'annotations',
 		'leftBracket',
 		'rightBracket'
 	],
@@ -16,8 +17,34 @@ JavaArrayVariableNameNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : 'generated' }
+JavaArrayVariableNameNode >> annotations [
+
+	^ annotations
+]
+
+{ #category : 'generated' }
+JavaArrayVariableNameNode >> annotations: anOrderedCollection [
+
+	self setParents: self annotations to: nil.
+	annotations := anOrderedCollection.
+	self setParents: self annotations to: self
+]
+
+{ #category : 'generated' }
+JavaArrayVariableNameNode >> compositeNodeVariables [
+
+	^ #( #annotations )
+]
+
+{ #category : 'generated' }
 JavaArrayVariableNameNode >> ignoredTokenVariables [
 	^ #(#leftBracket #rightBracket)
+]
+
+{ #category : 'generated-initialize-release' }
+JavaArrayVariableNameNode >> initialize [
+	super initialize.
+	annotations := OrderedCollection new: 2.
 ]
 
 { #category : 'generated' }

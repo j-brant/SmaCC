@@ -157,6 +157,12 @@ TJavaProgramNodeVisitor >> visitDefaultLabel: aDefaultLabel [
 ]
 
 { #category : 'generated' }
+TJavaProgramNodeVisitor >> visitDimension: aDimension [
+
+	^ self visitProgram: aDimension
+]
+
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitDimensionExpression: aDimensionExpression [
 	^ self visitProgram: aDimensionExpression
 ]
@@ -322,6 +328,12 @@ TJavaProgramNodeVisitor >> visitLongType: aLongType [
 ]
 
 { #category : 'generated' }
+TJavaProgramNodeVisitor >> visitMatchAllPattern: aMatchAllPattern [
+
+	^ self visitPattern: aMatchAllPattern
+]
+
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitMethodDeclaration: aMethodDeclaration [
 	^ self visitDeclaration: aMethodDeclaration
 ]
@@ -417,6 +429,12 @@ TJavaProgramNodeVisitor >> visitParameter: aParameter [
 ]
 
 { #category : 'generated' }
+TJavaProgramNodeVisitor >> visitPattern: aPattern [
+
+	^ self visitProgram: aPattern
+]
+
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitPostDecrementExpression: aPostDecrementExpression [
 	^ self visitUnaryExpression: aPostDecrementExpression
 ]
@@ -462,8 +480,20 @@ TJavaProgramNodeVisitor >> visitQualifiedTypeName: aQualifiedTypeName [
 ]
 
 { #category : 'generated' }
+TJavaProgramNodeVisitor >> visitReceiverParameter: aReceiverParameter [
+
+	^ self visitProgram: aReceiverParameter
+]
+
+{ #category : 'generated' }
 TJavaProgramNodeVisitor >> visitRecordDeclaration: aRecordDeclaration [
 	^ self visitDeclaration: aRecordDeclaration
+]
+
+{ #category : 'generated' }
+TJavaProgramNodeVisitor >> visitRecordPattern: aRecordPattern [
+
+	^ self visitPattern: aRecordPattern
 ]
 
 { #category : 'generated' }
@@ -474,6 +504,12 @@ TJavaProgramNodeVisitor >> visitReturnStatement: aReturnStatement [
 { #category : 'generated' }
 TJavaProgramNodeVisitor >> visitShortType: aShortType [
 	^ self visitPrimitiveType: aShortType
+]
+
+{ #category : 'generated' }
+TJavaProgramNodeVisitor >> visitSingleModuleImportDeclaration: aSingleModuleImportDeclaration [
+
+	^ self visitDeclaration: aSingleModuleImportDeclaration
 ]
 
 { #category : 'generated' }
@@ -590,6 +626,12 @@ TJavaProgramNodeVisitor >> visitTypeParameter: aTypeParameter [
 { #category : 'generated' }
 TJavaProgramNodeVisitor >> visitTypeParameters: aTypeParameters [
 	^ self visitProgram: aTypeParameters
+]
+
+{ #category : 'generated' }
+TJavaProgramNodeVisitor >> visitTypePattern: aTypePattern [
+
+	^ self visitPattern: aTypePattern
 ]
 
 { #category : 'generated' }

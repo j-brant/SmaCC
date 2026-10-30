@@ -2,7 +2,8 @@ Class {
 	#name : 'JavaPrimitiveTypeNode',
 	#superclass : 'JavaTypeNode',
 	#instVars : [
-		'token'
+		'token',
+		'annotations'
 	],
 	#category : 'SmaCC_Java',
 	#package : 'SmaCC_Java'
@@ -11,6 +12,32 @@ Class {
 { #category : 'generated' }
 JavaPrimitiveTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPrimitiveType: self
+]
+
+{ #category : 'generated' }
+JavaPrimitiveTypeNode >> annotations [
+
+	^ annotations
+]
+
+{ #category : 'generated' }
+JavaPrimitiveTypeNode >> annotations: anOrderedCollection [
+
+	self setParents: self annotations to: nil.
+	annotations := anOrderedCollection.
+	self setParents: self annotations to: self
+]
+
+{ #category : 'generated' }
+JavaPrimitiveTypeNode >> compositeNodeVariables [
+
+	^ #( #annotations )
+]
+
+{ #category : 'generated-initialize-release' }
+JavaPrimitiveTypeNode >> initialize [
+	super initialize.
+	annotations := OrderedCollection new: 2.
 ]
 
 { #category : 'generated' }

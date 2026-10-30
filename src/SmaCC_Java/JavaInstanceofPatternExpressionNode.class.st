@@ -4,9 +4,7 @@ Class {
 	#instVars : [
 		'object',
 		'instanceofToken',
-		'modifiers',
-		'type',
-		'variable'
+		'pattern'
 	],
 	#category : 'SmaCC_Java',
 	#package : 'SmaCC_Java'
@@ -15,18 +13,6 @@ Class {
 { #category : 'generated' }
 JavaInstanceofPatternExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitInstanceofPatternExpression: self
-]
-
-{ #category : 'generated' }
-JavaInstanceofPatternExpressionNode >> compositeNodeVariables [
-
-	^ #( #modifiers )
-]
-
-{ #category : 'generated-initialize-release' }
-JavaInstanceofPatternExpressionNode >> initialize [
-	super initialize.
-	modifiers := OrderedCollection new: 2.
 ]
 
 { #category : 'generated' }
@@ -39,23 +25,18 @@ JavaInstanceofPatternExpressionNode >> instanceofToken: aSmaCCToken [
 	instanceofToken := aSmaCCToken
 ]
 
-{ #category : 'generated' }
+{ #category : 'deprecated' }
 JavaInstanceofPatternExpressionNode >> modifiers [
-
-	^ modifiers
-]
-
-{ #category : 'generated' }
-JavaInstanceofPatternExpressionNode >> modifiers: anOrderedCollection [
-
-	self setParents: self modifiers to: nil.
-	modifiers := anOrderedCollection.
-	self setParents: self modifiers to: self
+	self deprecated: 'Use pattern instead'.
+	^ pattern class = JavaTypePatternNode
+		  ifTrue: [ pattern modifiers ]
+		  ifFalse: [ OrderedCollection new ]
 ]
 
 { #category : 'generated' }
 JavaInstanceofPatternExpressionNode >> nodeVariables [
-	^ #(#object #type #variable)
+
+	^ #( #object #pattern )
 ]
 
 { #category : 'generated' }
@@ -71,30 +52,32 @@ JavaInstanceofPatternExpressionNode >> object: aJavaExpressionNode [
 ]
 
 { #category : 'generated' }
+JavaInstanceofPatternExpressionNode >> pattern [
+
+	^ pattern
+]
+
+{ #category : 'generated' }
+JavaInstanceofPatternExpressionNode >> pattern: aJavaPatternNode [
+
+	self pattern notNil ifTrue: [ self pattern parent: nil ].
+	pattern := aJavaPatternNode.
+	self pattern notNil ifTrue: [ self pattern parent: self ]
+]
+
+{ #category : 'generated' }
 JavaInstanceofPatternExpressionNode >> tokenVariables [
 	^ #(#instanceofToken)
 ]
 
-{ #category : 'generated' }
+{ #category : 'deprecated' }
 JavaInstanceofPatternExpressionNode >> type [
-	^ type
+	self deprecated: 'Use pattern instead'.
+	^ pattern type
 ]
 
-{ #category : 'generated' }
-JavaInstanceofPatternExpressionNode >> type: aJavaTypeNode [
-	self type notNil ifTrue: [ self type parent: nil ].
-	type := aJavaTypeNode.
-	self type notNil ifTrue: [ self type parent: self ]
-]
-
-{ #category : 'generated' }
+{ #category : 'deprecated' }
 JavaInstanceofPatternExpressionNode >> variable [
-	^ variable
-]
-
-{ #category : 'generated' }
-JavaInstanceofPatternExpressionNode >> variable: aJavaProgramNode [
-	self variable notNil ifTrue: [ self variable parent: nil ].
-	variable := aJavaProgramNode.
-	self variable notNil ifTrue: [ self variable parent: self ]
+	self deprecated: 'Use pattern instead'.
+	^ pattern class = JavaTypePatternNode ifTrue: [ pattern variable ]
 ]
