@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPLinkageSpecificationNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPLinkageSpecificationNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'externToken',
 		'language',
@@ -8,78 +8,80 @@ Class {
 		'rightBrace',
 		'declarations'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLinkageSpecificationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLinkageSpecification: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLinkageSpecificationNode >> compositeNodeVariables [
 	^ #(#declarations)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLinkageSpecificationNode >> declarations [
 	^ declarations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLinkageSpecificationNode >> declarations: anOrderedCollection [
 	self setParents: self declarations to: nil.
 	declarations := anOrderedCollection.
 	self setParents: self declarations to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLinkageSpecificationNode >> externToken [
 	^ externToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLinkageSpecificationNode >> externToken: aSmaCCToken [
 	externToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPLinkageSpecificationNode >> initialize [
 	super initialize.
 	declarations := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLinkageSpecificationNode >> language [
 	^ language
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLinkageSpecificationNode >> language: aSmaCCToken [
 	language := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLinkageSpecificationNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLinkageSpecificationNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLinkageSpecificationNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLinkageSpecificationNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPLinkageSpecificationNode >> tokenVariables [
 	^ #(#externToken #language #leftBrace #rightBrace)
 ]

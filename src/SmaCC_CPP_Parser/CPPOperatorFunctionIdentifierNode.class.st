@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPOperatorFunctionIdentifierNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPOperatorFunctionIdentifierNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'operatorToken',
 		'name',
@@ -9,75 +9,77 @@ Class {
 		'leftParen',
 		'rightParen'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionIdentifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitOperatorFunctionIdentifier: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionIdentifierNode >> leftBracket [
 	^ leftBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionIdentifierNode >> leftBracket: aSmaCCToken [
 	leftBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionIdentifierNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionIdentifierNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionIdentifierNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionIdentifierNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionIdentifierNode >> operatorToken [
 	^ operatorToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionIdentifierNode >> operatorToken: aSmaCCToken [
 	operatorToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionIdentifierNode >> rightBracket [
 	^ rightBracket
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionIdentifierNode >> rightBracket: aSmaCCToken [
 	rightBracket := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionIdentifierNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionIdentifierNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionIdentifierNode >> tokenVariables [
 	^ #(#operatorToken #name #leftBracket #rightBracket #leftParen #rightParen)
 ]

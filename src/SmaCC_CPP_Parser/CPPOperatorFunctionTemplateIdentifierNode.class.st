@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPOperatorFunctionTemplateIdentifierNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPOperatorFunctionTemplateIdentifierNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'identifier',
 		'ltToken',
@@ -9,72 +9,74 @@ Class {
 		'ellipsises',
 		'commas'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionTemplateIdentifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitOperatorFunctionTemplateIdentifier: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionTemplateIdentifierNode >> arguments [
 	^ arguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionTemplateIdentifierNode >> arguments: anOrderedCollection [
 	self setParents: self arguments to: nil.
 	arguments := anOrderedCollection.
 	self setParents: self arguments to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionTemplateIdentifierNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionTemplateIdentifierNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionTemplateIdentifierNode >> compositeNodeVariables [
 	^ #(#arguments)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionTemplateIdentifierNode >> compositeTokenVariables [
 	^ #(#ellipsises #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionTemplateIdentifierNode >> ellipsises [
 	^ ellipsises
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionTemplateIdentifierNode >> ellipsises: anOrderedCollection [
 	ellipsises := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionTemplateIdentifierNode >> gtToken [
 	^ gtToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionTemplateIdentifierNode >> gtToken: aSmaCCToken [
 	gtToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionTemplateIdentifierNode >> identifier [
 	^ identifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionTemplateIdentifierNode >> identifier: aCPPProgramNode [
 	self identifier notNil
 		ifTrue: [ self identifier parent: nil ].
@@ -83,7 +85,7 @@ CPPOperatorFunctionTemplateIdentifierNode >> identifier: aCPPProgramNode [
 		ifTrue: [ self identifier parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPOperatorFunctionTemplateIdentifierNode >> initialize [
 	super initialize.
 	arguments := OrderedCollection new: 2.
@@ -91,22 +93,22 @@ CPPOperatorFunctionTemplateIdentifierNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionTemplateIdentifierNode >> ltToken [
 	^ ltToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionTemplateIdentifierNode >> ltToken: aSmaCCToken [
 	ltToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionTemplateIdentifierNode >> nodeVariables [
 	^ #(#identifier)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOperatorFunctionTemplateIdentifierNode >> tokenVariables [
 	^ #(#ltToken #gtToken)
 ]

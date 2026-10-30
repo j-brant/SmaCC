@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPPreprocessor,
-	#superclass : #Object,
+	#name : 'CPPPreprocessor',
+	#superclass : 'Object',
 	#instVars : [
 		'macros',
 		'preprocessedFile',
@@ -11,17 +11,19 @@ Class {
 		'undefined',
 		'ifStack'
 	],
-	#category : #'SmaCC_CPP_Parser-Preprocessor'
+	#category : 'SmaCC_CPP_Parser-Preprocessor',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'Preprocessor'
 }
 
-{ #category : #macros }
+{ #category : 'macros' }
 CPPPreprocessor >> addMacro: aMacro named: aString [
 	aMacro isNil
 		ifTrue: [ macros removeKey: aString ifAbsent: [  ] ]
 		ifFalse: [ macros at: aString put: aMacro ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPPreprocessor >> appendTo: anInteger [
 	| last |
 	self ignored
@@ -33,7 +35,7 @@ CPPPreprocessor >> appendTo: anInteger [
 		to: (last second min: anInteger)
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 CPPPreprocessor >> concatenate: left with: right using: aParser [
 	left isNil
 		ifTrue: [ ^ self ].
@@ -42,14 +44,14 @@ CPPPreprocessor >> concatenate: left with: right using: aParser [
 	self processToken: right using: aParser
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 CPPPreprocessor >> convertInteger: aString [
 	^ [ aString asInteger ]
 		on: Error
 		do: [ :ex | ex return ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPPreprocessor >> currentDirectory [
 	stack
 		reverseDo: [ :each | 
@@ -58,12 +60,12 @@ CPPPreprocessor >> currentDirectory [
 	^ '.' asFileReference
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessor >> currentFileSource [
 	^ stack last last
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 CPPPreprocessor >> define: aNameToken as: contentsToken hash: hashToken [
 	processDefines
 		ifFalse: [ ^ self ].
@@ -80,7 +82,7 @@ CPPPreprocessor >> define: aNameToken as: contentsToken hash: hashToken [
 	self skipTo: (contentsToken ifNil: [ aNameToken ]) stopPosition + 1
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 CPPPreprocessor >> defineFunction: aNameToken parameters: parmTokens as: contentsToken hash: hashToken right: rParenToken [
 	| parmNames name |
 	processDefines
@@ -101,14 +103,14 @@ CPPPreprocessor >> defineFunction: aNameToken parameters: parmTokens as: content
 	self skipTo: (contentsToken ifNil: [ rParenToken ]) stopPosition + 1
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 CPPPreprocessor >> evaluate: aString with: arguments [
 	"Not implemented yet"
 
 	^ nil
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 CPPPreprocessor >> expandMacro: aMacro from: aToken using: aParser [
 	| newStart |
 	self appendTo: aToken startPosition - 1.
@@ -116,7 +118,7 @@ CPPPreprocessor >> expandMacro: aMacro from: aToken using: aParser [
 	self skipTo: newStart
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPPreprocessor >> findIncludeFile: aString next: aBoolean [
 	| filename paths foundPrevious currentDir |
 	filename := aString copyFrom: 2 to: aString size - 1.
@@ -138,13 +140,13 @@ CPPPreprocessor >> findIncludeFile: aString next: aBoolean [
 	^ nil
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 CPPPreprocessor >> finish [
 	self appendTo: SmallInteger maxVal.
 	stack removeLast
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 CPPPreprocessor >> if: a and: b [
 	((self isTrue: a) = true and: [ (self isTrue: b) = true ])
 		ifTrue: [ ^ true ].
@@ -153,7 +155,7 @@ CPPPreprocessor >> if: a and: b [
 	^ false
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 CPPPreprocessor >> if: a or: b [
 	((self isTrue: a) = true or: [ (self isTrue: b) = true ])
 		ifTrue: [ ^ true ].
@@ -162,17 +164,17 @@ CPPPreprocessor >> if: a or: b [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPPreprocessor >> ignored [
 	^ ifStack notEmpty and: [ ifStack last last = false ]
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 CPPPreprocessor >> include: aToken hash: hashToken [
 	^ self includeFile: aToken hash: hashToken next: false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPPreprocessor >> includeFile: aToken hash: hashToken next: aBoolean [
 	| file |
 	processIncludes
@@ -185,22 +187,22 @@ CPPPreprocessor >> includeFile: aToken hash: hashToken next: aBoolean [
 	self skipTo: aToken stopPosition + 1
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 CPPPreprocessor >> includeNext: aToken hash: hashToken [
 	^ self includeFile: aToken hash: hashToken next: true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessor >> includePath [
 	^ includePath
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessor >> includePath: aCollection [
 	includePath := aCollection
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 CPPPreprocessor >> initialize [
 	super initialize.
 	preprocessedFile := CPPPreprocessedFile new.
@@ -213,7 +215,7 @@ CPPPreprocessor >> initialize [
 	ifStack := OrderedCollection new
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 CPPPreprocessor >> is: a equalTo: b [
 	a isNil
 		ifTrue: [ ^ nil ].
@@ -222,14 +224,14 @@ CPPPreprocessor >> is: a equalTo: b [
 	^ a = b
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 CPPPreprocessor >> is: a lessThan: b [
 	^ [ a < b ]
 		on: Error
 		do: [ :ex | ex return ]
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 CPPPreprocessor >> isDefined: aString [
 	processDefines
 		ifFalse: [ (undefined includes: aString)
@@ -240,7 +242,7 @@ CPPPreprocessor >> isDefined: aString [
 	^ macros includesKey: aString
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 CPPPreprocessor >> isTrue: aValue [
 	aValue isNil
 		ifTrue: [ ^ nil ].
@@ -251,12 +253,12 @@ CPPPreprocessor >> isTrue: aValue [
 	^ true
 ]
 
-{ #category : #macros }
+{ #category : 'macros' }
 CPPPreprocessor >> macroNamed: aString [
 	^ macros at: aString ifAbsent: [  ]
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 CPPPreprocessor >> postCopy [
 	super postCopy.
 	preprocessedFile := CPPPreprocessedFile new.
@@ -264,22 +266,22 @@ CPPPreprocessor >> postCopy [
 	stack := OrderedCollection new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessor >> preprocessedFile [
 	^ preprocessedFile
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessor >> processDefines [
 	^ processDefines
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessor >> processDefines: aBoolean [
 	processDefines := aBoolean
 ]
 
-{ #category : #'private-actions-if' }
+{ #category : 'private-actions-if' }
 CPPPreprocessor >> processElse: nodes [
 	ifStack last first isNil
 		ifTrue: [ ^ self ].
@@ -291,7 +293,7 @@ CPPPreprocessor >> processElse: nodes [
 	ifStack last at: 1 put: true
 ]
 
-{ #category : #'private-actions-if' }
+{ #category : 'private-actions-if' }
 CPPPreprocessor >> processElseIf: nodes [
 	| value |
 	ifStack last first isNil
@@ -309,7 +311,7 @@ CPPPreprocessor >> processElseIf: nodes [
 	ifStack last at: 1 put: value
 ]
 
-{ #category : #'private-actions-if' }
+{ #category : 'private-actions-if' }
 CPPPreprocessor >> processEndIf: nodes [
 	ifStack last first isNil
 		ifTrue: [ ^ ifStack removeLast ].
@@ -318,7 +320,7 @@ CPPPreprocessor >> processEndIf: nodes [
 	ifStack removeLast
 ]
 
-{ #category : #processing }
+{ #category : 'processing' }
 CPPPreprocessor >> processFile: aFilename [
 	| code |
 	code := preprocessedFile loadFile: aFilename.
@@ -326,7 +328,7 @@ CPPPreprocessor >> processFile: aFilename [
 	CPPPreprocessorParser process: code using: self
 ]
 
-{ #category : #'private-actions-if' }
+{ #category : 'private-actions-if' }
 CPPPreprocessor >> processIf: nodes [
 	| value |
 	self ignored
@@ -339,13 +341,13 @@ CPPPreprocessor >> processIf: nodes [
 	ifStack add: (Array with: value with: value)
 ]
 
-{ #category : #'private-actions-if' }
+{ #category : 'private-actions-if' }
 CPPPreprocessor >> processIfDef: nodes [
 	nodes at: 3 put: (self isDefined: (nodes at: 3) source).
 	self processIf: nodes
 ]
 
-{ #category : #'private-actions-if' }
+{ #category : 'private-actions-if' }
 CPPPreprocessor >> processIfNDef: nodes [
 	nodes
 		at: 3
@@ -353,17 +355,17 @@ CPPPreprocessor >> processIfNDef: nodes [
 	self processIf: nodes
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessor >> processIncludes [
 	^ processIncludes
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessor >> processIncludes: aBoolean [
 	processIncludes := aBoolean
 ]
 
-{ #category : #processing }
+{ #category : 'processing' }
 CPPPreprocessor >> processSource: aString inInterval: anInterval isMacro: aBoolean [
 	stack
 		add: (Array with: anInterval first with: anInterval last with: aString).
@@ -374,14 +376,14 @@ CPPPreprocessor >> processSource: aString inInterval: anInterval isMacro: aBoole
 		isMacro: aBoolean
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 CPPPreprocessor >> processToken: aToken using: aParser [
 	macros
 		at: aToken source
 		ifPresent: [ :macro | self expandMacro: macro from: aToken using: aParser ]
 ]
 
-{ #category : #macros }
+{ #category : 'macros' }
 CPPPreprocessor >> removeMacro: aString around: aBlock [
 	| original |
 	original := self macroNamed: aString.
@@ -390,17 +392,17 @@ CPPPreprocessor >> removeMacro: aString around: aBlock [
 		ensure: [ self addMacro: original named: aString ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPPreprocessor >> skipTo: anInteger [
 	stack last at: 1 put: anInteger
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessor >> sourceString [
 	^ preprocessedFile sourceString
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 CPPPreprocessor >> stringify: nameToken hash: aToken [
 	| macro string |
 	macro := self macroNamed: nameToken value.
@@ -418,7 +420,7 @@ CPPPreprocessor >> stringify: nameToken hash: aToken [
 	preprocessedFile append: string from: 1 to: string size
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 CPPPreprocessor >> undefine: aString [
 	processDefines
 		ifFalse: [ ^ self ].
@@ -426,7 +428,7 @@ CPPPreprocessor >> undefine: aString [
 	undefined add: aString
 ]
 
-{ #category : #'private-actions' }
+{ #category : 'private-actions' }
 CPPPreprocessor >> valueOf: aString [
 	"Not implemented yet"
 

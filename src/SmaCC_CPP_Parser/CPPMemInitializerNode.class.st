@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPMemInitializerNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPMemInitializerNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'identifier',
 		'leftParen',
@@ -10,50 +10,52 @@ Class {
 		'commas',
 		'initializer'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemInitializerNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMemInitializer: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemInitializerNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemInitializerNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemInitializerNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemInitializerNode >> compositeTokenVariables [
 	^ #(#ellipsises #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemInitializerNode >> ellipsises [
 	^ ellipsises
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemInitializerNode >> ellipsises: anOrderedCollection [
 	ellipsises := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemInitializerNode >> identifier [
 	^ identifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemInitializerNode >> identifier: aCPPProgramNode [
 	self identifier notNil
 		ifTrue: [ self identifier parent: nil ].
@@ -62,7 +64,7 @@ CPPMemInitializerNode >> identifier: aCPPProgramNode [
 		ifTrue: [ self identifier parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPMemInitializerNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
@@ -70,12 +72,12 @@ CPPMemInitializerNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemInitializerNode >> initializer [
 	^ initializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemInitializerNode >> initializer: aCPPBracedListInitializerNode [
 	self initializer notNil
 		ifTrue: [ self initializer parent: nil ].
@@ -84,42 +86,42 @@ CPPMemInitializerNode >> initializer: aCPPBracedListInitializerNode [
 		ifTrue: [ self initializer parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemInitializerNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemInitializerNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemInitializerNode >> nodeVariables [
 	^ #(#identifier #initializer)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemInitializerNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemInitializerNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemInitializerNode >> tokenVariables [
 	^ #(#leftParen #rightParen)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemInitializerNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemInitializerNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

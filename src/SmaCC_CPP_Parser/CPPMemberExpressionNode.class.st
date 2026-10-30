@@ -1,26 +1,28 @@
 Class {
-	#name : #CPPMemberExpressionNode,
-	#superclass : #CPPExpressionNode,
+	#name : 'CPPMemberExpressionNode',
+	#superclass : 'CPPExpressionNode',
 	#instVars : [
 		'expression',
 		'operator',
 		'id',
 		'templateToken'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMemberExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberExpressionNode >> expression: aCPPExpressionNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
@@ -29,12 +31,12 @@ CPPMemberExpressionNode >> expression: aCPPExpressionNode [
 		ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberExpressionNode >> id [
 	^ id
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberExpressionNode >> id: aCPPProgramNode [
 	self id notNil
 		ifTrue: [ self id parent: nil ].
@@ -43,32 +45,32 @@ CPPMemberExpressionNode >> id: aCPPProgramNode [
 		ifTrue: [ self id parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberExpressionNode >> nodeVariables [
 	^ #(#expression #id)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberExpressionNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberExpressionNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberExpressionNode >> templateToken [
 	^ templateToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberExpressionNode >> templateToken: aSmaCCToken [
 	templateToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberExpressionNode >> tokenVariables [
 	^ #(#operator #templateToken)
 ]
