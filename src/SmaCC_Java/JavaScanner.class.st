@@ -25,6 +25,12 @@ JavaScanner class >> initializeKeywordMap [
 	^ keywordMap
 ]
 
+{ #category : 'instance creation' }
+JavaScanner class >> on: aStream [
+	"JLS 3.3: a Java compiler translates unicode escapes before it reads anything else"
+	^ super on: (JavaUnicodeEscapeStream on: aStream)
+]
+
 { #category : 'generated' }
 JavaScanner >> GREATER_THANId [
 
@@ -41,6 +47,14 @@ JavaScanner >> SIGNED_RIGHT_SHIFTId [
 JavaScanner >> UNSIGNED_RIGHT_SHIFTId [
 
 	^ 115
+]
+
+{ #category : 'private' }
+JavaScanner >> createTokenFor: aString [
+	"JLS 3.3: the scanner matches translated characters, but a token carries the characters the source writes, so that the `\u00e9` of a literal is still `\u00e9` once it is written back out. Matching as many characters as were written leaves nothing to put back."
+	^ super createTokenFor: (stream position - start = aString size
+			 ifTrue: [ aString ]
+			 ifFalse: [ stream rawFrom: start + 1 to: stream position ])
 ]
 
 { #category : 'generated' }
@@ -233,19 +247,6 @@ JavaScanner >> scan19 [
 JavaScanner >> scan2 [
 
 	self step.
-	currentCharacter == $u ifTrue: [
-			self step.
-			(currentCharacter isDigit or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ]) ifTrue: [
-					self step.
-					(currentCharacter isDigit or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-						ifTrue: [
-								self step.
-								(currentCharacter isDigit or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-									ifTrue: [
-											self step.
-											(currentCharacter isDigit or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-												ifTrue: [ ^ self scan1 ] ] ] ].
-			^ self reportLastMatch ].
 	(('"''' includes: currentCharacter) or: [
 		 (currentCharacter between: $0 and: $7) or: [ ('\bfn' includes: currentCharacter) or: [ currentCharacter between: $r and: $t ] ] ])
 		ifTrue: [ ^ self scan1 ].
@@ -497,20 +498,6 @@ JavaScanner >> scanForTokenX2 [
 	self step.
 	currentCharacter == $\ ifTrue: [
 			self step.
-			currentCharacter == $u ifTrue: [
-					self step.
-					(currentCharacter isDigit or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-						ifTrue: [
-								self step.
-								(currentCharacter isDigit or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-									ifTrue: [
-											self step.
-											(currentCharacter isDigit or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-												ifTrue: [
-														self step.
-														(currentCharacter isDigit or: [ (currentCharacter between: $A and: $F) or: [ currentCharacter between: $a and: $f ] ])
-															ifTrue: [ ^ self scan5 ] ] ] ].
-					^ self reportLastMatch ].
 			(currentCharacter between: $0 and: $3) ifTrue: [
 					self step.
 					currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #( 119 ) ].
