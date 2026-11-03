@@ -1,46 +1,48 @@
 Class {
-	#name : #YAMLParseNode,
-	#superclass : #SmaCCParseNode,
+	#name : 'YAMLParseNode',
+	#superclass : 'SmaCCParseNode',
 	#instVars : [
 		'anchors',
 		'tags'
 	],
-	#category : #'SmaCC_YAML-Parser'
+	#category : 'SmaCC_YAML-Parser',
+	#package : 'SmaCC_YAML',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLParseNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitParse: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLParseNode >> anchors [
 	^ anchors
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLParseNode >> anchors: anOrderedCollection [
 	anchors := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLParseNode >> compositeTokenVariables [
 	^ #(#anchors #tags)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLParseNode >> createObject [
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLParseNode >> document [
 	^ (parent isNil or: [ parent isKindOf: YAMLFileNode ])
 		ifTrue: [ self ]
 		ifFalse: [ parent document ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLParseNode >> findNodesWithAnchor: aString [
 	| nodes |
 	nodes := OrderedCollection new.
@@ -48,19 +50,19 @@ YAMLParseNode >> findNodesWithAnchor: aString [
 	^ nodes
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 YAMLParseNode >> initialize [
 	super initialize.
 	anchors := OrderedCollection new: 2.
 	tags := OrderedCollection new: 2.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 YAMLParseNode >> isStringNode [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLParseNode >> nodeForObject: anObject [
 	^ (self attributeNamed: #nodeMap ifAbsentPut: [ IdentityDictionary new ])
 		at: anObject
@@ -70,7 +72,7 @@ YAMLParseNode >> nodeForObject: anObject [
 			node ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLParseNode >> nodesForObject: anObject [
 	^ anObject isImmediateObject
 		ifTrue: [ | nodes |
@@ -83,24 +85,24 @@ YAMLParseNode >> nodesForObject: anObject [
 				ifNil: [ #() ] ]
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 YAMLParseNode >> nodesWithAnchor: aString do: aBlock [
 	(self anchors anySatisfy: [ :anchor | anchor value = aString ])
 		ifTrue: [ aBlock value: self ].
 	self sortedChildren do: [ :each | each nodesWithAnchor: aString do: aBlock ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLParseNode >> object [
 	^ self attributeNamed: #object ifAbsentPut: [ self createObject ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLParseNode >> tags [
 	^ tags
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLParseNode >> tags: anOrderedCollection [
 	tags := anOrderedCollection
 ]

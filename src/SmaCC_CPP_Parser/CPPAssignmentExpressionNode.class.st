@@ -1,25 +1,27 @@
 Class {
-	#name : #CPPAssignmentExpressionNode,
-	#superclass : #CPPExpressionNode,
+	#name : 'CPPAssignmentExpressionNode',
+	#superclass : 'CPPExpressionNode',
 	#instVars : [
 		'lhs',
 		'operator',
 		'initializer'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAssignmentExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAssignmentExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAssignmentExpressionNode >> initializer [
 	^ initializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAssignmentExpressionNode >> initializer: aCPPProgramNode [
 	self initializer notNil
 		ifTrue: [ self initializer parent: nil ].
@@ -28,12 +30,12 @@ CPPAssignmentExpressionNode >> initializer: aCPPProgramNode [
 		ifTrue: [ self initializer parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAssignmentExpressionNode >> lhs [
 	^ lhs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAssignmentExpressionNode >> lhs: aCPPExpressionNode [
 	self lhs notNil
 		ifTrue: [ self lhs parent: nil ].
@@ -42,22 +44,22 @@ CPPAssignmentExpressionNode >> lhs: aCPPExpressionNode [
 		ifTrue: [ self lhs parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAssignmentExpressionNode >> nodeVariables [
 	^ #(#lhs #initializer)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAssignmentExpressionNode >> operator [
 	^ operator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAssignmentExpressionNode >> operator: aSmaCCToken [
 	operator := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAssignmentExpressionNode >> tokenVariables [
 	^ #(#operator)
 ]

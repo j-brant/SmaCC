@@ -1,10 +1,12 @@
 Class {
-	#name : #CPPParser,
-	#superclass : #SmaCCGLRParser,
-	#category : #'SmaCC_CPP_Parser-C++ Parser'
+	#name : 'CPPParser',
+	#superclass : 'SmaCCGLRParser',
+	#category : 'SmaCC_CPP_Parser-C++ Parser',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPParser class >> ambiguousTransitions [
 ^#(
 #[ 0 10 0 45] 
@@ -184,12 +186,12 @@ CPPParser class >> ambiguousTransitions [
 	).
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 CPPParser class >> cacheId [
 	^'2020-09-14T14:22:47.914792-05:00'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPParser class >> definitionComment [
 "# Converted to SmaCC from https://github.com/antlr/grammars-v4/blob/master/cpp/CPP14.g4 commit 548a723a161a1a32f922c48be7d54e7d486b108c
 /*******************************************************************************
@@ -2029,17 +2031,17 @@ userdefinedliteral
 	;"
 ]
 
-{ #category : #'file types' }
+{ #category : 'file types' }
 CPPParser class >> fileExtension [
 	^ '.cpp'
 ]
 
-{ #category : #'file types' }
+{ #category : 'file types' }
 CPPParser class >> fileExtensions [
 	^ #('.cpp' '.c')
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPParser class >> reduceTable [
 ^#(
 	#(144 0 #reduceActionFortranslationunit1: 3027969 false ) 
@@ -2827,37 +2829,37 @@ CPPParser class >> reduceTable [
 	).
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 CPPParser class >> scannerClass [
 	^CPPScanner
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPParser class >> startingStateForexpression [
 	^ 3
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPParser class >> startingStateForstatement [
 	^ 2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPParser class >> startingStateFortranslationunit [
 	^ 1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPParser class >> symbolNames [
 	^ #('"!"' '"!="' '"%"' '"%="' '"&"' '"&&"' '"&="' '"("' '")"' '"*"' '"*="' '"+"' '"++"' '"+="' '","' '"-"' '"--"' '"-="' '"->"' '"->*"' '"."' '".*"' '"..."' '"/"' '"/="' '":"' '"::"' '";"' '"<"' '"<="' '"="' '"=="' '">="' '"?"' '"["' '"]"' '"^"' '"^="' '"and"' '"not"' '"or"' '"{"' '"|"' '"|="' '"||"' '"}"' '"~"' '<directive>' '<Alignas>' '<Alignof>' '<Asm>' '<Auto>' '<Bool>' '<Break>' '<Case>' '<Catch>' '<Char>' '<Char16>' '<Char32>' '<Class>' '<Const>' '<Constexpr>' '<Const_cast>' '<Continue>' '<Decltype>' '<Default>' '<Delete>' '<Do>' '<Double>' '<Dynamic_cast>' '<Else>' '<Enum>' '<Explicit>' '<Extern>' '<False>' '<Final>' '<Float>' '<For>' '<Friend>' '<Goto>' '<If>' '<Inline>' '<Int>' '<Long>' '<Mutable>' '<Namespace>' '<New>' '<Noexcept>' '<Nullptr>' '<Operator>' '<Override>' '<Private>' '<Protected>' '<Public>' '<Register>' '<Reinterpret_cast>' '<Return>' '<Short>' '<Signed>' '<Sizeof>' '<Static>' '<Static_assert>' '<Static_cast>' '<Struct>' '<Switch>' '<Template>' '<This>' '<Thread_local>' '<Throw>' '<True>' '<Try>' '<Typedef>' '<Typeid_>' '<Typename_>' '<Union>' '<Unsigned>' '<Using>' '<Virtual>' '<Void>' '<Volatile>' '<Wchar>' '<While>' '<LeftShift>' '<gt>' '<GT>' '<RightShift>' '<LeftShiftAssign>' '<RightShiftAssign>' '<Identifier>' '<Integerliteral>' '<Octalliteral>' '<Characterliteral>' '<Floatingliteral>' '<Stringliteral>' '<Userdefinedintegerliteral>' '<Userdefinedfloatingliteral>' '<Userdefinedstringliteral>' '<Userdefinedcharacterliteral>' '<whitespace>' '<comment>' '<lineContinuation>' '<patternToken>' 'B e g i n' 'translationunit' 'primaryexpression' 'idexpression' 'unqualifiedid' 'qualifiedid' 'nestednamespecifier' 'lambdaexpression' 'lambdaintroducer' 'lambdacapture' 'capturedefault' 'capturelist' 'capture' 'simplecapture' 'initcapture' 'lambdadeclarator' 'postfixexpression' 'typeidofthetypeid' 'expressionlist' 'pseudodestructorname' 'unaryexpression' 'unaryoperator' 'newexpression' 'newplacement' 'newtypeid' 'newdeclarator' 'noptrnewdeclarator' 'newinitializer' 'deleteexpression' 'noexceptexpression' 'castexpression' 'pmexpression' 'multiplicativeexpression' 'additiveexpression' 'shiftexpression' 'shiftoperator' 'relationalexpression' 'equalityexpression' 'andexpression' 'exclusiveorexpression' 'inclusiveorexpression' 'logicalandexpression' 'logicalorexpression' 'conditionalexpression' 'assignmentexpression' 'assignmentoperator' 'expression' 'constantexpression' 'statement' 'labeledstatement' 'expressionstatement' 'compoundstatement' 'statementseq' 'selectionstatement' 'condition' 'iterationstatement' 'forinitstatement' 'forrangedeclaration' 'forrangeinitializer' 'jumpstatement' 'declarationstatement' 'declarationseq' 'declaration' 'blockdeclaration' 'aliasdeclaration' 'simpledeclaration' 'static_assertdeclaration' 'attributedeclaration' 'declspecifier' 'declspecifierseq' 'storageclassspecifier' 'functionspecifier' 'typespecifier' 'trailingtypespecifier' 'typespecifierseq' 'trailingtypespecifierseq' 'simpletypespecifier' 'thetypename' 'decltypespecifier' 'elaboratedtypespecifier' 'enumspecifier' 'enumhead' 'opaqueenumdeclaration' 'enumkey' 'enumbase' 'enumeratorlist' 'enumeratordefinition' 'enumerator' 'namespacename' 'originalnamespacename' 'namespacedefinition' 'namednamespacedefinition' 'originalnamespacedefinition' 'fullnamespacename' 'unnamednamespacedefinition' 'namespacebody' 'namespacealiasdefinition' 'qualifiednamespacespecifier' 'usingdeclaration' 'usingdirective' 'asmdefinition' 'linkagespecification' 'attributespecifierseq' 'attributespecifier' 'alignmentspecifier' 'attributelist' 'attribute' 'attributetoken' 'attributescopedtoken' 'attributenamespace' 'attributeargumentclause' 'attributearguments' 'attributeargument' 'balancedtokenseq' 'balancedtoken' 'initdeclaratorlist' 'initdeclarator' 'declarator' 'ptrdeclarator' 'noptrdeclarator' 'parametersandqualifiers' 'trailingreturntype' 'ptroperator' 'cvqualifierseq' 'cvqualifier' 'refqualifier' 'declaratorid' 'thetypeid' 'abstractdeclarator' 'ptrabstractdeclarator' 'noptrabstractdeclarator' 'abstractpackdeclarator' 'noptrabstractpackdeclarator' 'parameterdeclarationclause' 'parameterdeclarationlist' 'parameterdeclaration' 'functiondefinition' 'functionbody' 'initializer' 'braceorequalinitializer' 'initializerclause' 'initializerlist' 'bracedinitlist' 'classname' 'classspecifier' 'classhead' 'classheadname' 'classvirtspecifier' 'classkey' 'memberspecification' 'memberdeclaration' 'memberdeclaratorlist' 'memberdeclarator' 'virtspecifierseq' 'virtspecifier' 'purespecifier' 'purespecifier_value' 'baseclause' 'basespecifierlist' 'basespecifier' 'classordecltype' 'basetypespecifier' 'accessspecifier' 'conversionfunctionid' 'conversiontypeid' 'conversiondeclarator' 'ctorinitializer' 'meminitializerlist' 'meminitializer' 'meminitializerid' 'operatorfunctionid' 'literaloperatorid' 'templatedeclaration' 'templateparameterlist' 'templateparameter' 'typeparameter' 'simpletemplateid' 'templateid' 'StartTemplateArgs' 'templatename' 'templateargumentlist' 'templateargument' 'typenamespecifier' 'explicitinstantiation' 'explicitspecialization' 'tryblock' 'functiontryblock' 'handlerseq' 'handler' 'exceptiondeclaration' 'throwexpression' 'exceptionspecification' 'dynamicexceptionspecification' 'typeidlist' 'noexceptspecification' 'theoperator' 'literal' '<Stringliteral> ''value''+' 'booleanliteral' 'pointerliteral' 'userdefinedliteral' 'E O F' 'error')
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPParser class >> symbolTypes [
 	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #CPPTranslationUnitNode #CPPTranslationUnitNode #CPPExpressionNode #CPPIdentifierExpressionNode #CPPProgramNode #CPPQualifiedIdentifierNode #CPPNestedNameSpecifierNode #CPPLambdaExpressionNode #OrderedCollection #OrderedCollection #SmaCCToken #OrderedCollection #CPPCaptureNode #CPPCaptureNode #CPPInitializedCaptureNode #OrderedCollection #CPPExpressionNode #SmaCCToken #OrderedCollection #CPPPseudoDestructorNameNode #CPPExpressionNode #SmaCCToken #CPPNewExpressionNode #OrderedCollection #CPPNewTypeIdentifierNode #CPPNewDeclaratorNode #OrderedCollection #CPPProgramNode #CPPDeleteExpressionNode #CPPNoexceptExpressionNode #CPPExpressionNode #CPPExpressionNode #CPPExpressionNode #CPPExpressionNode #CPPExpressionNode #SmaCCToken #CPPExpressionNode #CPPExpressionNode #CPPExpressionNode #CPPExpressionNode #CPPExpressionNode #CPPExpressionNode #CPPExpressionNode #CPPExpressionNode #CPPExpressionNode #SmaCCToken #CPPExpressionNode #CPPExpressionNode #CPPProgramNode #CPPStatementNode #CPPExpressionStatementNode #CPPCompoundStatementNode #OrderedCollection #CPPStatementNode #CPPProgramNode #CPPStatementNode #CPPProgramNode #CPPForRangeDeclarationNode #CPPProgramNode #CPPStatementNode #CPPProgramNode #OrderedCollection #CPPProgramNode #CPPProgramNode #CPPAliasDeclarationNode #CPPSimpleDeclarationNode #CPPStaticAssertDeclarationNode #CPPAttributeDeclarationNode #CPPProgramNode #OrderedCollection #SmaCCToken #SmaCCToken #CPPProgramNode #CPPProgramNode #OrderedCollection #OrderedCollection #CPPProgramNode #CPPProgramNode #CPPDecltypeSpecifierNode #CPPElaboratedTypeSpecifierNode #CPPEnumSpecifierNode #OrderedCollection #CPPOpaqueEnumDeclarationNode #OrderedCollection #OrderedCollection #OrderedCollection #CPPEnumDefinitionNode #SmaCCToken #CPPIdentifierNode #SmaCCToken #CPPProgramNode #CPPOriginalNamespaceDefinitionNode #CPPOriginalNamespaceDefinitionNode #OrderedCollection #CPPUnnamedNamespaceDefinitionNode #OrderedCollection #CPPNamespaceAliasDefinitionNode #OrderedCollection #CPPUsingDeclarationNode #CPPUsingDirectiveNode #CPPAsmDefinitionNode #CPPLinkageSpecificationNode #OrderedCollection #CPPProgramNode #CPPAlignmentSpecifierNode #OrderedCollection #CPPAttributeNode #OrderedCollection #OrderedCollection #SmaCCToken #OrderedCollection #OrderedCollection #CPPExpressionNode #OrderedCollection #CPPBalancedTokenNode #OrderedCollection #CPPInitDeclaratorNode #CPPDeclaratorNode #CPPDeclaratorNode #CPPDeclaratorNode #OrderedCollection #OrderedCollection #CPPPointerOperatorNode #OrderedCollection #CPPCVQualifierNode #SmaCCToken #OrderedCollection #CPPTypeIdentifierNode #CPPProgramNode #CPPPtrAbstractDeclaratorNode #OrderedCollection #CPPAbstractPackDeclaratorNode #OrderedCollection #OrderedCollection #OrderedCollection #CPPParameterDeclarationNode #CPPFunctionDefinitionNode #OrderedCollection #CPPProgramNode #CPPProgramNode #CPPProgramNode #OrderedCollection #CPPBracedListInitializerNode #CPPProgramNode #CPPClassSpecifierNode #OrderedCollection #OrderedCollection #SmaCCToken #OrderedCollection #OrderedCollection #CPPProgramNode #OrderedCollection #CPPMemberDeclaratorNode #OrderedCollection #SmaCCToken #CPPEqualInitializerNode #CPPNumericLiteralNode #OrderedCollection #OrderedCollection #CPPBaseSpecifierNode #CPPProgramNode #CPPProgramNode #SmaCCToken #CPPConversionFunctionIdentifierNode #OrderedCollection #CPPConversionDeclaratorNode #CPPCtorInitializerNode #OrderedCollection #CPPMemInitializerNode #CPPProgramNode #CPPOperatorFunctionIdentifierNode #CPPLiteralFunctionIdentifierNode #CPPTemplateDeclarationNode #OrderedCollection #CPPProgramNode #CPPTypeParameterNode #CPPTemplateIdentifierNode #CPPProgramNode #ByteSymbol #SmaCCToken #OrderedCollection #CPPProgramNode #CPPTypeNameSpecifierNode #CPPExplicitInstantiationNode #CPPExplicitSpecializationNode #CPPTryStatementNode #CPPTryStatementNode #OrderedCollection #CPPCatchHandlerNode #CPPExceptionDeclarationNode #CPPThrowExpressionNode #CPPProgramNode #CPPDynamicExceptionSpecificationNode #OrderedCollection #CPPNoExceptionSpecificiationNode #OrderedCollection #CPPLiteralNode #OrderedCollection #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCErrorNode)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPParser class >> transitionTable [
 ^#(
 #[1 0 17 0 5 0 21 0 6 0 25 0 8 0 29 0 10 0 33 0 23 0 37 0 27 0 41 0 28 0 45 0 35 0 49 0 47 0 53 0 49 0 57 0 51 0 61 0 52 0 65 0 53 0 69 0 57 0 73 0 58 0 77 0 59 0 81 0 60 0 85 0 61 0 89 0 62 0 93 0 65 0 97 0 69 0 101 0 72 1 21 0 73 0 109 0 74 0 113 0 77 0 117 0 79 0 121 0 82 0 125 0 83 0 129 0 84 1 17 0 85 0 137 0 86 0 141 0 90 1 17 0 95 0 149 0 98 0 153 0 99 1 17 0 101 0 161 0 102 0 165 0 104 0 169 0 106 1 17 0 108 0 177 0 112 0 181 0 114 0 185 0 115 0 189 0 116 0 193 0 117 1 21 0 118 0 201 0 119 0 205 0 120 0 209 0 121 0 213 0 129 0 217 0 144 0 221 0 146 0 225 0 147 0 229 0 148 0 233 0 149 0 237 0 204 0 241 0 205 0 241 0 206 0 241 0 207 0 241 0 208 0 241 0 209 0 241 0 210 1 9 0 211 1 13 0 212 1 17 0 213 1 21 0 214 1 9 0 215 1 9 0 216 1 9 0 219 1 37 0 220 1 41 0 221 1 9 0 222 1 9 0 223 1 53 0 224 0 241 0 225 1 61 0 226 0 241 0 233 0 241 0 234 0 241 0 235 0 241 0 237 0 241 0 239 0 241 0 241 0 241 0 242 0 241 0 243 0 241 0 244 1 101 0 245 1 105 0 246 1 105 0 247 1 113 1 2 1 117 1 3 1 121 1 4 1 121 1 5 1 129 1 6 1 133 1 9 1 9 1 11 1 141 1 13 0 241 1 23 1 37 1 30 1 9 1 31 1 157 1 32 1 161 1 35 0 225 1 50 1 169 1 57 1 173 1 58 0 241 1 59 1 181 1 63 0 225 1 64 1 189 1 66 1 9 1 69 0 241 1 70 0 241 1 71 0 6 1 88] 
@@ -4171,7 +4173,7 @@ CPPParser class >> transitionTable [
 	).
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPParser >> actionsForCurrentToken [
 	| actions |
 	((currentToken ids includes: scanner GTId)
@@ -4183,7 +4185,7 @@ CPPParser >> actionsForCurrentToken [
 	^ super actionsForCurrentToken
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPParser >> parse [
 	| node |
 	node := super parse.
@@ -4194,7 +4196,7 @@ CPPParser >> parse [
 	^ node
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPParser >> parseCurrentToken [
 	| token position actions |
 	(currentToken ids includes: scanner RightShiftId)
@@ -4220,12 +4222,12 @@ CPPParser >> parseCurrentToken [
 	super parseCurrentToken
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForStartTemplateArgs1: nodes [
 	^ #templateArgs
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForabstractdeclarator2: nodes [
 	| result |
 	result := CPPAbstractDeclaratorNode new.
@@ -4246,7 +4248,7 @@ CPPParser >> reduceActionForabstractdeclarator2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForabstractdeclarator3: nodes [
 	| result |
 	result := CPPAbstractDeclaratorNode new.
@@ -4282,7 +4284,7 @@ CPPParser >> reduceActionForabstractdeclarator3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForabstractpackdeclarator1: nodes [
 	| result |
 	result := CPPAbstractPackDeclaratorNode new.
@@ -4303,7 +4305,7 @@ CPPParser >> reduceActionForabstractpackdeclarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForaliasdeclaration1: nodes [
 	| result |
 	result := CPPAliasDeclarationNode new.
@@ -4315,7 +4317,7 @@ CPPParser >> reduceActionForaliasdeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForaliasdeclaration2: nodes [
 	| result |
 	result := CPPAliasDeclarationNode new.
@@ -4328,7 +4330,7 @@ CPPParser >> reduceActionForaliasdeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForalignmentspecifier3: nodes [
 	| result |
 	result := CPPAlignmentSpecifierNode new.
@@ -4339,7 +4341,7 @@ CPPParser >> reduceActionForalignmentspecifier3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForalignmentspecifier4: nodes [
 	| result |
 	result := CPPAlignmentSpecifierNode new.
@@ -4351,7 +4353,7 @@ CPPParser >> reduceActionForalignmentspecifier4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForasmdefinition1: nodes [
 	| result |
 	result := CPPAsmDefinitionNode new.
@@ -4363,7 +4365,7 @@ CPPParser >> reduceActionForasmdefinition1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForassignmentexpression2: nodes [
 	| result |
 	result := CPPAssignmentExpressionNode new.
@@ -4373,7 +4375,7 @@ CPPParser >> reduceActionForassignmentexpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForattribute1: nodes [
 	| result |
 	result := CPPAttributeNode new.
@@ -4383,7 +4385,7 @@ CPPParser >> reduceActionForattribute1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForattribute2: nodes [
 	| result |
 	result := CPPAttributeNode new.
@@ -4398,7 +4400,7 @@ CPPParser >> reduceActionForattribute2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForattributeargumentclause1: nodes [
 	| result |
 	result := Array new: 5.
@@ -4411,7 +4413,7 @@ CPPParser >> reduceActionForattributeargumentclause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForattributeargumentclause2: nodes [
 	| result |
 	result := Array new: 5.
@@ -4423,7 +4425,7 @@ CPPParser >> reduceActionForattributeargumentclause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForattributeargumentclause3: nodes [
 	| result |
 	result := Array new: 5.
@@ -4437,7 +4439,7 @@ CPPParser >> reduceActionForattributeargumentclause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForattributedeclaration1: nodes [
 	| result |
 	result := CPPAttributeDeclarationNode new.
@@ -4446,7 +4448,7 @@ CPPParser >> reduceActionForattributedeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForattributelist1: nodes [
 	| result |
 	result := Array new: 3.
@@ -4456,7 +4458,7 @@ CPPParser >> reduceActionForattributelist1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForattributelist3: nodes [
 	| result |
 	result := nodes at: 1.
@@ -4464,7 +4466,7 @@ CPPParser >> reduceActionForattributelist3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForattributelist5: nodes [
 	| result |
 	result := Array new: 3.
@@ -4476,7 +4478,7 @@ CPPParser >> reduceActionForattributelist5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForattributelist6: nodes [
 	| result |
 	result := nodes at: 1.
@@ -4486,7 +4488,7 @@ CPPParser >> reduceActionForattributelist6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForattributescopedtoken1: nodes [
 	| result |
 	result := Array new: 3.
@@ -4496,7 +4498,7 @@ CPPParser >> reduceActionForattributescopedtoken1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForattributespecifier1: nodes [
 	| result |
 	result := CPPAttributeSpecifierNode new.
@@ -4510,7 +4512,7 @@ CPPParser >> reduceActionForattributespecifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForattributetoken2: nodes [
 	| result |
 	result := Array new: 3.
@@ -4520,7 +4522,7 @@ CPPParser >> reduceActionForattributetoken2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForbalancedtoken1: nodes [
 	| result |
 	result := CPPBalancedTokenNode new.
@@ -4530,7 +4532,7 @@ CPPParser >> reduceActionForbalancedtoken1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForbaseclause1: nodes [
 	| result |
 	result := Array new: 4.
@@ -4544,7 +4546,7 @@ CPPParser >> reduceActionForbaseclause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForbasespecifier10: nodes [
 	| result |
 	result := CPPBaseSpecifierNode new.
@@ -4555,7 +4557,7 @@ CPPParser >> reduceActionForbasespecifier10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForbasespecifier1: nodes [
 	| result |
 	result := CPPBaseSpecifierNode new.
@@ -4563,7 +4565,7 @@ CPPParser >> reduceActionForbasespecifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForbasespecifier2: nodes [
 	| result |
 	result := CPPBaseSpecifierNode new.
@@ -4572,7 +4574,7 @@ CPPParser >> reduceActionForbasespecifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForbasespecifier3: nodes [
 	| result |
 	result := CPPBaseSpecifierNode new.
@@ -4581,7 +4583,7 @@ CPPParser >> reduceActionForbasespecifier3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForbasespecifier4: nodes [
 	| result |
 	result := CPPBaseSpecifierNode new.
@@ -4591,7 +4593,7 @@ CPPParser >> reduceActionForbasespecifier4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForbasespecifier5: nodes [
 	| result |
 	result := CPPBaseSpecifierNode new.
@@ -4601,7 +4603,7 @@ CPPParser >> reduceActionForbasespecifier5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForbasespecifier6: nodes [
 	| result |
 	result := CPPBaseSpecifierNode new.
@@ -4612,7 +4614,7 @@ CPPParser >> reduceActionForbasespecifier6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForbasespecifier7: nodes [
 	| result |
 	result := CPPBaseSpecifierNode new.
@@ -4621,7 +4623,7 @@ CPPParser >> reduceActionForbasespecifier7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForbasespecifier8: nodes [
 	| result |
 	result := CPPBaseSpecifierNode new.
@@ -4631,7 +4633,7 @@ CPPParser >> reduceActionForbasespecifier8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForbasespecifier9: nodes [
 	| result |
 	result := CPPBaseSpecifierNode new.
@@ -4641,7 +4643,7 @@ CPPParser >> reduceActionForbasespecifier9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForbracedinitlist1: nodes [
 	| result |
 	result := CPPBracedListInitializerNode new.
@@ -4653,7 +4655,7 @@ CPPParser >> reduceActionForbracedinitlist1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForbracedinitlist2: nodes [
 	| result |
 	result := CPPBracedListInitializerNode new.
@@ -4666,7 +4668,7 @@ CPPParser >> reduceActionForbracedinitlist2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForbracedinitlist3: nodes [
 	| result |
 	result := CPPBracedListInitializerNode new.
@@ -4675,7 +4677,7 @@ CPPParser >> reduceActionForbracedinitlist3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForbraceorequalinitializer1: nodes [
 	| result |
 	result := CPPEqualInitializerNode new.
@@ -4684,7 +4686,7 @@ CPPParser >> reduceActionForbraceorequalinitializer1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForcapturelist1: nodes [
 	| result |
 	result := Array new: 3.
@@ -4695,7 +4697,7 @@ CPPParser >> reduceActionForcapturelist1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForcapturelist2: nodes [
 	| result |
 	result := Array new: 3.
@@ -4707,7 +4709,7 @@ CPPParser >> reduceActionForcapturelist2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForcapturelist3: nodes [
 	| result |
 	result := nodes at: 1.
@@ -4716,7 +4718,7 @@ CPPParser >> reduceActionForcapturelist3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForcapturelist4: nodes [
 	| result |
 	result := nodes at: 1.
@@ -4726,7 +4728,7 @@ CPPParser >> reduceActionForcapturelist4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForcastexpression2: nodes [
 	| result |
 	result := CPPCastExpressionNode new.
@@ -4737,7 +4739,7 @@ CPPParser >> reduceActionForcastexpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForclasshead10: nodes [
 	| result |
 	result := Array new: 10.
@@ -4754,7 +4756,7 @@ CPPParser >> reduceActionForclasshead10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForclasshead11: nodes [
 	| result |
 	result := Array new: 10.
@@ -4768,7 +4770,7 @@ CPPParser >> reduceActionForclasshead11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForclasshead12: nodes [
 	| result |
 	result := Array new: 10.
@@ -4786,7 +4788,7 @@ CPPParser >> reduceActionForclasshead12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForclasshead1: nodes [
 	| result |
 	result := Array new: 10.
@@ -4801,7 +4803,7 @@ CPPParser >> reduceActionForclasshead1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForclasshead2: nodes [
 	| result |
 	result := Array new: 10.
@@ -4820,7 +4822,7 @@ CPPParser >> reduceActionForclasshead2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForclasshead3: nodes [
 	| result |
 	result := Array new: 10.
@@ -4836,7 +4838,7 @@ CPPParser >> reduceActionForclasshead3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForclasshead4: nodes [
 	| result |
 	result := Array new: 10.
@@ -4856,7 +4858,7 @@ CPPParser >> reduceActionForclasshead4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForclasshead5: nodes [
 	| result |
 	result := Array new: 10.
@@ -4872,7 +4874,7 @@ CPPParser >> reduceActionForclasshead5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForclasshead6: nodes [
 	| result |
 	result := Array new: 10.
@@ -4892,7 +4894,7 @@ CPPParser >> reduceActionForclasshead6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForclasshead7: nodes [
 	| result |
 	result := Array new: 10.
@@ -4909,7 +4911,7 @@ CPPParser >> reduceActionForclasshead7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForclasshead8: nodes [
 	| result |
 	result := Array new: 10.
@@ -4930,7 +4932,7 @@ CPPParser >> reduceActionForclasshead8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForclasshead9: nodes [
 	| result |
 	result := Array new: 10.
@@ -4943,7 +4945,7 @@ CPPParser >> reduceActionForclasshead9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForclasskey1: nodes [
 	| result |
 	result := Array new: 3.
@@ -4951,7 +4953,7 @@ CPPParser >> reduceActionForclasskey1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForclasskey2: nodes [
 	| result |
 	result := Array new: 3.
@@ -4959,7 +4961,7 @@ CPPParser >> reduceActionForclasskey2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForclasskey3: nodes [
 	| result |
 	result := Array new: 3.
@@ -4967,7 +4969,7 @@ CPPParser >> reduceActionForclasskey3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForclassspecifier1: nodes [
 	| result |
 	result := CPPClassSpecifierNode new.
@@ -4986,7 +4988,7 @@ CPPParser >> reduceActionForclassspecifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForclassspecifier2: nodes [
 	| result |
 	result := CPPClassSpecifierNode new.
@@ -5008,7 +5010,7 @@ CPPParser >> reduceActionForclassspecifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForcompoundstatement1: nodes [
 	| result |
 	result := CPPCompoundStatementNode new.
@@ -5017,7 +5019,7 @@ CPPParser >> reduceActionForcompoundstatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForcompoundstatement2: nodes [
 	| result |
 	result := CPPCompoundStatementNode new.
@@ -5027,7 +5029,7 @@ CPPParser >> reduceActionForcompoundstatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForcondition2: nodes [
 	| result |
 	result := CPPConditionNode new.
@@ -5038,7 +5040,7 @@ CPPParser >> reduceActionForcondition2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForcondition3: nodes [
 	| result |
 	result := CPPConditionNode new.
@@ -5050,7 +5052,7 @@ CPPParser >> reduceActionForcondition3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForcondition4: nodes [
 	| result |
 	result := CPPConditionNode new.
@@ -5060,7 +5062,7 @@ CPPParser >> reduceActionForcondition4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForcondition5: nodes [
 	| result |
 	result := CPPConditionNode new.
@@ -5071,7 +5073,7 @@ CPPParser >> reduceActionForcondition5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForconditionalexpression2: nodes [
 	| result |
 	result := CPPConditionalExpressionNode new.
@@ -5083,7 +5085,7 @@ CPPParser >> reduceActionForconditionalexpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForconversiondeclarator1: nodes [
 	| result |
 	result := CPPConversionDeclaratorNode new.
@@ -5091,7 +5093,7 @@ CPPParser >> reduceActionForconversiondeclarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForconversiondeclarator2: nodes [
 	| result |
 	result := CPPConversionDeclaratorNode new.
@@ -5100,7 +5102,7 @@ CPPParser >> reduceActionForconversiondeclarator2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForconversionfunctionid1: nodes [
 	| result |
 	result := CPPConversionFunctionIdentifierNode new.
@@ -5110,7 +5112,7 @@ CPPParser >> reduceActionForconversionfunctionid1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForconversiontypeid1: nodes [
 	| result |
 	result := Array new: 2.
@@ -5119,7 +5121,7 @@ CPPParser >> reduceActionForconversiontypeid1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForconversiontypeid2: nodes [
 	| result |
 	result := Array new: 2.
@@ -5129,7 +5131,7 @@ CPPParser >> reduceActionForconversiontypeid2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForctorinitializer1: nodes [
 	| result |
 	result := CPPCtorInitializerNode new.
@@ -5140,7 +5142,7 @@ CPPParser >> reduceActionForctorinitializer1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForcvqualifier1: nodes [
 	| result |
 	result := CPPCVQualifierNode new.
@@ -5148,7 +5150,7 @@ CPPParser >> reduceActionForcvqualifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFordeclarationseq1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
@@ -5156,7 +5158,7 @@ CPPParser >> reduceActionFordeclarationseq1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFordeclarationseq2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -5164,7 +5166,7 @@ CPPParser >> reduceActionFordeclarationseq2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFordeclarator2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -5185,7 +5187,7 @@ CPPParser >> reduceActionFordeclarator2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFordeclaratorid1: nodes [
 	| result |
 	result := Array new: 2.
@@ -5193,7 +5195,7 @@ CPPParser >> reduceActionFordeclaratorid1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFordeclaratorid2: nodes [
 	| result |
 	result := Array new: 2.
@@ -5202,7 +5204,7 @@ CPPParser >> reduceActionFordeclaratorid2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFordeclspecifier6: nodes [
 	| result |
 	result := CPPDeclSpecifierNode new.
@@ -5210,7 +5212,7 @@ CPPParser >> reduceActionFordeclspecifier6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFordeclspecifierseq3: nodes [
 	| result |
 	result := nodes at: 2.
@@ -5218,7 +5220,7 @@ CPPParser >> reduceActionFordeclspecifierseq3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFordecltypespecifier1: nodes [
 	| result |
 	result := CPPDecltypeSpecifierNode new.
@@ -5229,7 +5231,7 @@ CPPParser >> reduceActionFordecltypespecifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFordecltypespecifier2: nodes [
 	| result |
 	result := CPPDecltypeSpecifierNode new.
@@ -5240,7 +5242,7 @@ CPPParser >> reduceActionFordecltypespecifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFordeleteexpression1: nodes [
 	| result |
 	result := CPPDeleteExpressionNode new.
@@ -5249,7 +5251,7 @@ CPPParser >> reduceActionFordeleteexpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFordeleteexpression2: nodes [
 	| result |
 	result := CPPDeleteExpressionNode new.
@@ -5259,7 +5261,7 @@ CPPParser >> reduceActionFordeleteexpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFordeleteexpression3: nodes [
 	| result |
 	result := CPPDeleteExpressionNode new.
@@ -5270,7 +5272,7 @@ CPPParser >> reduceActionFordeleteexpression3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFordeleteexpression4: nodes [
 	| result |
 	result := CPPDeleteExpressionNode new.
@@ -5282,7 +5284,7 @@ CPPParser >> reduceActionFordeleteexpression4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFordynamicexceptionspecification1: nodes [
 	| result |
 	result := CPPDynamicExceptionSpecificationNode new.
@@ -5292,7 +5294,7 @@ CPPParser >> reduceActionFordynamicexceptionspecification1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFordynamicexceptionspecification2: nodes [
 	| result |
 	result := CPPDynamicExceptionSpecificationNode new.
@@ -5305,7 +5307,7 @@ CPPParser >> reduceActionFordynamicexceptionspecification2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForelaboratedtypespecifier1: nodes [
 	| result |
 	result := CPPElaboratedTypeSpecifierNode new.
@@ -5316,7 +5318,7 @@ CPPParser >> reduceActionForelaboratedtypespecifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForelaboratedtypespecifier2: nodes [
 	| result |
 	result := CPPElaboratedTypeSpecifierNode new.
@@ -5328,7 +5330,7 @@ CPPParser >> reduceActionForelaboratedtypespecifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForelaboratedtypespecifier3: nodes [
 	| result |
 	result := CPPElaboratedTypeSpecifierNode new.
@@ -5340,7 +5342,7 @@ CPPParser >> reduceActionForelaboratedtypespecifier3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForelaboratedtypespecifier4: nodes [
 	| result |
 	result := CPPElaboratedTypeSpecifierNode new.
@@ -5353,7 +5355,7 @@ CPPParser >> reduceActionForelaboratedtypespecifier4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForelaboratedtypespecifier5: nodes [
 	| result |
 	result := CPPElaboratedTypeSpecifierNode new.
@@ -5364,7 +5366,7 @@ CPPParser >> reduceActionForelaboratedtypespecifier5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForelaboratedtypespecifier6: nodes [
 	| result |
 	result := CPPElaboratedTypeSpecifierNode new.
@@ -5376,7 +5378,7 @@ CPPParser >> reduceActionForelaboratedtypespecifier6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForelaboratedtypespecifier7: nodes [
 	| result |
 	result := CPPElaboratedTypeSpecifierNode new.
@@ -5389,7 +5391,7 @@ CPPParser >> reduceActionForelaboratedtypespecifier7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForelaboratedtypespecifier8: nodes [
 	| result |
 	result := CPPElaboratedTypeSpecifierNode new.
@@ -5398,7 +5400,7 @@ CPPParser >> reduceActionForelaboratedtypespecifier8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForelaboratedtypespecifier9: nodes [
 	| result |
 	result := CPPElaboratedTypeSpecifierNode new.
@@ -5408,7 +5410,7 @@ CPPParser >> reduceActionForelaboratedtypespecifier9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForenumbase1: nodes [
 	| result |
 	result := Array new: 2.
@@ -5418,7 +5420,7 @@ CPPParser >> reduceActionForenumbase1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForenumeratordefinition1: nodes [
 	| result |
 	result := CPPEnumDefinitionNode new.
@@ -5426,7 +5428,7 @@ CPPParser >> reduceActionForenumeratordefinition1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForenumeratordefinition2: nodes [
 	| result |
 	result := CPPEnumDefinitionNode new.
@@ -5436,7 +5438,7 @@ CPPParser >> reduceActionForenumeratordefinition2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForenumhead10: nodes [
 	| result |
 	result := Array new: 7.
@@ -5451,7 +5453,7 @@ CPPParser >> reduceActionForenumhead10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForenumhead11: nodes [
 	| result |
 	result := Array new: 7.
@@ -5465,7 +5467,7 @@ CPPParser >> reduceActionForenumhead11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForenumhead12: nodes [
 	| result |
 	result := Array new: 7.
@@ -5481,7 +5483,7 @@ CPPParser >> reduceActionForenumhead12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForenumhead1: nodes [
 	| result |
 	result := Array new: 7.
@@ -5492,7 +5494,7 @@ CPPParser >> reduceActionForenumhead1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForenumhead2: nodes [
 	| result |
 	result := Array new: 7.
@@ -5505,7 +5507,7 @@ CPPParser >> reduceActionForenumhead2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForenumhead3: nodes [
 	| result |
 	result := Array new: 7.
@@ -5517,7 +5519,7 @@ CPPParser >> reduceActionForenumhead3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForenumhead4: nodes [
 	| result |
 	result := Array new: 7.
@@ -5531,7 +5533,7 @@ CPPParser >> reduceActionForenumhead4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForenumhead5: nodes [
 	| result |
 	result := Array new: 7.
@@ -5543,7 +5545,7 @@ CPPParser >> reduceActionForenumhead5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForenumhead6: nodes [
 	| result |
 	result := Array new: 7.
@@ -5557,7 +5559,7 @@ CPPParser >> reduceActionForenumhead6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForenumhead7: nodes [
 	| result |
 	result := Array new: 7.
@@ -5570,7 +5572,7 @@ CPPParser >> reduceActionForenumhead7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForenumhead8: nodes [
 	| result |
 	result := Array new: 7.
@@ -5585,7 +5587,7 @@ CPPParser >> reduceActionForenumhead8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForenumhead9: nodes [
 	| result |
 	result := Array new: 7.
@@ -5598,7 +5600,7 @@ CPPParser >> reduceActionForenumhead9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForenumkey2: nodes [
 	| result |
 	result := Array new: 3.
@@ -5607,7 +5609,7 @@ CPPParser >> reduceActionForenumkey2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForenumkey3: nodes [
 	| result |
 	result := Array new: 3.
@@ -5616,7 +5618,7 @@ CPPParser >> reduceActionForenumkey3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForenumspecifier1: nodes [
 	| result |
 	result := CPPEnumSpecifierNode new.
@@ -5632,7 +5634,7 @@ CPPParser >> reduceActionForenumspecifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForenumspecifier2: nodes [
 	| result |
 	result := CPPEnumSpecifierNode new.
@@ -5650,7 +5652,7 @@ CPPParser >> reduceActionForenumspecifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForenumspecifier3: nodes [
 	| result |
 	result := CPPEnumSpecifierNode new.
@@ -5669,7 +5671,7 @@ CPPParser >> reduceActionForenumspecifier3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForexceptiondeclaration1: nodes [
 	| result |
 	result := CPPExceptionDeclarationNode new.
@@ -5678,7 +5680,7 @@ CPPParser >> reduceActionForexceptiondeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForexceptiondeclaration2: nodes [
 	| result |
 	result := CPPExceptionDeclarationNode new.
@@ -5688,7 +5690,7 @@ CPPParser >> reduceActionForexceptiondeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForexceptiondeclaration3: nodes [
 	| result |
 	result := CPPExceptionDeclarationNode new.
@@ -5696,7 +5698,7 @@ CPPParser >> reduceActionForexceptiondeclaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForexceptiondeclaration5: nodes [
 	| result |
 	result := CPPExceptionDeclarationNode new.
@@ -5705,7 +5707,7 @@ CPPParser >> reduceActionForexceptiondeclaration5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForexceptiondeclaration7: nodes [
 	| result |
 	result := CPPExceptionDeclarationNode new.
@@ -5713,7 +5715,7 @@ CPPParser >> reduceActionForexceptiondeclaration7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForexplicitinstantiation1: nodes [
 	| result |
 	result := CPPExplicitInstantiationNode new.
@@ -5722,7 +5724,7 @@ CPPParser >> reduceActionForexplicitinstantiation1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForexplicitinstantiation2: nodes [
 	| result |
 	result := CPPExplicitInstantiationNode new.
@@ -5732,7 +5734,7 @@ CPPParser >> reduceActionForexplicitinstantiation2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForexplicitspecialization1: nodes [
 	| result |
 	result := CPPExplicitSpecializationNode new.
@@ -5743,7 +5745,7 @@ CPPParser >> reduceActionForexplicitspecialization1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForexpression2: nodes [
 	| result |
 	result := CPPCommaExpressionNode new.
@@ -5753,7 +5755,7 @@ CPPParser >> reduceActionForexpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForexpressionstatement1: nodes [
 	| result |
 	result := CPPExpressionStatementNode new.
@@ -5761,7 +5763,7 @@ CPPParser >> reduceActionForexpressionstatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForexpressionstatement2: nodes [
 	| result |
 	result := CPPExpressionStatementNode new.
@@ -5770,7 +5772,7 @@ CPPParser >> reduceActionForexpressionstatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForforrangedeclaration1: nodes [
 	| result |
 	result := CPPForRangeDeclarationNode new.
@@ -5779,7 +5781,7 @@ CPPParser >> reduceActionForforrangedeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForforrangedeclaration2: nodes [
 	| result |
 	result := CPPForRangeDeclarationNode new.
@@ -5789,7 +5791,7 @@ CPPParser >> reduceActionForforrangedeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForfunctionbody1: nodes [
 	| result |
 	result := Array new: 6.
@@ -5797,7 +5799,7 @@ CPPParser >> reduceActionForfunctionbody1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForfunctionbody2: nodes [
 	| result |
 	result := Array new: 6.
@@ -5806,7 +5808,7 @@ CPPParser >> reduceActionForfunctionbody2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForfunctionbody4: nodes [
 	| result |
 	result := Array new: 6.
@@ -5816,7 +5818,7 @@ CPPParser >> reduceActionForfunctionbody4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForfunctionbody5: nodes [
 	| result |
 	result := Array new: 6.
@@ -5826,7 +5828,7 @@ CPPParser >> reduceActionForfunctionbody5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForfunctiondefinition1: nodes [
 	| result |
 	result := CPPFunctionDefinitionNode new.
@@ -5840,7 +5842,7 @@ CPPParser >> reduceActionForfunctiondefinition1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForfunctiondefinition2: nodes [
 	| result |
 	result := CPPFunctionDefinitionNode new.
@@ -5855,7 +5857,7 @@ CPPParser >> reduceActionForfunctiondefinition2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForfunctiondefinition3: nodes [
 	| result |
 	result := CPPFunctionDefinitionNode new.
@@ -5870,7 +5872,7 @@ CPPParser >> reduceActionForfunctiondefinition3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForfunctiondefinition4: nodes [
 	| result |
 	result := CPPFunctionDefinitionNode new.
@@ -5886,7 +5888,7 @@ CPPParser >> reduceActionForfunctiondefinition4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForfunctiondefinition7: nodes [
 	| result |
 	result := CPPFunctionDefinitionNode new.
@@ -5902,7 +5904,7 @@ CPPParser >> reduceActionForfunctiondefinition7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForfunctiondefinition8: nodes [
 	| result |
 	result := CPPFunctionDefinitionNode new.
@@ -5919,7 +5921,7 @@ CPPParser >> reduceActionForfunctiondefinition8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForfunctiontryblock2: nodes [
 	| result |
 	result := CPPTryStatementNode new.
@@ -5930,7 +5932,7 @@ CPPParser >> reduceActionForfunctiontryblock2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForhandler1: nodes [
 	| result |
 	result := CPPCatchHandlerNode new.
@@ -5942,7 +5944,7 @@ CPPParser >> reduceActionForhandler1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForidexpression1: nodes [
 	| result |
 	result := CPPIdentifierExpressionNode new.
@@ -5950,7 +5952,7 @@ CPPParser >> reduceActionForidexpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForinitcapture1: nodes [
 	| result |
 	result := CPPInitializedCaptureNode new.
@@ -5959,7 +5961,7 @@ CPPParser >> reduceActionForinitcapture1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForinitcapture2: nodes [
 	| result |
 	result := CPPInitializedCaptureNode new.
@@ -5969,7 +5971,7 @@ CPPParser >> reduceActionForinitcapture2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForinitdeclarator1: nodes [
 	| result |
 	result := CPPInitDeclaratorNode new.
@@ -5977,7 +5979,7 @@ CPPParser >> reduceActionForinitdeclarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForinitdeclarator2: nodes [
 	| result |
 	result := CPPInitDeclaratorNode new.
@@ -5986,7 +5988,7 @@ CPPParser >> reduceActionForinitdeclarator2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForinitdeclaratorlist1: nodes [
 	| result |
 	result := Array new: 2.
@@ -5996,7 +5998,7 @@ CPPParser >> reduceActionForinitdeclaratorlist1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForinitdeclaratorlist2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -6005,7 +6007,7 @@ CPPParser >> reduceActionForinitdeclaratorlist2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForinitializer2: nodes [
 	| result |
 	result := CPPExpressionListInitializerNode new.
@@ -6017,7 +6019,7 @@ CPPParser >> reduceActionForinitializer2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForiterationstatement1: nodes [
 	| result |
 	result := CPPWhileStatementNode new.
@@ -6029,7 +6031,7 @@ CPPParser >> reduceActionForiterationstatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForiterationstatement2: nodes [
 	| result |
 	result := CPPDoWhileStatementNode new.
@@ -6043,7 +6045,7 @@ CPPParser >> reduceActionForiterationstatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForiterationstatement3: nodes [
 	| result |
 	result := CPPForStatementNode new.
@@ -6056,7 +6058,7 @@ CPPParser >> reduceActionForiterationstatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForiterationstatement4: nodes [
 	| result |
 	result := CPPForStatementNode new.
@@ -6070,7 +6072,7 @@ CPPParser >> reduceActionForiterationstatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForiterationstatement5: nodes [
 	| result |
 	result := CPPForStatementNode new.
@@ -6084,7 +6086,7 @@ CPPParser >> reduceActionForiterationstatement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForiterationstatement6: nodes [
 	| result |
 	result := CPPForStatementNode new.
@@ -6099,7 +6101,7 @@ CPPParser >> reduceActionForiterationstatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForiterationstatement7: nodes [
 	| result |
 	result := CPPRangeForStatementNode new.
@@ -6113,7 +6115,7 @@ CPPParser >> reduceActionForiterationstatement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForjumpstatement1: nodes [
 	| result |
 	result := CPPBreakStatementNode new.
@@ -6122,7 +6124,7 @@ CPPParser >> reduceActionForjumpstatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForjumpstatement2: nodes [
 	| result |
 	result := CPPContinueStatementNode new.
@@ -6131,7 +6133,7 @@ CPPParser >> reduceActionForjumpstatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForjumpstatement3: nodes [
 	| result |
 	result := CPPReturnStatementNode new.
@@ -6140,7 +6142,7 @@ CPPParser >> reduceActionForjumpstatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForjumpstatement4: nodes [
 	| result |
 	result := CPPReturnStatementNode new.
@@ -6150,7 +6152,7 @@ CPPParser >> reduceActionForjumpstatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForjumpstatement6: nodes [
 	| result |
 	result := CPPGotoStatementNode new.
@@ -6160,7 +6162,7 @@ CPPParser >> reduceActionForjumpstatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlabeledstatement1: nodes [
 	| result |
 	result := CPPLabeledStatementNode new.
@@ -6170,7 +6172,7 @@ CPPParser >> reduceActionForlabeledstatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlabeledstatement2: nodes [
 	| result |
 	result := CPPCaseLabeledStatementNode new.
@@ -6181,7 +6183,7 @@ CPPParser >> reduceActionForlabeledstatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlabeledstatement3: nodes [
 	| result |
 	result := CPPDefaultLabeledStatementNode new.
@@ -6191,7 +6193,7 @@ CPPParser >> reduceActionForlabeledstatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdacapture1: nodes [
 	| result |
 	result := Array new: 4.
@@ -6202,7 +6204,7 @@ CPPParser >> reduceActionForlambdacapture1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdacapture2: nodes [
 	| result |
 	result := Array new: 4.
@@ -6215,7 +6217,7 @@ CPPParser >> reduceActionForlambdacapture2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdacapture3: nodes [
 	| result |
 	result := Array new: 4.
@@ -6230,7 +6232,7 @@ CPPParser >> reduceActionForlambdacapture3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdadeclarator10: nodes [
 	| result |
 	result := Array new: 10.
@@ -6249,7 +6251,7 @@ CPPParser >> reduceActionForlambdadeclarator10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdadeclarator11: nodes [
 	| result |
 	result := Array new: 10.
@@ -6266,7 +6268,7 @@ CPPParser >> reduceActionForlambdadeclarator11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdadeclarator12: nodes [
 	| result |
 	result := Array new: 10.
@@ -6286,7 +6288,7 @@ CPPParser >> reduceActionForlambdadeclarator12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdadeclarator13: nodes [
 	| result |
 	result := Array new: 10.
@@ -6303,7 +6305,7 @@ CPPParser >> reduceActionForlambdadeclarator13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdadeclarator14: nodes [
 	| result |
 	result := Array new: 10.
@@ -6323,7 +6325,7 @@ CPPParser >> reduceActionForlambdadeclarator14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdadeclarator15: nodes [
 	| result |
 	result := Array new: 10.
@@ -6341,7 +6343,7 @@ CPPParser >> reduceActionForlambdadeclarator15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdadeclarator16: nodes [
 	| result |
 	result := Array new: 10.
@@ -6362,7 +6364,7 @@ CPPParser >> reduceActionForlambdadeclarator16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdadeclarator1: nodes [
 	| result |
 	result := Array new: 10.
@@ -6377,7 +6379,7 @@ CPPParser >> reduceActionForlambdadeclarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdadeclarator2: nodes [
 	| result |
 	result := Array new: 10.
@@ -6395,7 +6397,7 @@ CPPParser >> reduceActionForlambdadeclarator2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdadeclarator3: nodes [
 	| result |
 	result := Array new: 10.
@@ -6411,7 +6413,7 @@ CPPParser >> reduceActionForlambdadeclarator3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdadeclarator4: nodes [
 	| result |
 	result := Array new: 10.
@@ -6430,7 +6432,7 @@ CPPParser >> reduceActionForlambdadeclarator4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdadeclarator5: nodes [
 	| result |
 	result := Array new: 10.
@@ -6446,7 +6448,7 @@ CPPParser >> reduceActionForlambdadeclarator5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdadeclarator6: nodes [
 	| result |
 	result := Array new: 10.
@@ -6465,7 +6467,7 @@ CPPParser >> reduceActionForlambdadeclarator6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdadeclarator7: nodes [
 	| result |
 	result := Array new: 10.
@@ -6482,7 +6484,7 @@ CPPParser >> reduceActionForlambdadeclarator7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdadeclarator8: nodes [
 	| result |
 	result := Array new: 10.
@@ -6502,7 +6504,7 @@ CPPParser >> reduceActionForlambdadeclarator8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdadeclarator9: nodes [
 	| result |
 	result := Array new: 10.
@@ -6518,7 +6520,7 @@ CPPParser >> reduceActionForlambdadeclarator9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdaexpression1: nodes [
 	| result |
 	result := CPPLambdaExpressionNode new.
@@ -6532,7 +6534,7 @@ CPPParser >> reduceActionForlambdaexpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdaexpression2: nodes [
 	| result |
 	result := CPPLambdaExpressionNode new.
@@ -6556,7 +6558,7 @@ CPPParser >> reduceActionForlambdaexpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdaintroducer1: nodes [
 	| result |
 	result := Array new: 6.
@@ -6568,7 +6570,7 @@ CPPParser >> reduceActionForlambdaintroducer1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlambdaintroducer2: nodes [
 	| result |
 	result := Array new: 6.
@@ -6584,7 +6586,7 @@ CPPParser >> reduceActionForlambdaintroducer2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlinkagespecification1: nodes [
 	| result |
 	result := CPPLinkageSpecificationNode new.
@@ -6595,7 +6597,7 @@ CPPParser >> reduceActionForlinkagespecification1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlinkagespecification2: nodes [
 	| result |
 	result := CPPLinkageSpecificationNode new.
@@ -6607,7 +6609,7 @@ CPPParser >> reduceActionForlinkagespecification2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForlinkagespecification3: nodes [
 	| result |
 	result := CPPLinkageSpecificationNode new.
@@ -6617,7 +6619,7 @@ CPPParser >> reduceActionForlinkagespecification3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForliteral1: nodes [
 	| result |
 	result := CPPNumericLiteralNode new.
@@ -6625,7 +6627,7 @@ CPPParser >> reduceActionForliteral1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForliteral2: nodes [
 	| result |
 	result := CPPCharacterLiteralNode new.
@@ -6633,7 +6635,7 @@ CPPParser >> reduceActionForliteral2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForliteral4: nodes [
 	| result |
 	result := CPPStringLiteralNode new.
@@ -6641,7 +6643,7 @@ CPPParser >> reduceActionForliteral4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForliteral5: nodes [
 	| result |
 	result := CPPBooleanLiteralNode new.
@@ -6649,7 +6651,7 @@ CPPParser >> reduceActionForliteral5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForliteral6: nodes [
 	| result |
 	result := CPPPointerLiteralNode new.
@@ -6657,7 +6659,7 @@ CPPParser >> reduceActionForliteral6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForliteral7: nodes [
 	| result |
 	result := CPPUserDefinedLiteralNode new.
@@ -6665,7 +6667,7 @@ CPPParser >> reduceActionForliteral7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForliteraloperatorid1: nodes [
 	| result |
 	result := CPPLiteralFunctionIdentifierNode new.
@@ -6675,7 +6677,7 @@ CPPParser >> reduceActionForliteraloperatorid1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForliteraloperatorid2: nodes [
 	| result |
 	result := CPPLiteralFunctionIdentifierNode new.
@@ -6684,7 +6686,7 @@ CPPParser >> reduceActionForliteraloperatorid2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormemberdeclaration1: nodes [
 	| result |
 	result := CPPMemberDeclarationNode new.
@@ -6692,7 +6694,7 @@ CPPParser >> reduceActionFormemberdeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormemberdeclaration2: nodes [
 	| result |
 	result := CPPMemberDeclarationNode new.
@@ -6702,7 +6704,7 @@ CPPParser >> reduceActionFormemberdeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormemberdeclaration3: nodes [
 	| result |
 	result := CPPMemberDeclarationNode new.
@@ -6711,7 +6713,7 @@ CPPParser >> reduceActionFormemberdeclaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormemberdeclaration4: nodes [
 	| result |
 	result := CPPMemberDeclarationNode new.
@@ -6722,7 +6724,7 @@ CPPParser >> reduceActionFormemberdeclaration4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormemberdeclaration7: nodes [
 	| result |
 	result := CPPMemberDeclarationNode new.
@@ -6732,7 +6734,7 @@ CPPParser >> reduceActionFormemberdeclaration7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormemberdeclaration8: nodes [
 	| result |
 	result := CPPMemberDeclarationNode new.
@@ -6744,7 +6746,7 @@ CPPParser >> reduceActionFormemberdeclaration8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormemberdeclarator10: nodes [
 	| result |
 	result := CPPMemberDeclaratorNode new.
@@ -6755,7 +6757,7 @@ CPPParser >> reduceActionFormemberdeclarator10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormemberdeclarator1: nodes [
 	| result |
 	result := CPPMemberDeclaratorNode new.
@@ -6763,7 +6765,7 @@ CPPParser >> reduceActionFormemberdeclarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormemberdeclarator2: nodes [
 	| result |
 	result := CPPMemberDeclaratorNode new.
@@ -6772,7 +6774,7 @@ CPPParser >> reduceActionFormemberdeclarator2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormemberdeclarator3: nodes [
 	| result |
 	result := CPPMemberDeclaratorNode new.
@@ -6781,7 +6783,7 @@ CPPParser >> reduceActionFormemberdeclarator3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormemberdeclarator4: nodes [
 	| result |
 	result := CPPMemberDeclaratorNode new.
@@ -6791,7 +6793,7 @@ CPPParser >> reduceActionFormemberdeclarator4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormemberdeclarator6: nodes [
 	| result |
 	result := CPPMemberDeclaratorNode new.
@@ -6800,7 +6802,7 @@ CPPParser >> reduceActionFormemberdeclarator6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormemberdeclarator7: nodes [
 	| result |
 	result := CPPMemberDeclaratorNode new.
@@ -6809,7 +6811,7 @@ CPPParser >> reduceActionFormemberdeclarator7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormemberdeclarator8: nodes [
 	| result |
 	result := CPPMemberDeclaratorNode new.
@@ -6819,7 +6821,7 @@ CPPParser >> reduceActionFormemberdeclarator8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormemberdeclarator9: nodes [
 	| result |
 	result := CPPMemberDeclaratorNode new.
@@ -6829,7 +6831,7 @@ CPPParser >> reduceActionFormemberdeclarator9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormemberspecification2: nodes [
 	| result |
 	result := nodes at: 2.
@@ -6837,7 +6839,7 @@ CPPParser >> reduceActionFormemberspecification2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormemberspecification3: nodes [
 	| result |
 	result := Array new: 3.
@@ -6849,7 +6851,7 @@ CPPParser >> reduceActionFormemberspecification3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormemberspecification4: nodes [
 	| result |
 	result := nodes at: 3.
@@ -6858,7 +6860,7 @@ CPPParser >> reduceActionFormemberspecification4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormeminitializer1: nodes [
 	| result |
 	result := CPPMemInitializerNode new.
@@ -6868,7 +6870,7 @@ CPPParser >> reduceActionFormeminitializer1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormeminitializer2: nodes [
 	| result |
 	result := CPPMemInitializerNode new.
@@ -6881,7 +6883,7 @@ CPPParser >> reduceActionFormeminitializer2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormeminitializer3: nodes [
 	| result |
 	result := CPPMemInitializerNode new.
@@ -6890,7 +6892,7 @@ CPPParser >> reduceActionFormeminitializer3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormeminitializerlist3: nodes [
 	| result |
 	result := nodes at: 3.
@@ -6899,7 +6901,7 @@ CPPParser >> reduceActionFormeminitializerlist3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFormeminitializerlist4: nodes [
 	| result |
 	result := nodes at: 4.
@@ -6909,7 +6911,7 @@ CPPParser >> reduceActionFormeminitializerlist4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornamespacealiasdefinition1: nodes [
 	| result |
 	result := CPPNamespaceAliasDefinitionNode new.
@@ -6922,14 +6924,14 @@ CPPParser >> reduceActionFornamespacealiasdefinition1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornamespacebody1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornestednamespecifier1: nodes [
 	| result |
 	result := CPPNestedNameSpecifierNode new.
@@ -6937,7 +6939,7 @@ CPPParser >> reduceActionFornestednamespecifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornestednamespecifier2: nodes [
 	| result |
 	result := CPPNestedNameSpecifierNode new.
@@ -6946,7 +6948,7 @@ CPPParser >> reduceActionFornestednamespecifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornestednamespecifier4: nodes [
 	| result |
 	result := CPPNestedNameSpecifierNode new.
@@ -6956,7 +6958,7 @@ CPPParser >> reduceActionFornestednamespecifier4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornestednamespecifier5: nodes [
 	| result |
 	result := CPPNestedNameSpecifierNode new.
@@ -6966,7 +6968,7 @@ CPPParser >> reduceActionFornestednamespecifier5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornestednamespecifier6: nodes [
 	| result |
 	result := CPPNestedNameSpecifierNode new.
@@ -6977,7 +6979,7 @@ CPPParser >> reduceActionFornestednamespecifier6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewdeclarator1: nodes [
 	| result |
 	result := CPPNewDeclaratorNode new.
@@ -6985,7 +6987,7 @@ CPPParser >> reduceActionFornewdeclarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewdeclarator3: nodes [
 	| result |
 	result := CPPNewDeclaratorNode new.
@@ -6996,7 +6998,7 @@ CPPParser >> reduceActionFornewdeclarator3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewexpression10: nodes [
 	| result |
 	result := CPPNewExpressionNode new.
@@ -7008,7 +7010,7 @@ CPPParser >> reduceActionFornewexpression10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewexpression11: nodes [
 	| result |
 	result := CPPNewExpressionNode new.
@@ -7024,7 +7026,7 @@ CPPParser >> reduceActionFornewexpression11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewexpression12: nodes [
 	| result |
 	result := CPPNewExpressionNode new.
@@ -7041,7 +7043,7 @@ CPPParser >> reduceActionFornewexpression12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewexpression13: nodes [
 	| result |
 	result := CPPNewExpressionNode new.
@@ -7053,7 +7055,7 @@ CPPParser >> reduceActionFornewexpression13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewexpression14: nodes [
 	| result |
 	result := CPPNewExpressionNode new.
@@ -7066,7 +7068,7 @@ CPPParser >> reduceActionFornewexpression14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewexpression15: nodes [
 	| result |
 	result := CPPNewExpressionNode new.
@@ -7083,7 +7085,7 @@ CPPParser >> reduceActionFornewexpression15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewexpression16: nodes [
 	| result |
 	result := CPPNewExpressionNode new.
@@ -7101,7 +7103,7 @@ CPPParser >> reduceActionFornewexpression16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewexpression1: nodes [
 	| result |
 	result := CPPNewExpressionNode new.
@@ -7110,7 +7112,7 @@ CPPParser >> reduceActionFornewexpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewexpression2: nodes [
 	| result |
 	result := CPPNewExpressionNode new.
@@ -7120,7 +7122,7 @@ CPPParser >> reduceActionFornewexpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewexpression3: nodes [
 	| result |
 	result := CPPNewExpressionNode new.
@@ -7134,7 +7136,7 @@ CPPParser >> reduceActionFornewexpression3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewexpression4: nodes [
 	| result |
 	result := CPPNewExpressionNode new.
@@ -7149,7 +7151,7 @@ CPPParser >> reduceActionFornewexpression4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewexpression5: nodes [
 	| result |
 	result := CPPNewExpressionNode new.
@@ -7159,7 +7161,7 @@ CPPParser >> reduceActionFornewexpression5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewexpression6: nodes [
 	| result |
 	result := CPPNewExpressionNode new.
@@ -7170,7 +7172,7 @@ CPPParser >> reduceActionFornewexpression6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewexpression7: nodes [
 	| result |
 	result := CPPNewExpressionNode new.
@@ -7185,7 +7187,7 @@ CPPParser >> reduceActionFornewexpression7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewexpression8: nodes [
 	| result |
 	result := CPPNewExpressionNode new.
@@ -7201,7 +7203,7 @@ CPPParser >> reduceActionFornewexpression8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewexpression9: nodes [
 	| result |
 	result := CPPNewExpressionNode new.
@@ -7212,7 +7214,7 @@ CPPParser >> reduceActionFornewexpression9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewinitializer1: nodes [
 	| result |
 	result := CPPNewInitializerNode new.
@@ -7221,7 +7223,7 @@ CPPParser >> reduceActionFornewinitializer1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewinitializer2: nodes [
 	| result |
 	result := CPPNewInitializerNode new.
@@ -7233,7 +7235,7 @@ CPPParser >> reduceActionFornewinitializer2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewplacement1: nodes [
 	| result |
 	result := Array new: 5.
@@ -7248,7 +7250,7 @@ CPPParser >> reduceActionFornewplacement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewtypeid1: nodes [
 	| result |
 	result := CPPNewTypeIdentifierNode new.
@@ -7256,7 +7258,7 @@ CPPParser >> reduceActionFornewtypeid1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornewtypeid2: nodes [
 	| result |
 	result := CPPNewTypeIdentifierNode new.
@@ -7265,7 +7267,7 @@ CPPParser >> reduceActionFornewtypeid2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoexceptexpression1: nodes [
 	| result |
 	result := CPPNoexceptExpressionNode new.
@@ -7276,7 +7278,7 @@ CPPParser >> reduceActionFornoexceptexpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoexceptspecification1: nodes [
 	| result |
 	result := CPPNoExceptionSpecificiationNode new.
@@ -7287,7 +7289,7 @@ CPPParser >> reduceActionFornoexceptspecification1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoexceptspecification2: nodes [
 	| result |
 	result := CPPNoExceptionSpecificiationNode new.
@@ -7295,7 +7297,7 @@ CPPParser >> reduceActionFornoexceptspecification2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrabstractdeclarator10: nodes [
 	| result |
 	result := Array new: 13.
@@ -7318,7 +7320,7 @@ CPPParser >> reduceActionFornoptrabstractdeclarator10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrabstractdeclarator11: nodes [
 	| result |
 	result := Array new: 13.
@@ -7340,7 +7342,7 @@ CPPParser >> reduceActionFornoptrabstractdeclarator11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrabstractdeclarator1: nodes [
 	| result |
 	result := nodes at: 1.
@@ -7356,7 +7358,7 @@ CPPParser >> reduceActionFornoptrabstractdeclarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrabstractdeclarator2: nodes [
 	| result |
 	result := Array new: 13.
@@ -7384,7 +7386,7 @@ CPPParser >> reduceActionFornoptrabstractdeclarator2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrabstractdeclarator3: nodes [
 	| result |
 	result := nodes at: 1.
@@ -7393,7 +7395,7 @@ CPPParser >> reduceActionFornoptrabstractdeclarator3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrabstractdeclarator4: nodes [
 	| result |
 	result := nodes at: 1.
@@ -7403,7 +7405,7 @@ CPPParser >> reduceActionFornoptrabstractdeclarator4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrabstractdeclarator5: nodes [
 	| result |
 	result := nodes at: 1.
@@ -7413,7 +7415,7 @@ CPPParser >> reduceActionFornoptrabstractdeclarator5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrabstractdeclarator6: nodes [
 	| result |
 	result := nodes at: 1.
@@ -7424,7 +7426,7 @@ CPPParser >> reduceActionFornoptrabstractdeclarator6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrabstractdeclarator7: nodes [
 	| result |
 	result := Array new: 13.
@@ -7445,7 +7447,7 @@ CPPParser >> reduceActionFornoptrabstractdeclarator7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrabstractdeclarator8: nodes [
 	| result |
 	result := Array new: 13.
@@ -7467,7 +7469,7 @@ CPPParser >> reduceActionFornoptrabstractdeclarator8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrabstractdeclarator9: nodes [
 	| result |
 	result := Array new: 13.
@@ -7489,7 +7491,7 @@ CPPParser >> reduceActionFornoptrabstractdeclarator9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrabstractpackdeclarator1: nodes [
 	| result |
 	result := nodes at: 1.
@@ -7505,7 +7507,7 @@ CPPParser >> reduceActionFornoptrabstractpackdeclarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrabstractpackdeclarator6: nodes [
 	| result |
 	result := Array new: 12.
@@ -7525,7 +7527,7 @@ CPPParser >> reduceActionFornoptrabstractpackdeclarator6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrdeclarator1: nodes [
 	| result |
 	result := CPPDeclaratorNode new.
@@ -7534,7 +7536,7 @@ CPPParser >> reduceActionFornoptrdeclarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrdeclarator2: nodes [
 	| result |
 	result := CPPDeclaratorNode new.
@@ -7544,7 +7546,7 @@ CPPParser >> reduceActionFornoptrdeclarator2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrdeclarator3: nodes [
 	| result |
 	result := nodes at: 1.
@@ -7562,7 +7564,7 @@ CPPParser >> reduceActionFornoptrdeclarator3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrdeclarator4: nodes [
 	| result |
 	result := nodes at: 1.
@@ -7571,7 +7573,7 @@ CPPParser >> reduceActionFornoptrdeclarator4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrdeclarator5: nodes [
 	| result |
 	result := nodes at: 1.
@@ -7581,7 +7583,7 @@ CPPParser >> reduceActionFornoptrdeclarator5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrdeclarator6: nodes [
 	| result |
 	result := nodes at: 1.
@@ -7591,7 +7593,7 @@ CPPParser >> reduceActionFornoptrdeclarator6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrdeclarator7: nodes [
 	| result |
 	result := nodes at: 1.
@@ -7602,7 +7604,7 @@ CPPParser >> reduceActionFornoptrdeclarator7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrdeclarator8: nodes [
 	| result |
 	result := nodes at: 2.
@@ -7611,7 +7613,7 @@ CPPParser >> reduceActionFornoptrdeclarator8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrnewdeclarator1: nodes [
 	| result |
 	result := Array new: 4.
@@ -7625,7 +7627,7 @@ CPPParser >> reduceActionFornoptrnewdeclarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrnewdeclarator2: nodes [
 	| result |
 	result := Array new: 4.
@@ -7640,7 +7642,7 @@ CPPParser >> reduceActionFornoptrnewdeclarator2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrnewdeclarator3: nodes [
 	| result |
 	result := nodes at: 1.
@@ -7650,7 +7652,7 @@ CPPParser >> reduceActionFornoptrnewdeclarator3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFornoptrnewdeclarator4: nodes [
 	| result |
 	result := nodes at: 1.
@@ -7661,7 +7663,7 @@ CPPParser >> reduceActionFornoptrnewdeclarator4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForopaqueenumdeclaration1: nodes [
 	| result |
 	result := CPPOpaqueEnumDeclarationNode new.
@@ -7673,7 +7675,7 @@ CPPParser >> reduceActionForopaqueenumdeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForopaqueenumdeclaration2: nodes [
 	| result |
 	result := CPPOpaqueEnumDeclarationNode new.
@@ -7687,7 +7689,7 @@ CPPParser >> reduceActionForopaqueenumdeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForopaqueenumdeclaration3: nodes [
 	| result |
 	result := CPPOpaqueEnumDeclarationNode new.
@@ -7700,7 +7702,7 @@ CPPParser >> reduceActionForopaqueenumdeclaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForopaqueenumdeclaration4: nodes [
 	| result |
 	result := CPPOpaqueEnumDeclarationNode new.
@@ -7715,7 +7717,7 @@ CPPParser >> reduceActionForopaqueenumdeclaration4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForoperatorfunctionid1: nodes [
 	| result |
 	result := CPPOperatorFunctionIdentifierNode new.
@@ -7728,7 +7730,7 @@ CPPParser >> reduceActionForoperatorfunctionid1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFororiginalnamespacedefinition1: nodes [
 	| result |
 	result := CPPOriginalNamespaceDefinitionNode new.
@@ -7741,7 +7743,7 @@ CPPParser >> reduceActionFororiginalnamespacedefinition1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFororiginalnamespacedefinition2: nodes [
 	| result |
 	result := CPPOriginalNamespaceDefinitionNode new.
@@ -7755,7 +7757,7 @@ CPPParser >> reduceActionFororiginalnamespacedefinition2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparameterdeclaration11: nodes [
 	| result |
 	result := CPPParameterDeclarationNode new.
@@ -7766,7 +7768,7 @@ CPPParser >> reduceActionForparameterdeclaration11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparameterdeclaration1: nodes [
 	| result |
 	result := CPPParameterDeclarationNode new.
@@ -7775,7 +7777,7 @@ CPPParser >> reduceActionForparameterdeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparameterdeclaration2: nodes [
 	| result |
 	result := CPPParameterDeclarationNode new.
@@ -7785,7 +7787,7 @@ CPPParser >> reduceActionForparameterdeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparameterdeclaration3: nodes [
 	| result |
 	result := CPPParameterDeclarationNode new.
@@ -7796,7 +7798,7 @@ CPPParser >> reduceActionForparameterdeclaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparameterdeclaration4: nodes [
 	| result |
 	result := CPPParameterDeclarationNode new.
@@ -7808,7 +7810,7 @@ CPPParser >> reduceActionForparameterdeclaration4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparameterdeclaration5: nodes [
 	| result |
 	result := CPPParameterDeclarationNode new.
@@ -7816,7 +7818,7 @@ CPPParser >> reduceActionForparameterdeclaration5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparameterdeclaration7: nodes [
 	| result |
 	result := CPPParameterDeclarationNode new.
@@ -7825,7 +7827,7 @@ CPPParser >> reduceActionForparameterdeclaration7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparameterdeclaration9: nodes [
 	| result |
 	result := CPPParameterDeclarationNode new.
@@ -7835,7 +7837,7 @@ CPPParser >> reduceActionForparameterdeclaration9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparameterdeclarationclause1: nodes [
 	| result |
 	result := Array new: 3.
@@ -7844,7 +7846,7 @@ CPPParser >> reduceActionForparameterdeclarationclause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparameterdeclarationclause2: nodes [
 	| result |
 	result := Array new: 3.
@@ -7854,7 +7856,7 @@ CPPParser >> reduceActionForparameterdeclarationclause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparameterdeclarationclause3: nodes [
 	| result |
 	result := Array new: 3.
@@ -7865,7 +7867,7 @@ CPPParser >> reduceActionForparameterdeclarationclause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparameterdeclarationclause4: nodes [
 	| result |
 	result := Array new: 3.
@@ -7877,7 +7879,7 @@ CPPParser >> reduceActionForparameterdeclarationclause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparameterdeclarationclause5: nodes [
 	| result |
 	result := Array new: 3.
@@ -7890,7 +7892,7 @@ CPPParser >> reduceActionForparameterdeclarationclause5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparametersandqualifiers10: nodes [
 	| result |
 	result := Array new: 9.
@@ -7908,7 +7910,7 @@ CPPParser >> reduceActionForparametersandqualifiers10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparametersandqualifiers11: nodes [
 	| result |
 	result := Array new: 9.
@@ -7926,7 +7928,7 @@ CPPParser >> reduceActionForparametersandqualifiers11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparametersandqualifiers12: nodes [
 	| result |
 	result := Array new: 9.
@@ -7945,7 +7947,7 @@ CPPParser >> reduceActionForparametersandqualifiers12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparametersandqualifiers13: nodes [
 	| result |
 	result := Array new: 9.
@@ -7963,7 +7965,7 @@ CPPParser >> reduceActionForparametersandqualifiers13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparametersandqualifiers14: nodes [
 	| result |
 	result := Array new: 9.
@@ -7982,7 +7984,7 @@ CPPParser >> reduceActionForparametersandqualifiers14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparametersandqualifiers15: nodes [
 	| result |
 	result := Array new: 9.
@@ -8001,7 +8003,7 @@ CPPParser >> reduceActionForparametersandqualifiers15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparametersandqualifiers16: nodes [
 	| result |
 	result := Array new: 9.
@@ -8021,7 +8023,7 @@ CPPParser >> reduceActionForparametersandqualifiers16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparametersandqualifiers1: nodes [
 	| result |
 	result := Array new: 9.
@@ -8037,7 +8039,7 @@ CPPParser >> reduceActionForparametersandqualifiers1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparametersandqualifiers2: nodes [
 	| result |
 	result := Array new: 9.
@@ -8054,7 +8056,7 @@ CPPParser >> reduceActionForparametersandqualifiers2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparametersandqualifiers3: nodes [
 	| result |
 	result := Array new: 9.
@@ -8071,7 +8073,7 @@ CPPParser >> reduceActionForparametersandqualifiers3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparametersandqualifiers4: nodes [
 	| result |
 	result := Array new: 9.
@@ -8089,7 +8091,7 @@ CPPParser >> reduceActionForparametersandqualifiers4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparametersandqualifiers5: nodes [
 	| result |
 	result := Array new: 9.
@@ -8106,7 +8108,7 @@ CPPParser >> reduceActionForparametersandqualifiers5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparametersandqualifiers6: nodes [
 	| result |
 	result := Array new: 9.
@@ -8124,7 +8126,7 @@ CPPParser >> reduceActionForparametersandqualifiers6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparametersandqualifiers7: nodes [
 	| result |
 	result := Array new: 9.
@@ -8142,7 +8144,7 @@ CPPParser >> reduceActionForparametersandqualifiers7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparametersandqualifiers8: nodes [
 	| result |
 	result := Array new: 9.
@@ -8161,7 +8163,7 @@ CPPParser >> reduceActionForparametersandqualifiers8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForparametersandqualifiers9: nodes [
 	| result |
 	result := Array new: 9.
@@ -8178,7 +8180,7 @@ CPPParser >> reduceActionForparametersandqualifiers9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForpmexpression3: nodes [
 	| result |
 	result := CPPBinaryExpressionNode new.
@@ -8188,7 +8190,7 @@ CPPParser >> reduceActionForpmexpression3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForpostfixexpression10: nodes [
 	| result |
 	result := CPPBracedInitializerExpressionNode new.
@@ -8197,7 +8199,7 @@ CPPParser >> reduceActionForpostfixexpression10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForpostfixexpression14: nodes [
 	| result |
 	result := CPPMemberExpressionNode new.
@@ -8207,7 +8209,7 @@ CPPParser >> reduceActionForpostfixexpression14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForpostfixexpression15: nodes [
 	| result |
 	result := CPPMemberExpressionNode new.
@@ -8218,7 +8220,7 @@ CPPParser >> reduceActionForpostfixexpression15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForpostfixexpression18: nodes [
 	| result |
 	result := CPPPostfixExpressionNode new.
@@ -8227,7 +8229,7 @@ CPPParser >> reduceActionForpostfixexpression18: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForpostfixexpression23: nodes [
 	| result |
 	result := CPPConversionExpressionNode new.
@@ -8241,7 +8243,7 @@ CPPParser >> reduceActionForpostfixexpression23: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForpostfixexpression24: nodes [
 	| result |
 	result := CPPTypeidExpressionNode new.
@@ -8252,7 +8254,7 @@ CPPParser >> reduceActionForpostfixexpression24: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForpostfixexpression2: nodes [
 	| result |
 	result := CPPSubscriptExpressionNode new.
@@ -8263,7 +8265,7 @@ CPPParser >> reduceActionForpostfixexpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForpostfixexpression4: nodes [
 	| result |
 	result := CPPCallExpressionNode new.
@@ -8273,7 +8275,7 @@ CPPParser >> reduceActionForpostfixexpression4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForpostfixexpression5: nodes [
 	| result |
 	result := CPPCallExpressionNode new.
@@ -8286,7 +8288,7 @@ CPPParser >> reduceActionForpostfixexpression5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForprimaryexpression2: nodes [
 	| result |
 	result := CPPThisExpressionNode new.
@@ -8294,7 +8296,7 @@ CPPParser >> reduceActionForprimaryexpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForpseudodestructorname1: nodes [
 	| result |
 	result := CPPPseudoDestructorNameNode new.
@@ -8305,7 +8307,7 @@ CPPParser >> reduceActionForpseudodestructorname1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForpseudodestructorname2: nodes [
 	| result |
 	result := CPPPseudoDestructorNameNode new.
@@ -8317,7 +8319,7 @@ CPPParser >> reduceActionForpseudodestructorname2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForpseudodestructorname3: nodes [
 	| result |
 	result := CPPPseudoDestructorNameNode new.
@@ -8330,7 +8332,7 @@ CPPParser >> reduceActionForpseudodestructorname3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForpseudodestructorname4: nodes [
 	| result |
 	result := CPPPseudoDestructorNameNode new.
@@ -8339,7 +8341,7 @@ CPPParser >> reduceActionForpseudodestructorname4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForpseudodestructorname5: nodes [
 	| result |
 	result := CPPPseudoDestructorNameNode new.
@@ -8349,7 +8351,7 @@ CPPParser >> reduceActionForpseudodestructorname5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForpseudodestructorname6: nodes [
 	| result |
 	result := CPPPseudoDestructorNameNode new.
@@ -8358,7 +8360,7 @@ CPPParser >> reduceActionForpseudodestructorname6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForptrabstractdeclarator1: nodes [
 	| result |
 	result := CPPPtrAbstractDeclaratorNode new.
@@ -8380,7 +8382,7 @@ CPPParser >> reduceActionForptrabstractdeclarator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForptrabstractdeclarator2: nodes [
 	| result |
 	result := CPPPtrAbstractDeclaratorNode new.
@@ -8388,7 +8390,7 @@ CPPParser >> reduceActionForptrabstractdeclarator2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForptrdeclarator2: nodes [
 	| result |
 	result := nodes at: 2.
@@ -8396,7 +8398,7 @@ CPPParser >> reduceActionForptrdeclarator2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForptroperator10: nodes [
 	| result |
 	result := CPPPointerOperatorNode new.
@@ -8406,7 +8408,7 @@ CPPParser >> reduceActionForptroperator10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForptroperator11: nodes [
 	| result |
 	result := CPPPointerOperatorNode new.
@@ -8416,7 +8418,7 @@ CPPParser >> reduceActionForptroperator11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForptroperator12: nodes [
 	| result |
 	result := CPPPointerOperatorNode new.
@@ -8427,7 +8429,7 @@ CPPParser >> reduceActionForptroperator12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForptroperator2: nodes [
 	| result |
 	result := CPPPointerOperatorNode new.
@@ -8436,7 +8438,7 @@ CPPParser >> reduceActionForptroperator2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForptroperator4: nodes [
 	| result |
 	result := CPPPointerOperatorNode new.
@@ -8446,7 +8448,7 @@ CPPParser >> reduceActionForptroperator4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForptroperator5: nodes [
 	| result |
 	result := CPPPointerOperatorNode new.
@@ -8454,7 +8456,7 @@ CPPParser >> reduceActionForptroperator5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForptroperator6: nodes [
 	| result |
 	result := CPPPointerOperatorNode new.
@@ -8463,7 +8465,7 @@ CPPParser >> reduceActionForptroperator6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForptroperator9: nodes [
 	| result |
 	result := CPPPointerOperatorNode new.
@@ -8472,7 +8474,7 @@ CPPParser >> reduceActionForptroperator9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForpurespecifier1: nodes [
 	| result |
 	result := CPPEqualInitializerNode new.
@@ -8481,7 +8483,7 @@ CPPParser >> reduceActionForpurespecifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForqualifiedid1: nodes [
 	| result |
 	result := CPPQualifiedIdentifierNode new.
@@ -8490,7 +8492,7 @@ CPPParser >> reduceActionForqualifiedid1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForqualifiedid2: nodes [
 	| result |
 	result := CPPQualifiedIdentifierNode new.
@@ -8500,7 +8502,7 @@ CPPParser >> reduceActionForqualifiedid2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForselectionstatement1: nodes [
 	| result |
 	result := CPPIfStatementNode new.
@@ -8512,7 +8514,7 @@ CPPParser >> reduceActionForselectionstatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForselectionstatement2: nodes [
 	| result |
 	result := CPPIfStatementNode new.
@@ -8526,7 +8528,7 @@ CPPParser >> reduceActionForselectionstatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForselectionstatement3: nodes [
 	| result |
 	result := CPPSwitchStatementNode new.
@@ -8538,7 +8540,7 @@ CPPParser >> reduceActionForselectionstatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForsimplecapture2: nodes [
 	| result |
 	result := CPPCaptureNode new.
@@ -8547,7 +8549,7 @@ CPPParser >> reduceActionForsimplecapture2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForsimplecapture3: nodes [
 	| result |
 	result := CPPCaptureNode new.
@@ -8555,7 +8557,7 @@ CPPParser >> reduceActionForsimplecapture3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForsimpledeclaration1: nodes [
 	| result |
 	result := CPPSimpleDeclarationNode new.
@@ -8563,7 +8565,7 @@ CPPParser >> reduceActionForsimpledeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForsimpledeclaration2: nodes [
 	| result |
 	result := CPPSimpleDeclarationNode new.
@@ -8573,7 +8575,7 @@ CPPParser >> reduceActionForsimpledeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForsimpledeclaration3: nodes [
 	| result |
 	result := CPPSimpleDeclarationNode new.
@@ -8582,7 +8584,7 @@ CPPParser >> reduceActionForsimpledeclaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForsimpledeclaration4: nodes [
 	| result |
 	result := CPPSimpleDeclarationNode new.
@@ -8593,7 +8595,7 @@ CPPParser >> reduceActionForsimpledeclaration4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForsimpledeclaration6: nodes [
 	| result |
 	result := CPPSimpleDeclarationNode new.
@@ -8605,7 +8607,7 @@ CPPParser >> reduceActionForsimpledeclaration6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForsimpletemplateid1: nodes [
 	| result |
 	result := CPPTemplateIdentifierNode new.
@@ -8615,7 +8617,7 @@ CPPParser >> reduceActionForsimpletemplateid1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForsimpletemplateid2: nodes [
 	| result |
 	result := CPPTemplateIdentifierNode new.
@@ -8628,7 +8630,7 @@ CPPParser >> reduceActionForsimpletemplateid2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForsimpletypespecifier17: nodes [
 	| result |
 	result := CPPAutoTypeNode new.
@@ -8636,7 +8638,7 @@ CPPParser >> reduceActionForsimpletypespecifier17: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForsimpletypespecifier1: nodes [
 	| result |
 	result := CPPClassTypeNode new.
@@ -8644,7 +8646,7 @@ CPPParser >> reduceActionForsimpletypespecifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForsimpletypespecifier2: nodes [
 	| result |
 	result := CPPClassTypeNode new.
@@ -8653,7 +8655,7 @@ CPPParser >> reduceActionForsimpletypespecifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForsimpletypespecifier3: nodes [
 	| result |
 	result := CPPTemplateTypeNode new.
@@ -8663,7 +8665,7 @@ CPPParser >> reduceActionForsimpletypespecifier3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForsimpletypespecifier8: nodes [
 	| result |
 	result := CPPPrimitiveTypeNode new.
@@ -8671,14 +8673,14 @@ CPPParser >> reduceActionForsimpletypespecifier8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForstatement1: nodes [
 	| result |
 	result := nodes at: 1.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForstatement2: nodes [
 	| result |
 	result := nodes at: 2.
@@ -8686,7 +8688,7 @@ CPPParser >> reduceActionForstatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForstatic_assertdeclaration1: nodes [
 	| result |
 	result := CPPStaticAssertDeclarationNode new.
@@ -8700,7 +8702,7 @@ CPPParser >> reduceActionForstatic_assertdeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortemplatedeclaration1: nodes [
 	| result |
 	result := CPPTemplateDeclarationNode new.
@@ -8713,7 +8715,7 @@ CPPParser >> reduceActionFortemplatedeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortemplateid2: nodes [
 	| result |
 	result := CPPOperatorFunctionTemplateIdentifierNode new.
@@ -8723,7 +8725,7 @@ CPPParser >> reduceActionFortemplateid2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortemplateid3: nodes [
 	| result |
 	result := CPPOperatorFunctionTemplateIdentifierNode new.
@@ -8736,7 +8738,7 @@ CPPParser >> reduceActionFortemplateid3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortheoperator14: nodes [
 	| result |
 	result := Array new: 5.
@@ -8744,7 +8746,7 @@ CPPParser >> reduceActionFortheoperator14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortheoperator44: nodes [
 	| result |
 	result := Array new: 5.
@@ -8753,7 +8755,7 @@ CPPParser >> reduceActionFortheoperator44: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortheoperator45: nodes [
 	| result |
 	result := Array new: 5.
@@ -8762,7 +8764,7 @@ CPPParser >> reduceActionFortheoperator45: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortheoperator4: nodes [
 	| result |
 	result := Array new: 5.
@@ -8772,7 +8774,7 @@ CPPParser >> reduceActionFortheoperator4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForthetypeid1: nodes [
 	| result |
 	result := CPPTypeIdentifierNode new.
@@ -8780,7 +8782,7 @@ CPPParser >> reduceActionForthetypeid1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForthetypeid2: nodes [
 	| result |
 	result := CPPTypeIdentifierNode new.
@@ -8789,7 +8791,7 @@ CPPParser >> reduceActionForthetypeid2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForthrowexpression1: nodes [
 	| result |
 	result := CPPThrowExpressionNode new.
@@ -8797,7 +8799,7 @@ CPPParser >> reduceActionForthrowexpression1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForthrowexpression2: nodes [
 	| result |
 	result := CPPThrowExpressionNode new.
@@ -8806,7 +8808,7 @@ CPPParser >> reduceActionForthrowexpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortrailingreturntype1: nodes [
 	| result |
 	result := Array new: 3.
@@ -8816,7 +8818,7 @@ CPPParser >> reduceActionFortrailingreturntype1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortrailingreturntype2: nodes [
 	| result |
 	result := Array new: 3.
@@ -8827,14 +8829,14 @@ CPPParser >> reduceActionFortrailingreturntype2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortranslationunit1: nodes [
 	| result |
 	result := CPPTranslationUnitNode new.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortranslationunit2: nodes [
 	| result |
 	result := CPPTranslationUnitNode new.
@@ -8842,7 +8844,7 @@ CPPParser >> reduceActionFortranslationunit2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortryblock1: nodes [
 	| result |
 	result := CPPTryStatementNode new.
@@ -8852,7 +8854,7 @@ CPPParser >> reduceActionFortryblock1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortypenamespecifier1: nodes [
 	| result |
 	result := CPPTypeNameSpecifierNode new.
@@ -8862,7 +8864,7 @@ CPPParser >> reduceActionFortypenamespecifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortypenamespecifier2: nodes [
 	| result |
 	result := CPPTypeNameSpecifierNode new.
@@ -8872,7 +8874,7 @@ CPPParser >> reduceActionFortypenamespecifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortypenamespecifier3: nodes [
 	| result |
 	result := CPPTypeNameSpecifierNode new.
@@ -8883,7 +8885,7 @@ CPPParser >> reduceActionFortypenamespecifier3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortypeparameter10: nodes [
 	| result |
 	result := CPPTypenameTypeParameterNode new.
@@ -8893,7 +8895,7 @@ CPPParser >> reduceActionFortypeparameter10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortypeparameter11: nodes [
 	| result |
 	result := CPPTypenameTypeParameterNode new.
@@ -8903,7 +8905,7 @@ CPPParser >> reduceActionFortypeparameter11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortypeparameter12: nodes [
 	| result |
 	result := CPPTypenameTypeParameterNode new.
@@ -8914,7 +8916,7 @@ CPPParser >> reduceActionFortypeparameter12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortypeparameter13: nodes [
 	| result |
 	result := CPPTemplateTypeParameterNode new.
@@ -8927,7 +8929,7 @@ CPPParser >> reduceActionFortypeparameter13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortypeparameter14: nodes [
 	| result |
 	result := CPPTemplateTypeParameterNode new.
@@ -8941,7 +8943,7 @@ CPPParser >> reduceActionFortypeparameter14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortypeparameter15: nodes [
 	| result |
 	result := CPPTemplateTypeParameterNode new.
@@ -8955,7 +8957,7 @@ CPPParser >> reduceActionFortypeparameter15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortypeparameter16: nodes [
 	| result |
 	result := CPPTemplateTypeParameterNode new.
@@ -8970,7 +8972,7 @@ CPPParser >> reduceActionFortypeparameter16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortypeparameter17: nodes [
 	| result |
 	result := CPPTemplateTypeParameterNode new.
@@ -8985,7 +8987,7 @@ CPPParser >> reduceActionFortypeparameter17: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortypeparameter18: nodes [
 	| result |
 	result := CPPTemplateTypeParameterNode new.
@@ -9001,7 +9003,7 @@ CPPParser >> reduceActionFortypeparameter18: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortypeparameter1: nodes [
 	| result |
 	result := CPPClassTypeParameterNode new.
@@ -9009,7 +9011,7 @@ CPPParser >> reduceActionFortypeparameter1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortypeparameter2: nodes [
 	| result |
 	result := CPPClassTypeParameterNode new.
@@ -9018,7 +9020,7 @@ CPPParser >> reduceActionFortypeparameter2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortypeparameter3: nodes [
 	| result |
 	result := CPPClassTypeParameterNode new.
@@ -9027,7 +9029,7 @@ CPPParser >> reduceActionFortypeparameter3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortypeparameter4: nodes [
 	| result |
 	result := CPPClassTypeParameterNode new.
@@ -9037,7 +9039,7 @@ CPPParser >> reduceActionFortypeparameter4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortypeparameter5: nodes [
 	| result |
 	result := CPPClassTypeParameterNode new.
@@ -9047,7 +9049,7 @@ CPPParser >> reduceActionFortypeparameter5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortypeparameter6: nodes [
 	| result |
 	result := CPPClassTypeParameterNode new.
@@ -9058,7 +9060,7 @@ CPPParser >> reduceActionFortypeparameter6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortypeparameter7: nodes [
 	| result |
 	result := CPPTypenameTypeParameterNode new.
@@ -9066,7 +9068,7 @@ CPPParser >> reduceActionFortypeparameter7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortypeparameter8: nodes [
 	| result |
 	result := CPPTypenameTypeParameterNode new.
@@ -9075,7 +9077,7 @@ CPPParser >> reduceActionFortypeparameter8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionFortypeparameter9: nodes [
 	| result |
 	result := CPPTypenameTypeParameterNode new.
@@ -9084,7 +9086,7 @@ CPPParser >> reduceActionFortypeparameter9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForunaryexpression2: nodes [
 	| result |
 	result := CPPPrefixExpressionNode new.
@@ -9093,7 +9095,7 @@ CPPParser >> reduceActionForunaryexpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForunaryexpression5: nodes [
 	| result |
 	result := CPPSizeofExpressionNode new.
@@ -9102,7 +9104,7 @@ CPPParser >> reduceActionForunaryexpression5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForunaryexpression6: nodes [
 	| result |
 	result := CPPSizeofExpressionNode new.
@@ -9113,7 +9115,7 @@ CPPParser >> reduceActionForunaryexpression6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForunaryexpression7: nodes [
 	| result |
 	result := CPPSizeofExpressionNode new.
@@ -9125,7 +9127,7 @@ CPPParser >> reduceActionForunaryexpression7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForunaryexpression8: nodes [
 	| result |
 	result := CPPAlignofExpressionNode new.
@@ -9136,7 +9138,7 @@ CPPParser >> reduceActionForunaryexpression8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForunnamednamespacedefinition1: nodes [
 	| result |
 	result := CPPUnnamedNamespaceDefinitionNode new.
@@ -9147,7 +9149,7 @@ CPPParser >> reduceActionForunnamednamespacedefinition1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForunnamednamespacedefinition2: nodes [
 	| result |
 	result := CPPUnnamedNamespaceDefinitionNode new.
@@ -9159,7 +9161,7 @@ CPPParser >> reduceActionForunnamednamespacedefinition2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForunqualifiedid1: nodes [
 	| result |
 	result := CPPIdentifierNode new.
@@ -9167,7 +9169,7 @@ CPPParser >> reduceActionForunqualifiedid1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForunqualifiedid6: nodes [
 	| result |
 	result := CPPDestructorIdentifierNode new.
@@ -9176,7 +9178,7 @@ CPPParser >> reduceActionForunqualifiedid6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForusingdeclaration1: nodes [
 	| result |
 	result := CPPUsingDeclarationNode new.
@@ -9187,7 +9189,7 @@ CPPParser >> reduceActionForusingdeclaration1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForusingdeclaration2: nodes [
 	| result |
 	result := CPPUsingDeclarationNode new.
@@ -9199,7 +9201,7 @@ CPPParser >> reduceActionForusingdeclaration2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForusingdeclaration3: nodes [
 	| result |
 	result := CPPUsingDeclarationNode new.
@@ -9210,7 +9212,7 @@ CPPParser >> reduceActionForusingdeclaration3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForusingdirective1: nodes [
 	| result |
 	result := CPPUsingDirectiveNode new.
@@ -9221,7 +9223,7 @@ CPPParser >> reduceActionForusingdirective1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForusingdirective2: nodes [
 	| result |
 	result := CPPUsingDirectiveNode new.
@@ -9233,7 +9235,7 @@ CPPParser >> reduceActionForusingdirective2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForusingdirective3: nodes [
 	| result |
 	result := CPPUsingDirectiveNode new.
@@ -9245,7 +9247,7 @@ CPPParser >> reduceActionForusingdirective3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPParser >> reduceActionForusingdirective4: nodes [
 	| result |
 	result := CPPUsingDirectiveNode new.
@@ -9258,12 +9260,12 @@ CPPParser >> reduceActionForusingdirective4: nodes [
 	^ result
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPParser >> tryAllTokens [
 	^ true
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CPPParser >> useAllTokenIds [
 	^ false
 ]

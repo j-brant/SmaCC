@@ -1,31 +1,33 @@
 Class {
-	#name : #CPPParameterDeclarationNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPParameterDeclarationNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'specifiers',
 		'declarator',
 		'equal',
 		'initializer'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPParameterDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitParameterDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPParameterDeclarationNode >> compositeNodeVariables [
 	^ #(#specifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPParameterDeclarationNode >> declarator [
 	^ declarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPParameterDeclarationNode >> declarator: aCPPProgramNode [
 	self declarator notNil
 		ifTrue: [ self declarator parent: nil ].
@@ -34,28 +36,28 @@ CPPParameterDeclarationNode >> declarator: aCPPProgramNode [
 		ifTrue: [ self declarator parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPParameterDeclarationNode >> equal [
 	^ equal
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPParameterDeclarationNode >> equal: aSmaCCToken [
 	equal := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPParameterDeclarationNode >> initialize [
 	super initialize.
 	specifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPParameterDeclarationNode >> initializer [
 	^ initializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPParameterDeclarationNode >> initializer: aCPPProgramNode [
 	self initializer notNil
 		ifTrue: [ self initializer parent: nil ].
@@ -64,24 +66,24 @@ CPPParameterDeclarationNode >> initializer: aCPPProgramNode [
 		ifTrue: [ self initializer parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPParameterDeclarationNode >> nodeVariables [
 	^ #(#declarator #initializer)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPParameterDeclarationNode >> specifiers [
 	^ specifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPParameterDeclarationNode >> specifiers: anOrderedCollection [
 	self setParents: self specifiers to: nil.
 	specifiers := anOrderedCollection.
 	self setParents: self specifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPParameterDeclarationNode >> tokenVariables [
 	^ #(#equal)
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPPseudoDestructorNameNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPPseudoDestructorNameNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'typeName',
 		'colonColon',
@@ -11,30 +11,32 @@ Class {
 		'templateIdentifier',
 		'decltypeSpecifier'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPseudoDestructorNameNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPseudoDestructorName: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPseudoDestructorNameNode >> colonColon [
 	^ colonColon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPseudoDestructorNameNode >> colonColon: aSmaCCToken [
 	colonColon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPseudoDestructorNameNode >> decltypeSpecifier [
 	^ decltypeSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPseudoDestructorNameNode >> decltypeSpecifier: aCPPDecltypeSpecifierNode [
 	self decltypeSpecifier notNil
 		ifTrue: [ self decltypeSpecifier parent: nil ].
@@ -43,12 +45,12 @@ CPPPseudoDestructorNameNode >> decltypeSpecifier: aCPPDecltypeSpecifierNode [
 		ifTrue: [ self decltypeSpecifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPseudoDestructorNameNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPseudoDestructorNameNode >> name: aCPPProgramNode [
 	self name notNil
 		ifTrue: [ self name parent: nil ].
@@ -57,12 +59,12 @@ CPPPseudoDestructorNameNode >> name: aCPPProgramNode [
 		ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPseudoDestructorNameNode >> nameSpecifier [
 	^ nameSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPseudoDestructorNameNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 	self nameSpecifier notNil
 		ifTrue: [ self nameSpecifier parent: nil ].
@@ -71,17 +73,17 @@ CPPPseudoDestructorNameNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 		ifTrue: [ self nameSpecifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPseudoDestructorNameNode >> nodeVariables [
 	^ #(#typeName #name #nameSpecifier #templateIdentifier #decltypeSpecifier)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPseudoDestructorNameNode >> templateIdentifier [
 	^ templateIdentifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPseudoDestructorNameNode >> templateIdentifier: aCPPTemplateIdentifierNode [
 	self templateIdentifier notNil
 		ifTrue: [ self templateIdentifier parent: nil ].
@@ -90,37 +92,37 @@ CPPPseudoDestructorNameNode >> templateIdentifier: aCPPTemplateIdentifierNode [
 		ifTrue: [ self templateIdentifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPseudoDestructorNameNode >> templateToken [
 	^ templateToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPseudoDestructorNameNode >> templateToken: aSmaCCToken [
 	templateToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPseudoDestructorNameNode >> tilde [
 	^ tilde
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPseudoDestructorNameNode >> tilde: aSmaCCToken [
 	tilde := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPseudoDestructorNameNode >> tokenVariables [
 	^ #(#colonColon #tilde #templateToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPseudoDestructorNameNode >> typeName [
 	^ typeName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPseudoDestructorNameNode >> typeName: aCPPProgramNode [
 	self typeName notNil
 		ifTrue: [ self typeName parent: nil ].

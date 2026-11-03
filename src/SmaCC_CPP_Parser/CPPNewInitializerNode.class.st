@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPNewInitializerNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPNewInitializerNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'leftParen',
 		'rightParen',
@@ -8,45 +8,47 @@ Class {
 		'ellipsises',
 		'commas'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewInitializerNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNewInitializer: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewInitializerNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewInitializerNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewInitializerNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewInitializerNode >> compositeTokenVariables [
 	^ #(#ellipsises #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewInitializerNode >> ellipsises [
 	^ ellipsises
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewInitializerNode >> ellipsises: anOrderedCollection [
 	ellipsises := anOrderedCollection
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPNewInitializerNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
@@ -54,37 +56,37 @@ CPPNewInitializerNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewInitializerNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewInitializerNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewInitializerNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewInitializerNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewInitializerNode >> tokenVariables [
 	^ #(#leftParen #rightParen)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewInitializerNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewInitializerNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

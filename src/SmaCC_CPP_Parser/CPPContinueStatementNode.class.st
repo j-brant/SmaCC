@@ -1,39 +1,41 @@
 Class {
-	#name : #CPPContinueStatementNode,
-	#superclass : #CPPStatementNode,
+	#name : 'CPPContinueStatementNode',
+	#superclass : 'CPPStatementNode',
 	#instVars : [
 		'continueToken',
 		'semicolon'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPContinueStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitContinueStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPContinueStatementNode >> continueToken [
 	^ continueToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPContinueStatementNode >> continueToken: aSmaCCToken [
 	continueToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPContinueStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPContinueStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPContinueStatementNode >> tokenVariables [
 	^ #(#continueToken #semicolon)
 ]

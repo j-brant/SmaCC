@@ -1,16 +1,18 @@
 Class {
-	#name : #YAMLScanner,
-	#superclass : #SmaCCScanner,
+	#name : 'YAMLScanner',
+	#superclass : 'SmaCCScanner',
 	#instVars : [
 		'opened',
 		'indents',
 		'tokens',
 		'documentStringLiteral'
 	],
-	#category : #'SmaCC_YAML-Parser'
+	#category : 'SmaCC_YAML-Parser',
+	#package : 'SmaCC_YAML',
+	#tag : 'Parser'
 }
 
-{ #category : #'generated-initialization' }
+{ #category : 'generated-initialization' }
 YAMLScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
 	#(#(23 '---' 9) #(23 '...' 10))
@@ -21,17 +23,17 @@ YAMLScanner class >> initializeKeywordMap [
 	^ keywordMap
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> COLONId [
 	^ 12
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> DEDENTId [
 	^ 102
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLScanner >> DOCUMENTEND1 [
 	matchActions := {(start = 0
 				or: [ String crlf includes: (self peekAt: start - 1) ])
@@ -40,12 +42,12 @@ YAMLScanner >> DOCUMENTEND1 [
 	^ self createTokenFor: outputStream contents
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> DOCUMENTENDId [
 	^ 103
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLScanner >> DOCUMENTSTART1 [
 	matchActions := {(start = 0
 				or: [ String crlf includes: (self peekAt: start - 1) ])
@@ -54,37 +56,37 @@ YAMLScanner >> DOCUMENTSTART1 [
 	^ self createTokenFor: outputStream contents
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> DOCUMENTSTARTId [
 	^ 104
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> FINISH_LITERAL_STRINGId [
 	^ 105
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> INDENTId [
 	^ 106
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> MINUSId [
 	^ 8
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> NEWLINEId [
 	^ 107
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> NEWLINE_STR_LITERALId [
 	^ 108
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLScanner >> SKIP1 [
 	| indent |
 	start = 0
@@ -96,42 +98,42 @@ YAMLScanner >> SKIP1 [
 	^ self whitespace
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLScanner >> SKIP2 [
 	^ self whitespace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> SPACESId [
 	^ 25
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> STRING_MYId [
 	^ 23
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLScanner >> STRING_MY_2 [
 	^ self recordAndReportMatch: {self STRING_MYId}
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLScanner >> STRING_MY_3 [
 	^ self recordAndReportMatch: {self STRING_MYId}
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> TAGId [
 	^ 21
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLScanner >> currentIndent [
 	^ indents value
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLScanner >> currentState [
 	| state |
 	state := super currentState.
@@ -142,27 +144,27 @@ YAMLScanner >> currentState [
 	^ state
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLScanner >> documentStringLiteral [
 	^ documentStringLiteral
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLScanner >> documentStringLiteral: anObject [
 	documentStringLiteral := anObject
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> emptySymbolTokenId [
 	^ 109
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> errorTokenId [
 	^ 110
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLScanner >> indentsBefore: anInteger [
 	| text |
 	text := String
@@ -176,7 +178,7 @@ YAMLScanner >> indentsBefore: anInteger [
 	^ self indentsFor: text reversed
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLScanner >> indentsFor: aString [
 	| input crlf index |
 	input := aString readStream.
@@ -192,7 +194,7 @@ YAMLScanner >> indentsFor: aString [
 	^ index
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 YAMLScanner >> initialize [
 	super initialize.
 	indents := 0 asLink.
@@ -200,7 +202,7 @@ YAMLScanner >> initialize [
 	documentStringLiteral := false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLScanner >> newline [
 	| dedentToken indent |
 	(currentCharacter = Character cr
@@ -227,7 +229,7 @@ YAMLScanner >> newline [
 	^ self recordAndReportMatch: {self NEWLINEId}
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLScanner >> newline_str_literal [
 	| indent spaceCount |
 	(opened > 0
@@ -244,7 +246,7 @@ YAMLScanner >> newline_str_literal [
 	^ self recordAndReportMatch: {self NEWLINE_STR_LITERALId}
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLScanner >> next [
 	| token |
 	tokens
@@ -254,27 +256,27 @@ YAMLScanner >> next [
 	^ super next
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLScanner >> opened [
 	^ opened
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLScanner >> opened: anObject [
 	opened := anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLScanner >> popIndent [
 	indents := indents nextLink ifNil: [ indents ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLScanner >> pushIndent: anInteger [
 	indents := indents asLinkPrepend: anInteger
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLScanner >> restoreState: aSmaCCScannerState [
 	super restoreState: aSmaCCScannerState.
 	opened := aSmaCCScannerState opened.
@@ -283,7 +285,7 @@ YAMLScanner >> restoreState: aSmaCCScannerState [
 	documentStringLiteral := aSmaCCScannerState documentStringLiteral
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan1 [
 	self step.
 	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(28) ].
@@ -298,7 +300,7 @@ YAMLScanner >> scan1 [
 	^ self scan1X10
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan10 [
 	[ self recordMatch: #(27).
 	self step.
@@ -311,7 +313,7 @@ YAMLScanner >> scan10 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan11 [
 	[ self step.
 	currentCharacter == Character space ] whileTrue.
@@ -332,7 +334,7 @@ YAMLScanner >> scan11 [
 	^ self scan10
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan12 [
 	[ self step.
 	currentCharacter == $> ifTrue: [ ^ self recordAndReportMatch: #(21) ].
@@ -342,7 +344,7 @@ YAMLScanner >> scan12 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan13 [
 	self step.
 	currentCharacter == Character space ifTrue: [ ^ self scan12 ].
@@ -354,7 +356,7 @@ YAMLScanner >> scan13 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan14 [
 	self recordMatch: #(21 27).
 	self step.
@@ -372,7 +374,7 @@ YAMLScanner >> scan14 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan15 [
 	[ self recordMatch: #(21).
 	self step.
@@ -394,7 +396,7 @@ YAMLScanner >> scan15 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan16 [
 	[ self step.
 	currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(31) ].
@@ -404,7 +406,7 @@ YAMLScanner >> scan16 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan17 [
 	[ self recordMatch: #(19 27).
 	self step.
@@ -424,7 +426,7 @@ YAMLScanner >> scan17 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan18 [
 	self recordMatch: #(19).
 	self step.
@@ -437,7 +439,7 @@ YAMLScanner >> scan18 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan19 [
 	[ self recordMatch: #(27).
 	self step.
@@ -453,7 +455,7 @@ YAMLScanner >> scan19 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan1X1 [
 	[ self recordMatch: #(2 27).
 	self step.
@@ -464,7 +466,7 @@ YAMLScanner >> scan1X1 [
 	^ self scan1X1X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan1X10 [
 	currentCharacter == $- ifTrue: [ ^ self scan5 ].
 	currentCharacter == $. ifTrue: [ ^ self scan1X4 ].
@@ -481,7 +483,7 @@ YAMLScanner >> scan1X10 [
 	^ self scan2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan1X1X1 [
 	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
 		ifTrue: [ ^ self scan3 ].
@@ -497,13 +499,13 @@ YAMLScanner >> scan1X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan1X2 [
 	self recordMatch: #(27).
 	^ self scan1X2X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan1X2X1 [
 	[ self recordMatch: #(22).
 	self step.
@@ -518,7 +520,7 @@ YAMLScanner >> scan1X2X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan1X2X2 [
 	self step.
 	currentCharacter == Character space ifTrue: [ ^ self scan4 ].
@@ -537,7 +539,7 @@ YAMLScanner >> scan1X2X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan1X3 [
 	self recordMatch: #(21 27).
 	self step.
@@ -553,7 +555,7 @@ YAMLScanner >> scan1X3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan1X3X1 [
 	[ self recordMatch: #(21).
 	self step.
@@ -565,7 +567,7 @@ YAMLScanner >> scan1X3X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan1X4 [
 	self recordMatch: #(27).
 	self step.
@@ -584,7 +586,7 @@ YAMLScanner >> scan1X4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan1X5 [
 	self recordMatch: #(27).
 	self step.
@@ -604,7 +606,7 @@ YAMLScanner >> scan1X5 [
 	^ self scan17
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan1X6 [
 	self recordMatch: #(12).
 	self step.
@@ -615,7 +617,7 @@ YAMLScanner >> scan1X6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan1X7 [
 	[ self recordMatch: #(26).
 	self step.
@@ -625,7 +627,7 @@ YAMLScanner >> scan1X7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan1X8 [
 	[ self recordMatch: #(28).
 	self step.
@@ -634,7 +636,7 @@ YAMLScanner >> scan1X8 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan1X9 [
 	self recordMatch: #(28).
 	self step.
@@ -642,7 +644,7 @@ YAMLScanner >> scan1X9 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan2 [
 	[ self recordMatch: #(27).
 	self step.
@@ -660,7 +662,7 @@ YAMLScanner >> scan2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan20 [
 	[ self step.
 	currentCharacter == $' ifTrue: [ ^ self scan23 ].
@@ -677,7 +679,7 @@ YAMLScanner >> scan20 [
 	^ self scan19
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan21 [
 	[ self step.
 	currentCharacter == Character space ] whileTrue.
@@ -702,7 +704,7 @@ YAMLScanner >> scan21 [
 	^ self scan19
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan22 [
 	[ self step.
 	currentCharacter == $'
@@ -716,7 +718,7 @@ YAMLScanner >> scan22 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan23 [
 	self recordMatch: #(27 33).
 	self step.
@@ -735,7 +737,7 @@ YAMLScanner >> scan23 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan24 [
 	self step.
 	currentCharacter == $' ifTrue: [ ^ self scan23 ].
@@ -746,7 +748,7 @@ YAMLScanner >> scan24 [
 	^ self scan19
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan25 [
 	self recordMatch: #(27).
 	self step.
@@ -758,7 +760,7 @@ YAMLScanner >> scan25 [
 	^ self scan19
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan26 [
 	[ self recordMatch: #(22 27).
 	self step.
@@ -778,7 +780,7 @@ YAMLScanner >> scan26 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan26X1 [
 	[ self recordMatch: #(22).
 	self step.
@@ -793,7 +795,7 @@ YAMLScanner >> scan26X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan27 [
 	self recordMatch: #(22).
 	self step.
@@ -806,7 +808,7 @@ YAMLScanner >> scan27 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan28 [
 	[ self recordMatch: #(6 27).
 	self step.
@@ -816,7 +818,7 @@ YAMLScanner >> scan28 [
 	^ self scan28X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan28X1 [
 	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
 		ifTrue: [ ^ self scan3 ].
@@ -832,7 +834,7 @@ YAMLScanner >> scan28X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan29 [
 	self recordMatch: #(27).
 	self step.
@@ -840,7 +842,7 @@ YAMLScanner >> scan29 [
 	^ self scan29X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan29X1 [
 	self recordMatch: #(27).
 	self step.
@@ -859,7 +861,7 @@ YAMLScanner >> scan29X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan29X2 [
 	currentCharacter == $: ifTrue: [ ^ self scan5 ].
 	currentCharacter isDigit ifTrue: [ ^ self scan30 ].
@@ -876,7 +878,7 @@ YAMLScanner >> scan29X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan3 [
 	[ self step.
 	('-:' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
@@ -894,7 +896,7 @@ YAMLScanner >> scan3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan30 [
 	[ self recordMatch: #(6 27).
 	self step.
@@ -904,7 +906,7 @@ YAMLScanner >> scan30 [
 	^ self scan30X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan30X1 [
 	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
 		ifTrue: [ ^ self scan3 ].
@@ -919,7 +921,7 @@ YAMLScanner >> scan30X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan31 [
 	self recordMatch: #(7 27).
 	self step.
@@ -937,7 +939,7 @@ YAMLScanner >> scan31 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan32 [
 	self recordMatch: #(2 27).
 	self step.
@@ -953,7 +955,7 @@ YAMLScanner >> scan32 [
 	^ self scan32X5
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan32X1 [
 	[ self recordMatch: #(2 27).
 	self step.
@@ -964,7 +966,7 @@ YAMLScanner >> scan32X1 [
 	^ self scan32X1X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan32X1X1 [
 	currentCharacter isDigit ifTrue: [ ^ self scan33 ].
 	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
@@ -981,7 +983,7 @@ YAMLScanner >> scan32X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan32X2 [
 	self recordMatch: #(27).
 	self step.
@@ -996,7 +998,7 @@ YAMLScanner >> scan32X2 [
 	^ self scan32X2X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan32X2X1 [
 	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
 		ifTrue: [ ^ self scan3 ].
@@ -1010,7 +1012,7 @@ YAMLScanner >> scan32X2X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan32X3 [
 	self recordMatch: #(27).
 	self step.
@@ -1025,7 +1027,7 @@ YAMLScanner >> scan32X3 [
 	^ self scan32X3X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan32X3X1 [
 	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
 		ifTrue: [ ^ self scan3 ].
@@ -1039,7 +1041,7 @@ YAMLScanner >> scan32X3X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan32X4 [
 	(currentCharacter <= $!
 		or: [ (currentCharacter between: $# and: $+)
@@ -1051,7 +1053,7 @@ YAMLScanner >> scan32X4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan32X5 [
 	('Jj' includes: currentCharacter) ifTrue: [ ^ self scan31 ].
 	('Oo' includes: currentCharacter) ifTrue: [ ^ self scan32X2 ].
@@ -1077,7 +1079,7 @@ YAMLScanner >> scan32X5 [
 	^ self scan32X4
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan33 [
 	[ self recordMatch: #(27).
 	self step.
@@ -1088,7 +1090,7 @@ YAMLScanner >> scan33 [
 	^ self scan33X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan33X1 [
 	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
 		ifTrue: [ ^ self scan3 ].
@@ -1104,7 +1106,7 @@ YAMLScanner >> scan33X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan34 [
 	[ self recordMatch: #(27).
 	self step.
@@ -1112,7 +1114,7 @@ YAMLScanner >> scan34 [
 	^ self scan34X2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan34X1 [
 	[ self step.
 	currentCharacter == Character tab ifTrue: [ ^ self scan34 ].
@@ -1122,7 +1124,7 @@ YAMLScanner >> scan34X1 [
 	^ self scan34X1X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan34X1X1 [
 	currentCharacter == $- ifTrue: [ ^ self scan6 ].
 	currentCharacter == $: ifTrue: [ ^ self scan5 ].
@@ -1136,7 +1138,7 @@ YAMLScanner >> scan34X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan34X2 [
 	currentCharacter == Character lf ifTrue: [ ^ self scan35 ].
 	currentCharacter == Character cr ifTrue: [ ^ self scan36 ].
@@ -1152,7 +1154,7 @@ YAMLScanner >> scan34X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan35 [
 	self recordMatch: #(28).
 	self step.
@@ -1171,13 +1173,13 @@ YAMLScanner >> scan35 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan36 [
 	self recordMatch: #(28).
 	^ self scan36X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan36X1 [
 	self step.
 	currentCharacter == Character lf ifTrue: [ ^ self scan35 ].
@@ -1195,7 +1197,7 @@ YAMLScanner >> scan36X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan37 [
 	self step.
 	currentCharacter == Character lf ifTrue: [ ^ self scan37X18 ].
@@ -1214,7 +1216,7 @@ YAMLScanner >> scan37 [
 	^ self scan37X19
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan37X1 [
 	[ self recordMatch: #(2 23).
 	self step.
@@ -1231,7 +1233,7 @@ YAMLScanner >> scan37X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan37X10 [
 	self recordMatch: #(11 23).
 	self step.
@@ -1244,7 +1246,7 @@ YAMLScanner >> scan37X10 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan37X11 [
 	self recordMatch: #(32).
 	self step.
@@ -1256,7 +1258,7 @@ YAMLScanner >> scan37X11 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan37X12 [
 	self recordMatch: #(12).
 	self step.
@@ -1268,7 +1270,7 @@ YAMLScanner >> scan37X12 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan37X13 [
 	self recordMatch: #(8).
 	self step.
@@ -1279,7 +1281,7 @@ YAMLScanner >> scan37X13 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan37X14 [
 	self step.
 	(currentCharacter <= Character backspace
@@ -1293,7 +1295,7 @@ YAMLScanner >> scan37X14 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan37X15 [
 	[ self recordMatch: #(26).
 	self step.
@@ -1303,7 +1305,7 @@ YAMLScanner >> scan37X15 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan37X16 [
 	self recordMatch: #(1).
 	self step.
@@ -1316,7 +1318,7 @@ YAMLScanner >> scan37X16 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan37X17 [
 	[ self recordMatch: #(24 25).
 	self step.
@@ -1325,7 +1327,7 @@ YAMLScanner >> scan37X17 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan37X18 [
 	[ self recordMatch: #(1).
 	self step.
@@ -1334,7 +1336,7 @@ YAMLScanner >> scan37X18 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan37X19 [
 	currentCharacter == $: ifTrue: [ ^ self scan37X12 ].
 	currentCharacter == $> ifTrue: [ ^ self scan37X2 ].
@@ -1351,7 +1353,7 @@ YAMLScanner >> scan37X19 [
 	^ self scan38
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan37X2 [
 	self recordMatch: #(18 23).
 	self step.
@@ -1387,7 +1389,7 @@ YAMLScanner >> scan37X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan37X3 [
 	self recordMatch: #(23).
 	self step.
@@ -1402,7 +1404,7 @@ YAMLScanner >> scan37X3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan37X4 [
 	self step.
 	(currentCharacter <= Character backspace
@@ -1425,7 +1427,7 @@ YAMLScanner >> scan37X4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan37X5 [
 	self recordMatch: #(17).
 	self step.
@@ -1468,7 +1470,7 @@ YAMLScanner >> scan37X5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan37X6 [
 	self recordMatch: #(23).
 	self step.
@@ -1482,7 +1484,7 @@ YAMLScanner >> scan37X6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan37X7 [
 	self recordMatch: #(21).
 	self step.
@@ -1501,7 +1503,7 @@ YAMLScanner >> scan37X7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan37X8 [
 	self recordMatch: #(16 23).
 	self step.
@@ -1514,7 +1516,7 @@ YAMLScanner >> scan37X8 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan37X9 [
 	self recordMatch: #(14 23).
 	self step.
@@ -1527,7 +1529,7 @@ YAMLScanner >> scan37X9 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan38 [
 	[ self recordMatch: #(23).
 	self step.
@@ -1539,7 +1541,7 @@ YAMLScanner >> scan38 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan39 [
 	[ self step.
 	currentCharacter == Character space ] whileTrue.
@@ -1551,7 +1553,7 @@ YAMLScanner >> scan39 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan4 [
 	[ self step.
 	currentCharacter == Character space ] whileTrue.
@@ -1569,7 +1571,7 @@ YAMLScanner >> scan4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan40 [
 	self step.
 	(currentCharacter <= Character backspace
@@ -1580,7 +1582,7 @@ YAMLScanner >> scan40 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan41 [
 	[ self recordMatch: #(20 23).
 	self step.
@@ -1608,7 +1610,7 @@ YAMLScanner >> scan41 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan42 [
 	self recordMatch: #(20).
 	self step.
@@ -1627,7 +1629,7 @@ YAMLScanner >> scan42 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan43 [
 	[ self recordMatch: #(23).
 	self step.
@@ -1640,7 +1642,7 @@ YAMLScanner >> scan43 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan44 [
 	[ self step.
 	currentCharacter == Character space ] whileTrue.
@@ -1653,7 +1655,7 @@ YAMLScanner >> scan44 [
 	^ self scan43
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan45 [
 	self recordMatch: #(23 33).
 	self step.
@@ -1667,7 +1669,7 @@ YAMLScanner >> scan45 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan46 [
 	self step.
 	currentCharacter == $' ifTrue: [ ^ self scan45 ].
@@ -1679,7 +1681,7 @@ YAMLScanner >> scan46 [
 	^ self scan43
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan47 [
 	self recordMatch: #(23).
 	self step.
@@ -1690,7 +1692,7 @@ YAMLScanner >> scan47 [
 	^ self scan43
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan48 [
 	[ self recordMatch: #(6 23).
 	self step.
@@ -1706,7 +1708,7 @@ YAMLScanner >> scan48 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan49 [
 	self recordMatch: #(23).
 	self step.
@@ -1726,7 +1728,7 @@ YAMLScanner >> scan49 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan5 [
 	self step.
 	(currentCharacter <= Character tab
@@ -1736,7 +1738,7 @@ YAMLScanner >> scan5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan50 [
 	[ self recordMatch: #(6 23).
 	self step.
@@ -1751,7 +1753,7 @@ YAMLScanner >> scan50 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan51 [
 	self recordMatch: #(7 23).
 	self step.
@@ -1764,7 +1766,7 @@ YAMLScanner >> scan51 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan52 [
 	self recordMatch: #(2 23).
 	self step.
@@ -1780,7 +1782,7 @@ YAMLScanner >> scan52 [
 	^ self scan52X4
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan52X1 [
 	[ self recordMatch: #(2 23).
 	self step.
@@ -1790,7 +1792,7 @@ YAMLScanner >> scan52X1 [
 	^ self scan52X1X1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan52X1X1 [
 	currentCharacter == $: ifTrue: [ ^ self scan40 ].
 	currentCharacter isDigit ifTrue: [ ^ self scan53 ].
@@ -1803,7 +1805,7 @@ YAMLScanner >> scan52X1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan52X2 [
 	self recordMatch: #(23).
 	self step.
@@ -1822,7 +1824,7 @@ YAMLScanner >> scan52X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan52X3 [
 	self recordMatch: #(23).
 	self step.
@@ -1841,7 +1843,7 @@ YAMLScanner >> scan52X3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan52X4 [
 	('Xx' includes: currentCharacter)
 		ifTrue: [ self recordMatch: #(23).
@@ -1865,7 +1867,7 @@ YAMLScanner >> scan52X4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan53 [
 	[ self recordMatch: #(23).
 	self step.
@@ -1882,7 +1884,7 @@ YAMLScanner >> scan53 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan54 [
 	[ self recordMatch: #(18 23).
 	self step.
@@ -1897,7 +1899,7 @@ YAMLScanner >> scan54 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan55 [
 	[ self recordMatch: #(18).
 	self step.
@@ -1918,7 +1920,7 @@ YAMLScanner >> scan55 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan56 [
 	[ self recordMatch: #(18 23).
 	self step.
@@ -1946,7 +1948,7 @@ YAMLScanner >> scan56 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan57 [
 	self recordMatch: #(18).
 	self step.
@@ -1965,7 +1967,7 @@ YAMLScanner >> scan57 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan58 [
 	[ self recordMatch: #(23).
 	self step.
@@ -1987,7 +1989,7 @@ YAMLScanner >> scan58 [
 	^ self scan38
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan59 [
 	self recordMatch: #(24).
 	self step.
@@ -1995,7 +1997,7 @@ YAMLScanner >> scan59 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan6 [
 	[ self recordMatch: #(27).
 	self step.
@@ -2006,7 +2008,7 @@ YAMLScanner >> scan6 [
 	^ self scan2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan60 [
 	[ self recordMatch: #(17).
 	self step.
@@ -2022,7 +2024,7 @@ YAMLScanner >> scan60 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan7 [
 	[ self recordMatch: #(21 27).
 	self step.
@@ -2036,7 +2038,7 @@ YAMLScanner >> scan7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan7X1 [
 	[ self recordMatch: #(21).
 	self step.
@@ -2048,7 +2050,7 @@ YAMLScanner >> scan7X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan8 [
 	self recordMatch: #(21).
 	self step.
@@ -2061,7 +2063,7 @@ YAMLScanner >> scan8 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan9 [
 	[ self recordMatch: #(21 27).
 	self step.
@@ -2076,7 +2078,7 @@ YAMLScanner >> scan9 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scan9X1 [
 	self recordMatch: #(21).
 	self step.
@@ -2091,7 +2093,7 @@ YAMLScanner >> scan9X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> scanForToken [
 	scope == #LITERAL_STRING
 		ifTrue: [ self recordMatch: #(30).
@@ -2124,7 +2126,7 @@ YAMLScanner >> scanForToken [
 	^ self reportLastMatch
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLScanner >> scanString [
 	| string pos |
 	pos := stream position + 1.
@@ -2135,17 +2137,17 @@ YAMLScanner >> scanString [
 		ids: {self STRING_MYId}
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLScanner >> setIndent: anInteger [
 	indents := anInteger asLink
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLScanner >> stateClass [
 	^ YAMLScannerState
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLScanner >> tokenActions [
 	^ #(#newline nil nil nil nil nil nil nil #DOCUMENTSTART1 #DOCUMENTEND1 nil nil nil nil nil nil nil nil nil nil nil nil nil #SKIP1 nil #comment #STRING_MY_2 #SKIP2 #newline_str_literal #STRING_MY_3)
 ]

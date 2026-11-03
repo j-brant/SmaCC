@@ -1,28 +1,30 @@
 Class {
-	#name : #CPPCharacterLiteralNode,
-	#superclass : #CPPLiteralNode,
+	#name : 'CPPCharacterLiteralNode',
+	#superclass : 'CPPLiteralNode',
 	#instVars : [
 		'value'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCharacterLiteralNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCharacterLiteral: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCharacterLiteralNode >> tokenVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCharacterLiteralNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCharacterLiteralNode >> value: aSmaCCToken [
 	value := aSmaCCToken
 ]

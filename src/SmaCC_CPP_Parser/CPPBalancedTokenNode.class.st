@@ -1,63 +1,65 @@
 Class {
-	#name : #CPPBalancedTokenNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPBalancedTokenNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'left',
 		'balancedTokens',
 		'right'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBalancedTokenNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBalancedToken: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBalancedTokenNode >> balancedTokens [
 	^ balancedTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBalancedTokenNode >> balancedTokens: anOrderedCollection [
 	self setParents: self balancedTokens to: nil.
 	balancedTokens := anOrderedCollection.
 	self setParents: self balancedTokens to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBalancedTokenNode >> compositeNodeVariables [
 	^ #(#balancedTokens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPBalancedTokenNode >> initialize [
 	super initialize.
 	balancedTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBalancedTokenNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBalancedTokenNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBalancedTokenNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBalancedTokenNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBalancedTokenNode >> tokenVariables [
 	^ #(#left #right)
 ]

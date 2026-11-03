@@ -1,13 +1,15 @@
 Class {
-	#name : #CPPPreprocessorParser,
-	#superclass : #SmaCCGLRParser,
+	#name : 'CPPPreprocessorParser',
+	#superclass : 'SmaCCGLRParser',
 	#instVars : [
 		'preprocessor'
 	],
-	#category : #'SmaCC_CPP_Parser-Preprocessor'
+	#category : 'SmaCC_CPP_Parser-Preprocessor',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'Preprocessor'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorParser class >> ambiguousTransitions [
 ^#(
 #[ 0 6 0 10] 
@@ -25,12 +27,12 @@ CPPPreprocessorParser class >> ambiguousTransitions [
 	).
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 CPPPreprocessorParser class >> cacheId [
 	^'2020-09-14T14:23:04.364561-05:00'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorParser class >> definitionComment [
 "%glr;
 
@@ -606,7 +608,7 @@ SwitchToDefault
     ;"
 ]
 
-{ #category : #processing }
+{ #category : 'processing' }
 CPPPreprocessorParser class >> process: aString interval: anInterval using: aCPPPreprocessor isMacro: aBoolean [
 	| parser stream |
 	stream := ReadStream on: aString.
@@ -624,7 +626,7 @@ CPPPreprocessorParser class >> process: aString interval: anInterval using: aCPP
 				ifFalse: [ ex signal ] ]
 ]
 
-{ #category : #processing }
+{ #category : 'processing' }
 CPPPreprocessorParser class >> process: aString using: aCPPPreprocessor [
 	self
 		process: aString
@@ -633,7 +635,7 @@ CPPPreprocessorParser class >> process: aString using: aCPPPreprocessor [
 		isMacro: false
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorParser class >> reduceTable [
 ^#(
 	#(97 0 #reduceFor: 9764865 false ) 
@@ -762,27 +764,27 @@ CPPPreprocessorParser class >> reduceTable [
 	).
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 CPPPreprocessorParser class >> scannerClass [
 	^CPPPreprocessorScanner
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorParser class >> startingStateForFile [
 	^ 1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorParser class >> startingStateForMacro [
 	^ 2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorParser class >> symbolNames [
 	^ #('<errorText>' '<macro>' '<filename>' '<bang>' '<bangEq>' '<percent>' '<percentEq>' '<amp>' '<ampAmp>' '<ampEq>' '<lParen>' '<rParen>' '<star>' '<starEq>' '<plus>' '<plusPlus>' '<plusEq>' '<comma>' '<minus>' '<minusMinus>' '<minusEq>' '<minusGt>' '<dot>' '<ellipses>' '<slash>' '<slashEq>' '<colon>' '<colonColon>' '<semicolon>' '<lt>' '<ltLt>' '<ltLtEq>' '<ltEq>' '<eq>' '<eqEq>' '<gt>' '<gtEq>' '<gtGt>' '<gtGtEq>' '<question>' '<lBracket>' '<rBracket>' '<upArrow>' '<upArrowEq>' '<lBrace>' '<bar>' '<barEq>' '<barBar>' '<rBrace>' '<tilde>' '<hash>' '<hashHash>' '<define>' '<defined>' '<elif>' '<else>' '<endif>' '<error>' '<if>' '<ifdef>' '<ifndef>' '<include>' '<include_next>' '<line>' '<pragma>' '<undef>' '<FunctionMacroStart>' '<Identifier>' '<Integerliteral>' '<Characterliteral>' '<Floatingliteral>' '<Stringliteral>' '<comment>' '<whitespace>' '<eol>' '<lineContinuation>' 'B e g i n' 'File' 'Lines' 'Line' 'Directive' 'IfDef' 'EndIf' 'ElIfs' 'ElseIfDef' 'Else' 'HashElse' 'Expression' 'Args' 'ArgList' 'DefineExpression' 'Parms' 'ParmList' 'Macro' 'Values' 'Value' 'Tokens' 'Token' 'SwitchToFilename' 'SwitchToDefine' 'SwitchToError' 'SwitchToMacro' 'SwitchToDefault' 'E O F' 'error')
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPPreprocessorParser class >> transitionTable [
 ^#(
 #[1 0 6 0 4 0 6 0 5 0 6 0 6 0 6 0 7 0 6 0 8 0 6 0 9 0 6 0 10 0 6 0 11 0 6 0 12 0 6 0 13 0 6 0 14 0 6 0 15 0 6 0 16 0 6 0 17 0 6 0 18 0 6 0 19 0 6 0 20 0 6 0 21 0 6 0 22 0 6 0 23 0 6 0 24 0 6 0 25 0 6 0 26 0 6 0 27 0 6 0 28 0 6 0 29 0 6 0 30 0 6 0 31 0 6 0 32 0 6 0 33 0 6 0 34 0 6 0 35 0 6 0 36 0 6 0 37 0 6 0 38 0 6 0 39 0 6 0 40 0 6 0 41 0 6 0 42 0 6 0 43 0 6 0 44 0 6 0 45 0 6 0 46 0 6 0 47 0 6 0 48 0 6 0 49 0 6 0 50 0 13 0 51 0 6 0 68 0 6 0 69 0 6 0 70 0 6 0 71 0 6 0 72 0 6 0 75 0 17 0 78 0 21 0 79 0 25 0 80 0 29 0 81 0 33 0 82 0 37 0 91 0 41 0 97 0 7 0 104 0 45 0 105] 
@@ -960,34 +962,34 @@ CPPPreprocessorParser class >> transitionTable [
 	).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessorParser >> preprocessor: aCPPPreprocessor [
 	preprocessor := aCPPPreprocessor
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForArgList1: nodes [
 	^ OrderedCollection with: (nodes at: 1)
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForArgList2: nodes [
 	^ (nodes at: 1)
 		add: (nodes at: 3);
 		yourself
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForArgs1: nodes [
 	^ #()
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForDefineExpression1: nodes [
 	^ preprocessor define: (nodes at: 5) as: nil hash: (nodes at: 1)
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForDefineExpression2: nodes [
 	^ preprocessor
 		define: (nodes at: 5)
@@ -995,7 +997,7 @@ CPPPreprocessorParser >> reduceActionForDefineExpression2: nodes [
 		hash: (nodes at: 1)
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForDefineExpression3: nodes [
 	^ preprocessor
 		defineFunction: (nodes at: 5)
@@ -1005,7 +1007,7 @@ CPPPreprocessorParser >> reduceActionForDefineExpression3: nodes [
 		right: (nodes at: 8)
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForDefineExpression4: nodes [
 	^ preprocessor
 		defineFunction: (nodes at: 5)
@@ -1015,182 +1017,182 @@ CPPPreprocessorParser >> reduceActionForDefineExpression4: nodes [
 		right: (nodes at: 8)
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForDirective3: nodes [
 	^ preprocessor undefine: (nodes at: 3) value
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForDirective4: nodes [
 	^ preprocessor include: (nodes at: 5) hash: (nodes at: 1)
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForDirective5: nodes [
 	^ preprocessor includeNext: (nodes at: 5) hash: (nodes at: 1)
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForElseIfDef1: nodes [
 	^ preprocessor processElseIf: nodes
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForEndIf1: nodes [
 	^ preprocessor processEndIf: nodes
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForExpression10: nodes [
 	^ (preprocessor is: (nodes at: 3) lessThan: (nodes at: 1))
 		ifNotNil: [ :b | (nodes at: 3) not ]
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForExpression11: nodes [
 	^ preprocessor is: (nodes at: 1) equalTo: (nodes at: 3)
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForExpression12: nodes [
 	^ (preprocessor is: (nodes at: 1) equalTo: (nodes at: 3))
 		ifNotNil: [ :b | (nodes at: 3) not ]
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForExpression13: nodes [
 	^ preprocessor is: (nodes at: 3) lessThan: (nodes at: 1)
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForExpression14: nodes [
 	^ (preprocessor is: (nodes at: 1) lessThan: (nodes at: 3))
 		ifNotNil: [ :b | (nodes at: 3) not ]
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForExpression15: nodes [
 	^ preprocessor evaluate: (nodes at: 1) value with: (nodes at: 3)
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForExpression1: nodes [
 	^ preprocessor isDefined: (nodes at: 3) value
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForExpression2: nodes [
 	^ preprocessor isDefined: (nodes at: 2) value
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForExpression3: nodes [
 	^ (preprocessor isTrue: (nodes at: 2)) ifNotNil: [ :b | b not ]
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForExpression4: nodes [
 	^ preprocessor if: (nodes at: 1) and: (nodes at: 3)
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForExpression5: nodes [
 	^ preprocessor if: (nodes at: 1) or: (nodes at: 3)
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForExpression6: nodes [
 	^ preprocessor convertInteger: (nodes at: 1) value
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForExpression7: nodes [
 	^ preprocessor valueOf: (nodes at: 1) value
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForExpression9: nodes [
 	^ preprocessor is: (nodes at: 1) lessThan: (nodes at: 3)
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForFile1: nodes [
 	^ preprocessor finish
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForHashElse1: nodes [
 	^ preprocessor processElse: nodes
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForIfDef1: nodes [
 	^ preprocessor processIf: nodes
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForIfDef2: nodes [
 	^ preprocessor processIfDef: nodes
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForIfDef3: nodes [
 	^ preprocessor processIfNDef: nodes
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForParms1: nodes [
 	^ OrderedCollection new
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForSwitchToDefault1: nodes [
 	self scope: #default.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForSwitchToDefine1: nodes [
 	self scope: #define.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForSwitchToError1: nodes [
 	self scope: #error.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForSwitchToFilename1: nodes [
 	self scope: #filename.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForSwitchToMacro1: nodes [
 	self scope: #macro.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForTokens2: nodes [
 	^ preprocessor processToken: (nodes at: 2) first using: self
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForValue1: nodes [
 	preprocessor processToken: (nodes at: 1) first using: self.
 	^ (nodes at: 1) first
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForValue2: nodes [
 	preprocessor stringify: (nodes at: 2) hash: (nodes at: 1).
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CPPPreprocessorParser >> reduceActionForValue3: nodes [
 	preprocessor
 		concatenate: (nodes at: 1)
@@ -1199,7 +1201,7 @@ CPPPreprocessorParser >> reduceActionForValue3: nodes [
 	^ (nodes at: 3) first
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CPPPreprocessorParser >> tryAllTokens [
 	^ true
 ]

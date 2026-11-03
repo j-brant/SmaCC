@@ -1,37 +1,39 @@
 Class {
-	#name : #CPPPreprocessorFunctionMacro,
-	#superclass : #CPPPreprocessorMacro,
+	#name : 'CPPPreprocessorFunctionMacro',
+	#superclass : 'CPPPreprocessorMacro',
 	#instVars : [
 		'arguments'
 	],
-	#category : #'SmaCC_CPP_Parser-Preprocessor'
+	#category : 'SmaCC_CPP_Parser-Preprocessor',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'Preprocessor'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CPPPreprocessorFunctionMacro class >> replacement: aString interval: anInterval parameters: args [
 	^ (self replacement: aString interval: anInterval)
 		arguments: args;
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CPPPreprocessorFunctionMacro class >> replacement: aString parameters: args [
 	^ (self replacement: aString)
 		arguments: args;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessorFunctionMacro >> arguments [
 	^ arguments
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CPPPreprocessorFunctionMacro >> arguments: aCollection [
 	arguments := aCollection
 ]
 
-{ #category : #processing }
+{ #category : 'processing' }
 CPPPreprocessorFunctionMacro >> parseArgOn: aPreprocessor using: aParser isVarArgs: aBoolean [
 	| parenCount token first |
 	parenCount := 0.
@@ -56,7 +58,7 @@ CPPPreprocessorFunctionMacro >> parseArgOn: aPreprocessor using: aParser isVarAr
 		interval: (first to: token startPosition - 1)
 ]
 
-{ #category : #processing }
+{ #category : 'processing' }
 CPPPreprocessorFunctionMacro >> parseArgsOn: aPreprocessor using: aParser [
 	| values |
 	aParser getNextToken.
@@ -72,7 +74,7 @@ CPPPreprocessorFunctionMacro >> parseArgsOn: aPreprocessor using: aParser [
 	^ values
 ]
 
-{ #category : #processing }
+{ #category : 'processing' }
 CPPPreprocessorFunctionMacro >> process: aToken on: aPreprocessor using: aParser [
 	| position argValues originalMacros rParen |
 	position := aParser position.

@@ -1,49 +1,51 @@
 Class {
-	#name : #CPPTryStatementNode,
-	#superclass : #CPPStatementNode,
+	#name : 'CPPTryStatementNode',
+	#superclass : 'CPPStatementNode',
 	#instVars : [
 		'tryToken',
 		'statement',
 		'handlers',
 		'initializer'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTryStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTryStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTryStatementNode >> compositeNodeVariables [
 	^ #(#handlers #specifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTryStatementNode >> handlers [
 	^ handlers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTryStatementNode >> handlers: anOrderedCollection [
 	self setParents: self handlers to: nil.
 	handlers := anOrderedCollection.
 	self setParents: self handlers to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPTryStatementNode >> initialize [
 	super initialize.
 	handlers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTryStatementNode >> initializer [
 	^ initializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTryStatementNode >> initializer: aCPPCtorInitializerNode [
 	self initializer notNil
 		ifTrue: [ self initializer parent: nil ].
@@ -52,17 +54,17 @@ CPPTryStatementNode >> initializer: aCPPCtorInitializerNode [
 		ifTrue: [ self initializer parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTryStatementNode >> nodeVariables [
 	^ #(#statement #initializer)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTryStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTryStatementNode >> statement: aCPPCompoundStatementNode [
 	self statement notNil
 		ifTrue: [ self statement parent: nil ].
@@ -71,17 +73,17 @@ CPPTryStatementNode >> statement: aCPPCompoundStatementNode [
 		ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTryStatementNode >> tokenVariables [
 	^ #(#tryToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTryStatementNode >> tryToken [
 	^ tryToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPTryStatementNode >> tryToken: aSmaCCToken [
 	tryToken := aSmaCCToken
 ]

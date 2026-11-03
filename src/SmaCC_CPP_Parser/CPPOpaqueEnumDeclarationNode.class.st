@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPOpaqueEnumDeclarationNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPOpaqueEnumDeclarationNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'enumToken',
 		'classToken',
@@ -10,98 +10,100 @@ Class {
 		'colon',
 		'specifiers'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOpaqueEnumDeclarationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitOpaqueEnumDeclaration: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOpaqueEnumDeclarationNode >> classToken [
 	^ classToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOpaqueEnumDeclarationNode >> classToken: aSmaCCToken [
 	classToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOpaqueEnumDeclarationNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOpaqueEnumDeclarationNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOpaqueEnumDeclarationNode >> compositeNodeVariables [
 	^ #(#specifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOpaqueEnumDeclarationNode >> enumToken [
 	^ enumToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOpaqueEnumDeclarationNode >> enumToken: aSmaCCToken [
 	enumToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPOpaqueEnumDeclarationNode >> initialize [
 	super initialize.
 	specifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOpaqueEnumDeclarationNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOpaqueEnumDeclarationNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOpaqueEnumDeclarationNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOpaqueEnumDeclarationNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOpaqueEnumDeclarationNode >> specifiers [
 	^ specifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOpaqueEnumDeclarationNode >> specifiers: anOrderedCollection [
 	self setParents: self specifiers to: nil.
 	specifiers := anOrderedCollection.
 	self setParents: self specifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOpaqueEnumDeclarationNode >> structToken [
 	^ structToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOpaqueEnumDeclarationNode >> structToken: aSmaCCToken [
 	structToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPOpaqueEnumDeclarationNode >> tokenVariables [
 	^ #(#enumToken #classToken #structToken #name #semicolon #colon)
 ]

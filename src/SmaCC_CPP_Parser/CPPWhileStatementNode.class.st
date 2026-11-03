@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPWhileStatementNode,
-	#superclass : #CPPStatementNode,
+	#name : 'CPPWhileStatementNode',
+	#superclass : 'CPPStatementNode',
 	#instVars : [
 		'whileToken',
 		'leftParen',
@@ -8,20 +8,22 @@ Class {
 		'rightParen',
 		'statement'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPWhileStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitWhileStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPWhileStatementNode >> condition [
 	^ condition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPWhileStatementNode >> condition: aCPPProgramNode [
 	self condition notNil
 		ifTrue: [ self condition parent: nil ].
@@ -30,37 +32,37 @@ CPPWhileStatementNode >> condition: aCPPProgramNode [
 		ifTrue: [ self condition parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPWhileStatementNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPWhileStatementNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPWhileStatementNode >> nodeVariables [
 	^ #(#condition #statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPWhileStatementNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPWhileStatementNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPWhileStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPWhileStatementNode >> statement: aCPPProgramNode [
 	self statement notNil
 		ifTrue: [ self statement parent: nil ].
@@ -69,17 +71,17 @@ CPPWhileStatementNode >> statement: aCPPProgramNode [
 		ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPWhileStatementNode >> tokenVariables [
 	^ #(#whileToken #leftParen #rightParen)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPWhileStatementNode >> whileToken [
 	^ whileToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPWhileStatementNode >> whileToken: aSmaCCToken [
 	whileToken := aSmaCCToken
 ]

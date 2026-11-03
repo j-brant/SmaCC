@@ -1,50 +1,52 @@
 Class {
-	#name : #CPPDefaultLabeledStatementNode,
-	#superclass : #CPPStatementNode,
+	#name : 'CPPDefaultLabeledStatementNode',
+	#superclass : 'CPPStatementNode',
 	#instVars : [
 		'defaultToken',
 		'colon',
 		'statement'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDefaultLabeledStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDefaultLabeledStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDefaultLabeledStatementNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDefaultLabeledStatementNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDefaultLabeledStatementNode >> defaultToken [
 	^ defaultToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDefaultLabeledStatementNode >> defaultToken: aSmaCCToken [
 	defaultToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDefaultLabeledStatementNode >> nodeVariables [
 	^ #(#statement)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDefaultLabeledStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDefaultLabeledStatementNode >> statement: aCPPProgramNode [
 	self statement notNil
 		ifTrue: [ self statement parent: nil ].
@@ -53,7 +55,7 @@ CPPDefaultLabeledStatementNode >> statement: aCPPProgramNode [
 		ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPDefaultLabeledStatementNode >> tokenVariables [
 	^ #(#defaultToken #colon)
 ]

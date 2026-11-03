@@ -1,24 +1,26 @@
 Class {
-	#name : #CPPCastExpressionNode,
-	#superclass : #CPPExpressionNode,
+	#name : 'CPPCastExpressionNode',
+	#superclass : 'CPPExpressionNode',
 	#instVars : [
 		'type',
 		'expression'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCastExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCastExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCastExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCastExpressionNode >> expression: aCPPExpressionNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
@@ -27,17 +29,17 @@ CPPCastExpressionNode >> expression: aCPPExpressionNode [
 		ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCastExpressionNode >> nodeVariables [
 	^ #(#type #expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCastExpressionNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCastExpressionNode >> type: aCPPTypeIdentifierNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].

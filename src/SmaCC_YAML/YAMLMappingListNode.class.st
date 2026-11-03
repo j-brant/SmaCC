@@ -1,23 +1,25 @@
 Class {
-	#name : #YAMLMappingListNode,
-	#superclass : #YAMLValueNode,
+	#name : 'YAMLMappingListNode',
+	#superclass : 'YAMLValueNode',
 	#instVars : [
 		'mappings'
 	],
-	#category : #'SmaCC_YAML-Parser'
+	#category : 'SmaCC_YAML-Parser',
+	#package : 'SmaCC_YAML',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLMappingListNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitMappingList: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLMappingListNode >> compositeNodeVariables [
 	^ #(#mappings)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLMappingListNode >> createObject [
 	| object mergeKeys |
 	mergeKeys := Set new.
@@ -47,18 +49,18 @@ YAMLMappingListNode >> createObject [
 	^ object
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 YAMLMappingListNode >> initialize [
 	super initialize.
 	mappings := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLMappingListNode >> mappings [
 	^ mappings
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLMappingListNode >> mappings: anOrderedCollection [
 	self setParents: self mappings to: nil.
 	mappings := anOrderedCollection.
