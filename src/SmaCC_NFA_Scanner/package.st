@@ -1,1 +1,1 @@
-Package { #name : #'SmaCC_NFA_Scanner' }
+Package { #name : 'SmaCC_NFA_Scanner' }

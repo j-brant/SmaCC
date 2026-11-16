@@ -1,17 +1,21 @@
 Class {
-	#name : #SmaCCNFAScanner,
-	#superclass : #SmaCCScanner,
+	#name : 'SmaCCNFAScanner',
+	#superclass : 'SmaCCScanner',
 	#instVars : [
 		'nfa',
-		'compiledConditions'
+		'compiledConditions',
+		'scopeTransitions',
+		'startIndex',
+		'startIndexEnabled'
 	],
 	#classInstVars : [
 		'nfa'
 	],
-	#category : #'SmaCC_NFA_Scanner'
+	#category : 'SmaCC_NFA_Scanner',
+	#package : 'SmaCC_NFA_Scanner'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNFAScanner class >> nfa [
 	^ nfa
 		ifNil: [ nfa := ((SmaCCGrammarCompiler new
@@ -21,22 +25,22 @@ SmaCCNFAScanner class >> nfa [
 					scannerCompiler) createFullRegex asNFA asNFAWithoutEpsilonTransitions ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNFAScanner class >> nfa: anObject [
 	nfa := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNFAScanner class >> parserClass [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'private' }
 SmaCCNFAScanner >> advanceFrom: aNode into: states accepts: accepts [
 	| hasChar |
 	hasChar := false.
 	aNode action notNil ifTrue: [ accepts addAll: aNode action ].
-	aNode transitions
+	(self transitionsFor: aNode)
 		do: [ :each | 
 			each isCharacterTransition ifTrue: [ hasChar := true ].
 			(each isEpsilonTransition
@@ -49,11 +53,51 @@ SmaCCNFAScanner >> advanceFrom: aNode into: states accepts: accepts [
 	hasChar ifTrue: [ states add: aNode ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'private' }
+SmaCCNFAScanner >> advanceFromStartInto: states accepts: accepts [
+	| root original transitions hasChar |
+	root := self nfa.
+	original := self transitionsFor: root.
+	(original size <= 16 or: [ stream atEnd ])
+		ifTrue: [ ^ self
+				advanceFrom: root
+				into: states
+				accepts: accepts ].
+	startIndex ifNil: [ startIndex := SmaCCNFAStartIndex new ].
+	transitions := startIndex
+			transitions: original
+			forScope: self scope
+			character: stream peek.
+	transitions size = original size
+		ifTrue: [ ^ self
+				advanceFrom: root
+				into: states
+				accepts: accepts ].
+	hasChar := false.
+	root action notNil ifTrue: [ accepts addAll: root action ].
+	transitions
+		do: [ :edge | 
+			edge isCharacterTransition ifTrue: [ hasChar := true ].
+			(edge isEpsilonTransition
+				or: [ (edge isStateEdge and: [ edge transitionObjects includes: self scope ])
+						or: [ edge isConditionEdge and: [ self isConditionSatisfied: edge ] ] ])
+				ifTrue: [ self
+						advanceFrom: edge to
+						into: states
+						accepts: accepts ] ].
+	hasChar ifTrue: [ states add: root ].
+	states isEmpty
+		ifTrue: [ self
+				advanceFrom: root
+				into: states
+				accepts: accepts ]
+]
+
+{ #category : 'private' }
 SmaCCNFAScanner >> checkForKeyword: aString [
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'private' }
 SmaCCNFAScanner >> compiledConditionsFor: anEdge [
 	^ (compiledConditions ifNil: [ compiledConditions := IdentityDictionary new ])
 		at: anEdge
@@ -65,37 +109,43 @@ SmaCCNFAScanner >> compiledConditionsFor: anEdge [
 						evaluate ] ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'testing' }
 SmaCCNFAScanner >> isConditionSatisfied: anEdge [
 	^ (self compiledConditionsFor: anEdge) anySatisfy: [ :each | each value ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNFAScanner >> nfa [
-	^ nfa ifNil: [ nfa := self class nfa ]
+	nfa ifNil: [ self nfa: self class nfa ].
+	^ nfa
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SmaCCNFAScanner >> nfa: anObject [
-	nfa := anObject
+	nfa := anObject.
+	scopeTransitions := nil.
+	startIndex := nil.
+	startIndexEnabled := nfa transitions size > 16
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'scanning' }
 SmaCCNFAScanner >> scanForToken [
 	| states accepts |
 	states := IdentitySet new.
 	accepts := Set new.
-	self
-		advanceFrom: self nfa
-		into: states
-		accepts: accepts.
+	startIndexEnabled
+		ifTrue: [ self advanceFromStartInto: states accepts: accepts ]
+		ifFalse: [ self
+				advanceFrom: self nfa
+				into: states
+				accepts: accepts ].
 	accepts notEmpty
 		ifTrue: [ self recordMatch: accepts asSortedCollection asArray ].
 	[ states notEmpty ] whileTrue: [ states := self scanNextCharacterFrom: states ].
 	^ self reportLastMatch
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'scanning' }
 SmaCCNFAScanner >> scanNextCharacterFrom: states [
 	| newStates accepts |
 	newStates := IdentitySet new.
@@ -112,7 +162,7 @@ SmaCCNFAScanner >> scanNextCharacterFrom: states [
 	^ newStates
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'scanning' }
 SmaCCNFAScanner >> stepNextCharacterFrom: aNode into: newStates accepts: accepts [
 	aNode transitions
 		do: [ :each | 
@@ -122,4 +172,14 @@ SmaCCNFAScanner >> stepNextCharacterFrom: aNode into: newStates accepts: accepts
 						advanceFrom: each to
 						into: newStates
 						accepts: accepts ] ]
+]
+
+{ #category : 'private' }
+SmaCCNFAScanner >> transitionsFor: aNode [
+	aNode == nfa ifFalse: [ ^ aNode transitions ].
+	^ (scopeTransitions ifNil: [ scopeTransitions := IdentityDictionary new ])
+		at: self scope
+		ifAbsentPut: [ (aNode transitions
+				select: [ :edge | edge isStateEdge not or: [ edge transitionObjects includes: self scope ] ])
+				asArray ]
 ]
