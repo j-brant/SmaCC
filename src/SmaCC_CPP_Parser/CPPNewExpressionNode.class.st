@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPNewExpressionNode,
-	#superclass : #CPPExpressionNode,
+	#name : 'CPPNewExpressionNode',
+	#superclass : 'CPPExpressionNode',
 	#instVars : [
 		'newToken',
 		'type',
@@ -10,55 +10,57 @@ Class {
 		'commas',
 		'colonColon'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNewExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewExpressionNode >> colonColon [
 	^ colonColon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewExpressionNode >> colonColon: aSmaCCToken [
 	colonColon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewExpressionNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewExpressionNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewExpressionNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewExpressionNode >> compositeTokenVariables [
 	^ #(#ellipsises #commas #leftParens #rightParens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewExpressionNode >> ellipsises [
 	^ ellipsises
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewExpressionNode >> ellipsises: anOrderedCollection [
 	ellipsises := anOrderedCollection
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPNewExpressionNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
@@ -66,12 +68,12 @@ CPPNewExpressionNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewExpressionNode >> initializer [
 	^ initializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewExpressionNode >> initializer: aCPPProgramNode [
 	self initializer notNil
 		ifTrue: [ self initializer parent: nil ].
@@ -80,32 +82,32 @@ CPPNewExpressionNode >> initializer: aCPPProgramNode [
 		ifTrue: [ self initializer parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewExpressionNode >> newToken [
 	^ newToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewExpressionNode >> newToken: aSmaCCToken [
 	newToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewExpressionNode >> nodeVariables [
 	^ #(#type #initializer)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewExpressionNode >> tokenVariables [
 	^ #(#newToken #colonColon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewExpressionNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewExpressionNode >> type: aCPPProgramNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].
@@ -114,12 +116,12 @@ CPPNewExpressionNode >> type: aCPPProgramNode [
 		ifTrue: [ self type parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewExpressionNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNewExpressionNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

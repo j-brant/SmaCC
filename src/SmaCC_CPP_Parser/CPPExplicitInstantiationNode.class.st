@@ -1,25 +1,27 @@
 Class {
-	#name : #CPPExplicitInstantiationNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPExplicitInstantiationNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'templateToken',
 		'declaration',
 		'externToken'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExplicitInstantiationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExplicitInstantiation: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExplicitInstantiationNode >> declaration [
 	^ declaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExplicitInstantiationNode >> declaration: aCPPProgramNode [
 	self declaration notNil
 		ifTrue: [ self declaration parent: nil ].
@@ -28,32 +30,32 @@ CPPExplicitInstantiationNode >> declaration: aCPPProgramNode [
 		ifTrue: [ self declaration parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExplicitInstantiationNode >> externToken [
 	^ externToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExplicitInstantiationNode >> externToken: aSmaCCToken [
 	externToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExplicitInstantiationNode >> nodeVariables [
 	^ #(#declaration)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExplicitInstantiationNode >> templateToken [
 	^ templateToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExplicitInstantiationNode >> templateToken: aSmaCCToken [
 	templateToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExplicitInstantiationNode >> tokenVariables [
 	^ #(#templateToken #externToken)
 ]

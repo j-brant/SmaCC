@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPNestedNameSpecifierNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPNestedNameSpecifierNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'colonColon',
 		'type',
@@ -9,40 +9,42 @@ Class {
 		'templateIdentifier',
 		'templateToken'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNestedNameSpecifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNestedNameSpecifier: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNestedNameSpecifierNode >> colonColon [
 	^ colonColon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNestedNameSpecifierNode >> colonColon: aSmaCCToken [
 	colonColon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNestedNameSpecifierNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNestedNameSpecifierNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNestedNameSpecifierNode >> nameSpecifier [
 	^ nameSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNestedNameSpecifierNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 	self nameSpecifier notNil
 		ifTrue: [ self nameSpecifier parent: nil ].
@@ -51,17 +53,17 @@ CPPNestedNameSpecifierNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 		ifTrue: [ self nameSpecifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNestedNameSpecifierNode >> nodeVariables [
 	^ #(#type #nameSpecifier #templateIdentifier)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNestedNameSpecifierNode >> templateIdentifier [
 	^ templateIdentifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNestedNameSpecifierNode >> templateIdentifier: aCPPTemplateIdentifierNode [
 	self templateIdentifier notNil
 		ifTrue: [ self templateIdentifier parent: nil ].
@@ -70,27 +72,27 @@ CPPNestedNameSpecifierNode >> templateIdentifier: aCPPTemplateIdentifierNode [
 		ifTrue: [ self templateIdentifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNestedNameSpecifierNode >> templateToken [
 	^ templateToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNestedNameSpecifierNode >> templateToken: aSmaCCToken [
 	templateToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNestedNameSpecifierNode >> tokenVariables [
 	^ #(#colonColon #name #templateToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNestedNameSpecifierNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPNestedNameSpecifierNode >> type: aCPPProgramNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].

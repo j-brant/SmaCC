@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPConditionalExpressionNode,
-	#superclass : #CPPExpressionNode,
+	#name : 'CPPConditionalExpressionNode',
+	#superclass : 'CPPExpressionNode',
 	#instVars : [
 		'booleanExpression',
 		'questionMark',
@@ -8,20 +8,22 @@ Class {
 		'colon',
 		'falseExpression'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionalExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitConditionalExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionalExpressionNode >> booleanExpression [
 	^ booleanExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionalExpressionNode >> booleanExpression: aCPPExpressionNode [
 	self booleanExpression notNil
 		ifTrue: [ self booleanExpression parent: nil ].
@@ -30,22 +32,22 @@ CPPConditionalExpressionNode >> booleanExpression: aCPPExpressionNode [
 		ifTrue: [ self booleanExpression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionalExpressionNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionalExpressionNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionalExpressionNode >> falseExpression [
 	^ falseExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionalExpressionNode >> falseExpression: aCPPExpressionNode [
 	self falseExpression notNil
 		ifTrue: [ self falseExpression parent: nil ].
@@ -54,32 +56,32 @@ CPPConditionalExpressionNode >> falseExpression: aCPPExpressionNode [
 		ifTrue: [ self falseExpression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionalExpressionNode >> nodeVariables [
 	^ #(#booleanExpression #trueExpression #falseExpression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionalExpressionNode >> questionMark [
 	^ questionMark
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionalExpressionNode >> questionMark: aSmaCCToken [
 	questionMark := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionalExpressionNode >> tokenVariables [
 	^ #(#questionMark #colon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionalExpressionNode >> trueExpression [
 	^ trueExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionalExpressionNode >> trueExpression: aCPPExpressionNode [
 	self trueExpression notNil
 		ifTrue: [ self trueExpression parent: nil ].

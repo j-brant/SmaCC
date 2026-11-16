@@ -1,24 +1,26 @@
 Class {
-	#name : #CPPExpressionStatementNode,
-	#superclass : #CPPStatementNode,
+	#name : 'CPPExpressionStatementNode',
+	#superclass : 'CPPStatementNode',
 	#instVars : [
 		'semicolon',
 		'expression'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExpressionStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionStatementNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionStatementNode >> expression: aCPPExpressionNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
@@ -27,22 +29,22 @@ CPPExpressionStatementNode >> expression: aCPPExpressionNode [
 		ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionStatementNode >> nodeVariables [
 	^ #(#expression)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionStatementNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionStatementNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPExpressionStatementNode >> tokenVariables [
 	^ #(#semicolon)
 ]

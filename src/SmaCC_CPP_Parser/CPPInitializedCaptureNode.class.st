@@ -1,23 +1,25 @@
 Class {
-	#name : #CPPInitializedCaptureNode,
-	#superclass : #CPPCaptureNode,
+	#name : 'CPPInitializedCaptureNode',
+	#superclass : 'CPPCaptureNode',
 	#instVars : [
 		'initializer'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPInitializedCaptureNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitInitializedCapture: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPInitializedCaptureNode >> initializer [
 	^ initializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPInitializedCaptureNode >> initializer: aCPPProgramNode [
 	self initializer notNil
 		ifTrue: [ self initializer parent: nil ].
@@ -26,7 +28,7 @@ CPPInitializedCaptureNode >> initializer: aCPPProgramNode [
 		ifTrue: [ self initializer parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPInitializedCaptureNode >> nodeVariables [
 	^ #(#initializer)
 ]

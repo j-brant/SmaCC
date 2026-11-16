@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPBracedListInitializerNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPBracedListInitializerNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'leftBrace',
 		'values',
@@ -8,45 +8,47 @@ Class {
 		'commas',
 		'rightBrace'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBracedListInitializerNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBracedListInitializer: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBracedListInitializerNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBracedListInitializerNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBracedListInitializerNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBracedListInitializerNode >> compositeTokenVariables [
 	^ #(#ellipsises #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBracedListInitializerNode >> ellipsises [
 	^ ellipsises
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBracedListInitializerNode >> ellipsises: anOrderedCollection [
 	ellipsises := anOrderedCollection
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPBracedListInitializerNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
@@ -54,37 +56,37 @@ CPPBracedListInitializerNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBracedListInitializerNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBracedListInitializerNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBracedListInitializerNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBracedListInitializerNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBracedListInitializerNode >> tokenVariables [
 	^ #(#leftBrace #rightBrace)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBracedListInitializerNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBracedListInitializerNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

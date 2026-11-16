@@ -1,626 +1,628 @@
 Trait {
-	#name : #TCPPProgramNodeVisitor,
+	#name : 'TCPPProgramNodeVisitor',
 	#traits : 'TSmaCCParseNodeVisitor',
 	#classTraits : 'TSmaCCParseNodeVisitor classTrait',
-	#category : #'SmaCC_CPP_Parser-C++ Parser'
+	#category : 'SmaCC_CPP_Parser-C++ Parser',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitAbstractDeclarator: anAbstractDeclarator [
 	^ self visitProgram: anAbstractDeclarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitAbstractPackDeclarator: anAbstractPackDeclarator [
 	^ self visitProgram: anAbstractPackDeclarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitAliasDeclaration: anAliasDeclaration [
 	^ self visitProgram: anAliasDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitAlignmentSpecifier: anAlignmentSpecifier [
 	^ self visitProgram: anAlignmentSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitAlignofExpression: anAlignofExpression [
 	^ self visitExpression: anAlignofExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitAsmDefinition: anAsmDefinition [
 	^ self visitProgram: anAsmDefinition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitAssignmentExpression: anAssignmentExpression [
 	^ self visitExpression: anAssignmentExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitAttribute: anAttribute [
 	^ self visitProgram: anAttribute
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitAttributeDeclaration: anAttributeDeclaration [
 	^ self visitProgram: anAttributeDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitAttributeSpecifier: anAttributeSpecifier [
 	^ self visitProgram: anAttributeSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitAutoType: anAutoType [
 	^ self visitType: anAutoType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitBalancedToken: aBalancedToken [
 	^ self visitProgram: aBalancedToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitBaseSpecifier: aBaseSpecifier [
 	^ self visitProgram: aBaseSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitBinaryExpression: aBinaryExpression [
 	^ self visitExpression: aBinaryExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitBooleanLiteral: aBooleanLiteral [
 	^ self visitLiteral: aBooleanLiteral
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitBracedInitializerExpression: aBracedInitializerExpression [
 	^ self visitExpression: aBracedInitializerExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitBracedListInitializer: aBracedListInitializer [
 	^ self visitProgram: aBracedListInitializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitBreakStatement: aBreakStatement [
 	^ self visitStatement: aBreakStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitCVQualifier: aCVQualifier [
 	^ self visitProgram: aCVQualifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitCallExpression: aCallExpression [
 	^ self visitExpression: aCallExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitCapture: aCapture [
 	^ self visitProgram: aCapture
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitCaseLabeledStatement: aCaseLabeledStatement [
 	^ self visitStatement: aCaseLabeledStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitCastExpression: aCastExpression [
 	^ self visitExpression: aCastExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitCatchHandler: aCatchHandler [
 	^ self visitProgram: aCatchHandler
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitCharacterLiteral: aCharacterLiteral [
 	^ self visitLiteral: aCharacterLiteral
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitClassSpecifier: aClassSpecifier [
 	^ self visitProgram: aClassSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitClassType: aClassType [
 	^ self visitType: aClassType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitClassTypeParameter: aClassTypeParameter [
 	^ self visitTypeParameter: aClassTypeParameter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitCommaExpression: aCommaExpression [
 	^ self visitExpression: aCommaExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitCompoundStatement: aCompoundStatement [
 	^ self visitStatement: aCompoundStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitCondition: aCondition [
 	^ self visitProgram: aCondition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitConditionalExpression: aConditionalExpression [
 	^ self visitExpression: aConditionalExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitContinueStatement: aContinueStatement [
 	^ self visitStatement: aContinueStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitConversionDeclarator: aConversionDeclarator [
 	^ self visitProgram: aConversionDeclarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitConversionExpression: aConversionExpression [
 	^ self visitExpression: aConversionExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitConversionFunctionIdentifier: aConversionFunctionIdentifier [
 	^ self visitProgram: aConversionFunctionIdentifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitCtorInitializer: aCtorInitializer [
 	^ self visitProgram: aCtorInitializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitDeclSpecifier: aDeclSpecifier [
 	^ self visitProgram: aDeclSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitDeclarator: aDeclarator [
 	^ self visitProgram: aDeclarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitDecltypeSpecifier: aDecltypeSpecifier [
 	^ self visitProgram: aDecltypeSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitDefaultLabeledStatement: aDefaultLabeledStatement [
 	^ self visitStatement: aDefaultLabeledStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitDeleteExpression: aDeleteExpression [
 	^ self visitExpression: aDeleteExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitDestructorIdentifier: aDestructorIdentifier [
 	^ self visitProgram: aDestructorIdentifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitDoWhileStatement: aDoWhileStatement [
 	^ self visitStatement: aDoWhileStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitDynamicExceptionSpecification: aDynamicExceptionSpecification [
 	^ self visitProgram: aDynamicExceptionSpecification
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitElaboratedTypeSpecifier: anElaboratedTypeSpecifier [
 	^ self visitProgram: anElaboratedTypeSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitEnumDefinition: anEnumDefinition [
 	^ self visitProgram: anEnumDefinition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitEnumSpecifier: anEnumSpecifier [
 	^ self visitProgram: anEnumSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitEqualInitializer: anEqualInitializer [
 	^ self visitProgram: anEqualInitializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitExceptionDeclaration: anExceptionDeclaration [
 	^ self visitProgram: anExceptionDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitExplicitInstantiation: anExplicitInstantiation [
 	^ self visitProgram: anExplicitInstantiation
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitExplicitSpecialization: anExplicitSpecialization [
 	^ self visitProgram: anExplicitSpecialization
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitExpression: anExpression [
 	^ self visitProgram: anExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitExpressionListInitializer: anExpressionListInitializer [
 	^ self visitProgram: anExpressionListInitializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitExpressionStatement: anExpressionStatement [
 	^ self visitStatement: anExpressionStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitForRangeDeclaration: aForRangeDeclaration [
 	^ self visitProgram: aForRangeDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitForStatement: aForStatement [
 	^ self visitStatement: aForStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitFunctionDefinition: aFunctionDefinition [
 	^ self visitProgram: aFunctionDefinition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitGotoStatement: aGotoStatement [
 	^ self visitStatement: aGotoStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitIdentifier: anIdentifier [
 	^ self visitProgram: anIdentifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitIdentifierExpression: anIdentifierExpression [
 	^ self visitExpression: anIdentifierExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitIfStatement: anIfStatement [
 	^ self visitStatement: anIfStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitInitDeclarator: anInitDeclarator [
 	^ self visitProgram: anInitDeclarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitInitializedCapture: anInitializedCapture [
 	^ self visitCapture: anInitializedCapture
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitLabeledStatement: aLabeledStatement [
 	^ self visitStatement: aLabeledStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitLambdaExpression: aLambdaExpression [
 	^ self visitExpression: aLambdaExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitLinkageSpecification: aLinkageSpecification [
 	^ self visitProgram: aLinkageSpecification
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitLiteral: aLiteral [
 	^ self visitExpression: aLiteral
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitLiteralFunctionIdentifier: aLiteralFunctionIdentifier [
 	^ self visitProgram: aLiteralFunctionIdentifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitMemInitializer: aMemInitializer [
 	^ self visitProgram: aMemInitializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitMemberDeclaration: aMemberDeclaration [
 	^ self visitProgram: aMemberDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitMemberDeclarator: aMemberDeclarator [
 	^ self visitProgram: aMemberDeclarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitMemberExpression: aMemberExpression [
 	^ self visitExpression: aMemberExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitNamespaceAliasDefinition: aNamespaceAliasDefinition [
 	^ self visitProgram: aNamespaceAliasDefinition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitNestedNameSpecifier: aNestedNameSpecifier [
 	^ self visitProgram: aNestedNameSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitNewDeclarator: aNewDeclarator [
 	^ self visitProgram: aNewDeclarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitNewExpression: aNewExpression [
 	^ self visitExpression: aNewExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitNewInitializer: aNewInitializer [
 	^ self visitProgram: aNewInitializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitNewTypeIdentifier: aNewTypeIdentifier [
 	^ self visitProgram: aNewTypeIdentifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitNoExceptionSpecificiation: aNoExceptionSpecificiation [
 	^ self visitProgram: aNoExceptionSpecificiation
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitNoexceptExpression: aNoexceptExpression [
 	^ self visitExpression: aNoexceptExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitNumericLiteral: aNumericLiteral [
 	^ self visitLiteral: aNumericLiteral
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitOpaqueEnumDeclaration: anOpaqueEnumDeclaration [
 	^ self visitProgram: anOpaqueEnumDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitOperatorFunctionIdentifier: anOperatorFunctionIdentifier [
 	^ self visitProgram: anOperatorFunctionIdentifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitOperatorFunctionTemplateIdentifier: anOperatorFunctionTemplateIdentifier [
 	^ self visitProgram: anOperatorFunctionTemplateIdentifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitOriginalNamespaceDefinition: anOriginalNamespaceDefinition [
 	^ self visitProgram: anOriginalNamespaceDefinition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitParameterDeclaration: aParameterDeclaration [
 	^ self visitProgram: aParameterDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitPointerLiteral: aPointerLiteral [
 	^ self visitLiteral: aPointerLiteral
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitPointerOperator: aPointerOperator [
 	^ self visitProgram: aPointerOperator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitPostfixExpression: aPostfixExpression [
 	^ self visitExpression: aPostfixExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitPrefixExpression: aPrefixExpression [
 	^ self visitExpression: aPrefixExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitPrimitiveType: aPrimitiveType [
 	^ self visitType: aPrimitiveType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitProgram: aProgram [
 	^ self visitSmaCCParseNode: aProgram
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitPseudoDestructorName: aPseudoDestructorName [
 	^ self visitProgram: aPseudoDestructorName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitPtrAbstractDeclarator: aPtrAbstractDeclarator [
 	^ self visitProgram: aPtrAbstractDeclarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitQualifiedIdentifier: aQualifiedIdentifier [
 	^ self visitProgram: aQualifiedIdentifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitRangeForStatement: aRangeForStatement [
 	^ self visitStatement: aRangeForStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitReturnStatement: aReturnStatement [
 	^ self visitStatement: aReturnStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitSimpleDeclaration: aSimpleDeclaration [
 	^ self visitProgram: aSimpleDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitSizeofExpression: aSizeofExpression [
 	^ self visitExpression: aSizeofExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitStatement: aStatement [
 	^ self visitProgram: aStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitStaticAssertDeclaration: aStaticAssertDeclaration [
 	^ self visitProgram: aStaticAssertDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitStringLiteral: aStringLiteral [
 	^ self visitLiteral: aStringLiteral
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitSubscriptExpression: aSubscriptExpression [
 	^ self visitExpression: aSubscriptExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitSwitchStatement: aSwitchStatement [
 	^ self visitStatement: aSwitchStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitTemplateDeclaration: aTemplateDeclaration [
 	^ self visitProgram: aTemplateDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitTemplateIdentifier: aTemplateIdentifier [
 	^ self visitProgram: aTemplateIdentifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitTemplateType: aTemplateType [
 	^ self visitType: aTemplateType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitTemplateTypeParameter: aTemplateTypeParameter [
 	^ self visitTypeParameter: aTemplateTypeParameter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitThisExpression: aThisExpression [
 	^ self visitExpression: aThisExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitThrowExpression: aThrowExpression [
 	^ self visitExpression: aThrowExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitTranslationUnit: aTranslationUnit [
 	^ self visitProgram: aTranslationUnit
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitTryStatement: aTryStatement [
 	^ self visitStatement: aTryStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitType: aType [
 	^ self visitProgram: aType
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitTypeIdentifier: aTypeIdentifier [
 	^ self visitProgram: aTypeIdentifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitTypeNameSpecifier: aTypeNameSpecifier [
 	^ self visitProgram: aTypeNameSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitTypeParameter: aTypeParameter [
 	^ self visitProgram: aTypeParameter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitTypeidExpression: aTypeidExpression [
 	^ self visitExpression: aTypeidExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitTypenameTypeParameter: aTypenameTypeParameter [
 	^ self visitTypeParameter: aTypenameTypeParameter
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitUnnamedNamespaceDefinition: anUnnamedNamespaceDefinition [
 	^ self visitProgram: anUnnamedNamespaceDefinition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitUserDefinedLiteral: anUserDefinedLiteral [
 	^ self visitLiteral: anUserDefinedLiteral
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitUsingDeclaration: anUsingDeclaration [
 	^ self visitProgram: anUsingDeclaration
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitUsingDirective: anUsingDirective [
 	^ self visitProgram: anUsingDirective
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCPPProgramNodeVisitor >> visitWhileStatement: aWhileStatement [
 	^ self visitStatement: aWhileStatement
 ]

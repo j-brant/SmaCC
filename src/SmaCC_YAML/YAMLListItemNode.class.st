@@ -1,49 +1,51 @@
 Class {
-	#name : #YAMLListItemNode,
-	#superclass : #YAMLParseNode,
+	#name : 'YAMLListItemNode',
+	#superclass : 'YAMLParseNode',
 	#instVars : [
 		'minus',
 		'value'
 	],
-	#category : #'SmaCC_YAML-Parser'
+	#category : 'SmaCC_YAML-Parser',
+	#package : 'SmaCC_YAML',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLListItemNode >> acceptVisitor: aParseVisitor [
 	^ aParseVisitor visitListItem: self
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 YAMLListItemNode >> createObject [
 	^ value ifNotNil: [ value isErrorNode ifFalse: [ value object ] ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLListItemNode >> minus [
 	^ minus
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLListItemNode >> minus: aSmaCCToken [
 	minus := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLListItemNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLListItemNode >> tokenVariables [
 	^ #(#minus)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLListItemNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 YAMLListItemNode >> value: aYAMLValueNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aYAMLValueNode.

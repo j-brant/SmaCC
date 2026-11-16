@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPClassSpecifierNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPClassSpecifierNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'classToken',
 		'structToken',
@@ -17,97 +17,99 @@ Class {
 		'declarations',
 		'accessTokens'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitClassSpecifier: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> accessTokens [
 	^ accessTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> accessTokens: anOrderedCollection [
 	accessTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> classToken [
 	^ classToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> classToken: aSmaCCToken [
 	classToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> colons [
 	^ colons
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> colons: anOrderedCollection [
 	colons := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> compositeNodeVariables [
 	^ #(#specifiers #declarations)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> compositeTokenVariables [
 	^ #(#colons #ellipsises #commas #accessTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> declarations [
 	^ declarations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> declarations: anOrderedCollection [
 	self setParents: self declarations to: nil.
 	declarations := anOrderedCollection.
 	self setParents: self declarations to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> ellipsises [
 	^ ellipsises
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> ellipsises: anOrderedCollection [
 	ellipsises := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> finalToken [
 	^ finalToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> finalToken: aSmaCCToken [
 	finalToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPClassSpecifierNode >> initialize [
 	super initialize.
 	colons := OrderedCollection new: 2.
@@ -118,22 +120,22 @@ CPPClassSpecifierNode >> initialize [
 	accessTokens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> name: aCPPProgramNode [
 	self name notNil
 		ifTrue: [ self name parent: nil ].
@@ -142,12 +144,12 @@ CPPClassSpecifierNode >> name: aCPPProgramNode [
 		ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> nameSpecifier [
 	^ nameSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 	self nameSpecifier notNil
 		ifTrue: [ self nameSpecifier parent: nil ].
@@ -156,54 +158,54 @@ CPPClassSpecifierNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 		ifTrue: [ self nameSpecifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> nodeVariables [
 	^ #(#name #nameSpecifier)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> specifiers [
 	^ specifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> specifiers: anOrderedCollection [
 	self setParents: self specifiers to: nil.
 	specifiers := anOrderedCollection.
 	self setParents: self specifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> structToken [
 	^ structToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> structToken: aSmaCCToken [
 	structToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> tokenVariables [
 	^ #(#classToken #structToken #unionToken #finalToken #leftBrace #rightBrace)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> unionToken [
 	^ unionToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassSpecifierNode >> unionToken: aSmaCCToken [
 	unionToken := aSmaCCToken
 ]

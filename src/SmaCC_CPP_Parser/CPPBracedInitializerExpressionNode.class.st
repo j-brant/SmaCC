@@ -1,24 +1,26 @@
 Class {
-	#name : #CPPBracedInitializerExpressionNode,
-	#superclass : #CPPExpressionNode,
+	#name : 'CPPBracedInitializerExpressionNode',
+	#superclass : 'CPPExpressionNode',
 	#instVars : [
 		'typeSpecifier',
 		'initializerList'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBracedInitializerExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBracedInitializerExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBracedInitializerExpressionNode >> initializerList [
 	^ initializerList
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBracedInitializerExpressionNode >> initializerList: aCPPBracedListInitializerNode [
 	self initializerList notNil
 		ifTrue: [ self initializerList parent: nil ].
@@ -27,17 +29,17 @@ CPPBracedInitializerExpressionNode >> initializerList: aCPPBracedListInitializer
 		ifTrue: [ self initializerList parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBracedInitializerExpressionNode >> nodeVariables [
 	^ #(#typeSpecifier #initializerList)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBracedInitializerExpressionNode >> typeSpecifier [
 	^ typeSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPBracedInitializerExpressionNode >> typeSpecifier: aCPPProgramNode [
 	self typeSpecifier notNil
 		ifTrue: [ self typeSpecifier parent: nil ].

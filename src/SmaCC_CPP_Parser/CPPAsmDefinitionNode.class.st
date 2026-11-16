@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPAsmDefinitionNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPAsmDefinitionNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'asmToken',
 		'leftParen',
@@ -8,65 +8,67 @@ Class {
 		'rightParen',
 		'semicolon'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAsmDefinitionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAsmDefinition: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAsmDefinitionNode >> asmToken [
 	^ asmToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAsmDefinitionNode >> asmToken: aSmaCCToken [
 	asmToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAsmDefinitionNode >> code [
 	^ code
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAsmDefinitionNode >> code: aSmaCCToken [
 	code := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAsmDefinitionNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAsmDefinitionNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAsmDefinitionNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAsmDefinitionNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAsmDefinitionNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAsmDefinitionNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPAsmDefinitionNode >> tokenVariables [
 	^ #(#asmToken #leftParen #code #rightParen #semicolon)
 ]

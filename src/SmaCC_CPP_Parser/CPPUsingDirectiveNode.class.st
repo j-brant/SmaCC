@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPUsingDirectiveNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPUsingDirectiveNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'usingToken',
 		'namespaceToken',
@@ -9,31 +9,33 @@ Class {
 		'nameSpecifier',
 		'specifiers'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDirectiveNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUsingDirective: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDirectiveNode >> compositeNodeVariables [
 	^ #(#specifiers)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPUsingDirectiveNode >> initialize [
 	super initialize.
 	specifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDirectiveNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDirectiveNode >> name: aCPPIdentifierNode [
 	self name notNil
 		ifTrue: [ self name parent: nil ].
@@ -42,12 +44,12 @@ CPPUsingDirectiveNode >> name: aCPPIdentifierNode [
 		ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDirectiveNode >> nameSpecifier [
 	^ nameSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDirectiveNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 	self nameSpecifier notNil
 		ifTrue: [ self nameSpecifier parent: nil ].
@@ -56,54 +58,54 @@ CPPUsingDirectiveNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 		ifTrue: [ self nameSpecifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDirectiveNode >> namespaceToken [
 	^ namespaceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDirectiveNode >> namespaceToken: aSmaCCToken [
 	namespaceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDirectiveNode >> nodeVariables [
 	^ #(#name #nameSpecifier)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDirectiveNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDirectiveNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDirectiveNode >> specifiers [
 	^ specifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDirectiveNode >> specifiers: anOrderedCollection [
 	self setParents: self specifiers to: nil.
 	specifiers := anOrderedCollection.
 	self setParents: self specifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDirectiveNode >> tokenVariables [
 	^ #(#usingToken #namespaceToken #semicolon)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDirectiveNode >> usingToken [
 	^ usingToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUsingDirectiveNode >> usingToken: aSmaCCToken [
 	usingToken := aSmaCCToken
 ]

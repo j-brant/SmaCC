@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPFunctionDefinitionNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPFunctionDefinitionNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'declarator',
 		'body',
@@ -12,30 +12,32 @@ Class {
 		'virtualSpecifierTokens',
 		'specifiers'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> _deleteToken [
 	^ _deleteToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> _deleteToken: aSmaCCToken [
 	_deleteToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFunctionDefinition: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> body [
 	^ body
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> body: aCPPStatementNode [
 	self body notNil
 		ifTrue: [ self body parent: nil ].
@@ -44,22 +46,27 @@ CPPFunctionDefinitionNode >> body: aCPPStatementNode [
 		ifTrue: [ self body parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'accessing' }
+CPPFunctionDefinitionNode >> children [
+	^ self specifiers , { self declarator . self body }
+]
+
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> compositeNodeVariables [
 	^ #(#specifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> compositeTokenVariables [
 	^ #(#virtualSpecifierTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> constructor [
 	^ constructor
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> constructor: aCPPCtorInitializerNode [
 	self constructor notNil
 		ifTrue: [ self constructor parent: nil ].
@@ -68,12 +75,12 @@ CPPFunctionDefinitionNode >> constructor: aCPPCtorInitializerNode [
 		ifTrue: [ self constructor parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> declarator [
 	^ declarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> declarator: aCPPDeclaratorNode [
 	self declarator notNil
 		ifTrue: [ self declarator parent: nil ].
@@ -82,71 +89,89 @@ CPPFunctionDefinitionNode >> declarator: aCPPDeclaratorNode [
 		ifTrue: [ self declarator parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> defaultToken [
 	^ defaultToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> defaultToken: aSmaCCToken [
 	defaultToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> equal [
 	^ equal
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> equal: aSmaCCToken [
 	equal := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPFunctionDefinitionNode >> initialize [
 	super initialize.
 	virtualSpecifierTokens := OrderedCollection new: 2.
 	specifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'inspector - extensions' }
+CPPFunctionDefinitionNode >> inspectionSmaccAST [
+
+	<inspectorPresentationOrder: 1.1 title: 'SmaCC'>
+	^ SpTreeTablePresenter new
+		  addColumn: (SpCompositeTableColumn new
+"				   addColumn: ((SpImageTableColumn evaluated: #mooseIcon)
+						    width: 20;
+						    yourself);"
+				   addColumn:
+				   (SpStringTableColumn evaluated: [ :node | node display ]);
+				   yourself);
+		  children: [ :node |
+			  node children ];
+		  roots: { self };
+		  beResizable
+]
+
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> nodeVariables [
 	^ #(#declarator #body #constructor)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> semicolon [
 	^ semicolon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> semicolon: aSmaCCToken [
 	semicolon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> specifiers [
 	^ specifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> specifiers: anOrderedCollection [
 	self setParents: self specifiers to: nil.
 	specifiers := anOrderedCollection.
 	self setParents: self specifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> tokenVariables [
 	^ #(#equal #defaultToken #semicolon #_deleteToken)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> virtualSpecifierTokens [
 	^ virtualSpecifierTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPFunctionDefinitionNode >> virtualSpecifierTokens: anOrderedCollection [
 	virtualSpecifierTokens := anOrderedCollection
 ]

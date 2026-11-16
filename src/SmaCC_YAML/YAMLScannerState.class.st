@@ -1,64 +1,66 @@
 Class {
-	#name : #YAMLScannerState,
-	#superclass : #SmaCCScannerState,
+	#name : 'YAMLScannerState',
+	#superclass : 'SmaCCScannerState',
 	#instVars : [
 		'opened',
 		'tokens',
 		'indents',
 		'documentStringLiteral'
 	],
-	#category : #'SmaCC_YAML-Parser'
+	#category : 'SmaCC_YAML-Parser',
+	#package : 'SmaCC_YAML',
+	#tag : 'Parser'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 YAMLScannerState >> = anObject [
 	^ super = anObject
 		and: [ self indents = anObject indents
 				and: [ self opened = anObject opened and: [ self tokens = anObject tokens ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLScannerState >> documentStringLiteral [
 	^ documentStringLiteral
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLScannerState >> documentStringLiteral: anObject [
 	documentStringLiteral := anObject
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 YAMLScannerState >> hash [
 	^ ((super hash hashMultiply bitXor: self indents hash) hashMultiply
 		bitXor: self opened hash) hashMultiply bitXor: self tokens hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLScannerState >> indents [
 	^ indents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLScannerState >> indents: anObject [
 	indents := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLScannerState >> opened [
 	^ opened
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLScannerState >> opened: anObject [
 	opened := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLScannerState >> tokens [
 	^ tokens
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 YAMLScannerState >> tokens: anObject [
 	tokens := anObject
 ]

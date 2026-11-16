@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPUnnamedNamespaceDefinitionNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPUnnamedNamespaceDefinitionNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'namespaceToken',
 		'leftBrace',
@@ -8,78 +8,80 @@ Class {
 		'rightBrace',
 		'inlineToken'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUnnamedNamespaceDefinitionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUnnamedNamespaceDefinition: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUnnamedNamespaceDefinitionNode >> compositeNodeVariables [
 	^ #(#declarations)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUnnamedNamespaceDefinitionNode >> declarations [
 	^ declarations
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUnnamedNamespaceDefinitionNode >> declarations: anOrderedCollection [
 	self setParents: self declarations to: nil.
 	declarations := anOrderedCollection.
 	self setParents: self declarations to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPUnnamedNamespaceDefinitionNode >> initialize [
 	super initialize.
 	declarations := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUnnamedNamespaceDefinitionNode >> inlineToken [
 	^ inlineToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUnnamedNamespaceDefinitionNode >> inlineToken: aSmaCCToken [
 	inlineToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUnnamedNamespaceDefinitionNode >> leftBrace [
 	^ leftBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUnnamedNamespaceDefinitionNode >> leftBrace: aSmaCCToken [
 	leftBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUnnamedNamespaceDefinitionNode >> namespaceToken [
 	^ namespaceToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUnnamedNamespaceDefinitionNode >> namespaceToken: aSmaCCToken [
 	namespaceToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUnnamedNamespaceDefinitionNode >> rightBrace [
 	^ rightBrace
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUnnamedNamespaceDefinitionNode >> rightBrace: aSmaCCToken [
 	rightBrace := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPUnnamedNamespaceDefinitionNode >> tokenVariables [
 	^ #(#namespaceToken #leftBrace #rightBrace #inlineToken)
 ]

@@ -1,39 +1,41 @@
 Class {
-	#name : #CPPCaptureNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPCaptureNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'name',
 		'ampToken'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCaptureNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCapture: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCaptureNode >> ampToken [
 	^ ampToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCaptureNode >> ampToken: aSmaCCToken [
 	ampToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCaptureNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCaptureNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPCaptureNode >> tokenVariables [
 	^ #(#name #ampToken)
 ]

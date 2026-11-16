@@ -1,24 +1,26 @@
 Class {
-	#name : #CPPClassTypeNode,
-	#superclass : #CPPTypeNode,
+	#name : 'CPPClassTypeNode',
+	#superclass : 'CPPTypeNode',
 	#instVars : [
 		'name',
 		'nameSpecifier'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassTypeNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitClassType: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassTypeNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassTypeNode >> name: aCPPProgramNode [
 	self name notNil
 		ifTrue: [ self name parent: nil ].
@@ -27,12 +29,12 @@ CPPClassTypeNode >> name: aCPPProgramNode [
 		ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassTypeNode >> nameSpecifier [
 	^ nameSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassTypeNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 	self nameSpecifier notNil
 		ifTrue: [ self nameSpecifier parent: nil ].
@@ -41,7 +43,7 @@ CPPClassTypeNode >> nameSpecifier: aCPPNestedNameSpecifierNode [
 		ifTrue: [ self nameSpecifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPClassTypeNode >> nodeVariables [
 	^ #(#name #nameSpecifier)
 ]

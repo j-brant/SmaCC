@@ -1,55 +1,57 @@
 Class {
-	#name : #CPPEnumDefinitionNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPEnumDefinitionNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'name',
 		'equal',
 		'value'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumDefinitionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEnumDefinition: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumDefinitionNode >> equal [
 	^ equal
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumDefinitionNode >> equal: aSmaCCToken [
 	equal := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumDefinitionNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumDefinitionNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumDefinitionNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumDefinitionNode >> tokenVariables [
 	^ #(#name #equal)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumDefinitionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPEnumDefinitionNode >> value: aCPPExpressionNode [
 	self value notNil
 		ifTrue: [ self value parent: nil ].

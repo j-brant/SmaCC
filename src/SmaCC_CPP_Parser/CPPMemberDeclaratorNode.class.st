@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPMemberDeclaratorNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPMemberDeclaratorNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'declarator',
 		'pureSpecifier',
@@ -10,40 +10,42 @@ Class {
 		'specifiers',
 		'name'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclaratorNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMemberDeclarator: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclaratorNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclaratorNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclaratorNode >> compositeNodeVariables [
 	^ #(#specifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclaratorNode >> compositeTokenVariables [
 	^ #(#virtualSpecifierTokens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclaratorNode >> declarator [
 	^ declarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclaratorNode >> declarator: aCPPDeclaratorNode [
 	self declarator notNil
 		ifTrue: [ self declarator parent: nil ].
@@ -52,19 +54,19 @@ CPPMemberDeclaratorNode >> declarator: aCPPDeclaratorNode [
 		ifTrue: [ self declarator parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPMemberDeclaratorNode >> initialize [
 	super initialize.
 	virtualSpecifierTokens := OrderedCollection new: 2.
 	specifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclaratorNode >> initializer [
 	^ initializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclaratorNode >> initializer: aCPPProgramNode [
 	self initializer notNil
 		ifTrue: [ self initializer parent: nil ].
@@ -73,27 +75,27 @@ CPPMemberDeclaratorNode >> initializer: aCPPProgramNode [
 		ifTrue: [ self initializer parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclaratorNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclaratorNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclaratorNode >> nodeVariables [
 	^ #(#declarator #pureSpecifier #initializer)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclaratorNode >> pureSpecifier [
 	^ pureSpecifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclaratorNode >> pureSpecifier: aCPPEqualInitializerNode [
 	self pureSpecifier notNil
 		ifTrue: [ self pureSpecifier parent: nil ].
@@ -102,29 +104,29 @@ CPPMemberDeclaratorNode >> pureSpecifier: aCPPEqualInitializerNode [
 		ifTrue: [ self pureSpecifier parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclaratorNode >> specifiers [
 	^ specifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclaratorNode >> specifiers: anOrderedCollection [
 	self setParents: self specifiers to: nil.
 	specifiers := anOrderedCollection.
 	self setParents: self specifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclaratorNode >> tokenVariables [
 	^ #(#colon #name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclaratorNode >> virtualSpecifierTokens [
 	^ virtualSpecifierTokens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPMemberDeclaratorNode >> virtualSpecifierTokens: anOrderedCollection [
 	virtualSpecifierTokens := anOrderedCollection
 ]

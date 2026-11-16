@@ -1,6 +1,6 @@
 Class {
-	#name : #CPPSizeofExpressionNode,
-	#superclass : #CPPExpressionNode,
+	#name : 'CPPSizeofExpressionNode',
+	#superclass : 'CPPExpressionNode',
 	#instVars : [
 		'sizeofToken',
 		'expression',
@@ -8,30 +8,32 @@ Class {
 		'ellipsis',
 		'name'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSizeofExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSizeofExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSizeofExpressionNode >> ellipsis [
 	^ ellipsis
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSizeofExpressionNode >> ellipsis: aSmaCCToken [
 	ellipsis := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSizeofExpressionNode >> expression [
 	^ expression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSizeofExpressionNode >> expression: aCPPExpressionNode [
 	self expression notNil
 		ifTrue: [ self expression parent: nil ].
@@ -40,42 +42,42 @@ CPPSizeofExpressionNode >> expression: aCPPExpressionNode [
 		ifTrue: [ self expression parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSizeofExpressionNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSizeofExpressionNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSizeofExpressionNode >> nodeVariables [
 	^ #(#expression #type)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSizeofExpressionNode >> sizeofToken [
 	^ sizeofToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSizeofExpressionNode >> sizeofToken: aSmaCCToken [
 	sizeofToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSizeofExpressionNode >> tokenVariables [
 	^ #(#sizeofToken #ellipsis #name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSizeofExpressionNode >> type [
 	^ type
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPSizeofExpressionNode >> type: aCPPTypeIdentifierNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].

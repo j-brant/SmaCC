@@ -1,28 +1,30 @@
 Class {
-	#name : #CPPThisExpressionNode,
-	#superclass : #CPPExpressionNode,
+	#name : 'CPPThisExpressionNode',
+	#superclass : 'CPPExpressionNode',
 	#instVars : [
 		'thisToken'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPThisExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitThisExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPThisExpressionNode >> thisToken [
 	^ thisToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPThisExpressionNode >> thisToken: aSmaCCToken [
 	thisToken := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPThisExpressionNode >> tokenVariables [
 	^ #(#thisToken)
 ]

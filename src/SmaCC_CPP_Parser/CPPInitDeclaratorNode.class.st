@@ -1,24 +1,26 @@
 Class {
-	#name : #CPPInitDeclaratorNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPInitDeclaratorNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'declarator',
 		'initializer'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPInitDeclaratorNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitInitDeclarator: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPInitDeclaratorNode >> declarator [
 	^ declarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPInitDeclaratorNode >> declarator: aCPPDeclaratorNode [
 	self declarator notNil
 		ifTrue: [ self declarator parent: nil ].
@@ -27,12 +29,12 @@ CPPInitDeclaratorNode >> declarator: aCPPDeclaratorNode [
 		ifTrue: [ self declarator parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPInitDeclaratorNode >> initializer [
 	^ initializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPInitDeclaratorNode >> initializer: aCPPProgramNode [
 	self initializer notNil
 		ifTrue: [ self initializer parent: nil ].
@@ -41,7 +43,7 @@ CPPInitDeclaratorNode >> initializer: aCPPProgramNode [
 		ifTrue: [ self initializer parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPInitDeclaratorNode >> nodeVariables [
 	^ #(#declarator #initializer)
 ]

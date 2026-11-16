@@ -1,28 +1,30 @@
 Class {
-	#name : #CPPIdentifierNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPIdentifierNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'name'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPIdentifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIdentifier: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPIdentifierNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPIdentifierNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPIdentifierNode >> tokenVariables [
 	^ #(#name)
 ]

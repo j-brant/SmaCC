@@ -1,31 +1,33 @@
 Class {
-	#name : #CPPConditionNode,
-	#superclass : #CPPProgramNode,
+	#name : 'CPPConditionNode',
+	#superclass : 'CPPProgramNode',
 	#instVars : [
 		'specifiers',
 		'declarator',
 		'equal',
 		'initializer'
 	],
-	#category : #'SmaCC_CPP_Parser-C++ AST'
+	#category : 'SmaCC_CPP_Parser-C++ AST',
+	#package : 'SmaCC_CPP_Parser',
+	#tag : 'C++ AST'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCondition: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionNode >> compositeNodeVariables [
 	^ #(#specifiers)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionNode >> declarator [
 	^ declarator
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionNode >> declarator: aCPPDeclaratorNode [
 	self declarator notNil
 		ifTrue: [ self declarator parent: nil ].
@@ -34,28 +36,28 @@ CPPConditionNode >> declarator: aCPPDeclaratorNode [
 		ifTrue: [ self declarator parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionNode >> equal [
 	^ equal
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionNode >> equal: aSmaCCToken [
 	equal := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CPPConditionNode >> initialize [
 	super initialize.
 	specifiers := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionNode >> initializer [
 	^ initializer
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionNode >> initializer: aCPPProgramNode [
 	self initializer notNil
 		ifTrue: [ self initializer parent: nil ].
@@ -64,24 +66,24 @@ CPPConditionNode >> initializer: aCPPProgramNode [
 		ifTrue: [ self initializer parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionNode >> nodeVariables [
 	^ #(#declarator #initializer)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionNode >> specifiers [
 	^ specifiers
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionNode >> specifiers: anOrderedCollection [
 	self setParents: self specifiers to: nil.
 	specifiers := anOrderedCollection.
 	self setParents: self specifiers to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CPPConditionNode >> tokenVariables [
 	^ #(#equal)
 ]
