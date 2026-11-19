@@ -59,20 +59,15 @@ SmaCCScannerCompiler >> addSpecialSymbols [
 SmaCCScannerCompiler >> addSpecificREsWithoutActionsTo: aRegularExpression [
 	| dfa regex |
 	regex := aRegularExpression.
-	dfa := regex isNil
-		ifTrue: [ nil ]
-		ifFalse: [ regex asDFA ].
+	dfa := regex isNil ifTrue: [ nil ] ifFalse: [ regex asNFA asUnminimizedDFA ].
 	self
-		specificRegularExpressionsDo:
-			[ :each | 
+		specificRegularExpressionsDo: [ :each | 
 			| actions |
 			actions := dfa isNil
-				ifTrue: [ nil ]
-				ifFalse: [ dfa actionForSpecificRegularExpression: each ].
+					ifTrue: [ nil ]
+					ifFalse: [ dfa actionForSpecificRegularExpression: each ].
 			actions isNil
-				ifTrue: [ regex := regex isNil
-						ifTrue: [ each ]
-						ifFalse: [ regex | each ] ] ].
+				ifTrue: [ regex := regex isNil ifTrue: [ each ] ifFalse: [ regex | each ] ] ].
 	^ regex
 ]
 

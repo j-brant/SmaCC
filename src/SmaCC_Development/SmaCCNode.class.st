@@ -185,8 +185,7 @@ SmaCCNode >> anyContainsOverlappingConditions [
 { #category : 'converting' }
 SmaCCNode >> asDFA [
 	| new |
-	new := (SmaCCNFAtoDFA convertToDFA: self asNFAWithoutEpsilonTransitions)
-			startingNodeWithoutUnnecessaryDefaultTransition.
+	new := self asUnminimizedDFA.
 	new removeDuplicateNodes.
 	new orderNodes.
 	^ new
@@ -195,8 +194,7 @@ SmaCCNode >> asDFA [
 { #category : 'converting' }
 SmaCCNode >> asDFAWithExpandedConditions [
 	| new |
-	new := (SmaCCNFAtoDFA convertToDFA: self asNFAWithoutEpsilonTransitions)
-			startingNodeWithoutUnnecessaryDefaultTransition.
+	new := self asUnminimizedDFA.
 	new anyContainsOverlappingConditions
 		ifTrue: [ new := SmaCCNFAtoDFA convertToDFA: new addOverlappingConditions ].
 	new removeDuplicateNodes.
@@ -251,6 +249,12 @@ SmaCCNode >> asDOTstring [
 { #category : 'converting' }
 SmaCCNode >> asNFAWithoutEpsilonTransitions [
 	^ SmaCCEpsilonRemoval removeEpsilonEdgesFrom: self
+]
+
+{ #category : 'converting' }
+SmaCCNode >> asUnminimizedDFA [
+	^ (SmaCCNFAtoDFA convertToDFA: self asNFAWithoutEpsilonTransitions)
+		startingNodeWithoutUnnecessaryDefaultTransition
 ]
 
 { #category : 'compiling-scanner' }

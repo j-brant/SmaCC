@@ -35,18 +35,36 @@ SmaCCItemSet >> = aSmaCCItemSet [
 
 { #category : 'accessing' }
 SmaCCItemSet >> action: aSmaCCSymbol prefer: aClass [
+	^ self
+		action: aSmaCCSymbol
+		prefer: aClass
+		from: self
+]
+
+{ #category : 'accessing' }
+SmaCCItemSet >> action: aSmaCCSymbol prefer: aClass from: items [
 	| action |
 	action := nil.
-	self
-		do:
-			[ :each | 
+	items
+		do: [ :item | 
 			| eachAction |
-			eachAction := each action: aSmaCCSymbol.
+			eachAction := item action: aSmaCCSymbol.
 			action := action isNil
-				ifTrue: [ eachAction ]
-				ifFalse: [ action mergeWith: eachAction prefer: aClass ] ].
+					ifTrue: [ eachAction ]
+					ifFalse: [ action mergeWith: eachAction prefer: aClass ] ].
 	action signalAllWarnings.
 	^ action
+]
+
+{ #category : 'accessing' }
+SmaCCItemSet >> actionContributorsBySymbol [
+	| contributors |
+	contributors := Dictionary new.
+	self
+		do: [ :item | 
+			item
+				actionSymbolsDo: [ :symbol | (contributors at: symbol ifAbsentPut: [ OrderedCollection new ]) add: item ] ].
+	^ contributors
 ]
 
 { #category : 'adding' }
@@ -128,17 +146,39 @@ SmaCCItemSet >> mergeWith: aSmaCCItemSet [
 
 { #category : 'accessing' }
 SmaCCItemSet >> moveOn: aSmaCCSymbol [
-	| anItemSet |
-	anItemSet := self class new.
-	anItemSet grammar: grammar.
-	anItemSet addPrevious: self.
-	anItemSet type: type.
+	| destination |
+	destination := self newSuccessor.
 	self
-		do:
-			[ :each | 
-			each nextSymbol == aSmaCCSymbol
-				ifTrue: [ anItemSet add: each moveNext ] ].
-	^ anItemSet
+		do: [ :each | each nextSymbol == aSmaCCSymbol ifTrue: [ destination add: each moveNext ] ].
+	^ destination
+]
+
+{ #category : 'accessing' }
+SmaCCItemSet >> movesOn: symbols do: aBlock [
+	| itemsBySymbol |
+	itemsBySymbol := IdentityDictionary new.
+	self
+		do: [ :item | 
+			(itemsBySymbol at: item nextSymbol ifAbsentPut: [ OrderedCollection new ])
+				add: item ].
+	symbols
+		do: [ :symbol | 
+			itemsBySymbol
+				at: symbol
+				ifPresent: [ :items | 
+					| destination |
+					destination := self newSuccessor.
+					items do: [ :item | destination add: item moveNext ].
+					aBlock value: symbol value: destination ] ]
+]
+
+{ #category : 'private' }
+SmaCCItemSet >> newSuccessor [
+	^ self class new
+		grammar: grammar;
+		addPrevious: self;
+		type: type;
+		yourself
 ]
 
 { #category : 'accessing' }

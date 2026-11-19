@@ -155,39 +155,42 @@ SmaCCGrammarCompiler >> createChanges [
 
 { #category : 'action table' }
 SmaCCGrammarCompiler >> createItemSets [
-	| itemSet newState index |
+	| stateIndicesByHash index symbols |
 	startingStateMap := Dictionary new.
 	grammar calculateFirstSets.
 	itemSets := OrderedCollection new.
+	stateIndicesByHash := Dictionary new.
 	grammar allStartingSymbols
-		do:
-			[ :each | 
-			itemSets add: (grammar initialItemSetFor: each).
-			startingStateMap at: each put: itemSets size ].
+		do: [ :each | 
+			| initialState |
+			initialState := grammar initialItemSetFor: each.
+			itemSets add: initialState.
+			startingStateMap at: each put: itemSets size.
+			(stateIndicesByHash
+				at: initialState hash
+				ifAbsentPut: [ OrderedCollection new ]) add: itemSets size ].
 	shiftTable := Dictionary new.
+	symbols := grammar symbols.
 	index := 1.
 	[ index <= itemSets size ]
-		whileTrue:
-			[ itemSet := itemSets at: index.
-			grammar symbols
-				do:
-					[ :each | 
-					newState := itemSet moveOn: each.
-					newState notEmpty
-						ifTrue:
-							[ shiftTable
-								at: (self shiftTableKeyForIndex: index symbol: each)
-								put: (self indexOfState: newState) ] ].
+		whileTrue: [ (itemSets at: index)
+				movesOn: symbols
+				do: [ :symbol :destination | 
+					shiftTable
+						at: (self shiftTableKeyForIndex: index symbol: symbol)
+						put: (self indexOfState: destination withIndicesByHash: stateIndicesByHash) ].
 			index := index + 1 ]
 ]
 
 { #category : 'action table' }
 SmaCCGrammarCompiler >> createTransitionTable [
-	| table optimizedTable |
-	table := (1 to: itemSets size) collect: [ :index | scannerCompiler symbols collect: [ :each | self actionForState: index on: each ] ].
+	| symbols table optimizedTable |
+	symbols := scannerCompiler symbols.
+	table := (1 to: itemSets size)
+			collect: [ :index | self transitionRowForState: index on: symbols ].
 	optimizedTable := self class optimizeTransitionTable
-		ifTrue: [ self optimizeTransitionTable: table ]
-		ifFalse: [ table ].
+			ifTrue: [ self optimizeTransitionTable: table ]
+			ifFalse: [ table ].
 	actions := self compressTable: optimizedTable
 ]
 
@@ -235,6 +238,21 @@ SmaCCGrammarCompiler >> indexOfState: newState [
 	^ newStateIndex
 ]
 
+{ #category : 'private' }
+SmaCCGrammarCompiler >> indexOfState: newState withIndicesByHash: stateIndicesByHash [
+	| candidates index |
+	candidates := stateIndicesByHash
+			at: newState hash
+			ifAbsentPut: [ OrderedCollection new ].
+	index := candidates
+			detect: [ :each | (itemSets at: each) = newState ]
+			ifNone: [ itemSets add: newState.
+				candidates add: itemSets size.
+				^ itemSets size ].
+	(itemSets at: index) mergeWith: newState.
+	^ index
+]
+
 { #category : 'initialize-release' }
 SmaCCGrammarCompiler >> initialize [
 	super initialize.
@@ -274,38 +292,34 @@ SmaCCGrammarCompiler >> multipleActionTableRow: row [
 
 { #category : 'action table' }
 SmaCCGrammarCompiler >> optimizeTransitionTable: anArray [
+	| shortcutIndices |
+	shortcutIndices := Dictionary new.
 	^ anArray
 		collect: [ :row | 
 			row
 				collect: [ :action | 
-					| newShiftAction |
 					(action bitAnd: 2r11) = SmaCCShiftAction id
-						ifTrue: [ newShiftAction := self optimizedShiftFrom: row to: (action bitShift: -2) inTable: anArray ].
-					newShiftAction notNil
-						ifTrue: [ newShiftAction ]
+						ifTrue: [ (self
+								optimizedShiftFrom: row
+								to: (action bitShift: -2)
+								inTable: anArray
+								cache: shortcutIndices) ifNil: [ action ] ]
 						ifFalse: [ action ] ] ]
 ]
 
-{ #category : 'action table' }
-SmaCCGrammarCompiler >> optimizedShiftFrom: row to: stateIndex inTable: anArray [
-	| items action reduceEntry otherAction |
-	items := (anArray at: stateIndex) asSet.
-	items remove: SmaCCRejectAction id ifAbsent: [  ].
-	items size ~= 1
-		ifTrue: [ ^ nil ].
-	action := items asArray first.
-	(action bitAnd: 2r11) = SmaCCReduceAction id
-		ifFalse: [ ^ nil ].
-	reduceEntry := reduceTable keyAtIndex: (action bitShift: -2).
-	(reduceEntry at: 3) = (codeGenerator methodNameFor: #liftFirstValue:)
-		ifFalse: [ ^ nil ].
-	(reduceEntry at: 2) = 1
-		ifFalse: [ ^ nil ].
-	otherAction := row at: reduceEntry first.
+{ #category : 'private' }
+SmaCCGrammarCompiler >> optimizedShiftFrom: row to: stateIndex inTable: table cache: shortcutIndices [
+	| symbolIndex otherAction |
+	symbolIndex := shortcutIndices
+			at: stateIndex
+			ifAbsentPut: [ self shortcutSymbolIndexForRow: (table at: stateIndex) ].
+	symbolIndex isNil ifTrue: [ ^ nil ].
+	otherAction := row at: symbolIndex.
 	^ (self
 		optimizedShiftFrom: row
 		to: (otherAction bitShift: -2)
-		inTable: anArray) ifNil: [ otherAction ]
+		inTable: table
+		cache: shortcutIndices) ifNil: [ otherAction ]
 ]
 
 { #category : 'accessing' }
@@ -353,6 +367,19 @@ SmaCCGrammarCompiler >> shiftTableKeyForIndex: anInteger symbol: aSmaCCSymbol [
 	^ SmaCCSymbolTableIndex forIndex: anInteger symbol: aSmaCCSymbol
 ]
 
+{ #category : 'private' }
+SmaCCGrammarCompiler >> shortcutSymbolIndexForRow: row [
+	| actions action reduceEntry |
+	actions := self uniqueNonErrorActionsForTableRow: row.
+	actions size = 1 ifFalse: [ ^ nil ].
+	action := actions first.
+	(action bitAnd: 2r11) = SmaCCReduceAction id ifFalse: [ ^ nil ].
+	reduceEntry := reduceTable keyAtIndex: (action bitShift: -2).
+	((reduceEntry at: 3) = (codeGenerator methodNameFor: #liftFirstValue:)
+		and: [ (reduceEntry at: 2) = 1 ]) ifFalse: [ ^ nil ].
+	^ reduceEntry first
+]
+
 { #category : 'action table' }
 SmaCCGrammarCompiler >> singleActionTableRow: row forAction: anInteger [
 	| stream |
@@ -380,6 +407,28 @@ SmaCCGrammarCompiler >> symbolsComment [
 				nextPutAll: each printString;
 				cr ].
 	^ stream contents
+]
+
+{ #category : 'private' }
+SmaCCGrammarCompiler >> transitionRowForState: stateIndex on: symbols [
+	| itemSet contributors |
+	itemSet := itemSets at: stateIndex.
+	contributors := itemSet actionContributorsBySymbol.
+	^ symbols
+		collect: [ :symbol | 
+			contributors
+				at: symbol
+				ifPresent: [ :items | 
+					| action |
+					action := itemSet
+							action: symbol
+							prefer: (grammar preferredActionFor: symbol)
+							from: items.
+					self
+						idForAction: action
+						state: stateIndex
+						on: symbol ]
+				ifAbsent: [ SmaCCRejectAction id ] ]
 ]
 
 { #category : 'action table' }

@@ -43,6 +43,15 @@ SmaCCLR1Item >> action: aSmaCCSymbol [
 ]
 
 { #category : 'accessing' }
+SmaCCLR1Item >> actionSymbolsDo: aBlock [
+	self isAtEnd ifFalse: [ ^ aBlock value: self nextSymbol ].
+	followers symbols do: aBlock.
+	(self symbol isStartingSymbol
+		and: [ (followers includes: self grammar emptySymbol) not ])
+		ifTrue: [ aBlock value: self grammar emptySymbol ]
+]
+
+{ #category : 'accessing' }
 SmaCCLR1Item >> followers [
 	^ followers
 ]

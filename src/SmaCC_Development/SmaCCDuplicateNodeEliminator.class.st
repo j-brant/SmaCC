@@ -1,17 +1,10 @@
 "
-SmaCCDuplicateNodeEliminator removes duplicate nodes from a scanner's DFA.
-
-Instance Variables:
-	comparisonState	<Dictionary>	a dictionary of ""equal"" objects when testing nodes for equality
-	root	<SmaCCNode>	the root node for the DFA
-
-
+SmaCCDuplicateNodeEliminator removes duplicate nodes from a scanner's DFA. It groups nodes by scanner action and ordered transition labels, then refines those groups by their destinations. Merging equivalent nodes can expose further duplicates after transitions are merged.
 "
 Class {
 	#name : 'SmaCCDuplicateNodeEliminator',
 	#superclass : 'SmaCCGraphAlgorithm',
 	#instVars : [
-		'comparisonState',
 		'root'
 	],
 	#category : 'SmaCC_Development-DFA/NFA',
@@ -58,30 +51,31 @@ SmaCCDuplicateNodeEliminator >> copyNodesInto: aDictionary [
 		do: [ :each | aDictionary at: each put: each shallowCopy ]
 ]
 
-{ #category : 'testing' }
-SmaCCDuplicateNodeEliminator >> isNode: firstSmaCCNode equivalentTo: secondSmaCCNode [
-	firstSmaCCNode = secondSmaCCNode
-		ifTrue: [ ^ true ].
-	firstSmaCCNode transitions size = secondSmaCCNode transitions size
-		ifFalse: [ ^ false ].
-	firstSmaCCNode action = secondSmaCCNode action
-		ifFalse: [ ^ false ].
-	((comparisonState at: firstSmaCCNode ifAbsent: [ #() ])
-		includes: secondSmaCCNode)
-		ifTrue: [ ^ true ].
-	(comparisonState at: firstSmaCCNode ifAbsentPut: [ Set new ])
-		add: secondSmaCCNode.
-	(comparisonState at: secondSmaCCNode ifAbsentPut: [ Set new ])
-		add: firstSmaCCNode.
-	firstSmaCCNode sortedTransitions
-		with: secondSmaCCNode sortedTransitions
-		do:
-			[ :first :second | 
-			first transitionObjects = second transitionObjects
-				ifFalse: [ ^ false ].
-			(self isNode: first to equivalentTo: second to)
-				ifFalse: [ ^ false ] ].
-	^ true
+{ #category : 'private' }
+SmaCCDuplicateNodeEliminator >> duplicateNodesByRepresentative [
+	| nodes partitions previousSize duplicates representatives |
+	nodes := root allStates asSortedCollection.
+	partitions := self
+			partition: nodes
+			by: [ :node | 
+				{node action.
+					node sortedTransitions collect: #transitionObjects as: Array} ].
+	[ previousSize := partitions size.
+	representatives := Dictionary new.
+	partitions
+		do: [ :group | group do: [ :node | representatives at: node put: group first ] ].
+	partitions := self
+			partition: nodes
+			by: [ :node | 
+				{representatives at: node.
+					node sortedTransitions
+						collect: [ :edge | representatives at: edge to ]
+						as: Array} ].
+	partitions size > previousSize ] whileTrue.
+	duplicates := Dictionary new.
+	partitions
+		do: [ :group | group size > 1 ifTrue: [ duplicates at: group first put: group allButFirst ] ].
+	^ duplicates
 ]
 
 { #category : 'algorithm' }
@@ -113,11 +107,14 @@ SmaCCDuplicateNodeEliminator >> mergeNodeUsing: aDictionary [
 ]
 
 { #category : 'private' }
-SmaCCDuplicateNodeEliminator >> pairsDo: aBlock [
-	| nodes |
-	nodes := root allStates asSortedCollection.
-	1 to: nodes size - 1 do:
-		[ :i | i + 1 to: nodes size do: [ :j | aBlock value: (nodes at: i) value: (nodes at: j) ] ]
+SmaCCDuplicateNodeEliminator >> partition: nodes by: aBlock [
+	| groups |
+	groups := Dictionary new.
+	nodes
+		do: [ :node | 
+			(groups at: (aBlock value: node) ifAbsentPut: [ OrderedCollection new ])
+				add: node ].
+	^ groups values
 ]
 
 { #category : 'algorithm' }
@@ -131,18 +128,7 @@ SmaCCDuplicateNodeEliminator >> removeDuplicateNodesIn: aSmaCCNode [
 { #category : 'algorithm' }
 SmaCCDuplicateNodeEliminator >> removeDuplicates [
 	| toMerge |
-	[ toMerge := Dictionary new.
-	self mergeAllTransitions.
-	self
-		pairsDo:
-			[ :firstNode :secondNode | 
-			comparisonState := Dictionary new.
-			(self isNode: firstNode equivalentTo: secondNode)
-				ifTrue: [ (toMerge at: firstNode ifAbsentPut: [ Set new ])
-						add: secondNode ] ].
-	toMerge notEmpty ]
-		whileTrue:
-			[ toMerge values
-				do: [ :each | each do: [ :node | toMerge removeKey: node ifAbsent: [  ] ] ].
-			self mergeNodeUsing: toMerge ]
+	[ self mergeAllTransitions.
+	toMerge := self duplicateNodesByRepresentative.
+	toMerge notEmpty ] whileTrue: [ self mergeNodeUsing: toMerge ]
 ]
