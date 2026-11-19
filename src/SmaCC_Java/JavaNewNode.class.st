@@ -14,6 +14,7 @@ Class {
 		'commas',
 		'primary',
 		'period',
+		'annotations',
 		'name',
 		'typeArgLeft',
 		'arguments',
@@ -26,6 +27,20 @@ Class {
 { #category : 'generated' }
 JavaNewNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNew: self
+]
+
+{ #category : 'generated' }
+JavaNewNode >> annotations [
+
+	^ annotations
+]
+
+{ #category : 'generated' }
+JavaNewNode >> annotations: anOrderedCollection [
+
+	self setParents: self annotations to: nil.
+	annotations := anOrderedCollection.
+	self setParents: self annotations to: self
 ]
 
 { #category : 'generated' }
@@ -53,7 +68,7 @@ JavaNewNode >> commas: anOrderedCollection [
 { #category : 'generated' }
 JavaNewNode >> compositeNodeVariables [
 
-	^ #( #creationTypeArguments #expressions #arguments )
+	^ #( #creationTypeArguments #expressions #annotations #arguments )
 ]
 
 { #category : 'generated' }
@@ -149,6 +164,7 @@ JavaNewNode >> initialize [
 	creationTypeArgCommas := OrderedCollection new: 2.
 	expressions := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
+	annotations := OrderedCollection new: 2.
 	arguments := OrderedCollection new: 2.
 ]
 
