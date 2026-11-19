@@ -60,13 +60,13 @@ JavaScanner >> createTokenFor: aString [
 { #category : 'generated' }
 JavaScanner >> emptySymbolTokenId [
 
-	^ 370
+	^ 374
 ]
 
 { #category : 'generated' }
 JavaScanner >> errorTokenId [
 
-	^ 371
+	^ 375
 ]
 
 { #category : 'generated' }
@@ -129,13 +129,7 @@ JavaScanner >> scan13 [
 		self recordMatch: #( 116 ).
 		self step.
 		currentCharacter == $. ifTrue: [ ^ self scan12 ].
-		currentCharacter == $_ ifTrue: [
-				[
-					self step.
-					currentCharacter == $_ ] whileTrue.
-				(currentCharacter between: $8 and: $9) ifTrue: [ ^ self scan14 ].
-				currentCharacter isDigit ifTrue: [ ^ self scan13 ].
-				^ self reportLastMatch ].
+		currentCharacter == $_ ifTrue: [ ^ self scan15 ].
 		(currentCharacter between: $8 and: $9) ifTrue: [ ^ self scan14 ].
 		currentCharacter isDigit ] whileTrue.
 	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan9 ].
@@ -151,7 +145,12 @@ JavaScanner >> scan14 [
 	[
 		self step.
 		currentCharacter == $. ifTrue: [ ^ self scan12 ].
-		currentCharacter == $_ ifTrue: [ ^ self scan15 ].
+		currentCharacter == $_ ifTrue: [
+				[
+					self step.
+					currentCharacter == $_ ] whileTrue.
+				currentCharacter isDigit ifTrue: [ ^ self scan14 ].
+				^ self reportLastMatch ].
 		currentCharacter isDigit ] whileTrue.
 	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan9 ].
 	((currentCharacter between: $D and: $F) or: [ currentCharacter between: $d and: $f ]) ifTrue: [
@@ -165,7 +164,8 @@ JavaScanner >> scan15 [
 	[
 		self step.
 		currentCharacter == $_ ] whileTrue.
-	currentCharacter isDigit ifTrue: [ ^ self scan14 ].
+	(currentCharacter between: $8 and: $9) ifTrue: [ ^ self scan14 ].
+	currentCharacter isDigit ifTrue: [ ^ self scan13 ].
 	^ self reportLastMatch
 ]
 

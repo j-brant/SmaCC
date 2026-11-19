@@ -18,7 +18,7 @@ JavaNewClassNode >> acceptVisitor: aProgramVisitor [
 { #category : 'generated' }
 JavaNewClassNode >> compositeNodeVariables [
 
-	^ #( #declarations #creationTypeArguments #expressions #arguments )
+	^ #( #declarations #creationTypeArguments #expressions #annotations #arguments )
 ]
 
 { #category : 'generated' }
