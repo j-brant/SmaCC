@@ -112,7 +112,7 @@ SmaCCSourceReduceCode >> typesForTree: aRBProgramNode seen: aSet [
 				ifTrue: [ (self model classNamed: aRBProgramNode receiver name)
 						ifNotNil: [ :cls | ^ {cls} ] ].
 			(aRBProgramNode receiver isVariable
-				and: [ aRBProgramNode receiver name = 'SmaCCToken' ])
+				and: [ aRBProgramNode receiver name = #SmaCCToken ])
 				ifTrue: [ ^ Array with: (self model classFor: SmaCCToken) ] ].
 	aRBProgramNode isCascade
 		ifTrue: [ ^ self typesForTree: aRBProgramNode messages last seen: aSet ].

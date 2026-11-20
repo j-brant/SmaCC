@@ -354,8 +354,10 @@ SmaCCGrammarCreator >> visitStartDirective: aStartDirective [
 { #category : 'visiting' }
 SmaCCGrammarCreator >> visitSuperclassDirective: aSuperclassDirective [
 	| superclass |
-	superclass := grammar classNamed: aSuperclassDirective superclass value asSymbol.
-	aSuperclassDirective names do: [ :each | (grammar classNamed: each value) superclass: superclass ]
+	superclass := grammar
+			classNamed: aSuperclassDirective superclass value asSymbol.
+	aSuperclassDirective names
+		do: [ :each | (grammar classNamed: each value asSymbol) superclass: superclass ]
 ]
 
 { #category : 'visiting' }

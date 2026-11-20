@@ -1115,8 +1115,7 @@ SmaCCEndToEndTest >> testExistingVariables [
 	(parserCompiler := SmaCCGrammarCompiler new) codeGenerator
 		defaultCategory: self class category.
 	parserCompiler
-		buildDefinition:
-			'%ignorecase;
+		buildDefinition: '%ignorecase;
 			<a> : \{ | \< \% ;
 			<all> : .;
 			%id <_all> <a> <all>;  
@@ -1125,10 +1124,10 @@ SmaCCEndToEndTest >> testExistingVariables [
 			A : <a> ;
 			All: <_all>;'.
 	parserCompiler compileInto: 'TestScanner' andParser: 'TestParser'.
-	self assert: (self scannerClass instVarNames includes: 'scanner1').
-	self assert: (self scannerClass instVarNames includes: 'scanner2').
-	self assert: (self parserClass instVarNames includes: 'parser1').
-	self assert: (self parserClass instVarNames includes: 'parser2')
+	self assert: (self scannerClass instVarNames includes: #scanner1).
+	self assert: (self scannerClass instVarNames includes: #scanner2).
+	self assert: (self parserClass instVarNames includes: #parser1).
+	self assert: (self parserClass instVarNames includes: #parser2)
 ]
 
 { #category : 'tests' }

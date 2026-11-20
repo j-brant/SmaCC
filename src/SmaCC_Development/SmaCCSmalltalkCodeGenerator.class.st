@@ -1122,7 +1122,7 @@ SmaCCSmalltalkCodeGenerator >> returnedNodeIndexForTree: parseTree in: aSmaCCRed
 		ifTrue: [ ^ self returnedNodeIndexForTree: parseTree receiver in: aSmaCCReduceCode ].
 	(parseTree isVariable or: [ parseTree isLiteralNode ]) ifFalse: [ ^ nil ].
 	parseTree isVariable
-		ifTrue: [ index := aSmaCCReduceCode rhs indexOfVariable: parseTree name.
+		ifTrue: [ index := aSmaCCReduceCode rhs indexOfVariable: parseTree name asString.
 			(index notNil and: [ index between: 1 and: aSmaCCReduceCode rhs size ])
 				ifTrue: [ ^ index ] ].
 	(parseTree isLiteralNode and: [ parseTree value isString ]) ifFalse: [ ^ nil ].
